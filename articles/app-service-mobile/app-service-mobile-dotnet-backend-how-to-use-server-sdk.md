@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a1a29d87864bff8cb2ecda70d8a0a7833c70d481
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8216dafdd846f10ca1c8fc33b710a093aca20c7b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -46,10 +46,24 @@ Folgen Sie zum Erstellen eines mobilen App Service-Back-Ends entweder der Anleit
 
 Wählen Sie auf dem Blatt *Erste Schritte* unter **Erstellen einer Tabellen-API** die Option **C#** als **Back-End-Sprache**. Klicken Sie auf **Herunterladen**, extrahieren Sie die komprimierten Projektdateien auf Ihrem lokalen Computer, und öffnen Sie die Projektmappe in Visual Studio.
 
-### <a name="create-a-net-backend-using-visual-studio-2013-and-visual-studio-2015"></a>Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2013 und Visual Studio 2015
+### <a name="create-a-net-backend-using-visual-studio-2017"></a>Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2017
+
+Installieren Sie die Azure-Workload über den Visual Studio-Installer, um im Azure Mobile Apps-Projekt aus Visual Studio zu veröffentlichen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
+
+1. Öffnen Sie das Dialogfeld **Neues Projekt** (über **Datei** > **Neu** > **Projekt...**).
+2. Erweitern Sie **Visual C#**, und wählen Sie **Web** aus.
+3. Wählen Sie **ASP.NET-Webanwendung (.NET Framework)** aus.
+4. Geben Sie den Projektnamen ein. Klicken Sie dann auf **OK**.
+5. Wählen Sie aus der Vorlagenliste **Azure Mobile App** aus.
+6. Klicken Sie auf **OK**, um die Projektmappe zu erstellen.
+7. Klicken Sie mit der rechten Maustaste auf das Projekt im **Projektmappen-Explorer**, und wählen Sie **Veröffentlichen...**. Wählen Sie dann **App Service** als Ziel für die Veröffentlichung.
+8. Folgen Sie den Anweisungen zur Authentifizierung, und wählen Sie einen neuen oder bestehenden Azure App Service zur Veröffentlichung aus.
+
+### <a name="create-a-net-backend-using-visual-studio-2015"></a>Erstellen eines .NET-Back-Ends mithilfe von Visual Studio 2015
+
 Installieren Sie das [Azure SDK für .NET][4] (Version 2.9.0 oder höher), um in Visual Studio ein Azure Mobile Apps-Projekt zu erstellen. Erstellen Sie nach dem Installieren des SDK mit den folgenden Schritten eine ASP.NET-Anwendung:
 
-1. Öffnen Sie das Dialogfeld **Neues Projekt** (über *Datei* > **Neu** > **Projekt...**).
+1. Öffnen Sie das Dialogfeld **Neues Projekt** (über **Datei** > **Neu** > **Projekt...**).
 2. Erweitern Sie **Vorlagen** > **Visual C#**, und wählen Sie **Web** aus.
 3. Wählen Sie **ASP.NET-Webanwendung**aus.
 4. Geben Sie den Projektnamen ein. Klicken Sie dann auf **OK**.
@@ -89,7 +103,7 @@ Um einzelne Funktionen zu aktivieren, müssen Sie die Erweiterungsmethoden im **
         .MapApiControllers()
         .ApplyTo(config);
 
-Beim Serverschnellstart aus dem Azure-Portal wird **UseDefaultConfiguration()**aufgerufen. Dies entspricht der folgenden Konfiguration:
+Beim Serverschnellstart aus dem Azure-Portal wird **UseDefaultConfiguration()** aufgerufen. Dies entspricht der folgenden Konfiguration:
 
         new MobileAppConfiguration()
             .AddMobileAppHomeController()             // from the Home package

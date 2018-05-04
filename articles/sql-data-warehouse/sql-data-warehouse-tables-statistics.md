@@ -1,43 +1,30 @@
 ---
-title: Verwalten von Statistiken für Tabellen in SQL Data Warehouse | Microsoft Docs
-description: Enthält Informationen zu den ersten Schritten zu Statistiken von Tabellen in Azure SQL Data Warehouse.
+title: Erstellen, Aktualisieren von Statistiken – Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: ''
-ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 11/06/2017
-ms.author: barbkess
-ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>Verwalten von Statistiken für Tabellen in SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Übersicht][Overview]
-> * [Datentypen][Data Types]
-> * [Verteilen][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistiken][Statistics]
-> * [Temporär][Temporary]
-> 
-> 
+# <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Erstellen, Aktualisieren von Statistiken von Tabellen in Azure SQL Data Warehouse
+Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
 
+## <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 Je mehr Informationen Azure SQL Data Warehouse zu Ihren Daten besitzt, desto schneller können Abfragen dafür durchgeführt werden. Das Sammeln von Statistiken für Ihre Daten und das anschließende Laden in SQL Data Warehouse ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung Ihrer Abfragen treffen können. Der Grund ist, dass der Abfrageoptimierer von SQL Data Warehouse ein kostenbasierter Optimierer ist. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. Dies ist meistens der Plan, der am schnellsten ausgeführt wird. Wenn vom Optimierer beispielsweise geschätzt wird, dass für das Filterdatum der Abfrage eine Zeile zurückgegeben wird, wird unter Umständen ein anderer Plan gewählt, als wenn die Schätzung lautet, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden.
 
 Das Erstellen und Aktualisieren von Statistiken ist derzeit ein manueller Prozess, der aber nicht schwierig ist.  In Kürze können Sie Statistiken für einzelne Spalten und Indizes automatisch erstellen und aktualisieren.  Mit den unten angegebenen Informationen können Sie die Verwaltung der Statistiken über Ihre Daten stark automatisieren. 
 
-## <a name="getting-started-with-statistics"></a>Erste Schritte mit Statistiken
+## <a name="scenarios"></a>Szenarien
 Das Erstellen von erfassten Statistiken für jede Spalte ist eine einfache Möglichkeit, um in das Thema einzusteigen. Veraltete Statistiken führen zu einer suboptimalen Abfrageleistung. Das Aktualisieren von Statistiken für alle Spalten bei zunehmendem Datenumfang kann jedoch Arbeitsspeicher beanspruchen. 
 
 Es folgen einige Empfehlungen für verschiedene Szenarien:
@@ -94,7 +81,7 @@ WHERE
 
 Beispielsweise benötigen **Datumsspalten** in einem Data Warehouse normalerweise häufige Statistikaktualisierungen. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Hierdurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell.  Im Gegensatz dazu müssen die Statistiken für die Spalte „Geschlecht“ in einer Kundentabelle unter Umständen nie aktualisiert werden. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse aber nur ein Geschlecht enthält und eine neue Anforderung zu mehr als einem Geschlecht führt, müssen Sie die Statistiken für die Spalte „Geschlecht“ aktualisieren.
 
-Weitere Informationen finden Sie bei MSDN unter [Statistiken][Statistics].
+Weitere Informationen finden Sie im allgemeinen Leitfaden zu [Statistik](/sql/relational-databases/statistics/statistics).
 
 ## <a name="implementing-statistics-management"></a>Implementieren der Statistikverwaltung
 Häufig ist es ratsam, den Datenladeprozess zu erweitern, um sicherzustellen, dass die Statistiken am Ende des Ladevorgangs aktualisiert werden. Das Laden von Daten ist der Zeitpunkt, zu dem Tabellen am häufigsten ihre Größe oder die Verteilung der Werte ändern. Daher ist dies ein logischer Ansatzpunkt zum Implementieren einiger Verwaltungsprozesse.
@@ -107,7 +94,7 @@ Hier sind einige Richtlinien zur Aktualisierung von Statistiken während des Lad
 * Erwägen Sie, Spalten mit statischer Verteilung weniger häufig zu aktualisieren.
 * Bedenken Sie, dass jedes statistische Objekt der Reihe nach aktualisiert wird. Es ist nicht ideal, einfach `UPDATE STATISTICS <TABLE_NAME>` zu implementieren. Dies gilt besonders für breite Tabellen mit vielen Statistikobjekten.
 
-Weitere Informationen finden Sie bei MSDN unter [Kardinalitätsschätzung][Cardinality Estimation].
+Weitere Informationen finden Sie unter [Kardinalitätsschätzung (SQL Server)](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
 ## <a name="examples-create-statistics"></a>Beispiele: Erstellen von Statistiken
 In diesen Beispielen wird veranschaulicht, wie Sie verschiedene Optionen zum Erstellen von Statistiken verwenden. Die Optionen, die Sie für die einzelnen Spalten verwenden, richten Sie nach den Merkmalen Ihrer Daten und nach der Verwendung der Spalten in Abfragen.
@@ -172,7 +159,7 @@ Sie können die Optionen auch kombinieren. Im folgenden Beispiel wird ein Objekt
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Die gesamte Referenz finden Sie bei MSDN unter [CREATE STATISTICS][CREATE STATISTICS].
+Die gesamte Referenz finden Sie unter [CREATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/create-statistics-transact-sql).
 
 ### <a name="create-multi-column-statistics"></a>Erstellen von Mehrspaltenstatistiken
 Verwenden Sie zum Erstellen eines Mehrspaltenstatistik-Objekts einfach die vorherigen Beispiele, aber geben Sie mehr Spalten an.
@@ -362,9 +349,9 @@ Diese Anweisung ist einfach zu verwenden. Bedenken Sie, dass hiermit *alle* Stat
 > 
 > 
 
-Informationen zur Implementierung einer `UPDATE STATISTICS`-Prozedur finden Sie unter [Temporäre Tabellen][Temporary]. Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Ergebnis ist identisch.
+Informationen zur Implementierung einer `UPDATE STATISTICS`-Prozedur finden Sie unter [Temporäre Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-temporary.md). Die Implementierungsmethode unterscheidet sich etwas von der obigen `CREATE STATISTICS`-Prozedur, aber das Ergebnis ist identisch.
 
-Die vollständige Syntax finden Sie bei MSDN unter [Aktualisieren von Statistiken][Update Statistics].
+Die vollständige Syntax finden Sie unter [UPDATE STATISTICS (Transact-SQL)](/sql/t-sql/statements/update-statistics-transact-sql).
 
 ## <a name="statistics-metadata"></a>Statistikmetadaten
 Es gibt mehrere Systemsichten und -funktionen, die Sie zum Suchen nach Informationen zu Statistiken verwenden können. Beispielsweise können Sie sehen, ob ein Statistikobjekt veraltet ist, indem Sie die stats-date-Funktion verwenden. Damit können Sie anzeigen, wann Statistiken zuletzt erstellt oder aktualisiert wurden.
@@ -374,21 +361,21 @@ Diese Systemsichten enthalten Informationen zu Statistiken:
 
 | Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
-| [sys.columns][sys.columns] |Eine Zeile für jede Spalte. |
-| [sys.objects][sys.objects] |Eine Zeile für jedes Objekt in der Datenbank. |
-| [sys.schemas][sys.schemas] |Eine Zeile für jedes Schema in der Datenbank. |
-| [sys.stats][sys.stats] |Eine Zeile für jedes Statistikobjekt. |
-| [sys.stats_columns][sys.stats_columns] |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
-| [sys.tables][sys.tables] |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
-| [sys.table_types][sys.table_types] |Eine Zeile für jeden Datentyp. |
+| [sys.columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Eine Zeile für jede Spalte. |
+| [sys.objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eine Zeile für jedes Objekt in der Datenbank. |
+| [sys.schemas](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Eine Zeile für jedes Schema in der Datenbank. |
+| [sys.stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Eine Zeile für jedes Statistikobjekt. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |Eine Zeile für jede Spalte im Statistikobjekt. Eine Verknüpfung zurück zu sys.columns. |
+| [sys.tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Eine Zeile für jede Tabelle (enthält externe Tabellen). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Eine Zeile für jeden Datentyp. |
 
 ### <a name="system-functions-for-statistics"></a>Systemfunktionen für Statistiken
 Diese Systemfunktionen sind nützlich für die Arbeit mit Statistiken:
 
 | Systemfunktion | BESCHREIBUNG |
 |:--- |:--- |
-| [STATS_DATE][STATS_DATE] |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
-| [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS] |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |Datum, an dem das Statistikobjekt zuletzt aktualisiert wurde. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |Zusammenfassungsebene und ausführliche Informationen zur Verteilung der Werte gemäß Statistikobjekt. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>Kombinieren von Statistikspalten und -funktionen zu einer Sicht
 In dieser Sicht werden Spalten, die sich auf Statistiken beziehen, und Ergebnisse aus der STATS_DATE()-Funktion zusammengefasst.
@@ -476,37 +463,5 @@ DBCC SHOW_STATISTICS() ist im Vergleich zu SQL Server strenger in SQL Data Wareh
 - Benutzerdefinierter Fehler 2767 wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie bei MSDN unter [DBCC SHOW_STATISTICS][DBCC SHOW_STATISTICS].
+Wie Sie die Abfrageleistung weiter verbessern, erfahren Sie unter [Überwachen Ihrer Workload mit dynamischen Verwaltungssichten](sql-data-warehouse-manage-monitor.md).
 
-  Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Temporäre Tabellen][Temporary].
-  
-   Weitere Informationen zu Best Practices finden Sie unter [SQL Data Warehouse – Best Practices][SQL Data Warehouse Best Practices].  
-
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->  
-[Cardinality Estimation]: https://msdn.microsoft.com/library/dn600374.aspx
-[CREATE STATISTICS]: https://msdn.microsoft.com/library/ms188038.aspx
-[DBCC SHOW_STATISTICS]:https://msdn.microsoft.com/library/ms174384.aspx
-[Statistics]: https://msdn.microsoft.com/library/ms190397.aspx
-[STATS_DATE]: https://msdn.microsoft.com/library/ms190330.aspx
-[sys.columns]: https://msdn.microsoft.com/library/ms176106.aspx
-[sys.objects]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.schemas]: https://msdn.microsoft.com/library/ms190324.aspx
-[sys.stats]: https://msdn.microsoft.com/library/ms177623.aspx
-[sys.stats_columns]: https://msdn.microsoft.com/library/ms187340.aspx
-[sys.tables]: https://msdn.microsoft.com/library/ms187406.aspx
-[sys.table_types]: https://msdn.microsoft.com/library/bb510623.aspx
-[UPDATE STATISTICS]: https://msdn.microsoft.com/library/ms187348.aspx
-
-<!--Other Web references-->  

@@ -1,32 +1,26 @@
 ---
-title: Verwenden des Azure-Blobspeichers mit iOS | Microsoft Docs
+title: 'Verwenden des Objektspeichers (Blob-Speichers) in iOS: Azure | Microsoft-Dokumentation'
 description: Speichern Sie nicht strukturierte Daten in der Cloud mit Azure Blob Storage (Objektspeicher).
 services: storage
 documentationcenter: ios
 author: michaelhauss
-manager: vamshik
-editor: tysonn
-ms.assetid: df188021-86fc-4d31-a810-1b0e7bcd814b
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/21/2018
 ms.author: michaelhauss
-ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15ba7409b4c5f75729b1b40cd2f333c44ae0368
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
-[!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]
+In diesem Artikel wird die Ausführung gängiger Szenarien mit Microsoft Azure Blob Storage demonstriert. Die Beispiele sind in Objective-C geschrieben und greifen auf die [Azure-Speicherclientbibliothek für iOS](https://github.com/Azure/azure-storage-ios)zurück. Die behandelten Szenarien umfassen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs. Weitere Informationen zu Blobs finden Sie im Abschnitt [Nächste Schritte](#next-steps) . Sie können auch die [Beispielapp](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) herunterladen, um eine schnelle Demonstration der Verwendung von Azure Storage in einer iOS-Anwendung zu sehen.
 
-## <a name="overview"></a>Übersicht
-In diesem Artikel wird die Durchführung gängiger Szenarien mit Microsoft Azure-Blobspeicher demonstriert. Die Beispiele sind in Objective-C geschrieben und greifen auf die [Azure-Speicherclientbibliothek für iOS](https://github.com/Azure/azure-storage-ios)zurück. Die behandelten Szenarien umfassen das **Hochladen**, **Auflisten**, **Herunterladen** und **Löschen** von Blobs. Weitere Informationen zu Blobs finden Sie im Abschnitt [Nächste Schritte](#next-steps) . Sie können auch die [Beispielapp](https://github.com/Azure/azure-storage-ios/tree/master/BlobSample) herunterladen, um eine schnelle Demonstration der Verwendung von Azure Storage in einer iOS-Anwendung zu sehen.
+## <a name="what-is-blob-storage"></a>Was ist Blobspeicher?
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
@@ -132,7 +126,7 @@ Jeder Blob in Azure Storage muss sich in einem Container befinden. Das folgende 
 }
 ```
 
-Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass [newcontainer](http://storageexplorer.com) sich im *Microsoft Azure-Speicher-Explorer* in der Liste der Container für das Speicherkonto befindet.
+Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass [newcontainer](http://storageexplorer.com) sich im *Microsoft Azure Storage-Explorer* in der Liste der Container für das Speicherkonto befindet.
 
 ## <a name="set-container-permissions"></a>Festlegen von Containerberechtigungen
 Die Berechtigungen eines Containers werden standardmäßig für den **Privatzugriff** konfiguriert. Container bieten jedoch einige unterschiedliche Optionen für den Containerzugriff:
@@ -211,7 +205,7 @@ Das folgende Beispiel zeigt den Upload eines Blockblobs aus einer NSString. Wenn
 }
 ```
 
-Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
+Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure Storage-Explorer](http://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -353,7 +347,7 @@ Das folgende Beispiel zeigt den Löschvorgang eines Blobs.
 }
 ```
 
-## <a name="delete-a-blob-container"></a>Löschen eines Blob-Containers
+## <a name="delete-a-blob-container"></a>Löschen eines Blobcontainers
 Das folgende Beispiel zeigt den Löschvorgang eines Containers.
 
 ```objc

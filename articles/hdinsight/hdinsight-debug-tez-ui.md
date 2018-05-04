@@ -1,28 +1,26 @@
 ---
-title: "Verwenden der Tez-Benutzeroberfläche mit Windows-basiertem HDInsight – Azure | Microsoft-Dokumentation"
-description: "Informationen zum Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight."
+title: Verwenden der Tez-Benutzeroberfläche mit Windows-basiertem HDInsight – Azure | Microsoft-Dokumentation
+description: Informationen zum Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: a55bccb9-7c32-4ff2-b654-213a2354bd5c
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32f6a12544c05dbf4ac65dd386cd9dea18ca79b3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4201fb76ef9b0e711fd48972db86c356d72e6671
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Verwenden der Tez-Benutzeroberfläche zum Debuggen von Tez-Aufträgen in Windows-basiertem HDInsight
-Die Tez-Benutzeroberfläche ist eine Webseite, die verwendet werden kann, um Aufträge zu verstehen und zu debuggen, die Tez als Ausführungsmodul in Windows-basierten Clustern nutzen. Die Tez-Benutzeroberfläche ermöglicht Ihnen das Visualisieren des Auftrags als Graphen verbundener Elemente, einen Drilldown in die einzelnen Elemente und das Abrufen von Statistiken und Protokollinformationen.
+Auf der Tez-Benutzeroberfläche können Sie Hive-Aufträge debuggen, die Tez als Ausführungsengine verwenden. Die Tez-Benutzeroberfläche ermöglicht das Visualisieren des Auftrags als Graphen verbundener Elemente, eine Detailsuche in den einzelnen Elementen und das Abrufen von Statistiken und Protokollinformationen.
 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Windows. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -37,24 +35,24 @@ Die Tez-Benutzeroberfläche ist eine Webseite, die verwendet werden kann, um Auf
 * Ein Windows-basierter Remotedesktopclient.
 
 ## <a name="understanding-tez"></a>Grundlegendes zu Tez
-Tez ist ein erweiterbares Framework für die Datenverarbeitung in Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Bei Windows-basierten Clustern handelt es sich um ein optionales Modul, das mit dem folgenden Befehl als Teil Ihrer Hive-Abfrage für Hive aktiviert werden kann:
+Tez ist ein erweiterbares Framework für die Datenverarbeitung in Hadoop, das eine schnellere Verarbeitung als übliche MapReduce-Verfahren bietet. Sie können Tez aktivieren, indem Sie den folgenden Text als Teil einer Hive-Abfrage einfügen:
 
     set hive.execution.engine=tez;
 
-Wenn Aufträge an Tez übermittelt werden, erstellt das Tool einen gerichteten azyklischen Graphen (Directed Acyclic Graph, DAG), der die Reihenfolge der Ausführung der Aktionen beschreibt, die für den Auftrag erforderlich sind. Einzelne Aktionen werden auch Scheitelpunkte genannt und führen einen Teil des gesamten Auftrags aus. Die tatsächliche Ausführung des Auftrags, die von einem Scheitelpunkt beschrieben wird, heißt Aufgabe und kann auf mehrere Knoten im Cluster verteilt werden.
+Wenn erstellt einen gerichteten azyklischen Graphen (Directed Acyclic Graph, DAG), der die Reihenfolge der Ausführung der Aktionen beschreibt, die für den Auftrag erforderlich sind. Einzelne Aktionen werden auch Scheitelpunkte genannt und führen einen Teil des gesamten Auftrags aus. Die tatsächliche Ausführung des Auftrags, die von einem Scheitelpunkt beschrieben wird, heißt Aufgabe und kann auf mehrere Knoten im Cluster verteilt werden.
 
 ### <a name="understanding-the-tez-ui"></a>Grundlegendes zur Tez-Benutzeroberfläche
-Die Tez-Benutzeroberfläche ist eine Webseite mit Informationen zu Prozessen, die ausgeführt werden oder zuvor mithilfe von Tez ausgeführt wurden. Sie ermöglicht das Anzeigen des von Tez generierten DAG, seiner Verteilung auf Cluster, von Leistungsindikatoren wie für den von Aufgaben und Scheitelpunkten belegten Arbeitsspeicher sowie von Fehlerinformationen. Diese Ansicht kann in den folgenden Szenarien nützliche Informationen bieten:
+Die Tez-Benutzeroberfläche ist eine Webseite mit Informationen zu Prozessen, die Tez nutzen. Diese Ansicht kann in den folgenden Szenarien nützliche Informationen bieten:
 
 * Überwachen lang andauernder Prozesse und Anzeigen des Status von Map/Reduce-Aufgaben.
 * Analysieren von Verlaufsdaten erfolgreicher oder fehlerhafter Prozesse, um zu erfahren, wie die Verarbeitung verbessert werden kann oder warum sie misslungen ist.
 
 ## <a name="generate-a-dag"></a>Generieren eines gerichteten azyklischen Graphen (DAG)
-Die Tez-Benutzeroberfläche enthält nur Daten, wenn ein Auftrag, der das Tez-Modul verwendet, derzeit ausgeführt wird oder zuvor ausgeführt wurde. Einfache Hive-Abfragen können normalerweise ohne Tez aufgelöst werden. Doch komplexere Abfragen mit Filterung, Gruppierung, Sortierung, Joins usw. benötigen in der Regel Tez.
+Die Tez-Benutzeroberfläche enthält Daten, wenn ein Auftrag, der die Tez-Engine verwendet, derzeit ausgeführt wird oder zuvor ausgeführt wurde. Einfache Hive-Abfragen können meist ohne Tez aufgelöst werden. Komplexere Abfragen mit Filterung, Gruppierung, Sortierung, Joins usw. erfordern Tez.
 
 Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 
-1. Öffnen Sie einen Webbrowser „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** für den Namen des HDInsight-Clusters steht.
+1. Öffnen Sie einen Webbrowser https://CLUSTERNAME.azurehdinsight.net, wobei **CLUSTERNAME** der Name des HDInsight-Clusters ist.
 2. Wählen im Menü oben auf der Seite das Symbol **Hive-Editor** aus. Dadurch wird eine Seite mit der folgenden Beispielabfrage angezeigt.
 
         Select * from hivesampletable
@@ -63,7 +61,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 
         set hive.execution.engine=tez;
         select market, state, country from hivesampletable where deviceplatform='Android' group by market, country, state;
-3. Klicken Sie auf die Schaltfläche **Übermitteln**. Im Abschnitt **Auftragssitzung** unten auf der Seite wird der Status der Abfrage gezeigt. Sobald sich der Status in **Abgeschlossen** ändert, wählen Sie den Link **Details anzeigen**, um die Ergebnisse anzuzeigen. Die **Auftragsausgabe** sollte etwa wie folgt aussehen:
+3. Klicken Sie auf die Schaltfläche **Übermitteln**. Im Abschnitt **Job Session** unten auf der Seite wird der Status der Abfrage gezeigt. Sobald sich der Status in **Abgeschlossen** ändert, wählen Sie den Link **Details anzeigen**, um die Ergebnisse anzuzeigen. Die **Auftragsausgabe** sollte etwa wie folgt aussehen:
 
         en-GB   Hessen      Germany
         en-GB   Kingston    Jamaica
@@ -75,7 +73,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
 >
 >
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren HDInsight-Cluster aus. Wählen Sie oben im Blatt „HDInsight“ das Symbol **Remotedesktop** aus. Das Blatt „Remotedesktop“ wird angezeigt.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren HDInsight-Cluster aus. Wählen Sie oben im Blatt „HDInsight“ das Symbol **Remotedesktop** aus. Über diesen Link wird das Blatt „Remotedesktop“ angezeigt.
 
     ![Symbol „Remotedesktop“](./media/hdinsight-debug-tez-ui/remotedesktopicon.png)
 2. Wählen Sie auf dem Blatt „Remotedesktop“ **Verbinden** aus, um eine Verbindung mit dem Hauptknoten des Clusters herzustellen. Geben Sie bei Aufforderung den Remotedesktop-Benutzernamen samt Kennwort für den Cluster an, um die Verbindung zu authentifizieren.
@@ -88,14 +86,14 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
    >
 3. Sobald die Verbindung steht, öffnen Sie auf dem Remotedesktop Internet Explorer. Wählen Sie rechts oben im Browser das Zahnradsymbol und dann **Einstellungen der Kompatibilitätsansicht** aus.
 4. Deaktivieren Sie unten in **Einstellungen der Kompatibilitätsansicht** die Kontrollkästchen **Intranetsites in Kompatibilitätsansicht anzeigen** und **Kompatibilitätslisten von Microsoft verwenden**, und wählen Sie dann **Schließen** aus.
-5. Navigieren Sie in Internet Explorer zu „http://headnodehost:8188/tezui/#/“. Die Tez-Benutzeroberfläche wird geöffnet.
+5. Navigieren Sie in Internet Explorer zu http://headnodehost:8188/tezui/#/. Die Tez-Benutzeroberfläche wird angezeigt.
 
     ![Tez-Benutzeroberfläche](./media/hdinsight-debug-tez-ui/tezui.png)
 
     Nach Laden der Tez-Benutzeroberfläche sehen Sie eine Liste mit gerichteten azyklischen Graphen (Directed Acyclic Graphs, DAGs), die derzeit im Cluster ausgeführt werden oder zuvor ausgeführt wurden. Die Standardansicht enthält die folgenden Angaben für den DAG: Name, Id, Submitter, Status, Start Time, End Time, Duration, Application ID und Queue. Weitere Spalten können über das Zahnradsymbol rechts auf der Seite hinzugefügt werden.
 
     Wenn nur ein Eintrag vorhanden ist, gehört dieser zur Abfrage, die Sie im vorherigen Abschnitt ausgeführt haben. Wenn mehrere Einträge vorhanden sind, können Sie eine Suche durch Eingeben von Suchkriterien in die Felder über den DAGs und Drücken der **EINGABETASTE** starten.
-6. Wählen Sie den **DAG-Namen** des letzten DAG-Eintrags aus. Daraufhin werden Informationen zum DAG sowie die Option zum Herunterladen einer ZIP-Datei mit JSON-Dateien mit Informationen zum DAG angezeigt.
+6. Wählen Sie den **DAG-Namen** des letzten DAG-Eintrags aus. Über diesen Link werden Informationen zum DAG sowie die Option zum Herunterladen einer ZIP-Datei mit JSON-Dateien mit Informationen zum DAG angezeigt.
 
     ![DAG-Details](./media/hdinsight-debug-tez-ui/dagdetails.png)
 7. Über den **DAG-Details** befinden sich mehrere Links, die zum Anzeigen von Informationen über den DAG verwendet werden können.
@@ -111,7 +109,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
      >
      >
 
-     Wenn beim Auftrag ein Fehler aufgetreten ist, werden in „DAG Details“ der Status FAILED sowie Informationen zur fehlerhaften Aufgabe angezeigt. Diagnoseinformationen wird unter den DAG-Details angezeigt.
+     Wenn beim Auftrag ein Fehler aufgetreten ist, werden in „DAG Details“ der Status FAILED sowie Informationen zur fehlerhaften Aufgabe angezeigt. Diagnoseinformationen werden unter den DAG-Details angezeigt.
 8. Wählen Sie **Graphical View**aus. Es wird eine grafische Darstellung des DAG gezeigt. Sie können den Mauszeiger über jedem Scheitelpunkt in der Ansicht platzieren, um Informationen dazu anzuzeigen.
 
     ![Graphical View](./media/hdinsight-debug-tez-ui/dagdiagram.png)
@@ -134,7 +132,7 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen.
       > Wie beim vorherigen Menü können Sie die Spaltenanzeige für „Tasks“, „Task Attempts“ und „Sources & Sinks“ durchlaufen, um Links zu weiteren Informationen zu den einzelnen Elementen anzuzeigen.
       >
       >
-11. Wählen Sie **Tasks** und dann das Element mit dem Namen **00_000000** aus. Dadurch werden **Task Details** für diesen Task angezeigt. Auf diesem Bildschirm können Sie **Leistungsindikatoren für Aufgaben** und **Aufgabenversuche** anzeigen.
+11. Wählen Sie **Tasks** und dann das Element mit dem Namen **00_000000** aus. Über diesen Link werden **Taskdetails** für diesen Task angezeigt. Auf diesem Bildschirm können Sie **Leistungsindikatoren für Aufgaben** und **Aufgabenversuche** anzeigen.
 
     ![Taskdetails](./media/hdinsight-debug-tez-ui/taskdetails.png)
 

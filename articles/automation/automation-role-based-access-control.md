@@ -6,20 +6,21 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 04/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: c9cdebd2fb7f650b042fa04f345ac440e0b41cb8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f8b7062f85a7130c73c6493f6f0c277c90374f11
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
 Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Mithilfe der [rollenbasierten Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) können Sie Aufgaben innerhalb Ihres Teams verteilen sowie Benutzern, Gruppen und Anwendungen nur den Zugriff gewähren, den diese zur Ausführung ihrer Aufgaben benötigen. Rollenbasierter Zugriff kann Benutzern über das Azure-Portal, über Azure-Befehlszeilentools oder über Azure-Verwaltungs-APIs gewährt werden.
 
 ## <a name="roles-in-automation-accounts"></a>Rollen in Automation-Konten
+
 Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und Anwendungen im Automation-Konten-Bereich die passende RBAC-Rolle zugewiesen wird. Die folgenden vordefinierten Rollen werden von Automation-Konten unterstützt:
 
 | **Rolle** | **Beschreibung** |
@@ -27,9 +28,9 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 | Owner (Besitzer) |Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb eines Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
 | Mitwirkender |Die Rolle „Mitwirkender“ erlaubt Ihnen, fast alles zu verwalten. Das Einzige, was Sie nicht können, ist das Ändern der Zugriffsberechtigungen für ein Automation-Konto anderer Benutzer. |
 | Leser |Die Rolle „Leser“ erlaubt Ihnen, alle Ressourcen im Automation-Konto zu betrachten, aber Sie können keine Änderungen vornehmen. |
-| Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht die Durchführung operativer Aufgaben wie das Starten, Beenden, Unterbrechen, Fortsetzen und Planen von Aufgaben. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen wollen, es Mitgliedern Ihrer Organisation aber dennoch ermöglichen wollen, diese Runbooks auszuführen. |
-|Automation-Auftragsoperator|Die Rolle „Automation-Auftragsoperator“ ermöglicht das Erstellen und Verwalten von Aufträgen mithilfe von Automation-Runbooks.|
-|Automation-Runbookoperator|Die Rolle „Automation-Runbookoperator“ ermöglicht das Lesen von Runbookeigenschaften. Sie können auch Aufträge der Runbooks erstellen.|
+| Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht das Anzeigen des Namens und der Eigenschaften des Runbooks sowie das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen wollen, es Mitgliedern Ihrer Organisation aber dennoch ermöglichen wollen, diese Runbooks auszuführen. |
+|Automation-Auftragsoperator|Die Rolle „Automation-Auftragsoperator“ ermöglicht das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto.|
+|Automation-Runbookoperator|Die Rolle „Automation-Runbookoperator“ ermöglicht das Lesen des Namens und der Eigenschaften eines Runbooks.|
 | Log Analytics-Mitwirkender | Die Rolle „Log Analytics-Mitwirkender“ erlaubt Ihnen, alle Überwachungsdaten zu lesen und Überwachungseinstellungen zu bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.|
 | Log Analytics-Leser | Die Rolle „Log Analytics-Leser“ erlaubt Ihnen, alle Überwachungsdaten anzuzeigen und zu durchsuchen sowie Überwachungseinstellungen anzuzeigen. Dies schließt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen ein. |
 | Überwachungsmitwirkender | Die Rolle „Überwachungsmitwirkender“ erlaubt Ihnen, alle Überwachungsdaten zu lesen und Überwachungseinstellungen zu aktualisieren.|
@@ -70,7 +71,7 @@ Die Rolle „Leser“ ermöglicht Ihnen, alle Ressourcen im Automation-Konto anz
 
 ### <a name="automation-job-operator"></a>Automation-Auftragsoperator
 
-Die Rolle „Automation-Auftragsoperator“ wird im Bereich des Automation-Kontos vergeben. So können mit Operatorberechtigungen Aufträge in dem Konto verwaltet werden.
+Die Rolle „Automation-Auftragsoperator“ wird im Bereich des Automation-Kontos vergeben. So können mit Operatorberechtigungen Aufträge für alle Runbooks in dem Konto erstellt und verwaltet werden. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -88,7 +89,10 @@ Die Rolle „Automation-Auftragsoperator“ wird im Bereich des Automation-Konto
 
 ### <a name="automation-runbook-operator"></a>Automation-Runbookoperator
 
-Die Rolle „Automation-Runbookoperator“ wird im Runbookbereich vergeben. Einem Automation-Runbookoperator wird der Runbookname angezeigt. Diese Berechtigung in Verbindung mit „Automation-Auftragsoperator“ im Bereich des Automation-Kontos ermöglicht es dem Operator, die Automation-Operatoraktionen für ein bestimmtes Runbook auszuführen. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+Die Rolle „Automation-Runbookoperator“ wird im Runbookbereich vergeben. Ein Automation-Runbookoperator kann den Namen und die Eigenschaften eines Runbooks anzeigen.  Zusammen mit der Rolle „Automation-Auftragsoperator“ ermöglicht diese Rolle dem Operator zudem das Erstellen und Verwalten von Aufträgen für das Runbook. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+
+> [!NOTE]
+> Legen Sie die Rolle „Operator für Automation“ nur fest, wenn Sie einem Operator die Berechtigung zum Verwalten von Aufträgen für alle Runbooks im Konto erteilen möchten.
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -101,7 +105,7 @@ Die Rolle „Automation-Runbookoperator“ wird im Runbookbereich vergeben. Eine
 
 ### <a name="automation-operator"></a>Operator für Automation
 
-Ein Operator für Automation kann Aufträge starten, beenden, anhalten und fortsetzen. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
+Ein Operator für Automation kann Aufträge erstellen und verwalten sowie Runbooknamen und -Eigenschaften für alle Runbooks in einem Automation-Konto lesen.  Hinweis: Wenn Sie den Operatorzugriff auf einzelne Runbooks steuern möchten, legen Sie diese Rolle nicht fest. Verwenden Sie stattdessen die Rollen „Automation-Auftragsoperator“ und „Automation-Runbookoperator“.  Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
@@ -136,7 +140,6 @@ Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachu
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Erstellen und Verwalten von Ressourcengruppenbereitstellungen|
 |Microsoft.Storage/storageAccounts/listKeys/action|Auflisten von Speicherkontoschlüsseln|
 |Microsoft.Support/*|Erstellen und Verwalten von Supporttickets|
-
 
 ### <a name="log-analytics-reader"></a>Log Analytics-Leser
 
@@ -256,34 +259,37 @@ Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst berei
 |Virtual Machine     | Mitwirkender von virtuellen Computern        | Virtual Machine        |
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten über das Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf der Seite „Automation-Konten“ Ihr Automation-Konto.  
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie auf der Seite „Automation-Konten“ Ihr Automation-Konto.
 2. Klicken Sie oben links auf das Steuerelement **Zugriffssteuerung (IAM)**. Dadurch wird die Seite **Zugriffssteuerung (IAM)** geöffnet. Hier können Sie neue Benutzer, Gruppen und Anwendungen zur Verwaltung Ihres Automation-Kontos hinzufügen. Des Weiteren können Sie vorhandene Rollen anzeigen, die für das Automation-Konto konfiguriert werden können.
-   
-   ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)  
+
+   ![Zugriffsschaltfläche](media/automation-role-based-access-control/automation-01-access-button.png)
 
 ### <a name="add-a-new-user-and-assign-a-role"></a>Einen neuen Benutzer hinzufügen und eine Rolle zuweisen
-1. Klicken Sie auf der Seite **Zugriffssteuerung (IAM)** auf **+Hinzufügen**, um die Seite **Berechtigungen hinzufügen** zu öffnen. Hier können Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihm bzw. ihr Rollen zuweisen.  
+
+1. Klicken Sie auf der Seite **Zugriffssteuerung (IAM)** auf **+Hinzufügen**, um die Seite **Berechtigungen hinzufügen** zu öffnen. Hier können Sie einen Benutzer, eine Gruppe oder eine Anwendung hinzufügen und ihm bzw. ihr Rollen zuweisen.
 
 2. Wählen Sie eine Rolle aus der Liste der verfügbaren Rollen aus. Sie können aber jede der verfügbaren integrierten Rollen, die von Automation-Konten unterstützt werden, oder auch eine eigene, benutzerdefinierte Rolle auswählen.
 
 3. Geben Sie im Feld **Auswählen** den Benutzernamen des Benutzers ein, dem Sie Berechtigungen erteilen möchten. Wählen Sie den Benutzer in der Liste aus, und klicken Sie auf **Speichern**.
-   
-   ![Hinzufügen von Benutzern](media/automation-role-based-access-control/automation-04-add-users.png)  
-   
-   Der Benutzer sollte nun auf der Seite **Benutzer** mit der zugewiesenen Rolle, die Sie ausgewählt haben, angezeigt werden.  
-   
-   ![Benutzer auflisten](media/automation-role-based-access-control/automation-05-list-users.png)  
-   
-   Sie können dem Benutzer die Rolle über die Seite **Rollen** zuweisen. 
+
+   ![Hinzufügen von Benutzern](media/automation-role-based-access-control/automation-04-add-users.png)
+
+   Der Benutzer sollte nun auf der Seite **Benutzer** mit der zugewiesenen Rolle, die Sie ausgewählt haben, angezeigt werden.
+
+   ![Benutzer auflisten](media/automation-role-based-access-control/automation-05-list-users.png)
+
+   Sie können dem Benutzer die Rolle über die Seite **Rollen** zuweisen.
 4. Klicken Sie auf der Seite **Zugriffssteuerung (AIM)** auf **Rollen**, um die Seite **Rollen** zu öffnen. Auf dieser Seite werden der Name der Rolle sowie die Anzahl von Benutzern und Gruppen angezeigt, denen diese Rolle zugewiesen wurde.
-   
-    ![Rolle über die Seite „Benutzer“ zuweisen](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
-   
+
+    ![Rolle über die Seite „Benutzer“ zuweisen](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
+
    > [!NOTE]
    > Die rollenbasierte Zugriffssteuerung kann nur im Automation-Kontobereich eingerichtet werden und nicht bei einer beliebigen Ressource unter dem Automation-Konto.
 
 ### <a name="remove-a-user"></a>Benutzer entfernen
-Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Automation-Konto verwaltet oder nicht mehr für die Organisation arbeitet, entfernen. Folgende Schritte müssen Sie durchführen, um einen Benutzer zu entfernen: 
+
+Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Automation-Konto verwaltet oder nicht mehr für die Organisation arbeitet, entfernen. Folgende Schritte müssen Sie durchführen, um einen Benutzer zu entfernen:
 
 1. Wählen Sie auf der Seite **Zugriffssteuerung (AIM)** den Benutzer aus, den Sie entfernen möchten, und klicken Sie dann auf **Entfernen**.
 2. Klicken Sie auf der Seite mit den Zuweisungsdetails auf die Schaltfläche **Entfernen**.
@@ -296,42 +302,44 @@ Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Autom
 Wenn sich Benutzer, denen eine Rolle zugewiesen ist, bei Azure anmelden und ihr Automation-Konto auswählen, wird ihnen das Konto des Besitzers in der Liste mit den **Verzeichnissen** angezeigt. Um das Automation-Konto, dem sie hinzugefügt wurden, sehen zu können, müssen sie das Standardverzeichnis auf das Standardverzeichnis des Besitzers ändern.
 
 ### <a name="user-experience-for-automation-operator-role"></a>Die Benutzererfahrung mit der Rolle „Operator für Automation“
+
 Wenn Benutzer, denen die Rolle „Operator für Automation“ zugewiesen wurde, das ihnen zugewiesene Automation-Konto anzeigen, können sie lediglich die Liste mit den Runbooks, Runbookaufgaben und Zeitplänen sehen, die im Automation-Konto erstellt wurden. Dies gilt aber nicht für deren Definition. Sie können den Runbookauftrag starten, beenden, unterbrechen, fortsetzen oder planen. Auf andere Automation-Ressourcen wie Konfigurationen, Hybrid Worker-Gruppen oder DSC-Knoten hat der Benutzer keinen Zugriff.
 
-![Kein Zugriff auf Ressourcen](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)  
+![Kein Zugriff auf Ressourcen](media/automation-role-based-access-control/automation-10-no-access-to-resources.png)
 
 Der Benutzer kann Zeitpläne anzeigen und erstellen, hat aber keinen Zugriff auf andere Assettypen.
 
 Dieser Benutzer hat auch keine Zugriffsrechte, um die einem Runbook zugeordneten Webhooks zu sehen.
 
-![Kein Zugriff auf Webhooks](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)  
+![Kein Zugriff auf Webhooks](media/automation-role-based-access-control/automation-13-no-access-to-webhooks.png)
 
 ## <a name="configure-rbac-for-your-automation-account-using-azure-powershell"></a>Konfigurieren der rollenbasierten Zugriffssteuerung für Automation-Konten mit Azure PowerShell
+
 Der rollenbasierte Zugriff kann auch für ein Automation-Konto mit den folgenden [Azure PowerShell-Cmdlets](../role-based-access-control/role-assignments-powershell.md) konfiguriert werden:
 
-• [Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können diesen Befehl zusammen mit der **Name** -Eigenschaft verwenden, um alle Aktionen aufzulisten, die von einer bestimmten Rolle durchgeführt werden können.
+[Get-AzureRmRoleDefinition](https://msdn.microsoft.com/library/mt603792.aspx) listet alle in Azure Active Directory verfügbaren RBAC-Rollen auf. Sie können diesen Befehl zusammen mit der **Name** -Eigenschaft verwenden, um alle Aktionen aufzulisten, die von einer bestimmten Rolle durchgeführt werden können.
 
-```powershell-interactive
+```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Automation Operator'
 ```
 
 Im Folgenden sehen Sie die Beispielausgabe:
 
-```powershell
+```azurepowershell-interactive
 Name             : Automation Operator
 Id               : d3881f73-407a-4167-8283-e981cbba0404
 IsCustom         : False
 Description      : Automation Operators are able to start, stop, suspend, and resume jobs
-Actions          : {Microsoft.Authorization/*/read, Microsoft.Automation/automationAccounts/jobs/read, Microsoft.Automation/automationAccounts/jobs/resume/action, 
+Actions          : {Microsoft.Authorization/*/read, Microsoft.Automation/automationAccounts/jobs/read, Microsoft.Automation/automationAccounts/jobs/resume/action,
                    Microsoft.Automation/automationAccounts/jobs/stop/action...}
 NotActions       : {}
 AssignableScopes : {/}
-``` 
+```
 
-• [Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne einschränkende Parameter gibt dieser Befehl alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den **ExpandPrincipalGroups** -Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.  
+[Get-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt619413.aspx) listet die Rollenzuweisungen durch Azure AD RBAC für den angegebenen Bereich auf. Ohne einschränkende Parameter gibt dieser Befehl alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den **ExpandPrincipalGroups** -Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.
     **Beispiel:** Verwenden Sie den folgenden Befehl, um alle Benutzer innerhalb eines Automation-Kontos mit ihren Rollen aufzulisten.
 
-```powershell-interactive
+```azurepowershell-interactive
 Get-AzureRMRoleAssignment -scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
@@ -349,16 +357,16 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-• Verwenden Sie [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.  
+Verwenden Sie [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603580.aspx), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.
     **Beispiel:** Verwenden Sie den folgenden Befehl, um einem Benutzer die Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zuzuweisen.
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to grant access> -RoleDefinitionName 'Automation operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
 Im Folgenden sehen Sie die Beispielausgabe:
 
-```powershell
+```azurepowershell
 RoleAssignmentId   : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/Providers/Microsoft.Automation/automationAccounts/myAutomationAccount/provid
                      ers/Microsoft.Authorization/roleAssignments/25377770-561e-4496-8b4f-7cba1d6fa346
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/myResourceGroup/Providers/Microsoft.Automation/automationAccounts/myAutomationAccount
@@ -370,17 +378,17 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-• Verwenden Sie [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.  
+Verwenden Sie [Remove-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt603781.aspx), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.
     **Beispiel:** Verwenden Sie den folgenden Befehl, um den Benutzer aus der Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zu entfernen.
 
-```powershell-interactive
+```azurepowershell-interactive
 Remove-AzureRmRoleAssignment -SignInName <sign-in Id of a user you wish to remove> -RoleDefinitionName 'Automation Operator' -Scope '/subscriptions/<SubscriptionID>/resourcegroups/<Resource Group Name>/Providers/Microsoft.Automation/automationAccounts/<Automation account name>'
 ```
 
-Ersetzen Sie in den obigen Beispielen die **Anmelde-ID**, die **Abonnement-ID**, den **Namen der Ressourcengruppe** und den **Namen des Automation-Kontos** durch die entsprechenden Werte Ihres Kontos. Wählen Sie **Ja** , wenn Sie zum Bestätigen aufgefordert werden, bevor Sie mit dem Entfernen von Benutzerrollenzuweisungen fortfahren.   
+Ersetzen Sie in den obigen Beispielen die **Anmelde-ID**, die **Abonnement-ID**, den **Namen der Ressourcengruppe** und den **Namen des Automation-Kontos** durch die entsprechenden Werte Ihres Kontos. Wählen Sie **Ja** , wenn Sie zum Bestätigen aufgefordert werden, bevor Sie mit dem Entfernen von Benutzerrollenzuweisungen fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Weitere Informationen zu den verschiedenen Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
 * Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
 * Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
-

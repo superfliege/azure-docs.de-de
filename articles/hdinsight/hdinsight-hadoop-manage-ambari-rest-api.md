@@ -1,8 +1,8 @@
 ---
-title: "Überwachen und Verwalten von Hadoop mit der Ambari-REST-API – Azure HDInsight | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Hadoop-Clustern in Azure HDInsight verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden."
+title: Überwachen und Verwalten von Hadoop mit der Ambari-REST-API – Azure HDInsight | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Hadoop-Clustern in Azure HDInsight verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 2400530f-92b3-47b7-aa48-875f028765ff
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/22/2018
+ms.topic: conceptual
+ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 44066a3b4d5bebc67b089bebc2f3c11d33c77000
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 55017b139ce89fa74a8105da05792024ecee86b2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
 
@@ -51,7 +49,7 @@ Unabhängig davon, ob Sie Bash oder PowerShell verwenden, müssen Sie [jq](https
 
 ### <a name="base-uri-for-ambari-rest-api"></a>Basis-URI für Ambari-Rest-API
 
-Der Basis-URI für die Ambari-REST-API in HDInsight-Clustern lautet https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, wobei **CLUSTERNAME** für den Namen Ihres Clusters steht.
+Die Basis-URI für die Ambari-REST-API auf HDInsight lautet https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME, wobei **CLUSTERNAME** der Name Ihres Clusters ist.
 
 > [!IMPORTANT]
 > Beim Clusternamen im vollqualifizierten Domänennamen (FQDN) innerhalb des URI (CLUSTERNAME.azurehdinsight.net) wird die Groß-/Kleinschreibung nicht beachtet, bei anderen Vorkommen im URI dagegen schon. Wenn Ihr Cluster beispielsweise den Namen `MyCluster` hat, sind folgende URIs gültig:

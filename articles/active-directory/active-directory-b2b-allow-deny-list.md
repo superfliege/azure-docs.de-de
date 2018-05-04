@@ -13,22 +13,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 04/19/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21862bb110801a43f13e3e65811e10726c188614
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 24723f268e59103c712b98b4bd895472b034afc0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen
 
 Sie können eine Zulassungsliste oder eine Verweigerungsliste verwenden, um Einladungen für B2B-Benutzer von bestimmten Organisationen zuzulassen bzw. zu blockieren. Wenn Sie beispielsweise Domänen persönlicher E-Mail-Adressen blockieren möchten, können Sie eine Verweigerungsliste einrichten, die Domänen wie Gmail.com und Outlook.com enthält. Oder wenn zwischen Ihrem Unternehmen und anderen Unternehmen (z.B. Contoso.com, Fabrikam.com, und Litware.com) eine Partnerschaft besteht und Sie Einladungen nur auf diese Unternehmen beschränken möchten, können Sie Ihrer Zulassungsliste Contoso.com, Fabrikam.com, und Litware.com hinzufügen.
   
-> [!NOTE]
-> Derzeit können nur Verweigerungslisten verwendet werden. Zulassungslisten sind in Kürze verfügbar.
-
 ## <a name="important-considerations"></a>Wichtige Hinweise
 
 - Sie können entweder eine Zulassungsliste oder eine Verweigerungsliste erstellen. Sie können jedoch nicht beide Listentypen einrichten. Standardmäßig sind alle Domänen, die nicht in der Zulassungsliste aufgeführt sind, in der Verweigerungsliste enthalten (und umgekehrt). 
@@ -50,22 +47,34 @@ So fügen Sie eine Verweigerungsliste hinzu
 2. Wählen Sie **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** aus.
 3. Wählen Sie unter **Externe Benutzer** die Option **Manage external collaboration settings** (Einstellungen für externe Zusammenarbeit verwalten) aus.
 4. Wählen Sie unter **Collaboration restrictions** (Zusammenarbeitseinschränkungen) die Option **Deny invitations to the specified domains** (Einladungen an die angegebene Domäne verweigern) aus.
-5. Geben Sie unter **ZIELDOMÄNEN** den Namen einer der Domänen ein, die Sie blockieren möchten. Geben Sie für mehrere Domänen jede Domäne in einer neuen Zeile ein.
+5. Geben Sie unter **ZIELDOMÄNEN** den Namen einer der Domänen ein, die Sie blockieren möchten. Geben Sie für mehrere Domänen jede Domäne in einer neuen Zeile ein. Beispiel: 
 
    ![Abbildung der Option zum Verweigern mit hinzugefügten Domänen](./media/active-directory-b2b-allow-deny-list/DenyListSettings.png)
  
 6. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-Wenn Sie nach dem Festlegen der Richtlinie versuchen, einen Benutzer von einer blockierten Domäne einzuladen, wird eine Meldung angezeigt, dass der Benutzer derzeit durch die Einladungsrichtlinie blockiert ist.
+Wenn Sie nach dem Festlegen der Richtlinie versuchen, einen Benutzer von einer blockierten Domäne einzuladen, wird eine Meldung angezeigt, dass die Domäne des Benutzers derzeit durch die Einladungsrichtlinie blockiert ist.
  
 ### <a name="add-an-allow-list"></a>Hinzufügen einer Zulassungsliste
-
-> [!NOTE]
-> Derzeit ist die Einstellung **Allow invitations only to the specified domains (most restrictive)** (Einladungen nur für die angegebenen Domänen zulassen (am restriktivsten)) nicht verfügbar. Zulassungslisten sind in Kürze verfügbar.
 
 Hierbei handelt es sich um eine restriktivere Konfiguration, in der Sie bestimmte Domänen in der Zulassungsliste festlegen und Einladungen auf andere nicht aufgeführte Organisationen oder Domänen einschränken können. 
 
 Wenn Sie eine Zulassungsliste verwenden möchten, stellen Sie sicher, dass Sie Ihre Geschäftsanforderungen umfassend evaluieren. Wenn Sie diese Richtlinie zu restriktiv festlegen, senden die Benutzer möglicherweise Dokumente per E-Mail oder finden andere Möglichkeiten der nicht durch die IT-Abteilung genehmigten Zusammenarbeit.
+
+
+So fügen Sie eine Zulassungsliste hinzu
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** aus.
+3. Wählen Sie unter **Externe Benutzer** die Option **Manage external collaboration settings** (Einstellungen für externe Zusammenarbeit verwalten) aus.
+4. Wählen Sie unter **Einschränkungen für die Zusammenarbeit** die Option **Einladungen nur für die angegebenen Domänen zulassen (restriktivste Einstellung)** aus.
+5. Geben Sie unter **ZIELDOMÄNEN** den Namen einer der Domänen ein, die Sie zulassen möchten. Geben Sie für mehrere Domänen jede Domäne in einer neuen Zeile ein. Beispiel: 
+
+   ![Abbildung der Option zum Zulassen mit hinzugefügten Domänen](./media/active-directory-b2b-allow-deny-list/AllowListSettings.png)
+ 
+6. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+
+Wenn Sie nach dem Festlegen der Richtlinie versuchen, einen Benutzer einzuladen, der nicht in der Zulassungsliste ist, wird eine Meldung angezeigt, dass die Domäne des Benutzers derzeit durch die Einladungsrichtlinie blockiert ist.
 
 ### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Wechseln von einer Zulassungs- zu einer Verweigerungsliste und umgekehrt 
 
@@ -115,9 +124,6 @@ Wenn das Modul nicht installiert oder nicht die erforderliche Version installier
     ````
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurieren der Richtlinie mithilfe der AzureADPolicy-Cmdlets
-
-> [!NOTE]
-> Derzeit können nur Verweigerungslisten konfiguriert werden. Zulassungslisten sind in Kürze verfügbar.
 
 Verwenden Sie zum Erstellen einer Zulassungs- oder Verweigerungsliste das Cmdlet [New-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview). Im folgenden Beispiel wird gezeigt, wie Sie eine Verweigerungsliste festlegen, mit der die Domäne live.com blockiert wird.
 

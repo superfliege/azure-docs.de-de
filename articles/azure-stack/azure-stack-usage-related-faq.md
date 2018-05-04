@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/09/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 3d6f2bf569ecfebe3bf4f535a7a8ab3bf22849f1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f0df9b02e7672faec3a1d94997c9b27ffca275e5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API
 In diesem Artikel werden einige häufig gestellte Fragen zur Azure Stack-Nutzungs-API beantwortet.
@@ -44,8 +44,8 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 | |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Anzahl von Anforderungen in 10.000 |Warteschlangendienstanforderungen (in 10.000ern) |
 | |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Dateneingang in GB |Eingang von Warteschlangendienstdaten in GB |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Ausgehende Daten in GB |Ausgang von Warteschlangendienstdaten in GB |
-| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB \* Stunden   | Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück. |
-| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB \* Stunden    | Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück. |
+| **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB × Stunden   | Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück. |
+| **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB × Stunden    | Gesamtkapazität der Datenbank bei Erstellung; Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück. |
 | **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Base VM Size Hours |Virtueller Kern Stunden | Anzahl von virtuellen Kernen multipliziert mit der Anzahl von Stunden, während denen der virtuelle Computer ausgeführt wurde |
 | |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM Size Hours |Virtueller Kern Stunden | Anzahl von virtuellen Kernen multipliziert mit der Anzahl von Stunden, während denen der virtuelle Computer ausgeführt wurde |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM size hours |VM Stunden |Erfasst sowohl die Basis- als auch die Windows-VM. Wird für Kerne nicht angepasst |
@@ -68,7 +68,7 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Wie unterscheiden sich die Azure Stack-Nutzungs-APIs von der [Azure-Nutzungs-API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (aktuell in der öffentlichen Vorschau)?
 * Die Nutzungs-API für Mandanten stimmt in den meisten Punkten mit der Azure-API überein. Der einzige Unterschied besteht darin, dass das Flag *showDetails* aktuell in Azure Stack nicht unterstützt wird.
 * Die Nutzungs-API für Anbieter gibt es nur in Azure Stack.
-* Die [RateCard-API](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) ist zwar in Azure verfügbar, aber noch nicht in Azure Stack.
+* Die [RateCard-API](https://msdn.microsoft.com/library/azure/mt219004.aspx) ist zwar in Azure verfügbar, aber noch nicht in Azure Stack.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Was ist der Unterschied zwischen der Nutzungszeit und der gemeldeten Zeit?
 Nutzungsdatenberichte haben zwei Hauptzeitwerte:

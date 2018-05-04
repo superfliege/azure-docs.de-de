@@ -1,4 +1,4 @@
-Um die Profilbearbeitung in Ihrer Anwendung zu ermöglichen, müssen Sie eine Richtlinie für die Profilbearbeitung erstellen. Diese Richtlinie beschreibt die Benutzeroberflächen, die Consumer bei der Profilbearbeitung durchgehen, und den Inhalt der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
+Wenn Sie die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie eine Richtlinie für die **Profilbearbeitung**. Diese Richtlinie beschreibt die Benutzeroberflächen, die Kunden bei der Profilbearbeitung durchgehen, und den Inhalt der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 

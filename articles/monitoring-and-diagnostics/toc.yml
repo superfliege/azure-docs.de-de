@@ -67,6 +67,8 @@
           href: insights-alerts-powershell.md
         - name: Webhookaktionen für Protokollwarnungen
           href: monitor-alerts-unified-log-webhook.md
+        - name: Erstellen einer neueren Metrikwarnung anhand einer Resource Manager-Vorlage
+          href: monitoring-create-metric-alerts-with-templates.md
         - name: Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
           href: monitoring-enable-alerts-using-template.md
         - name: Kopieren von Warnungen aus dem OMS-Portal in das Azure-Portal

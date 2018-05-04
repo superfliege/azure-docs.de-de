@@ -1,5 +1,5 @@
 ---
-title: HPC Pack 2016-Cluster in Azure | Microsoft-Dokumentation
+title: HPC Pack 2016-Cluster in Azure | Microsoft Docs
 description: Erfahren Sie, wie Sie einen Cluster mit HPC Pack 2016 in Azure bereitstellen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 03/09/2018
 ms.author: danlep
-ms.openlocfilehash: c26dd85d896445e19efb9906d953fd535fc1fb5c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91f067de33d1ff4bc272773e3db49de47fac2feb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-an-hpc-pack-2016-cluster-in-azure"></a>Bereitstellen eines HPC Pack 2016-Clusters in Azure
 
@@ -56,7 +56,7 @@ Nachdem das Zertifikat im Speicher des aktuellen Benutzers erstellt wurde, verwe
 
 ### <a name="upload-certificate-to-an-azure-key-vault"></a>Hochladen des Zertifikats in einen Azure-Schlüsseltresor
 
-Laden Sie vor dem Bereitstellen des HPC-Clusters das PFX-Zertifikat in den [Azure Key Vault](../../key-vault/index.md) als Geheimnis hoch, und notieren Sie sich die folgenden Informationen für die Nutzung während der Bereitstellung: **Tresorname**, **Tresorressourcengruppe**, **Zertifikats-URL** und **Zertifikatfingerabdruck**.
+Laden Sie vor dem Bereitstellen des HPC-Clusters das PFX-Zertifikat in den [Azure Key Vault](../../key-vault/index.yml) als Geheimnis hoch, und notieren Sie sich die folgenden Informationen für die Nutzung während der Bereitstellung: **Tresorname**, **Tresorressourcengruppe**, **Zertifikats-URL** und **Zertifikatfingerabdruck**.
 
 Es folgt ein PowerShell-Beispielskript, um das Zertifikat hochzuladen, den Schlüsselspeicher zu erstellen und die erforderlichen Informationen zu generieren. Weitere Informationen zum Hochladen eines Zertifikats in einen Azure Key Vault finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/key-vault-get-started.md).
 

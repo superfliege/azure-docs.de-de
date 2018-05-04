@@ -1,55 +1,135 @@
 ---
-title: Aktivieren der Diagnoseprotokollierung für Batch-Ereignisse – Azure | Microsoft-Dokumentation
+title: Metriken, Warnungen und Diagnoseprotokolle für Azure Batch | Microsoft-Dokumentation
 description: Zeichnen Sie Diagnoseprotokollereignisse für Azure Batch-Kontoressourcen wie Pools und Tasks auf, und analysieren Sie sie.
 services: batch
 documentationcenter: ''
 author: dlepow
 manager: jeconnoc
 editor: ''
-ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
+ms.assetid: ''
 ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 04/05/2018
 ms.author: danlep
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c4c68df9650fa300ea20ea0621c732cb96d167ef
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: ''
+ms.openlocfilehash: e64d272695c4e47c972df040d1c1c2a63bf3dddd
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Protokollereignisse für die Diagnoseauswertung und -überwachung von Batch-Lösungen
+# <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-Metriken, -Warnungen und -Protokolle für die Diagnoseauswertung und -überwachung
 
-Wie bei vielen Azure-Diensten werden vom Batch-Dienst Protokollereignisse für bestimmte Ressourcen während der Lebensdauer der Ressource ausgegeben. Sie können Azure Batch-Diagnoseprotokolle aktivieren, um für Ressourcen wie Pools und Tasks Ereignisse aufzuzeichnen und anschließend zur Diagnose auszuwerten und zu überwachen. In Batch-Diagnoseprotokollen sind Ereignisse wie das Erstellen und Löschen von Pools und das Starten und Abschließen von Tasks enthalten.
+In diesem Artikel wird erläutert, wie Sie ein Batch-Konto mithilfe der Features von [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) überwachen. Azure Monitor erfasst [Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md) und [Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) für Ressourcen in Ihrem Batch-Konto. Sie können mithilfe verschiedener Methoden diese Daten sammeln und nutzen, um Ihr Batch-Konto zu überwachen und Probleme zu diagnostizieren. Sie können auch [Metrikwarnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) konfigurieren, um Benachrichtigungen zu erhalten, wenn eine Metrik einen angegebenen Wert erreicht. 
+
+## <a name="batch-metrics"></a>Batch-Metriken
+
+Bei Metriken handelt es sich um von Azure-Ressourcen ausgegebene Azure-Telemetriedaten (auch als Leistungsindikatoren bezeichnet), die vom Azure Monitor-Dienst verwendet werden. Zu den Beispielmetriken in einem Batch-Konto zählen „Poolerstellungsereignisse“, „Anzahl der Knoten mit niedriger Priorität“ und „Taskabschlussereignisse“. 
+
+Sehen Sie sich die [Liste der unterstützten Batch-Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftbatchbatchaccounts) an.
+
+Für Metriken gilt Folgendes:
+
+* Sie sind in jedem Batch-Konto ohne zusätzliche Konfiguration standardmäßig aktiviert.
+* Sie werden minütlich generiert.
+* Sie werden nicht automatisch dauerhaft gespeichert, sondern decken jeweils nur die letzten 30 Tage ab. Sie können Aktivitätsmetriken im Rahmen der [Diagnoseprotokollierung](#work-with-diagnostic-logs) dauerhaft speichern.
+
+### <a name="view-metrics"></a>Anzeigen von Metriken
+
+Zeigen Sie Metriken für Ihr Batch-Konto im Azure-Portal an. Auf der Seite **Übersicht** für das Konto werden standardmäßig wichtige Metriken zu Knoten, Kernen und Aufgaben angezeigt. 
+
+So zeigen Sie alle Metriken für Batch-Konten an 
+
+1. Klicken Sie im Portal auf **Alle Dienste** > **Batch-Konten** und anschließend auf den Namen Ihres Batch-Kontos.
+2. Klicken Sie unter **Überwachung** auf **Metriken**.
+3. Wählen Sie eine oder mehrere Metriken aus. Wählen Sie bei Bedarf mithilfe der Dropdownmenüs **Abonnements**, **Ressourcengruppe**, **Ressourcentyp** und **Ressource** zusätzliche Ressourcenmetriken aus.
+
+    ![Batch-Metriken](media/batch-diagnostics/metrics-portal.png)
+
+Verwenden Sie zum programmgesteuerten Abrufen von Metriken die Azure Monitor-APIs. Sehen Sie sich beispielsweise die Informationen unter [Retrieve Azure Monitor metrics with .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) (Abrufen von Azure Monitor-Metriken mit .NET) an.
+
+## <a name="batch-metric-alerts"></a>Batch-Metrikwarnungen
+
+Konfigurieren Sie optional *Metrikwarnungen* nahezu in Echtzeit, die ausgelöst werden, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung generiert eine [Benachrichtigung](../monitoring-and-diagnostics/insights-alerts-portal.md), wenn die Warnung den Status „Aktiviert“ (nach Überschreitung des Schwellenwerts und Erfüllung der Warnungsbedingung) oder „Aufgelöst“ (nach der erneuten Überschreitung des Schwellenwerts und Nichterfüllung der Bedingung) hat. 
+
+Beispiel: Es empfiehlt sich, eine Metrikwarnung für den Fall zu konfigurieren, dass die Anzahl für Kerne mit niedriger Priorität auf einen bestimmten Wert sinkt, sodass Sie die Zusammensetzung der Pools anpassen können.
+
+So konfigurieren Sie eine Metrikwarnung im Portal:
+
+1. Klicken Sie auf **Alle Dienste** > **Batch-Konten** und anschließend auf den Namen Ihres Batch-Kontos.
+2. Klicken Sie unter **Überwachung** auf **Warnungsregeln** > **Metrikwarnung hinzufügen**.
+3. Wählen Sie eine Metrik, eine Warnungsbedingung (etwa für den Fall, dass eine Metrik während eines Zeitraums einen bestimmten Wert überschreitet) und mindestens eine Benachrichtigung aus.
+
+Sie können auch mithilfe der [REST-API]() eine Warnung nahezu in Echtzeit konfigurieren. Weitere Informationen finden Sie unter [Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md).
+## <a name="batch-diagnostics"></a>Batch-Diagnose
+
+Diagnoseprotokolle enthalten von Azure-Ressourcen ausgegebene Informationen, die die Vorgänge der einzelnen Ressourcen beschreiben. In Batch können Sie die folgenden Protokolle erfassen:
+
+* **Dienstprotokollereignisse**, die vom Azure Batch-Dienst während der Lebensdauer einer einzelnen Batch-Ressource wie eines Pools oder einer Task ausgegeben werden 
+
+* **Metrikprotokolle** auf Kontoebene 
+
+Einstellungen zum Aktivieren der Erfassung von Diagnoseprotokollen sind nicht standardmäßig aktiviert. Aktivieren Sie explizit die Diagnoseeinstellungen für jedes Batch-Konto, das Sie überwachen möchten.
+
+### <a name="log-destinations"></a>Protokollziele
+
+Ein häufiges Szenario ist die Auswahl eines Azure Storage-Kontos als Protokollziel. Erstellen Sie zum Speichern von Protokollen in Azure Storage das Konto, bevor Sie die Erfassung von Protokollen erstellen. Wenn Sie Ihrem Batch-Konto ein Speicherkonto zugewiesen haben, können Sie das Konto als Protokollziel auswählen. 
+
+Andere optionale Ziele für Diagnoseprotokolle:
+
+* Streamen Sie Batch-Diagnoseprotokolle an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern. 
+
+* Senden Sie Diagnoseprotokolle an [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Hier können Sie sie im OMS-Portal (Operations Management Suite) analysieren oder zur Analyse in Power BI oder Excel exportieren.
 
 > [!NOTE]
-> In diesem Artikel wird die Protokollierung von Ereignissen für Batch-Kontoressourcen beschrieben, nicht jedoch für Auftrags- und Taskausgabedaten. Informationen zum Speichern der Ausgabedaten von Aufträgen und Tasks finden Sie unter [Beibehalten der Ausgabe von Azure Batch-Aufträgen und -Tasks](batch-task-output.md).
-> 
-> 
+> Beim Speichern oder Verarbeiten von Diagnoseprotokolldaten mit Azure-Diensten fallen unter Umständen zusätzliche Kosten an. 
+>
 
-## <a name="prerequisites"></a>Voraussetzungen
-* [Azure Batch-Konto](batch-account-create-portal.md)
-* [Azure Storage-Konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
-  
-  Wenn Sie Batch-Diagnoseprotokolle beibehalten möchten, müssen Sie ein Azure Storage-Konto erstellen, unter dem Azure die Protokolle speichert. Geben Sie dieses Storage-Konto an, wenn Sie die [Diagnoseprotokollierung](#enable-diagnostic-logging) für Ihr Batch-Konto aktivieren. Das Storage-Konto, das Sie beim Aktivieren der Protokollsammlung angeben, ist nicht mit dem verknüpften Speicherkonto identisch, das in den Artikeln [Anwendungspakete](batch-application-packages.md) und [Beibehalten der Ausgabe](batch-task-output.md) beschrieben wird.
-  
-  > [!WARNING]
-  > Für die Speicherung von Daten im Azure Storage-Konto wird eine **Gebühr erhoben**. Dies gilt auch für die in diesem Artikel beschriebenen Diagnoseprotokolle. Beachten Sie dies beim Entwerfen Ihrer [Beibehaltungsrichtlinie für Protokolle](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md).
-  > 
-  > 
+### <a name="enable-collection-of-batch-diagnostic-logs"></a>Aktivieren der Erfassung von Batch-Diagnoseprotokollen
 
-## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
-Die Diagnoseprotokollierung ist für das Batch-Konto nicht standardmäßig aktiviert. Sie müssen die Diagnoseprotokollierung für jedes Batch-Konto, das Sie überwachen möchten, explizit aktivieren:
+1. Klicken Sie im Portal auf **Alle Dienste** > **Batch-Konten** und anschließend auf den Namen Ihres Batch-Kontos.
+2. Klicken Sie unter **Überwachung** auf **Diagnoseprotokolle** > **Diagnose aktivieren**.
+3. Geben Sie unter **Diagnoseeinstellungen** einen Namen für die Einstellung ein, und wählen Sie ein Protokollziel aus (vorhandenes Storage-Konto, Event Hub oder Log Analytics). Aktivieren Sie **ServiceLog** oder **AllMetrics** oder beide Optionen.
 
-[Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
+    Wenn Sie ein Speicherkonto auswählen, legen Sie optional eine Aufbewahrungsrichtlinie fest. Wenn Sie keine Anzahl von Tagen für die Aufbewahrung angeben, werden die Daten für die Lebensdauer des Speicherkontos aufbewahrt.
 
-Es wird empfohlen, den Artikel [Übersicht über Azure-Diagnoseprotokolle](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) ganz zu lesen. In diesem Artikel erfahren Sie nicht nur, wie die Protokollierung aktiviert wird, sondern auch, welche Protokollkategorien von den verschiedenen Azure-Diensten unterstützt werden. So unterstützt Azure Batch beispielsweise derzeit eine Protokollkategorie: **Dienstprotokolle**.
+4. Klicken Sie auf **Speichern**.
 
-## <a name="service-logs"></a>Dienstprotokolle
-Azure Batch-Dienstprotokolle enthalten Ereignisse, die während der Lebensdauer einer Batch-Ressource wie eines Pools oder einer Task ausgegeben werden. Jedes von Batch ausgegebene Ereignis wird im angegebenen Storage-Konto im JSON-Format gespeichert. Dies ist beispielsweise der Text eines Beispiel für ein **Poolerstellungsereignis**:
+    ![Batch-Diagnose](media/batch-diagnostics/diagnostics-portal.png)
+
+Andere Optionen zum Aktivieren der Protokollerfassung: Konfigurieren von Diagnoseeinstellungen mithilfe von Azure Monitor im Portal, Verwenden einer [Resource Manager-Vorlage](../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md) oder Verwenden von Azure PowerShell bzw. der Azure-Befehlszeilenschnittstelle. Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs).
+
+
+### <a name="access-diagnostics-logs-in-storage"></a>Zugreifen auf Diagnoseprotokolle im Speicher
+
+Wenn Sie Batch-Diagnoseprotokolle in einem Speicherkonto archivieren, wird ein Speichercontainer im Speicherkonto erstellt, sobald ein verwandtes Ereignis auftritt. Blobs werden gemäß dem folgenden Benennungsmuster erstellt:
+
+```
+insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
+RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
+BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+m={two-digit numeric month}/d={two-digit numeric day}/
+h={two-digit 24-hour clock hour}/m=00/PT1H.json
+```
+Beispiel:
+
+```
+insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
+RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
+BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
+```
+Jede Blobdatei vom Typ „PT1H.json“ enthält Ereignisse im JSON-Format, die innerhalb der in der Blob-URL angegebenen Stunde (Beispiel: h=12) aufgetreten sind. Während der aktuellen Stunde werden Ereignisse an die Datei „PT1H.json“ angefügt, sobald sie auftreten. Der Minutenwert (m=00) ist immer „00“, da Diagnoseprotokollereignisse stundenweise in einzelne Blobs unterteilt werden. (Alle Zeitangaben sind in UTC.)
+
+
+Weitere Informationen zum Schema der Diagnoseprotokolle im Speicherkonto finden Sie unter [Archivieren von Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+
+Verwenden Sie zum programmgesteuerten Zugriff auf die Protokolle in Ihrem Speicherkonto die Storage-APIs. 
+
+### <a name="service-log-events"></a>Dienstprotokollereignisse
+Azure Batch-Dienstprotokolle (sofern sie erfasst werden) enthalten Ereignisse, die während der Lebensdauer einer einzelnen Batch-Ressource wie eines Pools oder einer Task ausgegeben werden. Jedes von Batch ausgegebene Ereignis wird im JSON-Format protokolliert. Dies ist beispielsweise der Text eines Beispiel für ein **Poolerstellungsereignis**:
 
 ```json
 {
@@ -57,7 +137,7 @@ Azure Batch-Dienstprotokolle enthalten Ereignisse, die während der Lebensdauer 
     "displayName": "Production Pool",
     "vmSize": "Small",
     "cloudServiceConfiguration": {
-        "osFamily": "4",
+        "osFamily": "5",
         "targetOsVersion": "*"
     },
     "networkConfiguration": {
@@ -73,37 +153,22 @@ Azure Batch-Dienstprotokolle enthalten Ereignisse, die während der Lebensdauer 
 }
 ```
 
-Alle Ereignistexte werden im angegebenen Azure Storage-Konto in einer JSON-Datei gespeichert. Wenn Sie auf die Protokolle direkt zugreifen möchten, sollten Sie das [Schema der Diagnoseprotokolle im Speicherkonto](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account) ansehen.
-
-## <a name="service-log-events"></a>Dienstprotokollereignisse
 Der Batch-Dienst gibt derzeit folgende Dienstprotokollereignisse aus. Diese Liste ist unter Umständen nicht vollständig, da seit der letzten Aktualisierung dieses Artikels möglicherweise weitere Ereignisse hinzugefügt wurden.
 
 | **Dienstprotokollereignisse** |
 | --- |
-| [Poolerstellungsereignisse][pool_create] |
-| [Ereignisse zum Starten des Löschvorgangs von Pools][pool_delete_start] |
-| [Ereignisse zum Abschluss des Löschvorgangs von Pools][pool_delete_complete] |
-| [Ereignisse zum Start der Größenänderung von Pools][pool_resize_start] |
-| [Ereignisse zum Abschluss der Größenänderung von Pools][pool_resize_complete] |
-| [Taskstartereignisse][task_start] |
-| [Taskabschlussereignisse][task_complete] |
-| [Taskfehlerereignisse][task_fail] |
+| [Erstellung eines Pools](batch-pool-create-event.md) |
+| [Start des Löschvorgangs eines Pools](batch-pool-delete-start-event.md) |
+| [Abschluss des Löschvorgangs eines Pools](batch-pool-delete-complete-event.md) |
+| [Start der Größenänderung eines Pools](batch-pool-resize-start-event.md) |
+| [Abschluss der Größenänderung eines Pools](batch-pool-resize-complete-event.md) |
+| [Taskstart](batch-task-start-event.md) |
+| [Taskabschluss](batch-task-complete-event.md) |
+| [Taskfehler](batch-task-fail-event.md) |
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-In einem Azure Storage-Konto können Sie nicht nur Diagnoseprotokollereignisse speichern. Sie können auch Batch-Dienstprotokollereignisse an einen [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) streamen und an [Azure Log Analytics](../log-analytics/log-analytics-overview.md) senden.
 
-* [Streamen Sie Azure-Diagnoseprotokolle an Event Hubs.](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)
-  
-  Streamen Sie Batch-Diagnoseereignisse an Event Hubs, äußerst skalierbare Dateneingangsdienste. Event Hubs können mit einem beliebigen Echtzeitanalyse-Anbieter Millionen Ereignisse pro Sekunde erfassen und anschließend transformieren und speichern.
-* [Analysieren von Azure-Diagnoseprotokollen mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
-  
-  Senden Sie Diagnoseprotokolle an Log Analytics. Hier können Sie sie im Azure-Portal analysieren oder zur Analyse in Power BI oder Excel exportieren.
-
-[pool_create]: https://msdn.microsoft.com/library/azure/mt743615.aspx
-[pool_delete_start]: https://msdn.microsoft.com/library/azure/mt743610.aspx
-[pool_delete_complete]: https://msdn.microsoft.com/library/azure/mt743618.aspx
-[pool_resize_start]: https://msdn.microsoft.com/library/azure/mt743609.aspx
-[pool_resize_complete]: https://msdn.microsoft.com/library/azure/mt743608.aspx
-[task_start]: https://msdn.microsoft.com/library/azure/mt743616.aspx
-[task_complete]: https://msdn.microsoft.com/library/azure/mt743612.aspx
-[task_fail]: https://msdn.microsoft.com/library/azure/mt743607.aspx
+* Informieren Sie sich über die [Batch-APIs und Tools](batch-apis-tools.md), die für die Erstellung von Batch-Lösungen verfügbar sind.
+* Weitere Informationen finden Sie unter [Monitor Batch solutions](monitoring-overview.md) (Überwachen von Batch-Lösungen).

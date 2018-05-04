@@ -187,6 +187,10 @@
           href: web-sites-create-web-jobs.md
         - name: Entwickeln von Webaufträgen mit VS
           href: websites-dotnet-deploy-webjobs.md
+        - name: Erste Schritte mit dem WebJobs SDK
+          href: webjobs-sdk-get-started.md
+        - name: Verwenden des WebJobs SDK
+          href: webjobs-sdk-how-to.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -253,6 +257,8 @@
           href: app-service-web-troubleshoot-http-502-http-503.md
         - name: Behandeln von Leistungsproblemen
           href: app-service-web-troubleshoot-performance-degradation.md
+        - name: Behandeln von Domänen- und Zertifikatproblemen
+          href: app-service-web-troubleshoot-domain-ssl-certificates.md
         - name: Häufig gestellte Fragen
           items:
             - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'

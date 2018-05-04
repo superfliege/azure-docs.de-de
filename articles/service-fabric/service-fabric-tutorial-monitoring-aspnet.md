@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: febeb2b7e6ada69db78cb0553b4fa90874f5f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 17b2f1b65463f87f81ffe06bae5ac559a84bcb2a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
-Dieses Tutorial ist der vierte Teil einer Serie. Es beschreibt die Schritte zur Einrichtung von Überwachung und Diagnose für eine ASP.NET Core-Anwendung, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
+Dieses Tutorial ist der fünfte Teil einer Reihe. Es beschreibt die Schritte zur Einrichtung von Überwachung und Diagnose für eine ASP.NET Core-Anwendung, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
 
 Im vierten Teil der Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -35,6 +35,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * [Konfigurieren von CI/CD mit Visual Studio Team Services](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * Einrichten der Überwachung und Diagnose für die Anwendung
 
@@ -104,8 +105,7 @@ Folgende Schritte sind für das Einrichten des NuGet-Pakets erforderlich:
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
     
-    2. Fügen Sie zwischen den beiden deklarierten Singleton-Diensten in der geschachtelten *return*-Anweisung von *CreateServiceInstanceListeners()* oder *CreateServiceReplicaListeners()* unter *ConfigureServices* > *services* Folgendes hinzu: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`.
-    Dadurch wird der *Dienstkontext* zu Ihrer Telemetrie hinzugefügt, durch den Sie die Quelle Ihrer Telemetrie in Application Insights besser nachvollziehen können. Ihre geschachtelte *return*-Anweisung in *VotingWeb.cs* sollte folgendermaßen aussehen:
+    2. Fügen Sie zwischen den beiden deklarierten Singleton-Diensten in der geschachtelten *return*-Anweisung von *CreateServiceInstanceListeners()* oder *CreateServiceReplicaListeners()* unter *ConfigureServices* > *services* Folgendes hinzu: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`. Dadurch wird Ihren Telemetriedaten der *Dienstkontext* hinzugefügt, wodurch sich die Quelle Ihrer Telemetriedaten in Application Insights besser nachvollziehen lässt. Ihre geschachtelte *return*-Anweisung in *VotingWeb.cs* sollte folgendermaßen aussehen:
     
     ```csharp
     return new WebHostBuilder()

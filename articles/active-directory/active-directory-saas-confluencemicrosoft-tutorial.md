@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c89be4917bb266bcd0244f2409bfa703dd3e523c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Tutorial: Azure Active Directory-Integration mit Confluence SAML SSO by Microsoft
 
@@ -118,7 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Configure Single Sign-On](./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_confluencemicrosoft_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Confluence SAML SSO by Microsoft** die folgenden Schritte aus:
@@ -131,29 +131,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<domain:port>/plugins/servlet/saml/auth`
 
-    > [!NOTE] 
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Der Port ist optional, sofern es sich um eine benannte URL handelt. Diese Werte werden während der Konfiguration des Confluence-Plug-Ins empfangen, die später im Tutorial beschrieben wird.
 
-4. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/endpoint.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_metadataurl.png)
      
-    d. Kehren Sie nun zur Eigenschaftenseite von **Confluence SAML SSO by Microsoft** zurück. Kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie im Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** nach dem folgenden Muster: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`. Kopieren Sie diesen Wert in den Editor, da Sie ihn später für die Konfiguration des Plug-Ins benötigen.
-
 5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/tutorial_general_400.png)
@@ -175,11 +159,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 10. Führen Sie auf der Konfigurationsseite die folgenden Schritte aus:
 
     ![Configure Single Sign-On](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon52.png)
- 
+
     > [!TIP]
     > Stellen Sie sicher, dass der App nur ein Zertifikat zugeordnet wird, um einen Fehler bei der Auflösung der Metadaten zu vermeiden. Bei mehreren Zertifikaten erhält der Administrator nach dem Auflösen der Metadaten eine Fehlermeldung.
 
-    a. Fügen Sie unter **Metadaten-URL** die von Azure AD generierte **Metadaten-URL** ein, und klicken Sie auf die Schaltfläche **Auflösen**. Die IdP-Metadaten-URL wird gelesen, und alle Felder werden aufgefüllt.
+    a. Fügen Sie im Textfeld **Metadaten-URL** den Wert für die **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie auf die Schaltfläche **Auflösen**. Die IdP-Metadaten-URL wird gelesen, und alle Felder werden aufgefüllt.
 
     b. Kopieren Sie die Werte von **Bezeichner, Antwort-URL und Anmelde-URL**. Fügen Sie sie anschließend in die Textfelder **Bezeichner, Antwort-URL und Anmelde-URL** bzw. im Abschnitt **Domain und URLs für Confluence SAML SSO by Microsoft** im Azure-Portal ein.
 
@@ -202,10 +186,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     > [!NOTE]
     > Weitere Informationen zur Installation und Problembehandlung finden Sie im [Administratorhandbuch zum MS Confluence SSO-Connector](ms-confluence-jira-plugin-adminguide.md), das auch die [FAQs](ms-confluence-jira-plugin-faq.md) zur weiteren Unterstützung enthält.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -323,4 +303,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-confluencemicrosoft-tutorial/tutorial_general_203.png
-

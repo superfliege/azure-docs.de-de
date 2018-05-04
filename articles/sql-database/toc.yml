@@ -74,8 +74,10 @@
       href: sql-database-servers-databases.md
     - name: Verwaltete Instanz
       href: sql-database-managed-instance.md
-    - name: Dienstebenen
-      href: sql-database-service-tiers.md
+    - name: DTU-basierte Diensttarife
+      href: sql-database-service-tiers-dtu.md
+    - name: V-Kern-basierte Diensttarife
+      href: sql-database-service-tiers-vcore.md
     - name: Horizontale Leseskalierung
       href: sql-database-read-scale-out.md
     - name: DTU-basierte Ressourceneinschränkungen
@@ -412,8 +414,12 @@
               href: saas-tenancy-schema-management.md
             - name: Mandantenübergreifende Berichte
               href: saas-tenancy-cross-tenant-reporting.md
-            - name: ETL für Analysen
-              href: saas-tenancy-tenant-analytics.md
+            - name: Mandantenanalysen
+              items:
+                - name: Mit SQL-Datenbank
+                  href: saas-tenancy-tenant-analytics.md
+                - name: Mit SQL Data Warehouse
+                  href: saas-tenancy-tenant-analytics-adf.md
             - name: Notfallwiederherstellung mithilfe der Geowiederherstellung
               href: saas-dbpertenant-dr-geo-restore.md
             - name: Notfallwiederherstellung mithilfe der Datenbankgeoreplikation

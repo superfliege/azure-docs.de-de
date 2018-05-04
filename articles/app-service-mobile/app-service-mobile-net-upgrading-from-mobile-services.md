@@ -1,11 +1,11 @@
 ---
 title: Upgrade von Mobile Services auf Azure App Service
-description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf eine mobile App Service-App aktualisieren können."
+description: Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf eine mobile App Service-App aktualisieren können.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05041637aa5cbb044e6731208825f75edec83352
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
@@ -270,5 +270,5 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 [Verwenden des .NET-Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service-Preisen]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service-Preisen]: https://azure.microsoft.com/pricing/details/app-service/
 [Übersicht über das .NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

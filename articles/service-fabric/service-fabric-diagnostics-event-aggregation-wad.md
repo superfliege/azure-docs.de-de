@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/03/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 65e5e45300e66cd8c3acc44a91335de45a919eb5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2682054dd132e33897602b60f0799b7cc10ea5f1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -32,44 +32,46 @@ Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Proto
 Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Log Analytics](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Diese Tools werden verwendet, um einige Vorgänge in diesem Dokument durchzuführen:
+In diesem Artikel werden folgende Tools verwendet:
 
-* [Azure-Diagnose](../cloud-services/cloud-services-dotnet-diagnostics.md) (bezieht sich auf Azure Cloud Services, enthält jedoch hilfreiche Informationen und Beispiele)
 * [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
-* [Azure Resource Manager-Client](https://github.com/projectkudu/ARMClient)
 * [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-## <a name="log-and-event-sources"></a>Protokoll- und Ereignisquellen
-
-### <a name="service-fabric-platform-events"></a>Service Fabric-Plattformereignisse
-Wie in [diesem Artikel](service-fabric-diagnostics-event-generation-infra.md) erläutert, richtet Service Fabric einige Standardprotokollierungskanäle ein. Die folgenden dieser Kanäle lassen sich mit WAD einfach konfigurieren, um Überwachungs- und Diagnosedaten an eine Speichertabelle oder einen anderen Speicherort zu senden:
-  * Betriebsereignisse: Vorgänge einer höheren Ebene, die von der Service Fabric-Plattform durchgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen. Diese werden als ETW-Protokolle (Event Tracing for Windows, Ereignisablaufverfolgung für Windows-Ereignisse) ausgegeben.
+## <a name="service-fabric-platform-events"></a>Service Fabric-Plattformereignisse
+Service Fabric richtet einige [vorgefertigte Protokollierungskanäle](service-fabric-diagnostics-event-generation-infra.md) ein. Folgende dieser Kanäle sind mit der Erweiterung vorkonfiguriert, um Überwachungs- und Diagnosedaten an eine Speichertabelle oder an einen anderen Speicherort zu senden:
+  * [Betriebsereignisse:](service-fabric-diagnostics-event-generation-operational.md) Vorgänge einer höheren Ebene, die von der Service Fabric-Plattform ausgeführt werden. Beispiele hierfür wären die Erstellung von Anwendungen und Diensten, Knotenzustandsänderungen und Upgradeinformationen. Diese werden als ETW-Protokolle (Event Tracing for Windows, Ereignisablaufverfolgung für Windows-Ereignisse) ausgegeben.
   * [Ereignisse des Reliable Actors-Programmiermodells](service-fabric-reliable-actors-diagnostics.md)
   * [Ereignisse des Reliable Services-Programmiermodells](service-fabric-reliable-services-diagnostics.md)
 
-### <a name="application-events"></a>Anwendungsereignisse
- Ereignisse, die vom Code Ihrer Anwendungen und Dienste ausgegeben und mithilfe der EventSource-Hilfsklasse der Visual Studio-Vorlagen geschrieben werden. Weitere Informationen zum Schreiben von EventSource-Protokollen aus Ihrer Anwendung finden Sie unter [Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md).
-
-## <a name="deploy-the-diagnostics-extension"></a>Bereitstellen der Diagnoseerweiterung
-Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf allen VMs des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie in das angegebene Speicherkonto hoch. Die auszuführenden Schritte variieren ein wenig, je nachdem, ob Sie das Azure-Portal oder Azure Resource Manager verwenden. Diese Schritte hängen auch davon ab, ob die Bereitstellung während der Clustererstellung oder für einen bereits vorhandenen Cluster erfolgt. Wir sehen uns nun die Schritte für die einzelnen Szenarien an.
+## <a name="deploy-the-diagnostics-extension-through-the-portal"></a>Bereitstellen der Diagnoseerweiterung über das Portal
+Zum Sammeln von Protokollen muss zunächst die Diagnoseerweiterung auf den VM-Skalierungsgruppenknoten des Service Fabric-Clusters bereitgestellt werden. Die Diagnoseerweiterung sammelt Protokolle auf allen VMs und lädt sie in das angegebene Speicherkonto hoch. Die folgenden Schritte zeigen die entsprechende Vorgehensweise für neue und vorhandene Cluster über das Azure-Portal und unter Verwendung von Azure Resource Manager-Vorlagen.
 
 ### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-through-azure-portal"></a>Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung über das Azure-Portal
-Um die Diagnoseerweiterung im Rahmen der Clustererstellung für die im Cluster enthaltenen virtuellen Computer bereitzustellen, verwenden Sie den in der folgenden Abbildung gezeigten Bereich mit den Diagnoseeinstellungen. Stellen Sie sicher, dass für die Diagnose **Ein** (Standardeinstellung) festgelegt ist. Nach der Erstellung des Clusters können Sie diese Einstellung nicht im Portal ändern.
+Erweitern Sie bei der Clustererstellung im Schritt für die Clusterkonfiguration die optionalen Einstellungen, und vergewissern Sie sich, dass die Diagnose auf **Ein** (Standardeinstellung) festgelegt ist.
 
-![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics.png)
+![Azure-Diagnose-Einstellung im Portal für die Clustererstellung](media/service-fabric-diagnostics-event-aggregation-wad/azure-enable-diagnostics-new.png)
 
-Bei der Clustererstellung über das Portal sollten Sie unbedingt die Vorlage herunterladen, **bevor Sie auf „OK“ klicken**, um den Cluster zu erstellen. Ausführliche Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Sie benötigen die Vorlage für spätere Änderungen, da Sie einige Änderungen nicht über das Portal vornehmen können.
+Es empfiehlt sich, die Vorlage **vor dem Klicken auf „Erstellen“** im letzten Schritt herunterzuladen. Ausführliche Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Sie benötigen die Vorlage, um die Kanäle zu ändern, für die Daten erfasst werden sollen. (Die Kanäle sind weiter oben aufgeführt.)
 
-### <a name="deploy-the-diagnostics-extension-as-part-of-cluster-creation-by-using-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung im Rahmen der Clustererstellung mithilfe des Azure-Ressourcen-Managers
-Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der Resource Manager-Vorlage für einen vollständigen Cluster vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+![Clustervorlage](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
+
+Nachdem nun Ereignisse in Azure Storage aggregiert werden, können Sie als Nächstes [Log Analytics einrichten](service-fabric-diagnostics-oms-setup.md), um Insights zu erhalten und im Log Analytics-Portal abzufragen.
+
+>[!NOTE]
+>Es gibt derzeit keine Möglichkeit, die an die Tabellen gesendeten Ereignisse zu filtern oder zu optimieren. Wenn Sie keinen Prozess zum Entfernen von Ereignissen aus der Tabelle implementieren, wächst die Tabelle weiter an. (Die Größe ist standardmäßig auf 50 GB beschränkt.) Eine Anleitung zum Ändern dieser Einstellung finden Sie [weiter unten in diesem Artikel](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Im [Watchdog-Beispiel](https://github.com/Azure-Samples/service-fabric-watchdog-service) finden Sie außerdem ein Beispiel für die Ausführung eines Datenbereinigungsdiensts. Die Erstellung eines solchen Diensts wird empfohlen, sofern Sie Protokolle nicht aus einem triftigen Grund länger als 30 oder 90 Tage speichern müssen.
+
+## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Bereitstellen der Diagnoseerweiterung über Azure Resource Manager
+
+### <a name="create-a-cluster-with-the-diagnostics-extension"></a>Erstellen eines Clusters mit der Diagnoseerweiterung
+Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen Sie der vollständigen Resource Manager-Vorlage vor der Clustererstellung den JSON-Code für die Diagnosekonfiguration hinzufügen. Die Vorlagenbeispiele für den Ressourcen-Manager enthalten eine Beispielvorlage mit hinzugefügter Diagnosekonfiguration für einen Cluster mit fünf VMs. Diese finden Sie im Azure-Beispielkatalog unter [Ressourcen-Manager-Beispielvorlage für einen Cluster mit fünf Knoten und Diagnose](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 Öffnen Sie die Datei „azuredeploy.json“ und suchen nach **IaaSDiagnostics**, um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
 Alternativ können Sie das Resource Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureRmResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Im folgenden Code finden Sie die Parameter, die Sie an den Befehl übergeben. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md).
 
-### <a name="deploy-the-diagnostics-extension-to-an-existing-cluster"></a>Bereitstellen der Diagnoseerweiterung für einen vorhandenen Cluster
-Wenn Sie bereits über einen Cluster ohne Diagnosebereitstellung verfügen oder eine vorhandene Konfiguration ändern möchten, können Sie die Diagnose hinzufügen oder aktualisieren. Ändern Sie die zum Erstellen des vorhandenen Clusters verwendete Resource Manager-Vorlage, oder laden Sie die Vorlage, wie oben beschrieben, aus dem Portal herunter. Ändern Sie die Datei „template.json“ , indem Sie die folgenden Aufgaben ausführen.
+### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Hinzufügen der Diagnoseerweiterung zu einem vorhandenen Cluster
+Wenn Sie bereits über einen Cluster ohne Diagnosebereitstellung verfügen, können Sie sie mithilfe der Clustervorlage hinzufügen oder den Cluster aktualisieren. Ändern Sie die zum Erstellen des vorhandenen Clusters verwendete Resource Manager-Vorlage, oder laden Sie die Vorlage, wie oben beschrieben, aus dem Portal herunter. Ändern Sie die Datei „template.json“ wie folgt:
 
 Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ressourcenabschnitt hinzufügen.
 
@@ -79,7 +81,7 @@ Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ress
   "type": "Microsoft.Storage/storageAccounts",
   "name": "[parameters('applicationDiagnosticsStorageAccountName')]",
   "location": "[parameters('computeLocation')]",
-  "properties": {
+  "sku": {
     "accountType": "[parameters('applicationDiagnosticsStorageAccountType')]"
   },
   "tags": {
@@ -89,7 +91,7 @@ Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ress
 },
 ```
 
- Fügen Sie als Nächstes dem Parameterabschnitt etwas hinzu, direkt nach den Speicherkontodefinitionen, zwischen `supportLogStorageAccountName` und `vmNodeType0Name`. Ersetzen Sie den Platzhaltertext *storage account name goes here* durch den Namen des Speicherkontos.
+ Ergänzen Sie als Nächstes den Parameterabschnitt direkt nach den Speicherkontodefinitionen (zwischen `supportLogStorageAccountName`). Ersetzen Sie den Platzhaltertext *storage account name goes here* durch den Namen des gewünschten Speicherkontos.
 
 ```json
     "applicationDiagnosticsStorageAccountType": {
@@ -105,7 +107,7 @@ Fügen Sie der Vorlage eine neue Speicherressource hinzu, indem Sie sie dem Ress
     },
     "applicationDiagnosticsStorageAccountName": {
       "type": "string",
-      "defaultValue": "storage account name goes here",
+      "defaultValue": "**STORAGE ACCOUNT NAME GOES HERE**",
       "metadata": {
         "description": "Name for the storage account that contains application diagnostics data from the cluster"
       }
@@ -182,6 +184,14 @@ Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, verö
 >},
 >```
 
+### <a name="update-storage-quota"></a>Aktualisieren des Speicherkontingents
+
+Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Kontingent erreicht ist, empfiehlt es sich unter Umständen, die Kontingentgröße zu verringern. Der Wert ist standardmäßig auf 50 GB festgelegt und kann in der Vorlage unter dem Feld `overallQuotainMB` (unter `DiagnosticMonitorConfiguration`) konfiguriert werden.
+
+```json
+"overallQuotaInMB": "50000",
+```
+
 ## <a name="log-collection-configurations"></a>Protokollsammlungskonfigurationen
 Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im Folgenden finden Sie einige der am häufigsten verwendeten Konfigurationen, die Sie in der Vorlage für Cluster vornehmen können, die in Azure ausgeführt werden.
 
@@ -196,7 +206,7 @@ Protokolle aus zusätzlichen Kanälen sind auch für die Sammlung verfügbar; im
       scheduledTransferKeywordFilter: "4611686018427387912"
   ```
 
-* Daten- und Messagingkanal – Basis: wichtige Protokolle und im Messaging- und Datenpfad (derzeit nur ReverseProxy) zusätzlich zu detaillierten Betriebskanalprotokollen generierte Ereignisse. Diese Ereignisse sind Fehler bei Verarbeitungsanforderungen und andere wichtige Probleme bei ReverseProxy und verarbeiteten Anforderungen. **Dies ist unsere Empfehlung für umfassende Protokollierung**. Diese Ereignisse können Sie in der Diagnoseereignisanzeige von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric4:0x4000000000000010“ der Liste mit den ETW-Anbietern hinzufügen.
+* Daten- und Messagingkanal – Basis: wichtige Protokolle und im Messaging- und Datenpfad (derzeit nur ReverseProxy) zusätzlich zu detaillierten Betriebskanalprotokollen generierte Ereignisse. Diese Ereignisse sind Fehler bei Verarbeitungsanforderungen und andere wichtige Probleme bei ReverseProxy sowie verarbeitete Anforderungen. **Dies ist unsere Empfehlung für umfassende Protokollierung**. Diese Ereignisse können Sie in der Diagnoseereignisanzeige von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric4:0x4000000000000010“ der Liste mit den ETW-Anbietern hinzufügen.
 
 ```json
       scheduledTransferKeywordFilter: "4611686018427387928"
@@ -281,7 +291,7 @@ Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abs
 
 ## <a name="send-logs-to-application-insights"></a>Senden von Protokollen an Application Insights
 
-Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kann als Teil der WAD-Konfiguration erfolgen. Wenn Sie AI für die Ereignisanalyse und -visualisierung verwenden, finden Sie unter [Event Analysis and Visualization with Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) (Ereignisanalyse und -visualisierung mit Application Insights) weitere Informationen zum Einrichten einer AI-Senke als Teil von „WadCfg“.
+Das Senden von Überwachungs- und Diagnosedaten an Application Insights (AI) kann als Teil der WAD-Konfiguration erfolgen. Wenn Sie AI für die Ereignisanalyse und -visualisierung verwenden, finden Sie unter [Hinzufügen der AI-Senke zur Resource Manager-Vorlage](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template) weitere Informationen zum Einrichten einer AI-Senke als Teil von „WadCfg“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Diagnose und Problembehandlung in Azure Time Series Insights | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie häufig auftretende Probleme in Azure Time Series Insights-Umgebung diagnostiziert und behoben werden."
+description: In diesem Artikel wird beschrieben, wie häufig auftretende Probleme in Azure Time Series Insights-Umgebung diagnostiziert und behoben werden.
 services: time-series-insights
 ms.service: time-series-insights
 author: venkatgct
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 11/15/2017
-ms.openlocfilehash: 757d37183ad334aca462af59bad261cfa686299e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/09/2018
+ms.openlocfilehash: f0c1b8aa99e9ac9c73f57af17490dd3a465a9cac
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
 
@@ -45,6 +45,11 @@ Während der Registrierung eines IoT Hubs oder eines Event Hubs geben Sie die Co
 Wenn Daten nur teilweise angezeigt werden, jedoch ein Datenrückstand besteht, erwägen Sie mehrere mögliche Ursachen:
 
 ### <a name="possible-cause-a-your-environment-is-getting-throttled"></a>Mögliche Ursache A: Ihre Umgebung wird gedrosselt.
+Dies ist ein häufiges Problem, wenn Umgebungen nach der Erstellung einer Ereignisquelle mit Daten bereitgestellt werden.  Auf Azure IoT Hubs und Events Hubs werden Daten bis zu sieben Tage lang gespeichert.  TSI beginnt immer mit ältesten Ereignis (FIFO) auf der Ereignisquelle.  Wenn Sie auf einer Ereignisquelle über fünf Millionen Ereignisse verfügen und eine Verbindung mit einer TSI-Umgebung vom Typ „S1, eine Einheit“ herstellen, liest TSI also ca. eine Million Ereignisse pro Tag.  Auf den ersten Blick sieht es so aus, als ob dies fünf Tage lang Latenz für TSI bedeutet.  Der tatsächliche Grund ist, dass die Umgebung gedrosselt wird.  Falls Ihre Ereignisquelle ältere Ereignisse enthält, können Sie zwischen zwei Ansätzen wählen:
+
+- Ändern Sie die Aufbewahrungslimits Ihrer Ereignisquelle, damit ältere Ereignisse, die nicht in TSI angezeigt werden sollen, entfernt werden.
+- Stellen Sie eine größere Umgebung bereit (in Bezug auf die Anzahl von Einheiten), um den Durchsatz für ältere Ereignisse zu erhöhen.  Wenn Sie für das obige Beispiel die S1-Umgebung für einen Tag auf fünf Einheiten erhöhen, sollte der Rückstand für die Umgebung innerhalb eines Tages abgebaut werden.  Falls bei Ihnen im stabilen Zustand pro Tag maximal 1 Million Ereignisse produziert werden, können Sie die Kapazität für Ereignisse anschließend wieder auf eine Einheit verringern.  
+
 Der Drosselungsgrenzwert wird basierend auf dem Typ und der Kapazität der Umgebungs-SKU erzwungen. Alle Ereignisquellen in der Umgebung nutzen diese Kapazität gemeinsam. Wenn Ihre Event Hub-/IoT Hub-Ereignisquelle Daten per Push über die erzwungenen Grenzwerte hinaus überträgt, treten die Drosselung und eine Verzögerung ein.
 
 Die folgende Abbildung zeigt eine Time Series Insights-Umgebung mit SKU S1 und Kapazität 3. Es können 3 Millionen Ereignisse pro Tag eingehen.
@@ -76,6 +81,12 @@ Führen Sie zum Beheben dieser Verzögerung die folgenden Schritte aus:
 Stellen Sie sicher, dass Name und Wert den folgenden Regeln entsprechen:
 * Beachten Sie beim Namen der Zeitstempeleigenschaft die _Groß-/Kleinschreibung_.
 * Der Wert für die Zeitstempeleigenschaft, der als JSON-Zeichenfolge von Ihrer Ereignisquelle eingeht, sollte das Format _JJJJ-MM-TTTHH:mm:ss.FFFFFFFK_ aufweisen. Ein Beispiel für eine solche Zeichenfolge ist „2008-04-12T12:53Z“.
+
+Sie können am einfachsten sicherstellen, dass Ihr *Name der Zeitstempeleigenschaft* erfasst wird und richtig funktioniert, indem Sie den TSI-Explorer verwenden.  Wählen Sie im TSI-Explorer mithilfe des Diagramms einen Zeitraum aus, nachdem Sie den *Namen der Zeitstempeleigenschaft* angegeben haben.  Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie die Option *Ereignisse untersuchen*.  Die erste Spaltenüberschrift sollte Ihr *Name der Zeitstempeleigenschaft* sein, und neben dem Wort *timestamp* sollte *($ts)* stehen, und nicht Folgendes:
+- *(abc)*: Gibt an, dass TSI die Datenwerte als Zeichenfolgen liest.
+- *Kalendersymbol*: Gibt an, dass TSI den Datenwert als *datetime* liest.
+- *#*: Gibt an, dass TSI die Datenwerte als ganze Zahl liest.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Zusätzliche Unterstützung erhalten Sie im [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) oder bei [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). 

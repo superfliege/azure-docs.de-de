@@ -8,11 +8,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 59e23344d235bac8f69bba76cfff2922bc41fd0f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 10e7c6a8e9e92a559352886095e367585dc484ef
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-enable-a-web-application-to-authenticate-with-accounts-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung von Web-Apps mit Konten unter Verwendung von Azure Active Directory B2C
 
@@ -109,7 +109,7 @@ Erstellen Sie eine **Richtlinie zur Profilbearbeitung**, um Benutzern das eigens
 
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
-    | **Name** | SiPe | Geben Sie einen **Namen**für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiPe** verwendet. | 
+    | **Name** | SiPe | Geben Sie einen Namen**** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **b2c_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **b2c_1_SiPe** verwendet. | 
     | **Identitätsanbieter** | Anmeldung mit lokalem Konto | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
     | **Profilattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
     | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
@@ -142,7 +142,7 @@ Nachdem Sie eine Web-App registriert und Richtlinien erstellt haben, müssen Sie
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Bei der ASP.NET-Beispiel-Web-App handelt es sich um eine einfache App zum Erstellen und Aktualisieren einer Aufgabenliste. Die App verwendet [Microsoft OWIN-Middleware-Komponenten](https://docs.microsoft.com/en-us/aspnet/aspnet/overview/owin-and-katana/), um Benutzern die Registrierung für die Verwendung der App in Ihrem Azure AD B2C-Mandanten zu ermöglichen. Durch Erstellung einer Azure AD B2C-Richtlinie können Benutzer ein Konto für ein soziales Netzwerk verwenden oder ein Konto erstellen und dieses als Identität für den App-Zugriff verwenden. 
+Bei der ASP.NET-Beispiel-Web-App handelt es sich um eine einfache App zum Erstellen und Aktualisieren einer Aufgabenliste. Die App verwendet [Microsoft OWIN-Middleware-Komponenten](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/), um Benutzern die Registrierung für die Verwendung der App in Ihrem Azure AD B2C-Mandanten zu ermöglichen. Durch Erstellung einer Azure AD B2C-Richtlinie können Benutzer ein Konto für ein soziales Netzwerk verwenden oder ein Konto erstellen und dieses als Identität für den App-Zugriff verwenden. 
 
 Die Beispielprojektmappe enthält zwei Projekte:
 

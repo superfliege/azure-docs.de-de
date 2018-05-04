@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 2838d8fd53d4e2e564bb7784cb5489e9a167d5bb
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
@@ -54,16 +54,15 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
 1. Die Seite **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.
+
    ![Seite „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
+
 1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **OMS-Arbeitsbereich** die folgenden Schritte aus:
    * Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** an.
    * Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    * Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
    * Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden** und **Europa, Westen** verfügbar.
-   * Wählen Sie einen **Tarif**aus. Die Lösung ist in zwei Tarifen verfügbar: **Free** und **Pro Knoten (OMS)**. Beim Tarif „Free“ gelten Beschränkungen für die Datenmenge, die pro Tag erfasst werden kann, die Aufbewahrungsdauer und die Laufzeit von Runbookaufträgen in Minuten. Für den Tarif „Pro Knoten“ gilt keine Beschränkung für die täglich erfasste Datenmenge.
-
-        > [!NOTE]
-        > Der kostenpflichtige Tarif pro GB (Standalone) wird zwar als Option angezeigt, ist aber nicht verfügbar. Wenn Sie diesen Tarif auswählen und mit der Erstellung der Lösung in Ihrem Abonnement fortfahren, tritt ein Fehler auf. Dies wird behoben sein, wenn die Lösung offiziell veröffentlicht wird. Bei dieser Lösung werden nur Automation-Auftragsminuten und die Protokollerfassung genutzt. Ihrer Umgebung werden keine weiteren Knoten hinzugefügt.
+   * Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Log Analytics wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert und der Tarif „Pro GB“ ist die einzige Option.
 
 1. Klicken Sie nach dem Angeben der erforderlichen Informationen auf der Seite **OMS-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
 1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, müssen Sie auch ein dazugehöriges neues Automation-Konto erstellen. Wählen Sie die Option **Automation-Konto erstellen** aus, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
@@ -80,6 +79,9 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    * Geben Sie die **VM Exclude List (string)** (VM-Ausschlussliste (Zeichenfolge)) an. Dies ist der Name von einem oder mehreren virtuellen Computern der Zielressourcengruppe. Sie können mehrere Namen eingeben und die Namen jeweils durch ein Komma trennen (Groß-/Kleinschreibung wird nicht berücksichtigt). Platzhalter können verwendet werden. Dieser Wert wird in der Variablen **External_ExcludeVMNames** gespeichert.
    * Wählen Sie einen **Zeitplan** aus. Dies ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen. Der Zeitplan wird standardmäßig für die UTC-Zeitzone konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
    * Um **E-Mail-Benachrichtigungen** von SendGrid zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie hier **Nein** wählen und sich dann später doch für den Empfang von E-Mail-Benachrichtigungen entscheiden, können Sie die Variable **External_EmailToAddress** mit gültigen E-Mail-Adressen getrennt durch Kommas aktualisieren und anschließend die Variable **External_IsSendEmail** ändern (Wert **Ja**).
+
+> [!IMPORTANT]
+> Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
 
 1. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 

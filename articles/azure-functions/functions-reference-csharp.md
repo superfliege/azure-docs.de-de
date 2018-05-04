@@ -3,10 +3,10 @@ title: C#-Skriptentwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C#-Skript entwickelt wird.
 services: functions
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.service: functions
 ms.devlang: dotnet
@@ -14,12 +14,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
-ms.author: glenga
-ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: tdykstra
+ms.openlocfilehash: 91e85fb25f9324f9b8d83884fe34a014f280de0b
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -233,7 +233,7 @@ public static void Run(string myBlob, TraceWriter log)
 
 ## <a name="async"></a>Async
 
-Um eine Funktion asynchron auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
+Um eine Funktion [asynchron](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/) auszuführen, verwenden Sie das `async`-Schlüsselwort, und geben Sie ein `Task`-Objekt zurück.
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -249,7 +249,7 @@ public async static Task ProcessQueueMessageAsync(
 
 Eine Funktion kann einen [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Parameter annehmen, der es dem Betriebssystem ermöglicht, den Code vor dem Beenden der Funktion zu benachrichtigen. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
 
-Das folgende Beispiel zeigt, wie nach einer bevorstehenden Beendigung einer Funktion suchen.
+Das folgende Beispiel zeigt, wie Sie nach einer bevorstehenden Beendigung einer Funktion suchen.
 
 ```csharp
 using System;

@@ -1,26 +1,24 @@
 ---
-title: "Konfigurieren von Spark-Einstellungen – Azure HDInsight | Microsoft-Dokumentation"
-description: "Konfigurieren von Spark für einen HDInsight-Cluster."
+title: Konfigurieren von Spark-Einstellungen – Azure HDInsight | Microsoft-Dokumentation
+description: Konfigurieren von Spark für einen HDInsight-Cluster.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: maxluk
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2018
 ms.author: maxluk
-ms.openlocfilehash: 1dd0ff26cdb39feacec697d7900ad7abaa5f1996
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2ee496eae0767de22d070a0c5689692f0200515b
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="configure-spark-settings"></a>Konfigurieren von Spark-Einstellungen
 
@@ -34,9 +32,13 @@ Auch die Anzahl der virtuellen Computer und die VM-Größen für die Knoten in I
 
 ## <a name="spark-versions"></a>Spark-Versionen
 
-Zudem sollten Sie die am besten geeignete Version von Spark für Ihren Cluster berücksichtigen.  Spark 2.x kann wesentlich besser ausgeführt werden als Spark 1.x. Spark 2.x bietet eine Reihe von Leistungsoptimierungen wie Tungsten, Catalyst Query Optimization und mehr.  Der HDInsight-Dienst umfasst mehrere Versionen von Spark sowie auch von HDInsight.  Jede Version von Spark umfasst einen Satz von Standardclustereinstellungen.  Beim Erstellen eines neuen Clusters können Sie eine der folgenden aktuellen Spark-Versionen auswählen:
+Verwenden Sie die am besten geeignete Spark-Version für Ihren Cluster.  Der HDInsight-Dienst umfasst mehrere Versionen von Spark sowie auch von HDInsight.  Jede Version von Spark umfasst einen Satz von Standardclustereinstellungen.  
+
+Beim Erstellen eines neuen Clusters können Sie eine der folgenden aktuellen Spark-Versionen auswählen:
 
 ![Spark-Versionen](./media/apache-spark-settings/spark-version.png)
+
+Spark 2.x kann wesentlich besser ausgeführt werden als Spark 1.x. Spark 2.x bietet eine Reihe von Leistungsoptimierungen wie Tungsten, Catalyst Query Optimization und mehr.  
 
 > [!NOTE]
 > Die Standardversion von Apache Spark im HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, empfiehlt Microsoft, die spezifische Version anzugeben, wenn Sie Cluster mit .NET SDK/Azure PowerShell und der Azure-Befehlszeilenschnittstelle erstellen.
@@ -148,7 +150,7 @@ Der folgende Code zeigt, wie die Konfiguration für eine in einem Jupyter Notebo
 
 ## <a name="conclusion"></a>Zusammenfassung
 
-Sie müssen verschiedene wesentliche Konfigurationseinstellungen überwachen und anpassen, um sicherzustellen, dass die Spark-Aufträge vorhersagbar und effizient ausgeführt werden. Mit diesen Einstellungen kann die optimale Spark-Clusterkonfiguration für Ihre spezifischen Workloads festgelegt werden.  Zudem müssen Sie die Ausführung von Spark-Aufträgen mit langer Ausführungszeit und von ressourcenintensiven Spark-Aufträgen überwachen.  Die häufigsten Herausforderungen betreffen unzureichenden Arbeitsspeicher aufgrund von nicht ordnungsgemäßen Konfigurationen (insbesondere bei falsch dimensionierten Executors), Vorgänge mit langer Ausführungsdauer und Tasks, die zu kartesischen Vorgängen führen.
+Sie müssen verschiedene wesentliche Konfigurationseinstellungen überwachen und anpassen, um sicherzustellen, dass die Spark-Aufträge vorhersagbar und effizient ausgeführt werden. Mit diesen Einstellungen kann die optimale Spark-Clusterkonfiguration für Ihre spezifischen Workloads festgelegt werden.  Zudem müssen Sie die Ausführung von Spark-Aufträgen mit langer Ausführungszeit und von ressourcenintensiven Spark-Aufträgen überwachen.  Die häufigsten Herausforderungen betreffen unzureichenden Arbeitsspeicher aufgrund von nicht ordnungsgemäßen Konfigurationen (insbesondere bei falsch dimensionierten Executors), Vorgänge mit langer Ausführungsdauer und Tasks, die zu kartesischen Operationen führen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

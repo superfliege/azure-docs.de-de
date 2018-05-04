@@ -5,14 +5,14 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 03/27/2018
+ms.date: 04/27/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: e68e87bb19b8c64cf06c03831b22cf43d773efde
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 03b7ce49f935c36b0e0652925c41deea987a2a26
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
 ---
 Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimits, um sicherzustellen, dass Kundenabonnements vor anderen Arbeitslasten geschützt sind. Viele der Limits können problemlos für Ihr Abonnement bis zum maximalen Limit angehoben werden, indem Sie sich an den Support wenden.
 
@@ -26,12 +26,13 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Auslöser innerhalb einer Data Factory | 2500 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Verknüpfte Dienste innerhalb einer Data Factory | 2500 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Integration Runtimes innerhalb einer Data Factory<sup>4</sup> | 2500 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Gesamtzahl CPU-Kerne für Azure-SSIS Integration Runtime(s) unter einem Abonnement | 100 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Gleichzeitige Pipelineausführungen pro Pipeline | 20 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Max. Aktivitäten pro Pipeline | 20 | 30 |
 | Max. Parameter pro Pipeline | 20 | 30 |
 | Bytes pro Objekt für Pipelineobjekte<sup>1</sup> | 200 KB | 200 KB |
 | Bytes pro Objekt für DataSets und Objekte für verknüpfte Dienste<sup>1</sup> | 100 KB | 2000 KB |
-| Einheiten für Clouddatenverschiebungen<sup>3</sup> | 256 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Einheiten für Clouddatenverschiebungen pro Aktivitätsausführung <sup>3</sup> | 256 | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten | 1 Tag (Timeout) | 1 Tag (Timeout) |
 | Schreiben von API-Aufrufen | 2500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Lesen von API-Aufrufen | 12.500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. | [Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
@@ -48,7 +49,7 @@ Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardlimi
 | Bytes pro Objekt für Pipelineobjekte<sup>1</sup> |200 KB |200 KB |
 | Bytes pro Objekt für DataSets und Objekte für verknüpfte Dienste<sup>1</sup> |100 KB |2000 KB |
 | Bedarfsgesteuerte HDInsight-Clusterkerne innerhalb eines Abonnements <sup>2</sup> |60 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Einheiten für Clouddatenverschiebungen<sup>3</sup> |32 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Einheiten für Clouddatenverschiebungen pro Aktivitätsausführung <sup>3</sup> |32 |[Support kontaktieren](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Anzahl der Wiederholungsversuche für Ausführungen von Pipelineaktivitäten |1000 |MaxInt (32 Bit) |
 
 <sup>1</sup> Pipeline-, Dataset- und verknüpfte Dienstobjekte stellen eine logische Gruppierung Ihrer Workload dar. Limits für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit dem Azure Data Factory-Dienst verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.

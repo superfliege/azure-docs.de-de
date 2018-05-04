@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3f5ad64a73bddbb64556ae7a329f91f93b99b016
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -121,7 +121,6 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Cognitive Services
 * Content Moderator
 * Datenkatalog
-* Data Factory
 * Data Lake Analytics
 * Data Lake-Speicher
 * DNS
@@ -163,11 +162,14 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * AD Domain Services
 * AD Hybrid Health Service
 * Application Gateway
+* Azure Database for MySQL
 * BizTalk Services
+* Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Container Service
-* ExpressRoute
+* Data Factory
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
+* ExpressRoute
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)

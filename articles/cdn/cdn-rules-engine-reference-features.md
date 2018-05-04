@@ -1,9 +1,9 @@
 ---
 title: Features der Azure CDN-Regel-Engine | Microsoft-Dokumentation
-description: Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine.
+description: Referenzdokumentation zu den Features der Azure CDN-Regel-Engine.
 services: cdn
 documentationcenter: ''
-author: Lichard
+author: dksimpson
 manager: akucer
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: rli
-ms.openlocfilehash: 748cecbdf4c59469c9a56da03631dd04a819043b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/10/2018
+ms.author: v-deasim
+ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
 
-Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art der Aktion, die auf den Anforderungstyp angewendet wird, der mithilfe verschiedener Übereinstimmungsbedingungen bestimmt wurde.
+Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art von Aktion, die auf den Anforderungstyp angewendet wird, der anhand verschiedener Übereinstimmungsbedingungen bestimmt wurde.
 
 ## <a name="access-features"></a>Zugriffsfeatures
 
@@ -33,7 +33,7 @@ NAME | Zweck
 -----|--------
 [Deny Access (403)](#deny-access-403) | Bestimmt, ob alle Anfragen mit der Antwort „403 – Verboten“ abgelehnt werden.
 [Token Auth](#token-auth) | Bestimmt, ob die tokenbasierte Authentifizierung auf eine Anforderung angewendet wird.
-[Token Auth Denial Code](#token-auth-denial-code) | Bestimmt die Art der Antwort, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wird.
+[Token Auth Denial Code](#token-auth-denial-code) | Bestimmt die Art der Antwort, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wurde.
 [Token Auth Ignore URL Case](#token-auth-ignore-url-case) | Bestimmt, ob bei von der tokenbasierten Authentifizierung durchgeführten URL-Vergleichen Groß-/Kleinschreibung unterschieden wird.
 [Token Auth Parameter](#token-auth-parameter) | Bestimmt, ob der Abfragezeichenfolgen-Parameter der tokenbasierten Authentifizierung umbenannt werden soll.
 
@@ -428,14 +428,32 @@ Ein Teilcachefehler tritt normalerweise auf, nachdem ein Benutzer einen Download
 
 Behalten Sie die Standardkonfiguration für die HTTP Large-Plattform bei, weil sie die Last auf Ihrem Kundenursprungsserver verringert und die Geschwindigkeit erhöht, mit der Ihre Kunden Ihre Inhalte herunterladen.
 
-Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, kann dieses Feature den folgenden Übereinstimmungsbedingungen nicht zugeordnet werden: Edge Cname, Request Header Literal, Request Header Wildcard, URL Query Literal und URL Query Wildcard.
-
 Wert|Ergebnis
 --|--
 Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der POP gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des POP.
 Deaktiviert|Verhindert, dass ein POP einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Asset aus der betreffenden Region führt dazu, dass ein POP es vom Kundenursprungsserver anfordert.
 
 **Standardverhalten:** Aktiviert.
+
+#### <a name="compatibility"></a>Kompatibilität
+Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
+- AS Number
+- Client IP Address
+- Cookie Parameter
+- Cookie Parameter Regex
+- Country
+- Gerät
+- Edge Cname
+- Referring Domain
+- Request Header Literal
+- Request Header Regex
+- Request Header Wildcard
+- Request Method
+- Request Scheme
+- URL Query Literal
+- URL Query Regex
+- URL Query Wildcard
+- URL Query Parameter
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -497,16 +515,16 @@ Wichtige Informationen:
 
 ---
 ### <a name="debug-cache-response-headers"></a>Debug Cache Response Headers
-**Zweck**: Legt fest, ob eine Antwort den „X-EC-Debug Response Header“ enthalten kann, der Informationen zur Cacherichtlinie für das angeforderte Objekt enthält.
+**Zweck:** Legt fest, ob eine Antwort [X-EC-Debug-Antwortheader](cdn-http-debug-headers.md) mit Informationen zur Cacherichtlinie für das angeforderte Objekt enthalten kann.
 
 „Debug Cache Response Headers“ werden in die Antwort einbezogen, wenn die folgenden beiden Bedingungen erfüllt sind:
 
-- Das Feature „Debug Cache Response Headers“ wurde in der gewünschten Anforderung aktiviert.
-- Die oben genannte Anforderung definiert den Satz von „Debug Cache Response Headers“, die in die Antwort einbezogen werden.
+- Das Feature für Debugcache-Antwortheader wurde für die angegebene Anforderung aktiviert.
+- Die angegebene Anforderung definiert den Satz der Debugcache-Antwortheader, die in die Antwort einbezogen werden.
 
-„Debug Cache Response Headers“ können angefordert werden, indem der folgende Header und die gewünschten Anweisungen in die Anforderung aufgenommen werden:
+Zum Anfordern von Debugcache-Antwortheadern müssen der folgende Header und die angegebenen Anweisungen in die Anforderung aufgenommen werden:
 
-X-EC-Debug: _Anweisung1_,_Anweisung2_,_AnweisungN_
+`X-EC-Debug: _&lt;Directive1&gt;_,_&lt;Directive2&gt;_,_&lt;DirectiveN&gt;_`
 
 **Beispiel:**
 
@@ -538,16 +556,28 @@ Wichtige Informationen:
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das interne Standardintervall für max-age.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird für Anforderungen, denen im `Cache-Control`- oder `Expires`-Header kein max-age-Hinweis zugewiesen wurde, ein internes max-age-Standardintervall von 7 Tagen festgelegt.
-- Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
-    - Edge 
-    - Cname
-    - Request Header Literal
-    - Request Header Wildcard
-    - Request Method
-    - URL Query Literal
-    - URL Query Wildcard
 
 **Standardwert:** 7 Tage
+
+#### <a name="compatibility"></a>Kompatibilität
+Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
+- AS Number
+- Client IP Address
+- Cookie Parameter
+- Cookie Parameter Regex
+- Country
+- Gerät
+- Edge Cname
+- Referring Domain
+- Request Header Literal
+- Request Header Regex
+- Request Header Wildcard
+- Request Method
+- Request Scheme
+- URL Query Literal
+- URL Query Regex
+- URL Query Wildcard
+- URL Query Parameter
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -642,16 +672,28 @@ Wichtige Informationen:
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert das max-age-Intervall der Anforderung.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein internes max-age-Intervall wird den angeforderten Assets nicht zugewiesen. Wenn der ursprüngliche Header keine Anweisungen für die Zwischenspeicherung enthält, wird das Asset gemäß der aktiven Einstellung im Feature „Default Internal Max-Age“ zwischengespeichert.
-- Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
-    - Edge 
-    - Cname
-    - Request Header Literal
-    - Request Header Wildcard
-    - Request Method
-    - URL Query Literal
-    - URL Query Wildcard
 
 **Standardverhalten:** Off
+
+#### <a name="compatibility"></a>Kompatibilität
+Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
+- AS Number
+- Client IP Address
+- Cookie Parameter
+- Cookie Parameter Regex
+- Country
+- Gerät
+- Edge Cname
+- Referring Domain
+- Request Header Literal
+- Request Header Regex
+- Request Header Wildcard
+- Request Method
+- Request Scheme
+- URL Query Literal
+- URL Query Regex
+- URL Query Wildcard
+- URL Query Parameter
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -664,7 +706,7 @@ Wichtige Informationen:
 Wichtige Informationen:
 
 - Definieren Sie einen durch Leerzeichen getrennten Satz mit zulässigen H.264-Dateierweiterungen in der Option „File Extensions“. Die Option „File Extensions“ setzt das Standardverhalten außer Kraft. Behalten Sie die MP4- und F4V-Unterstützung bei, indem Sie beim Festlegen dieser Option diese Dateierweiterungen einschließen. 
-- Die einzelnen Dateierweiterungen müssen jeweils mit einem Punkt angegeben werden (beispielsweise „.mp4“ oder „.f4v“).
+- Die einzelnen Dateierweiterungen müssen jeweils mit einem Punkt angegeben werden (beispielsweise _.mp4_ oder _.f4v_).
 
 **Standardverhalten:** Standardmäßig werden MP4- und F4V-Medien von HTTP Progressive Download unterstützt.
 
@@ -685,7 +727,7 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird verhin
 
 Für den gesamten Produktionsdatenverkehr wird dringend empfohlen, dieses Feature in seinem Standardzustand (deaktiviert) zu belassen. Andernfalls werden die Ursprungsserver nicht vor Endbenutzern, die beim Aktualisieren von Webseiten versehentlich viele no-cache-Anforderungen auslösen können, oder vor den zahlreichen beliebten Media Playern geschützt, die so codiert sind, dass bei jeder Videoanforderung ein no-cache-Header mitgesendet wird. Trotzdem kann es von Vorteil sein, diese Funktion auf bestimmte nicht produktive Staging- oder Testverzeichnisse anzuwenden, damit neuer Inhalt bei Bedarf vom Ursprungsserver abgerufen werden kann.
 
-Der Cachestatus, der für eine Anforderung gemeldet wird, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden darf, lautet „TCP_Client_Refresh_Miss“. Der Cachestatusbericht, der im Kernberichtsmodul verfügbar ist, stellt Statistikinformationen nach Cachestatus bereit. So können Sie die Anzahl und den Prozentsatz von Anforderungen nachverfolgen, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden.
+Der Cachestatus, der für eine Anforderung gemeldet wird, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden kann, lautet `TCP_Client_Refresh_Miss`. Der Cachestatusbericht, der im Kernberichtsmodul verfügbar ist, stellt Statistikinformationen nach Cachestatus bereit. Anhand dieses Berichts können Sie die Anzahl und den Prozentsatz von Anforderungen nachverfolgen, die aufgrund dieses Features an einen Ursprungsserver weitergeleitet werden.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -707,16 +749,28 @@ Wichtige Informationen:
 - Konfigurieren Sie dieses Feature durch die Definition einer durch Leerzeichen getrennten Liste von Statuscodes, für die die oben genannten Anweisungen ignoriert werden sollen.
 - Der Satz gültiger Statuscodes für dieses Feature ist: 200, 203, 300, 301, 302, 305, 307, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 500, 501, 502, 503, 504 und 505.
 - Deaktivieren Sie diese Funktion, indem Sie sie auf einen leeren Wert festlegen.
-- Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
-    - Edge 
-    - Cname
-    - Request Header Literal
-    - Request Header Wildcard
-    - Request Method
-    - URL Query Literal
-    - URL Query Wildcard
 
 **Standardverhalten:** Standardmäßig werden die oben genannten Anweisungen berücksichtigt.
+
+#### <a name="compatibility"></a>Kompatibilität
+Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
+- AS Number
+- Client IP Address
+- Cookie Parameter
+- Cookie Parameter Regex
+- Country
+- Gerät
+- Edge Cname
+- Referring Domain
+- Request Header Literal
+- Request Header Regex
+- Request Header Wildcard
+- Request Method
+- Request Scheme
+- URL Query Literal
+- URL Query Regex
+- URL Query Wildcard
+- URL Query Parameter
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -758,16 +812,28 @@ Wichtige Informationen:
     - Geben Sie einen ganzzahligen Wert an, und wählen Sie dann die gewünschte Zeiteinheit aus (beispielsweise Sekunden, Minuten oder Stunden). Dieser Wert definiert den internen max-stale-Wert, der angewendet wird.
 
 - Durch Festlegen der Zeiteinheit auf „Off“ wird dieses Feature deaktiviert. Ein zwischengespeichertes Asset wird nicht über seine normale Ablaufzeit hinaus bedient.
-- Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
-    - Edge 
-    - Cname
-    - Request Header Literal
-    - Request Header Wildcard
-    - Request Method
-    - URL Query Literal
-    - URL Query Wildcard
 
 **Standardverhalten:** Zwei Minuten
+
+#### <a name="compatibility"></a>Kompatibilität
+Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, kann dieses Feature nicht den folgenden Übereinstimmungsbedingungen zugeordnet sein: 
+- AS Number
+- Client IP Address
+- Cookie Parameter
+- Cookie Parameter Regex
+- Country
+- Gerät
+- Edge Cname
+- Referring Domain
+- Request Header Literal
+- Request Header Regex
+- Request Header Wildcard
+- Request Method
+- Request Scheme
+- URL Query Literal
+- URL Query Regex
+- URL Query Wildcard
+- URL Query Parameter
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -792,7 +858,7 @@ Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden Abfr
 ### <a name="maximum-keep-alive-requests"></a>Maximum Keep-Alive Requests
 **Zweck:** Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
 
-Vom Festlegen der maximalen Anzahl von Anforderungen auf einen niedrigen Wert wird dringend abgeraten, da dies zu Leistungseinbußen führen kann.
+Die maximale Anzahl von Anforderungen sollte nicht auf einen niedrigen Wert festgelegt werden, da dies zu Leistungseinbußen führen kann.
 
 Wichtige Informationen:
 
@@ -818,9 +884,9 @@ Für einen Anforderungsheader kann eine der folgenden Aktionen ausgeführt werde
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**Wert1 <br/>**Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
-Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):**Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Anforderungsheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):** Wert1 <br/> **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
+Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):** Wert1 <br/>**Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
+Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Anforderungsheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
 
 Wichtige Informationen:
 
@@ -856,8 +922,8 @@ Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
-Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>**Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
+Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):** Wert1 <br/>**Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
 Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Response Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
@@ -924,12 +990,22 @@ Wichtige Informationen:
 
 ---
 ### <a name="proxy-special-headers"></a>Proxy Special Headers
-**Zweck:** Definiert den Satz von CDN-spezifischen Anforderungsheadern, der von einem POP an einen Ursprungsserver weitergeleitet wird.
+**Zweck:** Definiert den Satz von [Verizon-spezifischen HTTP-Anforderungsheadern](cdn-verizon-http-headers.md), die von einem POP an einen Ursprungsserver weitergeleitet werden.
 
 Wichtige Informationen:
 
-- Jeder in diesem Feature definierte CDN-spezifische Anforderungsheader wird an einen Ursprungsserver weitergeleitet.
-- Verhindern Sie, dass ein CDN-spezifischer Anforderungsheader an einen Ursprungsserver weitergeleitet wird, indem Sie ihn aus dieser Liste entfernen.
+- Jeder in diesem Feature definierte CDN-spezifische Anforderungsheader wird an einen Ursprungsserver weitergeleitet. Ausgeschlossene Header werden nicht weitergeleitet.
+- Wenn Sie die Weiterleitung eines CDN-spezifischen Anforderungsheaders unterbinden möchten, entfernen Sie ihn aus der durch Leerzeichen getrennten Liste im Headerlistenfeld.
+
+Die Standardliste enthält folgende HTTP-Header:
+- Via
+- X-Forwarded-For
+- X-Forwarded-Proto
+- X-Host
+- X-Midgress
+- X-Gateway-List
+- X-EC-Name
+- Host
 
 **Standardverhalten:** Alle CDN-spezifischen Anforderungsheader werden an den Ursprungsserver weitergeleitet.
 
@@ -1041,12 +1117,17 @@ Wenn die tokenbasierte Authentifizierung aktiviert ist, werden nur Anforderungen
 
 Der Verschlüsselungsschlüssel, der zum Verschlüsseln und Entschlüsseln von Tokenwerten verwendet wird, wird durch die Optionen „Primary Key“ und „Backup Key“ auf der Seite „Token Auth“ festgelegt. Beachten Sie, dass Verschlüsselungsschlüssel plattformspezifisch sind.
 
+**Standardverhalten:** Deaktiviert.
+
+Dieses Feature hat Vorrang vor den meisten Features (mit Ausnahme von „URL Rewrite“).
+
 Wert | Ergebnis
 ------|---------
 Aktiviert | Schützt den angeforderten Inhalt durch tokenbasierte Authentifizierung. Nur Anforderungen von Clients, die ein gültiges Token bereitstellen und dessen Anforderungen erfüllen, werden berücksichtigt. FTP-Transaktionen werden von der tokenbasierten Authentifizierung ausgeschlossen.
 Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer tokenbasierten Authentifizierungskonfiguration gestattet festzulegen, ob eine Anforderung gesichert wird.
 
-**Standardverhalten:** Deaktiviert.
+#### <a name="compatibility"></a>Kompatibilität
+Verwenden Sie „Token Auth“ nicht mit der Übereinstimmungsbedingung „Always“. 
 
 [Nach oben](#azure-cdn-rules-engine-features)
 
@@ -1055,8 +1136,6 @@ Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer
 ---
 ### <a name="token-auth-denial-code"></a>Token Auth Denial Code
 **Zweck:** Legt die Art der Antwort fest, die einem Benutzer zurückgegeben wird, wenn eine Anforderung aufgrund der tokenbasierten Authentifizierung verweigert wird.
-
-Token Auth Denial Code kann nicht mit der Übereinstimmungsbedingung „Always“ verwendet werden. Verwenden Sie stattdessen den Abschnitt **Custom Denial Handling** auf der Seite **Token Auth** des **Verwaltungsportals**. Weitere Informationen finden Sie unter [Schützen von Azure CDN-Assets mit Tokenauthentifizierung](cdn-token-auth.md).
 
 Die verfügbaren Antwortcodes sind in der folgenden Tabelle aufgeführt.
 
@@ -1068,6 +1147,9 @@ Antwortcode|Antwortname|BESCHREIBUNG
 401|Nicht autorisiert|Durch Kombinieren dieses Statuscodes mit dem Antwortheader „WWW-Authenticate“ können Sie einen Benutzer zur Authentifizierung auffordern.
 403|Verboten|Dies ist die standardmäßige Statusmeldung „403 – Verboten“, die einem nicht autorisierten Benutzer angezeigt wird, wenn er versucht, auf geschützte Inhalte zuzugreifen.
 404|Datei nicht gefunden|Dieser Statuscode gibt an, dass der HTTP-Client mit dem Server kommunizieren konnte, der angeforderte Inhalt jedoch nicht gefunden wurde.
+
+#### <a name="compatibility"></a>Kompatibilität
+Verwenden Sie „Token Auth Denial Code“ nicht mit der Übereinstimmungsbedingung „Always“. Verwenden Sie stattdessen den Abschnitt **Custom Denial Handling** auf der Seite **Token Auth** des **Verwaltungsportals**. Weitere Informationen finden Sie unter [Schützen von Azure CDN-Assets mit Tokenauthentifizierung](cdn-token-auth.md).
 
 #### <a name="url-redirection"></a>URL-Umleitung
 
@@ -1152,7 +1234,7 @@ Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werd
 Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
-Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
 Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
@@ -1177,7 +1259,7 @@ Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](.
     - Beispielszenario 3: 
         - Beispielanforderung (Edge-CNAME-URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
         - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
-- Die Variable „Request Scheme (%{scheme})“ wurde in der Option „Destination“ genutzt. Dadurch wird sichergestellt, dass das Schema der Anforderung nach der Umleitung unverändert bleibt.
+- Die Variable „Request Scheme (%{scheme})“ wird in der Option „Destination“ verwendet. Dadurch wird sichergestellt, dass das Schema der Anforderung nach der Umleitung unverändert bleibt.
 - Die aus der Anforderung erfassten URL-Segmente werden über „$1“ an die neue URL angefügt.
 
 [Nach oben](#azure-cdn-rules-engine-features)
@@ -1194,9 +1276,9 @@ Wichtige Informationen:
 
 Option|BESCHREIBUNG
 -|-
- Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dies ist der Abschnitt „/XXXX/“ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
+ Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
  Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
- Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Dies bedeutet, dass die anfordernde Person den gleichen Antwortcode erhält, den sie auch bei Anforderung der umgeschriebenen URL erhalten hätte.
+ Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Die anfordernde Person erhält also den gleichen Antwortcode, den sie auch beim Anfordern der umgeschriebenen URL erhalten hätte.
 
 **Beispielszenario 1**
 
@@ -1220,7 +1302,6 @@ Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](.
 - Die aus der Anforderung erfassten URL-Segmente werden über „$1“ an die neue URL angefügt.
 
 #### <a name="compatibility"></a>Kompatibilität
-
 Dieses Feature umfasst Übereinstimmungskriterien, die erfüllt sein müssen, bevor es auf eine Anforderung angewendet werden kann. Um die Einrichtung widersprüchlicher Übereinstimmungskriterien zu verhindern, ist dieses Feature mit den folgenden Übereinstimmungsbedingungen nicht kompatibel:
 
 - AS Number

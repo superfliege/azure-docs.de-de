@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8727318c9dff79b795b473caf7b778272134726c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b0e8153f1d0cecd4efe66dc7cce64addd6ed62aa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-powershell"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe von PowerShell
 
@@ -68,7 +68,7 @@ Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
     -PrivateIpAddress 192.168.1.101
     ```
 
-5. Erstellen Sie den virtuellen Computer mit der zuvor erstellten Netzwerkkarte.
+5. Erstellen der VM mit der Netzwerkkarte:
 
     ```powershell
     $vm = New-AzureRmVMConfig -VMName DNS01 -VMSize "Standard_A1"
@@ -83,16 +83,7 @@ Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
     New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm 
     ```
 
-    Erwartete Ausgabe:
-    
-        EndTime             : [Date and time]
-        Error               : 
-        Output              : 
-        StartTime           : [Date and time]
-        Status              : Succeeded
-        TrackingOperationId : [Id]
-        RequestId           : [Id]
-        StatusCode          : OK 
+Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-powershell.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private). Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer im Betriebssystem des virtuellen Computers zugewiesen werden.
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-network-interface"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für eine Netzwerkschnittstelle
 Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *PrivateIpAddress* und *PrivateIpAllocationMethod* an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
@@ -199,6 +190,9 @@ $nic.IpConfigurations[0].PrivateIpAllocationMethod = "Static"
 $nic.IpConfigurations[0].PrivateIpAddress = "192.168.1.101"
 Set-AzureRmNetworkInterface -NetworkInterface $nic
 ```
+
+Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-powershell.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private). Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer im Betriebssystem des virtuellen Computers zugewiesen werden.
+
 ## <a name="change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist
 
 Eine private IP-Adresse wird mithilfe der statischen oder der dynamischen Zuordnungsmethode zu einer Netzwerkwerkkarte zugewiesen. Dynamische IP-Adressen können sich nach dem Starten eines virtuellen Computers ändern, der zuvor beendet (freigegeben) war. Dies kann zu Problemen führen, wenn der virtuelle Computer einen Dienst hostet, der nach dem Neustarten des Computers aus dem beendeten (freigegebenen) Zustand weiterhin die gleiche IP-Adresse benötigt. Statische IP-Adressen werden beibehalten, bis der virtuelle Computer gelöscht wird. Um die Zuordnungsmethode einer IP-Adresse zu ändern, führen Sie das folgende Skript aus, das die Zuordnungsmethode von „dynamisch“ zu „statisch“ ändert. Wenn für die aktuelle private IP-Adresse die statische Zuordnungsmethode festgelegt ist, ändern Sie vor dem Ausführen des Skripts den Eintrag *Static* zu *Dynamic*.
@@ -222,7 +216,5 @@ Get-AzureRmNetworkInterface -ResourceGroupName $RG | Where-Object {$_.Provisioni
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
-* Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
 
+Erfahren Sie mehr über die Verwaltung von [privaten IP-Adressen](virtual-network-network-interface-addresses.md).

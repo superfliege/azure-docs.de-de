@@ -1,11 +1,11 @@
 ---
 title: Patchen von Betriebssystem und Runtime in Azure App Service | Microsoft-Dokumentation
-description: "Beschreibt, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, und wie Sie Updateankündigungen erhalten."
+description: Beschreibt, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, und wie Sie Updateankündigungen erhalten.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 869bd0e3f684ff4a2291e189cf247daedfb74922
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -93,7 +93,7 @@ Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language R
 | Python-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `python --version` |
 
 > [!NOTE]
-> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches]((https://technet.microsoft.com/security/bulletins.aspx)) gespeichert sind, ist gesperrt.
+> Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) gespeichert sind, ist gesperrt.
 >
 >
 

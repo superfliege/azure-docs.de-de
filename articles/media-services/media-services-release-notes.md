@@ -1,11 +1,11 @@
 ---
-title: "Media Services – Anmerkungen zu dieser Version | Microsoft Docs"
+title: Media Services – Anmerkungen zu dieser Version | Microsoft Docs
 description: Versionsanmerkungen zu Media Services
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 3ca2d7af-1cf0-45fa-9585-3b73f3ee057d
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 20a24aa19989370c6ce82a738193a78f24b0eba9
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 Diese Versionsanmerkungen zu Azure Media Services bieten eine Übersicht über Änderungen im Vergleich zu früheren Versionen und bekannte Probleme.
@@ -47,7 +47,7 @@ Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [
 
 ## <a name="october-2017-release"></a>Release von Oktober 2017
 > [!IMPORTANT] 
-> Für Media Services werden Azure Access Control Service-Authentifizierungsschlüssel in Zukunft nicht mehr unterstützt. Ab 1. Juni 2018 können Sie sich beim Media Services-Back-End nicht mehr über den Code durch Verwendung von Access Control Service-Schlüsseln authentifizieren. Sie müssen Ihren Code für die Verwendung von Azure Active Directory (Azure AD) gemäß den Informationen unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md) aktualisieren. Achten Sie im Azure-Portal auf Warnhinweise zu dieser Änderung.
+> Für Media Services werden Azure Access Control Service-Authentifizierungsschlüssel in Zukunft nicht mehr unterstützt. Ab 22. Juni 2018 können Sie sich beim Media Services-Back-End nicht mehr über den Code durch Verwendung von Access Control Service-Schlüsseln authentifizieren. Sie müssen Ihren Code für die Verwendung von Azure Active Directory (Azure AD) gemäß den Informationen unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md) aktualisieren. Achten Sie im Azure-Portal auf Warnhinweise zu dieser Änderung.
 
 ### <a name="updates-for-october-2017"></a>Updates für Oktober 2017
 #### <a name="sdks"></a>SDKs
@@ -115,7 +115,7 @@ Weitere Informationen zu diesen Eigenschaften finden Sie unter [StreamingEndpoin
 Wenn eine Codierungsaufgabe an Media Encoder Standard oder Media Encoder Premium gesendet wird, erstellt die Aufgabe eine [Streamingmanifestdatei](media-services-deliver-content-overview.md) (*.ism) im Ausgabemedienobjekt. Im letzten Dienstrelease wurde die Syntax dieser Streamingmanifestdatei aktualisiert.
 
 > [!NOTE]
-> Die Syntax der Streamingmanifestdatei (.ism) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
+> Die Syntax der Streamingmanifestdatei (*.ism) ist für die interne Verwendung reserviert. Dies soll in zukünftigen Releases geändert werden. Ändern oder bearbeiten Sie den Inhalt dieser Datei nicht.
 > 
 > 
 

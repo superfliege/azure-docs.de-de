@@ -1,25 +1,25 @@
 ---
 title: Kontingenttypen in Azure Stack | Microsoft-Dokumentation
-description: "In diesem Artikel finden Sie Informationen zu den unterschiedlichen Kontingenttypen, die für Dienste und Ressourcen in Azure Stack verfügbar sind."
+description: In diesem Artikel finden Sie Informationen zu den unterschiedlichen Kontingenttypen, die für Dienste und Ressourcen in Azure Stack verfügbar sind.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/23/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: xiaofmao
+ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -35,16 +35,18 @@ ms.lasthandoff: 02/21/2018
 | Maximale Anzahl von Verfügbarkeitsgruppen | 10 | Die maximale Anzahl von Verfügbarkeitsgruppen, die an diesem Speicherort erstellt werden können |
 | Maximale Anzahl von Skalierungsgruppen für virtuelle Computer | 20 | Die maximale Anzahl von Skalierungsgruppen für virtuelle Computer, die an diesem Speicherort erstellt werden können |
 
-> [!NOTE]
-> Computekontingente werden in dieser technischen Vorschau nicht erzwungen.
-> 
-> 
+
 
 ## <a name="storage-quota-types"></a>Speicherkontingenttypen
 | **Element** | **Standardwert** | **Beschreibung** |
 | --- | --- | --- |
 | Maximale Kapazität (GB) |500 |Die Gesamtspeicherkapazität, die von einem Abonnement an diesem Speicherort genutzt werden kann |
 | Gesamte Anzahl von Speicherkonten |20 |Die maximale Anzahl von Speicherkonten, die ein Abonnement an diesem Speicherort erstellen kann |
+
+> [!NOTE]  
+> Es kann bis zu zwei Stunden dauern, bis ein neues Speicherplatzkontingent erzwungen wird. 
+> 
+> 
 
 ## <a name="network-quota-types"></a>Netzwerkkontingenttypen
 | **Element** | **Standardwert** | **Beschreibung** |

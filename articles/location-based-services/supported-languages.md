@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: cpendle
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8c284bb3637415186a12c63d4eeb088ab5f23e2e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f85a7b018085ce30550bec21fe41ca3f9253da80
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-location-based-services---supported-languages"></a>Azure Location Based Services – unterstützte Sprachen
 Die verschiedenen Azure Location Based Services wurden in verschiedene Sprachen übersetzt.  In der folgenden Tabelle finden Sie die unterstützten Sprachcodes für jeden Dienst.  
@@ -26,7 +26,7 @@ Die verschiedenen Azure Location Based Services wurden in verschiedene Sprachen 
 
 
 
-| ID         | NAME                   |  Karten | Suche | Routenplanung | Verkehrsmeldungen | JS-Kartensteuerelement | Zeitzone |
+| ID         | NAME                   |  Karten | Suchen, | Routing | Verkehrsmeldungen | JS-Kartensteuerelement | Zeitzone |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -38,7 +38,7 @@ Die verschiedenen Azure Location Based Services wurden in verschiedene Sprachen 
 | hr-HR      | Kroatisch               |       |    ✓   |         |                   |                |     ✓     |
 | cs-CZ      | Tschechisch                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | da-DK      | Dänisch                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl -NL     | Niederländisch                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| nl-NL      | Niederländisch                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | Niederländisch (Belgien)        |       |    ✓   |         |                   |                |     ✓     |
 | en         | Englisch                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | et-EE      | Estnisch               |       |    ✓   |         |         ✓         |                |     ✓     |

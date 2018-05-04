@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: f090bcd56377d167dddab1b8f942d473aecb66a2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 999c9bc04cffcfe3e352d877ebf9e19fc7c7df35
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -253,7 +253,7 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 
 |**Anforderung**  | **Details**  |**Veröffentlichungsoption**  |
 |---------|---------|---------|
-|**Kostenloser Testzeitraum und Testversion**     |  Ein Kunde muss Ihre App für begrenzte Zeit kostenlos verwenden können.<br><br>Dies bedeutet, dass der Kunde weder Lizenz- bzw. Abonnementgebühren für Ihr Produkt noch die Kosten des zugrunde liegenden Erstanbieterprodukts oder -diensts von Microsoft zahlen muss. Da alle Testoptionen für das Microsoft-Produktabonnement des Herausgebers bereitgestellt werden, hat er die alleinige Kontrolle über die Optimierung und Verwaltung der Testkosten.<br><br>Sie können eine kostenlose Testversion, eine interaktive Demo oder eine Testversion auswählen. Unabhängig von Ihrer Wahl muss die kostenlose Testversion dem Kunden ausreichend Zeit lassen, die App ohne zusätzliche Kosten zu testen.<br><br>Beginnen Sie mit dem Prozess zur Erstellung einer Testversion, indem Sie sich an cloudmarketplace@microsoft.com wenden. <br><br>Beachten Sie, dass Azure Marketplace-SaaS-Testversionen es Benutzern ermöglichen müssen, sich mit ihren Anmeldeinformationen für Active Directory anzumelden. [Weitere Informationen](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) |   Testversion      | 
+|**Kostenloser Testzeitraum und Testversion**     |  Ein Kunde muss Ihre App für begrenzte Zeit kostenlos verwenden können.<br><br>Dies bedeutet, dass der Kunde weder Lizenz- bzw. Abonnementgebühren für Ihr Produkt noch die Kosten des zugrunde liegenden Erstanbieterprodukts oder -diensts von Microsoft zahlen muss. Da alle Testoptionen für das Microsoft-Produktabonnement des Herausgebers bereitgestellt werden, hat er die alleinige Kontrolle über die Optimierung und Verwaltung der Testkosten.<br><br>Sie können eine kostenlose Testversion, eine interaktive Demo oder eine Testversion auswählen. Unabhängig von Ihrer Wahl muss die kostenlose Testversion dem Kunden ausreichend Zeit lassen, die App ohne zusätzliche Kosten zu testen.<br><br>Beginnen Sie mit dem Prozess zur Erstellung einer Testversion, indem Sie sich an cloudmarketplace@microsoft.com wenden. <br><br>Beachten Sie, dass Azure Marketplace-SaaS-Testversionen es Benutzern ermöglichen müssen, sich mit ihren Anmeldeinformationen für Active Directory anzumelden. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) |   Testversion      | 
 | **Leicht konfigurierbare, schlüsselfertige Lösung**    |  Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen.       |  Testversion       |
 |**Verfügbarkeit/Betriebszeit**    |    Ihre SaaS-App oder -Plattform benötigt eine Betriebszeit von mindestens 99,9 %.     |    Testversion     |
 |**Azure Active Directory**    |    Ihr Angebot muss die einmalige Azure Active Directory-Verbundanmeldung (SSO) mit aktivierter Zustimmung zulassen.      |  Testversion|
@@ -264,7 +264,7 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 |**Anforderung**  |**Details** |**Veröffentlichungsoption**  |
 |---------|---------|---------|
 |**Abrechnung und Messung**    |  Ihr virtueller Computer muss entweder die BYOL- oder die nutzungsbasierte monatliche Abrechnung zulassen.       |    Transaktion    |
-|**Azure-kompatibler virtueller Datenträger (Virtual Hard Disk, VHD)**     |   Virtuelle Computer müssen unter [Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) oder [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) erstellt werden.    |   Transaktion      |
+|**Azure-kompatibler virtueller Datenträger (Virtual Hard Disk, VHD)**     |   Virtuelle Computer müssen unter [Windows](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) oder [Linux](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) erstellt werden.    |   Transaktion      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Besondere Voraussetzungen für die Veröffentlichung von Beratungsdiensten
 
@@ -277,7 +277,7 @@ Jeder Enterprise Agreement-Kunde kann durch eine vorherige, Azure betreffende fi
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Verwenden von Azure Active Directory, um Tests zu ermöglichen
 Azure Active Directory ist ein Cloudidentitätsdienst, der die Authentifizierung mit einem Geschäfts- oder Schulkonto von Microsoft mithilfe der branchenüblichen Protokolle OAuth und OpenID Connect ermöglicht. Weitere Informationen zu Azure AD finden Sie auf der [Webseite zum Produkt](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features). 
 
-Microsoft authentifiziert alle Marketplace-Benutzer per Azure AD. Wenn ein authentifizierter Benutzer im Marketplace durch Ihr Testversionsangebot klickt und zu Ihrer Testumgebung geleitet wird, können Sie dem Benutzer ohne zusätzlichen Anmeldungsschritt direkt eine Testversion bereitstellen. Das [Token, das Ihre App während der Authentifizierung von Azure AD erhält](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens), enthält wertvolle Benutzerinformationen, die Sie zum Erstellen eines Benutzerkontos in Ihrer App verwenden können. Sie können dann den Ablauf der Bereitstellung automatisieren und die Wahrscheinlichkeit für eine Konvertierung erhöhen. 
+Microsoft authentifiziert alle Marketplace-Benutzer per Azure AD. Wenn ein authentifizierter Benutzer im Marketplace durch Ihr Testversionsangebot klickt und zu Ihrer Testumgebung geleitet wird, können Sie dem Benutzer ohne zusätzlichen Anmeldungsschritt direkt eine Testversion bereitstellen. Das [Token, das Ihre App während der Authentifizierung von Azure AD erhält](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens), enthält wertvolle Benutzerinformationen, die Sie zum Erstellen eines Benutzerkontos in Ihrer App verwenden können. Sie können dann den Ablauf der Bereitstellung automatisieren und die Wahrscheinlichkeit für eine Konvertierung erhöhen. 
 
 Wenn Sie Azure AD zum Ermöglichen der Authentifizierung per Klick für Ihre App oder Testversion verwenden, bewirkt dies Folgendes:
 
@@ -292,20 +292,20 @@ Wenn Sie Azure AD bereits unterstützen:
 
 - Registrieren Sie Ihre Anwendung im Azure-Portal.
 - Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für die Testversion die Nutzung per einfachem Klick zu ermöglichen.
-- [Weitere Informationen](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+- [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
 
 Wenn die einmalige Azure AD-Verbundanmeldung für Sie neu ist:
 
 - Registrieren Sie Ihre Anwendung im Azure-Portal.
-- Entwickeln Sie SSO mit Azure AD mithilfe von [OpenID Connect](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-openid-connect-code) oder [OAuth 2.0](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-protocols-oauth-code).
+- Entwickeln Sie SSO mit Azure AD mithilfe von [OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code) oder [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code).
 - Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für die Testversion die Nutzung per einfachem Klick zu ermöglichen.
-- [Weitere Informationen](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
+- [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified)
 
 ### <a name="certify-your-azure-ad-integration-for-the-marketplace-single-tenant-applications"></a>Zertifizieren Ihrer Azure AD-Integration für den Marketplace: Anwendungen mit nur einem Mandanten
 
 Es gibt mehrere Optionen für Anwendungen mit einem Mandanten:
 
-- Hinzufügen von Benutzern als Gastbenutzer zu Ihrem Verzeichnis mit [Azure B2B](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
+- Hinzufügen von Benutzern als Gastbenutzer zu Ihrem Verzeichnis mit [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
 - Manuelles Bereitstellen von Testversionen für Kunden über „Kontaktaufnahme“
 - Entwickeln einer Testversion pro Kunde
 - Erstellen einer mehrinstanzenfähigen Beispiel-Demo-App mit SSO
@@ -316,11 +316,11 @@ Weitere Informationen zu den speziellen Anforderungen für AppSource-Apps, mit d
 
 |Produkt |Informationen zur Veröffentlichung  |
 |---------|---------|
-|Office 365     |    Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien]( https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).     |
-|Dynamics 365 for Finance and Operations  |   Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
-|Dynamics 365 for Customer Engagement |Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource). |
-|Power BI   |     Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien]( https://docs.microsoft.com/en-us/power-bi/developer/office-store).    |
-|Cortana Intelligence     |    Lesen Sie die Informationen zu [Cortana in AppSource](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
+|Office 365     |    Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien]( https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).     |
+|Dynamics 365 for Finance and Operations  |   Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).      |
+|Dynamics 365 for Customer Engagement |Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource). |
+|Power BI   |     Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien]( https://docs.microsoft.com/power-bi/developer/office-store).    |
+|Cortana Intelligence     |    Lesen Sie die Informationen zu [Cortana in AppSource](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide).     |
 |AppSource-Beratungsangebote     |  Lesen Sie die [Informationen zu den Richtlinien, und erhalten Sie Informationen zum Übermitteln Ihres Angebots](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf).    |
 
 
@@ -522,11 +522,11 @@ Beachten Sie beim Erstellen eines Unternehmenskontos diese Richtlinien, falls me
 
 Auf Ihr Entwicklerkonto sollte in erster Linie mit vertrauenswürdigen PCs zugegriffen werden. Dies ist wichtig, da die Anzahl von Codes, die pro Konto und Woche generiert werden, beschränkt ist. Darüber hinaus ermöglicht die Nutzung von vertrauenswürdigen PCs die nahtloseste Anmeldeerfahrung.
 
-Weitere Informationen zu zusätzlichen Entwicklerkontorichtlinien und zur Sicherheit finden Sie unter [Eröffnen eines Entwicklerkontos](https://docs.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account).
+Weitere Informationen zu zusätzlichen Entwicklerkontorichtlinien und zur Sicherheit finden Sie unter [Eröffnen eines Entwicklerkontos](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account).
 
 ### <a name="guidance-for-microsoft-ids-in-an-azure-ad-federated-domain"></a>Leitfaden zu Microsoft-IDs in einer Azure AD-Verbunddomäne
 
-Ihr Unternehmenskonto kann mit [Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/) in einen Verbund eingefügt werden. Es wird ein Fehler zurückgegeben, wenn Sie versuchen, eine Microsoft-ID mit der E-Mail-Adresse eines Unternehmens zu erstellen. Wenn Sie eine Fehlermeldung erhalten, erkundigen Sie sich zunächst beim IT-Team, ob dies der Fall ist. Dies ist ein bekanntes Problem, und wir arbeiten an der Lösung. 
+Ihr Unternehmenskonto kann mit [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) in einen Verbund eingefügt werden. Es wird ein Fehler zurückgegeben, wenn Sie versuchen, eine Microsoft-ID mit der E-Mail-Adresse eines Unternehmens zu erstellen. Wenn Sie eine Fehlermeldung erhalten, erkundigen Sie sich zunächst beim IT-Team, ob dies der Fall ist. Dies ist ein bekanntes Problem, und wir arbeiten an der Lösung. 
 
 Als Problemumgehung empfehlen wir, in der Domäne @outlook.com eine neue E-Mail-Adresse und eine dazugehörige Regel zu erstellen. Folgen Sie diesen Schritten:
 
@@ -562,7 +562,7 @@ Nachdem Sie den letzten Schritt abgeschlossen haben, sendet Outlook alle E-Mails
 5. Wählen Sie unter **Kontotyp** den Typ **Unternehmen** aus, und klicken Sie auf die Schaltfläche **Weiter**.
 
    >[!IMPORTANT]
-   >Unter [Kontotypen, Standorte und Gebühren](https://docs.microsoft.com/en-us/windows/uwp/publish/account-types-locations-and-fees) können Sie sich über Kontotypen und die für Sie richtige Kontotypenauswahl informieren.
+   >Unter [Kontotypen, Standorte und Gebühren](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees) können Sie sich über Kontotypen und die für Sie richtige Kontotypenauswahl informieren.
 
 6. Geben Sie unter **Anzeigename des Herausgebers** den Anzeigenamen ein (normalerweise der Name Ihres Unternehmens).
 

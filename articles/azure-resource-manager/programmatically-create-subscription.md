@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/18/2018
 ms.author: jlian
-ms.openlocfilehash: 5ec67c0d51d24a7bb93a3f11bf3b73a223e8b583
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8d495bf89697a5e14ff79953ab98f241ef8972e8
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
@@ -88,10 +88,10 @@ Azure gibt eine Liste aller Registrierungskonten zurück, auf die Sie zugreifen 
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Verwenden Sie den Befehl [Get-EnrollmentAccount](/powershell/module/azurerm.billing/get-azurermenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können.
+Verwenden Sie den Befehl [Get-Get-AzureRmEnrollmentAccount](/powershell/module/azurerm.billing/get-azurermenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können.
 
 ```azurepowershell-interactive
-Get-EnrollmentAccount
+Get-AzureRmEnrollmentAccount
 ```
 
 Azure gibt eine Liste der Objekt-IDs und E-Mail-Adressen von Konten zurück.
@@ -165,9 +165,9 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `displayName` | Nein       | Zeichenfolge | Der Anzeigename des Abonnements. Wenn er nicht angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
+| `displayName` | Nein       | Zeichenfolge | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `offerType`   | Ja      | Zeichenfolge | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `owners`      | Nein        | Zeichenfolge | Die Objekt-ID eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird.  |
 
@@ -183,9 +183,9 @@ Verwenden Sie [New-AzureRmSubscription](/powershell/module/azurerm.subscription.
 New-AzureRmSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountId> -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
-| `Name` | Nein      | Zeichenfolge | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
+| `Name` | Nein       | Zeichenfolge | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `OfferType`   | Ja      | Zeichenfolge | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `OwnerObjectId`      | Nein        | Zeichenfolge | Die Objekt-ID eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird.  |
 | `OwnerSignInName`    | Nein        | Zeichenfolge | Die E-Mail-Adresse eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird. Sie können diesen Parameter anstelle von `OwnerObjectId` verwenden.|
@@ -203,7 +203,7 @@ Verwenden Sie [az account create](/cli/azure/ext/subscription/account?view=azure
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-name "<enrollmentAccountId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Elementname  | Erforderlich | Typ   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | Typ   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nein       | Zeichenfolge | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `offer-type`   | Ja      | Zeichenfolge | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |

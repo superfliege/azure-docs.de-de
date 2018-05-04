@@ -1,4 +1,4 @@
-Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu aktivieren, müssen Sie eine Richtlinie zur Kennwortrücksetzung erstellen. Beachten Sie, dass die Option zur mandantenweiten Kennwortzurücksetzung [hier](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) angegeben ist. Diese Richtlinie beschreibt die Benutzeroberflächen, die die Kunden während der Kennwortrücksetzung durchlaufen, und die Inhalte der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
+Um eine differenzierte Kennwortrücksetzung in Ihrer Anwendung zu ermöglichen, verwenden Sie eine Richtlinie für die **Kennwortrücksetzung**. Beachten Sie, dass die Option zur mandantenweiten Kennwortzurücksetzung [hier](../articles/active-directory-b2c/active-directory-b2c-reference-sspr.md) angegeben ist. Diese Richtlinie beschreibt die Benutzeroberflächen, die die Kunden während der Kennwortrücksetzung durchlaufen, und die Inhalte der Token, die die Anwendung beim erfolgreichen Abschluss erhält.
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
@@ -6,7 +6,7 @@ Wählen Sie im Richtlinienabschnitt der Einstellungen die Option **Richtlinien f
 
 ![Registrierungs- oder Anmelderichtlinien auswählen und auf die Schaltfläche „Hinzufügen“ klicken](media/active-directory-b2c-create-password-reset-policy/add-b2c-password-reset-policy.png)
 
-Geben Sie einen **Richtliniennamen** ein, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SSPR`.
+Geben Sie einen **Richtliniennamen** an, auf den Ihre App verweisen kann. Geben Sie z. B. Folgendes ein: `SSPR`.
 
 Klicken Sie auf **Identitätsanbieter**, und aktivieren Sie **Kennwort mittels E-Mail-Adresse zurücksetzen**. Klicken Sie auf **OK**.
 

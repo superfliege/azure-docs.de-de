@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b0cd54c7750e85eb7b4e1ba6be309c585d5a7b4e
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d57c80e8e965e15d92736ec482247f02064f6009
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Tutorial: Azure Active Directory-Integration mit OpsGenie
 
@@ -112,33 +112,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://app.opsgenie.com/auth/login`
 
-4. Klicken Sie auf die Schaltfläche **Save** .
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_certificate.png)
+
+5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_general_400.png)
 
-5. Klicken Sie im Abschnitt **OpsGenie-Konfiguration** auf **OpsGenie konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden** aus der Kurzübersicht.
+6. Klicken Sie im Abschnitt **OpsGenie-Konfiguration** auf **OpsGenie konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden** aus der Kurzübersicht.
 
     ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_configure.png)
-
-6. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **OpsGenie** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-opsgenie-tutorial/tutorial_opsgenie_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
 7. Öffnen Sie eine weitere Browserinstanz, und melden Sie sich bei OpsGenie als Administrator an.
 
@@ -160,13 +144,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     a. Fügen Sie im Textfeld für den **SAML 2.0-Endpunkt** den Wert der **URL des Diensts für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
     
-    b. Fügen Sie im Textfeld **Metadaten-URL** den Wert für die **Metadaten-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie im Textfeld **Metadaten-URL** den Wert für die **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben.
     
     c. Klicken Sie auf **Änderungen speichern**.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.

@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentation zur Azure-Containerregistrierung
 metadata:
   title: Dokumentation für Azure Container Registry – Tutorials | Microsoft-Dokumentation
-  description: Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.
+  description: Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.
   services: container-registry
   author: czeumault
   manager: carolz
@@ -13,13 +13,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: c4b8cc1a9d56f1fcf94e79fbef3c025fa8e51641
-  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.openlocfilehash: 9cb59b1c9a8e3e219346b6dbac98246fc92b2412
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/28/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.
+  description: Mit Azure Container Registry können Sie Images für alle Arten von Containerbereitstellungen erstellen, speichern und verwalten. Anhand unserer Schnellstarts, Tutorials und Beispiele wird beschrieben, wie Sie Azure Container Registry verwenden.
 sections:
 - title: Fünfminütige Schnellstarts
   items:
@@ -48,6 +48,7 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
+    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Erstellen von Containerimages mit ACR Build (Vorschauversion)</a>
     - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Georeplikation für Containerregistrierung (Vorschauversion)</a>
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Containerregistrierung mit Azure Container Instances</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Containerregistrierung mit Azure Container Service (AKS)</a>

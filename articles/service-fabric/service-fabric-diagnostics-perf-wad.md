@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: b2b740c2ececba2c3f95f8fbfbfb55e7f4811112
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a9e8ef7243fcef990dae6ddc6509cd31b3f36e3d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
@@ -44,7 +44,9 @@ Um Leistungsindikatoren über die Microsoft Azure-Diagnoseerweiterung erfassen z
 
     `scheduledTransferPeriod` definiert, wie häufig die Werte der zu erfassenden Leistungsindikatoren an Ihre Azure-Speichertabelle sowie an ggf. konfigurierte Senken übertragen werden sollen. 
 
-3. Fügen Sie `PerformanceCounterConfiguration` (wurde im vorherigen Schritt deklariert) die Leistungsindikatoren hinzu, die erfasst werden sollen. Jeder zu erfassende Leistungsindikator wird mit `counterSpecifier`, `sampleRate`, `unit`, `annotation` sowie mit allen relevanten `sinks` definiert. Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *Total Processor Time* (Prozessorzeit gesamt; Dauer der Nutzung der CPU für Verarbeitungsvorgänge) und *Service Fabric Actor Method Invocations per Second* (Service Fabric Actor-Methode – Aufrufe pro Sekunde; einer der benutzerdefinierten Service Fabric-Leistungsindikatoren) angegeben. Eine vollständige Liste mit benutzerdefinierten Service Fabric-Leistungsindikatoren finden Sie in den Abschnitten zu [Reliable Actors-Leistungsindikatoren](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) und [Reliable Services-Leistungsindikatoren](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters).
+3. Fügen Sie `PerformanceCounterConfiguration` (wurde im vorherigen Schritt deklariert) die Leistungsindikatoren hinzu, die erfasst werden sollen. Jeder zu erfassende Leistungsindikator wird mit `counterSpecifier`, `sampleRate`, `unit`, `annotation` sowie mit allen relevanten `sinks` definiert.
+
+Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *Total Processor Time* (Prozessorzeit gesamt; Dauer der Nutzung der CPU für Verarbeitungsvorgänge) und *Service Fabric Actor Method Invocations per Second* (Service Fabric Actor-Methode – Aufrufe pro Sekunde; einer der benutzerdefinierten Service Fabric-Leistungsindikatoren) angegeben. Eine vollständige Liste mit benutzerdefinierten Service Fabric-Leistungsindikatoren finden Sie in den Abschnitten zu [Reliable Actors-Leistungsindikatoren](service-fabric-reliable-actors-diagnostics.md#list-of-events-and-performance-counters) und [Reliable Services-Leistungsindikatoren](service-fabric-reliable-serviceremoting-diagnostics.md#list-of-performance-counters).
 
  ```json
  "WadCfg": {
@@ -112,9 +114,8 @@ Um Leistungsindikatoren über die Microsoft Azure-Diagnoseerweiterung erfassen z
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. Nachdem der Rollout des Upgrades abgeschlossen ist (Dauer: 15 bis 45 Minuten), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist.
+5. Nachdem der Rollout des Upgrades abgeschlossen ist (Dauer: 15 bis 45 Minuten), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template).
 * Erfassen Sie weitere Leistungsindikatoren für Ihren Cluster. Eine Liste mit Leistungsindikatoren, die Sie erfassen sollten, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).
 * Unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md) erfahren Sie, wie Sie `WadCfg` noch weiter anpassen können und beispielsweise zusätzliche Speicherkonten für die Übermittlung von Diagnosedaten konfigurieren.

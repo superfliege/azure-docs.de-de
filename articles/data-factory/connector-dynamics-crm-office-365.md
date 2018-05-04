@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 04/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f56443eb41e2a7f723e95f86f39c5cc47e82f6f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -63,7 +63,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für Dynamics Online muss der Typ **Online** lauten. | Ja |
-| organizationName | Der Organisationsname der Dynamics-Instanz. | Nein. Er sollte angegeben werden, wenn dem Benutzer mehr als eine Dynamics-Instanz zugeordnet ist. |
+| serviceUri | Die Dienst-URL Ihrer Dynamics-Instanz, z.B. `https://adfdynamics.crm.dynamics.com` | Ja |
 | authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Geben Sie für Dynamics Online **Office 365** an. | Ja |
 | username | Geben Sie den Benutzernamen für die Herstellung der Verbindung mit Dynamics an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -71,6 +71,9 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 >[!IMPORTANT]
 >Beim Kopieren von Daten nach Dynamics kann die standardmäßige Azure Integration Runtime nicht zum Ausführen des Kopiervorgangs verwendet werden. Anders gesagt: Wenn für den mit der Quelle verknüpften Dienst keine Integration Runtime festgelegt wurde, [erstellen Sie explizit eine Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) mit einem Speicherort in der Nähe Ihrer Dynamics-Instanz. Ordnen Sie die Runtime in dem mit Dynamics verknüpften Dienst wie im folgenden Beispiel zu.
+
+>[!NOTE]
+>Der Dynamics-Connector hat zum Identifizieren Ihrer Dynamics CRM- oder 365 Online-Instanz früher die optionale Eigenschaft „organizationName“ verwendet. Diese Eigenschaft kann zwar immer noch verwendet werden, es wird jedoch empfohlen, stattdessen die neue Eigenschaft „serviceUri“ anzugeben, um eine bessere Leistung bei der Instanzermittlung zu erzielen.
 
 **Beispiel: Dynamics Online mithilfe der Office 365-Authentifizierung**
 
@@ -82,7 +85,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
         "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
-            "organizationName": "orga02d9c75",
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",
             "authenticationType": "Office365",
             "username": "test@contoso.onmicrosoft.com",
             "password": {
@@ -207,7 +210,7 @@ Legen Sie zum Kopieren von Daten aus Dynamics den Quelltyp in der Kopieraktivit�
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DynamicsSource** festgelegt werden. | Ja |
-| query | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FeachXML](https://msdn.microsoft.com/en-us/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist) |
+| query | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FeachXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

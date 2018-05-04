@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: e532659be9b8aef303a20900465d16a7641d8cfe
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8b004bec7c022662a1c90f54079af4fd25c84fab
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration mit Springer Link
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Springer Link über den Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -107,7 +107,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Springer Link](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url1.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://fsso.springer.com`
+    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://fsso.springer.com`.
 
     b. Geben Sie im Textfeld **Antwort-URL** folgende URL ein: `https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
 
@@ -115,37 +115,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Springer Link](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`    
+    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen. 
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_certificate.png)    
 
-6. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
+6. Klicken Sie auf die Schaltfläche **Save** .
 
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpointicon.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
 
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **Springer Link** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Copy** (Kopieren), und fügen Sie sie in den Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Für die **Springer Link**-seitige Konfiguration des einmaligen Anmeldens müssen Sie die generierte **Metadaten-URL** an das [Supportteam von Springer Link](mailto:identity@springernature.com) senden.
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-
+7. Für die **Springer Link**-seitige Konfiguration des einmaligen Anmeldens müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von Springer Link](mailto:identity@springernature.com) senden.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -177,7 +157,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -21,6 +21,14 @@
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+    - name: Erstellen von Containerimages (Vorschauversion)
+      items:
+        - name: '1: Erstellen von Images in Azure'
+          href: container-registry-tutorial-quick-build.md
+        - name: '2: Automatisieren der Imageerstellung'
+          href: container-registry-tutorial-build-task.md
+        - name: '3: Basisimage zum Aktualisieren von Builds'
+          href: container-registry-tutorial-base-image-update.md
     - name: Georeplikation (Vorschau)
       items:
         - name: '1: Vorbereiten der Containerregistrierung'

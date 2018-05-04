@@ -5,16 +5,16 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/27/2018
+ms.date: 04/26/2018
 ms.topic: tutorial
 ms.service: cost-management
-ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 5e068f971c8b8996273210f385ca4f83df8e4efb
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.custom: ''
+manager: dougeby
+ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/16/2018
 
 In diesem Tutorial wird beschrieben, wie Cost Management Sie beim Optimieren Ihrer Kosten für reservierte Instanzen und der Nutzung für Azure und Amazon Web Services (AWS) unterstützen kann. Bei beiden Cloud-Dienstanbietern gehen Sie mit einer reservierten Instanz einen langfristigen Vertrag ein, bei dem Sie sich im Voraus zur Nutzung der VM verpflichten. Hieraus können sich unter Umständen erhebliche Einsparungen gegenüber der Verwendung des Standardpreismodells mit nutzungsabhängiger Bezahlung ergeben. Potenzielle Einsparungen werden nur realisiert, wenn Sie die Kapazität Ihrer reservierten Instanzen vollständig nutzen.
 
-In diesem Tutorial wird beschrieben, wie Azure und reservierte AWS-Instanzen (RIs) von Cost Management unterstützt werden. Außerdem wird beschrieben, wie Sie die Kosten der reservierten Instanzen optimieren können. Vor allem sollten Sie sicherstellen, dass Ihre Reservierungen vollständig genutzt werden. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird beschrieben, wie Azure und reservierte AWS-Instanzen (RIs) von Cost Management unterstützt werden. Außerdem wird beschrieben, wie Sie die Kosten der reservierten Instanzen optimieren können. Vor allem sollten Sie sicherstellen, dass Ihre Reservierungen vollständig genutzt werden. In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Verstehen der Grundlagen von Azure-RI-Kosten

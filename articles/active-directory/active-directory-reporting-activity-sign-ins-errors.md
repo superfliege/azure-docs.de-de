@@ -1,25 +1,25 @@
 ---
-title: "Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
-description: "Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten."
+title: Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation
+description: Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1e5d477aa74d3d0588e33363888d84e860d4b2f8
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -65,6 +65,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50055|Ungültiges Kennwort. Es wurde ein abgelaufenes Kennwort eingegeben.|
 |50057|Das Benutzerkonto ist deaktiviert.|
 |50058|In den angegebenen Anmeldeinformationen wurden keine Informationen zur Benutzeridentität gefunden, der Benutzer wurde unter dem Mandanten nicht gefunden, im Hintergrund wurde eine Anforderung gesendet, aber es hat sich kein Benutzer angemeldet, oder der Benutzer konnte vom Dienst nicht authentifiziert werden.|
+|50072|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (interaktiv).|
 |50074|Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
 |50079|Der Benutzer muss sich für die zweistufige Authentifizierung registrieren.|
 |50089|Fehler bei der Überprüfung des Flow-Tokens aufgrund eines Tokenablaufs.|
@@ -97,7 +98,6 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |81013|Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
 |90014|Wird in unterschiedlichen Fällen verwendet, wenn ein erwartetes Feld in den Anmeldeinformationen nicht vorhanden ist.|
 |90093|Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben.|
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

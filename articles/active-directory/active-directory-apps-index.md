@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: e5c99552b74861db6018093dccf736d08374204f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2c9a60aaa627a41d023e5d5d7464046df5b55b05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -186,7 +186,7 @@ Der Azure AD-Zugriffsbereich ist der Bereich, in dem Endbenutzer ihre Apps start
 | Vergleich der verschiedenen verfügbaren Optionen zum Bereitstellen von Apps für einmaliges Anmelden für Benutzer |[Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
 | Übersicht über den Zugriffsbereich und das mobile Äquivalent MyApps |[Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Zugriff auf Azure AD-Apps über die Office 365-Website |[Lernen Sie das Office 365-App-Startfeld kennen](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
-| Zugriff auf Azure AD-Apps über die mobile App Intune Managed Browser |[Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://technet.microsoft.com/en-us/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
+| Zugriff auf Azure AD-Apps über die mobile App Intune Managed Browser |[Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
 | Zugreifen auf Azure AD-Apps mit Deep-Links zum Initiieren des einmaligen Anmeldens |[Abrufen von Links zur direkten Anmeldung bei Ihren Apps](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Der Zugriffsbereich steht für [alle Editionen von Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)zur Verfügung.

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 50a86a01c22450ae2d92e6743fb6de7e652d4017
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9db01b4ea9a4f0d307db8bb9f8b6d6437a06815d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Tutorial: Azure Active Directory-Integration mit SignalFx
 
@@ -140,49 +140,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     e. Klicken Sie auf **OK**.
  
-6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+6. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus: 
 
-    ![Downloadlink für das Zertifikat](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_certificate.png)
+
+    a. Klicken Sie auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+
+    b. Klicken Sie auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
 7. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-signalfx-tutorial/tutorial_general_400.png)
 
-8. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **SignalFx** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-9. Klicken Sie im Abschnitt **SignalFx-Konfiguration** auf **SignalFx konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
+8. Klicken Sie im Abschnitt **SignalFx-Konfiguration** auf **SignalFx konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
 
     ![SignalFx-Konfiguration](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_configure.png) 
 
-10. Melden Sie sich bei Ihrer SignalFx-Unternehmenswebsite als Administrator an.
+9. Melden Sie sich bei Ihrer SignalFx-Unternehmenswebsite als Administrator an.
 
-11. Klicken Sie in SignalFx oben auf **Integrations (Integrationen)**, um die Seite „Integrations“ zu öffnen.
+10. Klicken Sie in SignalFx oben auf **Integrations (Integrationen)**, um die Seite „Integrations“ zu öffnen.
 
     ![SignalFx-Integration](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_intg.png)
 
-12. Klicken Sie im Abschnitt **Login Services (Anmeldedienste)** auf die Kachel **Azure Active Directory**.
+11. Klicken Sie im Abschnitt **Login Services (Anmeldedienste)** auf die Kachel **Azure Active Directory**.
  
     ![SignalFx-SAML](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_saml.png)
 
-13. Klicken Sie auf **NEW INTEGRATION (NEUE INTEGRATION)**, und führen Sie auf der Registerkarte **INSTALL (INSTALLIEREN)** die folgenden Schritte aus:
+12. Klicken Sie auf **NEW INTEGRATION (NEUE INTEGRATION)**, und führen Sie auf der Registerkarte **INSTALL (INSTALLIEREN)** die folgenden Schritte aus:
  
     ![SignalFx-SAML-Integrationsseite](./media/active-directory-saas-signalfx-tutorial/tutorial_signalfx_azure.png)
 
@@ -194,12 +178,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Fügen Sie in das Textfeld **Issuer URL (Aussteller-URL)** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Fügen Sie die **Metadaten-URL**, die Sie im Azure-Portal generiert haben, im Textfeld **Metadata URL (Metadaten-URL)** ein.
+    e. Fügen Sie im Textfeld **Metadaten-URL** die **Verbundmetadaten-URL der App** ein, die Sie aus dem Azure-Portal kopiert haben.
 
     f. Klicken Sie auf **Speichern**.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

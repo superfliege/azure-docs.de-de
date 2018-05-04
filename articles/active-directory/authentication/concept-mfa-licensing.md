@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 5fbc42d11ccb9a36ce146deca173526536c9fc9e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c5ed3674c724b30962fbd52b9955ec89c35745d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 
@@ -69,7 +69,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in den verschieden
 | MFA für lokale Anwendungen | | |● |
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Aktivieren von Azure Multi-Factor Authentication für Azure AD-Administratoren
-Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung für ihre globalen Azure AD-Administratorkonten ohne zusätzliche Kosten aktivieren. Wenn Sie ein Microsoft-Konto verwenden, können Sie sich [hier](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification) für die mehrstufige Authentifizierung registrieren. Falls Sie kein Microsoft-Konto verwenden, aktivieren Sie [hier](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) die mehrstufige Authentifizierung für globale Administratoren.
+Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung für ihre globalen Azure AD-Administratorkonten ohne zusätzliche Kosten aktivieren. Wenn Sie ein Microsoft-Konto verwenden, können Sie sich [hier](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification) für die mehrstufige Authentifizierung registrieren. Falls Sie kein Microsoft-Konto verwenden, aktivieren Sie [hier](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states) die mehrstufige Authentifizierung für globale Administratoren.
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 Wenn Sie alle Funktionen von Azure Multi-Factor Authentication nutzen möchten, stehen mehrere Optionen zur Verfügung:

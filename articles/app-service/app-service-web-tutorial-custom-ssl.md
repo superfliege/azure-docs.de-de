@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5a6fd54e4d20e55116bc0fa771e039e5ea2bb30b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fd68658d2549e47f69005af4012c2c328e192631
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -232,9 +232,17 @@ Ihre App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer
 
 Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellungen**. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus.
 
-![Erzwingen von HTTPS](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
+![Erzwingen von TLS 1.1 oder 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS-Version ab.
+
+## <a name="renew-certificates"></a>Erneuern von Zertifikaten
+
+Ihre IP-Adresse für eingehenden Datenverkehr kann sich ändern, wenn Sie eine Bindung löschen, auch wenn diese Bindung IP-basiert ist. Dies ist besonders wichtig, wenn Sie ein Zertifikat erneuern, das sich bereits in einer IP-basierten Bindung befindet. Um eine Änderung der IP-Adresse in Ihrer App zu vermeiden, führen Sie diese Schritte in angegebener Reihenfolge aus:
+
+1. Laden Sie das neue Zertifikat hoch.
+2. Binden Sie das neue Zertifikat an die gewünschte benutzerdefinierte Domäne, ohne die alte zu löschen. Dadurch wird die Bindung ersetzt, anstatt die alte Bindung zu entfernen.
+3. Löschen Sie das alte Zertifikat. 
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
@@ -278,7 +286,7 @@ New-AzureRmWebAppSSLBinding `
     -SslState SniEnabled
 ```
 ## <a name="public-certificates-optional"></a>Öffentliche Zertifikate (optional)
-Sie können [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre Web-App hochladen. Sie können öffentliche Zertifikate auch für Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine Web-App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützt jetzt öffentliche Zertifikate [CER].).
+Sie können [öffentliche Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) in Ihre Web-App hochladen, sodass die App auf externe Dienste zugreifen kann, die eine Zertifikatauthentifizierung erfordern.  Weitere Informationen zum Laden und Verwenden eines öffentlichen Zertifikats in Ihrer App finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-ssl-cert-load).  Sie können öffentliche Zertifikate auch mit Apps in App Service-Umgebungen verwenden. Wenn Sie das Zertifikat im LocalMachine-Zertifikatspeicher speichern müssen, müssen Sie eine Web-App in der App Service-Umgebung verwenden. Weitere Informationen finden Sie unter [App Service Certificates now supports public certificates (.cer)](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer) (App Service-Zertifikate unterstützt jetzt öffentliche Zertifikate [CER].).
 
 ![Hochladen eines öffentlichen Zertifikats](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fcdcc4cf948550467257fa6cbe9287cd26d49962
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4089fe636ad25f97fe78f0bd10553b93d768321d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Kopieren von Daten aus Spark mithilfe von Azure Data Factory 
 
@@ -47,9 +47,9 @@ Folgende Eigenschaften werden für den mit Spark verknüpften Dienst unterstütz
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **Spark** festgelegt werden. | Ja |
 | host | IP-Adresse oder Hostname des Spark-Servers  | Ja |
-| port | Der TCP-Port, den der Spark-Server verwendet, um auf Clientverbindungen zu lauschen.  | Ja |
+| port | Der TCP-Port, den der Spark-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Ja |
 | serverType | Der Typ des Spark-Servers. <br/>Zulässige Werte: **SharkServer**, **SharkServer2**, **SparkThriftServer** | Nein  |
-| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP ** | Nein  |
+| thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP** | Nein  |
 | authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Spark-Server. <br/>Zulässige Werte: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
 | username | Der Benutzername für den Zugriff auf den Spark-Server.  | Nein  |
 | password | Das Kennwort für den Benutzer. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
@@ -76,8 +76,7 @@ Folgende Eigenschaften werden für den mit Spark verknüpften Dienst unterstütz
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

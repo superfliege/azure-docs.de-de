@@ -1,7 +1,7 @@
 ---
-title: "Microsoft Genomics: Häufig gestellte Fragen | Microsoft-Dokumentation"
+title: 'Microsoft Genomics: Häufig gestellte Fragen | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: "Antworten auf häufig gestellte Fragen zu Microsoft Genomics."
+description: Antworten auf häufig gestellte Fragen zu Microsoft Genomics.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -11,15 +11,15 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 2077eeb5177b07c458476ae900f81b72e35f0dc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: b3f30dc5d185615370a8273f71554f784d286cd9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 
-In diesem Artikel sind die wichtigsten Fragen im Zusammenhang mit Microsoft Genomics aufgeführt. Weitere Informationen zum Microsoft Genomics-Dienst finden Sie unter [Was ist Microsoft Genomics?](overview-what-is-genomics.md) 
+In diesem Artikel finden Sie die wichtigsten Fragen im Zusammenhang mit Microsoft Genomics. Weitere Informationen zum Microsoft Genomics-Dienst finden Sie unter [Was ist Microsoft Genomics?](overview-what-is-genomics.md) Weitere Informationen zur Problembehandlung finden Sie in unserem [Leitfaden zur Problembehandlung](troubleshooting-guide-genomics.md). 
 
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wie lautet die Vereinbarung zum Servicelevel für Microsoft Genomics?
@@ -57,7 +57,7 @@ Ihr Speicherkontoschlüssel wird verwendet, um kurzfristige Zugriffstoken für d
 ## <a name="what-genome-references-can-i-use"></a>Welche Genomreferenzen kann ich verwenden?
 
 Diese Referenzen werden unterstützt:
- |Referenz              | Wert von `-pa/--process-args` |
+ |Verweis              | Wert von `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      

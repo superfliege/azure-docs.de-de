@@ -9,11 +9,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: sujayt
-ms.openlocfilehash: 4ddad2d8e5c5323b632b65efaf87d3df7ce8d707
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -168,6 +168,8 @@ Verschlüsselung ruhender Daten (SSE) | Unterstützt | Für Cache- und Zielspeic
 Azure Disk Encryption (ADE) | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
 Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger sind standardmäßig ausgeschlossen.
+Speicherplätze direkt  | Nicht unterstützt|
+Dateiserver mit horizontaler Skalierung  | Nicht unterstützt|
 LRS | Unterstützt |
 GRS | Unterstützt |
 RA-GRS | Unterstützt |

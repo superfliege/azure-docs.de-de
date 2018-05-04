@@ -9,11 +9,11 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: b09807e1fa7624ed134a24c7df4a61abf2a1d723
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="design-your-first-azure-sql-database-using-ssms"></a>Entwurf Ihrer ersten Azure SQL-Datenbank mithilfe von SSMS
 
@@ -108,7 +108,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
 
 1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170824.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
 
-2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarttutorials eine Verbindung mit Ihrem Server und dessen Datenbanken herzustellen. 
+2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstartanleitungen eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. 
 
    ![Servername](./media/sql-database-get-started-portal/server-name.png) 
 

@@ -12,28 +12,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/19/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 2a4eb909c39051ce9fa2efd7e7997644d9b8b1b1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5665af14b9b0d0705b68c8a27c593b19c31b053e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="create-a-windows-virtual-machine-on-azure-stack-using-azure-cli"></a>Erstellen eines virtuellen Windows-Computers in Azure Stack mithilfe der Azure CLI
+# <a name="quickstart-create-a-windows-virtual-machine-in-azure-stack-using-azure-cli"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers in Azure Stack mithilfe der Azure CLI
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure Stack-Ressourcen über die Befehlszeile. In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe der Azure CLI in Azure Stack beschrieben. Sobald die VM erstellt ist, stellen Sie eine Verbindung mit dem Remotedesktop her, installieren Sie IIS, und zeigen Sie die Standardwebsite an. 
+Die Azure CLI dient zum Erstellen und Verwalten von Azure Stack-Ressourcen über die Befehlszeile. In dieser Anleitung erfahren Sie, wie Sie mithilfe der Azure CLI einen virtuellen Windows Server 2016-Computer in Azure Stack erstellen und darauf zugreifen.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Windows Server 2016“ dem Azure Stack-Marketplace hinzugefügt hat.  
+* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Windows Server 2016“ dem Azure Stack-Marketplace hinzugefügt hat.
 
 * Azure Stack erfordert eine spezifische Version der Azure CLI, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie die Azure CLI nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren und Konfigurieren der Azure CLI](azure-stack-version-profiles-azurecli2.md) aus.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den Befehl [az group create](/cli/azure/group#az_group_create) aus, um eine Ressourcengruppe zu erstellen. Für alle Variablen in diesem Dokument werden Werte zugewiesen. Sie können entweder diese Werte verwenden oder neue Werte zuweisen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen myResourceGroup im lokalen Speicherort erstellt.
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -54,8 +54,8 @@ az vm create \
   --location local
 ```
 
-Wenn der virtuelle Computer erstellt wird, notieren Sie sich den ausgegebenen *PublicIPAddress*-Parameter, mit dem Sie auf den virtuellen Computer zugreifen.
- 
+Bei der Erstellung des virtuellen Computers wird der Parameter *PublicIPAddress* ausgegeben. Notieren Sie sich diese Adresse. Sie wird für den Zugriff auf den virtuellen Computer benötigt.
+
 ## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr
 
 Standardmäßig sind für in Azure Stack bereitgestellte virtuelle Windows-Computer nur RDP-Verbindungen zulässig. Wenn dieser virtuelle Computer als Webserver fungieren soll, muss Port 80 für Datenverkehr aus dem Internet geöffnet werden. Verwenden Sie zum Öffnen des gewünschten Ports den Befehl [az vm open-port](/cli/azure/vm#open-port).
@@ -82,13 +82,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Anzeigen der IIS-Willkommensseite
 
-Nachdem Sie IIS installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die IIS-Standardwillkommensseite anzeigen. Verwenden Sie dabei die weiter oben dokumentierte öffentliche IP-Adresse, um die Standardseite zu besuchen. 
+Die Standardwillkommensseite von IIS kann in einem beliebigen Webbrowser angezeigt werden. Verwenden Sie die öffentliche IP-Adresse, die Sie sich im vorherigen Abschnitt notiert haben, um die Standardseite zu besuchen.
 
-![IIS-Standardwebsite](./media/azure-stack-quick-create-vm-windows-cli/default-iis-website.png) 
+![IIS-Standardwebsite](./media/azure-stack-quick-create-vm-windows-cli/default-iis-website.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen.
+Wenn Sie die Ressourcen nicht mehr benötigen, führen Sie den Befehl [az group delete](/cli/azure/group#az_group_delete) aus, um die Ressourcengruppe, den virtuellen Computer und alle dazugehörigen Ressourcen zu löschen.
 
 ```cli
 az group delete --name myResourceGroup

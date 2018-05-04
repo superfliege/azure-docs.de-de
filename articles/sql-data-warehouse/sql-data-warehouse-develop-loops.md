@@ -1,33 +1,32 @@
 ---
-title: Nutzen von T-SQL-Schleifen in Azure SQL Data Warehouse | Microsoft-Dokumentation
-description: "Tipps zu Transact-SQL-Schleifen und zum Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen"
+title: Verwenden von T-SQL-Schleifen in Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: f3384b81-b943-431b-bc73-90e47e4c195f
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 40a872ff310f48bfd543ac184fe7301b85b50258
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 8d51c8f18d7c00d21fcc057efcda73e2a6b46cc7
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="loops-in-sql-data-warehouse"></a>Schleifen in SQL Data Warehouse
-SQL Data Warehouse unterstützt die [WHILE][WHILE]-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort `BREAK` gezielt beendet wird. Schleifen sind besonders nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, Nur-Lese-Cursor für den schnellen Vorlauf. Daher sind [WHILE] -Schleifen eine hervorragende Alternative, wenn Sie einen Cursor ersetzen müssen.
+# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Verwenden von T-SQL-Schleifen in SQL Data Warehouse
+Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 
-## <a name="leveraging-loops-and-replacing-cursors-in-sql-data-warehouse"></a>Nutzen von Schleifen und Ersetzen von Cursorn in SQL Data Warehouse
-Stellen Sie sich vorher aber unbedingt die folgende Frage: „Kann dieser Cursor so umgeschrieben werden, dass satzbasierte Vorgänge verwendet werden?“ In vielen Fällen lautet die Antwort "Ja", daher ist dies häufig der beste Ansatz. Ein satzbasierter Vorgang wird oft erheblich schneller als ein Durchlauf Zeile für Zeile durchgeführt.
+## <a name="purpose-of-while-loops"></a>Zweck der WHILE-Schleifen
 
-Nur-Lese-Cursor für den schnellen Vorlauf können leicht durch ein Schleifenkonstrukt ersetzt werden. Im Folgenden finden Sie ein einfaches Beispiel: In diesem Codebeispiel wird die Statistik für jede Tabelle der Datenbank aktualisiert. Indem die Tabellen mit der Schleife durchlaufen werden, kann jeder Befehl der Reihe nach ausgeführt werden.
+SQL Data Warehouse unterstützt die [WHILE](/sql/t-sql/language-elements/while-transact-sql)-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die WHILE-Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort BREAK gezielt beendet wird. Schleifen sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Aus diesem Grund sind [WHILE]-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
+
+## <a name="replacing-cursors-in-sql-data-warehouse"></a>Ersetzen von Cursorn in SQL Data Warehouse
+Stellen Sie sich vorher aber unbedingt die folgende Frage: „Kann dieser Cursor so umgeschrieben werden, dass satzbasierte Vorgänge verwendet werden?“ In vielen Fällen können Sie die Frage bejahen, daher ist dies häufig der beste Ansatz. Ein satzbasierter Vorgang wird oft schneller als ein iterativer Durchlauf Zeile für Zeile durchgeführt.
+
+Nur-Lese-Cursor für den schnellen Vorlauf können leicht durch ein Schleifenkonstrukt ersetzt werden. Im Folgenden sehen Sie ein einfaches Beispiel. In diesem Codebeispiel wird die Statistik für jede Tabelle der Datenbank aktualisiert. Indem die Tabellen mit der Schleife durchlaufen werden, wird jeder Befehl der Reihe nach ausgeführt.
 
 Erstellen Sie zuerst eine temporäre Tabelle mit einer eindeutigen Zeilenzahl zum Identifizieren der einzelnen Anweisungen:
 
@@ -69,19 +68,6 @@ Abschließend können Sie die temporäre Tabelle verwerfen, die Sie im ersten Sc
 DROP TABLE #tbl;
 ```
 
-
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-[WHILE]: https://msdn.microsoft.com/library/ms178642.aspx
-
-
-<!--Other Web references-->

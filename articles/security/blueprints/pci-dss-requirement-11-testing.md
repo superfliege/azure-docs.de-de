@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Testanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Testanforderungen
 description: PCI-DSS-Anforderung 11
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 57429741afd2ffd16c09a0f1485cb1cfbdda5571
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: db9f1022ecb3b727f08bb6f232a8df55476e0755
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="testing-requirements-for-pci-dss-compliant-environments"></a>Testanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-11"></a>PCI-DSS-Anforderung 11
@@ -89,7 +89,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure führt vierteljährlich interne und externe Überprüfungen auf Sicherheitsrisiken durch. Überprüfungen werden von qualifiziertem Fachpersonal durchgeführt. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure Advisor](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
 
 
 
@@ -102,7 +102,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure führt Sicherheitsrisikoüberprüfungen für die zugrunde liegende Infrastruktur im Gültigkeitsbereich durch. Microsoft Azure implementiert Sicherheitsrisikoüberprüfungen für Serverbetriebssysteme, Datenbanken und Netzwerkgeräte mit den entsprechenden Tools für die Sicherheitsrisikoüberprüfung. Azure-Webanwendungen werden mit geeigneten branchenüblichen Lösungen überprüft. Die Sicherheitsrisikoüberprüfungen werden vierteljährlich ausgeführt.<br /><br />Überprüfungen werden ggf. für alle Systeme wiederholt, bis alle hohen Sicherheitsrisiken (gemäß Anforderung 6.1) beseitigt wurden. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure Advisor](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
 
 
 
@@ -153,7 +153,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure bewertet Dienste durch CREST-zertifizierte Prüfer mithilfe von Penetrationstests von Drittanbietern, die auf den OWASP (Open Web Application Security Project) Top Ten basieren. Die Testergebnisse werden über ein Risikoregister nachverfolgt, welches regelmäßig kontrolliert und überprüft wird, um die Einhaltung von Sicherheitspraktiken sicherzustellen. <br /><br />Microsoft setzt Red Teaming für von Microsoft verwaltete Infrastrukturen, Dienste und Anwendungen ein. Beim Red Teaming und bei Penetrationstests für Live-Websites werden Endkundendaten nicht vorsätzlich als Ziel verwendet. Die Tests werden für Microsoft Azure-Infrastruktur und an Microsoft Azure-Plattformen sowie für die eigenen Anwendungen und Daten von Microsoft durchgeführt. Mandanten, Anwendungen und Daten von Kunden, die unter Azure gehostet werden, dienen niemals als Ziel.<br /><br />Microsoft Azure hat einen unabhängigen Prüfer mit der Entwicklung eines Systembewertungsplans und der Durchführung von Kontrolleinrichtungsbewertungen beauftragt. Bewertungen von Kontrolleinrichtungen werden jährlich ausgeführt, und die Ergebnisse werden den relevanten Akteuren mitgeteilt. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure Advisor](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
 
 
 
@@ -166,7 +166,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 11.3](#pci-dss-requirement-11-3). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure Advisor](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
 
 
 
@@ -179,7 +179,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure beauftragt unabhängige Prüfer mit der Durchführung von Penetrationstests für die Bereichsgrenzen von Microsoft Azure. Außerdem werden routinemäßig Red-Team-Übungen durchgeführt und die Ergebnisse zur Verbesserung der Sicherheit genutzt. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore wurde im Istzustand Penetrationstests und Sicherheitsrisikoüberprüfungen unterzogen. Die Penetrationstestergebnisse können mithilfe gängiger Tools wie Nmap oder pentest tools.com reproduziert werden. Die Ergebnisse des Penetrationstests dienen der Feststellung einer unklaren Angriffsfläche ohne verwertbare Elemente. Ferner bieten [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure Advisor](/azure/advisor/advisor-security-recommendations) Informationen zu Sicherheitsrisiken und deren Behebung.|
 
 
 
@@ -192,7 +192,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Für die Überwachung von Komponenten der Microsoft Azure-Plattform auf bekannte Sicherheitsrisiken wurden Verfahren implementiert. <br /><br /><br /><br />In jedem Vierteljahr werden zielgerichtete und umfassende Überprüfungen auf Sicherheitsrisiken an priorisierten Komponenten der Azure-Produktionsumgebung durchgeführt, um Sicherheitsrisiken zu erkennen. Die Ergebnisse sind den Projektbeteiligten zu melden, und die Beseitigung wird vom Team bis zum Abschluss nachverfolgt. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und [Azure Advisor](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
 
 
 
@@ -200,13 +200,12 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 
 **11.3.4** Wird die Segmentierung zur Isolierung der CDE von anderen Netzwerken verwendet, dann führen Sie mindestens einmal im Jahr sowie nach der Vornahme von Änderungen an Segmentierungskontrollen oder -methoden Penetrationstests durch, um nachzuweisen, dass die Segmentierungsmethoden funktionsfähig und wirksam sind. Alle nicht zum Gültigkeitsbereich gehörenden Systeme sind von Systemen in der CDE zu isolieren.
 
-
 **Zuständigkeiten:&nbsp;&nbsp;`Shared`**
 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Für die Überwachung von Komponenten der Microsoft Azure-Plattform auf bekannte Sicherheitsrisiken wurden Verfahren implementiert. <br /><br /><br /><br />In jedem Vierteljahr werden zielgerichtete und umfassende Überprüfungen auf Sicherheitsrisiken an priorisierten Komponenten der Azure-Produktionsumgebung durchgeführt, um Sicherheitsrisiken zu erkennen. Die Ergebnisse sind den Projektbeteiligten zu melden, und die Beseitigung wird vom Team bis zum Abschluss nachverfolgt. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und [Azure Advisor](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
 
 
 
@@ -223,7 +222,7 @@ Unabhängig davon, welche Methoden verwendet werden, müssen diese geeignet sein
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 11.3.4](#pci-dss-requirement-11-3-4). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | [Azure Security Center](https://azure.microsoft.com/services/security-center/) und [Azure Advisor](/azure/advisor/advisor-security-recommendations) bieten Informationen zu Sicherheitsrisiken und deren Beseitigung und sollen sicherstellen, dass alle offenen Probleme in der CDE des Contoso Webstore-Demos behoben wurden.|
 
 
 
@@ -237,7 +236,7 @@ Halten Sie alle IDS- und IPS-Engines, -Baselines und -Signaturen auf dem neueste
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure führt Echtzeitanalysen von Ereignissen innerhalb seiner Betriebsumgebung durch, und IDS-Systeme erzeugen in Quasi-Echtzeit Warnungen zu Ereignissen, die das System möglicherweise gefährden. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore ist ein PaaS-Dienst. Die Erkennung und Vermeidung von Einbruchsversuchen ins Netzwerk liegt in der Zuständigkeit von Azure. [Azure Security Center](https://azure.microsoft.com/services/security-center/) und der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bieten für Einbruchsversuche Warnungen und Korrekturen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore ist ein PaaS-Dienst. Die Erkennung und Vermeidung von Einbruchsversuchen ins Netzwerk liegt in der Zuständigkeit von Azure. [Azure Security Center](https://azure.microsoft.com/services/security-center/) und [Azure Advisor](/azure/advisor/advisor-security-recommendations) bieten für Einbruchsversuche Warnungen und Korrekturen.|
 
 
 
@@ -253,7 +252,7 @@ Halten Sie alle IDS- und IPS-Engines, -Baselines und -Signaturen auf dem neueste
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure verwaltet potenzielle Änderungen und Ereignisse, die die Sicherheit oder Verfügbarkeit der Dienste beeinträchtigen können, in einem online verfügbaren Dienstdashboard und benachrichtigt auch seine Kunden darüber. Änderungen an den Sicherheitsverpflichtungen von Microsoft Azure-Kunden werden zeitnah auf der Microsoft Azure-Website veröffentlicht.<br /><br />Die Installation von oder Änderungen an Software in der Microsoft Azure-Produktionsumgebung erfolgen ausschließlich durch autorisierte Administrationsmitarbeiter gemäß den Change Management-Verfahren. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Das Contoso Webstore-Demo ist ein PaaS-Dienst, und die Änderungserkennung wurde mithilfe von OMS implementiert. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte OMS-Lösungen](payment-processing-blueprint.md#oms-solutions).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Demo ist ein PaaS-Dienst, und die Änderungserkennung wurde mithilfe von Log Analytics implementiert. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte Verwaltungslösungen](payment-processing-blueprint.md#management-solutions).<br /><br />|
 
 
 
@@ -266,7 +265,7 @@ Halten Sie alle IDS- und IPS-Engines, -Baselines und -Signaturen auf dem neueste
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure-Regeln zur Überwachung von Ereignissen bieten eine zusätzliche Überwachungsebene für Hochrisikovorgänge und stark gefährdete Ressourcen. Von Azure verwaltete Geräte werden auf Einhaltung bewährter Sicherheitsstandards überwacht. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Warnungen bei Änderungen werden von der OMS-Implementierung bereitgestellt. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte OMS-Lösungen](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Warnungen bei Änderungen werden von der Log Analytics-Implementierung bereitgestellt. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte Verwaltungslösungen](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 
@@ -279,7 +278,7 @@ Halten Sie alle IDS- und IPS-Engines, -Baselines und -Signaturen auf dem neueste
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Warnungen bei Änderungen werden von der OMS-Implementierung bereitgestellt. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte OMS-Lösungen](payment-processing-blueprint.md#oms-solutions).<br /><br /><br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Warnungen bei Änderungen werden von der Log Analytics-Implementierung bereitgestellt. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte Verwaltungslösungen](payment-processing-blueprint.md#management-solutions).<br /><br /><br /><br />|
 
 
 

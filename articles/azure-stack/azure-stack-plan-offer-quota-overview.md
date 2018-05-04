@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack – Übersicht über Pläne, Angebote, Kontingente und Abonnements | Microsoft-Dokumentation"
-description: "Cloudbetreiber möchten verstehen, wie es sich mit Azure Stack-Plänen, -Angeboten, -Kontingenten und -Abonnements verhält."
+title: Azure Stack – Übersicht über Pläne, Angebote, Kontingente und Abonnements | Microsoft-Dokumentation
+description: Cloudbetreiber möchten verstehen, wie es sich mit Azure Stack-Plänen, -Angeboten, -Kontingenten und -Abonnements verhält.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/22/2017
+ms.date: 04/20/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 7c395dfcdfcd509d8b32028badd1c1310ea67657
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: fcf19f486ebdc739f3d5c7b25215ba8726462a56
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Übersicht über Pläne, Angebote, Kontingente und Abonnements
 
@@ -32,10 +32,10 @@ Angebote enthalten mindestens einen Plan, und jeder Plan enthält mindestens ein
 - Menge der Ressourcen, die von Benutzern genutzt werden können
 - Regionen, die Zugriff auf Ressourcen haben
 
-Beim Bereitstellen eines Diensts führen Sie diese allgemeinen Schritte aus:
+Die Bereitstellung eines Diensts umfasst folgende allgemeine Schritte:
 
 1. Fügen Sie einen Dienst hinzu, den Sie für Ihre Benutzer bereitstellen möchten.
-2. Erstellen Sie einen Plan, der mindestens einen Dienst enthält. Beim Erstellen eines Plans können Sie Kontingente auswählen oder erstellen, mit denen die Ressourceneinschränkungen der einzelnen Dienste des Plans definiert werden.
+2. Erstellen Sie einen Plan, der mindestens einen Dienst enthält. Wählen Sie beim Erstellen eines Plans Kontingente aus, mit denen die Ressourceneinschränkungen der einzelnen Dienste des Plans definiert werden, oder erstellen Sie eigene Kontingente.
 3. Erstellen Sie ein Angebot, das mindestens einen Plan enthält (z.B. Basispläne und optionale Add-On-Pläne).
 
 Nachdem Sie das Angebot erstellt haben, kann es von Ihren Benutzern abonniert werden, um auf die entsprechenden Dienste und Ressourcen zuzugreifen. Benutzer können beliebig viele Angebote abonnieren. Das folgende Diagramm enthält ein einfaches Beispiel für einen Benutzer, der zwei Angebote abonniert hat. Jedes Angebot verfügt über einen oder zwei Pläne, und jeder Plan ermöglicht den Zugriff auf diese Dienste.
@@ -52,13 +52,15 @@ Als Hilfe beim Verwalten Ihrer Cloudkapazität wählen oder erstellen Sie ein Ko
 
 Kontingente können nach Region konfiguriert werden. Beispielsweise kann für einen Plan mit Computediensten in Region A ein Kontingent von zwei virtuellen Computern, 4 GB RAM und 10 CPU-Kernen gelten. Im Azure Stack Development Kit ist nur eine Region verfügbar (mit dem Namen *local*).
 
+Weitere Informationen zu Kontingenttypen in Azure Stack finden Sie [hier](azure-stack-quota-types.md). 
+
 ### <a name="base-plan"></a>Basisplan
 
 Beim Erstellen eines Angebots kann der Dienstadministrator einen Basisplan einbinden. Diese Basispläne sind standardmäßig enthalten, wenn ein Benutzer dieses Angebot abonniert. Wenn Benutzer ein Angebot abonnieren, haben sie Zugriff auf alle Ressourcenanbieter, die in diesen Basisplänen angegeben sind (mit den entsprechenden Kontingenten).
 
 ### <a name="add-on-plans"></a>Add-On-Pläne
 
-Sie können in ein Angebot auch optionale Add-On-Pläne einschließen. Add-On-Pläne sind nicht standardmäßig im Abonnement enthalten. Add-On-Pläne sind zusätzliche Pläne (mit Kontingenten) in einem Angebot, die ein Abonnent seinen Abonnements hinzufügen kann. Beispielsweise können Sie einen Basisplan mit eingeschränkten Ressourcen für eine Testversion und einen Add-On-Plan mit umfassenderen Ressourcen für Kunden anbieten, die sich für die Nutzung des Diensts entscheiden.
+Add-On-Pläne sind optionale Pläne, die Sie einem Angebot hinzufügen können. Add-On-Pläne sind nicht standardmäßig im Abonnement enthalten. Add-On-Pläne sind zusätzliche Pläne (mit Kontingenten) in einem Angebot, die ein Abonnent seinen Abonnements hinzufügen kann. Beispielsweise können Sie einen Basisplan mit eingeschränkten Ressourcen für eine Testversion und einen Add-On-Plan mit umfassenderen Ressourcen für Kunden anbieten, die sich für die Nutzung des Diensts entscheiden.
 
 ## <a name="offers"></a>Angebote
 

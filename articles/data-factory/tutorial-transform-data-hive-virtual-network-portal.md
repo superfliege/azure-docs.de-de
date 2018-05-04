@@ -3,21 +3,20 @@ title: Transformieren von Daten mithilfe von Hive in Azure Virtual Network | Mic
 description: Dieses Tutorial bietet Schrittanleitungen zum Transformieren von Daten mithilfe einer Hive-Aktivität in Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: shengcmsft
+author: douglaslMS
 manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
-ms.author: shengc
-ms.openlocfilehash: a5f75990ab29dc09b6c45ddae17a654f9c3dab78
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: douglasl
+ms.openlocfilehash: e9ec338e04c456a9a91d51a7a4741e4760f1b3c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory-Pipeline zu erstellen, die Daten mithilfe einer Hive-Aktivität in einem HDInsight-Cluster transformiert, der sich in einem virtuellen Azure-Netzwerk (VNet) befindet. In diesem Tutorial führen Sie die folgenden Schritte aus:
@@ -236,7 +235,7 @@ Beachten Sie folgende Punkte:
 
 ## <a name="trigger-a-pipeline-run"></a>Auslösen einer Pipelineausführung
 
-1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der **Pipelineüberprüfung** zu schließen. 
+1. Klicken Sie zum Überprüfen der Pipeline zunächst auf der Symbolleiste auf die Schaltfläche **Überprüfen**. Klicken Sie auf **>>** (Pfeil nach rechts), um das Fenster mit der Ausgabe der Pipelineüberprüfung**** zu schließen. 
 
     ![Überprüfen der Pipeline](./media/tutorial-transform-data-using-hive-in-vnet-portal/validate-pipeline.png) 
 2. Klicken Sie auf der Symbolleiste auf „Trigger“ und anschließend auf „Trigger Now“ (Jetzt auslösen), um eine Pipelineausführung auszulösen. 

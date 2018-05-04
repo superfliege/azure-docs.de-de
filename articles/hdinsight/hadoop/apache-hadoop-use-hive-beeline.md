@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: larryfr
-ms.openlocfilehash: b96f457bc13ae3e412580096a1f9be865e64cb74
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 970ccf19b5668bd57118fcabc5018c60352ebde7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Verwenden des Beeline-Clients mit Apache Hive
 
@@ -252,10 +252,17 @@ Um den vollqualifizierten Domänennamen eines Hauptknotens zu ermitteln, verwend
 
 Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manchmal als Spark Thrift-Server bezeichnet wird. Bei diesem Dienst wird Spark SQL anstelle von Hive zum Auflösen von Abfragen verwendet und ermöglicht je nach Abfrage ggf. eine bessere Leistung.
 
-Verwenden Sie Port `10002` anstelle von `10001`, um eine Verbindung mit dem Spark Thrift-Server eines Spark für HDInsight-Clusters herzustellen. Beispiel: `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`.
+Die __Verbindungszeichenfolge__, die beim Herstellen einer Verbindung über das Internet verwendet wird, weicht geringfügig ab. Sie enthält `httpPath/sparkhive2` anstelle von `httpPath=/hive2`. Nachfolgend sehen Sie ein Beispiel zum Herstellen einer Verbindung über das Internet:
 
-> [!IMPORTANT]
-> Der Spark Thrift-Server ist nicht direkt über das Internet zugänglich. Sie können nur aus einer SSH-Sitzung oder in demselben Azure Virtual Network des HDInsight-Clusters eine Verbindung damit herstellen.
+```bash 
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Wenn Sie direkt vom Clusterhauptknoten oder von einer Ressource, die sich in der gleichen Azure Virtual Network-Instanz wie der HDInsight-Cluster befindet, eine Verbindung herstellen, muss für den Spark Thrift-Server Port `10002` anstelle von Port `10001` verwendet werden. Nachfolgend sehen Sie ein Beispiel zum direkten Herstellen einer Verbindung mit dem Hauptknoten:
+
+```bash
+beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'
+```
 
 ## <a id="summary"></a><a id="nextsteps"></a>Nächste Schritte
 

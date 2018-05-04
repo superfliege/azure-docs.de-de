@@ -2,7 +2,7 @@
 title: Erstellen von Azure HDInsight-Clustern und Data Lake Store-Zugriff mithilfe von Azure-Vorlagen | Microsoft-Dokumentation
 description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Verwenden von HDInsight-Clustern mit Azure Data Lake Store
 services: data-lake-store,hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 8c5afc96cc8101345f00b5d435e9f393d22672de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bc20504865fa59cafc199305f9810fb4c3d99524
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ In diesem Artikel stellen wir einen Hadoop-Cluster mit Data Lake-Speicher als zu
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
-* **Ein Azure-Abonnement**. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
+* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Mindestens Azure PowerShell 1.0**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 * **Azure Active Directory-Dienstprinzipal**. Die Schritte in diesem Tutorial enthalten Anweisungen zum Erstellen eines Dienstprinzipals in Azure AD. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Azure AD-Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
@@ -59,7 +59,7 @@ Für die Anweisungen unter dem oben genannten Link ist PowerShell erforderlich. 
 
 ```
 # Log in to your Azure account
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # List all the subscriptions associated to your account
 Get-AzureRmSubscription
@@ -80,7 +80,7 @@ Damit über den HDInsight-Cluster auf die hochgeladenen Beispieldaten zugegriffe
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Ausführen von Testaufträgen im HDInsight-Cluster zur Verwendung des Data Lake-Speichers
 Nachdem Sie einen HDInsight-Cluster konfiguriert haben, können Sie Testaufträge für den Cluster ausführen, um zu testen, ob der HDInsight-Cluster auf Daten im Data Lake-Speicher zugreifen kann. Hierzu führen wir einen Hive-Beispielauftrag aus. Es wird eine Tabelle aus den Beispieldaten erstellt, die Sie zuvor in Ihren Data Lake-Speicher hochgeladen haben.
 
-In diesem Abschnitt stellen Sie eine SSH-Verbindung mit einem HDInsight-Linux-Cluster her und führen eine Hive-Beispielabfrage aus. Wenn Sie einen Windows-Client benutzen, empfehlen wir die Verwendung von **PuTTY**. Sie können das Programm unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunterladen.
+In diesem Abschnitt stellen Sie eine SSH-Verbindung mit einem HDInsight-Linux-Cluster her und führen eine Hive-Beispielabfrage aus. Wenn Sie einen Windows-Client verwenden, sollten Sie **PuTTY** verwenden, das als Download unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) verfügbar ist.
 
 Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -116,7 +116,7 @@ Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SS
 ## <a name="access-data-lake-store-using-hdfs-commands"></a>Zugreifen auf den Data Lake-Speicher mit HDFS-Befehlen
 Nachdem Sie den HDInsight-Cluster für die Verwendung des Data Lake-Speichers konfiguriert haben, können Sie die HDFS-Shellbefehle verwenden, um auf den Speicher zuzugreifen.
 
-In diesem Abschnitt stellen Sie eine SSH-Verbindung mit einem HDInsight-Linux-Cluster her und führen die HDFS-Befehle aus. Wenn Sie einen Windows-Client benutzen, empfehlen wir die Verwendung von **PuTTY**. Sie können das Programm unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) herunterladen.
+In diesem Abschnitt stellen Sie eine SSH-Verbindung mit einem HDInsight-Linux-Cluster her und führen die HDFS-Befehle aus. Wenn Sie einen Windows-Client verwenden, sollten Sie **PuTTY** verwenden, das als Download unter [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) verfügbar ist.
 
 Weitere Informationen zum Verwenden von PuTTY finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Windows ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

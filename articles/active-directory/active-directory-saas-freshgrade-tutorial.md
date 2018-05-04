@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: f9cdf73643a8aa18506e59eff513b98282f60832
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4062f7c7a0f789cef6d0c415d73127d13e646f7
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Tutorial: Azure Active Directory-Integration mit FreshGrade
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von FreshGrade aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von FreshGrade in Azure AD müssen Sie FreshGr
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **FreshGrade**ein.
 
@@ -86,10 +86,10 @@ Weisen Sie in FreshGrade den Wert für **Benutzername** in Azure AD als Wert fü
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FreshGrade müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen einen Testbenutzers in FreshGrade](#creating-a-freshgrade-test-user)** – um eine Entsprechung von Britta Simon in FreshGrade zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,69 +100,44 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **FreshGrade** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
+
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **FreshGrade Domain and URLs** (Domäne und URLs für FreshGrade) aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: 
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
       | |
       |--|
-      | `https://<subdomain>.freshgrade.com/login` |    
+      | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: 
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
       | |
       |--|
-      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |      
+      | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
       | `https://login.freshgrade.com:443/saml/metadata/alias/<instancename>` |
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von FreshGrade](mailTo:support@freshgrade.com), um diese Werte zu erhalten. 
- 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von FreshGrade](mailTo:support@freshgrade.com), um diese Werte zu erhalten.
 
-
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_certificate.png) 
-
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+    
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_metadataurl.png)
+     
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **FreshGrade Configuration** (FreshGrade-Konfiguration) auf **Configure FreshGrade** (FreshGrade konfiguration), um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png)
 
-7. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **FreshGrade** zurück, und kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Copy** (Kopieren), und fügen Sie sie in Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-8. Um das einmalige Anmelden auf der **FreshGrade**-Seite zu konfigurieren, müssen Sie die Werte aus **Metadata URL** (Metadaten-Url) und **SAML Single Sign-On Service URL** (SAML-URL des Diensts für das einmalige Anmelden) an das [FreshGrade-Supportteam](mailTo:support@freshgrade.com) senden. Das Supportteam führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+7. Um das einmalige Anmelden auf der **FreshGrade**-Seite zu konfigurieren, müssen Sie die **Verbundmetadaten-URL der App** und die **SAML-Dienst-URL für einmaliges Anmelden** an das [FreshGrade-Supportteam](mailTo:support@freshgrade.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -193,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-freshgrade-test-user"></a>Erstellen einen Testbenutzers in FreshGrade
 
@@ -213,7 +188,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **FreshGrade**aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

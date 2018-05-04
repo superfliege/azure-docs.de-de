@@ -5,15 +5,15 @@ services: azure-policy
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/18/2018
+ms.date: 04/19/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e50c2330c03e5fc36e608b672fe8390a1f19e99b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -334,7 +334,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Klicken auf „Definitionen“](media/create-manage-policy/select-definitions.png)
 
-2. Klicken Sie im oberen Bereich der Seite auf **Initiative Definition** (Initiativdefinition), um zum gleichnamigen Formular **zu gelangen**.
+2. Klicken Sie im oberen Bereich der Seite auf **Initiative Definition** (Initiativdefinition), um zum gleichnamigen Formular**** zu gelangen.
 3. Geben Sie den Namen und die Beschreibung der Initiative ein.
 
    Stellen Sie in diesem Beispiel sicher, dass Ressourcen mit Richtliniendefinitionen zur Verbesserung der Sicherheit konform sind. Daher nennen wir die Initiative **Get Secure** (Sicherheit verbessern) und geben als Beschreibung Folgendes an: **This initiative has been created to handle all policy definitions associated with securing resources.** (Diese Initiative gilt für alle Richtliniendefinitionen, die mit dem Schutz von Ressourcen in Zusammenhang stehen.)
@@ -372,7 +372,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Ausnehmen einer nicht konformen oder abgelehnten Ressource mithilfe eines Ausschlusses
 
-Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie durch Anfordern eines Ausschlusses das Problem lösen können, dass die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wurde. Der Ausschluss verhindert im Wesentlichen die Richtliniendurchsetzung. Ein Ausschluss kann auf eine Ressourcengruppe angewendet werden, oder Sie können den Ausschluss auf einzelne Ressourcen beschränken.
+Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version als 12.0 abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie das Problem, dass die Erstellung einer SQL Server-Instanz abgelehnt wird, durch Anfordern eines Ausschlusses für bestimmte Ressourcen lösen. Der Ausschluss verhindert im Wesentlichen die Richtliniendurchsetzung. Im folgenden Beispiel ist jede beliebige SQL Server-Version zulässig. Ein Ausschluss kann auf eine Ressourcengruppe angewendet werden, oder Sie können den Ausschluss auf einzelne Ressourcen beschränken.
 
 1. Klicken Sie im linken Bereich auf **Zuweisungen**.
 2. Durchsuchen Sie alle Richtlinienzuweisungen, und öffnen Sie die Zuweisung *Require SQL Server version 12.0* (SQL Server-Version 12.0 fordern).
@@ -384,7 +384,7 @@ Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur
 
 4. Klicken Sie auf **Zuweisen**.
 
-In diesem Abschnitt haben Sie einen Ausschluss der Ressourcen angefordert, um die Ablehnung der Erstellung einer SQL Server-Instanz mit Version 12.0 zu behandeln.
+In diesem Abschnitt haben Sie einen Ausschluss für die Ressourcen angefordert, um die Ablehnung der Erstellung einer SQL Server-Instanz zu behandeln.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

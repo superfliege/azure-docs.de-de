@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 09/28/2017
+ms.date: 04/18/2018
 ms.author: danlep
-ms.openlocfilehash: e67ae32902c989f74cee0c1d223dacc770c0d387
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c28af5a9773cc362663831346b58f599aed6ea9a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -65,7 +65,7 @@ Verwenden Sie den **Azure Batch-Ressourcenendpunkt**, um ein Token zum Authentif
 
 Der erste Schritt bei der Verwendung von Azure AD zum Authentifizieren ist die Registrierung Ihrer Anwendung bei dem Azure AD-Mandanten. Die Registrierung Ihrer Anwendung ermöglicht Ihnen, die Azure [Active Directory-Authentifizierungsbibliothek][aad_adal] (Active Directory Authentication Library, ADAL) aus dem Code aufzurufen. Die ADAL stellt eine API für die Authentifizierung bei Azure AD über Ihre Anwendung bereit. Die Registrierung Ihrer Anwendung ist unabhängig davon erforderlich, ob Sie planen, integrierte Authentifizierung oder einen Dienstprinzipal zu verwenden.
 
-Wenn Sie Ihre Anwendung registrieren, liefern Sie Azure AD Informationen über Ihre Anwendung. Azure AD stellt dann eine Anwendungs-ID bereit, die Sie verwenden, um Ihre Anwendung zur Laufzeit Azure AD zuzuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+Wenn Sie Ihre Anwendung registrieren, liefern Sie Azure AD Informationen über Ihre Anwendung. Azure AD stellt dann eine Anwendungs-ID (auch als *Client-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
 
 Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um Ihre Batch-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Es muss sich nicht um einen echten Endpunkt handeln.
 
@@ -81,7 +81,7 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 
 1. Wählen Sie im Azure-Portal Ihr Active Directory aus.
 2. Klicken Sie auf **Eigenschaften**.
-3. Kopieren Sie den GUID-Wert, der für die Verzeichnis-ID bereitgestellt wird. Dieser Wert wird auch als Mandanten-ID bezeichnet.
+3. Kopieren Sie den GUID-Wert, der für die **Verzeichnis-ID** bereitgestellt wird. Dieser Wert wird auch als Mandanten-ID bezeichnet.
 
 ![Kopieren der Verzeichnis-ID](./media/batch-aad-auth/aad-directory-id.png)
 
@@ -97,17 +97,17 @@ Sobald Sie [die Anwendung registriert haben](#register-your-application-with-an-
 
     ![Suchen nach Ihrem Anwendungsnamen](./media/batch-aad-auth/search-app-registration.png)
 
-3. Öffnen Sie das Blatt **Einstellungen** für Ihre Anwendung. Wählen Sie im Abschnitt **API-Zugriff** die Option **Erforderliche Berechtigungen**.
+3. Klicken Sie auf die Anwendung und anschließend auf **Einstellungen**. Wählen Sie im Abschnitt **API-Zugriff** die Option **Erforderliche Berechtigungen**.
 4. Klicken Sie auf dem Blatt **Erforderliche Berechtigungen** auf die Schaltfläche **Hinzufügen**.
-5. Suchen Sie in Schritt 1 nach der Batch-API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
+5. Suchen Sie unter **Hiermit wählen Sie eine API aus.** nach der Batch API. Suchen Sie diese Zeichenfolgen, bis Sie die API gefunden haben:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Neuere Azure AD-Mandanten verwenden diesen Namen unter Umständen.
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** ist die ID für die Batch-API. 
-6. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus, und klicken Sie auf die Schaltfläche **Speichern**.
-6. Aktivieren Sie in Schritt 2 das Kontrollkästchen neben **Access Azure Batch Service** (Auf Azure Batch-Dienst zugreifen), und klicken Sie auf die Schaltfläche **Auswählen**.
-7. Klicken Sie auf die Schaltfläche **Fertig**.
+6. Wenn Sie die Batch-API gefunden haben, wählen Sie diese aus, und klicken Sie auf **Auswählen**.
+7. Aktivieren Sie unter **Berechtigungen auswählen** das Kontrollkästchen neben **Access Azure Batch Service** (Auf Azure Batch-Dienst zugreifen), und klicken Sie auf **Auswählen**.
+8. Klicken Sie auf **Fertig**.
 
-Auf dem Blatt **Erforderliche Berechtigungen** wird jetzt angezeigt, dass Ihre Azure AD-Anwendung sowohl Zugriff auf ADAL als auch auf die Batch-Dienst-API hat. Berechtigungen für ADAL werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
+Im Fenster **Erforderliche Berechtigungen** wird jetzt angezeigt, dass Ihre Azure AD-Anwendung sowohl Zugriff auf ADAL als auch auf die Batch-Dienst-API hat. Berechtigungen für ADAL werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
 
 ![Gewähren von API-Berechtigungen](./media/batch-aad-auth/required-permissions-data-plane.png)
 
@@ -126,7 +126,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
 2. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung.
-3. Zeigen Sie das Blatt **Einstellungen** an. Wählen Sie im Abschnitt **API-Zugriff** die Option **Schlüssel**.
+3. Klicken Sie auf die Anwendung und anschließend auf **Einstellungen**. Wählen Sie im Abschnitt **API-Zugriff** die Option **Schlüssel**.
 4. Um einen Schlüssel zu erstellen, geben Sie eine Beschreibung für den Schlüssel ein. Wählen Sie dann für den Schlüssel eine Dauer von einem oder zwei Jahren. 
 5. Klicken Sie auf die Schaltfläche **Speichern**, um den Schlüssel zu erstellen und anzuzeigen. Kopieren Sie den Schlüsselwert an einen sicheren Ort, weil Sie nicht mehr darauf zugreifen können, nachdem Sie das Blatt verlassen haben. 
 
@@ -152,14 +152,14 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 
 1. Wählen Sie im Azure-Portal Ihr Active Directory aus.
 2. Klicken Sie auf **Eigenschaften**.
-3. Kopieren Sie den GUID-Wert, der für die Verzeichnis-ID bereitgestellt wird. Dieser Wert wird auch als Mandanten-ID bezeichnet.
+3. Kopieren Sie den GUID-Wert, der für die **Verzeichnis-ID** bereitgestellt wird. Dieser Wert wird auch als Mandanten-ID bezeichnet.
 
 ![Kopieren der Verzeichnis-ID](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="code-examples"></a>Codebeispiele
 
-Die Codebeispiele in diesem Abschnitt zeigen das Authentifizieren bei Azure AD mit der integrierten Authentifizierung und einem Dienstprinzipal. Diese Codebeispiele verwenden .NET, aber die Konzepte sind für andere Sprachen ähnlich.
+Die Codebeispiele in diesem Abschnitt zeigen das Authentifizieren bei Azure AD mit der integrierten Authentifizierung und einem Dienstprinzipal. Die meisten dieser Codebeispiele verwenden .NET, aber die Konzepte sind für andere Sprachen ähnlich.
 
 > [!NOTE]
 > Ein Azure AD-Authentifizierungstoken läuft nach einer Stunde ab. Bei Verwendung eines langlebigen **BatchClient**-Objekts empfehlen wir Ihnen, bei jeder Anforderung ein Token aus ADAL abzurufen, um sicherzustellen, dass Sie immer über ein gültiges Token verfügen. 
@@ -205,7 +205,7 @@ Geben Sie die Anwendungs-ID (Client-ID) für Ihre Anwendung an. Die Anwendungs-I
 private const string ClientId = "<application-id>";
 ```
 
-Kopieren Sie außerdem den Umleitungs-URI, den Sie während des Registrierungsprozesses angegeben haben. Der im Code angegebene Umleitungs-URI muss mit dem Umleitungs-URI übereinstimmen, den Sie beim Registrieren der Anwendung bereitgestellt haben:
+Kopieren Sie außerdem den Umleitungs-URI, den Sie bei der Registrierung Ihrer Anwendung als native Anwendung angegeben haben. Der im Code angegebene Umleitungs-URI muss mit dem Umleitungs-URI übereinstimmen, den Sie beim Registrieren der Anwendung bereitgestellt haben:
 
 ```csharp
 private const string RedirectUri = "http://mybatchdatasample";
@@ -296,7 +296,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Erstellen Sie ein **BatchTokenCredentials**-Objekt, in dem der Delegat als Parameter verwendet wird. Verwenden Sie diese Anmeldeinformationen, um ein **BatchClient**-Objekt zu öffnen. Sie können dieses **BatchClient**-Objekt dann für nachfolgende Vorgänge für den Batch-Dienst verwenden:
+Erstellen Sie ein **BatchTokenCredentials**-Objekt, in dem der Delegat als Parameter verwendet wird. Verwenden Sie diese Anmeldeinformationen, um ein **BatchClient**-Objekt zu öffnen. Verwenden Sie dann dieses **BatchClient**-Objekt für nachfolgende Vorgänge für den Batch-Dienst:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -308,6 +308,65 @@ public static async Task PerformBatchOperations()
         await client.JobOperations.ListJobs().ToListAsync();
     }
 }
+```
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Codebeispiel: Verwenden eines Azure AD-Dienstprinzipals mit Batch Python
+
+Verweisen Sie zum Authentifizieren mit einem Dienstprinzipal von Batch Python auf die Module [azure-batch](https://pypi.org/project/azure-batch/) und [azure-common](https://pypi.org/project/azure-common/).
+
+
+```python
+from azure.batch import BatchServiceClient
+from azure.common.credentials import ServicePrincipalCredentials
+```
+
+Wenn Sie einen Dienstprinzipal verwenden, müssen Sie die Mandanten-ID angeben. Führen Sie zum Abrufen der Mandanten-ID die Schritte unter [Abrufen der Mandanten-ID für Ihr Azure Active Directory](#get-the-tenant-id-for-your-active-directory) aus:
+
+```python
+TENANT_ID = "<tenant-id>";
+```
+
+Verweisen Sie auf den Ressourcenendpunkt für den Batch-Dienst:  
+
+```python
+RESOURCE = "https://batch.core.windows.net/";
+```
+
+Verweisen Sie auf Ihr Batch-Konto:
+
+```python
+BATCH_ACCOUNT_URL = "https://myaccount.mylocation.batch.azure.com";
+```
+
+Geben Sie die Anwendungs-ID (Client-ID) für Ihre Anwendung an. Die Anwendungs-ID ist über Ihre App-Registrierung im Azure-Portal verfügbar:
+
+```python
+CLIENT_ID = "<application-id>";
+```
+
+Geben Sie den geheimen Schlüssel an, den Sie aus dem Azure-Portal kopiert haben:
+
+```python
+SECRET = "<secret-key>";
+```
+
+Erstellen Sie ein **ServicePrincipalCredentials**-Objekt:
+
+```python
+credentials = ServicePrincipalCredentials(
+    client_id=CLIENT_ID,
+    secret=SECRET,
+    tenant=TENANT_ID,
+    resource=RESOURCE
+)
+```
+
+Verwenden Sie die Dienstprinzipal-Anmeldeinformationen, um ein **BatchServiceClient**-Objekt zu öffnen. Verwenden Sie dieses **BatchServiceClient**-Objekt dann für nachfolgende Vorgänge für den Batch-Dienst.
+
+```python
+    batch_client = BatchServiceClient(
+    credentials,
+    base_url=BATCH_ACCOUNT_URL
+)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

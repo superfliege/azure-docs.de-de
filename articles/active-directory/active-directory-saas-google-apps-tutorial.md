@@ -1,10 +1,10 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Google Apps | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Google Apps konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit G Suite | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und G Suite konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
 ms.service: active-directory
@@ -12,32 +12,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 04/02/2018
 ms.author: jeedes
-ms.openlocfilehash: f3b0d48534113dea152aba632e59d03ed78db301
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: aaa42283f44bc090d54db85ff5062edffa1b4b02
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-google-apps"></a>Tutorial: Azure Active Directory-Integration mit Google Apps
+# <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>Tutorial: Azure Active Directory-Integration mit G Suite
 
-In diesem Tutorial erfahren Sie, wie Sie Google Apps in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie G Suite in Azure Active Directory (Azure AD) integrieren.
 
-Die Integration von Google Apps in Azure AD bietet die folgenden Vorteile:
+Die Integration von G Suite in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Google Apps hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Google Apps anzumelden (einmaliges Anmelden).
+- Sie können in Azure AD steuern, wer Zugriff auf G Suite hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei G Suite anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Google Apps konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit G Suite konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Google Apps-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein G Suite-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Eine Google Apps-Abonnement oder ein Google Cloud Platform-Abonnement.
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -48,32 +49,37 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-1. **F: Sind Chromebooks und andere Chrome-Geräte mit dem einmaligen Anmelden in Azure AD kompatibel?**
-   
-    A: Ja, Benutzer können sich mit ihren Azure AD-Anmeldeinformationen bei ihren Chromebook-Geräten anmelden. In diesem [Google Apps-Supportartikel](https://support.google.com/chrome/a/answer/6060880) finden Sie Informationen darüber, warum Benutzer möglicherweise zweimal zum Eingeben der Anmeldeinformationen aufgefordert werden.
+1.  **F: Unterstützt diese Integration Google Cloud Platform-SSO-Integration in Azure AD?**
+    
+    A: Ja. Für Google Cloud Platform und Google Apps wird dieselbe Authentifizierungsplattform verwendet. Um die Integration von GCP vorzunehmen, müssen Sie daher SSO mit Google Apps konfigurieren.
 
-2. **F: Wenn ich einmaliges Anmelden aktiviere, können Benutzer dann ihre Azure AD-Anmeldeinformationen zum Anmelden bei Google-Produkten wie Google Classroom, GMail, Google Drive, YouTube usw. verwenden?**
-   
-    A: Ja, je nachdem, [welche Google-Apps](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) Sie für Ihre Organisation aktivieren oder deaktivieren.
 
-3. **F: Kann ich einmaliges Anmelden nur für einen Teil meiner Google Apps-Benutzer aktivieren?**
+2. **F: Sind Chromebooks und andere Chrome-Geräte mit dem einmaligen Anmelden in Azure AD kompatibel?**
    
-    A: Nein. Wenn Sie einmaliges Anmelden aktivieren, müssen sich Ihre Google Apps-Benutzer sofort mit ihren Azure AD-Anmeldeinformationen authentifizieren. Da Google Apps die Verwendung mehrerer Identitätsanbieter nicht unterstützt, kann entweder Azure AD oder Google als Identitätsanbieter für Ihre Google Apps-Umgebung dienen – aber nicht beide gleichzeitig.
+    A: Ja, Benutzer können sich mit ihren Azure AD-Anmeldeinformationen bei ihren Chromebook-Geräten anmelden. In diesem [G Suite-Supportartikel](https://support.google.com/chrome/a/answer/6060880) finden Sie Informationen darüber, warum Benutzer möglicherweise zweimal zum Eingeben der Anmeldeinformationen aufgefordert werden.
 
-4. **F: Wenn ein Benutzer über Windows angemeldet ist, wird er dann automatisch bei Google Apps authentifiziert, ohne dass er zur Eingabe eines Kennworts aufgefordert wird?**
+3. **F: Wenn ich einmaliges Anmelden aktiviere, können Benutzer dann ihre Azure AD-Anmeldeinformationen zum Anmelden bei Google-Produkten wie Google Classroom, GMail, Google Drive, YouTube usw. verwenden?**
    
-    A: Es gibt zwei Optionen zum Aktivieren dieses Szenarios. Benutzer können sich über die [Azure Active Directory-Einbindung](active-directory-azureadjoin-overview.md)bei Windows 10-Geräten anmelden. Alternativ dazu können Benutzer sich bei Windows-Geräten anmelden, die über eine Domäne mit einem lokalen Active Directory verbunden sind, das für einmaliges Anmelden bei Azure AD über eine [AD FS](active-directory-aadconnect-user-signin.md) -Bereitstellung (Active Directory-Verbunddienste) aktiviert wurde. Für beide Optionen ist die Ausführung der Schritte im folgenden Tutorial erforderlich, um das einmalige Anmelden zwischen Azure AD und Google Apps zu aktivieren.
+    A: Ja, je nachdem, [welche G Suite-Komponente](https://support.google.com/a/answer/182442?hl=en&ref_topic=1227583) Sie für Ihre Organisation aktivieren oder deaktivieren.
+
+4. **F: Kann ich einmaliges Anmelden nur für einen Teil meiner G Suite-Benutzer aktivieren?**
+   
+    A: Nein. Wenn Sie einmaliges Anmelden aktivieren, müssen sich Ihre G Suite-Benutzer sofort mit ihren Azure AD-Anmeldeinformationen authentifizieren. Da G Suite die Verwendung mehrerer Identitätsanbieter nicht unterstützt, kann entweder Azure AD oder Google als Identitätsanbieter für Ihre G Suite-Umgebung fungieren – aber nicht beide gleichzeitig.
+
+5. **F: Wenn ein Benutzer über Windows angemeldet ist, wird er dann automatisch bei G Suite authentifiziert, ohne dass er zur Eingabe eines Kennworts aufgefordert wird?**
+   
+    A: Es gibt zwei Optionen zum Aktivieren dieses Szenarios. Benutzer können sich über die [Azure Active Directory-Einbindung](active-directory-azureadjoin-overview.md)bei Windows 10-Geräten anmelden. Alternativ dazu können Benutzer sich bei Windows-Geräten anmelden, die über eine Domäne mit einem lokalen Active Directory verbunden sind, das für einmaliges Anmelden bei Azure AD über eine [AD FS](active-directory-aadconnect-user-signin.md) -Bereitstellung (Active Directory-Verbunddienste) aktiviert wurde. Für beide Optionen müssen Sie die Schritte im folgenden Tutorial ausführen, um einmaliges Anmelden zwischen Azure AD und G Suite zu aktivieren.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Google Apps aus dem Katalog
+1. Hinzufügen von G Suite aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-google-apps-from-the-gallery"></a>Hinzufügen von Google Apps aus dem Katalog
-Zum Konfigurieren der Integration von Google Apps in Azure AD müssen Sie Google Apps aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-g-suite-from-the-gallery"></a>Hinzufügen von G Suite aus dem Katalog
+Zum Konfigurieren der Integration von G Suite in Azure AD müssen Sie G Suite aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Google Apps aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um G Suite aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -87,98 +93,116 @@ Zum Konfigurieren der Integration von Google Apps in Azure AD müssen Sie Google
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Google Apps** ein, wählen Sie im Ergebnisbereich **Google Apps** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie **G Suite** in das Suchfeld ein, wählen Sie im Ergebnisbereich den Eintrag **G Suite** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Google Apps in der Ergebnisliste](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_addfromgallery.png)
+    ![G Suite in der Ergebnisliste](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Google Apps mithilfe einer Testbenutzerin mit dem Namen „Britta Simon“.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei G Suite mithilfe einer Testbenutzerin namens Britta Simon.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Google Apps als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Google Apps muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in G Suite als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in G Suite muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in Google Apps den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um die Linkbeziehung herzustellen.
+Weisen Sie in G Suite den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Google Apps müssen Sie die folgenden Bausteine ausführen:
+Um einmaliges Anmelden in Azure AD mit G Suite zu konfigurieren und zu testen, müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Google Apps-Testbenutzers](#create-a-google-apps-test-user)**, um ein Pendant von Britta Simon in Google Apps zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **[Erstellen eines G Suite-Testbenutzers](#create-a-g-suite-test-user)**, um ein Pendant von Britta Simon in G Suite zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Google Apps-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer G Suite-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Google Apps die folgenden Schritte aus:**
+**Um einmaliges Anmelden von Azure AD mit G Suite zu konfigurieren, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Google Apps** auf **Einmaliges Anmelden**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **G Suite** auf **Einmaliges Anmelden**.
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Google Apps** die folgenden Schritte aus:
+3. Führen Sie im Abschnitt **Domäne und URLs für G Suite** die folgenden Schritte aus, wenn Sie die Konfiguration für **Gmail** vornehmen möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Google Apps](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_url.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für G Suite](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_urlgmail.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://mail.google.com/a/<yourdomain.com>`.
+    a. Geben Sie in das Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com`
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
-
+    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein: 
     | |
     |--|
-    | `google.com`|
-    | `http://google.com`|
-    | `google.com/<yourdomain.com>`|
-    | `http://google.com/a/<yourdomain.com>`|
-       
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
+ 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Google Apps-Clientsupportteam](https://www.google.com/contact/), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam für G Suite](https://www.google.com/contact/), um diese Werte zu erhalten.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+4. Führen Sie im Abschnitt **Domäne und URLs für G Suite** die folgenden Schritte aus, wenn Sie die Konfiguration für **Google Cloud Platform** vornehmen möchten:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für G Suite](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_url1.png)
+
+    a. Geben Sie in das Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com `
+
+    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein: 
+    | |
+    |--|
+    | `google.com/a/<yourdomain.com>` |
+    | `google.com` |
+    | `http://google.com` |
+    | `http://google.com/a/<yourdomain.com>` |
+    
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam für G Suite](https://www.google.com/contact/), um diese Werte zu erhalten. 
+
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-googleapps-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-googleapps-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Google Apps-Konfiguration** auf **Google Apps konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, URL für den SAML-SSO-Dienst und URL für Kennwortänderung** aus dem Abschnitt **Kurzübersicht**.
+7. Klicken Sie im Abschnitt **G Suite-Konfiguration** auf **G Suite konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, URL für den SAML-SSO-Dienst und URL für Kennwortänderung** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Google Apps-Konfiguration](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_configure.png) 
+    ![G Suite-Konfiguration](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_configure.png) 
 
-7. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei der [Google Apps-Verwaltungskonsole](http://admin.google.com/) mit Ihrem Administratorkonto an.
+8. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich bei der [G Suite-Verwaltungskonsole](http://admin.google.com/) mit Ihrem Administratorkonto an.
 
-8. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
+9. Klicken Sie auf **Sicherheit**. Wenn der Link nicht angezeigt wird, kann er unter dem Menü **Weitere Steuerelemente** im unteren Bereich des Bildschirms versteckt sein.
    
     ![Klicken Sie auf "Sicherheit".][10]
 
-9. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
+10. Klicken Sie auf der Seite **Sicherheit** auf **Einmaliges Anmelden (SSO) einrichten**.
    
     ![Klicken Sie auf "SSO".][11]
 
-10. Führen Sie die folgenden Konfigurationsänderungen durch:
+11. Führen Sie die folgenden Konfigurationsänderungen durch:
    
     ![Konfigurieren von SSO][12]
    
     a. Wählen Sie **Einmaliges Anmelden mit externem Identitätsanbieter einrichten**.
 
-    b. Fügen Sie in Google Apps im Feld **URL der Anmeldeseite** den Wert der **Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in G Suite im Feld **URL der Anmeldeseite** den Wert von **Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Fügen Sie in Google Apps im Feld **URL der Abmeldeseite** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben. 
+    c. Fügen Sie in G Suite im Feld **URL der Abmeldeseite** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben. 
 
-    d. Fügen Sie in Google Apps im Feld **Kennwort-URL ändern** den Wert für **Kennwort-URL ändern** ein, den Sie aus dem Azure-Portal kopiert haben. 
+    d. Fügen Sie in G Suite im Feld **Kennwort-URL ändern** den Wert von **Kennwort-URL ändern** ein, den Sie aus dem Azure-Portal kopiert haben. 
 
-    e. Laden Sie in Google Apps als **Verifizierungszertifikat** das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.
+    e. Laden Sie in G Suite für das **Verifizierungszertifikat** das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.
 
-    f. Klicken Sie auf **Änderungen speichern**.
+    f. Aktivieren Sie **Domainspezifischen Aussteller verwenden**.
+
+    g. Klicken Sie auf **Änderungen speichern**.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -211,30 +235,30 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
-### <a name="create-a-google-apps-test-user"></a>Erstellen eines Google Apps-Testbenutzers
+### <a name="create-a-g-suite-test-user"></a>Erstellen eines G-Suite-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Google Apps Software. Google Apps unterstützt die automatische Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt keine Aktion an. Wenn ein Benutzer nicht bereits in Google Apps Software vorhanden ist, wird ein neuer Benutzer erstellt, sobald Sie versuchen, auf Google Apps Software zuzugreifen.
+Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in G Suite Software. G Suite unterstützt die automatische Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt keine Aktion an. Wenn ein Benutzer nicht bereits in G Suite-Software vorhanden ist, wird ein neuer Benutzer erstellt, sobald Sie versuchen, auf G Suite-Software zuzugreifen.
 
 >[!NOTE] 
 >Setzen Sie sich mit dem [Supportteam von Google](https://www.google.com/contact/) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Google Apps gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf G Suite gewähren.
 
 ![Zuweisen der Benutzerrolle][200] 
 
-**Um Britta Simon Google Apps zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Um Britta Simon zu G Suite zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Google Apps** aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **G Suite** aus.
 
-    ![Google Apps-Link in der Anwendungsliste](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_app.png)  
+    ![G Suite-Link in der Anwendungsliste](./media/active-directory-saas-googleapps-tutorial/tutorial_googleapps_app.png)  
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -254,7 +278,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Google Apps“ klicken, sollten Sie automatisch bei Ihrer Google Apps-Anwendung angemeldet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „G Suite“ klicken, sollten Sie automatisch in Ihrer G Suite-Anwendung angemeldet werden.
 Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

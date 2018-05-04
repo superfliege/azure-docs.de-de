@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 322de1fb19461455a063d939ace3d5553ed1fc79
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bd4ebbec4506824f00d09a09369ebbeaf9458c19
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure CLI
 
@@ -68,14 +68,14 @@ Beim Konfigurieren des Servers treffen Sie die Entscheidung, ob dafür lokal red
 
 Beim Erstellen eines Servers über den `az mysql server create`-Befehl legt der `--geo-redundant-backup`-Parameter Ihre Sicherungsredundanzoption fest. Bei `Enabled` werden georedundante Sicherungen vorgenommen. Bei `Disabled` werden lokal redundante Sicherungen vorgenommen. 
 
-Der Aufbewahrungszeitraum für Sicherungen wird durch den Parameter `--backup-retention-days` festgelegt. 
+Der Aufbewahrungszeitraum für Sicherungen wird durch den Parameter `--backup-retention` festgelegt. 
 
 Weitere Informationen zum Festlegen dieser Werte während der Erstellung finden Sie unter [Erstellen einer Azure-Datenbank für MySQL-Server mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 Der Aufbewahrungszeitraum für Sicherungen kann für einen Server folgendermaßen geändert werden:
 
 ```azurecli-interactive
-az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention-days 10
+az mysql server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
 Das obige Beispiel ändert den Aufbewahrungszeitraum für Sicherungen von „mydemoserver“ in 10 Tage.
@@ -114,12 +114,16 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 Um einen Server mithilfe einer georedundanten Sicherung zu erstellen, verwenden Sie den Azure CLI-Befehl `az mysql server georestore`.
 
+> [!NOTE]
+> Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
+>
+
 Geben Sie zur Geowiederherstellung des Servers an der Azure CLI-Eingabeaufforderung den folgenden Befehl ein:
 
 ```azurecli-interactive
 az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
 ```
-Dieser Befehl erstellt einen neuen Server namens *mydemoserver-georestored* in „USA, Osten“, der zu *myresourcegroup* gehört. Es ist ein Gen 4-Server vom Typ „Allgemein“ mit acht virtuellen Kernen. Der Server wird aus der georedundanten Sicherung von *mydemoserver* erstellt, die auch in der Ressourcengruppe *myresourcegroup* vorhanden ist.
+Dieser Befehl erstellt einen neuen Server namens *mydemoserver-georestored* in „USA, Osten“, der zu *myresourcegroup* gehört. Es ist ein Gen 4-Server vom Typ „Allgemein“ mit 8 virtuellen Kernen. Der Server wird aus der georedundanten Sicherung von *mydemoserver* erstellt, die auch in der Ressourcengruppe *myresourcegroup* vorhanden ist.
 
 Wenn Sie den neuen Server in einer anderen Ressourcengruppe als der, in der sich der vorhandene Server befindet, erstellen möchten, bestimmen Sie im `--source-server`-Parameter den Servernamen wie im folgenden Beispiel gezeigt:
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/16/2018
-ms.author: bwren
+ms.date: 04/16/2018
+ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb787de23022cd7a48ec476968e05dec6560b419
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: c43e262725bd7b4c4fe5680f514d80112766f991
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 
@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie schon mit der [Erstellung ein
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
 Alle Ressourcen in Log Analytics befinden sich in einem [Arbeitsbereich](../log-analytics/log-analytics-manage-access.md).  Wie unter [Log Analytics-Arbeitsbereich und Automation-Konto](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist der Arbeitsbereich nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist er nicht verfügbar, schlägt die Installation der Lösung fehl.
 
-Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalten.  Dafür sorgt wie in diesem Beispiel einer savedsearch-Ressource der Parameter **Arbeitsbereich** in der Lösung.
+Der Name des Arbeitsbereichs ist im Namen jeder Log Analytics-Ressource enthalten.  Dafür sorgt wie in diesem Beispiel einer SavedSearch-Ressource der Parameter **workspace** in der Lösung.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
@@ -86,17 +86,22 @@ Die Eigenschaften einer gespeicherten Suche sind in der folgenden Tabelle beschr
 | query | Die auszuführende Abfrage. |
 
 > [!NOTE]
-> Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten.  Falls Ihre Abfrage **Typ:AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **Typ:AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
+> Sie müssen möglicherweise Escape-Zeichen in der Abfrage verwenden, wenn diese Zeichen enthält, die als JSON interpretiert werden könnten.  Falls Ihre Abfrage **Type: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** lautete, sollte in der Lösungsdatei Folgendes stehen: **Type: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerts
 [Log Analytics-Warnungen](../log-analytics/log-analytics-alerts.md) werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen.  Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt.  
+
+> [!NOTE]
+> Ab 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
 Warnungsregeln in einer Verwaltungslösung bestehen aus den folgenden drei verschiedenen Ressourcen:
 
 - **Gespeicherte Suche.**  Definiert die Protokollsuche, die ausgeführt wird  Mehrere Warnungsregeln können gemeinsam eine einzelne gespeicherte Suche verwenden.
 - **Zeitplan.**  Definiert, wie oft die Protokollsuche ausgeführt wird  Jede Warnungsregel weist nur einen einzigen Zeitplan auf.
-- **Warnungsaktion.**  Jede Warnregel weist eine Aktionsressource mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert.  Die Aktionsressource definiert optional eine Antwort per E-Mail und Runbook.
-- **Webhook-Aktion (optional).**  Wenn die Warnungsregel einen Webhook aufruft, ist eine zusätzliche Aktionsressource vom Typ **Webhook** erforderlich.    
+- **Warnungsaktion.**  Jede Warnregel weist eine Aktionsgruppenressource oder Aktionsressource (veraltet) mit dem Typ **Warnung** auf, die die Details der Warnung, etwa die Kriterien dafür, wann ein Warnungsdatensatz erstellt wird, und den Schweregrad der Warnung definiert. Die Ressource für eine [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) kann eine Liste der konfigurierten Aktionen aufweisen, die durchzuführen sind, wenn die Warnung ausgelöst wird – z.B. Anruf, SMS, E-Mail, Webhook, ITSM-Tool, Automation-Runbook, Logik-App usw.
+ 
+Die Aktionsressource (veraltet) definiert optional eine Antwort per E-Mail und Runbook.
+- **Webhookaktion (veraltet)**  Wenn die Warnungsregel einen Webhook aufruft, ist eine zusätzliche Aktionsressource vom Typ **Webhook** erforderlich.    
 
 Gespeicherte Suchressourcen sind oben beschrieben.  Die anderen Ressourcen sind nachfolgend beschrieben.
 
@@ -133,20 +138,25 @@ Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschr
 
 Die Zeitplanressource muss von der gespeicherten Suche abhängig sein, damit sie vor dem Zeitplan erstellt wird.
 
+> [!NOTE]
+> Der Name des Zeitplans muss in einem bestimmten Arbeitsbereich eindeutig sein; zwei Zeitpläne können nicht dieselbe ID haben, auch wenn sie unterschiedlichen gespeicherten Suchvorgängen zugeordnet sind. Auch die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden.
+
 
 ### <a name="actions"></a>Actions
-Es gibt zwei Arten von Aktionsressourcen, die von der **Typ**-Eigenschaft festgelegt werden.  Für einen Zeitplan ist eine Aktion vom Typ **Warnung** erforderlich, die die Details der Warnungsregel und die Aktionen definiert, die beim Erstellen einer Warnung ausgeführt werden.  Er kann auch eine **Webhook**-Aktion enthalten, wenn ein Webhook über die Warnung aufgerufen werden soll.  
+Ein Zeitplan kann mehrere Aktionen umfassen. Mit einer Aktion können ein oder mehrere durchzuführende Prozesse definiert werden, z.B. das Senden einer E-Mail oder das Starten eines Runbooks. Es kann auch ein Schwellenwert definiert werden, der bestimmt, wann die Ergebnisse einer Suche eine Übereinstimmung mit Kriterien ergeben.  Mit einigen Aktionen wird beides definiert, sodass die Prozesse durchgeführt werden, wenn der Schwellenwert erreicht ist.
 
-Aktionsressourcen weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` auf.  
+Aktionen können mithilfe der [Aktionsgruppenressource] oder Aktionsressource definiert werden.
 
-#### <a name="alert-actions"></a>Warnungsaktionen
+> [!NOTE]
+> Ab 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
-Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf.  Dadurch werden die Details der Warnung und optional die Aktionen zur Benachrichtigung und Wartung definiert.  Eine Benachrichtigung sendet eine E-Mail an mindestens eine Adresse.  Eine Wartung startet ein Runbook in Azure Automation und versucht, das erkannte Problem zu beheben.
+
+Es gibt zwei Arten von Aktionsressourcen, die von der **Typ**-Eigenschaft festgelegt werden.  Für einen Zeitplan ist eine Aktion vom Typ **Warnung** erforderlich, die die Details der Warnungsregel und die Aktionen definiert, die beim Erstellen einer Warnung ausgeführt werden. Aktionsressourcen weisen den Typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` auf.  
 
 Warnungsaktionen weisen die folgende Struktur auf:  Dies schließt allgemeine Variablen und Parameter ein, sodass Sie diesen Codeausschnitt kopieren, in Ihre Lösungsdatei einfügen und die Parameternamen ändern können. 
 
 
-
+```
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Alert').Name)]",
         "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
@@ -167,20 +177,16 @@ Warnungsaktionen weisen die folgende Struktur auf:  Dies schließt allgemeine Va
                     "triggerCondition": "[variables('Alert').Threshold.Trigger.Condition]",
                     "operator": "[variables('Alert').Trigger.Operator]",
                     "value": "[variables('Alert').Trigger.Value]"
-                },
-            },
-            "emailNotification": {
-                "recipients": [
-                    "[variables('Alert').Recipients]"
-                ],
-                "subject": "[variables('Alert').Subject]"
-            },
-            "remediation": {
-                "runbookName": "[variables('Alert').Remedition.RunbookName]",
-                "webhookUri": "[variables('Alert').Remedition.WebhookUri]"
-            }
+                  },
+              },
+      "AzNsNotification": {
+        "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+        "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]",
+        "CustomWebhookPayload": "[variables('MyAlert').AzNsNotification.CustomWebhookPayload]"
+        }
         }
     }
+```
 
 Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabellen beschrieben:
 
@@ -189,17 +195,16 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 | Typ | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
 | NAME | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
-| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Critical** (Kritisch)<br>**Warning**<br>**Informational** (Nur zu Informationszwecken) |
+| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Critical** (Kritisch)<br>**Warning**<br>**Informational** (Nur zu Informationszwecken)
 
 
-##### <a name="threshold"></a>Schwellenwert
+#### <a name="threshold"></a>Schwellenwert
 Dieser Abschnitt ist ein Pflichtabschnitt.  Er definiert die Eigenschaften für den Warnungsschwellenwert.
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
 | Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
-
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional.  Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
@@ -213,12 +218,33 @@ Dieser Abschnitt ist optional.  Fügen Sie ihn für eine Warnung aufgrund metris
 | Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
 | Wert | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
 
-##### <a name="throttling"></a>Drosselung
+
+#### <a name="throttling"></a>Drosselung
 Dieser Abschnitt ist optional.  Beziehen Sie diesen Abschnitt mit ein, wenn nach dem Erstellen einer Warnung Warnungen von derselben Regel eine bestimmte Zeit lang unterdrückt werden sollen.
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
 | DurationInMinutes | Ja, wenn das Drosselungselement enthalten ist | Dauer der Unterdrückung von Warnungen in Minuten, wenn eine Warnung aufgrund derselben Regel erstellt wird. |
+
+
+#### <a name="azure-action-group"></a>Azure-Aktionsgruppe
+Alle Warnungen in Azure verwenden Aktionsgruppen als Standardmechanismus für die Behandlung von Aktionen. Mit Aktionsgruppen können Sie Ihre Aktionen einmal angeben und die Aktionsgruppe dann mehreren Warnungen zuordnen. Dies gilt für sämtliche Bereiche in Azure, sodass Sie dieselbe Aktion nicht mehrmals deklarieren müssen. Aktionsgruppen unterstützen mehrere Aktionen – einschließlich E-Mails, SMS, Sprachanrufen, ITSM-Verbindungen, Automation-Runbooks, Webhook-URIs und anderen. 
+
+Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitplänen jetzt zusammen mit dem Schwellenwert auch Aktionsgruppendetails übergeben werden, um eine Warnung erstellen zu können. E-Mail-Details, Webhook-URLs, Details zur Runbookautomatisierung und weitere Aktionen müssen vor dem Erstellen einer Warnung in einer Aktionsgruppe definiert werden; es ist möglich, eine [Aktionsgruppe von Azure Monitor aus](../monitoring-and-diagnostics/monitoring-action-groups.md) im Portal zu erstellen, oder die [Aktionsgruppen-Ressourcenvorlage](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) zu verwenden.
+
+| Elementname | Erforderlich | BESCHREIBUNG |
+|:--|:--|:--|
+| AzNsNotification | Ja | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
+| CustomEmailSubject | Nein  | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |
+| CustomWebhookPayload | Nein  | Benutzerdefinierte Nutzlast, die an alle Webhookendpunkte gesendet wird, die in der zugeordneten Aktionsgruppe definiert sind. Das Format hängt davon ab, was der Webhook erwartet, und muss ein gültiges serialisiertes JSON-Format sein. |
+
+
+#### <a name="actions-for-oms-legacy"></a>Aktionen für OMS (veraltet)
+
+Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf.  Dadurch werden die Details der Warnung und optional die Aktionen zur Benachrichtigung und Wartung definiert.  Eine Benachrichtigung sendet eine E-Mail an mindestens eine Adresse.  Eine Wartung startet ein Runbook in Azure Automation und versucht, das erkannte Problem zu beheben.
+
+> [!NOTE]
+> Ab 14. Mai 2018 werden alle Warnungen in einem Arbeitsbereich automatisch auf Azure ausgedehnt. Ein Benutzer kann die Ausdehnung von Warnungen auf Azure bereits vor dem 14. Mai 2018 freiwillig initiieren. Weitere Informationen finden Sie unter [Erweitern von Warnungen in Azure aus OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Bei Benutzern, die Warnungen auf Azure erweitern, werden Aktionen nun in Azure-Aktionsgruppen gesteuert. Wenn ein Arbeitsbereich und die zugehörigen Warnungen auf Azure ausgedehnt werden, können Sie über die [Azure Resource Manager-Vorlage für Aktionsgruppen](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md) Aktionen abrufen oder hinzufügen.
 
 ##### <a name="emailnotification"></a>EmailNotification
  Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn bei der Warnung eine E-Mail an mindestens einen Empfänger gesendet werden soll.
@@ -239,7 +265,7 @@ Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn als Reaktion auf die
 | WebhookUri | Ja | Der URI des Webhooks für das Runbook |
 | Expiry | Nein  | Datum und Uhrzeit des Ablaufs der Wiederherstellung |
 
-#### <a name="webhook-actions"></a>Webhookaktionen
+##### <a name="webhook-actions"></a>Webhookaktionen
 
 Bei Webhookaktionen wird ein Prozess gestartet, indem eine URL aufgerufen und optional eine zu sendende Nutzlast bereitgestellt wird. Diese Aktionen sind mit Aktionen zur Problembehebung vergleichbar. Sie sind aber für Webhooks bestimmt, mit denen andere Prozesse als Azure Automation-Runbooks aufgerufen werden können. Außerdem verfügen sie über die zusätzliche Option zum Angeben einer Nutzlast, die für den Remoteprozess bereitgestellt wird.
 
@@ -271,19 +297,17 @@ Die Eigenschaften für Webhook-Aktionsressourcen werden in den folgenden Tabelle
 | customPayload | Nein  | Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird. Das Format hängt davon ab, was vom Webhook erwartet wird. |
 
 
-
-
 ## <a name="sample"></a>Beispiel
 
 Es folgt ein Beispiel für eine Lösung, die die folgenden Ressourcen enthält:
 
 - Gespeicherte Suche
 - Schedule
-- Warnungsaktion
-- Webhookaktion
+- Aktionsgruppe
 
 Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-management-suite-solutions-solution-file.md#parameters), die im Gegensatz zu hartcodierten Werten in Ressourcendefinitionen häufig in einer Lösung verwendet werden.
 
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0",
@@ -294,34 +318,16 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
               "Description": "Name of Log Analytics workspace"
             }
           },
-          "accountName": {
-            "type": "string",
-            "metadata": {
-              "Description": "Name of Automation account"
-            }
-          },
           "workspaceregionId": {
             "type": "string",
             "metadata": {
               "Description": "Region of Log Analytics workspace"
             }
           },
-          "regionId": {
+          "actiongroup": {
             "type": "string",
             "metadata": {
-              "Description": "Region of Automation account"
-            }
-          },
-          "pricingTier": {
-            "type": "string",
-            "metadata": {
-              "Description": "Pricing tier of both Log Analytics workspace and Azure Automation account"
-            }
-          },
-          "recipients": {
-            "type": "string",
-            "metadata": {
-              "Description": "List of recipients for the email alert separated by semicolon"
+              "Description": "List of action groups for alert actions separated by semicolon"
             }
           }
         },
@@ -331,7 +337,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-11-01-preview",
+          "LogAnalyticsApiVersion": "2015-03-20",
     
           "MySearch": {
             "displayName": "Error records by hour",
@@ -357,20 +363,11 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
               "Value": 3
             },
             "ThrottleMinutes": 60,
-            "Notification": {
-              "Recipients": [
-                "[parameters('recipients')]"
+            "AzNsNotification": {
+              "GroupIds": [
+                "[parameters('actiongroup')]"
               ],
-              "Subject": "Sample alert"
-            },
-            "Remediation": {
-              "RunbookName": "MyRemediationRunbook",
-              "WebhookUri": "https://s1events.azure-automation.net/webhooks?token=TluBFH3GpX4IEAnFoImoAWLTULkjD%2bTS0yscyrr7ogw%3d"
-            },
-            "Webhook": {
-              "Name": "MyWebhook",
-              "Uri": "https://MyService.com/webhook",
-              "Payload": "{\"field1\":\"value1\",\"field2\":\"value2\"}"
+              "CustomEmailSubject": "Sample alert"
             }
           }
         },
@@ -394,8 +391,7 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
               "containedResources": [
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
                 "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]",
-                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Webhook.Name)]"
+                "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name, variables('MyAlert').Name)]"
               ]
             },
             "plan": {
@@ -458,39 +454,18 @@ Das Beispiel verwendet Variablen für [Standardlösungsparameter](operations-man
               "Throttling": {
                 "DurationInMinutes": "[variables('MyAlert').ThrottleMinutes]"
               },
-              "EmailNotification": {
-                "Recipients": "[variables('MyAlert').Notification.Recipients]",
-                "Subject": "[variables('MyAlert').Notification.Subject]",
-                "Attachment": "None"
-              },
-              "Remediation": {
-                "RunbookName": "[variables('MyAlert').Remediation.RunbookName]",
-                "WebhookUri": "[variables('MyAlert').Remediation.WebhookUri]"
-              }
-            }
-          },
-          {
-            "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name, '/', variables('MyAlert').Webhook.Name)]",
-            "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
-            "dependsOn": [
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]",
-              "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name, '/actions/',variables('MyAlert').Name)]"
-            ],
-            "properties": {
-              "etag": "*",
-              "Type": "Webhook",
-              "Name": "[variables('MyAlert').Webhook.Name]",
-              "WebhookUri": "[variables('MyAlert').Webhook.Uri]",
-              "CustomPayload": "[variables('MyAlert').Webhook.Payload]"
+            "AzNsNotification": {
+              "GroupIds": "[variables('MyAlert').AzNsNotification.GroupIds]",
+              "CustomEmailSubject": "[variables('MyAlert').AzNsNotification.CustomEmailSubject]"
+            }             
             }
           }
         ]
     }
-
+```
 
 Die folgende Parameterdatei stellt Beispielwerte für diese Lösung bereit:
-
+```
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
         "contentVersion": "1.0.0.0",
@@ -510,12 +485,12 @@ Die folgende Parameterdatei stellt Beispielwerte für diese Lösung bereit:
             "pricingTier": {
                 "value": "Free"
             },
-            "recipients": {
-                "value": "recipient1@contoso.com;recipient2@contoso.com"
+            "actiongroup": {
+                "value": "/subscriptions/3b540246-808d-4331-99aa-917b808a9166/resourcegroups/myTestGroup/providers/microsoft.insights/actiongroups/sample"
             }
         }
     }
-
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen von Ansichten](operations-management-suite-solutions-resources-views.md) zu Ihrer Verwaltungslösung

@@ -42,7 +42,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 
 
 > [!NOTE]
-> Derzeit können höchstens 500.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/en-us/support/options/).
+> Derzeit können höchstens 500.000 Geräte mit einem einzelnen IoT Hub verbunden werden. Wenn Sie diesen Grenzwert erhöhen möchten, wenden Sie sich an [Microsoft-Support](https://azure.microsoft.com/support/options/).
 
 Der IoT Hub-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
 

@@ -5,22 +5,22 @@ services: iot-dps
 keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 03/27/2018
+ms.date: 03/30/2018
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f6410aa3ab21e7c50ec6918930f31b9e1455c464
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst 
 
-Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise bereitstellen. Dieser Artikel bietet eine Übersicht über die *Sicherheitskonzepte* bei der Gerätebereitstellung. Dieser Artikel ist für alle Personen relevant, die an der Vorbereitung von Geräten für die Bereitstellung beteiligt sind.
+Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise [automatisch bereitstellen](concepts-auto-provisioning.md). Dieser Artikel bietet eine Übersicht über die *Sicherheitskonzepte* bei der Gerätebereitstellung. Dieser Artikel ist für alle Personen relevant, die an der Vorbereitung von Geräten für die Bereitstellung beteiligt sind.
 
 ## <a name="attestation-mechanism"></a>Nachweismechanismus
 
@@ -46,6 +46,8 @@ Gerätegeheimnisse können auch in Software (Arbeitsspeicher) gespeichert werden
 
 TPM kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein. Erfahren Sie mehr über [TPMs und TPM-Nachweis](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Der Device Provisioning-Dienst unterstützt nur TPM 2.0.
 
+Der TPM-Nachweis basiert auf einer Nonce-Abfrage, die den Endorsement Key und den Speicherstammschlüssel verwendet, um ein signiertes Token für die Shared Access Signature (SAS) bereitzustellen.
+
 ### <a name="endorsement-key"></a>Endorsement Key
 
 Der Endorsement Key ist ein asymmetrischer Schlüssel im TPM, der zur Fertigungszeit intern generiert oder eingefügt wurde und für jedes TPM eindeutig ist. Der Endorsement Key kann nicht geändert oder entfernt werden. Der private Teil des Endorsement Key wird niemals außerhalb des TPM freigegeben. Der öffentliche Teil des Endorsement Key wird dagegen für die Erkennung eines Original-TPM verwendet. Erfahren Sie mehr über den [Endorsement Key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
@@ -56,21 +58,27 @@ Der Speicherstammschlüssel wird im TPM gespeichert und zum Schützen von in Anw
 
 ## <a name="x509-certificates"></a>X.509-Zertifikate
 
-Die Verwendung von X.509-Zertifikaten als Nachweismechanismus ist eine exzellente Möglichkeit, die Produktion zu skalieren und die Gerätebereitstellung zu vereinfachen. X.509-Zertifikate sind üblicherweise in einer Zertifikatvertrauenskette angeordnet, in der jedes Zertifikat in der Kette durch den privaten Schlüssel des nächsthöheren Zertifikats signiert ist. Den Abschluss der Kette bildet ein selbstsigniertes Stammzertifikat. So entsteht eine delegierte Vertrauenskette vom Stammzertifikat, das durch eine vertrauenswürdige Stammzertifizierungsstelle generiert wird, über jede Zwischenzertifizierungsstelle bis hinunter zum Zertifikat für die endgültige Entität, das auf einem Gerät installiert ist. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Die Verwendung von X.509-Zertifikaten als Nachweismechanismus ist eine exzellente Möglichkeit, die Produktion zu skalieren und die Gerätebereitstellung zu vereinfachen. X.509-Zertifikate sind üblicherweise in einer Zertifikatvertrauenskette angeordnet, in der jedes Zertifikat in der Kette durch den privaten Schlüssel des nächsthöheren Zertifikats signiert ist. Den Abschluss der Kette bildet ein selbstsigniertes Stammzertifikat. So entsteht eine delegierte Vertrauenskette vom Stammzertifikat, das durch eine vertrauenswürdige Stammzertifizierungsstelle generiert wird, über jede Zwischenzertifizierungsstelle bis zum untergeordneten Zertifikat für die endgültige Entität, das auf einem Gerät installiert ist. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](/azure/iot-hub/iot-hub-x509ca-overview). 
 
-Häufig repräsentiert die Zertifikatkette eine bestimmte logische oder physische Hierarchie im Zusammenhang mit den Geräten. Ein Beispiel: Ein Hersteller stellt ein selbstsigniertes Zertifizierungsstellen-Stammzertifikat aus, generiert mit diesem Zertifikat ein eindeutiges Zertifizierungsstellen-Zwischenzertifikat für jedes Werk, generiert mit diesem Zertifikat wiederum in jedem Werk ein eindeutiges Zertifizierungsstellen-Zwischenzertifikat für jeden Produktionsbereich im Werk und generiert schließlich mit diesem Zertifikat ein eindeutiges Gerätezertifikat für jedes Gerät, das in diesem Bereich gefertigt wird. Weitere Informationen finden Sie unter [Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept). 
+Häufig repräsentiert die Zertifikatkette eine bestimmte logische oder physische Hierarchie im Zusammenhang mit den Geräten. Ein Hersteller kann beispielsweise:
+- ein selbstsigniertes Stammzertifikat ausstellen
+- das Stammzertifikat zum Erstellen eines eindeutigen Zertifizierungsstellen-Zwischenzertifikats für jedes Werk verwenden
+- das Zertifikat jedes Werks zum Erstellen eines eindeutigen Zertifizierungsstellen-Zwischenzertifikats jeder Fertigungsstrecke im Werk verwenden
+- und schließlich das Zertifikat der Fertigungsstrecke zum Erstellen eines eindeutigen Gerätezertifikats für jedes in dieser Strecke gefertigte Gerät verwenden. 
+
+Weitere Informationen finden Sie unter [Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche](/azure/iot-hub/iot-hub-x509ca-concept). 
 
 ### <a name="root-certificate"></a>Stammzertifikat
 
-Ein Stammzertifikat ist ein selbstsigniertes X.509-Zertifikat, das eine Zertifizierungsstelle repräsentiert. Es handelt sich um den Endpunkt bzw. Vertrauensanker der Zertifikatkette. Stammzertifikate können von einer Organisation selbst ausgestellt oder bei einer Stammzertifizierungsstelle erworben werden. Weitere Informationen finden Sie unter [Abrufen von X.509-CA-Zertifikaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Das Stammzertifikat kann auch als Zertifizierungsstellen-Stammzertifikat bezeichnet werden.
+Ein Stammzertifikat ist ein selbstsigniertes X.509-Zertifikat, das eine Zertifizierungsstelle repräsentiert. Es handelt sich um den Endpunkt bzw. Vertrauensanker der Zertifikatkette. Stammzertifikate können von einer Organisation selbst ausgestellt oder bei einer Stammzertifizierungsstelle erworben werden. Weitere Informationen finden Sie unter [Abrufen von X.509-CA-Zertifikaten](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Das Stammzertifikat kann auch als Zertifizierungsstellen-Stammzertifikat bezeichnet werden.
 
 ### <a name="intermediate-certificate"></a>Zwischenzertifikat
 
 Ein Zwischenzertifikat ist ein X.509-Zertifikat, das vom Stammzertifikat (oder einem anderen Zwischenzertifikat mit dem Stammzertifikat in seiner Kette) signiert wurde. Das letzte Zwischenzertifikat in einer Kette wird zum Signieren des untergeordneten Zertifikats verwendet. Ein Zwischenzertifikat kann auch als Zertifizierungsstellen-Zwischenzertifikat bezeichnet werden.
 
-### <a name="leaf-certificate"></a>Untergeordnetes Zertifikat
+### <a name="end-entity-leaf-certificate"></a>Zertifikat für die endgültige Entität
 
-Das untergeordnete Zertifikat bzw. Zertifikat für die endgültige Entität identifiziert den Zertifikatinhaber. Es verfügt in seiner Zertifikatkette über das Stammzertifikat sowie über null, ein oder mehrere Zwischenzertifikate. Mit dem untergeordneten Zertifikat werden kein anderen Zertifikate signiert. Es identifiziert das Gerät eindeutig beim Bereitstellungsdienst und wird zuweilen auch als Gerätezertifikat bezeichnet. Während der Authentifizierung verwendet das Gerät den mit diesem Zertifikat verknüpften Schlüssel, um auf eine Besitznachweisanforderung des Diensts zu antworten. Weitere Informationen finden Sie unter [Authentifizieren von Geräten, die mit X.509-Zertifikaten signiert sind](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+Das untergeordnete Zertifikat bzw. Zertifikat für die endgültige Entität identifiziert den Zertifikatinhaber. Es verfügt in seiner Zertifikatkette über das Stammzertifikat sowie über null, ein oder mehrere Zwischenzertifikate. Mit dem untergeordneten Zertifikat werden kein anderen Zertifikate signiert. Es identifiziert das Gerät eindeutig beim Bereitstellungsdienst und wird zuweilen auch als Gerätezertifikat bezeichnet. Während der Authentifizierung verwendet das Gerät den mit diesem Zertifikat verknüpften Schlüssel, um auf eine Besitznachweisanforderung des Diensts zu antworten. Weitere Informationen finden Sie unter [Authentifizieren von Geräten, die mit X.509-Zertifikaten signiert sind](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten
 

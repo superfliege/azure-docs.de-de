@@ -1,24 +1,24 @@
 ---
 title: Verwalten von Azure Key Vault mit der CLI | Microsoft-Dokumentation
-description: "Verwenden Sie dieses Lernprogramm zum Automatisieren von häufigen Aufgaben in Schlüsseltresor mithilfe der CLI 2.0."
+description: Verwenden Sie dieses Lernprogramm zum Automatisieren von häufigen Aufgaben in Schlüsseltresor mithilfe der CLI 2.0.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/19/2018
 ms.author: barclayn
-ms.openlocfilehash: eaeb50ca8a83fcfee6689acf549f20ba5d44c51d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 95e35ed1f26a861ab934570fae613dda95fcb537
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="manage-key-vault-using-cli-20"></a>Verwalten von Schlüsseltresor mit CLI 2.0
 
@@ -65,25 +65,25 @@ Lesen Sie bitte auch die folgenden Lernprogramme, um sich mit Azure-Ressourcen-M
 ## <a name="connect-to-your-subscriptions"></a>Verbindungsherstellung mit Ihren Abonnements
 Verwenden Sie den folgenden Befehl, um sich mit einem Organisations-Konto anzumelden:
 
-```azurecli-interactive
+```azurecli
 az login -u username@domain.com -p password
 ```
 
 oder wenn Sie sich durch interaktive Eingabe anmelden möchten.
 
-```azurecli-interactive
+```azurecli
 az login
 ```
 
 Wenn Sie über mehrere Abonnements verfügen und zur Verwendung für den Azure-Schlüsseltresor ein spezifisches Abonnement verwenden möchten, geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
 
-```azurecli-interactive
+```azurecli
 az account list
 ```
 
 Geben Sie Folgendes ein, um das zu verwendende Abonnement anzugeben:
 
-```azurecli-interactive
+```azurecli
 az account set --subscription <subscription name or ID>
 ```
 
@@ -92,26 +92,26 @@ Weitere Informationen über die Konfiguration der plattformübergreifenden Azure
 ## <a name="create-a-new-resource-group"></a>Erstellen einer neuen Ressourcengruppe
 Wenn Sie den Azure-Ressourcen-Manager verwenden, werden alle zugehörigen Ressourcen in einer Ressourcengruppe erstellt. Im Rahmen dieses Lernprogramms erstellen wir eine neue Ressourcengruppe mit dem Namen "ContosoResourceGroup".
 
-```azurecli-interactive
+```azurecli
 az group create -n 'ContosoResourceGroup' -l 'East Asia'
 ```
 
 Der erste Parameter ist der Ressourcengruppenname und der zweite Parameter der Speicherort. Geben Sie zum Abrufen einer Liste aller möglichen Standorte Folgendes ein:
 
-```azurecli-interactive
+```azurecli
 az account list-locations
 ``` 
 
 Wenn Sie weitere Informationen benötigen, geben Sie Folgendes ein: 
 
-```azurecli-interactive
+```azurecli
 az account list-locations -h
 ```
 
 ## <a name="register-the-key-vault-resource-provider"></a>Registrieren des Schlüsseltresor-Ressourcenanbieters
 Beim Erstellen eines neuen Schlüsseltresors wird möglicherweise der Fehler „Das Abonnement ist nicht für die Verwendung des Namespace „Microsoft.KeyVault“ registriert.“ angezeigt. Stellen Sie in diesem Fall sicher, dass der Key Vault-Ressourcenanbieter in Ihrem Abonnement registriert ist:
 
-```azurecli-interactive
+```azurecli
 az provider register -n Microsoft.KeyVault
 ```
 
@@ -119,9 +119,10 @@ az provider register -n Microsoft.KeyVault
 Dies muss nur einmal pro Abonnement ausgeführt werden.
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
+
 Verwenden Sie den Befehl `az keyvault create` , um einen Schlüsseltresor zu erstellen. Das Skript verfügt über drei erforderliche Parameter: einen Ressourcengruppennamen, einen Schlüsseltresornamen und den geografischen Standort.
 
-Beispiel:
+Beispiel: 
 
 - Tresorname: **ContosoKeyVault**
 - Ressourcengruppename: **ContosoResourceGroup**
@@ -129,50 +130,52 @@ Beispiel:
 
 In diesem Fall geben Sie Folgendes ein:
 
-```azurecli-interactive
+```azurecli
 az keyvault create --name 'ContosoKeyVault' --resource-group 'ContosoResourceGroup' --location 'East Asia'
 ```
 
 Die Ausgabe dieses Befehls zeigt die Eigenschaften des Schlüsseltresors, den Sie soeben erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
 * **name**: Im Beispiel ist dies ContosoKeyVault. Sie verwenden diesen Namen für andere Schlüsseltresor-Befehle.
-* **VaultUri**: In diesem Beispiel ist dies https://contosokeyvault.vault.azure.net. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **vaultUri**: https://contosokeyvault.vault.azure.net in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Bisher sind Sie der einzige Benutzer mit dieser Berechtigung.
 
 ## <a name="add-a-key-or-secret-to-the-key-vault"></a>Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor
 
 Wenn Sie mit dem Azure-Schlüsseltresor einen softwaregeschützten Schlüssel erstellen möchten, verwenden Sie hierzu den Befehl `az key create` und geben Sie Folgendes ein:
-```azurecli-interactive
+
+```azurecli
 az keyvault key create --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --protection software
 ```
+
 Wenn Sie jedoch einen vorhandenen Schlüssel in einer PEM-Datei als lokale Datei in einer Datei namens softkey.pem gespeichert haben, die Sie in Azure-Schlüsseltresor hochladen möchten, geben Sie Folgendes ein, um den Schlüssel aus der PEM-Datei zu importieren, die den Schlüssel durch Software im Schlüsseltresor-Dienst schützt:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey' --pem-file './softkey.pem' --pem-password 'PaSSWORD' --protection software
 ```
 
-Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Verwenden Sie **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**, um immer die aktuelle Version zu erhalten, und **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**, um diese bestimmte Version zu erhalten.
+Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Verwenden Sie **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey**, um immer die aktuelle Version zu erhalten, oder **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87**, um genau diese Version zu erhalten.
 
 Um einen geheimen Schlüssel zum Schlüsseltresor hinzuzufügen – in diesem Fall das Kennwort "SQLPassword" mit dem Wert "Pa$$w0rd" für den Azure-Schlüsseltresor – geben Sie Folgendes ein:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret set --vault-name 'ContosoKeyVault' --name 'SQLPassword' --value 'Pa$$w0rd'
 ```
 
-Jetzt können Sie mit dem zugehörigen URI auf das Kennwort verweisen, das Sie dem Azure-Schlüsseltresor hinzugefügt haben. Verwenden Sie **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, um immer die aktuelle Version zu erhalten, und **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, um diese bestimmte Version zu erhalten.
+Jetzt können Sie mit dem zugehörigen URI auf das Kennwort verweisen, das Sie dem Azure-Schlüsseltresor hinzugefügt haben. Verwenden Sie **https://ContosoVault.vault.azure.net/secrets/SQLPassword**, um immer die aktuelle Version zu erhalten, oder **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**, um genau diese Version zu erhalten.
 
 Zeigen wir den Schlüssel oder geheimen Schlüssel an, den Sie soeben erstellt haben:
 
 * Geben Sie Folgendes ein, um Ihren Schlüssel anzuzeigen: 
 
-```azurecli-interactive
+```azurecli
 az keyvault key list --vault-name 'ContosoKeyVault'
 ```
 
 * Geben Sie Folgendes ein, um Ihr Geheimnis anzuzeigen: 
 
-```azurecli-interactive
+```azurecli
 az keyvault secret list --vault-name 'ContosoKeyVault'
 ```
 
@@ -193,12 +196,12 @@ Die Anwendung muss beide dieser Werte in Azure Active Directory vorlegen, um ein
 
 Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Directory finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md) oder [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md). So registrieren Sie die Anwendung in Azure Active Directory:
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Bereich auf **App-Registrierungen**. Falls keine App-Registrierungen angezeigt werden, klicken Sie auf **Weitere Dienste**, und suchen Sie nach der Registrierung.  
 [!NOTE]
 Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement enthalten ist, mit dem Sie Ihren Schlüsseltresor erstellt haben. 
 3. Klicken Sie auf **Registrierung einer neuen Anwendung**.
-4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie zu diesem Zeitpunkt nicht über diese Informationen verfügen, können Sie eine beliebige URL angeben (z. B. http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
+4. Geben Sie auf dem Blatt **Erstellen** einen Namen für die Anwendung ein, wählen Sie dann **WEBANWENDUNG UND/ODER WEB-API** (Standardeinstellung) aus, und geben Sie die **ANMELDE-URL** für die Webanwendung ein. Falls Sie diese Information gerade nicht zur Hand haben, können Sie einen Fantasiewert angeben (beispielsweise http://test1.contoso.com). Hierbei spielt es keine Rolle, ob diese Websites wirklich vorhanden sind. 
 
     ![Registrierung einer neuen Anwendung](./media/key-vault-manage-with-cli2/new-application-registration.png)
     >[!WARNING]
@@ -214,91 +217,98 @@ Sie müssen dasselbe Verzeichnis auswählen, in dem auch das Azure-Abonnement en
 
 
 ## <a name="authorize-the-application-to-use-the-key-or-secret"></a>Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels
+
 Verwenden Sie den Befehl `az keyvault set-policy` , um die Anwendung zum Zugreifen auf den Schlüssel oder geheimen Schlüssel im Tresor zu autorisieren.
 
 Wenn Ihr Tresorname beispielsweise "ContosoKeyVault" lautet, die Anwendung, die Sie autorisieren möchten, über die Client-ID 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed verfügt, und Sie die Anwendung zum Entschlüsseln und Anmelden mit Schlüsseln in Ihrem Tresor autorisieren möchten, führen Sie Folgendes aus:
 
-```azurecli-interactive
+```azurecli
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --key-permissions decrypt sign
 ```
 
 Wenn Sie dieselbe Anwendung so autorisieren möchten, dass sie geheime Schlüssel im Tresor liest, führen Sie Folgendes aus:
 
-```azurecli-interactive
+```azurecli
 az keyvault set-policy --name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
+
 ## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>Verwenden eins Hardwaresicherheitsmodul (HSM)
+
 Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Die HSMs sind FIPS 140-2 Ebene 2 überprüft. Wenn diese Anforderung auf Sie nicht zutrifft, überspringen Sie diesen Abschnitt, und wechseln Sie zu [Löschen des Schlüsseltresors und zugeordneter Schlüssel und geheimer Schlüssel](#delete-the-key-vault-and-associated-keys-and-secrets).
 
 Um diese HSM-geschützten Schlüssel zu erstellen, müssen Sie über ein Tresorabonnement mit Unterstützung von HSM-geschützten Schlüsseln verfügen.
 
 Wenn Sie den Tresor erstellen, fügen Sie den Parameter "SKU" hinzu:
 
-```azurecli-interactive
+```azurecli
 az keyvault create --name 'ContosoKeyVaultHSM' --resource-group 'ContosoResourceGroup' --location 'East Asia' --sku 'Premium'
 ```
+
 Sie können diesem Tresor softwaregeschützte Schlüssel (wie weiter oben gezeigt) und HSM-geschützte Schlüssel hinzufügen. Legen Sie den Parameter "Destination" auf "HSM" fest, um einen HSM-geschützten Schlüssel zu erstellen:
 
-```azurecli-interactive
+```azurecli
 az keyvault key create --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --protection 'hsm'
 ```
 
 Sie können mit dem folgenden Befehl einen Schlüssel aus einer PEM-Datei auf Ihren Computer importieren. Dieser Befehl importiert den Schlüssel in HSMs im Schlüsseltresordienst:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --pem-file '/.softkey.pem' --protection 'hsm' --pem-password 'PaSSWORD'
 ```
 
 Der nächste Befehl importiert ein BYOK-Paket (Bring Your Own Key). Auf diese Weise können Sie Ihren Schlüssel im lokalen HSM generieren und ihn in HSMs im Schlüsseltresordienst übertragen, ohne dass der Schlüssel die HSM-Grenzen verlässt:
 
-```azurecli-interactive
+```azurecli
 az keyvault key import --vault-name 'ContosoKeyVaultHSM' --name 'ContosoFirstHSMKey' --byok-file './ITByok.byok' --protection 'hsm'
 ```
+
 Ausführlichere Informationen zum Generieren dieses BYOK-Pakets finden Sie unter [Verwenden von HSM-geschützten Schlüsseln mit dem Azure-Schlüsseltresor](key-vault-hsm-protected-keys.md).
 
 ## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>Löschen vom Schlüsseltresor sowie von zugeordneten Schlüsseln und geheimen Schlüsseln
+
 Wenn Sie den Schlüsseltresor und die darin enthaltenen Schlüssel und Geheimnisse nicht mehr benötigen, können Sie den Schlüsseltresor mit dem Befehl `az keyvault delete` löschen:
 
-```azurecli-interactive
+```azurecli
 az keyvault delete --name 'ContosoKeyVault'
 ```
 
 Alternativ können Sie eine gesamte Azure-Ressourcengruppe löschen, die den Schlüsseltresor und alle weiteren Ressourcen enthält, die Sie in diese Gruppe eingeschlossen haben:
 
-```azurecli-interactive
+```azurecli
 az group delete --name 'ContosoResourceGroup'
 ```
 
 ## <a name="other-azure-cross-platform-command-line-interface-commands"></a>Weitere plattformübergreifende Microsoft Azure-Befehlszeilenschnittstelle-Befehle
+
 Die folgenden weiteren Befehle sind möglicherweise ebenfalls für das Verwalten eines Azure-Schlüsseltresors von Nutzen.
 
 Dieser Befehl ruft eine tabellarische Anzeige aller Schlüssel und ausgewählten Eigenschaften ab:
 
-```azurecli-interactive
+```azurecli
 az keyvault key list --vault-name 'ContosoKeyVault'
 ```
 
 Dieser Befehl zeigt eine vollständige Liste der Eigenschaften für den angegebenen Schlüssel an:
 
-```azurecli-interactive
+```azurecli
 az keyvault key show --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
 ```
 
 Dieser Befehl ruft eine tabellarische Anzeige der Namen aller geheimen Schlüssel und ausgewählten Eigenschaften ab:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret list --vault-name 'ContosoKeyVault'
 ```
 
 Hier ist Beispiel, wie ein bestimmter Schlüssel entfernt werden kann:
 
-```azurecli-interactive
+```azurecli
 az keyvault key delete --vault-name 'ContosoKeyVault' --name 'ContosoFirstKey'
 ```
 
 Hier ist ein Beispiel, wie ein bestimmten geheimer Schlüssel entfernt werden kann:
 
-```azurecli-interactive
+```azurecli
 az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
 ```
 

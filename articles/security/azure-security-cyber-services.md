@@ -1,6 +1,6 @@
 ---
 title: Microsoft-Dienste in der Sicherheit im Internet | Microsoft Docs
-description: "Der Artikel enthält eine Einführung zu Microsoft-Diensten, die im Zusammenhang mit Sicherheit im Internet stehen, und dazu, wie Sie weitere Informationen zu diesen Diensten erhalten."
+description: Der Artikel enthält eine Einführung zu Microsoft-Diensten, die im Zusammenhang mit Sicherheit im Internet stehen, und dazu, wie Sie weitere Informationen zu diesen Diensten erhalten.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 058cda5dd2e7e8026410a14d08d5714ce92822cd
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 5502f315a29e6bcc31038c7c05e779925fe295f0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-Dienste in der Sicherheit im Internet
+
 Die Microsoft-Dienste bieten einen umfassenden Ansatz zu Sicherheit, Identität und Sicherheit im Internet. Die Microsoft-Dienste bieten eine Reihe von Sicherheits- und Identitätsdiensten für Strategie, Planung, Implementierung und kontinuierlichen Support. Diese Dienste können Unternehmenskunden dabei unterstützen, ganzheitliche Sicherheitslösungen zu implementieren, die mit ihren strategischen Zielen in Einklang stehen.
 
 Mit direktem Zugriff auf Produktentwicklungsteams können wir integrierte Lösungen erstellen und die neuesten Sicherheits- und Identitätsfunktionen unserer Produkte erweitern, um das Geschäft unserer Kunden zu schützen und Innovationen voranzutreiben.

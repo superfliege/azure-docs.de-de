@@ -7,14 +7,14 @@ author: MightyPen
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/19/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 6037659eb419a785b01d4cbb6a2428cbd7f852da
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d6b8ddaa0eaf560352bc0aa0127b33f32ee4574a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -140,7 +140,7 @@ Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende
 Stellen Sie bei der Verwendung von Dienstendpunkten für die Azure SQL-Datenbank folgende Überlegungen an:
 
 - **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich,**: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../virtual-network/security-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
-- **Azure Database for PostgreSQL und Azure Database for MySQL werden nicht unterstützt**: Dienstendpunkte werden für Azure Database for PostgreSQL oder MySQL nicht unterstützt. Durch das Aktivieren der Dienstendpunkte zur SQL-Datenbank wird die Verbindung zu diesen Diensten unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an *dmalik@microsoft.com*.
+- **Azure Database for PostgreSQL und Azure Database for MySQL werden nicht unterstützt**: Dienstendpunkte werden für Azure Database for PostgreSQL oder MySQL nicht unterstützt. Durch das Aktivieren der Dienstendpunkte zur SQL-Datenbank wird die Verbindung zu diesen Diensten unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an *dmalik@microsoft.com*, um weitere Informationen zu erhalten.
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -227,8 +227,9 @@ Eine Liste verschiedener Fehlermeldungen der SQL-Datenbank ist [hier][sql-databa
 In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-portal-link-ref-477t] eine *Regel für ein virtuelles Netzwerk* in Ihrer Azure SQL-Datenbank-Instanz erstellen. Die Regel weist Ihre SQL-Datenbank-Instanz an, Nachrichten von einem bestimmten Subnetz zu akzeptieren, das als *Dienstendpunkt des virtuellen Netzwerks* gekennzeichnet ist.
 
 > [!NOTE]
-> Vergewissern Sie sich, dass Dienstendpunkte für das VNET/Subnetz aktiviert sind, das Sie den VNET-Firewallregeln des Servers hinzufügen möchten.
-> Wenn keine Dienstendpunkte für das VNET/Subnetz aktiviert sind, werden Sie im Portal zu deren Aktivierung aufgefordert; klicken Sie auf dem Blatt, auf dem Sie die Regel hinzuzufügen, auf „Aktivieren“.
+> Wenn Sie beabsichtigen, einen Dienstendpunkt zu den VNet-Firewallregeln Ihres Azure SQL-Datenbankservers hinzuzufügen, stellen Sie zunächst sicher, dass die Dienstendpunkte für das Subnetz eingeschaltet sind.
+>
+> Wenn Dienstendpunkte für das Subnetz nicht eingeschaltet werden, fordert Sie das Portal auf, diese zu aktivieren. Klicken Sie auf demselben Blatt, auf dem Sie auch die Regel hinzufügen, auf die Schaltfläche **Aktivieren**.
 
 #### <a name="powershell-alternative"></a>PowerShell-Alternative
 

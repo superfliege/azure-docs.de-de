@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Überwachungsanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Überwachungsanforderungen
 description: PCI-DSS-Anforderung 10
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 5fa1d17e68ce04b1f67081479518279be6cca099
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 708c57c1d7b79d3fd3c129de9a7ce4099ab6ac36
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitoring-requirements-for-pci-dss-compliant-environments"></a>Überwachungsanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-10"></a>PCI-DSS-Anforderung 10
@@ -39,7 +39,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure beschränkt den Zugriff auf Verwaltungs- und Diagnosetools auf autorisierte Mitarbeiter mit relevanten Verantwortungsbereichen. Microsoft Azure beschränkt den privilegierten Zugriff auf in der Produktionsumgebung verwendeten Tools basierend auf Prinzipien der geringsten Rechte. Microsoft Azure erstellt und pflegt ein Protokoll des gesamten individuellen Benutzerzugriffs auf Microsoft Azure-Systemkomponenten in der Plattformumgebung.<br /><br />Komponenten der Microsoft Azure-Plattform (einschließlich Betriebssystem, CloudNet, Fabric usw.) sind für das Protokollieren und Erfassen von Sicherheitsereignissen konfiguriert. Administrator-Aktivität auf der Microsoft Azure-Plattform wird protokolliert. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -59,7 +59,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure beschränkt den Zugriff auf Verwaltungs- und Diagnosetools auf autorisierte Mitarbeiter mit relevanten Verantwortungsbereichen. Microsoft Azure beschränkt den privilegierten Zugriff auf in der Produktionsumgebung verwendeten Tools basierend auf Prinzipien der geringsten Rechte. Microsoft Azure erstellt und pflegt ein Protokoll des gesamten individuellen Benutzerzugriffs auf Microsoft Azure-Systemkomponenten in der Plattformumgebung.<br /><br />Komponenten der Microsoft Azure-Plattform (einschließlich Betriebssystem, CloudNet, Fabric usw.) sind für das Protokollieren und Erfassen von Sicherheitsereignissen konfiguriert. Administrator-Aktivität auf der Microsoft Azure-Plattform wird protokolliert. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten, einschließlich CHD-Protokollierung. Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten, einschließlich CHD-Protokollierung. Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -78,7 +78,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure hat Verfahren zum Synchronisieren von Servern und Netzwerkgeräten in der Microsoft Azure-Umgebung eingeführt, bei denen NTP Stratum 1-Zeitserver mit GPS (Global Positioning System)-Satelliten synchronisiert werden. Die Synchronisierung wird automatisch alle fünf Minuten ausgeführt. Microsoft Azure ist dafür verantwortlich, die ordnungsgemäße Zeitsynchronisierung durch Diensthosts sicherzustellen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erfasst gemäß der Anforderung 10.3 die Benutzer-ID, den Ereignistyp, Datums-/Zeitstempel, erfolgreiche oder fehlgeschlagene Ereignisse, die Quelle des Ereignisses und den Namen der Ressource.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erfasst gemäß der Anforderung 10.3 die Benutzer-ID, den Ereignistyp, Datums-/Zeitstempel, erfolgreiche oder fehlgeschlagene Ereignisse, die Quelle des Ereignisses und den Namen der Ressource.|
 
 
 
@@ -93,7 +93,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure hat Verfahren zum Synchronisieren von Servern und Netzwerkgeräten in der Microsoft Azure-Umgebung eingeführt, bei denen NTP Stratum 1-Zeitserver mit GPS (Global Positioning System)-Satelliten synchronisiert werden. Die Synchronisierung wird automatisch alle fünf Minuten ausgeführt. Microsoft Azure ist dafür verantwortlich, die ordnungsgemäße Zeitsynchronisierung durch Diensthosts sicherzustellen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
 
 
 
@@ -106,7 +106,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.4](#pci-dss-requirement-10-4). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
 
 
 
@@ -119,7 +119,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.4](#pci-dss-requirement-10-4). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
 
 
 
@@ -132,7 +132,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.4](#pci-dss-requirement-10-4). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Zeitsynchronisierung für den PaaS-Dienst wird von Azure ausgeführt.|
 
 
 
@@ -145,7 +145,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | In der Microsoft Azure-Umgebung werden FIM- und IDS-Tools implementiert. Microsoft Azure verwendet EWS, um die Echtzeitanalyse von Ereignissen innerhalb der Betriebsumgebung zu unterstützen. MAs und AIMS generieren nahezu in Echtzeit Benachrichtigungen zu Ereignissen, die möglicherweise das System gefährden könnten. <br /><br />Die Protokollierung von Dienst-, Benutzer- und Sicherheitsereignissen (Webserverprotokolle, FTP-Serverprotokolle usw.) ist aktiviert und wird zentral beibehalten. Azure beschränkt den Zugriff auf Überwachungsprotokolle auf autorisierte Mitarbeiter basierend auf dem jeweiligen Verantwortungsbereich. Ereignisprotokolle werden in der sicheren Archivinfrastruktur von Azure archiviert und 180 Tage lang beibehalten. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -158,7 +158,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.5](#pci-dss-requirement-10-5). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -171,7 +171,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.5](#pci-dss-requirement-10-5). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -184,7 +184,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.5](#pci-dss-requirement-10-5). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -197,7 +197,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.5](#pci-dss-requirement-10-5). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -210,7 +210,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.5](#pci-dss-requirement-10-5). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für die OMS bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt die Überwachung aller Elemente für Azure bereit. Die Sicherung in einer externen Quelle kann von [Azure Backup](https://azure.microsoft.com/services/backup/) durchgeführt werden.|
 
 
 
@@ -226,7 +226,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | In der Microsoft Azure-Umgebung werden FIM- und IDS-Tools implementiert. Microsoft Azure verwendet EWS, um die Echtzeitanalyse von Ereignissen innerhalb der Betriebsumgebung zu unterstützen. MAs und AIMS generieren nahezu in Echtzeit Benachrichtigungen zu Ereignissen, die möglicherweise das System gefährden könnten. <br /><br />Die Protokollierung von Dienst-, Benutzer- und Sicherheitsereignissen (Webserverprotokolle, FTP-Serverprotokolle usw.) ist aktiviert und wird zentral beibehalten. Azure beschränkt den Zugriff auf Überwachungsprotokolle auf autorisierte Mitarbeiter basierend auf dem jeweiligen Verantwortungsbereich. Ereignisprotokolle werden in der sicheren Archivinfrastruktur von Azure archiviert und 180 Tage lang beibehalten. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. Der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. [Azure Advisor](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
 
 
 
@@ -243,7 +243,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.6](#pci-dss-requirement-10-6). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. Der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. [Azure Advisor](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
 
 
 
@@ -256,7 +256,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.6](#pci-dss-requirement-10-6). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. Der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. [Azure Advisor](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
 
 
 
@@ -269,7 +269,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Siehe Abschnitt „Microsoft Azure“ für [Anforderung 10.6](#pci-dss-requirement-10-6). |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. Der [Azure-Ratgeber](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verwendet [Azure Security Center](https://azure.microsoft.com/services/security-center/) zum Überwachen, Melden und Verhindern von Anomalien. [Azure Advisor](/azure/advisor/advisor-security-recommendations) bietet eine einheitliche, konsolidierte Ansicht der Empfehlungen für alle Ihre Azure-Ressourcen.|
 
 
 
@@ -282,7 +282,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure bewahrt Überwachungsprotokolle ein Jahr lang auf, wobei die Daten der letzten drei Monate über das interne Portal sofort verfügbar sind. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -299,7 +299,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 - Segmentierungsteuerelemente (sofern verwendet) 
 
 > [!NOTE]
-> Diese Anforderung ist bis zum 31 Januar 2018 eine bewährte Methode, danach ist Sie eine Anforderung.
+> Diese Anforderung ist bis zum 31. Januar 2018 eine bewährte Methode, danach stellt sie eine Anforderung dar.
 
 
 
@@ -308,7 +308,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure verwendet EWS, um die Echtzeitanalyse von Ereignissen innerhalb der Betriebsumgebung zu unterstützen. MAs und AIMS generieren nahezu in Echtzeit Benachrichtigungen zu Ereignissen, die möglicherweise das System gefährden könnten. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -323,7 +323,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 - Implementieren von Kontrollen zum Verhindern, dass der Fehler erneut auftritt – Wiederaufnahme der Überwachung von Sicherheitskontrollen 
 
 > [!NOTE]
-> Diese Anforderung ist bis zum 31 Januar 2018 eine bewährte Methode, danach ist Sie eine Anforderung.
+> Diese Anforderung ist bis zum 31. Januar 2018 eine bewährte Methode, danach stellt sie eine Anforderung dar.
 
 
 **Zuständigkeiten:&nbsp;&nbsp;`Shared`**
@@ -331,7 +331,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure verwendet EWS, um die Echtzeitanalyse von Ereignissen innerhalb der Betriebsumgebung zu unterstützen. MAs und AIMS generieren nahezu in Echtzeit Benachrichtigungen zu Ereignissen, die möglicherweise das System gefährden könnten. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore verfügt über eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten (einschließlich CHD-Protokollierung). Weitere Informationen finden Sie in den [PCI-Anleitungen zum Protokollieren](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -345,7 +345,7 @@ Protokollierungsmechanismen sowie die Möglichkeit zum Nachzuverfolgen von Benut
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt einen Anwendungsfall und eine Beschreibung für die Verwaltung und den Schutz der CHD bereit.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt einen Anwendungsfall und eine Beschreibung für die Verwaltung und den Schutz der CHD bereit.|
 
 
 

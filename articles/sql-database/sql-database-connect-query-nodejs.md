@@ -10,23 +10,23 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ebc199f740179ce14c7fb374e8be8862d24d6c32
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 0d1cdd40264ff76b0175c861b3084ed7e7b62a31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-nodejs-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie unter Verwendung von [Node.js](https://nodejs.org/en/) ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und mithilfe von Transact-SQL-Anweisungen Daten abfragt.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [Node.js](https://nodejs.org/en/) ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und mithilfe von Transact-SQL-Anweisungen Daten abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial benötigen Sie Folgendes:
+Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Node.js und die zugehörige Software müssen für das Betriebssystem installiert sein:
     - **macOS:** Installieren Sie Homebrew und Node.js, und installieren Sie anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).

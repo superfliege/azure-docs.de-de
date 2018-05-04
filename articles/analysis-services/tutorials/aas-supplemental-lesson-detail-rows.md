@@ -1,25 +1,18 @@
 ---
-title: "Ergänzende Lektion zum Azure Analysis Services-Tutorial – Detailzeilen | Microsoft-Dokumentation"
+title: Ergänzende Lektion zum Azure Analysis Services-Tutorial – Detailzeilen | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie ein Detailzeilenausdruck im Azure Analysis Services-Tutorialprojekt erstellt werden kann.
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 02e9edd966e64c0bfa32e2b80f4c26f797e58582
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Ergänzende Lektion – Detailzeilen
 
@@ -31,19 +24,19 @@ Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**
 Diese ergänzende Lektion ist Teil eines Tutorials zur Tabellenmodellierung. Vor dem Ausführen der Aufgaben in dieser ergänzenden Lektion sollten Sie alle vorherigen Lektionen oder das Beispiel-Modellprojekt „Adventure Works Internet Sales“ abgeschlossen haben.  
   
 ## <a name="whats-the-issue"></a>Um welches Problem geht es?
-Schauen Sie sich das Measure „InternetTotalSales“ an, bevor Sie einen Detailzeilenausdruck hinzufügen.
+Sehen Sie sich das Measure „InternetTotalSales“ an, bevor Sie einen Detailzeilenausdruck hinzufügen.
 
 1.  Klicken Sie in SSDT auf das Menü **Modell** und dann auf **In Excel analysieren**, um Excel zu öffnen und eine leere PivotTable zu erstellen.
   
-2.  Fügen Sie in den **PivotTable-Feldern** das Measure **InternetTotalSales** aus der Tabelle „FactInternetSales“ zu **Werte** hinzu, und **CalendarYear** aus der Tabelle „DimDate“ zu **Spalten** und **EnglishCountryRegionName** zu **Zeilen**. Die PivotTable zeigt Ihnen nun aggregierte Ergebnisse des Measure „InternetTotalSales“ nach Region und Jahr an. 
+2.  Fügen Sie in den **PivotTable-Feldern** das Measure **InternetTotalSales** aus der Tabelle „FactInternetSales“ zu **Werte** hinzu, und **CalendarYear** aus der Tabelle „DimDate“ zu **Spalten** und **EnglishCountryRegionName** zu **Zeilen**. Die PivotTable zeigt nun ein aggregiertes Ergebnis für das Measure „InternetTotalSales“ nach Region und Jahr an. 
 
     ![aas-lektion-detail-zeilen-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. Doppelklicken Sie in der PivotTable auf einen aggregierten Wert für ein Jahr und einen Regionsnamen. Hier doppelklicken Sie auf den Wert für Australien und das Jahr 2014. Ein neues Blatt wird geöffnet, das Daten enthält, die aber nicht wirklich hilfreich sind.
+3. Doppelklicken Sie in der PivotTable auf einen aggregierten Wert für ein Jahr und einen Regionsnamen. Der Wert für Australien und das Jahr 2014. Ein neues Blatt wird geöffnet, das Daten enthält, die aber nicht wirklich hilfreich sind.
 
     ![aas-lektion-detail-zeilen-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-Hier sollten Sie eine Tabelle mit Datenspalten und -zeilen sehen, die zum aggregierten Ergebnis Ihres „InternetTotalSales“-Measure beitragen. Zu diesem Zweck können Sie einen Detailzeilenausdruck als Eigenschaft des Measure hinzufügen.
+Das Ziel hier ist eine Tabelle mit Datenspalten und -zeilen, die zum aggregierten Ergebnis des „InternetTotalSales“-Measure beitragen. Zu diesem Zweck fügen Sie einen Detailzeilenausdruck als Eigenschaft des Measure hinzu.
 
 ## <a name="add-a-detail-rows-expression"></a>Hinzufügen eines Dateizeilenausdrucks
 
@@ -80,6 +73,8 @@ Hier sollten Sie eine Tabelle mit Datenspalten und -zeilen sehen, die zum aggreg
 
   
 ## <a name="see-also"></a>Weitere Informationen  
-[SELECTCOLUMNS-Funktion (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
-[Ergänzende Lektion – Dynamische Sicherheit](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
-[Ergänzende Lektion – Unregelmäßige Hierarchien](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+
+[SELECTCOLUMNS-Funktion (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[Ergänzende Lektion – Dynamische Sicherheit](../tutorials/aas-supplemental-lesson-dynamic-security.md)   
+[Ergänzende Lektion – Unregelmäßige Hierarchien](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)   
+ 

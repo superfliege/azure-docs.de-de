@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: 26a5ab93c82b523063632c4899daadbde70dd7d8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a72e870b1c98ec363b217030cf1e2f61ceaad5d9
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
 
@@ -52,7 +52,7 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
 
     Sie können die API-Werte während der Erstellung oder später über die Registerkarte **Einstellungen** festlegen. Der rote Stern neben einem Feld gibt an, dass das Feld erforderlich ist.
 
-    |Einstellung|Wert|Beschreibung|
+    |Einstellung|Wert|BESCHREIBUNG|
     |---|---|---|
     |**OpenAPI-Spezifikation**|http://conferenceapi.azurewebsites.net?format=json|Verweist auf den Dienst zum Implementieren der API. API Management leitet Anfragen an diese Adresse weiter.|
     |**Anzeigename**|*Demo Conference API*|Wenn Sie nach dem Eingeben der Dienst-URL die TAB-TASTE drücken, wird dieses Feld von APIM basierend auf den Daten in der JSON-Datei ausgefüllt. <br/>Dieser Name wird im Entwicklerportal angezeigt.|

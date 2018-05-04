@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 0466b0e911736d2e1e7fc50649feda932c3163e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
@@ -52,7 +52,7 @@ Ein logischer Azure Datenbankserver:
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (<serverName>.database.windows.net)
 - bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird 
 - stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten – Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw. 
-- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-subscription-service-limits.md))
+- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig 20 Server pro Abonnement – siehe Grenzwerte für Abonnements [hier](../azure-subscription-service-limits.md)).
 - stellt den Bereich für Datenbank- und DTU- bzw. V-Kern-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU) bereit
 - ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
@@ -65,7 +65,7 @@ Zum Schutz Ihrer Daten verhindert eine [SQL-Datenbank-Firewall](sql-database-fir
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe des Azure-Portals
 
-Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. Es existieren mehrere Methoden zum Erhalten eines Formulars für einen neuen SQL-Server. Sie erhalten ein solches entweder durch das Erstellen eines neuen SQL-Servers oder als Teil der Erstellung einer neuen Datenbank. 
+Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Erstellen eines leeren SQL-Servers (logischen Servers)
 
@@ -95,7 +95,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 >
 
 > [!TIP]
-> Ein Schnellstart-Tutorial zum Azure-Portal finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md).
+> Eine Schnellstartanleitung zum Azure-Portal finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von PowerShell
@@ -120,7 +120,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 | New-AzureRmSqlServerVirtualNetworkRule | Erstellt eine [*virtuelle Netzwerkregel*](sql-database-vnet-service-endpoint-rule-overview.md), die auf einem Subnetz basiert, das einen Dienstendpunkt für ein virtuelles Netzwerk darstellt. |
 
 > [!TIP]
-> Ein Schnellstart-Tutorial zu PowerShell finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-portal.md). PowerShell-Beispielskripts finden Sie unter [Erstellen einer einzelnen Azure SQL-­Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> Eine Schnellstartanleitung zu PowerShell finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-portal.md). PowerShell-Beispielskripts finden Sie unter [Erstellen einer einzelnen Azure SQL-­Datenbank und Konfigurieren einer Firewallregel mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der Azure CLI
@@ -150,7 +150,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
 
 > [!TIP]
-> Ein Schnellstart-Tutorial zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Erstellen einer einzelnen SQL-­Datenbank und Konfigurieren einer Firewallregel mit der Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) und [Überwachen und Skalieren einer einzelnen SQL-­Datenbank mithilfe der CLI](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Erstellen einer einzelnen SQL-­Datenbank und Konfigurieren einer Firewallregel mit der Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) und [Überwachen und Skalieren einer einzelnen SQL-­Datenbank mithilfe der CLI](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL
@@ -181,7 +181,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 
 > [!TIP]
-> Ein Schnellstart-Tutorial mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Ein Schnellstart-Tutorial mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
+> Eine Schnellstartanleitung mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Eine Schnellstartanleitung mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der REST-API
 

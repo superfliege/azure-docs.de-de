@@ -2,26 +2,26 @@
 documentType: LandingData
 title: Dokumentation zu Azure Policy
 metadata:
-  title: "Dokumentation zu Azure Policy – Tutorials, API-Referenz | Microsoft-Dokumentation"
-  description: "Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten."
+  title: Dokumentation zu Azure Policy – Tutorials, API-Referenz | Microsoft-Dokumentation
+  description: Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten.
   services: azure-policy
-  author: czeumault
-  manager: carolz
+  author: DCtheGeek
+  manager: carmonm
   ms.service: azure-policy
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 6082601b46ab4b420575fbc4d04b176c96225f72
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.author: dacoulte
+  ms.openlocfilehash: 0ca9efe0c1c1871265da127acfd76e90126b59ad
+  ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 04/28/2018
 abstract:
-  description: "Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten."
+  description: Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten.
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
@@ -40,7 +40,7 @@ sections:
         src: https://docs.microsoft.com/media/common/cli.svg
       text: Azure-Befehlszeilenschnittstelle
       href: /azure/azure-policy/assign-policy-definition-cli
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
     text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
@@ -51,7 +51,7 @@ sections:
 - title: Beispiele
   items:
   - type: paragraph
-    text: "Nutzen Sie die folgenden JSON-Beispiele als Unterstützung bei der Erstellung von Richtliniendefinitionen in Azure."
+    text: Nutzen Sie die folgenden JSON-Beispiele als Unterstützung bei der Erstellung von Richtliniendefinitionen in Azure.
   - type: list
     style: unordered
     className: spaced noBullet

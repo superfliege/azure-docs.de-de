@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 538d31f5b50ee22c06ba22c78e1aa92281a3b212
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fedf511e06243d5c0652e422b397bb00da3b42c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 1
 
@@ -39,7 +39,7 @@ Die Buildnummer von Update 1 für App Service in Azure Stack ist **69.0.13698.9*
 ### <a name="prerequisites"></a>Voraussetzungen
 
 > [!IMPORTANT]
-> Neue Bereitstellungen von Azure App Service in Azure Stack erfordern jetzt aufgrund von Verbesserungen der Art, in der SSO für Kudu jetzt in Azure App Service behandelt wird, ein [Platzhalterzertifikat mit drei Antragstellern](azure-stack-app-service-before-you-get-started.md#get-certificates).  Der neue Antragsteller ist ** *.sso.appservice.<region>. <domainname>.<extension>**
+> Neue Bereitstellungen von Azure App Service in Azure Stack erfordern jetzt aufgrund von Verbesserungen der Art, in der SSO für Kudu jetzt in Azure App Service behandelt wird, ein [Platzhalterzertifikat mit drei Antragstellern](azure-stack-app-service-before-you-get-started.md#get-certificates). Der neue Antragsteller ist ** *.sso.appservice.<region>. <domainname>.<extension>**
 >
 >
 
@@ -49,11 +49,11 @@ Lesen Sie die Dokumentation [Vor den ersten Schritten mit App Service in Azure S
 
 Update 1 für Azure App Service in Azure Stack enthält die folgenden Verbesserungen und Fehlerbehebungen:
 
-- **Hohe Verfügbarkeit von Azure App Service**: Das Azure Stack-Update 1802 ermöglicht die Fehlerdomänen übergreifende Bereitstellung von Workloads.  Daher kann die App Service-Infrastruktur fehlertolerant sein, da sie Fehlerdomänen übergreifend bereitgestellt wird.  Standardmäßig haben alle neuen Bereitstellungen von Azure App Service diese Funktion, doch lesen Sie zu Bereitstellungen, die vor Anwendung des Azure Stack-Updates 1802 durchgeführt wurden, die Dokumentation [Fehlerdomänen übergreifendes Neuverteilen von Azure App Service in Azure Stack](azure-stack-app-service-fault-domain-update.md).
+- **Hohe Verfügbarkeit von Azure App Service**: Das Azure Stack-Update 1802 ermöglicht die Fehlerdomänen übergreifende Bereitstellung von Workloads. Daher kann die App Service-Infrastruktur fehlertolerant sein, da sie Fehlerdomänen übergreifend bereitgestellt wird. Standardmäßig haben alle neuen Bereitstellungen von Azure App Service diese Funktion, doch lesen Sie zu Bereitstellungen, die vor Anwendung des Azure Stack-Updates 1802 durchgeführt wurden, die Dokumentation [Fehlerdomänen übergreifendes Neuverteilen von Azure App Service in Azure Stack](azure-stack-app-service-fault-domain-update.md).
 
-- **In vorhandenem virtuellem Netzwerk bereitstellen**: Kunden können jetzt App Service in Azure Stack in einem vorhandenen virtuellen Netzwerk bereitstellen.  Die Bereitstellung in einem vorhandenen virtuellen Netzwerk ermöglicht Kunden, eine Verbindung mit der SQL Server- und Dateiserverinstanz – für Azure App Service erforderlich – über private Ports herzustellen.  Während der Bereitstellung können die Kunden wählen, ob sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk wünschen, doch vor der Bereitstellung [müssen sie Subnetze für die Verwendung durch App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) erstellen.
+- **In vorhandenem virtuellem Netzwerk bereitstellen**: Kunden können jetzt App Service in Azure Stack in einem vorhandenen virtuellen Netzwerk bereitstellen. Die Bereitstellung in einem vorhandenen virtuellen Netzwerk ermöglicht Kunden, eine Verbindung mit der SQL Server- und Dateiserverinstanz – für Azure App Service erforderlich – über private Ports herzustellen. Während der Bereitstellung können die Kunden wählen, ob sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk wünschen, doch vor der Bereitstellung [müssen sie Subnetze für die Verwendung durch App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) erstellen.
 
-- Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**.  Mit Azure Stack-Portal-SDK-Version konsistent.
+- Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**. Mit Azure Stack-Portal-SDK-Version konsistent.
 
 - **Updates für folgende Anwendungsframeworks und Tools**:
     - Unterstützung für **.Net Core 2.0** wurde hinzugefügt.
@@ -105,11 +105,11 @@ Update 1 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 
 - Fehler beim Überprüfen des Zertifikats
 
-Einige Kunden haben Probleme beim Zuteilen von Zertifikaten für den App Service-Installer bei der Bereitstellung auf einem integrierten System aufgrund einer zu restriktiven Überprüfung durch das Installationsprogramm.  Der App Service-Installer wurde neu veröffentlicht, daher sollten Kunden [den aktualisierten Installer herunterladen](https://aka.ms/appsvconmasinstaller).  Wenn Sie weiterhin Probleme bei der Überprüfung von Zertifikaten mit dem aktualisierten Installer haben, wenden Sie sich an den Support.
+Einige Kunden haben Probleme beim Zuteilen von Zertifikaten für den App Service-Installer bei der Bereitstellung auf einem integrierten System aufgrund einer zu restriktiven Überprüfung durch das Installationsprogramm. Der App Service-Installer wurde neu veröffentlicht, daher sollten Kunden [den aktualisierten Installer herunterladen](https://aka.ms/appsvconmasinstaller). Wenn Sie weiterhin Probleme bei der Überprüfung von Zertifikaten mit dem aktualisierten Installer haben, wenden Sie sich an den Support.
 
 - Problem beim Abrufen von Azure Stack-Stammzertifikaten aus dem integrierten System.
 
-Ein Fehler in der Datei „Get-AzureStackRootCert.ps1“ führte dazu, dass Kunden das Azure Stack-Stammzertifikat nicht abrufen konnten, wenn das Skript auf einem Computer ausgeführt wurde, auf dem das Stammzertifikat nicht installiert ist.  Das Skript wurde nun ebenfalls neu veröffentlicht, um dieses Problem zu beheben. Kunden werden aufgefordert, [die aktualisierten Hilfsprogrammskripts herunterzuladen](https://aka.ms/appsvconmashelpers).  Wenn Sie weiterhin Probleme beim Abrufen des Stammzertifikats mit dem aktualisierten Skript haben, wenden Sie sich an den Support.
+Ein Fehler in der Datei „Get-AzureStackRootCert.ps1“ führte dazu, dass Kunden das Azure Stack-Stammzertifikat nicht abrufen konnten, wenn das Skript auf einem Computer ausgeführt wurde, auf dem das Stammzertifikat nicht installiert ist. Das Skript wurde nun ebenfalls neu veröffentlicht, um dieses Problem zu beheben. Kunden werden aufgefordert, [die aktualisierten Hilfsprogrammskripts herunterzuladen](https://aka.ms/appsvconmashelpers). Wenn Sie weiterhin Probleme beim Abrufen des Stammzertifikats mit dem aktualisierten Skript haben, wenden Sie sich an den Support.
 
 ### <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
@@ -119,12 +119,12 @@ Ein Fehler in der Datei „Get-AzureStackRootCert.ps1“ führte dazu, dass Kund
 
 - Slottausch funktioniert nicht
 
-Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht.  Um die Funktionalität wiederherzustellen, führen Sie diese Schritte aus:
+Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht. Um die Funktionalität wiederherzustellen, führen Sie diese Schritte aus:
 
-1. Ändern Sie die ControllerNSG-Netzwerksicherheitsgruppe, um Remotedesktopverbindungen zu den App Service-Controllerinstanzen **zuzulassen**.  Ersetzen Sie „AppService.local“ durch den Namen der Ressourcengruppe, in der Sie den App Service bereitgestellt haben.
+1. Ändern Sie die ControllerNSG-Netzwerksicherheitsgruppe, um Remotedesktopverbindungen zu den App Service-Controllerinstanzen **zuzulassen**. Ersetzen Sie „AppService.local“ durch den Namen der Ressourcengruppe, in der Sie den App Service bereitgestellt haben.
 
     ```powershell
-      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+      Add-AzureRmAccount -EnvironmentName AzureStackAdmin
 
       $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -146,7 +146,7 @@ Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht.  Um
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
       ```
 
-2. Navigieren Sie zur **CN0-VM** unter „Virtuelle Computer“ im Azure Stack-Administratorportal, und klicken Sie auf **Verbinden**, um eine Remotedesktopsitzung mit der Controllerinstanz zu öffnen.  Verwenden Sie die bei der Bereitstellung von App Service angegebenen Anmeldeinformationen.
+2. Navigieren Sie zur **CN0-VM** unter „Virtuelle Computer“ im Azure Stack-Administratorportal, und klicken Sie auf **Verbinden**, um eine Remotedesktopsitzung mit der Controllerinstanz zu öffnen. Verwenden Sie die bei der Bereitstellung von App Service angegebenen Anmeldeinformationen.
 3. Starten Sie **PowerShell als Administrator**, und führen Sie folgendes Skript aus:
 
     ```powershell
@@ -171,11 +171,11 @@ Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht.  Um
     ```
 
 4. Schließen Sie die Remotedesktopsitzung.
-5. Setzen Sie die ControllerNSG-Netzwerksicherheitsgruppe zurück, um Remotedesktopverbindungen zu den App Service-Controllerinstanzen **abzulehnen**.  Ersetzen Sie „AppService.local“ durch den Namen der Ressourcengruppe, in der Sie den App Service bereitgestellt haben.
+5. Setzen Sie die ControllerNSG-Netzwerksicherheitsgruppe zurück, um Remotedesktopverbindungen zu den App Service-Controllerinstanzen **abzulehnen**. Ersetzen Sie „AppService.local“ durch den Namen der Ressourcengruppe, in der Sie den App Service bereitgestellt haben.
 
     ```powershell
 
-        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+        Add-AzureRmAccount -EnvironmentName AzureStackAdmin
 
         $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
 
@@ -196,6 +196,18 @@ Die Funktion zum Austauschen von Slots funktioniert in dieser Version nicht.  Um
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
+- Worker können den Dateiserver nicht erreichen, wenn der App Service in einem bestehenden virtuellen Netzwerk bereitgestellt wird und der Dateiserver nur im privaten Netzwerk verfügbar ist.
+ 
+Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver entschieden haben, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen, die den SMB-Verkehr zwischen dem Workersubnetz und dem Dateiserver ermöglicht. Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
+ * Quelle: Beliebig
+ * Quellportbereich: *
+ * Ziel: IP-Adressen
+ * Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
+ * Zielportbereich: 445
+ * Protokoll: TCP
+ * Aktion: Zulassen
+ * Priorität: 700
+ * Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure App Service in Azure Stack betreiben
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie die Azure Active Directory-Passthrough-Authentifizierung (Azure AD) Ihre lokalen Konten schützt."
+title: Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie die Azure Active Directory-Passthrough-Authentifizierung (Azure AD) Ihre lokalen Konten schützt.
 services: active-directory
-keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
-documentationcenter: 
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.service: active-directory
@@ -130,7 +130,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 1. Der Benutzer versucht, auf eine Anwendung zuzugreifen (z.B. [Outlook Web-App](https://outlook.office365.com/owa)).
 2. Wenn der Benutzer nicht bereits angemeldet ist, leitet die Anwendung den Browser auf die Anmeldeseite von Azure AD um.
 3. Der Azure AD-Sicherheitstokendienst (STS) reagiert mit der Seite **Benutzeranmeldung**.
-4. Der Benutzer gibt auf der Seite **Benutzeranmeldung** seinen Benutzernamen und sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
+4. Der Benutzer gibt auf der Seite **Benutzeranmeldung** seinen Benutzernamen und sein Kennwort ein und klickt anschließend auf die Schaltfläche **Weiter**.
 5. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
 6. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts. 
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.

@@ -12,24 +12,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/30/2018
+ms.date: 4/03/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: af09df52fe733b69cfe4470de2fd6e978f126ca0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 3d6a47ba184b4bbbd290a61c581ae8b83b9361af
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
-Sie können einen Log Analytics-Arbeitsbereich über den Azure Resource Manager, über PowerShell oder über den Azure Marketplace einrichten. Wenn Sie eine aktualisierte Resource Manager-Vorlage von Ihrer Bereitstellung verwalten, verwenden Sie zukünftig die gleiche Vorlage für die Einrichtung Ihrer OMS-Umgebung. Die Bereitstellung über den Marketplace ist einfacher, wenn Sie bereits einen Cluster mit aktivierter Diagnose bereitgestellt haben. Wenn Sie in dem Konto, für das Sie die OMS bereitstellen, keinen Zugriff auf Abonnementebene haben, führen Sie die Bereitstellung über PowerShell oder über die Resource Manager-Vorlage durch.
+Log Analytics ist unsere Empfehlung zum Überwachen von Ereignissen auf Clusterebene. Sie können einen Log Analytics-Arbeitsbereich über den Azure Resource Manager, über PowerShell oder über den Azure Marketplace einrichten. Wenn Sie eine aktualisierte Resource Manager-Vorlage von Ihrer Bereitstellung verwalten, verwenden Sie zukünftig die gleiche Vorlage für die Einrichtung Ihrer Log Analytics-Umgebung. Die Bereitstellung über den Marketplace ist einfacher, wenn Sie bereits einen Cluster mit aktivierter Diagnose bereitgestellt haben. Wenn Sie in dem Konto, für das Sie die Bereitstellung durchführen, keinen Zugriff auf Abonnementebene haben, führen Sie die Bereitstellung über PowerShell oder über die Resource Manager-Vorlage durch.
 
 > [!NOTE]
-> Zum Einrichten von Log Analytics zur Überwachung des Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder auf Plattformebene anzeigen zu können.
+> Zum Einrichten von Log Analytics zur Überwachung des Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder auf Plattformebene anzeigen zu können. Weitere Informationen finden Sie unter [Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) und [Ereignisaggregation und -sammlung mit Linux-Azure-Diagnose](service-fabric-diagnostics-event-aggregation-lad.md).
 
-## <a name="deploy-oms-by-using-azure-marketplace"></a>Bereitstellen der OMS mithilfe des Azure Marketplace
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Bereitstellen eines Log Analytics-Arbeitsbereichs mithilfe von Azure Marketplace
 
-Wenn Sie einen OMS-Arbeitsbereich nach dem Bereitstellen eines Clusters hinzufügen möchten, navigieren Sie im Portal zum Azure Marketplace, und suchen Sie nach **Service Fabric-Analyse**:
+Wenn Sie einen Log Analytics-Arbeitsbereich nach dem Bereitstellen eines Clusters hinzufügen möchten, navigieren Sie im Portal zum Azure Marketplace, und suchen Sie nach **Service Fabric-Analyse**. Dies ist eine benutzerdefinierte Lösung für Service Fabric-Bereitstellungen, die für Service Fabric spezifische Daten enthält. In diesem Prozess erstellen Sie die Projektmappe (das Dashboard, um Einblicke zu erhalten) und den Arbeitsbereich (die Aggregation der zugrunde liegenden Clusterdaten).
 
 1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Neu** aus. 
 
@@ -39,7 +39,7 @@ Wenn Sie einen OMS-Arbeitsbereich nach dem Bereitstellen eines Clusters hinzufü
 
     ![OMS – SF-Analyse im Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. Wählen Sie im Fenster für die Erstellung der Service Fabric-Analyse im Feld **OMS-Arbeitsbereich** die Option **Arbeitsbereich auswählen** und dann **Neuen Arbeitsbereich erstellen** aus. Nehmen Sie die erforderlichen Eingaben vor. Einzige Anforderung hierbei ist, dass für den Service Fabric-Cluster und den OMS-Arbeitsbereich dasselbe Abonnement verwendet werden muss. Nachdem die Eingaben überprüft wurden, wird Ihr OMS-Arbeitsbereich bereitgestellt. Der Vorgang dauert nur wenige Minuten.
+4. Wählen Sie im Fenster für die Erstellung der Service Fabric-Analyse im Feld **OMS-Arbeitsbereich** die Option **Arbeitsbereich auswählen** und dann **Neuen Arbeitsbereich erstellen** aus. Nehmen Sie die erforderlichen Eingaben vor. Einzige Anforderung hierbei ist, dass für den Service Fabric-Cluster und den Arbeitsbereich dasselbe Abonnement verwendet werden muss. Nachdem die Eingaben überprüft wurden, wird Ihr Arbeitsbereich bereitgestellt. Der Vorgang dauert nur wenige Minuten.
 
 5. Wählen Sie anschließend unten im Fenster zur Erstellung der Service Fabric-Analyse erneut **Erstellen** aus. Stellen Sie sicher, dass der neue Arbeitsbereich unter **OMS-Arbeitsbereich** angezeigt wird. Mit dieser Aktion wird die Lösung dem erstellten Arbeitsbereich hinzugefügt.
 
@@ -48,9 +48,9 @@ Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpf
 >[!NOTE]
 >Für Linux-Cluster ist dies noch nicht verfügbar. 
 
-### <a name="connect-the-oms-workspace-to-your-cluster"></a>Verbinden des OMS-Arbeitsbereichs mit Ihrem Cluster 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Verbinden des Log Analytics-Arbeitsbereichs mit Ihrem Cluster 
 
-1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf das OMS-Portal zugreifen.
+1. Der Arbeitsbereich muss mit den Diagnosedaten aus Ihrem Cluster verknüpft werden. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie **ServiceFabric\<-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Dort können Sie Lösungseinstellungen und Arbeitsbereichseinstellungen ändern und auf das OMS-Portal zugreifen.
 
 2. Wählen Sie im linken Navigationsmenü unter **Speicherkontoprotokolle** die Option **Arbeitsbereichsdatenquellen** aus.
 

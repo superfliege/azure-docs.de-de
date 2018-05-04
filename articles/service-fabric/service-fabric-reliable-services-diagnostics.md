@@ -1,11 +1,11 @@
 ---
-title: "Diagnose für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric | Microsoft-Dokumentation"
-description: "Diagnosefunktionen für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric"
+title: Diagnose für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric | Microsoft-Dokumentation
+description: Diagnosefunktionen für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ae0e8f99-69ab-4d45-896d-1fa80ed45659
 ms.service: Service-Fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: edcaaaf8f1619082b33195aedf1fb1abf32e85b1
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 3ed03194ca095d539d10081578fa71c748ba1d23
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
@@ -45,6 +45,48 @@ Dienstautoren sollten unbedingt auf die Ereignisse StatefulRunAsyncSlowCancellat
 StatefulRunAsyncFailure wird ausgegeben, wenn RunAsync() eine Ausnahme ausgibt. In der Regel weist eine Ausnahme auf einen Fehler oder Bug im Dienst hin. Darüber hinaus bewirkt die Ausnahme, dass der Dienst nicht ausgeführt wird, sodass er auf einen anderen Knoten verschoben wird. Dieser Vorgang kann aufwendig sein und eingehende Anforderungen verzögern, während der Dienst verschoben wird. Dienstautoren sollten nach Möglichkeit die Ursache der Ausnahme ermitteln und beheben.
 
 StatefulRunAsyncSlowCancellation wird ausgegeben, wenn eine Abbruchanforderung für RunAsync länger als vier Sekunden dauert. Wenn das Abbrechen eines Diensts zu lange dauert, beeinträchtigt dies seine Fähigkeit, umgehend auf einem anderen Knoten neu gestartet werden zu können. Dieses Szenario kann sich negativ auf die allgemeine Verfügbarkeit des Diensts auswirken.
+
+## <a name="performance-counters"></a>Leistungsindikatoren
+Die Reliable Services-Runtime definiert die folgenden Leistungsindikatorkategorien:
+
+| Category (Kategorie) | BESCHREIBUNG |
+| --- | --- |
+| Service Fabric-Transaktionsreplikator |Spezifische Leistungsindikatoren für den Azure Service Fabric-Transaktionsreplikator. |
+
+Der [Reliable State Manager](service-fabric-reliable-services-reliable-collections-internals.md) verwendet den Service Fabric-Transaktionsreplikator zum Replizieren von Transaktionen in einer bestimmten Gruppe von [Replikaten](service-fabric-concepts-replica-lifecycle.md). 
+
+Die Anwendung [Windows-Systemmonitor](https://technet.microsoft.com/library/cc749249.aspx) , die standardmäßig im Windows-Betriebssystem verfügbar ist, kann zum Erfassen und Anzeigen von Leistungsindikatordaten verwendet werden. [Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics.md) ist eine weitere Option für das Erfassen von Leistungsindikatordaten und Hochladen in Azure-Tabellen.
+
+### <a name="performance-counter-instance-names"></a>Namen von Leistungsindikatorinstanzen
+Ein Cluster mit einer großen Anzahl von Reliable Services oder Reliable Service-Partitionen weist eine große Anzahl von Transaktionsreplikator-Leistungsindikatorinstanzen auf. Die Namen der Leistungsindikatorinstanzen können die Identifizierung spezifischer [Partitionen](service-fabric-concepts-partitioning.md) und Dienstreplikate erleichtern, mit denen die Leistungsindikatorinstanz verknüpft ist.
+
+#### <a name="service-fabric-transactional-replicator-category"></a>Service Fabric-Transaktionsreplikator-Kategorie
+Für die Kategorie `Service Fabric Transactional Replicator`haben die Namen von Leistungsindikatorinstanzen das folgende Format:
+
+`ServiceFabricPartitionId:ServiceFabricReplicaId`
+
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) mit dem Formatbezeichner „D“ generiert.
+
+*ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
+
+Der folgende Indikatorinstanzname ist typisch für einen Indikator unter der `Service Fabric Transactional Replicator`-Kategorie:
+
+`00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571`
+
+Im vorherigen Beispiel ist `00d0126d-3e36-4d68-98da-cc4f7195d85e` die Zeichenfolgendarstellung der Service Fabric-Partitions-ID und `131652217797162571` die Replikat-ID.
+
+### <a name="transactional-replicator-performance-counters"></a>Transaktionsreplikator-Leistungsindikatoren
+
+Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service Fabric Transactional Replicator`-Kategorie aus.
+
+ Name des Leistungsindikators | BESCHREIBUNG |
+| --- | --- |
+| Gestartete Transaktionsvorgänge/Sek | Die Anzahl der neuen Schreibtransaktionen, die pro Sekunde erstellt werden.|
+| Transaktionsvorgänge/Sek | Die Anzahl der pro Sekunde für zuverlässige Sammlungen durchgeführten Hinzufügungs-/Aktualisierungs-/Löschvorgänge.|
+| Durchschn. Wartezeit beim Leeren (ms) | Die Anzahl von Bytes, die pro Sekunde vom Transaktionsreplikator auf den Datenträger geleert werden |
+| Gedrosselte Vorgänge/Sek | Die Anzahl der Vorgänge, die pro Sekunde vom Transaktionsreplikator aufgrund von Drosselung abgelehnt werden. |
+| Durchschn. Transaktionsdauer in ms/Commit | Durchschnittliche Commitlatenz pro Transaktion in Millisekunden |
+| Durchschn. Wartezeit beim Leeren (ms) | Durchschnittliche Dauer der Vorgänge des Leerens auf die Festplatte, die vom Transaktionsreplikator gestartet werden, in Millisekunden |
 
 ## <a name="next-steps"></a>Nächste Schritte
 [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

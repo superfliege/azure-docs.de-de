@@ -1,23 +1,23 @@
 ---
-title: "Gruppieren von Computern mithilfe von Computerabhängigkeiten per Azure Migrate | Microsoft-Dokumentation"
-description: "Hier wird beschrieben, wie Sie mithilfe von Computerabhängigkeiten mit dem Azure Migrate-Dienst eine Bewertung erstellen."
+title: Gruppieren von Computern mithilfe von Computerabhängigkeiten per Azure Migrate | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie mithilfe von Computerabhängigkeiten mit dem Azure Migrate-Dienst eine Bewertung erstellen.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/25/2017
 ms.author: raynew
-ms.openlocfilehash: 720380fd14d9eaf4856ad75269a80f2b63a4725f
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 9e8e1fb918d9cd35b12e71abdd23ca101239ae26
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern durch Zuordnung von Computerabhängigkeiten
+# <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern per Mapping von Computerabhängigkeiten
 
 In diesem Artikel wird beschrieben, wie Sie eine Gruppe mit Computern für eine [Azure Migrate](migrate-overview.md)-Bewertung erstellen, indem Sie die Computerabhängigkeiten visualisieren. Sie verwenden diese Methode normalerweise, wenn Sie Gruppen mit VMs mit höheren Zuverlässigkeitsgraden bewerten möchten, indem Sie vor dem Durchführen einer Bewertung die Computerabhängigkeiten überprüfen. Durch eine Visualisierung der Abhängigkeiten können Sie Ihre Migration zu Azure effizient planen. So können Sie sicherstellen, dass Sie nichts übersehen und dass es bei der Migration zu Azure nicht zu unvorhergesehenen Ausfällen kommt. Sie können alle voneinander abhängigen Systeme ermitteln, die gemeinsam migriert werden müssen, und ermitteln, ob ein ausgeführtes System noch benötigt wird oder eher außer Betrieb gesetzt als migriert werden sollte. 
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>Vorbereiten von Computern für die Zuordnung von Abhängigkeiten
+## <a name="prepare-machines-for-dependency-mapping"></a>Vorbereiten von Computern für das Mapping von Abhängigkeiten
 Um Computerabhängigkeiten anzuzeigen, müssen Sie Agents auf allen lokalen Computern herunterladen und installieren, für die Sie eine Bewertung durchführen möchten. Falls Sie über Computer ohne Internetverbindung verfügen, ist es außerdem erforderlich, dafür das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) herunterzuladen und zu installieren.
 
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
@@ -31,11 +31,10 @@ Um Computerabhängigkeiten anzuzeigen, müssen Sie Agents auf allen lokalen Comp
 Gehen Sie wie folgt vor, um den Agent auf einem Windows-Computer zu installieren:
 
 1. Doppelklicken Sie auf den heruntergeladenen Agent.
-2. Klicken Sie auf der Seite **Willkommen** auf **Weiter**. Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
+2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**. Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
 3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, oder ändern Sie ihn, und klicken Sie anschließend auf **Weiter**. 
-4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics (OMS)** > **Weiter**. 
-5. Klicken Sie auf **Hinzufügen**, um einen neuen OMS-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
-
+4. Wählen Sie unter **Agent-Setupoptionen** die Optionen **Azure Log Analytics** > **Weiter**. 
+5. Klicken Sie auf **Hinzufügen**, um einen neuen Log Analytics-Arbeitsbereich hinzuzufügen. Fügen Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
 
 
 Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren:
@@ -62,8 +61,8 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 4. In der Abhängigkeitszuordnung für den Computer werden die folgenden Informationen angezeigt:
     - Eingehende (Clients) und ausgehende (Server) TCP-Verbindungen vom/zum Computer.
         - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents nicht installiert sind, werden nach Portnummern gruppiert angezeigt.
-        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, werden als separate Felder angezeigt. 
-    - Innerhalb des Computers ausgeführte Prozesse können Sie anzeigen, indem Sie das Feld für jeden Computer erweitern.
+        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder 
+    - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
     - Eigenschaften wie vollqualifizierter Domänenname, Betriebssystem, MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
 
  ![Anzeigen von Computerabhängigkeiten](./media/how-to-create-group-machine-dependencies/machine-dependencies.png)

@@ -6,19 +6,21 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: cb7797f5322b9288faf96be2ede164f156fd66cc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
 Dieser Artikel beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt. Die Eigenschaften gelten für alle Ereignisse von jedem Herausgeber. Das Datenobjekt enthält Eigenschaften, die für die einzelnen Herausgeber spezifisch sind. Bei Systemthemen sind diese Eigenschaften spezifisch für den Ressourcenanbieter, z.B. Azure Storage oder Azure Event Hubs.
 
-Ereignisse werden an Azure Event Grid in einem Array gesendet, das mehrere Ereignisobjekte enthalten kann. Bei nur einem einzelnen Ereignis hat das Array die Länge 1. Das Array kann eine Gesamtgröße von bis zu 1 MB haben. Jedes Ereignis im Array ist auf 64 KB beschränkt.
+Ereignisquellen senden Ereignisse an Azure Event Grid in einem Array, das mehrere Ereignisobjekte enthalten kann. Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis im Array ist auf 64 KB beschränkt. Wenn ein Ereignis oder das Array das zulässige Größenlimit überschreitet, erhalten Sie die Antwort **413 Nutzlast zu groß**.
+
+Event Grid sendet die Ereignisse an Abonnenten in einem Array, das ein einzelnes Ereignis enthält. Dieses Verhalten kann sich in der Zukunft ändern.
 
 Sie finden das JSON-Schema für das Event Grid-Ereignis und die Datennutzlast für jeden Azure-Herausgeber im [Event Schema-Speicher](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane).
 

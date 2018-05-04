@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 055d8b1c9884c9525ba15ea9508ab00a5f48a048
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 59d6b960a40910b8b2fe72f6c3b149608ee8b8ad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -264,7 +264,7 @@ XGBoost kann einen Aufruf auch über Python oder eine Befehlszeile durchführen.
 Für die Entwicklung mit Python wurden die Anaconda Python-Distributionen 2.7 und 3.5 auf der DSVM installiert.
 
 > [!NOTE]
-> Die Anaconda-Distribution enthält so genannte [Condas](http://conda.pydata.org/docs/index.html). Diese können zum Erstellen von benutzerdefinierten Umgebungen für Python verwendet werden, für die verschiedene Versionen bzw. Pakete installiert sind.
+> Die Anaconda-Distribution enthält [Conda](http://conda.pydata.org/docs/index.html). Dieses System kann zum Erstellen von benutzerdefinierten Umgebungen für Python verwendet werden, für die verschiedene Versionen bzw. Pakete installiert sind.
 >
 >
 
@@ -316,6 +316,24 @@ Gehen Sie wie folgt vor, um das Modell für AzureML zu veröffentlichen:
 
 ## <a name="jupyterhub"></a>JupyterHub
 Die Anaconda-Distribution auf der DSVM verfügt über ein Jupyter Notebook, eine plattformübergreifende Umgebung zum gemeinsamen Nutzen von Python-, R- oder Julia-Code und Analysefunktionen. Auf Jupyter Notebook wird über JupyterHub zugegriffen. Sie melden sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort unter ***https://\<VM-DNS-Name oder IP-Adresse\>:8000/*** an. Alle Konfigurationsdateien für JupyterHub befinden sich im Verzeichnis **/etc/jupyterhub**.
+
+> [!NOTE]
+> Wenn Sie in Jupyter Notebook im aktuellen Kernel den Python-Paket-Manager (über den Befehl `pip`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
+```python
+   import sys
+   ! {sys.executable} -m pip install numpy -y
+```
+>
+>
+
+> [!NOTE]
+> Wenn Sie in Jupyter Notebook im aktuellen Kernel das Conda-Installationsprogramm Manager (über den Befehl `conda`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
+```python
+   import sys
+   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+```
+>
+>
 
 Einige Beispiele für Notebooks sind auf der VM bereits installiert:
 

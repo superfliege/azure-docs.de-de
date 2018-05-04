@@ -1,18 +1,22 @@
 # [Dokumentation zu Analysis Services](index.md)
 
 # Übersicht
-## [Informationen zu Analysis Services](analysis-services-overview.md)
-## [Unterstützte Datenquellen](analysis-services-datasource.md)
-## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
-## [Herstellen einer Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)
-## [Kompatibilitätsgrad](analysis-services-compat-level.md)
-## [Hochverfügbarkeit](analysis-services-bcdr.md)
+## [Was ist Azure Analysis Services?](analysis-services-overview.md)
+
 
 # Erste Schritte
 ## [Erstellen eines Servers im Azure-Portal](analysis-services-create-server.md)
 ## [Erstellen eines Azure Analysis Services-Servers mithilfe von Azure PowerShell](analysis-services-create-powershell.md)
 ## [Bereitstellen eines Modells mithilfe von Visual Studio](analysis-services-deploy.md)
 ## [Erstellen eines Modells im Azure-Portal (Vorschau)](analysis-services-create-model-portal.md)
+
+# Konzepte
+## [Unterstützte Datenquellen](analysis-services-datasource.md)
+## [Herstellen einer Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)
+## [Herstellen einer Verbindung mit Servern](analysis-services-connect.md)
+## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
+## [Kompatibilitätsgrad](analysis-services-compat-level.md)
+## [Hochverfügbarkeit](analysis-services-bcdr.md)
 
 # Vorgehensweise 
 ## [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md)
@@ -31,7 +35,7 @@
 ### [Verwalten von Serveradministratoren](analysis-services-server-admins.md)
 ### [Überwachen von Servermetriken](analysis-services-monitor.md)
 ### [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md)
-### [Verwenden eines Gateways für Datenquellen im VNET](analysis-services-vnet-gateway.md)
+### [Verwenden eines Gateways für Datenquellen im VNet](analysis-services-vnet-gateway.md)
 ## Verbinden
 ### [Abrufen von Clientbibliotheken](analysis-services-data-providers.md)
 ### [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)

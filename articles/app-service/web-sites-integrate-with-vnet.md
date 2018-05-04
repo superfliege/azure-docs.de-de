@@ -2,7 +2,7 @@
 title: Integrieren einer App in ein Azure Virtual Network
 description: Sie erfahren, wie Sie eine Verbindung zwischen einer App in Azure App Service und einem neuen oder vorhandenen Azure Virtual Network herstellen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: erikre
 editor: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 83f5c64926eb9b718463c415a5478af374245f31
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein Virtual Network beschrieben und veranschaulicht, wie Sie diese mit Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)einrichten. Falls Sie sich mit Azure Virtual Networks (VNETs) noch nicht auskennen, hilft Ihnen vielleicht diese Beschreibung weiter: Es handelt sich um eine Funktion, mit der Sie viele Azure-Ressourcen in einem nicht über das Internet routbaren Netzwerk anordnen können, für das Sie den Zugriff kontrollieren. Diese Netzwerke können dann mit verschiedenen VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke][VNETOverview]. 
@@ -57,7 +57,8 @@ Beachten Sie Folgendes, bevor Sie Ihre Web-App mit einem virtuellen Netzwerk ver
 
 * Die VNET-Integration funktioniert nur mit Apps im Tarif **Standard**, **Premium** oder **Isoliert**. Wenn Sie die Funktion aktivieren und Ihren App Service-Plan dann auf einen nicht unterstützten Tarif skalieren, verlieren Ihre Apps ihre Verbindungen mit den genutzten VNETs. 
 * Wenn Ihr virtuelles Zielnetzwerk bereits vorhanden ist, muss es über ein Punkt-zu-Standort-VPN mit einem dynamischen Routing-Gateway aktiviert werden, bevor es mit einer App verbunden werden kann. Wenn Ihr Gateway mit statischem Routing konfiguriert ist, können Sie Punkt-zu-Standort-VPN (Virtual Private Network) nicht aktivieren.
-* Das VNET muss sich im gleichen Abonnement befinden wie Ihr App Service-Plan (ASP). 
+* Das VNET muss sich im gleichen Abonnement befinden wie Ihr App Service-Plan (ASP).
+* Wenn das Gateway bereits vorhanden, P2S aktiviert und das Gateway nicht in der Basic-SKU enthalten ist, muss IKEV2 in Ihrer P2S-Konfiguration deaktiviert werden.
 * Die Apps, die in ein VNET integriert sind, nutzen das DNS, das für das VNET angegeben ist.
 * Standardmäßig leiten die integrierten Apps Datenverkehr nur basierend auf den Routen, die im VNET definiert sind, in Ihr VNET weiter. 
 

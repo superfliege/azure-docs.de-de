@@ -1,190 +1,198 @@
 ---
-title: Konfigurieren von PHP in Azure App Service-Web-Apps | Microsoft Docs
-description: "Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Web-Apps in Azure App Service."
+title: Konfigurieren von PHP in Azure App Service-Web-Apps
+description: Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Web-Apps in Azure App Service.
 services: app-service
 documentationcenter: php
-author: rmcmurray
-manager: erikre
-editor: 
+author: msangapu
+manager: cfowler
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: robmcm
-ms.openlocfilehash: 0467707a46709674d3f5de3346ad242af5c9dcb8
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.date: 04/11/2018
+ms.author: msangapu
+ms.openlocfilehash: d7b832659272f01b6e939150fa89626620d5eab7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurieren von PHP in Azure App Service-Web-Apps
+
 ## <a name="introduction"></a>Einführung
+
 In diesem Leitfaden erfahren Sie, wie Sie die integrierte PHP-Laufzeit für Web-Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)konfigurieren, eine benutzerdefinierte PHP-Laufzeit angeben und Erweiterungen aktivieren. Um App Service zu verwenden, registrieren Sie sich für die [kostenlose Testversion]. Um diese Anleitung optimal zu nutzen, sollten Sie zuerst eine PHP-Web-App in App Service erstellen.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Vorgehensweise: Ändern der integrierten PHP-Version
+
 PHP 5.6 ist standardmäßig installiert und kann sofort verwendet werden, wenn Sie eine App Service-Web-App erstellen. Die beste Möglichkeit, um die verfügbare Versionsrevision, die Standardkonfiguration und die aktivierten Erweiterungen anzuzeigen, ist die Bereitstellung eines Skripts, das die Funktion [phpinfo()] abruft.
 
-PHP 5.6 und PHP 7.0 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
+PHP 7.0 und PHP 7.2 sind ebenfalls verfügbar, aber nicht standardmäßig aktiviert. Gehen Sie folgendermaßen vor, um die PHP-Version zu aktualisieren:
 
 ### <a name="azure-portal"></a>Azure-Portal
-1. Navigieren Sie im [Azure Portal](https://portal.azure.com) zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen** .
-   
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen**.
+
     ![Speichern][settings-button]
-2. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** und dann die neue PHP-Version aus.
-   
+1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** und dann die neue PHP-Version aus.
+
     ![Anwendungseinstellungen][application-settings]
-3. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
-   
+1. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
+
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
 ### <a name="azure-powershell-windows"></a>Azure PowerShell (Windows)
+
 1. Öffnen Sie Azure PowerShell, und melden Sie sich bei Ihrem Konto an:
-   
-        PS C:\> Login-AzureRmAccount
-2. Legen Sie die PHP-Version für die Web-App fest.
-   
-        PS C:\> Set-AzureWebsite -PhpVersion {5.5 | 5.6 | 7.0} -Name {app-name}
-3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
-   
+
+        PS C:\> Connect-AzureRmAccount
+1. Legen Sie die PHP-Version für die Web-App fest.
+
+        PS C:\> Set-AzureWebsite -PhpVersion {5.6 | 7.0 | 7.2} -Name {app-name}
+1. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
+
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-command-line-interface-linux-mac-windows"></a>Azure-Befehlszeilen-Schnittstelle (Linux, Mac, Windows)
-Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss **Node.js** auf Ihrem Computer installiert sein.
+### <a name="azure-cli-20-linux-mac-windows"></a>Azure CLI 2.0 (Linux, Mac, Windows)
+
+Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Computer installiert sein.
 
 1. Öffnen Sie Terminal, und melden sich bei Ihrem Konto an.
-   
-        azure login
-2. Legen Sie die PHP-Version für die Web-App fest.
-   
-        azure site set --php-version {5.5 | 5.6 | 7.0} {app-name}
 
-3. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
-   
-        azure site show {app-name}
+        az login
 
-> [!NOTE] 
-> Die Befehle von [Azure CLI 2.0](https://github.com/Azure/azure-cli), die den oben genannten entsprechen, sind:
->
->
+1. Überprüfen Sie dies, um eine Liste der unterstützen Laufzeiten anzuzeigen.
 
-    az login
-    az appservice web config update --php-version {5.5 | 5.6 | 7.0} -g {resource-group-name} -n {app-name}
-    az appservice web config show -g {resource-group-name} -n {app-name}
+        az webapp list-runtimes | grep php
+
+1. Legen Sie die PHP-Version für die Web-App fest.
+
+        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+
+1. Die PHP-Version ist jetzt festgelegt. Sie können diese Einstellungen bestätigen:
+
+        az webapp show --name {app-name} --resource-group {resource-group-name}
 
 ## <a name="how-to-change-the-built-in-php-configurations"></a>Vorgehensweise: Ändern der integrierten PHP-Konfigurationen
-Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie folgende Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
+
+Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie diese Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
 
 ### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
+
 1. Fügen Sie eine [.user.ini] -Datei zum Stammverzeichnis hinzu.
-2. Fügen Sie der Datei `.user.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie zum Beispiel die Einstellung `display_errors` aktivieren und die Einstellung `upload_max_filesize` auf 10 M festlegen möchten, enthält die Datei `.user.ini` diesen Text:
-   
+1. Fügen Sie der Datei `.user.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie zum Beispiel die Einstellung `display_errors` aktivieren und die Einstellung `upload_max_filesize` auf 10 M festlegen möchten, enthält die Datei `.user.ini` diesen Text:
+
         ; Example Settings
         display_errors=On
         upload_max_filesize=10M
-   
+
         ; OPTIONAL: Turn this on to write errors to d:\home\LogFiles\php_errors.log
         ; log_errors=On
-3. Stellen Sie Ihre Web-App bereit.
-4. Starten Sie die Web-App neu. (Der Neustart ist erforderlich, da die Frequenz, mit der PHP `.user.ini`-Dateien liest, durch die Einstellung `user_ini.cache_ttl` geregelt wird. Dies ist eine Einstellung auf Systemebene, die standardmäßig 300 Sekunden (5 Minuten) beträgt. Durch einen Neustart der Web-App wird PHP gezwungen, die neuen Einstellungen in der `.user.ini`-Datei zu lesen.)
+1. Stellen Sie Ihre Web-App bereit.
+1. Starten Sie die Web-App neu. (Der Neustart ist erforderlich, da die Frequenz, mit der PHP `.user.ini`-Dateien liest, durch die Einstellung `user_ini.cache_ttl` geregelt wird. Dies ist eine Einstellung auf Systemebene, die standardmäßig 300 Sekunden (5 Minuten) beträgt. Durch einen Neustart der Web-App wird PHP gezwungen, die neuen Einstellungen in der `.user.ini`-Datei zu lesen.)
 
 Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [ini_set()] in Skripts verwenden, um Konfigurationsoptionen festzulegen, die keine Direktiven auf Systemebene sind.
 
 ### <a name="changing-phpinisystem-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_SYSTEM
+
 1. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
-2. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.
-3. Fügen Sie der `settings.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine `*.crt`-Datei verweisen und, und die Einstellung 'wincache.maxfilesize' auf 512 KB festlegen, enthält die Datei `settings.ini` diesen Text:
-   
+1. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.
+1. Fügen Sie der `settings.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine `*.crt`-Datei verweisen und, und die Einstellung 'wincache.maxfilesize' auf 512 KB festlegen, enthält die Datei `settings.ini` diesen Text:
+
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
         wincache.maxfilesize=512
-4. Starten Sie Ihre Web-App neu, um die Änderungen zu laden.
+1. Um die Änderungen zu laden, starten Sie Ihre Web-App neu.
 
 ## <a name="how-to-enable-extensions-in-the-default-php-runtime"></a>Vorgehensweise: Aktivieren von Erweiterungen in der PHP-Standardlaufzeit
-Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste Möglichkeit, um die Standard-PHP-Version anzuzeigen, und die aktivierten Erweiterungen dienen zur Bereitstellung eines Skripts, das [phpinfo()]abruft. Führen Sie die folgenden Schritte aus, um zusätzliche Erweiterungen zu aktivieren:
+
+Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste Möglichkeit, um die Standard-PHP-Version anzuzeigen, und die aktivierten Erweiterungen dienen zur Bereitstellung eines Skripts, das [phpinfo()]abruft. Um zusätzliche Erweiterungen zu aktivieren, führen Sie diese Schritte aus:
 
 ### <a name="configure-via-ini-settings"></a>Konfigurieren über ini-Einstellungen
+
 1. Fügen Sie ein `ext`-Verzeichnis zum `d:\home\site`-Verzeichnis hinzu.
-2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `ext` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
-3. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
-4. Erstellen Sie in `d:\home\site\ini` eine `ini`-Datei namens `extensions.ini`.
-5. Fügen Sie der `extensions.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise die MongoDB- und XDebug-Erweiterungen aktivieren möchten, würde Ihre `extensions.ini` -Datei diesen Text enthalten:
-   
+1. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `ext` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
+1. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
+1. Erstellen Sie in `d:\home\site\ini` eine `ini`-Datei namens `extensions.ini`.
+1. Fügen Sie der `extensions.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise die MongoDB- und XDebug-Erweiterungen aktivieren möchten, würde Ihre `extensions.ini` -Datei diesen Text enthalten:
+
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll
         zend_extension=d:\home\site\ext\php_xdebug.dll
-6. Starten Sie Ihre Web-App neu, um die Änderungen zu laden.
+1. Starten Sie Ihre Web-App neu, um die Änderungen zu laden.
 
 ### <a name="configure-via-app-setting"></a>Konfigurieren über App-Einstellungen
+
 1. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu.
-2. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
-3. Stellen Sie Ihre Web-App bereit.
-4. Navigieren Sie im Azure-Portal zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen** .
-   
+1. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `bin` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
+1. Stellen Sie Ihre Web-App bereit.
+1. Navigieren Sie im Azure-Portal zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen**.
+
     ![Speichern][settings-button]
-5. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** aus, und führen Sie einen Bildlauf zum Bereich **App-Einstellungen** aus.
-6. Erstellen Sie im Bereich **App-Einstellungen** den Schlüssel **PHP_EXTENSIONS**. Der Wert für diesen Schlüssel ist ein Pfad relativ zum Stammverzeichnis der Website: **bin\your-ext-file**.
-   
+1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen** aus, und scrollen Sie zum Bereich **App-Einstellungen**.
+1. Erstellen Sie im Bereich **App-Einstellungen** den Schlüssel **PHP_EXTENSIONS**. Der Wert für diesen Schlüssel ist ein Pfad relativ zum Stammverzeichnis der Website: **bin\your-ext-file**.
+
     ![Aktivieren Sie die Erweiterung in den App-Einstellungen][php-extensions]
-7. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
-   
+1. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
+
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
 Zend-Erweiterungen werden bei Verwendung des Schlüssels **PHP_ZENDEXTENSIONS** ebenfalls unterstützt. Um mehrere Erweiterungen zu aktivieren, fügen Sie eine durch Trennzeichen getrennte Liste von `.dll` -Dateien für den Wert der App-Einstellung hinzu.
 
 ## <a name="how-to-use-a-custom-php-runtime"></a>Vorgehensweise: Verwenden einer benutzerdefinierten PHP-Laufzeit
-Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Laufzeit verwenden, die Sie für die Ausführung von PHP-Skripten angeben. Die Laufzeit, die Sie angeben, kann durch eine `php.ini` -Datei konfiguriert werden, die Sie ebenfalls angeben. Folgen Sie den Schritten unten, um eine benutzerdefinierte PHP-Laufzeit mit Web-Apps zu verwenden.
 
-1. Besorgen Sie sich eine nicht threadsichere, VC9- oder VC11-kompatible Version von PHP für Windows. Neuere Versionen von PHP für Windows finden Sie hier: [http://windows.php.net/download/]. Ältere Versionen finden Sie im Archiv unter: [http://windows.php.net/downloads/releases/archives/].
-2. Ändern Sie die Datei `php.ini` für Ihre Laufzeit. Beachten Sie, dass Konfigurationseinstellungen, die reine Systemebenendirektiven sind, von Web-Apps ignoriert werden. (Informationen zu Direktiven nur auf Systemebene finden Sie unter [Liste der php.ini-Direktiven]).
-3. Optional können Sie Ihrer PHP-Laufzeit auch Erweiterungen hinzufügen und in der Datei `php.ini` aktivieren.
-4. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu, und legen Sie das Verzeichnis, das die PHP-Laufzeit enthält, darin ab (zum Beispiel `bin\php`).
-5. Stellen Sie Ihre Web-App bereit.
-6. Navigieren Sie im Azure-Portal zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen** .
-   
+Anstelle der PHP-Standardlaufzeit können App Service-Web-Apps auch eine PHP-Laufzeit verwenden, die Sie für die Ausführung von PHP-Skripten angeben. Die Laufzeit, die Sie angeben, kann durch eine `php.ini` -Datei konfiguriert werden, die Sie ebenfalls angeben. Folgen Sie diesen Schritten, um eine benutzerdefinierte PHP-Laufzeit mit Web-Apps zu verwenden.
+
+1. Besorgen Sie sich eine nicht threadsichere, VC9- oder VC11-kompatible Version von PHP für Windows. Neuere Versionen von PHP für Windows finden Sie hier: [http://windows.php.net/download/]. Ältere Versionen finden Sie hier im Archiv: [http://windows.php.net/downloads/releases/archives/].
+1. Ändern Sie die Datei `php.ini` für Ihre Laufzeit. Konfigurationseinstellungen, die reine Systemebenendirektiven sind, werden von Web-Apps ignoriert. (Informationen zu Direktiven nur auf Systemebene finden Sie unter [Liste der php.ini-Direktiven]).
+1. Optional können Sie Ihrer PHP-Laufzeit auch Erweiterungen hinzufügen und in der Datei `php.ini` aktivieren.
+1. Fügen Sie dem Stammverzeichnis das Verzeichnis `bin` hinzu, und legen Sie das Verzeichnis, das die PHP-Laufzeit enthält, darin ab (zum Beispiel `bin\php`).
+1. Stellen Sie Ihre Web-App bereit.
+1. Navigieren Sie im Azure-Portal zu Ihrer Web-App, und klicken Sie auf die Schaltfläche **Einstellungen**.
+
     ![Speichern][settings-button]
-7. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen**, und führen Sie einen Bildlauf zum Bereich **Handlerzuordnungen** aus. Geben Sie im Feld "Erweiterung" `*.php` ein, und fügen Sie der ausführbaren Datei `php-cgi.exe` den Pfad hinzu. Wenn Sie die PHP-Laufzeit in Verzeichnis `bin` des Stammverzeichnisses Ihrer Anwendung abgelegt haben, lautet der Pfad `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
-   
-    ![Geben Sie Handler in Handler mappings an][handler-mappings]
-8. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
-   
+1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Anwendungseinstellungen**, und scrollen Sie zum Bereich **Handlerzuordnungen**. Geben Sie im Feld "Erweiterung" `*.php` ein, und fügen Sie der ausführbaren Datei `php-cgi.exe` den Pfad hinzu. Wenn Sie die PHP-Laufzeit in Verzeichnis `bin` des Stammverzeichnisses Ihrer Anwendung abgelegt haben, lautet der Pfad `D:\home\site\wwwroot\bin\php\php-cgi.exe`.
+
+    ![Festlegen eines Handlers in den Handlerzuordnungen][handler-mappings]
+1. Klicken Sie im oberen Bereich des Blatts **Web-App-Einstellungen** auf die Schaltfläche **Speichern**.
+
     ![Speichern Sie die Konfigurationseinstellungen][save-button]
 
 <a name="composer" />
 
 ## <a name="how-to-enable-composer-automation-in-azure"></a>Gewusst wie: Aktivieren der Composer-Automatisierung in Azure
+
 Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden) von App Service nicht verarbeitet. Wenn Sie die [Git-Bereitstellung](app-service-deploy-local-git.md) nutzen, können Sie während `git push` die Verarbeitung von „composer.json“ aktivieren, indem Sie die Composer-Erweiterung aktivieren.
 
 > [!NOTE]
 > Sie können [für erstklassigen Support für Composer in App Service abstimmen](https://feedback.azure.com/forums/169385-web-apps-formerly-websites/suggestions/6477437-first-class-support-for-composer-and-pip)!
-> 
-> 
+>
 
 1. Klicken Sie auf dem Blatt Ihrer PHP-Web-App im [Azure-Portal](https://portal.azure.com) auf **Tools** > **Erweiterungen**.
-   
+
     ![Blatt mit den Azure-Portal-Einstellungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-settings.png)
 2. Klicken Sie auf **Hinzufügen** und anschließend auf **Composer**.
-   
+
     ![Hinzufügen der Composer-Erweiterung zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-add.png)
 3. Klicken Sie auf **OK** , um die rechtlichen Bedingungen zu akzeptieren. Klicken Sie erneut auf **OK** , um die Erweiterung hinzuzufügen.
-   
-    Auf dem Blatt **Installierte Erweiterungen** wird nun die Composer-Erweiterung angezeigt.  
+
+    Auf dem Blatt **Installierte Erweiterungen** wird nun die Composer-Erweiterung angezeigt.
     ![Akzeptieren der Geschäftsbedingungen zum Aktivieren der Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-view.png)
-4. Führen Sie nun wie im vorherigen Abschnitt `git add`, `git commit` und `git push` aus. Nun sehen Sie, dass Composer in composer.json definierte Abhängigkeiten installiert.
-   
+4. Führen Sie jetzt im Terminalfenster Ihres lokalen Computers `git add`, `git commit` und `git push` für Ihre Web-App aus. Beachten Sie, dass Composer in composer.json definierte Abhängigkeiten installiert.
+
     ![Git-Bereitstellung mit Composer-Automatisierung in Azure](./media/web-sites-php-configure/composer-extension-success.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
-> 
-> 
+>
 
 [kostenlose Testversion]: https://www.windowsazure.com/pricing/free-trial/
 [phpinfo()]: http://php.net/manual/en/function.phpinfo.php
@@ -203,4 +211,3 @@ Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
-

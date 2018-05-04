@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Hadoop Pig mit PowerShell in HDInsight – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mit Azure PowerShell Pig-Aufträge an einen Hadoop-Cluster in HDInsight übermitteln."
+title: Verwenden von Hadoop Pig mit PowerShell in HDInsight – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Azure PowerShell Pig-Aufträge an einen Hadoop-Cluster in HDInsight übermitteln.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 737089c1-b494-4387-9def-7b4dac3be532
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7fa50e206c86b307f7e2a90ff0938571b64f41bb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0c06289625ab18dad134c235fc28fd5c775955eb
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Ausführen von Pig-Aufträgen in HDInsight mithilfe von Azure PowerShell
 
@@ -46,7 +44,7 @@ Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie Pig-Aufträge in HDInsig
 
 Die folgenden Cmdlets werden zum Ausführen der Pig-Aufträge in einem HDInsight-Remotecluster verwendet:
 
-* **Login-AzureRmAccount**: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
+* **Connect-AzureRmAccount**: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
 * **New-AzureRmHDInsightPigJobDefinition:** Erstellt mithilfe der angegebenen Pig Latin-Anweisungen eine *Auftragsdefinition*.
 * **Start-AzureRmHDInsightJob**: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 * **Wait-AzureRmHDInsightJob**: verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit abgelaufen ist.

@@ -9,11 +9,11 @@ ms.service: sql-database
 ms.topic: overview
 ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: a3b703c96e309294e5327fb7fb013cbf28c369e4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2b47dfbac3ee5c91e416fb234468fe22aa936c4c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
@@ -72,9 +72,9 @@ Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools f
 
 Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
-- **Azure Storage:** für die Archivierung großer Mengen von Telemetriedaten zu einem kleinen Preis
-- **Azure Event Hub:** für die Integration von Telemetriedaten von SQL-Datenbank in Ihrer benutzerdefinierte Überwachungslösung oder Hotpipelines
-- **Azure Log Analytics:** für eine integrierte Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung
+- **Azure Storage:** Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten.
+- **Azure Event Hub:** Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines.
+- **Azure Log Analytics:** Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung. Dieses Feature ist Teil der [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md).
 
     ![Architektur](./media/sql-database-metrics-diag-logging/architecture.png)
 
@@ -84,8 +84,8 @@ Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rech
 
 - **[Automatische Sicherungen:](sql-database-automated-backups.md)** SQL-Datenbank führt automatisch vollständige, differenzielle und Transaktionsprotokollsicherungen durch.
 - **[Point-in-Time-Wiederherstellungen:](sql-database-recovery-using-backups.md)** SQL-Datenbank unterstützt die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Vermerkdauer für automatische Sicherungen.
-- **[Aktive Georeplikation:](sql-database-geo-replication-overview.md)** Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken entweder im gleichen oder in weltweit verteilten Azure-Rechenzentren konfigurieren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden. 
-- **[Failovergruppen:](sql-database-geo-replication-overview.md)** SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und von Failovern großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
+- **[Aktive Georeplikation:](sql-database-geo-replication-overview.md)** Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken entweder im gleichen oder in weltweit verteilten Azure-Rechenzentren konfigurieren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden. Mit der aktiven Georeplikation kann ein Failover für eine einzelne Datenbank ausgeführt werden. 
+- **[Failovergruppen:](sql-database-geo-replication-overview.md)** SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und von Failovern großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden. Mit Failovergruppen kann ein Failover für mehrere Datenbanken innerhalb einer einzelnen Gruppe ausgeführt werden. 
 - **[Zonenredundante Datenbanken:](sql-database-high-availability.md)** SQL-Datenbank ermöglicht die Bereitstellung von Premium-Datenbanken, unternehmenskritischen Datenbanken (Vorschauversion) oder Pools für elastische Datenbanken über mehrere Verfügbarkeitszonen hinweg. Datenbanken und Pools für elastische Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, die beispielsweise die automatische Wiederherstellung nach Ausfällen von Datencentern ohne Datenverlust ermöglicht. Diese Funktion steht derzeit als Vorschau zur Verfügung. 
 
 ## <a name="built-in-intelligence"></a>Integrierte Logik
@@ -96,9 +96,9 @@ SQL-Datenbanken stellt integrierte Logik bereit, die Ihnen hilft, den Aufwand f�
 
 SQL-Datenbank bietet detaillierte Einblicke in die Abfragen, die Sie überwachen sollten. SQL-Datenbank erlernt Ihre Datenbankmuster und ermöglicht Ihnen das Anpassen Ihres Datenbankschemas an Ihre Workload. SQL-Datenbank stellt [Empfehlungen zur Leistungsoptimierung](sql-database-advisor.md) bereit, mit denen Sie Optimierungsschritte überprüfen und anwenden können. 
 
-Eine kontinuierliche Überwachung der Datenbank ist jedoch eine schwierige und aufwendige Aufgabe, insbesondere bei sehr vielen Datenbanken. [Intelligent Insights](sql-database-intelligent-insights.md) übernimmt diese Aufgabe für Sie, indem die skalierbare Leistung von SQL-Datenbank überwacht wird. Sie werden zudem über Probleme mit der Leistungsminderung informiert. Außerdem wird die Grundursache des Problems identifiziert, und Empfehlungen zur Leistungsverbesserung werden nach Möglichkeit bereitgestellt.
+Eine kontinuierliche Überwachung der Datenbank ist jedoch eine schwierige und aufwendige Aufgabe, insbesondere bei sehr vielen Datenbanken. [Intelligent Insights](sql-database-intelligent-insights.md) nimmt Ihnen diese Aufgabe ab: Das Feature überwacht automatisch die Leistung von SQL-Datenbank und informiert Sie über mögliche Beeinträchtigungen. Anschließend ermittelt Intelligent Insights die Ursache und stellt nach Möglichkeit Empfehlungen für Leistungsverbesserungen bereit. 
 
-Das Verwalten einer großen Anzahl von Datenbanken ist eventuell nicht möglich, selbst mit allen verfügbaren Tools und Berichten, die SQL-Datenbank und das Azure-Portal bereitstellen. Anstelle der manuellen Überwachung und Optimierung der Datenbank sollten Sie erwägen, einige der Überwachungs- und Optimierungsaktionen mithilfe der [automatischen Optimierung](sql-database-automatic-tuning.md) an SQL-Datenbank zu delegieren. SQL-Datenbank wendet Empfehlungen automatisch an und testet und überprüft jede der Optimierungsaktionen, um sicherzustellen, dass sich die Leistung auch wirklich verbessert. Auf diese Weise passt sich SQL-Datenbank automatisch auf kontrollierte und sichere Weise an Ihre Workload an. Die automatische Optimierung bedeutet, dass die Leistung Ihrer Datenbank vor und nach jeder Optimierungsaktion sorgfältig überwacht und verglichen wird – und wenn sich die Leistung nicht verbessert, wird die Optimierungsaktion zurückgesetzt.
+Das Verwalten einer großen Anzahl von Datenbanken ist eventuell nicht möglich, selbst mit allen verfügbaren Tools und Berichten, die SQL-Datenbank und das Azure-Portal bereitstellen. Anstelle der manuellen Überwachung und Optimierung der Datenbank sollten Sie erwägen, einige der Überwachungs- und Optimierungsaktionen mithilfe der [automatischen Optimierung](sql-database-automatic-tuning.md) an SQL-Datenbank zu delegieren. SQL-Datenbank wendet automatisch Empfehlungen an und prüft, ob sich die Leistung verbessert hat. Dadurch kann sich SQL-Datenbank automatisch, kontrolliert und sicher an Ihre Workload anpassen. Im Zuge dieser automatischen Optimierung wird die Leistung Ihrer Datenbank vor und nach jeder Optimierungsaktion sorgfältig überwacht und verglichen. Sollte sich die Leistung nicht verbessern, wird die Optimierungsaktion zurückgesetzt.
 
 Bereits heute verlassen sich viele unserer Partner, die [mehrinstanzenfähige SaaS-Apps](sql-database-design-patterns-multi-tenancy-saas-applications.md) auf Grundlage von SQL-Datenbank ausführen, auf die automatische Leistungsoptimierung, um sicherzustellen, dass ihre Anwendungen immer eine stabile und zuverlässige Leistung zeigen. Für sie verringert dieses Feature das Risiko, dass mitten in der Nacht ein Leistungsproblem auftritt, enorm. Da darüber hinaus auch ein Teil ihrer Kundenbasis SQL Server verwendet, wenden sie dieselben Indizierungsempfehlungen von SQL-Datenbank an, um ihre SQL Server-Kunden zu unterstützen.
 
@@ -113,7 +113,7 @@ Wir fügen darüber hinaus auch einen Featuresatz zur [adaptiven Abfrageverarbei
 
 ### <a name="intelligent-threat-detection"></a>Intelligente Bedrohungserkennung
 
- Die [SQL-Bedrohungserkennung](sql-database-threat-detection.md) nutzt die [Überwachung von SQL-Datenbank](sql-database-auditing.md) für die kontinuierliche Überwachung von Azure SQL-Datenbank-Instanzen auf potenziell schädliche Zugriffsversuche auf sensibler Daten. Die SQL-Bedrohungserkennung bietet eine neue Sicherheitsebene, die es den Kunden ermöglicht, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anomalen Aktivitäten bereitgestellt. Benutzer erhalten Warnungen zu verdächtigen Datenbankaktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbank-Zugriffsmustern. Die Warnungen der SQL-Bedrohungserkennung enthalten Details zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann. Benutzer können verdächtige Ereignisse untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch, die Verletzung der Datensicherheit oder den Missbrauch von Daten in der Datenbank zurückzuführen sind. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.
+ Die [SQL-Bedrohungserkennung](sql-database-threat-detection.md) nutzt die [Überwachung von SQL-Datenbank](sql-database-auditing.md) für die kontinuierliche Überwachung von Azure SQL-Datenbank-Instanzen auf potenziell schädliche Zugriffsversuche auf sensibler Daten. Die SQL-Bedrohungserkennung bietet eine neue Sicherheitsebene, die es den Kunden ermöglicht, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitshinweise zu anomalen Aktivitäten bereitgestellt. Benutzer erhalten Warnungen zu verdächtigen Datenbankaktivitäten, potenziellen Sicherheitsrisiken, Angriffen mit Einschleusung von SQL-Befehlen sowie zu anomalen Datenbank-Zugriffsmustern. Die Warnungen der SQL-Bedrohungserkennung enthalten Details zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann. Benutzer können verdächtige Ereignisse untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch, die Verletzung der Datensicherheit oder den Missbrauch von Daten in der Datenbank zurückzuführen sind. Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 
@@ -154,7 +154,7 @@ SQL-Datenbank sorgt für einfachere und produktivere Abläufe beim Erstellen und
 - **[Azure-Portal:](https://portal.azure.com/)** eine webbasierte Anwendung für die Verwaltung aller Azure-Dienste 
 - **[SQL Server Management Studio:](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)** eine kostenlose, herunterladbare Clientanwendung für die Verwaltung beliebiger SQL-Infrastrukturen – von SQL Server bis SQL-Datenbank
 - **[SQL Server Data Tools in Visual Studio:](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)** eine kostenlose, herunterladbare Clientanwendung, mit der Sie relationale SQL Server-Datenbanken, Azure SQL-Datenbanken, Integration Services-Pakete, Analysis Services-Datenmodelle und Reporting Services-Berichte erstellen können
-- **[Visual Studio Code:](https://code.visualstudio.com/docs)** ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux, der Erweiterungen unterstützt, z.B. die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse
+- **[Visual Studio Code:](https://code.visualstudio.com/docs)** ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux, der Erweiterungen unterstützt – etwa die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse.
 
 SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.js, PHP, Ruby und .NET unter macOS, Linux und Windows. SQL-Datenbank unterstützt dieselben [Verbindungsbibliotheken](sql-database-libraries.md) wie SQL Server.
 
@@ -170,7 +170,7 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 
 - Unter [Preise](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie Preisvergleiche und Rechner für Einzeldatenbanken und Pools für elastische Datenbanken.
 
-- Diese Schnellstarttutorials erleichtern Ihnen den Einstieg:
+- Diese Schnellstarts erleichtern Ihnen den Einstieg:
 
   - [Create a SQL database in the Azure portal](sql-database-get-started-portal.md) (Erstellen einer SQL-Datenbank im Azure-Portal)  
   - [Erstellen einer SQL-Datenbank mit der Azure CLI](sql-database-get-started-cli.md)

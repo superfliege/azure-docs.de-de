@@ -1,11 +1,11 @@
 ---
 title: Verwalten von Azure Redis Cache mit Azure PowerShell | Microsoft Docs
-description: "Erfahren Sie, wie Sie administrative Aufgaben für Azure-Redis-Cache mit Azure PowerShell ausführen."
+description: Erfahren Sie, wie Sie administrative Aufgaben für Azure-Redis-Cache mit Azure PowerShell ausführen.
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 58f8601fa780ac86729f60e9e30f4c6a91c73deb
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Verwalten von Azure-Redis-Cache mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ Wenn Sie bereits Azure PowerShell installiert haben, benötigen Sie Version 1.0.
 
 Zunächst müssen Sie sich mit dem folgenden Befehl bei Azure anmelden.
 
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
 
 Geben Sie die E-Mail-Adresse Ihres Azure-Kontos und das Kennwort in das Anmeldedialogfeld von Microsoft Azure ein.
 
@@ -66,18 +66,18 @@ Geben Sie beispielsweise Folgendes ein, um Hilfe zum `New-AzureRmRedisCache` -Cm
     Get-Help New-AzureRmRedisCache -Detailed
 
 ### <a name="how-to-connect-to-other-clouds"></a>Herstellen von Verbindungen mit anderen Clouds
-Standardmäßig ist die Azure-Umgebung `AzureCloud` (die globale Azure-Cloudinstanz). Verwenden Sie zum Verbinden mit einer anderen Instanz den `Add-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
+Standardmäßig ist die Azure-Umgebung `AzureCloud` (die globale Azure-Cloudinstanz). Verwenden Sie zum Verbinden mit einer anderen Instanz den `Connect-AzureRmAccount`-Befehl mit dem Befehlszeilenschalter `-Environment` oder -`EnvironmentName` mit der gewünschten Umgebung bzw. dem gewünschten Umgebungsnamen.
 
 Führen Sie zum Anzeigen der Liste der verfügbaren Umgebungen das Cmdlet `Get-AzureRmEnvironment` aus.
 
 ### <a name="to-connect-to-the-azure-government-cloud"></a>Verbinden mit der Azure Government-Cloud
 Verwenden Sie zum Verbinden mit der Azure Government-Cloud einen der folgenden Befehle.
 
-    Add-AzureRMAccount -EnvironmentName AzureUSGovernment
+    Connect-AzureRmAccount -EnvironmentName AzureUSGovernment
 
 oder
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureUSGovernment)
 
 Verwenden Sie zum Erstellen eines Caches in der Azure Government-Cloud einen der folgenden Standorte.
 
@@ -89,11 +89,11 @@ Weitere Informationen zur Azure Government-Cloud finden Sie unter [Microsoft Azu
 ### <a name="to-connect-to-the-azure-china-cloud"></a>Verbinden mit der Azure China-Cloud
 Verwenden Sie zum Verbinden mit der Azure China-Cloud einen der folgenden Befehle.
 
-    Add-AzureRMAccount -EnvironmentName AzureChinaCloud
+    Connect-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 oder
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureChinaCloud)
 
 Verwenden Sie zum Erstellen eines Caches in der Azure China-Cloud einen der folgenden Standorte.
 
@@ -105,12 +105,12 @@ Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud f�
 ### <a name="to-connect-to-microsoft-azure-germany"></a>So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her
 Verwenden Sie zum Herstellen einer Verbindung mit Microsoft Azure Deutschland einen der folgenden Befehle.
 
-    Add-AzureRMAccount -EnvironmentName AzureGermanCloud
+    Connect-AzureRmAccount -EnvironmentName AzureGermanCloud
 
 
 or
 
-    Add-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
+    Connect-AzureRmAccount -Environment (Get-AzureRmEnvironment -Name AzureGermanCloud)
 
 Verwenden Sie einen der folgenden Orte, um einen Cache in Microsoft Azure Deutschland zu erstellen.
 

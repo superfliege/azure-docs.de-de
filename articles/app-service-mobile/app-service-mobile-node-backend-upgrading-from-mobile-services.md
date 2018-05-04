@@ -1,11 +1,11 @@
 ---
-title: "Upgrade von Mobile Services auf Azure App Service – Node.js"
-description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf eine mobile App Service-App aktualisieren können."
+title: Upgrade von Mobile Services auf Azure App Service – Node.js
+description: Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf eine mobile App Service-App aktualisieren können.
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: conceptdev
 manager: yochayk
-editor: 
+editor: ''
 ms.assetid: c58f6df0-5aad-40a3-bddc-319c378218e3
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 9a641bc667d07d1b674d2864c1f29151d527f46a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 07ebf23270addc63793278d4e0510c187289b82c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Aktualisieren eines vorhandenen Node.js-Azure Mobile Service auf App Service
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
@@ -146,7 +146,7 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 
 <!-- URLs. -->
 
-[Azure portal]: https://portal.azure.com/
+[Azure-Portal]: https://portal.azure.com/
 [Azure classic portal]: https://manage.windowsazure.com/
 [Was sind Mobile Apps?]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
@@ -159,7 +159,7 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 [How to use the .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service-Preisen]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service-Preisen]: https://azure.microsoft.com/pricing/details/app-service/
 [.NET server SDK overview]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Authentifizierungskonzepte]: ../app-service/app-service-authentication-overview.md
 [Authentifizierung – Schnellstart]: app-service-mobile-auth.md

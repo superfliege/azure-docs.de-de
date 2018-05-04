@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: mbaldwin
-ms.openlocfilehash: da805bead3f6af4ebd0b4b94b30a51ff2abc62dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 69da37cbf5691fe94b9550200e259711e9e201d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 In diesem Artikel werden die Schritte zur Erstellung und Registrierung eines Kontos erläutert, die notwendig sind, um anerkannter Microsoft-Entwickler im Azure Marketplace zu werden.
@@ -37,7 +37,7 @@ Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Do
 Beachten Sie beim Erstellen eines Unternehmenskontos diese Richtlinien, wenn mehrere Personen auf das Konto zugreifen müssen, indem sie sich bei dem Microsoft-Konto anmelden, das das Konto geöffnet hat.
 
 > [!Important]
-> Wichtig: Um mehreren Benutzern Zugriff auf Ihr Dev Center-Konto zu gewähren, sollten Sie über Azure Active Directory einzelnen Benutzern, die auf das Konto zugreifen können, indem sie sich mit ihren jeweiligen Azure AD-Anmeldeinformationen anmelden, Rollen zuweisen. Weitere Informationen finden Sie unter [Verwalten von Kontobenutzern](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Wichtig: Um mehreren Benutzern Zugriff auf Ihr Dev Center-Konto zu gewähren, sollten Sie über Azure Active Directory einzelnen Benutzern, die auf das Konto zugreifen können, indem sie sich mit ihren jeweiligen Azure AD-Anmeldeinformationen anmelden, Rollen zuweisen. Weitere Informationen finden Sie unter [Verwalten von Kontobenutzern](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Erstellen Sie Ihr Microsoft-Konto mit einer E-Mail-Adresse, die zur Domäne Ihres Unternehmens gehört, jedoch nicht einer Einzelperson – z.B. windowsapps@fabrikam.com.
 * Beschränken Sie den Zugriff auf dieses Microsoft-Konto auf die kleinste mögliche Anzahl von Entwicklern.
@@ -49,7 +49,7 @@ Beachten Sie beim Erstellen eines Unternehmenskontos diese Richtlinien, wenn meh
 
 Auf Ihr Entwicklerkonto sollte in erster Linie mit vertrauenswürdigen PCs zugegriffen werden. Dies ist wichtig, da die Anzahl der pro Konto und Woche generierten Codes beschränkt ist. Darüber hinaus ermöglicht dies die nahtloseste Anmeldeerfahrung.
 
-Um weitere Informationen zu zusätzlichen Entwicklerkontorichtlinien und zur Sicherheit zu erhalten, klicken Sie [hier](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Um weitere Informationen zu zusätzlichen Entwicklerkontorichtlinien und zur Sicherheit zu erhalten, klicken Sie [hier](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Anleitung
 1. Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem vorhandenen Konto angemeldet sind.

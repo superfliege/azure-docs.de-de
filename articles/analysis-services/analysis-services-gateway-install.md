@@ -1,25 +1,18 @@
 ---
 title: Installieren eines lokalen Datengateways | Microsoft-Dokumentation
 description: Informationen zum Installieren und Konfigurieren eines lokalen Datengateways.
-services: analysis-services
-documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 04/03/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: b57ee7d9617f8bf2e54122ac37f351ae0cf9db26
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.reviewer: minewiskan
+ms.openlocfilehash: 5a923d3b5fbb5e7afe5f2a922ba083608ff35fd9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet. Weitere Informationen zum Gateway finden Sie unter [Lokales Datengateway](analysis-services-gateway.md).
@@ -44,7 +37,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 * Installieren Sie das Gateway auf einem Computer, der eingeschaltet bleibt und nicht in den Ruhezustand versetzt wird.
 * Installieren Sie das Gateway nicht auf einem Computer, der über eine Drahtlosverbindung mit dem Netzwerk verfügt. Die Leistung kann beeinträchtigt werden.
 * Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
-* Das hier beschriebene (einheitliche) Gateway wird für Azure Government (Fairfax) nicht unterstützt. Verwenden Sie das dedizierte lokale Gateway für Azure Analysis Services. Das dedizierte Gateway unterstützt keine weiteren Dienste wie Power BI und Power Apps. Das dedizierte Gateway wird im Portal über die Schnellstartfunktion Ihrer Server installiert.
+* Das hier beschriebene (einheitliche) Gateway wird in Azure Government, Azure Deutschland und den Hoheitsregionen von Azure China nicht unterstützt. Verwenden Sie **Dediziertes lokales Gateway für Azure Analysis Services**, das vom **Schnellstart** Ihres Servers installiert wurde, im Portal. 
 
 
 ## <a name="download"></a>Herunterladen

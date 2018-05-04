@@ -1,4 +1,19 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 04/09/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/24/2018
+---
 ## <a name="about-vhds"></a>Informationen zu VHDs
 
 Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Informationen zu Seitenblobs finden Sie unter [Grundlegendes zu Blockblobs und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Ausführliche Informationen zu Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
@@ -10,10 +25,10 @@ Alle VHD-Dateien in Azure, die Sie als Quelle für die Erstellung von Datenträg
 Beim Erstellen eines virtuellen Computers mithilfe eines Images, erstellt Azure einen Datenträger für den virtuellen Computer, bei dem es sich um eine Kopie der VHD-Quelldatei handelt. Um ein versehentliches Löschen zu vermeiden, setzt Azure eine Lease für alle VHD-Quelldateien, die zum Erstellen eines Images, Betriebssystem-Datenträgers oder Datenträgers für Daten verwendet wird.
 
 Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, indem Sie den Datenträger oder das Image löschen. Um eine VHD-Datei zu löschen, die von einem virtuellen Computer als Betriebssystem-Datenträger verwendet wird, können Sie den virtuellen Computer, den Betriebssystem-Datenträger und die VHD-Quelldatei auf einmal entfernen, indem Sie den virtuellen Computer und alle verbundenen Datenträger löschen. Zum Entfernen einer VHD-Datei, die als Quelle für einen Datenträger verwendet wird, sind jedoch mehrere Schritte in einer bestimmten Reihenfolge erforderlich. Trennen Sie den Datenträger zunächst vom virtuellen Computer, und löschen Sie den Datenträger und dann die VHD-Datei.
-
 > [!WARNING]
 > Wenn Sie eine VHD-Quelldatei aus dem Speicher löschen oder das Speicherkonto löschen, kann Microsoft diese Daten nicht wiederherstellen.
 > 
+> Seitenblobs in Storage Premium sind nur zur Verwendung als VHDs ausgelegt. Microsoft rät davon ab, andere Datentypen in Seitenblobs in Storage Premium zu speichern, da die Kosten deutlich höher sein können. Speichern Sie Daten, die sich nicht auf einer VHD befinden, mithilfe von Blockblobs.
 
 ## <a name="types-of-disks"></a>Datenträgertypen 
 
@@ -30,7 +45,7 @@ Weitere Informationen zur Verwendung von Standardspeicher mit VM-Datenträgern f
 
 ### <a name="premium-storage"></a>Storage Premium 
 
-Storage Premium basiert auf SSDs und unterstützt Datenträger mit hoher Leistung und geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. Storage Premium steht für virtuelle Azure-Computer vom Typ DS, DSv2, GS, Ls und FS zur Verfügung. Weitere Informationen finden Sie unter [Storage Premium](../articles/virtual-machines/windows/premium-storage.md).
+Storage Premium basiert auf SSDs und unterstützt Datenträger mit hoher Leistung und geringer Latenz für virtuelle Computer mit E/A-intensiven Workloads. In der Regel können Sie Storage Premium mit Größen verwenden, deren Serienname ein „s“ enthält. Es gibt beispielsweise die Dv3-Serie und die Dsv3-Serie. Letztere kann mit Storage Premium verwendet werden.  Weitere Informationen finden Sie unter [Storage Premium](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nicht verwaltete Datenträger
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
 ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -99,7 +99,7 @@ Antwortparameter können als Teil der Änderung der Antwort an den Client verwen
 
 Sie können auch auf [Anwendungseinstellungen verweisen, die für die Funktionen-App definiert sind](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop), indem Sie den Namen der Einstellung in Prozentzeichen (%) einschließen.
 
-Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* wird z.B. „%ORDER_PROCESSING_HOST%“ durch den Wert der Einstellung ORDER_PROCESSING_HOST ersetzt.
+Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* würde „%ORDER_PROCESSING_HOST%“ z. B. durch den Wert der Einstellung ORDER_PROCESSING_HOST ersetzt.
 
 > [!TIP] 
 > Verwenden Sie Anwendungseinstellungen für Back-End-Hosts, wenn Sie mehrere Bereitstellungen oder Testumgebungen haben. Auf diese Weise können Sie sicherstellen, dass Sie immer mit dem richtigen Back-End für die jeweilige Umgebung kommunizieren.

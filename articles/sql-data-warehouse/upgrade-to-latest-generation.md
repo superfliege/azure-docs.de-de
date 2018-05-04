@@ -1,24 +1,26 @@
 ---
 title: Upgrade auf Azure SQL Data Warehouse der neuesten Generation | Microsoft-Dokumentation
-description: Schritte zum Durchführen eines Upgrades für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation.
+description: Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
-ms.services: sql-data-warehouse
+ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/02/2018
+ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ea45398b0bf7fca43c75797313b7e683972b1ab
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 673386ad236f596aa4c64fe2e8c885fb86afe170
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
+Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
 
-Sie können jetzt im Azure-Portal nahtlos ein Upgrade auf die Leistungsstufe „Optimiert für Compute“ durchführen. Wenn Sie über ein Data Warehouse der Stufe „Optimiert für Elastizität“ verfügen, empfiehlt es sich, ein Upgrade auf die neueste Generation der Azure-Hardware und eine erweiterte Speicherarchitektur durchzuführen. Auf diese Weise können Sie von höherer Leistung und Skalierbarkeit sowie unbegrenztem spaltenbasiertem Speicher profitieren. 
+## <a name="why-upgrade"></a>Gründe für ein Upgrade
+Sie können jetzt im Azure-Portal nahtlos ein Upgrade auf die Leistungsstufe „Optimiert für Compute“ durchführen. Ein Upgrade wird empfohlen, wenn Sie über ein Data Warehouse der Stufe „Optimiert für Elastizität“ verfügen. Durch das Upgrade können Sie die neueste Generation der Azure-Hardware- und erweiterten Azure-Speicherarchitektur verwenden. Auf diese Weise profitieren Sie von höherer Leistung und Skalierbarkeit sowie unbegrenztem spaltenbasiertem Speicher. 
 
 ## <a name="applies-to"></a>Anwendungsbereich
 Dieses Upgrade gilt für Data Warehouses in der Leistungsstufe „Optimiert für Elastizität“.
@@ -28,12 +30,6 @@ Dieses Upgrade gilt für Data Warehouses in der Leistungsstufe „Optimiert für
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-
-> [!NOTE]
-> Ab 30.3. muss die [Überwachung auf Serverebene](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing#subheading-8) deaktiviert sein, bevor Sie das Upgrade starten.
-> 
->
-
 > [!NOTE]
 > Wenn sich Ihr vorhandenes Data Warehouse der Stufe „Optimiert für Elastizität“ nicht in einer Region befindet, in der „Optimiert für Compute“ verfügbar ist, können Sie über PowerShell eine [Geowiederherstellung auf „Optimiert für Compute](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) in einer unterstützten Region durchführen.
 > 
@@ -70,9 +66,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
    
    Der erste Schritt des Upgradeprozesses erfolgt im Skalierungsvorgang („Upgrade – Offline“), in dem alle Sitzungen gelöscht und Verbindungen getrennt werden. 
    
-   Der zweite Schritt des Upgradeprozesses ist die Datenmigration („Upgrade – Online“). Die Datenmigration ist ein im Hintergrund ausgeführter allmählicher Onlineprozess, der spaltenbasierte Daten langsam aus der alten Gen1-Speicherarchitektur in die neue Gen2-Speicherarchitektur verschiebt, um den lokalen Gen2-SSD-Cache zu nutzen. Während dieser Zeit ist Ihr Data Warehouse für Abfrage- und Ladevorgänge online. All Ihre Daten stehen für Abfragen zur Verfügung, unabhängig davon, ob sie bereits migriert wurden oder nicht. Die Datenmigration erfolgt mit wechselnder Geschwindigkeit je nach Größe Ihrer Daten, Ihrer Leistungsstufe und der Anzahl Ihrer Columnstore-Segmente. 
+   Der zweite Schritt des Upgradeprozesses ist die Datenmigration („Upgrade – Online“). Die Datenmigration ist ein im Hintergrund ausgeführter allmählicher Onlineprozess, der spaltenbasierte Daten langsam aus der alten Speicherarchitektur in die neue Speicherarchitektur verschiebt, indem der lokale SSD-Cache genutzt wird. Während dieser Zeit ist Ihr Data Warehouse für Abfrage- und Ladevorgänge online. All Ihre Daten stehen für Abfragen zur Verfügung, unabhängig davon, ob sie bereits migriert wurden oder nicht. Die Datenmigration erfolgt mit wechselnder Geschwindigkeit je nach Größe Ihrer Daten, Ihrer Leistungsstufe und der Anzahl Ihrer Columnstore-Segmente. 
 
-5. **Optionale Empfehlung**: Um den Hintergrundprozess der Datenmigration zu beschleunigen, empfiehlt es sich, die Datenverschiebung sofort zu erzwingen, indem Sie [ALTER INDEX REBUILD](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) in allen Columnstore-Tabellen mit einem größeren SLO-Wert und einer größeren Ressourcenklasse auszuführen. Der Vorgang erfolgt offline, im Gegensatz zum allmählich ausgeführten Hintergrundprozess. Die Datenmigration erfolgt jedoch wesentlich schneller ausgeführt, wenn Sie die Gen2-Speicherarchitektur vollständig nutzen können, sobald diese mit hochwertigen Zeilengruppen fertig erstellt wurde. 
+5. **Optionale Empfehlung**: Um den Hintergrundprozess der Datenmigration zu beschleunigen, empfiehlt es sich, die Datenverschiebung sofort zu erzwingen, indem Sie [ALTER INDEX REBUILD](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-index) in allen Columnstore-Tabellen mit einem größeren SLO-Wert und einer größeren Ressourcenklasse auszuführen. Der Vorgang erfolgt offline, im Gegensatz zum allmählich ausgeführten Hintergrundprozess. Die Datenmigration läuft jedoch wesentlich schneller ab, wenn Sie die neue erweiterte Speicherarchitektur vollständig nutzen können, sobald diese mit hochwertigen Zeilengruppen fertig erstellt wurde. 
 
 Die folgende Abfrage generiert die erforderlichen ALTER INDEX REBUILD-Befehle, um den Datenmigrationsprozess zu beschleunigen:
 

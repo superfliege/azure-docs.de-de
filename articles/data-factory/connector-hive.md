@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b216b334f07a59f7c159bc804116f2190f3bf6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 758da9ceb86e26d373f71e4f89a47d67d1cefe2d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Kopieren von Daten aus Hive mithilfe von Azure Data Factory 
 
@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **Hive** festgelegt werden. | Ja |
 | host | IP-Adresse oder Hostname des Hive-Servers, bei mehreren Hosts durch „;“ getrennt (nur wenn „serviceDiscoveryMode“ aktiviert ist).  | Ja |
-| port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen.  | Nein  |
+| port | Der TCP-Port, den der Hive-Server verwendet, um auf Clientverbindungen zu lauschen. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Ja |
 | serverType | Der Typ des Hive-Servers. <br/>Zulässige Werte: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nein  |
 | thriftTransportProtocol | Das auf der Thrift-Ebene zu verwendende Transportprotokoll. <br/>Zulässige Werte: **Binary**, **SASL**, **HTTP** | Nein  |
 | authenticationType | Die Authentifizierungsmethode für den Zugriff auf den Hive-Server. <br/>Zulässige Werte: **Anonymous**, **Username**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
@@ -78,8 +78,7 @@ Folgende Eigenschaften werden für den mit Hive verknüpften Dienst unterstützt
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
-            },
-            "httpPath" : "gateway/sandbox/spark"
+            }
         }
     }
 }

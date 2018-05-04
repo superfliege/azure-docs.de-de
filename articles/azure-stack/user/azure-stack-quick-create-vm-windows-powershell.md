@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 04/19/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: f73f6599f24c0748862ba3a2f1384246841e7e8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4f0d07d2c64650091b5fc654a645785a12c3c3de
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack
+# <a name="quickstart-create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe von PowerShell in Azure Stack beschrieben. Führen Sie die in diesem Artikel beschriebenen Schritte entweder über das Azure Stack Development Kit oder über einen Windows-basierten externen Client (wenn Sie über VPN verbunden sind) aus. 
+In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe von PowerShell in Azure Stack beschrieben. Führen Sie die in diesem Artikel beschriebenen Schritte entweder über das Azure Stack Development Kit oder über einen Windows-basierten externen Client (wenn Sie über VPN verbunden sind) aus.
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
-* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Windows Server 2016“ dem Azure Stack-Marketplace hinzugefügt hat.  
+* Stellen Sie sicher, dass Ihr Azure Stack-Bediener das Image „Windows Server 2016“ dem Azure Stack-Marketplace hinzugefügt hat.
 
-* Azure Stack erfordert eine spezifische Version von Azure PowerShell, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie PowerShell nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren](azure-stack-powershell-install.md) und [Konfigurieren](azure-stack-powershell-configure-user.md) von PowerShell aus.    
+* Azure Stack erfordert eine spezifische Version von Azure PowerShell, um die Ressourcen zu erstellen und zu verwalten. Wenn Sie PowerShell nicht für Azure Stack konfiguriert haben, führen Sie die Schritte zum [Installieren](azure-stack-powershell-install.md) und [Konfigurieren](azure-stack-powershell-configure-user.md) von PowerShell aus.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den folgenden Codeblock aus, um eine Ressourcengruppe zu erstellen. Wir haben allen Variablen in diesem Dokument Werte zugewiesen. Sie können entweder diese Werte verwenden oder einen anderen Wert zuweisen.  
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure Stack-Ressourcen bereitgestellt und verwaltet werden. Führen Sie im Development Kit oder im integrierten Azure Stack-System den folgenden Codeblock aus, um eine Ressourcengruppe zu erstellen. Für alle Variablen in diesem Dokument werden Werte zugewiesen. Sie können entweder diese Werte verwenden oder neue Werte zuweisen.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -47,7 +47,7 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Erstellen von Speicherressourcen 
+## <a name="create-storage-resources"></a>Erstellen von Speicherressourcen
 
 Erstellen Sie ein Speicherkonto und einen Speichercontainer zum Speichern des Windows Server 2016-Images.
 
@@ -76,7 +76,7 @@ $container = New-AzureStorageContainer `
 
 ## <a name="create-networking-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie ein virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse. Diese Ressourcen dienen dazu, Netzwerkkonnektivität für den virtuellen Computer bereitzustellen.  
+Erstellen Sie ein virtuelles Netzwerk, ein Subnetz und eine öffentliche IP-Adresse. Diese Ressourcen dienen dazu, Netzwerkkonnektivität für den virtuellen Computer bereitzustellen.
 
 ```powershell
 # Create a subnet configuration
@@ -135,9 +135,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -Name myNetworkSecurityGroup `
-  -SecurityRules $nsgRuleRDP,$nsgRuleWeb 
+  -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 ```
- 
+
 ### <a name="create-a-network-card-for-the-virtual-machine"></a>Erstellen einer Netzwerkkarte für den virtuellen Computer
 
 Die Netzwerkkarte verbindet die VM mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
@@ -150,12 +150,12 @@ $nic = New-AzureRmNetworkInterface `
   -Location $location `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id `
-  -NetworkSecurityGroupId $nsg.Id 
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie eine VM-Konfiguration. Diese Konfiguration umfasst die beim Bereitstellen des virtuellen Computers verwendeten Einstellungen, z.B. ein VM-Image, die Größe und die Authentifizierungskonfiguration.
+Erstellen Sie eine VM-Konfiguration. Diese Konfiguration umfasst die Einstellungen, die beim Bereitstellen des virtuellen Computers verwendet werden. Hierzu zählen etwa Anmeldeinformationen, Größe und VM-Image.
 
 ```powershell
 # Define a credential object to store the username and password for the virtual machine
@@ -168,13 +168,13 @@ $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_A1"
 $VirtualMachine = New-AzureRmVMConfig `
   -VMName $VmName `
-  -VMSize $VmSize 
+  -VMSize $VmSize
 
 $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Windows `
   -ComputerName "MainComputer" `
-  -Credential $Credential 
+  -Credential $Credential
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `
@@ -189,13 +189,13 @@ $osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
   $vmName.ToLower(), `
   $osDiskName
 
-# Sets the operating system disk properties on a virtual machine. 
+# Sets the operating system disk properties on a virtual machine.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -Name $osDiskName `
   -VhdUri $OsDiskUri `
   -CreateOption FromImage | `
-  Add-AzureRmVMNetworkInterface -Id $nic.Id 
+  Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 # Create the virtual machine.
 New-AzureRmVM `
@@ -206,13 +206,13 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-Um eine Remoteverbindung mit dem virtuellen Computer herzustellen, den Sie im vorherigen Schritt erstellt haben, benötigen Sie seine öffentliche IP-Adresse. Führen Sie den folgenden Befehl aus, um die öffentliche IP-Adresse des virtuellen Computers abzurufen: 
+Um eine Remoteverbindung mit dem virtuellen Computer herzustellen, den Sie im vorherigen Schritt erstellt haben, benötigen Sie seine öffentliche IP-Adresse. Führen Sie den folgenden Befehl aus, um die öffentliche IP-Adresse des virtuellen Computers abzurufen:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
- 
+
 Erstellen Sie mit dem folgenden Befehl eine Remotedesktopsitzung mit dem virtuellen Computer. Ersetzen Sie die IP-Adresse mit dem publicIPAddress-Wert des virtuellen Computers. Wenn Sie dazu aufgefordert werden, geben Sie den Benutzernamen und das Kennwort ein, das Sie beim Erstellen des virtuellen Computers angegeben haben.
 
 ```powershell
@@ -229,10 +229,9 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Anzeigen der IIS-Willkommensseite
 
-Nachdem Sie IIS installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die IIS-Standardwillkommensseite anzeigen. Verwenden Sie dabei den weiter oben dokumentierten *publicIpAddress*-Wert, um die Standardseite zu besuchen. 
+Nachdem Sie IIS installiert und den Port 80 auf Ihrem virtuellen Computer geöffnet haben, können Sie die IIS-Standardwillkommensseite in einem beliebigen Webbrowser anzeigen. Verwenden Sie die öffentliche IP-Adresse (*publicIpAddress*), die Sie sich im vorherigen Abschnitt notiert haben, um die Standardseite zu besuchen.
 
-![IIS-Standardwebsite](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png) 
-
+![IIS-Standardwebsite](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
 ## <a name="delete-the-virtual-machine"></a>Löschen des virtuellen Computers
 
@@ -246,4 +245,3 @@ Remove-AzureRmResourceGroup `
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Schnellstart haben Sie einen einfachen virtuellen Windows-Computer bereitgestellt. Um weitere Informationen zu virtuellen Computern unter Azure Stack zu erhalten, fahren Sie mit [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md) (Überlegungen zu virtuellen Computern in Azure Stack) fort.
-

@@ -1,11 +1,11 @@
 ---
 title: Sicherer Zugriff auf Azure Logic Apps | Microsoft-Dokumentation
-description: "Legen Sie die Sicherheit fest für den Schutz des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste, die mit Workflows in Azure Logic Apps verwendet werden."
+description: Legen Sie die Sicherheit fest für den Schutz des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste, die mit Workflows in Azure Logic Apps verwendet werden.
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2042fdaa037fe1928fdb81727968a532ddfae0a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-access-to-your-logic-apps"></a>Sichern des Zugriffs auf Ihre Logik-Apps
 
@@ -77,7 +77,7 @@ Zusätzlich zur Verwendung der Shared Access Signature möchten Sie möglicherwe
 Diese Einstellung kann in den Logik-App-Einstellungen konfiguriert werden:
 
 1. Öffnen Sie im Azure-Portal die Logik-App, der Sie IP-Adressbeschränkungen hinzufügen möchten.
-1. Klicken Sie unter **Einstellungen** auf das Menüelement **Konfiguration der Zugriffssteuerung**.
+1. Klicken Sie unter **Einstellungen** auf das Menüelement **Workfloweinstellungen**.
 1. Geben Sie die Liste der IP-Adressbereiche an, die vom Trigger akzeptiert werden sollen.
 
 Ein gültiger IP-Adressbereich weist das Format `192.168.1.1/255` auf. Wenn die Logik-App nur als geschachtelte Logik-App ausgelöst werden soll, wählen Sie die Option **Nur andere Logik-Apps** aus. Durch diese Option wird ein leeres Array in die Ressource geschrieben. Dies bedeutet, dass nur Aufrufe vom Dienst selbst (übergeordnete Logik-Apps) erfolgreich ausgelöst werden.
@@ -119,7 +119,7 @@ Um zusätzlich zu einer Logik-App weitere Autorisierungsprotokolle hinzuzufügen
 
 ## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Sichern des Zugriffs zum Verwalten oder Bearbeiten von Logik-Apps
 
-Damit nur bestimmte Benutzer oder Gruppen Vorgänge für die Ressource ausführen können, können Sie den Zugriff auf Verwaltungsvorgänge für eine Logik-App einschränken. Für Logik-Apps wird die [rollenbasierte Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-configure.md) von Azure verwendet, und sie können mit den gleichen Tools angepasst werden.  Es gibt auch einige integrierte Rollen, die Sie Mitgliedern Ihres Abonnements zuweisen können:
+Damit nur bestimmte Benutzer oder Gruppen Vorgänge für die Ressource ausführen können, können Sie den Zugriff auf Verwaltungsvorgänge für eine Logik-App einschränken. Für Logik-Apps wird die [rollenbasierte Zugriffssteuerung (RBAC)](../role-based-access-control/role-assignments-portal.md) von Azure verwendet, und sie können mit den gleichen Tools angepasst werden.  Es gibt auch einige integrierte Rollen, die Sie Mitgliedern Ihres Abonnements zuweisen können:
 
 * **Mitwirkender für Logik-Apps**: Bietet Zugriff zum Anzeigen, Bearbeiten und Aktualisieren einer Logik-App.  Das Entfernen der Ressource oder das Ausführen von Verwaltungsvorgängen ist nicht möglich.
 * **Logik-App-Operator**: Kann die Logik-App und den Ausführungsverlauf anzeigen und sie aktivieren/deaktivieren.  Das Bearbeiten oder Aktualisieren der Definition ist nicht möglich.

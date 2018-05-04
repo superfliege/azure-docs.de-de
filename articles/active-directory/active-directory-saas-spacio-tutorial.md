@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 604249151f3c1ca206f64a178b25ea1dae5b5023
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c6d1588aaf069d6c3ae175e9b554c0da6c86290
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Tutorial: Integration von Spacio in Azure Active Directory
 
@@ -117,31 +117,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-spacio-tutorial/tutorial_general_400.png)
 
-5. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen. 
 
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpointicon.png)
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_certificate.png)
 
-    c. Klicken Sie auf die Schaltfläche **Kopieren**, um die URL des **VERBUNDMETADATEN-DOKUMENTS** zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **Spacio** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-spacio-tutorial/tutorial_spacio_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-6. Zum Konfigurieren des einmaligen Anmeldens bei **Spacio** müssen Sie die generierte **Metadaten-URL** an das [Spacio-Supportteam](mailto:support@spac.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+6. Zum Konfigurieren des einmaligen Anmeldens bei **Spacio** müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von Spacio](mailto:support@spac.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

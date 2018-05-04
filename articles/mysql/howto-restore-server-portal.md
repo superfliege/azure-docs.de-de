@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5d6118a47e10763373c9376ca08d328cf22ab3c8
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8782befb1548606fe649909a7841eb648c15f1c6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit dem Azure-Portal
 
@@ -85,6 +85,10 @@ Wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben, kann au
 
 2. Wählen Sie in der Dropdownliste **Quelle auswählen** des Formulars die Option **Sicherung**. Mit dieser Aktion wird eine Liste mit Servern geladen, für die georedundante Sicherungen aktiviert sind. Wählen Sie eine dieser Sicherungen als Quelle für den neuen Server aus.
    ![Quelle auswählen: Sicherung und Liste mit georedundanten Sicherungen](./media/howto-restore-server-portal/2-georestore.png)
+
+   > [!NOTE]
+   > Für einen neu erstellten Server kann möglicherweise nicht sofort eine Geowiederherstellung durchgeführt werden. Es kann einige Stunden dauern, bis die erforderlichen Metadaten aufgefüllt wurden.
+   >
 
 3. Geben Sie im Rest des Formulars Ihre bevorzugten Einstellungen an. Sie können einen beliebigen **Standort** auswählen. Nachdem Sie den Standort ausgewählt haben, können Sie die Option **Tarif** wählen. Standardmäßig werden die Parameter für den vorhandenen Server angezeigt, für den die Wiederherstellung durchgeführt wird. Sie können ohne weitere Änderungen auf **OK** klicken, um diese Einstellungen zu erben. Oder Sie können **Computegeneration** (falls in der gewählten Region verfügbar), die Anzahl von **virtuellen Kernen**, die **Aufbewahrungszeit für Sicherung** und die **Optionen für Sicherungsredundanz** wählen. Das Ändern des **Tarifs** („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Größe des **Speichers** während der Wiederherstellung wird nicht unterstützt.
 

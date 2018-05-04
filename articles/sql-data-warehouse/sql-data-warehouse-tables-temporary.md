@@ -1,44 +1,29 @@
 ---
-title: "Temporäre Tabellen in SQL Data Warehouse | Microsoft Docs"
-description: "Enthält Informationen zu den ersten Schritten mit temporären Tabellen in Azure SQL Data Warehouse."
+title: Temporäre Tabellen in SQL Data Warehouse | Microsoft Docs
+description: Wichtige Anleitungen zur Verwendung von temporären Tabellen und Vorstellen der Grundsätze von temporären Tabellen auf Sitzungsebene.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 9b1119eb-7f54-46d0-ad74-19c85a2a555a
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 12/06/2017
-ms.author: barbkess
-ms.openlocfilehash: e3b2f9017ecea7d9f78c07476f96c3dd8d031863
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Temporäre Tabellen in SQL Data Warehouse
-> [!div class="op_single_selector"]
-> * [Übersicht][Overview]
-> * [Datentypen][Data Types]
-> * [Verteilen][Distribute]
-> * [Index][Index]
-> * [Partition][Partition]
-> * [Statistiken][Statistics]
-> * [Temporär][Temporary]
-> 
-> 
-
-Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.  In Azure SQL Data Warehouse sind temporäre Tabellen etwas anders als in Azure SQL-Datenbank aufgebaut, da darauf innerhalb einer Sitzung von jedem Ort aus zugegriffen werden kann, z.B. innerhalb und außerhalb einer gespeicherten Prozedur.
-
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren und sowohl die Wiederverwendbarkeit als auch die Einfachheit der Verwaltung für den Code verbessern.
 
+## <a name="what-are-temporary-tables"></a>Was sind temporäre Tabellen?
+Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In SQL Data Warehouse befinden sich temporäre Tabellen auf Sitzungsebene.  Sie sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.  In Azure SQL Data Warehouse sind temporäre Tabellen etwas anders als in Azure SQL-Datenbank aufgebaut, da darauf innerhalb einer Sitzung von jedem Ort aus zugegriffen werden kann, z.B. innerhalb und außerhalb einer gespeicherten Prozedur.
+
 ## <a name="create-a-temporary-table"></a>Erstellen einer temporären Tabelle
-Temporäre Tabellen werden erstellt, indem dem Tabellennamen `#` als Präfix vorangestellt wird.  Beispiel:
+Temporäre Tabellen werden erstellt, indem dem Tabellennamen `#` als Präfix vorangestellt wird.  Beispiel: 
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -232,20 +217,5 @@ DROP TABLE #stats_ddl;
 SQL Data Warehouse weist eine Reihe von Einschränkungen bei der Implementierung von temporären Tabellen auf.  Derzeit werden nur temporäre Tabellen für den Sitzungsbereich unterstützt.  Globale temporäre Tabellen werden nicht unterstützt.  Außerdem können Sichten nicht in temporären Tabellen erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in den Artikeln [Übersicht über Tabellen][Overview], [Tabellendatentypen][Data Types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition] und [Verwalten von Tabellenstatistiken][Statistics].  Weitere Informationen zu Best Practices finden Sie unter [SQL Data Warehouse – Best Practices][SQL Data Warehouse Best Practices].
+Weitere Informationen zum Entwickeln von Tabellen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
-[Distribute]: ./sql-data-warehouse-tables-distribute.md
-[Index]: ./sql-data-warehouse-tables-index.md
-[Partition]: ./sql-data-warehouse-tables-partition.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
-[Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

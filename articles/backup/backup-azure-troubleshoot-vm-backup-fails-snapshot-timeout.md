@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: e2bd041bd5848ceb5f04f06601190fb0508aca1c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -99,6 +99,8 @@ Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 Sie können [Diensttags](../virtual-network/security-overview.md#service-tags) verwenden, um Verbindungen zum Speicher in einer bestimmten Region zuzulassen. Stellen Sie sicher, dass die Regel, die Zugriff auf das Speicherkonto gewährt, eine höhere Priorität hat als die Regel, die den Internetzugriff blockiert. 
 
 ![Netzwerksicherheitsgruppe mit Speichertags für eine Region](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+Schauen Sie sich zum besseren Verständnis der Schrittanleitung zur Konfiguration von Diensttags [dieses Video](https://youtu.be/1EjLQtbKm1M) an.
 
 > [!WARNING]
 > Diensttags für Speicher befinden sich in der Vorschau. Sie sind nur in bestimmten Regionen verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).

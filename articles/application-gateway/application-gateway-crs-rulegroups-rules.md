@@ -1,25 +1,22 @@
 ---
-title: "Azure Application Gateway – CRS-Regelgruppen und -Regeln von Web Application Firewall | Microsoft-Dokumentation"
-description: "Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln von Web Application Firewall."
+title: 'Azure Application Gateway: CRS-Regelgruppen und -Regeln von Web Application Firewall'
+description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln von Web Application Firewall.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
-ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
+author: vhorne
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 9265be4ac4258115c9302189d84b20e4894d42bb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 4/16/2018
+ms.author: victorh
+ms.openlocfilehash: 5ba291eaa93a48e3aadc11b1f0f7b48b01683b07
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Liste mit CRS-Regelgruppen und -Regeln von Web Application Firewall
 
@@ -27,32 +24,12 @@ Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen
 
 In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei Verwendung von Application Gateway mit Web Application Firewall verfügbar sind.  Jede Tabelle enthält die Regeln einer Regelgruppe für eine bestimmte CRS-Version.
 
-##<a name="owasp30"></a> OWASP_3.0
+## <a name="owasp30"></a> OWASP_3.0
 
-### <a name="crs910"></a>  <p x-ms-format-detection="none">REQUEST-910-IP-REPUTATION</p>
-
-|RuleId|Beschreibung|
-|---|---|
-|910011|Regel 910011|
-|910012|Regel 910012|
-|910000|Anforderung von bekanntem schädlichem Client (basierend auf vorherigen Datenverkehrsverletzungen)|
-|910100|Client-IP-Adresse stammt von einem Standort eines Lands mit HOHEM Risiko|
-|910120|Regel 910120|
-|910130|Regel 910130|
-|910150|Übereinstimmung mit HTTP-Sperrliste für IP-Adresse der Suchmaschine|
-|910160|Übereinstimmung mit HTTP-Sperrliste für Spammer-IP-Adresse|
-|910170|Übereinstimmung mit HTTP-Sperrliste für verdächtige IP-Adresse|
-|910180|Übereinstimmung mit HTTP-Sperrliste für Harvester-IP-Adresse|
-|910013|Regel 910013|
-|910014|Regel 910014|
-|910015|Regel 910015|
-|910016|Regel 910016|
-|910017|Regel 910017|
-|910018|Regel 910018|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |911011|Regel 911011|
 |911012|Regel 911012|
@@ -64,30 +41,10 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |911017|Regel 911017|
 |911018|Regel 911018|
 
-### <a name="crs912"></a> <p x-ms-format-detection="none">REQUEST-912-DOS-PROTECTION</p>
-
-|RuleId|Beschreibung|
-|---|---|
-|912100|Regel 912100|
-|912012|Regel 912012|
-|912120|DoS-Angriff (Denial of Service) von %@{tx.real_ip} identifiziert (%@{tx.dos_block_counter} Treffer seit letzter Warnung)|
-|912130|Regel 912130|
-|912140|Regel 912140|
-|912150|Regel 912150|
-|912160|Regel 912160|
-|912170|Potenzieller DoS-Angriff (Denial of Service) von %@{tx.real_ip} – Anz. von Anforderungsbursts = %@{ip.dos_burst_counter}|
-|912013|Regel 912013|
-|912014|Regel 912014|
-|912019|Regel 912019|
-|912171|Potenzieller DoS-Angriff (Denial of Service) von %@{tx.real_ip} – Anz. von Anforderungsbursts = %@{ip.dos_burst_counter}|
-|912015|Regel 912015|
-|912016|Regel 912016|
-|912017|Regel 912017|
-|912018|Regel 912018|
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |913011|Regel 913011|
 |913012|Regel 913012|
@@ -105,7 +62,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |920011|Regel 920011|
 |920012|Regel 920012|
@@ -159,7 +116,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |921011|Regel 921011|
 |921012|Regel 921012|
@@ -182,7 +139,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |930011|Regel 930011|
 |930012|Regel 930012|
@@ -199,7 +156,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |931011|Regel 931011|
 |931012|Regel 931012|
@@ -216,7 +173,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |932011|Regel 932011|
 |932012|Regel 932012|
@@ -235,7 +192,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |933011|Regel 933011|
 |933012|Regel 933012|
@@ -259,7 +216,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |941011|Regel 941011|
 |941012|Regel 941012|
@@ -292,7 +249,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |942011|Regel 942011|
 |942012|Regel 942012|
@@ -320,7 +277,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |943011|Regel 943011|
 |943012|Regel 943012|
@@ -338,7 +295,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |960911|Ungültige HTTP-Anforderungszeile|
 |981227|Apache-Fehler = Ungültiger URI in Anforderung|
@@ -364,7 +321,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs21"></a> crs_21_protocol_anomalies
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |960008|Fehlender Hostheader in Anforderung|
 |960007|Leerer Hostheader|
@@ -377,7 +334,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs23"></a> crs_23_request_limits
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |960209|Argumentname ist zu lang|
 |960208|Argumentwert ist zu lang|
@@ -388,7 +345,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs30"></a> crs_30_http_policy
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |960032|Methode ist gemäß Richtlinie nicht zulässig|
 |960010|Anforderungsinhaltstyp ist gemäß Richtlinie nicht zulässig|
@@ -398,7 +355,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |990002|Anforderung gibt an, dass die Website mit einem Sicherheitsscanner gescannt wurde|
 |990901|Anforderung gibt an, dass die Website mit einem Sicherheitsscanner gescannt wurde|
@@ -407,7 +364,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |960024|Warnung: Erkennung einer Metazeichenanomalie – Wiederholte Non-Word-Zeichen|
 |950008|Einschleusung von nicht dokumentierten ColdFusion-Tags|
@@ -436,7 +393,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |981231|SQL-Kommentarsequenz erkannt|
 |981260|Hexadezimale SQL-Codierung identifiziert|
@@ -473,7 +430,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs41xss"></a> crs_41_xss_attacks
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |973336|XSS-Filter – Kategorie 1 = Skripttagvektor|
 |973338|XSS-Filter – Kategorie 3 = JavaScript-URI-Vektor|
@@ -578,13 +535,13 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ### <a name="crs42"></a> crs_42_tight_security
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |950103|Path Traversal-Angriff|
 
 ### <a name="crs45"></a> crs_45_trojans
 
-|RuleId|Beschreibung|
+|RuleId|BESCHREIBUNG|
 |---|---|
 |950110|Backdoor-Zugriff|
 |950921|Backdoor-Zugriff|

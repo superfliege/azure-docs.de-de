@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 947e26aadd06e1420e95a6d25ff96e631265db3f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf 
 
@@ -59,18 +59,18 @@ Die grundlegende Schnittstelle zum Abrufen eines Zugriffstokens basiert auf REST
 Beispielanforderung mit dem MSI-IMDS-Endpunkt (Instance Metadata Service, Instanzmetadatendienst) *(empfohlen)*:
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
 ```
 
 | Element | BESCHREIBUNG |
 | ------- | ----------- |
 | `GET` | Das HTTP-Verb, mit dem angegeben wird, dass Sie Daten vom Endpunkt abrufen möchten. In diesem Fall ist dies ein OAuth-Zugriffstoken. | 
 | `http://169.254.169.254/metadata/identity/oauth2/token` | Der MSI-Endpunkt für den Instanzmetadatendienst. |
-| `api-version`  | Ein Abfragezeichenfolgenparameter, mit dem die API-Version für den IMDS-Endpunkt angegeben wird.  |
+| `api-version`  | Ein Abfragezeichenfolgenparameter, mit dem die API-Version für den IMDS-Endpunkt angegeben wird. Verwenden Sie API-Version `2018-02-01` oder höher. |
 | `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI https://management.azure.com/ verfügt. |
 | `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für MSI als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden.
 
-Beispielanforderung mit dem MSI-VM-Erweiterungsendpunkt *(wird in Kürze als veraltet eingestuft)*:
+Beispielanforderung mit dem MSI-VM-Erweiterungsendpunkt  *(wird in Kürze als veraltet eingestuft)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -230,6 +230,11 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie den MSI-REST-Endpunkt über 
 2. Verwenden des Zugriffstokens, um eine Azure Resource Manager-REST-API aufzurufen und Informationen zum virtuellen Computer abzurufen Achten Sie darauf, dass Sie `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>` und `<VM-NAME>` jeweils durch Ihre Abonnement-ID, den Namen der Ressourcengruppe und den Namen des virtuellen Computers ersetzen.
 
 ```azurepowershell
+Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -Headers @{Metadata="true"}
+```
+
+Beispiel zum Extrahieren des Zugriffstokens aus der Antwort:
+```azurepowershell
 # Get an access token for the MSI
 $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
                               -Headers @{Metadata="true"}
@@ -247,7 +252,14 @@ echo $vmInfoRest
 ## <a name="get-a-token-using-curl"></a>Abrufen eines Tokens über cURL
 
 ```bash
-response=$(curl http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F -H Metadata:true -s)
+curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s
+```
+
+
+Beispiel zum Extrahieren des Zugriffstokens aus der Antwort:
+
+```bash
+response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
 echo The MSI access token is $access_token
 ```

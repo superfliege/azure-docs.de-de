@@ -16,6 +16,8 @@
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurieren von HTTPS für eine benutzerdefinierte Domäne
       href: cdn-custom-ssl.md
+    - name: Festlegen von Cacheregeln
+      href: cdn-caching-rules-tutorial.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -156,6 +158,8 @@
           href: cdn-pop-locations.md
         - name: POP-Standorte nach Abkürzung
           href: cdn-pop-abbreviations.md
+    - name: Grundlegendes zur Abrechnung für Azure CDN
+      href: cdn-billing.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-Forum

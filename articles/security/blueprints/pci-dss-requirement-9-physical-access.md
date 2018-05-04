@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Anforderungen für den physischen Zugriff"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Anforderungen für den physischen Zugriff
 description: PCI-DSS-Anforderung 9
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 89f7b20a130e988bfe4964d50ae97de788ca4623
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 2dbf4d9e2f4ff7b6cdf8e48c24eeee4d036fe195
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Anforderungen für den physischen Zugriff in PCI-DSS-konformen Umgebungen 
 ## <a name="pci-dss-requirement-9"></a>PCI-DSS-Anforderung 9
@@ -39,7 +39,7 @@ Jeder physische Zugriff auf Daten oder Systemen, die Daten von Karteninhabern en
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist für das Implementieren, Durchsetzen und Überwachen von physischer Zugriffssicherheit für Rechenzentren verantwortlich. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -55,7 +55,7 @@ Jeder physische Zugriff auf Daten oder Systemen, die Daten von Karteninhabern en
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist für das Implementieren, Durchsetzen und Überwachen von Zutrittskontrollmechanismen mit CCTV und Biometriedaten verantwortlich. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -70,7 +70,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Es gibt keine öffentlich zugänglichen Netzwerkanschlüsse auf der Microsoft Azure-Plattform. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -83,7 +83,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Der physische Zugriff auf Microsoft Azure-Netzwerkhardware ist durch Zugriffslisten, mehrere Formen der Authentifizierung, physische Zugangsbarrieren und die erforderliche Genehmigung einer geschäftlichen Anforderung für den Zugang zu Geräten stark kontrolliert. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -99,7 +99,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist für das Implementieren, Durchsetzen und Überwachen von physischer Zugriffssicherheit und Identifizierung von Mitarbeitern und Auftragnehmern verantwortlich, wenn diese Rechenzentren besuchen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -114,7 +114,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Zutrittsberechtigungen für Microsoft-Rechenzentren werden durch eine vom Rechenzentrumsteam genehmigte autorisierte Zutrittsliste basierend auf dem Prinzip der geringsten Rechte gesteuert. Die Zutrittssteuerungsliste wird vierteljährlich überprüft und aktualisiert.<br /><br />Microsoft Azure-Rechenzentren nutzen Geräte für physischen Zutritt wie Umzäunungstore, Lesegeräte für elektronische Zutrittsausweise, biometrische Lesegeräte, Schleusen/Portale und Geräte zur Doppelbenutzungskontrolle. Zutrittsausweisgeräte werden kontinuierlich überwacht. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -127,7 +127,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist verantwortlich, dafür zu sorgen, dass vorab genehmigte Lieferungen in einer sicheren Ladebucht angenommen werden, die physisch von Datenverarbeitungseinrichtungen isoliert ist und von entsprechend berechtigten Mitarbeiter überwacht wird. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -141,7 +141,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist verantwortlich, dafür zu sorgen, dass vorab genehmigte Lieferungen in einer sicheren Ladebucht angenommen werden, die physisch von Datenverarbeitungseinrichtungen isoliert ist und von entsprechend berechtigten Mitarbeiter überwacht wird. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -154,7 +154,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Der Zutritt zu Microsoft-Rechenzentren muss vorab genehmigt werden, und autorisierte Besucher müssen bei der Ankunft mit physischer Sicherheit einchecken und zuvor einen gültigen Identitätsnachweis vorlegen. Ausweise kennzeichnen Mitarbeiter deutlich. Auftragnehmer erhalten temporäre Ausweise, die beim Verlassen des Gebäudes abgegeben werden müssen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -167,7 +167,7 @@ Beispiel: Netzwerkanschlüsse in öffentlichen Bereichen und Bereichen, die für
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Besucher müssen Ausweise vor dem Verlassen eines Microsoft-Gebäudes abgeben. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -182,7 +182,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure ist dafür verantwortlich, ein Besucherprotokoll als physisches Überwachungsprotokoll der Besucheraktivität im Gebäude sowie in Computerräumen und Rechenzentren zu führen, in denen Daten von Karteninhabern gespeichert oder übertragen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -195,7 +195,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -208,7 +208,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -221,7 +221,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -234,7 +234,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -247,7 +247,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -260,7 +260,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -273,7 +273,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -287,7 +287,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -300,7 +300,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -313,7 +313,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore speichert alle Daten in Azure SQL-Datenbank. Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).|
 
 
 
@@ -326,7 +326,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Datenvernichtungstechniken hängen von der Art des zu vernichtenden Datenobjekts ab, z. B. Abonnements, Speicher, virtuelle Computer oder Datenbanken. In der mehrinstanzenfähigen Microsoft Azure-Umgebung wird sorgfältig darauf geachtet, dass die Daten eines Kunden nicht in die Daten eines anderen Kunden gelangen, oder dass beim Löschen seiner Daten durch einen Kunden keine anderen Kunden (in den meisten Fällen einschließlich des Kunden, der zuvor im Besitz der Daten war) auf die gelöschten Daten zugreifen können.<br /><br />Microsoft Azure hält den NIST 800-88-Standard für Medienbereinigung ein; dabei wird in erster Linien sichergestellt, dass Daten nicht versehentlich freigegeben werden. Diese Richtlinien umfassen sowohl physische als auch elektronische Bereinigung. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore lässt sich vollständig löschen, indem die während der Bereitstellung verwendete Ressourcengruppe gelöscht wird.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore lässt sich vollständig löschen, indem die während der Bereitstellung verwendete Ressourcengruppe gelöscht wird.|
 
 
 
@@ -342,7 +342,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore nutzt OMS zur Protokollierung aller Systemänderungen.<br /><br />[Operations Management Suite (OMS)](/azure/operations-management-suite/) bietet eine umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore nutzt Azure zur Protokollierung aller Systemänderungen.<br /><br />Log Analytics ermöglicht die umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie unter [Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -358,7 +358,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore bietet eine Referenzarchitektur und eine Liste aller Dienste, die in der Bereitstellungsdokumentation verwendet werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore bietet eine Referenzarchitektur und eine Liste aller Dienste, die in der Bereitstellungsdokumentation verwendet werden.|
 
 
 
@@ -374,7 +374,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -391,7 +391,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 
@@ -404,7 +404,7 @@ Bewahren Sie dieses Protokoll mindestens drei Monate lang auf, falls keine ander
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend|
 
 
 

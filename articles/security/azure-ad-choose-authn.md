@@ -9,11 +9,11 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: e7f894733546fa8949902a82f4ae3a9c62b749c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 102fa06be3734fa6993616f752922433ee0dee7f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="choosing-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung 
 
@@ -87,7 +87,7 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 * **Benutzererfahrung**: Es wird empfohlen, dass Organisationen nahtloses einmaliges Anmelden mit Passthrough-Authentifizierung verwenden, um das Benutzererlebnis bei der Anmeldung zu verbessern. So werden unnötige Aufforderungen nach deren Anmeldung vermieden.
 
-* **Erweiterte Szenarien**: Durch die Passthrough-Authentifizierung wird sichergestellt, dass Authentifizierungsanforderungen sofort abgelehnt werden, wenn ein lokales Benutzerkonto einen deaktivierten oder gesperrten Status aufweist oder dessen Kennwort abgelaufen ist. Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung erfordern, müssen die mehrstufige Azure AD-Authentifizierung verwenden und können keine externe oder lokale mehrstufige Authentifizierungsmethode nutzen. Für erweiterte Features, wie z.B. den Identity Protection-Bericht über kompromittierte Anmeldeinformationen, muss die Kennworthashsynchronisierung unabhängig davon eingesetzt werden, ob Sie die Passthrough-Authentifizierung wählen.
+* **Erweiterte Szenarien**: Durch die Passthrough-Authentifizierung wird sichergestellt, dass Authentifizierungsanforderungen sofort abgelehnt werden, wenn ein lokales Benutzerkonto einen deaktivierten oder gesperrten Status aufweist, dessen Kennwort abgelaufen ist oder die Authentifizierung außerhalb der zulässigen Anmeldezeiten des Benutzers angefragt wird. Organisationen, die eine mehrstufige Authentifizierung mit Passthrough-Authentifizierung erfordern, müssen die mehrstufige Azure AD-Authentifizierung verwenden und können keine externe oder lokale mehrstufige Authentifizierungsmethode nutzen. Für erweiterte Features, wie z.B. den Identity Protection-Bericht über kompromittierte Anmeldeinformationen, muss die Kennworthashsynchronisierung unabhängig davon eingesetzt werden, ob Sie die Passthrough-Authentifizierung wählen.
 
 * **Geschäftskontinuität**: Es wird empfohlen, neben dem ersten Agent auf dem Azure AD Connect-Server zwei weitere Passthrough-Agents bereitzustellen, um eine Hochverfügbarkeit der Authentifizierungsanforderungen zu gewährleisten. Wenn Sie drei Agents bereitgestellt haben, kann ein Agent immer noch ausfallen, wenn ein anderer Agent wegen Wartungsarbeiten ausfällt. Ein weiterer Vorteil des Einsatzes der Kennworthashsynchronisierung zusätzlich zur Passthrough-Authentifizierung ist, dass sie als Ersatzauthentifizierungsmethode fungieren kann, wenn die primäre Authentifizierungsmethode, z.B. bei einem lokalen Serverausfall, nicht mehr verfügbar ist.
 
@@ -95,7 +95,7 @@ Informationen zu den Bereitstellungsschritten finden Sie unter [Implementieren d
 
 Weitere Informationen zu den Bereitstellungsschritten finden Sie unter [Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication).
 
-### <a name="federated-authentication"></a>Verbundauthentifizierung
+### <a name="federated-authentication"></a>Federated Authentication
 
 * **Aufwand**: Bei Verwendung eines Verbundauthentifizierungssystems greift dieses auf ein externes System zurück, um Benutzer zu authentifizieren. Einige Unternehmen möchten ihre bestehenden Investitionen in Verbundsysteme in Verbindung mit ihrer Azure AD-Hybrididentitätslösung wiederverwenden. Die Wartung und Verwaltung des Verbundsystems wird nicht über Azure AD gesteuert. Die Organisation, die das Verbundsystem verwendet, muss selbst sicherstellen, dass es die erforderliche Sicherheit bietet und die Authentifizierungslast bewältigen kann. 
 

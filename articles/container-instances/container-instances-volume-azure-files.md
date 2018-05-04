@@ -3,17 +3,17 @@ title: Einbinden eines Azure Files-Volumes in Azure Container Instances
 description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der Zustand bei Azure Container Instances beibehalten wird.
 services: container-instances
 author: seanmck
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 98be7e65c2280aa58cf904cbca265f87610eff55
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 239150c1e752ce6a4f2a19fa1192cd1a910ebea9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
@@ -83,7 +83,7 @@ az container create \
     --azure-file-volume-mount-path /aci/logs/
 ```
 
-Der `--dns-name-label`-Wert muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Aktualisieren Sie den Wert im vorherigen Befehl, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.
+Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Aktualisieren Sie den Wert im vorherigen Befehl, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.
 
 ## <a name="manage-files-in-mounted-volume"></a>Verwalten von Dateien in eingebundenen Datenträgern
 
@@ -137,7 +137,7 @@ Ein Beispiel für die Bereitstellung der Containerinstanzen mit einer Azure Reso
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie andere Datenträgertypen in Azure Container Instances bereitgestellt werden:
+Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt werden:
 
 * [Einbinden eines emptyDir-Volumes in Azure Container Instances](container-instances-volume-emptydir.md)
 * [Einbinden eines gitRepo-Volumes in Azure Container Instances](container-instances-volume-gitrepo.md)

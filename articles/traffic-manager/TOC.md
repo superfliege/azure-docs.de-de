@@ -34,7 +34,7 @@
 ### [Problembehandlung beim Status „Heruntergestuft“ in Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=traffic-manager)
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=traffic-manager)
 ## [Azure PowerShell](/powershell/module/azurerm.trafficmanager)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/traffic-manager)
 ## [Java](/java/api/com.microsoft.azure.management.trafficmanager)

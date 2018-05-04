@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Anforderungen für ein sicheres System"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Anforderungen für ein sicheres System
 description: PCI-DSS-Anforderung 6
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 24c8d90d3fec27258165472e99ba3d36ffcba733
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: cd9054afc359d7568fcd08f983f374e0b2bc3792
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>Anforderungen für ein sicheres System für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-6"></a>PCI-DSS-Anforderung 6
@@ -130,7 +130,7 @@ Skrupellose Personen nutzen Sicherheitslücken, um privilegierten Zugriff auf Sy
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft befolgt den NIST-Leitfaden in Bezug auf Sicherheitsaspekte bei der Softwareentwicklung, indem die Informationssicherheit von Anfang an in den SDLC integriert werden muss. Die kontinuierliche Integration der Sicherheitsvorkehrungen in den Microsoft Security Development Lifecycle (SDL) ermöglicht Folgendes:<ul><li>Früherkennung und Verringerung von Sicherheitsrisiken und fehlerhaften Konfigurationen</li><li>Bewusstsein für mögliche Herausforderungen bei der Programmierung von Software, die durch erforderliche Sicherheitskontrollen verursacht werden</li><li>Identifizierung von gemeinsam genutzten Sicherheitsdiensten und Wiederverwendung von Tools für bewährte Methoden für die Sicherheit, die den Sicherheitsstatus durch bewährte Methoden und Verfahren verbessern</li><li>Durchsetzung des bereits umfassenden Risikomanagementprogramms von Microsoft</li></ul>Microsoft Azure hat Prozesse für Change Management und Release Management etabliert, um die Implementierung wichtiger Änderungen zu steuern. Dazu zählen:<ul><li>Identifikation und Dokumentation der geplanten Änderung</li><li>Identifikation von Geschäftszielen, Prioritäten und Szenarien bei der Produktplanung</li><li>Spezifikation des Feature-/Komponentendesigns</li><li>Überprüfung der Einsatzbereitschaft auf der Grundlage vordefinierter Kriterien/Prüflisten zur Beurteilung des Gesamtrisikos bzw. der Gesamtauswirkungen</li><li>Tests, Autorisierung und Change Management auf Grundlage von Einstiegs-/Beendigungskriterien für DEV- (Entwicklung), INT- (Integrationstest), STAGE- (Präproduktion) und PROD-Umgebungen (Produktion). Kunden sind für ihre eigenen Anwendungen verantwortlich, die in Microsoft Azure gehostet werden.</li></ul> |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Demo bietet einen Stagingdienst, der protokolliert wird und isoliert ist. <br /><br />Jede der Netzwerkschichten verfügt über eine dedizierte Netzwerksicherheitsgruppe (NSG): Weitere Informationen finden Sie unter [PCI-Anleitungen für Netzwerksicherheitsgruppen](payment-processing-blueprint.md#network-security-groups).<br /><br />Änderungen werden mit der Operations Management Suite protokolliert, und Runbooks werden zum Erfassen von Protokollen verwendet. [Operations Management Suite (OMS)](/azure/operations-management-suite/) bietet eine umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Demo bietet einen Stagingdienst, der protokolliert wird und isoliert ist. <br /><br />Jede der Netzwerkschichten verfügt über eine dedizierte Netzwerksicherheitsgruppe (NSG): Weitere Informationen finden Sie unter [PCI-Anleitungen für Netzwerksicherheitsgruppen](payment-processing-blueprint.md#network-security-groups).<br /><br />Änderungen werden mit der Operations Management Suite protokolliert, und Runbooks werden zum Erfassen von Protokollen verwendet. Log Analytics ermöglicht die umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 

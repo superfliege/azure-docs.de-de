@@ -3,21 +3,21 @@ title: Lambda-Architektur mit Azure Cosmos DB und HDInsight (Apache Spark) | Mic
 description: In diesem Artikel wird beschrieben, wie Sie eine Lambda-Architektur mit Azure Cosmos DB, HDInsight und Spark verwenden.
 keywords: Lambda-Architektur
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: dennyglee
-manager: jhubbard
-editor: 
+manager: kfile
+editor: ''
 ms.assetid: 273aeae9-e31c-4a43-b216-5751c46f212e
 ms.service: cosmos-db
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: denlee
-ms.openlocfilehash: f88f3fb05495b0f3330d5a4cde7718fe89b2f694
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9c1a8c212fbacde9fbf69fdf9bf72ed2393786db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-cosmos-db-implement-a-lambda-architecture-on-the-azure-platform"></a>Azure Cosmos DB: Implementieren einer Lambda-Architektur auf der Azure Platform 
 
@@ -205,7 +205,7 @@ tweets_bytags.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 Mit dieser letzten Anweisung wurde Ihr Spark DataFrame jetzt in einer neuen Azure Cosmos DB-Sammlung gespeichert. Aus Sicht einer Lambda-Architektur ist dies Ihre **Batchansicht** auf **Bereitstellungsebene**.
  
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 
 Vollständige Codebeispiele finden Sie unter [azure-cosmosdb-spark/lambda/samples](vhttps://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/lambda), z.B.:
 * Lambda Architecture Rearchitected – Batch Layer (Neu gestaltete Lambda-Architektur – Batchebene) [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.html) | [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/Lambda%20Architecture%20Re-architected%20-%20Batch%20Layer.ipynb)
@@ -267,7 +267,7 @@ Bei diesem Entwurf benötigen Sie nur zwei verwaltete Dienste: Azure Cosmos DB u
  4. Die Geschwindigkeitsebene sorgt für eine Kompensation der Verarbeitungszeit (für die Bereitstellungsebene) und ist nur für neuere Daten bestimmt.
  5. Alle Abfragen können beantwortet werden, indem Ergebnisse von Batchansichten und Echtzeitansichten zusammengeführt werden.
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 
  * **Neue Daten**: Der [Streamfeed von Twitter zu CosmosDB](https://github.com/tknandu/TwitterCosmosDBFeed). Dies ist der Mechanismus zum Übertragen von neuen Daten an Azure Cosmos DB per Pushvorgang.
  * **Batchebene:** Die Batchebene umfasst das *Masterdataset* (unveränderlich, Nur-Anhängen-Satz mit Rohdaten) und die Möglichkeit zum Vorabberechnen von Batchansichten der Daten, die per Pushvorgang an die **Bereitstellungsebene** übertragen werden.

@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit der Authentifizierung für mobile Apps in Xamarin iOS"
-description: "Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren Ihrer Xamarin iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
+title: Erste Schritte mit der Authentifizierung für mobile Apps in Xamarin iOS
+description: Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren Ihrer Xamarin iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 180cc61b-19c5-48bf-a16c-7181aef3eacc
 ms.service: app-service-mobile
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: crdun
-ms.openlocfilehash: 1649d2bf4f3429f2f5f56bdabdfe9a015a115893
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: c2b77d7c9caab1c7ac13af5ccd50e992bcce1caf
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-authentication-to-your-xamarinios-app"></a>Hinzufügen der Authentifizierung zu Ihrer Xamarin.iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -116,7 +116,7 @@ In diesem Abschnitt modifizieren Sie die App, sodass vor der Anzeige von Daten e
             return ResumeWithURL != null && ResumeWithURL(url);
         }
 6. Öffnen Sie die Datei **Info.plist**, und navigieren Sie im Abschnitt **Erweitert** zu **URL-Typen**. Konfigurieren Sie nun **Bezeichner** und **URL-Schemas** Ihres URL-Typs, und klicken Sie auf **URL-Typ hinzufügen**. **URL-Schemas** sollte mit „{url_scheme_of_your_app}“ identisch sein.
-7. Führen Sie in Visual Studio oder Xamarin Studio mit Verbindung zum Xamarin Build Host auf Ihrem Mac das Clientprojekt auf einem Gerät oder Emulator aus. Überprüfen Sie, dass die App keine Daten anzeigt.
+7. Führen Sie in Visual Studio mit Verbindung zum Mac-Host oder in Visual Studio für Mac das Clientprojekt auf einem Gerät oder Emulator aus. Überprüfen Sie, dass die App keine Daten anzeigt.
    
     Führen Sie die Aktualisierungsgeste durch Herunterziehen der Objektliste, was die Anzeige des Anmeldebildschirms auslöst. Nachdem Sie erfolgreich gültige Anmeldeinformationen eingegeben haben, zeigt die App die Liste der To-Do-Objekte an, und Sie können die Daten ändern.
 

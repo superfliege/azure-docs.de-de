@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c733f919189dadcf1181ddbe2a1057b2bcf66fc4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ce65b9b532ca6f594334f3eb0194d700aca1c735
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Integrierte Richtlinien
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Erstellen einer Registrierungs- oder Anmelderichtlinie
 
-Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.  Ein Codebeispiel für die Richtlinie zur Registrierung oder Anmeldung ist [hier verfügbar](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Sie sollten diese Richtlinie anstelle einer Registrierungs- und Anmelderichtlinie verwenden.  
+Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein und derselben Konfiguration verarbeitet. Die Kunden werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet (Registrierung oder Anmeldung). Außerdem wird mit der Richtlinie der Inhalt von Token beschrieben, die die Anwendung nach erfolgreichen Registrierungen oder Abmeldungen erhält.  Ein Codebeispiel für die Richtlinie zur **Registrierung oder Anmeldung** ist [hier](active-directory-b2c-devquickstarts-web-dotnet-susi.md) verfügbar.  Sie sollten diese Richtlinie anstelle einer **Registrierungs-** oder **Anmelderichtlinie** verwenden.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -85,16 +85,16 @@ Mit dieser Richtlinie werden die Registrierung und Anmeldung von Kunden in ein u
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Wie wird eine Registrierungs- oder Anmelderichtlinie mit einer Richtlinie zum Zurücksetzen von Kennwörtern verknüpft?
-Beim Erstellen einer Registrierungs- oder Anmelderichtlinie (für lokale Konten) wird dem Endbenutzer auf der ersten Seite der Oberfläche der Link **Kennwort vergessen?** angezeigt. Durch Klicken auf diesen Link wird nicht automatisch eine Richtlinie zum Zurücksetzen des Kennworts ausgelöst. 
+Beim Erstellen einer **Registrierungs-** oder Anmelderichtlinie (für lokale Konten) wird auf der ersten Seite der Oberfläche der Link **Kennwort vergessen?** angezeigt. Durch Klicken auf diesen Link wird nicht automatisch eine Richtlinie zum Zurücksetzen des Kennworts ausgelöst. 
 
 Stattdessen wird der Fehlercode **`AADB2C90118`** an die App zurückgegeben. Ihre App muss mit diesen Fehlercode verarbeiten, indem sie eine bestimmte Richtlinie zur Kennwortzurücksetzung aufruft. Weitere Informationen finden Sie in dem [Beispiel, das das Verknüpfen von Richtlinien veranschaulicht](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
 ### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Sollte ich eine Registrierungs- oder Anmelderichtlinie verwenden oder eine Registrierungsrichtlinie und eine Anmelderichtlinie?
-Es wird empfohlen, dass Sie statt zwei Richtlinien eine Registrierungs- oder Anmelderichtlinie verwenden.  
+Es wird empfohlen, dass Sie statt zwei Richtlinien (**Registrierungsrichtlinie** und **Anmelderichtlinie**) eine **Registrierungs- oder Anmelderichtlinie** verwenden.  
 
-Die Registrierungs- oder Anmelderichtlinie weist mehr Funktionen als die Anmelderichtlinie auf. Außerdem ermöglicht sie Ihnen, die Seite für die Benutzeroberflächenanpassung zu nutzen, und sie hat eine bessere Unterstützung für die Lokalisierung. 
+Die **Registrierungs- oder Anmelderichtlinie** weist mehr Funktionen als die **Anmelderichtlinie** auf. Außerdem ermöglicht sie Ihnen, die Seite für die Benutzeroberflächenanpassung zu nutzen, und sie hat eine bessere Unterstützung für die Lokalisierung. 
 
-Die Anmelderichtlinie wird empfohlen, wenn Sie Ihre Richtlinien nicht lokalisieren müssen, nur geringfügige Anpassungsfunktionen für das Branding benötigen und eine integrierte Kennwortzurücksetzung möchten.
+Die **Anmelderichtlinie** wird empfohlen, wenn Sie Ihre Richtlinien nicht lokalisieren müssen, nur geringfügige Anpassungsfunktionen für das Branding benötigen und eine integrierte Kennwortzurücksetzung möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md)

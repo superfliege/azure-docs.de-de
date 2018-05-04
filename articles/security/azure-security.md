@@ -1,12 +1,12 @@
 ---
-title: "Einführung in Azure Security | Microsoft-Dokumentation"
+title: Einführung in Azure Security | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu Azure Security, seinen Diensten und zur Funktionsweise.
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 68bba95e177fa8d0261b84f51b0f5285c7fb7417
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 51d0f1f6d2689e37c1c39bf4a5e8078a2482c76d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in Azure Security
 ## <a name="overview"></a>Übersicht
@@ -58,8 +58,8 @@ Die nachfolgend aufgeführten Features sind Funktionen, die Sie überprüfen kö
 | [Sichere Plattform](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Datenschutz und Kontrollen](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Compliance](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Transparenz](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Sicherheitsentwicklungszyklus](https://www.microsoft.com/en-us/sdl/), interne Überwachungen | [Ständiges Verwalten Ihrer Daten](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Wie Microsoft Kundendaten in Azure-Diensten schützt](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Obligatorische Sicherheitsschulung, Hintergrundüberprüfungen](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc) |  [Kontrolle des Datenspeicherorts](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Hub für allgemeine Kontrollen](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Wie Microsoft den Datenspeicherort in Azure-Diensten verwaltet](http://azuredatacentermap.azurewebsites.net/)|
-| [Penetrationstests](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwiwsOCpganRAhWqxVQKHUdiDsMQFghAMAE&url=https%3A%2F%2Fdownloads.cloudsecurityalliance.org%2Fstar%2Fself-assessment%2FStandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx&usg=AFQjCNEYvBky4zNeDQPN6YJGPFRZA7eeZg&sig2=2kkw1lOCP_kzLzgE9RS2Tg&bvm=bv.142059868,d.amc), [Angriffserkennung, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [Überwachungen und Protokollierung](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Bereitstellen des Datenzugriff zu Ihren Bedingungen](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Checkliste zur Kaufprüfung von Clouddiensten](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Wer kann bei Microsoft unter welchen Bedingungen auf Ihre Daten zugreifen?](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
+| [Obligatorische Sicherheitsschulung, Hintergrundüberprüfungen](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Kontrolle des Datenspeicherorts](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Hub für allgemeine Kontrollen](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Wie Microsoft den Datenspeicherort in Azure-Diensten verwaltet](http://azuredatacentermap.azurewebsites.net/)|
+| [Penetrationstests](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [Angriffserkennung, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [Überwachungen und Protokollierung](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Bereitstellen des Datenzugriff zu Ihren Bedingungen](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [Checkliste zur Kaufprüfung von Clouddiensten](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Wer kann bei Microsoft unter welchen Bedingungen auf Ihre Daten zugreifen?](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [Hochmodernes Rechenzentrum](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), physische Sicherheit, [Sicheres Netzwerk](https://docs.microsoft.com/azure/security/security-network-overview) | [Antworten für Justizbehörden](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Compliance nach Dienst, Speicherort und Branche](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Wie Microsoft Kundendaten in Azure-Diensten schützt](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Reaktion auf Sicherheitsvorfälle](http://aka.ms/SecurityResponsepaper), [Geteilte Verantwortung](http://aka.ms/sharedresponsibility) |[Strenge Datenschutzstandards](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Überprüfen der Zertifizierung für Azure-Dienste, Transparenzhub](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
 
@@ -78,7 +78,7 @@ Die [Sicherheits- und Überwachungslösung von OMS](https://docs.microsoft.com/a
 
 Darüber hinaus können Sie die Sicherheit und Compliance von OMS konfigurieren, um [automatisch bestimmte Aktionen auszuführen](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/), wenn ein bestimmtes Ereignis erkannt wird.
 
-### <a name="azure-resource-manager"></a>Azure-Ressourcen-Manager
+### <a name="azure-resource-manager"></a>Azure Resource Manager
 Mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine [Azure Resource Manager-Vorlage](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z. B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
 
 Auf Azure Resource Manager-Vorlagen basierte Bereitstellungen helfen dabei, die Sicherheit von Lösungen zu verbessern, die in Azure bereitgestellt werden, da standardmäßige Einstellungen für die Sicherheitskontrolle in standardisierte vorlagenbasierte Bereitstellungen integriert werden können. Dies verringert das Risiko von Fehlern bei der Sicherheitskonfiguration, die möglicherweise bei manuellen Bereitstellungen auftreten können.
@@ -99,13 +99,13 @@ Im Falle von Abstürzen, Fehlern oder Leistungsproblemen können Sie die Telemet
 Log Analytics kann ein hilfreiches Tool bei forensischen und anderen Sicherheitsanalysen sein, da Sie mit dem Tool schnell große Mengen von sicherheitsbezogenen Einträgen mit einem flexiblen Abfrageansatz durchsuchen können. Darüber hinaus können lokale [Firewall- und Proxyprotokolle in Azure exportiert und für die Analyse mit Log Analytics zur Verfügung gestellt werden.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
-Bei dem [Azure-Ratgeber](https://docs.microsoft.com/azure/advisor/) handelt es sich um einen personalisierten Cloudberater, der Sie beim Optimieren von Azure-Bereitstellungen unterstützt. Er analysiert Ihre Ressourcenkonfiguration und Nutzungstelemetrie. Anschließend schlägt er Lösungen vor, um die [Leistung](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [Sicherheit](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) und [Hochverfügbarkeit](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Ihrer Ressourcen zu verbessern, und sucht gleichzeitig nach Möglichkeiten, Ihre [Azure-Gesamtausgaben zu reduzieren](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Der Azure-Ratgeber bietet Sicherheitsempfehlungen, die den Gesamtsicherheitsstatus für Lösungen erheblich verbessern können, die Sie in Azure bereitstellen. Diese Empfehlungen stammen aus der Sicherheitsanalyse, die vom [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) durchgeführt wurde.
+Beim [Azure Advisor](https://docs.microsoft.com/azure/advisor/) handelt es sich um einen personalisierten Cloudberater, der Sie beim Optimieren von Azure-Bereitstellungen unterstützt. Er analysiert Ihre Ressourcenkonfiguration und Nutzungstelemetrie. Anschließend schlägt er Lösungen vor, um die [Leistung](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [Sicherheit](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) und [Hochverfügbarkeit](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Ihrer Ressourcen zu verbessern, und sucht gleichzeitig nach Möglichkeiten, Ihre [Azure-Gesamtausgaben zu reduzieren](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Der Azure Advisor bietet Sicherheitsempfehlungen, die den Gesamtsicherheitsstatus für Lösungen erheblich verbessern können, die Sie in Azure bereitstellen. Diese Empfehlungen stammen aus der Sicherheitsanalyse, die vom [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) durchgeführt wurde.
 
 ### <a name="azure-security-center"></a>Azure Security Center
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) unterstützt Sie beim Verhindern, Erkennen und Beheben von Bedrohungen durch größere Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 Außerdem hilft das Azure Security Center bei Sicherheitsvorgängen, indem Ihnen ein einzelnes Dashboard bereitgestellt wird, das als Oberfläche für Warnungen und Empfehlungen dient, auf die sofort reagiert werden kann. Häufig können Sie Probleme mit einem einzelnen Klick im Azure Security Center beseitigen.
-## <a name="applications"></a>Anwendungen
+## <a name="applications"></a>ANWENDUNGEN
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Anwendungssicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="web-application-vulnerability-scanning"></a>Sicherheitsrisikoprüfung für Webanwendungen
@@ -152,7 +152,7 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [integrierte RBAC-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)(etwa „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 [Shared Access Signatures (SAS)](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
@@ -356,7 +356,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 
 -   [Erzwingung der Kennwortrichtlinie](https://azure.microsoft.com/documentation/articles/active-directory-passwords-policy/) erhöht die Sicherheit herkömmlicher Kennwörter, indem Anforderungen hinsichtlich Länge und Komplexität sowie eine regelmäßige erzwungene Rotation und Kontosperrungen nach fehlgeschlagenen Authentifizierungsversuchen durchgesetzt werden.
 
--   [Token-basierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) aktiviert die Authentifizierung über Active Directory-Verbunddienste (AD FS) oder Drittanbietersysteme mit sicheren Token.
+-   Die [tokenbasierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) ermöglicht die Authentifizierung über Azure Active Directory.
 
 -   [Rollenbasierte Zugriffssteuerung (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
 

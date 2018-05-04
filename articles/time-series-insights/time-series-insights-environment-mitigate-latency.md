@@ -1,6 +1,6 @@
 ---
-title: "Überwachen und Reduzieren der Drosselung in Azure Time Series Insights | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Leistungsprobleme überwacht, diagnostiziert und verringert werden können, die zu Latenz und Drosselung in Azure Time Series Insights führen."
+title: Überwachen und Reduzieren der Drosselung in Azure Time Series Insights | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Leistungsprobleme überwacht, diagnostiziert und verringert werden können, die zu Latenz und Drosselung in Azure Time Series Insights führen.
 services: time-series-insights
 ms.service: time-series-insights
 author: jasonwhowell
@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: ec16f20723e4a613c953363da6cf6b463de829a9
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: ac59359eb6af268f311534d90e1529fc5e41094f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 Wenn die Menge der eingehenden Daten die Konfiguration Ihrer Umgebung übersteigt, kann dies zu Latenz oder Drosselung in Azure Time Series Insights führen.
@@ -52,10 +52,17 @@ Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 |**Ingress Received Messages** (Eingang empfangene Nachrichten)   | Anzahl der aus allen Event Hubs- oder IoT Hub-Ereignisquellen gelesenen Nachrichten.        |
 |**Ingress Stored Bytes** (Eingang gespeicherte Bytes)     | Gesamtgröße der gespeicherten und für Abfragen verfügbaren Ereignisse. Die Größe wird lediglich für den Eigenschaftswert berechnet.        |
 |**Ingress Stored Events** (Eingang gespeicherte Ereignisse)     |   Anzahl der gespeicherten und für Abfragen verfügbaren vereinfachten Ereignisse.      |
+|**Ingress Received Message Time Lag** (Eingang Zeitverzögerung für empfangene Nachrichten)    |  Dies ist der Unterschied zwischen dem Zeitpunkt, zu dem die Nachricht auf der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
+|**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
+
 
 ![Latenz](media/environment-mitigate-latency/latency.png)
 
-Eine Möglichkeit besteht darin, eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) >= einem Schwellenwert etwas unter der Gesamtkapazität der Umgebung für einen Zeitraum von 2 Stunden festzulegen.  Anhand dieser Warnung können Sie feststellen, ob die Kapazität konstant ausgelastet ist. Dies gibt eine hohe Wahrscheinlichkeit von Latenz an.  
+Bei einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Eingang Zeitverzögerung für empfangene Nachrichten) angezeigt, um sie zu informieren, wie viele Minuten TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Ingress Received Message Count Lag* (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten) sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
+
+Wenn Sie beispielsweise über eine S1-Umgebung mit nur einer Einheit verfügen und sehen, dass ein Rückstand von fünf Millionen Nachrichten besteht, können Sie die Größe Ihrer Umgebung ca. einen Tag lang auf sechs Einheiten erhöhen, um den Rückstand aufzuholen.  Sie können die Größe auch stärker erhöhen, um den Rückstand schneller wettzumachen.  Dies kommt bei der anfänglichen Bereitstellung einer Umgebung häufig vor, z.B. wenn Sie sie mit einer Ereignisquelle verbinden, die bereits Ereignisse enthält, oder wenn Sie einen Massenupload für viele Verlaufsdaten durchführen.
+
+Eine andere Möglichkeit besteht darin, eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) für einen Zeitraum von zwei Stunden so festzulegen, dass der Schwellenwert leicht unterhalb der Gesamtkapazität Ihrer Umgebung liegt.  Anhand dieser Warnung können Sie feststellen, ob die Kapazität konstant ausgelastet ist. Dies gibt eine hohe Wahrscheinlichkeit von Latenz an.  
 
 Wenn Sie beispielsweise drei S1-Einheiten (oder eine Eingangskapazität von 2.100 Ereignissen pro Minute) bereitgestellt haben, können Sie eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) >= 1.900 Ereignisse für 2 Stunden festlegen. Wenn dieser Schwellenwert konstant überschritten und dadurch die Warnung ausgelöst wird, ist die Bereitstellung wahrscheinlich nicht ausreichend.  
 

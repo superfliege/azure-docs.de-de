@@ -1,12 +1,12 @@
 ---
 title: Bereitstellen einer Azure Service Fabric-Anwendung mit Continuous Integration (Team Services) | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Visual Studio Team Services für eine Service Fabric-Anwendung einrichten.  Stellen Sie eine Anwendung in einem Service Fabric-Cluster in Azure bereit."
+description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration und Continuous Deployment mithilfe von Visual Studio Team Services für eine Service Fabric-Anwendung einrichten.  Stellen Sie eine Anwendung in einem Service Fabric-Cluster in Azure bereit.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
-Dieses Tutorial ist der dritte Teil einer Serie und beschreibt, wie Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services eingerichtet werden.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
+Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
 
 Im dritten Teil der Serie lernen Sie Folgendes:
 
@@ -36,6 +36,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * [Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 > * [Bereitstellen der Anwendung in einem Remotecluster](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
 > * Konfigurieren von CI/CD mit Visual Studio Team Services
 > * [Einrichten der Überwachung und Diagnose für die Anwendung](service-fabric-tutorial-monitoring-aspnet.md)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: a13552e36b4c74b6d3165168c727dbcc8a00704e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: db81baa5df13c8c5ca38e0e1ab2dffda1e31370a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -29,7 +29,7 @@ Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über I
 
 - Wenn Sie ein Abonnement für eine kostenlose Testversion, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) oder BizSpark besitzen, wird Ihr Abonnement automatisch deaktiviert, sobald Ihr gesamtes Guthaben verbraucht ist. Erfahren Sie mehr über [Ausgabenlimits](#spending-limit), um zu vermeiden, dass Ihr Abonnement unerwartet deaktiviert wird.
 
-- Wenn Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/en-us/free/) angemeldet haben, [können Sie einige der beliebtesten Azure-Dienste kostenlos für 12 Monate nutzen](billing-create-free-services-included-free-account.md). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](billing-avoid-charges-free-account.md).
+- Wenn Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) angemeldet haben, [können Sie einige der beliebtesten Azure-Dienste kostenlos für 12 Monate nutzen](billing-create-free-services-included-free-account.md). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Abrufen der geschätzten Kosten vor dem Hinzufügen von Azure-Diensten
 

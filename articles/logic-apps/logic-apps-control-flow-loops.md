@@ -1,12 +1,12 @@
 ---
-title: "Schleifen – Verarbeiten von Arrays oder Wiederholen von Aktionen – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Verarbeiten von Arrays mit „ForEach“-Schleifen oder Wiederholen von Aktionen, bis bestimmte Bedingungen erfüllt sind, in Logic Apps"
+title: Schleifen – Verarbeiten von Arrays oder Wiederholen von Aktionen – Azure Logic Apps | Microsoft-Dokumentation
+description: Verarbeiten von Arrays mit „ForEach“-Schleifen oder Wiederholen von Aktionen, bis bestimmte Bedingungen erfüllt sind, in Logic Apps
 services: logic-apps
-keywords: "„ForEach“-Schleifen"
-documentationcenter: 
+keywords: „ForEach“-Schleifen
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: logic-apps
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: f634b1004fef2eb65c6b8134088ceead47c91890
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Schleifen: Verarbeiten von Arrays oder Wiederholen von Aktionen, bis eine Bedingung erfüllt ist
 
@@ -153,9 +153,6 @@ Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder ein Status sich
 
 * Aufrufen eines Endpunkts, bis Sie die gewünschte Antwort erhalten.
 * Erstellen eines Datensatzes in einer Datenbank, Warten, bis ein bestimmtes Feld in diesem Datensatz genehmigt ist, und Fortsetzen der Verarbeitung. 
-
-> [!NOTE]
-> „Until“-Schleifen können keine „ForEach“-Schleifen oder andere „Until“-Schleifen enthalten.
 
 Diese Logik-App inkrementiert z.B. täglich um 8:00 Uhr eine Variable, bis diese den Wert 10 hat. Dann sendet die Logik-App eine E-Mail, die den aktuellen Wert bestätigt. Obwohl in diesem Beispiel Outlook für Office 365 verwendet wird, können Sie alle von Logic Apps unterstützten E-Mail-Anbieter verwenden ([lesen Sie diese Connectorsliste](https://docs.microsoft.com/connectors/)). Bei Verwendung eines anderen E-Mail-Kontos sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab. 
 

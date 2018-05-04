@@ -8,32 +8,31 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/20/2017
-ms.openlocfilehash: ede0c0aa7b0e795760123246366f947889224b2d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/12/2018
+ms.openlocfilehash: c96e9825cddd0b60e67cd4752fab8f440ceaae76
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
-Azure Stream Analytics aggregiert die Leistungsgewichtung für die Ausführung eines Auftrags in Premium-Streamingeinheiten. Premium-Streamingeinheiten stellen die Computerressourcen dar, die bei der Ausführung eines Auftrags verbraucht werden. SUs bieten anhand eines kombinierten Maßes aus CPU, Arbeitsspeicher und Schreib- und Leseraten eine Möglichkeit zur Beschreibung der relativen Ereignisverarbeitungskapazität. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Sie müssen keine Überlegungen zur Leistung auf Speicherebene anstellen, nicht manuell Speicher für Ihren Auftrag zuweisen, und nicht die ungefähre CPU-Kernzahl kennen, um Ihren Auftrags rechtzeitig auszuführen.
+Azure Stream Analytics aggregiert die Leistungsgewichtung für die Ausführung eines Auftrags in Premium-Streamingeinheiten. Premium-Streamingeinheiten stellen die Computerressourcen dar, die bei der Ausführung eines Auftrags verbraucht werden. SUs bieten anhand eines kombinierten Maßes aus CPU, Arbeitsspeicher und Schreib- und Leseraten eine Möglichkeit zur Beschreibung der relativen Ereignisverarbeitungskapazität. Mit dieser Kapazität können Sie sich auf die Abfragelogik konzentrieren. Zudem wird der Bedarf zur Verwaltung der Hardware abstrahiert, um Ihren Stream Analytics-Auftrag rechtzeitig auszuführen.
 
 Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, damit die Aufträge rund um die Uhr ausgeführt werden.
 
-Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik „Speichereinheitnutzung in %“ in der Regel zwischen 10 % und 20 %. Die Metrik sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können.  Sie können eine Warnung für die Metrik festlegen. (Weitere Informationen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).)
-
-
+Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik „Speichereinheitnutzung in %“ in der Regel zwischen 10 % und 20 %. Die Metrik sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können. Microsoft empfiehlt, eine Warnung für die Metrik „Nutzung der Speichereinheit in %“ bei 80 % festzulegen, um eine Ressourcenauslastung zu verhindern. Weitere Informationen finden Sie unter [Tutorial: Einrichten von Warnungen für Azure Stream Analytics-Aufträge](stream-analytics-set-up-alerts.md).
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurieren von Streamingeinheiten (SUs) für Stream Analytics-Aufträge
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
+
 2. Suchen Sie in der Liste der Ressourcen nach dem zu skalierenden Stream Analytics-Auftrag, und öffnen Sie ihn anschließend. 
-3. Klicken Sie auf der Seite des Auftrags unter „Konfigurieren“ auf **Skalieren**. 
+
+3. Wählen Sie auf der Auftragsseite unter der Überschrift **Konfigurieren** die Option **Skalieren** aus. 
 
     ![Konfiguration von Stream Analytics-Aufträgen im Azure-Portal][img.stream.analytics.preview.portal.settings.scale]
     
 4. Verwenden Sie den Schieberegler, um die SUs für den Auftrag festzulegen. Beachten Sie, dass Sie auf die jeweiligen SU-Einstellungen beschränkt sind. 
-
 
 ## <a name="monitor-job-performance"></a>Überwachen der Auftragsleistung
 Über das Azure-Portal können Sie den Durchsatz eines Auftrags nachverfolgen:
@@ -41,7 +40,6 @@ Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftr
 ![Überwachen von Aufträgen in Azure Stream Analytics][img.stream.analytics.monitor.job]
 
 Berechnen Sie den erwarteten Durchsatz der Workload. Für den Fall, dass der Durchsatz kleiner als erwartet ist, optimieren Sie die Eingabepartition und die Abfrage, und fügen Sie dem Auftrag zusätzliche SUs hinzu.
-
 
 ## <a name="how-many-sus-are-required-for-a-job"></a>Wie viele Premium-Streamingeinheiten sind für einen Auftrag erforderlich?
 
@@ -54,69 +52,92 @@ Weitere Informationen über die Auswahl der richtigen Anzahl von SUs finden Sie 
 > [!Note]
 > Die benötigte SU-Anzahl für einen bestimmten Auftrag hängt von der Partitionskonfiguration für die Eingaben und der für den Auftrag definierten Abfrage ab. Sie können die für Ihr Kontingent maximal festgelegte Anzahl von SUs für einen Auftrag auswählen. Jedes Azure-Abonnement verfügt standardmäßig über ein Kontingent von höchstens 200 SUs für alle Analyseaufträge in einer bestimmten Region. Wenn Sie die SUs für Ihre Abonnements über dieses Kontingent hinaus erhöhen möchten, wenden Sie sich an den [Microsoft-Support](http://support.microsoft.com). Die gültigen Werte für SUs pro Auftrag sind 1, 3, 6 und danach Werte in Schritten von 6.
 
+## <a name="factors-that-increase-su-utilization"></a>Faktoren für die Erhöhung der Nutzung der Speichereinheit in % 
+
+Temporale (zeitlich orientierte) Abfrageelemente sind die Kerngruppe der zustandsbehafteten Operatoren, die von Stream Analytics bereitgestellt werden. Stream Analytics verwaltet den Zustand dieser Vorgänge intern im Auftrag des Benutzers durch Verwaltung des Speicherverbrauchs, Prüfpunktausführung für höhere Resilienz und Zustandswiederherstellung bei Dienstupgrades. Obwohl Stream Analytics die Zustände vollständig verwaltet, sollte der Benutzer einige Empfehlungen zu bewährten Methoden berücksichtigen.
+
+## <a name="stateful-query-logic-in-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
+Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren enthalten Zustandsinformationen. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 
+
+Der Begriff der temporalen Fenster kommt in mehreren Stream Analytics-Abfrageelementen vor:
+1. Fensteraggregate: GROUP BY von rollierenden, springenden und gleitenden Fenstern
+
+2. Temporale Joins: JOIN mit DATEDIFF-Funktion
+
+3. Temporale Analysefunktionen: ISFIRST, LAST und LAG mit LIMIT DURATION
+
+Die folgenden Faktoren beeinflussen den belegten Arbeitsspeicher (Teil der Metrik „Streamingeinheit“) von Stream Analytics-Aufträgen:
+
+## <a name="windowed-aggregates"></a>Aggregate im Fenstermodus
+Der belegte Arbeitsspeicher (Zustandsgröße) für ein Aggregat im Fenstermodus ist nicht immer direkt proportional zur Fenstergröße. Der belegte Arbeitsspeicher verhält sich stattdessen proportional zur Kardinalität der Daten oder der Anzahl der Gruppen in jedem Zeitfenster.
 
 
-## <a name="factors-increasing-su-utilization"></a>Faktoren zur Erhöhung der Speichereinheitnutzung in % 
-### <a name="stateful-query-logic"></a>Zustandsbehaftete Abfragelogik 
-Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren behalten einige Zustände bei. 
-#### <a name="windowed-aggregates"></a>Aggregate im Fenstermodus
-Die Zustandsgröße eines Aggregats im Fenstermodus verhält sich proportional zur Anzahl der Gruppen (Kardinalität) im GROUP BY-Operator. Beispiel: In der folgenden Abfrage ist die mit „clusterid“ verknüpfte Zahl die Kardinalität der Abfrage. 
+Beispiel: In der folgenden Abfrage ist die mit `clusterid` verknüpfte Zahl die Kardinalität der Abfrage. 
 
-    SELECT count(*)
-    FROM input 
-    GROUP BY  clusterid, tumblingwindow (minutes, 5)
+   ```sql
+   SELECT count(*)
+   FROM input 
+   GROUP BY  clusterid, tumblingwindow (minutes, 5)
+   ```
 
+Um Probleme zu beheben, die durch eine hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den durch `clusterid` partitionierten Event Hub senden und die Abfrage horizontal hochskalieren, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
 
-Um Probleme zu beheben, die durch eine hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den durch „clusterid“ partitionierten Event Hub senden und die Abfrage horizontal hochskalieren, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
+   ```sql
+   SELECT count(*) 
+   FROM PARTITION BY PartitionId
+   GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
+   ```
 
+Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender `clusterid`-Werte auf den einzelnen Knoten, wodurch wiederum die Kardinalität des GROUP BY-Operators reduziert wird. 
 
-    SELECT count(*) 
-    FROM PARTITION BY PartitionId
-    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
+Event Hub-Partitionen sollten durch den Gruppierungsschlüssel partitioniert werden, um die Notwendigkeit eines Reduzierungsschritts zu vermeiden. Weitere Informationen finden Sie unter [Übersicht über Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md). 
 
-Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender clusterid-Ereignisse auf den einzelnen Knoten, wodurch wiederum die Kardinalität des GROUP BY-Operators reduziert wird. 
-
-Event Hub-Partitionen sollten durch den Gruppierungsschlüssel partitioniert werden, um die Notwendigkeit eines Reduzierungsschritts zu vermeiden. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview). 
-#### <a name="temporal-join"></a>Temporale Verknüpfung
-Die Zustandsgröße einer temporalen Verknüpfung verhält sich proportional zur Anzahl der Ereignisse im zeitlichen Spielraum der Verknüpfung, die die Ereigniseingangsrate multipliziert mit der Größe des Spielraums darstellt. 
+## <a name="temporal-joins"></a>Temporale Joins
+Der belegte Arbeitsspeicher (Zustandsgröße) eines temporalen Joins verhält sich proportional zur Anzahl der Ereignisse im zeitlichen Spielraum des Joins, der die Ereigniseingangsrate multipliziert mit der Größe des Spielraums darstellt. Anders ausgedrückt: Der durch Joins belegte Arbeitsspeicher ist proportional zum DateDiff-Zeitbereich multipliziert mit der durchschnittlichen Ereignisrate.
 
 Die Anzahl nicht abgeglichener Ereignisse im Verknüpfungsvorgang wirkt sich auf die Arbeitsspeichernutzung für die Abfrage aus. Mit der folgenden Abfrage werden die Anzeigenaufrufe ermittelt, die Klicks generieren:
 
-    SELECT clicks.id
-    FROM clicks 
-    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+   ```sql
+   SELECT clicks.id
+   FROM clicks 
+   INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+   ```
 
 In diesem Beispiel kann es sein, dass viele Anzeigen angezeigt werden, aber nur wenige Benutzer auf diese klicken, und alle Ereignisse müssen im Zeitfenster bleiben. Der belegte Arbeitsspeicher ist proportional zu Fenstergröße und Ereignisrate. 
 
 Um dies zu beheben, senden Sie Ereignisse an den durch die Verknüpfungsschlüssel (in diesem Fall IDs) partitionierten Event Hub, und skalieren Sie die Abfrage horizontal hoch, indem Sie dem System die separate Verarbeitung jeder Eingangspartition mit **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
 
-    SELECT clicks.id
-    FROM clicks PARTITION BY PartitionId
-    INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
-</code>
+   ```sql
+   SELECT clicks.id
+   FROM clicks PARTITION BY PartitionId
+   INNER JOIN impressions PARTITION BY PartitionId 
+   ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+   ```
 
 Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe des Zustands im Verknüpfungsfenster reduziert wird. 
-#### <a name="temporal-analytic-function"></a>Temporale Analysefunktion
-Die Zustandsgröße einer temporalen Analysefunktion verhält sich proportional zu der mit der Dauer multiplizierten Ereignisrate. Die Wiederherstellung weist Ähnlichkeiten mit der temporalen Verknüpfung auf. Sie können die Abfrage durch **PARTITION BY** horizontal hochskalieren. 
 
-### <a name="out-of-order-buffer"></a>Puffer für Ereignisse in falscher Reihenfolge 
+## <a name="temporal-analytic-functions"></a>Temporale Analysefunktionen
+Der belegte Arbeitsspeicher (Zustandsgröße) einer temporalen Analysefunktion verhält sich proportional zu der mit der Dauer multiplizierten Ereignisrate. Der durch Analysefunktionen belegte Arbeitsspeicher verhält sich nicht proportional zur Fenstergröße, sondern zur Partitionsanzahl in jedem Zeitfenster.
+
+Die Wiederherstellung weist Ähnlichkeiten mit der temporalen Verknüpfung auf. Sie können die Abfrage durch **PARTITION BY** horizontal hochskalieren. 
+
+## <a name="out-of-order-buffer"></a>Puffer für Ereignisse in falscher Reihenfolge 
 Benutzer können die Größe eines Puffers für Ereignisse in falscher Reihenfolge im Konfigurationsbereich „Ereignisreihenfolge“ konfigurieren. Der Puffer wird verwendet, um Eingaben für die Dauer des Fensters zu speichern und neu anzuordnen. Die Größe des Puffers verhält sich proportional zu der mit der Größe des Fensters für Ereignisse in falscher Reihenfolge multiplizierten Ereigniseingangsrate. Die Standardfenstergröße beträgt 0. 
 
-Um dies zu beheben, skalieren Sie die Abfrage durch **PARTITION BY** horizontal hoch. Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe der Ereignisse in jedem Neuanordnungspuffer reduziert wird. 
+Um einen Überlauf des Puffers in einer anderen Reihenfolge zu beheben, skalieren Sie die Abfrage mit **PARTITION BY** horizontal hoch. Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe der Ereignisse in jedem Neuanordnungspuffer reduziert wird. 
 
-### <a name="input-partition-count"></a>Anzahl von Eingabepartitionen 
-Jede Eingabepartition einer Auftragseingabe weist einen Puffer auf. Je größer die Anzahl der Eingabepartitionen, desto mehr Ressourcen verbraucht der Auftrag. Azure Stream Analytics (ASA) kann pro SU eine Eingabe von ungefähr 1 MB/s verarbeiten. Daher sollte die Anzahl der SUs von ASA mit der Anzahl der Partitionen Ihres Event Hubs übereinstimmen. In der Regel ist ein 1-SU-Auftrag für einen Event Hub mit 2 Partitionen (der Mindestanzahl für den Event Hub) ausreichend. Wenn der Event Hub eine größere Anzahl von Partitionen aufweist, verbraucht Ihr ASA-Auftrag mehr Ressourcen, nutzt jedoch nicht zwingend den zusätzlichen vom Event Hub bereitgestellten Durchsatz. Für einen Auftrag mit 6 SUs benötigen Sie möglicherweise 4 oder 8 Partitionen vom Event Hub. Die Verwendung eines Event Hubs mit 16 Partitionen oder mehr in einem 1-SU-Auftrag trägt oft zu einem übermäßigen Ressourcenverbrauch bei und sollte daher vermieden werden. 
+## <a name="input-partition-count"></a>Anzahl von Eingabepartitionen 
+Jede Eingabepartition einer Auftragseingabe weist einen Puffer auf. Je größer die Anzahl der Eingabepartitionen, desto mehr Ressourcen verbraucht der Auftrag. Für jede Streamingeinheit kann Azure Stream Analytics ungefähr 1 MB/s der Eingabe verarbeiten. Daher können Sie eine Optimierung vornehmen, indem Sie die Anzahl der Stream Analytics-Streamingeinheiten an die Anzahl von Partitionen in Ihrem Event Hub anpassen. 
 
-### <a name="reference-data"></a>Verweisdaten 
+In der Regel ist ein Auftrag, der mit einer Streamingeinheit konfiguriert ist, für einen Event Hub mit zwei Partitionen (d.h. der Mindestanzahl für einen Event Hub) ausreichend. Wenn der Event Hub eine größere Anzahl von Partitionen aufweist, verbraucht Ihr Stream Analytics-Auftrag mehr Ressourcen, nutzt jedoch nicht zwingend den zusätzlichen vom Event Hub bereitgestellten Durchsatz. 
+
+Für einen Auftrag mit 6 Streamingeinheiten benötigen Sie eventuell 4 oder 8 Partitionen vom Event Hub. Verwalten Sie jedoch nicht zu viele nicht benötigte Partitionen, da dies zu einem übermäßigen Ressourceneinsatz führt. Beispiel: Ein Event Hub mit mindestens 16 Partitionen in einem Stream Analytics-Auftrag mit 1 Streamingeinheit. 
+
+## <a name="reference-data"></a>Verweisdaten 
 Die Verweisdaten in ASA werden zur schnellen Suche in den Speicher geladen. Bei der aktuellen Implementierung wird bei jedem Verknüpfungsvorgang mit Verweisdaten eine Kopie der Verweisdaten im Speicher beibehalten, auch wenn Sie dieselben Verweisdaten mehrmals verknüpfen müssen. Bei Abfragen mit **PARTITION BY** behält jede Partition eine Kopie der Verweisdaten bei, sodass die Partitionen vollständig entkoppelt sind. Durch den Multiplikationseffekt kann die Speicherverwendung schnell in die Höhe schießen, wenn Sie Verweisdaten mehrmals mit mehreren Partitionen verknüpfen.  
 
-#### <a name="use-of-udf-functions"></a>Verwenden von UDF-Funktionen
+### <a name="use-of-udf-functions"></a>Verwenden von UDF-Funktionen
 Wenn Sie eine UDF-Funktion hinzufügen, lädt Azure Stream Analytics die JavaScript-Laufzeit in den Arbeitsspeicher. Dies wirkt sich auf die Speichereinheitnutzung in % aus.
-
-
-## <a name="get-help"></a>Hier erhalten Sie Hilfe
-Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen von parallelisierbaren Abfragen in Azure Stream Analytics](stream-analytics-parallelization.md)

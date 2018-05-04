@@ -1,11 +1,11 @@
 ---
 title: Aufrufen von Spark-Programmen aus Azure Data Factory | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen."
+description: Erfahren Sie, wie Sie Spark-Programme mithilfe der MapReduce-Aktivität aus einer Azure Data Factory aufrufen.
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: fd98931c-cab5-4d66-97cb-4c947861255c
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b39e6012365c426e95a38d5c5a40790f584ba473
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9df8b0987378fef37c7ca8f24070a88cbfc42f2a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -59,7 +59,7 @@ Dies sind die typischen Schritte zum Erstellen einer Data Factory-Pipeline mit e
 
 2. Erstellen Sie einen Spark-Cluster in Azure HDInsight anhand der Anweisungen im Tutorial [Erstellen eines Spark-Clusters in HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Ordnen Sie das in Schritt 1 erstellte Speicherkonto diesem Cluster zu.
 
-3. Laden Sie die Python-Skriptdatei **test.py** von [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) herunter, und überprüfen Sie diese.
+3. Laden Sie die Python-Skriptdatei **test.py** herunter, die sich unter [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) befindet.
 
 4. Laden Sie **test.py** in den Ordner **pyFiles** im Container **adfspark** in Blob Storage hoch. Erstellen Sie den Container und den Ordner, wenn sie nicht vorhanden sind.
 
@@ -84,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um eine Data Factory zu erstellen:
 7. Klicken Sie auf **Erstellen**.
 
    > [!IMPORTANT]
-   > Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
+   > Zum Erstellen von Data Factory-Instanzen müssen Sie Mitglied der Rolle [Data Factory-Mitwirkender](../../role-based-access-control/built-in-roles.md#data-factory-contributor) auf Abonnement- bzw. Ressourcengruppenebene sein.
 
 8. Im Dashboard des Azure-Portals sehen Sie, dass die Data Factory erstellt wird.
 

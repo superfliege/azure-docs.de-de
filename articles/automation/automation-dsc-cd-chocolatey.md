@@ -8,11 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: e92bb8b4078bc5c85a639d3b5b38c124152576f7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Anwendungsbeispiel: Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey
 In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen.  Azure Automation Desired State Configuration (DSC), also die Konfiguration des gewünschten Zustands, ist eine willkommene neue Option für DevOps-Teams.  In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht.  Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
@@ -50,7 +50,7 @@ Wahrscheinlich erledigen Sie dies, bzw. den größten Teil davon, bereits im obe
 Falls Sie nicht mit einer ARM-Vorlage beginnen, ist dies auch in Ordnung.  Es sind PowerShell-Cmdlets vorhanden, mit denen Sie Ihre virtuellen Computer für den Pullserver und den anderen Komponenten registrieren können. Weitere Informationen finden Sie im Artikel [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Schritt 1: Einrichten des Pullservers und des Automatisierungskontos
-An einer authentifizierten (Add-AzureRmAccount) PowerShell-Befehlszeile: (es kann einige Minuten dauern, bis der Pullserver eingerichtet ist)
+Geben Sie an einer authentifizierten (Connect-AzureRmAccount) PowerShell-Befehlszeile Folgendes ein: (Die Einrichtung des Pull-Servers kann einige Minuten dauern.)
 
     New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
     New-AzureRmAutomationAccount –ResourceGroupName MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES –Name MY-AUTOMATION-ACCOUNT 

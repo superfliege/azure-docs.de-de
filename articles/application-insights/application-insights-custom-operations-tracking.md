@@ -1,6 +1,6 @@
 ---
-title: "Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET SDK | Microsoft-Dokumentation"
-description: "Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET-SDK"
+title: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET SDK | Microsoft-Dokumentation
+description: Nachverfolgen von benutzerdefinierten Vorgängen mit dem Azure Application Insights .NET-SDK
 services: application-insights
 documentationcenter: .net
 author: SergeyKanzhelev
@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
-ms.openlocfilehash: 5c6f7521614d7c8337ef31fb8102c5715f83a58d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 94424a3d8aad56cf4504cccd8adb1a45523d95e0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -450,7 +450,7 @@ public async Task RunMyTaskAsync()
 
 Beim Löschvorgang wird der Vorgang beendet, sodass Sie hierfür stattdessen auch `StopOperation` aufrufen können.
 
-*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert ](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
+*Warnung*: In einigen Fällen kann durch eine unbehandelte Ausnahme [verhindert ](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) werden, dass `finally` aufgerufen wird, und die Vorgänge werden dann ggf. nicht nachverfolgt.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Verarbeitung und Nachverfolgung von parallelen Vorgängen
 

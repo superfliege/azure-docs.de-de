@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 109a5b50688ca0b2c4edc63b6ba5c89bac74a6d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9897a3578ad35376bea81b4821dbc2d84526a736
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -240,7 +240,7 @@ Fordern Sie für C-Suite-Führungskräfte, Manager höherer Ebene, wichtiges IT-
 
 #### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Verwenden dedizierter Arbeitsstationen für die Azure AD-Verwaltung
 
-Angreifer können versuchen, privilegierte Konten anzugreifen, um Zugriff auf Daten und Systeme eines Unternehmens zu erhalten, damit sie Integrität und Authentizität der Daten über schädlichen Code, der die Programmlogik ändert, oder das Ausspionieren von Administratoranmeldeinformationen zerstören können. Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsüberträgern geschützt ist. Die Trennung solcher sensitiven Aufgaben und Konten von den täglich verwendeten Arbeitsstationen und Geräten bietet einen sehr starken Schutz vor Phishing-Angriffen, vor Sicherheitsrisiken für das Betriebssystem und die Anwendungen, verschiedenen Identitätswechselangriffen und dem Diebstahl von Anmeldeinformationen z.B. mithilfe von Keyloggern, Pass-the-Hash und Pass-the-Ticket. Durch die Bereitstellung von Privileged Access Workstations können Sie das Risiko reduzieren, dass Administratoren Administratoranmeldeinformationen außerhalb einer gefestigten Desktopumgebung eingeben. Weitere Informationen finden Sie unter [Privileged Access Workstations](https://docs.microsoft.com/en-us/windows-server/identity/securing-privileged-access/privileged-access-workstations).
+Angreifer können versuchen, privilegierte Konten anzugreifen, um Zugriff auf Daten und Systeme eines Unternehmens zu erhalten, damit sie Integrität und Authentizität der Daten über schädlichen Code, der die Programmlogik ändert, oder das Ausspionieren von Administratoranmeldeinformationen zerstören können. Privileged Access Workstations (PAWs) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsüberträgern geschützt ist. Die Trennung solcher sensitiven Aufgaben und Konten von den täglich verwendeten Arbeitsstationen und Geräten bietet einen sehr starken Schutz vor Phishing-Angriffen, vor Sicherheitsrisiken für das Betriebssystem und die Anwendungen, verschiedenen Identitätswechselangriffen und dem Diebstahl von Anmeldeinformationen z.B. mithilfe von Keyloggern, Pass-the-Hash und Pass-the-Ticket. Durch die Bereitstellung von Privileged Access Workstations können Sie das Risiko reduzieren, dass Administratoren Administratoranmeldeinformationen außerhalb einer gefestigten Desktopumgebung eingeben. Weitere Informationen finden Sie unter [Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Lesen der Empfehlungen des National Institute of Standards and Technology zur Abwicklung von Vorfällen 
 

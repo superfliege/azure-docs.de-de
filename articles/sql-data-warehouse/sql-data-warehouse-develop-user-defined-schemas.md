@@ -1,27 +1,26 @@
 ---
-title: Benutzerdefinierte Schemas in SQL Data Warehouse | Microsoft Docs
-description: "Tipps für die Verwendung von Transact-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen."
+title: Verwenden benutzerdefinierter Schemas in SQL Data Warehouse | Microsoft Docs
+description: Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 52af5bd5-d5d3-4f9b-8704-06829fb924e3
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: c18e6d34416390ae7e93b69b28d508a540f7b1ab
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="user-defined-schemas-in-sql-data-warehouse"></a>Benutzerdefinierte Schemas in SQL Data Warehouse
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Verwenden benutzerdefinierter Schemas in SQL Data Warehouse
+Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
+
+## <a name="schemas-for-application-boundaries"></a>Schemas für Anwendungsgrenzen
+
 Herkömmliche Data Warehouses verwenden häufig separate Datenbanken, um Anwendungsgrenzen auf Basis von Workload, Domäne oder Sicherheit zu erstellen. Ein herkömmliches Data Warehouse in SQL Server kann z. B. eine Stagingdatenbank, eine Data Warehouse-Datenbank und einige Data Mart-Datenbanken enthalten. In dieser Topologie funktioniert jede Datenbank als Workload und Sicherheitsgrenze in der Architektur.
 
 Im Gegensatz dazu werden mit SQL Data Warehouse die gesamten Data Warehouse-Workloads innerhalb einer Datenbank ausgeführt. Datenbankübergreifende Verknüpfungen sind nicht zulässig. SQL Data Warehouse erwartet daher, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
@@ -121,13 +120,5 @@ FROM    [edw].customer
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
+Weitere Tipps zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

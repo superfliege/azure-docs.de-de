@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 04/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1ac6c3e428148a6609b264b0b8f8cff416b0fa4d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 33e31c47a6125ac363410a9a78e9c9310c74d51e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Szenario 1: Bewerten von lokalen Workloads für die Migration zu Azure
 
@@ -31,13 +31,13 @@ Für dieses Szenario laden wir den DMA herunter und führen ihn aus, um die loka
 > [!NOTE]
 > Für dieses Szenario lautet unser Bewertungsziel für die Datenbank „SQL Server auf einer Azure-VM“. Im nächsten Szenarioartikel führen wir dann die Migration zu einer verwalteten Azure SQL-Instanz durch. Wir nutzen diesen Ansatz, da die Bewertung eines Ziels vom Typ „Verwaltete Azure SQL-Instanz“ vom DMA derzeit nicht unterstützt wird.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 In diesem Szenario richten wir Folgendes ein: 
 
  ![Architektur für Migrationsbewertung](./media/migrate-scenarios-assessment/migration-assessment-architecture.png)
 
-In diesem Szenario:
+Szenario:
 - Contoso verfügt über ein lokales Rechenzentrum (**contoso-datacenter**) mit einem lokalen Domänencontroller (**contosodc1**).
 - Die interne Reise-App ist auf zwei VMs (**WEBVM** und **SQLVM**) verteilt und befindet sich auf dem VMware ESXi-Host **contosohost1.contoso.com**.
 - Die VMware-Umgebung wird mit einem vCenter Server (**vcenter.contoso.com**) verwaltet, der auf einer VM ausgeführt wird.
@@ -285,7 +285,7 @@ Beachten Sie Folgendes, bevor Sie beginnen: Der Collector unterstützt derzeit n
 5. Nehmen Sie in **vCenter Server-Details angeben** die folgenden Einstellungen vor:
     - Geben Sie den Namen (FQDN) oder die IP-Adresse des vCenter-Servers an.
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das der Collector virtuelle Computer auf dem vCenter-Server ermittelt.
-    - Wählen Sie unter **Bereich auswählen** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1000 virtuelle Computer umfassen. 
+    - Wählen Sie unter **Bereich auswählen** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen. 
 
     ![Herstellen einer Verbindung mit vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 

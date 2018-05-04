@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 1963c4d7b2e895032862fae896c6d9ff7cf80806
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 090629874e75d75223e018b002cf04a02b1d1bb0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -116,7 +116,7 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
     ]
     ```
 
-Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate)beschriebene Format. Das Hinzufügen der `metrics`-Eigenschaft ermöglicht Ihnen, auch Ressourcenmetriken an diese gleichen Ausgaben zu senden, vorausgesetzt dass [Azure Monitor-Metriken von der Ressource unterstützt werden](monitoring-supported-metrics.md).
+Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)beschriebene Format. Das Hinzufügen der `metrics`-Eigenschaft ermöglicht Ihnen, auch Ressourcenmetriken an diese gleichen Ausgaben zu senden, vorausgesetzt dass [Azure Monitor-Metriken von der Ressource unterstützt werden](monitoring-supported-metrics.md).
 
 Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Streamen an Event Hubs sowie das Speichern in einem Speicherkonto aktiviert.
 
@@ -134,7 +134,7 @@ Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Stream
     },
     "testUri": {
       "type": "string",
-      "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+      "defaultValue": "http://azure.microsoft.com/status/feed/"
     },
     "settingName": {
       "type": "string",

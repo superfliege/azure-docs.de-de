@@ -1,26 +1,26 @@
 ---
 title: Bedingungen beim bedingten Zugriff in Azure Active Directory | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Zuweisungen beim bedingten Zugriff in Azure Active Directory zum Auslösen einer Richtlinie verwendet werden."
+description: Es wird beschrieben, wie Zuweisungen beim bedingten Zugriff in Azure Active Directory zum Auslösen einer Richtlinie verwendet werden.
 services: active-directory
-keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
-documentationcenter: 
+keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2415a2c2c0143b4abeb8ec1ecab379a204456874
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Bedingungen beim bedingten Zugriff in Azure Active Directory 
 
@@ -71,7 +71,7 @@ Die Bedingung für Cloud-Apps ist in einer Richtlinie für bedingten Zugriff obl
 
 Sie können Folgendes auswählen:
 
-- **Alle Cloud-Apps**: Dies ist die Basisoption für Richtlinien, die auf die gesamte Organisation angewendet werden sollen. Ein häufiger Anwendungsfall für diese Auswahl ist eine Richtlinie, für die die mehrstufige Authentifizierung erforderlich ist, wenn für eine Cloud-App ein Anmelderisiko erkannt wird.
+- **Alle Cloud-Apps**: Dies ist die Basisoption für Richtlinien, die auf die gesamte Organisation angewendet werden sollen. Ein häufiger Anwendungsfall für diese Auswahl ist eine Richtlinie, für die die mehrstufige Authentifizierung erforderlich ist, wenn für eine Cloud-App ein Anmelderisiko erkannt wird. Eine auf **Alle Cloud-Apps** angewendete Richtlinie gilt für den Zugriff auf alle Websites und Dienste. Diese Einstellung ist nicht auf die Cloud-Apps in der Liste **Select Cloud apps** (Cloud-Apps auswählen) beschränkt.
 
 - Einzelne Cloud-Apps zur Ausrichtung auf bestimmte Dienste anhand der Richtlinie. Sie können beispielsweise vorgeben, dass Benutzer über ein [konformes Gerät](active-directory-conditional-access-policy-connected-applications.md) verfügen müssen, um auf SharePoint Online zuzugreifen. Diese Richtlinie wird auch auf andere Dienste angewendet, wenn diese auf SharePoint-Inhalte zugreifen, z.B. Microsoft Teams. 
 
@@ -147,7 +147,7 @@ Häufige Anwendungsfälle für diese Bedingung sind Richtlinien, für die Folgen
 
 Zusätzlich zur Verwendung von Web-SSO und modernen Authentifizierungsprotokollen können Sie diese Bedingung auch auf E-Mail-Anwendungen anwenden, für die Exchange ActiveSync verwendet wird, z.B. die nativen E-Mail-Apps auf den meisten Smartphones. Derzeit müssen Client-Apps, für die Legacyprotokolle genutzt werden, mit AD FS geschützt werden.
 
- Weitere Informationen finden Sie unter:
+ Weitere Informationen finden Sie unter 
 
 - [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](active-directory-conditional-access-no-modern-authentication.md)
  

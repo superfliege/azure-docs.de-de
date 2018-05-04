@@ -10,23 +10,23 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 30dce6caefc0b95435d1dadc48aa927be475fc66
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f86c53465636f82cf36d5099699fc9e6efeb55a5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Ruby
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie unter Verwendung von [Ruby](https://www.ruby-lang.org) ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und mithilfe von Transact-SQL-Anweisungen Daten abfragt.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [Ruby](https://www.ruby-lang.org) ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und mithilfe von Transact-SQL-Anweisungen Daten abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial müssen Sie folgende Voraussetzungen erfüllen:
+Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Ruby und die zugehörige Software müssen für das Betriebssystem installiert sein:
     - **MacOS**: Installieren Sie nacheinander Homebrew, rbenv und ruby-build, Ruby und FreeTDS. Weitere Informationen finden Sie unter [Schritt 1.2, 1.3, 1.4 und 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).

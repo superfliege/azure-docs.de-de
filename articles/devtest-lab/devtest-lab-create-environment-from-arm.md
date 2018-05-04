@@ -5,8 +5,8 @@ services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: devtest-lab
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: b4582dd03ceb1c2104f6e93c55a65e5a2b968c0a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 38e048e9ec4985d16632f8891e42c2b6394c83d6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -102,7 +102,7 @@ Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde,
 
     ![Auswählen einer Grundlage](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. Geben Sie im Bereich **Hinzufügen** den Wert für **Umgebungsname** ein. Der Umgebungsname ist der Name, der Ihren Benutzern im Lab angezeigt wird. Die restlichen Eingabefelder sind in der Azure Resource Manager-Vorlage definiert. Falls in der Vorlage Standardwerte definiert sind oder die Datei `azuredeploy.parameter.json` vorhanden ist, werden in diesen Eingabefeldern Standardwerte angezeigt. Für Parameter vom Typ *Sichere Zeichenfolge* können Sie die Geheimnisse verwenden, die im [persönlichen geheimen Speicher](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store) des Labs gespeichert sind.
+1. Geben Sie im Bereich **Hinzufügen** den Wert für **Umgebungsname** ein. Der Umgebungsname ist der Name, der Ihren Benutzern im Lab angezeigt wird. Die restlichen Eingabefelder sind in der Azure Resource Manager-Vorlage definiert. Falls in der Vorlage Standardwerte definiert sind oder die Datei `azuredeploy.parameter.json` vorhanden ist, werden in diesen Eingabefeldern Standardwerte angezeigt. Für Parameter vom Typ *Sichere Zeichenfolge* können Sie die Geheimnisse verwenden, die im [persönlichen geheimen Speicher](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store) des Labs gespeichert sind.
 
     ![Hinzufügen eines Bereichs](./media/devtest-lab-create-environment-from-arm/add.png)
 

@@ -1,42 +1,38 @@
 ---
-title: "Entwurfsleitfaden für verteilte Tabellen – Azure SQL Data Warehouse | Microsoft-Dokumentation"
-description: "Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und Roundrobin-Tabellen in Azure SQL Data Warehouse."
+title: Entwurfsleitfaden für verteilte Tabellen – Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
+author: ronortloff
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: tables
-ms.date: 01/18/2018
-ms.author: barbkess
-ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: rortloff
+ms.reviewer: igorstan
+ms.openlocfilehash: d65ca91fc4cffa53adf3a7c56c7919e46c5037d9
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Leitfaden für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse
+Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
 
-Dieser Artikel enthält Empfehlungen für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse. Tabellen mit Hashverteilung verbessern die Abfrageleistung bei umfangreichen Faktentabellen und bilden den Schwerpunkt dieses Artikels. Roundrobin-Tabellen ermöglichen die Verbesserung der Ladegeschwindigkeit. Durch diese Entwurfsentscheidungen lassen sich Abfrageleistung und Ladegeschwindigkeit erheblich verbessern.
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie unter [Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)](massively-parallel-processing-mpp-architecture.md). 
 
-## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
+## <a name="what-is-a-distributed-table"></a>Was ist eine verteilte Tabelle?
+Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich sind die Zeilen jedoch in 60 Verteilungen gespeichert. Die Zeilen werden mit einem Hash- oder Roundrobinalgorithmus verteilt.  
+
+**Tabellen mit Hashverteilung** verbessern die Abfrageleistung bei umfangreichen Faktentabellen und bilden den Schwerpunkt dieses Artikels. **Roundrobintabellen** ermöglichen die Verbesserung der Ladegeschwindigkeit. Durch diese Entwurfsentscheidungen lassen sich Abfrageleistung und Ladegeschwindigkeit erheblich verbessern.
+
+Eine andere Tabellenspeicheroption besteht darin, eine kleine Tabelle auf allen Computeknoten zu replizieren. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md). Eine praktische Entscheidungshilfe für die Wahl einer der drei Optionen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md) unter „Verteilte Tabellen“. 
 
 Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren Daten und über das Abfragen der Daten besitzen.  Stellen Sie sich beispielsweise die folgenden Fragen:
 
 - Wie groß ist die Tabelle?   
 - Wie oft wird die Tabelle aktualisiert?   
 - Habe ich Fakten- und Dimensionstabellen in einem Data Warehouse?   
-
-## <a name="what-is-a-distributed-table"></a>Was ist eine verteilte Tabelle?
-Eine verteilte Tabelle wird zwar als einzelne Tabelle dargestellt, tatsächlich sind die Zeilen jedoch in 60 Verteilungen gespeichert. Die Zeilen werden mit einem Hash- oder Roundrobin-Algorithmus verteilt. 
-
-Eine andere Tabellenspeicheroption besteht darin, eine kleine Tabelle auf allen Computeknoten zu replizieren. Weitere Informationen finden Sie unter [Entwurfsleitfaden für replizierte Tabellen](design-guidance-for-replicated-tables.md). Eine praktische Entscheidungshilfe für die Wahl einer der drei Optionen finden Sie in der [Tabellenübersicht](sql-data-warehouse-tables-overview.md) unter „Verteilte Tabellen“. 
 
 
 ### <a name="hash-distributed"></a>Hashverteilung
@@ -53,21 +49,21 @@ Geeignete Szenarien für die Verwendung einer Tabelle mit Hashverteilung:
 - Die Tabellengröße auf dem Datenträger beträgt mehr als 2 GB.
 - In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. 
 
-### <a name="round-robin-distributed"></a>Roundrobin-Verteilung
-Bei einer Tabelle mit Roundrobin-Verteilung werden die Tabellenzeilen gleichmäßig auf alle Verteilungen aufgeteilt. Die Zeilen werden den Verteilungen nach dem Zufallsprinzip zugewiesen. Anders als bei Tabellen mit Hashverteilung werden Zeilen mit identischen Werten nicht unbedingt der gleichen Verteilung zugewiesen. 
+### <a name="round-robin-distributed"></a>Roundrobinverteilung
+Bei einer Tabelle mit Roundrobinverteilung werden die Tabellenzeilen gleichmäßig auf alle Verteilungen aufgeteilt. Die Zeilen werden den Verteilungen nach dem Zufallsprinzip zugewiesen. Anders als bei Tabellen mit Hashverteilung werden Zeilen mit identischen Werten nicht unbedingt der gleichen Verteilung zugewiesen. 
 
-Aus diesem Grund muss das System in einigen Fällen zunächst einen Datenverschiebungsvorgang auslösen, um die Daten besser zu organisieren, bevor die Aufgabenstellung einer Abfrage gelöst werden kann.  Aufgrund dieses zusätzlichen Schritts können die Abfragen verlangsamt werden. Zur Verknüpfung einer Roundrobin-Tabelle ist in der Regel eine Umstrukturierung der Zeilen erforderlich, was sich negativ auf die Leistung auswirkt.
+Aus diesem Grund muss das System in einigen Fällen zunächst einen Datenverschiebungsvorgang auslösen, um die Daten besser zu organisieren, bevor die Aufgabenstellung einer Abfrage gelöst werden kann.  Aufgrund dieses zusätzlichen Schritts können die Abfragen verlangsamt werden. Zur Verknüpfung einer Roundrobintabelle ist in der Regel eine Umstrukturierung der Zeilen erforderlich, was sich negativ auf die Leistung auswirkt.
 
-Geeignete Szenarien für die Verwendung der Roundrobin-Verteilung in einer Tabelle:
+Geeignete Szenarien für die Verwendung der Roundrobinverteilung in einer Tabelle:
 
 - Als einfacher Ausgangspunkt, da es sich hierbei um die Standardkonfiguration handelt
-- Wenn kein offensichtlicher Verknüpfungsschlüssel vorhanden ist
+- Wenn kein offensichtlicher Joinschlüssel vorhanden ist
 - Wenn keine gute Kandidatenspalte für die Hashverteilung der Tabelle vorhanden ist
-- Wenn die Tabelle nicht über einen gemeinsamen Verknüpfungsschlüssel mit anderen Tabellen verfügt
-- Wenn die Verknüpfung weniger signifikant als andere Verknüpfungen in der Abfrage ist
+- Wenn die Tabelle nicht über einen gemeinsamen Joinschlüssel mit anderen Tabellen verfügt
+- Wenn das Join weniger signifikant als andere Joins in der Abfrage ist
 - Wenn die Tabelle eine temporäre Stagingtabelle ist
 
-Im Tutorial [Laden der Daten in das Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) wird anhand eines Beispiels das Laden von Daten in eine Roundrobin-Stagingtabelle gezeigt.
+Im [Tutorial: Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) wird anhand eines Beispiels das Laden von Daten in eine Roundrobin-Stagingtabelle gezeigt.
 
 
 ## <a name="choosing-a-distribution-column"></a>Wählen einer Verteilungsspalte
@@ -91,7 +87,7 @@ WITH
 ;
 ``` 
 
-Die Wahl einer Verteilungsspalte ist eine wichtige Entwurfsentscheidung, da die Zeilenverteilung auf den Werten in dieser Spalte basiert. Die beste Wahl hängt von mehreren Faktoren ab und erfordert häufig Kompromisse. Sollten Sie sich beim ersten Mal nicht für die optimale Spalte entschieden haben, können Sie die Tabelle mithilfe von [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) mit einer anderen Verteilungsspalte neu erstellen. 
+Die Wahl einer Verteilungsspalte ist eine wichtige Entwurfsentscheidung, da die Zeilenverteilung auf den Werten in dieser Spalte basiert. Die beste Wahl hängt von mehreren Faktoren ab und erfordert häufig Kompromisse. Sollten Sie sich beim ersten Mal nicht für die optimale Spalte entschieden haben, können Sie die Tabelle mithilfe von [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) mit einer anderen Verteilungsspalte neu erstellen. 
 
 ### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Wählen Sie eine Verteilungsspalte, für die keine Aktualisierungen erforderlich sind.
 Eine Verteilungsspalte kann nicht aktualisiert werden – es sei denn, Sie löschen die Zeile und fügen eine neue Zeile mit den aktualisierten Werten ein. Entscheiden Sie sich daher für eine Spalte mit statischen Werten. 
@@ -111,11 +107,11 @@ Wählen Sie zur Erzielung einer ausgeglichenen parallelen Verarbeitung eine Vert
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Wählen Sie eine Verteilungsspalte, die Datenverschiebungen minimiert.
 
-Zur Ermittlung des korrekten Abfrageergebnisses werden Daten ggf. zwischen Computeknoten verschoben. Zu Datenverschiebungen kommt es in der Regel, wenn Abfragen über Verknüpfungen und Aggregationen für verteilte Tabellen verfügen. Die Wahl einer Verteilungsspalte, die zur Minimierung von Datenverschiebungen beiträgt, ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz.
+Zur Ermittlung des korrekten Abfrageergebnisses werden Daten ggf. zwischen Computeknoten verschoben. Zu Datenverschiebungen kommt es in der Regel, wenn Abfragen über Joins und Aggregationen für verteilte Tabellen verfügen. Die Wahl einer Verteilungsspalte, die zur Minimierung von Datenverschiebungen beiträgt, ist eine der wichtigsten Strategien zum Optimieren der Leistung Ihrer SQL Data Warehouse-Instanz.
 
 Zur Minimierung von Datenverschiebungen muss die Verteilungsspalte folgende Kriterien erfüllen:
 
-- Sie wird in Klauseln vom Typ `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING` verwendet. Wenn zwei umfangreiche Faktentabellen über häufige Verknüpfungen verfügen, verbessert sich die Abfrageleistung, wenn die Verteilung der beiden Tabellen auf einer der Verknüpfungsspalten basiert.  Wenn eine Tabelle nicht in Verknüpfungen verwendet wird, können Sie sie ggf. auf der Grundlage einer Tabelle verteilen, die in der `GROUP BY`-Klausel verwendet wird.
+- Sie wird in Klauseln vom Typ `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING` verwendet. Wenn zwei umfangreiche Faktentabellen über häufige Joins verfügen, verbessert sich die Abfrageleistung, wenn die Verteilung der beiden Tabellen auf einer der Verknüpfungsspalten basiert.  Wenn eine Tabelle nicht in Joins verwendet wird, können Sie sie ggf. auf der Grundlage einer Tabelle verteilen, die in der `GROUP BY`-Klausel verwendet wird.
 - Sie wird *nicht* in `WHERE`-Klauseln verwendet. Dies kann die Abfrage eingrenzen und dazu führen, dass sie nicht für alle Verteilungen ausgeführt wird. 
 - Sie ist *keine* Datumsspalte. WHERE-Klauseln werden häufig zum Filtern nach Datum verwendet.  In diesem Fall findet die gesamte Verarbeitung unter Umständen nur in einigen wenigen Verteilungen statt.
 
@@ -126,10 +122,10 @@ Wenn keine der Spalten genügend unterschiedliche Werte für eine Verteilungsspa
 Nach dem Entwerfen einer Tabelle mit Hashverteilung müssen Daten in die Tabelle geladen werden.  Eine entsprechende Anleitung finden Sie in der [Übersicht über das Laden](sql-data-warehouse-overview-load.md). 
 
 ## <a name="how-to-tell-if-your-distribution-column-is-a-good-choice"></a>Wie kann ich feststellen, ob ich eine geeignete Verteilungsspalte gewählt habe?
-Überprüfen Sie, wie gleichmäßig die Zeilen auf die 60 Verteilungen aufgeteilt sind, nachdem Sie Daten in eine Tabelle mit Hashverteilung geladen haben. Die Zeilen pro Verteilung können um bis zehn Prozent variieren, ohne dass dies merkliche Auswirkungen auf die Leistung hat. 
+Überprüfen Sie, wie gleichmäßig die Zeilen auf die 60 Verteilungen aufgeteilt sind, nachdem Sie Daten in eine Tabelle mit Hashverteilung geladen haben. Die Zeilen pro Verteilung können um bis zu zehn Prozent variieren, ohne dass dies merkliche Auswirkungen auf die Leistung hat. 
 
 ### <a name="determine-if-the-table-has-data-skew"></a>Ermitteln, ob die Tabelle von Datenschiefe betroffen ist
-Mit [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) können Sie schnell feststellen, ob eine Datenschiefe vorliegt. Der folgende SQL-Code gibt die Anzahl von Tabellenzeilen zurück, die in jeder der 60 Verteilungen gespeichert sind. Um eine ausgeglichene Leistung zu erzielen, müssen die Zeilen in Ihrer verteilten Tabelle gleichmäßig auf alle Verteilungen aufgeteilt sein.
+Mit [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) können Sie schnell feststellen, ob eine Datenschiefe vorliegt. Der folgende SQL-Code gibt die Anzahl von Tabellenzeilen zurück, die in jeder der 60 Verteilungen gespeichert sind. Um eine ausgeglichene Leistung zu erzielen, müssen die Zeilen in Ihrer verteilten Tabelle gleichmäßig auf alle Verteilungen aufgeteilt sein.
 
 ```sql
 -- Find data skew for a distributed table
@@ -157,14 +153,14 @@ order by two_part_name, row_count
 ```
 
 ### <a name="check-query-plans-for-data-movement"></a>Überprüfen von Abfrageplänen auf Datenverschiebungen
-Eine gute Verteilungsspalte ermöglicht Verknüpfungen und Aggregationen mit geringer Datenverschiebung. Aus diesem Grund müssen Verknüpfungen auf eine bestimmte Weise erstellt werden. Um bei einer Verknüpfung zweier Tabellen mit Hashverteilung eine möglichst geringe Datenverschiebung zu erzielen, muss eine der Verknüpfungsspalten als die Verteilungsspalte fungieren.  Wenn zwei Tabellen mit Hashverteilung auf der Grundlage einer Verteilungsspalte gleichen Datentyps verknüpft sind, sind für die Verknüpfung keine Datenverschiebungen erforderlich. Verknüpfungen können zusätzliche Spalten verwenden, ohne Datenverschiebungen zu verursachen.
+Eine gute Verteilungsspalte ermöglicht Joins und Aggregationen mit geringer Datenverschiebung. Aus diesem Grund müssen Joins auf eine bestimmte Weise erstellt werden. Um bei einem Join zweier Tabellen mit Hashverteilung eine möglichst geringe Datenverschiebung zu erzielen, muss eine der Verknüpfungsspalten als die Verteilungsspalte fungieren.  Wenn zwei Tabellen mit Hashverteilung auf der Grundlage einer Verteilungsspalte gleichen Datentyps verknüpft sind, sind für das Join keine Datenverschiebungen erforderlich. Joins können zusätzliche Spalten verwenden, ohne Datenverschiebungen zu verursachen.
 
-So vermeiden Sie Datenverschiebungen während einer Verknüpfung:
+So vermeiden Sie Datenverschiebungen während eines Joins:
 
-- Die an der Verknüpfung beteiligten Tabellen müssen per Hashverteilung auf der Grundlage **einer** der an der Verknüpfung beteiligten Spalten verteilt werden.
+- Die an dem Join beteiligten Tabellen müssen per Hashverteilung auf der Grundlage **einer** der an dem Join beteiligten Spalten verteilt werden.
 - Die Datentypen der Verknüpfungsspalten müssen in beiden Tabellen übereinstimmen.
 - Die Spalten müssen mit dem Operator „Equals“ (Gleich) verknüpft werden.
-- Der Verknüpfungstyp darf nicht `CROSS JOIN`sein.
+- Der Jointyp darf nicht `CROSS JOIN` sein.
 
 Ob es bei Abfragen zu Datenverschiebungen kommt, können Sie anhand des Abfrageplans ermitteln.  
 

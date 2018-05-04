@@ -181,7 +181,7 @@ Im Anschluss finden Sie Beispiele für Kunden, die mithilfe von Azure-HPC-Lösun
 * Informieren Sie sich ausführlicher über Big Compute-Lösungen für die Bereiche [Technische Simulationen](https://simulation.azure.com/), [Rendering](https://simulation.azure.com/), [Banken und Kapitalmärkte](https://finance.azure.com/) und [Genomik](https://enterprise.microsoft.com/en-us/industries/health/genomics/).
 * Die neuesten Ankündigungen finden Sie im [Blog des HPC- und Batch-Teams von Microsoft](http://blogs.technet.com/b/windowshpc/) und im [Azure-Blog](https://azure.microsoft.com/blog/tag/hpc/).
 
-* Verwenden Sie den verwalteten und skalierbaren Azure [Batch](https://azure.microsoft.com/services/batch/)-Dienst, um rechenintensive Workloads ohne Verwaltung der zugrunde liegenden Infrastruktur auszuführen. [Weitere Informationen](https://azure.microsoft.com/en-us/solutions/architecture/hpc-big-compute-saas/)
+* Verwenden Sie den verwalteten und skalierbaren Azure [Batch](https://azure.microsoft.com/services/batch/)-Dienst, um rechenintensive Workloads ohne Verwaltung der zugrunde liegenden Infrastruktur auszuführen. [Weitere Informationen](https://azure.microsoft.com/solutions/architecture/hpc-big-compute-saas/)
 
 
 

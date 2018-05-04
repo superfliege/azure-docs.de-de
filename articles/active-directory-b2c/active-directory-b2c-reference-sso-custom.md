@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: davidmu
-ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ca7160d39d5d26ca69345ce636f22afbe44b25db
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: Einmaliges Anmelden (Single Sign-On, SSO) für Sitzungsverwaltung
 
@@ -47,6 +47,9 @@ Wie der Name besagt, ist dieser Anbieter untätig. Dieser Anbieter kann zum Unte
 ### <a name="defaultssosessionprovider"></a>DefaultSSOSessionProvider
 
 Dieser Anbieter kann zum Speichern von Ansprüchen in einer Sitzung verwendet werden. Auf diesen Anbieter wird in der Regel in einem technischen Profil verwiesen, über das lokale Konten verwaltet werden. 
+
+> [!NOTE]
+> Wenn Sie den Anbieter DefaultSSOSessionProvider zum Speichern von Ansprüchen in einer Sitzung verwenden, müssen Sie sicherstellen, dass alle Ansprüche, die an die Anwendung zurückgegeben werden müssen oder in späteren Schritten von Vorbedingungen genutzt werden, in der Sitzung gespeichert oder durch Lesen aus dem Benutzerprofil im Verzeichnis ergänzt werden. Dadurch wird sichergestellt, dass bei Ihrer Authentifizierung bei fehlenden Ansprüche keine Fehler auftreten.
 
 ```XML
 <TechnicalProfile Id="SM-AAD">

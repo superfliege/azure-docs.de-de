@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 09/07/2017
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: aa0c26a722ecddabee70127bf4b4fd67855a1523
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfigurieren, um strukturierten Inhalt aus JSON-Blobs in Azure Blob Storage zu extrahieren.
@@ -36,7 +36,7 @@ Die Indizierung von JSON-Blobs ähnelt der regulären Dokumentextraktion in eine
 
 Der erste Schritt umfasst die Bereitstellung der Datenquellen-Verbindungsinformationen, die vom Indexer verwendet werden. Mit dem Datenquellentyp, der hier als `azureblob` angegeben ist, wird bestimmt, welches Datenextraktionsverhalten vom Indexer aufgerufen wird. Bei der JSON-Blobindizierung ist die Datenquellendefinition für JSON-Dokumente und -Arrays gleich. 
 
-    POST https://[service name].search.windows.net/datasources?api-version=2016-09-01
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -88,7 +88,7 @@ Die Konfiguration wird im Text eines Indexervorgangs bereitgestellt. Wir wissen,
 
 Eine vollständige Anforderung kann beispielsweise wie folgt aussehen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 
@@ -190,7 +190,7 @@ Sie können auch mit einem nullbasierten Index auf einzelne Arrayelemente verwei
 
 Das folgende Beispiel enthält eine vollständig angegebene Indexernutzlast mit Feldzuordnungen:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

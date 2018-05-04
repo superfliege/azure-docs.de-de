@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP"
-description: "Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP"
+title: Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP
+description: Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 10ed297180f68fcaf006f2778990879be02f994d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure Security and Compliance Blueprint – Automatisierung von Webanwendungen für FedRAMP
 
@@ -76,10 +76,9 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 * **Azure Active Directory**
 * **Azure Resource Manager**
 * **Azure Log Analytics**
+    - (1) Log Analytics-Arbeitsbereich
 * **Azure Automation**
     - (1) Automation-Konto
-* **Operations Management Suite**
-    - (1) OMS-Arbeitsbereich
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
 
@@ -136,7 +135,7 @@ Azure Disk Encryption wird zur Verschlüsselung der Datenträger von virtuellen 
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) bietet umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Dateisystemintegrität. 
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) bietet eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. 
 
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in Ihrem Abonnement ausgeführt wurden.
 - **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure-Speicherprotokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
@@ -154,7 +153,7 @@ Die Lösung verwendet Azure Key Vault zum Verwalten von Schlüsseln und geheimen
 Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-Umgebung.
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft.
 - Die Authentifizierung mit einer vom Kunden bereitgestellten Webanwendung kann mit Azure AD ausgeführt werden. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).  
-- Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) ermöglicht eine präzise Zugriffsverwaltung für Azure. Der Abonnementzugriff ist auf den Abonnementadministrator beschränkt, und der Zugriff auf Ressourcen kann je nach Benutzerrolle eingeschränkt werden.
+- Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) ermöglicht eine präzise Zugriffsverwaltung für Azure. Der Abonnementzugriff ist auf den Abonnementadministrator beschränkt, und der Zugriff auf Ressourcen kann je nach Benutzerrolle eingeschränkt werden.
 - Eine bereitgestellte IaaS-Active-Directory-Instanz bietet Identitätsverwaltung auf Betriebssystemebene für bereitgestellte virtuelle IaaS-Computer.
    
 ### <a name="compute-resources"></a>Computeressourcen
@@ -182,17 +181,17 @@ Eine Management Jumpbox (Bastionhost) bietet Administratoren eine sichere Verbin
 
 ### <a name="patch-management"></a>Patchverwaltung
 
-Virtuelle Windows-Computer, die durch diese Azure Security and Compliance Blueprint-Automatisierung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die OMS Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um Patches auf Windows-Servern bei Bedarf bereitzustellen.
+Virtuelle Windows-Computer, die durch diese Azure Security and Compliance Blueprint-Automatisierung bereitgestellt werden, sind standardmäßig so konfiguriert, dass sie automatische Updates von Windows Update Service erhalten. Diese Lösung stellt auch die Azure Automation-Lösung bereit, mit der Updatebereitstellungen erstellt werden können, um bei Bedarf Patches auf Windows-Servern bereitzustellen.
 
 ### <a name="operations-management"></a>Operations Management
 
 #### <a name="log-analytics"></a>Log Analytics
 
-Log Analytics ist ein Dienst in der [Operations Management Suite (OMS)](https://azure.microsoft.com/services/log-analytics/), der die Erfassung und Analyse von Daten ermöglicht, die von Ressourcen in Ihren Azure- und lokalen Umgebungen generiert werden.
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist ein Dienst, der die Erfassung und Analyse von Daten ermöglicht, die von Ressourcen in Ihren Azure- und lokalen Umgebungen generiert werden.
 
-#### <a name="oms-solutions"></a>OMS-Lösungen
+#### <a name="management-solutions"></a>Verwaltungslösungen
 
-Die folgenden OMS-Lösungen werden als Teil dieser Lösung vorinstalliert:
+Die folgenden Verwaltungslösungen werden als Teil dieser Lösung vorinstalliert:
 - [AD-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)
 - [Antischadsoftwarebewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware)
 - [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)

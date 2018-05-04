@@ -16,17 +16,17 @@ ms.date: 07/20/2017
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 840cd28b1b5781428e23f36fe5904cd445942e69
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 480c1984219a5e2fb79e8eb81ed87710c79611e4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
 
-> [!NOTE]
-> Diese Funktion befindet sich derzeit in der öffentlichen Vorschauphase. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Die Funktion ist während der öffentlichen Vorschauphase in allen Azure Active Directory-Abonnements verfügbar. Sobald die Funktion die allgemeine Verfügbarkeit erreicht hat, ist für einige Aspekte der Funktion dann aber unter Umständen ein Abonnement vom Typ [Azure Active Directory Premium](active-directory-get-started-premium.md) erforderlich.
+> [!IMPORTANT]
+> Diese Methode zur Steuerung der Tokengültigkeitsdauer wird als veraltet markiert.  Während es verfügbar bleibt, bis das Ersatzfeature bereit ist, werden die mit dieser Methode erstellten Richtlinien zur Tokengültigkeitsdauer nicht mehr funktionieren, sobald sie veraltet sind. 
 >
 >
 

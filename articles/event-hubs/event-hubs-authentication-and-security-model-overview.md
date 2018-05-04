@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
-ms.author: sethm;clemensv
-ms.openlocfilehash: bfe7b95236c1a5336c1bb3a93d0eb5ca880adabf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: 5264930dcb802c2a58abc179bdd0041acc9f58d0
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
 
@@ -94,9 +94,9 @@ Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Tok
 
 Wenn der Client Daten an einen Event Hub sendet, markiert er seine Sendeanforderung mit dem Token. Um Lauschangriffe und Diebstahl von Token von einem Angreifer zu verhindern, muss die Kommunikation zwischen dem Client und dem Event Hub über einen verschlüsselten Kanal erfolgen.
 
-### <a name="blacklisting-clients"></a>Eintragen von Clients in eine Blockliste
+### <a name="blacklisting-clients"></a>Eintragen von Clients in eine schwarze Liste
 
-Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine Blockliste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
+Wenn ein Token von einem Angreifer gestohlen wurde, kann der Angreifer den Client imitieren, dessen Token gestohlen wurde. Wird ein Client in eine schwarze Liste eingetragen, wird dieser Client als nicht verwendbar gekennzeichnet, bis er ein neues Token erhalten hat, das einen anderen Herausgeber verwendet.
 
 ## <a name="authentication-of-back-end-applications"></a>Authentifizierung von Back-End-Anwendungen
 

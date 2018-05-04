@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/06/2017
-ms.openlocfilehash: 79e807a1ee52c4b6b18671e25785ed14bd79624a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a8f272403a0c6903521acc7cc45935c4e5bc419c
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK v1.x: Einrichten und Ausführen von Analyseaufträgen mit der Azure Stream Analytics-API für .NET
 Erfahren Sie, wie Sie mit der Azure Stream Analytics-API für .NET über das Management .NET SDK Analyseaufträge einrichten und ausführen. Richten Sie ein Projekt ein, erstellen Sie Eingabe- und Ausgabequellen sowie Transformationen, und starten und beenden Sie Aufträge. Für Ihre Analyseaufträge können Sie Daten aus dem Blob-Speicher oder einem Event Hub streamen.
@@ -45,7 +45,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
         New-AzureResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 
-* Richten Sie eine Eingabequelle und ein Ausgabeziel ein. Weitere Anweisungen zum Einrichten einer Beispieleingabe finden Sie unter [Hinzufügen von Eingaben](stream-analytics-add-inputs.md), und Anweisungen zum Einrichten einer Beispielausgabe finden Sie unter [Hinzufügen von Ausgaben](stream-analytics-add-outputs.md).
+* Richten Sie eine Eingabequelle und ein Ausgabeziel für den Auftrag ein, mit dem eine Verbindung hergestellt werden soll.
 
 ## <a name="set-up-a-project"></a>Einrichten eines Projekts
 Verwenden Sie zum Erstellen eines Analyseauftrags die Stream Analytics-API für .NET, und richten Sie zuerst das Projekt ein.

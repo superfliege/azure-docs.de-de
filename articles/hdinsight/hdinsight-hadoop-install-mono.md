@@ -1,25 +1,25 @@
 ---
-title: "Installieren oder Aktualisieren von Mono in HDInsight – Azure | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine bestimmte Version von Mono im HDInsight-Cluster verwenden. Mono dient zum Ausführen von .NET-Anwendungen in Linux-basierten HDInsight-Clustern."
+title: Installieren oder Aktualisieren von Mono in HDInsight – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine bestimmte Version von Mono im HDInsight-Cluster verwenden. Mono dient zum Ausführen von .NET-Anwendungen in Linux-basierten HDInsight-Clustern.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.service: hdinsight
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: 555f82ec9351c8c3610ad99a95159cc47d2ee539
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 165f1d8175c7c7b58a5eec02a208b81fe73cb5f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>Installieren oder Aktualisieren von Mono in HDInsight
 
@@ -31,7 +31,7 @@ Mono wird in HDInsight 3.4 oder höher installiert und zum Ausführen von .NET-A
 
 Dieses Skript akzeptiert die folgenden Parameter:
 
-* __Mono-Versionsnummer__: Die zu installierende Version von Mono. Die Version muss unter [https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/) verfügbar sein.
+* __Mono-Versionsnummer__: Die zu installierende Version von Mono. Die Version muss auf [https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/](https://download.mono-project.com/repo/debian/dists/wheezy/snapshots/) verfügbar sein.
 
 Mit dem Skript werden die folgenden Mono-Pakete installiert:
 
@@ -41,7 +41,7 @@ Mit dem Skript werden die folgenden Mono-Pakete installiert:
 
 ## <a name="the-script"></a>Das Skript
 
-__Speicherort des Skripts__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
+__Skriptspeicherort__: [https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash](https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash)
 
 __Anforderungen__:
 

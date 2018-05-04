@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/19/2018
 ms.author: tomsh
-ms.openlocfilehash: dfc0128247ad86e9fa6932f8b05c91ae7da0d950
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 29a479ffee3488768f1882c0938b0ecfdd55218b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-white-papers"></a>Azure Security-Whitepaper
 | | |
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 |[Azure-Netzwerksicherheit](azure-network-security.md)|Stellt die Vielzahl von Netzwerkkontrollen vor, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Der Fokus liegt auf kundenseitigen Netzwerksicherheitskontrollen.|
 |[Azure-Betriebssicherheit](azure-operational-security.md)|Bietet eine umfassende Sicht auf die kundenseitigen Technologien und Dienste für Betriebssicherheit, die mit Azure zur Verfügung stehen.|
 |[Technische Funktionen von Azure Security](azure-security-technical-capabilities.md)|Konzentriert sich auf die unterstützenden Sicherheitsfeatures und -funktionen für Azure Storage, Azure SQL-Datenbanken, das virtuelle Azure-Computermodell sowie die Tools und die Infrastruktur, die alles verwalten.|
-|[Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Umfasst die Sicherheit auf Verwaltungsebene, die Sicherheit auf Datenebene, die Verschlüsselung ruhender Daten, die Verschlüsselung in Aktion und die Speicheranalyse.|
+|[Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Umfasst die Sicherheit auf Verwaltungsebene, die Sicherheit auf Datenebene, die Verschlüsselung ruhender Daten, die Verschlüsselung in Aktion und die Speicheranalyse.|
 |[Datenklassifizierung für Cloud Readiness](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03) |Dieses herunterladbare Whitepaper stellt die Grundlagen der Datenklassifizierung und ihren Wert im Kontext von Cloud Computing vor. Organisationen, die Cloud Computing für die künftige Nutzung bewerten, oder Organisationen, die derzeit Clouddienste nutzen und nach Möglichkeiten zur Optimierung der Datenverwaltung suchen, werden von diesem Whitepaper am meisten profitieren.|
 |[Governance in Azure](governance-in-azure.md)|Erläutert die in Azure integrierten Sicherheits- und Governancefunktionen. Die wichtigsten erörterten Governancethemen sind: Implementierung von Richtlinien, Prozessen und Verfahren für Ihre Organisationsziele; Sicherheit und kontinuierliche Einhaltung von Organisationsstandards; Benachrichtigung und Überwachung.
 |[Isolation in der öffentlichen Azure-Cloud](azure-isolation.md)|Beschreibt, wie Azure die Isolation sowohl gegen schädliche als auch gegen nicht schädliche Benutzer ermöglicht. Dient als Leitfaden für die Architektur von Cloudlösungen, der Architekten verschiedene Isolationsmöglichkeiten bietet. Der Schwerpunkt liegt auf kundenseitigen Sicherheitskontrollen. SLAs, Preismodelle und Aspekte von DevOps-Methoden werden nicht behandelt.|

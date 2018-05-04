@@ -1,10 +1,10 @@
 ---
-title: "Tutorial: Azure Active Directory-Integration mit Bpm’online | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bpm’online konfigurieren."
+title: 'Tutorial: Azure Active Directory-Integration mit Bpm’online | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bpm’online konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 052db91d-ccff-4098-8ae3-2f76eca90539
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0214fcbdde886bd14d84917e496568027d417096
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9359fc76d2198cab8e61b151fcd8672cb6b65b6e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Tutorial: Azure Active Directory-Integration mit Bpm’online
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Bpm’online aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -101,7 +101,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Bpm’online** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
@@ -118,37 +118,18 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<client site name>.bpmonline.com/`.
      
-    > [!NOTE] 
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Bpm’online](mailto:support@bpmonline.com), um diese Werte zu erhalten. 
 
-5. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_endpoint.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-bpmonline-tutorial/tutorial_metadataurl.png)
      
-    d. Kehren Sie nun zur Eigenschaftenseite von **Bpm’online** zurück, und kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Copy** (Kopieren), und fügen Sie sie in Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-bpmonline-tutorial/tutorial_bpmonline_appid.png)
-
-     e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>` 
-
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-bpmonline-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-bpmonline-tutorial/tutorial_general_400.png)
     
-8. Zum Konfigurieren des einmaligen Anmeldens bei **Bpm’online** müssen Sie die **Metadaten-URL** an das [Bpm’online-Supportteam](mailto:support@bpmonline.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+7. Zum Konfigurieren des einmaligen Anmeldens bei **Bpm’online** müssen Sie die **Verbundmetadaten-URL der App** an das [Bpm’online-Supportteam](mailto:support@bpmonline.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -180,7 +161,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-bpmonline-test-user"></a>Erstellen eines Bpm’online-Testbenutzers
 

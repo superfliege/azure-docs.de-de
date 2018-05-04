@@ -1,24 +1,24 @@
 ---
-title: "Erstellen eines Namespace und einer Consumergruppe für Azure Event Hubs anhand einer Vorlage | Microsoft-Dokumentation"
+title: Erstellen eines Namespace und einer Consumergruppe für Azure Event Hubs anhand einer Vorlage | Microsoft-Dokumentation
 description: Erstellen eines Event Hubs-Namespace mit einem Event Hub und einer Consumergruppe mithilfe von Azure Resource Manager-Vorlagen
 services: event-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 28bb4591-1fd7-444f-a327-4e67e8878798
 ms.service: event-hubs
 ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/30/2018
-ms.author: sethm;shvija
-ms.openlocfilehash: 16fafd8f786f86dfbe701a8d4a61ad6b261b1590
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: 4b4dc5be9697bb96aec658fccbdf13b299e79e9e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit Event Hub und einer Consumergruppe mithilfe einer Azure Resource Manager-Vorlage
 
@@ -138,13 +138,13 @@ Erstellt einen Namespace des Typs **EventHubs** mit einem Event Hub und einer Co
 
 ## <a name="powershell"></a>PowerShell
 
-```powershell
+```azurepowershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json
 ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli-interactive
+```azurecli
 azure config mode arm
 
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-event-hubs-create-event-hub-and-consumer-group/azuredeploy.json][]

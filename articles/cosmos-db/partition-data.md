@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/14/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0f4825d7393b4507b1cd512f3e33c5637fea8ba2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 35636543ac4cbd260e9db2f6ca5d1548a7329858
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partitionieren und Skalieren in Azure Cosmos DB
 
@@ -49,7 +49,7 @@ Wie funktioniert die Partitionierung? Jedes Element muss zur eindeutigen Identif
 So funktioniert die Partitionierung in Azure Cosmos DB:
 
 * Sie stellen einen Azure Cosmos DB-Container mit einem Durchsatz von **T** RU/s (Anforderungen pro Sekunde) bereit.
-* Im Hintergrund stellt Azure Cosmos DB die Partitionen bereit, die zum Verarbeiten von **T** Anforderungen pro Sekunde erforderlich sind. Wenn **T** höher ist als der maximale Durchsatz pro Partition **t**, stellt Azure Cosmos DB **N = T/t** Partitionen bereit.
+* Im Hintergrund stellt Azure Cosmos DB die Partitionen bereit, die zum Verarbeiten von **T** Anforderungen pro Sekunde erforderlich sind. Wenn **T** höher ist als der maximale Durchsatz pro Partition **t**, stellt Azure Cosmos DB **N = T/t** Partitionen bereit. Der Wert des maximalen Durchsatzes pro Partition (t) wird von Azure Cosmos DB konfiguriert. Dieser Wert wird basierend auf dem gesamten bereitgestellten Durchsatz und der verwendeten Hardwarekonfiguration zugewiesen. 
 * Azure Cosmos DB ordnet den Schlüsselbereich der Partitionsschlüsselhashes den **N** Partitionen gleichmäßig zu. Daher hostet jede (physische) Partition **1/N** Partitionsschlüsselwerte (logische Partitionen).
 * Wenn eine physische Partition **p** ihren Speichergrenzwert erreicht, teilt Azure Cosmos DB **p** nahtlos in zwei neue Partitionen (**p1** und **p2**) auf. Die Werte werden ungefähr zur Hälfte der Schlüssel auf die neuen Partitionen aufgeteilt. Dieser Aufteilungsvorgang ist für Ihre Anwendung vollkommen unsichtbar. Wenn eine physische Partition ihr Speicherlimit erreicht und alle Daten in der physischen Partition zum selben logischen Partitionsschlüssel gehören, erfolgt keine Aufteilung. Dies liegt daran, dass sich alle Daten für einen einzelnen logischen Partitionsschlüssel in derselben physischen Partition befinden müssen. In diesem Fall sollte eine andere Partitionsschlüsselstrategie angewendet werden.
 * Wenn Sie einen höheren Durchsatz als **t*N** bereitstellen, teilt Azure Cosmos DB mindestens eine Ihrer Partitionen auf, um den höheren Durchsatz zu unterstützen.
@@ -146,7 +146,7 @@ Ergebnisse:
 }
 ```
 
-### <a name="table-api"></a>Tabellen-API
+### <a name="table-api"></a>Tabelle-API
 
 Um eine Tabelle mit der Tabellen-API zu erstellen, verwenden Sie die `CreateIfNotExists`-Methode. 
 

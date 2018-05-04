@@ -3,17 +3,17 @@ title: Continuous Integration und Continuous Deployment (CI/CD) mit Azure Contai
 description: Verwenden Sie Azure Container Service mit Docker Swarm, eine Azure-Containerregistrierung und Visual Studio Team Services zum laufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
 services: container-service
 author: jcorioland
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 38877afb63e993eeaab723a6ea5f4c40d3c956a5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Visual Studio Team Services
 

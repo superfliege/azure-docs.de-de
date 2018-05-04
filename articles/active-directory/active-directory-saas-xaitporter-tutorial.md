@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 2012d990f7cdcb8c12da5f16db518b261b06a5b7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5e18850d902e5a11da904af719e598c4e247ce0d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Tutorial: Azure Active Directory-Integration mit XaitPorter
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von XaitPorter aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -113,59 +113,39 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.xaitporter.com`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den XaitPorter-Client](https://www.xait.com/support/), um diese Werte zu erhalten. 
-
-4. Klicken Sie auf die Schaltfläche **Save** .
-
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-xaitporter-tutorial/tutorial_general_400.png)
-
-5. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_endpoint.png)
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den XaitPorter-Client](https://www.xait.com/support/), um diese Werte zu erhalten.
      
-    d. Kehren Sie nun zur Eigenschaftenseite von **XaitPorter** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_appid.png)
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen. 
 
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-xaitporter-tutorial/tutorial_xaitporter_certificate.png) 
 
-6. Geben Sie die **IP-Adresse** oder **Metadaten-URL** an das [SmartRecruiters-Supportteam](https://www.smartrecruiters.com/about-us/contact-us/) weiter, damit es die Whitelist so konfigurieren kann, dass die IP-Adresse über Ihre XaitPorter-Instanz erreichbar ist. 
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-xaitporter-tutorial/tutorial_general_400.png)
+
+6. Geben Sie die **IP-Adresse** oder **Verbundmetadaten-URL der App** an das [SmartRecruiters-Supportteam](https://www.smartrecruiters.com/about-us/contact-us/) weiter, damit es die Whitelist so konfigurieren kann, dass die IP-Adresse über Ihre XaitPorter-Instanz erreichbar ist. 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der XaitPorter-Unternehmenswebsite als Administrator an.
 
 8. Klicken Sie auf **Admin**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/user1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-xaitporter-tutorial/user1.png)
 
 9. Wählen Sie in der Dropdownliste **System Setup** (Systemsetup) die Option **Manage Single Sign-On** (Einmaliges Anmelden verwalten) aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/user2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-xaitporter-tutorial/user2.png)
 
 10. Führen Sie im Abschnitt **MANAGE SINGLE SIGN-ON** (EINMALIGES ANMELDEN VERWALTEN) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-xaitporter-tutorial/user3.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-xaitporter-tutorial/user3.png)
 
     a. Aktivieren Sie **Enable Single Sign-On Authentication** (SSO-Authentifizierung aktivieren).
 
-    b. Fügen Sie im Textfeld **Identity Provider Settings** (Identitätsanbietereinstellungen) die **Metadaten-URL** ein, die Sie in Azure kopiert haben, und klicken Sie auf **Fetch** (Abrufen).
+    b. Fügen Sie im Textfeld **Identity Provider Settings** (Identitätsanbietereinstellungen) die **Verbundmetadaten-URL der App** ein, die Sie im Azure-Portal kopiert haben, und klicken Sie auf **Fetch** (Abrufen).
 
     c. Aktivieren Sie **Enable Autocreation of Users** (Automatische Erstellung von Benutzern aktivieren).
 
     d. Klicken Sie auf **OK**.
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -197,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-xaitporter-test-user"></a>Erstellen eines XaitPorter-Testbenutzers
 

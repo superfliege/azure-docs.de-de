@@ -2,23 +2,23 @@
 title: Verwenden von Azure Functions zum Senden von Daten an Kafka in HDInsight | Microsoft Docs
 description: Erfahren Sie, wie eine Azure-Funktion verwendet wird, um Daten in Kafka in HDInsight zu schreiben.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: cgronlun
 editor: cgronlun
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
-ms.topic: article
+ms.devlang: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/09/2018
 ms.author: larryfr
-ms.openlocfilehash: c1c03cfcbcb7e0bfdb4a631b9e2ae568f0684069
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6c462f9fe5e152c82be1a2b8643ee35d260a90f6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-kafka-on-hdinsight-from-an-azure-function-app"></a>Verwenden von Kafka in HDInsight aus einer Azure Functions-App
 
@@ -52,7 +52,7 @@ Kafka in HDInsight stellt keine API im öffentlichen Internet bereit. Zum Veröf
 
     Weitere Informationen zu Kafka und virtuellen Netzwerken finden Sie im Dokument [Herstellen einer Verbindung mit Kafka über ein virtuelles Netzwerk](apache-kafka-connect-vpn-gateway.md).
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 Kafka in HDInsight ist in einem Azure Virtual Network enthalten. Azure Functions kann mit dem virtuellen Netzwerk kommunizieren, indem ein Point-to-Site-Gateway verwendet wird. Die folgende Abbildung zeigt ein Diagramm dieser Netzwerktopologie:
 
@@ -70,7 +70,7 @@ Die Informationen in diesem Abschnitt bereiten den Kafka-Cluster darauf vor, Dat
 
 Standardmäßig gibt Zookeeper den Domänennamen der Kafka-Broker an Clients zurück. Diese Konfiguration funktioniert nicht ohne einen DNS-Server, weil der Client (Azure Functions) keine Namen für das virtuelle Netzwerk auflösen kann. Verwenden Sie für diese Konfiguration die folgenden Schritte, um Kafka zum Ankündigen von IP-Adressen anstelle von Domänennamen zu konfigurieren:
 
-1. Wechseln Sie in Ihrem Webbrowser zu „https://CLUSTERNAME.azurehdinsight.net“. Ersetzen Sie __CLUSTERNAME__ durch den Namen von Kafka im HDInsight-Cluster.
+1. Wechseln Sie in Ihrem Webbrowsers zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie __CLUSTERNAME__ durch den Namen von Kafka im HDInsight-Cluster.
 
     Geben Sie bei entsprechender Aufforderung den HTTPS-Benutzernamen und das Kennwort für den Cluster ein. Die Ambari-Webbenutzeroberfläche für den Cluster wird angezeigt.
 

@@ -1,11 +1,11 @@
 ---
-title: "VPN-Gatewayeinstellungen für Azure Stack | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zu Einstellungen für VPN-Gateways, die Sie mit Azure Stack verwenden."
+title: VPN-Gatewayeinstellungen für Azure Stack | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu Einstellungen für VPN-Gateways, die Sie mit Azure Stack verwenden.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
 ms.service: azure-stack
 ms.workload: na
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: 1eba5df93b461eb22ab8341b4498682957c9298a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-Gatewaykonfigurationseinstellungen für Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk in Azure Stack und einem Remote-VPN-Gateway gesendet wird. Das Remote-VPN-Gateway kann sich in Azure befinden, es kann sich dabei aber auch um ein Gerät in Ihrem Datencenter oder um ein Gerät an einem anderen Standort handeln.  Falls die beiden Endpunkte über Netzwerkkonnektivität verfügen, können Sie zwischen den beiden Netzwerken eine sichere S2S-VPN-Verbindung (Site-to-Site) herstellen.
 
@@ -160,7 +160,7 @@ Im Gegensatz zu Azure, das mehrere Angebote als Initiator und Antwortdienst unte
 |IKE-Version |IKEv2 |
 |Verschlüsselung und Hashalgorithmen (Verschlüsselung)     | GCMAES256|
 |Verschlüsselung und Hashalgorithmen (Authentifizierung) | GCMAES256|
-|SA-Gültigkeitsdauer (Zeit)  | 14.400 Sekunden |
+|SA-Gültigkeitsdauer (Zeit)  | 27.700 Sekunden |
 |SA-Gültigkeitsdauer (Bytes) | 819.200       |
 |Perfect Forward Secrecy (PFS) |PFS2048 |
 |Dead Peer Detection | Unterstützt|  

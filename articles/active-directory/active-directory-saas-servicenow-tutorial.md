@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: d893b55e2e771035bbd1097da678830fafb24e7a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bc5b41da83f183aaf62723212f7197fb50dc536d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Tutorial: Azure Active Directory-Integration mit ServiceNow
 
@@ -119,37 +119,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird an späterer Stelle im Tutorial erläutert.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+4. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus: 
 
-    ![Downloadlink für das Zertifikat](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+
+    a. Klicken Sie auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App**  zu kopieren und in Editor einzufügen. Die Verbundmetadaten-URL der App wird später in diesem Tutorial verwendet.
+
+    b. Klicken Sie auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-servicenow-tutorial/tutorial_general_400.png)
 
-6. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
+6. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/appregistrations.png)
-
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/endpointicon.png)
-    
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/endpoint.png)
-
-    d. Kehren Sie nun zur Eigenschaftenseite von **ServiceNow** zurück, und kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.  Kopieren Sie den generierten Wert in Editor, da diese Metadaten-URL später im Tutorial verwendet wird.
-
-7. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
-
-8. Aktivieren Sie das Plug-In **Integration – Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter), indem Sie die nächsten Schritte ausführen:
+7. Aktivieren Sie das Plug-In **Integration – Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter), indem Sie die nächsten Schritte ausführen:
 
     a. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Systemdefinition** auf der Suchleiste, und klicken Sie auf **Plug-Ins**.
 
@@ -163,9 +147,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Klicken Sie auf die Schaltfläche **Aktivieren**.
 
-9. Es gibt zwei Möglichkeiten für die Konfiguration von **ServiceNow**: automatisch und manuell.
+8. Es gibt zwei Möglichkeiten für die Konfiguration von **ServiceNow**: automatisch und manuell.
 
-10. Führen Sie für die automatische Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
+9. Führen Sie für die automatische Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
 
     a. Wechseln Sie zurück zur **ServiceNow**-SSO-Seite im Azure-Portal.
 
@@ -201,15 +185,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     * Klicken Sie oben rechts auf der Seite auf **Aktivieren**.
 
-11. Führen Sie für die manuelle Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
+10. Führen Sie für die manuelle Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
 
-12. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
+11. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
-13. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **Eigenschaften**.
+12. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **Eigenschaften**.
 
     ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_06.png "App-URL konfigurieren")
 
-14. Führen Sie im Dialogfeld **Multiple Provider SSO Properties** die folgenden Schritte aus:
+13. Führen Sie im Dialogfeld **Multiple Provider SSO Properties** die folgenden Schritte aus:
 
     ![App-URL konfigurieren](./media/active-directory-saas-servicenow-tutorial/ic7694981.png "App-URL konfigurieren")
 
@@ -265,7 +249,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie im Dialogfeld **Import Identity Provider Metadata** (Identitätsanbieter-Metadaten importieren) die Option **URL** aus.
 
-    b. Geben Sie die im Azure-Portal generierte **Metadaten-URL** ein.
+    b. Geben Sie die **Verbundmetadaten-URL der App** ein, die Sie aus dem Azure-Portal kopiert haben.
 
     c. Klicken Sie auf **Importieren**.
 
@@ -358,7 +342,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificate.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-servicenow-tutorial/tutorial_servicenow_certificates.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -459,11 +443,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im Azure-Portal zum Abschnitt **ServiceNow > Attribute > Einmaliges Anmelden**, und weisen Sie dem **nameidentifier**-Attribut das gewünschte Feld zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (z.B. Benutzerprinzipalname) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (z.B. user_name) entsprechen.
 
     f. Klicken Sie auf **Speichern**.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen. Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
-
+ 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.

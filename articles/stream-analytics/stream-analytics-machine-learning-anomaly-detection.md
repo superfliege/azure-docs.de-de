@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/12/2018
-ms.openlocfilehash: cda5c26d4256720a8cf9af0e9abd604c979422a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
@@ -65,6 +65,8 @@ Um die einzelnen Werte aus dem Datensatz zu extrahieren, verwenden Sie die **Get
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
 Eine Anomalie eines Typs wird erkannt, wenn eine dieser Anomaliebewertungen einen Schwellenwert überschreitet. Der Schwellenwert kann jede Gleitkommazahl >= 0 sein. Der Schwellenwert ist ein Kompromiss zwischen Empfindlichkeit und Genauigkeit. Beispielsweise wäre die Erkennung bei einem niedrigeren Schwellenwert empfindlicher gegenüber Änderungen und würde mehr Warnungen generieren, während sie bei einem höheren Schwellenwert weniger empfindlich und genauer sein könnte, aber dabei würden einige Anomalien maskiert. Der genaue zu verwendende Schwellenwert hängt vom Szenario ab. Es gibt keine Obergrenze, aber der empfohlene Bereich ist 3,25 bis 5. 
+
+Der im Beispiel genannte Wert 3,25 ist lediglich ein empfohlener Ausgangspunkt. Optimieren Sie den Wert, indem Sie die Vorgänge für Ihr eigenes Dataset ausführen, und beobachten Sie den Ausgabewert, bis Sie einen akzeptablen Schwellenwert erreichen.
 
 ## <a name="anomaly-detection-algorithm"></a>Anomalieerkennungsalgorithmus
 
@@ -118,19 +120,19 @@ Sehen wir uns die Ungewöhnlichkeitsberechnung im Detail an (es wird angenommen,
    - event_value/90th_percentile, wenn event_value > 90th_percentile  
    - 10th_percentile/event_value, wenn event_value < 10th_percentile  
 
-2. **Langsamer positiver Trend:** Eine Trendlinie über den Ereigniswerten im Verlaufsfenster wird berechnet, und wir suchen nach einem positiven Trend innerhalb der Linie. Der Ungewöhnlichkeitswert wird wie folgt berechnet:  
+2. **Langsamer positiver Trend:** Eine Trendlinie über den Ereigniswerten im Verlaufsfenster wird berechnet, und der Vorgang sucht nach einem positiven Trend innerhalb der Linie. Der Ungewöhnlichkeitswert wird wie folgt berechnet:  
 
    - Slope, wenn Slope positiv ist  
    - Andernfalls 0 
 
-1. **Langsamer negativer Trend:** Eine Trendlinie über den Ereigniswerten im Verlaufsfenster wird berechnet, und wir suchen nach einem negativen Trend innerhalb der Linie. Der Ungewöhnlichkeitswert wird wie folgt berechnet: 
+3. **Langsamer negativer Trend:** Eine Trendlinie über den Ereigniswerten im Verlaufsfenster wird berechnet, und der Vorgang sucht nach einem negativen Trend innerhalb der Linie. Der Ungewöhnlichkeitswert wird wie folgt berechnet: 
 
    - Slope, wenn Slope negativ ist  
    - Andernfalls 0  
 
 Nachdem der Ungewöhnlichkeitswert für das eingehende Ereignis berechnet wurde, wird ein Martingalwert basierend auf dem Ungewöhnlichkeitswert berechnet (Details zur Berechnung des Martingalwerts finden Sie im [Machine Learning-Blog](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)). Dieser Martingalwert wird als Anomaliebewertung zurückgegeben. Der Martingalwert nimmt als Reaktion auf ungewöhnliche Werte langsam zu, wodurch der Detektor robust gegenüber sporadischen Veränderungen bleibt und Fehlalarme verringert werden. Es verfügt auch über eine nützliche Eigenschaft: 
 
-Wahrscheinlichkeit [t ist so vorhanden, dass M<sub>t</sub> > λ ] < 1/λ, wobei M<sub>t</sub> der Martingalwert zum Zeitpunkt t und λ ein reeller Wert ist. Wenn wir z.B. warnen, wenn M<sub>t</sub>>100, dann ist die Wahrscheinlichkeit von falsch positiven Warnungen kleiner als 1/100.  
+Wahrscheinlichkeit [t ist so vorhanden, dass M<sub>t</sub> > λ ] < 1/λ, wobei M<sub>t</sub> der Martingalwert zum Zeitpunkt t und λ ein reeller Wert ist. Z.B. bei einer Warnung, wenn M<sub>t</sub>>100, dann ist die Wahrscheinlichkeit von falsch positiven Warnungen kleiner als 1/100.  
 
 ## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Anleitung für die Verwendung des bidirektionalen Niveauändernungsdetektors 
 
@@ -140,7 +142,7 @@ Die folgenden Aspekte sollten bei der Verwendung dieses Detektors beachtet werde
 
 1. Wenn in der Zeitreihe plötzlich ein Wertanstieg oder -abfall auftritt, erkennt der AnomalyDetection-Operator dies. Aber das Erkennen der Rückkehr zur Normalität erfordert mehr Planung. Wenn sich eine Zeitreihe vor der Anomalie in einem stabilen Zustand befand, was erreicht werden kann, indem das Erkennungsfenster des AnomalyDetection-Operators auf höchstens die halbe Länge der Anomalie festgelegt wird. Dieses Szenario geht davon aus, dass die minimale Dauer der Anomalie vorzeitig abgeschätzt werden kann und dass es genügend Ereignisse in diesem Zeitraum gibt, um das Modell ausreichend zu trainieren (mindestens 50 Ereignisse). 
 
-   Dies wird in den Abbildungen 1 und 2 unten durch eine Änderung der oberen Grenze dargestellt (die gleiche Logik gilt auch für eine Änderung der unteren Grenze). In beiden Abbildungen stellen sind Wellenformen eine anormale Änderung des Niveaus dar. Vertikale orangefarbene Linien kennzeichnen Hopgrenzen, und die Hopgröße entspricht dem Erkennungsfenster, das im AnomalyDetection-Operator angegeben wird. Die grünen Linien geben die Größe des Trainingsfensters an. In Abbildung 1 ist die Hopgröße identisch mit der Zeit, die die Anomalie dauert. In Abbildung 2 ist die Hopgröße halb so groß wie die Zeit, die die Anomalie dauert. In allen Fällen wird eine Änderung nach oben erkannt, weil das für die Bewertung verwendete Modell mit normalen Daten trainiert wurde. Basierend auf der Funktionsweise des bidirektionalen Niveauänderungsdetektors müssen wir jedoch die Normalwerte aus dem Trainingsfenster des Modells ausschließen, das die Rückkehr zur Normalität bewertet. In Abbildung 1 enthält das Training des Bewertungsmodells einige normale Ereignisse, sodass eine Rückkehr zum Normalzustand nicht erkannt werden kann. In Abbildung 2 enthält das Training jedoch nur den anomalen Teil, sodass sicherstellt wird, dass die Rückkehr zur Normalität erkannt wird. Alles, was kleiner als die Hälfte ist, funktioniert aus dem gleichen Grund ebenfalls, wohingegen alles, was größer ist, auch einen Teil der normalen Ereignisse beinhalten wird. 
+   Dies wird in den Abbildungen 1 und 2 unten durch eine Änderung der oberen Grenze dargestellt (die gleiche Logik gilt auch für eine Änderung der unteren Grenze). In beiden Abbildungen stellen sind Wellenformen eine anormale Änderung des Niveaus dar. Vertikale orangefarbene Linien kennzeichnen Hopgrenzen, und die Hopgröße entspricht dem Erkennungsfenster, das im AnomalyDetection-Operator angegeben wird. Die grünen Linien geben die Größe des Trainingsfensters an. In Abbildung 1 ist die Hopgröße identisch mit der Zeit, die die Anomalie dauert. In Abbildung 2 ist die Hopgröße halb so groß wie die Zeit, die die Anomalie dauert. In allen Fällen wird eine Änderung nach oben erkannt, weil das für die Bewertung verwendete Modell mit normalen Daten trainiert wurde. Basierend auf der Funktionsweise des bidirektionalen Niveauänderungsdetektors müssen jedoch die Normalwerte aus dem Trainingsfenster des Modells ausgeschlossen werden, das die Rückkehr zur Normalität bewertet. In Abbildung 1 enthält das Training des Bewertungsmodells einige normale Ereignisse, sodass eine Rückkehr zum Normalzustand nicht erkannt werden kann. In Abbildung 2 enthält das Training jedoch nur den anomalen Teil, sodass sicherstellt wird, dass die Rückkehr zur Normalität erkannt wird. Alles, was kleiner als die Hälfte ist, funktioniert aus dem gleichen Grund ebenfalls, wohingegen alles, was größer ist, auch einen Teil der normalen Ereignisse beinhalten wird. 
 
    ![AD mit Fenstergröße gleich der Anomalielänge](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 

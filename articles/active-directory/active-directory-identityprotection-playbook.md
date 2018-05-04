@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory Identity Protection-Playbook| Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war."
+title: Azure Active Directory Identity Protection-Playbook| Microsoft Docs
+description: Erfahren Sie, wie Sie mit Azure AD Identity Protection für Angreifer die Möglichkeit einschränken können, eine kompromittierte Identität oder ein Gerät auszunutzen, und wie Sie eine Identität oder ein Gerät schützen, das zuvor vermutlich oder mit Sicherheit kompromittiert war.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 60836abf-f0e9-459d-b344-8e06b8341d25
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 210d097f0719725a0ecf145ce536875a383b04e6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -50,7 +50,7 @@ Für die folgenden Schritte müssen folgende Voraussetzungen erfüllt sein:
 
 **Führen Sie die folgende Schritte aus, um eine Anmeldung über eine anonyme IP-Adresse zu simulieren,**:
 
-1. Navigieren Sie mit dem [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) zu [https://myapps.microsoft.com](https://myapps.microsoft.com).   
+1. Navigieren Sie im [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) zu [https://myapps.microsoft.com](https://myapps.microsoft.com).   
 2. Geben Sie die Anmeldeinformationen des Kontos ein, das im Bericht **Anmeldungen von anonymen IP-Adressen** enthalten sein soll.
 
 Die Anmeldung wird innerhalb von fünf bis zehn Minuten auf dem Identity Protection Dashboard angezeigt. 
@@ -90,7 +90,7 @@ Das Simulieren des unmöglichen Ortswechsels ist schwierig, da der Algorithmus e
 
 **Führen Sie die folgenden Schritte aus, um einen unmöglichen Ortswechsel zu einen atypischen Ort zu simulieren**:
 
-1. Navigieren Sie mit Ihrem Standardbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).  
+1. Navigieren Sie in Ihrem Standardbrowser zu [https://myapps.microsoft.com](https://myapps.microsoft.com).  
 2. Geben Sie die Anmeldeinformationen des Kontos ein, für das Sie ein Risikoereignis vom Typ „Unmöglicher Ortswechsel“ generieren möchten.
 3. Ändern Sie Ihren Benutzer-Agent. Sie können den Benutzer-Agent in Internet Explorer über die Entwicklertools ändern. Ändern Sie den Benutzer-Agent in Firefox oder Chrome mit einem geeigneten Add-On (User-Agent Switcher).
 4. Ändern Sie Ihre IP-Adresse. Sie können die IP-Adresse ändern, indem Sie ein VPN oder ein Tor-Add-On verwenden oder unter Azure einen neuen Computer in einem anderen Rechenzentrum einrichten.
@@ -101,9 +101,9 @@ Die Anmeldung wird innerhalb von zwei bis vier Stunden auf dem Identity Protecti
 ## <a name="simulating-vulnerabilities"></a>Simulieren von Sicherheitsrisiken
 Sicherheitsrisiken sind Schwachstellen in einer Azure AD-Umgebung, die von einem Angreifer ausgenutzt werden können. Derzeit werden in Azure AD Identity Protection drei Arten von Sicherheitsrisiken erfasst, für die andere Features von Azure AD genutzt werden. Diese Sicherheitsrisiken werden im Identity Protection Dashboard automatisch angezeigt, nachdem diese Features eingerichtet wurden.
 
-* Azure AD – [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
-* Azure AD – [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
-* Azure AD – [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
+* Azure AD – [Multi-Factor Authentication](authentication/multi-factor-authentication.md)
+* Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
+* Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
 
 
 ## <a name="testing-security-policies"></a>Testen von Sicherheitsrichtlinien

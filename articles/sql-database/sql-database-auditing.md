@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 54cd9864f6ff4bd8234e8ec55e158f4213f9f11b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -165,8 +165,18 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 3. Wechseln Sie zurück zum Blatt für die Überwachungskonfiguration, ändern Sie den Speicherzugriffsschlüssel von „Sekundär“ in „Primär“, und klicken Sie dann auf **OK**. Klicken Sie anschließend oben auf dem Blatt für die Überwachungskonfiguration auf **Speichern**.
 4. Wechseln Sie zurück zum Blatt für die Speicherkonfiguration, und generieren Sie erneut den sekundären Zugriffsschlüssel (als Vorbereitung auf den nächsten Schlüsselaktualisierungszyklus).
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von Azure PowerShell
+## <a name="additional-information"></a>Zusätzliche Informationen
 
+* Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
+
+   > [!IMPORTANT]
+   > Die Azure SQL-Datenbanküberwachung speichert 4000 Datenzeichen für Zeichenfelder in einem Überwachungsdatensatz. Wenn der von einer überwachbaren Aktion zurückgegebene Wert **statement** oder **data_sensitivity_information** mehr als 4000 Zeichen enthält, werden alle Daten über die ersten 4000 Zeichen hinaus **abgeschnitten und nicht überwacht**.
+
+* Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
+   * Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
+   * Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+
+## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von Azure PowerShell
 
 * **PowerShell-Cmdlets:**
 

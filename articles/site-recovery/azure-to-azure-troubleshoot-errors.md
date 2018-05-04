@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery-Problembehandlung für Azure-zu-Azure-Replikationsprobleme und -fehler| Microsoft-Dokumentation"
-description: "Problembehandlungsfehler und -probleme beim Replizieren von virtuellen Azure-Computern für die Notfallwiederherstellung"
+title: Azure Site Recovery-Problembehandlung für Azure-zu-Azure-Replikationsprobleme und -fehler| Microsoft-Dokumentation
+description: Problembehandlungsfehler und -probleme beim Replizieren von virtuellen Azure-Computern für die Notfallwiederherstellung
 services: site-recovery
 author: sujayt
 manager: rochakm
@@ -8,32 +8,12 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
-=======
-<<<<<<< HEAD
-ms.date: 02/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ad0281df19ac1696ebb7cc913045d49c652be84a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
-<<<<<<< HEAD
-=======
-ms.date: 02/12/2018
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-ms.author: sujayt
-ms.openlocfilehash: 7292948c40b184a58eb3e27aecac28e2227a29f8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-<<<<<<< HEAD
-ms.lasthandoff: 02/24/2018
-=======
-ms.lasthandoff: 02/13/2018
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -219,6 +199,17 @@ Um die Replikation auf dem virtuellen Computer zu aktivieren, muss der Bereitste
 
 - Wenn **provisioningState** den Status **Fehler** aufweist, wenden Sie sich mit den Informationen zur Problembehandlung an den Support.
 - Wenn **provisioningState** den Status **Aktualisieren** aufweist, wird möglicherweise gerade eine andere Erweiterung bereitgestellt. Überprüfen Sie, ob gerade Vorgänge mit dem virtuellen Computer ausgeführt werden, warten Sie, bis diese abgeschlossen sind, und wiederholen Sie dann den Auftrag **Replikation aktivieren** für die Sitewiederherstellung.
+
+
+## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/Volumeschattenkopie: Dienstfehler (Fehlercode 151025)
+**Fehlercode** | **Mögliche Ursachen** | **Empfehlungen**
+--- | --- | ---
+151025<br></br>**Meldung:** Fehler beim Installieren der Site Recovery-Erweiterung | - Der Dienst „COM+-Systemanwendung“ ist deaktiviert.</br></br>- Der Dienst „Volumeschattenkopie“ ist deaktiviert.| Legen Sie für „COM+-Systemanwendung“ und „Volumeschattenkopie“ den automatischen oder manuellen Startmodus fest.
+
+### <a name="fix-the-problem"></a>Beheben des Problems
+
+Sie können die Konsole „Dienste“ öffnen und sicherstellen, dass für „COM+-Systemanwendung“ und „Volumeschattenkopie“ die Option „Starttyp“ nicht auf „Deaktiviert“ festgelegt ist.
+  ![com-error](./media/azure-to-azure-troubleshoot-errors/com-error.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Replizieren virtueller Azure-Computer](site-recovery-replicate-azure-to-azure.md)

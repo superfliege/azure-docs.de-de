@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung"
-description: "Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung"
+title: Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
+description: Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 services: security
 documentationcenter: na
 author: simorjay
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 
@@ -120,7 +120,7 @@ In dieser Lösung wurden die folgenden Azure-Dienste verwendet. Details zur Bere
 >- Application Gateway
 >- Azure Active Directory
 >- App Service-Umgebung v2
->- OMS Log Analytics
+>- Log Analytics
 >- Azure Key Vault
 >- Netzwerksicherheitsgruppen
 >- Azure SQL-Datenbank
@@ -173,7 +173,7 @@ Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, di
 
 Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für die sichere und richtige Arbeitsweise der Lösung geöffnet sind. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
 - Aktivierte [Diagnoseprotokolle und -ereignisse](/azure/virtual-network/virtual-network-nsg-manage-log) werden im Speicherkonto gespeichert. 
-- OMS Log Analytics verbunden mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json).
+- Log Analytics verbunden mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 #### <a name="subnets"></a>Subnetze
  Stellen Sie sicher, dass jedes Subnetz seiner entsprechenden NSG zugeordnet ist.
@@ -203,12 +203,12 @@ In der SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen 
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
-[Operations Management Suite (OMS)](/azure/operations-management-suite/) kann für den Contoso Webstore umfangreiche Protokollierung aller System- und Benutzeraktivitäten bereitstellen, einschließlich Protokollierung von Karteninhaberdaten. Änderungen können auf Ihre Richtigkeit hin überprüft werden. 
+[Log Analytics](https://azure.microsoft.com/services/log-analytics) kann für den Contoso Webstore eine umfangreiche Protokollierung aller System- und Benutzeraktivitäten bereitstellen, einschließlich Protokollierung der Daten des Karteninhabers. Änderungen können auf Ihre Richtigkeit hin überprüft werden. 
 
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in Ihrem Abonnement ausgeführt wurden.
 - **Diagnoseprotokolle:** [Diagnoseprotokolle](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von jeder Ressource ausgegeben werden. Diese Protokolle umfassen Windows-Ereignissystemprotokolle, Azure Blob Storage-, Tabellen- und Warteschlangenprotokolle.
 - **Firewallprotokolle:** Das Application Gateway stellt umfassende Diagnose- und Zugriffsprotokolle bereit. Firewallprotokolle stehen für Application Gateway-Ressourcen zur Verfügung, für die WAF aktiviert ist.
-- **Protokollarchivierung:** Alle Diagnoseprotokolle sind so konfiguriert, dass sie in ein zentrales und verschlüsseltes Azure-Speicherkonto für die Archivierung mit einer definierten Beibehaltungsdauer (2 Tage) geschrieben werden. Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden. [Log Analytics](https://azure.microsoft.com/services/log-analytics) ist ein OMS-Dienst, mit dem Daten gesammelt und analysiert werden können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert wurden.
+- **Protokollarchivierung:** Alle Diagnoseprotokolle sind so konfiguriert, dass sie in ein zentrales und verschlüsseltes Azure-Speicherkonto für die Archivierung mit einer definierten Beibehaltungsdauer (2 Tage) geschrieben werden. Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden. [Log Analytics](https://azure.microsoft.com/services/log-analytics) ist ein Dienst, mit dem Daten gesammelt und analysiert werden können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert wurden.
 
 ### <a name="encryption-and-secrets-management"></a>Verschlüsselung und Verwaltung geheimer Schlüssel
 
@@ -224,7 +224,7 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 - [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Alle Benutzer für die Lösung wurden in Azure Active Directory erstellt, so auch die Benutzer, die auf die SQL-Datenbank zugreifen.
 - Authentifizierung für die Anwendung erfolgt mithilfe von Azure AD. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications). Darüber hinaus wird für Verschlüsselung der Datenbankspalten ebenfalls Azure AD verwendet, um die Anwendung in der Azure SQL-Datenbank zu authentifizieren. Weitere Informationen finden Sie unter [Always Encrypted: Schützen von vertraulichen Daten in SQL-Datenbank](/azure/sql-database/sql-database-always-encrypted-azure-key-vault). 
 - [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection) erkennt potenzielle Sicherheitsrisiken, die sich auf die Identitäten Ihrer Organisation auswirken, konfiguriert automatisierte Antworten auf erkannte verdächtige Aktionen, die im Zusammenhang mit Identitäten Ihrer Organisation stehen, untersucht verdächtige Vorfälle und führt die entsprechenden Aktionen zu deren Behebung aus.
-- Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](/azure/active-directory/role-based-access-control-configure) ermöglicht eine präzise Zugriffsverwaltung für Azure. Abonnementzugriff hat ausschließlich der Abonnementadministrator, und Azure Key Vault-Zugriff haben alle Benutzer.
+- Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure](/azure/role-based-access-control/role-assignments-portal) ermöglicht eine präzise Zugriffsverwaltung für Azure. Abonnementzugriff hat ausschließlich der Abonnementadministrator, und Azure Key Vault-Zugriff haben alle Benutzer.
 
 Weitere Informationen zum Verwenden der Sicherheitsfunktionen von Azure SQL-Datenbank finden Sie im Beispiel [Contoso Clinic Demo Application](https://github.com/Microsoft/azure-sql-security-sample).
    
@@ -266,7 +266,7 @@ Ein virtueller Computer wurde als ein Jumpbox (Bastionshost) mit den folgenden K
 
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) bietet eine zentrale Ansicht der Sicherheitsstatus sämtlicher Azure-Ressourcen. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.  
 
-Beim [Azure Advisor](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
+Bei [Azure-Ratgeber](/azure/advisor/advisor-overview) handelt es sich um einen personalisierten Cloudberater, der Sie mit bewährten Methoden zum Optimieren von Azure-Bereitstellungen unterstützt. Das Tool analysiert die Konfiguration Ihrer Ressourcen und Telemetriedaten zur Nutzung und macht anschließend Vorschläge, wie Sie die Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit Ihrer Azure-Ressourcen steigern können.
 
 [Microsoft Antimalware](/azure/security/azure-security-antimalware) für Azure Cloud Services und virtuelle Computer ist eine Echtzeitschutz-Lösung, mit der Viren, Spyware und andere Schadsoftware identifiziert und entfernt werden können. Sie können Warnungen konfigurieren, die ausgelöst werden, wenn bekannte Schadsoftware oder unerwünschte Software versucht, sich selbst zu installieren oder auf Ihren Azure-Systemen ausgeführt zu werden.
 
@@ -278,11 +278,11 @@ Verwenden Sie [Application Insights](https://azure.microsoft.com/services/applic
 
 #### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist ein Dienst in der Operations Management Suite (OMS), mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden.
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist ein Dienst in Azure, mit dem Sie Daten sammeln und analysieren können, die von Ressourcen in Ihren Cloud- und lokalen Umgebungen generiert werden.
 
-#### <a name="oms-solutions"></a>OMS-Lösungen
+#### <a name="management-solutions"></a>Verwaltungslösungen
 
-Folgende zusätzliche OMS-Lösungen sollten in Betracht gezogen und konfiguriert werden:
+Diese zusätzlichen Verwaltungslösungen sollten in Betracht gezogen und konfiguriert werden:
 - [Aktivitätsprotokollanalyse](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
 - [Azure-Netzwerkanalysen](/azure/log-analytics/log-analytics-azure-networking-analytics?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 - [Azure SQL-Analysen](/azure/log-analytics/log-analytics-azure-sql)
@@ -338,9 +338,9 @@ Es wird dringend empfohlen, eine Neuinstallation von PowerShell zu verwenden, um
     
     Ausführliche Nutzungsanweisungen finden Sie unter [Script Instructions – Deploy and Configure Azure Resources](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
     
-3. OMS-Protokollierung und -Überwachung. Nachdem die Lösung bereitgestellt ist, kann ein [Microsoft Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview)-Arbeitsbereich geöffnet werden, und anhand der Beispielvorlagen, die im Lösungsrepository bereitgestellt werden, kann veranschaulicht werden, wie ein Überwachungsdashboard konfiguriert werden kann. Die OMS Beispielvorlagen finden Sie im Ordner [omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Beachten Sie, dass Daten in der OMS erfasst werden müssen, damit Vorlagen ordnungsgemäß bereitgestellt werden. Dies kann je nach Standortaktivität eine Stunde oder länger dauern.
+3. Protokollierung und Überwachung. Wenn die Lösung bereitgestellt wurde, kann ein Log Analytics-Arbeitsbereich geöffnet werden, und die im Lösungsrepository bereitgestellten Beispielvorlagen veranschaulichen, wie ein Überwachungsdashboard konfiguriert wird. Die Beispielvorlagen finden Sie im Ordner [omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Beachten Sie, dass Daten in Log Analytics erfasst werden müssen, damit Vorlagen ordnungsgemäß bereitgestellt werden. Dies kann je nach Standortaktivität eine Stunde oder länger dauern.
  
-    Beim Einrichten Ihrer OMS-Protokollierung können Sie diese Ressourcen einschließen:
+    Beziehen Sie beim Einrichten Ihrer Log Analytics-Protokollierung unter Umständen Sie diese Ressourcen ein:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups

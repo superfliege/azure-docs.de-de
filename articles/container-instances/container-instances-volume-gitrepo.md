@@ -3,16 +3,16 @@ title: Einbinden eines gitRepo-Volumes in Azure Container Instances
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 04/16/2018
 ms.author: marsma
-ms.openlocfilehash: 9acde9259fcb392458e7b2fa7d3369776978285e
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: e40d841c07534c9c0074c038d1e3c6e435265564
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -30,17 +30,45 @@ Wenn Sie ein *gitRepo*-Volume einbinden, können Sie zum Konfigurieren des Volum
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | -------- | -------- | ----------- |
 | `repository` | Ja | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
-| `directory` | Nein | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
+| `directory` | Nein  | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
 | `revision` | Nein  | Der Commithash der zu klonenden Version. Wird er nicht angegeben, wird die `HEAD`-Revision geklont. |
 
-## <a name="mount-a-gitrepo-volume"></a>Einbinden eines gitRepo-Volumes
+## <a name="mount-gitrepo-volume-azure-cli"></a>Einbinden eines gitRepo-Volumes: Azure CLI
 
-Sie können ein *gitRepo*-Volume in eine Containerinstanz einbinden, indem Sie zum Bereitstellen eine [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) verwenden.
+Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit der [Azure CLI](/cli/azure) bereitstellen, geben Sie für den Befehl [az container create][az-container-create] die Parameter `--gitrepo-url` und `--gitrepo-mount-path` an. Sie können optional das Verzeichnis innerhalb des zu klonenden Volumes (`--gitrepo-dir`) und den Commithash der zu klonenden Revision (`--gitrepo-revision`) angeben.
 
-Füllen Sie in der Vorlage zunächst das `volumes`-Array im Abschnitt `properties` für die Containergruppe auf. Füllen Sie als Nächstes für jeden Container in der Containergruppe, in der Sie das *gitRepo*-Volume einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf.
+Dieser Beispielbefehl klont die Beispielanwendung [aci-helloworld][aci-helloworld] in `/mnt/aci-helloworld` in der Containerinstanz:
+
+```azurecli-interactive
+az container create \
+    --resource-group myResourceGroup \
+    --name hellogitrepo \
+    --image microsoft/aci-helloworld \
+    --dns-name-label aci-demo \
+    --ports 80 \
+    --gitrepo-url https://github.com/Azure-Samples/aci-helloworld \
+    --gitrepo-mount-path /mnt/aci-helloworld
+```
+
+Um zu überprüfen, ob das gitRepo-Volume eingebunden wurde, starten Sie eine Shell im Container mit [az container exec][az-container-exec], und listen Sie das Verzeichnis auf:
+
+```console
+$ az container exec --resource-group myResourceGroup --name hellogitrepo --exec-command /bin/sh
+/usr/src/app # ls -l /mnt/aci-helloworld/
+total 16
+-rw-r--r--    1 root     root           144 Apr 16 16:35 Dockerfile
+-rw-r--r--    1 root     root          1162 Apr 16 16:35 LICENSE
+-rw-r--r--    1 root     root          1237 Apr 16 16:35 README.md
+drwxr-xr-x    2 root     root          4096 Apr 16 16:35 app
+```
+
+## <a name="mount-gitrepo-volume-resource-manager"></a>Einbinden des gitRepo-Volumes: Ressourcen-Manager
+
+Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit einer [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) bereitstellen, füllen Sie zuerst das Array `volumes` im Containergruppenabschnitt `properties` der Vorlage aus. Füllen Sie dann für jeden Container in der Containergruppe, in der Sie das *gitRepo*-Volume einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf.
 
 Mit der folgenden Resource Manager-Vorlage wird beispielsweise eine Containergruppe mit einem einzelnen Container erstellt. Der Container klont zwei GitHub-Repositorys, die durch die *gitRepo*-Volumeblöcke angegeben werden. Das zweite Volume enthält zusätzliche Eigenschaften, die ein Verzeichnis zum Klonen angeben, sowie den Commithash einer spezifischen Revision, die geklont werden soll.
 
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
 [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Die Verzeichnisstruktur der zwei geklonten Repositorys, die in der vorhergehenden Vorlage definiert werden, sieht wie folgt aus:
@@ -59,3 +87,10 @@ Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt
 * [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](container-instances-volume-azure-files.md)
 * [Einbinden eines emptyDir-Volumes in Azure Container Instances](container-instances-volume-emptydir.md)
 * [Einbinden eines geheimen Volumes in Azure Container Instances](container-instances-volume-secret.md)
+
+<!-- LINKS - External -->
+[aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
+
+<!-- LINKS - Internal -->
+[az-container-create]: /cli/azure/container#az-container-create
+[az-container-exec]: /cli/azure/container#az-container-exec

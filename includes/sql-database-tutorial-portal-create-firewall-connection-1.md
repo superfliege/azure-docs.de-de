@@ -4,7 +4,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 
-Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](../articles/sql-database/sql-database-service-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](../articles/sql-database/sql-database-features.md) erstellt. 
+Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](../articles/sql-database/sql-database-service-tiers-dtu.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../articles/azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](../articles/sql-database/sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen. 
 

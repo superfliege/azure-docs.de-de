@@ -1,24 +1,24 @@
 ---
 title: Log Analytics-Datensicherheit | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Log Analytics Ihre Privatsphäre und Daten schützt."
+description: Erfahren Sie, wie Log Analytics Ihre Privatsphäre und Daten schützt.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: bfd9b3302c73e50408cdd68b25317630aa087d7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](../security/security-microsoft-trust-center.md) spezifische Informationen zu Azure Log Analytics.  
@@ -157,7 +157,7 @@ Wie oben beschrieben, werden die Daten von dem Verwaltungsserver oder den direkt
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Empfangen und Verarbeiten von Daten durch den Log Analytics-Dienst
 Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die nicht verarbeiteten Rohdaten werden dann in einem Azure Event Hub in der Region gespeichert, in der die Daten schließlich im Ruhezustand gespeichert werden. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten und erfasst sie in der Datenbank.
 
-Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem bei der Erstellung des Arbeitsbereichs ausgewählten Plan ab.  Im kostenpflichtigen Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, dies kann jedoch auf 365 Tage verlängert werden.  Diese Daten sind noch nicht im Ruhezustand verschlüsselt. Dies ist jedoch für Mitte 2018 geplant. 
+Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem ausgewählten Tarif ab. Beim *Free*-Tarif sind die gesammelten Daten 7 Tage verfügbar. Beim *kostenpflichtigen* Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, dies kann jedoch auf 720 Tage verlängert werden. Die Daten werden im Ruhezustand verschlüsselt in Azure gespeichert, um deren Vertraulichkeit zu gewährleisten. Die letzten zwei Wochen von Daten werden ebenfalls im SSD-basierten Cache gespeichert, und dieser Cache ist derzeit nicht verschlüsselt.  Diese Verschlüsselung soll jedoch noch in der zweiten Hälfte des Jahres 2018 unterstützt werden.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verwenden von Log Analytics für den Datenzugriff
 Für den Zugriff auf Ihren Log Analytics-Arbeitsbereich melden Sie sich über das zuvor eingerichtete Unternehmenskonto oder Microsoft-Konto im Azure-Portal an. Der gesamte Datenverkehr zwischen dem Portal und dem Log Analytics-Dienst erfolgt über einen sicheren HTTPS-Kanal. Bei Verwendung des Portals wird eine Sitzungs-ID auf dem Client des Benutzers (Webbrowser) generiert, und die Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die Sitzung im Azure-Portal beendet.

@@ -10,23 +10,23 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: andrela
-ms.openlocfilehash: e91c80a3a4e44e2e02b77ed417d6b2d4b629fcf1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 2e11b349bb1bc5b92c3876df5c14312efc0805b0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Java
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie mithilfe von [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Daten mithilfe von Transact-SQL-Anweisungen abfragen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) eine Verbindung mit einer Azure SQL-Datenbank herstellen und anschließend Daten mithilfe von Transact-SQL-Anweisungen abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial müssen Sie folgende Voraussetzungen erfüllen:
+Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Java und die zugehörige Software müssen für das Betriebssystem installiert sein:
 
@@ -141,6 +141,7 @@ Für dieses Schnellstarttutorial müssen Sie folgende Voraussetzungen erfüllen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Entwurf Ihrer ersten Azure SQL-Datenbank](sql-database-design-first-database.md)
-- [Microsoft JDBC Driver für SQL Server](https://github.com/microsoft/mssql-jdbc)
+- 
+  [Microsoft JDBC-Treiber für SQL Server](https://github.com/microsoft/mssql-jdbc)
 - [Melden von Problemen/Stellen von Fragen](https://github.com/microsoft/mssql-jdbc/issues)
 

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 4eeff0d89fa8a73b8f7f4b73fb5bfb85cda26184
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 786261b38fe27dccc9c7ef5ee6550f4b50c52e4b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -20,7 +20,10 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
 - VMs der D-Serie dienen zum Ausführen von Anwendungen, die eine höhere Rechenleistung und eine höhere temporäre Datenträgerleistung erfordern. VMs der D-Serie zeichnen sich durch schnellere Prozessoren, ein höheres Verhältnis zwischen Arbeitsspeicher und vCPU und ein SSD (Solid State Drive) als temporärer Datenträger aus. Einzelheiten finden Sie in der Ankündigung im Azure-Blog unter [New D-Series Virtual Machine Sizes](https://azure.microsoft.com/blog/2014/09/22/new-d-series-virtual-machine-sizes/)(Neue VM-Größen der D-Serie, in englischer Sprache).
 
-- Die Dv3-Serie, Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673 v3-Prozessors (Haswell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+- Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673-v3-Prozessors (Haswell) oder 2,3-GHz-E5 2673-v4-Prozessors (Broadwell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
+
+- Die Dv3-Serie bietet die gleichen Prozessoren wie die Dv2-Serie, aber in einer Hyperthreadkonfiguration, die ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads bietet und den Dv3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang bringt.  Der Speicher wurde erweitert (von etwa 3.5 GiB/vCPU auf 4 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Dv3-Serie hat nicht mehr die hohen Arbeitsspeichergrößen der D/Dv2-Familien, diese sind nun in der neuen Ev3-Familie verfügbar.
+
 
 - Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind.
 
@@ -77,6 +80,7 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 <sup>1</sup> Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
+
 ## <a name="dsv2-series"></a>DSv2-Serie
 
 ACU: 210 - 250
@@ -95,15 +99,15 @@ ACU: 210 - 250
 
 ACU: 210 - 250
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |3,5 |4 |50 |3000/46/23 |4/4 x 500 |2/750 |
-| Standard_D2_v2 |2 |7 |8 |100 |6000/93/46 |8/8 x 500 |2/1500 |
-| Standard_D3_v2 |4 |14 |16 |200 |12000/187/93 |16/16 x 500 |4/3000 |
-| Standard_D4_v2 |8 |28 |32 |400 |24000/375/187  |32/32 x 500 |8/6000 |
-| Standard_D5_v2 |16 |56 |64 |800 |48000/750/375 |64/64 x 500 |8 / 12000 |
+| Größe           | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+|----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
+| Standard_D1_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 4              | 4 x 500            | 2/750                                      |
+| Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8 x 500            | 2/1500                                     |
+| Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             | 16 x 500           | 4/3000                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32             | 32 x 500           | 8/6000                                       |
+| Standard_D5_v2 | 16   | 56          | 800                    | 48000/750/375                                          | 64             | 64 x 500           | 8 / 12000                                    |
 
-<br>
+
 
 ## <a name="ds-series"></a>DS-Serie
 
@@ -179,7 +183,7 @@ Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen 
 
 ## <a name="basic-a"></a>Basic A
 
-|Größe – Größe\Name | vCPU |Arbeitsspeicher|Netzwerkkarten (max.)|Max. Größe der temporären Datenträger |Maximal Datenträger (jeweils 1.023 GB)|Maximal IOPS (300 pro Datenträger)|
+|Größe – Größe\Name | vCPU |Arbeitsspeicher|Netzwerkkarten (max.)|Max. Größe der temporären Datenträger |Maximal Datenträger (jeweils 1023 GB)|Maximal IOPS (300 pro Datenträger)|
 |---|---|---|---|---|---|---|
 |A0\Basic_A0|1|768 MB|2| 20 GB|1|1 x 300|
 |A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2 x 300|

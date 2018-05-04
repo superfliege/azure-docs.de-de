@@ -22,3 +22,10 @@
 7. Sie können das angeheftete Tag über das Dashboard auswählen, um die Ressourcen mit diesem Tag anzuzeigen.
 
      ![Anheften von Tags an das Dashboard](./media/resource-manager-tag-resources/show-pinned-tag.png)
+
+
+So führen Sie einen Massenzuweisung von Tags zu mehreren Ressourcen durch
+1. Gehen Sie in einer beliebigen Ressourcenliste (z.B. alle Ressourcen, Ressourcengruppenübersicht) folgendermaßen vor:
+2. Aktivieren Sie das Kontrollkästchen für die Ressourcen, denen Sie das Tag zuweisen möchten.
+3. Wählen Sie die Option "Tags zuweisen" aus.
+4. Fügen Sie Namen und Werte hinzu, und wählen Sie "Zuweisen" aus.

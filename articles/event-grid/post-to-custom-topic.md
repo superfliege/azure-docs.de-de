@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 04/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1c23aef0773ffddbc26e4090ecf137b632394ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f4323c4e68c639af9a5959af512c1cdd07cdf0c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Posten eines Ereignisses in einem benutzerdefinierten Azure Event Grid-Thema
 
@@ -73,7 +73,7 @@ Für benutzerdefinierte Themen müssen die Daten der obersten Ebene müssen die 
 ]
 ```
 
-Eine Beschreibung dieser Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+Eine Beschreibung dieser Eigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md). Beim Veröffentlichen von Ereignissen in einem Ereignisrasterthema kann das Array eine Gesamtgröße von bis zu 1 MB aufweisen. Jedes Ereignis im Array ist auf 64 KB beschränkt.
 
 Ein gültiges Ereignisdatenschema lautet beispielsweise wie folgt:
 
@@ -95,12 +95,13 @@ Ein gültiges Ereignisdatenschema lautet beispielsweise wie folgt:
 
 Nachdem Sie das Posten an den Themenendpunkt durchgeführt haben, erhalten Sie eine Antwort. Die Antwort ist ein HTTP-Standardantwortcode. Einige häufige Antworten lauten:
 
-|Ergebnis  |Antwort  |
+|Ergebnis  |response  |
 |---------|---------|
 |Erfolgreich  | 200 – OK  |
-|Falscher Endpunkt | 404 – Nicht gefunden |
-|Ungültiger Zugriffsschlüssel | 401 – Nicht autorisiert |
 |Fehlerhaftes Format der Ereignisdaten | 400 – Ungültige Anforderung |
+|Ungültiger Zugriffsschlüssel | 401 – Nicht autorisiert |
+|Falscher Endpunkt | 404 – Nicht gefunden |
+|Array oder Ereignis überschreitet Größengrenzwerte | 413 Nutzlast zu groß |
 
 Für Fehler hat der Nachrichtentext das folgende Format:
 

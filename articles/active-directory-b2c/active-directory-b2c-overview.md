@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: davidmu
-ms.openlocfilehash: 4f2c47f3e2debe0dc2b919858af9c347da00be5b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: ca9e45a214639da86cf8e0c4a39b3e3d6b6d6491
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -72,7 +72,7 @@ Für jede Anforderung, die an Azure AD B2C gesendet wird, wird eine Richtlinie a
 
 #### <a name="custom-policies"></a>Benutzerdefinierte Richtlinien 
 
-Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten des Identity Experience Framework in Ihrem Azure AD B2C-Mandanten definieren. Benutzerdefinierte Richtlinien können zur Durchführung vieler Aufgaben vollumfänglich bearbeitet werden. Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. 
+[Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) sind Konfigurationsdateien, die das Verhalten des Identity Experience Framework in Ihrem Azure AD B2C-Mandanten definieren. Benutzerdefinierte Richtlinien können zur Durchführung vieler Aufgaben vollumfänglich bearbeitet werden. Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. 
 
 Mehrere benutzerdefinierte Richtlinien verschiedener Typen können in Ihrem Azure AD B2C-Mandanten bei Bedarf verwendet und anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Kundenidentität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Richtlinien können durch Hinzufügen eines speziellen Abfrageparameters in HTTP-Authentifizierungsanforderungen verwendet werden.
 

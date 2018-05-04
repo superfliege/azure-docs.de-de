@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: damaerte
-ms.openlocfilehash: 5c4cb6230d8509830d25caaf497e4e63ac7e5806
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd1582697307219bf3710139c6b44b5957b176e4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Features und Tools für PowerShell in Azure Cloud Shell (Vorschauversion)
 
@@ -77,7 +77,7 @@ Mit [PowerShellGet](https://docs.microsoft.com/powershell/module/powershellget) 
 Nach der Installation werden Ihre Module automatisch sitzungsübergreifend in Cloud Shell beibehalten.
 
 > [!TIP]
-> Vom Benutzer installierte Module werden im Ordner `$Home\CloudDrive\.pscloudshell\WindowsPowerShell` gespeichert. Ein diesem Ordner zugeordneter symbolischer Link wird im Ordner „Dokumente“ des Benutzers erstellt (`$home\Documents\WindowsPowerShell`).
+> Vom Benutzer installierte Module werden im Ordner `$Home\clouddrive\.pscloudshell\WindowsPowerShell` gespeichert. Ein diesem Ordner zugeordneter symbolischer Link wird im Ordner „Dokumente“ des Benutzers erstellt (`$home\Documents\WindowsPowerShell`).
 
 ![](media/features-powershell/powershellget-module.png)
 
@@ -90,7 +90,7 @@ Diese Befehle basieren auf dem PowerShell-Remoting und erfordern die PowerShell-
 
 |**Kategorie**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure-Tools     |[Azure PowerShell (5.6.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.30)](https://docs.microsoft.com/cli/azure)|
+|Azure-Tools     |[Azure PowerShell (5.7.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.31)](https://docs.microsoft.com/cli/azure)|
 |Text-Editoren    |Vim<br> Nano                             |
 |Paket-Manager |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |Quellcodeverwaltung  |Git                                      |
@@ -102,8 +102,8 @@ Diese Befehle basieren auf dem PowerShell-Remoting und erfordern die PowerShell-
 |**Sprache**|**Version**|
 |------------|-----------|
 |.NET        |4.6        |
-|Node.js     |6.10       |
-|PowerShell  |5.1 und [6.0.2](https://github.com/PowerShell/powershell/releases)       |
+|Node.js     |8.9.4       |
+|PowerShell  |5.1 und [6.1.0-preview.1](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>Nächste Schritte

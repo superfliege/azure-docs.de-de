@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 086cc528e500a55bba73796e5fc7b17c561de8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0afdfb7b7d1f74d3df40b22bb97afc0f39bcc6d1
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ Sie können Daten aus einer lokalen MongoDB-Datenbank in beliebige unterstützte
 ## <a name="prerequisites"></a>Voraussetzungen
 Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Datenbank herstellen kann, müssen die folgenden Komponenten installiert werden:
 
-- Diese MongoDB-Versionen werden unterstützt: 2.4, 2.6, 3.0 und 3.2.
+- Diese MongoDB-Versionen werden unterstützt: 2.4, 2.6, 3.0, 3.2, 3.4 und 3.6.
 - Datenverwaltungsgateway auf dem Computer, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Datenverwaltungsgateway ist eine Software, die lokale Datenquellen mit Cloud-Diensten auf sichere, verwaltete Weise verbindet. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. Schritt-für-Schritt-Anweisungen zum Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
     Beim Installieren des Gateways wird automatisch ein Microsoft MongoDB-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit MongoDB verwendet wird.

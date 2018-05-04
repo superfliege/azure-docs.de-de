@@ -1,26 +1,26 @@
 ---
-title: "Verwenden von Hadoop Pig mit REST in HDInsight – Azure | Microsoft-Dokumentation"
-description: "Dieser Artikel erläutert, wie Sie mit REST Pig Latin-Aufträge in einem Hadoop-Cluster in Azure HDInsight ausführen können."
+title: Verwenden von Hadoop Pig mit REST in HDInsight – Azure | Microsoft-Dokumentation
+description: Dieser Artikel erläutert, wie Sie mit REST Pig Latin-Aufträge in einem Hadoop-Cluster in Azure HDInsight ausführen können.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 ms.assetid: ed5e10d1-4f47-459c-a0d6-7ff967b468c4
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: c2c441d92607a017b4451cd8a06fb78a5e8e7135
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 4883794261116abf4925e7e4e9a8df14626c7a71
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Pig-Aufträgen mit Hadoop in HDInsight mithilfe von REST
 
@@ -66,7 +66,7 @@ Erfahren Sie hier, wie Sie mithilfe von REST-Anforderungen in einem Azure HDInsi
     * **-u**– Der Benutzername und das Kennwort für die Authentifizierung der Anforderung
     * **-G**: Gibt an, dass diese Anforderung eine GET-Anforderung ist.
 
-     Der Anfang der URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, ist für alle Anforderungen identisch. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
+     Der Anfang der URL (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) ist für alle Anforderungen gleich. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
 
 2. Verwenden Sie den folgenden Code, um einen Pig Latin-Auftrag an den Cluster zu übermitteln.
 

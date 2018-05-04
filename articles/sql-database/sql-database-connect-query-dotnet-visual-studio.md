@@ -10,23 +10,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: adc2436bfe74fed343ac2796dec51ae90619312d
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d785436f157fb694ccf4447db91f28b25c9f2a3a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Herstellen einer Verbindung mit einer Azure SQL-Datenbank und Abfragen der Datenbank mit .NET (C#) und Visual Studio
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie unter Verwendung von [.NET Framework](https://www.microsoft.com/net/) ein C#-Programm mit Visual Studio erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und mithilfe von Transact-SQL-Anweisungen Daten abfragt.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [.NET Framework](https://www.microsoft.com/net/) ein C#-Programm mit Visual Studio erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und mithilfe von Transact-SQL-Anweisungen Daten abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial benötigen Sie Folgendes:
+Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Eine Installation von [Visual Studio Community 2017, Visual Studio Professional 2017 oder Visual Studio Enterprise 2017](https://www.visualstudio.com/downloads/).
 

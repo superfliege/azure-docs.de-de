@@ -1,27 +1,20 @@
 ---
-title: "Azure Analysis Services-Tutorial – Lektion 4: Erstellen von Beziehungen | Microsoft-Dokumentation"
+title: 'Azure Analysis Services-Tutorial – Lektion 4: Erstellen von Beziehungen | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt, wie Beziehungen im Azure Analysis Services-Tutorialprojekt erstellt werden.
-services: analysis-services
-documentationcenter: 
-author: Minewiskan
+author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
 ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 01/08/2018
+ms.topic: conceptual
+ms.date: 04/12/2018
 ms.author: owend
-ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.reviewer: minewiskan
+ms.openlocfilehash: 694043454ba2564900416135e1f143bdeb63c202
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="create-relationships"></a>Beziehungen erstellen
+# <a name="create-relationships"></a>Erstellen von Beziehungen
 
 In dieser Lektion erfahren Sie, wie Sie die Beziehungen, die beim Importieren von Daten automatisch erstellt wurden, überprüfen und neue Beziehungen zwischen verschiedenen Tabellen hinzufügen. Eine Beziehung ist eine Verbindung zwischen zwei Tabellen, die festlegt, wie die Daten in diesen Tabellen korreliert werden sollen. Beispielsweise haben die Tabellen „DimProduct“ und „DimProductSubcategory“ eine Beziehung, die auf der Tatsache beruht, dass beide Produkte zu einer Unterkategorie gehören. Weitere Informationen finden Sie unter [Beziehungen](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   

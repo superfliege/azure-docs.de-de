@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b304a198ce1791a14094eea4cad3b6de870c80ce
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: df0b578448e1f943d45233f7d36ebf4b9cb09fad
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Tutorial: Integration von SafetyNet in Azure Active Directory
 
@@ -117,33 +117,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.predictivesolutions.com`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von SafetyNet](mailto:dev@predictivesolutions.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von SafetyNet](mailto:dev@predictivesolutions.com), um diese Werte zu erhalten.
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_certificate.png)
+
+6. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-safetynet-tutorial/tutorial_general_400.png)
 
-6. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **SafetyNet** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-safetynet-tutorial/tutorial_safetynet_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.
-    
-7. Für die **SafetyNet**-seitige Konfiguration des einmaligen Anmeldens müssen Sie die generierte **Metadaten-URL** an das [Supportteam von SafetyNet](mailto:dev@predictivesolutions.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+7. Für die **SafetyNet**-seitige Konfiguration des einmaligen Anmeldens müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von SafetyNet](mailto:dev@predictivesolutions.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

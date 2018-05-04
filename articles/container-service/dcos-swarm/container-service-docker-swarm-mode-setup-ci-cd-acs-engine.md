@@ -1,26 +1,26 @@
 ---
-title: Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service-Modul und Swarm-Modus
-description: Verwenden von Azure Container Service-Modul mit Docker Swarm-Modus, einer Azure Container Registry-Instanz und Visual Studio Team Services zum fortlaufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
+title: Continuous Integration und Continuous Deployment (CI/CD) mit Azure Container Service-Engine und Swarm-Modus
+description: Verwenden der Azure Container Service-Engine mit Docker Swarm-Modus, einer Azure Container Registry-Instanz und Visual Studio Team Services zum fortlaufenden Bereitstellen einer .NET Core-Anwendung mit mehreren Containern.
 services: container-service
 author: diegomrtnzg
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: 6aa690ff7ec0689db78ff1225d36171adb30ee2c
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 01126f3eef988eb1787bafea92e7384aad1a703c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Modul und Docker Swarm-Modus mithilfe von Visual Studio Team Services
+# <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Visual Studio Team Services
 
 *Dieser Artikel basiert auf der Dokumentation [Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Visual Studio Team Services](container-service-docker-swarm-setup-ci-cd.md).*
 
 Heutzutage ist eine der größten Herausforderungen bei der Entwicklung moderner Anwendungen für die Cloud die Fähigkeit, diese Anwendungen fortlaufend bereitzustellen. In diesem Artikel erfahren Sie, wie Sie eine vollständige CI/CD-Pipeline (Continuous Integration und Continuous Deployment) mithilfe folgender Komponenten implementieren können: 
-* Azure Container Service-Modul mit Docker Swarm-Modus
+* Azure Container Service-Engine mit Docker Swarm-Modus
 * Azure-Containerregistrierung
 * Visual Studio Team Services
 
@@ -47,14 +47,14 @@ Es folgt eine kurze Erläuterung der Schritte:
 
 Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Aufgaben ausführen:
 
-- [Erstellen eines Clusters im Swarm-Modus in Azure Container Service mit ACS-Modul](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
+- [Erstellen eines Clusters im Swarm-Modus in Azure Container Service mit ACS-Engine](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
 - [Verbinden mit einem Azure Container Service-Cluster](../container-service-connect.md)
 - [Erstellen einer Azure-Containerregistrierung](../../container-registry/container-registry-get-started-portal.md)
 - [Erstellen eines Visual Studio Team Services-Kontos (sofern noch nicht vorhanden) und des Teamprojekts](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
 - [Verzweigen des GitHub-Repositorys zu Ihrem GitHub-Konto](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
 >[!NOTE]
-> Der Docker Swarm-Orchestrator in Azure Container Service nutzt eine ältere eigenständige Swarm-Version. Derzeit ist der integrierte [Swarm-Modus](https://docs.docker.com/engine/swarm/) (in Docker 1.12 und höher) kein unterstützter Orchestrator in Azure Container Service. Aus diesem Grund verwenden wir das [ACS-Modul](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), eine von der Community bereitgestellte [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/), oder eine Docker-Lösung im [Azure Marketplace](https://azuremarketplace.microsoft.com).
+> Der Docker Swarm-Orchestrator in Azure Container Service nutzt eine ältere eigenständige Swarm-Version. Derzeit ist der integrierte [Swarm-Modus](https://docs.docker.com/engine/swarm/) (in Docker 1.12 und höher) kein unterstützter Orchestrator in Azure Container Service. Aus diesem Grund verwenden wir die [ACS-Engine](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), eine von der Community bereitgestellte [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/), oder eine Docker-Lösung im [Azure Marketplace](https://azuremarketplace.microsoft.com).
 >
 
 ## <a name="step-1-configure-your-visual-studio-team-services-account"></a>Schritt 1: Konfigurieren Ihres Visual Studio Team Services-Kontos 
@@ -247,5 +247,5 @@ Nachdem Sie die Konfiguration abgeschlossen haben, ist es Zeit, diese neue CI/CD
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu CI/CD mit Visual Studio Team Services finden Sie unter in der [Übersicht über den VSTS-Build](https://www.visualstudio.com/docs/build/overview).
-* Weitere Informationen zum ACS-Modul finden Sie im [GitHub-Repository zum ACS-Modul](https://github.com/Azure/acs-engine).
+* Weitere Informationen zur ACS-Engine finden Sie im [GitHub-Repository zum ACS-Engine](https://github.com/Azure/acs-engine).
 * Weitere Informationen zum Docker Swarm-Modus finden Sie unter [Docker Swarm mode overview](https://docs.docker.com/engine/swarm/) (Übersicht über Docker Swarm-Modus).

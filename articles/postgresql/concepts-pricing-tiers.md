@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 03/20/2018
-ms.openlocfilehash: 3ea7d09338d4d89030138b8c4dc4085a6cd8ccc5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2a16e346e508b96338bb1c216ad6a64c013895f2
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -36,7 +36,8 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 | Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
-Nachdem Sie einen Server erstellt haben, kann die Anzahl von V-Kernen innerhalb weniger Sekunden erhöht oder verringert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Weitere Informationen finden Sie im Abschnitt „Skalieren von Ressourcen“.
+Nachdem Sie einen Server erstellt haben, kann die Anzahl von V-Kernen (im gleichen Tarif) innerhalb weniger Sekunden erhöht oder verringert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
+
 
 ## <a name="compute-generations-vcores-and-memory"></a>Computegenerationen, V-Kerne und Arbeitsspeicher
 
@@ -44,7 +45,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 | **Azure-Region** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| USA (Mitte) |  | X |
+| USA (Mitte) | X |  |
 | USA (Ost) | X | X |
 | USA (Ost) 2 | X | X |
 | USA Nord Mitte | X |  |
@@ -53,16 +54,18 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | USA, Westen 2 |  | X |
 | Kanada, Mitte | X | X |
 | Kanada, Osten | X | X |
-| Brasilien Süd | X |  |
+| Brasilien Süd | X | X |
 | Nordeuropa | X | X |
-| Europa, Westen | X | X |
+| Europa, Westen |  | X |
 | UK, Westen |  | X |
 | UK, Süden |  | X |
 | Asien, Osten | X |  |
-| Asien, Südosten | X |  |
+| Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
+| Australien, Südosten |  | X |
 | Indien, Mitte | X |  |
 | Indien, Westen | X |  |
+| Indien (Süden) |  | X |
 | Japan, Osten | X | X |
 | Japan, Westen | X | X |
 | Korea, Süden |  | X |
@@ -90,7 +93,7 @@ Der Dienst erstellt automatisch Sicherungen Ihres Servers. Die Mindestaufbewahru
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 
-Nachdem Sie Ihren Server erstellt haben, können Sie die virtuellen Kerne, die Speichermenge und den Aufbewahrungszeitraum für Sicherungen einzeln ändern. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. V-Kerne und die Aufbewahrungsdauer für Sicherungen können zentral hoch- oder herunterskaliert werden. Die Speichergröße kann nur erhöht werden. Die Skalierung der Ressourcen kann entweder über das Portal oder per Azure CLI durchgeführt werden. Ein Beispiel für die Skalierung mit der Azure CLI finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
+Nachdem Sie Ihren Server erstellt haben, können Sie die virtuellen Kerne, die Speichermenge und den Aufbewahrungszeitraum für Sicherungen einzeln ändern. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. Die Anzahl der V-Kerne kann innerhalb des gleichen Tarifs zentral hoch- oder herunterskaliert werden. Die Aufbewahrungsdauer für Sicherungen kann von 7 bis zu 35 Tagen zentral hoch- oder herunterskaliert werden. Die Speichergröße kann nur erhöht werden.  Die Skalierung der Ressourcen kann entweder über das Portal oder per Azure CLI durchgeführt werden. Ein Beispiel für die Skalierung mit der Azure CLI finden Sie unter [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
 
 Beim Ändern der Anzahl von virtuellen Kernen wird eine Kopie des ursprünglichen Servers mit der neuen Computezuteilung erstellt. Sobald der neue Server betriebsbereit ist und ausgeführt wird, werden die Verbindungen auf den neuen Server verschoben. Während des Moments, in dem das System den Wechsel zum neuen Server durchführt, können keine neuen Verbindungen hergestellt werden, und für alle Transaktionen ohne Commit erfolgt ein Rollback. Die Länge dieses Zeitfensters variiert, aber normalerweise dauert der Vorgang nicht länger als eine Minute.
 

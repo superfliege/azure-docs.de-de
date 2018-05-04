@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: hero-article
 ms.date: 03/28/2017
-ms.openlocfilehash: 491b0fdba464e5b0c6225a75c534ca6abb710855
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8bee80647d692b60898880a85652189a684426f7
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten
 In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen, um Daten von IoT-Geräten (Internet of Things) zu erfassen. Wir verwenden einen echten IoT-Anwendungsfall aus der Praxis, um zu zeigen, wie Sie Ihre Lösung schnell und wirtschaftlich erstellen.
@@ -27,19 +27,21 @@ Contoso, ein Unternehmen im Bereich der industriellen Automation, hat seinen Fer
 
 In diesem Fall werden die Daten mit einem SensorTag-Gerät von Texas Instruments generiert. Die Nutzlast der Daten liegt im JSON-Format vor und sieht wie folgt aus:
 
-    {
-        "time": "2016-01-26T20:47:53.0000000",  
-        "dspl": "sensorE",  
-        "temp": 123,  
-        "hmdt": 34  
-    }  
+```json
+{
+    "time": "2016-01-26T20:47:53.0000000",  
+    "dspl": "sensorE",  
+    "temp": 123,  
+    "hmdt": 34  
+}  
+```
 
 In der Praxis können Hunderte dieser Sensoren einen Datenstrom mit Ereignissen generieren. Idealerweise führt ein Gatewaygerät hierbei Code aus, um diese Ereignisse mittels Push an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) oder [Azure IoT Hubs](https://azure.microsoft.com/services/iot-hub/) zu übertragen. Ihr Stream Analytics-Auftrag erfasst diese Ereignisse über Event Hubs und führt in Echtzeit Analyseabfragen für die Datenströme aus. Die Ergebnisse können dann an eine der [unterstützten Ausgaben](stream-analytics-define-outputs.md) gesendet werden.
 
 Zur einfacheren Verwendung enthält dieser Leitfaden zu den ersten Schritten eine Datei mit Beispieldaten, die mit echten SensorTag-Geräten erfasst wurden. Sie können Abfragen für die Beispieldaten ausführen und Ergebnisse anzeigen. In den nachfolgenden Tutorials erfahren Sie, wie Sie Ihren Auftrag mit Eingaben und Ausgaben verbinden und für den Azure-Dienst bereitstellen.
 
 ## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
-1. Klicken Sie im [Azure-Portal](http://portal.azure.com) auf das Pluszeichen, und geben Sie im Textfenster auf der rechten Seite den Text **STREAM ANALYTICS** ein. Wählen Sie anschließend in der Ergebnisliste **Stream Analytics-Auftrag** aus.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf das Pluszeichen, und geben Sie im Textfenster auf der rechten Seite den Text **STREAM ANALYTICS** ein. Wählen Sie anschließend in der Ergebnisliste **Stream Analytics-Auftrag** aus.
    
     ![Neuen Stream Analytics-Auftrag erstellen](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. Geben Sie einen eindeutigen Auftragsnamen ein, und überprüfen Sie, ob das richtige Abonnement für Ihren Auftrag angegeben ist. Erstellen Sie dann entweder eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe Ihres Abonnements aus.

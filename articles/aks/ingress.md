@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b0bc6035c3004587ae50f1c331dd3976883e9d34
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="https-ingress-on-azure-container-service-aks"></a>Eingehende HTTPS-Daten in Azure Container Service (AKS)
 
@@ -27,7 +27,7 @@ Installieren Sie die Helm CLI. Installationsanweisungen finden Sie in der [Dokum
 
 ## <a name="install-an-ingress-controller"></a>Installieren eines Eingangscontrollers
 
-Verwenden Sie Helm, um den NGINX-Eingangscontroller zu installieren. Ausführliche Bereitstellungsinformationen finden Sie in der [Dokumentation][nginx-ingress] des NGINX-Eingangscontrollers. 
+Verwenden Sie Helm, um den NGINX-Eingangscontroller zu installieren. Ausführliche Bereitstellungsinformationen finden Sie in der [Dokumentation][nginx-ingress] des NGINX-Eingangscontrollers.
 
 Aktualisieren Sie das Diagrammrepository.
 
@@ -76,13 +76,7 @@ PIPNAME=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAdd
 az network public-ip update --resource-group $RESOURCEGROUP --name  $PIPNAME --dns-name $DNSNAME
 ```
 
-Führen Sie bei Bedarf den folgenden Befehl aus, um den vollqualifizierten Domänennamen abzurufen. Ersetzen Sie den Wert für die IP-Adresse durch den des Eingangscontrollers.
-
-```azurecli
-az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '52.224.125.195')].[dnsSettings.fqdn]" --output tsv
-```
-
-Der Eingangscontroller ist jetzt über den vollqualifizierten Domänennamen zugänglich.
+Der Eingangscontroller sollte jetzt über den vollqualifizierten Domänennamen zugänglich sein.
 
 ## <a name="install-kube-lego"></a>Installieren von KUBE-LEGO
 
@@ -181,14 +175,14 @@ Beachten Sie außerdem, dass die Verbindung verschlüsselt ist und ein von Let�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die in diesem Dokument demonstrierte Software. 
+Erfahren Sie mehr über die in diesem Dokument demonstrierte Software.
 
 - [Helm CLI][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
 - [KUBE-LEGO][kube-lego]
 
 <!-- LINKS - external -->
-[helm-cli]: https://docs.microsoft.com/en-us/azure/aks/kubernetes-helm#install-helm-cli
+[helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
 [kube-lego]: https://github.com/jetstack/kube-lego
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

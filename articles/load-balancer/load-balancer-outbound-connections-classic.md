@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: ec13109173f89b53e32f903febcec13c7f38c574
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7679fd253370d8ca9ca9ac57dc080806050f5c3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="outbound-connections-classic"></a>Ausgehende Verbindungen (klassisch)
 
@@ -114,8 +114,6 @@ In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
-| 401-800 | 64 |
-| 801-1.000 | 32 |
 
 Denken Sie daran, dass die Anzahl der verfügbaren SNAT-Ports nicht direkt in die Anzahl der Datenflüsse zu übersetzen ist. Ein einzelner SNAT-Port kann für mehrere eindeutige Ziele wiederverwendet werden. Ports werden nur genutzt, wenn Datenflüsse eindeutig gemacht werden müssen. Eine Anleitung für den Entwurf und Lösungsmöglichkeiten finden Sie in den Abschnitten, in den die [Verwaltung dieser begrenzten Ressource](#snatexhaust) und [PAT](#pat) beschrieben sind.
 
@@ -131,7 +129,7 @@ SNAT-Portzuordnungen gelten speziell für das jeweilige IP-Transportprotokoll (T
 - Tritt ein RST auf, wird der SNAT-Port nach 15 Sekunden freigegeben.
 - Leerlauftimeout wurde erreicht.
 
-### <a name="udp-snat-port-release"></a>UDP-SNAT Portfreigabe
+### <a name="udp-snat-port-release"></a>UDP-SNAT-Portfreigabe
 
 - Leerlauftimeout wurde erreicht.
 

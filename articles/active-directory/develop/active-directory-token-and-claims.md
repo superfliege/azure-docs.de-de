@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a28811437668488c2207535cef3aa4640f17aa54
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3d8a4ddd98086252f36eeb7034248e909fec1ac0
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
 Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
@@ -147,7 +147,7 @@ Wenn Ihre App ein Token (entweder ein ID-Token bei der Benutzeranmeldung oder ei
 * **Nonce**: Zur Abwehr von Tokenwiedergabeangriffen.
 * und vieles mehr...
 
-Eine vollständige Liste mit Anspruchsüberprüfungen für ID-Token, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). Details zu den erwarteten Werten für diese Ansprüche finden Sie im vorhergehenden Abschnitt [ID-Token](#id-tokens).
+Eine vollständige Liste mit Anspruchsüberprüfungen für ID-Token, die von Ihrer App ausgeführt werden sollten, finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation). Details zu den erwarteten Werten für diese Ansprüche finden Sie im vorhergehenden Abschnitt zu [ID-Token](#id-tokens).
 
 ## <a name="token-revocation"></a>Widerrufen von Token
 

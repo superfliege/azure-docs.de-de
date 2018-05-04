@@ -2,25 +2,25 @@
 title: Einbetten von Berichten in Azure Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen in Power BI-Arbeitsbereichssammlungen befindlichen Bericht in Ihre Anwendung einbetten.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: 56e7ca90132527c0ef9d4bd478e99b75ca055272
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Einbetten von Berichten in Power BI-Arbeitsbereichssammlungen
 
@@ -116,7 +116,7 @@ Bei der Verwendung von Einbettungstoken möchten Sie vielleicht die Nutzung der 
 
 ## <a name="embed-using-javascript"></a>Einbetten mit JavaScript
 
-Sobald Sie über Zugriffstoken und Berichts-ID verfügen, können wir den Bericht mithilfe von JavaScript einbetten. Hierzu müssen Sie das NuGet-[Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/) installieren. Die embedUrl lautet „https://embedded.powerbi.com/appTokenReportEmbed“.
+Sobald Sie über Zugriffstoken und Berichts-ID verfügen, können wir den Bericht mithilfe von JavaScript einbetten. Hierzu müssen Sie das NuGet-[Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/) installieren. Der Wert für „embedUrl“ lautet einfach https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Mit dem [JavaScript Report Embed Sample](https://microsoft.github.io/PowerBI-JavaScript/demo/) (Beispiel zur Berichtseinbettung mit JavaScript) können Sie die Funktionalität testen. Es enthält außerdem Codebeispiele für die verschiedenen Vorgänge, die verfügbar sind.
@@ -151,7 +151,7 @@ Der Bericht wird automatisch basierend auf der Größe seines Containers eingebe
 ## <a name="see-also"></a>Weitere Informationen
 
 [Erste Schritte mit dem Beispiel](get-started-sample.md)  
-[Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen](app-token-flow.md)  
+[Authenticating and authorizing in Power BI Workspace Collections (Authentifizieren und Autorisieren in Power BI-Arbeitsbereichssammlungen)](app-token-flow.md)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  

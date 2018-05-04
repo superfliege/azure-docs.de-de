@@ -1,0 +1,196 @@
+- name: Dokumentation zu Network Watcher
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Network Watcher
+      href: network-watcher-monitoring-overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Portal
+      href: diagnose-vm-network-traffic-filtering-problem.md
+    - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – PowerShell
+      href: diagnose-vm-network-traffic-filtering-problem-powershell.md
+    - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Azure CLI
+      href: diagnose-vm-network-traffic-filtering-problem-cli.md
+- name: Tutorials
+  items:
+    - name: Diagnostizieren eines VM-Routingproblems
+      href: diagnose-vm-network-routing-problem.md
+- name: Konzepte
+  items:
+    - name: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr
+      href: network-watcher-ip-flow-verify-overview.md
+    - name: Diagnostizieren von VM-Routingproblemen
+      href: network-watcher-next-hop-overview.md
+    - name: Diagnostizieren von Problemen mit der ausgehenden VM-Kommunikation
+      href: network-watcher-connectivity-overview.md
+    - name: Behandeln von VPN-Konnektivitätsproblemen
+      href: network-watcher-troubleshoot-overview.md
+    - name: Variable Paketerfassung
+      href: network-watcher-packet-capture-overview.md
+    - name: Protokollierung des Datenflusses von Netzwerksicherheitsgruppen
+      href: network-watcher-nsg-flow-logging-overview.md
+    - name: Netzwerksicherheitsgruppen-Ansicht
+      href: network-watcher-security-group-view-overview.md
+    - name: Anzeigen der Netzwerktopologie
+      href: network-watcher-topology-overview.md
+- name: Anleitungen
+  items:
+    - name: Konfigurieren von Network Watcher
+      href: network-watcher-create.md
+    - name: Diagnostizieren von VM-Netzwerkproblemen
+      items:
+        - name: Installieren der VM-Erweiterung
+          items:
+            - name: Windows
+              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+            - name: Linux
+              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+        - name: Diagnostizieren eines Routingproblems
+          items:
+            - name: Azure PowerShell
+              href: diagnose-vm-network-routing-problem-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: diagnose-vm-network-routing-problem-cli.md
+        - name: Diagnostizieren von Problemen mit der ausgehenden Verbindung
+          items:
+            - name: Azure-Portal
+              href: network-watcher-connectivity-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-connectivity-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: network-watcher-connectivity-cli.md
+            - name: REST
+              href: network-watcher-connectivity-rest.md
+        - name: Erfassen und Analysieren von Paketen
+          items:
+            - name: Verwalten einer Paketerfassung
+              items:
+                - name: Azure-Portal
+                  href: network-watcher-packet-capture-manage-portal.md
+                - name: Azure PowerShell
+                  href: network-watcher-packet-capture-manage-powershell.md
+                - name: Azure-Befehlszeilenschnittstelle
+                  href: network-watcher-packet-capture-manage-cli.md
+                - name: Azure-Befehlszeilenschnittstelle 1.0
+                  href: network-watcher-packet-capture-manage-cli-nodejs.md
+                - name: REST
+                  href: network-watcher-packet-capture-manage-rest.md
+            - name: Analysieren einer Paketerfassung
+              items:
+                - name: Suchen nach Anomalien
+                  href: network-watcher-deep-packet-inspection.md
+                - name: Proaktive Netzwerküberwachung mit Azure Functions
+                  href: network-watcher-alert-triggered-packet-capture.md
+                - name: Durchführen einer Angriffserkennung mithilfe von Open Source-Tools
+                  href: network-watcher-intrusion-detection-open-source-tools.md
+                - name: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Open Source-Tools
+                  href: network-watcher-using-open-source-tools.md
+    - name: Überwachen von Netzwerkverbindungen
+      href: connection-monitor.md
+    - name: Arbeiten mit Netzwerksicherheitsgruppen
+      items:
+        - name: Konfigurieren von NSG-Datenflussprotokollen
+          items:
+            - name: Azure-Portal
+              href: network-watcher-nsg-flow-logging-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-nsg-flow-logging-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: network-watcher-nsg-flow-logging-cli.md
+            - name: Azure-Befehlszeilenschnittstelle 1.0
+              href: network-watcher-nsg-flow-logging-cli-nodejs.md
+            - name: REST
+              href: network-watcher-nsg-flow-logging-rest.md
+        - name: Analysieren von NSG-Flussprotokollen
+          items:
+            - name: Lesen von NSG-Datenflussprotokollen
+              href: network-watcher-read-nsg-flow-logs.md
+            - name: Verwenden der Datenverkehrsanalyse
+              href: traffic-analytics.md
+              items:
+                - name: Häufig gestellte Fragen
+                  href: traffic-analytics-faq.md
+            - name: Verwenden von Power BI
+              href: network-watcher-visualize-nsg-flow-logs-power-bi.md
+            - name: Verwenden von Elastic Stack
+              href: network-watcher-visualize-nsg-flow-logs-open-source-tools.md
+            - name: Verwenden von Grafana
+              href: network-watcher-nsg-grafana.md
+            - name: Verwenden von Graylog
+              href: network-watcher-analyze-nsg-flow-logs-graylog.md
+        - name: Anzeigen von Netzwerksicherheitsgruppen
+          items:
+            - name: Azure PowerShell
+              href: network-watcher-security-group-view-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: network-watcher-security-group-view-cli.md
+            - name: Azure-Befehlszeilenschnittstelle 1.0
+              href: network-watcher-security-group-view-cli-nodejs.md
+            - name: REST
+              href: network-watcher-security-group-view-rest.md
+        - name: Überprüfen der Compliance und des Netzwerks
+          href: network-watcher-nsg-auditing-powershell.md
+    - name: Diagnostizieren von VPN Gateway und Verbindungen
+      items:
+        - name: Problembehandlung
+          items:
+            - name: Azure-Portal
+              href: network-watcher-troubleshoot-manage-portal.md
+            - name: Azure PowerShell
+              href: network-watcher-troubleshoot-manage-powershell.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: network-watcher-troubleshoot-manage-cli.md
+            - name: Azure-Befehlszeilenschnittstelle 1.0
+              href: network-watcher-troubleshoot-manage-cli-nodejs.md
+            - name: REST
+              href: network-watcher-troubleshoot-manage-rest.md
+        - name: Überwachen von VPN Gateway mit Azure Automation
+          href: network-watcher-monitor-with-azure-automation.md
+        - name: Diagnostizieren der lokalen Konnektivität über VPN Gateway
+          href: network-watcher-diagnose-on-premises-connectivity.md
+    - name: Anzeigen der Netzwerktopologie
+      items:
+        - name: Azure PowerShell
+          href: network-watcher-topology-powershell.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: network-watcher-topology-cli.md
+        - name: Azure-Befehlszeilenschnittstelle 1.0
+          href: network-watcher-topology-cli-nodejs.md
+        - name: REST
+          href: network-watcher-topology-rest.md
+    - name: Bestimmen der relativen Wartezeit zwischen einem Standort und einer Azure-Region
+      href: view-relative-latencies.md
+- name: Verweis
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/network/watcher
+    - name: Azure PowerShell
+      href: '/powershell/module/azurerm.network/#network_watcher'
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.network
+    - name: Ruby
+      href: 'http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher'
+    - name: Python
+      href: /python/api/overview/azure/network
+    - name: .NET
+      href: /dotnet/api/overview/azure/virtual-network
+    - name: Node.js
+      href: /javascript/api/azure-arm-network
+    - name: REST
+      href: /rest/api/network-watcher/
+- name: angeben
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=WAVirtualMachinesVirtualNetwork'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=network-watcher'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/network-watcher'

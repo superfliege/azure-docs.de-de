@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.openlocfilehash: 67d75a28ba65dbdc0a3a105f9e41a1c4f02f2615
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f870bf1a282d7a044bb876e0015962b4f520a15f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
 Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
@@ -26,8 +26,8 @@ Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
 * Sie haben ein Trainingsexperiment und ein Vorhersageexperiment, die Sie als operationalisierten Webdienst bereitgestellt haben.
 * Sie haben neue Daten, die Ihr prädiktiver Webdienst zum Ausführen der Bewertung verwenden soll.
 
-> [!NOTE] 
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+> [!NOTE]
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
 
 Beginnen Sie mit dem vorhandenen Webdienst und Experimenten, und führen Sie die folgenden Schritte aus:
 
@@ -54,7 +54,7 @@ So aktualisieren Sie das Trainingsexperiment:
 
 Führen Sie das Experiment aus.
 
-Als nächstes müssen Sie das Trainingsexperiment als Webdienst bereitstellen, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt.  
+Als nächstes müssen Sie das Trainingsexperiment als Webdienst bereitstellen, der ein trainiertes Modell und Modellauswertungsergebnisse erzeugt.
 
 Klicken Sie am unteren Rand des Experimentbereichs auf **Webdienst einrichten**, und wählen Sie **Webdienst bereitstellen [Neu]** aus. Das Azure Machine Learning-Webdienstportal wird mit der Seite **Webdienst bereitstellen** geöffnet. Geben Sie einen Namen für den Webdienst ein, wählen Sie einen Zahlungsplan aus, und klicken Sie anschließend auf **Bereitstellen**. Beachten Sie, dass nur die Batchausführungsmethode zum Erstellen von trainierten Modellen verwendet werden kann.
 
@@ -84,7 +84,7 @@ Suchen Sie die **apiKey**-Deklaration:
 Kopieren Sie auf der Seite **Consume** im Abschnitt **Basic consumption info** den Primärschlüssel, und fügen Sie ihn in die **apiKey**-Deklaration ein.
 
 ### <a name="update-the-azure-storage-information"></a>Aktualisieren der Azure Storage-Informationen
-Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\temp\CensusIpnput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.  
+Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\temp\CensusIpnput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.
 
 Nachdem Sie Ihr Experiment ausgeführt haben, sollte der resultierende Workflow dem folgenden ähneln:
 
@@ -126,7 +126,7 @@ Es folgt eine Beispielausgabe zum erneuten Trainieren:
 ## <a name="evaluate-the-retraining-results"></a>Auswerten der Ergebnisse des erneuten Trainings
 Wenn Sie die Anwendung ausführen, enthält die Ausgabe die URL und das erforderliche SAS-Token für den Zugriff auf die Auswertungsergebnisse.
 
-Sie können die Leistungsergebnisse des erneut trainierten Modells anzeigen, indem Sie *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen für *output2* kombinieren (wie in der obigen Abbildung zur Ausgabe des erneuten Trainings gezeigt), und die vollständige URL in die Adressleiste des Browsers einfügen.  
+Sie können die Leistungsergebnisse des erneut trainierten Modells anzeigen, indem Sie *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen für *output2* kombinieren (wie in der obigen Abbildung zur Ausgabe des erneuten Trainings gezeigt), und die vollständige URL in die Adressleiste des Browsers einfügen.
 
 Überprüfen Sie die Ergebnisse, um festzustellen, ob das neu trainierte Modell gut genug ist, um das vorhandene Modell zu ersetzen.
 
@@ -136,7 +136,7 @@ Kopieren Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToken
 Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist. Die Webdienstdefinition ist eine interne Darstellung des trainierten Modells für den Webdienst und kann nicht direkt geändert werden. Achten Sie darauf, die Webdienstdefinition für das Vorhersageexperiment (und nicht für das Trainingsexperiment) abzurufen.
 
 ## <a name="sign-in-to-azure-resource-manager"></a>Anmelden bei Azure Resource Manager
-Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) bei Ihrem Azure-Konto an.
+Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto an.
 
 ## <a name="get-the-web-service-definition-object"></a>Abrufen des Webdienstdefinition-Objekts
 Rufen Sie als nächstes mithilfe des Cmdlets [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) das Webdienstdefinition-Objekt ab.

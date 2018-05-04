@@ -1,8 +1,8 @@
 ---
-title: "Erstellen von Hadoop-Clustern mit der Azure REST-API – Azure | Microsoft-Dokumentation"
+title: Erstellen von Hadoop-Clustern mit der Azure REST-API – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen, indem Sie Azure Resource Manager-Vorlagen an die Azure-REST-API senden.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -11,16 +11,14 @@ ms.assetid: 98be5893-2c6f-4dfa-95ec-d4d8b5b7dcb5
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: 4fcdde200fa9d54c7eb5b0ffe151aff3fbd0ed85
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a71a73d8d54e6a24c9a491bd02c7270f56823003
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Hadoop-Clustern mithilfe der Azure-REST-API
 
@@ -34,7 +32,7 @@ Mit der Azure-REST-API können Sie Verwaltungsvorgänge für Dienste durchführe
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 > [!NOTE]
-> Bei den Schritten in diesem Dokument wird das Hilfsprogramm [curl (https://curl.haxx.se/)](https://curl.haxx.se/) für die Kommunikation mit der Azure-REST-API verwendet.
+> Bei den Schritten in diesem Dokument wird das Hilfsprogramm [curl (https://curl.haxx.se/)](https://curl.haxx.se/)) für die Kommunikation mit der Azure-REST-API verwendet.
 
 ## <a name="create-a-template"></a>Erstellen einer Vorlage
 

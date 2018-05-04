@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Verwenden von Draft mit Azure Container Service (AKS)
 
@@ -33,10 +33,10 @@ Schließlich müssen Sie [Docker](https://www.docker.com) installieren.
 
 ## <a name="install-draft"></a>Installieren von Draft
 
-Bei der Draft-Befehlszeilenschnittstelle handelt es sich um einen Client, der auf Ihrem Entwicklungssystem ausgeführt wird und die schnelle Bereitstellung von Code in einem Kubernetes-Cluster ermöglicht. 
+Bei der Draft-Befehlszeilenschnittstelle handelt es sich um einen Client, der auf Ihrem Entwicklungssystem ausgeführt wird und die schnelle Bereitstellung von Code in einem Kubernetes-Cluster ermöglicht.
 
-> [!NOTE] 
-> Wenn Sie Draft vor Version 0.12 installiert haben, müssen Sie Draft zuerst mit `helm delete --purge draft` aus dem Cluster löschen und dann die lokale Konfiguration durch Ausführen von `rm -rf ~/.draft` entfernen. Wenn Sie macOS verwenden, können Sie `brew upgrade draft` ausführen.
+> [!NOTE]
+> Wenn Sie Draft vor Version 0.12 installiert haben, müssen Sie Draft zuerst mit `helm delete --purge draft` aus dem Cluster löschen und dann die lokale Konfiguration durch Ausführen von `rm -rf ~/.draft` entfernen. Wenn Sie macOS verwenden, führen Sie `brew upgrade draft` aus.
 
 Wenn Sie die Draft-Befehlszeilenschnittstelle auf einem Mac installieren möchten, verwenden Sie `brew`. Informationen zu weiteren Installationsoptionen finden Sie im [Draft-Installationshandbuch][install-draft].
 
@@ -71,9 +71,9 @@ az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role 
 
 Da jetzt eine Vertrauensbeziehung zwischen AKS und ACR besteht, aktivieren Sie mit den folgenden Schritten die Verwendung von ACR über Ihren AKS-Cluster.
 1. Legen Sie den Draft-Konfigurationswert `registry` fest, indem Sie `draft config set registry <registry name>.azurecr.io` ausführen, wobei _&lt;registry name&lt;_ der Name der ACR-Registrierung ist.
-2. Melden Sie sich bei der ACR-Registrierung durch Ausführen von `az acr login -n <registry name>` an. 
+2. Melden Sie sich bei der ACR-Registrierung durch Ausführen von `az acr login -n <registry name>` an.
 
-Da Sie jetzt lokal bei ACR angemeldet sind und eine Vertrauensbeziehung mit AKS und ACR erstellt haben, sind keine Kennwörter oder Geheimnisse für Übertragungen per Push und Pull von ACR in AKS erforderlich. Die Authentifizierung erfolgt auf der Azure Resource Manager-Ebene mithilfe von Azure Active Directory. 
+Da Sie jetzt lokal bei ACR angemeldet sind und eine Vertrauensbeziehung mit AKS und ACR erstellt haben, sind keine Kennwörter oder Geheimnisse für Übertragungen per Push und Pull von ACR in AKS erforderlich. Die Authentifizierung erfolgt auf der Azure Resource Manager-Ebene mithilfe von Azure Active Directory.
 
 ## <a name="run-an-application"></a>Ausführen einer Anwendung
 
@@ -143,7 +143,7 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-Sie können nun Ihre Anwendung durch Navigieren zu http://localhost:46143 testen (im vorangegangenen Beispiel kann Ihr Port ein anderer sein). Drücken Sie nach Abschluss des Anwendungstests `Control+C`, um die Proxyverbindung zu trennen.
+Testen Sie nun Ihre Anwendung durch Navigieren zu http://localhost:46143 (im vorangegangenen Beispiel kann Ihr Port ein anderer sein). Drücken Sie nach Abschluss des Anwendungstests `Control+C`, um die Proxyverbindung zu trennen.
 
 > [!NOTE]
 > Sie können auch den Befehl `draft up --auto-connect` zum Erstellen und Bereitstellen Ihrer Anwendung und zum sofortigen Verbinden mit dem ersten ausgeführten Container verwenden, um den Iterationszyklus noch schneller zu machen.

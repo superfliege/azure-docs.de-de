@@ -1,11 +1,11 @@
 ---
-title: "Informationen zum VPN-Gateway für Azure Stack | Microsoft-Dokumentation"
+title: Informationen zum VPN-Gateway für Azure Stack | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu VPN-Gateways, die Sie mit Azure Stack verwenden, sowie zu deren Konfiguration.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 0e30522f-20d6-4da7-87d3-28ca3567a890
 ms.service: azure-stack
 ms.workload: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ba9642d8c51f57623aded44b84d7127334806bc1
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 9c821f20ce5826666a05121e1a39882fae0930d3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informationen zum VPN-Gateway für Azure Stack
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 
 Um Netzwerkdatenverkehr zwischen Ihrem virtuellen Azure-Netzwerk und Ihrem lokalen Standort senden zu können, müssen Sie für Ihr virtuelles Netzwerk zunächst ein Gateway für virtuelle Netzwerke erstellen.
@@ -87,13 +87,14 @@ Berücksichtigen Sie bei der Auswahl einer SKU Folgendes:
 ## <a name="estimated-aggregate-throughput-by-sku"></a>Voraussichtlicher aggregierter Durchsatz nach SKU
 In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefasste Durchsatz nach Gateway-SKU angegeben.
 
-|   | VPN-Gatewaydurchsatz *(1)* |Max. IPsec-Tunnel für das VPN-Gateway |
+|   | VPN-Gatewaydurchsatz *(1)* | Max. IPsec-Tunnel für das VPN-Gateway *(2)* |
 |-------|-------|-------|
-|**Basic-SKU** ***(2)***    | 100 MBit/s  | 10    |
+|**Basic-SKU** ***(3)***    | 100 MBit/s  | 10    |
 |**Standard-SKU**       | 100 MBit/s  | 10    |
-|**High-Performance-SKU** | 200 MBit/s    | 30    |
+|**High-Performance-SKU** | 200 MBit/s    | 5 |
 ***(1)*** Der VPN-Durchsatz ist kein garantierter Durchsatz für standortübergreifende Verbindungen über das Internet. Hierbei wird der maximal mögliche Durchsatz gemessen.  
-***(2)*** BGP wird für die Basic-SKU nicht unterstützt.
+***(2)*** Bei der maximalen Tunnelanzahl handelt es sich um die Summe pro Azure Stack-Bereitstellung für ALLE Abonnements.
+***(3)*** BGP wird für die Basic-SKU nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich über [Einstellungen für VPN-Gateways](azure-stack-vpn-gateway-settings.md) für Azure Stack.

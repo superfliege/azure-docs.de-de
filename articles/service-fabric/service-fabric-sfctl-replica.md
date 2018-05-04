@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric CLI – sfctl replica | Microsoft-Dokumentation"
+title: Azure Service Fabric CLI – sfctl replica | Microsoft-Dokumentation
 description: Beschreibt die sfctl replica-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 services: service-fabric
 documentationcenter: na
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: cli
 ms.topic: reference
@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
 ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.
@@ -58,7 +58,7 @@ Ruft die Details des Replikats ab, das auf einem Service Fabric-Knoten bereitges
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-health"></a>sfctl replica health
@@ -82,7 +82,7 @@ Ruft die Integrität eines Service Fabric-Replikats ab. Verwenden Sie „EventsH
 | --debug                  | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h                | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o              | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query                  | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query                  | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose                | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
@@ -106,7 +106,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list
@@ -130,7 +130,7 @@ Die Antwort enthält die ID, die Rolle, den Status, die Integrität, den Knotenn
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-remove"></a>sfctl replica remove
@@ -155,7 +155,7 @@ Diese API simuliert einen Service Fabric-Replikatfehler durch Entfernen eines Re
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-replica-restart"></a>sfctl replica restart
@@ -179,7 +179,7 @@ Startet ein Dienstreplikat eines permanenten Diensts neu, das auf einem Knoten a
 | --debug               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 | --help -h             | Zeigt diese Hilfemeldung an und beendet.|
 | --output -o           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
-| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+| --query               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter http://jmespath.org/.|
 | --verbose             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

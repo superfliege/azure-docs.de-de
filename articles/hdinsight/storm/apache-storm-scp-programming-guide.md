@@ -11,15 +11,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: a0ce92ba58fbcda812a3d4e5e275178b73400d6c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
 SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](http://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](http://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 
@@ -155,7 +153,7 @@ Context stellt eine Ausführungsumgebung für die Anwendung bereit. Jede ISCPPlu
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf` enthält die von Storm definierten Parameter, und `pluginConf` enthält die von SCP definierten Parameter. Beispiel:
+`stormConf` enthält die von Storm definierten Parameter, und `pluginConf` enthält die von SCP definierten Parameter. Beispiel: 
 
     public class Constants
     {
@@ -169,7 +167,7 @@ Context stellt eine Ausführungsumgebung für die Anwendung bereit. Jede ISCPPlu
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext` wird bereitgestellt, um den Topologie-Kontext abzurufen, und eignet sich hauptsächlich für Komponenten mit Mehrfach-Parallelität. Beispiel:
+`TopologyContext` wird bereitgestellt, um den Topologie-Kontext abzurufen, und eignet sich hauptsächlich für Komponenten mit Mehrfach-Parallelität. Beispiel: 
 
     //demo how to get TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
@@ -351,7 +349,7 @@ Die SCP-Plug-Ins können im Allgemeinen in zwei Modi ausgeführt werden:
         }
 
 ## <a name="topology-specification-language"></a>Sprache für die Topologie-Spezifikation
-SCP Topology Specification ist eine domänenspezifische Sprache zum Beschreiben und Konfigurieren von SCP-Topologien. Diese Sprache basiert auf Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) von Storm und wird durch SCP erweitert.
+SCP Topology Specification ist eine domänenspezifische Sprache zum Beschreiben und Konfigurieren von SCP-Topologien. Sie basiert auf Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) von Storm und wird durch SCP erweitert.
 
 Topologiespezifikationen können direkt an das Storm-Cluster zur Ausführung mit dem ***runspec***-Befehl übermittelt werden.
 
@@ -360,12 +358,12 @@ In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topolo
 | **Neue Funktionen** | **Parameter** | **Beschreibung** |
 | --- | --- | --- |
 | **tx-topolopy** |topology-name<br />spout-map<br />bolt-map |Definiert eine transaktionale Topologie mit dem angegebenen Namen,&nbsp;der Spouts-Definitions-Map und der Bolts-Definitions-Map. |
-| **scp-tx-spout** |Exec-Name<br />args<br />Felder |Definiert einen transaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout |
-| **scp-tx-batch-bolt** |Exec-Name<br />args<br />Felder |Definiert einen transaktionalen Stapel-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Felder sind die Ausgabe-Felder für den Bolt |
-| **scp-tx-commit-bolt** |Exec-Name<br />args<br />Felder |Definiert einen transaktionalen Commit-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt |
+| **scp-tx-spout** |Exec-Name<br />args<br />fields |Definiert einen transaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout |
+| **scp-tx-batch-bolt** |Exec-Name<br />args<br />fields |Definiert einen transaktionalen Stapel-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Felder sind die Ausgabe-Felder für den Bolt |
+| **scp-tx-commit-bolt** |Exec-Name<br />args<br />fields |Definiert einen transaktionalen Commit-Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt |
 | **nontx-topolopy** |topology-name<br />spout-map<br />bolt-map |Definiert eine nicht transaktionale Topologie mit dem angegebenen Namen,&nbsp;der Spouts-Definitions-Map und der Bolts-Definitions-Map. |
-| **scp-spout** |Exec-Name<br />args<br />Felder<br />parameters |Definiert einen nichttransaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
-| **scp-bolt** |Exec-Name<br />args<br />Felder<br />parameters |Definiert einen nichttransaktionalen Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
+| **scp-spout** |Exec-Name<br />args<br />fields<br />Parameter |Definiert einen nichttransaktionalen Spout. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabe-Felder für den Spout<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
+| **scp-bolt** |Exec-Name<br />args<br />fields<br />Parameter |Definiert einen nichttransaktionalen Bolt. Die Anwendung wird mit ***exec-name*** mithilfe von ***args*** ausgeführt.<br /><br />Der Eingabeparameter ***Felder*** sind die Ausgabefelder für den Bolt<br /><br />Der Parameter ***parameters*** ist optional und kann zum Angeben von Parametern wie „nontransactional.ack.enabled“ verwendet werden. |
 
 In SCP.NET sind die folgenden Schlüsselwörter definiert:
 
@@ -425,7 +423,7 @@ Entwickler müssen sicherstellen, dass die ausgegebenen Tupel dem für den Strea
 ### <a name="multi-stream-support"></a>Unterstützung für Multi-Streams
 SCP unterstützt Benutzercode, der mit mehreren separaten Streams gleichzeitig kommunizieren kann. Diese Unterstützung erfolgt im Context-Objekt: Die Emit-Methode nimmt einen optionalen StreamId-Parameter entgegen.
 
-Im SCP.NET-Context-Objekt wurden zwei Methoden hinzugefügt. Diese Methoden geben Tupel aus, mit denen die StreamId angegeben wird. Die StreamId ist eine Zeichenfolge und muss in C\# und in der Topologiedefinition übereinstimmen.
+IM SCP.NET-Context-Objekt wurden zwei Methoden hinzugefügt. Diese Methoden geben Tupel aus, mit denen die StreamId angegeben wird. Die StreamId ist eine Zeichenfolge und muss in C\# und in der Topologiedefinition übereinstimmen.
 
         /* Emit tuple to the specific stream. */
         public abstract void Emit(string streamId, List<object> values);
@@ -467,7 +465,7 @@ Die native Storm-Version wurde in Java geschrieben. Sie wurde durch SCP.NET erwe
 Hier ist `microsoft.scp.example.HybridTopology.Generator` der Klassenname des Java-Spouts.
 
 ### <a name="specify-java-classpath-in-runspec-command"></a>Angeben des Java-Classpath im runSpec-Befehl
-Wenn Sie eine Topologie mit Java-Spouts oder -Bolts übermitteln möchten, müssen Sie die Java-Spouts bzw. -Bolts zunächst kompilieren und die Jar-Dateien erstellen. Anschließend geben Sie den Java-Classpath mit den Jar-Dateien an, wenn Sie die Topologie übermitteln. Beispiel:
+Wenn Sie eine Topologie mit Java-Spouts oder -Bolts übermitteln möchten, müssen Sie die Java-Spouts bzw. -Bolts zunächst kompilieren und die Jar-Dateien erstellen. Anschließend geben Sie den Java-Classpath mit den Jar-Dateien an, wenn Sie die Topologie übermitteln. Beispiel: 
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 

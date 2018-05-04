@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: ab4bc4024248675c6325159b5507add1274addc9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b33c95af94c436b1069658963692242d0f905554
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Einschränkungen und bekannte Probleme beim Import von APIs
 ## <a name="about-this-list"></a>Informationen zu dieser Liste
@@ -38,12 +38,12 @@ Wenn Ihnen beim Import von Open API-Dokumenten Fehler gemeldet werden, sollten S
 
 ## <a name="wsdl"></a>WSDL
 WSDL-Dateien werden zur Generierung von SOAP-Pass-Through-APIs verwendet oder dienen als Back-End einer SOAP-to-REST-API.
-
-* **WSDL:Import**: APIs, die dieses Attribut verwenden, werden derzeit von APIM nicht unterstützt. Die Kunden sollten die importierten Elemente zu einem Dokument zusammenfassen.
-* **Mehrteilige Nachrichten**: Derzeit unterstützt APIM diese Art von Nachrichten nicht.
-* **WCF wsHttpBinding:** Für SOAP-Dienste, die mit Windows Communication Foundation erstellt wurden, sollte basicHttpBinding verwendet werden – wsHttpBinding wird nicht unterstützt.
+* **SOAP-Bindungen**: Es werden nur SOAP-Bindungen unterstützt, die im Format von „document“- oder „literal“-Codierung vorliegen. Das „rpc“-Format und SOAP-Codierung werden nicht unterstützt.
+* **WSDL:Import**: Dieses Attribut wird nicht unterstützt. Kunden sollten die zu importierenden Elemente in einem Dokument zusammenführen.
+* **Mehrteilige Nachrichten**: Diese Art von Nachrichten wird nicht ünterstützt.
+* **WCF wsHttpBinding**: Für SOAP-Dienste, die mit Windows Communication Foundation erstellt wurden, sollte basicHttpBinding verwendet werden – wsHttpBinding wird nicht unterstützt.
 * **MTOM**: Dienste, die MTOM verwenden, funktionieren <em>möglicherweise</em>. Eine offizielle Unterstützung wird derzeit nicht geboten.
-* Rekursiv definierte (also beispielsweise auf ein eigenes Array verweisende) **Rekursionstypen** werden von APIM nicht unterstützt.
+* **Rekursion**: Typen, die rekursiv definiert sind (beispielsweise auf ein eigenes Array verweisen), werden von APIM nicht unterstützt.
 
 ## <a name="wadl"></a>WADL
 Derzeit sind keine Probleme beim Import im Format WADL bekannt.

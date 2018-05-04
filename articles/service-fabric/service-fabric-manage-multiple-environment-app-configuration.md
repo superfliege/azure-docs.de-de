@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: a3d0770d3b9c8702dbe4dac86f86030bea4090c0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3035d0e8642310698274e4351a95013e204e2f14
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Verwalten von Anwendungen für mehrere Umgebungen
 
@@ -48,8 +48,8 @@ Die Konfiguration, die Sie bereitstellen, kann in zwei Kategorien unterteilt wer
 
 Sie können beim Erstellen von benannten Anwendungsinstanzen in Service Fabric Parameter übergeben. Die Vorgehensweise hängt davon ab, wie Sie die Anwendungsinstanz erstellen.
 
-  - In PowerShell akzeptiert das Cmdlet [`New-ServiceFabricApplication`](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) die Anwendungsparameter als Hashtabelle.
-  - Bei sfctl akzeptiert der Befehl [`sfctl application create`](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) Parameter als JSON-Zeichenfolge. Das Skript „install.sh“ verwendet sfctl.
+  - In PowerShell akzeptiert das Cmdlet [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) die Anwendungsparameter als Hashtabelle.
+  - Bei sfctl akzeptiert der Befehl [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) Parameter als JSON-Zeichenfolge. Das Skript „install.sh“ verwendet sfctl.
   - Visual Studio stellt Ihnen im Ordner „Parameters“ im Anwendungsprojekt eine Reihe von Parameterdateien zur Verfügung. Diese Parameterdateien werden bei der Veröffentlichung aus Visual Studio heraus unter Verwendung von Visual Studio Team Service oder Team Foundation Server verwendet. In Visual Studio werden die Parameterdateien an das Skript „Deploy-FabricApplication.ps1“ übergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte

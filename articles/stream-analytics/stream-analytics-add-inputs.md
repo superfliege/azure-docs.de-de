@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 713b830717cce7b4b2b0fb1171596659c2275b85
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 13c3c948fbe24d5536b32967c8394060ee898377
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Hinzufügen einer Streamingdateneingabe oder von Verweisdaten zu einem Stream Analytics-Auftrag
 Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus dem Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen.
@@ -49,12 +49,12 @@ So fügen Sie Ihrem Stream Analytics-Auftrag eine Eingabe hinzu:
     ![Hinzufügen eines Datenstroms als Dateneingabe](./media/stream-analytics-add-inputs/9-stream-analytics-add-inputs.png)  
 4. Geben Sie im Feld „Eingabealias“ einen Anzeigenamen für diese Eingabe ein.  Dieser Name wird später in der Abfrage Ihres Auftrags zum Verweisen auf die Eingabe verwendet.
    
-    Geben Sie den Rest der erforderlichen Verbindungseigenschaften ein, um eine Verbindung mit Ihrer Datenquelle herzustellen. Diese Felder unterscheiden sich je nach Eingabe- und Quelltyp und sind [hier](stream-analytics-create-a-job.md)im Detail definiert.  
+    Geben Sie den Rest der erforderlichen Verbindungseigenschaften ein, um eine Verbindung mit Ihrer Datenquelle herzustellen. 
    
     ![Hinzufügen eines Event Hubs als Dateneingabe](./media/stream-analytics-add-inputs/4-stream-analytics-add-inputs.png)  
 5. Geben Sie die Serialisierungseinstellungen für die Eingabedaten an:
    
-   * Um sicherzustellen, dass Ihre Abfragen erwartungsgemäß funktionieren, geben Sie das **Ereignisserialisierungsformat** von eingehenden Daten an.  Unterstützte Serialisierungsformate sind JSON, CSV und Avro.
+   * Um sicherzustellen, dass Ihre Abfragen erwartungsgemäß funktionieren, geben Sie das **Ereignisserialisierungsformat** von eingehenden Daten an.  Unterstützte Serialisierungsformate sind JSON, CSV und Avro. Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten.
    * Überprüfen Sie die **Codierung** für die Daten.  UTF-8 ist derzeit das einzige unterstützte Codierungsformat.
      
      ![Datenserialisierungseinstellungen für die Dateneingabe](./media/stream-analytics-add-inputs/5-stream-analytics-add-inputs.png)  

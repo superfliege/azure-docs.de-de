@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von Hadoop Hive an der Abfragekonsole in HDInsight – Azure | Microsoft-Dokumentation"
-description: "In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen."
+title: Verwenden von Hadoop Hive an der Abfragekonsole in HDInsight – Azure | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie mit der HDInsight-Abfragekonsole Hive-Abfragen auf einem Hadoop-Cluster in HDInsight in Ihrem Browser ausführen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 5ae074b0-f55e-472d-94a7-005b0e79f779
 ms.service: hdinsight
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: d6032b8a1e3d338b046c958804102aeb9efcf4ab
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 04a6ad67fec4145d8f9164743b08f9e105778091
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -39,7 +37,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
 * Einen zeitgemäßen Webbrowser
 
 ## <a id="run"></a> Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
-1. Öffnen Sie einen Webbrowser, und navigieren Sie zu **https://CLUSTERNAME.azurehdinsight.net**. Dabei steht **CLUSTERNAME** für den Namen des HDInsight-Clusters. Geben Sie nach der entsprechenden Aufforderung den Benutzernamen samt Kennwort ein, den Sie beim Erstellen des Clusters eingegeben haben.
+1. Öffnen Sie einen Webbrowser, und navigieren Sie zu **https://CLUSTERNAME.azurehdinsight.net**, wobei **CLUSTERNAME** der Name des HDInsight-Clusters ist. Geben Sie nach der entsprechenden Aufforderung den Benutzernamen samt Kennwort ein, den Sie beim Erstellen des Clusters eingegeben haben.
 2. Wählen Sie am Seitenanfang in den Links die Option **Hive-Editor**aus. Dadurch wird ein Formular angezeigt, mit dem Sie HiveQL-Anweisungen eingeben können, die Sie auf dem HDInsight-Cluster ausführen möchten.
 
     ![im Hive-Editor](./media/apache-hadoop-use-hive-query-console/queryconsole.png)
@@ -68,7 +66,7 @@ Damit Sie die in dieser Artikel aufgeführten Schritte ausführen können, benö
    * **SPEICHERORT DER TEXTDATEI**: Teilt Hive den Speicherort der Daten (das Verzeichnis "Beispiel/Daten") und die Information mit, dass die Speicherung als Text erfolgt.
    * **SELECT**: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Dadurch sollte der Wert **3** zurückgegeben werden, da dieser Wert in drei Zeilen enthalten ist.
    * **INPUT__FILE__NAME LIKE '%.log'**: Teilt Hive mit, dass nur Daten aus Dateien mit der Erweiterung „.log“ zurückgeben werden sollen. Dies schränkt die Suche auf die Datei "sample.log" ein, die die Daten enthält, und verhindert, dass Daten aus anderen Beispieldatendateien zurückgegeben werden, die nicht dem von uns definierten Schema entsprechen.
-3. Klicken Sie auf **Senden**. Die **Auftragssitzung** am unteren Seitenrand sollte Details für den Auftrag anzeigen.
+3. Klicken Sie auf **Submit**. Die **Auftragssitzung** am unteren Seitenrand sollte Details für den Auftrag anzeigen.
 4. Sobald sich die Angabe im Feld **Status** in **Abgeschlossen** ändert, wählen Sie **Details anzeigen** für den Auftrag aus. Auf der Detailseite enthält die **Auftragsausgabe** die Zeichenfolge `[ERROR]    3`. Sie können die Schaltfläche **Herunterladen** unter diesem Feld verwenden, um eine Datei herunterzuladen, die die Ausgabe des Auftrags enthält.
 
 ## <a id="summary"></a>Zusammenfassung

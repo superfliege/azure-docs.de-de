@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 69b2caa6cd2fe6d2c89074614aaf28e2ad68a25a
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -103,9 +103,7 @@ Wenn eine VM nicht auf den Datenverkehr antwortet, kann dies daran liegen, dass 
 
 Wenn eine oder mehrere im Subnetz oder auf der VM konfigurierte Netzwerksicherheitsgruppen die Quell-IP oder den Port blockieren, kann die VM nicht antworten.
 
-* Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter 
-    -  [Verwalten von Netzwerksicherheitsgruppen über das Portal](../virtual-network/virtual-network-manage-nsg-arm-portal.md)
-    -  [Verwalten von Netzwerksicherheitsgruppen mithilfe von PowerShell](../virtual-network/virtual-network-manage-nsg-arm-ps.md)
+* Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter [Create, change, or delete a network security group](../virtual-network/manage-network-security-group.md) (Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe).
 * Überprüfen Sie Folgendes anhand der Liste von Netzwerksicherheitsgruppen:
     - Beim eingehenden oder ausgehenden Datenverkehr am Datenport tritt eine Störung auf. 
     - Eine Regel **Alle verweigern** für Netzwerksicherheitsgruppen der NIC der VM oder des Subnetzes weist eine höhere Priorität als die Standardregel auf, die Load Balancer-Tests und -Datenverkehr zulässt (Netzwerksicherheitsgruppen müssen die Load Balancer-IP-Adresse 168.63.129.16 (Testport) zulassen). 

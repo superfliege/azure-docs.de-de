@@ -45,6 +45,8 @@
       href: container-instances-troubleshooting.md
     - name: Jenkins-Build-Agents in ACI
       href: container-instances-jenkins.md
+    - name: Überwachen der CPU- und Arbeitsspeicherauslastung
+      href: container-instances-monitor.md
     - name: Konfigurieren von Datenvolumes
       items:
         - name: Azure Files

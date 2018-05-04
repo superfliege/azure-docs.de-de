@@ -2,7 +2,7 @@
 title: Problembehandlung mit Apache Spark-Clustern in Azure HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie mehr zu Problemen mit Apache Spark-Clustern in Azure HDInsight und wie Sie diese umgehen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -10,40 +10,22 @@ tags: azure-portal
 ms.assetid: 610c4103-ffc8-4ec0-ad06-fdaf3c4d7c10
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-<<<<<<< HEAD
-<<<<<<< HEAD
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 664c97117de793209007843fa23c98f52c2b079d
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
-=======
-ms.openlocfilehash: 7faa1fa1537dd71bdf0493d92f26ddda2ae59264
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
-ms.openlocfilehash: de7847055c00fe9d0d1cc08cf5ba5d2ab54a9fc0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
->>>>>>> badf78d3a696bb4bc2277e8b2840da1a5bb1178d
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Bekannte Probleme bei Apache Spark-Clustern unter HDInsight
 
 In diesem Dokument werden sämtliche bekannte Probleme für die öffentliche Vorschauversion von HDInsight Spark erfasst.  
 
 ## <a name="livy-leaks-interactive-session"></a>Verlust einer interaktiven Sitzung durch Livy
-Wenn Livy neu gestartet wird (von Ambari oder aufgrund eines VM-Neustarts mit Hauptknoten 0), während noch eine interaktive Sitzung aktiv ist, geht eine interaktive Auftragssitzung verloren. Dadurch bleiben neue Aufträge unter Umständen im Zustand „Akzeptiert“ hängen und können nicht gestartet werden.
+Wenn Livy neu gestartet wird (von Ambari oder aufgrund des Neustarts eines virtuellen Computers mit Hauptknoten 0), solange eine interaktive Sitzung aktiv ist, geht eine interaktive Auftragssitzung verloren. Daher können neue Aufträge im Status „Akzeptiert“ hängen bleiben.
 
 **Lösung:**
 
@@ -70,7 +52,12 @@ Der Spark-Verlaufsserver wird nach der Clustererstellung nicht automatisch gesta
 Starten Sie den Verlaufsserver in Ambari manuell.
 
 ## <a name="permission-issue-in-spark-log-directory"></a>Berechtigungsproblem im Spark-Protokollverzeichnis
-Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der Fehler „java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log“ (Zugriff verweigert) auf, und das Treiberprotokoll wird nicht geschrieben. 
+„hdiuser“ erhält beim Senden eines Auftrags mit „spark-submit“ den folgenden Fehler:
+
+```
+java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied)
+```
+Und es wird kein Treiberprotokoll geschrieben. 
 
 **Lösung:**
 
@@ -81,7 +68,7 @@ Wenn „hdiuser“ einen Auftrag mit „spark-submit“ übermittelt, tritt der 
 
 ## <a name="spark-phoenix-connector-is-not-supported"></a>Keine Unterstützung für den Spark-Phoenix-Connector
 
-Derzeit wird der Spark-Phoenix-Connector für HDInsight Spark-Cluster nicht unterstützt.
+HDInsight Spark-Cluster unterstützen den Spark-Phoenix-Connector nicht.
 
 **Lösung:**
 
@@ -91,7 +78,7 @@ Sie müssen stattdessen den Spark-HBase-Connector verwenden. Anweisungen finden 
 Im Folgenden sind einige Probleme im Zusammenhang mit Jupyter Notebooks genannt.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notebooks mit Nicht-ASCII-Zeichen in Dateinamen
-Jupyter Notebooks, die in Spark HDInsight-Clustern verwendet werden können, sollten keine Nicht-ASCII-Zeichen in den Dateinamen haben. Wenn Sie versuchen, eine Datei, die keinen ASCII-Dateinamen aufweist, über die Jupyter-Benutzeroberfläche hochzuladen, tritt ein stiller Fehler auf, bei dem Jupyter Sie die Datei nicht hochladen lässt, aber auch keinen sichtbaren Fehler auslöst. 
+Verwenden Sie in Jupyter Notebook-Dateinamen keine ASCII-fremden Zeichen. Wenn Sie versuchen, eine Datei über die Jupyter-Benutzeroberfläche hochzuladen, deren Dateiname ASCII-fremde Zeichen enthält, schlägt der Upload ohne Fehlermeldung fehl. Jupyter erlaubt den Upload der Datei nicht, gibt aber auch keinen sichtbaren Fehler aus.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Fehler beim Laden von größeren Notebooks
 Möglicherweise wird beim Laden von größeren Notebooks der Fehler **`Error loading notebook`** angezeigt.  

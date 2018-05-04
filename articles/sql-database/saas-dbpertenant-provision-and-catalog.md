@@ -10,11 +10,11 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 4ddb870d0513d6834aacf0964c240260f18df0fd
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3a4026b56522da6c6efede4b8b7a542efc8a776d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Hier erfahren Sie, wie Sie neue Mandanten bereitstellen und sie im Katalog registrieren.
 
@@ -63,7 +63,7 @@ Die Datenbankbereitstellung muss Teil Ihrer Schemaverwaltungsstrategie sein. Sie
 
 Die Wingtip Tickets-App mit einer Datenbank pro Mandant stellt neue Mandanten bereit, indem sie eine auf dem Katalogserver bereitgestellte Vorlagendatenbank namens _basetenantdb_ kopiert. Die Bereitstellung kann im Rahmen der Registrierung in die Anwendung integriert werden. Sie kann auch offline mithilfe von Skripts unterstützt werden. In diesem Tutorial wird die Bereitstellung mithilfe von PowerShell durchgeführt. 
 
-Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden. 
+Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Die Mandantendatenbank wird in dem Mandantenserver erstellt, der dem _newtenant_-DNS-Alias zugeordnet ist. In diesem Alias wird ein Verweis auf den Server verwaltet, mit dem neue Mandanten bereitgestellt werden, und dieser Alias wird aktualisiert, um auf einen Wiederherstellungsmandantenserver in den Tutorials zur Notfallwiederherstellung zu verweisen ([Notfallwiederherstellung mithilfe von Geowiederherstellung](saas-dbpertenant-dr-geo-restore.md), [Notfallwiederherstellung mithilfe von Georeplikation](saas-dbpertenant-dr-geo-replication.md)). Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden. 
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant

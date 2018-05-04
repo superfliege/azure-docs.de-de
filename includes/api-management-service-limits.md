@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 03/22/2018
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: bee289da3f18edd0cb425f3d9acde084567a3b13
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b40e2ba448236bcef72ffe501b4b14fa0dd64e1c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 | Ressource | Begrenzung |
 | --- | --- |
@@ -21,6 +21,7 @@ ms.lasthandoff: 03/28/2018
 | Cache | 5 GB pro Einheit<sup>1</sup> |
 | Gleichzeitige Back-End-Verbindungen<sup>2</sup> pro HTTP-Autorität | 2.048 pro Einheit<sup>3</sup> |
 | Maximale Größe zwischengespeicherter Antworten | 10 MB |
+| Maximale Größe eines Richtliniendokuments | 256 KB |
 | Maximale Anzahl benutzerdefinierter Gatewaydomänen | 20 pro Dienstinstanz<sup>4</sup> |
 
 

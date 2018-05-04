@@ -1,11 +1,11 @@
 ---
-title: "Ändern des Azure-Abonnementangebots | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ihr Azure-Abonnement ändern und über das Azure-Kontocenter zu einem anderen Angebot wechseln."
-services: 
-documentationcenter: 
+title: Ändern des Azure-Abonnementangebots | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihr Azure-Abonnement ändern und über das Azure-Kontocenter zu einem anderen Angebot wechseln.
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing,top-support-issue
 ms.assetid: aae227b3-6d64-4550-a5b6-d359f53f0a59
 ms.service: billing
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 381994079b7bcaeff08802b06573b977bf631e9d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 12e5641093dd1bdc1546cc115283f48d5c134121
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements mit nutzungsbasierter Bezahlung in ein anderes Angebot
 
@@ -29,7 +29,7 @@ Als Benutzer mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offer
 
 ## <a name="whats-supported"></a>Unterstützte Umstellungen:
 
-| Aus | To |
+| From | To |
 | --- | --- |
 | Nutzungsbasierte Bezahlung |[Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |
 | Nutzungsbasierte Bezahlung |[Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |
@@ -105,7 +105,7 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>Kann ich von der nutzungsbasierten Bezahlung zu [Cloudlösungsanbieter](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (Cloud Solution Provider, CSP) oder [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) migrieren?
 
-* Informationen zum Migrieren zu CSP finden Sie unter [Azure Pas-As-You-Go Subscription Migration to CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp) (Azure-PAYG-Abonnementmigration zu CSP).
+* Informationen zum Migrieren zu CSP finden Sie unter [Migrieren von Azure-Abonnements von nutzungsbasierter Bezahlung zu Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
 * Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Zuordnen eines vorhandenen Kontos) im EA-Portal.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kann ich Daten und Dienste in ein neues Abonnement migrieren?

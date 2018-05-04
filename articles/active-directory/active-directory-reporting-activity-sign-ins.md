@@ -1,25 +1,25 @@
 ---
-title: "Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation"
-description: "Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal."
+title: Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Microsoft-Dokumentation
+description: Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ad7b1aae4ee14e46a5df6be0ebc29bfd455852d4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: cd057704197eb4bf66eff33d3c83a2ca9d5712d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -199,4 +199,3 @@ Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über a
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Fehlercodes von Anmeldeaktivitäten finden Sie unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal](active-directory-reporting-activity-sign-ins-errors.md).
-

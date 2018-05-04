@@ -1,45 +1,44 @@
 ---
-title: 'VPN Gateway-Übersicht: Erstellen von standortübergreifenden VPN-Verbindungen mit virtuellen Azure-Netzwerken | Microsoft-Dokumentation'
-description: In diesem Artikel erfahren Sie, was ein VPN Gateway ist und wie Sie über das Internet eine VPN-Verbindung mit virtuellen Azure-Netzwerken herstellen. Der Artikel enthält Diagramme mit grundlegenden Verbindungskonfigurationen.
+title: Azure VPN Gateway | Microsoft-Dokumentation
+description: Hier erfahren Sie, was ein VPN-Gateway ist und wie Sie damit eine Verbindung mit virtuellen Azure-Netzwerken herstellen können. Der Artikel geht unter anderem auf standortübergreifende IPsec/IKE-Site-to-Site- und -VNet-zu-VNet-Lösungen sowie auf Point-to-Site-VPNs ein.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
-tags: azure-resource-manager,azure-service-management
+tags: azure-resource-manager
+Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 405af7d1191e8ea3c0ba1c526f0c5a526aef795b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 30a2029fdf169747570d8c07915270ffae8ef8f5
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/23/2018
 ---
-# <a name="about-vpn-gateway"></a>Informationen zu VPN Gateway
+# <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
-Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr über eine öffentliche Verbindung an einen lokalen Standort gesendet wird. Sie können VPN-Gateways auch verwenden, um verschlüsselten Datenverkehr zwischen virtuellen Azure-Netzwerken über das Microsoft-Netzwerk zu senden. Wenn Sie verschlüsselten Netzwerkdatenverkehr zwischen Ihrem virtuellen Azure-Netzwerk und Ihrem lokalen Standort senden möchten, müssen Sie für Ihr virtuelles Netzwerk ein VPN-Gateway erstellen.
-
-Jedes virtuelle Netzwerk kann nur ein VPN-Gateway aufweisen. Sie können aber mehrere Verbindungen mit dem gleichen VPN-Gateway erstellen. Ein Beispiel hierfür ist eine Verbindungskonfiguration mit mehreren Standorten. Wenn Sie mehrere Verbindungen mit dem gleichen VPN-Gateway erstellen, teilen sich alle VPN-Tunnel (einschließlich Point-to-Site-VPNs) die für das Gateway zur Verfügung stehende Bandbreite.
+Ein VPN-Gateway ist eine spezielle Art von Gateway für virtuelle Netzwerke, das verwendet wird, um verschlüsselten Datenverkehr zwischen einem virtuellen Azure-Netzwerk und einem lokalen Standort über das öffentliche Internet zu senden. Ein VPN-Gateway kann aber auch verwendet werden, um verschlüsselten Datenverkehr zwischen virtuellen Azure-Netzwerken über das Microsoft-Netzwerk zu senden. Ein virtuelles Netzwerk kann jeweils nur über ein einzelnes VPN-Gateway verfügen. Sie können jedoch mehrere Verbindungen mit dem gleichen VPN-Gateway herstellen. Wenn Sie mehrere Verbindungen mit dem gleichen VPN-Gateway herstellen, wird die für das Gateway zur Verfügung stehende Bandbreite auf alle VPN-Tunnel aufgeteilt.
 
 ## <a name="whatis"></a>Was ist ein Gateway für virtuelle Netzwerke?
 
-Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei virtuellen Computern, die in einem speziellen Subnetz namens „GatewaySubnet“ bereitgestellt werden. Die virtuellen Computer in „GatewaySubnet“ werden beim Erstellen des Gateways für virtuelle Netzwerke erstellt. Virtuelle Computer im Gateway für virtuelle Netzwerke werden so konfiguriert, dass sie spezifische Routingtabellen und Gatewaydienste für das Gateway enthalten. Sie können die virtuellen Computer, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren, und Sie sollten nie zusätzliche Ressourcen in „GatewaySubnet“ bereitstellen.
+Ein Gateway für virtuelle Netzwerke besteht aus mindestens zwei virtuellen Computern, die in einem speziellen Subnetz namens *Gatewaysubnetz* bereitgestellt werden. Die virtuellen Computer im Gatewaysubnetz werden erstellt, wenn Sie das Gateway für virtuelle Netzwerke erstellen. Virtuelle Computer im Gateway für virtuelle Netzwerke werden so konfiguriert, dass sie spezifische Routingtabellen und Gatewaydienste für das Gateway enthalten. Sie können die virtuellen Computer, die Teil des Gateways für virtuelle Netzwerke sind, nicht direkt konfigurieren, und im Gatewaysubnetz dürfen keine weiteren Ressourcen bereitgestellt werden.
 
-Beim Erstellen des Gateways für virtuelle Netzwerke mit dem Gatewaytyp „Vpn“ wird ein bestimmter Gatewaytyp für virtuelle Netzwerke erstellt, mit dem Datenverkehr verschlüsselt wird: ein VPN-Gateway. Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern. Dies liegt daran, dass die virtuellen Computer für das VPN-Gateway im Gatewaysubnetz bereitgestellt und mit den angegebenen Einstellungen konfiguriert werden. Die von Ihnen ausgewählte Gateway-SKU bestimmt, wie leistungsfähig die virtuellen Computer sind.
+Die Erstellung eines VPN-Gateways kann bis zu 45 Minuten dauern. Wenn Sie ein VPN-Gateway erstellen, werden virtuelle Gatewaycomputer im Gatewaysubnetz bereitgestellt und mit den von Ihnen angegebenen Einstellungen konfiguriert. Nach der Erstellung eines VPN-Gateways können Sie eine IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem anderen VPN-Gateway (VNet-to-VNet) oder eine standortübergreifende IPsec/IKE-VPN-Tunnelverbindung zwischen dem VPN-Gateway und einem lokalen VPN-Gerät ( Site-to-Site) erstellen. Sie können auch eine Point-to-Site-VPN-Verbindung (VPN über IKEv2 oder SSTP) erstellen und so an einem Remotestandort (beispielsweise auf einer Konferenz oder von zu Hause aus) eine Verbindung mit Ihrem virtuellen Netzwerk herstellen.
 
 ## <a name="configuring"></a>Konfigurieren von VPN Gateway
 
-Eine VPN Gateway-Verbindung basiert auf mehreren, mit spezifischen Einstellungen konfigurierten Ressourcen. Die meisten der Ressourcen können separat konfiguriert werden. In manchen Fällen ist allerdings eine bestimmte Reihenfolge einzuhalten.
+Eine VPN Gateway-Verbindung basiert auf mehreren, mit spezifischen Einstellungen konfigurierten Ressourcen. Die meisten der Ressourcen können separat konfiguriert werden. Bei manchen ist allerdings eine bestimmte Reihenfolge zu beachten.
 
 ### <a name="settings"></a>Einstellungen
 
-Die Einstellungen, die Sie für die einzelnen Ressourcen auswählen, sind für eine erfolgreiche Verbindungserstellung entscheidend. Informationen zu einzelnen Ressourcen und Einstellungen für VPN Gateway finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md). Dieser Artikel enthält Informationen zu Gatewaytypen, VPN-Typen, Verbindungstypen, Gatewaysubnetzen, lokalen Netzwerkgateways und verschiedenen anderen Ressourceneinstellungen, die Sie ggf. berücksichtigen sollten.
+Die Einstellungen, die Sie für die einzelnen Ressourcen auswählen, sind für eine erfolgreiche Verbindungserstellung entscheidend. Informationen zu einzelnen Ressourcen und Einstellungen für VPN Gateway finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md). Dieser Artikel enthält Informationen zu Gatewaytypen, Gateway-SKUs, VPN-Typen, Verbindungstypen, Gatewaysubnetzen, lokalen Netzwerkgateways und verschiedenen anderen Ressourceneinstellungen, die Sie ggf. berücksichtigen sollten.
 
 ### <a name="tools"></a>Bereitstellungstools
 
@@ -47,7 +46,7 @@ Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourc
 
 ### <a name="models"></a>Bereitstellungsmodell
 
-Die Konfigurationsschritte für ein VPN-Gateway hängen davon ab, mit welchem Bereitstellungsmodell Sie das virtuelle Netzwerk erstellt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um die Einstellungen für das VPN Gateway zu erstellen und zu konfigurieren. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md).
+Für Azure stehen derzeit zwei Bereitstellungsmodelle zur Verfügung. Die Konfigurationsschritte für ein VPN-Gateway hängen davon ab, mit welchem Bereitstellungsmodell Sie das virtuelle Netzwerk erstellt haben. Wenn Sie Ihr VNET beispielsweise mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie die Richtlinien und Anleitungen für das klassische Bereitstellungsmodell, um die Einstellungen für das VPN Gateway zu erstellen und zu konfigurieren. Weitere Informationen zu Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ### <a name="planningtable"></a>Planungstabelle
 
@@ -83,7 +82,7 @@ Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen V
 
 ### <a name="Multi"></a>Multi-Site
 
-Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Site-Verbindung. Sie erstellen mehrere VPN-Verbindung über Ihr Gateway für virtuelle Netzwerke, durch die in der Regel mehrere lokale Standorte verbunden werden. Bei Verwendung mehrerer Verbindungen müssen Sie den VPN-Typ „RouteBased“ verwenden (wird bei Verwendung klassischer VNets als dynamisches Gateway bezeichnet). Da jedes virtuelle Netzwerk nur über ein einzelnes VPN-Gateway verfügen kann, wird die verfügbare Bandbreite von allen über das Gateway laufenden Verbindungen gemeinsam genutzt. Dies wird häufig als Multi-Site-Verbindung bezeichnet.
+Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Site-Verbindung. Sie erstellen mehrere VPN-Verbindung über Ihr Gateway für virtuelle Netzwerke, durch die in der Regel mehrere lokale Standorte verbunden werden. Bei Verwendung mehrerer Verbindungen müssen Sie den VPN-Typ „RouteBased“ verwenden (wird bei Verwendung klassischer VNets als dynamisches Gateway bezeichnet). Da jedes virtuelle Netzwerk nur über ein einzelnes VPN-Gateway verfügen kann, wird die verfügbare Bandbreite von allen über das Gateway laufenden Verbindungen gemeinsam genutzt. Diese Art von Verbindung wird häufig als Multi-Site-Verbindung bezeichnet.
 
 ![Beispiel für Multi-Site-Verbindung per Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -130,11 +129,11 @@ Sofern Ihr virtuelles Netzwerk bestimmte Anforderungen erfüllt, können Sie Ihr
 
 ## <a name="ExpressRoute"></a>ExpressRoute (private Verbindung)
 
-Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
+Mit ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, auf die Microsoft Cloud ausdehnen. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten herstellen, z. B. Microsoft Azure, Office 365 und CRM Online. Die Konnektivität kann über ein Any-to-Any-Netzwerk (IP VPN), ein Point-to-Point-Ethernet-Netzwerk oder eine virtuelle Querverbindung über einen Konnektivitätsanbieter in einer Co-Location-Einrichtung bereitgestellt werden.
 
 ExpressRoute-Verbindungen verlaufen nicht über das öffentliche Internet. Auf diese Weise können ExpressRoute-Verbindungen eine höhere Sicherheit, größere Zuverlässigkeit und schnellere Geschwindigkeit bei geringerer Latenz als herkömmliche Verbindungen über das Internet bieten.
 
-Bei ExpressRoute-Verbindungen kommt zwar kein VPN-Gateway zur Anwendung, als Teil der erforderlichen Konfiguration wird jedoch ein Gateway für virtuelle Netzwerke verwendet. Bei einer ExpressRoute-Verbindung wird das Gateway für virtuelle Netzwerke nicht mit dem Gatewaytyp „Vpn“, sondern mit „ExpressRoute“ konfiguriert. Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
+Bei ExpressRoute-Verbindungen ist ein Gateway für virtuelle Netzwerke Teil der erforderlichen Konfiguration. Bei einer ExpressRoute-Verbindung wird das Gateway für virtuelle Netzwerke nicht mit dem Gatewaytyp „Vpn“, sondern mit „ExpressRoute“ konfiguriert. Datenverkehr, der über eine ExpressRoute-Verbindung übertragen wird, ist standardmäßig nicht verschlüsselt. Es besteht jedoch die Möglichkeit, eine Lösung zu erstellen, die es ermöglicht, verschlüsselten Datenverkehr über eine ExpressRoute-Verbindung zu senden. Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](../expressroute/expressroute-introduction.md).
 
 ## <a name="coexisting"></a>Parallel bestehende Site-to-Site- und ExpressRoute-Verbindungen
 

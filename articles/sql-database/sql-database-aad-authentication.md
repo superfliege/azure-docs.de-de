@@ -9,18 +9,18 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: cfad53a3f86450163b2e29d5e4d4ed2726ecb0bc
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: fe3864c3f765ff4858deede798d5641a55dd8aef
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank, der verwalteten Instanz oder SQL Data Warehouse
 Die Azure Active Directory-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Microsoft Azure SQL-Datenbank und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten an einer zentralen Stelle verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung. Daraus ergeben sich u. a. die folgenden Vorteile:
 
 * Es wird eine Alternative zur SQL Server-Authentifizierung bereitgestellt.
 * Es wird einer unkontrollierten Ausbreitung von Benutzeridentitäten über Datenbankserver hinweg Einhalt geboten.
-* Es wird eine Kennwortrotation über eine zentrale Stelle ermöglicht.
+* Über eine zentrale Stelle wird eine Kennwortrotation ermöglicht.
 * Kunden können Datenbankberechtigungen mithilfe von externen Gruppen (Azure AD) verwalten.
 * Durch das Aktivieren der integrierten Windows-Authentifizierung und andere von Azure Active Directory unterstützte Authentifizierungsformen wird das Speichern von Kennwörtern überflüssig.
 * Die Azure Active Directory-Authentifizierung verwendet eigenständige Datenbankbenutzer zum Authentifizieren von Identitäten auf Datenbankebene.
@@ -75,7 +75,7 @@ Azure AD-Einschränkungen im Zusammenhang mit der verwalteten Instanz:
 - Nur der Azure AD-Administrator kann Datenbanken erstellen. Azure AD-Benutzer sind auf eine einzelne Datenbank beschränkt und verfügen nicht über diese Berechtigung.
 - Datenbankbesitz:
   - Der Azure AD-Prinzipal kann den Besitz der Datenbank (ALTER AUTHORIZATION ON DATABASE) nicht ändern und kann nicht als Besitzer festgelegt werden.
-  - Für Datenbanken, die vom Azure AD-Administrator erstellt werden, ist kein Besitz festgelegt ist (Das Feld „owner_sid“ in „sys.sysdatabases“ enthält „0x1“).
+  - Für Datenbanken, die vom Azure AD-Administrator erstellt werden, ist kein Besitz festgelegt. (Für das Feld „owner_sid“ in „sys.sysdatabases“ ist „0x1“ angegeben.)
 - SQL Agent kann bei einer Anmeldung mit Azure AD-Prinzipalen nicht verwaltet werden. 
 - Die Identität des Azure AD-Administrators kann nicht mithilfe von „EXECUTE AS“ angenommen werden.
 - DAC-Verbindungen werden mit Azure AD-Prinzipalen nicht unterstützt. 

@@ -1,8 +1,8 @@
 ---
 title: Erstellen von Warnungen in OMS Log Analytics | Microsoft-Dokumentation
-description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
+description: Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -12,28 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 04/13/2018
 ms.author: bwren
-ms.openlocfilehash: c34fb7295e8f386f0e7cf2c1db6b26a3e49eae98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b692822660ab12f89b274cea75727fb808d673f8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="working-with-alert-rules-in-log-analytics"></a>Arbeiten mit Warnungsregeln in Log Analytics
+
+> [!NOTE]
+> Dieser Artikel beschreibt klassische Log Analytics-Warnungen, die im OMS-Portal verwaltet werden.  Warnungen in Log Analytics werden [auf Azure erweitert](../monitoring-and-diagnostics/monitoring-alerts-extend.md).  Sobald dies geschehen ist, erstellen und bearbeiten Sie Warnungsregeln im Azure-Portal und verwenden nicht die in diesem Artikel beschriebenen Verfahren.
+
+
 Warnungen werden mithilfe von Warnungsregeln erstellt, für die in regelmäßigen Abständen automatisch Protokollsuchen durchgeführt werden.  Sie erstellen einen Warnungsdatensatz, wenn die Ergebnisse bestimmten Kriterien entsprechen.  Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen.   
 
 Dieser Artikel beschreibt die Prozesse zum Erstellen und Bearbeiten von Warnungsregeln mit dem OMS-Portal.  Weitere Informationen über die unterschiedlichen Einstellungen und das Implementieren des erforderlichen Codes finden Sie unter [Reagieren auf Probleme in Log Analytics mithilfe von Warnungen](log-analytics-alerts.md).
 
->[!NOTE]
-> Derzeit können Sie im Azure-Portal keine Warnungsregel erstellen oder ändern. 
 
 ## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 
 Beim Erstellen einer Warnungsregel mit dem OMS-Portal beginnen Sie mit dem Erstellen einer Protokollsuche für die Datensätze, von denen die Warnung aufgerufen werden soll.  Die Schaltfläche **Warnung** ist dann verfügbar, sodass Sie die Warnungsregel erstellen und konfigurieren können.
 
 >[!NOTE]
-> Maximal 250 Warnungsregeln können derzeit in einem OMS-Arbeitsbereich erstellt werden. 
+> Maximal 250 Warnungsregeln können zurzeit in einem Log Analytics-Arbeitsbereich erstellt werden. 
 
 1. Klicken Sie auf der Seite mit der OMS-Übersicht auf **Log Search**(Protokollsuche).
 2. Erstellen Sie entweder eine neue Protokollsuchabfrage, oder wählen Sie eine gespeicherte Protokollsuche aus. 
@@ -64,16 +67,16 @@ Wenn Sie eine Warnungsregel im OMS-Portal erstellen oder bearbeiten, arbeiten Si
 ### <a name="alert-information"></a>Alert information (Warnungsinformationen)
 Dies sind grundlegende Einstellungen für die Warnungsregel und die Warnungen, die sie erstellt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
-| Name | Eindeutiger Name zum Identifizieren der Warnungsregel Dieser Name wird in alle von der Regel erstellten Warnungen einbezogen.  |
-| Beschreibung | Eine optionale Beschreibung der Warnungsregel. |
+| NAME | Eindeutiger Name zum Identifizieren der Warnungsregel Dieser Name wird in alle von der Regel erstellten Warnungen einbezogen.  |
+| BESCHREIBUNG | Eine optionale Beschreibung der Warnungsregel. |
 | Severity |Schweregrad der Warnungen, die mit dieser Regel erstellt werden. |
 
 ### <a name="search-query-and-time-window"></a>Suchabfrage- und Zeitfenster
 Das Suchabfrage- und Zeitfenster, das die Datensätze zurückgibt, die ausgewertet werden, um festzustellen, ob Warnungen erstellt werden sollten.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Suchabfrage | Diese Abfrage wird ausgeführt.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss.<br><br>Wählen Sie die Option **Use current search query** (Aktuelle Suchabfrage verwenden), um die aktuelle Abfrage zu verwenden, oder wählen Sie in der Liste eine vorhandene gespeicherte Suche aus.  Die Abfragesyntax ist im Textfeld angegeben, und Sie können sie darin bei Bedarf ändern. |
 | Zeitfenster |Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein.  Er sollte größer als oder gleich der Warnungshäufigkeit sein.  <br><br> Wenn das Zeitfenster beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden. |
@@ -83,7 +86,7 @@ Wenn Sie das Zeitfenster für die Warnungsregel angeben, wird die Anzahl von vor
 ### <a name="schedule"></a>Schedule
 Definiert, wie oft die Suchabfrage ausgeführt wird.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Alert frequency (Warnhäufigkeit) | Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitfensterwert sein.  Wenn der Wert größer als das Zeitfenster ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br><br>Angenommen, Sie verwenden ein Zeitfenster von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet. |
 
@@ -91,19 +94,19 @@ Definiert, wie oft die Suchabfrage ausgeführt wird.
 ### <a name="generate-alert-based-on"></a>Warnung generieren basierend auf
 Definiert die Kriterien, anhand derer die Ergebnisse der Suchabfrage ausgewertet werden sollen, um festzulegen, ob eine Warnung erstellt werden soll.  Diese Details weichen je nach Art der ausgewählten Warnungsregel ab.  Sie können Details für die unterschiedlichen Warnungsregeltypen unter [Grundlegendes zu Warnungen in Log Analytics](log-analytics-alerts.md) abrufen.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Suppress alerts (Warnungen unterdrücken) | Wenn Sie die Unterdrückung für die Warnungsregel aktivieren, werden Aktionen für die Regel nach dem Erstellen einer neuen Warnung für einen vorher festgelegten Zeitraum deaktiviert. Die Regel wird weiter ausgeführt und erstellt Warnungsdatensätze, wenn die Kriterien erfüllt sind. Dies ist der Fall, damit Sie Zeit haben, das Problem zu beheben, ohne doppelte Aktionen durchzuführen. |
 
 #### <a name="number-of-results-alert-rules"></a>Warnungsregeln des Typs „Anzahl von Ergebnissen“
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Anzahl der Ergebnisse |Eine Warnung wird erstellt, wenn die Anzahl der von der Abfrage zurückgegebenen Datensätze entweder **größer als** oder **kleiner als** der Wert ist, den Sie angeben.  |
 
 #### <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Aggregatwert | Schwellenwert, den die jeweiligen Aggregatwerte in den Ergebnissen übersteigen müssen, um als Verletzung zu gelten. |
 | Warnung auslösen basierend auf | Die erforderliche Anzahl von Verletzungen, damit eine Warnung erstellt wird.  Sie können **Sicherheitsverletzungen gesamt** für eine Beliebige Kombination aus Verletzungen in den Ergebnissen angeben oder **Aufeinanderfolgende Sicherheitsverletzungen**, um zu erfordern, dass die Verletzungen in aufeinanderfolgenden Stichproblem auftreten müssen. |
@@ -116,16 +119,16 @@ Warnungsregeln erstellen immer einen [Warnungsdatensatz](#alert-records), wenn d
 #### <a name="email-actions"></a>E-Mail-Aktionen
 Bei E-Mail-Aktionen wird eine E-Mail mit den Details der Warnung an einen oder mehrere Empfänger gesendet.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | E-Mail-Benachrichtigung |Geben Sie **Ja** an, falls eine E-Mail gesendet werden soll, wenn die Warnung ausgelöst wird. |
-| Betreff |Der Betreff der E-Mail.  Sie können den Haupttext der E-Mail nicht ändern. |
+| Antragsteller |Der Betreff der E-Mail.  Sie können den Haupttext der E-Mail nicht ändern. |
 | Empfänger |Adressen aller E-Mail-Empfänger.  Verwenden Sie als Trennzeichen ein Semikolon (;), wenn Sie mehrere Adressen angeben. |
 
 #### <a name="webhook-actions"></a>Webhookaktionen
 Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anforderung aufrufen.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Webhook |Geben Sie **Ja** an, wenn beim Auslösen der Warnung ein Webhook aufgerufen werden soll. |
 | Webhook-URL |Die URL des Webhooks. |
@@ -139,7 +142,7 @@ Bei Runbookaktionen wird ein Runbook in Azure Automation gestartet.
 > Damit diese Aktion aktiviert werden kann, muss die Automation-Lösung in Ihrem Arbeitsbereich installiert sein. 
 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Runbook | Geben Sie **Ja** an, falls ein Azure Automation-Runbook gestartet werden soll, wenn die Warnung ausgelöst wird.  |
 | Automation-Konto | Gibt das Automation-Konto an, in dem Runbooks ausgewählt werden.  Dies ist das Aktionskonto, das mit dem Arbeitsbereich verknüpft ist. |

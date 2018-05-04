@@ -9,15 +9,22 @@ ms.custom: mvc,security
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.author: daredis
-ms.openlocfilehash: 4d2f5ce387a1e9b36fd1625210f42525a272c270
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 68a2a61dd5821470d30e3735ea6a2df89360cbb2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Schützen der Azure SQL-Datenbank
 
-SQL-Datenbank schützt Ihre Daten, indem der Zugriff auf Ihre Datenbank beschränkt wird. Hierfür wird Folgendes verwendet: Firewallregeln, Authentifizierungsmechanismen, bei denen Benutzer ihre Identität nachweisen müssen, und Datenautorisierung über rollenbasierte Mitgliedschaften und Berechtigungen sowie mithilfe von Sicherheit auf Zeilenebene und dynamischer Datenmaskierung.
+SQL-Datenbank schützt Ihre Daten durch folgende Maßnahmen: 
+- Beschränkung des Zugriffs auf Ihre Datenbank mithilfe von Firewallregeln 
+- Verwendung von Authentifizierungsmechanismen mit Identitätsnachweis
+- Autorisierung für Daten durch rollenbasierte Mitgliedschaften und Berechtigungen 
+- Sicherheit auf Zeilenebene
+- Dynamische Datenmaskierung
+
+Darüber hinaus verfügt SQL-Datenbank über ausgeklügelte Funktionen zur Überwachung, Überprüfung und Bedrohungserkennung. 
 
 Sie können den Schutz Ihrer Datenbank vor schädlichen Benutzern oder nicht autorisiertem Zugriff mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes: 
 
@@ -155,7 +162,7 @@ Die TDE-Funktion (Transparent Data Encryption) der Azure SQL-Datenbank verschlü
 
 3. Legen Sie **Datenverschlüsselung** auf EIN fest, und klicken Sie auf **Speichern**.
 
-Der Verschlüsselungsvorgang wird im Hintergrund gestartet. Sie können den Fortschritt überwachen, indem Sie per [SQL Server Management Studio](./sql-database-connect-query-ssms.md) eine Verbindung mit SQL-Datenbank herstellen und die Spalte „encryption_state“ der Ansicht `sys.dm_database_encryption_keys` abfragen.
+Der Verschlüsselungsvorgang wird im Hintergrund gestartet. Sie können den Fortschritt überwachen, indem Sie beispielsweise unter Verwendung von [SQL Server Management Studio](./sql-database-connect-query-ssms.md) eine Verbindung mit SQL-Datenbank herstellen und die Spalte „encryption_state“ der Ansicht [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) abfragen. Der Zustand „3“ gibt an, dass die Datenbank verschlüsselt ist. 
 
 ## <a name="enable-sql-database-auditing-if-necessary"></a>Aktivieren der SQL-Datenbanküberwachung (falls erforderlich)
 

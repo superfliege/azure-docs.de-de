@@ -1,0 +1,237 @@
+---
+title: Erstellen, Ändern oder Löschen einer Azure-Netzwerksicherheitsgruppe | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Netzwerksicherheitsgruppe erstellen, ändern oder löschen.
+services: virtual-network
+documentationcenter: na
+author: jimdial
+manager: jeconnoc
+editor: ''
+tags: azure-resource-manager
+ms.assetid: ''
+ms.service: virtual-network
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 04/05/2018
+ms.author: jdial
+ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/19/2018
+---
+# <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
+
+Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Wenn Sie nicht mit Netzwerksicherheitsgruppen vertraut sind, können Sie unter [Netzwerksicherheit](security-overview.md) mehr darüber erfahren und mit dem Tutorial [Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung von PowerShell](tutorial-filter-network-traffic.md) Erfahrungen im Umgang mit Netzwerksicherheitsgruppen sammeln.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Abschnitten dieses Artikels durchführen:
+
+- Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
+- Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+
+## <a name="work-with-network-security-groups"></a>Arbeiten mit Netzwerksicherheitsgruppen
+
+Sie können eine Netzwerksicherheitsgruppe erstellen, [komplett anzeigen](#view-all-network-security-groups), [Details von ihr anzeigen](#view-details-of-a-network-security-group), sie [ändern](#change-a-network-security-group) und [löschen](#delete-a-network-security-group). Sie können eine Netzwerksicherheitsgruppe auch einer Netzwerkschnittstelle oder einem Subnetz [zuordnen bzw. davon trennen](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+
+### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
+
+Die Anzahl der Netzwerksicherheitsgruppen, die Sie pro Azure-Standort und -Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+
+1. Wählen Sie links oben im Portal **+ Ressource erstellen** aus.
+2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
+3. Geben Sie einen **Namen** für die Netzwerksicherheitsgruppe ein, wählen Sie Ihr **Abonnement** aus, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Speicherort**, und wählen Sie dann die Option **Erstellen**. 
+
+**Befehle**
+
+- Azure CLI: [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create)
+- PowerShell: [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup)
+
+### <a name="view-all-network-security-groups"></a>Anzeigen aller Netzwerksicherheitsgruppen
+
+Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus. Die in Ihrem Abonnement enthaltenen Netzwerksicherheitsgruppen werden aufgeführt.
+
+**Befehle**
+
+- Azure CLI: [az network nsg list](/cli/azure/network/nsg#az-network-nsg-list)
+- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+
+### <a name="view-details-of-a-network-security-group"></a>Anzeigen von Details einer Netzwerksicherheitsgruppe
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, für die Sie Details anzeigen möchten. Unter **EINSTELLUNGEN** sehen Sie die **Eingangssicherheitsregeln** und **Ausgangssicherheitsregeln**, die **Netzwerkschnittstellen** und **Subnetze**, denen die Netzwerksicherheitsgruppe zugeordnet ist. Sie können auch **Diagnoseprotokolle** aktivieren oder deaktivieren und **Effektive Sicherheitsregeln** anzeigen. Weitere Informationen finden Sie unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](virtual-network-nsg-manage-log.md) und [Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal](virtual-network-nsg-troubleshoot-portal.md).
+3. Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Sie in den folgenden Artikeln:
+    *   [Aktivitätsprotokoll](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Automatisierungsskript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
+
+**Befehle**
+
+- Azure CLI: [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show)
+- PowerShell: [Get-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermnetworksecuritygroup)
+
+### <a name="change-a-network-security-group"></a>Ändern einer Netzwerksicherheitsgruppe
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie die Netzwerksicherheitsgruppe aus, die Sie ändern möchten. Die gängigsten Änderungen sind das [Hinzufügen](#create-a-security-rule) oder [Entfernen](#delete-a-security-rule) von Sicherheitsregeln und [Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz oder einer Netzwerkschnittstelle bzw. das Trennen davon](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+
+**Befehle**
+
+- Azure CLI: [az network nsg update](/cli/azure/network/nsg#az-network-nsg-update)
+- PowerShell: [Set-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/set-azurermnetworksecuritygroup)
+
+### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einer Netzwerkschnittstelle oder einem Subnetz bzw. deren Trennung davon
+
+Wie Sie eine Netzwerksicherheitsgruppe einer Netzwerkschnittstelle zuordnen bzw. davon trennen, erfahren Sie unter [Zuordnen einer Netzwerksicherheitsgruppe zu einer Netzwerkschnittstelle bzw. Trennen davon](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group). Wie Sie eine Netzwerksicherheitsgruppe einem Subnetz zuordnen bzw. davon trennen, erfahren Sie unter [Ändern von Subnetzeinstellungen](virtual-network-manage-subnet.md#change-subnet-settings).
+
+### <a name="delete-a-network-security-group"></a>Löschen einer Netzwerksicherheitsgruppe
+
+Wenn eine Netzwerksicherheitsgruppe Subnetzen bzw. Netzwerkschnittstellen zugeordnet ist, kann sie nicht gelöscht werden. [Trennen](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) Sie eine Netzwerksicherheitsgruppe von allen Subnetzen und Netzwerkschnittstellen, bevor Sie versuchen, sie zu löschen.
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie die Netzwerksicherheitsgruppe, die Sie löschen möchten, in der Liste aus.
+3. Wählen Sie **Löschen** und dann **Ja**.
+
+**Befehle**
+
+- Azure CLI: [az network nsg delete](/cli/azure/network/nsg#az-network-nsg-delete)
+- PowerShell: [Remove-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/remove-azurermnetworksecuritygroupp) 
+
+## <a name="work-with-security-rules"></a>Arbeiten mit Sicherheitsregeln
+
+Eine Netzwerksicherheitsgruppe muss keine Sicherheitsregeln enthalten, kann aber Sicherheitsregeln enthalten. Sie können eine Sicherheitsregel erstellen, [komplett anzeigen](#view-all-security-rules), [Details von ihr anzeigen](#view-details-of-a-security-rule), sie [ändern](#change-a-security-rule) und [löschen](#delete-a-security-rule).
+
+### <a name="create-a-security-rule"></a>Erstellen einer Sicherheitsregel
+
+Die Anzahl der Sicherheitsregeln, die Sie pro Netzwerksicherheitsgruppe pro Azure-Standort und -Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, der Sie eine Sicherheitsregel hinzufügen möchten.
+3. Wählen Sie **Eingangssicherheitsregeln** unter **EINSTELLUNGEN** aus. Es sind mehrere vorhandene Regeln aufgelistet. Einige der Regeln haben Sie möglicherweise nicht hinzugefügt. Wenn eine Netzwerksicherheitsgruppe erstellt wird, werden mehrere Standardsicherheitsregeln darin erstellt. Weitere Informationen finden Sie unter [Standardsicherheitsregeln](security-overview.md#default-security-rules).  Sie können Standardsicherheitsregeln nicht löschen, können jedoch mit Regeln mit höherer Priorität überschreiben.
+4. <a name = "security-rule-settings"></a>Wählen Sie **+ Hinzufügen**.  Wählen Sie Werte für die folgenden Einstellungen aus, oder fügen Sie sie hinzu, und wählen Sie dann **OK** aus:
+    
+    |Einstellung  |Wert  |Details  |
+    |---------|---------|---------|
+    |Quelle     | Wählen Sie **Beliebig**, **IP-Adressen** oder **Diensttag**.        | Bei Auswahl von **IP-Adressen** müssen Sie **Quell-IP-Adressen/CIDR-Bereiche** angeben. Sie können einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste von mehreren Werten angeben. Ein Beispiel für mehrere Werte ist „10.0.0.0/16 192.188.1.1“. Es gibt Grenzen für die Anzahl der Werte, die Sie angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Bei Auswahl von **Diensttag** müssen Sie ein Diensttag auswählen. Ein Diensttag ist ein vordefinierter Bezeichner für eine Kategorie von IP-Adressen. Weitere Informationen zu verfügbaren Diensttags und dazu, was die einzelnen Tag darstellen, finden Sie unter [Diensttags](security-overview.md#service-tags)        |
+    |Quellportbereiche     | Geben Sie einen einzelnen Port wie z.B. 80 an, einen Bereich von Ports wie z.B. „1024-65535“ oder eine durch Trennzeichen getrennte Liste von einzelnen Ports und/oder Portbereichen wie z.B. „80, 1024-65535“. Geben Sie ein Sternchen ein, um Datenverkehr an einem beliebigen Port zuzulassen. | Die Ports und Bereiche legen fest, an welchen Ports die Regel Datenverkehr zulässt oder verweigert. Es gibt Grenzen für die Anzahl der Ports, die Sie angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).  |
+    |Ziel     | Wählen Sie **Beliebig**, **IP-Adressen** oder **Virtuelles Netzwerk**.        | Bei Auswahl von **IP-Adressen** müssen Sie **Ziel-IP-Adressen/CIDR-Bereiche** angeben. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben, und die Anzahl, die Sie angeben können, ist begrenzt. Die Auswahl von **Virtuelles Netzwerk** – eines Diensttags – bedeutet, dass Datenverkehr an allen IP-Adressen innerhalb des Adressraums des virtuellen Netzwerks zulässig ist.        |
+    |Zielportbereiche     | Geben Sie einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste von Werten an. | Ähnlich wie bei **Quellportbereiche** können Sie einen einzelnen Port und Bereich oder mehrere angeben, und die Anzahl, die Sie angeben können, ist begrenzt. |
+    |Protokoll     | Wählen Sie **Beliebig**, **TCP** oder **UDP**.        |         |
+    |anzuzeigen.     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
+    |Priorität     | Geben Sie einen Wert von 100-4096 ein, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist. |Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätsnummern lassen, z.B. 100, 200, 300. Lücken erleichtern das zukünftige Hinzufügen von Regeln, die Sie vielleicht zum Herauf- oder Herabsetzen im Vergleich zu vorhandenen Regeln aufstellen müssen.         |
+    |NAME     | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe.        |  Der Name kann bis zu 80 Zeichen umfassen. Er muss mit einem Buchstaben oder einer Zahl beginnen, mit einem Buchstaben, einer Zahl oder einem Unterstrich enden und darf nur Buchstaben, Zahlen, Unterstriche, Punkte oder Bindestriche umfassen.       |
+    |BESCHREIBUNG     | Eine optionale Beschreibung.        |         |
+
+    Sie können im Portal keine [Anwendungssicherheitsgruppe](#work-with-application-security-groups) für die Einstellungen **Quelle** oder **Ziel** angeben. Dies ist jedoch mit Azure CLI oder PowerShell möglich. Da die Einstellungen für **Ausgangssicherheitsregeln** ähnlich sind, werden sie nicht separat behandelt.
+
+**Befehle**
+
+- Azure CLI: [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create)
+- PowerShell: [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig)
+
+### <a name="view-all-security-rules"></a>Anzeigen aller Sicherheitsregeln
+
+Eine Netzwerksicherheitsgruppe muss keine Regeln enthalten, kann aber Regeln enthalten. Weitere Informationen zu den Details, die beim Anzeigen von Regeln aufgeführt werden, finden Sie unter [Netzwerksicherheit](security-overview.md).
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie in der Liste die Netzwerksicherheitsgruppe aus, für die Sie Regeln anzeigen möchten.
+3. Wählen Sie **Eingangssicherheitsregeln** oder **Ausgangssicherheitsregeln** unter **EINSTELLUNGEN** aus.
+
+Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherheitsregeln](security-overview.md#default-security-rules) der Netzwerksicherheitsgruppe.
+
+**Befehle**
+
+- Azure CLI: [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list)
+- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+
+### <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
+
+1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
+2. Wählen Sie die Netzwerksicherheitsgruppe aus, für die Sie Details einer Sicherheitsregel anzeigen möchten.
+3. Wählen Sie **Eingangssicherheitsregeln** oder **Ausgangssicherheitsregeln** unter **EINSTELLUNGEN** aus.
+4. Wählen Sie die Regel aus, für die Sie Details anzeigen möchten. Eine ausführliche Erläuterung aller Einstellungen finden Sie unter [Sicherheitsregeleinstellungen](#security-rule-settings).
+
+**Befehle**
+
+- Azure CLI: [az network nsg rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show)
+- PowerShell: [Get-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/get-azurermnetworksecurityruleconfig)
+
+### <a name="change-a-security-rule"></a>Ändern einer Sicherheitsregel
+
+1. Führen Sie die Schritte in [Anzeigen von Details einer Sicherheitsregel](#view-details-of-a-security-rule) aus.
+2. Ändern Sie die Einstellungen nach Bedarf, und wählen Sie dann **Speichern**. Eine ausführliche Erläuterung aller Einstellungen finden Sie unter [Sicherheitsregeleinstellungen](#security-rule-settings).
+
+**Befehle**
+
+- Azure CLI: [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update)
+- PowerShell: [Set-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/set-azurermnetworksecurityruleconfig)
+
+### <a name="delete-a-security-rule"></a>Löschen einer Sicherheitsregel
+
+1. Führen Sie die Schritte in [Anzeigen von Details einer Sicherheitsregel](#view-details-of-a-security-rule) aus.
+2. Wählen Sie **Löschen** und dann **Ja**.
+
+**Befehle**
+
+- Azure CLI: [az network nsg rule delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete)
+- PowerShell: [Remove-AzureRmSecurityRuleConfig](/powershell/module/azurerm.network/remove-azurermnetworksecurityruleconfig)
+
+
+## <a name="work-with-application-security-groups"></a>Arbeiten mit Anwendungssicherheitsgruppen
+
+Eine Anwendungssicherheitsgruppe muss keine Netzwerkschnittstellen enthalten, kann aber Netzwerkschnittstellen enthalten. Weitere Informationen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups). Sie können im Portal nicht mit Anwendungssicherheitsgruppen arbeiten, jedoch PowerShell oder Azure CLI verwenden. Alle Netzwerkschnittstellen innerhalb einer Anwendungssicherheitsgruppe müssen sich im gleichen virtuellen Netzwerk befinden. Die erste Netzwerkschnittstelle, die einer Anwendungssicherheitsgruppe hinzugefügt wird, bestimmt, welchem virtuellen Netzwerk alle nachfolgenden Netzwerkschnittstellen angehören müssen. Wie Sie eine Netzwerkschnittstelle einer Anwendungssicherheitsgruppe hinzufügen, erfahren Sie unter [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups).
+
+### <a name="create-an-application-security-group"></a>Erstellen einer Anwendungssicherheitsgruppe
+
+- Azure CLI: [az network asg create](/cli/azure/network/asg#az-network-asg-create)
+- PowerShell: [New-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/new-azurermapplicationsecuritygroup)
+
+### <a name="view-all-application-security-groups"></a>Anzeigen aller Anwendungssicherheitsgruppen
+
+- Azure CLI: [az network asg list](/cli/azure/network/asg#az-network-asg-list)
+- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+
+### <a name="view-details-of-a-specific-application-security-group"></a>Anzeigen von Details einer bestimmten Anwendungssicherheitsgruppe
+
+- Azure CLI: [az network asg show](/cli/azure/network/asg#az-network-asg-show)
+- PowerShell: [Get-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/get-azurermapplicationsecuritygroup)
+
+### <a name="change-an-application-security-group"></a>Ändern einer Anwendungssicherheitsgruppe
+
+Sie können zwar einige Einstellungen wie Tags und Berechtigungen für eine vorhandene Anwendungssicherheitsgruppe ändern, jedoch nicht deren Namen oder Speicherort.
+
+- Azure CLI: [az network asg update](/cli/azure/network/asg#az-network-asg-update)
+- PowerShell: Kein PowerShell-Cmdlet.
+
+### <a name="delete-an-application-security-group"></a>Löschen einer Anwendungssicherheitsgruppe
+
+Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn Netzwerkschnittstellen darin enthalten sind. Sie müssen alle Netzwerkschnittstellen entweder durch Ändern der Netzwerkschnittstellen-Einstellungen oder Löschen der Netzwerkschnittstellen aus der Anwendungssicherheitsgruppe entfernen. Weitere Informationen finden Sie unter [Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) oder [Löschen einer Netzwerkschnittstelle](virtual-network-network-interface.md#delete-a-network-interface).
+
+**Befehle**
+
+- Azure CLI: [az network asg delete](/cli/azure/network/asg#az-network-asg-delete)
+- PowerShell: [Remove-AzureRmApplicationSecurityGroup](/powershell/module/azurerm.network/remove-azurermapplicationsecuritygroup)
+
+## <a name="permissions"></a>Berechtigungen
+
+Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln und Anwendungssicherheitsgruppen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
+
+|Vorgang                                                       |   Vorgangsname                               |
+|--------------------------------------------------------------  |   -------------------------------------------  |
+|Microsoft.Network/ruleTables/read                              |   Netzwerksicherheitsgruppe abrufen                              |
+|Microsoft.Network/ruleTables/write                             |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                  |
+|Microsoft.Network/ruleTables/delete                            |   Netzwerksicherheitsgruppe löschen                           |
+|Microsoft.Network/ruleTables/join/action                       |   Einer Netzwerksicherheitsgruppe beitreten                             |
+|Microsoft.Network/ruleTables/rules/read                       |   Regel abrufen                                    |
+|Microsoft.Network/ruleTables/rules/write                      |   Regel erstellen oder aktualisieren                       |
+|Microsoft.Network/ruleTables/rules/delete                     |   Regel löschen                                 |
+|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   Der Netzwerkschnittstelle zugeordnete Netzwerksicherheitsgruppe abrufen  | 
+|Microsoft.Network/networkWatchers/nextHop/action                |   Nächsten Hop von einer VM abrufen                  |
+
+Der Vorgang *Einer Netzwerksicherheitsgruppe beitreten* ist erforderlich, um eine Netzwerksicherheitsgruppe einem Subnetz zuzuordnen.

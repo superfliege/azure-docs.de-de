@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: johnkem; magoedte
-ms.openlocfilehash: 884acc4885da3a321477c51f6d7b76748d797d9b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 00b990181e5bb96f122ff1ae530dd027a772b210
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -66,7 +66,7 @@ Diese Einstellungen können für eine Ressource ganz einfach über die Diagnosee
 >
 
 > [!WARNING]
-> Bei Diagnoseprotokollen und Metriken für Computeressourcen aus der Gastbetriebssystem-Schicht (etwa virtuelle Computer oder Service Fabric) wird [ein separater Mechanismus für die Konfiguration und Auswahl von Ausgaben](../azure-diagnostics.md) verwendet.
+> Bei Diagnoseprotokollen und Metriken für Computeressourcen aus der Gastbetriebssystemebene (etwa VMs oder Service Fabric) wird [ein separater Mechanismus für die Konfiguration und Auswahl von Ausgaben](../azure-diagnostics.md) verwendet.
 
 ## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Gewusst wie: Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen
 

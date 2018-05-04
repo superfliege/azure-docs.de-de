@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 03/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 409bb14635afbfc6d31efd853837677c74851b41
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -85,7 +85,7 @@ Ja. Die folgenden Informationen sind für SSPR (Self-Service Password Reset, sel
 Ja. Es kann eine E-Mail für die Kennwortrücksetzung gesendet werden, über die ein Benutzer sein Kennwort im JIT-Mandanten zurücksetzen kann.
 
 ### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Bietet Microsoft Dynamics 365 Onlineunterstützung für die Azure AD B2B-Zusammenarbeit?
-Ja, Dynamics 365 (online) bietet Unterstützung für die Azure AD B2B-Zusammenarbeit. Weitere Informationen finden Sie im Dynamics 365-Artikel [Laden Sie Benutzer zu Dynamics 365 mit Azure Active Directory B2B Zusammenarbeit ein](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
+Ja, Dynamics 365 (online) bietet Unterstützung für die Azure AD B2B-Zusammenarbeit. Weitere Informationen finden Sie im Dynamics 365-Artikel [Laden Sie Benutzer zu Dynamics 365 mit Azure Active Directory B2B Zusammenarbeit ein](https://docs.microsoft.com/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration).
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>Wie lang ist ein anfängliches Kennwort für einen neu erstellten B2B-Zusammenarbeitsbenutzer gültig?
 Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwortstärke und Kontosperre, die gleichermaßen für alle Azure AD-Cloudbenutzerkonten gelten. Cloudbenutzerkonten sind Konten, die nicht mit einem anderen Identitätsanbieter verbunden sind, z.B. 

@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
-ms.author: sngun
-ms.openlocfilehash: ab85591ce4ffadeba4c1336efea0bd6945d46ec3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/09/2018
+ms.author: rimman
+ms.openlocfilehash: 2b69b3b5fee0d1148a762f817d9c5a8bc67806e7
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit Azure Cosmos DB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. Azure Cosmos DB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten. Sie können über APIs Ihrer Wahl auf Ihre Daten zugreifen, z. B. über die [SQL-API](documentdb-introduction.md), die [MongoDB-API](mongodb-introduction.md) oder die [Tabellen-API](table-introduction.md). Auf Gremlin können Sie über die [Graph-API](graph-introduction.md) zugreifen. Alle APIs werden nativ unterstützt. Die Währung von Azure Cosmos DB ist die Anforderungseinheit (Request Unit, RU). Dank der Anforderungseinheiten ist es nicht erforderlich, Kapazitäten für Lese- und Schreibvorgänge zu reservieren oder CPU, Arbeitsspeicher und IOPS bereitzustellen.
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit Azure Cosmos DB müssen Sie keine virtuellen Computer mieten, Software bereitstellen oder Datenbanken überwachen. Azure Cosmos DB wird von Microsoft-Entwicklern betrieben und ständig überwacht, um erstklassige Verfügbarkeit, Leistung und Datensicherheit zu gewährleisten. Sie können über APIs Ihrer Wahl auf Ihre Daten zugreifen, z.B. über die [SQL-API](documentdb-introduction.md), die [MongoDB-API](mongodb-introduction.md) oder die [Tabellen-API](table-introduction.md). Auf Graph können Sie über die [Gremlin-API](graph-introduction.md) zugreifen. Alle APIs werden nativ unterstützt. 
 
-Azure Cosmos DB unterstützt eine Reihe von APIs mit anderen Vorgängen, die von Lese- und Schreibvorgängen bis hin zu komplexen Graph-Abfragen reichen. Da nicht alle Anforderungen gleich sind, wird ihnen eine normalisierte Menge von **Anforderungseinheiten** zugewiesen, die auf dem für das Bedienen der Anforderung erforderlichen Rechenaufwand basiert. Die Anzahl der Anforderungseinheiten für einen Vorgang ist deterministisch, und Sie können die Anzahl der von den einzelnen Vorgängen genutzten Anforderungseinheiten in Azure Cosmos DB über einen Antwortheader verfolgen. 
+Die Währung von Azure Cosmos DB ist die **Anforderungseinheit (Request Unit, RU)**. Dank der Anforderungseinheiten ist es nicht erforderlich, Kapazitäten für Lese- und Schreibvorgänge zu reservieren oder CPU, Arbeitsspeicher und IOPS bereitzustellen. Azure Cosmos DB unterstützt eine Reihe von APIs mit anderen Vorgängen, die von Lese- und Schreibvorgängen bis hin zu komplexen Graph-Abfragen reichen. Da nicht alle Anforderungen gleich sind, wird ihnen eine normalisierte Menge von **Anforderungseinheiten** zugewiesen, die auf dem für das Bedienen der Anforderung erforderlichen Rechenaufwand basiert. Die Anzahl der Anforderungseinheiten für einen Vorgang ist deterministisch, und Sie können die Anzahl der von den einzelnen Vorgängen genutzten Anforderungseinheiten in Azure Cosmos DB über einen Antwortheader verfolgen. 
 
 Sie müssen einen Durchsatz von 100 RU/Sekunde reservieren, um eine vorhersagbare Leistung bereitstellen zu können. Sie können [Ihre Durchsatzanforderungen schätzen](request-units.md#estimating-throughput-needs), indem Sie den [Anforderungseinheitenrechner](https://www.documentdb.com/capacityplanner) von Azure Cosmos DB verwenden.
 
@@ -31,12 +31,12 @@ Sie müssen einen Durchsatz von 100 RU/Sekunde reservieren, um eine vorhersagbar
 
 Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:  
 
-* Was sind Anforderungseinheiten und Anforderungsgebühren?
-* Wie gebe ich die Kapazität der Anforderungseinheiten für einen Container an?
+* Was sind Anforderungseinheiten und Anforderungsgebühren in Azure Cosmos DB?
+* Wie gebe ich die Kapazität der Anforderungseinheiten für einen Container in Azure Cosmos DB an?
 * Wie schätze ich die benötigten Anforderungseinheiten für meine Anwendung?
-* Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für einen Container überschreite?
+* Was geschieht, wenn ich die Kapazität der Anforderungseinheiten für einen Container in Azure Cosmos DB überschreite?
 
-Da es sich bei Azure Cosmos DB um eine Datenbank mit mehreren Modellen handelt, ist es wichtig zu beachten, dass im Artikel für eine Dokument-API auf eine Sammlung bzw. auf ein Dokument, für eine Graph-API auf einen Graph/Knoten und für eine Tabellen-API auf eine Tabelle/Entität verwiesen wird. Dieser Artikel bezieht sich auf die Konzepte Sammlung, Graph oder Tabelle als Container sowie Dokument, Knoten oder Entität als Element.
+Azure Cosmos DB ist eine Datenbank mit mehreren Modellen. Beachten Sie daher, dass dieser Artikel für alle Datenmodelle und APIs in Azure Cosmos DB gilt. In diesem Artikel werden generische Begriffe verwendet, z.B. *Container* und *Element*, um generisch auf eine Sammlung, einen Graph oder eine Tabelle und ein Dokument, einen Knoten oder eine Entität zu verweisen.
 
 ## <a name="request-units-and-request-charges"></a>Anforderungseinheiten und Anforderungsgebühren
 Azure Cosmos DB bietet eine schnelle, vorhersagbare Leistung durch die *Reservierung* von Ressourcen, die dem benötigten Durchsatz für Ihre Anwendung entsprechen.  Da sich Anwendungsauslastung und Zugriffsmuster mit der Zeit ändern, können Sie mit Azure Cosmos DB den Umfang des reservierten Durchsatzes, der Ihrer Anwendung zur Verfügung steht, ganz einfach erhöhen oder verringern.
@@ -92,17 +92,17 @@ Die Durchsatzänderung hat keine Auswirkungen auf die Verfügbarkeit Ihres Conta
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Durchsatzisolation in global verteilten Datenbanken
 
-Wenn Sie Ihre Datenbank in mehreren Regionen repliziert haben, stellt Azure Cosmos DB mittels Durchsatzisolation sicher, dass die RU-Nutzung in einer Region die RU-Nutzung in einer anderen Region nicht beeinträchtigt. Schreiben Sie beispielsweise Daten in eine Region und lesen Daten aus einer anderen Region, werden für den Schreibvorgang in Region A und den Lesevorgang in Region B jeweils separate RUs eingesetzt. Eine RU wird nicht unter den Regionen aufgeteilt, in denen Sie sie bereitgestellt haben. Für jede Region, in der die Datenbank repliziert ist, wird die volle Anzahl an RUs bereitgestellt. Weitere Informationen über die globale Replikation finden Sie unter [Wie werden Daten mit Azure Cosmos DB global verteilt?](distribute-data-globally.md).
+Wenn Sie Ihre Datenbank in mehreren Regionen repliziert haben, stellt Azure Cosmos DB mittels Durchsatzisolation sicher, dass die RU-Nutzung in einer Region die RU-Nutzung in einer anderen Region nicht beeinträchtigt. Schreiben Sie beispielsweise Daten in eine Region und lesen Daten aus einer anderen Region, werden für den Schreibvorgang in Region *A* und den Lesevorgang in Region *B* jeweils separate RUs eingesetzt. Eine RU wird nicht unter den Regionen aufgeteilt, in denen Sie sie bereitgestellt haben. Für jede Region, in der die Datenbank repliziert ist, wird die volle Anzahl an RUs bereitgestellt. Weitere Informationen über die globale Replikation finden Sie unter [Wie werden Daten mit Azure Cosmos DB global verteilt?](distribute-data-globally.md).
 
 ## <a name="request-unit-considerations"></a>Aspekte zu Anforderungseinheiten
-Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihren Azure Cosmos DB-Container reserviert werden soll, sollten Sie unbedingt die folgenden Variablen berücksichtigen:
+Beim Abschätzen der Anzahl von Anforderungseinheiten, die für Ihren Azure Cosmos DB-Container bereitgestellt werden soll, sollten Sie unbedingt die folgenden Variablen berücksichtigen:
 
-* **Elementgröße**. Mit zunehmender Größe werden auch mehr Einheiten für das Lesen und Schreiben der Daten genutzt.
+* **Elementgröße**. Mit zunehmender Größe werden auch mehr Anforderungseinheiten für das Lesen und Schreiben der Daten genutzt.
 * **Anzahl der Elementeigenschaften**. Eine Standardindizierung aller Eigenschaften vorausgesetzt, werden mehr Einheiten für das Schreiben eines Dokuments, eines Knotens oder einer Entität genutzt, wenn die Anzahl der Eigenschaften steigt.
-* **Datenkonsistenz**. Bei Verwendung der Datenkonsistenzebenen „Strong“ oder „Bounded Staleness“ werden zusätzliche Einheiten zum Lesen von Elementen genutzt.
+* **Datenkonsistenz**. Bei Verwendung der Datenkonsistenzmodelle „Strong“ oder „Bounded Staleness“ werden zusätzliche Anforderungseinheiten zum Lesen von Elementen genutzt.
 * **Indizierte Eigenschaften**. Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Sie können die Nutzung von Anforderungseinheiten reduzieren, indem Sie die Anzahl der indizierten Eigenschaften begrenzen oder die verzögerte Indizierung aktivieren.
 * **Dokumentindizierung**. Standardmäßig wird jedes Element automatisch indiziert. Sie verbrauchen weniger Anforderungseinheiten, wenn Sie einige Elemente nicht indizieren.
-* **Abfragemuster**. Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, Projektionen, die Anzahl von UDFs und die Größe des Quelldatasets beeinflussen die Kosten von Abfragevorgängen.
+* **Abfragemuster**. Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele Anforderungseinheiten für einen Vorgang verbraucht werden. Die Anzahl von Prädikaten, die Art der Prädikate, Projektionen, die Anzahl von UDFs und die Größe der Quelldaten beeinflussen die Kosten von Abfragevorgängen.
 * **Skriptnutzung**.  Wie bei Abfragen beanspruchen gespeicherte Prozeduren und Trigger Anforderungseinheiten basierend auf der Komplexität des ausgeführten Vorgangs. Untersuchen Sie während der Entwicklung Ihrer Anwendung den "x-ms-request-charge"-Header, um herauszufinden, wie viel Anforderungseinheiten die einzelnen Vorgänge verbrauchen.
 
 ## <a name="estimating-throughput-needs"></a>Schätzen der Durchsatzanforderungen
@@ -113,7 +113,7 @@ Eine Anforderungseinheit ist eine normalisierte Kennzahl für die Anforderungsve
 > 
 > 
 
-In der Tabelle unten ist beispielsweise angegeben, wie viele Anforderungseinheiten bei drei unterschiedlichen Elementgrößen (1 KB, 4 KB und 64 KB) und bei zwei unterschiedlichen Leistungsebenen (500 Lesevorgänge/Sekunde + 100 Schreibvorgänge/Sekunde und 500 Lesevorgänge/Sekunde + 500 Schreibvorgänge/Sekunde) bereitgestellt werden sollten. Für die Datenkonsistenz wurde „Session“ konfiguriert, und die Indizierungsrichtlinie wurde auf „None“ festgelegt.
+In der Tabelle unten ist beispielsweise angegeben, wie viele Anforderungseinheiten bei Elementen drei unterschiedlichen Größen (1 KB, 4 KB und 64 KB) und bei zwei unterschiedlichen Leistungsebenen (500 Lesevorgänge/Sekunde + 100 Schreibvorgänge/Sekunde und 500 Lesevorgänge/Sekunde + 500 Schreibvorgänge/Sekunde) bereitgestellt werden sollten. Für die Datenkonsistenz wurde *Session* konfiguriert, und die Indizierungsrichtlinie wurde auf *None* festgelegt.
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -174,11 +174,11 @@ Das Tool unterstützt auch die Schätzung des Datenspeicherbedarfs auf der Grund
 
 Die Verwendung des Tools ist einfach:
 
-1. Laden Sie mindestens ein repräsentatives Element hoch.
+1. Laden Sie mindestens ein repräsentatives JSON-Dokument (z.B. ein JSON-Beispieldokument) hoch.
    
     ![Hochladen von Elementen in den Rechner für Anforderungseinheiten][2]
-2. Geben Sie zum Schätzen des Speicherplatzbedarfs die Gesamtanzahl von Elementen ein, die Sie voraussichtlich speichern werden.
-3. Geben Sie die pro Sekunde benötige Anzahl von Erstellungs-, Lese-, Aktualisierungs- und Löschvorgängen für Elemente an. Laden Sie zum Ermitteln der bei Elementaktualisierungen voraussichtlich anfallenden Gebühren für Anforderungseinheiten eine Kopie des Beispielelements aus Schritt 1 mit typischen Feldaktualisierungen hoch.  Wenn bei Elementaktualisierungen also üblicherweise die beiden Eigenschaften „lastLogin“ und „userVisits“ geändert werden, kopieren Sie einfach das Beispielelement, aktualisieren Sie die Werte für diese beiden Eigenschaften, und laden Sie das kopierte Element anschließend hoch.
+2. Geben Sie zum Schätzen des Speicherplatzbedarfs die Gesamtanzahl von Elementen (z.B. Dokumente, Tabellen oder Diagramme) ein, die Sie voraussichtlich speichern werden.
+3. Geben Sie die pro Sekunde benötige Anzahl von Erstellungs-, Lese-, Aktualisierungs- und Löschvorgängen an. Laden Sie zum Ermitteln der bei Elementaktualisierungen voraussichtlich anfallenden Gebühren für Anforderungseinheiten eine Kopie des Beispielelements aus Schritt 1 mit typischen Feldaktualisierungen hoch.  Wenn bei Elementaktualisierungen also üblicherweise die beiden Eigenschaften *lastLogin* und *userVisits* geändert werden, kopieren Sie einfach ein Beispielelement, aktualisieren Sie die Werte für diese beiden Eigenschaften, und laden Sie das kopierte Element anschließend hoch.
    
     ![Eingeben der Durchsatzanforderungen in den Rechner für Anforderungseinheiten][3]
 4. Klicken Sie auf „Berechnen“, und prüfen Sie die Ergebnisse.
@@ -191,9 +191,9 @@ Die Verwendung des Tools ist einfach:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Verwenden des Azure Cosmos DB-Antwortheaders „request-charge“
-Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für die Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die Azure Cosmos DB-SDKs zugegriffen werden. Im .Net SDK ist „RequestCharge“ eine Eigenschaft des ResourceResponse-Objekts.  Für Abfragen stellt der Azure Cosmos DB-Daten-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
+Jede Antwort des Azure Cosmos DB-Diensts enthält einen benutzerdefinierten Header (`x-ms-request-charge`), der die für eine bestimmte Anforderung verbrauchten Anforderungseinheiten enthält. Auf diesen Header kann auch über die Azure Cosmos DB-SDKs zugegriffen werden. Im .NET-SDK ist `RequestCharge` eine Eigenschaft des `ResourceResponse`-Objekts.  Für Abfragen stellt der Azure Cosmos DB-Daten-Explorer im Azure-Portal Informationen zu Anforderungsgebühren für ausgeführten Abfragen bereit.
 
-Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Element auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.  Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von Azure Cosmos DB-Skripts gemessen und berücksichtigt werden.
+Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Element auszuführen, sich dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.  Stellen Sie sicher, dass auch typische Abfragen und die Nutzung von Azure Cosmos DB-Skripts gemessen und berücksichtigt werden.
 
 > [!NOTE]
 > Wenn sich die Elementtypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen *Elementtyp* jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
@@ -209,40 +209,8 @@ Beispiel:
 5. Notieren Sie die berechneten Anforderungseinheiten für benutzerdefinierte Skripts (gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen), die von der Anwendung genutzt werden.
 6. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
 
-## <a id="GetLastRequestStatistics"></a>Verwenden des GetLastRequestStatistics-Befehls von API für MongoDB
-Die MongoDB-API unterstützt den benutzerdefinierten Befehl *getLastRequestStatistics*, um die Anforderungsgebühr für bestimmte Vorgänge abzurufen.
-
-Führen Sie z.B. in der Mongo Shell den Vorgang aus, für den Sie die Anforderungsgebühr überprüfen möchten.
-```
-> db.sample.find()
-```
-
-Anschließend führen Sie den Befehl *getLastRequestStatistics* aus.
-```
-> db.runCommand({getLastRequestStatistics: 1})
-{
-    "_t": "GetRequestStatisticsResponse",
-    "ok": 1,
-    "CommandName": "OP_QUERY",
-    "RequestCharge": 2.48,
-    "RequestDurationInMilliSeconds" : 4.0048
-}
-```
-
-Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Element auszuführen, dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.
-
-> [!NOTE]
-> Wenn sich die Elementtypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen *Elementtyp* jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
-> 
-> 
-
-## <a name="use-mongodb-api-portal-metrics"></a>Verwenden von MongoDB-API-Portalmetriken
-Die einfachste Möglichkeit, eine recht genaue Schätzung der Gebühren für Anforderungseinheiten für Ihre MongoDB-API-Datenbank zu erhalten, ist die Verwendung der Metriken im [Azure-Portal](https://portal.azure.com). Mit den Diagrammen *Anzahl von Anforderungen* und *Anforderungsgebühr* können Sie abschätzen, wie viele Anforderungseinheiten von jedem Vorgang verbraucht werden und wie viele Einheiten in Relation der Vorgänge zueinander verbraucht werden.
-
-![MongoDB-API-Portalmetriken][6]
-
-## <a name="a-request-unit-estimation-example"></a>Beispiel für die Schätzung von Anforderungseinheiten
-Betrachten Sie das folgende Dokument von etwa 1 KB:
+## <a name="a-request-unit-estimate-example"></a>Beispiel für die Schätzung von Anforderungseinheiten
+Betrachten Sie das folgende Dokument mit einer Größe von ungefähr 1 KB:
 
 ```json
 {
@@ -299,7 +267,7 @@ Betrachten Sie das folgende Dokument von etwa 1 KB:
 > 
 > 
 
-Die folgende Tabelle zeigt die ungefähre Anzahl berechneter Anforderungseinheiten für normale Vorgänge für dieses Element (bei der ungefähren Anzahl berechneter Anforderungseinheiten wird angenommen, dass die Kontokonsistenzebene auf „Session“ festgelegt ist und dass alle Elemente automatisch indiziert werden):
+Die folgende Tabelle zeigt die ungefähre Anzahl berechneter Anforderungseinheiten für normale Vorgänge für dieses Element (bei der ungefähren Anzahl berechneter Anforderungseinheiten wird angenommen, dass die Kontokonsistenzebene auf *Session* festgelegt ist und dass alle Elemente automatisch indiziert werden):
 
 | Vorgang | Berechnete Anforderungseinheiten |
 | --- | --- |
@@ -334,18 +302,15 @@ Mit diesen Informationen können Sie den RU-Bedarf für diese Anwendung angesich
 In diesem Fall erwarten wir einen durchschnittlichen Durchsatzbedarf von 1.275 RU/s.  Wir runden auf den nächsten Hunderterwert auf und würden für den Container dieser Anwendung 1.300 RU/s bereitstellen.
 
 ## <a id="RequestRateTooLarge"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in Azure Cosmos DB
-Der Verbrauch von Anforderungseinheiten wird bei leerem Budget als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitsrate für einen Container überschreiten, werden Anforderungen an den Container gedrosselt, bis die Rate unter das reservierte Niveau fällt. Bei einer Drosselung beendet der Server die Anforderung präemptiv mit „RequestRateTooLargeException“ (HTTP-Statuscode 429) und gibt den Header x-ms-retry-after-ms zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein neuer Anforderungsversuch unternommen werden kann.
+Der Verbrauch von Anforderungseinheiten wird als Rate pro Sekunde bemessen. Für Anwendungen, die die bereitgestellte Anforderungseinheitenrate überschreiten, werden begrenzt, bis die Rate wieder unter das bereitgestellte Durchsatzniveau fällt. Bei eine Begrenzung für eine Anforderung auftritt, beendet der Server die Anforderung präemptiv mit `RequestRateTooLargeException` (HTTP-Statuscode 429) und gibt den Header `x-ms-retry-after-ms` zurück. Darin ist die Zeitspanne in Millisekunden angegeben, die der Benutzer abwarten muss, bevor ein Wiederholungsversuch für die Anforderung unternommen werden kann.
 
     HTTP Status 429
     Status Line: RequestRateTooLarge
     x-ms-retry-after-ms :100
 
-Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normalerweise nicht mit dieser Ausnahme beschäftigen müssen, da die aktuelle Version des .NET Client SDK diese Antwort implizit abfängt, den vom Server angegebenen Retry-After-Header beachtet und die Anforderung wiederholt. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
+Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normalerweise nicht mit dieser Ausnahme beschäftigen müssen, da die aktuelle Version des .NET Client SDK diese Antwort implizit abfängt, den vom Server angegebenen retry-after-Header beachtet und die Anforderung automatisch wiederholt. Wenn nicht mehrere Clients gleichzeitig auf Ihr Konto zugreifen, wird die nächste Wiederholung erfolgreich ausgeführt.
 
-Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine DocumentClientException mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Anwendungsroutinen zur Fehlerbehandlung aufzunehmen oder den reservierten Durchsatz für den Container zu erhöhen.
-
-## <a id="RequestRateTooLargeAPIforMongoDB"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in der MongoDB-API
-Anwendungen, die die bereitgestellten Anforderungseinheiten für einen Container überschreiten, werden gedrosselt, bis die Rate unter das reservierte Niveau fällt. Wenn eine Drosselung eintritt, beendet das Back-End die Anforderung präventiv mit einem *16500*-Fehlercode – *Zu viele Anforderungen*. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode *Zu viele Anforderungen* zurückgegeben wird. Wenn Sie zu viele Fehlercodes vom Typ *Zu viele Anforderungen* erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [reservierten Durchsatz für den Container zu erhöhen](set-throughput.md).
+Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine `DocumentClientException` mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den bereitgestellten Durchsatz für den Container zu erhöhen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum reservierten Durchsatz mit Azure Cosmos DB-Datenbanken finden Sie in folgenden Ressourcen:
@@ -361,4 +326,3 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-tes
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/api-for-mongodb-metrics.png

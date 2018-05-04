@@ -1,8 +1,8 @@
 ---
 title: Konfigurieren von Datenquellen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Datenquellen definieren die Daten, die Log Analytics aus Agents und anderen verbundenen Quellen sammelt.  Dieser Artikel beschreibt das Konzept, nach dem Log Analytics Datenquellen verwendet, erläutert Details zur Konfiguration der Quellen und bietet eine Übersicht über die verschiedenen verfügbaren Datenquellen."
+description: Datenquellen definieren die Daten, die Log Analytics aus Agents und anderen verbundenen Quellen sammelt.  Dieser Artikel beschreibt das Konzept, nach dem Log Analytics Datenquellen verwendet, erläutert Details zur Konfiguration der Quellen und bietet eine Übersicht über die verschiedenen verfügbaren Datenquellen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/19/2017
+ms.date: 04/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4237df0934d6191b77ff82c86a66585e72191ac9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="data-sources-in-log-analytics"></a>Datenquellen in Log Analytics
 Log Analytics sammelt Daten aus Ihren verbundenen Quellen und speichert diese in Ihrem Log Analytics-Arbeitsbereich.  Welche Daten gesammelt werden, wird durch die von Ihnen konfigurierten Datenquellen definiert.  Daten in Log Analytics werden als Datensatzgruppe gespeichert.  Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
@@ -29,16 +29,19 @@ Datenquellen unterscheiden sich von [Verwaltungslösungen](log-analytics-add-sol
 
 
 ## <a name="summary-of-data-sources"></a>Übersicht über Datenquellen
-In der folgenden Tabelle werden die zurzeit in Log Analytics verfügbaren Datenquellen aufgeführt.  In den Links zu den Datenquellen finden Sie weitere Informationen zur jeweiligen Datenquelle.
+In der folgenden Tabelle werden die zurzeit in Log Analytics verfügbaren Datenquellen aufgeführt.  In den Links zu den Datenquellen finden Sie weitere Informationen zur jeweiligen Datenquelle.   Dort finden Sie außerdem Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Sie können anhand der Informationen in diesem Artikel die verschiedenen verfügbaren Lösungen ermitteln sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. Erläuterungen zu den einzelnen Spalten finden Sie unter [Data collection details for management solutions in Azure](../monitoring/monitoring-solutions-inventory.md) (Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure).
 
-| Data source | Ereignistyp | BESCHREIBUNG |
-|:--- |:--- |:--- |
-| [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) |\<ProtokollName\>_CL |Textdateien auf Windows- oder Linux-Agents mit Protokollinformationen |
-| [Windows-Ereignisprotokolle](log-analytics-data-sources-windows-events.md) |Ereignis |Aus dem Ereignisprotokoll auf Windows-Computern erfasste Ereignisse |
-| [Windows-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) |Perf |Auf Windows-Computern erfasste Leistungsindikatoren |
-| [Linux-Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) |Perf |Auf Linux-Computern erfasste Leistungsindikatoren |
-| [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) |W3CIISLog |IIS-Protokoll (Internetinformationsdienste) im W3C-Format |
-| [Syslog](log-analytics-data-sources-syslog.md) |syslog |Syslog-Ereignisse auf Windows- oder Linux-Computern |
+
+| Datenquelle | Plattform | Microsoft Monitoring Agent | Operations Manager-Agent | Azure-Speicher | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | Bei der Ankunft |
+| [Benutzerdefinierte Protokolle](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | Bei der Ankunft |
+| [IIS-Protokolle](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 Minuten |
+| [Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |Gemäß Zeitplan, mindestens 10 Sekunden |
+| [Leistungsindikatoren](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |Gemäß Zeitplan, mindestens 10 Sekunden |
+| [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |Von Azure-Speicher: 10 Minuten; von Agent: bei Ankunft |
+| [Windows-Ereignisprotokolle](log-analytics-data-sources-windows-events.md) |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; | Bei der Ankunft |
+
 
 ## <a name="configuring-data-sources"></a>Konfigurieren von Datenquellen
 Sie konfigurieren Datenquellen in Log Analytics über das Menü **Daten** unter **Erweiterte Einstellungen**.  Jede Konfiguration wird an alle verbundenen Quellen in Ihrem Arbeitsbereich übermittelt.  Sie können zurzeit keine Agents aus dieser Konfiguration ausschließen.

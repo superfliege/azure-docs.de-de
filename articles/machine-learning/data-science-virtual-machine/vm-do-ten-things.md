@@ -8,21 +8,22 @@ manager: cgronlun
 editor: cgronlun
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: gokuma
-ms.openlocfilehash: f11aff2231a5ae6a58d5c9a3f53379a6849d226a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5f0961a99eac805e82cbc5e5d61c485f8661ba0
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können
+# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
-Die Microsoft Data Science Virtual Machine (DSVM) ist eine leistungsfähige Data Science-Entwicklungsumgebung, mit der Sie unterschiedliche Aufgaben zum Durchsuchen und Modellieren von Daten ausführen können. Die Umgebung wird bereits mit mehreren gängigen Datenanalysetools geliefert, sodass Sie schnell mit Ihrer Analyse für lokale Bereitstellungen, Cloud- oder Hybridbereitstellungen beginnen können. Die DSVM arbeitet eng mit zahlreichen Azure-Diensten zusammen und kann Daten lesen und verarbeiten, die bereits in Azure SQL Data Warehouse, Azure Data Lake, Azure Storage oder in Azure Cosmos DB gespeichert sind. Sie kann auch andere Analysetools nutzen, z.B. Azure Machine Learning und Azure Data Factory.
+Die Windows Data Science Virtual Machine (DSVM) ist eine leistungsfähige Data Science-Entwicklungsumgebung, mit der Sie unterschiedliche Aufgaben zum Durchsuchen und Modellieren von Daten ausführen können. Die Umgebung wird bereits mit mehreren gängigen Datenanalysetools geliefert, sodass Sie schnell mit Ihrer Analyse für lokale Bereitstellungen, Cloud- oder Hybridbereitstellungen beginnen können. Die DSVM arbeitet eng mit zahlreichen Azure-Diensten zusammen und kann Daten lesen und verarbeiten, die bereits in Azure SQL Data Warehouse, Azure Data Lake, Azure Storage oder in Azure Cosmos DB gespeichert sind. Sie kann auch andere Analysetools wie Azure Machine Learning und Azure Data Factory nutzen.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre DSVM nutzen können, um verschiedene Data Science-Aufgaben auszuführen und mit anderen Azure-Diensten zu interagieren. Sie können z.B. die folgenden Aufgaben auf der DSVM ausführen:
 
@@ -207,7 +208,7 @@ Datenanalysten können große Datasets, Code oder andere Ressourcen innerhalb de
 Azure PowerShell können Sie verwenden, um eine Azure-Dateidienstfreigabe zu erstellen. Dieses Skript können Sie in Azure PowerShell ausführen, um eine Azure-Dateidienstfreigabe zu erstellen.
 
     # Authenticate to Azure.
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     # Select your subscription
     Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
     # Create a new resource group.

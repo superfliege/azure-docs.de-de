@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: data-sync
 ms.topic: article
-ms.date: 04/01/2018
+ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: e66adb8b0485e30fded487e18af6b2030f9c7f5b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 365a612b20ed91a6acde566dff12b07ff3b8b676
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
 
@@ -44,7 +44,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 
 ## <a name="when-to-use-data-sync"></a>Verwenden der Datensynchronisierung
 
-Die Datensynchronisierung ist in Fällen nützlich, in denen Daten über mehrere Azure SQL-Datenbanken oder SQL Server-Datenbanken aktuell gehalten werden müssen. Hier sind die wichtigsten Anwendungsfälle für die Datensynchronisierung aufgeführt:
+Die Datensynchronisierung ist nützlich, wenn Daten über mehrere Azure SQL-Datenbanken oder SQL Server-Datenbanken hinweg auf dem neuesten Stand gehalten werden müssen. Hier sind die wichtigsten Anwendungsfälle für die Datensynchronisierung aufgeführt:
 
 -   **Hybrid-Datensynchronisierung:** Bei der Datensynchronisierung können Sie Daten zwischen Ihren lokalen Datenbanken und Azure SQL-Datenbanken synchron halten, um Hybridanwendungen zu ermöglichen. Diese Funktion ist unter Umständen gut für Kunden geeignet, die eine Umstellung auf die Cloud erwägen und einen Teil ihrer Anwendung in Azure anordnen möchten.
 
@@ -138,6 +138,11 @@ Ja. Sie müssen über ein SQL-Datenbankkonto zum Hosten der Hub-Datenbank verfü
 
 ### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kann ich die Datensynchronisierung verwenden, um Daten ausschließlich für lokale SQL Server-Datenbanken synchronisieren zu lassen? 
 Nicht direkt. Sie können Daten zwischen lokalen SQL Server-Datenbanken jedoch indirekt synchronisieren, indem Sie in Azure eine Hub-Datenbank erstellen und anschließend die lokalen Datenbanken der Synchronisierungsgruppe hinzufügen.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Abonnements verwenden?
+Ja. Sie können Daten zwischen SQL-Datenbanken aus Ressourcengruppen synchronisieren, die zu unterschiedlichen Abonnements gehören.
+-   Wenn die Abonnements zum gleichen Mandanten gehören und Sie über Berechtigungen für alle Abonnements verfügen, können Sie die Synchronisierungsgruppe im Azure-Portal konfigurieren.
+-   Andernfalls müssen die Synchronisierungsmitglieder unterschiedlicher Abonnements mithilfe von PowerShell hinzugefügt werden.
    
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und diese dann synchron halten? 
 Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manuell, das sich am Original orientiert. Nachdem Sie das Schema erstellt haben, fügen Sie Tabellen einer Synchronisierungsgruppe hinzu, um die Daten zu kopieren und synchron zu halten.
@@ -147,6 +152,12 @@ Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manue
 Es wird nicht empfohlen, die SQL-Datensynchronisierung (Vorschauversion) zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung für einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung (Vorschauversion) keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung (Vorschauversion) keine anderen SQL-Objekte gesichert, z.B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
 
 Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
+
+### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Kann die Datensynchronisierung verschlüsselte Tabellen und Spalten synchronisieren?
+
+-   Wenn eine Datenbank Always Encrypted verwendet, können nur die *nicht* verschlüsselten Tabellen und Spalten synchronisiert werden. Die verschlüsselten Spalten können nicht synchronisiert werden, da die Datensynchronisierung die Daten nicht entschlüsseln kann.
+
+-   Wenn eine Spalte die Verschlüsselung auf Spaltenebene (Column-Level Encryption, CLE) verwendet, können Sie die Spalte synchronisieren, sofern die Zeilengröße die maximal zulässige Größe von 24 MB nicht übersteigt. Die Datensynchronisierung behandelt die durch einen Schlüssel verschlüsselte Spalte (CLE) als gewöhnliche Binärdaten. Um die Daten auf anderen Synchronisierungsmitgliedern entschlüsseln zu können, benötigen Sie das gleiche Zertifikat.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>Wird die Sortierung für die SQL-Datensynchronisierung unterstützt?
 

@@ -1,11 +1,11 @@
 ---
-title: "Vorbereiten des Azure-VM-Images für die Verwendung mit cloud-init | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie ein bereits vorhandenes Azure-VM-Image für die Bereitstellung mit cloud-init vorbereiten."
+title: Vorbereiten des Azure-VM-Images für die Verwendung mit cloud-init | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie ein bereits vorhandenes Azure-VM-Image für die Bereitstellung mit cloud-init vorbereiten.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 2eb7510d4e76e4996e83f351a62c0b025b487df2
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: dda444e77f588cd1ba5989b393e9a3987241ef9a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Vorbereiten eines vorhandenen Linux Azure-VM-Images für die Verwendung mit cloud-init
-In diesem Artikel wird veranschaulicht, wie Sie einen vorhandenen virtuellen Azure-Computer so vorbereiten, dass er wieder bereitgestellt und für die Verwendung von cloud-init genutzt werden kann. Das sich ergebende Image kann verwendet werden, um einen neuen virtuellen Computer oder VM-Skalierungsgruppen bereitzustellen, die dann per cloud-init während der Bereitstellung jeweils weiter angepasst werden können.  Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von cloud-init in Azure und zu den unterstützten Linux-Distributionen finden Sie unter [Übersicht über cloud-init](using-cloud-init.md).
+In diesem Artikel wird veranschaulicht, wie Sie einen vorhandenen virtuellen Azure-Computer so vorbereiten, dass er wieder bereitgestellt und für die Verwendung von cloud-init genutzt werden kann. Das sich ergebende Image kann verwendet werden, um einen neuen virtuellen Computer oder VM-Skalierungsgruppen bereitzustellen, die dann per cloud-init während der Bereitstellung jeweils weiter angepasst werden können.  Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden. Weitere Informationen zur nativen Funktionsweise von „cloud-init“ in Azure und zu den unterstützten Linux-Distributionen finden Sie in der [Übersicht zu „cloud-init“](using-cloud-init.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Dokument wird vorausgesetzt, dass Sie bereits über einen aktiven virtuellen Azure-Computer verfügen, auf dem eine unterstützte Version des Linux-Betriebssystems ausgeführt wird. Sie haben den Computer bereits gemäß Ihren Anforderungen konfiguriert, die erforderlichen Module installiert, alle erforderlichen Updates verarbeitet und dann einen Test durchgeführt, um sicherzustellen, dass Ihre Anforderungen erfüllt sind. 
@@ -43,22 +43,20 @@ Aktualisieren Sie den Abschnitt `cloud_init_modules` in `/etc/cloud/cloud.cfg` s
 
 Hier ist ein Beispiel dafür angegeben, wie der Abschnitt `cloud_init_modules` in der Praxis aussehen kann.
 ```bash
- cloud_config_modules:
- - mounts
- - locale
- - set-passwords
- - rh_subscription
- - yum-add-repo
- - package-update-upgrade-install
- - timezone
- - puppet
- - chef
- - salt-minion
- - mcollective
- - disable-ec2-metadata
- - runcmd
+cloud_init_modules:
+ - migrator
+ - bootcmd
+ - write-files
+ - growpart
+ - resizefs
  - disk_setup
  - mounts
+ - set_hostname
+ - update_hostname
+ - update_etc_hosts
+ - rsyslog
+ - users-groups
+ - ssh
 ```
 Eine Reihe von Aufgaben in Bezug auf das Bereitstellen und Verarbeiten von kurzlebigen Datenträgern muss in `/etc/waagent.conf` aktualisiert werden. Führen Sie die folgenden Befehle aus, um die entsprechenden Einstellungen zu aktualisieren. 
 ```bash
@@ -72,6 +70,28 @@ Lassen Sie nur Azure als Datenquelle für den Azure Linux-Agent zu, indem Sie di
 ```bash
 # This configuration file is provided by the WALinuxAgent package.
 datasource_list: [ Azure ]
+```
+
+Fügen Sie eine Konfiguration hinzu, um den Fehler in Bezug auf eine ausstehende Hostnamenregistrierung zu beheben.
+```bash
+cat > /etc/cloud/hostnamectl-wrapper.sh <<\EOF
+#!/bin/bash -e
+if [[ -n $1 ]]; then
+  hostnamectl set-hostname $1
+else
+  hostname
+fi
+EOF
+
+chmod 0755 /etc/cloud/hostnamectl-wrapper.sh
+
+cat > /etc/cloud/cloud.cfg.d/90-hostnamectl-workaround-azure.cfg <<EOF
+# local fix to ensure hostname is registered
+datasource:
+  Azure:
+    hostname_bounce:
+      hostname_command: /etc/cloud/hostnamectl-wrapper.sh
+EOF
 ```
 
 Wenn für Ihr vorhandenes Azure-Image eine Auslagerungsdatei konfiguriert wurde und Sie die Konfiguration der Auslagerungsdatei für neue Images mit cloud-init ändern möchten, müssen Sie die vorhandene Auslagerungsdatei entfernen.
@@ -127,7 +147,7 @@ az image create --resource-group myResourceGroup --name myCloudInitImage --sourc
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere cloud-init-Beispiele für Änderungen an der Konfiguration finden Sie unter folgenden Themen:
+Weitere cloud-init-Beispiele für Änderungen an der Konfiguration finden Sie in den folgenden Themen:
  
 - [Hinzufügen weiterer Linux-Benutzer zu virtuellen Computern](cloudinit-add-user.md)
 - [Ausführen eines Paket-Managers zum Aktualisieren vorhandener Pakete beim ersten Start](cloudinit-update-vm.md)

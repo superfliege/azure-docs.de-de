@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: f53ffdaa6c99d63bdab91f30ffa6b2b182c53848
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e342a10c2f3b6c32d8d0bc727bf3325c26fb53d6
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Tutorial: Erstellen einer Python- und PostgreSQL-Web-App in Azure
 
@@ -134,35 +134,43 @@ In diesem Schritt erstellen Sie eine PostgreSQL-Datenbank in Azure. Wenn Ihre Ap
 
 Erstellen Sie mit dem Befehl [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) einen PostgreSQL-Server.
 
-Ersetzen Sie im folgenden Befehl den Platzhalter *\<postgresql_name>* durch einen eindeutigen Servernamen und den Platzhalter *\<admin_username>* durch einen Benutzernamen. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein. Der Benutzername ist erforderlich, um das anfängliche Konto des Administratorbenutzers für die Datenbank zu erstellen. Sie werden aufgefordert, ein Kennwort für diesen Benutzer auszuwählen.
+Ersetzen Sie im folgenden Befehl den Platzhalter *\<postgresql_name>* durch einen eindeutigen Servernamen, den Platzhalter *\<admin_username>* durch einen Benutzernamen und den Platzhalter *\<admin_password>* durch ein Kennwort. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name <postgresql_name> --admin-user <admin_username>  --storage-size 51200
+az postgres server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
 ```
 
 Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
 
 ```json
 {
+  "additionalProperties": {},
   "administratorLogin": "<my_admin_username>",
+  "earliestRestoreDate": "2018-04-19T22:51:05.340000+00:00",
   "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
-  "location": "westus",
+  "location": "westeurope",
   "name": "<postgresql_name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
-    "capacity": 100,
-    "family": null,
-    "name": "PGSQLS3M100",
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
     "size": null,
-    "tier": "Basic"
+    "tier": "GeneralPurpose"
   },
-  "sslEnforcement": null,
-  "storageMb": 2048,
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
   "tags": null,
   "type": "Microsoft.DBforPostgreSQL/servers",
   "userVisibleState": "Ready",
-  "version": null
+  "version": "9.6"
 }
 ```
 
@@ -178,14 +186,19 @@ Die Azure CLI bestätigt das Erstellen der Firewallregel mit mithilfe einer Ausg
 
 ```json
 {
-  "endIpAddress": "0.0.0.0",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAzureIPs",
-  "name": "AllowAzureIPs",
-  "resourceGroup": "myResourceGroup",
+  "additionalProperties": {},
+  "endIpAddress": "255.255.255.255",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>/firewallRules/AllowAllIPs",
+  "name": "AllowAllIPs",
+ "resourceGroup": "myResourceGroup",
   "startIpAddress": "0.0.0.0",
   "type": "Microsoft.DBforPostgreSQL/servers/firewallRules"
 }
 ```
+
+> [!TIP] 
+> Sie können Ihre Firewallregel auch noch restriktiver gestalten und [nur die ausgehenden IP-Adressen verwenden, die Ihre App verwendet](app-service-ip-addresses.md#find-outbound-ips).
+>
 
 ### <a name="create-a-production-database-and-user"></a>Erstellen einer Produktionsdatenbank und eines Benutzers
 
@@ -194,7 +207,7 @@ Erstellen Sie einen neuen Datenbankbenutzer mit Zugriff auf nur eine einzelne Da
 Stellen Sie eine Verbindung mit der Datenbank her (Sie werden zur Eingabe Ihres Administratorkennworts aufgefordert).
 
 ```bash
-psql -h <postgresql_name>.postgres.database.azure.com -U <my_admin_username>@<postgresql_name> postgres
+psql -h <postgresql_name>.postgres.database.azure.com -U <admin_username>@<postgresql_name> postgres
 ```
 
 Erstellen Sie die Datenbank und den Benutzer über die PostgreSQL CLI.

@@ -1,40 +1,33 @@
 ---
-title: Zuweisen von Variablen in SQL Data Warehouse | Microsoft Docs
-description: "Tipps zum Zuweisen von Transact-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen."
+title: Zuweisen von Variablen in Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Tipps zum Zuweisen von T-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 services: sql-data-warehouse
-documentationcenter: NA
-author: jrowlandjones
-manager: jhubbard
-editor: 
-ms.assetid: 81ddc7cf-a6ba-4585-91a3-b6ea50f49227
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: t-sql
-ms.date: 10/31/2016
-ms.author: jrj;barbkess
-ms.openlocfilehash: 045d5148cd3f12dac63c961ccf7c953d355ed725
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 09b0ee336ce00eb20ea501cd97833dfdd6540b30
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="assign-variables-in-sql-data-warehouse"></a>Zuweisen von Variablen in SQL Data Warehouse
-Variablen werden in SQL Data Warehouse mit der `DECLARE`-Anweisung oder der `SET`-Anweisung festgelegt.
-
-Im Folgenden sind Möglichkeiten zum Festlegen eines Variablenwerts aufgeführt:
+# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Zuweisen von Variablen in Azure SQL Data Warehouse
+Tipps zum Zuweisen von T-SQL-Variablen in Azure SQL Data Warehouse für die Entwicklung von Lösungen
 
 ## <a name="setting-variables-with-declare"></a>Festlegen von Variablen mit DECLARE
-Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in SQL Data Warehouse.
+Variablen werden in SQL Data Warehouse mit der `DECLARE`-Anweisung oder der `SET`-Anweisung festgelegt. Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in SQL Data Warehouse.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-Sie können mit DECLARE auch mehrere Variablen gleichzeitig festlegen. Sie können `SELECT` und `UPDATE` nicht für Folgendes verwenden:
+Sie können mit DECLARE auch mehrere Variablen gleichzeitig festlegen. Mithilfe von SELECT oder UPDATE können Sie Folgendes:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -42,7 +35,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Eine Variable kann nicht in der gleichen DECLARE-Anweisung initialisiert und verwendet werden. Zur Veranschaulichung: Im folgenden Beispiel, das **nicht** zulässig ist, wird @p1 in der gleichen DECLARE-Anweisung sowohl initialisiert als auch verwendet. Dies führt zu einem Fehler.
+Eine Variable kann nicht in der gleichen DECLARE-Anweisung initialisiert und verwendet werden. Zur Veranschaulichung: Im folgenden Beispiel, das **nicht** zulässig ist, wird @p1 in der gleichen DECLARE-Anweisung sowohl initialisiert als auch verwendet. Das folgende Beispiel zeigt einen Fehler.
 
 ```sql
 DECLARE @p1 int = 0
@@ -51,9 +44,9 @@ DECLARE @p1 int = 0
 ```
 
 ## <a name="setting-values-with-set"></a>Festlegen von Werten mit SET
-SET ist eine sehr allgemeine Methode zum Festlegen einer einzelnen Variable.
+SET ist eine allgemeine Methode zum Festlegen einer einzelnen Variablen.
 
-Alle folgenden Beispiele sind gültige Möglichkeiten zum Festlegen einer Variable mit SET:
+Die folgenden Anweisungen sind alle gültige Möglichkeiten zum Festlegen einer Variablen mit SET:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -62,19 +55,11 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Sie können mit SET nur jeweils eine einzige Variable festlegen. Wie oben zu sehen ist, sind zusammengesetzte Operatoren jedoch zulässig.
+Sie können mit SET nur jeweils eine einzige Variable festlegen. Allerdings sind zusammengesetzte Operatoren zulässig.
 
 ## <a name="limitations"></a>Einschränkungen
 Sie können nicht SELECT oder UPDATE für die Zuweisung von Variablen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][development overview].
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
-<!--Image references-->
-
-<!--Article references-->
-[development overview]: sql-data-warehouse-overview-develop.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->

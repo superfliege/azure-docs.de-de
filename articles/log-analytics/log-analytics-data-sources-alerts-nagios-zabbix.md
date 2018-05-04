@@ -1,8 +1,8 @@
 ---
 title: Erfassen von Nagios- und Zabbix-Warnungen in OMS Log Analytics | Microsoft-Dokumentation
-description: "Nagios und Zabbix sind Open-Source-Überwachungstools. Sie können Warnungen von diesen Tools in Log Analytics erfassen, um diese zusammen mit Warnungen aus anderen Quellen zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird."
+description: Nagios und Zabbix sind Open-Source-Überwachungstools. Sie können Warnungen von diesen Tools in Log Analytics erfassen, um diese zusammen mit Warnungen aus anderen Quellen zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -12,27 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 0b64c32e1031e704d50aab0b38eaea41e27d134b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04c56b7b7726d9ca603f2ff38acfabc887ecaf34
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Log Analytics durch den OMS-Agent für Linux 
-[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools.  Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](log-analytics-alerts.md) zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
+[Nagios](https://www.nagios.org/) und [Zabbix](http://www.zabbix.com/) sind Open-Source Überwachungstools. Sie können Warnungen in Log Analytics über diese Tools erfassen, um sie zusammen mit [Warnungen aus anderen Quellen](log-analytics-alerts.md) zu analysieren.  Dieser Artikel beschreibt, wie der OMS-Agent für Linux für die Erfassung von Warnungen von diesen Systemen konfiguriert wird.
  
+## <a name="prerequisites"></a>Voraussetzungen
+Der OMS-Agent für Linux unterstützt das Erfassen von Warnungen von Nagios bis Version 4.2.x und Zabbix bis Version 2.x.
+
 ## <a name="configure-alert-collection"></a>Konfigurieren der Erfassung von Warnungen
 
 ### <a name="configuring-nagios-alert-collection"></a>Konfigurieren der Erfassung von Nagios-Warnungen
 Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu erfassen.
 
-1. Gewähren Sie dem Benutzer **omsagent** Lesezugriff auf die Nagios-Protokolldatei (d.h. `/var/log/nagios/nagios.log`). Sie können den Benutzer **omsagent** der **nagios**-Gruppe hinzufügen, vorausgesetzt, die „nagios.log“-Datei gehört der Gruppe `nagios`. 
+1. Gewähren Sie dem Benutzer **omsagent** Lesezugriff auf die Nagios-Protokolldatei `/var/log/nagios/nagios.log`. Sie können den Benutzer **omsagent** der **nagios**-Gruppe hinzufügen, vorausgesetzt, die „nagios.log“-Datei gehört der Gruppe `nagios`. 
 
     sudo usermod -a -G nagios omsagent
 
-2.  Ändern Sie die Konfigurationsdatei in (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind:  
+2.  Ändern Sie die Konfigurationsdatei unter `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind:  
 
         <source>  
           type tail  
@@ -53,11 +56,11 @@ Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu er
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurieren der Erfassung von Zabbix-Warnungen
-Sie müssen einen Benutzer und ein Kennwort in *Klartext* eingeben, um Warnungen von einem Zabbix-Server zu erfassen. Dies ist nicht ideal, aber es wird empfohlen, dass Sie den Benutzer erstellen und nur Überwachungsberechtigungen gewähren.
+Sie müssen einen Benutzer und ein Kennwort in *Klartext* eingeben, um Warnungen von einem Zabbix-Server zu erfassen.  Dies ist zwar nicht ideal, aber es wird empfohlen, dass Sie den Benutzer erstellen und ihm nur Überwachungsberechtigungen gewähren.
 
-Führen Sie die folgenden Schritte auf dem Nagios-Server aus, um Warnungen zu erfassen.
+Führen Sie die folgenden Schritte aus, um Warnungen auf dem Nagios-Server zu erfassen.
 
-1. Ändern Sie die Konfigurationsdatei in (`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`). Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind.  Ändern Sie den Benutzernamen und das Kennwort in Werte für Ihre Zabbix-Umgebung.
+1. Ändern Sie die Konfigurationsdatei unter `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Stellen Sie sicher, dass die folgenden Einträge vorhanden und nicht auskommentiert sind.  Ändern Sie den Benutzernamen und das Kennwort in Werte für Ihre Zabbix-Umgebung.
 
         <source>
          type zabbix_alerts
@@ -80,7 +83,7 @@ Sie können mit [Protokollsuchen](log-analytics-log-searches.md) Warnungsdatens�
 
 Von Nagios erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSystem** **Nagios**.  Sie verfügen über die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |*Warnung* |
 | SourceSystem |*Nagios* |
@@ -96,7 +99,7 @@ Von Nagios erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSy
 ### <a name="zabbix-alert-records"></a>Zabbix-Warnungsdatensätze
 Von Zabbix erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSystem** **Zabbix**.  Sie verfügen über die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |*Warnung* |
 | SourceSystem |*Zabbix* |

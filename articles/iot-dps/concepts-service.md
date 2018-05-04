@@ -1,28 +1,28 @@
 ---
 title: Dienstkonzepte beim Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
-description: "Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit DPS und IoT Hub gelten"
+description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit DPS und IoT Hub gelten
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 10/03/2017
+ms.date: 03/30/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 96c63e5d0379150ea619dbbe912a21e373f808af
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2bc58514ea716954ec3ac96151549168fedc2ed
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 
-Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise bereitstellen.
+Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere und skalierbare Weise [automatisch bereitstellen](concepts-auto-provisioning.md).
 
-Die Gerätebereitstellung ist ein zweiteiliger Prozess. Im ersten Schritt wird durch *Registrieren* des Geräts die Erstverbindung zwischen dem Gerät und der IoT-Lösung hergestellt. Im zweiten Schritt wird basierend auf den spezifischen Anforderungen der Lösung die geeignete *Konfiguration* auf das Gerät angewendet. Nach Ausführung beider Schritte kann das Gerät als vollständig *bereitgestellt* bezeichnet werden. Mit dem Device Provisioning-Dienst werden beide Schritte automatisiert, sodass das Gerät nahtlos bereitgestellt wird.
+Die Gerätebereitstellung ist ein zweiteiliger Prozess. Im ersten Schritt wird durch *Registrieren* des Geräts die Erstverbindung zwischen dem Gerät und der IoT-Lösung hergestellt. Im zweiten Schritt wird basierend auf den spezifischen Anforderungen der Lösung die geeignete *Konfiguration* auf das Gerät angewendet. Nach Ausführung beider Schritte ist das Gerät vollständig *bereitgestellt*. Mit dem Device Provisioning-Dienst werden beide Schritte automatisiert, sodass das Gerät nahtlos bereitgestellt wird.
 
 Dieser Artikel bietet eine Übersicht über die Bereitstellungskonzepte, die sich am besten zur Verwaltung des *Diensts* eignen. Dieser Artikel ist besonders für Personen relevant, die am [Schritt zum Einrichten der Cloud](about-iot-dps.md#cloud-setup-step) bei der Vorbereitung von Geräten für die Bereitstellung beteiligt sind.
 
@@ -32,7 +32,7 @@ Der Endpunkt für Dienstvorgänge ist der Endpunkt zum Verwalten der Diensteinst
 
 ## <a name="device-provisioning-endpoint"></a>Endpunkt zur Gerätebereitstellung
 
-Der Endpunkt zur Gerätebereitstellung ist der zentrale Endpunkt, über den die Kommunikation mit allen Geräten in Bezug auf die Bereitstellung erfolgt. Die URL ist für alle Bereitstellungsdienste identisch, sodass bei neuen Verbindungsinformationen in Supply Chain-Szenarien nicht die Firmware von Geräten aktualisiert werden muss. Durch den [ID-Bereich](#id-scope) wird die Mandantenisolation sichergestellt.
+Der Endpunkt zur Gerätebereitstellung ist der einzelne Endpunkt, den alle Geräte für die automatische Bereitstellung verwenden. Die URL ist für alle Bereitstellungsdienstinstanzen identisch, sodass bei neuen Verbindungsinformationen in Supply Chain-Szenarien nicht die Firmware von Geräten aktualisiert werden muss. Durch den [ID-Bereich](#id-scope) wird die Mandantenisolation sichergestellt.
 
 ## <a name="linked-iot-hubs"></a>Verknüpfte IoT Hubs
 
@@ -47,21 +47,27 @@ Die Einstellung auf Dienstebene, mit der festgelegt wird, wie der Device Provisi
 
 ## <a name="enrollment"></a>Registrierung
 
-Bei einer Registrierung handelt es sich um den Datensatz der Geräte oder Gerätegruppen, die zu einem bestimmten Zeitpunkt registriert werden können. Der Registrierungsdatensatz enthält die Informationen über die Geräte oder Gerätegruppen, einschließlich der Nachweismethode für die Geräte, und optional die gewünschte Erstkonfiguration, den gewünschten IoT Hub und die gewünschte Geräte-ID. Im Device Provisioning-Dienst werden zwei Registrierungstypen unterstützt.
+Bei einer Registrierung handelt es sich um den Datensatz der Geräte oder Gerätegruppen, die mittels automatischer Bereitstellung registriert werden können. Der Registrierungsdatensatz enthält unter anderem folgende Informationen zum Gerät bzw. zur Gerätegruppe:
+- Den verwendeten [Nachweismechanismus](concepts-security.md#attestation-mechanism) des Geräts
+- Die optionale anfängliche gewünschte Konfiguration
+- Die gewünschte IoT Hub-Instanz
+- Die gewünschte Geräte-ID
+
+Im Device Provisioning-Dienst werden zwei Registrierungsarten unterstützt:
 
 ### <a name="enrollment-group"></a>Registrierungsgruppe
 
-Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Alle Geräte in der Registrierungsgruppe stellen X.509-Zertifikate bereit, die von derselben Stammzertifizierungsstelle signiert wurden. Registrierungsgruppen können nur den X.509-Nachweismechanismus verwenden. Der Name und das Zertifikat der Registrierungsgruppe müssen alphanumerisch sein und dürfen nur Kleinbuchstaben enthalten. Bindestriche sind zulässig.
+Eine Registrierungsgruppe stellt eine Gruppe von Geräten dar, die einen bestimmten Nachweismechanismus gemeinsam nutzen. Alle Geräte in der Registrierungsgruppe stellen X.509-Zertifikate bereit, die von der gleichen Stamm- oder Zwischenzertifizierungsstelle signiert wurden. Registrierungsgruppen können nur den X.509-Nachweismechanismus verwenden. Der Name und das Zertifikat der Registrierungsgruppe müssen alphanumerisch sein und dürfen nur Kleinbuchstaben enthalten. Bindestriche sind zulässig.
 
 > [!TIP]
 > Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind.
 
 ### <a name="individual-enrollment"></a>Individuelle Registrierung
 
-Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Die Registrierungs-ID in einer einzelnen Registrierung ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
+Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden entweder untergeordnete X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Die Registrierungs-ID in einer einzelnen Registrierung ist alphanumerisch und besteht aus Kleinbuchstaben und ggf. Bindestrichen. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
 
 > [!TIP]
-> Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder für Geräte verwendet werden, die nur SAS-Token über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können.
+> Individuelle Registrierungen sollten für Geräte verwendet werden, die besondere Erstkonfigurationen erfordern, oder für Geräte, die sich nur mittels SAS-Token per TPM-Nachweis authentifizieren können.
 
 ## <a name="registration"></a>Registrierung
 

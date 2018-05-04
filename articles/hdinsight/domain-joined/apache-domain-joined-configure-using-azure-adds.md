@@ -1,24 +1,19 @@
 ---
-title: Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services – Azure| Microsoft-Dokumentation
+title: Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit AAD-DS
 description: Erfahren Sie mehr über das Einrichten und Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services.
 services: hdinsight
-documentationcenter: ''
-author: bprakash
+author: omidm1
 manager: jhubbard
 editor: cgronlun
-tags: ''
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/20/2018
-ms.author: bhanupr
-ms.openlocfilehash: ae7ccaf3d167176a1fc6015e84b0eb023da945d5
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: conceptual
+ms.date: 04/17/2018
+ms.author: omidm
+ms.openlocfilehash: 060ca8040f514ec1df48c2ca4568cbbb2a529267
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services
 
@@ -36,7 +31,10 @@ Sie müssen einen Azure AD DS erstellen, um einen HDInsight-Cluster erstellen zu
 > [!NOTE]
 > Nur die Mandantenadministratoren verfügen über Berechtigungen zum Erstellen von Domänendiensten. Stellen Sie bei Verwendung von Azure Data Lake Store (ADLS) als Standardspeicher für HDInsight sicher, dass der Azure AD-Standardmandant für ADLS mit der Domäne für den HDInsight-Cluster identisch ist. Damit dieses Setup mit Azure Data Lake Store funktioniert, muss die mehrstufige Authentifizierung für Benutzer, die Zugriff auf den Cluster haben sollen, deaktiviert werden.
 
-Nachdem der Domänendienst bereitgestellt wurde, müssen Sie ein Dienstkonto in der Gruppe **Azure AD DC-Administratoren** anlegen, um den HDInsight-Cluster zu erstellen. Das Dienstkonto muss ein globaler Administrator im Azure AD sein.
+Nachdem der AAD-Domänendienst bereitgestellt wurde, müssen Sie ein Dienstkonto mit den richtigen Berechtigungen in AAD anlegen (welches mit AAD-DS synchronisiert wird), um den HDInsight-Cluster zu erstellen. Wenn dieses Dienstkonto bereits vorhanden ist, müssen Sie sein Kennwort zurücksetzen und warten, bis es mit AAD-DS synchronisiert ist. (Dieses Zurücksetzen führt zur Erstellung des Kerberos-Kennworthashs und kann bis zu 30 Minuten dauern.) Dieses Dienstkonto sollte über die folgenden Berechtigungen verfügen:
+
+- Einbinden von Computern in die Domäne und Platzieren von Computerprinzipalen in der Organisationseinheit, die Sie während der Clustererstellung angeben.
+- Erstellen von Dienstprinzipalen in der Organisationseinheit, die Sie während der Clustererstellung angeben.
 
 Für durch Azure AD Domain Services verwaltete Domänen müssen Sie Secure LDAP konfigurieren. Informationen zum Aktivieren von Secure LDAP finden Sie unter [Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
 
@@ -49,7 +47,7 @@ Es ist einfacher, die Azure AD-Domänendienst und den HDInsight-Cluster in das g
 Zum Erstellen eines in die Domäne eingebundenen HDInsight-Clusters müssen Sie die folgende Parameter angeben:
 
 - **Domain name** (Domänenname): der Domänenname, der dem Azure AD DS zugeordnet ist. Beispiel: contoso.onmicrosoft.com
-- **Domain user name** (Domänenbenutzername): das Dienstkonto in der Gruppe der Azure AD DC-Administratoren, das im vorherigen Abschnitt erstellt wurde. Beispiel: hdiadmin@contoso.onmicrosoft.com. Dieser Benutzer der Domäne ist der Administrator dieses in die Domäne eingebundenen HDInsight-Clusters.
+- **Domain user name** (Domänenbenutzername): das Dienstkonto in dem Azure AD DC, der im vorherigen Abschnitt erstellt wurde. Beispiel: hdiadmin@contoso.onmicrosoft.com. Dieser Benutzer der Domäne wird der Administrator dieses in die Domäne eingebundenen HDInsight-Clusters.
 - **Domain password** (Domänenkennwort): das Kennwort des Dienstkontos.
 - **Organization Unit** (Organisationseinheit): der Distinguished Name der Organisationseinheit, die Sie mit dem HDInsight-Cluster verwenden möchten. Beispiel: OU=HDInsightOU,DC=contoso,DC=onmicrosohift,DC=com. Wenn diese Organisationseinheit nicht vorhanden ist, versucht der HDInsight-Cluster, die Organisationseinheit zu erstellen. 
 - **LDAPS URL**: z. B. „ldaps://contoso.onmicrosoft.com:636“

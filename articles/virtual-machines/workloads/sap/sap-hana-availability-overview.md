@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5694207f9283a5db5a937d9f8867d1a5f661aac
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -67,8 +67,8 @@ Gleichen Sie Ihre Anforderungen an die Verfügbarkeit mit den SLAs ab, die Azure
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Verfügbarkeit von SAP HANA innerhalb einer Azure-Region](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
-- Erfahren Sie mehr über [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
+- Erfahren Sie mehr über [Verfügbarkeit von SAP HANA innerhalb einer Azure-Region](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region).
+- Erfahren Sie mehr über [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions). 
 
 
 

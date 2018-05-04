@@ -1,36 +1,34 @@
 ---
 title: Verwenden von .NET mit Hadoop MapReduce auf Linux-basierten HDInsight-Clustern in Azure | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie .NET-Anwendungen für das Streaming von MapReduce auf Linux-basierten HDInsight-Clustern verwenden."
+description: Erfahren Sie, wie Sie .NET-Anwendungen für das Streaming von MapReduce auf Linux-basierten HDInsight-Clustern verwenden.
 services: hdinsight
-documentationCenter: 
+documentationCenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: bff53af8f5c0b74cf0f69ba474d62ecdb7e20ce1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 36b8f51122bad6614e63dfc58e09e5c1ca08f83d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Migrieren von .NET-Lösungen für Windows-basierte HDInsight-Cluster zu Linux-basierten HDInsight-Clustern
 
-Linux-basierte HDInsight-Cluster verwenden [Mono (https://mono-project.com)](https://mono-project.com) zum Ausführen von Anwendungen für .NET. Mit Mono können Sie .NET-Komponenten wie MapReduce-Anwendungen mit Linux-basierten HDInsight-Clustern verwenden. In diesem Artikel erfahren Sie, wie Sie für Windows-basierte HDInsight-Cluster erstellte .NET-Lösungen migrieren, um die Verwendung mit Mono auf Linux-basierten HDInsight-Clustern zu ermöglichen.
+Linux-basierte HDInsight-Cluster nutzen [Mono (https://mono-project.com)](https://mono-project.com)) für die Ausführung von .NET-Anwendungen. Mit Mono können Sie .NET-Komponenten wie MapReduce-Anwendungen mit Linux-basierten HDInsight-Clustern verwenden. In diesem Artikel erfahren Sie, wie Sie für Windows-basierte HDInsight-Cluster erstellte .NET-Lösungen migrieren, um die Verwendung mit Mono auf Linux-basierten HDInsight-Clustern zu ermöglichen.
 
 ## <a name="mono-compatibility-with-net"></a>Kompatibilität von Mono mit .NET
 
 Mono-Version 4.2.1 ist in HDInsight Version 3.6 enthalten. Weitere Informationen zu der mit HDInsight bereitgestellten Version von Mono finden Sie unter [HDInsight-Komponentenversionen](hdinsight-component-versioning.md). Informationen zum Installieren einer bestimmten Version von Mono finden Sie im Dokument [Installieren oder Aktualisieren von Mono](hdinsight-hadoop-install-mono.md).
 
-Weitere Informationen zur Kompatibilität von Mono und .NET finden Sie im Dokument [Compatibility (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) (Kompatibilität von Mono).
+Weitere Informationen zur Kompatibilität von Mono und .NET finden Sie im Dokument [Mono compatibility (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/)).
 
 > [!IMPORTANT]
 > Das SCP.NET-Framework ist kompatibel mit Mono. Weitere Informationen zur Verwendung von SCP.NET mit Mono finden Sie unter [Verwenden von Visual Studio zum Entwickeln von C#-Topologien für Apache Storm in HDInsight](storm/apache-storm-develop-csharp-visual-studio-topology.md).
@@ -58,7 +56,7 @@ Mit [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemN
 
 ## <a name="manual-portability-analysis"></a>Manuelle Portabilitätsanalyse
 
-Führen Sie eine manuelle Prüfung des Codes anhand der Informationen im Artikel [Application Portability (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/) (Anwendungsportabilität) durch.
+Führen Sie eine manuelle Prüfung des Codes anhand der Informationen im Artikel [Application Portability (http://www.mono-project.com/docs/getting-started/application-portability/)](http://www.mono-project.com/docs/getting-started/application-portability/)) durch.
 
 ## <a name="modify-and-build"></a>Ändern und Erstellen
 

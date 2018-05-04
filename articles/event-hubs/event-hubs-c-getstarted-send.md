@@ -2,11 +2,11 @@
 title: Senden von Ereignissen an Azure Event Hubs mithilfe von C | Microsoft-Dokumentation
 description: Senden von Ereignissen an Azure Event Hubs mithilfe von C
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: c
@@ -14,18 +14,18 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 12/4/2017
 ms.author: sethm
-ms.openlocfilehash: 2b714c5de96a8fb7ed66a30c62daaa38b84fdc5b
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 430135113f4b26db6690feb6bc6ddcc0700c6d11
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Senden von Ereignissen an Azure Event Hubs mithilfe von C
 
 ## <a name="introduction"></a>Einführung
 Event Hubs ist ein hochgradig skalierbares Erfassungssystem, das Millionen von Ereignissen pro Sekunde verarbeiten kann. Anwendungen erhalten dadurch die Möglichkeit, die von Ihren verbundenen Geräten und Anwendungen erzeugten immensen Datenmengen zu verarbeiten und zu analysieren. Nach der Erfassung in einem Event Hub können Sie Daten über einen beliebigen Echtzeitanalyseanbieter oder einen Speichercluster transformieren und speichern.
 
-Weitere Informationen zu Event Hubs finden Sie unter [Übersicht über Event Hubs][Übersicht über Event Hubs].
+Weitere Informationen finden Sie unter [Übersicht über Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview).
 
 In diesem Tutorial wird beschrieben, wie Sie mithilfe einer Konsolenanwendung in C Ereignisse an einen Event Hub senden. Klicken Sie für weitere Informationen zum Empfangen von Ereignissen links im Inhaltsverzeichnis auf die entsprechende Empfangssprache.
 
@@ -33,7 +33,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Eine C-Entwicklungsumgebung. In diesem Tutorial wird vom gcc-Stack auf einem virtuellen Azure-Computer unter Linux mit Ubuntu 14.04 ausgegangen.
 * [Microsoft Visual Studio](https://www.visualstudio.com/).
-* Ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="send-messages-to-event-hubs"></a>Senden von Nachrichten an Ereignis-Hubs
 In diesem Abschnitt wird das Schreiben einer C-App beschrieben, mit der Ereignisse an den Event Hub gesendet werden. Im Code wird die Proton AMQP-Bibliothek aus dem [Apache Qpid-Projekt](http://qpid.apache.org/) verwendet. Dies entspricht der Verwendung von Service Bus-Warteschlangen und -Themen mit AMQP aus C, wie [in diesem Beispiel](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504) beschrieben. Weitere Informationen finden Sie in der [Qpid Proton-Dokumentation](http://qpid.apache.org/proton/index.html).

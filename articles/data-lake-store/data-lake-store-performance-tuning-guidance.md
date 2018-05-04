@@ -1,8 +1,8 @@
 ---
-title: "Leitlinien für die Optimierung der Leistung von Azure Data Lake Store | Microsoft Docs"
-description: "Leitlinien für die Optimierung der Leistung von Azure Data Lake Store"
+title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Store | Microsoft Docs
+description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Store
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 15832f94b73057a8bfce7be27e3fd57c7771940d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Optimieren der Leistung von Azure Data Lake Store
 
@@ -42,7 +42,7 @@ Sie sollten die entsprechende Hardware sorgfältig auswählen, unabhängig davon
 
 ### <a name="network-connectivity-to-azure-data-lake-store"></a>Netzwerkkonnektivität mit Azure Data Lake Store
 
-Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Azure Data Lake Store kann es gelegentlich zu Engpässen kommen. Wenn Ihre Quelldaten lokal gespeichert sind, ziehen Sie die Verwendung einer dedizierten Verknüpfung mit [Azure ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) in Erwägung. Sind Ihre Quelldaten in Azure enthalten, wird eine optimale Leistung erzielt, wenn sich die Daten in derselben Azure-Region wie die von Data Lake Store befinden.
+Bei der Netzwerkkonnektivität zwischen Ihren Quelldaten und Azure Data Lake Store kann es gelegentlich zu Engpässen kommen. Wenn Ihre Quelldaten lokal gespeichert sind, ziehen Sie die Verwendung einer dedizierten Verknüpfung mit [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) in Erwägung. Sind Ihre Quelldaten in Azure enthalten, wird eine optimale Leistung erzielt, wenn sich die Daten in derselben Azure-Region wie die von Data Lake Store befinden.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Konfigurieren von Datenerfassungstools für maximale Parallelisierung
 
@@ -62,7 +62,7 @@ Beim Speichern von Daten in Data Lake Store sind für die Leistung die Dateigrö
 
 ### <a name="file-size"></a>Dateigröße
 
-In der Regel erzeugen Analysemodule wie HDInsight und Azure Data Lake Analytics Overhead pro Datei.  Wenn Sie Ihre Daten in zahlreichen kleinen Dateien speichern, kann sich dies negativ auf die Leistung auswirken.  
+In der Regel erzeugen Analyse-Engines wie HDInsight und Azure Data Lake Analytics Overhead pro Datei.  Wenn Sie Ihre Daten in zahlreichen kleinen Dateien speichern, kann sich dies negativ auf die Leistung auswirken.  
 
 Um eine bessere Leistung zu erzielen, organisieren Sie Ihre Daten grundsätzlich in größere Dateien.  Als Faustregel gilt: Organisieren Sie Datasets in Dateien mit mindestens 256 MB. In einigen Fällen wie bei Bildern und binären Daten ist eine parallele Verarbeitung nicht möglich.  Hier wird empfohlen, einzelne Dateien mit maximal 2 GB zu erstellen.
 
@@ -142,6 +142,6 @@ Neben den oben genannten allgemeinen Richtlinien stehen in jeder Anwendung versc
 | [MapReduce in HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm in HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>Anzahl von Workerprozessen</li><li>Anzahl von Spout Executor-Instanzen</li><li>Anzahl von Bolt Executor-Instanzen </li><li>Anzahl von Spout-Aufgaben</li><li>Anzahl von Bolt-Aufgaben</li></ul>|
 
-## <a name="see-also"></a>Siehe auch
-* [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+## <a name="see-also"></a>Weitere Informationen
+* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: omidm
-ms.openlocfilehash: e366a9b73ee678c78063240838b399c88ae633cc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 20d6dbad6fa1914c8b12f47bb48f6efba3895887
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight
 
@@ -49,8 +49,6 @@ Der folgende Screenshot zeigt eine in contoso.com erstellte OE. Einige der Diens
 
 - **Azure Active Directory Domain Services**: Dieser Dienst stellt eine verwaltete Active Directory-Domäne bereit, die vollständig mit Windows Server Active Directory kompatibel ist. Microsoft übernimmt die Verwaltung, das Patchen und das Überwachen der AD-Domäne. Sie können Ihren Cluster bereitstellen, ohne sich Sorgen um die Verwaltung von Domänencontrollern zu machen. Benutzer, Gruppen und Kennwörter werden über Azure Active Directory synchronisiert, sodass Benutzer sich beim Cluster mit ihren Unternehmensanmeldeinformationen anmelden können. Weitere Informationen finden Sie unter [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
-> [!NOTE]
-> Active Directory auf Azure IaaS-VMs wird nicht mehr unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Verwalten von in die Domäne eingebundenen HDInsight-Clustern finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)](apache-domain-joined-manage.md).

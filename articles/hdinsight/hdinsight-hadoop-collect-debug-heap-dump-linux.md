@@ -1,8 +1,8 @@
 ---
-title: "Aktivieren von Heapdumps für Hadoop-Dienste in HDInsight –Azure | Microsoft-Dokumentation"
-description: "Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen."
+title: Aktivieren von Heapdumps für Hadoop-Dienste in HDInsight –Azure | Microsoft-Dokumentation
+description: Aktivieren Sie Heapdumps für Hadoop-Dienste von Linux-basierten HDInsight-Clustern zum Debuggen und für Analysen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,17 +10,15 @@ tags: azure-portal
 ms.assetid: 8f151adb-f687-41e4-aca0-82b551953725
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 2bc7b35a87f3973c59fb36372d4edad86412ea0e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: cd906736f2642d764c2b72a0572f63d675613c81
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="enable-heap-dumps-for-hadoop-services-on-linux-based-hdinsight"></a>Aktivieren von Heapdumps für Hadoop-Dienste auf Linux-basierten HDInsight-Clustern
 
@@ -91,7 +89,7 @@ Sie können auch ein Skript auslösen, wenn ein **OutOfMemoryError** auftritt. S
 
 Gehen Sie folgendermaßen vor, um die Konfiguration für einen Dienst zu ändern:
 
-1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die URL lautet „https://IHRCLUSTERNAME.azurehdinsight.net“.
+1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die URL ist https://YOURCLUSTERNAME.azurehdinsight.net.
 
     Authentifizieren Sie bei der entsprechenden Aufforderung auf der Website mithilfe des HTTP-Kontonamens (Standard: admin) und dem Kennwort für den Cluster.
 

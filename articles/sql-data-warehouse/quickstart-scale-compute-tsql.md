@@ -10,11 +10,11 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b4e123475679cf1afce09630c157377ee67b5202
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7d7d3f6a773fad0b0d4ba0593230af5ff5a1e443
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse mithilfe von T-SQL
 
@@ -25,8 +25,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Laden Sie die aktuelle Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) herunter, und installieren Sie sie.
-
-Dabei wird vorausgesetzt, dass Sie den [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) abgeschlossen haben. Nachdem Sie den Schnellstart „Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal“ absolviert haben, wissen Sie, wie Sie eine Verbindung herstellen, ein Data Warehouse mit dem Namen **mySampleDataWarehouse** erstellen sowie eine Firewallregel erstellen, die unserem Client den Zugriff auf den installierten Server gestattet.
  
 ## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
 
@@ -45,7 +43,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
    | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
    | Servername | Der vollqualifizierte Servername | Beispiel: **mynewserver-20171113.database.windows.net**. |
    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
-   | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
+   | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie bei der Servererstellung angegeben haben. |
    | Password | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 
     ![Verbindung mit dem Server herstellen](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
@@ -91,11 +89,42 @@ So ändern Sie Data Warehouse-Einheiten
 1. Klicken Sie mit der rechten Maustaste auf **master** und dann auf **Neue Abfrage**.
 2. Mit der T-SQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) ändern Sie das Dienstziel. Führen Sie die folgende Abfrage aus, um das Dienstziel in DW300 zu ändern. 
 
-```Sql
-ALTER DATABASE mySampleDataWarehouse
-MODIFY (SERVICE_OBJECTIVE = 'DW300')
-;
-```
+    ```Sql
+    ALTER DATABASE mySampleDataWarehouse
+    MODIFY (SERVICE_OBJECTIVE = 'DW300')
+    ;
+    ```
+
+## <a name="monitor-scale-change-request"></a>Überwachen der Skalierungsänderungsanforderung
+Wenn Sie den Fortschritt der vorherigen Änderungsanforderung anzeigen möchten, können Sie unter Verwendung der T-SQL-Syntax `WAITFORDELAY` die dynamische Verwaltungssicht (Dynamic Management View, DMV) „sys.dm_operation_status“ abfragen.
+
+So fragen Sie den Status der Dienstobjektänderung ab:
+
+1. Klicken Sie mit der rechten Maustaste auf **master** und dann auf **Neue Abfrage**.
+2. Führen Sie die folgende Abfrage aus, um die DMV „sys.dm_operation_status“ abzufragen.
+
+    ```sql
+    WHILE 
+    (
+        SELECT TOP 1 state_desc
+        FROM sys.dm_operation_status
+        WHERE 
+            1=1
+            AND resource_type_desc = 'Database'
+            AND major_resource_id = 'MySampleDataWarehouse'
+            AND operation = 'ALTER DATABASE'
+        ORDER BY
+            start_time DESC
+    ) = 'IN_PROGRESS'
+    BEGIN
+        RAISERROR('Scale operation in progress',0,0) WITH NOWAIT;
+        WAITFOR DELAY '00:00:05';
+    END
+    PRINT 'Complete';
+    ```
+3. Die Ausgabe zeigt ein Protokoll für den Statusabruf.
+
+    ![Vorgangsstatus](media/quickstart-scale-compute-tsql/polling-output.png)
 
 ## <a name="check-data-warehouse-state"></a>Überprüfen des Data Warehouse-Zustands
 
@@ -103,7 +132,7 @@ Mit einem angehaltenen Data Warehouse kann über T-SQL keine Verbindung hergeste
 
 ## <a name="check-operation-status"></a>Überprüfen des Vorgangsstatus
 
-Um Informationen über verschiedene Verwaltungsvorgänge für SQL Data Warehouse zurückzugeben, führen Sie die folgende Abfrage in der DMV [dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) aus. Beispielsweise werden der Vorgang und der Status des Vorgangs zurückgegeben, nämlich entweder IN_PROGRESS oder COMPLETED.
+Um Informationen über verschiedene Verwaltungsvorgänge für SQL Data Warehouse zurückzugeben, führen Sie die folgende Abfrage in der DMV [dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) aus. Beispielsweise werden der Vorgang und der Status des Vorgangs („IN_PROGRESS“ oder „COMPLETED“) zurückgegeben.
 
 ```sql
 SELECT *
@@ -112,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySQLDW'
+    major_resource_id = 'MySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben nun erfahren, wie die Computeressourcen für Ihr Data Warehouse skaliert werden. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
+In diesem Artikel haben Sie gelernt, wie Sie Computeressourcen für Ihr Data Warehouse skalieren. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
 >[Laden von Daten in ein SQL-Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

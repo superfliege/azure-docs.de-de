@@ -1,47 +1,53 @@
 ---
-title: "Azure Active Directory B2B-Zusammenarbeit für Hybridorganisationen | Microsoft-Dokumentation"
-description: "Partnern mit Azure AD B2B-Zusammenarbeit Zugriff auf lokale Ressourcen und Cloudressourcen gewähren"
+title: B2B-Zusammenarbeit für Hybridorganisationen – Azure Active Directory | Microsoft-Dokumentation
+description: Gewähren Sie Partnern mit Azure AD B2B-Zusammenarbeit Zugriff auf lokale und cloudbasierte Ressourcen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.date: 12/15/2017
+ms.date: 04/20/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2e690eeea6a9f7e1cc10830a913774daa3c66689
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0ccf3eb381f42849b48f3d149942be13380b3670
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-for-hybrid-organizations"></a>Azure Active Directory B2B-Zusammenarbeit für Hybridorganisationen
 
-In einer Hybridorganisation, in der Sie sowohl über lokale Ressourcen als auch über Cloudressourcen verfügen, können Sie externen Partnern Zugriff auf Cloud- und lokale Ressourcen gewähren. Für den Zugriff auf lokale Ressourcen lassen sich Partnerkonten lokal in Ihrer lokalen Active Directory-Umgebung verwalten. Partner erhalten so die Möglichkeit, sich mit ihren Partner-Kontoanmeldeinformationen anzumelden und auf die Ressourcen Ihrer Organisation zuzugreifen. Um Partnern den Zugriff auf Cloudressourcen mit denselben Anmeldeinformationen zu gewähren, können Sie jetzt mithilfe von Azure Active Directory (Azure AD) Connect die Partnerkonten als Azure AD B2B-Benutzer (d.h. Benutzer mit UserType = Guest) mit der Cloud synchronisieren.
+Mit Azure Active Directory (Azure AD) B2B-Zusammenarbeit können Sie Ihren externen Partnern ganz einfach Zugriff auf Apps und Ressourcen in Ihrem Unternehmen gewähren. Dies gilt auch im Fall einer Hybridkonfiguration, in der Sie sowohl über lokale als auch cloudbasierte Ressourcen verfügen. Es spielt keine Rolle, ob Sie externe Partnerkonten gegenwärtig lokal in Ihrem lokalen Identitätssystem oder in der Cloud als Azure AD B2B-Benutzer verwalten. Sie können diesen Benutzern jetzt den Zugriff auf Ressourcen in beiden Umgebungen mit denselben Anmeldeinformationen ermöglichen.
 
-## <a name="identify-unique-attributes-for-usertype"></a>Identifizieren von eindeutigen Attributen für UserType
+## <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-apps"></a>Gewähren des Zugriffs auf lokale Apps für B2B-Benutzer in Azure AD
 
-Vor dem Aktivieren der Synchronisierung des UserType-Attributs müssen Sie entscheiden, wie das UserType-Attribut vom lokalen Active Directory abgeleitet werden soll. Das heißt, welche Parameter in Ihrer lokalen Umgebung sind für Ihre externen Mitarbeiter eindeutig? Bestimmen Sie einen Parameter, der diese externen Mitarbeiter von Mitgliedern Ihrer eigenen Organisation unterscheidet.
+Wenn Ihr Unternehmen Funktionen der Azure AD B2B-Zusammenarbeit verwendet, um Gastbenutzer aus Partnerunternehmen zu Ihrem Azure AD-Verzeichnis einzuladen, können Sie für diese B2B-Benutzer jetzt Zugriff auf lokale Apps bereitstellen.
 
-Hierbei gibt es zwei gängige Vorgehensweisen:
+Apps, die die SAML-basierte Authentifizierung verwenden, können Sie über das Azure-Portal für B2B-Benutzer verfügbar machen, indem Sie den Azure AD-Anwendungsproxy für die Authentifizierung verwenden.
 
-- Sie legen ein nicht verwendetes lokales Active Directory-Attribut (z.B. extensionAttribute1) als Quellattribut fest. 
-- Oder Sie leiten den Wert für das UserType-Attribut aus anderen Eigenschaften ab. Angenommen, Sie möchten alle Benutzer als „Guest“ synchronisieren, wenn ihr lokales Active Directory-Attribut UserPrincipalName mit dem Domänenteil *@partners.fabrikam123.org* endet.
+Für Apps, die die integrierte Windows-Authentifizierung (IWA) mit eingeschränkter Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) nutzen, können Sie ebenfalls den Azure AD-Anwendungsproxy für die Authentifizierung verwenden. Damit die Autorisierung funktioniert, ist jedoch ein Benutzerobjekt im lokalen Windows Server Active Directory-Verzeichnis erforderlich. Zum Erstellen von Benutzerobjekten, die Ihre B2B-Gastbenutzer darstellen, stehen zwei Methoden zur Auswahl.
+
+- Sie können Microsoft Identity Manager (MIM) 2016 SP1 und den MIM-Verwaltungs-Agent für Microsoft Graph verwenden. (Diese Lösung erfordert ein Azure AD Premium 1-Abonnement.)
+- Sie können ein PowerShell-Skript verwenden. (Diese Lösung erfordert weder MIM noch AD Premium.)
+
+Ausführliche Informationen zum Implementieren dieser Lösungen finden Sie unter [Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD](active-directory-b2b-hybrid-cloud-to-on-premises.md).
+
+## <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources"></a>Gewähren des Zugriffs auf Cloudressourcen für lokal verwaltete Partnerkonten
+
+Vor Azure AD haben Unternehmen mit lokalen Identitätssystemen Partnerkonten herkömmlicherweise in ihrem lokalen Verzeichnis verwaltet. In diesem Fall möchten Sie sicherstellen, dass Ihre Partner weiterhin Zugriff haben, wenn Sie Ihre Apps und andere Ressourcen zur Cloud migrieren. Im Idealfall sollen diese Benutzer mit denselben Anmeldeinformationen auf cloudbasierte und lokale Ressourcen zugreifen. 
+
+Wir bieten jetzt Methoden, mit denen Sie diese lokalen Konten mithilfe von Azure AD Connect als „Gastbenutzer“ mit der Cloud synchronisieren können, sodass sich die Konten wie Azure AD B2B-Benutzer verhalten. Diese Lösung funktioniert auch, wenn Sie ein lokales Identitätssystem verwenden, das Partnern die Anmeldung mit ihrer eigenen externen E-Mail-Adresse ermöglicht.
+
+Zum Schutz Ihrer Unternehmensdaten können Sie den Zugriff auf bestimmte Ressourcen beschränken und Autorisierungsrichtlinien konfigurieren, die diese Gastbenutzer anders als Ihre Mitarbeiter behandeln.
+
+Details zur Implementierung finden Sie unter [Gewähren des Zugriffs auf Cloudressourcen für lokal verwaltete Partnerkonten mit Azure AD B2B-Zusammenarbeit](active-directory-b2b-hybrid-on-premises-to-cloud.md).
  
-Detaillierte Attributanforderungen finden Sie unter [Synchronisierung des Benutzertyps aktivieren](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
-
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurieren von Azure AD Connect für die Synchronisierung von Benutzern mit der Cloud
-
-Nachdem Sie das eindeutige Attribut identifiziert haben, können Sie Azure AD Connect so konfigurieren, dass diese Benutzer mit der Cloud als Azure AD B2B-Benutzer (d.h. Benutzer mit UserType = Guest) synchronisiert werden. Aus Sicht der Autorisierung sind diese Benutzer nicht von B2B-Benutzern zu unterscheiden, die durch den Einladungsprozess von Azure AD B2B-Zusammenarbeit erstellt wurden.
-
-Eine Anleitung zur Implementierung finden Sie unter [Synchronisierung des Benutzertyps aktivieren](connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Übersicht zu Azure AD B2B-Zusammenarbeit finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
-- Eine Übersicht zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](connect/active-directory-aadconnect.md).
+- [Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD](active-directory-b2b-hybrid-cloud-to-on-premises.md)
+- [Gewähren des Zugriffs auf Cloudressourcen für lokal verwaltete Partnerkonten mit Azure AD B2B-Zusammenarbeit](active-directory-b2b-hybrid-on-premises-to-cloud.md).
 

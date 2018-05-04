@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: eb00bd3a9680091827a6e1d768a9b828a15d1b97
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -122,7 +122,9 @@ Ein Gateway des lokalen Netzwerks kann Routen mit einem Gateway des virtuellen A
 - **VPN**: Optional können Sie BGP verwenden. Ausführliche Informationen finden Sie unter [Übersicht über BGP mit Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wenn Sie Routen mit Azure per BGP austauschen, wird der Routentabelle aller Subnetze in einem virtuellen Netzwerk für jedes angekündigte Präfix eine separate Route hinzugefügt. Die Route wird mit *Gateway für virtuelle Netzwerke* als Quelle und Typ des nächsten Hops hinzugefügt. 
- 
+
+Die BGP-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter BGP-Verteilung keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit „VPN“ als Typ des nächsten Hops erreicht. Ausführliche Informationen finden Sie unter [How to disable BGP route propagation](/manage-route-table#create-a-route-table.md) (Deaktivieren der BGP-Routenverteilung).
+
 ## <a name="how-azure-selects-a-route"></a>Auswahl einer Route durch Azure
 
 Wenn Datenverkehr in ausgehender Richtung aus einem Subnetz gesendet wird, wählt Azure eine Route basierend auf der IP-Zieladresse aus, indem der längste Präfixübereinstimmungsalgorithmus verwendet wird. Eine Routentabelle hat beispielsweise zwei Routen: Mit einer Route wird das Adresspräfix 10.0.0.0/24 angegeben, und mit der anderen Route wird das Adresspräfix 10.0.0.0/16 angegeben. Azure leitet den für 10.0.0.5 bestimmten Datenverkehr an den Typ des nächsten Hops weiter, der in der Route mit dem Adresspräfix 10.0.0.0/24 angegeben ist, weil 10.0.0.0/24 ein längeres Präfix als 10.0.0.0/16 ist (auch wenn 10.0.0.5 innerhalb beider Adresspräfixe liegt). Azure leitet für 10.0.1.5 bestimmten Datenverkehr an den Typ des nächsten Hops weiter, der in der Route mit dem Adresspräfix 10.0.0.0/16 angegeben ist, weil 10.0.1.5 nicht im Adresspräfix 10.0.0.0/24 enthalten ist. Aus diesem Grund ist die Route mit dem Adresspräfix 10.0.0.0/16 das längste Präfix, für das sich eine Übereinstimmung ergibt.

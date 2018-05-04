@@ -1,8 +1,8 @@
 ---
-title: "Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsoft Docs"
+title: Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsoft Docs
 description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Storage zu erkennen, zu diagnostizieren und zu beheben.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: fhryo-msft
 manager: jahogg
 editor: tysonn
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -145,7 +145,7 @@ Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blob
 ### <a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
 Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
 
-Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit** auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
+Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit**auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
@@ -533,7 +533,7 @@ Protokollierungseinträge:
 | 07b26a5d-... |Antwortheader wurden erfolgreich verarbeitet, fortfahren mit dem Rest der Operation. |
 | 07b26a5d-... |Antworttext downloaden. |
 | 07b26a5d-... |Operation erfolgreich abgeschlossen. |
-| e2d06d78-... |Asynchrone Anfrage an https://domemaildist.blob.core.windows.net/azuremmblobcontainer starten.</td> |
+| e2d06d78-... |Synchronanfrage starten an https://domemaildist.blob.core.windows.net/azuremmblobcontainer.</td> |
 | e2d06d78-... |StringToSign = HEAD............x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Warten auf Antwort. |
 | de8b1c3c-... |Synchronanfrage starten an https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt. |
@@ -544,7 +544,7 @@ Protokollierungseinträge:
 | e2d06d78-... |Antwortheader wurden erfolgreich verarbeitet, fortfahren mit dem Rest der Operation. |
 | e2d06d78-... |Antworttext downloaden. |
 | e2d06d78-... |Operation erfolgreich abgeschlossen. |
-| e2d06d78-... |Asynchrone Anfrage an https://domemaildist.blob.core.windows.net/azuremmblobcontainer starten. |
+| e2d06d78-... |Synchronanfrage starten an https://domemaildist.blob.core.windows.net/azuremmblobcontainer. |
 | e2d06d78-... |StringToSign = PUT...0.........x-ms-client-request-id:e2d06d78-....x-ms-date:Tue, 03 Jun 2014 10:33:12 GMT.x-ms-version:2014-02-14./domemaildist/azuremmblobcontainer.restype:container. |
 | e2d06d78-... |Warten auf Antwort. |
 | de8b1c3c-... |Anfragedaten schreiben. |

@@ -1,5 +1,5 @@
 ---
-title: "Cache – ASP.NET-Sitzungszustandsanbieter | Microsoft Docs"
+title: Cache – ASP.NET-Sitzungszustandsanbieter | Microsoft Docs
 description: Erfahren Sie, wie Sie den ASP.NET-Sitzungszustand mit Azure Redis Cache speichern.
 services: redis-cache
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 485375f2f2ffb83b7d0fdeef8daab5880a8bbc27
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: bb0c53433af8a679811f00bfff2efee94d211a24
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>ASP.NET-Sitzungszustandsanbieter für Azure Redis Cache
-Azure Redis Cache stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den Sitzungszustand in einem Cache anstatt im Arbeitsspeicher oder in einer SQL Server-Datenbank speichern können. Um den Sitzungszustandsanbieter zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach Ihre ASP.NET-Anwendung für den Cache mithilfe des Redis Cache-Sitzungszustands-NuGet-Pakets.
+Azure Redis Cache stellt einen Sitzungszustandsanbieter bereit, mit dem Sie den Sitzungszustand im Arbeitsspeicher mit Redis Cache anstatt in einer SQL Server-Datenbank speichern können. Um den Sitzungszustandsanbieter zu verwenden, konfigurieren Sie zuerst den Cache, und konfigurieren Sie danach Ihre ASP.NET-Anwendung für den Cache mithilfe des Redis Cache-Sitzungszustands-NuGet-Pakets.
 
 Im praktischen Einsatz von Cloud-Apps lässt sich das Speichern von Zustandsinformationen für eine Benutzersitzung oft nicht vermeiden. Allerdings beeinträchtigen einige Herangehensweisen die Leistung und Skalierbarkeit stärker als andere. Wenn Sie einen Sitzungszustand speichern müssen, ist es am besten, die Menge der Zustandsinformationen niedrig zu halten und sie in Cookies zu speichern. Wenn das nicht umsetzbar ist, besteht die nächstbeste Lösung darin, den ASP.NET-Sitzungszustand mit einem Anbieter für verteilten In-Memory-Cache zu verwenden. Die schlechteste Lösung im Hinblick auf Leistung und Skalierbarkeit wäre es, einen datenbankbasierten Sitzungszustandsanbieter zu verwenden. Dieses Thema bietet einen Leitfaden zum Verwenden des ASP.NET-Sitzungszustandsanbieters für Azure Redis Cache. Informationen zu anderen Optionen für den Sitzungszustand finden Sie unter [Optionen für den ASP.NET-Sitzungszustand](#aspnet-session-state-options).
 
@@ -112,7 +112,7 @@ Nach Abschluss dieser Schritte ist Ihre Anwendung für die Verwendung des Redis 
 
 ## <a name="aspnet-session-state-options"></a>Optionen für den ASP.NET-Sitzungszustand
 * In-Memory-Sitzungszustandsanbieter: Dieser Anbieter speichert den Sitzungszustand im Arbeitsspeicher. Der Vorteil bei diesem Anbieter ist, dass er einfach und schnell ist. Wenn Sie einen In-Memory-Anbieter verwenden, können Sie jedoch Ihre Web-Apps nicht skalieren, denn dieser Anbieter ist nicht verteilt.
-* SQL Server-Sitzungszustandsanbieter: Dieser Anbieter speichert den Sitzungszustand in SQL Server. Verwenden Sie diesen Anbieter, wenn der Sitzungszustand in einem beständigen Speicher gespeichert werden soll. Sie können Ihre Web-App skalieren, die Verwendung von SQL Server für den Sitzungszustand hat jedoch Auswirkungen auf die Leistung der Web-App.
+* SQL Server-Sitzungszustandsanbieter: Dieser Anbieter speichert den Sitzungszustand in SQL Server. Verwenden Sie diesen Anbieter, wenn der Sitzungszustand in einem beständigen Speicher gespeichert werden soll. Sie können Ihre Web-App skalieren, die Verwendung von SQL Server für den Sitzungszustand hat jedoch Auswirkungen auf die Leistung der Web-App. Sie können diesen Anbieter auch mit einer [In-Memory-OLTP-Konfiguration](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) zur Verbesserung der Leistung verwenden.
 * Verteilter In-Memory-Sitzungszustandsanbieter wie z. B. Redis Cache-Sitzungszustandsanbieter: Dieser Anbieter bietet Ihnen das Beste aus beiden Welten. Ihre Web-App kann über einen einfachen, schnellen und skalierbaren Sitzungszustandsanbieter verfügen. Da dieser Anbieter den Sitzungszustand in einem Cache speichert, muss Ihre App so ausgelegt sein, dass die besonderen Merkmale bei der Kommunikation mit einem verteilten In-Memory-Cache berücksichtigt werden, z.B. kurze Netzwerkausfälle. Bewährte Verfahren zum Verwenden des Caches finden Sie unter [Caching Guidance](../best-practices-caching.md) (in englischer Sprache, aus Microsoft Patterns & Practices, [Azure Cloud Application Design and Implementation Guidance](https://github.com/mspnp/azure-guidance)).
 
 Weitere Information über das Thema Sitzungszustand und andere bewährte Verfahren finden Sie unter [Web Development Best Practices (Building Real-World Cloud Apps with Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)(in englischer Sprache).

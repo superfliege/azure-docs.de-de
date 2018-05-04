@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: v-craic
-ms.openlocfilehash: 2c542f9d47eb8011a13bf7156430324c53d238ce
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6bfb34c05a03ed02694210a5901f4f367e8a2fd3
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Erstellen eines benutzerdefinierten Images aus einer VHD-Datei mithilfe von PowerShell
 
@@ -32,10 +32,10 @@ ms.lasthandoff: 03/23/2018
 
 Die folgenden Schritte führen Sie durch die Erstellung eines benutzerdefinierten Images aus einer VHD-Datei mithilfe von PowerShell:
 
-1. Melden Sie sich an einer PowerShell-Eingabeaufforderung mit dem folgenden Aufruf des Cmdlets **Login-AzureRmAccount** bei Ihrem Azure-Konto an.  
+1. Melden Sie sich an einer PowerShell-Eingabeaufforderung mit dem folgenden Aufruf des Cmdlets **Connect-AzureRmAccount** bei Ihrem Azure-Konto an.  
     
     ```PowerShell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 
 1.  Wählen Sie das gewünschte Azure-Abonnement aus, indem Sie das Cmdlet **Select-AzureRmSubscription** aufrufen. Ersetzen Sie den folgenden Platzhalter für die Variable **$subscriptionId** durch eine gültige Azure-Abonnement-ID. 
@@ -83,7 +83,7 @@ Das folgende PowerShell-Skript kann zum Erstellen eines benutzerdefinierten Imag
 
 ```PowerShell
 # Log in to your Azure account.  
-Login-AzureRmAccount
+Connect-AzureRmAccount
 
 # Select the desired Azure subscription. 
 $subscriptionId = '<Specify your subscription ID here>'

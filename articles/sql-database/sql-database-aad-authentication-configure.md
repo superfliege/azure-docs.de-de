@@ -9,11 +9,11 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 6e6f925f325dff74544464d8a888aa6c3ed092d5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank, der verwalteten SQL-Datenbank-Instanz oder SQL Data Warehouse
 
@@ -100,7 +100,7 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 Die beiden folgenden Verfahren zeigen Ihnen, wie Sie einen Azure Active Directory-Administrator für Ihre Azure SQL Server-Instanz im Azure-Portal und mithilfe von PowerShell bereitstellen.
 
 ### <a name="azure-portal"></a>Azure-Portal
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird das Abonnement mit Active Directory und der Azure SQL Server-Instanz verknüpft. So wird sichergestellt, dass das gleiche Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die Azure SQL Server-Instanz kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)   
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird die mit dem Abonnement verbundene Active Directory-Instanz mit der Azure SQL Server-Instanz verknüpft. So wird sichergestellt, dass das gleiche Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die Azure SQL Server-Instanz kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)   
     ![choose-ad][8]   
     
 2. Wählen Sie auf dem Banner links **SQL Server** aus, wählen Sie Ihre **SQL Server-Instanz** aus, und klicken Sie dann auf der Seite **SQL Server** auf **Active Directory-Administrator**.   
@@ -208,7 +208,7 @@ Sie können diese Anforderungen folgendermaßen erfüllen:
 Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht im Portal erstellt werden. RBAC-Rollen werden nicht auf SQL Server, SQL-Datenbank oder SQL Data Warehouse übertragen. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zum Herstellen einer Verbindung mit der SQL-Datenbank oder SQL Data Warehouse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
+> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht im Azure-Portal erstellt werden. RBAC-Rollen werden nicht auf SQL Server, SQL-Datenbank oder SQL Data Warehouse übertragen. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zum Herstellen einer Verbindung mit der SQL-Datenbank oder SQL Data Warehouse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
 >
 
 Um einen Azure AD-basierten eigenständigen Datenbankbenutzer zu erstellen (bei dem es sich nicht um den Serveradministrator handelt, der Besitzer der Datenbank ist), stellen Sie mit einer Azure AD-Identität, die mindestens über die Berechtigung **BELIEBIGEN BENUTZER ÄNDERN** verfügt, eine Verbindung mit der Datenbank her. Verwenden Sie anschließend die folgende Transact-SQL-Syntax:
@@ -281,7 +281,8 @@ Verwenden Sie diese Methode, wenn Sie mit Ihren Azure Active Directory-Anmeldein
 
 Verwenden Sie diese Methode, wenn Sie unter Verwendung der verwalteten Azure AD-Domäne und mit einem Azure AD-Prinzipalnamen eine Verbindung herstellen. Sie können diese Authentifizierungsmethode auch für ein Verbundkonto ohne Zugriff auf die Domäne verwenden, beispielsweise wenn Sie an einem Remotestandort arbeiten.
 
-Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen aus einer Domäne angemeldet sind, die nicht im Verbund mit Azure konfiguriert ist, oder wenn Sie die Azure AD-Authentifizierung mit Azure AD basierend auf der Anfangs- oder der Clientdomäne nutzen.
+Verwenden Sie diese Methode, um sich bei SQL DB/DW mit Azure AD für native oder verbundene Azure AD-Benutzer zu authentifizieren.
+Ein nativer Benutzer ist ein explizit in Azure AD erstellter Benutzer, der mit Benutzername und Kennwort authentifiziert wird, während es sich bei einem Verbundbenutzer um einen Windows-Benutzer handelt, dessen Domäne mit Azure AD verbunden ist. Letztere Methode (mit Benutzer und Kennwort) kann verwendet werden, wenn ein Benutzer seine Windows-Anmeldeinformationen verwenden möchte, aber sein lokaler Computer nicht mit der Domäne verbunden ist (z.B. über einen Remotezugriff). In diesem Fall kann ein Windows-Benutzer sein Domänenkonto mit Kennwort angeben und sich bei SQL DB/DW mithilfe von Anmeldeinformationen als Verbundbenutzer authentifizieren.
 
 1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbank-Engine herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: Kennwort** aus.
 2. Geben Sie im Feld **Benutzername** Ihren Azure Active Directory-Benutzernamen im Format **username@domain.com** ein. Es muss sich um ein Konto aus Azure Active Directory oder um ein Konto aus einer Domäne handeln, die im Verbund mit Azure Active Directory konfiguriert ist.

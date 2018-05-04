@@ -129,6 +129,8 @@
           items:
             - name: Notfallwiederherstellung von virtuellen Azure-Computern nach der Migration zu Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Notfallwiederherstellung von virtuellen Azure-Computern mithilfe von PowerShell
+              href: azure-to-azure-powershell.md
         - name: 'Replikation, Failover und Failback'
           items:
             - name: Ermöglichen der Replikation von Azure zu Azure

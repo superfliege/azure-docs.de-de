@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
-ms.topic: reference
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
-ms.openlocfilehash: 6f836061ed1d4eb573cb15d820ea38ff48535232
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+manager: dougeby
+ms.openlocfilehash: 197eac4b6904bbbf55e7233e113e64e3af528b3e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="cost-management-training-videos"></a>Schulungsvideos zur Kostenverwaltung
+# <a name="cost-management-training-videos"></a>Trainigsvideos zur Kostenverwaltung
 
 Die folgenden Videos zeigen Ihnen mit Demonstrationen den Einstieg in die Kostenverwaltung und die Verwendung ihrer Features. Die Kostenverwaltung unterstützt mehrere Verfahren zur Nachverfolgung und Optimierung von Cloudkosten einschließlich Microsoft Azure, Amazon Web Services und Google Cloud Platform.
 

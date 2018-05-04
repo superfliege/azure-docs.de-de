@@ -14,20 +14,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.openlocfilehash: 7fa93e138bc9feb66c200597119bb12dbaf00480
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 865243a10bd5043ca04c392c043b37772271f68f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="retrain-a-new-resource-manager-based-web-service-using-the-machine-learning-management-powershell-cmdlets"></a>Erneutes Trainieren eines neuen auf Resource Manager basierenden Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning
-Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist.  
+Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie müssen ein Trainingsexperiment und ein Vorhersageexperiment einrichten (wie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](retrain-models-programmatically.md) beschrieben). 
+Sie müssen ein Trainingsexperiment und ein Vorhersageexperiment einrichten (wie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](retrain-models-programmatically.md) beschrieben).
 
 > [!IMPORTANT]
-> Das Vorhersageexperiment muss als ein auf Azure Resource Manager (neu) basierender Machine Learning-Webdienst bereitgestellt werden. Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+> Das Vorhersageexperiment muss als ein auf Azure Resource Manager (neu) basierender Machine Learning-Webdienst bereitgestellt werden.
+> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
 
 Weitere Informationen zum Bereitstellen von Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](publish-a-machine-learning-web-service.md).
 
@@ -48,7 +49,7 @@ Auszuführende Schritte:
 6. Aktualisieren Sie den Webdienst mit der neuen Webdienstdefinition.
 
 ## <a name="sign-in-to-your-azure-resource-manager-account"></a>Anmelden bei Ihrem Azure Resource Manager-Konto
-Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) bei Ihrem Azure-Konto an.
+Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto an.
 
 ## <a name="get-the-web-service-definition"></a>Rufen Sie die Webdienstdefinition ab.
 Rufen Sie als Nächstes mithilfe des Cmdlets [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) den Webdienst ab. Die Webdienstdefinition ist eine interne Darstellung des trainierten Modells für den Webdienst und kann nicht direkt geändert werden. Achten Sie darauf, die Webdienstdefinition für das Vorhersageexperiment (und nicht für das Trainingsexperiment) abzurufen.

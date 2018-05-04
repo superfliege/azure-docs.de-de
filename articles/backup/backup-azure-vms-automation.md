@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: markgal;trinadhk;pullabhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bac1e679aa46b280596ab09ba40da780c81cac5d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 3431db3844ca47ce6c2beafbd894a69f05e0311a
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer
 
@@ -79,9 +79,9 @@ Vorbereitung:
     Cmdlet          Unregister-AzureRmRecoveryServicesBackupManagem... 1.4.0      AzureRM.RecoveryServices.Backup
     Cmdlet          Wait-AzureRmRecoveryServicesBackupJob              1.4.0      AzureRM.RecoveryServices.Backup
     ```
-3. Melden Sie sich mithilfe von **Login-AzureRmAccount** bei Ihrem Azure-Konto an. Dieses Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert: 
-    - Alternativ können Sie die Kontoanmeldeinformationen als Parameter im Cmdlet **Login-AzureRmAccount** mit dem Parameter **-Credential** einschließen.
-    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Login-AzureRmAccount -Tenant "fabrikam.com"**
+3. Melden Sie sich mithilfe von **Connect-AzureRmAccount** bei Ihrem Azure-Konto an. Dieses Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert: 
+    - Alternativ können Sie die Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzureRmAccount** mit dem Parameter **-Credential** einschließen.
+    - Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzureRmAccount -Tenant "fabrikam.com"**
 4. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
     ```PS
@@ -362,7 +362,7 @@ Nachdem Sie die Datenträger wiederhergestellt haben, fahren Sie mit dem nächst
 Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schritte zum Erstellen und Konfigurieren des virtuellen Computers vom Datenträger.
 
 > [!NOTE]
-> Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../active-directory/role-based-access-control-custom-roles.md).
+> Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md).
 >
 >
 

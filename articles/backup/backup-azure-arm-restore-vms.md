@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup: Wiederherstellen virtueller Computer über das Azure-Portal | Microsoft-Dokumentation"
-description: "Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal"
+title: 'Azure Backup: Wiederherstellen virtueller Computer über das Azure-Portal | Microsoft-Dokumentation'
+description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keywords: Sicherung wiederherstellen; Wiederherstellungsschritte; Wiederherstellungspunkt;
 ms.assetid: 372b87c6-3544-4dc5-bbc9-c742ca502159
 ms.service: backup
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -211,7 +211,7 @@ Mit Azure Backup können gesicherte virtuelle Computer im gekoppelten Datencente
 ## <a name="restore-domain-controller-vms"></a>Wiederherstellen von virtuellen Computern mit Domänencontroller
 Die Sicherung von virtuellen Computern mit Domänencontroller (DC) wird in Backup unterstützt. Beim Wiederherstellungsvorgang ist jedoch Vorsicht geboten. Der ordnungsgemäße Wiederherstellungsvorgang hängt von der Struktur der Domäne ab. Im einfachsten Fall verfügen Sie über einen einzelnen Domänencontroller in einer einzelnen Domäne. Doch in Produktionsumgebungen ist es üblicher, über eine einzelne Domäne mit mehreren Domänencontrollern zu verfügen, von denen einige lokal sein können. Möglich ist auch, dass Sie eine Gesamtstruktur mit mehreren Domänen besitzen. 
 
-Aus Active Directory-Sicht entspricht der virtuelle Azure-Computer beliebigen anderen virtuellen Computern auf einem modernen unterstützten Hypervisor. Der Hauptunterschied bei lokalen Hypervisoren ist, dass keine VM-Konsole in Azure verfügbar ist. Eine Konsole ist für bestimmte Szenarien erforderlich, z.B. zur Wiederherstellung mithilfe einer Sicherung vom Typ „Bare-Metal-Recovery“ (BMR). Die VM-Wiederherstellung aus dem Sicherungstresor ist jedoch ein vollständiger Ersatz für BMR. Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. Weitere Informationen finden Sie unter [Backup and restore considerations for virtualized domain controllers](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) (Sicherungs- und Wiederherstellungsaspekte für virtualisierte Domänencontroller) und [Planning for Active Directory forest recovery](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx) (Planen der Wiederherstellung der Active Directory-Gesamtstruktur).
+Aus Active Directory-Sicht entspricht der virtuelle Azure-Computer beliebigen anderen virtuellen Computern auf einem modernen unterstützten Hypervisor. Der Hauptunterschied bei lokalen Hypervisoren ist, dass keine VM-Konsole in Azure verfügbar ist. Eine Konsole ist für bestimmte Szenarien erforderlich, z.B. zur Wiederherstellung mithilfe einer Sicherung vom Typ „Bare-Metal-Recovery“ (BMR). Die VM-Wiederherstellung aus dem Sicherungstresor ist jedoch ein vollständiger Ersatz für BMR. Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. Weitere Informationen finden Sie unter [Backup and restore considerations for virtualized domain controllers](https://technet.microsoft.com/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers) (Sicherungs- und Wiederherstellungsaspekte für virtualisierte Domänencontroller) und [Planning for Active Directory forest recovery](https://technet.microsoft.com/library/planning-active-directory-forest-recovery(v=ws.10).aspx) (Planen der Wiederherstellung der Active Directory-Gesamtstruktur).
 
 ### <a name="single-dc-in-a-single-domain"></a>Einzelner Domänencontroller in einer einzelnen Domäne
 Der virtuelle Computer kann (wie alle anderen virtuellen Computer) über das Azure-Portal oder mithilfe von PowerShell wiederhergestellt werden.
@@ -242,7 +242,7 @@ Zum vollständigen Neuerstellen der virtuellen Computer nach der Wiederherstellu
 
    a. Erstellen Sie den virtuellen Computer im Clouddienst mit einem [internem Lastenausgleich](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
 
-   b. Erstellen Sie einen virtuellen Computer zum Herstellen einer Verbindung mit einem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/en-us/documentation/articles/load-balancer-internet-getstarted/).
+   b. Erstellen Sie einen virtuellen Computer zum Herstellen einer Verbindung mit einem [Load Balancer mit Internetzugriff](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
    c. Erstellen Sie einen virtuellen Computer mit [mehreren Netzwerkkarten](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
 

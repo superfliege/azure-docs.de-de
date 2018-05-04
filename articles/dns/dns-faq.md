@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2017
 ms.author: kumud
-ms.openlocfilehash: f07f914ccf8ea6df216e3f571e38d7628b2d7fb6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e0eb39ced1d88d2e0b6128493304f112f9c685fa
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -46,6 +46,7 @@ Weitere Informationen finden Sie auf der [Seite mit der SLA für Azure DNS](http
 ### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Was ist eine „DNS-Zone“? Ist das dasselbe wie eine DNS-Domäne? 
 
 Eine Domäne ist ein eindeutiger Name im Domain Name System, z.B. „contoso.com“.
+
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Beispiel: Die Domäne „contoso.com“ kann eine Reihe von DNS-Einträgen wie „mail.contoso.com“ (für einen E-Mail-Server) und „www.contoso.com“ (für eine Website) enthalten. Diese Einträge würden in der DNS-Zone „contoso.com“ gehostet werden.
 
@@ -90,6 +91,14 @@ Die Zonenübertragung ist ein Feature, das im Azure DNS-Backlog nachverfolgt wir
 Nein. Dienste für URL-Umleitungen sind eigentlich keine DNS-Dienste – sie arbeiten auf der HTTP-Ebene, statt auf der DNS-Ebene. Bei einigen DNS-Anbietern gehört ein Dienst für URL-Umleitungen zum Gesamtangebot. Dies wird derzeit von Azure DNS nicht unterstützt.
 
 Das Feature zur URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Sie können auf der Feedbackwebsite [Ihre Unterstützung für dieses Feature registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Unterstützt Azure DNS den erweiterten ASCII-Codierungssatz (8-Bit) für TXT-Recordsets?
+
+Ja. Azure DNS unterstützt erweiterte ASCII-Codierung für TXT-Recordsets, wenn Sie die neueste Version der Azure-REST-APIs, SDKs, von PowerShell und CLI verwenden (Versionen vor 2017-10-01 oder SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht). Wenn der Benutzer beispielsweise eine Zeichenfolge als Wert für einen TXT-Eintrag mit dem erweiterten ASCII-Zeichen „\128“ (z.B. abcd\128efgh) angibt, verwendet Azure DNS in interner Darstellung den Bytewert dieses Zeichens (der 128 entspricht). Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert ebenfalls in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\097\098\099“, was die Auflösung betrifft, austauschbar sind. 
+
+Wir befolgen für TXT-Einträge die Escaperegeln für das Zonendatei-Masterformat in [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Zum Beispiel fungiert „\“ jetzt tatsächlich laut RFC als Escapezeichen für alles. Wenn Sie „A\B“ als TXT-Eintragswert angeben, wird dieser nur als „AB“ dargestellt und aufgelöst. Wenn Sie wirklich möchten, dass der TXT-Eintrag in „A\B“ aufgelöst wird, müssen Sie „\"“ wieder mit dem Escapezeichen versehen, d.h. als „A\\B“ angeben. 
+
+Beachten Sie, dass diese Unterstützung derzeit nicht für TXT-Einträge gilt, die im Azure-Portal erstellt wurden. 
 
 ## <a name="using-azure-dns"></a>Verwenden von Azure DNS
 
@@ -137,7 +146,7 @@ Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen]
 
 ### <a name="do-azure-dns-nameservers-resolve-over-ipv6"></a>Wird bei Azure DNS-Namenservern über IPv6 aufgelöst? 
 
-Ja. Azure DNS-Namenserver basieren auf beiden Protokollen (besitzen sowohl IPv4- als auch IPv6-Adressen). Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, können Sie ein Tool wie „nslookup“ verwenden (z.B. `nslookup -q=aaaa <Azure DNS Nameserver>`).
+Ja. Azure DNS-Namenserver basieren auf beiden Protokollen (besitzen sowohl IPv4- als auch IPv6-Adressen). Zum Ermitteln der IPv6-Adresse für die Azure DNS-Namenserver, die Ihrer DNS-Zone zugewiesen sind, können Sie ein Tool wie „nslookup“ verwenden (z. B. `nslookup -q=aaaa <Azure DNS Nameserver>`).
 
 ### <a name="how-do-i-set-up-an-international-domain-name-idn-in-azure-dns"></a>Wie richte ich einen internationalen Domänennamen (IDN) in Azure DNS ein?
 
@@ -169,7 +178,7 @@ Nein. Private Zonen werden in Verbindung mit virtuellen Netzwerken verwendet und
 Ja. Kunden können einer einzelnen privaten Zone bis zu zehn virtuelle Auflösungsnetzwerke zuordnen.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, einer privaten Zone als virtuelles Auflösungsnetzwerk hinzugefügt werden? 
-Ja, solange der Benutzer über Schreibberechtigung sowohl für die virtuellen Netzwerke als auch die private DNS-Zone verfügt. Beachten Sie, dass die Schreibberechtigung mehreren RBAC-Rollen zugeordnet sein kann. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-what-is.md).
+Ja, solange der Benutzer über Schreibberechtigung sowohl für die virtuellen Netzwerke als auch die private DNS-Zone verfügt. Beachten Sie, dass die Schreibberechtigung mehreren RBAC-Rollen zugeordnet sein kann. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn die virtuellen Computer vom Kunden gelöscht werden?
 Ja. Wenn Sie einen virtuellen Computer innerhalb eines virtuellen Registrierungsnetzwerks löschen, löschen wir automatisch die DNS-Einträge, die in der Zone aufgrund der Tatsache registriert wurden, dass es sich um ein virtuelles Registrierungsnetzwerk handelt. 
@@ -196,7 +205,7 @@ Nein. Derzeit wird weiterhin das von Azure bereitgestellte Standardsuffix (*.int
 Ja. Während der Public Preview-Phase gelten die folgenden Einschränkungen:
 * Ein virtuelles Registrierungsnetzwerk pro privater Zone.
 * Bis zu zehn virtuelle Auflösungsnetzwerke pro privater Zone.
-* Ein bestimmtes virtuelles Netzwerk kann nur mit einer privaten Zone als ein virtuelles Registrierungsnetzwerk verknüpft werden.
+* Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone als ein virtuelles Registrierungsnetzwerk verknüpft werden.
 * Ein bestimmtes virtuelles Netzwerk kann mit bis zu zehn privaten Zonen als ein virtuelles Auflösungsnetzwerk verknüpft werden.
 * Wenn ein virtuelles Registrierungsnetzwerk angegeben wird, können die DNS-Einträge für die virtuellen Computer aus diesem virtuellen Netzwerk, die für die private Zone registriert sind, nicht über Powershell/CLI/APIs angezeigt oder abgerufen werden, doch werden die Einträge der virtuellen Computer registriert und erfolgreich aufgelöst.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Registrierungsnetzwerk.

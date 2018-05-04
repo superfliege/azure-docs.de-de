@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: df2e25bca907e90c12d18ea76f9c6a94c38a4ece
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3986b07c3568c3dcbb4077361d38f74d658458cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management
 In API Management werden Gruppen verwendet, um die Sichtbarkeit von Produkten für Entwickler zu verwalten. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
@@ -32,7 +32,7 @@ Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte G
 
 Diese Anleitung beschreibt, wie Administrator einer API Management-Instanz neue Gruppen hinzufügen und diese zu Produkten und Entwicklern zuordnen können.
 
-Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) der API Management-REST-API erstellen und verwalten.
+Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) der API Management-REST-API erstellen und verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +94,7 @@ Sobald Sie die Zuordnung zwischen Entwickler und Gruppe erstellt haben, können 
 ## <a name="next-steps"> </a>Nächste Schritte
 
 * Sobald ein Entwickler zu einer Gruppe hinzugefügt wurde, können diese die zu dieser Gruppe zugeordneten Produkte anzeigen und abonnieren. Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts in Azure API Management][How create and publish a product in Azure API Management].
-* Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) der API Management-REST-API erstellen und verwalten.
+* Zusätzlich zum Erstellen und Verwalten von Gruppen im Herausgeberportal können Sie Ihre Gruppen mithilfe der Entität [Gruppe](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity) der API Management-REST-API erstellen und verwalten.
 
 [Create a group]: #create-group
 [Associate a group with a product]: #associate-group-product

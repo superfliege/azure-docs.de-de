@@ -1,6 +1,6 @@
 ---
-title: Aufrufen des SSIS-Pakets mithilfe von Azure Data Factory – Aktivität der gespeicherten Prozedur | Microsoft-Dokumentation
-description: In diesem Artikel wird das Aufrufen eines SSIS-Pakets (SQL Server Integration Services) aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben.
+title: Ausführen eines SSIS-Pakets mithilfe der Aktivität einer gespeicherten Prozedur in Azure Data Factory | Microsoft-Dokumentation
+description: In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) aus einer Azure Data Factory-Pipeline mithilfe der Aktivität einer gespeicherten Prozedur beschrieben.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 00a4401a9116d8ebbfefa56194fe45802bcf198e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 283e1022abda083d73e8e4e5bca7872791cb4861
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/19/2018
 ---
-# <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
-In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
+# <a name="run-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mithilfe der Aktivität einer gespeicherten Prozedur in Azure Data Factory
+In diesem Artikel wird das Ausführen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe der Aktivität einer gespeicherten Prozedur beschrieben. 
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Invoke SSIS packages using stored procedure activity in version 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md) (Aufrufen von SSIS-Paketen mithilfe einer Aktivität einer gespeicherten Prozedur in Version 1).
@@ -85,12 +85,13 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche eine 
 4. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
 
     1. Wählen Sie **Azure SQL-Datenbank** als **Typ** aus.
-    2. Wählen Sie für das Feld **Servername** den Azure SQL-Server aus, der die SSISDB-Datenbank hostet.
-    3. Wählen Sie **SSISDB** als **Datenbankname** aus.
-    4. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die Datenbank hat.
-    5. Geben Sie unter **Kennwort** das Kennwort des Benutzers ein. 
-    6. Testen Sie die Verbindung mit der Datenbank, indem Sie auf die Schaltfläche **Verbindung testen** klicken.
-    7. Speichern Sie den verknüpften Dienst, indem Sie auf die Schaltfläche **Speichern** klicken. 
+    2. Wählen Sie die **standardmäßige** Azure-Integration Runtime, um sich mit der Azure SQL-Datenbank zu verbinden, die die `SSISDB`-Datenbank hostet.
+    3. Wählen Sie für das Feld **Servername** die Azure SQL-Datenbank aus, die die SSISDB-Datenbank hostet.
+    4. Wählen Sie **SSISDB** als **Datenbankname** aus.
+    5. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die Datenbank hat.
+    6. Geben Sie unter **Kennwort** das Kennwort des Benutzers ein. 
+    7. Testen Sie die Verbindung mit der Datenbank, indem Sie auf die Schaltfläche **Verbindung testen** klicken.
+    8. Speichern Sie den verknüpften Dienst, indem Sie auf die Schaltfläche **Speichern** klicken. 
 
         ![Mit Azure SQL-Datenbank verknüpfter Dienst](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. Wechseln Sie im Eigenschaftenfenster von der Registerkarte **SQL-Konto** zur Registerkarte **Gespeicherte Prozedur**, und führen Sie folgende Schritte durch: 
@@ -121,14 +122,18 @@ In diesem Abschnitt lösen Sie eine Pipelineausführung aus, und überwachen die
 
 1. Klicken Sie auf der Symbolleiste auf **Trigger** und anschließend auf **Jetzt auslösen**, um eine Pipelineausführung auszulösen. 
 
-    ![Manuelles Auslösen](./media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+    ![Manuelles Auslösen](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
+
 2. Wählen Sie im Fenster **Pipelineausführung** die Option **Fertig stellen** aus. 
 3. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Es werden die Pipelineausführung, der zugehörige Status sowie weitere Informationen (z.B. Startzeit der Ausführung) angezeigt. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**.
 
     ![Pipelineausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+
 3. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**. Es wird nur eine Aktivitätsausführung angezeigt, da die Pipeline nur eine Aktivität (Aktivität „Gespeicherte Prozedur“) enthält.
 
-    ![Aktivitätsausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png) 4. Sie können in Ihrem Azure SQL Server die folgende **Abfrage** für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
+    ![Aktivitätsausführungen](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
+
+4. Sie können auf Ihrem Azure SQL-Server die folgende **Abfrage** für die SSISDB-Datenbank ausführen, um zu überprüfen, ob das Paket ausgeführt wurde. 
 
     ```sql
     select * from catalog.executions

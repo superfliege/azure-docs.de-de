@@ -11,11 +11,11 @@ ms.devlang: PowerShell
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 205e2c075f98ebb6fe7bd6156fd255d25c434681
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5daead37e77bb798e8c870ea3c071823e4d03dce
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="create-a-single-azure-sql-database-using-powershell"></a>Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell
 
@@ -88,7 +88,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 
 ## <a name="create-a-database-in-the-server-with-sample-data"></a>Erstellen einer Datenbank auf dem Server mit Beispieldaten
 
-Erstellen Sie auf dem Server mit dem Befehl [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Ersetzen Sie diese vordefinierten Werte wie gewünscht. (Andere Schnellstarttutorials in dieser Sammlung basieren auf den Werten dieser Schnellstartanleitung.)
+Erstellen Sie auf dem Server mit dem Befehl [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) eine Datenbank mit der [Leistungsstufe „S0“](sql-database-service-tiers.md). Im folgenden Beispiel wird eine Datenbank mit dem Namen `mySampleDatabase` erstellt, und die AdventureWorksLT-Beispieldaten werden in diese Datenbank geladen. Diese vordefinierten Werte können nach Belieben ersetzt werden. (Andere Schnellstartanleitungen in dieser Sammlung bauen auf den Werten dieser Schnellstartanleitung auf.)
 
 ```powershell
 New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
@@ -100,10 +100,10 @@ New-AzureRmSqlDatabase  -ResourceGroupName $resourcegroupname `
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Andere Schnellstarttutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf.
+Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf.
 
 > [!TIP]
-> Wenn Sie planen, mit den nachfolgenden Schnellstarttutorials fortzufahren, sollten Sie die in dieser Schnellstartanleitung erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+> Wenn Sie planen, mit den nachfolgenden Schnellstarts fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
 >
 
 ```powershell

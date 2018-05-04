@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 0b56b15af7c573304db9a1b6e6e9f37453a63458
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8eb6470afb44ba1b41e0077a890a36601db5387e
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -120,7 +120,7 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 Als Nächstes können Sie Ihre Umgebung für die Operationalisierung des Modells vorbereiten.
 
-## <a name="prepare-to-operationalize-locally"></a>Vorbereiten der lokalen Operationalisierung
+## <a name="prepare-to-operationalize-locally-for-development-and-testing-your-service"></a>Vorbereiten der lokalen Operationalisierung [Für Entwicklung und Tests Ihres Diensts]
 Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellung vom Typ _Lokaler Modus_.
 
 Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende jedes Befehls verwenden, um die entsprechende Hilfemeldung anzuzeigen.
@@ -257,7 +257,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    docker ps
    ```
 
-## <a name="create-a-real-time-web-service-by-using-separate-commands"></a>Erstellen eines Echtzeit-Webdiensts mit separaten Befehlen
+## <a name="optional-alternative-create-a-real-time-web-service-by-using-separate-commands"></a>[Optionale Alternative] Erstellen eines Webdiensts in Echtzeit mithilfe von separaten Befehlen
 Alternativ zum obigen Befehl **az ml service create realtime** können Sie die Schritte auch separat ausführen. 
 
 Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, erstellen Sie das Docker-Image, und erstellen Sie den Webdienst. Bei diesem Schritt-für-Schritt-Ansatz können Sie bei jedem Schritt flexibler vorgehen. Außerdem können Sie die Entitäten wiederverwenden, die in den vorherigen Schritten generiert wurden, und müssen die Entitäten nur bei Bedarf neu erstellen.

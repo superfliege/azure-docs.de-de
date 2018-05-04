@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 04/20/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 477056581b847693ae115f94c2f6466036add765
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7e92c50525efdf2854710d7e62781a5c6efb2cf3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Erste Schritte mit der Node.js-Web-App in Azure AD
 Hier wird Passport für Folgendes verwendet:
@@ -331,7 +331,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem Endpunkt �
 
 2. Erstellen der Route `/routes/user.js` im Stammverzeichnis
 
-                ```JavaScript
+    ```JavaScript
                 /*
                  * GET users listing.
                  */
@@ -339,7 +339,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem Endpunkt �
                 exports.list = function(req, res){
                   res.send("respond with a resource");
                 };
-                ```
+    ```
 
  Diese übergeben lediglich die Anforderung an die Ansichten, einschließlich des Benutzers, falls vorhanden.
 
@@ -356,7 +356,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem Endpunkt �
     <% } %>
     ```
 
-4. Erstellen Sie die Ansicht `/views/account.ejs` im Stammverzeichnis, sodass zusätzliche Informationen angezeigt werden können, die von `passport-azuread` in die Benutzeranforderung eingefügt wurden.
+4. Erstellen Sie die Ansicht `/views/account.ejs` im Stammverzeichnis, sodass zusätzliche Informationen angezeigt werden können, die von `passport-azure-ad` in die Benutzeranforderung eingefügt wurden.
 
     ```Javascript
     <% if (!user) { %>

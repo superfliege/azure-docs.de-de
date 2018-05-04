@@ -1,11 +1,11 @@
 ---
-title: "Mehrere IP-Adressen für virtuelle Azure-Computer: Portal | Microsoft-Dokumentation"
+title: 'Mehrere IP-Adressen für virtuelle Azure-Computer: Portal | Microsoft-Dokumentation'
 description: Informationen zum Zuweisen von mehreren IP-Adressen zu einem virtuellen Computer mithilfe des Azure-Portals | Resource Manager
 services: virtual-network
 documentationcenter: na
 author: anavinahar
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3a8cae97-3bed-430d-91b3-274696d91e34
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 906105e737087de91e7393861e9057f8acb06aa4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff6f3444847d9c78836a44ca95f9b00160c29ef4
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 >
 In diesem Artikel wird beschrieben, wie Sie über das Azure Resource Manager-Bereitstellungsmodell mithilfe des Azure-Portals einen virtuellen Computer erstellen. Ressourcen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können nicht mehrere IP-Adressen zugewiesen werden. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie im Artikel zum Thema [Understand deployment models (Bereitstellungsmodelle verstehen)](../resource-manager-deployment-model.md).
 
-[!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
+[!INCLUDE [virtual-network-multiple-ip-addresses-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
@@ -35,11 +35,11 @@ Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statische
 
 ## <a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
-Sie können einer NIC private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#Scenario) beschriebenen drei IP-Konfigurationen haben, dies ist jedoch nicht erforderlich.
+Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte aus. In den Beispielen in den folgenden Abschnitten wird davon ausgegangen, dass Sie bereits einen virtuellen Computer mit den im [Szenario](#Scenario) beschriebenen drei IP-Konfigurationen haben, dies ist jedoch nicht erforderlich.
 
 ### <a name="coreadd"></a>Grundlegende Schritte
 
-1. Navigieren Sie zum Azure-Portal unter „https://portal.azure.com“, und melden Sie sich, falls erforderlich, an.
+1. Navigieren Sie zum Azure-Portal unter https://portal.azure.com, und melden Sie sich, falls erforderlich, an.
 2. Klicken Sie im Portal auf **Weitere Dienste**, geben Sie in das Feld „Filter“ *virtuelle Computer* ein, und klicken Sie dann auf **Virtuelle Computer**.
 3. Klicken Sie im Bereich **Virtuelle Computer** auf die VM, der Sie IP-Adressen hinzufügen möchten. Klicken Sie im angezeigten Bereich des virtuellen Computers auf **Netzwerkschnittstellen**, und wählen Sie die Netzwerkschnittstelle aus, der Sie die IP-Adressen hinzufügen möchten. Im Beispiel in der folgenden Abbildung wurde die NIC mit dem Namen *myNIC* vom virtuellen Computer mit dem Namen *MyVM* ausgewählt:
 
@@ -75,7 +75,7 @@ Eine öffentliche IP-Adresse wird hinzugefügt, indem eine öffentliche IP-Adres
 
 Eine öffentliche IP-Adresse ist eine Einstellung für eine öffentliche IP-Adressressource. Wenn Sie über eine öffentliche IP-Adressressource verfügen, die aktuell keiner IP-Konfiguration zugeordnet ist, und die Sie einer IP-Konfiguration zuordnen möchten, überspringen Sie die folgenden Schritte, und führen Sie die geeigneten Schritte in einem der nachfolgenden Abschnitte aus. Wenn Sie über keine öffentliche IP-Adressressource verfügen, führen Sie die folgenden Schritte aus, um eine zu erstellen:
 
-1. Navigieren Sie zum Azure-Portal unter „https://portal.azure.com“, und melden Sie sich, falls erforderlich, an.
+1. Navigieren Sie zum Azure-Portal unter https://portal.azure.com, und melden Sie sich, falls erforderlich, an.
 3. Klicken Sie im Portal auf **Ressource erstellen** > **Netzwerke** > **Öffentliche IP-Adresse**.
 4. Geben Sie im angezeigten Bereich **Öffentliche IP-Adresse erstellen** einen **Namen** ein, wählen Sie einen Typ für die **IP-Adresszuweisung**, ein **Abonnement**, eine **Ressourcengruppe** und einen **Speicherort** aus, und klicken Sie dann auf **Erstellen**, wie in der folgenden Abbildung gezeigt:
 

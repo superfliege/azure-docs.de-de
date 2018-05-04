@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 65ade0f2526bf444c2205c74cce0e20be540998d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70de9ed6175a5fe7a8e3eed9c0a921cf8184d50d
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
@@ -47,7 +47,7 @@ Wenn Sie das Zertifikat entfernen möchten, das als primär gekennzeichnet ist, 
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Hinzufügen eines sekundären Zertifikats per Resource Manager PowerShell
 > [!TIP]
-> Mit dem Cmdlet [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) gibt es jetzt eine bessere und einfache Methode zum Hinzufügen eines sekundären Zertifikats. Sie müssen die restlichen Schritte in diesem Abschnitt nicht ausführen.  Außerdem benötigen Sie bei Verwendung des Cmdlets [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) nicht die ursprünglich für die Erstellung des Clusters verwendete Vorlage.
+> Mit dem Cmdlet [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) gibt es jetzt eine bessere und einfache Methode zum Hinzufügen eines sekundären Zertifikats. Sie müssen die restlichen Schritte in diesem Abschnitt nicht ausführen.  Außerdem benötigen Sie bei Verwendung des Cmdlets [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) nicht die ursprünglich für die Erstellung und Bereitstellung des Clusters verwendete Vorlage.
 
 Diese Schritte setzen voraus, dass Sie mit der Funktionsweise des Resource Managers vertraut sind und mindestens einen Service Fabric-Cluster mithilfe einer Resource Manager-Vorlage bereitgestellt haben. Außerdem müssen Sie die Vorlage, die Sie zum Einrichten des Clusters verwendet haben, zur Hand haben. Außerdem wird vorausgesetzt, dass Sie mit der Anwendung von JSON vertraut sind.
 
@@ -197,7 +197,7 @@ Bearbeiten Sie die Parameterdatei der Resource Manager-Vorlage, indem Sie die be
 - Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie das spezifische Azure-Abonnement. Dies ist ein wichtiger Schritt für Sie, falls Sie auf mehrere Azure-Abonnements zugreifen können.
 
 ```powershell
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionId <Subcription ID> 
 
 ```

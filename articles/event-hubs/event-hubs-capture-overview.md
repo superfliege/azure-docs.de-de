@@ -1,24 +1,24 @@
 ---
-title: "Übersicht über Azure Event Hubs Capture | Microsoft-Dokumentation"
+title: Übersicht über Azure Event Hubs Capture | Microsoft-Dokumentation
 description: Erfassen von Telemetriedaten mit Event Hubs Capture
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e53cdeea-8a6a-474e-9f96-59d43c0e8562
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
-ms.author: sethm;darosa
-ms.openlocfilehash: fbd4aef62891341ad3760b74cd8aaee7abf7b827
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.date: 04/30/2018
+ms.author: sethm
+ms.openlocfilehash: 00eee302cc15d94ec62f5f3332e18ee2df24f5cd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="azure-event-hubs-capture"></a>Azure Event Hubs Capture
 
@@ -63,7 +63,7 @@ Sie können die Erfassung bei der Event Hub-Erstellung konfigurieren, indem Sie 
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Untersuchen der erfassten Dateien und Verwenden von Avro
 
-Mit Event Hubs Capture werden Dateien im Avro-Format erstellt, die für das konfigurierte Zeitfenster angegeben werden. Sie können diese Dateien mit einem beliebigen Tool wie beispielsweise [Azure-Speicher-Explorer][Azure Storage Explorer] anzeigen. Sie können die Dateien zur Bearbeitung lokal herunterladen.
+Mit Event Hubs Capture werden Dateien im Avro-Format erstellt, die für das konfigurierte Zeitfenster angegeben werden. Sie können diese Dateien mit einem beliebigen Tool wie beispielsweise dem [Azure Storage-Explorer][Azure Storage Explorer] anzeigen. Sie können die Dateien zur Bearbeitung lokal herunterladen.
 
 Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf:
 
@@ -71,13 +71,13 @@ Die von Event Hubs Capture erzeugten Dateien weisen das folgende Avro-Schema auf
 
 Eine einfache Möglichkeit zum Untersuchen von Avro-Dateien ist die Verwendung der [Avro Tools][Avro Tools]-JAR-Datei von Apache. Nach dem Herunterladen dieser JAR-Datei können Sie das Schema einer bestimmten Avro-Datei anzeigen, indem Sie folgenden Befehl ausführen:
 
-```
+```shell
 java -jar avro-tools-1.8.2.jar getschema <name of capture file>
 ```
 
 Dieser Befehl gibt Folgendes zurück:
 
-```
+```json
 {
 
     "type":"record",

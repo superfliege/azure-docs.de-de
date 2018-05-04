@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2018
+ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f41d8f508bb6ee5b50b7f304c703c4d9bed75d8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8f3d97e26b71c2e17753943f7004d7eb7ee19e44
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Tutorial: Azure Active Directory-Integration mit Cisco Cloud
 
@@ -117,33 +117,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://<subdomain>.cloudapps.cisco.com`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Cisco Cloud-Client](mailto:cpr-ops@cisco.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Bezeichner, Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Supportteam für den Cisco Cloud-Client](mailto:cpr-ops@cisco.com), um diese Werte zu erhalten.
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_certificate.png)
+
+6. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-ciscocloud-tutorial/tutorial_general_400.png)
 
-6. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
-
-    a. Klicken Sie auf **App-Registrierungen**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appregistrations.png)
-   
-    b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpointicon.png)
-
-    c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **Cisco Cloud** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
- 
-    ![Configure Single Sign-On](./media/active-directory-saas-ciscocloud-tutorial/tutorial_ciscocloud_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
-
-7. Zum Konfigurieren des einmaligen Anmeldens bei **Cisco Cloud** müssen Sie die heruntergeladene **Metadaten-URL**-Datei an das [Cisco Cloud-Supportteam](mailto:cpr-ops@cisco.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+7. Zum Konfigurieren des einmaligen Anmeldens bei **Cisco Cloud** müssen Sie die **Verbundmetadaten-URL der App**-Datei an das [Supportteam von Cisco Cloud](mailto:cpr-ops@cisco.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

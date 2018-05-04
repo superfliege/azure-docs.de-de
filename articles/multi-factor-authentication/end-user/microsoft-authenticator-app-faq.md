@@ -15,15 +15,15 @@ ms.date: 03/08/2018
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e9c152fddbfcd603a84caf2c168ec4f12368dcfa
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator-App – häufig gestellte Fragen
 
-In diesem Artikel werden häufig gestellte Fragen beantwortet, die wir zur Microsoft Authenticator-App erhalten. Wenn Sie keine Antwort auf Ihre Frage finden, wechseln Sie zum [Forum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Wir bieten auch ein weiteres FAQ zu einem bestimmten Feature der App an, das [FAQ zur Anmeldung über das Telefon](microsoft-authenticator-app-phone-signin-faq.md).
+In diesem Artikel werden häufig gestellte Fragen zur Microsoft Authenticator-App beantwortet. Wenn Sie keine Antwort auf Ihre Frage finden, wechseln Sie zum [Forum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp). Sie können sich auch einen weiteren Artikel mit häufig gestellten Fragen ([Anmelden per Smartphone anstelle Ihres Kennworts](microsoft-authenticator-app-phone-signin-faq.md)) ansehen.
 
 Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die empfohlene App, wenn Sie Azure Multi-Factor Authentication verwenden. Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) und [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) verfügbar.
 
@@ -35,7 +35,7 @@ Microsoft Authenticator speichert die Kontoinformationen, die Sie beim Hinzufüg
 
 Sie können die Daten löschen, indem Sie die Kontokachel löschen. Hierbei werden alle Kontoinformationen gelöscht, die von der Anwendung verwendet werden, einschließlich der Protokolle. 
 
-Weitere Informationen dazu, wie Microsoft Ihre Daten verwendet, finden Sie unter „https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted“.
+Weitere Informationen zur Verwendung Ihrer Daten durch Microsoft finden Sie unter: https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted.
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>Wozu dienen die Codes in der App? Warum wird die Zahl rückwärts gezählt?
 
@@ -57,7 +57,7 @@ Wenn Sie überhaupt keine Benachrichtigungen erhalten, überprüfen Sie Folgende
 - Erhalten Sie Benachrichtigungen von anderen Apps? Wenn dies nicht der Fall ist, liegt möglicherweise ein Problem mit den Netzwerkverbindungen auf Ihrem Mobiltelefon oder mit dem Benachrichtigungskanal von Android oder Apple vor. Im ersten Fall können Sie das Problem über die Einstellungen des Mobiltelefons beheben, im zweiten Fall müssen Sie sich jedoch möglicherweise mit Ihrem Mobilfunkanbieter in Verbindung setzen, um Unterstützung zu erhalten.
 - Können Sie Benachrichtigungen nur für bestimmte Konten in der App erhalten? In diesem Fall entfernen Sie die Konten aus der App, die Probleme bereiten, und fügen sie erneut hinzu, um Pushbenachrichtigungen zu aktivieren.
 
-Senden Sie uns Ihre Protokolle zur Diagnose, wenn Sie diese Vorschläge zur Problembehandlung befolgt haben, die Probleme jedoch weiterhin bestehen. Rufen Sie die App-Einstellungen auf. Wählen Sie anschließend **Hilfe und Feedback** und **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und darüber, welche Schritte Sie bisher ausgeführt haben.
+Sie können uns Ihre Protokolle zur Diagnose senden, wenn Sie diese Vorschläge zur Problembehandlung befolgt haben, die Probleme jedoch weiterhin bestehen. Rufen Sie die App-Einstellungen auf. Wählen Sie anschließend **Hilfe und Feedback** und **Protokolle senden** aus. Wechseln Sie anschließend zum [Internetforum zur Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), und informieren Sie uns über Ihr Problem und darüber, welche Schritte Sie bisher ausgeführt haben.
 
 ### <a name="im-already-using-the-microsoft-authenticator-application-for-verification-codes-how-do-i-switch-to-one-click-push-notifications"></a>Ich verwende für Sicherheitscodes bereits die Microsoft Authenticator-App. Wie wechsle ich zu One-Click-Pushbenachrichtigungen?
 Die Bestätigung einer Anmeldung mittels Pushbenachrichtigungen steht nur für persönliche Microsoft-Konten oder für Geschäfts-, Schul- oder Unikonten von Microsoft zur Verfügung, nicht für Konten von Drittanbietern wie Google oder Facebook. Wenn Sie über ein Geschäfts-, Schul- oder Unikonto von Microsoft verfügen, kann Ihre Organisation diese Option deaktivieren.
@@ -69,13 +69,15 @@ Wenn Sie Microsoft Authenticator für Ihr Geschäfts- oder Schulkonto verwenden,
 ### <a name="do-one-click-push-notifications-work-for-non-microsoft-accounts"></a>Funktionieren One-Click-Pushbenachrichtigungen für Nicht-Microsoft-Konten?
 Nein, Pushbenachrichtigungen funktionieren nur mit Microsoft-Konten und Azure Active Directory-Konten. Wenn Ihre Organisation oder Schule Azure AD-Konten verwendet, kann sie diese Funktion deaktivieren.  
 
-### <a name="i-restored-my-device-from-a-backup-and-my-account-codes-are-missing-or-not-working-what-happened"></a>Ich habe mein Gerät aus einer Sicherung wiederhergestellt, doch meine Kontocodes fehlen oder funktionieren nicht. Was ist passiert?
-Aus Sicherheitsgründen werden keine Konten aus App-Sicherungen wiederhergestellt.  Nach der Wiederherstellung der App müssen Sie Ihre Konten löschen und dann erneut hinzufügen.
+### <a name="i-got-a-new-device-or-restored-my-device-from-a-backup-how-do-i-set-up-my-accounts-in-the-microsoft-authenticator-app-again"></a>Ich habe ein neues Gerät oder habe mein Gerät auf der Grundlage einer Sicherung wiederhergestellt. Wie richte ich meine Konten in der Microsoft Authenticator-App wieder ein?
+Wenn Sie ein iOS-Gerät verwenden und die Option **Auto Backup** (Automatische Sicherung) aktiviert sowie eine Sicherung Ihrer Konten auf Ihrem alten Gerät erstellt haben, können Sie mithilfe dieser Sicherung Ihre Kontoanmeldeinformationen auf dem neuen Gerät wiederherstellen. Weitere Informationen finden Sie im Artikel [Sichern und Wiederherstellen von Kontoanmeldeinformationen mit der Microsoft Authenticator-App](microsoft-authenticator-app-backup-and-recovery.md). 
 
-### <a name="i-got-a-new-device-how-do-i-remove-the-microsoft-authenticator-app-from-my-old-device-and-move-to-the-new-one"></a>Ich habe ein neues Gerät. Wie kann ich Microsoft Authenticator von meinem alten Gerät entfernen, und zum neuen Gerät wechseln?
-Das Installieren der Microsoft Authenticator-App auf einem neuen Gerät entfernt die App nicht automatisch von anderen Geräten. Wenn Sie verwalten möchten, welche Geräte für Ihr Konto konfiguriert werden, besuchen Sie die gleiche Website, mit der Sie die zweistufige Überprüfung verwalten, und wählen Sie aus, alte Apps zu entfernen.
+### <a name="i-lost-my-device-or-moved-on-to-a-new-device-how-do-i-make-sure-notifications-dont-continue-to-go-to-my-old-device"></a>Ich habe mein Gerät verloren oder verwende nun ein neues Gerät. Wie stelle ich sicher, dass Benachrichtigungen nicht mehr an mein altes Gerät gesendet werden?  
+Wenn Sie die Microsoft Authenticator-App zu Ihrem neuen iOS-Gerät hinzufügen, wird die App nicht automatisch auf dem alten Gerät entfernt. Es reicht auch nicht aus, die App auf dem alten Gerät zu löschen. Sie müssen die App auf dem alten Gerät löschen und Microsoft oder Ihrer Organisation mitteilen, dass die Registrierung des alten Geräts in Ihrem Konto aufgehoben werden soll.
+- **Entfernen der App auf einem Gerät mit einem persönlichen Microsoft-Konto:** Navigieren Sie auf der Seite [Kontosicherheit](https://account.microsoft.com/security)  zum Bereich für die zweistufige Überprüfung, und deaktivieren Sie die Überprüfung für Ihr altes Gerät.  
+- **Entfernen der App auf einem Gerät mit einem Geschäfts-, Schul- oder Unikonto von Microsoft:** Navigieren Sie auf der Seite [MyApps](https://myapps.microsoft.com/) zum Bereich für die zweistufige Überprüfung bzw. zum benutzerdefinierten Portal Ihrer Organisation, und deaktivieren Sie die Überprüfung für Ihr altes Gerät. 
 
-Bei persönlichen Microsoft-Konten ist dies die Website [Kontosicherheit](https://account.microsoft.com/security). Bei Geschäfts- oder Schulkonten bei Microsoft ist dies entweder die Website [MyApps](https://myapps.microsoft.com), oder ein benutzerdefiniertes Portal, dass Ihre Organisation eingerichtet hat.
+
 
 ### <a name="how-do-i-remove-an-account-from-the-app"></a>Wie entferne ich ein Konto aus der App?
 * iOS: Wischen Sie im Hauptbildschirm nach links zu einer Kontokachel. Klicken Sie auf **Löschen**.
@@ -87,12 +89,12 @@ Wenn Sie ein Gerät besitzen, das bei Ihrer Organisation registriert ist, müsse
 ### <a name="why-does-the-app-request-so-many-permissions"></a>Warum fordert die App so viele Berechtigungen an?
 Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, und Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ des Telefons ab.
 
-* **Kamera**: Wir verwenden Ihre Kamera, um QR-Codes zu scannen, wenn Sie ein Geschäfts-, Schulkonto oder ein nicht-Microsoft-Konto hinzufügen.
-* **Kontakte und Telefon**: Wenn Sie sich mit Ihrem persönlichen Microsoft-Konto anmelden, versuchen wir, den Vorgang zu vereinfachen, indem wir bereits vorhandene Konten suchen, die Sie auf Ihrem Telefon verwenden.
-* **SMS**: Wenn Sie sich zum ersten Mal mit Ihrem persönlichen Konto anmelden, müssen wir sicherstellen, dass Ihre Telefonnummer mit der bei uns registrierten Nummer übereinstimmt. Sie erhalten eine Textnachricht auf das Telefon, mit dem Sie die App heruntergeladen haben. Die Nachricht enthält einen Überprüfungscode mit 6 bis 8 Ziffern. Sie werden nicht aufgefordert, diesen Code zu suchen und in der App einzugeben, stattdessen suchen wir den Code für Sie in der Textnachricht.
-* **Andere Apps in den Hintergrund rücken**: Wenn Sie eine Benachrichtigung erhalten, dass Sie Ihre Identität bestätigen müssen, wird diese Benachrichtigung im Vordergrund angezeigt, vor allen anderen Apps, die möglicherweise ausgeführt werden.
+* **Kamera**: Wir verwenden Ihre Kamera, um QR-Codes zu scannen, wenn Sie ein Geschäfts-, Schul- oder Unikonto oder ein nicht von Microsoft stammendes Konto hinzufügen.
+* **Kontakte und Telefon**: Wird verwendet, um den Vorgang zu vereinfachen, indem auf Ihrem Telefon nach bereits vorhandenen Konten gesucht wird, wenn Sie sich mit Ihrem persönlichen Microsoft-Konto anmelden.
+* **SMS**: Hiermit wird sichergestellt, dass Ihre Telefonnummer mit der hinterlegten Nummer übereinstimmt. Bei der ersten Anmeldung mit Ihrem persönlichen Microsoft-Konto  erhalten Sie eine Textnachricht mit einem sechs- bis achtstelligen Prüfcode auf dem Telefon, auf dem Sie die App heruntergeladen haben. Sie werden nicht aufgefordert, diesen Code zu suchen und in der App einzugeben, sondern der Code wird in der Textnachricht für Sie gesucht.
+* **Andere Apps in den Hintergrund rücken**: Die Benachrichtigung an Sie, mit der Ihre Identität überprüft wird, wird auch in allen anderen ausgeführten Apps angezeigt.
 * **Daten aus dem Internet empfangen**: Diese Berechtigung ist für das Senden von Benachrichtigungen erforderlich.
-* **Standby-Modus verhindern**: Wenn Sie Ihr Gerät bei Ihrer Organisation registrieren, können sie diese Richtlinie auf Ihrem Telefon ändern.
+* **Standby-Modus verhindern**: Wenn Sie Ihr Gerät bei Ihrer Organisation registrieren, kann Ihre Organisation diese Richtlinie auf Ihrem Telefon ändern.
 * **Vibrationsfunktion steuern**: Sie können auswählen, ob Ihr Telefon vibrieren soll, wenn Sie eine Benachrichtigung erhalten, dass Sie Ihre Identität bestätigen müssen.
 * **Verwendung der Fingerprint-Hardware**: Bei einigen Geschäfts- und Schulkonten wird eine zusätzliche PIN benötigt, wenn Sie Ihre Identität bestätigen. Sie können Ihren Fingerabdruck verwenden, um den Prozess zu vereinfachen, anstatt die PIN einzugeben.
 * **Anzeigen von Netzwerkverbindungen**: Wenn Sie über ein Microsoft-Konto verfügen, benötigt die App eine Netzwerk-/Internetverbindung.

@@ -9,26 +9,32 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 4546f03294ea8ab01ecb2b2777c5b92dbc5a7f4a
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 5b8a2ec7e0401ac239acdefdd77a13b522f73960
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
 Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer verwalteten Azure SQL-Datenbank-Instanz migriert wird (Vorschau). 
-
-> [!NOTE]
-> Informationen zum Migrieren einer einzelnen Datenbank zu einer einzelnen Datenbank oder eines Pools für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-cloud-migrate.md).
 
 Die verwaltete Azure SQL-Datenbank-Instanz ist eine Erweiterung des vorhandenen SQL-Datenbank-Diensts, die neben einzelnen Datenbanken und Pools für elastische Datenbanken noch eine dritte Bereitstellungsoption bietet.  Sie ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete SQL-Datenbank-Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie integrierte Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.
 
 Im Überblick sieht der Prozess der Anwendungsmigration wie im folgenden Diagramm aus:
 
 ![Migrationsprozess](./media/sql-database-managed-instance-migration/migration-process.png)
+
+- [Bewerten der Kompatibilität der verwalteten Instanz](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
+- [Wählen einer App-Konnektivitätsoption](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
+- [Bereitstellen für eine verwaltete Instanz mit optimaler Größe](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
+- [Auswählen der Migrationsmethode und Migration](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
+- [Überwachen von Anwendungen](sql-database-managed-instance-migrate.md#monitor-applications)
+
+> [!NOTE]
+> Informationen zum Migrieren einer einzelnen Datenbank zu einer einzelnen Datenbank oder eines Pools für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-cloud-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Bewerten der Kompatibilität der verwalteten Instanz
 
@@ -43,14 +49,6 @@ Es gibt jedoch einige Fälle, in denen Sie über eine Alternative nachdenken mü
 - Wenn Sie unbedingt bei einer bestimmten Version von SQL Server (z.B. 2012) bleiben müssen.
 - Wenn Ihre Computeanforderungen wesentlich niedriger sind, als bei einer verwalteten Instanz in der öffentlichen Vorschau (z.B. ein V-Kern) und eine Datenbankkonsolidierung nicht in Frage kommt.
 
-## <a name="choose-app-connectivity-option"></a>Wählen einer App-Konnektivitätsoption
-
-Verwaltete Instanzen sind vollständig in Ihrem virtuellen Netzwerk integriert und bieten somit ein Höchstmaß an Isolation und Sicherheit für Ihre Daten. Das folgende Diagramm zeigt verschiedene Möglichkeiten, verschiedene Anwendungstopologien vollständig in Azure oder in einer hybriden Umgebung zu implementieren, unabhängig davon, ob Sie sich für einen vollständig verwalteten Dienst oder ein gehostetes Modell für Ihre Front-End-Anwendungen entscheiden.
-
-![Anwendungsbereitstellungstopologien](./media/sql-database-managed-instance-migration/application-deployment-topologies.png)
-
-Jede der gewählten Optionen ermöglicht die Verbindung zu einem SQL-Endpunkt nur über private IP-Adressen, wodurch eine optimale Isolation Ihrer Daten gewährleistet ist. <!--- For more information, see How to connect your application to Managed Instance.--->
-
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Bereitstellen für eine verwaltete Instanz mit optimaler Größe
 
 Verwaltete Instanzen sind auf lokale Workloads zugeschnitten, die zum Verschieben in die Cloud vorgesehen sind. Sie führen ein neues Erwerbsmodell ein, das eine größere Flexibilität bei der Auswahl der richtigen Ressourcen für Ihre Workloads bietet. In der lokalen Umgebung sind Sie wahrscheinlich daran gewöhnt, diese Workloads mit physischen Kernen zu dimensionieren. Das neue Erwerbsmodell für verwaltete Instanzen basiert auf virtuellen Kernen oder „V-Kernen“, wobei zusätzlicher Speicher und EA separat erhältlich sind. Das V-Kern-Modell ist eine einfachere Methode, um die Computeanforderungen in der Cloud mit dem, was Sie heute lokal verwenden, zu vergleichen. Mit diesem neuen Modell können Sie die Größe Ihrer Zielumgebung in der Cloud anpassen.
@@ -59,7 +57,7 @@ Sie haben die Möglichkeit, Compute- und Speicherressourcen zum Zeitpunkt der Be
 
 ![Dimensionierung einer verwalteten Instanz](./media/sql-database-managed-instance-migration/managed-instance-sizing.png)
 
-Informationen zum Erstellen der VNet-Infrastruktur und der verwalteten Instanz sowie zum Wiederherstellen einer Datenbank aus einer Sicherungsdatei finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-tutorial-portal.md).
+Informationen zum Erstellen der VNet-Infrastruktur und der verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md).
 
 > [!IMPORTANT]
 > Es ist wichtig, dass Sie Ihr Ziel-VNet und Subnetz immer in Übereinstimmung mit den [VNet-Anforderungen für verwaltete Instanzen](sql-database-managed-instance-vnet-configuration.md#requirements) halten. Jede Inkompatibilität kann Sie daran hindern, neue Instanzen anzulegen oder bereits erstellte Instanzen zu verwenden.
@@ -77,11 +75,13 @@ Managed Instance ist ein vollständig verwalteter Dienst, der es Ihnen ermöglic
 
 Verwaltete Instanzen unterstützen die folgenden Datenbankmigrationsoptionen (derzeit sind dies die einzigen unterstützten Migrationsmethoden):
 
+- Azure Database Migration Service – Migrationen nahezu ohne Ausfallzeiten
+- Native RESTORE from URL – nutzt native Sicherungen von SQL Server, ist mit einer gewissen Ausfallzeit verbunden
+- Migrieren mit BACPAC-Datei – verwendet eine BACPAC-Datei von SQL Server oder SQL Database, ist mit einer gewissen Ausfallzeit verbunden
+
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 Der [Azure Database Migration Service (DMS)](../dms/dms-overview.md) ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken nach Azure zu verschieben. Zu den Bereitstellungsoptionen bei der öffentlichen Vorschau gehören Azure SQL-Datenbank, Managed Instance und SQL Server in einem virtuellen Azure-Computer. DMS ist die empfohlene Migrationsmethode für Ihre Unternehmensworkloads. 
-
-![DMS](./media/sql-database-managed-instance-migration/dms.png)
 
 Weitere Informationen zu diesem Szenario und zu Konfigurationsschritten für DMS finden Sie unter [Migrate your on-premises database to Managed Instance using DMS](../dms/tutorial-sql-server-to-managed-instance.md) (Migrieren Ihrer lokalen Datenbank zu einer verwalteten Instanz mit DMS).  
 
@@ -100,12 +100,12 @@ In der folgenden Tabelle finden Sie weitere Informationen über die Methode, die
 |Sicherung auf Azure Storage legen|Vor SQL 2012 SP1 CU2|Direkter Upload der .bak-Datei in Azure Storage|
 ||2012 SP1 CU2 – 2016|Direkte Sicherung mit veralteter [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)-Syntax|
 ||Ab 2016|Direkte Sicherung mit [WITH SAS CREDENTIAL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Aus Azure Storage in verwalteter Instanz wiederherstellen|[RESTORE FROM URL mit SAS CREDENTIAL](sql-database-managed-instance-tutorial-portal.md#restore-the-wide-world-importers-database-from-a-backup-file)|
+|Aus Azure Storage in verwalteter Instanz wiederherstellen|[RESTORE FROM URL mit SAS CREDENTIAL](sql-database-managed-instance-restore-from-backup-tutorial.md)|
 
 > [!IMPORTANT]
 > Das Wiederherstellen von Systemdatenbanken wird nicht unterstützt. Um Objekte auf Instanzebene (gespeichert in Master- oder msdb-Datenbanken) zu migrieren, wird empfohlen, diese zu skripten und T-SQL-Skripts auf der Zielinstanz auszuführen.
 
-Ein vollständiges Tutorial über das Wiederherstellen einer Datenbanksicherung auf einer verwalteten Instanz mithilfe von SAS-Anmeldeinformationen finden Sie unter [Create a Managed Instance](sql-database-managed-instance-tutorial-portal.md) (Erstellen einer verwalteten Instanz).
+Ein vollständiges Tutorial über das Wiederherstellen einer Datenbanksicherung auf einer verwalteten Instanz mithilfe von SAS-Anmeldeinformationen finden Sie unter [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md).
 
 ### <a name="migrate-using-bacpac-file"></a>Migrieren mit BACPAC-Datei
 
@@ -127,6 +127,6 @@ Um die Sicherheit zu erhöhen, sollten Sie einige der verfügbaren Features nutz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur verwalteten Instanz finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz? (Vorschau)).
-- Ein Tutorial zu einer Wiederherstellung aus einer Sicherung finden Sie unter [Create a Managed Instance](sql-database-managed-instance-tutorial-portal.md) (Erstellen einer verwalteten Instanz).
+- Informationen zu verwalteten Instanzen finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
+- Ein Tutorial zu einer Wiederherstellung aus einer Sicherung finden Sie unter [Create a Managed Instance](sql-database-managed-instance-create-tutorial-portal.md) (Erstellen einer verwalteten Instanz).
 - Ein Tutorial zur Migration mit DMS finden Sie unter [Migrate your on-premises database to Managed Instance using DMS](../dms/tutorial-sql-server-to-managed-instance.md) (Migrieren Ihrer lokalen Datenbank zu einer verwalteten Instanz mit DMS).  

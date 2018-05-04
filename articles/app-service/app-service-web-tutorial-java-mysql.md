@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 31951b609f7d819b532e6fa8cb02c702e9457253
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 0f88ca7c0353c4ab63bf4f6ca5509b0e4504929f
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer Java- und MySQL-Web-App in Azure
 
@@ -137,25 +137,50 @@ Welche Werte Sie für `--location` verwenden können, erfahren Sie mithilfe des 
 
 ### <a name="create-a-mysql-server"></a>Erstellen eines MySQL-Servers
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) einen Server in Azure Database for MySQL. Ersetzen Sie den Platzhalter `<mysql_server_name>` durch Ihren eigenen eindeutigen MySQL-Servernamen. Dieser Name ist Teil des Hostnamens des MySQL-Servers `<mysql_server_name>.mysql.database.azure.com` und muss daher global eindeutig sein. Ersetzen Sie auch `<admin_user>` und `<admin_password>` durch Ihre eigenen Werte.
+Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Server in Azure Database for MySQL.
+
+Ersetzen Sie im folgenden Befehl den Platzhalter *\<mysql_name>* durch einen eindeutigen Servernamen, den Platzhalter *\<admin_user>* durch einen Benutzernamen und den Platzhalter *\<admin_password>* durch ein Kennwort. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<mysql_name>.mysql.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein.
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
+az mysql server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_user> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
+
+> [!NOTE]
+> Da mehrere Anmeldeinformationen in diesem Tutorial berücksichtigt werden müssen, sollten für `--admin-user` und `--admin-password` Platzhalterwerte festgelegt werden, um Verwirrung zu vermeiden. Befolgen Sie in einer Produktionsumgebung die bewährten Sicherheitsmethoden, wenn Sie einen Benutzernamen und ein Kennwort für Ihren MySQL-Server in Azure auswählen.
+>
+>
 
 Nach dem Erstellen des MySQL-Servers zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
 
 ```json
 {
-  "administratorLogin": "admin_user",
-  "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "mysql_server_name.mysql.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/mysql_server_name",
-  "location": "northeurope",
-  "name": "mysql_server_name",
-  "resourceGroup": "mysqlJavaResourceGroup",
-  ...
-  < Output has been truncated for readability >
+  "additionalProperties": {},
+  "administratorLogin": "<admin_user>",
+  "earliestRestoreDate": "2018-04-19T22:56:40.990000+00:00",
+  "fullyQualifiedDomainName": "<mysql_name>.mysql.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql_server_name>",
+  "location": "westeurope",
+  "name": "<mysql_server_name>",
+  "resourceGroup": "myResourceGroup",
+  "sku": {
+    "additionalProperties": {},
+    "capacity": 2,
+    "family": "Gen4",
+    "name": "GP_Gen4_2",
+    "size": null,
+    "tier": "GeneralPurpose"
+  },
+  "sslEnforcement": "Enabled",
+  "storageProfile": {
+    "additionalProperties": {},
+    "backupRetentionDays": 7,
+    "geoRedundantBackup": "Disabled",
+    "storageMb": 5120
+  },
+  "tags": null,
+  "type": "Microsoft.DBforMySQL/servers",
+  "userVisibleState": "Ready",
+  "version": "5.7"
 }
 ```
 
@@ -167,9 +192,13 @@ Erstellen Sie in Cloud Shell mit dem Befehl [`az mysql server firewall-rule crea
 az mysql server firewall-rule create --name allAzureIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> Sie können Ihre Firewallregel auch noch restriktiver gestalten und [nur die ausgehenden IP-Adressen verwenden, die Ihre App verwendet](app-service-ip-addresses.md#find-outbound-ips).
+>
+
 ## <a name="configure-the-azure-mysql-database"></a>Konfigurieren der Azure MySQL-Datenbank
 
-Stellen Sie im lokalen Terminalfenster eine Verbindung mit dem MySQL-Server in Azure her. Verwenden Sie den zuvor angegebenen Wert für `<admin_user>` und `<mysql_server_name>`.
+Stellen Sie im lokalen Terminalfenster eine Verbindung mit dem MySQL-Server in Azure her. Verwenden Sie den Wert, den Sie zuvor für _&lt;mysql_server_name>_ angegeben haben. Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie das Kennwort, das Sie bei der Datenbankerstellung in Azure angegeben haben.
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
