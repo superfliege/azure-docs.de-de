@@ -1,0 +1,37 @@
+- name: Übersicht über die Zugriffsverwaltung
+  href: manage-access-to-azure-resources.md
+- name: Zugriff auf Ressourcen in Azure
+  href: rbac-and-directory-admin-roles.md
+- name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
+  href: overview.md
+  items:
+    - name: Verwalten von Rollenzuweisungen
+      items:
+        - name: Benutzer
+          href: role-assignments-users.md
+        - name: Ressource
+          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
+        - name: Azure-Befehlszeilenschnittstelle
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST
+          href: role-assignments-rest.md
+    - name: Integrierte Rollen
+      href: built-in-roles.md
+    - name: Benutzerdefinierte Rollen
+      href: custom-roles.md
+    - name: Zuweisen von benutzerdefinierten Rollen für interne und externe Benutzer
+      href: role-assignments-external-users.md
+    - name: Aktivitätsprotokolle
+      href: change-history-report.md
+    - name: Erhöhen des Mandantenadministratorzugriffs
+      href: elevate-access-global-admin.md
+    - name: Problembehandlung
+      href: troubleshooting.md
+    - name: Ressourcenanbietervorgänge
+      href: resource-provider-operations.md
+- name: Privileged Identity Management (PIM) für RBAC
+  href: pim-azure-resource.md
+- name: Bedingter Zugriff für die Azure-Verwaltung
+  href: conditional-access-azure-management.md

@@ -5,22 +5,25 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/08/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a0280420132aad9f1e0b17d5998ec225bb0eaa1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0c18fc065ae4d9a9401a8d603f051e9d6236c538
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Herstellen einer Verbindung mit einem Amazon Web Services-Konto
 
 Sie haben zwei Optionen zum Herstellen einer Verbindung Ihres Amazon Web Services-Kontos (AWS) mit Azure Cost Management. Sie können eine Verbindung mit einer IAM-Rolle oder einem IAM-Benutzerkonto ohne Schreibzugriff herstellen. Die IAM-Rolle wird empfohlen, da sie Ihnen ermöglicht, den Zugriff mit definierten Berechtigungen an vertrauenswürdige Personen zu delegieren. Die IAM-Rolle setzt nicht voraus, dass Sie langfristige Zugriffsschlüssel freigeben. Nachdem Sie eine Verbindung Ihres AWS-Kontos mit Cost Management hergestellt haben, sind Kosten und Verwendungsdaten in Cost Management-Berichten verfügbar. Dieses Dokument führt Sie durch beide Optionen.
 
 Weitere Informationen zu AWS-IAM-Identitäten finden Sie unter [Identities (Users, Groups, and Roles) (Identitäten [Benutzer, Gruppen und Rollen])](https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html).
+
+Außerdem aktivieren Sie detaillierte AWS-Abrechnungsberichte und speichern die Informationen in einem AWS S3-Bucket (Simple Storage Service). Detaillierte Abrechnungsberichte enthalten Abrechnungskosten mit Informationen zu Tags und Ressourcen auf Stundenbasis. Die Speicherung der Berichte ermöglicht Cost Management, diese aus Ihrem Bucket abzurufen und die Informationen in den zugehörigen Berichten anzuzeigen.
+
 
 ## <a name="aws-role-based-access"></a>Rollenbasierter AWS-Zugriff
 
@@ -30,38 +33,42 @@ Die folgenden Abschnitte führen Sie durch das Erstellen einer IAM-Rolle ohne Sc
 
 Im ersten Schritt rufen Sie die eindeutige Verbindungspassphrase im Azure Cost Management-Portal ab. Sie dient in AWS als **External ID (Externe ID)**.
 
-1. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com), und melden Sie sich dort an.
-2. Klicken Sie auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Cloud Accounts (Cloudkonten)**.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com), und melden Sie sich an.
+2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)**.
-4. Kopieren Sie im Dialogfeld **Add AWS Account (AWS-Konto hinzufügen)** die **External ID (Externe ID)**, und speichern Sie diesen Wert für die Schritte zum Erstellen der AWS-Rolle im nächsten Abschnitt. In der folgenden Abbildung ist die Beispiel-ID _Cloudyn_. Ihre ID lautet anders.  
+4. Kopieren Sie im Dialogfeld **Add AWS Account (AWS-Konto hinzufügen)** die **External ID (Externe ID)**, und speichern Sie den Wert für die Schritte zum Erstellen der AWS-Rolle im nächsten Abschnitt. Die externe ID ist für Ihr Konto eindeutig. In der folgenden Abbildung lautet beispielsweise die externe ID _Contoso_ gefolgt von einer Zahl. Ihre ID lautet anders.  
     ![Externe ID](./media/connect-aws-account/external-id.png)
 
 ### <a name="add-aws-read-only-role-based-access"></a>Hinzufügen des rollenbasierten schreibgeschützten AWS-Zugriffs
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/home, und wählen Sie **Roles (Rollen)**.
+1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/home an, und wählen Sie **Roles (Rollen)** aus.
 2. Klicken Sie auf **Create Role (Rolle erstellen)**, und wählen Sie dann **Another AWS account (Anderes AWS-Konto)**.
-3. Fügen Sie die Identität `432263259397` in das Feld **Account ID (Konto-ID)** ein. Diese Konto-ID ist das Cost Management-Datensammlerkonto, das Sie verwenden müssen.
-4. Aktivieren Sie neben **Options (Optionen)** das Kontrollkästchen **Require external ID (Externe ID erforderlich)**, fügen Sie den zuvor in das Feld **External ID (Externe ID)** kopierten Wert ein, und klicken Sie dann auf **Next: Permissions (Weiter: Berechtigungen)**.  
+3. Fügen Sie `432263259397` in das Feld **Account ID (Konto-ID)** ein. Diese Konto-ID ist das Cost Management-Datensammlerkonto, das dem Cloudyn-Dienst von AWS zugewiesen wurde. Verwenden Sie exakt die angezeigte Konto-ID.
+4. Aktivieren Sie neben **Options (Optionen)** den Befehl **Require external ID (Externe ID anfordern)**. Fügen Sie Ihren eindeutigen Wert ein, den Sie zuvor aus dem Feld **External ID (Externe ID)** in Cost Management kopiert haben. Klicken Sie dann auf **Next: Permissions (Weiter: Berechtigungen)**.  
     ![Rolle erstellen](./media/connect-aws-account/create-role01.png)
 5. Geben Sie unter **Attach permissions policies (Richtlinien für Berechtigungen anfügen)** im Filtersuchfeld **Policy type (Richtlinientyp)** `ReadOnlyAccess` ein, wählen Sie **ReadOnlyAccess** aus, und klicken Sie dann auf **Next: Review (Weiter: Überprüfen)**.  
     ![Schreibgeschützter Zugriff](./media/connect-aws-account/readonlyaccess.png)
 6. Stellen Sie auf der Seite „Review“ (Überprüfen) sicher, dass Ihre Auswahl richtig ist, und geben Sie einen **Role name (Rollennamen)** ein. Beispiel: *Azure-Cost-Mgt*. Geben Sie eine **Role description (Rollenbeschreibung)** ein. Beispiel: _Rollenzuweisung für Azure Cost Management_, und klicken Sie dann auf **Create role (Rolle erstellen)**.
-7. Klicken Sie in der Liste **Roles (Rollen)** auf die Rolle, die Sie erstellt haben, und kopieren Sie den Wert von **Role ARN (Rollen-ARN)** aus der Seite „Summary“ (Zusammenfassung). Verwenden Sie später den Wert von „Role ARN“ (Rollen-ARN), wenn Sie Ihre Konfiguration in Azure Cost Management registrieren.  
+7. Klicken Sie in der Liste **Roles (Rollen)** auf die Rolle, die Sie erstellt haben, und kopieren Sie den Wert von **Role ARN (Rollen-ARN)** aus der Seite „Summary“ (Zusammenfassung). Verwenden Sie später den Wert von „Role ARN (Amazon Resource Name)“ (Rollen-ARN), wenn Sie Ihre Konfiguration in Azure Cost Management registrieren.  
     ![Rollen-ARN](./media/connect-aws-account/role-arn.png)
 
 ### <a name="configure-aws-iam-role-access-in-cost-management"></a>Konfigurieren des AWS-IAM-Rollenzugriffs in Cost Management
 
-1. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
-2. Klicken Sie auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Cloud Accounts (Cloudkonten)**.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich an.
+2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)**.
 4. Geben Sie in **Account Name (Kontoname)** einen Namen für das Konto ein.
 5. Wählen Sie neben **Access Type (Zugriffstyp)** die Option **IAM Role (IAM-Rolle)**.
 6. Fügen Sie im Feld **Role ARN (Rollen-ARN)** den Wert ein, den Sie zuvor kopiert haben, und klicken Sie dann auf **Speichern**.  
-    ![AWS-Kontostatus](./media/connect-aws-account/aws-account-status01.png)
+    ![Feld „Add AWS Account (AWS-Konto hinzufügen)“](./media/connect-aws-account/add-aws-account-box.png)
 
-Ihr AWS-Konto wird in der Liste der Konten angezeigt. Die aufgelistete **Owner ID (Besitzer-ID)** entspricht Ihrem Wert für „Role ARN“ (Rollen-ARN). Ihr **Account Status (Kontostatus)** müsste mit einem grünen Häkchensymbol versehen sein.
 
-Cost Management startet das Sammeln der Daten und Auffüllen von Berichten. Einige Optimierungsberichte erfordern jedoch möglicherweise Daten mehrerer Tage, bevor genaue Empfehlungen generiert werden.
+Ihr AWS-Konto wird in der Liste der Konten angezeigt. Die aufgelistete **Owner ID (Besitzer-ID)** entspricht Ihrem Wert für „Role ARN“ (Rollen-ARN). Ihr **Kontostatus** sollte mit einem grünen Häkchen versehen sein, das anzeigt, dass Cost Management auf Ihr AWS-Konto zugreifen kann. Bis Sie die detaillierte AWS-Abrechnung aktivieren, wird Ihr Konsolidierungsstatus als **Eigenständig** angezeigt.
+
+![AWS-Kontostatus](./media/connect-aws-account/aws-account-status01.png)
+
+Cost Management startet das Sammeln der Daten und Auffüllen von Berichten. Als Nächstes [aktivieren Sie detaillierte AWS-Abrechnung](#enable-detailed-aws-billing).
+
 
 ## <a name="aws-user-based-access"></a>Zugriff auf AWS-Benutzerbasis
 
@@ -69,7 +76,7 @@ Die folgenden Abschnitte führen Sie durch das Erstellen eines Benutzers ohne Sc
 
 ### <a name="add-aws-read-only-user-based-access"></a>Hinzufügen des benutzerbasierten schreibgeschützten AWS-Zugriffs
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/home, und wählen Sie **Users (Benutzer)**.
+1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/homean, und wählen Sie **Users (Benutzer)** aus.
 2. Klicken Sie auf **Benutzer hinzufügen**.
 3. Geben Sie in das Feld **User name (Benutzername)** einen Benutzernamen ein.
 4. Aktivieren Sie für **Access type (Zugriffstyp)** das Kontrollkästchen **Programmatic access (Programmgesteuerter Zugriff)**, und klicken Sie auf **Next: Permissions (Weiter: Berechtigungen)**.  
@@ -82,21 +89,106 @@ Die folgenden Abschnitte führen Sie durch das Erstellen eines Benutzers ohne Sc
 9. Klicken Sie auf **Download .csv (CSV-Datei herunterladen)**, und speichern Sie die credentials.csv-Datei an einem sicheren Ort.  
     ![Anmeldeinformationen herunterladen](./media/connect-aws-account/download-csv.png)
 
-
 ### <a name="configure-aws-iam-user-based-access-in-cost-management"></a>Konfigurieren des Zugriffs auf AWS-IAM-Benutzerbasis in Cost Management
 
-1. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
-2. Klicken Sie auf **Einstellungen** (Zahnradsymbol), und wählen Sie dann **Cloud Accounts (Cloudkonten)**.
+1. Öffnen Sie das Cloudyn-Portal aus dem Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich dort an.
+2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)**.
 4. Geben Sie für **Account Name (Kontoname)** einen Kontonamen ein.
 5. Wählen Sie neben **Access Type (Zugriffstyp)** die Option **IAM User (IAM-Benutzer)**.
 6. Fügen Sie in **Access Key (Zugriffsschlüssel)** den Wert **Access key ID (Zugriffsschlüssel-ID)** aus der Datei „credentials.csv“ ein.
 7. Fügen Sie in **Secret Key (Geheimschlüssel)** den Wert **Secret access key (Geheimer Zugriffsschlüssel)** aus der Datei „credentials.csv“ ein, und klicken Sie dann auf **Save (Speichern)**.  
-    ![AWS-Benutzerkontostatus](./media/connect-aws-account/aws-user-account-status.png)
 
 Ihr AWS-Konto wird in der Liste der Konten angezeigt. Ihr **Account Status (Kontostatus)** müsste mit einem grünen Häkchensymbol versehen sein.
 
-Cost Management startet das Sammeln der Daten und Auffüllen von Berichten. Einige Optimierungsberichte erfordern jedoch möglicherweise Daten mehrerer Tage, bevor genaue Empfehlungen generiert werden.
+Cost Management startet das Sammeln der Daten und Auffüllen von Berichten. Als Nächstes [aktivieren Sie detaillierte AWS-Abrechnung](#enable-detailed-aws-billing).
+
+## <a name="enable-detailed-aws-billing"></a>Aktivieren der detaillierten AWS-Abrechnung
+
+Führen Sie die folgenden Schritte aus, um Ihren AWS-Rollen-ARN abzurufen. Sie verwenden den Rollen-ARN, um einem Abrechnungsbucket Leseberechtigungen zu erteilen.
+
+1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.coman, und wählen Sie **Services** aus.
+2. Geben Sie in das Feld „Service Search (Dienstsuche) *IAM* ein, und wählen Sie diese Option aus.
+3. Wählen Sie im linken Menü die Option **Roles (Rollen)** aus.
+4. Wählen Sie in der Liste der Rollen die Rolle aus, die Sie für den Cloudyn-Zugriff angelegt haben.
+5. Klicken Sie auf der Seite „Roles Summary (Rollenübersicht)“, um den **Role ARN (Rollen-ARN)** zu kopieren. Halten Sie den Rollen-ARN für spätere Schritte bereit.
+
+### <a name="create-an-s3-bucket"></a>Erstellen eines S3-Buckets
+
+Sie erstellen einen S3-Bucket zum Speichern detaillierter Abrechnungsinformationen.
+
+1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.coman, und wählen Sie **Services** aus.
+2. Geben Sie in das Feld „Service Search (Dienstsuche) *S3* ein, und wählen Sie **S3** aus.
+3. Klicken Sie auf der Amazon S3-Seite auf **Create bucket (Bucket erstellen)**.
+4. Wählen Sie im Assistenten zum Erstellen von Buckets einen Bucketnamen and eine Region aus, und klicken Sie auf **Next (Weiter)**.  
+    ![Erstellen eines Buckets](./media/connect-aws-account/create-bucket.png)
+5. Behalten Sie auf der Seite **Set properties (Eigenschaften festlegen)** die Standardwerte bei, und klicken Sie auf **Next (Weiter)**.
+6. Klicken Sie auf der Seite „Review (Überprüfen) auf **Create bucket (Bucket erstellen)**. Die Liste Ihrer Buckets wird angezeigt.
+7. Klicken Sie auf den Bucket, den Sie erstellt haben, und wählen Sie die Registerkarte **Permissions (Berechtigungen)** und dann **Bucket Policy (Bucketrichtlinie)** aus. Der Editor für Bucketrichtlinien wird geöffnet.
+8. Kopieren Sie das folgende JSON-Beispiel, und fügen Sie es in den Editor für Bucketrichtlinien ein.
+  - Ersetzen Sie `<BillingBucketName>` durch den Namen Ihres S3-Buckets.
+  - Ersetzen Sie `<ReadOnlyUserOrRole>` durch die Rolle oder den Benutzer-ARN, die/den Sie zuvor kopiert haben.
+
+  ```
+  {
+    "Version": "2012-10-17",
+    "Id": "Policy1426774604000",
+    "Statement": [
+        {
+            "Sid": "Stmt1426774604000",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::386209384616:root"
+            },
+            "Action": [
+                "s3:GetBucketAcl",
+                "s3:GetBucketPolicy"
+            ],
+            "Resource": "arn:aws:s3:::<BillingBucketName>"
+        },
+        {
+            "Sid": "Stmt1426774604001",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::386209384616:root"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+        },
+        {
+            "Sid": "Stmt1426774604002",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "<ReadOnlyUserOrRole>"
+            },
+            "Action": [
+                "s3:List*",
+                "s3:Get*"
+            ],
+            "Resource": "arn:aws:s3:::<BillingBucketName>/*"
+        }
+    ]
+  }
+  ```
+
+9. Klicken Sie auf **Speichern**.  
+    ![Editor für Bucketrichtlinien](./media/connect-aws-account/bucket-policy-editor.png)
+
+
+### <a name="enable-aws-billing-reports"></a>Aktivieren von AWS-Abrechnungsberichten
+
+Nachdem Sie den S3-Bucket erstellt und konfiguriert haben, navigieren Sie in der AWS-Konsole zu [Billing Preferences (Abrechnungseinstellungen)](https://console.aws.amazon.com/billing/home?#/preference).
+
+1. Wählen Sie auf der Seite „Preferences (Einstellungen)“ **Receive Billing Reports (Abrechnungsberichte empfangen)** aus.
+2. Geben Sie unter **Receive Billing Reports (Abrechnungsberichte empfangen)** den Namen des Buckets ein, den Sie erstellt haben, und klicken Sie dann auf **Verify (Überprüfen)**.  
+3. Wählen Sie alle vier Optionen für die Granularität von Berichten aus, und klicken Sie dann auf **Save preferences (Einstellungen speichern)**.  
+    ![Aktivieren von Berichten](./media/connect-aws-account/enable-reports.png)
+
+Cost Management ruft detaillierte Abrechnungsinformationen aus Ihrem S3-Bucket ab und füllt Berichte aus, nachdem die detaillierte Abrechnung aktiviert wurde. Es kann bis zu 24 Stunden dauern, bis detaillierte Abrechnungsdaten in der Cloudyn-Konsole sichtbar werden. Wenn detaillierte Abrechnungsdaten verfügbar sind, wird Ihr Kontenkonsolidierungsstatus als **Consolidated (Konsolidiert)** angezeigt. Der „Account Status“ (Kontostatus) lautet **Completed (Abgeschlossen)**.
+
+![Konsolidierter Kontostatus](./media/connect-aws-account/consolidated-status.png)
+
+Einige der Optimierungsberichte können einige Tage benötigen, um eine ausreichend große Datenstichprobe für genaue Empfehlungen abzurufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

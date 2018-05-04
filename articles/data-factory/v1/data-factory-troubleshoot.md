@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Problembehandlung bei Data Factory
 > [!NOTE]
@@ -34,7 +34,7 @@ Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an.
 
     ```powershell
-    Login-AzureRmAccount
+    Connect-AzureRmAccount
     ```
 3. Führen Sie den folgenden Befehl aus, um den Azure Data Factory-Anbieter zu registrieren.
 
@@ -45,7 +45,7 @@ Wenn Sie diesen Fehler erhalten, wurde der Azure Data Factory-Ressourcenanbieter
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Problem: Autorisierungsfehler beim Ausführen eines Data Factory-Cmdlets
 Sie verwenden wahrscheinlich nicht das richtige Azure-Konto oder -Abonnement für Azure PowerShell. Wählen Sie mithilfe der folgenden Cmdlets das richtige Azure-Konto und -Abonnement für die Verwendung mit Azure PowerShell aus.
 
-1. Login-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
+1. Connect-AzureRmAccount: Verwenden Sie die richtige Benutzer-ID und das richtige Kennwort.
 2. Get-AzureRmSubscription: Zeigen Sie alle Abonnements für das Konto an.
 3. Select-AzureRmSubscription &lt;Name des Abonnements&gt;: Wählen Sie das richtige Abonnement aus. Verwenden Sie dasselbe Abonnement, das Sie auch zum Erstellen einer Data Factory im Azure-Portal verwenden.
 

@@ -1,25 +1,20 @@
 ---
-title: "Bewährte Methoden für das Laden von Daten – Azure SQL Data Warehouse | Microsoft-Dokumentation"
-description: "Enthält Empfehlungen zum Laden von Daten und Durchführen von ELT-Vorgängen mit Azure SQL Data Warehouse."
+title: Bewährte Methoden für das Laden von Daten – Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: barbkess
-manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+author: ckarst
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: performance
-ms.date: 12/13/2017
-ms.author: barbkess
-ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.topic: conceptual
+ms.component: implement
+ms.date: 04/17/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: 48b0f0300ab563e8388c9e99f4f90cd24c56678d
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Bewährte Methoden zum Laden von Daten in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen und Leistungsoptimierungen für das Laden von Daten in Azure SQL Data Warehouse. 
@@ -62,11 +57,11 @@ Stellen Sie eine Verbindung mit dem Data Warehouse her, und erstellen Sie einen 
 ```
 Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressourcenklasse „staticRC20“ einfach als „LoaderRC20“ an, und führen Sie den Ladevorgang durch.
 
-Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihrer [Dienstebene](performance-tiers.md#service-levels) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene. Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
+Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihren [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene. Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
 
 ## <a name="allowing-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
 
-Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)][CREATE TABLE AS SELECT (Transact-SQL)] setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas. Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
+Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas. Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
 
 Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Schema_B für Abteilung B verfügen, sollten Sie beachten, dass die Datenbankbenutzer Benutzer_A und Benutzer_B Benutzer von PolyBase sind und in Abteilung A bzw. B geladen werden. Beiden wurden CONTROL-Datenbankberechtigungen erteilt. Die Ersteller von Schema A und B sperren ihre Schemas jetzt mit der DENY-Anweisung:
 
@@ -99,13 +94,13 @@ Das Laden von Daten mithilfe einer externen Tabelle kann folgenden Fehler auslö
 Vergewissern Sie sich zur Behebung dieses Problems, dass die Formatdefinitionen der externen Tabelle und Datei korrekt sind und Ihre externen Daten diesen Definitionen entsprechen. Sollte ein Teil der externen Datensätze fehlerhaft sein, können Sie diese Datensätze für Ihre Abfragen mithilfe der Ablehnungsoptionen in „CREATE EXTERNAL TABLE“ ablehnen.
 
 ## <a name="inserting-data-into-a-production-table"></a>Einfügen von Daten in eine Produktionstabelle
-Bei einem einmaligen Ladevorgang für eine kleine Tabelle mit einer [INSERT-Anweisung](/sql/t-sql/statements/insert-transact-sql.md) oder beim periodischen erneuten Laden eines Suchvorgangs wird unter Umständen eine ausreichende Leistung für Ihre Zwecke erzielt, wenn Sie eine Anweisung wie `INSERT INTO MyLookup VALUES (1, 'Type 1')` verwenden.  Singleton-Einfügungen sind jedoch nicht so effizient wie ein Massenladevorgang. 
+Bei einem einmaligen Ladevorgang für eine kleine Tabelle mit einer [INSERT-Anweisung](/sql/t-sql/statements/insert-transact-sql) oder beim periodischen erneuten Laden eines Suchvorgangs wird unter Umständen eine ausreichende Leistung für Ihre Zwecke erzielt, wenn Sie eine Anweisung wie `INSERT INTO MyLookup VALUES (1, 'Type 1')` verwenden.  Singleton-Einfügungen sind jedoch nicht so effizient wie ein Massenladevorgang. 
 
 Wenn Sie im Laufe eines Tages über Tausende oder mehr einzelne Einfügungen verfügen, sollten Sie sie zu einem Batch zusammenfassen, um das Massenladen zu ermöglichen.  Entwickeln Sie Ihre Prozesse so, dass die einzelnen Einfügungen an eine Datei angefügt werden, und erstellen Sie dann einen weiteren Prozess, mit dem die Datei regelmäßig geladen wird.
 
 ## <a name="creating-statistics-after-the-load"></a>Erstellen von Statistiken nach dem Laden
 
-Zur Verbesserung der Abfrageleistung ist es wichtig, nach dem ersten Laden oder nach Datenänderungen Statistiken für alle Spalten sämtlicher Tabellen zu erstellen.  Eine ausführliche Erläuterung zu Statistiken finden Sie unter [Statistiken][Statistiken]. Im folgenden Beispiel werden Statistiken für fünf Spalten der Tabelle „Customer_Speed“ erstellt.
+Zur Verbesserung der Abfrageleistung ist es wichtig, nach dem ersten Laden oder nach Datenänderungen Statistiken für alle Spalten sämtlicher Tabellen zu erstellen.  Eine ausführliche Erläuterung von Statistiken finden Sie unter [Statistiken](sql-data-warehouse-tables-statistics.md). Im folgenden Beispiel werden Statistiken für fünf Spalten der Tabelle „Customer_Speed“ erstellt.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);
@@ -120,17 +115,21 @@ Eine bewährte Sicherheitsmethode besteht darin, den Zugriffsschlüssel für Ihr
 
 Gehen Sie wie folgt vor, um Schlüssel für Azure Storage-Konten zu rotieren:
 
-Führen Sie für jedes Speicherkonto, dessen Schlüssel sich geändert hat, [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) aus.
+Führen Sie für jedes Speicherkonto, dessen Schlüssel sich geändert hat, [ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql) aus.
 
 Beispiel:
 
 Originalschlüssel wird erstellt
 
-CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+    ```sql
+    CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1'
+    ``` 
 
 Für den Schlüssel wird von Schlüssel 1 zu Schlüssel 2 rotiert
 
-ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```sq;
+    ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+    ```
 
 Es sind keine weiteren Änderungen an zugrunde liegenden externen Datenquellen erforderlich.
 

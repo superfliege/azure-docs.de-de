@@ -5,7 +5,7 @@ services: service-bus-relay
 documentationcenter: na
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 149f980c-3702-4805-8069-5321275bc3e8
 ms.service: service-bus-relay
 ms.devlang: na
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 43c40baa74b3f7c1f5c9d6626b25bcd45c2f9a10
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 1979746d143dbf8c3f4bca3f9a3a7925fe8e3f0d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
-Azure Relay ist eine der Säulen der Schlüsselfunktionen der Azure Service Bus-Plattform Die neue Funktion *Hybridverbindungen* von Relay ist eine sichere Entwicklung mit offenem Protokoll, die auf HTTP und WebSockets basiert. Sie ersetzt die ehemalige, gleichnamige Funktion *BizTalk Services*, die auf einer proprietären Protokollbasis erstellt wurde. Die Integration von Hybridverbindungen in Azure App Services funktioniert weiterhin ohne weiteren Aufwand.
+Azure Relay ist eine der Säulen der Schlüsselfunktionen der Azure Service Bus-Plattform Die neue Funktion *Hybridverbindungen* von Relay ist eine sichere Entwicklung mit offenem Protokoll, die auf HTTP und WebSockets basiert. Sie ersetzt das gleichnamige ehemalige Feature *BizTalk Services*, das auf einer proprietären Protokollbasis aufbaute. Die Integration von Hybridverbindungen in Azure App Services funktioniert weiterhin ohne weiteren Aufwand.
 
 Mit Hybridverbindungen können Sie eine bidirektionale, binäre Datenstromkommunikation zwischen zwei vernetzten Anwendungen einrichten, bei der sich eine oder beide hinter NAT-Funktionen oder Firewalls befinden können. Dieser Artikel beschreibt die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen und erläutert, wie Listener neue Verbindungen akzeptieren.
 
 ## <a name="interaction-model"></a>Interaktionsmodell
 Das Hybridverbindungs-Relay verbindet zwei Parteien durch einen Rendezvouspunkt in der Azure-Cloud, den beide Parteien erkennen können und mit dem sie eine Verbindung von ihrer eigenen Netzwerkperspektive aus herstellen können. In dieser Dokumentation und anderen Dokumentationen heißt der Rendezvouspunkt „Hybridverbindung“ – in den APIs und auch im Azure-Portal. Der Endpunkt dieses Hybridverbindungsdiensts wird im weiteren Verlauf dieses Artikels als „Dienst“ bezeichnet. Für das Interaktionsmodell werden Bezeichnungen verwendet, die auch für viele andere Netzwerk-APIs gängig sind.
 
-Es gibt einen Listener, der zuerst die Bereitschaft anzeigt, eingehende Verbindungen zu verarbeiten und akzeptiert diese anschließend, wenn sie ankommen. Andererseits gibt es einen verbindenden Client, der die Verbindung mit dem Listener herstellt und erwartet, dass diese Verbindung für die Erstellung eines bidirektionalen Kommunikationspfads akzeptiert wird.
+Es gibt einen Listener, der zuerst die Bereitschaft anzeigt, eingehende Verbindungen zu verarbeiten und akzeptiert diese anschließend, wenn sie ankommen. Andererseits gibt es einen verbindenden Client, der eine Verbindung mit dem Listener herstellt und erwartet, dass diese Verbindung für die Erstellung eines bidirektionalen Kommunikationspfads akzeptiert wird.
 „Verbinden“ (Connect), „Lauschen“ (Listen) und „Akzeptieren“ (Accept) sind die Begriffe, die Sie in den meisten Socket-APIs finden.
 
-In jedem Relaykommunikationsmodell stellt eine Partei ausgehende Verbindungen mit einem Dienstendpunkt her, wodurch der „Listener“ umgangssprachlich zu einem „Client“ wird und auch weitere Überschneidungen in der Terminologie verursacht werden. Daher verwenden wir bei Hybridverbindungen die folgende präzise Terminologie:
+In jedem Relaykommunikationsmodell stellen beide Parteien ausgehende Verbindungen mit einem Dienstendpunkt her, sodass der „Listener“ umgangssprachlich zu einem „Client“ wird und auch weitere Überschneidungen in der Terminologie verursacht werden. Daher verwenden wir bei Hybridverbindungen die folgende präzise Terminologie:
 
 Die Programme auf beiden Seiten der Verbindung werden als „Clients“ bezeichnet, da sie für den Dienst Clients darstellen. Der Client, der auf Verbindungen wartet und diese akzeptiert, ist der „Listener“ oder befindet sich in der „Listenerrolle“. Der Client, der über den Dienst eine neue Verbindung mit einem Listener herstellt, heißt „Absender“ bzw. befindet sich in der „Absenderrolle“.
 
@@ -43,7 +43,7 @@ Um die Bereitschaft an einen Dienst zu übermitteln, dass ein Listener bereit zu
 Wenn der WebSocket vom Dienst akzeptiert wird, ist die Registrierung abgeschlossen, und der erstellte WebSocket wird als „Steuerungskanal“ für die Aktivierung aller nachfolgenden Interaktionen aufrechterhalten. Der Dienst erlaubt bis zu 25 gleichzeitige Listener für eine Hybridverbindung. Wenn zwei oder mehr aktive Listener vorhanden sind, werden eingehende Verbindungen in zufälliger Reihenfolge darauf aufgeteilt. Eine faire Aufteilung kann nicht garantiert werden.
 
 #### <a name="accept"></a>Akzeptieren
-Wenn ein Absender eine neue Verbindung im Dienst öffnet, wählt und benachrichtigt der Dienst einen der aktiven Listener in der Hybridverbindung. Diese Benachrichtigung wird an den Listener als JSON- Nachricht über den offenen Steuerkanal übermittelt. Sie enthält die URL des WebSocket-Endpunkts, mit dem der Listener eine Verbindung herstellen muss, damit die Verbindung akzeptiert werden kann.
+Wenn ein Absender eine neue Verbindung im Dienst öffnet, wählt und benachrichtigt der Dienst einen der aktiven Listener in der Hybridverbindung. Diese Benachrichtigung wird an den Listener als JSON-Nachricht über den offenen Steuerkanal übermittelt. Sie enthält die URL des WebSocket-Endpunkts, mit dem der Listener eine Verbindung herstellen muss, damit die Verbindung akzeptiert werden kann.
 
 Die URL kann bzw. muss vom Listener ohne zusätzlichen Aufwand direkt verwendet werden.
 Die codierten Informationen sind nur für kurze Zeit gültig. Dies ist im Grunde genommen der Zeitraum, der vom Absender toleriert wird, bis die End-to-End-Verbindung hergestellt wurde. Der Höchstwert beträgt aber maximal 30 Sekunden. Die URL kann nur für einen erfolgreichen Verbindungsversuch verwendet werden. Sobald die WebSocket-Verbindung mit der Rendezvous-URL hergestellt wurde, wird jede weitere Aktivität in diesem WebSocket ohne Eingriff oder Interpretation des Diensts an den und von dem Absender übermittelt.
@@ -195,7 +195,7 @@ Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absich
 | 500 |Interner Fehler |Es ist ein Fehler im Dienst aufgetreten. |
 
 ### <a name="listener-token-renewal"></a>Erneuerung des Listenertokens
-Wenn das Listenertoken abläuft, kann es ersetzt werden, indem über den eingerichteten Steuerungskanal eine Textrahmennachricht an den Dienst gesendet wird. Die Nachricht enthält ein JSON-Objekt mit dem Namen `renewToken`, das derzeit die folgende Eigenschaft definiert:
+Wenn das Listenertoken abläuft, kann es vom Listener ersetzt werden, indem über den eingerichteten Steuerungskanal eine Textrahmennachricht an den Dienst gesendet wird. Die Nachricht enthält ein JSON-Objekt mit dem Namen `renewToken`, das derzeit die folgende Eigenschaft definiert:
 
 * **token**: Ein gültiges URL-codiertes Service Bus Shared Access-Token für den Namespace oder eine Hybridverbindung zum direkten Gewähren des Rechts **Listen** (Lauschen).
 

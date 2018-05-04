@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: fdc986fb32225f94e5a257c46a7b943abc0edf8f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1d5bc55b132b449ebc2964ef95016a6a4780c19
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Überwachen des Status, Einrichten der Diagnoseprotokollierung und Aktivieren von Warnungen für Azure Logic Apps
 
@@ -66,7 +66,7 @@ Richten Sie [Warnungen](#add-azure-alerts) ein, um Benachrichtigungen zu Ausfäl
    ![Schrittdetails](media/logic-apps-monitor-your-logic-apps/monitor-view-details.png)
    
    > [!NOTE]
-   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können den Zugriff auf diese Ereignisse auch mit der [rollenbasierten Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-what-is.md) steuern.
+   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können den Zugriff auf diese Ereignisse auch mit der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) steuern.
 
 6. Wechseln Sie zurück in den Bereich **Übersicht**, um Details zu einem bestimmten Triggerereignis zu erhalten. Wählen Sie unter **Triggerverlauf** das Triggerereignis aus. Sie können jetzt Details wie Eingaben und Ausgaben prüfen, z.B.:
 

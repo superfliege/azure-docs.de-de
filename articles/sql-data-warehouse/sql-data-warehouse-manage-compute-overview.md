@@ -2,24 +2,19 @@
 title: Verwalten von Computeressourcen in Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Funktionen zur horizontalen Leistungsskalierung in Azure SQL Data Warehouse. Skalieren Sie durch Anpassen der DWUs horizontal hoch, oder senken Sie die Kosten durch Anhalten des Data Warehouse.
 services: sql-data-warehouse
-documentationcenter: NA
-author: hirokib
-manager: johnmac
-editor: ''
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
-ms.author: elbutter
-ms.openlocfilehash: c34e37f0c6393c65d4b60705012769608bb7395b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.topic: conceptual
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
+ms.reviewer: igorstan
+ms.openlocfilehash: ca6d34d3b670bfd05a9b65fe9e6b260120e3a5b8
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen in Azure SQL Data Warehouse
 Erfahren Sie mehr über die Verwaltung von Computeressourcen in Azure SQL Data Warehouse. Senken Sie die Kosten, indem Sie das Data Warehouse anhalten, oder skalieren Sie das Data Warehouse, um Leistungsanforderungen zu erfüllen. 
@@ -28,7 +23,7 @@ Erfahren Sie mehr über die Verwaltung von Computeressourcen in Azure SQL Data W
 In der Architektur von SQL Data Warehouse werden Speicher- und Computeressourcen voneinander getrennt, sodass diese unabhängig voneinander skaliert werden können. Daher können Sie Computeressourcen skalieren, um Leistungsanforderungen unabhängig vom Datenspeicher zu erfüllen. Sie können Computeressourcen auch anhalten und fortsetzen. Eine logische Konsequenz dieser Architektur ist es, dass die [Abrechnung](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) für Compute- und Speicherressourcen unabhängig voneinander erfolgt. Wenn Sie Ihr Data Warehouse für eine Weile nicht verwenden müssen, können Sie Computekosten sparen, indem Sie Computeressourcen anhalten. 
 
 ## <a name="scaling-compute"></a>Skalieren von Computeressourcen
-Sie können Computeressourcen horizontal hoch- und wieder herunterskalieren, indem Sie die Einstellung für [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) für das Data Warehouse anpassen. Die Lade- und die Abfrageleistung kann linear erhöht werden, wenn Sie weitere Data Warehouse-Einheiten hinzufügen. SQL Data Warehouse bietet [Dienstebenen](performance-tiers.md#service-levels) für Data Warehouse-Einheiten, mit denen eine deutlich erkennbare Änderung der Leistung sichergestellt ist, wenn Sie horizontal hoch- oder herunterskalieren. 
+Sie können Computeressourcen horizontal hoch- und wieder herunterskalieren, indem Sie die Einstellung für [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md) für das Data Warehouse anpassen. Die Lade- und die Abfrageleistung kann linear erhöht werden, wenn Sie weitere Data Warehouse-Einheiten hinzufügen. 
 
 Schritte zur horizontalen Skalierung finden Sie in den Schnellstarts zum [Azure-Portal](quickstart-scale-compute-portal.md), zu [PowerShell](quickstart-scale-compute-powershell.md) oder zu [T-SQL](quickstart-scale-compute-tsql.md). Sie können auch horizontale Skalierungsvorgänge mit einer [REST-API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) ausführen.
 
@@ -103,7 +98,7 @@ Es wird empfohlen, dass vorhandene Transaktionen abgeschlossen werden, bevor Sie
 
 Beim Anhalten oder Skalieren Ihres SQL Data Warehouse werden Ihre Abfragen hinter den Kulissen abgebrochen, wenn Sie die Anforderung zum Anhalten oder Skalieren initiieren.  Das Abbrechen einer einfachen SELECT-Abfrage ist ein schneller Vorgang und hat fast keinerlei Auswirkung auf den Zeitraum, der für das Pausieren oder Skalieren Ihrer Instanz anfällt.  Dagegen können Transaktionsabfragen, bei denen die Daten oder die Struktur der Daten geändert wird, unter Umständen nicht so schnell beendet werden.  **Transaktionsabfragen müssen laut Definition entweder vollständig abgeschlossen sein, oder es muss ein Rollback der Änderungen durchgeführt werden.**  Ein Rollback der Schritte, die von einer Transaktionsabfrage ausgeführt wurden, kann genauso lange oder sogar länger als die ursprüngliche Änderung dauern, die mit der Abfrage durchgeführt werden sollte.  Wenn Sie beispielsweise eine Abfrage abbrechen, mit der Zeilen gelöscht werden, und die Abfrage bereits eine Stunde lang ausgeführt wurde, kann es eine Stunde dauern, bis die gelöschten Zeilen wieder eingefügt wurden.  Wenn Sie das Pausieren oder Skalieren bei aktiven Transaktionen ausführen, kann das Pausieren oder Skalieren lange dauern, weil erst gewartet werden muss, bis das Rollback abgeschlossen ist.
 
-Siehe auch: [Grundlagen von Transaktionen](sql-data-warehouse-develop-transactions.md) und [Optimieren von Transaktionen][Optimieren von Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md).
+Siehe auch: [Grundlagen von Transaktionen](sql-data-warehouse-develop-transactions.md) und [Optimieren von Transaktionen](sql-data-warehouse-develop-best-practices-transactions.md).
 
 ## <a name="automating-compute-management"></a>Automatisieren der Computeverwaltung
 Informationen zum Automatisieren der Computeverwaltungsvorgänge finden Sie unter [Verwenden von Azure Functions zum Automatisieren von SQL DW-Computeebenen](manage-compute-with-azure-functions.md).
@@ -115,7 +110,7 @@ Informationen zum Überprüfen des Data Warehouse-Zustands finden Sie in den Sch
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Skalieren des Data Warehouse sind die in [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) beschriebenen Berechtigungen erforderlich.  Zum Anhalten und Fortsetzen ist die Berechtigung [Mitwirkender von SQL DB](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) erforderlich, insbesondere „Microsoft.Sql/servers/databases/action“.
+Zum Skalieren des Data Warehouse sind die in [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) beschriebenen Berechtigungen erforderlich.  Zum Anhalten und Fortsetzen ist die Berechtigung [Mitwirkender von SQL DB](../role-based-access-control/built-in-roles.md#sql-db-contributor) erforderlich, insbesondere „Microsoft.Sql/servers/databases/action“.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,25 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: jroth
-ms.openlocfilehash: e4f955a0880254cb67ccd3e46ad04b3685341263
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9d3fbbab76f16a8546c431d5acf913bf419edeb4
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
 
 ## <a name="overview"></a>Übersicht
 
-Dieser Artikel enthält bewährte Methoden zur Optimierung der Leistung von SQL Server auf virtuellen Microsoft Azure-Computern. Es empfiehlt sich, beim Ausführen von SQL Server in Azure Virtual Machines weiterhin die gleichen Optionen zur Optimierung der Datenbankleistung zu verwenden, die für SQL Server in der lokalen Server-Umgebung gelten. Die Leistung einer relationalen Datenbank in einer öffentlichen Cloud hängt jedoch von vielen Faktoren ab, z. B. der Größe eines virtuellen Computers und der Konfiguration der Datenträger für Daten.
+Dieser Artikel enthält Informationen zur Optimierung der Leistung von SQL Server auf virtuellen Microsoft Azure-Computern. Es empfiehlt sich, beim Ausführen von SQL Server in Azure Virtual Machines weiterhin die gleichen Optionen zur Optimierung der Datenbankleistung zu verwenden, die für SQL Server in der lokalen Server-Umgebung gelten. Die Leistung einer relationalen Datenbank in einer öffentlichen Cloud hängt jedoch von vielen Faktoren ab, z. B. der Größe eines virtuellen Computers und der Konfiguration der Datenträger für Daten.
 
-Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Für im Portal mit Resource Manager bereitgestellte SQL Server-VMs werden Best Practices angewendet.
+[Im Azure-Portal bereitgestellte SQL Server-Images](quickstart-sql-vm-create-portal.md) berücksichtigen die bewährten Methoden für die Speicherkonfiguration. Weitere Informationen zum Konfigurieren des Speichers finden Sie unter [Speicherkonfiguration für SQL Server-VMs](virtual-machines-windows-sql-server-storage-configuration.md). Nach der Bereitstellung empfiehlt es sich gegebenenfalls, weitere der in diesem Artikel behandelten Optimierungen anzuwenden. Orientieren Sie sich dabei an Ihrer Workload, und testen Sie die gewählte Option.
 
-Dieser Artikel konzentriert sich auf die *optimale* Leistung von SQL Server auf Azure-VMs. Wenn Ihre Workload weniger anspruchsvoll ist, sind möglicherweise nicht alle unten aufgeführten Optimierungen erforderlich. Berücksichtigen Sie bei der Evaluierung dieser Empfehlungen Ihre Leistungsanforderungen und Workloadmuster.
-
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
+> [!TIP]
+> Dieser Artikel konzentriert sich auf die *optimale* Leistung von SQL Server auf Azure-VMs. Wenn Ihre Workload weniger anspruchsvoll ist, sind möglicherweise nicht alle unten aufgeführten Optimierungen erforderlich. Berücksichtigen Sie bei der Evaluierung dieser Empfehlungen Ihre Leistungsanforderungen und Workloadmuster.
 
 ## <a name="quick-check-list"></a>Checkliste
 
@@ -41,7 +40,7 @@ Im folgenden finden eine kurze Checkliste für die optimale Leistung von SQL Ser
 | --- | --- |
 | [Größe des virtuellen Computers](#vm-size-guidance) |[DS3](../sizes-general.md) oder höher für SQL Server Enterprise Edition<br/><br/>[DS2](../sizes-general.md) oder höher für SQL Standard und Web Edition |
 | [Speicher](#storage-guidance) |Verwenden Sie [Storage Premium](../premium-storage.md). Storage Standard empfiehlt sich nur für Entwicklungs- und Testumgebungen.<br/><br/>Speichern Sie das [Speicherkonto](../../../storage/common/storage-create-storage-account.md) und die SQL Server-VM in derselben Region.<br/><br/>Deaktivieren Sie auf dem Speicherkonto den [georedundanten Azure-Speicher](../../../storage/common/storage-redundancy.md) (Georeplikation). |
-| [Datenträger](#disks-guidance) |Verwenden Sie mindestens 2 [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) (1 für Protokolldateien; 1 für Datendateien und tempdb).<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB-Datendateien gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
+| [Datenträger](#disks-guidance) |Verwenden Sie mindestens zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets): einen für Protokolldateien und einen für Datendateien und TempDB. (Oder fügen Sie mindestens zwei Datenträger zu einem Stripeset zusammen, und speichern Sie alle Dateien in einem einzelnen Volume.)<br/><br/>Vermeiden Sie die Verwendung von Betriebssystem- oder temporären Datenträgern für die Datenbankspeicherung oder Protokollierung.<br/><br/>Aktivieren Sie das Caching für Lesevorgänge auf den Datenträgern, auf denen die Datendateien und TempDB-Datendateien gehostet werden.<br/><br/>Aktivieren Sie kein Caching auf Datenträgern, auf denen die Protokolldatei gehostet wird.<br/><br/>Wichtig: Beenden Sie den SQL Server-Dienst, wenn Sie die Cacheeinstellungen für einen Azure-VM-Datenträger ändern.<br/><br/>Erstellen Sie ein Stripeset mehrerer Azure-Datenträger für Daten, um einen höheren E/A-Durchsatz zu erzielen.<br/><br/>Formatieren Sie mit dokumentierten Zuordnungsgrößen. |
 | [E/A](#io-guidance) |Aktivieren Sie die Datenbankseitenkomprimierung.<br/><br/>Aktivieren Sie die sofortige Dateiinitialisierung für Datendateien.<br/><br/>Begrenzen Sie die automatische Vergrößerung der Datenbank.<br/><br/>Deaktivieren Sie die automatische Verkleinerung der Datenbank.<br/><br/>Verschieben Sie alle Datenbanken, einschließlich der Systemdatenbanken, auf Datenträger für Daten.<br/><br/>Verschieben Sie die Verzeichnisse für das SQL Server-Fehlerprotokoll und die Ablaufverfolgungsdateien auf die Datenträger für Daten.<br/><br/>Richten Sie standardmäßige Dateispeicherorte für Sicherungen und Datenbanken ein.<br/><br/>Aktivieren Sie gesperrte Seiten.<br/><br/>Wenden Sie SQL Server-Leistungs-Hotfixpakete an. |
 | [Featurespezifisch](#feature-specific-guidance) |Sichern Sie direkt in den Blobspeicher. |
 
@@ -68,7 +67,7 @@ Außerdem sollten Sie Ihr Azure-Speicherkonto im selben Rechenzentrum wie Ihre S
 Es gibt drei Haupttypen von Datenträgern auf einer Azure-VM:
 
 * **Betriebssystemdatenträger:** Wenn Sie einen virtuellen Azure-Computer erstellen, fügt die Plattform mindestens einen Datenträger (mit der Bezeichnung Laufwerk **C:**) für das Betriebssystem zum virtuellen Computer hinzu. Bei diesem Datenträger handelt es sich um eine VHD, die als Seitenblob gespeichert wird.
-* **Temporärer Datenträger:** Virtuelle Azure-Computer enthalten einen weiteren Datenträger, der als temporärer Datenträger bezeichnet wird (mit der Bezeichnung Laufwerk **D:**). Dies ist ein Datenträger für temporären Speicherbereich auf dem Knoten.
+* **Temporärer Datenträger:** Virtuelle Azure-Computer enthalten einen weiteren Datenträger, der als temporärer Datenträger bezeichnet wird (Laufwerk **D:**). Dies ist ein Datenträger für temporären Speicherbereich auf dem Knoten.
 * **Datenträger für Daten:** Sie können auch weitere Datenträger für Daten zum virtuellen Computer hinzufügen. Diese werden als Seitenblobs im Speicher gespeichert.
 
 In den folgenden Abschnitten werden Empfehlungen zur Verwendung dieser unterschiedlichen Datenträger erläutert.
@@ -83,13 +82,13 @@ Die für den Betriebssystem-Datenträger verwendete Caching-Standardrichtlinie e
 
 Das temporäre Speicherlaufwerk, das als Laufwerk **D:** bezeichnet wird, wird nicht in Azure Blob Storage beibehalten. Speichern Sie die Datenbank- oder Transaktionsprotokolldateien für Ihre Benutzer nicht auf Laufwerk **D:**.
 
-Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Serie ist SSD-basiert. Bei hoher Workload von „tempdb“ (z.B. für temporäre Objekte oder komplexe Verknüpfungen) kann das Speichern von „tempdb“ auf Laufwerk **D:** zu einem höheren Durchsatz und einer geringeren Latenz von „tempdb“ führen.
+Das temporäre Laufwerk auf virtuellen Computern der D-Serie, Dv2-Serie und G-Serie ist SSD-basiert. Falls Ihre Workload intensiv TempDB nutzt (beispielsweise für temporäre Objekte oder komplexe Verknüpfungen), kann das Speichern von TempDB auf Laufwerk **D:** zu einem höheren Durchsatz und einer geringeren TempDB-Wartezeit führen.
 
 Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie und GS-Serie), sollten Sie TempDB auf einem Datenträger speichern, der Storage Premium mit aktiviertem Lesecache unterstützt. Es gibt eine Ausnahme von dieser Empfehlung: Wenn die „tempdb“-Auslastung schreibintensiv ist, können Sie eine höhere Leistung erzielen, indem Sie „tempdb“ auf dem lokalen Laufwerk **D:** speichern, das für diese Computergrößen auch SSD-basiert ist.
 
 ### <a name="data-disks"></a>Datenträger
 
-* **Verwenden von Datenträgern für Daten- und Protokolldateien:** Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) in Storage Premium verwenden, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und tempdb-Dateien befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit, wie im folgenden Artikel beschrieben: [Verwenden von Storage Premium für Datenträger](../premium-storage.md). Wenn Sie eine Festplattenstriping-Technik (z. B. Speicherplätze) verwenden, müssen Sie alle Dateien auf dem gleichen Laufwerk platzieren.
+* **Verwenden von Datenträgern für Daten- und Protokolldateien:** Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) in Storage Premium verwenden, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und TempDB-Dateien befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit. Informationen hierzu finden Sie im Artikel [Verwenden von Storage Premium für Datenträger](../premium-storage.md). Wenn Sie eine Datenträgerstriping-Technik (beispielsweise Speicherplätze) verwenden, müssen Sie alle Daten- und Protokolldateien auf dem gleichen Laufwerk platzieren.
 
    > [!NOTE]
    > Beim Bereitstellen einer SQL Server-VM im Portal haben Sie die Möglichkeit, Ihre Speicherkonfiguration zu bearbeiten. Je nach Konfiguration konfiguriert Azure einen oder mehrere Datenträger. Mehrere Datenträger werden in einem einzelnen Speicherpool mit Striping zusammengefasst. Daten- und Protokolldateien befinden sich in dieser Konfiguration zusammen. Weitere Informationen finden Sie unter [Speicherkonfiguration für SQL Server-VMs](virtual-machines-windows-sql-server-storage-configuration.md).
@@ -112,16 +111,24 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 
   * Für Windows 2008 R2 oder früher können Sie dynamische Datenträger (Betriebssystem-Stripesetvolumes) verwenden, und die Stripesetgröße ist immer 64 KB. Beachten Sie, dass diese Option seit Windows 8 / Windows Server 2012 veraltet ist. Informationen hierzu finden Sie in der Supporterklärung unter [Virtual Disk Service is transitioning to Windows Storage Management API](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)(Übergang des Diensts für virtuelle Datenträger in die Windows-Speicherverwaltungs-API, in englischer Sprache).
 
-  * Bei Verwendung von [Direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) (Storage Spaces Direct, S2D) mit einem Szenario wie [SQL Server-Failoverclusterinstanzen](virtual-machines-windows-portal-sql-create-failover-cluster.md) müssen Sie einen einzelnen Pool konfigurieren. Auch wenn in einem einzelnen Pool unterschiedliche Volumes erstellt werden können, sollten Sie darauf achten, dass alle die gleichen Merkmale (z. B. die gleiche Cacherichtlinie) aufweisen. 
+  * Bei Verwendung von [Direkte Speicherplätze](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) (Storage Spaces Direct, S2D) mit einem Szenario wie [SQL Server-Failoverclusterinstanzen](virtual-machines-windows-portal-sql-create-failover-cluster.md) müssen Sie einen einzelnen Pool konfigurieren. Auch wenn in einem einzelnen Pool unterschiedliche Volumes erstellt werden können, sollten Sie darauf achten, dass alle die gleichen Merkmale (z. B. die gleiche Cacherichtlinie) aufweisen.
 
   * Bestimmen Sie auf Basis der erwarteten Auslastung die Anzahl der jedem Speicherpool zugeordneten Datenträger. Bedenken Sie, dass verschiedene VM-Größen unterschiedlich viele angefügte Datenträger für Daten unterstützen. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
   * Wenn Sie Storage Premium nicht verwenden (Entwicklungs-/Testszenarios), sollten Sie die für Ihre [Größe des virtuellen Computers](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) maximal unterstützte Anzahl von Datenträgern für Daten hinzufügen und Datenträgerstriping verwenden.
 
-* **Cacherichtlinie**: Aktivieren Sie für Storage Premium-Datenträger für Daten das Zwischenspeichern für Lesevorgänge nur für die Datenträger, auf denen Ihre Datendateien und TempDB-Datendateien gehostet werden. Wenn Sie Storage Premium nicht verwenden, aktivieren Sie Caching für keinen Datenträger für Daten. Informationen zum Konfigurieren des Datenträgercachings finden Sie in den folgenden Artikeln. Informationen zum klassischen Bereitstellungsmodell (ASM) finden Sie unter [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) und [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) und [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+* **Cacherichtlinie:** Berücksichtigen Sie die folgenden Empfehlungen für die Cacherichtlinie (abhängig von Ihrer Speicherkonfiguration).
 
-  > [!WARNING]
-  > Beenden Sie den SQL Server-Dienst beim Ändern der Cacheeinstellung der Azure-VM-Datenträger, um eine Beschädigung der Datenbank zu vermeiden.
+  * Wenn Sie separate Datenträger für Daten- und Protokolldateien verwenden, aktivieren Sie das Zwischenspeichern für Lesevorgänge für die Datenträger, auf denen Ihre Datendateien und TempDB-Datendateien gehostet werden. Dadurch lässt sich die Leistung mitunter erheblich verbessern. Aktivieren Sie die Zwischenspeicherung nicht für den Datenträger mit der Protokolldatei, da sich dadurch die Leistung minimal verschlechtert.
+
+  * Wenn Sie Datenträgerstriping verwenden, profitieren die meisten Workloads vom Zwischenspeichern für Lesevorgänge. Aufgrund der Leistungsvorteile von Datenträgerstriping gilt diese Empfehlung auch, wenn sich die Protokolldatei auf dem gleichen Laufwerk befinden. Bei bestimmten schreiblastigen Workloads lässt sich unter Umständen ohne Zwischenspeicherung eine höhere Leistung erzielen. Dies kann nur im Rahmen von Tests ermittelt werden.
+
+  * Die obigen Empfehlungen gelten für Storage Premium-Datenträger. Wenn Sie Storage Premium nicht verwenden, aktivieren Sie Caching für keinen Datenträger für Daten.
+
+  * Informationen zum Konfigurieren des Datenträgercachings finden Sie in den folgenden Artikeln. Informationen zum klassischen Bereitstellungsmodell (ASM) finden Sie unter [Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) und [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx). Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Set-AzureRMOSDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-4.4.1) und [Set-AzureRMVMDataDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmdatadisk?view=azurermps-4.4.1).
+
+     > [!WARNING]
+     > Beenden Sie den SQL Server-Dienst beim Ändern der Cacheeinstellung der Azure-VM-Datenträger, um eine Beschädigung der Datenbank zu vermeiden.
 
 * **Größe der NTFS-Zuordnungseinheiten**: Es empfiehlt sich, beim Formatieren des Datenträgers für Daten als Größe der Zuordnungseinheiten für Daten- und Protokolldateien sowie für TempDB einen Wert von 64 KB zu verwenden.
 

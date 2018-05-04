@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 580d32a51f6b38916ddccd46784b80b1179c29c4
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -24,7 +24,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | **Komponente** | **Anforderung** |
 | --- |---|
 | CPU-Kerne| 8 |
-| RAM | 12 GB|
+| RAM | 16 GB|
 | Anzahl der Datenträger | 3, einschließlich Betriebssystem-Datenträger, Prozessservercache-Datenträger und Aufbewahrungslaufwerk für Failback |
 | Freier Speicherplatz (Prozessservercache) | 600 GB
 | Freier Speicherplatz (Aufbewahrungslaufwerk) | 600 GB|
@@ -36,7 +36,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) |
 | Art der IP-Adresse | statischen |
-| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (für horizontal hochskalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
+| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
 | Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Herunterladen der aktuellen Installationsdatei
@@ -266,7 +266,7 @@ Aktualisieren Sie den Server wie folgt:
 1. [Installieren](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mithilfe des folgenden Befehls bei Ihrem Azure-Konto an:
     
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 3. Wählen Sie das Abonnement aus, unter dem der Tresor vorhanden ist.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`

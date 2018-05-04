@@ -1,18 +1,18 @@
 ---
 title: Referenz zu Azure Container Registry-Webhookschemas
-description: "Referenz zur JSON-Nutzlast von Webhookanforderungen für Azure Container Registry."
+description: Referenz zur JSON-Nutzlast von Webhookanforderungen für Azure Container Registry.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: 84f0277a7b1a5bd7dfe2178f78f34140b1dd2642
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenz zu Azure Container Registry-Webhooks
 
@@ -40,33 +40,33 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="push-event-payload"></a>Nutzlast des Push-Ereignisses
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|String|Die ID des Webhookereignisses.|
-|`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|String|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
+|`timestamp`|Datetime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="target"></a>Ziel
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|String|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge).|
-|`digest`|String|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
 |`length`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe).|
-|`repository`|String|Der Name des Repositorys.|
-|`tag`|String|Der Tagname des Images.|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
+|`tag`|Zeichenfolge|Der Tagname des Images.|
 
 ### <a name="request"></a>request
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`id`|String|Die ID der Anforderung, die das Ereignis initiiert hat.|
-|`host`|String|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
-|`method`|String|Die Anforderungsmethode, die das Ereignis generiert hat.|
-|`useragent`|String|Der Benutzer-Agent-Header der Anforderung.|
+|`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
+|`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
+|`method`|Zeichenfolge|Die Anforderungsmethode, die das Ereignis generiert hat.|
+|`useragent`|Zeichenfolge|Der Benutzer-Agent-Header der Anforderung.|
 
 ### <a name="payload-example-push-event"></a>Nutzlastbeispiel: Push-Ereignis
 
@@ -104,30 +104,30 @@ Wird per Webhook ausgelöst, wenn ein Repository oder Manifest gelöscht wird. W
 
 ### <a name="delete-event-payload"></a>Ereignisnutzlast löschen
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |-------------|----------|-----------|
-|`id`|String|Die ID des Webhookereignisses.|
-|`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
-|`action`|String|Die Aktion, die das Webhookereignis ausgelöst hat.|
+|`id`|Zeichenfolge|Die ID des Webhookereignisses.|
+|`timestamp`|Datetime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
+|`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#delete_target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#delete_request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="delete_target"></a> Ziel
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`mediaType`|String|Der MIME-Typ des Objekts, auf das verwiesen wird.|
-|`digest`|String|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
-|`repository`|String|Der Name des Repositorys.|
+|`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
+|`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
+|`repository`|Zeichenfolge|Der Name des Repositorys.|
 
 ### <a name="delete_request"></a> Anforderung
 
-|Element|Typ|Beschreibung|
+|Element|Typ|BESCHREIBUNG|
 |------------------|----------|-----------|
-|`id`|String|Die ID der Anforderung, die das Ereignis initiiert hat.|
-|`host`|String|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
-|`method`|String|Die Anforderungsmethode, die das Ereignis generiert hat.|
-|`useragent`|String|Der Benutzer-Agent-Header der Anforderung.|
+|`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
+|`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
+|`method`|Zeichenfolge|Die Anforderungsmethode, die das Ereignis generiert hat.|
+|`useragent`|Zeichenfolge|Der Benutzer-Agent-Header der Anforderung.|
 
 ### <a name="payload-example-delete-event"></a>Nutzlastbeispiel: Ereignis löschen
 

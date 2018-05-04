@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/13/2018
+ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 3e65371396b91c1dc97f504bac8b969093f5c518
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 300367ee4e4bdb412bf4e5f25ba6cea067e18ed3
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -164,24 +164,24 @@ In der Richtlinie für bedingten Zugriff können Sie als Client-App **Mobile App
 Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobilen Apps und Desktopclients: 
 
 
-| Client-Apps| Zieldienst| Plattform |
-| --- | --- | --- |
-| Azure RemoteApp| Azure Remote-App-Dienst| Windows 10, Windows 8.1, Windows 7, iOS, Android, Mac OS X|
-| Dynamics CRM-App| Dynamics CRM| Windows 10, Windows 8.1, Windows 7, iOS, Android|
-| E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 10|
-| MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste| Android und iOS|
-| Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient| Microsoft Teams| Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS|
-| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))| Office 365 SharePoint Online| Windows 8.1, Windows 7|
-| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), zukünftige Unterstützung für Office-Gruppen und SharePoint-Apps ist geplant.| Office 365 SharePoint Online| Windows 10|
-| Office 2016 für macOS (nur Word, Excel, PowerPoint und OneNote). Unterstützung von OneDrive for Business für die Zukunft geplant| Office 365 SharePoint Online| Mac OS X|
-| Office Mobile-Apps| Office 365 SharePoint Online| Android, iOS|
-| Office Yammer-App| Office 365 Yammer| Windows 10, iOS und Android|
-| Outlook 2016 (Office für macOS)| Microsoft Office 365 Exchange Online| Mac OS X|
-| Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online| Windows 8.1, Windows 7|
-| Outlook Mobile-App| Microsoft Office 365 Exchange Online| Android, iOS|
-| Power BI-App| PowerBI-Dienst| Windows 10, Windows 8.1, Windows 7, Android und iOS|
-| Skype for Business| Microsoft Office 365 Exchange Online| Android, iOS|
-| Visual Studio Team Services-App| Visual Studio Team Services| Windows 10, Windows 8.1, Windows 7, iOS, Android|
+|Client-Apps|Zieldienst|Plattform|
+|---|---|---|
+|Azure RemoteApp|Azure Remote-App-Dienst|Windows 10, Windows 8.1, Windows 7, iOS, Android, Mac OS X|
+|Dynamics CRM-App|Dynamics CRM|Windows 10, Windows 8.1, iOS und Android|
+|E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)|Microsoft Office 365 Exchange Online|Windows 10|
+|MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt. |Alle Meine Apps-App-Dienste|Android und iOS|
+|Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient|Microsoft Teams|Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
+|Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e))|Office 365 SharePoint Online|Windows 8.1, Windows 7|
+|Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), OneDrive-Synchronisierungsclient (siehe [Hinweise](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), zukünftige Unterstützung für Office-Gruppen und SharePoint-Apps ist geplant.|Office 365 SharePoint Online|Windows 10|
+|Office 2016 für macOS (nur Word, Excel, PowerPoint und OneNote). Unterstützung von OneDrive for Business für die Zukunft geplant|Office 365 SharePoint Online|Mac OS X|
+|Office Mobile-Apps|Office 365 SharePoint Online|Android, iOS|
+|Office Yammer-App|Office 365 Yammer|Windows 10, iOS und Android|
+|Outlook 2016 (Office für macOS)|Microsoft Office 365 Exchange Online|Mac OS X|
+|Outlook 2016, Outlook 2013 (mit moderner Authentifizierung), Skype for Business (mit moderner Authentifizierung)|Microsoft Office 365 Exchange Online|Windows 8.1, Windows 7|
+|Outlook Mobile-App|Microsoft Office 365 Exchange Online|Android, iOS|
+|Power BI-App|PowerBI-Dienst|Windows 10, Windows 8.1, Windows 7, Android und iOS|
+|Skype for Business|Microsoft Office 365 Exchange Online|Android, iOS |
+|Visual Studio Team Services-App|Visual Studio Team Services|Windows 10, Windows 8.1, Windows 7, iOS, Android|
 
 
 

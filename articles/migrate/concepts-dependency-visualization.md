@@ -1,16 +1,16 @@
 ---
-title: "Visualisierung von Abhängigkeiten in Azure Migrate | Microsoft-Dokumentation"
-description: "Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrate-Dienst."
+title: Visualisierung von Abhängigkeiten in Azure Migrate | Microsoft-Dokumentation
+description: Bietet eine Übersicht über Bewertungsberechnungen im Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d075ce9ee124d373a1284577324a50338245a03f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="dependency-visualization"></a>Visualisierung von Abhängigkeiten
 
@@ -24,7 +24,7 @@ Mit der Abhängigkeitsvisualisierung in Azure Migrate können Sie Gruppen für d
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Azure Migrate verwendet für die Abhängigkeitsvisualisierung die [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) in [Log Analytics](../log-analytics/log-analytics-overview.md).
-- Wenn Sie ein Azure Migrate-Projekt erstellen, wird in Ihrem Abonnement ein OMS Log Analytics-Arbeitsbereich erstellt.
+- Wenn Sie ein Azure Migrate-Projekt erstellen, wird in Ihrem Abonnement ein Log Analytics-Arbeitsbereich erstellt.
 - Der Arbeitsbereich wird mit dem Namen des Migrationsprojekts und dem Präfix **migrate-** versehen. Optional wird noch eine Zahl als Suffix angehängt. 
 - Navigieren Sie auf der Übersichtsseite des Projekts im Abschnitt **Zusammenfassung** zu dem Log Analytics-Arbeitsbereich.
 - Der erstellte Arbeitsbereich ist mit dem Schlüssel **MigrateProject** und dem Wert **Projektname** gekennzeichnet. Diese Werte können für die Suche im Azure-Portal verwendet werden.  

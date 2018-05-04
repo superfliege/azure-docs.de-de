@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/16/2017
 ms.author: barclayn
-ms.openlocfilehash: 3406d314fb4dba92830933c4e4d373fc8bebeba3
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e7dcb3778de31258f4aa3c946ffa214d87cb858a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-key-vault-logging"></a>Azure-Schlüsseltresor-Protokollierung
 Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -235,32 +235,32 @@ Die folgende Tabelle enthält das operationName-Element und den entsprechenden R
 | operationName | REST-API-Befehl |
 | --- | --- |
 | Authentifizierung |Über Azure Active Directory-Endpunkt |
-| VaultGet |[Abrufen von Informationen über einen Schlüsseltresor](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx) |
-| VaultPut |[Erstellen oder Aktualisieren eines Schlüsseltresors](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx) |
-| VaultDelete |[Löschen eines Schlüsseltresors](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx) |
+| VaultGet |[Abrufen von Informationen über einen Schlüsseltresor](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| VaultPut |[Erstellen oder Aktualisieren eines Schlüsseltresors](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| VaultDelete |[Löschen eines Schlüsseltresors](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | VaultPatch |[Erstellen oder Aktualisieren eines Schlüsseltresors](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Auflisten aller Schlüsseltresore in einer Ressourcengruppe](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx) |
-| KeyCreate |[Erstellen eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx) |
-| KeyGet |[Abrufen von Informationen zu einem Schlüssel](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx) |
-| KeyImport |[Importieren eines Schlüssels in einen Tresor](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx) |
-| KeyBackup |[Sichern eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx) |
-| KeyDelete |[Löschen eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx) |
-| KeyRestore |[Wiederherstellen eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx) |
-| KeySign |[Signieren mit einem Schlüssel](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx) |
-| KeyVerify |[Überprüfen mit einem Schlüssel](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx) |
-| KeyWrap |[Umschließen eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Aufheben der Umschließung eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Verschlüsseln mit einem Schlüssel](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Entschlüsseln mit einem Schlüssel](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx) |
-| KeyUpdate |[Aktualisieren eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx) |
-| KeyList |[Auflisten der Schlüssel in einem Tresor](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx) |
-| KeyListVersions |[Auflisten der Versionen eines Schlüssels](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx) |
-| SecretSet |[Erstellen eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx) |
-| SecretGet |[Abrufen eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx) |
-| SecretUpdate |[Aktualisieren eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx) |
-| SecretDelete |[Löschen eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx) |
-| SecretList |[Auflisten von Geheimnissen in einem Tresor](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx) |
-| SecretListVersions |[Auflisten von Versionen eines Geheimnisses](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx) |
+| VaultList |[Auflisten aller Schlüsseltresore in einer Ressourcengruppe](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| KeyCreate |[Erstellen eines Schlüssels](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| KeyGet |[Abrufen von Informationen zu einem Schlüssel](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| KeyImport |[Importieren eines Schlüssels in einen Tresor](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| KeyBackup |[Sichern eines Schlüssels](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| KeyDelete |[Löschen eines Schlüssels](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| KeyRestore |[Wiederherstellen eines Schlüssels](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| KeySign |[Signieren mit einem Schlüssel](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| KeyVerify |[Überprüfen mit einem Schlüssel](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| KeyWrap |[Umschließen eines Schlüssels](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| KeyUnwrap |[Aufheben der Umschließung eines Schlüssels](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| KeyEncrypt |[Verschlüsseln mit einem Schlüssel](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| KeyDecrypt |[Entschlüsseln mit einem Schlüssel](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| KeyUpdate |[Aktualisieren eines Schlüssels](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| KeyList |[Auflisten der Schlüssel in einem Tresor](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| KeyListVersions |[Auflisten der Versionen eines Schlüssels](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| SecretSet |[Erstellen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| SecretGet |[Abrufen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| SecretUpdate |[Aktualisieren eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| SecretDelete |[Löschen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| SecretList |[Auflisten von Geheimnissen in einem Tresor](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| SecretListVersions |[Auflisten von Versionen eines Geheimnisses](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>Verwenden von Log Analytics
 

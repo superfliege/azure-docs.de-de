@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4479b3d34824b88f0a666b6185a6bc89337358a9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 071e0c2b802b1bb6ef68092362c61bf3960fd45a
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
@@ -73,9 +73,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | object ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto.  Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch.  Dies bedeutet, dass die ID bei Abfragen in Microsoft Online Services wie z.B. Microsoft Graph verwendet werden kann.  Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück.  Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 
 ### <a name="access-tokens"></a>Zugriffstoken
-Vom v2.0-Endpunkt ausgestellte Zugriffstoken können derzeit nur von Microsoft Services genutzt werden. Für alle gegenwärtig unterstützten Szenarios sollten Ihre Apps keine Validierung oder Überprüfung der Zugriffstoken ausführen müssen. Zugriffstoken können als vollkommen intransparent erachtet werden. Sie sind lediglich Zeichenfolgen, die Ihre App in HTTP-Anforderungen an Microsoft übergeben kann.
 
-In Kürze wird es auf dem v2.0-Endpunkt für Ihre App möglich sein, Zugriffstoken von anderen Clients zu empfangen. Zum gegenwärtigen Zeitpunkt werden die Informationen in diesem Referenzthema mit den Informationen aktualisiert, die Ihre App für die Überprüfung von Zugriffstoken und andere ähnliche Aufgaben benötigt.
+Der v2.0-Endpunkt ermöglicht den bei Azure AD registrierten Drittanbieter-Apps die Ausstellung von Zugriffstoken für gesicherte Ressourcen wie Web-APIs. Weitere Informationen zum Einrichten einer Anwendung zum Ausstellen von Zugriffstoken finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md). Beim Registrieren der Anwendung beim v2.0-Endpunkt kann der Entwickler Zugriffsebenen (sogenannte **Bereiche**) angeben, für die Zugriffstoken ausgestellt werden können. Der in der Microsoft Graph-API definierte Bereich **calendars.read** erteilt beispielsweise die Berechtigung zum Lesen des Kalenders eines Benutzers. Wenn Ihre Anwendung ein Zugriffstoken vom v2.0-Endpunkt erhält, müssen Sie die Signatur, den Aussteller, die Zielgruppe, die Ablaufzeit und je nach Szenario weitere Ansprüche des Tokens überprüfen. 
 
 Beim Anfordern eines Zugriffstokens vom v2.0-Endpunkt gibt der Endpunkt auch Metadaten zum Zugriffstoken für die Nutzung durch Ihre App zurück. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Diese Metadaten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass hierbei das Zugriffstoken selbst analysiert werden muss.
 

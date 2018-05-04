@@ -1,6 +1,6 @@
 ---
-title: "Azure Security and Compliance Blueprint Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit"
-description: "Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit"
+title: Azure Security and Compliance Blueprint Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit
+description: Automation – Webanwendungen für FedRAMP – Überwachung und Verantwortlichkeit
 services: security
 documentationcenter: na
 author: jomolesk
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: c37d027882882c637585d745ce81111ba30f6257
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: acb0677d48084108a9a5219f92dead10948228c8
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="audit-and-accountability-au"></a>Überwachung und Verantwortlichkeit (AU)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Die Überwachungsfunktion für diesen Blueprint wird von Azure Monitor und dem Log Analytics-Dienst in OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Log Analytics korreliert Überwachungsdaten für die von dieser Lösung bereitgestellten Ressourcen und kann auf die kundenseitig bereitgestellte Webanwendung erweitert werden. |
+| **Kunde** | Die Überwachungsfunktion für diese Blaupause wird von Azure Monitor und dem Log Analytics-Dienst bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im Log Analytics-Arbeitsbereich gespeichert. Log Analytics korreliert Überwachungsdaten für die von dieser Lösung bereitgestellten Ressourcen und kann auf die kundenseitig bereitgestellte Webanwendung erweitert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Azure-Aktivitätsprotokollereignisse verwenden ein ausführliches Schema, das Felder für mehr als 20 Typen von Überwachungsinformationen enthält. Neben Aktivitätsprotokollen stellt dieser Blueprint die Log Analytics-Lösung in OMS bereit, die unterschiedliche Datenquellen wie Windows-, Linux- und Azure-Diagnoseprotokolle sowie kundenspezifische Protokolle unterstützt.  |
+| **Kunde** | Azure-Aktivitätsprotokollereignisse verwenden ein ausführliches Schema, das Felder für mehr als 20 Typen von Überwachungsinformationen enthält. Neben Aktivitätsprotokollen stellt diese Blaupause die Log Analytics-Lösung bereit, die unterschiedliche Datenquellen wie Windows-, Linux- und Azure-Diagnoseprotokolle sowie kundenspezifische Protokolle unterstützt.  |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -273,7 +273,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS, um Überwachungsdaten für bereitgestellte Ressourcen für Informationen zur organisationsweiten Situation zu zentralisieren. Kunden können Log Analytics bei Bedarf in andere Systeme integrieren. |
+| **Kunde** | Diese Blaupause implementiert die Log Analytics-Lösung, um Überwachungsdaten für bereitgestellte Ressourcen für Informationen zur organisationsweiten Situation zu zentralisieren. Kunden können Log Analytics bei Bedarf in andere Systeme integrieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -287,7 +287,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS, um Überwachungsdaten von bereitgestellten Ressourcen für eine zentrale Prüfung, Analyse und Berichterstellung zu zentralisieren. |
+| **Kunde** | Diese Blaupause implementiert die Log Analytics-Lösung, um Überwachungsdaten von bereitgestellten Ressourcen für eine zentrale Prüfung, Analyse und Berichterstellung zu zentralisieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint stellt die Lösung Sicherheit und Überwachung von OMS bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in den Sicherheitszustand der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten OMS-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
+| **Kunde** | Diese Blaupause stellt die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in die Sicherheitslage der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten Log Analytics-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -357,7 +357,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. |
+| **Kunde** | Diese Blaupause implementiert die Log Analytics-Lösung. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für Azure bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -371,7 +371,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Der Inhalt und die zeitliche Reihenfolge der Überwachungsdatensätze werden bei der Sammlung durch Log Analytics nicht geändert. |
+| **Kunde** | Diese Blaupause implementiert die Log Analytics-Lösung. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für Azure bereit. Der Inhalt und die zeitliche Reihenfolge der Überwachungsdatensätze werden bei der Sammlung durch Log Analytics nicht geändert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -385,7 +385,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert die Log Analytics-Lösung in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Log Analytics verfügt über eine leistungsstarke Abfragesprache, um im Repository gespeicherte Daten zu extrahieren. |
+| **Kunde** | Diese Blaupause implementiert die Log Analytics-Lösung. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für Azure bereit. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Log Analytics verfügt über eine leistungsstarke Abfragesprache, um im Repository gespeicherte Daten zu extrahieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -469,7 +469,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Bei den bereitgestellten VMs und Azure Diagnosespeicherkonten handelt es sich um Quellen, die mit Log Analytics verbunden sind und separat von ihrem Ursprung aufbewahrt werden. Daten werden nahezu in Echtzeit von der OMS erfasst. |
+| **Kunde** | Diese Blaupause implementiert den Log Analytics-Dienst. Bei den bereitgestellten VMs und Azure Diagnosespeicherkonten handelt es sich um Quellen, die mit Log Analytics verbunden sind und separat von ihrem Ursprung aufbewahrt werden. Daten werden von Log Analytics nahezu in Echtzeit gesammelt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -483,7 +483,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. |
+| **Kunde** | Diese Blaupause implementiert den Log Analytics-Dienst. Log Analytics stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -512,7 +512,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Die Überwachungsfunktion für diesen Blueprint wird von Azure Monitor und dem Log Analytics-Dienst in OMS bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im OMS-Repository gespeichert. Diese Protokolle enthalten ausführliche Datensätze zu Ereignissen von Informationssystemen und können zum Schutz vor Unleugbarkeit beitragen. Darüber hinaus ist der Zugriff auf Daten durch rollenbasierte Zugriffssteuerung beschränkt, um eine nicht autorisierte Änderung oder Löschung von Protokolldaten zu verhindern. |
+| **Kunde** | Die Überwachungsfunktion für diese Blaupause wird von Azure Monitor und dem Log Analytics-Dienst bereitgestellt. Azure Monitor stellt detaillierte Überwachungsprotokolle zu Aktivitäten im Zusammenhang mit den bereitgestellten Ressourcen zur Verfügung. Diese Protokolle und Protokolle auf Betriebssystemebene werden von Log Analytics gesammelt und im Log Analytics-Arbeitsbereich gespeichert. Diese Protokolle enthalten ausführliche Datensätze zu Ereignissen von Informationssystemen und können zum Schutz vor Unleugbarkeit beitragen. Darüber hinaus ist der Zugriff auf Daten durch rollenbasierte Zugriffssteuerung beschränkt, um eine nicht autorisierte Änderung oder Löschung von Protokolldaten zu verhindern. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -526,7 +526,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Gesammelte Daten werden gemäß Log Analytics-Konfiguration ein Jahr lang aufbewahrt. |
+| **Kunde** | Diese Blaupause implementiert den Log Analytics-Dienst. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für Azure bereit. Gesammelte Daten werden gemäß Log Analytics-Konfiguration ein Jahr lang aufbewahrt. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 
@@ -582,7 +582,7 @@ ms.lasthandoff: 02/11/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint implementiert den Log Analytics-Dienst in OMS. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für die OMS bereit. Da Zeitstempel von Überwachungsdatensätzen nicht geändert werden, wird der Audit-Trail zeitlich korreliert. |
+| **Kunde** | Diese Blaupause implementiert den Log Analytics-Dienst. Log Analytics sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für Azure bereit. Da Zeitstempel von Überwachungsdatensätzen nicht geändert werden, wird der Audit-Trail zeitlich korreliert. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

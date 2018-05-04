@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/6/2017
 ms.author: mcoskun
-ms.openlocfilehash: d276ce9233da9137c49faf8c4d975bd1dcf2ff81
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: dd8042620b6b9829e49f3124ecdee1c038f8c12f
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="back-up-and-restore-reliable-services-and-reliable-actors"></a>Sichern und Wiederherstellen von Reliable Services und Reliable Actors
-Azure Service Fabric ist eine Plattform mit hoher Verfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese hohe Verfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
+Azure Service Fabric ist eine Plattform mit Hochverfügbarkeit, bei der der Status über mehrere Knoten repliziert wird, um diese Hochverfügbarkeit zu gewährleisten.  Auch wenn ein Knoten im Cluster ausfällt, bleiben die Dienste somit verfügbar. Diese von der Plattform bereitgestellte integrierte Redundanz reicht in manchen Fällen aus. In bestimmten Fällen wäre es jedoch wünschenswert, dass der Dienst Daten (auf einem externen Speicher) sichert.
 
 > [!NOTE]
 > Das Sichern und die Möglichkeit des Wiederherstellens Ihrer Daten (sowie die Überprüfung, ob diese Vorgänge wie erwartet ausgeführt werden) sind wichtig, damit Sie sie bei Datenverlust wiederherstellen können.
@@ -111,7 +111,7 @@ Im Allgemeinen können die Fälle, in denen Sie möglicherweise eine Wiederherst
 
   - Die Dienstpartition hat Daten verloren. Beispielsweise wird die Festplatte für zwei von drei Replikaten einer Partition (einschließlich des primären Replikats) beschädigt oder gelöscht. Das neue primäre Replikat muss möglicherweise Daten aus einer Sicherung wiederherstellen.
   - Der gesamte Dienst geht verloren. Beispielsweise entfernt ein Administrator den gesamten Dienst, sodass Dienst und Daten wiederhergestellt werden müssen.
-  - Der Dienst hat beschädigte Anwendungsdaten repliziert (z. B. aufgrund eines Anwendungsfehlers). In diesem Fall muss der Dienst aktualisiert oder zurückgesetzt werden, um die Ursache der Beschädigung zu entfernen, und nicht beschädigte Daten müssen wiederhergestellt werden.
+  - Der Dienst hat beschädigte Anwendungsdaten repliziert (z.B. aufgrund eines Anwendungsfehlers). In diesem Fall muss der Dienst aktualisiert oder zurückgesetzt werden, um die Ursache der Beschädigung zu entfernen, und nicht beschädigte Daten müssen wiederhergestellt werden.
 
 Da viele Ansätze möglich sind, nennen wir einige Beispiele zum Verwenden von `RestoreAsync` zur Wiederherstellung in den obigen Szenarien.
 
@@ -153,7 +153,7 @@ beispielsweise die vollständige Sicherung, die erste inkrementelle und die drit
 > 
 
 ## <a name="deleted-or-lost-service"></a>Gelöschter oder verlorener Dienst
-Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können.  Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z. B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können.  Sobald der Dienst wieder aktiv ist, muss die API zum Wiederherstellen von Daten (`OnDataLossAsync` oben) für jede Partition dieses Diensts aufgerufen werden. Hierzu kann beispielsweise `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` für jede Partition verwendet werden.  
+Wenn ein Dienst entfernt wird, muss der Dienst erst neu erstellt werden, bevor die Daten wiederhergestellt werden können.  Der Dienst muss unbedingt mit der gleichen Konfiguration erstellt werden, z.B. dem Partitionierungsschema, damit die Daten problemlos wiederhergestellt werden können.  Sobald der Dienst wieder aktiv ist, muss die API zum Wiederherstellen von Daten (`OnDataLossAsync` oben) für jede Partition dieses Diensts aufgerufen werden. Hierzu kann beispielsweise `[FabricClient.TestManagementClient.StartPartitionDataLossAsync](https://msdn.microsoft.com/library/mt693569.aspx)` für jede Partition verwendet werden.  
 
 Ab diesem Zeitpunkt erfolgt die Implementierung wie im oben aufgeführten Szenario. Jede Partition muss die letzte relevante Sicherung aus dem externen Speicher wiederherstellen. Ein Nachteil ist, dass die Partitions-ID sich geändert haben kann, da die Runtime Partitions-IDs dynamisch erstellt. Daher muss der Dienst die entsprechenden Partitionsinformationen und den Dienstnamen speichern, um die aktuelle Sicherung zum Speichern für jede Partition zu finden.
 
@@ -244,7 +244,7 @@ Im Folgenden erhalten Sie weitere ausführliche Informationen zum Sichern und Wi
 ### <a name="backup"></a>Sicherung
 Mit dem Reliable State Manager können konsistente Sicherungen erstellt werden, ohne Lese- oder Schreibvorgänge zu blockieren. Zu diesem Zweck verwendet er einen Mechanismus für Prüfpunkt- und Protokollbeständigkeit.  Der Reliable State Manager entlastet durch Prüfpunkte an bestimmten Punkten das Transaktionsprotokoll und verbessert Wiederherstellungszeiten.  Wenn `BackupAsync` aufgerufen wird, weist der Reliable State Manager alle Reliable Objects an, ihre neuesten Prüfpunktdateien in einen lokalen Sicherungsordner zu kopieren.  Der Reliable State Manager kopiert dann alle Protokolleinträge ab dem „Start“-Zeiger bis zum aktuellen Protokolleintrag in den Sicherungsordner.  Da alle Protokolleinträge einschließlich des aktuellen Eintrags in der Sicherung enthalten sind und der Reliable State Manager die Write-Ahead-Protokollierung beibehält, garantiert der Reliable State Manager, dass alle bestätigten Transaktionen (`CommitAsync` wurde erfolgreich zurückgegeben) in der Sicherung enthalten sind.
 
-Sämtliche nach dem Aufrufen von `BackupAsync` bestätigten Transaktionen können in der Sicherung enthalten oder nicht enthalten sein.  Sobald der lokale Sicherungsordner der Plattform von der Plattform aufgefüllt wurde (z. B. Abschluss der lokalen Sicherung durch die Runtime), wird der Rückruf der Dienstsicherung aufgerufen.  Durch diesen Rückruf wird der Sicherungsordner in einen externen Speicherort wie den Azure-Speicher verschoben.
+Sämtliche nach dem Aufrufen von `BackupAsync` bestätigten Transaktionen können in der Sicherung enthalten oder nicht enthalten sein.  Sobald der lokale Sicherungsordner der Plattform von der Plattform aufgefüllt wurde (z.B. Abschluss der lokalen Sicherung durch die Runtime), wird der Rückruf der Dienstsicherung aufgerufen.  Durch diesen Rückruf wird der Sicherungsordner in einen externen Speicherort wie den Azure-Speicher verschoben.
 
 ### <a name="restore"></a>Restore 
 Der Reliable State Manager ermöglicht das Wiederherstellen aus einer Sicherung mit der `RestoreAsync`-API.  
@@ -255,12 +255,7 @@ Das bedeutet, dass `RunAsync` bei StatefulService-Implementierungen erst aufgeru
 `OnDataLossAsync` wird dann für das neue primäre Replikat aufgerufen.
 Bis ein Dienst diese API erfolgreich (durch Rückgabe von true oder false) abschließt und die relevanten Neukonfigurationen fertigstellt, wird weiterhin die API nacheinander aufgerufen.
 
-`RestoreAsync` löscht zuerst jeden bestehenden Status in dem primären Replikat, für das es aufgerufen wurde.  
-Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind.  
-Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen.  
-Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus.  
-Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt.  
-Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
+`RestoreAsync` löscht zuerst jeden bestehenden Status in dem primären Replikat, für das es aufgerufen wurde. Danach erstellt der Reliable State Manager alle Reliable Objects, die im Sicherungsordner vorhanden sind. Als Nächstes werden die Reliable Objects angewiesen, ihre Prüfpunkte im Sicherungsordner wiederherzustellen. Schließlich stellt der Reliable State Manager seinen eigenen Status aus den Protokolldatensätzen im Sicherungsordner wieder her und führt die Wiederherstellung aus. Im Rahmen des Wiederherstellungsprozesses werden ab dem „Startpunkt“ beginnende Vorgänge, die Protokolldatensätze in den Sicherungsordner ausgeführt haben, in den Reliable Objects wiederholt. Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
   - [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
@@ -268,4 +263,5 @@ Dadurch wird sichergestellt, dass der wiederhergestellte Status konsistent ist.
   - [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   - [Konfigurieren von Reliable Services](service-fabric-reliable-services-configuration.md)
   - [Entwicklerreferenz für zuverlässige Auflistungen](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)
+  - [Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric](service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 

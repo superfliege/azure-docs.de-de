@@ -14,11 +14,11 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: e4f9d9e4e0f84610ad072d889abf68b62c0dd41f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6b62baf1fdad6e08535b13f2ca461b00156a7f14
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen
 
@@ -32,14 +32,14 @@ Wenn Sie die verwaltete Dienstidentität für einen Azure-Dienst aktivieren, ers
 
 Es folgt ein Beispiel für die Funktionsweise der verwalteten Dienstidentität mit virtuellen Azure-Computern.
 
-![Beispiel für MSI für virtuelle Computer](../media/msi-vm-example.png)
+![Beispiel für MSI für virtuelle Computer](../media/msi-vm-imds-example.png)
 
-1. Azure Resource Manager empfängt eine Nachricht zur Aktivierung von MSI auf einem virtuellen Computer.
+1. Azure Resource Manager empfängt eine Nachricht zur Aktivierung der verwalteten Dienstidentität (MSI) auf einem virtuellen Computer.
 2. Azure Resource Manager erstellt einen Dienstprinzipal in Azure AD, um die Identität des virtuellen Computers darzustellen. Der Dienstprinzipal wird in dem Azure AD-Mandanten erstellt, der von diesem Abonnement als vertrauenswürdig eingestuft wird.
-3. Azure Resource Manager konfiguriert die Details des Dienstprinzipals in der MSI-VM-Erweiterung des virtuellen Computers.  Dieser Schritt umfasst das Konfigurieren der Client-ID und des Zertifikats, die von der Erweiterung zum Abrufen von Zugriffstokens von Azure AD verwendet werden.
-4. Da die Dienstprinzipalidentität des virtuellen Computers nun bekannt ist, kann diesem der Zugriff auf Azure-Ressourcen erteilt werden.  Müsste Ihr Code zum Beispiel Azure Resource Manager aufrufen, würden Sie dem Dienstprinzipal des virtuellen Computers die entsprechende Rolle mithilfe der rollenbasierten Zugriffssteuerung (RBAC) in Azure AD zuweisen.  Wenn Ihr Code Key Vault aufrufen müsste, würden Sie dem Code den Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault gewähren.
-5. Der auf dem virtuellen Computer ausgeführte Code fordert ein Token von einem lokalen Endpunkt an, der von der MSI-VM-Erweiterung gehostet wird: http://localhost:50342/oauth2/token.  Der Ressourcenparameter gibt den Dienst an, an den das Token gesendet wird. Wenn der Code beispielsweise bei Azure Resource Manager authentifiziert werden soll, würden Sie Folgendes verwenden: „resource=https://management.azure.com/“.
-6. Die MSI-VM-Erweiterung verwendet die konfigurierte Client-ID und das Zertifikat, um ein Zugriffstoken von Azure AD anzufordern.  Azure AD gibt ein JWT-Zugriffstoken (JSON Web Token) zurück.
+3. Azure Resource Manager konfiguriert die Dienstprinzipaldetails für den virtuellen Computer im Azure Instance Metadata Service des virtuellen Computers. Dieser Schritt umfasst das Konfigurieren der Client-ID und des Zertifikats, die zum Abrufen von Zugriffstoken von Azure AD verwendet werden. *Hinweis: Der MSI-IMDS-Endpunkt ersetzt den aktuellen MSI-VM-Erweiterungsendpunkt. Weitere Informationen zu dieser Änderung finden Sie in den häufig gestellten Fragen und bekannten Problemen.*
+4. Da die Dienstprinzipalidentität des virtuellen Computers nun bekannt ist, kann diesem der Zugriff auf Azure-Ressourcen erteilt werden. Müsste Ihr Code zum Beispiel Azure Resource Manager aufrufen, würden Sie dem Dienstprinzipal des virtuellen Computers die entsprechende Rolle mithilfe der rollenbasierten Zugriffssteuerung (RBAC) in Azure AD zuweisen.  Wenn Ihr Code Key Vault aufrufen müsste, würden Sie dem Code den Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault gewähren.
+5. Der auf dem virtuellen Computer ausgeführte Code fordert ein Token vom IMDS-MSI-Endpunkt (Azure Instance Metadata Service) an, auf den nur innerhalb des virtuellen Computers zugegriffen werden kann: http://169.254.169.254/metadata/identity/oauth2/token. Der Ressourcenparameter gibt den Dienst an, an den das Token gesendet wird. Wenn der Code beispielsweise bei Azure Resource Manager authentifiziert werden soll, würden Sie Folgendes verwenden: „resource=https://management.azure.com/“.
+6. Der Azure Instance Metadata Service fordert unter Verwendung der Client-ID und des Zertifikats für den virtuellen Computer ein Zugriffstoken von Azure AD an. Azure AD gibt ein JWT-Zugriffstoken (JSON Web Token) zurück.
 7. Der Code sendet das Zugriffstoken in einem Aufruf eines Diensts, der die Azure AD-Authentifizierung unterstützt.
 
 Jeder Azure-Dienst, der verwaltete Dienstidentitäten unterstützt, verfügt über eine eigene Methode dafür, wie der Code ein Zugriffstoken erhält. In den Tutorials zu den jeweiligen Diensten finden Sie die einzelnen Methoden zum Abrufen eines Tokens.

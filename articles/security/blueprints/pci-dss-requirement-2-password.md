@@ -1,5 +1,5 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Kennwortanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Kennwortanforderungen
 description: PCI-DSS-Anforderung 2
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: frasim
-ms.openlocfilehash: 4ae9fc7d5b53d33f9feb98c450970e0560afa2af
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 8fafc277d7410ab3f8f54b0defee127fd6ec2f4d
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="password-requirements-for-pci-dss-compliant-environments"></a>Kennwortanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-2"></a>PCI-DSS-Anforderung 2
@@ -40,7 +40,7 @@ Dies gilt für ALLE Standardkennwörter, einschließlich, aber nicht beschränkt
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Die Anforderungen der Kennwortrichtlinie von Microsoft Azure Active Directory gelten für die neuen Kennwörter, die von Kunden innerhalb des AADUX-Portals bereitgestellt werden. Von Kunden initiierte Self-Service-Kennwortänderungen erfordern eine Bestätigung des bisherigen Kennworts. Von Administrator zurückgesetzte Kennwörter müssen bei der nächsten Anmeldung geändert werden. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erfordert, dass Benutzer sichere Kennwörter für alle Benutzer verwenden. In der Demo werden keine Beispiel- oder Gastkonten aktiviert.<br /><br />WLAN und SNMP sind nicht in der Lösung implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erfordert, dass Benutzer sichere Kennwörter für alle Benutzer verwenden. In der Demo werden keine Beispiel- oder Gastkonten aktiviert.<br /><br />WLAN und SNMP sind nicht in der Lösung implementiert.|
 
 
 
@@ -53,7 +53,7 @@ Dies gilt für ALLE Standardkennwörter, einschließlich, aber nicht beschränkt
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | WLAN und SNMP sind nicht in der Lösung implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | WLAN und SNMP sind nicht in der Lösung implementiert.|
 
 
 
@@ -71,7 +71,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Für Microsoft Azure entwickelt das OSSC Technical Security Services-Team Sicherheitskonfigurationsstandards für Systeme in der Microsoft Azure-Umgebung, die branchenweit anerkannten Standards zur Verstärkung der Sicherheit entsprechen. Diese Konfigurationen sind in Systemgrundwerten dokumentiert, und relevante Änderungen an der Konfiguration werden betroffenen Teams (z. B. IPAK-Team) mitgeteilt. Es werden Prozeduren zur Überwachung der Konformität mit Sicherheitskonfigurationsstandards implementiert. Die Sicherheitskonfigurationsstandards für Systeme in der Microsoft Azure-Umgebung entsprechen branchenweit anerkannten Standards zur Verstärkung der Sicherheit und werden mindestens einmal pro Jahr überprüft. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore bietet die Verstärkung der Sicherheit aller Dienste im Bereich der Karteninhaberdaten-Umgebung (Cardholder Data Environment, CDE). <br /><br />Der Contoso Webstore stellt auch das [Azure Security Center](https://azure.microsoft.com/services/security-center/) bereit, in dem Sie eine zentralisierte Ansicht des Sicherheitszustands aller Ihrer Azure-Ressourcen finden. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.<br /><br />Der Contoso Webstore nutzt die Operations Management Suite zur Protokollierung aller Systemänderungen. [Operations Management Suite (OMS)](/azure/operations-management-suite/) bietet eine umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore bietet die Verstärkung der Sicherheit aller Dienste im Bereich der Karteninhaberdaten-Umgebung (Cardholder Data Environment, CDE). <br /><br />Der Contoso Webstore stellt auch das [Azure Security Center](https://azure.microsoft.com/services/security-center/) bereit, in dem Sie eine zentralisierte Ansicht des Sicherheitszustands aller Ihrer Azure-Ressourcen finden. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.<br /><br />Der Contoso Webstore nutzt die Operations Management Suite zur Protokollierung aller Systemänderungen. Log Analytics ermöglicht die umfassende Protokollierung von Änderungen. Änderungen können auf Ihre Richtigkeit hin überprüft werden. Genauere Anweisungen finden Sie in den [PCI-Anleitungen für die Operations Management Suite](payment-processing-blueprint.md#logging-and-auditing).|
 
 
 
@@ -87,7 +87,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -100,7 +100,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure-Software- und Hardwarekonfigurationen werden mindestens vierteljährlich überprüft, um unnötige Funktionen, Ports, Protokolle und Dienste zu identifizieren und zu entfernen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -117,7 +117,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert. Die Bereitstellung bietet auch eine Verstärkung der Sicherheit aller Dienste im Bereich der CDE. <br /><br />Der Contoso Webstore stellt auch das [Azure Security Center](https://azure.microsoft.com/services/security-center/) bereit, in dem Sie eine zentralisierte Ansicht des Sicherheitszustands aller Ihrer Azure-Ressourcen finden. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Contoso Webstore-Dienste werden als PaaS-Dienste bereitgestellt. Alle Dienste sind isoliert und mithilfe von Netzwerksegmentierung segmentiert. Die Bereitstellung bietet auch eine Verstärkung der Sicherheit aller Dienste im Bereich der CDE. <br /><br />Der Contoso Webstore stellt auch das [Azure Security Center](https://azure.microsoft.com/services/security-center/) bereit, in dem Sie eine zentralisierte Ansicht des Sicherheitszustands aller Ihrer Azure-Ressourcen finden. Sie können auf einen Blick überprüfen, ob die erforderlichen Sicherheitskontrollfunktionen implementiert und ordnungsgemäß konfiguriert sind, und schnell Ressourcen ermitteln, die Ihre Aufmerksamkeit erfordern.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -130,7 +130,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure stellt sicher, dass nur entsprechend berechtigte Mitarbeiter die Sicherheitskontrollen der Azure-Plattform konfigurieren können. Dazu sind mehrstufige Zugriffssteuerungen und eine dokumentierte Geschäftsanforderung erforderlich. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore nutzt AAD und AD RBAC zum Verwalten der ordnungsgemäßen Bereitstellung von Sicherheitsparametern. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore nutzt AAD und AD RBAC zum Verwalten der ordnungsgemäßen Bereitstellung von Sicherheitsparametern. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -143,7 +143,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt Dokumentation zum Einrichten von Grenzen bereit. Das Bedrohungsmodell und das Datenflussdiagramm von Contoso veranschaulichen alle verwendeten Dienste und aktivierten Steuerelemente.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt Dokumentation zum Einrichten von Grenzen bereit. Das Bedrohungsmodell und das Datenflussdiagramm von Contoso veranschaulichen alle verwendeten Dienste und aktivierten Steuerelemente.|
 
 
 
@@ -159,7 +159,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure stellt sicher, dass beim Zugriff auf die Hypervisor-Infrastruktur die Nutzung von starker Kryptografie durchgesetzt wird. Microsoft Azure stellt auch sicher, dass Kunden über das Microsoft Azure-Verwaltungsportal mit starker Kryptografie auf ihre Dienst-/IaaS-Konsolen zugreifen können. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore zeigt, wie sichere Kennwörter in eine Lösung implementiert werden können. Zudem können alle Tests ausgeführt werden, um sicherzustellen, dass die Verschlüsselung in der gesamten Lösung implementiert ist.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore zeigt, wie sichere Kennwörter in eine Lösung implementiert werden können. Zudem können alle Tests ausgeführt werden, um sicherzustellen, dass die Verschlüsselung in der gesamten Lösung implementiert ist.<br /><br />Der Contoso Webstore verwendet auch eine [App Service-Umgebung (ASE)](/azure/app-service-web/app-service-app-service-environment-intro), um wichtige Methoden durchzusetzen erzwingen. Weitere Informationen finden Sie in den [PCI-Anleitungen für die App Service-Umgebung](payment-processing-blueprint.md#app-service-environment).|
 
 
 
@@ -172,7 +172,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Bestand der PaaS-Lösung in der Contoso Webstore-Demo kann in der bereitgestellten Dokumentation überprüft werden. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte OMS-Lösungen](payment-processing-blueprint.md#oms-solutions).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Bestand der PaaS-Lösung in der Contoso Webstore-Demo kann in der bereitgestellten Dokumentation überprüft werden. Weitere Informationen finden Sie in den [PCI-Anleitungen für vorinstallierte Verwaltungslösungen](payment-processing-blueprint.md#management-solutions).|
 
 
 
@@ -185,7 +185,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt Dokumentation bereit, die eine Übersicht über Sicherheitsparameter bereitstellt und Dienstelemente dokumentiert. |
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt Dokumentation bereit, die eine Übersicht über Sicherheitsparameter bereitstellt und Dienstelemente dokumentiert. |
 
 
 
@@ -198,7 +198,7 @@ Quellen branchenweit anerkannten Standards zur Verstärkung der Systemsicherheit
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend Microsoft Azure ist kein freigegebener Hostinganbieter. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Nicht zutreffend Microsoft Azure ist kein freigegebener Hostinganbieter.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Nicht zutreffend Microsoft Azure ist kein freigegebener Hostinganbieter.|
 
 
 

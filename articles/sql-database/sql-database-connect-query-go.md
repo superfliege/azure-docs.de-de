@@ -11,23 +11,23 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: v-daveng
-ms.openlocfilehash: b10d3e469ffac22a2b0994708f50125d21496fef
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 3585a47e0823a765bd59b28f4b399aed7c5fcae3
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="use-go-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Go
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie mithilfe von [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) eine Verbindung mit einer Azure SQL-Datenbank herstellen. Außerdem werden Transact-SQL-Anweisungen zum Abfragen und Ändern von Daten veranschaulicht.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Go](https://godoc.org/github.com/denisenkom/go-mssqldb) eine Verbindung mit einer Azure SQL-Datenbank herstellen. Außerdem werden Transact-SQL-Anweisungen zum Abfragen und Ändern von Daten veranschaulicht.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial müssen Sie folgende Voraussetzungen erfüllen:
+Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Go und die zugehörige Software müssen für das Betriebssystem installiert sein:
 

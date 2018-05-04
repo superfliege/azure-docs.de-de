@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 04/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 56559adbc2ebd4e4379326607a28333d538504da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 8cc6fa994c750f4718e6cc065819763d8be4f18c
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopieren von Daten aus Phoenix mithilfe von Azure Data Factory 
 
@@ -46,7 +46,7 @@ Folgende Eigenschaften werden für den mit Phoenix verknüpften Dienst unterstü
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **Phoenix** festgelegt werden. | Ja |
 | host | IP-Adresse oder Hostname des Phoenix-Servers. (192.168.222.160)  | Ja |
-| port | Der TCP-Port, den der Phoenix-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 8765.  | Nein  |
+| port | Der TCP-Port, den der Phoenix-Server verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 8765. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Nein  |
 | httpPath | Die Teil-URL, die dem Phoenix-Server entspricht. (/gateway/sandbox/phoenix/version). Der Standardwert ist `hbasephoenix`, wenn „WindowsAzureHDInsightService“ verwendet wird.  | Nein  |
 | authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem Phoenix-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Ja |
 | username | Der Benutzername, der für die Verbindung mit dem Phoenix-Server verwendet werden soll.  | Nein  |
@@ -67,7 +67,7 @@ Folgende Eigenschaften werden für den mit Phoenix verknüpften Dienst unterstü
         "type": "Phoenix",
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
-            "port" : "<port>",
+            "port" : "443",
             "httpPath" : "hbasephoenix",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",

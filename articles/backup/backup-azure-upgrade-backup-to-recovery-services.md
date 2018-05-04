@@ -1,6 +1,6 @@
 ---
-title: "Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor | Microsoft-Dokumentation"
-description: "Befehle und Supportinformationen zur Durchführung eines Upgrades für Ihren Sicherungstresor in Azure auf einen Recovery Services-Tresor."
+title: Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor | Microsoft-Dokumentation
+description: Befehle und Supportinformationen zur Durchführung eines Upgrades für Ihren Sicherungstresor in Azure auf einen Recovery Services-Tresor.
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 25ad2f6309531678ec98012f540556af581649b2
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -84,7 +84,7 @@ Das PowerShell-Skript fordert Sie zur Eingabe Ihrer Anmeldeinformationen auf. Ge
 ### <a name="pre-requisites-checking"></a>Überprüfung der Voraussetzungen
 Wenn Sie Ihre Azure-Anmeldeinformationen eingegeben haben, überprüft Azure, ob Ihre Umgebung die folgenden Voraussetzungen erfüllt:
 
-- **Minimale Agent-Version:** Für Upgrades von Sicherungstresoren auf Recovery Services-Tresore muss der MARS-Agent mindestens die Version 2.0.9083.0 aufweisen. Wenn Elemente bei einem Sicherungstresor mit einem Agent registriert sind, der eine ältere Version als 2.0.9083.0 aufweist, führt die Überprüfung der Voraussetzungen zu einem Fehler. Wenn die Überprüfung der Voraussetzungen fehlschlägt, aktualisieren Sie den Agent, und wiederholen Sie das Upgrade des Tresors. Die neueste Agent-Version kann unter folgendem Link heruntergeladen werden: [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Minimale Agent-Version:** Für Upgrades von Sicherungstresoren auf Recovery Services-Tresore muss der MARS-Agent mindestens die Version 2.0.9083.0 aufweisen. Wenn Elemente bei einem Sicherungstresor mit einem Agent registriert sind, der eine ältere Version als 2.0.9083.0 aufweist, führt die Überprüfung der Voraussetzungen zu einem Fehler. Wenn die Überprüfung der Voraussetzungen fehlschlägt, aktualisieren Sie den Agent, und wiederholen Sie das Upgrade des Tresors. Sie können die neueste Version des Agent [hierhttp://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) herunterladen.
 - **Laufende Konfigurationsaufträge**: Wenn ein Benutzer einen Auftrag für einen Sicherungstresor konfiguriert, für den ein Upgrade durchgeführt werden soll, oder ein Element registriert, schlägt die Überprüfung der Voraussetzungen fehl. Schließen Sie die Konfiguration ab, oder stellen Sie die Registrierung des Elements fertig, und starten Sie dann den Vorgang für das Tresorupgrade.
 - **Speicherbasiertes Abrechnungsmodell**: Recovery Services-Tresore unterstützen das instanzbasierte Abrechnungsmodell. Wenn Sie das Tresorupgrade in einem Sicherungstresor durchführen, der das speicherbasierte Abrechnungsmodell verwendet, werden Sie aufgefordert, ein Upgrade für Ihr Abrechnungsmodell zusammen mit dem Tresor durchzuführen. Anderenfalls können Sie zuerst Ihr Abrechnungsmodell aktualisieren, und anschließend das Tresorupgrade durchführen.
 - Identifizieren Sie eine Ressourcengruppe für den Recovery Services-Tresor. Um von den Resource Manager-Bereitstellungsfunktionen profitieren zu können, müssen Sie einen Recovery Services-Tresor in eine Ressourcengruppe einfügen. Wenn Sie nicht wissen, welche Ressourcengruppe Sie verwenden sollen, geben Sie einen Namen an. Die Ressourcengruppe wird dann automatisch beim Upgradevorgang für Sie erstellt. Beim Upgradevorgang wird der Tresor auch mit der neuen Ressourcengruppe verknüpft.
@@ -106,7 +106,7 @@ Der Recovery Services-Tresor unterstützt das Angeben von Zeitzoneninformationen
 
 ## <a name="enhanced-security"></a>Erweiterte Sicherheit
 
-Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). 
+Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). 
 
 Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden. 
 

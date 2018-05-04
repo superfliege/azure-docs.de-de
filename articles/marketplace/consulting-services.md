@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8d414a7a2ad46fbe63cc6eb8e6a6a41bb76aa432
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c8966f3dfa16010b82d1fe9cd02c63bdde65463c
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace-Beratungsdienste
 Der Azure Marketplace, der Dienste zur Unterstützung und Erweiterung ihrer Nutzung von Azure vermitteln soll, unterstützt das Listing von Beratungsdienstangeboten von Microsoft-Systemintegratorpartnern (SI). 
@@ -45,9 +45,12 @@ Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können meh
 * **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt. 
 * **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
 
-Abgesehen von der Art des *Briefings* können Beratungsdenste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
+Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
 
 Erfahren Sie mehr zu den [Kompetenzen über das Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
+
+>[!TIP]
+>Diese Informationen gelten ausschließlich für Azure Marketplace-Dienste. Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“. 
 
 ## <a name="supported-countries"></a>Unterstützte Länder
 
@@ -95,3 +98,31 @@ Um Ihr Beratungsdienstangebot im Azure Marketplace zu listen, gehen Sie wie folg
 4. **Überprüfung**: Unser Marketing- und Redaktionsteam überprüft die von Ihnen übermittelten Angaben und optimiert diese, um deren Lesbarkeit, Grammatik und Effizienz zu verbessern. 
 5. **Staging**: Ihre übermittelten Angaben werden für Sie zur Durchsicht bereitgestellt. 
 6. **Veröffentlichung**: Wenn Sie und Microsoft mit dem bereitgestellten Inhalt zufrieden sind, kann Ihr Angebot im Azure Marketplace online geschaltet werden. Das Datum, an dem das Listing live geschaltet wird, hängt von dem Land ab, das in Ihrem Angebot angegeben wurde. Wenn der Katalog für das ausgewählte Land bereits im Azure Marketplace aktiv ist, wird Ihr Listing innerhalb weniger Stunden angezeigt. Andernfalls wird das Listing erst angezeigt, wenn der Katalog live geschaltet wird.
+
+## <a name="content-review-criteria"></a>Kriterien für die Überprüfung des Inhalts
+
+Sobald Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
+
+Beachten Sie, dass das Feld „Titel“ eine Begrenzung auf 50 Zeichen aufweist und die Dauer und Art der Dienstleistung des Angebots angeben muss. Dies dient zur Suchmaschinenoptimierung. Das erforderliche Format ist wie folgt: NAME: DAUER TYP
+
+Beispiele:
+
+
+|Beispieltitel  |Richtiges Format  |
+|---------|---------|
+|Erste Schritte mit Azure IoT in der Fertigung    |   IoT in der Fertigung: 2-tägige Bewertung      |
+|Workshop zu intelligenten Toastern        |  Intelligente Toaster: 1-wöchiger Workshop       |
+|  PoC für SQL Server-Migration    | SQL Server-Migration: 3-wöchiger Proof of Concept        |
+
+ 
+Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichtigt das Team die folgenden Kriterien:
+
+|Angebotstyp  |Erforderlich |Empfohlen  |
+|---------|---------|---------|
+|Bewertung    |   Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Bewertungen hinzu, und erläutern Sie, was der Kunde erwarten kann.      |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
+|Briefing    |   Formulieren Sie, was der Kunde erwarten kann. Beachten Sie, dass Briefings in Form einer Präsenzveranstaltung angeboten werden müssen. Wenn Sie einen virtuellen Dienst bereitstellen, wählen Sie einen anderen Angebotstyp.    |  Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.       |
+|Implementierung    |  Fügen Sie eine detaillierte Terminplanung für mehrtägige oder mehrwöchige Implementierungen hinzu, und erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.       |    Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.     |
+|Proof of Concept    |    Erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.     | Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.        |
+|Workshop    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
+
+Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 

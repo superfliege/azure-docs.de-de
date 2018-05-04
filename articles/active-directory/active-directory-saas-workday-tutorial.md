@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Tutorial: Azure Active Directory-Integration mit Workday
 
@@ -119,7 +119,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://impl.workday.com/<tenant>/login-saml.htmld`
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Ihre Antwort-URL muss eine Unterdomäne aufweisen (z.B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). *http://www.myworkday.com* ist möglich, *http://myworkday.com* hingegen nicht. Wenden Sie sich an das [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html), um diese Werte zu erhalten.  
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und Antwort-URL. Ihre Antwort-URL muss eine Unterdomäne aufweisen (z.B. www, wd2, wd3, wd3-impl, wd5, wd5-impl). Eine URL wie „*http://www.myworkday.com*“ funktioniert, aber „*http://myworkday.com*“ funktioniert dagegen nicht. Wenden Sie sich an das [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html), um diese Werte zu erhalten.  
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -153,7 +153,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     >[!NOTE]
     > Der Wert des Umgebungsattributs wird an den Wert der Mandanten-URL gebunden:  
-    >- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z.B. *https://impl.workday.com/\<tenant\>/login-saml2.htmld*) muss das Attribut für die **Umgebung** auf Implementierung festgelegt werden.  
+    >- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z. B. *https://impl.workday.com/\<Mandant\>/login-saml2.htmld*), muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
     >- Wenn der Domänenname anders beginnt, müssen Sie sich mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
 
 11. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:
@@ -172,9 +172,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     b. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert für die **SAML-Entitäts-ID**, und fügen Sie ihn in das Textfeld **Aussteller** ein.
 
-    ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "SAML-Identitätsanbieter")
+    ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML-Identitätsanbieter")
    
-    c. Aktivieren Sie **Enable Workday Initiated Logout** (Workday-initiierte Abmeldung ermöglichen).
+    c. Aktivieren Sie **Enable IdP Initiated Logout** (IdP-initiierte Abmeldung ermöglichen).
    
     d. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert der **Abmelde-URL**, und fügen Sie ihn in das Textfeld **Logout Response URL** (Antwort-URL für Abmeldung) ein.
 
@@ -215,7 +215,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     ![SSO-Konfiguration](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguratio.png "SSO-Konfiguration")
    
-    a.  Geben Sie im Textfeld **Dienstanbieter-ID** Folgendes ein: **http://www.workday.com**
+    a.  Geben Sie in das Textfeld **Dienstanbieter-ID** Folgendes ein: **http://www.workday.com**.
    
     b. Wählen Sie **SP-initiierte Authentifizierungsanfrage nicht verkleinern**.
    
@@ -226,9 +226,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     d. Klicken Sie auf **OK**. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -309,7 +306,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-workday-tutorial/tutorial_general_01.png
@@ -323,4 +319,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-workday-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-workday-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-workday-tutorial/tutorial_general_203.png
-

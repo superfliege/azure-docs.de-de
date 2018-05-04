@@ -1,11 +1,11 @@
 ---
-title: "Einrichten des Messaging mit Azure Service Bus für Azure Logic Apps | Microsoft-Dokumentation"
+title: Einrichten des Messaging mit Azure Service Bus für Azure Logic Apps | Microsoft-Dokumentation
 description: Senden und Empfangen von Nachrichten mit Ihren Logik-Apps mithilfe von Azure Service Bus
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 02/06/2018
 ms.author: ladocs
-ms.openlocfilehash: e81580db17610adc6be534c9801881f9b68b14fd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5a4760e1e0f38fd81fd779786985f5753d77eab
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Senden und Empfangen von Nachrichten mit dem Azure Service Bus-Connector
 
@@ -65,12 +65,17 @@ Ein [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein
 
    ![Service Bus-Trigger auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
+   > [!NOTE]
+   > Einige Trigger geben mindestens eine Nachricht zurück, z. B. der Trigger*Service Bus - Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)*.
+   > Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
+
    1. Wenn noch keine Verbindung zu Ihrem Service Bus-Namespace besteht, werden Sie aufgefordert, diese Verbindung nun zu erstellen. Benennen Sie Ihre Verbindung, und wählen Sie den Service Bus-Namespace, den Sie verwenden möchten.
 
       ![Service Bus-Verbindung herstellen](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
 
       Wenn Sie die Verbindungszeichenfolge manuell eingeben möchten, wählen Sie **Verbindungsinformationen manuell eingeben**. 
       Erfahren Sie, [wie Sie Ihre Verbindungszeichenfolge suchen](#permissions-connection-string).
+      
 
    2. Wählen Sie jetzt die zu verwendende Service Bus-Richtlinie aus, und wählen Sie **Erstellen**.
 
@@ -79,6 +84,11 @@ Ein [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein
 4. Wählen Sie die zu verwendende Service Bus-Warteschlange aus, und richten Sie Intervall und Häufigkeit der Warteschlangenüberprüfung ein.
 
    ![Service Bus-Warteschlange auswählen, Abrufintervall einrichten](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+
+   > [!NOTE]
+   > Alle Service Bus-Trigger sind Trigger mit **langem Abruf**. Das bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen.
+   > Werden innerhalb von 30 Sekunden keine Nachrichten empfangen, wird die Triggerausführung übersprungen. Andernfalls fährt der Trigger mit dem Lesen von Nachrichten fort, bis die Warteschlange oder das Themenabonnement leer ist.
+   > Der nächste Triggerabruf basiert auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
 
 5. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 

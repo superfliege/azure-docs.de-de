@@ -1,12 +1,12 @@
 ---
-title: "Mehrere IP-Adressen für virtuelle Azure Computer – Vorlage | Microsoft Docs"
-description: "Erfahren Sie, wie Sie einem virtuellen Azure-Computer mehrere IP-Adressen mit einer Azure Resource Manager-Vorlage zuordnen können."
-documentationcenter: 
+title: Mehrere IP-Adressen für virtuelle Azure Computer – Vorlage | Microsoft Docs
+description: Erfahren Sie, wie Sie einem virtuellen Azure-Computer mehrere IP-Adressen mit einer Azure Resource Manager-Vorlage zuordnen können.
+documentationcenter: ''
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mit einer Azure Resource Manager-Vorlage
 
@@ -76,7 +76,7 @@ Unabhängig von der Methode, für die Sie sich entscheiden, müssen Sie Werte f�
 
 Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen einer Vorlage beschrieben. Wenn Sie das Bereitstellen über den `-TemplateUri parameter`, ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `-TemplateFile` ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit PowerShell](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen einer Vorlage beschrieben. Wenn Sie das Bereitstellen über den `-TemplateUri parameter` ausführen möchten, hat diese Vorlage den URI  *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `-TemplateFile` ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `-TemplateParameterFile`.
 
@@ -91,7 +91,7 @@ Wenn Sie die Vorlage mit PowerShell bereitstellen möchten, führen Sie die folg
 
 Wenn Sie die Vorlage über die Azure-Befehlszeilenschnittstelle 1.0 bereitstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen der Vorlage beschrieben. Wenn Sie das Bereitstellen über `--template-uri` (-f) ausführen möchten, hat diese Vorlage den URI *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `--template-file` (-f) ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+1. Stellen Sie die Vorlage bereit, indem Sie die Schritte im Artikel [Bereitstellen einer Vorlage mit der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) ausführen. In diesem Artikel sind mehrere Optionen für ein Bereitstellen der Vorlage beschrieben. Wenn Sie das Bereitstellen über `--template-uri` ausführen möchten, hat diese Vorlage den URI  *https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json*. Möchten Sie das Bereitstellen über den Parameter `--template-file` (-f) ausführen, kopieren Sie den Inhalt der [Vorlagendatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie ggf. den Inhalt der Vorlage. Über die Vorlage werden die Ressourcen und Einstellungen bereitgestellt, die im [Ressourcen](#resources)-Abschnitt dieses Artikels aufgeführt sind. Weitere Informationen zu Vorlagen sowie zum Schreiben von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
     Unabhängig von der Art und Weise, wie Sie die Vorlage bereitstellen, müssen Sie Werte für die Parameter angeben, die im [Parameter](#parameters)-Abschnitt dieses Artikels aufgeführt sind. Wenn Sie die Parameter mithilfe einer Parameterdatei bereitstellen möchten, kopieren Sie den Inhalt der [Parameterdatei](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-multiple-ipconfig/azuredeploy.parameters.json) aus GitHub in eine neue Datei auf Ihrem Computer. Ändern Sie die Werte in der Datei. Verwenden Sie den Namen der Datei, die Sie erstellt haben, als Wert für den Parameter `--parameters-file` (-e).
 

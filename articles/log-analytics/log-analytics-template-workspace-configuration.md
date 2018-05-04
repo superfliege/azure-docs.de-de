@@ -1,29 +1,29 @@
 ---
 title: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
-description: "Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden."
+description: Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: d21ca1b0-847d-4716-bb30-2a8c02a606aa
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 04/16/2018
 ms.author: richrund
-ms.openlocfilehash: db9b941e84c018a3a56dd683c118e47ee808259d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
 Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
-* Erstellen eines Arbeitsbereichs
+* Erstellen eines Arbeitsbereichs und Festlegen des Tarifs 
 * Hinzufügen einer Lösung
 * Erstellen gespeicherter Suchvorgänge
 * Erstellen einer Computergruppe
@@ -36,30 +36,106 @@ Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource
 
 Dieser Artikel enthält Vorlagenbeispiele, die einen Teil der Konfiguration veranschaulichen, die Sie mit Vorlagen ausführen können.
 
-## <a name="api-versions"></a>API-Versionen
-Das Beispiel in diesem Artikel bezieht sich auf einen [aktualisierten Log Analytics-Arbeitsbereich](log-analytics-log-search-upgrade.md).  Um einen Legacy-Arbeitsbereich zu verwenden, müssten Sie die Syntax der Abfragen in die Legacy-Sprache übertragen und die API-Version für jede Ressource ändern.  Die folgende Tabelle enthält die API-Versionen für die Ressourcen, die in diesem Beispiel verwendet werden.
+## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
+Im folgenden Beispiel wird mithilfe einer Vorlage von Ihrem lokalen Computer ein Arbeitsbereich erstellt. Die JSON-Vorlage ist so konfiguriert, dass Sie nur zur Eingabe des Namens für den Arbeitsbereich aufgefordert werden und Standardwerte für die anderen Parameter angegeben werden, die wahrscheinlich als Standardkonfiguration in Ihrer Umgebung verwendet werden.  
 
-| Ressource | Ressourcentyp | Legacy-API-Version | Aktualisierte API-Version |
-|:---|:---|:---|:---|
-| Arbeitsbereich   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
-| Suchen,      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
-| Datenquelle | datasources   | 2015-11-01-preview | 2015-11-01-preview |
-| Lösung    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+Für folgende Parameter wird ein Standardwert festgelegt:
 
+* Standort: Als Standardwert wird „USA, Osten“ verwendet.
+* SKU: Als Standardwert wird der neue im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs
+>[!WARNING]
+>Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar. 
+>
+
+### <a name="create-and-deploy-template"></a>Erstellen und Bereitstellen der Vorlage
+
+1. Kopieren Sie die folgende JSON-Syntax, und fügen Sie sie in Ihre Datei ein:
+
+    ```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "eastus",
+              "westus"
+            ],
+            "defaultValue": "eastus",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        },
+        "sku": {
+            "type": "String",
+            "allowedValues": [
+              "Standalone",
+              "PerNode",
+              "PerGB2018"
+            ],
+            "defaultValue": "PerGB2018",
+            "metadata": {
+            "description": "Specifies the service tier of the workspace: Standalone, PerNode, Per-GB"
+        }
+          },
+    },
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2017-03-15-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "Name": "[parameters('sku')]"
+                },
+                "features": {
+                    "searchVersion": 1
+                }
+            }
+          }
+       ]
+    }
+    ```
+2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen.  Informationen zu den unterstützten Eigenschaften und Werten finden Sie in der Referenz [Microsoft.OperationalInsights/workspaces template](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces). 
+3. Speichern Sie diese Datei unter dem Namen **deploylaworkspacetemplate.json** in einem lokalen Ordner.
+4. Nun können Sie die Vorlage bereitstellen. Den Arbeitsbereich können Sie über PowerShell oder die Befehlszeile erstellen.
+
+   * Führen Sie bei Verwendung von PowerShell die folgenden Befehle in dem Ordner mit der Vorlage aus:
+   
+        ```powershell
+        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        ```
+
+   * Führen Sie bei Verwendung der Befehlszeile die folgenden Befehle in dem Ordner mit der Vorlage aus:
+
+        ```cmd
+        azure config mode arm
+        azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile deploylaworkspacetemplate.json
+        ```
+
+Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung ähnlich der folgenden mit dem Ergebnis angezeigt:<br><br> ![Beispielergebnis nach abgeschlossener Bereitstellung](./media/log-analytics-template-workspace-configuration/template-output-01.png)
+
+## <a name="configure-a-log-analytics-workspace"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs
 Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
 
-1. Erstellen eines Arbeitsbereichs und Einrichten der Datenaufbewahrung
-2. Hinzufügen von Lösungen zum Arbeitsbereich
-3. Erstellen gespeicherter Suchvorgänge
-4. Erstellen einer Computergruppe
-5. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
-6. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
-7. Sammeln von Syslog-Ereignissen auf Linux-Computern
-8. Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
-9. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
-11. Sammeln von IIS-Protokollen und Windows-Ereignisprotokollen, die von der Azure-Diagnose in ein Speicherkonto geschrieben werden
+1. Hinzufügen von Lösungen zum Arbeitsbereich
+2. Erstellen gespeicherter Suchvorgänge
+3. Erstellen einer Computergruppe
+4. Aktivieren der Sammlung von IIS-Protokollen auf Computern mit installiertem Windows-Agent
+5. Sammeln von Leistungsindikatoren logischer Datenträger von Linux-Computern (Prozentsatz verwendeter I-Knoten, MB frei, Prozentsatz des verwendeten Speicherplatzes, Übertragungen/s, Lesevorgänge/s, Schreibvorgänge/s)
+6. Sammeln von Syslog-Ereignissen auf Linux-Computern
+7. Sammeln von Fehler- und Warnereignissen aus dem Anwendungsereignisprotokoll von Windows-Computern
+8. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
+9. Sammeln von IIS-Protokollen und Windows-Ereignisprotokollen, die von der Azure-Diagnose in ein Speicherkonto geschrieben werden
 
 ```json
 {
@@ -77,10 +153,11 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
       "allowedValues": [
         "Free",
         "Standalone",
-        "PerNode"
+        "PerNode",
+        "PerGB2018"
       ],
       "metadata": {
-        "description": "Service Tier: Free, Standalone, or PerNode"
+        "description": "Service Tier: Free, Standalone, PerNode, or PerGB2018"
     }
       },
     "dataRetention": {
@@ -421,7 +498,6 @@ New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <r
 azure config mode arm
 azure group deployment create <my-resource-group> <my-deployment-name> --TemplateFile azuredeploy.json
 ```
-
 
 ## <a name="example-resource-manager-templates"></a>Resource Manager-Beispielvorlagen
 Der Katalog mit Azure-Schnellstartvorlagen enthält u.a. folgende Vorlagen für Log Analytics:

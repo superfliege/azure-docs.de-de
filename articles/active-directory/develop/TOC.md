@@ -36,6 +36,7 @@
 ## [Anwendungsregistrierung](active-directory-integrating-applications.md)
 ## [Mehrinstanzenfähige Apps](active-directory-devhowto-multi-tenant-overview.md)
 ## [Bedingter Zugriff](active-directory-conditional-access-developer.md)
+## [Berechtigungen](active-directory-permissions.md)
 ## OAuth und OpenID Connect
 ### [OpenID Connect-Protokoll](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-protocols-oauth-code.md)
@@ -69,9 +70,9 @@
 ## [ACS-Migration](active-directory-acs-migration.md)
 ## [Bewährte Methoden für die Fehlerbehandlung für ADAL](active-directory-devhowto-adal-error-handling.md)
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)
-## [Artikel mit Codebeispielen](active-directory-code-samples.md)
+## [Codebeispiele nach Szenario](active-directory-code-samples.md)
 ## [Glossar](active-directory-dev-glossary.md)
 ## [Authentifizierungsprotokolle](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -97,7 +98,8 @@
 ### Mobile Apps und Desktop-Apps
 #### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
-#### [.NET (Windows Desktop)](guidedsetups/active-directory-windesktop.md)
+#### [Windows Desktop .NET](guidedsetups/active-directory-windesktop.md)
+#### [Universelle Windows-Plattform](guidedsetups/active-directory-uwp-v2.md)
 ### Web-Apps
 #### [ASP.NET](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS](active-directory-v2-devquickstarts-node-web.md)
@@ -109,8 +111,10 @@
 #### [ASP.NET](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)
 ## Anleitungen
 ### [Registrieren einer App](active-directory-v2-app-registration.md)
+### [Referenz zur App-Registrierung](active-directory-v2-registration-portal.md)
 ## Verweis
 ### [Authentifizierungsbibliotheken](active-directory-v2-libraries.md)
+### [v2.0-Codebeispiele nach Szenario](active-directory-v2-code-samples.md)
 ### [v2.0-Authentifizierungsprotokolle](active-directory-v2-protocols.md)
 #### [OpenID Connect](active-directory-v2-protocols-oidc.md)
 #### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-v2-protocols-oauth-code.md)

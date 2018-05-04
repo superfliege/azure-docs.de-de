@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 04/22/2018
 ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d8a4ddd98086252f36eeb7034248e909fec1ac0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 627b5bf39c066cd974b70f9db974fcf3fd73b251
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
-Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
+Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben. 
 
 ## <a name="types-of-tokens"></a>Tokentypen
 Azure AD unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-protocols-oauth-code.md), das sowohl Zugriffstoken (access_tokens) als auch Aktualisierungstoken (refresh_tokens) verwendet.  Er unterstützt darüber hinaus die Authentifizierung und Anmeldung über [OpenID Connect](active-directory-protocols-openid-connect-code.md). Dabei wird ein dritter Tokentyp, das ID-Token, eingeführt.  Alle diese Token werden als Bearertoken dargestellt.
@@ -52,7 +52,6 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 > [!div class="mx-codeBreakAll"]
 | JWT-Anspruch | NAME | BESCHREIBUNG |
 | --- | --- | --- |
-| `appid` |Anwendungs-ID |Identifiziert die Anwendung, die das Token verwendet, um auf eine Ressource zuzugreifen. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen. <br><br> **JWT-Beispielwert**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
 | `aud` |Zielgruppe |Der vorgesehene Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind. <br><br> **SAML-Beispielwert**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT-Beispielwert**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |Application Authentication Context Class Reference (Kontextklassenreferenz für die Anwendungsauthentifizierung) |Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. <br><br> **JWT-Beispielwert**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference (Klassenreferenz des Anwendungskontexts) |Gibt an, wie der Antragsteller authentifiziert wurde (im Gegensatz zum Client im Anspruch „Kontextklassenreferenz für die Anwendungsauthentifizierung“). Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt. <br><br> **JWT-Beispielwert**: <br> `"acr": "0"` |
@@ -163,9 +162,8 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
   * Unfreiwillige Kennwortänderung: Wenn ein Administrator einen Benutzer zwingt, sein Kennwort zu ändern, oder das Kennwort zurücksetzt, werden die Token des Benutzers ungültig, wenn sie mit seinem Kennwort beschafft wurden.  Unten sind Hinweise zu den Ausnahmen angegeben. 
   * Sicherheitsverletzung: Bei einer Sicherheitsverletzung (z.B. einer Verletzung des lokalen Kennwortspeichers) kann der Administrator alle derzeit ausgestellten Aktualisierungstoken widerrufen.  Hierdurch wird erzwungen, dass sich alle Benutzer erneut authentifizieren müssen. 
 
-Hinweis: 
-
-Wenn zum Beschaffen des Tokens ein Authentifizierungsverfahren ohne Kennwort verwendet wurde (Windows Hello, Authenticator-App, biometrisch, z.B. Gesichtserkennung oder Fingerabdruck), wird bei einer Änderung des Benutzerkennworts keine erneute Authentifizierung des Benutzers erzwungen (aber für die Authenticator-App).  Der Grund ist, dass sich die gewählte Authentifizierungseingabe (z.B. ein Gesicht) nicht geändert hat und daher erneut für die Authentifizierung verwendet werden kann.
+> [!NOTE]
+>Wenn zum Beschaffen des Tokens ein Authentifizierungsverfahren ohne Kennwort verwendet wurde (Windows Hello, Authenticator-App, biometrisch, z.B. Gesichtserkennung oder Fingerabdruck), wird bei einer Änderung des Benutzerkennworts keine erneute Authentifizierung des Benutzers erzwungen (aber für die Authenticator-App).  Der Grund ist, dass sich die gewählte Authentifizierungseingabe (z.B. ein Gesicht) nicht geändert hat und daher erneut für die Authentifizierung verwendet werden kann.
 
 ## <a name="sample-tokens"></a>Beispieltoken
 

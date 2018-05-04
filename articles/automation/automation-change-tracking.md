@@ -9,11 +9,11 @@ ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e4abf8ae491c9992dd3d21a0d657ba9cd214b740
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/18/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -23,18 +23,19 @@ Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderun
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-
 Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Lösung für die Änderungsnachverfolgung und den Bestand für Ihr Automation-Konto aktivieren.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
 1. Wählen Sie **Änderungsnachverfolgung** unter **KONFIGURATION** aus.
-2. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus, und klicken Sie auf **Aktivieren**.
+1. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus, und klicken Sie auf **Aktivieren**.
 
 Dadurch wird die Lösung für Ihr Automation-Konto aktiviert. Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Das blaue Banner dient zur Benachrichtigung, wenn die Lösung aktiviert ist. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**, um die Lösung zu verwalten.
 
 ## <a name="configuring-change-tracking-and-inventory"></a>Konfigurieren der Änderungs- und Bestandsnachverfolgung
 
-Wie Sie Computer in die Lösung integrieren, erfahren Sie unter [Integrieren von Automation-Lösungen](automation-onboard-solutions-from-automation-account.md). Wenn Sie eine neue Datei oder einen Registrierungsschlüssel zum Nachverfolgen aktivieren, wird das entsprechende Element sowohl für die Änderungsnachverfolgung als auch die Bestandsverfolgung aktiviert.
+Wie Sie Computer in die Lösung integrieren, erfahren Sie unter [Integrieren von Automation-Lösungen](automation-onboard-solutions-from-automation-account.md). Nachdem ein Computeronboarding mit der Lösung „Änderungsnachverfolgung“ und „Bestand“ vorgenommen wurde, können Sie die nachzuverfolgenden Elemente konfigurieren. Wenn Sie eine neue Datei oder einen Registrierungsschlüssel zum Nachverfolgen aktivieren, wird das entsprechende Element sowohl für die Änderungsnachverfolgung als auch die Bestandsverfolgung aktiviert.
+
+Zum Nachverfolgen von Änderungen unter Windows und Linux werden MD5-Hashes der Dateien verwendet. Diese Hashes werden dann verwendet, um zu ermitteln, ob seit der letzten Bestandsaufnahme eine Änderung vorgenommen wurde.
 
 ### <a name="configure-linux-files-to-track"></a>Konfigurieren von Linux-Dateien für die Nachverfolgung
 
@@ -109,6 +110,7 @@ Weitere Einschränkungen:
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Die Lösung für die Änderungsnachverfolgung weist derzeit die folgenden Probleme auf:
+
 * Hotfix-Updates werden für Computer mit Windows 10 Creators Update und Windows Server 2016 Core RS3 nicht erfasst.
 
 ## <a name="change-tracking-data-collection-details"></a>Details zur Datensammlung für die Änderungsnachverfolgung
@@ -117,13 +119,13 @@ Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstype
 
 | **Änderungstyp** | **Frequency** |
 | --- | --- |
-| Windows-Registrierung | 50 Minuten | 
-| Windows-Datei | 30 Minuten | 
-| Linux-Datei | 15 Minuten | 
-| Windows-Dienste | 30 Minuten | 
+| Windows-Registrierung | 50 Minuten |
+| Windows-Datei | 30 Minuten |
+| Linux-Datei | 15 Minuten |
+| Windows-Dienste | 30 Minuten |
 | Linux-Daemons | 5 Minuten |
-| Windows-Software | 30 Minuten | 
-| Linux-Software | 5 Minuten | 
+| Windows-Software | 30 Minuten |
+| Linux-Software | 5 Minuten |
 
 ### <a name="registry-key-change-tracking"></a>Registrierungsschlüssel-Änderungsnachverfolgung
 

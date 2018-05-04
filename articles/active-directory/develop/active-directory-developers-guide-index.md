@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fe5d344eaaecc40f6d1937943603eda0404a1ca9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Artikel im Entwicklerhandbuch zu Azure AD
 Die folgende Liste enthält alle Themen im Azure Active Directory-Entwicklerhandbuch.
@@ -43,7 +43,7 @@ Diese Artikel beschreiben bestimmte Konzepte und Features von Azure Active Direc
 | [Office 365-Verkäuferdashboard](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | Veröffentlichen einer Anwendung über das Office 365-Verkäuferdashboard |
 | [Verbundene Visual Studio-Dienste](vs-active-directory-dotnet-getting-started.md)                                               | Verwenden der Azure AD-Integration mit MVC-Projekten in Visual Studio |
 | [ADFS für Windows Server](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | Integrieren in das lokale Active Directory mithilfe von ADFS |
-| [Bewährte Methoden für die Fehlerbehandlung für ADAL](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Einrichten robuster Fehlerbehandlung und Aktivieren der Protokollierung |
+| [Bewährte Methoden für die Fehlerbehandlung für ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | Einrichten robuster Fehlerbehandlung und Aktivieren der Protokollierung |
 
 ## <a name="reference"></a>Verweis
 Diese Artikel enthalten grundlegende Informationen zu REST- und Authentifizierungsbibliothek-APIs, Protokollen, Fehlern, Codebeispielen und Endpunkten.

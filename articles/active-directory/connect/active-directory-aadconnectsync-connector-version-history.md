@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/22/2018
 ms.author: davidste
-ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e46a816b9a0d66991b8f619135b657a0d51ba395
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
@@ -34,7 +34,7 @@ Verwandte Links:
 * [Die neuesten Connectors herunterladen](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Generischer LDAP-Connector](active-directory-aadconnectsync-connector-genericldap.md) – Referenzdokumentation
 * [Generischer SQL-Connector](active-directory-aadconnectsync-connector-genericsql.md) – Referenzdokumentation
-* [Web Services-Connector](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) – Referenzdokumentation
+* [Web Services-Connector](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) – Referenzdokumentation
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
@@ -101,7 +101,7 @@ Verwandte Links:
 > Der JSONSpaceNamePattern-Schlüssel ist erforderlich, da beim Export die folgende Fehlermeldung angezeigt wird: „Ein leerer Name ist unzulässig.“. 
 
 * Lotus Notes:
-  * Wenn die Option zum **Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
+  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
     * Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
       - LastName
       - FirstName

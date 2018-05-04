@@ -1,41 +1,36 @@
 ---
-title: "Partner für die Datenverwaltung mit SQL Data Warehouse | Microsoft Docs"
-description: "Liste der externen Partner für die Datenverwaltung mit Lösungen, die SQL Data Warehouse unterstützen."
+title: Partner für die Datenverwaltung mit SQL Data Warehouse | Microsoft Docs
+description: Liste der externen Partner für die Datenverwaltung mit Lösungen, die SQL Data Warehouse unterstützen.
 services: sql-data-warehouse
-documentationcenter: NA
-author: kevinvngo
-manager: jhubbard
-editor: 
-ms.assetid: c3d96b41-f049-49e8-af32-408f4a893477
+author: jrowlandjones
+manager: craigg-msft
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: partners
-ms.date: 12/27/2016
-ms.author: kevin;barbkess
-ms.openlocfilehash: 2fc8d1876e8a26252e83928857f5e7e9bf6ad47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.topic: conceptual
+ms.component: consume
+ms.date: 04/17/2018
+ms.author: jrj
+ms.reviewer: igorstan
+ms.openlocfilehash: d29ccd2d4dce1d1550bac5b5ab97bb44c9960ed6
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Partner für die Datenverwaltung bei SQL Data Warehouse
-Für die Erstellung Ihrer eigenen End-to-End-Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools und Lösungen für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
+Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools und Lösungen für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
 
-## <a name="our-data-management-partners"></a>Unsere Partner für die Datenverwaltung
-| Partner | Beschreibung | Links | Videos |
+## <a name="data-management-partners"></a>Partner für die Datenverwaltung
+| Partner | BESCHREIBUNG | Links | Videos |
 | --- | --- | --- | --- |
 | ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing bietet das Tool Nexus Chameleon, das 10 Jahre Entwicklung in Abfragesystemen aufweisen kann. Nexus ist als Abfragetool für SQL Data Warehouse verfügbar. Mithilfe von Nexus können Sie Abfragen auf internen und Cloudcomputern durchführen und Daten aus verschiedenen Plattformen zusammenführen. Point-Click-Report! |[Marketplace][coffing_marketplace]<br>[Website][coffing_website]<br>[Pressemitteilung][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![Video zu Coffing](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
 | ![Inbrein][2] |**MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Website][inbrein_website]<br>[Datenblatt][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![Video zu Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
-| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Darüber hinaus bieten wir Softwarelösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Marketplace][infolibrarian_marketplace]<br>[Website][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![Video zu Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
-| ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction ist eine leistungsfähige Lösung zur Kundenbindung. Sie ermöglicht einen fortlaufenden Dialog mit Kunden über alle Kommunikationskanäle und Kontaktpunkte hinweg. Dabei verwalten Sie alle Phasen des Omnichannelmarketings über eine einheitliche Anlaufstelle. |[Marketplace][redpoint_it_marketplace]<br>[Website][redpoint_it_website]<br>[Pressemitteilung][redpoint_press]<br>[Datenblatt][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![Video zu Redpoint Data Management](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
+| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Darüber hinaus bietet Infolibrarian Softwarelösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Marketplace][infolibrarian_marketplace]<br>[Website][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![Video zu Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
+| ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction ist eine leistungsfähige Lösung zur Kundenbindung. Sie ermöglicht Ihnen einen fortlaufenden Dialog mit Kunden über alle Kommunikationskanäle und Kontaktpunkte hinweg. Dabei verwalten Sie alle Phasen des Omnichannelmarketings über eine einheitliche Anlaufstelle. |[Marketplace][redpoint_it_marketplace]<br>[Website][redpoint_it_website]<br>[Pressemitteilung][redpoint_press]<br>[Datenblatt][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![Video zu Redpoint Data Management](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
 | ![Redpoint Global][4] |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Durch die Nutzung von Azure SQL Data Warehouse und RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Marketplace][redpoint_dm_marketplace]<br>[Website][redpoint_dm_website]<br>[Pressemitteilung][redpoint_press]<br>[Datenblatt][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![Video zu Redpoint Data Management](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0) |
 | ![Sentry One][5] |**DW Sentry**<br>Mit dem intelligenten Dashboard für Datenverschiebungen und dem Ereigniskalender wissen Sie immer genau, was die Workload beeinträchtigt. So erhalten Sie einen Einblick in Ihre Abfragen und Aufträge, die zum Laden, Sichern oder Wiederherstellen Ihrer Daten ausgeführt werden. Sie müssen sich daher nie Gedanken darüber machen, ob Sie Ihre Azure-Ressourcen optimal nutzen. |[Marketplace][sql_sentry_marketplace]<br>[Website][sql_sentry_website]<br>[Pressemitteilung][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu unseren anderen Partnern finden Sie unter [Business Intelligence-Partner][bi_partners] und [Partner für die Datenintegration][di_partners].
+Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligence-Partner][bi_partners] und [Partner für die Datenintegration][di_partners].
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-data-management/coffing_data_warehousing_logo.png

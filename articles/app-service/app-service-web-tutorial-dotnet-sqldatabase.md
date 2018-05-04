@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 72bc8e95e5b77baec29247f5593a522bbe663368
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
+ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/23/2018
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
@@ -145,6 +145,9 @@ Ein eindeutiger Servername wird generiert. Dieser Name wird als Teil der Standar
 Fügen Sie den Benutzernamen und das Kennwort eines Administrators hinzu. Informationen zu den Anforderungen an die Komplexität von Kennwörtern finden Sie unter [Kennwortrichtlinie](/sql/relational-databases/security/password-policy).
 
 Merken Sie sich diesen Benutzernamen und das Kennwort. Sie benötigen diese Angaben später zum Verwalten der Instanz des logischen Servers.
+
+> [!IMPORTANT]
+> Ihr Kennwort ist in den Verbindungszeichenfolgen zwar maskiert (sowohl in Visual Studio als auch in App Service), aber allein die Tatsache, dass es irgendwo gespeichert ist, macht die App bereits anfälliger für Angriffe. App Service kann dieses Risiko durch die Verwendung [verwalteter Dienstidentitäten](app-service-managed-service-identity.md) beseitigen, da Geheimnisse dann nicht mehr im Code oder in der App-Konfiguration gespeichert werden müssen. Weitere Informationen finden Sie in den [nächsten Schritten](#next-steps).
 
 ![SQL Server-Instanz erstellen](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
@@ -413,8 +416,6 @@ Standardmäßig wird im Portal die Seite **Übersicht** angezeigt. Diese Seite b
 
 [!INCLUDE [Clean up section](../../includes/clean-up-section-portal-web-app.md)]
 
-<a name="next"></a>
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -427,7 +428,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Streamen von Protokollen von Azure auf Ihr Terminal
 > * Verwalten der App im Azure-Portal
 
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie der Web-App einen benutzerdefinierten DNS-Namen zuordnen.
+Im nächsten Tutorial erfahren Sie, wie Sie ganz einfach die Sicherheit Ihrer Verbindung mit Azure SQL-Datenbank verbessern.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Dienstidentität](app-service-web-tutorial-connect-msi.md)

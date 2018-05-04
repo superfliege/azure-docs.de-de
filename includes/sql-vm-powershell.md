@@ -7,9 +7,9 @@ Zuallererst muss die aktuelle Version der [Azure PowerShell](http://msdn.microso
 > 
 > 
 
-Führen Sie das Cmdlet [**Add-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) aus. Daraufhin wird eine Anmeldeseite angezeigt, auf der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die gleichen Anmeldeinformationen wie für die Anmeldung beim Azure-Portal.
+Führen Sie das Cmdlet [**Connect-AzureRmAccount**](http://msdn.microsoft.com/library/mt619267.aspx) aus. Daraufhin wird eine Anmeldeseite angezeigt, auf der Sie Ihre Anmeldeinformationen eingeben müssen. Verwenden Sie die gleichen Anmeldeinformationen wie für die Anmeldung beim Azure-Portal.
 
-    Add-AzureRmAccount
+    Connect-AzureRmAccount
 
 Wenn Sie über mehrere Abonnements verfügen, wählen Sie mit dem Cmdlet [**Set-AzureRmContext**](http://msdn.microsoft.com/library/mt619263.aspx) das Abonnement aus, das für die PowerShell-Sitzung verwendet werden soll. Führen Sie das Cmdlet [**Get-AzureRmContext**](http://msdn.microsoft.com/library/mt619265.aspx) aus, um das Abonnement anzuzeigen, das für die aktuelle PowerShell-Sitzung verwendet wird. Um alle Ihre Abonnements anzuzeigen, führen Sie [**Get-AzureRmSubscription**](http://msdn.microsoft.com/library/mt619284.aspx) aus.
 

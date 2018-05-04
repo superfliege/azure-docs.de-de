@@ -9,13 +9,13 @@ ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/26/2017
+ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 7fcd8e12a7109218387788e47eddad48e72797bb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 1aab466a06711a334df0584334e5229b33f57754
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/20/2018
 ---
 # <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive
 **Microsoft Azure**: Schneller agieren, Geld sparen, lokale Apps und Daten integrieren
@@ -97,7 +97,7 @@ Eine [**Azure-Standort-zu-Standort-VPN-Verbindung**][VPN] ist ein Verbindungsdie
 Für die Bereitstellung von ExpressRoute-Verbindungen ist ein ExpressRoute-Dienstanbieter erforderlich. Kunden, die schnell die Arbeit aufnehmen müssen, verwenden anfangs üblicherweise Standort-zu-Standort-VPN-Verbindungen, um eine Verbindung zwischen dem virtuellen Rechenzentrum und den lokalen Ressourcen herzustellen, und migrieren anschließend zu einer ExpressRoute-Verbindung.
 
 ##### <a name="connectivity-within-the-cloud"></a>*Konnektivität in der Cloud*
-[VNETs][VNet] und [VNET-Peering][VNetPeering] sind die grundlegenden Netzwerkkonnektivitätsdienste innerhalb eines virtuellen Rechenzentrums. Ein VNET gewährleistet eine natürliche Isolationslinie zwischen den Ressourcen in einem virtuellen Rechenzentrum. Darüber hinaus ermöglicht das VNet-Peering die Kommunikation zwischen verschiedenen VNETs innerhalb derselben Azure-Region. Bei der Steuerung des Datenverkehrs innerhalb eines VNETs und VNET übergreifend müssen einige Sicherheitsregeln erfüllt werden, die in Zugriffssteuerungslisten ([Netzwerksicherheitsgruppen][NSG]), [virtuelle Netzwerkgerät][NVA] und benutzerdefinierten Routingtabellen ([UDR][UDR]) angegeben sind.
+[VNETs][VNet] und [VNET-Peering][VNetPeering] sind die grundlegenden Netzwerkkonnektivitätsdienste innerhalb eines virtuellen Rechenzentrums. Ein VNET gewährleistet eine natürliche Isolationslinie zwischen den Ressourcen in einem virtuellen Rechenzentrum. Darüber hinaus ermöglicht das VNet-Peering die Kommunikation zwischen verschiedenen VNETs innerhalb derselben und sogar verschiedener Azure-Regionen. Bei der Steuerung des Datenverkehrs innerhalb eines VNETs und VNET übergreifend müssen einige Sicherheitsregeln erfüllt werden, die in Zugriffssteuerungslisten ([Netzwerksicherheitsgruppen][NSG]), [virtuelle Netzwerkgerät][NVA] und benutzerdefinierten Routingtabellen ([UDR][UDR]) angegeben sind.
 
 ## <a name="virtual-data-center-overview"></a>Übersicht über virtuelle Rechenzentren
 
@@ -124,7 +124,7 @@ Die Rolle eines jeden Spokes kann über verschiedene Arten von Workloads gehoste
 ##### <a name="subscription-limits-and-multiple-hubs"></a>Abonnementlimit und mehrere Hubs
 In Azure wird jede Komponente, unabhängig vom Typ, in einem Azure-Abonnement bereitgestellt. Die Isolation von Azure-Komponenten in verschiedenen Azure-Abonnements kann die Anforderungen verschiedener Branchen erfüllen, z.B. das Einrichten unterschiedlicher Zugriffs- und Autorisierungsebenen.
 
-Ein einzelnes virtuelles Rechenzentrum kann auf eine große Anzahl von Spokes zentral hochskalieren. Allerdings gibt es Plattformenbeschränkungen, wie bei jedem IT-System. Die Hub-Bereitstellung ist an ein bestimmtes Azure-Abonnement gebunden, das Einschränkungen hat, z.B. eine maximale Anzahl von VNET-Peerings. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen][Limits]. In Fällen, in denen diese Beschränkungen ein Problem darstellen, kann die Architektur weiter zentral hochskaliert werden, indem das Modell von einem einzelnen Hub und Spoke auf ein Cluster von Hub und Spokes erweitert wird. Mehrere Hubs in einer oder mehreren Azure-Regionen können mit Expressroute oder einer Standort-zu-Standort-VPN-Verbindung miteinander verbunden werden.
+Ein einzelnes virtuelles Rechenzentrum kann auf eine große Anzahl von Spokes zentral hochskalieren. Allerdings gibt es Plattformenbeschränkungen, wie bei jedem IT-System. Die Hub-Bereitstellung ist an ein bestimmtes Azure-Abonnement gebunden, das Einschränkungen hat, z.B. eine maximale Anzahl von VNET-Peerings. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen][Limits]. In Fällen, in denen diese Beschränkungen ein Problem darstellen, kann die Architektur weiter zentral hochskaliert werden, indem das Modell von einem einzelnen Hub und Spoke auf ein Cluster von Hub und Spokes erweitert wird. Mehrere Hubs in einer oder mehreren Azure-Regionen können mit VNET-Peering, ExpressRoute oder Site-to-Site-VPN miteinander verbunden werden.
 
 [![2]][2]
 
@@ -191,10 +191,10 @@ Infrastrukturkomponenten enthalten die folgende Funktionen:
 -   [**Virtuelle Netzwerke**][VPN]. Virtuelle Netzwerke sind eine der Hauptkomponenten eines virtuellen Rechenzentrums und ermöglichen es Ihnen, die eine Isolationsgrenze für den Datenverkehr auf der Azure-Plattform zu erstellen. Ein virtuelles Netzwerk besteht aus einem einzelnen oder mehreren virtuellen Netzwerksegmenten, die jeweils ein bestimmtes Präfix für IP-Netzwerke (ein Subnetz) haben. Das virtuelle Netzwerk definiert einen internen Umkreisbereich, in dem virtuelle IaaS-Computer und PaaS-Dienste private Kommunikation herstellen können. Virtuelle Computer (und PaaS-Dienste) in einem virtuellen Netzwerk können nicht direkt mit virtuellen Computern (und PaaS-Diensten) in anderen virtuellen Netzwerken kommunizieren, selbst wenn beide virtuelle Netzwerke vom gleichen Kunden im selben Abonnement erstellt wurden. Isolation ist eine wichtige Eigenschaft, mit der sichergestellt wird, dass VMs und die Kommunikation von Kunden innerhalb eines virtuellen Netzwerks privat bleiben.
 -   [**UDR**][UDR]. Datenverkehr in einem virtuellen Netzwerk wird standardmäßig basierend auf der Systemroutingtabelle weitergeleitet. Eine benutzerdefinierte Route ist eine benutzerdefinierte Routingtabelle, die Netzwerkadministratoren einem oder mehreren Subnetzen zum Überschreiben des Verhaltens der Systemroutingtabelle und zum Definieren eines Kommunikationspfads innerhalb eines virtuellen Netzwerks zuordnen können. UDRs gewährleisten, dass ausgehender Datenverkehr aus dem Spoke durch einen bestimmten benutzerdefinierten virtuellen Computer und/oder virtuelle Netzwerkgeräte und Load Balancer im Hub und in den Spokes geleitet wird.
 -   [**NSG**][NSG]. Eine Netzwerksicherheitsgruppe (NSG) ist eine Liste von Sicherheitsregeln, die als Datenverkehrfilter für IP-Quellen, IP-Ziele, Protokolle, IP-Quellports und IP-Zielports fungieren. Die NSG kann auf ein Subnetz, auf eine virtuelle Netzwerkkarte (NIC), die mit einer Azure-VM verknüpft ist, oder beide angewendet werden. Die Netzwerksicherheitsgruppen sind entscheidend für die Implementierung einer korrekten Flusssteuerung im Hub und den Spokes. Das Maß an Sicherheit, das die NSGs bieten, hängt davon ab, welche Ports Sie öffnen und zu welchem Zweck. Kunden sollten zusätzliche Filter für jede VM mit hostbasierten Firewalls anwenden, z.B. IPtables oder die Windows-Firewall.
--   **DNS**. Die Namensauflösung von Ressourcen in die VNETs eines virtuellen Rechenzentrums wird über DNS bereitgestellt. Der Bereich der Namensauflösung der standardmäßigen DNS ist auf das VNET beschränkt. In der Regel muss ein benutzerdefinierter DNS-Dienst im Hub als Teil eines gemeinsamen Diensts bereitgestellt werden, während die wichtigsten Benutzer von DNS-Diensten sich im Spoke befinden. Bei Bedarf können Kunden eine hierarchische DNS-Struktur mit Delegierung von DNS-Zonen an die Spokes erstellen.
+-   [**DNS**][DNS]. Die Namensauflösung von Ressourcen in die VNETs eines virtuellen Rechenzentrums wird über DNS bereitgestellt. Azure bietet DNS-Dienste für [öffentliche][DNS] und [private][PrivateDNS] Namensauflösung. Private Zonen bieten Namensauflösung in einem virtuellen Netzwerk sowie zwischen virtuellen Netzwerken. Sie können private Zonen einrichten, die sich nicht nur über virtuelle Netzwerke in derselben Region erstrecken, sondern auch zwischen Regionen und Abonnements. Für die öffentliche Auflösung bietet Azure DNS einen Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe von Microsoft Azure-Infrastruktur durchführt. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten.
 -   [**Abonnement][SubMgmt] und [Ressourcengruppenverwaltung][RGMgmt]**. Ein Abonnement definiert eine natürliche Grenze, um mehrere Ressourcengruppen in Azure zu erstellen. Ressourcen in einem Abonnement werden in logischen Containern namens Ressourcengruppen zusammen assembliert. Die Ressourcengruppe stellt eine logische Gruppe dar, in der die Ressourcen eines virtuellen Rechenzentrums organisiert werden.
 -   [**RBAC**][RBAC]. Über RBAC ist es möglich, die Organisationsrolle zusammen mit der Zugriffsberechtigung für bestimmte Azure-Ressourcen zuzuordnen und gleichzeitig Benutzer auf eine bestimmte Teilmenge von Aktionen zu beschränken. Mit RBAC können Sie Zugriff gewähren, indem Sie Benutzern, Gruppen und Anwendungen innerhalb des relevanten Bereichs die entsprechende Rolle zuweisen. Der Bereich einer Rollenzuweisung kann ein Azure-Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein. RBAC ermöglicht die Vererbung von Berechtigungen. Mit einer Rolle, die einem übergeordneten Bereich zugewiesen ist, wird außerdem der Zugriff auf die darin enthaltenen untergeordneten Elemente gewährt. Mit RBAC können Sie Aufgaben verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Gestatten Sie z.B. mit RBAC einem Mitarbeiter die Verwaltung virtueller Computer in einem Abonnement, während ein anderer im gleichen Abonnement SQL-Datenbanken verwalten kann.
--   [**VNET-Peering**][VNetPeering]. Die grundlegende Funktion für das Erstellen der Infrastruktur eines virtuellen Rechenzentrums ist das VNET-Peering. Dabei werden zwei virtuelle Netzwerke in der gleichen Region über das Netzwerk des Azure-Rechenzentrums verbunden.
+-   [**VNET-Peering**][VNetPeering]. Die grundlegende Funktion für das Erstellen der Infrastruktur eines virtuellen Rechenzentrums ist VNET-Peering. Dabei werden zwei virtuelle Netzwerke (VNETs) in der gleichen Region über das Netzwerk des Azure-Rechenzentrums oder regionsübergreifend über den weltweiten Azure-Backbone verbunden.
 
 #### <a name="component-type-perimeter-networks"></a>Komponententyp: Umkreisnetzwerke
 [Umkreisnetzwerk][DMZ]-Komponenten (auch DMZ-Netzwerk) ermöglichen Netzwerkverbindungen mit lokalen oder physischen Netzwerken von Rechenzentren und darüber hinaus eine Verbindung mit dem Internet. Dafür bringen Ihre Netzwerk- und Sicherheitsteams wahrscheinlich den Großteil ihrer Zeit auf.
@@ -244,6 +244,8 @@ Der Azure Load Balancer kann die Integrität der verschiedenen Serverinstanzen �
 
 Azure bietet verschiedene Arten der Protokollierung und Überwachung von Diensten, um das Verhalten von in Azure gehosteten Ressourcen nachzuverfolgen. Governance und Steuerung von Workloads in Azure basiert nicht nur auf dem Sammeln von Protokolldaten, sondern auch auf der Möglichkeit, Aktionen auf der Grundlage von bestimmten gemeldeten Ereignissen auszulösen.
 
+[**Azure Monitor**][Monitor]: Azure umfasst mehrere Dienste, die eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen. Zusammen bieten diese Dienste eine umfassende Lösung für das Sammeln, Übertragen und Analysieren von Telemetriedaten aus Ihrer Anwendung und den zugrunde liegenden Azure-Ressourcen, die sie unterstützen. Sie können auch kritische lokale Ressourcen überwachen und so eine hybride Überwachungsumgebung bilden. Voraussetzung der Entwicklung einer vollständigen Überwachungsstrategie für Ihre Anwendung ist die Kenntnis der verfügbaren Tools und Daten.
+
 Es gibt zwei Hauptarten von Protokollen in Azure:
 
 -   [**Aktivitätsprotokolle**][ActLog] (auch „Betriebsprotokolle“) bieten Einblicke in die Vorgänge, die auf Ressourcen im Azure-Abonnement ausgeführt wurden. Diese Protokolle melden die Ereignisse der Steuerungsebene für Ihre Abonnements. Jede Azure-Ressource erzeugt Überwachungsprotokolle.
@@ -259,9 +261,11 @@ In einem virtuellen Rechenzentrum ist es äußerst wichtig, die Netzwerksicherhe
 
 Alle Protokolle können zur Überwachung, statischen Analyse oder aus Sicherungszwecken in Azure Storage-Konten gespeichert werden. Wenn die Protokolle in einem Azure Storage-Konto gespeichert werden, können Kunden verschiedene Typen von Frameworks verwenden, um diese Daten abzurufen, vorzubereiten, zu analysieren und zu visualisieren, um den Status und die Integrität von Cloudressourcen zu melden.
 
-Große Unternehmen sollten bereits ein Standard-Framework für die Überwachung lokaler Systeme erworben haben und können dieses Framework so erweitern, dass Protokolle integriert werden, die von Cloudbereitstellungen generiert wurden. Für Organisationen, die die gesamte Protokollierung in der Cloud durchführen möchten, ist [Log Analytics][LogAnalytics] eine gute Lösung. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Log Analytics kann auch in System Center-Komponenten wie System Center Operations Manager integriert werden, um Ihre bestehenden Investitionen in die Cloud zu erweitern.
+Große Unternehmen sollten bereits ein Standard-Framework für die Überwachung lokaler Systeme erworben haben und können dieses Framework so erweitern, dass Protokolle integriert werden, die von Cloudbereitstellungen generiert wurden. Für Organisationen, die die gesamte Protokollierung in der Cloud durchführen möchten, ist [Log Analytics][LogAnalytics] eine gute Wahl. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Log Analytics kann auch in System Center-Komponenten wie System Center Operations Manager integriert werden, um Ihre bestehenden Investitionen in die Cloud zu erweitern.
 
 Log Analytics ist ein Dienst in Azure, mit dem von Betriebssystemen, Anwendungen und Komponenten der Cloud-Infrastruktur generierte Protokoll- und Leistungsdaten erfasst, korreliert, durchsucht und bearbeitet werden können. Mit dieser Komponente erhalten Kunden betriebliche Einblicke in Echtzeit, wenn mithilfe der integrierten Suche und den benutzerdefinierten Dashboards alle Datensätze in allen Workloads in einem virtuellen Rechenzentrum analysiert werden.
+
+Die Lösung [Netzwerkleistungsmonitor][NPM] in OMS kann detaillierte Netzwerkinformationen durchgängig liefern, einschließlich einer zentralen Ansicht Ihrer Azure- und lokalen Netzwerke. Für ExpressRoute und öffentliche Dienste gibt es spezifische Monitore.
 
 #### <a name="component-type-workloads"></a>Komponententyp: Workloads
 Workload-Komponenten befinden sich dort, wo auch Ihre tatsächlichen Anwendungen und Dienste sind. Dort verbringen auch Ihre Anwendungsentwicklungsteams die meiste Zeit.
@@ -276,7 +280,7 @@ Branchenanwendungen sind Computeranwendungen, die für den laufenden Unternehmen
 -   **Datengesteuert**: Branchenanwendungen sind datenintensiv und greifen häufig auf die Datenbanken oder einen anderen Speicher zu.
 -   **Integriert**: Branchenanwendungen bieten Integration mit anderen Systemen innerhalb oder außerhalb der Organisation.
 
-**Websites für Kunden (im Internet oder intern)**: Die meisten Anwendungen, die mit dem Internet interagieren, sind Websites. Azure bietet die Möglichkeit, eine Website auf einer IaaS-VM oder von einer [Azure-Web-Apps][WebApps]-Website (PaaS) auszuführen. Azure-Web-Apps unterstützen die Integration mit VNETs, die die Bereitstellung von Web-Apps im Spoke eines virtuellen Rechenzentrums ermöglichen. Bei der VNET-Integration müssen Sie keinen öffentlichen Endpunkt für Anwendungen auf Ihrer VM verfügbar machen, sondern Sie können stattdessen die privaten, nicht über das Internet routbaren Adressen der Ressourcen Ihres privaten VNETs verwenden.
+**Websites für Kunden (im Internet oder intern)**: Die meisten Anwendungen, die mit dem Internet interagieren, sind Websites. Azure bietet die Möglichkeit, eine Website auf einer IaaS-VM oder von einer [Azure-Web-Apps][WebApps]-Website (PaaS) auszuführen. Azure-Web-Apps unterstützen die Integration mit VNETs, die die Bereitstellung von Web-Apps im Spoke eines virtuellen Rechenzentrums ermöglichen. Bei intern zugänglichen Websites mit VNET-Integration müssen Sie für Ihre Anwendungen keinen öffentlichen Internet-Endpunkt verfügbar machen. Sie können stattdessen die Ressourcen über private, nicht über das Internet routingfähige Adressen Ihres privaten VNET verwenden.
 
 **Big Data/Analyse**: Wenn Daten zentral auf ein sehr großes Volumen hochskaliert werden müssen, werden Datenbanken möglicherweise nicht ordnungsgemäß hochskaliert. Die Hadoop-Technologie bietet ein System zum parallelen Ausführen von verteilten Abfragen auf einer großen Anzahl von Knoten. Kunden haben die Möglichkeit, Datenworkloads auf IaaS-VMs oder PaaS auszuführen ([HDInsight][HDI]). HDInsight unterstützt das Bereitstellen in einem lokalen VNet: Die Bereitstellungen kann in einem Cluster in einem Spoke eines virtuellen Rechenzentrums erfolgen.
 
@@ -308,11 +312,12 @@ Die Implementierung des Plans zur Notfallwiederherstellung ist stark von der Art
 
 Die Überwachung der Synchronisierung oder des Takts von Anwendungen in verschiedenen virtuellen Rechenzentren erfordert Kommunikation zwischen den Rechenzentren. Zwei virtuelle Rechenzentren in unterschiedlichen Regionen können wie folgt verbunden werden:
 
+-   VNET-Peering: Mittels VNET-Peering können Hubs regionsübergreifend verbunden werden.
 -   Über das private Peering mit ExpressRoute, wenn die Hubs der virtuellen Rechenzentren mit der gleichen ExpressRoute-Verbindung verbunden sind
 -   Mehrere ExpressRoute-Verbindungen, die über Ihren firmeneigenen Backbone und Ihre virtuellen Rechenzentren mit den ExpressRoute-Verbindungen verbunden sind
 -   Standort-zu-Standort-VPN-Verbindungen zwischen Ihren Hubs in den virtuellen Rechenzentren in jeder Azure-Region
 
-In der Regel ist die ExpressRoute-Verbindung der bevorzugte Mechanismus, da es zu Latenz beim Passieren des Microsoft-Backbone zu höherer Bandbreite und einer konsistenten kommt.
+Normalerweise werden VNET-Peering- oder ExpressRoute-Verbindungen aufgrund ihrer höheren Bandbreite und einer konsistenter Latenz bei der Übertragung über den Microsoft-Backbone bevorzugt.
 
 Es gibt kein magisches Rezept, um eine zwischen zwei (oder mehr) unterschiedlichen virtuellen Rechenzentren in unterschiedlichen Regionen verteilte Anwendung zu überprüfen. Kunden sollten Netzwerkqualifizierungstests ausführen, um die Latenz und Bandbreite der Verbindungen zu überprüfen, und analysieren, ob die synchrone oder asynchrone Datenreplikation geeignet ist, und was das optimale RTO (Recovery Time Objective) für ihre Workloads sein kann.
 
@@ -330,9 +335,9 @@ Die folgenden Features wurden in diesem Dokument erläutert. Klicken Sie auf die
 | | | |
 |-|-|-|
 |Netzwerkfunktionen|Lastenausgleich|Konnektivität|
-|[Virtuelle Azure-Netzwerke][VNet]</br>[Netzwerksicherheitsgruppen][NSG]</br>[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)][NSGLog]</br>[Benutzerdefiniertes Routing][UDR]</br>[Virtuelle Netzwerkgeräte][NVA]</br>[Öffentliche IP-Adressen][PIP]|[Azure Load Balancer (L3) ][ALB]</br>[Application Gateway (L7) ][AppGW]</br>[Web Application Firewall][WAF]</br>[Azure Traffic Manager][TM] |[VNET-Peering][VNetPeering]</br>[Virtuelle private Netzwerke][VPN]</br>[ExpressRoute][ExR]
+|[Virtuelle Azure-Netzwerke][VNet]</br>[Netzwerksicherheitsgruppen][NSG]</br>[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)][NSGLog]</br>[Benutzerdefiniertes Routing][UDR]</br>[Virtuelle Netzwerkgeräte][NVA]</br>[Öffentliche IP-Adressen][PIP]</br>[DNS]|[Azure Load Balancer (L3) ][ALB]</br>[Application Gateway (L7) ][AppGW]</br>[Web Application Firewall][WAF]</br>[Azure Traffic Manager][TM] |[VNET-Peering][VNetPeering]</br>[Virtuelle private Netzwerke][VPN]</br>[ExpressRoute][ExR]
 |Identity</br>|Überwachung</br>|Bewährte Methoden</br>|
-|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rollenbasierte Zugriffssteuerung][RBAC]</br>[Standard-AAD-Rollen][Roles] |[Aktivitätsprotokolle][ActLog]</br>[Diagnoseprotokolle][DiagLog]</br>[Log Analytics][LogAnalytics]</br> |[Bewährte Methoden für Umkreisnetzwerke][DMZ]</br>[Abonnementverwaltung][SubMgmt]</br>[Verwaltung von Ressourcengruppen][RGMgmt]</br>[Einschränkungen für Azure-Abonnements][Limits] |
+|[Azure Active Directory][AAD]</br>[Multi-Factor Authentication][MFA]</br>[Rollenbasierte Zugriffssteuerung][RBAC]</br>[Standard-AAD-Rollen][Roles] |[Azure Monitor][Monitor]</br>[Aktivitätsprotokolle][ActLog]</br>[Diagnoseprotokolle][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[Netzwerkleistungsmonitor][NPM]|[Bewährte Methoden für Umkreisnetzwerke][DMZ]</br>[Abonnementverwaltung][SubMgmt]</br>[Verwaltung von Ressourcengruppen][RGMgmt]</br>[Einschränkungen für Azure-Abonnements][Limits] |
 |Weitere Azure-Dienste|
 |[Azure-Web-Apps][WebApps]</br>[HDInsights (Hadoop)][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
@@ -358,12 +363,14 @@ Die folgenden Features wurden in diesem Dokument erläutert. Klicken Sie auf die
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits
-[Roles]: https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles
+[Roles]: https://docs.microsoft.com/azure/role-based-access-control/built-in-roles
 [VNet]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview
-[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg 
+[NSG]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg
+[DNS]: https://docs.microsoft.com/azure/dns/dns-overview
+[PrivateDNS]: https://docs.microsoft.com/azure/dns/private-dns-overview
 [VNetPeering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview 
 [UDR]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview 
-[RBAC]: https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is
+[RBAC]: https://docs.microsoft.com/azure/role-based-access-control/overview
 [MFA]: https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication
 [AAD]: https://docs.microsoft.com/azure/active-directory/active-directory-whatis
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways 
@@ -376,10 +383,12 @@ Die folgenden Features wurden in diesem Dokument erläutert. Klicken Sie auf die
 [PIP]: https://docs.microsoft.com/azure/virtual-network/resource-groups-networking#public-ip-address
 [AppGW]: https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction
 [WAF]: https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview
+[Monitor]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/
 [ActLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs 
 [DiagLog]: https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs
 [NSGLog]: https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log
-[LogAnalytics]: https://docs.microsoft.com/azure/log-analytics/log-analytics-overview
+[OMS]: https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview
+[NPM]: https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor
 [WebApps]: https://docs.microsoft.com/azure/app-service/
 [HDI]: https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-introduction
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 

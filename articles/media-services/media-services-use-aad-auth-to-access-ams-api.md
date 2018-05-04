@@ -2,10 +2,10 @@
 title: Zugreifen auf die Azure Media Services-API per Azure Active Directory-Authentifizierung | Microsoft-Dokumentation
 description: Es werden die Konzepte und Schritte beschrieben, die erforderlich sind, um Azure Active Directory (Azure AD) zum Authentifizieren des Zugriffs auf die Azure Media Services-API zu verwenden.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 0e1217afb0a37353793c64ae927b741d9fee4954
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57f2680d6b3f06a88a13a09018e7d72afcb710a6
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung
  
 Die Azure Media Services-API ist eine RESTful-API. Sie können sie nutzen, um Vorgänge für Medienressourcen durchzuführen, indem Sie eine REST-API oder verfügbare Client-SDKs verwenden. Azure Media Services stellt ein Media Services-Client-SDK für Microsoft .NET bereit. Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. 
 
-Für Media Services wird die [Azure Active Directory-basierte Authentifizierung](../active-directory/active-directory-whatis.md) unterstützt. Für den Azure Media-REST-Dienst ist Folgendes erforderlich: Der Benutzer oder die Anwendung, der bzw. die die REST-API-Anforderungen sendet, muss entweder über die Rolle **Mitwirkender** oder **Besitzer** verfügen, um auf die Ressourcen zuzugreifen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../active-directory/role-based-access-control-what-is.md).  
+Für Media Services wird die [Azure Active Directory-basierte Authentifizierung](../active-directory/active-directory-whatis.md) unterstützt. Für den Azure Media-REST-Dienst ist Folgendes erforderlich: Der Benutzer oder die Anwendung, der bzw. die die REST-API-Anforderungen sendet, muss entweder über die Rolle **Mitwirkender** oder **Besitzer** verfügen, um auf die Ressourcen zuzugreifen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).  
 
 > [!IMPORTANT]
 > Derzeit wird für Media Services das Azure Access Control-Dienstauthentifizierungsmodell unterstützt. Die Access Control-Authentifizierung gilt aber ab dem 1. Juni 2018 als veraltet. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren.
@@ -73,15 +73,15 @@ Im obigen Diagramm stellen die Zahlen den Fluss der Anforderungen in chronologis
     * Azure AD-Mandanten-Endpunkt
 
         Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
-    * Media Services-Ressourcen-URI 
+    * Media Services-Ressourcen-URI. 
 
-        Dieser URI ist für Media Services-Konten, die sich in derselben Azure-Umgebung (z.B. „https://rest.media.azure.net“) befinden, identisch.
+        Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
 
-    * Client-ID für Media Services-Anwendungen (nativ)
+    * Client-ID für (native) Media Services-Anwendungen.
     * Umleitungs-URI für Media Services-Anwendungen (nativ)
     * Ressourcen-URI für REST Media Services
         
-        Der URI stellt den REST-API-Endpunkt dar (z.B. „https://test03.restv2.westus.media.azure.net/api/“).
+        Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
 
     Informationen zu den Werten dieser Parameter finden Sie unter [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal), indem Sie die Option für die Benutzerauthentifizierung wählen.
 
@@ -112,16 +112,16 @@ In der obigen Abbildung stellen die Zahlen den Fluss der Anforderungen in chrono
     
 1. Eine App der mittleren Ebene (Web-API oder Webanwendung) fordert ein Azure AD-Zugriffstoken an, das die folgenden Parameter enthält:  
 
-    * Azure AD-Mandanten-Endpunkt
+    * Azure AD-Mandantenendpunkt.
 
         Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
-    * Media Services-Ressourcen-URI 
+    * Media Services-Ressourcen-URI. 
 
-        Dieser URI ist für Media Services-Konten, die sich in derselben Azure-Umgebung (z.B. „https://rest.media.azure.net“) befinden, identisch.
+        Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
 
     * Ressourcen-URI für REST Media Services
 
-        Der URI stellt den REST-API-Endpunkt dar (z.B. „https://test03.restv2.westus.media.azure.net/api/“).
+        Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
 
     * Werte der Azure AD-Anwendung: Client-ID und geheimer Clientschlüssel.
     
@@ -141,13 +141,13 @@ Ausnahme: „Der Remoteserver hat einen Fehler zurückgegeben: (401) Nicht autor
 
 Lösung: Damit die Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle „Mitwirkender“ oder „Besitzer“ in dem Media Services-Konto verfügen, auf das zugegriffen werden soll. Weitere Informationen finden Sie im Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 
 Die folgenden Artikel enthalten Übersichten über Azure AD-Authentifizierungskonzepte: 
 
 - [Grundlagen der Authentifizierung in Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 - [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md)
-- [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
+- [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

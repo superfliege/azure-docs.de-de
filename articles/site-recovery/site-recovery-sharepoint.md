@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: sutalasi
-ms.openlocfilehash: 86a1d53570aeefd57c5133688e67064da6f5dc77
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 48a8f6d35c3ea1266880f05d12ebf4efd855df41
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Replizieren einer SharePoint-Anwendung mit mehreren Ebenen für die Notfallwiederherstellung mithilfe von Azure Site Recovery
 
@@ -53,7 +53,7 @@ Stellen Sie zunächst sicher, dass Sie mit den folgenden Verfahren vertraut sind
 
 ## <a name="sharepoint-architecture"></a>SharePoint-Architektur
 
-SharePoint kann auf einem oder mehreren Servern mit mehrstufigen Topologien und Serverrollen bereitgestellt werden, um einen Farmentwurf zu implementieren, der bestimmte Zielsetzungen erfüllt. Eine typische große SharePoint-Serverfarm mit hohen Anforderungen, die eine große Anzahl gleichzeitiger Benutzer und eine Vielzahl von Inhaltselementen unterstützt, verwendet die Gruppierung von Diensten als Teil ihrer Skalierbarkeitsstrategie. Bei diesem Ansatz müssen Dienste auf dedizierten Servern ausgeführt, diese Dienste gruppiert und die Server anschließend als Gruppe horizontal hochskaliert werden. Die folgende Topologie veranschaulicht die Gruppierung von Diensten und Servern für eine SharePoint-Serverfarm mit drei Ebenen. Eine ausführliche Anleitung zu verschiedenen SharePoint-Topologien finden Sie in der SharePoint-Dokumentation und den Architekturen der Produktlinie. Weitere Informationen zur Bereitstellung von SharePoint 2013 finden Sie in [diesem Dokument](https://technet.microsoft.com/en-us/library/cc303422.aspx).
+SharePoint kann auf einem oder mehreren Servern mit mehrstufigen Topologien und Serverrollen bereitgestellt werden, um einen Farmentwurf zu implementieren, der bestimmte Zielsetzungen erfüllt. Eine typische große SharePoint-Serverfarm mit hohen Anforderungen, die eine große Anzahl gleichzeitiger Benutzer und eine Vielzahl von Inhaltselementen unterstützt, verwendet die Gruppierung von Diensten als Teil ihrer Skalierbarkeitsstrategie. Bei diesem Ansatz müssen Dienste auf dedizierten Servern ausgeführt, diese Dienste gruppiert und die Server anschließend als Gruppe horizontal hochskaliert werden. Die folgende Topologie veranschaulicht die Gruppierung von Diensten und Servern für eine SharePoint-Serverfarm mit drei Ebenen. Eine ausführliche Anleitung zu verschiedenen SharePoint-Topologien finden Sie in der SharePoint-Dokumentation und den Architekturen der Produktlinie. Weitere Informationen zur Bereitstellung von SharePoint 2013 finden Sie in [diesem Dokument](https://technet.microsoft.com/library/cc303422.aspx).
 
 
 

@@ -16,7 +16,7 @@
 ## [Aufgabe 2: Konfigurieren der Netzwerkeinstellungen](active-directory-ds-getting-started-network.md)
 ## [Aufgabe 3: Konfigurieren der Administratorgruppe und Aktivieren von Azure AD Domain Services](active-directory-ds-getting-started-admingroup.md)
 ## [Aufgabe 4: Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk](active-directory-ds-getting-started-dns.md)
-## [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
+## [Aufgabe 5: Aktivieren der Kennworthashsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 
 # Anleitung
 ## [Überprüfen der Integrität einer verwalteten Domäne](active-directory-ds-check-health.md)
@@ -56,7 +56,7 @@
 
 
 # Verweis
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=active-directory)
 
 # Verwandte Themen
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

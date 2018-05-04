@@ -1,33 +1,33 @@
 ---
 title: Erstellen eines neuen Berichts aus einem Dataset in Power BI-Arbeitsbereichssammlungen | Microsoft-Dokumentation
-description: "Berichte zu Power BI-Arbeitsbereichssammlungen können nun aus einem Dataset in Ihrer eigenen Anwendung erstellt werden."
+description: Berichte zu Power BI-Arbeitsbereichssammlungen können nun aus einem Dataset in Ihrer eigenen Anwendung erstellt werden.
 services: power-bi-embedded
-documentationcenter: 
-author: guyinacube
-manager: erikre
-editor: 
-tags: 
+documentationcenter: ''
+author: markingmyname
+manager: kfile
+editor: ''
+tags: ''
 ROBOTS: NOINDEX
-ms.assetid: 
+ms.assetid: ''
 ms.service: power-bi-embedded
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: asaxton
-ms.openlocfilehash: aa902cbc4992292420948b36d85e52fafc7224de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: maghan
+ms.openlocfilehash: 5c6a52edd708b6077820f2004e83ac7dee945610
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Erstellen eines neuen Berichts aus einem Dataset in Power BI-Arbeitsbereichssammlungen
 
 Berichte zu Power BI-Arbeitsbereichssammlungen können nun aus einem Dataset in Ihrer eigenen Anwendung erstellt werden.
 
 > [!IMPORTANT]
-> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen in Ihrer Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
+> Power BI-Arbeitsbereichssammlungen sind veraltet und nur noch bis Juni 2018 (oder bis zum Termin in Ihrem Vertrag) verfügbar. Es wird empfohlen, die Migration zu Power BI Embedded zu planen, um Unterbrechungen für Ihre Anwendung zu vermeiden. Informationen zur Migration Ihrer Daten zu Power BI Embedded finden Sie unter [Migrieren von Inhalten aus Power BI-Arbeitsbereichssammlungen zu Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
 Die Authentifizierungsmethode ähnelt der Methode zum Einbetten von Berichten. Sie basiert auf Zugriffstoken, die für ein Dataset spezifisch sind. Token, die für PowerBI.com verwendet werden, werden vom Azure Active Directory (AAD) ausgestellt. Token für Power BI-Arbeitsbereichssammlungen werden von Ihrer eigenen App ausgestellt.
 
@@ -63,7 +63,7 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Erstellen eines neuen leeren Berichts
 
-Zum Erstellen eines neuen Berichts muss die Erstellungskonfiguration bereitgestellt werden. Dazu gehören Zugriffstoken, embedURL und datasetID, auf deren Basis wir den Bericht erstellen möchten. Hierzu müssen Sie das NuGet-[Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/) installieren. Die embedUrl lautet „https://embedded.powerbi.com/appTokenReportEmbed“.
+Zum Erstellen eines neuen Berichts muss die Erstellungskonfiguration bereitgestellt werden. Dazu gehören Zugriffstoken, embedURL und datasetID, auf deren Basis wir den Bericht erstellen möchten. Hierzu müssen Sie das NuGet-[Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/) installieren. Der Wert für „embedUrl“ lautet einfach https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
 > Mit dem [JavaScript Report Embed Sample](https://microsoft.github.io/PowerBI-JavaScript/demo/) (Beispiel zur Berichtseinbettung mit JavaScript) können Sie die Funktionalität testen. Es enthält außerdem Codebeispiele für die verschiedenen Vorgänge, die verfügbar sind.

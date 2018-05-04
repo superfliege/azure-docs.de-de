@@ -1,11 +1,11 @@
 ---
-title: "Hochladen eines Zertifikats für die Azure-Dienstverwaltung | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie das Dienstverwaltungszertifikat für das Azure-Portal hochladen."
+title: Hochladen eines Zertifikats für die Azure-Dienstverwaltung | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie das Dienstverwaltungszertifikat für das Azure-Portal hochladen.
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: na
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: a865290602f64335e8b7cbfadf00d83234ae812d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: be548a8e823d4c7109951183886764738a66ecea
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>Hochladen eines Zertifikats für die Azure-Dienstverwaltung
 Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem von Azure bereitgestellten klassischen Bereitstellungsmodell. Diese Zertifikate werden in vielen Programmen und Tools (z.B. Visual Studio oder Azure SDK) zum Automatisieren der Konfiguration und Bereitstellung verschiedener Azure-Dienste verwendet. 
@@ -30,7 +30,7 @@ Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem von Azur
 
 Weitere Informationen zu Azure-Zertifikaten (und zum Erstellen eines selbstsignierten Zertifikats) finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](cloud-services/cloud-services-certs-create.md#what-are-management-certificates).
 
-Sie können auch [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) für die Authentifizierung von Clientcode zur Automatisierung verwenden.
+Sie können auch [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung von Clientcode zur Automatisierung verwenden.
 
 **Hinweis:** Sie müssen ein Co-Administrator des Abonnements sein, um Vorgänge unter Verwaltungszertifikaten auszuführen. [Erfahren Sie mehr](https://go.microsoft.com/fwlink/?linkid=849300) darüber, wie Sie Co-Administratoren dem neuen Azure-Portal hinzufügen oder daraus entfernen können. 
 

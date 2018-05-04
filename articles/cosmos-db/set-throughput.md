@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: 0e89b93764f51873d991524a5e226464c224b649
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
+ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/18/2018
 ---
-# <a name="set-throughput-for-azure-cosmos-db-containers"></a>Festlegen von Durchsatz für Azure Cosmos DB-Container
+# <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container
 
 Sie können den Durchsatz für Ihre Azure Cosmos DB-Container im Azure-Portal oder mithilfe der Clients-SDKs festlegen. 
 
@@ -96,6 +96,43 @@ offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
 
+## <a id="GetLastRequestStatistics"></a>Abrufen des Durchsatzes mit dem MongoDB-API-Befehl „GetLastRequestStatistics“
+
+Die MongoDB-API unterstützt den benutzerdefinierten Befehl *getLastRequestStatistics*, um die Anforderungsgebühren für einen bestimmten Vorgang abzurufen.
+
+Führen Sie z.B. in der Mongo Shell den Vorgang aus, für den Sie die Anforderungsgebühr überprüfen möchten.
+```
+> db.sample.find()
+```
+
+Anschließend führen Sie den Befehl *getLastRequestStatistics* aus.
+```
+> db.runCommand({getLastRequestStatistics: 1})
+{
+    "_t": "GetRequestStatisticsResponse",
+    "ok": 1,
+    "CommandName": "OP_QUERY",
+    "RequestCharge": 2.48,
+    "RequestDurationInMilliSeconds" : 4.0048
+}
+```
+
+Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes darin, typische Vorgänge mit einem repräsentativen, von Ihrer Anwendung verwendeten Element auszuführen, sich dabei die berechneten Anforderungseinheiten zu notieren und anschließend die Anzahl von Vorgängen zu schätzen, die erwartungsgemäß pro Sekunde ausgeführt werden.
+
+> [!NOTE]
+> Wenn sich die Elementtypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen *Elementtyp* jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
+> 
+> 
+
+## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>Abrufen des Durchsatzes mit MongoDB-API-Portalmetriken
+
+Die einfachste Möglichkeit, eine recht genaue Schätzung der Gebühren für Anforderungseinheiten für Ihre MongoDB-API-Datenbank zu erhalten, ist die Verwendung der Metriken im [Azure-Portal](https://portal.azure.com). Mit den Diagrammen *Anzahl von Anforderungen* und *Anforderungsgebühr* können Sie abschätzen, wie viele Anforderungseinheiten von jedem Vorgang verbraucht werden und wie viele Einheiten in Relation der Vorgänge zueinander verbraucht werden.
+
+![MongoDB-API-Portalmetriken][1]
+
+### <a id="RequestRateTooLargeAPIforMongoDB"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in der MongoDB-API
+Anwendungen, die den bereitgestellten Durchsatz für einen Container überschreiten, werden so lange begrenzt, bis die Nutzungsrate unter den bereitgestellten Durchsatz sinkt. Wenn eine Begrenzung eintritt, beendet das Back-End die Anforderung präventiv mit einem `16500`-Fehlercode: `Too Many Requests`. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode `Too Many Requests` zurückgegeben wird. Wenn Sie zu viele Fehlercodes des Typs `Too Many Requests` erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [bereitgestellten Durchsatz für den Container](set-throughput.md) zu erhöhen.
+
 ## <a name="throughput-faq"></a>Häufig gestellte Fragen zum Durchsatz
 
 **Kann der Durchsatz auf unter 400 RU/s festgelegt werden?**
@@ -109,3 +146,5 @@ Es gibt keine MongoDB-API-Erweiterung zum Festlegen des Durchsatzes. Es wird emp
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Bereitstellung und zur weltweiten Skalierung mit Cosmos DB finden Sie unter [Partitionieren und Skalieren von Daten in Cosmos DB](partition-data.md).
+
+[1]: ./media/set-throughput/api-for-mongodb-metrics.png

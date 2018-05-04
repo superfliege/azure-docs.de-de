@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: cd5e53b49a850acf851e8351b5e14e2993176435
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Computern von Azure an einem lokalen Standort
 
@@ -79,7 +79,7 @@ Nachdem Sie einen Masterzielserver erstellt haben, führen Sie folgende Schritte
 - Sie müssen ein neues Laufwerk hinzufügen, wenn Sie einen vorhandenen Prozessserver-/Konfigurationsservercomputer, eine Skalierungsgruppe oder einen Prozessserver-/Masterzielservercomputer verwenden. Das neue Laufwerk muss die oben genannten Anforderungen erfüllen. Wenn das Aufbewahrungslaufwerk nicht vorhanden ist, wird es in der Auswahl-Dropdownliste im Portal nicht angezeigt. Nach dem Hinzufügen eines Laufwerks zum lokalen Masterziel dauert es bis zu 15 Minuten, bis das Laufwerk in der Auswahl im Portal angezeigt wird. Sie können auch den Konfigurationsserver aktualisieren, wenn das Laufwerk nach 15 Minuten nicht angezeigt wird.
 - Installieren Sie VMware-Tools auf dem Masterzielserver. Ohne die VMware-Tools werden die Datenspeicher auf dem ESXi-Host des Masterziels nicht erkannt.
 - Legen Sie die Einstellung `disk.EnableUUID=true` in den Konfigurationsparametern des virtuellen Masterzielcomputers in VMware fest. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Diese Einstellung ist erforderlich, um für den Datenträger des virtuellen Computers (VMDK) eine einheitliche UUID festzulegen, damit er richtig bereitgestellt wird.
-- An das Masterziel sollte mindestens ein VMFS-Datenspeicher angefügt sein. Wenn keiner vorhanden ist, ist die Eingabe **Datenspeicher** auf der Seite für das erneute Schützen leer, und Sie können den Vorgang nicht fortsetzen.
+- An den ESX-Host, auf dem das Masterziel erstellt wird, muss mindestens ein VMFS-Datenspeicher angefügt sein. Wenn keiner vorhanden ist, ist die Eingabe **Datenspeicher** auf der Seite für das erneute Schützen leer, und Sie können den Vorgang nicht fortsetzen.
 - Auf den Datenträgern des Masterzielservers können keine Momentaufnahmen enthalten sein. Wenn Momentaufnahmen vorhanden sind, schlagen das erneute Schützen und das Failback fehl.
 - Das Masterziel kann nicht über einen Paravirtual-SCSI-Controller verfügen. Als Controller kann nur ein LSI Logic-Controller verwendet werden. Ohne LSI Logic-Controller schlägt das erneute Schützen fehl.
 - In jeder beliebigen Instanz können dem Masterziel jeweils maximal 60 Datenträger angefügt werden. Wenn virtuelle Computer, die auf dem lokalen Masterziel erneut geschützt werden, zusammen mehr als 60 Datenträger aufweisen, tritt beim erneuten Schützen auf dem Masterziel ein Fehler auf. Stellen Sie sicher, dass auf dem Masterzielserver genügend Datenträgerslots verfügbar sind, oder stellen Sie zusätzliche Masterzielserver bereit.
@@ -92,7 +92,7 @@ Nachdem ein virtueller Computer in Azure gestartet wurde, dauert es eine Weile, 
 
 1. Klicken Sie unter **Tresor** > **Replizierte Elemente** mit der rechten Maustaste auf den virtuellen Computer, für den ein Failover durchgeführt wurde, und wählen Sie dann **Erneut schützen**. Sie können auch auf den Computer klicken und die Befehlsschaltfläche **Erneut schützen** wählen.
 2. Überprüfen Sie, ob die Schutzrichtung **Azure auf lokal** bereits ausgewählt ist.
-3. Wählen Sie unter **Masterzielserver** und **Prozessserver** den lokalen Masterzielserver und den Prozessserver aus.
+3. Wählen Sie unter **Masterzielserver** und **Prozessserver** den lokalen Masterzielserver und den Prozessserver aus.  
 4. Wählen Sie für **Datenspeicher** den Datenspeicher aus, in dem die Datenträger lokal wiederhergestellt werden sollen. Diese Option wird verwendet, wenn der lokale virtuelle Computer gelöscht wird und Sie neue Datenträger erstellen müssen. Diese Option wird ignoriert, wenn die Datenträger bereits vorhanden sind. Sie müssen aber trotzdem einen Wert angeben.
 5. Wählen Sie das Aufbewahrungslaufwerk.
 6. Die Failbackrichtlinie wird automatisch ausgewählt.

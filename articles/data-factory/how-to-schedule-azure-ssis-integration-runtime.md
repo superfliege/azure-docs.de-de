@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 04/17/2018
 ms.author: douglasl
-ms.openlocfilehash: cc9ab244c784cab608a75092b542dea0a6f69f22
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3e69c147201ab7f3c5e2cf61e72bdb8073354e67
+ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Planen des Startens und Beendens einer Azure SSIS-Integration Runtime 
 Das Ausführen einer Azure SSIS (SQL Server Integration Services)-Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und sie andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden. Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Folgende allgemeine Schritte werden in diesem Artikel beschrieben:
@@ -123,7 +123,7 @@ Das folgende Verfahren bietet Schritte zum Erstellen eines PowerShell-Runbooks. 
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Add-AzureRmAccount `
+        Connect-AzureRmAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -226,7 +226,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie mit einer Webaktivität die We
 Die erstellte Pipeline umfasst drei Aktivitäten. 
 
 1. Die erste **Web**-Aktivität ruft den ersten Webhook auf, um die Azure SSIS-IR zu starten. 
-2. Die **Gespeicherte Prozedur**-Aktivität führt ein SQL­-Skript aus, das das SSIS-Paket ausführt. Die zweite **Web**-Aktivität beendet die Azure SSIS-IR. Weitere Informationen zum Aufrufen eines SSIS-Pakets aus einer Data Factory-Pipeline mit der „Gespeicherte Prozedur“-Aktivität finden Sie unter [Aufrufen eines SSIS-Pakets](how-to-invoke-ssis-package-stored-procedure-activity.md). 
+2. Das SSIS-Paket wird durch die Aktivität **SSIS-Paket ausführen** oder die Aktivität **Gespeicherte Prozedur** ausgeführt.
 3. Die zweite **Web**-Aktivität ruft den Webhook auf, um die Azure SSIS-IR zu beenden. 
 
 Nachdem Sie die Pipeline erstellt und getestet haben, erstellen Sie einen Zeitplantrigger und ordnen diesen der Pipeline zu. Der Zeitplantrigger definiert einen Zeitplan für die Pipeline. Angenommen, Sie erstellen einen Trigger, der täglich um 23 Uhr ausgeführt werden soll. Der Trigger führt die Pipeline täglich um 23 Uhr aus. Die Pipeline startet die Azure SSIS-IR, führt das SSIS-Paket aus und beendet dann die Azure SSIS-IR. 
@@ -278,69 +278,55 @@ Nachdem Sie die Pipeline erstellt und getestet haben, erstellen Sie einen Zeitpl
     3. Geben Sie unter **Text** die Zeichenfolge `{"message":"hello world"}` ein. 
    
         ![Erste Webaktivität – Registerkarte „Einstellungen“](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-5. Ziehen Sie die „Gespeicherte Prozedur“-Aktivität aus dem Bereich **Allgemein** der Toolbox **Aktivitäten**, und legen Sie sie ab. Legen Sie den Namen der Aktivität auf **RunSSISPackage** fest. 
-6. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **SQL-Konto**. 
-7. Klicken Sie unter **Verknüpfter Dienst** auf **+ Neu**.
-8. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Aktionen aus: 
 
-    1. Wählen Sie **Azure SQL-Datenbank** als **Typ** aus.
-    2. Wählen Sie für das Feld **Servername** den Azure SQL-Server aus, der die Datenbank **SSISDB** hostet. Der Azure SSIS-IR-Bereitstellungsprozesses erstellt einen SSIS-Katalog (Datenbank „SSISDB“) im angegebenen Azure SQL-Server.
-    3. Wählen Sie **SSISDB** als **Datenbankname** aus.
-    4. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die Datenbank hat.
-    5. Geben Sie unter **Kennwort** das Kennwort des Benutzers ein. 
-    6. Testen Sie die Verbindung mit der Datenbank, indem Sie auf die Schaltfläche **Verbindung testen** klicken.
-    7. Speichern Sie den verknüpften Dienst, indem Sie auf die Schaltfläche **Speichern** klicken.
-9. Wechseln Sie im Fenster **Eigenschaften** von der Registerkarte **SQL-Konto** zur Registerkarte **Gespeicherte Prozedur**, und führen Sie folgende Schritte durch: 
+4. Ziehen Sie die „SSIS-Paket ausführen“- oder die „Gespeicherte Prozedur“-Aktivität aus dem Abschnitt **Allgemein** der Toolbox **Aktivitäten**, und legen Sie sie ab. Legen Sie den Namen der Aktivität auf **RunSSISPackage** fest. 
 
-    1. Wählen Sie für **Name der gespeicherten Prozedur** die Option **Bearbeiten** aus, und geben Sie **sp_executesql** ein. 
-    2. Wählen Sie im Abschnitt **Parameter der gespeicherten Prozedur** die Option **+ Neu** aus. 
-    3. Geben Sie unter **Name** des Parameters **stmt** ein. 
-    4. Geben Sie unter **Typ** des Parameters **Zeichenfolge** ein. 
-    5. Geben Sie unter **Wert** des Parameters die folgende SQL-Abfrage ein:
+5. Wenn Sie die Aktivität „SSIS-Paket ausführen“ wählen, folgen Sie den Anweisungen unter [Run an SSIS package using the SSIS activity in Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md) (Ausführen eines SSIS-Pakets mit der SSIS-Aktivität in Azure Data Factory), um die Erstellung der Aktivität abzuschließen.  Stellen Sie sicher, dass Sie eine ausreichende Anzahl von Wiederholungsversuchen angeben, die häufig genug sind, um auf die Verfügbarkeit des Azure-SSIS-IR zu warten, da es bis zu deren Start 30 Minuten dauern kann. 
 
-        Geben Sie in der SQL-Abfrage die entsprechenden Werte für die Parameter **folder_name**, **project_name** und **package_name** ein. 
+    ![Wiederholungseinstellungen](media/how-to-schedule-azure-ssis-integration-runtime/retry-settings.png)
 
-        ```sql
-        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
+6. Wenn Sie die Aktivität „Gespeicherte Prozedur“ wählen, folgen Sie den Anweisungen unter [Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory](how-to-invoke-ssis-package-stored-procedure-activity.md), um die Erstellung der Aktivität abzuschließen. Stellen Sie sicher, dass Sie ein Transact-SQL-Skript einfügen, das auf die Verfügbarkeit der Azure-SSIS-IR wartet, da es bis zu deren Start 30 Minuten dauern kann.
+    ```sql
+    DECLARE @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-        -- Wait until Azure-SSIS IR is started
-        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
-        BEGIN
-            WAITFOR DELAY '00:00:01';
-        END
+    -- Wait until Azure-SSIS IR is started
+    WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+    BEGIN
+        WAITFOR DELAY '00:00:01';
+    END
 
-        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
-            @project_name=N'YourProject', @package_name=N'YourPackage',
-            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
-            @execution_id=@exe_id OUTPUT 
+    EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+        @project_name=N'YourProject', @package_name=N'YourPackage',
+        @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+        @execution_id=@exe_id OUTPUT 
 
-        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
 
-        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+    EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
 
-        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
-        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
-        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
-        BEGIN
-            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
-            RAISERROR(@err_msg, 15, 1)
-        END
+    -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/
+    -- failed (4)/pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+    IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+    BEGIN
+        SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+        RAISERROR(@err_msg, 15, 1)
+    END
+    ```
 
-        ```
-10. Verbinden Sie die **Web**-Aktivität mit der **Gespeicherte Prozedur**-Aktivität. 
+7. Verbinden Sie die **Web**-Aktivität mit der **SSIS-Paket ausführen**-Aktivität oder der **Gespeicherte Prozedur**-Aktivität. 
 
     ![Verbinden der Aktivitäten „Web“ und „Gespeicherte Prozedur“](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
 
-11. Ziehen Sie eine weitere **Web**-Aktivität rechts neben die **Gespeicherte Prozedur**-Aktivität, und legen Sie sie dort ab. Legen Sie den Namen der Aktivität auf **StopIR** fest. 
-12. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus: 
+8. Ziehen Sie eine weitere **Web**-Aktivität rechts neben die **SSIS-Paket ausführen**-Aktivität oder die **Gespeicherte Prozedur**-Aktivität, und legen Sie sie dort ab. Legen Sie den Namen der Aktivität auf **StopIR** fest. 
+9. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Aktionen aus: 
 
     1. Fügen Sie unter **URL** die URL für den Webhook ein, der die Azure SSIS-IR beendet. 
     2. Wählen Sie unter **Methode** die Option **POST** aus. 
     3. Geben Sie unter **Text** die Zeichenfolge `{"message":"hello world"}` ein.  
-4. Verbinden Sie die **Gespeicherte Prozedur**-Aktivität mit der letzten **Web**-Aktivität.
+10. Verbinden Sie die **SSIS-Paket ausführen**-Aktivität oder die **Gespeicherte Prozedur**-Aktivität mit der letzten **Web**-Aktivität.
 
     ![Vollständige Pipeline](./media/how-to-schedule-azure-ssis-integration-runtime/full-pipeline.png)
-5. Klicken Sie zum Überprüfen der Pipelineeinstellungen auf der Symbolleiste auf **Überprüfen**. Schließen Sie den **Pipelineüberprüfungsbericht**, indem Sie auf die Schaltfläche **>>** klicken. 
+11. Klicken Sie zum Überprüfen der Pipelineeinstellungen auf der Symbolleiste auf **Überprüfen**. Schließen Sie den **Pipelineüberprüfungsbericht**, indem Sie auf die Schaltfläche **>>** klicken. 
 
     ![Überprüfen der Pipeline](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
