@@ -1,8 +1,8 @@
 ---
-title: "Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage mit SAS-Anmeldeinformationen"
-description: "Dieses Tutorial veranschaulicht, wie Sie mit einer Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) auf Azure Storage zugreifen und dabei SAS-Anmeldeinformationen anstelle eines Speicherkonto-Zugriffsschlüssels verwenden."
+title: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Storage mit SAS-Anmeldeinformationen
+description: Dieses Tutorial veranschaulicht, wie Sie mit einer Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) auf Azure Storage zugreifen und dabei SAS-Anmeldeinformationen anstelle eines Speicherkonto-Zugriffsschlüssels verwenden.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba

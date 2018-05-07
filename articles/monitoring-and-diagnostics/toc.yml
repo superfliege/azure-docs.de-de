@@ -73,6 +73,8 @@
           href: monitoring-enable-alerts-using-template.md
         - name: Kopieren von Warnungen aus dem OMS-Portal in das Azure-Portal
           href: monitoring-alerts-extend-tool.md
+        - name: Warnungen mit dynamischen Schwellenwerten
+          href: monitoring-alerts-dynamic-thresholds.md
     - name: Verwenden von Aktionsgruppen mit Warnungen
       items:
         - name: Informationen zum Webhookschema
