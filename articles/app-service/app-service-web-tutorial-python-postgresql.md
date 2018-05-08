@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/25/2018
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: e342a10c2f3b6c32d8d0bc727bf3325c26fb53d6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 49ec67d06446d6c48e45aef90e2bd528a1b541a9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="tutorial-build-a-python-and-postgresql-web-app-in-azure"></a>Tutorial: Erstellen einer Python- und PostgreSQL-Web-App in Azure
 
@@ -137,20 +137,15 @@ Erstellen Sie mit dem Befehl [`az postgres server create`](/cli/azure/postgres/s
 Ersetzen Sie im folgenden Befehl den Platzhalter *\<postgresql_name>* durch einen eindeutigen Servernamen, den Platzhalter *\<admin_username>* durch einen Benutzernamen und den Platzhalter *\<admin_password>* durch ein Kennwort. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein.
 
 ```azurecli-interactive
-az postgres server create --resource-group myResourceGroup --name mydemoserver --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 9.6
+az postgres server create --resource-group myResourceGroup --name <postgresql_name> --location "West Europe" --admin-user <admin_username> --admin-password <server_admin_password> --sku-name GP_Gen4_2
 ```
 
 Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
 
 ```json
 {
-  "additionalProperties": {},
-  "administratorLogin": "<my_admin_username>",
-  "earliestRestoreDate": "2018-04-19T22:51:05.340000+00:00",
-  "fullyQualifiedDomainName": "<postgresql_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgresql_name>",
   "location": "westeurope",
-  "name": "<postgresql_name>",
+  "name": "<postgresql_server_name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "additionalProperties": {},
@@ -161,16 +156,8 @@ Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azur
     "tier": "GeneralPurpose"
   },
   "sslEnforcement": "Enabled",
-  "storageProfile": {
-    "additionalProperties": {},
-    "backupRetentionDays": 7,
-    "geoRedundantBackup": "Disabled",
-    "storageMb": 5120
-  },
-  "tags": null,
-  "type": "Microsoft.DBforPostgreSQL/servers",
-  "userVisibleState": "Ready",
-  "version": "9.6"
+  ...   +  
+  -  < Output has been truncated for readability >
 }
 ```
 

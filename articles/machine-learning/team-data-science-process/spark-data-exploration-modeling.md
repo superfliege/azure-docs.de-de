@@ -3,7 +3,7 @@ title: Durchsuchen von Daten und Modellierung mit Spark | Microsoft Docs
 description: Veranschaulicht die Funktionen zum Durchsuchen und Modellieren von Daten des Spark MLlib-Toolkits in Azure.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: bradsev
-ms.openlocfilehash: c796cc5f19ac3a30d2cdf72b8fea2813a1586c1b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: d505d432897eb7f4e792b45a95ec91ce1802eeb8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -1104,5 +1104,5 @@ Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt
 
 **Modellnutzung:** Informationen zum Bewerten und Evaluieren der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
 
-**Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 

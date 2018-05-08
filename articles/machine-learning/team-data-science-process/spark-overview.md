@@ -3,7 +3,7 @@ title: Übersicht über Data Science mit Spark in Azure HDInsight | Microsoft Do
 description: Das Spark MLlib-Toolkit bringt wesentliche Machine Learning-Modellierungsfunktionen in die verteilte HDInsight-Umgebung ein.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: a4e1de99-a554-4240-9647-2c6d669593c8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: a12e2f1af945c8186067b791c4e96a52eb23f52f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: d7b4a87b72349375df71a5dd47c2bb544f3b4e3b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -185,5 +185,5 @@ Nachdem Sie einen HDInsight Spark-Cluster eingerichtet und die Jupyter-Notebooks
 
 **Modellnutzung:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
 
-**Kreuzvalidierung und Hyperparameter-Sweeping:**Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 

@@ -2,8 +2,8 @@
 title: Verschieben von Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors | Microsoft Docs
 description: Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
 services: machine-learning,storage
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 96a1b5fb-34d1-4b9b-8d99-2bb8289e0398
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 24237173876f2b292141d9373b346721a489bc56
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: deguhath
+ms.openlocfilehash: 39feca23532264c1f4c17017f89b064af09e9c1c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
 Das [SQL Server Integration Services Feature Pack für Azure](https://msdn.microsoft.com/library/mt146770.aspx) bietet Komponenten zum Herstellen einer Verbindung mit Azure, Übertragen von Daten zwischen Azure und lokalen Datenquellen und Verarbeiten von in Azure gespeicherten Daten.
@@ -59,14 +59,14 @@ Informationen zur Inbetriebnahme von SSIS zum Erstellen von ETL-Paketen (Extrahi
 ## <a name="download-nyc-taxi-dataset"></a>Herunterladen des Datasets „NYC Taxi Trips“
 Das hier beschriebene Beispiel verwendet ein öffentlich verfügbares Dataset mit dem Namen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/). Das Dataset besteht aus ca. 173 Millionen Taxifahrten in New York im Jahr 2013. Es gibt zwei Arten von Daten: Daten zu Fahrten und Daten zum Fahrpreis. Für jeden Monat gibt es jeweils eine Datei, sodass wir insgesamt 24 Dateien haben, die unkomprimiert jeweils 2 GB groß sind.
 
-## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure-Blobspeicher
-Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure-Blobspeicher zu verschieben, verwenden wir eine Instanz der nachstehend gezeigten [**Aufgabe zum Hochladen von Azure-Blobs**](https://msdn.microsoft.com/library/mt146776.aspx):
+## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure Blob Storage
+Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure Blob Storage zu verschieben, verwenden wir eine Instanz der nachstehend gezeigten [**Aufgabe zum Hochladen von Azure-Blobs**](https://msdn.microsoft.com/library/mt146776.aspx):
 
 ![configure-data-science-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
 Die Parameter dieser Aufgabe werden nachfolgend beschrieben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | **AzureStorageConnection** |Gibt einen vorhandenen Azure Storage-Verbindungs-Manager an oder erstellt einen neuen, der auf ein Azure-Speicherkonto verweist, das dorthin zeigt, wo die Blobdateien gehostet werden. |
 | **BlobContainer** |Gibt den Namen des Blobcontainers an, der die hochgeladenen Dateien als Blobs enthält. |

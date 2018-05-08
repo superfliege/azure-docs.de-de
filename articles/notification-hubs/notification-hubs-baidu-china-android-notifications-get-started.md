@@ -1,24 +1,24 @@
 ---
 title: Erste Schritte mit Azure Notification Hubs mit Baidu | Microsoft Docs
-description: "In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs mit Baidu Pushbenachrichtigungen an Android-Geräte senden."
+description: In diesem Lernprogramm erfahren Sie, wie Sie mithilfe von Azure Notification Hubs mit Baidu Pushbenachrichtigungen an Android-Geräte senden.
 services: notification-hubs
 documentationcenter: android
-author: kpiteira
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
 ms.topic: hero-article
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 08/29/2017
-ms.author: kapiteir
-ms.openlocfilehash: 91f20a6e0ff6c2dd512879e9ab3c9369dab5d8ff
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c680de254c55adaad8cedde6cf4748efd0c2c858
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -282,7 +282,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
     
     Legen Sie den Wert der `API_KEY`-Zeichenfolge auf den API-Schlüssel aus dem Baidu-Cloudprojekt fest.
     
-    Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure-Portals] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure-Portals] fest.
+    Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure-Portal] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure-Portal] fest.
 
 11. Öffnen Sie „MainActivity.java“, und fügen Sie der onCreate-Methode Folgendes hinzu:
 
@@ -464,7 +464,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
 
 ## <a name="send-notifications-to-your-app"></a>Senden von Benachrichtigungen an Ihre App
 
-Sie können den Empfang von Benachrichtigungen über das [Azure-Portals] testen. Verwenden Sie dazu die Schaltfläche **Senden** auf dem Notification Hub-Konfigurationsbildschirm, wie auf den folgenden Screenshots zu sehen:
+Sie können den Empfang von Benachrichtigungen über das [Azure-Portal] testen. Verwenden Sie dazu die Schaltfläche **Senden** auf dem Notification Hub-Konfigurationsbildschirm, wie auf den folgenden Screenshots zu sehen:
 
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -527,10 +527,10 @@ Um die App mit dem Emulator zu testen, klicken Sie in der oberen Symbolleiste vo
 
 Die App ruft `userId` und `channelId` vom Baidu-Pushbenachrichtigungsdienst ab und registriert sich beim Notification Hub.
 
-Über die Registerkarte „Debuggen“ des [Azure-Portals] können Sie eine Testbenachrichtigung senden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
+Über die Registerkarte „Debuggen“ des [Azure-Portal] können Sie eine Testbenachrichtigung senden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure-Portals]: https://portal.azure.com/
+[Azure-Portal]: https://portal.azure.com/
 [Baidu-Portal]: http://www.baidu.com/

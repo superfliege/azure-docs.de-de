@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 1438ffa34652268572fe89dc63583cc25607d722
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2868ebd459f937f8621086b16c63f89842f376be
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -31,7 +31,8 @@ Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig 
         - Wenn das Problem auf eine Drosselung der Senke zurückzuführen ist, müssen Sie möglicherweise die Anzahl der Ausgabepartitionen (und auch die der Eingabepartitionen, damit der Auftrag vollständig parallelisierbar bleibt) oder aber die Ressourcenmenge der Senke erhöhen (z.B. die Anzahl der Anforderungseinheiten für CosmosDB).
     - Das Auftragsdiagramm enthält für jede Eingabe eine Backlogereignismetrik pro Partition. Wenn die Backlogereignismetrik weiter steigt, ist dies auch ein Indikator dafür, dass die Systemressource eingeschränkt ist (entweder aufgrund einer Drosselung der Ausgabesenke oder einer hohen CPU-Auslastung).
 4.  Sobald Sie die Grenzen dessen, was ein Auftrag mit 6 SUs erreichen kann, bestimmt haben, können Sie die Verarbeitungskapazität des Auftrags linear extrapolieren, je mehr SUs Sie hinzufügen. Dies gilt jedoch nur unter der Voraussetzung, dass keine Datenschiefe vorliegt, die dazu führt, dass bestimmte Partitionen einen überaus hohen Datendurchsatz aufweisen.
->[!Note]
+
+> [!NOTE]
 > Wählen Sie die richtige Anzahl von Streamingeinheiten: Da Stream Analytics für jede hinzugefügte Gruppe aus 6 SUs einen Verarbeitungsknoten erstellt, wird empfohlen, die Anzahl der Eingabepartitionen durch die Anzahl der Knoten zu teilen, damit die Partitionen gleichmäßig auf die Knoten aufgeteilt werden können.
 > Beispiel: Sie haben gemessen, dass Ihr 6-SU-Auftrag eine Verarbeitungsrate von 4 MB/s erreichen kann. Die Anzahl Ihrer Eingabepartitionen beträgt 4. Sie können festlegen, dass Aufträge mit 12 SUs ungefähr eine Verarbeitungsrate von 8 MB/s erreichen und Aufträge mit 24 SUs 16 MB/s erreichen sollen. Anschließend können Sie entscheiden, auf welchen Wert die Anzahl der SUs für den Auftrag in Abhängigkeit von der Eingangsrate erhöht werden soll.
 

@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit Azure IoT Hub-Gerätezwillingen (.NET/.NET) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Tags hinzufügen und eine IoT Hub-Abfrage verwenden. Sie verwenden das Azure IoT-Geräte-SDK für .NET, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App zu implementieren, die die Tags hinzufügt und die IoT Hub-Abfrage ausführt."
+title: Erste Schritte mit Azure IoT Hub-Gerätezwillingen (.NET/.NET) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von Azure IoT Hub-Gerätezwillingen Tags hinzufügen und eine IoT Hub-Abfrage verwenden. Sie verwenden das Azure IoT-Geräte-SDK für .NET, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK für .NET, um eine Dienst-App zu implementieren, die die Tags hinzufügt und die IoT Hub-Abfrage ausführt.
 services: iot-hub
 documentationcenter: node
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f7e23b6e-bfde-4fba-a6ec-dbb0f0e005f4
 ms.service: iot-hub
 ms.devlang: node
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: dkshir
-ms.openlocfilehash: 6073d594117e69676b753a1e3af25fffa3583a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b337e463ac4aefd7e4644af4c2cdcad4f3c5300a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Erste Schritte mit Gerätezwillingen (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -42,8 +42,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
-
-Wenn Sie die Geräteidentität stattdessen programmgesteuert erstellen möchten, lesen Sie den entsprechenden Abschnitt im Artikel [Herstellen einer Verbindung zwischen dem simulierten Gerät und Ihrer IoT Hub-Instanz mit .NET][lnk-device-identity-csharp].
 
 ## <a name="create-the-service-app"></a>Erstellen der Dienst-App
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (in C#), mit der dem Gerätezwilling, der **myDeviceId** zugeordnet ist, Standortmetadaten hinzugefügt werden. Anschließend werden die in dem IoT Hub, der die Geräte in den USA auswählt, gespeicherten Gerätezwillinge abgefragt und dann diejenigen, die eine Mobilfunkverbindung gemeldet haben.
@@ -128,7 +126,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die als **myDeviceId**
         static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
         static DeviceClient Client = null;
 
-1. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
 
        public static async void InitClient()
         {
@@ -148,7 +146,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die als **myDeviceId**
 
     Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Der oben gezeigte Code initialisiert das **Client**-Objekt und ruft dann den Gerätezwilling für **myDeviceId** ab.
 
-1. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
    
         public static async void ReportConnectivity()
         {

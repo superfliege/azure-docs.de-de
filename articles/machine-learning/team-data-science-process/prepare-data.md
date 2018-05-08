@@ -1,9 +1,9 @@
 ---
-title: "Bereinigen und Vorbereiten von Daten für Azure Machine Learning | Microsoft-Dokumentation"
-description: "Vorverarbeiten und Bereinigen von Daten als Vorbereitung für das Machine Learning."
+title: Bereinigen und Vorbereiten von Daten für Azure Machine Learning | Microsoft-Dokumentation
+description: Vorverarbeiten und Bereinigen von Daten als Vorbereitung für das Machine Learning.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: bdf659ec-4881-4324-8b9c-747cbfa0c3cd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bradsev
-ms.openlocfilehash: 7f0c1f0f549e746cc99db3b47f6c90bb51145d5d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.author: deguhath
+ms.openlocfilehash: f3d05030e293c53c958aa1ba501fe9a2ba7a11b5
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning
 Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Diese Aufgaben sind Teil des Team Data Science-Prozesses (TDSP). Normalerweise wird zuerst eine Untersuchung eines Datasets durchgeführt, um die erforderliche Vorverarbeitung zu ermitteln und zu planen. Eine ausführliche Anleitung zum TDSP-Prozess finden Sie in den Schritten, die unter [Team Data Science-Prozess](overview.md) beschrieben sind.

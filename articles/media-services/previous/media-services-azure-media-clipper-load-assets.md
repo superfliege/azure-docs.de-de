@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 6a479218ff8bd5addf4273b23c06380859e0ea08
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="loading-assets-into-azure-media-clipper"></a>Laden von Medienobjekten in Azure Media Clipper
 Medienobjekte können auf zweierlei Weise in den Azure Media Clipper geladen werden:

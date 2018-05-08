@@ -1,3 +1,11 @@
+---
+ms.topic: include
+ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/03/2018
+---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen
 
 Sie können für virtuelle Computer vorauszahlen und Kosten mit reservierten VM-Instanzen sparen. Weitere Informationen finden Sie unter [Reservierte Azure-VM-Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/).

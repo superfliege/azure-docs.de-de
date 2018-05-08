@@ -1,11 +1,11 @@
 ---
-title: "Hochladen von Dateien von Geräten nach Azure IoT Hub mit .NET | Microsoft-Dokumentation"
-description: "Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für .NET. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert."
+title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit .NET | Microsoft-Dokumentation
+description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für .NET. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 901b4b6c631d47a6c37eb232f66d8350faa9be76
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub unter Verwendung von .NET
 
@@ -29,14 +29,14 @@ Dieses Tutorial baut auf dem Code im Tutorial [Senden von Nachrichten von Cloud-
 - Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
 - Verwenden der IoT Hub-Dateihochlade-Benachrichtigungen zum Auslösen der Dateiverarbeitung in Ihrem App-Back-End.
 
-Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](iot-hub-csharp-csharp-process-d2c.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel: 
+Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](iot-hub-csharp-csharp-process-d2c.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel: 
 
 * Große Dateien, die Bilder enthalten
 * Videos
 * Vibrationsdaten, die mit hoher Häufigkeit als Stichproben erfasst werden
 * Eine Form vorverarbeiteter Daten
 
-Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/introduction.md) oder dem [Hadoop](../hdinsight/index.md)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen.
+Diese Dateien werden normalerweise als Batch in der Cloud mit Tools wie [Azure Data Factory](../data-factory/introduction.md) oder dem [Hadoop](../hdinsight/index.yml)-Stapel verarbeitet. Wenn Sie Dateien von einem Gerät hochladen müssen, können Sie weiterhin die Sicherheit und Zuverlässigkeit des IoT Hub nutzen.
 
 Am Ende dieses Tutorials führen Sie zwei .NET-Konsolen-Apps aus:
 

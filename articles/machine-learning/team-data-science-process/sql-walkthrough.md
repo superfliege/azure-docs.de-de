@@ -2,8 +2,8 @@
 title: Erstellen und Bereitstellen eines Machine Learning-Modells mithilfe von SQL Server auf einer Azure-VM | Microsoft-Dokumentation
 description: Advanced Analytics Process and Technology in Aktion
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 6066b083-262c-4453-a712-a5c05acc3df8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 03def1f07d45b9bde5f54922984c33879a80744c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: deguhath
+ms.openlocfilehash: 1e53814c0c0598380944d576e1937e38d1e1d792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server
 In diesem Tutorial werden Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells geleitet. Hierfür werden SQL Server und das öffentlich zugängliche Dataset [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) verwendet. Die Prozedur entspricht dem standardmäßigen Data Science-Workflow: Erfassen und Durchsuchen der Daten, Entwickeln von Features zur Vereinfachung des Lernens und anschließendes Erstellen und Bereitstellen eines Modells.
@@ -84,7 +84,7 @@ So richten Sie Ihre Azure Data Science-Umgebung ein:
 Basierend auf der Größe des Datasets, dem Speicherort der Datenquelle und der ausgewählten Azure-Zielumgebung ähnelt dieses Szenario dem [Szenario \#5: Große Datasets in einem Ziel-SQL-Server mit lokalen Dateien in Azure VM](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
-Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) von seinem öffentlichen Speicherort eine der Methoden, die unter [Verschieben von Daten in den und aus dem Azure-Blobspeicher](move-azure-blob.md) beschrieben werden, zum Kopieren der Daten auf den neuen virtuellen Computer verwenden.
+Sie können zum Abrufen des Datasets [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) von seinem öffentlichen Speicherort eine der Methoden, die unter [Verschieben von Daten in und aus Azure Blob Storage](move-azure-blob.md) beschrieben werden, zum Kopieren der Daten auf den neuen virtuellen Computer verwenden.
 
 So kopieren Sie die Daten mit AzCopy:
 
