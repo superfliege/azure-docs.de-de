@@ -1,10 +1,10 @@
 ---
-title: "Erstellen, Starten oder Löschen eines Anwendungsgateways | Microsoft Docs"
-description: "Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure-Anwendungsgateways."
+title: Erstellen, Starten oder Löschen eines Anwendungsgateways | Microsoft Docs
+description: Diese Seite enthält Anweisungen zum Erstellen, Konfigurieren, Starten und Löschen eines Azure-Anwendungsgateways.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
 ms.service: application-gateway
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: davidmu
-ms.openlocfilehash: 7fb54e96d20d34f453b7b016094b84504348335b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: victorh
+ms.openlocfilehash: a1cfd42f5b1c31b911005b2539047630c6d320dd
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-start-or-delete-an-application-gateway-with-powershell"></a>Erstellen, Starten oder Löschen eines Anwendungsgateways mit PowerShell 
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/18/2017
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
+> * [Azure-CLI](application-gateway-create-gateway-cli.md)
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites. Eine vollständige Liste der unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
@@ -41,7 +41,7 @@ In diesem Artikel werden Sie durch die Schritte zum Erstellen, Konfigurieren, St
 3. Stellen Sie sicher, dass Sie über ein funktionierendes virtuelles Netzwerk mit einem gültigen Subnetz verfügen. Stellen Sie sicher, dass keine virtuellen Maschinen oder Cloudbereitstellungen das Subnetz verwenden. Das Application Gateway muss sich allein im Subnetz eines virtuellen Netzwerks befinden.
 4. Die Server, die Sie für die Verwendung des Anwendungsgateways konfigurieren, müssen vorhanden sein oder Endpunkte aufweisen, die im virtuellen Netzwerk erstellt wurden oder denen eine öffentliche IP-Adresse/VIP zugewiesen wurde.
 
-## <a name="what-is-required-to-create-an-application-gateway"></a>Was ist zum Erstellen eines Application Gateways erforderlich?
+## <a name="what-is-required-to-create-an-application-gateway"></a>Was ist zum Erstellen eines Anwendungsgateways erforderlich?
 
 Wenn Sie zum Erstellen des Anwendungsgateways den Befehl `New-AzureApplicationGateway` verwenden, wird zu diesem Zeitpunkt keine Konfiguration festgelegt, und die neu erstellten Ressourcen werden entweder per XML oder mithilfe eines Konfigurationsobjekts konfiguriert.
 
@@ -57,7 +57,7 @@ Die Werte sind:
 
 So erstellen Sie ein Application Gateway
 
-1. Erstellen Sie eine neue Application Gateway-Ressource.
+1. Erstellen einer Application Gateway-Ressource
 2. Erstellen Sie eine XML-Konfigurationsdatei oder ein Konfigurationsobjekt.
 3. Ordnen Sie die Konfiguration der neu erstellten Anwendungsgatewayressource zu.
 

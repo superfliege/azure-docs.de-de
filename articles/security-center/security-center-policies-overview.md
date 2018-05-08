@@ -1,11 +1,11 @@
 ---
-title: "Einführung in Azure Security Center-Sicherheitsrichtlinien | Microsoft-Dokumentation"
+title: Einführung in Azure Security Center-Sicherheitsrichtlinien | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Azure Security Center-Sicherheitsrichtlinien und deren Hauptfunktionen.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: f24b1e4a-cc36-4542-b21e-041453cdfcd8
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f552164edc22b450c4ace57cce5c051d1c93e780
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="security-policies-overview"></a>Übersicht über Sicherheitsrichtlinien
 In diesem Artikel erfahren Sie, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren.

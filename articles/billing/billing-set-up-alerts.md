@@ -1,27 +1,27 @@
 ---
-title: "Einrichten von Abrechnungs- oder Guthabenwarnungen für Azure-Abonnements | Microsoft-Dokumentation"
-description: "Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden."
+title: Einrichten von Abrechnungs- oder Guthabenwarnungen für Azure-Abonnements | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden.
 keywords: Guthabenwarnung, Abrechnungswarnung
-services: 
-documentationcenter: 
+services: ''
+documentationcenter: ''
 author: vikdesai
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: vikdesai
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fc0cb2b036e835450ee0fc404cce12439fabc77
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Einrichten von Abrechnungs- oder Guthabenwarnungen für Microsoft Azure-Abonnements
 Wenn Sie der Kontoadministrator für ein Azure-Abonnement sind, können Sie den Dienst für Azure-Abrechnungswarnungen zum Erstellen von benutzerdefinierten Abrechnungswarnungen verwenden, um die Abrechnungsaktivitäten für Ihre Azure-Konten zu überwachen und zu verwalten.
@@ -54,7 +54,7 @@ EA-Kunden können für alle Abteilungen mit einer Registrierung Warnungen empfan
 ## <a name="learn-more-about-azure-cost-management"></a>Erfahren Sie mehr über die Azure-Kostenverwaltung
 - Schätzen Sie Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/), dem [Gesamtbetriebskosten-Rechner](https://aka.ms/azure-tco-calculator) und beim Hinzufügen eines Diensts.
 - [Überprüfen Sie regelmäßig Ihre Nutzung und die Kosten im Azure-Portal](billing-getting-started.md#costs).
-- Aktivieren Sie [Kostenempfehlungen des Azure-Ratgebers](../advisor/advisor-cost-recommendations.md).
+- Aktivieren Sie [Kostenempfehlungen vom Azure Advisor](../advisor/advisor-cost-recommendations.md).
 
 Weitere Informationen finden Sie im [Leitfaden zur Azure-Kostenverwaltung](billing-getting-started.md).
 

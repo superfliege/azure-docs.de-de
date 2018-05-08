@@ -1,25 +1,25 @@
 ---
-title: "Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure-Portal | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit dem Azure-Portal."
+title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure-Portal | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit dem Azure-Portal.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 1159500b-17ba-41e7-88d6-b96986795084
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.custom: 
+ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
-ms.author: davidmu
-ms.openlocfilehash: 406e491aa54806b3534ef0f500d6aea03434e2c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: ae61e3a8308e95c16ccde71de37fb10666ef0df9
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
 
@@ -58,7 +58,7 @@ Wenn Sie Regeln deaktivieren, können Sie eine gesamte Regelgruppe oder bestimmt
 
    1. Suchen Sie nach den Regeln oder Regelgruppen, die Sie deaktivieren möchten.
    2. Aktivieren Sie die Kontrollkästchen für die Regeln, die Sie deaktivieren möchten. 
-   2. Wählen Sie **Speichern** aus. 
+   2. Wählen Sie **Speichern**aus. 
 
 ![Speichern der Änderungen][3]
 

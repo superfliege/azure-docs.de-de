@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: acb0677d48084108a9a5219f92dead10948228c8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="audit-and-accountability-au"></a>Überwachung und Verantwortlichkeit (AU)
 
@@ -301,7 +301,7 @@ ms.lasthandoff: 04/16/2018
 
 |||
 |---|---|
-| **Kunde** | Diese Blaupause stellt die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in die Sicherheitslage der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten Log Analytics-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt Einblick in die Sicherheitslage der bereitgestellten Ressourcen. Hierfür werden die in den bereitgestellten Log Analytics-Lösungen verfügbaren Daten herangezogen, die Protokolldaten und Daten zu den Sicherheitsrisiken aus der Bewertung anhand von Baselines und Patches integrieren. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

@@ -2,20 +2,20 @@
 title: Erstellen eines Anwendungsgateways – Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway erstellen.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
-ms.author: davidmu
-ms.openlocfilehash: df9235bc7ff61943de52a0bcc4064bf9fab6636a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 0df71c445d2c5fc6827b69f708203a3b3e6e2b53
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways im Azure-Portal
 
@@ -36,12 +36,12 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
     - *myAppGateway*: Name des Anwendungsgateways
-    - *myResourceGroupAG*: die neue Ressourcengruppe
+    - *myResourceGroupAG*: neue Ressourcengruppe
 
     ![Erstellen eines neuen Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-create.png)
 
 4. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie auf **OK**.
-5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann diese Werte für das virtuelle Netzwerk ein:
+5. Klicken Sie auf **Virtuelles Netzwerk auswählen** und dann auf **Neu erstellen**, und geben Sie dann die folgenden Werte für das virtuelle Netzwerk ein:
 
     - *myVNet*: Name des virtuellen Netzwerks
     - *10.0.0.0/16*: Adressraum des virtuellen Netzwerks
@@ -74,8 +74,8 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-    - *myVM*: der Name des virtuellen Computers
-    - *azureuser*: der Name des Administratorbenutzers
+    - *myVM*: Name des virtuellen Computers
+    - *azureuser*: Name des Administratorbenutzers
     - *Azure123456!* als Kennwort
     - Wählen Sie **Vorhandene verwenden** und dann *myResourceGroupAG* aus.
 
@@ -83,7 +83,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 5. Wählen Sie als Größe des virtuellen Computers **DS1_V2** aus, und klicken Sie auf **Auswählen**.
 6. Stellen Sie sicher, dass als virtuelles Netzwerk **myVNet** und als Subnetz **myBackendSubnet** ausgewählt ist. 
 7. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
-8. Klicke Sie auf **OK**, überprüfen Sie die Einstellungen auf der Zusammenfassungsseite, und klicken Sie dann auf **Erstellen**.
+8. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
 
 ### <a name="install-iis"></a>Installieren von IIS
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 7a7529f9a0ebe43c9fd6e473baff6f7a3b61e5e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="risk-assessment-ra"></a>Risikobewertung (Risk Assessment, RA)
 
@@ -329,5 +329,5 @@ ms.lasthandoff: 04/16/2018
 
 |||
 |---|---|
-| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt einen allgemeinen Überblick über den Sicherheitszustand der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten Verwaltungslösungen verfügbar sind. |
+| **Kunde** | Dieser Blueprint stellt die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet einen umfassenden Überblick über den Sicherheitszustand. Das Sicherheits- und Überwachungsdashboard gewährt einen allgemeinen Einblick in die Sicherheitslage der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten Verwaltungslösungen verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |

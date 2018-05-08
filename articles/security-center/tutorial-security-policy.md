@@ -1,11 +1,11 @@
 ---
-title: "Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheitsrichtlinien | Microsoft-Dokumentation"
-description: "Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheitsrichtlinien"
+title: Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheitsrichtlinien | Microsoft-Dokumentation
+description: Azure Security Center-Tutorial – Definieren und Bewerten von Sicherheitsrichtlinien
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: yurid
-ms.openlocfilehash: a740cec8a3177e0de5f33b362d5c4956671cd427
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 16dc8553fdc1209d1973934a87660ff61df8e68a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Tutorial: Definieren und Bewerten von Sicherheitsrichtlinien
 Mit Security Center kann sichergestellt werden, dass die Sicherheitsanforderungen von Unternehmen oder Behörden erfüllt werden, indem Sicherheitsrichtlinien zum Definieren der gewünschten Konfiguration Ihrer Workloads verwendet werden. Nachdem Sie die Richtlinien für Ihre Azure-Abonnements definiert und an den Workloadtyp bzw. die Empfindlichkeit Ihrer Daten angepasst haben, kann Security Center Sicherheitsempfehlungen für Ihre Compute-, Netzwerk-, SQL-/Speicher- und Anwendungsressourcen bereitstellen. In diesem Lernprogramm lernen Sie Folgendes:

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 019785ae0bde58b33cc4b09e2e2746f3fd474b70
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 48beb0d1c70b0f9c524ba91934a1a0a7b5e8505d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -275,7 +275,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Voraussetzung | angeben |
 | --- | --- |
 | Azure AD Connect ist installiert und konfiguriert. | Baustein: [Verzeichnissynchronisierung – Kennworthashsynchronisierung](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| Die ADLDS-Instanz entspricht den Anforderungen. | [Technische Referenz für den generischen LDAP-Connector: Übersicht über den generischen LDAP-Connector](./connect/active-directory-aadconnectsync-connector-genericldap.md#overview-of-the-generic-ldap-connector) |
+| Die ADLDS-Instanz entspricht den Anforderungen. | [Technische Referenz für den generischen LDAP-Connector: Übersicht über den generischen LDAP-Connector](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
 | Sie verfügen über eine Liste der Workloads der Benutzer und der Attribute dieser Workloads. | [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
@@ -283,7 +283,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 | Schritt | angeben |
 | --- | --- |
-| Hinzufügen eines generischen LDAP-Connectors | [Technische Referenz für den generischen LDAP-Connector: Erstellen eines neuen Connectors](./connect/active-directory-aadconnectsync-connector-genericldap.md#create-a-new-connector) |
+| Hinzufügen eines generischen LDAP-Connectors | [Technische Referenz für den generischen LDAP-Connector: Erstellen eines neuen Connectors](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
 | Erstellen Sie Ausführungsprofile für den erstellten Connector (vollständiger Import, Deltaimport, vollständige Synchronisierung, Deltasynchronisierung, Export). | [Create a Management Agent Run Profile](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx) (Erstellen eines Management-Agent-Ausführungsprofils)<br/> [Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
 | Führen Sie ein Profil für den vollständigen Import aus. Überprüfen Sie, dass sich im Connectorbereich Objekte befinden. | [Search for a Connector Space Object](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx) (Suchen nach einem Objekt des Connectorbereichs)<br/>[Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager: Connectorbereich durchsuchen](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
 | Erstellen Sie Synchronisierungsregeln, damit die Objekte im Metaverse über die erforderlichen Attribute für die Workloads verfügen. | [Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration: Änderungen an Synchronisierungsregeln](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |

@@ -2,7 +2,7 @@
 title: Gemeinsames Schreiben von Code mit Git – Azure Machine Learning | Microsoft-Dokumentation
 description: Erfahren Sie, wie eine gemeinschaftliche Codeentwicklung für Data Science-Projekte mithilfe von Git mit Agile-Planung umgesetzt wird.
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev
-ms.openlocfilehash: f3eabf0b754f777f25811d30c158b647b1d3954e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: deguhath
+ms.openlocfilehash: 55b47362f334d7366b6cc537a96dc7d046c23733
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 

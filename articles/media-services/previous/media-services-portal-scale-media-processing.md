@@ -1,0 +1,72 @@
+---
+title: Skalieren der Medienverarbeitung mithilfe des Azure-Portals | Microsoft-Dokumentation
+description: Dieses Tutorial führt Sie durch die Schritte zur Skalierung der Medienverarbeitung mithilfe des Azure-Portals.
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: cfowler
+editor: ''
+ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 07/04/2017
+ms.author: juliako
+ms.openlocfilehash: 51973916c97282ac93032ab833402d9d1356647e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
+# <a name="change-the-reserved-unit-type"></a>Ändern Sie den Typ reservierter Einheiten
+> [!div class="op_single_selector"]
+> * [.NET](media-services-dotnet-encoding-units.md)
+> * [Portal](media-services-portal-scale-media-processing.md)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> 
+> 
+
+> [!NOTE]
+> Informationen zum Abrufen der aktuellen Version des Java SDK sowie zu den ersten Schritten beim Entwickeln mit Java finden Sie unter [Erste Schritte mit dem Java-Client-SDK für Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
+> Wenn Sie das aktuelle PHP SDK für Media Services herunterladen möchten, suchen Sie im [Packagist-Repository](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) nach Version 0.5.7 des Microsoft-/WindowAzure-Pakets.  
+
+## <a name="overview"></a>Übersicht
+
+Ein Media Services-Konto ist dem Typ einer reservierten Einheit zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben erfolgen. Sie können zwischen den folgenden reservierten Einheitentypen wählen: **S1**, **S2** oder **S3**. Derselbe Codierungsauftrag wird bei Verwendung der reservierten Einheit **S2** beispielsweise schneller ausgeführt als mit dem Typ **S1**.
+
+Neben der Art der reservierten Einheit können Sie angeben, dass für Ihr Konto **reservierte Einheiten** (Reserved Units, RUs) bereitgestellt werden sollen. Die Anzahl bereitgestellter RUs bestimmt die Anzahl von Medienaufgaben, die gleichzeitig unter einem bestimmten Konto verarbeitet werden können.
+
+>[!NOTE]
+>RUs dienen der Parallelisierung der gesamten Medienverarbeitung, einschließlich der Indizierung von Aufträgen mit Azure Media Indexer. Allerdings erfolgt die Indizierung von Aufträgen im Gegensatz zur Codierung mit schnelleren reservierten Einheiten nicht schneller.
+
+> [!IMPORTANT]
+> Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md) , um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
+> 
+> 
+
+## <a name="scale-media-processing"></a>Skalieren der Medienverarbeitung
+Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anzahl reservierter Einheiten zu ändern:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
+2. Wählen Sie im Fenster **Einstellungen** die Option **Reservierte Einheiten für Medien** aus.
+   
+    Verwenden Sie zum Ändern der Anzahl reservierter Einheiten für den ausgewählten Typ den Schieberegler unter **Reservierte Einheiten für Medien** am oberen Bildschirmrand.
+   
+    Zum Ändern von **RESERVIERTER EINHEITSTYP** klicken Sie auf die Leiste **Geschwindigkeit der reservierten Einheiten für die Verarbeitung**. Wählen Sie dann den benötigten Tarif aus: S1, S2 oder S3.
+   
+3. Klicken Sie auf die Schaltfläche "Speichern", um die Änderungen zu speichern.
+   
+    Die neuen reservierten Einheiten werden zugewiesen, wenn Sie auf SPEICHERN klicken.
+
+## <a name="next-steps"></a>Nächste Schritte
+Überprüfen Sie die Media Services-Lernpfade.
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
+
+## <a name="provide-feedback"></a>Feedback geben
+[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+

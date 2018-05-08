@@ -1,11 +1,11 @@
 ---
-title: "Aufgabenvoreinstellung für Azure Media Indexer"
-description: "Dieses Thema bietet einen Überblick über die Aufgabenvoreinstellung für Azure Media Indexer."
+title: Aufgabenvoreinstellung für Azure Media Indexer
+description: Dieses Thema bietet einen Überblick über die Aufgabenvoreinstellung für Azure Media Indexer.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Asolanki
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: adsolank;juliako;
 ms.openlocfilehash: ae6c4da189cd6637b4e1fa9274473b62f6664e51
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Aufgabenvoreinstellung für Azure Media Indexer
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 501364f24e61c29ac0d5909a7dff1df9e93fe6a5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -85,7 +85,7 @@ Organisationen, die Azure in Lab- und Entwicklungsumgebungen einsetzen, können 
 
 Der Dienst [Azure DevTest Labs](../devtest-lab/devtest-lab-overview.md) verwendet die [rollenbasierte Zugriffssteuerung von Azure](../role-based-access-control/overview.md) (Role Based Access Control, RBAC). Mit RBAC können Sie die Aufgaben in Ihrem Team in Rollen aufteilen, denen jeweils nur das für die Aufgabenausführung notwendige Zugriffsniveau gewährt wird. RBAC beinhaltet vordefinierte Rollen (Besitzer, Lab-Benutzer und Mitwirkender). Mit diesen Rollen können Sie sogar Rechte für externe Partner gewähren, was die Zusammenarbeit erheblich vereinfacht.
 
-Da DevTest Labs RBAC verwendet, können zusätzlich [benutzerdefinierte Rollen](../devtest-lab/devtest-lab-grant-user-permissions-to-specific-lab-policies.md) erstellt werden. DevTest Labs vereinfacht nicht nur die Berechtigungsverwaltung, sondern auch den Prozess der Umgebungsbereitstellung. Darüber hinaus unterstützt Sie der Dienst bei der Bewältigung anderer typischer Herausforderungen von Teams, die an Entwicklungs- und Testumgebungen arbeiten. DevTest Labs erfordert zwar eine gewisse Vorbereitung, erleichtert Ihrem Team aber langfristig die Arbeit.
+Da DevTest Labs RBAC verwendet, können zusätzlich [benutzerdefinierte Rollen](../lab-services/devtest-lab-grant-user-permissions-to-specific-lab-policies.md) erstellt werden. DevTest Labs vereinfacht nicht nur die Berechtigungsverwaltung, sondern auch den Prozess der Umgebungsbereitstellung. Darüber hinaus unterstützt Sie der Dienst bei der Bewältigung anderer typischer Herausforderungen von Teams, die an Entwicklungs- und Testumgebungen arbeiten. DevTest Labs erfordert zwar eine gewisse Vorbereitung, erleichtert Ihrem Team aber langfristig die Arbeit.
 
 Azure DevTest Labs bietet unter anderem folgende Features:
 
@@ -166,7 +166,7 @@ Alle virtuellen Computer in Azure IaaS müssen so gehärtet werden, dass sie nur
 
 Security Compliance Manager ist ein kostenloses Tool. Mit diesem Tool können Sie Ihre Desktopcomputer, Ihre herkömmlichen Datencenter und Ihre private und öffentliche Cloud schnell mithilfe von Gruppenrichtlinien und System Center Configuration Manager konfigurieren und verwalten.
 
-Security Compliance Manager bietet bereitstellungsfähige Richtlinien und getestete Konfigurationspakete für die Verwaltung gewünschter Konfigurationen. Die Baselines basieren auf den Empfehlungen des [Microsoft-Leitfadens zum Thema Sicherheit](https://technet.microsoft.com/en-us/library/cc184906.aspx) und auf den bewährten Methoden der Branche. Sie unterstützen Sie bei der Verwaltung von Konfigurationsabweichungen, bei der Erfüllung von Complianceanforderungen und bei der Beseitigung von Sicherheitsbedrohungen.
+Security Compliance Manager bietet bereitstellungsfähige Richtlinien und getestete Konfigurationspakete für die Verwaltung gewünschter Konfigurationen. Die Baselines basieren auf den Empfehlungen des [Microsoft-Leitfadens zum Thema Sicherheit](https://technet.microsoft.com/library/cc184906.aspx) und auf den bewährten Methoden der Branche. Sie unterstützen Sie bei der Verwaltung von Konfigurationsabweichungen, bei der Erfüllung von Complianceanforderungen und bei der Beseitigung von Sicherheitsbedrohungen.
 
 Mit Security Compliance Manager können Sie die aktuelle Konfiguration Ihrer Computer importieren. Hierfür stehen zwei Methoden zur Verfügung: Zum einen können Sie Active Directory-basierte Gruppenrichtlinien importieren. Zum anderen können Sie die Konfiguration eines „Golden-Master-Referenzcomputers“ importieren und dabei mithilfe des [LocalGPO-Tools](https://blogs.technet.microsoft.com/secguide/2016/01/21/lgpo-exe-local-group-policy-object-utility-v1-0/) die lokale Gruppenrichtlinie sichern. Die lokale Gruppenrichtlinie kann anschließend in Security Compliance Manager importiert werden.
 

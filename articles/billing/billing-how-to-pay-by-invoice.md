@@ -1,24 +1,24 @@
 ---
-title: "Zahlen für Azure-Abonnements auf Rechnung | Microsoft-Dokumentation"
+title: Zahlen für Azure-Abonnements auf Rechnung | Microsoft-Dokumentation
 description: Beschreibt, wie Azure-Abonnements auf Rechnung bezahlt werden
-services: 
-documentationcenter: 
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: conceptual
 ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: b9f785a8f24c013f01dd429539239a7396a94953
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3bcd170ece7c85ee3fadaa952a539a7f2364ea48
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
 
@@ -31,7 +31,7 @@ Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ 
 
 ## <a name="request-pay-by-invoice"></a>Anfordern der Zahlung per Rechnung
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. Wählen Sie **Hilfe und Support** > **Neue Supportanfrage**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wählen Sie **Hilfe und Support** > **Neue Supportanfrage**.
 
     ![Schaltfläche „Hilfe und Support“](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 

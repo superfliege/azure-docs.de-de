@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
 ms.openlocfilehash: 0eca3c82aea287f6582bd56574512dce5e8e86c7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="system-and-information-integrity-si"></a>Integrität von System und Informationen (SI)
 
@@ -259,7 +259,7 @@ ms.lasthandoff: 04/16/2018
 
 |||
 |---|---|
-| **Kunde** | Diese Blaupause stellt die Log Analytics-Lösung und die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet eine umfassende Übersicht über die Sicherheitslage sowie über Angriffe und Anzeichen möglicher Angriffe. Das Sicherheits- und Überwachungsdashboard gewährt einen allgemeinen Einblick in die Sicherheitslage der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten Verwaltungslösungen verfügbar sind. |
+| **Kunde** | Diese Blaupause stellt die Log Analytics- und die Sicherheits- und Überwachungslösung bereit. Diese Lösung bietet eine umfassende Übersicht über die Sicherheitslage sowie über Angriffe und Anzeichen möglicher Angriffe. Das Sicherheits- und Überwachungsdashboard gewährt einen allgemeinen Einblick in die Sicherheitslage der bereitgestellten Ressourcen anhand von Daten, die in allen bereitgestellten Verwaltungslösungen verfügbar sind. |
 | **Anbieter (Microsoft Azure)** | Nicht zutreffend |
 
 

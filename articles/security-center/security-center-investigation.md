@@ -1,11 +1,11 @@
 ---
-title: "Untersuchen von Vorfällen und Warnungen in Azure Security Center | Microsoft-Dokumentation"
-description: "Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center."
+title: Untersuchen von Vorfällen und Warnungen in Azure Security Center | Microsoft-Dokumentation
+description: Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: yurid
-ms.openlocfilehash: 818c257d1959936f0dc326486e372677aacb065a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Untersuchen von Vorfällen und Warnungen in Azure Security Center (Vorschauversion)
 Dieses Dokument enthält hilfreiche Informationen zur Untersuchung von Sicherheitsvorfällen und -warnungen mithilfe des Untersuchungsfeatures in Azure Security Center.
@@ -39,7 +39,7 @@ Der Benutzer kann im Diagramm auf eine Entität klicken, um zwischen den Entitä
 ### <a name="investigation-path"></a>Untersuchungspfad
 Während der Navigation zu verschiedenen Entitäten kann der Benutzer dank des Untersuchungspfads den Untersuchungskontext nachvollziehen und blitzschnell navigieren. Der Vorfall mit den Untersuchungsergebnissen befindet sich immer im äußerst linken Vorfall des Untersuchungspfads.
 
-![Pfad](./media/security-center-investigation/security-center-investigation-fig2.png)
+![path](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>Allgemeine Informationen
 Wenn eine Entität im Diagramm dargestellt wird, stehen auf den Registerkarten zusätzliche Informationen zu dieser Entität zur Verfügung. Auf der Registerkarte **Informationen** werden allgemeine Informationen zu der Entität aus verschiedenen Quellen angezeigt. 
@@ -56,11 +56,11 @@ Auf der Registerkarte **Entitäten** werden alle verknüpften Entitäten nach Ty
 
 ![Entitäten](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Suche
+### <a name="search"></a>Suchen,
 
 Auf der Registerkarte **Suche** werden alle für die Entität verfügbaren Protokolltypen angezeigt. Für die einzelnen Protokolltypen ist jeweils die Anzahl verfügbarer Datensätze angegeben. Durch Klicken auf einen Protokolltyp gelangen Sie zum Suchbildschirm. Im Suchbildschirm können Sie Ihre Suche eingrenzen und verschiedenen Suchfunktionen verwenden, um beispielsweise Benachrichtigungen festzulegen. In der aktuellen Version ist die Registerkarte „Suchen“ nur für Benutzer- und Computerentitäten verfügbar.
 
-![Suche](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Suchen,](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Durchsuchen
 

@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: e6d1e093fafc6ea74dfcdfa498810ff33d27d89f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b202f30e5fb47bcd16f25c5961f8345dd0324139
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Anpassen der Azure AD B2C-Benutzeroberfläche (UI)
 
@@ -332,7 +332,17 @@ Auf dieser Seite können Benutzer während der Registrierung oder Anmeldung ihre
 
 ## <a name="localizing-your-html-content"></a>Lokalisieren Ihres HTML-Inhalts
 
-Sie können Ihren HTML-Inhalt lokalisieren, indem Sie die [Sprachanpassung](active-directory-b2c-reference-language-customization.md) aktivieren.  Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte HTML-Seiten bereitzustellen, die sprachspezifisch sind.
+Es gibt zwei Möglichkeiten zum Lokalisieren Ihrer HTML-Inhalte. Eine davon ist die Aktivierung der [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten.  Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
+
+Alternativ können Sie auf der Grundlage des verwendeten Gebietsschemas Inhalte aus unterschiedlichen Quellen abrufen. In Ihrem CORS-fähigen Endpunkt können Sie eine Ordnerstruktur zum Hosten von Inhalten für bestimmte Sprachen einrichten. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` verwenden, wird der passende Inhalt abgerufen.  Ein Beispiel: Angenommen, Ihr benutzerdefinierter Seiten-URI sieht wie folgt aus:
+
+```
+https://wingtiptoysb2c.blob.core.windows.net/{Culture:RFC5646}/wingtip/unified.html
+```
+Sie können die Seite in `fr` laden. HTML- und CSS-Inhalte der Seite werden dann aus der folgenden Quelle abgerufen:
+```
+https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
+```
 
 ## <a name="things-to-remember-when-building-your-own-content"></a>Wichtige Aspekte beim Erstellen eigener Inhalte
 

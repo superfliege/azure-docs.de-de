@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen und Verwalten eines Stream Analytics-Auftrags mit de
 description: In diesem Tutorial wird umfassend dargestellt, wie Sie Azure Stream Analytics zum Analysieren von betrügerischen Anrufen in einem Telefonanruf-Datenstrom verwenden.
 services: stream-analytics
 author: SnehaGunda
+ms.author: sngun
 manager: kfile
 ms.service: stream-analytics
+ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.workload: data-services
-ms.author: sngun
-ms.openlocfilehash: 0c8fb0430d41babba1eb2bb3edd57d0ad4f3bede
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 524b15747a275c76fec6c529e4f00d0da1b41420
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Erstellen eines Stream Analytics-Auftrags zum Analysieren von Telefonanrufdaten und Visualisieren von Ergebnissen in einem Power BI-Dashboard
 
@@ -50,10 +50,10 @@ Bevor Stream Analytics den Datenstrom mit den betrügerischen Anrufen analysiere
 
    |**Einstellung**  |**Empfohlener Wert** |**Beschreibung**  |
    |---------|---------|---------|
-   |Name     | myEventHubNS        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
+   |NAME     | myEventHubNS        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
    |Abonnement     |   \<Ihr Abonnement\>      |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Event Hub erstellen möchten.      |
    |Ressourcengruppe     |   MyASADemoRG      |  Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.       |
-   |Standort     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
+   |Speicherort     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
 
 4. Verwenden Sie für die verbleibenden Einstellungen die Standardoptionen, und wählen Sie **Erstellen**.  
 
@@ -96,7 +96,7 @@ Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass 
    * Legen Sie den Wert des EventHubName-Schlüssels auf den Wert von EntityPath in der Verbindungszeichenfolge fest.  
    * Legen Sie den Wert des Microsoft.ServiceBus.ConnectionString-Schlüssels auf die Verbindungszeichenfolge ohne den EntityPath-Wert fest, bei dem es sich um den Wert handelt, den Sie im vorherigen Abschnitt in Schritt 5 erhalten haben.
 
-4. Speichern Sie die Datei.  
+4. Speichern Sie die Datei .  
 5. Öffnen Sie als Nächstes ein Befehlsfenster, ändern Sie den Ordner an dem Speicherort, an dem Sie die TelcoGenerator-Anwendung entzippt haben, und geben Sie den folgenden Befehl ein:
 
    ```
@@ -134,7 +134,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
    |Auftragsname     |  ASATutorial       |   Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.      |
    |Abonnement    |  \<Ihr Abonnement\>   |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Auftrag erstellen möchten.       |
    |Ressourcengruppe   |   MyASADemoRG      |   Wählen Sie **Vorhandene verwenden**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.      |
-   |Standort   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
+   |Speicherort   |    USA, Westen 2     |      Der Standort, an dem der Auftrag bereitgestellt werden kann. Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie die optimale Leistung erzielen und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.      |
    |Hosting-Umgebung    | Cloud        |     Für Stream Analytics-Aufträge ist eine Cloud- oder Edge-Bereitstellung möglich. Mit der Option „Cloud“ können die Aufträge in der Azure Cloud und mit der Option „Edge“ auf einem IoT Edge-Gerät bereitgestellt werden.    |
    |Streamingeinheiten     |    1       |      Streamingeinheiten sind die Computingressourcen, die für die Ausführung eines Auftrags erforderlich sind. Standardmäßig ist dieser Wert auf 1 festgelegt. Informationen zum Skalieren von Streamingeinheiten finden Sie im Artikel [Überblick über Streamingeinheiten und Informationen zu Anpassungen](stream-analytics-streaming-unit-consumption.md).      |
 

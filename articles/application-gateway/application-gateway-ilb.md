@@ -1,10 +1,10 @@
 ---
 title: Verwenden von Azure Application Gateway mit internem Lastenausgleich | Microsoft-Dokumentation
-description: "Diese Seite enthält Anweisungen zum Konfigurieren eines Azure-Application Gateways mit einem Endpunkt für internen Lastenausgleich."
+description: Diese Seite enthält Anweisungen zum Konfigurieren eines Azure-Application Gateways mit einem Endpunkt für internen Lastenausgleich.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.assetid: 7403d28e-909f-46a2-b282-43a8e942f53c
 ms.service: application-gateway
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: davidmu
-ms.openlocfilehash: 7ca9307e8a78f6dade4b231fa3a0d83a68af3f21
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 5d5e70d46121252c616d77d33ee82397e3a3ca84
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)
 
@@ -173,7 +173,7 @@ Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 
 ## <a name="start-the-gateway"></a>Starten des Gateways
 
-Sobald das Gateway konfiguriert wurde, verwenden Sie das `Start-AzureApplicationGateway` -Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Application Gateway beginnt, nachdem das Gateway erfolgreich gestartet wurde. 
+Sobald das Gateway konfiguriert wurde, verwenden Sie das `Start-AzureApplicationGateway` -Cmdlet, um das Gateway zu starten. Die Abrechnung für ein Anwendungsgateway beginnt, nachdem das Gateway erfolgreich gestartet wurde. 
 
 > [!NOTE]
 > Die Regel `Start-AzureApplicationGateway` kann 15 bis 20 Minuten dauern. 

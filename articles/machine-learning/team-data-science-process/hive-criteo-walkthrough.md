@@ -3,7 +3,7 @@ title: 'Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight H
 description: Verwenden des Team Data Science-Prozesses für ein vollständiges Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells unter Verwendung eines (1 TB) großen öffentlich zugänglichen Datasets
 services: machine-learning,hdinsight
 documentationcenter: ''
-author: bradsev
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 72d958c4-3205-49b9-ad82-47998d400d2b
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 760e08643fb3e71478fc899278591569da1d515b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: deguhath
+ms.openlocfilehash: 187171d75a6bcc54a48c891aa2eafd8408b06ddb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset
 
@@ -51,11 +51,11 @@ Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen W
 ## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprobleme behandelt:
 
-1. **Binäre Klassifikation:**sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
+1. **Binäre Klassifikation:** sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
    
    * Klasse 0: Kein Klick
    * Klasse 1: Klick
-2. **Regression:**sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
+2. **Regression:** sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
 
 ## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
 **Hinweis**: Dies ist normalerweise eine **Admin**-Aufgabe.
@@ -159,7 +159,7 @@ Da all diese Tabellen extern sind, können Sie einfach auf ihren Azure Blob Stor
 
 **ALLE Hive-Abfragen können auf zwei Arten ausgeführt werden:**
 
-1. **Über die Hive REPL-Befehlszeile:**Zunächst wird ein „hive“-Befehl ausgegeben sowie eine Abfrage kopiert und in die Hive REPL-Befehlszeile kopiert. Gehen Sie hierfür folgendermaßen vor:
+1. **Über die Hive REPL-Befehlszeile:** Zunächst wird ein „hive“-Befehl ausgegeben sowie eine Abfrage kopiert und in die Hive REPL-Befehlszeile kopiert. Gehen Sie hierfür folgendermaßen vor:
    
         cd %hive_home%\bin
         hive

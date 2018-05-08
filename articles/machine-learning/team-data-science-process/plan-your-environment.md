@@ -1,9 +1,9 @@
 ---
-title: "Identifizieren von Szenarien und Planen des Analyseprozesses – Azure | Microsoft-Dokumentation"
-description: "Planen Sie die erweiterte Analyse unter Berücksichtigung verschiedener Kernfragen."
+title: Identifizieren von Szenarien und Planen des Analyseprozesses – Azure | Microsoft-Dokumentation
+description: Planen Sie die erweiterte Analyse unter Berücksichtigung verschiedener Kernfragen.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev
-ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.author: deguhath
+ms.openlocfilehash: d2b982669f126695e3e5baefce24853269947536
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 Welche Ressourcen sollten Sie einplanen, wenn Sie eine Umgebung für die Verarbeitung erweiterter Analysen für ein Dataset einrichten? In diesem Artikel werden verschiedene zu stellende Fragen vorgeschlagen, mit deren Hilfe Sie die für Ihr Szenario relevanten Aufgaben und Ressourcen bestimmen können. Die Reihenfolge der allgemeinen Schritte für Predictive Analytics werden unter [Was ist der Team Data Science-Prozess (TDSP)?](overview.md)vorgestellt. Jeder dieser Schritte erfordert bestimmte Ressourcen für die Aufgaben, die für Ihr spezielles Szenario relevant sind. Die wichtigsten Fragen zum Bestimmen Ihres Szenarios betreffen die Datenlogistik, Merkmale, Qualität der Datasets sowie die Tools und Sprachen, die für die Analyse verwendet werden sollen.
@@ -28,13 +28,13 @@ Welche Ressourcen sollten Sie einplanen, wenn Sie eine Umgebung für die Verarbe
 ## <a name="logistic-questions-data-locations-and-movement"></a>Logistische Fragen: Datenspeicherorte und -verschiebung
 Die logistischen Fragen betreffen den Speicherort der **Datenquelle**, das **Ziel** in Azure und Anforderungen für das Verschieben der Daten, einschließlich Zeitplan, Menge und Ressourcenaufwand. Die Daten müssen möglicherweise während des Analyseprozesses mehrere Male verschoben werden. Ein gängiges Szenario ist das Verschieben lokaler Daten in eine Form von Speicher in Azure und anschließend in Machine Learning Studio.
 
-1. **Was ist Ihre Datenquelle?** Ist sie lokal oder in der Cloud? Beispiel:
+1. **Was ist Ihre Datenquelle?** Ist sie lokal oder in der Cloud? Beispiel: 
    
    * Die Daten sind öffentlich über eine HTTP-Adresse verfügbar.
    * Die Daten befinden sich an einem lokalen/Netzwerkspeicherort.
    * Die Daten befinden sich in einer SQL Server-Datenbank.
    * Die Daten sind in einem Azure-Speichercontainer gespeichert.
-2. **Was ist das Azure-Ziel?** Wo muss es sich für Verarbeitungs- oder Modellierungszwecke befinden? Beispiel:
+2. **Was ist das Azure-Ziel?** Wo muss es sich für Verarbeitungs- oder Modellierungszwecke befinden? Beispiel: 
    
    * Azure Blob Storage
    * SQL Azure-Datenbanken

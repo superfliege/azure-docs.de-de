@@ -1,20 +1,20 @@
 ---
-title: "Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites – Azure-Portal | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites – Azure-Portal | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: f3dd092b2298bfc97cac30b8706e0588a466e1e0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites mit dem Azure-Portal
 
@@ -78,7 +78,7 @@ Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virt
 
 In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Server für das Anwendungsgateway verwendet werden. Sie installieren außerdem IIS auf den virtuellen Computern, um zu überprüfen, dass der Datenverkehr ordnungsgemäß geroutet wird.
 
-1. Klicken Sie auf **Neu**.
+1. Klicken Sie auf **New**.
 2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
@@ -102,7 +102,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
 
     ```azurepowershell-interactive
-    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/vhorne/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
     Set-AzureRmVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
@@ -166,7 +166,7 @@ Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erst
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-1. Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Verwenden Sie z.B. http://www.contoso.com.
+1. Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. http://www.contoso.com.
 
     ![Testen der Contoso-Website im Anwendungsgateway](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
 
@@ -186,4 +186,4 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr darüber, welche weiteren Möglichkeiten Ihr Anwendungsgateway bietet](application-gateway-introduction.md)
+> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](application-gateway-introduction.md)

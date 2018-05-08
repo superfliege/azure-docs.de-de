@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS | Microsoft-Dokumentation"
-description: "Mit Azure DNS können Sie beim Hosten Ihrer Domäne DNS-Ressourceneintragssätze und -Einträge verwalten."
+title: Verwalten von DNS-Ressourceneintragssätzen und -Einträgen in Azure DNS | Microsoft-Dokumentation
+description: Mit Azure DNS können Sie beim Hosten Ihrer Domäne DNS-Ressourceneintragssätze und -Einträge verwalten.
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
-ms.author: gwallace
-ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: kumud
+ms.openlocfilehash: da7d2118a0fb6bc5004856d994a01a932094ca45
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
 
@@ -63,7 +63,7 @@ Sie können einem Ressourceneintragssatz bis zu 20 Einträge hinzufügen. Ein R
 
 Nachdem der Eintrag gespeichert wurde, spiegeln die Werte auf dem Blatt **DNS-Zone** den neuen Eintrag wider.
 
-## <a name="update-a-record"></a>Aktualisieren eines Eintrags
+## <a name="update-a-record"></a>Update a record (Datensatz aktualisieren)
 
 Wenn Sie einen Eintrag innerhalb eines vorhandenen Ressourceneintragssatzes aktualisieren, hängt vom Eintragstyp ab, welche Felder Sie aktualisieren können.
 
@@ -94,7 +94,7 @@ Sie können Einträge mit dem Azure-Portal aus einem Ressourceneintragssatz entf
 
 1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes auf **Entfernen**.
 
-    ![Löschen eines Ressourceneintragssatzes](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![Löschen eines Eintragssatzes](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
 2. Sie werden in einer Meldung gefragt, ob Sie den Ressourceneintragssatz wirklich löschen möchten.
 3. Überprüfen Sie, ob der Name des Ressourceneintragssatzes dem entspricht, den Sie entfernen möchten, und klicken Sie dann auf **Ja**.

@@ -1,25 +1,25 @@
 ---
-title: "Ändern der Kreditkarte für Azure | Microsoft-Dokumentation"
-description: "Enthält Informationen zum Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte."
-services: 
-documentationcenter: 
+title: Ändern der Kreditkarte für Azure | Microsoft-Dokumentation
+description: Enthält Informationen zum Ändern der für die Zahlung eines Azure-Abonnements verwendeten Kreditkarte.
+services: ''
+documentationcenter: ''
 author: genlin
 manager: jlian
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 15252ced-1841-4a66-ae79-2e58af1d3370
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: d1239b04bbdaf4e98323fbaaad688b2d238c1a38
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kredit- oder Debitkarte für Azure
 
@@ -40,7 +40,7 @@ Im Kontocenter können Sie eine neue Kreditkarte hinzufügen, eine vorhandene Kr
 
     ![Screenshot der Option „Bearbeiten“ neben der Zahlungsmethode](./media/billing-how-to-change-credit-card/editcard_new.png)
 1. Geben Sie die Kredit- oder Debitkartendetails ein.
-1. Wählen Sie **Speichern** aus. 
+1. Wählen Sie **Speichern**aus. 
 
 Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](billing-credit-card-fails-during-azure-sign-up.md).
 
@@ -53,7 +53,7 @@ Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt,
 1. Wählen Sie **Zahlungsmethoden verwalten** aus.
 1. Wählen Sie neben der Karte, die aktualisiert werden soll, **Bearbeiten** aus.
 1. Aktualisieren Sie die Kredit- oder Debitkartendetails.
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Verwenden einer anderen Kreditkarte für das Azure-Abonnement
 

@@ -1,28 +1,28 @@
 ---
-title: "Exemplarische Data Science-Vorgehensweisen für SQL Data Warehouse unter Verwendung von T-SQL und Python in Azure | Microsoft-Dokumentation"
-description: "Beispiele, in denen die Verwendung von SQL Data Warehouse für Predictive Analytics beschrieben wird."
+title: Exemplarische Data Science-Vorgehensweisen für SQL Data Warehouse unter Verwendung von T-SQL und Python in Azure | Microsoft-Dokumentation
+description: Beispiele, in denen die Verwendung von SQL Data Warehouse für Predictive Analytics beschrieben wird.
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev
-ms.openlocfilehash: 745701b571a6cfa93798d7536ddb9d28ab45ea73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: deguhath
+ms.openlocfilehash: db7a07830f1d2753fff45d1e2b27bc7e6ce9fa38
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Exemplarische Data Science-Vorgehensweisen für SQL Data Warehouse unter Verwendung von T-SQL und Python in Azure
 
-In diesen exemplarischen Vorgehensweisen wird SQL Data Warehouse für Predictive Analytics verwendet. Sie folgen den im Team Data Science-Prozess aufgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in SQL Data Warehouse finden Sie unter [Was ist Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+In diesen exemplarischen Vorgehensweisen wird SQL Data Warehouse für Predictive Analytics verwendet. Diese folgen den im Team Data Science-Prozess ausgeführten Schritten. Eine Übersicht über den Team Data Science-Prozess finden Sie unter [Data Science-Prozess](overview.md). Eine Einführung in SQL Data Warehouse finden Sie unter [Was ist Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Weitere exemplarische Vorgehensweisen zu Data Science, in denen der Team Data Science-Prozess befolgt wird, sind nach der jeweils verwendeten **Plattform** gruppiert. Eine Aufschlüsselung dieser Beispiele finden Sie unter [Exemplarische Vorgehensweisen zum Ausführen des Team Data Science-Prozesses](walkthroughs.md).
 

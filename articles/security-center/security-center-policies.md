@@ -1,11 +1,11 @@
 ---
 title: Festlegen von Sicherheitsrichtlinien in Azure Security Center | Microsoft Docs
-description: "Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Azure Security Center."
+description: Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 4d1a30b046c0c398d934291a907af891e9ac7fdf
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: a993338e5a16514e855d771e25aac3e451faab45
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Festlegen von Sicherheitsrichtlinien in Azure Security Center
 Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Security Center.
@@ -29,7 +29,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 > [!NOTE]
 > Sie können Security Center-Richtlinien jetzt mithilfe der eingeschränkten Vorschauversion von Azure Policy erweitern. Navigieren Sie zur [Registrierungsseite für Azure Policy](https://aka.ms/getpolicy), um an der Nutzung der Vorschauversion teilzunehmen. Weitere Informationen finden Sie unter [Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy](security-center-azure-policy.md).
 
-Die Sicherheitsanforderungen für Ressourcen, die zu Entwicklungs- oder Testzwecken verwendet werden, weichen unter Umständen von den Anforderungen der Ressourcen ab, die für Produktionsanwendungen verwendet werden. Für Anwendungen mit reglementierten Daten, z.B. personenbezogene Informationen (Personally Identifiable Information), kann ggf. eine höhere Sicherheitsstufe erforderlich sein. Die in Azure Security Center aktivierten Sicherheitsrichtlinien werden dazu verwendet, Sicherheitsempfehlungen und die Überwachung zu steuern, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen entschärfen können. Weitere Informationen dazu, wie Sie die am besten geeignete Option ermitteln können, finden Sie unter [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md).
+Die Sicherheitsanforderungen für Ressourcen, die zu Entwicklungs- oder Testzwecken verwendet werden, weichen unter Umständen von den Anforderungen der Ressourcen ab, die für Produktionsanwendungen verwendet werden. Für Anwendungen mit reglementierten Daten, z.B. personenbezogene Informationen, kann ggf. eine höhere Sicherheitsstufe erforderlich sein. Die in Azure Security Center aktivierten Sicherheitsrichtlinien werden dazu verwendet, Sicherheitsempfehlungen und die Überwachung zu steuern, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen entschärfen können. Weitere Informationen dazu, wie Sie die am besten geeignete Option ermitteln können, finden Sie unter [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md).
 
 ## <a name="edit-security-policies"></a>Bearbeiten von Sicherheitsrichtlinien
 Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements in Security Center bearbeiten. Damit Sie eine Sicherheitsrichtlinie ändern können, müssen Sie ein Besitzer, Mitwirkender oder Sicherheitsadministrator des Abonnements sein. Gehen Sie wie folgt vor, um die Sicherheitsrichtlinien in Security Center zu konfigurieren:
@@ -59,7 +59,7 @@ Die folgende Tabelle gibt Aufschluss über die verfügbaren Richtliniendefinitio
 | Web Application Firewall |Empfiehlt die Einrichtung einer Web Application Firewall auf virtuellen Computern, wenn eine der folgenden Bedingungen erfüllt ist: <ul><li>Eine [öffentliche IP-Adresse auf Instanzebene](../virtual-network/virtual-networks-instance-level-public-ip.md) wird verwendet, und die Eingangssicherheitsregeln für die zugeordnete Netzwerksicherheitsgruppe sind so konfiguriert, dass sie den Zugriff auf Port 80/443 ermöglichen.</li><li>Es wird eine IP-Adresse mit Lastenausgleich verwendet, und die zugehörigen Regeln für Lastenausgleich und eingehenden NAT-Datenverkehr (Netzwerkadressübersetzung) sind so konfiguriert, dass Zugriff auf den Port 80/443 zugelassen wird. Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](../load-balancer/load-balancer-arm.md).</li> |
 | Firewall der nächsten Generation |Erweitert den Schutz von Netzwerken über die in Azure integrierten Netzwerksicherheitsgruppen hinaus. Security Center ermittelt Bereitstellungen, für die eine Firewall der nächsten Generation empfohlen wird. Anschließend können Sie ein virtuelles Gerät einrichten. |
 | SQL-Überwachung und Bedrohungserkennung |Empfiehlt die Aktivierung der Zugriffsüberwachung für Ihre SQL-Datenbank zur Erfüllung von Konformitätsanforderungen sowie zur Aktivierung der erweiterten Bedrohungserkennung zu Untersuchungszwecken. |
-| SQL-Verschlüsselung |Empfiehlt, dass die Verschlüsselung im Ruhezustand für Ihre SQL-Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien aktiviert wird. Auch wenn Ihre Daten ausgespäht werden, sind sie nicht lesbar. |
+| SQL-Verschlüsselung |Empfiehlt, die Verschlüsselung im Ruhezustand für Ihre SQL-Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien zu aktivieren. Auch wenn Ihre Daten ausgespäht werden, sind sie nicht lesbar. |
 | Sicherheitsrisikobewertung |Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
 | Speicherverschlüsselung |Dieses Feature ist derzeit für Blobs und Azure Files verfügbar. Nach dem Aktivieren der Speicherdienstverschlüsselung werden nur neue Daten verschlüsselt. Bereits vorhandene Dateien in diesem Speicherkonto bleiben unverschlüsselt. |
 | JIT-Netzwerkzugriff |Wenn der Just-In-Time-Netzwerkzugriff aktiviert ist, sperrt Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, die für eingehenden Datenverkehr gesperrt werden sollen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](https://docs.microsoft.com/azure/security-center/security-center-just-in-time). |

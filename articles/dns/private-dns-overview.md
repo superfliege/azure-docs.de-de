@@ -4,7 +4,7 @@ description: Übersicht über private DNS-Hostingdienste in Microsoft Azure.
 services: dns
 documentationcenter: na
 author: KumudD
-manager: jennoc
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: dns
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1c805819a22d26e650d13b0e41ebac00c4e52d91
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.  Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS jetzt auch private DNS-Domänen als Vorschaufunktion.  
@@ -61,7 +61,7 @@ Azure DNS bietet einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auf
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im virtuellen Registrierungsnetzwerk.
 * Reverse-DNS für eine private IP-Adresse, die nicht in der privaten Zone registriert ist (beispielsweise eine private IP-Adresse für einen virtuellen Computer in einem virtuellen Netzwerk, das als ein virtuelles Auflösungsnetzwerk mit einer privaten Zone verknüpft ist), gibt „internal.cloudapp.net“ als DNS-Suffix zurück, doch kann dieses Suffix nicht aufgelöst werden.   
 * Das virtuelle Netzwerk muss leer sein (d. h. keine VM-Datensätze) bei der anfänglichen (d. h. erstmaligen) Verknüpfung mit einer privaten Zone als virtuelles Registrierungs- oder Auflösungsnetzwerk. Das virtuelle Netzwerk braucht jedoch dann für zukünftige Verknüpfungen mit anderen privaten Zonen als virtuelles Registrierungs- oder Auflösungsnetzwerk nicht leer zu sein. 
-* Derzeit wird die bedingte Weiterleitung nicht unterstützt, z. B. für eine Auflösung zwischen Azure und lokalen Netzwerken. Eine Dokumentation dazu, wie Kunden dieses Szenario mithilfe anderer Mechanismen umsetzen können, finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Derzeit wird die bedingte Weiterleitung nicht unterstützt, z.B. für eine Auflösung zwischen Azure und lokalen Netzwerken. Eine Dokumentation dazu, wie Kunden dieses Szenario mithilfe anderer Mechanismen umsetzen können, finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Außerdem sollten Sie [Häufig gestellte Fragen](./dns-faq.md#private-dns) für einige allgemeine Fragen und Antworten zu private Zonen in Azure DNS lesen, einschließlich des speziellen DNS-Registrierungs- und -Auflösungsverhaltens, das Sie für bestimmte Arten von Vorgängen erwarten können. 
 

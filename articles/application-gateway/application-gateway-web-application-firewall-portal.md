@@ -1,25 +1,25 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure-Portal | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals ein Anwendungsgateway mit einer Web Application Firewall erstellen.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: d2b8fc65e6cd03f61151dbae66bb89821cdab13b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 9967813b193159b68aa0f008dae4440aa6e533dc
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
-Erfahren Sie, wie Sie mithilfe des Azure-Portals ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) erstellen. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Übernahme von Sitzungen.
+Erfahren Sie, wie Sie mithilfe des Azure-Portals ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) erstellen. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Sitzungsübernahmen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -28,7 +28,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
 > * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
-![Web Application Firewall –Beispiel](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
+![Web Application Firewall – Beispiel](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -39,7 +39,7 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 Für die Kommunikation zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und eins für die Back-End-Server. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway.
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
-2. Klicken Sie auf **Netzwerk** und dann in der Liste „Ausgewählte“ auf **Application Gateway**.
+2. Klicken Sie auf **Netzwerk** und dann in der Liste der ausgewählten Elemente auf **Application Gateway**.
 3. Geben Sie die folgenden Werte für das Anwendungsgateway ein:
 
     - *myAppGateway*: Name des Anwendungsgateways
@@ -79,7 +79,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 ### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 1. Klicken Sie auf **New**.
-2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste „Ausgewählte“ die Option **Windows Server 2016 Datacenter**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
     - *myVM*: Name des virtuellen Computers

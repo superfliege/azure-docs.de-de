@@ -10,10 +10,10 @@ ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper
 Azure Media Clipper erfordert die Implementierung einer **SubmitSubclipCallback**-Methode zur Übermittlung von Beschneidungsaufträgen. Diese Funktion dient zum Implementieren einer HTTP POST-Methode für die Clipper-Ausgabe an einen Webdienst. Dies ist der Webdienst, an den Sie den Codierungsauftrag übermitteln können. Die Ausgabe von Clipper ist entweder eine Media Encoder Standard-Codierungsvoreinstellung für gerenderte Aufträge oder die REST-API-Nutzlast für Aufrufe der Filter für dynamische Manifeste. Dieses Pass-Through-Modell ist notwendig, da Anmeldeinformationen für Media Services-Konten im Browser des Clients nicht sicher sind.

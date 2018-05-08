@@ -3,9 +3,9 @@ title: Benutzerdefinierte Warnungsregeln in Azure Security Center | Microsoft-Do
 description: In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: yurid
-ms.openlocfilehash: 10c5c3e6f714aac4c08cb810f54eb09c3d2bbe70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e43d925317e32d2fcbdeb75eff71de0cc5a91378
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie benutzerdefinierte Warnungsregeln in Azure Security Center erstellen.
@@ -48,7 +48,7 @@ Mithilfe benutzerdefinierter Warnungsregeln in Security Center können Sie neue 
 7.  Wählen Sie im Feld **Abonnement** das Abonnement aus, für das die Regel gelten soll.
 8.  Wählen Sie im Feld **Arbeitsbereich** den Arbeitsbereich aus, den Sie mit dieser Regel überwachen möchten, und wählen Sie im Feld **Suchabfrage** die Abfrage zum Abrufen der Ergebnisse aus. Das Ergebnis der Abfrage löst die Warnung aus. Wenn die eingegebene Abfrage gültig ist, erscheint in der rechten Ecke des Felds ein grünes Häkchen:
 
-    ![Abfrage](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
+    ![Abfragen](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 
 10. Wählen Sie im Feld **Zeitraum** den Zeitraum aus, in dem die obige Abfrage ausgeführt wird. Das Suchergebnis am unteren Rand des Felds ändert sich abhängig vom gewählten Zeitraum.
 

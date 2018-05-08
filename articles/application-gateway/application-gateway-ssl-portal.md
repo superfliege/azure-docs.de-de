@@ -1,21 +1,21 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Portal | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen."
+title: Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Portal | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: daab3ada5ef0cc20883130e4c12b1dc3570e63b1
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: victorh
+ms.openlocfilehash: 10796000f913428e39a0ffbd0aa2cbe0c515eb7a
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals
 
@@ -109,7 +109,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 ### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 1. Klicken Sie auf **New**.
-2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste „Ausgewählte“ die Option **Windows Server 2016 Datacenter**.
+2. Klicken Sie auf **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
     - *myVM*: Name des virtuellen Computers

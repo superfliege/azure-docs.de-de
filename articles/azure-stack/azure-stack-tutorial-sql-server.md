@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/22/2017
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 0e1eed2601946ddff6fa15f1a1f82398706c920d
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>Verfügbarmachen von SQL-Datenbanken für Ihre Azure Stack-Benutzer
 Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die es Ihren Benutzern (Mandanten) ermöglichen, SQL-Datenbanken zu erstellen, die sie mit ihren cloudbasierten Apps, Websites und Workloads verwenden können. Die Bereitstellung dieser benutzerdefinierten, bedarfsgesteuerten, cloudbasierten Datenbanken für Ihre Benutzer spart diesen Zeit und Ressourcen. Für die Einrichtung führen Sie folgende Aktionen durch:
@@ -34,8 +34,8 @@ Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die es Ihren 
 
 Der Bereitstellungsprozess wird im Artikel [Use SQL databases on Microsoft Azure Stack (Verwenden von SQL-Datenbanken in Microsoft Azure Stack)](azure-stack-sql-resource-provider-deploy.md) ausführlich beschrieben und besteht aus den folgenden wesentlichen Schritten:
 
-1. [Bereitstellen des SQL-Ressourcenanbieters]( azure-stack-sql-resource-provider-deploy.md#deploy-the-resource-provider)
-2. [Überprüfen der Bereitstellung]( azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)
+1. [Bereitstellen des SQL-Ressourcenanbieters](azure-stack-sql-resource-provider-deploy.md)
+2. [Überprüfen der Bereitstellung](azure-stack-sql-resource-provider-deploy.md#verify-the-deployment-using-the-azure-stack-portal)
 3. Bereitstellen von Kapazität durch Herstellen einer Verbindung mit einem SQL-Hostserver.
 
 ## <a name="create-an-offer"></a>Erstellen von Angeboten
