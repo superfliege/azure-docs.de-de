@@ -174,10 +174,6 @@
 #### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
-#### Agent-basierte Ermittlung
-##### [Was ist Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md)
-##### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-##### [Grundlegendes zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
@@ -289,6 +285,7 @@
 ## Schützen Ihrer Identitäten
 ### [Bedingter Zugriff](active-directory-conditional-access-azure-portal.md)
 #### [Bedingungen](active-directory-conditional-access-conditions.md)
+#### [Standortbedingungen](active-directory-conditional-access-locations.md)
 #### [Kontrollen](active-directory-conditional-access-controls.md)
 #### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
@@ -327,7 +324,7 @@
 #### [Häufig gestellte Fragen](active-directory-identity-protection-faqs.md)
 #### [Glossar](active-directory-identityprotection-glossary.md)
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
-### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
+### [Privileged Identity Management](active-directory-privileged-identity-management-configure.md)
 
 ## [Integrieren anderer Dienste in Azure AD]()
 ### [Aktivieren der LinkedIn-Integration](linkedin-integration.md)

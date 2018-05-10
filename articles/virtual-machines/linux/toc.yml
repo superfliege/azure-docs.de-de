@@ -208,7 +208,7 @@
         - name: Azure-VM-Agent
           items:
             - name: Übersicht
-              href: agent-user-guide.md
+              href: ../extensions/agent-linux.md
             - name: Agent-Aktualisierung
               href: update-agent.md
         - name: Geplante Wartung
@@ -434,7 +434,7 @@
         - name: VMAccess-Erweiterung
           href: using-vmaccess-extension.md
         - name: Beschränken der Erweiterungsinstallation
-          href: extensions-rmpolicy-howto-cli.md
+          href: ../extensions/extensions-rmpolicy-howto-cli.md
     - name: Migrieren virtueller Computer
       items:
         - name: Migrieren von AWS und lokalen virtuellen Computern

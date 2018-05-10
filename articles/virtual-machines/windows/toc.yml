@@ -206,7 +206,7 @@
         - name: Herunterladen der Vorlage
           href: download-template.md
         - name: Azure-VM-Agent
-          href: agent-user-guide.md
+          href: ../extensions/agent-windows.md
         - name: Geplante Wartung
           href: maintenance-notifications.md
         - name: Maßnahmen im Zusammenhang mit der spekulativen Ausführung
@@ -235,7 +235,7 @@
           href: download-vhd.md
     - name: Verfügbarkeit und Umfang
       items:
-        - name: Skalierungsgruppen für virtuelle Computer
+        - name: Virtual Machine Scale Sets
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: Hochverfügbarkeit
           href: manage-availability.md
@@ -369,7 +369,7 @@
         - name: Network Watcher-Agent
           href: extensions-nwa.md
         - name: Beschränken der Erweiterungsinstallation
-          href: extensions-rmpolicy-howto-ps.md
+          href: ../extensions/extensions-rmpolicy-howto-ps.md
     - name: Migrieren virtueller Computer
       items:
         - name: Migrieren von AWS und lokalen virtuellen Computern
