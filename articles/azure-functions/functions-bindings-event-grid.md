@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: a2d8f66b0364535cbb7e8cadd8067dd8f7facb2c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -337,6 +337,9 @@ Alternativ können Sie eine HTTP-PUT-Anforderung senden, um den Schlüsselwert s
 
 ## <a name="local-testing-with-requestbin"></a>Lokales Testen mit RequestBin
 
+> [!NOTE]
+> Der RequestBin-Standort ist zurzeit nicht verfügbar, aber Sie können diesen Ansatz stattdessen mit https://hookbin.com verwenden. Wenn dieser Standort nicht verfügbar ist, können Sie [ngrok](#local-testing-with-ngrok) verwenden.
+
 Zum lokalen Testen eines Event Grid-Triggers müssen Event Grid-HTTP-Anforderungen von ihrem Ursprung in der Cloud an Ihren lokalen Computer gesendet werden. Dies kann erfolgen, indem Anforderungen online erfasst und manuell erneut an Ihren lokalen Computer gesendet werden:
 
 2. [Erstellen Sie einen RequestBin-Endpunkt](#create-a-RequestBin-endpoint).
@@ -348,7 +351,7 @@ Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion ver
 
 ### <a name="create-a-requestbin-endpoint"></a>Erstellen eines RequestBin-Endpunkts
 
-RequestBin ist ein Open-Source-Tool, das HTTP-Anforderungen akzeptiert und den Anforderungstext anzeigt. Die URL http://requestb.in erhält in Azure Event Grid eine Sonderbehandlung. Zum vereinfachten Testen sendet Event Grid Ereignisse an die RequestBin-URL, ohne dass eine richtige Antwort auf Anforderungen zur Abonnementüberprüfung erforderlich ist. Zwei andere Testtools werden auf die gleiche Weise behandelt: http://webhookinbox.com und http://hookbin.com.
+RequestBin ist ein Open-Source-Tool, das HTTP-Anforderungen akzeptiert und den Anforderungstext anzeigt. Die URL http://requestb.in erhält in Azure Event Grid eine Sonderbehandlung. Zum vereinfachten Testen sendet Event Grid Ereignisse an die RequestBin-URL, ohne dass eine richtige Antwort auf Anforderungen zur Abonnementüberprüfung erforderlich ist. Ein anderes Testtool wird auf die gleiche Weise behandelt: http://hookbin.com.
 
 RequestBin ist nicht für hohen Durchsatz konzipiert. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
 
