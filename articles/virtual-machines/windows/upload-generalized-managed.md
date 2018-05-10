@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 919b1bef1f1337ad188e26476da8c5a5ef029224
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 133c09ad1f81a122d089485f8793d7dddbd1488a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure
 
@@ -107,7 +107,7 @@ Sie können eine VHD zudem mit den folgenden Tools in ein Speicherkonto hochlade
     Der Import/Export-Dienst kann zum Kopieren in oder aus dem Standardspeicherkonto verwendet werden. Sie benötigen ein Tool wie AzCopy zum Kopieren zwischen Standardspeicherkonto und Premium-Speicherkonto.
 
 > [!IMPORTANT]
-> Wenn Sie Ihre VHD mithilfe von AzCopy zu Azure hochladen, stellen Sie vor dem Ausführen des Uploadskripts sicher, dass [/BlobType:page](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) festgelegt ist. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
+> Wenn Sie Ihre VHD mithilfe von AzCopy zu Azure hochladen, stellen Sie vor dem Ausführen des Uploadskripts sicher, dass [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) festgelegt ist. Wenn das Ziel ein Blob ist und diese Option nicht angegeben wurde, erstellt AzCopy standardmäßig ein Blockblob.
 > 
 > 
 

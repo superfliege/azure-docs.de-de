@@ -1,11 +1,11 @@
 ---
 title: Konvertieren von Azure Cloud Services-Apps in Microservices | Microsoft-Dokumentation
-description: "In dieser Anleitung werden Cloud Services-Web- und -Workerrollen mit zustandslosen Service Fabric-Diensten verglichen, um die Migration von Cloud Services zu Service Fabric zu unterstützen."
+description: In dieser Anleitung werden Cloud Services-Web- und -Workerrollen mit zustandslosen Service Fabric-Diensten verglichen, um die Migration von Cloud Services zu Service Fabric zu unterstützen.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5880ebb3-8b54-4be8-af4b-95a1bc082603
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bb8f2f8a6f0905716c34796a5b16c38f406ae64c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Anleitung zur Konvertierung von Web- und Workerrollen in zustandslose Service Fabric-Dienste
 In diesem Artikel wird beschrieben, wie Sie Ihre Cloud Services-Web- und -Workerrollen zu zustandslosen Service Fabric-Diensten migrieren. Dies ist für Anwendungen, deren allgemeine Architektur weitgehend gleich bleibt, der einfachste Migrationspfad von Cloud Services zu Service Fabric.
@@ -207,7 +207,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 ## <a name="startup-tasks"></a>Startaufgaben
 Startaufgaben sind Aktionen, die vor dem Starten einer Anwendung durchgeführt werden. Eine Startaufgabe wird normalerweise zum Ausführen von Setupskripts mit erhöhten Rechten verwendet. Startaufgaben werden sowohl für Cloud Services als auch für Service Fabric unterstützt. Der Hauptunterschied besteht darin, dass eine Startaufgabe in Cloud Services an eine VM gebunden ist, da sie Teil einer Rolleninstanz ist. In Service Fabric ist eine Startaufgabe dagegen an einen Dienst gebunden, der nicht an eine bestimmte VM gebunden ist.
 
-| Cloud Services | Service Fabric |
+| Service Fabric | Cloud Services |
 | --- | --- | --- |
 | Speicherort der Konfiguration |ServiceDefinition.csdef |
 | Rechte |„Eingeschränkt“ oder „Erhöht“ |

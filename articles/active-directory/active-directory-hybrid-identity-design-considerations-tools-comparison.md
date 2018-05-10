@@ -1,8 +1,8 @@
 ---
-title: "Hybrididentität: Vergleich von Tools für die Verzeichnisintegration | Microsoft Docs"
-description: "Diese Seite enthält eine umfassende Tabelle mit einem Vergleich der verschiedenen Tools für die Verzeichnisintegration."
+title: 'Hybrididentität: Vergleich von Tools für die Verzeichnisintegration | Microsoft Docs'
+description: Diese Seite enthält eine umfassende Tabelle mit einem Vergleich der verschiedenen Tools für die Verzeichnisintegration.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 1e62a4bd-4d55-4609-895e-70131dedbf52
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 04/27/2018
 ms.author: billmath
-ms.openlocfilehash: 78ca910b4dfd5a706d2f1df7f70291fb48f096f5
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 5d189af9b08f2b6e9ea194c15bfba683afc75a54
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten
 Im Laufe der Jahre sind die Tools für die Verzeichnisintegration umfangreicher geworden und wurden weiterentwickelt.  Das vorliegende Dokument bietet eine Übersicht über diese Tools und einen Vergleich der Features, die jedes der Tools bietet.
@@ -43,16 +43,14 @@ PP = Öffentliche Vorschau
 | Herstellen einer Verbindung mit einer einzelnen lokalen AD-Gesamtstruktur |● |● |● |● |● |
 | Herstellen einer Verbindung mit mehreren lokalen AD-Gesamtstrukturen |● |● | |● |● |
 | Herstellen einer Verbindung mit mehreren lokalen Exchange-Organisationen |● | | | | |
-| Herstellen einer Verbindung mit einem einzelnen lokalen LDAP-Verzeichnis |●* | | |● |● |
-| Herstellen einer Verbindung mit mehreren lokalen LDAP-Verzeichnissen |●*  | | |● |● |
-| Herstellen einer Verbindung mit lokalen Active Directory- und LDAP-Verzeichnissen |●* | | |● |● |
+| Herstellen einer Verbindung mit einem einzelnen lokalen LDAP-Verzeichnis | | | |● |● |
+| Herstellen einer Verbindung mit mehreren lokalen LDAP-Verzeichnissen |  | | |● |● |
+| Herstellen einer Verbindung mit lokalen Active Directory- und LDAP-Verzeichnissen | | | |● |● |
 | Herstellen einer Verbindung mit benutzerdefinierten Systeme (z. B. SQL, Oracle, MySQL usw.) |BV | | |● |● |
 | Synchronisieren von benutzerdefinierten Attributen (Verzeichniserweiterungen) |● | | | | |
 | Verbinden mit lokaler HR-Instanz (d. h. SAP, Oracle eBusiness,PeopleSoft) |BV | | |● |● |
 | Unterstützt FIM-Synchronisierungsregeln und -Connectors für die Bereitstellung lokaler Systeme. | | | |● |● |
-&#42; Derzeit gibt es hierfür zwei unterstützte Optionen.  Sie lauten wie folgt:
-   1. Sie können den generischen LDAP-Connector verwenden und ihn außerhalb von Azure AD Connect aktivieren.  Dies ist ein komplexer Vorgang, für den ein Partner für das Onboarding und eine Premier Support-Vereinbarung für die Wartung erforderlich sind.  Mit dieser Option können sowohl einzelne als auch mehrere LDAP-Verzeichnisse verarbeitet werden.
-   2. Sie können Ihre eigene Lösung zum Verschieben von Objekten von LDAP zu Active Directory entwickeln.  Synchronisieren Sie die Objekte anschließend mit Azure AD Connect.  MIM oder FIM kann als mögliche Lösung zum Verschieben der Objekte verwendet werden.
+
 
 ## <a name="cloud-to-on-premises-synchronization"></a>Synchronisierung von der Cloud zum lokalen Standort
 | Feature | Azure Active Directory Connect | Azure Active Directory-Synchronisierungsdienste | Azure Active Directory-Synchronisierungstool (DirSync) | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |

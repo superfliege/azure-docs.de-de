@@ -8,12 +8,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 12/08/2016
-ms.openlocfilehash: b622cffad66dc5d09df2d737bf2c1d30543a4252
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/20/2018
+ms.openlocfilehash: 53b20c9db7efe1f8876eec7c0167dc151aa38786
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-data-to-azure-search-using-the-rest-api"></a>Hochladen von Daten in Azure Search über die REST-API
 > [!div class="op_single_selector"]
@@ -60,9 +60,9 @@ Jedes JSON-Objekt im Array „value“ stellt ein zu indizierendes Dokument dar.
 Da Sie nun die erforderlichen Feldwerte für Ihre Indexaktionen gesammelt haben, können Sie die HTTP-Anforderung und den JSON-Anforderungstext für den Datenimport erstellen.
 
 #### <a name="request-and-request-headers"></a>Anforderung und Anforderungsheader
-In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hotels“) sowie die entsprechende API-Version (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2016-09-01` ) bereitstellen. Sie müssen die Anforderungsheader `Content-Type` und `api-key` festlegen. Verwenden Sie für letzteres einen der Admin-Schlüssel Ihres Diensts.
+In der URL müssen Sie Ihren Dienstnamen, den Indexnamen (in diesem Fall „hotels“) sowie die entsprechende API-Version (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2017-11-11` ) bereitstellen. Sie müssen die Anforderungsheader `Content-Type` und `api-key` festlegen. Verwenden Sie für letzteres einen der Admin-Schlüssel Ihres Diensts.
 
-    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
+    POST https://[search service].search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11
     Content-Type: application/json
     api-key: [admin key]
 

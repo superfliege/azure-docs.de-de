@@ -1,0 +1,73 @@
+- name: Dokumentation zu Media Services
+  href: ./index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Media Services
+      href: media-services-overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Streamen von Videodateien mit .NET
+      href: stream-files-dotnet-quickstart.md
+- name: Tutorials
+  items:
+    - name: 'Hochladen, Codieren und Streamen'
+      href: stream-files-tutorial-with-api.md
+    - name: Analysieren Ihres Videos
+      href: analyze-videos-tutorial-with-api.md
+- name: Beispiele
+  items:
+    - name: Azure-Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=media-services'
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
+- name: Konzepte
+  items:
+    - name: Objekte
+      href: assets-concept.md
+    - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
+      href: autogen-bitrate-ladder.md
+    - name: Media Intelligence
+      href: intelligence-concept.md
+    - name: Speicherkonten
+      href: storage-account-concept.md
+    - name: Transformationen und Aufträge
+      href: transform-concept.md
+    - name: Reagieren auf Ereignisse
+      href: reacting-to-media-services-events.md
+- name: Anleitungen
+  items:
+    - name: 'Erstellen eines Kontos: CLI'
+      href: create-account-cli-how-to.md
+    - name: 'Datenzugriffs-API: CLI'
+      href: access-api-cli-how-to.md
+    - name: 'Auftragsstatusereignisse: CLI'
+      href: job-state-events-cli-how-to.md
+    - name: 'Hochladen von Inhalten: .NET'
+      items:
+        - name: Über HTTP(s)
+          href: job-input-from-http-how-to.md
+        - name: Aus einer lokalen Datei
+          href: job-input-from-local-file-how-to.md
+- name: Verweis
+  items:
+    - name: Azure CLI 2.0
+      href: 'https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest'
+    - name: REST
+      href: 'https://go.microsoft.com/fwlink/p/?linkid=873030'
+    - name: Ereignisschemas
+      href: media-services-event-schemas.md
+- name: angeben
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=media-services'
+    - name: Versionshinweise
+      href: release-notes.md
+    - name: Kontingente und Einschränkungen
+      href: limits-quotas-constraints.md

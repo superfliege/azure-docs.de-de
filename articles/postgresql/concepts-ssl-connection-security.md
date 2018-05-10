@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: ''
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0a4a7041a905470f895921cfedf2bd94e8466966
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f3efb99ddb47f167a0d9cbef064890e817a18841
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Konfigurieren von SSL-Konnektivität in Azure-Datenbank für PostgreSQL
 Azure-Datenbank für PostgreSQL stellt Verbindungen zwischen Clientanwendungen und dem PostgreSQL-Dienst hauptsächlich mittels Secure Sockets Layer (SSL) her. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -98,7 +98,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 
 #### <a name="for-windows"></a>Für Windows
 Die Installation von OpenSSL auf einem Windows-PC kann mit folgenden Methoden durchgeführt werden:
-1. **(Empfohlen)**  Mithilfe des integrierten Bash für Windows-Funktionalität in Windows 10 und höher wird OpenSSL standardmäßig installiert. Anweisungen zum Aktivieren von Bash für Windows-Funktionalität in Windows 10 finden Sie [hier](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
+1. **(Empfohlen)**  Mithilfe des integrierten Bash für Windows-Funktionalität in Windows 10 und höher wird OpenSSL standardmäßig installiert. Anweisungen zum Aktivieren von Bash für Windows-Funktionalität in Windows 10 finden Sie [hier](https://msdn.microsoft.com/commandline/wsl/install_guide).
 2. Durch Herunterladen einer von der Community bereitgestellten Win32/64-Anwendung. Während die OpenSSL Software Foundation keine bestimmten Windows-Installationsprogramme bereitstellt oder empfiehlt, bietet sie [hier](https://wiki.openssl.org/index.php/Binaries) eine Liste der verfügbaren Installationsprogramme.
 
 ### <a name="decode-your-certificate-file"></a>Decodieren der Zertifikatdatei

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2017
 ms.author: danis
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: efb7f7cf911ad5dc753afffd077c473cc0faaf74
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 09eb2e723be80fd623ad53c9bda8271ef8846a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -110,7 +110,7 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-Mit dem `Set-AzureRmVMExtension`-Befehl kann jede beliebige VM-Erweiterung gestartet werden. Weitere Informationen finden Sie in der [Set-AzureRmVMExtension-Referenz](https://msdn.microsoft.com/en-us/library/mt603745.aspx).
+Mit dem `Set-AzureRmVMExtension`-Befehl kann jede beliebige VM-Erweiterung gestartet werden. Weitere Informationen finden Sie in der [Set-AzureRmVMExtension-Referenz](https://msdn.microsoft.com/library/mt603745.aspx).
 
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -284,4 +284,4 @@ Eine Erweiterung kann auch im Azure-Portal entfernt werden. Gehen Sie dazu wie f
 | CustomScript-Erweiterung für Windows |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Skripterweiterung für Windows](extensions-customscript.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | DSC-Erweiterung für Windows |PowerShell-DSC-Erweiterung (Desired State Configuration, Konfigurieren des gewünschten Zustands) |[DSC-Erweiterung für Windows](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterung für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterung für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

@@ -14,12 +14,6 @@
       href: quickstart-load-balancer-standard-public-portal.md
     - name: Erstellen eines Lastenausgleichs im Standard-Tarif – Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-- name: Beispiele
-  items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Tutorials
   items:
     - name: Vornehmen eines Lastausgleichs für den internen eingehenden Datenverkehr virtueller Computer
@@ -28,6 +22,12 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer bestimmten Verfügbarkeitszone
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+- name: Beispiele
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Konzepte
   items:
     - name: Was ist der Lastenausgleich im Standard-Tarif?
@@ -152,7 +152,7 @@
       href: /azure/application-gateway/
     - name: ExpressRoute
       href: /azure/expressroute/
-    - name: Virtuelles Netzwerk
+    - name: Virtual Network
       href: /azure/virtual-network/
     - name: VPN Gateway
       href: /azure/vpn-gateway/

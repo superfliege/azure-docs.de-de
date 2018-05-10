@@ -3,8 +3,8 @@ title: Empfohlene Vorgehensweisen für die Datensicherheit und die Verschlüssel
 description: Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen für die Datensicherheit und Verschlüsselung unter Verwendung der integrierten Azure-Funktionen.
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
+author: barclayn
+manager: mbalwin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: 169234195fa75924a65680ce2f3fa6ee9633daae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Empfohlene Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure
+
 Einer der Schlüssel zum Schutz von Daten in der Cloud ist die Berücksichtigung der möglichen Zustände, in denen Ihre Daten auftreten können. Außerdem sollten Sie die Steuerungsmöglichkeiten beachten, die für diesen Zustand verfügbar sind. Im Rahmen der empfohlenen Vorgehensweisen für Datensicherheit und Verschlüsselung in Azure befassen sich die Empfehlungen mit den folgenden Datenzuständen:
 
 * Ruhende Daten: Dies umfasst alle Informationsspeicherobjekte, Container und Typen, die statisch in physischen Medien existieren, sei es auf Magnetplattenspeichern oder optischen Datenträgern.
@@ -50,6 +51,7 @@ Die in diesem Artikel besprochenen empfohlenen Vorgehensweisen für Datensicherh
 * Erzwingen der Datenverschlüsselung auf Dateiebene
 
 ## <a name="enforce-multi-factor-authentication"></a>Erzwingen der Multi-Factor Authentication
+
 Der erste Schritt beim Datenzugriff und der Datensteuerung in Microsoft Azure ist die Authentifizierung des Benutzers. Die [Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) ist eine Methode zur Überprüfung der Identität eines Benutzers mithilfe einer weiteren Methode, als nur mittels Benutzername und Kennwort. Diese Authentifizierungsmethode schützt den Zugriff auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen der Benutzer, die ein einfaches Anmeldeverfahren wünschen.
 
 Durch die Aktivierung von Azure MFA für Ihre Benutzer fügen Sie eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzu. In diesem Fall greift eine Transaktion möglicherweise auf ein Dokument zu, das sich auf einem Dateiserver oder in Ihrem SharePoint Online-Konto befindet. Azure MFA hilft der IT, die Wahrscheinlichkeit zu verringern, dass kompromittierte Anmeldeinformationen Zugriff auf die Daten einer Organisation erhalten.
@@ -61,6 +63,7 @@ Eine Alternative für Organisationen, die die Authentifizierung weiterhin lokal 
 Weitere Informationen über Azure Multi-Factor Authentication finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../active-directory/authentication/howto-mfa-getstarted.md).
 
 ## <a name="use-role-based-access-control-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control; RBAC)
+
 Schränken Sie den Zugriff auf Grundlage der Sicherheitsprinzipien [Need-to-know](https://en.wikipedia.org/wiki/Need_to_know) und [least privilege (in englischer Sprache)](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ein. Dies ist für Organisationen zwingend erforderlich, die Sicherheitsrichtlinien für den Datenzugriff durchsetzen möchten. Die rollenbasierte Zugriffssteuerung in Azure (RBAC) kann verwendet werden, um Benutzern, Gruppen und Anwendungen Berechtigungen für einen bestimmten Bereich zu erteilen. Der Bereich einer Rollenzuweisung kann ein Abonnement, eine Ressourcengruppe oder eine einzelne Ressource sein.
 
 Sie können [integrierte RBAC-Rollen](../role-based-access-control/built-in-roles.md) in Azure verwenden, um Benutzern Berechtigungen zuzuweisen. Ziehen Sie die Verwendung von *Speicherkontomitwirkender* für Cloudoperatoren in Betracht, die Speicherkonten verwalten müssen, und nutzen Sie die Rolle *Klassischer Speicherkontomitwirkender*, um klassische Speicherkonten zu verwalten. Überlegen Sie sich, ob Sie Cloudoperatoren, die VMs und Speicherkonten verwalten müssen, zur Rolle *Mitwirkender für virtuelle Computer* hinzufügen.
@@ -70,6 +73,7 @@ Organisationen, die keine Datenzugriffssteuerung mithilfe von Funktionen wie RBA
 Lesen Sie den Artikel [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md), um mehr über die Azure RBAC zu erfahren.
 
 ## <a name="encrypt-azure-virtual-machines"></a>Verschlüsseln virtueller Azure-Computer
+
 Für viele Organisationen ist die [Verschlüsselung von ruhenden Daten](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Compliance und Datenhoheit. Azure Disk Encryption ermöglicht IT-Administratoren, die Datenträger virtueller Windows- und Linux-IaaS-Computer (VMs) zu verschlüsseln. Bei der Azure Disk Encryption werden die Branchenstandardfunktion BitLocker von Windows und die Funktion DM-Crypt von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 Sie können Azure Disk Encryption verwenden, um den Schutz Ihrer Daten zu verbessern und damit die Sicherheits- und Compliance-Anforderungen Ihrer Organisation zu erfüllen. Organisationen sollten auch die Verwendung von Verschlüsselungen in Betracht ziehen, um das Risiko des unberechtigten Datenzugriffs zu reduzieren. Es empfiehlt sich auch, Laufwerke zu verschlüsseln, bevor sie mit sensiblen Daten beschrieben werden.
@@ -125,6 +129,7 @@ Organisationen, die keine Verschlüsselung auf Datenbankebene verwenden, sind m�
 Erfahren Sie mehr über die SQL-TDE-Verschlüsselung im Artikel [Azure SQL-Datenbank Transparent Data Encryption](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
 
 ## <a name="protect-data-in-transit"></a>Schützen der Daten während der Übertragung
+
 Der Schutz von Daten während der Übertragung sollte ein wesentlicher Bestandteil Ihrer Datenschutzstrategie sein. Da die Daten zwischen vielen verschiedenen Speicherorten übertragen werden, empfiehlt es sich im Allgemeinen, immer SSL/TLS-Protokolle zu verwenden, um Daten zwischen verschiedenen Speicherorten auszutauschen. In einigen Fällen sollten Sie den gesamten Kommunikationskanal zwischen Ihrer lokalen und Ihrer Cloudinfrastruktur isolieren, indem Sie ein virtuelles privates Netzwerk (VPN) verwenden.
 
 Für Daten, die sich zwischen Ihrer lokalen Infrastruktur und Azure bewegen, sollten Sie passende Sicherheitsmaßnahmen in Betracht ziehen, beispielsweise HTTPS oder VPN.
@@ -142,6 +147,7 @@ Organisationen, die die Daten während der Übertragung nicht schützen, sind an
 Erfahren Sie mehr über die Azure-VPN-Option im Artikel [Planung und Entwurf für VPN Gateway](../vpn-gateway/vpn-gateway-plan-design.md).
 
 ## <a name="enforce-file-level-data-encryption"></a>Erzwingen der Datenverschlüsselung auf Dateiebene
+
 Eine weitere Schutzschicht, die die Sicherheit Ihrer Daten erhöhen kann, ist das Verschlüsseln der Datei selbst, unabhängig von ihrem Speicherort.
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) verwendet Verschlüsselungs-, Identitäts- und Autorisierungsrichtlinien, um Ihre Dateien und E-Mails zu schützen. Azure RMS funktioniert über mehrere Geräte (Handys, Tablets und PCs), indem Schutz sowohl innerhalb als auch außerhalb Ihrer Organisation geboten wird. Diese Funktion ist möglich, weil Azure RMS eine Schutzebene hinzufügt, die bei den Daten verbleibt, selbst wenn diese die Grenzen Ihrer Organisation verlassen.

@@ -177,8 +177,6 @@
               href: vmware-azure-set-up-process-server-scale.md
         - name: Notfallwiederherstellung
           items:
-            - name: Notfallwiederherstellung von virtuellen VMware-Computern mit Unterstützung mehrerer Mandanten und CSP
-              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
             - name: Replizieren virtueller VMware-Computer in Azure mithilfe von PowerShell
               href: vmware-azure-disaster-recovery-powershell.md
             - name: Notfallwiederherstellung von physischen Servern in Azure
@@ -199,12 +197,14 @@
               href: vmware-azure-exclude-disk.md
             - name: Aktivieren der Replikation virtueller VMware-Computer
               href: vmware-azure-enable-replication.md
+            - name: Mehrinstanzenfähigkeit mit CSP für VMWare-VMs
+              href: vmware-azure-multi-tenant-csp-disaster-recovery.md
         - name: Bereitstellen des Mobilitätsdiensts
           items:
+            - name: 'Mobility Service: Übersicht'
+              href: vmware-azure-install-mobility-service.md
             - name: Bereitstellen des Mobilitätsdiensts mithilfe von System Center Configuration Manager
               href: vmware-azure-mobility-install-configuration-mgr.md
-            - name: Bereitstellen des Mobilitätsdiensts mithilfe von Azure Automation DSC
-              href: vmware-azure-mobility-deploy-automation-dsc.md
         - name: Failover und Failback
           items:
             - name: Durchführen eines Notfallwiederherstellungsverfahrens in Azure

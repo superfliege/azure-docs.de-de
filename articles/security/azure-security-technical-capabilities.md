@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 489b2a66cadb77a338f9ae00443c072a4e19edfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0cef0a261b0362fcb9776e63c10e96aedc408b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 
@@ -134,7 +134,7 @@ Wenn Sie Azure Active Directory B2C verwenden, können sich Ihre Kunden mit vorh
 
 #### <a name="device-registration"></a>Geräteregistrierung
 
-Die [Azure AD-Geräteregistrierung](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction) ist die Grundlage gerätebasierter Szenarien für den [bedingten Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup). Wenn ein Gerät registriert wird, stellt die Azure AD-Geräteregistrierung eine Identität für das Gerät bereit, die bei der Anmeldung des Benutzers zum Authentifizieren des Geräts dient. Das authentifizierte Gerät und die Attribute des Geräts können anschließend verwendet werden, um bedingte Zugriffsrichtlinien für Anwendungen zu erzwingen, die in der Cloud und lokal gehostet werden.
+Die [Azure AD-Geräteregistrierung](https://docs.microsoft.com/azure/active-directory/device-management-introduction) ist die Grundlage gerätebasierter Szenarien für den [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-device-registration-on-premises-setup). Wenn ein Gerät registriert wird, stellt die Azure AD-Geräteregistrierung eine Identität für das Gerät bereit, die bei der Anmeldung des Benutzers zum Authentifizieren des Geräts dient. Das authentifizierte Gerät und die Attribute des Geräts können anschließend verwendet werden, um bedingte Zugriffsrichtlinien für Anwendungen zu erzwingen, die in der Cloud und lokal gehostet werden.
 
 In Kombination mit einer Lösung für die [mobile Geräteverwaltung](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft), z.B. Intune, werden die Geräteattribute in Azure Active Directory mit zusätzlichen Informationen über das Gerät aktualisiert. So können Sie Regeln für den bedingten Zugriff erstellen, die erzwingen, dass der Zugriff von Geräten Ihren Standards für Sicherheit und Kompatibilität entspricht.
 

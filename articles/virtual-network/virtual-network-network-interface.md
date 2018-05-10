@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c39f11eae08e74e1bb29a5587fa4a8f0ba7c6a5b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -216,7 +216,7 @@ Die effektiven Sicherheitsregeln für jede Netzwerkschnittstelle, die einem virt
 4. Wählen Sie unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Effektive Sicherheitsregeln** aus.
 5. Überprüfen Sie die Liste der effektiven Sicherheitsregeln, um zu bestimmen, ob die richtigen Regeln für die erforderliche ein- und ausgehende Kommunikation vorhanden sind. Weitere Informationen über den Inhalt der Liste finden Sie unter [Netzwerksicherheit](security-overview.md).
 
-Die IP-Flussüberprüfungsfunktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Sicherheitsregeln die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkdatenverkehr-Filterproblems – Azure-Portal](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Die IP-Flussüberprüfungsfunktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Sicherheitsregeln die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkdatenverkehr-Filterproblems – Azure-Portal](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Befehle**
 
@@ -233,7 +233,7 @@ Die effektiven Routen für die Netzwerkschnittstellen, die einem virtuellen Comp
 4. Wählen Sie unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Effektive Routen**.
 5. Überprüfen Sie die Liste der effektiven Routen, um zu bestimmen, ob die richtigen Routen für die erforderliche ein- und ausgehende Kommunikation vorhanden sind. Weitere Informationen zu den in der Liste angezeigten Inhalten finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
 
-Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Routen die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkroutingproblems – Azure-Portal](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls helfen, zu bestimmen, ob Routen die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt verhindern. Weitere Informationen finden Sie unter [Diagnose eines VM-Netzwerkroutingproblems – Azure-Portal](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Befehle**
 

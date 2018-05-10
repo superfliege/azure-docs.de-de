@@ -1,11 +1,11 @@
 ---
-title: "Einführung in Microservices in Azure | Microsoft-Dokumentation"
-description: "Sie erhalten einen Überblick, warum das Erstellen von Cloudanwendungen mit einem Microservice-Ansatz für die moderne Anwendungsentwicklung wichtig ist und wie Azure Service Fabric dafür eine Plattform bereitstellt."
+title: Einführung in Microservices in Azure | Microsoft-Dokumentation
+description: Sie erhalten einen Überblick, warum das Erstellen von Cloudanwendungen mit einem Microservice-Ansatz für die moderne Anwendungsentwicklung wichtig ist und wie Azure Service Fabric dafür eine Plattform bereitstellt.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: f69f594d058ba061cec116f87435c96280e19f93
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56b78a0274842c012e57f80f0c2fe5619a62962
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heute erfolgt diese Faktorisierung meist in Form von Klassen und Schnittstellen zwischen freigegebenen Bibliotheken und Technologieebenen. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre *doch* geändert hat, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen erstellen, die für die Cloud bestimmt und geschäftlich geboten sind.
@@ -140,7 +140,7 @@ Service Fabric verfügt über drei allgemeine Bereiche für die Unterstützung d
 
 * Diese Plattform bietet Systemdienste zum Bereitstellen, Upgraden, Erkennen und Neustarten ausgefallener Dienste und zum Ermitteln des Dienstes, Weiterleiten von Nachrichten,Verwalten des Zustands und Überwachen der Integrität. Viele der oben beschriebenen Merkmale von Microservices sind auf diese Systemdienste zurückzuführen.
 * Die Fähigkeit, Anwendungen entweder in Containern oder als Prozesse bereitzustellen. Service Fabric ist ein Container- und Prozessorchestrator.
-* Produktive Programmier-APIs zum Erstellen von Anwendungen als Microservices: [ASP:NET Core, Reliable Actors und Reliable Services](service-fabric-choose-framework.md). Sie können beliebigen Code auswählen, um den Microservice zu erstellen. Aber wenn Sie diese APIs verwenden, wird die Aufgabe nicht nur vereinfacht, sondern es findet auch eine tiefere Integration in die Plattform statt. Beispielsweise erhalten Sie entweder Integritäts- und Diagnoseinformationen, oder Sie können die integrierte hohe Verfügbarkeit nutzen.
+* Produktive Programmier-APIs zum Erstellen von Anwendungen als Microservices: [ASP:NET Core, Reliable Actors und Reliable Services](service-fabric-choose-framework.md). Sie können beliebigen Code auswählen, um den Microservice zu erstellen. Aber wenn Sie diese APIs verwenden, wird die Aufgabe nicht nur vereinfacht, sondern es findet auch eine tiefere Integration in die Plattform statt. Beispielsweise erhalten Sie entweder Integritäts- und Diagnoseinformationen, oder Sie können die integrierte Hochverfügbarkeit nutzen.
 
 ***Service Fabric ist agnostisch, was die Erstellung Ihres Diensts betrifft, und Sie können eine beliebige Technologie verwenden. Es bietet jedoch integrierte Programmier-APIs, die die Erstellung von Microservices vereinfachen.***
 
@@ -181,7 +181,7 @@ Das Ziel von Service Fabric ist die Reduzierung der komplexen Anwendungserstellu
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Service Fabric-Terminologie](service-fabric-technical-overview.md)
-* [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/en-us/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution)
+* [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png

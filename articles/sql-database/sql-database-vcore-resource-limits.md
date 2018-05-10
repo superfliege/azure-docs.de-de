@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 23bab643a88fe27eb34750f970f962041f8c18f4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Einschränkungen des auf virtuellen Kernen basierenden Einkaufsmodells für Azure SQL-Datenbank (Vorschau)
 
@@ -40,8 +40,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Ziel-IOPS|320|640|1280|2.560|5120|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|
-|Maximale Anzahl gleichzeitiger Anmeldungen|200|400|800|1600|3200|
-|Maximal zulässige Sitzungen|3000|3000|3000|3000|3000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|
@@ -63,8 +62,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Ziel-IOPS|5.000|10000|20000|40.000|80.000|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|
-|Maximale Anzahl gleichzeitiger Anmeldungen|200|400|800|1600|3200|
-|Maximal zulässige Sitzungen|3000|3000|3000|3000|3000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|3|3|3|3|3|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|
@@ -117,8 +115,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Ziel-IOPS|320|640|1280|2.560|5120|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|
-|Maximale Anzahl gleichzeitiger Anmeldungen|210|420|840|1680|3360|
-|Maximal zulässige Sitzungen|3000|3000|3000|3000|3000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
 |Maximale Pooldichte|100|200|500|500|500|
 |Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Anzahl von Replikaten|1|1|1|1|1|
@@ -128,7 +125,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |||
 
 ### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
-|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
+|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
 |:--- | --: |--: |--: |--: |--: |
 |Hardwaregeneration|4|4|4|4|4|
 |V-Kerne|1|2|4|8|16|
@@ -142,8 +139,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Ziel-IOPS|320|640|1280|2.560|5120|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|
-|Maximale Anzahl gleichzeitiger Anmeldungen|210|420|840|1680|3360|
-|Maximal zulässige Sitzungen|3000|3000|3000|3000|3000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
 |Maximale Pooldichte|N/V|50|100|100|100|
 |Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
 |Multi-AZ|Ja|Ja|Ja|Ja|Ja|

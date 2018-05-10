@@ -12,10 +12,6 @@
       href: dns-getstarted-powershell.md
     - name: 'Erstellen einer DNS-Zone und eines Eintrags: CLI'
       href: dns-getstarted-cli.md
-- name: Beispiele
-  items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: cli-samples.md
 - name: Tutorials
   items:
     - name: Erstellen einer privaten DNS-Zone und eines Eintrags
@@ -24,6 +20,10 @@
       href: dns-delegate-domain-azure-dns.md
     - name: Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App
       href: dns-web-sites-custom-domain.md
+- name: Beispiele
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
 - name: Konzepte
   items:
     - name: DNS-Zonen und -Einträge
@@ -104,7 +104,7 @@
   items:
     - name: Application Gateway
       href: /azure/application-gateway/
-    - name: Virtuelles Netzwerk
+    - name: Virtual Network
       href: /azure/virtual-network/
     - name: Virtual Machine
       href: /azure/virtual-machines/

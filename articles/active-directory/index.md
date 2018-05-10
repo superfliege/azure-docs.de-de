@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: carolz
-ms.openlocfilehash: 30019a733bd4869d22c060d0793423b71b0df166
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0ac4dd450f1aca1da916ff3c95f5429e50cba4fd
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentation zu Azure Active Directory
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) ist ein mehrinstanzenfähiger cloudbasierter V
                         <p>
                         <a href="/azure/active-directory/active-directory-identityprotection">Identitätsschutz</a><br/>
                         <a href="/azure/active-directory/active-directory-conditional-access-azure-portal">Bedingter Zugriff</a><br/>
-                        <a href="/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access">Privileged Identity Management</a>
+                        <a href="/azure/active-directory/active-directory-privileged-identity-management-configure">Privileged Identity Management</a>
                         </p>
                     </div>
                 </div>

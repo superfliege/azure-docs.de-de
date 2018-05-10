@@ -1,19 +1,34 @@
 - name: Azure HDInsight-Dokumentation
   href: /azure/hdinsight
-- name: Kafka in HDInsight
+- name: Übersicht
   items:
-    - name: Übersicht
+    - name: Info zu Kafka in HDInsight
       href: apache-kafka-introduction.md
     - name: Versionsverwaltung für Komponenten
       href: ../hdinsight-component-versioning.md
       maintainContext: true
-- name: Erste Schritte
+- name: Schnellstarts
   items:
-    - name: Erstellen eines Kafka-Clusters
+    - name: 'Erstellen eines Kafka-Clusters: Portal'
       href: apache-kafka-get-started.md
-    - name: Installieren von HDInsight-Apps
-      href: ../hdinsight-apps-install-applications.md
+    - name: 'Erstellen eines Kafka-Clusters: PowerShell'
+      href: apache-kafka-quickstart-powershell.md
+    - name: 'Erstellen eines Kafka-Clusters: Vorlage'
+      href: apache-kafka-quickstart-resource-manager-template.md
+- name: Tutorials
+  items:
+    - name: Kafka und Spark
+      href: ../hdinsight-apache-kafka-spark-structured-streaming.md
       maintainContext: true
+    - name: Kafka und Storm
+      href: ../hdinsight-apache-storm-with-kafka.md
+      maintainContext: true
+    - name: 'Kafka: Producer- und Consumer-API'
+      href: apache-kafka-producer-consumer-api.md
+    - name: 'Kafka: Streams-API'
+      href: apache-kafka-streams-api.md
+- name: Konzepte
+  items:
     - name: Kapazitätsplanung
       href: ../hdinsight-capacity-planning.md
       maintainContext: true
@@ -23,6 +38,11 @@
       href: apache-kafka-high-availability.md
 - name: Anleitung
   items:
+    - name: Aktivieren der automatischen Themenerstellung
+      href: apache-kafka-auto-create-topics.md
+    - name: Installieren von HDInsight-Apps
+      href: ../hdinsight-apps-install-applications.md
+      maintainContext: true
     - name: Verwenden von Kafka in einem virtuellen Netzwerk
       href: apache-kafka-connect-vpn-gateway.md
     - name: Replizieren von Kafka-Daten
@@ -31,17 +51,11 @@
       href: apache-kafka-log-analytics-operations-management.md
     - name: Erstellen von Streamingpipelines
       items:
-        - name: Kafka und Spark (strukturiertes Streaming)
-          href: ../hdinsight-apache-kafka-spark-structured-streaming.md
-          maintainContext: true
-        - name: Strukturierter Stream von Kafka zu Azure Cosmos DB
+        - name: 'Spark, Kafka und Azure Cosmos DB'
           href: ../apache-kafka-spark-structured-streaming-cosmosdb.md
           maintainContext: true
         - name: Kafka und Spark (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
-          maintainContext: true
-        - name: Kafka und Storm
-          href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
         - name: Verwenden von Kafka mit Azure Container Service
           href: apache-kafka-azure-container-services.md
@@ -49,10 +63,6 @@
           href: apache-kafka-azure-functions.md
     - name: Entwickeln
       items:
-        - name: Verwenden der Producer- und Consumer-API (Kafka)
-          href: apache-kafka-producer-consumer-api.md
-        - name: Verwenden der Kafka-Stream-API
-          href: apache-kafka-streams-api.md
         - name: Verwenden leerer Edgeknoten
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

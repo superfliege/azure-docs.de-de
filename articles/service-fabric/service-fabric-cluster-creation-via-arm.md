@@ -3,7 +3,7 @@ title: Erstellen eines Azure Service Fabric-Clusters auf der Grundlage einer Vor
 description: In diesem Artikel erfahren Sie, wie Sie unter Verwendung von Azure Resource Manager, Azure Key Vault und Azure Active Directory (Azure AD) für die Clientauthentifizierung einen sicheren Service Fabric-Cluster in Azure einrichten.
 services: service-fabric
 documentationcenter: .net
-author: chackdan
+author: aljo-microsoft
 manager: timlt
 editor: chackdan
 ms.assetid: 15d0ab67-fc66-4108-8038-3584eeebabaa
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
-ms.author: chackdan
-ms.openlocfilehash: b245c9e46c994d40a6d0f75eb8494828d0d4d165
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.author: aljo
+ms.openlocfilehash: e3e9e0c13368dbf7dd32c8483f8e6783afc1bdbb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Verwenden Sie den folgenden Befehl zum Erstellen des Clusters, wenn das System e
 
 ```Powershell
 
-Login-AzureRmAccount
+Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <guid>
 
 ```
@@ -462,7 +462,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
               "settings": {
                 ...
                 "certificate": {
-                  "thumbprint": "[parameters('clusterCertificateThumbprint')]",
+                  "commonNames": ["[parameters('certificateCommonName')]"],
                   "x509StoreName": "[parameters('clusterCertificateStoreValue')]"
                 },
                 ...
@@ -479,7 +479,7 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 ##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Fügen Sie die Zertifikatinformationen zur Service Fabric-Clusterressource hinzu:
 ```json
 {
-  "apiVersion": "[variables('sfrpApiVersion')]",
+  "apiVersion": "2018-02-01",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   "location": "[parameters('clusterLocation')]",
@@ -487,9 +487,14 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
     "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
   ],
   "properties": {
-    "certificate": {
-      "thumbprint": "[parameters('clusterCertificateThumbprint')]",
-      "x509StoreName": "[parameters('clusterCertificateStoreValue')]"
+    "certificateCommonNames": {
+        "commonNames": [
+        {
+            "certificateCommonName": "[parameters('certificateCommonName')]",
+            "certificateIssuerThumbprint": ""
+        }
+        ],
+        "x509StoreName": "[parameters('certificateStoreValue')]"
     },
     ...
   }
@@ -502,14 +507,19 @@ Fügen Sie die Azure AD-Konfiguration zu einer Resource Manager-Vorlage für ein
 
 ```json
 {
-  "apiVersion": "[variables('sfrpApiVersion')]",
+  "apiVersion": "2018-02-01",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   ...
   "properties": {
-    "certificate": {
-      "thumbprint": "[parameters('clusterCertificateThumbprint')]",
-      "x509StoreName": "[parameters('clusterCertificateStorevalue')]"
+    "certificateCommonNames": {
+        "commonNames": [
+        {
+            "certificateCommonName": "[parameters('certificateCommonName')]",
+            "certificateIssuerThumbprint": ""
+        }
+        ],
+        "x509StoreName": "[parameters('certificateStoreValue')]"
     },
     ...
     "azureActiveDirectory": {
@@ -533,6 +543,9 @@ Wenn Sie die Azure Service Fabric-RM-PowerShell-Module verwenden möchten, dann 
 
 ```json
         "clusterCertificateThumbprint": {
+            "value": ""
+        },
+        "certificateCommonName": {
             "value": ""
         },
         "clusterCertificateUrlValue": {

@@ -80,6 +80,8 @@ items:
         href: unique-keys.md
       - name: Serverlose Datenbank
         href: serverless-computing-database.md
+      - name: 'BulkExecutor: Übersicht'
+        href: bulk-executor-overview.md
       - name: Sicherheit
         href: database-security.md
         items:
@@ -87,8 +89,6 @@ items:
             href: database-encryption-at-rest.md
           - name: Sichern des Zugriffs auf Daten
             href: secure-access-to-data.md
-      - name: Gesamtbetriebskosten
-        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: Anwendungsfälle
         href: use-cases.md
         items:
@@ -171,6 +171,10 @@ items:
                 href: multi-region-writers.md
           - name: Anleitungen
             items:
+              - name: 'BulkExecutor: .NET'
+                href: bulk-executor-dot-net.md
+              - name: 'BulkExecutor: Java'
+                href: bulk-executor-java.md
               - name: Abfragen
                 items:
                   - name: Ausführen von SQL-Abfragen
@@ -247,6 +251,10 @@ items:
                 href: sql-api-sdk-node.md
               - name: Python
                 href: sql-api-sdk-python.md
+              - name: 'BulkExecutor: .NET'
+                href: sql-api-sdk-bulk-executor-dot-net.md
+              - name: 'BulkExecutor: Java'
+                href: sql-api-sdk-bulk-executor-java.md
               - name: REST
                 href: /rest/api/cosmos-db/
               - name: REST-Ressourcenanbieter
@@ -257,8 +265,6 @@ items:
             items:
               - name: Visual Studio Code-Erweiterung
                 href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
-              - name: Dokument zur Schema-unabhängigen Indizierung
-                href: 'http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf'
               - name: Arbeiten mit SQL
                 href: 'https://aka.ms/cosmos-db-playground'
       - name: MongoDB-API-Dokumentation
@@ -433,6 +439,8 @@ items:
         href: set-throughput.md
       - name: Firewallunterstützung
         href: firewall-support.md
+      - name: Einrichten eines Dienstendpunkts im virtuellen Netzwerk
+        href: vnet-service-endpoint.md
       - name: Metriken
         href: use-metrics.md
       - name: Überwachen von SLAs
@@ -465,3 +473,5 @@ items:
         href: faq.md
       - name: Datenkonsistenz – erläutert am Beispiel Baseball
         href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+      - name: Whitepaper
+        href: whitepapers.md

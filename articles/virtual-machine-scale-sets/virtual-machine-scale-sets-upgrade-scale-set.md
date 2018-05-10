@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: b1fdc364b903ed552f657fcabdadcf209d7c969e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 662cea7ac47e411b127540faf5cab8b3c4d8964a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 Während des Lebenszyklus von Anwendungen müssen Sie möglicherweise Ihre VM-Skalierungsgruppe ändern oder aktualisieren. Zu diesen Aktualisierungen können das Aktualisieren der Konfiguration der Skalierungsgruppe oder das Ändern der Anwendungskonfiguration zählen. Dieser Artikel beschreibt die Vorgehensweise zum Ändern einer vorhandenen Skalierungsgruppe mit den REST-APIs, Azure PowerShell oder Azure CLI 2.0.
@@ -347,6 +347,7 @@ Einige Eigenschaften können nur beim Erstellen der Skalierungsgruppe festgelegt
 - Verfügbarkeitszonen
 - Imagereferenzherausgeber
 - Imagereferenzangebot
+- Speicherkontotyp des verwalteten Betriebssystemdatenträgers
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Eigenschaften, die nur auf Grundlage des aktuellen Werts geändert werden können
 Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werden. Zu diesen Eigenschaften zählen folgende:
@@ -372,12 +373,12 @@ Wenn eine Anwendung über Erweiterungen in einer Skalierungsgruppe bereitgestell
 Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestellt. Dieses Szenario wird im folgenden Abschnitt behandelt.
 
 ### <a name="os-updates"></a>Betriebssystemupdates
-Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate).)
+Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 >[!NOTE]
 > Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, horizontalen Hochskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
 
-Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate).)
+Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 ## <a name="examples"></a>Beispiele
 

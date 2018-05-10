@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Erstellen einer Windows VM NLB | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Erstellen einer Windows VM NLB"
+title: Azure PowerShell-Skriptbeispiel – Erstellen einer Windows VM NLB | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Erstellen einer Windows VM NLB
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: 25bcbbcd1615e01a384825d7bd1582a528e91f71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>Lastenausgleich für den Datenverkehr zwischen hoch verfügbaren virtuellen Computern
 
@@ -46,7 +46,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) | Erstellt eine Subnetzkonfiguration. Diese Konfiguration wird mit dem Prozess der Erstellung des virtuellen Netzwerks verwendet. |

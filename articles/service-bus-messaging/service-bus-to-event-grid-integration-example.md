@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: fd30a8eb5149647a24ff04e099bf5c3e187459ef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Beispiele für die Integration von Azure Service Bus in Azure Event Grid
 
@@ -62,7 +62,7 @@ Sie können beliebige Verfahren zum Senden einer Nachricht an Ihr Service Bus-Th
 
 Richten Sie vor dem Durcharbeiten des gesamten Szenarios mindestens eine kleine Testfunktion ein, mit der Sie das Debuggen durchführen und verfolgen können, welche Ereignisse eintreten.
 
-1. Erstellen Sie im Azure-Portal eine neue Azure Functions-Anwendung. Informationen zu den Grundlagen von Azure Functions finden Sie in der [Azure Functions-Dokumentation](https://docs.microsoft.com/en-us/azure/azure-functions/).
+1. Erstellen Sie im Azure-Portal eine neue Azure Functions-Anwendung. Informationen zu den Grundlagen von Azure Functions finden Sie in der [Azure Functions-Dokumentation](https://docs.microsoft.com/azure/azure-functions/).
 
 2. Wählen Sie in der neu erstellten Funktion das kleine Pluszeichen (+) aus, um eine HTTP-Triggerfunktion hinzuzufügen:
 
@@ -132,7 +132,7 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
     ![20][]
 
-2. Wählen Sie **Ereignisabonnement**.  
+2. Klicken Sie auf **Ereignisabonnement**.  
     Das Fenster **Ereignisabonnement** wird geöffnet. In der folgenden Abbildung ist ein Formular zum Abonnieren einer Azure-Funktion oder eines Webhooks ohne Anwendung von Filtern dargestellt.
 
     ![21][]

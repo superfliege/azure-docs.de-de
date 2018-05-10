@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b397d03cbb8fc539eb5f79e183233515bf173a99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 47dba73a6c22d11953485a69435000d3d2fe6f55
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>Verfügbarkeit von SAP HANA innerhalb einer Azure-Region
 In diesem Artikel werden mehrere Verfügbarkeitsszenarien innerhalb einer Azure-Region beschrieben. Azure bietet viele Regionen auf der ganzen Welt. Die Liste mit Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). Für die Bereitstellung von SAP HANA auf VMs in einer Azure-Region bietet Microsoft die Bereitstellung einer einzelnen VM mit einer HANA-Instanz. Zur Erhöhung der Verfügbarkeit können Sie zwei VMs mit zwei HANA-Instanzen innerhalb einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereitstellen, die aus Verfügbarkeitsgründen die HANA-Systemreplikation verwenden. 
@@ -118,5 +118,5 @@ Eine ausführliche Anleitung zum Einrichten dieser Konfigurationen in Azure find
 
 Weitere Informationen zur SAP HANA-Verfügbarkeit in Azure-Regionen finden Sie im folgenden Artikel:
 
-- [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
+- [SAP HANA-Verfügbarkeit in den Azure-Regionen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions) 
 

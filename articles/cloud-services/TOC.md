@@ -71,7 +71,7 @@
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Speichern und Anzeigen von Diagnosedaten in Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
+### [Speichern und Anzeigen von Diagnosedaten in Azure Storage](../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json )
 ### [Verfolgen eines Clouddiensts mit der Diagnose](cloud-services-dotnet-diagnostics-trace-flow.md)
 
 ## Problembehandlung

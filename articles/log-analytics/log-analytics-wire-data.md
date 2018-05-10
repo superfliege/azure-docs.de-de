@@ -1,11 +1,11 @@
 ---
-title: "Wire Data-Lösung in Log Analytics | Microsoft Docs"
-description: "Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager und Agents mit Windows-Verbindung. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen."
+title: Wire Data-Lösung in Log Analytics | Microsoft Docs
+description: Bei Wire Data handelt es sich um zusammengefasste Netzwerk- und Leistungsdaten von Computern mit OMS-Agents, z.B. Operations Manager und Agents mit Windows-Verbindung. Netzwerkdaten werden mit Ihren Protokolldaten kombiniert, um Ihnen das Korrelieren von Daten zu ermöglichen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d824272f5b5569971eddcf0a43bd5ba97f60f506
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0-Lösung (Vorschauversion) in Log Analytics
 
@@ -58,8 +58,8 @@ Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agen
 
 | **Verbundene Quelle** | **Unterstützt** | **Beschreibung** |
 | --- | --- | --- |
-| Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [OMS-Agent](log-analytics-windows-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
-| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [OMS-Agent](log-analytics-quick-collect-linux-computer.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems). |
+| Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [OMS-Agent](log-analytics-windows-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
+| Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [OMS-Agent](log-analytics-quick-collect-linux-computer.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../monitoring/monitoring-service-map-configure.md#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Wire Data analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md). <br><br> Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an Log Analytics weitergeleitet. |
 | Azure-Speicherkonto | Nein  | Da Wire Data Daten von Agent-Computern erfasst, sind keine Daten aus Azure Storage zu erfassen. |
 

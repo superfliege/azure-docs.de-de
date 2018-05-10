@@ -3,7 +3,7 @@ title: Herunterladen einer Linux-VHD von Azure | Microsoft-Dokumentation
 description: Laden Sie eine Linux-VHD mithilfe der Azure-Befehlszeilenschnittstelle und dem Azure-Portal herunter.
 services: virtual-machines-windows
 documentationcenter: ''
-author: davidmu1
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: davidmu
-ms.openlocfilehash: d177e8de7ace571c57a0b8b39c8834fb5b115365
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.author: cynthn
+ms.openlocfilehash: 93f165d08813506f9c4d4c0fbb885ddc958e8391
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -35,7 +35,7 @@ Eine VHD kann nicht von Azure heruntergeladen werden, wenn sie an eine ausgefüh
 
 Um die VHD als Image zum Erstellen von anderen VMs zu verwenden, führen Sie die folgenden Schritte durch:
 
-1. Verwenden Sie SSH, den Kontonamen und die öffentliche IP-Adresse der VM, um eine Verbindung zu ihr aufzubauen und die Bereitstellung aufzuheben. Die öffentliche IP-Adresse finden Sie mit [az network public-ip show](https://docs.microsoft.com/en-us/cli/azure/network/public-ip#az-network-public-ip-show). Der Parameter „+Benutzer“ entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn Sie Kontoanmeldeinformationen in der VM sichern, lassen die den +Benutzer-Parameter weg. Im folgenden Beispiel wird das letzte bereitgestellte Benutzerkonto entfernt:
+1. Verwenden Sie SSH, den Kontonamen und die öffentliche IP-Adresse der VM, um eine Verbindung zu ihr aufzubauen und die Bereitstellung aufzuheben. Die öffentliche IP-Adresse finden Sie mit [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show). Der Parameter „+Benutzer“ entfernt auch das zuletzt bereitgestellte Benutzerkonto. Wenn Sie Kontoanmeldeinformationen in der VM sichern, lassen die den +Benutzer-Parameter weg. Im folgenden Beispiel wird das letzte bereitgestellte Benutzerkonto entfernt:
 
     ```bash
     ssh azureuser@<publicIpAddress>

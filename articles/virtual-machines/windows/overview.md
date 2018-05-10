@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: fe4345f45013359fd77e5ddae3dc754b94af2696
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ff709d021c9d4201301edd9890f1e4a94f555313
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
@@ -62,7 +62,7 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations) (Standorte auflisten). |
-| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
+| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_list_locations). |
 
 ### <a name="vm-size"></a>Größe des virtuellen Computers
 Die [Größe](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
@@ -84,7 +84,7 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
 | REST-APIs |[List image publishers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "location"<BR>[az vm image list-offers](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "location" --publisher "publisherName"<BR>[az vm image list-skus](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "location" --publisher "publisherName" --offer "offerName"|
+| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "location"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "location" --publisher "publisherName"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "location" --publisher "publisherName" --offer "offerName"|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 
@@ -121,7 +121,7 @@ Die folgende Tabelle enthält hilfreiche Informationen zur Erstellung Ihres erst
 | Azure PowerShell |[Create a Windows VM using PowerShell (Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell)](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Client-SDKs |[Bereitstellen von Azure-Ressourcen mit C#](csharp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | REST-APIs |[Erstellen oder Aktualisieren eines virtuellen Computers](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
-| Azure-Befehlszeilenschnittstelle |[Erstellen eines virtuellen Computers mit der Azure CLI](https://docs.microsoft.com/en-us/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
+| Azure-Befehlszeilenschnittstelle |[Erstellen eines virtuellen Computers mit der Azure CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
 Man hofft zwar immer, dass es nicht dazu kommt, gelegentlich tritt dann aber doch der eine oder andere Fehler auf. In diesem Fall finden Sie unter [Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.
 
@@ -137,7 +137,7 @@ Die folgende Tabelle enthält einige der Methoden, mit denen Sie Informationen z
 | Azure PowerShell |Informationen zum Verwenden von PowerShell für die Verwaltung von virtuellen Computern finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
 | REST-API |Verwenden Sie den Vorgang [Get VM information](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get) (VM-Informationen abrufen), um Informationen zu einem virtuellen Computer abzurufen. |
 | Client-SDKs |Informationen zum Verwalten von virtuellen Computern mithilfe von C# finden Sie unter [Verwalten von virtuellen Azure-Computern mit Azure Resource Manager und C#](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). |
-| Azure-Befehlszeilenschnittstelle |Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Verwalten von VMs finden Sie in der [Azure CLI-Referenz](https://docs.microsoft.com/en-us/cli/azure/vm). |
+| Azure-Befehlszeilenschnittstelle |Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Verwalten von VMs finden Sie in der [Azure CLI-Referenz](https://docs.microsoft.com/cli/azure/vm). |
 
 ### <a name="log-on-to-the-vm"></a>Anmelden beim virtuellen Computer
 Verwenden Sie zum [Starten einer Remotedesktopsitzung](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) die Schaltfläche „Verbinden“ im Azure-Portal. Bei Remoteverbindungen können gelegentlich Probleme auftreten. In diesem Fall finden Sie unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) hilfreiche Informationen.

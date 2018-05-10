@@ -10,7 +10,7 @@
       href: create-external-ase.md
     - name: Erstellen einer internen ASE
       href: create-ilb-ase.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Integrieren in ein WAF
       href: app-service-app-service-environment-web-application-firewall.md
@@ -30,6 +30,8 @@
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
       href: app-service-app-service-environment-intro.md
+    - name: Diagnose
+      href: ../app-service-diagnostics.md
 - name: Anleitungen
   items:
     - name: Verwenden einer ASE
@@ -40,7 +42,7 @@
       href: create-from-template.md
     - name: Konfiguration der Tunnelerzwingung
       href: forced-tunnel-support.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Verwaltungsadressen
       href: management-addresses.md
@@ -73,7 +75,7 @@
         - name: Verwenden der mehrstufigen Sicherheit
           href: app-service-app-service-environment-layered-security.md
     - name: CLI 2.0
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/appservice
@@ -81,7 +83,7 @@
       href: /powershell
     - name: REST-API
       href: /rest/api/appservice/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

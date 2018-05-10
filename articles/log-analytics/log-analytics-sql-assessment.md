@@ -1,11 +1,11 @@
 ---
 title: Optimieren Ihrer SQL Server-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
-description: "Mit Azure Log Analytics können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten."
+description: Mit Azure Log Analytics können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47f912932f9a0e1383ef5f82d1d3e33b5ababa9c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Log Analytics
 
@@ -54,7 +54,7 @@ Um die Integritätsüberprüfung für Ihre SQL Server-Server auszuführen, sind 
 
 1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in den Log Analytics-Dienst integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](log-analytics-om-agents.md#connecting-operations-manager-to-oms) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
 Der Agent auf Ihrer SQL Server-Instanz, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an den Log Analytics-Dienst gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
@@ -163,7 +163,7 @@ Bevor Sie eine Assessment-Lösung in Log Analytics verwenden können, müssen Si
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
-1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
 3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie dann auf die Kachel **Übersicht**.  
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **SQL-Integritätsüberprüfung**.

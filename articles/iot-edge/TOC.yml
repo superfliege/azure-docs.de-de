@@ -53,6 +53,8 @@
           href: how-to-vscode-debug-csharp-module.md
         - name: Debuggen von Azure Functions
           href: how-to-vscode-debug-azure-function.md
+    - name: CI/CD in VSTS
+      href: how-to-ci-cd.md
     - name: Speichern von Daten im Edge-Bereich
       href: sql-storage.md
     - name: Problembehandlung
@@ -90,10 +92,10 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub Device Provisioning-Dienst
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
-        - name: Location Based Services
-          href: /azure/location-based-services
+        - name: Karten
+          href: /azure/azure-maps
         - name: Dienst-SDKs
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights

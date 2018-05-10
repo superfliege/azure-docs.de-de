@@ -10,11 +10,11 @@ ms.devlang: bash
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: seguler
-ms.openlocfilehash: 299b96c783fb3606347bb448d00d44f0071da429
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 44b0c36ad366d50480212adff9cdb8b10a17db05
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse-preview"></a>Einbinden von Blob Storage als Dateisystem mit blobfuse (Vorschauversion)
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 In diesem Handbuch wird gezeigt, wie Sie blobfuse verwenden, einen Blobspeichercontainer unter Linux einbinden und auf Daten zugreifen. Weitere Informationen zu blobfuse finden Sie im [blobfuse-Repository](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> blobfuse garantiert keine 100-prozentige Konformität mit POSIX, da Anforderungen einfach in [Blob-REST-APIs](https://docs.microsoft.com/en-us/rest/api/storageservices/blob-service-rest-api) übersetzt werden. Umbenennungsvorgänge sind in POSIX beispielsweise atomisch, in blobfuse jedoch nicht.
+> blobfuse garantiert keine 100-prozentige Konformität mit POSIX, da Anforderungen einfach in [Blob-REST-APIs](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) übersetzt werden. Umbenennungsvorgänge sind in POSIX beispielsweise atomisch, in blobfuse jedoch nicht.
 > Eine vollständige Liste der Unterschiede zwischen einem nativen Dateisystem und blobfuse finden Sie im [blobfuse-Quellcoderepository](https://github.com/azure/azure-storage-fuse).
 > 
 

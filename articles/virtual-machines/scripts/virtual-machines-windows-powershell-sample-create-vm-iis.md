@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – IIS | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – IIS"
+title: Azure PowerShell-Skriptbeispiel – IIS | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – IIS
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: cd603e00b28b2de380408707043e9806e29b74c4
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Erstellen einer IIS-VM mit PowerShell
 
@@ -46,7 +46,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der Netzwerksicherheitsgruppe. Mit diesem Befehl werden außerdem Port 80 geöffnet und die Administratoranmeldeinformationen festgelegt. |

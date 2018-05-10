@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
-ms.openlocfilehash: bb7a0e61b6d29c292642fd950aed7617de9b340d
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 62265947e35636bf17492b6600c915e06a7ac1fd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>Erste Schritte mit Azure Mobile Engagement für Web-Apps
 > [!IMPORTANT]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/30/2018
 In diesem Thema wird gezeigt, wie Sie Azure Mobile Engagement verwenden, um die Web-App-Nutzung zu verstehen.
 
 > [!NOTE]
-> Der Azure Mobile Engagement-Dienst wird im März 2018 eingestellt und ist zurzeit nur für Bestandskunden verfügbar. Weitere Informationen finden Sie im Artikel zu [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Der Azure Mobile Engagement-Dienst wird im März 2018 eingestellt und ist zurzeit nur für Bestandskunden verfügbar. Weitere Informationen finden Sie im Artikel zu [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 

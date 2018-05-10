@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2018
-ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 5219ebc22e56ad4b5cdfc125f7fa5882c61adb9f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: devtiw
+ms.openlocfilehash: 813124ae7c0dd76a27dcbaea6f0d7aa19bc1e49c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel stellen wir Ihnen die neue Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ vor, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. Der Artikel enthält eine ausführliche Anleitung zur Verwendung der Funktionen einer Azure-Datenträgerverschlüsselung, z.B. die unterstützten Szenarien und die Benutzeroberflächen.
@@ -141,7 +141,7 @@ Bevor Sie Azure Disk Encryption auf virtuellen Azure-IaaS-Computern für die unt
 > [!NOTE]
 > Für Windows Server 2008 R2 müssen Sie .NET Framework 4.5 installieren, bevor Sie die Verschlüsselung in Azure aktivieren. Sie können die Installation über Windows Update durchführen, indem Sie das optionale Update Microsoft .NET Framework 4.5.2 für Windows Server 2008 R2 x64-basierte Systeme ([KB2901983](https://support.microsoft.com/kb/2901983)) installieren.
 
-* Azure Disk Encryption wird nur für bestimmte auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt.  Die Liste der derzeit unterstützten Versionen finden Sie in den [Häufig gestellten Fragen zu Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq).
+* Azure Disk Encryption wird nur für bestimmte auf dem Azure-Katalog basierenden Linux-Serverdistributionen und -Versionen unterstützt.  Die Liste der derzeit unterstützten Versionen finden Sie in den [Häufig gestellten Fragen zu Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq).
 
 * Azure Disk Encryption setzt voraus, dass Ihr Schlüsseltresor und die VMs zur selben Azure-Region und zum selben Azure-Abonnement gehören.
 
@@ -720,7 +720,7 @@ Lesen Sie in diesem Artikel den Abschnitt *Voraussetzungen*, bevor Sie fortfahre
 
 1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
-    `Login-AzureRmAccount`
+    `Connect-AzureRmAccount`
 
 2. Wenn Sie über mehrere Abonnements verfügen und ein bestimmtes Abonnement verwenden möchten, geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
 
@@ -783,7 +783,7 @@ Verwenden Sie den Befehl [`manage-bde`](https://technet.microsoft.com/library/ff
 
 ##### <a name="prerequisites-for-os-disk-encryption"></a>Voraussetzungen für die Verschlüsselung des Betriebssystemdatenträgers
 
-* Die VM muss eine Distribution verwenden, die mit der Verschlüsselung von Betriebssystemdatenträgern kompatibel ist. Die infrage kommenden Distributionen werden unter [Häufig gestellte Fragen zu Azure Disk Encryption](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) aufgeführt. 
+* Die VM muss eine Distribution verwenden, die mit der Verschlüsselung von Betriebssystemdatenträgern kompatibel ist. Die infrage kommenden Distributionen werden unter [Häufig gestellte Fragen zu Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq#what-linux-distributions-does-azure-disk-encryption-support) aufgeführt. 
 * Die VM muss über ein Marketplace-Image im Azure Resource Manager erstellt werden.
 * Azure-VM mit mindestens 4 GB RAM (7 GB empfohlen).
 * (Für RHEL und CentOS) Deaktivieren Sie SELinux. Informationen zum Deaktivieren von SELinux finden Sie unter „4.4.2. Disabling SELinux“ (Deaktivieren von SELinux) im [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) (SELinux-Handbuch für Benutzer und Administratoren) in der VM.

@@ -8,8 +8,10 @@
 ## [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 ## [Erstellen einer hybriden lokalen/Cloudanwendung](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hybridverbindungen
-### [.NET](relay-hybrid-connections-dotnet-get-started.md)
-### [Node](relay-hybrid-connections-node-get-started.md)
+### [.NET Websockets](relay-hybrid-connections-dotnet-get-started.md)
+### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
+### [Node Websockets](relay-hybrid-connections-node-get-started.md)
+### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
 ## [WCF-Relay](relay-wcf-dotnet-get-started.md)
 ## [Tutorial zu WCF Relay](service-bus-relay-tutorial.md)
 ## [Tutorial zu WCF-Relay/REST](service-bus-relay-rest-tutorial.md)

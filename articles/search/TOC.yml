@@ -2,11 +2,13 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Informationen zu Azure Search
+    - name: Was ist Azure Search?
       href: search-what-is-azure-search.md
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Testen von Cognitive Search
+      href: cognitive-search-quickstart-blob.md
     - name: Erstellen von Diensten
       href: search-create-service-portal.md
     - name: Portal
@@ -37,13 +39,15 @@
           href: search-fiddler.md
 - name: Tutorials
   items:
-    - name: '1: Indizieren von Azure SQL-Datenbank'
+    - name: Indizieren mithilfe von Cognitive Search
+      href: cognitive-search-tutorial-blob.md
+    - name: Indizieren von Azure SQL-Datenbank
       href: search-indexer-tutorial.md
-    - name: '2: Indizieren von Azure-Blobs'
+    - name: Indizieren von Azure-Blobs
       href: search-semi-structured-data.md
-    - name: '3: Hinzufügen von Synonymen in .NET'
+    - name: Hinzufügen von Synonymen in .NET
       href: search-synonyms-tutorial-sdk.md
-    - name: '4: Präsentation der Portalfunktionen'
+    - name: Präsentation der Portalfunktionen
       href: search-get-started-portal.md
 - name: Beispiele
   items:
@@ -53,14 +57,18 @@
       href: 'https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search'
 - name: Konzepte
   items:
+    - name: Cognitive Search (Vorschauversion)
+      href: cognitive-search-concept-intro.md
     - name: Volltextsuche
       href: search-lucene-query-architecture.md
+    - name: Linguistische Analyse
+      href: search-analyzers.md
     - name: Indizierung
       href: search-what-is-data-import.md
     - name: Indexdefinition
       href: search-what-is-an-index.md
-    - name: Linguistische Analyse
-      href: search-analyzers.md
+    - name: Indexer
+      href: search-indexer-overview.md
 - name: Anleitungen
   items:
     - name: Planen und Entwerfen
@@ -123,8 +131,6 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
     - name: Indizieren von Daten
       items:
-        - name: Übersicht über Indexer
-          href: search-indexer-overview.md
         - name: Azure Blob Storage-Indexer
           href: search-howto-indexing-azure-blob-storage.md
         - name: Azure Table Storage-Indexer
@@ -141,7 +147,25 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Feldzuordnungen in Indexern
           href: search-indexer-field-mappings.md
-    - name: 'Suchen,'
+        - name: Neuerstellen eines Indexes
+          href: search-howto-reindex.md
+    - name: Cognitive Search (Vorschauversion)
+      items:
+        - name: Definieren von Fertigkeiten
+          href: cognitive-search-defining-skillset.md
+        - name: Verweisen auf eine Anmerkung
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: Zuordnen zu Indexfeldern
+          href: cognitive-search-output-field-mapping.md
+        - name: Verarbeiten und Extrahieren von Informationen aus Bildern
+          href: cognitive-search-concept-image-scenarios.md
+        - name: Integrieren benutzerdefinierter Fertigkeiten
+          href: cognitive-search-custom-skill-interface.md
+        - name: Beispiel für benutzerdefinierte Fertigkeiten
+          href: cognitive-search-create-custom-skill-example.md
+        - name: Tipps zur Problembehandlung
+          href: cognitive-search-concept-troubleshooting.md
+    - name: Volltextsuche
       items:
         - name: Grundlegende Abfrageerstellung
           href: search-query-overview.md
@@ -165,7 +189,7 @@
           href: search-filters.md
         - name: Facettenfilter
           href: search-filters-facets.md
-        - name: OData-Ausdruckssyntax
+        - name: Filterausdruckssyntax
           href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
     - name: Verwaltung und Analyse
       items:
@@ -187,10 +211,41 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
     - name: REST
       href: /rest/api/searchservice
+      items:
+        - name: 2016-09-01-Preview
+          href: search-api-2016-09-01-preview.md
     - name: REST (Verwaltung)
       href: /rest/api/searchmanagement
-    - name: Dienst-REST (Vorschau)
-      href: search-api-2016-09-01-preview.md
+    - name: Cognitive Search (Vorschauversion)
+      items:
+        - name: 2017-11-11-Preview (REST)
+          href: search-api-2017-11-11-preview.md
+          items:
+            - name: Erstellen von Fertigkeiten (Vorschau)
+              href: ref-create-skillset.md
+            - name: Erstellen eines Indexers (Vorschau)
+              href: ref-create-indexer.md
+        - name: Vordefinierte Fertigkeiten
+          href: cognitive-search-predefined-skills.md
+          items:
+            - name: Schlüsselwortextraktion
+              href: cognitive-search-skill-keyphrases.md
+            - name: Spracherkennung
+              href: cognitive-search-skill-language-detection.md
+            - name: Erkennung benannter Entitäten
+              href: cognitive-search-skill-named-entity-recognition.md
+            - name: Textzusammenführung
+              href: cognitive-search-skill-textmerger.md
+            - name: Textaufteilung
+              href: cognitive-search-skill-textsplit.md
+            - name: Stimmung
+              href: cognitive-search-skill-sentiment.md
+            - name: Bildanalyse
+              href: cognitive-search-skill-image-analysis.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: Shaper
+              href: cognitive-search-skill-shaper.md
 - name: angeben
   items:
     - name: FAQ – Häufig gestellte Fragen
@@ -199,6 +254,8 @@
       href: 'https://azure.microsoft.com/pricing/details/search/'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=search'
+    - name: Cognitive Search-Dokumentation
+      href: cognitive-search-resources-documentation.md
     - name: Trainingsmaterialien und Tutorials
       items:
         - name: Videos und Tutorials

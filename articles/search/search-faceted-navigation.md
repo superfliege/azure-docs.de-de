@@ -8,11 +8,11 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: 1bd814250a243d03f1eedc4d0ecb2719975b9c6f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e00e875619e4ed6800f5739362ff0c52971f6f16
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
@@ -61,7 +61,7 @@ Im Anwendungscode werden Facettenabfrageparameter für die Rückgabe der Facette
 
 ### <a name="query-basics"></a>Grundlagen der Abfrage
 
-In Azure Search wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](http://msdn.microsoft.com/library/azure/dn798927.aspx).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
+In Azure Search wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
 
 Genauigkeit (d.h. die Möglichkeit zum Herausfiltern irrelevanter Treffer), wird durch mindestens einen der folgenden Ausdrücke erzielt:
 
@@ -228,7 +228,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx) .
+Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) .
 
 Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?*. Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?*. Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq ‘Red’`.
 
@@ -329,7 +329,7 @@ Beschriftungen werden üblicherweise im HTML-Code oder im Formular definiert (`i
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtern nach einem Bereich
-Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 Azure Search vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt Azure Search die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
 
@@ -362,7 +362,7 @@ In Azure Search stehen zwei räumliche Funktionen zur Verfügung: **geo.distance
 * Die **geo.distance**-Funktion gibt die Entfernung in Kilometern zwischen zwei Punkten zurück. Ein Punkt ist ein Feld, der andere ist eine Konstante, die als Teil des Filters übergeben wird. 
 * Die **geo.intersects**-Funktion gibt „true“ zurück, wenn sich ein bestimmter Punkt innerhalb eines bestimmten Polygons befindet. Der Punkt ist ein Feld, und das Polygon ist als Konstantenliste mit Koordinaten angegeben, die als Teil des Filters übergeben wird.
 
-Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](http://msdn.microsoft.com/library/azure/dn798921.aspx).
+Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search).
 
 <a name="tryitout"></a>
 
@@ -431,9 +431,9 @@ Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie 
 [Designing for Faceted Search]: http://www.uie.com/articles/faceted_search/
 [Design Patterns: Faceted Navigation]: http://alistapart.com/article/design-patterns-faceted-navigation
 [Create your first application]: search-create-first-solution.md
-[OData expression syntax (Azure Search)]: http://msdn.microsoft.com/library/azure/dn798921.aspx
+[OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
 [http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
-[Search Documents (Azure Search API)]: http://msdn.microsoft.com/library/azure/dn798927.aspx
+[Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

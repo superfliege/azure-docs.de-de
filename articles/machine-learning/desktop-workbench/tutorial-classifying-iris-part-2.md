@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: b0d268937300abd105349d340f7bf1dae398fa8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24ac4d699a511cc99936cb2cd4b245de01984163
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Tutorial 2: Klassifizieren von Iris – Erstellen eines Modells
 Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte Lösung für Data Science und erweiterte Analysen, mit der professionelle Datenanalysten Daten aufbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -280,7 +280,7 @@ Sie können optional mit der Ausführung von Skripts für einen lokalen Docker-C
    >[!IMPORTANT]
    >Sie müssen dieses CLI-Fenster verwenden, um die nächsten Schritte ausführen zu können.
 
-1. Melden Sie sich im CLI-Fenster an Azure an. [Hier finden Sie weitere Informationen zu „az login“](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. Melden Sie sich im CLI-Fenster an Azure an. [Hier finden Sie weitere Informationen zu „az login“](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    Unter Umständen sind Sie bereits angemeldet. In diesem Fall können Sie diesen Schritt überspringen.
 

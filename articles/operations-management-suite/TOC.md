@@ -18,7 +18,7 @@
 ## Automatisieren
 ### [Azure Automation – Übersicht](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
-## Sicherung
+## Backup
 ### [Sicherung – Übersicht](../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [Site Recovery – Übersicht](../site-recovery/site-recovery-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -32,8 +32,8 @@
 ### [Web-Baselinebewertung](oms-security-web-baseline-assessment.md)
 
 ## Verwenden von Lösungen
-### [Verwaltungslösungen](operations-management-suite-solutions.md)
-### [Ziellösungen](operations-management-suite-solution-targeting.md)
+### [Verwaltungslösungen](../monitoring/monitoring-solutions.md)
+### [Ziellösungen](../monitoring/monitoring-solution-targeting.md)
 ### Insight + Analytics
 #### [AD-Bewertung](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD-Replikationsstatus](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
@@ -46,10 +46,10 @@
 #### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric-Analysen](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### Dienstzuordnung
-##### [Exemplarische Vorgehensweise](operations-management-suite-walkthrough-servicemap.md)
-##### [Verwenden Sie](operations-management-suite-service-map.md)
-##### [Konfigurieren](operations-management-suite-service-map-configure.md)
-##### [Operations Manager-Integration](operations-management-suite-service-map-scom.md)
+##### [Exemplarische Vorgehensweise](../monitoring/monitoring-walkthrough-servicemap.md)
+##### [Verwenden Sie](../monitoring/monitoring-service-map.md)
+##### [Konfigurieren](../monitoring/monitoring-service-map-configure.md)
+##### [Operations Manager-Integration](../monitoring/monitoring-service-map-scom.md)
 #### [SQL-Bewertung](../log-analytics/log-analytics-sql-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Surface Hub](../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Upgradeanalysen](https://technet.microsoft.com/itpro/windows/deploy/manage-windows-upgrades-with-upgrade-analytics?f=255&MSPPError=-2147217396)
@@ -62,21 +62,21 @@
 #### [Antischadsoftwarebewertung](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 ## Erstellen von Lösungen
-### [Entwerfen und Erstellen](operations-management-suite-solutions-creating.md)
-### [Projektmappendatei](operations-management-suite-solutions-solution-file.md)
-### [Artikel zu Automation-Ressourcen](operations-management-suite-solutions-resources-automation.md)
-### [Protokollsuchen und -warnungen](operations-management-suite-solutions-resources-searches-alerts.md)
-### [Ansichten](operations-management-suite-solutions-resources-views.md)
-### [bewährten Methoden](operations-management-suite-solutions-best-practices.md)
+### [Entwerfen und Erstellen](../monitoring/monitoring-solutions-creating.md)
+### [Projektmappendatei](../monitoring/monitoring-solutions-solution-file.md)
+### [Artikel zu Automation-Ressourcen](../monitoring/monitoring-solutions-resources-automation.md)
+### [Protokollsuchen und -warnungen](../monitoring/monitoring-solutions-resources-searches-alerts.md)
+### [Ansichten](../monitoring/monitoring-solutions-resources-views.md)
+### [bewährten Methoden](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Verwaltungsszenarien
 ### [Sammeln von Analysedaten aus Runbook](operations-management-suite-runbook-datacollect.md)
 
 ## [Integrieren in OMS](operations-management-suite-integration.md)
 
-# Referenz
+# Verweis
 ## [SDK](operations-management-suite-sdk.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

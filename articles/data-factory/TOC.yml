@@ -316,22 +316,24 @@
           href: compute-linked-services.md
     - name: Ablaufsteuerung
       items:
-        - name: Aktivität „Falls-Bedingung“
-          href: control-flow-if-condition-activity.md
-        - name: Aktivität „Bis“
-          href: control-flow-until-activity.md
-        - name: Webaktivität
-          href: control-flow-web-activity.md
-        - name: Lookup-Aktivität
-          href: control-flow-lookup-activity.md
-        - name: Aktivität „Metadaten abrufen“
-          href: control-flow-get-metadata-activity.md
         - name: Aktivität „Pipeline ausführen“
           href: control-flow-execute-pipeline-activity.md
+        - name: Filteraktivität
+          href: control-flow-filter-activity.md
         - name: Aktivität „For Each“
           href: control-flow-for-each-activity.md
+        - name: Aktivität „Metadaten abrufen“
+          href: control-flow-get-metadata-activity.md
+        - name: Aktivität „Falls-Bedingung“
+          href: control-flow-if-condition-activity.md
+        - name: Lookup-Aktivität
+          href: control-flow-lookup-activity.md
+        - name: Aktivität „Bis“
+          href: control-flow-until-activity.md
         - name: Aktivität „Warten“
           href: control-flow-wait-activity.md
+        - name: Webaktivität
+          href: control-flow-web-activity.md
         - name: Ausdruckssprache
           href: control-flow-expression-language-functions.md
         - name: Systemvariablen

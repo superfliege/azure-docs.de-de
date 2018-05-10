@@ -1,9 +1,9 @@
 ---
-title: "Erstellen eines Anwendungsgateways mit interner Umleitung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation"
+title: Erstellen eines Anwendungsgateways mit interner Umleitung – Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der Azure CLI ein Anwendungsgateway erstellen, das internen Webdatenverkehr an den entsprechenden Pool umleitet.
 services: application-gateway
-author: davidmu1
-manager: timlt
+author: vhorne
+manager: jpconnock
 editor: tysonn
 ms.service: application-gateway
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/24/2018
-ms.author: davidmu
-ms.openlocfilehash: 4228a3f534a5dc58ab2efa3c5cf0edd4caee43c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: victorh
+ms.openlocfilehash: 5bd9e8f2521120dd1d12eb9630663493b89f5844
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit interner Umleitung über die Azure-Befehlszeilenschnittstelle
 
@@ -190,7 +190,7 @@ az vmss extension set \
   --name CustomScript \
   --resource-group myResourceGroupAG \
   --vmss-name myvmss \
-  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/vhorne/samplescripts/master/install_nginx.sh"],
   "commandToExecute": "./install_nginx.sh" }'
 ```
 
@@ -208,7 +208,7 @@ az network public-ip show \
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Verwenden Sie z.B. http://www.contoso.com.
+Geben Sie Ihren Domänennamen in die Adressleiste Ihres Browsers ein. Z.B. http://www.contoso.com.
 
 ![Testen der Contoso-Website im Anwendungsgateway](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 

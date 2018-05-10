@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 39bede2ffa0f71ba0055416c77a763b79cc70908
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 49ec500db23eeea29baaeeafe9ad39e9b1a5b25a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Python und Azure Cosmos DB
 
@@ -148,7 +148,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     Zeile 10 sollte nun in etwa wie folgt aussehen: 
 
-    `'contactPoint': 'cosmos-db-quickstarts.documents.azure.com:10350'`
+    `'contactPoint': 'cosmos-db-quickstarts.cassandra.cosmosdb.azure.com:10350'`
 
 4. Kopieren Sie den Wert für den Benutzernamen aus dem Portal, und überschreiben Sie damit `<FILLME>` in Zeile 6.
 

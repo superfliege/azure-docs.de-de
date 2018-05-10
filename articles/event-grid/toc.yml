@@ -9,24 +9,36 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Routing von Blob Storage-Ereignissen – Azure CLI
+    - name: 'Blob Storage-Ereignisse: Azure CLI'
       href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Routing von Blob Storage-Ereignissen – Azure PowerShell
+    - name: 'Blob Storage-Ereignisse: PowerShell'
       href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure CLI
+    - name: 'Benutzerdefinierte Ereignisse: Azure CLI'
       href: custom-event-quickstart.md
-    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure PowerShell
+    - name: 'Benutzerdefinierte Ereignisse: PowerShell'
       href: custom-event-quickstart-powershell.md
-    - name: Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal
+    - name: 'Benutzerdefinierte Ereignisse: Portal'
       href: custom-event-quickstart-portal.md
+    - name: Senden von Ereignissen an Queue Storage
+      href: custom-event-to-queue-storage.md
 - name: Tutorials
   items:
-    - name: Überwachen von Änderungen an virtuellen Computern mit Logik-Apps
+    - name: Senden einer E-Mail bei VM-Änderungen
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
     - name: Ändern der Größe von hochgeladenen Bildern
       href: resize-images-on-storage-blob-upload-event.md
     - name: Auslösen des Automation-Runbooks
       href: ensure-tags-exists-on-new-virtual-machines.md
+    - name: Senden einer E-Mail nach Hinzufügen eines IoT Hub-Geräts
+      href: publish-iot-hub-events-to-logic-apps.md
+    - name: Reagieren auf Service Bus-Ereignisse
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Streamen von Daten aus Event Hubs
+      href: event-grid-event-hubs-integration.md
+    - name: Weiterleiten von Media Services-Ereignissen
+      href: ../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Weiterleiten an Hybridverbindung
+      href: custom-event-to-hybrid-connection.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -43,22 +55,22 @@
       href: security-authentication.md
     - name: Übermittlung und Wiederholung
       href: delivery-and-retry.md
+    - name: Ereignisquellen
+      href: event-sources.md
+    - name: Ereignishandler
+      href: event-handlers.md
 - name: Anleitungen
   items:
     - name: Posten eines Beitrags in einem benutzerdefinierten Thema
       href: post-to-custom-topic.md
-    - name: Empfangen von Ereignissen an einem HTTP-Endpunkt
+    - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md
-    - name: Streamen von Daten von Event Hubs zu Data Warehouse
-      href: event-grid-event-hubs-integration.md
-    - name: Senden von Benachrichtigungen zu IoT Hub-Ereignissen
-      href: publish-iot-hub-events-to-logic-apps.md
-    - name: Lauschen auf Service Bus-Ereignisse mit Functions und Logic Apps
-      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Überwachen der Ereignisbereitstellung
       href: monitor-event-delivery.md
     - name: Abfragen von Ereignisabonnements
       href: query-event-subscriptions.md
+    - name: Zuordnen benutzerdefinierter Felder zum Schema
+      href: input-mappings.md
     - name: Verwenden des CloudEvents-Schemas
       href: cloudevents-schema.md
 - name: Verweis
@@ -84,8 +96,12 @@
           href: event-schema-event-hubs.md
         - name: IoT Hub
           href: event-schema-iot-hub.md
+        - name: Media Services
+          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Ressourcengruppen
           href: event-schema-resource-groups.md
+        - name: Service Bus
+          href: event-schema-service-bus.md
 - name: angeben
   items:
     - name: Azure-Roadmap

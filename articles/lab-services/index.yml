@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zur Vorschauversion von Azure Lab Services (vormals DevTest Labs)
+metadata:
+  title: Dokumentation für Azure Lab Services – Tutorials, API-Referenz | Microsoft-Dokumentation
+  description: Hier erfahren Sie, wie Sie mit Azure Lab Services schnell ein Entwicklungs-, Test-, Hackathon- oder Classroom-Lab für Ihr Team bzw. Ihre Schüler/Studenten in der Cloud einrichten. Anhand von Tutorials, Beispielen und anderem Material von Azure wird gezeigt, wie Sie Labs erstellen, verwalten und schützen.
+  services: lab-services
+  author: spelluru
+  manager: 
+  ms.service: lab-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/06/2018
+  ms.author: spelluru
+  ms.openlocfilehash: f06102399cac6ef1b6b31155dff32999a923e173
+  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/07/2018
+abstract:
+  description: Hier erfahren Sie, wie Sie mit Azure Lab Services schnell ein Entwicklungs-, Test-, Hackathon- oder Classroom-Lab für Ihr Team bzw. Ihre Schüler/Studenten in der Cloud einrichten. Anhand von Tutorials, Beispielen und anderem Material von Azure wird gezeigt, wie Sie Labs erstellen, verwalten und schützen.
+sections:
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Informationen zum Erstellen und Verwenden eines <b>Classroom-Labs</b> mithilfe von Azure Lab Services.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-setup-lab-account">Einrichten eines Lab-Kontos</a>
+    - html: <a href="/azure/lab-services/tutorial-setup-classroom-lab">Einrichten eines Classroom-Labs</a>
+    - html: <a href="/azure/lab-services/tutorial-connect-virtual-machine-classroom-lab">Zugreifen auf ein Classroom-Lab</a>
+  - type: paragraph
+    text: Hier erfahren Sie, wie Sie mithilfe von Azure Lab Services ein <b>benutzerdefiniertes Lab</b> erstellen und verwenden.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">Einrichten eines benutzerdefinierten Labs</a>
+    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">Zugreifen auf ein benutzerdefiniertes Lab</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: Verwenden Sie die folgenden Beispiele zum Arbeiten mit Lab Services.
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">Resource Manager-Vorlagen</a>
+    - html: <a href="/azure/lab-services/samples-cli">Azure-CLI</a>
+    - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Befehlszeile
+      html: <p><a href="/cli/azure/lab">Azure-CLI</a></p><p><a href="/powershell/module/azurerm.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/dtl">REST-API</a></p>

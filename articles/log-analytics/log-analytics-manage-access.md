@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: af648e97f5913ef7413f72db8e19aa5ea69d6d09
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25a68fb535300e80efdf2adf9f3a8afe1b304667
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
@@ -34,7 +34,7 @@ Sie benötigen Folgendes, um einen Arbeitsbereich zu erstellen:
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Bestimmen der benötigten Anzahl von Arbeitsbereichen
 Ein Arbeitsbereich ist eine Azure-Ressource. Es handelt sich hierbei um einen Container, in dem Daten gesammelt, aggregiert, analysiert und im Azure-Portal angezeigt werden.
 
-Sie können mehrere Arbeitsbereiche pro Azure-Abonnement verwenden und über den Zugriff auf mehr als einen Arbeitsbereich verfügen. Bislang konnten nur Daten innerhalb des aktuellen Arbeitsbereichs analysiert werden, was bei Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche hinderlich war. Nun können Sie [Abfragen für mehrere Arbeitsbereiche ausführen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search) und sich so einen systemweiten Überblick über Ihre Daten verschaffen. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
+Sie können mehrere Arbeitsbereiche pro Azure-Abonnement verwenden und über den Zugriff auf mehr als einen Arbeitsbereich verfügen. Bislang konnten nur Daten innerhalb des aktuellen Arbeitsbereichs analysiert werden, was bei Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche hinderlich war. Nun können Sie [Abfragen für mehrere Arbeitsbereiche ausführen](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) und sich so einen systemweiten Überblick über Ihre Daten verschaffen. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
 
 Ein Arbeitsbereich bietet jetzt Folgendes:
 

@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: cost-management
+author: bandersmsft
+ms.service: cost-management
+ms.topic: include
+ms.date: 04/26/2018
+ms.author: banders
+manager: dougeby
+ms.custom: include file
+ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="view-cost-data"></a>Anzeigen von Kostendaten
 
 Mit der Azure-Kostenverwaltung von Cloudyn haben Sie Zugriff auf Ihre gesamten Cloudressourcendaten. Im Dashboard werden sowohl Standardberichte als auch benutzerdefinierte Berichte in einer Registerkartenansicht angezeigt. Unten sind Beispiele für ein beliebtes Dashboard und einen Bericht angegeben, in denen die Kostendaten direkt angezeigt werden.

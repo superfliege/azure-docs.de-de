@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: bwren
-ms.openlocfilehash: 1e22aab85976fcab8ec270bdea1b8988b4d3bfe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="management-solutions-in-azure"></a>Verwaltungslösungen in Azure
 Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
 
 Verwaltungslösungen sammeln in der Regel Informationen in Log Analytics und bieten Protokollsuchen und Ansichten für die Analyse der gesammelten Daten. Die Lösungen können auch andere Dienste wie etwa Azure Automation nutzen, um Aktionen im Zusammenhang mit der Anwendung oder dem Dienst auszuführen.
 
-Verwaltungslösungen können Ihrem Azure-Abonnement für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen. Zusätzlich zu den [von Microsoft bereitgestellten Lösungen](../operations-management-suite/operations-management-suite-solutions-creating.md) können Partner und Kunden Verwaltungslösungen erstellen und in ihrer eigenen Umgebung verwenden oder über die Community für Kunden verfügbar machen.
+Verwaltungslösungen können Ihrem Azure-Abonnement für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen. Zusätzlich zu den [von Microsoft bereitgestellten Lösungen](../monitoring/monitoring-solutions-creating.md) können Partner und Kunden Verwaltungslösungen erstellen und in ihrer eigenen Umgebung verwenden oder über die Community für Kunden verfügbar machen.
 
 ## <a name="using-management-solutions"></a>Verwenden von Verwaltungslösungen
 Auf der **Übersichtsseite** jedes Log Analytics-Arbeitsbereichs wird für jede im Workspace installierte Lösung jeweils eine Kachel angezeigt. Klicken Sie auf die Kachel für die Lösung, um die dazugehörige Ansicht mit einer ausführlicheren Analyse der gesammelten Daten anzuzeigen.

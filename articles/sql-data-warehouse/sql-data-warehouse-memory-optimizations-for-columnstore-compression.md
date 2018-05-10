@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 3bbcf7b637a0f32751dc15664a1b7479e65503eb
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 909b53e65fd893575a944d714f99698c7e45387d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximieren der Zeilengruppenqualität für Columnstore
 
@@ -34,7 +34,7 @@ Während des Massenladens oder einer Neuerstellung des Columnstore-Indizes ist m
 
 Reicht der Arbeitsspeicher nicht aus, um mindestens 10.000 Reihen in jede Zeilengruppe zu komprimieren, erzeugt SQL Data Warehouse einen Fehler.
 
-Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](https://msdn.microsoft.com/en-us/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a clustered columnstore index (Massenladen in einen gruppierten Columnstore-Index)](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Überwachen der Zeilengruppenqualität
 

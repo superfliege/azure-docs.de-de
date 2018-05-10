@@ -1,4 +1,4 @@
-- name: Azure-Containerregistrierung
+- name: Azure Container Registry
   href: ./index.yml
 - name: Übersicht
   items:
@@ -17,7 +17,7 @@
   items:
     - name: Azure Container Instances
       href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Container Service (AKS)
+    - name: Azure Kubernetes Service (AKS)
       href: ../aks/tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
@@ -29,7 +29,7 @@
           href: container-registry-tutorial-build-task.md
         - name: '3: Basisimage zum Aktualisieren von Builds'
           href: container-registry-tutorial-base-image-update.md
-    - name: Georeplikation (Vorschau)
+    - name: Georeplikation
       items:
         - name: '1: Vorbereiten der Containerregistrierung'
           href: container-registry-tutorial-prepare-registry.md
@@ -43,7 +43,9 @@
       href: container-registry-skus.md
     - name: Imagespeicher
       href: container-registry-storage.md
-    - name: Georeplikation (Vorschau)
+    - name: Erstellen und Patchen mit ACR Build
+      href: container-registry-build-overview.md
+    - name: Georeplikation
       href: container-registry-geo-replication.md
     - name: Registrierung – bewährte Methoden
       href: container-registry-best-practices.md

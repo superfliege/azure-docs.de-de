@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: migreene
-ms.openlocfilehash: e23d0a70cdfcc1b37f02d86dd6418aa28c5bbf2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b6bfe48df685952d2b465d9549e2f1c086c1c490
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 04/06/2018
 
 Der Azure VM-Agent und die dazugehörigen Erweiterungen sind Teil der Microsoft Azure-Infrastrukturdienste. VM-Erweiterungen sind Softwarekomponenten, die die VM-Funktionalität erweitern und verschiedene Verwaltungsvorgänge für virtuelle Computer vereinfachen.
 
-Der primäre Anwendungsfall für die Azure DSC-Erweiterung (Desired State Configuration) besteht im Bootstrap eines virtuellen Computers zum [Azure Automation DSC-Dienst](../../automation/automation-dsc-overview.md). Ein Bootstrap eines virtuellen Computers bietet [Vorteile](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#pull-service) wie die fortlaufende Verwaltung der VM-Konfiguration und die Integration mit anderen Betriebstools wie Azure Monitoring.
+Der primäre Anwendungsfall für die Azure DSC-Erweiterung (Desired State Configuration) besteht im Bootstrap eines virtuellen Computers zum [Azure Automation DSC-Dienst](../../automation/automation-dsc-overview.md). Ein Bootstrap eines virtuellen Computers bietet [Vorteile](https://docs.microsoft.com/powershell/dsc/metaconfig#pull-service) wie die fortlaufende Verwaltung der VM-Konfiguration und die Integration mit anderen Betriebstools wie Azure Monitoring.
 
 Sie können die DSC-Erweiterung unabhängig vom Automation DSC-Dienst verwenden. Dies ist jedoch eine einmalige Aktion während der Bereitstellung. Eine fortlaufende Berichterstellung oder Verwaltung der Konfiguration erfolgt ausschließlich lokal im virtuellen Computer.
 
@@ -49,7 +49,7 @@ Für dieses Handbuch müssen Sie mit folgenden Konzepten vertraut sein:
 
 ## <a name="architecture"></a>Architecture
 
-Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung nimmt ein Konfigurationsdokument und einen Satz von Parametern entgegen. Wird keine Datei angegeben, wird ein [Standardkonfigurationsskript](#default-configuration-script) in die Erweiterung eingebettet. Dieses wird ausschließlich zum Festlegen von Metadaten im [lokalen Konfigurations-Manager](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig) verwendet.
+Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung nimmt ein Konfigurationsdokument und einen Satz von Parametern entgegen. Wird keine Datei angegeben, wird ein [Standardkonfigurationsskript](#default-configuration-script) in die Erweiterung eingebettet. Dieses wird ausschließlich zum Festlegen von Metadaten im [lokalen Konfigurations-Manager](https://docs.microsoft.com/powershell/dsc/metaconfig) verwendet.
 
 Wenn die Erweiterung das erste Mal aufgerufen wird, installiert sie mit der folgenden Logik eine Version von Windows Management Framework (WMF):
 
@@ -61,7 +61,7 @@ Für die Installation von WMF ist ein Neustart erforderlich. Nach dem Neustart l
 
 ### <a name="default-configuration-script"></a>Standardkonfigurationsskript
 
-Die Azure-DSC-Erweiterung enthält ein Standardkonfigurationsskript, das für das Onboarding eines virtuellen Computers in den Azure Automation DSC-Dienst vorgesehen ist. Die Skriptparameter sind an den konfigurierbaren Eigenschaften des [lokalen Konfigurations-Managers](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig) ausgerichtet. Informationen zu Skriptparametern erhalten Sie in Abschnitt [Standardkonfigurationsskript](extensions-dsc-template.md#default-configuration-script) des Artikels [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](extensions-dsc-template.md). Das vollständige Skript finden Sie in der [Azure Schnellstartvorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Die Azure-DSC-Erweiterung enthält ein Standardkonfigurationsskript, das für das Onboarding eines virtuellen Computers in den Azure Automation DSC-Dienst vorgesehen ist. Die Skriptparameter sind an den konfigurierbaren Eigenschaften des [lokalen Konfigurations-Managers](https://docs.microsoft.com/powershell/dsc/metaconfig) ausgerichtet. Informationen zu Skriptparametern erhalten Sie in Abschnitt [Standardkonfigurationsskript](extensions-dsc-template.md#default-configuration-script) des Artikels [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](extensions-dsc-template.md). Das vollständige Skript finden Sie in der [Azure Schnellstartvorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-Erweiterung in Resource Manager-Vorlagen
 

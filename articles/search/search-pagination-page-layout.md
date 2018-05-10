@@ -9,19 +9,19 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 3ef946c6c0ab9c111932b3145fd46ae6ef2684cd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Anordnen von Suchergebnissen auf Seiten in Azure Search
 Dieser Artikel enthält Anleitungen dazu, wie die REST-API für den Azure-Suchdienst zum Implementieren von Standardelementen einer Seite mit Suchergebnissen, z. B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation, verwendet wird.
 
-In jedem der unten genannten Fälle werden die seitenbezogenen Optionen, die Daten oder Informationen zu der Seite mit den Suchergebnissen beitragen, über die [Dokument durchsuchen](http://msdn.microsoft.com/library/azure/dn798927.aspx) -Anforderungen angegeben, die an den Azure-Suchdienst gesendet werden. Anforderungen enthalten einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist.
+In jedem der unten genannten Fälle werden die seitenbezogenen Optionen, die Daten oder Informationen zu der Seite mit den Suchergebnissen beitragen, über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) -Anforderungen angegeben, die an den Azure-Suchdienst gesendet werden. Anforderungen enthalten einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist.
 
 > [!NOTE]
-> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Einzelheiten zur Anforderungssyntax finden Sie in der Dokumentation zur [REST-API für den Azure Search-Dienst](http://msdn.microsoft.com/library/azure/dn798935.aspx).
+> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Einzelheiten zur Anforderungssyntax finden Sie in der Dokumentation zur [REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice).
 > 
 > 
 
@@ -59,7 +59,7 @@ So wird eine Teilmenge von Feldern für ein gekacheltes Layout zurückzugeben:
 
 Bild- und Mediendateien können nicht direkt durchsucht werden und sollten auf einer anderen Speicherplattform gespeichert werden, z.B. Azure Blob Storage, um die Kosten zu senken. Definieren Sie im Index und in den Dokumenten ein Feld, das die URL-Adresse des externen Inhalts enthält. Sie können das Feld dann als Bildverweis verwenden. Die URL zum Bild sollte im Dokument enthalten sein.
 
-Zum Abrufen der Seite mit einer Produktbeschreibung für ein **onClick** -Ereignis verwenden Sie [Dokument suchen](http://msdn.microsoft.com/library/azure/dn798929.aspx) , um den Schlüssel des abzurufenden Dokuments zu übergeben. Der Schlüssel hat den Datentyp `Edm.String`. In diesem Beispiel lautet er *246810*. 
+Zum Abrufen der Seite mit einer Produktbeschreibung für ein **onClick** -Ereignis verwenden Sie [Dokument suchen](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) , um den Schlüssel des abzurufenden Dokuments zu übergeben. Der Schlüssel hat den Datentyp `Edm.String`. In diesem Beispiel lautet er *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
@@ -81,7 +81,7 @@ Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe
  ![][5]
 
 > [!NOTE]
-> Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen eines Bewertungsprofil](http://msdn.microsoft.com/library/azure/dn798928.aspx) . 
+> Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen eines Bewertungsprofil](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) . 
 > 
 > 
 
@@ -95,12 +95,12 @@ Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird m
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 
-Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (Azure Search-API)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
+Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (Azure Search-API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
 ## <a name="see-also"></a>Siehe auch
-* [REST-API für Azure Suchdienst](http://msdn.microsoft.com/library/azure/dn798935.aspx)
-* [Indexvorgänge](http://msdn.microsoft.com/library/azure/dn798918.aspx)
-* [Dokumentvorgänge](http://msdn.microsoft.com/library/azure/dn800962.aspx)
+* [REST-API für Azure Suchdienst](https://docs.microsoft.com/rest/api/searchservice)
+* [Indexvorgänge](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
+* [Dokumentvorgänge](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
 * [Videos und Lernprogramme zu Azure Search](search-video-demo-tutorial-list.md)
 * [Facettennavigation in Azure Search](search-faceted-navigation.md)
 

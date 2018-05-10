@@ -1,13 +1,13 @@
 ---
-title: "Überprüfen des VPN-Durchsatzes zu einem Microsoft Azure Virtual Network | Microsoft-Dokumentation"
-description: "Dieses Dokument ist dafür vorgesehen, einen Benutzer beim Überprüfen des Netzwerkdurchsatzes von seinen lokalen Ressourcen zu einem virtuellen Azure-Computer zu helfen."
+title: Überprüfen des VPN-Durchsatzes zu einem Microsoft Azure Virtual Network | Microsoft-Dokumentation
+description: Dieses Dokument ist dafür vorgesehen, einen Benutzer beim Überprüfen des Netzwerkdurchsatzes von seinen lokalen Ressourcen zu einem virtuellen Azure-Computer zu helfen.
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: jasmc
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: cad7719eb077d7aca9c1db5741a5fe1e0ca910a2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -108,7 +108,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
 
     Der folgende Bildschirm zeigt die Ausgabe dieses Beispiels:
 
-    ![Ausgabe](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+    ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 5. (OPTIONAL) Führen Sie diesen Befehl aus, um die Testergebnisse beizubehalten:
 
@@ -121,7 +121,7 @@ Laden Sie [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip) her
 ## <a name="address-slow-file-copy-issues"></a>Behandeln von Problemen durch langsames Kopieren von Dateien
 Bei der Verwendung von Windows-Explorer oder beim Drag & Drop in einer RDP-Sitzung kann es vorkommen, dass Dateien langsam kopiert werden. Dieses Problem ergibt sich normalerweise aufgrund eines oder der beiden folgenden Faktoren:
 
-- Anwendungen zum Kopieren von Dateien, z. B. Windows-Explorer und RDP, verwenden beim Kopieren von Dateien nicht mehrere Threads. Verwenden Sie eine Anwendung mit mehreren Threads zum Kopieren von Dateien, z. B. [Richcopy](https://technet.microsoft.com/en-us/magazine/2009.04.utilityspotlight.aspx), damit Dateien mithilfe von 16 oder 32 Threads kopiert werden. Um die Threadanzahl für das Kopieren von Dateien in Richcopy zu ändern, klicken Sie auf **Action** > **Copy options** > **File copy**.<br><br>
+- Anwendungen zum Kopieren von Dateien, z. B. Windows-Explorer und RDP, verwenden beim Kopieren von Dateien nicht mehrere Threads. Verwenden Sie eine Anwendung mit mehreren Threads zum Kopieren von Dateien, z. B. [Richcopy](https://technet.microsoft.com/magazine/2009.04.utilityspotlight.aspx), damit Dateien mithilfe von 16 oder 32 Threads kopiert werden. Um die Threadanzahl für das Kopieren von Dateien in Richcopy zu ändern, klicken Sie auf **Action** > **Copy options** > **File copy**.<br><br>
 ![Probleme durch langsames Kopieren von Dateien](./media/vpn-gateway-validate-throughput-to-vnet/Richcopy.png)<br>
 - Unzureichende Lese-/Schreibgeschwindigkeiten des Datenträgers des virtuellen Computers. Weitere Informationen finden Sie unter [Problembehandlung für Azure Storage](../storage/common/storage-e2e-troubleshooting.md).
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ba7589b0fcbb987ef4e7225ea5a4cceda9ad1179
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="traffic-analytics"></a>Datenverkehrsanalyse
 
@@ -42,7 +42,7 @@ Virtuelle Azure-Netzwerke bieten NSG-Datenflussprotokolle mit Informationen zum 
 - **NSG-Flussprotokolle (Netzwerksicherheitsgruppe):** Ermöglichen das Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe. Die NSG-Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr. Weitere Informationen zu NSG-Flussprotokollen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 - **Log Analytics:** ein Azure-Dienst, der Überwachungsdaten sammelt und in einem zentralen Repository speichert. Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die Azure-API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden. Überwachungsanwendungen, z.B. Netzwerkleistungsmonitor und die Datenverkehrsanalyse, werden auf der Grundlage von Log Analytics erstellt. Weitere Informationen finden Sie unter [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Log Analytics-Arbeitsbereich:** Eine Instanz von Log Analytics, in der Daten zu einem Azure-Konto gespeichert werden. Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Network Watcher:** ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md#network-watcher).
+- **Network Watcher:** ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Sie können die NSG-Flussprotokolle mit Network Watcher ein- und ausschalten. Weitere Informationen finden Sie unter [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Funktionsweise der Datenverkehrsanalyse 
 

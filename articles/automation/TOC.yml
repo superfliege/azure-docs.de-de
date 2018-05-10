@@ -179,6 +179,8 @@
           href: automation-invoke-runbook-from-omsla-alert.md
         - name: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
           href: automation-deploy-template-runbook.md
+        - name: Integration von Azure Automation mit Event Grid und Microsoft Teams
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
     - name: Überwachen
       items:
         - name: Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics

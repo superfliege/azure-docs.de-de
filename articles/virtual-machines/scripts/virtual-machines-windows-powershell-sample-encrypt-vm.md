@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Verschlüsseln einer Windows-VM | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Verschlüsseln einer Windows-VM"
+title: Azure PowerShell-Skriptbeispiel – Verschlüsseln einer Windows-VM | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Verschlüsseln einer Windows-VM
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: iainfou
 ms.openlocfilehash: f405cdaf61d6aaafa8568a9d7f21614071285c17
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="encrypt-a-windows-virtual-machine-with-azure-powershell"></a>Verschlüsseln eines virtuellen Windows-Computers mit Azure PowerShell
 
@@ -45,7 +45,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. Jedes Element in der Tabelle ist mit der befehlsspezifischen Dokumentation verknüpft.
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) | Erstellt Azure Key Vault, um sichere Daten wie Verschlüsselungsschlüssel zu speichern. |

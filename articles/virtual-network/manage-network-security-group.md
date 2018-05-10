@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: f9de86f33fcedacad9ccde074a252111df62c992
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
 
@@ -79,7 +79,7 @@ Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Ne
 ### <a name="change-a-network-security-group"></a>Ändern einer Netzwerksicherheitsgruppe
 
 1. Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Netzwerksicherheitsgruppen** in den Suchergebnissen angezeigt werden, wählen Sie diese aus.
-2. Wählen Sie die Netzwerksicherheitsgruppe aus, die Sie ändern möchten. Die gängigsten Änderungen sind das [Hinzufügen](#create-a-security-rule) oder [Entfernen](#delete-a-security-rule) von Sicherheitsregeln und [Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz oder einer Netzwerkschnittstelle bzw. das Trennen davon](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
+2. Wählen Sie die Netzwerksicherheitsgruppe aus, die Sie ändern möchten. Die gängigsten Änderungen sind das [Hinzufügen](#create-a-security-rule) oder [Entfernen](#delete-a-security-rule) von Sicherheitsregeln und [Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz oder einer Netzwerkschnittstelle bzw. das Trennen davon](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
 **Befehle**
 

@@ -8,7 +8,7 @@
       href: iot-services-and-technologies.md
 - name: Lösungen
   items:
-    - name: Vorkonfigurierte IoT Suite-Lösungen
+    - name: IoT Solution Accelerators
       href: /azure/iot-suite
     - name: IoT Central
       href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -16,10 +16,10 @@
   items:
     - name: IoT Hub
       href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning-Dienst
+    - name: IoT Hub Device Provisioning Service
       href: /azure/iot-dps
-    - name: Location Based Services
-      href: /azure/location-based-services
+    - name: Azure Maps
+      href: /azure/azure-maps
     - name: Dienst-SDKs
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
     - name: Time Series Insights

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/7/2018
-ms.openlocfilehash: 0a24adb94930024f6eaaa5ac270ae7fc35520132
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 61f51063ea7542e11ec8488c1f526c0fff1e5e38
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>Schnellstart: Installation und erste Schritte mit Azure Machine Learning-Dienste
 Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Datenanalysten dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -64,7 +64,7 @@ Verwenden des Azure-Portals für die Bereitstellung der Azure Machine Learning-K
    Ressourcengruppe | _Ihre Ressourcengruppe_ | Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe für dieses Experimentieren-Konto zu erstellen. 
    Speicherort | _Die Region, die Ihren Benutzern am nächsten liegt_ | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist.
    Number of seats (Anzahl von Arbeitsplätzen) | 2 | Geben Sie die Anzahl von Arbeitsplätzen ein. Erfahren Sie, wie sich [Arbeitsplätze auf die Preise auswirken](https://azure.microsoft.com/pricing/details/machine-learning/).<br/><br/>Für diesen Schnellstart benötigen Sie nur zwei Arbeitsplätze. Arbeitsplätze können je nach Bedarf im Azure-Portal hinzugefügt oder entfernt werden.
-   Speicherkonto | _Eindeutiger Name_ | Wählen Sie **Neu erstellen**, und geben Sie einen Namen an, um ein [Azure-Speicherkonto](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal) zu erstellen. Der Name muss 3 bis 24 Zeichen lang sein und darf nur alphanumerische Zeichen enthalten. Wählen Sie alternativ hierzu die Option **Vorhandene verwenden** und dann Ihr vorhandenes Speicherkonto in der Dropdownliste. Das Speicherkonto ist erforderlich. Es wird zum Speichern von Projektartefakten und Ausführungsverlaufsdaten verwendet. 
+   Speicherkonto | _Eindeutiger Name_ | Wählen Sie **Neu erstellen**, und geben Sie einen Namen an, um ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal) zu erstellen. Der Name muss 3 bis 24 Zeichen lang sein und darf nur alphanumerische Zeichen enthalten. Wählen Sie alternativ hierzu die Option **Vorhandene verwenden** und dann Ihr vorhandenes Speicherkonto in der Dropdownliste. Das Speicherkonto ist erforderlich. Es wird zum Speichern von Projektartefakten und Ausführungsverlaufsdaten verwendet. 
    Workspace for Experimentation account (Arbeitsbereich für Experimentieren-Konto) | IrisGarden<br/>(in Tutorials verwendeter Name) | Geben Sie einen Namen für einen Arbeitsbereich für dieses Konto an. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
    Assign owner for the workspace (Besitzer für den Arbeitsbereich zuweisen) | _Ihr Konto_ | Wählen Sie Ihr eigenes Konto als Besitzer des Arbeitsbereichs aus.
    Erstellen eines Kontos für die Modellverwaltung | **check** |Erstellen Sie jetzt ein Modellverwaltungskonto, damit diese Ressource verfügbar ist, wenn Sie Ihre Modelle als Webdienste in Echtzeit bereitstellen und verwalten möchten. <br/><br/>Dieser Schritt ist zwar optional, es wird jedoch empfohlen, das Modellverwaltungskonto zur gleichen Zeit wie das Experimentieren-Konto zu erstellen.

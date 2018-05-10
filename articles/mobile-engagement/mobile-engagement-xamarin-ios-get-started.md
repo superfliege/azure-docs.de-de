@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 78ba376eb4552468810a1de72d53ceb59ec9d395
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 331ae3f77603ee5fc5153c52c5c103813d7029ed
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Erste Schritte mit Azure Mobile Engagement für Xamarin.iOS-Apps
 > [!IMPORTANT]
@@ -31,7 +31,7 @@ In diesem Thema erfahren Sie, wie Sie mithilfe von Azure Mobile Engagement die N
 In diesem Tutorial erstellen Sie eine leere Xamarin.iOS-App, die einfache Daten erfasst und Pushbenachrichtigungen mithilfe des Apple-Pushbenachrichtigungsdiensts (APNS) empfängt.
 
 > [!NOTE]
-> Der Azure Mobile Engagement-Dienst wird im März 2018 eingestellt und ist zurzeit nur für Bestandskunden verfügbar. Weitere Informationen finden Sie im Artikel zu [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> Der Azure Mobile Engagement-Dienst wird im März 2018 eingestellt und ist zurzeit nur für Bestandskunden verfügbar. Weitere Informationen finden Sie im Artikel zu [Mobile Engagement](https://azure.microsoft.com/services/mobile-engagement/).
 
 Für dieses Lernprogramm ist Folgendes erforderlich:
 

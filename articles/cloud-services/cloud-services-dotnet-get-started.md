@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: d092f5f6c59351530941d47565ee2c4905ddd2e7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -767,7 +767,6 @@ Hier finden Sie einige Beispielanwendungen für Clouddienste mit realitätsnähe
 
 * [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31). Ähnlich der Contoso Ads-Anwendung, jedoch mit mehr Funktionen und realitätsnäheren Programmierpraktiken.
 * [Azure-Clouddienst-Anwendung mit mehreren Ebenen mit Tabellen, Warteschlangen und Blobs](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36). Bietet eine Einführung in Azure-Speichertabellen sowie in Blobs und Warteschlangen. Dieser Artikel basiert auf einer älteren Version des Azure SDK für .NET. Es müssen einige Änderungen vorgenommen werden, damit die Anweisungen für die aktuelle Version funktionieren.
-* [Clouddienstgrundlagen in Microsoft Azure](http://code.msdn.microsoft.com/Cloud-Service-Fundamentals-4ca72649). Ein umfassendes Beispiel mit einer breiten Palette bewährter Methoden, erarbeitet von der Microsoft Patterns and Practices-Gruppe.
 
 Weitere Informationen zur Entwicklung für die Cloud finden Sie unter [Erstellen von Cloud-Apps mit Azure](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction).
 
@@ -777,5 +776,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 * [Azure Cloud Services Teil 1: Einführung](http://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
-* [Azure Storage (in englischer Sprache)](/documentation/services/storage/)
+* [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Wie wähle ich den richtigen Clouddienstanbieter?](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

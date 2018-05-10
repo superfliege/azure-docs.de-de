@@ -1,10 +1,10 @@
 ---
-title: "Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0 | Microsoft-Dokumentation"
-description: "Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle Befehle der CLI 2.0 für Vorgänge für Ressourceneintragssätze und Einträge."
+title: Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0 | Microsoft-Dokumentation
+description: Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle Befehle der CLI 2.0 für Vorgänge für Ressourceneintragssätze und Einträge.
 services: dns
 documentationcenter: na
 author: KumudD
-manager: carmonm
+manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
@@ -14,11 +14,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: kumud
-ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3b083f8c090fda861def7099479985419a698856
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI 2.0
 
@@ -55,7 +55,7 @@ Im folgenden Beispiel wird in der Ressourcengruppe *MyResourceGroup* in der Zone
 az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Eintrags "\@\" einschließlich der Anführungszeichen:
+Zum Erstellen eines Ressourceneintragssatzes auf oberster Ebene der Zone (in diesem Fall „contoso.com“) verwenden Sie den Namen des Eintrags "@", einschließlich der Anführungszeichen:
 
 ```azurecli
 az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
@@ -118,7 +118,7 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 
 ### <a name="create-an-mx-record"></a>Erstellen eines MX-Eintrags
 
-In diesem Beispiel verwenden wir den Namen des Datensatzes „\@\“ zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (in diesem Fall „contoso.com“).
+In diesem Beispiel verwenden wir den Namen des Datensatzes „@“ zum Erstellen des MX-Eintrags auf oberster Ebene der Zone (in diesem Fall „contoso.com“).
 
 ```azurecli
 az network dns record-set mx set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
@@ -140,7 +140,7 @@ az network dns record-set ptr set-record --resource-group myresourcegroup --zone
 
 ### <a name="create-an-srv-record"></a>Erstellen eines SRV-Eintrags
 
-Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Ressourceneintragssatz auf der obersten Ebene der Zone erstellen, muss "\@\" nicht in den Namen des Ressourceneintragssatzes eingeschlossen werden.
+Geben Sie beim Erstellen eines [SRV-Ressourceneintragssatzes](dns-zones-records.md#srv-records) den *\_Dienst* und das *\_Protokoll* im Namen des Ressourceneintragssatzes an. Wenn Sie einen SRV-Ressourceneintragssatz auf der obersten Ebene der Zone erstellen, muss "@" nicht in den Namen des Ressourceneintragssatzes eingeschlossen werden.
 
 ```azurecli
 az network dns record-set srv set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com

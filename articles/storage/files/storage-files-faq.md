@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: cb44f1d456ec12b7fd21e397b749117942560f05
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Häufig gestellte Fragen zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -232,7 +232,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="backup"></a>Sicherung
 * <a id="backup-share"></a>
 **Wie sichere ich meine Azure-Dateifreigabe?**  
-    Sie können regelmäßige [Freigabemomentaufnahmen](storage-how-to-use-files-snapshots.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. 
+    Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. 
 
 ## <a name="share-snapshots"></a>Freigabemomentaufnahmen
 ### <a name="share-snapshots-general"></a>Freigabemomentaufnahmen: allgemein
@@ -257,7 +257,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Ja. In Azure Files können maximal 200 Freigabemomentaufnahmen verwendet werden. Freigabemomentaufnahmen werden nicht zum Kontingent für die Dateifreigabe gezählt, sodass es für den von allen Freigabemomentaufnahmen genutzten Gesamtspeicherplatz keine Begrenzung pro Freigabe gibt. Die Beschränkungen für Speicherkonten gelten weiterhin. Wenn die Zahl von 200 Freigabemomentaufnahmen erreicht ist, müssen Sie ältere Momentaufnahmen löschen, um neue Freigabemomentaufnahmen erstellen zu können.
 * <a id="snapshot-cost"></a>
 **Wie viel kosten Freigabemomentaufnahmen?**  
-    Für Momentaufnahmen gelten die standardmäßigen Transaktions- und Speicherkosten. Momentaufnahmen sind in der Regel inkrementell. Bei der Basismomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Momentaufnahmen sind inkrementell und speichern lediglich die Differenz zur vorherigen Momentaufnahme. Dies bedeutet, dass die in der Rechnung angezeigten Deltaänderungen minimal ausfallen, wenn Ihre Workloadänderungen geringfügig sind. Preisinformationen finden Sie auf der [Preisgestaltungsseite](https://azure.microsoft.com/en-us/pricing/details/storage/files/) für Azure Files im Standard-Tarif. Heutzutage wird die von Freigabemomentaufnahmen genutzte Größe durch das Vergleichen der abgerechneten Kapazität mit der verwendeten Kapazität ermittelt. Wir arbeiten derzeit an Tools, um die Berichterstellung zu verbessern.
+    Für Momentaufnahmen gelten die standardmäßigen Transaktions- und Speicherkosten. Momentaufnahmen sind in der Regel inkrementell. Bei der Basismomentaufnahme handelt es sich um die Freigabe selbst. Alle nachfolgenden Momentaufnahmen sind inkrementell und speichern lediglich die Differenz zur vorherigen Momentaufnahme. Dies bedeutet, dass die in der Rechnung angezeigten Deltaänderungen minimal ausfallen, wenn Ihre Workloadänderungen geringfügig sind. Preisinformationen finden Sie auf der [Preisgestaltungsseite](https://azure.microsoft.com/pricing/details/storage/files/) für Azure Files im Standard-Tarif. Heutzutage wird die von Freigabemomentaufnahmen genutzte Größe durch das Vergleichen der abgerechneten Kapazität mit der verwendeten Kapazität ermittelt. Wir arbeiten derzeit an Tools, um die Berichterstellung zu verbessern.
 
 
 ### <a name="create-share-snapshots"></a>Erstellen von Freigabemomentaufnahmen

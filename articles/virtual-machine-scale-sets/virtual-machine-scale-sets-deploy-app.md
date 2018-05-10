@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: cadd0f4c07b7e8adec4956543f67313aa8442da3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
@@ -42,7 +42,7 @@ Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter un
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Installieren einer App auf einer Windows-VM mit PowerShell DSC
-[PowerShell DSC (Desired State Configuration)](https://msdn.microsoft.com/en-us/powershell/dsc/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
+[PowerShell DSC (Desired State Configuration)](https://msdn.microsoft.com/powershell/dsc/overview) ist eine Verwaltungsplattform zum Definieren der Konfiguration von Zielcomputern. DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der Host konfiguriert werden soll. Eine LCM-Engine (Local Configuration Manager) wird auf jedem Zielknoten ausgeführt, der angeforderte Aktionen auf der Grundlage gepushter Konfigurationen verarbeitet.
 
 Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungsgruppe mit PowerShell anpassen. Das folgende Beispiel:
 

@@ -2,10 +2,10 @@
 title: Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer | Microsoft-Dokumentation
 description: Bietet Schritte zum Behandeln von Problemen bei der Aktivierung virtueller Windows-Computer in Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: willchen
-editor: 
+editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 3926522c8359587798ea540d13b157832551f24d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -78,7 +78,7 @@ Dieser Schritt gilt nicht für Windows 2012 oder Windows 2008 R2. Es wird die Au
 
 ### <a name="step-2-verify-the-connectivity-between-the-vm-and-azure-kms-service"></a>Schritt 2: Überprüfen der Konnektivität zwischen dem virtuellen Computer und dem Azure KMS-Dienst
 
-1. Laden Sie das [Psping](http:/technet.microsoft.com/en-us/sysinternals/jj729731.aspx)-Tool herunter und extrahieren Sie es in einem lokalen Ordner auf dem virtuellen Computer, der nicht aktiviert wird. 
+1. Laden Sie das [Psping](http:/technet.microsoft.com/sysinternals/jj729731.aspx)-Tool herunter und extrahieren Sie es in einem lokalen Ordner auf dem virtuellen Computer, der nicht aktiviert wird. 
 
 2. Wechseln Sie zu „Start“, suchen Sie nach Windows PowerShell, klicken Sie mit der rechten Maustaste auf „Windows PowerShell“, und wählen Sie anschließend „Als Administrator ausführen“ aus.
 
@@ -126,7 +126,7 @@ Ja.
  
 ### <a name="what-happens-if-windows-activation-period-expires"></a>Was geschieht, wenn der Zeitraum für die Windows-Aktivierung abläuft? 
  
-Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](http://technet.microsoft.com/en-us/library/ff793403.aspx).   
+Wenn der Aktivierungszeitraum abgelaufen und Windows immer noch nicht aktiviert ist, zeigen Windows Server 2008 R2 und höheren Versionen von Windows zusätzliche Benachrichtigungen zur Aktivierung an. Der Desktophintergrund bleibt schwarz und Windows Update installiert nur Sicherheitsupdates und wichtige Updates, jedoch keine optionalen Updates. Weitere Informationen finden Sie im Abschnitt „Notifications“ (Benachrichtigungen) am Ende der Seite [Licensing Conditions (Linzenzierungsbedingungen)](http://technet.microsoft.com/library/ff793403.aspx).   
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

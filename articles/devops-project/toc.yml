@@ -1,0 +1,47 @@
+- name: Azure DevOps-Projektdokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Azure DevOps-Projekt?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: .NET
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-aspnetcore
+      maintainContext: true
+    - name: Node.js
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-nodejs
+      maintainContext: true
+    - name: Java
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-java
+      maintainContext: true
+    - name: Python
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-python
+      maintainContext: true
+    - name: PHP
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-php
+      maintainContext: true
+    - name: Ruby
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-ruby
+      maintainContext: true
+    - name: Go
+      href: /vsts/build-release/apps/cd/azure/azure-devops-project-go
+      maintainContext: true
+- name: Tutorials
+  items:
+    - name: '1: GitHub und DevOps-Projekt'
+      href: /vsts/build-release/actions/azure-devops-project-github
+      maintainContext: true
+    - name: '2: Bereitstellen auf VMs'
+      href: /vsts/build-release/actions/azure-devops-project-vms
+      maintainContext: true
+    - name: '3: Bereitstellen in Azure SQL-Datenbank'
+      href: /vsts/build-release/actions/azure-devops-project-sqldb
+      maintainContext: true
+    - name: '4: Bereitstellen in AKS'
+      href: /vsts/build-release/actions/azure-devops-project-aks
+      maintainContext: true
+    - name: '5: Bereitstellen in Azure Service Fabric'
+      href: /vsts/build-release/actions/azure-devops-project-servicefabric
+      maintainContext: true

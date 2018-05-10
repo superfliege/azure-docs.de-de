@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6753b52b02373d03a9ed5fec775c899a806aff3e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5cb2d1cea80488970ef82071275b6c38e7f97cee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="storsimple-solution-support"></a>Support für die StorSimple-Lösung
 
@@ -83,7 +83,7 @@ Wenn Ihr Supportvertrag abgelaufen ist, beachten Sie bitte, dass es abhängig da
 Zusätzlich zu Englisch wird während der Geschäftszeiten in den folgenden Sprachen Unterstützung in der jeweiligen Landessprache angeboten: Japanisch, Koreanisch, Taiwanesisch und Chinesisch (traditionell).
 
 ## <a name="support-scope"></a>Supportumfang 
-Support für Fragen in Bezug auf Abrechnung und Abonnementverwaltung ist in allen Supportstufen verfügbar. Um StorSimple-Support zu erhalten, muss der Kunde aktiv für StorSimple Standard- oder Premium-Supportpläne registriert sein. Das StorSimple-Supportteam ist verantwortlich für die Lösung aller Probleme, die die StorSimple-Lösung betreffen. Um Support für Probleme im Zusammenhang mit Azure zu erhalten, die nicht direkt mit StorSimple zusammenhängen, muss sich der Kunde für einen entsprechenden Azure-Supportplan registrieren. Ausführliche Informationen finden Sie [hier](https://azure.microsoft.com/en-us/support/plans/). Das Support-Team verweist Nicht-StorSimple-Supportfälle an das Azure-Team zur Nachverfolgung auf der Grundlage der Kundenansprüche für den Azure-Support. 
+Support für Fragen in Bezug auf Abrechnung und Abonnementverwaltung ist in allen Supportstufen verfügbar. Um StorSimple-Support zu erhalten, muss der Kunde aktiv für StorSimple Standard- oder Premium-Supportpläne registriert sein. Das StorSimple-Supportteam ist verantwortlich für die Lösung aller Probleme, die die StorSimple-Lösung betreffen. Um Support für Probleme im Zusammenhang mit Azure zu erhalten, die nicht direkt mit StorSimple zusammenhängen, muss sich der Kunde für einen entsprechenden Azure-Supportplan registrieren. Ausführliche Informationen finden Sie [hier](https://azure.microsoft.com/support/plans/). Das Support-Team verweist Nicht-StorSimple-Supportfälle an das Azure-Team zur Nachverfolgung auf der Grundlage der Kundenansprüche für den Azure-Support. 
 
 
 | **SCHWEREGRAD** |**SITUATION DES KUNDEN**                                                                                                                                | ERWARTETE REAKTION VON MICROSOFT <sup>2                                                                                       | ERWARTETE REAKTION DES KUNDEN                                                                                                                                                       |

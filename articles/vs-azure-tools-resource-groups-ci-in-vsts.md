@@ -5,7 +5,7 @@ services: visual-studio-online
 documentationcenter: na
 author: mlearned
 manager: erickson-doug
-editor: 
+editor: ''
 ms.assetid: b81c172a-be87-4adc-861e-d20b94be9e38
 ms.service: azure-resource-manager
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fc5a45c899cd72c051dd08f7db039565a57381a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Visual Studio Team Services mit Azure-Ressourcengruppen-Bereitstellungsprojekten
 Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: „Erstellen“, „Testen“, „Nach Azure kopieren“ (auch als „Staging“ bezeichnet) und „Vorlage bereitstellen“. Zum Bereitstellen von Vorlagen in Visual Studio Team Services (VS Team Services) gibt es zwei Möglichkeiten. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
@@ -74,7 +74,7 @@ Hier werden Sie durch die erforderlichen Prozeduren der Continuous Deployment-Ko
       ![Option „Dienstprinzipal“][5]
    5. Geben Sie Ihre Informationen zum Azure-Abonnement im Dialogfeld **Azure-Abonnement hinzufügen** an. Sie müssen Folgendes angeben:
       
-      * Abonnement-ID
+      * Subscription Id (Abonnement-ID)
       * Abonnementname
       * Dienstprinzipal-ID
       * Dienstprinzipalschlüssel
@@ -104,9 +104,9 @@ Hier werden Sie durch die erforderlichen Prozeduren der Continuous Deployment-Ko
     ![Bearbeiten des Skriptpfads][10]
 8. Geben Sie im Feld **Skriptargumente** die folgenden Parameter ein (in einer Zeile). Wenn Sie das Skript in Visual Studio ausführen, sehen Sie, wie VS die Parameter im **Ausgabefenster** verwendet. Sie können dies als Ausgangspunkt zum Festlegen der Parameterwerte im Buildschritt verwenden.
    
-   | Parameter | Beschreibung |
+   | Parameter | BESCHREIBUNG |
    | --- | --- |
-   | -ResourceGroupLocation |Der Wert für den geografischen Standort, an dem sich die Ressourcengruppe befindet, z.B. **eastus** oder **'USA, Osten'**. (Verwenden Sie einfache Anführungszeichen oben, wenn der Name ein Leerzeichen enthält.) Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/en-us/regions/). |
+   | -ResourceGroupLocation |Der Wert für den geografischen Standort, an dem sich die Ressourcengruppe befindet, z.B. **eastus** oder **'USA, Osten'**. (Verwenden Sie einfache Anführungszeichen oben, wenn der Name ein Leerzeichen enthält.) Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
    | -ResourceGroupName |Der Name der Ressourcengruppe, die für diese Bereitstellung verwendet wird. |
    | -UploadArtifacts |Mit diesem Parameter wird (falls vorhanden) angegeben, dass Artefakte aus dem lokalen System in Azure hochgeladen werden müssen. Sie müssen diesen Switch nur festlegen, falls für Ihre Vorlagenbereitstellung zusätzliche Artefakte erforderlich sind, die Sie mit dem PowerShell-Skript bereitstellen möchten (z. B. Konfigurationsskripts oder geschachtelte Vorlagen). |
    | -StorageAccountName |Der Name des Speicherkontos, das zum Bereitstellen von Artefakten für diese Bereitstellung verwendet wird. Dieser Parameter wird nur verwendet, wenn Sie Artefakte zur Bereitstellung nach Azure kopieren. Wenn dieser Parameter angegeben wird, wird ein neues Speicherkonto erstellt, sofern über das Skript nicht bereits eines während einer vorherigen Bereitstellung erstellt wurde. Wenn der Parameter angegeben wird, muss das Speicherkonto bereits vorhanden sein. |

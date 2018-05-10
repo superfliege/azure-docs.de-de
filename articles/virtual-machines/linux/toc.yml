@@ -199,6 +199,8 @@
           href: use-remote-desktop.md
         - name: Hinzufügen eines virtuellen Computers zu Azure Active Directory
           href: join-redhat-linux-vm-to-azure-active-directory-domain-service.md
+        - name: Anmelden mit Azure Active Directory-Anmeldeinformationen
+          href: login-using-aad.md
         - name: Updates und Patches
           items:
             - name: Red Hat-Updateinfrastruktur

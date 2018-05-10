@@ -1,5 +1,5 @@
 ---
-title: "Auslösen von Chaos in Service Fabric-Clustern | Microsoft Docs"
+title: Auslösen von Chaos in Service Fabric-Clustern | Microsoft Docs
 description: Verwenden von Fault Injection und Cluster Analysis Service-APIs zum Verwalten von Chaostests im Cluster.
 services: service-fabric
 documentationcenter: .net
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/05/2018
 ms.author: motanv
-ms.openlocfilehash: 81206257cb2c7157bbb1ffcf3a79ced7c896ef80
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 40ceb62e544d2aa71296e24da957cb062029da9f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige verteilte Dienste zu erstellen. Um robuste, verteilte Dienste in einer unzuverlässigen Infrastruktur zu schreiben, müssen Entwickler in der Lage sein, die Stabilität ihrer Dienste zu testen, während die zugrunde liegende unzuverlässige Infrastruktur komplizierte Statusübergänge aufgrund von Fehlern durchläuft.
@@ -33,7 +33,7 @@ Nachdem Sie Chaos mit der Rate und Art der Fehler konfiguriert haben, können Si
 > In der derzeitigen Form löst Chaos nur sichere Fehler aus. Dies bedeutet, dass bei einem Nichtvorhandensein von externen Fehlern niemals ein Quorum- oder Datenverlust auftritt.
 >
 
-Während dieses Chaostests, werden verschiedene Ereignisse erzeugt, die den Status der Ausführung im jeweiligen Moment erfassen. Beispielsweise enthält ein ExecutingFaultsEvent alle Fehler, die Chaos im Rahmen der Iteration ausführt. Ein ValidationFailedEvent enthält die Details eines Überprüfungsfehlers (Integritäts- oder Stabilitätsprobleme), der während der Überprüfung des Clusters gefunden wurde. Sie können die GetChaosReport-API (C#, PowerShell oder REST) aufrufen, um einen Bericht zu Chaos-Ausführungen zu erhalten. Diese Ereignisse werden in ein [Reliable Dictionary](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections) übernommen, für das eine Kürzungsrichtlinie mit zwei Konfigurationen gilt: **MaxStoredChaosEventCount** (der Standardwert ist 25.000) und **StoredActionCleanupIntervalInSeconds** (der Standardwert ist 3.600). Alle *StoredActionCleanupIntervalInSeconds* führt Chaos eine Überprüfung durch und entfernt alle Ereignisse bis auf die letzten *MaxStoredChaosEventCount* Ereignisse aus dem Reliable Dictionary dauerhaft.
+Während dieses Chaostests, werden verschiedene Ereignisse erzeugt, die den Status der Ausführung im jeweiligen Moment erfassen. Beispielsweise enthält ein ExecutingFaultsEvent alle Fehler, die Chaos im Rahmen der Iteration ausführt. Ein ValidationFailedEvent enthält die Details eines Überprüfungsfehlers (Integritäts- oder Stabilitätsprobleme), der während der Überprüfung des Clusters gefunden wurde. Sie können die GetChaosReport-API (C#, PowerShell oder REST) aufrufen, um einen Bericht zu Chaos-Ausführungen zu erhalten. Diese Ereignisse werden in ein [Reliable Dictionary](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections) übernommen, für das eine Kürzungsrichtlinie mit zwei Konfigurationen gilt: **MaxStoredChaosEventCount** (der Standardwert ist 25.000) und **StoredActionCleanupIntervalInSeconds** (der Standardwert ist 3.600). Alle *StoredActionCleanupIntervalInSeconds* führt Chaos eine Überprüfung durch und entfernt alle Ereignisse bis auf die letzten *MaxStoredChaosEventCount* Ereignisse aus dem Reliable Dictionary dauerhaft.
 
 ## <a name="faults-induced-in-chaos"></a>Im Chaostest ausgelöste Fehler
 Der Chaostest generiert Fehler im gesamten Service Fabric-Cluster und komprimiert in Monaten oder Jahren auftretende Fehler zu einigen wenigen Stunden. Bei dieser Kombination aus verschachtelten Fehlern mit der hohen Fehlerrate werden auch Spezialfälle erkannt, die sonst nicht auffallen. Dieser Chaostest führt zu einer erheblichen Verbesserung der Codequalität des Diensts.

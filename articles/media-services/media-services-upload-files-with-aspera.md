@@ -1,11 +1,11 @@
 ---
 title: Hochladen von Dateien in ein Azure Media Services-Konto mithilfe von Aspera | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist."
+description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist.
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: johndeu
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 8812623a-b425-4a0f-9e05-0ee6c839b6f9
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 58fec9746828863c4d0bff223fb6e9fb122256c3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Hochladen von Dateien in ein Media Services-Konto mithilfe des Diensts „Aspera Server On Demand“ in Azure
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/08/2018
 
 **Aspera** ist eine Software für Dateiübertragungen mit hoher Geschwindigkeit. Mit **Aspera Server On Demand** für Azure lassen sich große Dateien schnell und direkt in den Azure-Blobobjektspeicher hochladen und daraus herunterladen. Informationen zu **Aspera On Demand** finden Sie auf der Website [Aspera Cloud](http://cloud.asperasoft.com/). 
   
-**Aspera Server On Demand** für Azure kann über den [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/) erworben werden. Melden Sie sich beim Azure Marketplace bitte mit Ihrer Windows Live ID an, wenn Sie **Aspera Server On Demand** für Azure erwerben möchten.
+**Aspera Server On Demand** für Azure kann über den [Azure Marketplace](https://azure.microsoft.com/marketplace/) erworben werden. Melden Sie sich beim Azure Marketplace bitte mit Ihrer Windows Live ID an, wenn Sie **Aspera Server On Demand** für Azure erwerben möchten.
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On-Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist. 
 

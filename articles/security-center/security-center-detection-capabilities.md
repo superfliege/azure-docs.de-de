@@ -3,9 +3,9 @@ title: Erkennungsfunktionen in Azure Security Center | Microsoft Docs
 description: In diesem Dokument erfahren Sie, wie die Erkennungsfunktionen von Azure Security Center funktionieren.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: swadhwa
-editor: 
+editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
 ms.topic: hero-article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: edef9bc1ba2420a4b7d95f891fd8b0b7e144c2ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 636f81361a59c1bfe1ba778722b79564609fb02a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center-Erkennungsfunktionen
 In diesem Dokument werden die erweiterten Erkennungsfunktionen von Azure Security Center beschrieben. Mit diesen Funktionen können aktive Bedrohungen Ihrer Microsoft Azure-Ressourcen identifiziert werden, und Sie erhalten die Einblicke, die zum schnellen Ergreifen von Maßnahmen erforderlich sind.
@@ -48,7 +48,7 @@ Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit
 * **Verhaltensanalyse**: Es werden bekannte Muster angewendet, um schädliches Verhalten zu erkennen. 
 * **Anomalieerkennung**: Es werden statistische Profile erstellt, um typische Verlaufsdaten zu erhalten. Sie werden benachrichtigt, wenn es zu Abweichungen von der Baseline kommt, die einem potenziellen Angriffsvektor entsprechen.
 
-### <a name="threat-intelligence"></a>Threat Intelligence
+### <a name="threat-intelligence"></a>Bedrohungsanalyse
 Microsoft verfügt über eine große Menge von Informationen zu globalen Bedrohungen. Die Telemetriedaten stammen aus mehreren Quellen, z.B. Azure, Office 365, Microsoft CRM Online, Microsoft Dynamics AX, outlook.com, MSN.com, Microsoft Digital Crimes Unit (DCU) und Microsoft Security Response Center (MSRC). Die Sicherheitsexperten erhalten außerdem Informationen zu Bedrohungen, die zwischen großen Cloudanbietern ausgetauscht werden, und haben Threat Intelligence-Feeds von Drittanbietern abonniert. Azure Security Center kann diese Informationen verwenden, um Sie vor Bedrohungen durch bekannte Angreifer zu warnen. Beispiele hierfür sind:
 
 * **Ausgehende Kommunikation an eine schädliche IP-Adresse**: Ausgehender Datenverkehr an ein bekanntes Botnet oder ins Darknet weist meist darauf hin, dass Ihre Ressource kompromittiert wurde und ein Angreifer versucht, Befehle im System auszuführen oder Daten zu entwenden. Azure Security Center vergleicht den Netzwerkdatenverkehr mit der globalen Bedrohungsdatenbank von Microsoft und warnt Sie, wenn eine Kommunikation mit einer schädlichen IP-Adresse erkannt wird.
@@ -79,14 +79,14 @@ Für Azure Security Center arbeiten Sicherheitsforschungs- und Data Science-Team
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen dabei nichts unternehmen.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument wurde beschrieben, wie die Erkennungsfunktionen von Azure Security Center funktionieren. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Sicherheitswarnungen nach Typ in Azure Security Center](security-center-alerts-type.md)
-* [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
+* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+* [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
 

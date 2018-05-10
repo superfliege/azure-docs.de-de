@@ -1,11 +1,11 @@
 ---
-title: "Installieren des StorSimple-Adapters für SharePoint | Microsoft-Dokumentation"
-description: "Beschreibt die Installation und Konfiguration bzw. die Entfernung des StorSimple-Adapters für SharePoint in einer SharePoint-Serverfarm."
+title: Installieren des StorSimple-Adapters für SharePoint | Microsoft-Dokumentation
+description: Beschreibt die Installation und Konfiguration bzw. die Entfernung des StorSimple-Adapters für SharePoint in einer SharePoint-Serverfarm.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
 ms.service: storsimple
 ms.devlang: NA
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 8910471e09b9ecc797005818538ccfc6a91c68a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
 ## <a name="overview"></a>Übersicht
@@ -76,11 +76,11 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[AllDocs] WHERE [Content] IS NULL`
      
      In diesem Schritt wird die Größe der BLOBs abgerufen, die extern ausgelagert wurden.
-* Es wird empfohlen, alle BLOB- und Datenbankinhalte lokal auf dem StorSimple-Gerät zu speichern. Das StorSimple-Gerät ist ein Cluster mit zwei Knoten für hohe Verfügbarkeit. Wenn Sie die Inhaltsdatenbanken und BLOBs auf dem StorSimple-Gerät anordnen, sorgt dies für hohe Verfügbarkeit.
+* Es wird empfohlen, alle BLOB- und Datenbankinhalte lokal auf dem StorSimple-Gerät zu speichern. Das StorSimple-Gerät ist ein Cluster mit zwei Knoten für Hochverfügbarkeit. Wenn Sie die Inhaltsdatenbanken und BLOBs auf dem StorSimple-Gerät anordnen, sorgt dies für Hochverfügbarkeit.
   
     Wenden Sie die herkömmlichen bewährten Methoden für die SQL Server-Migration an, um die Inhaltsdatenbank auf das StorSimple-Gerät zu verschieben. Verschieben Sie die Datenbank erst, nachdem der gesamte BLOB-Inhalt aus der Datenbank per RBS auf die Dateifreigabe verschoben wurde. Wenn Sie die Inhaltsdatenbank auf das StorSimple-Gerät verschieben möchten, empfehlen wir, den Inhaltsdatenbankspeicher auf dem Gerät als primäres Volume zu konfigurieren.
 * Wenn Sie in Microsoft Azure StorSimple mehrstufige Volumes verwenden, gibt es keine Möglichkeit sicherzustellen, dass lokal auf dem StorSimple-Gerät gespeicherter Inhalt nicht im Microsoft Azure-Cloudspeicher abgelegt wird. Wir empfehlen daher die Verwendung lokaler StorSimple-Volumes in Verbindung mit SharePoint-RBS. So wird sichergestellt, dass alle Blobinhalte lokal auf dem StorSimple-Gerät verbleiben und nicht nach Microsoft Azure verschoben werden.
-* Wenn Sie die Inhaltsdatenbanken nicht auf dem StorSimple-Gerät speichern, sollten Sie herkömmliche bewährte Methoden für die hohe Verfügbarkeit von SQL Server verwenden, bei denen RBS unterstützt wird. SQL Server-Clustering unterstützt RBS, während dies für die SQL Server-Spiegelung nicht der Fall ist. 
+* Wenn Sie die Inhaltsdatenbanken nicht auf dem StorSimple-Gerät speichern, sollten Sie herkömmliche bewährte Methoden für die Hochverfügbarkeit von SQL Server verwenden, bei denen RBS unterstützt wird. SQL Server-Clustering unterstützt RBS, während dies für die SQL Server-Spiegelung nicht der Fall ist. 
 
 > [!WARNING]
 > Wenn Sie RBS nicht aktiviert haben, ist es nicht ratsam, die Inhaltsdatenbank auf das StorSimple-Gerät zu verschieben. Dies ist eine nicht getestete Konfiguration.
@@ -103,8 +103,8 @@ Der StorSimple-Adapter für SharePoint funktioniert mit der folgenden Hardware u
 Das StorSimple-Gerät ist ein Blockgerät und erfordert daher einen Dateiserver, auf dem die Daten gehostet werden können. Wir empfehlen Ihnen die Verwendung eines separaten Servers, anstatt eines vorhandenen Servers aus der SharePoint-Farm. Dieser Dateiserver muss sich in demselben LAN (Local Area Network) wie der SQL Server-Computer befinden, auf dem die Inhaltsdatenbanken gehostet werden.
 
 > [!TIP]
-> * Wenn Sie Ihre SharePoint-Farm für hohe Verfügbarkeit konfigurieren, sollten Sie auch den Dateiserver für hohe Verfügbarkeit bereitstellen.
-> * Wenn Sie die Inhaltsdatenbank nicht auf dem StorSimple-Gerät speichern, sollten Sie herkömmliche bewährte Methoden für die hohe Verfügbarkeit verwenden, bei denen RBS unterstützt wird. SQL Server-Clustering unterstützt RBS, während dies für die SQL Server-Spiegelung nicht der Fall ist. 
+> * Wenn Sie Ihre SharePoint-Farm für Hochverfügbarkeit konfigurieren, sollten Sie auch den Dateiserver für Hochverfügbarkeit bereitstellen.
+> * Wenn Sie die Inhaltsdatenbank nicht auf dem StorSimple-Gerät speichern, sollten Sie herkömmliche bewährte Methoden für Hochverfügbarkeit verwenden, bei denen RBS unterstützt wird. SQL Server-Clustering unterstützt RBS, während dies für die SQL Server-Spiegelung nicht der Fall ist. 
 
 
 Stellen Sie sicher, dass Ihr StorSimple-Gerät richtig konfiguriert ist und dass geeignete Volumes zur Unterstützung Ihrer SharePoint-Bereitstellung konfiguriert und für Ihren SQL Server-Computer zugänglich sind. Wechseln Sie zu [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md), falls Sie Ihr StorSimple-Gerät noch nicht bereitgestellt und konfiguriert haben. Notieren Sie sich die IP-Adresse des StorSimple-Geräts. Sie benötigen sie bei der Installation des StorSimple-Adapters für SharePoint.
@@ -237,8 +237,7 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 2. Doppelklicken Sie auf das Installationsprogramm für StorSimple-Adapter für SharePoint. Der Setup-Assistent wird gestartet.
    
     ![Setup-Assistent](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Klicken Sie auf **Weiter**.
- Die folgende Seite wird angezeigt.
+3. Klicken Sie auf **Weiter**. Die folgende Seite wird angezeigt.
    
     ![Seite „Entfernen“ im Setup-Assistenten](./media/storsimple-adapter-for-sharepoint/sasp3.png)
 4. Klicken Sie auf **Entfernen** , um den Entfernungsvorgang auszuwählen. Die folgende Seite wird angezeigt.
@@ -262,4 +261,4 @@ Nachdem Sie die BLOBs zurück in die SQL Server-Inhaltsdatenbanken verschoben ha
 [3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
 [4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
 [5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/en-us/library/ff943565.aspx
+[8]: https://technet.microsoft.com/library/ff943565.aspx

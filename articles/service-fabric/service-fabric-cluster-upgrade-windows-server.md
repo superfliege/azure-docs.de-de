@@ -1,11 +1,11 @@
 ---
-title: "Upgraden eines eigenständigen Azure Service Fabric-Clusters unter Windows Server | Microsoft-Dokumentation"
-description: "Upgraden des Azure Service Fabric-Codes und/oder Konfiguration für die Ausführung eines eigenständigen Service Fabric-Clusters und Festlegen des Clusteraktualisierungsmodus"
+title: Upgraden eines eigenständigen Azure Service Fabric-Clusters unter Windows Server | Microsoft-Dokumentation
+description: Upgraden des Azure Service Fabric-Codes und/oder Konfiguration für die Ausführung eines eigenständigen Service Fabric-Clusters und Festlegen des Clusteraktualisierungsmodus
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: c95c1827d0433dcb61eace34e7a905a5610c7781
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 3354fab5f664391520e721586712e5035ff79cb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Upgraden des eigenständigen Azure Service Fabric-Clusters unter Windows Server 
 > [!div class="op_single_selector"]
@@ -120,7 +120,7 @@ Befolgen Sie für die manuelle Vorgehensweise die Anweisungen unten.
 
         "fabricClusterAutoupgradeEnabled": false,
 
-Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://msdn.microsoft.com/en-us/library/mt788302.aspx). Achten Sie darauf, den Wert für „clusterConfigurationVersion“ in der JSON-Datei zu aktualisieren, bevor Sie das Konfigurationsupgrade starten.
+Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://msdn.microsoft.com/library/mt788302.aspx). Achten Sie darauf, den Wert für „clusterConfigurationVersion“ in der JSON-Datei zu aktualisieren, bevor Sie das Konfigurationsupgrade starten.
 
 ```powershell
 

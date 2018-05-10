@@ -1,11 +1,11 @@
 ---
-title: "Problembehandlung bei einem bereitgestellten StorSimple-Gerät | Microsoft Docs"
-description: "Beschreibt die Diagnose und Behebung von Fehlern auf einem StorSimple-Gerät, das bereitgestellt und betriebsbereit ist."
+title: Problembehandlung bei einem bereitgestellten StorSimple-Gerät | Microsoft Docs
+description: Beschreibt die Diagnose und Behebung von Fehlern auf einem StorSimple-Gerät, das bereitgestellt und betriebsbereit ist.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
 ms.service: storsimple
 ms.devlang: NA
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 4639e749cfaa6b38fa6b91ddebfc17924c1d5bd6
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cf037f7f1c1384b654a7144485d38f569eb7c167
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Problembehandlung bei einem betriebsbereiten StorSimple-Gerät
 > [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel enthält Anleitungen zum Beheben von Konfigurationsproblemen, die bei einem bereitgestellten und betriebsbereiten StorSimple-Gerät auftreten können. Es werden allgemeine Probleme, mögliche Ursachen und empfohlene Schritte zum Beheben von Problemen bei der Ausführung von Microsoft Azure StorSimple beschrieben. Diese Informationen gelten sowohl für lokale physische als auch für virtuelle StorSimple-Geräte.
@@ -44,7 +44,7 @@ Der Setup-Assistent führt keine Vorgänge im Zusammenhang mit der Kennworterfas
 ## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Fehler, die bei nachfolgenden Ausführungen des Setup-Assistenten auftreten
 In der folgenden Tabelle sind die Fehler, die beim Ausführen des Setup-Assistenten auf einem betriebsbereiten Gerät auftreten können, mögliche Ursachen für diese Fehler sowie empfohlene Maßnahmen zur Problembehebung beschrieben. 
 
-| Nr. | Fehlermeldung oder -bedingung | Mögliche Ursachen | Empfohlene Maßnahme |
+| Nein. | Fehlermeldung oder -bedingung | Mögliche Ursachen | Empfohlene Maßnahme |
 |:--- |:--- |:--- |:--- |
 | 1 |Fehler 350032: Dieses Gerät wurde bereits deaktiviert. |Dieser Fehler wird angezeigt, wenn Sie den Setup-Assistenten auf einem deaktivierten Gerät ausführen. |[Wenden Sie sich an den Microsoft Support](storsimple-contact-microsoft-support.md) für weitere Schritte. Ein deaktiviertes Gerät kann nicht in Betrieb genommen werden. Sie müssen das Gerät möglicherweise auf die Werkseinstellungen zurücksetzen, bevor es erneut aktiviert werden kann. |
 | 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION(Ausnahme von HRESULT: 0x80070001) |Das Update des DNS-Servers ist fehlgeschlagen. DNS-Einstellungen sind globale Einstellungen und gelten für alle aktivierten Netzwerkschnittstellen. |Aktivieren Sie die Schnittstelle, und wenden Sie die DNS-Einstellungen erneut an. Dies kann das Netzwerk für andere aktivierten Schnittstellen beeinträchtigen, da es sich um globale Einstellungen handelt. |
@@ -65,5 +65,5 @@ Die Fehler sind in numerischer Reihenfolge aufgeführt.
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn das Problem nicht behoben werden kann, [wenden Sie sich an den Support von Microsoft](storsimple-contact-microsoft-support.md) , um Unterstützung zu erhalten. 
 
-[1]: https://technet.microsoft.com/en-us/%5Clibrary/Dn688135(v=WPS.630).aspx
-[2]: https://technet.microsoft.com/en-us/%5Clibrary/Dn715782(v=WPS.630).aspx
+[1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
+[2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx
