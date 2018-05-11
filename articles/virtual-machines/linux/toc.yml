@@ -51,6 +51,8 @@
       href: tutorial-mean-stack.md
     - name: '16: Sichern von Webservern mit SSL'
       href: tutorial-secure-web-server.md
+    - name: Bereitstellen von Packer-Images und Apps für eine Skalierungsgruppe
+      href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle

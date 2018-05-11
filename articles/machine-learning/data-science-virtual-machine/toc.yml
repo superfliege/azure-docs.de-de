@@ -32,6 +32,16 @@
       href: use-deep-learning-dsvm.md
     - name: Verwenden einer Geo AI Data Science VM
       href: use-geo-ai-dsvm.md
+- name: Enterprise-Leitfaden
+  items:
+    - name: Übersicht
+      href: dsvm-enterprise-overview.md
+    - name: Skalieren
+      href: dsvm-pools.md
+    - name: Active Directory-Integration
+      href: dsvm-common-identity.md
+    - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
+      href: dsvm-secure-access-keys.md
 - name: Verweis
   expanded: true
   items:

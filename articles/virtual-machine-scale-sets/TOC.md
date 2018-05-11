@@ -29,6 +29,8 @@
 ### [Azure CLI 2.0](tutorial-autoscale-cli.md)
 ### [Azure PowerShell](tutorial-autoscale-powershell.md)
 ### [Vorlage](tutorial-autoscale-template.md)
+## Bereitstellen von Apps in einer Azure-VM-Skalierungsgruppe mit einem benutzerdefinierten Packer-Image
+### [Azure CLI 2.0](https://docs.microsoft.com/learn/deploy-custom-vmss-app/index)
 
 # Beispiele
 ## [Azure CLI 2.0](cli-samples.md)
