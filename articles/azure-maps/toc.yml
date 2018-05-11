@@ -30,6 +30,8 @@
       href: render-coverage.md
     - name: Abgedeckter Routingbereich
       href: routing-coverage.md
+    - name: Suchkategorien
+      href: search-categories.md
     - name: Unterstützte Sprachen
       href: supported-languages.md
 - name: Anleitungen
@@ -66,7 +68,7 @@
           href: map-show-traffic.md
         - name: Interaktion mit Mausereignissen
           href: map-events.md
-- name: Referenz
+- name: Verweis
   items:
     - name: 'Services API: REST'
       href: 'https://docs.microsoft.com/rest/api/maps/'

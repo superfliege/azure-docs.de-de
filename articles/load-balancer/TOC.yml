@@ -76,7 +76,6 @@
         - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6 (Vorlage)
           href: load-balancer-ipv6-internet-template.md
     - name: Konfigurieren des internen Lastenausgleichs
-      href: load-balancer-get-started-ilb-arm-portal.md
       items:
         - name: Konfigurieren des internen Lastenausgleichs (PowerShell)
           href: load-balancer-get-started-ilb-arm-ps.md

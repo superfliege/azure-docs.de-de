@@ -12,11 +12,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
-  ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+  ms.openlocfilehash: d26c3a94c166a91644397e4a31aeede55ec29284
+  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/28/2018
+  ms.lasthandoff: 05/10/2018
 abstract:
   description: Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.
 sections:
@@ -51,6 +51,7 @@ sections:
     - html: Verwenden eines benutzerdefinierten VM-Images mit <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">Azure CLI 2.0</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">Azure PowerShell</a>
     - html: Bereitstellen von Apps in einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">Azure CLI 2.0</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">Azure PowerShell</a>
     - html: Automatisches Skalieren einer Skalierungsgruppe mit <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">Azure CLI 2.0</a> oder <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">Azure PowerShell</a>
+    - html: <a href="https://docs.microsoft.com/learn/deploy-custom-vmss-app/index">Bereitstellen von Apps in einer Azure-VM-Skalierungsgruppe mit einem benutzerdefinierten Packer-Image</a>
 - title: Beispiele
   items:
   - type: paragraph

@@ -91,6 +91,8 @@
       href: tutorial-url-route-powershell.md
     - name: Umleiten von Webdatenverkehr mithilfe von Azure PowerShell
       href: tutorial-url-redirect-powershell.md
+    - name: Erstellen eines zonenredundanten Anwendungsgateways
+      href: create-zone-redundant.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

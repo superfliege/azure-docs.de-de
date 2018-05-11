@@ -61,8 +61,22 @@
               href: azure-stack-prepare-pki-certs.md
             - name: Überprüfen von PKI-Zertifikaten
               href: azure-stack-validate-pki-certs.md
-        - name: Identitätsintegration
-          href: azure-stack-integrate-identity.md
+            - name: Wiederherstellen von PKI-Zertifikaten
+              href: azure-stack-remediate-certs.md
+            - name: Bereitstellungsressourcen
+              items:
+                - name: Referenz zum Cmdlet „Start-AzsReadiness“
+                  href: azure-stack-azsreadiness-cmdlet.md
+                - name: Anzeigen des Bereitschaftsberichts
+                  href: azure-stack-validation-report.md
+            - name: Identitätsintegration
+              items:
+                - name: Auswählen eines Identitätsanbieters
+                  href: azure-stack-integrate-identity.md
+                - name: Überprüfen der Azure-Identität
+                  href: azure-stack-validate-identity.md
+        - name: Überprüfen der Azure-Registrierung
+          href: azure-stack-validate-registration.md
         - name: Externe Überwachung
           href: azure-stack-integrate-monitor.md
         - name: Sicherheitsintegration
@@ -123,7 +137,7 @@
               href: azure-stack-manage-storage-accounts.md
             - name: Verwalten der Speicherkapazität
               href: azure-stack-manage-storage-shares.md
-            - name: Verwalten der physischen Speicherkapazität für Azure Stack
+            - name: Verwalten der Kapazität des physischen Speichers
               href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: Austauschen von Hardware
           items:
@@ -253,6 +267,10 @@
               href: azure-stack-compute-add-scalesets.md
             - name: Anbieten virtueller Linux-Computer
               href: azure-stack-linux.md
+            - name: Hinzufügen eines virtuellen Red Hat-Computers
+              href: azure-stack-redhat-create-upload-vhd.md
+            - name: Anbieten eines Kubernetes-Clusters
+              href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Nutzung und Abrechnung
           items:
             - name: Übersicht

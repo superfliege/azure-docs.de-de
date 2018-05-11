@@ -167,16 +167,16 @@
 #### [In Azure AD eingebundene ältere Windows-Hybridgeräte](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 
 ## Verwalten von Apps
-### [Übersicht](active-directory-enable-sso-scenario.md)
-### [Erste Schritte](active-directory-integrating-applications-getting-started.md)
+### [Übersicht](manage-apps/what-is-application-management.md)
+### [Erste Schritte](manage-apps/plan-an-application-integration.md)
 ### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
-### [Cloud-App-Ermittlung](cloudappdiscovery-get-started.md)
-#### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
+### [Cloud-App-Ermittlung](manage-apps/cloud-app-discovery.md)
+#### [Erstellen von Momentaufnahmenberichten](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
 
 
-### [Remotezugriff auf Apps mit dem Anwendungsproxy](active-directory-application-proxy-get-started.md)
+### [Remotezugriff auf Apps mit dem Anwendungsproxy](manage-apps/application-proxy.md)
 #### Erste Schritte
 ##### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
 ##### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
