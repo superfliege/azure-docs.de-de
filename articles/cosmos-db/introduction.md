@@ -14,15 +14,15 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 13c6fc8550f6b5bfac6d236a7145039d2622f0ae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3c7fc83e379bcd1ad084d20555d9a82697cb5069
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
-Azure Cosmos DB ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit einem Klick ermöglicht Azure Cosmos DB Ihnen, Durchsatz und Speicher elastisch und unabhängig voneinander über eine beliebige Anzahl von geografischen Azure-Regionen hinweg zu skalieren. Azure Cosmos DB bietet Ihnen mit umfassenden [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) Durchsatz-, Wartezeit-, Verfügbarkeits- und Konsistenzgarantien wie kein anderer Datenbankdienst. Sie können [Azure Cosmos DB ohne ein Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtungen.
+Azure Cosmos DB ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Mit einem Klick ermöglicht Azure Cosmos DB Ihnen, Durchsatz und Speicher elastisch und unabhängig voneinander über eine beliebige Anzahl von geografischen Azure-Regionen hinweg zu skalieren. Azure Cosmos DB bietet Ihnen mit umfassenden [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) Durchsatz-, Wartezeit-, Verfügbarkeits- und Konsistenzgarantien wie kein anderer Datenbankdienst. Sie können [Azure Cosmos DB ohne Azure-Abonnement kostenlos und unverbindlich testen](https://azure.microsoft.com/try/cosmosdb/).
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)
@@ -43,7 +43,7 @@ Als global verteilter Datenbankdienst mit mehreren Modellen erleichtert Azure Co
         * [SQL-API](sql-api-introduction.md): Ein schemaloses JSON-Datenbankmodul mit umfangreichen SQL-Abfragefunktionen
         * [MongoDB-API](mongodb-introduction.md): Eine extrem skalierbare *MongoDB-as-a-Service*-Lösung auf der Grundlage der Azure Cosmos DB-Plattform Kompatibel mit bestehenden MongoDB-Bibliotheken, -Treibern, -Tools und -Anwendungen
         * [Cassandra-API](cassandra-introduction.md): Eine global verteile Cassandra-as-a-Service-Lösung auf der Grundlage der Azure Cosmos DB-Plattform Kompatibel mit vorhandenen [Apache Cassandra](https://cassandra.apache.org/)-Bibliotheken, -Treibern, -Tools und -Anwendungen
-        * [Gremlin (Graph)-API](graph-introduction.md): Ein vollständig verwalteter, horizontal skalierbarer Graphdatenbankdienst, der die Erstellung und Ausführung von Anwendungen mit verbundenen Datasets erleichtert, die Open Graph-APIs unterstützen (auf der Grundlage der [Apache TinkerPop-Spezifikation](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Gremlin-API](graph-introduction.md): Ein vollständig verwalteter, horizontal skalierbarer Graphdatenbankdienst, der die Erstellung und Ausführung von Anwendungen mit verbundenen Datasets erleichtert, die Open Graph-APIs unterstützen (auf der Grundlage der [Apache TinkerPop-Spezifikation](http://tinkerpop.apache.org/), Apache Gremlin).
         * [Tabellen-API](table-introduction.md): Ein Schlüssel-Wert-Datenbankdienst zur Bereitstellung von Premiumfunktionen (beispielsweise automatische Indizierung, garantierte geringe Wartezeiten, globale Verteilung) für vorhandene Azure Table Storage-Anwendungen. App-Änderungen sind dabei nicht erforderlich.
         * Weitere Datenmodelle und APIs folgen in Kürze.
 
@@ -97,7 +97,7 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 * [Erste Schritte mit der SQL-API von Azure Cosmos DB](create-sql-api-dotnet.md)
 * [Erste Schritte mit der MongoDB-API von Azure Cosmos DB](create-mongodb-nodejs.md)
 * [Erste Schritte mit der Cassandra-API von Azure Cosmos DB](create-cassandra-dotnet.md)
-* [Erste Schritte mit der Graph-API von Azure Cosmos DB](create-graph-dotnet.md)
+* [Erste Schritte mit der Gremlin-API von Azure Cosmos DB](create-graph-dotnet.md)
 * [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](create-table-dotnet.md)
 
 > [!div class="nextstepaction"]

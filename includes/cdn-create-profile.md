@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 0db5f571324694f0518ffc4e92af985e5125d755
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 210698ffdc523f59220d4215a982f77361c9b6a4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 ## <a name="create-a-new-cdn-profile"></a>Erstellen eines neuen CDN-Profils
 
@@ -44,4 +44,6 @@ Ein CDN-Profil ist ein Container für CDN-Endpunkte und gibt einen Tarif an.
 3. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um das erstellte Profil in Ihrem Dashboard zu speichern.
     
 4. Wählen Sie **Erstellen**, um das Profil zu erstellen. 
+
+    Bei **Azure CDN Standard von Microsoft** ist die Profilerstellung in der Regel in zwei Stunden abgeschlossen. 
 

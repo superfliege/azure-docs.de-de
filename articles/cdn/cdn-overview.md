@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/06/2018
-ms.author: rli
+ms.date: 04/20/2018
+ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 2da919a880332be928c211a2493f2c0b09a0fcbb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 36de1011e48f274759c0aeebde74bd26c6604e19
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
 Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
@@ -50,7 +50,7 @@ Eine Liste mit aktuellen CDN-Knotenstandorten finden Sie unter [Azure CDN-POP-St
 6. Sofern die Gültigkeitsdauer der Datei nicht abgelaufen ist, gibt der POP-Edgeserver die Datei direkt aus dem Cache zurück. Dieser Prozess führt zu schnellen Reaktionen und somit zu einer höheren Benutzerfreundlichkeit.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
-Für die Verwendung von Azure CDN müssen Sie mindestens über ein Azure-Abonnement verfügen. Darüber hinaus müssen Sie mindestens ein CDN-Profil erstellen. Hierbei handelt es sich um eine Sammlung von CDN-Endpunkten. Jeder CDN-Endpunkt stellt eine spezifische Konfiguration des Verhaltens bei der Inhaltsbereitstellung und des Zugriffs dar. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. Da die [Preise für Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) auf der CDN-Profilebene gelten, müssen Sie mehrere CDN-Profile erstellen, wenn Sie eine Kombination verschiedener Tarife verwenden möchten.
+Für die Verwendung von Azure CDN müssen Sie mindestens über ein Azure-Abonnement verfügen. Darüber hinaus müssen Sie mindestens ein CDN-Profil erstellen. Hierbei handelt es sich um eine Sammlung von CDN-Endpunkten. Jeder CDN-Endpunkt stellt eine spezifische Konfiguration des Verhaltens bei der Inhaltsbereitstellung und des Zugriffs dar. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. Da die [Preise für Azure CDN](https://azure.microsoft.com/pricing/details/cdn/) auf der CDN-Profilebene gelten, müssen Sie mehrere CDN-Profile erstellen, wenn Sie eine Kombination verschiedener Tarife verwenden möchten. Informationen zur Abrechnungsstruktur von Azure CDN finden Sie unter [Grundlegendes zur Abrechnung für Azure CDN](cdn-billing.md).
 
 ### <a name="limitations"></a>Einschränkungen
 Bei jedem Azure-Abonnement gelten Standardgrenzwerte für folgende Ressourcen:
@@ -77,4 +77,5 @@ Eine vollständige Liste mit den Features, die von den einzelnen Azure CDN-Produ
 - Verwalten Sie Ihre CDN-Endpunkte über das [Microsoft Azure-Portal](https://portal.azure.com) oder mit [PowerShell](cdn-manage-powershell.md).
 - Erfahren Sie, wie Sie Azure CDN mit [.NET](cdn-app-dev-net.md) oder [Node.js](cdn-app-dev-node.md) automatisieren.
 - Sehen Sie sich die [Videos zu Azure CDN](https://azure.microsoft.com/resources/videos/index/?services=cdn&sort=newest) an, um Azure CDN in Aktion zu erleben.
+- Informationen zu den neuesten Azure CDN-Features finden Sie im [Azure CDN-Blog](https://azure.microsoft.com/blog/tag/azure-cdn/).
 

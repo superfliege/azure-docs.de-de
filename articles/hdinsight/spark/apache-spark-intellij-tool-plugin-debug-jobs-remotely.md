@@ -58,7 +58,7 @@ Wir empfehlen, auch einen Apache Spark-Cluster in Azure HDInsight zu erstellen, 
 2. Wählen Sie in der Ambari-Benutzeroberfläche die Option **Hosts** aus.
 
     ![Auswählen von „Hosts“ in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-hosts.png)
-3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn***. Wählen Sie den ersten Hauptknoten aus.
+3. Eine Liste mit Hauptknoten, Workerknoten und Zookeeper-Knoten wird angezeigt. Die Hauptknoten haben das Präfix **hn**\*. Wählen Sie den ersten Hauptknoten aus.
 
     ![Suchen nach dem Hauptknoten in Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/cluster-headnodes.png)
 4. Kopieren Sie unten auf der angezeigten Seite im Bereich **Summary** (Zusammenfassung) die **IP-Adresse** des Hauptknotens und den **Hostnamen**.

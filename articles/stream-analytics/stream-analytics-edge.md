@@ -9,11 +9,11 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/16/2017
-ms.openlocfilehash: 1c02f8f7b086d0441c2def0e92c54cce72fad85e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 9a9608825cf041007c000729becb34e9a3063f92
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics unter IoT Edge (Vorschau)
 
@@ -60,11 +60,10 @@ Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/t
 
 
 #### <a name="create-an-asa-edge-job"></a>Erstellen eines ASA-Edge-Auftrags
-1. Erstellen Sie im Azure-Portal einen neuen „Stream Analytics-Auftrag“. [Hier Direktlink zum Erstellen eines neuen ASA-Auftrags einfügen](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)
-
 > [!Note]
-> Sie können Edge-Aufträge in allen von ASA unterstützten Regionen erstellen **mit Ausnahme der Region „USA, Westen 2“**.
-> Diese Einschränkung wird in Kürze aufgehoben.
+> In diesem Tutorial geht es schwerpunktmäßig um die Erstellung eines ASA-Auftrags mithilfe des Azure-Portals. Sie können auch das [Visual Studio-Plug-In verwenden, um einen ASA-Edge-Auftrag zu erstellen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs).
+
+1. Erstellen Sie im Azure-Portal einen neuen „Stream Analytics-Auftrag“. [Hier Direktlink zum Erstellen eines neuen ASA-Auftrags einfügen](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)
 
 2. Wählen Sie auf dem Erstellungsbildschirm **Edge** als **Hostingumgebung** aus (siehe folgende Abbildung). ![Auftragserstellung](media/stream-analytics-edge/ASAEdge_create.png)
 3. Auftragsdefinition
@@ -147,7 +146,6 @@ Allerdings werden die folgenden Funktionen für Edge-Aufträge noch nicht unters
 * Azure ML-Funktionen
 * Verwendung von mehr als 14 Aggregaten in einem einzigen Schritt
 * AVRO-Format für die Eingabe/Ausgabe. Gegenwärtig werden nur CSV und JSON unterstützt.
-* Komprimierung von JSON-Eingaben
 * Folgende SQL-Operatoren:
     * AnomalyDetection
     * Räumliche Operatoren:
@@ -210,6 +208,7 @@ Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://soci
 * [Weitere Informationen zu Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Tutorial zu ASA unter IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [Füllen Sie diese Umfrage aus, um Feedback an das Team zu senden](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 
+* [Entwickeln von Stream Analytics-Edge-Aufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

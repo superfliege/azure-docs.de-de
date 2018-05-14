@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/16/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 391985f3ad0e07c4559545e9d0c5fffc45fe27d2
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 942c2bce3a5907917b8d1cc9e8c251b5779542b5
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Schnellstart: Erstellen einer Key Vault-Instanz über das Azure-Portal
 
@@ -66,7 +66,7 @@ Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt w
     - **Uploadoptionen:** Manuell
     - **Name:** ExamplePassword
     - **Wert:** Pa$$w0rd
-    - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Erstellen**.
+    - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Create**.
 
 Nachdem Sie die Meldung erhalten haben, dass das Geheimnis erfolgreich erstellt wurde, können Sie in der Liste auf das Geheimnis klicken. Daraufhin werden einige der Eigenschaften angezeigt. Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.
 
@@ -87,4 +87,4 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis gespeichert. Das Tutorial zu Webanwendungen mit Key Vault enthält weitere Informationen zu Key Vault und zur Verwendung mit Ihren Anwendungen.
 
 > [!div class="nextstepaction"]
-> [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md) Im Tutorial [Configure an Azure web application to read a secret from Key Vault](tutorial-web-application-keyvault.md) (Konfigurieren einer Azure-Webanwendung für das Lesen eines Geheimnisses aus Key Vault) erfahren Sie, wie Sie mithilfe einer Webanwendung mit [verwalteter Dienstidentität](/active-directory/managed-service-identity/overview.md) ein Geheimnis aus Key Vault lesen.
+> Wenn Sie erfahren möchten, wie Sie ein Geheimnis aus Key Vault aus einer Webanwendung mit verwalteten Dienstidentitäten lesen, fahren Sie mit dem Tutorial [Konfigurieren einer Azure-Webanwendung für das Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md) fort.

@@ -114,6 +114,8 @@
               href: active-directory-b2c-setup-qq-app.md
             - name: WeChat
               href: active-directory-b2c-setup-wechat-app.md
+            - name: Azure AD (einzelner Mandant)
+              href: active-directory-b2c-setup-oidc-azure-active-directory.md
             - name: OpenID Connect (benutzerdefiniert)
               href: active-directory-b2c-setup-oidc-idp.md
         - name: Einrichten der Self-Service-Kennwortzurücksetzung

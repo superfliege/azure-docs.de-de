@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: barclayn
-ms.openlocfilehash: e980eafc5bd70a15de11239c7543a7f1dde4ef64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 8c10a784e80432d60fae132cd31a9cbd604b1c8e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Schnellstart: Erstellen einer Azure Key Vault-Instanz mit PowerShell
 
@@ -104,4 +104,4 @@ Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und einen Softwareschlüssel darin gespeichert. Das Tutorial zu Webanwendungen mit Key Vault enthält weitere Informationen zu Key Vault und zur Verwendung mit Ihren Anwendungen.
 
 > [!div class="nextstepaction"]
-> [Verwenden des Azure-Schlüsseltresors aus einer Webanwendung](key-vault-use-from-web-application.md)
+> Wenn Sie erfahren möchten, wie Sie ein Geheimnis aus Key Vault aus einer Webanwendung mit verwalteten Dienstidentitäten lesen, fahren Sie mit dem Tutorial [Konfigurieren einer Azure-Webanwendung für das Lesen eines Geheimnisses aus Key Vault](tutorial-web-application-keyvault.md) fort.

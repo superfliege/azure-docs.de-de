@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: e5310c59cbfe4080911768f29e1b8f635a611e63
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1b04968f83271006240fc0e099175e9017574ae
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -44,7 +44,7 @@ In Visual Studio wird mit der **Azure Functions**-Projektvorlage ein C#-Klassenb
 > [!IMPORTANT]
 > Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Verwenden Sie zum Deaktivieren einer Funktion das Attribut[Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs). Fügen Sie beispielsweise die boolesche App-Einstellung „MY_TIMER_DISABLED“ hinzu, und wenden Sie `[Disable("MY_TIMER_DISABLED")]` auf Ihre Funktion an. Anschließend können Sie sie durch Änderung der App-Einstellung aktivieren und deaktivieren.
 
-### <a name="functionname-and-trigger-attributes"></a>„FunctionName“ und Trigger-Attribute
+## <a name="methods-recognized-as-functions"></a>Methoden, die als Funktionen erkannt werden
 
 In einer Klassenbibliothek ist eine Funktion eine statische Methode mit einem Funktionsnamen (`FunctionName`) und einem Trigger-Attribut, wie im folgenden Beispiel gezeigt:
 
@@ -61,13 +61,24 @@ public static class SimpleExample
 } 
 ```
 
-Das Attribut `FunctionName` kennzeichnet die Methode als Funktionseinstiegspunkt. Der Name muss innerhalb eines Projekts eindeutig sein.
+Das Attribut `FunctionName` kennzeichnet die Methode als Funktionseinstiegspunkt. Der Name muss innerhalb eines Projekts eindeutig sein. Projektvorlagen erstellen oft eine Methode namens `Run`, aber der Name der Methode kann ein beliebiger gültiger C#-Methodennamen sein.
 
 Das Trigger-Attribut gibt den Triggertyp an und bindet die Eingabedaten an einen Methodenparameter. Die Beispielfunktion wird durch eine Warteschlangennachricht ausgelöst, und die Warteschlangennachricht wird im `myQueueItem`-Parameter an die Methode übergeben.
 
-### <a name="additional-binding-attributes"></a>Zusätzliche Bindungsattribute
+## <a name="method-signature-parameters"></a>Methodensignaturparameter
 
-Es können zusätzliche Eingabe- und Ausgabebindungsattribute verwendet werden. Im folgenden Beispiel wird das vorhergehende geändert, indem eine Ausgabewarteschlangenbindung hinzugefügt wird. Die Funktion schreibt die Eingabewarteschlangennachricht in eine neue Warteschlangennachricht in einer anderen Warteschlange.
+Die Methodensignatur kann andere Parameter als den mit dem Triggerattribut verwendeten Parameter enthalten. Hier sind einige weitere Parameter, die Sie verwenden können:
+
+* [Eingabe- und Ausgabebindungen](functions-triggers-bindings.md), die als solche gekennzeichnet werden, indem Sie sie mit Attributen versehen.  
+* Ein `ILogger`- oder `TraceWriter`-Parameter für die [Protokollierung](#logging).
+* Ein `CancellationToken`-Parameter für [ordnungsgemäßes Herunterfahren](#cancellation-tokens).
+* [Binden von Ausdrücken](functions-triggers-bindings.md#binding-expressions-and-patterns) Parameter zum Abrufen von Metadaten für Trigger.
+
+Die Reihenfolge der Parameter in der Funktionssignatur spielt keine Rolle. Beispielsweise können Sie Triggerparameter für Bindungen voran- oder nachstellen und den Parameter „logger“ vor oder nach Trigger- oder Bindungsparametern anordnen.
+
+### <a name="output-binding-example"></a>Beispiel für eine Ausgabebindung
+
+Im folgenden Beispiel wird das vorhergehende geändert, indem eine Ausgabewarteschlangenbindung hinzugefügt wird. Die Funktion schreibt die Warteschlangennachricht, die die Funktion auslöst, in eine neue Warteschlangennachricht in einer anderen Warteschlange.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -84,13 +95,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-### <a name="order-of-parameters"></a>Reihenfolge der Parameter
+In den Artikeln zu den Bindungsverweisen (z. B. [Speicherwarteschlangen](functions-bindings-storage-queue.md)) wird erläutert, welche Parametertypen Sie mit Trigger-, Eingabe- oder Ausgabebindungsattributen verwenden können.
 
-Die Reihenfolge der Parameter in der Funktionssignatur spielt keine Rolle. Beispielsweise können Sie Triggerparameter für Bindungen voran- oder nachstellen und den Parameter „logger“ vor oder nach Trigger- oder Bindungsparametern anordnen.
+### <a name="binding-expressions-example"></a>Beispiel für Bindungsausdrücke
 
-### <a name="binding-expressions"></a>Bindungsausdrücke
-
-Sie können Bindungsausdrücke in Attributkonstruktorparametern und Funktionsparametern verwenden. Mit dem folgenden Code wird beispielsweise der Name der zu überwachenden Warteschlange für eine App-Einstellung abgerufen, und der Erstellungszeitpunkt der Warteschlangennachricht ist im Parameter `insertionTime` enthalten.
+Mit dem folgenden Code wird der Name der zu überwachenden Warteschlange für eine App-Einstellung abgerufen, und der Erstellungszeitpunkt der Warteschlangennachricht ist im Parameter `insertionTime` enthalten.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -107,9 +116,7 @@ public static class BindingExpressionsExample
 }
 ```
 
-Weitere Informationen finden Sie unter **Bindungsausdrücke und Muster** im Artikel [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md#binding-expressions-and-patterns).
-
-### <a name="conversion-to-functionjson"></a>Konvertierung in „function.json“
+## <a name="autogenerated-functionjson"></a>Automatisch generierte function.json-Datei
 
 Im Buildprozess wird eine *function.json*-Datei in einem Funktionsordner im Ordner für Builds erstellt. Wie bereits erwähnt ist diese Datei nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. 
 
@@ -134,7 +141,7 @@ Die generierte *function.json*-Datei enthält eine `configurationSource`-Eigensc
 }
 ```
 
-### <a name="microsoftnetsdkfunctions-nuget-package"></a>NuGet-Paket „Microsoft.NET.Sdk.Functions“
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
 Die Erstellung der *function.json*-Datei wird mit dem NuGet-Paket [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) ausgeführt. 
 
@@ -169,7 +176,7 @@ Das `Sdk`-Paket hängt außerdem von [Newtonsoft.Json](http://www.nuget.org/pack
 
 Der Quellcode für `Microsoft.NET.Sdk.Functions` ist im GitHub-Repository [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) verfügbar.
 
-### <a name="runtime-version"></a>Laufzeitversion
+## <a name="runtime-version"></a>Laufzeitversion
 
 Visual Studio verwendet [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) zum Ausführen von Functions-Projekten. Core Tools ist eine Befehlszeilenschnittstelle für die Functions-Runtime.
 
