@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren der Google-Authentifizierung für Ihre App Services-Anwendung"
-description: "Erfahren Sie, wie Sie die Google-Authentifizierung für Ihre App Services-Anwendung konfigurieren."
+title: Konfigurieren der Google-Authentifizierung für Ihre App Services-Anwendung
+description: Erfahren Sie, wie Sie die Google-Authentifizierung für Ihre App Services-Anwendung konfigurieren.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: d6c1707f67d986487e5a45e76ffc9a02ddf16eb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a174913446c0a1d5e3e3b01123db8b40bfd172c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Google-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,11 +30,13 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 ## <a name="register"></a>Registrieren Ihrer Anwendung für Google
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie Ihre **URL**. Sie wird später zum Konfigurieren der Google-App benötigt.
 2. Navigieren Sie zur Website [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) (Google-APIs), melden Sie sich mit den Anmeldeinformationen für Ihr Google-Konto an, klicken Sie auf **Create project** (Projekt erstellen), geben Sie einen **Projektnamen** an, und klicken Sie auf **Create** (Erstellen).
-3. Klicken Sie unter **Social APIs** (APIs für soziale Netzwerke) auf **Google+ API** (Google+-API) und dann auf **Enable** (Aktivieren).
-4. Klicken Sie im linken Navigationsbereich auf **Credentials** > **OAuth consent screen** (Anmeldeinformationen > OAuth-Zustimmungsbildschirm), wählen Sie dann Ihre **E-Mail-Adresse** aus, geben Sie einen **Produktnamen** ein, und klicken Sie auf **Save** (Speichern).
-5. Klicken Sie auf der Registerkarte **Credentials** (Anmeldeinformationen) auf **Create credentials** > **OAuth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID), und wählen Sie dann **Web application** (Webanwendung) aus.
-6. Fügen Sie die zuvor kopierte App Service-**URL** in **Authorized JavaScript Origins** (Autorisierte JavaScript-Ursprünge) und dann Ihren Umleitungs-URI in **Authorized Redirect-URI** (Autorisierter Umleitungs-URI) ein. Der Umleitungs-URI ist die URL Ihrer Anwendung mit angefügtem Pfad */.auth/login/google/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. Klicken Sie dann auf **Erstellen**.
-7. Notieren Sie sich auf dem nächsten Bildschirm die Werte für die Client-ID und den geheimen Clientschlüssel.
+3. Nachdem das Projekt erstellt wurde, wählen Sie es aus. Klicken Sie im Projektdashboard auf **Go to APIs overview** (Zur API-Übersicht wechseln).
+4. Wählen Sie **Enable APIs and Services** (APIs und Dienste aktivieren) aus. Suchen Sie nach **Google + API**, und wählen Sie diese Option aus. Klicken Sie dann auf **Enable** (Aktivieren).
+6. Klicken Sie im linken Navigationsbereich auf **Credentials** > **OAuth consent screen** (Anmeldeinformationen > OAuth-Zustimmungsbildschirm), wählen Sie dann Ihre **E-Mail-Adresse** aus, geben Sie einen **Produktnamen** ein, und klicken Sie auf **Save** (Speichern).
+7. Klicken Sie auf der Registerkarte **Credentials** (Anmeldeinformationen) auf **Create credentials** > **OAuth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID). Klicken Sie auf **Configure Consent Screen** (Genehmigungsbildschirm konfigurieren), und geben Sie unter **Product name** einen Produktnamen an. Klicken Sie dann auf **Save** (Speichern).
+8. Wählen Sie auf dem Bildschirm "Create Client ID“ (Client-ID erstellen) die Option **Web application** (Webanwendung) aus.
+9. Fügen Sie die zuvor kopierte App Service-**URL** in **Authorized JavaScript Origins** (Autorisierte JavaScript-Ursprünge) und dann Ihren Umleitungs-URI in **Authorized Redirect-URI** (Autorisierter Umleitungs-URI) ein. Der Umleitungs-URI ist die URL Ihrer Anwendung mit angefügtem Pfad */.auth/login/google/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. Klicken Sie dann auf **Erstellen**.
+10. Notieren Sie sich auf dem nächsten Bildschirm die Werte für die Client-ID und den geheimen Clientschlüssel.
 
     > [!IMPORTANT]
     > Der geheime Clientschlüssel ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.

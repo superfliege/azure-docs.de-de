@@ -1,11 +1,11 @@
 ---
 title: H264 Single Bitrate 4K Audio 5.1 | Microsoft-Dokumentation
-description: "Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4K Audio 5.1**."
+description: Das Thema enthält eine Übersicht über die Aufgabenvoreinstellung **H264 Single Bitrate 4K Audio 5.1**.
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 72cb95ac-2cd6-4ef4-9938-8f22cea04920
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: d34fb5b640dbdbfc4d3d6b716fdd46176826a318
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05c085e82adbf362a0745f7b819854086f9507f9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="h264-single-bitrate-4k-audio-51"></a>H264 Single Bitrate 4K Audio 5.1
 `Media Encoder Standard` definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Sie können mithilfe von `preset name` angeben, in welchem Format Ihre Mediendatei codiert werden soll. Oder Sie erstellen eigene JSON- oder XML-basierte Voreinstellungen (mithilfe von UTF-8- oder UTF-16-Codierung). In diesem Fall übergeben Sie die benutzerdefinierte Voreinstellung dann an den Encoder. Eine Liste aller von diesem `Media Encoder Standard`-Encoder unterstützten Voreinstellungsnamen finden Sie unter [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Aufgabenvoreinstellungen für Media Encoder Standard).  
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
  Diese Voreinstellung erzeugt eine einzelne MP4-Datei mit einer Bitrate von 18.000 KBit/s und AAC 5.1-Audio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente sowie gültige Werte für jedes Element finden Sie unter [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Bei reservierten Einheiten des Typs „Premium“ sind voraussichtlich 4K-Codierungen inbegriffen. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+>  Bei reservierten Einheiten des Typs „Premium“ sind voraussichtlich 4K-Codierungen inbegriffen. Weitere Informationen finden Sie unter [Skalieren der Codierung](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units).  
   
  XML  
   

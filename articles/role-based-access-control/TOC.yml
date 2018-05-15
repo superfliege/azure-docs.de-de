@@ -25,7 +25,7 @@
       href: role-assignments-external-users.md
     - name: Aktivitätsprotokolle
       href: change-history-report.md
-    - name: Erhöhen des Mandantenadministratorzugriffs
+    - name: Erhöhen der Zugriffsrechte für den globalen Administrator
       href: elevate-access-global-admin.md
     - name: Problembehandlung
       href: troubleshooting.md

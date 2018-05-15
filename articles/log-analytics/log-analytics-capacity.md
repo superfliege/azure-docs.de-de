@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 99c29afec7d06a458ed6d34071f1b6acbba1f03b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: db38678a05afbc764dec20f2a475e00856a1aeee
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
 ![Symbol für Kapazität und Leistung](./media/log-analytics-capacity/capacity-solution.png)
+
+> [!NOTE]
+> Die Lösung „Kapazität und Leistung“ wurde als veraltet markiert.  Kunden, die diese Lösung bereits installiert haben, können sie weiterhin nutzen. „Kapazität und Leistung“ kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.
 
 Sie können die Lösung „Kapazität und Leistung“ in Log Analytics nutzen, um die Kapazität Ihrer Hyper-V-Server zu verstehen. Die Lösung bietet Einblicke in Ihre Hyper-V-Umgebung, indem Ihnen die Gesamtnutzung (CPU, Arbeitsspeicher und Festplatte) der Hosts und VMs angezeigt wird, die auf diesen Hyper-V-Servern ausgeführt werden. Für CPU, Arbeitsspeicher und Datenträger auf allen Hosts und VMs werden Metriken gesammelt.
 

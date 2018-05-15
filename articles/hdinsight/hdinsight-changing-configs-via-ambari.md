@@ -437,7 +437,7 @@ Je größer die Regionsdatei ist, desto kleiner ist die Anzahl von Unterteilunge
 
 * HBase blockiert Updates, wenn der Memstore eine Größe von (`hbase.hregion.memstore.flush.size` * `hbase.hregion.memstore.block.multiplier`) Byte hat.
 
-    Bei den Standardwerten für die Flushgröße und den Blockmultiplikator werden Updates blockiert, wenn die Größe für den Memstore 128 · 4 = 512 MB beträgt. Erhöhen Sie den Wert von `hbase.hregion.memstore.block.multiplier`, um die Anzahl für die Updateblockierung zu reduzieren.
+    Bei den Standardwerten für die Flushgröße und den Blockmultiplikator werden Updates blockiert, wenn die Größe für den Memstore 128 * 4 = 512 MB beträgt. Erhöhen Sie den Wert von `hbase.hregion.memstore.block.multiplier`, um die Anzahl für die Updateblockierung zu reduzieren.
 
 ![HBase-Region – Blockmultiplikator](./media/hdinsight-changing-configs-via-ambari/hbase-hregion-memstore-block-multiplier.png)
 

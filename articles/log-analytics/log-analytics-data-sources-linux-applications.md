@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 04ea6f728e59ec8b47e54fe45e1adc6cbbfb85ff
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
 Dieser Artikel bietet Einzelheiten zum Konfigurieren des [OMS-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
@@ -78,9 +78,9 @@ Die folgende Tabelle enthält Details zur Syntax für die Verwendung von mycimpr
 
 | Vorgang | Beispiel | BESCHREIBUNG
 |:--|:--|:--|
-| autoupdate *false\|true* | mycimprovauth autoupdate false | Legt fest, ob die Authentifizierungsdatei bei Neustart oder bei Aktualisierung automatisch aktualisiert wird |
+| autoupdate *„false“ oder „true“* | mycimprovauth autoupdate false | Legt fest, ob die Authentifizierungsdatei bei Neustart oder bei Aktualisierung automatisch aktualisiert wird |
 | default *bind-address Benutzername Kennwort* | mycimprovauth default 127.0.0.1 root pwd | Legt die Standardinstanz in der MySQL-OMI-Authentifizierungsdatei fest<br>Das Kennwortfeld sollte als Nur-Text eingegeben werden, das Kennwort in der MySQL-OMI-Authentifizierungsdatei ist Base 64-codiert. |
-| delete *default\|port_num* | mycimprovauth 3308 | Löscht die angegebene Instanz entweder standardmäßig oder nach Portnummer |
+| delete *„default“ oder „port_num“* | mycimprovauth 3308 | Löscht die angegebene Instanz entweder standardmäßig oder nach Portnummer |
 | help | mycimprov help | Druckt eine Liste der zu verwendenden Befehle |
 | print | mycimprov print | Druckt eine leicht zu lesende MySQL-OMI-Authentifizierungsdatei |
 | update port_num *bind-address Benutzername Kennwort* | mycimprov update 3307 127.0.0.1 root pwd | Aktualisiert die angegebene Instanz oder fügt die Instanz hinzu, sofern nicht vorhanden |

@@ -1,8 +1,8 @@
 ---
-title: "Verwenden eines SSH-Tunnels für den Zugriff auf Azure HDInsight | Microsoft-Dokumentation"
+title: Verwenden eines SSH-Tunnels für den Zugriff auf Azure HDInsight | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen SSH-Tunnel verwenden, um auf Webressourcen auf Ihren Linux-basierten HDInsight-Knoten zuzugreifen.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -10,24 +10,22 @@ ms.assetid: 879834a4-52d0-499c-a3ae-8d28863abf65
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 04/30/2018
 ms.author: larryfr
-ms.openlocfilehash: a6604cca4056acf3ce759eaf56bb9130ef672bc7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 797538a6d023e1a4b95680057eb0f72489290f40
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
 
-Linux-basierte HDInsight-Cluster bieten Zugriff auf die Ambari-Webbenutzeroberfläche über das Internet, dabei stehen aber einige Funktionen der Benutzeroberfläche nicht zur Verfügung. Dies gilt beispielsweise für die Webbenutzeroberflächen anderer Dienste, die nur durch Ambari dargestellt werden. Für eine vollständige Funktionalität der Ambari-Webbenutzeroberfläche müssen Sie einen SSH-Tunnel zum Clusterhauptknoten verwenden.
+HDInsight-Cluster bieten über das Internet Zugriff auf die Ambari-Webbenutzeroberfläche, allerdings benötigen einige Funktionen einen SSH-Tunnel. Beispielsweise kann ohne SSH-Tunnel nicht über das Internet auf die Webbenutzeroberfläche für den Oozie-Dienst zugegriffen werden.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Weshalb ist die Verwendung eines SSH-Tunnels empfehlenswert?
 
-Einige der Menüs in Ambari funktionieren nur über einen SSH-Tunnel. Diese Menüs basieren auf Websites und Diensten, die auf anderen Knotentypen ausgeführt werden, z.B. Workerknoten. Diese Websites sind oft nicht gesichert, sodass es nicht sicher wäre, sie direkt im Internet verfügbar zu machen.
+Einige der Menüs in Ambari funktionieren nur über einen SSH-Tunnel. Diese Menüs basieren auf Websites und Diensten, die auf anderen Knotentypen ausgeführt werden, z.B. Workerknoten.
 
 Die folgenden Webbenutzeroberflächen erfordern einen SSH-Tunnel:
 
@@ -37,14 +35,14 @@ Die folgenden Webbenutzeroberflächen erfordern einen SSH-Tunnel:
 * Oozie-Webbenutzeroberfläche
 * Benutzeroberfläche für HBase-Master und -Protokolle
 
-Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die eine Webbenutzeroberfläche verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
+Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für alle Dienste und Dienstprogramme, die Sie installieren und die einen Webdienst verfügbar machen, einen SSH-Tunnel. Bei der Installation von Hue mit einer Skriptaktion müssen Sie z. B. einen SSH-Tunnel verwenden, um auf die Hue-Webbenutzeroberfläche zuzugreifen.
 
 > [!IMPORTANT]
 > Wenn Sie über ein virtuelles Netzwerk Direktzugriff auf HDInsight haben, müssen Sie keine SSH-Tunnel verwenden. Ein Beispiel für Direktzugriff auf HDInsight über ein virtuelles Netzwerk finden Sie im Dokument [Connect HDInsight to your on-premise network](connect-on-premises-network.md) (Verbinden von HDInsight mit Ihrem lokalen Netzwerk, in englischer Sprache).
 
 ## <a name="what-is-an-ssh-tunnel"></a>Was ist ein SSH-Tunnel?
 
-[SSH-Tunneling (Secure Shell)](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) leitet den an einen Port gesendeten Datenverkehr an Ihre lokale Arbeitsstation weiter. Der Datenverkehr wird über eine SSH-Verbindung an Ihren HDInsight-Clusterhauptknoten weitergeleitet. Die Anforderung wird so aufgelöst, als ob sie vom Hauptknoten stammt. Die Antwort wird dann wieder durch den Tunnel an Ihre Arbeitsstation weitergeleitet.
+[SSH-Tunneling (Secure Shell)](https://en.wikipedia.org/wiki/Tunneling_protocol#Secure_Shell_tunneling) stellt eine Verbindung zwischen einem Port auf dem lokalen Computer und einem Hauptknoten in HDInsight her. Der an den lokalen Port gesendete Datenverkehr wird über eine SSH-Verbindung an den Hauptknoten weitergeleitet. Die Anforderung wird so aufgelöst, als ob sie vom Hauptknoten stammt. Die Antwort wird dann wieder durch den Tunnel an Ihre Arbeitsstation weitergeleitet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +51,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 * Einen Webbrowser, der für die Verwendung eines SOCKS5-Proxys konfiguriert werden kann.
 
     > [!WARNING]
-    > Die in Windows integrierte SOCKS-Proxy-Unterstützung unterstützt nicht SOCKS5 und funktioniert nicht mit den Schritten in diesem Dokument. Die folgenden Browser basieren auf Windows-Proxyeinstellungen und funktionieren derzeit nicht mit den Schritten in diesem Dokument:
+    > Die in die Windows-Interneteinstellungen integrierte SOCKS-Proxyunterstützung unterstützt SOCKS5 nicht. Sie funktioniert auch nicht mit den in diesem Dokument beschriebenen Schritten. Die folgenden Browser basieren auf Windows-Proxyeinstellungen und funktionieren derzeit nicht mit den Schritten in diesem Dokument:
     >
     > * Microsoft Edge
     > * Microsoft Internet Explorer
@@ -62,10 +60,10 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 ## <a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
 
-Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie **USERNAME** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **CLUSTERNAME** durch den Namen des HDInsight-Clusters:
+Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie **sshuser** durch einen SSH-Benutzer für Ihren HDInsight-Cluster und **clustername** durch den Namen des HDInsight-Clusters:
 
 ```bash
-ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+ssh -C2qTnNf -D 9876 sshuser@clustername-ssh.azurehdinsight.net
 ```
 
 Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr über SSH an den lokalen Port 9876 des Clusters weitergeleitet wird. Die Optionen sind:
@@ -85,7 +83,7 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty) ist ein SSH-Client für Windows mit grafischer Benutzeroberfläche. Führen Sie die folgenden Schritte aus, um mithilfe von PuTTY einen SSH-Tunnel zu erstellen:
 
-1. Öffnen Sie PuTTY, und geben Sie die Verbindungsinformationen ein. Wenn Sie nicht mit PuTTY vertraut sind, lesen Sie die [PuTTY-Dokumentation (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html).
+1. Öffnen Sie PuTTY, und geben Sie die Verbindungsinformationen ein. Wenn Sie mit PuTTY nicht vertraut sind, konsultieren Sie die [PuTTY-Dokumentation (http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)).
 
 2. Erweitern Sie auf der linken Seite des Dialogfelds im Abschnitt **Category** erst **Connection**, dann **SSH**, und wählen Sie anschließend **Tunnels** aus.
 
@@ -121,10 +119,10 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu überprüfen, ob Sie von der Ambari-Webbenutzeroberfläche auf Dienst-Webbenutzeroberflächen zugreifen können:
 
-1. Öffnen Sie in Ihrem Browser http://headnodehost:8080 . Die `headnodehost`-Adresse wird durch den Tunnel an den Cluster gesendet und in den Hauptknoten aufgelöst, auf dem Ambari ausgeführt wird. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
+1. Navigieren Sie im Browser zu http://headnodehost:8080. Die `headnodehost`-Adresse wird durch den Tunnel an den Cluster gesendet und in den Hauptknoten aufgelöst, auf dem Ambari ausgeführt wird. Geben Sie bei der entsprechenden Aufforderung den Benutzernamen ("admin") und das Kennwort des Administrators für den Cluster ein. Sie werden eventuell von der Ambari-Webbenutzeroberfläche ein zweites Mal zur Eingabe aufgefordert. Geben Sie in diesem Fall die Informationen erneut ein.
 
    > [!NOTE]
-   > Wenn Sie die Adresse http://headnodehost:8080 für die Verbindung mit dem Cluster verwenden, wird diese über den Tunnel hergestellt. Die Kommunikation wird durch den SSH-Tunnel und nicht per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse „https://CLUSTERNAME.azurehdinsight.net“, wobei **CLUSTERNAME** der Name des Clusters ist.
+   > Wenn Sie die Adresse http://headnodehost:8080 für die Verbindung mit dem Cluster verwenden, wird diese über den Tunnel hergestellt. Die Kommunikation wird durch den SSH-Tunnel und nicht per HTTPS geschützt. Verwenden Sie zum Herstellen einer Verbindung über das Internet per HTTPS die Adresse https://clustername.azurehdinsight.net, wobei **clustername** dem Namen des Clusters entspricht.
 
 2. Wählen Sie auf der Ambari-Webbenutzeroberfläche aus der Liste links auf der Seite „HDFS“ aus.
 
@@ -144,7 +142,7 @@ Nachdem der Cluster eingerichtet wurde, gehen Sie folgendermaßen vor, um zu üb
     ![Abbildung der NameNode-Benutzeroberfläche](./media/hdinsight-linux-ambari-ssh-tunnel/namenode.png)
 
    > [!NOTE]
-   > Beachten Sie die URL für diese Seite. Sie sollte **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** oder ähnlich lauten. Bei diesem URI wird der interne vollqualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nur über einen SSH-Tunnel zugegriffen werden kann.
+   > Beachten Sie die URL für diese Seite, der **http://hn1-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:8088/cluster** ähnlich sein sollte. Bei diesem URI wird der interne vollqualifizierte Domänenname (FQDN) des Knotens verwendet, auf den nur über einen SSH-Tunnel zugegriffen werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 38de0886de1d6068b2edad9aadc89d8048b48a55
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: a112951409fc6177240b9eddc9fcd7f6c0c932cc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
 Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von Service Fabric. In diesem Dokument werden viele dieser häufig gestellten Fragen und die zugehörigen Antworten behandelt.
 
 ## <a name="cluster-setup-and-management"></a>Clustereinrichtung und -verwaltung
+
+### <a name="how-do-i-rollback-my-service-fabric-cluster-certificate"></a>Wie kann ich ein Rollback für mein Service Fabric-Clusterzertifikat ausführen?
+
+Für das Rollback (Zurücksetzen) eines Upgrades für Ihre Anwendung ist vor dem Commit für die Änderung durch das Service Fabric-Clusterquorum eine Integritätsfehlererkennung erforderlich; für Änderungen mit erfolgtem Commit kann nur ein Rollforward ausgeführt werden. Möglicherweise muss ein Eskalationstechniker über die Kundensupportdienste Ihr Cluster wiederherstellen, wenn eine nicht überwachte wichtige Zertifikatsänderung eingeführt wurde.  Das [Service Fabric-Anwendungsupgrade](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade?branch=master) wendet [Anwendungsupgradeparameter](https://review.docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade-parameters?branch=master) an und verspricht ein Upgrade ohne Ausfallzeiten.  Entsprechend dem empfohlenen überwachten Modus für Anwendungsupgrades basiert der automatische Fortschritt der Domänenaktualisierung auf bestandenen Integritätsprüfungen. Ein Rollback erfolgt automatisch, wenn die Aktualisierung eines Standarddienstes fehlschlägt.
+ 
+Wenn Ihr Cluster noch die klassische Eigenschaft „Zertifikatfingerabdruck“ in der Resource Manager-Vorlage nutzt, empfiehlt es sich, [„Zertifikatfingerabdruck“ in „Allgemeiner Name“](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) für den Cluster zu ändern, um die modernen Verwaltungsfunktionen für geheime Schlüssel verwenden zu können.
 
 ### <a name="can-i-create-a-cluster-that-spans-multiple-azure-regions-or-my-own-datacenters"></a>Kann ich einen Cluster erstellen, der mehrere Azure-Regionen oder eigene Datencenter umfasst?
 
@@ -89,7 +95,7 @@ Wir arbeiten an einer optimierten Lösung, derzeit müssen Sie jedoch das Upgrad
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Kann ich die angefügten Datenträger in einem Clusterknotentyp (VM-Skalierungsgruppe) verschlüsseln?
 Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angefügten Datenträgern](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [Verschlüsseln von Datenträgern (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) und [Verschlüsseln von Datenträgern (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
 
-### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster-"></a>Welche Verzeichnisse und Prozesse muss ich ausschließen, wenn ein Antivirenprogramm in meinem Cluster ausgeführt wird?
+### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Welche Verzeichnisse und Prozesse muss ich ausschließen, wenn ein Antivirenprogramm in meinem Cluster ausgeführt wird?
 
 | **Vom Virenschutz ausgeschlossene Verzeichnisse** |
 | --- |

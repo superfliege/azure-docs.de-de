@@ -12,21 +12,25 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/19/2018
+ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 46ba7b6e638fafa512d4a3f291c49acc1ddf02e4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1ba02afa775343f496a2b5fec98699e593a330ba
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>Überwachen des Clusters und der Plattform
 
 Die Überwachung auf Plattformebene ist wichtig, um festzustellen, ob sich Ihre Hardware und Ihr Cluster erwartungsgemäß verhalten. Durch Service Fabric können Anwendungen bei Hardwareausfällen weiter ausgeführt werden. Sie müssen aber nach wie vor diagnostizieren, ob ein Fehler in einer Anwendung oder in der zugrunde liegenden Infrastruktur auftritt. Zudem sollten Sie zur besseren Kapazitätsplanung Ihre Cluster überwachen, um besser entscheiden zu können, ob Hardware hinzugefügt oder entfernt werden soll.
 
-Service Fabric stellt die folgenden Protokollkanäle vorkonfiguriert bereit:
+Service Fabric macht mehrere strukturierte Plattformereignisse als "[Service Fabric-Ereignisse](service-fabric-diagnostics-events.md)" über EventStore und verschiedene, sofort einsatzbereite Anmeldekanäle verfügbar. 
 
-* **Operational** (Betrieb)  
+EventStore ermöglicht Ihnen entitätsbasierten Zugriff auf Ihre Clusterereignisse (zu den Entitäten zählen auch Cluster, Knoten, Anwendungen, Dienste, Partitionen, Replikate und Container) und macht diese über die REST-APIs und die Service Fabric-Clientbibliothek verfügbar. Verwenden Sie EventStore, um Ihre Dev/Test-Cluster zu überwachen und einen Point-in-Time-Überblick über den Status Ihrer Produktionscluster abzurufen. Weitere Informationen hierzu finden Sie unter [EventStore-Übersicht](service-fabric-diagnostics-eventstore.md).
+
+Service Fabric bietet außerdem die folgenden sofort einsatzbereiten Anmeldekanäle zum Einrichten einer Pipeline zum Überwachen Ihrer Produktionscluster:
+
+* [**Operational**](service-fabric-diagnostics-event-generation-operational.md) (Betrieb)  
 Von Service Fabric und im Cluster ausgeführte Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein Upgrade usw.
 
 * **Operational – detailed** (Betrieb – ausführlich)  

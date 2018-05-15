@@ -2,7 +2,7 @@
 
 Dieser Abschnitt enthält detaillierte Anleitungen zum Erstellen eines neuen Projekts, um zu veranschaulichen, wie Sie eine iOS (Swift)-Anwendung mit *Mit Microsoft anmelden* so integrieren können, dass Sie Web-APIs abfragen kann, die ein Token erfordern.
 
-> Möchten Sie stattdessen das XCode-Projekt dieses Beispiels herunterladen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip), und fahren Sie mit dem Schritt [Konfiguration](#create-an-application-express) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+> Möchten Sie stattdessen das XCode-Projekt dieses Beispiels herunterladen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip), und fahren Sie mit dem Schritt [Konfiguration](#register-your-application) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
 
 
 ## <a name="install-carthage-to-download-and-build-msal"></a>Installieren von Carthage, um MSAL herunterzuladen und aufzubauen
@@ -66,7 +66,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 ## <a name="creating-your-applications-ui"></a>Erstellen der Benutzeroberfläche Ihrer Anwendung
 Eine Datei Main.storyboard-Datei sollte als Teil Ihrer Projektvorlage automatisch erstellt werden. Befolgen Sie die nachstehenden Anweisungen, um die Benutzeroberfläche der App zu erstellen:
 
-1.  Halten Sie STRG gedrückt, und klicken Sie auf `Main.storyboard` im Kontextmenü. Klicken Sie dann auf: `Open As` > `Source Code`
+1.  Klicken Sie bei gedrückter STRG-TASTE auf `Main.storyboard`, um das Kontextmenü aufzurufen, und klicken Sie dann auf `Open As` > `Source Code`
 2.  Ersetzen Sie die `<scenes>`-Knoten mit dem folgenden Code:
 
 ```xml

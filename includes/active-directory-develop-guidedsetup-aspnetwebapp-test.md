@@ -1,3 +1,26 @@
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 7e9518f8a90faa0566b96d58992b01e4b0a642f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
 Um Ihre Anwendung in Visual Studio zu testen, drücken Sie **F5**, um das Projekt auszuführen. Der Browser wird geöffnet und leitet Sie zu „http://<span></span>localhost:{Port}“ weiter, wo die Schaltfläche **Bei Microsoft anmelden** angezeigt wird. Wählen Sie die Schaltfläche aus, um den Anmeldeprozess zu starten.
@@ -9,7 +32,7 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Mi
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
-Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite wird die Willkommensnachricht „Hallo \<Benutzer>“, ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Der Link für die Benutzeransprüche durchsucht den **Authorize**-Controller, den Sie zuvor erstellt haben.
+Nachdem Sie sich angemeldet haben, wird der Benutzer zur Startseite Ihrer Website umgeleitet. Die Startseite ist die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Auf der Startseite wird die Willkommensnachricht *„Hallo \<Benutzer“*, ein Link zum Abmelden und ein Link zum Anzeigen der Benutzeransprüche angezeigt. Über den Link für die Benutzeransprüche wird der vorher erstellte *Claims*-Controller durchsucht.
 
 ### <a name="browse-to-see-the-users-claims"></a>Navigieren zu den Benutzeransprüchen
 Um die Benutzeransprüche anzuzeigen, klicken Sie auf den Link zum Navigieren zur Controlleransicht. Diese ist nur für authentifizierte Benutzer verfügbar.
@@ -28,40 +51,43 @@ Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Auth
 
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem Authorize-Attribut (optional)
-So testen Sie als anonymer Benutzer den Zugriff auf den **Authorize**-Controller für die Benutzeransprüche
+Führen Sie die folgenden Schritte aus, um den Zugriff als anonymer Benutzer auf einen mit dem `Authorize`-Attribut geschützten Controller zu testen:
 1. Klicken Sie auf den Link zum Abmelden des Benutzers, und schließen Sie den Abmeldevorgang ab.
-2. Geben Sie in Ihren Browser „http://<span></span>localhost:{Port}/authenticated“ ein, um auf Ihren Controller zuzugreifen, der durch das **Authorize**-Attribut geschützt ist.
+2. Geben Sie nun im Browser „http://<span></span>localhost:{Port}/claims“ ein, um auf den mit dem `Authorize`-Attribut geschützten Controller zuzugreifen.
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>Erwartete Ergebnisse nach dem Zugriff auf einen geschützten Controller
 Sie werden für die Verwendung der geschützten Controlleransicht zur Authentifizierung aufgefordert.
 
-## <a name="additional-information"></a>Zusätzliche Informationen
+## <a name="advanced-options"></a>Erweiterte Optionen
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>Schutz der gesamten Website
-Um Ihre gesamte Website zu schützen, fügen Sie in der Datei **Global.asax** das Attribut **AuthorizeAttribute** zum Filter **GlobalFilters** in der Methode **Application_Start** hinzu:
+Zum Schutz der gesamten Website fügen Sie in der Datei **Global.asax** unter der Methode `Application_Start`dem Filter `GlobalFilters` das `AuthorizeAttribute`-Attribut hinzu:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
 <!--end-collapse-->
 
-### <a name="restrict-sign-in-access-to-your-application"></a>Beschränken des Anmeldezugriffs auf Ihre Anwendung
-Standardmäßig können sich persönliche Konten wie solche bei outlook.com und live.com sowie andere Konten bei Ihrer Anwendung anmelden. Geschäfts-, Schul- oder Unikonten in Organisationen, die in Azure AD integriert sind, können sich standardmäßig ebenfalls anmelden.
+### <a name="restrict-who-can-sign-in-to-your-application"></a>Einschränken des Anmeldezugriffs auf Ihre Anwendung
+Wenn Sie die Anwendung nach dieser Anleitung erstellen, akzeptiert Ihre Anwendung standardmäßig sowohl Anmeldungen von persönlichen Konten (z.B. outlook.com, live.com u.a.) als auch von Geschäfts,- Schul- und Unikonten von Unternehmen oder Organisationen, die in Azure Active Directory integriert wurden. Diese Option wird für SaaS-Anwendungen empfohlen.
 
-Zum Beschränken des benutzerseitigen Anmeldezugriffs für Ihre Anwendung stehen mehrere Optionen zur Verfügung.
+Um die Anmeldung bei und den Benutzerzugriff auf Ihre Anwendung einzuschränken, stehen mehrere Optionen zur Verfügung:
 
-#### <a name="restrict-access-to-a-single-organization"></a>Beschränken des Zugriffs auf eine einzelne Organisation
-Sie können den Anmeldezugriff für Ihre Anwendung auf bestimmte Benutzerkonten, die in einer einzelnen Azure AD-Organisation vorhanden sind, beschränken:
-1. Ändern Sie in der Datei **Web.config** den Wert für den Parameter **Tenant**. Ändern Sie den Wert von **Common** in den Mandantennamen der Organisation, z.B. **contoso.onmicrosoft.com**.
-2. Legen Sie in Ihrer OWIN-**Startup**-Klasse das **ValidateIssuer**-Argument auf **true** fest.
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>Option 1: Einschränken der Anmeldung bei der Anwendung auf die Benutzer der Active Directory-Instanz von nur einer Organisation (Einzelmandant)
 
-#### <a name="restrict-access-to-a-list-of-organizations"></a>Beschränken des Zugriffs auf eine Liste von Organisationen
+Diese Option ist ein gängiges Szenario für *Branchenanwendungen*. Wenn Ihre Anwendung Anmeldungen nur von Konten akzeptieren soll, die zu einer bestimmten Azure Active Directory-Instanz gehören (einschließlich *Gastkonten* dieser Instanz), gehen Sie wie folgt vor:
+
+1. Ändern Sie in der Datei **Web.config** den Wert für den Parameter `Tenant` von `Common` auf den Mandantennamen der Organisation, z. B. `contoso.onmicrosoft.com`.
+2. Legen Sie in Ihrer [OWIN-Startup-Klasse](#configure-the-authentication-pipeline) das Argument `ValidateIssuer` auf `true` fest.
+
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>Option 2: Einschränken des Zugriffs auf Ihre Anwendung auf Benutzer in einer bestimmten Liste von Organisationen
+
 Sie können den Anmeldezugriff auf bestimmte Benutzerkonten, die in einer Azure AD-Organisation in der Liste der zulässigen Organisationen enthalten sind, beschränken:
-1. Legen Sie in der Datei **Web.config** in Ihrer **OWIN-Startup**-Klasse das **ValidateIssuer**-Argument auf **true** fest.
-2. Legen Sie den Wert des Parameters **ValidIssuers** auf die Liste der zulässigen Organisationen fest.
+1. Legen Sie in Ihrer [OWIN-Startup-Klasse](#configure-the-authentication-pipeline) das Argument `ValidateIssuer` auf `true` fest.
+2. Legen Sie den Wert des Parameters `ValidIssuers` auf die Liste der zulässigen Organisationen fest.
 
-#### <a name="use-a-custom-method-to-validate-issuers"></a>Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Option 3: Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
 Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie auf MSDN unter [TokenValidationParameters-Klasse](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx).
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

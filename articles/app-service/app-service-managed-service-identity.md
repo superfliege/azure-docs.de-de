@@ -11,16 +11,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: mahender
-ms.openlocfilehash: 800105d29fa284531e02ce80db69eff3a9915652
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ed2db5fd48c60601b90fc7ffb1094b8d89573b1f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität (öffentliche Vorschau) in App Service und Azure Functions
 
 > [!NOTE] 
 > Die verwaltete Dienstidentität für App Service und Azure Functions befindet sich derzeit in der Vorschauversion. App Service unter Linux und Web-App für Container werden derzeit nicht unterstützt.
+
+
+> [!Important] 
+> Die verwaltete Dienstidentität für App Service und Azure Functions verhält sich nicht wie erwartet, wenn Ihre App von einem zum anderen Abonnement/Mandanten migriert wird. Die App muss eine neue Identität erhalten, und die vorhandene Identität kann nicht ordnungsgemäß gelöscht werden, ohne dass die Site selbst gelöscht wird. Ihre App muss mit einer neuen Identität neu erstellt werden, und bei den nachgeschalteten Ressourcen müssen die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
+
 
 In diesem Thema erfahren Sie, wie eine verwaltete App-Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Durch eine verwaltete Dienstidentität von Azure Active Directory kann Ihre App mühelos auf andere mit AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Dienstidentität finden Sie in der [Übersicht über die verwaltete Dienstidentität](../active-directory/managed-service-identity/overview.md).
 

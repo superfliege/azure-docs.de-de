@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/29/2018
+ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7840dc86ec7753980bb2c35f932f132c50d65f9e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 Dieses Tutorial ist der erste Teil einer Serie.  Hier erfahren Sie, wie Sie eine Azure Service Fabric-Anwendung mit einem ASP.NET Core-Web-API-Front-End und einem zustandsbehafteten Back-End-Dienst zum Speichern Ihrer Daten erstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](#walkthrough_anchor) fortfahren.  Wenn Sie möchten, können Sie sich auch eine [schrittweise Videoanleitung](https://channel9.msdn.com/Events/Connect/2017/E100) zu diesem Tutorial ansehen.
@@ -460,13 +460,24 @@ namespace VotingData.Controllers
 }
 ```
 
-
 ## <a name="connect-the-services"></a>Verbinden der Dienste
 Im nächsten Schritt verbinden Sie die beiden Dienste miteinander und sorgen dafür, dass die Front-End-Webanwendung Abstimmungsinformationen aus dem Back-End-Dienst abruft und festlegt.
 
 Service Fabric bietet absolute Flexibilität bei der Kommunikation mit Reliable Services. Sie können in einer Anwendung über Dienste verfügen, auf die über TCP zugegriffen werden kann. Auf andere Dienste wird möglicherweise über eine HTTP-REST-API zugegriffen, und bei wieder anderen Diensten erfolgt der Zugriff über Websockets. Ausführliche Informationen zu den verfügbaren Optionen und deren Vor- und Nachteilen finden Sie unter [Kommunizieren mit Diensten](service-fabric-connect-and-communicate-with-services.md).
 
-Verwenden Sie in diesem Tutorial die Option [ASP.NET Core-Web-API](service-fabric-reliable-services-communication-aspnetcore.md).
+In diesem Lernprogramm verwenden Sie die [ASP.NET Core-Web-API](service-fabric-reliable-services-communication-aspnetcore.md) und den [Service Fabric Reverseproxy](service-fabric-reverseproxy.md), damit der Front-End-Webdienst mit dem Back-End-Datendienst kommunizieren kann. Der Reverseproxy wird in der Regel für die Verwendung von Port 19081 konfiguriert. Der Port wird in der ARM-Vorlage, die zum Einrichten des Clusters verwendet wird, festgelegt. Welcher Port verwendet wird, geht aus der Cluster-Vorlage in der Ressource **Microsoft.ServiceFabric/clusters** hervor:
+
+```json
+"nodeTypes": [
+          {
+            ...
+            "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+            "isPrimary": true,
+            "vmInstanceCount": "[parameters('nt0InstanceCount')]",
+            "reverseProxyEndpointPort": "[parameters('SFReverseProxyPort')]"
+          }
+        ],
+```
 
 <a id="updatevotecontroller" name="updatevotecontroller_anchor"></a>
 

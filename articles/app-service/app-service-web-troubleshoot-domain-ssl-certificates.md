@@ -1,0 +1,296 @@
+---
+title: Problembehandlung bei Domänen- und SSL-Zertifikatsproblemen in Azure-Web-Apps | Microsoft-Dokumentation
+description: Problembehandlung bei Domänen- und SSL-Zertifikatsproblemen in Azure-Web-Apps
+services: app-service\web
+documentationcenter: ''
+author: genlin
+manager: cshepard
+editor: ''
+tags: top-support-issue
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 04/18/2018
+ms.author: genli
+ms.openlocfilehash: ba21475b771f1688c0a3f2f34c8d961fba5cd182
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
+# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Problembehandlung bei Domänen- und SSL-Zertifikatsproblemen in Azure-Web-Apps
+
+In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren von Domänen oder SSL-Zertifikaten für Ihre Azure-Web-Apps auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
+
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Ihre Frage im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)stellen, um dort Hilfe von Azure-Experten zu erhalten. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und klicken Sie auf **Support erhalten**.
+
+## <a name="certificate-problems"></a>Probleme mit Zertifikaten
+
+### <a name="unable-to-add-bind-ssl-certificate-to-a-web-app"></a>Zertifikat mit SSL-Bindung kann einer Web-App nicht hinzugefügt werden 
+
+### <a name="symptom"></a>Symptom
+
+Wenn Sie eine SSL-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
+
+**Fehler beim Hinzufügen der SSL-Bindung. Das Zertifikat für den vorhandenen VIP kann nicht festgelegt werden, da ein anderer VIP dieses Zertifikat bereits verwendet.**
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem kann auftreten, wenn Sie mehrere IP-basierte SSL-Bindungen für die gleiche IP-Adresse bei mehreren Web-Apps haben. Beispiel: Web-App A hat IP-basiertes SSL mit altem Zertifikat. Web-App B hat für die gleiche IP-Adresse IP-basiertes SSL mit neuem Zertifikat. Wenn Sie die SSL-Bindung der Web-App mit dem neuen Zertifikat aktualisieren, tritt dieser Fehler auf, da die gleiche IP-Adresse für eine andere App verwendet wird. 
+
+### <a name="solution"></a>Lösung 
+
+Verwenden Sie zur Problembehebung eine der folgenden Methoden:
+
+- Löschen Sie die IP-basierte SSL-Bindung bei der Web-App, die das alte Zertifikat verwendet. 
+- Erstellen Sie eine neue IP-basierte SSL-Bindung, die das neue Zertifikat verwendet.
+
+### <a name="unable-to-delete-a-certificate"></a>Zertifikat kann nicht gelöscht werden 
+
+### <a name="symptom"></a>Symptom
+
+Wenn Sie versuchen, ein Zertifikat zu löschen, erhalten Sie die folgende Fehlermeldung:
+
+**Das Zertifikat kann nicht gelöscht werden, da es derzeit in einer SSL-Bindung verwendet wird. Die SSL-Bindung muss entfernt werden, bevor Sie das Zertifikat löschen können.**
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem kann auftreten, wenn das Zertifikat von einer anderen Web-App verwendet wird.
+
+### <a name="solution"></a>Lösung
+
+Entfernen Sie die SSL-Bindung für dieses Zertifikat von den Web-Apps. Versuchen Sie anschließend, das Zertifikat zu löschen. Wenn Sie das Zertifikat immer noch nicht löschen können, löschen Sie den Cache Ihres Internet-Browsers, und öffnen Sie das Azure-Portal in einem neuen Browserfenster. Versuchen Sie anschließend, das Zertifikat zu löschen.
+
+### <a name="unable-to-purchase-an-app-service-certificate"></a>App Service-Zertifikat kann nicht erworben werden 
+
+### <a name="symptom"></a>Symptom
+Sie können im Azure-Portal kein [App Service-Zertifikat](./web-sites-purchase-ssl-web-site.md) erwerben.
+
+### <a name="cause-and-solution"></a>Ursache und Lösung
+Dieses Problem kann aus einem der folgenden Gründe auftreten:
+
+- Der App Service-Plan ist „Free“ oder „Shared“. Für diese Preisstufen wird SSL nicht unterstützt. 
+
+    **Lösung**: Führen Sie ein Upgrade für den App Service-Plan der Web-App auf „Standard“ aus.
+
+- Für das Abonnement ist keine gültige Kreditkarte angegeben.
+
+    **Lösung**: Fügen Sie Ihrem Abonnement eine gültige Kreditkarte hinzu. 
+
+- Der Erwerb eines App Service-Zertifikats wird vom Abonnementangebot (z. B. Microsoft Student) nicht unterstützt.  
+
+    **Lösung**: Führen Sie ein Upgrade für Ihr Abonnement aus. 
+
+- Bei dem Abonnement wurde die Obergrenze von Käufen erreicht, die für ein Abonnement zulässig sind.
+
+    **Lösung**: Für App Service-Zertifikate gilt bei Abonnements des Typs „Nutzungsbasierte Bezahlung“ und „EA“ ein Limit von zehn (10) Zertifikatskäufen. Bei anderen Abonnementtypen sind nur drei (3) Käufe zulässig. Wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um dieses Limit zu erhöhen.
+- Das App Service-Zertifikat wurde als betrugsverdächtig gekennzeichnet. Sie erhalten die folgende Fehlermeldung: „Ihr Zertifikat wurde als betrugsverdächtig gekennzeichnet. Die Anforderung wird aktuell geprüft. Wenn das Zertifikat nicht innerhalb von 24 Stunden verwendbar ist“...
+
+    **Lösung**: Wenn das Zertifikat als betrugsverdächtig gekennzeichnet wird und das Problem nach 24 Stunden noch nicht behoben ist, führen Sie die folgenden Schritte aus:
+
+    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+    2. Wechseln Sie zu **App Service-Zertifikate**, und wählen Sie das Zertifikat aus.
+    3. Wählen Sie **Zertifikatkonfiguration** > **Schritt 2: Überprüfen** > **Domänenüberprüfung** aus. Dadurch wird eine E-Mail-Nachricht an den Azure-Zertifikatanbieter gesendet mit der Bitte, das Problem zu beheben.
+
+## <a name="domain-problems"></a>Probleme mit Domänen
+
+### <a name="purchased-ssl-certificate-for-wrong-domain"></a>SSL-Zertifikat für falsche Domäne erworben
+
+### <a name="symptom"></a>Symptom
+
+Sie haben ein App Service-Zertifikat für die falsche Domäne erworben und können das Zertifikat nicht für die richtige Domäne aktualisieren.
+
+### <a name="solution"></a>Lösung
+
+- Löschen Sie dieses Zertifikat, und erwerben Sie anschließend ein neues Zertifikat.
+- Wenn sich das aktuelle Zertifikat mit der falschen Domäne im Status „Ausgestellt“ befindet, wird Ihnen dieses Zertifikat auch in Rechnung gestellt. App Service-Zertifikate sind nicht erstattbar. Sie können sich jedoch an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden und prüfen, ob es andere Optionen gibt. 
+
+### <a name="app-service-certificate-was-renewed-but-still-shows-the-old-certificate"></a>Das App Service-Zertifikat wurde zwar erneuert, es wird jedoch weiterhin das alte Zertifikat angezeigt 
+
+### <a name="symptom"></a>Symptom
+
+Das App Service-Zertifikat wurde erneuert, doch die Web-App, die das App Service-Zertifikat verwendet, benutzt weiterhin das alte Zertifikat. Darüber hinaus haben Sie eine Warnmeldung erhalten, dass das HTTPS-Protokoll erforderlich ist.
+
+### <a name="cause"></a>Ursache 
+Der Web-App-Dienst führt alle acht Stunden einen Hintergrundauftrag aus und synchronisiert die Zertifikatsressource, wenn Änderungen vorgenommen wurden. Daher ruft die Anwendung manchmal noch das alte Zertifikat und nicht das neu aktualisierte Zertifikat ab, wenn Sie ein Zertifikat aktualisieren oder rotieren, weil der Auftrag zum Synchronisieren der Zertifikatsressource noch nicht ausgeführt wurde. 
+ 
+### <a name="solution"></a>Lösung
+
+Sie können eine Synchronisierung des Zertifikats erzwingen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. Wechseln Sie zu **App Service-Zertifikate**, und wählen Sie das Zertifikat aus.
+2. Klicken Sie auf **Erstellung neuer Schlüssel und Synchronisierung**, und klicken Sie dann auf **Synchronisierung**. Dies nimmt einige Zeit in Anspruch. 
+3. Wenn die Synchronisierung abgeschlossen ist, wird folgende Benachrichtigung angezeigt: „Alle Ressourcen wurden erfolgreich mit dem neuesten Zertifikat aktualisiert“.
+
+### <a name="domain-verification-is-not-working"></a>Die Domänenüberprüfung funktioniert nicht 
+
+### <a name="symptom"></a>Symptom 
+Für das App Service-Zertifikat ist zuerst eine Überprüfung der Domäne erforderlich, bevor das Zertifikat verwendet werden kann. Wenn Sie auf **Überprüfen** klicken, schlägt der Vorgang fehl.
+
+### <a name="solution"></a>Lösung
+Überprüfen Sie Ihre Domäne manuell durch Hinzufügen eines TXT-Eintrags:
+ 
+1.  Wechseln Sie zum DNS-Anbieter (Domain Name Service), der Ihre Domäne (Domänennamen) hostet.
+2.  Fügen Sie einen TXT-Eintrag für Ihre Domäne hinzu, der den Wert des Domänentokens verwendet, das im Azure-Portal angezeigt wird. 
+
+Warten Sie einige Minuten, bis die DNS-Daten weitergegeben wurden, und klicken Sie dann auf **Aktualisieren**, um die Überprüfung auszulösen. 
+
+Eine andere Methode für die manuelle Überprüfung ist die „HTML-Webseitenmethode“, mit der Sie der Zertifizierungsstelle erlauben können, den Domänenbesitz für die Domäne zu bestätigen, für die das Zertifikat ausgestellt wird.
+
+1.  Erstellen Sie eine HTML-Datei namens „{Domänenüberprüfungstoken}.html“. 
+2.  Der Inhalt dieser Datei muss dem Wert des Domänenüberprüfungstokens entsprechen.
+3.  Laden Sie diese Datei in das Stammverzeichnis des Webservers hoch, der Ihre Domäne hostet.
+4.  Klicken Sie auf **Aktualisieren**, um den Status des Zertifikats zu prüfen. Es kann einige Minuten dauern, bis die Überprüfung abgeschlossen ist.
+
+Beispiel: Sie erwerben ein Standardzertifikat für azure.com mit dem Domänenüberprüfungstoken „1234abcd“. Eine Webanforderung an http://azure.com/1234abcd.html sollte daraufhin „1234abcd“ zurückgeben. 
+
+> [!IMPORTANT]
+> Bei einer Zertifikatbestellung muss der Domänenüberprüfungsvorgang innerhalb von 15 Tagen abgeschlossen sein. Nach 15 Tagen wird das Zertifikat durch die Zertifizierungsstelle verweigert, das Zertifikat wird Ihnen nicht in Rechnung gestellt. Löschen Sie in diesem Fall das Zertifikat, und versuchen Sie es erneut.
+>
+> 
+
+### <a name="unable-to-purchase-a-domain"></a>Erwerb einer Domäne ist nicht möglich
+
+### <a name="symptom"></a>Symptom
+Sie können im Azure-Portal keine Domäne von Web-App oder App Service-Domäne erwerben.
+
+### <a name="cause-and-solution"></a>Ursache und Lösung
+
+Dieses Problem tritt aus einem der folgenden Gründe auf:
+
+- Keine oder ungültige Kreditkarte für das Azure-Abonnement angegeben.
+
+    **Lösung**: Fügen Sie Ihrem Abonnement eine gültige Kreditkarte hinzu, wenn keine vorhanden ist.
+
+- Wenn Sie nicht der Besitzer des Abonnements sind, sind Sie möglicherweise nicht berechtigt, die Domäne zu erwerben.
+
+    **Lösung**: Fügen Sie Ihrem Konto die [Rolle „Eigentümer“](../billing/billing-add-change-azure-subscription-administrator.md) hinzu, oder wenden Sie sich an den Abonnementadministrator, um die Berechtigungen zum Kauf einer Domäne zu erhalten.
+- Sie haben das Limit für den Erwerb von Domänen für Ihr Abonnement erreicht. Das aktuelle Limit beläuft sich auf 20 Domänenkäufe.
+
+    **Lösung**: Wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um eine Erhöhung des Limits anzufordern.
+- Der Kauf der App Service-Domäne wird von Ihrem Azure-Abonnementtyp nicht unterstützt.
+
+    **Lösung**: Führen Sie ein Upgrade für Ihr Azure-Abonnement auf andere Abonnementtypen aus, z. B. auf ein Abonnement mit nutzungsbasierter Bezahlung.
+
+### <a name="unable-to-add-a-hostname-to-web-app"></a>Der Web-App kann kein Hostname hinzugefügt werden 
+
+### <a name="symptom"></a>Symptom
+
+Wenn Sie einen Hostnamen hinzufügen, schlägt die Domänenvalidierung und -überprüfung fehl.
+
+### <a name="cause"></a>Ursache 
+
+Dieses Problem tritt aus einem der folgenden Gründe auf:
+
+- Sie haben keine Berechtigung zum Hinzufügen von Hostnamen.
+
+    **Lösung**: Stellen Sie mithilfe Ihres Abonnementadministrators sicher, dass Sie eine Berechtigung zum Hinzufügen von Hostnamen haben.
+- Der Besitz der Domäne konnte nicht überprüft werden.
+
+    **Lösung**: Überprüfen Sie, ob der CNAME- oder A-Eintrag richtig konfiguriert ist. Erstellen Sie einen CNAME- oder A-Eintrag, um die benutzerdefinierte Domäne der Web-App zuzuordnen. Wenn Sie die Stammdomäne verwenden möchten, müssen Sie einen A- und einen TXT-Eintrag verwenden:
+
+    |Eintragstyp|Host|Verweist auf|
+    |------|------|-----|
+    |A|@|IP-Adresse für Web-App|
+    |TXT|@|<App-Name>.azurewebsites.net|
+    |CNAME|www|<App-Name>.azurewebsites.net|
+
+### <a name="dns-cannot-be-resolved"></a>DNS kann nicht aufgelöst werden
+
+### <a name="symptom"></a>Symptom
+
+Sie erhalten eine Fehlermeldung, die besagt, dass der DNS-Eintrag nicht gefunden werden konnte.
+
+### <a name="cause"></a>Ursache
+Dieses Problem tritt aus einem der folgenden Gründe auf:
+
+- Die Gültigkeitsdauer (Time to Live, TTL) ist noch nicht abgelaufen. Überprüfen Sie die DNS-Konfiguration für Ihre Domäne, um den TTL-Wert zu bestimmen, und warten Sie dann bis zum Ablauf der Gültigkeitsdauer.
+- Die DNS-Konfiguration ist fehlerhaft.
+
+### <a name="solution"></a>Lösung
+- Warten Sie 48 Stunden, bis sich dieses Problem von selbst löst.
+- Wenn Sie die Einstellung für die Gültigkeitsdauer (TTL) in Ihrer DNS-Konfiguration ändern können, ändern Sie den Wert auf 5 Minuten, um festzustellen, ob das Problem dadurch behoben wird.
+- Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der Web-App verweist. Wenn dies nicht der Fall ist, konfigurieren Sie den A-Eintrag mit der richtigen IP-Adresse der Web-App.
+
+### <a name="restore-a-deleted-domain"></a>Wiederherstellen einer gelöschten Domäne 
+
+### <a name="symptom"></a>Symptom
+Die Domäne wird nicht mehr im Azure-Portal angezeigt.
+
+### <a name="cause"></a>Ursache 
+Die Domäne wurde möglicherweise versehentlich vom Besitzer des Abonnements gelöscht.
+
+### <a name="solution"></a>Lösung
+Wenn Ihre Domäne vor weniger als sieben Tagen gelöscht wurde, wurde der Löschvorgang für die Domäne noch nicht gestartet. In diesem Fall können Sie die gleiche Domäne erneut im Azure-Portal unter dem gleichen Abonnement erwerben (stellen Sie sicher, dass Sie im Suchfeld den genauen Domänennamen eingeben). Die Domäne wird Ihnen nicht erneut in Rechnung gestellt. Wenn die Domäne vor mehr als sieben Tagen gelöscht wurde, wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um Hilfe beim Wiederherstellen der Domäne zu erhalten.
+
+### <a name="custom-domain-returns-404-or-site-inaccessible"></a>Benutzerdefinierte Domäne gibt den Fehler 404 zurück oder kein Zugriff auf Website 
+
+### <a name="symptom"></a>Symptom
+
+Wenn Sie mithilfe des benutzerdefinierten Domänennamens zur Website navigieren, erhalten Sie die folgende Fehlermeldung:
+
+**Fehler 404 – Web-App wurde nicht gefunden.**
+
+
+### <a name="cause-and-solution"></a>Ursache und Lösung
+
+**Ursache 1** 
+
+Der benutzerdefinierten Domäne, die Sie konfiguriert haben, fehlt ein CNAME- oder ein A-Eintrag. 
+
+**Lösung für Ursache 1**
+
+- Wenn Sie einen A-Eintrag hinzugefügt haben, stellen Sie sicher, dass auch ein TXT-Eintrag hinzugefügt wird. Weitere Informationen finden Sie unter [Erstellen eines A-Eintrags](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- Wenn Sie keine Stammdomäne für Ihre Web-App verwenden müssen, wird empfohlen, anstelle eines A-Eintrags einen CNAME-Eintrag zu verwenden.
+- Verwenden Sie nicht gleichzeitig einen CNAME- und einen A-Eintrag für die gleiche Domäne. Dies kann Konflikte verursachen und verhindert ein Auflösen der Domäne. 
+
+**Ursache 2** 
+
+Im Internet-Browser ist möglicherweise immer noch die alte IP-Adresse für Ihre Domäne im Cache gespeichert. 
+
+**Lösung für Ursache 2**
+
+Löschen Sie den Browser-Cache. Bei Windows-Geräten können Sie den Befehl `ipconfig /flushdns` ausführen. Überprüfen Sie mithilfe von [WhatsmyDNS.net](https://www.whatsmydns.net/), ob Ihre Domäne auf die IP-Adresse der Web-App verweist. 
+
+### <a name="unable-to-add-subdomain"></a>Unterdomäne kann nicht hinzugefügt werden 
+
+### <a name="symptom"></a>Symptom
+
+Sie können einer Web-App keinen neuen Hostnamen hinzufügen, um eine Unterdomäne zuzuweisen.
+
+### <a name="solution"></a>Lösung
+
+- Stellen Sie mithilfe Ihres Abonnementadministrators sicher, dass Sie Berechtigungen zum Hinzufügen von Hostnamen zur Web-App haben.
+- Wenn Sie weitere Unterdomänen benötigen, wird empfohlen, das Domänenhosting an Azure DNS zu übertragen. Mithilfe von Azure DNS können Sie Ihrer Web-App 500 Hostnamen hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen einer Unterdomäne](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

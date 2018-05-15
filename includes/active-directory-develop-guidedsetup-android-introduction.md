@@ -1,11 +1,33 @@
-
-# <a name="call-the-microsoft-graph-api-from-an-android-app"></a>Aufrufen der Microsoft Graph-API aus einer Android-App
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: aa21168f1e19ccddc190379b30e1b612d96b56d5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
+# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
 Dieser Leitfaden veranschaulicht, wie eine native Android-Anwendung ein Zugriffstoken abrufen und die Microsoft Graph-API und andere APIs aufrufen kann, die Zugriffstoken vom Azure Active Directory v2-Endpunkt anfordern.
 
 Am Ende dieses Leitfadens kann Ihre Anwendung Anmeldungen von persönlichen Konten (z.B. outlook.com, live.com u.a.) sowie von Geschäfts,- Schul- oder Unikonten von Unternehmen oder Organisationen akzeptieren, die Azure Active Directory nutzen. Die Anwendung ruft dann eine API auf, die durch den Azure Active Directory v2-Endpunkt geschützt wird.  
 
-## <a name="how-this-sample-works"></a>Funktionsweise dieses Beispiels
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 ![Funktionsweise dieses Beispiels](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
 Die in diesem Leitfaden erstellte Beispielanwendung basiert auf einem Szenario, bei dem mit einer Android-Anwendung eine Web-API abgefragt wird, die Token vom Azure Active Directory v2-Endpunkt akzeptiert (in diesem Fall Microsoft Graph-API). In diesem Szenario fügt Ihre Anwendung HTTP-Anforderungen das abgerufene Token über den Autorisierungsheader hinzu. Tokenabruf und -erneuerung werden für Sie von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) gehandhabt.

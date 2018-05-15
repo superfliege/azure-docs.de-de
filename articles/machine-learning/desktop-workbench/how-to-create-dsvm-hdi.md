@@ -1,5 +1,5 @@
 ---
-title: "Erstellen von DSVM und HDI als Computeziele für Azure Machine Learning"
+title: Erstellen von DSVM und HDI als Computeziele für Azure Machine Learning
 description: Erstellen Sie DSVM- und HDI-Spark-Cluster als Computeziele zum Azure ML-Experimentieren.
 services: machine-learning
 author: hning86
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 1229a66ec84b4272337a5dd1e17942e46b25e9a0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Erstellen von DSVM- und HDI Spark-Clustern als Computeziele
 
@@ -27,7 +27,7 @@ Sie können Ihr Machine Learning-Experiment bequem durch Hinzufügen zusätzlich
 
 Sie können einen virtuellen Data Science-Computer (Data Science Virtual Machine, DSVM) über das Azure-Portal erstellen. 
 
-1. Melden Sie sich über „https://portal.azure.com“ beim Azure-Portal an.
+1. Melden Sie sich beim Azure-Portal von https://portal.azure.com aus an.
 2. Klicken Sie auf den Link **+NEU** und suchen Sie nach „Virtueller Data Science-Computer für Linux“.
     ![Ubuntu](media/how-to-create-dsvm-hdi/ubuntu_dsvm.png)
 4. Wählen Sie in der Liste **Virtuelle Data Science-Computer für Linux (Ubuntu)** aus, und führen Sie die Anweisungen auf dem Bildschirm aus, um den DSVM zu erstellen.
@@ -148,13 +148,13 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Erweitern des DSVM-Betriebssystemdatenträgers
-Ein virtueller Linux-Computer verfügt in Azure in der Regel über einen Betriebssystemdatenträger mit einer Größe von 30 GB. Wenn er als Computeziel für Azure ML verwendet wird, kann seine Kapazität schnell von der Docker-Engine aufgebraucht werden, das Docker-Images abruft und darüber hinaus Conda-Ebenen erstellt. Es ist daher ratsam, den Betriebssystemdatenträger zu vergrößern (z. B. 200 GB), um den Fehler zu vermeiden, dass der Datenträger voll ist, während Sie sich mitten in einer Ausführung befinden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
+Der virtuelle DS-Computer unter Linux Ubuntu enthält einen Datenträger mit 50 GB für das Betriebssystem und einen Datenträger mit 100 GB für die Daten. Docker speichert die Bilder auf dem Datenträger für die Daten, da dort mehr Speicherplatz verfügbar ist. Bei Verwendung als Computeziel für Azure ML kann die Kapazität dieses Datenträgers schnell von der Docker-Engine, die Docker-Images abruft und zusätzlich Conda-Ebenen erstellt, aufgebraucht werden. Sie müssen möglicherweise den Betriebssystemdatenträger vergrößern (z. B. auf 200 GB), um den Fehler „Datenträger voll“ mitten in einer Ausführung zu vermeiden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Erstellen eines Apache Spark für Azure HDInsight-Clusters im Azure-Portal
 
 Sie müssen einen Apache Spark für Azure HDInsight-Cluster im Azure-Portal erstellen, um Spark-Aufträge zum horizontalen Hochskalieren auszuführen.
 
-1. Melden Sie sich über „https://portal.azure.com“ beim Azure-Portal an.
+1. Melden Sie sich beim Azure-Portal von https://portal.azure.com aus an.
 2. Klicken Sie auf den Link **+NEU**, und suchen Sie nach „HDInsight“.
 
     ![HDI-Suche](media/how-to-create-dsvm-hdi/hdi.png)

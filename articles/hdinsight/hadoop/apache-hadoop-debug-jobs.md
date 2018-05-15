@@ -82,7 +82,7 @@ Power Query kann über [Microsoft Power Query für Excel](http://www.microsoft.c
 7. Klicken Sie auf **OK** , um die Daten zu importieren.
 8. Wählen Sie die Spalten **TraceLevel**, „Role“ und **ComponentName** aus, und klicken Sie dann auf dem Menüband auf das Steuerelement **Gruppieren nach**.
 9. Klicken Sie im Dialogfeld „Gruppieren nach“ auf **OK** .
-10. Klicken Sie auf ** Übernehmen und schließen**.
+10. Klicken Sie auf **Übernehmen und schließen**.
 
 Sie können jetzt Excel zum Filtern und Sortieren verwenden. Es kann ratsam sein, noch weitere Spalten einzubeziehen (z.B. „Message“), um auftretende Probleme detailliert untersuchen zu können. Das zuvor beschriebene Auswählen und Gruppieren der Spalten bietet aber bereits einen guten Überblick über die Abläufe der Hadoop-Dienste. Das gleiche Prinzip kann auf die Tabellen „setuplog“ und „hadoopinstalllog“ angewendet werden.
 

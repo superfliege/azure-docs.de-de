@@ -12,13 +12,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2018
+ms.date: 04/23/2018
 ms.author: jgao
-ms.openlocfilehash: 6cb7bb982da36256707d080a7f5118127deb3a9c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 95ffc033a442fcf6074998398104ccb01e7a01a7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Hadoop-Clustern in HDInsight
 
@@ -73,12 +73,11 @@ Nach der Erstellung eines Edgeknotens können Sie über SSH eine Verbindung zum 
 > Genauso wie bei Clustern werden auch die Patches von Edgeknoten verwaltet.  Weitere Informationen finden Sie unter [Patchen des Betriebssystems für HDInsight](./hdinsight-os-patching.md).
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster
-In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgeknoten zu einem vorhandenen HDInsight-Cluster hinzuzufügen.  Die Resource Manager-Vorlage finden Sie in [GitHub](https://azure.microsoft.com/en-us/resources/templates/101-hdinsight-linux-add-edge-node/). Die Resource Manager-Vorlage ruft eine Skriptaktion auf, die sich unter https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh befindet. Das Skript führt keine Aktionen aus.  Es demonstriert das Aufrufen der Skriptaktion aus einer Resource Manager-Vorlage.
+In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgeknoten zu einem vorhandenen HDInsight-Cluster hinzuzufügen.  Die Resource Manager-Vorlage finden Sie in [GitHub](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/). Die Resource Manager-Vorlage ruft eine Skriptaktion auf, die sich unter https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.sh befindet. Das Skript führt keine Aktionen aus.  Es demonstriert das Aufrufen der Skriptaktion aus einer Resource Manager-Vorlage.
 
 **Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster**
 
-1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Weitere Informationen finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-2. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Azure Resource Manager-Vorlage im Azure-Portal zu öffnen. 
+1. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Azure Resource Manager-Vorlage im Azure-Portal zu öffnen. 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-add-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
 3. Konfigurieren Sie die folgenden Eigenschaften:
@@ -98,7 +97,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgekn
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Hinzufügen eines Edgeknotens beim Erstellen eines Clusters
 In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cluster mit einem Edgeknoten zu erstellen.  Die Resource Manager-Vorlage finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/). Die Resource Manager-Vorlage ruft eine Skriptaktion auf, die sich unter https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.sh befindet. Das Skript führt keine Aktionen aus.  Es demonstriert das Aufrufen der Skriptaktion aus einer Resource Manager-Vorlage.
 
-**Hinzufügen eines Edgeknotens zu einem vorhandenen Cluster**
+**So erstellen Sie einen HDInsight-Cluster mit einem Edgeknoten**
 
 1. Erstellen Sie einen HDInsight-Cluster, wenn Sie noch keinen besitzen.  Weitere Informationen finden Sie unter [Erste Schritte mit Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 2. Klicken Sie auf die folgende Abbildung, um sich bei Azure anzumelden und die Azure Resource Manager-Vorlage im Azure-Portal zu öffnen. 
@@ -132,7 +131,7 @@ Der Edgeknoten wird als Anwendung im Azure-Portal angezeigt.  Im Portal erfahren
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Öffnen Sie den HDInsight-Cluster mit einem Edgeknoten.
-3. Klicken Sie im Blatt „Cluster“ auf **Anwendungen**. Der Edgeknoten sollte angezeigt werden.  Der Standardname lautet **new-edgenode**.
+3. Klicken Sie auf **Anwendungen**. Der Edgeknoten sollte angezeigt werden.  Der Standardname lautet **new-edgenode**.
 4. Klicken Sie auf den Edgeknoten. Der SSH-Endpunkt sollte angezeigt werden.
 
 **Verwenden von Hive auf dem Edgeknoten**
@@ -153,7 +152,7 @@ Sie können einen Edgeknoten aus dem Azure-Portal löschen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Öffnen Sie den HDInsight-Cluster mit einem Edgeknoten.
-3. Klicken Sie im Blatt „Cluster“ auf **Anwendungen**. Eine Liste mit Edgeknoten sollte angezeigt werden.  
+3. Klicken Sie auf **Anwendungen**. Eine Liste mit Edgeknoten sollte angezeigt werden.  
 4. Klicken Sie mit der rechten Maustaste auf den Edgeknoten, den Sie löschen möchten, und klicken Sie dann auf **Löschen**.
 5. Klicken Sie auf **Ja**, um zu bestätigen.
 

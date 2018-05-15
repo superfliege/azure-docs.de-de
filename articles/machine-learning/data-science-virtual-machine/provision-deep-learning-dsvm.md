@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 76149ce3864811cf2b5648f8dc0aa214e5820d9f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2172acfd61188c09693b9c7dacf37ff7a638d7f4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
@@ -39,14 +39,14 @@ Es folgen die Schritte zum Erstellen einer Instanz der Deep Learning Virtual Mac
       2. **Wählen des Betriebssystemtyps für die Deep Learning-VM**: Wählen Sie Windows- oder Linux (für Windows 2016 und Ubuntu Linux-Basis-DSVM)
       2. **Benutzername**: ID des Administratoranmeldekontos.
       3. **Kennwort**: Kennwort des Administratorkontos.
-      4. **Abonnement:**Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
+      4. **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
       5. **Ressourcengruppe**: Sie können eine neue Ressourcengruppe erstellen oder eine **leere** in Ihrem Abonnement vorhandene Azure-Ressourcengruppe verwenden.
       6. **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen. 
       
 > [!NOTE]
-> Da die DLVM auf Azure-GPU-VM-Instanzen der NC-Serie bereitgestellt wird, müssen Sie eine der Regionen in Azure wählen, die GPUs bietet. Die folgenden Regionen bieten derzeit GPU-VMs: **USA, Osten, USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen 2, Europa, Norden und Europa, Westen**. Die neueste Liste finden Sie auf der Seite [Azure-Produkte nach Region](https://azure.microsoft.com/en-us/regions/services/). Suchen Sie hier unter **Compute** nach **NC-Serie**. 
+> Die DLVM unterstützt alle GPU-VM-Instanzen der Serie NC und ND. Bei der Bereitstellung der DLVM müssen Sie einen der in Azure verfügbaren Standorte mit GPUs auswählen. Überprüfen Sie auf der Seite [Azure Produkte nach Region](https://azure.microsoft.com/regions/services/) die verfügbaren Standorte, und suchen Sie unter **Compute** nach **NC-Serie**, **NCv2-Serie**, **NCv3-Serie** oder **ND-Serie**. 
 
-   2. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+   2. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie (NC, NCv2, NCv3) oder der ND-Serie aus, der die funktionalen Anforderungen erfüllt und dem Kostenrahmen entspricht. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
    3. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
    5. **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
@@ -76,12 +76,12 @@ Die Linux DLVM wird bereits mit X2Go-Server bereitgestellt und ist zum Akzeptier
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 2. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
-     * **Host:**Hostname oder IP-Adresse Ihrer Linux Data Science VM.
-     * **Anmeldung:**Benutzername für die Linux-VM.
-     * **SSH-Port:**Übernehmen Sie den Standardwert 22.
+     * **Host:** Hostname oder IP-Adresse Ihrer Linux Data Science VM.
+     * **Anmeldung:** Benutzername für die Linux-VM.
+     * **SSH-Port:** Übernehmen Sie den Standardwert 22.
      * **Sitzungstyp:** Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux DSVM nur den XFCE-Desktop.
-   * **Registerkarte „Medien“:**Sie können die Soundunterstützung und das Clientdrucken deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner:**Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
+   * **Registerkarte „Medien“:** Sie können die Soundunterstützung und das Clientdrucken deaktivieren, wenn Sie diese Funktionen nicht benötigen.
+   * **Freigegebene Ordner:** Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
 
 Nachdem Sie sich bei der VM angemeldet haben, indem Sie entweder den SSH-Client oder den grafischen XFCE-Desktop über den X2Go-Client nutzen, können Sie die Tools verwenden, die auf der VM installiert und konfiguriert sind. Auf dem XFCE-Desktop können Sie Anwendungsmenü-Tastenkombinationen und Desktopsymbole für viele Tools anzeigen.
 

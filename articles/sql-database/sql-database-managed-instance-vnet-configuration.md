@@ -59,7 +59,7 @@ Wenn Sie mehrere verwaltete Instanzen innerhalb des Subnetzes bereitstellen möc
 - Azure verwendet fünf IP-Adressen im Subnetz für den eigenen Bedarf. 
 - Jede allgemeine Instanz benötigt zwei Adressen. 
 
-**Beispiel**: Sie beabsichtigen, acht verwaltete Instanzen zu verwalten. Dies bedeutet, dass Sie 5 + 8 x 2 = 21 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren. 
+**Beispiel**: Sie beabsichtigen, acht verwaltete Instanzen zu verwalten. Dies bedeutet, dass Sie 5 + 8 * 2 = 21 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren. 
 
 ## <a name="create-a-new-virtual-network-for-managed-instances"></a>Erstellen eines neuen virtuellen Netzwerks für verwaltete Instanzen 
 

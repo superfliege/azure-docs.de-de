@@ -16,6 +16,7 @@
 ## [Hinzufügen von Benutzern zu Azure AD](add-users-azure-active-directory.md)
 ## [Zuweisen von Lizenzen zu Benutzern](license-users-groups.md)
 ## [Konfigurieren der Self-Service-Kennwortzurücksetzung](authentication/quickstart-sspr.md)
+## [Hinzufügen der Datenschutzinformationen Ihrer Organisation in Azure AD](active-directory-properties-area.md)
 
 
 # Anleitung
@@ -58,6 +59,7 @@
 #### [B2B-Freigaberichtlinien](active-directory-b2b-delegate-invitations.md)
 #### [Hinzufügen eines B2B-Benutzers zu einer Rolle](active-directory-b2b-add-guest-to-role.md)
 #### [Dynamische Gruppen und B2B-Benutzer](active-directory-b2b-dynamic-groups.md)
+#### [Verlassen einer Organisation](active-directory-b2b-leave-the-organization.md)
 #### [Überwachung und Berichte](active-directory-b2b-auditing-and-reporting.md)
 #### [B2B für Hybridorganisationen](active-directory-b2b-hybrid-organizations.md)
 ##### [Gewähren des Zugriffs auf lokale Apps für B2B-Benutzer](active-directory-b2b-hybrid-cloud-to-on-premises.md)
@@ -178,11 +180,11 @@
 
 ### [Remotezugriff auf Apps mit dem Anwendungsproxy](manage-apps/application-proxy.md)
 #### Erste Schritte
-##### [Aktivieren der App-Proxy](active-directory-application-proxy-enable.md)
-##### [Veröffentlichen von Apps](application-proxy-publish-azure-portal.md)
-##### [Benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md)
-#### [Einmaliges Anmelden](application-proxy-sso-overview.md)
-##### [SSO mit KCD](active-directory-application-proxy-sso-using-kcd.md)
+##### [Aktivieren der App-Proxy](manage-apps/application-proxy-enable.md)
+##### [Veröffentlichen von Apps](manage-apps/application-proxy-publish-azure-portal.md)
+##### [Benutzerdefinierte Domänen](manage-apps/application-proxy-configure-custom-domain.md)
+#### [Einmaliges Anmelden](manage-apps/application-proxy-single-sign-on.md)
+##### [SSO mit KCD](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 ##### [SSO mit Headern](application-proxy-ping-access.md)
 ##### [SSO mit Kennworttresoren](application-proxy-sso-azure-portal.md)
 #### Konzepte

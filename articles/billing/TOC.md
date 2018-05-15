@@ -43,6 +43,7 @@
 ### [Aktualisieren von Zahlungsinformationen](billing-how-to-change-credit-card.md)
 ### [Zahlen für Abonnements per Rechnung](billing-how-to-pay-by-invoice.md)
 ### [Verknüpfen der Partner-ID](billing-partner-admin-link-started.md)
+### [Anzeigen der Abrechnungskonten](billing-view-all-accounts.md)
 ## [Verwalten reservierter VM-Instanzen](billing-manage-reserved-vm-instance.md)
 ## Problembehandlung
 ### [Probleme bei der Registrierung](https://support.microsoft.com/en-us/help/4042959)

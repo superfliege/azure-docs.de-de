@@ -1,13 +1,41 @@
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 04/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: c1971e1eb3abc653ad8bdc6af772c699f8549019
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
+## <a name="register-your-application"></a>Anwendung registrieren
+Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, haben Sie zwei Möglichkeiten:
 
-## <a name="create-an-application-express"></a>Erstellen einer Anwendung (Express)
-Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
+### <a name="option-1-express-mode"></a>Option 1: Expressmodus
+
+Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure).
 2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
 3.  Stellen Sie sicher, dass die Option für geführtes Setup aktiviert ist.
 4.  Befolgen Sie die Anweisungen, um Ihrer Anwendung eine Umleitungs-URL hinzufügen.
 
-## <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Hinzufügen der Registrierungsinformationen Ihrer Anwendung zur Projektmappe (für Fortgeschrittene)
-Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
+### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
+
+Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
+
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
 2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
 3.  Stellen Sie sicher, dass die Option für geführtes Setup deaktiviert ist.
@@ -17,19 +45,13 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 7.  Kopieren Sie die SSL-URL, und fügen Sie diese URL zur Liste der Umleitungs-URLs im Registrierungsportal hinzu:<br/><br/>![Projekteigenschaften](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 8.  Fügen Sie im Stammordner der Datei `web.config` im Abschnitt `configuration\appSettings` Folgendes hinzu:
 
-```xml
-<add key="ClientId" value="Enter_the_Application_Id_here" />
-<add key="redirectUri" value="Enter_the_Redirect_URL_here" />
-<add key="Tenant" value="common" />
-<add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
-```
-<!-- Workaround for Docs conversion bug -->
-<ol start="9">
-<li>
-Ersetzen Sie `ClientId` durch die Anwendungs-ID, die Sie gerade registriert haben.
-</li>
-<li>
-Ersetzen Sie `redirectUri` durch die SSL-URL Ihres Projekts.
-</li>
-</ol>
-<!-- End Docs -->
+    ```xml
+    <add key="ClientId" value="Enter_the_Application_Id_here" />
+    <add key="redirectUri" value="Enter_the_Redirect_URL_here" />
+    <add key="Tenant" value="common" />
+    <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
+    ```
+
+9. Ersetzen Sie `ClientId` durch die Anwendungs-ID, die Sie gerade registriert haben.
+10. Ersetzen Sie `redirectUri` durch die SSL-URL Ihres Projekts. 
+

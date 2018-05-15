@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung"
-description: "Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für die App Services-Anwendung konfigurieren."
+title: Konfigurieren der Azure Active Directory-Authentifizierung für die App Services-Anwendung
+description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für die App Services-Anwendung konfigurieren.
 author: mattchenderson
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 990fab9aeea71b8cf344b9a49a5ed438db6663c0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 2530cb55cb054c02df5d55ccb86e959a061e2499
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -65,8 +65,8 @@ Mit Azure Active Directory können Sie auch systemeigene Clients registrieren. S
 1. Navigieren Sie im [Azure-Portal] zu **Azure Active Directory**.
 2. Wählen Sie im linken Navigationsbereich **App-Registrierungen**. Klicken Sie oben auf **Neue App-Registrierung**.
 4. Geben Sie auf der Seite **Erstellen** einen **Namen** für Ihre App-Registrierung ein. Wählen Sie **Nativ** in **Anwendungstyp**.
-5. Geben Sie im Feld **Umleitungs-URI** den */.auth/login/done*-Endpunkt Ihrer Website unter Verwendung des HTTPS-Schemas ein. Dieser Wert sollte so ähnlich lauten wie *https://contoso.azurewebsites.net/.auth/login/done*. Wenn Sie eine Windows-Anwendung erstellen, verwenden Sie stattdessen die [Paket-SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als URI.
-5. Klicken Sie auf **Erstellen**.
+5. Geben Sie im Feld **Umleitungs-URI** den */.auth/login/done*-Endpunkt Ihrer Website unter Verwendung des HTTPS-Schemas ein. Dieser Wert sollte *https://contoso.azurewebsites.net/.auth/login/done* ähnlich sein. Wenn Sie eine Windows-Anwendung erstellen, verwenden Sie stattdessen die [Paket-SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) als URI.
+5. Klicken Sie auf **Create**.
 6. Sobald die App-Registrierung hinzugefügt wurde, wählen Sie sie aus, um sie zu öffnen. Notieren Sie sich die **Anwendungs-ID**.
 7. Klicken Sie auf **Alle Einstellungen** > **Erforderliche Berechtigungen** > **Hinzufügen** > **API-Typ auswählen**.
 8. Geben Sie den Namen der zuvor registrierten App Service-App ein, um sie zu suchen, wählen Sie diese aus, und klicken Sie auf **Wählen**. 

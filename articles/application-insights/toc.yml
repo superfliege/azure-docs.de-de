@@ -53,6 +53,8 @@
           href: app-insights-asp-net-core.md
         - name: Konsole
           href: application-insights-console.md
+        - name: Anwendungsdashboard
+          href: app-insights-overview-dashboard.md
     - name: Überwachen von Java-Apps
       items:
         - name: Web-Apps
@@ -208,7 +210,7 @@
               href: app-insights-usage-flows.md
             - name: Arbeitsmappen
               href: app-insights-usage-workbooks.md
-        - name: Analyse
+        - name: Analytics
           items:
             - name: Übersicht
               href: app-insights-analytics.md
@@ -228,6 +230,8 @@
           href: app-insights-automate-with-flow.md
         - name: Automatisieren mit einer Azure-Logik-App
           href: automate-with-logic-apps.md
+        - name: Benutzerdefinierte E-Mail-Berichte
+          href: automate-custom-reports.md
     - name: Entwickeln
       items:
         - name: API für benutzerdefinierte Ereignisse und Metriken
@@ -276,7 +280,7 @@
           href: app-insights-asp-net-troubleshoot-no-data.md
         - name: Debugger für Momentaufnahmen
           href: app-insights-troubleshoot-snapshot-debugger.md
-        - name: Analyse
+        - name: Analytics
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md

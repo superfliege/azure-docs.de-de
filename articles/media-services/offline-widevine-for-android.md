@@ -1,12 +1,12 @@
 ---
-title: "Konfigurieren Ihres Kontos für das Offlinestreaming von durch Widevine geschützten Inhalten – Azure"
-description: "In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services-Konto für das Offlinestreaming von durch Widevine geschützten Inhalten konfigurieren."
+title: Konfigurieren Ihres Kontos für das Offlinestreaming von durch Widevine geschützten Inhalten – Azure
+description: In diesem Thema erfahren Sie, wie Sie Ihr Azure Media Services-Konto für das Offlinestreaming von durch Widevine geschützten Inhalten konfigurieren.
 services: media-services
 keywords: DASH, DRM, Widevine-Offlinemodus, ExoPlayer, Android
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: steveng
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: b27ffcbf5749d612e63ba08df0adad72f357a83a
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 158b58c13aee4d6241900db4a5e2b3fe8a45cc3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine-Offlinestreaming für Android
 
@@ -38,7 +38,7 @@ Wir stellen drei Optionen für die Erstellung der Android-Player-Apps vor:
 
 Außerdem beantworten wir in diesem Artikel einige häufig gestellte Fragen im Zusammenhang mit dem Offlinestreaming von durch Widevine geschützten Inhalten.
 
-## <a name="requirements"></a>Anforderungen 
+## <a name="requirements"></a>Requirements (Anforderungen) 
 
 Vor der Implementierung von Offline-DRM für Widevine auf Android-Geräten sollten Sie zunächst folgende Schritte durchführen:
 
@@ -122,7 +122,7 @@ Entwickler sollten während der Anwendungsentwicklung das [ExoPlayer-Entwicklerh
 
 Für einige ältere Android-Geräte müssen Sie Werte für die folgenden (in der [Widevine-Lizenzvorlage](media-services-widevine-license-template-overview.md) definierten) Eigenschaften von **policy_overrides** festlegen: **rental_duration_seconds**, **playback_duration_seconds** und **license_duration_seconds**. Alternativ können Sie die Werte auf Null (unbegrenzte Dauer) festlegen.  
 
-Die Werte müssen festgelegt werden, um einen Ganzzahlüberlauffehler zu vermeiden. Weitere Informationen zu diesem Problem finden Sie unter https://github.com/google/ExoPlayer/issues/3150 sowie unter https://github.com/google/ExoPlayer/issues/3112. <br/>Wenn Sie die Werte nicht explizit festlegen, werden für **PlaybackDurationRemaining** und **LicenseDurationRemaining** sehr große Werte zugewiesen (beispielsweise „9223372036854775807“ – der größtmögliche positive Wert für eine 64-Bit-Ganzzahl). Dadurch scheint die Widevine-Lizenz abgelaufen zu sein, und es findet keine Entschlüsselung statt. 
+Die Werte müssen festgelegt werden, um einen Ganzzahlüberlauffehler zu vermeiden. Weitere Erläuterungen zu diesem Problem finden Sie unter https://github.com/google/ExoPlayer/issues/3150 und https://github.com/google/ExoPlayer/issues/3112. <br/>Wenn Sie die Werte nicht explizit festlegen, werden für **PlaybackDurationRemaining** und **LicenseDurationRemaining** sehr große Werte zugewiesen (beispielsweise „9223372036854775807“ – der größtmögliche positive Wert für eine 64-Bit-Ganzzahl). Dadurch scheint die Widevine-Lizenz abgelaufen zu sein, und es findet keine Entschlüsselung statt. 
 
 Dieses Problem tritt ab Android 5.0 Lollipop nicht mehr auf, da es sich bei Android 5.0 um die erste Android-Version mit uneingeschränkter Unterstützung von ARMv8 ([Advanced RISC Machine](https://en.wikipedia.org/wiki/ARM_architecture)) und 64-Bit-Plattformen handelt. Android 4.4 KitKat und ältere Versionen waren dagegen ursprünglich für die Unterstützung von ARMv7 und 32-Bit-Plattformen konzipiert.
 
@@ -148,7 +148,7 @@ Wenn Sie Ihren mobilen Chrome-Browser auf einem Android-Smartphone mindestens au
 
 Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine eigene Version auf einem Ubuntu-Server hosten möchten, beachten Sie die folgenden allgemeinen Probleme, die die Wiedergabe verhindern können:
 
-1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird unter https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: https://biograf-155113.appspot.com (Die Domäne, in der Google das Beispiel hostet.) Dadurch wird der Zugriff durch andere Sites verhindert. Beim Versuch, darauf zuzugreifen, tritt folgender HTTP-Fehler auf: „Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.“ (Fehler beim Laden von https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: Für die angeforderte Ressource ist kein Header vom Typ 'Access-Control-Allow-Origin' vorhanden. Dem Ursprung https://13.85.80.81:8080 wird daher kein Zugriff gewährt. Falls eine opake Antwort Ihre Anforderungen erfüllt, legen Sie den Modus der Anforderung auf 'no-cors' fest, um CORS für den Ressourcenabruf zu deaktivieren.)
+1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: https://biograf-155113.appspot.com (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Beim Versuch, darauf zuzugreifen, tritt folgender HTTP-Fehler auf: „Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.“ (Fehler beim Laden von ‚...‘ Für die angeforderte Ressource ist kein Header vom Typ 'Access-Control-Allow-Origin' vorhanden. Dem Ursprung ‚...‘ wird daher kein Zugriff gewährt. Falls eine opake Antwort Ihre Anforderungen erfüllt, legen Sie den Modus der Anforderung auf 'no-cors' fest, um CORS für den Ressourcenabruf zu deaktivieren.)
 2. Zertifikatproblem: Ab der Chrome-Version 58 wird von EME für Widevine HTTPS benötigt. Daher muss die Beispiel-App mit einem X.509-Zertifikat über HTTPS gehostet werden. Ein herkömmliches Testzertifikat funktioniert aufgrund folgender Anforderungen nicht: Sie benötigen ein Zertifikat, das die folgenden Mindestanforderungen erfüllt:
     - Für Chrome und Firefox muss das Zertifikat die Einstellung für den alternativen Antragstellernamen (Subject Alternative Name, SAN) enthalten.
     - Das Zertifikat muss über eine vertrauenswürdige Zertifizierungsstelle verfügen. Ein selbstsigniertes Entwicklungszertifikat kann nicht verwendet werden.
@@ -172,7 +172,7 @@ Daher benötigt der Sicherheitstokendienst (Secure Token Service, STS) die Gesch
 
 ### <a name="question"></a>Frage
 
-Als Widevine-Sicherheitsstufen sind [in der Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
+Als Widevine-Sicherheitsstufen sind [in der Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
 
 ### <a name="answer"></a>Antwort
 
@@ -182,7 +182,7 @@ In der [Widevine DRM-Architekturübersicht](https://storage.googleapis.com/wvdoc
 2.  Sicherheitsstufe 2: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.
 3.  Sicherheitsstufe 3: Verfügt über keine TEE auf dem Gerät. Zum Schutz der kryptografischen Informationen und entschlüsselter Inhalte können geeignete Maßnahmen unter dem Hostbetriebssystem ergriffen werden. Eine Implementierung der dritten Stufe kann auch ein hardwarebasiertes Kryptografiemodul enthalten. Dadurch verbessert sich aber nur die Leistung, nicht die Sicherheit.
 
-Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/en-us/azure/media-services/media-services-widevine-license-template-overview) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
+Gemäß [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) kann die security_level-Eigenschaft von „content_key_specs“ folgende fünf Werte (Clientstabilitätsanforderungen für die Wiedergabe) besitzen:
 
 1.  Erfordert softwarebasierte White-Box-Verschlüsselung.
 2.  Erfordert Softwareverschlüsselung und einen verborgenen Decoder.

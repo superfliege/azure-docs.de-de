@@ -1,11 +1,11 @@
 ---
-title: "Sammeln von Azure-Dienstprotokollen und Metriken für Log Analytics | Microsoft-Dokumentation"
-description: "Konfigurieren Sie Diagnosen für Azure-Ressourcen, um Protokolle und Metriken in Log Analytics zu schreiben."
+title: Sammeln von Azure-Dienstprotokollen und Metriken für Log Analytics | Microsoft-Dokumentation
+description: Konfigurieren Sie Diagnosen für Azure-Ressourcen, um Protokolle und Metriken in Log Analytics zu schreiben.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 84105740-3697-4109-bc59-2452c1131bfe
 ms.service: log-analytics
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Log Analytics
 
@@ -45,7 +45,7 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 | IoT Hubs                | Microsoft.Devices/IotHubs               |             | Diagnose | |
 | Schlüsseltresor               | Microsoft.KeyVault/vaults               | Diagnose |             | [KeyVault-Analyse](log-analytics-azure-key-vault.md) |
 | Load Balancer          | Microsoft.Network/loadBalancers         | Diagnose |             |  |
-| Logik-Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
+| Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnose | Diagnose | |
 | Netzwerksicherheitsgruppen | Microsoft.Network/networksecuritygroups | Diagnose |             | [Azure-Netzwerksicherheitsgruppen-Analyse](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Recovery-Tresore         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Suchdienste         | Microsoft.Search/searchServices         | Diagnose | Diagnose | |
@@ -68,6 +68,13 @@ Protokolle und Metriken für Azure-Dienste können auf vier Arten erfasst werden
 Viele Azure-Ressourcen können Diagnoseprotokolle und Metriken direkt in Log Analytics schreiben. Dies ist die bevorzugte Datensammlungsmethode für die Analyse. Bei Verwendung von Azure-Diagnosen werden Daten unmittelbar in Log Analytics geschrieben und müssen nicht zuerst in den Speicher geschrieben werden.
 
 Azure-Ressourcen, die [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) unterstützen, können ihre Protokolle und Metriken direkt an Log Analytics senden.
+
+> [!NOTE]
+> Das Senden mehrdimensionaler Metriken an Log Analytics über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
+>
+> *Beispiel:* Die Metrik „Eingehende Nachrichten“ eines Event Hubs kann auf einer warteschlangenspezifischen Ebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
+>
+>
 
 * Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (Von Azure Monitor unterstützte Metriken).
 * Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
@@ -145,7 +152,7 @@ Weitere Informationen zum Application Insights-Connector finden Sie [hier](https
 
 Für Azure-Dienste, bei denen Protokolle und Metriken nicht direkt an Log Analytics gesendet werden können, können Sie das Protokoll und die Metriken mithilfe von Azure Automation erfassen. Das Skript kann die Daten dann über die [Datensammler-API](log-analytics-data-collector-api.md) an Log Analytics senden.
 
-Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Automation](https://azure.microsoft.com/en-us/resources/templates/?term=OMS) zum Sammeln von Daten aus Diensten und zum Senden der Daten an Log Analytics.
+Der Azure-Vorlagenkatalog enthält [Beispiele für die Verwendung von Azure Automation](https://azure.microsoft.com/resources/templates/?term=OMS) zum Sammeln von Daten aus Diensten und zum Senden der Daten an Log Analytics.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

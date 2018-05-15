@@ -64,7 +64,7 @@ Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das Azure Cosmo
 
 1. Aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den sekundären Zugriffsschlüssel des Azure Cosmos DB-Kontos verweist.
 2. Generieren Sie den primären Zugriffsschlüssel für Ihr Azure Cosmos DB-Konto neu. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr Azure Cosmos DB-Konto zu.
-3. Klicken Sie auf der Seite **Azure Cosmos DB-Konto** auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-Konten**).
+3. Klicken Sie auf der Seite **Azure Cosmos DB-Konto** auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-Konten\*\*).
 4. Klicken Sie auf der Seite **Schlüssel**/**Verbindungszeichenfolge** auf die Schaltfläche zum erneuten Generieren, und bestätigen Sie anschließend durch Klicken auf **OK**, dass Sie einen neuen Schlüssel generieren möchten.
     ![Erneutes Generieren von Zugriffsschlüsseln](./media/manage-account/regenerate-keys.png)
 5. Sobald Sie sich vergewissert haben, dass der neue Schlüssel verwendet werden kann (etwa fünf Minuten nach dem erneuten Generieren), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.

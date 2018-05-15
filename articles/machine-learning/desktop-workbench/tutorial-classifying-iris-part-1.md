@@ -73,7 +73,7 @@ Wenn Sie die Schritte im Artikel [Erstellen von Vorschaukonten für Azure Machin
 
 ## <a name="create-a-data-preparation-package"></a>Erstellen eines Datenaufbereitungspakets
 
-Als Nächstes können Sie die Daten untersuchen und mit der Datenaufbereitung in Azure Machine Learning Workbench beginnen. Jede Transformation, die Sie in Workbench vornehmen, wird im JSON-Format in einem lokalen Datenaufbereitungspaket (DPREP-Datei) gespeichert. Dieses Datenaufbereitungspaket ist der primäre Container für Ihre Datenaufbereitungsmaßnahmen in Workbench.
+Als Nächstes können Sie die Daten untersuchen und mit der Datenaufbereitung in Azure Machine Learning Workbench beginnen. Jede Transformation, die Sie in Workbench vornehmen, wird im JSON-Format in einem lokalen Datenaufbereitungspaket (\*.DPREP-Datei) gespeichert. Dieses Datenaufbereitungspaket ist der primäre Container für Ihre Datenaufbereitungsmaßnahmen in Workbench.
 
 Dieses Datenaufbereitungspaket kann später an eine Laufzeit (beispielsweise „local-C#/CoreCLR“, „Scala/Spark“ oder „Scala/HDI“) übergeben werden. 
 

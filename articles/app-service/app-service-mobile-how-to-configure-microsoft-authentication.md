@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren der Microsoft-Kontoauthentifizierung für Ihre App Services-Anwendung"
-description: "Erfahren Sie, wie Sie die Microsoft-Kontoauthentifizierung für Ihre App Services-Anwendung konfigurieren."
+title: Konfigurieren der Microsoft-Kontoauthentifizierung für Ihre App Services-Anwendung
+description: Erfahren Sie, wie Sie die Microsoft-Kontoauthentifizierung für Ihre App Services-Anwendung konfigurieren.
 author: mattchenderson
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fb5bdf30502dbca3eba961165a1ab643427abd6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -28,7 +28,7 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 ## <a name="register-microsoft-account"></a>Registrieren Ihrer App mit einem Microsoft-Konto
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie Ihre **URL**. Sie wird später benötigt, um die App mit einem Microsoft-Konto zu konfigurieren.
 2. Navigieren Sie im Microsoft Account Developer Center zur Seite [Eigene Anwendungen] , und melden Sie sich, falls erforderlich, mit Ihrem Microsoft-Konto an.
-3. Klicken Sie auf **App hinzufügen**, geben Sie einen Anwendungsnamen ein, und klicken Sie auf **Anwendung erstellen**.
+3. Klicken Sie auf **App hinzufügen**, geben Sie einen Anwendungsnamen ein, und klicken Sie auf **Erstellen**.
 4. Notieren Sie sich die **Anwendungs-ID**, da Sie sie später benötigen. 
 5. Klicken Sie unter „Plattformen“ auf **Plattform hinzufügen** , und wählen Sie „Web“ aus.
 6. Geben Sie unter „Umleitungs-URIs“ den Endpunkt der Anwendung an, und klicken Sie dann auf **Speichern**. 

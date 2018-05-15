@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/03/2018
+ms.date: 04/25/2018
 ms.author: dekapur;srrengar
-ms.openlocfilehash: 03fa2862bbce39ac9ee6b7da02bd93b02b05f216
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: dd2446fda204f4026ac8080c658ca1aa9419f1bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Überwachung und Diagnose für Azure Service Fabric
 
@@ -33,25 +33,26 @@ Bei der Anwendungsüberwachung wird nachverfolgt, wie die Funktionen und Kompone
 
 Service Fabric unterstützt viele Optionen zum Instrumentieren Ihres Anwendungscodes mit den passenden Ablaufverfolgungen und Telemetriefunktionen. Wir empfehlen Ihnen die Verwendung von Application Insights (AI). Die Integration von AI in Service Fabric enthält Tooloberflächen für Visual Studio und das Azure-Portal sowie spezifische Service Fabric-Metriken, sodass Sie eine umfassende fertige Protokollierungsumgebung erhalten. Bei AI werden viele Protokolle zwar automatisch für Sie erstellt und erfasst, aber wir raten Ihnen, Ihren Anwendungen eine weiter gehende benutzerdefinierte Protokollierung hinzuzufügen, um für eine vollständigere Diagnoseumgebung zu sorgen. Weitere Informationen zum Einstieg in Application Insights mit Service Fabric finden Sie unter [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
 
-![AI-Ablaufverfolgungsdetails](./media/service-fabric-tutorial-monitoring-aspnet/trace-details.png)
-
 ## <a name="platform-cluster-monitoring"></a>Überwachung der Plattform (bzw. des Clusters)
 Durch die Überwachung des Service Fabric-Clusters soll sichergestellt werden, dass die Plattform und alle Workloads bestimmungsgemäß arbeiten. Ein Ziel von Service Fabric besteht darin, für Anwendungen die Resilienz in Bezug auf Hardwarefehler sicherzustellen. Dies ist möglich, weil die Systemdienste der Plattform in der Lage sind, Infrastrukturprobleme zu erkennen und für Workloads schnell ein Failover auf andere Knoten im Cluster durchzuführen. In diesem speziellen Fall stellt sich aber die Frage, was geschieht, wenn die Systemdienste selbst Probleme haben? Oder was geschieht, wenn beim Verschieben einer Workload Regeln für die Platzierung von Diensten verletzt werden? Durch die Clusterüberwachung bleiben Sie über alle Aktivitäten in Ihrem Cluster informiert, was die Diagnose und effiziente Behandlung von Problemen erleichtert. Im Folgenden einige wichtige Faktoren, die Sie beachten sollten:
 * Verhält sich Service Fabric bei der Platzierung von Anwendungen und der gleichmäßigen Verteilung der Workloads im Cluster erwartungsgemäß? 
 * Werden Benutzeraktionen in Ihrem Cluster bestätigt und erwartungsgemäß durchgeführt? Dies ist besonders beim Skalieren eines Clusters von Bedeutung.
 * Werden Ihre Daten und die Kommunikation zwischen Diensten innerhalb des Clusters von Service Fabric ordnungsgemäß verwaltet?
 
-Service Fabric bietet über die Betriebs-, Daten- und Messagingkanäle eine umfassende Reihe vordefinierter Ereignisse. In Windows haben sie die Form eines einzelnen ETW-Anbieters mit einem Satz relevanter `logLevelKeywordFilters`, die zum Auswählen zwischen verschiedenen Kanälen verwendet werden. Unter Linux laufen alle Plattformereignisse über LTTng und werden in eine Tabelle eingefügt, in der sie nach Bedarf gefiltert werden können. 
+Service Fabric bietet einen umfassenden Satz von sofort einsatzfähigen Ereignissen. Der Zugriff auf diese [Service Fabric-Ereignisse](service-fabric-diagnostics-events.md) erfolgt entweder über die EventStore-APIs oder den Betriebskanal (der von der Plattform bereitgestellte Ereigniskanal). 
+* EventStore: In EventStore (verfügbar unter Windows in den Versionen 6.2 und höher, Linux bei der letzten Aktualisierung des Artikels noch in Vorbereitung) werden diese Ereignisse über eine Reihe von APIs (Zugriff über REST-Endpunkte oder über die Clientbibliothek) verfügbar gemacht. Weitere Informationen zu EventStore finden Sie unter [Übersicht über EventStore](service-fabric-diagnostics-eventstore.md).
+* Service Fabric-Ereigniskanäle: Unter Windows stehen Service Fabric-Ereignisse von einem einzelnen ETW-Anbieter mit einem Satz relevanter `logLevelKeywordFilters` zur Verfügung, die für die Auswahl von Betriebs-, Daten- oder Messaging-Kanal verwendet werden. Auf diese Art und Weise werden ausgehende Service Fabric-Ereignisse separiert, und können nach Bedarf gefiltert werden. Unter Linux laufen alle Service Fabric-Ereignisse über LTTng und werden in eine Speicherabelle eingefügt, in der sie nach Bedarf gefiltert werden können. Diese Kanäle enthalten geordnete, strukturierte Ereignisse, mit deren Hilfe sich der Zustand des Clusters besser nachvollziehen lässt. Die Diagnose ist bei der Erstellung des Clusters standardmäßig aktiviert. Hierbei wird eine Azure Storage-Tabelle erstellt, an die die Ereignisse aus diesen Kanälen gesendet werden und aus der in Zukunft Ereignisse abgefragt werden können. 
 
-Diese Kanäle enthalten geordnete, strukturierte Ereignisse, mit deren Hilfe sich der Zustand des Clusters besser nachvollziehen lässt. Die Diagnose ist bei der Erstellung des Clusters standardmäßig aktiviert. Hierbei wird eine Azure Storage-Tabelle erstellt, an die die Ereignisse aus diesen Kanälen gesendet werden und aus der in Zukunft Ereignisse abgefragt werden können. Weitere Informationen zum Überwachen des Clusters finden Sie unter [Ereignis- und Protokollgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md).
+Wir empfehlen die Verwendung von EventStore für eine schnelle Analyse und eine Momentaufnahme der Arbeitsweise des Clusters. Anhand dieser Einblicke können Sie feststellen, ob alles erwartungsgemäß funktioniert. Zum Erfassen der Protokolle und Ereignisse, die von Ihrem Cluster generiert werden, empfehlen wir im Allgemeinen die Verwendung der [Azure-Diagnoseerweiterung](service-fabric-diagnostics-event-aggregation-wad.md). Die Erweiterung kann gut in Service Fabric-Analyse, die spezielle Service-Fabric-Lösung von OMS Log Analytics, integriert werden, die ein benutzerdefiniertes Dashboard für die Überwachung von Service Fabric-Clustern bereitstellt und die Abfrage von Clusterereignissen und das Einrichten von Warnungen ermöglicht. Weitere Informationen finden Sie unter [Ereignisanalyse und Visualisierung mit OMS](service-fabric-diagnostics-event-analysis-oms.md). 
 
-Zum Erfassen der Protokolle und Ereignisse, die von Ihrem Cluster generiert werden, empfehlen wir im Allgemeinen die Verwendung der [Azure-Diagnoseerweiterung](service-fabric-diagnostics-event-aggregation-wad.md). Die Erweiterung kann gut in die Service Fabric-spezifische Lösung für OMS Log Analytics („Service Fabric-Analyse“), die ein benutzerdefiniertes Dashboard für die Überwachung von Service Fabric-Clustern umfasst, integriert werden und ermöglicht das Abfragen von Clusterereignissen und das Einrichten von Warnungen. Weitere Informationen finden Sie unter [Ereignisanalyse und Visualisierung mit OMS](service-fabric-diagnostics-event-analysis-oms.md). 
+ Weitere Informationen zum Überwachen des Clusters finden Sie unter [Ereignis- und Protokollgenerierung auf Plattformebene](service-fabric-diagnostics-event-generation-infra.md).
+
 
  ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
 ## <a name="performance-monitoring"></a>Leistungsüberwachung
 Die Überwachung der zugrunde liegenden Infrastruktur ist wichtig, um einen Eindruck vom Zustand des Clusters und der Ressourcenverwendung zu erhalten. Die Messung der Systemleistung hängt von mehreren Faktoren ab, die normalerweise jeweils durch einen eigenen KPI (Key Performance Indicator) bestimmt werden. KPIs, die für Service Fabric relevant sind, können Metriken in Form von Leistungsindikatoren zugeordnet werden. Die Metriken können dabei aus den Knoten im Cluster erfasst werden.
-Diese KPIs können für Folgendes hilfreich sein:
+KPIs können helfen,
 * Ermitteln der Ressourcenverwendung und -auslastung, beispielsweise für die Clusterskalierung oder die Optimierung der Dienstprozesse
 * Vorhersagen von Infrastrukturproblemen: Vielen Problemen geht eine plötzliche Veränderung im Leistungsverhalten (Leistungsabfall) voraus, sodass mithilfe von KPIs, beispielsweise zur Netzwerk-E/A und CPU-Auslastung, Infrastrukturprobleme vorhergesagt und diagnostiziert werden können
 

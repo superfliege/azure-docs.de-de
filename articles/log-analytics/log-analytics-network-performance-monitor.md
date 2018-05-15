@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 6e81f2cdd0cd3f62d93c85c1a073e0b9df542ec7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -249,6 +249,24 @@ Bei der in der Karte gezeigten Topologie handelt es sich um eine Layer 3-Topolog
 ## <a name="log-analytics-search"></a>Log Analytics-Suche 
 
 Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über die [Log Analytics-Suche](log-analytics-log-search-new.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich  **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
+
+## <a name="alerts"></a>Warnungen
+
+Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
+
+Dies bedeutet, dass alle Warnungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
+
+Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über OMS zu erstellen: 
+1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
+2. Klicken Sie auf die Kachel für die Netzwerkleistungsmonitor-Lösung. 
+3. Navigieren Sie zu „Konfigurieren“.  
+4. Wählen Sie den Test aus, für den Sie eine Warnung erstellen möchten, und führen Sie die nachfolgenden Schritte aus.
+
+Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal zu erstellen:  
+1. Sie können wahlweise Ihre E-Mail-Adresse direkt eingeben oder Warnungen über Aktionsgruppen erstellen.
+2. Wenn Sie Ihre E-Mail-Adresse direkt eingeben möchten, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt und die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt.
+3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
+4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
 ##<a name="pricing"></a>Preise
 

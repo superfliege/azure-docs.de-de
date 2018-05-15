@@ -5,24 +5,24 @@ services: machine-learning
 documentationcenter: ''
 author: bradsev
 manager: cgronlun
-editor: cgronlun
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
-Die Data Science Virtual Machine (DSVM) für Linux ist ein Ubuntu-basiertes VM-Image, das den Einstieg in Deep Learning in Azure erleichtert. Deep Learning-Tools:
+Die Data Science Virtual Machine (DSVM) für Linux ist ein Ubuntu-basiertes VM-Image, das den Einstieg in maschinelles Lernen, wie Deep Learning, in Azure erleichtert. Deep Learning-Tools:
 
   * [Caffe](http://caffe.berkeleyvision.org/): Deep Learning-Framework mit Fokus auf Geschwindigkeit, Ausdrucksfähigkeit und Modularität
   * [Caffe2](https://github.com/caffe2/caffe2): Plattformübergreifende Version von Caffe
@@ -31,6 +31,7 @@ Die Data Science Virtual Machine (DSVM) für Linux ist ein Ubuntu-basiertes VM-I
   * [Keras](https://keras.io/): Allgemeine API für neuronale Netze in Python für Theano und TensorFlow
   * [MXNet](http://mxnet.io/): Flexible, effiziente Deep Learning-Bibliothek mit vielen Sprachbindungen
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): Grafisches System, das häufige Deep Learning-Aufgaben vereinfacht
+  * [PyTorch](http://pytorch.org/): Eine allgemeine Python-Bibliothek mit Unterstützung für dynamische Netzwerke.
   * [TensorFlow](https://www.tensorflow.org/): Open Source-Bibliothek für Computerintelligenz von Google
   * [Theano](http://deeplearning.net/software/theano/): Python-Bibliothek zum Definieren, Optimieren und effizienten Auswerten mathematischer Ausdrücke einschließlich mehrdimensionaler Arrays
   * [Torch](http://torch.ch/): Framework für wissenschaftliche Berechnungen mit weit reichender Unterstützung für Machine Learning-Algorithmen
@@ -88,13 +89,13 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
    * **Name**: Name des Data Science-Servers, den Sie erstellen.
    * **Benutzername**: Die ID für die erste Kontoanmeldung.
    * **Kennwort**: Das erste Kontokennwort (Sie können anstelle eines Kennworts einen öffentlichen SSH-Schlüssel verwenden).
-   * **Abonnement:**Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+   * **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
    * **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
    * **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise handelt es sich dabei um das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
    
    b. **Größe**:
    
-   * Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie **Alle anzeigen** aus, um weitere Optionen für VM-Größen anzuzeigen. Wählen Sie eine VM der NC-Klasse für das GPU-Training aus.
+   * Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie **Alle anzeigen** aus, um weitere Optionen für VM-Größen anzuzeigen. Wählen Sie einen virtuellen Computer der NC- oder ND-Klasse für das GPU-Training aus. Auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen mit GPUs aufgelistet.
    
    c. **Einstellungen**:
    
@@ -113,6 +114,14 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
 Die Bereitstellung sollte ungefähr 5 bis 10 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Zugreifen auf die Data Science Virtual Machine für Linux
+
+Es gibt drei Methoden, um auf die Ubuntu-DSVM zuzugreifen:
+1. SSH für Terminalsitzungen
+2. X2Go für grafische Sitzungen
+3. JupyterHub und JupyterLab für Jupyter-Notebooks
+
+### <a name="ssh"></a>SSH
+
 Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org)herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
 
 > [!NOTE]
@@ -120,20 +129,28 @@ Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmel
 > 
 > 
 
-## <a name="installing-and-configuring-x2go-client"></a>Installieren und Konfigurieren des X2Go-Clients
+### <a name="x2go"></a>X2Go
 Die Linux-VM wird mit X2Go-Server bereits bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 2. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
-     * **Host:**Hostname oder IP-Adresse Ihrer Linux Data Science VM.
-     * **Anmeldung:**Benutzername für die Linux-VM.
-     * **SSH-Port:**Übernehmen Sie den Standardwert 22.
-     * **Sitzungstyp:**Ändern Sie den Wert in „XFCE“. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
-   * **Registerkarte „Medien“:**Sie können die Soundunterstützung und das Clientdrucken deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner:**Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
+     * **Host:** Hostname oder IP-Adresse Ihrer Linux Data Science VM.
+     * **Anmeldung:** Benutzername für die Linux-VM.
+     * **SSH-Port:** Übernehmen Sie den Standardwert 22.
+     * **Sitzungstyp:** Ändern Sie den Wert in „XFCE“. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
+   * **Registerkarte „Medien“:** Sie können die Soundunterstützung und das Clientdrucken deaktivieren, wenn Sie diese Funktionen nicht benötigen.
+   * **Freigegebene Ordner:** Wenn Verzeichnisse von Ihren Clientcomputern auf der Linux-VM bereitgestellt werden sollen, fügen Sie auf dieser Registerkarte die Clientcomputerverzeichnisse hinzu, die Sie für die VM freigeben möchten.
 
 Nachdem Sie sich bei der VM angemeldet haben, indem Sie entweder den SSH-Client oder den grafischen XFCE-Desktop über den X2Go-Client nutzen, können Sie die Tools verwenden, die auf der VM installiert und konfiguriert sind. Auf dem XFCE-Desktop können Sie Anwendungsmenü-Tastenkombinationen und Desktopsymbole für viele Tools anzeigen.
+
+### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub und JupyterLab
+
+Die Ubuntu-DSVM führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), einen Jupyter-Server für mehrere Benutzer, aus. Um eine Verbindung herzustellen, browsen Sie zu https://your-vm-ip:8000 auf Ihrem Laptop oder Desktop, geben Sie den Benutzernamen und das Kennwort ein, mit dem Sie die VM erstellt haben, und melden Sie sich an. Zum Stöbern und Ausprobieren stehen Ihnen viele Beispielnotebooks zur Verfügung.
+
+JupyterLab, die nächste Generation von Jupyter-Notebooks, und JupyterHub, sind ebenfalls verfügbar. Um darauf zuzugreifen, melden Sie sich bei JupyterHub an und browsen zu der URL https://your-vm-ip:8000/lab. Sie können JupyterLab als Standardnotebookserver festlegen, indem Sie diese Zeile zu „/etc/jupyterhub/jupyterhub_config.py“ hinzufügen:
+
+    c.Spawner.default_url = '/lab'
 
 ## <a name="tools-installed-on-the-data-science-virtual-machine-for-linux"></a>Auf der Data Science Virtual Machine für Linux installierte Tools
 ### <a name="deep-learning-libraries"></a>Deep Learning-Bibliotheken
@@ -170,7 +187,7 @@ MXNet ist ein für Effizienz und Flexibilität konzipiertes Deep Learning-Framew
 #### <a name="nvidia-digits"></a>NVIDIA DIGITS
 Das NVIDIA Deep Learning GPU Training System, bekannt als DIGITS, ist ein System zum Vereinfachen häufiger Deep Learning-Aufgaben wie das Verwalten von Daten, das Bestimmen und Trainieren von neuronalen Netzen auf GPU-Systemen sowie das Überwachen der Leistung in Echtzeit mit erweiterten Visualisierungsfunktionen. 
 
-DIGITS ist als Dienst mit der Bezeichnung „digits“ verfügbar. Starten Sie den Dienst, und navigieren Sie zu „ http://localhost:5000 “, um zu beginnen.
+DIGITS ist als Dienst mit der Bezeichnung „digits“ verfügbar. Starten Sie den Dienst, und navigieren Sie zu http://localhost:5000, um zu beginnen.
 
 DIGITS ist auch als Python-Modul in der Conda-Stammumgebung installiert.
 
@@ -193,35 +210,37 @@ Um die R-Konsole zu starten, geben Sie in der Shell einfach **R** ein. Sie gelan
 Es ist auch ein R-Skript vorhanden, mit dem Sie bei Bedarf die [20 beliebtesten R-Pakete](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) installieren können. Dieses Skript kann ausgeführt werden, wenn Sie sich auf der interaktiven R-Benutzeroberfläche befinden. Sie können (wie bereits erwähnt) darauf zugreifen, indem Sie in der Shell **R** eingeben.  
 
 ### <a name="python"></a>Python
-Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.7 und 3.5 installiert. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. Sie können die standardmäßigen Text-Editoren verwenden. Außerdem können Sie Spyder nutzen, eine Python-IDE, die als Bündel mit Anaconda Python-Distributionen bereitgestellt wird. Für Spyder wird ein grafischer Desktop oder die X11-Weiterleitung benötigt. Eine Verknüpfung mit Spyder wird auf dem grafischen Desktop bereitgestellt.
+Anaconda Python wird mit Python 2.7- und 3.5-Umgebungen installiert. Die 2.7-Umgebung wird als _root_ bezeichnet, und die 3.5-Umgebung als _py35_. Diese Distribution enthält die Python-Basisversion sowie etwa 300 der beliebtesten Pakete für Mathematik, Entwicklung und Datenanalysen. 
 
-Da wir sowohl über Python 2.7 als auch Python 3.5 verfügen, müssen Sie die gewünschte Python-Version (Conda-Umgebung), mit der Sie in der aktuellen Sitzung arbeiten möchten, speziell aktivieren. Beim Aktivierungsprozess wird die PATH-Variable auf die gewünschte Version von Python festgelegt.
+Standardmäßig wird die py35-Umgebung verwendet. So aktivieren Sie die root-Umgebung (2.7)
 
-Führen Sie in der Shell den folgenden Befehl aus, um die Conda-Umgebung für Python 2.7 zu aktivieren:
+    source activate root
 
-    source /anaconda/bin/activate root
+So aktivieren Sie erneut die py35-Umgebung
 
-Python 2.7 wird unter */anaconda/bin*installiert.
+    source activate py35
 
-Um die Conda-Umgebung für Python 3.5 zu aktivieren, führen Sie folgenden Befehl in der Shell aus:
+Geben Sie zum Aufrufen einer interaktiven Python-Sitzung in der Shell einfach **python** ein. 
 
-    source /anaconda/bin/activate py35
+Installieren Sie mithilfe von ```conda``` oder ````pip```` weitere Python-Bibliotheken. Für Pip aktivieren Sie zuerst die richtige Umgebung, wenn Sie die Voreinstellung nicht wünschen:
 
+    source activate root
+    pip install <package>
 
-Python 3.5 wird unter */anaconda/envs/py35/bin*installiert.
+Oder geben Sie den vollständigen Pfad zu Pip an:
 
-Geben Sie zum Aufrufen einer interaktiven Python-Sitzung in der Shell einfach **python** ein. Wenn Sie sich in einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten.
+    /anaconda/bin/pip install <package>
+    
+Für Conda sollten Sie immer den Umgebungsnamen angeben (_py35_ oder _root_):
 
-Um weitere Python-Bibliotheken zu installieren, müssen Sie den Befehl ```conda``` oder ````pip```` unter sudo ausführen und den vollständigen Pfad des Python-Paket-Managers (conda oder pip) bereitstellen, um die richtige Python-Umgebung zu installieren. Beispiel: 
+    conda install <package> -n py35
 
-    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
-
+Wenn Sie sich in einer grafischen Benutzeroberfläche befinden oder die X11-Weiterleitung eingerichtet haben, können Sie **pycharm** eingeben, um die PyCharm Python-IDE zu starten. Sie können die standardmäßigen Text-Editoren verwenden. Außerdem können Sie Spyder nutzen, eine Python-IDE, die als Bündel mit Anaconda Python-Distributionen bereitgestellt wird. Für Spyder wird ein grafischer Desktop oder die X11-Weiterleitung benötigt. Eine Verknüpfung mit Spyder wird auf dem grafischen Desktop bereitgestellt.
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Zur Anaconda-Distribution gehört außerdem Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Auf Jupyter Notebook wird über JupyterHub zugegriffen. Sie melden sich mit Ihrem lokalen Linux-Benutzernamen und dem dazugehörigen Kennwort an.
 
-Der Jupyter Notebook-Server wurde bereits mit Python 2-, Python 3- und R-Kernels vorkonfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie sich per SSH oder X2Go-Client bei der VM angemeldet haben, können Sie auch [https://localhost:8000/](https://localhost:8000/) besuchen, um auf den Jupyter Notebook-Server zuzugreifen.
+Der Jupyter Notebook-Server wurde bereits mit Python 2-, Python 3- und R-Kernels vorkonfiguriert. Es gibt ein Desktopsymbol namens „Jupyter Notebook“, um den Browser für den Zugriff auf den Notebook-Server zu starten. Wenn Sie sich per SSH oder X2Go-Client bei der VM angemeldet haben, können Sie auch [https://localhost:8000/](https://localhost:8000/) besuchen, um auf den Jupyter-Notebookserver zuzugreifen.
 
 > [!NOTE]
 > Fahren Sie fort, falls Sie Zertifikatwarnungen erhalten.
@@ -279,11 +298,11 @@ Weitere Informationen finden Sie unter [SQuirrel SQL](http://squirrel-sql.source
 #### <a name="command-line-tools-for-accessing-microsoft-sql-server"></a>Befehlszeilentools für den Zugriff auf Microsoft SQL Server
 Das ODBC-Treiberpaket für SQL Server verfügt auch über zwei Befehlszeilentools:
 
-**bcp:**Mit diesem Hilfsprogramm werden Daten per Massenkopiervorgang zwischen einer Instanz von Microsoft SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format kopiert. Das Hilfsprogramm bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie entweder eine Formatdatei verwenden, die für diese Tabelle erstellt wurde, oder die Struktur der Tabelle und die Arten von Daten verstehen, die für die Tabellenspalten gültig sind.
+**bcp:** Mit diesem Hilfsprogramm werden Daten per Massenkopiervorgang zwischen einer Instanz von Microsoft SQL Server und einer Datendatei in einem vom Benutzer angegebenen Format kopiert. Das Hilfsprogramm bcp kann zum Importieren großer Mengen an neuen Zeilen in SQL Server-Tabellen oder zum Exportieren von Daten aus Tabellen in Datendateien verwendet werden. Zum Importieren von Daten in eine Tabelle müssen Sie entweder eine Formatdatei verwenden, die für diese Tabelle erstellt wurde, oder die Struktur der Tabelle und die Arten von Daten verstehen, die für die Tabellenspalten gültig sind.
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit bcp](https://msdn.microsoft.com/library/hh568446.aspx).
 
-**sqlcmd:**Mit dem Hilfsprogramm sqlcmd können Sie Transact-SQL-Anweisungen, Systemprozeduren und Skriptdateien an der Eingabeaufforderung eingeben. Für dieses Hilfsprogramm wird ODBC verwendet, um Transact-SQL-Batches auszuführen.
+**sqlcmd:** Mit dem Hilfsprogramm sqlcmd können Sie Transact-SQL-Anweisungen, Systemprozeduren und Skriptdateien an der Eingabeaufforderung eingeben. Für dieses Hilfsprogramm wird ODBC verwendet, um Transact-SQL-Batches auszuführen.
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
@@ -301,8 +320,8 @@ In R und Python sind Bibliotheken für den Zugriff auf Datenbanken verfügbar.
 ### <a name="azure-tools"></a>Azure-Tools
 Die folgenden Azure-Tools werden auf dem virtuellen Computer installiert:
 
-* **Azure-Befehlszeilenschnittstelle:**Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach **azure help**ein. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Microsoft Azure Storage-Explorer:**Der Microsoft Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure Storage-Konto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
+* **Azure-Befehlszeilenschnittstelle:** Mit der Azure-Befehlszeilenschnittstelle können Sie Azure-Ressourcen über Shellbefehle erstellen und verwalten. Geben Sie zum Aufrufen der Azure-Tools einfach **azure help**ein. Weitere Informationen finden Sie auf der [Dokumentationsseite zur Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+* **Microsoft Azure Storage-Explorer:** Der Microsoft Azure Storage-Explorer ist ein grafisches Tool zum Navigieren durch die Objekte, die Sie in Ihrem Azure Storage-Konto gespeichert haben, und zum Hoch- und Herunterladen der Daten in und aus Azure-Blobs. Sie können über das Symbol der Desktopverknüpfung auf den Storage-Explorer zugreifen. Sie können ihn auch über eine Eingabeaufforderung der Shell aufrufen, indem Sie **StorageExplorer**eingeben. Sie müssen über einen X2Go-Client angemeldet sein oder die X11-Weiterleitung eingerichtet haben.
 * **Azure-Bibliotheken**: Im Folgenden finden Sie einige der vorinstallierten Bibliotheken.
   
   * **Python**: Die installierten zu Azure gehörenden Bibliotheken in Python sind **azure**, **azureml**, **pydocumentdb** und **pyodbc**. Mit den ersten drei Bibliotheken können Sie auf Azure-Speicherdienste, Azure Machine Learning und Azure Cosmos DB (eine NoSQL-Datenbank in Azure) zugreifen. Mit der vierten Bibliothek, pyodbc (zusammen mit dem Microsoft ODBC-Treiber für SQL Server), können Sie unter Verwendung einer ODBC-Schnittstelle über Python auf SQL Server, Azure SQL-Datenbank und Azure SQL Data Warehouse zugreifen. Geben Sie **pip list** ein, um alle aufgeführten Bibliotheken anzuzeigen. Achten Sie darauf, dass dieser Befehl sowohl in der Python 2.7- als auch in der Python 3.5-Umgebung ausgeführt wird.

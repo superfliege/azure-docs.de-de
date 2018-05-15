@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/25/2018
 ms.author: richrund
-ms.openlocfilehash: 0d9848a6477dbf1b93a7f640bc44adf627b40a45
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 297f15430c64e5de3c10e6f38855664a50d11a8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
 Sie können [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
@@ -230,7 +230,7 @@ Das folgende Vorlagenbeispiel veranschaulicht Folgendes:
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
+            "Query": "Event | where Source == \"ServiceFabricNodeBootstrapAgent\" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },
@@ -506,10 +506,9 @@ Der Katalog mit Azure-Schnellstartvorlagen enthält u.a. folgende Vorlagen für 
 * [Bereitstellen eines virtuellen Computers unter Linux mit der Log Analytics-VM-Erweiterung](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Überwachen von Azure Site Recovery mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Überwachen von Azure-Web-Apps mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [Überwachen von SQL Azure mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/101-sqlazure-oms-monitoring/)
-* [Bereitstellen eines Service Fabric-Clusters und Überwachen des Clusters mit einem vorhandenen Log Analytics-Arbeitsbereich](https://azure.microsoft.com/documentation/templates/service-fabric-oms/)
-* [Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung](https://azure.microsoft.com/documentation/templates/service-fabric-vmss-oms/)
+* [Hinzufügen eines vorhandenen Speicherkontos zu OMS](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Bereitstellen von Agents in Azure-VMs mit Resource Manager-Vorlagen](log-analytics-azure-vm-extension.md)
+* [Bereitstellen des Windows-Agents für virtuelle Azure-Computer mithilfe einer Resource Manager-Vorlage](../virtual-machines/windows/extensions-oms.md).
+* [Bereitstellen des Linux-Agents für virtuelle Azure-Computer mithilfe einer Resource Manager-Vorlage](../virtual-machines/linux/extensions-oms.md).
 

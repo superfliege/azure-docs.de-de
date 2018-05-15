@@ -1,24 +1,24 @@
 ---
-title: "Konfigurieren der Facebook-Authentifizierung für Ihre App Services-Anwendung"
-description: "Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Services-Anwendung konfigurieren."
+title: Konfigurieren der Facebook-Authentifizierung für Ihre App Services-Anwendung
+description: Erfahren Sie, wie Sie die Facebook-Authentifizierung für Ihre App Services-Anwendung konfigurieren.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: mattchenderson
 manager: syntaxc4
-editor: 
+editor: ''
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: c1b4c91d384c56c4f55bf8d31ced250f51c0d837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1d2b294fc0663770f9a699e300672695225dfdfd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -31,15 +31,16 @@ Sie benötigen ein Facebook-Konto mit verifizierter E-Mail-Adresse und einer Mob
 1. Melden Sie sich beim [Azure-Portal]an, und navigieren Sie zu Ihrer Anwendung. Kopieren Sie die **URL**. Diese verwenden Sie zur Konfiguration der Facebook-App.
 2. Navigieren Sie in einem anderen Browserfenster zur Website für [Facebook-Entwickler] , und melden Sie sich mit den Anmeldeinformationen für Ihr Facebook-Konto an.
 3. (Optional) Falls Sie sich noch nicht registriert haben, klicken Sie auf **Apps** > **Register as a Developer** (Als Entwickler registrieren). Akzeptieren Sie dann die Richtlinie, und führen Sie die Registrierungsschritte durch.
-4. Klicken Sie auf **My Apps** > **Add a New App** > **Website** > **Skip and Create App ID** (Meine Apps > Neue App hinzufügen > Website > Überspringen und App-ID erstellen). 
-5. Geben Sie in **Display Name** (Anzeigename) einen eindeutigen Anzeigenamen für Ihre App ein, und geben Sie in **Contact Email** (Kontakt-E-Mail) Ihre E-Mail-Adresse ein. Wählen Sie unter **Category** (Kategorie) eine Kategorie für die App aus, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Schritte für die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
-6. Klicken Sie unter „Facebook Login“ auf **Get Started**. Fügen Sie den **Umleitungs-URI** Ihrer Anwendung zu **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) hinzu, und klicken Sie dann auf **Save Changes** (Änderungen speichern). 
+4. Klicken Sie auf **My Apps**(Meine Apps) > **Add a New App** (Neue App hinzufügen).
+5. Geben Sie unter **Display Name** (Anzeigenamen) einen eindeutigen Namen für Ihre App ein. Geben Sie auch Ihre **Contact Email** an, klicken Sie dann auf **Create App ID** (App-ID erstellen), und schließen Sie die Sicherheitsüberprüfung ab. Dadurch gelangen Sie zum Entwickler-Dashboard für Ihre neue Facebook-App.
+7. Klicken Sie unter **Facebook Login** (Facebook-Anmeldung) auf **Set up** (Einrichten), und wählen Sie dann unter **Facebook Login** im linken Navigationsbereich **Settings** (Einstellungen) aus.
+8. Fügen Sie den **Umleitungs-URI** Ihrer Anwendung zu **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) hinzu, und klicken Sie dann auf **Save Changes** (Änderungen speichern).
    
    > [!NOTE]
    > Der Umleitungs-URI ist die URL Ihrer Anwendung, an die der Pfad */.auth/login/facebook/callback* angefügt wurde. Beispiel: `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden.
    > 
    > 
-7. Klicken Sie im linken Navigationsbereich auf **Settings**. Klicken Sie im Feld **App-Geheimnis** auf **Anzeigen**, geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, und notieren Sie die Werte für **App-ID** und **App-Geheimnis**. Ihre Anwendung wird später in Azure mit diesen Angaben konfiguriert.
+7. Klicken Sie im linken Navigationsbereich auf **Settings** > **Basic**. Klicken Sie im Feld **App-Geheimnis** auf **Anzeigen**, geben Sie bei entsprechender Aufforderung Ihr Kennwort ein, und notieren Sie die Werte für **App-ID** und **App-Geheimnis**. Ihre Anwendung wird später in Azure mit diesen Angaben konfiguriert.
    
    > [!IMPORTANT]
    > Der App-Schlüssel ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.

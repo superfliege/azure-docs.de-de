@@ -1,10 +1,10 @@
 ---
-title: "Verwenden von SSH mit Hadoop – Azure HDInsight | Microsoft-Dokumentation"
-description: "Sie können auf HDInsight über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung mit HDInsight mithilfe der Befehle „ssh“ und „scp“ über Windows-, Linux-, Unix- oder macOS-Clients."
+title: Verwenden von SSH mit Hadoop – Azure HDInsight | Microsoft-Dokumentation
+description: Sie können auf HDInsight über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung mit HDInsight mithilfe der Befehle „ssh“ und „scp“ über Windows-, Linux-, Unix- oder macOS-Clients.
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: azure-portal
 keywords: Hadoop-Befehle in Linux, Hadoop-Linux-Befehle, Hadoop macOS, SSH-Hadoop, SSH-Hadoop-Cluster
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/07/2018
+ms.date: 04/26/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 1a1fbac1eb4c529ea89f0f4c72b3317718ac45ea
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 359b458d5fa9089fd7f35f94cd3f0265dc8ea3c9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 
@@ -69,7 +69,7 @@ In Microsoft Windows werden standardmäßig keine SSH-Clients installiert. Die `
 
 * [Git (https://git-scm.com/)](https://git-scm.com/): Die Befehle `ssh` und `scp` sind über die GitBash-Befehlszeile verfügbar.
 
-Es gibt auch mehrere grafische SSH-Clients, z.B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
+Es gibt auch mehrere grafische SSH-Clients, wie z. B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
 
 ## <a id="sshkey"></a>Authentifizierung: SSH-Schlüssel
 
@@ -81,7 +81,7 @@ Wenn Ihr SSH-Konto mit einem Schlüssel geschützt ist, muss der Client beim Her
 
 * Sie können den __Pfad zu einem privaten Schlüssel__ angeben. Beim `ssh`-Client wird der Parameter `-i` verwendet, um den Pfad zum privaten Schlüssel anzugeben. Beispiel: `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net`.
 
-* Wenn Sie __mehrere private Schlüssel__ zur Verwendung mit verschiedenen Servern nutzen, können Sie Hilfsprogramme wie [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) verwenden. Das Hilfsprogramm `ssh-agent` kann verwendet werden, um automatisch den Schlüssel auszuwählen, der beim Herstellen einer SSH-Sitzung verwendet werden soll.
+* Wenn Sie __mehrere private Schlüssel__ mit verschiedenen Servern nutzen, können Sie Hilfsprogramme wie [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) verwenden. Das Hilfsprogramm `ssh-agent` kann verwendet werden, um automatisch den Schlüssel auszuwählen, der beim Herstellen einer SSH-Sitzung verwendet werden soll.
 
 > [!IMPORTANT]
 >
@@ -117,6 +117,9 @@ SSH-Konten können mit einem Kennwort geschützt werden. Beim Herstellen der Ver
 
 > [!WARNING]
 > Microsoft rät davon ab, für SSH die Kennwortauthentifizierung zu verwenden. Kennwörter können erraten werden und sind anfällig für Brute-Force-Angriffe. Stattdessen empfehlen wir die Verwendung von [SSH-Schlüsseln für die Authentifizierung](#sshkey).
+
+> [!IMPORTANT]
+> Das Kennwort für das SSH-Konto läuft 70 Tage nach Erstellung des HDInsight-Clusters ab. Wenn Ihr Kennwort abgelaufen ist, können Sie es anhand der Informationen im Dokument [Verwalten von HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords) ändern.
 
 ### <a name="create-hdinsight-using-a-password"></a>Erstellen eines HDInsight-Clusters mit einem Kennwort
 

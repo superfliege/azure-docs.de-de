@@ -34,7 +34,7 @@ Cask Data Application Platform (CDAP) ist eine Integrationsplattform für Big Da
 
 CDAP verwendet allgemeine Konzepte und Abstraktionen, mit denen Entwickler vertraut sind. Diese Abstraktionen blenden die Komplexität interner Systeme aus und tragen zur Wiederverwendbarkeit von Lösungen bei.
 
-Eine CDAP-Erweiterung namens [Cask Hydrator](http://cask.co/products/hydrator/) bietet eine Benutzeroberfläche für die Entwicklung und Verwaltung von Datenpipelines. Eine Datenpipeline besteht aus verschiedenen Plug-Ins, die Aufgaben wie Datenerfassung, -transformation und -analyse sowie Vorgänge nach der Ausführung durchführen.
+Eine CDAP-Erweiterung namens [Cask Hydrator](http://cask.co/products/hydrator/) bietet eine Benutzeroberfläche für die Entwicklung und Verwaltung von Datenpipelines. Eine Datenpipeline besteht aus verschiedenen \*Plug-Ins, die Aufgaben wie Datenerfassung, -transformation und -analyse sowie Vorgänge nach der Ausführung durchführen.
 
 Jedes CDAP-Plug-In besitzt eine klar definierte Schnittstelle, sodass zur Evaluierung verschiedener Technologien lediglich ein Plug-In durch ein anderes ersetzt werden muss und keinerlei Änderungen am Rest der Anwendung erforderlich sind.
 

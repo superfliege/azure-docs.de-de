@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.openlocfilehash: 3452473f5b2f86d29e46339c997193bc6403736a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9d431d94a6df9636a48e1b2aaa59aaa576e2dc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transaktionen und Sperrmodi in Azure Service Fabric Reliable Collections
 
 ## <a name="transaction"></a>Transaktion
 Eine Transaktion ist eine Folge von Vorgängen, die als einzelne logische Arbeitseinheit ausgeführt werden.
-Eine Transaktion muss die folgenden ACID-Eigenschaften aufweisen. (Siehe: https://technet.microsoft.com/en-us/library/ms190612)
+Eine Transaktion muss die folgenden ACID-Eigenschaften aufweisen. (Siehe https://technet.microsoft.com/library/ms190612).)
 * **Atomarität**: Eine Transaktion muss eine unteilbare Arbeitseinheit sein. Dies bedeutet, dass entweder alle oder keine Datenänderungen ausgeführt werden.
 * **Konsistenz**: Nach dem Abschluss der Transaktion müssen alle Daten in einem konsistenten Zustand belassen werden. Alle internen Datenstrukturen müssen am Ende der Transaktion korrekt sein.
 * **Isolation**: Änderungen, die von parallelen Transaktionen durchgeführt werden, müssen von den Änderungen aller anderen parallelen Transaktionen separiert werden. Die Isolationsstufe, die innerhalb einer ITransaction für einen Vorgang verwendet wird, ist durch den IReliableState festgelegt, der den betreffenden Vorgang ausführt.

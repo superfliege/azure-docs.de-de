@@ -282,7 +282,7 @@ Beim Ausführen des Demoskripts: . \\HealthcareDemo.ps1 mit dem Schalter **BulkP
 
 **2. Key Vault** wird für ein Geheimnis angefordert, das dem angeforderten Token zugeordnet ist.
 
-**3. Azure-Rollen überprüfen die Anforderung und autorisieren die Zugriffsanforderung auf den Key Vault.
+\*\*3. Azure-Rollen überprüfen die Anforderung und autorisieren die Zugriffsanforderung auf den Key Vault.
 
 **4. Key Vault** gibt das Geheimnis zurück, in diesem Fall die SQL-DB-Verbindungszeichenfolge.
 
