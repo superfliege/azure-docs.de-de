@@ -1,12 +1,12 @@
 ---
-title: "Schützen des Internets der Dinge von Anfang an | Microsoft Docs"
-description: In diesem Artikel werden die integrierten Sicherheitsfeatures der Microsoft Azure IoT Suite beschrieben.
-services: 
+title: Schützen des Internets der Dinge von Anfang an | Microsoft Docs
+description: In diesem Artikel werden die integrierten Sicherheitsfeatures der Solution Accelerators der Microsoft Azure IoT Suite beschrieben.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 10252dfa-8313-4a97-9bd6-a3f1345dd3be
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 6df45a64c70bda632c3f8b721aa962dd8b6d3fa2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 991a668bbebf09c7394552b1dc5928e5dbe58841
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
@@ -34,10 +34,10 @@ Weitere Informationen zum Schützen Ihrer IoT-Lösung finden Sie hier:
 [lnk-security-architecture]: iot-security-architecture.md
 [lnk-security-deployment]: iot-suite-security-deployment.md
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators untersuchen:
 
-* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf][lnk-predictive-overview]
-* [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
+* [Übersicht über den Solution Accelerator für Predictive Maintenance][lnk-predictive-overview]
+* [Häufig gestellte Fragen zu IoT-Solution Accelerators][lnk-faq]
 
 Sie können unter [Verwalten des Zugriffs auf IoT Hub][lnk-devguide-security] im IoT Hub-Entwicklerhandbuch mehr über die Sicherheit von IoT Hub erfahren.
 

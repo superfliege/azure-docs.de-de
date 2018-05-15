@@ -1,13 +1,13 @@
 ---
-title: "Anpassen der Lösung für verbundene Factorys – Azure | Microsoft-Dokumentation"
-description: "Beschreibung der Verhaltensanpassung der vorkonfigurierten Lösung für eine verbundene Factory."
-services: 
+title: 'Anpassen der Lösung für verbundene Factorys: Azure | Microsoft Docs'
+description: Beschreibung der Verhaltensanpassung des Solution Accelerators für eine verbundene Factory.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: c#
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2017
 ms.author: dobett
-ms.openlocfilehash: 48c8036d0bc9534ce94529b96d32b004769246c1
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5d074a5cf0dd5191b5d94531068341ad1b953391
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Anpassen der Anzeige von Daten von Ihren OPC UA-Servern durch die Lösung für eine verbundene Factory
 
-Die Lösung für eine verbundene Factory aggregiert und zeigt Daten von OPC UA-Servern, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
+Die Lösung für eine verbundene Factory aggregiert und zeigt Daten von OPC UA-Servern an, die mit der Lösung verbunden sind. Sie können in Ihrer Lösung zu den OPC UA-Servern navigieren und Befehle an diese senden. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 
 Beispiele für aggregierte Daten in der Lösung sind die anlagenübergreifende Effizienz (Overall Equipment Efficiency, OEE) und Leistungsindikatoren (Key Performance Indicators, KPIs), die Sie im Dashboard auf Werks-, Fertigungsstraßen- und Stationsebene anzeigen können. Der folgende Screenshot zeigt die OEE- und KPI-Werte für die Station **Montage** in der **Fertigungsstraße 1** im Werk **München**:
 
@@ -72,7 +72,7 @@ Sie können die Konfigurationsdatei für folgende Aufgaben verwenden:
 - Bearbeiten der vorhandenen simulierten Werke, Fertigungsstraßen und Stationen
 - Zuordnen von Daten von realen OPC UA-Servern, die Sie mit der Lösung verbinden.
 
-Weitere Informationen zum Zuordnen und Aggregieren der Daten für Ihre spezifischen Anforderungen finden Sie unter [Konfigurieren der vorkonfigurierten Lösung für eine verbundene Factory](iot-suite-connected-factory-configure.md).
+Weitere Informationen zum Zuordnen und Aggregieren der Daten für Ihre spezifischen Anforderungen finden Sie unter [Konfigurieren des Solution Accelerators für eine verbundene Factory](iot-suite-connected-factory-configure.md).
 
 ## <a name="deploy-the-changes"></a>Bereitstellen der Änderungen
 
@@ -82,12 +82,12 @@ Das Repository **azure-iot-connected-factory** enthält das PowerShell-Skript **
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie mehr über die vorkonfigurierte Lösung für eine verbundene Factory:
+In den folgenden Artikeln erfahren Sie mehr über den Solution Accelerator für eine verbundene Factory:
 
-* [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise][lnk-rm-walkthrough]
-* [Bereitstellen eines Gateways für eine verbundene Factory][lnk-connect-cf]
+* [Exemplarische Vorgehensweise für den Solution Accelerator für verbundene Factorys][lnk-rm-walkthrough]
+* [Bereitstellen eines Gateways für die verbundene Factory][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
-* [Verbundene Factory – häufig gestellte Fragen](iot-suite-faq-cf.md)
+* [Verbundene Factory: Häufig gestellte Fragen](iot-suite-faq-cf.md)
 * [Häufig gestellte Fragen][lnk-faq]
 
 
