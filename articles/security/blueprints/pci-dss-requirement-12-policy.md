@@ -1,9 +1,9 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Richtlinienanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Richtlinienanforderungen
 description: PCI-DSS-Anforderung 12
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: a79d59d8-20e3-4efe-8686-c8f4ed80e220
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 05e9ed7c886d37a024db1eedbc541705b7d8a9a9
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 2fb238e9b95180d6156159c87ec008a71943e698
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="policy-requirements-for-pci-dss-compliant-environments"></a>Richtlinienanforderungen für PCI-DSS-konforme Umgebungen  
 ## <a name="pci-dss-requirement-12"></a>PCI-DSS-Anforderung 12
@@ -39,7 +39,7 @@ Eine strikte Sicherheitsrichtlinie setzt einen Sicherheitsmaßstab für die gesa
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Einrichten und Verwalten einer Informationssicherheitsrichtlinie verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Einrichten und Verwalten einer Informationssicherheitsrichtlinie verantwortlich.|
 
 
 
@@ -52,7 +52,7 @@ Eine strikte Sicherheitsrichtlinie setzt einen Sicherheitsmaßstab für die gesa
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, ihre Informationssicherheitsrichtlinie mindestens einmal jährlich oder bei Änderungen an ihrer Karteninhaberdaten-Umgebung (Cardholder Data Environment, CDE) zu aktualisieren.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, ihre Informationssicherheitsrichtlinie mindestens einmal jährlich oder bei Änderungen an ihrer Karteninhaberdaten-Umgebung (Cardholder Data Environment, CDE) zu aktualisieren.|
 
 
 
@@ -69,7 +69,7 @@ Eine strikte Sicherheitsrichtlinie setzt einen Sicherheitsmaßstab für die gesa
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Implementierung eines Risikobewertungsprozesses verantwortlich, der alle in Anforderung 12.2 aufgelisteten Bedrohungen berücksichtigt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Implementierung eines Risikobewertungsprozesses verantwortlich, der alle in Anforderung 12.2 aufgelisteten Bedrohungen berücksichtigt.|
 
 
 
@@ -86,7 +86,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -99,7 +99,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -112,7 +112,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -125,7 +125,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -138,7 +138,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -151,7 +151,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -164,7 +164,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Ermitteln geeigneter Netzwerkadressen für cloudbasierte virtuelle Computer, Speicher- und Unterstützungsdienste verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Ermitteln geeigneter Netzwerkadressen für cloudbasierte virtuelle Computer, Speicher- und Unterstützungsdienste verantwortlich.|
 
 
 
@@ -177,7 +177,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Ermitteln geeigneter Netzwerkadressen für cloudbasierte virtuelle Computer, Speicher- und Unterstützungsdienste verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Ermitteln geeigneter Netzwerkadressen für cloudbasierte virtuelle Computer, Speicher- und Unterstützungsdienste verantwortlich.|
 
 
 
@@ -190,7 +190,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure nutzt die Funktion für das Sperren von AD-Sitzungen von Microsoft für Unternehmen, die nach einer gewissen Zeit der Inaktivität Sitzungssperrungen erzwingt. Netzwerkverbindungen werden nach 30 Minuten der Inaktivität beendet. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -203,7 +203,7 @@ Stellen Sie sicher, dass diese Nutzungsrichtlinien Folgendes erforderlich machen
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -217,7 +217,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, zu verhindern, dass Mitarbeiter, die über Remotezugriffstechnologien auf Daten von Karteninhabern zugreifen, diese Daten auf lokale Festplatten und elektronische Wechselmedien kopieren oder darauf speichern, sofern dies nicht für eine definierte geschäftliche Anforderung explizit autorisiert ist.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, zu verhindern, dass Mitarbeiter, die über Remotezugriffstechnologien auf Daten von Karteninhabern zugreifen, diese Daten auf lokale Festplatten und elektronische Wechselmedien kopieren oder darauf speichern, sofern dies nicht für eine definierte geschäftliche Anforderung explizit autorisiert ist.|
 
 
 
@@ -230,7 +230,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -241,14 +241,14 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 - Definieren einer Charta für ein PCI-DSS-Konformitätsprogramm und Information der Geschäftsführung 
 
 > [!NOTE]
-> Diese Anforderung ist bis zum 31 Januar 2018 eine bewährte Methode, danach ist Sie eine Anforderung.
+> Diese Anforderung ist bis zum 31. Januar 2018 eine bewährte Methode, danach stellt sie eine Anforderung dar.
 
 **Zuständigkeiten:&nbsp;&nbsp;`Customer Only`**
 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind für das Dokumentieren ihres PCI-Konformitätsprogramms verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind für das Dokumentieren ihres PCI-Konformitätsprogramms verantwortlich.|
 
 
 
@@ -261,7 +261,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
 
 
 
@@ -274,7 +274,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
 
 
 
@@ -287,7 +287,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Definieren und Zuweisen von Informationssicherheitsaufgaben an ihre Mitarbeiter verantwortlich.|
 
 
 
@@ -300,7 +300,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -313,7 +313,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -326,7 +326,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien mit Vorgaben für die ordnungsgemäße Verwendung, Implementierung und Authentifizierung wichtiger Technologien innerhalb ihrer CDE verantwortlich.|
 
 
 
@@ -339,7 +339,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien rund um das Sicherheitsbewusstsein für Mitarbeiter mit Zugriff auf die CDE verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen und Verwalten von Richtlinien rund um das Sicherheitsbewusstsein für Mitarbeiter mit Zugriff auf die CDE verantwortlich.|
 
 
 
@@ -355,7 +355,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind verantwortlich für das Sicherstellen, dass sind Mitarbeiter mindestens einmal jährlich Informationssicherheits- und PCI-DSS-Bewusstseinsschulungen angeboten bekommen und wahrnehmen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind verantwortlich für das Sicherstellen, dass sind Mitarbeiter mindestens einmal jährlich Informationssicherheits- und PCI-DSS-Bewusstseinsschulungen angeboten bekommen und wahrnehmen.|
 
 
 
@@ -368,7 +368,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind verantwortlich für das Sicherstellen, dass sind Mitarbeiter mindestens einmal jährlich Informationssicherheits- und PCI-DSS-Bewusstseinsschulungen angeboten bekommen und wahrnehmen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind verantwortlich für das Sicherstellen, dass sind Mitarbeiter mindestens einmal jährlich Informationssicherheits- und PCI-DSS-Bewusstseinsschulungen angeboten bekommen und wahrnehmen.|
 
 
 
@@ -384,7 +384,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, gründliche Hintergrundprüfungen von Mitarbeitern mit Zugriff auf die CDE sicherzustellen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, gründliche Hintergrundprüfungen von Mitarbeitern mit Zugriff auf die CDE sicherzustellen.|
 
 
 
@@ -397,7 +397,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Überwachung der PCI-Konformität für Dienstanbieter verantwortlich, für die Daten von Karteninhabern freigegeben werden, oder die die Sicherheit der CDE beeinträchtigen könnten. Kunden müssen eine Liste mit allen innerhalb ihrer CDE verwendeten Diensten führen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Überwachung der PCI-Konformität für Dienstanbieter verantwortlich, für die Daten von Karteninhabern freigegeben werden, oder die die Sicherheit der CDE beeinträchtigen könnten. Kunden müssen eine Liste mit allen innerhalb ihrer CDE verwendeten Diensten führen.|
 
 
 
@@ -411,7 +411,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Überwachung der PCI-Konformität für Dienstanbieter verantwortlich, für die Daten von Karteninhabern freigegeben werden, oder die die Sicherheit der CDE beeinträchtigen könnten. Kunden müssen eine Liste mit allen innerhalb ihrer CDE verwendeten Diensten führen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Überwachung der PCI-Konformität für Dienstanbieter verantwortlich, für die Daten von Karteninhabern freigegeben werden, oder die die Sicherheit der CDE beeinträchtigen könnten. Kunden müssen eine Liste mit allen innerhalb ihrer CDE verwendeten Diensten führen.|
 
 
 
@@ -427,7 +427,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Treffen von schriftlichen Vereinbarungen mit Dienstanbietern verantwortlich, in denen die Zuständigkeit für die Aufrechterhaltung der Sicherheit der Daten von Karteninhabern bestätigt wird.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Treffen von schriftlichen Vereinbarungen mit Dienstanbietern verantwortlich, in denen die Zuständigkeit für die Aufrechterhaltung der Sicherheit der Daten von Karteninhabern bestätigt wird.|
 
 
 
@@ -440,7 +440,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Sicherstellung verantwortlich, dass ein Prozess für die Zusammenarbeit mit Dienstanbietern etabliert ist, der eine entsprechende Due-Diligence-Prüfung vor der Zusammenarbeit umfasst.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Sicherstellung verantwortlich, dass ein Prozess für die Zusammenarbeit mit Dienstanbietern etabliert ist, der eine entsprechende Due-Diligence-Prüfung vor der Zusammenarbeit umfasst.|
 
 
 
@@ -453,7 +453,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Verwaltung eines Programms zur mindestens jährlichen Überwachung des PCI-DSS-Konformitätsstatus von Dienstanbietern verantwortlich.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Verwaltung eines Programms zur mindestens jährlichen Überwachung des PCI-DSS-Konformitätsstatus von Dienstanbietern verantwortlich.|
 
 
 
@@ -466,7 +466,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, eine Kopie der [Matrix der Verantwortungsübersicht](https://aka.ms/pciblueprintcrm32) zu erhalten. In dieser Matrix sind die PCI-DSS-Anforderungen, die in der Verantwortung des Kunden, und die Anforderungen skizziert, die in der Verantwortung von Microsoft Azure liegen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, eine Kopie der [Matrix der Verantwortungsübersicht](https://aka.ms/pciblueprintcrm32) zu erhalten. In dieser Matrix sind die PCI-DSS-Anforderungen, die in der Verantwortung des Kunden, und die Anforderungen skizziert, die in der Verantwortung von Microsoft Azure liegen.|
 
 
 
@@ -482,7 +482,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Zuständigkeiten bei der Verwaltung der PCI-Konformität anzuerkennen. |
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Zuständigkeiten bei der Verwaltung der PCI-Konformität anzuerkennen. |
 
 
 
@@ -495,7 +495,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -515,7 +515,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -529,7 +529,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -542,7 +542,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -555,7 +555,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -568,7 +568,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -581,7 +581,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Entwicklung von IR-Plänen und Tests verantwortlich, in denen alle Kundenkontrollen im Zusammenhang mit gemeinsamen genutzten Kontaktpunkten und Kundenanwendungen, die die Infrastruktur von Azure nutzen, berücksichtigt werden. Es liegt im Verantwortungsbereich des Kunden, Azure die richtigen Kontaktinformationen bereitzustellen, für den Fall, dass ihnen ein Vorfall gemeldet werden muss, der u. U. Auswirkungen auf ihre Anwendung oder Daten hat.|
 
 
 
@@ -596,7 +596,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 - Change Management-Prozesse 
 
 > [!NOTE]
-> Diese Anforderung ist bis zum 31 Januar 2018 eine bewährte Methode, danach ist Sie eine Anforderung.
+> Diese Anforderung ist bis zum 31. Januar 2018 eine bewährte Methode, danach stellt sie eine Anforderung dar.
 
 
 **Zuständigkeiten:&nbsp;&nbsp;`Customer Only`**
@@ -604,7 +604,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Überprüfungen von Prozessen zu dokumentieren, um die Leistung der PCI-Konformitätskontrolle zu bestätigen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Überprüfungen von Prozessen zu dokumentieren, um die Leistung der PCI-Konformitätskontrolle zu bestätigen.|
 
 
 
@@ -623,7 +623,7 @@ Liegt eine autorisierte geschäftliche Anforderung vor, müssen die Nutzungsrich
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Überprüfungen von Prozessen zu dokumentieren, um die Leistung der PCI-Konformitätskontrolle zu bestätigen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden, bei denen es sich um Dienstanbieter handelt, sind dafür verantwortlich, ihre Überprüfungen von Prozessen zu dokumentieren, um die Leistung der PCI-Konformitätskontrolle zu bestätigen.|
 
 
 

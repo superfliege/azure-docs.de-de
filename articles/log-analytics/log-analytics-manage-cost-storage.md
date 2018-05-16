@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 9a360b41b24f4aca3c3aba29387ecd55faf881b7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics
 Log Analytics ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu verstehen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
@@ -33,14 +33,15 @@ Für Daten können abhängig von den folgenden Faktoren erhebliche Kosten anfall
 - Aufbewahrungsdauer der Daten im Arbeitsbereich  
 - Anzahl aktivierter Managementlösungen, Datenquelle und Sammlungshäufigkeit 
 
-Lesen Sie die Dokumentationen für die einzelnen Lösungen, da diese eine Schätzung des Umfang der gesammelten Daten bietet.   
+> [!NOTE]
+> Lesen Sie die Dokumentationen für die einzelnen Lösungen, da diese eine Schätzung des Umfang der gesammelten Daten bietet.   
 
-Im Tarif „Free“ ist die Aufbewahrung der Daten auf sieben Tage beschränkt. Bei den Tarifen "Pro GB (eigenständig)“ und „Pro Knoten (OMS)“ sind gesammelte Daten der letzten 31 Tage verfügbar, und die Aufbewahrungsdauer kann auf bis zu zwei Jahre erhöht werden. Gebühren fallen an, wenn Sie eine längere Aufbewahrungsdauer auswählen. Im Tarif „Free“ liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf den GB- oder knotenbasierten Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. Sie können Ihren Tariftyp jederzeit ändern. Weitere Informationen zu den Preisen finden Sie unter [Preisdetails](https://azure.microsoft.com/pricing/details/log-analytics/). 
+Im Tarif *Free* ist die Aufbewahrung der Daten ist auf sieben Tage beschränkt. In den Tarifen *Standalone* und *Paid* stehen die gesammelten Daten der letzten 31 Tage zur Verfügung. Im Tarif *Free* liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen kostenpflichtigen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
 
 > [!NOTE]
-> Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model). 
+> Gebühren fallen an, wenn Sie in einem kostenpflichtigen Tarif eine längere Aufbewahrungsdauer auswählen. Sie können Ihren Tariftyp jederzeit ändern. Weitere Informationen zu den Preisen finden Sie unter [Preisdetails](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Die Verwaltung der Datenmenge ist unabhängig vom Preismodell oder Tarif ein fundamentaler Aspekt der Kostenkontrolle. Abgesehen von der Wahl und Konfiguration der spezifischen Lösung kann das Datenvolumen in Log Analytics auf zwei Arten beschränkt werden: tägliche Obergrenze und Datenaufbewahrung.  
+Zur Kostenkontrolle kann das Datenvolumen auf zwei Arten beschränkt werden: tägliche Obergrenze und Datenaufbewahrung.  
 
 ## <a name="review-estimated-cost"></a>Überprüfen der geschätzten Kosten
 Mit Log Analytics können Sie auf der Grundlage aktueller Nutzungsmuster problemlos die zu erwartenden Kosten ermitteln.  Führen Sie dazu die folgenden Schritte aus.  
@@ -54,9 +55,9 @@ Hier können Sie Ihr Datenvolumen für den Monat überprüfen. Dieses beinhaltet
 Die Gebühren für Log Analytics fließen in Ihre Azure-Rechnung ein. Die Details Ihrer Azure-Rechnung finden Sie im Bereich „Abrechnung“ des Azure-Portals oder im [Azure-Abrechnungsportal](https://account.windowsazure.com/Subscriptions).  
 
 ## <a name="daily-cap"></a>Tägliche Obergrenze
-Wenn Sie über das Azure-Portal einen Log Analytics-Arbeitsbereich mit dem Tarif *Free* erstellen, liegt die tägliche Obergrenze bei 500 MB pro Tag. Bei den anderen Tarifen gibt es kein Limit. Sie können eine tägliche Obergrenze konfigurieren und die tägliche Erfassung für Ihren Arbeitsbereich einschränken. Dabei ist jedoch Vorsicht geboten, da dieses Limit möglichst nicht erreicht werden sollte.  Andernfalls gehen die restlichen Daten für den Tag verloren, und die Integrität von Ressourcen, die IT-Diensten zugrunde liegen, kann nicht mehr zuverlässig überwacht werden.  Die tägliche Obergrenze ist dazu gedacht, einen unerwarteten Anstieg des Datenvolumens aus Ihren verwalteten Ressourcen zu verhindern und den Grenzwert einzuhalten – oder einfach ungeplante Gebühren für Ihren Arbeitsbereich zu vermeiden.  
+Wenn Sie über das Azure-Portal einen Log Analytics-Arbeitsbereich mit dem Tarif *Free* erstellen, liegt die tägliche Obergrenze bei 500 MB pro Tag. Bei den anderen Tarifen gibt es kein Limit. Sie können eine tägliche Obergrenze konfigurieren und die tägliche Erfassung für Ihren Arbeitsbereich einschränken. Dabei ist jedoch Vorsicht geboten, da dieses Limit möglichst nicht erreicht werden sollte.  Andernfalls verlieren Sie die Daten des restlichen Tages. Dies kann sich auf Azure-Dienste und -Lösungen auswirken, deren Funktionalität unter Umständen von der Verfügbarkeit aktueller Daten im Arbeitsbereich abhängt.  Infolgedessen kann auch die Integrität von Ressourcen, die IT-Diensten zugrunde liegen, nicht mehr zuverlässig überwacht werden, und es können keine Warnungen empfangen werden.  Die tägliche Obergrenze ist dazu gedacht, einen unerwarteten Anstieg des Datenvolumens aus Ihren verwalteten Ressourcen zu verhindern und den Grenzwert einzuhalten – oder einfach ungeplante Gebühren für Ihren Arbeitsbereich zu vermeiden.  
 
-Bei Erreichen des Tageslimits werden für den Rest des Tages keine kostenpflichtigen Datentypen mehr gesammelt.  Im oberen Seitenbereich erscheint ein Warnbanner für den ausgewählten Log Analytics-Arbeitsbereich, und an die Tabelle *Operation* wird unter der Kategorie **LogManagement** ein Vorgangsereignis gesendet. Die Datensammlung wird nach der unter *Daily limit will be set at* (Tageslimit wird festgelegt um) definierten Zurücksetzungszeit fortgesetzt. Es empfiehlt sich, eine Warnungsregel auf der Grundlage dieses Vorgangsereignisses zu definieren und so zu konfigurieren, dass bei Erreichen des Tageslimits für Daten eine Benachrichtigung erfolgt. 
+Bei Erreichen des Tageslimits werden für den Rest des Tages keine kostenpflichtigen Datentypen mehr gesammelt. Im oberen Seitenbereich erscheint ein Warnbanner für den ausgewählten Log Analytics-Arbeitsbereich, und an die Tabelle *Operation* wird unter der Kategorie **LogManagement** ein Vorgangsereignis gesendet. Die Datensammlung wird nach der unter *Daily limit will be set at* (Tageslimit wird festgelegt um) definierten Zurücksetzungszeit fortgesetzt. Es empfiehlt sich, eine Warnungsregel auf der Grundlage dieses Vorgangsereignisses zu definieren und so zu konfigurieren, dass bei Erreichen des Tageslimits für Daten eine Benachrichtigung erfolgt. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identifizieren des zu definierenden Tageslimits für Daten 
 Informieren Sie sich unter [Analysieren der Datennutzung in Log Analytics](log-analytics-usage.md) über den Datenerfassungstrend sowie über die zu definierende tägliche Volumenobergrenze. Wählen Sie die Obergrenze mit Bedacht, da Sie Ihre Ressourcen nach Erreichen des Limits nicht mehr überwachen können. 

@@ -3,16 +3,17 @@ title: Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten (Vors
 description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Log Analytics proaktiv überwacht.
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/20/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 41a5ff2613706b7454a96daa52c7cb20c734c394
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 410f76d406ab65ff1732525a501fe007eeeb5f6a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation (Vorschauversion)
 
@@ -26,7 +27,7 @@ Diese Lösung umfasst eine dezentrale Automatisierungsoption für Benutzer, die 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Runbooks wird ein [Ausführendes Azure-Konto](automation-offering-get-started.md#authentication-methods) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
+* Für die Runbooks wird ein [Ausführendes Azure-Konto](automation-create-runas-account.md) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 * Mit dieser Lösung werden nur VMs verwaltet, die sich unter demselben Abonnement wie Ihr Azure Automation-Konto befinden.
 * Diese Lösung wird nur in den folgenden Azure-Regionen bereitgestellt: „Australien, Südosten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Osten“, „Japan, Osten“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“ und „Europa, Westen“.
 
@@ -80,8 +81,8 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    * Wählen Sie einen **Zeitplan** aus. Dies ist ein wiederkehrendes Datum und eine Uhrzeit zum Starten und Beenden der VMs in den Zielressourcengruppen. Der Zeitplan wird standardmäßig für die UTC-Zeitzone konfiguriert. Es kann keine andere Region ausgewählt werden. Falls Sie den Zeitplan nach dem Konfigurieren der Lösung für Ihre Zeitzone konfigurieren möchten, helfen Ihnen die Informationen unter [Ändern des Zeitplans für das Starten und Herunterfahren](#modify-the-startup-and-shutdown-schedule) weiter.
    * Um **E-Mail-Benachrichtigungen** von SendGrid zu empfangen, übernehmen Sie den Standardwert **Ja**, und geben Sie eine gültige E-Mail-Adresse an. Wenn Sie hier **Nein** wählen und sich dann später doch für den Empfang von E-Mail-Benachrichtigungen entscheiden, können Sie die Variable **External_EmailToAddress** mit gültigen E-Mail-Adressen getrennt durch Kommas aktualisieren und anschließend die Variable **External_IsSendEmail** ändern (Wert **Ja**).
 
-> [!IMPORTANT]
-> Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
+    > [!IMPORTANT]
+    > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
 
 1. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
@@ -218,7 +219,7 @@ In allen Szenarien müssen die Variablen **External_Start_ResourceGroupNames**, 
 
 ### <a name="schedules"></a>Zeitpläne
 
-In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt.  Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
+In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt. Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen. Standardmäßig sind alle deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
 
 Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
@@ -226,7 +227,7 @@ Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappend
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet. Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|
 |Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter *Stop* jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StartVM**).|
-|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter *Start* jeden Tag zum angegebenen Zeitpunkt aus.  Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StopVM**).|
+|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter *Start* jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, die die Regeln der entsprechenden Variablen erfüllen. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Scheduled-StopVM**).|
 |Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter *Stop* jeden Freitag zum angegebenen Zeitpunkt aus. Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Sequenced-StartVM**).|
 |Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook „Sequenced_Parent“ mit dem Parameter *Start* jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Ressourcenvariablen finden Sie im Abschnitt „Runbooks“. Es ist ratsam, den dazugehörigen Zeitplan zu aktivieren (**Sequenced-StopVM**).|
 

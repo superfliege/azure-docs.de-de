@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: ed87eab6250eea753bc3b0abd97182d1b869420c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Anpassen der Authentifizierung und Autorisierung in Azure App Service
 
@@ -25,7 +25,8 @@ Diesem Artikel erfahren Sie, wie die [Authentifizierung und Autorisierung in App
 
 Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 
-* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)
+* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service für Linux](containers/tutorial-auth-aad.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](app-service-mobile-how-to-configure-active-directory-authentication.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](app-service-mobile-how-to-configure-facebook-authentication.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung](app-service-mobile-how-to-configure-google-authentication.md)
@@ -148,4 +149,5 @@ Klicken Sie auf **Bearbeiten**, ändern Sie die folgende Eigenschaft, und klicke
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Linux)](containers/tutorial-auth-aad.md)

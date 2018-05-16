@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 0aec94ce4d53e1d0f5ecfbc7c667f7d4ceea1d2d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -22,7 +22,7 @@ In diesem Tutorial wird gezeigt, wie Sie Azure-Komponenten vorbereiten, wenn Sie
 
 > [!div class="checklist"]
 > * Überprüfen, ob Ihr Azure-Konto über Replikationsberechtigungen verfügt
-> * Erstellen eines Azure-Speicherkontos. Darin werden replizierte Daten gespeichert.
+> * Erstellen eines Azure-Speicherkontos Darin werden replizierte Daten gespeichert.
 > * Erstellen Sie einen Recovery Services-Tresor.
 > * Richten Sie ein Azure-Netzwerk ein. Wenn die Azure-VMs nach einem Failover erstellt werden, werden sie mit diesem Azure-Netzwerk verbunden.
 

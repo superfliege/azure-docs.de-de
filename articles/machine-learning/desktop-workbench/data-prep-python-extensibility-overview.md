@@ -4,19 +4,17 @@ description: Dieses Dokument bietet eine Übersicht und einige detaillierte Beis
 services: machine-learning
 author: euangMS
 ms.author: euang
-manager: lanceo
-ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/01/2018
-ms.openlocfilehash: cc1aef7ed7c4a7d03a7fa63e71c8c27aca10095a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 05/09/2018
+ms.openlocfilehash: 6363d39b2dfbd36ccebff6780e35caf58ca84dda
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="data-preparations-python-extensions"></a>Python-Erweiterungen für die Datenvorbereitung
 Die Azure Machine Learning-Datenvorbereitung enthält Erweiterbarkeit auf mehreren Ebenen, um Funktionslücken zwischen integrierten Funktionen zu füllen. In diesem Dokument wird die Erweiterbarkeit mithilfe des Python-Skripts erläutert. 
@@ -24,14 +22,10 @@ Die Azure Machine Learning-Datenvorbereitung enthält Erweiterbarkeit auf mehrer
 ## <a name="custom-code-steps"></a>Benutzerdefinierte Codeschritte 
 Die Datenvorbereitung verfügt über folgende benutzerdefinierte Schritte, mit denen Sie Benutzercode schreiben können:
 
-* Dateileser*
-* Writer*
 * Spalte hinzufügen
 * Erweiterter Filter
 * Datenfluss transformieren
 * Partition transformieren
-
-*Diese Schritte werden aktuell nicht in einer Spark-Ausführung unterstützt.
 
 ## <a name="code-block-types"></a>Codeblocktypen 
 Wir unterstützen für jeden dieser Schritte zwei Codeblocktypen. Zum einen unterstützen wir einen bloßen Python-Ausdruck, der unverändert ausgeführt wird. Und zum anderen unterstützen wir ein Python-Modul, in dem wir eine bestimmte Funktion mit einer bekannten Signatur in dem von Ihnen angegebenen Code aufrufen.
@@ -158,74 +152,6 @@ Beispiele
     row.ColumnA + row.ColumnB  
     row["ColumnA"] + row["ColumnB"]
 ```
-
-## <a name="file-reader"></a>Dateileser 
-### <a name="purpose"></a>Zweck 
-Mit dem Dateileser-Erweiterungspunkt können Sie den Prozess des Lesens einer Datei in einen Datenfluss vollständig steuern. Das System ruft Ihren Code auf und übergibt die Liste der Dateien, die verarbeitet werden sollen. Ihr Code muss einen Pandas-Datenrahmen erstellen und zurückgeben. 
-
->[!NOTE]
->Dieser Erweiterungspunkt funktioniert in Spark nicht. 
-
-
-### <a name="how-to-use"></a>Verwendung 
-Sie greifen über den Assistenten zum **Öffnen der Datenquelle** auf diesen Erweiterungspunkt zu. Wählen Sie **Datei**  auf der ersten Seite und anschließend den Dateispeicherort aus. Wählen Sie auf der Seite **Dateiparameter auswählen** in der Dropdownliste **Dateityp** die Option **Benutzerdefinierte Datei (Skript)** aus. 
-
-Ihr Code erhält einen Pandas-Datenrahmen mit dem Namen „df“, der Informationen zu den Dateien enthält, die Sie lesen müssen. Wenn Sie ein Verzeichnis mit mehreren Dateien öffnen, enthält der Datenrahmen mehrere Zeilen.  
-
-Dieser Datenrahmen verfügt über die folgenden Spalten:
-
-- „Path“: Die zu lesende Datei.
-- „PathHint“: Der Speicherort der Datei. Werte: „Local“, „AzureBlobStorage“ und „AzureDataLakeStorage“.
-- „AuthenticationType“: Der Typ der Authentifizierung, der für den Zugriff auf die Datei verwendet wird. Werte: „None“, „SasToken“ und „OAuthToken“.
-- „AuthenticationValue“: Enthält „None“ oder das zu verwendende Token.
-
-### <a name="syntax"></a>Syntax 
-Ausdruck 
-
-```python
-    paths = df['Path'].tolist()  
-    df = pd.read_csv(paths[0])
-```
-
-
-Modul  
-```python
-PathHint = Local  
-def read(df):  
-    paths = df['Path'].tolist()  
-    filedf = pd.read_csv(paths[0])  
-    return filedf  
-```
- 
-
-## <a name="writer"></a>Writer 
-### <a name="purpose"></a>Zweck 
-Mit dem Writer-Erweiterungspunkt können Sie den Prozess des Schreibens von Daten aus einem Datenfluss vollständig steuern. Das System ruft Ihren Code ab und übergibt einen Datenrahmen. Ihr Code kann den Datenrahmen zum beliebigen Schreiben von Daten verwenden. 
-
->[!NOTE]
->Der Writer-Erweiterungspunkt funktioniert in Spark nicht.
-
-
-### <a name="how-to-use"></a>Verwendung 
-Sie können diesen Erweiterungspunkt mithilfe des Blocks „Datenfluss schreiben (Skript)“ hinzufügen. Er ist im Menü **Transformationen** der obersten Ebene verfügbar.
-
-### <a name="syntax"></a>Syntax 
-Ausdruck
-
-```python
-    df.to_csv('c:\\temp\\output.csv')
-```
-
-Modul
-
-```python
-def write(df):  
-    df.to_csv('c:\\temp\\output.csv')  
-    return df
-```
- 
- 
-Dieser benutzerdefinierte Schreibblock kann in der Mitte einer Liste von Schritten vorhanden sein. Wenn Sie ein Modul verwenden, muss die write-Funktion den Datenrahmen zurückgeben, der die Eingabe für den folgenden Schritt darstellt. 
 
 ## <a name="add-column"></a>Spalte hinzufügen 
 ### <a name="purpose"></a>Zweck

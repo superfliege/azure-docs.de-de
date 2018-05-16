@@ -1,7 +1,9 @@
 ---
-title: "Azure-Schnellstart – Konfigurieren einer VM per DSC | Microsoft-Dokumentation"
+title: Azure-Schnellstart – Konfigurieren einer VM per DSC | Microsoft-Dokumentation
 description: Konfigurieren eines LAMP-Stapels auf einem virtuellen Linux-Computer per Desired State Configuration
 services: automation
+ms.service: automation
+ms.component: dsc
 keywords: DSC, Konfiguration, Automatisierung
 author: KrisBash
 ms.author: krbash
@@ -9,11 +11,11 @@ ms.date: 12/17/2017
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 959171963bcdc721c81823fcf4f9769174b32636
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
 
@@ -28,7 +30,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 * Eine Azure Resource Manager-VM (nicht klassisch) mit Red Hat Enterprise Linux, CentOS oder Oracle Linux. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter „https://portal.azure.com“ an Azure an.
+Anmelden bei Azure unter https://portal.azure.com
 
 ## <a name="onboard-a-virtual-machine"></a>Integrieren eines virtuellen Computers
 Es gibt viele verschiedene Methoden zum Integrieren eines Computers und Aktivieren der Desired State Configuration. In dieser Schnellstartanleitung wird die Integration über ein Automation-Konto behandelt. Weitere Informationen zu den unterschiedlichen Methoden zum Integrieren Ihrer Computer in die Desired State Configuration finden Sie im Artikel zur [Integration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).

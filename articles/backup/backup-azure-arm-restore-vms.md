@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: d3e088841bcf291363ec7c042b0fa160fc7d25ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9a25a2f40e93c291d4c69ee726c732468005d2cd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -90,12 +90,12 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
 
     Auf dem Blatt **Wiederherstellen** wird angezeigt, dass der Wiederherstellungspunkt festgelegt ist.
 
-9. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
+9. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 Wählen Sie nach der Auswahl des Wiederherstellungspunkts eine Konfiguration für die VM-Wiederherstellung aus. Zum Konfigurieren des wiederhergestellten virtuellen Computers können Sie das Azure-Portal oder PowerShell verwenden.
 
-1. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
+1. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
 
     ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
 2. Auf dem Blatt **Wiederherstellungskonfiguration** haben Sie zwei Möglichkeiten:

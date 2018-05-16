@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: dobett
-ms.openlocfilehash: fea9ccc53bd019039cf1e989d72db7a218e4517c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0bd023e73088897303fe0f9de47641cd6ea0389
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-iot-suite-connected-factory"></a>Was ist Connected Factory von Azure IoT Suite?
 
@@ -51,7 +51,7 @@ Connected Factory beinhaltet die folgenden Features:
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 - [Azure Time Series Insights](../time-series-insights/time-series-insights-overview.md) ist zum Speichern, Visualisieren und Abfragen großer Mengen an Zeitreihendaten ausgelegt. Connected Factory nutzt diesen Dienst.
-- Connected Factory kann in diesen Dienst integriert werden und ermöglicht Ihnen dadurch die umfassende Echtzeitanalyse Ihrer Gerätedaten
+- Connected Factory kann in diesen Dienst integriert werden und ermöglicht Ihnen dadurch die umfassende Echtzeitanalyse Ihrer Gerätedaten.
 
 ## <a name="rules-and-alerts"></a>Regeln und Warnungen
 
@@ -69,7 +69,7 @@ Connected Factory beinhaltet die folgenden Features:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In den folgenden Artikeln erfahren Sie mehr über die vorkonfigurierte Lösung für eine verbundene Factory:
+In den folgenden Artikeln erfahren Sie mehr über die vorkonfigurierte Connected Factory-Lösung:
 
 * [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise](iot-suite-connected-factory-sample-walkthrough.md)
 * [Bereitstellen eines Edge-Gateways für die vorkonfigurierte Connected Factory-Lösung unter Windows oder Linux]( iot-suite-connected-factory-gateway-deployment.md)

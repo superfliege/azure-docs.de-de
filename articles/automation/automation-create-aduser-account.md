@@ -4,16 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen f�
 keywords: Azure Active Directory-Benutzer, Azure Service Management, Azure AD-Benutzerkonto
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 43490b8ec2139b5e9f62def614dc67e4274304c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 07fb9284372020ba2aadb3758d0ab46682b50831
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Authentifizieren von Runbooks mit klassischer Azure-Bereitstellung und Resource Manager-Bereitstellung
 In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren eines Azure AD-Benutzerkontos f체r Azure Automation-Runbooks ausf체hren m체ssen, die f체r Ressourcen des klassischen Azure-Bereitstellungsmodells oder Azure Resource Manager-Bereitstellungsmodells ausgef체hrt werden. Diese Authentifizierungsidentit채t wird f체r Azure Resource Manager-basierte Runbooks zwar weiterhin unterst체tzt, aber die empfohlene Methode ist die Verwendung eines ausf체hrenden Azure-Kontos.       

@@ -1,27 +1,20 @@
 ---
-title: "Hinzufügen eines Azure Active Directory B2B-Zusammenarbeitsbenutzers zu einer Rolle | Microsoft-Dokumentation"
-description: "Hinzufügen eines Gastbenutzers zu einer Rolle in Azure Active Directory"
+title: Hinzufügen eines Azure Active Directory B2B-Zusammenarbeitsbenutzers zu einer Rolle | Microsoft-Dokumentation
+description: Hinzufügen eines Gastbenutzers zu einer Rolle in Azure Active Directory
 services: active-directory
-documentationcenter: 
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/08/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 03/15/2017
-ms.author: twooley
 ms.reviewer: sasubram
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b788b003299ff11bcbdcb11a2c7a21ac5081d634
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d9889a15bd4e09863640e8c8e7ea03220d23bb23
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten
 
@@ -41,15 +34,5 @@ Die Benutzer der Azure Active Directory (Azure AD) B2B-Zusammenarbeit werden dem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
-
-* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)
-* [Delegieren von Einladungen zur B2B-Zusammenarbeit](active-directory-b2b-delegate-invitations.md)
-* [Dynamische Gruppen und B2B-Zusammenarbeit](active-directory-b2b-dynamic-groups.md)
-* [B2B-Zusammenarbeit: Code- und PowerShell-Beispiele](active-directory-b2b-code-samples.md)
-* [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](active-directory-b2b-configure-saas-apps.md)
-* [Benutzertoken für die B2B-Zusammenarbeit](active-directory-b2b-user-token.md)
-* [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
-* [Externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
-* [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
+- [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)

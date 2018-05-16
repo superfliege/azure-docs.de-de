@@ -1,23 +1,23 @@
 ---
-title: "Überwachen der Leistung der Azure-Web-App | Microsoft Docs"
-description: "Überwachung der Anwendungsleistung für Azure-Web-Apps. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung."
+title: Überwachen der Leistung der Azure-Web-App | Microsoft Docs
+description: Überwachung der Anwendungsleistung für Azure-Web-Apps. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
-ms.service: azure-portal
+ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: e3615280ec902833248d9acc1c9348d68e5c5e82
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9de6ca48db98d7691310199b90bf7414f07547fd
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="monitor-azure-web-app-performance"></a>Überwachen der Leistung der Azure-Web-App
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md) einrichten. [Azure Application Insights](app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.

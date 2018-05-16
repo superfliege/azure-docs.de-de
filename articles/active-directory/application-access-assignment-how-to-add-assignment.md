@@ -1,11 +1,11 @@
 ---
 title: Zuweisen von Benutzern und Gruppen zu einer Anwendung | Microsoft-Dokumentation
-description: "Zuweisen von Benutzern zu der Anwendung und Gewähren des Zugriffs darauf"
+description: Zuweisen von Benutzern zu der Anwendung und Gewähren des Zugriffs darauf
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d670b2400fc1ac50afdcc8b809a1d482c3219686
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19303237e7e2c3c3a7f373102465875c34a571d1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-assign-users-and-groups-to-an-application"></a>Zuweisen von Benutzern und Gruppen zu einer Anwendung
 
@@ -163,4 +163,4 @@ Nachdem Sie die Self-Service-Anwendungskonfiguration abgeschlossen haben, könne
 Diese Genehmigungen unterstützen nur Workflows mit einzelnen Genehmigungen, d.h., wenn Sie mehrere genehmigende Personen angeben, kann jede einzelne genehmigende Person den Zugriff auf die Anwendung genehmigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

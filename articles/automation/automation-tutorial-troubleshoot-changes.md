@@ -1,19 +1,21 @@
 ---
-title: "Durchführen der Problembehandlung für Änderungen auf einem virtuellen Azure-Computer | Microsoft-Dokumentation"
-description: "Verwenden Sie die Änderungsnachverfolgung, um die Problembehandlung für Änderungen auf einem virtuellen Azure-Computer durchzuführen."
+title: Durchführen der Problembehandlung für Änderungen auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
+description: Verwenden Sie die Änderungsnachverfolgung, um die Problembehandlung für Änderungen auf einem virtuellen Azure-Computer durchzuführen.
 services: automation
-keywords: "Änderung, Nachverfolgung, Automatisierung"
+ms.service: automation
+ms.component: change-inventory-management
+keywords: Änderung, Nachverfolgung, Automatisierung
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 62d34f82749900e161bebdb7a1a8d470b2e85bbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -40,7 +42,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Änderungsnachverfolgung und Bestandsfunktion
 
@@ -91,9 +93,9 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 3. Geben Sie unter **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Windows Registry Key   | Der Pfad für die Überprüfung auf die Datei, z.B. „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup“      |
@@ -106,10 +108,10 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\myfile.txt“       |
+|Enter Path     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“       |
 
 ### <a name="add-a-linux-file"></a>Hinzufügen einer Linux-Datei
 
@@ -119,17 +121,17 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
 |Path Type     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
 |Recursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
-|Use Sudo     | Diese Einstellung bestimmt, ob sudo beim Prüfen auf das Element verwendet wird         |
-|Links     | Diese Einstellung bestimmt, wie symbolische Links beim Durchlaufen von Verzeichnissen behandelt werden.<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
+|Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
+|Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
 
    > [!NOTE]   
-   > Die Linkoption „Manage“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
+   > Die Linkoption „Verwalten“ wird nicht empfohlen. Das Abrufen von Dateiinhalten wird nicht unterstützt.
 
 ## <a name="enable-activity-log-connection"></a>Aktivieren der Aktivitätsprotokollverbindung
 

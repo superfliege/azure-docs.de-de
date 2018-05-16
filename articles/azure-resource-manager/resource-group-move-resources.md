@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9e1cee4df8870886a2a10ac525d54eea5882c04f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -53,7 +53,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten IDs aufeinander abzustimmen: 
+  Wenn die Mandanten-IDs für das Quell- und das Zielabonnement nicht gleich sind, verwenden Sie die folgenden Methoden, um die Mandanten IDs aufeinander abzustimmen:
 
   * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
   * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
@@ -120,14 +120,15 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
 * Content Moderator
-* Datenkatalog
+* Data Catalog
+* Data Factory: V1 kann verschoben werden. Das Verschieben von V2 (Vorschauversion) wird jedoch nicht unterstützt.
 * Data Lake Analytics
-* Data Lake-Speicher
+* Data Lake Store
 * DNS
 * Event Hubs
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
 * IoT Hubs
-* Schlüsseltresor
+* Key Vault
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Logic Apps
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
@@ -138,16 +139,16 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Operations Management
 * Power BI
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
-* Redis-Cache
+* Redis Cache
 * Scheduler
 * Suchen,
 * Server Management
-* SERVICE BUS
+* Service Bus
 * Service Fabric
 * Speicher
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
-* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben.
+* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dies beinhaltet Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse. 
 * Traffic Manager
 * Virtual Machines – Virtuelle Computer mit verwalteten Datenträgern können nicht verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen von virtuellen Computern](#virtual-machines-limitations).
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
@@ -165,8 +166,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Azure Database for MySQL
 * BizTalk Services
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
-* Container Service
-* Data Factory
+* Kubernetes Service
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
 * ExpressRoute
@@ -203,13 +203,13 @@ Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, 
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 
-Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben. 
+Die Einschränkungen beim Verschieben von App Service-Ressourcen unterscheiden sich abhängig davon, ob Sie die Ressourcen innerhalb eines Abonnements oder in ein neues Abonnement verschieben.
 
 Die in diesen Abschnitten beschriebenen Einschränkungen gelten für hochgeladene Zertifikate (nicht für App Service-Zertifikate). App Service-Zertifikate können ohne Einschränkungen in eine neue Ressourcengruppe oder in ein neues Abonnement verschoben werden. Wenn Sie über mehrere Web-Apps verfügen, die das gleiche App Service-Zertifikat verwenden, verschieben Sie zuerst die Web-Apps und dann das Zertifikat.
 
 ### <a name="moving-within-the-same-subscription"></a>Verschieben innerhalb desselben Abonnements
 
-Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können Sie die hochgeladenen SSL-Zertifikate nicht verschieben. Allerdings können Sie eine Web-App in die neue Ressourcengruppe verschieben, ohne ihr hochgeladenes SSL-Zertifikat zu verschieben, und die SSL-Funktionalität Ihrer App wird davon nicht beeinträchtigt. 
+Beim Verschieben einer Web-App _innerhalb desselben Abonnements_ können Sie die hochgeladenen SSL-Zertifikate nicht verschieben. Allerdings können Sie eine Web-App in die neue Ressourcengruppe verschieben, ohne ihr hochgeladenes SSL-Zertifikat zu verschieben, und die SSL-Funktionalität Ihrer App wird davon nicht beeinträchtigt.
 
 Wenn Sie das SSL-Zertifikat mit der Web-App verschieben möchten, gehen Sie folgendermaßen vor:
 
@@ -227,7 +227,7 @@ Beim Verschieben einer Web-App _zwischen Abonnements_ gelten die folgenden Einsc
     - Hochgeladene oder importierte SSL-Zertifikate
     - App Service-Umgebungen
 - Alle App Service-Ressourcen in der Ressourcengruppe müssen zusammen verschoben werden.
-- App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource sich nicht mehr in ihrer ursprünglichen Ressourcengruppe befindet, muss sie erst zurück in die ursprüngliche Ressourcengruppe verschoben werden, bevor sie zwischen Abonnements verschoben werden kann. 
+- App Service-Ressourcen können nur aus der Ressourcengruppe verschoben werden, in der sie ursprünglich erstellt wurden. Wenn eine App Service-Ressource sich nicht mehr in ihrer ursprünglichen Ressourcengruppe befindet, muss sie erst zurück in die ursprüngliche Ressourcengruppe verschoben werden, bevor sie zwischen Abonnements verschoben werden kann.
 
 ## <a name="classic-deployment-limitations"></a>Einschränkungen bei der klassischen Bereitstellung
 

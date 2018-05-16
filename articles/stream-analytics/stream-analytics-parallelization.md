@@ -8,12 +8,12 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/22/2017
-ms.openlocfilehash: 949806379891dbf5a7c145a14cae532104f51497
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.date: 05/07/2018
+ms.openlocfilehash: 44a7c0721d8a0683162d2219bff0e4a4ecb117e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -29,8 +29,8 @@ Bei der Skalierung eines Stream Analytics-Auftrags werden die Partitionen in der
 
 ### <a name="inputs"></a>Eingaben
 Alle Azure Stream Analytics-Eingaben können Partitionierung nutzen:
--   Event Hub (Partitionsschlüssel muss explizit festgelegt werden)
--   IoT Hub (Partitionsschlüssel muss explizit festgelegt werden)
+-   Event Hub (Partitionsschlüssel muss explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden)
+-   IoT Hub (Partitionsschlüssel muss explizit mit dem Schlüsselwort „PARTITION BY“ festgelegt werden)
 -   Blob Storage
 
 ### <a name="outputs"></a>Ausgaben
@@ -39,11 +39,11 @@ Bei der Arbeit mit Stream Analytics können Sie Partitionierung in den Ausgaben 
 -   Azure Data Lake Store
 -   Azure-Funktionen
 -   Azure Table
--   Blob Storage
+-   Blob Storage (Partitionsschlüssel kann explizit festgelegt werden)
 -   Cosmos DB (Partitionsschlüssel muss explizit festgelegt werden)
 -   Event Hub (Partitionsschlüssel muss explizit festgelegt werden)
 -   IoT Hub (Partitionsschlüssel muss explizit festgelegt werden)
--   SERVICE BUS
+-   Service Bus
 
 Power BI, SQL und SQL Data Warehouse-Ausgaben unterstützen keine Partitionierung. Sie können die Eingabe aber dennoch partitionieren, wie in [diesem Abschnitt](#multi-step-query-with-different-partition-by-values) beschrieben. 
 
@@ -56,18 +56,19 @@ Weitere Informationen zu den Partitionen finden Sie in den folgenden Artikeln:
 ## <a name="embarrassingly-parallel-jobs"></a>Hochgradig parallele Aufträge
 Ein *hochgradig paralleler* Auftrag stellt das am stärksten skalierbare Szenario dar, das in Azure Stream Analytics zur Verfügung steht. Er verbindet eine Partition der Eingabe mit einer Instanz der Abfrage und einer Partition der Ausgabe. Für eine solche Parallelität gelten folgende Anforderungen:
 
-1. Wenn Ihre Abfragelogik davon abhängig ist, dass derselbe Schlüssel durch dieselbe Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in derselben Partition Ihrer Eingabe aufgenommen werden. Bei Event Hubs bedeutet dies, dass für die Ereignisdaten der Wert **PartitionKey** festgelegt sein muss. Alternativ können Sie partitionierte Absender verwenden. Bei Blob Storage bedeutet dies, dass die Ereignisse an denselben Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass derselbe Schlüssel von derselben Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel für diese Logik wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
+1. Wenn Ihre Abfragelogik davon abhängig ist, dass derselbe Schlüssel durch dieselbe Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in derselben Partition Ihrer Eingabe aufgenommen werden. Bei Event Hubs oder IoT Hub bedeutet dies, dass für die Ereignisdaten der Wert **PartitionKey** festgelegt sein muss. Alternativ können Sie partitionierte Absender verwenden. Bei Blob Storage bedeutet dies, dass die Ereignisse an denselben Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass derselbe Schlüssel von derselben Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel für diese Logik wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
 
 2. Nachdem die Daten auf der Eingabeseite angeordnet wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition by** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch denselben Schlüssel partitioniert werden. Derzeit muss der Partitionierungsschlüssel auf **PartitionId** festgelegt werden, damit der Auftrag vollständige Parallelität aufweist.  
 
 3. Die meisten unserer Ausgaben können Partitionierung nutzen. Wenn Sie jedoch einen Ausgabetyp verwenden, der keine Partitionierung unterstützt, wird Ihr Auftrag nicht vollständig parallel ausgeführt. Weitere Informationen finden Sie im [Abschnitt über Ausgaben](#outputs).
 
-4. Die Anzahl von Eingabepartitionen muss mit der Anzahl von Ausgabepartitionen identisch sein. Bei der Blob Storage-Ausgabe werden derzeit keine Partitionen unterstützt. Dies ist jedoch kein Problem, da diese das Partitionierungsschema der vorgeschalteten Abfrage erbt. Im Folgenden werden Beispiele für Partitionswerte vorgestellt, die einen vollständig parallelen Auftrag ermöglichen:  
+4. Die Anzahl von Eingabepartitionen muss mit der Anzahl von Ausgabepartitionen identisch sein. Die Blob Storage-Ausgabe kann Partitionen unterstützen und erbt das Partitionierungsschema der Upstream-Abfrage. Bei der Angabe eines Partitionsschlüssels für Blob Storage werden Daten pro Eingabepartition partitioniert, daher ist das Ergebnis trotzdem vollständig parallel. Im Folgenden werden Beispiele für Partitionswerte vorgestellt, die einen vollständig parallelen Auftrag ermöglichen:
 
    * 8 Event Hub-Eingabepartitionen und 8 Event Hub-Ausgabepartitionen
-   * 8 Event Hub-Eingabepartitionen und Blob Storage-Ausgabe  
-   * 8 Blob Storage-Eingabepartitionen und Blob Storage-Ausgabe  
-   * 8 Blob Storage-Eingabepartitionen und 8 Event Hub-Ausgabepartitionen  
+   * 8 Event Hub-Eingabepartitionen und Blob Storage-Ausgabe
+   * 8 Event Hub-Eingabepartitionen und Blob Storage-Ausgabe, partitioniert nach einem benutzerdefinierten Feld mit beliebiger Kardinalität
+   * 8 Blob Storage-Eingabepartitionen und Blob Storage-Ausgabe
+   * 8 Blob Storage-Eingabepartitionen und 8 Event Hub-Ausgabepartitionen
 
 In den folgenden Abschnitten werden einige Beispielszenarien für hochgradige Parallelität behandelt.
 

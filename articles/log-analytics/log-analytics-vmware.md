@@ -1,28 +1,31 @@
 ---
-title: "VMware-Überwachungslösung in Log Analytics | Microsoft Docs"
-description: "Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen."
+title: VMware-Überwachungslösung in Log Analytics | Microsoft Docs
+description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 16516639-cc1e-465c-a22f-022f3be297f1
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: f54d24659ad13aa02462938711482326c5bf763c
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
 ![VMware-Symbol](./media/log-analytics-vmware/vmware-symbol.png)
+
+> [!NOTE]
+> Die VMware-Überwachungslösung ist veraltet.  Kunden, die die Lösung bereits installiert haben, können sie weiterhin nutzen. VMware-Überwachung kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.
 
 Die VMware-Überwachungslösung in Log Analytics ist eine Lösung, die Ihnen dabei hilft, eine Methode für die zentralisierte Protokollierung und Überwachung für große VMware-Protokolle zu erstellen. Dieser Artikel beschreibt, wie Sie mithilfe der Lösung an einem Ort Probleme mit ESXi-Hosts beheben und die Hosts erfassen und verwalten. Mit der Lösung können Sie detaillierte Daten für alle ESXi-Hosts an einem einzigen Ort anzeigen. Sie sehen die wichtigsten Ereigniszahlen, Statusangaben und Trends der VM- und ESXi-Hosts, die über ESXi-Hostprotokolle bereitgestellt werden. Sie können Probleme behandeln, indem Sie zentralisierte ESXi-Hostprotokolle anzeigen und durchsuchen. Zudem können Sie Warnungen auf der Grundlage von Protokollsuchabfragen erstellen.
 
@@ -34,7 +37,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 * Fügen Sie Ihrem Abonnement anhand der unter [Hinzufügen einer Verwaltungslösung](log-analytics-add-solutions.md#add-a-management-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
-vSphere ESXi-Host 5.5 und 6.0
+vSphere ESXi-Host 5.5, 6.0 und 6.5
 
 #### <a name="prepare-a-linux-server"></a>Vorbereiten eines Linux-Servers
 Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESXi-Hosts zu empfangen. Vom [OMS-Linux-Agent](log-analytics-linux-agents.md) werden alle Syslog-Daten von ESXi-Hosts gesammelt. Sie können mehrere ESXi-Hosts verwenden, um die Protokolle an einen Linux-Server weiterzuleiten, wie im folgenden Beispiel veranschaulicht.  
@@ -42,7 +45,7 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
    ![Syslog-Datenfluss](./media/log-analytics-vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>Konfigurieren der Syslog-Sammlung
-1. Richten Sie die Syslog-Weiterleitung für VSphere ein. Ausführliche Informationen zur Einrichtung der Syslog-Weiterleitung finden Sie unter [Configuring syslog on ESXi 5.x and 6.0 (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322) (Konfigurieren von Syslog auf ESXi 5.x und 6.0 (2003322)). Wechseln Sie zu **ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
+1. Richten Sie die Syslog-Weiterleitung für VSphere ein. Ausführliche Informationen zur Einrichtung der Syslog-Weiterleitung finden Sie unter [Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322) (Konfigurieren von Syslog auf ESXi 5.x und höher (2003322)). Wechseln Sie zu **ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
 2. Fügen Sie im Feld *Syslog.global.logHost* Ihren Linux-Server und die Portnummer *1514* hinzu. Beispiel: `tcp://hostname:1514` oder `tcp://123.456.789.101:1514`
 3. Öffnen Sie die ESXi-Hostfirewall für Syslog. **ESXi Host Configuration** > **Software** > **Security Profile** > **Firewall**, und öffnen Sie **Properties**.  

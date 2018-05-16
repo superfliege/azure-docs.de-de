@@ -3,16 +3,17 @@ title: Azure Automation DSC – Fortlaufende Bereitstellung mit Chocolatey
 description: Fortlaufende DevOps-Bereitstellung per Azure Automation DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-ARM-Vorlage und PowerShell-Quelle.
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: bf535dfae4c5f710a423343bc3d76c81d83df2ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9c3cb5a00433a76e8cc444cc48c648cb2749a2ae
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>Anwendungsbeispiel: Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey
 In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen.  Azure Automation Desired State Configuration (DSC), also die Konfiguration des gewünschten Zustands, ist eine willkommene neue Option für DevOps-Teams.  In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht.  Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 8187a4bc6278f917c28418baf3cda2d75ea4e3d8
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
@@ -142,6 +142,46 @@ Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md
 |isEnabled|true|Aktiviert oder deaktiviert die Stichprobenentnahme.| 
 |maxTelemetryItemsPerSecond|5|Der Schwellenwert, bei dem die Stichprobenentnahme beginnt.| 
 
+## <a name="durabletask"></a>durableTask
+
+Konfigurationseinstellungen für [Durable Functions](durable-functions-overview.md).
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub",
+    "ControlQueueBatchSize": 32,
+    "PartitionCount": 4,
+    "ControlQueueVisibilityTimeout": "00:05:00",
+    "WorkItemQueueVisibilityTimeout": "00:05:00",
+    "MaxConcurrentActivityFunctions": 10,
+    "MaxConcurrentOrchestratorFunctions": 10,
+    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
+    "TraceInputsAndOutputs": false,
+    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
+    "EventGridKeySettingName":  "EventGridKey"
+  }
+}
+```
+
+Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](durable-functions-task-hubs.md).
+
+|Eigenschaft  |Standard | BESCHREIBUNG |
+|---------|---------|---------|
+|HubName|DurableFunctionsHub|Alternative Namen für [Aufgabenhubs](durable-functions-task-hubs.md) können zum Isolieren von mehreren Durable Functions-Anwendungen verwendet werden, auch wenn sie dasselbe Speicher-Back-End verwenden.|
+|ControlQueueBatchSize|32|Die Anzahl der aus der Steuerelement-Warteschlange jeweils abzurufenden Nachrichten.|
+|PartitionCount |4|Die Anzahl der Partitionen für die Steuerelement-Warteschlange. Kann ein positiver Integerwert zwischen 1 und 16 sein.|
+|ControlQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Steuerelement-Warteschlange entfernten Nachrichten.|
+|WorkItemQueueVisibilityTimeout |5 Minuten|Das Sichtbarkeitstimeout von aus der Warteschlange für Arbeitsaufgaben (work item queue) entfernten Nachrichten.|
+|MaxConcurrentActivityFunctions |Zehnfache Anzahl der Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Aktivitätsfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
+|MaxConcurrentOrchestratorFunctions |Zehnfache Anzahl der Prozessoren auf dem aktuellen Computer|Die maximale Anzahl von Aktivitätsfunktionen, die gleichzeitig auf einer einzelnen Hostinstanz verarbeitet werden können.|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|Der Name der App-Einstellung mit der Azure Storage-Verbindungszeichenfolge, die zum Verwalten der zugrunde liegenden Azure Storage-Ressourcen verwendet wird.|
+|TraceInputsAndOutputs |false|Ein Wert, der angibt, ob die Eingaben und Ausgaben von Funktionsaufrufen nachverfolgt werden. Das Standardverhalten beim Nachverfolgen von Ereignissen zur Funktionsausführung besteht darin, die Anzahl der Bytes in die serialisierten Eingaben und Ausgaben für Funktionsaufrufe einzuschließen. Dies ermöglicht minimale Informationen zu den Eingaben und Ausgaben, ohne die Protokolle zu überfrachten oder irrtümlich vertrauliche Informationen in den Protokollen verfügbar zu machen. Wenn diese Eigenschaft auf TRUE festgelegt wird, werden bei der standardmäßigen Funktionsprotokollierung die gesamten Inhalte der Eingaben und Ausgaben der Funktionen protokolliert.|
+|EventGridTopicEndpoint ||Die URL eines benutzerdefinierten Azure Event Grid-Themenendpunkts. Wenn diese Eigenschaft festgelegt ist, werden Benachrichtigungsereignisse zum Orchestrierungslebenszyklus an diesem Endpunkt veröffentlicht.|
+|EventGridKeySettingName ||Der Name der App-Einstellung, die den Schlüssel für die Authentifizierung mit dem benutzerdefinierten Azure Event Grid-Thema unter `EventGridTopicEndpoint` enthält.
+
+Viele werden zur Optimierung der Leistung verwendet. Weitere Informationen finden Sie unter [Leistung und Skalierbarkeit](durable-functions-perf-and-scale.md).
+
 ## <a name="eventhub"></a>eventHub
 
 Konfigurationseinstellungen für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md).
@@ -150,7 +190,7 @@ Konfigurationseinstellungen für [Event Hub-Trigger und -Bindungen](functions-bi
 
 ## <a name="functions"></a>functions
 
-Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden.  Ein leeres Array bedeutet, dass alle Funktionen ausgeführt werden.  Nur bei [lokaler Ausführung](functions-run-local.md) für die Verwendung vorgesehen. Verwenden Sie in Funktionen-Apps die *function.json* `disabled`-Eigenschaft anstelle dieser Eigenschaft in *host.json*.
+Eine Liste der Funktionen, die vom Auftragshost ausgeführt werden. Ein leeres Array bedeutet, dass alle Funktionen ausgeführt werden. Nur bei [lokaler Ausführung](functions-run-local.md) für die Verwendung vorgesehen. Verwenden Sie in Funktionen-Apps die *function.json* `disabled`-Eigenschaft anstelle dieser Eigenschaft in *host.json*.
 
 ```json
 {
@@ -299,21 +339,6 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
     "watchDirectories": [ "Shared" ]
 }
 ```
-
-## <a name="durabletask"></a>durableTask
-
-Name eines [Aufgabenhubs](durable-functions-task-hubs.md) für [Durable Functions](durable-functions-overview.md).
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub"
-  }
-}
-```
-
-Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](durable-functions-task-hubs.md).
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,25 +1,27 @@
 ---
 title: Sichern einer Azure Active Directory v2.0-Web-API mithilfe von Node.js | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie eine Node.js-Web-API erstellen, die sowohl Token von einem persönlichen Microsoft-Konto als auch von Geschäfts-, Uni- oder Schulkonten akzeptiert."
+description: Erfahren Sie, wie Sie eine Node.js-Web-API erstellen, die sowohl Token von einem persönlichen Microsoft-Konto als auch von Geschäfts-, Uni- oder Schulkonten akzeptiert.
 services: active-directory
 documentationcenter: nodejs
-author: navyasric
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 0b572fc1-2aaf-4cb6-82de-63010fb1941d
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 05/13/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f07e421feedf3c82da7be16434891cdbe6069038
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19ad25c7b08ff073097cacf3be359772ca0a327f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-a-web-api-by-using-nodejs"></a>Schützen einer Web-API mit Node.js
 > [!NOTE]
@@ -43,7 +45,7 @@ Erstellen Sie eine neue App auf [apps.dev.microsoft.com](https://apps.dev.micros
 
 * die **Anwendungs-ID** kopieren, die Ihrer App zugewiesen ist. Sie benötigen sie für dieses Tutorial.
 * Fügen Sie die **Mobile** -Plattform Ihrer App hinzu.
-* Kopieren Sie den **Umleitungs-URI** aus dem Portal. Sie müssen den URI-Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden.
+* den **Umleitungs-URI** aus dem Portal kopieren. Sie müssen den URI-Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden.
 
 ## <a name="2-install-nodejs"></a>2: Installieren von Node.js
 Um das Beispiel für dieses Tutorial zu verwenden, müssen Sie [Node.js installieren](http://nodejs.org).
@@ -235,7 +237,7 @@ Eine Server.js-Datei enthält den Großteil der Funktionen für Ihren Web-API-Se
     var OIDCBearerStrategy = require('passport-azure-ad').OIDCStrategy;
     ```
 
-3.  Speichern Sie die Datei. Sie werden in Kürze auf diese Datei zurückkommen.
+3.  Speichern Sie die Datei . Sie werden in Kürze auf diese Datei zurückkommen.
 
 ## <a name="10-create-a-config-file-to-store-your-azure-ad-settings"></a>10: Erstellen einer Konfigurationsdatei für die Azure AD-Einstellungen
 Diese Codedatei übergibt Ihre Konfigurationsparameter aus dem Azure AD-Portal an „Passport.js“. Sie haben diese Konfigurationswerte erstellt, als Sie die Web-API zu Beginn dieses Artikels dem Portal hinzugefügt haben. Welche Werte Sie für diese Parameter eingeben sollen, erfahren Sie, nachdem Sie den Code kopiert haben.

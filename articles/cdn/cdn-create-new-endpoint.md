@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure CDN-Profils und -Endpunkts | Microsoft-Dokumentation
+title: 'Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure CDN durch Erstellen eines neuen CDN-Profils und -Endpunkts aktivieren.
 services: cdn
 documentationcenter: ''
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 6237b47be878217115849b87ebcd3d980665643a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2f2d34db2bb18b93ee4d8b78a135caecde5a293b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 In dieser Schnellstartanleitung aktivieren Sie Azure Content Delivery Network (CDN), indem Sie ein neues CDN-Profil und einen CDN-Endpunkt erstellen. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen.
@@ -69,8 +69,10 @@ Nachdem Sie ein CDN-Profil erstellt haben, können Sie damit einen Endpunkt erst
     
    ![CDN-Endpunkt](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann. 
-
+   Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann: 
+   - Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
+   - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
+   - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer Ressourcengruppe erstellt. Speichern Sie diese Ressourcen, falls Sie die [nächsten Schritte](#next-steps) ausführen und erfahren möchten, wie Sie Ihrem Endpunkt eine benutzerdefinierte Domäne hinzufügen. Sollten Sie die Ressourcen dagegen nicht mehr benötigen, können Sie die Ressourcengruppe mit den Ressourcen löschen, um weitere Kosten zu vermeiden:
@@ -85,6 +87,6 @@ In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer
 Im folgenden Tutorial erfahren Sie, wie Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Domäne hinzufügen:
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer benutzerdefinierten Domäne](cdn-map-content-to-custom-domain.md)
+> [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
 
 

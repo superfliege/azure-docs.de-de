@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: mihauss
-ms.openlocfilehash: 649838af1d4c753ac1d82a66c855ef313f14e85b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="soft-delete-for-azure-storage-blobs-preview"></a>Vorläufigen Löschen für Azure Storage-Blobs (Vorschau)
 
@@ -78,9 +78,9 @@ Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gel
 
 Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Löschen aktiviert ist:
 
-| REST-API-Vorgang                                                                                                | Ressourcentyp                 | Beschreibung                                                                                                 | Änderung im Verhalten                                                                                                                                                                                                                                                                                                                                                   |
+| REST-API-Vorgang                                                                                                | Ressourcentyp                 | BESCHREIBUNG                                                                                                 | Änderung im Verhalten                                                                                                                                                                                                                                                                                                                                                   |
 |-------------------------------------------------------------------------------------------------------------------|-------------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Delete](/rest/api/storagerp/StorageAccounts/Delete)              | Konto                       | Löscht das Speicherkonto einschließlich aller Container und Blobs, die darin enthalten sind.                           | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden.                                                                                                                                                                                                                                                                                          |
+| [Löschen](/rest/api/storagerp/StorageAccounts/Delete)              | Konto                       | Löscht das Speicherkonto einschließlich aller Container und Blobs, die darin enthalten sind.                           | Keine Änderung. Container und Blobs im gelöschten Konto können nicht wiederhergestellt werden.                                                                                                                                                                                                                                                                                          |
 | [Delete Container](/rest/api/storageservices/fileservices/delete-container)       | Container                     | Löscht den Container einschließlich aller darin enthaltenen Blobs.                                                | Keine Änderung. Blobs im gelöschten Container können nicht wiederhergestellt werden.                                                                                                                                                                                                                                                                                                       |
 | [Put Blob](/rest/api/storageservices/fileservices/put-blob)                       | Block-, Anfüge- und Seitenblobs | Erstellt ein neues Blob oder ersetzt ein vorhandenes Blob innerhalb eines Containers.                                          | Wenn dieser Aufruf verwendet wird, um ein vorhandenes Blob zu ersetzen, wird automatisch eine Momentaufnahme des Zustands des Blobs vor dem Aufruf generiert. Dies gilt auch für ein zuvor vorläufig gelöschtes Blob, aber nur dann, wenn es durch ein Blob des gleichen Typs (Block-, Anfüge- oder Seitenblob) ersetzt wird. Wenn es durch ein Blob eines anderen Typs ersetzt wird, werden alle vorhandenen vorläufig gelöschten Daten dauerhaft gelöscht. |
 | [Delete Blob](/rest/api/storageservices/fileservices/delete-blob)                 | Block-, Anfüge- und Seitenblobs | Kennzeichnet ein Blob oder eine Blobmomentaufnahme für die Löschung. Das Blob oder die Momentaufnahme wird später während der Garbage Collection gelöscht. | Wenn der Aufruf zum Löschen einer Blobmomentaufnahme erfolgt, wird diese Momentaufnahme als „vorläufig gelöscht“ markiert. Wenn der Aufruf zum Löschen eines Blobs erfolgt, wird dieses Blob als „vorläufig gelöscht“ markiert.                                                                                                                                                                                                                           |
@@ -292,7 +292,7 @@ Ja, vorläufiges Löschen kann für vorhandene und neue Speicherkonten konfiguri
 
 **Wenn ich ein gesamtes Konto oder einen Container lösche, wenn vorläufiges Löschen aktiviert ist, werden dann alle zugehörigen Blobs gesichert?**
 
-Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Um zu erfahren, wie Sie ein Speicherkonto vor versehentlichem Löschen schützen können, lesen Sie den Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](/azure-resource-manager/resource-group-lock-resources.md).
+Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Um zu erfahren, wie Sie ein Speicherkonto vor versehentlichem Löschen schützen können, lesen Sie den Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/resource-group-lock-resources.md).
 
 **Kann ich Kapazitätsmetriken für gelöschte Daten anzeigen?**
 

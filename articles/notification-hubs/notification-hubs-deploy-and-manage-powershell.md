@@ -1,24 +1,24 @@
 ---
 title: Bereitstellen und Verwalten von Notification Hubs mit PowerShell
-description: "Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation"
+description: Erstellen und Verwalten von Notification Hubs mit PowerShell für Automation
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 7c58f2c8-0399-42bc-9e1e-a7f073426451
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: d2350d8021925278d6362c8227d408476a569319
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Bereitstellen und Verwalten von Notification Hubs mit PowerShell
 ## <a name="overview"></a>Übersicht
@@ -32,7 +32,6 @@ Wenn Sie auch einen neuen Servicebus-Namespace für Ihre Notification Hubs erste
 Das Verwalten von Notification Hubs wird nicht direkt von den in Azure PowerShell enthaltenen Cmdlets unterstützt. Der beste Ansatz für PowerShell ist der Verweis auf die Microsoft.Azure.NotificationHubs.dll-Assembly. Die Assembly wird zusammen mit dem [Microsoft Azure Notification Hubs-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verteilt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen], [Spezielle Angebote] oder [Kostenlose Testversion].
 * Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell].
@@ -73,7 +72,7 @@ catch [System.Exception]
 ## <a name="create-the-namespacemanager-class"></a>Erstellen der NamespaceManager-Klasse
 Notification Hubs bereitzustellen, erstellen Sie eine Instanz der [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) -Klasse aus dem SDK. 
 
-Sie können mithilfe des in Azure Power Shell enthaltenen Cmdlets [Get-AzureSBAuthorizationRule] eine Autorisierungsregel abrufen, die zur Bereitstellung einer Verbindungszeichenfolge verwendet wird. Sie speichern einen Verweis auf die `NamespaceManager`-Instanz in der `$NamespaceManager`-Variable. Wir verwenden `$NamespaceManager` , um einen Notification Hub bereitzustellen.
+Sie können mithilfe des in Azure Power Shell enthaltenen Cmdlets [Get-AzureSBAuthorizationRule] eine Autorisierungsregel abrufen, die zur Bereitstellung einer Verbindungszeichenfolge verwendet wird. Ein Verweis auf die `NamespaceManager`-Instanz wird in der `$NamespaceManager`-Variable gespeichert. `$NamespaceManager` wird verwendet, um einen Notification Hub bereitzustellen.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -91,13 +90,13 @@ In diesem Teil des Skripts erstellen Sie vier lokale Variablen.
 
 1. `$Namespace` : Legen Sie diese auf den Namen des Namespace fest, in dem Sie einen Notification Hub erstellen möchten.
 2. `$Path` : Legen Sie diesen Pfad auf den Namen des neuen Notification Hubs fest.  Beispiel: "MyHub".    
-3. `$WnsPackageSid` : Legen Sie diese Variable auf die Paket-SID für Ihre Windows-App aus dem [Windows-Entwicklungscenter](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)fest.
-4. `$WnsSecretkey`: Legen Sie diese auf den geheimen Schlüssel für Ihre Windows-App aus dem [Windows-Entwicklungscenter](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409)fest.
+3. `$WnsPackageSid`: Legen Sie diese Variable auf die Paket-SID für Ihre Windows-App mithilfe von [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409) fest.
+4. `$WnsSecretkey`: Legen Sie diese auf den geheimen Schlüssel für Ihre Windows-App mithilfe von [Windows Dev Center](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409) fest.
 
 Diese Variablen werden verwendet, um eine Verbindung mit dem Namespace herzustellen und einen neuen Notification Hub zu erstellen, damit Benachrichtigungen von Windows Notification Services (WNS) mit WNS-Anmeldeinformationen für eine Windows-App verarbeitet werden können. Weitere Informationen zum Abrufen der Paket-SID und des geheimen Schlüssels finden Sie im Lernprogramm [Erste Schritte mit Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) . 
 
 * Der Codeausschnitt verwendet das `NamespaceManager`-Objekt, um zu prüfen, ob der von `$Path` erkannte Notification Hub vorhanden ist.
-* Falls er nicht vorhanden ist, erstellt das Skript eine `NotificationHubDescription` mit WNS-Anmeldeinformationen, und übergibt diese an die `NamespaceManager`-Klasse, `CreateNotificationHub`-Methode.
+* Falls nicht vorhanden, erstellt das Skript eine `NotificationHubDescription` mit WNS-Anmeldeinformationen und übergibt diese an die `CreateNotificationHub`-Methode in der `NamespaceManager`-Klasse.
 
 ``` powershell
 
@@ -145,7 +144,7 @@ else
 
 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Verwalten von Service Bus mit PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
 * [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
 * [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)

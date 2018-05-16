@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 5b141924266630bfd3b63ec5129f9f225da3170b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: cbdb4691bac01843a451c988e09d77dd10f97461
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -29,34 +29,46 @@ ms.lasthandoff: 03/30/2018
 
 ![Metrik-Explorer für Application Insights](media/functions-monitoring/metrics-explorer.png)
 
-Außerdem verfügt Functions über eine integrierte Überwachung, für die nicht Application Insights verwendet wird. Wir empfehlen die Nutzung von Application Insights, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können. Informationen zur integrierten Überwachung finden Sie im [letzten Abschnitt dieses Artikels](#monitoring-without-application-insights).
+Außerdem verfügt Functions über eine [integrierte Überwachung, für die nicht Application Insights verwendet wird](#monitoring-without-application-insights). Wir empfehlen die Nutzung von Application Insights, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können.
 
-## <a name="enable-application-insights-integration"></a>Aktivieren der Application Insights-Integration
+## <a name="application-insights-pricing-and-limits"></a>Application Insights – Preise und Limits
 
-Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Instanz kennen. Es gibt zwei Möglichkeiten, diese Verbindung im [Azure-Portal](https://portal.azure.com) herzustellen:
+Sie können die Application Insights-Integration in Funktionen-Apps kostenlos testen. Für die kostenlose Verarbeitung von Daten besteht jedoch ein Tageslimit, und möglicherweise erreichen Sie dieses Limit beim Testen. In Azure erhalten Sie Benachrichtigungen im Portal und per E-Mail, wenn Ihr Tageslimit beinahe erreicht ist.  Wenn Sie diese Benachrichtigungen jedoch ignorieren und das Limit erreichen, werden neue Protokolle nicht in Application Insights-Abfragen angezeigt. Es wird daher empfohlen, sich an das Limit zu halten, um unnötigen Zeitaufwand für die Problembehandlung zu vermeiden. Weitere Informationen finden Sie unter [Verwalten von Preisen und Datenvolumen in Application Insights](../application-insights/app-insights-pricing.md).
 
-* [Erstellen Sie eine verbundene Application Insights-Instanz, wenn Sie die Funktionen-App erstellen](#new-function-app).
-* [Stellen Sie für eine Application Insights-Instanz eine Verbindung mit einer vorhandenen Funktionen-App her](#existing-function-app).
+## <a name="enable-app-insights-integration"></a>Aktivieren der Application Insights-Integration
+
+Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Ressource kennen. Der Schlüssel muss in der App-Einstellung APPINSIGHTS_INSTRUMENTATIONKEY angegeben werden.
+
+Sie können diese Verbindung im [Azure-Portal](https://portal.azure.com) einrichten:
+
+* [Automatische Einrichtung für eine neue Funktionen-App](#new-function-app)
+* [Manuelle Verbindung einer Application Insights-Ressource](#manually-connect-an-app-insights-resource)
 
 ### <a name="new-function-app"></a>Neue Funktionen-App
 
-Aktivieren Sie Application Insights auf der Seite **Erstellen** der Funktionen-App:
+1. Navigieren Sie zur Seite **Erstellen** der Funktionen-App.
 
 1. Legen Sie den Switch **Application Insights** auf **Ein** fest.
 
 2. Wählen Sie einen **Application Insights-Standort** aus.
 
+   Wählen Sie die der Region der Funktionen-App nächstgelegene Region in einem [Azure-Gebiet](https://azure.microsoft.com/global-infrastructure/geographies/) aus, in dem Ihre Daten gespeichert werden sollen.
+
    ![Aktivieren von Application Insights beim Erstellen einer Funktionen-App](media/functions-monitoring/enable-ai-new-function-app.png)
 
-### <a name="existing-function-app"></a>Vorhandene Funktionen-App
+3. Geben Sie die anderen erforderlichen Informationen ein.
 
-Rufen Sie den Instrumentierungsschlüssel ab, und speichern Sie ihn in einer Funktions-App:
+1. Klicken Sie auf **Erstellen**.
 
-1. Erstellen Sie die Application Insights-Instanz. Legen Sie den Anwendungstyp auf **Allgemein** fest.
+Im nächsten Schritt wird die [integrierte Protokollierung deaktiviert](#disable-built-in-logging).
 
-   ![Erstellen einer Application Insights-Instanz vom Typ „Allgemein“](media/functions-monitoring/ai-general.png)
+### <a name="manually-connect-an-app-insights-resource"></a>Manuelle Verbindung einer Application Insights-Ressource 
 
-2. Kopieren Sie den Instrumentierungsschlüssel von der Seite **Zusammenfassung** der Application Insights-Instanz. Bewegen Sie den Mauszeiger auf das Ende des angezeigten Schlüsselwerts, um die Schaltfläche **Klicken Sie zum Kopieren** anzuzeigen.
+1. Erstellen Sie die Application Insights-Ressource. Legen Sie den Anwendungstyp auf **Allgemein** fest.
+
+   ![Erstellen einer Application Insights-Ressource vom Typ „Allgemein“](media/functions-monitoring/ai-general.png)
+
+2. Kopieren Sie den Instrumentierungsschlüssel von der Seite **Zusammenfassung** der Application Insights-Ressource. Bewegen Sie den Mauszeiger auf das Ende des angezeigten Schlüsselwerts, um die Schaltfläche **Klicken Sie zum Kopieren** anzuzeigen.
 
    ![Kopieren des Application Insights-Instrumentierungsschlüssels](media/functions-monitoring/copy-ai-key.png)
 
@@ -70,13 +82,46 @@ Rufen Sie den Instrumentierungsschlüssel ab, und speichern Sie ihn in einer Fun
 
 Wenn Sie Application Insights aktivieren, ist es ratsam, die [integrierte Protokollierung mit Verwendung des Azure-Speichers](#logging-to-storage) zu deaktivieren. Die integrierte Protokollierung ist für Tests mit einfachen Workloads hilfreich, aber sie ist nicht für die Nutzung in der Produktion mit hohen Auslastungen bestimmt. Für die Produktionsüberwachung empfehlen wir die Verwendung von Application Insights. Bei Nutzung der integrierten Protokollierung in der Produktion kann der Protokollierungsdatensatz aufgrund einer Drosselung von Azure Storage ggf. unvollständig sein.
 
-Löschen Sie die App-Einstellung `AzureWebJobsDashboard`, um die integrierte Protokollierung zu deaktivieren. Informationen zum Löschen von App-Einstellungen im Azure-Portal finden Sie im Abschnitt **Anwendungseinstellungen** unter [Verwalten einer Funktionen-App im Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings).
+Löschen Sie die App-Einstellung `AzureWebJobsDashboard`, um die integrierte Protokollierung zu deaktivieren. Informationen zum Löschen von App-Einstellungen im Azure-Portal finden Sie im Abschnitt **Anwendungseinstellungen** unter [Verwalten einer Funktionen-App im Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings). Stellen Sie vor dem Löschen der App-Einstellung sicher, dass sie nicht für vorhandene Funktionen in derselben Funktionen-App für Azure Storage-Trigger oder -Bindungen verwendet wird.
 
-Wenn Sie Application Insights aktivieren und die integrierte Protokollierung deaktivieren, gelangen Sie über die Registerkarte **Überwachen** für eine Funktion im Azure-Portal zu Application Insights.
+## <a name="view-telemetry-in-monitor-tab"></a>Anzeigen von Telemetriedaten auf der Registerkarte „Überwachen“
 
-## <a name="view-telemetry-data"></a>Anzeigen von Telemetriedaten
+Nachdem Sie die Application Insights-Integration wie in den vorherigen Abschnitten gezeigt eingerichtet haben, können Sie auf der Registerkarte **Überwachen** Telemetriedaten anzeigen.
 
-Wählen Sie auf der Seite **Übersicht** den Link **Application Insights** aus, um von einer Funktions-App im Portal zur verbundenen Application Insights-Instanz zu navigieren.
+1. Wählen Sie auf der Seite der Funktionen-App eine Funktion aus, die nach der Konfiguration von Application Insights mindestens einmal ausgeführt wurde, und wählen Sie dann die Registerkarte **Überwachen** aus.
+
+   ![Auswählen der Registerkarte „Überwachen“](media/functions-monitoring/monitor-tab.png)
+
+2. Wählen Sie wiederholt die Option **Aktualisieren** aus, bis die Liste der Funktionsaufrufe angezeigt wird.
+
+   Es kann bis zu 5 Minuten dauern, bis die Liste angezeigt wird. Dies liegt an der Art und Weise, auf die der Telemetrieclient Daten zur Übermittlung an den Server in Batches zusammenfasst. (Diese Verzögerung gilt nicht für [Live Metrics Stream](../application-insights/app-insights-live-stream.md). Bei diesem Dienst wird eine Verbindung mit dem Functions-Host hergestellt, wenn Sie die Seite laden, sodass Protokolle direkt an die Seite gestreamt werden.)
+
+   ![Liste der Funktionsaufrufe](media/functions-monitoring/monitor-tab-ai-invocations.png)
+
+2. Wählen Sie zum Anzeigen der Protokolle für einen bestimmten Funktionsaufruf den Link für diesen Aufruf in der Spalte **Datum** aus.
+
+   ![Link für Aufrufdetails](media/functions-monitoring/invocation-details-link-ai.png)
+
+   Die Protokollausgabe für diesen Aufruf wird auf einer neuen Seite angezeigt.
+
+   ![Aufrufdetails](media/functions-monitoring/invocation-details-ai.png)
+
+Beide Seiten (Liste der Aufrufe und Aufrufdetails) sind mit der Application Insights Analytics-Abfrage verknüpft, die die Daten abruft:
+
+![In Application Insights ausführen](media/functions-monitoring/run-in-ai.png)
+
+![Application Insights Analytics-Aufrufliste](media/functions-monitoring/ai-analytics-invocation-list.png)
+
+In diesen Abfragen können Sie sehen, dass die Liste der Aufrufe auf die letzten 30 Tage beschränkt ist und maximal 20 Zeilen enthalten kann (`where timestamp > ago(30d) | take 20`) und dass die Aufrufdetails für die letzten 30 Tage ohne Einschränkung gelten.
+
+Weitere Informationen finden Sie weiter unten in diesem Artikel unter [Abfragen von Telemetriedaten](#query-telemetry-data).
+
+## <a name="view-telemetry-in-app-insights"></a>Anzeigen von Telemetriedaten in Application Insights
+
+Wählen Sie im Bereich **Konfigurierte Features** auf der Seite **Übersicht** einer Funktionen-App den Link **Application Insights** aus, um über diese Funktionen-App Application Insights im Azure-Portal zu öffnen.
+
+![Link „Application Insights“ auf der Seite „Übersicht“](media/functions-monitoring/ai-link.png)
+
 
 Informationen zur Verwendung von Application Insights finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/application-insights/). In diesem Abschnitt sind einige Beispiele für das Anzeigen von Daten in Application Insights enthalten. Falls Sie mit Application Insights bereits vertraut sind, können Sie direkt zu den [Abschnitten zur Konfiguration und Anpassung der Telemetriedaten](#configure-categories-and-log-levels) springen.
 
@@ -256,7 +301,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
-Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Anzahl von Telemetrieelementen eine bestimmte Rate übersteigt, beginnt Application Insights damit, einige der eingehenden Elemente nach dem Zufallsprinzip zu ignorieren. Sie können das Sampling in der Datei *host.json* konfigurieren.  Hier sehen Sie ein Beispiel:
+Application Insights verfügt über ein [Sampling](../application-insights/app-insights-sampling.md)-Feature als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten produziert werden. Wenn die Anzahl von Telemetrieelementen eine bestimmte Rate übersteigt, beginnt Application Insights damit, einige der eingehenden Elemente nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl von Elementen pro Sekunde ist 5. Sie können das Sampling in der Datei *host.json* konfigurieren.  Hier sehen Sie ein Beispiel:
 
 ```json
 {
@@ -489,13 +534,19 @@ Abhängigkeiten der Funktion gegenüber anderen Diensten werden nicht automatisc
 
 ## <a name="monitoring-without-application-insights"></a>Überwachen ohne Application Insights
 
-Wir empfehlen die Nutzung von Application Insights zum Überwachen von Funktionen, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können. Sie finden Protokolle und Telemetriedaten aber auch auf den Seiten des Azure-Portals für eine Funktionen-App.
+Wir empfehlen die Nutzung von Application Insights zum Überwachen von Funktionen, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können. Wenn Sie jedoch das integrierte Protokollierungssystem bevorzugen, in dem Azure Storage verwendet wird, ist dies möglich.
 
 ### <a name="logging-to-storage"></a>Protokollierung im Speicher
 
-Für die integrierte Protokollierung wird das Speicherkonto verwendet, das über die Verbindungszeichenfolge in der App-Einstellung `AzureWebJobsDashboard` angegeben wird. Wenn diese App-Einstellung konfiguriert wurde, werden die Protokollierungsdaten im Azure-Portal angezeigt. Wechseln Sie in der Storage-Ressource zu „Dateien“, wählen Sie den Dateidienst für die Funktion, und wechseln Sie dann zu `LogFiles > Application > Functions > Function > your_function`, um die Protokolldatei anzuzeigen. Wählen Sie auf einer Funktionen-App-Seite eine Funktion und anschließend die Registerkarte **Überwachen**, um eine Liste mit den Funktionsausführungen anzuzeigen. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
+Für die integrierte Protokollierung wird das Speicherkonto verwendet, das über die Verbindungszeichenfolge in der App-Einstellung `AzureWebJobsDashboard` angegeben wird. Wählen Sie auf der Seite einer Funktionen-App eine Funktion und anschließend die Registerkarte **Überwachen** aus, und behalten Sie die klassische Ansicht bei.
 
-Wenn Sie Application Insights nutzen und die [integrierte Protokollierung deaktiviert](#disable-built-in-logging) haben, gelangen Sie über die Registerkarte **Überwachen** zu Application Insights.
+![Zur klassischen Ansicht wechseln](media/functions-monitoring/switch-to-classic-view.png)
+
+ Eine Liste der Funktionsausführungen wird angezeigt. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
+
+Wenn Sie zuvor Application Insights aktiviert haben, können Sie nun zurück zur integrierten Protokollierung wechseln, Application Insights manuell deaktivieren und dann die Registerkarte **Überwachen** auswählen. Zum Deaktivieren der Application Insights-Integration löschen Sie die App-Einstellung APPINSIGHTS_INSTRUMENTATIONKEY.
+
+Auch wenn auf der Registerkarte **Überwachen** Application Insights-Daten angezeigt werden, können Sie Protokolldaten im Dateisystem sehen, wenn Sie [die integrierte Protokollierung nicht deaktiviert](#disable-built-in-logging). Wechseln Sie in der Storage-Ressource zu „Dateien“, wählen Sie den Dateidienst für die Funktion, und wechseln Sie dann zu `LogFiles > Application > Functions > Function > your_function`, um die Protokolldatei anzuzeigen.
 
 ### <a name="real-time-monitoring"></a>Überwachung in Echtzeit
 

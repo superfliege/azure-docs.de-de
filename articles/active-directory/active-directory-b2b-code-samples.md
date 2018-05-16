@@ -1,25 +1,20 @@
 ---
 title: 'Azure Active Directory B2B-Zusammenarbeit: Code- und PowerShell-Beispiele | Microsoft-Dokumentation'
-description: "Code- und PowerShell-Beispiele für die Azure Active Directory B2B-Zusammenarbeit"
+description: Code- und PowerShell-Beispiele für die Azure Active Directory B2B-Zusammenarbeit
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 04/11/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 6006dde5ea34db9881a02550e7aff33e48c6498e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53fba48725e0f4f496beee6eee96ff45847b633e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B-Zusammenarbeit: Code- und PowerShell-Beispiele
 
@@ -233,15 +228,5 @@ namespace SampleInviteApp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+- [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Eigenschaften von B2B-Zusammenarbeitsbenutzern](active-directory-b2b-user-properties.md)
-* [Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle](active-directory-b2b-add-guest-to-role.md)
-* [Delegieren von Einladungen zur B2B-Zusammenarbeit](active-directory-b2b-delegate-invitations.md)
-* [Dynamische Gruppen und B2B-Zusammenarbeit](active-directory-b2b-dynamic-groups.md)
-* [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](active-directory-b2b-configure-saas-apps.md)
-* [Benutzertoken für die B2B-Zusammenarbeit](active-directory-b2b-user-token.md)
-* [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](active-directory-b2b-claims-mapping.md)
-* [Externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
-* [Aktuelle Einschränkungen der B2B-Zusammenarbeit](active-directory-b2b-current-limitations.md)

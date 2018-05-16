@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 70d2f159c5485009e36aa80dfa8b73f9b3cf4ec1
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -69,4 +69,4 @@ Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und ver
 Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Überprüfen Sie, ob die ausgewählte Rolle „Globaler Administrator“ ist. Wenn Sie im Verlauf dieser Schritte nicht auf die Seiten zugreifen können, sind Sie kein globaler Administrator.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
+[Grundlegendes zu Azure AD-Anwendungsproxyconnectors](manage-apps/application-proxy-connectors.md)

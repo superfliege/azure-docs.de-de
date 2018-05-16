@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bced85abaf24beb0997ec906a68e5947f0e67cca
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: c308b6626f9c37b3928107c4c03e9e0a5da12e6f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.PublicIpAddressCombo“
 Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öffentlichen IP-Adresse.
@@ -54,7 +54,8 @@ Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öff
   "options": {
     "hideNone": false,
     "hideDomainNameLabel": false,
-    "hideExisting": false
+    "hideExisting": false,
+    "zone": 3
   },
   "visible": true
 }
@@ -65,6 +66,7 @@ Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öff
 - Wenn `options.hideNone` auf **true** festgelegt ist, wird die Option zum Auswählen von **Keine** für die öffentlichen IP-Adresse ausgeblendet. Der Standardwert ist **false**.
 - Wenn `options.hideDomainNameLabel` auf **true** festgelegt ist, wird das Textfeld für die Domänennamenbezeichnung ausgeblendet. Der Standardwert ist **false**.
 - Wenn `options.hideExisting` auf „true“ festgelegt ist, kann der Benutzer keine vorhandene öffentliche IP-Adresse auswählen. Der Standardwert ist **false**.
+- Für `zone` sind nur öffentliche IP-Adressen für die angegebene Zone oder zonenresiliente öffentliche IP-Adressen verfügbar.
 
 ## <a name="sample-output"></a>Beispielausgabe
 Wenn der Benutzer keine öffentliche IP-Adresse auswählt, wird die folgende Ausgabe erwartet:

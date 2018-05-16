@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Suite-Remoteüberwachung – häufig gestellte Fragen | Microsoft-Dokumentation
-description: Häufig gestellte Fragen zur vorkonfigurierten IoT Suite-Remoteüberwachungslösung
+title: FAQ zu Solution Accelerators für die Remoteüberwachung | Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu Solution Accelerators für die Remoteüberwachung
 services: iot-suite
 suite: iot-suite
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b0d6dbb567f66537c599d7ac3e4337988b3374c0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1cc260710d025428a1ca77c41c104dc172447e6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-remote-monitoring-preconfigured-solution"></a>Häufig gestellte Fragen zur vorkonfigurierten IoT Suite-Remoteüberwachungslösung
+# <a name="frequently-asked-questions-for-remote-monitoring-solution-accelerator"></a>Häufig gestellte Fragen zu Solution Accelerators für die Remoteüberwachung
 
 Informationen finden Sie auch in den allgemeinen [häufig gestellten Fragen](iot-suite-faq.md).
 
 ### <a name="how-much-does-it-cost-to-provision-the-new-remote-monitoring-solution"></a>Wie hoch sind die Kosten für die Bereitstellung der neuen Remoteüberwachungslösung?
 
-Die neue vorkonfigurierte Lösung bietet zwei Bereitstellungsoptionen:
+Der neue Solution Accelerator bietet zwei Bereitstellungsoptionen:
 
 * Die Option *Basic* für Entwickler, die niedrigere Entwicklungskosten wünschen, oder für Kunden, die eine Demonstrationsversion oder ein Proof of Concept erstellen möchten.
 * Die Option *Standard* für Unternehmen, die eine produktionsbereite Infrastruktur bereitstellen möchten.
@@ -44,15 +44,11 @@ Jede Bereitstellungsoption entspricht unterschiedlichen Anforderungen. Die Basic
 
 Weitere Informationen finden Sie unter [Aktualisieren des Zuordnungsschlüssels zum Anzeigen von Geräten in einer dynamischen Zuordnung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map).
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Wie viele Bing Maps-APIs im Tarif „Free“ kann ich in einem Abonnement bereitstellen?
-
-Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zwei Tarife für die erste interne Transaktionsebene erstellt werden. Die Remoteüberwachungslösung wird standardmäßig mit dem Tarif für die erste interne Transaktionsebene bereitgestellt. Daher können Sie in einem Abonnement ohne Modifikationen nur bis zu zwei vorkonfigurierte Remoteüberwachungslösungen bereitstellen.
-
 ### <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-explore.md)
-* [Übersicht über die vorkonfigurierte Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
-* [Übersicht über die vorkonfigurierte Lösung für eine verbundene Factory](iot-suite-connected-factory-overview.md)
+* [Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung](iot-suite-remote-monitoring-explore.md)
+* [Übersicht über den Solution Accelerator für Predictive Maintenance](iot-suite-predictive-overview.md)
+* [Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung](iot-suite-connected-factory-overview.md)
 * [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 3b908f1df9228505b2f3bce18bd42d9b502844c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e4995146433d0090849fe17175b152a6e45809f4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Bei
     Press any key to exit...
 
 
-**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie eine E-Mail an askcosmosdb@microsoft.com, oder legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung oder einer Gruppe von Sammlungen entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, schreiben Sie eine E-Mail an askcosmosdb@microsoft.com, oder legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
 
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](indexing-policies.md) und [Konsistenzebenen](consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 

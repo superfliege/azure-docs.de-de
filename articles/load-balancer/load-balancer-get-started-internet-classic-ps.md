@@ -1,10 +1,10 @@
 ---
-title: "Erstellen eines Lastenausgleichs für den Internetzugriff – Azure PowerShell (klassisch) | Microsoft-Dokumentation"
+title: Erstellen eines Lastenausgleichs für den Internetzugriff – Azure PowerShell (klassisch) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff im klassischen Modus mithilfe von PowerShell erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
+author: genlin
+manager: cshepard
 tags: azure-service-management
 ms.assetid: 73e8bfa4-8086-4ef0-9e35-9e00b24be319
 ms.service: load-balancer
@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 56e29dc792ef832a7693b9c8769e9b4269766955
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 07d3658ff86a46875a57cb3359a60661911e0c8b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>Erste Schritte zum Erstellen eines Load Balancers (klassisch) mit Internetzugriff in PowerShell
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/18/2017
 
 Führen Sie die folgenden Schritte aus, um einen Lastenausgleich mit PowerShell einzurichten:
 
-1. Wenn Sie Azure PowerShell zuvor noch nicht verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
+1. Wenn Sie Azure PowerShell noch nie verwendet haben, lesen Sie [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) , und befolgen Sie die komplette Anleitung, um sich bei Azure anzumelden und Ihr Abonnement auszuwählen.
 2. Nach dem Erstellen eines virtuellen Computers können Sie PowerShell-Cmdlets verwenden, um einem virtuellen Computer in demselben Clouddienst einen Load Balancer hinzuzufügen.
 
 Im folgenden Beispiel fügen Sie dem Clouddienst „mytestcloud“ (oder „myctestcloud.cloudapp.net“) eine Load Balancer-Gruppe namens „webfarm“ hinzu. Dabei werden die Endpunkte für den Load Balancer den virtuellen Computern „web1“ und „web2“ hinzugefügt. Der Load Balancer empfängt Netzwerkdatenverkehr an Port 80 und führt für die durch den lokalen Endpunkt (in diesem Fall Port 80) festgelegten virtuellen Computer per TCP einen Lastenausgleich durch.

@@ -1,25 +1,25 @@
 ---
-title: Konfigurieren des eingehenden Datenverkehrs mit einem Azure Container Service-Cluster (AKS)
-description: Installieren und Konfigurieren eines NGINX-Eingangscontrollers in einem Azure Container Service-Cluster (AKS)
+title: Konfigurieren des eingehenden Datenverkehrs mit einem Azure Kubernetes Service-Cluster (AKS)
+description: Installieren und Konfigurieren eines NGINX-Eingangscontrollers in einem Azure Kubernetes Service-Cluster (AKS)
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/03/2018
+ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: dbb37c6fc2b5db8b2799eaacbfb4864c4e04fee7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9246fccb1713f69d2c6c655b09f0daf51055596f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="https-ingress-on-azure-container-service-aks"></a>Eingehende HTTPS-Daten in Azure Container Service (AKS)
+# <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Eingehender HTTPS-Datenverkehr in Azure Kubernetes Service (AKS)
 
 Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konfigurierbare Datenverkehrsweiterleitung und TLS-Terminierung für Kubernetes-Dienste bereitstellt. Mithilfe von Ressourcen für eingehende Kubernetes-Daten werden Eingangsregeln und Routen für einzelne Kubernetes-Dienste konfiguriert. Durch die Verwendung von einem Eingangscontroller und Eingangsregeln kann eine einzelne externe Adresse zum Weiterleiten von Datenverkehr an mehrere Dienste in einem Kubernetes-Cluster verwendet werden.
 
-Dieses Dokument begleitet Sie durch eine Beispielbereitstellung des [NGINX-Eingangscontrollers][nginx-ingress] in einem Azure Container Service-Cluster (AKS). Darüber hinaus wird das Projekt [KUBE-LEGO][kube-lego] verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden verschiedene Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne Adresse zugänglich sind.
+Dieses Dokument begleitet Sie durch eine Beispielbereitstellung des [NGINX-Eingangscontrollers][nginx-ingress] in einem Azure Kubernetes Service-Cluster (AKS). Darüber hinaus wird das Projekt [KUBE-LEGO][kube-lego] verwendet, um automatisch [Let‘s Encrypt][lets-encrypt]-Zertifikate zu generieren und zu konfigurieren. Schließlich werden verschiedene Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne Adresse zugänglich sind.
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -46,9 +46,9 @@ Während der Installation wird eine öffentliche Azure-IP-Adresse für den Einga
 ```console
 $ kubectl get service -l app=nginx-ingress --namespace kube-system
 
-NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP    PORT(S)                      AGE
-eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   13.82.238.45   80:30920/TCP,443:30426/TCP   20m
-eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>         80/TCP                       20m
+NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
+eager-crab-nginx-ingress-controller        LoadBalancer   10.0.182.160   51.145.155.210  80:30920/TCP,443:30426/TCP   20m
+eager-crab-nginx-ingress-default-backend   ClusterIP      10.0.255.77    <none>          80/TCP                       20m
 ```
 
 Da noch keine Eingangsregeln erstellt wurden, werden Sie zur Standard-404-Seite des NGINX-Eingangscontrollers weitergeleitet, wenn Sie zur öffentlichen IP-Adresse browsen.
@@ -63,7 +63,7 @@ Da HTTPS-Zertifikate verwendet werden, müssen Sie einen vollqualifizierten Dom�
 #!/bin/bash
 
 # Public IP address
-IP="52.224.125.195"
+IP="51.145.155.210"
 
 # Name to associate with public IP address
 DNSNAME="demo-aks-ingress"

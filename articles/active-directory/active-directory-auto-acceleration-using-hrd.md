@@ -1,22 +1,23 @@
 ---
-title: "Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung | Microsoft Docs"
-description: "Dieser Artikel erläutert, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird."
+title: Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung | Microsoft Docs
+description: Dieser Artikel erläutert, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
 services: active-directory
-documentationcenter: 
-author: billmath
+documentationcenter: ''
+author: barbkess
 manager: mtillman
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: it-pro
 ms.date: 11/09/2017
-ms.author: billmath
-ms.openlocfilehash: deaa52a062eb01450f760324e01e520fcbe894e1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.openlocfilehash: 5df12f905595c9b3e8caa8f372b9ba7b54672f81
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="configure-sign-in-auto-acceleration-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -158,7 +159,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Benutzer beim Anmelden bei
 
 #### <a name="step-1-create-an-hrd-policy"></a>Schritt 1: Erstellen einer Richtlinie zur Startbereichsermittlung
 ``` powershell
-New-AzureADPoly -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
+New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AccelerateToFederatedDomain`":true}}") -DisplayName BasicAutoAccelerationPolicy -Type HomeRealmDiscoveryPolicy
 ```
 
 Wenn Sie über eine einzige Verbunddomäne verfügen, die Benutzer für Anwendungen authentifiziert, müssen Sie nur eine Richtlinie zur Startbereichsermittlung erstellen.  

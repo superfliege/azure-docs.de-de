@@ -3,7 +3,7 @@ title: Verwenden von „mongoimport“ und „mongorestore“ mit der Azure Cosm
 description: Erfahren Sie, wie Sie „mongoimport“ und „mongorestore“ zum Importieren von Daten in eine API für ein MongoDB-Konto verwenden.
 keywords: mongoimport, mongorestore
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 documentationcenter: ''
 ms.assetid: 352c5fb9-8772-4c5f-87ac-74885e63ecac
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
-ms.author: anhoh
+ms.date: 05/07/2018
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 5c87483e384a09591aca496292638d7b68476beb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 36d098a76e57b65ba82c24ed81ebbe3d21489a9f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: Importieren von MongoDB-Daten 
 
@@ -28,7 +28,7 @@ Sie müssen wie folgt vorgehen, um Daten von MongoDB in ein Azure Cosmos DB-Kont
 * Laden Sie entweder *mongoimport.exe* oder *mongorestore.exe* aus dem [MongoDB Download Center](https://www.mongodb.com/download-center) herunter.
 * Rufen Sie Ihre [API für die MongoDB-Verbindungszeichenfolge](connect-mongodb-account.md) ab.
 
-Wenn Sie Daten aus MongoDB importieren und diese mit Azure Cosmos DB verwenden möchten, sollten Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) importieren.
+Wenn Sie Daten aus MongoDB importieren und diese mit der SQL-API von Azure Cosmos DB verwenden möchten, sollten Sie die Daten mithilfe des [Datenmigrationstools](import-data.md) importieren.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -39,7 +39,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach der Durchsatzmenge, die Sie für Ihre Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
+* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im [Azure-Portal](https://portal.azure.com) finden Sie unter [Leistungsstufen und Tarife in Azure Cosmos DB](performance-levels.md).
 
 * SSL-Aktivierung: Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Die Verfahren im restlichen Artikel verdeutlichen, wie Sie SSL für „mongoimport“ und „mongorestore“ aktivieren.
 
@@ -47,10 +47,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der linken Seite auf den Eintrag **Azure Cosmos DB**.
 2. Wählen Sie unter **Abonnements** den Namen Ihres Kontos aus.
-3. Klicken Sie auf dem Blatt **Verbindungszeichenfolge** auf **Verbindungszeichenfolge**.  
-Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
+3. Klicken Sie auf dem Blatt **Verbindungszeichenfolge** auf **Verbindungszeichenfolge**.
 
-    ![Blatt „Verbindungszeichenfolge“](./media/mongodb-migrate/ConnectionStringBlade.png)
+   Der rechte Bereich enthält alle Informationen, die Sie zum erfolgreichen Verbinden des Kontos benötigen.
+
+   ![Blatt „Verbindungszeichenfolge“](./media/mongodb-migrate/ConnectionStringBlade.png)
 
 ## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Importieren von Daten in die API für MongoDB mit „mongoimport“
 
@@ -80,9 +81,27 @@ Beispiel:
 
 1. Erstellen und skalieren Sie Ihre Sammlungen im Voraus:
         
-    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten (RUs) bereit. Erstellen Sie vor der Migration mithilfe von „mongoimport“, „mongorestore“ oder „mongomirror“ alle Sammlungen aus dem [Azure-Portal](https://portal.azure.com) oder von MongoDB-Treibern und Tools. Wenn Ihre Sammlung größer als 10 GB ist, müssen Sie eine [Shard-/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shardschlüssel erstellen.
+    * Standardmäßig stellt Azure Cosmos DB eine neue MongoDB-Sammlung mit 1.000 Anforderungseinheiten (RU/s) bereit. Erstellen Sie vor der Migration mithilfe von „mongoimport“, „mongorestore“ oder „mongomirror“ alle Sammlungen aus dem [Azure-Portal](https://portal.azure.com) oder von MongoDB-Treibern und Tools. Wenn Ihre Sammlung größer als 10 GB ist, müssen Sie eine [Shard-/partitionierte Sammlung](partition-data.md) mit einem entsprechenden Shardschlüssel erstellen.
 
-    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs für eine einzelne partitionierte Sammlung und 2.500 RUs für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie Einschränkungen vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
+    * Über das [Azure-Portal](https://portal.azure.com) können Sie den Durchsatz Ihrer Sammlungen von 1.000 RUs pro Sekunde für eine einzelne partitionierte Sammlung und 2.500 RUs pro Sekunde für eine Shard-Sammlung speziell für die Migration erhöhen. Mit dem höheren Durchsatz können Sie Einschränkungen vermeiden und in kürzerer Zeit migrieren. Mit der stündlichen Abrechnung in Azure Cosmos DB können Sie den Durchsatz sofort nach der Migration verringern, um Kosten zu sparen.
+
+    * Zusätzlich zur Bereitstellung von RU/s auf Ebene der Sammlungen können Sie zudem RU/s für eine Gruppe von Sammlungen auf der übergeordneten Datenbankebene bereitstellen. Dazu müssen vorab die Datenbank und die Sammlungen erstellt sowie jeweils ein Shardschlüssel für die einzelnen Sammlungen definiert werden.
+
+    * Sie können Sammlungen mit Shards mithilfe Ihrer bevorzugten Tools, Treiber oder SDKs erstellen. In diesem Beispiel verwenden wir die Mongo Shell zum Erstellen einer Sammlung mit Shards:
+
+        ```
+        db.runCommand( { shardCollection: "admin.people", key: { region: "hashed" } } )
+        ```
+    
+        Ergebnisse:
+
+        ```JSON
+        {
+            "_t" : "ShardCollectionResponse",
+            "ok" : 1,
+            "collectionsharded" : "admin.people"
+        }
+        ```
 
 2. Berechnen Sie die ungefähre RU-Gebühr für das Schreiben eines einzelnen Dokuments:
 
@@ -92,7 +111,7 @@ Beispiel:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
-    c. Führen Sie ```db.runCommand({getLastRequestStatistics: 1})``` aus, und Sie erhalten eine Antwort wie diese:
+    c. Führen Sie ```db.runCommand({getLastRequestStatistics: 1})``` aus, und Sie erhalten eine Antwort ähnlich der folgenden:
      
         ```
         globaldb:PRIMARY> db.runCommand({getLastRequestStatistics: 1})
@@ -111,7 +130,7 @@ Beispiel:
     
     a. Aktivieren Sie die ausführliche Protokollierung über die MongoDB-Shell mit diesem Befehl: ```setVerboseShell(true)```
     
-    b. Führen Sie eine einfache Abfrage für die Datenbank aus: ```db.coll.find().limit(1)```. Sie erhalten eine Antwort wie diese:
+    b. Führen Sie eine einfache Abfrage für die Datenbank aus: ```db.coll.find().limit(1)```. Sie erhalten eine Antwort ähnlich der folgenden:
 
         ```
         Fetched 1 record(s) in 100(ms)

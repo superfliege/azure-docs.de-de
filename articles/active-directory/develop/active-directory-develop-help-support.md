@@ -1,25 +1,27 @@
 ---
-title: "Support- und Hilfeoptionen für Azure-Identitätsentwickler | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Hilfe und Support zu Problemen und Fragen im Zusammenhang mit der Entwicklung beim Erstellen einer Anwendung, die in Microsoft Azure-Identitäten (Azure Active Directory und MSA) integriert wird, erhalten."
+title: Support- und Hilfeoptionen für Azure-Identitätsentwickler | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Hilfe und Support zu Problemen und Fragen im Zusammenhang mit der Entwicklung beim Erstellen einer Anwendung, die in Microsoft Azure-Identitäten (Azure Active Directory und MSA) integriert wird, erhalten.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/27/2017
-ms.author: andret
+ms.author: celested
+ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 06da07aa699d19602449dc365abb971867214a31
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ae682830a8d0e2c5c27211a3396d04c881c41585
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler 
 
@@ -33,12 +35,12 @@ Ungeachtet dessen, ob Sie gerade mit der Integration in Azure Active Directory, 
 > * Wenn Sie schließlich mit einer Person sprechen müssen, stellen Sie eine Supportanfrage.
 
 
-## <a name="search"></a>Suche
+## <a name="search"></a>Suchen,
 
 Wenn Sie eine auf die Entwicklung bezogene Frage haben, finden Sie die gewünschte Antwort möglicherweise in unserer Dokumentation, unseren [Github-Beispielen](https://github.com/azure-samples) oder in Antworten auf Fragen in [Stack Overflow](https://www.stackoverflow.com).
 
 ### <a name="scoped-search"></a>Bereichsbezogene Suche
-Um schnellere Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overflow, unsere Dokumentation und unsere Codebeispiele, indem Sie in [Bing](https://bing.com) folgende Syntax verwenden:
+Um schnellere Ergebnisse zu erzielen, beschränken Sie Ihre Suche auf Stack Overflow, unsere Dokumentation und unsere Codebeispiele, indem Sie in [Ihrer bevorzugten Suchmaschine](https://bing.com) die folgende Syntax verwenden:
 ```
 {Your Search Terms} (site:stackoverflow.com OR site:docs.microsoft.com OR site:github.com/azure-samples OR site:cloudidentity.com OR site:developer.microsoft.com/en-us/graph)
 ```
@@ -47,7 +49,7 @@ Hierbei entspricht *{Your Search Terms}* Ihren Schlüsselwörtern für die Suche
 
 ## <a name="use-our-development-support-tools"></a>Verwenden unserer Supporttools für die Entwicklung
 
-|Tool  |Beschreibung  |
+|Tool  |BESCHREIBUNG  |
 |---------|---------|
 |[jwt.ms](https://jwt.ms)| Fügen Sie eine ID oder Zugriffstoken zum Entschlüsseln von Anspruchsnamen und Werten ein. |
 |[Error Code Analyzer](https://apps.dev.microsoft.com/portal/tools/errors)| Fügen Sie einen Fehlercode ein, den Sie bei der Anmeldung oder von Zustimmungsseiten erhalten haben, um mögliche Ursachen und Wiederherstellungsmaßnahmen anzuzeigen. |

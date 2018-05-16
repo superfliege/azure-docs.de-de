@@ -1,29 +1,29 @@
 ---
-title: "Grundlagen der Azure-Identitätsverwaltung"
-description: "Cloudbasierte Identitäten sind nun die beste Möglichkeit, die Kontrolle darüber und den Einblick darin zu behalten, wie und wann Benutzer auf Unternehmensanwendungen und -daten zugreifen."
-keywords: 
+title: Grundlagen der Azure-Identitätsverwaltung
+description: Cloudbasierte Identitäten sind nun die beste Möglichkeit, die Kontrolle darüber und den Einblick darin zu behalten, wie und wann Benutzer auf Unternehmensanwendungen und -daten zugreifen.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewr: jsnow
 ms.author: jeffgilb
 ms.date: 07/05/2017
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: a7eb669aac109ae8cde6d75129004d322c270651
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Grundlagen der Azure-Identitätsverwaltung
 
 Da sich immer mehr digitale Unternehmensressourcen außerhalb des Unternehmensnetzwerks, in der Cloud und auf Geräten befinden, wird eine herausragende, cloudbasierte Identitäts- und Zugriffsverwaltungslösung zur Notwendigkeit. Cloudbasierte Identitäten sind nun die beste Möglichkeit, die Kontrolle darüber und den Einblick darin zu behalten, wie und wann Benutzer auf Unternehmensanwendungen und -daten zugreifen.
 
-Microsoft beschäftigt sich schon seit mehr als einem Jahrzehnt mit dem Schutz cloudbasierter Identitäten, und diese Schutzsysteme stehen mit [Azure Active Directory (AD)](https://docs.microsoft.com/azure/active-directory/active-directory-editions) jetzt auch Ihnen zur Verfügung. Mit Azure AD können Unternehmensadministratoren den Benutzern und Administratoren problemlos mehr Sicherheit und Kontrolle als je zuvor an die Hand zu geben.
+Microsoft beschäftigt sich schon seit mehr als einem Jahrzehnt mit dem Schutz cloudbasierter Identitäten, und diese Schutzsysteme stehen mit [Azure Active Directory (AD)](active-directory-whatis.md) jetzt auch Ihnen zur Verfügung. Mit Azure AD können Unternehmensadministratoren den Benutzern und Administratoren problemlos mehr Sicherheit und Kontrolle als je zuvor an die Hand zu geben.
 
 Azure AD Premium ist eine cloudbasierte Identitäts- und Zugriffsverwaltungslösung mit erweiterten Schutzfunktionen, die eine sichere Identität für alle Apps, Schutz der Identität (verbessert durch den [Microsoft Intelligence Security Graph](https://www.microsoft.com/en-us/security/intelligence)) und Privileged Identity Management bietet. Azure AD Premium ist nicht einfach ein weiteres Überwachungs- und Berichterstellung – es kann die Identitäten Ihrer Benutzer in Echtzeit schützen und ermöglicht Ihnen das Erstellen risikobasierter, adaptiver Zugriffsrichtlinien zum Schutz der Daten Ihrer Organisation.
 

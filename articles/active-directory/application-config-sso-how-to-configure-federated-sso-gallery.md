@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren der einmaligen Verbundanmeldung für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation"
-description: "So konfigurieren Sie die einmalige Verbundanmeldung für eine vorhandene Azure AD-Kataloganwendung und verwenden Tutorials für einen schnellen Einstieg"
+title: Konfigurieren der einmaligen Verbundanmeldung für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation
+description: So konfigurieren Sie die einmalige Verbundanmeldung für eine vorhandene Azure AD-Kataloganwendung und verwenden Tutorials für einen schnellen Einstieg
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e71480910432c6475ca97d20853a72b864195faa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 47aab24702be966beeb41371201c6966497dc35a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurieren von einmaligem Anmelden im Verbund für eine Azure AD-Kataloganwendung
 
@@ -210,7 +210,7 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen mit den Ve
 Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwendung gesendet werden, finden Sie unter [Zuordnen von Benutzeransprüchen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 
 
 

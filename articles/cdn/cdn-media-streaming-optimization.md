@@ -1,26 +1,26 @@
 ---
-title: "Medienstreamingoptimierung über das Azure Content Delivery Network"
-description: "Optimieren des Streamings von Mediendateien für eine reibungslose Übermittlung"
+title: Medienstreamingoptimierung über Azure CDN
+description: Optimieren des Streamings von Mediendateien für eine reibungslose Übermittlung
 services: cdn
-documentationcenter: 
-author: smcevoy
-manager: erikre
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: dksimpson
+manager: akucer
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
-ms.author: v-semcev
-ms.openlocfilehash: c953baad9ca5def916800e6abe7032b4572def5a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 05/01/2018
+ms.author: v-deasim
+ms.openlocfilehash: 8a2b69aaa601e1d00152f57841a4d67f98680181
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="media-streaming-optimization-via-azure-cdn"></a>Medienstreamingoptimierung über das Azure Content Delivery Network 
+# <a name="media-streaming-optimization-with-azure-cdn"></a>Medienstreamingoptimierung über Azure CDN 
  
 Die zunehmende Verbreitung von HD-Videos im Internet stellt eine Herausforderung für die effiziente Übermittlung umfangreicher Dateien dar. Kunden erwarten bei einer Vielzahl von Netzwerken und Clients auf der ganzen Welt eine ruckelfreie Wiedergabe von Video on Demand- oder Livevideoressourcen. Für Medienstreamingdateien bedarf es daher eines schnelleren und effizienteren Übermittlungsverfahrens, um eine reibungslose und angemessene Kundenerfahrung zu gewährleisten.  
 
@@ -28,33 +28,57 @@ Die Übermittlung von Livestreamingmedien ist aufgrund der Dateigrößen und der
 
 Die Anforderungsmuster beim Streaming stellen auch einige neue Herausforderungen dar. Wenn ein beliebter Livestream oder eine neue Serie über Video on Demand (VOD) erscheint, kann es vorkommen, dass der Stream von Tausenden oder sogar von Millionen von Zuschauern gleichzeitig angefordert wird. In diesem Fall bedarf es einer intelligenten Anforderungskonsolidierung, um die Ursprungsserver nicht zu überlasten, wenn die Ressourcen noch nicht zwischengespeichert wurden.
  
-Das **Azure CDN von Akamai** bietet ein Feature, das Streamingmedienobjekte effizient an Benutzer auf der ganzen Welt übermittelt. Es entlastet die Ursprungsserver und verkürzt so die Wartezeiten. Dieses Feature steht im Tarif „Akamai Standard“ zur Verfügung. 
 
-Das **Azure CDN von Verizon** übermittelt Streamingmedien direkt mit dem Optimierungstyp „Allgemeine Webbereitstellung“.
- 
-## <a name="configure-an-endpoint-to-optimize-media-streaming"></a>Konfigurieren eines Endpunkts zur Optimierung von Medienstreaming
- 
-Sie können Ihren CDN-Endpunkt (Content Delivery Network) über das Azure-Portal für die Übertragung großer Dateien optimieren. Sie können dafür auch die REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Schritte veranschaulichen die Vorgehensweise im Azure-Portal für ein **Azure CDN von Akamai**-Profil:
+## <a name="media-streaming-optimizations-for-azure-cdn-from-microsoft"></a>Optimierungen für das Medienstreaming für Azure CDN von Microsoft
 
-1. Wählen Sie zum Hinzufügen eines neuen Endpunkts auf der Seite **CDN-Profil** die Option **Endpunkt** aus.
+Endpunkte vom Typ **Azure CDN Standard von Microsoft** übermittelt Streamingmedienobjekte direkt unter Verwendung des Optimierungstyps „Allgemeine Webbereitstellung“. 
+
+Die Medienstreamingoptimierung für **Azure CDN Standard von Microsoft** empfiehlt sich für Live- oder Video on Demand-Streamingmedien, bei denen individuelle Medienfragmente übermittelt werden. Dieser Prozess unterscheidet sich vom Prozess für eine einzelne große Ressource, die mittels progressivem Download oder mithilfe von Bytebereichsanfragen übertragen wird. Informationen zu dieser Art von Medienübermittlung finden Sie unter [Optimierung großer Dateidownloads mit Azure CDN](cdn-large-file-optimization.md).
+
+Bei den Optimierungstypen für die Übermittlung von allgemeinen Medien oder Video on Demand-Medien wird die Übermittlung der Medienobjekte mithilfe von Azure Content Delivery Network (CDN) mit Back-End-Optimierung beschleunigt. Außerdem werden Konfigurationen für Medienobjekte verwendet, die auf Methoden basieren, die sich in der Vergangenheit bewährt haben.
+
+### <a name="partial-cache-sharing"></a>Partielle Cachefreigabe
+Mit der partiellen Cachefreigabe kann das CDN teilweise zwischengespeicherte Inhalte für neue Anforderungen bereitstellen. Wenn also beispielsweise die erste an das CDN gerichtete Anforderung zu einem Cachefehler führt, wird die Anforderung an den Ursprungsserver gesendet. Dieser unvollständige Inhalt wird in den CDN-Cache geladen, und die Daten können von anderen CDN-Anforderungen abgerufen werden. 
+
+
+## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimierungen für das Medienstreaming für Azure CDN von Verizon
+
+Endpunkte vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** übermitteln Streamingmedienobjekte direkt unter Verwendung des Optimierungstyps „Allgemeine Webbereitstellung“. Einige CDN-Features tragen standardmäßig direkt zur Übermittlung von Medienobjekten bei.
+
+### <a name="partial-cache-sharing"></a>Partielle Cachefreigabe
+
+Mit der partiellen Cachefreigabe kann das CDN teilweise zwischengespeicherte Inhalte für neue Anforderungen bereitstellen. Wenn also beispielsweise die erste an das CDN gerichtete Anforderung zu einem Cachefehler führt, wird die Anforderung an den Ursprungsserver gesendet. Dieser unvollständige Inhalt wird in den CDN-Cache geladen, und die Daten können von anderen CDN-Anforderungen abgerufen werden. 
+
+### <a name="cache-fill-wait-time"></a>Wartezeit für die Cacheauffüllung
+
+ Durch die Wartezeit für die Cacheauffüllung wird erzwungen, dass der Edgeserver sämtliche nachfolgende Anforderungen für die Ressource zurückstellt, bis HTTP-Antwortheader vom Ursprungsserver eingehen. Wenn vor Ablauf der Wartezeit HTTP-Antwortheader vom Ursprungsserver eingehen, werden alle zurückgestellten Anforderungen über den wachsenden Cache bedient. Gleichzeitig wird der Cache mit Daten des Ursprungsservers gefüllt. Die Wartezeit für die Cacheauffüllung ist standardmäßig auf 3.000 Millisekunden festgelegt. 
+
+ 
+## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimierungen für das Medienstreaming für Azure CDN von Akamai
+ 
+**Azure CDN Standard von Akamai** bietet ein Feature, das Streamingmedienobjekte effizient an Benutzer auf der ganzen Welt übermittelt. Es entlastet die Ursprungsserver und verkürzt so die Wartezeiten. Dieses Feature steht im Tarif „Akamai Standard“ zur Verfügung. 
+
+Die Medienstreamingoptimierung für **Azure CDN Standard von Akamai** empfiehlt sich für Live- oder Video on Demand-Streamingmedien, bei denen individuelle Medienfragmente übermittelt werden. Dieser Prozess unterscheidet sich vom Prozess für eine einzelne große Ressource, die mittels progressivem Download oder mithilfe von Bytebereichsanfragen übertragen wird. Informationen zu dieser Art von Medienübermittlung finden Sie unter [Optimieren großer Dateidownloads mit Azure CDN](cdn-large-file-optimization.md).
+
+Bei den Optimierungstypen für die Übermittlung von allgemeinen Medien oder Video on Demand-Medien wird die Übermittlung der Medienobjekte mithilfe eines CDNs mit Back-End-Optimierung beschleunigt. Außerdem werden Konfigurationen für Medienobjekte verwendet, die auf Methoden basieren, die sich in der Vergangenheit bewährt haben.
+
+### <a name="configure-an-akamai-cdn-endpoint-to-optimize-media-streaming"></a>Konfigurieren eines Akamai-CDN-Endpunkts zur Optimierung von Medienstreaming
+ 
+Sie können Ihren CDN-Endpunkt (Content Delivery Network) über das Azure-Portal für die Übertragung großer Dateien optimieren. Sie können dafür auch die REST-APIs oder eines der Client-SDKs verwenden. Die folgenden Schritte veranschaulichen die Vorgehensweise im Azure-Portal für ein Profil vom Typ **Azure CDN Standard von Akamai**:
+
+1. Wählen Sie zum Hinzufügen eines neuen Endpunkts auf der Akamai-Seite **CDN-Profil** die Option **Endpunkt** aus.
   
-    ![Neuer Endpunkt](./media/cdn-media-streaming-optimization/01_Adding.png)
+    ![Neuer Endpunkt](./media/cdn-media-streaming-optimization/cdn-new-akamai-endpoint.png)
 
 2. Wählen Sie für Video on Demand-Ressourcen in der Dropdownliste **Optimiert für** die Option **Video on Demand-Medienstreaming** aus. Falls Sie eine Kombination aus Livestreaming und Video on Demand-Streaming verwenden, wählen Sie **Allgemeine Medienstreaming** aus.
 
     ![Streaming ausgewählt](./media/cdn-media-streaming-optimization/02_Creating.png) 
  
 Nach Erstellung des Endpunkts wird die Optimierung auf alle Dateien angewendet, die bestimmte Kriterien erfüllen. Dies wird im folgenden Abschnitt beschrieben. 
- 
-## <a name="media-streaming-optimizations-for-azure-cdn-from-akamai"></a>Optimierungen für das Medienstreaming für Azure CDN von Akamai
- 
-Die Medienstreamingoptimierung für das **Azure CDN von Akamai** empfiehlt sich für Live- oder Video on Demand-Streamingmedien, bei denen individuelle Medienfragmente übermittelt werden. Dieser Prozess unterscheidet sich vom Prozess für eine einzelne große Ressource, die mittels progressivem Download oder mithilfe von Bytebereichsanfragen übertragen wird. Informationen zu dieser Art von Medienübermittlung finden Sie unter [Optimieren großer Dateidownloads mit Azure CDN](cdn-large-file-optimization.md).
-
-Bei den Optimierungstypen für die Übermittlung von allgemeinen Medien oder Video on Demand-Medien wird die Übermittlung der Medienobjekte mithilfe eines CDNs mit Back-End-Optimierung beschleunigt. Außerdem werden Konfigurationen für Medienobjekte verwendet, die auf Methoden basieren, die sich in der Vergangenheit bewährt haben.
 
 ### <a name="caching"></a>Caching
 
-Wenn das **Azure CDN von Akamai** erkennt, dass es sich bei der Ressource um ein Streamingmanifest oder -fragment handelt, verwendet es andere Cachingablaufzeiten als bei der allgemeinen Webbereitstellung. (Eine vollständige Liste finden Sie in der Tabelle weiter unten.) Auch hier werden vom Ursprungsserver gesendete Header vom Typ „cache-control“ oder „expires“ berücksichtigt. Falls es sich bei der Ressource nicht um ein Medienobjekt handelt, werden beim Caching die Ablaufzeiten für die allgemeine Webbereitstellung verwendet.
+Wenn **Azure CDN Standard von Akamai** erkennt, dass es sich bei der Ressource um ein Streamingmanifest oder -fragment handelt, verwendet es andere Cachingablaufzeiten als bei der allgemeinen Webbereitstellung. (Eine vollständige Liste finden Sie in der Tabelle weiter unten.) Auch hier werden vom Ursprungsserver gesendete Header vom Typ „cache-control“ oder „expires“ berücksichtigt. Falls es sich bei der Ressource nicht um ein Medienobjekt handelt, werden beim Caching die Ablaufzeiten für die allgemeine Webbereitstellung verwendet.
 
 Die kurze negative Zwischenspeicherungsdauer ermöglicht die Entlastung des Ursprungsservers, wenn viele Benutzer ein noch nicht vorhandenes Fragment anfordern. Ein Beispiel wäre etwa ein Livestream, dessen Pakete zum Anforderungszeitpunkt noch nicht auf dem Ursprungsserver verfügbar sind. Das längere Cachingintervall sorgt auch für eine Entlastung bei Anforderungen vom Ursprungsserver, da Videoinhalte in der Regel nicht geändert werden.
  
@@ -83,17 +107,4 @@ Adobe HDS | F4M, F4X, DRMMETA, BOOTSTRAP, F4F,<br>Seg-Frag-URL-Struktur <br> (re
 DASH | MPD, DASH, DIVX, ISMV, M4S, M4V, MP4, MP4V, <br> SIDX, WEBM, MP4A, M4A, ISMA
 Smooth Streaming | /manifest/, /QualityLevels/Fragments/
   
-
  
-## <a name="media-streaming-optimizations-for-azure-cdn-from-verizon"></a>Optimierungen für das Medienstreaming für Azure CDN von Verizon
-
-Das **Azure CDN von Verizon** übermittelt Streamingmedienobjekte direkt unter Verwendung des Optimierungstyps „Allgemeine Webbereitstellung“. Einige CDN-Features tragen standardmäßig direkt zur Übermittlung von Medienobjekten bei.
-
-### <a name="partial-cache-sharing"></a>Partielle Cachefreigabe
-
-Mit der partiellen Cachefreigabe kann das CDN teilweise zwischengespeicherte Inhalte für neue Anforderungen bereitstellen. Wenn also beispielsweise die erste an das CDN gerichtete Anforderung zu einem Cachefehler führt, wird die Anforderung an den Ursprungsserver gesendet. Dieser unvollständige Inhalt wird in den CDN-Cache geladen, und die Daten können von anderen CDN-Anforderungen abgerufen werden. 
-
-### <a name="cache-fill-wait-time"></a>Wartezeit für die Cacheauffüllung
-
- Durch die Wartezeit für die Cacheauffüllung wird erzwungen, dass der Edgeserver sämtliche nachfolgende Anforderungen für die Ressource zurückstellt, bis HTTP-Antwortheader vom Ursprungsserver eingehen. Wenn vor Ablauf der Wartezeit HTTP-Antwortheader vom Ursprungsserver eingehen, werden alle zurückgestellten Anforderungen über den wachsenden Cache bedient. Gleichzeitig wird der Cache mit Daten des Ursprungsservers gefüllt. Die Wartezeit für die Cacheauffüllung ist standardmäßig auf 3.000 Millisekunden festgelegt. 
-

@@ -1,12 +1,12 @@
 ---
 title: Erweiterte Bedrohungserkennung von Azure | Microsoft-Dokumentation
-description: "Erhalten Sie Informationen zum Identitätsschutz und den zugehörigen Funktionen."
+description: Erhalten Sie Informationen zum Identitätsschutz und den zugehörigen Funktionen.
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d2fab26d8ff9f006cfed82685a738b791d0b0624
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: eb1bf9f6465a8a94fd2de75f581817887c333289
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 ## <a name="introduction"></a>Einführung
@@ -181,7 +181,7 @@ Die Telemetriedaten stammen aus mehreren Quellen, z. B. Azure, Office 365, Micr
 
 Die Sicherheitsexperten erhalten außerdem Informationen zu Bedrohungen, die zwischen großen Cloudanbietern ausgetauscht werden, und haben Threat Intelligence-Feeds von Drittanbietern abonniert. Azure Security Center kann diese Informationen verwenden, um Sie vor Bedrohungen durch bekannte Angreifer zu warnen. Beispiele hierfür sind:
 
--   **Nutzen des Machine Learning-Potenzials**: Azure Security Center hat Zugriff auf eine riesige Menge an Daten zur Cloudnetzwerkaktivität, die dazu verwendet werden können, um Bedrohungen zu erkennen, die auf Ihre Azure-Bereitstellungen ausgerichtet sind. Beispiel:
+-   **Nutzen des Machine Learning-Potenzials**: Azure Security Center hat Zugriff auf eine riesige Menge an Daten zur Cloudnetzwerkaktivität, die dazu verwendet werden können, um Bedrohungen zu erkennen, die auf Ihre Azure-Bereitstellungen ausgerichtet sind. Beispiel: 
 
 -   **Brute-Force-Erkennungen**: Machine Learning wird dazu verwendet, um ein Verlaufsmuster von Remotezugriffsversuchen zu erstellen, mit denen Brute-Force-Angriffe auf SSH-, RDP- und SQL-Ports erkannt werden können.
 
@@ -251,7 +251,7 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 -   **Signaturaktualisierungen**: Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
 
--   **Aktualisierungen des Antimalware-Moduls**: Aktualisiert automatisch das Microsoft Antimalware-Modul.
+-   **Aktualisierungen der Antischadsoftware-Engine**: Aktualisiert automatisch die Microsoft-Antischadsoftware-Engine.
 
 -   **Aktualisierungen der Antimalware-Plattform**: Aktualisiert automatisch die Microsoft Antimalware-Plattform.
 
@@ -406,7 +406,7 @@ Beim Erfassen der Daten aus diesen Quellen führt Cloud App Security ausgereifte
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
 
-Web Application Firewall untersucht eingehenden Webdatenverkehr und blockiert die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS- und andere Angriffe, die gegen ihre Webanwendungen gerichtet sind. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Das integrierte Modul für die Zugriffssteuerung ermöglicht es Administratoren, präzise Zugriffssteuerungsrichtlinien für die Authentifizierung, Autorisierung und Kontenführung zu erstellen, die Unternehmen eine strenge Authentifizierung und Benutzerkontrolle ermöglichen.
+Web Application Firewall untersucht eingehenden Webdatenverkehr und blockiert die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS- und andere Angriffe, die gegen ihre Webanwendungen gerichtet sind. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Die integrierte Engine für die Zugriffssteuerung ermöglicht es Administratoren, präzise Zugriffssteuerungsrichtlinien für die Authentifizierung, Autorisierung und Kontenführung zu erstellen, die Unternehmen eine strenge Authentifizierung und Benutzerkontrolle ermöglichen.
 
 **Highlights:**
 -   Erkennt und blockiert die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware, sowie DDoS- und andere Angriffe, die gegen Ihre Anwendung gerichtet sind.

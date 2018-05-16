@@ -1,25 +1,27 @@
 ---
-title: "Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure AD | Microsoft-Dokumentation"
-description: "Erhalten Sie weitere Informationen zur Implementierung des Ablaufs der impliziten OAuth2-Gewährung durch Azure Active Directory und dazu, ob dies die richtige Methode für Ihre Anwendung ist."
+title: Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure AD | Microsoft-Dokumentation
+description: Erhalten Sie weitere Informationen zur Implementierung des Ablaufs der impliziten OAuth2-Gewährung durch Azure Active Directory und dazu, ob dies die richtige Methode für Ihre Anwendung ist.
 services: active-directory
 documentationcenter: dev-center-name
-author: jmprieur
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 90e42ff9-43b0-4b4f-a222-51df847b2a8d
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2016
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7b3ed6edb0b770e8b57bb5bfde4c183d435335ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 263a093d5cf4b48ed1dadd4a288e548065ddf282
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)
 Die implizite OAuth2-Gewährung ist dafür bekannt, dass sie über die längste Liste der Sicherheitsbedenken in der OAuth2-Spezifikation verfügt. Dennoch wird diese von ADAL JS implementierte Methode für die Erstellung von SPA-Anwendungen empfohlen. Woran liegt das? Alles hat Vor- und Nachteile, und die implizite Gewährung ist die beste Methode im Fall von Anwendungen, die eine Web-API über JavaScript in einem Browser nutzen.

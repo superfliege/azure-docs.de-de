@@ -3,21 +3,21 @@ title: Verwenden von Azure Files mit AKS
 description: Verwenden von Azure-Datenträgern mit AKS
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 04380e5e9e0f1f9b0c88fdba8d21b3e7e8e8a358
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e0e62d37fbcc8f296deaee8e0f6658c0f72321ad
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="volumes-with-azure-files"></a>Volumes mit Azure Files
 
-Containerbasierte Anwendungen müssen häufig auf Daten in einem externen Datenvolume zugreifen und diese dauerhaft speichern. Azure-Dateien können als ein solcher externer Datenspeicher verwendet werden. In diesem Artikel wird erläutert, wie Azure-Dateien als Kubernetes-Volume in Azure Container Service verwendet werden.
+Containerbasierte Anwendungen müssen häufig auf Daten in einem externen Datenvolume zugreifen und diese dauerhaft speichern. Azure-Dateien können als ein solcher externer Datenspeicher verwendet werden. In diesem Artikel wird erläutert, wie Azure-Dateien als Kubernetes-Volume in Azure Kubernetes Service verwendet werden.
 
 Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Kubernetes-Volumes][kubernetes-volumes].
 

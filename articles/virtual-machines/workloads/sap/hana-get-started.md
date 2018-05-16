@@ -1,13 +1,13 @@
 ---
 title: 'Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs | Microsoft-Dokumentation'
-description: "Schnellstartanleitung für die manuelle Installation von SAP HANA (Einzelinstanz) auf virtuellen Azure-Computern"
+description: Schnellstartanleitung für die manuelle Installation von SAP HANA (Einzelinstanz) auf virtuellen Azure-Computern
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 321a86d6ce355273820617e6de9df2b0816c73fa
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 45c7e1b76f64db142fc8fdca85b1e1fa9aca6a42
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
 ## <a name="introduction"></a>Einführung
@@ -40,7 +40,7 @@ Darüber hinaus wird in dieser Anleitung vorausgesetzt, dass Sie mit Folgendem v
 * Zudem müssen Sie mit folgenden Konzepte und Verfahren vertraut sein:
    * Planen der Bereitstellung von SAP in Azure, einschließlich der Planung für Azure Virtual Network und der Verwendung von Azure Storage. Siehe [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide).
    * Bereitstellungsprinzipien und Möglichkeiten der Bereitstellungen von VMs in Azure. Siehe [Bereitstellung von Azure Virtual Machines für SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide).
-   * Hochverfügbarkeit für SAP NetWeaver ASCS (ABAP SAP Central Services), SCS (SAP Central Services) und ERS (Evaluated Receipt Settlement) in Azure. Siehe [Hohe Verfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide).
+   * Hochverfügbarkeit für SAP NetWeaver ASCS (ABAP SAP Central Services), SCS (SAP Central Services) und ERS (Evaluated Receipt Settlement) in Azure. Siehe [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide).
    * Einzelheiten zum Steigern der Effizienz bei der Nutzung einer Multi-SID-Installation von ASCS/SCS in Azure. Siehe [Erstellen einer SAP NetWeaver Multi-SID-Konfiguration](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
    * Prinzipien der Ausführung von SAP NetWeaver basierend auf Linux-VMs in Azure. Siehe [Ausführen von SAP NetWeaver auf Microsoft Azure SUSE-Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Dieser Leitfaden enthält spezifische Einstellungen für Linux auf Azure-VMs sowie Details zum richtigen Anfügen von Azure-Speicherdatenträgern an Linux-VMs.
 
@@ -251,7 +251,7 @@ Eine Beschreibung des standardmäßigen Dateisystemlayouts von SAP HANA finden S
 
 Beim Installieren von SAP NetWeaver auf einem Standardimage aus dem SLES/SLES für SAP Applications 12-Azure-Katalog wird eine Meldung angezeigt, dass kein Auslagerungsbereich vorhanden ist (siehe untenstehender Screenshot). Um diese Meldung zu schließen, können Sie manuell eine Auslagerungsdatei mithilfe von **dd**, **mkswap** und **swapon** hinzufügen. Um zu erfahren, wie Sie dabei vorgehen, suchen Sie im Abschnitt [Using the YaST Partitioner](https://www.suse.com/documentation/sles-for-sap-12/pdfdoc/sles-for-sap-12-sp1.zip) (Verwenden des YaST-Partitionierers) der SUSE-Dokumentation nach „Adding a Swap File Manually“ (Manuelles Hinzufügen einer Auslagerungsdatei).
 
-Eine weitere Möglichkeit ist das Konfigurieren des Auslagerungsbereichs über den Linux-VM-Agent. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../../linux/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Eine weitere Möglichkeit ist das Konfigurieren des Auslagerungsbereichs über den Linux-VM-Agent. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../../extensions/agent-linux.md).
 
 ![Popupmeldung, die darüber informiert, dass der Auslagerungsbereich nicht ausreicht](./media/hana-get-started/image010.jpg)
 

@@ -3,29 +3,31 @@ title: Erste Schritte mit Azure AD AngularJS | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie eine einseitige AngularJS-Anwendung erstellt wird, die für die Anmeldung in Azure AD integriert wird und über OAuth per Azure AD geschützte APIs aufruft.
 services: active-directory
 documentationcenter: ''
-author: jmprieur
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: f2991054-8146-4718-a5f7-59b892230ad7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: jmprieur
+ms.author: celested
+ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2f78a6b17a512ab54ffab4554ccc0f3f1486f27a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5b99ce605d9ecea6c7d67ab9a2ea679d531787d7
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS – Erste Schritte
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Mit Azure Active Directory (Azure AD) ist es einfach und problemlos möglich, Ihren einseitigen Apps die Anmeldung, die Abmeldung und sichere OAuth-API-Aufrufe hinzuzufügen.  Ihre Apps können Benutzer dann über ihre Windows Server Active Directory-Konten authentifizieren und jede per Azure AD geschützte Web-API nutzen, z. B. die Office 365-APIs oder die Azure-API.
+Mit Azure Active Directory (Azure AD) ist es einfach und problemlos möglich, Ihren einseitigen Apps die Anmeldung, die Abmeldung und sichere OAuth-API-Aufrufe hinzuzufügen. Ihre Apps können Benutzer dann über ihre Windows Server Active Directory-Konten authentifizieren und jede per Azure AD geschützte Web-API nutzen, z. B. die Office 365-APIs oder die Azure-API.
 
 Für JavaScript-Anwendungen, die in einem Browser ausgeführt werden, stellt Azure AD die Active Directory Authentication Library( ADAL) bzw. „adal.js“ bereit. Die einzige Aufgabe von „adal.js“ besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir hier eine AngularJS-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
 
@@ -53,7 +55,7 @@ Sie müssen die App zuerst in Ihrem Azure AD-Mandanten registrieren, um damit Be
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue Webanwendung und/oder Web-API.
   * **Name**: Beschreibt die Anwendung für Benutzer.
   * Die **Anmelde-URL** gibt den Speicherort an, an dem Azure AD Token zurückgibt. Der Standardspeicherort für dieses Beispiel lautet `https://localhost:44326/`.
-6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu.  Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Registerkarte „Anwendung“ kopieren.
+6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Registerkarte „Anwendung“ kopieren.
 7. Für „adal.js“ wird der implizite OAuth-Fluss genutzt, um mit Azure AD zu kommunizieren. Sie müssen den impliziten Fluss für Ihre Anwendung aktivieren:
   1. Klicken Sie auf die Anwendung, und wählen Sie **Manifest**, um den Inline-Manifest-Editor zu öffnen.
   2. Suchen Sie die `oauth2AllowImplicitFlow`-Eigenschaft. Legen Sie den Wert der Eigenschaft auf `true`fest.
@@ -118,11 +120,11 @@ Damit die Back-End-Aufgabenlisten-API der einseitigen Anwendung Token aus dem Br
     ```
 
 ## <a name="summary"></a>Zusammenfassung
-Sie verfügen jetzt über eine sichere einseitige Anwendung, mit der Benutzer angemeldet und per Bearertoken geschützte Anforderungen für die Back-End-API ausgegeben werden können. Wenn ein Benutzer nun auf den Link **TodoList** klickt, erfolgt durch „adal.js“ automatisch eine Umleitung zu Azure AD, um bei Bedarf die Anmeldung auszuführen. Außerdem ordnet „adal.js“ allen AJAX-Anforderungen, die an das Back-End der Anwendung gesendet werden, automatisch ein Zugriffstoken zu.  
+Sie verfügen jetzt über eine sichere einseitige Anwendung, mit der Benutzer angemeldet und per Bearertoken geschützte Anforderungen für die Back-End-API ausgegeben werden können. Wenn ein Benutzer nun auf den Link **TodoList** klickt, erfolgt durch „adal.js“ automatisch eine Umleitung zu Azure AD, um bei Bedarf die Anmeldung auszuführen. Außerdem ordnet „adal.js“ allen AJAX-Anforderungen, die an das Back-End der Anwendung gesendet werden, automatisch ein Zugriffstoken zu. 
 
 Die obigen Angaben beschreiben die erforderlichen Mindestvoraussetzungen zum Erstellen einer einseitigen Anwendung per „adal.js“. Einige andere Features sind jedoch in einseitigen Anwendungen nützlich:
 
-* Zum expliziten Ausgeben von Anmeldungs- und Abmeldungsanforderungen können Sie Funktionen in Ihren Controllern definieren, mit denen „adal.js“ aufgerufen wird.  In `App/Scripts/homeCtrl.js`:
+* Zum expliziten Ausgeben von Anmeldungs- und Abmeldungsanforderungen können Sie Funktionen in Ihren Controllern definieren, mit denen „adal.js“ aufgerufen wird. In `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -143,7 +145,7 @@ Die obigen Angaben beschreiben die erforderlichen Mindestvoraussetzungen zum Ers
     ...
     ```
 
-* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo` -Objekt verwenden, um diese Informationen zu sammeln.  In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
+* In manchen Fällen möchten Sie überprüfen, ob der Benutzer angemeldet ist. Sie können auch das `userInfo` -Objekt verwenden, um diese Informationen zu sammeln. In `index.html` können Sie beispielsweise je nach Authentifizierungsstatus entweder die Schaltfläche **Anmelden** oder **Abmelden** anzeigen:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>

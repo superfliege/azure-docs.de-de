@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über die Predictive Maintenance-Lösung – Azure | Microsoft-Dokumentation"
-description: "Beschreibung der vorkonfigurierten Azure IoT Suite-Lösung für Predictive Maintenance"
-services: 
+title: Übersicht über den Solution Accelerator für Predictive Maintenance – Azure | Microsoft-Dokumentation
+description: Eine Beschreibung des Solution Accelerators für Azure Predictive Maintenance
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b370b3d7-2ce5-4906-9818-3aeedd471ee3
 ms.service: iot-suite
 ms.devlang: na
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: 36cae39b7eaa0aff5f47f6a2511c7a0593f70b26
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 1a2750232f9396d8bc27e4fbb72eacf8790a1c52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="predictive-maintenance-preconfigured-solution-overview"></a>Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf
+# <a name="predictive-maintenance-solution-accelerator-overview"></a>Übersicht über den Solution Accelerator für Predictive Maintenance
 
-Die [vorkonfigurierte Lösung][lnk_preconfigured_solutions] für *Predictive Maintenance* ist eine der vorkonfigurierten Lösungen von [Microsoft Azure IoT Suite][lnk_iot_suite]. Diese Lösung integriert die Erfassung von Gerätetelemetrie in Echtzeit mit einem Vorhersagemodell, das [Azure Machine Learning][lnk-machine-learning] verwendet.
+Der *Solution Accelerator* für [Predictive Maintenance][lnk_preconfigured_solutions] ist einer der [Microsoft Azure IoT][lnk_iot_suite]-Solution Accelerators. Diese Lösung integriert die Erfassung von Gerätetelemetrie in Echtzeit mit einem Vorhersagemodell, das [Azure Machine Learning][lnk-machine-learning] verwendet.
 
-Mit Azure IoT Suite können Sie schnell und einfach Verbindungen mit Objekten herstellen, Objekte überwachen und in Echtzeit Telemetriedaten auf Dashboards und in Visualisierungen analysieren. Die Dashboards und Visualisierungen in der Predictive Maintenance-Lösung liefern neue Erkenntnisse, die zur Effizienzsteigerung und zur Optimierung von Einnahmequellen genutzt werden können.
+Mit Azure IoT-Solution Accelerators können Sie schnell und einfach Verbindungen mit Objekten herstellen, Objekte überwachen und in Echtzeit Telemetriedaten auf Dashboards und in Visualisierungen analysieren. Die Dashboards und Visualisierungen im Solution Accelerator für Predictive Maintenance liefern neue Erkenntnisse, die zur Effizienzsteigerung und zur Optimierung von Einnahmequellen genutzt werden können.
 
 ## <a name="the-scenario"></a>Das Szenario
 
 Fabrikam ist eine regionale Fluggesellschaft, deren Schwerpunkt auf hervorragender Kundenzufriedenheit zu wettbewerbsfähigen Preisen liegt. Eine Ursache von Flugverspätungen sind Wartungsprobleme, und insbesondere die Wartung von Flugzeugtriebwerken ist anspruchsvoll. Fabrikam muss unter allen Umständen einen Triebwerksausfall während des Flugs vermeiden. Daher setzt Fabrikam auf eine regelmäßige Inspektion und planmäßige Wartungsarbeiten. Allerdings nutzen sich nicht alle Flugzeugtriebwerke in gleicher Weise ab. Ein gewisser Anteil der Wartung wird ausgeführt, obwohl er nicht erforderlich ist. Wichtiger noch, es können Umstände auftreten, die ein Flugzeug am Boden festhalten, bis eine Wartung durchgeführt wird. Dies kann besonders teuer sein, wenn sich das Flugzeug an einem Ort befindet, an dem die benötigten Techniker oder Ersatzteile nicht verfügbar sind.
 
-Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Die während des Flugs gesammelten Sensordaten werden von Fabrikam mithilfe der Predictive Maintenance-Lösung erfasst. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks erstellt. Das Modell nutzt eine Korrelation zwischen den Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug die Restnutzungsdauer für jedes Triebwerk berechnen. Das Modell verwendet die während des Flugs von den Triebwerken erfassten Telementriedaten. Fabrikam kann jetzt Vorhersagen zu künftigen Fehlerpunkten treffen, und Wartung und Reparatur im Voraus planen.
+Die Triebwerke der Fabrikam-Flotte sind mit Sensoren ausgestattet, die den Triebwerkszustand während des Flugs erfassen. Die während des Flugs gesammelten Sensordaten werden von Fabrikam mithilfe des Solution Accelerators für Predictive Maintenance erfasst. Nach jahrelanger Erfassung der Betriebs- und Fehlerdaten haben die Datenanalysten von Fabrikam ein Modell zur Vorhersage der Restnutzungsdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks erstellt. Das Modell nutzt eine Korrelation zwischen den Daten von vier der Triebwerksensoren und dem Triebwerkverschleiß, der letztlich zum Ausfall führen kann. Obwohl Fabrikam die reguläre Inspektion aus Sicherheitsgründen fortsetzt, kann das Unternehmen jetzt anhand der Modelle nach jedem Flug die Restnutzungsdauer für jedes Triebwerk berechnen. Das Modell verwendet die während des Flugs von den Triebwerken erfassten Telementriedaten. Fabrikam kann jetzt Vorhersagen zu künftigen Fehlerpunkten treffen, und Wartung und Reparatur im Voraus planen.
 
 > [!NOTE]
 > Das Lösungsmodell verwendet die Daten zur tatsächlichen Maschinennutzung.
@@ -48,19 +48,19 @@ Bestandskontrollmanager erhalten Wartungspläne, damit Sie den Bestellvorgang un
 
 Diese Maßnahmen ermöglichen es Fabrikam, die Standzeiten der Flugzeuge zu minimieren und die Betriebskosten zu senken, ohne die Sicherheit von Passagieren und Crew zu beeinträchtigen.
 
-Informationen dazu, wie [Azure IoT Suite][lnk_iot_suite] die vom Kunden benötigten Fähigkeiten bereitstellt, um das Potenzial von Predictive Maintenance zu erschließen, finden Sie in dieser [Infografik][lnk_infographic].
+Informationen dazu, wie [Azure IoT-Solution Accelerators][lnk_iot_suite] die vom Kunden benötigten Fähigkeiten bereitstellen, um das Potenzial von Predictive Maintenance zu erschließen, finden Sie in dieser [Infografik][lnk_infographic].
 
-## <a name="how-the-predictive-maintenance-solution-is-built"></a>Aufbau der Lösung für vorhersagbaren Wartungsbedarf
+## <a name="how-the-predictive-maintenance-solution-accelerator-is-built"></a>Aufbau des Solution Accelerators für Predictive Maintenance
 
-Die Lösung nutzt ein vorhandenes Azure Machine Learning-Modell, das als Vorlage zur Verfügung steht, um die Anwendung dieser Funktionen auf Gerätetelemetriedaten zu veranschaulichen, die über IoT Suite-Dienste erfasst wurden. Microsoft hat anhand öffentlich zugänglicher Daten <sup>\[1\]</sup> ein [Regressionsmodell][lnk_regression_model] eines Flugzeugtriebwerks erstellt und eine schrittweise Anleitung zur Verwendung des Modells veröffentlicht.
+Die Lösung nutzt ein vorhandenes Azure Machine Learning-Modell, das als Vorlage zur Verfügung steht, um die Anwendung dieser Funktionen auf Gerätetelemetriedaten zu veranschaulichen, die über IoT-Solution Accelerator-Dienste erfasst wurden. Microsoft hat anhand öffentlich zugänglicher Daten <sup>\[1\]</sup> ein [Regressionsmodell][lnk_regression_model] eines Flugzeugtriebwerks erstellt und eine schrittweise Anleitung zur Verwendung des Modells veröffentlicht.
 
-Die Azure IoT-Lösung für Predictive Maintenance verwendet das mit dieser Vorlage erstellte Regressionsmodell. Das Modell wird in Ihrem Azure-Abonnement bereitgestellt und über eine automatisch erstellte API verfügbar gemacht. Die Lösung umfasst eine Teilmenge der Testdaten mit vier (von insgesamt 100) Triebwerken und vier (von insgesamt 21) Sensordatenströmen. Diese Daten sind ausreichend, um ein genaues Ergebnis aus dem trainierten Modell bereitzustellen.
+Der Azure IoT-Solution Accelerator für Predictive Maintenance verwendet das mit dieser Vorlage erstellte Regressionsmodell. Das Modell wird in Ihrem Azure-Abonnement bereitgestellt und über eine automatisch erstellte API verfügbar gemacht. Die Lösung umfasst eine Teilmenge der Testdaten mit vier (von insgesamt 100) Triebwerken und vier (von insgesamt 21) Sensordatenströmen. Diese Daten sind ausreichend, um ein genaues Ergebnis aus dem trainierten Modell bereitzustellen.
 
 *\[1\] A. Saxena und K. Goebel (2008). „Turbofan Engine Degradation Simulation Data Set“, NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="get-started-with-predictive-maintenance"></a>Erste Schritte mit Predictive Maintenance
 
-In diesem Tutorial erfahren Sie, wie Sie die Lösung für Predictive Maintenance bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der Lösung für Predictive Maintenance kennen. Sie können auf einen Großteil dieser Funktionen über das Lösungsdashboard zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird.
+In diesem Tutorial erfahren Sie, wie Sie den Solution Accelerator für Predictive Maintenance bereitstellen. Außerdem lernen Sie die grundlegenden Features des Solution Accelerators für Predictive Maintenance kennen. Sie können auf einen Großteil dieser Features über das Lösungsdashboard zugreifen, das zusammen mit dem Solution Accelerator bereitgestellt wird.
 
 Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
@@ -68,8 +68,8 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 > Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
 
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei [azureiotsuite.com][lnk-azureiotsuite] an, und klicken Sie auf **+**, um eine Lösung zu erstellen.
-1. Klicken Sie auf der Kachel **Predictive maintenance** auf **Auswählen**.
-1. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Lösung für Predictive Maintenance ein.
+1. Klicken Sie auf der Kachel **Predictive Maintenance** auf **Auswählen**.
+1. Geben Sie einen **Lösungsnamen** für Ihren Solution Accelerator für Predictive Maintenance ein.
 1. Wählen Sie die gewünschten Angaben für **Region** und **Abonnement**, um die Lösung bereitzustellen.
 1. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Das dauert in der Regel einige Minuten.
 
@@ -81,7 +81,7 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 1. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen. Aus diesem Bereich können Sie das Lösungsdashboard starten und auf den Machine Learning-Arbeitsbereich zugreifen.
 
 > [!NOTE]
-> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
+> Falls beim Bereitstellen des Solution Accelerators Probleme auftreten, helfen Ihnen die Informationen unter [Berechtigungen für die Website azureiotsuite.com][lnk-permissions] und die [häufig gestellten Fragen][lnk-faq] weiter. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
 
 Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot) zu.
 
@@ -102,7 +102,7 @@ Navigieren Sie im Azure-Portal zur Ressourcengruppe mit dem von Ihnen gewählten
 
 ![][img-resource-group]
 
-Beim Bereitstellen der vorkonfigurierten Lösung erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren. Wenn sich die Lösung im Zustand **Bereit** befindet, steht auf der Seite eine Kachel zur Verfügung.
+Beim Bereitstellen des Solution Accelerators erhalten Sie eine E-Mail mit einem Link zum Machine Learning-Arbeitsbereich. Sie können auch über die Seite [azureiotsuite.com][lnk-azureiotsuite] Ihrer bereitgestellten Lösung zum Machine Learning-Arbeitsbereich navigieren. Wenn sich die Lösung im Zustand **Bereit** befindet, steht auf der Seite eine Kachel zur Verfügung.
 
 ![][img-machine-learning]
 
@@ -128,11 +128,11 @@ Sie können die Simulation jederzeit stoppen. Wenn Sie auf **Simulation starten*
 
 Informationen dazu, wie Azure IoT Szenarios mit vorbeugender Wartung ermöglicht, finden Sie unter [Capture value from the Internet of Things][lnk_capture_value] (Nutzen der Vorteile des Internets der Dinge).
 
-Durchlaufen Sie eine [exemplarische Vorgehensweise][lnk-predictive-walkthrough] für die Predictive Maintenance-Lösung.
+Absolvieren Sie eine [exemplarische Vorgehensweise][lnk-predictive-walkthrough] für den Solution Accelerator für Predictive Maintenance.
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
+* [Häufig gestellte Fragen zu IoT-Solution Accelerators][lnk-faq]
 * [Sicherheit im Internet der Dinge von Anfang an][lnk-security-groundup]
 
 [img-resource-group]: media/iot-suite-predictive-overview/resource-group.png
@@ -143,7 +143,7 @@ Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT
 
 [lnk-powerbi]: https://www.github.com/Microsoft/PowerBI-visuals
 [lnk-predictive-walkthrough]: iot-suite-predictive-walkthrough.md
-[lnk_preconfigured_solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk_preconfigured_solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk_iot_suite]: iot-suite-options.md
 [lnk_infographic]: https://www.microsoft.com/server-cloud/predictivemaintenance/Index.html
 [lnk_regression_model]: http://gallery.cortanaanalytics.com/Collection/Predictive-Maintenance-Template-3

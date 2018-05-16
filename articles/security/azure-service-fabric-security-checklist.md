@@ -1,12 +1,12 @@
 ---
-title: "Checkliste für die Azure Service Fabric-Sicherheit | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet einen Satz von Checklisten für die Azure Service Fabric-Sicherheit."
+title: Checkliste für die Azure Service Fabric-Sicherheit | Microsoft-Dokumentation
+description: Dieser Artikel bietet einen Satz von Checklisten für die Azure Service Fabric-Sicherheit.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 526f10bab30b7d0fae796e47f5a27a58428b9a3b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ef404b106d600f5cb25a46319d75c8978148b466
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Checkliste für die Azure Service Fabric-Sicherheit
 Dieser Artikel enthält eine einfach zu verwendende Checkliste, die Sie zum Sichern Ihrer Azure Service Fabric-Umgebung nutzen können.
@@ -30,7 +30,7 @@ Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, 
 Verwenden Sie die folgende Checkliste, um sicherzustellen, dass Sie keine wichtigen Probleme bei der Verwaltung und Konfiguration einer sicheren Azure Service Fabric-Lösung übersehen haben.
 
 
-|Checklistenkategorie| Beschreibung |
+|Checklistenkategorie| BESCHREIBUNG |
 | ------------ | -------- |
 |[Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles) | <ul><li>Zugriffssteuerung ermöglicht es dem Clusteradministrator, den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einzuschränken, wodurch die Sicherheit des Clusters erhöht wird.</li><li>Administratoren haben vollständigen Zugriff auf Verwaltungsfunktionen (einschließlich Lese-/Schreibzugriff). </li><li> Benutzer haben standardmäßig nur Lesezugriff auf Verwaltungsfunktionen (z. B. Abfragefunktionen) sowie die Möglichkeit, Anwendungen und Dienste aufzulösen.</li></ul>|
 |[X.509-Zertifikate und Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) | <ul><li>[Zertifikate](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates), die in Clustern mit Produktionsworkloads verwendet werden, müssen entweder mit einem korrekt konfigurierten Windows Server-Zertifikatsdienst erstellt oder über eine genehmigte [Zertifizierungsstelle](https://en.wikipedia.org/wiki/Certificate_authority) bezogen werden.</li><li>Verwenden Sie in der Produktion niemals [temporäre oder Testzertifikate](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-create-temporary-certificates-for-use-during-development), die mit Tools wie [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968.aspx) erstellt wurden. </li><li>Sie können ein [selbstsigniertes Zertifikat](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) nur für Testcluster verwenden, aber nicht in der Produktion.</li></ul>|
@@ -43,7 +43,7 @@ Verwenden Sie die folgende Checkliste, um sicherzustellen, dass Sie keine wichti
 |ClientCertificateThumbprints| <ul><li>Dies ist eine Gruppe von Zertifikaten, die auf den authentifizierten Clients installiert werden sollen. </li></ul>|
 |ClientCertificateCommonNames| <ul><li>Legen Sie den allgemeinen Namen des ersten Clientzertifikats für „CertificateCommonName“ fest. „CertificateIssuerThumbprint“ ist der Fingerabdruck für den Aussteller dieses Zertifikats. </li></ul>|
 |ReverseProxyCertificate| <ul><li>Hierbei handelt es sich um ein optionales Zertifikat, das zum Schutz des [Reverseproxys](https://docs.microsoft.com/en-in/azure/service-fabric/service-fabric-reverseproxy) angegeben werden kann. </li></ul>|
-|Schlüsseltresor| <ul><li>Dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.  </li></ul>|
+|Key Vault| <ul><li>Dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure.  </li></ul>|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,22 +1,22 @@
 ---
 title: Erstellen einer Azure API Management-Instanz | Microsoft-Dokumentation
-description: "Führen Sie die Schritte dieses Tutorials zum Erstellen einer neuen Azure API Management-Instanz aus."
+description: Führen Sie die Schritte dieses Tutorials zum Erstellen einer neuen Azure API Management-Instanz aus.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7fb4182c0b5149a9006a30ad34782ad968e16758
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -30,7 +30,7 @@ In dieser Schnellstartanleitung werden die Schritte zum Erstellen einer neuen AP
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-new-service"></a>Erstellen eines neuen Diensts
 

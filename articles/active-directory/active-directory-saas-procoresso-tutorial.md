@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: c6bae8e24f252a535571308467b428832b542e48
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4cba8aa046b84fe63b17a662990824b1823c1572
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Tutorial: Azure Active Directory-Integration mit Procore SSO
 
@@ -30,14 +30,6 @@ Die Integration von Procore SSO in Azure AD bietet die folgenden Vorteile:
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
-
-<!--## Overview
-
-To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Procore SSO aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -71,11 +63,11 @@ Zum Konfigurieren der Integration von Procore SSO in Azure AD müssen Sie Proco
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie **Procore SSO** im Suchfeld ein.
 
@@ -94,10 +86,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei Procore SSO über Azure AD müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Procore SSO-Testbenutzers](#creating-a-procore-sso-test-user)** – um eine Entsprechung von Britta Simon in Procore SSO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -108,37 +100,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Procore SSO** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um das einmalige Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
 3. Im Abschnitt **Domäne und URLs für Procore SSO** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Procore SSO-Konfiguration** auf **Procore SSO konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
 
 7. Um das einmalige Anmelden seitens **Procore SSO** zu konfigurieren, melden Sie sich als Administrator bei Ihrer Procore-Unternehmenswebsite an.
 
 8. Klicken Sie auf der Dropdownliste der Toolbox auf **Admin**, um die Seite mit den Einstellungen für das einmalige Anmelden zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
 
 9. Fügen Sie die Werte wie unten beschrieben in die Felder ein.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
 
     a. Fügen Sie im Feld **Single Sign On Issuer URL** die SAML-Entitäts-ID ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -192,7 +184,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-procore-sso-test-user"></a>Erstellen eines Procore SSO-Testbenutzers
 
@@ -202,11 +194,11 @@ Führen Sie die folgenden Schritte aus, um einen Procore-Testbenutzer auf der Se
 
 2. Klicken Sie in der Dropdownliste der Toolbox auf **Directory**, um die Verzeichnisseite für Ihr Unternehmen zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
 3. Klicken Sie auf die Option **Add a Person**, um das Formular zu öffnen, und geben Sie die folgenden Optionen ein:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
     a. Geben Sie im Textfeld **First Name** den Vornamen des Benutzers ein, z.B. **Britta**.
 
@@ -216,15 +208,15 @@ Führen Sie die folgenden Schritte aus, um einen Procore-Testbenutzer auf der Se
 
     d. Wählen Sie für **Permission Template** die Option **Apply Permission Template Later** aus.
 
-    e. Klicken Sie auf **Erstellen**.
+    e. Klicken Sie auf **Create**.
 
 4. Prüfen Sie die Informationen für den neu hinzugefügten Kontakt, und aktualisieren Sie sie ggf.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
 
 5. Klicken Sie auf **Save and Send Invitiation** (wenn eine Einladung per E-Mail erforderlich ist) oder auf **Save** (zum direkten Speichern), um die Benutzerregistrierung abzuschließen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -240,7 +232,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Procore SSO**aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -260,7 +252,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie die SSO-Einstellungen testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://msdn.microsoft.com/library/dn308586). Wenn Sie im Zugriffsbereich auf die Kachel „Procore SSO“ klicken, sollten Sie automatisch bei Ihrer Procore SSO-Anwendung angemeldet werden.
+Wenn Sie die Einstellungen für einmaliges Anmelden testen möchten, öffnen Sie den Zugriffsbereich. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://msdn.microsoft.com/library/dn308586). Wenn Sie im Zugriffsbereich auf die Kachel „Procore SSO“ klicken, sollten Sie automatisch bei Ihrer Procore SSO-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

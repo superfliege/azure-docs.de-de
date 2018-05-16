@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 01a6fefc10dfd83997acc290dbd1c85ba86a4799
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Verwalten von Instanzen in Durable Functions (Azure Functions)
 
@@ -50,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-Für Nicht-.NET-Sprachen kann die Funktionsausgabebindung auch zum Starten neuer Instanzen verwendet werden. In diesem Fall können alle mit JSON serialisierbaren Daten verwendet werden, die die oben genannten drei Parameter als Felder enthalten. Betrachten Sie beispielsweise die folgende Node.js-Funktion:
+Für Nicht-.NET-Sprachen kann die Funktionsausgabebindung auch zum Starten neuer Instanzen verwendet werden. In diesem Fall können alle mit JSON serialisierbaren Daten verwendet werden, die die oben genannten drei Parameter als Felder enthalten. Betrachten Sie beispielsweise die folgende JavaScript-Funktion:
 
 ```js
 module.exports = function (context, input) {
@@ -77,6 +77,7 @@ Die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/a
 * **CreatedTime**: der Zeitpunkt, zu dem die Ausführung der Orchestratorfunktion gestartet wurde.
 * **LastUpdatedTime**: der Zeitpunkt des letzten Prüfpunkts der Orchestrierung.
 * **Input**: die Eingabe der Funktion als JSON-Wert.
+* **CustomStatus**: Benutzerdefinierter Orchestrierungsstatus in JSON-Format 
 * **Output**: die Ausgabe der Funktion als JSON-Wert (wenn die Funktion abgeschlossen wurde). Wenn ein Fehler bei der Orchestratorfunktion auftritt, enthält diese Eigenschaft die Fehlerdetails. Wenn die Orchestratorfunktion beendet wurde, enthält diese Eigenschaft den angegebenen Grund für die Beendigung (sofern vorhanden).
 * **RuntimeStatus**: Einer der folgenden Werte:
     * **Running**: Die Instanz wurde gestartet.
@@ -99,9 +100,6 @@ public static async Task Run(
 }
 ```
 
-> [!NOTE]
-> Instanzabfragen werden zurzeit nur für C#-Orchestratorfunktionen unterstützt.
-
 ## <a name="terminating-instances"></a>Beenden von Instanzen
 
 Eine aktive Orchestrierungsinstanz kann mithilfe der [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_)-Methode der [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)-Klasse beendet werden. Die beiden Parameter sind eine `instanceId` und eine `reason`-Zeichenfolge, die in Protokolle und den Instanzenstatus geschrieben werden. Die Ausführung einer beendeten Instanz endet, sobald sie den nächsten `await`-Punkt erreicht, oder sofort, wenn sie sich bereits an einem `await`-Punkt befindet. 
@@ -116,9 +114,6 @@ public static Task Run(
     return client.TerminateAsync(instanceId, reason);
 }
 ```
-
-> [!NOTE]
-> Die Instanzbeendigung wird zurzeit nur für C#-Orchestratorfunktionen unterstützt.
 
 > [!NOTE]
 > Die Instanzbeendigung wird momentan nicht weitergegeben. Aktivitätsfunktionen und untergeordnete Orchestrierungen werden bis zum Ende ausgeführt, auch wenn die Orchestrierungsinstanz, durch die sie aufgerufen wurden, beendet wurde.
@@ -145,9 +140,6 @@ public static Task Run(
     return client.RaiseEventAsync(instanceId, "MyEvent", eventData);
 }
 ```
-
-> [!NOTE]
-> Das Auslösen von Ereignissen wird derzeit nur für C#-Orchestratorfunktionen unterstützt.
 
 > [!WARNING]
 > Wenn keine Orchestrierungsinstanz mit der angegebenen *Instanz-ID* vorhanden ist, oder die Instanz nicht auf den angegebenen *Ereignisnamen* wartet, wird die Ereignisnachricht verworfen. Weitere Informationen zu diesem Verhalten finden Sie unter [Expected behavior when unexpected event is received?](https://github.com/Azure/azure-functions-durable-extension/issues/29) (Erwartetes Verhalten, wenn ein unerwartetes Ereignis empfangen wird?).

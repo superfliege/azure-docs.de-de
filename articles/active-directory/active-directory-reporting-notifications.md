@@ -1,11 +1,11 @@
 ---
 title: Benachrichtigungen zu Azure Active Directory-Berichten
-description: "Verwenden von Benachrichtigungen zu Azure Active Directory-Berichten zu verdächtigen Anmeldungen."
+description: Verwenden von Benachrichtigungen zu Azure Active Directory-Berichten zu verdächtigen Anmeldungen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ae6d4b0e-5931-4cb3-98bf-9be91b381c92
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 01/03/2018
 ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 99783eebb76363ca3fa96c6777906239f3de1131
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c279b923ed4e63d810861c579dd54b3a2b7f415e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Benachrichtigungen zu Azure Active Directory-Berichten
 ## <a name="what-reports-generate-email-notifications"></a>Welche Berichte generieren E-Mail-Benachrichtigungen?
@@ -39,7 +39,7 @@ Die E-Mail wird gesendet, wenn zehn neue irreguläre Anmeldeaktivitäten in den 
 Wenn Sie auf den Link klicken, werden Sie zur Berichtsseite im Azure-Portal weitergeleitet. Für den Zugriff auf den Bericht müssen Sie die beiden folgenden Rollen bekleiden:
 
 * Administrator oder Co-Administrator Ihres Azure-Abonnements
-* Globaler Administrator im Verzeichnis mit Active Directory Premium-Lizenz Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md).
+* Globaler Administrator im Verzeichnis mit Active Directory Premium-Lizenz Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-whatis.md).
 
 ## <a name="can-i-turn-off-these-emails"></a>Kann ich diese E-Mails deaktivieren?
 Ja, zum Deaktivieren von Benachrichtigungen in Zusammenhang mit anomalen Anmeldungen klicken Sie im Azure-Portal auf **Konfigurieren** und wählen **Deaktiviert** im Abschnitt **Benachrichtigungen** aus.

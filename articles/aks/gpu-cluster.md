@@ -1,6 +1,6 @@
 ---
-title: GPUs in Azure Container Service (AKS)
-description: Verwenden von GPUs in Azure Container Service (AKS)
+title: GPUs in Azure Kubernetes Service (AKS)
+description: Verwenden von GPUs in Azure Kubernetes Service (AKS)
 services: container-service
 author: lachie83
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 6c30c966ad88f904ee652d88abd1717819077d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1e07845591583c7159958d4e2eb7eeb2f126b75f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-gpus-on-aks"></a>Verwenden von GPUs in AKS
 
@@ -22,7 +22,7 @@ AKS unterstützt die Erstellung GPU-fähiger Knotenpools. Azure bietet derzeit v
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
 GPUs werden in der Regel für rechenintensive Workloads (also etwa für grafikintensive und visualisierungsorientierte Workloads) benötigt. Informationen zur Bestimmung der passenden VM-Größe für Ihre Workload finden Sie in [diesem Dokument](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu).
-Wir empfehlen eine Mindestgröße von `Standard_NC6` für Azure Container Service-Knoten (ACS).
+Wir empfehlen eine Mindestgröße von `Standard_NC6` für Azure Kubernetes Service-Knoten (AKS).
 
 > [!NOTE]
 > GPU-fähige virtuelle Computer verfügen über spezielle Hardware, für die höhere Preise gelten und die möglicherweise nicht in allen Regionen verfügbar ist. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/) sowie auf der [Website zur regionalen Verfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/).
@@ -50,7 +50,7 @@ az aks get-credentials --resource-group myGPUCluster --name myGPUCluster
 
 ## <a name="confirm-gpus-are-schedulable"></a>Vergewissern, dass GPUs planbar sind
 
-Vergewissern Sie sich durch Ausführen der folgenden Befehle, dass die GPUs über Kubernetes planbar sind. 
+Vergewissern Sie sich durch Ausführen der folgenden Befehle, dass die GPUs über Kubernetes planbar sind.
 
 Rufen Sie die aktuelle Knotenliste ab.
 
@@ -165,7 +165,7 @@ spec:
       volumes:
         - name: nvidia
           hostPath:
-            path: /usr/local/nvidia         
+            path: /usr/local/nvidia
 ```
 
 Führen Sie den Auftrag mithilfe des Befehls [kubectl create][kubectl-create] aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte.
@@ -264,7 +264,7 @@ Accuracy at step 490: 0.9575
 Adding run metadata for 499
 ```
 
-## <a name="cleanup"></a>Bereinigung
+## <a name="cleanup"></a>Cleanup
 Entfernen Sie die zugeordneten Kubernetes-Objekte, die in diesem Schritt erstellt wurden.
 ```
 $ kubectl delete jobs samples-tf-mnist-demo

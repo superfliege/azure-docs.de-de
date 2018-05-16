@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: a8e4ac763b9a16210d62fc080aaf8917c1eefc33
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -31,8 +31,8 @@ ms.lasthandoff: 04/16/2018
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> 
-> 
+> * [BulkExecutor: .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [BulkExecutor: Java](sql-api-sdk-bulk-executor-java.md)
 
 Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL-API dahingehend, dass es asynchrone Vorgänge mit Unterstützung der [Netty-Bibliothek](http://netty.io/) bereitstellt. Das bereits vorhandene [Java SDK für die SQL-API](sql-api-sdk-java.md) unterstützt asynchrone Vorgänge nicht. 
 
@@ -55,13 +55,23 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Rückstauunterstützung in Abfrage hinzugefügt
+* Unterstützung für die ID des Partitionsschlüsselbereichs in der Abfrage hinzugefügt
+* Korrektur, um größeres Fortsetzungstoken im Anforderungsheader zu ermöglichen (Fehlerbehebung: GitHub Nr. 24).
+* Netty-Abhängigkeit aktualisiert auf 4.1.22. Sicherstellung, dass JVM nach Abschluss des Hauptthreads herunterfährt.
+* Korrektur, um beim Lesen der Masterressourcen die Übergabe des Sitzungstokens zu verhindern
+* Weitere Beispiele hinzugefügt
+* Weitere Benchmarktestszenarien hinzugefügt
+* Java-Headerdateien zur ordnungsgemäßen Erstellung von Java-Dokumenten korrigiert
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Allgemein verfügbares SDK mit End-to-End-Unterstützung für nicht blockierende EA-Vorgänge mit der [Netty-Bibliothek](http://netty.io/) im Gatewaymodus 
 
 ## <a name="release-and-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
-Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher empfiehlt es sich, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
+Neue Features, Funktionen und Optimierungen werden nur zum aktuellen SDK hinzugefügt. Daher wird empfohlen, stets so früh wie möglich ein Upgrade auf die aktuelle SDK-Version auszuführen.
 
 Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 
@@ -69,6 +79,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |20. April 2018|--- |
 | [1.0.0](#1.0.0) |27. Februar 2018|--- |
 
 ## <a name="faq"></a>Häufig gestellte Fragen

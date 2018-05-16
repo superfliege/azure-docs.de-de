@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 61a454ffb36865d4e1bc6b7ae5622fa4d4e85fd2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -63,6 +63,8 @@ So erstellen Sie eine ILB-ASE:
 
 4. Wählen Sie ein VNET aus, oder erstellen Sie eines.
 
+    * Wenn Sie ein neues VNET erstellen, können Sie einen Namen und Speicherort angeben. Wenn Sie vorhaben, Linux-Apps in dieser ASE zu hosten, werden derzeit nur diese sechs Regionen unterstützt: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
+
 5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/25` mit 128 Adressen zur Verarbeitung einer ASE in maximaler Größe. Die kleinste Größe, die Sie auswählen können, beträgt `/28`. Diese Größe kann je nach den Infrastrukturanforderungen auf maximal drei Instanzen skaliert werden.
 
     * Skalieren Sie in Ihren App Service-Plänen über die maximale Anzahl von 100 Instanzen hinaus.
@@ -106,7 +108,7 @@ Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Do
 
 Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App normalerweise in einer ASE erstellen würden.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web** oder **Mobil** oder **API-App**.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
 
 2. Geben Sie den Namen der App ein.
 
@@ -114,9 +116,13 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 4. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
 
-5. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
+5. Wählen Sie Ihr Betriebssystem aus. 
 
-6. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
+    * Wenn Sie eine Linux-App mit einem benutzerdefinierten Docker-Container erstellen möchten, können Sie gemäß der hier aufgeführten Anweisungen Ihren eigenen Container verwenden. 
+
+6. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
+
+7. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
 
     ![Erstellung eines App Service-Plans][2]
 

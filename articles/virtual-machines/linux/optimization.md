@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 5b0d7eb0767bb18cd74c545dc386aa16be487dae
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
@@ -132,6 +132,6 @@ Denken Sie daran: Wie bei allen Optimierungen müssen auch hier vor und nach jed
 Einige nützliche Links zu weiteren Ressourcen: 
 
 * [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](premium-storage.md)
-* [Benutzerhandbuch für Azure Linux-Agent](agent-user-guide.md)
+* [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md)
 * [Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern](classic/optimize-mysql.md)
 * [Konfigurieren von Software-RAID unter Linux](configure-raid.md)

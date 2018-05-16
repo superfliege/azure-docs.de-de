@@ -14,18 +14,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3a83ed5f7dba3e4d68204a2c9dffb4459cadfef9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 4dd4bbb9c382b772f8f60b259844e7e471ec73e3
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Installieren der Erweiterung Durable Functions und Beispiele (Azure Functions)
 
 Die Erweiterung [Durable Functions ](durable-functions-overview.md) für Azure Functions finden Sie im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). In diesem Artikel werden das Installieren des Pakets und eine Reihe von Beispielen für die folgenden Entwicklungsumgebungen gezeigt:
 
-* Visual Studio 2017 (empfohlen) 
-* Visual Studio Code
+* Visual Studio 2017 (für C# empfohlen) 
+* Visual Studio Code (für JavaScript empfohlen)
 * Azure-Portal
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017
@@ -36,7 +36,7 @@ Visual Studio bietet derzeit die beste Lösung für das Entwickeln von Apps, die
 
 * Installieren Sie die [neueste Version von Visual Studio](https://www.visualstudio.com/downloads/) (mindestens Version 15.3). Fügen Sie die Workload **Azure-Entwicklung** in Ihre Setupoptionen ein.
 
-### <a name="start-with-sample-functions"></a>Starten mit Beispielfunktionen
+### <a name="start-with-sample-functions"></a>Starten mit Beispielfunktionen 
 
 1. Laden Sie die [ZIP-Datei der Beispiel-App für Visual Studio](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip) herunter. Sie müssen den NuGet-Verweis nicht hinzufügen, da das Beispielprojekt ihn bereits besitzt.
 2. Installieren Sie den [Azure-Speicheremulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) Version 5.2 oder höher, und führen Sie ihn aus. Alternativ können Sie die Datei *local.appsettings.json* mit echten Azure Storage-Verbindungszeichenfolgen aktualisieren.
@@ -48,7 +48,7 @@ Visual Studio bietet derzeit die beste Lösung für das Entwickeln von Apps, die
 Befolgen Sie die gleichen Anweisungen wie für den Start mit dem Beispiel, aber führen Sie die folgenden Schritte aus, statt die *ZIP*-Datei herunterzuladen:
 
 1. Erstellen Sie ein Funktionen-App-Projekt.
-2. Suchen Sie mit *NuGet-Pakete verwalten* nach der folgenden NuGet-Paketreferenz, und fügen Sie sie dem Projekt hinzu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.1.0-beta2 (Aktivieren Sie *Vorabversion einschließen*, um nach diesem Paket zu suchen.)
+2. Suchen Sie mit *NuGet-Pakete verwalten* nach der folgenden NuGet-Paketreferenz, und fügen Sie sie dem Projekt hinzu: Microsoft.Azure.WebJobs.Extensions.DurableTask v1.4.0. (Aktivieren Sie *Vorabversion einschließen*, um nach diesem Paket zu suchen.)
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -63,24 +63,51 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
     >[!IMPORTANT]
     > Wenn Sie bereits über die plattformübergreifenden Tools von Azure Functions verfügen, aktualisieren Sie diese auf die neueste verfügbare Version.
 
-*  Installieren Sie den [Azure-Speicheremulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) Version 5.2 oder höher, und führen Sie ihn aus. Alternativ können Sie die Datei *local.appsettings.json* mit einer echten Azure Storage-Verbindung aktualisieren. 
+    >[!IMPORTANT]
+    >Robuste Funktionen in JavaScript erfordern Version 2.x der Azure Functions Core Tools.
+
+*  Installieren Sie auf einem Windows-Computer den [Azure-Speicheremulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) Version 5.2 oder höher, und führen Sie ihn aus. Alternativ können Sie die Datei *local.appsettings.json* mit einer echten Azure Storage-Verbindung aktualisieren. 
 
 
 ### <a name="start-with-sample-functions"></a>Starten mit Beispielfunktionen
+
+#### <a name="c"></a>C#
 
 1. Klonen Sie das [Durable Functions-Repository](https://github.com/Azure/azure-functions-durable-extension.git).
 2. Navigieren Sie auf dem Computer zum [Ordner mit den C#-Skriptbeispielen](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx). 
 3. Installieren Sie Azure Functions Durable Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.2.0-beta3
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
     ```
 4. Installieren Sie Azure Functions Twilio Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta4
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta5
     ```
 5. Führen Sie Azure Storage Emulator aus, oder aktualisieren Sie die Datei *local.appsettings.json* mit echten Azure Storage-Verbindungszeichenfolgen.
+6. Öffnen Sie das Projekt in Visual Studio Code. 
+7. Um Anweisungen zum Ausführen des Beispiels zu erhalten, beginnen Sie mit [Function chaining in Durable Functions – Hello sequence sample](durable-functions-sequence.md) (Funktionsverkettung in Durable Functions – „Hello“-Sequenzbeispiel). Das Beispiel kann lokal ausgeführt oder in Azure veröffentlicht werden.
+8. Starten Sie das Projekt, indem Sie über die Eingabeaufforderung bzw. das Terminalfenster den folgenden Befehl ausführen:
+    ```bash
+    func host start
+    ```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
+
+1. Klonen Sie das [Durable Functions-Repository](https://github.com/Azure/azure-functions-durable-extension.git).
+2. Navigieren Sie auf dem Computer zum [Ordner mit den JavaScript-Beispielen](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript). 
+3. Installieren Sie Azure Functions Durable Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
+
+    ```bash
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
+    ```
+4. Stellen Sie die npm-Pakete wieder her, indem Sie Folgendes über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
+    
+    ```bash
+    npm install
+    ``` 
+5. Aktualisieren Sie die Datei *local.appsettings.json* mit der echten Azure Storage-Verbindungszeichenfolge.
 6. Öffnen Sie das Projekt in Visual Studio Code. 
 7. Um Anweisungen zum Ausführen des Beispiels zu erhalten, beginnen Sie mit [Function chaining in Durable Functions – Hello sequence sample](durable-functions-sequence.md) (Funktionsverkettung in Durable Functions – „Hello“-Sequenzbeispiel). Das Beispiel kann lokal ausgeführt oder in Azure veröffentlicht werden.
 8. Starten Sie das Projekt, indem Sie über die Eingabeaufforderung bzw. das Terminalfenster den folgenden Befehl ausführen:
@@ -94,7 +121,7 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
 2. Installieren Sie Azure Functions Durable Extension, indem Sie die folgenden Schritte über eine Eingabeaufforderung bzw. in einem Terminalfenster ausführen:
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.1.0-beta2
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.4.0
     ```
 3. Erstellen Sie ein Funktions-App-Projekt, indem Sie den folgenden Befehl ausführen:
 
@@ -119,6 +146,9 @@ Visual Studio Code bietet eine lokale Entwicklungsumgebung, die alle wichtigen P
 ## <a name="azure-portal"></a>Azure-Portal
 
 Falls gewünscht, können Sie das Azure-Portal für die Entwicklung von Durable Functions verwenden.
+
+   > [!NOTE]
+   > Robuste Funktionen in JavaScript sind noch nicht im Portal verfügbar.
 
 ### <a name="create-an-orchestrator-function"></a>Erstellen einer Orchestratorfunktion
 

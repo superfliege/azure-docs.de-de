@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 50ce34cb3289e346e7b637d917730dac8e8a097b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Nutzung des Bewegungssensors zum Abrufen einer Twitter-Nachricht mit Azure Functions
 
@@ -33,7 +33,7 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](https://docs
 
 Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich mit einer der beiden folgenden Methoden registrieren:
 
-* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/en-us/free/) aktivieren
+* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/free/) aktivieren
 * [Azure-Gutschrift](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) beanspruchen, wenn Sie MSDN- oder Visual Studio-Abonnent sind
 
 ## <a name="open-the-project-folder"></a>Öffnen des Projektordners
@@ -44,10 +44,6 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 - Starten Sie Visual Studio Code.
 - Verbinden Sie das DevKit mit Ihrem Computer.
 
-VS Code sucht Ihr DevKit automatisch und zeigt eine Einführungsseite an:
-
-![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_start.png)
-
 > [!NOTE]
 > Beim Start von VS Code wird möglicherweise eine Fehlermeldung angezeigt, dass die Arduino-IDE oder das zugehörige Boardpaket nicht gefunden werden kann. Wenn dieser Fehler auftritt, schließen Sie VS Code und starten Sie die Arduino-IDE erneut. VS Code sollte nun den Arduino-IDE-Pfad ordnungsgemäß erkennen.
 
@@ -57,7 +53,8 @@ Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE**, wechseln Sie zu **Beis
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-Falls Sie den Bereich schließen sollten, können Sie ihn erneut öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
+> [!NOTE]
+> Sie können auch ein Beispiel über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ## <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
@@ -68,7 +65,7 @@ Im Visual Studio Code-Terminal werden Sie über eine interaktive Befehlszeile du
 ![Cloudbereitstellung](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-provision.png)
 
 > [!NOTE]
-> Wenn die Seite beim Anmeldeversuch in Azure im Ladestatus hängt, lesen Sie [FAQ step]({{"/docs/faq/#page-hangs-when-log-in-azure" | 
+> Falls die Seite beim Versuch der Anmeldung bei Azure im Ladevorgang hängen bleibt, helfen Ihnen die Informationen in diesem [FAQ-Schritt](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#page-hangs-when-log-in-azure).
  
 ## <a name="modify-the-hashtag"></a>Ändern des Hashtags
 
@@ -191,6 +188,6 @@ Wenn andere Probleme auftreten, lesen Sie die [häufig gestellten Fragen](https:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Sie ein DevKit-Gerät mit der Azure IoT Suite verbinden und einen Tweet abrufen, werden die folgenden nächsten Schritte empfohlen:
+Nachdem Sie nun erfahren haben, wie Sie die Verbindung eines DevKit-Geräts mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung herstellen und einen Tweet abrufen, werden die folgenden nächsten Schritte empfohlen:
 
-* [Übersicht über Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)

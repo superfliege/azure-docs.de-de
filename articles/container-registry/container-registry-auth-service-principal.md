@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry-Authentifizierung mit Dienstprinzipalen
-description: "Erfahren Sie, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden."
+description: Erfahren Sie, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 97036ecabceb12b87b76c6ecb7e521157cbef827
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 16af83522dd55744c485f6dd3696481e16da1b22
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry-Authentifizierung mit Dienstprinzipalen
 
@@ -38,16 +38,25 @@ Für den individuellen Zugriff auf eine Registrierung, z.B. wenn Sie manuell ein
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
+## <a name="sample-scripts"></a>Beispielskripts
+
+Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Azure PowerShell finden Sie hier:
+
+* [Azure CLI][acr-scripts-cli]
+* [Azure PowerShell][acr-scripts-psh]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sobald ein Dienstprinzipal erstellt wurde, dem Sie Zugriff auf Ihre Containerregistrierung gewährt haben, können Sie seine Anmeldeinformationen in Ihren Anwendungen und Diensten für die Interaktion mit der Registrierung verwenden.
 
 Das Thema der Konfiguration einzelner Anwendungen zur Verwendung von Anmeldeinformationen des Dienstprinzipals ist für diesen Artikel zu umfangreich. Daher finden Sie hier Anweisungen für einige spezifische Dienste und Plattformen:
 
-* [Authentifizieren per Azure Container Registry über den Azure Container Service](container-registry-auth-aks.md)
+* [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 * [Authentifizieren per Azure Container Registry über Azure Container Instances (ACI)](container-registry-auth-aci.md)
 
 <!-- LINKS - External -->
+[acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
+[acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->
 [az-acr-login]: /cli/azure/acr#az_acr_login

@@ -1,9 +1,9 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Identitätsanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Identitätsanforderungen
 description: PCI-DSS-Anforderung 8
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 1a398601-8c48-4f8e-b3d4-eba94edad61c
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: f77cc3c9926b5316913c70e5f4412383e55c5193
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: a83040a6b5174307ea73e5473165835458d217f6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="identity-requirements-for-pci-dss-compliant-environments"></a>Identitätsanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-8"></a>PCI-DSS-Anforderung 8
@@ -43,7 +43,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore stellt einen Anwendungsfall und eine Beschreibung für die richtige Verwendung von Administratoren für die Beispielbereitstellung bereit.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore stellt einen Anwendungsfall und eine Beschreibung für die richtige Verwendung von Administratoren für die Beispielbereitstellung bereit.|
 
 
 
@@ -56,7 +56,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore implementiert Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory, um sicherzustellen, dass alle Benutzer über eine eindeutige ID verfügen. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore implementiert Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory, um sicherzustellen, dass alle Benutzer über eine eindeutige ID verfügen. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -69,7 +69,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore implementiert Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory, um sicherzustellen, dass alle Benutzer über eine eindeutige ID verfügen. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore implementiert Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory, um sicherzustellen, dass alle Benutzer über eine eindeutige ID verfügen. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -82,7 +82,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Sperrung von Benutzern kann in Active Directory vorgenommen werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Sperrung von Benutzern kann in Active Directory vorgenommen werden.|
 
 
 
@@ -95,7 +95,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Option `-enableADDomainPasswordPolicy` kann so festgelegt werden, dass Kennwörter nach 90 Tagen ablaufen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Option `-enableADDomainPasswordPolicy` kann so festgelegt werden, dass Kennwörter nach 90 Tagen ablaufen.|
 
 
 
@@ -110,7 +110,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure hat anwendbare geschäftliche und organisatorische Sicherheitsrichtlinien übernommen, darunter eine Richtlinie zur Informationssicherheit. Die Richtlinien wurden genehmigt, veröffentlicht und an Microsoft Azure übermittelt. Die Richtlinie zur Informationssicherheit erfordert, dass der Zugriff auf Microsoft Azure-Objekte basierend auf einer geschäftlichen Begründung mit der Autorisierung des Objektbesitzers gewährt wird und basierend auf den „Need-to-know“- und „Least-Privilege“-Prinzipien eingeschränkt ist. Außerdem betrifft die Richtlinie auch Anforderungen für den Zugriffsverwaltungs-Lebenszyklus, einschließlich Zugriffsbereitstellung, Authentifizierung und Zugriffsautorisierung, Widerruf von Zugriffsrechten und regelmäßige Zugriffsüberprüfungen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | In der Contoso Webstore-Demo ist Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory implementiert, um den Benutzerzugriff auf die Installation zu verwalten. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | In der Contoso Webstore-Demo ist Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure Active Directory implementiert, um den Benutzerzugriff auf die Installation zu verwalten. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -123,7 +123,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Contoso Webstore hat eine klare Aufgabentrennung (Separation of Duties, SOD) für alle Benutzer der Demo implementiert. Weitere Informationen finden Sie unter „Azure Active Directory Identity Protection“ in den [ PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Contoso Webstore hat eine klare Aufgabentrennung (Separation of Duties, SOD) für alle Benutzer der Demo implementiert. Weitere Informationen finden Sie unter „Azure Active Directory Identity Protection“ in den [ PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).|
 
 
 
@@ -136,7 +136,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen, Durchsetzen und Überwachen einer Kennwortrichtlinie verantwortlich, die PCI-DSS-Anforderungen erfüllt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen, Durchsetzen und Überwachen einer Kennwortrichtlinie verantwortlich, die PCI-DSS-Anforderungen erfüllt.|
 
 
 
@@ -149,7 +149,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für das Erstellen, Durchsetzen und Überwachen einer Kennwortrichtlinie verantwortlich, die PCI-DSS-Anforderungen erfüllt.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für das Erstellen, Durchsetzen und Überwachen einer Kennwortrichtlinie verantwortlich, die PCI-DSS-Anforderungen erfüllt.|
 
 
 
@@ -165,7 +165,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Die Contoso Webstore-Implementierung für mehrstufige Authentifizierung wurde deaktiviert, um die Verwendung der Demo möglichst einfach zu machen. Mehrstufige Authentifizierung kann mithilfe von [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) implementiert werden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Die Contoso Webstore-Implementierung für mehrstufige Authentifizierung wurde deaktiviert, um die Verwendung der Demo möglichst einfach zu machen. Mehrstufige Authentifizierung kann mithilfe von [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) implementiert werden.|
 
 
 
@@ -178,7 +178,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure hat zentrale Verfahren zur Verwaltung von kryptografischen Schlüsseln während des gesamten Lebenszyklus (z. B. Erstellung, Verteilung, Widerruf) eingeführt. Microsoft Azure verwendet die PKI-Unternehmensinfrastruktur von Microsoft. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -192,7 +192,7 @@ Die Effektivität eines Kennworts hängt größtenteils vom Entwurf und der Impl
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Microsoft Azure hat zentrale Verfahren zur Verwaltung von kryptografischen Schlüsseln während des gesamten Lebenszyklus (z. B. Erstellung, Verteilung, Widerruf) eingeführt. Microsoft Azure verwendet die PKI-Unternehmensinfrastruktur von Microsoft. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).|
 
 
 
@@ -208,7 +208,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter.|
 
 
 
@@ -221,7 +221,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Option `-enableADDomainPasswordPolicy` kann so festgelegt werden, dass Kennwörter nach höchstens 90 Tagen ablaufen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore nutzt Azure Active Directory für die Benutzerverwaltung. Die Option `-enableADDomainPasswordPolicy` kann so festgelegt werden, dass Kennwörter nach höchstens 90 Tagen ablaufen.|
 
 
 
@@ -234,7 +234,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -247,7 +247,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erzwingt gemäß der Dokumentation im Bereitstellungshandbuch sichere Kennwörter. Weitere Informationen finden Sie in den [PCI-Anleitungen für Identitätsverwaltung](payment-processing-blueprint.md#identity-management).<br /><br />|
 
 
 
@@ -264,7 +264,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure-Administratoren müssen die mehrstufige Authentifizierung verwenden, um für Wartungs- und Verwaltungsaufgaben auf Azure-Systeme und -Server zuzugreifen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
 
 
 
@@ -273,14 +273,14 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 **8.3.1** Binden Sie die mehrstufige Authentifizierung für Zugriff, der nicht über die Konsole erfolgt, für Mitarbeiter mit Administratorzugriff in die CDE ein.
 
 > [!NOTE]
-> Diese Anforderung ist bis zum 31 Januar 2018 eine bewährte Methode, danach ist Sie eine Anforderung.
+> Diese Anforderung ist bis zum 31. Januar 2018 eine bewährte Methode, danach stellt sie eine Anforderung dar.
 
 **Zuständigkeiten:&nbsp;&nbsp;`Shared`**
 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure-Administratoren müssen die mehrstufige Authentifizierung verwenden, um für Wartungs- und Verwaltungsaufgaben auf Azure-Systeme und -Server zuzugreifen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
 
 
 
@@ -294,7 +294,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Azure-Administratoren müssen die mehrstufige Authentifizierung verwenden, um für Wartungs- und Verwaltungsaufgaben auf Azure-Systeme und -Server zuzugreifen. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
 
 
 
@@ -311,7 +311,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, Anleitungen zu befolgen und Authentifizierungsverfahren und -richtlinien zu dokumentieren und allen Benutzern mitzuteilen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, Anleitungen zu befolgen und Authentifizierungsverfahren und -richtlinien zu dokumentieren und allen Benutzern mitzuteilen.|
 
 
 
@@ -327,7 +327,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert.|
 
 
 
@@ -343,7 +343,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Gilt nicht für Microsoft Azure-Kunden. |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Gilt nicht für Microsoft Azure-Kunden.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Gilt nicht für Microsoft Azure-Kunden.|
 
 
 
@@ -358,7 +358,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert. Der gesamte Zugriff wird über [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) verwaltet. Diese Lösung unterstützt Sie dabei, kryptografische Schlüssel und geheime Schlüssel zu schützen, die von Cloudanwendungen und -diensten verwendet werden. |
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore erstellt während der Bereitstellung drei Konten: „admin“, „sqladmin“ und „edna“ (der während der Demoausführung bei der Web-App angemeldete Standardbenutzer). Die mehrstufige Authentifizierung ist für die Demo nicht implementiert. Der gesamte Zugriff wird über [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) verwaltet. Diese Lösung unterstützt Sie dabei, kryptografische Schlüssel und geheime Schlüssel zu schützen, die von Cloudanwendungen und -diensten verwendet werden. |
 
 
 
@@ -374,7 +374,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore schützt alle Daten von Karteninhabern mit Azure Key Vault, und die Verschlüsselung von Datensätzen ist in der Bereitstellungsdokumentation beschrieben. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore schützt alle Daten von Karteninhabern mit Azure Key Vault, und die Verschlüsselung von Datensätzen ist in der Bereitstellungsdokumentation beschrieben. Weitere Informationen finden Sie in den [PCI-Anleitungen für Verschlüsselung](payment-processing-blueprint.md#encryption-and-secrets-management).<br /><br />|
 
 
 
@@ -387,7 +387,7 @@ Alternativ können die Kennwörter/Passphrasen mindestens eine Komplexität und 
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind dafür verantwortlich, sicherzustellen, dass Sicherheitsrichtlinien und betriebliche Verfahren für Identifizierung und Authentifizierung dokumentiert und verwendet werden sowie allen beteiligten Parteien bekannt sind.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind dafür verantwortlich, sicherzustellen, dass Sicherheitsrichtlinien und betriebliche Verfahren für Identifizierung und Authentifizierung dokumentiert und verwendet werden sowie allen beteiligten Parteien bekannt sind.|
 
 
 

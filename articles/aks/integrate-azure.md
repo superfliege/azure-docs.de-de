@@ -8,11 +8,11 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: a29a3f27f7c9ab41724d400c9eb787e6888bedc4
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bdc97e9e28dd2af090c82378457b3c93b276cc58
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 
@@ -27,7 +27,7 @@ Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermög
 
 * Berechtigungen zum Erstellen eines Dienstprinzipals mit der Rolle „Mitwirkender“ in Ihrem Azure-Abonnement
 
-* Ein vorhandener Azure Container Service-Cluster (AKS) Befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters][create-aks-cluster], wenn Sie einen AKS-Cluster benötigen.
+* Ein bestehender Azure Kubernetes Service-Clusters (AKS). Befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters][create-aks-cluster], wenn Sie einen AKS-Cluster benötigen.
 
 ## <a name="install-service-catalog"></a>Installieren des Dienstkatalogs
 
@@ -182,7 +182,7 @@ kubectl get secrets -n wordpress -o yaml
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie sich an diesen Artikel halten, haben Sie den Dienstkatalog in einem Azure Container Service-Cluster (AKS) bereitgestellt. Sie haben Open Service Broker für Azure verwendet, um eine WordPress-Installation bereitzustellen, die von Azure verwaltete Dienste verwendet, in diesem Fall Azure Database for MySQL.
+Wenn Sie sich an diesen Artikel halten, haben Sie den Dienstkatalog in einem Azure Kubernetes Service-Cluster (AKS) bereitgestellt. Sie haben Open Service Broker für Azure verwendet, um eine WordPress-Installation bereitzustellen, die von Azure verwaltete Dienste verwendet, in diesem Fall Azure Database for MySQL.
 
 Über das Repository [Azure-/Helm-Diagramme][helm-charts] können Sie auf andere aktualisierte OSBA-basierte Helm-Diagramme zugreifen. Wenn Sie daran interessiert sind, eigene Diagramme zu erstellen, die für OSBA geeignet sind, helfen Ihnen die Informationen unter [Erstellen eines neuen Diagramms][helm-create-new-chart] weiter.
 

@@ -1,23 +1,23 @@
 ---
-title: Erstellen eines internen Lastenausgleichs mit Azure Container Service (AKS)
-description: Verwenden Sie einen internen Lastenausgleich mit Azure Container Service (AKS).
+title: Erstellen eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
+description: Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7b9ecdb5364f7c0f5bb68ce693e53bc2c5327337
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="use-an-internal-load-balancer-with-azure-container-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Container Service (AKS)
+# <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Verwenden eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS)
 
-Durch einen internen Lastenausgleich können Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. Dieses Dokument bietet Informationen zum Erstellen eines internen Lastenausgleichs mit Azure Container Service (AKS).
+Durch einen internen Lastenausgleich können Anwendungen, die im gleichen virtuellen Netzwerk wie der Kubernetes-Cluster ausgeführt werden, auf einen Kubernetes-Dienst zugreifen. Dieses Dokument bietet Informationen zum Erstellen eines internen Lastenausgleichs mit Azure Kubernetes Service (AKS).
 
 ## <a name="create-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
 
@@ -38,11 +38,11 @@ spec:
     app: azure-vote-front
 ```
 
-Nach der Bereitstellung wird ein Azure-Lastenausgleich erstellt und im gleichen virtuellen Netzwerk wie der AKS-Cluster verfügbar gemacht. 
+Nach der Bereitstellung wird ein Azure-Lastenausgleich erstellt und im gleichen virtuellen Netzwerk wie der AKS-Cluster verfügbar gemacht.
 
 ![Abbildung des internen AKS-Lastenausgleichs](media/internal-lb/internal-lb.png)
 
-Beim Abrufen der Dienstdetails ist die IP-Adresse in der Spalte `EXTERNAL-IP` die IP-Adresse des internen Lastenausgleichs. 
+Beim Abrufen der Dienstdetails ist die IP-Adresse in der Spalte `EXTERNAL-IP` die IP-Adresse des internen Lastenausgleichs.
 
 ```console
 $ kubectl get service azure-vote-front
@@ -71,7 +71,7 @@ spec:
     app: azure-vote-front
 ```
 
-Wenn Sie die Dienstdetails abrufen, sollte die IP-Adresse von `EXTERNAL-IP` der angegebenen IP-Adresse entsprechen. 
+Wenn Sie die Dienstdetails abrufen, sollte die IP-Adresse von `EXTERNAL-IP` der angegebenen IP-Adresse entsprechen.
 
 ```console
 $ kubectl get service azure-vote-front

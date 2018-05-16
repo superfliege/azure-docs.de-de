@@ -8,13 +8,14 @@ ms.author: jehunte
 ms.date: 04/11/2018
 ms.topic: tutorial
 ms.service: automation
+ms.component: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bd9fdc237a3c6f1c2a57ddf0f4448d7c3402a798
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cb876a8d8019f5a2a7232c3093c6f64a7b2730e1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Ermitteln der Software, die auf Ihren Azure-Computern und anderen Computern installiert ist
 
@@ -66,7 +67,7 @@ Navigieren Sie in Ihrem Automation-Konto unter **KONFIGURATIONSVERWALTUNG** zu *
 
 Klicken Sie auf **+ Azure-VM hinzufügen**. Daraufhin wird die Seite **Virtuelle Computer** geöffnet, auf der Sie einen virtuellen Computer aus der Liste auswählen können. Wählen Sie den virtuellen Computer aus, den Sie integrieren möchten. Klicken Sie auf der daraufhin angezeigten Seite auf **Aktivieren**, um die Lösung für den virtuellen Computer zu aktivieren. Der Microsoft-Verwaltungs-Agent (Microsoft Management Agent, MMA) wird auf dem virtuellen Computer bereitgestellt und konfiguriert den Agent für die Kommunikation mit dem Log Analytics-Arbeitsbereich, den Sie beim Aktivieren der Lösung konfiguriert haben. Der Integrationsvorgang kann einige Minuten dauern. An diesem Punkt können Sie in der Liste einen neuen virtuellen Computer auswählen und integrieren.
 
-## <a name="onboard-a-non-azure-machine"></a>Integrieren eines Azure-fremden Computers
+## <a name="onboard-a-non-azure-machine"></a>Integrieren eines Nicht-Azure-Computers
 
 Wenn Sie einen Azure-fremden Computer hinzufügen möchten, installieren den passenden Agent für das Betriebssystem ([Windows](../log-analytics/log-analytics-agent-windows.md) oder [Linux](automation-linux-hrw-install.md)). Navigieren Sie nach der Installation des Agents zu Ihrem Automation-Konto und dort unter **KONFIGURATIONSVERWALTUNG** zu **Bestand**. Wenn Sie auf **Computer verwalten** klicken, wird eine Liste mit den Computern angezeigt, die mit Ihrem Log Analytics-Arbeitsbereich verknüpft sind und für die die Lösung nicht aktiviert ist. Wählen Sie die passende Option für Ihre Umgebung aus:
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 0118e78ee7240c139ff808582d6b9b47c6b64b4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -114,7 +114,7 @@ Der Wert für PreferredLocations kann auf alle Azure-Regionen festgelegt werden,
 ### <a name="is-there-anything-i-should-be-aware-of-when-distributing-data-across-the-world-via-the-azure-datacenters"></a>Gibt es Punkte, die ich beim weltweiten Verteilen von Daten mithilfe der Azure-Datencenter beachten muss? 
 Azure Cosmos DB ist in allen Azure-Regionen präsent. Dies ist auf der Seite mit den [Azure-Regionen](https://azure.microsoft.com/regions/) angegeben. Da es sich um den Kerndienst handelt, verfügt jedes neue Datencenter über eine Azure Cosmos DB-Präsenz. 
 
-Beachten Sie beim Festlegen einer Region, dass von Azure Cosmos DB unabhängige Clouds und Government Clouds respektiert werden. Wenn Sie ein Konto in einer unabhängigen Region erstellen, können Sie also keine Replikation aus dieser unabhängigen Region heraus durchführen. Ebenso ist es nicht möglich, die Replikation an anderen unabhängigen Standorten über ein externes Konto zu ermöglichen. 
+Beachten Sie beim Festlegen einer Region, dass von Azure Cosmos DB unabhängige Clouds und Government Clouds respektiert werden. Wenn Sie ein Konto in einer [unabhängigen Region](https://azure.microsoft.com/global-infrastructure/) erstellen, können Sie also keine Replikation aus dieser [unabhängigen Region](https://azure.microsoft.com/global-infrastructure/) heraus durchführen. Ebenso ist es nicht möglich, die Replikation an anderen unabhängigen Standorten über ein externes Konto zu ermöglichen. 
 
 ## <a name="develop-against-the-sql-api"></a>Entwickeln für die SQL-API
 
@@ -170,6 +170,9 @@ Ja. Da es sich bei Azure Cosmos DB um einen RESTful-Dienst handelt, sind Ressour
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Ist eine lokale Instanz der SQL-API verfügbar?
 Ja. Der [Azure Cosmos DB-Emulator](local-emulator.md) stellt eine High-Fidelity-Emulation des Cosmos DB-Diensts bereit. Es werden die gleichen Funktionen wie bei Azure Cosmos DB unterstützt, z.B. Erstellen und Abfragen von JSON-Dokumenten, Bereitstellen und Skalieren von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem Azure Cosmos DB-Emulator entwickeln und testen und diese in Azure auf globaler Ebene bereitstellen, indem Sie eine einzige Konfigurationsänderung am Verbindungsendpunkt für Azure Cosmos DB vornehmen.
 
+### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Warum werden lange Gleitkommawerte in einem Dokument gerundet, wenn sie im Daten-Explorer im Portal angezeigt werden? 
+Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkommaformat mit doppelter Genauigkeit (gemäß Definition in IEEE 754) und kann nur Zahlen zwischen -(253 - 1) und 253 - 1 (d.h. 9007199254740991) genau darstellen.
+
 ## <a name="develop-against-the-api-for-mongodb"></a>Entwickeln mit der API für MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
 Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit der nativen Azure Cosmos DB-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
@@ -187,7 +190,7 @@ Die MongoDB-API verfügt zusätzlich zu den allgemeinen MongoDB-Fehlercodes übe
 
 | Error               | Code  | BESCHREIBUNG  | Lösung  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie ggf. im Azure-Portal den Durchsatz der Sammlung, oder versuchen Sie es noch einmal. |
+| TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Erwägen Sie eine Skalierung des einem Container oder mehreren Containern zugewiesenen Durchsatzes über das Azure-Portal oder eine Wiederholung des Vorgangs. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br>Beispiel: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
 ## <a name="develop-with-the-table-api"></a>Entwickeln mit der Table-API
@@ -211,6 +214,7 @@ Benutzer, die mit Azure Table Storage vertraut sind und Tabellen mit der Table-A
 * Bei Tabellennamen in Azure Table Storage wird die Groß- und Kleinschreibung nicht beachtet, bei der Table-API von Azure Cosmos DB dagegen schon.
 * Einige der internen Azure Cosmos DB-Formate für Codierungsinformationen (etwa binäre Felder) sind derzeit nicht so wie effizient wie möglicherweise gewünscht. Daher können unerwartete Einschränkungen in Bezug auf die Datengröße auftreten. Beispiel: Derzeit kann zum Speichern der Binärdaten die Kapazität einer Tabellenentität von 1 MB nicht vollständig genutzt werden, da die Codierung den Datenumfang vergrößert.
 * Entitätseigenschaftsname „ID“ derzeit nicht unterstützt
+* „TakeCount“ von „TableQuery“ ist nicht auf 1.000 beschränkt.
 
 Bei der REST-API werden einige Endpunkte/Abfrageoptionen von der Table-API von Azure Cosmos DB nicht unterstützt:
 | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung |
@@ -382,7 +386,7 @@ Die Table-API bietet die gleichen Abfragefunktionen wie Azure Table Storage. Azu
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api"></a>Wann sollte ich „TableThroughput“ für die Table-API ändern?
 Sie sollten TableThroughput ändern, wenn eine der folgenden Bedingungen gilt:
 * Sie führen das Extrahieren, Transformieren und Laden (ETL) für die Daten durch, oder Sie möchten innerhalb eines kurzen Zeitraums viele Daten hochladen. 
-* Sie benötigen für den Container auf dem Back-End mehr Durchsatz. Beispielsweise erkennen Sie, dass der genutzte Durchsatz den bereitgestellten Durchsatz übersteigt, und es kommt zu einer Drosselung. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](set-throughput.md).
+* Sie benötigen für den Container oder mehrere Container auf dem Back-End mehr Durchsatz. Beispielsweise erkennen Sie, dass der genutzte Durchsatz den bereitgestellten Durchsatz übersteigt, und es kommt zu einer Drosselung. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](set-throughput.md).
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-table"></a>Kann ich den Durchsatz meiner Table-API-Tabelle zentral hoch- oder herunterskalieren? 
 Ja. Sie können den Skalierungsbereich des Azure Cosmos DB-Portals verwenden, um den Durchsatz zu skalieren. Weitere Informationen finden Sie unter [Festlegen von Durchsatz für Azure Cosmos DB-Container](set-throughput.md).
@@ -397,7 +401,7 @@ None (Keine): Es gibt keine Preisänderungen für Bestandskunden von Azure Table
 Der Preis hängt vom zugewiesenen TableThroughput-Wert ab. 
 
 ### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Wie kann ich beim Table-API-Angebot eine ggf. auftretende Drosselung für die Tabellen behandeln? 
-Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für den zugrunde liegenden Container überschreitet, empfangen Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
+Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für die zugrunde liegenden Container überschreitet, erhalten Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Warum muss ich zusätzlich zu „PartitionKey“ und „RowKey“ einen Durchsatz festlegen, um das Table-API-Angebot von Azure Cosmos DB nutzen zu können?
 Azure Cosmos DB legt einen Standarddurchsatz für Ihren Container fest, wenn Sie in der Datei „app.config“ oder über das Portal keinen Durchsatz angeben. 

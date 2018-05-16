@@ -4,29 +4,29 @@ description: Erfahren Sie, wie Sie Notification Hubs verwenden, um Pushbenachric
 keywords: Pushbenachrichtigung, Pushbenachrichtigungen, Node.js-Push, iOS-Push
 services: notification-hubs
 documentationcenter: nodejs
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: ded4749c-6c39-4ff8-b2cf-1927b3e92f93
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: yuaxu
-ms.openlocfilehash: ff2dd0c2ededa3664c48b5ff77b05466fceb4b3f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 7463d41382c59e4f7f03b58dbcbc3f5c45e9d15c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 ## <a name="overview"></a>Übersicht
 > [!IMPORTANT]
-> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
+> Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
 > 
 > 
 
@@ -65,7 +65,7 @@ Verwenden Sie einen Texteditor, um den folgenden Code am Anfang der Datei **serv
 
     var azure = require('azure');
 
-### <a name="setup-an-azure-notification-hub-connection"></a>Einrichten einer Azure Notification Hub-Verbindung
+### <a name="set-up-an-azure-notification-hub-connection"></a>Einrichten einer Azure Notification Hub-Verbindung
 Das **NotificationHubService** -Objekt ermöglicht Ihnen das Arbeiten mit Notification Hubs. Der folgende Code erstellt ein **NotificationHubService**-Objekt für einen Notification Hub mit dem Namen **hubname**. Fügen Sie ihn am Anfang der Datei **server.js** hinzu, nach der Anweisung zum Importieren des Azure-Moduls:
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte im **Azure-Portal** durch, um den Wert für [
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Wenn Sie Hilfe beim Erstellen eines neuen Notification Hubs benötigen, lesen Sie das Tutorial [Erste Schritte mit Notification Hubs für Windows Store-Apps](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 3. Wählen Sie **Settings**aus.
-4. Klicken Sie auf **Zugriffsrichtlinien**. Beide Verbindungszeichenfolgen (Freigabe und Vollzugriff) werden angezeigt.
+4. Klicken Sie auf **Zugriffsrichtlinien**. Beide Verbindungszeichenfolgen für Freigabe und Vollzugriff werden angezeigt.
 
 ![Azure-Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
@@ -210,4 +210,4 @@ Mit den obigen Beispielcodeausschnitten können Sie problemlos eine Dienstinfras
 [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[connectionstring]: https://portal.azure.com
+[Azure-Portal]: https://portal.azure.com

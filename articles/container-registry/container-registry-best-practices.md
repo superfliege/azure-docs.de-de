@@ -1,18 +1,18 @@
 ---
-title: "Bewährte Methoden in Azure Container Registry"
-description: "Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden."
+title: Bewährte Methoden in Azure Container Registry
+description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/20/2017
+ms.date: 04/10/2018
 ms.author: marsma
-ms.openlocfilehash: 684b778f57da4adb331958c5daef6b9906b6d253
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1272a4b547a4ba650678ce083a44bde3a5a3e583
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
@@ -27,7 +27,7 @@ Darüber hinaus werden für alle öffentlichen Clouds, einschließlich Azure, Ge
 
 ## <a name="geo-replicate-multi-region-deployments"></a>Georeplikation von Bereitstellungen in mehreren Regionen
 
-Verwenden Sie das Feature [Georeplikation](container-registry-geo-replication.md) von Azure Container Registry, wenn Sie Container in mehreren Regionen bereitstellen. Ganz gleich, ob Sie globale Kunden von lokalen Rechenzentren aus bedienen oder Ihr Entwicklungsteam sich an unterschiedlichen Standorten befindet – durch die Georeplikation Ihrer Registrierung können Sie die Registrierungsverwaltung vereinfachen und Wartezeiten auf ein Minimum reduzieren. Dieses Feature befindet sich zurzeit in der Vorschau und steht für [Premium](container-registry-skus.md)-Registrierungen zur Verfügung.
+Verwenden Sie das Feature [Georeplikation](container-registry-geo-replication.md) von Azure Container Registry, wenn Sie Container in mehreren Regionen bereitstellen. Ganz gleich, ob Sie globale Kunden von lokalen Rechenzentren aus bedienen oder Ihr Entwicklungsteam sich an unterschiedlichen Standorten befindet – durch die Georeplikation Ihrer Registrierung können Sie die Registrierungsverwaltung vereinfachen und Wartezeiten auf ein Minimum reduzieren. Georeplikation ist nur mit [Premium](container-registry-skus.md)-Registrierungen verfügbar.
 
 Sehen Sie sich die dreiteilige Tutorialreihe [Georeplikation in Azure Container Registry](container-registry-tutorial-prepare-registry.md) an, um sich über die Verwendung der Georeplikation zu informieren.
 

@@ -1,11 +1,11 @@
 ---
 title: Seitensteuerelemente in Azure API Management | Microsoft-Dokumentation
-description: "Enthält Informationen zu den Seitensteuerelementen, die für die Verwendung in Entwicklerportalvorlagen in Azure API Management verfügbar sind."
+description: Enthält Informationen zu den Seitensteuerelementen, die für die Verwendung in Entwicklerportalvorlagen in Azure API Management verfügbar sind.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: da68c9b7ebbb1880e35bd60b12db9f920f51e13c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
@@ -56,7 +56,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
   
 ### <a name="parameters"></a>Parameter  
   
-|Parameter|Beschreibung|  
+|Parameter|BESCHREIBUNG|  
 |---------------|-----------------|  
 |appId|Die ID der Anwendung.|  
   
@@ -77,7 +77,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `basic-signin` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -96,7 +96,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `paging-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -119,7 +119,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `providers` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -138,7 +138,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `search-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -159,7 +159,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `sign-up` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -178,7 +178,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- Keine  
+ None (Keine):  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `subscribe-button` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -200,7 +200,7 @@ Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle 
   
 ### <a name="parameters"></a>Parameter  
   
-|Parameter|Beschreibung|  
+|Parameter|BESCHREIBUNG|  
 |---------------|-----------------|  
 |subscriptionId|Die ID des Abonnements, das gekündigt werden soll.|  
 |cancelUrl|Die URL zum Kündigen des Abonnements|  

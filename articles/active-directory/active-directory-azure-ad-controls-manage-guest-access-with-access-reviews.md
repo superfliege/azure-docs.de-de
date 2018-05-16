@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 564f4f4a3f7532a7419e15b91fdbae9ee12088fd
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2ac28c278b9ac832f05cdb19a48ea576526104b3
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -33,7 +33,7 @@ Sie können auch auf einfache Weise sicherstellen, dass Gastbenutzer über entsp
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md). Jeder Benutzer, der dieses Feature zum Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf verwendet, benötigt eine Lizenz.
+Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-whatis.md). Jeder Benutzer, der dieses Feature zum Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf verwendet, benötigt eine Lizenz.
 
 Wenn Sie Gastbenutzer bitten möchten, ihren eigenen Zugriff zu überprüfen, lesen Sie die Informationen zur Lizenzierung von Gastbenutzern. Weitere Informationen finden Sie unter [Lizenzierung für die Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md).
 

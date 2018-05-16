@@ -1,0 +1,142 @@
+---
+title: Hinzufügen von Key Vault-Unterstützung zu Ihrem ASP.NET-Projekt mit Visual Studio | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie einer ASP.NET- oder ASP.NET Core-Webanwendung Key Vault-Unterstützung hinzufügen.
+services: key-vault
+author: ghogen
+manager: douge
+ms.prod: visual-studio-dev15
+ms.technology: vs-azure
+ms.workload: azure
+ms.topic: conceptual
+ms.date: 04/15/2018
+ms.author: ghogen
+ms.openlocfilehash: 9f0cc6ee06042948442aace05d56fcffa3742a8d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
+# <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
+
+In diesem Tutorial erfahren Sie, wie Sie auf einfache Weise alles hinzufügen, was Sie zum Verwalten Ihrer Geheimnisse mit Azure Key Vault für Webprojekte in Visual Studio benötigen – ganz unabhängig davon, ob Sie ASP.NET Core oder einen beliebigen Typ von ASP.NET-Projekt verwenden. Mit dem Feature „Verbundene Dienste“ in Visual Studio 2017 werden alle NuGet-Pakete und Konfigurationseinstellungen, die für eine Verbindung mit Key Vault in Azure erforderlich sind, von Visual Studio automatisch hinzugefügt. 
+
+Ausführliche Informationen zu den Änderungen, die durch verbundene Dienste in Ihrem Projekt durchgeführt werden, um Key Vault zu aktivieren, finden Sie unter [Verbundener Key Vault-Dienst – Auswirkungen auf mein ASP.NET 4.7.1-Projekt](vs-key-vault-aspnet-what-happened.md) bzw. unter [Verbundener Key Vault-Dienst – Auswirkungen auf mein ASP.NET Core-Projekt](vs-key-vault-aspnet-core-what-happened.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
+- **Visual Studio 2017, Version 15.7** mit installierter Workload **Webentwicklung**. [Jetzt herunterladen](https://aka.ms/vsdownload).
+- Für ASP.NET (nicht Core) benötigen Sie die .NET Framework 4.7.1-Entwicklungstools, die nicht standardmäßig installiert werden. Um sie zu installieren, starten Sie den Installer für Visual Studio, wählen Sie **Ändern** und dann **Einzelne Komponenten**, erweitern Sie auf der rechten Seite den Eintrag **ASP.NET und Webentwicklung**, und wählen Sie **.NET Framework 4.7.1-Entwicklungstools** aus.
+- Ein ASP.NET 4.7.1- oder ein ASP.NET Core 2.0-Webprojekt wird geöffnet.
+
+## <a name="add-key-vault-support-to-your-project"></a>Hinzufügen von Key Vault-Unterstützung zu Ihrem Projekt
+
+1. Wählen Sie im **Projektmappen-Explorer** die Option **Hinzufügen** > **Verbundener Dienst** aus.
+   Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
+1. Wählen Sie im Menü der verfügbaren Dienste **Schutz für Geheimnisse mit Azure Key Vault**.
+
+   ![Auswahl von „Schutz für Geheimnisse mit Azure Key Vault“](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
+
+   Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt.
+1. Wählen Sie das Abonnement, das Sie verwenden möchten, und wählen Sie dann einen neuen oder vorhandenen Schlüsseltresor aus, bzw. klicken Sie auf den Link „Bearbeiten“, um den automatisch generierten Namen zu ändern.
+
+   ![Wählen Sie Ihr Abonnement aus.](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)
+
+1. Geben Sie den Namen ein, den Sie für den Schlüsseltresor verwenden möchten.
+
+   ![Benennen Sie den Schlüsseltresor um, und wählen Sie eine Ressourcengruppe aus.](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
+
+1. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue mit einem automatisch generierten eindeutigen Namen.  Wenn Sie eine neue Gruppe mit einem anderen Namen erstellen möchten, können Sie die Seite im [Azure-Portal](https://portal.azure.com) schließen und neu starten, um die Liste der Ressourcengruppen erneut zu laden.
+1. Wählen Sie die Region aus, in der Sie den Schlüsseltresor erstellen möchten. Wenn Ihre Webanwendung in Azure gehostet wird, wählen Sie für eine optimale Leistung die Region aus, in der die Webanwendung gehostet wird.
+1. Wählen Sie einen Tarif aus. Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
+1. Wählen Sie „OK“, um die Konfigurationsoptionen zu akzeptieren.
+1. Wählen Sie **Hinzufügen** um den Schlüsseltresor zu erstellen. Beim Erstellungsvorgang kommt es möglicherweise zu einem Fehler, wenn Sie einen Namen auswählen, der bereits verwendet wurde.  Verwenden Sie in diesem Fall den Link **Bearbeiten** zum Umbenennen des Schlüsseltresors, und versuchen Sie es erneut.
+
+   ![Hinzufügen eines verbundenen Diensts zum Projekt](media/vs-key-vault-add-connected-service/KeyVaultConnectedService4.PNG)
+
+1. Fügen Sie Ihrem Schlüsseltresor in Azure jetzt ein Geheimnis hinzu. Um im Portal an die richtige Stelle zu gelangen, klicken Sie auf den Link für die Verwaltung von Geheimnissen, die in diesem Schlüsseltresor gespeichert sind. Wenn Sie die Seite oder das Projekt geschlossen haben, können Sie im [Azure-Portal](https://portal.azure.com) dorthin wechseln, indem Sie unter **Sicherheit** die Option **Alle Dienste**, dann **Key Vault** und schließlich den Schlüsseltresor wählen, den Sie gerade erstellt haben.
+
+   ![Navigieren zum Portal](media/vs-key-vault-add-connected-service/manage-secrets-link.jpg)
+
+1. Wählen Sie im Abschnitt „Key Vault“ für den gerade erstellten Schlüsseltresor die Option **Geheimnisse**, und klicken Sie auf **Generieren/Importieren**.
+
+   ![Generieren/Importieren eines Geheimnisses](media/vs-key-vault-add-connected-service/generate-secrets.jpg)
+
+1. Geben Sie ein Geheimnis ein, z.B. „MySecret“, und weisen Sie ihm testweise einen beliebigen Zeichenfolgenwert zu. Wählen Sie anschließend die Schaltfläche **Erstellen**.
+
+   ![Erstellen eines Geheimnisses](media/vs-key-vault-add-connected-service/create-a-secret.jpg)
+
+1. (Optional) Geben Sie ein weiteres Geheimnis ein, ordnen Sie es dieses Mal jedoch einer Kategorie zu, indem Sie es mit „Geheimnisse--MeinGeheimnis“ benennen. Durch diese Syntax wird eine Kategorie „Geheimnisse“ angegeben, die ein Geheimnis namens „MeinGeheimnis“ enthält.
+ 
+Jetzt können Sie in Code auf Ihre Geheimnisse zugreifen. Die nächsten Schritte unterscheiden sich abhängig davon, ob Sie ASP.NET 4.7.1 oder ASP.NET Core verwenden.
+
+## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Zugreifen auf Ihre Geheimnisse in Code (ASP.NET Core-Projekte)
+
+1. In Visual Studio können Sie in Ihrem ASP.NET Core-Projekt jetzt auf diese Geheimnisse verweisen, indem Sie im Code die folgenden Ausdrücke verwenden:
+ 
+   ```csharp
+      config["MySecret"] // Access a secret without a section
+      config["Secrets:MySecret"] // Access a secret in a section
+      config.GetSection("Secrets")["MySecret"] // Get the configuration section and access a secret in it.
+   ```
+
+1. Fügen Sie auf einer CSHTML-Seite, beispielsweise „About.cshtml“, im oberen Bereich der Datei die Anweisung @inject hinzu, um eine Variable einzurichten, mit der Sie auf die Key Vault-Konfiguration zugreifen können.
+
+   ```cshtml
+      @inject Microsoft.Extensions.Configuration.IConfiguration config
+   ```
+
+1. Durch einen Test können Sie sicherstellen, dass der Wert des Geheimnisses verfügbar ist, indem Sie ihn auf einer der Seiten anzeigen. Verwenden Sie @config zum Verweisen auf die Konfigurationsvariable.
+ 
+   ```cshtml
+      <p> @config["MySecret"] </p>
+      <p> @config.GetSection("Secrets")["MySecret"] </p>
+      <p> @config["Secrets:MySecret"] </p>
+   ```
+
+1. Erstellen Sie die Webanwendung, und führen Sie sie aus. Navigieren Sie zur About-Seite, und sehen Sie sich den Geheimniswert an.
+
+## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Zugreifen auf Ihre Geheimnisse in Code (ASP.NET 4.7.1-Projekte)
+
+1. Nehmen Sie in der Datei „Web.config“ die folgenden Änderungen vor. Die Schlüssel sind Platzhalter, die vom AzureKeyVault-ConfigurationBuilder durch die Werte von Geheimnissen in Key Vault ersetzt werden.
+
+   ```xml
+     <appSettings configBuilders="AzureKeyVault">
+       <add key="webpages:Version" value="3.0.0.0" />
+       <add key="webpages:Enabled" value="false" />
+       <add key="ClientValidationEnabled" value="true" />
+       <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+       <add key="MySecret" value="dummy1"/>
+       <add key="Secrets--MySecret" value="dummy2"/>
+     </appSettings>
+   ```
+
+1. Fügen Sie im HomeController in der Controllermethode „About“ die folgenden Zeilen hinzu, um das Geheimnis abzurufen und im ViewBag-Objekt zu speichern.
+ 
+   ```csharp
+            var secret = ConfigurationManager.AppSettings["MySecret"];
+            var secret2 = ConfigurationManager.AppSettings["Secrets--MySecret"];
+            ViewBag.Secret = $"Secret: {secret}";
+            ViewBag.Secret2 = $"Secret2: {secret2}";
+   ```
+
+1. Fügen Sie in der Ansicht „About.cshtml“ Folgendes hinzu, um den Wert des Geheimnisses anzuzeigen (nur zu Testzwecken).
+
+   ```csharp
+      <h3>@ViewBag.Secret</h3>
+      <h3>@ViewBag.Secret2</h3>
+   ```
+
+Herzlichen Glückwunsch, Sie haben sichergestellt, dass Ihre Web-App Key Vault für den Zugriff auf sicher gespeicherte Geheimnisse verwenden kann.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe, wenn Sie sie nicht mehr benötigen. Dadurch werden der Schlüsseltresor und die zugehörigen Ressourcen gelöscht. So löschen Sie die Ressourcengruppe über das Portal:
+
+1. Geben Sie den Namen Ihrer Ressourcengruppe in das Suchfeld am oberen Rand des Portals ein. Klicken Sie in den Suchergebnissen auf die Ressourcengruppe aus dieser Schnellstartanleitung.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+3. Geben Sie im Feld **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:** den Namen der Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zur Key Vault-Entwicklung finden Sie im [Key Vault-Entwicklerhandbuch](key-vault-developers-guide.md).

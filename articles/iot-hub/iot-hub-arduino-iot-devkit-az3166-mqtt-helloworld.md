@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 121bd8a21e74a836fcca74af97fc20cae297d9a2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 073ac7cf2d8d8d5dac6a5a4f9b9d4e3d1af6f095
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Senden von Nachrichten an einen MQTT-Server
 
@@ -46,20 +46,13 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](https://docs
 2. Starten Sie Visual Studio Code.
 
 3. Verbinden Sie das DevKit mit Ihrem Computer.
-    Visual Studio Code erkennt automatisch das DevKit und öffnet die folgenden Seiten:
-    * DevKit-Einführungsseite
-    * Arduino-Beispiele: Praktische Beispiele für die ersten Schritte mit Ihrem DevKit.
-
-    ![mini-solution-vscode](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/vscode-start.png)
 
 ## <a name="open-the-mqttclient-sample"></a>Öffnen des MQTTClient-Beispiels
 
 Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE**, wechseln Sie zu **Beispiele für MXCHIP AZ3166 > MQTT**, und wählen Sie **MQTTClient**. Daraufhin wird ein neues VS Code-Fenster mit einem Projektordner geöffnet.
 
-![Ordner für Beispiele](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/examples.png)
-
 > [!NOTE]
-> Falls Sie den Bereich schließen sollten, können Sie ihn erneut öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
+> Sie können auch ein Beispiel über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ## <a name="build-and-upload-the-arduino-sketch-to-the-devkit"></a>Erstellen und Hochladen des Arduino-Sketches in das DevKit
 
@@ -100,5 +93,5 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 
 In diesem Artikel haben Sie erfahren, wie Sie Ihr MXChip-Iot-DevKit als MQTT-Client konfigurieren und die MQTT-Clientbibliothek verwenden, um Nachrichten an einen MQTT-Broker zu senden. Dies sind die empfohlenen nächsten Schritte:
 
-* [Übersicht über Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

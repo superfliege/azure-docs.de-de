@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Passthrough-Authentifizierung – Häufig gestellte Fragen | Microsoft-Dokumentation"
-description: "In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory."
+title: 'Azure AD Connect: Passthrough-Authentifizierung – Häufig gestellte Fragen | Microsoft-Dokumentation'
+description: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Passthrough-Authentifizierung von Azure Active Directory.
 services: active-directory
-keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
-documentationcenter: 
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: billmath
-ms.openlocfilehash: 077a60949b5eed24cb9a1c56008a0073693f121e
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 7a817092581ef0be0b6be063282f7484c46ff094
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -48,7 +48,7 @@ Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Sie dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
 
-## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../active-directory-application-proxy-get-started.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
+## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
 Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) unterstützen diese Konfiguration.
 

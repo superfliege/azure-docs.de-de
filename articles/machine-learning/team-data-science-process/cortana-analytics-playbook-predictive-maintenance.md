@@ -1,8 +1,8 @@
 ---
-title: "Vorhersagbarer Wartungsbedarf in der Luft- und Raumfahrt mit Azure – Cortana Intelligence-Lösungsvorlage | Microsoft-Dokumentation"
-description: "Eine Lösungsvorlage mit Microsoft Cortana Intelligence zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen."
+title: Azure AI-Playbook für Predictive Maintenance-Lösungen | Microsoft-Dokumentation
+description: Umfassende Beschreibung der Data Science, auf der Predictive Maintenance-Lösungen in verschiedenen vertikalen Branchen basieren.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: fboylu
 manager: jhubbard
 editor: cgronlun
@@ -12,19 +12,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 05/01/2018
 ms.author: fboylu
-ms.openlocfilehash: da7826c49c3548600187956908f5369cc4891065
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ad06617fb8c14928dca7d9ce18ad86190e8255fe
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/04/2018
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Playbook für die Cortana Intelligence-Lösungsvorlage zum Vorhersagen des Wartungsbedarfs in der Luft- und Raumfahrt und weiteren Branchen
+# <a name="azure-ai-playbook-for-predictive-maintenance-solutions"></a>Azure AI-Playbook für Predictive Maintenance-Lösungen 
 ## <a name="executive-summary"></a>Kurzfassung
 Die vorbeugende Wartung ist eine der am stärksten nachgefragten Anwendungen von Predictive Analytics und bietet eindeutige Vorteile, z. B. das sehr hohe Kosteneinsparpotenzial. Dieses Playbook soll als Referenz für Lösungen zur vorbeugenden Wartung dienen, wobei der Schwerpunkt auf repräsentativen Anwendungsfällen liegt.
 Leser lernen die häufigsten Geschäftsszenarien der vorbeugenden Wartung kennen. Es geht um die Anforderungen in Bezug auf die Qualifizierung von Geschäftsproblemen für diese Lösungen, die für die Problemlösung erforderlichen Daten, Verfahren für die Vorhersagemodellierung zum Erstellen von Lösungen mit diesen Daten und bewährte Methoden mit Beispiel-Lösungsarchitekturen.
-Außerdem werden die Details der entwickelten Vorhersagemodelle beschrieben, z. B. Featureentwicklung, Modellentwicklung und Leistungsbewertung. Im Wesentlichen sind in diesem Playbook die geschäftlichen und analytischen Richtlinien zusammengefasst, die für eine erfolgreiche Entwicklung und Bereitstellung von Lösungen für die vorbeugende Wartung benötigt werden. Dieser Leitfaden soll Ihnen dabei helfen, eine erste Lösung zu erstellen. Die Cortana Intelligence Suite und vor allem Azure Machine Learning sollen dabei als Ausgangspunkte für Ihre langfristige Strategie zur Vorhersage des Wartungsbedarfs dienen. Die Dokumentation zur Cortana Intelligence Suite und zu Azure Machine Learning finden Sie unter [Cortana Analytics](http://www.microsoft.com/server-cloud/cortana-analytics-suite/overview.aspx) und [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/).
+Außerdem werden die Details der entwickelten Vorhersagemodelle beschrieben, z.B. Featureentwicklung, Modellentwicklung und Leistungsbewertung. Im Wesentlichen sind in diesem Playbook die geschäftlichen und analytischen Richtlinien zusammengefasst, die für eine erfolgreiche Entwicklung und Bereitstellung von Lösungen für die vorbeugende Wartung benötigt werden. Dieser Leitfaden soll Ihnen dabei helfen, eine erste Lösung zu erstellen. Die Cortana Intelligence Suite und vor allem Azure Machine Learning sollen dabei als Ausgangspunkte für Ihre langfristige Strategie zur Vorhersage des Wartungsbedarfs dienen. Die Dokumentation zur Cortana Intelligence Suite und zu Azure Machine Learning finden Sie unter [Cortana Analytics](http://www.microsoft.com/server-cloud/cortana-analytics-suite/overview.aspx) und [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/).
 
 > [!TIP]
 > Eine technische Anleitung zum Implementieren dieser Lösungsvorlage finden Sie unter [Technische Anleitung für die Cortana Intelligence-Lösungsvorlage für vorbeugende Wartung](cortana-analytics-technical-guide-predictive-maintenance.md).
@@ -158,7 +158,7 @@ Die üblichen Datenelemente derjenigen Probleme, die durch die Vorhersage des Wa
 * Fehlerverlauf: der Fehlerverlauf eines Computers oder einer Komponente auf dem Computer.
 * Wartungsverlauf: der Reparaturverlauf einer Maschine, z.B. Fehlercodes, vorherige Wartungsaktivitäten oder Komponentenersatz.
 * Zustand der Maschine und Verwendung: der Betriebszustand einer Maschine, z.B. von Sensoren gesammelte Daten.
-* Maschineneigenschaften: die Eigenschaften einer Maschine, z.B. Modulgröße, Marke und Modell, Standort.
+* Maschineneigenschaften: die Eigenschaften einer Maschine, z.B. Motorgröße, Marke und Modell, Standort.
 * Eigenschaften des Operators: die Eigenschaften des Operators, z.B. Geschlecht, Erfahrungshintergrund.
 
 Es ist möglich und in der Regel auch der Fall, dass der Fehlerverlauf im Wartungsverlauf enthalten ist, z. B. in Form von speziellen Fehlercodes oder Bestelldaten für Ersatzteile. In diesen Fällen können Fehler aus den Wartungsdaten extrahiert werden. Darüber hinaus können unterschiedliche Geschäftsbereiche über eine Vielzahl anderer Datenquellen verfügen, die sich auf Fehlermuster auswirken. Diese sind hier nicht erschöpfend aufgeführt. Ziehen Sie zu ihrer Ermittlung bei der Erstellung von Vorhersagemodellen die Experten des jeweiligen Bereichs heran.
@@ -171,7 +171,7 @@ Wartungsverlauf: Fehlerprotokolle für Flüge, Fehlerprotokolle für Transaktion
 
 Maschinenzustand und -nutzung: Flugrouten und -zeiten, Sensordaten von Flugzeugtriebwerken, Sensormessungen von Transaktionen an Geldautomaten, Daten zu Zugereignissen, Sensormessungen von Windturbinen, Fahrstühlen und vernetzten Fahrzeugen.
 
-Maschinenmerkmale: technische Spezifikationen von Schutzschaltern, z. B. Spannungspegel, geografischer Standort oder Fahrzeugmerkmale, z. B. Marke, Modell, Motorgröße, Reifentypen, Produktionsstandort usw.
+Maschinenmerkmale: technische Spezifikationen von Schutzschaltern, z.B. Spannungspegel, geografischer Standort oder Fahrzeugmerkmale, z.B. Marke, Modell, Motorgröße, Reifentypen, Produktionsstandort usw.
 
 Anhand der obigen Datenquellen lässt sich feststellen, dass die beiden Hauptdatentypen der vorbeugenden Wartung zeitbezogene Daten und statische Daten sind.
 Fehlerverlauf, Maschinenzustände, Reparaturverlauf und Nutzungsverlauf sind fast immer mit Zeitstempeln verbunden, mit denen der Zeitpunkt der Erfassung für jedes Datenelement angegeben wird. Bei Merkmalen von Maschinen und Bedienern handelt es sich normalerweise um statische Daten, da hiermit meist die technischen Spezifikationen von Maschinen oder die Eigenschaften von Bedienern beschrieben werden. Es ist möglich, dass sich diese Merkmale im Laufe der Zeit ändern, und wenn dies der Fall ist, sollten sie wie Datenquellen mit Zeitstempel behandelt werden.
@@ -230,7 +230,7 @@ Während der Featuregenerierung sollten auch einige andere wichtige Schritte aus
 
 Die endgültige Featuretabelle nach Ausführung der Schritte zur Featureentwicklung, die im obigen Abschnitt erläutert wurden, sollte dem folgenden Beispieldatenschema ähneln, wenn die Zeiteinheit ein Tag ist:
 
-| Asset-ID | Time | Featurespalten | Bezeichnung |
+| Asset-ID | Zeit | Featurespalten | Bezeichnung |
 | --- | --- | --- | --- |
 | 1 |Tag 1 | | |
 | 1 |Tag 2 | | |

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: ad3428c659e7f950d08b34d82b99930db92c0996
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5f3c3bbb23b9d4439188286342d80eb1cc1d0833
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Tutorial: Azure Active Directory-Integration mit Workday
 
@@ -174,19 +174,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SAML-Identitätsanbieter](./media/active-directory-saas-workday-tutorial/IC7829272.png "SAML-Identitätsanbieter")
    
-    c. Aktivieren Sie **Enable IdP Initiated Logout** (IdP-initiierte Abmeldung ermöglichen).
-   
-    d. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert der **Abmelde-URL**, und fügen Sie ihn in das Textfeld **Logout Response URL** (Antwort-URL für Abmeldung) ein.
+    c. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert der **Abmelde-URL**, und fügen Sie ihn in das Textfeld **Logout Response URL** (Antwort-URL für Abmeldung) ein.
 
-    e. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert für die **SAML-Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **IdP SSO Service URL** (Dienst-URL des Identitätsanbieters für einmaliges Anmelden) ein.
+    d. Kopieren Sie im Azure-Portal im Fenster **Anmeldung konfigurieren** den Wert für die **SAML-Dienst-URL für einmaliges Anmelden**, und fügen Sie ihn in das Textfeld **IdP SSO Service URL** (Dienst-URL des Identitätsanbieters für einmaliges Anmelden) ein.
 
-    f. Wählen Sie im Textfeld **Used for Environments** (Für Umgebungen verwendet) den Umgebungsnamen aus.
+    e. Wählen Sie im Textfeld **Used for Environments** (Für Umgebungen verwendet) den Umgebungsnamen aus.
 
-    g. Klicken Sie auf **Identity Provider Public Key Certificate** (Öffentliches Schlüsselzertifikat des Identitätsanbieters), und klicken Sie dann auf **Erstellen**. 
+    f. Klicken Sie auf **Identity Provider Public Key Certificate** (Öffentliches Schlüsselzertifikat des Identitätsanbieters), und klicken Sie dann auf **Erstellen**. 
 
     ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782928.png "Erstellen")
 
-    h. Klicken Sie auf **Öffentlichen x509-Schlüssel erstellen**. 
+    g. Klicken Sie auf **Öffentlichen x509-Schlüssel erstellen**. 
 
     ![Erstellen](./media/active-directory-saas-workday-tutorial/IC782929.png "Erstellen")
 

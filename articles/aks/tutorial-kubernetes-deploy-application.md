@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 79fc716f70fe0fb3273badd485e4c01ea5d04e1d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Container Service (AKS)
+# <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
 In diesem Tutorial – Teil 4 von 8 – wird eine Beispielanwendung in einem Kubernetes-Cluster bereitgestellt. Folgende Schritte werden ausgeführt:
 
@@ -30,7 +30,7 @@ Dieses Tutorial setzt voraus, dass Sie grundlegend mit den Konzepten von Kuberne
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. 
+In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt.
 
 Für dieses Tutorial benötigen Sie die vorab erstellte Kubernetes-Manifestdatei `azure-vote-all-in-one-redis.yaml`. Diese Datei wurde in einem vorherigen Tutorial mit dem Anwendungsquellcode heruntergeladen. Stellen Sie sicher, dass Sie das Repository geklont und in das geklonte Repository gewechselt haben.
 
@@ -89,7 +89,7 @@ service "azure-vote-front" created
 
 ## <a name="test-application"></a>Testen der Anwendung
 
-Es wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der die Anwendung für das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern. 
+Es wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der die Anwendung für das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern.
 
 Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`.
 
@@ -98,12 +98,12 @@ kubectl get service azure-vote-front --watch
 ```
 
 Die *externe IP-Adresse* für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt.
-  
+
 ```
 azure-vote-front   10.0.34.242   <pending>     80:30676/TCP   7s
 ```
 
-Sobald die *externe IP-Adresse* nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden. 
+Sobald die *externe IP-Adresse* nicht mehr *ausstehend* ist, sondern eine *IP-Adresse* angezeigt wird, verwenden Sie `CTRL-C`, um die kubectl-Überwachung zu beenden.
 
 ```
 azure-vote-front   10.0.34.242   52.179.23.131   80:30676/TCP   2m
@@ -119,14 +119,14 @@ Führen Sie [diese Schritte](https://docs.microsoft.com/azure/container-registry
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde die Azure Vote-Anwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Folgende Aufgaben wurden ausgeführt:  
+In diesem Tutorial wurde die Azure Vote-Anwendung in einem Kubernetes-Cluster in AKS bereitgestellt. Folgende Aufgaben wurden ausgeführt:
 
 > [!div class="checklist"]
 > * Herunterladen von Kubernetes-Manifestdateien
 > * Ausführen der Anwendung in Kubernetes
 > * Testen der Anwendung
 
-Wechseln Sie zum nächsten Tutorial, wo Sie erfahren, wie Sie eine Kubernetes-Anwendung und die zugrunde liegende Kubernetes-Infrastruktur skalieren. 
+Wechseln Sie zum nächsten Tutorial, wo Sie erfahren, wie Sie eine Kubernetes-Anwendung und die zugrunde liegende Kubernetes-Infrastruktur skalieren.
 
 > [!div class="nextstepaction"]
 > [Scale Kubernetes application and infrastructure][aks-tutorial-scale] (Skalieren einer Kubernetes-Anwendung und -Infrastruktur)

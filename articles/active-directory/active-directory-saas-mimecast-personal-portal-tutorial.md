@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 4f2c5f7323d9d10b6a784da8f45577ccf774b78f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7d8a746df9bea22970da9dc47b5e436a94335f49
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Personal Portal
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Mimecast Personal Portal aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -79,8 +79,6 @@ Zum Konfigurieren der Integration von Mimecast Personal Portal in Azure AD müss
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Mimecast Personal Portal basierend auf einer Testbenutzerin mit dem Namen „Britta Simon“.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Mimecast Personal Portal als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mimecast Personal Portal muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in Mimecast Personal Portal den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Mimecast Personal Portal müssen Sie die folgenden Bausteine ausführen:
 
@@ -118,7 +116,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | Australien       | `https://au-api.mimecast.com/login/saml`|
     | Offshore        | `https://jer-api.mimecast.com/login/saml`|
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
+    b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
 
     | Region  |  Wert | 
     | --------------- | --------------- |
@@ -127,6 +125,16 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | Südafrika    | `https://za-api.mimecast.com/sso/<accountcode>`|
     | Australien       | `https://au-api.mimecast.com/sso/<accountcode>`|
     | Offshore        | `https://jer-api.mimecast.com/sso/<accountcode>`|
+
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein: 
+
+    | Region  |  Wert | 
+    | --------------- | --------------- | 
+    | Europa          | `https://eu-api.mimecast.com/login/saml`|
+    | USA   | `https://us-api.mimecast.com/login/saml`|
+    | Südafrika    | `https://za-api.mimecast.com/login/saml`|
+    | Australien       | `https://au-api.mimecast.com/login/saml`|
+    | Offshore        | `https://jer-api.mimecast.com/login/saml`|
     
     > [!NOTE] 
     > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Mimecast Personal Portal-Client](http://www.mimecast.com/customer-success/technical-support/), um den Wert zu erhalten. 
@@ -137,7 +145,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-mimecast-personal-portal-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Mimecast Personal Portal-Konfiguration** auf **Mimecast Personal Portal konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
@@ -179,10 +187,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     i. Klicken Sie auf **Speichern**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -213,7 +217,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-mimecast-personal-portal-test-user"></a>Erstellen eines Mimecast Personal Portal-Testbenutzers
 

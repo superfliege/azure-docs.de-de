@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0be2952dc39064eaf2814806e81f16e882a6a6fe
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
@@ -24,11 +24,15 @@ Event Grid unterstützt derzeit die folgenden Regionen:
 
 * Asien, Südosten
 * Asien, Osten
+* Australien (Osten)
+* Australien, Südosten
 * USA (Mitte)
 *   USA (Ost)
 *   USA (Ost) 2
 * Europa, Westen
 * Europa, Norden
+* Japan, Osten
+* Japan, Westen
 *   USA, Westen-Mitte
 *   USA (Westen)
 *   USA, Westen 2
@@ -45,10 +49,13 @@ Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an 
 * Benutzerdefinierte Themen
 * Event Hubs
 * IoT Hub
+* Media Services
 * Ressourcengruppen (Verwaltungsvorgänge)
-* SERVICE BUS
+* Service Bus
 * Speicherblob
 * Konten vom Typ „Allgemein v2“
+
+Links zu Artikeln zur Verwendung der einzelnen Ereignisquellen finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md).
 
 ## <a name="event-handlers"></a>Ereignishandler
 
@@ -57,11 +64,15 @@ Derzeit unterstützen die folgenden Azure-Dienste das Verarbeiten von Ereignisse
 * Azure-Automatisierung
 * Azure-Funktionen
 * Event Hubs
+* Hybridverbindungen
 * Logic Apps
 * Microsoft Flow
+* Queue Storage
 * WebHooks
 
 Wenn Sie Azure Functions als Handler einsetzen, verwenden Sie den Event Grid-Trigger anstelle der generischen HTTP-Trigger. Event Grid überprüft Event Grid-Funktionstrigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
+
+Links zu Artikeln zur Verwendung der einzelnen Ereignishandler finden Sie unter [Ereignishandler in Azure Event Grid](event-handlers.md).
 
 ## <a name="concepts"></a>Konzepte
 

@@ -1,6 +1,6 @@
 ---
 title: Verwenden einer Azure App Service-Umgebung
-description: "Erstellen, Veröffentlichen und Skalieren in einer Azure App Service-Umgebung"
+description: Erstellen, Veröffentlichen und Skalieren in einer Azure App Service-Umgebung
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4aaef3fb6748eb974bc9d129b2bd8d42393e1cb8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -58,19 +58,28 @@ So erstellen Sie eine Web-App in einer ASE:
 
 4. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
 
+5. Wählen Sie Ihr Betriebssystem aus. 
+
+    * Das Hosten einer Linux-App in einer ASE ist ein neues Feature in der Vorschau, daher wird empfohlen, einer ASE, in der derzeit eine Produktionsworkload ausgeführt wird, keine Apps für Linux hinzuzufügen. 
+    * Durch das Hinzufügen einer Linux-App zu einer ASE befindet sich die ASE auch im Vorschaumodus. 
+
 5. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan aus, oder erstellen Sie mit den folgenden Schritten einen neuen:
 
     a. Wählen Sie **Neu erstellen**.
 
     b. Geben Sie einen Namen für Ihren App Service-Plan ein.
 
-    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus.
+    c. Wählen Sie Ihre ASE in der Dropdownliste **Speicherort** aus. Das Hosten von Linux-Apps in einer ASE ist derzeit nur in 6 Regionen aktiviert: **„USA, Westen“, „USA, Osten“, „Europa, Westen“, „Europa, Norden“, „Australien, Osten“, „Asien, Südosten“**. 
 
     d. Wählen Sie einen **Isolierten** Tarif. Wählen Sie **Auswählen**.
 
     e. Klicken Sie auf **OK**.
     
     ![Isolierte Tarife][2]
+
+    > [!NOTE]
+    > Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
+    >
 
 6. Klicken Sie auf **Erstellen**.
 

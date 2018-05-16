@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit der Gerätesimulationslösung – Azure | Microsoft-Dokumentation
-description: Die IoT Suite-Simulationslösung ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Dieser Simulationsdienst ist ein eigenständiges Angebot, das zusammen mit anderen vorkonfigurierten Lösungen oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann.
+description: Die IoT Solution Accelerators-Simulationslösung ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Dieser Simulationsdienst ist ein eigenständiges Angebot, das zusammen mit anderen Solution Accelerators oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann.
 services: iot device simulation
 suite: iot-suite
 author: troyhopwood
@@ -12,15 +12,15 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 1452508822f08d4554f419a72f7e9e6018a52469
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7dfd56d06e180dd163fa84d4289e6daf4baefc51
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-simulation-walkthrough"></a>Exemplarische Vorgehensweise bei der Gerätesimulation
 
-Die Azure IoT-Gerätesimulation ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Die Gerätesimulation ist ein eigenständiges Angebot, das Sie zusammen mit anderen vorkonfigurierten Lösungen oder mit Ihren eigenen benutzerdefinierten Lösungen verwenden können.
+Die Azure IoT-Gerätesimulation ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Die Gerätesimulation ist ein eigenständiges Angebot, das zusammen mit anderen Solution Accelerators oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann.
 
 Dieses Tutorial veranschaulicht einige Features der Gerätesimulation. Sie erfahren, wie die Gerätesimulation funktioniert, und können das Tutorial verwenden, um Ihre eigenen IoT-Lösungen zu testen.
 
@@ -39,7 +39,7 @@ Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, sollten Sie zun�
 
 ## <a name="configuring-device-simulation"></a>Konfigurieren der Gerätesimulation
 
-Sie können die Gerätesimulation komplett im Dashboard konfigurieren und ausführen. Öffnen Sie auf der IoT Suite-Seite [Bereitgestellte Lösungen](https://www.azureiotsuite.com/) das Dashboard. Klicken Sie unterhalb Ihrer neuen Gerätesimulation auf **Starten**.
+Sie können die Gerätesimulation komplett im Dashboard konfigurieren und ausführen. Öffnen Sie das Dashboard auf der IoT Solution Accelerators-Seite [Bereitgestellte Lösungen](https://www.azureiotsuite.com/). Klicken Sie unterhalb Ihrer neuen Gerätesimulation auf **Starten**.
 
 ### <a name="target-iot-hub"></a>IoT-Zielhub
 

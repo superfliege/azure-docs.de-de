@@ -1,11 +1,11 @@
 ---
-title: "Node.js – Erste Schritte"
-description: "Erfahren Sie, wie Sie eine einfache Node.js-Webanwendung erstellen und in einem Azure-Clouddienst bereitstellen können."
+title: Node.js – Erste Schritte
+description: Erfahren Sie, wie Sie eine einfache Node.js-Webanwendung erstellen und in einem Azure-Clouddienst bereitstellen können.
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 50951a87-fed4-48e0-bcfa-453b9e50452e
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: d498fc09112c0df7b6ecb81a492b180765fdf883
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 5d69f83aed9160f94260b71e60fcf0e15b435569
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
 
@@ -86,7 +86,7 @@ Dieser Code ist im Wesentlichen identisch mit dem Beispiel "Hello World" auf der
 ## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
 
 > [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Sie können Ihre [MSDN-Abonnentenleistungen aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Testkonto registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
+> Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenleistungen aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Testkonto registrieren](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF).
 
 ### <a name="download-the-azure-publishing-settings"></a>Herunterladen der Azure-Veröffentlichungseinstellungen
 Um die Anwendung in Azure bereitzustellen, müssen Sie zuerst die Veröffentlichungseinstellungen für Ihr Azure-Abonnement herunterladen.

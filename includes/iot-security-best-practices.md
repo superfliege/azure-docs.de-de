@@ -1,3 +1,19 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 2c6f5cf2d89da0c2418ac58ca5d47a8aa05e732f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
 # <a name="internet-of-things-security-best-practices"></a>Internet der Dinge – bewährte Methoden für die Sicherheit
 
 Zum Schützen einer IoT-Infrastruktur (Internet of Things, Internet der Dinge) ist eine umfassende Sicherheitsstrategie erforderlich. Diese Strategie muss folgende Bereiche abdecken: das Sichern von Daten in der Cloud, das Schützen der Integrität der Daten bei der Übertragung über das öffentliche Internet sowie das sichere Bereitstellen von Geräten. Jede Ebene leistet ihren eigenen Beitrag zur Sicherheit der Gesamtinfrastruktur, und die Beiträge bauen aufeinander auf und ergänzen sich.
@@ -7,7 +23,7 @@ Zum Schützen einer IoT-Infrastruktur (Internet of Things, Internet der Dinge) i
 Diese umfassende Sicherheitsstrategie kann mit aktiver Beteiligung verschiedener mit der Herstellung, Entwicklung und Bereitstellung von IoT-Geräten und -Infrastruktur beteiligten Personen entwickelt und durchgesetzt werden. Diese Beteiligten werden nachfolgend ausführlich beschrieben.
 
 * **IoT-Hardwarehersteller/-integrator:** Dies sind in der Regel die Hersteller der bereitgestellten IoT-Hardware, die Integratoren, die Hardware von verschiedenen Herstellern zusammenstellen, oder die Lieferanten, die Hardware für eine von anderen Lieferanten hergestellte oder integrierte IoT-Bereitstellung liefern.
-* **IoT-Lösungsentwickler:** IoT-Lösungen werden normalerweise von einem Lösungsentwickler entwickelt. Dieser Entwickler kann zu einem internen Team oder zu einem auf diese Aktivität spezialisierten Systemintegrator gehören. Der IoT-Lösungsentwickler kann verschiedene Komponenten der IoT-Lösung von Grund auf neu entwickeln, verschiedene Standard- oder Open Source-Komponenten integrieren oder vorkonfigurierte Lösungen verwenden und geringfügige Anpassungen vornehmen.
+* **IoT-Lösungsentwickler:** IoT-Lösungen werden normalerweise von einem Lösungsentwickler entwickelt. Dieser Entwickler kann zu einem internen Team oder zu einem auf diese Aktivität spezialisierten Systemintegrator gehören. Der IoT-Lösungsentwickler kann verschiedene Komponenten der IoT-Lösung von Grund auf neu entwickeln, verschiedene Standard- oder Open Source-Komponenten integrieren oder Solution Accelerators verwenden und geringfügige Anpassungen vornehmen.
 * **IoT-Lösungsbereitsteller:** Nachdem eine IoT-Lösung entwickelt wurde, muss sie vor Ort bereitgestellt werden. Dieser Prozess umfasst die Bereitstellung von Hardware, die Kopplung oder Verbindung von Geräten sowie die Bereitstellung von Lösungen in Hardwaregeräten oder in der Cloud.
 * **IoT-Lösungsoperator:** Nachdem die IoT-Lösung bereitgestellt wurde, muss sie längerfristig betrieben, überwacht, aktualisiert und gewartet werden. Diese Aufgaben können durch ein internes Team aus IT-Experten, Hardwarebetriebs- und Wartungsteams sowie Fachspezialisten erfolgen, die das richtige Verhalten der gesamten IoT-Infrastruktur überwachen.
 

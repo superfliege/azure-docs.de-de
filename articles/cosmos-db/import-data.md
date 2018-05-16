@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 9c4908775ab9a471201cc4bb0c35ab863f5d6d50
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: cd9c5888724b634002d3029cccd42cfda4a433af
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
 
@@ -433,7 +433,7 @@ Zum Importieren von Daten in eine einzelne Sammlung geben Sie den Namen der Samm
 Nachdem Sie den bzw. die Sammlungsnamen angegeben haben, wählen Sie den gewünschten Durchsatz für die Sammlung(en) aus (400 RUs bis 250.000 RUs). Wählen Sie einen höheren Durchsatz, um die beste Importleistung zu erreichen. Weitere Informationen zu Leistungsebenen finden Sie unter [Leistungsebenen in Azure Cosmos DB](performance-levels.md). Importvorgänge in Sammlungen mit einem Durchsatz von mehr als 10.000 RUs erfordern einen Partitionsschlüssel. Ab 250.000 RUs müssen Sie im Portal eine Erhöhungsanfrage für Ihr Konto stellen.
 
 > [!NOTE]
-> Die Durchsatzeinstellung gilt nur für die Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Durchsatz nicht geändert.
+> Die Durchsatzeinstellung gilt nur für die Sammlung oder Sammlungserstellung. Wenn die angegebene Sammlung bereits vorhanden ist, wird der zugehörige Durchsatz nicht geändert.
 > 
 > 
 

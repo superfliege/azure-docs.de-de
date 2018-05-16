@@ -1,74 +1,74 @@
 ---
-title: "Beheben von Problemen mit Geräten in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird erläutert, wie Sie Geräteprobleme in der Remoteüberwachungslösung beheben."
-services: 
+title: Beheben von Problemen mit Geräten in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial wird erläutert, wie Sie Geräteprobleme in der Remoteüberwachungslösung beheben.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: a959276ea61ec0e44ad45197019dfc80f26b768e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Beheben von Geräteproblemen
 
 In diesem Tutorial wird erläutert, wie Sie auf der Seite **Maintenance** (Wartung) in der Lösung Geräteprobleme beheben. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
 
-Contoso testet ein neues Gerät des Typs **Prototype** im Feld. Als Contoso-Bediener bemerken Sie während der Tests, dass das **Prototype**-Gerät unerwartet einen Temperaturalarm im Dashboard auslöst. Sie müssen nun das Verhalten dieses fehlerhaften **Prototype**-Geräts untersuchen.
+Contoso testet ein neues Gerät des Typs **Prototype** im Feld. Als Contoso-Bediener bemerken Sie während der Tests, dass das **Prototype**-Gerät unerwartet eine Temperaturwarnung im Dashboard auslöst. Sie müssen nun das Verhalten dieses fehlerhaften **Prototype**-Geräts untersuchen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 >[!div class="checklist"]
-> * Untersuchen des Alarms auf der Seite **Maintenance** (Wartung)
+> * Untersuchen des Alarms auf der Seite **Maintenance (Wartung)**
 > * Aufrufen einer Gerätemethode zum Beheben des Problems
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
 
 ## <a name="use-the-maintenance-dashboard"></a>Verwenden des Dashboards für die Wartung
 
-Auf der Seite **Dashboard** stellen Sie fest, dass unerwartete Temperaturalarme von der mit den **Prototype**-Geräten verknüpften Regel ausgegeben wurden:
+Auf der Seite **Dashboard** stellen Sie fest, dass unerwartete Temperaturwarnungen von der mit den **Prototype**-Geräten verknüpften Regel ausgegeben wurden:
 
-![Im Dashboard angezeigte Alarme](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
+![Im Dashboard angezeigte Warnungen](media/iot-suite-remote-monitoring-maintain/dashboardalarm.png)
 
-Wählen Sie die Option **Explore Alarm** (Alarm untersuchen) neben dem Alarm aus, um das Problem weiter zu untersuchen:
+Wählen Sie die Option **Explore Alert (Warnung untersuchen)** neben dem Alarm aus, um das Problem weiter zu untersuchen:
 
-![„Explore Alarm“ (Alarm untersuchen) im Dashboard](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
+![„Explore Alert“ (Warnung untersuchen) im Dashboard](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-Die Detailansicht des Alarms zeigt Folgendes an:
+Die Detailansicht der Warnung zeigt Folgendes an:
 
-* Zeitpunkt, zu dem der Alarm ausgelöst wurde
-* Statusinformationen zu den Geräten, die dem Alarm zugeordnet sind
-* Telemetriedaten von den Geräten, die dem Alarm zugeordnet sind
+* Zeitpunkt, zu dem die Warnung ausgelöst wurde
+* Statusinformationen zu den Geräten, die der Warnung zugeordnet sind
+* Telemetriedaten von den Geräten, die der Warnung zugeordnet sind
 
-![Alarmdetails](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
+![Warnungsdetails](media/iot-suite-remote-monitoring-maintain/maintenancealarmdetail.png)
 
-Um den Alarm zu bestätigen, wählen Sie die **Alarm occurrences** (Alarmvorkommen) und dann **Acknowledge** (Bestätigen) aus. Dadurch können andere Bediener sehen, dass Sie den Alarm gesehen haben und daran arbeiten.
+Um die Warnung zu bestätigen, wählen Sie die **Alert occurrences (Warnungsvorkommen)** und dann **Acknowledge (Bestätigen)** aus. So können andere Bediener sehen, dass Sie die Warnung gesehen haben und daran arbeiten.
 
-![Bestätigen der Alarme](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
+![Bestätigen der Warnungen](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
-Wenn Sie den Alarm bestätigen, ändert sich der Status des Vorkommens in **Bestätigt**.
+Wenn Sie die Warnung bestätigen, ändert sich der Status des Vorkommens in **Bestätigt**.
 
-In der Liste können Sie das **Prototype**-Gerät sehen, für das der Temperaturalarm ausgelöst wurde:
+In der Liste können Sie das **Prototype**-Gerät sehen, für das die Temperaturwarnung ausgelöst wurde:
 
-![Liste der Geräte, die den Alarm verursachen](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
+![Liste der Geräte, die die Warnung verursachen](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
 
 ## <a name="remediate-the-issue"></a>Beheben des Problems
 
 Um das Problem bei dem **Prototype**-Gerät zu beheben, müssen Sie die **DecreaseTemperature**-Methode auf dem Gerät aufrufen.
 
-Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Prototype** gibt vier Methoden an, die ein Gerät unterstützen muss:
+Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Jobs (Aufträge)** aus. Das Gerätemodell **Prototype** gibt sechs Methoden an, die ein Gerät unterstützen muss:
 
 ![Anzeigen der vom Gerät unterstützten Methoden](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -90,7 +90,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]
-> * Untersuchen des Alarms auf der Seite **Maintenance** (Wartung)
+> * Untersuchen des Alarms auf der Seite **Maintenance (Wartung)**
 > * Aufrufen einer Gerätemethode zum Beheben des Problems
 
 Nun wissen Sie, wie Geräteprobleme verwaltet werden. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [Ihre Lösung mit simulierten Geräten testen](iot-suite-remote-monitoring-test.md).

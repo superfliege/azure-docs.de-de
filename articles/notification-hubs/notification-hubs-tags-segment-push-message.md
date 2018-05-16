@@ -3,22 +3,22 @@ title: Weiterleitung und Tagausdrücke
 description: In diesem Thema werden Weiterleitung und Tagausdrücke für Azure Notification Hubs erläutert.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 0fffb3bb-8ed8-4e0f-89e8-0de24a47f644
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: c3266698a6077e85806286fadf1f48b7194a4d88
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: e08fca0b6b57d654f2b2ff7b935f38d8c517487b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-and-tag-expressions"></a>Weiterleitung und Tagausdrücke
 ## <a name="overview"></a>Übersicht
@@ -28,12 +28,12 @@ Tagausdrücke ermöglichen Ihnen, bestimmte Sammlungen von Geräten oder speziel
 Die einzige Möglichkeit zum Verwenden bestimmter Benachrichtigungsregistrierungen als Ziel ist das Zuordnen von Tags und das anschließende Verwenden dieser Tags als Ziele. Wie in [Registrierungsverwaltung](notification-hubs-push-notification-registration-management.md)erläutert, muss eine App ein Gerätehandle auf einem Notification Hub registrieren, um Pushbenachrichtigungen empfangen zu können. Sobald eine Registrierung auf einem Notification Hub erstellt wurde, kann das Anwendungs-Back-End Pushbenachrichtigungen an diese senden.
 Das Anwendungs-Back-End kann folgendermaßen auswählen, an welche Registrierungen eine bestimmte Benachrichtigung gesendet werden soll:
 
-1. **Broadcast:**Alle Registrierungen im Notification Hub empfangen die Benachrichtigung.
-2. **Tag:**Alle Registrierungen, die das angegebene Tag enthalten, empfangen die Benachrichtigung.
-3. **Tagausdruck:**Alle Registrierungen, deren Satz von Tags mit dem angegebenen Ausdruck übereinstimmt, empfangen die Benachrichtigung.
+1. **Broadcast:** Alle Registrierungen im Notification Hub empfangen die Benachrichtigung.
+2. **Tag:** Alle Registrierungen, die das angegebene Tag enthalten, empfangen die Benachrichtigung.
+3. **Tagausdruck:** Alle Registrierungen, deren Satz von Tags mit dem angegebenen Ausdruck übereinstimmt, empfangen die Benachrichtigung.
 
 ## <a name="tags"></a>Tags
-Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „_“, „@“ „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt.
+Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „_“, „@“ „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt:
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 
@@ -73,7 +73,7 @@ Eine weitere Möglichkeit zur Verwendung von Tags ist das Identifizieren aller G
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
 
-In dieser Abbildung erreicht die Nachricht mit dem Tag „uid:Alice“ alle Registrierungen, die mit dem Tag „uid:Alice“ gekennzeichnet sind, und erreicht daher alle Geräte von Alice.
+In dieser Abbildung erreicht die Nachricht mit dem Tag „uid:Alice“ alle Registrierungen, die mit dem Tag „uid:Alice“ gekennzeichnet sind, d.h. alle Geräte von Alice.
 
 ## <a name="tag-expressions"></a>Tagausdrücke
 In einigen Fällen hat eine Benachrichtigung eine Gruppe von Registrierungen zum Ziel, die nicht durch ein einzelnes Tag, sondern durch einen booleschen Ausdruck für Tags identifiziert wird.

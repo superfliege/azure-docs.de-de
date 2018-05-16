@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 342aeee25a7cb9f6a0f5af055d04e67d0c52db80
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c180dcf5d769245f3fa2485ccee2cbc18ecf5f67
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -138,7 +138,8 @@ Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderung
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md)  
+[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service für Linux](containers/tutorial-auth-aad.md)  
 [Anpassen der Authentifizierung und Autorisierung in App Service](app-service-authentication-how-to.md)
 
 Anbieterspezifische Anleitungen:

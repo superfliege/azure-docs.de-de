@@ -14,27 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
-ms.openlocfilehash: 303a2bde0a1e0b25ca6eb145e7b0cd6c91fff351
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b86132b42aef981e6218b27e271e6db645d14071
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Vergleich zwischen Azure IoT Hub und Azure Event Hubs
+# <a name="connecting-iot-devices-to-azure-iot-hub-and-event-hubs"></a>Verbinden von IoT-Geräten mit Azure: IoT Hub und Event Hubs
 
-Azure IoT Hub und Azure Event Hubs sind Clouddienste, die große Datenmengen aufnehmen und diese Daten für Einblicke in Geschäftsabläufe verarbeiten oder speichern können. Die beiden Dienste sind insofern ähnlich, dass sie beide Prozessereignis- und Telemetriedaten mit niedriger Latenz und hoher Zuverlässigkeit unterstützen. Allerdings wurde nur IoT Hub mit den spezifischen Funktionen entwickelt, die zur Unterstützung von „Internet der Dinge“-Szenarien im angemessenen Umfang erforderlich sind. 
+Azure bietet Dienste, die speziell für verschiedene Arten von Konnektivität und Kommunikation entwickelt wurden, um Ihnen zu helfen, Ihre Daten mit der Leistungsstärke der Cloud zu verbinden. Azure IoT Hub und Azure Event Hubs sind Clouddienste, die große Datenmengen aufnehmen und diese Daten für Einblicke in Geschäftsabläufe verarbeiten oder speichern können. Die beiden Dienste sind insofern ähnlich, als sie beide die Erfassung von Daten mit geringer Wartezeit und hoher Zuverlässigkeit unterstützen, jedoch für unterschiedliche Zwecke konzipiert sind. IoT Hub wurde speziell entwickelt, um die besonderen Anforderungen bei der Verbindung von IoT-Geräten mit der Azure Cloud nach Maß zu erfüllen, während Event Hubs für das Streaming von Big Data entwickelt wurde. Aus diesem Grund empfiehlt Microsoft den Einsatz von Azure IoT Hub, um IoT-Geräte mit Azure zu verbinden.
 
-Azure IoT Hub ist das verbindende Cloudgateway zwischen Geräten und erfasst Daten für Einblicke in Geschäftsabläufe und Automatisierung. Es vereinfacht das Streamen von Daten in die Cloud und das Verwalten Ihrer Geräte im angemessenen Umfang. Ein wichtiges Unterscheidungsmerkmal zwischen IoT Hub und anderen Datenerfassungsdiensten ist, dass IoT Hub Features enthält, die die Beziehung zwischen Ihren Geräten und Ihren Back-End-Systemen ergänzen. Bidirektionale Kommunikationsfunktionen bedeuten: Während Sie Daten von Geräten empfangen, können Sie auch Nachrichten an Geräte zurücksenden, um Eigenschaften zu aktualisieren oder eine Aktion aufzurufen. Mit Identität auf Geräteebene können Sie Ihr System schützen. Mit verteilter Verarbeitung wird Clouddienstlogik auf Edgegeräte verschoben.
+Azure IoT Hub ist das Cloudgateway, das IoT-Geräte verbindet, um Daten zu sammeln und so geschäftliche Erkenntnisse und Automatisierung zu fördern. Darüber hinaus bietet IoT Hub Funktionen, die die Beziehung zwischen Ihren Geräten und Ihren Back-End-Systemen optimieren. Bidirektionale Kommunikationsfunktionen bedeuten, dass Sie während des Datenempfangs von Geräten auch Befehle und Richtlinien an Geräte zurücksenden können, um beispielsweise Eigenschaften zu aktualisieren oder Geräteverwaltungsaktionen aufzurufen.  Diese Cloud-zu-Gerät-Verbindung ermöglicht auch die Bereitstellung von Cloudintelligenz für Ihre Edge-Geräte mit Azure IoT Edge. Die besondere von IoT Hub bereitgestellte Identität auf Geräteebene hilft Ihnen, Ihre IoT-Lösung besser vor möglichen Angriffen zu schützen. 
 
-[Azure Event Hubs][Azure Event Hubs] ist ein Ereigniserfassungsdienst, der große Mengen an Daten und Telemetrie verarbeiten und speichern kann. Event Hubs ist zur Ereigniserfassung im großen Stil konzipiert, sowohl im Kontext rechenzentrenübergreifender als auch rechenzentreninterner Szenarien, bietet aber nicht die umfangreichen IoT-spezifischen Funktionen, die mit IoT Hub verfügbar sind. Aus diesem Grund empfehlen wir Event Hubs nicht für Ihre IoT-Lösungen. 
+[Azure Event Hubs][Azure Event Hubs] ist der Big Data-Streamingdienst von Azure. Die Lösung ist auf Szenarien für das Streaming von Daten mit hohem Durchsatz ausgelegt, bei denen Kunden täglich Milliarden von Anforderungen senden können. Event Hubs nutzt ein partitioniertes Consumermodell zur horizontalen Skalierung Ihres Streams und ist in die Big Data- und Analysedienste von Azure integriert, darunter Databricks, Stream Analytics, ADLS und HDInsight. Mit Funktionen wie Event Hubs Capture und „Automatische Vergrößerung“ unterstützt dieser Dienst Ihre Big Data-Apps und -Lösungen. Zusätzlich wird Event Hubs von IoT Hub für seinen Telemetrie-Datenflusspfad genutzt, sodass auch Ihre IoT-Lösung von der enormen Leistungsfähigkeit von Event Hubs profitiert.
+
+Zusammenfassend lässt sich sagen, dass beide Lösungen zwar für die Datenerfassung in großem Maßstab ausgelegt sind, aber nur IoT Hub die umfangreichen IoT-spezifischen Funktionen bietet, die für Sie entwickelt wurden, um den betriebswirtschaftlichen Nutzen der Verbindung Ihrer IoT-Geräte mit der Azure-Cloud zu maximieren.  Wenn Sie gerade erst am Anfang Ihrer IoT-Projekte stehen, können Sie mit IoT Hub zur Unterstützung Ihrer Datenerfassungsszenarien beginnen, um sicherzustellen, dass Sie sofortigen Zugriff auf die vollständigen IoT-Funktionen haben, sobald Ihre geschäftlichen und technischen Anforderungen dies erfordern.
 
 Die folgende Tabelle enthält Details zum Vergleich der beiden Tarife von IoT Hub mit Event Hubs, wenn Sie IoT Hub und Event Hubs gemäß ihrer IoT-Funktionen bewerten möchten. Weitere Informationen zu den IoT Hub-Tarifen „Basic“ und „Standard“ finden Sie unter [Skalieren einer IoT Hub-Lösung][lnk-scaling].
 
 | IoT-Funktion | IoT Hub-Standard-Tarif | IoT Hub-Basic-Tarif | Event Hubs |
 | --- | --- | --- | --- |
 | Nachrichten, die von Geräten an die Cloud gesendet werden | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
-| Protokolle: HTTPS, AMQP, AMQP über Websockets | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
-| Protokolle: MQTT, MQTT über Websockets | ![Prüfen][1] | ![Prüfen][1] |  |
+| Protokolle: HTTPS, AMQP, AMQP über webSockets | ![Prüfen][1] | ![Prüfen][1] | ![Prüfen][1] |
+| Protokolle: MQTT, MQTT über webSockets | ![Prüfen][1] | ![Prüfen][1] |  |
 | Gerätebasierte Identität | ![Prüfen][1] | ![Prüfen][1] |  |
 | Dateiupload von Geräten | ![Prüfen][1] | ![Prüfen][1] |  |
 | Device Provisioning-Dienst | ![Prüfen][1] | ![Prüfen][1] |  |

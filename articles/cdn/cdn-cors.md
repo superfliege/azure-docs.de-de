@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -57,7 +57,7 @@ Eine komplexe-Anforderung ist eine CORS-Anforderung, bei der der Browser vor dem
 ## <a name="wildcard-or-single-origin-scenarios"></a>Platzhalter oder Szenarien mit nur einem Ursprung
 CORS für Azure CDN funktioniert automatisch ohne zusätzliche Konfiguration, wenn der **Access-Control-Allow-Origin** -Header auf Platzhalter (*) oder einen einzelnen Ursprung festgelegt ist.  Das CDN speichert die erste Antwort zwischen und nachfolgende Anforderungen verwenden den gleichen Header.
 
-Wenn Anforderungen schon an CDN, gesendet wurden, bevor CORS auf den Ursprung konfiguriert wurde, müssen Sie den Inhalt im Inhalt Ihres Endgeräts entfernen, um den Inhalt mit dem **Access-Control-Allow-Origin** -Header erneut zu laden.
+Wenn Anforderungen schon an CDN gesendet wurden, bevor CORS auf den Ursprung konfiguriert wurde, müssen Sie den Inhalt im Inhalt Ihres Endgeräts entfernen, um den Inhalt mit dem **Access-Control-Allow-Origin**-Header erneut zu laden.
 
 ## <a name="multiple-origin-scenarios"></a>Szenarien mit mehreren Ursprüngen
 Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin** -Header für den ersten CORS-Ursprung zwischenspeichert.  Bei einer Folgeanforderung durch einen anderen CORS-Ursprung stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin**-Header bereit, dieser stimmt jedoch nicht überein.  Es gibt mehrere Möglichkeiten, dies zu korrigieren:
@@ -65,9 +65,9 @@ Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird e
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium von Verizon
 Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**, wodurch erweiterte Funktionen geboten werden. 
 
-Sie müssen [eine Regel erstellen](cdn-rules-engine.md) , um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im **Ursprungsheader** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
+Sie müssen [eine Regel erstellen](cdn-rules-engine.md) , um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im Header **Origin** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
 
-Es gibt zwei Möglichkeiten, dies mit der Regel-Engine zu tun.  In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet komplett die zulässigen CORS-Ursprünge.
+Es gibt zwei Möglichkeiten, dies mit der Regel-Engine zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Ein regulärer Ausdruck mit allen gültigen Ursprüngen
 In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enthält, die Sie zulassen möchten: 
@@ -75,7 +75,7 @@ In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enth
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
+> **Azure CDN Premium von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 > 
 > 
 
@@ -93,6 +93,6 @@ Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jede
 > 
 > 
 
-### <a name="azure-cdn-standard"></a>Azure CDN-Standard
-Auf Azure CDN-Standardprofilen ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md).  Sie müssen Abfragezeichenfolgen für den CDN-Endpunkt aktivieren und anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von jeder zulässigen Domäne verwenden. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard-Profile
+Bei Azure CDN Standard-Profilen (**Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**) besteht die einzige Möglichkeit, mehrere Ursprünge zuzulassen, ohne Platzhalterzeichen zu verwenden, in der Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Aktivieren Sie Abfragezeichenfolgen für den CDN-Endpunkt, und verwenden Sie anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von den einzelnen zulässigen Domänen. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
 

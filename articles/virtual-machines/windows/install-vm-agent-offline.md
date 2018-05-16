@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: genli
-ms.openlocfilehash: 8b9d1ea3e4b5bf959484a737453d7f6f1f63d1e6
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 77ce133232b63a590c6c7f9361d1ca456f484093
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -130,5 +130,5 @@ Führen Sie anschließend den Befehl `Get-AzureVM` aus. Beachten Sie, dass die *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über den Agent für virtuelle Azure-Computer](agent-user-guide.md)
+- [Übersicht über den Agent für virtuelle Azure-Computer](../extensions/agent-windows.md)
 - [Erweiterungen und Features für virtuelle Computer für Windows](extensions-features.md)

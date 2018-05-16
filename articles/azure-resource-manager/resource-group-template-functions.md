@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/09/2018
+ms.date: 04/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: 834488e259caf60ae96450fcf7c8188c5ffb0bc5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e21a8251cc4a85232b92faa05d01d0f73410e496
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
 In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können.
@@ -28,6 +28,8 @@ Sie fügen in Ihren Vorlagen Funktionen hinzu, indem Sie sie in Klammern einschl
 Ein Vorlagenausdruck darf nicht mehr als 24.576 Zeichen aufweisen.
 
 Bei Vorlagenfunktionen und ihren Parametern wird Groß-und Kleinschreibung nicht unterschieden. Der Resource Manager löst beispielsweise **variables('var1')** und **VARIABLES('VAR1')** identisch auf. Bei der Auswertung wird die Groß-/Kleinschreibung beibehalten, sofern diese nicht ausdrücklich durch die Funktion geändert wird (z.B. mit „toUpper“ oder „toLower“). Für spezielle Ressourcentypen gelten möglicherweise Vorgaben zur Schreibweise ungeachtet der Auswertungsweise von Funktionen.
+
+Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](resource-group-authoring-templates.md#functions).
 
 <a id="array" />
 <a id="coalesce" />

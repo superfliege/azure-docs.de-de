@@ -1,7 +1,7 @@
 ---
-title: "Gerätesimulation in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit der vorkonfigurierten Remoteüberwachungslösung verwenden."
-services: 
+title: Gerätesimulation in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit dem Solution Accelerator für Remoteüberwachung verwenden.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,15 +12,19 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 563a5a1c177b1f18be18d9b3cc9f3f9a7ee8ae4a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Erstellen eines neuen simulierten Geräts
 
-In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit der vorkonfigurierten Remoteüberwachungslösung anpassen. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit dem Solution Accelerator für Remoteüberwachung anpassen. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
+
+Das folgende Video gibt einen Überblick über die Optionen zum Anpassen des Microservices zur Gerätesimulation:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 Im ersten Szenario möchte Contoso ein neues intelligentes Leuchtmittelgerät (Lightbulb) testen. Zum Durchführen der Tests erstellen Sie ein neues simuliertes Gerät mit den folgenden Merkmalen:
 
@@ -68,7 +72,7 @@ In der folgenden Tabelle ist der Anfangszustand des Geräts aufgeführt:
 
 Im zweiten Szenario fügen Sie dem vorhandenen **Chiller**-Gerät von Contoso einen neuen Telemetrietyp hinzu.
 
-In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit der vorkonfigurierten Remoteüberwachungslösung verwenden.
+In diesem Tutorial wird erläutert, wie Sie den Gerätesimulator mit dem Solution Accelerator für Remoteüberwachung verwenden:
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -86,7 +90,7 @@ Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simu
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
 
 * Visual Studio 2017 Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
 
@@ -289,10 +293,10 @@ Die Datei **lightbulb-01.json** definiert die Merkmale des Typs, z.B. die generi
         "temperature_unit": "F",
         "status": "on"
       },
-      "Script": {
+      "Interval": "00:00:20",
+      "Scripts": {
         "Type": "javascript",
-        "Path": "lightbulb-01-state.js",
-        "Interval": "00:00:20"
+        "Path": "lightbulb-01-state.js"
       }
     },
     ```
@@ -474,7 +478,7 @@ Sie können nun Ihren neuen simulierten Leuchtmitteltyp testen, indem Sie das Pr
 
     ![Anzahl verbundener Geräte](media/iot-suite-remote-monitoring-test/connecteddevices.png)
 
-1. Navigieren Sie in Ihrem Browser zu dem **Dashboard** Ihrer Lösung für die Remoteüberwachung. Wählen Sie im Telemetriebereich auf dem **Dashboard** die Option **Temperatur** aus. Die Temperatur Ihrer zwei simulierten Geräte wird im Diagramm angezeigt:
+1. Navigieren Sie in Ihrem Browser zu dem **Dashboard** Ihrer Lösung für die Remoteüberwachung. Wählen Sie im Telemetriebereich auf dem **Dashboard** die Option **Temperatur** aus. Die Temperatur aller Ihrer simulierten Geräte wird im Diagramm angezeigt:
 
     ![Temperaturtelemetrie](media/iot-suite-remote-monitoring-test/telemetry.png)
 
@@ -532,7 +536,7 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie über ein Repositor
     publish.cmd
     ```
 
-1. Um den Upload zu überprüfen, rufen Sie die Seite [https://hub.docker.com/](https://hub.docker.com/) auf. Suchen Sie Ihr Repository namens **lightbulb**, und wählen Sie **Details**. Wählen Sie dann **Tags**:
+1. Um den Upload zu überprüfen, rufen Sie [https://hub.docker.com/](https://hub.docker.com/) auf. Suchen Sie Ihr Repository namens **lightbulb**, und wählen Sie **Details**. Wählen Sie dann **Tags**:
 
     ![Docker-Hub](media/iot-suite-remote-monitoring-test/dockerhub.png)
 

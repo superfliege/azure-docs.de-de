@@ -3,8 +3,8 @@ title: Azure-Diagnoseprotokolle | Microsoft-Dokumentation
 description: Kunden können die Protokollanalyse für Azure CDN aktivieren.
 services: cdn
 documentationcenter: ''
-author: ''
-manager: ''
+author: dksimpson
+manager: akucer
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
-ms.author: v-deasim
-ms.openlocfilehash: c367cffa8f0453a0f7e230571d861d039122c291
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: rli
+ms.openlocfilehash: 73c19383b791438c2ae899b45e1b4635e9cd5802
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
@@ -28,7 +28,7 @@ Mit Azure-Diagnoseprotokollen können Sie Daten der Basisanalyse anzeigen und di
  - Azure Event Hubs
  - [Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
-Dieses Feature ist für alle CDN-Endpunkte verfügbar, die zu CDN-Profilen von Verizon (Standard und Premium) und Akamai (Standard) gehören. 
+Dieses Feature ist für CDN-Endpunkte für alle Tarife verfügbar. 
 
 Mit Azure-Diagnoseprotokollen können Sie Metriken zur grundlegenden Nutzung von Ihrem CDN-Endpunkt auf verschiedene Quellkomponenten exportieren, um sie auf die gewünschte Weise zu verwenden. Sie können beispielsweise die folgenden Arten von Datenexport durchführen:
 
@@ -156,10 +156,10 @@ Bevor Sie im Azure Storage-Konto auf die Basisanalysedaten zugreifen können, be
 
 **Beschreibung der Felder:**
 
-|value|Beschreibung|
+|Wert|BESCHREIBUNG|
 |-------|---------|
 |Abonnement-ID    |ID des Azure-Abonnements im GUID-Format|
-|Ressource |Gruppenname: Name der Ressourcengruppe, der die CDN-Ressourcen angehören.|
+|Ressourcengruppenname |Name der Ressourcengruppe, der die CDN-Ressourcen angehören|
 |Profile Name (Profilname) |Name des CDN-Profils|
 |Endpoint Name (Endpunktname) |Name des CDN-Endpunkts|
 |Jahr|  Vierstellige Jahresangabe, z.B. 2017|
@@ -276,47 +276,49 @@ Sie können die Diagrammtypen ziehen und ablegen und die Datendetails eingeben, 
     
 ## <a name="log-data-delays"></a>Protokolldatenverzögerungen
 
-Verizon-Protokolldatenverzögerungen | Akamai-Protokolldatenverzögerungen
---- | ---
-Die Verizon-Protokolldaten werden mit einer Stunde Verzögerung bereitgestellt, und es dauert bis zu zwei Stunden, bis die Daten nach Abschluss der Verteilung auf die Endpunkte angezeigt werden. | Die Akamai-Protokolldaten werden mit einer Verzögerung von 24 Stunden bereitgestellt. Wenn sie vor mehr als 24 Stunden erstellt wurden, dauert es bis zu zwei Stunden, bis sie angezeigt werden. Falls die Daten vor Kurzem erstellt wurden, kann es bis zu 25 Stunden dauern, bis die Protokolle angezeigt werden.
+Die folgende Tabelle zeigt die Verzögerungen bei Protokolldaten für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**.
+
+Microsoft-Protokolldatenverzögerungen | Verizon-Protokolldatenverzögerungen | Akamai-Protokolldatenverzögerungen
+--- | --- | ---
+Um eine Stunde verzögert | Um eine Stunde verzögert, und es dauert bis zu zwei Stunden, bis die Daten nach Abschluss der Verteilung auf die Endpunkte angezeigt werden. | Um 24 Stunden verzögert. Wenn die Daten vor mehr als 24 Stunden erstellt wurden, dauert es bis zu zwei Stunden, bis sie angezeigt werden. Falls die Daten vor Kurzem erstellt wurden, kann es bis zu 25 Stunden dauern, bis die Protokolle angezeigt werden.
 
 ## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Diagnoseprotokolltypen für CDN-Basisanalyse
 
 Wir bieten derzeit nur Basisanalyseprotokolle an, die Metriken mit HTTP-Antwortstatistiken und -Ausgangsstatistiken für die CDN-POPs/-Edges enthalten.
 
 ### <a name="core-analytics-metrics-details"></a>Details zu Basisanalysemetriken
-Die folgende Tabelle enthält eine Liste mit den Metriken, die in den Basisanalyseprotokollen verfügbar sind. Nicht alle Metriken sind für alle Anbieter verfügbar, aber die Unterschiede sind nur minimal. Außerdem ist in der folgenden Tabelle auch angegeben, ob eine Metrik für einen Anbieter verfügbar ist. Beachten Sie, dass die Metriken nur für die CDN-Endpunkte zur Verfügung stehen, für die Datenverkehr anfällt.
+Die folgende Tabelle zeigt eine Liste der in den wichtigsten Analyseprotokollen verfügbaren Metriken für **Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard/Premium von Verizon**. Nicht alle Metriken sind für alle Anbieter verfügbar, aber die Unterschiede sind nur minimal. In dieser Tabelle ist jeweils auch angegeben, ob eine Metrik von einem Anbieter verfügbar ist. Beachten Sie, dass die Metriken nur für die CDN-Endpunkte zur Verfügung stehen, für die Datenverkehr anfällt.
 
 
-|Metrik                     | BESCHREIBUNG   | Verizon  | Akamai 
-|---------------------------|---------------|---|---|
-| RequestCountTotal         |Gesamtzahl von Anforderungstreffern während dieses Zeitraums| Ja  |Ja   |
-| RequestCountHttpStatus2xx |Anzahl aller Anforderungen, die zum HTTP-Code 2xx geführt haben (z.B. 200, 202)              | Ja  |Ja   |
-| RequestCountHttpStatus3xx | Anzahl aller Anforderungen, die zum HTTP-Code 3xx geführt haben (z.B. 300, 302)              | Ja  |Ja   |
-| RequestCountHttpStatus4xx |Anzahl aller Anforderungen, die zum HTTP-Code 4xx geführt haben (z.B. 400, 404)               | Ja   |Ja   |
-| RequestCountHttpStatus5xx | Anzahl aller Anforderungen, die zum HTTP-Code 5xx geführt haben (z.B. 500, 504)              | Ja  |Ja   |
-| RequestCountHttpStatusOthers |  Anzahl aller anderen HTTP-Codes (außerhalb des Bereichs von 2xx bis 5xx) | Ja  |Ja   |
-| RequestCountHttpStatus200 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 200 geführt haben              |Nein    |Ja   |
-| RequestCountHttpStatus206 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 206 geführt haben              |Nein    |Ja   |
-| RequestCountHttpStatus302 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 302 geführt haben              |Nein    |Ja   |
-| RequestCountHttpStatus304 |  Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 304 geführt haben             |Nein    |Ja   |
-| RequestCountHttpStatus404 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 404 geführt haben              |Nein    |Ja   |
-| RequestCountCacheHit |Anzahl aller Anforderungen, die zu einem Cachetreffer geführt haben. Das Objekt wurde direkt vom POP für den Client bereitgestellt.               | Ja  |Nein    |
-| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Dies bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde.              |Ja   | Nein   |
-| RequestCountCacheNoCache | Anzahl aller Anforderungen eines Objekts, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden.              |Ja   | Nein   |
-| RequestCountCacheUncacheable | Anzahl aller Anforderungen von Objekten, für die durch die Header „Cache-Control“ und „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                |Ja   |Nein    |
-| RequestCountCacheOthers | Anzahl aller Anforderungen mit einem Cachestatus, der durch die obigen Metriken nicht abgedeckt ist              |Ja   | Nein   |
-| EgressTotal | Datenübertragung in ausgehender Richtung in GB              |Ja   |Ja   |
-| EgressHttpStatus2xx | Datenübertragung in ausgehender Richtung* für Antworten mit dem HTTP-Statuscode 2xx in GB            |Ja   |Nein    |
-| EgressHttpStatus3xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 3xx in GB              |Ja   |Nein    |
-| EgressHttpStatus4xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 4xx in GB               |Ja   | Nein   |
-| EgressHttpStatus5xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 5xx in GB               |Ja   |  Nein  |
-| EgressHttpStatusOthers | Datenübertragung in ausgehender Richtung für Antworten mit anderen HTTP-Statuscodes in GB                |Ja   |Nein    |
-| EgressCacheHit |  Datenübertragung in ausgehender Richtung für Antworten, die direkt aus dem CDN-Cache auf den CDN-POPs/-Edges bereitgestellt wurden  |Ja   |  Nein  |
-| EgressCacheMiss | Datenübertragung in ausgehender Richtung für Antworten, die nicht auf dem nächstgelegenen POP-Server gefunden und daher vom Ursprungsserver abgerufen wurden              |Ja   |  Nein  |
-| EgressCacheNoCache | Datenübertragung in ausgehender Richtung für Objekte, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden                |Ja   |Nein    |
-| EgressCacheUncacheable | Datenübertragung in ausgehender Richtung für Objekte, für die durch den Header „Cache-Control“ bzw. „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll.                   |Ja   | Nein   |
-| EgressCacheOthers |  Datenübertragungen in ausgehender Richtung für andere Cacheszenarien             |Ja   | Nein   |
+|Metrik                     | BESCHREIBUNG | Microsoft | Verizon | Akamai |
+|---------------------------|-------------|----------|---------|--------|
+| RequestCountTotal         | Gesamtzahl von Anforderungstreffern während dieses Zeitraums | Ja | Ja |Ja |
+| RequestCountHttpStatus2xx | Anzahl aller Anforderungen, die zum HTTP-Code 2xx geführt haben (z.B. 200, 202) | Ja | Ja |Ja |
+| RequestCountHttpStatus3xx | Anzahl aller Anforderungen, die zum HTTP-Code 3xx geführt haben (z.B. 300, 302) | Ja | Ja |Ja |
+| RequestCountHttpStatus4xx | Anzahl aller Anforderungen, die zum HTTP-Code 4xx geführt haben (z.B. 400, 404) | Ja | Ja |Ja |
+| RequestCountHttpStatus5xx | Anzahl aller Anforderungen, die zum HTTP-Code 5xx geführt haben (z.B. 500, 504) | Ja | Ja |Ja |
+| RequestCountHttpStatusOthers | Anzahl aller anderen HTTP-Codes (außerhalb des Bereichs von 2xx bis 5xx) | Ja | Ja |Ja |
+| RequestCountHttpStatus200 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 200 geführt haben | Ja | Nein  |Ja |
+| RequestCountHttpStatus206 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 206 geführt haben | Ja | Nein  |Ja |
+| RequestCountHttpStatus302 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 302 geführt haben | Ja | Nein  |Ja |
+| RequestCountHttpStatus304 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 304 geführt haben | Ja | Nein  |Ja |
+| RequestCountHttpStatus404 | Anzahl aller Anforderungen, die zu einer Antwort mit dem HTTP-Code 404 geführt haben | Ja | Nein  |Ja |
+| RequestCountCacheHit | Anzahl aller Anforderungen, die zu einem Cachetreffer geführt haben. Das Objekt wurde direkt vom POP für den Client bereitgestellt. | Ja | Ja | Nein   |
+| RequestCountCacheMiss | Anzahl aller Anforderungen, die zu einem Cachefehler geführt haben. Dies bedeutet, dass das Objekt nicht auf dem POP gefunden wurde, der die geringste Entfernung zum Client aufweist, und daher vom Ursprungsserver abgerufen wurde. | Ja | Ja | Nein  |
+| RequestCountCacheNoCache | Anzahl aller Anforderungen eines Objekts, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden. | Ja | Ja | Nein  |
+| RequestCountCacheUncacheable | Anzahl aller Anforderungen von Objekten, für die durch die Header „Cache-Control“ und „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll. | Ja | Ja | Nein  |
+| RequestCountCacheOthers | Anzahl aller Anforderungen mit einem Cachestatus, der durch die obigen Metriken nicht abgedeckt ist | Nein  | Ja | Nein   |
+| EgressTotal | Datenübertragung in ausgehender Richtung in GB | Ja |Ja |Ja |
+| EgressHttpStatus2xx | Datenübertragung in ausgehender Richtung* für Antworten mit dem HTTP-Statuscode 2xx in GB | Ja | Ja | Nein   |
+| EgressHttpStatus3xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 3xx in GB | Ja | Ja | Nein   |
+| EgressHttpStatus4xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 4xx in GB | Ja | Ja | Nein   |
+| EgressHttpStatus5xx | Datenübertragung in ausgehender Richtung für Antworten mit dem HTTP-Statuscode 5xx in GB | Ja | Ja | Nein  |
+| EgressHttpStatusOthers | Datenübertragung in ausgehender Richtung für Antworten mit anderen HTTP-Statuscodes in GB | Ja | Ja | Nein   |
+| EgressCacheHit | Datenübertragung in ausgehender Richtung für Antworten, die direkt aus dem CDN-Cache auf den CDN-POPs/-Edges bereitgestellt wurden | Ja | Ja | Nein  |
+| EgressCacheMiss | Datenübertragung in ausgehender Richtung für Antworten, die nicht auf dem nächstgelegenen POP-Server gefunden und daher vom Ursprungsserver abgerufen wurden | Ja | Ja | Nein  |
+| EgressCacheNoCache | Datenübertragung in ausgehender Richtung für Objekte, die aufgrund einer Benutzerkonfiguration im Edgebereich nicht zwischengespeichert wurden | Ja | Ja | Nein  |
+| EgressCacheUncacheable | Datenübertragung in ausgehender Richtung für Objekte, für die durch den Header „Cache-Control“ bzw. „Expires“ das Zwischenspeichern verhindert wird. Mit diesen Headern wird angegeben, dass keine Zwischenspeicherung auf einem POP oder durch den HTTP-Client erfolgen soll. | Ja | Ja | Nein  |
+| EgressCacheOthers | Datenübertragungen in ausgehender Richtung für andere Cacheszenarien | Nein  | Ja | Nein  |
 
 *Datenübertragung in ausgehender Richtung bezieht sich hier auf Datenverkehr, der von CDN-POP-Servern auf dem Client bereitgestellt wird.
 
@@ -368,7 +370,7 @@ Alle Protokolle werden im JSON-Format gespeichert, und jeder Eintrag enthält Ze
 }
 ```
 
-Hierbei steht „time“ für die Startzeit der Stundengrenze, für die die Statistik gemeldet wird. Wenn eine Metrik von einem CDN-Anbieter nicht unterstützt wird, ist anstelle eines double- oder integer-Werts ein NULL-Wert vorhanden. Mit diesem NULL-Wert wird das Fehlen einer Metrik angegeben. Dies ist ein anderer Wert als der Wert 0. Auf dem Endpunkt ist pro Domäne ein Satz mit diesen Metriken konfiguriert.
+Hierbei steht *time* für die Startzeit der Stundengrenze, für die die Statistik gemeldet wird. Wenn eine Metrik von einem CDN-Anbieter nicht unterstützt wird, ist anstelle eines double- oder integer-Werts ein NULL-Wert vorhanden. Mit diesem NULL-Wert wird das Fehlen einer Metrik angegeben. Dies ist ein anderer Wert als der Wert 0. Auf dem Endpunkt ist pro Domäne ein Satz mit diesen Metriken konfiguriert.
 
 Beispiele für Eigenschaften:
 

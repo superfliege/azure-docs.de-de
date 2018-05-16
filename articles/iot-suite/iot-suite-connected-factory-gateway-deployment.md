@@ -1,12 +1,12 @@
 ---
-title: "Bereitstellen des Connected Factory-Gateways – Azure | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie ein Gateway unter Windows oder Linux bereitgestellt wird, um Verbindungen mit der vorkonfigurierten Connected Factory-Lösung zu ermöglichen."
-services: 
+title: Bereitstellen des Gateways für Ihre verbundene Factory – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie ein Gateway unter Windows oder Linux bereitgestellt wird, um Verbindungen mit dem Solution Accelerator für verbundene Factorys zu ermöglichen.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 956da99a5d67d7a2225ab3ea64b4e5a9d41ee3a1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>Bereitstellen eines Edge-Gateways für die vorkonfigurierte Connected Factory-Lösung unter Windows oder Linux
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Bereitstellen eines Edge-Gateways für den Solution Accelerator für verbundene Factorys unter Windows oder Linux
 
-Sie benötigen zwei Softwarekomponenten für die Bereitstellung eines Edge-Gateways für die vorkonfigurierte *Connected Factory*-Lösung:
+Sie benötigen zwei Softwarekomponenten, um ein Edge-Gateways für den Solution Accelerator für *verbundene Factorys* bereitzustellen:
 
-- Der *OPC-Proxy* stellt eine Verbindung mit der Connected Factory her. Der OPC-Proxy wartet dann auf Befehls- und Kontrollmeldungen vom integrierten OPC-Browser, der im Portal der Connected Factory-Lösung ausgeführt wird.
+- Der *OPC-Proxy* stellt eine Verbindung mit der verbundenen Factory her. Anschließend wartet der OPC-Proxy auf Befehls- und Kontrollmeldungen vom integrierten OPC-Browser, der im Portal der Lösung für verbundene Factorys ausgeführt wird.
 
-- Der *OPC Publisher* stellt eine Verbindung mit vorhandenen lokalen OPC UA-Servern her und leitet deren Telemetriemeldungen an die Connected Factory weiter. Sie können eine Verbindung mit einem klassischen OPC-Gerät mithilfe des [OPC Classic-Adapters für OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md) herstellen.
+- Der *OPC Publisher* stellt eine Verbindung mit vorhandenen lokalen OPC UA-Servern her und leitet deren Telemetriemeldungen an die verbundene Factory weiter. Sie können eine Verbindung mit einem klassischen OPC-Gerät mithilfe des [OPC Classic-Adapters für OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md) herstellen.
 
 Beide Komponenten sind Open-Source-Lösungen, die als Quelle auf GitHub und als Docker-Container auf DockerHub verfügbar sind:
 
@@ -37,14 +37,14 @@ Beide Komponenten sind Open-Source-Lösungen, die als Quelle auf GitHub und als 
 
 Für keine der beiden Komponenten sind öffentlich erreichbare IP-Adressen oder offene eingehende Ports in der Gateway-Firewall erforderlich. Die Komponenten OPC Proxy und OPC Publisher nutzen nur den ausgehenden Port 443.
 
-Die Schritte in diesem Artikel veranschaulichen die Bereitstellung eines Edge-Gateways mit Docker unter Windows oder Linux. Das Gateway ermöglicht Verbindungen mit der vorkonfigurierten Connected Factory-Lösung. Die Komponenten können auch ohne Connected Factory verwendet werden.
+Die Schritte in diesem Artikel veranschaulichen die Bereitstellung eines Edge-Gateways mit Docker unter Windows oder Linux. Das Gateway ermöglicht Verbindungen mit dem Solution Accelerator für verbundene Factorys. Die Komponenten können auch ohne verbundene Factory verwendet werden.
 
 > [!NOTE]
 > Beide Komponenten können als Module in [Azure IoT Edge](https://github.com/Azure/iot-edge) verwendet werden.
 
 ## <a name="choose-a-gateway-device"></a>Auswählen eines Gatewaygeräts
 
-Falls Sie noch kein Gatewaygerät haben, empfiehlt Microsoft, ein kommerzielles Gateway von einem unserer Partner zu kaufen. Eine Liste der Gatewaygeräte, die mit der Connected Factory-Lösung kompatibel sind, finden Sie im [Katalog der Azure IoT-Geräte](https://catalog.azureiotsuite.com/?q=opc). Befolgen Sie die für das Gerät geltenden Anweisungen, um das Gateway einzurichten.
+Falls Sie noch kein Gatewaygerät haben, empfiehlt Microsoft, ein kommerzielles Gateway von einem unserer Partner zu kaufen. Eine Liste der Gatewaygeräte, die mit der Lösung für verbundene Factorys kompatibel sind, finden Sie im [Katalog der Azure IoT-Geräte](https://catalog.azureiotsuite.com/?q=opc). Befolgen Sie die für das Gerät geltenden Anweisungen, um das Gateway einzurichten.
 
 Alternativ können Sie ein vorhandenes Gatewaygerät manuell konfigurieren, indem Sie die folgenden Anweisungen befolgen.
 
@@ -75,7 +75,7 @@ Weitere Informationen finden Sie unter [Use volumes](https://docs.docker.com/eng
 
 Bevor Sie die OPC-Komponenten installieren, führen Sie die folgenden Schritte aus, um die Umgebung vorzubereiten:
 
-1. Um die Gatewaybereitstellung abzuschließen, benötigen Sie die **iothubowner**-Verbindungszeichenfolge des IoT-Hubs in Ihrer Connected Factory-Bereitstellung. Navigieren Sie im [Azure-Portal](http://portal.azure.com/) zu Ihrem IoT Hub in der Ressourcengruppe, die bei der Bereitstellung der Connected Factory-Lösung erstellt wurde. Klicken Sie auf **SAS-Richtlinien**, um auf die **iothubowner**-Verbindungszeichenfolge zuzugreifen:
+1. Um die Gatewaybereitstellung abzuschließen, benötigen Sie die **iothubowner**-Verbindungszeichenfolge des IoT Hub in Ihrer Bereitstellung mit verbundener Factory. Navigieren Sie im [Azure-Portal](http://portal.azure.com/) zu Ihrem IoT Hub in der Ressourcengruppe, die bei der Bereitstellung der Lösung für verbundene Factorys erstellt wurde. Klicken Sie auf **SAS-Richtlinien**, um auf die **iothubowner**-Verbindungszeichenfolge zuzugreifen:
 
     ![Suchen der IoT Hub-Verbindungszeichenfolge](./media/iot-suite-connected-factory-gateway-deployment/image2.png)
 
@@ -143,33 +143,33 @@ OPC Proxy speichert die Verbindungszeichenfolge während der Installation. Bei n
 
 ## <a name="enable-your-gateway"></a>Aktivieren des Gateways
 
-Führen Sie die folgenden Schritte aus, um Ihr Gateway in der vorkonfigurierten Lösung für die Connected Factory zu aktivieren:
+Führen Sie die folgenden Schritte aus, um Ihr Gateway im Solution Accelerator für verbundene Factorys zu aktivieren:
 
-1. Wenn beide Komponenten ausgeführt werden, navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung. Diese Seite steht in der Lösung nur Administratoren zur Verfügung. Geben Sie die Herausgeberendpunkt-URL (opc.tcp://publisher:62222) ein, und klicken Sie auf **Verbinden**.
+1. Wenn beide Komponenten ausgeführt werden, browsen Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Lösung für verbundene Factorys. Diese Seite steht in der Lösung nur Administratoren zur Verfügung. Geben Sie die Herausgeberendpunkt-URL (opc.tcp://publisher:62222) ein, und klicken Sie auf **Verbinden**.
 
-1. Richten Sie eine Vertrauensstellung zwischen dem Portal der Connected Factory und OPC Publisher ein. Wenn eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Vorgang fortsetzen**. Als Nächstes sehen Sie eine Fehlermeldung, die besagt, dass OPC Publisher dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclient**-Zertifikat aus dem Ordner `<SharedFolder>/CertificateStores/rejected/certs` in den Ordner `<SharedFolder>/CertificateStores/trusted/certs` auf dem Gateway. Sie brauchen das Gateway nicht neu zu starten.
+1. Richten Sie eine Vertrauensstellung zwischen dem Portal für verbundene Factorys und OPC Publisher ein. Wenn eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Vorgang fortsetzen**. Als Nächstes sehen Sie eine Fehlermeldung, die besagt, dass OPC Publisher dem UA-Webclient nicht vertraut. Kopieren Sie zum Beheben dieses Fehlers das **UA-Webclient**-Zertifikat aus dem Ordner `<SharedFolder>/CertificateStores/rejected/certs` in den Ordner `<SharedFolder>/CertificateStores/trusted/certs` auf dem Gateway. Sie brauchen das Gateway nicht neu zu starten.
 
 Sie können jetzt über die Cloud eine Verbindung mit dem Gateway herstellen, und Sie sind bereit, OPC UA-Server zur Lösung hinzuzufügen.
 
 ## <a name="add-your-own-opc-ua-servers"></a>Hinzufügen von eigenen OPC UA-Servern
 
-So fügen Sie der vorkonfigurierten Connected Factory-Lösung eigene OPC UA-Server hinzu:
+So fügen Sie dem Solution Accelerator für verbundene Factorys eigene OPC UA-Server hinzu
 
-1. Navigieren Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Connected Factory-Lösung.
+1. Browsen Sie zur Seite **Verbinden mit dem eigenen OPC UA-Server** im Portal der Lösung für verbundene Factorys.
 
     1. Starten Sie den OPC UA-Server, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass Ihr OPC UA-Server über OPC Publisher und OPC Proxy, die im Container ausgeführt werden, erreichbar ist (siehe die vorherigen Kommentare zur Namensauflösung).
     1. Geben Sie die Endpunkt-URL des OPC UA-Servers (`opc.tcp://<host>:<port>`) ein, und klicken Sie auf **Verbinden**.
-    1. Als Teil der Verbindungseinrichtung wird eine Vertrauensstellung zwischen dem Connected Factory-Portal (OPC UA-Client) und dem OPC UA-Server, mit dem Sie eine Verbindung herstellen möchten, eingerichtet. Auf dem Connected Factory-Dashboard erhalten Sie eine **Warnung, dass das Zertifikat des Servers, mit dem Sie eine Verbindung herstellen möchten, nicht überprüft werden kann**. Wenn eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Vorgang fortsetzen**.
-    1. Eine kompliziertere Methode ist die Zertifikatkonfiguration des OPC UA-Servers, mit dem Sie eine Verbindung herstellen möchten. Für PC-basierte OPC UA-Server wird möglicherweise nur ein Warndialogfeld auf dem Dashboard angezeigt, das Sie bestätigen können. Bei eingebetteten OPC UA-Serversystemen finden Sie in der Dokumentation Ihres OPC UA-Servers Hinweise dazu, wie diese Aufgabe ausgeführt wird. Um diese Aufgabe abzuschließen, benötigen Sie möglicherweise das Zertifikat des OPC UA-Clients im Connected Factory-Portal. Ein Administrator kann dieses Zertifikat auf der Seite **Eigenen OPC UA-Server verbinden** herunterladen:
+    1. Im Rahmen des Verbindungssetups wird eine Vertrauensstellung zwischen dem Portal der verbunden Factory (OPC UA-Client) und dem OPC UA-Server, mit dem Sie eine Verbindung herstellen möchten, eingerichtet. Auf dem Dashboard für verbundene Factorys erhalten Sie eine **Warnung, dass das Zertifikat des Servers, mit dem Sie eine Verbindung herstellen möchten, nicht überprüft werden kann**. Wenn eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Vorgang fortsetzen**.
+    1. Eine kompliziertere Methode ist die Zertifikatkonfiguration des OPC UA-Servers, mit dem Sie eine Verbindung herstellen möchten. Für PC-basierte OPC UA-Server wird möglicherweise nur ein Warndialogfeld auf dem Dashboard angezeigt, das Sie bestätigen können. Bei eingebetteten OPC UA-Serversystemen finden Sie in der Dokumentation Ihres OPC UA-Servers Hinweise dazu, wie diese Aufgabe ausgeführt wird. Um diese Aufgabe abzuschließen, benötigen Sie möglicherweise das Zertifikat des OPC UA-Clients im Portal für verbundene Factorys. Ein Administrator kann dieses Zertifikat auf der Seite **Eigenen OPC UA-Server verbinden** herunterladen:
 
         ![Lösungsportal](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
 
-1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, die Werte an Connected Factory senden möchten, und wählen Sie **Veröffentlichen** aus.
+1. Wechseln Sie zur OPC UA-Knotenstruktur Ihres OPC UA-Servers, klicken Sie mit der rechten Maustaste auf die OPC-Knoten, die Werte an die verbundene Factory senden möchten, und wählen Sie **Veröffentlichen** aus.
 
-1. Telemetriedaten werden jetzt vom Gatewaygerät übertragen. Sie können die Telemetriedaten in der Ansicht **Factoryspeicherorte** des Connected Factory-Portals unter **Neue Factory** anzeigen.
+1. Telemetriedaten werden jetzt vom Gatewaygerät übertragen. Sie können die Telemetriedaten in der Ansicht **Factoryspeicherorte** des Portals für verbundene Factorys unter **Neue Factory** anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über die Architektur der vorkonfigurierten Connected Factory-Lösung finden Sie unter [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
+Weitere Informationen über die Architektur des Solution Accelerators für die verbundene Factory finden Sie unter [Solution Accelerator für verbundene Factorys – exemplarische Vorgehensweise](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-sample-walkthrough).
 
 Informieren Sie sich über die [OPC Publisher-Referenzimplementierung](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

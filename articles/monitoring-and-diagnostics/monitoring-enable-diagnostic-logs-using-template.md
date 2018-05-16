@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2018
 ms.author: johnkem
-ms.openlocfilehash: 76021642073c7463254f51e84efd9af459af2244
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 5b372ae5a7ff2ad26e4bb83675f592df3f08931b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -259,7 +259,7 @@ Führen Sie die folgenden Schritte aus, um die Diagnose für eine Computeressour
 3. Fügen Sie den Inhalt der WADCfg-XML-Datei in die XMLCfg-Eigenschaft ein, und achten Sie dabei darauf, dass alle XML-Zeichen ordnungsgemäß mit Escapezeichen versehen sind.
 
 > [!WARNING]
-> Der letzte Schritt ist unter Umständen nicht ganz einfach. [diesem Artikel](../virtual-machines/windows/extensions-diagnostics-template.md#diagnostics-configuration-variables) finden Sie ein Beispiel, in dem das Diagnosekonfigurationsschema in Variablen aufgeteilt wird, die korrekt mit Escapezeichen versehen und ordnungsgemäß formatiert sind.
+> Der letzte Schritt ist unter Umständen nicht ganz einfach. [diesem Artikel](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) finden Sie ein Beispiel, in dem das Diagnosekonfigurationsschema in Variablen aufgeteilt wird, die korrekt mit Escapezeichen versehen und ordnungsgemäß formatiert sind.
 > 
 > 
 

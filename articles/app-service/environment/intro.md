@@ -11,26 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/20/2018
+ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 0b113a594ebf1180346eccc295251f522dcc29c5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6be6bb3b6b75b278a7c28307d93d6273c5bb18d6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
 ## <a name="overview"></a>Übersicht ##
 
-Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Diese Funktion kann Ihre Web-Apps, [mobilen Apps][mobileapps], API-Apps und [Funktionen][Functions] hosten.
+Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Apps mit umfangreicher Skalierung bereitstellt. Über diese Funktion können folgende Elemente gehostet werden:
+
+* Windows-Web-Apps
+* Linux-Web-Apps (in der Vorschau)
+* Docker-Container (in der Vorschau)
+* Mobile Apps
+* Functions
 
 App Service-Umgebungen (App Service Environments, ASEs) sind ideal geeignet für Anwendungsworkloads mit folgenden Anforderungen:
 
-- Unterstützung sehr vieler Apps
-- Isolierung und sicherer Netzwerkzugriff
-- Hohe Speicherauslastung
+* Unterstützung sehr vieler Apps
+* Isolierung und sicherer Netzwerkzugriff
+* Hohe Speicherauslastung
 
 Kunden können mehrere ASEs innerhalb einer einzelnen Azure-Region oder über mehrere Azure-Regionen verteilt einrichten. Durch diese Flexibilität eignen sich ASEs hervorragend für die horizontale Skalierung zustandsloser Anwendungsebenen zur Unterstützung hoher RPS-Workloads.
 
@@ -39,7 +45,7 @@ Aufgrund der Isolierung werden in ASEs nur Anwendungen eines einzelnen Kunden au
 * ASEs ermöglichen hoch skalierbares App-Hosting mit sicherem Netzwerkzugriff. Weitere Informationen finden Sie unter [AzureCon Deep Dive](https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/) in ASEs.
 * Für die horizontale Skalierung können mehrere ASEs verwendet werden. Weitere Informationen finden Sie unter [Vorgehensweise zum Einrichten einer geografisch verteilten App-Umgebung](app-service-app-service-environment-geo-distributed-scale.md).
 * ASEs können verwendet werden, um eine Sicherheitsarchitektur zu konfigurieren, wie in AzureCon Deep Dive dargestellt wird. Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel zum [Implementieren einer Sicherheitsarchitektur mit Ebenen](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
-* Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Konfigurieren einer WAF für App Service-Umgebungen](app-service-app-service-environment-web-application-firewall.md).
+* Der Zugriff von Apps in ASEs kann durch Upstreamgeräte wie z.B. Web Application Firewalls (WAFs) abgegrenzt werden. Weitere Informationen finden Sie unter [Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway][AppGW].
 
 ## <a name="dedicated-environment"></a>Dedizierte Umgebung ##
 
@@ -59,7 +65,7 @@ Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur
 
 ## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke ##
 
-Eine ASE kann nur in einem virtuellen Azure Resource Manager-Netzwerk erstellt werden. Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie unter [Virtuelle Azure-Netzwerke – FAQs](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Eine ASE befindet sich immer in einem virtuellen Netzwerk, genauer gesagt, in einem Subnetz eines virtuellen Netzwerks. Mithilfe der Sicherheitsfunktionen virtueller Netzwerke können Sie ein- und ausgehende Netzwerkkommunikation für Ihre Apps steuern.
+Das ASE-Feature ist eine Bereitstellung von Azure App Service direkt im virtuellen Azure Resource Manager-Netzwerk eines Kunden. Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie unter [Virtuelle Azure-Netzwerke – FAQs](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Eine ASE befindet sich immer in einem virtuellen Netzwerk, genauer gesagt, in einem Subnetz eines virtuellen Netzwerks. Mithilfe der Sicherheitsfunktionen virtueller Netzwerke können Sie ein- und ausgehende Netzwerkkommunikation für Ihre Apps steuern.
 
 Eine ASE kann entweder für Internetzugriff mit einer öffentlichen IP-Adresse oder für die ausschließliche interne Verwendung mit einer Azure-ILB-Adresse (Internal Load Balancer) eingerichtet werden.
 

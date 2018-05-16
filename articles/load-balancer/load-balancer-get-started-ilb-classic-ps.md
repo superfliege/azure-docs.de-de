@@ -1,11 +1,11 @@
 ---
-title: "Erstellen einer Azure-Instanz mit internem Lastenausgleich – PowerShell (klassisch) | Microsoft-Dokumentation"
+title: Erstellen einer Azure-Instanz mit internem Lastenausgleich – PowerShell (klassisch) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell einen internen Load Balancer im klassischen Bereitstellungsmodell erstellen.
 services: load-balancer
 documentationcenter: na
-author: KumudD
-manager: timlt
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 tags: azure-service-management
 ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: kumud
-ms.openlocfilehash: 85fd757bdd6dd9906a23977b760f01bb1f85bf77
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: genli
+ms.openlocfilehash: 8b896705d90b51c056172c285a00dabeed54ebf2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Erste Schritte zum Erstellen eines internen Load Balancers (klassisch) mithilfe von PowerShell
 
@@ -62,7 +62,7 @@ Beachten Sie, dass bei dieser Verwendung des Windows PowerShell-Cmdlets [Add-Azu
 
 ### <a name="step-2-add-endpoints-to-the-internal-load-balancing-instance"></a>Schritt 2: Hinzufügen von Endpunkten zur ILB-Instanz
 
-Beispiel:
+Beispiel: 
 
 ```powershell
 $svc="mytestcloud"
@@ -87,7 +87,7 @@ $svc="<Cloud Service Name>"
 Get-AzureService -ServiceName $svc | Get-AzureInternalLoadBalancer
 ```
 
-Geben Sie zum Verwenden dieser Befehle die entsprechenden Werte ein, und entfernen Sie die Symbole „<“ und „>“. Beispiel:
+Geben Sie zum Verwenden dieser Befehle die entsprechenden Werte ein, und entfernen Sie die Symbole „<“ und „>“. Beispiel: 
 
 ```powershell
 $svc="mytestcloud"
@@ -148,7 +148,7 @@ Get-AzureVM -ServiceName $svc -Name $vmname | Remove-AzureEndpoint -Name $epname
 
 Geben Sie zum Verwenden dieser Befehle die entsprechenden Werte ein, und entfernen Sie dabei die Symbole „<“ und „>“.
 
-Beispiel:
+Beispiel: 
 
 ```powershell
 $svc="mytestcloud"
@@ -166,7 +166,7 @@ Remove-AzureInternalLoadBalancer -ServiceName $svc
 
 Geben Sie zum Verwenden dieser Befehle den entsprechenden Wert ein, und entfernen Sie die Symbole „<“ und „>“.
 
-Beispiel:
+Beispiel: 
 
 ```powershell
 $svc="mytestcloud"

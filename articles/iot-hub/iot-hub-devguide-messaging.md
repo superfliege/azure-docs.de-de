@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c1c3191ba198b56386f813b6f9d2588b895633c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 50f95dc1af334468db25bce68f2ca00e0965a28b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>Messaging zwischen Geräten und Cloud mit IoT Hub
 
@@ -31,7 +31,7 @@ Verwenden Sie IoT Hub-Messaging für die Kommunikation mit Ihren Geräten durch:
 
 Die wichtigsten Eigenschaften beim IoT Hub-Messaging sind eine zuverlässige und stabile Übermittlung von Nachrichten. Diese Eigenschaften ermöglichen Ausfallsicherheit bei zeitweiligen Verbindungsproblemen auf Geräteseite und Lastspitzen bei der Ereignisverarbeitung auf Cloudseite. IoT Hub implementiert *mindestens einmal* Übermittlungsgarantien für das D2C- und C2D-Messaging.
 
-Eine Einführung in die Funktionen von IoT Hub finden Sie in den Artikeln [Azure und Internet der Dinge][lnk-azure-iot] und [Übersicht über den Azure IoT Hub-Dienst][lnk-iot-hub-overview].
+Eine Einführung in die Funktionen von IoT Hub finden Sie unter [Übersicht über den Azure IoT Hub-Dienst][lnk-iot-hub-overview].
 
 ## <a name="when-to-use-iot-hub-messaging"></a>Szenarien für die Verwendung von IoT Hub-Messaging
 

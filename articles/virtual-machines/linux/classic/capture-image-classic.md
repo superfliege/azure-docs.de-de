@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 29a1d5bc839fcf533973271638bf283d6e48e93b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6071e025352199c5ec559598a580a918c2e9c666
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-capture-a-classic-linux-virtual-machine-as-an-image"></a>Erfassen eines klassischen virtuellen Linux-Computers als Image
 > [!IMPORTANT]
@@ -107,7 +107,7 @@ Das Image kann jetzt zum Erstellen virtueller Computer verwendet werden. Sie kö
 
 Sie können auch im [Azure-Portal](http://portal.azure.com) einen benutzerdefinierten virtuellen Computer erstellen, indem Sie die **Image**-Methode verwenden und das erstellte Image auswählen. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten virtuellen Linux-Computers][How to Create a Custom Virtual Machine].
 
-**Siehe auch**[Benutzerhandbuch für Azure Linux-Agent](../agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+**Siehe auch**[Benutzerhandbuch für Azure Linux-Agent](../../extensions/agent-linux.md)
 
 [About Virtual Machine Images in Azure]:../../virtual-machines-linux-classic-about-images.md
 [How to Create a Custom Virtual Machine]:create-custom-classic.md

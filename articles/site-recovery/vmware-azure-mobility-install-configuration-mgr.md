@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 8382fadc02a7e80b6f28bd777f423013aed9add3
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 50328fc3b594a9162ffb9f82f699f43f9106640f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatisieren der Mobility Service-Installation mit System Center Configuration Manager
 
@@ -49,7 +49,7 @@ Sie können die Mobility Service-Installation auch mit [Azure Automation DSC](vm
 4. Kopieren Sie die Datei **MobSvc.passphrase** in den Ordner **MobSvcWindows** auf der Netzwerkfreigabe.
 5. Wechseln Sie zum Installerrepository auf dem Konfigurationsserver, indem Sie den folgenden Befehl ausführen:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Kopieren Sie **Microsoft ASR\_UA\_*Version*\_Windows\_GA\_*Datum*\_Release.exe** in den Ordner **MobSvcWindows** auf der Netzwerkfreigabe.
 7. Kopieren Sie den folgenden Code, und speichern Sie ihn als **install.bat** im Ordner **MobSvcWindows**.
@@ -230,7 +230,7 @@ Sie können den Bereitstellungsstatus mithilfe der Configuration Manager-Konsole
 4. Kopieren Sie die Datei **MobSvc.passphrase** in den Ordner **MobSvcLinux** auf der Netzwerkfreigabe.
 5. Wechseln Sie zum Installerrepository auf dem Konfigurationsserver, indem Sie den folgenden Befehl ausführen:
 
-   `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
+   `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Kopieren Sie die folgenden Dateien in den Ordner **MobSvcLinux** auf der Netzwerkfreigabe:
    * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz

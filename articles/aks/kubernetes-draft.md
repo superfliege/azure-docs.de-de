@@ -3,19 +3,19 @@ title: Verwenden von Draft mit AKS und Azure Container Registry
 description: Verwenden von Draft mit AKS und Azure Container Registry
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b91d446f4c43a4ecae40ef49e5e7f930f25e6ad2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bb80d68d7ac37c8930626b5163597dc0e492a0d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="use-draft-with-azure-container-service-aks"></a>Verwenden von Draft mit Azure Container Service (AKS)
+# <a name="use-draft-with-azure-kubernetes-service-aks"></a>Verwenden von Draft mit Azure Kubernetes Service (AKS)
 
 Draft ist ein Open-Source-Tool für die Einbindung und Bereitstellung dieser Container in Kubernetes-Clustern. Dadurch können Sie sich auf den Entwicklungszyklus (die „innere Schleife“ der konzentrierten Entwicklung) konzentrieren. Draft wird verwendet, während der Code entwickelt wird, jedoch vor dem Commit an die Versionskontrolle. Mit Draft können Sie für Kubernetes schnell eine Anwendung erneut bereitstellen, wenn sich Änderungen am Code ergeben. Weitere Informationen zu Draft finden Sie in der [Draft-Dokumentation auf GitHub][draft-documentation].
 
@@ -27,7 +27,7 @@ Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-
 
 Außerdem benötigen Sie eine private Docker-Registrierung in Azure Container Registry (ACR). Wie Sie eine ACR-Instanz bereitstellen, erfahren Sie in der [Schnellstartanleitung für Azure Container Registry][acr-quickstart].
 
-Helm muss ebenfalls in Ihrem AKS-Cluster installiert sein. Weitere Informationen zum Installieren von Helm finden Sie unter [Verwenden von Helm mit Azure Container Service (AKS)][aks-helm].
+Helm muss ebenfalls in Ihrem AKS-Cluster installiert sein. Weitere Informationen zum Installieren von Helm finden Sie unter [Verwenden von Helm mit Azure Kubernetes Service (AKS)][aks-helm].
 
 Schließlich müssen Sie [Docker](https://www.docker.com) installieren.
 

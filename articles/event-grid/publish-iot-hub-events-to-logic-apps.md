@@ -1,22 +1,22 @@
 ---
-title: "Verwenden von IoT Hub-Ereignissen zum Auslösen von Azure Logic Apps | Microsoft-Dokumentation"
-description: "Erstellen Sie mit dem Ereignisroutingdienst von Azure Event Grid automatisierte Prozesse zum Durchführen von Aktionen in Azure Logic Apps anhand von IoT Hub-Ereignissen."
+title: Verwenden von IoT Hub-Ereignissen zum Auslösen von Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen Sie mit dem Ereignisroutingdienst von Azure Event Grid automatisierte Prozesse zum Durchführen von Aktionen in Azure Logic Apps anhand von IoT Hub-Ereignissen.
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: f54db95b0dfe5dc39c8e2a85375e56a93d1562ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4fed42a45f8d291bd3ba1e4fd5d636b7d0b0fbfc
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="send-email-notifications-about-azure-iot-hub-events-using-logic-apps"></a>Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logic Apps
 
@@ -156,7 +156,7 @@ Bevor Sie den Logik-App-Designer verlassen, kopieren Sie die URL, auf die Ihre L
 In diesem Abschnitt konfigurieren Sie Ihren IoT Hub zum Veröffentlichen von Ereignissen, sobald diese auftreten. 
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub. 
-2. Wählen Sie **Event Grid** aus.
+2. Wählen Sie **Ereignisse** aus.
 
    ![Öffnen der Details zu Event Grid](./media/publish-iot-hub-events-to-logic-apps/event-grid.png)
 
@@ -189,7 +189,7 @@ Testen Sie Ihre Logik-App, indem Sie ein neues Gerät erstellen, um eine E-Mail-
 1. Wählen Sie von Ihrem IoT Hub aus **IoT-Geräte** aus. 
 2. Wählen Sie **Hinzufügen**.
 3. Geben Sie für **Geräte-ID** die Zeichenfolge `Building1_Floor1_Room1_Temperature` ein.
-4. Wählen Sie **Speichern** aus. 
+4. Wählen Sie **Speichern**aus. 
 5. Sie können mehrere Geräte mit unterschiedlichen Geräte-IDs hinzufügen, um die Ereignisabonnementfilter zu testen. Versuchen Sie es mit diesen Beispielen: 
    * Building1_Floor1_Room1_Light
    * Building1_Floor2_Room2_Temperature

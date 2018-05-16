@@ -1,30 +1,30 @@
 ---
-title: "Azure AD-App-Proxy – erste Schritte und Installieren des Connectors | Microsoft-Dokumentation"
-description: "Aktivieren Sie den Anwendungsproxy über das Azure-Portal, und installieren Sie die Connectors für den Reverseproxy."
+title: Azure AD-App-Proxy – erste Schritte und Installieren des Connectors | Microsoft-Dokumentation
+description: Aktivieren Sie den Anwendungsproxy über das Azure-Portal, und installieren Sie die Connectors für den Reverseproxy.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 2c2e0f977cdf0d31da19f71d9260b500184858e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d636542c788aff43acf9e35583b4c0615fe0c7db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors
 In diesem Artikel wird anhand der erforderlichen Schritte beschrieben, wie Sie den Microsoft Azure AD-Anwendungsproxy für Ihr Cloudverzeichnis in Azure AD aktivieren.
 
-Wenn Sie die Vorteile hinsichtlich Sicherheit und Produktivität noch nicht kennen, die ein Anwendungsproxy Ihrer Organisation bieten kann, erfahren Sie mehr dazu unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md).
+Wenn Sie die Vorteile hinsichtlich Sicherheit und Produktivität noch nicht kennen, die ein Anwendungsproxy Ihrer Organisation bieten kann, erfahren Sie mehr dazu unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](manage-apps/application-proxy.md).
 
 ## <a name="application-proxy-prerequisites"></a>Voraussetzungen für den Anwendungsproxy
 Bevor Sie die Anwendungsproxydienste aktivieren und verwenden können, benötigen Sie Folgendes:

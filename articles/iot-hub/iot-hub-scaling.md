@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2018
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3237ee41f8596ed3ce508857adf7dc29cee1ada
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 01e6c3a6fb922a649f0ae139af9c8515fcb8b2e0
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -48,7 +48,7 @@ Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Bas
 | [Device Provisioning-Dienst](../iot-dps/about-iot-dps.md) | Ja | Ja |
 | [Überwachung und Diagnose](iot-hub-monitor-resource-health.md) | Ja | Ja |
 | [Cloud-zu-Gerät-Messaging](iot-hub-devguide-c2d-guidance.md) |   | Ja |
-| [Gerätezwillinge](iot-hub-devguide-device-twins.md) und [Geräteverwaltung](iot-hub-device-management-overview.md) |   | Ja |
+| [Gerätezwillinge](iot-hub-devguide-device-twins.md), [Modulzwillinge](iot-hub-devguide-module-twins.md) und [Geräteverwaltung](iot-hub-device-management-overview.md) |   | Ja |
 | [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Ja |
 
 Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 
@@ -61,19 +61,26 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 | --- | ---------- | ------------- |
 | [Gerät löschen](https://docs.microsoft.com/rest/api/iothub/deviceapi/deletedevice) | Ja | Ja |
 | [Gerät abrufen](https://docs.microsoft.com/rest/api/iothub/deviceapi/getdevice) | Ja | Ja |
+| Modul löschen | Ja | Ja |
+| Modul abrufen | Ja | Ja |
 | [Registrierungsstatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/deviceapi/getregistrystatistics) | Ja | Ja |
 | [Dienststatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/deviceapi/getservicestatistics) | Ja | Ja |
 | [„Put“ für Gerät durchführen](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Ja | Ja |
+| „Put“ für Modul durchführen | Ja | Ja |
 | [Geräte abfragen](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Ja | Ja |
+| Module abfragen | Ja | Ja |
 | [SAS-URI für Dateiupload erstellen](https://docs.microsoft.com/rest/api/iothub/httpruntime/createfileuploadsasuri) | Ja | Ja |
 | [Gerätegebundene Benachrichtigung empfangen](https://docs.microsoft.com/rest/api/iothub/httpruntime/receivedeviceboundnotification) | Ja | Ja |
 | [Geräteereignis senden](https://docs.microsoft.com/rest/api/iothub/httpruntime/senddeviceevent) | Ja | Ja |
+| Modulereignis senden | Ja | Ja |
 | [Dateiuploadstatus aktualisieren](https://docs.microsoft.com/rest/api/iothub/httpruntime/updatefileuploadstatus) | Ja | Ja |
 | [Massenvorgang für Geräte](https://docs.microsoft.com/rest/api/iothub/deviceapi/bulkdeviceoperation) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja | 
 | [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/deviceapi/purgecommandqueue) |   | Ja |
 | [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/getdevicetwin) |   | Ja |
+| Modulzwilling abrufen |   | Ja |
 | [Gerätemethode aufrufen](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/invokedevicemethod) |   | Ja |
 | [Gerätezwilling aktualisieren](https://docs.microsoft.com/rest/api/iothub/devicetwinapi/updatedevicetwin) |   | Ja | 
+| Modulzwilling aktualisieren |   | Ja | 
 | [Gerätegebundene Benachrichtigung verwerfen](https://docs.microsoft.com/rest/api/iothub/httpruntime/abandondeviceboundnotification) |   | Ja |
 | [Gerätegebundene Benachrichtigung abschließen](https://docs.microsoft.com/rest/api/iothub/httpruntime/completedeviceboundnotification) |   | Ja |
 | [Auftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/jobapi/canceljob) |   | Ja |

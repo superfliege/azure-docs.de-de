@@ -1,12 +1,12 @@
 ---
-title: "Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung | Microsoft Docs"
-description: "Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur."
-services: 
+title: Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung | Microsoft Docs
+description: Eine Beschreibung der vorkonfigurierten Lösung für Remoteüberwachung von Azure IoT und deren Architektur.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31fe13af-0482-47be-b4c8-e98e36625855
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 7cef60998cf9e46a8d89f8ad53edd0382e3ce76e
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 3aa9bb9c785bb69c80d9bb33e595393a5a1d220a
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="remote-monitoring-preconfigured-solution-walkthrough"></a>Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für Remoteüberwachung
 
@@ -35,7 +35,17 @@ In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüb
 
 Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
 
-![Logische Architektur](media/iot-suite-v1-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
+![Logische Architektur](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture-updated.png)
+
+## <a name="microservices--docker-containers"></a>Microservices und Docker-Container
+Die Remoteüberwachung nutzt als erste unserer vorkonfigurierten Lösungen eine Microservicearchitektur. Die Lösung ist sowohl in [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) als auch in [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) verfügbar.
+Microservices haben sich als weit verbreitete Methode herausgestellt, um durch die individuelle Skalierung von Containern Skalierbarkeit und Flexibilität zu erzielen, ohne dabei an Entwicklungsgeschwindigkeit einzubüßen.
+Microservices unterteilen den Code und bieten klar definierte Schnittstellen, was die Lösung leichter verständlich und weniger monolithisch macht. Die Lösung stellt darüber hinaus weitere Optionen für Partner bereit, die die aktuellen Solution Accelerators erweitern möchten, um fertige Lösungen für die Monetarisierung zu erstellen.
+
+**Weitere Informationen zu Docker-Containern**
+* [Installieren von Docker](https://docs.docker.com/engine/installation/)
+* [Common Docker Commands for Remote Monitoring](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#common-docker-commands) (Allgemeine Docker-Befehle für die Remoteüberwachung)
+* [Docker Getting Started](https://docs.docker.com/get-started/) (Erste Schritte mit Docker)
 
 ## <a name="simulated-devices"></a>Simulierte Geräte
 
@@ -45,7 +55,7 @@ In der vorkonfigurierten Lösung ist das simulierte Gerät ein Kühlgerät (z. 
 
 Jedes simulierte Gerät kann die folgenden Nachrichtentypen an den IoT Hub senden:
 
-| Nachricht | Beschreibung |
+| Nachricht | BESCHREIBUNG |
 | --- | --- |
 | Starten |Wenn das Gerät gestartet wird, sendet es eine Nachricht vom Typ **Geräteinformationen** (device-info) mit Daten über sich selbst an das Back-End. Diese Daten enthalten die Geräte-ID und eine Liste der vom Gerät unterstützten Befehle und Methoden. |
 | Anwesenheit |Ein Gerät sendet regelmäßig eine **Anwesenheitsnachricht** , um zu melden, ob das Gerät das Vorhandensein („Anwesenheit“) eines Sensors erkennen kann. |
@@ -92,10 +102,10 @@ Der Simulator füllt diese Eigenschaften in simulierten Geräten mit Beispielwer
 
 Die simulierten Geräte können die folgenden Methoden ([direkte Methoden][lnk-direct-methods]) verarbeiten, die vom Lösungsportal über den IoT Hub gesendet werden:
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 | --- | --- |
 | InitiateFirmwareUpdate |Weist das Gerät an, ein Firmwareupdate auszuführen |
-| Neustart |Weist das Gerät an, neu zu starten |
+| Reboot |Weist das Gerät an, neu zu starten |
 | FactoryReset |Weist das Gerät an, ein Zurücksetzen auf Werkseinstellungen vorzunehmen |
 
 Manche Methoden verwenden gemeldete Eigenschaften zum Berichten des Fortschritts. Die **InitiateFirmwareUpdate**-Methode simuliert beispielsweise das asynchrone Ausführen des Updates auf dem Gerät. Die Methode wird sofort auf dem Gerät zurückgegeben, während die asynchrone Aufgabe weiterhin über gemeldete Eigenschaften Statusaktualisierungen an das Lösungsdashboard zurücksendet.
@@ -104,7 +114,7 @@ Manche Methoden verwenden gemeldete Eigenschaften zum Berichten des Fortschritts
 
 Außerdem können die simulierten Geräte auch die folgenden Befehle (C2D-Nachrichten) verarbeiten, die vom Lösungsportal über den IoT Hub gesendet werden:
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 | PingDevice |Sendet einen *Ping* an das Gerät, um zu überprüfen, ob es aktiv ist. |
 | StartTelemetry |Startet das Senden von Telemetriedaten auf dem Gerät |
@@ -232,7 +242,7 @@ Die Daten der ASA-Aufträge vom Typ **Geräteinformationen** und **Regeln** werd
 
 ## <a name="azure-storage"></a>Azure-Speicher
 
-Die Lösung nutzt Azure-Blobspeicher, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Portal werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Lösungsportal die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die Sie im Lösungsportal festlegen.
+Die Lösung nutzt Azure Blob Storage, um alle Rohdaten und zusammengefassten Telemetriedaten von den Geräten dauerhaft in der Lösung zu speichern. Über das Portal werden die Telemetriedaten aus dem Blobspeicher gelesen, um die Diagramme aufzufüllen. Zum Anzeigen von Warnungen liest das Lösungsportal die Daten aus dem Blobspeicher aus, in dem aufgezeichnet wird, wenn die Telemetriewerte die konfigurierten Schwellenwerte überschreiten. In der Lösung wird Blobspeicher auch eingesetzt, um die Schwellenwerte aufzuzeichnen, die Sie im Lösungsportal festlegen.
 
 ## <a name="webjobs"></a>WebJobs
 

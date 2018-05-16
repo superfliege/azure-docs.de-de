@@ -1,18 +1,18 @@
 ---
-title: "Authentifizieren per Azure Container Registry über Azure Container Instances"
-description: "Es wird beschrieben, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung über Azure Container Instances gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden."
+title: Authentifizieren per Azure Container Registry über Azure Container Instances
+description: Es wird beschrieben, wie Sie Zugriff auf Images in Ihrer privaten Containerregistrierung über Azure Container Instances gewähren, indem Sie einen Azure Active Directory-Dienstprinzipal verwenden.
 services: container-registry
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 04/23/2018
 ms.author: marsma
-ms.openlocfilehash: 00d9632a5d0c42eceee1b412f8963bbadbea651f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: daa9c098de0c410bd4033cc62ee911631eb3b634
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Authentifizieren per Azure Container Registry über Azure Container Instances
 
@@ -44,15 +44,24 @@ az container create \
     --registry-password <service-principal-password>
 ```
 
+## <a name="sample-scripts"></a>Beispielskripts
+
+Die obigen Beispielskripts für die Azure CLI auf GitHub sowie Versionen für Azure PowerShell finden Sie hier:
+
+* [Azure CLI][acr-scripts-cli]
+* [Azure PowerShell][acr-scripts-psh]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die folgenden Artikel enthalten weitere Informationen zum Arbeiten mit Dienstprinzipalen und ACR:
 
 * [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](container-registry-auth-service-principal.md)
-* [Authentifizieren per Azure Container Registry über den Azure Container Service](container-registry-auth-aks.md)
+* [Authentifizieren per Azure Container Registry über Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 
 <!-- IMAGES -->
 
 <!-- LINKS - External -->
+[acr-scripts-cli]: https://github.com/Azure/azure-docs-cli-python-samples/tree/master/container-registry
+[acr-scripts-psh]: https://github.com/Azure/azure-docs-powershell-samples/tree/master/container-registry
 
 <!-- LINKS - Internal -->

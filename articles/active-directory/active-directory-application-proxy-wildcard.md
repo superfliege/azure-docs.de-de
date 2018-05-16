@@ -15,15 +15,15 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: ebea5662017672ccbe911d4b9e7471aa081dd1bb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea6817f80925c1989db13488472457e44801e7a8
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy 
 
-In Azure Active Directory (Azure AD) kann die Konfiguration einer großen Anzahl von lokalen Anwendungen schnell unüberschaubar werden. Die Folge sind unnötige Risiken aufgrund von Konfigurationsfehlern, wenn viele der Anwendungen die gleichen Einstellungen erfordern. Mit [Azure AD-Anwendungsproxy](active-directory-application-proxy-get-started.md) können Sie dieses Problem mithilfe einer Platzhalteranwendung umgehen, mit der Sie viele Anwendungen gleichzeitig veröffentlichen und verwalten können. Diese Lösung bietet Ihnen folgende Möglichkeiten:
+In Azure Active Directory (Azure AD) kann die Konfiguration einer großen Anzahl von lokalen Anwendungen schnell unüberschaubar werden. Die Folge sind unnötige Risiken aufgrund von Konfigurationsfehlern, wenn viele der Anwendungen die gleichen Einstellungen erfordern. Mit [Azure AD-Anwendungsproxy](manage-apps/application-proxy.md) können Sie dieses Problem mithilfe einer Platzhalteranwendung umgehen, mit der Sie viele Anwendungen gleichzeitig veröffentlichen und verwalten können. Diese Lösung bietet Ihnen folgende Möglichkeiten:
 
 -   Vereinfachen des Verwaltungsaufwands
 -   Verringern der Anzahl potenzieller Konfigurationsfehler
@@ -48,14 +48,14 @@ Beispiel: `http(s)://*.adventure-works.com`. Obwohl die internen und externen UR
 
 Wenn weitere Anwendungen mit anderen Konfigurationseinstellungen vorhanden sind, müssen Sie diese Ausnahmen als separate Anwendungen veröffentlichen, um die für den Platzhalter festgelegten Standardwerte zu überschreiben. Anwendungen ohne Platzhalter haben stets Vorrang vor Platzhalteranwendungen. Aus Sicht der Konfiguration sind diese „nur“ normale Anwendungen.
 
-Die Erstellung einer Platzhalteranwendung basiert auf demselben [Ablauf für die Anwendungsveröffentlichung](application-proxy-publish-azure-portal.md), der auch für alle anderen Anwendungen gilt. Der einzige Unterschied besteht darin, dass Sie einen Platzhalter in den URLs und ggf. in der SSO-Konfiguration verwenden.
+Die Erstellung einer Platzhalteranwendung basiert auf demselben [Ablauf für die Anwendungsveröffentlichung](manage-apps/application-proxy-publish-azure-portal.md), der auch für alle anderen Anwendungen gilt. Der einzige Unterschied besteht darin, dass Sie einen Platzhalter in den URLs und ggf. in der SSO-Konfiguration verwenden.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="custom-domains"></a>Benutzerdefinierte Domänen
 
-Während [benutzerdefinierte Domänen](active-directory-application-proxy-custom-domains.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
+Während [benutzerdefinierte Domänen](manage-apps/application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
 
 1. Erstellen einer überprüften Domäne in Azure 
 2. Hochladen eines SSL-Zertifikats im PFX-Format in Ihren Anwendungsproxy
@@ -112,12 +112,12 @@ Wenn Sie diese Option verwenden, benötigen Sie ggf. einen weiteren CNAME-Eintra
 
 Die Platzhalteranwendung wird im [MyApps-Panel](https://myapps.microsoft.com) mit nur einer Kachel dargestellt. Diese Kachel ist standardmäßig ausgeblendet. So blenden Sie die Kachel ein und weisen Benutzern eine bestimmte Zielseite zu:
 
-1. Befolgen Sie die Richtlinien zum [Festlegen einer Homepage-URL](application-proxy-office365-app-launcher.md).
+1. Befolgen Sie die Richtlinien zum [Festlegen einer Homepage-URL](manage-apps/application-proxy-configure-custom-home-page.md).
 2. Setzen Sie **Anwendung anzeigen** auf der Eigenschaftenseite für die Anwendung auf **true**.
 
 ### <a name="kerberos-constrained-delegation"></a>Eingeschränkte Kerberos-Delegierung
 
-Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](active-directory-application-proxy-sso-using-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
+Für Anwendungen mit [eingeschränkter Kerberos-Delegierung (KCD) wie der SSO-Methode](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) wird für den Dienstprinzipalnamen (SPN), der für die SSO-Methode aufgeführt ist, möglicherweise auch ein Platzhalter benötigt. Der SPN kann z.B. wie folgt aussehen: `HTTP/*.adventure-works.com`. Zudem müssen die einzelnen SPNs auf Ihren Back-End-Servern konfiguriert sein (z.B. `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`).
 
 
 
@@ -136,7 +136,7 @@ Für alle drei Anwendungen gilt Folgendes:
 - Sie haben die gleichen Eigenschaften.
 
 
-Die zum Veröffentlichen der Platzhalteranwendung erforderlichen Schritte finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md). Annahmen für dieses Szenario:
+Die zum Veröffentlichen der Platzhalteranwendung erforderlichen Schritte finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md). Annahmen für dieses Szenario:
 
 - Ein Mandant mit der folgenden ID: `000aa000-11b1-2ccc-d333-4444eee4444e` 
 
@@ -144,7 +144,7 @@ Die zum Veröffentlichen der Platzhalteranwendung erforderlichen Schritte finden
 
 - Ein **CNAME**-Eintrag, der `*.adventure-works.com` auf `000aa000-11b1-2ccc-d333-4444eee4444e.tenant.runtime.msappproxy.net` verweist, wurde erstellt.
 
-Erstellen Sie entsprechend der [dokumentierten Schritte](application-proxy-publish-azure-portal.md) eine neue Anwendungsproxyanwendung in Ihrem Mandanten. In diesem Beispiel ist der Platzhalter in den folgenden Feldern enthalten:
+Erstellen Sie entsprechend der [dokumentierten Schritte](manage-apps/application-proxy-publish-azure-portal.md) eine neue Anwendungsproxyanwendung in Ihrem Mandanten. In diesem Beispiel ist der Platzhalter in den folgenden Feldern enthalten:
 
 - Interne URL:
 
@@ -183,7 +183,7 @@ In diesem Szenario steht Ihnen neben den drei allgemeinen Anwendungen eine weite
 
 Stellen Sie sicher, dass ein CNAME-Eintrag vorhanden ist, der `finance.adventure-works.com` auf den anwendungsspezifischen Endpunkt verweist, welcher auf der Seite „Anwendungsproxy“ für die Anwendung festgelegt wurde. In diesem Szenario verweist `finance.adventure-works.com` auf `https://finance-awcycles.msappproxy.net/`. 
 
-Entsprechend der [dokumentierten Schritte](application-proxy-publish-azure-portal.md) sind für dieses Szenario die folgenden Einstellungen erforderlich:
+Entsprechend der [dokumentierten Schritte](manage-apps/application-proxy-publish-azure-portal.md) sind für dieses Szenario die folgenden Einstellungen erforderlich:
 
 
 - Legen Sie im Feld **Interne URL** die Finanzabteilung **finance** anstelle eines Platzhalters fest. 
@@ -212,8 +212,8 @@ Wenn Sie für die Finanzabteilung mehrere Anwendungen veröffentlicht haben und 
 
 Weitere Informationen:
 
-- **Benutzerdefinierte Domänen**: siehe [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](active-directory-application-proxy-custom-domains.md)
+- **Benutzerdefinierte Domänen**: siehe [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](manage-apps/application-proxy-configure-custom-domain.md)
 
-- **Veröffentlichen von Anwendungen**: siehe [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md)
+- **Veröffentlichen von Anwendungen**: siehe [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md)
 
 

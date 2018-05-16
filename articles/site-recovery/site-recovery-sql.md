@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/02/2018
 ms.author: pratshar
-ms.openlocfilehash: f0c43eee127857edfd1692dce825ef295be09f7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7afa05b53186ceac13bef3294c7a139f77193110
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery
 
@@ -31,7 +31,7 @@ Informieren Sie sich zunächst unbedingt über die SQL Server-Funktionen zur Not
 
 Viele Workloads nutzen SQL Server als Grundlage, und die Plattform kann zum Implementieren von Datendiensten in Apps wie SharePoint, Dynamics und SAP integriert werden.  SQL Server kann auf verschiedene Arten bereitgestellt werden:
 
-* **Eigenständiger SQL-Server:**SQL Server und alle Datenbanken werden auf einem einzelnen Computer gehostet (physisch oder virtuell). Bei einer Virtualisierung wird Hostclustering verwendet, um die lokale Hochverfügbarkeit sicherzustellen. Es wird keine Hochverfügbarkeit für die Gastebene implementiert.
+* **Eigenständiger SQL-Server:** SQL Server und alle Datenbanken werden auf einem einzelnen Computer gehostet (physisch oder virtuell). Bei einer Virtualisierung wird Hostclustering verwendet, um die lokale Hochverfügbarkeit sicherzustellen. Es wird keine Hochverfügbarkeit für die Gastebene implementiert.
 * **SQL Server-Failoverclustering-Instanzen (Always ON FCI):** Zwei oder mehr Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von Hochverfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
 * **SQL AlwaysOn-Verfügbarkeitsgruppen:** Zwei oder mehr Knoten werden in einem Cluster ohne Freigabe mit SQL Server-Datenbanken eingerichtet, die in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover konfiguriert sind.
 

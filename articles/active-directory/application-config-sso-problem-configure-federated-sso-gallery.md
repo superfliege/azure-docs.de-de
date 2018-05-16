@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zu den häufigsten Problemen, die beim Konfigurieren des einmaligen Anmeldens im Verbund mit SAML bei Anwendungen auftreten können, die im Azure AD-Anwendungskatalog aufgeführt sind."
+title: Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu den häufigsten Problemen, die beim Konfigurieren des einmaligen Anmeldens im Verbund mit SAML bei Anwendungen auftreten können, die im Azure AD-Anwendungskatalog aufgeführt sind.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 86ddb91ae16da797e32c6e1a8a8b2cd8fca989a8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 581b3c4ff7cc7b25f238602560f30280efa34edd
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine Azure AD-Kataloganwendung
 
@@ -108,4 +108,4 @@ Azure AD stellt keine URL zum Abrufen der Metadaten bereit. Die Metadaten könne
 Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwendung gesendet werden, finden Sie unter [Zuordnen von Benutzeransprüchen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Verwalten von Anwendungen mit Azure Active Directory](manage-apps/what-is-application-management.md)

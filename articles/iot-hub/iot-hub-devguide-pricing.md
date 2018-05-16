@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 390e917990586642e55913a69873b1707e371de3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9b0d2df078c59c7d261fd3231450ddfb2fdcd88e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub – Preisinformationen
 
@@ -35,11 +35,11 @@ ms.lasthandoff: 04/03/2018
 | C2D-Nachrichten | Erfolgreich gesendete Nachrichten werden in Blöcken von 4 KB berechnet, sodass eine Nachricht mit 6 KB beispielsweise wie zwei Nachrichten berechnet wird. |
 | Dateiuploads | Die Dateiübertragung an Azure Storage wird von IoT Hub nicht getaktet. Nachrichten für die Initiierung und den Abschluss der Dateiübertragung werden als Nachrichten mit 4-KB-Taktung berechnet. Für die Übertragung einer Datei mit 10 MB werden zusätzlich zu den Azure Storage-Kosten zwei Nachrichten berechnet. |
 | Direkte Methoden | Erfolgreiche Methodenanforderungen werden in Blöcken von 4 KB berechnet, und Antworten mit nicht leerem Textbereich werden als zusätzliche Nachrichten in Blöcken von 4 KB berechnet. Anforderungen an nicht verbundene Geräte werden als Nachrichten in Blöcken von 4 KB berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort ohne Text vom Gerät führt, wird als zwei Nachrichten berechnet. Eine Methode mit einem Text von 6 KB, die zu einer Antwort mit 1 KB vom Gerät führt, wird als zwei Nachrichten für die Anforderung plus eine Nachricht für die Antwort berechnet. |
-| Gerätezwilling-Lesevorgänge | Gerätezwilling-Lesevorgänge vom Gerät und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Gerätezwilling wird beispielsweise als zwölf Nachrichten berechnet. |
-| Gerätezwillingsaktualisierungen (Tags und Eigenschaften) | Gerätezwillingupdates vom Gerät und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Gerätezwilling wird beispielsweise als zwölf Nachrichten berechnet. |
-| Gerätezwillingabfragen | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
+| Zwillingslesevorgänge vom Gerät und Modul | Zwillingslesevorgänge vom Gerät und Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
+| Geräte- und Modulzwillingsupdates (Tags und Eigenschaften) | Zwillingsupdates vom Gerät oder Modul und vom Lösungs-Back-End werden als Nachrichten in Blöcken mit jeweils 512 Bytes berechnet. Ein Lesevorgang von einem 6-KB-Zwilling wird beispielsweise als zwölf Nachrichten berechnet. |
+| Zwillingsabfragen vom Gerät und Modul | Abfragen werden als Nachrichten je nach Ergebnisgröße in Blöcken von 512 Byte berechnet. |
 | Auftragsvorgänge <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | Keine Gebühren. |
-| Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Gerätezwillingsaktualisierungen und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
+| Vorgänge vom Typ „Aufträge pro Gerät“ | Auftragsvorgänge (z.B. Zwillingsupdates und Methoden) werden normal berechnet. Ein Auftrag, der zu 1000 Methodenaufrufen mit 1-KB-Anforderungen und Antworten mit leerem Textbereich führt, wird als 1000 Nachrichten berechnet. |
 
 > [!NOTE]
 > Bei allen Berechnungen der Größen wird die Nutzlastgröße in Byte berücksichtigt (Protokollframing wird ignoriert). Bei Nachrichten, die über Eigenschaften und Text verfügen, wird die Größe unabhängig vom Protokoll berechnet. Weitere Informationen finden Sie im [Entwicklerhandbuch für IoT-Messaging][lnk-message-size].

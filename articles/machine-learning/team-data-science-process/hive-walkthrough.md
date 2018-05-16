@@ -1,9 +1,9 @@
 ---
 title: Untersuchen von Daten in einem Hadoop-Cluster und Erstellen von Modellen in Azure Machine Learning | Microsoft-Dokumentation
-description: "Verwenden des Team Data Science-Prozesses für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells."
+description: Verwenden des Team Data Science-Prozesses für ein End-to-End-Szenario mit einem HDInsight Hadoop-Cluster zum Erstellen und Bereitstellen eines Modells.
 services: machine-learning,hdinsight
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: e9e76c91-d0f6-483d-bae7-2d3157b86aa0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev
-ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.author: deguhath
+ms.openlocfilehash: 6f16b7524bc8c268ed3a2314b8b88d25eb2f4325
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -723,7 +723,7 @@ Zur Ausführung von Hive-Abfragen im [Import Data][import-data]-Modul von Machin
 
 Hier finden Sie einige Details zum [Import Data][import-data]-Modul und zu den Parametern für die Eingabe:
 
-**HCatalog-Server-URI**: Wenn der Clustername **abc123** lautet, ist dies einfach: https://abc123.azurehdinsight.net
+**HCatalog-Server-URI**: Wenn der Clustername **abc123** lautet, ist dies einfach https://abc123.azurehdinsight.net.
 
 **Hadoop-Benutzerkontoname**: Der für den Cluster gewählte Benutzername (nicht der Benutzername für den Remotezugriff)
 

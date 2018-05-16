@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01e94298aa3691d5bce33a12745b54fd398c7ad3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: ef048967bc08fed1a108872d2d7eecc2a66993fa
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -352,6 +352,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie nun etwas über Gerätezwillinge erfahren haben, sind möglicherweise die folgenden Themen aus dem IoT Hub-Entwicklerhandbuch für Sie interessant:
 
+* [Verstehen und Verwenden von Modulzwillingen in IoT Hub][lnk-module-twins]
 * [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods]
 * [Planen von Aufträgen auf mehreren Geräten][lnk-jobs]
 
@@ -385,5 +386,6 @@ Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
+[lnk-module-twins]:iot-hub-devguide-module-twins.md
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png

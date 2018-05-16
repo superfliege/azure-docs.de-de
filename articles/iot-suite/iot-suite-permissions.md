@@ -1,12 +1,12 @@
 ---
-title: Azure IoT Suite und Azure Active Directory | Microsoft Docs
-description: Informationen, wie Azure Active Directory von Azure IoT Suite verwendet werden, um Berechtigungen zu verwalten.
-services: 
+title: Azure IoT-Solution Accelerators und Azure Active Directory | Microsoft-Dokumentation
+description: Beschreibt, wie Azure IoT-Solution Accelerators mit Azure Active Directory Berechtigungen verwalten.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 246228ba-954a-4d96-b6d6-e53e4590cb4f
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: e5804cda921e9d598d0ed02c4fafccdb40fbe7a5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b7360ca4df63cac114b0eb1f93375367da6735cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Berechtigungen für die Website „azureiotsuite.com“
 
@@ -29,35 +29,35 @@ Bei Ihrer ersten Anmeldung bei [azureiotsuite.com][lnk-azureiotsuite] bestimmt d
 
 1. Um die Liste der Mandanten aufzufüllen, die neben Ihrem Benutzernamen angezeigt werden, ermittelt die Website zunächst mithilfe von Azure, zu welchen AAD-Mandanten Sie gehören. Derzeit kann die Website nur Benutzertoken für jeweils einen Mandanten abrufen. Daher werden Sie, wenn Sie über das Dropdownfeld rechts oben den Mandanten wechseln, bei diesem Mandanten angemeldet, um die Token für diesen Mandanten zu beziehen.
 
-2. Als Nächstes ermittelt die Website mithilfe von Azure, welche Abonnements Sie dem ausgewählten Mandanten zugeordnet haben. Die verfügbaren Abonnements werden angezeigt, wenn Sie eine neue vorkonfigurierte Lösung erstellen.
+2. Als Nächstes ermittelt die Website mithilfe von Azure, welche Abonnements Sie dem ausgewählten Mandanten zugeordnet haben. Die verfügbaren Abonnements werden angezeigt, wenn Sie einen neuen Solution Accelerator erstellen.
 
-3. Abschließend ruft die Website alle Ressourcen in den Abonnements und Ressourcengruppen ab, die als vorkonfigurierte Lösungen gekennzeichnet sind, und füllt die Kacheln auf der Startseite auf.
+3. Abschließend ruft die Website alle Ressourcen in den Abonnements und Ressourcengruppen ab, die als Solution Accelerators gekennzeichnet sind, und füllt die Kacheln auf der Startseite auf.
 
-In den beiden folgenden Abschnitten werden die Rollen beschrieben, die den Zugriff auf die vorkonfigurierten Lösungen steuern.
+In den folgenden Abschnitten werden die Rollen beschrieben, die den Zugriff auf die Solution Accelerators steuern.
 
 ## <a name="aad-roles"></a>AAD-Rollen
 
-Die AAD-Rollen steuern die Fähigkeit, vorkonfigurierte Lösungen bereitzustellen und Benutzer in einer vorkonfigurierten Lösung zu verwalten.
+Die AAD-Rollen steuern die Fähigkeit, Solution Accelerators bereitzustellen und Benutzer in einem Solution Accelerator zu verwalten.
 
-Weitere Informationen zu Administratorrollen in AAD finden Sie unter [Zuweisen von Administratorrollen in Azure AD][lnk-aad-admin]. Der aktuelle Artikel konzentriert sich auf die Verzeichnisrollen **Globaler Administrator** und **Benutzer**, die von den vorkonfigurierten Lösungen verwendet werden.
+Weitere Informationen zu Administratorrollen in AAD finden Sie unter [Zuweisen von Administratorrollen in Azure AD][lnk-aad-admin]. Der aktuelle Artikel konzentriert sich auf die Verzeichnisrollen **Globaler Administrator** und **Benutzer**, die von den Solution Accelerators verwendet werden.
 
 ### <a name="global-administrator"></a>Globaler Administrator
 
 Pro AAD-Mandant kann es viele globale Administratoren geben:
 
 * Wenn Sie einen AAD-Mandanten erstellen, sind Sie standardmäßig der globale Administrator dieses Mandanten.
-* Der globale Administrator kann eine vorkonfigurierte Basic- und Standard-Lösung bereitstellen.
+* Der globale Administrator kann einen grundlegenden und einen Standard-Solution Accelerator bereitstellen.
 
 ### <a name="domain-user"></a>Domänenbenutzer
 
 Pro AAD-Mandant können zahlreiche Domänenbenutzer vorhanden sein:
 
-* Domänenbenutzer können eine vorkonfigurierte Basic-Lösung über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen.
-* Domänenbenutzer können eine vorkonfigurierte Basic-Lösung über die Befehlszeilenschnittstelle erstellen.
+* Domänenbenutzer können einen grundlegenden Solution Accelerator über die Website [azureiotsuite.com][lnk-azureiotsuite] bereitstellen.
+* Domänenbenutzer können einen grundlegenden Solution Accelerator über die Befehlszeilenschnittstelle erstellen.
 
 ### <a name="guest-user"></a>Gastbenutzer
 
-Pro AAD-Mandant kann es viele Gastbenutzer geben. Gastbenutzer verfügen im AAD-Mandanten über begrenzte Rechte. Daher können Gastbenutzer keine vorkonfigurierte Lösung im AAD-Mandanten bereitstellen.
+Pro AAD-Mandant kann es viele Gastbenutzer geben. Gastbenutzer verfügen im AAD-Mandanten über begrenzte Rechte. Daher können Gastbenutzer keinen Solution Accelerator im AAD-Mandanten bereitstellen.
 
 Weitere Informationen zu Benutzern und Rollen in AAD finden Sie in den folgenden Ressourcen:
 
@@ -94,7 +94,7 @@ Orientieren Sie sich an folgendem Diagramm:
 Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfen Sie die Mandantenzuordnung für Ihr Abonnement, und stellen Sie sicher, dass der ordnungsgemäße Mandant in der Dropdownliste ausgewählt ist. Nachdem Sie überprüft haben, ob der gewünschte Mandant ordnungsgemäß ist, überprüfen Sie anhand des obigen Diagramms die Zuordnung Ihres Abonnements und dieses AAD-Mandanten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkonfigurierte Lösung anpassen][lnk-customize].
+Weitergehende Informationen zu IoT-Solution Accelerators finden Sie im Abschnitt zum [Anpassen eines Solution Accelerators][lnk-customize].
 
 [img-flowchart]: media/iot-suite-permissions/flowchart.png
 

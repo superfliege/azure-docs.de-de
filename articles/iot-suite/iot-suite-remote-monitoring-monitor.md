@@ -1,7 +1,7 @@
 ---
 title: Erweiterte Überwachung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird erläutert, wie Sie Geräte über das Dashboard der Remoteüberwachungslösung überwachen.
-services: ''
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fe0d936b4ee0d7703222c86c00959869b99f7851
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Ausführen der erweiterten Überwachung mithilfe der Remoteüberwachungslösung
 
 In diesem Tutorial werden die Funktionen des Dashboards für die Remoteüberwachung erläutert. Zur Einführung dieser Funktionen wird in diesem Tutorial ein Szenario in der Contoso IoT-Anwendung verwendet.
 
-In diesem Tutorial wird anhand zweier simulierter Contoso Truck-Geräte veranschaulicht, wie Sie Geräte über das Dashboard der vorkonfigurierten Lösung überwachen. Als Contoso-Bediener müssen Sie den Standort und das Verhalten der Trucks im Feld überwachen.
+In diesem Tutorial wird anhand zweier simulierter Contoso-LKW-Geräte veranschaulicht, wie Sie Geräte über das Dashboard des Solution Accelerators überwachen. Als Contoso-Bediener müssen Sie den Standort und das Verhalten der Trucks im Feld überwachen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -30,14 +30,14 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Filtern der Geräte im Dashboard
 > * Anzeigen von Echtzeit-Telemetriedaten
 > * Anzeigen von Gerätedetails
-> * Anzeigen von Alarmen von den Geräten
+> * Anzeigen von Benachrichtigungen Ihrer Geräte
 > * Anzeigen der System-KPIs
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
 
 ## <a name="choose-the-devices-to-display"></a>Auswählen der anzuzeigenden Geräte
 
@@ -57,7 +57,7 @@ Wählen Sie **Manage filters** (Filter verwalten) aus, um Filter zu erstellen, z
 
 ## <a name="view-real-time-telemetry"></a>Anzeigen von Echtzeit-Telemetriedaten
 
-Die vorkonfigurierte Lösung stellt detaillierte Echtzeit-Telemetriedaten im Diagramm auf der Seite **Dashboard** dar. Im Telemetriediagramm werden Telemetrieinformationen für die Geräte angezeigt, die durch den aktuellen Filter ausgewählt wurden:
+Der Solution Accelerator stellt im Diagramm auf der Seite **Dashboard** detaillierte Echtzeit-Telemetriedaten dar. Im Telemetriediagramm werden Telemetrieinformationen für die Geräte angezeigt, die durch den aktuellen Filter ausgewählt wurden:
 
 ![Truck-Telemetriediagramm](media/iot-suite-remote-monitoring-monitor/dashboardtelemetryview.png)
 
@@ -65,39 +65,41 @@ Um die anzuzeigenden Telemetriewerte festzulegen, wählen Sie oben im Diagramm d
 
 ![Truck-Telemetriediagramm](media/iot-suite-remote-monitoring-monitor/dashboardselecttelemetry.png)
 
-Um die Anzeige der Livetelemetrie anzuhalten, wählen Sie **Flowing** (Übertragung) aus. Um die Liveanzeige wieder zu aktivieren, wählen Sie **Pause** aus:
+<!-- 05/01 - this features appears to have been removed
+To pause the live telemetry display, choose **Flowing**. To re-enable the live display, choose **Pause**:
 
-![Anhalten und Neustarten der Telemetrieanzeige](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)
+![Pause and restart telemetry display](media/iot-suite-remote-monitoring-monitor/dashboardtelemetrypause.png)-->
 
 ## <a name="use-the-map"></a>Verwenden der Karte
 
-Auf der Karte werden Informationen zu den simulierten Trucks angezeigt, die durch den aktuellen Filter ausgewählt sind. Sie können die Karte zoomen und schwenken, um Positionen mehr oder weniger detailliert anzuzeigen. Die Gerätesymbole auf der Karte geben alle für das Gerät aktiven **Alarme** oder **Warnungen** an. Eine Zusammenfassung der Anzahl von **Alarmen** und **Warnungen** wird auf der linken Seite der Karte angezeigt.
+Auf der Karte werden Informationen zu den simulierten Trucks angezeigt, die durch den aktuellen Filter ausgewählt sind. Sie können die Karte zoomen und schwenken, um Positionen mehr oder weniger detailliert anzuzeigen. Die Gerätesymbole auf der Karte geben alle für das Gerät aktiven **Benachrichtigungen** oder **Warnungen** an. Eine Zusammenfassung der Anzahl von **Benachrichtigungen** und **Warnungen** wird auf der linken Seite der Karte angezeigt.
 
-Zum Anzeigen der Gerätedetails können Sie die Karte zoomen und schwenken, um die Geräte zu lokalisieren. Klicken Sie dann auf der Karte auf das Gerät. Die Details umfassen Folgendes:
+<!-- 05/01 - cannot select a deice on the map
+To view the device details, pan and zoom the map to locate the devices, then click the device on the map. The details include:
 
-* Aktuelle Telemetriewerte
-* Vom Gerät unterstützte Methoden
-* Geräteeigenschaften
+* Recent telemetry values
+* Methods the device supports
+* Device properties
 
-![Anzeigen von Gerätedetails im Dashboard](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)
+![View device details on the dashboard](media/iot-suite-remote-monitoring-monitor/dashboarddevicedetail.png)-->
 
-## <a name="view-alarms-from-your-devices"></a>Anzeigen von Alarmen von den Geräten
+## <a name="view-alerts-from-your-devices"></a>Anzeigen von Benachrichtigungen Ihrer Geräte
 
-Auf der Karte werden die Geräte im aktuellen Filter mit **Alarmen** und **Warnungen** hervorgehoben. Im Bereich **System alarms** (Systemalarme) werden detaillierte Informationen zu den neuesten Alarmen von den Geräten angezeigt:
+Auf der Karte werden die Geräte im aktuellen Filter mit **Benachrichtigungen** und **Warnungen** hervorgehoben. Im Bereich **Benachrichtigungen** werden detaillierte Informationen zu den neuesten Benachrichtigungen von den Geräten angezeigt:
 
-![Anzeigen von Systemalarmen im Dashboard](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
+![Anzeigen von Systembenachrichtigungen im Dashboard](media/iot-suite-remote-monitoring-monitor/dashboardsystemalarms.png)
 
-Mit dem Filter **System alarms** (Systemalarme) können Sie die Zeitspanne für aktuelle Alarme anpassen. Standardmäßig werden Alarme der letzten Stunde im Bereich angezeigt:
+Mit dem Filter **Dashboard** können Sie die Zeitspanne für aktuelle Benachrichtigungen anpassen. Standardmäßig werden Benachrichtigungen der letzten Stunde angezeigt:
 
-![Filtern der Alarme nach Zeitspanne](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
+![Filtern der Benachrichtigungen nach Zeit](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
 
 ## <a name="view-the-system-kpis"></a>Anzeigen der System-KPIs
 
 Auf der Seite **Dashboard** werden System-KPIs angezeigt:
 
-![Filtern der Alarme nach Zeitspanne](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
+![Dashboard-KPIs](media/iot-suite-remote-monitoring-monitor/dashboardkpis.png)
 
-Mit dem Filter **System KPIs** können Sie die Zeitspanne für die KPI-Aggregation anpassen. Standardmäßig werden die während der letzten Stunde aggregierten KPIs im Bereich angezeigt.
+Mit dem Filter **Dashboard** können Sie die Zeitspanne für die KPI-Aggregation anpassen. Standardmäßig werden die während der letzten Stunde aggregierten KPIs im Bereich angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -108,7 +110,7 @@ In diesem Tutorial wurde erläutert, wie Sie auf der Seite **Dashboard** die sim
 > * Filtern der Geräte im Dashboard
 > * Anzeigen von Echtzeit-Telemetriedaten
 > * Anzeigen von Gerätedetails
-> * Anzeigen von Alarmen von den Geräten
+> * Anzeigen von Benachrichtigungen Ihrer Geräte
 > * Anzeigen der System-KPIs
 
 Sie wissen nun, wie Sie Ihre Geräte überwachen können. In den nächsten empfohlenen Schritten erfahren Sie Folgendes:

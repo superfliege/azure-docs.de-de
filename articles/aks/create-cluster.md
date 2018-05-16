@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Azure Container Service-Clusters (AKS)
+title: Erstellen eines Azure Kubernetes Service-Clusters (AKS)
 description: Erstellen eines AKS-Clusters mit der Befehlszeilenschnittstelle oder dem Azure-Portal
 services: container-service
 author: neilpeterson
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 37d6dfc0aa6b3e4fcd88a53e83a3a3d7f2157681
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 46c2f718911f27ad8f51423589c6fdda100a68d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="create-an-azure-container-service-aks-cluster"></a>Erstellen eines Azure Container Service-Clusters (AKS)
+# <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS)
 
-Ein Azure Container Service-Cluster (AKS) kann mit der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal erstellt werden.
+Ein Azure Kubernetes Service-Cluster (AKS) kann mit der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal erstellt werden.
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -32,7 +32,7 @@ Für den Befehl `az aks create` sind die folgenden Optionen verfügbar:
 | Argument | BESCHREIBUNG | Erforderlich |
 |---|---|:---:|
 | `--name``-n` | Ressourcenname für den verwalteten Cluster | Ja |
-| `--resource-group``-g` | Name der Azure Container Service-Ressourcengruppe | Ja |
+| `--resource-group``-g` | Name der Azure Kubernetes Service-Ressourcengruppe | Ja |
 | `--admin-username``-u` | Benutzername für die virtuellen Linux-Computer.  Standard: azureuser. | no |
 | ` --client-secret` | Das dem Dienstprinzipal zugeordnete Geheimnis | no |
 | `--dns-name-prefix``-p` | DNS-Präfix für die öffentliche IP-Adresse des Clusters | no |
@@ -48,7 +48,7 @@ Für den Befehl `az aks create` sind die folgenden Optionen verfügbar:
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Anweisungen zum Bereitstellen eines AKS-Clusters mit dem Azure-Portal finden Sie im [Azure-Portal-Schnellstart][aks-portal-quickstart] für den Azure Container Service (AKS). 
+Anweisungen zum Bereitstellen eines AKS-Clusters mit dem Azure-Portal finden Sie im [Azure-Portal-Schnellstart][aks-portal-quickstart] für Azure Kubernetes Service (AKS).
 
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create

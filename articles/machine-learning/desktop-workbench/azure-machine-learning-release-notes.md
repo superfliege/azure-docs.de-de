@@ -9,21 +9,32 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: e30943426ad68171e1464f828a9c8672b06c975a
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1eb4e7859ae62fca4e4a11f69abda3f767ab9596
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Neuerungen in Azure Machine Learning
 
-Dieser Artikel enthält Informationen zu den neuen Versionen für [Azure Machine Learning Services](../service/overview-what-is-azure-ml.md). 
+Dieser Artikel enthält Informationen zu den neuen Releases für [Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+
+
+## <a name="2018-05-sprint-5"></a>2018-05 (Sprint 5)
+
+Mit diesem Release von Azure Machine Learning können Sie folgende Aktionen ausführen:
++ Bilder mit einer quantisierten Version von ResNet 50 mit Features versehen, einen Klassifizierer auf diesen Features basierend trainieren und [dieses Modell auf einem FPGA in Azure bereitstellen](../service/how-to-deploy-fpga-web-service.md) für Rückschlüsse mit extrem geringer Latenz.
+
++ Äußerst genaue Machine Learning- und Deep Learning-Modelle mit [benutzerdefinierten Azure Machine Learning-Paketen](../service/reference-python-package-overview.md) für die folgenden Domänen schnell erstellen und bereitstellen:
+  + [Maschinelles Sehen](../service/how-to-build-deploy-image-classification-models.md)
+  + [Textanalyse](../service/how-to-build-deploy-text-classification-models.md)
+  + [Vorhersagen](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (Sprint 4)
 **Versionsnummer**: 0.1.1801.24353 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([Suchen Sie Ihre Version.](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Willkommen beim fünften Update von Azure Machine Learning Workbench. Bei vielen der unten angegebenen Aktualisierungen wurde Ihr Feedback direkt umgesetzt. Senden Sie weiter Feedback!
+Bei vielen der unten angegebenen Aktualisierungen wurde Ihr Feedback direkt umgesetzt. Senden Sie weiter Feedback!
 
 **Wichtige neue Features und Änderungen**
 

@@ -3,22 +3,22 @@ title: Registrierungsverwaltung
 description: In diesem Thema wird erläutert, wie Geräte bei Notification Hubs registriert werden, um Pushbenachrichtigungen zu empfangen.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 969f6b9654200b7f742b6405faa2cff2b13ba537
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 7f9052da066fcc0021151bf3b547484859cf216d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
 ## <a name="overview"></a>Übersicht
@@ -37,7 +37,7 @@ Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen
 
 * Das Erstellen oder Aktualisieren einer Installation ist vollständig idempotent. Sie können eine Installation wiederholen, ohne sich um doppelte Registrierungen sorgen zu müssen.
 * Das Installationsmodell erleichtert die Ausführung individueller Pushvorgänge für bestimmte Geräte. Bei jeder installationsbasierten Registrierung wird automatisch das Systemtag **"$InstallationId:[installationId]"** hinzugefügt. So können Sie ein Sendetag für ein bestimmtes Gerät aufrufen, ohne dass zusätzlicher Code geschrieben werden muss.
-* Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902)angefordert. Dies ist besonders nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
+* Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902)angefordert. Dies ist nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
 
 Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](https://msdn.microsoft.com/library/azure/mt621153.aspx) oder [Installationseigenschaften](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
@@ -84,10 +84,10 @@ Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes G
 #### <a name="templates"></a>Vorlagen
 Wenn Sie [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md)verwenden möchten, sollte die Geräteinstallation auch alle Vorlagen, die dem jeweiligen Gerät zugeordnet sind, in einem JSON-Format enthalten (siehe Beispiel oben). Mithilfe der Vorlagennamen können unterschiedliche Vorlagen problemlos auf dasselbe Gerät abzielen.
 
-Beachten Sie, dass jeder Vorlagenname einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet ist. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) .
+Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) .
 
 #### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundäre Kacheln für Windows Store-Apps
-Für Windows Store-Clientanwendungen ist das Senden von Benachrichtigungen an sekundäre Kacheln und an die primäre Kachel identisch. Dies wird auch in Installationen unterstützt. Beachten Sie, dass sekundäre Kacheln über einen unterschiedlichen ChannelUri verfügen, der vom SDK in der Client-App transparent behandelt wird.
+Für Windows Store-Clientanwendungen ist das Senden von Benachrichtigungen an sekundäre Kacheln und an die primäre Kachel identisch. Dies wird auch in Installationen unterstützt. Sekundäre Kacheln verfügen über einen unterschiedlichen ChannelUri, der vom SDK in der Client-App transparent behandelt wird.
 
 Das SecondaryTiles-Wörterbuch verwendet dieselbe TileId, die zum Erstellen des SecondaryTiles-Objekts in der Windows Store-App verwendet wird.
 Wie beim primären ChannelUri können sich ChannelUris sekundärer Kacheln jederzeit ändern. Damit die Installationen im Notification Hub aktuell bleiben, müssen sie vom Gerät mit den aktuellen ChannelUris der sekundären Kacheln aktualisiert werden.
@@ -98,7 +98,7 @@ Wenn die Geräteregistrierung über Client-Apps verwaltet wird, ist das Back-End
 ![](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 Zuerst ruft das Gerät das PNS-Handle aus dem PNS ab und registriert sich dann direkt beim Notification Hub. Wenn die Registrierung erfolgreich verläuft, kann das App-Back-End eine zielgerichtete Benachrichtigung an diese Registrierung senden. Weitere Informationen zum Senden von Benachrichtigungen finden Sie unter [Weiterleitung und Tagausdrücke](notification-hubs-tags-segment-push-message.md).
-Beachten Sie, dass Sie in diesem Fall nur Lauschrechte verwenden, um über das Gerät auf die Notification Hubs zuzugreifen. Weitere Informationen finden Sie unter [Sicherheit](notification-hubs-push-notification-security.md).
+In diesem Fall verwenden Sie nur Lauschrechte, um über das Gerät auf die Notification Hubs zuzugreifen. Weitere Informationen finden Sie unter [Sicherheit](notification-hubs-push-notification-security.md).
 
 Die Registrierung über das Gerät ist die einfachste Methode, birgt aber auch Nachteile.
 Der erste Nachteil besteht darin, dass eine Client-App ihre Tags nur aktualisieren kann, wenn die App aktiv ist. Angenommen, ein Benutzer verfügt über zwei Geräte, die Tags im Zusammenhang mit Sportmannschaften registrieren. Wenn sich das erste Gerät für ein zusätzliches Tag (z. B. Borussia Dortmund) registriert, empfängt das zweite Gerät erst Benachrichtigungen zu Borussia Dortmund, wenn die App auf dem zweiten Gerät ein zweites Mal ausgeführt wird. Allgemeiner ausgedrückt bedeutet dies, dass die Verwaltung von Tags möglichst über das Back-End erfolgen sollte, wenn Tags für mehrere Geräte gelten.
@@ -316,5 +316,5 @@ Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patc
     await hub.DeleteRegistrationAsync(r);
 
 
-Die Nebenläufigkeit zwischen Registrierungsupdates muss vom Back-End behandelt werden. Service Bus unterstützt die Steuerung für optimistische Nebenläufigkeit für die Registrierungsverwaltung. Auf der HTTP-Ebene wird dies durch die Verwendung von ETag für Registrierungsverwaltungsvorgänge implementiert. Dieses Feature wird von Microsoft-SDKs, die eine Ausnahme auslösen, wenn ein Update aus Gründen der Nebenläufigkeit abgelehnt wird, transparent verwendet. Das Back-End ist dafür verantwortlich, diese Ausnahmen zu behandeln und das Update ggf. zu wiederholen.
+Die Nebenläufigkeit zwischen Registrierungsupdates muss vom Back-End behandelt werden. Service Bus unterstützt die Steuerung für optimistische Nebenläufigkeit für die Registrierungsverwaltung. Auf der HTTP-Ebene wird dies durch die Verwendung von ETag für Registrierungsverwaltungsvorgänge implementiert. Dieses Feature wird von Microsoft-SDKs, die eine Ausnahme auslösen, wenn ein Update aus Gründen der Nebenläufigkeit abgelehnt wird, transparent verwendet. Das Back-End ist dafür verantwortlich, diese Ausnahmen zu behandeln und das Update zu wiederholen, sofern erforderlich.
 

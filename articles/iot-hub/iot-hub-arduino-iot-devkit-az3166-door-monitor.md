@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: ba02e877fe7152d759085e3d25090459cd2459fc
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d25948aeab4170e67133a8e7f538089fca28407d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="door-monitor"></a>Türüberwachung          
 
@@ -44,7 +44,7 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten]({{"/docs/get
 
 Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich mit einer der folgenden Methoden registrieren:
 
-* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/en-us/free/) aktivieren
+* [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/free/) aktivieren
 * [Azure-Gutschrift](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) beanspruchen, wenn Sie MSDN- oder Visual Studio-Abonnent sind
 
 ## <a name="deploy-sendgrid-service-in-azure"></a>Bereitstellen des SendGrid-Diensts in Azure
@@ -69,7 +69,7 @@ Die folgende Seite wird angezeigt.
 
 Füllen Sie das Registrierungsformular aus:
 
-  * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **Name**: Der Name für Ihren SendGrid-Dienst. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
@@ -111,7 +111,7 @@ Die folgende Seite wird angezeigt.
 
 Füllen Sie das Registrierungsformular aus:
 
-  * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-portal).
+  * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des SendGrid-Diensts, oder verwenden Sie eine vorhandene. Siehe [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 
   * **IoT Hub-Name**: Der Name für Ihren IoT Hub. Wählen Sie einen eindeutigen Namen, der sich von Ihren anderen Diensten unterscheidet.
 
@@ -132,10 +132,6 @@ Füllen Sie das Registrierungsformular aus:
 - Starten Sie Visual Studio Code.
 - Verbinden Sie das DevKit mit Ihrem Computer.
 
-VS Code erkennt Ihr DevKit automatisch und öffnet eine Einführungsseite:
-
-![VSCode](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-start.png)
-
 > [!NOTE]
 > Beim Starten von VS Code erhalten Sie unter Umständen eine Fehlermeldung mit dem Hinweis, dass die Arduino-IDE oder das dazugehörige Boardpaket nicht gefunden werden kann. Gehen Sie wie folgt vor, wenn Sie diesen Fehler erhalten: Schließen Sie VS Code, und starten Sie die Arduino-IDE neu. In VS Code sollte der Pfad der Arduino-IDE jetzt richtig gefunden werden.
 
@@ -145,7 +141,8 @@ Erweitern Sie auf der linken Seite den Abschnitt **ARDUINO-BEISPIELE**, wechseln
 
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
-Falls Sie den Bereich schließen sollten, können Sie ihn erneut öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
+> [!NOTE]
+> Sie können auch ein Beispiel über die Befehlspalette öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ### <a name="provision-azure-services"></a>Bereitstellen von Azure-Diensten
 
@@ -213,7 +210,7 @@ Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT Suite verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Hier sind die empfohlenen nächsten Schritte aufgeführt:
+Es wurde beschrieben, wie Sie ein DevKit-Gerät mit Ihrer Azure IoT-Remoteüberwachungslösung verbinden und den SendGrid-Dienst zum Senden einer E-Mail verwenden. Hier sind die empfohlenen nächsten Schritte aufgeführt:
 
-* [Übersicht über Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)
+* [Solution Accelerator für die Azure IoT-Remoteüberwachung: Übersicht](https://docs.microsoft.com/azure/iot-suite/)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

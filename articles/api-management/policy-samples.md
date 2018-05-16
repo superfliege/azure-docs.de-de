@@ -1,23 +1,24 @@
 ---
 title: Azure API Management-Richtlinienbeispiele | Microsoft-Dokumentation
-description: "Erfahren Sie mehr über die Richtlinien, die für die Verwendung in Azure API Management verfügbar sind."
+description: Erfahren Sie mehr über die Richtlinien, die für die Verwendung in Azure API Management verfügbar sind.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.date: 10/31/2017
 ms.author: apimpm
-ms.openlocfilehash: 0e8089cbcc5e38504d6b4c7ced372781f9a5e6d8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.custom: mvc
+ms.openlocfilehash: 3f1d9a96888732e6221722102a687e09f37333c0
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="api-management-policy-samples"></a>API Management-Richtlinienbeispiele
 
@@ -31,7 +32,7 @@ ms.lasthandoff: 12/04/2017
 |[Hinzufügen von Funktionen zu einem Back-End-Dienst und Zwischenspeichern der Antwort](./policies/cache-response.md?toc=api-management/toc.json) |Veranschaulicht das Hinzufügen von Funktionen zu einem Back-End-Dienst. Beispielsweise können Sie in einer API zur Wettervorhersage anstelle von Längen- und Breitengrad einen Ortsnamen akzeptieren.|
 |[Autorisieren des Zugriffs basierend auf JWT-Ansprüchen](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie den Zugriff auf bestimmte HTTP-Methoden in einer API basierend auf JWT-Ansprüchen autorisieren.|
 |[Autorisieren des Zugriffs mithilfe von Google-OAuth-Token](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie den Zugriff auf Ihre Endpunkte mithilfe von Google als OAuth-Tokenanbieter autorisieren.|
-|[Generieren von Shared Access Signatures und Weiterleiten von Anforderungen an Azure Storage](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie [Shared Access Signatures](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1) mithilfe von Ausdrücken generieren und die Anforderung mithilfe der rewrite-uri-Richtlinie an Azure Storage weiterleiten. |
+|[Generieren von Shared Access Signatures und Weiterleiten von Anforderungen an Azure Storage](./policies/generate-shared-access-signature.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie [Shared Access Signatures](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) mithilfe von Ausdrücken generieren und die Anforderung mithilfe der rewrite-uri-Richtlinie an Azure Storage weiterleiten. |
 |[Abrufen von OAuth2-Zugriffstoken aus AAD und Weiterleiten des Tokens an das Back-End](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json) |Stellt ein Beispiel zur Verwendung von OAuth2 für die Autorisierung zwischen dem Gateway und einem Back-End bereit. Dieses zeigt, wie Sie ein Zugriffstoken aus AAD abrufen und an das Back-End weiterleiten.|
 |[Abrufen von X-CSRF-Token aus einem SAP-Gateway mit einer Richtlinie zum Senden einer Anforderung](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie das von vielen APIs verwendete X-CSRF-Muster implementieren. Dieses Beispiel bezieht sich speziell auf das SAP-Gateway. |
 |[Weiterleiten der Anforderung basierend auf der Größe des Textkörpers](./policies/route-requests-based-on-size.md?toc=api-management/toc.json) |Veranschaulicht, wie Sie Anforderungen basierend auf der Größe des Textkörpers weiterleiten.|

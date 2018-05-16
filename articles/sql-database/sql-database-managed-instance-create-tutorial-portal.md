@@ -8,14 +8,14 @@ ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1e04b12241121d3894e2d71df423bae4f000a60d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal
 
@@ -107,7 +107,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine Route des folgende
    |**Abonnement**|Ihr Abonnement|Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions).|
    |**Ressourcengruppe**|Wählen Sie die Ressourcengruppe aus, die Sie im vorherigen Abschnitt erstellt haben.|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    |**Location**|Wählen Sie den Standort aus, den Sie im vorherigen Abschnitt angegeben haben.| Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
-   |**BGP-Routenverteilung deaktivieren**|Deaktiviert||
+   |**BGP-Routenverteilung deaktivieren**|Aktiviert||
    ||||
 
    ![Formular für die Erstellung einer Routingtabelle](./media/sql-database-managed-instance-tutorial/route-table-create-form.png)

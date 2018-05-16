@@ -1,11 +1,11 @@
 ---
 title: Glossar mit Azure IoT Hub-Begriffen | Microsoft-Dokumentation
-description: "Entwicklerhandbuch: Ein Glossar mit häufig verwendeten Begriffen für IoT Hub."
+description: 'Entwicklerhandbuch: Ein Glossar mit häufig verwendeten Begriffen für IoT Hub.'
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,17 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
 
 ## <a name="advanced-message-queueing-protocol"></a>Advanced Message Queueing Protocol
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
+
+## <a name="automatic-device-management"></a>Automatische Geräteverwaltung
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.  Umfasst [automatische Gerätekonfigurationen](iot-hub-auto-device-config.md) und [automatische IoT Edge-Bereitstellungen](../iot-edge/how-to-deploy-monitor.md).
+
+## <a name="automatic-device-configuration"></a>Automatische Gerätekonfiguration
+Ihr Lösungs-Back-End kann [automatische Gerätekonfigurationen](iot-hub-auto-device-config.md) verwenden, um einer Gruppe von [Gerätezwillingen](#device-twin) gewünschte Eigenschaften zuzuweisen und den Status anhand von Systemmetriken und benutzerdefinierten Metriken zu melden. 
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Die [Azure CLI](../cli-install-nodejs.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Version wird mithilfe von Node.js implementiert.
@@ -65,6 +71,9 @@ Mit einem Cloudgateway können Verbindungen für Geräte hergestellt werden, fü
 
 ## <a name="cloud-to-device"></a>Cloud-zu-Gerät (C2D)
 Bezieht sich auf Nachrichten, die von IoT Hub an ein verbundenes Gerät gesendet werden. Diese Nachrichten sind häufig Befehle, mit denen das Gerät angewiesen wird, eine Aktion auszuführen. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
+
+## <a name="configuration"></a>Konfiguration
+Im Kontext der [automatischen Gerätekonfiguration](iot-hub-auto-device-config.md) definiert eine Konfiguration in IoT Hub die gewünschte Konfiguration für eine Gruppe von Gerätezwillingen und bietet einen Satz von Metriken zum Melden von Status und Fortschritt.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 Sie können Verbindungszeichenfolgen in Ihrem App-Code verwenden, um die Informationen zu kapseln, die zum Herstellen der Verbindung mit einem Endpunkt erforderlich sind. Eine Verbindungszeichenfolge enthält üblicherweise die Adresse des Endpunkts und Sicherheitsinformationen, aber das Format der Verbindungszeichenfolge variiert für die verschiedenen Dienste. Im Zusammenhang mit dem IoT Hub-Dienst gibt es zwei Arten von Verbindungszeichenfolgen:
@@ -110,6 +119,9 @@ Mit der [REST-API für Geräteidentitäten](https://docs.microsoft.com/rest/api/
 ## <a name="device-identity"></a>Geräteidentität
 Die Geräteidentität ist der eindeutige Bezeichner, der jedem Gerät zugewiesen wird, das in der [Identitätsregistrierung](#identity-registry) registriert ist.
 
+## <a name="module-identity"></a>Modulidentität
+Bei der Modulidentität handelt es sich um den eindeutigen Bezeichner, der jedem Modul zugeordnet ist, das einem Gerät angehört. Die Modulidentität wird auch in der [Identitätsregistrierung](#identity-registry) registriert.
+
 ## <a name="device-management"></a>Geräteverwaltung
 Die Geräteverwaltung umfasst den vollständigen Lebenszyklus, der der Verwaltung der Geräte in Ihrer IoT-Lösung zugeordnet ist, z.B. Planen, Bereitstellen, Konfigurieren, Überwachen und Ausmustern.
 
@@ -125,14 +137,17 @@ Die Gerätebereitstellung ist der Prozess des Hinzufügens der ersten [Geräteda
 ## <a name="device-twin"></a>Gerätezwilling
 Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, mit dem Informationen zum Gerätezustand gespeichert werden, z.B. Metadaten, Konfigurationen und Bedingungen. [IoT Hub](#iot-hub) speichert einen Gerätezwilling für jedes Gerät, das Sie für IoT Hub bereitstellen. Mit Gerätezwillingen können Sie [Gerätebedingungen](#device-condition) und Konfigurationen zwischen dem Gerät und dem Lösungs-Back-End synchronisieren. Sie können Gerätezwillinge abfragen, um bestimmte Geräte zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
 
-## <a name="device-twin-queries"></a>Gerätezwillingabfragen
-Für [Gerätezwillingabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Gerätezwillingen abzufragen. Sie können diese IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
+## <a name="module-twin"></a>Modulzwilling
+Modulzwillinge ähneln Gerätezwillingen und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. IoT Hub speichert einen Modulzwilling für jede Modulidentität, die Sie unter einer Geräteidentität in Ihrer IoT Hub-Instanz bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem Lösungs-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
+
+## <a name="twin-queries"></a>Zwillingsabfragen
+Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können diese IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
 
 ## <a name="device-twin-rest-api"></a>REST-API für Gerätezwillinge
 Sie können die [REST-API für Gerätezwillinge](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) am Lösungs-Back-End zur Verwaltung Ihrer Gerätezwillinge verwenden. Mithilfe der API können Sie [Gerätezwillings](#device-twin)eigenschaften abrufen und aktualisieren sowie [direkte Methoden](#direct-method) aufrufen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
-## <a name="device-twin-synchronization"></a>Synchronisierung von Gerätezwillingen
-Bei der Synchronisierung von Gerätezwillingen werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Gerätezwillingen verwendet, um die Geräte zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten zum Speichern auf dem Gerätezwilling abzurufen.
+## <a name="twin-synchronization"></a>Zwillingssynchronisierung
+Bei der Zwillingssynchronisierung werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Geräte- oder Modulzwillingen verwendet, um die Geräte oder Module zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abzurufen und im entsprechenden Zwilling zu speichern.
 
 ## <a name="direct-method"></a>Direkte Methode
 Eine [direkte Methode](iot-hub-devguide-direct-methods.md) ist eine Möglichkeit zum Auslösen einer auf einem Gerät auszuführenden Methode, indem eine API auf Ihrem IoT Hub aufgerufen wird.
@@ -175,8 +190,8 @@ Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ä
 ## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub-Ressourcenanbieter-REST-API
 Sie können die [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) verwenden, um die IoT Hub-Instanzen in Ihrem [Azure-Abonnement](#subscription) zu verwalten und Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs durchzuführen.
 
-## <a name="iot-suite"></a>IoT Suite
-Azure IoT Suite kombiniert mehrere Azure IoT-Dienste mit vorkonfigurierten Lösungen. Diese vorkonfigurierten Lösungen ermöglichen Ihnen die schnelle und lückenlose Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Was ist Azure IoT Suite?](../iot-suite/iot-suite-overview.md).
+## <a name="iot-solution-accelerators"></a>IoT Solution Accelerators
+In Azure IoT-Solution Accelerators werden mehrere Azure-Dienste zu Lösungen zusammengepackt. Diese Lösungen ermöglichen eine schnelle End-to-End-Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Vergleich von Azure IoT-Optionen](../iot-suite/iot-suite-overview.md).
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Die IoT-Erweiterung für Azure CLI 2.0
 Die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.

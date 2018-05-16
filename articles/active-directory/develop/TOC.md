@@ -41,7 +41,7 @@
 ### [OAuth 2.0-Autorisierungscodeberechtigung](active-directory-protocols-oauth-code.md)
 ### [Implizite OAuth 2.0-Gewährung](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [Konfigurieren von Rollenansprüchen](active-directory-enterprise-app-role-management.md)
+### [Konfigurieren von Rollenansprüchen](../active-directory-enterprise-app-role-management.md)
 ### [Anpassen von Ansprüchen](active-directory-saml-claims-customization.md)
 ### [Debuggen von SAML-basierten SSO](active-directory-saml-debugging.md)
 ### [SAML-Protokoll für einmaliges Anmelden](active-directory-single-sign-on-protocol-reference.md)

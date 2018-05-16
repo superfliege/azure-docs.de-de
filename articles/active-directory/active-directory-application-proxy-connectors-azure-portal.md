@@ -1,25 +1,25 @@
 ---
-title: "Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation"
-description: "Erläutert das Erstellen und Verwalten von Connectorgruppen im Azure AD-Anwendungsproxy."
+title: Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+description: Erläutert das Erstellen und Verwalten von Connectorgruppen im Azure AD-Anwendungsproxy.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 58886fc8d1b713207d8cd2c5547d2f99420ba6eb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3ffc453c98f8d21f1cd6f7025387031bdacf073a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -33,7 +33,7 @@ Alle Anwendungen werden einer Connectorgruppe zugewiesen. Wenn Sie keine Gruppen
 >Wenn Sie über eine umfangreiche Anwendungsproxy-Bereitstellung verfügen, weisen Sie der Standardconnectorgruppe keine Anwendungen zu. Auf diese Weise erhalten neue Connectors keinen Livedatenverkehr, bis Sie sie einer aktiven Connectorgruppe zuordnen. Mit dieser Konfiguration können Sie Connectors auch in einen Ruhezustand versetzen, indem Sie sie wieder in die Standardgruppe verschieben, damit Sie die Wartung ohne Auswirkungen auf Ihre Benutzer ausführen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](active-directory-application-proxy-enable.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
+Um Connectors zu gruppieren, müssen Sie sicherstellen, dass [mehrere Connectors installiert sind](manage-apps/application-proxy-enable.md). Wenn Sie einen neuen Connector installieren, wird diese automatisch der Connectorgruppe **Standard** hinzugefügt.
 
 ## <a name="create-connector-groups"></a>Erstellen von Connectorgruppen
 Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen. 
@@ -126,6 +126,6 @@ Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-understand-connectors.md)
-* [Aktivieren der einmaligen Anmeldung](application-proxy-sso-overview.md)
+* [Aktivieren der einmaligen Anmeldung](manage-apps/application-proxy-single-sign-on.md)
 
 

@@ -1,9 +1,9 @@
 ---
-title: "Blueprint zur Azure-Zahlungsverarbeitung – Verschlüsselungsanforderungen"
+title: Blueprint zur Azure-Zahlungsverarbeitung – Verschlüsselungsanforderungen
 description: PCI-DSS-Anforderung 4
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 43f75ba9-cb4e-49ab-b3f4-09e48310bc18
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
-ms.author: frasim
-ms.openlocfilehash: 3eb5b663558c2a68c13368b179ff942dd3c53716
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.author: jomolesk
+ms.openlocfilehash: 6de3290fc2147e3c8ed63642b6e8470093898ef6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>Verschlüsselungsanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-4"></a>PCI-DSS-Anforderung 4
@@ -53,7 +53,7 @@ Vertrauliche Informationen müssen während der Übertragung über Netzwerke, di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Der Contoso Webstore ist eine PaaS-Lösung, die starke Kryptografie für die Bereitstellung wie folgt implementiert:<br /><br />[Azure Storage](https://azure.microsoft.com/services/storage/) verwendet Folgendes, um die Anforderungen für ruhende Daten zu erfüllen:<br /><br /><ul><li>[Azure Storage Service Encryption (SSE) für ruhende Daten](/azure/storage/storage-service-encryption)</li><li>SQL-Datenbank: Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Die Verwendung von Azure Key Vault entspricht den Azure Government-, PCI-DSS- und HIPAA-Anforderungen.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Der Contoso Webstore ist eine PaaS-Lösung, die starke Kryptografie für die Bereitstellung wie folgt implementiert:<br /><br />[Azure Storage](https://azure.microsoft.com/services/storage/) verwendet Folgendes, um die Anforderungen für ruhende Daten zu erfüllen:<br /><br /><ul><li>[Azure Storage Service Encryption (SSE) für ruhende Daten](/azure/storage/storage-service-encryption)</li><li>SQL-Datenbank: Eine PaaS-SQL-Datenbank-Instanz wird zur Veranschaulichung von Sicherheitsmaßnahmen für die Datenbank verwendet. Weitere Informationen finden Sie in den [PCI-Anleitungen für Azure SQL-Datenbank](payment-processing-blueprint.md#azure-sql-database).</li><li>[Azure Disk Encryption (Bitlocker)](/azure/security/azure-security-disk-encryption)</li></ul>Die Verwendung von Azure Key Vault entspricht den Azure Government-, PCI-DSS- und HIPAA-Anforderungen.|
 
 
 
@@ -66,7 +66,7 @@ Vertrauliche Informationen müssen während der Übertragung über Netzwerke, di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | WLAN und SNMP sind nicht in der Lösung implementiert.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | WLAN und SNMP sind nicht in der Lösung implementiert.|
 
 
 
@@ -79,7 +79,7 @@ Vertrauliche Informationen müssen während der Übertragung über Netzwerke, di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Im Contoso Webstore sind keine Messaginglösungen implementiert, die nicht geschützte PAN-Daten (Primary Account Number) senden können.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Im Contoso Webstore sind keine Messaginglösungen implementiert, die nicht geschützte PAN-Daten (Primary Account Number) senden können.|
 
 
 
@@ -92,7 +92,7 @@ Vertrauliche Informationen müssen während der Übertragung über Netzwerke, di
 |||
 |---|---|
 | **Anbieter<br />(Microsoft&nbsp;Azure)** | Nicht zutreffend |
-| **Kunde<br />(PCI&#8209;DSS&nbsp;-Plan)** | Kunden sind für die Dokumentation und Verschlüsselung von Übertragungen verantwortlich, die Daten von Karteninhabern enthalten.|
+| **Kunde<br />(PCI&#8209;DSS&nbsp;– Plan)** | Kunden sind für die Dokumentation und Verschlüsselung von Übertragungen verantwortlich, die Daten von Karteninhabern enthalten.|
 
 
 

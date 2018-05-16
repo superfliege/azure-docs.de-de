@@ -1,6 +1,6 @@
 ---
-title: Zugreifen per SSH auf Azure Container Service-Clusterknoten (AKS-Clusterknoten)
-description: Erstellen einer SSH-Verbindung mit einem Azure Container Service-Clusterknoten (AKS-Clusterknoten)
+title: Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
+description: Erstellen einer SSH-Verbindung mit einem Azure Kubernetes Service-Clusterknoten (AKS)
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 085a2976443db8ece7a36dbfc133b173432ce4c8
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="ssh-into-azure-container-service-aks-cluster-nodes"></a>Zugreifen per SSH auf Azure Container Service-Clusterknoten (AKS-Clusterknoten)
+# <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
 
-Gelegentlich müssen Sie auf einen AKS-Knoten (Azure Container Service) zugreifen, um Wartungsarbeiten, Protokollsammlungen oder andere Vorgänge zur Problembehandlung auszuführen. AKS-Knoten werden nicht im Internet verfügbar gemacht. Führen Sie die in diesem Dokument aufgeführten Schritte aus, um eine SSH-Verbindung mit einem AKS-Knoten zu erstellen.
+Gelegentlich müssen Sie auf einen AKS-Knoten (Azure Kubernetes Service) zugreifen, um Wartungsarbeiten, Protokollsammlungen oder andere Vorgänge zur Problembehandlung auszuführen. AKS-Knoten werden nicht im Internet verfügbar gemacht. Führen Sie die in diesem Dokument aufgeführten Schritte aus, um eine SSH-Verbindung mit einem AKS-Knoten zu erstellen.
 
 ## <a name="get-aks-node-address"></a>Abrufen der AKS-Knotenadresse
 

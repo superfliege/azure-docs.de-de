@@ -1,6 +1,6 @@
 ---
 title: Einführung in die Azure Stream Analytics-Windowing-Funktionen
-description: In diesem Artikel werden die drei Windowing-Funktionen (rollierend, springend, gleitend) beschrieben, die in Azure Stream Analytics-Aufträgen verwendet werden.
+description: In diesem Artikel werden die vier Windowing-Funktionen (Rollierend, Springend, Gleitend, Sitzung) beschrieben, die in Azure Stream Analytics-Aufträgen verwendet werden.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -8,35 +8,48 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/28/2017
-ms.openlocfilehash: c6f5dbe49cb60e3c7b2bc6562acf2d7fd79096ec
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 04/30/2018
+ms.openlocfilehash: dfc59c8d976720ddb313c2e9d29e68c56a8d49f6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="introduction-to-stream-analytics-window-functions"></a>Einführung in Stream Analytics-Fensterfunktionen
-In vielen Szenarien mit Echtzeit-Streaming ist es erforderlich, Vorgänge nur für die Daten in temporalen Fenstern durchzuführen. Die native Unterstützung für Fensterfunktionen ist ein Hauptfeature von Azure Stream Analytics, mit dem die Entwicklerproduktivität beim Erstellen komplexer Aufträge mit Datenstromverarbeitung gefördert wird. Stream Analytics ermöglicht Entwicklern die Verwendung von [**rollierenden Fenstern**](https://msdn.microsoft.com/library/dn835055.aspx), [**springenden Fenstern**](https://msdn.microsoft.com/library/dn835041.aspx) und [**Schiebefenstern**](https://msdn.microsoft.com/library/dn835051.aspx), um für Streamingdaten temporale Vorgänge durchzuführen. Beachten Sie, dass die Ergebnisse für alle [Fenster](https://msdn.microsoft.com/library/dn835019.aspx) vorgänge am **Ende** des Fensters ausgegeben werden. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. Schließlich sollten Sie noch beachten, dass alle Fensterfunktionen in einer [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx)-Klausel verwendet werden sollten.
+# <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
+Bei Szenarien mit „Time Streaming“ ist das Durchführen von Vorgängen für die Daten in temporalen Fenstern ein häufiges Muster. Stream Analytics verfügt über native Unterstützung für Windowing-Funktionen, sodass Entwickler komplexe Streaming-Verarbeitungsaufträge mit sehr geringem Aufwand erstellen können.
+
+Sie können zwischen vier Arten von temporalen Fenstern wählen: [**Rollierend**](https://msdn.microsoft.com/library/dn835055.aspx), [**Springend**](https://msdn.microsoft.com/library/dn835041.aspx), [**Gleitend**](https://msdn.microsoft.com/library/dn835051.aspx) und **Sitzung**.  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen.
+
+Für alle [Windowing](https://msdn.microsoft.com/library/dn835019.aspx)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
 
 ![Stream Analytics-Fensterfunktionen – Konzepte](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
 ## <a name="tumbling-window"></a>Rollierendes Fenster
 Rollierende Fensterfunktionen werden verwendet, um einen Datenstrom in einzelne Zeitsegmente zu unterteilen und dafür eine Funktion durchzuführen, z.B. wie im Beispiel unten. Die wichtigsten Unterscheidungsmerkmale eines rollierenden Fensters sind, dass sie wiederholt werden, sich nicht überlappen und ein Ereignis nicht zu mehr als einem rollierenden Fenster gehören kann.
 
-![Stream Analytics-Fensterfunktionen – Einführung in rollierende Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
+![Stream Analytics – Rollierendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-tumbling-intro.png)
 
 ## <a name="hopping-window"></a>Springendes Fenster
-Bei den Funktionen von springenden Fenstern wird für einen festen Zeitraum ein Sprung nach vorn durchgeführt. Sie können sich dies wie rollierende Fenster vorstellen, die sich überlappen können, damit die Ereignisse mehr als einem Resultset für springende Fenster angehören können. Um ein springendes Fenster an ein rollierendes Fenster anzugleichen, müsste lediglich die Sprunggröße an die Fenstergröße angepasst werden. 
+Bei den Funktionen von springenden Fenstern wird für einen festen Zeitraum ein Sprung nach vorn durchgeführt. Sie können sich dies wie rollierende Fenster vorstellen, die sich überlappen können, damit die Ereignisse mehr als einem Resultset für springende Fenster angehören können. Um ein springendes Fenster an ein rollierendes Fenster anzugleichen, passen Sie die Sprunggröße an die Fenstergröße an. 
 
-![Stream Analytics-Fensterfunktionen – Einführung in springende Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
+![Stream Analytics – Springendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
-## <a name="sliding-window"></a>Schiebefenster
-Bei Schiebefensterfunktionen wird im Gegensatz zu rollierenden oder springenden Fenstern **nur** dann ein Ereignis produziert, wenn ein Ereignis eintritt. Jedes Fenster verfügt über mindestens ein Ereignis, und das Fenster wird fortlaufend um „€“ (Epsilon) nach vorn verschoben. Wie bei springenden Fenstern auch, können Ereignisse zu mehr als einem Schiebefenster gehören.
+## <a name="sliding-window"></a>Gleitendes Fenster
+Bei Funktionen für gleitende Fenster wird im Gegensatz zu rollierenden oder springenden Fenstern **nur** dann ein Ereignis produziert, wenn ein Ereignis eintritt. Jedes Fenster verfügt über mindestens ein Ereignis, und das Fenster wird fortlaufend um „€“ (Epsilon) nach vorn verschoben. Wie bei springenden Fenstern auch, können Ereignisse zu mehr als einem gleitenden Fenster gehören.
 
-![Stream Analytics-Fensterfunktionen – Einführung in Schiebefenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
+![Stream Analytics – Gleitendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
-## <a name="getting-help-with-window-functions"></a>Hilfe zu Fensterfunktionen
-Um Hilfe zu erhalten, besuchen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
+## <a name="session-window-preview"></a>Sitzungsfenster (Vorschau)
+Mit Funktionen für Sitzungsfenster werden Ereignisse gruppiert, die zu ähnlichen Zeiten eingehen. Zeiträume, in denen keine Daten anfallen, werden herausgefiltert. Es werden drei Hauptparameter verwendet: Timeout, maximale Dauer und Partitionierungsschlüssel (optional).
+
+![Stream Analytics – Sitzungsfenster](media/stream-analytics-window-functions/stream-analytics-window-functions-session-intro.png)
+
+Ein Sitzungsfenster beginnt, wenn das erste Ereignis eintritt. Wenn ein anderes Ereignis innerhalb des angegebenen Zeitlimits für das letzte erfasste Ereignis eintritt, wird das Fenster erweitert, damit es das neue Ereignis enthält. Falls innerhalb des Zeitlimits keine Ereignisse eintreten, wird das Fenster zum Zeitlimit-Endzeitpunkt geschlossen.
+
+Wenn innerhalb des angegebenen Zeitraums weiter Ereignisse eintreten, wird das Sitzungsfenster so lange erweitert, bis die maximale Dauer erreicht ist. Die Überprüfungsintervalle für die maximale Dauer werden auf die gleiche Größe wie die angegebene maximale Dauer festgelegt. Wenn die maximale Dauer beispielsweise 10 beträgt, werden die Überprüfungen, ob für das Fenster die maximale Dauer überschritten wird, nach dem Muster t = 0, 10, 20, 30 usw. durchgeführt.
+
+Wenn ein Partitionsschlüssel angegeben wird, werden die Ereignisse nach dem Schlüssel gruppiert, und das Sitzungsfenster wird auf jede Gruppe separat angewendet. Diese Partitionierung ist für Fälle nützlich, in denen Sie unterschiedliche Sitzungsfenster für unterschiedliche Benutzer oder Geräte benötigen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)

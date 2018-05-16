@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: rli; v-deasim
-ms.openlocfilehash: 3f475c5cc9b766ea9aa5bd39d4a378e8deed5e35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 61fbe6e29df787048a9694138d3c9095f5cba76b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analysieren von Azure CDN-Verwendungsmustern
 
@@ -26,7 +26,7 @@ Nachdem Sie CDN für Ihre Anwendung aktiviert haben, können Sie die CDN-Nutzung
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Kernanalyse über Azure-Diagnoseprotokolle
 
-Die Kernanalyse ist für alle CDN-Endpunkte verfügbar, die zu CDN-Profilen von Verizon (Standard und Premium) und Akamai (Standard) gehören. Durch die Azure-Diagnoseprotokolle kann die Kernanalyse in Azure-Speicher, Event Hubs oder Log Analytics exportiert werden. Log Analytics bietet eine Lösung mit Diagrammen, die von Benutzern konfiguriert und angepasst werden können. Weitere Informationen finden Sie unter [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md).
+Die Kernanalyse ist für CDN-Endpunkte für alle Tarife verfügbar. Durch die Azure-Diagnoseprotokolle kann die Kernanalyse in Azure Storage, Event Hubs oder Azure Log Analytics exportiert werden. Azure Log Analytics bietet eine Lösung mit Diagrammen, die von Benutzern konfiguriert und angepasst werden können. Weitere Informationen zu Azure-Diagnoseprotokollen finden Sie unter [Azure-Diagnoseprotokolle](cdn-azure-diagnostic-logs.md).
 
 ## <a name="verizon-core-reports"></a>Verizon-Kernberichte
 
@@ -36,7 +36,7 @@ Als Benutzer von Azure CDN mit dem Profil **Azure CDN Standard von Verizon** ode
 
 Als Benutzer von Azure CDN mit dem Profil **Azure CDN Standard von Verizon** oder **Azure CDN Premium von Verizon** können Sie im zusätzlichen Verizon-Portal benutzerdefinierte Verizon-Berichte anzeigen. Auf benutzerdefinierte Verizon-Berichte kann im Azure-Portal über die Option **Verwalten** zugegriffen werden. Auf der Seite für benutzerdefinierte Verizon-Berichte wird die Anzahl der Treffer oder übertragenen Daten für jeden „Edge CName“ angezeigt, der zu einem Azure CDN-Profil gehört. Die Daten können über einen beliebigen Zeitraum nach HTTP-Antwortcode oder Cachestatus gruppiert werden. Weitere Informationen finden Sie unter [Benutzerdefinierte Berichte aus Verizon](cdn-verizon-custom-reports.md).
 
-## <a name="verizon-premium-reports"></a>Verizon Premium-Berichte
+## <a name="azure-cdn-premium-from-verizon-reports"></a>Azure CDN Premium von Verizon: Berichte
 
 Mit **Azure CDN Premium von Verizon** können Sie darüber hinaus auf die folgenden Berichte zugreifen:
    * [Erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)

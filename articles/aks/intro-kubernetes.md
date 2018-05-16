@@ -1,6 +1,6 @@
 ---
-title: Einführung in Azure Container Service für Kubernetes
-description: Azure Container Service für Kubernetes vereinfacht die Bereitstellung und Verwaltung containerbasierter Anwendungen in Azure.
+title: Einführung in Azure Kubernetes Service
+description: Azure Kubernetes Service vereinfacht die Bereitstellung und Verwaltung containerbasierter Anwendungen in Azure.
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,20 +9,20 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f418e70c6da46443b95e5fd4056ca26d46d95505
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4936554465fbbed45000f43853a6a77567c3028f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="introduction-to-azure-container-service-aks-preview"></a>Einführung in die Vorschauversion von Azure Container Service (AKS)
+# <a name="introduction-to-azure-kubernetes-service-aks-preview"></a>Einführung in die Vorschauversion von Azure Kubernetes Service (AKS)
 
-Azure Container Service (AKS) vereinfacht das Erstellen, Konfigurieren und Verwalten eines Clusters mit virtuellen Computern, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind. So können Sie Ihre vorhandenen Kenntnisse nutzen, bzw. auf einen großen und wachsenden Pool von Communityfachkenntnissen zur Bereitstellung und Verwaltung von containerbasierten Anwendungen in Microsoft Azure zurückgreifen.
+Azure Kubernetes Service (AKS) vereinfacht das Erstellen, Konfigurieren und Verwalten eines Clusters mit virtuellen Computern, die für die Ausführung von Anwendungen in Containern vorkonfiguriert sind. So können Sie Ihre vorhandenen Kenntnisse nutzen, bzw. auf einen großen und wachsenden Pool von Communityfachkenntnissen zur Bereitstellung und Verwaltung von containerbasierten Anwendungen in Microsoft Azure zurückgreifen.
 
 Mit AKS können Sie die professionellen Features von Azure nutzen und müssen dank Kubernetes und Docker-Imageformat trotzdem nicht auf Anwendungsportabilität verzichten.
 
 > [!IMPORTANT]
-> Azure Container Service (AKS) befindet sich derzeit in der **Vorschauphase**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+> Azure Kubernetes Service (AKS) befindet sich derzeit in der **Vorschauversion**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 >
 
 ## <a name="managed-kubernetes-in-azure"></a>Managed Kubernetes in Azure
@@ -37,11 +37,11 @@ AKS verringert die Komplexität und den operativen Mehraufwand des Verwaltens ei
 
 Da die Verwaltung der Knoten im AKS-Cluster durch Azure erfolgt, müssen Sie viele Aufgaben, z.B. Clusterupgrades, nicht mehr manuell ausführen. Weil diese wichtigen Wartungsaufgaben von Azure ausgeführt werden, bietet AKS keinen direkten Zugriff (z.B. mit SSH) auf den Cluster.
 
-## <a name="using-azure-container-service-aks"></a>Verwenden von Azure Container Service (AKS)
+## <a name="using-azure-kubernetes-service-aks"></a>Verwenden von Azure Kubernetes Service (AKS)
 Mit AKS wird das Ziel verfolgt, mit Open Source-Tools und -Technologien, die heutzutage bei den Kunden beliebt sind, eine Umgebung für das Containerhosting bereitzustellen. Zu diesem Zweck machen wir die standardmäßigen Kubernetes-API-Endpunkte verfügbar. Mithilfe dieser Standardendpunkte können Sie jede Software nutzen, die mit einem Kubernetes-Cluster kommunizieren kann. Zur Auswahl stehen beispielsweise [kubectl][kubectl-overview], [helm][helm] und [draft][draft].
 
-## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>Erstellen eines Kubernetes-Clusters mithilfe von Azure Container Service (AKS)
-Stellen Sie zum Verwenden von AKS zunächst mithilfe der [Azure CLI][aks-quickstart] oder über das Portal einen AKS-Cluster bereit. (Suchen Sie im Marketplace nach **Azure Container Service**.) Erfahrene Benutzer, die mehr Kontrolle über Azure Resource Manager-Vorlagen benötigen, können mithilfe des Open Source-Projekts [acs-engine][acs-engine] einen eigenen benutzerdefinierten Kubernetes-Cluster erstellen und über die `az`-Befehlszeilenschnittstelle bereitstellen.
+## <a name="creating-a-kubernetes-cluster-using-azure-kubernetes-service-aks"></a>Erstellen eines Kubernetes-Clusters mithilfe von Azure Kubernetes Service (AKS)
+Stellen Sie zum Verwenden von AKS zunächst mithilfe der [Azure CLI][aks-quickstart] oder über das Portal einen AKS-Cluster bereit. (Suchen Sie im Marketplace nach **Azure Kubernetes Service**.) Erfahrene Benutzer, die mehr Kontrolle über Azure Resource Manager-Vorlagen benötigen, können mithilfe des Open Source-Projekts [acs-engine][acs-engine] einen eigenen benutzerdefinierten Kubernetes-Cluster erstellen und über die `az`-Befehlszeilenschnittstelle bereitstellen.
 
 ### <a name="using-kubernetes"></a>Verwenden von Kubernetes
 Kubernetes automatisiert die Bereitstellung, Skalierung und Verwaltung von Anwendungen in Containern. Das Tool bietet zahlreiche Funktionen, darunter:
@@ -56,7 +56,7 @@ Kubernetes automatisiert die Bereitstellung, Skalierung und Verwaltung von Anwen
 
 ## <a name="videos"></a>Videos
 
-Azure Container Service (AKS) – Azure Friday, Oktober 2017:
+Azure Kubernetes Service (AKS) – Azure Friday, Oktober 2017:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Container-Orchestration-Simplified-with-Managed-Kubernetes-in-Azure-Container-Service-AKS/player]
 >

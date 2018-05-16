@@ -9,13 +9,13 @@ ms.topic: get-started-article
 ms.date: 04/19/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 81f455668e81c2a6c21b66d85199da3f475e7265
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ffcc3a1a40973a4cf3b096ed82d35e21c9b20a44
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="service-principals-with-azure-container-service-aks"></a>Dienstprinzipale mit Azure Container Service (AKS)
+# <a name="service-principals-with-azure-kubernetes-service-aks"></a>Dienstprinzipale mit Azure Kubernetes Service (AKS)
 
 Für die Interaktion mit Azure-APIs benötigt ein AKS-Cluster einen [Azure Active Directory-Dienstprinzipal][aad-service-principal]. Der Dienstprinzipal wird für die dynamische Erstellung und Verwaltung von Ressourcen wie [Azure Load Balancer][azure-load-balancer-overview] benötigt.
 

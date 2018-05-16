@@ -1,30 +1,31 @@
 ---
-title: "Referenz für den Infrastructure Backup-Dienst für Azure Stack | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Referenzmaterial für den Infrastructure Backup-Dienst für Azure Stack."
+title: Referenz für den Infrastructure Backup-Dienst für Azure Stack | Microsoft-Dokumentation
+description: Dieser Artikel enthält Referenzmaterial für den Infrastructure Backup-Dienst für Azure Stack.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: D6EC0224-97EA-446C-BC95-A3D32F668E2C
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 4/20/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4e6e0a52b2c55239e38757223f54e5e94dc98c42
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.reviewer: hectorl
+ms.openlocfilehash: 608f3043e0e4b851820274ca743cbc44d1c8c0f1
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="infrastructure-backup-service-reference"></a>Referenz für den Infrastructure Backup-Dienst
 
 ## <a name="azure-backup-infrastructure"></a>Azure-Sicherungsinfrastruktur
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack besteht aus vielen Diensten, die das Portal, Azure Resource Manager und die Infrastrukturverwaltung umfassen. Ziel der anwendungsähnlichen Verwaltung von Azure Stack ist die Reduzierung der Komplexität für Bediener der Lösung.
 

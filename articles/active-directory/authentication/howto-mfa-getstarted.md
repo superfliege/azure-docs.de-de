@@ -2,23 +2,19 @@
 title: Erste Schritte mit Azure MFA in der Cloud | Microsoft Docs
 description: Auf dieser Seite zu Microsoft Azure Multi-Factor Authentication werden die ersten Schritte mit Azure MFA in der Cloud beschrieben.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 6b2e6549-1a26-4666-9c4a-cbe5d64c4e66
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: joflore
-ms.openlocfilehash: e6210cf7ece0aa0cdeec8f95b74910893c22b1bb
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 0a822d55e8d7bd0d503eb7d77f96dc9e60e1a4ba
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>Erste Schritte mit Azure Multi-Factor Authentication in der Cloud
 In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie die ersten Schritte mit Azure Multi-Factor Authentication in der Cloud ausführen.
@@ -41,7 +37,7 @@ Falls Sie nicht über eine dieser drei Lizenzen verfügen oder nicht genügend L
 
 ## <a name="turn-on-two-step-verification-for-users"></a>Aktivieren der zweistufigen Überprüfung für Benutzer
 
-Verwenden Sie eine der unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](../../multi-factor-authentication/multi-factor-authentication-get-started-user-states.md) aufgeführten Verfahrensweisen, um mit der Verwendung von Azure MFA zu beginnen. Sie können die zweistufige Überprüfung auch für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn Sie es für wichtig erachten.
+Verwenden Sie eine der unter [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](howto-mfa-userstates.md) aufgeführten Verfahrensweisen, um mit der Verwendung von Azure MFA zu beginnen. Sie können die zweistufige Überprüfung auch für alle Anmeldungen erzwingen oder Richtlinien für bedingten Zugriff erstellen, um die zweistufige Überprüfung nur dann vorauszusetzen, wenn Sie es für wichtig erachten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie die Azure Multi-Factor Authentication in der Cloud eingerichtet haben, können Sie die Bereitstellung konfigurieren und einrichten. Weitere Informationen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication](howto-mfa-mfasettings.md).

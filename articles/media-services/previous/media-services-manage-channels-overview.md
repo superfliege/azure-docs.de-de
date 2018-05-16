@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: d71f9fc2b69e1a99b518c2317cccde712ab40fec
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Übersicht über Livestreaming mit Azure Media Services
 
@@ -54,7 +54,7 @@ Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten da
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/media-services/) .
   > 
   > 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). RTP (MPEG-TS) wird ebenfalls unterstützt, sofern Sie über eine dedizierte Verbindung mit dem Azure-Rechenzentrum verfügen. Bei den folgenden Liveencodern mit RTMP-Ausgabe ist bekannt, dass sie mit Kanälen dieses Typs funktionieren: Telestream Wirecast, FMLE. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Bei den folgenden Liveencodern mit RTMP-Ausgabe ist bekannt, dass sie mit Kanälen dieses Typs funktionieren: Telestream Wirecast, FMLE. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Eingabedatenstrom vom Kanal empfangen werden soll und ob vom Kanal eine Livecodierung des Datenstroms ausgeführt werden soll. Sie haben zwei Möglichkeiten:
 
@@ -68,7 +68,7 @@ Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von M
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
 | Maximale Auflösung, Anzahl der Ebenen |1080p, 8 Ebenen, 60 fps oder mehr |720p, 6 Ebenen, 30 fps |
-| Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming und RTP |
+| Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximale Laufzeit |Rund um die Uhr |8 Stunden |
 | Unterstützung für das Einfügen von Slates |Nein  |Ja |

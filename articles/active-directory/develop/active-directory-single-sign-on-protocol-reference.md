@@ -1,13 +1,14 @@
 ---
-title: "Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs"
-description: "In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben."
+title: Azure-SAML-Protokoll für einmaliges Anmelden | Microsoft Docs
+description: In diesem Artikel wird das SAML-Protokoll für einmaliges Anmelden in Azure Active Directory beschrieben.
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ad8437f5-b887-41ff-bd77-779ddafc33fb
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
-ms.openlocfilehash: 096a250685bf023f789f98e16d2bea13bf448e3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ddd5fa6f2ed0878afd8bbd6399471e92dfa30385
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 In diesem Artikel werden die SAML 2.0-Authentifizierungsanforderungen und -antworten erläutert, die Azure Active Directory (Azure AD) für das einmalige Anmelden unterstützt.
@@ -42,11 +43,11 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 ```
 
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| ID |erforderlich |Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
-| Version |erforderlich |Sollte **2.0**sein. |
-| IssueInstant |erforderlich |Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
+| ID |required |Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
+| Version |required |Sollte **2.0**sein. |
+| IssueInstant |required |Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
 | AssertionConsumerServiceUrl |optional |Muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |
 | ForceAuthn |optional | Dies ist ein Boolescher Wert. Bei „true“ wird der Benutzer gezwungen, sich erneut zu authentifizieren, selbst wenn für ihn bereits eine gültige Sitzung mit Azure AD besteht. |
 | IsPassive |optional |Dies ist ein Boolescher Wert, der festlegt, ob Azure AD den Benutzer im Hintergrund ohne Eingreifen des Benutzers, jedoch mithilfe des Sitzungscookies authentifiziert, sofern ein solches vorhanden ist. Bei „true“ versucht Azure AD den Benutzer mithilfe des Sitzungscookies zu authentifizieren. |
@@ -93,10 +94,10 @@ Wenn Sie sich für die Angabe entscheiden, schließen Sie das `ProxyCount`-Attri
 ### <a name="signature"></a>Signatur
 Schließen Sie in `AuthnRequest`-Elemente kein `Signature`-Element ein, da Azure AD signierte Authentifizierungsanfragen nicht unterstützt.
 
-### <a name="subject"></a>Subject (Antragsteller)
+### <a name="subject"></a>Antragsteller
 Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.
 
-## <a name="response"></a>Antwort
+## <a name="response"></a>response
 Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD eine Antwort an den Clouddienst. Ein Beispiel für eine Antwort auf einen erfolgreichen Anmeldeversuch sieht folgendermaßen aus:
 
 ```
@@ -142,7 +143,7 @@ Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD
 </samlp:Response>
 ```
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `Response`-Element fest. Außerdem legt es die folgenden Attribute fest:
 
 * `Destination`: Wird nach erfolgreichem Abschluss der Anmeldung auf den `RedirectUri` des Dienstanbieters (Clouddienst) festgelegt.
@@ -198,7 +199,7 @@ Azure AD verwendet den im `IDPSSODescriptor` -Element des Metadatendokuments fes
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject (Antragsteller)
+#### <a name="subject"></a>Antragsteller
 Legt den Prinzipal fest, der Betreff der Anweisungen in der Assertion ist. Er enthält ein `NameID`-Element, das den authentifizierten Benutzer darstellt. Der `NameID`-Wert ist ein gezielter Bezeichner, der nur an den Dienstanbieter gerichtet ist, welcher die Zielgruppe für das Token darstellt. Er ist persistent – er kann widerrufen werden, eine erneute Zuweisung ist jedoch nicht mehr möglich. Er ist zudem nicht transparent, d.h. Informationen über den Benutzer werden nicht preisgegeben, und er kann nicht als Bezeichner für Attributabfragen verwendet werden.
 
 Das `Method`-Attribut des `SubjectConfirmation`-Elements ist immer auf `urn:oasis:names:tc:SAML:2.0:cm:bearer` festgelegt.
@@ -228,7 +229,7 @@ Die Attribute `NotBefore` und `NotOnOrAfter` legen das Intervall fest, in dem di
 * Der Wert des `NotBefore`-Attributs entspricht dem Wert des `IssueInstant`-Attributs des `Assertion`-Elements oder ist etwas (weniger als einer Sekunde) höher. Azure AD berücksichtigt keine Zeitunterschiede zwischen sich selbst und dem Clouddienst (Dienstanbieter) und fügt dieser Zeit keinen Puffer hinzu.
 * Der Wert des `NotOnOrAfter`-Attributs liegt 70 Minuten nach dem Wert des `NotBefore`-Attributs.
 
-#### <a name="audience"></a>Audience (Zielgruppe)
+#### <a name="audience"></a>Zielgruppe
 Dieses Element enthält einen URI, der die beabsichtigte Zielgruppe identifiziert. Azure AD legt den Wert dieses Elements auf den Wert des `Issuer`-Elements der `AuthnRequest` fest, die die Anmeldung initiiert hat. Verwenden Sie zum Auswerten des Werts `Audience` den Wert von `App ID URI`, der bei der Anwendungsregistrierung angegeben wurde.
 
 ```

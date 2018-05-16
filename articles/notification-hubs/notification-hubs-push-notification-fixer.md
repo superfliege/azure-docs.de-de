@@ -1,45 +1,45 @@
 ---
-title: "Azure Notification Hubs – Diagnostizieren verworfener Benachrichtigungen"
+title: Azure Notification Hubs – Diagnostizieren verworfener Benachrichtigungen
 description: Erfahren Sie, wie Sie allgemeine Probleme mit verworfenen Benachrichtigungen in Azure Notification Hubs diagnostizieren.
 services: notification-hubs
 documentationcenter: Mobile
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: 
+editor: spelluru
 ms.assetid: b5c89a2a-63b8-46d2-bbed-924f5a4cce61
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: NA
 ms.devlang: multiple
 ms.topic: article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 3925208fe56bcd9513ec4c0f21aa1e2dd8fbf9c5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: bc9ef70560f0485da81c1f54aa955cee76d280ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Diagnostizieren verworfener Benachrichtigungen in Notification Hubs
 
 Eine der häufigsten Fragen von Azure Notification Hubs-Kunden dreht sich darum, dass Benachrichtigungen, die von einer Anwendung gesendet werden, auf Clientgeräten nicht angezeigt werden. Kunden möchten wissen, wo und warum Benachrichtigungen verworfen werden und wie sich das Problem lösen lässt. Dieser Artikel erläutert, warum Benachrichtigungen möglicherweise verworfen oder von Geräten nicht empfangen werden. Sie erfahren, wie Sie das Problem analysieren und die Ursache ermitteln. 
 
-Zunächst müssen Sie wissen, wie Notification Hubs Benachrichtigungen an ein Gerät übermittelt.
+Zunächst müssen Sie wissen, wie der Notification Hubs-Dienst Benachrichtigungen an ein Gerät übermittelt.
 
 ![Notification Hubs-Architektur][0]
 
 In einem typischen Benachrichtigungsflow wird eine Nachricht vom *Anwendungs-Back-End* an Notification Hubs gesendet. Notification Hubs führt eine bestimmte Form der Verarbeitung in allen Registrierungen aus. Bei der Verarbeitung werden die konfigurierten Tags und Tagausdrücke berücksichtigt, um „Ziele“ zu bestimmen. Bei den Zielen handelt es sich um alle Registrierungen, die die Pushbenachrichtigung erhalten sollen. Diese Registrierungen können sich über einige oder sämtliche unserer unterstützten Plattformen erstrecken: iOS, Google, Windows, Windows Phone, Kindle und Baidu unter Android für China.
 
-Wenn die Ziele bestimmt sind, übermittelt Notification Hubs Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für Apple und Firebase Cloud Messaging (FCM) für Google sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Notification Hubs authentifiziert sich beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter. 
+Wenn die Ziele bestimmt sind, übermittelt der Notification Hubs-Dienst Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für Apple und Firebase Cloud Messaging (FCM) für Google sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Notification Hubs authentifiziert sich beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter. 
 
-Beachten Sie, dass der letzte Abschnitt einer Benachrichtigungsübermittlung zwischen dem Pushbenachrichtigungsdienst der Plattform und dem Gerät erfolgt. Jede der vier Hauptkomponenten im Pushbenachrichtigungsprozess (Client, Anwendungs-Back-End, Notification Hubs und der Pushbenachrichtigungsdienst der Plattform) kann dazu führen, dass Benachrichtigungen verworfen werden. Weitere Informationen zur Architektur von Notification Hubs finden Sie in der Übersicht über [Notification Hubs].
+Der letzte Abschnitt einer Benachrichtigungsübermittlung erfolgt zwischen dem Pushbenachrichtigungsdienst der Plattform und dem Gerät. Jede der vier Hauptkomponenten im Pushbenachrichtigungsprozess (Client, Anwendungs-Back-End, Notification Hubs und der Pushbenachrichtigungsdienst der Plattform) kann dazu führen, dass Benachrichtigungen verworfen werden. Weitere Informationen zur Architektur von Notification Hubs finden Sie in der Übersicht über [Notification Hubs].
 
 Fehler bei der Übermittlung von Benachrichtigungen können während der anfänglichen Test-/Stagingphase auftreten. In dieser Phase verworfenen Benachrichtigungen können auf ein Konfigurationsproblem hindeuten. Wenn Fehler bei der Übermittlung von Benachrichtigungen in der Produktionsphase auftreten, werden einige oder möglicherweise alle Benachrichtigungen verworfen. In diesem Fall ist die Ursache in einem tiefer liegenden Anwendungs- oder Nachrichtenmusterfehler zu suchen. 
 
 Der nächste Abschnitt beschreibt Szenarien, in denen Benachrichtigungen verworfen werden können. Zunächst werden häufiger anzutreffende Szenarien beschrieben, danach seltenere.
 
 ## <a name="notification-hubs-misconfiguration"></a>Fehlkonfiguration von Notification Hubs
-Notification Hubs muss sich im Kontext der Anwendung des Entwicklers authentifizieren, um Benachrichtigungen erfolgreich an den jeweiligen Pushbenachrichtigungsdienst senden zu können. Zu diesem Zweck erstellt der Entwickler ein Entwicklerkonto auf der jeweiligen Plattform (Google, Apple, Windows usw.). Danach registriert der Entwickler die Anwendung bei der Plattform, wo sie die notwendigen Anmeldeinformationen erhält. 
+Der Notification Hubs-Dienst muss sich im Kontext der Anwendung des Entwicklers authentifizieren, um Benachrichtigungen erfolgreich an den jeweiligen Pushbenachrichtigungsdienst senden zu können. Zu diesem Zweck erstellt der Entwickler ein Entwicklerkonto auf der jeweiligen Plattform (Google, Apple, Windows usw.). Danach registriert der Entwickler die Anwendung bei der Plattform, wo sie die notwendigen Anmeldeinformationen erhält. 
 
 Sie müssen die Anmeldeinformationen der Plattform zum Azure-Portal hinzufügen. Wenn auf einem Gerät keine Benachrichtigungen ankommen, sollten Sie zuerst sicherstellen, dass in Notification Hubs die richtigen Anmeldeinformationen konfiguriert sind. Die Anmeldeinformationen müssen der Anwendung entsprechen, in einem plattformspezifischen Entwicklerkonto erstellt wurde. 
 
@@ -88,7 +88,7 @@ Dies sind einige häufige Konfigurationsfehler, nach denen Sie suchen können:
 
 * **Ungültige Registrierungen**
 
-    Wenn der Notification Hub ordnungsgemäß konfiguriert wurde und die Tags bzw. Tagausdrücke richtig verwendet werden, werden gültige Ziele gefunden. Benachrichtigungen sollten an diese Ziele gesendet werden. Notification Hubs sendet mehrere Verarbeitungsbatches parallel. Jeder Batch sendet Nachrichten an eine Reihe von Registrierungen. 
+    Wenn der Notification Hub ordnungsgemäß konfiguriert wurde und die Tags bzw. Tagausdrücke richtig verwendet werden, werden gültige Ziele gefunden. Benachrichtigungen sollten an diese Ziele gesendet werden. Der Notification Hubs-Dienst sendet mehrere Verarbeitungsbatches parallel. Jeder Batch sendet Nachrichten an eine Reihe von Registrierungen. 
 
     > [!NOTE]
     > Da die Verarbeitung parallel erfolgt, ist die Reihenfolge, in der die Benachrichtigungen übermittelt werden, nicht garantiert. 
@@ -102,7 +102,7 @@ Dies sind einige häufige Konfigurationsfehler, nach denen Sie suchen können:
     Um weitere Informationen zum Übermittlungsfehler bei einer Registrierung zu erhalten, können Sie diese Notification Hubs-REST-APIs verwenden:[Per Message Telemetry: Get Notification Message Telemetry](https://msdn.microsoft.com/library/azure/mt608135.aspx) (Nachrichtenbasierte Telemetrie: Abrufen der Telemetrie für Benachrichtigungsmeldungen) und [PNS-Feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Beispielcode finden Sie im [Beispiel für „Send REST“](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/SendRestExample).
 
 ## <a name="push-notification-service-issues"></a>Probleme mit dem Pushbenachrichtigungsdienst
-Nachdem die Benachrichtigung vom Pushbenachrichtigungsdienst der Plattform empfangen wurde, ist der Pushbenachrichtigungsdienst dafür zuständig, die Benachrichtigung an das Gerät zu übermitteln. Notification Hubs ist hieran nicht mehr beteiligt und hat keine Kontrolle darüber, wann oder ob die Benachrichtigung an das Gerät gesendet wird. 
+Nachdem die Benachrichtigung vom Pushbenachrichtigungsdienst der Plattform empfangen wurde, ist der Pushbenachrichtigungsdienst dafür zuständig, die Benachrichtigung an das Gerät zu übermitteln. Der Notification Hubs-Dienst ist hieran nicht mehr beteiligt und hat keine Kontrolle darüber, wann oder ob die Benachrichtigung an das Gerät gesendet wird. 
 
 Da Plattformbenachrichtigungsdienste sehr robust sind, erfolgt die Übertragung von Benachrichtigungen vom Pushbenachrichtigungsdienst an die Geräte üblicherweise innerhalb weniger Sekunden. Wenn der Pushbenachrichtigungsdienst gedrosselt ist, wendet Notification Hubs eine exponentielle Backoffstrategie an. Wenn der Pushbenachrichtigungsdienst 30 Minuten lang nicht erreichbar ist, sorgt eine Richtlinie dafür, dass diese Nachrichten als abgelaufen markiert und dauerhaft verworfen werden. 
 
@@ -226,7 +226,7 @@ Diese Nachricht weist darauf hin, dass entweder in Notification Hubs ungültige 
    
         ![Übersicht über Notification Hubs – Dashboard][5]
    
-    2. Auf der Registerkarte **Überwachen** können Sie viele weitere plattformspezifische Metriken hinzufügen, um detailliertere Einblicke zu erhalten. Sie können speziell nach Fehlern im Zusammenhang mit dem Pushbenachrichtigungsdienst suchen, die zurückgegeben werden, wenn Notification Hubs versucht, die Benachrichtigung an den Pushbenachrichtigungsdienst zu senden. 
+    2. Auf der Registerkarte **Überwachen** können Sie viele weitere plattformspezifische Metriken hinzufügen, um detailliertere Einblicke zu erhalten. Sie können speziell nach Fehlern im Zusammenhang mit dem Pushbenachrichtigungsdienst suchen, die zurückgegeben werden, wenn der Notification Hubs-Dienst versucht, die Benachrichtigung an den Pushbenachrichtigungsdienst zu senden. 
    
         ![Azure-Portal – Aktivitätsprotokoll][6]
    

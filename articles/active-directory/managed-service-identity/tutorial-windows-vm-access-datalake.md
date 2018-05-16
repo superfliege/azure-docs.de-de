@@ -7,17 +7,18 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: 5f410b6c0c1f24a9f9d453c833074cbd515f46b2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 57b60e0cf9374a6bd503b160e22eb3aa0a9ba911
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Data Lake Store
 
@@ -102,7 +103,7 @@ In diesem Tutorial authentifizieren Sie sich bei der REST-API für das Data Lake
 4. Erstellen Sie mithilfe des PowerShell-Befehls `Invoke-WebRequest` eine Anforderung an den lokalen MSI-Endpunkt, um ein Zugriffstoken für Azure Data Lake Store zu erhalten.  Der Ressourcenbezeichner für Data Lake Store lautet https://datalake.azure.net/.  Data Lake führt eine Prüfung auf genaue Übereinstimmung der Ressourcen-ID durch, bei der auf der abschließende Schrägstrich wichtig ist.
 
    ```powershell
-   $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F -Method GET -Headers @{Metadata="true"}
+   $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -Method GET -Headers @{Metadata="true"}
    ```
     
    Konvertieren Sie die Antwort aus einem JSON-Objekt in ein PowerShell-Objekt. 

@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine Übersicht über Azure Operational Sec
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ca42e0cc76bc385f04cb2e010ff91dbb27bd627a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20dfbd2c5c2c38abddf332dc6a20ddb271c95ace
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. [Azure Operational Security](https://docs.microsoft.com/azure/security/azure-operational-security) ist ein Framework, mit dem die über verschiedene einzigartige Microsoft-Funktionen erworbenen Kenntnisse einbezogen werden, z.B. Microsoft Security Development Lifecycle (SDL), Microsoft Security Response Center-Programm und umfassende Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.

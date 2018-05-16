@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50be809df0938272a3e1d710b879ca3dd5de9428
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3bdc7820910540b789fd11533389f79aa9f297f5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>Partitionieren in Azure Cosmos DB mithilfe der SQL-API
 
@@ -43,7 +43,7 @@ Sie können das Projekt aus dem [Azure Cosmos DB-Treiberbeispiel zur Leistungsü
 
 ## <a name="partition-keys"></a>Partitionsschlüssel
 
-In der SQL-API geben Sie die Partitionsschlüsseldefinition in Form eines JSON-Pfads an. Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel und die entsprechenden Werte. Der Partitionsschlüssel wird als Pfad angegeben. So stellt z. B. `/department` die Eigenschaft „Abteilung“ dar. 
+In der SQL-API geben Sie die Partitionsschlüsseldefinition in Form eines JSON-Pfads an. Die folgende Tabelle zeigt Beispiele für Definitionen der Partitionsschlüssel und die entsprechenden Werte. Der Partitionsschlüssel wird als Pfad angegeben. So stellt beispielsweise `/department` die Eigenschaft „Abteilung“ dar. 
 
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
@@ -81,9 +81,9 @@ Sehen wir uns an, wie sich die Auswahl der Partitionsschlüssel auf die Leistung
 Azure Cosmos DB bietet nun zusätzliche Unterstützung für die automatische Partitionierung durch [REST-API-Version 2015-12-16](/rest/api/cosmos-db/). Um partitionierte Container erstellen zu können, müssen Sie die SDK-Versionen 1.6.0 oder neuer in einer der unterstützten SDK Plattformen (.NET, Node.js, Java, Python, MongoDB) herunterladen. 
 
 ### <a name="creating-containers"></a>Erstellen von Containern
-Das folgende Beispiel zeigt einen Ausschnitt für .NET, zum Erstellen eines Containers, um Gerätetelemetriedaten von 20.000 Anforderungseinheiten pro Durchsatzsekunde zu speichern. Das SDK legt den Wert für „OfferThroughput“ fest (der wiederum den Anforderungsheader `x-ms-offer-throughput` in der REST-API festlegt). Hier legen wir `/deviceId` als Partitionsschlüssel fest. Die Wahl des Partitionsschlüssels wird zusammen mit dem Rest der Metadaten des Containers wie Name und Indizierungsrichtlinie gespeichert.
+Das folgende Beispiel zeigt einen Ausschnitt für .NET, zum Erstellen eines Containers, um Gerätetelemetriedaten von 20.000 Anforderungseinheiten pro Durchsatzsekunde zu speichern. Das SDK legt den Wert für „OfferThroughput“ fest (der wiederum den Anforderungsheader `x-ms-offer-throughput` in der REST-API festlegt). Hier legen Sie `/deviceId` als Partitionsschlüssel fest. Die Wahl des Partitionsschlüssels wird zusammen mit dem Rest der Metadaten des Containers wie Name und Indizierungsrichtlinie gespeichert.
 
-Für dieses Beispiel haben wir `deviceId` ausgewählt, da es (a) möglich ist, die Schreibvorgänge aufgrund der großen Anzahl von Geräten gleichmäßig auf Partitionen zu verteilen, und wir so die Datenbanken hochskalieren können, um riesige Datenmengen erfassen zu können, und da (b) viele der Anforderungen, wie das Abrufen der letzten Lesevorgänge für ein Gerät, einer einzelnen deviceId zugeordnet sind und von einer einzelnen Partition abgerufen werden können.
+Für dieses Beispiel haben Sie `deviceId` ausgewählt, da es (a) möglich ist, die Schreibvorgänge aufgrund der großen Anzahl von Geräten gleichmäßig auf Partitionen zu verteilen, und Sie so die Datenbanken hochskalieren können, um riesige Datenmengen erfassen zu können, und da (b) viele der Anforderungen, wie das Abrufen der letzten Lesevorgänge für ein Gerät, einer einzelnen Geräte-ID zugeordnet sind und von einer einzelnen Partition abgerufen werden können.
 
 ```csharp
 DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
@@ -102,10 +102,10 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 20000 });
 ```
 
-Auf diese Weise wird ein REST-API-Aufruf in Cosmos DB durchgeführt, und der Dienst stellt eine Anzahl von Partitionen basierend auf dem angeforderten Durchsatz bereit. Sie können den Durchsatz eines Containers ändern, wenn Sie eine höhere Leistung benötigen. 
+Auf diese Weise wird ein REST-API-Aufruf in Cosmos DB durchgeführt, und der Dienst stellt eine Anzahl von Partitionen basierend auf dem angeforderten Durchsatz bereit. Sie können den Durchsatz eines Containers oder mehrerer Container ändern, wenn Sie eine höhere Leistung benötigen. 
 
 ### <a name="reading-and-writing-items"></a>Lesen und Schreiben von Elementen
-Jetzt fügen wir Daten in Cosmos DB ein. Nachstehend finden Sie eine Beispielklasse, die eine Geräteanzeige enthält sowie einen Aufruf von „CreateDocumentAsync“, um ein neues Gerät mit Lesevorgang einem Container hinzuzufügen. Dies ist ein Beispiel, in dem die SQL-API genutzt wird:
+Jetzt fügen wir Daten in Cosmos DB ein. Nachstehend finden Sie eine Beispielklasse, die eine Geräteanzeige enthält sowie einen Aufruf von „CreateDocumentAsync“, um ein neues Gerät mit Lesevorgang einem Container hinzuzufügen. Nachfolgend sehen Sie einen Beispielcodeblock, der die SQL-API nutzt:
 
 ```csharp
 public class DeviceReading
@@ -144,7 +144,7 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Nun rufen wir das Element mithilfe seines Partitionsschlüssels und seiner ID auf, aktualisieren es und löschen es schließlich unter Angabe dieser beiden Werte. Beachten Sie, dass der Lesevorgang einen Wert für „PartitionKey“ enthält (entsprechend dem Anforderungsheader `x-ms-documentdb-partitionkey` in der REST-API).
+Nun rufen wir das Element mithilfe seines Partitionsschlüssels und seiner ID auf, aktualisieren es und löschen es schließlich unter Angabe dieser beiden Werte. Der Lesevorgang enthält einen Wert für „PartitionKey“ (entsprechend dem Anforderungsheader `x-ms-documentdb-partitionkey` in der REST-API).
 
 ```csharp
 // Read document. Needs the partition key and the ID to be specified
@@ -178,7 +178,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
     .Where(m => m.MetricType == "Temperature" && m.DeviceId == "XMS-0001");
 ```
     
-Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (DeviceId) und wird an alle Partitionen verteilt, wo sie auf dem Partitionsindex ausgeführt wird. Beachten Sie, dass Sie „EnableCrossPartitionQuery“ (`x-ms-documentdb-query-enablecrosspartition` in der REST-API) angeben müssen, damit das SDK eine partitionsübergreifende Abfrage ausführen kann.
+Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (DeviceId) und wird an alle Partitionen verteilt, wo sie auf dem Partitionsindex ausgeführt wird. Sie müssen „EnableCrossPartitionQuery“ (`x-ms-documentdb-query-enablecrosspartition` in der REST-API) angeben, damit das SDK eine partitionsübergreifende Abfrage ausführen kann.
 
 ```csharp
 // Query across partition keys
@@ -188,7 +188,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Cosmos DB unterstützt die [Aggregatfunktionen](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX`, `SUM` und `AVG` in partitionierten Containern mit SQL, beginnend mit SDKs 1.12.0 und höher. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
+Cosmos DB unterstützt die [Aggregatfunktionen](sql-api-sql-query.md#Aggregates) `COUNT`, `MIN`, `MAX` und `AVG` in partitionierten Containern mit SQL, beginnend mit SDKs 1.12.0 und höher. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
 
 ### <a name="parallel-query-execution"></a>Ausführung paralleler Abfragen
 Ab dem Cosmos DB SDK 1.9.0 werden Optionen zur parallelen Ausführung von Abfragen unterstützt. Dadurch können Sie Abfragen mit niedriger Latenz auf partitionierte Sammlungen anwenden, auch wenn eine große Anzahl von Sammlungen berücksichtigt werden muss. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
@@ -204,13 +204,13 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     
 Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
 
-* Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen des Containers. Wenn Sie diese Einstellung auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet. Falls `MaxDegreeOfParallelism` nicht angegeben oder auf 0 (Standardwert) festgelegt wurde, besteht eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
-* Durch Festlegen von `MaxBufferedItemCount` können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
+* Durch Festlegen von `MaxDegreeOfParallelism` können Sie den Grad der Parallelität steuern, d.h. die maximale Anzahl gleichzeitiger Netzwerkverbindungen mit den Partitionen des Containers. Wenn Sie diese Eigenschaft auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet. Falls `MaxDegreeOfParallelism` nicht angegeben oder auf 0 (Standardwert) festgelegt wurde, besteht eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
+* Durch Festlegen von `MaxBufferedItemCount` können Sie eine Abstimmung zwischen Abfragelatenz und Speicherauslastung auf Clientseite ermöglichen. Wenn Sie diesen Parameter weglassen oder diese Eigenschaft auf „-1“ festlegen, wird die Anzahl der Elemente, die während der Ausführung paralleler Abfragen gepuffert wird, vom SDK verwaltet.
 
 Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Beim Durchführen einer partitionsübergreifenden Abfrage mit Sortierung (ORDER BY und/oder TOP) führt das Azure Cosmos DB-SDK die Abfrage parallel auf den Partitionen durch und führt teilweise sortierte Ergebnisse auf Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
 
 ### <a name="executing-stored-procedures"></a>Ausführen von gespeicherten Prozeduren
-Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, z. B. wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Element verwalten. 
+Sie können auch atomarische Transaktionen für Dokumente mit derselben Geräte-ID ausführen, etwa wenn Sie Aggregate oder den aktuellen Status eines Geräts in einem einzelnen Element verwalten. 
 
 ```csharp
 await client.ExecuteStoredProcedureAsync<DeviceReading>(
@@ -219,7 +219,7 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
     "XMS-001-FE24C");
 ```
    
-Im nächsten Abschnitt untersuchen wir, wie partitionierte Container aus Containern mit nur einer Partition verschoben werden können.
+Im nächsten Abschnitt untersuchen Sie, wie partitionierte Container aus Containern mit nur einer Partition verschoben werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde eine Übersicht über die Partitionierung von Azure Cosmos DB-Containern mit der SQL-API bereitgestellt. Eine Übersicht über Konzepte und bewährte Methoden für die Partitionierung mit einer beliebigen Azure Cosmos DB-API finden Sie auch unter [Partitionieren und horizontales Skalieren](../cosmos-db/partition-data.md). 

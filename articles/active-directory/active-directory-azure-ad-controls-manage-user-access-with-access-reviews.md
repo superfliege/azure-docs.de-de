@@ -1,11 +1,11 @@
 ---
-title: "Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie den Benutzerzugriff als Mitgliedschaft in einer Gruppe oder als Zuweisung zu einer Anwendung mit Azure Active Directory-Zugriffsüberprüfungen verwalten."
+title: Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Benutzerzugriff als Mitgliedschaft in einer Gruppe oder als Zuweisung zu einer Anwendung mit Azure Active Directory-Zugriffsüberprüfungen verwalten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: markwahl-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 6a4d25b2eb228cafab48419a0d0eda92bba9f1ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b11f0b2032a102501de1da8315e80df88bfd57d5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -30,7 +30,7 @@ Mit Azure Active Directory (Azure AD) können Sie ganz einfach den entsprechende
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
-Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-editions.md). Jeder Benutzer, der dieses Feature zum Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf verwendet, benötigt eine Lizenz.
+Zugriffsüberprüfungen sind mit der Premium P2-Edition von Azure AD (in Microsoft Enterprise Mobility + Security E5 enthalten) verfügbar. Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](active-directory-whatis.md). Jeder Benutzer, der dieses Feature zum Erstellen oder Anwenden einer Zugriffsüberprüfung bzw. Zugreifen darauf verwendet, benötigt eine Lizenz.
 
 
 ## <a name="create-and-perform-an-access-review"></a>Erstellen und Durchführen einer Zugriffsüberprüfung

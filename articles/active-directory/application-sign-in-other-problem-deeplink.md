@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Anmelden bei einer Anwendung über einen Deeplink | Microsoft-Dokumentation"
-description: "Beheben von Problemen beim Zugreifen auf eine Anwendung über eine Deeplink-URL mit Azure AD"
+title: Probleme beim Anmelden bei einer Anwendung über einen Deeplink | Microsoft-Dokumentation
+description: Beheben von Problemen beim Zugreifen auf eine Anwendung über eine Deeplink-URL mit Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: f4c67961316c4b78b691a46b35bd0c19bb409fd8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bf357fef2aad85c45abb1fa8e06ff4420a6f14a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Probleme beim Anmelden bei einer Anwendung über einen Deeplink
 
@@ -213,7 +213,7 @@ Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folg
 
 8.  Wählen Sie den Modus **Kennwortbasiertes Anmelden** aus.
 
-9.  Geben Sie die **Anmelde-URL** ein. Dies ist die URL, unter der Benutzer ihren Benutzernamen und ihr Kennwort eingeben, um sich anzumelden. Stellen Sie sicher, dass die Anmeldefelder unter der URL sichtbar sind.
+9.  Geben Sie die **Anmelde-URL**. Dies ist die URL, an der Benutzer ihren Benutzernamen und ihr Kennwort für die Anmeldung eingeben. Stellen Sie sicher, dass die Anmeldefelder unter der URL sichtbar sind.
 
 10. Weisen Sie der Anwendung Benutzer zu.
 
@@ -274,4 +274,4 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriff
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)

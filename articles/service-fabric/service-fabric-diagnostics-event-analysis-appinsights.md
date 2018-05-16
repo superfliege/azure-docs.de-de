@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: dekapur; srrengar
-ms.openlocfilehash: fa04e7a3c0d6f19603befed026b316eba6e46eb7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ef7517e91965b0d7444d158f041b1d2bddea6bd2
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie in Application Insights Erkenntnisse gew
 
 ## <a name="monitoring-in-app-insights"></a>Überwachen in Application Insights
 
-Application Insights bietet bereits standardmäßig eine umfassende Service Fabric-Integration. Auf der Übersichtsseite liefert AI wichtige Informationen zu Ihrem Dienst (beispielsweise zur Antwortzeit und zur Anzahl verarbeiteter Anforderungen). Wenn Sie am oberen Rand auf die Suchschaltfläche klicken, wird eine Liste mit Anforderungen angezeigt, die kürzlich in Ihrer Anwendung ausgeführt wurden. Darüber hinaus werden hier ggf. nicht erfolgreiche Anforderungen angezeigt, und Sie können die aufgetretenen Fehler diagnostizieren.
+Application Insights bietet bereits standardmäßig umfassende Service Fabric-Funktionen. Auf der Übersichtsseite liefert AI wichtige Informationen zu Ihrem Dienst (beispielsweise zur Antwortzeit und zur Anzahl verarbeiteter Anforderungen). Wenn Sie am oberen Rand auf die Suchschaltfläche klicken, wird eine Liste mit Anforderungen angezeigt, die kürzlich in Ihrer Anwendung ausgeführt wurden. Darüber hinaus werden hier ggf. nicht erfolgreiche Anforderungen angezeigt, und Sie können die aufgetretenen Fehler diagnostizieren.
 
 ![AI-Übersicht](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 

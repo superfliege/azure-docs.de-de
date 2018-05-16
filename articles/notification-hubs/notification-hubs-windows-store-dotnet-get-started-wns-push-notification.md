@@ -1,100 +1,100 @@
 ---
-title: Erste Schritte mit Azure Notification Hubs für Apps für die universelle Windows-Plattform | Microsoft-Dokumentation
+title: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an eine App für die universelle Windows-Plattform senden.
 services: notification-hubs
 documentationcenter: windows
-author: jwhitedev
+author: dimazaid
 manager: kpiteira
-editor: ''
+editor: spelluru
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 12/22/2017
-ms.author: jawh
-ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: c3bb170800508d5a546573850f445b2a8991ea8c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform
+# <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-## <a name="overview"></a>Übersicht
-Dieser Artikel zeigt, wie Sie mit Azure Notification Hubs Pushbenachrichtigungen an eine App für die universelle Windows-Plattform senden.
+In diesem Tutorial erstellen Sie einen Notification Hub, um Pushbenachrichtigungen an eine App für die universelle Windows-Plattform (UWP) zu senden. Sie erstellen eine leere Windows Store-App, die Pushbenachrichtigungen unter Verwendung des Windows-Pushbenachrichtigungsdiensts (WNS) empfängt. Dann können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen.
 
-In diesem Artikel erstellen Sie eine leere Windows Store-App, die Pushbenachrichtigungen unter Verwendung des Windows-Pushbenachrichtigungsdiensts (WNS) empfängt. Am Ende dieses Artikels können Sie über Ihren Notification Hub Pushbenachrichtigungen an alle Geräte senden, die Ihre App ausführen.
+> [!NOTE]
+> Den vollständigen Code für dieses Tutorial finden Sie auf [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
 
-## <a name="before-you-begin"></a>Voraussetzungen
-[!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
+In diesem Tutorial führen Sie die folgenden Schritte aus:
 
-Den vollständigen Code für dieses Tutorial finden Sie auf [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal).
+> [!div class="checklist"]
+> * Erstellen einer App im Windows Store
+> * Erstellen eines Notification Hubs
+> * Erstellen einer Beispiel-Windows-App
+> * Senden von Testbenachrichtigungen
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Lernprogramm ist Folgendes erforderlich:
-
-* [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) oder höher
-* [Installierte Entwicklungstools für UWP-Apps](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
-* Ein aktives Azure-Konto  
-    Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-windows-store-dotnet-get-started%2F).
-* Ein aktives Windows Store-Konto
+- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- [Microsoft Visual Studio Community 2015 oder höher](https://www.visualstudio.com/products/visual-studio-community-vs)
+- [Installierte Entwicklungstools für UWP-Apps](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- Ein aktives Windows Store-Konto
 
 Dieses Tutorial muss für alle anderen Notification Hubs-Tutorials für UWP-Apps abgeschlossen werden.
 
-## <a name="register-your-app-for-the-windows-store"></a>Registrieren der App für den Windows Store
+## <a name="create-an-app-in-windows-store"></a>Erstellen einer App im Windows Store
 Ordnen Sie Ihre App dem Windows Store zu, um Pushbenachrichtigungen an UWP-Apps senden zu können. Konfigurieren Sie anschließend Ihren Notification Hub für die Integration in WNS.
 
-1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie zum [Windows Dev Center](https://dev.windows.com/overview), melden Sie sich dort mit Ihrem Microsoft-Konto an, und wählen Sie dann **Neue App erstellen** aus.
+1. Navigieren Sie zum [Windows Dev Center](https://dev.windows.com/overview), melden Sie sich dort mit Ihrem Microsoft-Konto an, und wählen Sie dann **Neue App erstellen** aus.
 
-2. Geben Sie einen Namen für Ihre App ein, und wählen Sie anschließend **App-Namen reservieren** aus. Dadurch wird eine neue Windows Store-Registrierung für Ihre App erstellt.
+    ![„Neue App“-Schaltfläche](./media/notification-hubs-windows-store-dotnet-get-started/windows-store-new-app-button.png)
+1. Geben Sie einen Namen für Ihre App ein, und wählen Sie anschließend **Produktname reservieren** aus. Dadurch wird eine neue Windows Store-Registrierung für Ihre App erstellt.
 
-3. Erstellen Sie in Visual Studio ein neues Visual C# Store-App-Projekt mit der UWP-Vorlage **Leere App**, und wählen Sie anschließend **OK** aus.
+    ![Store-App-Name](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
+1. Erweitern Sie **App-Verwaltung**, wählen Sie **WNS/MPNS**, dann **WNS/MPNS** und **Live Services-Website** aus. Anmelden bei Ihrem Azure-Konto Das **App-Registrierungsportal** wird auf einer neuen Registerkarte geöffnet. Alternativ können Sie direkt zum [App-Registrierungsportal](http://apps.dev.microsoft.com) navigieren und Ihren Anwendungsnamen auswählen, um zu dieser Seite zu gelangen.
 
-4. Übernehmen Sie die Standardwerte für die Zielversion und die Mindestversion der Plattform.
+    ![WNS/MPNS-Seite](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
+1.   Notieren Sie sich das Kennwort unter **Anwendungsgeheimnis** sowie die **Paketsicherheits-ID (SID)**.
 
-5. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Windows Store-App-Projekt, und wählen Sie **Store** und anschließend **App mit Store verknüpfen** aus.  
-    Daraufhin wird der Assistent **App mit Windows Store verknüpfen** angezeigt.
+        >[!WARNING]
+        >Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
 
-6. Melden Sie sich im Assistenten mit Ihrem Microsoft-Konto an.
-
-7. Wählen Sie die App aus, die Sie in Schritt 2 registriert haben. Wählen Sie dann **Weiter** und anschließend **Zuordnen** aus. Dadurch werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
-
-8. Wählen Sie auf der Seite [Windows Dev Center](http://dev.windows.com/overview) für Ihre neue App **Dienste** > **Pushbenachrichtigungen** > **WNS/MPNS** aus.
-
-9. Wählen Sie **Neue Benachrichtigung** aus.
-
-10. Wählen Sie die Vorlage **Blank (Toast)** (Leer (Popup)) und anschließend **OK** aus.
-
-11. Geben Sie unter **Name** einen Namen und unter **Kontext** eine visuelle Kontextnachricht für die Benachrichtigung ein. Wählen Sie anschließend **Als Entwurf speichern** aus.
-
-12. Navigieren Sie zum [App-Registrierungsportal](http://apps.dev.microsoft.com), und melden Sie sich an.
-
-13. Wählen Sie Ihren Anwendungsnamen aus. Notieren Sie sich in den Plattformeinstellungen für **Windows Store** das Kennwort unter **Anwendungsgeheimnis** sowie die **Paketsicherheits-ID (SID)**.
-
-    >[!WARNING]
-    >Der geheime Schlüssel der Anwendung und die Paket-SID sind wichtige Sicherheitsanmeldeinformationen. Geben Sie diese Werte nicht weiter, und verteilen Sie sie nicht mit Ihrer Anwendung.
-
-## <a name="configure-your-notification-hub"></a>Konfigurieren Ihres Notification Hub
+## <a name="create-a-notification-hub"></a>Erstellen eines Notification Hubs
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="6">
-<li><p>Klicken Sie unter <b>Notification Services</b> auf <b>Windows (WNS)</b>, und geben Sie dann das geheime Anwendungskennwort in das Feld <b>Sicherheitsschlüssel</b> ein. Geben Sie im Feld <b>Paket-SID</b> den Wert ein, den Sie im vorherigen Abschnitt in WNS ermittelt haben, und wählen Sie anschließend <b>Speichern</b> aus.</p>
-</li>
-</ol>
 
-![Die Felder für Paket-SID und Sicherheitsschlüssel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+### <a name="configure-wns-settings-for-the-hub"></a>Konfigurieren der WNS-Einstellungen für den Hub
+
+1. Wählen Sie **Windows (WNS)** in der Kategorie **BENACHRICHTIGUNGSEINSTELLUNGEN** aus. 
+2. Geben Sie die Werte für **Paket-SID** und **Sicherheitsschlüssel** ein, die Sie im vorherigen Abschnitt notiert haben. 
+3. Wählen Sie auf der Symbolleiste **Speichern** aus.
+
+    ![Die Felder für Paket-SID und Sicherheitsschlüssel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 Ihr Notification Hub ist jetzt für die Zusammenarbeit mit WNS konfiguriert. Sie verfügen über die Verbindungszeichenfolgen, die Sie zum Registrieren Ihrer App und zum Senden von Benachrichtigungen benötigen.
 
-## <a name="connect-your-app-to-the-notification-hub"></a>Verbinden Ihrer App mit dem Notification Hub
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf die Projektmappe, und wählen Sie **NuGet-Pakete verwalten** aus.  
-    Das Fenster **NuGet-Pakete verwalten** wird geöffnet.
+## <a name="create-a-sample-windows-app"></a>Erstellen einer Beispiel-Windows-App
+1. Wählen Sie in Visual Studio **Datei**, **Neu** und dann **Projekt** aus. 
+2. Führen Sie im Dialogfeld **Neues Projekt** die folgenden Schritte aus: 
 
-2. Geben Sie in das Suchfeld die Zeichenfolge **Microsoft.Azure.NotificationHubs** ein, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+    1. Erweitern Sie **Visual C#**.
+    2. Wählen Sie **Windows Universal** aus. 
+    3. Wählen Sie **Leere App (universelles Windows)** aus. 
+    4. Geben Sie einen **Namen** für das Projekt ein. 
+    5. Klicken Sie auf **OK**. 
+
+        ![Dialogfeld "Neues Projekt"](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
+1. Übernehmen Sie die Standardwerte für die **Zielversion** und die **Mindestversion** der Plattform, und wählen Sie **OK** aus. 
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Windows Store-App-Projekt, und wählen Sie **Store** und anschließend **App mit Store verknüpfen** aus. Daraufhin wird der Assistent **App mit Windows Store verknüpfen** angezeigt.
+3. Melden Sie sich im Assistenten mit Ihrem Microsoft-Konto an.
+4. Wählen Sie die App aus, die Sie in Schritt 2 registriert haben. Wählen Sie dann **Weiter** und anschließend **Zuordnen** aus. Dadurch werden die erforderlichen Windows Store-Registrierungsinformationen zum Anwendungsmanifest hinzugefügt.
+5. Klicken Sie in Visual Studio mit der rechten Maustaste auf die Projektmappe, und wählen Sie **NuGet-Pakete verwalten** aus. Das Fenster **NuGet-Pakete verwalten** wird geöffnet.
+6. Geben Sie in das Suchfeld die Zeichenfolge **WindowsAzure.Messaging.Managed** ein, wählen Sie **Installieren** aus, und akzeptieren Sie die Nutzungsbedingungen.
    
     ![Das Fenster „NuGet-Pakete verwalten“][20]
    
@@ -138,36 +138,39 @@ Ihr Notification Hub ist jetzt für die Zusammenarbeit mit WNS konfiguriert. Sie
    
     Dadurch wird gewährleistet, dass der Kanal-URI bei jedem Start der Anwendung beim Notification Hub registriert wird.
 
-6. Drücken Sie **F5** , um die App auszuführen. Ein Dialogfeld mit dem Registrierungsschlüssel wird angezeigt.
+6. Drücken Sie **F5** , um die App auszuführen. Ein Dialogfeld mit dem Registrierungsschlüssel wird angezeigt. Um das Dialogfeld zu schließen, klicken Sie auf **OK**. 
+
+    ![Erfolgreiche Registrierung](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 
 Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
-## <a name="send-notifications"></a>Senden von Benachrichtigungen
-Der Benachrichtigungsempfang in der App kann schnell durch Senden von Benachrichtigungen im [Azure-Portal](https://portal.azure.com/) getestet werden. Verwenden Sie die Schaltfläche **Testsendevorgang** im Notification Hub, wie in der folgenden Abbildung zu sehen:
+## <a name="send-test-notifications"></a>Senden von Testbenachrichtigungen
+Der Benachrichtigungsempfang in der App kann schnell durch Senden von Benachrichtigungen im [Azure-Portal](https://portal.azure.com/) getestet werden. 
 
-![Der Bereich „Testsendevorgang“](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+1. Wechseln Sie im Azure-Portal zur Registerkarte Übersicht, und wählen Sie auf der Symbolleiste **Testsendevorgang** aus.     
 
-Pushbenachrichtigungen werden normalerweise in einem Back-End-Dienst wie Mobile Services oder ASP.NET unter Verwendung einer kompatiblen Bibliothek gesendet. Falls für Ihr Back-End keine Bibliothek verfügbar ist, können Sie Benachrichtigungsnachrichten auch direkt über die REST-API senden. 
+    ![Schaltfläche „Testsendevorgang“](./media/notification-hubs-windows-store-dotnet-get-started/test-send-button.png)
+2. Führen Sie im Fenster **Testsendevorgang** die folgenden Aktionen aus: 
+    1. Wählen Sie für **Plattformen** die Option **Windows** aus.
+    2. Wählen Sie für **Benachrichtigungstyp** die Option **Popup** aus. 
+    3. Wählen Sie **Senden** aus. 
+    
+        ![Der Bereich „Testsendevorgang“](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
+3. Das Ergebnis des Sendevorgangs wird am unteren Rand des Fensters in der Liste **Ergebnis** angezeigt. Sie sehen auch eine Warnmeldung. 
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Client-App ganz einfach testen, indem Sie Benachrichtigungen, die das .NET SDK für Notification Hubs verwenden, in einer Konsolenanwendung anstatt in einem Back-End-Dienst senden. Als nächster Schritt zum Senden von Benachrichtigungen über ein ASP.NET-Back-End empfiehlt sich das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]. Benachrichtigungen können jedoch auf folgende Arten gesendet werden:
+    ![Ergebnis des Sendevorgangs](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
+1. Sie sehen die Benachrichtigungsmeldung: **Testmeldung** auf Ihrem Desktop. 
 
-* **REST-Schnittstelle:** Mithilfe der [REST-Schnittstelle](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx) können Sie Benachrichtigungen auf allen Back-End-Plattformen unterstützen.
+    ![Benachrichtigungsmeldung](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
-* **Microsoft Azure Notification Hubs .NET SDK:** Führen Sie im NuGet-Paket-Manager für Visual Studio [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) aus.
-
-* **Node.js:** Informationen zur Verwendung von Notification Hubs mit Node.js finden Sie [hier](notification-hubs-nodejs-push-notification-tutorial.md).
-* **Azure Mobile Apps:** Ein Beispiel für das Senden von Benachrichtigungen über eine in Notification Hubs integrierte mobile Azure-App finden Sie unter [Hinzufügen von Pushbenachrichtigungen für Mobile Apps](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
-
-* **Java oder PHP:** Beispiele für das Senden von Benachrichtigungen mithilfe der REST-APIs finden Sie unter den folgenden Links:
-    * [Java](notification-hubs-java-push-notification-tutorial.md)
-    * [PHP](notification-hubs-php-push-notification-tutorial.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem einfachen Beispiel haben Sie über das Portal oder über eine Konsolen-App Übertragungsbenachrichtigungen an alle Ihre Windows-Geräte gesendet. Als Nächstes empfehlen wir das Tutorial [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]. Darin erfahren Sie, wie Sie Benachrichtigungen über ein ASP.NET-Back-End mithilfe von Tags an bestimmte Benutzer senden.
+In diesem Tutorial haben Sie über das Portal oder über eine Konsolen-App Übertragungsbenachrichtigungen an alle Ihre Windows-Geräte gesendet. Um zu erfahren, wie Sie Pushbenachrichtigungen an bestimmte Geräte senden, fahren Sie mit dem folgenden Tutorial fort: 
 
-Wenn Sie Ihre Benutzer nach Interessengruppen unterteilen möchten, lesen Sie [Verwenden von Benachrichtigungshubs zum Senden von neuesten Nachrichten]. 
+> [!div class="nextstepaction"]
+>[Senden von Pushbenachrichtigungen an bestimmte Geräte](
+notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 
-Weitere allgemeine Informationen zu Notification Hubs finden Sie im [Notification Hubs-Leitfaden](notification-hubs-push-notification-overview.md).
 
 <!-- Images. -->
 [13]: ./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-console-app.png
@@ -177,8 +180,8 @@ Weitere allgemeine Informationen zu Notification Hubs finden Sie im [Notificatio
 
 <!-- URLs. -->
 
-[Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Verwenden von Benachrichtigungshubs zum Senden von neuesten Nachrichten]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 
 [toast catalog]: http://msdn.microsoft.com/library/windows/apps/hh761494.aspx
 [tile catalog]: http://msdn.microsoft.com/library/windows/apps/hh761491.aspx

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 140779ca1786bc9fa2afcfd08fdac0857580e8cf
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -145,7 +145,7 @@ Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outpu
 }
 ```
   
-## <a name="functions"></a>Funktionen  
+## <a name="functions"></a>Functions  
  Sie können Funktionen innerhalb von Ausdrücken aufrufen. Die folgenden Abschnitte enthalten Informationen zu den Funktionen, die in einem Ausdruck verwendet werden können.  
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen  
@@ -215,7 +215,7 @@ Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outpu
 |-------------------|-----------------|  
 |int|Konvertiert den Parameter in eine ganze Zahl. Der folgende Ausdruck gibt beispielsweise 100 als Zahl (und nicht als Zeichenfolge) zurück: `int('100')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Wert<br /><br /> **Beschreibung:** Erforderlich. Der Wert, der in eine ganze Zahl konvertiert wird.|  
 |Zeichenfolge|Konvertiert den Parameter in eine Zeichenfolge. Der folgende Ausdruck gibt beispielsweise `'10'` zurück: `string(10)` Sie können ein Objekt auch in eine Zeichenfolge konvertieren, wenn z.B. der **Foo**-Parameter ein Objekt mit der Eigenschaft `bar : baz` ist, dann würde Folgendes zurückgegeben werden: `{"bar" : "baz"}` `string(pipeline().parameters.foo)`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Wert<br /><br /> **Beschreibung:** Erforderlich. Der Wert, der in eine Zeichenfolge konvertiert wird.|  
-|json|Konvertiert den Parameter in einen JSON-Wert. Ist das Gegenteil von string(). Der folgende Ausdruck gibt beispielsweise `[1,2,3]` als Zahl (und nicht als Zeichenfolge) zurück:<br /><br /> `parse('[1,2,3]')`<br /><br /> Analog dazu können Sie eine Zeichenfolge in ein Objekt konvertieren. Beispielsweise gibt `json('{"bar" : "baz"}')` Folgendes zurück:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in einen nativen Typwert konvertiert werden soll.<br /><br /> Die JSON-Funktion unterstützt auch XML-Eingaben. So kann beispielsweise der folgende Parameterwert in JSON konvertiert werden:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> wird in das folgende JSON-Format konvertiert werden:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
+|json|Konvertiert den Parameter in einen JSON-Wert. Ist das Gegenteil von string(). Der folgende Ausdruck gibt beispielsweise `[1,2,3]` als Zahl (und nicht als Zeichenfolge) zurück:<br /><br /> `json('[1,2,3]')`<br /><br /> Analog dazu können Sie eine Zeichenfolge in ein Objekt konvertieren. Beispielsweise gibt `json('{"bar" : "baz"}')` Folgendes zurück:<br /><br /> `{ "bar" : "baz" }`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeichenfolge<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in einen nativen Typwert konvertiert werden soll.<br /><br /> Die JSON-Funktion unterstützt auch XML-Eingaben. So kann beispielsweise der folgende Parameterwert in JSON konvertiert werden:<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> wird in das folgende JSON-Format konvertiert werden:<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |Gleitkommawert|Konvertiert das Parameterargument in eine Gleitkommazahl. Der folgende Ausdruck gibt beispielsweise `10.333` zurück: `float('10.333')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Wert<br /><br /> **Beschreibung:** Erforderlich. Der Wert, der in eine Gleitkommazahl konvertiert wird.|  
 |bool|Konvertiert den Parameter in einen booleschen Wert. Der folgende Ausdruck gibt beispielsweise `false` zurück: `bool(0)`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Wert<br /><br /> **Beschreibung:** Erforderlich. Der Wert, der in einen booleschen Wert konvertiert wird.|  
 |coalesce|Gibt das erste Objekt aus den übergebenen Argumenten zurück, das nicht NULL ist. Hinweis: Eine leere Zeichenfolge ist nicht NULL. Wenn also beispielsweise die Parameter 1 und 2 nicht definiert sind, gibt die folgende Funktion `fallback` zurück: `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **Parameternummer:** 1 ... *n*<br /><br /> **Name:**: Objekt*n*<br /><br /> **Beschreibung:** Erforderlich. Die Objekte, für die geprüft werden soll, ob sie `null` sind.|  

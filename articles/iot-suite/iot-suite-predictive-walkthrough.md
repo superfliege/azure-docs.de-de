@@ -1,12 +1,12 @@
 ---
-title: "Exemplarische Vorgehensweise zur Predictive Maintenance-Lösung – Azure | Microsoft-Dokumentation"
-description: "Exemplarische Vorgehensweise zur vorkonfigurierten Azure IoT-Lösung für vorbeugende Wartung | Microsoft Azure"
-services: 
+title: Exemplarische Vorgehensweise zum Solution Accelerator für Predictive Maintenance – Azure | Microsoft-Dokumentation
+description: Eine exemplarische Vorgehensweise für den Azure IoT-Solution Accelerator für Predictive Maintenance.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c48a716-b805-4c99-8177-414cc4bec3de
 ms.service: iot-suite
 ms.devlang: na
@@ -15,39 +15,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: e9e0024c645d0e04e7cf9b17e440d7d8c10af232
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 397ac3c8b9caa5c392aff4683df2db3b2144899b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="predictive-maintenance-preconfigured-solution-walkthrough"></a>Exemplarische Vorgehensweise zur vorkonfigurierten Lösung für vorbeugende Wartung
+# <a name="predictive-maintenance-solution-accelerator-walkthrough"></a>Exemplarische Vorgehensweise zum Solution Accelerator für Predictive Maintenance
 
-Die vorkonfigurierte Predictive Maintenance-Lösung ist eine End-to-End-Lösung für ein Geschäftsszenario, bei dem der Zeitpunkt prognostiziert wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diese vorkonfigurierte Lösung beispielsweise zur Optimierung von Wartungsroutinen nutzen. Bei dieser Lösung werden zentrale Azure IoT Suite-Dienste wie IoT Hub, Stream Analytics und ein [Azure Machine Learning][lnk-machine-learning]-Arbeitsbereich kombiniert. Der Arbeitsbereich enthält ein Modell zum Vorhersagen der Restlebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks auf der Grundlage eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre besonderen Geschäftsanforderungen erfüllt.
+Der Solution Accelerator für Predictive Maintenance ist eine End-to-End-Lösung für ein Geschäftsszenario, mit der der Zeitpunkt prognostiziert wird, zu dem voraussichtlich ein Fehler auftritt. Sie können diesen Solution Accelerator beispielsweise zur Optimierung von Wartungsroutinen nutzen. Bei dieser Lösung werden zentrale Azure IoT-Solution Accelerator-Dienste wie IoT Hub, Stream Analytics und ein [Azure Machine Learning][lnk-machine-learning]-Arbeitsbereich kombiniert. Der Arbeitsbereich enthält ein Modell zum Vorhersagen der Restlebensdauer (Remaining Useful Life, RUL) eines Flugzeugtriebwerks auf der Grundlage eines öffentlichen Datasets mit Beispielwerten. Bei der Lösung wird das IoT-Geschäftsszenario vollständig als Ausgangspunkt implementiert, damit Sie eine Lösung planen und implementieren können, die Ihre besonderen Geschäftsanforderungen erfüllt.
 
 ## <a name="logical-architecture"></a>Logische Architektur
 
-Das folgende Diagramm beschreibt die logischen Komponenten der vorkonfigurierten Lösung:
+Im folgenden Diagramm werden die logischen Komponenten des Solution Accelerators beschrieben:
 
 ![][img-architecture]
 
-Die blauen Elemente sind Azure-Dienste, die in der Region bereitgestellt werden, in der Sie die vorkonfigurierte Lösung bereitgestellt haben. Die Liste mit den Regionen, in denen Sie die vorkonfigurierte Lösung bereitstellen können, wird auf der [Bereitstellungsseite][lnk-azureiotsuite] angezeigt.
+Die blauen Elemente sind Azure-Dienste, die in der Region bereitgestellt werden, in der Sie den Solution Accelerator bereitgestellt haben. Die Liste mit den Regionen, in denen Sie den Solution Accelerator bereitstellen können, wird auf der [Bereitstellungsseite][lnk-azureiotsuite] angezeigt.
 
 Das grüne Element ist ein simuliertes Gerät, das für ein Flugzeugtriebwerk steht. Der Abschnitt [Simulierte Geräte](#simulated-devices) enthält weitere Informationen zu diesen simulierten Geräten.
 
-Die grauen Elemente stehen für Komponenten, mit denen Funktionen für die *Geräteverwaltung* implementiert werden. Von der aktuellen Version der vorkonfigurierten Lösung für vorbeugende Wartung werden diese Ressourcen nicht bereitgestellt. Weitere Informationen zur Geräteverwaltung finden Sie in der [vorkonfigurierten Lösung für die Remoteüberwachung][lnk-remote-monitoring].
+Die grauen Elemente stehen für Komponenten, mit denen Funktionen für die *Geräteverwaltung* implementiert werden. Im aktuellen Release des Solution Accelerators für Predictive Maintenance werden diese Ressourcen nicht bereitgestellt. Weitere Informationen zur Geräteverwaltung finden Sie in der [vorkonfigurierten Lösung für die Remoteüberwachung][lnk-remote-monitoring].
 
 ## <a name="simulated-devices"></a>Simulierte Geräte
 
-In der vorkonfigurierten Lösung steht ein simuliertes Gerät für ein Flugzeugtriebwerk. Die Lösung wird mit zwei Triebwerken bereitgestellt, die einem Flugzeug zugeordnet sind. Jedes Triebwerk gibt vier Arten von Telemetriedaten aus: Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Auf der Grundlage dieser Daten berechnet das Machine Learning-Modell die Restlebensdauer des Triebwerks. Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
+Im Solution Accelerator steht ein simuliertes Gerät für ein Flugzeugtriebwerk. Die Lösung wird mit zwei Triebwerken bereitgestellt, die einem Flugzeug zugeordnet sind. Jedes Triebwerk gibt vier Arten von Telemetriedaten aus: Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Auf der Grundlage dieser Daten berechnet das Machine Learning-Modell die Restlebensdauer des Triebwerks. Jedes simulierte Gerät sendet die folgenden Telemetriemeldungen an IoT Hub:
 
 *Zyklusanzahl*. Ein Zyklus steht für einen absolvierten Flug mit einer Dauer von zwei bis zehn Stunden. Während des Flugs werden jede halbe Stunde Telemetriedaten erfasst.
 
-*Telemetrie*. Es sind vier Sensoren vorhanden, die für die Triebwerkattribute stehen. Die Sensoren tragen die generischen Bezeichnungen Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Diese vier Sensoren liefern genügend Telemetriedaten, um auf der Grundlage des Restlebensdauer-Modells sinnvolle Ergebnisse zu erhalten. Das in der vorkonfigurierten Lösung verwendete Modell basiert auf einem öffentlichen Dataset mit echten Daten von Triebwerksensoren. Weitere Informationen dazu, wie das Modell aus dem ursprünglichen Dataset erstellt wurde, finden Sie unter [Cortana Intelligence-Katalog: Vorlage für die vorbeugende Wartung][lnk-cortana-analytics].
+*Telemetrie*. Es sind vier Sensoren vorhanden, die für die Triebwerkattribute stehen. Die Sensoren tragen die generischen Bezeichnungen Sensor 9, Sensor 11, Sensor 14 und Sensor 15. Diese vier Sensoren liefern genügend Telemetriedaten, um auf der Grundlage des Restlebensdauer-Modells sinnvolle Ergebnisse zu erhalten. Das im Solution Accelerator verwendete Modell basiert auf einem öffentlichen Dataset mit echten Daten von Triebwerksensoren. Weitere Informationen dazu, wie das Modell aus dem ursprünglichen Dataset erstellt wurde, finden Sie unter [Cortana Intelligence-Katalog: Vorlage für die vorbeugende Wartung][lnk-cortana-analytics].
 
 Außerdem können die simulierten Geräte auch die folgenden Befehle verarbeiten, die vom IoT-Hub in der Lösung gesendet werden:
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 | StartTelemetry |Steuert den Status der Simulation.<br/>Startet das Senden der Telemetriedaten vom Gerät. |
 | StopTelemetry |Steuert den Status der Simulation.<br/>Beendet das Senden der Telemetriedaten vom Gerät. |
@@ -69,11 +69,11 @@ Die Machine Learning-Komponente verwendet ein Modell, das sich von Daten ableite
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie nun die zentralen Komponenten der vorkonfigurierten Lösung für vorbeugende Wartung kennen, können Sie die Lösung anpassen. Weitere Informationen finden Sie unter [Anpassen vorkonfigurierter Lösungen][lnk-customize].
+Nachdem Sie nun die zentralen Komponenten des Solution Accelerators für Predictive Maintenance kennen, können Sie ihn anpassen. Weitere Informationen finden Sie unter [Anpassen von Solution Accelerators][lnk-customize].
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators ausprobieren:
 
-* [Häufig gestellte Fragen zu IoT Suite][lnk-faq]
+* [Häufig gestellte Fragen zu IoT-Solution Accelerators][lnk-faq]
 * [Sicherheit im Internet der Dinge von Anfang an][lnk-security-groundup]
 
 [img-architecture]: media/iot-suite-predictive-walkthrough/architecture.png

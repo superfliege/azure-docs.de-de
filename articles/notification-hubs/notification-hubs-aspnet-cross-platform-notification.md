@@ -1,24 +1,24 @@
 ---
-title: "Senden plattformübergreifender Benachrichtigungen an Benutzer mit Azure Notification Hubs (ASP.NET)"
-description: "Erfahren Sie, wie Sie mithilfe von Notification Hubs-Vorlagen in einer einzigen Anforderung eine plattformunabhängige Benachrichtigung senden können, die auf alle Plattformen abzielt."
+title: Senden plattformübergreifender Benachrichtigungen an Benutzer mit Azure Notification Hubs (ASP.NET)
+description: Erfahren Sie, wie Sie mithilfe von Notification Hubs-Vorlagen in einer einzigen Anforderung eine plattformunabhängige Benachrichtigung senden können, die auf alle Plattformen abzielt.
 services: notification-hubs
-documentationcenter: 
-author: ysxu
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: 3c6dde338cb154f0cbe02642e4ff0f81d070aa25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 95793aac3c25563e3af39f3c47cebdd06e25e35f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Senden plattformübergreifender Benachrichtigungen an Benutzer mit Benachrichtigungs-Hubs
 Im vorherigen Tutorial [Benachrichtigen von Benutzern mit Notification Hubs] haben Sie gelernt, wie Sie Pushbenachrichtigungen an alle Geräte eines bestimmten authentifizierten Benutzers senden können. Dieses Lernprogramm benötigte mehrere Anfragen für den Versand einer Benachrichtigung an jede unterstützte Client-Plattform. Azure Notification Hubs unterstützt Vorlagen, mit denen Sie angeben können, wie ein bestimmtes Gerät Benachrichtigungen empfangen soll. Auf diese Weise können Sie den Versand plattformübergreifender Benachrichtigungen vereinfachen. 
@@ -88,7 +88,7 @@ Um plattformunabhängige Benachrichtigungen mit Vorlagen zu verschicken, gehen S
 5. Führen Sie die Client-App erneut aus, und vergewissern Sie sich, dass die Registrierung erfolgreich war.
 
 6. (Optional:) Stellen Sie die Client-App auf einem zweiten Gerät bereit, und führen Sie die App aus.
-    Beachten Sie, dass auf jedem Gerät eine Benachrichtigung angezeigt wird.
+    Auf jedem Gerät wird eine Benachrichtigung angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nach Abschluss dieses Lernprogramms finden Sie weitere Informationen über Notification Hubs und Vorlagen in den folgenden Themen:

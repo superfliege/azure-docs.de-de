@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 7dff9fd736b1b0c616ee2d4f2591d632345156b9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Bereitstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>Festlegen der Betriebssystemeigenschaften für den virtuellen Computer
-Legen Sie hierzu mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) die Art des Betriebssystems auf Windows fest, legen Sie die Installation des [Agents für virtuelle Computer](../agent-user-guide.md) als erforderlich fest, geben Sie an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen Sie den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
+Legen Sie hierzu mithilfe des Cmdlets [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) die Art des Betriebssystems auf Windows fest, legen Sie die Installation des [Agents für virtuelle Computer](../../extensions/agent-windows.md) als erforderlich fest, geben Sie an, dass das Cmdlet automatische Aktualisierungen ermöglicht, und legen Sie den Namen des virtuellen Computers, den Computernamen und die Anmeldeinformationen mithilfe der zuvor initialisierten Variablen fest.
 
 Führen Sie das folgende Cmdlet aus, um die Betriebssystemeigenschaften für Ihren virtuellen Computer festzulegen:
 

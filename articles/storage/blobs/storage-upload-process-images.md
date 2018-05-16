@@ -2,7 +2,7 @@
 title: Hochladen von Bilddaten in die Cloud mit Azure Storage | Microsoft Docs
 description: Verwenden von Azure Blob Storage mit einer Web-App zum Speichern von Anwendungsdaten
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: jeconnoc
 ms.service: storage
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: e3c40d0f3db1a33a405a341a714a7ce199908ca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 29accb3394e9a2f6939a657172c1a5c2e411706a
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Hochladen von Bilddaten in die Cloud mit Azure Storage
 
@@ -72,7 +72,7 @@ Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/accou
 In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie erstellt haben. Der öffentliche Zugriff des Containers _images_ ist auf `off` festgelegt, der öffentliche Zugriff des Containers _thumbnails_ auf `container`. Die Einstellung `container` für den öffentlichen Zugriff ermöglicht die Anzeige der Miniaturansichten durch Personen, die die Webseite besuchen.
  
 ```azurecli-interactive 
-blobStorageAccount=<blob_storage_account>
+$blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 

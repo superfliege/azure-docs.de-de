@@ -1,12 +1,12 @@
 ---
 title: Konfigurieren der Connected Factory-Topologie | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie die Topologie einer vorkonfigurierten Connected Factory-Lösung konfigurieren."
-services: 
+description: Erfahren Sie, wie Sie die Topologie eines Soluction Accelerators für Connected Factory konfigurieren.
+services: iot-suite
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 19e0f48ab817428a1f953c80296b2e23effe5a8a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 4230914c6fb35201a8c162e2e7ecb31262d2bdca
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="configure-the-connected-factory-preconfigured-solution"></a>Konfigurieren der vorkonfigurierten Connected Factory-Lösung
+# <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 
-Die vorkonfigurierte Connected Factory-Lösung zeigt ein simuliertes Dashboard für das fiktive Unternehmen Contoso. Dieses Unternehmen verfügt weltweit über zahlreiche Fabrikanlagen.
+Der Solution Accelerator für Connected Factory zeigt ein simuliertes Dashboard für das fiktive Unternehmen Contoso. Dieses Unternehmen verfügt weltweit über zahlreiche Fabrikanlagen.
 
-In diesem Artikel wird anhand des fiktiven Unternehmens Contoso beispielhaft beschrieben, wie die Topologie einer Connected Factory-Lösung konfiguriert wird.
+In diesem Artikel wird anhand des fiktiven Unternehmens Contoso beschrieben, wie die Topologie einer Connected Factory-Lösung konfiguriert wird.
 
 ## <a name="simulated-factories-configuration"></a>Simulierte Konfiguration von Fabrikanlagen
 
@@ -193,7 +193,7 @@ Die Elemente `<factory_configuration>` und `<production_line_configuration>` umf
   * **CallOpcMethod**: Knoteninformationen und Parameter der OPC UA-Methode, die in folgendem Format aufgerufen wird: NodeId des übergeordneten Knotens, NodeId der aufzurufenden Methode, URI des OPC UA-Servers.
   * **OpenWebPage**: URL, die im Browserfenster angezeigt werden soll.
 
-`<opc_node_description>` enthält Informationen zu den OPC UA-Knoten in einer Station (OPC UA-Server). Knoten, die keine vorhandenen OPC UA-Knoten repräsentieren, sondern als Speicher in der Berechnungslogik der Connected Factory-Simulation verwendet werden, sind ebenfalls zulässig. Es stehen folgende Eigenschaften zur Verfügung:
+`<opc_node_description>` enthält Informationen zu den OPC UA-Knoten in einer Station (OPC UA-Server). Knoten, die keine vorhandenen OPC UA-Knoten repräsentieren, sondern als Speicher in der Berechnungslogik von Connected Factory verwendet werden, sind ebenfalls zulässig. Es stehen folgende Eigenschaften zur Verfügung:
 
 * **NodeId** (Zeichenfolgentyp)
 
@@ -269,10 +269,10 @@ Alle in der Konfigurationsdatei verwendeten Eigenschaften können je nach ihrer 
 
 Eigenschaften in dieser Kategorie definieren die visuelle Darstellung des Connected Factory-Dashboards. Beispiele:
 
-* Name
-* Description
+* NAME
+* BESCHREIBUNG
 * Image
-* Location
+* Speicherort
 * Units
 * Visible
 
@@ -287,7 +287,7 @@ Die OEE/KPI-Zahlen für die Connected Factory-Simulation werden parametrisiert d
 * Die OPC UA-Knotenwerte, die in die Berechnung einbezogen werden sollen.
 * Art der Berechnung der Zahl aus den Telemetriewerten.
 
-Die Connected Factory-Lösung verwendet die OEE-Formeln wie veröffentlicht in http://oeeindustrystandard.oeefoundation.org.
+Connected Factory verwendet die von http://oeeindustrystandard.oeefoundation.org veröffentlichten OEE-Formeln.
 
 OPC UA-Knotenobjekte in Stationen ermöglichen eine Kennzeichnung für die Verwendung in der OEE/KPI-Berechnung. Die Eigenschaft **Relevance** gibt an, für welche OEE/KPI-Zahl der OPC UA-Knoten verwendet werden soll. Die Eigenschaft **OpCode** definiert, wie der Wert in die Berechnung einbezogen wird.
 
@@ -345,4 +345,4 @@ Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehö
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Schritt wird die Lektüre von [Bereitstellen eines Gateways für die vorkonfigurierte Connected Factory-Lösung unter Windows oder Linux](iot-suite-connected-factory-gateway-deployment.md) empfohlen.
+Als nächster Schritt wird empfohlen, dass Sie das [Bereitstellen eines Gateways unter Windows oder Linux für den Solution Accelerator für Connected Factory](iot-suite-connected-factory-gateway-deployment.md) kennenlernen.

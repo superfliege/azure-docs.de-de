@@ -3,23 +3,23 @@ title: Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Docs
 description: Es wird beschrieben, wie Sie lokale Anwendungen im Azure-Portal mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: barbkess
 manager: mtillman
-ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 1bf72b450747e98e254db77514fc7a902bbe70cc
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b9750212925294dec2220e6ef3e6e19d3bc7c3c6
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
@@ -27,7 +27,7 @@ Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeite
 
 Dieser Artikel führt Sie durch die Schritte zum Veröffentlichen einer lokalen App mit dem Anwendungsproxy. Nachdem Sie diesen Artikel abgeschlossen haben, verfügen Ihre Benutzer über einen Remotezugriff auf Ihre App. Sie können zusätzliche Funktionen für die Anwendung konfigurieren, wie beispielsweise die einmalige Anmeldung, personalisierte Informationen oder Sicherheitsanforderungen.
 
-Wenn Sie mit dem Anwendungsproxy noch nicht vertraut sind, erfahren Sie im Artikel [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](active-directory-application-proxy-get-started.md) mehr über diese Funktion.
+Wenn Sie mit dem Anwendungsproxy noch nicht vertraut sind, erfahren Sie im Artikel [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](manage-apps/application-proxy.md) mehr über diese Funktion.
 
 
 ## <a name="publish-an-on-premises-app-for-remote-access"></a>Veröffentlichen einer lokalen App für Remotezugriff

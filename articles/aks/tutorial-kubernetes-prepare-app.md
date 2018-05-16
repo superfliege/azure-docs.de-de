@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 87f407aba40d4896ed8fb61b5528ed624afb80cb
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>Tutorial: Vorbereiten einer Anwendung für Azure Container Service (AKS)
+# <a name="tutorial-prepare-application-for-azure-kubernetes-service-aks"></a>Tutorial: Vorbereiten einer Anwendung für Azure Kubernetes Service (AKS)
 
-In diesem Tutorial – Teil 1 von 8 – wird eine Anwendung mit mehreren Containern für die Verwendung in Kubernetes vorbereitet. Folgende Schritte werden ausgeführt:  
+In diesem Tutorial – Teil 1 von 8 – wird eine Anwendung mit mehreren Containern für die Verwendung in Kubernetes vorbereitet. Folgende Schritte werden ausgeführt:
 
 > [!div class="checklist"]
-> * Klonen der Anwendungsquelle von GitHub  
+> * Klonen der Anwendungsquelle von GitHub
 > * Erstellen eines Containerimages aus der Anwendungsquelle
 > * Testen der Anwendung in einer lokalen Docker-Umgebung
 
@@ -32,7 +32,7 @@ In den nachfolgenden Tutorials wird das Containerimage in eine Azure Container R
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende Docker-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker). 
+In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende Docker-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker).
 
 Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-for-mac], [Windows-][docker-for-windows] oder [Linux-][docker-for-linux]System konfiguriert werden kann.
 
@@ -40,7 +40,7 @@ Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der ein
 
 ## <a name="get-application-code"></a>Abrufen von Anwendungscode
 
-Die in diesem Tutorial verwendete Beispielanwendung ist eine einfache Abstimmungs-App. Die Anwendung besteht aus einer Front-End-Webkomponente und einer Back-End-Redis-Instanz. Die Webkomponente wird in ein benutzerdefiniertes Containerimage gepackt. Die Redis-Instanz verwendet ein nicht modifiziertes Image aus Docker Hub.  
+Die in diesem Tutorial verwendete Beispielanwendung ist eine einfache Abstimmungs-App. Die Anwendung besteht aus einer Front-End-Webkomponente und einer Back-End-Redis-Instanz. Die Webkomponente wird in ein benutzerdefiniertes Containerimage gepackt. Die Redis-Instanz verwendet ein nicht modifiziertes Image aus Docker Hub.
 
 Verwenden Sie Git, um eine Kopie der Anwendung in Ihre Entwicklungsumgebung herunterzuladen.
 
@@ -54,7 +54,7 @@ Wechseln Sie in das Verzeichnis, sodass Sie im geklonten Verzeichnis arbeiten.
 cd azure-voting-app-redis
 ```
 
-Im Verzeichnis befinden sich der Anwendungsquellcode, eine vorab erstellte Docker Compose-Datei und eine Kubernetes-Manifestdatei. Diese Dateien werden während des Tutorials verwendet. 
+Im Verzeichnis befinden sich der Anwendungsquellcode, eine vorab erstellte Docker Compose-Datei und eine Kubernetes-Manifestdatei. Diese Dateien werden während des Tutorials verwendet.
 
 ## <a name="create-container-images"></a>Erstellen von Containerimages
 
@@ -124,7 +124,7 @@ Nach Abschluss des Vorgangs verfügen Sie über ein Containerimage, das die Azur
 In diesem Tutorial wurde eine Anwendung getestet und es wurden Containerimages für die Anwendung erstellt. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
-> * Klonen der Anwendungsquelle von GitHub  
+> * Klonen der Anwendungsquelle von GitHub
 > * Erstellen eines Containerimages aus der Anwendungsquelle
 > * Testen der Anwendung in einer lokalen Docker-Umgebung
 

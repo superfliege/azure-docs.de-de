@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
-ms.author: rli; v-deasim
-ms.openlocfilehash: 88c1b98a9dcaa1d22cdc1be3853b1fa7116c8a48
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/30/2018
+ms.author: v-deasim
+ms.openlocfilehash: bb0824995972b49febdb1695e41f45fbd0966cd1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -71,12 +71,13 @@ Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die C
 **Cache-Control:**
 - Es wurde in HTTP 1.1 eingeführt, um Webpublishern eine größere Kontrolle über ihre Inhalte zu ermöglichen und die Beschränkungen des `Expires`-Headers zu umgehen.
 - Überschreibt den `Expires`-Header, wenn beide sowie `Cache-Control` definiert sind.
-- Bei Verwendung in einer HTTP-Anforderung wird `Cache-Control` von Azure CDN standardmäßig ignoriert.
-- **Azure CDN von Verizon**-Profilen unterstützt bei Verwendung in einer HTTP-Antwort alle `Cache-Control`-Anweisungen.
-- **Azure CDN von Akamai**-Profilen unterstützt bei Verwendung in einer HTTP-Antwort nur die folgenden Anweisungen; alle anderen werden ignoriert:
-   - `max-age`: Ein Cache kann den Inhalt für einen in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
-   - `no-cache`: Wenn Sie den Inhalt im Cache speichern, überprüfen Sie diesen vor jeder Bereitstellung aus dem Cache. Entspricht `Cache-Control: max-age=0`.
-   - `no-store`: Speichern Sie den Inhalt niemals im Cache. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
+- Wenn das Headerfeld `Cache-Control` in einer HTTP-Anforderung vom Client an den CDN-PoP verwendet wird, wird es standardmäßig von allen Azure CDN-Profilen ignoriert.
+- Wenn es in einer HTTP-Antwort vom Client an den CDN-PoP verwendet wird, gilt Folgendes:
+     - **Azure CDN Standard/Premium von Verizon** und **Azure CDN Standard von Microsoft** unterstützen alle `Cache-Control`-Anweisungen.
+     - **Azure CDN Standard von Akamai** unterstützt nur die folgenden `Cache-Control`-Anweisungen, während alle anderen ignoriert werden:
+         - `max-age`: Ein Cache kann den Inhalt für einen in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
+         - `no-cache`: Wenn Sie den Inhalt im Cache speichern, überprüfen Sie diesen vor jeder Bereitstellung aus dem Cache. Entspricht `Cache-Control: max-age=0`.
+         - `no-store`: Speichern Sie den Inhalt niemals im Cache. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
 
 **Expires:**
 - Die in HTTP 1.0 eingeführten Legacyheader werden zur Bereitstellung von Abwärtskompatibilität unterstützt.
@@ -92,38 +93,40 @@ Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die C
 
 ## <a name="validators"></a>Validierungssteuerelemente
 
-Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches verwendet, um die zwischengespeicherte Version einer Datei mit der Version auf dem Ursprungsserver abzugleichen. **Azure CDN von Verizon** unterstützt standardmäßig sowohl `ETag`- als auch `Last-Modified`-Validierungssteuerelemente, wohingegen **Azure CDN von Akamai** standardmäßig nur `Last-Modified`-Validierungssteuerelemente unterstützt.
+Wenn der Cache veraltet ist, werden Validierungssteuerelemente des HTTP-Caches verwendet, um die zwischengespeicherte Version einer Datei mit der Version auf dem Ursprungsserver abzugleichen. **Azure CDN Standard/Premium von Verizon** unterstützt standardmäßig sowohl `ETag`- als auch `Last-Modified`-Validierungssteuerelemente, wohingegen **Azure CDN Standard von Microsoft** und **Azure CDN Standard von Akamai** standardmäßig nur `Last-Modified` unterstützen.
 
 **ETag:**
-- **Azure CDN von Verizon** verwendet standardmäßig `ETag`, was bei **Azure CDN von Akamai** nicht der Fall ist.
+- **Azure CDN Standard/Premium von Verizon** unterstützt standardmäßig `ETag`, was bei **Azure CDN Standard von Microsoft** und **Azure CDN Standard von Akamai** nicht der Fall ist.
 - `ETag` definiert eine Zeichenfolge, die für jede Datei und Dateiversion eindeutig ist. Beispiel: `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`.
 - Es wurde in HTTP 1.1 eingeführt und ist neuer als `Last-Modified`. Ist nützlich, wenn die Ermittelung des Datums der letzten Änderung schwierig ist.
 - Unterstützt sowohl eine sichere als auch eine unsichere Überprüfung, wobei das Azure CDN jedoch nur eine sichere Überprüfung unterstützt. Für eine sichere Überprüfung müssen die beiden Ressourcendarstellungen Byte für Byte identisch sein. 
 - Ein Cache überprüft eine Datei mit `ETag`, indem er einen `If-None-Match`-Header mit einem oder mehreren `ETag`-Validierungssteuerelementen in der Anforderung sendet. Beispiel: `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`. Wenn die Serverversion mit einem `ETag`-Validierungssteuerelement in der Liste übereinstimmt, wird der Statuscode 304 (Nicht geändert) in der Antwort gesendet. Wenn die Version unterschiedlich ist, antwortet der Server mit dem Statuscode 200 (OK) und der aktualisierten Ressource.
 
 **Last-Modified:**
-- Nur bei **Azure CDN von Verizon** wird `Last-Modified` verwendet, wenn `ETag` nicht Teil der HTTP-Antwort ist. 
+- Nur bei **Azure CDN Standard/Premium von Verizon** wird `Last-Modified` verwendet, wenn `ETag` nicht Teil der HTTP-Antwort ist. 
 - Gibt das Datum und die Uhrzeit an, an dem der Ursprungsserver festgestellt hat, dass die Ressource zuletzt geändert wurde. Beispiel: `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`.
 - Ein Cache überprüft eine Datei mit `Last-Modified`, indem er einen `If-Modified-Since`-Header mit Datum und Uhrzeit in der Anforderung sendet. Der Ursprungsserver gleicht dieses Datum mit dem `Last-Modified`-Header der aktuellen Ressource ab. Wenn die Ressource seit dem angegebenen Zeitpunkt nicht geändert wurde, gibt der Server in seiner Antwort den Statuscode 304 (Nicht geändert) zurück. Wenn die Ressource geändert wurde, gibt der Server den Statuscode 200 (OK) und die aktualisierte Ressource zurück.
 
 ## <a name="determining-which-files-can-be-cached"></a>Ermitteln der zwischenspeicherbaren Dateien
 
-Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur bei **Azure CDN von Verizon Premium** können Sie mithilfe des Regelmoduls einige dieser Bedingungen anpassen.
+Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle zeigt, welche Ressourcen abhängig von der Art der HTTP-Antwort zwischengespeichert werden können. Mit HTTP-Antworten bereitgestellte Ressourcen, die nicht alle Bedingungen erfüllen, können nicht zwischengespeichert werden. Nur bei **Azure CDN Premium von Verizon** können Sie mithilfe der Regel-Engine einige dieser Bedingungen anpassen.
 
-|                   | Azure CDN von Verizon | Azure CDN von Akamai            |
-|------------------ |------------------------|----------------------------------|
-| HTTP-Statuscodes | 200                    | 200, 203, 300, 301, 302 und 401 |
-| HTTP-Methode       | GET                    | GET                              |
-| Dateigröße         | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreamingoptimierungen: 1,8 GB<br />– Optimierung für Downloads großer Dateien: 150 GB |
+|                   | Azure CDN von Microsoft          | Azure CDN von Verizon | Azure CDN von Akamai        |
+|-------------------|-----------------------------------|------------------------|------------------------------|
+| HTTP-Statuscodes | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
+| HTTP-Methoden      | GET, HEAD                         | GET                    | GET                          |
+| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreamingoptimierungen: 1,8 GB<br />– Optimierung für Downloads großer Dateien: 150 GB |
+
+Damit das Zwischenspeichern von **Azure CDN Standard von Microsoft** bei einer Ressource funktioniert, muss der Ursprungsserver HEAD- und GET-HTTP-Anforderungen unterstützen, und die Inhaltslängenwerte müssen für alle HEAD- und GET-HTTP-Antworten für die Ressource identisch sein. Bei einer HEAD-Anforderung muss der Ursprungsserver die HEAD-Anforderung unterstützen und mit den gleichen Headern antworten wie beim Empfang einer GET-Anforderung.
 
 ## <a name="default-caching-behavior"></a>Standardverhalten beim Zwischenspeichern
 
 In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei den Azure CDN-Produkten und deren Optimierungen beschrieben.
 
-|                    | Verizon: Allgemeine Webbereitstellung | Verizon: DSA | Akamai: Allgemeine Webbereitstellung | Akamai: DSA | Akamai: Download großer Dateien | Akamai: Allgemeines oder VoD-Medienstreaming |
-|--------------------|--------|------|-----|----|-----|-----|
-| **Berücksichtigung des Ursprungs**   | Ja    | Nein   | Ja | Nein | Ja | Ja |
-| **CDN-Cachedauer** | 7 Tage | Keine | 7 Tage | Keine | 1 Tag | 1 Jahr |
+|    | Microsoft: Allgemeine Webbereitstellung | Verizon: Allgemeine Webbereitstellung | Verizon: DSA | Akamai: Allgemeine Webbereitstellung | Akamai: DSA | Akamai: Download großer Dateien | Akamai: Allgemeines oder VoD-Medienstreaming |
+|------------------------|--------|-------|------|--------|------|-------|--------|
+| **Berücksichtigung des Ursprungs**       | Ja    | Ja   | Nein   | Ja    | Nein   | Ja   | Ja    |
+| **CDN-Cachedauer** | 2 Tage |7 Tage | Keine | 7 Tage | Keine | 1 Tag | 1 Jahr |
 
 **Berücksichtigung des Ursprungs**: Gibt an, ob die [unterstützten Header mit Cacheanweisungen](#http-cache-directive-headers) berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
 

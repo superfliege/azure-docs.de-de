@@ -1,7 +1,7 @@
 ---
-title: "Anpassen der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode für die vorkonfigurierte Remoteüberwachungslösung zugreifen können."
-services: 
+title: Anpassen der Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode für die Benutzeroberfläche des Solution Accelerators für Remoteüberwachung zugreifen können.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -12,256 +12,457 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: be20d45b380f66208884f15f4644f36f2a403837
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="customize-the-remote-monitoring-preconfigured-solution"></a>Anpassen der vorkonfigurierten Remoteüberwachungslösung
+# <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für Remoteüberwachung
 
-Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode zugreifen und die vorkonfigurierte Remoteüberwachungslösung anpassen können. Der Artikel beschreibt Folgendes:
+Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode zugreifen und die Benutzeroberfläche des Solution Accelerators für Remoteüberwachung anpassen können. Der Artikel beschreibt Folgendes:
 
-* Die GitHub-Repositorys, die den Quellcode und Ressourcen für die Microservices enthalten, die die vorkonfigurierte Lösung bilden.
-* Allgemeine Anpassungsszenarien, z.B. Hinzufügen eines neuen Gerätetyps.
+## <a name="prepare-a-local-development-environment-for-the-ui"></a>Vorbereiten einer lokalen Entwicklungsumgebung für die Benutzeroberfläche
 
-Das folgende Video gibt einen Überblick über die Optionen zum Anpassen der vorkonfigurierten Remoteüberwachungslösung:
+Der Code der Benutzeroberfläche des Solution Accelerators für Remoteüberwachung wird mithilfe des Frameworks React.js implementiert. Sie finden den Quellcode im [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui)-GitHub-Repository.
 
->[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
+Um Änderungen an der Benutzeroberfläche vorzunehmen, können Sie eine Kopie davon lokal ausführen. Die lokale Kopie stellt eine Verbindung mit einer bereitgestellten Instanz der Lösung her, um Aktionen wie das Abrufen von Telemetriedaten durchzuführen.
 
-## <a name="project-overview"></a>Projektübersicht
+Die folgenden Schritte beschreiben den Prozess zum Einrichten einer lokalen Umgebung für die Entwicklung von Benutzeroberflächen:
 
-### <a name="implementations"></a>Implementierungen
+1. Bereitstellen einer **grundlegenden** Instanz des Solution Accelerators mit der **pcs**-CLI. Notieren Sie den Namen der Bereitstellung und die Anmeldeinformationen, die Sie für die VM angegeben haben. Weitere Informationen finden Sie unter [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle](iot-suite-remote-monitoring-deploy-cli.md).
 
-Die Remoteüberwachungslösung umfasst .NET- und Java-Implementierungen. Beide Implementierungen bieten eine ähnliche Funktionalität und basieren auf den gleichen zugrunde liegenden Azure-Diensten. Die GitHub-Repositorys der obersten Ebene finden Sie hier:
+1. Aktivieren Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den SSH-Zugriff auf den virtuellen Computer, der die Microservices in der Lösung hostet. Beispiel: 
 
-* [.NET-Lösung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Java-Lösung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
+    ```sh
+    az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
+    ```
 
-### <a name="microservices"></a>Microservices
+1. Suchen Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel: 
 
-Wenn Sie sich für ein bestimmtes Feature der Lösung interessieren, können Sie auf die GitHub-Repositorys für die einzelnen Microservices zugreifen. Jeder Microservice implementiert einen anderen Teil der Funktionalität der Lösung. Weitere Informationen zu der Gesamtarchitektur finden Sie unter [Architektur der vorkonfigurierten Lösung für Remoteüberwachung](iot-suite-remote-monitoring-sample-walkthrough.md).
+    ```sh
+    az resource list --resource-group {your solution name} -o table
+    az vm list-ip-addresses --name {your vm name from previous command} --resource-group {your solution name} -o table
+    ```
 
-Diese Tabelle enthält eine Übersicht über die aktuelle Verfügbarkeit der einzelnen Microservices für jede Sprache:
+1. Stellen Sie mit SSH die Verbindung mit dem virtuellen Computer mithilfe der IP-Adresse aus dem vorherigen Schritt und den Anmeldeinformationen her, die Sie bei der Ausführung von **pcs** zum Bereitstellen der Lösung angegeben haben.
 
-<!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
+1. Damit der lokale Computer eine Verbindung herstellen kann, führen Sie die folgenden Befehle in der Bash-Shell des virtuellen Computers aus:
 
-| Microservice      | BESCHREIBUNG | Java | .NET |
-| ----------------- | ----------- | ---- | ---- |
-| Web-Benutzeroberfläche            | Web-App für die Remoteüberwachungslösung Implementiert die Benutzeroberfläche mithilfe des React.js-Frameworks. | [– (React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [– (React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
-| IoT Hub-Manager   | Verarbeitet die Kommunikation mit IoT Hub.        | [Verfügbar](https://github.com/Azure/iothub-manager-java) | [Verfügbar](https://github.com/Azure/iothub-manager-dotnet)   |
-| Authentifizierung    |  Verwaltet die Azure Active Directory-Integration.  | Noch nicht verfügbar | [Verfügbar](https://github.com/Azure/pcs-auth-dotnet)   |
-| Gerätesimulation | Verwaltet einen Pool von simulierten Geräten. | Noch nicht verfügbar | [Verfügbar](https://github.com/Azure/device-simulation-dotnet)   |
-| Telemetrie         | Stellt die Gerätetelemetrie in der Benutzeroberfläche bereit. | [Verfügbar](https://github.com/Azure/device-telemetry-java) | [Verfügbar](https://github.com/Azure/device-telemetry-dotnet)   |
-| Telemetrie-Agent   | Analysiert den Telemetriedatenstrom, speichert Nachrichten von Azure IoT Hub und generiert Warnungen nach definierten Regeln.  | [Verfügbar](https://github.com/Azure/telemetry-agent-java) | [Verfügbar](https://github.com/Azure/telemetry-agent-dotnet)   |
-| Benutzeroberflächen-Konfiguration         | Verwaltet die Konfigurationsdaten von der Benutzeroberfläche. | [Verfügbar](https://github.com/azure/pcs-ui-config-java) | [Verfügbar](https://github.com/azure/pcs-ui-config-dotnet)   |
-| Speicheradapter   |  Verwaltet die Interaktionen mit dem Speicherdienst.   | [Verfügbar](https://github.com/azure/pcs-storage-adapter-java) | [Verfügbar](https://github.com/azure/pcs-storage-adapter-dotnet)   |
-| Reverseproxy     | Macht private Ressourcen in einer verwalteten Methode über einen eindeutigen Endpunkt verfügbar. | Noch nicht verfügbar | [Verfügbar](https://github.com/Azure/reverse-proxy-dotnet)   |
+    ```sh
+    cd /app
+    sudo ./start.sh --unsafe
+    ```
 
-Die Java-Lösung verwendet derzeit die Microservices für die .NET-Authentifizierung und -Simulation und für den .NET-Reverseproxy. Diese Microservices werden durch Java-Versionen ersetzt, sobald sie verfügbar sind.
+1. Sobald der Befehl abgeschlossen ist und die Website gestartet wird, können Sie den virtuellen Computer trennen.
 
-## <a name="presentation-and-visualization"></a>Darstellung und Visualisierung
+1. Bearbeiten Sie in Ihrer lokalen Kopie des [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui)-Repositorys die **ENV**-Datei, um die URL für die bereitgestellte Lösung hinzuzufügen:
 
-In den folgenden Abschnitten werden die Optionen zum Anpassen der Darstellungs- und Visualisierungsschicht in der Remoteüberwachungslösung beschrieben:
+    ```config
+    NODE_PATH = src/
+    REACT_APP_BASE_SERVICE_URL=https://{your solution name}.azurewebsites.net/
+    ```
 
-### <a name="change-the-logo-in-the-ui"></a>Ändern des Logos in der Benutzeroberfläche
-
-In der Standardbereitstellung werden der Name und das Logo des Unternehmens Contoso in der Benutzeroberfläche verwendet. So ändern Sie diese Elemente der Benutzeroberfläche, um den Namen und das Logo Ihres Unternehmens anzuzeigen
-
-1. Führen Sie den folgenden Befehl aus, um das Repository für die Web-Benutzeroberfläche zu klonen:
+1. Führen Sie an der Eingabeaufforderung in der lokalen Kopie des `azure-iot-pcs-remote-monitoring-webui`-Ordners die folgenden Befehle zum Installieren der erforderlichen Bibliotheken und lokalen Ausführen der Benutzeroberfläche aus:
 
     ```cmd/sh
-    git clone https://github.com/Azure/pcs-remote-monitoring-webui.git
+    npm install
+    npm start
     ```
 
-1. Öffnen Sie zum Ändern des Firmennamens die Datei `src/common/lang.js` in einem Text-Editor.
+1. Der vorherige Befehl führt die Benutzeroberfläche lokal unter http://localhost:3000/dashboard aus. Sie können den Code bearbeiten, während die Website ausgeführt wird, und ihre dynamische Aktualisierung beobachten.
 
-1. Suchen Sie in der Datei die folgende Zeile:
+## <a name="customize-the-layout"></a>Anpassen des Layouts
 
-    ```js
-    CONTOSO: 'Contoso',
+Jede Seite in der Remoteüberwachungslösung besteht aus einem Satz von Steuerelementen, den sogenannten *Bereichen* im Quellcode. Die **Dashboard**-Seite besteht z.B. aus fünf Bereichen: Übersicht, Zuordnung, Alarme, Telemetrie und KPIs. Sie finden den Quellcode, der jede Seite und ihre Bereiche definiert, im [pcs-remote-monitoring-webui](https://github.com/Azure/pcs-remote-monitoring-webui)-GitHub-Repository. Beispielsweise befindet sich der Code, der die **Dashboard**-Seite, ihr Layout und die Bereiche auf der Seite definiert, im [src/components/pages/dashboard](https://github.com/Azure/pcs-remote-monitoring-webui/tree/master/src/components/pages/dashboard)-Ordner.
+
+Da die Bereiche ihr Layout und ihre Größe selbst verwalten, können Sie einfach das Layout einer Seite ändern. Mit den folgenden Änderungen des **PageContent**-Elements in der `src/components/pages/dashboard/dashboard.js`-Datei tauschen Sie z.B. die Positionen des Zuordnungs- und Telemetriebereichs und ändern die relative Breite des Zuordnungs- und KPI-Bereichs:
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-5">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+![Bereichslayout ändern](media/iot-suite-remote-monitoring-customize/layout.png)
+
+> [!NOTE]
+> Die Zuordnung ist in der lokalen Bereitstellung nicht konfiguriert.
+
+Sie können auch mehrere Instanzen des gleichen Bereichs oder mehrere Versionen hinzufügen, wenn Sie [einen Bereich duplizieren und anpassen](#duplicate-and-customize-an-existing-control). Im folgenden Beispiel wird das Hinzufügen von zwei Instanzen des Telemetriebereichs durch Bearbeiten der `src/components/pages/dashboard/dashboard.js`-Datei gezeigt:
+
+```nodejs
+<PageContent className="dashboard-container" key="page-content">
+  <Grid>
+    <Cell className="col-1 devices-overview-cell">
+      <OverviewPanel
+        openWarningCount={openWarningCount}
+        openCriticalCount={openCriticalCount}
+        onlineDeviceCount={onlineDeviceCount}
+        offlineDeviceCount={offlineDeviceCount}
+        isPending={kpisIsPending || devicesIsPending}
+        error={devicesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-3">
+      <TelemetryPanel
+        telemetry={telemetry}
+        isPending={telemetryIsPending}
+        error={telemetryError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+    <Cell className="col-2">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
+    <Cell className="col-4">
+    <PanelErrorBoundary msg={t('dashboard.panels.map.runtimeError')}>
+        <MapPanel
+          azureMapsKey={azureMapsKey}
+          devices={devices}
+          devicesInAlarm={devicesInAlarm}
+          mapKeyIsPending={azureMapsKeyIsPending}
+          isPending={devicesIsPending || kpisIsPending}
+          error={azureMapsKeyError || devicesError || kpisError}
+          t={t} />
+      </PanelErrorBoundary>
+    </Cell>
+    <Cell className="col-6">
+      <KpisPanel
+        topAlarms={topAlarmsWithName}
+        alarmsPerDeviceId={alarmsPerDeviceType}
+        criticalAlarmsChange={criticalAlarmsChange}
+        warningAlarmsChange={warningAlarmsChange}
+        isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+        error={devicesError || rulesError || kpisError}
+        colors={chartColorObjects}
+        t={t} />
+    </Cell>
+  </Grid>
+</PageContent>
+```
+
+Sie können dann in den einzelnen Bereichen verschiedene Telemetriedaten anzeigen:
+
+![Mehrere Telemetriedatenbereiche](media/iot-suite-remote-monitoring-customize/multiple-telemetry.png)
+
+> [!NOTE]
+> Die Zuordnung ist in der lokalen Bereitstellung nicht konfiguriert.
+
+## <a name="duplicate-and-customize-an-existing-control"></a>Duplizieren und Anpassen eines vorhandenen Steuerelements
+
+Die folgenden Schritte beschreiben die Verwendung des **Alarmbereichs** als Beispiel für das Duplizieren eines vorhandenen Bereichs, seine Änderung und die Verwendung der geänderten Version:
+
+1. Erstellen Sie in der lokalen Kopie des Repositorys eine Kopie des **alarms**-Ordners im `src/components/pages/dashboard/panels`-Ordner. Benennen Sie die neue Kopie **cust_alarms**.
+
+1. Nennen Sie in der Datei **alarmsPanel.js** im **cust_alarms**-Ordner die Klasse in **CustAlarmsPanel** um:
+
+    ```nodejs
+    export class CustAlarmsPanel extends Component {
     ```
 
-1. Ersetzen Sie `Contoso` durch den Namen Ihres Unternehmens. Beispiel: 
+1. Fügen Sie der Datei `src/components/pages/dashboard/panels/index.js` die folgende Zeile hinzu:
 
-    ```js
-    CONTOSO: 'YourCo',
+    ```nodejs
+    export * from './cust_alarms';
     ```
 
-1. Speichern Sie die Datei .
+1. Ersetzen Sie in der `src/components/pages/dashboard/dashboard.js`-Datei `AlarmsPanel` durch `CustAlarmsPanel`:
 
-1. Um das Logo zu aktualisieren, fügen Sie im Ordner `assets/icons` eine neue SVG-Datei ein. Das vorhandene Logo ist die Datei `assets/icons/Contoso.svg`.
+    ```nodejs
+    import {
+      OverviewPanel,
+      CustAlarmsPanel,
+      TelemetryPanel,
+      KpisPanel,
+      MapPanel,
+      transformTelemetryResponse,
+      chartColors
+    } from './panels';
 
-1. Öffnen Sie die Datei `src/components/layout/leftNav/leftNav.js` in einem Text-Editor.
+    ...
 
-1. Suchen Sie in der Datei die folgende Zeile:
-
-    ```js
-    import ContosoIcon from '../../../assets/icons/Contoso.svg';
+    <Cell className="col-3">
+      <CustAlarmsPanel
+        alarms={currentActiveAlarmsWithName}
+        isPending={kpisIsPending || rulesIsPending}
+        error={rulesError || kpisError}
+        t={t} />
+    </Cell>
     ```
 
-1. Ersetzen Sie `Contoso.svg` durch den Namen Ihrer Logodatei. Beispiel: 
+Sie haben jetzt den ursprünglichen Bereich **Alarme** durch eine Kopie namens **CustAlarms** ersetzt. Diese Kopie ist mit dem Original identisch. Sie können jetzt die Kopie ändern. Ändern Sie z.B. die Spaltenreihenfolge im **Alarme**-Bereich:
 
-    ```js
-    import ContosoIcon from '../../../assets/icons/YourCo.svg';
+1. Öffnen Sie die Datei `src/components/pages/dashboard/panels/cust_alarms/alarmsPanel.js` .
+
+1. Ändern Sie die Spaltendefinitionen, wie im folgenden Codeausschnitt gezeigt:
+
+    ```nodejs
+    this.columnDefs = [
+      rulesColumnDefs.severity,
+      {
+        headerName: 'rules.grid.count',
+        field: 'count'
+      },
+      {
+        ...rulesColumnDefs.ruleName,
+        minWidth: 200
+      },
+      rulesColumnDefs.explore
+    ];
     ```
 
-1. Suchen Sie in der Datei die folgende Zeile:
+Der folgende Screenshot zeigt die neue Version des **Alarme**-Bereichs:
 
-    ```js
-    alt="ContosoIcon"
+![Aktualisierter Bereich „Alarme“](media/iot-suite-remote-monitoring-customize/reorder-columns.png)
+
+## <a name="customize-the-telemetry-chart"></a>Anpassen des Telemetriediagramms
+
+Das Telemetriediagramm auf der **Dashboard**-Seite wird durch die Dateien im `src/components/pages/dashboard/panels/telemtry`-Ordner definiert. Die Benutzeroberfläche ruft die Telemetriedaten aus dem Lösungs-Back-End in der `src/services/telemetryService.js`-Datei ab. Die folgenden Schritte zeigen Ihnen, wie Sie den im Telemetriediagramm angezeigten Zeitraum von 15 Minuten auf 5 Minuten ändern:
+
+1. In der `src/services/telemetryService.js`-Datei finden Sie die aufgerufene Funktion **getTelemetryByDeviceIdP15M**. Erstellen Sie eine Kopie dieser Funktion, und ändern Sie die Kopie wie folgt:
+
+    ```nodejs
+    static getTelemetryByDeviceIdP5M(devices = []) {
+      return TelemetryService.getTelemetryByMessages({
+        from: 'NOW-PT5M',
+        to: 'NOW',
+        order: 'desc',
+        devices
+      });
+    }
     ```
 
-1. Ersetzen Sie `ContosoIcon` durch Ihren `alt`-Text. Beispiel: 
+1. Um mit dieser neuen Funktion das Telemetriediagramm aufzufüllen, öffnen Sie die `src/components/pages/dashboard/dashboard.js`-Datei. Ändern Sie dort die Zeile, die den Telemetriedatenstrom initialisiert, wie folgt:
 
-    ```js
-    alt="YourCoIcon"
+    ```node.js
+    const getTelemetryStream = ({ deviceIds = [] }) => TelemetryService.getTelemetryByDeviceIdP5M(deviceIds)
     ```
 
-1. Speichern Sie die Datei .
+Das Telemetriediagramm zeigt jetzt die Telemetriedaten von fünf Minuten an:
 
-1. Zum Testen der Änderungen können Sie die aktualisierte `webui` auf Ihrem lokalen Computer ausführen. Informationen zum Erstellen und lokalen Ausführen der `webui`-Lösung finden Sie unter [Build, run and test locally](https://github.com/Azure/pcs-remote-monitoring-webui/blob/master/README.md#build-run-and-test-locally) (Erstellen, Testen und lokales Ausführen) in der Infodatei des `webui`-GitHub-Repositorys.
+![Telemetriediagramm für einen Tag](media/iot-suite-remote-monitoring-customize/telemetry-period.png)
 
-1. Informationen zum Bereitstellen Ihrer Änderungen finden Sie im [Developer Reference Guide](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide) (Referenzhandbuch für Entwickler).
+## <a name="add-a-new-kpi"></a>Hinzufügen eines neuen KPI
 
-<!--
+Auf der Seite **Dashboard** werden KPIs im Bereich **System-KPIs** angezeigt. Diese KPIs werden in der `src/components/pages/dashboard/dashboard.js`-Datei berechnet. Die KPIs werden durch die `src/components/pages/dashboard/panels/kpis/kpisPanel.js`-Datei gerendert. Die folgenden Schritte beschreiben das Berechnen und Rendern eines neuen KPI-Werts auf der **Dashboard**-Seite. Im Beispiel wird eine neue prozentuale Änderung im Alarme-KPI hinzugefügt:
 
-### Add a new KPI to the Dashboard page
+1. Öffnen Sie die Datei `src/components/pages/dashboard/dashboard.js` . Ändern des **initialState**-Objekts, sodass eine **warningAlarmsChange**-Eigenschaft wie folgt einbezogen wird:
 
-The following steps describe how to add a new KPI to display on the **Dashboard** page. The new KPI shows information about the number of alarms with specific status values as a pie chart:
+    ```nodejs
+    const initialState = {
+      ...
 
-1. Step 1
+      // Kpis data
+      currentActiveAlarms: [],
+      topAlarms: [],
+      alarmsPerDeviceId: {},
+      criticalAlarmsChange: 0,
+      warningAlarmsChange: 0,
+      kpisIsPending: true,
+      kpisError: null,
 
-1. Step 2
--->
+      ...
+    };
+    ```
 
-### <a name="customize-the-map"></a>Anpassen der Karte
+1. Ändern des **currentAlarmsStats**-Objekts, sodass **totalWarningCount** als Eigenschaft einbezogen wird:
+
+    ```nodejs
+    return {
+      openWarningCount: (acc.openWarningCount || 0) + (isWarning && isOpen ? 1 : 0),
+      openCriticalCount: (acc.openCriticalCount || 0) + (isCritical && isOpen ? 1 : 0),
+      totalWarningCount: (acc.totalWarningCount || 0) + (isWarning ? 1 : 0),
+      totalCriticalCount: (acc.totalCriticalCount || 0) + (isCritical ? 1 : 0),
+      alarmsPerDeviceId: updatedAlarmsPerDeviceId
+    };
+    ```
+
+1. Berechnen Sie den neuen KPI. Finden Sie die Berechnung für die kritische Anzahl von Alarmen. Kopieren Sie den Code, und ändern Sie die Kopie wie folgt:
+
+    ```nodejs
+    // ================== Warning Alarms Count - START
+    const currentWarningAlarms = currentAlarmsStats.totalWarningCount;
+    const previousWarningAlarms = previousAlarms.reduce(
+      (cnt, { severity }) => severity === 'warning' ? cnt + 1 : cnt,
+      0
+    );
+    const warningAlarmsChange = ((currentWarningAlarms - previousWarningAlarms) / currentWarningAlarms * 100).toFixed(2);
+    // ================== Warning Alarms Count - END
+    ```
+
+1. Beziehen Sie den neuen KPI **warningAlarmsChange** in den KPI-Datenstrom ein:
+
+    ```nodejs
+    return ({
+      kpisIsPending: false,
+
+      // Kpis data
+      currentActiveAlarms,
+      topAlarms,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      alarmsPerDeviceId: currentAlarmsStats.alarmsPerDeviceId,
+
+      ...
+    });
+
+1. Include the new **warningAlarmsChange** KPI in the state data used to render the UI:
+
+    ```nodejs
+    const {
+      ...
+
+      currentActiveAlarms,
+      topAlarms,
+      alarmsPerDeviceId,
+      criticalAlarmsChange,
+      warningAlarmsChange,
+      kpisIsPending,
+      kpisError,
+
+      ...
+    } = this.state;
+    ```
+
+1. Aktualisieren Sie die Daten, die dem Bereich „KPIs“ übergeben werden:
+
+    ```node.js
+    <KpisPanel
+      topAlarms={topAlarmsWithName}
+      alarmsPerDeviceId={alarmsPerDeviceType}
+      criticalAlarmsChange={criticalAlarmsChange}
+      warningAlarmsChange={warningAlarmsChange}
+      isPending={kpisIsPending || rulesIsPending || devicesIsPending}
+      error={devicesError || rulesError || kpisError}
+      colors={chartColorObjects}
+      t={t} />
+    ```
+
+Sie haben jetzt die Änderungen in der `src/components/pages/dashboard/dashboard.js`-Datei fertig gestellt. Die folgenden Schritte beschreiben, welche Änderungen in der `src/components/pages/dashboard/panels/kpis/kpisPanel.js`-Datei zum Anzeigen der neuen KPI erforderlich sind:
+
+1. Ändern Sie die folgende Codezeile wie folgt zum Abrufen des neuen KPI-Werts:
+
+    ```nodejs
+    const { t, isPending, criticalAlarmsChange, warningAlarmsChange, error } = this.props;
+    ```
+
+1. Ändern Sie das Markup zum Anzeigen des neuen KPI-Werts wie folgt:
+
+    ```nodejs
+    <div className="kpi-cell">
+      <div className="kpi-header">{t('dashboard.panels.kpis.criticalAlarms')}</div>
+      <div className="critical-alarms">
+        {
+          criticalAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ criticalAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+      <div className="kpi-header">{t('Warning alarms')}</div>
+      <div className="critical-alarms">
+        {
+          warningAlarmsChange !== 0 &&
+            <div className="kpi-percentage-container">
+              <div className="kpi-value">{ warningAlarmsChange }</div>
+              <div className="kpi-percentage-sign">%</div>
+            </div>
+        }
+      </div>
+    </div>
+    ```
+
+Auf der **Dashboard**-Seite wird jetzt der neue KPI-Wert angezeigt:
+
+![Warnungs-KPI](media/iot-suite-remote-monitoring-customize/new-kpi.png)
+
+## <a name="customize-the-map"></a>Anpassen der Karte
 
 Ausführliche Informationen zu den Kartenkomponenten in der Lösung finden Sie auf der Seite [Customize map](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide#upgrade-map-key-to-see-devices-on-a-dynamic-map) (Anpassungsübersicht) in GitHub.
 
 <!--
-### Customize the telemetry chart
-
-See the [Customize telemetry chart](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of the telemetry chart components in the solution.
-
 ### Connect an external visualization tool
 
 See the [Connect an external visualization tool](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to connect an external visualization tool.
 
-### Duplicate an existing control
-
-To duplicate an existing UI element such as a chart or alert, see the [Duplicate a control](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub.
-
 -->
 
-### <a name="other-customization-options"></a>Andere Optionen zur Anpassung
+## <a name="other-customization-options"></a>Andere Optionen zur Anpassung
 
 Um die Darstellungs- und Visualisierungsschicht in der Remoteüberwachungslösung weiter zu ändern, können Sie den Code bearbeiten. Relevante GitHub-Repositorys:
 
-* [UIConfig (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [UIConfig (Java)](https://github.com/Azure/pcs-ui-config-java/)
-* [Azure PCS Remote Monitoring WebUI](https://github.com/Azure/pcs-remote-monitoring-webui)
-
-## <a name="device-connectivity-and-streaming"></a>Geräteverbindungen und Streaming
-
-In den folgenden Abschnitten werden die Optionen zum Anpassen der Geräteverbindungs- und Streamingschicht in der Remoteüberwachungslösung beschrieben. [Gerätemodelle](https://github.com/Azure/device-simulation-dotnet/wiki/Device-Models) beschreiben die Gerätetypen und Telemetrie in der Lösung. Sie verwenden Gerätemodelle für simulierte und physische Geräte.
-
-Ein Beispiel für die Implementierung eines physischen Geräts finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung](iot-suite-connecting-devices-node.md).
-
-Bei der Verwendung eines _physischen Geräts_ müssen Sie die Clientanwendung mit einem Gerätemodell bereitstellen, das die Spezifikationen für die Gerätemetadaten und die Gerätetelemetrie enthält.
-
-In den folgenden Abschnitten wird die Verwendung von Gerätemodellen mit simulierten Geräten beschrieben.
-
-### <a name="add-a-telemetry-type"></a>Hinzufügen eines Telemetriedatentyps
-
-Die Gerätetypen in der Contoso-Demolösung geben die Telemetriedaten an, die die einzelnen Gerätetypen senden. Um die zusätzlichen Telemetrietypen anzugeben, kann ein Gerät Telemetriedefinitionen als Metadaten an die Lösung senden. Wenn Sie dieses Format verwenden, nutzt das Dashboard die Gerätetelemetrie und die verfügbaren Methoden dynamisch, und Sie müssen die Benutzeroberfläche nicht ändern. Alternativ können Sie die Gerätetypdefinition in der Lösung ändern.
-
-Informationen zum Hinzufügen benutzerdefinierter Telemetrie im Microservice _Gerätesimulator_ finden Sie unter [Testen der Lösung mit simulierten Geräten](iot-suite-remote-monitoring-test.md).
-
-### <a name="add-a-device-type"></a>Hinzufügen eines Gerätetyps
-
-In der Contoso-Demolösung sind einige Beispielgerätetypen definiert. In der Lösung können Sie benutzerdefinierte Gerätetypen entsprechend Ihren spezifischen Geräteanforderungen definieren. Ihr Unternehmen verwendet z.B. ein Industriegateway als primäres mit der Lösung verbundenes Gerät.
-
-Um eine genaue Darstellung Ihres Geräts zu erstellen, müssen Sie die Anwendung, die auf Ihrem Gerät ausgeführt wird, entsprechend den Geräteanforderungen ändern.
-
-Informationen zum Hinzufügen eines neuen Gerätetyps im Microservice _Gerätesimulator_ finden Sie unter [Testen der Lösung mit simulierten Geräten](iot-suite-remote-monitoring-test.md).
-
-### <a name="define-custom-methods-for-simulated-devices"></a>Definieren benutzerdefinierter Methoden für simulierte Geräte
-
-Informationen zum Definieren von benutzerdefinierten Methoden für simulierte Geräte in der Remoteüberwachungslösung finden Sie im GitHub-Repository unter [Device Models](https://github.com/Azure/device-simulation-dotnet/wiki/%5BAPI-Specifications%5D-Device-Models) (Gerätemodelle).
-
-<!--
-#### Using the simulator service
-
-TODO: add steps for the simulator microservice here
--->
-
-#### <a name="using-a-physical-device"></a>Verwenden eines physischen Geräts
-
-Informationen zum Implementieren von Methoden und Aufträgen auf Ihren physischen Geräten finden Sie in den folgenden Artikeln zu IoT Hub:
-
-* [Verstehen und Aufrufen direkter Methoden von IoT Hub](../iot-hub/iot-hub-devguide-direct-methods.md)
-* [Planen von Aufträgen auf mehreren Geräten](../iot-hub/iot-hub-devguide-jobs.md)
-
-### <a name="other-customization-options"></a>Andere Optionen zur Anpassung
-
-Um die Geräteverbindungs- und Streamingschicht in der Remoteüberwachungslösung weiter zu ändern, können Sie den Code bearbeiten. Relevante GitHub-Repositorys:
-
-* [Device Telemetry (.NET)](https://github.com/Azure/device-telemetry-dotnet)
-* [Device Telemetry (Java)](https://github.com/Azure/device-telemetry-java)
-* [Telemetry Agent (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [Telemetry Agent (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="data-processing-and-analytics"></a>Datenverarbeitung und Analysen
-
-<!--
-The following sections describe options to customize the data processing and analytics layer in the remote monitoring solution:
-
-### Rules and actions
-
-See the [Customize rules and actions](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to customize the rules and actions in solution.
-
-
-### Other customization options
--->
-
-Um die Datenverarbeitungs- und Analysenschicht in der Remoteüberwachungslösung zu ändern, können Sie den Code bearbeiten. Relevante GitHub-Repositorys:
-
-* [Telemetry Agent (.NET)](https://github.com/Azure/telemetry-agent-dotnet)
-* [Telemetry Agent (Java)](https://github.com/Azure/telemetry-agent-java)
-
-## <a name="infrastructure"></a>Infrastruktur
-
-<!--
-The following sections describe options for customizing the infrastructure services in the remote monitoring solution:
-
-### Change storage
-
-The default storage service for the remote monitoring solution is Cosmos DB. See the [Customize storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses.
-
-### Change log storage
-
-The default storage service for logs is Cosmos DB. See the [Customize log storage service](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) page in GitHub for details of how to change the storage service the solution uses for logging.
-
-### Other customization options
--->
-
-Um die Infrastruktur in der Remoteüberwachungslösung zu ändern, können Sie den Code bearbeiten. Relevante GitHub-Repositorys:
-
-* [IoTHub Manager (.NET)](https://github.com/Azure/iothub-manager-dotnet)
-* [IoTHub Manager (Java)](https://github.com/Azure/iothub-manager-java)
-* [Storage Adapter (.NET)](https://github.com/Azure/pcs-storage-adapter-dotnet)
-* [Storage Adapter (Java)](https://github.com/Azure/pcs-storage-adapter-java)
+* [The configuration microservice for Azure IoT Solutions (.NET) (Der Konfigurations-Microservice für Azure IoT-Lösungen [.NET])](https://github.com/Azure/pcs-ui-config-dotnet/)
+* [The configuration microservice for Azure IoT Solutions (Java) (Der Konfigurations-Microservice für Azure IoT-Lösungen [Java])](https://github.com/Azure/pcs-ui-config-java/)
+* [Azure IoT PCS Remote Monitoring Web UI (Azure IoT PCS-Remoteüberwachungs-Webbenutzeroberfläche)](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die vorkonfigurierte Lösung anpassen können.
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung anpassen können.
 
-Weitere konzeptuelle Informationen zur vorkonfigurierten Remoteüberwachungslösung finden Sie unter [Remoteüberwachungsarchitektur](iot-suite-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-suite-remote-monitoring-sample-walkthrough.md).
 
-Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie in folgenden Quellen:
-
-* [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
-* [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-
+Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservices](iot-suite-microservices-example.md).
 <!-- Next tutorials in the sequence -->

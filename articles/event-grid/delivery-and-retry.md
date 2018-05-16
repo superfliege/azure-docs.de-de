@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 017cb5850788bd230c4a4ba256997f2776c07bec
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: db16a4ba2177e92fa4500af0969c44471004ba73
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten 
 
@@ -35,7 +35,7 @@ Die folgenden HTTP-Antwortcodes geben an, dass ein Ereignis erfolgreich an den W
 
 ### <a name="failure-codes"></a>Fehlercodes
 
-Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereignisses ein Fehler aufgetreten ist. Event Grid versucht erneut, das Ereignis zu senden. 
+Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereignisses ein Fehler aufgetreten ist. 
 
 - 400 – Ungültige Anforderung
 - 401 – Nicht autorisiert
@@ -46,9 +46,9 @@ Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereig
 - 503 Dienst nicht verfügbar
 - 504 Gateway-Timeout
 
-Alle anderen Antwortcodes oder eine fehlende Antwort geben einen Fehler an. Event Grid wiederholt die Übermittlung. 
+Wenn Event Grid einen Fehler empfängt, der angibt, dass der Endpunkt nicht verfügbar ist, wird versucht, das Ereignis erneut zu senden. 
 
-## <a name="retry-intervals"></a>Wiederholungsintervalle
+## <a name="retry-intervals-and-duration"></a>Wiederholungsintervalle und Dauer
 
 Event Grid verwendet exponentiell ansteigende Wartezeiten für Wiederholungsversuche für die Ereignisübermittlung. Wenn der Webhook nicht antwortet oder einen Fehlercode zurückgibt, wiederholt Event Grid die Übermittlung nach folgendem Zeitplan:
 
@@ -62,9 +62,7 @@ Event Grid verwendet exponentiell ansteigende Wartezeiten für Wiederholungsvers
 
 Event Grid fügt allen Wiederholungsintervallen eine geringfügige zufällige Anordnung hinzu. Nach einer Stunde wird die Ereignisübermittlung erneut versucht. Der Versuch wird jede Stunde wiederholt.
 
-## <a name="retry-duration"></a>Wiederholungszeitraum
-
-Azure Event Grid markiert alle Ereignisse als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden.
+Event Grid markiert alle Ereignisse standardmäßig als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

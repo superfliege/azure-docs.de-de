@@ -1,22 +1,22 @@
 ---
-title: "Azure Container Service (AKS): Kontingente und Regionsverfügbarkeit"
-description: "Hier finden Sie Informationen zu den Standardkontingenten und zur Regionsverfügbarkeit des Azure Container Service (AKS)."
+title: 'Azure Kubernetes Service (AKS): Kontingente und Verfügbarkeit in den Regionen'
+description: Hier finden Sie Informationen zu den Standardkontingenten und zur Verfügbarkeit von Azure Kubernetes Service (AKS) in den Regionen.
 services: container-service
-author: david-stanford
+author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: overview
-ms.date: 01/16/2018
-ms.author: dastanfo
-ms.openlocfilehash: eddfab874501fd045820d7da3c968d340fdffe93
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 04/26/2018
+ms.author: nepeters
+ms.openlocfilehash: 4fb03df470972a2920854ec18554d1cb4b310e88
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="quotas-and-region-availability-for-azure-container-service-aks"></a>Kontingente und Regionsverfügbarkeit für Azure Container Service (AKS)
+# <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kontingente und Verfügbarkeit von Azure Kubernetes Service (AKS) in den Regionen
 
-Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standardlimits und Kontingente. Die folgenden Abschnitte enthalten Informationen zu den Standardressourcenlimits für mehrere AKS-Ressourcen (Azure Container Service) sowie zur Verfügbarkeit des AKS-Diensts in Azure-Regionen.
+Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standardlimits und Kontingente. Die folgenden Abschnitte enthalten Informationen zu den Standardressourcenlimits für mehrere AKS-Ressourcen (Azure Kubernetes Service) sowie zur Verfügbarkeit des AKS-Diensts in Azure-Regionen.
 
 ## <a name="service-quotas-and-limits"></a>Dienstkontingente und Limits
 
@@ -28,10 +28,10 @@ Alle anderen Netzwerk-, Compute- und Speichereinschränkungen gelten für die be
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Azure Container Service (AKS) ist in den folgenden Regionen als Vorschauversion verfügbar:
-- USA, Osten
+Azure Kubernetes Service (AKS) ist in den folgenden Regionen als Vorschauversion verfügbar:
+- USA (Ost)
 - Europa, Westen
-- USA, Mitte
+- USA (Mitte)
 - Kanada, Mitte
 - Kanada, Osten
 

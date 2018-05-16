@@ -10,13 +10,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: nitinme
-ms.openlocfilehash: 6ef0b1ce589bd19693d45a9e4f579ef260530a40
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 63bf7d5a0ad988ff7a6b498b4e91e90de97b507b
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 
@@ -87,7 +87,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
 
     Drücken Sie **UMSCHALT+EINGABE**, um die Codezelle auszuführen.  
 
-2. Mit dem folgenden Codeausschnitt werden eine JDBC-URL, die Sie an die Spark-Dataframe-APIs übergeben können, und ein `Properties`-Objekt zum Speichern der Parameter erstellt. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+2. Verwenden Sie den folgenden Codeausschnitt, um eine JDBC-URL, die Sie an die Spark-Dataframe-APIs übergeben können, und ein `Properties`-Objekt zum Speichern der Parameter zu erstellen. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        import java.util.Properties
 
@@ -96,7 +96,7 @@ In diesem Abschnitt lesen Sie Daten aus einer Tabelle (z.B. **SalesLT.Address**)
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")         
 
-3. Mit dem folgenden Codeausschnitt wird ein Dataframe mit den Daten aus einer Tabelle in der Azure SQL-Datenbank erstellt. In diesem Codeausschnitt wird die Tabelle **SalesLT.Address** verwendet, die als Bestandteil der **AdventureWorksLT**-Datenbank verfügbar ist. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+3. Verwenden Sie den folgenden Codeausschnitt, um einen Dataframe mit den Daten aus einer Tabelle in der Azure SQL-Datenbank zu erstellen. In diesem Codeausschnitt wird die Tabelle **SalesLT.Address** verwendet, die als Bestandteil der **AdventureWorksLT**-Datenbank verfügbar ist. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        val sqlTableDF = spark.read.jdbc(jdbc_url, "SalesLT.Address", connectionProperties)
 
@@ -141,7 +141,7 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
        connectionProperties.put("user", s"${jdbcUsername}")
        connectionProperties.put("password", s"${jdbcPassword}")
 
-3. Mit dem folgenden Codeausschnitt wird das Schema der Daten in der Datei „HVAC.csv“ extrahiert und das Schema zum Laden der Daten aus der CSV-Datei in den Dataframe `readDf` verwendet. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
+3. Verwenden Sie den folgenden Codeausschnitt, um das Schema der Daten in der Datei „HVAC.csv“ zu extrahieren und das Schema zum Laden der Daten aus der CSV-Datei in den Dataframe `readDf` zu verwenden. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
        val readDf = spark.read.format("csv").schema(userSchema).load("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
@@ -165,6 +165,10 @@ In diesem Abschnitt wird über eine im Cluster verfügbare CSV-Datei eine Tabell
 
     ![Herstellen einer Verbindung mit der SQL-Datenbank über SSMS](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Herstellen einer Verbindung mit der SQL-Datenbank über SSMS")
 
+7. Führen Sie eine Abfrage in SSMS aus, um die Spalten in der Tabelle zu sehen.
+
+        SELECT * from hvactable
+
 ## <a name="stream-data-into-azure-sql-database"></a>Streamen von Daten in Azure SQL-Datenbank
 
 In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie im vorherigen Abschnitt in der Azure SQL-Datenbank erstellt haben.
@@ -184,7 +188,7 @@ In diesem Abschnitt werden Daten in die Tabelle **hvactable** gestreamt, die Sie
 3. Die Daten aus der Datei **HVAC.csv** werden in die Tabelle „hvactable“ gestreamt. Die Datei „HVAC.csv“ ist im Cluster unter */HdiSamples/HdiSamples/SensorSampleData/HVAC/* verfügbar. Mit dem folgenden Codeausschnitt wird zunächst das Schema der zu streamenden Daten abgerufen. Anschließend wird unter Verwendung dieses Schemas ein Streaming-Dataframe erstellt. Fügen Sie den Codeausschnitt in einer Codezelle ein, und drücken Sie **UMSCHALT+EINGABE**, um sie auszuführen.
 
        val userSchema = spark.read.option("header", "true").csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv").schema
-       val readStreamDf = spark.readStream.schema(userSchema1).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
+       val readStreamDf = spark.readStream.schema(userSchema).csv("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/") 
        readStreamDf.printSchema
 
 4. In der Ausgabe wird das Schema von **HVAC.csv** angezeigt. Die Tabelle **hvactable** weist dasselbe Schema auf. In der Ausgabe werden die Spalten in der Tabelle angezeigt.

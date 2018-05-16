@@ -1,13 +1,13 @@
 ---
-title: "Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft Docs"
-description: "Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux."
-keywords: "Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS"
+title: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux | Microsoft Docs
+description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
+keywords: Azure App Service, Web-App, häufig gestellte Fragen, Linux, OSS
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b22d5f3497c388192764aa6b4ee8c95fec568bd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8d25c70a0e5db92bca6f3970049a2e1325fe124b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -29,7 +29,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 ## <a name="built-in-images"></a>Integrierte Images
 
- **Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
+**Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
 
 Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service). Sie finden alle Docker-Container auf [Docker Hub](https://hub.docker.com/u/appsvc/).
 
@@ -46,6 +46,10 @@ Diese Aktion ist mit dem Docker-Neustart identisch.
 **Kann ich über Secure Shell (SSH) eine Verbindung mit dem virtuellen Computer des App-Containers herstellen?**
 
 Ja, Sie können dazu die Website für die Quellcodeverwaltung (Source Control Management, SCM) verwenden.
+
+> [!NOTE] 
+> Sie können auch direkt über SSH, SFTP oder Visual Studio Code (zum Livedebuggen von Node.js-Apps) eine Verbindung vom lokalen Entwicklungscomputer zum App-Container herstellen. Weitere Informationen finden Sie unter [Remotedebuggen und SSH in App Service unter Linux](https://aka.ms/linux-debug).
+>
 
 **Wie kann ich einen Linux-App Service-Plan über ein SDK oder eine Azure Resource Manager-Vorlage erstellen?**
 

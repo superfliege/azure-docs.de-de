@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 17479fce776b0786e2fa32054eec8b0456871aae
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d9378a084d8ff421539a445986a5a18d073f3ce6
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -88,7 +88,7 @@ IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als 
 * Der Batch hat eine bestimmte Größe erreicht.
 * Oder ein bestimmter Zeitraum ist verstrichen.
 
-IoT Hub schreibt keine leeren Blobs, wenn keine Daten zum Schreiben vorhanden sind.
+IoT Hub schreibt in ein leeres Blob, wenn keine Daten zum Schreiben vorhanden sind.
 
 IoT Hub folgt standardmäßig der nachstehenden Dateibenennungskonvention:
 

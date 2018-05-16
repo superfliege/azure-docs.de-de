@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 04/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6adde6a76a7675ef4d8b63757fc9419500872dd9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Containerüberwachungslösung in Log Analytics
 
@@ -34,8 +34,9 @@ Die Lösung zeigt, welche Container, welches Containerimage und wo Container aus
 - Service Fabric
 - Red Hat OpenShift
 
+Wenn Sie die Leistung Ihrer Workloads überwachen möchten, die in in AKS (Azure Container Service) gehosteten Kubernetes-Umgebungen bereitgestellt werden, finden Sie die entsprechenden Informationen unter [Überwachen von Azure Container Service](../monitoring/monitoring-container-health.md).  Die Containerüberwachungslösung umfasst keine Unterstützung zur Überwachung dieser Plattform.  
 
-Das folgende Diagramm zeigt die Beziehungen zwischen verschiedenen Containerhosts und Agents mit OMS.
+In der folgenden Abbildung sind die Beziehungen zwischen verschiedenen Containerhosts und Agents mit Log Analytics dargestellt.
 
 ![Containerdiagramm](./media/log-analytics-containers/containers-diagram.png)
 
@@ -91,7 +92,7 @@ In der folgenden Tabelle werden die Docker-Orchestrierung und die Unterstützung
 ## <a name="installing-and-configuring-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem OMS-Arbeitsbereich die Containerüberwachungslösung hinzu.
+1. Fügen Sie mithilfe des [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) oder des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](log-analytics-add-solutions.md) beschriebenen Prozesses Ihrem Log Analytics-Arbeitsbereich die Containerüberwachungslösung hinzu.
 
 2. Installieren und verwenden Sie Docker mit einem OMS-Agent. Basierend auf Ihrem Betriebssystem und Docker-Orchestrator können Sie die folgenden Methoden verwenden, um den Agent zu konfigurieren.
   - Für eigenständige Hosts:
@@ -116,15 +117,15 @@ Weitere Informationen zum Installieren und Konfigurieren von Docker-Engines auf 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Installieren und Konfigurieren von Linux-Containerhosts
 
-Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zuerst benötigen Sie Ihre ID und den Schlüssel für den OMS-Arbeitsbereich. Diese Daten finden Sie im Azure-Portal. Klicken Sie in Ihrem Arbeitsbereich auf **Schnellstart** > **Computer**, um Ihre **Arbeitsbereichs-ID** und Ihren **Primärschlüssel** anzuzeigen.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
+Verwenden Sie nach dem Installieren von Docker die folgenden Einstellungen für den Containerhost, um den Agent für die Verwendung mit Docker zu konfigurieren. Zunächst benötigen Sie Ihre ID und den Schlüssel für den Log Analytics-Arbeitsbereich. Diese Daten finden Sie im Azure-Portal. Klicken Sie in Ihrem Arbeitsbereich auf **Schnellstart** > **Computer**, um Ihre **Arbeitsbereichs-ID** und Ihren **Primärschlüssel** anzuzeigen.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.
 
 **Für alle Linux-Containerhosts mit Ausnahme von CoreOS:**
 
-- Weitere Informationen und Anleitungen zum Installieren des OMS-Agents für Linux finden Sie unter [Verbinden Ihrer Linux-Computer mit Operations Management Suite (OMS)](log-analytics-agent-linux.md).
+- Weitere Informationen und Anleitungen zum Installieren des OMS-Agents für Linux finden Sie unter [Verbinden Ihrer Linux-Computer mit Log Analytics](log-analytics-concept-hybrid.md).
 
 **Für alle Linux-Containerhosts mit CoreOS:**
 
-Starten Sie den OMS-Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
+Starten Sie den Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
@@ -132,7 +133,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 
 **Für alle Azure Government-Linux-Containerhosts mit CoreOS:**
 
-Starten Sie den OMS-Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
+Starten Sie den Container, den Sie überwachen möchten. Verwenden Sie das folgende Beispiel, und passen Sie es an:
 
 ```
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
@@ -144,7 +145,7 @@ Wenn Sie zuvor den direkt installierten Agent verwendet haben und stattdessen ei
 
 #### <a name="configure-an-oms-agent-for-docker-swarm"></a>Konfigurieren eines OMS-Agent für Docker Swarm
 
-Sie können den OMS-Agent als globalen Dienst in Docker Swarm ausführen. Erstellen Sie mithilfe der folgenden Informationen einen OMS-Agent-Dienst. Sie müssen Ihre OMS-Arbeitsbereichs-ID und den Primärschlüssel einfügen.
+Sie können den OMS-Agent als globalen Dienst in Docker Swarm ausführen. Erstellen Sie mithilfe der folgenden Informationen einen OMS-Agent-Dienst. Sie müssen Ihre Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel angeben.
 
 - Führen Sie auf dem Masterknoten Folgendes aus.
 
@@ -190,8 +191,8 @@ Es gibt drei Möglichkeiten, wie Sie Red Hat OpenShift den OMS-Agent hinzufügen
 
 In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des OMS-Agents als OpenShift-DaemonSet erforderlich sind.  
 
-1. Melden Sie sich am OpenShift-Masterknoten an, und kopieren Sie die YAML-Datei [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) aus GitHub auf Ihren Masterknoten. Nehmen Sie die Änderung mit Ihrer OMS-Arbeitsbereich-ID und dem Primärschlüssel vor.
-2. Führen Sie die folgenden Befehle aus, um ein Projekt für OMS zu erstellen, und legen Sie das Benutzerkonto fest.
+1. Melden Sie sich am OpenShift-Masterknoten an, und kopieren Sie die YAML-Datei [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) aus GitHub auf Ihren Masterknoten. Nehmen Sie die Änderung mit Ihrer Log Analytics-Arbeitsbereich-ID und dem Primärschlüssel vor.
+2. Führen Sie die folgenden Befehle aus, um ein Projekt für Log Analytics zu erstellen, und legen Sie das Benutzerkonto fest.
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -227,10 +228,10 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des OM
     No events.  
     ```
 
-Führen Sie die folgenden Schritte aus, falls Sie Geheimnisse nutzen möchten, um beim Verwenden der YAML-Datei des OMS-Agent-DaemonSet Ihre OMS-Arbeitsbereich-ID und den Primärschlüssel zu schützen:
+Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um beim Verwenden der YAML-Datei des OMS-Agent-DaemonSet Ihre Log Analytics-Arbeitsbereich-ID und den Primärschlüssel zu schützen.
 
-1. Melden Sie sich am OpenShift-Masterknoten an, und kopieren Sie die YAML-Datei [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) und das Skript [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) zum Generieren von Geheimnissen aus GitHub.  Mit diesem Skript wird die YAML-Geheimnisdatei für die OMS-Arbeitsbereich-ID und den Primärschlüssel generiert, um Ihre Geheimnisinformationen zu schützen.  
-2. Führen Sie die folgenden Befehle aus, um ein Projekt für OMS zu erstellen, und legen Sie das Benutzerkonto fest. Sie werden vom Skript zum Generieren von Geheimnissen zum Angeben Ihrer OMS-Arbeitsbereich-ID <WSID> und Ihres Primärschlüssels <KEY> aufgefordert. Wenn der Vorgang abgeschlossen ist, wird die Datei „ocp-secret.yaml“ erstellt.  
+1. Melden Sie sich am OpenShift-Masterknoten an, und kopieren Sie die YAML-Datei [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) und das Skript [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) zum Generieren von Geheimnissen aus GitHub.  Mit diesem Skript wird die YAML-Geheimnisdatei für die Log Analytics-Arbeitsbereichs-ID und den Primärschlüssel generiert, um Ihre Geheimnisinformationen zu schützen.  
+2. Führen Sie die folgenden Befehle aus, um ein Projekt für Log Analytics zu erstellen, und legen Sie das Benutzerkonto fest. Im Skript werden Sie zum Generieren von Geheimnissen zum Angeben Ihrer Log Analytics-Arbeitsbereich-ID <WSID> und Ihres Primärschlüssels <KEY> aufgefordert. Wenn der Vorgang abgeschlossen ist, wird die Datei „ocp-secret.yaml“ erstellt.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -314,7 +315,7 @@ Sie können OMS-Agent-DaemonSets mit oder ohne Geheimnisse erstellen.
     1. Kopieren Sie das Skript und die Vorlagendatei für Geheimnisse, und vergewissern Sie sich, dass sie sich im selben Verzeichnis befinden.
         - Skript zum Generieren von Geheimnissen – „secret-gen.sh“
         - Vorlage für Geheimnisse - „secret-template.yaml“
-    2. Führen Sie das Skript wie im folgenden Beispiel aus. Das Skript fordert Sie zur Eingabe der OMS-Arbeitsbereichs-ID und des Primärschlüssels auf, und nach deren Eingabe erstellt das Skript eine YAML-Geheimnisdatei, die Sie dann ausführen können.   
+    2. Führen Sie das Skript wie im folgenden Beispiel aus. Im Skript werden Sie zur Eingabe der Log Analytics-Arbeitsbereichs-ID und des Primärschlüssels aufgefordert. Nach der Eingabe wird eine YAML-Geheimnisdatei erstellt, die Sie dann ausführen können.   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -561,7 +562,7 @@ Bezeichnungen, die an *PodLabel*-Datentypen angefügt werden, sind Ihre eigenen 
 
 
 ## <a name="monitor-containers"></a>Überwachen von Containern
-Nachdem Sie die Lösung im OMS-Portal aktiviert haben, werden auf der Kachel **Container** zusammenfassende Informationen zu den Containerhosts und den auf den Hosts ausgeführten Containern angezeigt.
+Nachdem Sie die Lösung im Log Analytics-Portal aktiviert haben, werden auf der Kachel **Container** zusammenfassende Informationen zu den Containerhosts und den auf den Hosts ausgeführten Containern angezeigt.
 
 ![Kachel „Container“](./media/log-analytics-containers/containers-title.png)
 

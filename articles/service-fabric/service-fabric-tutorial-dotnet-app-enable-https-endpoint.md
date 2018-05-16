@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7361a71d9e178f47761c42cebe706246eb9d5e64
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API
 Dieses Tutorial ist der dritte Teil einer Reihe.  Hier erfahren Sie, wie Sie HTTPS in einem ASP.NET Core-Dienst unter Service Fabric aktivieren. Am Ende des Tutorials verfügen Sie über eine Abstimmungsanwendung mit einem HTTPS-fähigen ASP.NET Core-Web-Front-End, das am Port 443 lauscht. Wenn Sie die Abstimmungsanwendung nicht manuell im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/).
 
-Im dritten Teil der Reihe lernen Sie Folgendes:
+Im dritten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Definieren eines HTTPS-Endpunkts im Dienst
@@ -274,7 +274,7 @@ Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>Ausführen des Setupskripts als lokaler Administrator
 Standardmäßig wird die ausführbare Setupeinstiegspunkt-Datei des Diensts unter den gleichen Anmeldeinformationen ausgeführt wie Service Fabric (in der Regel das NetworkService-Konto). Für *SetCertAccess.ps1* sind Administratorrechte erforderlich. Im Anwendungsmanifest können Sie die Sicherheitsberechtigungen zur Ausführung des Startskripts unter einem lokalen Administratorkonto ändern.  
 
-Öffnen Sie *Voting/ApplicationPackageRoot/ManifestManifest.xml* im Projektmappen-Explorer. Erstellen Sie zunächst einen Abschnitt vom Typ **Principals**, und fügen Sie einen neuen Benutzer hinzu (beispielsweise „SetupAdminUser“). Fügen Sie das Benutzerkonto „SetupAdminUser“ der Systemgruppe „Administratoren“ hinzu.
+Öffnen Sie *Voting/ApplicationPackageRoot/ApplicationManifest.xml* im Projektmappen-Explorer. Erstellen Sie zunächst einen Abschnitt vom Typ **Principals**, und fügen Sie einen neuen Benutzer hinzu (beispielsweise „SetupAdminUser“). Fügen Sie das Benutzerkonto „SetupAdminUser“ der Systemgruppe „Administratoren“ hinzu.
 Konfigurieren Sie als Nächstes im Abschnitt **ServiceManifestImport** von „VotingWebPkg“ eine Richtlinie vom Typ **RunAsPolicy**, um den Prinzipal „SetupAdminUser“ auf den Setupeinstiegspunkt anzuwenden. Diese Richtlinie teilt Service Fabric mit, dass die Datei „Setup.bat“ als „SetupAdminUser“ (mit Administratorrechten) ausgeführt wird. 
 
 ```xml

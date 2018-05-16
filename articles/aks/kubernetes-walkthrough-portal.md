@@ -3,19 +3,19 @@ title: Schnellstart – Schnellstart für Azure Kubernetes-Cluster im Portal
 description: Hier lernen Sie schnell, wie Sie einen Kubernetes-Cluster für Linux-Container in AKS mit dem Azure-Portal erstellen.
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/24/2018
+ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5bb758637d7b23f206f78d1604f985c2985d4410
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Container Service-Clusters (AKS)
+# <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
 In dieser Schnellstartanleitung stellen Sie einen AKS-Cluster mit dem Azure-Portal bereit. Anschließend wird im Cluster eine Anwendung mit mehreren Containern ausgeführt, die ein Web-Front-End und eine Redis-Instanz umfasst. Nach Abschluss des Vorgangs kann auf die Anwendung über das Internet zugegriffen werden.
 
@@ -27,53 +27,43 @@ Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kuberne
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
-## <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Vor dem Erstellen des AKS-Clusters im Azure-Portal müssen Sie einen Dienstprinzipal erstellen. In Azure wird dieser Dienstprinzipal verwendet, um die Infrastruktur zu verwalten, die dem AKS-Cluster zugeordnet ist.
-
-Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
-
-Geben Sie einen beliebigen Namen für die Anwendung ein. Wählen Sie **Web-App/API** als Anwendungstyp aus. Geben Sie einen Wert für **Anmelde-URL** ein. Dies kann ein beliebiger Wert in einem gültigen URL-Format sein, aber es muss sich nicht um einen echten Endpunkt handeln.
-
-Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
-
-![Erstellen des ersten Dienstprinzipals](media/container-service-walkthrough-portal/create-sp-one.png)
-
-Wählen Sie die neu erstellte Anwendungsregistrierung aus, und notieren Sie sich die Anwendungs-ID. Sie benötigen diesen Wert beim Erstellen des AKS-Clusters.
-
-![Erstellen des zweiten Dienstprinzipals](media/container-service-walkthrough-portal/create-sp-two.png)
-
-Als Nächstes müssen Sie ein Kennwort für den Dienstprinzipal erstellen. Wählen Sie **Alle Einstellungen** > **Schlüssel**, und geben Sie einen beliebigen Wert für die Schlüsselbeschreibung ein. Wählen Sie eine Dauer als Gültigkeitszeitraum für den Dienstprinzipal aus.
-
-Klicken Sie auf **Speichern**, und notieren Sie sich den Kennwortwert. Sie benötigen dieses Kennwort beim Erstellen eines AKS-Clusters.
-
-![Erstellen des dritten Dienstprinzipals](media/container-service-walkthrough-portal/create-sp-three.png)
 
 ## <a name="create-aks-cluster"></a>Erstellen eines ACS-Clusters
 
-Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Service - AKS (preview)** (Azure Container Service – AKS (Vorschauversion)).
+Wählen Sie **Ressource erstellen**, suchen Sie nach **Kubernetes**, und klicken Sie dann auf **Azure Kubernetes Service (Vorschauversion)** > **Erstellen**.
 
-Geben Sie einen Clusternamen, ein DNS-Präfix, einen Ressourcengruppennamen, einen Standort und eine Kubernetes-Version für den Cluster an. Notieren Sie sich den Clusternamen und den Ressourcengruppennamen, da Sie diese beim Herstellen der Verbindung mit dem Cluster benötigen.
+Führen Sie unter jeder Überschrift des Formulars zur Erstellung des AKS-Clusters die folgenden Schritte aus.
 
-Wählen Sie **OK**, wenn Sie fertig sind.
+- **PROJEKTDETAILS**: Wählen Sie ein Azure-Abonnement und eine neue oder vorhandene Azure-Ressourcengruppe aus.
+- **CLUSTERDETAILS**: Geben Sie Namen, Region, Version und DNS-Namenspräfix für den AKS-Cluster ein.
+- **AUTHENTIFIZIERUNG**: Erstellen Sie einen neuen Dienstprinzipal oder einen vorhandenen. Bei der Verwendung eines vorhandenen Dienstprinzipalnamens müssen Sie die SPN-Client-ID und das Geheimnis angeben.
+- **SKALIERUNG**: Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde. Wählen Sie außerdem die Anzahl der Knoten für die Bereitstellung im Cluster aus. Die Knotenanzahl **kann** nach der Clusterbereitstellung angepasst werden.
 
-![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/create-aks-portal-one.png)
+Wählen Sie danach **Weiter: Netzwerk** aus.
 
-Geben Sie im Konfigurationsformular Folgendes ein:
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-1.png)
 
-- Benutzername: Dies ist der Name für die Administratorkonten auf den Clusterknoten.
-- Öffentlicher SSH-Schlüssel: Wird dem Schlüssel zugeordnet, der zum Zugreifen auf die Clusterknoten verwendet wird.
-- Client-ID des Dienstprinzipals: Die Anwendungs-ID des Dienstprinzipals, die Sie weiter oben in diesem Dokument erstellt haben.
-- Geheimer Clientschlüssel des Dienstprinzipals: Das Kennwort des Dienstprinzipals, das Sie weiter oben in diesem Dokument erstellt haben.
-- Anzahl von Knoten: Gibt an, wie viele AKS-Knoten erstellt werden sollen.
-- VM-Größe des Knotens: Gibt die VM-Größe für die AKS-Knoten an.
-- Betriebssystem-Datenträgergröße: Gibt die Größe für die AKS-Knoten des Betriebssystem-Datenträgers an.
+Konfigurieren Sie die folgenden Netzwerkoptionen:
 
-Wählen Sie **OK**, wenn Sie fertig sind, und dann erneut **OK**, nachdem die Validierung abgeschlossen ist.
+- **HTTP-Anwendungsrouting**: Konfiguriert einen integrierten Eingangscontroller mit automatischer Erstellung öffentlicher DNS-Namen. Weitere Informationen zum HTTP-Routing finden Sie unter [HTTP-Routing und DNS bei AKS][http-routing].
+- **Netzwerkkonfiguration**: Wählen Sie die grundlegende Netzwerkkonfiguration mit dem [kubenet][kubenet]-Kubernetes-Plug-in oder die erweiterte Netzwerkkonfiguration mit [Azure CNI][azure-cni]. Weitere Informationen zu Netzwerkoptionen finden Sie unter [Netzwerkkonfiguration in Azure Kubernetes Service (AKS)][aks-network].
 
-![Erstellen des zweiten AKS-Clusters](media/container-service-walkthrough-portal/create-aks-portal-two.png)
+Wählen Sie danach **Weiter: Überwachung** aus.
 
-Nach einer kurzen Wartezeit ist die Bereitstellung des AKS-Clusters abgeschlossen, und er kann verwendet werden.
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-2.png)
+
+Bei der Bereitstellung eines AKS-Clusters können Einblicke in Azure-Container konfiguriert werden, um die Integrität des AKS-Cluster und im Cluster ausgeführte Pods zu überwachen. Weitere Informationen zur Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
+
+Wählen Sie zum Aktivieren der Containerüberwachung **Ja** und dann einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen.
+
+Wählen Sie **Überprüfen + erstellen** und danach **Erstellen**.
+
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-3.png)
+
+Nach einer kurzen Wartezeit ist die Bereitstellung des AKS-Clusters abgeschlossen, und er kann verwendet werden. Navigieren Sie zur AKS-Clusterressourcengruppe, und wählen Sie die AKS-Ressource aus. Daraufhin sollte das AKS-Clusterdashboard angezeigt werden.
+
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-5.png)
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 
@@ -82,11 +72,6 @@ Verwenden Sie zum Verwalten eines Kubernetes-Clusters den Kubernetes-Befehlszeil
 Öffnen Sie die Cloud Shell mit der Schaltfläche oben rechts im Azure-Portal.
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
-
-Angeben des Abonnements (sofern noch nicht geschehen)
-```azurecli-interactive
-az account set -s SUBSCRIPTION_NAME
-```
 
 Verwenden Sie den Befehl [az aks get-credentials][az-aks-get-credentials], um kubectl für das Herstellen der Verbindung mit Ihrem Kubernetes-Cluster zu konfigurieren.
 
@@ -106,14 +91,14 @@ Ausgabe:
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION
-aks-agentpool-14693408-0   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-1   Ready     agent     6m        v1.8.1
-aks-agentpool-14693408-2   Ready     agent     7m        v1.8.1
+aks-agentpool-11482510-0   Ready     agent     9m        v1.9.6
+aks-agentpool-11482510-1   Ready     agent     8m        v1.9.6
+aks-agentpool-11482510-2   Ready     agent     9m        v1.9.6
 ```
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) – also beispielsweise, welche Containerimages ausgeführt werden sollen. In diesem Beispiel verwenden Sie ein Manifest, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden.
+Kubernetes-Manifestdateien definieren einen gewünschten Zustand für einen Cluster (Desired State) – also beispielsweise, welche Containerimages ausgeführt werden sollen. In diesem Beispiel wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Zu diesen Objekten gehören zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eines für das Azure Vote-Front-End und eines für eine Redis-Instanz. Darüber hinaus werden zwei [Kubernetes-Dienste][kubernetes-service] erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst für den Zugriff auf die Azure Vote-Anwendung über das Internet.
 
 Erstellen Sie eine Datei mit dem Namen `azure-vote.yaml`, und fügen Sie den folgenden YAML-Code ein: Erstellen Sie die Datei bei Verwendung von Azure Cloud Shell mit vi oder Nano wie auf einem virtuellen oder physischen System.
 
@@ -195,7 +180,7 @@ service "azure-vote-front" created
 
 ## <a name="test-the-application"></a>Testen der Anwendung
 
-Im Zuge der Anwendungsausführung wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der das Anwendungs-Front-End über das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern.
+Im Zuge der Anwendungsausführung wird ein [Kubernetes-Dienst][kubernetes-service] erstellt, der die Anwendung über das Internet verfügbar macht. Dieser Vorgang kann einige Minuten dauern.
 
 Verwenden Sie zum Überwachen des Fortschritts den Befehl [kubectl get service][kubectl-get] mit dem Argument `--watch`.
 
@@ -220,12 +205,24 @@ Navigieren Sie nun zu der externen IP-Adresse, um die Azure Vote-App anzuzeigen.
 
 ![Abbildung der Navigation zu Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
+## <a name="monitor-health-and-logs"></a>Überwachung von Integrität und Protokollen
+
+Wenn die Überwachung von Containerinformationen aktiviert wurde, werden Integritätsmetriken für den AKS-Cluster sowie die im Cluster ausgeführten Pods auf dem AKS-Clusterdashboard angezeigt. Weitere Informationen zur Überwachung der Integrität von Containern finden Sie unter [Überwachen der Integrität von Azure Kubernetes Service][aks-monitor].
+
+Um den aktuellen Status, Betriebszeit und Ressourcenauslastung für die Azure Vote-Pods anzuzeigen, navigieren Sie zurück zur AKS-Ressource. Wählen Sie dann **Containerintegrität überwachen**, den Namespace **default** und schließlich **Container** aus. Es dauert möglicherweise einige Minuten, bis diese Daten im Azure-Portal aufgefüllt werden.
+
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-6.png)
+
+Klicken Sie zum Anzeigen der Protokolle für den `azure-vote-front`-Pod auf den Link **Protokolle anzeigen**. Diese Protokolle enthalten die Datenströme „stdout“ und „stderr“ aus dem Container.
+
+![Erstellen des ersten AKS-Clusters](media/container-service-walkthrough-portal/aks-portal-7.png)
+
 ## <a name="delete-cluster"></a>Löschen von Clustern
 
-Wenn der Cluster nicht mehr benötigt wird, löschen Sie die Clusterressourcengruppe. Bei diesem Vorgang werden alle zugeordneten Ressourcen gelöscht. Dies kann im Azure-Portal durchgeführt werden, indem Sie die Ressourcengruppe auswählen und auf die Schaltfläche „Löschen“ klicken. Alternativ dazu kann der Befehl [az group delete][az-group-delete] in Cloud Shell genutzt werden.
+Wenn der Cluster nicht mehr benötigt wird, löschen Sie die Clusterressource. Bei diesem Vorgang werden alle zugeordneten Ressourcen gelöscht. Dieser Vorgang kann im Azure-Portal durchgeführt werden, indem Sie auf dem AKS-Clusterdashboard auf die Schaltfläche „Löschen“ klicken. Alternativ dazu kann der Befehl [az aks delete][az-aks-delete] in Cloud Shell genutzt werden.
 
 ```azurecli-interactive
-az group delete --name myAKSCluster --no-wait
+az aks delete --resource-group myAKSCluster --name myAKSCluster --no-wait
 ```
 
 ## <a name="get-the-code"></a>Abrufen des Codes
@@ -245,15 +242,19 @@ Weitere Informationen zu Azure Container Service sowie ein vollständiges Beispi
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
+[azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 [kubernetes-documentation]: https://kubernetes.io/docs/home/
 [kubernetes-service]: https://kubernetes.io/docs/concepts/services-networking/service/
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
-[az-group-delete]: /cli/azure/group#delete
+[az-aks-delete]: /cli/azure/aks#az-aks-delete
+[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-
-
+[http-routing]: ./http-application-routing.md

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d42069e8ed72a834973b56df55488955d62e71f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -57,7 +57,7 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 | Header | BESCHREIBUNG |
 |:--- |:--- |
 | Autorisierung |Die Signatur der Autorisierung. Weiter unten in diesem Artikel erhalten Sie Informationen zum Erstellen eines HMAC-SHA256-Headers. |
-| Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Zurzeit unterstützt der Protokolltyp nur Buchstaben. Ziffern oder Sonderzeichen werden nicht unterstützt. |
+| Log-Type |Geben Sie den Datensatztyp der übermittelten Daten an. Zurzeit unterstützt der Protokolltyp nur Buchstaben. Ziffern oder Sonderzeichen werden nicht unterstützt. Die maximale Größe für diesen Parameter ist auf 100 Zeichen beschränkt. |
 | x-ms-date |Das Datum, zu dem die Anforderung verarbeitet wurde, im RFC 1123-Format |
 | time-generated-field |Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird dessen Inhalt für **TimeGenerated** verwendet. Wenn dieses Feld nicht angegeben wurde, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
 

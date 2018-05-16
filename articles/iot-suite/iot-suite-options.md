@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure IoT-Optionen | Microsoft-Dokumentation
-description: "Wählen Sie, wie Ihre IoT-Lösung implementiert werden soll: per Azure IoT Suite, Microsoft IoT Central oder Azure IoT Hub."
-services: 
+description: 'Wählen Sie, wie Ihre IoT-Lösung implementiert werden soll: per Azure IoT Solution Accelerators, Microsoft IoT Central oder Azure IoT Hub.'
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a979bde37d247da5c630547924cadbd79c4a6a4
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: ddda6bc265cbbaa61025891cf9bc7c28c998160c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="compare-azure-iot-options"></a>Vergleich von Azure IoT-Optionen
 
@@ -27,30 +27,30 @@ Im Artikel [Azure und das Internet der Dinge](iot-suite-what-is-azure-iot.md) wi
 
 Zum Implementieren dieser Architektur stellt Azure IoT mehrere Optionen bereit, die jeweils für verschiedene Gruppen von Kundenanforderungen geeignet sind:
 
-* [Azure IoT Suite](index.md) ist eine für Unternehmen konzipierte Sammlung mit [vorkonfigurierten Lösungen](iot-suite-what-are-preconfigured-solutions.md) auf Basis von Azure-PaaS (Platform-as-a-Service), mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
+* [Azure IoT Solution Accelerators](index.md) sind eine für Unternehmen konzipierte Sammlung mit [Solution Accelerators](iot-suite-what-are-solution-accelerators.md) auf Basis von Azure-PaaS (Platform-as-a-Service), mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
 
 * [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) ist eine SaaS-Lösung (Software-as-a-Service) mit einem modellbasierten Ansatz, der die Entwicklung von IoT-Lösungen für Unternehmen ermöglicht, ohne dass Sie dazu mit der Entwicklung von Cloudlösungen vertraut sein müssen.
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Azure IoT Hub ist die Azure PaaS-Kernanwendung, die sowohl von Microsoft IoT Central als auch von Azure IoT Suite genutzt wird. IoT Hub ermöglicht die zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einer Cloudlösung. Mit IoT Hub können Sie beispielsweise folgende Anforderungen der IoT-Implementierung erfüllen:
+Azure IoT Hub ist die Azure-PaaS-Kernanwendung, die sowohl von Microsoft IoT Central als auch von Azure IoT Solution Accelerators genutzt wird. IoT Hub ermöglicht die zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einer Cloudlösung. Mit IoT Hub können Sie beispielsweise folgende Anforderungen der IoT-Implementierung erfüllen:
 
 * Gerätekonnektivität und -verwaltung mit hohem Volumen
 * Telemetriedatenerfassung mit hohem Volumen
 * Steuerung von Geräten mit Befehlen
 * Durchsetzung der Gerätesicherheit
 
-## <a name="compare-azure-iot-suite-and-microsoft-iot-central"></a>Vergleich von Azure IoT Suite und Microsoft IoT Central
+## <a name="compare-azure-iot-solution-accelerators-and-microsoft-iot-central"></a>Vergleich von Azure IoT Solution Accelerators und Microsoft IoT Central
 
-Die Auswahl Ihres Azure IoT-Produkts ist ein wichtiger Teil der Planung Ihrer IoT-Lösung. IoT Hub ist ein individueller Azure-Dienst, von dem nicht selbst eine End-to-End-IoT-Lösung bereitgestellt wird. IoT Hub kann als Ausgangspunkt für jede IoT-Lösung verwendet werden, und Sie müssen nicht Azure IoT Suite oder Microsoft IoT Central verwenden, um IoT Hub zu nutzen. Sowohl für Azure IoT Suite als auch für Microsoft IoT Central wird IoT Hub zusammen mit anderen Azure-Diensten eingesetzt. In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen Azure IoT Suite und Microsoft IoT Central zusammengefasst, damit Sie die richtige Auswahl für Ihre Anforderungen treffen können:
+Die Auswahl Ihres Azure IoT-Produkts ist ein wichtiger Teil der Planung Ihrer IoT-Lösung. IoT Hub ist ein individueller Azure-Dienst, von dem nicht selbst eine End-to-End-IoT-Lösung bereitgestellt wird. IoT Hub kann als Ausgangspunkt für jede IoT-Lösung verwendet werden, und Sie müssen nicht Azure IoT Solution Accelerators oder Microsoft IoT Central verwenden, um IoT Hub zu nutzen. Sowohl für Azure IoT Solution Accelerators als auch für Microsoft IoT Central wird IoT Hub zusammen mit anderen Azure-Diensten eingesetzt. In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen Azure IoT Solution Accelerators und Microsoft IoT Central zusammengefasst, damit Sie die richtige Auswahl für Ihre Anforderungen treffen können:
 
-|                        | Azure IoT Suite | Microsoft IoT Central |
+|                        | Azure IoT Solution Accelerators | Microsoft IoT Central |
 | ---------------------- | --------- | ----------- |
 | Primäre Nutzung | Beschleunigen der Entwicklung einer benutzerdefinierten IoT-Lösung, für die eine maximale Flexibilität erforderlich ist. | Verkürzen des Zeitraums bis zur Markteinführung für einfach aufgebaute IoT-Lösungen, für die keine eingehende Dienstanpassung erforderlich ist. |
 | Zugriff auf zugrunde liegende PaaS-Dienste          | Sie haben Zugriff auf die zugrunde liegenden Azure-Dienste, um diese zu verwalten oder je nach Bedarf zu ersetzen. | SaaS: Vollständig verwaltete Lösung, und die zugrunde liegenden Dienste werden nicht verfügbar gemacht. |
 | Flexibilität            | Hoch. Der Code für die Microservices ist Open Source-Code, den Sie auf beliebige Weise ändern können. Außerdem können Sie die Bereitstellungsinfrastruktur anpassen.| Mittel. Sie können die integrierte browserbasierte Benutzeroberfläche verwenden, um das Lösungsmodell und die Aspekte der Benutzeroberfläche anzupassen. Die Infrastruktur kann nicht angepasst werden, da die unterschiedlichen Komponenten nicht verfügbar gemacht werden.|
 | Kenntnisstand                 | Mittelhoch. Sie benötigen Java- oder .NET-Kenntnisse, um das Lösungs-Back-End anzupassen. Sie benötigen JavaScript-Kenntnisse, um die Visualisierung anzupassen. | Niedrig. Sie benötigen Modellierungskenntnisse, um die Lösung anzupassen. Es sind keine Codierungskenntnisse erforderlich. |
-| Einstieg | Vorkonfigurierte Lösungen ermöglichen die Implementierung von häufigen IoT-Szenarien. Die Bereitstellung dauert nur wenige Minuten. | Mit Anwendungsvorlagen und Gerätevorlagen werden vorgefertigte Modelle bereitgestellt. Die Bereitstellung dauert nur wenige Minuten. |
+| Einstieg | Solution Accelerators ermöglichen die Implementierung von häufigen IoT-Szenarien. Die Bereitstellung dauert nur wenige Minuten. | Mit Anwendungsvorlagen und Gerätevorlagen werden vorgefertigte Modelle bereitgestellt. Die Bereitstellung dauert nur wenige Minuten. |
 | Preise                | Sie können die Dienste optimieren, um die Kosten zu kontrollieren. | Einfache vorhersagbare Preisstruktur. |
 
 Die Entscheidung, welches Produkt zum Erstellen Ihrer IoT-Lösung gewählt werden sollte, richtet sich letztendlich nach den folgenden Faktoren:
@@ -63,6 +63,6 @@ Die Entscheidung, welches Produkt zum Erstellen Ihrer IoT-Lösung gewählt werde
 
 Je nach gewähltem Produkt und Ansatz sind die folgenden nächsten Schritte zu empfehlen:
 
-* **Azure IoT Suite**: [Was sind vorkonfigurierte Azure IoT-Lösungen?](iot-suite-what-are-preconfigured-solutions.md)
+* **Azure IoT Solution Accelerators**: [Was sind Azure IoT Solution Accelerators?](iot-suite-what-are-solution-accelerators.md)
 * **Microsoft IoT Central**: [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions)
 * **IoT Hub**: [Übersicht über den Azure IoT Hub-Dienst](../iot-hub/iot-hub-what-is-iot-hub.md)

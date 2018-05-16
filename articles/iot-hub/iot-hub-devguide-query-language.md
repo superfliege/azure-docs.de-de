@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zur Azure IoT Hub-Abfragesprache | Microsoft Docs
-description: Entwicklerhandbuch – Beschreibung der SQL-ähnlichen IoT Hub-Abfragesprache, die zum Abrufen von Informationen zu Gerätezwillingen und Aufträgen vom IoT Hub verwendet wird.
+description: 'Entwicklerhandbuch: Beschreibung der SQL-ähnlichen IoT Hub-Abfragesprache, die zum Abrufen von Informationen zu Geräte-/Modulzwillingen und Aufträgen von IoT Hub verwendet wird.'
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 27ddc41c463c00a061a396098f0ccfaa6cec80a1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
 ---
-# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
 IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Informationen zu [Gerätezwillingen][lnk-twins], [Aufträgen][lnk-jobs] und [Nachrichtenrouting][lnk-devguide-messaging-routes]. Dieser Artikel enthält Folgendes:
 
@@ -29,9 +29,9 @@ IoT Hub bietet eine leistungsstarke, SQL-ähnliche Sprache zum Abrufen von Infor
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-twin-queries"></a>Gerätezwillingabfragen
-[Gerätezwillinge][lnk-twins] können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Gerätezwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Gerätezwilling enthält.
-Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf:
+## <a name="device-and-module-twin-queries"></a>Abfragen von Geräte- und Modulzwillingen
+[Gerätezwillinge][lnk-twins] und Modulzwillinge können beliebige JSON-Objekte als Tags und Eigenschaften enthalten. In IoT Hub können Sie Geräte- und Modulzwillinge als einzelnes JSON-Dokument abfragen, das alle Informationen zum Zwilling enthält.
+Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf (Modulzwillinge sehen ähnlich aus, enthalten aber zusätzlich eine Modul-ID):
 
 ```json
 {
@@ -82,6 +82,8 @@ Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf:
     }
 }
 ```
+
+### <a name="device-twin-queries"></a>Gerätezwillingabfragen
 
 IoT Hub macht die Gerätezwillinge als eine Dokumentensammlung namens **Geräte** verfügbar.
 Die folgende Abfrage ruft also die gesamte Gruppe von Gerätezwillingen ab:
@@ -158,6 +160,26 @@ Mithilfe von Projektionsabfragen können Entwickler nur die interessierenden Eig
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
+```
+
+### <a name="module-twin-queries"></a>Modulzwillingsabfragen
+
+Das Abfragen von Modulzwillingen ähnelt dem Abfragen von Gerätezwillingen. Allerdings wird dabei eine andere Sammlung/ein anderer Namespace verwendet. Anstelle von „from devices“ können Sie folgende Abfrage verwenden:
+
+```sql
+SELECT * FROM devices.modules
+```
+
+Eine Verknüpfung zwischen den Sammlungen „devices“ und „devices.modules“ ist nicht zulässig. Wenn Sie Modulzwillinge geräteübergreifend abfragen möchten, müssen dazu Tags verwendet werden. Die folgende Abfrage gibt alle Modulzwillinge auf allen Geräten mit dem Status „scanning“ zurück:
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning'
+```
+
+Die folgende Abfrage gilt alle Modulzwillinge mit dem Status „scanning“ nur für die angegebene Teilmenge der Geräte zurück:
+
+```sql
+Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C#-Beispiel
@@ -537,7 +559,7 @@ Die folgenden Operatoren werden unterstützt:
 | Logisch |AND, OR, NOT |
 | Vergleich |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Funktionen
+### <a name="functions"></a>Functions
 Bei Abfragen von Zwillingen und Aufträgen wird nur folgende Funktion unterstützt:
 
 | Funktion | BESCHREIBUNG |

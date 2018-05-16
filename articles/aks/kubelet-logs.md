@@ -1,6 +1,6 @@
 ---
-title: Abrufen von Kubelet-Protokollen aus Azure Container Service (AKS)
-description: Abrufen von Kubelet-Protokollen aus Azure Container Service-Clusterknoten (AKS)
+title: Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service (AKS)
+description: Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 56e20a9f9d17eac01e6f85007db41dcc417f83e4
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0467be7e91fdbf4685fc41a375ea86a503e26009
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-kubelet-logs-from-azure-container-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Container Service-Clusterknoten (AKS)
+# <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 
-Es kann vorkommen, dass Sie Kubelet-Protokolle aus einem Azure Container Service-Knoten (AKS) zur Problembehandlung abrufen müssen. Dieses Dokument zeigt eine Möglichkeit auf, diese Protokolle abzurufen.
+Es kann vorkommen, dass Sie Kubelet-Protokolle aus einem Azure Kubernetes Service-Knoten (AKS) zur Problembehandlung abrufen müssen. Dieses Dokument zeigt eine Möglichkeit auf, diese Protokolle abzurufen.
 
 ## <a name="create-an-ssh-connection"></a>Erstellen einer SSH-Verbindung
 
-Erstellen Sie zunächst eine SSH-Verbindung mit dem Knoten, aus dem Sie Kubelet-Protokolle abrufen müssen. Einzelheiten zu diesem Vorgang finden Sie im Dokument [Zugreifen per SSH auf Azure Container Service-Clusterknoten (AKS-Clusterknoten)][aks-ssh].
+Erstellen Sie zunächst eine SSH-Verbindung mit dem Knoten, aus dem Sie Kubelet-Protokolle abrufen müssen. Einzelheiten zu diesem Vorgang finden Sie im Dokument [Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS-Clusterknoten)][aks-ssh].
 
 ## <a name="get-kubelet-logs"></a>Abrufen von Kubelet-Protokollen
 

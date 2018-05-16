@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: d6bc7824687f5418f1270e22b216f8637578aa6d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -136,7 +136,8 @@ Durch die Abfragedauer- und Abfragewartevorgänge-Perspektive können Sie die Le
 
 ### <a name="analyze-data-and-create-alerts"></a>Analysieren von Daten und Erstellen von Warnungen
 
-Sie können problemlos Warnungen mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier sind einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie für Warnungen verwenden können:
+Sie können problemlos [Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) mit den Daten erstellen, die aus Azure SQL-Datenbank-Ressourcen stammen. Hier einige nützliche Abfragen für die [Protokollsuche](log-analytics-log-searches.md), die Sie mit einer Protokollwarnung verwenden können:
+
 
 
 *Hohe DTU in Azure SQL-Datenbank*
@@ -157,18 +158,7 @@ AzureMetrics
 | render timechart
 ```
 
-Sie können diese warnungsbasierten Abfragen verwenden, um bei bestimmten Schwellenwerten für Azure SQL-Datenbanken und Pools für elastische Datenbanken eine Warnung auszugeben. So konfigurieren Sie eine Warnung für Ihren Log Analytics-Arbeitsbereich:
 
-#### <a name="to-configure-an-alert-for-your-workspace"></a>Konfigurieren einer Warnung für Ihren Arbeitsbereich
-
-1. Wechseln Sie zum [OMS-Portal](http://mms.microsoft.com/), und melden Sie sich an.
-2. Öffnen Sie den Arbeitsbereich, den Sie für die Lösung konfiguriert haben.
-3. Klicken Sie auf der Seite „Übersicht“ auf die Kachel **Azure SQL Analytics (Vorschau)**.
-4. Führen Sie eine der Beispielabfragen aus.
-5. Klicken Sie in der Protokollsuche auf **Warnung**.  
-![Erstellen einer Warnung in der Suche](./media/log-analytics-azure-sql/create-alert01.png)
-6. Konfigurieren Sie auf der Seite **Warnungsregel hinzufügen** die entsprechenden Eigenschaften und die spezifischen Schwellenwerte nach Bedarf, und klicken Sie dann auf **Speichern**. 
-![Warnungsregel hinzufügen](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

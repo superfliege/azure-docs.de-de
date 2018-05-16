@@ -1,3 +1,19 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 7d7cd8a197a89781a75f47bb4b4e2ec8fe7c3cb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
 # <a name="secure-your-iot-deployment"></a>Schützen Ihrer IoT-Bereitstellung
 
 Dieser Artikel bietet weitere Details zum Schützen Ihrer auf Azure IoT basierenden IoT-Infrastruktur (Internet of Things, Internet der Dinge). Geboten werden Links zu Details auf Implementierungsebene für die Konfiguration und Bereitstellung der einzelnen Komponenten. Darüber hinaus finden Sie Vergleiche, um aus verschiedenen konkurrierenden Methoden die gewünschte zu wählen.
@@ -12,7 +28,7 @@ Der Schutz der Azure IoT-Bereitstellung kann in die folgenden drei Bereiche unte
 
 ## <a name="secure-device-provisioning-and-authentication"></a>Sichere Gerätebereitstellung und -authentifizierung
 
-Die Azure IoT Suite schützt IoT-Geräte mithilfe der beiden folgenden Methoden:
+Die IoT Solution Accelerators schützen IoT-Geräte mithilfe der beiden folgenden Methoden:
 
 * Durch Bereitstellen eines eindeutigen Identitätsschlüssels (Sicherheitstokens) für jedes Gerät, der vom Gerät für die Kommunikation mit dem IoT Hub verwendet werden kann.
 * Durch Verwenden eines [X.509-Zertifikats][lnk-x509] und privaten Schlüssels auf dem Gerät als Mittel zur Authentifizierung des Geräts bei IoT Hub. Diese Authentifizierungsmethode stellt sicher, dass der private Schlüssel auf dem Gerät außerhalb des Geräts stets unbekannt ist, was für mehr Sicherheit sorgt.
@@ -71,7 +87,7 @@ Es gibt zwei Methoden zum Abrufen von **DeviceConnect** -Berechtigungen mit IoT 
 
 Azure IoT Hub und andere Dienste, die möglicherweise Teil der Lösung sind, erlauben die Verwaltung von Benutzern mithilfe von Azure Active Directory.
 
-Von Azure IoT Hub erfasste Daten können von einer Vielzahl von Diensten wie Azure Stream Analytics und Azure-Blobspeicher genutzt werden. Diese Dienste ermöglichen einen Verwaltungszugriff. Hier finden Sie weitere Informationen zu diesen Diensten und verfügbaren Optionen:
+Von Azure IoT Hub erfasste Daten können von einer Vielzahl von Diensten wie Azure Stream Analytics und Azure Blob Storage genutzt werden. Diese Dienste ermöglichen einen Verwaltungszugriff. Hier finden Sie weitere Informationen zu diesen Diensten und verfügbaren Optionen:
 
 * [Azure Cosmos DB][lnk-cosmosdb]: Ein skalierbarer, vollständig indizierter Datenbankdienst für semistrukturierte Daten, mit dem die Metadaten für die bereitgestellten Geräte verwaltet werden, z.B. Attribute, Konfiguration und Sicherheitseigenschaften. Azure Cosmos DB bietet eine Verarbeitung mit hoher Leistung und hohem Durchsatz, eine schemaagnostische Indizierung von Daten und eine umfassende SQL-Abfrageschnittstelle.
 * [Azure Stream Analytics][lnk-asa]: Datenstromverarbeitung in Echtzeit in der Cloud, mit der eine schnelle Entwicklung und Bereitstellung einer kostengünstigen Analyselösung ermöglicht wird, mit der Sie in Echtzeit basierend auf Geräte-, Sensor-, Infrastruktur- und Anwendungsdaten wichtige Einblicke erhalten. Die Daten aus diesem vollständig verwalteten Dienst können auf beliebige Volumina skaliert werden, während trotzdem ein hoher Durchsatz, eine geringe Latenz und Resilienz erzielt werden.
@@ -89,7 +105,7 @@ Dieser Artikel bietet eine Übersicht über die Details auf Implementierungseben
 [lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
-[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
+[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-and-module-authentication
 [lnk-x509]: http://www.itu.int/rec/T-REC-X.509-201210-I/en
 [lnk-use-x509]: ../articles/iot-hub/iot-hub-devguide-security.md
 [lnk-tls12]: https://tools.ietf.org/html/rfc5246

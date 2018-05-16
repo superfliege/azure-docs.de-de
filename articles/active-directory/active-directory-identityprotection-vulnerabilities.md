@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 90fb659abfcff09eb715fcc29bbfb7e4facd3a6b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
@@ -47,7 +47,7 @@ In modernen Unternehmen sind den IT-Abteilungen häufig nicht alle Cloudanwendun
 
 Es wird empfohlen, dass Sie in Ihrer Organisation die Cloud-App-Ermittlung einsetzen, um nicht verwaltete Cloudanwendungen zu ermitteln und diese Anwendungen mit Azure Active Directory zu verwalten.
 
-Ausführliche Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md).
+Ausführliche Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Sicherheitswarnungen von Privileged Identity Management
 Dieses Sicherheitsrisiko hilft Ihnen beim Ermitteln und Bereinigen von Warnungen zu privilegierten Identitäten in Ihrer Organisation.  

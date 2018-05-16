@@ -3,26 +3,20 @@ title: Georeplikation einer Azure-Containerregistrierung
 description: Erste Schritte beim Erstellen und Verwalten von Azure-Containerregistrierungen mit Georeplikation.
 services: container-registry
 author: stevelas
-manager: timlt
+manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview-article
-ms.date: 10/24/2017
+ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
-Unternehmen, die eine lokale Umgebung oder ein Hotbackup wünschen, entscheiden sich für die Ausführung von Diensten in mehreren Azure-Regionen. Als bewährte Methode ermöglicht die Platzierung einer Containerregistrierung in jeder Region, in der Images ausgeführt werden, netzwerknahe Vorgänge, die schnelle und zuverlässige Übertragungen auf Image-Ebene gestatten.
-
-Die Georeplikation ermöglicht einer Azure-Containerregistrierung, als zentrale Registrierung zu fungieren, die mehreren Regionen regionale Multimasterregistrierungen zur Verfügung stellt.
-
-> [!IMPORTANT]
-> Die Georeplikationsfunktion von Azure Container Registry befindet sich derzeit in der **Vorschauphase**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
->
+Unternehmen, die eine lokale Umgebung oder ein Hotbackup wünschen, entscheiden sich für die Ausführung von Diensten in mehreren Azure-Regionen. Als bewährte Methode ermöglicht die Platzierung einer Containerregistrierung in jeder Region, in der Images ausgeführt werden, netzwerknahe Vorgänge, die schnelle und zuverlässige Übertragungen auf Image-Ebene gestatten. Die Georeplikation ermöglicht einer Azure-Containerregistrierung, als zentrale Registrierung zu fungieren, die mehreren Regionen regionale Multimasterregistrierungen zur Verfügung stellt.
 
 Eine Registrierung mit Georeplikation bietet folgende Vorteile:
 
@@ -70,7 +64,7 @@ Die Georeplikation ist nur bei [Premium-Registrierungen](container-registry-skus
 
 ![Wechseln von SKUs im Azure-Portal](media/container-registry-skus/update-registry-sku.png)
 
-Um die Georeplikation für Ihre Premium-Registrierung zu konfigurieren, melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Um die Georeplikation für Ihre Premium-Registrierung zu konfigurieren, melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 Navigieren Sie zu Ihrer Azure Container Registry-Instanz, und wählen Sie **Replikationen** aus:
 

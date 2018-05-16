@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: iainfou
-ms.openlocfilehash: 9093fcf008f199cc1a78d50979f6387a2e1b5262
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: cc91366bda4dd443392c78cd61e5cc0ddb261fe2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -194,7 +194,7 @@ Im folgenden Beispiel wird eine Linux-Skalierungsgruppe mit einer einzelnen Zone
 }
 ```
 
-Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/zones/singlezone.json).
+Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json).
 
 ### <a name="zone-redundant-scale-set"></a>Zonenredundante Skalierungsgruppe
 
@@ -216,7 +216,7 @@ Um eine zonenredundante Skalierungsgruppe zu erstellen, geben Sie in der `zones`
 
 Wenn Sie eine öffentliche IP-Adresse oder einen Lastenausgleich erstellen, geben Sie die Eigenschaft *"sku": { "name": "Standard" }"* an, um zonenredundante Netzwerkressourcen zu erstellenden. Sie müssen außerdem eine Netzwerksicherheitsgruppe und Regeln zum Zulassen von Datenverkehr erstellen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
 
-Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/zones/multizone.json).
+Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

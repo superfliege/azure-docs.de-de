@@ -1,25 +1,27 @@
 ---
-title: "Aktivieren von App-übergreifendem SSO auf Android mit ADAL | Microsoft Docs"
-description: "Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre Anwendungen hinweg. "
+title: Aktivieren von App-übergreifendem SSO auf Android mit ADAL | Microsoft Docs
+description: 'Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre Anwendungen hinweg. '
 services: active-directory
-documentationcenter: 
-author: danieldobalian
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 40710225-05ab-40a3-9aec-8b4e96b6b5e7
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
 ms.date: 04/07/2017
-ms.author: dadobali
+ms.author: celested
+ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 7d832ecf3e9c64088a75cc88551879b4e09df715
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ee27b1d4dcc091ef570e2b0aef32273af986d3f9
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 Die Möglichkeit des einmaligen Anmeldens (Single Sign-On, SSO), bei dem Benutzer ihre Anmeldeinformationen nur einmal eingeben und diese Anmeldeinformationen automatisch auch für andere Anwendungen funktionieren, wird heute von den Kunden erwartet. Die Schwierigkeit, den Benutzernamen und das Kennwort auf einem kleinen Bildschirm einzugeben – häufig in Kombination mit einer weiteren Datenabfrage wie etwa einem Telefonanruf oder einem per SMS gesendeten Code (zweistufige Authentifizierung) – führt beim Benutzer schnell zu Unmut, wenn dieser Vorgang für Ihr Produkt mehrfach durchgeführt werden muss.
@@ -86,7 +88,7 @@ Die folgende Abbildung zeigt, wie die Microsoft Identity SDKs zusammen mit dem g
 Brokergestützte Anmeldungen sind Anmeldeabläufe, die innerhalb der Brokeranwendung stattfinden und auf den Speicher und die Sicherheit des Brokers zurückgreifen, um Anmeldeinformationen für alle Anwendungen auf dem Gerät einzusetzen, die die Microsoft Identity Platform anwenden. Das bedeutet, dass Ihre Anwendungen bei der Benutzeranmeldung auf den Broker zurückgreifen. Unter iOS und Android werden diese Broker über herunterladbare Anwendungen bereitgestellt. Diese Anwendungen können Kunden entweder unabhängig installieren oder sie werden von Unternehmen, die das Gerät für ihre Benutzer verwalten, per Push auf das Gerät übertragen. Ein Beispiel für diesen Anwendungstyp ist die Microsoft Authenticator-App unter iOS. Unter Windows wird diese Funktionalität durch eine Kontoauswahl bereitgestellt, die in das Betriebssystem integriert ist. Die technische Bezeichnung hierfür lautet Webauthentifizierungsbroker.
 Der Ablauf variiert je nach Plattform, und eine nicht ordnungsgemäße Verwaltung kann die Benutzererfahrung beeinträchtigen. Sie kennen dieses Muster sicherlich, wenn Sie Facebook installiert haben und den Facebook Connect-Dienst in einer anderen Anwendung verwenden. Die Microsoft Identity Platform bedient sich des gleichen Musters.
 
-Bei iOS führt dies zu einer „Übergangsanimation“, bei der Ihre Anwendung in den Hintergrund und die Microsoft Authenticator-Anwendungen in den Vordergrund rückt, sodass der Benutzer das gewünschte Konto für die Anmeldung auswählen kann.  
+Bei iOS führt dies zu einer „Übergangsanimation“, bei der Ihre Anwendung in den Hintergrund und die Microsoft Authenticator-Anwendungen in den Vordergrund rückt, sodass der Benutzer das gewünschte Konto für die Anmeldung auswählen kann. 
 
 Unter Android und Windows wird die Kontoauswahl im Vordergrund Ihrer Anwendung angezeigt, was für den Benutzer weniger störend ist.
 

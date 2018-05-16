@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: a51b7d115a8287340450b3525a9b1a325702485b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 5f8ddc9c57df878137ee1ff1b6431e40acfd5eb4
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB
 Azure Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen aller Daten. Die automatischen Sicherungen erfolgen ohne Beeinträchtigung der Leistung oder Verfügbarkeit des Betriebs Ihrer Datenbanken. Alle Sicherungskopien werden in einem anderen Speicherdienst getrennt gespeichert, und diese Sicherungen werden zum besseren Schutz vor regionalen Ausfällen global repliziert. Die automatischen Sicherungen sind für den Fall vorgesehen, dass Sie Ihren Cosmos DB-Container versehentlich löschen und später eine Daten- oder Notfallwiederherstellungslösung benötigen sollten.  
@@ -50,7 +50,11 @@ Das folgende Bild veranschaulicht regelmäßige vollständige Sicherungen aller 
 ## <a name="backup-retention-period"></a>Aufbewahrungszeitraum der Sicherung
 Wie oben beschrieben, erstellt Azure Cosmos DB alle vier Stunden Momentaufnahmen auf Partitionsebene. Es werden jeweils nur die letzten zwei Momentaufnahmen aufbewahrt. Wenn die Sammlung bzw. Datenbank jedoch gelöscht wird, werden die vorhandenen Momentaufnahmen für alle gelöschten Partitionen innerhalb der angegebenen Sammlung bzw. Datenbank für 30 Tage aufbewahrt.
 
-Wenn Sie eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen.
+Wenn Sie bei Verwendung der SQL-API eigene Momentaufnahmen beibehalten möchten, können Sie die Option zum Export in eine JSON-Datei im [Datenmigrationstool](import-data.md#export-to-json-file) von Azure Cosmos DB verwenden, um zusätzliche Sicherungen zu planen.
+
+> [!NOTE]
+> Beachten Sie bei der Bereitstellung des Durchsatzes für mehrere Container auf Datenbankebene, dass die Wiederherstellung für das gesamte Datenbankkonto erfolgt. Darüber hinaus müssen Sie sich unbedingt innerhalb von acht Stunden an den Support wenden, wenn Sie diese neue Funktion verwenden und versehentlich Ihren Container (Sammlung/Tabelle/Graph) gelöscht haben. 
+
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Wiederherstellen einer Datenbank von einer Onlinesicherung
 Falls Sie Ihre Datenbank oder -sammlung versehentlich löschen, können Sie [ein Supportticket anfordern](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder den [Azure Support bitten](https://azure.microsoft.com/support/options/), die Daten aus der letzten automatischen Sicherung wiederherzustellen. Wenn Sie die Datenbank aufgrund einer Datenbeschädigung wiederherstellen müssen (einschließlich Fälle, bei denen Dokumente innerhalb einer Sammlung gelöscht werden), erfahren Sie unter [Umgang mit Datenbeschädigung](#handling-data-corruption), wie Sie zusätzliche Schritte ausführen, um zu verhindern, dass die beschädigten Daten in die vorhandenen Sicherungen überschrieben werden. Für die Wiederherstellung einer bestimmten Momentaufnahme Ihrer Sicherung setzt Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar waren.

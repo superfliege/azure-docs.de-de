@@ -1,81 +1,81 @@
 ---
-title: Lernprogramm zu lokalisierten aktuellen Nachrichten in Notification Hubs
-description: "Erfahren Sie mehr über die Verwendung von Azure Notification Hubs zum Senden von Benachrichtigungen zu lokalisierten aktuellen Nachrichten."
+title: Senden von lokalisierten Benachrichtigungen an Windows-Apps mit Azure Notification Hubs | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Verwendung von Azure Notification Hubs zum Senden von Benachrichtigungen zu lokalisierten aktuellen Nachrichten.
 services: notification-hubs
 documentationcenter: windows
-author: ysxu
-manager: erikre
-editor: 
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 8f205188bd68e53b187b71981ed36dcf9129ec62
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.topic: tutorial
+ms.custom: mvc
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 517e7ae3871a1ed816ea407ad47c9033a1bb5a0e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="use-notification-hubs-to-send-localized-breaking-news"></a>Verwenden von Notification Hubs zum Senden lokalisierter Nachrichten
+# <a name="tutorial-push-localized-notifications-to-windows-apps-by-using-azure-notification-hubs"></a>Tutorial: Senden von lokalisierten Pushbenachrichtigungen an Windows-Apps mit Azure Notification Hubs
 > [!div class="op_single_selector"]
 > * [Windows Store C#](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
-> 
-> 
 
 ## <a name="overview"></a>Übersicht
-In diesem Thema wird gezeigt, wie Sie mit der **Vorlagen** -Funktion von Azure Notification Hubs aktuelle Nachrichten senden können, die je nach Sprache und Gerät lokalisiert wurden. In diesem Lernprogramm beginnen Sie mit der Windows Store-App, die Sie in [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]erstellt haben. Sie werden anschließend in der Lage sein, sich für Kategorien zu registrieren, die Sie interessieren, eine Sprache für die Benachrichtigungen auszuwählen und nur Pushbenachrichtigungen für diese Kategorien in der jeweiligen Sprache zu empfangen.
+In diesem Tutorial wird gezeigt, wie Sie lokalisierte Pushbenachrichtigungen an mobile Geräte senden, die beim Notification Hubs-Dienst registriert wurden. Im Tutorial aktualisieren Sie Anwendungen, die im Tutorial zum [Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt wurden, um die folgenden Szenarien zu unterstützen: 
 
-Dieses Szenario besteht aus zwei Teilen:
+- In der Windows Store-App können Clientgeräte eine Sprache angeben und verschiedene Nachrichtenkategorien abonnieren.
+- Die Back-End-App überträgt die Benachrichtigungen mithilfe der Features für **Tags** und **Vorlagen** von Azure Notification Hubs.
 
-* In der Windows Store-App können Client-Geräte eine Sprache auswählen und verschiedene Nachrichtenkategorien abonnieren;
-* Das Back-End überträgt die Benachrichtigungen mithilfe der **tag**- und **template**-Features von Azure Notification Hubs.
+Nach Abschluss des Tutorials können Sie sich für Kategorien registrieren, die Sie interessieren, und zudem eine Sprache angeben, in der Sie die Benachrichtigungen empfangen möchten. Die Back-End-Anwendung sendet Benachrichtigungen, die je nach Sprache und Gerät lokalisiert werden. 
+
+In diesem Tutorial lernen Sie Folgendes: 
+
+> [!div class="checklist"]
+> * Aktualisieren der Windows-App zur Unterstützung von Gebietsschemainformationen
+> * Aktualisieren einer Back-End-App zum Senden von lokalisierten Benachrichtigungen
+> * Testen der App
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie müssen zuvor das Lernprogramm [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] abschließen und den Code verfügbar haben, da dieses Lernprogramm direkt auf dem Code aufbaut.
+Schließen Sie das [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) ab. 
 
-Außerdem benötigen Sie Visual Studio 2012 oder höher.
+Im [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) haben Sie eine App erstellt, die mithilfe von **Tags** Benachrichtigungen für verschiedene **Kategorien** von Nachrichten abonniert. In diesem Tutorial verwenden Sie das Feature für **Vorlagen** von Notification Hubs, um **lokalisierte** Benachrichtigungen für Nachrichten zu verschicken.
 
-## <a name="template-concepts"></a>Konzepte von Vorlagen
-Im Lernprogramm [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] haben Sie eine App erstellt, in der Benutzer mit **tags** Nachrichten aus verschiedenen Kategorien abonnieren können.
-Viele Apps richten sich jedoch an verschiedene Märkte und müssen lokalisiert werden. In diesen Fällen muss auch der Inhalt der Benachrichtigungen lokalisiert und an die korrekten Geräte ausgeliefert werden.
-In diesem Artikel erfahren Sie, wie Sie mit dem **template** -Feature von Notification Hubs lokalisierte Benachrichtigungen für Nachrichten verschicken können.
+Mit Vorlagen können Sie auf einer hohen Ebene das Format festlegen, in dem ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In diesem Tutorial sendet die Back-End-Anwendung eine vom Gebietsschema unabhängige Nachricht, die alle unterstützten Sprachen enthält:
 
-Hinweis: Sie können mehrere Versionen der einzelnen Tags erstellen, um lokalisierte Benachrichtigungen zu verschicken. Für Englisch, Französisch und Mandarin müssen Sie z. B. drei verschiedene Markierungen für Weltnachrichten erstellen: "world_en", "world_fr" und "world_ch". Anschließend müssten Sie eine lokalisierte Version der Nachrichten an die einzelnen Tags schicken. Dieser Artikel verwendet Vorlagen, um die Anzahl der Tags einzugrenzen und den Versand mehrerer Nachrichten zu vermeiden.
+```json
+{
+    "News_English": "...",
+    "News_French": "...",
+    "News_Mandarin": "..."
+}
+```
 
-Mit Vorlagen können Sie auf einer hohen Ebene festlegen, wie ein bestimmtes Gerät eine Benachrichtigung empfangen soll. Die Vorlage gibt das exakte Format der Nutzlast anhand von Eigenschaften an, die Teil der von Ihrem Back-End verschickten Nachricht sind. In unserem Fall senden wir eine sprachenunabhängige Nachricht, die alle unterstützten Sprachen enthält:
+Die Geräte registrieren sich mit einer Vorlage, die auf die korrekte Eigenschaft verweist. Eine Windows Store-App, die Popupmeldungen auf Englisch empfangen möchte, registriert sich beispielsweise mit beliebigen zugehörigen Tags für die folgende Vorlage:
 
-    {
-        "News_English": "...",
-        "News_French": "...",
-        "News_Mandarin": "..."
-    }
+```xml
+<toast>
+    <visual>
+    <binding template=\"ToastText01\">
+        <text id=\"1\">$(News_English)</text>
+    </binding>
+    </visual>
+</toast>
+```
 
-Anschließend stellen wir sicher, dass sich die Geräte mit einer Vorlage registrieren, die auf die korrekte Eigenschaft verweist. Eine Windows Store-App, die einfache Popupmeldungen empfangen möchte, registriert sich z. B. mit beliebigen zugehörigen Tags für die folgende Vorlage:
+Weitere Informationen zu Vorlagen finden Sie im Artikel zu [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md). 
 
-    <toast>
-      <visual>
-        <binding template=\"ToastText01\">
-          <text id=\"1\">$(News_English)</text>
-        </binding>
-      </visual>
-    </toast>
+## <a name="update-windows-app-to-support-locale-information"></a>Aktualisieren der Windows-App zur Unterstützung von Gebietsschemainformationen
 
+1. Öffnen Sie die Visual Studio-Projektmappe, die Sie für das [Tutorial zum Senden von Benachrichtigungen an bestimmte Geräte (Universelle Windows-Plattform)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md) erstellt haben. 
+2. Fügen Sie ein Gebietsschema-Kombinationsfeld zu **MainPage.xaml** hinzu:
 
-
-Vorlagen sind ein leistungsstarkes Feature, über das Sie weitere Informationen in unserem Artikel [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md) finden. 
-
-## <a name="the-app-user-interface"></a>Die App-Benutzeroberfläche
-Wir werden nun die App zu aktuellen Nachrichten aus dem Thema [Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten] so modifizieren, dass aktuelle Nachrichten mit Vorlagen verschickt werden.
-
-In Ihrer Windows Store-App:
-
-Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
-
+    ```xml
     <Grid Margin="120, 58, 120, 80"  
             Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
@@ -104,82 +104,163 @@ Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
         <ToggleSwitch Header="Sports" Name="SportsToggle" Grid.Row="4" Grid.Column="1"/>
         <Button Content="Subscribe" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Click="SubscribeButton_Click" />
     </Grid>
+    ```
+2. Fügen Sie in Ihrer **Notifications**-Klasse einen locale-Parameter zu den Methoden **StoreCategoriesAndSubscribe** und **SubscribeToCategories** hinzu.
 
-## <a name="building-the-windows-store-client-app"></a>Erstellen der Windows Store-Client-App
-1. Fügen Sie in Ihrer Notifications-Klasse einen locale-Parameter zu den Methoden *StoreCategoriesAndSubscribe* und *SubscribeToCategories* hinzu.
-   
-        public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+    ```csharp   
+    public async Task<Registration> StoreCategoriesAndSubscribe(string locale, IEnumerable<string> categories)
+    {
+        ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
+        ApplicationData.Current.LocalSettings.Values["locale"] = locale;
+        return await SubscribeToCategories(categories);
+    }
+
+    public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
+    {
+        var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
+
+        if (categories == null)
         {
-            ApplicationData.Current.LocalSettings.Values["categories"] = string.Join(",", categories);
-            ApplicationData.Current.LocalSettings.Values["locale"] = locale;
-            return await SubscribeToCategories(categories);
+            categories = RetrieveCategories();
         }
-   
-        public async Task<Registration> SubscribeToCategories(string locale, IEnumerable<string> categories = null)
-        {
-            var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
-   
-            if (categories == null)
-            {
-                categories = RetrieveCategories();
-            }
-   
-            // Using a template registration. This makes supporting notifications across other platforms much easier.
-            // Using the localized tags based on locale selected.
-            string templateBodyWNS = String.Format("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(News_{0})</text></binding></visual></toast>", locale);
-   
-            return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
-        }
-   
-    Beachten Sie, dass wir anstelle der Methode *RegisterNativeAsync* nun *RegisterTemplateAsync* aufrufen: Wir registrieren ein bestimmtes Benachrichtigungsformat, in dem die Vorlage vom Gebietsschema abhängig ist. Außerdem geben wir einen Namen für die Vorlage an („localizedWNSTemplateExample“), da wir möglicherweise mehrere Vorlagen registrieren möchten (z. B. eine für Popupbenachrichtigungen und eine für Kacheln). In diesem Fall wird der Name benötigt, um die Registrierungen ändern oder löschen zu können.
+
+        // Using a template registration. This makes supporting notifications across other platforms much easier.
+        // Using the localized tags based on locale selected.
+        string templateBodyWNS = String.Format("<toast><visual><binding template=\"ToastText01\"><text id=\"1\">$(News_{0})</text></binding></visual></toast>", locale);
+
+        return await hub.RegisterTemplateAsync(channel.Uri, templateBodyWNS, "localizedWNSTemplateExample", categories);
+    }
+    ```
+
+    Anstelle der Methode *RegisterNativeAsync* rufen Sie *RegisterTemplateAsync* auf. Sie registrieren ein bestimmtes Benachrichtigungsformat, in dem die Vorlage vom Gebietsschema abhängt. Sie geben auch einen Vorlagennamen (simpleWNSTemplateExample) an, da Sie unter Umständen mehrere Vorlagen (etwa eine für Popupbenachrichtigungen und eine für Kacheln) registrieren möchten. Sie müssen ihnen ebenfalls einen Namen geben, um sie aktualisieren oder löschen zu können.
    
     Wenn sich ein Gerät für mehrere Vorlagen mit demselben Tag registriert, werden bei einer eingehenden Nachricht für das entsprechende Tag mehrere Benachrichtigungen an das Gerät verschickt (eine pro Vorlage). Dies ist hilfreich, um dieselbe logische Nachricht in mehreren visuellen Darstellungen anzuzeigen, z. B. als Signal und als Popupbenachrichtigung in einer Windows Store-App.
-2. Fügen Sie die folgende Methode hinzu, um die gespeicherte Sprache abzurufen:
+3. Fügen Sie die folgende Methode hinzu, um die gespeicherte Sprache abzurufen:
    
-        public string RetrieveLocale()
+    ```csharp
+    public string RetrieveLocale()
+    {
+        var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
+        return locale != null ? locale : "English";
+    }
+    ```
+
+4. Aktualisieren Sie in Ihrer Datei **MainPage.xaml.cs** den Klickhandler, indem Sie den aktuellen Wert des Gebietsschema-Kombinationsfelds abrufen und im Aufruf an die Notifications-Klasse angeben:
+   
+    ```csharp
+    private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
+    {
+        var locale = (string)Locale.SelectedItem;
+
+        var categories = new HashSet<string>();
+        if (WorldToggle.IsOn) categories.Add("World");
+        if (PoliticsToggle.IsOn) categories.Add("Politics");
+        if (BusinessToggle.IsOn) categories.Add("Business");
+        if (TechnologyToggle.IsOn) categories.Add("Technology");
+        if (ScienceToggle.IsOn) categories.Add("Science");
+        if (SportsToggle.IsOn) categories.Add("Sports");
+
+        var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
+                categories);
+
+        var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
+            string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+        dialog.Commands.Add(new UICommand("OK"));
+        await dialog.ShowAsync();
+    }
+    ```
+4. Aktualisieren Sie schließlich unbedingt in der Datei „App.Xaml.cs“ Ihre `InitNotificationsAsync` -Methode, damit das Gebietsschema abgerufen und für Abonnements verwendet wird:
+
+    ```csharp   
+    private async void InitNotificationsAsync()
+    {
+        var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
+
+        // Displays the registration ID so you know it was successful
+        if (result.RegistrationId != null)
         {
-            var locale = (string) ApplicationData.Current.LocalSettings.Values["locale"];
-            return locale != null ? locale : "English";
-        }
-3. Aktualisieren Sie in Ihrer Datei „MainPage.xaml.cs“ den Click-Handler, indem Sie den aktuellen Wert des Sprachenkombinationsfelds abrufen und im Aufruf an die Notifications-Klasse angeben:
-   
-        private async void SubscribeButton_Click(object sender, RoutedEventArgs e)
-        {
-            var locale = (string)Locale.SelectedItem;
-   
-            var categories = new HashSet<string>();
-            if (WorldToggle.IsOn) categories.Add("World");
-            if (PoliticsToggle.IsOn) categories.Add("Politics");
-            if (BusinessToggle.IsOn) categories.Add("Business");
-            if (TechnologyToggle.IsOn) categories.Add("Technology");
-            if (ScienceToggle.IsOn) categories.Add("Science");
-            if (SportsToggle.IsOn) categories.Add("Sports");
-   
-            var result = await ((App)Application.Current).notifications.StoreCategoriesAndSubscribe(locale,
-                 categories);
-   
-            var dialog = new MessageDialog("Locale: " + locale + " Subscribed to: " + 
-                string.Join(",", categories) + " on registration Id: " + result.RegistrationId);
+            var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
         }
-4. Aktualisieren Sie schließlich unbedingt in der Datei „App.Xaml.cs“ Ihre `InitNotificationsAsync` -Methode, damit das Gebietsschema abgerufen und für Abonnements verwendet wird:
-   
-        private async void InitNotificationsAsync()
-        {
-            var result = await notifications.SubscribeToCategories(notifications.RetrieveLocale());
-   
-            // Displays the registration ID so you know it was successful
-            if (result.RegistrationId != null)
-            {
-                var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
-                dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
-            }
-        }
+    }
+    ```
 
 ## <a name="send-localized-notifications-from-your-back-end"></a>Senden von lokalisierten Benachrichtigungen von Ihrem Back-End aus
-[!INCLUDE [notification-hubs-localized-back-end](../../includes/notification-hubs-localized-back-end.md)]
+Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur eine Reihe von Eigenschaften angeben. In diesem Tutorial sendet die Back-End-Anwendung die Eigenschaften, die die lokalisierte Version der aktuellen Nachrichten enthalten. Beispiel:
+
+```json
+{
+    "News_English": "World News in English!",
+    "News_French": "World News in French!",
+    "News_Mandarin": "World News in Mandarin!"
+}
+```
+
+In diesem Abschnitt aktualisieren Sie das Konsolenanwendungsprojekt in der Projektmappe. Ändern Sie die `SendTemplateNotificationAsync`-Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code: 
+
+> [!IMPORTANT]
+> Geben Sie den Namen und die Verbindungszeichenfolge mit Vollzugriff für Ihre Notification Hubs-Instanz im Code an. 
+
+
+```csharp
+private static async void SendTemplateNotificationAsync()
+{
+    // Define the notification hub.
+    NotificationHubClient hub = 
+        NotificationHubClient.CreateClientFromConnectionString(
+            "<connection string with full access>", "<hub name>");
+
+    // Sending the notification as a template notification. All template registrations that contain 
+    // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+    // This includes APNS, GCM, WNS, and MPNS template registrations.
+    Dictionary<string, string> templateParams = new Dictionary<string, string>();
+
+    // Create an array of breaking news categories.
+    var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+    var locales = new string[] { "English", "French", "Mandarin" };
+
+    foreach (var category in categories)
+    {
+        templateParams["messageParam"] = "Breaking " + category + " News!";
+
+        // Sending localized News for each tag too...
+        foreach( var locale in locales)
+        {
+            string key = "News_" + locale;
+
+            // Your real localized news content would go here.
+            templateParams[key] = "Breaking " + category + " News in " + locale + "!";
+        }
+
+        await hub.SendTemplateNotificationAsync(templateParams, category);
+    }
+}
+```
+
+Dieser einfache Aufruf sendet die lokalisierten Nachrichten unabhängig von der Plattform an **alle** Ihre Geräte, da Ihre Notification Hubs-Instanz die korrekte systemeigene Nutzlast erstellt und an alle Geräte sendet, die ein bestimmtes Tag abonniert haben.
+
+## <a name="test-the-app"></a>Testen der App
+1. Führen Sie die universelle Windows Store-Anwendung aus. Warten Sie, bis die Meldung **Registrierung war erfolgreich.** angezeigt wird.
+
+    ![Mobile Anwendung und Registrierung](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/registration-successful.png)
+1. Wählen Sie die **Kategorien** und das **Gebietsschema** aus, und klicken Sie auf **Abonnieren**. Die App konvertiert die ausgewählten Kategorien in Tags, und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an.
+
+    ![Mobile Anwendung](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/mobile-app.png)
+2.  Eine **Bestätigungsmeldung** zu den **Abonnements** wird angezeigt. 
+
+    ![Abonnementmeldung](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/subscription-message.png)
+1. Führen Sie nach dem Erhalt einer Bestätigung die **Konsolen-App** aus, um Benachrichtigungen für die einzelnen Kategorien und in allen unterstützten Sprachen zu senden. Stellen Sie sicher, dass Sie nur Benachrichtigungen für die abonnierten Kategorien in der ausgewählten Sprache erhalten. 
+
+    ![Benachrichtigungsmeldungen](./media/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification/notifications.png)
+ 
+
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie gelernt, wie Sie lokalisierte Pushbenachrichtigungen an bestimmte Geräte senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, die möglicherweise mehrere Geräte verwenden, fahren Sie mit dem folgenden Tutorial fort: 
+
+> [!div class="nextstepaction"]
+>[Senden von Pushbenachrichtigungen an bestimmte Benutzer](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
+
 
 <!-- Anchors. -->
 [Template concepts]: #concepts
@@ -194,7 +275,7 @@ Fügen Sie ein Sprachen-Kombinationsfeld zu Ihrer MainPage.xaml hinzu:
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs: ASP.NET]: /manage/services/notification-hubs/notify-users-aspnet
 [Notify users with Notification Hubs: Mobile Services]: /manage/services/notification-hubs/notify-users
-[Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
+[Use Notification Hubs to send breaking news]: /notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns
 
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039

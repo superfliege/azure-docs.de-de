@@ -1,6 +1,6 @@
 ---
 title: 'IoT DevKit in der Cloud: Verbinden von MXChip IoT DevKit mit Azure IoT Hub | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 zur Überwachung und Visualisierung an Azure IoT Suite gesendet wird.
+description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 an den Solution Accelerator für die Azure IoT-Remoteüberwachung gesendet wird.
 services: iot-hub
 documentationcenter: ''
 author: liydu
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 17b24244180436c2d1f97433e13a530dae565a10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d59a739e2222aca27993f6ae944a1d3bda567041
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="connect-mxchip-iot-devkit-to-azure-iot-suite-for-remote-monitoring"></a>Verbinden von MXChip IoT DevKit mit Azure IoT Suite zur Remoteüberwachung
+# <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Herstellen der Verbindung des MXChip IoT DevKit mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung
 
-In diesem Tutorial erfahren Sie, wie Sie eine Beispiel-App auf dem DevKit ausführen, um Sensordaten an die Azure IoT Suite zu senden.
+In diesem Tutorial erfahren Sie, wie Sie eine Beispiel-App auf dem DevKit ausführen, um Sensordaten an den Solution Accelerator für die Azure IoT-Remoteüberwachung zu senden.
 
 Das [MXChip IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibles All-in-One-Board mit umfangreichen Peripheriegeräten und Sensoren. Sie können dafür mithilfe der [Visual Studio Code-Erweiterung für Arduino](https://aka.ms/arduino) entwickeln. Im Lieferumfang enthalten ist ein wachsender [Projektkatalog](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/), der Sie durch das Erstellen eines Prototyps von Lösungen für das Internet der Dinge (Internet of Things, IoT) führt, die Microsoft Azure-Dienste nutzen.
 
@@ -38,12 +38,12 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 * [Kostenloses Microsoft Azure-Testkonto für 30 Tage](https://azure.microsoft.com/free/) aktivieren
 * [Azure-Gutschrift](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) beanspruchen, wenn Sie MSDN- oder Visual Studio-Abonnent sind
 
-## <a name="create-an-azure-iot-suite"></a>Erstellen einer Azure IoT Suite
+## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Erstellen eines Solution Accelerators für die Azure IoT-Remoteüberwachung
 
-1. Wechseln Sie zur [Azure IoT Suite-Website](https://www.azureiotsuite.com/), und klicken Sie auf **Neue Lösung erstellen**.
-  ![Auswählen des Azure IoT Suite-Typs](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
+1. Wechseln Sie zur [Azure IoT Solution Accelerators-Website](https://www.azureiotsuite.com/), und klicken Sie auf **Neue Lösung erstellen**.
+  ![Azure IoT Solution Accelerator-Typ auswählen](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
-  > Standardmäßig wird mit diesem Beispiel nach dem Erstellen einer IoT Suite ein S2 IoT Hub erstellt. Wenn dieser IoT Hub nicht für eine große Anzahl von Geräten verwendet wird, wird dringend empfohlen, ein Downgrade von S2 auf S1 durchzuführen und die IoT Suite zu löschen, damit auch der zugehörige IoT Hub gelöscht werden kann, wenn Sie ihn nicht mehr benötigen. 
+  > Standardmäßig wird mit diesem Beispiel nach dem Erstellen eines Solution Accelerators für die IoT-Remoteüberwachung ein S2 IoT Hub erstellt. Wenn dieser IoT Hub nicht für eine große Anzahl von Geräten verwendet wird, wird dringend empfohlen, ein Downgrade von S2 auf S1 durchzuführen und den Solution Accelerator für die Remoteüberwachung zu löschen, damit auch der zugehörige IoT Hub gelöscht werden kann, wenn Sie ihn nicht mehr benötigen. 
 
 2. Wählen Sie **Remoteüberwachung** aus.
 
@@ -100,13 +100,13 @@ Das DevKit startet neu und beginnt mit der Ausführung des Codes.
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
-Beim Ausführen der Beispiel-App sendet DevKit Sensordaten über Wi-Fi an die Azure IoT Suite. Gehen Sie wie folgt vor, um das Ergebnis anzuzeigen:
+Beim Ausführen der Beispiel-App sendet DevKit Sensordaten über WLAN an den Solution Accelerator für die Azure IoT-Remoteüberwachung. Gehen Sie wie folgt vor, um das Ergebnis anzuzeigen:
 
-1. Wechseln Sie zur Azure IoT Suite, und klicken Sie auf **DASHBOARD**.
+1. Wechseln Sie zu Ihrem Solution Accelerator für die Azure IoT-Remoteüberwachung, und klicken Sie auf **DASHBOARD**.
 
-2. In der Azure IoT Suite-Lösungskonsole wird der Status des DevKit-Sensors angezeigt.
+2. In der Remoteüberwachung-Lösungskonsole wird der Status des DevKit-Sensors angezeigt.
 
-![Sensordaten in Azure IoT Suite](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
+![Sensordaten im Solution Accelerator für die Azure IoT-Remoteüberwachung](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
 
 ## <a name="change-device-id"></a>Ändern der Geräte-ID
 
@@ -121,7 +121,7 @@ Wenn Probleme auftreten, lesen Sie die [häufig gestellten Fragen](https://micro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie Sie ein DevKit-Gerät mit der Azure IoT Suite verbinden und die Sensordaten darstellen, werden die folgenden nächsten Schritte empfohlen:
+Nachdem Sie nun erfahren haben, wie Sie die Verbindung eines DevKit-Geräts mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung herstellen und die Sensordaten darstellen, werden die folgenden nächsten Schritte empfohlen:
 
-* [Übersicht über Azure IoT Suite](https://docs.microsoft.com/azure/iot-suite/)
+* [Was sind die IoT Solution Accelerators?](https://docs.microsoft.com/azure/iot-suite/)
 * [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

@@ -6,29 +6,31 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/24/2018
 ms.author: babanisa
-ms.openlocfilehash: e5499fca98118de6ef8e08c8ce278b90520425e6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8ddde98b448f4d6d6f24a2ee47acf9240593622c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
-Zu den zentralen Begriffen in Azure Event Grid zählen Folgende:
+Dieser Artikel beschreibt die zentralen Begriffe in Azure Event Grid.
 
 ## <a name="events"></a>Ereignisse
 
-Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt. Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner. Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
+Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt. Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner. Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ dazu enthält ein Event Hubs-Ereignis die URL der Erfassungsdatei. Jedes Ereignis ist auf 64 KB Daten begrenzt.
 
 ## <a name="event-sourcespublishers"></a>Ereignisquellen/-herausgeber
 
 Eine Ereignisquelle ist die Quelle, in der das Ereignis auftritt. Azure Storage ist z.B. die Ereignisquelle für durch Blobs erstellte Ereignisse. Das Azure VM-Fabric ist die Ereignisquelle für Ereignisse zu virtuellen Computern. Ereignisquellen sind für das Veröffentlichen von Ereignissen in Event Grid zuständig.
 
+Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md).
+
 ## <a name="topics"></a>Themen
 
-Herausgeber kategorisieren Ereignisse in Themen. Dieses Thema enthält einen Endpunkt, an den der Herausgeber Ereignisse sendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren. Die Themen enthalten auch ein Ereignisschema, mit der Abonnenten feststellen können, wie die Ereignisse entsprechend genutzt werden.
+Herausgeber kategorisieren Ereignisse in Themen. Dieses Event Grid-Thema enthält einen Endpunkt, an den der Herausgeber Ereignisse sendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren. Die Themen enthalten auch ein Ereignisschema, mit der Abonnenten feststellen können, wie die Ereignisse entsprechend genutzt werden.
 
 Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen.
 
@@ -42,17 +44,19 @@ Ein Abonnement gibt in Event Grid an, welche Ereignisse zu einem Thema ein Abonn
 
 In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt mehrere Abonnententypen. Je nach Typ des Abonnenten führt Event Grid unterschiedliche Methoden durch, um die Übermittlung des Ereignisses zu gewährleisten. Bei HTTP-Webhookereignishandlern wird das Ereignis solange wiederholt, bis der Handler einen Statuscode von `200 – OK` zurückgibt. Bei Azure Storage Queue werden die Ereignisse solange wiederholt, bis der Warteschlangendienst den Nachrichtenpush in der Warteschlange verarbeiten kann.
 
+Informationen zum Implementieren der unterstützten Event Grid-Handler finden Sie unter [Ereignishandler in Azure Event Grid](event-handlers.md).
+
 ## <a name="filters"></a>Filter
 
-Wenn Sie ein Thema abonnieren, können Sie die Ereignisse filtern, die an den Endpunkt gesendet werden. Sie können nach Ereignistyp oder Betreffmuster filtern. Weitere Informationen finden Sie unter [Event Grid – Abonnementschema](subscription-creation-schema.md).
+Wenn Sie ein Event Grid-Thema abonnieren, können Sie die Ereignisse filtern, die an den Endpunkt gesendet werden. Sie können nach Ereignistyp oder Betreffmuster filtern. Weitere Informationen finden Sie unter [Event Grid – Abonnementschema](subscription-creation-schema.md).
 
 ## <a name="security"></a>Sicherheit
 
-Event Grid ermöglicht ein sicheres Abonnieren und Veröffentlichen von Themen. Für das Abonnieren sind entsprechende Berechtigungen für die Ressource oder das Thema erforderlich. Für das Veröffentlichen ist ein SAS-Token oder eine Schlüsselauthentifizierung für das Thema erforderlich. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
+Event Grid ermöglicht ein sicheres Abonnieren und Veröffentlichen von Themen. Für das Abonnieren sind entsprechende Berechtigungen für die Ressource oder das Event Grid-Thema erforderlich. Für das Veröffentlichen ist ein SAS-Token oder eine Schlüsselauthentifizierung für das Thema erforderlich. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
 
 ## <a name="failed-delivery"></a>Fehlerhafte Übermittlung
 
-Wenn Event Grid nicht bestätigen kann, dass ein Ereignis vom Endpunkt des Abonnenten eingegangen ist, wird das Ereignis erneut übermittelt. Weitere Informationen finden Sie unter [Event Grid – Nachrichtenübermittlung und -wiederholung](delivery-and-retry.md).
+Wenn Event Grid nicht bestätigen kann, dass ein Ereignis beim Endpunkt des Abonnenten eingegangen ist, wird das Ereignis erneut übermittelt. Weitere Informationen finden Sie unter [Event Grid – Nachrichtenübermittlung und -wiederholung](delivery-and-retry.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

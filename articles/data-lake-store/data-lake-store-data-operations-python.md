@@ -1,8 +1,8 @@
 ---
-title: "Python: Dateisystemvorgänge in Azure Data Lake Store | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie das Python SDK für das Data Lake Store-Dateisystem verwenden."
+title: 'Python: Dateisystemvorgänge in Azure Data Lake Store | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie das Python SDK für das Data Lake Store-Dateisystem verwenden.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 19e41cb0bb22bf27db4581954f1f6e68b8a941c2
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6e92eed5e4083c9b8063318b2a9139e20f53de1a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-python"></a>Dateisystemvorgänge in Azure Data Lake Store per Python
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ In diesem Artikel wird beschrieben, wie Sie das Python SDK verwenden, um Dateisy
 Zum Verwenden von Data Lake Store mit Python müssen Sie drei Module installieren.
 
 * Das Modul `azure-mgmt-resource`, in dem Azure-Module für Active Directory usw. enthalten sind.
-* Das Modul `azure-mgmt-datalake-store`, das die Kontoverwaltungsvorgänge für Azure Data Lake Store enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Verwaltungsmodul für Azure Data Lake Store](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html).
+* Das Modul `azure-mgmt-datalake-store`, das die Kontoverwaltungsvorgänge für Azure Data Lake Store enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Verwaltungsmodul für Azure Data Lake Store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
 * Das Modul `azure-datalake-store`, das die Dateisystemvorgänge für Azure Data Lake Store enthält. Weitere Informationen zu diesem Modul finden Sie in der [Referenz zum Dateisystemmodul für Azure Data Lake Store](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Verwenden Sie die folgenden Befehle, um die Module zu installieren:

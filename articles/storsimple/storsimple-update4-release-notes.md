@@ -1,12 +1,12 @@
 ---
 title: Versionshinweise zu Update 4 der StorSimple 8000-Serie | Microsoft-Dokumentation
-description: "Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 4 der StorSimple 8000-Serie."
+description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 4 der StorSimple 8000-Serie.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,16 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f1c0734b07287d95a2f5031e010f0e407d3a816f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Versionshinweise zu Update 4 der StorSimple 8000-Serie
-> [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
-
 
 ## <a name="overview"></a>Übersicht
 

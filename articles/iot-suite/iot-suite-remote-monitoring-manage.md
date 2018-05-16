@@ -1,22 +1,22 @@
 ---
-title: "Geräteverwaltung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird veranschaulicht, wie Sie die mit der Remoteüberwachungslösung verbundenen Geräte verwalten."
-services: 
+title: Geräteverwaltung in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial wird veranschaulicht, wie Sie die mit der Remoteüberwachungslösung verbundenen Geräte verwalten.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Verwalten und Konfigurieren von Geräten
 
@@ -24,7 +24,7 @@ In diesem Tutorial werden die Geräteverwaltungsfunktionen der Remoteüberwachun
 
 Contoso hat neue Maschinen geordert, um eine seiner Betriebsstätten zu erweitern und die Produktion zu erhöhen. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu überprüfen. Als Bediener möchten Sie die Geräte in der Remoteüberwachungslösung verwalten und konfigurieren.
 
-Um ein breites Spektrum an Möglichkeiten zum Verwalten und Konfigurieren von Geräten bereitzustellen, werden in der Remoteüberwachungslösung IoT Hub-Features wie z.B. [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. Informationen dazu, wie ein Entwickler Methoden auf einem physischen Gerät implementiert, finden Sie unter [Anpassen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-customize.md).
+Um ein breites Spektrum an Möglichkeiten zum Verwalten und Konfigurieren von Geräten bereitzustellen, werden in der Remoteüberwachungslösung IoT Hub-Features wie z.B. [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. Informationen dazu, wie ein Geräteentwickler Methoden auf einem physischen Gerät implementiert, finden Sie unter [Anpassen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-customize.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
@@ -50,7 +50,7 @@ Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei
 
 ![Bereitstellen eines simulierten Engine-Geräts](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
-Informationen zum Bereitstellen eines *physischen* Geräts finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung](iot-suite-connecting-devices-node.md).
+Informationen zum Bereitstellen eines *physischen* Geräts finden Sie unter [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-suite-connecting-devices-node.md).
 
 ## <a name="test-the-simulated-device"></a>Testen des simulierten Geräts
 
@@ -68,11 +68,11 @@ Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten nach unten, um **Diagn
 
 ## <a name="act-on-a-device"></a>Aktionen für ein Gerät
 
-Um Aktionen für ein oder mehrere Geräte auszuführen, wählen Sie sie in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Engine** gibt vier Methoden an, die ein Gerät unterstützen muss:
+Um Aktionen für ein oder mehrere Geräte auszuführen, wählen Sie sie in der Geräteliste aus, und wählen Sie dann **Jobs** (Aufträge) aus. Das Gerätemodell **Engine** gibt drei Methoden an, die ein Gerät unterstützen muss:
 
 ![Engine-Methoden](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
-Wählen Sie **Restart** (Neustart) aus, legen Sie den Auftragsnamen auf **RestartEngine** fest, und wählen Sie dann **Apply** (Übernehmen) aus:
+Wählen Sie **FillTank**, legen Sie für den Auftragsnamen **FillEngineTank** fest, und wählen Sie dann **Apply (Übernehmen)**:
 
 ![Planen der Neustartmethode](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
@@ -84,11 +84,11 @@ Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolg
 
 Wenn Sie sich die verschiedenen simulierten Gerätetypen ansehen, werden Sie feststellen, dass andere Gerätetypen andere Methoden unterstützen. In einer Bereitstellung mit physischen Geräten gibt das Gerätemodell die Methoden an, die das Gerät unterstützen muss. In der Regel ist der Geräteentwickler für die Entwicklung des Codes zuständig, über den das Gerät auf einen Methodenaufruf reagiert.
 
-Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auf der Seite **Devices** (Geräte) auswählen. Im Bereich **Schedule** (Zeitplan) werden die für alle ausgewählten Geräte gemeinsamen Methodentypen angezeigt.
+Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auf der Seite **Devices** (Geräte) auswählen. Im Bereich **Jobs** (Aufträge) werden die für alle ausgewählten Geräte gemeinsamen Methodentypen angezeigt.
 
 ## <a name="reconfigure-a-device"></a>Neukonfigurieren eines Geräts
 
-Um die Konfiguration eines Geräts zu ändern, wählen Sie es in der Geräteliste auf der Seite **Devices** (Geräte) aus, und wählen Sie dann **Reconfigure** (Neu konfigurieren) aus. Im Bereich „Reconfigure“ (Neu konfigurieren) werden die Eigenschaftswerte für das ausgewählte Gerät angezeigt, die Sie ändern können:
+Um die Konfiguration eines Geräts zu ändern, wählen Sie es in der Geräteliste auf der Seite **Devices** (Geräte) aus, wählen Sie dann **Jobs** (Aufträge) und dann **Reconfigure** (Neu konfigurieren) aus. Im Bereich „Jobs“ (Aufträge) werden die Eigenschaftswerte für das ausgewählte Gerät angezeigt, die Sie ändern können:
 
 ![Neukonfigurieren eines Geräts](media/iot-suite-remote-monitoring-manage/devicesreconfigure.png)
 
@@ -113,6 +113,6 @@ Sie wissen nun, wie Sie Ihre Geräte verwalten können. In den nächsten empfohl
 
 * [Beheben von Geräteproblemen](iot-suite-remote-monitoring-maintain.md)
 * [Testen der Lösung mit simulierten Geräten](iot-suite-remote-monitoring-test.md)
-* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung](iot-suite-connecting-devices-node.md)
+* [Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Node.js)](iot-suite-connecting-devices-node.md)
 
 <!-- Next tutorials in the sequence -->

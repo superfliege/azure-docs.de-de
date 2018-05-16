@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 05/08/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: 10055b75000e5affdcdef5841a8d45db8b41ef05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 883da7d1487922f5cd986a67d7a7bded78ea3759
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -54,13 +54,10 @@ Konfigurieren Sie [ACR Build](#azure-container-registry-build)-Buildaufgaben, um
 
 [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) ist eine Suite mit Features in Azure Container Registry, die optimierte und effiziente Docker-Containerimage-Builds in Azure bietet. Verwenden Sie ACR Build, um die Inner Loop-Entwicklungsumgebung in die Cloud zu erweitern, indem Sie `docker build`-Vorgänge in Azure auslagern. Konfigurieren Sie Buildaufgaben, um die Pipeline für das Containerbetriebssystem- und Frameworkpatching zu automatisieren und automatisch Images zu erstellen, wenn das Team ein Commit für Code an die Quellcodeverwaltung ausführt.
 
-> [!NOTE]
-> ACR Build befindet sich derzeit in der Vorschauphase und wird nur von Azure-Containerregistrierungen in den Regionen **USA, Osten** (eastus) und **Europa, Westen** (westeurope) unterstützt. Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
+[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer Containerregistrierung mit dem Azure-Portal](container-registry-get-started-portal.md)
 * [Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md)
 * [Automatisieren von Betriebssystem- und Frameworkpatching mit ACR Build](container-registry-build-overview.md) (Vorschau)
-
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

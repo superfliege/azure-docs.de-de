@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0fc8a977a172a859d6691a5b587135caf14e03f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte
 
@@ -58,7 +58,7 @@ Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein Daten
 | Datenbank |Eine Datenbank ist ein logischer Container für Dokumentspeicher, der auf Sammlungen aufgeteilt ist. Sie ist auch ein Benutzercontainer. |
 | Benutzer |Der logische Namespace für Gültigkeitsbereichsberechtigungen. |
 | Berechtigung |Ein Autorisierungstoken, das einem Benutzer für den Zugriff auf eine bestimmte Ressource zugeordnet ist. |
-| Sammlung |Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Eine Sammlung ist eine fakturierbare Entität, bei der die [Kosten](performance-levels.md) durch die Leistungsebene bestimmt werden, die mit der Sammlung verknüpft ist. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten. |
+| Sammlung |Eine Sammlung ist ein Container für JSON-Dokumente und die zugehörige JavaScript-Anwendungslogik. Sammlungen können eine/n oder mehrere Partitionen oder Server umfassen und können skaliert werden, um praktisch unbegrenzte Mengen an Speicher oder Durchsatz zu verarbeiten. |
 | Stored Procedure (Gespeicherte Prozedur) |Mit JavaScript geschriebene Anwendungslogik, die mit einer Sammlung registriert und über Transaktionen innerhalb des Datenbankmoduls ausgeführt wird. |
 | Trigger |In JavaScript geschriebene Anwendungslogik, die vor oder nach einem Einfüge-, Ersetzungs- oder Löschvorgang ausgeführt wird. |
 | UDF |In JavaScript geschriebene Anwendungslogik. Mit UDFs kann ein benutzerdefinierter Abfrageoperator erstellt und damit die SQL-API-Kernabfragesprache erweitert werden. |
@@ -166,14 +166,14 @@ Eine Cosmos DB-Datenbank ist ein logischer Container einer oder mehrerer Sammlun
 ![Hierarchisches Modell für Datenbankkonten und -sammlungen][2]  
 **Eine Datenbank ist ein logischer Container von Benutzern und Sammlungen**
 
-Eine Datenbank kann praktisch unbegrenzten Dokumentenspeicher umfassen, der in Sammlungen partitioniert ist.
+Eine Datenbank kann unbegrenzten Dokumentenspeicher umfassen, der in Sammlungen partitioniert ist.
 
 ### <a name="elastic-scale-of-an-azure-cosmos-db-database"></a>Elastische Skalierung einer Azure Cosmos DB-Datenbank
 Eine Cosmos DB-Datenbank ist standardmäßig flexibel und kann von einigen GB zu mehreren Petabytes an SSD-gestütztem Dokumentspeicher und bereitgestelltem Durchsatz reichen. 
 
 Im Gegensatz zur Datenbank im traditionellen RDBMS ist der Gültigkeitsbereich einer Datenbank in Cosmos DB nicht auf einen einzelnen Computer beschränkt. Mit Cosmos DB können Sie weitere Sammlungen und Datenbanken erstellen, wenn die Größenanforderungen Ihrer Anwendung zunehmen. Tatsächlich haben verschiedene Anwendungen von Erstanbietern bei Microsoft Azure Cosmos DB in einer Größenordnung für Verbraucher verwendet, indem extrem große Azure Cosmos DB-Datenbanken erstellt wurden, die jeweils Tausende Sammlungen mit mehreren Terabytes an Dokumentspeicher enthalten haben. Sie können eine Datenbank durch Hinzufügen oder Entfernen von Sammlungen vergrößern oder verkleinern, um den Größenanforderungen Ihrer Anwendung zu entsprechen. 
 
-Sie können je nach Angebot eine beliebige Anzahl von Sammlungen innerhalb einer Datenbank erstellen. Jede Sammlung verfügt über SSD-gesicherten Speicher und Durchsatz, der Ihnen je nach ausgewählter Leistungsebene bereitgestellt wird.
+Sie können je nach Angebot eine beliebige Anzahl von Sammlungen innerhalb einer Datenbank erstellen. Jede Sammlung bzw. jeder Satz von Sammlungen (innerhalb einer Datenbank) verfügt über SSD-gesicherten Speicher und Durchsatz, der Ihnen abhängig vom ausgewählten Angebot bereitgestellt wird.
 
 Eine Azure Cosmos DB-Datenbank ist auch ein Container für Benutzer. Ein Benutzer ist wiederum ein logischer Namespace für eine Reihe von Berechtigungen, die eine differenzierte Autorisierung und einen differenzierten Zugriff auf Sammlungen, Dokumente und Anhänge bieten.  
 
@@ -183,7 +183,7 @@ Datenbanken können wie andere Ressourcen im Azure Cosmos DB-Ressourcenmodell ei
 Eine Cosmos DB-Sammlung ist ein Container für Ihre JSON-Dokumente. 
 
 ### <a name="elastic-ssd-backed-document-storage"></a>Flexibler SSD-gestützter Dokumentspeicher
-Eine Sammlung ist an sich flexibel. Durch das Hinzufügen oder Entfernen von Dokumenten wächst oder schrumpft sie automatisch. Sammlungen sind logische Ressourcen und können eine oder mehrere physische Partitionen oder einen oder mehrere Server umfassen. Die Anzahl der Partitionen in einer Sammlung wird von Cosmos DB auf Basis der Speichergröße und dem bereitgestellten Durchsatz Ihrer Sammlung bestimmt. Jede Partition in Cosmos DB verfügt über eine festgelegte Menge an zugeordnetem SSD-gestütztem Speicher und wird für Hochverfügbarkeit repliziert. Die Partitionsverwaltung erfolgt vollständig über Azure Cosmos DB, Sie müssen also weder komplexen Code schreiben noch Ihre Partitionen verwalten. Cosmos DB-Sammlungen sind im Hinblick auf Speicher und Durchsatz **praktisch unbegrenzt**. 
+Eine Sammlung ist an sich flexibel. Durch das Hinzufügen oder Entfernen von Dokumenten wächst oder schrumpft sie automatisch. Sammlungen sind logische Ressourcen und können eine oder mehrere physische Partitionen oder einen oder mehrere Server umfassen. Die Anzahl der einer Sammlung zugewiesenen Partitionen wird von Cosmos DB auf Basis der Speichergröße und dem für die Sammlung bzw. einen Satz von Sammlungen bereitgestellten Durchsatz bestimmt. Jede Partition in Cosmos DB verfügt über eine festgelegte Menge an zugeordnetem SSD-gestütztem Speicher und wird für Hochverfügbarkeit repliziert. Die Partitionsverwaltung erfolgt vollständig über Azure Cosmos DB, Sie müssen also weder komplexen Code schreiben noch Ihre Partitionen verwalten. Für Cosmos DB-Sammlungen gelten **keine Obergrenzen** hinsichtlich Speicherplatz und Durchsatz. 
 
 ### <a name="automatic-indexing-of-collections"></a>Automatische Indizierung von Sammlungen
 Azure Cosmos DB ist ein echtes schemaloses Datenbanksystem. Es setzt kein Schema für die JSON-Dokumente voraus. Dokumente werden beim Hinzufügen zu einer Sammlung von Azure Cosmos DB automatisch indiziert und stehen dann für Sie zur Abfrage bereit. Die automatische Indizierung von Dokumenten, ohne ein Schema oder sekundäre Indizes zu erfordern, ist ein entscheidendes Merkmal von Azure Cosmos DB und wird über für Schreibvorgänge optimierte, sperrfreie und protokollstrukturierte Verfahren zur Indexwartung ermöglicht. Azure Cosmos DB unterstützt eine beständige Menge an extrem schnellen Schreibvorgängen, während weiterhin konsistente Abfragen verarbeitet werden. Sowohl der Dokument- als auch der Indexspeicher werden zum Berechnen des Speichers verwendet, der von den einzelnen Sammlungen belegt wird. Sie können die mit der Indizierung einhergehenden Abstriche bei der Speicherung und Leistung kontrollieren, indem Sie die Indizierungsrichtlinie für eine Sammlung konfigurieren. 
@@ -222,7 +222,7 @@ Aufgrund seiner direkt in der Datenbank-Engine verankerten starken Bindung an Ja
 * Effiziente Implementierung der Nebenläufigkeitssteuerung, Wiederherstellung und automatischen Indizierung der JSON-Objektdiagramme direkt in der Datenbank-Engine
 * Natürliches Ausdrücken des Steuerungsablaufs, der Festlegung von Variablen, der Zuweisung und der Integration von Grundtypen zur Ausnahmeverarbeitung direkt mit Datenbanktransaktionen (im Sinne der JavaScript-Programmiersprache)
 
-Die auf Sammlungsebene registrierte JavaScript-Logik kann dann Datenbankvorgänge für die Dokumente der angegebenen Sammlung auslösen. Die auf JavaScript basierten gespeicherten Prozeduren und Trigger von Azure Cosmos DB werden implizit in eine umgebende ACID-Transaktion eingefasst, die die Momentaufnahmeisolation zwischen den Dokumenten in einer Sammlung einbezieht. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst. Das sich ergebende Programmiermodell ist sehr einfach, aber dennoch leistungsstark. JavaScript-Entwickler erhalten ein "beständiges" Programmiermodell, während sie weiterhin ihre vertrauten Sprachkonstruktr und Bibliotheksstammfunktionen verwenden können.   
+Die auf Sammlungsebene registrierte JavaScript-Logik kann dann Datenbankvorgänge für die Dokumente der angegebenen Sammlung auslösen. Die auf JavaScript basierten gespeicherten Prozeduren und Trigger von Azure Cosmos DB werden implizit in eine umgebende ACID-Transaktion eingefasst, die die Momentaufnahmenisolation zwischen den Dokumenten in einer Sammlung einbezieht. Während des Ausführungsverlaufs wird die gesamte Transaktion abgebrochen, wenn JavaScript eine Ausnahme auslöst. Das sich ergebende Programmiermodell ist einfach, aber dennoch leistungsstark. JavaScript-Entwickler erhalten ein "beständiges" Programmiermodell, während sie weiterhin ihre vertrauten Sprachkonstruktr und Bibliotheksstammfunktionen verwenden können.   
 
 Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank-Engine im gleichen Adressraum wie der Pufferpool gestattet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Dokumente einer Sammlung. Des Weiteren werden alle Impedanzabweichungen zwischen den Typsystemen von Anwendung und Datenbank aufgrund der starken Bindung der Cosmos DB-Datenbank-Engine an JSON und JavaScript beseitigt.   
 
@@ -364,7 +364,7 @@ Die Ausführung eines Triggers erfolgt durch die Angabe des Namens (über den An
         });
 
 ### <a name="unregistering-a-pre-trigger"></a>Aufheben der Registrierung eines vorangestellten Triggers
-Das Aufheben der Registrierung für einen Trigger erfolgt über das einfache Auslösen einer HTTP DELETE-Methode für eine vorhandene Triggerressource.  
+Das Aufheben der Registrierung für einen Trigger erfolgt über das Auslösen einer HTTP DELETE-Methode für eine vorhandene Triggerressource.  
 
     client.deleteTriggerAsync(createdPreTrigger._self);
         .then(function(response) {
@@ -415,7 +415,7 @@ Obwohl die obigen Codeausschnitte die Registrierung (POST), die Aufhebung der Re
 ## <a name="documents"></a>Dokumente
 Sie können beliebige JSON-Dokumente zu einer Sammlung hinzufügen, sie dort ersetzen, löschen, lesen, aufzählen und abfragen. Azure Cosmos DB erfordert weder Schema noch sekundäre Indizes, um die dokumentübergreifende Abfrage in einer Sammlung zu unterstützen. Die maximale Größe für ein Dokument beträgt 2 MB.   
 
-Azure Cosmos DB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Für Azure Cosmos DB sind keine speziellen JSON-Konventionen erforderlich, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von Azure Cosmos DB bietet sehr leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.  
+Azure Cosmos DB ist ein ganz und gar offener Datenbankdienst, der keine speziellen Datentypen (z. B. Datum/Uhrzeit) oder bestimmte Codierungen für JSON-Dokumente einführt. Für Azure Cosmos DB sind keine speziellen JSON-Konventionen erforderlich, um die Beziehungen zwischen verschiedenen Dokumenten festzuschreiben. Die SQL-Syntax von Azure Cosmos DB bietet leistungsstarke hierarchische und relationale Abfrageoperatoren, um Dokumente ohne spezielle Anmerkungen oder die Festschreibung der Beziehungen zwischen Dokumenten mithilfe unterschiedlicher Eigenschaften abzufragen und zu projizieren.  
 
 Wie die anderen Ressourcen können Dokumente mithilfe der REST-APIs oder eines [Client-SDKs](sql-api-sdk-dotnet.md)einfach erstellt, ersetzt, gelöscht, gelesen, aufgezählt und abgefragt werden. Durch das Löschen eines Dokuments wird sofort das Kontingent freigegeben, das allen geschachtelten Anhängen entspricht. Der Grad der Lesekonsistenz von Dokumenten folgt der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Dokumenten folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos. 
 
@@ -426,11 +426,11 @@ Betrachten Sie eine soziale Leseanwendung, die Azure Cosmos DB zum Speichern von
 
 * Der Buchinhalt selbst wird im Medienspeicher entweder als Teil des Azure Cosmos DB-Datenbankkontos oder eines Remotemedienspeichers zur Verfügung gestellt. 
 * Eine Anwendung kann die Metadaten der einzelnen Benutzer als individuelles Dokument speichern. Die Metadaten von Johannes für Buch1 können z. B. in einem Dokument gespeichert werden, auf das über „/sammlungen/johannes/dokumente/buch1“ verwiesen wird. 
-* Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z. B. „/sammlungen/johannes/dokumente/buch1/kapitel1“, „/sammlungen/johannes/dokumente/buch1/kapitel2“ usw. 
+* Anhänge, die auf die Inhaltsseiten eines bestimmten Buchs für einen Benutzer verweisen, werden unter dem entsprechenden Dokument gespeichert, z.B. „/sammlungen/johannes/dokumente/buch1/kapitel1“, „/sammlungen/johannes/dokumente/buch1/kapitel2“ usw. 
 
 Die oben aufgeführten Beispiele verwenden benutzerfreundliche IDs, um die Ressourcenhierarchie zu verdeutlichen. Der Zugriff auf Ressourcen erfolgt mithilfe eindeutiger Ressourcen-IDs über REST-APIs. 
 
-Für die von Azure Cosmos DB verwalteten Medien verweist die „_media“-Eigenschaft des Anhangs über seinen URI auf das Medium. Azure Cosmos DB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von Azure Cosmos DB generiert, wenn Sie neue Medien hochladen. Zudem wird die „_media“-Eigenschaft aufgefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remoteblobspeicher speichern (z. B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "_media"-Eigenschaft.   
+Für die von Azure Cosmos DB verwalteten Medien verweist die „_media“-Eigenschaft des Anhangs über seinen URI auf das Medium. Azure Cosmos DB stellt die Garbage Collection für die Medien sicher, wenn alle ausstehenden Referenzen entfernt werden. Der Anhang wird automatisch von Azure Cosmos DB generiert, wenn Sie neue Medien hochladen. Zudem wird die „_media“-Eigenschaft aufgefüllt, um auf das neu hinzugefügte Medium zu verweisen. Wenn Sie die Medien in einem von Ihnen verwalteten Remoteblobspeicher speichern (z.B. OneDrive, Azure Storage, DropBox usw.), können Sie weiterhin Anhänge verwenden, um auf die Medien zu verweisen. In diesem Fall erstellen Sie den Anhang selbst und füllen seine "_media"-Eigenschaft.   
 
 Wie die anderen Ressourcen können Anhänge mithilfe der REST-APIs oder eines Client-SDKs einfach erstellt, ersetzt, gelöscht, gelesen und aufgezählt werden. Wie bei Dokumenten folgt der Grad der Lesekonsistenz von Anhängen der Konsistenzrichtlinie des Datenbankkontos. Diese Richtlinie kann anforderungsbasiert in Abhängigkeit von den Anforderungen Ihrer Anwendung an die Datenkonsistenz außer Kraft gesetzt werden. Bei der Abfrage von Anhängen folgt die Lesekonsistenz dem für die Sammlung festgelegten Indizierungsmodus. Die Konsistenz folgt der Konsistenzrichtlinie des Kontos. 
  
@@ -457,7 +457,7 @@ Wie alle anderen Ressourcen können Benutzer in Azure Cosmos DB mithilfe der RES
 ## <a name="permissions"></a>Berechtigungen
 Hinsichtlich der Zugriffssteuerung werden Ressourcen wie Datenbankkonten, Datenbanken, Benutzer und Berechtigungen als *administrative* Ressourcen betrachtet, da sie Administratorrechte erfordern. Auf der anderen Seite werden Ressourcen wie Sammlungen, Dokumente, Anhänge, gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) einer angegebenen Datenbank zugeordnet und als *Anwendungsressource*betrachtet. Entsprechend den zwei Arten von Ressourcen und den Rollen, die Zugriff darauf haben (also Administrator und Benutzer), definiert das Autorisierungsmodell zwei Arten von *Zugriffsschlüsseln*: *Hauptschlüssel* und *Ressourcenschlüssel*. Der Hauptschlüssel ist eine Komponente des Datenbankkontos und wird dem Entwickler (oder Administrator) übermittelt, der das Datenbankkonto bereitstellt. Dieser Hauptschlüssel verfügt über eine Administratorsemantik, da er zum Autorisieren des Zugriffs auf administrative Ressourcen und Anwendungsressourcen verwendet werden kann. Im Gegensatz dazu, ist der Ressourcenschlüssel ein differenzierter Zugriffsschlüssel, der den Zugriff auf eine *bestimmte* Anwendungsressource gestattet. Somit erfasst er die Beziehung zwischen dem Benutzer einer Datenbank und den Berechtigungen, über die der Benutzer für eine bestimmte Ressource verfügt (Beispiel: Sammlung, Dokument, Anhang, gespeicherte Prozedur, Trigger oder benutzerdefinierte Funktion).   
 
-Die einzige Möglichkeit zum Abrufen eines Ressourcenschlüssels besteht darin, unter einem bestimmten Benutzer eine Berechtigungsressource zu erstellen. Beachten Sie, dass zum Erstellen oder Abrufen einer Berechtigung ein Hauptschlüssel im Autorisierungsheader angegeben werden muss. Eine Berechtigungsressource verknüpft die Ressource, den Zugriff und den Benutzer. Nach der Erstellung einer Berechtigungsressource muss der Benutzer lediglich den zugehörigen Ressourcenschlüssel präsentieren, um Zugriff auf die relevante Ressource zu erhalten. Daher kann ein Ressourcenschlüssel als logische und kompakte Darstellung der Berechtigungsressource betrachtet werden.  
+Die einzige Möglichkeit zum Abrufen eines Ressourcenschlüssels besteht darin, unter einem bestimmten Benutzer eine Berechtigungsressource zu erstellen. Zum Erstellen oder Abrufen einer Berechtigung muss ein Hauptschlüssel im Autorisierungsheader angegeben werden. Eine Berechtigungsressource verknüpft die Ressource, den Zugriff und den Benutzer. Nach der Erstellung einer Berechtigungsressource muss der Benutzer lediglich den zugehörigen Ressourcenschlüssel präsentieren, um Zugriff auf die relevante Ressource zu erhalten. Daher kann ein Ressourcenschlüssel als logische und kompakte Darstellung der Berechtigungsressource betrachtet werden.  
 
 Wie bei allen anderen Ressourcen können Berechtigungen in Azure Cosmos DB mithilfe der REST-APIs oder eines Client-SDK einfach erstellt, ersetzt, gelöscht, gelesen und aufgezählt werden. Azure Cosmos DB bietet für das Lesen oder Abfragen der Metadaten einer Berechtigung immer eine hohe Konsistenz. 
 

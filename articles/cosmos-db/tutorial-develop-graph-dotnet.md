@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 66f0d0064fe59c6e1d249eb69c1b433fe661c513
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a442b6c3c8e2b8a781ee54f41a2e0db5b44b7395
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Graph-API in .NET
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
@@ -110,7 +110,7 @@ Erstellen Sie als Nächstes einen Diagrammcontainer mit der [CreateDocumentColle
 DocumentCollection graph = await client.CreateDocumentCollectionIfNotExistsAsync( 
     UriFactory.CreateDatabaseUri("graphdb"), 
     new DocumentCollection { Id = "graphcollz" }, 
-    new RequestOptions { OfferThroughput = 1000 }); 
+    new RequestOptions { OfferThroughput = 400 }); 
 ``` 
 
 ## <a id="serializing"></a>Serialisieren von Scheitelpunkten und Kanten in .NET-Objekte
@@ -121,7 +121,7 @@ Im Beispiel arbeiten wir mit einem einfachen sozialen Netzwerk mit vier Personen
 Der `Microsoft.Azure.Graphs.Elements`-Namespace stellt `Vertex`-, `Edge`-, `Property`- und `VertexProperty`-Klassen für die Deserialisierung von GraphSON-Antworten in klar definierte .NET-Objekte bereit.
 
 ## <a name="run-gremlin-using-creategremlinquery"></a>Ausführen von Gremlin mithilfe von CreateGremlinQuery
-Gremlin unterstützt wie SQL Lese-, Schreib- und Abfragevorgänge. Der folgende Codeausschnitt zeigt z.B. das Erstellen von Scheitelpunkten und Kanten, das Durchführen einiger Beispielabfragen mit `CreateGremlinQuery<T>` sowie die asynchrone Iteration dieser Ergebnisse mit `ExecuteNextAsync` und HasMoreResults.
+Gremlin unterstützt wie SQL Lese-, Schreib- und Abfragevorgänge. Der folgende Codeausschnitt zeigt z.B. das Erstellen von Scheitelpunkten und Kanten, das Durchführen einiger Beispielabfragen mit `CreateGremlinQuery<T>` sowie die asynchrone Iteration dieser Ergebnisse mit `ExecuteNextAsync` und `HasMoreResults`.
 
 ```cs
 Dictionary<string, string> gremlinQueries = new Dictionary<string, string>

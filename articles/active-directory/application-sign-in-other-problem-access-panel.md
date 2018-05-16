@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: f73b7929aea35382f7ca684c866b65e070668d5b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5765d64fccba69edd0ebe91a6c34694763e6c539
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Probleme beim Anmelden bei einer Anwendung über den Zugriffsbereich
 
@@ -66,7 +66,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 -   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
 
--   Microsoft Edge in Windows 10 Anniversary Edition oder höher
+-   Edge in Windows 10 Anniversary Edition oder höher
 
 -   Chrome – unter Windows 7 oder höher und MacOS x oder höher
 
@@ -90,7 +90,7 @@ Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die
 
 7.  Melden Sie sich beim Zugriffsbereich an, und überprüfen Sie, ob Sie die für kennwortbasiertes SSO konfigurierten Anwendungen **starten** können.
 
-Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt über die folgenden Links herunterladen:
+Sie können die Erweiterung für Chrome und Edge auch direkt über die folgenden Links herunterladen:
 
 -   [Zugriffsbereichserweiterung für Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
@@ -525,5 +525,5 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriff
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

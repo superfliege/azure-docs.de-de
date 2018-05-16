@@ -5,7 +5,7 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -89,25 +89,32 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Herstellen einer Verbindung mit einem sicheren Cluster mithilfe eines Clientzertifikats
-Führen Sie den folgenden PowerShell-Befehl zur Verbindungsherstellung mit einem sicheren Cluster aus, das Clientzertifikate verwendet, um den Administratorzugriff zu autorisieren. Stellen Sie den Zertifikatfingerabdruck für den Cluster und den Fingerabdruck des Clientzertifikats bereit, das Berechtigungen für die Clusterverwaltung erhalten hat. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
+Führen Sie den folgenden PowerShell-Befehl zur Verbindungsherstellung mit einem sicheren Cluster aus, das Clientzertifikate verwendet, um den Administratorzugriff zu autorisieren. 
+
+#### <a name="connect-using-certificate-common-name"></a>Herstellen einer Verbindung mithilfe des allgemeinen Namens des Zertifikats
+Stellen Sie den allgemeinen Namen des Zertifikats für den Cluster und den allgemeinen Namen des Clientzertifikats bereit, das Berechtigungen für die Clusterverwaltung erhalten hat. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
 
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `
-          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `
-          -StoreLocation CurrentUser -StoreName My
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName <certificate common name>  `
+    -FindType FindBySubjectName `
+    -FindValue <certificate common name> `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
-
-*ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators.
-Beim Auffüllen der Parameter sieht der Befehl wie im folgenden Beispiel aus: 
-
+*ServerCommonName* ist der allgemeine Name des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der allgemeine Name des Clientzertifikats des Administrators. Beim Auffüllen der Parameter sieht der Befehl wie im folgenden Beispiel aus:
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `
-          -KeepAliveIntervalInSec 10 `
-          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `
-          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `
-          -StoreLocation CurrentUser -StoreName My
+$ClusterName= "sf-commonnametest-scus.southcentralus.cloudapp.azure.com:19000"
+$certCN = "sfrpe2eetest.southcentralus.cloudapp.azure.com"
+
+Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+    -X509Credential `
+    -ServerCommonName $certCN  `
+    -FindType FindBySubjectName `
+    -FindValue $certCN `
+    -StoreLocation CurrentUser `
+    -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Windows Active Directory
@@ -312,7 +319,7 @@ Um [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) für ei
 
 Die vollständige URL steht auch im Cluster Essentials-Bereich des Azure-Portal zur Verfügung.
 
-Zum Herstellen einer Verbindung mit einem sicheren Cluster unter Windows oder OS X können Sie das Clientzertifikat importieren. Der Browser fordert Sie dann auf, das Zertifikat anzugeben, das zum Herstellen einer Verbindung mit dem Cluster verwendet werden soll.  Auf Linux-Computern muss das Zertifikat mithilfe von erweiterten Browsereinstellungen (jedem Browser verfügt über unterschiedliche Mechanismen) importiert werden. Er muss auf den Speicherort des Zertifikats auf dem Datenträger verweisen.
+Zum Herstellen einer Verbindung mit einem sicheren Cluster unter Windows oder OS X können Sie das Clientzertifikat importieren. Der Browser fordert Sie dann auf, das Zertifikat anzugeben, das zum Herstellen einer Verbindung mit dem Cluster verwendet werden soll.  Auf Linux-Computern muss das Zertifikat mithilfe von erweiterten Browsereinstellungen (jeder Browser verfügt über unterschiedliche Mechanismen) importiert werden, und es muss auf den Speicherort des Zertifikats auf dem Datenträger verwiesen werden.
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Azure Active Directory
 

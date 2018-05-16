@@ -5,7 +5,7 @@ services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5177bac9-722f-47ef-8a14-b201142ba4bc
 ms.service: iot-hub
 ms.devlang: csharp
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 4794f81787fd575c34fa8a2ef66431d85dcf4a5d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 84a74a59417d3d1b9ebe0e2ede6c105b6fb3a576
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="routing-messages-with-iot-hub-net"></a>Weiterleiten von Nachrichten mit Azure IoT Hub (.NET)
 
@@ -101,7 +101,7 @@ private static async void SendDeviceToCloudMessagesAsync()
 }
 ```
 
-Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt. Dadurch wird eine Nachricht simuliert, die eine sofortige Aktion durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung unterstützt Weiterleiten von Nachrichten auf Basis des Nachrichtentexts.
+Mit dieser Methode werden vom Gerät gesendeten Nachrichten nach dem Zufallsprinzip die Eigenschaften `"level": "critical"` und `"level": "storage"` hinzugefügt. Dadurch wird eine Nachricht simuliert, die eine sofortige Aktion durch das Anwendungs-Back-End erfordert oder dauerhaft gespeichert werden muss. Die Anwendung unterstützt das Weiterleiten von Nachrichten auf der Grundlage des Nachrichtentexts.
 
 > [!NOTE]
 > Sie können Nachrichteneigenschaften zum Weiterleiten von Nachrichten für verschiedene Szenarien zusätzlich zu dem hier gezeigten Beispiel des langsamsten Pfads verwenden – einschließlich der Cold-Path-Verarbeitung.
@@ -214,7 +214,7 @@ In diesem Tutorial haben Sie gelernt, D2C-Nachrichten zuverlässig mit der Nachr
 
 Im Tutorial [Gewusst wie: Senden von C2D-Nachrichten mithilfe von IoT Hub][lnk-c2d] erfahren Sie, wie Sie Nachrichten aus Ihrem Lösungs-Back-End an Ihre Geräte senden.
 
-Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT Suite][lnk-suite].
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für Remoteüberwachung][lnk-suite].
 
 Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub].
 

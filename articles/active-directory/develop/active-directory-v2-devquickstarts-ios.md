@@ -1,25 +1,25 @@
 ---
-title: "Hinzufügen der Anmeldung zu einer iOS-Anwendung mit dem Azure AD v2.0-Endpunkt | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie eine iOS-App erstellen, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch mit ihrem Geschäfts-, Schul- oder Unikonto anmelden können."
+title: Hinzufügen der Anmeldung zu einer iOS-Anwendung mit dem Azure AD v2.0-Endpunkt | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie eine iOS-App erstellen, bei der sich Benutzer sowohl mit ihrem persönlichen Microsoft-Konto als auch mit ihrem Geschäfts-, Schul- oder Unikonto anmelden können.
 services: active-directory
-documentationcenter: 
-author: brandwe
+author: CelesteDG
 manager: mtillman
-editor: 
 ms.assetid: fd3603c0-42f7-438c-87b5-a52d20d6344b
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: brandwe
+ms.author: celested
+ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 398ddbd004b4a12f4aa79ed64cc85f0e5bc5407a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7476417e6585976ea2404a83602a6d9aa77d9c7a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="add-sign-in-to-an-ios-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>Hinzufügen der Anmeldung bei einer iOS-App mit dem v2.0-Endpunkt unter Verwendung einer Drittanbieterbibliothek mit Graph-API
 Die Microsoft Identity-Plattform nutzt offene Standards, z.B. OAuth2 und OpenID Connect. Entwickler können jede gewünschte Bibliothek verwenden, um unsere Dienste zu integrieren. Um Entwickler bei der Nutzung unserer Plattform mit anderen Bibliotheken zu unterstützen, haben wir einige exemplarische Vorgehensweisen wie diese erstellt. Darin wird veranschaulicht, wie Sie Drittanbieterbibliotheken konfigurieren, um eine Verbindung mit der Microsoft-Identitätsplattform herzustellen. Die meisten Bibliotheken, die die [RFC6749 OAuth2-Spezifikation](https://tools.ietf.org/html/rfc6749) implementieren, können eine Verbindung mit der Microsoft-Identitätsplattform herstellen.
@@ -36,12 +36,12 @@ Wenn OAuth2 oder OpenID Connect neu für Sie sind, ergibt diese Beispielkonfigur
 Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure Active Directory.
 
 > [!NOTE]
-> Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 > 
 > 
 
 ## <a name="download-code-from-github"></a>Code von GitHub herunterladen
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)verwaltet.  Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
+Der Code für dieses Tutorial wird [auf GitHub](https://github.com/Azure-Samples/active-directory-ios-native-nxoauth2-v2)verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```
 git clone --branch skeleton git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.git
@@ -54,7 +54,7 @@ git clone git@github.com:Azure-Samples/active-directory-ios-native-nxoauth2-v2.g
 ```
 
 ## <a name="register-an-app"></a>Registrieren einer App
-Erstellen Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) eine neue App, oder führen Sie die detaillierten Schritte unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md) aus.  Stellen Sie sicher, dass Sie:
+Erstellen Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) eine neue App, oder führen Sie die detaillierten Schritte unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md) aus. Stellen Sie sicher, dass Sie:
 
 * Kopieren Sie die Ihrer App zugewiesene **Anwendungs-ID**. Sie benötigen sie in Kürze.
 * Fügen Sie die **Mobile** -Plattform Ihrer App hinzu.
@@ -124,7 +124,7 @@ Für die Einrichtung der NXOAuth2Client-Bibliothek sind einige Werte erforderlic
 
 Sehen wir uns die Detail zum Code an.
 
-Die erste Zeichenfolge ist für `scopes`.  Der `User.Read` -Wert ermöglicht Ihnen das Lesen des Basisprofils des angemeldeten Benutzers.
+Die erste Zeichenfolge ist für `scopes`. Der `User.Read` -Wert ermöglicht Ihnen das Lesen des Basisprofils des angemeldeten Benutzers.
 
 Weitere Informationen zu allen verfügbaren Bereichen finden Sie unter [Microsoft Graph-Berechtigungsbereiche](https://graph.microsoft.io/docs/authorization/permission_scopes).
 

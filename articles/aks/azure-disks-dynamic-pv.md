@@ -8,17 +8,17 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: a6bc79d0556299634a78c5232bbab4e20810172c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5c82659e4dd980b9285d81d51eb17b227ec33035
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Persistente Volumes mit Azure-Datenträgern
 
 Ein persistentes Volume stellt ein Speicherelement dar, das für die Verwendung in Kubernetes-Pods bereitgestellt wurde. Ein persistentes Volume kann von einem oder mehreren Pods verwendet und dynamisch oder statisch bereitgestellt werden. Weitere Informationen zu persistenten Kubernetes-Volumes finden Sie unter [Persistente Kubernetes-Volumes][kubernetes-volumes].
 
-Dieses Dokument enthält Informationen zur Verwendung von persistenten Volumes mit Azure-Datenträgern in einem AKS-Cluster (Azure Container Service).
+Dieses Dokument enthält Informationen zur Verwendung von persistenten Volumes mit Azure-Datenträgern in einem AKS-Cluster (Azure Kubernetes Service).
 
 > [!NOTE]
 > Ein Azure-Datenträger kann nur mit dem Zugriffsmodustyp „ReadWriteOnce“ eingebunden werden. Dadurch ist er nur für einen einzelnen AKS-Knoten verfügbar. Wenn Sie ein persistentes Volume für mehrere Knoten freigeben möchten, ziehen Sie die Verwendung von [Azure Files][azure-files-pvc] in Erwägung.

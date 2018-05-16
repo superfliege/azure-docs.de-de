@@ -1,12 +1,12 @@
 ---
 title: Automatische Installation des Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumentation
-description: "Dieses Thema erläutert, wie Sie eine unbeaufsichtigte Installation des Azure AD-Anwendungsproxyconnectors durchführen, um sicheren Remotezugriff auf Ihre lokalen Apps zu gewähren."
+description: Dieses Thema erläutert, wie Sie eine unbeaufsichtigte Installation des Azure AD-Anwendungsproxyconnectors durchführen, um sicheren Remotezugriff auf Ihre lokalen Apps zu gewähren.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 3aa1c7f2-fb2a-4693-abd5-95bb53700cbb
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.date: 01/31/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dbda2448c5bf2b6998d120a082e036d7e0125a1f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b9d8535be51601f2ca438f2d22c18656c5ff0dc0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Erstellen eines Skripts für die unbeaufsichtigte Installation für den Azure AD-Anwendungsproxyconnector
 
@@ -127,8 +127,8 @@ Es gibt zwei Methoden zum Registrieren des Connectors:
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
 ## <a name="next-steps"></a>Nächste Schritte 
-* [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](active-directory-application-proxy-custom-domains.md)
-* [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
+* [Veröffentlichen von Anwendungen mit Ihrem eigenen Domänennamen](manage-apps/application-proxy-configure-custom-domain.md)
+* [Aktivieren der einmaligen Anmeldung](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)
 
 

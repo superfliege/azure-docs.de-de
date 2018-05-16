@@ -4,7 +4,7 @@ description: Dieser Artikel bietet einen Satz von Checklisten für Azure Operati
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c03e8bcfe3b874e3897d3c2d94f42d10d64d7af5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ae8f2393b6965cc2fc78a297ea79e1170acc011f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-operational-security-checklist"></a>Checkliste für Azure Operational Security
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Vor der Bereitstellung der Cloudanwendung in der Produktion ist es sinnvoll, eine Checkliste für die Bewertung Ihrer Anwendung zu verwenden. Hierbei wird eine Liste wichtiger und empfohlener Betriebssicherheitsaktionen überprüft, die Sie berücksichtigen müssen.

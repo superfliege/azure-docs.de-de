@@ -3,16 +3,17 @@ title: Überprüfen der Konfiguration des Azure Automation-Kontos
 description: In diesem Artikel wird beschrieben, wie Sie überprüfen, ob die Konfiguration Ihres Automation-Kontos richtig eingerichtet ist.
 services: automation
 ms.service: automation
+ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6b8e1f2923657965f4bab89e7a0f5f08faa1d27e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5a1e763e12163c115384a09311c2b0177481ae92
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Testen der Authentifizierung für das ausführende Azure Automation-Konto
 Nachdem die erfolgreiche Erstellung eines Automation-Kontos abgeschlossen ist, können Sie einen einfachen Test durchführen. Auf diese Weise können Sie bestätigen, dass die Authentifizierung für die Azure Resource Manager- oder klassische Azure-Bereitstellung möglich ist, indem Sie Ihr neu erstelltes oder aktualisiertes ausführendes Automation-Konto verwenden.    

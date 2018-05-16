@@ -1,26 +1,20 @@
 ---
-title: "Bedingter Zugriff für Benutzer der Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
-description: "Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen."
+title: Bedingter Zugriff für Benutzer der Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation
+description: Azure Active Directory B2B-Zusammenarbeit unterstützt die Multi-Factor Authentication (MFA) für den selektiven Zugriff auf Ihre Unternehmensanwendungen.
 services: active-directory
-documentationcenter: 
-author: twooley
-manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
 ms.service: active-directory
-ms.devlang: NA
+ms.component: B2B
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
 ms.date: 09/11/2017
 ms.author: twooley
+author: twooley
+manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 4c8827bdf18d59fbe6ba92593513e25e493974b5
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 2fed28bb7f7b61556a36b11b325ace9773f89991
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit
 
@@ -107,16 +101,8 @@ Risikobasierte Anmelderichtlinien können derzeit nicht auf B2B-Benutzer angewen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 
 * [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
-* [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
-* [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
-* [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
 * [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
-* [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
 * [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
-* [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
-* [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)

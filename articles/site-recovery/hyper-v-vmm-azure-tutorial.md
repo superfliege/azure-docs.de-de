@@ -1,18 +1,18 @@
 ---
 title: Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure mit Azure Site Recovery | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs in System Center VMM-Clouds nach Azure mit dem Azure Site Recovery-Dienst einrichten."
+description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hyper-V-VMs in System Center VMM-Clouds nach Azure mit dem Azure Site Recovery-Dienst einrichten.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 99477757c89fe2df7ae24b7ffe95c8fb7f470c93
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: a8bbbe0a5aca20222ff7385be9d0ecf0a4224d5c
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
@@ -59,7 +59,7 @@ Bei der Einrichtung der Quellumgebung installieren Sie den Azure Site Recovery-A
 4. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des Anbietersetups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 5. Laden Sie den Recovery Services-Agent herunter.
 
-    ![Herunterladen](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
+    ![Download](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
 ### <a name="install-the-provider-on-the-vmm-server"></a>Installieren des Anbieters auf dem VMM-Server
 

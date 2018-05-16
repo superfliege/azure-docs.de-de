@@ -1,13 +1,13 @@
 ---
-title: "Lösung für verbundene Factorys – Häufig gestellte Fragen – Azure | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zur IoT Suite Connected Factory"
-services: 
+title: 'Connected Factory-Lösung: Häufig gestellte Fragen – Azure | Microsoft-Dokumentation'
+description: Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 12ebd8b8dfa90ab736190e842b35744dbf1c5b96
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Häufig gestellte Fragen zur vorkonfigurierten IoT Suite Connected Factory-Lösung
+# <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Häufig gestellte Fragen zum Solution Accelerator für Connected Factory
 
-Informationen finden Sie auch in den allgemeinen [häufig gestellten Fragen](iot-suite-faq.md) zur IoT Suite.
+Informationen finden Sie auch in den allgemeinen [häufig gestellten Fragen](iot-suite-faq.md) zum IoT Solution Accelerator.
 
-### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solution"></a>Wo finde ich den Quellcode für die vorkonfigurierte Lösung?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerator"></a>Wo finde ich den Quellcode für den Solution Accelerator?
 
 Der Quellcode ist im folgenden GitHub-Repository gespeichert:
 
-* [Connected factory preconfigured solution](https://github.com/Azure/azure-iot-connected-factory) (Vorkonfigurierte Lösung für eine verbundene Factory)
+* [Solution Accelerator für Connected Factory](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="what-is-opc-ua"></a>Was ist OPC UA?
 
@@ -40,7 +40,7 @@ Die OPC Unified Architecture (UA), die 2008 veröffentlicht wurde, ist ein platt
 * Technologie
 * Prozesse
 
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Warum hat sich Microsoft für OPC UA als vorkonfigurierte Lösung für eine verbundene Factory entschieden?
+### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-solution-accelerator"></a>Warum hat sich Microsoft für OPC UA als Solution Accelerator für Connected Factory entschieden?
 
 Microsoft hat OPC UA ausgewählt, da es sich um einen offenen, nicht proprietären, plattformunabhängigen, von der Industrie anerkannten und bewährten Standard handelt. Er stellt eine Voraussetzung für Referenzarchitekturlösungen für die Industrie 4.0 (RAMI4.0) dar und gewährleistet die Interoperabilität zwischen einer Vielzahl von Herstellungsverfahren und -geräten. Microsoft sieht bei seinen Kunden einen Bedarf für die Erstellung von Industrie 4.0-Lösungen. Die Unterstützung für OPC UA verringert die Barrieren für Kunden, ihre Ziele zu erreichen, und bietet sofort Geschäftsvorteile.
 
@@ -100,7 +100,7 @@ Wenn Sie Ihre Lösung mit dem `build.ps1`-Skript im [Repository](https://github.
 
 Sie können die Verbindungszeichenfolge auch im Azure-Portal finden. Ermitteln Sie in der IoT Hub-Ressource in der Ressourcengruppe Ihrer Bereitstellung die Einstellung für die Verbindungszeichenfolge.
 
-### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Welche IoT Hub-Geräte werden von der Simulation der verbundenen Factory verwendet?
+### <a name="which-iot-hub-devices-does-the-connected-factory-simulation-use"></a>Welche IoT Hub-Geräte werden von der Connected Factory-Simulation verwendet?
 
 Die Simulation registriert die folgenden Geräte selbst:
 
@@ -148,11 +148,11 @@ Wenn Sie feststellen, dass keine Daten an IoT Hub gesendet werden, liegt ein Pro
 
 Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen.
 
-Wenn Sie von [www.azureiotsuite.com](http://www.azureiotsuite.com) bereitstellen, wird während der Bereitstellung überprüft, ob Ihr Abonnement über einen aktivierten Plan für die Bing Karten-API für Unternehmen verfügt. Eine interaktive Karte zur Connected Factory wird automatisch bereitgestellt. Ist dies nicht der Fall, können Sie folgendermaßen trotzdem eine interaktive Karte in Ihrer Bereitstellung aktivieren:
+Bei der Bereitstellung über [www.azureiotsuite.com](http://www.azureiotsuite.com) wird während der Bereitstellung überprüft, ob Ihr Abonnement über einen aktivierten Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügt, und eine interaktive Karte wird automatisch in Connected Factory bereitgestellt. Ist dies nicht der Fall, können Sie folgendermaßen trotzdem eine interaktive Karte in Ihrer Bereitstellung aktivieren:
 
-Wenn Sie die Bereitstellung mit dem Skript `build.ps1` im GitHub-Repository für die Connected Factory durchführen und über einen Plan für die Bing Karten-API für Unternehmen verfügen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den Abfrageschlüssel Ihres Plans fest. Die interaktive Karte wird dann automatisch aktiviert.
+Wenn Sie die Bereitstellung mit dem Skript `build.ps1` im GitHub-Repository für Connected Factory durchführen und über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, legen Sie die Umgebungsvariable `$env:MapApiQueryKey` im Buildfenster auf den Abfrageschlüssel Ihres Plans fest. Die interaktive Karte wird dann automatisch aktiviert.
 
-Wenn Sie nicht über einen Plan für die Bing Karten-API für Unternehmen verfügen, stellen Sie die Connected Factory-Lösung über [www.azureiotsuite.com](http://www.azureiotsuite.com) oder mit dem Skript `build.ps1` bereit. Fügen Sie dann den Plan für die Bing Karten-API für Unternehmen Ihrem Abonnement wie unter [Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?](#how-do-i-create-a-bing-maps-api-for-enterprise-account) beschrieben hinzu. Suchen Sie den Abfrageschlüssel für dieses Konto wie unter [Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) beschrieben hinzu, und speichern Sie diesen Schlüssel. Browsen Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **App-Einstellungen**. Legen Sie **MapApiQueryKey** auf den Abfrageschlüssel fest, den Sie abgerufen haben. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
+Wenn Sie nicht über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, stellen Sie die Connected Factory-Lösung über [www.azureiotsuite.com](http://www.azureiotsuite.com) oder mit dem Skript `build.ps1` bereit. Fügen Sie dann den Plan für die Bing Karten-API für Unternehmen Ihrem Abonnement wie unter [Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?](#how-do-i-create-a-bing-maps-api-for-enterprise-account) beschrieben hinzu. Suchen Sie den Abfrageschlüssel für dieses Konto wie unter [Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) beschrieben hinzu, und speichern Sie diesen Schlüssel. Navigieren Sie zum Azure-Portal, und greifen Sie auf die App Service-Ressource in Ihrer Connected Factory-Bereitstellung zu. Navigieren Sie zu **Anwendungseinstellungen**. Hier finden Sie den Abschnitt **App-Einstellungen**. Legen Sie **MapApiQueryKey** auf den Abfrageschlüssel fest, den Sie abgerufen haben. Speichern Sie die Einstellungen, navigieren Sie zu **Übersicht**, und starten Sie App Service neu.
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Wie erstelle ich ein Konto für die Bing Karten-API für Unternehmen?
 
@@ -210,8 +210,8 @@ Gehen Sie wie folgt vor, um Telemetriedaten von OPC UA-fremden Geräten an eine 
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch einige andere Features und Funktionen der vorkonfigurierten IoT Suite-Lösungen ausprobieren:
+Sie können auch einige andere Features und Funktionen der IoT-Solution Accelerators untersuchen:
 
-* [Übersicht über die vorkonfigurierte Predictive Maintenance-Lösung](iot-suite-predictive-overview.md)
-* [Übersicht über die vorkonfigurierte Lösung für eine verbundene Factory](iot-suite-connected-factory-overview.md)
+* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](iot-suite-predictive-overview.md)
+* [Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung](iot-suite-connected-factory-overview.md)
 * [Sicherheit im Internet der Dinge von Anfang an](securing-iot-ground-up.md)

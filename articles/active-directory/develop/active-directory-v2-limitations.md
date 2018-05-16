@@ -3,23 +3,25 @@ title: Azure Active Directory v2.0-Endpunkt – Einschränkungen | Microsoft Doc
 description: Eine Liste der Einschränkungen des v2.0-Endpunkts von Azure AD.
 services: active-directory
 documentationcenter: ''
-author: dstrockis
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: a99289c0-e6ce-410c-94f6-c279387b4f66
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a36f55c57a75f671b3e5eeae3d91ff60483afd37
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e026fd7021b39905d5392be55dbf3862cd307360
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Sollte ich den v2.0-Endpunkt verwenden?
 Beim Erstellen von Anwendungen, die in Azure Active Directory integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der ursprüngliche Azure Active Directory-Endpunkt wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Allerdings werden mit dem v2.0-Endpunkt [bedeutende Vorteile](active-directory-v2-compare.md) für Entwickler eingeführt.
@@ -47,7 +49,7 @@ Derzeit müssen Sie für jede App, die Sie mit dem v2.0-Endpunkt integrieren mö
 Darüber hinaus gelten für App-Registrierungen, die Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) erstellen, die folgenden Einschränkungen:
 
 * Pro Anwendungs-ID sind nur zwei App-Geheimnisse zulässig.
-* Eine von einem Benutzer mit einem persönlichen Microsoft-Konto vorgenommene App-Registrierung kann nur von einem einzelnen Entwicklerkonto angezeigt und verwaltet werden. Sie kann nicht von mehreren Entwicklern gemeinsam genutzt werden.  Wenn Sie Ihre App-Registrierung mit mehreren Entwicklern gemeinsam nutzen möchten, können Sie die Anwendung erstellen, indem Sie sich mit einem Azure AD-Konto beim Registrierungsportal anmelden.
+* Eine von einem Benutzer mit einem persönlichen Microsoft-Konto vorgenommene App-Registrierung kann nur von einem einzelnen Entwicklerkonto angezeigt und verwaltet werden. Sie kann nicht von mehreren Entwicklern gemeinsam genutzt werden. Wenn Sie Ihre App-Registrierung mit mehreren Entwicklern gemeinsam nutzen möchten, können Sie die Anwendung erstellen, indem Sie sich mit einem Azure AD-Konto beim Registrierungsportal anmelden.
 * Es gibt mehrere Einschränkungen, was das zulässige Format des Umleitungs-URI angeht. Weitere Informationen zu Umleitungs-URIs finden Sie im nächsten Abschnitt.
 
 ## <a name="restrictions-on-redirect-uris"></a>Einschränkungen für Umleitungs-URIs
@@ -89,12 +91,12 @@ Informationen zum Registrieren einer App im Anwendungsregistrierungsportal finde
 Die Bibliotheksunterstützung für den v2.0-Endpunkt ist gegenwärtig eingeschränkt. Wenn Sie den v2.0-Endpunkt in einer Produktionsanwendung verwenden möchten, stehen Ihnen folgende Möglichkeiten offen:
 
 * Wenn Sie eine Webanwendung erstellen, können Sie die allgemein verfügbare serverseitige Middleware von Microsoft bedenkenlos für die Anmeldung und Tokenüberprüfung einsetzen. Dazu gehören die OWIN Open ID Connect-Middleware für ASP.NET und das NodeJS Passport-Plug-In. Codebeispiele, die Microsoft-Middleware verwenden, finden Sie unter [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started).
-* Wenn Sie eine Desktop- oder mobile Anwendung entwickeln, können Sie eine der Microsoft Authentication Libraries (MSAL, derzeit in der Vorschauphase) verwenden.  Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In unserer [Referenz zu Authentifizierungsbibliotheken](active-directory-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
+* Wenn Sie eine Desktop- oder mobile Anwendung entwickeln, können Sie eine der Microsoft Authentication Libraries (MSAL, derzeit in der Vorschauphase) verwenden. Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In unserer [Referenz zu Authentifizierungsbibliotheken](active-directory-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
 * Für Plattformen, die nicht von den Microsoft-Bibliotheken abgedeckt sind, können Sie die Integration mit dem v2.0-Endpunkt auch erreichen, indem Sie Protokollnachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die v2.0-Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](active-directory-v2-protocols.md), um Sie bei einer solchen Integration zu unterstützen.
 * Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](http://openid.net/connect/)- und die [OAuth 2.0](http://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen und die Liste der Open Source-Clientbibliotheken und -Beispiele, die mit dem v2.0-Endpunkt getestet wurden, finden Sie unter [Azure Active Directory (AD) v2.0 und Authentifizierungsbibliotheken](active-directory-v2-libraries.md).
 
 ## <a name="restrictions-on-protocols"></a>Einschränkungen für Protokolle
-Der v2.0-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID Connect und OAuth 2.0.  Nicht alle Features und Funktionen von OAuth-Protokollen wurden in den v2.0-Endpunkt integriert. Die folgenden Protokollfeatures und -funktionen sind aktuell im v2. 0-Endpunkt *nicht verfügbar*:
+Der v2.0-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID Connect und OAuth 2.0. Nicht alle Features und Funktionen von OAuth-Protokollen wurden in den v2.0-Endpunkt integriert. Die folgenden Protokollfeatures und -funktionen sind aktuell im v2. 0-Endpunkt *nicht verfügbar*:
 
 * ID-Token, die vom v2.0-Endpunkt ausgegeben werden, enthalten keinen `email`-Anspruch für den Benutzer, selbst wenn Sie vom Benutzer die Berechtigung zum Anzeigen seiner E-Mail erhalten.
 * Der OpenID Connect UserInfo-Endpunkt ist für den v2.0-Endpunkt nicht implementiert. Alle Benutzerprofildaten, die Sie potenziell an diesem Endpunkt empfangen würden, stehen jedoch über den Microsoft Graph-Endpunkt `/me` zur Verfügung.

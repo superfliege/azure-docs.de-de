@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: df118a2b5bd8e31bd3fe6101d1d3f631092b6f24
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Container Service (AKS)
+# <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)
 
-Nach der Bereitstellung einer Anwendung in Kubernetes kann diese durch Angeben eines neuen Containerimages oder einer neuen Imageversion aktualisiert werden. Dabei wird das Update gestaffelt bereitgestellt, sodass jeweils nur ein Teil der Bereitstellung aktualisiert wird. Durch diese Art des Updates kann die Anwendung während des Updates weiterhin ausgeführt werden. Darüber hinaus wird ein Rollbackmechanismus bereitgestellt, falls ein Fehler bei der Bereitstellung auftritt. 
+Nach der Bereitstellung einer Anwendung in Kubernetes kann diese durch Angeben eines neuen Containerimages oder einer neuen Imageversion aktualisiert werden. Dabei wird das Update gestaffelt bereitgestellt, sodass jeweils nur ein Teil der Bereitstellung aktualisiert wird. Durch diese Art des Updates kann die Anwendung während des Updates weiterhin ausgeführt werden. Darüber hinaus wird ein Rollbackmechanismus bereitgestellt, falls ein Fehler bei der Bereitstellung auftritt.
 
 In diesem Tutorial – Teil 6 von 8 – wird die Azure Voting-Beispiel-App aktualisiert. Sie führen folgende Aufgaben aus:
 
@@ -31,15 +31,15 @@ In nachfolgenden Tutorials wird Log Analytics für die Überwachung des Kubernet
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt. 
+In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt.
 
 Zudem wurde ein Anwendungsrepository geklont, das den Anwendungsquellcode und eine vorab erstellte Docker Compose-Datei enthält, die in diesem Tutorial verwendet wird. Stellen Sie sicher, dass Sie einen Klon des Repositorys erstellt und in das geklonte Verzeichnis gewechselt haben. Darin befindet sich ein Verzeichnis mit dem Namen `azure-vote` und eine Datei mit dem Namen `docker-compose.yaml`.
 
-Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück. 
+Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
 ## <a name="update-application"></a>Aktualisieren der Anwendung
 
-Im Rahmen dieses Tutorials wird eine Änderung an der Anwendung vorgenommen, und die aktualisierte Anwendung wird im Kubernetes-Cluster bereitgestellt. 
+Im Rahmen dieses Tutorials wird eine Änderung an der Anwendung vorgenommen, und die aktualisierte Anwendung wird im Kubernetes-Cluster bereitgestellt.
 
 Der Quellcode der Anwendung befindet sich im `azure-vote`-Verzeichnis. Öffnen Sie die Datei `config_file.cfg` mit einem Code-Editor oder Text-Editor. In diesem Beispiel wird `vi` verwendet.
 
@@ -69,13 +69,13 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>Lokales Testen der Anwendung
 
-Navigieren Sie zu http://localhost:8080, um die aktualisierte Anwendung anzuzeigen.
+Wechseln Sie zu http://localhost:8080, um die aktualisierte Anwendung anzuzeigen.
 
 ![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
 ## <a name="tag-and-push-images"></a>Kennzeichnen und Übertragen von Images per Push
 
-Kennzeichnen Sie das Image `azure-vote-front` mit dem loginServer-Namen der Containerregistrierung. 
+Kennzeichnen Sie das Image `azure-vote-front` mit dem loginServer-Namen der Containerregistrierung.
 
 Rufen Sie den Anmeldeservernamen mit dem Befehl [az acr list](/cli/azure/acr#az_acr_list) ab.
 

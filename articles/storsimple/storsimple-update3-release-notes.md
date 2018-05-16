@@ -1,11 +1,11 @@
 ---
 title: Versionsanmerkungen zu Update 3 der StorSimple 8000-Serie | Microsoft Docs
-description: "Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 3 der StorSimple 8000-Serie."
+description: Beschreibt die neuen Features sowie Probleme und Problemumgehungen für Update 3 der StorSimple 8000-Serie.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
 ms.devlang: NA
@@ -15,16 +15,13 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c22e3859fad55a8632d62aaf5f656081d6d662bd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9308602b77903e553e26d6f0586d963a4c58230d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 3 für Geräte der StorSimple 8000-Serie
-> [!NOTE]
-> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
-
 
 ## <a name="overview"></a>Übersicht
 Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Punkte bei Update 3 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind. 
@@ -56,7 +53,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in Update 3
 | 2 |Lokale Volumes |In der vorherigen Version gab es bei lokalen Volumes Probleme im Zusammenhang mit E/A-, Volumekonvertierungs- und Datenpfadfehlern. Diese Probleme gibt es in dieser Version nicht mehr. |Ja |Nein  |
 | 3 |Überwachung |Es gab mehrere Probleme im Zusammenhang mit dem Melden von Einheiten und der Überwachung sowie mit Diagrammen im Gerätedashboard, da für lokale Volumes falsche Informationen angezeigt wurden. Diese Probleme wurden in dieser Version behoben. |Ja |Nein  |
 | 4 |Schreibintensive E/A-Vorgänge |Wenn StorSimple für Workloads mit vielen Schreibvorgängen verwendet wird, konnte gelegentlich ein Fehler auftreten, bei dem der Arbeitssatz in der Cloud abgestuft wurde. Dieser Fehler wurde in dieser Version behoben. |Ja |Ja |
-| 5 |Backup  |Wenn ein Benutzer in den früheren Versionen der Software eine Sicherung eines Remoteklons erstellte, konnte es in seltenen Fällen zu Cloudfehlern kommen, die ein Timeout des Vorgangs verursachten. In dieser Version wurde das Problem behoben, sodass der Vorgang erfolgreich abgeschlossen wird. |Ja |Ja |
+| 5 |Backup |Wenn ein Benutzer in den früheren Versionen der Software eine Sicherung eines Remoteklons erstellte, konnte es in seltenen Fällen zu Cloudfehlern kommen, die ein Timeout des Vorgangs verursachten. In dieser Version wurde das Problem behoben, sodass der Vorgang erfolgreich abgeschlossen wird. |Ja |Ja |
 | 6 |Sicherungsrichtlinie |In einigen seltenen Fällen trat in den früheren Versionen der Software ein Fehler im Zusammenhang mit dem Löschen der Sicherungsrichtlinie auf. Dieses Problem wurde in dieser Version behoben. |Ja |Ja |
 
 ## <a name="known-issues-in-update-3"></a>Bekannte Probleme in Update 3

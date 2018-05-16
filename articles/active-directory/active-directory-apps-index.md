@@ -3,22 +3,22 @@ title: Artikelindex für die Anwendungsverwaltung in Azure Active Directory | Mi
 description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barbkess
 manager: mtillman
-ms.assetid: 5321b8e4-2afa-4dfe-8d53-4add7abb5ec8
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c9a60aaa627a41d023e5d5d7464046df5b55b05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -30,9 +30,9 @@ Die folgenden Artikel sind gute Ausgangspunkte für diejenigen, die lediglich ei
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Eine Einführung in die Probleme der Anwendungsverwaltung, die mit Azure AD gelöst werden |[Verwalten von Anwendungen mit Azure Active Directory (AD)](active-directory-enable-sso-scenario.md) |
+| Eine Einführung in die Probleme der Anwendungsverwaltung, die mit Azure AD gelöst werden |[Verwalten von Anwendungen mit Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
 | Eine Übersicht über die verschiedenen Funktionen in Azure AD im Zusammenhang mit dem Aktivieren der einmaligen Anmeldung, dem Definieren des Zugriffs auf Apps sowie dem Festlegen der Startmethode für Apps |[Anwendungszugriff und einmaliges Anmelden in Azure Active Directory](active-directory-appssoaccess-whatis.md) |
-| Ein Blick auf die verschiedenen Schritte beim Integrieren von Apps in Ihr Azure AD |[Integrieren von Azure Active Directory in Anwendungen](active-directory-integrating-applications-getting-started.md)<br /><br />[Aktivieren eines einmaligen Anmeldens an SaaS-Apps](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md) |
+| Ein Blick auf die verschiedenen Schritte beim Integrieren von Apps in Ihr Azure AD |[Integrieren von Azure Active Directory in Anwendungen](manage-apps/plan-an-application-integration.md)<br /><br />[Aktivieren eines einmaligen Anmeldens an SaaS-Apps](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md) |
 | Eine technische Erklärung zur Darstellung von Apps in Azure AD |[Wie und warum werden Anwendungen zu Azure AD hinzugefügt?](active-directory-how-applications-are-added.md) |
 
 ## <a name="troubleshooting-articles"></a>Artikel zur Problembehandlung
@@ -78,10 +78,10 @@ Wenn Sie in Ihrem privaten Netzwerk Anwendungen verwenden, die für Benutzer und
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Übersicht über den Azure AD-Anwendungsproxy und seine Funktionsweise |[Bereitstellen eines sicheren Remotezugriffs auf lokale Anwendungen](active-directory-application-proxy-get-started.md) |
-| Tutorials zum Konfigurieren des Anwendungsproxys und zum Veröffentlichen Ihrer ersten App |[Aktivieren des Anwendungsproxys über das Azure-Portal](active-directory-application-proxy-enable.md)<br /><br />[Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](active-directory-application-proxy-silent-installation.md)<br /><br />[Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](active-directory-application-proxy-publish.md)<br /><br />[Verwenden eines eigenen Domänennamens](active-directory-application-proxy-custom-domains.md) |
-| Aktivieren des einmaligen Anmeldens und des bedingten Zugriffs für Apps, die mit dem App-Proxy veröffentlicht werden |[Einmaliges Anmelden mit Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)<br /><br />[Bedingter Zugriff und Anwendungsproxy](application-proxy-enable-remote-access-sharepoint.md) |
-| Anleitung zum Verwenden des Anwendungsproxys für die folgenden Szenarien |[Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen](active-directory-application-proxy-native-client.md)<br /><br />[Arbeiten mit Ansprüche unterstützenden Apps im Anwendungsproxy](active-directory-application-proxy-claims-aware-apps.md)<br /><br />[Unterstützung für in getrennten Netzwerken und an getrennten Orten veröffentlichte Anwendungen](active-directory-application-proxy-connectors-azure-portal.md) |
+| Übersicht über den Azure AD-Anwendungsproxy und seine Funktionsweise |[Bereitstellen eines sicheren Remotezugriffs auf lokale Anwendungen](manage-apps/application-proxy.md) |
+| Tutorials zum Konfigurieren des Anwendungsproxys und zum Veröffentlichen Ihrer ersten App |[Aktivieren des Anwendungsproxys über das Azure-Portal](manage-apps/application-proxy-enable.md)<br /><br />[Installieren des Azure AD-Anwendungsproxyconnectors im Hintergrund](manage-apps/application-proxy-register-connector-powershell.md)<br /><br />[Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md)<br /><br />[Verwenden eines eigenen Domänennamens](manage-apps/application-proxy-configure-custom-domain.md) |
+| Aktivieren des einmaligen Anmeldens und des bedingten Zugriffs für Apps, die mit dem App-Proxy veröffentlicht werden |[Einmaliges Anmelden mit Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)<br /><br />[Bedingter Zugriff und Anwendungsproxy](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Anleitung zum Verwenden des Anwendungsproxys für die folgenden Szenarien |[Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen](manage-apps/application-proxy-configure-native-client-application.md)<br /><br />[Arbeiten mit Ansprüche unterstützenden Apps im Anwendungsproxy](manage-apps/application-proxy-configure-for-claims-aware-applications.md)<br /><br />[Unterstützung für in getrennten Netzwerken und an getrennten Orten veröffentlichte Anwendungen](manage-apps/application-proxy-connector-groups.md) |
 | Handbuch zur Problembehandlung beim Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](active-directory-application-proxy-troubleshoot.md) |
 
 Der Anwendungsproxy steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [den Zugriff auf Anwendungen mithilfe von Gruppen zuweisen](#managing-access-to-applications).
@@ -108,7 +108,7 @@ Sobald Sie das einmalige Anmelden für Ihre Apps und Ressourcen eingerichtet hab
 | Artikelleitfaden |  |
 |:---:| --- |
 | Eine Einführung in die Funktionen für bedingten Zugriff, die über Azure AD, Office 365 und Intune hinweg bereitgestellt werden |[Verwalten von Risiken mit bedingtem Zugriff](active-directory-conditional-access-azure-portal.md) |
-| Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-azure-portal.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](application-proxy-enable-remote-access-sharepoint.md) |
+| Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-azure-portal.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Registrieren von Geräten bei Azure Active Directory zum Aktivieren gerätebasierter Richtlinien für den bedingten Zugriff |[Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md)<br />– [Schritte für Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Schritte für Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Vorgehensweise: Verwenden der Microsoft Authenticator-App für die zweistufige Überprüfung | [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
@@ -121,7 +121,7 @@ Mit Cloud App Discovery können IT-Abteilungen ermitteln, welche SaaS-Apps in de
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Allgemeiner Überblick über die Funktionsweise |[Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md) |
+| Allgemeiner Überblick über die Funktionsweise |[Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md) |
 | Tiefer gehende Details zur Funktionsweise mit Antworten auf Datenschutzfragen |[Überlegungen zu Sicherheit und Datenschutz](active-directory-cloudappdiscovery-security-and-privacy-considerations.md) |
 | Häufig gestellte Fragen |[Häufig gestellte Fragen zu Cloud App Discovery](http://social.technet.microsoft.com/wiki/contents/articles/24037.cloud-app-discovery-frequently-asked-questions.aspx) |
 | Tutorials für die Bereitstellung von Cloud App Discovery |[Group Policy Deployment Guide (Bereitstellungshandbuch für Gruppenrichtlinien)](http://social.technet.microsoft.com/wiki/contents/articles/30965.cloud-app-discovery-group-policy-deployment-guide.aspx)<br /><br />[System Center Deployment Guide (Bereitstellungshandbuch für System Center)](http://social.technet.microsoft.com/wiki/contents/articles/30968.cloud-app-discovery-system-center-deployment-guide.aspx)<br /><br />[Installation auf Proxyservern mit benutzerdefinierten Ports](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md) |

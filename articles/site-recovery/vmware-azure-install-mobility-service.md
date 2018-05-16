@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 445a5f10eac0959dab57e10680659c0792ad6fba
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="install-the-mobility-service"></a>Installieren des Mobilitätsdiensts 
 
@@ -27,7 +27,7 @@ Azure Site Recovery Mobility Service wird auf VMware-VMs und physischen Servern 
 
 
 >[!IMPORTANT]
-> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf Windows-VMs auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/windows/extensions-features.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
+> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf Windows-VMs auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuell auf Ihrem Server installieren:

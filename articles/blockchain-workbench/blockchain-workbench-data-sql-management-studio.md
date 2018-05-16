@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 1c9ee1e94ba1195db027c3edfab2e2a96f181ca3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b640aec322d6dc184a428e67d9576cf162c8f394
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Verwenden von Azure Blockchain Workbench-Daten mit SQL Server Management Studio
 
@@ -50,4 +50,5 @@ Microsoft SQL Server Management Studio bietet die Möglichkeit zum schnellen Sch
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Datenbanksichten in Azure Blockchain Workbench](blockchain-workbench-database-views.md)
+> [!div class="nextstepaction"]
+> [Datenbanksichten in Azure Blockchain Workbench](blockchain-workbench-database-views.md)

@@ -1,8 +1,8 @@
 ---
 title: 'Azure Active Directory Domain Services: Bereitstellen eines Azure Active Directory-Anwendungsproxys | Microsoft-Dokumentation'
-description: "Verwenden eines Azure AD-Anwendungsproxys in durch Azure Active Directory Domain Services verwalteten Domänen"
+description: Verwenden eines Azure AD-Anwendungsproxys in durch Azure Active Directory Domain Services verwalteten Domänen
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eee20271c27f596ee6aefd0b7280c7862c53b289
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
 
-Wenn Sie mit dem Azure AD-Anwendungsproxy noch nicht vertraut sind, finden Sie weitere Informationen zu diesem Feature in folgendem Artikel: [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](../active-directory/active-directory-application-proxy-get-started.md).
+Wenn Sie mit dem Azure AD-Anwendungsproxy noch nicht vertraut sind, finden Sie weitere Informationen zu diesem Feature in folgendem Artikel: [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](../active-directory/manage-apps/application-proxy.md).
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -95,7 +95,7 @@ Sie haben den Azure AD-Anwendungsproxy eingerichtet und in Ihre verwaltete Azure
 
 * **Migrieren Ihrer Anwendungen zu virtuellen Azure-Computern:** Sie können Ihre Anwendungen per Lift &amp; Shift von lokalen Servern zu virtuellen Azure-Computern migrieren, die in die verwaltete Domäne eingebunden sind. Auf diese Weise können Sie die Infrastrukturkosten einsparen, die beim lokalen Ausführen von Servern anfallen.
 
-* **Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy:** Veröffentlichen Sie Anwendungen, die auf Ihren virtuellen Azure-Computern ausgeführt werden, über den Azure AD-Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../active-directory/application-proxy-publish-azure-portal.md).
+* **Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy:** Veröffentlichen Sie Anwendungen, die auf Ihren virtuellen Azure-Computern ausgeführt werden, über den Azure AD-Anwendungsproxy. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
 
 
 ## <a name="deployment-note---publish-iwa-integrated-windows-authentication-applications-using-azure-ad-application-proxy"></a>Bereitstellungshinweis: Veröffentlichen von IWA-Anwendungen (integrierte Windows-Authentifizierung) mit dem Azure AD-Anwendungsproxy

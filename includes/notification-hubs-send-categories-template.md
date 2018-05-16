@@ -1,11 +1,20 @@
-
-In diesem Abschnitt senden Sie Neuigkeiten als Vorlagenbenachrichtigungen mit Tags über eine .NET-Konsolen-App.
-
-Wenn Sie das Mobile Apps-Feature von Microsoft Azure App Service verwenden, ist es ratsam, das Tutorial [Hinzufügen von Pushbenachrichtigungen zu Mobile Apps] durchzuarbeiten und im oberen Bereich Ihre Plattform auszuwählen.
-
-Wenn Sie Java oder PHP verwenden möchten, sollten Sie die Informationen unter [Gewusst wie: Verwenden von Notification Hubs über Java oder PHP] lesen. Sie können Benachrichtigungen von beliebigen Back-Ends mithilfe der [Notification Hubs-REST-Schnittstelle] senden.
-
-Überspringen Sie die Schritte 1 bis 3, wenn Sie im Rahmen des Tutorials [Erste Schritte mit Notification Hubs] eine Konsolen-App für das Senden von Benachrichtigungen erstellt haben.
+---
+title: Includedatei
+description: Includedatei
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/30/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: 19352df7abff23ed44521a11e7907c84c8c0327f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
+In diesem Abschnitt senden Sie Neuigkeiten als Vorlagenbenachrichtigungen mit Tags über eine .NET-Konsolen-App. 
 
 1. Erstellen Sie in Visual Studio eine neue Visual C#-Konsolenanwendung:
    
@@ -20,33 +29,34 @@ Wenn Sie Java oder PHP verwenden möchten, sollten Sie die Informationen unter [
 
 4. Öffnen Sie die Datei „Program.cs“, und fügen Sie die folgende `using`-Anweisung hinzu:
    
-        using Microsoft.Azure.NotificationHubs;
+    ```csharp
+    using Microsoft.Azure.NotificationHubs;
+    ```
 
 5. Fügen Sie in der `Program` -Klasse die folgende Methode hinzu, oder ersetzen Sie sie, falls sie bereits vorhanden ist:
    
-        private static async void SendTemplateNotificationAsync()
+    ```csharp
+    private static async void SendTemplateNotificationAsync()
+    {
+        // Define the notification hub.
+        NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
+
+        // Create an array of breaking news categories.
+        var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+
+        // Send the notification as a template notification. All template registrations that contain
+        // "messageParam" and the proper tags will receive the notifications.
+        // This includes APNS, GCM, WNS, and MPNS template registrations.
+
+        Dictionary<string, string> templateParams = new Dictionary<string, string>();
+
+        foreach (var category in categories)
         {
-            // Define the notification hub.
-            NotificationHubClient hub =
-                NotificationHubClient.CreateClientFromConnectionString(
-                    "<connection string with full access>", "<hub name>");
-   
-            // Create an array of breaking news categories.
-            var categories = new string[] { "World", "Politics", "Business",
-                                            "Technology", "Science", "Sports"};
-   
-            // Send the notification as a template notification. All template registrations that contain
-            // "messageParam" and the proper tags will receive the notifications.
-            // This includes APNS, GCM, WNS, and MPNS template registrations.
-   
-            Dictionary<string, string> templateParams = new Dictionary<string, string>();
-   
-            foreach (var category in categories)
-            {
-                templateParams["messageParam"] = "Breaking " + category + " News!";
-                await hub.SendTemplateNotificationAsync(templateParams, category);
-            }
-         }
+            templateParams["messageParam"] = "Breaking " + category + " News!";
+            await hub.SendTemplateNotificationAsync(templateParams, category);
+        }
+    }
+    ```   
    
     Dieser Code sendet eine Vorlagenbenachrichtigung für jedes der sechs Tags im Zeichenfolgenarray. Durch die Verwendung von Tags wird sichergestellt, dass Geräte nur Benachrichtigungen für die registrierten Kategorien erhalten.
 
@@ -54,8 +64,10 @@ Wenn Sie Java oder PHP verwenden möchten, sollten Sie die Informationen unter [
 
 6. Fügen Sie in der **Main**-Methode die folgenden Zeilen hinzu:
    
-         SendTemplateNotificationAsync();
-         Console.ReadLine();
+    ```csharp
+    SendTemplateNotificationAsync();
+    Console.ReadLine();
+    ```
 
 7. Erstellen Sie die Konsolenanwendung.
 
@@ -63,8 +75,8 @@ Wenn Sie Java oder PHP verwenden möchten, sollten Sie die Informationen unter [
 [13]: ./media/notification-hubs-back-end/notification-hub-create-console-app.png
 
 <!-- URLs. -->
-[Erste Schritte mit Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Notification Hubs-REST-Schnittstelle]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
-[Hinzufügen von Pushbenachrichtigungen zu Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
-[Gewusst wie: Verwenden von Notification Hubs über Java oder PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
+[Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Notification Hubs REST interface]: http://msdn.microsoft.com/library/windowsazure/dn223264.aspx
+[Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft.Azure.NotificationHubs-NuGet-Pakets]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

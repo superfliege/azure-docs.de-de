@@ -1,6 +1,6 @@
 ---
-title: Continuous Deployment mit Jenkins über Kubernetes in Azure Container Service
-description: Automatisieren eines Continuous Deployment-Prozesses mit Jenkins zum Bereitstellen und Aktualisieren einer Container-App über Kubernetes in Azure Container Service
+title: Continuous Deployment mit Jenkins über Kubernetes in Azure Kubernetes Service
+description: 'Gewusst wie: Automatisieren eines Continuous Deployment-Prozesses mit Jenkins zum Bereitstellen und Durchführen eines Upgrades für eine Container-App über Kubernetes in Azure Kubernetes Service'
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 03/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ebe7a88fcb0a0785b72c512e64a2d9aeb5fc506
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: efdb89c5f4c6bdb9b007b7c0020cbdb8f6034eed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="continuous-deployment-with-jenkins-and-azure-container-service"></a>Continuous Deployment mit Jenkins und Azure Container Service
+# <a name="continuous-deployment-with-jenkins-and-azure-kubernetes-service"></a>Continuous Deployment mit Jenkins und Azure Kubernetes Service
 
-In diesem Dokument wird beschrieben, wie Sie einen einfachen Continuous Deployment-Workflow zwischen Jenkins und einem AKS-Cluster (Azure Container Service) einrichten.
+In diesem Dokument wird beschrieben, wie Sie einen einfachen Continuous Deployment-Workflow zwischen Jenkins und einem AKS-Cluster (Azure Kubernetes Service) einrichten.
 
 Der Beispielworkflow umfasst die folgenden Schritte:
 
@@ -33,7 +33,7 @@ Der Beispielworkflow umfasst die folgenden Schritte:
 Sie benötigen Folgendes, um die Schritte in diesem Artikel ausführen zu können:
 
 - Grundkenntnisse in Bezug auf Kubernetes, Git, CI/CD und Azure Container Registry (ACR).
-- Einen [AKS-Cluster (Azure Container Service)][aks-quickstart] und [konfigurierte AKS-Anmeldeinformationen][aks-credentials] in Ihrem Entwicklungssystem.
+- Einen [AKS-Cluster (Azure Kubernetes Service)][aks-quickstart] und [konfigurierte AKS-Anmeldeinformationen][aks-credentials] in Ihrem Entwicklungssystem
 - Eine [Registrierung vom Typ „Azure Container Registry (ACR)“][acr-quickstart], den ACR-Anmeldeservernamen und [ACR-Anmeldeinformationen][acr-authentication] mit Push- und Pullzugriff.
 - Eine Installation der Azure CLI auf Ihrem Entwicklungssystem.
 - Eine Installation von Docker auf Ihrem Entwicklungssystem.

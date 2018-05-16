@@ -12,11 +12,11 @@ ms.date: 04/03/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e10fefdd3bd46aeb90fd2cfc82d4fee3b17d867b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ab029420ab9aa81b585c9b0315537bff2d9aaa6d
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-proxy-and-qlik-sense"></a>Anwendungsproxy und Qlik Sense 
 Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll sicherstellen, dass Sie mit dem Anwendungsproxy problemlos Remotezugriff für Ihre Qlik Sense-Bereitstellung bereitstellen können.  
@@ -25,13 +25,13 @@ Die Partnerschaft von Azure Active Directory-Anwendungsproxy und Qlik Sense soll
 Im weiteren Verlauf dieses Szenarios wird davon ausgegangen, dass Sie Folgendes durchgeführt haben:
  
 - [Qlik Sense](https://community.qlik.com/docs/DOC-19822) konfiguriert. 
-- [Einen Anwendungsproxyconnector installiert.](active-directory-application-proxy-enable.md#install-and-register-a-connector) 
+- [Einen Anwendungsproxyconnector installiert.](manage-apps/application-proxy-enable.md#install-and-register-a-connector) 
  
 ## <a name="publish-your-applications-in-azure"></a>Veröffentlichen Ihrer Anwendungen in Azure 
 Um Qlik Sense zu veröffentlichen, müssen Sie zwei Anwendungen in Azure veröffentlichen.  
 
 ### <a name="application-1"></a>Anwendung 1: 
-Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführlichere Beschreibung der Schritte 1 bis 8 finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md). 
+Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführlichere Beschreibung der Schritte 1 bis 8 finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md). 
 
 
 1. Melden Sie sich als globaler Administrator beim Azure-Portal an. 
@@ -58,5 +58,5 @@ Ihre Anwendung kann jetzt getestet werden. Greifen Sie auf die externe URL zu, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](application-proxy-publish-azure-portal.md)
-- [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mit Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md).
+- [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md)
+- [Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mit Connectorgruppen](manage-apps/application-proxy-connector-groups.md).

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b4751320af82a29fb13dc6012c1b197ebc2b1f9b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>HTTP/2-Unterstützung in Azure CDN
 
@@ -37,7 +37,7 @@ HTTP/2 bietet unter anderem folgende Vorteile:
 
 *   **Datenstrom-Abhängigkeiten**
 
-    Datenstrom-Abhängigkeiten ermöglichen dem Client, dem Server anzugeben, welche der Ressourcen Vorrang haben.
+    Datenstromabhängigkeiten ermöglichen dem Client, dem Server anzugeben, welche Ressourcen Vorrang haben.
 
 
 ## <a name="http2-browser-support"></a>HTTP/2-Browserunterstützung
@@ -54,7 +54,7 @@ Alle wichtigen Browser haben HTTP/2-Unterstützung in ihren aktuellen Versionen 
 
 ## <a name="enabling-http2-support-in-azure-cdn"></a>Aktivieren von HTTP/2-Unterstützung in Azure CDN
 
-HTTP/2-Unterstützung ist derzeit für Profile von **Azure CDN von Akamai** und **Azure CDN von Verizon** aktiv. Es ist keine weitere Aktion vom Kunden erforderlich.
+Derzeit ist HTTP/2-Unterstützung für alle Azure CDN-Profile aktiviert. Es ist keine weitere Aktion vom Kunden erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

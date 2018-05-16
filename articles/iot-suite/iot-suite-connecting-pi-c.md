@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Raspberry Pi für die Remoteüberwachung mit C – Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe einer in C geschriebenen Anwendung eine Verbindung zwischen einem Raspberry Pi-Gerät und der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite herstellen.
+description: Hier wird beschrieben, wie Sie mittels einer in C geschriebenen Anwendung die Verbindung eines Raspberry Pi-Geräts mit dem Solution Accelerator für Remoteüberwachung herstellen.
 services: iot-suite
 suite: iot-suite
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: e3fb95bc5084bb633541f70a5e68cc8d6af83298
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9de7616ec7174f6c55888a659e9a12bca1e07f94
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und der vorkonfigurierten Remoteüberwachungslösung (C)
+# <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und dem Solution Accelerator für Remoteüberwachung (C)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine Verbindung zwischen einem physischen Gerät und der vorkonfigurierten Remoteüberwachungslösung herstellen. Wie bei den meisten eingebetteten Anwendungen, die auf eingeschränkten Geräten ausgeführt werden, wird der Clientcode für die Raspberry Pi-Geräteanwendung in C geschrieben. In diesem Tutorial erstellen Sie die Anwendung auf einem Raspberry Pi mit dem Raspbian-Betriebssystem.
+In diesem Tutorial wird gezeigt, wie Sie die Verbindung eines physischen Geräts mit dem Solution Accelerator für Remoteüberwachung herstellen. Wie bei den meisten eingebetteten Anwendungen, die auf eingeschränkten Geräten ausgeführt werden, wird der Clientcode für die Raspberry Pi-Geräteanwendung in C geschrieben. In diesem Tutorial erstellen Sie die Anwendung auf einem Raspberry Pi mit dem Raspbian-Betriebssystem.
 
 ### <a name="required-hardware"></a>Erforderliche Hardware
 
@@ -49,7 +49,7 @@ Sie benötigen einen SSH-Client auf Ihrem Desktopcomputer, um per Remotezugriff 
 
 In diesem Artikel wird vorausgesetzt, dass Sie die neueste Version des [Raspbian-Betriebssystems auf Ihrem Raspberry Pi](https://www.raspberrypi.org/learning/software-guide/quickstart/) installiert haben.
 
-Die folgenden Schritte zeigen, wie Sie Ihren Raspberry Pi für die Erstellung einer C-Anwendung vorbereiten, die eine Verbindung mit der vorkonfigurierten Lösung herstellt:
+Die folgenden Schritte zeigen, wie Sie Ihren Raspberry Pi für die Erstellung einer C-Anwendung vorbereiten, die eine Verbindung mit dem Solution Accelerator herstellt:
 
 1. Stellen Sie mithilfe von **SSH** eine Verbindung mit Ihrem Raspberry Pi her. Weitere Informationen finden Sie auf der [Raspberry Pi-Website](https://www.raspberrypi.org/) unter [SSH (Secure Shell)](https://www.raspberrypi.org/documentation/remote-access/ssh/README.md).
 
@@ -174,16 +174,17 @@ Die folgenden Schritte beschreiben, wie Sie *CMake* verwenden, um Ihre Clientanw
     add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
 
     target_link_libraries(sample_app
-        serializer
-        iothub_client
-        iothub_client_mqtt_transport
-        aziotsharedutil
-        umqtt
-        pthread
-        curl
-        ssl
-        crypto
-        m
+      serializer
+      iothub_client_mqtt_transport
+      umqtt
+      iothub_client
+      aziotsharedutil
+      parson
+      pthread
+      curl
+      ssl
+      crypto
+      m
     )
     ```
 

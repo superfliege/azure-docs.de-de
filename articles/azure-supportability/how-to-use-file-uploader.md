@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: eb13bc8012e2d58e1a9b68bb1cf2da11d65e8159
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 6edcf9ae8135de8bf82d819e50d3d336b641166e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Neue Microsoft Azure Supportanfrage – Richtlinien zur Verwendung des Dienstprogramms für den Dateiupload
 Wenn Sie [eine neue Supportanfrage erstellen](https://portal.azure.com/#create/Microsoft.Support), kann das Dateiupload-Hilfsprogramm Sie dabei unterstützen, auf einfache Weise Diagnosedateien oder andere Dateien hochzuladen, die Ihrer Meinung nach für den Incident relevant sind.  

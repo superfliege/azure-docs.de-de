@@ -1,13 +1,13 @@
 ---
-title: "Übersicht über die Lösung für verbundene Factorys – Azure | Microsoft-Dokumentation"
-description: "Eine Beschreibung der vorkonfigurierten Connected Factory-Lösung von Azure IoT Suite."
-services: 
+title: Übersicht über die Lösung für verbundene Factorys – Azure | Microsoft-Dokumentation
+description: Eine Beschreibung des Anpassen des Azure IoT-Solution Accelerators für verbundene Factorys.
+services: iot-suite
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: hero-article
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: bd68859e3837f7e5adbe911518631cb7abc2c2ce
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c5fe6cf6dff6fd8951a949761739cb12f98834bf
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
-# <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung
+# <a name="get-started-with-the-connected-factory-solution-accelerator"></a>Erste Schritte mit dem Solution Accelerator für verbundene Factorys
 
-[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte *Connected Factory*-Lösung stellt eine Verbindung mit Ihren Industrieanlagen her und überwacht sie. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und zum Steigern der Produktivität und Rentabilität während des Betriebs verwenden.
+Azure IoT-[Solution Accelerators][lnk-preconfigured-solutions] kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Der Solution Accelerator für *verbundene Factorys* stellt eine Verbindung mit Ihren Industrieanlagen her und überwacht sie. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und zum Steigern der Produktivität und Rentabilität während des Betriebs verwenden.
 
-In diesem Tutorial erfahren Sie, wie Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung kennen. Sie können auf einen Großteil dieser Features über das *Lösungsdashboard* zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
+In diesem Tutorial erfahren Sie, wie Sie den Solution Accelerator für verbundene Factorys bereitstellen. Außerdem lernen Sie die grundlegenden Features des Solution Accelerators kennen. Sie können auf einen Großteil dieser Features über das *Lösungsdashboard* zugreifen, das zusammen mit dem Solution Accelerator bereitgestellt wird:
 
-![Vorkonfigurierte Connected Factory-Lösung: Dashboard][img-cf-home]
+![Dashboard für den Solution Accelerator für verbundene Factorys][img-cf-home]
 
 Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
@@ -37,8 +37,8 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
 
 1. Melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto bei „azureiotsuite.com“ an, und klicken Sie auf „**+**“, um eine Lösung zu erstellen.
-2. Klicken Sie auf der Kachel **Connected factory** (Connected Factory) auf **Auswählen**.
-3. Geben Sie einen **Lösungsnamen** für Ihre vorkonfigurierte Connected Factory-Lösung ein.
+2. Klicken Sie auf der Kachel **Verbundene Factory** auf **Auswählen**.
+3. Geben Sie einen **Lösungsnamen** für Ihren Solution Accelerator für verbundene Factorys ein.
 4. Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um die Lösung bereitzustellen.
 5. Klicken Sie auf **Lösung erstellen** , um den Bereitstellungsprozess zu beginnen. Dies dauert in der Regel einige Minuten.
 
@@ -50,13 +50,13 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 4. Klicken Sie auf die Kachel, um im rechten Bereich Details zur Lösung anzuzeigen.
 
 > [!NOTE]
-> Falls beim Bereitstellen der vorkonfigurierten Lösung Probleme auftreten, finden Sie unter [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions] und die [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md) weitere Informationen. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
+> Falls beim Bereitstellen des Solution Accelerators Probleme auftreten, finden Sie unter [Berechtigungen für die Website azureiotsuite.com][lnk-permissions] und die [häufig gestellten Fragen zu verbundenen Factorys](iot-suite-faq-cf.md) weitere Informationen. Sollten die Probleme weiterhin auftreten, können Sie im [Portal][lnk-portal] ein Dienstticket erstellen.
 
 Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Senden Sie uns Vorschläge für neue Funktionen über den [Feedbackbereich](https://feedback.azure.com/forums/321918-azure-iot) zu.
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
-Wenn Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen, verfügt sie bereits über Ressourcen, mit denen Sie ein allgemeines Industrieszenario durchlaufen können. Bei diesem Szenario melden mehrere Werke (Factories), die mit der Lösung verbunden sind, die Datenwerte, die zum Berechnen der Gesamtanlageneffektivität (Overall Equipment Effectiveness, OEE) und der Key Performance Indicators (KPIs) erforderlich sind. Im weiteren Verlauf wird Folgendes vermittelt:
+Wenn Sie den Solution Accelerator für verbundene Factorys bereitstellen, verfügt dieser bereits über Ressourcen, mit denen Sie ein allgemeines Industrieszenario durchlaufen können. Bei diesem Szenario melden mehrere Werke (Factories), die mit der Lösung verbunden sind, die Datenwerte, die zum Berechnen der Gesamtanlageneffektivität (Overall Equipment Effectiveness, OEE) und der Key Performance Indicators (KPIs) erforderlich sind. Im weiteren Verlauf wird Folgendes vermittelt:
 
 * Überwachen von Werk, Fertigungsstrecken, OEE von Stationen und KPI-Werten
 * Analysieren der Telemetriedaten, die über diese Geräte mit Azure Time Series Insights generiert werden
@@ -68,17 +68,17 @@ Ein wichtiges Merkmal dieses Szenarios: Die Aktionen können alle per Remotezugr
 
 Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist eine hierarchische Darstellung einer globalen Werkskonfiguration. Beispielsweise können Sie OEE und KPIs anzeigen und neue Knoten für Telemetriedaten und Aktionsalarme veröffentlichen.
 
-1. Wenn die Bereitstellung abgeschlossen ist und auf der Kachel für die vorkonfigurierte Lösung **Bereit** angezeigt wird, klicken Sie auf **Starten**, um eine neue Registerkarte mit dem Portal für die Connected Factory-Lösung zu öffnen.
+1. Wenn die Bereitstellung abgeschlossen ist und auf der Kachel für den Solution Accelerator **Bereit** angezeigt wird, klicken Sie auf **Starten**, um eine neue Registerkarte mit dem Portal für die Lösung mit verbundener Factory zu öffnen.
 
-    ![Vorkonfigurierte Lösung starten][img-launch-solution]
+    ![Starten des Solution Accelerator][img-launch-solution]
 
 1. Standardmäßig zeigt das Lösungsportal das *Dashboard* an. Über das Menü auf der linken Seite gelangen Sie zu anderen Bereichen des Portals.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Dashboard][cf-img-menu]
+    ![Dashboard für den Solution Accelerator für verbundene Factorys][cf-img-menu]
 
 Im Dashboard werden die folgenden Informationen angezeigt:
 
-* Ein Bereich namens **Factorystandorte**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
+* Ein Bereich namens **Factorystandorte**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zu verbundenen Factorys](iot-suite-faq-cf.md).
 * Eine **Karte** mit den Standorten der einzelnen Geräte, die mit der Lösung verbunden sind. Für die Lösung kann die Bing Maps-API zum Ausgeben von Informationen auf der Karte verwendet werden. Wenn Ihr Abonnement für die Bing Maps Enterprise-API aktiviert ist, wird dieses Feature automatisch verwendet. Wenn nicht, helfen Ihnen die Informationen zur Verwendung einer dynamischen Karte in den [häufig gestellten Fragen][lnk-faq] weiter.
 * Ein Bereich namens **Alarme** mit Alarmen, die generiert werden, wenn ein Telemetrie- oder OEE-/KPI-Wert einen bestimmten Schwellenwert überschreitet.
 * Ein Bereich **Overall Equipment Effectiveness**, in dem die OEE-Werte für das gesamte Unternehmen oder das jeweils angezeigte Werk, die Fertigungsstrecke oder die Station angegeben werden. Dieser Wert wird über die Stationsansicht auf Unternehmensebene aggregiert. Der OEE-Wert und die Elemente, aus denen dieser Wert besteht, können weiter analysiert werden.
@@ -88,7 +88,7 @@ Im Dashboard werden die folgenden Informationen angezeigt:
 
 Im Bereich *Factorystandorte* werden der geografische Standort aller Werke in der Lösung sowie jeweils ihr Status und die aktuelle Produktionskonfiguration angezeigt. Über die Liste mit den Standorten können Sie zu den anderen Ebenen der Lösungshierarchie navigieren. Die Zeilen in der Liste sind Hyperlinks, mit denen Details der Fertigungsstrecken am jeweiligen Standort verlinkt werden. Sie können dann einen Drilldown in die Details der Fertigungsstrecke und auf die Ebene der Stationsanzeige durchführen. Außerdem können Sie einen Filter auf die Liste anwenden.
 
-![Vorkonfigurierte Connected Factory-Lösung: Werke][cf-img-factories]
+![Factorys des Solution Accelerators für verbundene Factorys][cf-img-factories]
 
 1. Im Bereich **Factory** (Werk) wird die Liste mit den Werken für diese Lösung angezeigt.
 
@@ -106,7 +106,7 @@ Im Bereich *Factorystandorte* werden der geografische Standort aller Werke in de
 
 Wenn für Ihr Abonnement Zugriff auf die Bing Maps-API besteht, werden Ihnen auf der Karte mit den *Werken* der geografische Standort und der Status aller Werke einer Lösung angezeigt. Klicken Sie auf die Standorte, die auf der Karte angezeigt werden, um Details zum jeweiligen Standort anzuzeigen.
 
-![Vorkonfigurierte Connected Factory-Lösung: Karte][cf-img-map]
+![Übersicht über den Solution Accelerator für verbundene Factorys][cf-img-map]
 
 ## <a name="view-alarms"></a>Anzeigen von Alarmen
 
@@ -121,10 +121,10 @@ Optional können Sie auch komplexere Aktionen durchführen. Für den Knoten „P
 * Beseitigen der Alarmursache durch Aufrufen einer OPC UA-Methode auf dem Gerät
 * Unterdrücken der Verfügbarkeit der Standardaktionen
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Alarme][cf-img-alerts]
+    ![Alarme des Solution Accelerators für verbundene Factorys][cf-img-alerts]
 
 > [!NOTE]
-> Diese Alarme werden durch Regeln generiert, die in der vorkonfigurierten Lösung in einer Konfigurationsdatei angegeben werden. Mit diesen Regeln können Alarme generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens den konfigurierten Schwellenwert überschreiten.
+> Diese Alarme werden durch Regeln generiert, die in einer Konfigurationsdatei im Solution Accelerator angegeben werden. Mit diesen Regeln können Alarme generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens den konfigurierten Schwellenwert überschreiten.
 
 1. Im Bereich **Alarme** werden die Alarme angezeigt, die für diese Lösung generiert wurden.
 
@@ -138,23 +138,23 @@ Optional können Sie auch komplexere Aktionen durchführen. Für den Knoten „P
 
 Mit dem OEE-Wert wird die Effizienz des Fertigungsprozesses bewertet, indem produktionsbezogene Betriebsparameter verwendet werden. OEE ist in der Industrie eine standardmäßige Kennzahl. Sie wird berechnet, indem der Verfügbarkeitsfaktor, der Leistungsfaktor und der Qualitätsfaktor miteinander multipliziert werden: OEE = Verfügbarkeit x Leistung x Qualität.
 
-![Vorkonfigurierte Connected Factory-Lösung: OEE][cf-img-oee]
+![OEE zum Solution Accelerator für verbundene Factorys][cf-img-oee]
 
 1. Navigieren Sie zur jeweils gewünschten Ansicht, um den OEE-Wert für eine Ebene der Hierarchie anzuzeigen. Der OEE-Wert für diese Ansicht wird im Bereich zusammen mit den einzelnen Elementen angezeigt, die den OEE-Prozentsatz bilden.
 
 2. Zur eingehenderen Analyse des OEE-Werts für eine beliebige Ebene der Hierarchiedaten können Sie auf den OEE-Prozentsatz, den Verfügbarkeitsprozentsatz, den Leistungsprozentsatz oder den Qualitätsprozentsatz klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage angegeben sind.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: TSI-Visualisierung][cf-img-tsi-visualization]
+    ![TSI-Visualisierung des Solution Accelerators für verbundene Factorys][cf-img-tsi-visualization]
 
 3. Klicken Sie im Bereich mit den Alarmen auf den Graphen, um die Alarmdaten eingehender zu analysieren. Mit dieser Aktion wird die Umgebung für den Time Series Insights-Explorer geöffnet.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: TSI-Explorer][cf-img-tsi-explorer]
+    ![TSI-Explorer für den Solution Accelerator für verbundene Factorys][cf-img-tsi-explorer]
 
 ## <a name="view-key-performance-indicators"></a>Anzeigen von Key Performance Indicators
 
 Die Lösung enthält zwei Key Performance Indicators: *Einheiten pro Stunde* und *Energieverbrauch in kWh*.
 
-![Vorkonfigurierte Connected Factory-Lösung: KPI][cf-img-kpi]
+![KPI des Solution Accelerators für verbundene Factorys][cf-img-kpi]
 
 1. Navigieren Sie zur jeweiligen Ansicht, um für eine beliebige Ebene der Hierarchie die Einheiten pro Stunde oder die verbrauchte Energie anzuzeigen. Die Einheiten pro Stunde und die verbrauchte Energie werden im Bereich angezeigt.
 
@@ -166,7 +166,7 @@ In diesem Szenario haben Sie die OEE- und KPI-Werte im Dashboard für Ihr Werk �
 
 ## <a name="other-features"></a>Andere Funktionen
 
-In den folgenden Abschnitten werden einige Zusatzfeatures der Connected Factory-Lösung beschrieben, die im vorherigen Szenario nicht behandelt wurden.
+In den folgenden Abschnitten werden einige Zusatzfeatures der Lösung für verbundene Factorys beschrieben, die im vorherigen Szenario nicht behandelt wurden.
 
 ## <a name="apply-filters"></a>Anwenden von Filtern
 
@@ -174,13 +174,13 @@ In den folgenden Abschnitten werden einige Zusatzfeatures der Connected Factory-
 
 2. Der Filterbereich wird angezeigt.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Filter][cf-img-alert-filter]
+    ![Filter des Solution Accelerators für verbundene Factorys][cf-img-alert-filter]
 
 3. Wählen Sie den benötigten Filter aus. Bei Bedarf können Sie in die Filterfelder auch einen anderen Text eingeben.
 
 4. Anschließend wird der Filter für Sie angewendet. Im Dashboard wird außerdem der Filterzustand über einen Trichter angegeben, der in den Tabellen mit den Werken und Alarmen angezeigt wird.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Filter][cf-img-alert-filter-funnel]
+    ![Filter des Solution Accelerators für verbundene Factorys][cf-img-alert-filter-funnel]
 
     > [!NOTE]
     > Ein aktiver Filter hat keine Auswirkung auf die angezeigten OEE- und KPI-Werte, sondern dient nur zum Filtern des Listeninhalts.
@@ -189,27 +189,27 @@ In den folgenden Abschnitten werden einige Zusatzfeatures der Connected Factory-
 
 ## <a name="browse-an-opc-ua-server"></a>Durchsuchen eines OPC UA-Servers
 
-Beim Bereitstellen der vorkonfigurierten Lösung stellen Sie automatisch simulierte OPC UA-Server bereit, die Sie mit dem Browser der Lösung durchsuchen können. Bei diesen Servern handelt es sich um *simulierte OPC UA-Server*. Simulierte Server erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Server bereitstellen müssen. Wenn Sie einen echten OPC UA-Server mit der Lösung verbinden möchten, sehen Sie sich das Tutorial [Bereitstellen eines Gateways unter Windows oder Linux für die vorkonfigurierte Connected Factory-Lösung][lnk-connect-cf] an.
+Beim Bereitstellen des Solution Accelerators stellen Sie automatisch simulierte OPC UA-Server bereit, die Sie mit dem Browser der Lösung durchsuchen können. Bei diesen Servern handelt es sich um *simulierte OPC UA-Server*. Simulierte Server erleichtern Ihnen das Experimentieren mit dem Solution Accelerator, ohne dass Sie echte physische Server bereitstellen müssen. Wenn Sie einen echten OPC UA-Server mit der Lösung verbinden möchten, finden Sie weitere Informationen im Tutorial [Bereitstellen eines Gateways unter Windows oder Linux für den Solution Accelerator für verbundene Factorys][lnk-connect-cf].
 
 1. Klicken Sie auf der Navigationsleiste des Dashboards auf das **Browsersymbol**.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Serverbrowser][cf-img-server-browser]
+    ![Serverbrowser für den Solution Accelerator für verbundene Factorys][cf-img-server-browser]
 
-2. Wählen Sie in der vorkonfigurierten Liste einen der aufgeführten Server aus. In dieser Liste werden die Server angezeigt, die für Sie in der vorkonfigurierten Lösung bereitgestellt werden.
+2. Wählen Sie in der vorkonfigurierten Liste einen der aufgeführten Server aus. In dieser Liste werden die Server aufgeführt, die für Sie im Solution Accelerator bereitgestellt werden.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Serverauswahl][cf-img-server-choice]
+    ![Serverauswahl beim Solution Accelerator für verbundene Factorys][cf-img-server-choice]
 
 3. Klicken Sie auf **Verbinden**. Ein Sicherheitsdialogfeld wird angezeigt. Es ist sicher, für die Simulation auf **Fortsetzen** zu klicken.
 
 4. Klicken Sie zum Erweitern eines Knotens in der Serverstruktur auf den gewünschten Knoten. Knoten, die Telemetriedaten veröffentlichen, sind mit einem Häkchen gekennzeichnet.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Serverstruktur][cf-img-server-tree]
+    ![Serverstruktur des Solution Accelerators für verbundene Factorys][cf-img-server-tree]
 
 5. Klicken Sie mit der rechten Maustaste auf ein Element, um Daten für den Knoten zu lesen, zu schreiben und zu veröffentlichen oder den Knoten aufzurufen. Es hängt von den Berechtigungen und Attributen des Knotens ab, welche Aktionen verfügbar sind. Bei der Option zum Lesen wird ein Kontextbereich mit dem Wert des jeweiligen Knotens angezeigt. Bei der Option zum Schreiben wird ein Kontextbereich angezeigt, in dem Sie einen neuen Wert eingeben können. Bei der Option zum Aufrufen wird ein Knoten angezeigt, über den Sie die Parameter für den Aufruf eingeben können.
 
 ## <a name="publish-a-node"></a>Veröffentlichen eines Knotens
 
-Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröffentlichung neuer Knoten wählen. Sie können die Telemetrie dieser Knoten in der Lösung analysieren. Diese *simulierten OPC UA-Server* erleichtern das Experimentieren mit der vorkonfigurierten Lösung, ohne dass dafür echte physische Geräte bereitgestellt werden müssen.
+Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröffentlichung neuer Knoten wählen. Sie können die Telemetrie dieser Knoten in der Lösung analysieren. Diese *simulierten OPC UA-Server* erleichtern das Experimentieren mit dem Solution Accelerator, ohne dass dafür echte physische Geräte bereitgestellt werden müssen.
 
 1. Navigieren Sie zu einem Knoten in der Browserstruktur des OPC UA-Servers, den Sie veröffentlichen möchten.
 
@@ -217,15 +217,15 @@ Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröff
 
 3. Wählen Sie **Veröffentlichen**.
 
-    ![Connected Factory veröffentlicht Knoten][cf-img-publish-node]
+    ![Veröffentlichung des Knotens durch die verbundene Factory][cf-img-publish-node]
 
 4. Es wird ein Kontextbereich mit dem Hinweis angezeigt, dass die Veröffentlichung erfolgreich war. In der Stationsebenenansicht wird neben dem Knoten ein Häkchen angezeigt.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Veröffentlichung erfolgreich][cf-img-publish-success]
+    ![Vorkonfigurierte Lösung für verbundene Factorys: Veröffentlichung erfolgreich][cf-img-publish-success]
 
 ## <a name="command-and-control"></a>Befehl und Steuerung
 
-Mit Connected Factory können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Alarme zu reagieren, die von der Anlage generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird an einer Montagestation einer Fertigungsstraße in München ein Druckreduzierventil geöffnet. Zum Verwenden der Funktionen unter „Befehl und Steuerung“ müssen Sie für die Bereitstellung der vorkonfigurierten Lösung über die Rolle **Administrator** verfügen.
+Mit verbundenen Factorys können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Alarme zu reagieren, die von der Anlage generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird an einer Montagestation einer Fertigungsstraße in München ein Druckreduzierventil geöffnet. Zum Verwenden der Funktionen für Befehle und Steuerung müssen Sie für die Bereitstellung des Solution Accelerators über die Rolle **Administrator** verfügen.
 
 1. Navigieren Sie in der Browserstruktur des OPC UA-Servers zum Knoten **StationCommands**.
 
@@ -235,39 +235,39 @@ Mit Connected Factory können Sie Ihre Industrieanlagen direkt über die Cloud s
 
 4. Wählen Sie die Option **Aufrufen**.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Befehl „Aufrufen“][cf-img-call-command]
+    ![Aufrufbefehl für den Solution Accelerator für verbundene Factorys][cf-img-call-command]
 
 5. Ein Kontextbereich wird angezeigt. Er enthält Informationen dazu, welche Methode aufgerufen werden soll und welche Parameterdetails verfügbar sind.
 
 6. Wählen Sie die Option **Aufrufen**.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Kontext des Aufrufs][cf-img-call-context]
+    ![Aufrufkontext des Solution Accelerators für verbundene Factorys][cf-img-call-context]
 
 7. Der Kontextbereich wird aktualisiert, um Sie darüber zu informieren, dass der Methodenaufruf erfolgreich war. Sie können überprüfen, ob der Aufruf erfolgreich war, indem Sie den Wert des Knotens für die Druckeinstellung ablesen, der als Folge des Aufrufs aktualisiert wurde.
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Aufruf erfolgreich][cf-img-call-success]
+    ![Aufruferfolg beim Solution Accelerator für verbundene Factorys][cf-img-call-success]
 
 ## <a name="behind-the-scenes"></a>Abläufe im Hintergrund
 
-Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihre vorkonfigurierte Lösung wählen:
+Wenn Sie einen Solution Accelerator bereitstellen, werden im Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihren Solution Accelerator wählen:
 
-![Vorkonfigurierte Lösung im Azure-Portal][img-cf-portal]
+![Solution Accelerator im Azure-Portal][img-cf-portal]
 
 Sie können die Einstellungen der einzelnen Ressourcen anzeigen, indem Sie sie in der Ressourcengruppe in der Liste mit den Ressourcen auswählen.
 
-Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Den Quellcode der vorkonfigurierten Connected Factory-Lösung finden Sie im GitHub-Repository [azure-iot-connected-factory][lnk-cfgithub]:
+Sie können auch den Quellcode für den Solution Accelerator anzeigen. Den Quellcode des Solution Accelerators für verbundene Factorys finden Sie im GitHub-Repository [azure-iot-connected-factory][lnk-cfgithub]:
 
-Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Über diese Website können Sie problemlos alle Ressourcen löschen, die bei der Erstellung der vorkonfigurierten Lösung bereitgestellt wurden.
+Wenn Sie fertig sind, können Sie den Solution Accelerator auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Über diese Website können Sie problemlos alle Ressourcen löschen, die beim Erstellen des Solution Accelerators bereitgestellt wurden.
 
 > [!NOTE]
-> Um sicherzustellen, dass Sie alle Teile der vorkonfigurierten Lösung löschen, sollten Sie den Löschvorgang auf der Website [azureiotsuite.com][lnk-azureiotsuite] durchführen. Löschen Sie nicht die Ressourcengruppe im Portal.
+> Um sicherzustellen, dass der Solution Accelerator vollständig gelöscht wird, sollten Sie den Löschvorgang auf der Website [azureiotsuite.com][lnk-azureiotsuite] durchführen. Löschen Sie nicht die Ressourcengruppe im Portal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und können nun mit den ersten Schritten mit IoT Suite fortfahren. Lesen Sie dazu die folgenden Artikel:
+Sie haben einen funktionierenden Solution Accelerator bereitgestellt und können nun mit den ersten Schritten mit IoT-Solution Accelerators fortfahren. Lesen Sie dazu die folgenden Artikel:
 
-* [Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise][lnk-rm-walkthrough]
-* [Verbinden Ihres Geräts mit der vorkonfigurierten verbundenen Werkslösung][lnk-connect-cf]
+* [Exemplarische Vorgehensweise für den Solution Accelerator für verbundene Factorys][lnk-rm-walkthrough]
+* [Verbinden Ihres Geräts mit dem Solution Accelerator für verbundene Factorys][lnk-connect-cf]
 * [Berechtigungen für die Website „azureiotsuite.com“][lnk-permissions]
 
 [img-cf-home]:media/iot-suite-connected-factory-overview/cf-dashboard.png
@@ -293,7 +293,7 @@ Sie haben eine funktionierende vorkonfigurierte Lösung bereitgestellt und könn
 [cf-img-alert-filter-funnel]:media/iot-suite-connected-factory-overview/cf-filter-funnel.png
 
 [lnk_free_trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-preconfigured-solutions]: iot-suite-what-are-preconfigured-solutions.md
+[lnk-preconfigured-solutions]: iot-suite-what-are-solution-accelerators.md
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-portal]: http://portal.azure.com/
 [lnk-cfgithub]: https://github.com/Azure/azure-iot-connected-factory

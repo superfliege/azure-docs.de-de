@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/20/2017
+ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: d082241ee5151b199376a0c2c9baccc242ece12e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 58a283f1ce5bd2fd78c4fa2038c3998aea1598c9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
@@ -114,7 +114,7 @@ New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoReso
 Die Ausgabe dieses Cmdlets zeigt die Eigenschaften des Schlüsseltresors, den Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
 * **Tresorname**: In diesem Beispiel ist dies **ContosoKeyVault**. Sie verwenden diesen Namen für andere Schlüsseltresor-Cmdlets.
-* **Tresor-URI**: https://contosokeyvault.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
+* **Tresor-URI:** https://contosokeyvault.vault.azure.net/ in diesem Beispiel. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
 
 Ihr Azure-Konto ist jetzt autorisiert, Vorgänge in diesem Schlüsseltresor durchzuführen. Bisher sind Sie der einzige Benutzer mit dieser Berechtigung.
 

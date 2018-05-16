@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6374e49f3f682d022613e3e5244d273337213311
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b1c8c981c0b1c3b599d2dd737b680390a52888eb
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -37,8 +37,7 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 
-> [!NOTE]
-> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird für die meisten Szenarien nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie auch Ihr Abonnement in Azure Batch registrieren und das Konto einer Azure Key Vault-Instanz zuordnen.
+[!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
 1. Melden Sie sich beim [Azure-Portal][azure_portal] an.
 2. Klicken Sie auf **Ressource erstellen**, und durchsuchen Sie den Marketplace nach **Batch-Dienst**.

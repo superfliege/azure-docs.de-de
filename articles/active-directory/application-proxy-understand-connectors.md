@@ -3,23 +3,23 @@ title: Grundlegendes zu Azure AD-Anwendungsproxyconnectors | Microsoft-Dokumenta
 description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
-ms.author: billmath
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c7f27d3fd8a5785017d580df02007abaac503c39
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -33,7 +33,7 @@ Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind u
 
 Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindestens einen Connector, aber es wird empfohlen, für größere Resilienz über mindestens zwei zu verfügen. Installieren Sie den Connector auf einem Computer mit Windows Server 2012 R2 oder 2016. Der Connector muss mit dem Anwendungsproxydienst und mit den lokalen Anwendungen, die Sie veröffentlichen, kommunizieren können. 
 
-Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](active-directory-application-proxy-enable.md).
+Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](manage-apps/application-proxy-enable.md).
 
 ## <a name="maintenance"></a>Wartung 
 Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
@@ -50,7 +50,7 @@ Sie müssen nicht verwendete Connectors nicht manuell löschen. Wenn ein Connect
 
 ## <a name="automatic-updates"></a>Automatische Aktualisierungen
 
-Azure AD bietet automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](active-directory-application-proxy-enable.md), um Updates zu erhalten. 
+Azure AD bietet automatische Updates für alle von Ihnen bereitgestellten Connectors. Solange der Connectorupdatedienst für den Anwendungsproxy ausgeführt wird, werden Ihre Connectors automatisch aktualisiert. Falls der Connectorupdatedienst auf Ihrem Server nicht angezeigt wird, müssen Sie den [Connector neu installieren](manage-apps/application-proxy-enable.md), um Updates zu erhalten. 
 
 Wenn Sie nicht warten möchten, bis ein Connector automatisch aktualisiert wird, können Sie die Aktualisierung manuell vornehmen. Rufen Sie auf dem Server mit dem Connector die [Downloadseite für den Connector](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) auf, und wählen Sie **Herunterladen**. Durch diesen Prozess wird ein Upgrade für den lokalen Connector gestartet. 
 
@@ -123,7 +123,7 @@ Connectors können auch in Domänen oder Gesamtstrukturen mit einer Teilvertraue
 
 In der Regel ist die Connectorbereitstellung unkompliziert und erfordert keine spezielle Konfiguration. Es gibt jedoch einige Bedingungen, die berücksichtigt werden müssen:
 
-* Organisationen, die ausgehenden Datenverkehr einschränken, müssen [erforderliche Ports öffnen](active-directory-application-proxy-enable.md#open-your-ports).
+* Organisationen, die ausgehenden Datenverkehr einschränken, müssen [erforderliche Ports öffnen](manage-apps/application-proxy-enable.md#open-your-ports).
 * Möglicherweise muss die Konfiguration von FIPS-konformen Computern geändert werden, damit die Connectorprozesse ein Zertifikat generieren und speichern können.
 * Organisationen, die ihre Umgebung basierend auf den Prozessen sperren, die die Netzwerkanforderungen ausgeben, müssen sicherstellen, dass für beide Connectordienste der Zugriff auf alle erforderlichen Ports und IPs zugelassen ist.
 * In einigen Fällen kann es passieren, dass Proxys für die Weiterleitung des ausgehenden Datenverkehrs die zweistufige Authentifizierung per Zertifikat verhindern, sodass bei der Kommunikation ein Fehler auftritt.

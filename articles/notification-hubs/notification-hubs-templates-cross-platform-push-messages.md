@@ -3,22 +3,22 @@ title: Vorlagen
 description: In diesem Thema werden Vorlagen für Azure Notification Hubs erläutert.
 services: notification-hubs
 documentationcenter: .net
-author: ysxu
-manager: erikre
-editor: ''
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 ms.assetid: a41897bb-5b4b-48b2-bfd5-2e3c65edc37e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/29/2016
-ms.author: yuaxu
-ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: 3e587bdf0efc7c5b416183640abb19286a5cff31
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="templates"></a>Vorlagen
 ## <a name="overview"></a>Übersicht
@@ -52,7 +52,7 @@ Durch diese Anforderung ist das App-Back-End gezwungen, für jede Plattform unte
 
 Das Notification Hubs-Vorlagenfeature ermöglicht einer Client-App das Erstellen spezieller Registrierungen – so genannter Vorlagenregistrierungen – die neben den Tags eine Vorlage enthalten. Mit dem Notification Hubs-Vorlagenfeature kann eine Client-App Geräten Vorlagen zuordnen, und zwar unabhängig davon ob Sie mit Installationen (bevorzugt) oder Registrierungen arbeiten. Aus den zuvor aufgeführten Nutzlastbeispielen ergibt sich, dass der eigentliche Benachrichtigungstext (Hello!) die einzige plattformunabhängige Information ist. Eine Vorlage umfasst eine Reihe von Anweisungen für den Notification Hub, die angeben, wie eine plattformunabhängige Nachricht für die Registrierung der spezifischen Client-App formatiert werden soll. Im vorherigen Beispiel ist die plattformunabhängige Nachricht eine einzelne Eigenschaft: **message = Hello!**.
 
-Das oben beschriebene Verfahren wird in der folgenden Abbildung veranschaulicht.
+Das Verfahren wird in der folgenden Abbildung veranschaulicht.
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
@@ -74,7 +74,7 @@ Beachten Sie, dass die tatsächliche Nachricht durch den Ausdruck $(message) ers
 
 Bei Verwendung des Installationsmodells arbeiten, enthält der "templates"-Schlüssel der Installation ein JSON-Objekt mit mehreren Vorlagen. Bei Verwendung des Registrierungsmodells kann die Clientanwendung mehrere Registrierungen erstellen, um mehrere Vorlagen zu verwenden, also beispielsweise eine Vorlage für Benachrichtigungen und eine für Kachelaktualisierungen. Clientanwendungen können auch systemeigene Registrierungen (Registrierungen ohne Vorlage) und Vorlagenregistrierungen kombinieren.
 
-Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zur selben Client-App gehören. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Beachten Sie, dass einige Plattformen (beispielsweise iOS) ggf. mehrere Benachrichtigungen an dasselbe Gerät reduzieren, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
+Der Notification Hub sendet eine Benachrichtigung für jede Vorlage, ohne zu berücksichtigen, ob sie zur selben Client-App gehören. Dieses Verhalten kann verwendet werden, um plattformunabhängige Benachrichtigungen in weitere Benachrichtigungen zu übersetzen. Beispielsweise kann dieselbe plattformunabhängige Nachricht an den Notification Hub nahtlos in eine Popupbenachrichtigung und eine Kachelaktualisierung übersetzt werden, ohne dass das Back-End daran beteiligt ist. Einige Plattformen (beispielsweise iOS) reduzieren ggf. mehrere Benachrichtigungen an dasselbe Gerät, wenn diese innerhalb eines kurzen Zeitraums gesendet werden.
 
 ## <a name="using-templates-for-personalization"></a>Verwenden von Vorlagen zur Personalisierung
 Ein weiterer Vorteil von Vorlagen besteht darin, dass Benachrichtigungen mithilfe von Notification Hubs pro Registrierung personalisiert werden können. Beispiel: Eine Wetter-App zeigt eine Kachel mit den Wetterbedingungen an einem bestimmten Ort an. Ein Benutzer kann zwischen Grad Celsius und Fahrenheit und einer eintägigen oder fünftägigen Vorhersage wählen. Mithilfe von Vorlagen kann sich jede Client-App-Installation für das erforderliche Format (1 Tag Celsius, 1 Tag Fahrenheit, 5 Tage Celsius, 5 Tage Fahrenheit) registrieren und das Back-End eine einzelne Nachricht senden lassen, die alle erforderlichen Informationen zum Füllen dieser Vorlagen enthält (z. B. eine fünftägige Vorhersage mit Gradangaben in Celsius und Fahrenheit).
@@ -128,7 +128,7 @@ Die Ausdrücke können eine der oben beschriebenen Formen aufweisen.
 
 Bei Verwendung der Verkettung muss der gesamte Ausdruck in {} eingeschlossen werden. Beispiel: {$(prop) + ' - ' + $(prop2)}. |
 
-Folgendes ist beispielsweise keine gültige XML-Vorlage:
+Die folgende Vorlage ist beispielsweise keine gültige XML-Vorlage:
 
     <tile>
       <visual>
@@ -139,7 +139,7 @@ Folgendes ist beispielsweise keine gültige XML-Vorlage:
     </tile>
 
 
-Wie oben erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschweifte Klammern eingeschlossen werden. Beispiel: 
+Wie zuvor erläutert, müssen Ausdrücke bei Verwendung der Verkettung in geschweifte Klammern eingeschlossen werden. Beispiel: 
 
     <tile>
       <visual>

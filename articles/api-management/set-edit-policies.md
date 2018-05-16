@@ -1,11 +1,11 @@
 ---
 title: Festlegen oder Bearbeiten von Azure API Management-Richtlinien | Microsoft-Dokumentation
-description: "In diesem Thema wird erläutert, wie Sie Azure API Management-Richtlinien festlegen oder bearbeiten."
+description: In diesem Thema wird erläutert, wie Sie Azure API Management-Richtlinien festlegen oder bearbeiten.
 services: api-management
-documentationcenter: 
-author: Juliako
+documentationcenter: ''
+author: vladvino
 manager: cflower
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 409069cbc382610a48139df75f0f64b1682d8ee6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: aaf86a440328e27c8c47b809536951eeaf2104b9
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 
@@ -109,7 +109,7 @@ Der API-Bereich wird für **Alle Vorgänge** der ausgewählten API konfiguriert.
 
     ![API-Bereich](./media/api-management-howto-policies/api-scope.png)
 
-2. Klicken Sie auf **Alle Vorgänge**.
+2. Auswählen von **Alle Vorgänge**
 3. Klicken Sie auf das Dreieckssymbol.
 4. Klicken Sie auf **Code-Editor**.
 5. Sie können Richtlinien hinzufügen oder bearbeiten.

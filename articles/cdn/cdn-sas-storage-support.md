@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: v-deasim
-ms.openlocfilehash: 8b609beb67cfb0873bf9926ca648f0ad5568ad2e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: dcae29c49035775cd9ff983bbc99bab06c7f16dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
 
@@ -49,15 +49,15 @@ Weitere Informationen zum Festlegen von Parametern finden Sie unter [Überlegung
 
 ### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>Option 1: Verwenden von SAS mit Pass-Through zum BLOB-Speicher aus dem Azure CDN
 
-Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vom Azure CDN an den Ursprungsserver übergeben wird. Unterstützt wird diese Option vom **Azure CDN von Verizon** und vom **Azure CDN von Akamai**. 
+Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vom Azure CDN an den Ursprungsserver übergeben wird. Sie wird von Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Standard von Akamai** unterstützt. 
  
 1. Wählen Sie einen Endpunkt aus, wählen Sie **Cacheregeln** aus, und wählen Sie dann in der Liste **Zwischenspeichern von Abfragezeichenfolgen** die Einstellung **Jede eindeutige URL zwischenspeichern** aus.
 
     ![CDN-Cacheregeln](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
-2. Nachdem Sie SAS für Ihr Speicherkonto eingerichtet haben, verwenden Sie das SAS-Token mit der Azure CDN-URL zum Zugriff auf die Datei. 
+2. Nachdem Sie SAS für Ihr Speicherkonto eingerichtet haben, müssen Sie für den Zugriff auf die Datei das SAS-Token mit der CDN-Endpunkt-URL und der URL des Ursprungsservers verwenden. 
    
-   Die Ergebnis-URL weist das folgende Format auf: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
+   Die resultierende CDN-Endpunkt-URL hat das folgende Format: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
    Beispiel:    
    ```
@@ -66,9 +66,9 @@ Diese Option ist die einfachste und verwendet nur ein einziges SAS-Token, das vo
    
 3. Optimieren Sie die Dauer der Zwischenspeicherung entweder mithilfe von Cacheregeln oder durch das Hinzufügen von `Cache-Control`-Headern am Ursprungsserver. Da das Azure CDN das SAS-Token als einfache Abfragezeichenfolge betrachtet, sollten Sie als bewährte Methode eine Cachedauer festlegen, die mit oder vor dem SAS-Ablauf endet. Wenn eine Datei länger zwischengespeichert wird, als die SAS aktiv ist, ist die Datei vom Azure CDN-Ursprungsserver möglicherweise auch nach dem SAS-Ablauf weiter zugänglich. Wenn dieser Fall eintritt und Sie den Zugriff auf die Datei unterbinden möchten, müssen Sie einen Bereinigungsvorgang für die Datei durchführen, um sie aus dem Cache zu löschen. Informationen zum Festlegen der Aufbewahrungsdauer im Cache im Azure CDN finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md).
 
-### <a name="option-2-hidden-cdn-security-token-using-a-rewrite-rule"></a>Option 2: Ausgeblendetes CDN-Sicherheitstoken mit Verwendung einer Rewriteregel
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>Option 2: Ausgeblendetes CDN-SAS-Token mit Rewriteregel
  
-Bei dieser Option können Sie den ursprünglichen BLOB-Speicher schützen, ohne dass Azure CDN-Benutzer ein SAS-Token in der URL verwenden müssen. Diese Option kann nützlich sein, wenn Sie keine besonderen Zugriffsbeschränkungen für die Datei benötigen, aber Benutzer am direkten Zugriff auf den Speicherursprung hindern möchten, um die Azure CDN-Auslagerungszeiten zu verbessern. Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. 
+Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. Mit dieser Option können Sie den Blobspeicher auf dem Ursprungsserver schützen. Diese Option kann nützlich sein, wenn Sie keine besonderen Zugriffsbeschränkungen für die Datei benötigen, aber Benutzer am direkten Zugriff auf den Speicherursprung hindern möchten, um die Azure CDN-Auslagerungszeiten zu verbessern. Das SAS-Token ist dem Benutzer nicht bekannt und für jeden erforderlich, der auf Dateien im angegebenen Container des Ursprungsservers zugreift. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt.
  
 1. Verwenden Sie die [Regel-Engine](cdn-rules-engine.md), um eine URL-Rewriteregel zu erstellen. Die Verteilung neuer Regeln dauert etwa 90 Minuten.
 
@@ -79,7 +79,7 @@ Bei dieser Option können Sie den ursprünglichen BLOB-Speicher schützen, ohne 
    Im folgenden Beispiel für eine URL-Rewriteregel wird ein reguläres Ausdrucksmuster mit einer Erfassungsgruppe und einem Endpunkt namens *Storagedemo* verwendet:
    
    Quelle:   
-   `(/test/*.)`
+   `(/test/.*)`
    
    Ziel:   
    ```
@@ -88,22 +88,21 @@ Bei dieser Option können Sie den ursprünglichen BLOB-Speicher schützen, ohne 
 
    ![CDN-URL-Rewriteregel](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
 
-2. Wenn die neue Regel aktiv ist, können Sie ohne SAS-Token in der URL auf die Datei im Azure CDN zugreifen. Dazu wird folgendes Format verwendet: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Nach Aktivierung der neuen Regel können Benutzer auch ohne Verwendung des SAS-Tokens in der URL auf Dateien im angegebenen Container am CDN-Endpunkt zugreifen. Das Format sieht wie folgt aus: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Beispiel:    
    `https://demoendpoint.azureedge.net/container1/demo.jpg`
        
-   Beachten Sie, dass jetzt jeder Benutzer – unabhängig von der Verwendung eines SAS-Tokens – auf Dateien am CDN-Endpunkt zugreifen kann. 
 
 3. Optimieren Sie die Dauer der Zwischenspeicherung entweder mithilfe von Cacheregeln oder durch das Hinzufügen von `Cache-Control`-Headern am Ursprungsserver. Da das Azure CDN das SAS-Token als einfache Abfragezeichenfolge betrachtet, sollten Sie als bewährte Methode eine Cachedauer festlegen, die mit oder vor dem SAS-Ablauf endet. Wenn eine Datei länger zwischengespeichert wird, als die SAS aktiv ist, ist die Datei vom Azure CDN-Ursprungsserver möglicherweise auch nach dem SAS-Ablauf weiter zugänglich. Wenn dieser Fall eintritt und Sie den Zugriff auf die Datei unterbinden möchten, müssen Sie einen Bereinigungsvorgang für die Datei durchführen, um sie aus dem Cache zu löschen. Informationen zum Festlegen der Aufbewahrungsdauer im Cache im Azure CDN finden Sie unter [Steuern des Verhaltens beim Zwischenspeichern im Azure CDN mit Cacheregeln](cdn-caching-rules.md).
 
 ### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>Option 3: Verwenden der CDN-Sicherheitstokenauthentifizierung mit einer Rewriteregel
 
-Diese Option bietet die höchste Sicherheit und die meisten Anpassungsmöglichkeiten. Um die Azure CDN-Sicherheitstokenauthentifizierung zu verwenden, müssen Sie über das Profil **Azure CDN Premium von Verizon** verfügen. Der Clientzugriff basiert auf den Sicherheitsparametern, die Sie für das CDN-Sicherheitstoken festlegen. Wenn die SAS später jedoch nicht mehr gültig ist, kann das Azure CDN den Inhalt vom Ursprungsserver nicht erneut validieren.
+Um die Azure CDN-Sicherheitstokenauthentifizierung zu verwenden, müssen Sie über das Profil **Azure CDN Premium von Verizon** verfügen. Diese Option bietet die höchste Sicherheit und die meisten Anpassungsmöglichkeiten. Der Clientzugriff basiert auf den Sicherheitsparametern, die Sie für das CDN-Sicherheitstoken festlegen. Nachdem Sie das Sicherheitstoken erstellt und eingerichtet haben, ist es in allen CDN-Endpunkt-URLs erforderlich. Aufgrund der URL-Rewriteregel wird das SAS-Token am CDN-Endpunkt jedoch nicht benötigt. Falls das SAS-Token später ungültig wird, kann das Azure CDN den Inhalt vom Ursprungsserver nicht erneut validieren.
 
 1. [Erstellen Sie ein Azure CDN-Sicherheitstoken](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication), und aktivieren Sie es mithilfe der Regel-Engine für den CDN-Endpunkt und -Pfad, über den Ihre Benutzer auf die Datei zugreifen können.
 
-   Die URL eines Sicherheitstokens weist das folgende Format auf:   
+   Eine Endpunkt-URL mit Sicherheitstoken hat das folgende Format:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
    Beispiel:    
@@ -111,14 +110,14 @@ Diese Option bietet die höchste Sicherheit und die meisten Anpassungsmöglichke
    https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
-   Die Parameteroptionen für eine Sicherheitstokenauthentifizierung unterscheiden sich von den Parameteroptionen für ein SAS-Token. Wenn Sie beim Erstellen eines Sicherheitstokens eine Ablaufzeit festlegen, verwenden Sie denselben Ablaufzeitpunkt wie für das SAS-Token. So ist sichergestellt, dass der Ablaufzeitpunkt vorhersehbar ist. 
+   Die Parameteroptionen für eine Sicherheitstokenauthentifizierung unterscheiden sich von den Parameteroptionen für ein SAS-Token. Wenn Sie beim Erstellen eines Sicherheitstokens eine Ablaufzeit festlegen, müssen Sie denselben Ablaufzeitpunkt verwenden wie für das SAS-Token. So ist sichergestellt, dass der Ablaufzeitpunkt vorhersehbar ist. 
  
 2. Verwenden Sie die [Regel-Engine](cdn-rules-engine.md), um eine URL-Rewriteregel zu erstellen, mit welcher der Tokenzugriff auf alle Blobs im Container aktiviert wird. Die Verteilung neuer Regeln dauert etwa 90 Minuten.
 
    Im folgenden Beispiel für eine URL-Rewriteregel wird ein reguläres Ausdrucksmuster mit einer Erfassungsgruppe und einem Endpunkt namens *Storagedemo* verwendet:
    
    Quelle:   
-   `(/test/*.)`
+   `(/test/.*)`
    
    Ziel:   
    ```
@@ -127,7 +126,7 @@ Diese Option bietet die höchste Sicherheit und die meisten Anpassungsmöglichke
 
    ![CDN-URL-Rewriteregel](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
 
-3. Wenn Sie die SAS erneuern, aktualisieren Sie die URL-Rewriteregel mit dem neuen SAS-Token. 
+3. Wenn Sie die SAS verlängern, müssen Sie die URL-Rewriteregel mit dem neuen SAS-Token aktualisieren. 
 
 ## <a name="sas-parameter-considerations"></a>Überlegungen zu SAS-Parametern
 

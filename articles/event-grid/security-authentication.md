@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 04/27/2018
 ms.author: babanisa
-ms.openlocfilehash: 4b9ab8aaef091573d204b8de58115cc03707aa01
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8c601d13f0f4d7c44db5735c2f89f570faa4f0c9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -26,7 +26,7 @@ Azure Event Grid verfügt über drei Authentifizierungsarten:
 
 Ein Webhook ist eine von vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Bei jedem neuen Ereignis sendet der Event Grid-Webhook eine HTTP-Anforderung mit dem Ereignis im Hauptteil an den konfigurierten HTTP-Endpunkt.
 
-Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Validierung nicht erfolgreich abgeschlossen haben.
+Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Validierung nicht erfolgreich abgeschlossen haben. Wenn Sie einen API-Dienst eines Drittanbieters (etwa [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)) verwenden, können Sie den Überprüfungscode unter Umständen nicht programmgesteuert wiederholen. Für diese Dienste können Sie das Abonnement mithilfe einer Überprüfungs-URL manuell überprüfen, die im Abonnementüberprüfungsereignis gesendet wird. Kopieren Sie diese URL, und senden Sie entweder über einen REST-Client oder Ihren Webbrowser eine GET-Anforderung.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 
@@ -34,6 +34,7 @@ Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen 
 * Das Ereignis enthält den Headerwert „Aeg-Event-Type: SubscriptionValidation“.
 * Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
 * Die Ereignisdaten enthalten die Eigenschaft „validationCode“ mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
+* Die Ereignisdaten enthalten die Eigenschaft „validationUrl“ mit einer URL für die manuelle Überprüfung des Abonnements.
 * Das Array enthält ausschließlich das Validierungsereignis. Andere Ereignisse werden in einer separaten Anforderung gesendet, nachdem Sie den Validierungscode zurückgegeben haben.
 
 Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beispiel:
@@ -44,7 +45,8 @@ Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beis
   "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "subject": "",
   "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6",
+    "validationUrl": "https://rp-eastus2.eventgrid.azure.net:553/eventsubscriptions/estest/validate?id=B2E34264-7D71-453A-B5FB-B62D0FDC85EE&t=2018-04-26T20:30:54.4538837Z&apiVersion=2018-05-01-preview&token=1BNqCxBBSSE9OnNSfZM4%2b5H9zDegKMY6uJ%2fO2DFRkwQ%3d"
   },
   "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
   "eventTime": "2018-01-25T22:12:19.4556811Z",
@@ -60,6 +62,9 @@ Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die
   "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
 }
 ```
+
+Überprüfen Sie alternativ das Abonnement manuell, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde.
+
 ### <a name="event-delivery-security"></a>Sicherheit für die Ereignisbereitstellung
 
 Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z.B. ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token), das der Webhook verwenden kann, um zu ermitteln, ob das Ereignis aus Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.

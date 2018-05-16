@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 05/07/2018
 ms.author: sngun
-ms.openlocfilehash: 0a53bb0a23fae386abbe71de944b073cbb93d502
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: bede91ed3ffc456740a0eb63ed7a15278e99ebe2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container
 
-Sie können den Durchsatz für Ihre Azure Cosmos DB-Container im Azure-Portal oder mithilfe der Clients-SDKs festlegen. 
+Sie können den Durchsatz für Ihre Azure Cosmos DB-Container oder eine Gruppe von Containern im Azure-Portal oder mithilfe der Client-SDKs festlegen. 
 
 In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgeführt:
 
@@ -31,15 +31,18 @@ In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgef
             <td valign="top"><p></p></td>
             <td valign="top"><p><strong>Container mit nur einer Partition</strong></p></td>
             <td valign="top"><p><strong>Partitionierte Container</strong></p></td>
+            <td valign="top"><p><strong>Gruppe von Containern</strong></p></td>
         </tr>
         <tr>
             <td valign="top"><p>Minimaler Durchsatz</p></td>
             <td valign="top"><p>400 Anforderungseinheiten pro Sekunde</p></td>
             <td valign="top"><p>1.000 Anforderungseinheiten pro Sekunde</p></td>
+            <td valign="top"><p>50.000 Anforderungseinheiten pro Sekunde</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximaler Durchsatz</p></td>
             <td valign="top"><p>10.000 Anforderungseinheiten pro Sekunde</p></td>
+            <td valign="top"><p>Unbegrenzt</p></td>
             <td valign="top"><p>Unbegrenzt</p></td>
         </tr>
     </tbody>
@@ -62,6 +65,7 @@ Der folgende Codeausschnitt ruft den aktuellen Durchsatz ab und ändert ihn in 5
 
 ```csharp
 // Fetch the offer of the collection whose throughput needs to be updated
+// To change the throughput for a set of containers, use the database's selflink instead of the collection's selflink
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -82,6 +86,7 @@ Der folgende Codeausschnitt ruft den aktuellen Durchsatz ab und ändert ihn in 5
 
 ```Java
 // find offer associated with this collection
+// To change the throughput for a set of containers, use the database's resource id instead of the collection's resource id
 Iterator < Offer > it = client.queryOffers(
     String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
 assertThat(it.hasNext(), equalTo(true));
@@ -131,7 +136,7 @@ Die einfachste Möglichkeit, eine recht genaue Schätzung der Gebühren für Anf
 ![MongoDB-API-Portalmetriken][1]
 
 ### <a id="RequestRateTooLargeAPIforMongoDB"></a> Überschreiten von Grenzwerten für den reservierten Durchsatz in der MongoDB-API
-Anwendungen, die den bereitgestellten Durchsatz für einen Container überschreiten, werden so lange begrenzt, bis die Nutzungsrate unter den bereitgestellten Durchsatz sinkt. Wenn eine Begrenzung eintritt, beendet das Back-End die Anforderung präventiv mit einem `16500`-Fehlercode: `Too Many Requests`. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode `Too Many Requests` zurückgegeben wird. Wenn Sie zu viele Fehlercodes des Typs `Too Many Requests` erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [bereitgestellten Durchsatz für den Container](set-throughput.md) zu erhöhen.
+Anwendungen, die den bereitgestellten Durchsatz für einen Container oder eine Gruppe von Containern überschreiten, werden so lange begrenzt, bis die Nutzungsrate unter den bereitgestellten Durchsatz sinkt. Wenn eine Begrenzung eintritt, beendet das Back-End die Anforderung präventiv mit einem `16500`-Fehlercode: `Too Many Requests`. Die MongoDB-API versucht standardmäßig automatisch bis zu 10-mal, eine Anforderung erneut zu senden, bevor der Fehlercode `Too Many Requests` zurückgegeben wird. Wenn Sie zu viele Fehlercodes des Typs `Too Many Requests` erhalten, sollten Sie in Betracht ziehen, das Wiederholungsverhalten in die Fehlerbehandlungsroutinen Ihrer Anwendung aufzunehmen oder den [bereitgestellten Durchsatz für den Container](set-throughput.md) zu erhöhen.
 
 ## <a name="throughput-faq"></a>Häufig gestellte Fragen zum Durchsatz
 

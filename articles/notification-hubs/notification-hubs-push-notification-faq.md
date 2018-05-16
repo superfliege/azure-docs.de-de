@@ -1,25 +1,25 @@
 ---
-title: "Azure Notification Hubs: Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zum Entwerfen/Implementieren von Lösungen in Notification Hubs"
+title: 'Azure Notification Hubs: Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation'
+description: Häufig gestellte Fragen zum Entwerfen/Implementieren von Lösungen in Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
-author: ysxu
-manager: erikre
+author: dimazaid
+manager: kpiteira
+editor: spelluru
 keywords: Pushbenachrichtigung, Pushbenachrichtigungen, iOS-Pushbenachrichtigungen, Android-Pushbenachrichtigungen, iOS-Push, Android-Push
-editor: 
 ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/19/2017
-ms.author: yuaxu
-ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.date: 04/14/2018
+ms.author: dimazaid
+ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 ## <a name="general"></a>Allgemein
@@ -82,7 +82,7 @@ Wenn Sie über ein vorhandenes mobiles App-Back-End verfügen und nur die Funkti
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Wie viele Geräte kann ich unterstützen, wenn ich Pushbenachrichtigungen über Notification Hubs sende?
 Auf der Seite [Notification Hubs – Preise] finden Sie ausführliche Informationen zur Anzahl unterstützter Geräte.
 
-Sollten Sie mehr als zehn Millionen registrierte Geräte unterstützen müssen, nehmen Sie mit uns [Kontakt](https://azure.microsoft.com/overview/contact-us/) auf, damit wir Ihnen beim Skalieren Ihrer Lösung helfen können.
+Wenn Sie mehr als zehn Millionen registrierte Geräte unterstützen müssen, [kontaktieren](https://azure.microsoft.com/overview/contact-us/) Sie uns direkt, damit wir Sie beim Skalieren Ihrer Lösung unterstützen können.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Wie viele Pushbenachrichtigungen kann ich senden?
 Je nach gewähltem Tarif erfolgt die Skalierung von Azure Notification Hubs automatisch auf der Grundlage der Anzahl von Benachrichtigungen, die das System durchlaufen.
