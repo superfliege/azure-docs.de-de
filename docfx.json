@@ -74,6 +74,10 @@
          "ShawnJackson", "PRmerger", "DuncanmaMSFT", "Saisang", "Ja-Dunn", "jomolnar", "KatieCumming", "rjagiewich", "v-thepet", "deneha", "ktoliver",
          "itechedit", "MattGLaBelle", "Lisaco88", "GitHubber17", "v-shils", "rmca14", "tfosmark", "sdwheeler"],
       "_op_documentIdPathDepotMapping": {
+        "articles/iot-central/": {
+    "depot_name": "MSDN.microsoft-iot-central",
+    "folder_relative_path_in_docset": "articles"
+   },
         "articles/billing/billing-add-change-azure-subscription-administrator.md": {
           "folder_relative_path_in_docset": "articles"
         },
@@ -241,7 +245,6 @@
         "articles/jenkins/**/*.md": "https://feedback.azure.com/forums/34192--general-feedback",
         "articles/key-vault/**/*.md": "https://feedback.azure.com/forums/906355-azure-key-vault",
         "articles/load-balancer/**/*.md": "https://feedback.azure.com/forums/217313-networking?category_id=77467",
-        "articles/location-based-services/**/*.md": "https://feedback.azure.com/forums/909172-azure-location-based-services",
         "articles/log-analytics/**/*.md": "https://feedback.azure.com/forums/267889-log-analytics",
         "articles/logic-apps/**/*.md": "https://feedback.azure.com/forums/287593-logic-apps",
         "articles/machine-learning/preview/*.md": "https://feedback.azure.com/forums/257792-machine-learning",
