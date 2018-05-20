@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 2d501419dde633f89a5760af9f82604006de6b6f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4ef1387e3c8573a2bfa64c166f08bf47723eca62
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Problembehandlung bei Routen mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer ang
 ### <a name="view-effective-routes-for-a-network-interface"></a>Anzeigen der effektiven Routen für eine Netzwerkschnittstelle
 Führen Sie die folgenden Schritte durch, um die auf eine Netzwerkschnittstelle angewendeten Aggregatrouten anzuzeigen:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wir: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Mit dem folgenden Befehl werden alle Routen zurückgegeben, die auf die Netzwerkschnittstelle *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden.
    
        Get-AzureRmEffectiveRouteTable -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1
@@ -85,11 +85,11 @@ Führen Sie die folgenden Schritte durch, um die auf eine Netzwerkschnittstelle 
    
    Beachten Sie die folgenden Angaben in der Ausgabe:
    
-   * **Name:**Der Name der effektiven Route kann für benutzerdefinierte Routen leer sein, sofern er nicht ausdrücklich angegeben wurde. 
-   * **Status:**gibt den Status der effektiven Route an. Mögliche Werte sind „Aktiv“ oder „Ungültig“.
-   * **AddressPrefixes:**gibt das Adresspräfix der effektiven Route in CIDR-Notation an. 
-   * **nextHopType:**gibt den nächsten Hop für die angegebene Route an. Mögliche Werte sind *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* oder *Null*. Der Wert *Null* für **nextHopType** in einer benutzerdefinierten Route gibt möglicherweise eine ungültige Route an. Dies ist beispielsweise der Fall, wenn für **nextHopType** der Wert *VirtualAppliance* angegeben ist und der virtuelle Computer des virtuellen Netzwerkgeräts nicht bereitgestellt oder ausgeführt wird. Wenn für **nextHopType** der Wert *VPNGateway* angegeben ist und im angegebenen VNET kein Gateway bereitgestellt oder ausgeführt wird, wird die Route unter Umständen ungültig.
-   * **NextHopIpAddress:**gibt die IP-Adresse des nächsten Hops der effektiven Route an.
+   * **Name:** Der Name der effektiven Route kann für benutzerdefinierte Routen leer sein, sofern er nicht ausdrücklich angegeben wurde. 
+   * **Status:** gibt den Status der effektiven Route an. Mögliche Werte sind „Aktiv“ oder „Ungültig“.
+   * **AddressPrefixes:** gibt das Adresspräfix der effektiven Route in CIDR-Notation an. 
+   * **nextHopType:** gibt den nächsten Hop für die angegebene Route an. Mögliche Werte sind *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* oder *Null*. Der Wert *Null* für **nextHopType** in einer benutzerdefinierten Route gibt möglicherweise eine ungültige Route an. Dies ist beispielsweise der Fall, wenn für **nextHopType** der Wert *VirtualAppliance* angegeben ist und der virtuelle Computer des virtuellen Netzwerkgeräts nicht bereitgestellt oder ausgeführt wird. Wenn für **nextHopType** der Wert *VPNGateway* angegeben ist und im angegebenen VNET kein Gateway bereitgestellt oder ausgeführt wird, wird die Route unter Umständen ungültig.
+   * **NextHopIpAddress:** gibt die IP-Adresse des nächsten Hops der effektiven Route an.
    
    Mit dem folgenden Befehl werden die Routen in einer übersichtlichen Tabelle zurückgegeben:
    

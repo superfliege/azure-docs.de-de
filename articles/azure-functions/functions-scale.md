@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a4c43477a28efe01fd197a0c09afadb338638036
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -95,9 +95,7 @@ Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherres
 Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscodedateien in Azure Files-Freigaben im Hauptspeicherkonto der Funktion gespeichert. Wenn Sie das Hauptspeicherkonto der Funktions-App löschen, werden die Funktionscodedateien gelöscht und können nicht wiederhergestellt werden.
 
 > [!NOTE]
-> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, sollten Sie eine der folgenden Möglichkeiten erwägen:
-> - Hosten Sie die Funktions-App in einem App Service-Plan mit aktivierter Option „Always On“.
-> - Verwenden Sie einen anderen Mechanismus zum Auslösen der Blobverarbeitung, z.B. ein Event Grid-Abonnement oder eine Warteschlangennachricht, die den Blobnamen enthält. Ein Beispiel finden Sie in den[Beispielen für die Blobeingabebindung](functions-bindings-storage-blob.md#input---example).
+> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Um diese Kaltstartverzögerung zu vermeiden, verwenden Sie einen App Service-Plan, für den Always On aktiviert ist, oder den Event Grid-Trigger. Weitere Informationen finden Sie im Referenzartikel zur [Blobtriggerbindung](functions-bindings-storage-blob.md#trigger).
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 

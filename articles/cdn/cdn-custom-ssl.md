@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: f64f25713dd05ece018138624a06c225218f68e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95f73dd702b3fffcefbdea28d58ad36bf8eb7eb5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -74,13 +74,20 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 
 4. Wählen Sie unter „Zertifikatverwaltungstyp“ die Option **CDN verwaltet** aus.
 
-4. Klicken Sie auf **Ein**, um HTTPS zu aktivieren.
+5. Klicken Sie auf **Ein**, um HTTPS zu aktivieren.
 
     ![HTTPS-Status benutzerdefinierter Domänen](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
+6. Fahren Sie mit [Domäne überprüfen](#validate-the-domain) fort.
+
 
 ## <a name="option-2-enable-the-https-feature-with-your-own-certificate"></a>Option 2: Aktivieren des HTTPS-Features mit Ihrem eigenen Zertifikat 
+
+> [!IMPORTANT]
+> Dieses Feature ist nur für Profile vom Typ **Azure CDN Standard von Microsoft** verfügbar. 
+>
  
+
 Sie können Ihr eigenes Zertifikat im Azure CDN verwenden, um Inhalte über HTTPS bereitzustellen. Hierzu ist eine Azure Key Vault-Integration erforderlich. Mit Azure Key Vault können Kunden ihre Zertifikate sicher speichern. Der Azure CDN-Dienst nutzt diesen sicheren Mechanismus zum Abrufen des Zertifikats. Für die Verwendung Ihres eigenen Zertifikats sind einige zusätzliche Schritte erforderlich.
 
 ### <a name="step-1-prepare-your-azure-key-vault-account-and-certificate"></a>Schritt 1: Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
@@ -89,9 +96,23 @@ Sie können Ihr eigenes Zertifikat im Azure CDN verwenden, um Inhalte über HTTP
  
 2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen (Certificate Authorities, CAs) mit Azure Key Vault-Integration erstellen. 
 
-### <a name="step-2-grant-azure-cdn-access-to-your-key-vault"></a>Schritt 2: Gewähren von Zugriff auf Ihren Schlüsseltresor für das Azure CDN
+### <a name="step-2-register-azure-cdn"></a>Schritt 2: Registrieren von Azure CDN
+
+Registrieren Sie Azure CDN über PowerShell als App in Ihrem Azure Active Directory.
+
+1. Installieren Sie bei Bedarf auf dem lokalen Computer [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) in PowerShell.
+
+2. Führen Sie in PowerShell den folgenden Befehl aus:
+
+     `New-AzureRmADServicePrincipal -ApplicationId "205478c0-bd83-4e1b-a9d6-db63a3e1e1c8"`
+
+    ![Registrieren von Azure CDN in PowerShell](./media/cdn-custom-ssl/cdn-register-powershell.png)
+              
+
+### <a name="step-3-grant-azure-cdn-access-to-your-key-vault"></a>Schritt 3: Gewähren Sie Azure CDN Zugriff auf Ihren Schlüsseltresor
  
-Sie müssen dem Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geheimnisse) in Ihrem Azure Key Vault-Konto gewähren.
+Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geheimnisse) in Ihrem Azure Key Vault-Konto.
+
 1. Klicken Sie in Ihrem Key Vault-Konto unter „EINSTELLUNGEN“ auf **Zugriffsrichtlinien** und anschließend auf **Neu hinzufügen**, um eine neue Richtlinie zu erstellen.
 
     ![Erstellen einer neuen Zugriffsrichtlinie](./media/cdn-custom-ssl/cdn-new-access-policy.png)
@@ -106,7 +127,7 @@ Sie müssen dem Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (G
 
     Das Azure CDN kann nun auf diesen Schlüsseltresor und auf die darin gespeicherten Zertifikate (Geheimnisse) zugreifen.
  
-### <a name="step-3-select-the-certificate-for-azure-cdn-to-deploy"></a>Schritt 3: Auswählen des bereitzustellenden Zertifikats für das Azure CDN
+### <a name="step-4-select-the-certificate-for-azure-cdn-to-deploy"></a>Schritt 4: Auswählen des für Azure CDN bereitzustellenden Zertifikats
  
 1. Kehren Sie zum Azure CDN-Portal zurück, und wählen Sie das Profil und den CDN-Endpunkt aus, für die Sie benutzerdefiniertes HTTPS aktivieren möchten. 
 
@@ -126,16 +147,20 @@ Sie müssen dem Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (G
     - Die verfügbaren Zertifikatversionen 
  
 5. Klicken Sie auf **Ein**, um HTTPS zu aktivieren.
+  
+6. Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort.
 
 
 ## <a name="validate-the-domain"></a>Überprüfen der Domäne
 
-Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerdefinierten Endpunkt mit einem CNAME-Eintrag zugeordnet ist, können Sie mit  
+Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerdefinierten Endpunkt mit einem CNAME-Eintrag zugeordnet ist, oder Sie Ihr eigenes Zertifikat verwenden, können Sie mit  
 [Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt mit einem CNAME-Eintrag zugeordnet](#custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record) fortfahren. Fahren Sie andernfalls mit [Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt nicht zugeordnet](#custom-domain-is-not-mapped-to-your-cdn-endpoint) fort, falls der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder falls er die Unterdomäne „cdnverify“ enthält.
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt mit einem CNAME-Eintrag zugeordnet
 
-Nach dem Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-Zertifizierungsstelle (Certificate Authority, CA) verwendet, um den Besitz Ihrer benutzerdefinierten Domäne zu überprüfen. 
+Nach dem Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-Zertifizierungsstelle (Certificate Authority, CA) verwendet, um den Besitz Ihrer benutzerdefinierten Domäne automatisch zu überprüfen. 
+
+Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich.
 
 Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutzerdefinierter Domänenname und *Wert* Ihr CDN-Endpunkt-Hostname ist:
 
@@ -147,7 +172,7 @@ Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die 
 
 Wenn Ihr CNAME-Eintrag im richtigen Format vorliegt, überprüft DigiCert automatisch Ihren benutzerdefinierten Domänennamen und fügt ihn dem SAN-Zertifikat hinzu. DigiCert sendet Ihnen keine Bestätigungs-E-Mail, und Sie müssen Ihre Anforderung nicht genehmigen. Das Zertifikat ist ein Jahr lang gültig und wird automatisch verlängert, bevor es abläuft. Fahren Sie mit [Warten auf die Weitergabe](#wait-for-propagation) fort. 
 
-Die automatische Validierung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
+Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie ein Supportticket, falls Ihre Domäne nicht innerhalb einer Stunde validiert wurde.
 
 >[!NOTE]
 >Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen. Informationen zum Verwalten von CAA-Einträgen finden Sie unter [Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/) (Verwalten von CAA-Einträgen). Ein Tool für CAA-Einträge finden Sie unter [CAA Record Helper](https://sslmate.com/caa/) (Hilfsprogramm für CAA-Einträge).

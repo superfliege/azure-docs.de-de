@@ -1,6 +1,6 @@
-In Azure ist jetzt Unterstützung von zwei Debuggingfunktionen verfügbar: Konsolenausgaben- und Screenshotunterstützung für das Resource Manager-Bereitstellungsmodell für virtuelle Azure-Computer. 
+Zwei Debuggingfunktionen werden ab sofort in Azure unterstützt: die Konsolenausgabe und die Screenshotunterstützung für das Bereitstellungsmodell des Ressourcen-Managers von Azure Virtual Machines. 
 
-Wenn Sie Ihr eigenes Image in Azure verwenden oder sogar eines der Plattformimages starten, kann sich ein virtueller Computer aus zahlreichen Gründen in einem nicht startfähigen Zustand befinden. Diese Funktionen ermöglichen Ihnen ein einfaches Diagnostizieren und Wiederherstellten Ihrer virtuellen Computer nach Startfehlern.
+Wenn Sie Ihr eigenes Image in Azure verwenden oder sogar eines der Plattformimages starten, kann ein virtueller Computer aus zahlreichen Gründen in einen nicht startbaren Zustand geraten. Diese Funktionen ermöglichen Ihnen ein einfaches Diagnostizieren und Wiederherstellten Ihrer virtuellen Computer nach Startfehlern.
 
 Für virtuelle Linux-Computer können Sie die Ausgabe des Konsolenprotokolls problemlos über das Portal anzeigen:
 
@@ -29,15 +29,20 @@ Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterst�
 - [Startfehler oder INACCESSIBLE_BOOT_DEVICE](https://support.microsoft.com/help/4010143)
 
 ## <a name="enable-diagnostics-on-a-new-virtual-machine"></a>Aktivieren der Diagnose auf einem virtuellen Computer
-1. Wählen Sie beim Erstellen eines neuen virtuellen Computers über das Vorschauportal in der Dropdownliste „Bereitstellungsmodell“ die Option **Azure Resource Manager** aus:
+1. Wählen Sie beim Erstellen eines neuen virtuellen Computers über das Azure-Portal in der Dropdownliste „Bereitstellungsmodell“ die Option **Azure Resource Manager** aus:
  
     ![Ressourcen-Manager](./media/virtual-machines-common-boot-diagnostics/screenshot3.jpg)
 
-2. Konfigurieren Sie die Überwachungsoption für die Auswahl des Speicherkontos, in dem diese Diagnosedateien abgelegt werden sollen.
+2. Aktivieren Sie unter **Einstellungen** die **Startdiagnose**, und wählen Sie dann ein Speicherkonto aus, in dem Sie diese Diagnosedateien ablegen möchten.
  
-    ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/screenshot4.jpg)
+    ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
-3. Wenn Sie aus einer Azure Resource Manager-Vorlage bereitstellen, navigieren Sie zur Ressource des virtuellen Computers und fügen den Diagnoseprofilabschnitt an. Denken Sie daran, den API-Versionsheader „2015-06-15“ zu verwenden.
+    > [!NOTE]
+    > Die Startdiagnosefunktion unterstützt keine Premium-Speicherkonten. Bei Verwendung eines Premium-Speicherkontos für die Startdiagnose erhalten Sie möglicherweise den Fehler „StorageAccountTypeNotSupported“, wenn Sie die VM starten.
+    >
+    > 
+
+3. Beim Bereitstellen aus einer Azure Resource Manager-Vorlage navigieren Sie zur VM-Ressource und fügen den Diagnoseprofilabschnitt an. Denken Sie daran, den API-Versionsheader „2015-06-15“ zu verwenden.
 
     ```json
     {
@@ -61,9 +66,16 @@ Beide Funktionen werden für virtuelle Azure-Computer in allen Regionen unterst�
 
 Informationen zum Bereitstellen eines virtuellen Beispielcomputers mit aktivierter Startdiagnose finden Sie in unserem Repository.
 
-## <a name="update-an-existing-virtual-machine"></a>Aktualisieren eines vorhandenen virtuellen Computers ##
+## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Computern 
 
-Zum Aktivieren der Startdiagnose über das Portal können Sie auch einen vorhandenen virtuellen Computer über das Portal aktualisieren. Wählen Sie die Option „Startdiagnose“, und speichern Sie. Starten Sie den virtuellen Computer neu, damit die Einstellungen übernommen werden.
+Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Computern führen Sie diese Schritte aus:
 
-![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/screenshot5.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie den virtuellen Computer aus.
+2. Wählen Sie unter **Support + Problembehandlung** die Option **Startdiagnose** > **Einstellungen** aus, ändern Sie den Status in **Ein**, und wählen Sie dann ein Speicherkonto aus. 
+4. Stellen Sie sicher, dass die Option „Startdiagnose“ ausgewählt ist, und speichern Sie dann die Änderung.
+
+    ![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
+
+3. Starten Sie den virtuellen Computer neu, damit die Einstellungen übernommen werden.
+
 

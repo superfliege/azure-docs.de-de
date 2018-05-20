@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: 03104b497034ef92ddb2c6216d6e9200e65168b0
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ce349aedc6b733d34ab61eb2e23b378727e01800
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning
 In diesem Thema beschreiben wir die Optionen zum Verschieben von Daten aus Flatfiles (CSV- oder TSV-Formate) oder von in einer lokalen SQL Server-Instanz gespeicherten Daten in eine Azure SQL-Datenbank. Diese Tasks zum Verschieben von Daten in die Cloud sind Teil des Team Data Science-Prozesses.
@@ -33,8 +33,8 @@ In der folgende Tabelle sind die Optionen zum Verschieben von Daten in eine Azur
 
 | <b>QUELLE</b> | <b>ZIEL: Azure SQL-Datenbank</b> |
 | --- | --- |
-| <b>Flatfile (CSV- oder TSV-Format)</b> |<a href="#bulk-insert-sql-query">SQL-Abfrage zum Masseneinfügen |
-| <b>Lokale SQL Server-Instanz</b> |1. <a href="#export-flat-file">Exportieren in eine Flatfile<br> 2. <a href="#insert-tables-bcp">SQL-Datenbankmigrations-Assistent<br> 3. <a href="#db-migration">Datenbanksicherung und -wiederherstellung<br> 4. <a href="#adf">Azure Data Factory |
+| <b>Flatfile (CSV- oder TSV-Format)</b> |[SQL-Abfrage zum Masseneinfügen](#bulk-insert-sql-query) |
+| <b>Lokale SQL Server-Instanz</b> |1. [Exportieren in eine Flatfile](#export-flat-file)<br> 2. [SQL-Datenbankmigrations-Assistent](#insert-tables-bcp)<br> 3. [Datenbanksicherung und -wiederherstellung](#db-migration)<br> 4. [Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>Voraussetzungen
 Für diese hier beschriebenen Verfahren benötigen Sie:

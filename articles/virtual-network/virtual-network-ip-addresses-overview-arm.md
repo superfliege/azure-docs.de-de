@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/16/2017
+ms.date: 05/02/2017
 ms.author: jdial
-ms.openlocfilehash: d50333888592d2d3e13c40c07a7e58f8676df075
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 30bed569887ce4b25d0b464e9f14a1491c38c736
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -53,11 +53,15 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 
 Öffentliche IP-Adressen werden mit einer der folgenden SKUs erstellt:
 
+>[!IMPORTANT]
+> Für Lastenausgleichs- und öffentliche IP-Ressourcen müssen übereinstimmende SKUs verwendet werden. Eine Kombination von Ressourcen der SKU-Typen „Basic“ und „Standard“ ist nicht möglich. Sie können eigenständige virtuelle Computer, virtuelle Computer in einer Ressource einer Verfügbarkeitsgruppe oder eine Ressource einer VM-Skalierungsgruppe an beide SKUs gleichzeitig anfügen.  Für neue Entwürfe sollte SKU-Standardressourcen verwendet werden.  Unter [Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finden Sie ausführliche Informationen.
+
 #### <a name="basic"></a>Basic
 
 Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden, sind öffentliche IP-Adressen vom Typ „Basic-SKU“. Nach der Einführung von SKUs können Sie nun angeben, welche SKU für die öffentliche IP-Adresse verwendet werden soll. Für Basic-SKU-Adressen gilt Folgendes:
 
-- Sie werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
+- Werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
+- Sind standardmäßig geöffnet.  Netzwerksicherheitsgruppen werden empfohlen, sind aber zum Einschränken des ein- oder ausgehenden Datenverkehrs optional.
 - Die Zuweisung ist für jede Azure-Ressource möglich, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff.
 - Sie können einer bestimmten Zone zugewiesen werden.
 - Sie sind nicht zonenredundant. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -66,18 +70,19 @@ Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden
 
 Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
-- Sie werden nur mit der statischen Zuordnungsmethode zugewiesen.
-- Sie können Netzwerkschnittstellen oder Standard-Lastenausgleichsmodulen mit Internetzugriff zugewiesen werden. Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
-- Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Übersicht über Verfügbarkeitszonen in Azure (Vorschau)).
+- Werden nur mit der statischen Zuordnungsmethode zugewiesen.
+- Sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie müssen zulässigen eingehenden Datenverkehr mithilfe einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) explizit in einer Whitelist angeben.
+- Werden Netzwerkschnittstellen oder öffentlichen Standard-Lastenausgleichsmodulen zugewiesen. Weitere Informationen zum Azure Load Balancer des Typs „Standard“ finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Wenn Sie der Netzwerkschnittstelle eines virtuellen Computers eine öffentliche IP-Adresse für eine Standard-SKU zuweisen, müssen Sie den geplanten Datenverkehr explizit mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) zulassen. Die Kommunikation mit der Ressource schlägt fehl, bis Sie eine Netzwerksicherheitsgruppe erstellen und zuordnen und den gewünschten Datenverkehr explizit zulassen.
+> Die Kommunikation mit einer SKU-Standardressource schlägt fehl, bis Sie eine [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
-Es gibt zwei Methoden zum Zuordnen einer IP-Adresse zu einer öffentlichen IP-Adressressource: *dynamisch* oder *statisch*. Die Standardmethode für die Zuordnung ist *dynamisch*. Bei diesem Verfahren wird eine IP-Adresse **nicht** zum Zeitpunkt ihrer Erstellung zugewiesen. Stattdessen wird die öffentliche IP-Adresse zugeordnet, wenn Sie die zugeordnete Ressource (z.B. einen virtuellen Computer oder einen Load Balancer) starten oder erstellen. Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen. Nach dem Freigeben für Ressource A kann die IP-Adresse beispielsweise einer anderen Ressource zugewiesen werden. Wenn die IP-Adresse einer anderen Ressource zugewiesen wird, während Ressource A angehalten ist, erhält Ressource A eine andere IP-Adresse, wenn Sie sie neu starten.
+Öffentliche IP-Adressen der SKU-Typen „Basic“ und „Standard“ unterstützen die *statische* Zuordnungsmethode.  Der Ressource wird beim Anlegen eine IP-Adresse zugewiesen. Beim Löschen der Ressource wird die IP-Adresse freigegeben.
 
-Damit die IP-Adresse für die zugeordnete Ressource unverändert bleibt, können Sie die Zuordnungsmethode explizit auf *statisch*festlegen. Eine statische IP-Adresse wird sofort zugewiesen. Die Adresse wird nur freigegeben, wenn Sie die Ressource löschen oder deren Zuordnungsmethode in *dynamisch* ändern.
+Öffentliche IP-Adressen des SKU-Typs „Basic“ unterstützen auch eine *dynamische* Zuordnungsmethode, die Standard ist, wenn die Zuordnungsmethode nicht angegeben ist.  Die Wahl der *dynamischen* Zuordnungsmethode für eine öffentliche IP-Adressressource des Typs „Basic“ bedeutet, dass die IP-Adresse zum Zeitpunkt der Ressourcenerstellung **nicht** zugeordnet wird.  Die öffentliche IP-Adresse wird zugeordnet, wenn Sie die öffentliche IP-Adresse einem virtuellen Computer zuordnen oder Sie die erste Instanz des virtuellen Computers im Back-End-Pool eines Lastenausgleichs des Typs „Basic“ platzieren.   Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen.  Nach dem Freigeben für Ressource A kann die IP-Adresse beispielsweise einer anderen Ressource zugewiesen werden. Wenn die IP-Adresse einer anderen Ressource zugewiesen wird, während Ressource A angehalten ist, erhält Ressource A eine andere IP-Adresse, wenn Sie sie neu starten. Wenn Sie die Zuordnungsmethode einer öffentlichen IP-Adressressource des Typs „Basic“ von *statisch* in *dynamisch* ändern, wird die Adresse freigegeben. Damit die IP-Adresse für die zugeordnete Ressource unverändert bleibt, können Sie die Zuordnungsmethode explizit auf *statisch*festlegen. Eine statische IP-Adresse wird sofort zugewiesen.
 
 > [!NOTE]
 > Auch wenn Sie die Zuordnungsmethode auf *statisch* festlegen, können Sie nicht die tatsächliche IP-Adresse angeben, die der öffentlichen IP-Adressressource zugewiesen ist. Azure weist die IP-Adresse aus einem Pool mit verfügbaren IP-Adressen an dem Azure-Standort zu, an dem die Ressource erstellt wird.
@@ -111,11 +116,11 @@ Sie können eine öffentliche IP-Adresse, die mit einer der [SKUs](#SKU) erstell
 
 ### <a name="vpn-gateways"></a>VPN-Gateways
 
-Ein [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) stellt für ein virtuelles Azure-Netzwerk eine Verbindung mit anderen virtuellen Azure-Netzwerken oder einem lokalen Netzwerk her. Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um dafür die Kommunikation mit dem Remotenetzwerk zu ermöglichen. Sie können einem VPN Gateway nur eine *dynamische* öffentliche IP-Adresse zuweisen.
+Ein [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) stellt für ein virtuelles Azure-Netzwerk eine Verbindung mit anderen virtuellen Azure-Netzwerken oder einem lokalen Netzwerk her. Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um dafür die Kommunikation mit dem Remotenetzwerk zu ermöglichen. Sie können einem VPN Gateway nur eine *dynamische* öffentliche IP-Adresse des Typs „Basic“ zuweisen.
 
 ### <a name="application-gateways"></a>Anwendungsgateways
 
-Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. Diese öffentliche IP-Adresse fungiert als VIP (virtuelle IP-Adresse) mit Lastenausgleich. Sie können der Front-End-Konfiguration eines Anwendungsgateways nur eine *dynamische* öffentliche IP-Adresse zuweisen.
+Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. Diese öffentliche IP-Adresse fungiert als VIP (virtuelle IP-Adresse) mit Lastenausgleich. Sie können der Front-End-Konfiguration eines Application Gateways nur eine *dynamische* öffentliche IP-Adresse des Typs „Basic“ zuweisen.
 
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.

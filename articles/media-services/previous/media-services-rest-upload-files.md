@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 4ba6fdcec8d71326b02d71dbad429be8c2052171
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST
 > [!div class="op_single_selector"]
@@ -87,11 +87,11 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
     ```
 4. Klicken Sie auf der linken Seite des Fensters **Postman** auf **1. Get AAD Auth token** -> **Get Azure AD Token for Service Principal** (AAD Authentifizierungstoken abrufen – Azure AD-Token für Dienstprinzipal abrufen).
 
-    Der URL-Teil wird mit der Umgebungsvariablen **AzureADSTSEndpoint** gefüllt (deren Wert Sie zuvor in diesem Tutorial festgelegt haben).
-    
-5. Klicken Sie auf **Senden**.
+    Der URL-Teil wird mit der Umgebungsvariablen **AzureADSTSEndpoint** gefüllt (früher im Tutorial legen Sie die Werte von [Umgebungsvariablen](#configure-the-environment) fest, die die [Sammlung](#configure-the-collection) unterstützen).
 
     ![Hochladen einer Datei](./media/media-services-rest-upload-files/postment-get-token.png)
+
+5. Klicken Sie auf **Senden**.
 
     Sie können die Antwort sehen, die „access_token“ enthält. Das „Testskript“ nimmt diesen Wert und legt die Umgebungsvariable **AccessToken** fest (wie oben beschrieben). Wenn Sie Ihre Umgebungsvariablen untersuchen, werden Sie feststellen, dass diese Variable nun den Wert des Zugriffstoken (Bearertoken) enthält, das in den restlichen Vorgängen verwendet wird. 
 

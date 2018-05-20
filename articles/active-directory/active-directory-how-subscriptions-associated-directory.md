@@ -6,21 +6,19 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: users-groups-roles
 ms.topic: get-started-article
 ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 1e258473614e01ca35eaa5970d02544844da6972
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6664a2b9bb6375314090bf4dae9190c7d52565d2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
@@ -53,6 +51,8 @@ Alle Benutzer verfügen über ein einzelnes Basisverzeichnis für die Authentifi
 
     ![Screenshot mit dem Umschalter](./media/active-directory-how-subscriptions-associated-directory/directory-switcher.PNG)
 
+
+Alle Ihre Azure Key Vaults sind ebenfalls von einer Abonnementumstellung betroffen. [Ändern Sie daher die Key Vault-Mandanten-ID](../key-vault/key-vault-subscription-move-fix.md), bevor Sie den Betrieb fortsetzen.
 
 Die Änderung des Abonnementverzeichnisses erfolgt auf Dienstebene. Sie wirkt sich nicht auf die Abonnementabrechnung aus, und der Kontoadministrator kann über das [Kontocenter](https://account.azure.com/subscriptions) weiterhin den Dienstadministrator ändern. Wenn Sie das ursprüngliche Verzeichnis löschen möchten, müssen Sie die Abonnementabrechnung einem neuen Kontoadministrator übertragen. Weitere Informationen zum Übertragen der Abrechnung finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md). 
 

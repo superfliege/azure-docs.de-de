@@ -11,14 +11,14 @@ ms.assetid: 73304272-6c8b-482e-af7c-cd25d95dab4d
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: d663756c52a23096888b9ee568fea23163d33aa9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cb78808b515bb3385f7cf56725441a2b228f0aba
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure Toolkit für IntelliJ
 
@@ -283,11 +283,15 @@ Diese Fehler treten auf, weil die Heapgröße für die Ausführung von Spark nic
 ![Hinzufügen von Optionen zum Feld „VM options“ (VM-Optionen) in IntelliJ](./media/apache-spark-intellij-tool-plugin/change-heap-size.png)
 
 ## <a name="faq"></a>Häufig gestellte Fragen
-Um die Anwendung an Azure Data Lake Store zu übermitteln, wählen Sie während des Azure-Anmeldeprozesses den Modus **Interaktiv** aus. Bei Auswahl von **Automatisiert** tritt unter Umständen ein Fehler auf.
+Beim Verknüpfen eines Clusters würde ich empfehlen, die Anmeldeinformationen des Speichers anzugeben.
 
-![Interaktiv (Anmeldung)](./media/apache-spark-intellij-tool-plugin/interative-signin.png)
+![Verknüpfen eines Clusters und Bereitstellen der Speicheranmeldeinformationen](./media/apache-spark-intellij-tool-plugin/link-cluster-with-storage-credential-intellij.png)
 
-Nun wurde er behoben. Sie können einen Azure Data Lake-Cluster zum Übermitteln Ihrer Anwendung mit jeder Anmeldemethode auswählen.
+Es gibt zwei Modi zum Übermitteln der Aufträge. Wenn Speicheranmeldeinformationen bereitgestellt werden, wird der Auftrag im Batchmodus übermittelt. Andernfalls wird der interaktive Modus verwendet. Wenn der Cluster ausgelastet ist, erhalten Sie möglicherweise die folgende Fehlermeldung.
+
+![IntelliJ-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-upload.png)
+
+![IntelliJ-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-intellij-tool-plugin/intellij-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback-and-known-issues"></a>Feedback und bekannte Probleme
 Derzeit wird die direkte Anzeige von Spark-Ausgaben nicht unterstützt.

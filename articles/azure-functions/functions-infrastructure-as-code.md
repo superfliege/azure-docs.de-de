@@ -1,12 +1,12 @@
 ---
-title: "Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions | Microsoft-Dokumentation"
+title: Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die Ihre Funktions-App bereitstellt.
 services: Functions
 documtationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 keywords: Azure Functions, Funktionen, serverlose Architektur, Infrastruktur als Code, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.server: functions
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: 6f31ba7b43c70f52bdd67d27512a322ec6258608
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 28b2f5aba69e5c058feb7119eb31352220922998
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -56,7 +56,9 @@ Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen e
 }
 ```
 
-Darüber hinaus müssen die Eigenschaften `AzureWebJobsStorage` und `AzureWebJobsDashboard` als App-Einstellungen in der Standortkonfiguration angegeben werden. Die Azure Functions-Laufzeit verwendet die Verbindungszeichenfolge `AzureWebJobsStorage` zum Erstellen interner Warteschlangen. Die Verbindungszeichenfolge `AzureWebJobsDashboard` wird zur Anmeldung beim Azure-Tabellenspeicher und zur Nutzung der Registerkarte **Überwachen** im Verwaltungsportal verwendet.
+Darüber hinaus muss die Eigenschaft `AzureWebJobsStorage` als App-Einstellung in der Standortkonfiguration angegeben werden. Wenn die Funktions-App nicht Application Insights für die Überwachung verwendet, müssen Sie auch `AzureWebJobsDashboard` als App-Einstellung angeben.
+
+Die Azure Functions-Laufzeit verwendet die Verbindungszeichenfolge `AzureWebJobsStorage` zum Erstellen interner Warteschlangen.  Wenn Application Insights nicht aktiviert ist, verwendet die Runtime die Verbindungszeichenfolge `AzureWebJobsDashboard` zur Anmeldung beim Azure Table-Speicher und zur Nutzung der Registerkarte **Überwachen** im Portal.
 
 Diese Eigenschaften werden in der `appSettings`-Sammlung im `siteConfig`-Objekt angegeben:
 
@@ -260,7 +262,7 @@ Sie können Ihre Vorlage mit einer der folgenden Methoden bereitstellen:
 
 * [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 * [REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Schaltfläche zum Bereitstellen in Azure

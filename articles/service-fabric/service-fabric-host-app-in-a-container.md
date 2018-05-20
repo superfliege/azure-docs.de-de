@@ -1,9 +1,9 @@
 ---
 title: Bereitstellen von .NET-Apps in einem Container in Azure Service Fabric | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine .NET-App in Visual Studio in einem Docker-Container packen. Diese neue „Container“-App wird dann in einem Service Fabric-Cluster bereitgestellt.
+description: Hier erfahren Sie, wie Sie eine vorhandene .NET-Anwendung mit Visual Studio in einen Container packen und Container in Service Fabric lokal debuggen. Die Containeranwendung wird per Push an eine Azure-Containerregistrierung übertragen und in einem Service Fabric-Cluster bereitgestellt. Bei der Bereitstellung in Azure nutzt die Anwendung Azure SQL-Datenbank für die dauerhafte Speicherung von Daten.
 services: service-fabric
 documentationcenter: .net
-author: mikkelhegn
+author: rwike77
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,225 +12,243 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: 04a6fbc56d3c65cfb53339c4178dfa36e2aeb4ea
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/07/2018
+ms.author: ryanwi,mikhegn
+ms.openlocfilehash: 20600eda935d15b0554f6184b41caa45ee42fd14
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
+# <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
-In diesem Tutorial wird gezeigt, wie Sie eine vorhandene ASP.NET-Anwendung in einem Windows-Container in Azure bereitstellen.
+In diesem Tutorial wird gezeigt, wie Sie eine vorhandene ASP.NET-Anwendung in einen Container und als Service Fabric-Anwendung packen.  Führen Sie die Container lokal im Service Fabric-Bereitstellungscluster aus, und stellen Sie dann die Anwendung in Azure bereit.  Die Anwendung speichert Daten dauerhaft in [Azure SQL-Datenbank](/azure/sql-database/sql-database-technical-overview). 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Docker-Projekts in Visual Studio
-> * Packen einer vorhandenen Anwendung in Container
-> * Einrichten der Continuous Integration mit Visual Studio und VSTS
+> * Packen einer vorhandenen Anwendung in einen Container mithilfe von Visual Studio
+> * Erstellen einer Azure SQL-Datenbank
+> * Erstellen einer Azure-Containerregistrierung
+> * Bereitstellen einer Service Fabric-Anwendung in Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Installieren Sie [Docker CE für Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), damit Sie Container unter Windows 10 ausführen können.
-2. Machen Sie sich mit den [Schnellstart für Windows 10-Container][link-container-quickstart] vertraut.
-3. Laden Sie die Beispielanwendung [Fabrikam Fiber CallCenter][link-fabrikam-github] herunter.
-4. Installieren Sie [Azure PowerShell][link-azure-powershell-install].
-5. Installieren Sie die [Erweiterung für die Continuous Delivery-Tools für Visual Studio 2017][link-visualstudio-cd-extension].
-6. Erstellen Sie ein [Azure-Abonnement][link-azure-subscription] und ein [Visual Studio Team Services-Konto][link-vsts-account]. 
-7. [Erstellen Sie einen Cluster in Azure.](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+2. Installieren Sie [Docker CE für Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description), damit Sie Container unter Windows 10 ausführen können.
+3. Installieren Sie [Service Fabric-Runtime (Version 6.2 oder höher)](service-fabric-get-started.md) und das [Service Fabric SDK (Version 3.1 oder höher)](service-fabric-get-started.md).
+4. Installieren Sie [Visual Studio 2017 (Version 15.7 oder höher)](https://www.visualstudio.com/) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
+5. Installieren Sie [Azure PowerShell][link-azure-powershell-install].
+ 
 
-## <a name="create-a-cluster-on-azure"></a>Erstellen eines Clusters in Azure
-Service Fabric-Anwendungen werden auf einem Cluster ausgeführt, einem durch ein Netzwerk verbundenen Satz von virtuellen oder physischen Computern. [Richten Sie einen Service Fabric-Cluster ein, der in Azure ausgeführt wird](service-fabric-tutorial-create-vnet-and-windows-cluster.md), bevor Sie Ihre Anwendung erstellen und bereitstellen. Wählen Sie beim Erstellen des Clusters eine SKU, die das Ausführen von Containern unterstützt (z. B. Windows Server 2016 Datacenter mit Containern).
+## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Herunterladen und Ausführen von Fabrikam Fiber CallCenter
+Laden Sie die Beispielanwendung [Fabrikam Fiber CallCenter][link-fabrikam-github] herunter.  Klicken Sie auf den Link **download archive** (Archiv herunterladen).  Extrahieren Sie im Verzeichnis *sourceCode* in der Datei *fabrikam.zip* die Datei *sourceCode.zip*, und extrahieren Sie anschließend das Verzeichnis *VS2015* auf Ihrem Computer.
+
+Vergewissern Sie sich, dass die Fabrikam Fiber CallCenter-Anwendung ohne Fehler erstellt und ausgeführt wird.  Starten Sie Visual Studio als **Administrator**, und öffnen Sie die Datei [FabrikamFiber.CallCenter.sln][link-fabrikam-github].  Drücken Sie F5, um die Anwendung zu debuggen und auszuführen.
+
+![Fabrikam-Webbeispiel][fabrikam-web-page]
 
 ## <a name="containerize-the-application"></a>Packen der Anwendung in Container
+Klicken Sie mit der rechten Maustaste auf das Projekt **FabrikamFiber.Web**, und klicken Sie dann auf **Hinzufügen** > **Unterstützung für Containerorchestrator**.  Wählen Sie **Service Fabric** als Containerorchestrator aus, und klicken Sie auf **OK**.
 
-Sie besitzen einen in Azure ausgeführten Service Fabric-Cluster und können nun eine Containeranwendung erstellen und bereitstellen. Um die Ausführung unserer Anwendung in einem Container zu starten, müssen wir **Docker-Unterstützung** zum Projekt in Visual Studio hinzufügen. Wenn Sie **Docker-Unterstützung** zur Anwendung hinzufügen, geschieht Folgendes: Zuerst wird dem Projekt eine _Dockerfile_-Datei hinzugefügt. Diese neue Datei beschreibt, wie das Containerimage erstellt werden soll. Zweitens wird ein neues _docker-compose_-Projekt zur Projektmappe hinzugefügt. Das neue Projekt enthält einige docker-compose-Dateien. Mit docker-compose-Dateien kann beschrieben werden, wie der Container ausgeführt wird.
-
-Hier finden Sie weitere Informationen zum Arbeiten mit [Visual Studio-Containertools][link-visualstudio-container-tools].
-
-### <a name="add-docker-support"></a>Hinzufügen der Docker-Unterstützung
-
-Öffnen Sie die Datei [FabrikamFiber.CallCenter.sln][link-fabrikam-github] in Visual Studio.
-
-Klicken Sie mit der rechten Maustaste auf das Projekt **FabrikamFiber.Web**, und klicken Sie dann auf **Hinzufügen** > **Docker-Unterstützung**.
-
-### <a name="add-support-for-sql"></a>Hinzufügen von Unterstützung für SQL
-
-Diese Anwendung verwendet SQL als Datenanbieter, daher ist eine SQL Server-Instanz zum Ausführen der Anwendung erforderlich. Verweisen Sie in der Datei „docker-compose.override.yml“ auf ein SQL Server-Containerimage.
-
-Öffnen Sie in Visual Studio den **Projektmappen-Explorer**, navigieren Sie zu **docker-compose**, und öffnen Sie die Datei **docker-compose.override.yml**.
-
-Navigieren Sie zum Knoten `services:`, und fügen Sie einen Knoten namens `db:` hinzu, der den SQL Server-Eintrag für den Container definiert.
-
-```yml
-  db:
-    image: microsoft/mssql-server-windows-developer
-    environment:
-      sa_password: "Password1"
-      ACCEPT_EULA: "Y"
-    ports:
-      - "1433"
-    healthcheck:
-      test: [ "CMD", "sqlcmd", "-U", "sa", "-P", "Password1", "-Q", "select 1" ]
-      interval: 1s
-      retries: 20
-```
-
->[!NOTE]
->Sie können für lokales Debuggen jede beliebigen SQL Server-Instanz verwenden, solange sie von Ihrem Host aus erreichbar ist. Allerdings unterstützt **localdb** keine `container -> host`-Kommunikation.
-
->[!WARNING]
->Wenn SQL Server in einem Container ausgeführt wird, wird das dauerhafte Speichern von Daten nicht unterstützt. Wenn der Container beendet wird, werden Ihre Daten gelöscht. Verwenden Sie diese Konfiguration nicht für die Produktion.
-
-Navigieren Sie zum Knoten `fabrikamfiber.web:`, und fügen Sie einen untergeordneten Knoten mit dem Namen `depends_on:` hinzu. Dadurch wird sichergestellt, dass der `db`-Dienst (der SQL Server-Container) vor unserer Webanwendung (fabrikamfiber.web) gestartet wird.
-
-```yml
-  fabrikamfiber.web:
-    depends_on:
-      - db
-```
-
-### <a name="update-the-web-config"></a>Aktualisieren der Webkonfiguration
-
-Aktualisieren Sie im Projekt **FabrikamFiber.Web** die Verbindungszeichenfolge in der Datei **web.config** so, dass sie auf die SQL Server-Instanz im Container verweist.
-
-```xml
-<add name="FabrikamFiber-Express" connectionString="Data Source=db,1433;Database=FabrikamFiber;User Id=sa;Password=Password1;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
-
-<add name="FabrikamFiber-DataWarehouse" connectionString="Data Source=db,1433;Database=FabrikamFiber;User Id=sa;Password=Password1;MultipleActiveResultSets=True" providerName="System.Data.SqlClient" />
-```
-
->[!NOTE]
->Wenn Sie eine andere SQL Server-Instanz beim Erstellen eines Releasebuilds Ihrer Webanwendung verwenden möchten, fügen Sie eine weitere Verbindungszeichenfolge zu Ihrer web.release.config-Datei hinzu.
-
-### <a name="test-your-container"></a>Testen des Containers
-
-Drücken Sie **F5**, um die Anwendung in Ihrem Container auszuführen und zu debuggen.
-
-Edge öffnet die definierte Startseite Ihrer Anwendung unter Verwendung der IP-Adresse des Containers im internen NAT-Netzwerk (in der Regel 172.x.x.x). Weitere Informationen zum Debuggen von Anwendungen in Containern mit Visual Studio 2017 finden Sie [in diesem Artikel][link-debug-container].
-
-![Beispiel für Fabrikam in einem Container][image-web-preview]
+In der Projektmappe wird das neue Service Fabric-Anwendungsprojekt **FabrikamFiber.CallCenterApplication** erstellt.  Dem vorhandenen Projekt **FabrikamFiber.Web** wird eine Dockerfile-Datei hinzugefügt.  Dem Projekt **FabrikamFiber.Web** wird darüber hinaus das Verzeichnis **PackageRoot** hinzugefügt. Es enthält das Dienstmanifest und Einstellungen für den neuen Dienst „FabrikamFiber.Web“. 
 
 Der Container kann jetzt erstellt und in einer Service Fabric-Anwendung verpackt werden. Nachdem Sie das Containerimage auf dem Computer erstellt haben, können Sie es per Push an eine beliebige Containerregistrierung weiterleiten, und per Pull auf jeden beliebigen Host zur Ausführung abrufen.
 
-## <a name="get-the-application-ready-for-the-cloud"></a>Vorbereiten der Anwendung für die Cloud
+## <a name="create-an-azure-sql-db"></a>Erstellen einer Azure SQL-Datenbank
+Wenn Sie die Fabrikam Fiber CallCenter-Anwendung in der Produktion ausführen, müssen die Dateien dauerhaft in einer Datenbank gespeichert werden. Derzeit besteht keine Möglichkeit, die dauerhafte Speicherung von Daten in einem Container sicherzustellen. Daher können Sie Produktionsdaten in SQL Server nicht in einem Container speichern.
 
-Zum Vorbereiten der Anwendung für die Ausführung in Service Fabric in Azure müssen zwei Schritte ausgeführt werden:
+Wir empfehlen [Azure SQL-Datenbank](/azure/sql-database/sql-database-get-started-powershell). Führen Sie zum Einrichten und Ausführen einer verwalteten SQL Server-Datenbank in Azure das folgende Skript aus.  Ändern Sie die Skriptvariablen nach Bedarf. *clientIP* ist die IP-Adresse Ihres Entwicklungscomputers.  Hinter einer Unternehmensfirewall entspricht die IP-Adresse Ihres Entwicklungscomputers unter Umständen nicht der IP-Adresse, die über das Internet verfügbar gemacht wird.  Sie können die Serverfirewallregel für die SQL-Datenbank auch über das [Azure-Portal](https://portal.azure.com) festlegen. Dadurch wird die IP-Adresse Ihres Computers aufgeführt.
 
-1. Verfügbarmachen des Ports, über den die Webanwendung im Service Fabric-Cluster erreichbar sein soll
-2. Angeben einer produktionsbereiten SQL-Datenbank für die Anwendung
+```powershell
+$subscriptionID="<subscription ID>"
 
-### <a name="expose-the-port-for-the-app"></a>Verfügbarmachen des Ports für die App
-Für den konfigurierten Service Fabric-Cluster ist standardmäßig Port *80* im Azure Load Balancer geöffnet, der einen Lastenausgleich des eingehenden Datenverkehrs an den Cluster bewirkt. Der Container kann über die Datei „docker-compose.yml“ über diesen Port verfügbar gemacht werden.
+# Sign in to your Azure account and select your subscription.
+Login-AzureRmAccount -SubscriptionId $subscriptionID 
 
-Öffnen Sie in Visual Studio den **Projektmappen-Explorer**, navigieren Sie zu **docker-compose**, und öffnen Sie die Datei **docker-compose.yml**.
+# The data center and resource name for your resources.
+$dbresourcegroupname = "fabrikam-fiber-db-group"
+$location = "southcentralus"
 
-Ändern Sie den Knoten `fabrikamfiber.web:`, und fügen Sie einen untergeordneten Knoten mit dem Namen `ports:` hinzu.
+# The logical server name: Use a random value or replace with your own value (do not capitalize).
+$servername = "fab-fiber-$(Get-Random)"
 
-Fügen Sie den Zeichenfolgeneintrag `- "80:80"` hinzu. Die Datei „docker-compose.yml“ sollte folgendermaßen aussehen:
+# Set an admin login and password for your database.
+# The login information for the server.
+$adminlogin = "ServerAdmin"
+$password = "Password@123"
 
-```yml
-  version: '3'
+# The IP address of your development computer that accesses the SQL DB.
+$clientIP = "24.18.117.76"
 
-  services:
-    fabrikamfiber.web:
-      image: fabrikamfiber.web
-      build:
-        context: .\FabrikamFiber.Web
-        dockerfile: Dockerfile
-      ports:
-        - "80:80"
+# The database name.
+$databasename = "call-center-db"
+
+# Create a new resource group for your deployment and give it a name and a location.
+New-AzureRmResourceGroup -Name $dbresourcegroupname -Location $location
+
+# Create the SQL server.
+New-AzureRmSqlServer -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -Location $location `
+    -SqlAdministratorCredentials $(New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $adminlogin, $(ConvertTo-SecureString -String $password -AsPlainText -Force))
+
+# Create the firewall rule to allow your development computer to access the server.
+New-AzureRmSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -FirewallRuleName "AllowClient" -StartIpAddress $clientIP -EndIpAddress $clientIP
+
+# Creeate the database in the server.
+New-AzureRmSqlDatabase  -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -DatabaseName $databasename `
+    -RequestedServiceObjectiveName "S0"
+
+Write-Host "Server name is $servername"
 ```
 
-### <a name="use-a-production-sql-database"></a>Verwenden von SQL-Datenbank für die Produktion
-Bei der Ausführung in der Produktion müssen die Daten dauerhaft in der Datenbank gespeichert werden. Derzeit besteht keine Möglichkeit, die dauerhafte Speicherung von Daten in einem Container sicherzustellen. Daher können Sie Produktionsdaten in SQL Server nicht in einem Container speichern.
+## <a name="update-the-web-config"></a>Aktualisieren der Webkonfiguration
+Aktualisieren Sie im Projekt **FabrikamFiber.Web** die Verbindungszeichenfolge in der Datei **web.config** so, dass sie auf die SQL Server-Instanz im Container verweist.  Aktualisieren Sie den Teil *Server* der Verbindungszeichenfolge für den vom vorherigen Skript erstellten Server. 
 
-Es wird empfohlen, Azure SQL-Datenbank zu nutzen. Informationen zum Einrichten und Ausführen einer verwalteten SQL Server-Instanz in Azure finden Sie im Artikel [Dokumentation zu Azure SQL-Datenbank][link-azure-sql].
-
+```xml
+<add name="FabrikamFiber-Express" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+<add name="FabrikamFiber-DataWarehouse" connectionString="Server=tcp:fab-fiber-1300282665.database.windows.net,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
+  
+```
 >[!NOTE]
->Denken Sie daran, die Verbindungszeichenfolgen in der Datei **web.release.config** im Projekt **FabrikamFiber.Web** in die SQL Server-Instanz zu ändern.
->
->Diese Anwendung schlägt ordnungsgemäß fehl, wenn keine SQL-Datenbank erreichbar ist. Sie können fortfahren und die Anwendung ohne eine SQL Server-Instanz bereitstellen.
+>Sie können für lokales Debuggen jede beliebigen SQL Server-Instanz verwenden, solange sie von Ihrem Host aus erreichbar ist. Allerdings unterstützt **localdb** keine `container -> host`-Kommunikation. Wenn Sie eine andere SQL-Datenbank beim Erstellen eines Releasebuilds Ihrer Webanwendung verwenden möchten, fügen Sie eine weitere Verbindungszeichenfolge zu Ihrer Datei *web.release.config* hinzu.
 
-## <a name="deploy-with-visual-studio-team-services"></a>Bereitstellen mit Visual Studio Team Services
+## <a name="run-the-containerized-application-locally"></a>Lokales Ausführen der Containeranwendung
+Drücken Sie **F5**, um die Anwendung in einem Container im lokalen Service Fabric-Entwicklungscluster auszuführen und zu debuggen.
 
-Um die Bereitstellung mithilfe von Visual Studio Team Services einzurichten, müssen Sie die [Erweiterung für die Continuous Delivery-Tools für Visual Studio 2017][link-visualstudio-cd-extension] installieren. Diese Erweiterung vereinfacht die Bereitstellung in Azure durch Konfigurieren von Visual Studio Team Services und Bereitstellen der App in Ihrem Service Fabric-Cluster.
+## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
+Die Anwendung wird lokal ausgeführt. Bereiten Sie nun die Bereitstellung in Azure vor.  Containerimages müssen in einer Containerregistrierung gespeichert werden.  Erstellen Sie mit dem folgenden Skript eine [Azure-Containerregistrierung](/azure/container-registry/container-registry-intro).  Vor der Bereitstellung der Anwendung in Azure übertragen Sie das Containerimage per Push an diese Registrierung.  Bei der Bereitstellung im Cluster in Azure durch die Anwendung wird das Containerimage aus dieser Registrierung abgerufen.
 
-Zunächst muss Ihr Code in der Quellcodeverwaltung gehostet werden. Im restlichen Teil dieses Abschnitts wird davon ausgegangen, dass **Git** verwendet wird.
+```powershell
+# Variables
+$acrresourcegroupname = "fabrikam-acr-group"
+$location = "southcentralus"
+$registryname="fabrikamregistry"
 
-### <a name="set-up-a-vsts-repo"></a>Einrichten eines VSTS-Repositorys
-Klicken Sie unten rechts in Visual Studio auf **Zur Quellcodeverwaltung hinzufügen** > **Git** (bzw. die bevorzugte Option).
+New-AzureRmResourceGroup -Name $acrresourcegroupname -Location $location
 
-![Schaltfläche der Quellcodeverwaltung][image-source-control]
+$registry = New-AzureRMContainerRegistry -ResourceGroupName $acrresourcegroupname -Name $registryname -EnableAdminUser -Sku Basic
+```
 
-Klicken Sie im _Team Explorer_-Bereich auf **Git-Repository veröffentlichen**.
+## <a name="create-a-service-fabric-cluster-on-azure"></a>Erstellen eines Service Fabric-Clusters in Azure
+Service Fabric-Anwendungen werden auf einem Cluster ausgeführt, einem durch ein Netzwerk verbundenen Satz von virtuellen oder physischen Computern.  Erstellen Sie vor dem Bereitstellen der Anwendung in Azure zunächst einen Service Fabric-Cluster in Azure.
 
-Wählen Sie den Namen des VSTS-Repositorys aus, und klicken Sie auf **Repository**.
+Ihre Möglichkeiten:
+- Erstellen eines Testclusters über Visual Studio. Mit dieser Option können Sie direkt über Visual Studio einen sicheren Cluster mit Ihrer bevorzugten Konfiguration erstellen. 
+- [Erstellen eines sicheren Clusters aus einer Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
-![Repository in VSTS veröffentlichen][image-publish-repo]
+Wählen Sie beim Erstellen des Clusters eine SKU, die das Ausführen von Containern unterstützt (z. B. Windows Server 2016 Datacenter mit Containern). In diesem Tutorial wird ein Cluster über Visual Studio erstellt. Dies ist ideal für Testszenarien. Falls Sie eine andere Möglichkeit zum Erstellen eines Clusters oder einen vorhandenen Cluster verwenden, können Sie Ihren Verbindungsendpunkt kopieren und einfügen oder ihn aus Ihrem Abonnement auswählen. 
 
-Nachdem Ihr Code nun mit einem VSTS-Quellrepository synchronisiert wurde, können Sie Continuous Integration und Continuous Delivery konfigurieren.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt **FabrikamFiber.CallCenterApplication**, und klicken Sie anschließend auf **Veröffentlichen**.
 
-### <a name="setup-continuous-delivery"></a>Einrichten der Continuous Delivery
+2. Melden Sie sich unter Verwendung Ihres Azure-Kontos an, um auf Ihre Abonnements zugreifen zu können. 
 
-Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf **Projektmappe** > **Continuous Delivery konfigurieren**.
+3. Wählen Sie in der Dropdownliste **Verbindungsendpunkt** die Option **Neuen Cluster erstellen...** aus.    
+        
+4. Ändern Sie im Dialogfeld **Cluster erstellen** die folgenden Einstellungen:
 
-Wählen Sie das Azure-Abonnement aus.
+    1. Geben Sie im Feld **Clustername** den Namen Ihres Clusters sowie das gewünschte Abonnement und den gewünschten Standort an.
+    2. Optional: Ändern Sie ggf. die Knotenanzahl. Standardmäßig sind drei Knoten vorhanden (die Mindestanzahl zum Testen von Service Fabric-Szenarien).
+    3. Klicken Sie auf die Registerkarte **Zertifikat**. Geben Sie auf dieser Registerkarte ein Kennwort ein, um das Zertifikat Ihres Clusters zu schützen. Dieses Zertifikat trägt zum Schutz Ihres Clusters bei. Sie können auch den Pfad ändern, unter dem das Zertifikat gespeichert werden soll. Visual Studio kann das Zertifikat auch für Sie importieren. Dieser Schritt ist erforderlich, um die Anwendung im Cluster bereitstellen zu können.
+    4. Klicken Sie auf die Registerkarte **VM-Detail**. Geben Sie das Kennwort an, das Sie für die virtuellen Computer verwenden möchten, die den Cluster bilden. Die Kombination aus Benutzername und Kennwort kann zum Herstellen einer Remoteverbindung mit dem virtuellen Computer verwendet werden. Wählen Sie außerdem eine VM-Größe aus, und ändern Sie bei Bedarf das VM-Image.
+    5. Listen Sie auf der Registerkarte **Erweitert** den Anwendungsport auf, der bei der Clusterbereitstellung im Lastenausgleichsmodul geöffnet sein soll. Öffnen Sie im Projektmappen-Explorer „FabrikamFiber.Web“ > „PackageRoot“ > „ServiceManifest.xml“.  Der Port für das Web-Front-End ist unter **Endpunkt** aufgeführt.  Sie können auch einen vorhandenen Application Insights-Schlüssel hinzufügen, der als Routingziel für Anwendungsprotokolldateien verwendet werden soll.
+    6. Klicken Sie nach Abschluss der Einstellungsänderungen auf die Schaltfläche **Erstellen**. 
+5. Die Erstellung kann einige Minuten dauern. Im Ausgabefenster wird eine entsprechende Information angezeigt, wenn der Cluster erstellt wurde.
+    
 
-Legen Sie **Hosttyp** auf **Service Fabric-Cluster** fest.
+## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Zulassen des Zugriffs auf die SQL-Datenbank durch die in Azure ausgeführte Anwendung
+Sie haben zuvor eine SQL-Firewallregel erstellt, um Ihrer lokal ausgeführten Anwendung den Zugriff zu gewähren.  Als Nächstes müssen Sie der in Azure ausgeführten Anwendung den Zugriff auf die SQL-Datenbank erteilen.  Erstellen Sie einen [Dienstendpunkt eines virtuellen Netzwerks](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) für den Service Fabric-Cluster und anschließend eine Regel, um diesem Endpunkt den Zugriff auf die SQL-Datenbank zu gewähren.
 
-Legen Sie **Zielhost** auf den Service Fabric-Cluster fest, den Sie im vorherigen Abschnitt erstellt haben.
+```powershell
+# Create a virtual network service endpoint
+$clusterresourcegroup = "fabrikamfiber.callcenterapplication_RG"
+$resource = Get-AzureRmResource -ResourceGroupName $clusterresourcegroup -ResourceType Microsoft.Network/virtualNetworks | Select-Object -first 1
+$vnetName = $resource.Name
 
-Wählen Sie eine **Containerregistrierung** aus, in der Sie den Container veröffentlichen.
+Write-Host 'Virtual network name: ' $vnetName 
 
->[!TIP]
->Verwenden Sie die Schaltfläche **Bearbeiten**, um eine Containerregistrierung zu erstellen.
+# Get the virtual network by name.
+$vnet = Get-AzureRmVirtualNetwork `
+  -ResourceGroupName $clusterresourcegroup `
+  -Name              $vnetName
 
-Klicken Sie auf **OK**.
+Write-Host "Get the subnet in the virtual network:"
 
-![Continuous Integration für Service Fabric einrichten][image-setup-ci]
-   
-   Nachdem die Konfiguration abgeschlossen ist, wird der Container in Service Fabric bereitgestellt. Immer wenn Sie Updates per Push an das Repository übertragen, werden ein neues Build und eine neue Release ausgeführt.
-   
-   >[!NOTE]
-   >Die Erstellung der Containerimages dauert ca. 15 Minuten.
-   >Bei der ersten Bereitstellung im Service Fabric-Cluster werden die grundlegenden Windows Server Core-Containerimages heruntergeladen. Der Download dauert weitere 5 bis 10 Minuten.
+# Get the subnet, assume the first subnet contains the Service Fabric cluster.
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet | Select-Object -first 1
 
-Wechseln Sie über die URL des Clusters zur Fabrikam Call Center-Anwendung, z.B. *http://mycluster.westeurope.cloudapp.azure.com*.
+$subnetName = $subnet.Name
+$subnetID = $subnet.Id
+$addressPrefix = $subnet.AddressPrefix
 
-Nachdem Sie nun die Anwendung in Container gepackt und die Fabrikam Call Center-Projektmappe bereitgestellt haben, können Sie das [Azure-Portal][link-azure-portal] öffnen und die Ausführung der Anwenung in Service Fabric anzeigen. Um die Anwendung zu testen, öffnen Sie einen Webbrowser, und navigieren Sie zur URL des Service Fabric-Clusters.
+Write-Host "Subnet name: " $subnetName " Address prefix: " $addressPrefix " ID: " $subnetID
+
+# Assign a Virtual Service endpoint 'Microsoft.Sql' to the subnet.
+$vnet = Set-AzureRmVirtualNetworkSubnetConfig `
+  -Name            $subnetName `
+  -AddressPrefix   $addressPrefix `
+  -VirtualNetwork  $vnet `
+  -ServiceEndpoint Microsoft.Sql | Set-AzureRmVirtualNetwork
+
+$vnet.Subnets[0].ServiceEndpoints;  # Display the first endpoint.
+
+# Add a SQL DB firewall rule for the virtual network service endpoint
+$subnet = Get-AzureRmVirtualNetworkSubnetConfig `
+  -Name           $subnetName `
+  -VirtualNetwork $vnet;
+
+$VNetRuleName="ServiceFabricClusterVNetRule"
+$vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
+  -ResourceGroupName      $dbresourcegroupname `
+  -ServerName             $servername `
+  -VirtualNetworkRuleName $VNetRuleName `
+  -VirtualNetworkSubnetId $subnetID;
+```
+## <a name="deploy-the-application-to-azure"></a>Bereitstellen der Anwendung für Azure
+Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio im Cluster in Azure bereitstellen.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt **FabrikamFiber.CallCenterApplication**, und klicken Sie anschließend auf **Veröffentlichen**.  Wählen Sie unter **Verbindungsendpunkt** den Endpunkt des zuvor erstellten Clusters aus.  Wählen Sie unter **Azure Container Registry** die zuvor erstellte Containerregistrierung aus.  Klicken Sie auf **Veröffentlichen**, um die Anwendung im Cluster in Azure bereitzustellen.
+
+![Veröffentlichen der Anwendung][publish-app]
+
+Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverfolgen.  Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse und den Anwendungsport ein. Beispiel: http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+
+![Fabrikam-Webbeispiel][fabrikam-web-page-deployed]
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Entfernen Sie alle erstellten Ressourcen, wenn Sie fertig sind.  Am einfachsten ist es, die Ressourcengruppen zu entfernen, die den Service Fabric-Cluster, Azure SQL-Datenbank und Azure Container Registry enthalten.
+
+```powershell
+$dbresourcegroupname = "fabrikam-fiber-db-group"
+$acrresourcegroupname = "fabrikam-acr-group"
+$clusterresourcegroupname="fabrikamcallcentergroup"
+
+# Remove the Azure SQL DB
+Remove-AzureRmResourceGroup -Name $dbresourcegroupname
+
+# Remove the container registry
+Remove-AzureRmResourceGroup -Name $acrresourcegroupname
+
+# Remove the Service Fabric cluster
+Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen eines Docker-Projekts in Visual Studio
-> * Packen einer vorhandenen Anwendung in Container
-> * Einrichten der Continuous Integration mit Visual Studio und VSTS
+> * Packen einer vorhandenen Anwendung in einen Container mithilfe von Visual Studio
+> * Erstellen einer Azure SQL-Datenbank
+> * Erstellen einer Azure-Containerregistrierung
+> * Bereitstellen einer Service Fabric-Anwendung in Azure
 
 Im nächsten Teil des Tutorials erfahren Sie, wie Sie die [Überwachung für Ihren Container](service-fabric-tutorial-monitoring-wincontainers.md) einrichten.
 
-<!--   NOTE SURE WHAT WE SHOULD DO YET HERE
 
-Advance to the next tutorial to learn how to bind a custom SSL certificate to it.
-
-> [!div class="nextstepaction"]
-> [Bind an existing custom SSL certificate to Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
-
-## Next steps
-
-- [Container Tooling in Visual Studio][link-visualstudio-container-tools]
-- [Get started with containers in Service Fabric][link-servicefabric-containers]
-- [Creating Service Fabric applications][link-servicefabric-createapp]
--->
-
-[link-debug-container]: /dotnet/articles/core/docker/visual-studio-tools-for-docker
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
-[link-container-quickstart]: /virtualization/windowscontainers/quick-start/quick-start-windows-10
-[link-visualstudio-container-tools]: /dotnet/articles/core/docker/visual-studio-tools-for-docker
 [link-azure-powershell-install]: /powershell/azure/install-azurerm-ps
 [link-servicefabric-create-secure-clusters]: service-fabric-cluster-creation-via-arm.md
 [link-visualstudio-cd-extension]: https://aka.ms/cd4vs
@@ -243,7 +261,6 @@ Advance to the next tutorial to learn how to bind a custom SSL certificate to it
 [link-vsts-account]: https://www.visualstudio.com/team-services/pricing/
 [link-azure-sql]: /azure/sql-database/
 
-[image-web-preview]: media/service-fabric-host-app-in-a-container/fabrikam-web-sample.png
-[image-source-control]: media/service-fabric-host-app-in-a-container/add-to-source-control.png
-[image-publish-repo]: media/service-fabric-host-app-in-a-container/publish-repo.png
-[image-setup-ci]: media/service-fabric-host-app-in-a-container/configure-continuous-integration.png
+[fabrikam-web-page]: media/service-fabric-host-app-in-a-container/fabrikam-web-page.png
+[fabrikam-web-page-deployed]: media/service-fabric-host-app-in-a-container/fabrikam-web-page-deployed.png
+[publish-app]: media/service-fabric-host-app-in-a-container/publish-app.png

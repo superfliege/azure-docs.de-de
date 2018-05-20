@@ -138,6 +138,8 @@
         - name: Verwenden von Zeppelin
           href: ../hdinsight-apache-spark-zeppelin-notebook.md
           maintainContext: true
+        - name: Verwenden von Grafana
+          href: ./hdinsight-grafana.md
         - name: Entwickeln von HDInsight-Anwendungen
           items:
             - name: Installieren von benutzerdefinierten Apps

@@ -1,11 +1,11 @@
 ---
-title: "Häufig gestellte Fragen zur Anwendungsleistung von Azure-Web-Apps | Microsoft-Dokumentation"
-description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Verfügbarkeits-, Leistungs- und Anwendungsproblemen in Azure App Service-Web-Apps."
+title: Häufig gestellte Fragen zur Anwendungsleistung von Azure-Web-Apps | Microsoft-Dokumentation
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Verfügbarkeits-, Leistungs- und Anwendungsproblemen in Azure App Service-Web-Apps.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 926005eace0acde27e26619a2787368ba0954351
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9c8eda1c4a65465a93b9c3f9caf23a6663073f26
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -103,7 +103,7 @@ So schalten Sie die Ablaufverfolgung für Anforderungsfehler ein
 1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
 3. Wählen Sie **Alle Einstellungen** > **Diagnoseprotokolle** aus.
 4. Wählen Sie für **Ablaufverfolgung für Anforderungsfehler** die Einstellung **Ein**.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 6. Wählen Sie auf dem Web-App-Blatt **Tools** aus.
 7. Wählen Sie **Visual Studio Online** aus.
 8. Wenn die Einstellung nicht **Ein** ist, wählen Sie **Ein** aus.

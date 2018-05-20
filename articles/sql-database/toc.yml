@@ -104,6 +104,16 @@
       items:
         - name: Übersicht
           href: sql-database-security-overview.md
+        - name: Erweiterter Schutz vor Bedrohungen
+          href: sql-advanced-threat-protection.md
+        - name: Datenermittlung und -klassifizierung
+          href: sql-database-data-discovery-and-classification.md
+        - name: Sicherheitsrisikobewertung
+          href: sql-vulnerability-assessment.md
+        - name: 'Bedrohungserkennung: SQL-Datenbank'
+          href: sql-database-threat-detection.md
+        - name: 'Bedrohungserkennung: Verwaltete Instanz'
+          href: sql-database-managed-instance-threat-detection.md
         - name: Firewallregeln
           href: sql-database-firewall-configure.md
         - name: Firewallregeln für virtuelle Netzwerke
@@ -120,18 +130,10 @@
           href: sql-database-auditing.md
         - name: Überwachung – Verwaltete Instanz
           href: sql-database-managed-instance-auditing.md
-        - name: 'Bedrohungserkennung: SQL-Datenbank'
-          href: sql-database-threat-detection.md
-        - name: 'Bedrohungserkennung: Verwaltete Instanz'
-          href: sql-database-managed-instance-threat-detection.md
         - name: Tabellenüberwachung und TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamische Datenmaskierung
           href: sql-database-dynamic-data-masking-get-started.md
-        - name: Sicherheitsrisikobewertung
-          href: sql-vulnerability-assessment.md
-        - name: Datenermittlung und -klassifizierung
-          href: sql-database-data-discovery-and-classification.md
     - name: Geschäftskontinuität
       items:
         - name: Übersicht

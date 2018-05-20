@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/20/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: xiaofmao
-ms.openlocfilehash: b68a963dae4b3621bfd9ecdcbc20146d7b20c457
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 52d469236d607a145430134c24c4237346dafb4c
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -44,9 +44,9 @@ ms.lasthandoff: 04/23/2018
 | Gesamte Anzahl von Speicherkonten |20 |Die maximale Anzahl von Speicherkonten, die ein Abonnement an diesem Speicherort erstellen kann |
 
 > [!NOTE]  
-> Es kann bis zu zwei Stunden dauern, bis ein neues Speicherplatzkontingent erzwungen wird. 
+> Es kann bis zu zwei Stunden dauern, bis ein Speicherplatzkontingent erzwungen wird. 
 > 
-> 
+
 
 ## <a name="network-quota-types"></a>Netzwerkkontingenttypen
 | **Element** | **Standardwert** | **Beschreibung** |

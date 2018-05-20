@@ -1,18 +1,18 @@
 ---
-title: "Informationen zur Netzwerkzuordnung für die Hyper-V-VM-Replikation (mit VMM) in Azure mit Site Recovery | Microsoft-Dokumentation"
-description: "Beschreibt, wie die Netzwerkzuordnung für die Replikation von Hyper-V-VMs in VMM-Clouds mit Azure Site Recovery eingerichtet wird."
+title: Informationen zur Netzwerkzuordnung für die Hyper-V-VM-Replikation (mit VMM) in Azure mit Site Recovery | Microsoft-Dokumentation
+description: Beschreibt, wie die Netzwerkzuordnung für die Replikation von Hyper-V-VMs in VMM-Clouds mit Azure Site Recovery eingerichtet wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 524de918bd24d51680110dc2af213bf328e349fd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa596bf4941ac791fa1bc697399a4591d97ba68f
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-replication-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Hyper-V-VM-Replikation in Azure
 
@@ -58,7 +58,7 @@ Im Anschluss folgt ein Beispiel zur Veranschaulichung dieses Mechanismus. Für d
 New York | VMM-NewYork| VMNetwork1-NewYork | Zugeordnet zu „VMNetwork1-Chicago“
  |  | VMNetwork2-NewYork | Nicht zugeordnet
 Chicago | VMM-Chicago| VMNetwork1-Chicago | Zugeordnet zu „VMNetwork1-NewYork“
- | | VMNetwork1-Chicago | Nicht zugeordnet
+ | | VMNetwork2-Chicago | Nicht zugeordnet
 
 In diesem Beispiel:
 

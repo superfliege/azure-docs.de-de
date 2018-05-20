@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: mazha
-ms.openlocfilehash: bbb62a5f47c2fda6e24a204f30939e43676b33a9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 373095d1783a8e6e52d43e80377c01b448706fbf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN-POP-Standorte nach Abkürzung
 > [!div class="op_single_selector"]
@@ -35,10 +35,12 @@ AGA | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
 AGB | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
 AKL | Auckland, Neuseeland | Asien
 AMA | Amsterdam, Niederlande | Europa
+AMB | Amsterdam, Niederlande | Europa
 AMS | Amsterdam, Niederlande | Europa
 ARN | Stockholm, Schweden | Europa
 ATL | Atlanta, Georgia, USA | Nordamerika: Ostküste, USA
 BAQ | Barranquilla, Kolumbien | Lateinamerika
+BLR | Bengaluru (Bangalore), Indien | Asien
 BNJ | Newark, New Jersey, USA | Nordamerika: Ostküste, USA
 BOS | Boston, Massachusetts, USA | Nordamerika: Ostküste, USA
 BTH | Batam, Indonesien | Asien
@@ -49,10 +51,10 @@ CGH | São Paulo, Brasilien | Lateinamerika
 CGK | Jakarta, Indonesien | Asien
 CHA | Chicago, Illinois, USA | Nordamerika: Ostküste, USA
 CHB | Chicago, Illinois, USA | Nordamerika: Ostküste, USA
-CJB | Bangalore, Indien | Asien
 CNJ | Newark, New Jersey, USA | Nordamerika: Ostküste, USA
 CPH | Kopenhagen, Dänemark | Europa
 CPM | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+CVA | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
 DAA | Dallas, Texas, USA | Nordamerika: Golfküste, USA
 DAB | Dallas, Texas, USA | Nordamerika: Golfküste, USA
 DCA | Ashburn, Virginia, USA | Nordamerika: Ostküste, USA
@@ -108,9 +110,10 @@ MEX | Mexiko-Stadt, Mexiko | Nordamerika
 MIA | Miami, Florida, USA | Nordamerika: Ostküste, USA
 MIB | Miami, Florida, USA | Nordamerika: Ostküste, USA
 MIC | Miami, Florida, USA | Nordamerika: Ostküste, USA
+MRS | Marseille, Frankreich | Europa
 MXP | Mailand, Italien | Europa
 NAG | Mumbai, Indien | Asien
-NJA | Tokio, Japan | Asien
+NDL | Delhi, Indien | Asien
 NRT | Tokio, Japan | Asien
 NYA | New York, New York, USA | Nordamerika: Ostküste, USA
 NYB | New York, New York, USA | Nordamerika: Ostküste, USA
@@ -118,6 +121,7 @@ OMM | Maskat, Oman | Naher Osten
 ORD | Chicago, Illinois, USA | Nordamerika: Mitte, USA
 ORY | Paris, Frankreich | Europa
 OXR | Los Angeles, Kalifornien, USA | Nordamerika: Westküste, USA
+PAB | Paris, Frankreich | Europa
 PAE | Seattle, Washington, USA | Nordamerika: Westküste, USA
 PBC | Puebla, Mexiko | Nordamerika
 PHL | Philadelphia, Pennsylvania, USA | Nordamerika: Ostküste, USA
@@ -125,6 +129,7 @@ PNQ | Mumbai, Indien | Asien
 POX | Paris, Frankreich | Europa
 QRO | Santiago de Querétaro, Mexiko | Nordamerika
 RHV | San José, Kalifornien, USA | Nordamerika: Westküste, USA
+RIB | Rio de Janeiro, Brasilien | Lateinamerika
 RIX | Riga, Lettland | Europa
 RTM | Amsterdam, Niederlande | Europa
 SAA | San José, Kalifornien, USA | Nordamerika: Westküste, USA
@@ -133,12 +138,13 @@ SCL | Valparaíso, Chile | Lateinamerika
 SEA | Seattle, Washington, USA | Nordamerika: Westküste, USA
 SEB | Seattle, Washington, USA | Nordamerika: Westküste, USA
 SEC | Seattle, Washington, USA | Nordamerika: Westküste, USA
+SGB | Singapur | Asien
 SIN | Singapur | Asien
 SJC | San José, Kalifornien, USA | Nordamerika: Westküste, USA
 SJO | San José, Kalifornien, USA | Nordamerika: Westküste, USA
 STO | Stockholm, Schweden | Europa
 SYD | Sydney, Australien | Asien
-TEB | New York, New York, USA | Nordamerika: Ostküste, USA
+TIR | Chennai, Indien | Asien
 TKA | Tokio, Japan | Asien
 TKB | Tokio, Japan | Asien
 TOJ | Madrid, Spanien | Europa

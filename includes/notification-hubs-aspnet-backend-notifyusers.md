@@ -1,11 +1,25 @@
+---
+title: Includedatei
+description: Includedatei, die Code zum Erstellen eines Back-End-ASP .NET-WebAPI-Projekts enthält.
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 04/04/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: 634bb14cfef3df2cf944eeafbfa8d671afa4ac98
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
-In den nächsten Abschnitten wird die Erstellung eines neuen ASP.NET-WebAPI-Back-Ends erläutert. Dieser Prozess hat drei Hauptfunktionen:
+In den folgenden Abschnitten wird die Erstellung eines neuen ASP.NET-WebAPI-Back-Ends erläutert. Dieser Prozess hat drei Hauptfunktionen:
 
-* **Authentifizieren von Clients:** Sie fügen später einen Meldungshandler hinzu, um Clientanforderungen zu authentifizieren und den Benutzer der Anforderung zuzuordnen.
-
-* **Registrieren für Benachrichtigungen unter Verwendung des WebAPI-Back-Ends:** Sie fügen einen Controller hinzu, um neue Registrierungen für ein Clientgerät zum Empfangen von Benachrichtigungen zu verarbeiten. Der authentifizierte Benutzername wird der Registrierung automatisch als [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) hinzugefügt.
-
-* **Senden von Benachrichtigungen an Clients:** Sie fügen zudem einen Controller hinzu, um Benutzern die Möglichkeit zu geben, einen sicheren Pushvorgang an Geräte und Clients auszulösen, die dem Tag zugeordnet sind. 
+- **Authentifizieren von Clients:** Sie fügen einen Meldungshandler hinzu, um Clientanforderungen zu authentifizieren und den Benutzer der Anforderung zuzuordnen.
+- **Registrieren für Benachrichtigungen unter Verwendung des WebAPI-Back-Ends:** Sie fügen einen Controller hinzu, um neue Registrierungen für ein Clientgerät zum Empfangen von Benachrichtigungen zu verarbeiten. Der authentifizierte Benutzername wird der Registrierung automatisch als [Tag](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md) hinzugefügt.
+- **Senden von Benachrichtigungen an Clients:** Sie fügen einen Controller hinzu, um Benutzern die Möglichkeit zu geben, einen sicheren Pushvorgang an Geräte und Clients auszulösen, die dem Tag zugeordnet sind. 
 
 Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor: 
 
@@ -17,15 +31,15 @@ Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor:
 ![][B4]
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie das Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) für die Websitebereitstellung installiert haben.
-> 
+> Stellen Sie sicher, dass Sie das Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/) für die Websitebereitstellung installiert haben. 
 > 
 
 1. Starten Sie Visual Studio oder Visual Studio Express. 
 
 2. Wählen Sie **Server-Explorer** aus, und melden Sie sich bei Ihrem Azure-Konto an. Zur Erstellung der Websiteressourcen für Ihr Konto müssen Sie angemeldet sein.
 
-3. Wählen Sie in Visual Studio **Datei** > **Neu** > **Projekt** aus, erweitern Sie **Vorlagen** und **Visual C#**, und wählen Sie anschließend **Web** und **ASP.NET-Webanwendung** aus.
+3. Klicken Sie in Visual Studio mit der rechten Maustaste auf die Visual Studio-Projektmappe, zeigen Sie auf **Hinzufügen**, und klicken Sie auf **Neues Projekt**. 
+4. Erweitern Sie **Visual C#**, wählen Sie **Web** aus, und klicken Sie auf **ASP.NET-Webanwendung**.
 
 4. Geben Sie im Feld **Name** die Zeichenfolge **AppBackend** ein, und wählen Sie dann **OK** aus. 
    
@@ -44,7 +58,7 @@ Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor:
    
     ![Das Fenster „Microsoft Azure-Web-App konfigurieren“][B5]
 
-## <a name="authenticate-clients-to-the-webapi-back-end"></a>Authentifizieren von Clients beim WebAPI-Back-End
+## <a name="authenticate-clients-to-the-webapi-backend"></a>Authentifizieren von Clients beim WebAPI-Back-End
 In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandlerklasse namens **AuthenticationTestHandler**. Diese Klasse wird von [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) abgeleitet und als Meldungshandler hinzugefügt, damit alle beim Back-End eingehenden Anforderungen verarbeitet werden können. 
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Hinzufügen** und anschließend **Klasse** aus. 
@@ -53,12 +67,14 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
 
 3. Fügen Sie in der Datei "AuthenticationTestHandler.cs" die folgenden `using` -Anweisungen hinzu:
    
-        using System.Net.Http;
-        using System.Threading;
-        using System.Security.Principal;
-        using System.Net;
-        using System.Text;
-        using System.Threading.Tasks;
+    ```csharp
+    using System.Net.Http;
+    using System.Threading;
+    using System.Security.Principal;
+    using System.Net;
+    using System.Text;
+    using System.Threading.Tasks;
+    ```
 
 4. Ersetzen Sie in der Datei „AuthenticationTestHandler.cs“ die Definition der Klasse `AuthenticationTestHandler` durch den folgenden Code: 
    
@@ -68,68 +84,68 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
    * Für die Anforderung wird die *Standardauthentifizierung* verwendet. 
    * Bei der Benutzernamen-Zeichenfolge und der Kennwortzeichenfolge handelt es sich um die gleiche Zeichenfolge.
      
-  Andernfalls wird die Anforderung abgelehnt. Dies ist keine sinnvolle Vorgehensweise zur Authentifizierung und Autorisierung. Hierbei handelt es sich lediglich um ein sehr einfaches Beispiel für dieses Tutorial.
+  Andernfalls wird die Anforderung abgelehnt. Diese Authentifizierung ist keine echte Vorgehensweise zur Authentifizierung und Autorisierung. Hierbei handelt es sich lediglich um ein einfaches Beispiel für dieses Tutorial.
      
   Wenn die Anforderungsnachricht von `AuthenticationTestHandler` authentifiziert und autorisiert wurde, wird der Benutzer der Standardauthentifizierung an die aktuelle Anforderung in [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) angefügt. Die Benutzerinformationen in „HttpContext“ werden später von einem anderen Controller (RegisterController) verwendet, um der Registrierungsanforderung für die Benachrichtigung ein [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) hinzuzufügen.
-     
-       public class AuthenticationTestHandler : DelegatingHandler
-       {
-           protected override Task<HttpResponseMessage> SendAsync(
-           HttpRequestMessage request, CancellationToken cancellationToken)
-           {
-               var authorizationHeader = request.Headers.GetValues("Authorization").First();
-     
-               if (authorizationHeader != null && authorizationHeader
-                   .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
-               {
-                   string authorizationUserAndPwdBase64 =
-                       authorizationHeader.Substring("Basic ".Length);
-                   string authorizationUserAndPwd = Encoding.Default
-                       .GetString(Convert.FromBase64String(authorizationUserAndPwdBase64));
-                   string user = authorizationUserAndPwd.Split(':')[0];
-                   string password = authorizationUserAndPwd.Split(':')[1];
-     
-                   if (verifyUserAndPwd(user, password))
-                   {
-                       // Attach the new principal object to the current HttpContext object
-                       HttpContext.Current.User =
-                           new GenericPrincipal(new GenericIdentity(user), new string[0]);
-                       System.Threading.Thread.CurrentPrincipal =
-                           System.Web.HttpContext.Current.User;
-                   }
-                   else return Unauthorized();
-               }
-               else return Unauthorized();
-     
-               return base.SendAsync(request, cancellationToken);
-           }
-     
-           private bool verifyUserAndPwd(string user, string password)
-           {
-               // This is not a real authentication scheme.
-               return user == password;
-           }
-     
-           private Task<HttpResponseMessage> Unauthorized()
-           {
-               var response = new HttpResponseMessage(HttpStatusCode.Forbidden);
-               var tsc = new TaskCompletionSource<HttpResponseMessage>();
-               tsc.SetResult(response);
-               return tsc.Task;
-           }
-       }
-     
-     > [!NOTE]
-     > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` bietet keine echte Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.                
-     > 
-     > 
-5. Fügen Sie am Ende der Methode `Register` in der Klasse **App_Start/WebApiConfig.cs** den folgenden Code hinzu, um den Meldungshandler zu registrieren:
-   
-        config.MessageHandlers.Add(new AuthenticationTestHandler());
 
+    ```csharp     
+    public class AuthenticationTestHandler : DelegatingHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            var authorizationHeader = request.Headers.GetValues("Authorization").First();
+    
+            if (authorizationHeader != null && authorizationHeader
+                .StartsWith("Basic ", StringComparison.InvariantCultureIgnoreCase))
+            {
+                string authorizationUserAndPwdBase64 =
+                    authorizationHeader.Substring("Basic ".Length);
+                string authorizationUserAndPwd = Encoding.Default
+                    .GetString(Convert.FromBase64String(authorizationUserAndPwdBase64));
+                string user = authorizationUserAndPwd.Split(':')[0];
+                string password = authorizationUserAndPwd.Split(':')[1];
+    
+                if (verifyUserAndPwd(user, password))
+                {
+                    // Attach the new principal object to the current HttpContext object
+                    HttpContext.Current.User =
+                        new GenericPrincipal(new GenericIdentity(user), new string[0]);
+                    System.Threading.Thread.CurrentPrincipal =
+                        System.Web.HttpContext.Current.User;
+                }
+                else return Unauthorized();
+            }
+            else return Unauthorized();
+    
+            return base.SendAsync(request, cancellationToken);
+        }
+    
+        private bool verifyUserAndPwd(string user, string password)
+        {
+            // This is not a real authentication scheme.
+            return user == password;
+        }
+    
+        private Task<HttpResponseMessage> Unauthorized()
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.Forbidden);
+            var tsc = new TaskCompletionSource<HttpResponseMessage>();
+            tsc.SetResult(response);
+            return tsc.Task;
+        }
+    }
+    ``` 
+    > [!NOTE]
+    > Sicherheitshinweis: Die Klasse `AuthenticationTestHandler` bietet keine echte Authentifizierung. Sie wird nur verwendet, um eine Standardauthentifizierung zu imitieren, und ist nicht sicher. Sie müssen einen sicheren Authentifizierungsmechanismus in Ihren Produktionsanwendungen und -diensten implementieren.                
+5. Fügen Sie am Ende der Methode `Register` in der Klasse **App_Start/WebApiConfig.cs** den folgenden Code hinzu, um den Meldungshandler zu registrieren:
+
+    ```csharp   
+    config.MessageHandlers.Add(new AuthenticationTestHandler());
+    ```
 6. Speichern Sie die Änderungen.
 
-## <a name="register-for-notifications-by-using-the-webapi-back-end"></a>Registrieren für Benachrichtigungen unter Verwendung des WebAPI-Back-Ends
+## <a name="register-for-notifications-by-using-the-webapi-backend"></a>Registrieren für Benachrichtigungen unter Verwendung des WebAPI-Back-Ends
 In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, um Anforderungen zum Registrieren eines Benutzers und eines Geräts für Benachrichtigungen unter Verwendung der Clientbibliothek für Notification Hubs zu verarbeiten. Der Controller fügt ein Benutzertag für den Benutzer hinzu, der durch `AuthenticationTestHandler` authentifiziert und an „HttpContext“ angefügt wurde. Die Markierung hat das Zeichenfolgenformat `"username:<actual username>"`.
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie dann **NuGet-Pakete verwalten** aus.
@@ -146,21 +162,25 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
 
 5. Fügen Sie die folgende `using` -Anweisung am Anfang der Datei "Notifications.cs" hinzu:
    
-        using Microsoft.Azure.NotificationHubs;
+    ```csharp
+    using Microsoft.Azure.NotificationHubs;
+    ```
 
 6. Ersetzen Sie die Definition der Klasse `Notifications` durch den folgenden Code und die beiden Platzhalter durch die Verbindungszeichenfolge (mit Vollzugriff) für Ihren Notification Hub bzw. durch den Namen des Hubs (verfügbar im [Azure-Portal](http://portal.azure.com)):
    
-        public class Notifications
-        {
-            public static Notifications Instance = new Notifications();
-   
-            public NotificationHubClient Hub { get; set; }
-   
-            private Notifications() {
-                Hub = NotificationHubClient.CreateClientFromConnectionString("<your hub's DefaultFullSharedAccessSignature>", 
-                                                                             "<hub name>");
-            }
+    ```csharp
+    public class Notifications
+    {
+        public static Notifications Instance = new Notifications();
+
+        public NotificationHubClient Hub { get; set; }
+
+        private Notifications() {
+            Hub = NotificationHubClient.CreateClientFromConnectionString("<your hub's DefaultFullSharedAccessSignature>", 
+                                                                            "<hub name>");
         }
+    }
+    ```
 7. Erstellen Sie als Nächstes einen neuen Controller namens **RegisterController**. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie dann **Hinzufügen** und **Controller** aus. 
 
 8. Wählen Sie **Web-API-2-Controller – Leer** und anschließend **Hinzufügen** aus.
@@ -173,187 +193,191 @@ In diesem Abschnitt wird dem WebAPI-Back-End ein neuer Controller hinzugefügt, 
 
 10. Fügen Sie in der Datei "RegisterController.cs" die folgenden `using` -Anweisungen hinzu:
    
-        using Microsoft.Azure.NotificationHubs;
-        using Microsoft.Azure.NotificationHubs.Messaging;
-        using AppBackend.Models;
-        using System.Threading.Tasks;
-        using System.Web;
+    ```csharp
+    using Microsoft.Azure.NotificationHubs;
+    using Microsoft.Azure.NotificationHubs.Messaging;
+    using AppBackend.Models;
+    using System.Threading.Tasks;
+    using System.Web;
+    ```
+11. Fügen Sie innerhalb der `RegisterController` -Klassendefinition den folgenden Code hinzu. Mit diesem Code fügen Sie ein Benutzertag für den Benutzer hinzu, der HttpContext angefügt ist. Der Benutzer wurde mit dem von Ihnen hinzugefügten Nachrichtenfilter `AuthenticationTestHandler` authentifiziert und HttpContext angefügt. Sie können auch optionale Überprüfungen hinzufügen, um zu überprüfen, dass der Benutzer die richtigen Berechtigungen besitzt, um sich für die angeforderten Tags zu registrieren.
+   
+    ```csharp
+    private NotificationHubClient hub;
 
-11. Fügen Sie innerhalb der `RegisterController` -Klassendefinition den folgenden Code hinzu. Beachten Sie, dass mit diesem Code ein Benutzertag für den Benutzer hinzugefügt wird, der an „HttpContext“ angefügt ist. Der Benutzer wurde mit dem hinzugefügten Nachrichtenfilter `AuthenticationTestHandler` authentifiziert und an „HttpContext“ angefügt. Sie können auch optionale Überprüfungen hinzufügen, um zu überprüfen, dass der Benutzer die richtigen Berechtigungen besitzt, um sich für die angeforderten Tags zu registrieren.
-   
-        private NotificationHubClient hub;
-   
-        public RegisterController()
+    public RegisterController()
+    {
+        hub = Notifications.Instance.Hub;
+    }
+
+    public class DeviceRegistration
+    {
+        public string Platform { get; set; }
+        public string Handle { get; set; }
+        public string[] Tags { get; set; }
+    }
+
+    // POST api/register
+    // This creates a registration id
+    public async Task<string> Post(string handle = null)
+    {
+        string newRegistrationId = null;
+
+        // make sure there are no existing registrations for this push handle (used for iOS and Android)
+        if (handle != null)
         {
-            hub = Notifications.Instance.Hub;
-        }
-   
-        public class DeviceRegistration
-        {
-            public string Platform { get; set; }
-            public string Handle { get; set; }
-            public string[] Tags { get; set; }
-        }
-   
-        // POST api/register
-        // This creates a registration id
-        public async Task<string> Post(string handle = null)
-        {
-            string newRegistrationId = null;
-   
-            // make sure there are no existing registrations for this push handle (used for iOS and Android)
-            if (handle != null)
+            var registrations = await hub.GetRegistrationsByChannelAsync(handle, 100);
+
+            foreach (RegistrationDescription registration in registrations)
             {
-                var registrations = await hub.GetRegistrationsByChannelAsync(handle, 100);
-   
-                foreach (RegistrationDescription registration in registrations)
+                if (newRegistrationId == null)
                 {
-                    if (newRegistrationId == null)
-                    {
-                        newRegistrationId = registration.RegistrationId;
-                    }
-                    else
-                    {
-                        await hub.DeleteRegistrationAsync(registration);
-                    }
+                    newRegistrationId = registration.RegistrationId;
+                }
+                else
+                {
+                    await hub.DeleteRegistrationAsync(registration);
                 }
             }
-   
-            if (newRegistrationId == null) 
-                newRegistrationId = await hub.CreateRegistrationIdAsync();
-   
-            return newRegistrationId;
         }
-   
-        // PUT api/register/5
-        // This creates or updates a registration (with provided channelURI) at the specified id
-        public async Task<HttpResponseMessage> Put(string id, DeviceRegistration deviceUpdate)
+
+        if (newRegistrationId == null) 
+            newRegistrationId = await hub.CreateRegistrationIdAsync();
+
+        return newRegistrationId;
+    }
+
+    // PUT api/register/5
+    // This creates or updates a registration (with provided channelURI) at the specified id
+    public async Task<HttpResponseMessage> Put(string id, DeviceRegistration deviceUpdate)
+    {
+        RegistrationDescription registration = null;
+        switch (deviceUpdate.Platform)
         {
-            RegistrationDescription registration = null;
-            switch (deviceUpdate.Platform)
-            {
-                case "mpns":
-                    registration = new MpnsRegistrationDescription(deviceUpdate.Handle);
-                    break;
-                case "wns":
-                    registration = new WindowsRegistrationDescription(deviceUpdate.Handle);
-                    break;
-                case "apns":
-                    registration = new AppleRegistrationDescription(deviceUpdate.Handle);
-                    break;
-                case "gcm":
-                    registration = new GcmRegistrationDescription(deviceUpdate.Handle);
-                    break;
-                default:
-                    throw new HttpResponseException(HttpStatusCode.BadRequest);
-            }
-   
-            registration.RegistrationId = id;
-            var username = HttpContext.Current.User.Identity.Name;
-   
-            // add check if user is allowed to add these tags
-            registration.Tags = new HashSet<string>(deviceUpdate.Tags);
-            registration.Tags.Add("username:" + username);
-   
-            try
-            {
-                await hub.CreateOrUpdateRegistrationAsync(registration);
-            }
-            catch (MessagingException e)
-            {
-                ReturnGoneIfHubResponseIsGone(e);
-            }
-   
-            return Request.CreateResponse(HttpStatusCode.OK);
+            case "mpns":
+                registration = new MpnsRegistrationDescription(deviceUpdate.Handle);
+                break;
+            case "wns":
+                registration = new WindowsRegistrationDescription(deviceUpdate.Handle);
+                break;
+            case "apns":
+                registration = new AppleRegistrationDescription(deviceUpdate.Handle);
+                break;
+            case "gcm":
+                registration = new GcmRegistrationDescription(deviceUpdate.Handle);
+                break;
+            default:
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
         }
-   
-        // DELETE api/register/5
-        public async Task<HttpResponseMessage> Delete(string id)
+
+        registration.RegistrationId = id;
+        var username = HttpContext.Current.User.Identity.Name;
+
+        // add check if user is allowed to add these tags
+        registration.Tags = new HashSet<string>(deviceUpdate.Tags);
+        registration.Tags.Add("username:" + username);
+
+        try
         {
-            await hub.DeleteRegistrationAsync(id);
-            return Request.CreateResponse(HttpStatusCode.OK);
+            await hub.CreateOrUpdateRegistrationAsync(registration);
         }
-   
-        private static void ReturnGoneIfHubResponseIsGone(MessagingException e)
+        catch (MessagingException e)
         {
-            var webex = e.InnerException as WebException;
-            if (webex.Status == WebExceptionStatus.ProtocolError)
-            {
-                var response = (HttpWebResponse)webex.Response;
-                if (response.StatusCode == HttpStatusCode.Gone)
-                    throw new HttpRequestException(HttpStatusCode.Gone.ToString());
-            }
+            ReturnGoneIfHubResponseIsGone(e);
         }
+
+        return Request.CreateResponse(HttpStatusCode.OK);
+    }
+
+    // DELETE api/register/5
+    public async Task<HttpResponseMessage> Delete(string id)
+    {
+        await hub.DeleteRegistrationAsync(id);
+        return Request.CreateResponse(HttpStatusCode.OK);
+    }
+
+    private static void ReturnGoneIfHubResponseIsGone(MessagingException e)
+    {
+        var webex = e.InnerException as WebException;
+        if (webex.Status == WebExceptionStatus.ProtocolError)
+        {
+            var response = (HttpWebResponse)webex.Response;
+            if (response.StatusCode == HttpStatusCode.Gone)
+                throw new HttpRequestException(HttpStatusCode.Gone.ToString());
+        }
+    }
+    ```
 12. Speichern Sie die Änderungen.
 
-## <a name="send-notifications-from-the-webapi-back-end"></a>Senden von Benachrichtigungen über das WebAPI-Back-End
-In diesem Abschnitt wird ein neuer Controller hinzugefügt, der Clientgeräten das Senden einer Benachrichtigung ermöglicht. Die Benachrichtigung basiert auf dem Benutzernamentag, das die Azure Notification Hubs Service Management-Bibliothek des ASP.NET WebAPI-Back-Ends verwendet.
+## <a name="send-notifications-from-the-webapi-backend"></a>Senden von Benachrichtigungen über das WebAPI-Back-End
+In diesem Abschnitt wird ein neuer Controller hinzugefügt, der Clientgeräten das Senden einer Benachrichtigung ermöglicht. Die Benachrichtigung basiert auf dem Benutzernamentag, das die Azure Notification Hubs .NET-Bibliothek des ASP.NET WebAPI-Back-Ends verwendet.
 
 1. Erstellen Sie einen weiteren neuen Domänencontroller namens **NotificationsController**. Verwenden Sie dazu die gleiche Vorgehensweise wie bei der Erstellung von **RegisterController** im vorherigen Abschnitt.
 
 2. Fügen Sie in der Datei "NotificationsController.cs" die folgenden `using` -Anweisungen hinzu:
    
-        using AppBackend.Models;
-        using System.Threading.Tasks;
-        using System.Web;
-
+    ```csharp
+    using AppBackend.Models;
+    using System.Threading.Tasks;
+    using System.Web;
+    ```
 3. Fügen Sie der Klasse **NotificationsController** die folgende Methode hinzu:
    
     Mit diesem Code wird ein Benachrichtigungstyp gesendet, der auf dem Parameter `pns` des Plattformbenachrichtigungssystems (Plattform Notification System, PNS) basiert. Der Wert von `to_tag` dient zum Festlegen des *username* -Tags in der Nachricht. Dieses Tag muss mit einem Benutzernamentag einer aktiven Notification Hub-Registrierung übereinstimmen. Die Benachrichtigung wird aus dem Text der POST-Anforderung abgerufen und für den Ziel-PNS formatiert. 
    
     Abhängig von dem PNS, mit dem Ihre unterstützten Geräte Benachrichtigungen empfangen, werden Benachrichtigungen mit unterschiedlichen Formaten unterstützt. Ein Beispiel: Angenommen, Sie verwenden auf Windows-Geräten eine [Popupbenachrichtigung mit WNS](https://msdn.microsoft.com/library/windows/apps/br230849.aspx), die nicht direkt durch ein anderes PNS unterstützt wird. In diesem Fall muss Ihr Back-End die Benachrichtigung so formatieren, dass sie mit dem PNS der zu unterstützenden Geräte kompatibel ist. Verwenden Sie anschließend die entsprechende Sende-API für die [NotificationHubClient-Klasse](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
    
-        public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
+    ```csharp
+    public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)
+    {
+        var user = HttpContext.Current.User.Identity.Name;
+        string[] userTag = new string[2];
+        userTag[0] = "username:" + to_tag;
+        userTag[1] = "from:" + user;
+
+        Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
+        HttpStatusCode ret = HttpStatusCode.InternalServerError;
+
+        switch (pns.ToLower())
         {
-            var user = HttpContext.Current.User.Identity.Name;
-            string[] userTag = new string[2];
-            userTag[0] = "username:" + to_tag;
-            userTag[1] = "from:" + user;
-   
-            Microsoft.Azure.NotificationHubs.NotificationOutcome outcome = null;
-            HttpStatusCode ret = HttpStatusCode.InternalServerError;
-   
-            switch (pns.ToLower())
-            {
-                case "wns":
-                    // Windows 8.1 / Windows Phone 8.1
-                    var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" + 
-                                "From " + user + ": " + message + "</text></binding></visual></toast>";
-                    outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
-                    break;
-                case "apns":
-                    // iOS
-                    var alert = "{\"aps\":{\"alert\":\"" + "From " + user + ": " + message + "\"}}";
-                    outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
-                    break;
-                case "gcm":
-                    // Android
-                    var notif = "{ \"data\" : {\"message\":\"" + "From " + user + ": " + message + "\"}}";
-                    outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
-                    break;
-            }
-   
-            if (outcome != null)
-            {
-                if (!((outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Abandoned) ||
-                    (outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Unknown)))
-                {
-                    ret = HttpStatusCode.OK;
-                }
-            }
-   
-            return Request.CreateResponse(ret);
+            case "wns":
+                // Windows 8.1 / Windows Phone 8.1
+                var toast = @"<toast><visual><binding template=""ToastText01""><text id=""1"">" + 
+                            "From " + user + ": " + message + "</text></binding></visual></toast>";
+                outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(toast, userTag);
+                break;
+            case "apns":
+                // iOS
+                var alert = "{\"aps\":{\"alert\":\"" + "From " + user + ": " + message + "\"}}";
+                outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
+                break;
+            case "gcm":
+                // Android
+                var notif = "{ \"data\" : {\"message\":\"" + "From " + user + ": " + message + "\"}}";
+                outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
+                break;
         }
 
+        if (outcome != null)
+        {
+            if (!((outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Abandoned) ||
+                (outcome.State == Microsoft.Azure.NotificationHubs.NotificationOutcomeState.Unknown)))
+            {
+                ret = HttpStatusCode.OK;
+            }
+        }
+
+        return Request.CreateResponse(ret);
+    }
+    ```
 4. Drücken Sie **F5**, um die Anwendung auszuführen und sich zu vergewissern, dass soweit alles funktioniert. Die App öffnet einen Webbrowser und wird auf der Homepage von ASP.NET angezeigt. 
 
-## <a name="publish-the-new-webapi-back-end"></a>Veröffentlichen des neuen WebAPI-Back-Ends
+## <a name="publish-the-new-webapi-backend"></a>Veröffentlichen des neuen WebAPI-Back-Ends
 Als Nächstes wird die App auf einer Azure-Website bereitgestellt, damit sie für alle Geräte zur Verfügung steht. 
 
 1. Klicken Sie mit der rechten Maustaste auf das Projekt **AppBackend**, und wählen Sie **Veröffentlichen** aus.
 
-2. Wählen Sie **Microsoft Azure App Service** als Veröffentlichungsziel und anschließend **Veröffentlichen** aus.  
-    Das Fenster „App Service erstellen“ wird geöffnet. Hier können Sie alle Azure-Ressourcen erstellen, die zum Ausführen der ASP.NET-Web-App in Azure benötigt werden.
+2. Wählen Sie **Microsoft Azure App Service** als Veröffentlichungsziel und anschließend **Veröffentlichen aus. Das Fenster „App Service erstellen“ wird geöffnet. Hier können Sie alle Azure-Ressourcen erstellen, die zum Ausführen der ASP.NET-Web-App in Azure benötigt werden.
 
     ![Die Kachel „Microsoft Azure App Service“][B15]
 

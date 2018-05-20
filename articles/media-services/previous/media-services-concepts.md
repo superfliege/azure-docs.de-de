@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: cfc8ac74f626ada30dda72b58e4b4bc7f0d9e806
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
@@ -108,7 +108,7 @@ Informationen zu unterstützten Encodern finden Sie unter [Encoder](media-servic
 In Azure Media Services repräsentiert ein Kanal eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:
 
 * Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Ein Single-Bitrate-Datenstrom (in einem der folgenden Formate: RTP [MPEG-TS]), RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein Single-Bitrate-Datenstrom (in einem der folgenden Formate: RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 ### <a name="channel"></a>Kanal
 In Media Services sind [Kanäle](https://docs.microsoft.com/rest/api/media/operations/channel)für die Verarbeitung von Livestreaminginhalten zuständig. Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem Live-Transcoder vorlegen. Der Kanal empfängt Live-Eingabestreams aus dem Live-Transcoder und stellt diese zum Streamen durch einen oder mehrere StreamingEndpoints zur Verfügung. Zudem bieten Kanäle einen Vorschauendpunkt (Vorschau-URL), mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln.

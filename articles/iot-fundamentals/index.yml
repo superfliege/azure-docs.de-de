@@ -13,11 +13,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/20/2018
   ms.author: bryanla
-  ms.openlocfilehash: 80c88340e31ef6650dee13819dda316b4d9bcb4d
-  ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/08/2018
+  ms.lasthandoff: 05/16/2018
 abstract:
   description: 'Willkommen bei Microsoft Azure und dem Internet der Dinge (IoT). Azure IoT ist eine umfassende Sammlung von Diensten und Lösungen zur Erstellung von End-to-End-IoT-Anwendungen in Azure. Von vollständig gehosteten und verwalteten SaaS-Lösungen (Software-as-a-Service) über individuelle und spezielle PaaS-Angebote (Plattform-as-a-Service) bis hin zu Technologien für eine intelligente Edgelösung: Azure IoT bietet eine umfangreichen Palette an Optionen und Tools, die speziell auf Ihre branchenspezifischen Anforderungen sowie auf das Know-how und die Ressourcen Ihres Unternehmens zugeschnitten sind.'
 sections:
@@ -100,4 +100,4 @@ sections:
     - title: Sprachen
       html: <p><a href="/azure/iot-hub/iot-hub-devguide-sdks">Azure IoT SDKs für .NET, C, Java, Node.js, Python</a></p>
     - title: REST
-      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">IoT Hub Device Provisioning-Dienst</a></p><p><a href="/rest/api/location-based-services-management/">Maps-Verwaltung</a></p><p><a href="/rest/api/location-based-services/">Maps-Funktionen</a></p><p><a href="/rest/api/time-series-insights-management/">Time Series Insights – Verwaltung</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>
+      html: <p><a href="/rest/api/iothub">IoT Hub</a></p><p><a href="/rest/api/iot-dps">IoT Hub Device Provisioning-Dienst</a></p><p><a href="/rest/api/maps-management/">Maps-Verwaltung</a></p><p><a href="/rest/api/maps/">Maps-Funktionen</a></p><p><a href="/rest/api/time-series-insights-management/">Time Series Insights – Verwaltung</a></p><p><a href="/rest/api/time-series-insights/">Time Series Insights</a></p>

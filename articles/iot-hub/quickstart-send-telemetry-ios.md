@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: ns
 ms.date: 04/20//2018
 ms.author: kgremban
-ms.openlocfilehash: 8b95bb18f2e8941c10f7bcdf6a60e7fda6ab0ea5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz (Swift)
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Laden Sie das Codebeispiel aus den [Azure-Beispielen](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) herunter. 
-- Die neueste Version von [XCode](https://developer.apple.com/xcode/) mit der neuesten Version des iOS SDKs. Diese Schnellstartanleitung wurde mit XCode 9.3 und iOS 11.3 getestet.
+- Die neueste Version von [XCode](https://developer.apple.com/xcode/) mit der neuesten Version des iOS SDKs. Diese Schnellstartanleitung wurde mit Xcode 9.3 und iOS 11.3 getestet.
 - Die neueste Version von [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 - Das CLI-Hilfsprogramm „iothub-explorer“ zum Lesen von Telemetriedaten aus IoT Hub. Installieren Sie zunächst [Node.js](https://nodejs.org) (mindestens Version 4.x.x), und führen Sie dann den folgenden Befehl aus: 
 
@@ -54,16 +54,16 @@ Im ersten Schritt wird über das Azure-Portal eine IoT Hub-Instanz in Ihrem Abon
 
     | Einstellung | Wert |
     | ------- | ----- |
-    | Name | Ein eindeutiger Name für Ihren Hub. |
+    | NAME | Ein eindeutiger Name für Ihren Hub. |
     | Tarif und Skalierung | F1 Free |
     | IoT Hub-Einheiten | 1 |
     | Gerät-zu-Cloud-Partitionen | Zwei Partitionen |
     | Abonnement | Ihr Azure-Abonnement. |
     | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe. Geben Sie einen Namen für Ihre Ressourcengruppe ein. |
-    | Standort | Der Standort, der Ihnen am nächsten ist. |
+    | Speicherort | Der Standort, der Ihnen am nächsten ist. |
     | An Dashboard anheften | Ja |
 
-1. Klicken Sie auf **Erstellen**.  
+1. Klicken Sie auf **Create**.  
 
    ![Hub-Einstellungen](media/quickstart-send-telemetry-ios/hubdefinition.png)
 
@@ -79,6 +79,8 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    az extension add --name azure-cli-iot-ext
    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
    ```
+
+    Wenn Sie einen anderen Namen für Ihr Gerät auswählen, aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor sie ausgeführt werden.
 
 1. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
@@ -110,17 +112,17 @@ Navigieren Sie in einem Terminalfenster zum Ordner „Azure-IoT-Samples-iOS“, 
 cd quickstart/sample-device
 ```
 
-Vergewissern Sie sich, dass XCode geschlossen ist, und führen Sie den folgenden Befehl aus, um die in der Datei **Podfile** deklarierten CocoaPods zu installieren:
+Vergewissern Sie sich, dass Xcode geschlossen ist, und führen Sie den folgenden Befehl aus, um die in der Datei **Podfile** deklarierten CocoaPods zu installieren:
 
 ```sh
 pod install
 ```
 
-Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr Projekt, sondern erstellt auch eine XCode-Arbeitsbereichsdatei, die bereits zur Verwendung der Pods für Abhängigkeiten konfiguriert ist. 
+Der Installationsbefehl installiert nicht nur die erforderlichen Pods für Ihr Projekt, sondern erstellt auch eine Xcode-Arbeitsbereichsdatei, die bereits zur Verwendung der Pods für Abhängigkeiten konfiguriert ist. 
 
 ### <a name="run-the-sample-application"></a>Ausführen der Beispielanwendung 
 
-1. Öffnen Sie den Beispielarbeitsbereich in XCode.
+1. Öffnen Sie den Beispielarbeitsbereich in Xcode.
 
    ```sh
    open "MQTT Client Sample.xcworkspace"

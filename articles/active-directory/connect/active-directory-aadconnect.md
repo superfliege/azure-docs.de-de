@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/19/2018
 ms.author: billmath
-ms.openlocfilehash: 7112b8af792dc245c1a2a68e130328d82b4958b3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 73baef03f7b240e7bb33f3d5f827b1fc72c985f2
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory
 Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.
@@ -64,7 +64,7 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](htt
 | --- | --- |
 | Vorbereitung: [Hardware und Voraussetzungen](active-directory-aadconnect-prerequisites.md) |<li>Hier erfahren Sie mehr zu den Schritten, die vor dem Installieren von Azure AD Connect ausgeführt werden müssen.</li> |
 | [Express-Einstellungen](active-directory-aadconnect-get-started-express.md) |<li>Wenn Sie über eine einzelne Gesamtstruktur-AD-Instanz verfügen, ist dies die empfohlene Option.</li> <li>Benutzer melden Sie sich mit dem gleichen Kennwort mithilfe der Kennwortsynchronisierung an.</li> |
-| [Benutzerdefinierte Einstellungen](active-directory-aadconnect-get-started-custom.md) |<li>Wird bei mehreren Gesamtstrukturen verwendet. Unterstützt viele lokale [Topologien](active-directory-aadconnect-topologies.md).</li> <li>Passen Sie die Anmeldeoption an, z.B. ADFS für den Verbund, oder verwenden Sie einen Drittanbieter-Identitätsanbieter.</li> <li>Passen Sie Synchronisierungsfunktionen an, wie das Filtern und Rückschreiben.</li> |
+| [Benutzerdefinierte Einstellungen](active-directory-aadconnect-get-started-custom.md) |<li>Wird bei mehreren Gesamtstrukturen verwendet. Unterstützt viele lokale [Topologien](active-directory-aadconnect-topologies.md).</li> <li>Passen Sie die Anmeldeoption an, z.B. Pass-Through-Authentifizierung, ADFS für den Verbund, oder verwenden Sie einen Identitätsanbieter eines Drittanbieters.</li> <li>Passen Sie Synchronisierungsfunktionen an, wie das Filtern und Rückschreiben.</li> |
 | [Upgrade von DirSync](active-directory-aadconnect-dirsync-upgrade-get-started.md) |<li>Wird bei einem vorhandenen DirSync-Server verwendet, der bereits ausgeführt wird.</li> |
 | [Upgrade von Azure AD Sync oder Azure AD Connect](active-directory-aadconnect-upgrade-previous-version.md) |<li>Je nach Bedarf gibt es verschiedene Methoden.</li> |
 

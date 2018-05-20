@@ -10,13 +10,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/1/2018
+ms.date: 5/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b69dce94e2e0bfaa413af9a95c5ef858f766ff1c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b68223830ca6c4e178447074bfbebd1322cb9477
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen 
 Bei Verwaltungsgruppen handelt es sich um Container, mit denen Sie Zugriff, Richtlinien und Konformität abonnementübergreifend verwalten können. Sie können diese Container ändern, löschen und verwalten, um Hierarchien zu erhalten, die mit [Azure Policy](../azure-policy/azure-policy-introduction.md) und mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](../role-based-access-control/overview.md) verwendet werden können. Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organize your resources with Azure Management Groups](management-groups-overview.md) (Organisieren von Ressourcen mit Azure-Verwaltungsgruppen).
@@ -103,9 +103,9 @@ Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geer
 ### <a name="view-in-the-portal"></a>Anzeigen im Portal
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**. 
-3. Die Seite mit der Verwaltungsgruppenhierarchie wird geladen. Auf dieser Seite werden alle Gruppen angezeigt, auf die Sie Zugriff haben. 
+3. Die Hierarchieseite der Verwaltungsgruppe wird geladen, auf der Sie alle Verwaltungsgruppen und Abonnements einsehen können, auf die Sie Zugriff haben. Durch Auswahl des Gruppennamens gelangen Sie eine Ebene in der Hierarchie nach unten. Die Navigation funktioniert genauso wie im Datei-Explorer. 
     ![Hauptseite](media/management-groups/main.png)
-4. Wählen Sie eine einzelne Verwaltungsgruppe aus, um Details anzuzeigen.  
+4. Um die Details der Verwaltungsgruppe zu sehen, wählen Sie den Link **(Details)** neben dem Titel der Verwaltungsgruppe. Wenn dieser Link nicht verfügbar ist, sind Sie zum Anzeigen dieser Verwaltungsgruppe nicht berechtigt.  
 
 ### <a name="view-in-powershell"></a>Anzeigen in PowerShell
 Mit dem Befehl „Get-AzureRmManagementGroup“ rufen Sie alle Gruppen ab.  

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 7290c12e7d96ac01c66d97103920793f98120b38
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0aa87aeaf852d7309c29c1298e326c101a944904
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -48,81 +48,6 @@ Sie sollten die ersten Schritte mit dem Betrachten des folgenden Videos beginnen
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
-
-## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Angeben der Kapazität der Anforderungseinheiten in Azure Cosmos DB
-
-Sie können die Anzahl der Anforderungseinheiten (Request Units, RUs) pro Sekunde angeben, die für einen einzelnen Container oder für eine Gruppe von Containern reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Container zu, und Daten werden gemäß ihrem Wachstum zwischen Partitionen aufgeteilt bzw. neu verteilt.
-
-Beim Zuweisen von RUs pro Sekunde für einzelne Container können diese *mit fester Größe* oder *unbegrenzter Größe* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Container/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
-
-Wenn Sie RUs pro Sekunde für eine Gruppe von Containern zuweisen, werden die Container dieser Gruppe als *unbegrenzte* Container behandelt und müssen einen Partitionsschlüssel aufweisen.
-
-![Bereitstellen von Anforderungseinheiten für einzelne Container und Gruppen von Containern][6]
-
-> [!NOTE]
-> Ein Partitionsschlüssel ist eine logische Grenze, keine physische. Daher müssen Sie die Anzahl der unterschiedlichen Partitionsschlüsselwerte nicht beschränken. Es ist in der Tat besser, mehr unterschiedliche Partitionschlüsselwerte zu haben, da Azure Cosmos DB dann mehr Optionen für den Lastenausgleich zur Verfügung stehen.
-
-Hier sehen Sie einen Codeausschnitt zum Erstellen eines Containers mit 3.000 Anforderungseinheiten pro Sekunde für einen einzelnen Container unter Verwendung der .NET SDK der SQL-API:
-
-```csharp
-DocumentCollection myCollection = new DocumentCollection();
-myCollection.Id = "coll";
-myCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(
-    UriFactory.CreateDatabaseUri("db"),
-    myCollection,
-    new RequestOptions { OfferThroughput = 3000 });
-```
-
-Hier sehen Sie einen Codeausschnitt zum Bereitstellen von 100.000 Anforderungseinheiten pro Sekunde für eine Gruppe von Containern unter Verwendung der .NET SDK der SQL-API:
-
-```csharp
-// Provision 100,000 RU/sec at the database level. 
-// sharedCollection1 and sharedCollection2 will share the 100,000 RU/sec from the parent database
-// dedicatedCollection will have its own dedicated 4,000 RU/sec, independant of the 100,000 RU/sec provisioned from the parent database
-Database database = client.CreateDatabaseAsync(new Database { Id = "myDb" }, new RequestOptions { OfferThroughput = 100000 }).Result;
-
-DocumentCollection sharedCollection1 = new DocumentCollection();
-sharedCollection1.Id = "sharedCollection1";
-sharedCollection1.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection1, new RequestOptions())
-
-DocumentCollection sharedCollection2 = new DocumentCollection();
-sharedCollection2.Id = "sharedCollection2";
-sharedCollection2.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, sharedCollection2, new RequestOptions())
-
-DocumentCollection dedicatedCollection = new DocumentCollection();
-dedicatedCollection.Id = "dedicatedCollection";
-dedicatedCollection.PartitionKey.Paths.Add("/deviceId");
-
-await client.CreateDocumentCollectionAsync(database.SelfLink, dedicatedCollection, new RequestOptions { OfferThroughput = 4000 )
-```
-
-
-Azure Cosmos DB wird mit einem Reservierungsmodell für den Durchsatz ausgeführt. Ihnen wird also der *reservierte* Durchsatz berechnet, unabhängig davon, wie viel von diesem Durchsatz aktiv *verwendet* wird. Sie können die Anzahl reservierter RUs über SDKs oder über das [Azure-Portal](https://portal.azure.com) ganz einfach zentral hoch- oder herunterskalieren, wenn sich die Auslastung, die Daten und die Nutzungsmuster Ihrer Anwendung ändern.
-
-Jeder Container bzw. jede Gruppe von Containern ist einer `Offer`-Ressource in Azure Cosmos DB zugeordnet, die Metadaten zu dem bereitgestellten Durchsatz enthält. Sie können den reservierten Durchsatz ändern, indem Sie die entsprechende Angebotsressource für einen Container suchen und mit dem neuen Durchsatzwert aktualisieren. Hier sehen Sie einen Codeausschnitt zum Ändern des Durchsatzes eines Containers in 5.000 Anforderungseinheiten pro Sekunde mithilfe des .NET SDK:
-
-```csharp
-// Fetch the resource to be updated
-// For a updating throughput for a set of containers, replace the collection's self link with the database's self link
-Offer offer = client.CreateOfferQuery()
-                .Where(r => r.ResourceLink == collection.SelfLink)    
-                .AsEnumerable()
-                .SingleOrDefault();
-
-// Set the throughput to 5000 request units per second
-offer = new OfferV2(offer, 5000);
-
-// Now persist these changes to the database by replacing the original resource
-await client.ReplaceOfferAsync(offer);
-```
-
-Die Durchsatzänderung hat keine Auswirkungen auf die Verfügbarkeit des Containers oder der Gruppe von Containern. In der Regel wird der neue reservierte Durchsatz innerhalb von Sekunden nach der Anwendung des neuen Durchsatzes wirksam.
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Durchsatzisolation in global verteilten Datenbanken
 
@@ -347,6 +272,11 @@ Wenn Sie das .NET Client SDK und LINQ-Abfragen verwenden, werden Sie sich normal
 Wenn mehrere Clients kumulativ oberhalb der Anforderungsrate arbeiten, reicht das Standard-Wiederholungsverhalten möglicherweise nicht aus, und der Client löst für die Anwendung eine `DocumentClientException` mit dem Statuscode 429 aus. In diesen Fällen sollten Sie in Betracht ziehen, das Wiederholungsverhalten und die zugehörige Logik in die Fehlerbehandlungsroutinen der Anwendung aufzunehmen oder den für den Container (oder die Gruppe von Containern) bereitgestellten Durchsatz zu erhöhen.
 
 ## <a name="next-steps"></a>Nächste Schritte
+ 
+Informationen zum Festlegen und Abrufen des Durchsatzes mit dem Azure-Portal und SDKs finden Sie im folgenden Artikel:
+
+* [Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container](set-throughput.md)
+
 Weitere Informationen zum reservierten Durchsatz mit Azure Cosmos DB-Datenbanken finden Sie in folgenden Ressourcen:
 
 * [Azure Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/cosmos-db/)
@@ -360,4 +290,4 @@ Im Artikel [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-tes
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
-[6]: ./media/request-units/provisioning_set_containers.png
+

@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ba73f386a19cc8bedb8879e6f7eea316154b7a57
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fcbeb6bbd090fc31febb326d3cbef90187d3e7e3
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -27,9 +27,11 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 * Die Ev3-Serie bietet den 2,3-GHz-E5-2673 v4-Prozessor (Broadwell) in einer Hyperthreadkonfiguration, der ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads bietet und den Ev3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang brin.
   Der Speicher wurde erweitert (von 7 GiB/vCPU auf 8 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Ev3-Serie ist der Nachfolger für die VMs mit großen Arbeitsspeichergrößen der D/Dv2-Familien.
 
-## <a name="esv3-series-sup1sup"></a>Esv3-Serie <sup>1</sup>
+* Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/) verwenden.  In den folgenden Tabellen der VM-Familien finden Sie Ihre Optionen für isolierte VMs.
 
-ACU: 160 - 190
+## <a name="esv3-series"></a>Esv3-Serie 
+
+ACU: 160 - 190 <sup>1</sup>
 
 Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
@@ -52,9 +54,9 @@ Die Instanzen der ESv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XE
 <sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 
-## <a name="ev3-series-sup1sup"></a>Ev3-Serie <sup>1</sup>
+## <a name="ev3-series"></a>Ev3-Serie 
 
-ACU: 160 - 190 
+ACU: 160 - 190 <sup>1</sup>
 
 Die Instanzen der Ev3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEON ® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Instanzen der ESv3-Serie eignen sich ideal für speicherintensive Unternehmensanwendungen.
 
@@ -76,9 +78,9 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 <sup>2</sup> Eingeschränkte Kerngrößen verfügbar. 
 
 
-## <a name="m-series-sup1sup"></a>M-Serie <sup>1</sup>
+## <a name="m-series"></a>M-Serie 
 
-ACU: 160–180
+ACU: 160 - 180 <sup>1</sup>
 
 | Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |-----------------|------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------|
@@ -96,9 +98,9 @@ ACU: 160–180
 <sup>4</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 <br>
 
-## <a name="gs-series-sup1sup"></a>GS-Serie <sup>1</sup>
+## <a name="gs-series"></a>GS-Serie 
 
-ACU: 180 - 240
+ACU: 180 - 240 <sup>1</sup>
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |---|---|---|---|---|---|---|---|
@@ -132,9 +134,9 @@ ACU: 180 - 240
 <br>
 
 
-## <a name="dsv2-series-sup1sup"></a>DSv2-Serie <sup>1</sup>
+## <a name="dsv2-series"></a>DSv2-Serie 
 
-ACU: 210 - 250
+ACU: 210 - 250 <sup>1</sup>
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -175,9 +177,9 @@ ACU: 210 - 250
 
 <br>
 
-## <a name="ds-series-sup1sup"></a>DS-Serie <sup>1</sup>
+## <a name="ds-series"></a>DS-Serie 
 
-ACU: 160
+ACU: 160 <sup>1</sup>
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

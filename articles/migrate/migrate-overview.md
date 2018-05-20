@@ -4,14 +4,14 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 03/27/2018
+ms.date: 05/03/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 283a505f9e16b081e0eb2e51d935c9b12e8721cb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 869d426bc76d725cead9bedc73800a20531bb9ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -21,15 +21,15 @@ Mit dem Azure Migrate-Dienst werden lokale Workloads für die Migration zu Azure
 
 Azure Migrate bietet Folgendes:
 
-- **Bewerten der Bereitschaft für Azure**: Bewerten Sie, ob Ihre lokalen Computer für die Ausführung in Azure geeignet sind. 
-- **Größenempfehlungen**: Nutzen Sie Größenempfehlungen für virtuelle Azure-Computer, die auf dem Leistungsverlauf lokaler virtueller Computer basieren. 
+- **Bewerten der Bereitschaft für Azure**: Bewerten Sie, ob Ihre lokalen Computer für die Ausführung in Azure geeignet sind.
+- **Größenempfehlungen**: Nutzen Sie Größenempfehlungen für virtuelle Azure-Computer, die auf dem Leistungsverlauf lokaler virtueller Computer basieren.
 - **Voraussichtliche monatliche Kosten**: Erhalten Sie Kostenschätzungen zur Ausführung lokaler Computer in Azure.  
-- **Migration mit hoher Zuverlässigkeit**: Visualisieren Sie Abhängigkeiten von lokalen Computern, um Gruppen von Computern zu erstellen, die Sie gemeinsam bewerten und migrieren möchten. 
+- **Migration mit hoher Zuverlässigkeit**: Visualisieren Sie Abhängigkeiten von lokalen Computern, um Gruppen von Computern zu erstellen, die Sie gemeinsam bewerten und migrieren möchten.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Derzeit können nur lokale virtuelle VMware-Computer (Virtual Machines, VMs) für die Migration zu virtuellen Azure-Computern bewertet werden. Die virtuellen VMware-Computer müssen mit vCenter Server (Version 5.5, 6.0 oder 6.5) verwaltet werden.
-- Die Unterstützung von Hyper-V ist bereits geplant. Wir empfehlen, in der Zwischenzeit den [Azure Site Recovery-Bereitstellungsplaner](http://aka.ms/asr-dp-hyperv-doc) zu verwenden, um die Migration von Hyper-V-Workloads zu planen. 
+- Die Unterstützung von Hyper-V ist bereits geplant. Wir empfehlen, in der Zwischenzeit den [Azure Site Recovery-Bereitstellungsplaner](http://aka.ms/asr-dp-hyperv-doc) zu verwenden, um die Migration von Hyper-V-Workloads zu planen.
 - Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
 - Azure Migrate-Projekte können nur in der Region „USA, Westen-Mitte“ oder „USA, Osten“ erstellt werden. Dies hat aber keinerlei Auswirkung auf die Möglichkeit, Ihre Migration für einen anderen Azure-Zielstandort zu planen. Der Standort des Migrationsprojekts wird nur zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
@@ -42,16 +42,17 @@ Weitere Informationen zu den Preisen von Azure Migrate finden Sie [hier](https:/
 
 ## <a name="whats-in-an-assessment"></a>Was umfasst eine Bewertung?
 
-Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer ermitteln sowie geeignete Größenempfehlungen und Kostenschätzungen für die Ausführung der virtuellen Computer in Azure erhalten. Bewertungen können durch Ändern der Eigenschaften an Ihre Anforderungen angepasst werden. Folgende Eigenschaften werden bei der Erstellung einer Bewertung berücksichtigt: 
+Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer ermitteln sowie geeignete Größenempfehlungen und Kostenschätzungen für die Ausführung der virtuellen Computer in Azure erhalten. Bewertungen können durch Ändern der Eigenschaften an Ihre Anforderungen angepasst werden. Folgende Eigenschaften werden bei der Erstellung einer Bewertung berücksichtigt:
 
 **Eigenschaft** | **Details**
 --- | ---
-**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 30 Regionen, einschließlich „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt. 
-**Speicherredundanz** | Die Art von [Speicherredundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy), die von den virtuellen Azure-Computern nach der Migration verwendet wird. Standardmäßig wird lokal redundanter Speicher (LRS) verwendet. Hinweis: Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger unterstützen wiederum nur LRS. Daher ist für die Eigenschaft derzeit nur die LRS-Option verfügbar. 
+**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 30 Regionen, einschließlich „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt.
+**Speicherredundanz** | Die Art von [Speicherredundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy), die von den virtuellen Azure-Computern nach der Migration verwendet wird. Standardmäßig wird lokal redundanter Speicher (LRS) verwendet. Hinweis: Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger unterstützen wiederum nur LRS. Daher ist für die Eigenschaft derzeit nur die LRS-Option verfügbar.
 **Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können die Größenanpassung auf der Grundlage des *Leistungsverlaufs* der lokalen virtuellen Computer vornehmen oder die Größe der virtuellen Computer ohne Berücksichtigung des Leistungsverlaufs *an die lokale Umgebung* für Azure anpassen. Standardmäßig wird die leistungsbasierte Größenanpassung verwendet.
-**Tarife** | Für die Kostenberechnung berücksichtigt die Bewertung, ob Sie über Software Assurance verfügen und ob Sie Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) haben. Außerdem werden [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) berücksichtigt, für die Sie möglicherweise registriert sind, und Sie können abonnementspezifische Rabatte (in Prozent) angeben, die Sie ggf. zusätzlich zum Angebot erhalten. 
+**Tarife** | Für die Kostenberechnung berücksichtigt die Bewertung, ob Sie über Software Assurance verfügen und ob Sie Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) haben. Außerdem werden [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) berücksichtigt, für die Sie möglicherweise registriert sind, und Sie können abonnementspezifische Rabatte (in Prozent) angeben, die Sie ggf. zusätzlich zum Angebot erhalten.
 **Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer angeben. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, sollten Sie den Standard-Tarif angeben, der virtuelle Computer mit geringer Latenz umfasst, jedoch auch kostenintensiver sein kann. Bei einer Entwicklungs- und Testumgebung sollten Sie dagegen den Basic-Tarif angeben, der virtuelle Computer mit einer höheren Latenz und geringeren Kosten umfasst. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
-**Leistungsverlauf** | Nur relevant bei Verwendung eines leistungsbasierten Größenkriteriums. Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert. Diese Werte können in den Bewertungseigenschaften geändert werden. 
+**Leistungsverlauf** | Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert. Diese Werte können in den Bewertungseigenschaften geändert werden.
+**VM-Serie** | Sie können die VM-Serie angeben, die Sie für die Größenanpassung berücksichtigen möchten. Wenn Sie beispielsweise eine Produktionsumgebung haben, die Sie nicht auf VMs der A-Serie in Azure migrieren möchten, können Sie die A-Serie von der Liste oder aus der Serie ausschließen, sodass die Größenanpassung nur in der ausgewählten Serie erfolgt.  
 **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für eine VM mit zehn Kernen und 20% Auslastung ergibt sich normalerweise eine VM mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. Die Standardeinstellung für den Komfortfaktor lautet 1.3x.
 
 
@@ -63,7 +64,7 @@ Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer er
 4.  Der Collector erfasst VM-Metadaten mit VMware PowerCLI-Cmdlets. Die Ermittlung erfolgt ohne Agent, und auf VMware-Hosts oder VMs wird nichts installiert. Die gesammelten Metadaten enthalten VM-Informationen (Kerne, Arbeitsspeicher, Datenträger, Datenträgergrößen und Netzwerkadapter). Außerdem werden Leistungsdaten für VMs gesammelt, z.B. CPU- und Arbeitsspeicherauslastung, Datenträger-IOPS, Datenträgerdurchsatz (MBit/s) und Netzwerkausgabe (MBit/s).
 5.  Die Metadaten werden per Pushvorgang in das Azure Migrate-Projekt übertragen. Sie können sie im Azure-Portal anzeigen.
 6.  Zur Durchführung der Bewertung fassen Sie die ermittelten virtuellen Computer in Gruppen zusammen. Beispielsweise können Sie virtuelle Computer gruppieren, auf denen die gleiche Anwendung ausgeführt wird. Für eine präzisere Gruppierung können Sie mithilfe der Abhängigkeitsvisualisierung Abhängigkeiten eines bestimmten Computers anzeigen oder aber Abhängigkeiten für alle Computer in einer Gruppe anzeigen und die Gruppe weiter eingrenzen.
-7.  Anschließend können Sie eine Bewertung für die gebildete Gruppe erstellen. 
+7.  Anschließend können Sie eine Bewertung für die gebildete Gruppe erstellen.
 8.  Nach Abschluss der Bewertung können Sie das Ergebnis im Portal anzeigen oder im Excel-Format herunterladen.
 
 
@@ -81,21 +82,21 @@ In der Tabelle sind die Ports zusammengefasst, die für die Azure Migrate-Kommun
 |Lokale VM     | Log Analytics-Arbeitsbereich          |[TCP 443](../log-analytics/log-analytics-windows-agent.md) |Der MMA-Agent nutzt TCP 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie das Feature zur Visualisierung von Abhängigkeiten verwenden und den Microsoft Monitoring Agent (MMA) installieren. |
 
 
-  
+
 ## <a name="what-happens-after-assessment"></a>Was passiert nach der Bewertung?
 
 Nachdem Sie die lokalen Computer für die Migration mit dem Azure Migrate-Dienst bewertet haben, können Sie einige Tools nutzen, um die Migration durchzuführen:
 
 - **Azure Site Recovery**: Sie können Azure Site Recovery wie folgt für die Migration zu Azure verwenden:
   - Vorbereiten von Azure-Ressourcen, einschließlich eines Azure-Abonnements, eines virtuellen Azure-Netzwerks und eines Speicherkontos.
-  - Vorbereiten Ihrer lokalen VMware-Server für die Migration. Sie überprüfen VMware-Supportanforderungen für Site Recovery, richten VMware-Server für die Ermittlung ein und bereiten die Installation des Site Recovery-Mobilitätsdiensts auf VMs vor, die Sie migrieren möchten. 
+  - Vorbereiten Ihrer lokalen VMware-Server für die Migration. Sie überprüfen VMware-Supportanforderungen für Site Recovery, richten VMware-Server für die Ermittlung ein und bereiten die Installation des Site Recovery-Mobilitätsdiensts auf VMs vor, die Sie migrieren möchten.
   - Einrichten der Migration. Sie richten einen Recovery Services-Tresor ein, konfigurieren die Migrationseinstellungen für Quelle und Ziel, richten eine Replikationsrichtlinie ein und aktivieren die Replikation. Sie können einen Testlauf der Notfallwiederherstellung durchführen, um zu überprüfen, ob die Migration einer VM zu Azure richtig funktioniert.
-  - Ausführen eines Failovers zum Migrieren von lokalen Computern zu Azure. 
+  - Ausführen eines Failovers zum Migrieren von lokalen Computern zu Azure.
   - [Weitere Informationen](../site-recovery/tutorial-migrate-on-premises-to-azure.md) finden Sie im Tutorial zur Site Recovery-Migration.
 
 - **Azure Database Migration**: Wenn Ihre lokalen Computer eine Datenbank ausführen, z.B. SQL Server, MySQL oder Oracle, können Sie den Azure Database Migration Service für die Migration verwenden. [Weitere Informationen](https://azure.microsoft.com/campaigns/database-migration/)
 
 
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 [Arbeiten Sie ein Tutorial durch](tutorial-assessment-vmware.md), in dem es um die Erstellung einer Bewertung für eine lokale VMware-VM geht.

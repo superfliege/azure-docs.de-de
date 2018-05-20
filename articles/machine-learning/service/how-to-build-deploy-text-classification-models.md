@@ -9,11 +9,11 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 05/07/2018
-ms.openlocfilehash: 66d316f50f161c2e905c3f76da30580b44a63a23
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a970bd889e6994833b2e34adc90af594f9db4d6b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Textklassifizierungsmodellen mit Azure Machine Learning
 
@@ -31,7 +31,7 @@ Die Anwendungsmöglichkeiten für Textklassifizierung sind umfangreich. Hier ein
 Der folgende Erstellungs- und Bereitstellungsworkflow der Textklassifizierung für ein Modell mit AMLPTA wird verwendet:
 
 1. Laden der Daten
-2. Trainieren des Modells
+2. Modelltraining
 3. Anwenden des Klassifizierers 
 4. Auswerten der Modellleistung
 5. Speichern der Pipeline
@@ -136,8 +136,8 @@ df_test.head()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Bezeichnung</th>
-      <th>Text</th>
+      <th>label</th>
+      <th>text</th>
     </tr>
   </thead>
   <tbody>
@@ -333,7 +333,7 @@ plt.show()
 Bei der Ausführung des Jupypter Notebooks werden Plots angezeigt, nachdem der vorherige Codeblock ausgeführt wurde.
 
 
-## <a name="train-the-model"></a>Trainieren des Modells
+## <a name="train-the-model"></a>Modelltraining
 
 ### <a name="specify-scikit-learn-algorithm-and-define-the-text-classifier"></a>Angeben des scikit-learn-Algorithmus und Definieren des Textklassifizierers
 
@@ -420,13 +420,14 @@ text_classifier.fit(df_train)
             text_callable_list=None, text_cols=['text'], text_regex_list=None,
             weight_col=None)
 
-### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Untersuchen und Festlegen der Parameter der verschiedenen Pipelineschritte
 
-Trotz der Anpassung eines scikit-learn-Modells erfolgt die Vorverarbeitung vor der Anpassung über eine Pipeline von Präprozessor- und Featurizerschritten (Transformationen). Daraus ergibt sich der Verweis auf eine „Pipeline“ für das Training. Während der Auswertung wird die vollständige Pipeline einschließlich der Vorverarbeitung und scikit-learn-Modellvorhersage auf ein Testdataset angewendet.
+Während des Trainings benötigen Sie sowohl Text- als auch Beschriftungsspalten. Für Vorhersagen ist jedoch nur die Textspalte erforderlich. 
+
+### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>Untersuchen und Festlegen der Parameter der verschiedenen Pipelineschritte
+    
+In der Regel legen Sie die Parameter fest, bevor Sie ein Modell anpassen. 
 
 ***Beispiel mit text_word_ngrams*** 
-
-In der Regel legen Sie die Parameter fest, bevor Sie ein Modell anpassen. 
 
 Die folgenden Codebeispiele veranschaulichen, wie das Modell mit der Standardpipeline und den Modellparametern trainiert wird. 
 
@@ -572,8 +573,8 @@ Anwenden des trainierten Textklassifizierers für das Testdataset zum Generieren
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Bezeichnung</th>
-      <th>Text</th>
+      <th>label</th>
+      <th>text</th>
       <th>Wahrscheinlichkeiten</th>
       <th>Vorhersage</th>
     </tr>

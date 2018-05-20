@@ -1,0 +1,39 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Azure IoT Central (Vorschauversion)
+metadata:
+  title: 'Dokumentation zu Azure IoT Central (Vorschauversion): Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: Azure IoT Central ist eine vollständig verwaltete SaaS-Lösung (Software-as-a-Service), mit der Sie Ihre IoT-Ressourcen einfach vernetzen, überwachen und verwalten können. Azure IoT Central vereinfacht die anfängliche Einrichtung Ihrer IoT-Lösung und verringert den mit der Verwaltung und einem typischen IoT-Projekt verbundenen Aufwand sowie die Betriebskosten. Erfahren Sie anhand unserer Schnellstartanleitungen und Tutorials, wie Sie eine Azure IoT Central-Anwendung erstellen, anpassen, verwalten und verwenden.
+  services: iot-central
+  author: czeumault
+  manager: carolz
+  ms.prod: microsoft-iot-central
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/08/2017
+  ms.author: carolz
+  ms.openlocfilehash: 3e443a4ba2de76971ef856b67fdeb1f8836f68e1
+  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/16/2018
+abstract:
+  description: Azure IoT Central ist eine vollständig verwaltete SaaS-Lösung (Software-as-a-Service), mit der Sie Ihre IoT-Ressourcen einfach vernetzen, überwachen und verwalten können. Azure IoT Central vereinfacht die anfängliche Einrichtung Ihrer IoT-Lösung und verringert den mit der Verwaltung und einem typischen IoT-Projekt verbundenen Aufwand sowie die Betriebskosten. Erfahren Sie anhand unserer Schnellstartanleitungen und Tutorials, wie Sie eine Azure IoT Central-Anwendung erstellen, anpassen, verwalten und verwenden.
+sections:
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie <a href="quick-deploy-iot-central">eine neue Azure IoT Central-Anwendung erstellen</a>.
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Erfahren Sie, wie Sie Ihre Azure IoT Central-Anwendung anpassen und verwenden.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="tutorial-define-device-type">Definieren eines neuen Gerätetyps</a>
+    - html: <a href="tutorial-configure-rules">Konfigurieren von Regeln</a>
+    - html: <a href="tutorial-customize-operator">Anpassen des Operatoransicht</a>
+    - html: <a href="tutorial-monitor-devices">Überwachen von Geräten</a>
+    - html: <a href="tutorial-add-device">Hinzufügen eines echten Geräts</a>

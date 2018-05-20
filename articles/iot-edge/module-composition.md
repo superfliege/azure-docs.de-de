@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/23/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 58b4c6769f6eb441e9ccaf041f3d56f4af9a0831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3d95a602815cd444fb4b062853d9d31b75993e6a
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau
 
@@ -168,7 +168,7 @@ Im Bereitstellungsmanifest können gewünschte Eigenschaften für den Modulzwill
 
 Wenn Sie die gewünschten Eigenschaften eines Modulzwillings nicht im Bereitstellungsmanifest angeben, ändert IoT Hub den Modulzwilling nicht ab, und Sie können die gewünschten Eigenschaften programmgesteuert festlegen.
 
-Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie im [Entwicklerhandbuch für Gerätezwillinge](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins).   
+Die gleichen Verfahren, mit denen Sie Gerätezwillinge ändern, werden auch zum Ändern von Modulzwillingen verwendet. Weitere Informationen finden Sie im [Entwicklerhandbuch für Gerätezwillinge](../iot-hub/iot-hub-devguide-device-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Beispiel für ein Bereitstellungsmanifest
 

@@ -45,14 +45,14 @@
           href: delete-cluster.md
     - name: Konfigurieren von Datenvolumes
       items:
-        - name: 'Kubernetes-Volume: Datenträger'
-          href: azure-disk-volume.md
-        - name: 'Kubernetes-Volume: Dateien'
-          href: azure-files-volume.md
-        - name: 'Persistentes Volume: Datenträger'
+        - name: 'AzureDisk: Dynamische Bereitstellung'
           href: azure-disks-dynamic-pv.md
-        - name: 'Persistentes Volume: Dateien'
+        - name: 'AzureDisk: Statische Bereitstellung'
+          href: azure-disk-volume.md
+        - name: 'AzureFile: Dynamische Bereitstellung'
           href: azure-files-dynamic-pv.md
+        - name: 'AzureFile: Statische Bereitstellung'
+          href: azure-files-volume.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:
         - name: Netzwerkübersicht

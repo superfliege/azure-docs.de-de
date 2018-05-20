@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5548ced4f81cf52d6aec4ce5ab2a3262eb347bd3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -114,6 +114,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Application Insights
 * Automation
 * Azure Cosmos DB
+* Azure Relay
 * Batch
 * Bing Maps
 * CDN
@@ -130,6 +131,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * IoT Hubs
 * Key Vault
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
+* Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
 * Media Services
@@ -137,7 +139,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Notification Hubs
 * Operational Insights
 * Operations Management
-* Power BI
+* Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Redis Cache
 * Scheduler
@@ -148,7 +150,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Speicher
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics-Aufträge können nicht verschoben werden, wenn sie ausgeführt werden.
-* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dies beinhaltet Datasets für Azure SQL-Datenbank und Azure SQL Data Warehouse. 
+* SQL-Datenbankserver – Die Datenbank und der Server müssen sich in derselben Ressourcengruppe befinden. Wenn Sie eine SQL Server-Instanz verschieben, werden auch alle ihre Datenbanken verschoben. Dieses Verhalten gilt für Azure SQL-Datenbank und Azure SQL Data Warehouse-Datenbanken. 
 * Traffic Manager
 * Virtual Machines – Virtuelle Computer mit verwalteten Datenträgern können nicht verschoben werden. Weitere Informationen finden Sie unter [Einschränkungen von virtuellen Computern](#virtual-machines-limitations).
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
@@ -164,6 +166,8 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * AD Hybrid Health Service
 * Application Gateway
 * Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure Migrate
 * BizTalk Services
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Kubernetes Service
@@ -189,6 +193,11 @@ Verwaltete Datenträger unterstützen das Verschieben nicht. Diese Einschränkun
 * Auf der Grundlage von verwalteten Datenträgern erstellte Momentaufnahmen
 * Verfügbarkeitsgruppen mit virtuellen Computern mit verwalteten Datenträgern
 
+Sie können einen verwalteten Datenträger zwar nicht verschieben, haben jedoch die Möglichkeit, eine Kopie zu erstellen und dann einen neuen virtuellen Computer aus dem vorhandenen verwalteten Datenträger zu erstellen. Weitere Informationen finden Sie unter 
+
+* Kopieren von verwalteten Datenträgern in das gleiche oder ein anderes Abonnement mit [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) oder [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
+* Erstellen Sie einen virtuellen Computer mit einem vorhandenen verwalteten Betriebssystemdatenträger mithilfe von [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) oder [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
+
 Von Marketplace-Ressourcen erstellte virtuelle Computer, an die Pläne angefügt sind, können nicht ressourcengruppen- oder abonnementübergreifend verschoben werden. Heben Sie die Bereitstellung des virtuellen Computers im aktuellen Abonnement auf, und stellen Sie ihn im neuen Abonnement erneut bereit.
 
 Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neue Ressourcengruppe im gleichen Abonnement verschoben werden, das abonnementübergreifende Verschieben ist jedoch nicht möglich.
@@ -200,6 +209,8 @@ Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige
 Um ein mittels Peering verknüpftes virtuelles Netzwerk zu verschieben, müssen Sie zunächst das Peering des virtuellen Netzwerks deaktivieren. Nach der Deaktivierung können Sie das virtuelle Netzwerk verschieben. Aktivieren Sie nach der Verschiebung das Peering des virtuellen Netzwerks wieder.
 
 Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk ein Subnetz mit Navigationslinks für Ressourcen enthält. Beispiel: Wenn eine Redis Cache-Ressource in einem Subnetz bereitgestellt wird, enthält dieses Subnetz einen Navigationslink für die Ressource.
+
+Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk einen benutzerdefinierten DNS-Server enthält. Zum Verschieben des virtuellen Netzwerks legen Sie es auf den Standard-DNS-Server (von Azure bereitgestellt) fest. Konfigurieren Sie nach dem Verschieben den benutzerdefinierten DNS-Server neu.
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 

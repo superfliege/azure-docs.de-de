@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: e1a7c3cec7925c6fb01aafba152dde2383cee442
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 
@@ -34,7 +34,7 @@ In Azure Media Services stellt ein *Kanal* eine Pipeline zum Verarbeiten von Liv
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
 
 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (Fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Videodatenstrom (adaptiv) mit Mehrfachbitrate durchgeführt. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Videodatenstrom (adaptiv) mit Mehrfachbitrate durchgeführt. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
 Ab Version Media Services 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Sie können auch angeben, ob der Kanal den Live Encoding-Prozess für Ihren Datenstrom durchführen soll. Sie haben zwei Möglichkeiten:
 

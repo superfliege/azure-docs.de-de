@@ -1,10 +1,10 @@
 ---
 title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren einer Site-to-Site-VPN-Verbindung | Microsoft-Dokumentation'
-description: Konfigurieren einer Site-to-Site-VPN-Verbindung (S2S)
+description: Konfigurieren Sie eine Site-to-Site-VPN-Verbindung (S2S).
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: cherylmc
-manager: jpconnock
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -13,17 +13,17 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 04/17/2018
+ms.date: 04/30/2018
 ms.author: anzaman
-ms.openlocfilehash: da506165dd7c2ca29f977af1452d11189d2fdd2f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 62381c08892017512dcf2bd5d9c7f8690bedfb6c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="create-a-vpn-gateway-and-add-a-site-to-site-connection-using-powershell"></a>Erstellen eines VPN-Gateways und Hinzufügen einer S2S-Verbindung mithilfe von PowerShell
 
-Mit diesem Skript wird ein routenbasiertes VPN-Gateway erstellt und eine P2S-Konfiguration mit RADIUS-Authentifizierung per Benutzername/Kennwort hinzugefügt.
+Mit diesem Skript wird ein routenbasiertes VPN-Gateway erstellt und eine S2S-Verbindung hinzugefügt. Um die Verbindung zu erstellen, müssen Sie auch das VPN-Gerät konfigurieren. Sie [Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten](../vpn-gateway-about-vpn-devices.md).
 
 
 ```azurepowershell-interactive

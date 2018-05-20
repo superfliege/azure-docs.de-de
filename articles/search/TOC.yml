@@ -39,7 +39,7 @@
           href: search-fiddler.md
 - name: Tutorials
   items:
-    - name: Indizieren mithilfe von Cognitive Search
+    - name: Cognitive Search-Entwicklung
       href: cognitive-search-tutorial-blob.md
     - name: Indizieren von Azure SQL-Datenbank
       href: search-indexer-tutorial.md
@@ -73,11 +73,11 @@
   items:
     - name: Planen und Entwerfen
       items:
-        - name: Auswählen einer SKU
+        - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
-        - name: Dienstskalierbarkeit
+        - name: Zuordnen von Partitionen und Replikaten
           href: search-capacity-planning.md
         - name: Entwurfsmuster für Mehrinstanzenfähigkeit
           href: search-modeling-multitenant-saas-applications.md

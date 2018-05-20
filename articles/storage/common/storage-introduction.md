@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 04/05/2018
 ms.author: tamram
-ms.openlocfilehash: 071b209ffa8ffeb8ef6d998f08bcd68868e29911
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8fc94db3e44fc5388063b507cf240863fcc26a3c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="introduction-to-azure-storage"></a>Einführung in Azure Storage
 
@@ -28,7 +28,7 @@ Azure Storage ist die Cloudspeicherlösung von Microsoft für moderne Datenspeic
 
 Azure Storage umfasst die folgenden Datendienste: 
 
-- [Azure-Blobs](../blobs/storage-blobs-introduction.md): Ein stark skalierbarer Objektspeicher für Text- und Binärdaten.
+- [Azure-Blobs](../blobs/storage-blobs-introduction.md): Ein überaus skalierbarer Objektspeicher für Text- und Binärdaten.
 - [Azure Files](../files/storage-files-introduction.md): Verwaltete Dateifreigaben für Bereitstellungen lokal oder in der Cloud.
 - [Azure-Warteschlangen](../queues/storage-queues-introduction.md): Ein Messagingspeicher für zuverlässiges Messaging zwischen Anwendungskomponenten. 
 - [Azure-Tabellen](../../cosmos-db/table-storage-overview.md): Ein NoSQL-Speicher für die schemalose Speicherung von strukturierten Daten.
@@ -179,7 +179,7 @@ Auf Azure Storage-Ressourcen kann über jede Sprache zugegriffen werden, die fü
 * [REST-API für Speicherdienste](https://docs.microsoft.com/rest/api/storageservices/)
 * [Speicherclientbibliothek für .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
 * [Speicherclientbibliothek für Java/Android](https://docs.microsoft.com/java/api/overview/azure/storage)
-* [Speicherclientbibliothek für Node.js](https://docs.microsoft.com/en-us/javascript/api/azure-storage)
+* [Speicherclientbibliothek für Node.js](https://docs.microsoft.com/javascript/api/azure-storage)
 * [Speicherclientbibliothek für Python](https://github.com/Azure/azure-storage-python)
 * [Speicherclientbibliothek für PHP](https://github.com/Azure/azure-storage-php)
 * [Speicherclientbibliothek für Ruby](https://github.com/Azure/azure-storage-ruby)

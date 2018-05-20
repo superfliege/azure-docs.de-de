@@ -9,11 +9,11 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 2446fac7526015d11737529c26d54e910643b750
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 12306b7868fa7fb2321f26657aab81beabb9db35
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Multimasterunterstützung auf globaler Ebene mit Azure Cosmos DB 
  
@@ -22,6 +22,25 @@ Die Entwicklung von global verteilten Anwendungen, die mit lokalen Latenzen reag
 ![Multimasterarchitektur](./media/multi-region-writers/multi-master-architecture.png)
 
 Mit der Multimasterunterstützung in Azure Cosmos DB können Sie Schreibvorgänge in auf der ganzen Welt verteilten Datencontainern (z.B. Sammlungen, Diagramme oder Tabellen) ausführen. Sie können Daten in jeder Region aktualisieren, die Ihrem Datenbankkonto zugeordnet ist. Diese Datenaktualisierungen können asynchron verteilt werden. Neben dem schnellen Zugriff und der Schreiblatenz für Ihre Daten bietet Multimasterunterstützung zudem eine praktische Lösung bei Problemen mit Failover und Lastenausgleich. Zusammenfassend erhalten Sie mit Azure Cosmos DB eine Schreiblatenz von unter 10 ms im 99. Perzentil auf der ganzen Welt, eine Schreib- und Leseverfügbarkeit von 99,999 % auf der ganzen Welt und die Möglichkeit, den Schreib- und Lesedurchsatz auf der ganzen Welt zu skalieren.   
+
+> [!IMPORTANT]
+> Die Multimasterunterstützung befindet sich in der privaten Vorschau. Zur Verwendung der Vorschauversion [registrieren](#sign-up-for-multi-master-support) Sie sich jetzt.
+
+## <a name="sign-up-for-multi-master-support"></a>Für Multimasterunterstützung registrieren
+
+Wenn Sie bereits über ein Azure-Abonnement verfügen, können Sie sich im Azure-Portal für das Multimaster-Vorschauprogramm registrieren. Wenn Sie Azure bisher noch nicht verwenden, registrieren Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free), mit der Sie 12 Monate lang kostenlos auf Azure Cosmos DB zugreifen können. Führen Sie die folgenden Schritte aus, um Zugriff auf das Multimaster-Vorschauprogramm anzufordern.
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Datenbanken** > **Azure Cosmos DB**.  
+
+2. Geben Sie auf der Seite „Neues Konto“ einen Namen für Ihr Azure Cosmos DB-Konto ein, und wählen Sie die API, das Abonnement, die Ressourcengruppe und den Speicherort.  
+
+3. Wählen Sie als Nächstes **Registrieren Sie sich noch heute für die Vorschauversion** unter dem Feld für die Multimaster-Vorschauversion aus.  
+
+   ![Für Multimaster-Vorschauversion registrieren](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
+
+4. Klicken Sie im Bereich **Registrieren Sie sich noch heute für die Vorschauversion** auf **OK**. Nachdem Sie die Anforderung gesendet haben, ändert sich der Status auf dem Blatt „Kontoerstellung“ in **Genehmigung ausstehend**.  
+
+Nach dem Übermitteln der Anforderung erhalten Sie eine E-Mail-Benachrichtigung, dass Ihre Anforderung genehmigt wurde. Aufgrund der hohen Anzahl von Anforderungen sollten Sie innerhalb einer Woche eine Benachrichtigung erhalten. Sie müssen kein Supportticket zum Ausführen der Anforderung erstellen. Anforderungen werden in der Reihenfolge ihres Eintreffens geprüft.
 
 ## <a name="a-simple-multi-master-example--content-publishing"></a>Ein einfaches Multimasterbeispiel – Inhaltsveröffentlichung  
 
@@ -93,7 +112,7 @@ Bei Multimasterunterstützung besteht die Herausforderung häufig darin, dass zw
 
 **Beispiel:** Angenommen, Sie verwenden Azure Cosmos DB als persistenten Speicher für eine Warenkorb-Anwendung, die in den zwei Regionen „USA, Osten“ und „USA, Westen“ bereitgestellt wird.  Ein Benutzer in San Francisco fügt seinem Warenkorb zu einem bestimmten Zeitpunkt einen Artikel hinzu (z.B. ein Buch), während ungefähr zum gleichen Zeitpunkt durch einen Bestandsverwaltungsprozess in der Region „USA, Osten“ ein anderer Artikel im Warenkorb dieses Benutzers (z.B ein neues Telefon) aufgrund einer Lieferantenbenachrichtigung, laut der sich die Markteinführung verzögert, annulliert wird. Zum Zeitpunkt T1 unterscheiden sich dann die Warenkorbdatensätze in den beiden Regionen. In der Datenbank werden die internen Replikations- und Konfliktlösungsmechanismen verwendet, um diese Inkonsistenz zu beheben, und schließlich wird eine der beiden Versionen des Warenkorbs ausgewählt. Aufgrund der Verwendung der Konfliktlösungsheuristiken, die am häufigsten von Multimaster-Datenbanken angewandt werden (z.B. Last-Write-Wins; letzter Schreibzugriff hat Priorität), kann der Benutzer oder die Anwendung nicht vorhersagen, welche Version ausgewählt wird. In beiden Fällen gehen Daten verloren, oder es tritt ein unerwartetes Verhalten auf. Wenn die Version der Region „USA, Osten“ ausgewählt wird, geht die Auswahl des Benutzers eines neuen Kaufartikels (d.h. das Buch) verloren. Wenn die Version der Region „USA, Westen“ ausgewählt wird, befindet sich der zuvor ausgewählte Artikel (d.h. das Telefon) weiterhin im Warenkorb. In beiden Fällen gehen Informationen verloren. Schließlich wird durch einen anderen Prozess zur Überprüfung des Warenkorbs zwischen dem Zeitpunkt T1 und dem Zeitpunkt T2 auch das nicht deterministische Verhalten festgestellt. Beispielsweise werden bei einem Hintergrundprozess, durch den das entsprechende Warenlager ausgewählt wird und die Lieferkosten des Warenkorbs aktualisiert werden, Ergebnisse generiert, die in Konflikt mit den Inhalten des Warenkorbs stehen. Wenn der Prozess in der Region „USA, Westen“ ausgeführt wird und Alternative 1 zur Realität wird, werden die Lieferkosten für zwei Artikel berechnet, auch wenn der Warenkorb bald nur einen Artikel (das Buch) enthält. 
 
-Azure Cosmos DB implementiert die Logik zur Behandlung von Schreibkonflikten innerhalb der Datenbank-Engine. Azure Cosmos DB bietet eine **umfassende und flexible Unterstützung der Konfliktlösung** durch Bereitstellung verschiedener Konfliktlösungsmodelle, z.B. „Automatisch“ (CRDT – Conflict-Free Replicated Data Types), „Last-Write-Wins“ (LWW), „Benutzerdefiniert“ (Gespeicherte Prozedur) und „Manuell“ zur automatischen Konfliktlösung. Die Konfliktlösungsmodelle bieten Garantien für Richtigkeit und Konsistenz, sodass sich Entwickler nicht mehr mit Konsistenz, Verfügbarkeit, Leistung, Replikationslatenz und komplexen Kombinationen von Ereignissen bei geografischen Failovern und regionsübergreifenden Schreibkonflikten auseinandersetzen müssen.  
+Azure Cosmos DB implementiert die Logik zur Behandlung von Schreibkonflikten innerhalb der Datenbank-Engine. Azure Cosmos DB bietet eine **umfassende und flexible Unterstützung der Konfliktlösung** durch Bereitstellung verschiedener Konfliktlösungsmodelle, z.B. „Automatisch“ (CRDT – Conflict-Free Replicated Data Types), „Last-Write-Wins“ (LWW) und „Benutzerdefiniert“ (Gespeicherte Prozedur) zur automatischen Konfliktlösung. Die Konfliktlösungsmodelle bieten Garantien für Richtigkeit und Konsistenz, sodass sich Entwickler nicht mehr mit Konsistenz, Verfügbarkeit, Leistung, Replikationslatenz und komplexen Kombinationen von Ereignissen bei geografischen Failovern und regionsübergreifenden Schreibkonflikten auseinandersetzen müssen.  
 
   ![Multimaster-Konfliktlösung](./media/multi-region-writers/multi-master-conflict-resolution-blade.png)
 
@@ -111,7 +130,7 @@ In diesem Artikel haben Sie erfahren, wie Sie mehrere global verteilte Master mi
 
 * [Erfahren Sie, wie Azure Cosmos DB die globale Verteilung unterstützt](distribute-data-globally.md).  
 
-* [Informieren Sie sich über automatische und manuelle Failover in Azure Cosmos DB](regional-failover.md).  
+* [Informieren Sie sich über automatische Failover in Azure Cosmos DB](regional-failover.md).  
 
 * [Erfahren Sie mehr über die globale Konsistenz bei Azure Cosmos DB](consistency-levels.md).  
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 447f9867649c7c3a44c8a0ba894e037040023f79
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a3d1ca210d490e7a8c634fbfb2a2e11f4e82fae4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -31,23 +31,42 @@ In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage-Bindungen in Azure Fu
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-> [!NOTE]
-> [Reine Blob Storage-Konten](../storage/common/storage-create-storage-account.md#blob-storage-accounts) werden nicht für Blob Storage-Trigger unterstützt. Blob Storage-Trigger erfordern ein allgemeines Speicherkonto. Bei Eingabe- und Ausgabebindungen können Sie reine Blob Storage-Konten verwenden.
-
 ## <a name="packages"></a>Pakete
 
 Die Blob Storage-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
+> [!NOTE]
+> Verwenden Sie den Event Grid-Trigger anstelle des Blobspeichertriggers für reine Blobspeicherkonten, für eine hohe Anzahl oder zum Vermeiden von Kaltstartverzögerungen. Weitere Informationen finden Sie im folgenden Abschnitt **Trigger**. 
+
 ## <a name="trigger"></a>Trigger
 
-Verwenden Sie einen Blob Storage-Trigger, um eine Funktion zu starten, wenn ein neues oder aktualisiertes Blob erkannt wird. Der Blob-Inhalt wird als Eingabe für die Funktion bereitgestellt.
+Der Blobspeichertrigger startet eine Funktion, wenn ein neues oder aktualisiertes Blob erkannt wird. Der Blob-Inhalt wird als Eingabe für die Funktion bereitgestellt.
 
-> [!NOTE]
-> Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, sollten Sie eine der folgenden Möglichkeiten erwägen:
-> - Verwenden Sie einen App Service-Plan mit aktivierter Option „Always On“.
-> - Verwenden Sie einen anderen Mechanismus zum Auslösen der Blobverarbeitung, z.B. eine Warteschlangennachricht, die den Blobnamen enthält. Ein Beispiel finden Sie weiter unten in diesem Artikel im [Beispiel für Blobeingabebindungen](#input---example).
+Der [Event Grid-Trigger](functions-bindings-event-grid.md) verfügt über eine integrierte Unterstützung für [Blobereignisse](../storage/blobs/storage-blob-event-overview.md) und kann auch verwendet werden, um eine Funktion zu starten, wenn ein neuer oder aktualisierter Blob erkannt wird. Ein Beispiel finden Sie die im Tutorial [Ändern der Imagegröße mit Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
+
+Verwenden Sie Event Grid anstelle der Blobspeichertrigger für die folgenden Szenarien:
+
+* Reine Blobspeicherkonten
+* Unterstützung einer hohen Anzahl
+* Kaltstartverzögerung
+
+### <a name="blob-only-storage-accounts"></a>Reine Blobspeicherkonten
+
+[Reine Blobspeicherkonten](../storage/common/storage-create-storage-account.md#blob-storage-accounts) werden für die Blobeingabe- und -ausgabebindungen, jedoch nicht für Blobtrigger unterstützt. Blob Storage-Trigger erfordern ein allgemeines Speicherkonto.
+
+### <a name="high-scale"></a>Unterstützung einer hohen Anzahl
+
+Als „hohe Anzahl“ können Container mit mehr als 100.000 Blobs oder Speicherkonten mit mehr als 100 Blobupdates pro Sekunde lose definiert werden.
+
+### <a name="cold-start-delay"></a>Kaltstartverzögerung
+
+Wenn Ihre Funktions-App im Verbrauchsplan enthalten ist, kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktionen-App in den Leerlauf gewechselt ist. Um diese Kaltstartverzögerung zu vermeiden, können Sie zu einem App Service-Plan wechseln, für den Always On aktiviert ist, oder einen anderen ‚Triggertyp verwenden.
+
+### <a name="queue-storage-trigger"></a>Queue Storage-Trigger
+
+Neben Event Grid ist eine weitere Alternative zur Verarbeitung von Blobs des Queue Storage-Triggers, der jedoch keine integrierte Unterstützung für Blobereignisse bietet. Sie müssten beim Erstellen oder Aktualisieren von Blobs Warteschlangennachrichten erstellen. Ein Beispiel – ausgehend davon, dass dies der Fall ist – finden Sie weiter unten in diesem Artikel im [Beispiel für Blobeingabebindungen](#input---example).
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 

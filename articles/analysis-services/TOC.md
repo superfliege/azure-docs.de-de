@@ -11,6 +11,7 @@
 ## [Erstellen eines Modells im Azure-Portal (Vorschau)](analysis-services-create-model-portal.md)
 
 # Konzepte
+## [Automatisierung mit Dienstprinzipalen](analysis-services-service-principal.md)
 ## [Unterstützte Datenquellen](analysis-services-datasource.md)
 ## [Herstellen einer Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)
 ## [Herstellen einer Verbindung mit Servern](analysis-services-connect.md)

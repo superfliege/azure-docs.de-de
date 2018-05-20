@@ -14,17 +14,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/17/2018
 ms.author: wesmc
-ms.openlocfilehash: e7107e5c75d79714ae8d2d78d35e2cd3742ac674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 748e5839233b9d71b9ed072d0cfe45f018471c52
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Tutorial: Azure SignalR-Dienstauthentifizierung
 
+Der Microsoft Azure SignalR-Dienst befindet sich derzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Dieses Tutorial baut auf der Chatroomanwendung auf, die im Schnellstart eingeführt wurde. Wenn Sie noch keinen [Chatroom mit dem SignalR-Dienst erstellt haben](signalr-quickstart-dotnet-core.md), führen Sie diese Übung zuerst durch. 
 
-In diesem Tutorial lernen Sie, wie Sie Ihre eigene Authentifizierung implementieren und in den Azure SignalR-Dienst integrieren. 
+In diesem Tutorial lernen Sie, wie Sie Ihre eigene Authentifizierung implementieren und in den Microsoft Azure SignalR-Dienst integrieren. 
 
 Die Authentifizierung, die ursprünglich in der Chatroomanwendung des Schnellstarts verwendet wurde, ist für reale Szenarien zu einfach. Die Anwendung erlaubt es jedem Client eine Identität vorzugeben, und der Server akzeptiert dies einfach. In der Praxis ist dieser Ansatz nicht sehr nützlich, da ein betrügerischer Benutzer sich einfach als anderer ausgeben könnte, um auf sensible Daten zuzugreifen. 
 
@@ -68,7 +70,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 3. Verwenden Sie die folgenden Einstellungen für die neue OAuth-App, und klicken Sie dann auf **Register application** (Anwendung registrieren):
 
-    | Einstellungsname | Empfohlener Wert | Beschreibung |
+    | Einstellungsname | Empfohlener Wert | BESCHREIBUNG |
     | ------------ | --------------- | ----------- |
     | Anwendungsname | *Azure SignalR Chat* (Azure SignalIR-Chat) | Der GitHub-Benutzer sollte in der Lage sein, die Anwendung, mit der er sich authentifiziert, zu erkennen und zu vertrauen.   |
     | Homepage URL (URL für Startseite) | *http://localhost:5000/home* | |
@@ -430,7 +432,7 @@ az webapp create --name $WebAppName --resource-group $ResourceGroupName \
 ```
 
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | -------------------- | --------------- |
 | ResourceGroupName | Dieser Ressourcengruppenname wurde in vorherigen Tutorials vorgeschlagen. Es ist ratsam, alle Tutorialressourcen zu gruppieren. Verwenden Sie dieselbe Ressourcengruppe wie in den vorherigen Tutorials. | 
 | WebAppPlan | Geben Sie einen neuen, eindeutigen Namen für den App Service-Plan ein. | 
@@ -488,7 +490,7 @@ az webapp config appsettings set --name $WebAppName \
 
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | -------------------- | --------------- |
 | GitHubClientId | Weisen Sie dieser Variablen die geheime Client-ID für Ihre GitHub-OAuth-App zu. |
 | GitHubClientSecret | Weisen Sie dieser Variablen das geheime Kennwort für Ihre GitHub-OAuth-App zu. |
@@ -526,7 +528,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | -------------------- | --------------- |
 | DeploymentUserName | Wählen Sie einen neuen Namen für den Bereitstellungsbenutzer. |
 | DeploymentUserPassword | Wählen Sie ein Kennwort für den neuen Bereitstellungsbenutzer. |
@@ -604,9 +606,7 @@ Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gel�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie die OAuth-Authentifizierung hinzugefügt, um einen besseren Authentifizierungsansatz mit dem Azure SignalR-Dienst bereitzustellen. Weitere Informationen zur Verwendung des Azure SignalR-Diensts finden Sie im nächsten Tutorial, in dem es um die Integration in Azure Functions geht.
+In diesem Tutorial haben Sie die OAuth-Authentifizierung hinzugefügt, um einen besseren Authentifizierungsansatz mit dem Azure SignalR-Dienst bereitzustellen. Weitere Informationen zur Verwendung von Azure SignalR Server erhalten Sie, wenn Sie mit den Azure CLI-Beispielen für SignalR Service fortfahren.
 
 > [!div class="nextstepaction"]
-> [Integrieren von Azure Functions in den Azure SignalR-Dienst](./signalr-integrate-functions.md)
-
-
+> [Azure SignalR-CLI-Beispiele](./signalr-cli-samples.md)

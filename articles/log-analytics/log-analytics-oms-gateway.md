@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 207b7ab0968f775dba99c2f48c1961d74b4f11c4
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff über das OMS-Gateway
 Dieses Dokument beschreibt, wie die Kommunikation mit Azure Automation and Log Analytics über das OMS-Gateway konfiguriert wird, wenn direkt verbundene oder durch Operations Manager überwachte Computer keinen Internetzugang haben.  Das OMS-Gateway, ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
@@ -36,7 +36,7 @@ Wenn eine Operations Manager-Verwaltungsgruppe in Log Analytics integriert wird,
 
 Zur Gewährleistung der Hochverfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit Log Analytics kommunizieren, können Sie den Datenverkehr mithilfe des Netzwerklastenausgleichs umleiten und auf mehrere Gatewayserver verteilen.  Wenn ein Gatewayserver ausfällt, wird der Datenverkehr an einen anderen verfügbaren Knoten umgeleitet.  
 
-Es wird empfohlen, den OMS-Agent auf dem Computer zu installieren, auf dem die OMS-Gatewaysoftware ausgeführt wird, um das OMS-Gateway zu überwachen und die Leistungs- oder Ereignisdaten zu analysieren. Außerdem unterstützt der Agent das OMS-Gateway beim Ermitteln der Dienstendpunkte, mit denen es kommunizieren muss.
+Der OMS-Agent wird auf dem Computer benötigt, auf dem das OMS-Gateway läuft. Dort identifiziert er die Dienstendpunkte, mit denen er kommunizieren muss, und überwacht das OMS-Gateway, um seine Leistungs- oder Ereignisdaten zu analysieren.
 
 Jeder Agent benötigt eine Netzwerkverbindung mit dem entsprechenden Gateway, damit Agents automatisch Daten an das und vom Gateway übertragen können. Das Gateway sollte nicht auf einem Domänencontroller installiert werden.
 
@@ -56,6 +56,7 @@ Ein Computer, der für die Ausführung des OMS-Gateways vorgesehen ist, muss üb
 * Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, Windows Server 2008
 * .NET Framework 4.5
 * Vierkernprozessor und 8 GB Arbeitsspeicher (mindestens) 
+* OMS-Agent für Windows 
 
 ### <a name="language-availability"></a>Verfügbare Sprachen
 

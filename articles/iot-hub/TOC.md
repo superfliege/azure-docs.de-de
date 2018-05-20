@@ -283,7 +283,7 @@
 ### [IoT Hub](/azure/iot-hub) 
 ### [IoT Hub Device Provisioning-Dienst](/azure/iot-dps)
 ### [IoT-Dienst-SDKs](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks)
-### [Karten](/azure/azure-maps) 
+### [Azure Maps](/azure/azure-maps) 
 ### [Time Series Insights](/azure/time-series-insights) 
 ## Microsoft Edge 
 ### [IoT Edge](/azure/iot-edge) 
@@ -292,6 +292,7 @@
 # angeben
 ## [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsuite.com/)
 ## [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot/)
+## [Kundendatenanforderungen](iot-hub-customer-data-requests.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [DeviceExplorer-Tool](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics-Tool](https://github.com/Azure/iothub-diagnostics)

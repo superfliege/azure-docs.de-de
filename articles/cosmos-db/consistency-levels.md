@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/27/2018
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 512f9e22d01e3bdb90210402aaf123ac6326759a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0f38d05dc720dd596c81a51abf7040ac062e8158
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
 Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Es bietet planbare Garantien für geringe Wartezeiten sowie mehrere klar definierte gelockerte Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ werden als gelockerte Konsistenzmodelle bezeichnet, da sie weniger Konsistenz bieten als „Stark“ (das Modell mit der höchstmöglichen Konsistenz). 
@@ -44,7 +44,7 @@ Die folgende Tabelle zeigt die speziellen Garantien der einzelnen Konsistenzeben
 | Konsistenzebene | Garantien |
 | --- | --- |
 | STARK (Strong) | Linearisierbarkeit. Lesevorgänge geben garantiert die neueste Version eines Elements zurück.|
-| Begrenzte Veraltung (Bounded staleness) | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen um Präfix k oder Intervall t zurück |
+| Begrenzte Veraltung (Bounded staleness) | Präfixkonsistenz. Lesevorgänge bleiben hinter Schreibvorgängen höchstens um Präfix k oder Intervall t zurück. |
 | Sitzung   | Präfixkonsistenz. Monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen |
 | Präfixkonsistenz | Die zurückgegebenen Updates sind ein bestimmtes Präfix aller Updates ohne Lücken |
 | Letztlich (Eventual)  | Lesevorgänge in falscher Reihenfolge |

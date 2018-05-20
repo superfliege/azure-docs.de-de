@@ -1,11 +1,11 @@
 ---
-title: "Netzwerk für Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Konfigurationsnetzwerkeigenschaften für Azure-VM-Skalierungsgruppen."
+title: Netzwerk für Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Konfigurationsnetzwerkeigenschaften für Azure-VM-Skalierungsgruppen.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 27f1ec18026b38d5cdb2aecfde2d01f32a86349e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1db4c7ae78320eb08b2aa0b9da701d9678baf798
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -55,9 +55,28 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 
 ```
 
+## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Erstellen einer Skalierungsgruppe, die auf ein Application Gateway verweist
+Um eine Skalierungsgruppe zu erstellen, die ein Application Gateway verwendet, verweisen Sie wie in dieser ARM-Vorlagenkonfiguration im Abschnitt „ipConfigurations“ Ihrer Skalierungsgruppe auf den Back-End-Adresspool des Application Gateways:
+```json
+"ipConfigurations": [{
+  "name": "{config-name}",
+  "properties": {
+  "subnet": {
+    "id": "{subnet-id}"
+  },
+  "ApplicationGatewayBackendAddressPools": [{
+    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/applicationGateways/{gateway-name}/backendAddressPools/{pool-name}"
+  }]
+}]
+```
+
+>[!NOTE]
+> Beachten Sie, dass sich das Application Gateway im gleichen virtuellen Netzwerk wie die Skalierungsgruppe, jedoch in einem anderen Subnetz befinden muss.
+
+
 ## <a name="configurable-dns-settings"></a>Konfigurierbare DNS-Einstellungen
 Standardmäßig werden für Skalierungsgruppen die spezifischen DNS-Einstellungen des VNETs und des Subnetzes verwendet, in dem sie erstellt wurden. Sie können die DNS-Einstellungen für eine Skalierungsgruppe allerdings direkt konfigurieren.
-~
+
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren DNS-Servern
 Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--dns-servers** und eine durch Leerzeichen getrennte Liste mit Server-IP-Adressen hinzu. Beispiel: 
 ```bash
@@ -145,7 +164,7 @@ PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 
 Abfragen der öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, über den [Azure-Ressourcen-Explorer](https://resources.azure.com) oder mithilfe der Azure-REST-API (ab Version **2017-03-30**).
 
-Wenn Sie die öffentlichen IP-Adressen für eine Skalierungsgruppe mithilfe des Ressourcen-Explorers ermitteln möchten, sehen Sie sich den Abschnitt **publicipaddresses** unter Ihrer Skalierungsgruppe an. Beispiel: https://resources.azure.com/subscriptions/_Ihre Abonnement-ID_/resourceGroups/_Ihre Ressourcengruppe_/providers/Microsoft.Compute/virtualMachineScaleSets/_Ihre VM-Skalierungsgruppe_/publicipaddresses
+Wenn Sie die öffentlichen IP-Adressen für eine Skalierungsgruppe mithilfe des Ressourcen-Explorers ermitteln möchten, sehen Sie sich den Abschnitt **publicipaddresses** unter Ihrer Skalierungsgruppe an. Beispiel: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
 
 ```
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30

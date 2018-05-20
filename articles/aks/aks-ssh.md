@@ -3,21 +3,35 @@ title: Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
 description: Erstellen einer SSH-Verbindung mit einem Azure Kubernetes Service-Clusterknoten (AKS)
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c2b77e558db0e323370c24b87a75357235677f7e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 95b385e9847a7809492bbb74bd1eba616df90d72
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="ssh-into-azure-kubernetes-service-aks-cluster-nodes"></a>Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
 
 Gelegentlich müssen Sie auf einen AKS-Knoten (Azure Kubernetes Service) zugreifen, um Wartungsarbeiten, Protokollsammlungen oder andere Vorgänge zur Problembehandlung auszuführen. AKS-Knoten werden nicht im Internet verfügbar gemacht. Führen Sie die in diesem Dokument aufgeführten Schritte aus, um eine SSH-Verbindung mit einem AKS-Knoten zu erstellen.
+
+## <a name="reset-ssh-keys"></a>Zurücksetzen der SSH-Schlüssel
+
+Wenn Sie AKS ohne SSH-Schlüssel installiert haben oder keinen Zugriff auf die richtigen SSH-Schlüssel haben, können diese über das Azure-Portal zurückgesetzt werden.
+
+Wechseln Sie zu Ihrem AKS-Cluster, wählen Sie einen AKS-Knoten (virtueller Computer) aus, und wählen Sie **Kennwort zurücksetzen** aus, um den öffentlichen SSH-Schlüssel zurückzusetzen.
+
+![AKS-VM mit Schaltfläche „Kennwort zurücksetzen“](media/aks-ssh/reset-password.png)
+
+Wählen Sie **Öffentlichen SSH-Schlüssel zurücksetzen** aus, geben Sie den Benutzernamen des AKS-Clusters ein, der standardmäßig **azueruser** lautet, und kopieren Sie ihn in einen öffentlichen SSH-Schlüssel. Wählen Sie anschließend die Option **Aktualisieren**.
+
+![AKS-Portal-VM mit Schaltfläche „Kennwort zurücksetzen“](media/aks-ssh/reset-password-2.png)
+
+Sobald der SSH-Schlüssel zurückgesetzt wurde, können Sie eine SSH-Verbindung mit dem entsprechenden privaten Schlüssel erstellen.
 
 ## <a name="get-aks-node-address"></a>Abrufen der AKS-Knotenadresse
 
@@ -56,7 +70,7 @@ NAME                       READY     STATUS    RESTARTS   AGE
 aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
 ```
 
-Kopieren Sie Ihren SSH-Schlüssel in den Pod, und ersetzen Sie den Podnamen durch den tatsächlichen Wert.
+Kopieren Sie den privaten SSH-Schlüssel in den Pod, und ersetzen Sie den Podnamen durch den tatsächlichen Wert.
 
 ```console
 kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa

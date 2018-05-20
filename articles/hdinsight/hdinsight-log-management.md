@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 165464bd6851bf5fa76632731455722c393060c6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d3ca9983eee4db09a68bf772b80c9ef841117872
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -105,17 +105,6 @@ Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für di
 Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine SSH-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind AZCopy, CloudXplorer und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
 
 Hadoop führt die Schritte der Aufträge als *Taskversuche* auf verschiedenen Knoten im Cluster aus. HDInsight kann spekulative Taskversuche initiieren und zuerst alle anderen Taskversuche beenden, die nicht erfolgreich abgeschlossen werden können. Hierbei wird eine erhebliche Zahl von Aktivitäten generiert, die nebenbei in den controller-, stderr- und syslog-Protokolldateien protokolliert werden. Außerdem werden gleichzeitig mehrere Taskversuche ausgeführt, aber eine Protokolldatei kann Ergebnisse nur linear anzeigen.
-
-#### <a name="hdinsight-logs-written-to-azure-tables"></a>In Azure-Tabellen geschriebene HDInsight-Protokolle
-
-Die in Azure-Tabellen geschriebenen Protokolle ermöglichen einen Einblick in die Abläufe eines HDInsight-Clusters. Wenn Sie einen Linux-basierten HDInsight-Cluster erstellen, werden im Standardtabellenspeicher automatisch sechs Tabellen erstellt:
-
-* hdinsightagentlog
-* syslog
-* daemonlog
-* hadoopservicelog
-* ambariserverlog
-* ambariagentlog
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>In Azure Blob Storage geschriebene HDInsight-Protokolle
 

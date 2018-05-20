@@ -8,19 +8,19 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/30/2018
-ms.openlocfilehash: dfc59c8d976720ddb313c2e9d29e68c56a8d49f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 05/07/2018
+ms.openlocfilehash: 2650058e277bc0338c779655ce381be046fb120a
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
 Bei Szenarien mit „Time Streaming“ ist das Durchführen von Vorgängen für die Daten in temporalen Fenstern ein häufiges Muster. Stream Analytics verfügt über native Unterstützung für Windowing-Funktionen, sodass Entwickler komplexe Streaming-Verarbeitungsaufträge mit sehr geringem Aufwand erstellen können.
 
-Sie können zwischen vier Arten von temporalen Fenstern wählen: [**Rollierend**](https://msdn.microsoft.com/library/dn835055.aspx), [**Springend**](https://msdn.microsoft.com/library/dn835041.aspx), [**Gleitend**](https://msdn.microsoft.com/library/dn835051.aspx) und **Sitzung**.  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/library/dn835023.aspx)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen.
+Sie können zwischen vier Arten von temporalen Fenstern wählen: [**Rollierend**](https://msdn.microsoft.com/azure/stream-analytics/reference/tumbling-window-azure-stream-analytics), [**Springend**](https://msdn.microsoft.com/azure/stream-analytics/reference/hopping-window-azure-stream-analytics), [**Gleitend**](https://msdn.microsoft.com/azure/stream-analytics/reference/sliding-window-azure-stream-analytics) und [**Sitzung**](https://msdn.microsoft.com/azure/stream-analytics/reference/session-window-azure-stream-analytics).  Sie verwenden die Fensterfunktionen in der [**GROUP BY**](https://msdn.microsoft.com/azure/stream-analytics/reference/group-by-azure-stream-analytics)-Klausel der Abfragesyntax in Ihren Stream Analytics-Aufträgen.
 
-Für alle [Windowing](https://msdn.microsoft.com/library/dn835019.aspx)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
+Für alle [Windowing](https://msdn.microsoft.com/azure/stream-analytics/reference/windowing-azure-stream-analytics)-Vorgänge werden am **Ende** des Fensters Ergebnisse ausgegeben. Die Ausgabe des Fensters ist ein einzelnes Ereignis, das auf der verwendeten Aggregatfunktion basiert. Das Ausgabeereignis verfügt über den Zeitstempel vom Ende des Fensters, und alle Fensterfunktionen werden mit einer festen Länge definiert. 
 
 ![Stream Analytics-Fensterfunktionen – Konzepte](media/stream-analytics-window-functions/stream-analytics-window-functions-conceptual.png)
 
@@ -35,7 +35,7 @@ Bei den Funktionen von springenden Fenstern wird für einen festen Zeitraum ein 
 ![Stream Analytics – Springendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Gleitendes Fenster
-Bei Funktionen für gleitende Fenster wird im Gegensatz zu rollierenden oder springenden Fenstern **nur** dann ein Ereignis produziert, wenn ein Ereignis eintritt. Jedes Fenster verfügt über mindestens ein Ereignis, und das Fenster wird fortlaufend um „€“ (Epsilon) nach vorn verschoben. Wie bei springenden Fenstern auch, können Ereignisse zu mehr als einem gleitenden Fenster gehören.
+Bei Schiebefensterfunktionen wird im Gegensatz zu rollierenden oder springenden Fenstern **nur** dann ein Ereignis produziert, wenn ein Ereignis eintritt. Jedes Fenster verfügt über mindestens ein Ereignis, und das Fenster wird fortlaufend um „€“ (Epsilon) nach vorn verschoben. Wie bei springenden Fenstern auch, können Ereignisse zu mehr als einem gleitenden Fenster gehören.
 
 ![Stream Analytics – Gleitendes Fenster](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

@@ -1,10 +1,10 @@
 ---
 ms.topic: include
-ms.openlocfilehash: b41b93db63038645257bc348d5a027fbc4f7fdc9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 31b0d0018129ee65bb124c8008759cc6c7c8510e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="prepay-for-virtual-machines-with-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen
 
@@ -13,6 +13,7 @@ Sie können für virtuelle Computer vorauszahlen und Kosten mit reservierten VM-
 Sie können reservierte VM-Instanzen im [Azure-Portal](https://portal.azure.com) erwerben. So erwerben Sie eine reservierte VM-Instanz:
 -   Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Zahlung zugeordnet sein.
 -   In Enterprise-Abonnements müssen Reservierungskäufe im [EA-Portal](https://ea.azure.com) aktiviert werden.
+-   Für das Cloud Solution Provider (CSP)-Programm können nur die Administrator- oder Vertriebs-Agents die Reservierungen erwerben.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Erwerben einer reservierten VM-Instanz
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -50,3 +51,4 @@ Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden A
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [Reservierte Instanzen im Partner Center Cloud Solution Provider (CSP)-Programm](https://docs.microsoft.com/partner-center/azure-reservations)

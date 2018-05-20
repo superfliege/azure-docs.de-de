@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 05/08/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f5bee7b85a423ba7a1b0b36b4b6910275551849c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c4d5533c443d27afa56471ce048efc5a375f6780
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/07/2018
 ## <a name="overview"></a>Übersicht
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTP (MPEG-TS), RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen von Live Encoding mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 * Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
   
   > [!NOTE]
@@ -79,7 +79,7 @@ Seit dem 25. Januar 2016 stellt Media Services ein Update bereit, das einen Kana
 Der Schwellenwert für einen Zeitraum ohne Verwendung beträgt nominell 12 Stunden, Änderung allerdings vorbehalten.
 
 ## <a name="live-encoding-workflow"></a>Live Encoding-Workflow
-Im folgenden Diagramm ist ein Livedatenstrom-Workflow dargestellt, bei dem ein Single-Bitrate-Datenstrom empfangen (in einem der folgenden Protokolle: RTMP, Smooth Streaming oder RTP (MPEG-TS)) und dann in einen Multi-Bitrate-Datenstrom codiert wird. 
+Im folgenden Diagramm ist ein Livedatenstrom-Workflow dargestellt, bei dem ein Single-Bitrate-Datenstrom empfangen (in einem der folgenden Protokolle: RTMP oder Smooth Streaming) und dann in einen Multi-Bitrate-Datenstrom codiert wird. 
 
 ![Liveworkflow][live-overview]
 
@@ -91,7 +91,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 > 
 > 
 
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single** -Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP, Smooth Streaming oder RTP (MPEG-TS). 
+1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single** -Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. 
    
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 2. Erstellen Sie einen Kanal, und starten Sie ihn. 
@@ -125,48 +125,8 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 ### <a id="Ingest_Protocols"></a>Erfassungsstreamingprotokoll
 Wenn der **Encodertyp** die Einstellung **Standard** aufweist, gibt es folgende gültige Optionen:
 
-* **RTP** (MPEG-TS): MPEG-2-Transportdatenstrom über RTP  
 * Single-Bitrate **RTMP**
 * Single-Bitrate **Fragmentiertes MP4** (Smooth Streaming)
-
-#### <a name="rtp-mpeg-ts---mpeg-2-transport-stream-over-rtp"></a>RTP (MPEG-TS) – MPEG-2-Transportdatenstrom über RTP.
-Typisches Anwendungsbeispiel: 
-
-Professionelle Sendeanstalten arbeiten in der Regel mit lokalen High-End-Liveencodern von Herstellern wie Elemental Technologies, Ericsson, Ateme, Imagine oder Envivio, um Datenströme zu senden. Diese werden häufig in Verbindung mit einer IT-Abteilung und privaten Netzwerken verwendet.
-
-Überlegungen:
-
-* Es wird dringend empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) zu verwenden. 
-* Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP eingeben. 
-* Der Videodatenstrom muss eine durchschnittliche Bitrate unter 15-Mbit/s aufweisen.
-* Die aggregierte durchschnittliche Bitrate der Audiodatenströme muss unter 1 Mbit/s liegen.
-* Folgende Codecs werden unterstützt:
-  
-  * MPEG-2/H.262-Video 
-    
-    * Main Profile (4:2:0)
-    * High Profile (4:2:0, 4:2:2)
-    * 422 Profile (4:2:0, 4:2:2)
-  * MPEG-4 AVC/H.264-Video  
-    
-    * Baseline, Main, High Profile (8-Bit 4:2:0)
-    * High 10 Profile (10-Bit 4:2:0)
-    * High 422 Profile (10-Bit 4:2:2)
-  * MPEG-2 AAC-LC-Audio 
-    
-    * Mono, Stereo, Surround (5.1, 7.1)
-    * ADTS Paketerstellung im MPEG-2-Format
-  * Dolby Digital-Audio (AC-3) 
-    
-    * Mono, Stereo, Surround (5.1, 7.1)
-  * MPEG-Audio (Layer II und III) 
-    
-    * Mono, Stereo
-* Zu den empfohlenen Sendeencodern gehören:
-  
-  * Imagine Communications Selenio ENC 1
-  * Imagine Communications Selenio ENC 2
-  * Elemental Live
 
 #### <a id="single_bitrate_RTMP"></a>Single-Bitrate-RTMP
 Überlegungen:
@@ -232,36 +192,21 @@ Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit 
 In diesem Abschnitt wird beschrieben, wie die Einstellungen für den Liveencoder innerhalb des Kanals angepasst werden können, wenn der **Codierungstyp** des Kanals die Einstellung **Standard** aufweist.
 
 > [!NOTE]
-> Bei der Eingabe mehrerer Sprachspuren und beim Ausführen von Live Encoding mit Azure wird nur RTP für die Eingabe mehrerer Sprachen unterstützt. Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP definieren. Das Erfassen mehrerer Audiospuren mit RTMP oder Smooth Streaming wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md)gibt es keine solche Einschränkung, weil alle an AMS gesendeten Daten ohne weitere Verarbeitung über einen Kanal weitergeleitet werden.
+> Ihr Beitragsfeed kann nur eine Audiospur enthalten – das Erfassen mehrerer Audiospuren wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md) können Sie einen Beitragsfeed im Smooth Streaming-Protokoll mit mehreren Audiospuren senden.
 > 
 > 
 
 ### <a name="ad-marker-source"></a>Quelle für AD-Marker
 Sie können die Quelle für AD-Markersignale angeben. Der Standardwert lautet **Api**, der Liveencoder im Kanal soll also eine asynchrone **AD-Marker-API** überwachen.
 
-Die andere gültige Option lautet **Scte35** (nur zulässig, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. Wenn die Einstellung „Scte35“ lautet, werden Encoder SCTE 35-Signale aus dem RTP (MPEG TS)-Eingabedatenstrom analysiert.
-
 ### <a name="cea-708-closed-captions"></a>CEA 708-Untertitel
 Dies ist ein optionales Kennzeichen für den Liveencoder, CEA 708-Untertiteldaten, die in das eingehende Video eingebettet sind, zu ignorieren. Wenn das Kennzeichen die Einstellung „False“ (Standard) aufweist, werden CEA 708-Daten erkannt und in die Ausgabe-Videodatenströme eingefügt.
-
-### <a name="video-stream"></a>Videodatenstrom
-Optional. Hier wird der Eingabe-Videodatenstrom beschrieben. Wird dieses Feld frei gelassen, wird der Standardwert verwendet. Diese Einstellung ist nur zulässig, wenn das Eingabestreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist.
-
-#### <a name="index"></a>Index
-Mit diesem nullbasierten Index wird angegeben, welcher Eingabe-Videodatenstrom vom Liveencoder im Kanal verarbeitet werden soll. Die Einstellung gilt nur, wenn das Erfassungsstreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist. 
-
-Der Standardwert lautet null. Es wird empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) zu verwenden. Wenn der Eingabedatenstrom mehrere Programme enthält, wird die Programmkartentabelle (PMT) in der Eingabe vom Liveencoder analysiert. Eingaben, welche die Datenstrom-Typnamen „MPEG-2-Video“ oder „H.264“ aufweisen, werden identifiziert und in der Reihenfolge angeordnet, die in der PMT angegeben ist. Der nullbasierte Index wird zum Abrufen des n-ten Eintrags in dieser Anordnung verwendet.
-
-### <a name="audio-stream"></a>Audiodatenstrom
-Optional. Hier wird der Eingabe-Audiodatenstrom beschrieben. Wird dieses Feld frei gelassen, werden die angegebenen Standardwerte verwendet. Diese Einstellung ist nur zulässig, wenn das Eingabestreamingprotokoll die Einstellung „RTP (MPEG-TS)“ aufweist.
 
 #### <a name="index"></a>Index
 Es wird empfohlen, als Eingabe einen Single-Program-Transportdatenstrom (SPTS) zu verwenden. Wenn der Eingabedatenstrom mehrere Programme enthält, wird die Programmkartentabelle (PMT) in der Eingabe vom Liveencoder analysiert. Eingaben, welche die Datenstrom-Typnamen „MPEG-2 AAC ADTS“, „AC-3 System-A“, „AC-3 System-B“, „MPEG-2 Private PES“, „MPEG-1 Audio“ oder „MPEG-2 Audio“ aufweisen, werden identifiziert und in der Reihenfolge angeordnet, die in der PMT angegeben ist. Der nullbasierte Index wird zum Abrufen des n-ten Eintrags in dieser Anordnung verwendet.
 
 #### <a name="language"></a>Sprache
 Dies ist die Sprachen-ID des Audiodatenstroms entsprechend ISO 639-2, z. B. „DEU“. Wenn keine ID vorhanden ist, gilt die Standardeinstellung „UND“ (undefiniert).
-
-Es können bis zu 8 Audiodatenstrom-Sätze angegeben werden, wenn die Eingabe an den Kanal als MPEG-2 TS über RTP erfolgt. Zwei Einträge mit dem gleichen Indexwert sind jedoch nicht möglich.
 
 ### <a id="preset"></a>Systemvoreinstellung
 Hier ist die Voreinstellung angegeben, die vom Liveencoder in diesem Kanal verwendet werden soll. Derzeit lautet der einzig zulässige Wert **Default720p** (Standard).
@@ -387,13 +332,11 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 * Es werden nur Kanäle in Rechnung gestellt, die den Status **Running** (Wird ausgeführt) aufweisen. Weitere Informationen finden Sie in [diesem Abschnitt](media-services-manage-live-encoder-enabled-channels.md#states) .
 * Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amslived@microsoft.com, falls Sie einen Kanal über längere Zeiträume ausführen müssen.
 * Vergewissern Sie sich, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Zustand **Wird ausgeführt** befindet.
-* Bei der Eingabe mehrerer Sprachspuren und beim Ausführen von Live Encoding mit Azure wird nur RTP für die Eingabe mehrerer Sprachen unterstützt. Sie können bis zu 8 Audiodatenströme mit MPEG-2 TS über RTP definieren. Das Erfassen mehrerer Audiospuren mit RTMP oder Smooth Streaming wird derzeit nicht unterstützt. Beim Ausführen der Livecodierung mit [lokalen Liveencodern](media-services-live-streaming-with-onprem-encoders.md)gibt es keine solche Einschränkung, weil alle an AMS gesendeten Daten ohne weitere Verarbeitung über einen Kanal weitergeleitet werden.
 * Die Codierungsvoreinstellung verwendet das Konzept der „max. Bildfrequenz“ von 30 BpS. Wenn die Eingabe 60 BpS/59.97i beträgt, werden die Eingabeframes per Deinterlacing auf 30/29.97 BpS gesenkt. Wenn die Eingabe 50 BpS/50i beträgt, werden die Eingabeframes per Deinterlacing auf 25 BpS gesenkt. Wenn die Eingabe 25 BpS beträgt, bleibt die Ausgabe bei 25 BpS.
 * Vergessen Sie nicht, IHRE KANÄLE ZU BEENDEN, wenn Sie fertig sind. Wenn Sie dies nicht tun, werden weiter Gebühren berechnet.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 * Die durchschnittliche Dauer bis zum Start des Kanals wurde auf ca. 2 Minuten verkürzt, aber in Einzelfällen kann dies immer noch mehr als 20 Minuten dauern.
-* Die RTP-Unterstützung zielt auf professionelle Sendeanstalten ab. Bitte lesen Sie die Hinweise zu RTP in [diesem](https://azure.microsoft.com/blog/2015/04/13/an-introduction-to-live-encoding-with-azure-media-services/) Blog.
 * Die Slate-Bilder sollten den [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)beschriebenen Einschränkungen entsprechen. Wenn Sie versuchen, einen Kanal mit einem Standard-Slatebild zu erstellen, das größer ist als 1920 x 1080, tritt bei der Anforderung ein Fehler auf.
 * Wir weisen noch einmal darauf hin: Vergessen Sie nicht, IHRE KANÄLE ZU BEENDEN, wenn Sie mit dem Streaming fertig sind. Wenn Sie dies nicht tun, werden weiter Gebühren berechnet.
 

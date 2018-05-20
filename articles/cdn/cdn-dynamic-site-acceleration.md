@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 2ffe547d1d1333a5469d313f9f9cc60f5118f814
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -156,7 +156,7 @@ Sie können das Zwischenspeichern für das Profil **Azure CDN Standard von Veriz
 
 So greifen Sie auf Cacheregeln zu
 
-1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
+1. Wählen Sie auf der Seite **CDN-Profil** unter „Einstellungen“ die Option **Cacheregeln**.  
     
     ![Schaltfläche für CDN-Cacheregeln](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -183,9 +183,6 @@ So greifen Sie auf die Regel-Engine zu
 Alternativ können Sie zwei CDN-Endpunkte verwenden: Ein mit der DSA optimierter Endpunkt zur Bereitstellung von dynamischen Ressourcen und ein anderer mit einem statischen Optimierungstyp, z.B. allgemeine Webbereitstellung, für die Bereitstellung von zwischenspeicherbaren Ressourcen. Ändern Sie Ihre Webseiten-URLs so, dass eine direkte Verknüpfung mit der Ressource für den CDN-Endpunkt hergestellt wird, den Sie verwenden möchten. 
 
 Beispiel: `mydynamic.azureedge.net/index.html` ist eine dynamische Seite, die vom Endpunkt mit Beschleunigung dynamischer Websites geladen wird.  Die HTML-Seite verweist auf mehrere statische Ressourcen, z.B. JavaScript-Bibliotheken oder Images, die vom statischen CDN-Endpunkt geladen werden, z.B. `mystatic.azureedge.net/banner.jpg` und `mystatic.azureedge.net/scripts.js`. 
-
-Ein Beispiel zur Verwendung von Domänencontrollern in einer ASP.NET-Webanwendung zum Bereitstellen der Inhalte über eine bestimmte CDN-URL finden Sie unter [Verarbeiten von Inhalten aus Controlleraktionen über das Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-cloud-service-with-cdn#controller).
-
 
 
 

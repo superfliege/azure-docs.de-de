@@ -1,38 +1,40 @@
 ---
-title: "Hinzufügen der Anmeldung zu einer .NET MVC-Web-API mit dem Azure AD v2.0-Endpunkt | Microsoft-Dokumentation"
-description: "Vorgehensweise beim Erstellen einer .NET-MVC-Web-API, die sowohl Token von persönlichen Microsoft-Konten als auch Geschäfts- oder Schulkonten akzeptiert."
+title: Hinzufügen der Anmeldung zu einer .NET MVC-Web-API mit dem Azure AD v2.0-Endpunkt | Microsoft-Dokumentation
+description: Vorgehensweise beim Erstellen einer .NET-MVC-Web-API, die sowohl Token von persönlichen Microsoft-Konten als auch Geschäfts- oder Schulkonten akzeptiert.
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: e77bc4e0-d0c9-4075-a3f6-769e2c810206
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 65f25e2496065ca1aaba443a9d6b3e29239e0218
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: aa73e918cbd49fee850e402859708ba0c4185a19
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="secure-an-mvc-web-api"></a>Schützen einer MVC-Web-API
 Mit dem v2.0-Endpunkt von Azure Active Directory können Sie eine Web-API mit [OAuth 2.0](active-directory-v2-protocols.md) -Zugriffstoken schützen, sodass sowohl Benutzer mit persönlichen Microsoft-Konten als auch Benutzer mit Geschäfts-, Schul- oder Unikonten sicher auf Ihre Web-API zugreifen können.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 >
 
-Für ASP.NET-Web-APIs erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltene OWIN-Middleware von Microsoft.  Hier verwenden wir OWIN zum Erstellen einer MVC-Web-API mit einer Aufgabenliste. Die Web-API ermöglicht Clients das Erstellen und Lesen von Aufgaben aus der Aufgabenliste eines Benutzers.  Die Web-API überprüft, ob eingehende Anforderungen ein gültiges Zugriffstoken enthalten, und lehnt alle Anforderungen ab, bei denen die Überprüfung für eine geschützte Route negativ ausfällt.  Dieses Beispiel wurde mit Visual Studio 2015 erstellt.
+Für ASP.NET-Web-APIs erreichen Sie das Gleiche durch die in .NET Framework 4.5 enthaltene OWIN-Middleware von Microsoft. Hier verwenden wir OWIN zum Erstellen einer MVC-Web-API mit einer Aufgabenliste. Die Web-API ermöglicht Clients das Erstellen und Lesen von Aufgaben aus der Aufgabenliste eines Benutzers. Die Web-API überprüft, ob eingehende Anforderungen ein gültiges Zugriffstoken enthalten, und lehnt alle Anforderungen ab, bei denen die Überprüfung für eine geschützte Route negativ ausfällt. Dieses Beispiel wurde mit Visual Studio 2015 erstellt.
 
-## <a name="download"></a>Herunterladen
-Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet)verwaltet.  Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
+## <a name="download"></a>Download
+Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet)verwaltet. Um folgen zu können, können Sie [das App-Gerüst als ZIP-Datei herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) oder das Gerüst klonen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
@@ -45,11 +47,11 @@ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
 ## <a name="register-an-app"></a>Registrieren einer App
-Erstellen Sie eine neue App unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), oder führen Sie die folgenden [ausführlichen Schritte](active-directory-v2-app-registration.md) aus.  Stellen Sie sicher, dass Sie:
+Erstellen Sie eine neue App unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), oder führen Sie die folgenden [ausführlichen Schritte](active-directory-v2-app-registration.md) aus. Stellen Sie sicher, dass Sie:
 
 * die Ihrer App zugewiesene **Anwendungs-ID** kopieren. Sie benötigen Sie in Kürze.
 
-Diese Visual Studio-Lösung enthält auch "TodoListClient", eine einfache WPF-App.  Anhand von TodoListClient wird veranschaulicht, wie ein Benutzer sich anmeldet und wie ein Client Anforderungen an Ihre Web-API senden kann.  In diesem Fall sind TodoListClient und TodoListService in einer App kombiniert.  Zum Konfigurieren des TodoListClient sollten Sie außerdem folgende Schritte ausführen:
+Diese Visual Studio-Lösung enthält auch "TodoListClient", eine einfache WPF-App. Anhand von TodoListClient wird veranschaulicht, wie ein Benutzer sich anmeldet und wie ein Client Anforderungen an Ihre Web-API senden kann. In diesem Fall sind TodoListClient und TodoListService in einer App kombiniert. Zum Konfigurieren des TodoListClient sollten Sie außerdem folgende Schritte ausführen:
 
 * Fügen Sie die **Mobile** -Plattform Ihrer App hinzu.
 
@@ -66,8 +68,8 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 ```
 
 ## <a name="configure-oauth-authentication"></a>Konfigurieren der OAuth-Authentifizierung
-* Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen**  --> **Neues Element**, und suchen Sie nach „OWIN“.  Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
-* Ändern Sie die Klassendeklaration in `public partial class Startup` – einen Teil dieser Klasse haben wir bereits für Sie in einer anderen Datei implementiert.  Rufen Sie in der Methode `Configuration(…)` „ConfigureAuth(...)“ auf, um die Authentifizierung für Ihre Webanwendung einzurichten.
+* Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu. Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen**  --> **Neues Element**, und suchen Sie nach „OWIN“. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
+* Ändern Sie die Klassendeklaration in `public partial class Startup` – einen Teil dieser Klasse haben wir bereits für Sie in einer anderen Datei implementiert. Rufen Sie in der Methode `Configuration(…)` „ConfigureAuth(...)“ auf, um die Authentifizierung für Ihre Webanwendung einzurichten.
 
 ```csharp
 public partial class Startup
@@ -95,7 +97,7 @@ public void ConfigureAuth(IAppBuilder app)
 
                 // In a real applicaiton, you might use issuer validation to
                 // verify that the user's organization (if applicable) has
-                // signed up for the app.  Here, we'll just turn it off.
+                // signed up for the app. Here, we'll just turn it off.
 
                 ValidateIssuer = false,
         };
@@ -105,7 +107,7 @@ public void ConfigureAuth(IAppBuilder app)
         // that will be recieved, which are JWTs for the v2.0 endpoint.
 
         // NOTE: The usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
-        // metadata endpoint which is not supported by the v2.0 endpoint.  Instead, this
+        // metadata endpoint which is not supported by the v2.0 endpoint. Instead, this
         // OpenIdConenctCachingSecurityTokenProvider can be used to fetch & use the OpenIdConnect
         // metadata document.
 
@@ -116,7 +118,7 @@ public void ConfigureAuth(IAppBuilder app)
 }
 ```
 
-* Nun können Sie Ihre Controller und Aktionen mit `[Authorize]` -Attributen durch eine OAuth 2.0-Bearer-Authentifizierung schützen.  Geben Sie für die Klasse `Controllers\TodoListController.cs` ein Autorisierungstag an.  Dadurch wird der Benutzer gezwungen, sich vor dem Zugriff auf diese Seite anzumelden.
+* Nun können Sie Ihre Controller und Aktionen mit `[Authorize]` -Attributen durch eine OAuth 2.0-Bearer-Authentifizierung schützen. Geben Sie für die Klasse `Controllers\TodoListController.cs` ein Autorisierungstag an. Dadurch wird der Benutzer gezwungen, sich vor dem Zugriff auf diese Seite anzumelden.
 
 ```csharp
 [Authorize]
@@ -124,13 +126,13 @@ public class TodoListController : ApiController
 {
 ```
 
-* Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können.  OWIN stellt über das Objekt `ClaimsPrincipal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit.  
+* Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können. OWIN stellt über das Objekt `ClaimsPrincipal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit. 
 
 ```csharp
 public IEnumerable<TodoItem> Get()
 {
     // You can use the ClaimsPrincipal to access information about the
-    // user making the call.  In this case, we use the 'sub' or
+    // user making the call. In this case, we use the 'sub' or
     // NameIdentifier claim to serve as a key for the tasks in the data store.
 
     Claim subject = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier);
@@ -150,14 +152,14 @@ Um den Dienst „TodoListService“ in Aktion sehen zu können, müssen Sie den 
 * Öffnen Sie im Projekt "TodoListClient" die Datei `App.config`, und geben Sie Ihre Konfigurationswerte im Abschnitt `<appSettings>` ein.
   * `ida:ClientId` ist die App-ID, die Sie aus dem Portal kopiert haben.
 
-Bereinigen, erstellen und führen Sie zum Schluss alle Projekte aus!  Sie verfügen nun über eine .NET-MVC-Web-App, die sowohl Token von persönlichen Microsoft-Konten als auch Geschäfts- oder Schulkonten akzeptiert.  Melden Sie sich bei „TodoListClient“ an, und rufen Sie Ihre Web-API ab, um Aufgaben zur Aufgabenliste des Benutzers hinzuzufügen.
+Bereinigen, erstellen und führen Sie zum Schluss alle Projekte aus!  Sie verfügen nun über eine .NET-MVC-Web-App, die sowohl Token von persönlichen Microsoft-Konten als auch Geschäfts- oder Schulkonten akzeptiert. Melden Sie sich bei „TodoListClient“ an, und rufen Sie Ihre Web-API ab, um Aufgaben zur Aufgabenliste des Benutzers hinzuzufügen.
 
 Als Referenz stellen wir das vollständige Beispiel (ohne Ihre Konfigurationswerte) [hier als ZIP-Datei bereit](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip). Sie können es alternativ aus GitHub klonen:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können sich nun weiteren Themen zuwenden.  Sie können beispielsweise Folgendes testen:
+Sie können sich nun weiteren Themen zuwenden. Sie können beispielsweise Folgendes testen:
 
 [Aufrufen einer Web-API über eine .NET-Web-App &gt;&gt;](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 

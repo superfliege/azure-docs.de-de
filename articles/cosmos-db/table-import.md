@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 7a8eaaaaa8bbfa8cf9397ce52dfa93d71b0df30c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB
 
@@ -29,6 +29,10 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Importieren von Daten mit dem Datenmigrationstool
 > * Importieren von Daten mit AzCopy
 > * Migrieren von der Tabellen-API (Vorschauversion) zur Tabellen-API 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Erhöhung des Durchsatzes: Die Dauer der Datenmigration richtet sich nach dem Durchsatzwert, den Sie für eine einzelne Sammlung oder eine Gruppe von Sammlungen einrichten. Achten Sie darauf, dass Sie den Durchsatz für größere Datenmigrationen erhöhen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Weitere Informationen zur Erhöhung des Durchsatzes im Azure-Portal finden Sie unter „Leistungsstufen und Tarife in Azure Cosmos DB“.
 
 ## <a name="data-migration-tool"></a>Datenmigrationstool
 

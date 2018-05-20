@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/18/2018
 ms.author: brenduns
-ms.openlocfilehash: b732770b2eace07690d112e81c6916b16b2cb5b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d23f5b91e08c169975ac5d0bb8d9f048828c2910
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-Gatewaykonfigurationseinstellungen für Azure Stack
 
@@ -45,16 +45,13 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 ### <a name="gateway-skus"></a>Gateway-SKUs
 Beim Erstellen eines Gateways des virtuellen Netzwerks müssen Sie die gewünschte Gateway-SKU angeben. Wählen Sie die SKUs aus, die Ihre Anforderungen im Bezug auf Workloadtypen, Durchsätze, Funktionen und SLAs erfüllen.
 
->[!NOTE]
-> Für klassische virtuelle Netzwerke sollten weiterhin die alten SKUs verwendet werden. Weitere Informationen zu den alten Gateway-SKUs finden Sie unter [Working with virtual network gateway SKUs (old)](/azure/vpn-gateway/vpn-gateway-about-skus-legacy) (Arbeiten mit SKUs für Gateways für virtuelle Netzwerke (alt)).
-
 Azure Stack bietet folgende VPN-Gateway-SKUs:
 
 |   | VPN-Gatewaydurchsatz |Max. IPsec-Tunnel für das VPN-Gateway |
 |-------|-------|-------|
 |**Basic-SKU**  | 100 MBit/s  | 10    |
 |**Standard-SKU**           | 100 MBit/s  | 10    |
-|**High-Performance-SKU** | 200 MBit/s    | 30    |
+|**High-Performance-SKU** | 200 MBit/s    | 5 |
 
 ### <a name="resizing-gateway-skus"></a>Anpassen der Größe von Gateway-SKUs
 SKU-Größenwechsel zwischen den unterstützten Legacy-SKUs werden von Azure Stack nicht unterstützt.
@@ -90,11 +87,11 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration erstellen, müssen Sie einen VPN-Typ angeben. Der ausgewählte VPN-Typ hängt von der Verbindungstopologie ab, die Sie erstellen möchten.  Ein VPN-Typ kann zudem von der verwendeten Hardware abhängen. S2S-Konfigurationen erfordern ein VPN-Gerät. Einige VPN-Geräte unterstützen nur einen bestimmten VPN-Typ.
 
 > [!IMPORTANT]  
-> Aktuell unterstützt Azure Stack nur den routenbasierten VPN-Typ. Wenn Ihr Gerät nur richtlinienbasierte VPNs unterstützt, werden Verbindungen mit diesen Geräten über Azure Stack nicht unterstützt.
+> Aktuell unterstützt Azure Stack nur den routenbasierten VPN-Typ. Wenn Ihr Gerät nur richtlinienbasierte VPNs unterstützt, werden Verbindungen mit diesen Geräten über Azure Stack nicht unterstützt.  Darüber hinaus unterstützt Azure Stack derzeit nicht die Verwendung von richtlinienbasierten Datenverkehrsselektoren für routenbasierte Gateways, da benutzerdefinierte IPSec/IKE-Richtlinienkonfigurationen noch nicht unterstützt werden.
 
 - **PolicyBased:** *(unterstützt von Azure, aber nicht von Azure Stack)* Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils mit Kombinationen aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNET konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert.
 
-- **RouteBased:** Bei RouteBased-VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungstabelle oder -Routingtabelle an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für RouteBased-VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert. Der Wert für einen RouteBased-VPN-Typ lautet „RouteBased“.
+- **RouteBased:** Bei RouteBased-VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungstabelle oder -Routingtabelle an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für RouteBased-VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert und kann nicht geändert werden. Der Wert für einen RouteBased-VPN-Typ lautet „RouteBased“.
 
 Im folgenden PowerShell-Beispiel wird „-VpnType“ als „RouteBased“ angegeben. Beim Erstellen eines Gateways müssen Sie sicherstellen, dass -VpnType für Ihre Konfiguration korrekt ist.
 
@@ -110,7 +107,7 @@ Die folgende Tabelle enthält die Anforderungen für VPN-Gateways.
 |--|--|--|--|--|
 | **Site-to-Site-Konnektivität (S2S-Konnektivität)** | Nicht unterstützt | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration |
 | **Authentifizierungsmethode**  | Nicht unterstützt | Vorinstallierter Schlüssel für S2S-Konnektivität  | Vorinstallierter Schlüssel für S2S-Konnektivität  | Vorinstallierter Schlüssel für S2S-Konnektivität  |   
-| **Maximale Anzahl von S2S-Verbindungen**  | Nicht unterstützt | 10 | 10| 30|
+| **Maximale Anzahl von S2S-Verbindungen**  | Nicht unterstützt | 10 | 10| 5|
 |**Aktive Routingunterstützung (BGP)** | Nicht unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |
 
 ### <a name="gateway-subnet"></a>Gatewaysubnetz
@@ -160,7 +157,7 @@ Im Gegensatz zu Azure, das mehrere Angebote als Initiator und Antwortdienst unte
 |IKE-Version |IKEv2 |
 |Verschlüsselung und Hashalgorithmen (Verschlüsselung)     | GCMAES256|
 |Verschlüsselung und Hashalgorithmen (Authentifizierung) | GCMAES256|
-|SA-Gültigkeitsdauer (Zeit)  | 27.700 Sekunden |
+|SA-Gültigkeitsdauer (Zeit)  | 27.000 Sekunden |
 |SA-Gültigkeitsdauer (Bytes) | 819.200       |
 |Perfect Forward Secrecy (PFS) |PFS2048 |
 |Dead Peer Detection | Unterstützt|  

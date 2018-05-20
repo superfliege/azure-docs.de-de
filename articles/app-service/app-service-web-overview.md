@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 79828193e283f0dcb80035cae0c11b050a1639ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="web-apps-overview"></a>Web-Apps – Übersicht
 
@@ -37,7 +37,7 @@ Hier sind einige wichtige Features von App Service-Web-Apps aufgeführt:
 * **DevOps-Optimierung**: Richten Sie mit Visual Studio Team Services, GitHub, BitBucket, Docker Hub oder Azure Container Registry die [fortlaufende Integration und Bereitstellung](app-service-continuous-deployment.md) ein. Stufen Sie Updates über [Test- und Stagingumgebungen](web-sites-staged-publishing.md)herauf. Verwalten Sie Ihre Apps in Web-Apps mithilfe von [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder der [plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI)](/cli/azure/install-azure-cli).
 * **Globale Skalierung mit Hochverfügbarkeit** – Skalieren Sie manuell oder automatisch [zentral](web-sites-scale.md) oder [horizontal](../monitoring-and-diagnostics/insights-how-to-scale.md) hoch. Hosten Sie Ihre Apps überall in der globalen Rechenzentrumsinfrastruktur von Microsoft. Die App Service-[SLA](https://azure.microsoft.com/support/legal/sla/app-service/) garantiert Hochverfügbarkeit.
 * **Verbindungen mit SaaS-Plattformen und lokalen Daten**: Wählen Sie aus über 50 [Connectors](../connectors/apis-list.md) für Unternehmenssysteme (z.B. SAP), SaaS-Dienste (z.B. Salesforce) sowie Internetdienste (z.B. Facebook). Greifen Sie über [Hybridverbindungen](../biztalk-services/integration-hybrid-connection-overview.md) und [Azure Virtual Networks](web-sites-integrate-with-vnet.md) auf lokale Daten zu.
-* **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/TrustCenter/). Authentifizieren Sie Benutzer mit [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) oder Anmeldungen bei sozialen Netzwerken ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) und [ Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)). Erstellen Sie [IP-Adresseinschränkungen](app-service-ip-restrictions.md) und [verwalten Sie Dienstidentitäten](app-service-managed-service-identity.md).
+* **Sicherheit und Compliance** – App Service ist [ISO-, SOC- und PCI-konform](https://www.microsoft.com/en-us/trustcenter). Authentifizieren Sie Benutzer mit [Azure Active Directory](app-service-mobile-how-to-configure-active-directory-authentication.md) oder Anmeldungen bei sozialen Netzwerken ([Google](app-service-mobile-how-to-configure-google-authentication.md), [Facebook](app-service-mobile-how-to-configure-facebook-authentication.md), [Twitter](app-service-mobile-how-to-configure-twitter-authentication.md) und [ Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)). Erstellen Sie [IP-Adresseinschränkungen](app-service-ip-restrictions.md) und [verwalten Sie Dienstidentitäten](app-service-managed-service-identity.md).
 * **Anwendungsvorlagen**: Wählen Sie im [Azure Marketplace](https://azure.microsoft.com/marketplace/) aus zahlreichen Anwendungsvorlagen wie WordPress, Joomla und Drupal.
 * **Visual Studio-Integration** – Dedizierte Tools in Visual Studio optimieren das Erstellen, Bereitstellen und Debuggen.
 * **API und mobile Features**: Web-Apps bieten sofort einsetzbare CORS-Unterstützung für RESTful-API-Szenarien und vereinfachen Szenarien mit mobilen Apps durch Aktivieren der Authentifizierung, Offlinedatensynchronisierung, Pushbenachrichtigungen und mehr.
@@ -50,10 +50,16 @@ Neben Web-Apps in App Service bietet Azure noch andere Dienste an, die zum Hoste
 Erstellen Sie Ihre erste Web-App.
 
 > [!div class="nextstepaction"]
-> [ASP.NET](app-service-web-get-started-dotnet.md)
+> [ASP.NET Core](app-service-web-get-started-dotnet.md)
+
+> [!div class="nextstepaction"]
+> [ASP.NET](app-service-web-get-started-dotnet-framework.md)
 
 > [!div class="nextstepaction"]
 > [PHP](app-service-web-get-started-php.md)
+
+> [!div class="nextstepaction"]
+> [Ruby (unter Linux)](containers/quickstart-ruby.md)
 
 > [!div class="nextstepaction"]
 > [Node.js](app-service-web-get-started-nodejs.md)

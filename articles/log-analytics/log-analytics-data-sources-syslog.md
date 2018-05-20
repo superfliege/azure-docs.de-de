@@ -1,8 +1,8 @@
 ---
 title: Erfassen und Analysieren von Syslog-Nachrichten in OMS Log Analytics | Microsoft-Dokumentation
-description: "Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
+description: Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux. Dieser Artikel beschreibt die Konfiguration der Sammlung von Syslog-Nachrichten in Log Analytics sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 061c32fe39530f8b67899b1b9e1104e7fe006380
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog-Datenquellen in Log Analytics
 Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwendungen senden Nachrichten, die auf dem lokalen Computer gespeichert oder an einen Syslog-Sammler übermittelt werden können.  Wenn der OMS-Agent für Linux installiert ist, konfiguriert er den lokalen Syslog-Daemon zum Weiterleiten von Nachrichten an den Agent.  Der Agent sendet die Nachricht dann an Log Analytics, wo ein entsprechender Datensatz im OMS-Repository erstellt wird.  
@@ -31,10 +31,10 @@ Syslog ist ein gängiges Protokoll zur Ereignisprotokollierung für Linux.  Anwe
 ![Syslog-Sammlung](media/log-analytics-data-sources-syslog/overview.png)
 
 ## <a name="configuring-syslog"></a>Konfigurieren von Syslog
-Der OMS-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen und Schweregraden, die in ihrer Konfiguration angegeben werden.  Sie können Syslog über das OMS-Portal oder durch die Verwaltung von Konfigurationsdateien für die Linux-Agents konfigurieren.
+Der OMS-Agent für Linux sammelt nur Ereignisse mit den Einrichtungen und Schweregraden, die in ihrer Konfiguration angegeben werden.  Sie können Syslog über das Azure-Portal oder durch die Verwaltung von Konfigurationsdateien für die Linux-Agents konfigurieren.
 
-### <a name="configure-syslog-in-the-oms-portal"></a>Konfigurieren von Syslog im OMS-Portal
-Konfigurieren Sie Syslog über das [Menü „Daten“ in den Einstellungen von Log Analytics](log-analytics-data-sources.md#configuring-data-sources).  Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
+### <a name="configure-syslog-in-the-azure-portal"></a>Konfigurieren von Syslog im Azure-Portal
+Konfigurieren Sie Syslog über das [Menü „Daten“ in den erweiterten Einstellungen von Log Analytics](log-analytics-data-sources.md#configuring-data-sources).  Diese Konfiguration wird in der Konfigurationsdatei für jeden Linux-Agent bereitgestellt.
 
 Sie können eine neue Einrichtung hinzufügen, indem Sie ihren Namen eingeben und auf **+**.  Für jede Einrichtung werden nur Ereignisse mit den ausgewählten Schweregraden gesammelt.  Markieren Sie die Schweregrade für die jeweilige Einrichtung, aus der Sie Daten sammeln möchten.  Sie können keine zusätzlichen Kriterien angeben, um Nachrichten zu filtern.
 
@@ -183,7 +183,7 @@ Nach Abschluss der Änderungen müssen Syslog und der OMS-Agent-Dienst neu gesta
 ## <a name="syslog-record-properties"></a>Eigenschaften der Syslog-Datensätze
 Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Computer |Computer, auf dem das Ereignis gesammelt wurde. |
 | Facility |Definiert den Teil des Systems, der die Meldung generiert hat. |
@@ -197,7 +197,7 @@ Syslog-Datensätze sind vom Typ **Syslog** und besitzen die in der folgenden Tab
 ## <a name="log-queries-with-syslog-records"></a>Protokollieren von Abfragen mit Syslog-Datensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Syslog-Protokolldatensätze abrufen.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | syslog |Alle Syslog-Datensätze. |
 | Syslog &#124; where SeverityLevel == "error" |Alle Syslog-Datensätze mit Fehlerschweregrad. |
@@ -205,6 +205,6 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die Sy
 | Syslog &#124; summarize AggregatedValue = count() by Facility |Anzahl der Syslog-Datensätze je Einrichtung. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md) , um Daten aus Syslog-Datensätzen in einzelnen Feldern zu analysieren.
 * [Konfigurieren Sie Linux-Agents](log-analytics-linux-agents.md) zum Sammeln anderer Datentypen.

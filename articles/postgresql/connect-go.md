@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit Azure Database for PostgreSQL mit der Sprache Go
-description: "Dieser Schnellstart enthält ein Beispiel für die Programmiersprache Go, das Sie nutzen können, um zu den Daten von Azure-Datenbank für PostgreSQL eine Verbindung herzustellen und Abfragen dafür durchzuführen."
+description: Dieser Schnellstart enthält ein Beispiel für die Programmiersprache Go, das Sie nutzen können, um zu den Daten von Azure-Datenbank für PostgreSQL eine Verbindung herzustellen und Abfragen dafür durchzuführen.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 305a9ad066ad504b7564945d8ccce1be19a4135a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d3bcfb3369510bdbcf325eab41fb7eacf3e2a228
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden der Sprache Go zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -213,6 +213,7 @@ func main() {
     sql_statement := "SELECT * from inventory;"
     rows, err := db.Query(sql_statement)
     checkError(err)
+    defer rows.Close()
 
     for rows.Next() {
         switch err := rows.Scan(&id, &name, &quantity); err {

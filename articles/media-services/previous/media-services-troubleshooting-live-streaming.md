@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 7e2fe84c51f93bdeb6cd99e23624d1796aff6c1f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Anleitung zur Behandlung von Problemen bei Livestreaming
-Dieses Thema bietet Empfehlungen zum Behandeln von Problemen bei Livestreaming.
+Dieser Artikel bietet Empfehlungen zum Behandeln von Problemen bei Livestreaming.
 
 ## <a name="issues-related-to-on-premises-encoders"></a>Probleme im Zusammenhang mit lokalen Encodern
 Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang mit lokalen Encodern, die zum Senden eines Single-Bitrate-Datenstroms an für Livecodierung aktivierte AMS-Kanäle konfiguriert sind.
@@ -44,23 +44,10 @@ Dieser Abschnitt enthält Empfehlungen zum Beheben von Problemen im Zusammenhang
     **Problembehandlungsschritte**: Stellen Sie sicher, dass der Encoder keine Pushübertragungen an AMS mehr ausführt, beenden Sie den Kanal, und setzen Sie ihn zurück. Sobald er erneut ausgeführt wird, versuchen Sie mit den neuen Einstellungen, den Encoder zu verbinden. Wenn das Problem damit immer noch nicht behoben ist, erstellen Sie einen vollkommen neuen Kanal. Manchmal werden Kanäle nach mehreren fehlgeschlagenen Versuchen beschädigt.  
 * **Mögliches Problem**: Die GOP-Größe oder die Keyframe-Einstellungen sind nicht optimal. 
   
-    **Problembehandlungsschritte**: Die empfohlene GOP-Größe bzw. das empfohlene Keyframe-Intervall beträgt 2 Sekunden. Manche Encoder berechnen diese Einstellung als Anzahl von Bildern und andere als Anzahl von Sekunden. Beispiel: Bei der Ausgabe von 30 BpS beträgt die GOP-Größe 60 Bilder; dies entspricht 2 Sekunden.  
+    **Problembehandlungsschritte**: Die empfohlene GOP-Größe bzw. das empfohlene Keyframe-Intervall beträgt zwei Sekunden. Manche Encoder berechnen diese Einstellung als Anzahl von Bildern und andere als Anzahl von Sekunden. Beispiel: Bei der Ausgabe von 30 BpS beträgt die GOP-Größe 60 Bilder; dies entspricht 2 Sekunden.  
 * **Mögliches Problem**: Der Datenstrom wird durch geschlossene Ports blockiert. 
   
-    **Problembehandlungsschritte**: Überprüfen Sie beim Streamen per RTMP in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden Ports 1935 und 1936 geöffnet sind. Wenn Sie RTP-Streaming verwenden, stellen Sie sicher, dass der ausgehende Port 2010 geöffnet ist. 
-
-### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Problem: Beim Konfigurieren des Encoders für Streaming per RTP besteht keine Möglichkeit zur Eingabe eines Hostnamens.
-* **Mögliches Problem**: Viele RTP-Encoder lassen die Angabe von Hostnamen nicht zu, und es muss eine IP-Adresse bezogen werden.  
-  
-    **Problembehandlungsschritte**: Um die IP-Adresse zu suchen, öffnen Sie ein Eingabeaufforderungsfenster auf einem beliebigen Computer. Öffnen Sie zu diesem Zweck das Dialogfeld "Ausführen" (Windows-Taste+R), und geben Sie zum Öffnen der Eingabeaufforderung "cmd" ein.  
-  
-    Sobald die Eingabeaufforderung geöffnet ist, geben Sie "Ping [AMS-Hostname]" ein. 
-  
-    Der Hostname kann durch Weglassen der Portnummer aus der Azure-Erfassungs-URL abgeleitet werden, wie im folgenden Beispiel verdeutlicht: 
-  
-    rtp://test2-amstest009.rtp.channel.mediaservices.windows.net:2010/ 
-  
-    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
+    **Problembehandlungsschritte**: Überprüfen Sie beim Streamen per RTMP in den Firewall- und/oder Proxyeinstellungen, ob die ausgehenden Ports 1935 und 1936 geöffnet sind. 
 
 > [!NOTE]
 > Wenn Sie nach dem Ausführen der Problembehandlungsschritte immer noch nicht streamen können, senden Sie über das klassische Azure-Portal ein Supportticket.

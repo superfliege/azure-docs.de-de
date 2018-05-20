@@ -1,24 +1,24 @@
 ---
-title: "Bereitstellen Ihres Geräts der StorSimple 8000-Serie im Azure-Portal | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der Schritte und bewährten Methoden für die Bereitstellung des Geräts der StorSimple-Serie 8000 mit Update 3 und höher und des StorSimple-Geräte-Manager-Diensts."
+title: Bereitstellen Ihres Geräts der StorSimple 8000-Serie im Azure-Portal | Microsoft-Dokumentation
+description: Enthält eine Beschreibung der Schritte und bewährten Methoden für die Bereitstellung des Geräts der StorSimple-Serie 8000 mit Update 3 und höher und des StorSimple-Geräte-Manager-Diensts.
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
-editor: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: dc021d2277c419dd5a892aacd7bff0707e5564fa
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 85a493e05fb87292f303bccdcef65d119223bc76
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Bereitstellen lokaler StorSimple-Geräte (Update 3 und höher)
 
@@ -39,7 +39,7 @@ Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzusch
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSimple-Geräts und zum Verbinden des Geräts mit dem StorSimple-Geräte-Manager-Dienst aus. Zusätzlich zu diesen erforderlichen Schritten müssen Sie während der Bereitstellung möglicherweise optionale Schritte ausführen. Die schrittweise Bereitstellungsanleitung gibt auch an, wann Sie die folgenden optionalen Schritte jeweils ausführen sollten.
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 | --- | --- |
 | **VORAUSSETZUNGEN** |Diese Schritte müssen zur Vorbereitung der Bereitstellung ausgeführt werden. |
 | [Konfigurationsprüfliste für die Bereitstellung](#deployment-configuration-checklist) |Verwenden Sie diese Prüfliste, um vor und während der Bereitstellung Informationen zu erfassen und aufzuzeichnen. |
@@ -149,7 +149,7 @@ Nach dem Erstellen eines Volumecontainers können Sie ein Speichervolume auf dem
 Die folgenden Schritte werden auf dem Windows Server-Host ausgeführt.
 
 > [!IMPORTANT]
-> * Um die hohe Verfügbarkeit Ihrer StorSimple-Lösung sicherzustellen, empfiehlt es sich, vor der Konfiguration von iSCSI auf Ihren Hostservern optional MPIO auf diesen Hosts zu konfigurieren. Die MPIO-Konfiguration auf Hostservern sorgt dafür, dass die Server Fehler bei Links, dem Netzwerk oder einzelnen Schnittstellen tolerieren können.
+> * Um die Hochverfügbarkeit Ihrer StorSimple-Lösung sicherzustellen, empfiehlt es sich, vor der Konfiguration von iSCSI auf Ihren Hostservern optional MPIO auf diesen Hosts zu konfigurieren. Die MPIO-Konfiguration auf Hostservern sorgt dafür, dass die Server Fehler bei Links, dem Netzwerk oder einzelnen Schnittstellen tolerieren können.
 > * Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Windows Server-Host finden Sie unter [Konfigurieren von MPIO für Ihr StorSimple-Gerät](storsimple-8000-configure-mpio-windows-server.md). Diese enthalten auch die Schritte zum Bereitstellen, Initialisieren und Formatieren von StorSimple-Volumes.
 > * Installations- und Konfigurationsanweisungen für MPIO und iSCSI auf einem Linux-Host finden Sie unter [Konfigurieren von MPIO für Ihren StorSimple-Linux-Host](storsimple-configure-mpio-on-linux.md)
 
@@ -195,6 +195,19 @@ Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines 
 Führen Sie die folgenden Schritte im Azure-Portal aus, um bei Bedarf eine manuelle Sicherung eines einzelnen Volumes auf dem StorSimple-Gerät zu erstellen.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-8000-create-manual-backup.md)]
+
+## <a name="view-the-pinout-diagram-for-serial-cable-for-storsimple"></a>Anzeigen des Pinbelegungsdiagramms für serielle Kabel für StorSimple
+Das folgende Pinbelegungsdiagramm kann für das serielle StorSimple-Konsolenkabel verwendet werden.
+
+Hier ist die DB9-Buchse P1 und der 3,5-mm-Stecker P2.
+
+![Pinbelegungsdiagramm 1 für serielle StorSimple-Konsolenkabel](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram1.png)
+
+Die Spitze der Stereobuchse ist PIN 3 RX, die Mitte PIN 2 TX und die Basis PIN 1 GND, wie in der folgenden Abbildung dargestellt.
+
+![Pinbelegungsdiagramm 2 für serielle StorSimple-Konsolenkabel](./media/storsimple-8000-deployment-walkthrough-u2/pinout-diagram2.png)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Konfigurieren Sie eine StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).

@@ -5,14 +5,14 @@ services: service-bus-messaging
 author: sethmanheim
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 02/12/2018
+ms.date: 05/10/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 74732008b336dc1b95ec96e8550d218105973ca4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3be379c2513fa20c1a84b547333a4ef2139bb45d
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus Messaging aufgeführt. Informationen zu Preisen und anderen Kontingenten für Service Bus finden Sie in der Übersicht der [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) .
 
@@ -20,7 +20,7 @@ In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus M
 | --- | --- | --- | --- | --- |
 | Maximale Anzahl von Basic-/Standard-Namespaces pro Azure-Abonnement |Namespace |Weitere Anforderungen für zusätzliche Basic-/Standard-Namespaces werden vom Portal abgelehnt. |100|
 | Maximale Anzahl von Premium-Namespaces pro Azure-Abonnement |Namespace |Weitere Anforderungen für zusätzliche Premium-Namespaces werden vom Portal abgelehnt. |10 |
-| Warteschlangen-/Themengröße |Entität |Bei der Erstellung der Warteschlange/des Themas definiert. <br/><br/> Nachfolgende eingehende Nachrichten werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |1, 2, 3, 4 oder 5 GB.<br /><br />Wenn die [Partitionierung](../articles/service-bus-messaging/service-bus-partitioning.md) aktiviert ist, beträgt die maximale Warteschlangen-/Themengröße 80 GB. |
+| Warteschlangen-/Themengröße |Entität |Bei der Erstellung der Warteschlange/des Themas definiert. <br/><br/> Nachfolgende eingehende Nachrichten werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |1, 2, 3, 4 oder 5 GB.<br /><br />In der Premium-SKU, aber wenn in der Standard-SKU [Partitionierung](../articles/service-bus-messaging/service-bus-partitioning.md) aktiviert ist, beträgt die maximale Größe von Warteschlangen bzw. Themen 80 GB. |
 | Maximale Anzahl gleichzeitiger Verbindungen in einem Namespace |Namespace |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. REST-Vorgänge werden nicht zu den gleichzeitigen TCP-Verbindungen hinzugezählt. |NetMessaging: 1.000<br /><br />AMQP: 5.000 |
 | Anzahl der gleichzeitigen Empfangsanforderungen für eine Warteschlangen-/Themen-/Abonnement-Entität |Entität |Nachfolgende Empfangsanforderungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. Dieses Kontingent gilt für alle gleichzeitigen Empfangsvorgänge über alle Abonnements eines Themas hinweg. |5.000 |
 | Anzahl von Themen/Warteschlangen pro Dienstnamespace |Namespace |Nachfolgende Anforderungen zum Erstellen eines neuen Themas bzw. einer neuen Warteschlange für den Dienstnamespace werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das [Azure-Portal][Azure portal] eine Fehlermeldung generiert. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine Ausnahme empfangen. |10.000<br /><br />Die Gesamtzahl von Themen plus Warteschlangen in einem Dienstnamespace muss kleiner oder gleich 10.000 sein.<br/>Dies gilt nicht für Premium, da alle Entitäten partitioniert sind. |

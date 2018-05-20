@@ -5,14 +5,14 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/30/2018
+ms.date: 5/9/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 4fe1f2ad4bad9d670094bbb4eed188baf28108ea
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 4db9fe907ab6625fcad74ceae59f17115458a3ea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="write-accelerator"></a>Schreibbeschleunigung
 Bei der Schreibbeschleunigung handelt es sich um eine Datenträgerfunktion, die nur für virtuelle Computer (Virtual Machines, VMs) der M-Serie in Storage Premium mit Azure Managed Disks verfügbar ist. Wie der Name schon besagt, ist der Zweck der Funktion die Verbesserung der E/A-Wartezeit bei Schreibvorgängen für Azure Storage Premium. Die Schreibbeschleunigung ist hervorragend geeignet, wenn Protokolldateiupdates erforderlich sind, die für moderne Datenbanken auf äußerst leistungsfähige Weise auf dem Datenträger beibehalten werden sollen.
@@ -164,6 +164,21 @@ Sie können die Schreibbeschleunigung über das Portal aktivieren, in dem Sie di
 
 ![Die Schreibbeschleunigung im Azure-Portal](./media/virtual-machines-common-how-to-enable-write-accelerator/wa_scrnsht.png)
 
+### <a name="enabling-through-azure-cli"></a>Aktivierung über Azure CLI
+Sie können die Schreibbeschleunigung mithilfe der [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) aktivieren. 
+
+Zum Aktivieren der Schreibbeschleunigung auf einem vorhandenen Datenträger verwenden Sie den folgenden Befehl, wobei Sie „diskName“, „VMName“ und „ResourceGroup“ durch Ihre eigenen Werte ersetzen: 
+```
+az vm update -g group1 -n vm1 –write-accelerator 1=true
+```
+Zum Anfügen eines Datenträgers mit aktivierter Schreibbeschleunigung verwenden Sie den folgenden Befehl mit Ihren Werten:
+```
+az vm disk attach -g group1 –vm-name vm1 –disk d1 --enable-write-accelerator
+```
+Zum Deaktivieren der Schreibbeschleunigung legen Sie die Eigenschaft auf „false“ fest: 
+```
+az vm update -g group1 -n vm1 –write-accelerator 0=false 1=false
+```
 
 ### <a name="enabling-through-rest-apis"></a>Aktivierung über REST-APIs
 Zur Bereitstellung über die Azure-REST-API müssen Sie Azure-ARMClient installieren.

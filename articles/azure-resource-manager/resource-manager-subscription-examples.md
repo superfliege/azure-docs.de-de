@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6bd4e9f6bbc5bba73b2c169b7f3c5931f30029e6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2c16c0414ddf023e7055a8b57c514fc069f3112a
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Beispiele für das Implementieren eines Azure-Unternehmensgerüsts
-Dieses Thema enthält Beispiele dafür, wie ein Unternehmen die Empfehlungen für ein [Azure-Unternehmensgerüst](resource-manager-subscription-governance.md) implementieren kann. Ein fiktives Unternehmen mit dem Namen Contoso wird verwendet, um die bewährten Methoden für allgemeine Szenarien zu veranschaulichen.
+Dieser Artikel enthält Beispiele dafür, wie ein Unternehmen die Empfehlungen für ein [Azure-Unternehmensgerüst](resource-manager-subscription-governance.md) implementieren kann. Ein fiktives Unternehmen mit dem Namen Contoso wird verwendet, um die bewährten Methoden für allgemeine Szenarien zu veranschaulichen.
 
 ## <a name="background"></a>Hintergrund
-Contoso ist ein globales Unternehmen, das Supply Chain-Lösungen für Kunden bietet, die von einem Software-as-a-Service-Modell bis hin zu einem lokal bereitgestellten gepackten Modell alles abdecken.  Sie entwickeln Software auf der ganzen Welt, und betreiben große Entwicklungseinrichtungen in Indien, den USA und Kanada.
+Contoso ist ein globales Unternehmen, das Supply Chain-Lösungen für Kunden bereitstellt. Sie bieten alles, vom Software-as-a-Service-Modell bis hin zu einem lokal bereitgestellten Paketmodell.  Sie entwickeln Software auf der ganzen Welt, und betreiben große Entwicklungseinrichtungen in Indien, den USA und Kanada.
 
 Der ISV-Bereich des Unternehmens ist in mehrere unabhängige Unternehmenseinheiten unterteilt, die Produkte in einem erheblichen Umfang verwalten. Jede Unternehmenseinheit verfügt über eigene Entwickler, Produktmanager und Architekten.
 
 Die Unternehmenseinheit Enterprise Technologie Services (ETS) bietet zentrale IT-Funktionen und verwaltet mehrere Rechenzentren, in denen Unternehmenseinheiten ihre Anwendungen hosten. Neben der Verwaltung der Rechenzentren bietet und verwaltet die ETS-Organisation zentralisierte Dienste für Zusammenarbeit (z.B. E-Mail und Websites) sowie für Netzwerk/Telefonie. Sie verwalten zudem kundenorientierte Workloads für kleinere Unternehmenseinheiten, die kein Betriebspersonal haben.
 
-In diesem Thema werden die folgenden Personas verwendet:
+In diesem Artikel werden die folgenden Personas verwendet:
 
 * Dave ist der Azure-Administrator von ETS.
 * Alice ist bei Contoso die Leiterin der Entwicklung in der Supply Chain-Unternehmenseinheit.
 
-Contoso muss eine branchenspezifische App und eine kundenorientierte App erstellen. Das Unternehmen hat entschieden, die Apps in Azure auszuführen. Dave liest das Thema zur [präskriptiven Abonnementgovernance](resource-manager-subscription-governance.md) und kann jetzt die Empfehlungen implementieren.
+Contoso muss eine branchenspezifische App und eine kundenorientierte App erstellen. Das Unternehmen hat entschieden, die Apps in Azure auszuführen. Dave liest den Artikel zur [präskriptiven Abonnementgovernance](resource-manager-subscription-governance.md) und kann jetzt die Empfehlungen implementieren.
 
 ## <a name="scenario-1-line-of-business-application"></a>Szenario 1: Branchenanwendung
 Contoso baut ein Quellcodeverwaltungssystem (BitBucket) auf, das von Entwicklern auf der ganzen Welt verwendet werden soll.  Die Anwendung nutzt Infrastructure-as-a-Service zum Hosten und besteht aus Webservern und einem Datenbankserver. Entwickler greifen auf Server in ihren Entwicklungsumgebungen zu, aber sie benötigen keinen Zugriff auf die Server in Azure. Contoso ETS möchte dem Anwendungsbesitzer und dem Team das Verwalten der Anwendung ermöglichen. Die Anwendung ist nur über das Unternehmensnetzwerk von Contoso verfügbar. Dave muss das Abonnement für diese Anwendung einrichten. Das Abonnement soll in der Zukunft auch andere Software für Entwickler hosten.  
 
 ### <a name="naming-standards--resource-groups"></a>Benennungsstandards und Ressourcengruppen
-Dave erstellt ein Abonnement, um Entwicklertools zu unterstützen, die in allen Unternehmenseinheiten genutzt werden. Er muss aussagekräftige Namen für die Abonnement und die Ressourcengruppen (für die Anwendung und die Netzwerke) erstellen. Er erstellt das Abonnement und die Ressourcengruppen wie folgt:
+Dave erstellt ein Abonnement, um Entwicklertools zu unterstützen, die in allen Unternehmenseinheiten genutzt werden. Dave muss aussagekräftige Namen für das Abonnement und die Ressourcengruppen (für die Anwendung und die Netzwerke) erstellen. Er erstellt das Abonnement und die Ressourcengruppen wie folgt:
 
 | Item | NAME | BESCHREIBUNG |
 | --- | --- | --- |
@@ -57,7 +57,7 @@ Dave weist die folgenden Rollen für das Abonnement zu:
 | Rolle | Zugewiesen zu | BESCHREIBUNG |
 | --- | --- | --- |
 | [Besitzer](../role-based-access-control/built-in-roles.md#owner) |Verwaltete-ID aus AD von Contoso |Diese ID wird mit Just-In-Time-Zugriff (JIT) über das Identitätsverwaltungstool von Contoso gesteuert und stellt sicher, dass der Zugriff des Abonnementbesitzers vollständig überwacht wird. |
-| [Sicherheits-Manager](../role-based-access-control/built-in-roles.md#security-manager) |Abteilung für Sicherheits- und Risikomanagement |Diese Rolle ermöglicht es Benutzern, das Azure Security Center und den Status der Ressourcen anzuzeigen. |
+| [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](../role-based-access-control/built-in-roles.md#security-reader) |Abteilung für Sicherheits- und Risikomanagement |Diese Rolle ermöglicht es Benutzern, das Azure Security Center und den Status der Ressourcen anzuzeigen. |
 | [Mitwirkender von virtuellem Netzwerk](../role-based-access-control/built-in-roles.md#network-contributor) |Netzwerkteam |Diese Rolle ermöglicht es dem Netzwerkteam von Contoso, das Site-to-Site-VPN und die virtuellen Netzwerke zu verwalten. |
 | *Benutzerdefinierte Rolle* |Anwendungsbesitzer |Dave erstellt eine Rolle, die die Berechtigung zum Ändern von Ressourcen innerhalb der Ressourcengruppe gewährt. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md). |
 
@@ -96,8 +96,8 @@ Er erstellt die folgenden Ressourcen:
 
 | Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
-| Virtuelles Netzwerk |internal-vnet |Wird mit der Anwendung BitBucket verwendet und ist über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden.  Ein Subnetz (`bitbucket`) stellt einen bestimmten IP-Adressbereich für die Anwendung bereit. |
-| Virtuelles Netzwerk |external-vnet |Dies ist für zukünftige Anwendungen verfügbar, die öffentliche Endpunkte erfordern. |
+| Virtual Network |internal-vnet |Wird mit der Anwendung BitBucket verwendet und ist über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden.  Ein Subnetz (`bitbucket`) stellt einen bestimmten IP-Adressbereich für die Anwendung bereit. |
+| Virtual Network |external-vnet |Dies ist für zukünftige Anwendungen verfügbar, die öffentliche Endpunkte erfordern. |
 | Netzwerksicherheitsgruppen (NSG) |bitbucket-nsg |Stellt sicher, dass die Angriffsfläche dieser Workload minimiert wird, indem Verbindungen für das Subnetz mit der Anwendung (`bitbucket`) nur über Port 443 zugelassen werden. |
 
 ### <a name="resource-locks"></a>Ressourcensperren
@@ -115,7 +115,7 @@ Dave möchte für diese Anwendung nichts automatisieren. Obwohl er ein Azure Aut
 ### <a name="azure-security-center"></a>Azure Security Center
 Die IT-Dienstverwaltung von Contoso muss Bedrohungen schnell identifizieren und behandeln. Sie möchten wissen, welche Probleme vorliegen können.  
 
-Um diese Anforderungen zu erfüllen, aktiviert Dave das [Azure Security Center](../security-center/security-center-intro.md) und bietet Zugriff auf die Rolle „Sicherheits-Manager“.
+Um diese Anforderungen zu erfüllen, aktiviert Dave das [Azure Security Center](../security-center/security-center-intro.md) und bietet Zugriff auf die Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“.
 
 ## <a name="scenario-2-customer-facing-app"></a>Szenario 2: Kundenorientierte App
 Die Unternehmensführung in der Supply Chain-Unternehmenseinheit hat verschiedene Möglichkeiten identifiziert, um mithilfe einer Kundenkarte die Kundenbindung für Contoso zu verbessern. Das Team von Alice muss diese Anwendung erstellen und beschließt, dass mit Azure die Anforderungen ihres Unternehmens besser erfüllt werden können. Alice arbeitet mit Dave aus der ETS-Abteilung zusammen, um zwei Abonnements zum Entwickeln und Betreiben dieser Anwendung zu konfigurieren.
@@ -166,13 +166,13 @@ Für das **Entwicklungsabonnement** erstellen sie Folgendes:
 
 | Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
-| Virtuelles Netzwerk |internal-vnet |Ist für die Entwicklungsumgebung der Contoso-Kundenkarte vorgesehen und über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden. |
+| Virtual Network |internal-vnet |Ist für die Entwicklungsumgebung der Contoso-Kundenkarte vorgesehen und über ExpressRoute mit dem Contoso-Unternehmensnetzwerk verbunden. |
 
 Für das **Produktionsabonnement** erstellen sie Folgendes:
 
 | Ressourcentyp | NAME | BESCHREIBUNG |
 | --- | --- | --- |
-| Virtuelles Netzwerk |external-vnet |Hostet die Anwendung für die Kundenkarte und ist nicht direkt mit der ExpressRoute-Instanz von Contoso verbunden. Code wird über das Quellcodesystem direkt an die PaaS-Dienste übertragen |
+| Virtual Network |external-vnet |Hostet die Anwendung für die Kundenkarte und ist nicht direkt mit der ExpressRoute-Instanz von Contoso verbunden. Code wird über das Quellcodesystem direkt an die PaaS-Dienste übertragen |
 | Netzwerksicherheitsgruppen (NSG) |loyaltycard-nsg |Stellt sicher, dass die Angriffsfläche dieser Workload minimiert wird, indem eingehende Kommunikation nur über TCP 443 zugelassen wird.  Contoso untersucht auch die Nutzung einer Web Application Firewall für zusätzlichen Schutz |
 
 ### <a name="resource-locks"></a>Ressourcensperren

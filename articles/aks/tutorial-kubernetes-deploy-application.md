@@ -3,17 +3,17 @@ title: Tutorial zu Kubernetes in Azure – Bereitstellen von Anwendungen
 description: AKS-Tutorial – Bereitstellen eine Anwendung
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -72,10 +72,10 @@ Speichern und schließen Sie die Datei.
 
 ## <a name="deploy-application"></a>Bereitstellen der Anwendung
 
-Führen Sie die Anwendung mithilfe des Befehls [kubectl create][kubectl-create] aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte.
+Führen Sie die Anwendung mithilfe des Befehls [kubectl apply][kubectl-apply] aus. Dieser Befehl analysiert die Manifestdatei und erstellt die definierten Kubernetes-Objekte.
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 Ausgabe:
@@ -132,6 +132,7 @@ Wechseln Sie zum nächsten Tutorial, wo Sie erfahren, wie Sie eine Kubernetes-An
 > [Scale Kubernetes application and infrastructure][aks-tutorial-scale] (Skalieren einer Kubernetes-Anwendung und -Infrastruktur)
 
 <!-- LINKS - external -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-documentation]: https://kubernetes.io/docs/home/

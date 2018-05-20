@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 67da2eae5ea04962cd5adeff8edd070c1a3cf95a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7c9d49a4135860bce317cd5808d3430af6b49fbd
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Problembehandlung bei Routen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Obwohl in diesem Beispiel nur Systemrouten verwendet werden, können mit den gle
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Anzeigen der effektiven Routen für einen virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer angewendeten Aggregatrouten anzuzeigen:
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Klicken Sie auf **Alle Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
 3. Wählen Sie in der angezeigten Liste einen virtuellen Computer für die Problembehandlung aus. Für den entsprechenden virtuellen Computer wird dann ein Blatt mit Optionen angezeigt.
 4. Klicken Sie auf **Diagnose und Problembehandlung**, und wählen Sie dann ein gängiges Problem aus. In diesem Beispiel wird **Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen** ausgewählt.
@@ -78,10 +78,10 @@ Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer ang
 
     Beachten Sie die folgenden Angaben in der Ausgabe:
 
-   * **Quelle:**gibt den Typ der Route an. Systemrouten werden als *Default* angezeigt, benutzerdefinierte Routen als *User* und Gatewayrouten (statische oder BGP-Routen) als *VPNGateway*.
-   * **Status:**gibt den Status der effektiven Route an. Mögliche Werte sind *Aktiv* oder *Ungültig*.
-   * **AddressPrefixes:**gibt das Adresspräfix der effektiven Route in CIDR-Notation an.
-   * **nextHopType:**gibt den nächsten Hop für die angegebene Route an. Mögliche Werte sind *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* oder *Null*. Der Wert *Null* für **nextHopType** in einer benutzerdefinierten Route gibt möglicherweise eine ungültige Route an. Dies ist beispielsweise der Fall, wenn für **nextHopType** der Wert *VirtualAppliance* angegeben ist und der virtuelle Computer des virtuellen Netzwerkgeräts nicht bereitgestellt oder ausgeführt wird. Wenn für **nextHopType** der Wert *VPNGateway* angegeben ist und im angegebenen VNET kein Gateway bereitgestellt oder ausgeführt wird, wird die Route unter Umständen ungültig.
+   * **Quelle:** gibt den Typ der Route an. Systemrouten werden als *Default* angezeigt, benutzerdefinierte Routen als *User* und Gatewayrouten (statische oder BGP-Routen) als *VPNGateway*.
+   * **Status:** gibt den Status der effektiven Route an. Mögliche Werte sind *Aktiv* oder *Ungültig*.
+   * **AddressPrefixes:** gibt das Adresspräfix der effektiven Route in CIDR-Notation an.
+   * **nextHopType:** gibt den nächsten Hop für die angegebene Route an. Mögliche Werte sind *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* oder *Null*. Der Wert *Null* für **nextHopType** in einer benutzerdefinierten Route gibt möglicherweise eine ungültige Route an. Dies ist beispielsweise der Fall, wenn für **nextHopType** der Wert *VirtualAppliance* angegeben ist und der virtuelle Computer des virtuellen Netzwerkgeräts nicht bereitgestellt oder ausgeführt wird. Wenn für **nextHopType** der Wert *VPNGateway* angegeben ist und im angegebenen VNET kein Gateway bereitgestellt oder ausgeführt wird, wird die Route unter Umständen ungültig.
 7. In der Abbildung im vorherigen Schritt ist keine Route von *WestUS-VNet1* (Präfix 10.9.0.0/16) zum VNET*WestUS-VNET3* (Präfix 10.10.0.0/16) aufgeführt. In der folgenden Abbildung weist der Peeringlink den Status *Verbindung getrennt* auf:
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)

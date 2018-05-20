@@ -7,17 +7,17 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Weiterleiten von Webdatenverkehr – Portal
+    - name: 'Verwalten von Webdatenverkehr: Portal'
       href: quick-create-portal.md
-    - name: Weiterleiten von Webdatenverkehr – PowerShell
+    - name: 'Verwalten von Webdatenverkehr: PowerShell'
       href: quick-create-powershell.md
-    - name: Weiterleiten von Webdatenverkehr – Azure CLI
+    - name: 'Verwalten von Webdatenverkehr: Azure CLI'
       href: quick-create-cli.md
 - name: Tutorials
   items:
     - name: Verwalten von Webdatenverkehr
       href: tutorial-manage-web-traffic-cli.md
-    - name: Einschränken von Webdatenverkehr
+    - name: Aktivieren von Web Application Firewall
       href: tutorial-restrict-web-traffic-cli.md
     - name: Schützen mit SSL
       href: tutorial-ssl-cli.md
@@ -35,18 +35,23 @@
       href: cli-samples.md
 - name: Konzepte
   items:
+    - name: SSL-Beendigung
+      href: ssl-overview.md
+    - name: Übersicht über SSL-Richtlinien
+      href: application-gateway-ssl-policy-overview.md
     - name: Web Application Firewall
       href: waf-overview.md
     - name: URL-Routing
       href: url-route-overview.md
     - name: Hosten mehrerer Websites
       href: multiple-site-overview.md
-    - name: SSL-Beendigung
-      href: ssl-overview.md
-    - name: URL-Umleitung
+    - name: Umleitungsunterstützung
       href: redirect-overview.md
+    - name: Unterstützung mehrerer Mandanten
     - name: Systemüberwachung
       href: application-gateway-probe-overview.md
+    - name: WebSocket-Unterstützung
+      href: application-gateway-websocket.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Anwendungsgateways
@@ -55,10 +60,20 @@
           href: create-vmss-template.md
         - name: Web-Apps – PowerShell
           href: create-web-app.md
-    - name: Aktivieren der SSL-Beendigung – Portal
+        - name: Konfigurieren eines internen Lastenausgleichs
+          href: application-gateway-ilb.md
+    - name: 'Konfigurieren der SSL-Beendigung: Portal'
       href: create-ssl-portal.md
     - name: Hosten mehrerer Websites – Portal
       href: create-multiple-sites-portal.md
+    - name: Anpassen von WAF-Regeln
+      items:
+        - name: Azure-Portal
+          href: application-gateway-customize-waf-rules-portal.md
+        - name: Azure PowerShell
+          href: application-gateway-customize-waf-rules-powershell.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: application-gateway-customize-waf-rules-cli.md
     - name: Umleiten von externem Datenverkehr
       items:
         - name: Azure PowerShell
@@ -111,6 +126,8 @@
           href: application-gateway-diagnostics.md
 - name: Verweis
   items:
+    - name: CRS-Regeln
+      href: application-gateway-crs-rulegroups-rules.md
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/application-gateway
     - name: Azure PowerShell

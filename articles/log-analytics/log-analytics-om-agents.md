@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung zwischen Operations Manager und Log Analytics | Microsoft-Dokumentation
+title: Herstellen einer Verbindung zwischen Operations Manager und Log Analytics | Microsoft Docs
 description: Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem Arbeitsbereich verknüpfen.
 services: log-analytics
 documentationcenter: ''
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 84eabef06b4d2ad71e6d9a947a77589f9159e030
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b11cffcb006ba4f0598bd7f5cf6ed13daad2db42
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Operations Manager und Log Analytics
 Zur Bewahrung Ihrer bisherigen Investitionen in System Center Operations Manager sowie zur Nutzung erweiterter Funktionen mit Log Analytics können Sie Operations Manager mit Ihrem Log Analytics-Arbeitsbereich verknüpfen.  Die Kombination der Möglichkeiten von Log Analytics mit der weiteren Nutzung von Operations Manager ermöglicht Folgendes:
@@ -77,9 +77,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Operations Manager-Verwaltungsgr
 Wenn sich Ihre Operations Manager-Verwaltungsgruppe zum ersten Mal bei einem Log Analytics-Arbeitsbereich registriert und die Verwaltungsserver über einen Proxy- oder OMS-Gatewayserver mit dem Dienst kommunizieren müssen, ist die Option zum Angeben der Proxykonfiguration für die Verwaltungsgruppe in der Betriebskonsole nicht verfügbar.  Die Verwaltungsgruppe muss erfolgreich beim Dienst registriert werden. Erst dann wird diese Option verfügbar.  Sie müssen die Systemproxykonfiguration mit Netsh auf dem System aktualisieren, von dem aus Sie die Betriebskonsole ausführen, um die Integration sowie alle Verwaltungsserver in der Verwaltungsgruppe zu konfigurieren.  
 
 1. Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten.
-   a. Navigieren Sie zu **Start**, und geben Sie **cmd** ein.
-   b. Klicken Sie mit der rechten Maustaste auf **Eingabeaufforderung**, und wählen Sie „Als Administrator ausführen“** aus.
-2. Geben Sie den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
+1. Geben Sie den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 
@@ -88,7 +86,7 @@ Nachdem Sie die folgenden Schritte zur Integration mit Log Analytics abgeschloss
 1. Wählen Sie in der Operations Manager-Konsole den Arbeitsbereich **Administration** aus.
 2. Erweitern Sie den Knoten für Operations Management Suite, und klicken Sie auf **Verbindung**.
 3. Klicken Sie auf den Link **Register to Operations Management Suite** (Bei Operations Management Suite registrieren).
-4. Geben Sie auf der Seite **Assistent zum Integrieren von Operations Management Suite** die E-Mail-Adresse oder Telefonnummer sowie das Kennwort des mit dem neuen OMS-Arbeitsbereich verknüpften Administratorkontos ein, und klicken Sie auf **Anmelden**.
+4. Geben Sie auf der Seite **Operations Management Suite Onboarding Wizard (Assistent zum Integrieren von Operations Management Suite)** die E-Mail-Adresse oder Telefonnummer sowie das Kennwort des mit dem neuen OMS-Arbeitsbereich verknüpften Administratorkontos ein, und klicken Sie auf **Anmelden**.
 5. Nach erfolgreicher Authentifizierung werden Sie auf der Seite **Assistent zum Integrieren der Operations Management Suite: Arbeitsbereich auswählen** zum Auswählen Ihres Log Analytics-Arbeitsbereichs aufgefordert.  Falls Sie über mehrere Arbeitsbereiche verfügen, wählen Sie in der Dropdownliste den Arbeitsbereich aus, den Sie in der Operations Manager-Verwaltungsgruppe registrieren möchten, und klicken Sie anschließend auf **Weiter**.
    
    > [!NOTE]
@@ -96,7 +94,7 @@ Nachdem Sie die folgenden Schritte zur Integration mit Log Analytics abgeschloss
    > 
    > 
 6. Überprüfen Sie auf der Seite **Assistent zum Integrieren von Operations Management Suite: Zusammenfassung** Ihre Einstellungen, und klicken Sie auf **Erstellen**, wenn die Einstellungen korrekt sind.
-7. Klicken Sie auf der Seite **Assistent zum Integrieren von Operations Management Suite: Fertigstellung** auf **Schließen**.
+7. Klicken Sie auf der Seite **Operations Management Suite Onboarding Wizard: Finish (Assistent zum Integrieren von Operations Management Suite: Fertig stellen)** auf **Schließen**.
 
 ### <a name="add-agent-managed-computers"></a>Hinzufügen von mit Agent verwalteten Computern
 Nach dem Konfigurieren der Integration mit Ihrem Log Analytics-Arbeitsbereich wird lediglich eine Verbindung mit dem Dienst hergestellt, es werden keine Daten von den Agents gesammelt, die Daten an Ihre Verwaltungsgruppe melden. Dazu müssen Sie zuerst festlegen, welche mit Agent verwalteten Computer Daten für Log Analytics erfassen. Sie können die Computerobjekte entweder einzeln oder eine Gruppe mit Windows-Computerobjekten auswählen. Sie können keine Gruppe auswählen, die Instanzen einer anderen Klasse enthält (etwa logische Datenträger oder SQL-Datenbanken).
@@ -199,9 +197,9 @@ Management Packs für die aktivierten Lösungen, die mit Operations Manager inte
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor – Intern
-7. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
-8. Wählen Sie die Option **Connected Sources**(Verbundene Quellen).
-9. In der Tabelle sollte im Abschnitt „System Center Operations Manager“ der Name der Verwaltungsgruppe angezeigt werden, die Sie aus dem Arbeitsbereich entfernen möchten.  Klicken Sie unter der Spalte **Last Data** (Letzte Daten) auf **Entfernen**.  
+1. Öffnen Sie das Menü **Erweiterte Einstellungen** für den Log Analytics-Arbeitsbereich im Azure-Portal.
+1. Wählen Sie **Verbundene Quellen** und dann **System Center** aus.
+1. Der Name der Verwaltungsgruppe, die Sie aus dem Arbeitsbereich entfernen möchten, sollte angezeigt werden.  Klicken Sie unter der Spalte **Last Data** (Letzte Daten) auf **Entfernen**.  
    
     > [!NOTE]
     > Der Link zum **Entfernen** wird erst angezeigt, wenn für die Dauer von 14 Tagen keine Aktivität der verbundenen Verwaltungsgruppe erkannt wird.  

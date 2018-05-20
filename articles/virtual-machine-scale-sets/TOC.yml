@@ -1,0 +1,163 @@
+- name: Dokumentation zu Virtual Machines Scale Sets
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was sind Skalierungsgruppen für virtuelle Computer?
+      href: overview.md
+- name: Schnellstarts
+  items:
+    - name: Erstellen im Azure-Portal
+      href: quick-create-portal.md
+    - name: Erstellen mit der Azure CLI 2.0
+      href: quick-create-cli.md
+    - name: Erstellen mit Azure PowerShell
+      href: quick-create-powershell.md
+    - name: Erstellen mit einer Vorlage
+      items:
+        - name: Linux-Skalierungsgruppe
+          href: quick-create-template-linux.md
+        - name: Windows-Skalierungsgruppe
+          href: quick-create-template-windows.md
+- name: Tutorials
+  items:
+    - name: '1: Erstellen/Verwalten einer Skalierungsgruppe'
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-create-and-manage-cli.md
+        - name: Azure PowerShell
+          href: tutorial-create-and-manage-powershell.md
+    - name: '2: Verwenden von Datenträgern'
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-disks-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-disks-powershell.md
+    - name: '3: Verwenden eines benutzerdefinierten VM-Images'
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-use-custom-image-cli.md
+        - name: Azure PowerShell
+          href: tutorial-use-custom-image-powershell.md
+    - name: '4: Bereitstellen von Apps in einer Skalierungsgruppe'
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-install-apps-cli.md
+        - name: Azure PowerShell
+          href: tutorial-install-apps-powershell.md
+        - name: Vorlage
+          href: tutorial-install-apps-template.md
+    - name: '5: Automatisches Skalieren einer Skalierungsgruppe'
+      items:
+        - name: Azure CLI 2.0
+          href: tutorial-autoscale-cli.md
+        - name: Azure PowerShell
+          href: tutorial-autoscale-powershell.md
+        - name: Vorlage
+          href: tutorial-autoscale-template.md
+    - name: Bereitstellen von Apps in einer Azure-VM-Skalierungsgruppe mit einem benutzerdefinierten Packer-Image
+      items:
+        - name: Azure CLI 2.0
+          href: 'https://docs.microsoft.com/learn/deploy-custom-vmss-app/index'
+- name: Beispiele
+  items:
+    - name: Azure CLI 2.0
+      href: cli-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+- name: Anleitung
+  items:
+    - name: Planen und Entwerfen
+      items:
+        - name: Überlegungen zum Entwurf
+          href: virtual-machine-scale-sets-design-overview.md
+        - name: Grundlegendes zu Instanz-IDs
+          href: virtual-machine-scale-sets-instance-ids.md
+    - name: Erstellen einer Vorlage
+      items:
+        - name: Informationen zu Skalierungsgruppenvorlagen
+          href: virtual-machine-scale-sets-mvss-start.md
+        - name: Verwenden eines vorhandenen virtuellen Netzwerks
+          href: virtual-machine-scale-sets-mvss-existing-vnet.md
+        - name: Verwenden eines benutzerdefinierten Images
+          href: virtual-machine-scale-sets-mvss-custom-image.md
+        - name: Verwenden von gastbasierter automatischer Skalierung mit einer Linux-Skalierungsgruppenvorlage
+          href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
+    - name: Bereitstellen
+      items:
+        - name: Erstellen mit Visual Studio
+          href: virtual-machine-scale-sets-vs-create.md
+        - name: Verwenden von Verfügbarkeitszonen
+          href: virtual-machine-scale-sets-use-availability-zones.md
+        - name: Automatisches Skalieren einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-autoscale-overview.md
+          items:
+            - name: Verwenden des Azure-Portals
+              href: virtual-machine-scale-sets-autoscale-portal.md
+            - name: Erweiterte automatische Skalierung
+              href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: Anwendungen in Skalierungsgruppen
+          href: virtual-machine-scale-sets-deploy-app.md
+        - name: Verwenden von Datenträgern mit Skalierungsgruppen
+          href: virtual-machine-scale-sets-attached-disks.md
+        - name: Verschlüsseln von Datenträgern in Skalierungsgruppen
+          items:
+            - name: Verwenden von PowerShell
+              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+            - name: Verwenden von Azure CLI 2.0
+              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+        - name: Verwenden umfangreicher Skalierungsgruppen
+          href: virtual-machine-scale-sets-placement-groups.md
+        - name: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+        - name: Verwenden von niedriger Priorität
+          href: virtual-machine-scale-sets-use-low-priority.md
+    - name: Verwalten
+      items:
+        - name: Allgemeine Verwaltungsaufgaben
+          items:
+            - name: Verwenden von Azure CLI 2.0
+              href: virtual-machine-scale-sets-manage-cli.md
+            - name: Mithilfe von Azure PowerShell
+              href: virtual-machine-scale-sets-manage-powershell.md
+        - name: Vertikale Skalierung in einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-vertical-scale-reprovision.md
+        - name: Automatische Betriebssystemupgrades
+          href: virtual-machine-scale-sets-automatic-upgrade.md
+        - name: Ändern einer Skalierungsgruppe
+          href: virtual-machine-scale-sets-upgrade-scale-set.md
+        - name: Verwenden von DSC und Skalierungsgruppen
+          href: virtual-machine-scale-sets-dsc.md
+        - name: Netzwerke für Skalierungsgruppen
+          href: virtual-machine-scale-sets-networking.md
+        - name: Konvertieren einer Vorlage in verwaltete Datenträger
+          href: virtual-machine-scale-sets-convert-template-to-md.md
+    - name: Problembehandlung
+      items:
+        - name: Autoscale
+          href: virtual-machine-scale-sets-troubleshoot.md
+    - name: Häufig gestellte Fragen
+      items:
+        - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
+          href: virtual-machine-scale-sets-faq.md
+- name: Verweis
+  items:
+    - name: Azure PowerShell
+      href: /powershell/azure/overview
+    - name: Azure-Befehlszeilenschnittstelle
+      href: ../virtual-machines/azure-cli-arm-commands.md
+    - name: REST
+      href: /rest/api/virtualmachinescalesets/
+- name: angeben
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Preise
+      items:
+        - name: Linux
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/'
+        - name: Windows
+          href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-vm-scale-set'

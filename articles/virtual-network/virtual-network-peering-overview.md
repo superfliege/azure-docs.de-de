@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: jdial
-ms.openlocfilehash: dcb46c7127590f1986fe1fd66c2f6ac4fd8b107d
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 24d739e45ddaa7669fe1836eea53f0b091383d1e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -64,7 +64,7 @@ Wenn virtuelle Netzwerke mittels Peering in derselben Region verknüpft sind, k�
 
 ![VNET-Peering – Transit](./media/virtual-networks-peering-overview/figure04.png)
 
-Der Gatewaytransit wird in der Peeringbeziehung zwischen virtuellen Netzwerken, die mit unterschiedlichen Bereitstellungsmodellen oder in unterschiedlichen Regionen erstellt wurden, nicht unterstützt. Sie müssen beide virtuellen Netzwerke in der Peeringbeziehung mit dem Resource Manager-Bereitstellungsmodell erstellen, und diese müssen sich in derselben Region befinden, um den Gatewaytransit verwenden zu können.
+Gatewaytransit wird in der Peeringbeziehung zwischen virtuellen Netzwerken, die in unterschiedlichen Regionen erstellt wurden, nicht unterstützt. Damit der Gatewaytransit funktioniert, müssen beide virtuellen Netzwerke der Peeringbeziehung in derselben Region vorhanden sein. Der Gatewaytransit zwischen virtuellen Netzwerken, die mittels verschiedener Bereitstellungsmodelle (Ressourcen-Manager und klassische) erstellt wurden, wird nur unterstützt, wenn sich das Gateway im virtuellen Netzwerk befindet (Ressourcen-Manager). Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wenn die virtuellen Netzwerke, die gemeinsam eine einzelne ExpressRoute-Verbindung nutzen, mittels Peering verknüpft sind, fließt der Datenverkehr zwischen ihnen über die Peeringbeziehung (also über das Azure-Backbonenetzwerk). Sie können in den einzelnen virtuellen Netzwerken weiterhin lokale Gateways verwenden, um eine Verbindung mit der lokalen Umgebung herzustellen. Alternativ können Sie ein gemeinsam genutztes Gateway verwenden und den Transit für lokale Konnektivität konfigurieren.
 

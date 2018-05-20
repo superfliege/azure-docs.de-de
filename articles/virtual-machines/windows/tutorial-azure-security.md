@@ -1,36 +1,36 @@
 ---
-title: Azure Security Center und virtuelle Windows-Computer in Azure | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Sicherheit für virtuelle Windows-Computer in Azure mit Azure Security Center.
+title: 'Tutorial: Azure Security Center für Windows-VMs in Azure | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie mehr über die Funktionen im Azure Security Center zum Schutz und zur Absicherung Ihrer virtuellen Windows-Computer in Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 05/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 35b6c8910b0dd5e8d1c388ee83223ce77a08f6d1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b573208107b07b47b471d9c5247b362ef144099e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Überwachen der Sicherheit virtueller Computer mit Azure Security Center
+# <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Windows-Computer
 
 Azure Security Center kann Ihnen dabei helfen, Einsicht in die Sicherheitsmaßnahmen für Ihre Azure-Ressourcen zu erhalten. Security Center bietet eine integrierte Sicherheitsüberwachung. Sie können so Bedrohungen erkennen, die andernfalls möglicherweise unbemerkt bleiben. In diesem Tutorial erfahren Sie etwas über Azure Security Center und folgende Maßnahmen:
- 
+
 > [!div class="checklist"]
 > * Einrichten der Datensammlung
 > * Einrichten von Sicherheitsrichtlinien
 > * Anzeigen und Beheben von Integritätsproblemen bei der Konfiguration
-> * Überprüfen erkannter Bedrohungen  
+> * Überprüfen erkannter Bedrohungen
 
 ## <a name="security-center-overview"></a>Übersicht über das Security Center
 

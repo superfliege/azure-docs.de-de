@@ -1,0 +1,61 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Chef Software in Azure
+metadata:
+  title: 'Dokumentation zu Chef Software in Azure: Tutorials, Beispiele, Referenz und Ressourcen'
+  meta.description: Chef Software provides a DevOps automation platform for Linux and Windows that enables the management of both physical and virtual server configurations. Learn how to use Chef Software products to automate infrastructure as code (IaC) recipes and manage and deploy virtual machines on Azure with quickstarts and tutorials.
+  services: chef
+  author: tomarcher
+  manager: jeconnoc
+  ms.service: chef
+  ms.tgt_pltfrm: na
+  ms.devlang: devops
+  ms.topic: landing page
+  ms.date: 05/15/2018
+  ms.author: tarcher
+  ms.openlocfilehash: 644b50455ac4e7e7aba818ae31f95c736ae5d632
+  ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 05/17/2018
+abstract:
+  description: Chef Software ist eine DevOps-Automatisierungsplattform für Linux und Windows und ermöglicht die Verwaltung der Konfigurationen von physischen und virtuellen Servern. Erfahren Sie anhand von Schnellstartanleitungen und Tutorials, wie Sie mithilfe von Chef Software IaC-Rezepte (Infrastructure as Code) automatisieren und virtuelle Computer in Azure verwalten und bereitstellen.
+  aside:
+    image:
+      alt: Chef-Logo
+      height: 133
+      width: 48
+      src: media/chef.png
+    title: 
+sections:
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: paragraph
+    text: Installieren und Konfigurieren von Chef und Erstellen eines virtuellen Linux-Computers mithilfe der Umgebung
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/media/index/azure_dev-9.svg
+      text: Installieren und Konfigurieren von Chef
+      href: ./chef-extension-portal.md
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Hier erfahren Sie, wie Sie mit Chef Software-Tools eine Compute- und Netzwerkinfrastruktur in Azure erstellen und verwalten.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-machines/windows/chef-automation">Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef</a>
+- title: Ressourcen und Tools
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Chef Automate
+      html: <p><a href="https://docs.chef.io/chef_automate.html">Übersicht über Chef Automate</a></p> <p><a href="https://docs.chef.io/install_chef_automate.html">Installationshandbuch für Chef Automate</a></p> <p><a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate">Chef Automate im Azure Marketplace</a></p>
+    - title: Chef Software-Tools
+      html: <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-chef-tasks">Chef-Erweiterung für Visual Studio Team Services</a></p> <p><a href="https://marketplace.visualstudio.com/items?itemName=chef-software.vsts-habitat-tasks">Habitat-Erweiterung für Visual Studio Team Services</a></p>
+    - title: Neuigkeiten zu Chef Software
+      html: <p><a href="https://blog.chef.io/">Chef Software-Blog</a></p>

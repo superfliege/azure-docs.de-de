@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: Adaptive Anwendungssteuerungen
           href: security-center-adaptive-application.md
+        - name: Überwachung der Dateiintegrität
+          href: security-center-file-integrity-monitoring.md
     - name: Verwalten von Sicherheitslösungen
       href: security-center-partner-integration.md
       items:

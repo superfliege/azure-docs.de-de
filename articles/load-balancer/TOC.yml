@@ -49,7 +49,7 @@
 - name: Anleitung
   items:
     - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
-      href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
+      href: load-balancer-get-started-internet-az-portal.md
       items:
         - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
           href: load-balancer-get-started-internet-az-powershell.md

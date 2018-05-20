@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 03/20/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: b2eeb7d2cca124abd811859077d7e5e55a36c521
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 72ba97727fd4de1c419091475f14427065790cc7
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -215,7 +215,7 @@ Für jede erstellte App sind zwei Endpunkte vorhanden. In einer ILB-ASE sind sow
 
 Im mehrinstanzenfähigen App Service und in einer externen ASE ist einmaliges Anmelden zwischen dem Azure-Portal und der Kudu-Konsole eingerichtet. Für die ILB-ASE müssen Sie jedoch beim Anmelden bei der Kudu-Konsole Ihre Anmeldeinformationen für die Veröffentlichung verwenden.
 
-Internetbasierte CI-Systeme wie GitHub und Visual Studio Team Services können nicht mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Stattdessen müssen Sie ein CI-System wie Dropbox verwenden, das ein Pull-Modell verwendet.
+Internetbasierte CI-Systeme, wie GitHub und Visual Studio Team Services, funktionieren weiterhin mit einer ILB-ASE, wenn der Build-Agent internetfähig ist und sich im selben Netzwerk wie die ILB-ASE befindet. Im Falle von Visual Studio Team Services, wenn der Build-Agent auf dem gleichen VNET wie ILB-ASE erstellt wird (ein anderes Subnetz ist in Ordnung), kann er Code aus VSTS-Git pullen und in der ILB-ASE bereitstellen. Wenn Sie keinen eigenen Build-Agent erstellen möchten, müssen Sie ein CI-System verwenden, das ein Pullmodell wie Dropbox verwendet.
 
 Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Diese Domäne wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (unter **Übersicht** > **Zusammenfassung** sowie unter **Eigenschaften**). Wenn Sie über eine ILB-ASE mit der Unterdomäne *contoso.net* und einer App mit dem Namen *mytest* verfügen, verwenden Sie *mytest.contoso.net* als FTP-Verbindung und *mytest.scm.contoso.net* für den Web Deploy-Vorgang.
 

@@ -3,17 +3,17 @@ title: Verwenden von Azure Files mit AKS
 description: Verwenden von Azure-Datenträgern mit AKS
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ab118cd43f1e3e57627d940072e50405cd85ca58
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 21245688076cf0a21164b549eb68bc6f55d6ec6c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Persistente Volumes mit Azure Files
 
@@ -66,10 +66,10 @@ parameters:
   storageAccount: mystorageaccount
 ```
 
-Verwenden Sie den Befehl [kubectl create][kubectl-create] zum Erstellen der Speicherklasse.
+Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen der Speicherklasse.
 
 ```azurecli-interactive
-kubectl create -f azure-file-sc.yaml
+kubectl apply -f azure-file-sc.yaml
 ```
 
 ## <a name="create-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
@@ -94,10 +94,10 @@ spec:
       storage: 5Gi
 ```
 
-Erstellen Sie mit dem Befehl [kubectl create][kubectl-create] einen Anspruch auf ein persistentes Volume.
+Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume.
 
 ```azurecli-interactive
-kubectl create -f azure-file-pvc.yaml
+kubectl apply -f azure-file-pvc.yaml
 ```
 
 Nach Abschluss des Vorgangs wird die Dateifreigabe erstellt. Außerdem wird ein Kubernetes-Geheimnis erstellt, das die Verbindungs- und Anmeldeinformationen enthält.
@@ -126,10 +126,10 @@ spec:
         claimName: azurefile
 ```
 
-Verwenden Sie den Befehl [kubectl create][kubectl-create] zum Erstellen des Pods.
+Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen des Pods.
 
 ```azurecli-interactive
-kubectl create -f azure-pvc-files.yaml
+kubectl apply -f azure-pvc-files.yaml
 ```
 
 Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, der im Verzeichnis `/mnt/azure` eingebunden wurde. Diese Konfiguration wird angezeigt, wenn Sie Ihren Pod über `kubectl describe pod mypod` auswerten.
@@ -174,7 +174,7 @@ Informieren Sie sich über persistente Kubernetes-Volumes bei Verwendung von Azu
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-describe]: https://kubernetes-v1-4.github.io/docs/user-guide/kubectl/kubectl_describe/
 [kubernetes-files]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_file/README.md
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/

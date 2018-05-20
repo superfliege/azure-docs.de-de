@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: d73869d1371247a269b6601c35b1a938d89176c0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd8579fe29282f3875ecfddf67a34444e3de9ef5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Deep Learning- und KI-Frameworks
 Die [Data Science-VM](http://aka.ms/dsvm) (DSVM) und die [Deep Learning-VM](http://aka.ms/dsvm/deeplearning) unterstützen eine Reihe von Deep Learning-Frameworks zur Unterstützung bei der Erstellung von KI-Anwendungen mit Predictive Analytics und kognitiven Fähigkeiten wie Bild- und Sprachverständnis. 
@@ -80,6 +80,7 @@ Hier finden Sie Details zu allen auf der DSVM verfügbaren Deep Learning-Framewo
 | Was ist das?   | Deep Learning-Framework      |
 | Unterstützte DSVM-Editionen      | Ubuntu     |
 | Konfiguration/Installation auf der DSVM  | Caffe ist unter `/opt/caffe` installiert.    |
+| Umstellung auf Python 2.7 | Führen Sie `source activate root` aus. |
 | Links zu Beispielen      | Beispiele finden Sie unter `/opt/caffe/examples`.      |
 | Verwandte Tools auf der DSVM      | Caffe2      |
 ### <a name="how-to-use--run-it"></a>Verwendung/Ausführung  
@@ -88,12 +89,15 @@ Melden Sie sich mithilfe von X2Go bei Ihrem virtuellen Computer an. Starten Sie 
 
 ```
 cd /opt/caffe/examples
+source activate root
 jupyter notebook
 ```
 
 Daraufhin öffnet sich ein neues Browserfenster mit Beispielnotebooks.
 
-Binärdateien werden in /opt/caffe/build/install/bin installiert. 
+Binärdateien werden in /opt/caffe/build/install/bin installiert.
+
+Für die installierte Version von Caffe ist Python 2.7 erforderlich. Sie kann nicht mit der standardmäßig aktivierten Version 3.5 von Python verwendet werden. Führen Sie `source activate root` aus, um die Anaconda-Umgebung zu wechseln. 
 
 ## <a name="caffe2"></a>Caffe2
 

@@ -3,23 +3,25 @@ title: Brandingrichtlinien für Anwendungen | Microsoft Docs
 description: Eine umfassende Anleitung zu entwicklerorientierten Ressourcen für Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
-author: skwan
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: skwan
+ms.author: celested
+ms.reviewer: skwan
 ms.custom: aaddev
-ms.openlocfilehash: e5ce970913d767dbf6b13381cf18c1f7b05d252f
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7794388a067cb8fb876d70b7186bc555e6ff2975
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 Dieser Artikel behandelt die empfohlenen Brandingrichtlinien für die Entwicklung von Anwendungen mit Azure Active Directory (Azure AD). Die Richtlinien stellen sicher, dass sich Kunden besser zurechtfinden, die sich über ihr in Azure AD verwaltetes Geschäfts- oder Schulkonto (oder über ihr persönliches Konto) bei Ihrer Anwendung registrieren und anmelden möchten.
@@ -89,5 +91,5 @@ Um diese Images zur Verwendung in Ihrer App herunterzuladen, klicken Sie mit der
 **Nicht** Verwenden Sie die Markennamen „Azure“ und „Active Directory“ nicht gegenüber Endbenutzern. Gegenüber Entwicklern, IT-Experten und Administratoren können diese Begriffe dagegen problemlos verwendet werden.
 
 ## <a name="navigation-dos-and-donts"></a>Navigationsempfehlungen
-**** Stellen Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
+Stellen Sie den Benutzern eine Funktion zur Verfügung, über die sie sich abmelden und das Benutzerkonto wechseln können. Die meisten Benutzer besitzen zwar nur ein einzelnes persönliches Konto von Microsoft/Facebook/Google/Twitter, gehören aber häufig mehreren Organisationen an. Die Unterstützung mehrerer angemeldeter Benutzer folgt in Kürze.
 

@@ -1,33 +1,33 @@
 ---
 title: Einmaliges Anmelden bei Apps mit dem Azure AD-Anwendungsproxy | Microsoft-Dokumentation
-description: "Aktivieren Sie das einmalige Anmelden für Ihre veröffentlichten lokalen Anwendungen mit dem Azure AD-Anwendungsproxy im Azure-Portal."
+description: Aktivieren Sie das einmalige Anmelden für Ihre veröffentlichten lokalen Anwendungen mit dem Azure AD-Anwendungsproxy im Azure-Portal.
 services: active-directory
-documentationcenter: 
-author: daveba
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
-ms.author: daveba
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 501017ae416cc8aa473077c98ae0a213db749547
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 77e7288060abd2577867023a777eb3bdd4331e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 
 Mit dem Azure Active Directory-Anwendungsproxy können Sie die Produktivität steigern, indem Sie lokale Anwendungen so veröffentlichen, dass auch Remotemitarbeiter sicher darauf zugreifen können. Im Azure-Portal können Sie auch einmaliges Anmelden (Single Sign-On, SSO) für diese Apps einrichten. Ihre Benutzer müssen sich nur bei Azure AD authentifizieren. Dann können sie auf die Unternehmensanwendung zugreifen, ohne sich erneut anzumelden.
 
-Der Anwendungsproxy unterstützt mehrere [Modi für einmaliges Anmelden](application-proxy-sso-overview.md). Die kennwortbasierte Anmeldung ist für Anwendungen bestimmt, bei denen für die Authentifizierung eine Kombination aus Benutzername und Kennwort verwendet wird. Wenn Sie die kennwortbasierte Anmeldung für Ihre Anwendung konfigurieren, müssen sich Ihre Benutzer nur einmal an der lokalen Anwendung anmelden. Danach speichert Azure Active Directory die Anmeldeinformationen und stellt sie automatisch für die Anwendung bereit, wenn Ihre Benutzer von einem Remotestandort aus darauf zugreifen. 
+Der Anwendungsproxy unterstützt mehrere [Modi für einmaliges Anmelden](manage-apps/application-proxy-single-sign-on.md). Die kennwortbasierte Anmeldung ist für Anwendungen bestimmt, bei denen für die Authentifizierung eine Kombination aus Benutzername und Kennwort verwendet wird. Wenn Sie die kennwortbasierte Anmeldung für Ihre Anwendung konfigurieren, müssen sich Ihre Benutzer nur einmal an der lokalen Anwendung anmelden. Danach speichert Azure Active Directory die Anmeldeinformationen und stellt sie automatisch für die Anwendung bereit, wenn Ihre Benutzer von einem Remotestandort aus darauf zugreifen. 
 
-Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und getestet haben. Führen Sie andernfalls die Schritte unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-publish-azure-portal.md) aus, und fahren Sie dann hier fort. 
+Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und getestet haben. Führen Sie andernfalls die Schritte unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md) aus, und fahren Sie dann hier fort. 
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>Einrichten von Kennworttresoren für Ihre Anwendung
 
@@ -43,7 +43,7 @@ Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und geteste
 
    ![Kennwortbasierte Anmeldung auswählen und URL eingeben](./media/application-proxy-sso-azure-portal/password-sso.png)
 
-7. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern**aus.
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
@@ -55,5 +55,5 @@ Navigieren Sie zu der externen URL, die Sie für den Remotezugriff auf Ihre Anwe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lernen Sie andere Möglichkeiten zum Implementieren des [einmaligen Anmeldens mit dem Anwendungsproxy](application-proxy-sso-overview.md) kennen.
+- Lernen Sie andere Möglichkeiten zum Implementieren des [einmaligen Anmeldens mit dem Anwendungsproxy](manage-apps/application-proxy-single-sign-on.md) kennen.
 - Informieren Sie sich über die [Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy](application-proxy-security-considerations.md).

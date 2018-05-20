@@ -15,17 +15,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 52654704662b736811f429a811e10669a752b75a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f12cdf2fc8a1aa3b7e8bc3c5eeb338601a8f2ffe
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
 In diesem Artikel wird die Behandlung von [Event Grid](../event-grid/overview.md)-Ereignissen in Azure Functions erläutert.
 
-Event Grid ist ein Azure-Dienst, mit dem HTTP-Anforderungen gesendet werden, um Sie über Ereignisse zu benachrichtigen, die in *Herausgebern* erfolgen. Ein Herausgeber ist der Dienst oder die Ressource, von dem bzw. der das Ereignis stammt. Ein Azure Blob Storage-Konto ist beispielsweise ein Herausgeber, der Upload oder die Löschung eines Blobs ist dagegen ein Ereignis. Einige [Azure-Dienste bieten eine integrierte Unterstützung zum Veröffentlichen von Ereignissen in Event Grid](../event-grid/overview.md#event-sources). 
+Event Grid ist ein Azure-Dienst, mit dem HTTP-Anforderungen gesendet werden, um Sie über Ereignisse zu benachrichtigen, die in *Herausgebern* erfolgen. Ein Herausgeber ist der Dienst oder die Ressource, von dem bzw. der das Ereignis stammt. Ein Azure Blob Storage-Konto ist beispielsweise ein Herausgeber, [der Upload oder die Löschung eines Blobs ist dagegen ein Ereignis](../storage/blobs/storage-blob-event-overview.md). Einige [Azure-Dienste bieten eine integrierte Unterstützung zum Veröffentlichen von Ereignissen in Event Grid](../event-grid/overview.md#event-sources). 
 
 *Ereignishandler* empfangen und verarbeiten Ereignisse. Azure Functions ist einer von mehreren [Azure-Diensten, die eine integrierte Unterstützung für die Behandlung von Event Grid-Ereignissen bieten](../event-grid/overview.md#event-handlers). In diesem Artikel wird beschrieben, wie Sie mithilfe eines Event Grid-Triggers eine Funktion aufrufen, wenn ein Ereignis von Event Grid empfangen wird.
 

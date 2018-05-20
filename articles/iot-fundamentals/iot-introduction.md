@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 03/30/2018
 ms.author: bryanla; v-clay
 layout: LandingPage
-ms.openlocfilehash: 183925324c404b412b5d12c3a9bff93ccd842535
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 568680d2e1eb8c09fa124a5302bb7170ba4af352
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="introduction-to-azure-and-the-internet-of-things"></a>Einführung in Azure und das Internet der Dinge
 
@@ -83,17 +83,6 @@ In einem Szenario mit der vorhersagbaren Wartung werden mit dem Cloud-Back-End b
 
 Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern die Interaktion mit der IoT-Lösung und den Geräten. Damit können die Benutzer die auf den Geräten erfassten Daten anzeigen und analysieren. Diese Sichten können in Form von Dashboards oder BI-Berichten vorkommen, die jeweils historische Daten oder Daten in Echtzeit anzeigen. Ein Bediener kann z.B. den Status eines bestimmten Pumpwerks überprüfen und alle Warnungen anzeigen, die vom System ausgelöst wurden. Diese Ebene ermöglicht auch die Integration des IoT-Lösungs-Back-Ends in vorhandene Branchenanwendungen, um es in Geschäftsprozesse oder Workflows im Unternehmen einzubinden. Beispielsweise kann eine Lösung zur vorbeugenden Wartung mit einem Terminplanungssystem integriert werden, um einen Techniker in ein Pumpwerk zu bestellen, sobald angezeigt wird, dass für eine Pumpe Wartungsbedarf besteht.
 
-[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
-[img-dashboard]: ./media/iot-introduction/iot-suite.png
-
-[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
-[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
-[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
-[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-
-
 ## <a name="why-azure-iot"></a>Gründe für Azure IoT
 
 Azure IoT reduziert die Komplexität von IoT-Projekten und meistert Herausforderungen wie Sicherheit, Inkompatibilität der Infrastruktur und Skalierung Ihrer IoT-Lösung. Und zwar mit diesen Eigenschaften:
@@ -141,7 +130,7 @@ Erkunden Sie die folgenden Technologie- und Lösungsbereiche oder das Inhaltsver
                 <div class="card">
                     <div class="cardText">
                         <h3>Lösungen</h3>
-                        <a href="/azure/iot-suite">IoT Suite</a><br/>
+                        <a href="/azure/iot-suite">IoT Solution Accelerators</a><br/>
                         <a href="/azure/iot-central">IoT Central</a>
                     </div>
                 </div>
@@ -179,14 +168,22 @@ Erkunden Sie die folgenden Technologie- und Lösungsbereiche oder das Inhaltsver
 </ul>
 
 [img-paas-saas-technologies-solutions]: media/index/paas-saas-technologies-solutions.png
+[img-solution-architecture]: ./media/iot-introduction/iot-reference-architecture.png
+[img-dashboard]: ./media/iot-introduction/iot-suite.png
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
 [lnk-iot-central-land]: https://docs.microsoft.com/microsoft-iot-central/
 [lnk-iot-dps-land]: /azure/iot-dps/index.yml
 [lnk-iot-edge-land]: /azure/iot-edge/index.yml
 [lnk-iot-hub-land]: /azure/iot-hub/index.md
-[lnk-iot-maps-land]: /azure/azure-maps/index.yml
-[lnk-iot-suite-land]: /azure/iot-suite/index.md
+[lnk-iot-maps-land]: /azure/maps/index.yml
+[lnk-iot-sa-land]: /azure/iot-suite/index.md
 [lnk-iot-tsi-land]: /azure/time-series-insights/index.yml
+
+[lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
+[lnk-iot-sa]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
+[lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
+[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
 
 

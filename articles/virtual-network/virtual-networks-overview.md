@@ -17,15 +17,15 @@ ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 072a4a483cb39a6f2827b6d5973ec544fd58d09c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
-Mit Azure Virtual Network können zahlreiche Arten von Azure-Ressourcen (beispielsweise virtuelle Azure-Computer) sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken kommunizieren. Azure Virtual Network bietet folgende wichtige Funktionen: 
+Mit Azure Virtual Network können zahlreiche Arten von Azure-Ressourcen (beispielsweise virtuelle Azure-Computer) sicher untereinander sowie mit dem Internet und mit lokalen Netzwerken kommunizieren. Azure Virtual Network bietet folgende wichtige Funktionen:
 
 ## <a name="isolation-and-segmentation"></a>Isolation und Segmentierung
 
@@ -42,7 +42,7 @@ Alle Ressourcen in einem virtuellen Netzwerk können standardmäßig in ausgehen
 
 Azure-Ressourcen können auf eine der folgenden Arten sicher miteinander kommunizieren:
 
-- **Über ein virtuelles Netzwerk:** Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen (beispielsweise Azure App Service-Umgebungen und Azure-VM-Skalierungsgruppen). Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). 
+- **Über ein virtuelles Netzwerk:** Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, wie beispielsweise Azure App Service-Umgebungen, den Azure Kubernetes Service (AKS) und Azure Virtual Machine Scale Sets. Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). 
 - **Über einen Dienstendpunkt des virtuellen Netzwerks:** Erweitern Sie den Bereich privater Adressen und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf Azure-Dienstressourcen wie Azure Storage-Konten und Azure SQL-Datenbank-Instanzen. Mithilfe von Dienstendpunkten können Sie Ihre kritischen Azure-Dienstressourcen auf ein virtuelles Netzwerk beschränken und so schützen. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Kommunikation mit lokalen Ressourcen

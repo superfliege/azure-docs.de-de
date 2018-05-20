@@ -1,5 +1,19 @@
-
-
+---
+title: Includedatei
+description: Includedatei
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 03/28/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: c718fa972b9d6cba13a13edd3c7e8df29fa63207
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Klicken Sie auf **Ressourcen erstellen** > **Web + Mobil** > **Notification Hub**.
@@ -18,10 +32,9 @@
    
       ![Azure-Portal – Festlegen von Eigenschaften für den Notification Hub](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-4. Klicken Sie nach dem Erstellen des Namespace und Ihrer Notification Hub-Instanz auf **Alle Ressourcen**, und wählen Sie in der Liste die erstellte Notification Hub-Instanz aus, um sie zu öffnen. 
-   
-      ![Azure-Portal – Portalseite für den Notification Hub](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-resources.png)
+4. Wählen Sie **Benachrichtigungen** (Glockensymbol) und **Zu Ressource wechseln** aus. 
 
+      ![Azure-Portal – Benachrichtigungen -> Zu Ressource wechseln](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)    
 5. Wählen Sie in der Liste die Option **Zugriffsrichtlinien** aus. Notieren Sie sich die beiden Verbindungszeichenfolgen, die für Sie verfügbar sind. Sie werden später für die Behandlung von Pushbenachrichtigungen benötigt.
 
       >[!IMPORTANT]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 4e3edc74350bb31e73e21455a221baf9c8b87015
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cd54c4abeaa58c1b78f67c55eb5e8856dc5bb0c4
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -229,13 +229,15 @@ Um diesen Fehler zu beheben, müssen Sie [die ausführbare Datei herunterladen](
    ![Ergebnis der lokalen Ausführung der Spark-Anwendung](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run-result.png)
 
 ## <a name="known-problems"></a>Bekannte Probleme
-Um eine Anwendung an Azure Data Lake Store zu übermitteln, wählen Sie während des Azure-Anmeldeprozesses den Modus **Interactive** (Interaktiv) aus. Bei Auswahl von **Automated** (Automatisiert) tritt unter Umständen ein Fehler auf.
+Beim Verknüpfen eines Clusters würde ich empfehlen, die Anmeldeinformationen des Speichers anzugeben.
 
-![Interaktive Anmeldung](./media/apache-spark-eclipse-tool-plugin/interactive-authentication.png)
+![Interaktive Anmeldung](./media/apache-spark-eclipse-tool-plugin/link-cluster-with-storage-credential-eclipse.png)
 
-Sie können einen Azure Data Lake-Cluster auswählen, um Ihre Anwendung mit einer beliebigen Anmeldemethode zu übermitteln.
+Es gibt zwei Modi zum Übermitteln der Aufträge. Wenn Speicheranmeldeinformationen bereitgestellt werden, wird der Auftrag im Batchmodus übermittelt. Andernfalls wird der interaktive Modus verwendet. Wenn der Cluster ausgelastet ist, erhalten Sie möglicherweise die folgende Fehlermeldung:
 
-Derzeit wird die direkte Anzeige von Spark-Ausgaben nicht unterstützt.
+![Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-upload.png)
+
+![Ecplipse-Fehler beim Abrufen bei ausgelastetem Cluster](./media/apache-spark-eclipse-tool-plugin/eclipse-interactive-cluster-busy-submit.png)
 
 ## <a name="feedback"></a>Feedback
 Falls Sie uns Feedback geben möchten oder bei der Verwendung des Tools andere Probleme auftreten, können Sie uns eine E-Mail an hdivstool@microsoft.com senden.

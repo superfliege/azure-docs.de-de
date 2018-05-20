@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 6beaeb4b7e5c9e393427d575f1cf8bc48599dbd5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3d1928428915d3ea5f9f28dc400f251b9f90679f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-azure-powershell"></a>Problembehandlung bei Netzwerksicherheitsgruppen mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ Obwohl in diesem Beispiel TCP-Port 3389 verwendet wird, können anhand der folge
 ## <a name="detailed-troubleshooting-steps"></a>Ausführliche Schritte zur Problembehandlung
 Führen Sie die folgenden Schritte aus, um Probleme bei NSGs für einen virtuellen Computer zu beheben:
 
-1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
+1. Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich bei Azure an. Wenn Sie nicht mit der Verwendung von Azure PowerShell vertraut sind, finden Sie entsprechende Informationen im Artikel [Gewusst wie: Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) . Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. Geben Sie den folgenden Befehl ein, damit alle NSG-Regeln zurückgegeben werden, die auf die NIC *VM1-NIC1* in der Ressourcengruppe *RG1* angewendet werden:
    
         Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName VM1-NIC1 -ResourceGroupName RG1

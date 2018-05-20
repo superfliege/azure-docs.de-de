@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5b94092d1fbcb76210f132d4b08d131533e25397
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: be19130f7a2f45049cd7e08bb961ac6cb5aa14ff
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Referenz zu Überwachungsaktivitäten von Azure AD
 
@@ -107,7 +107,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Ressource|Dienstprinzipal entfernen|
 
 
-## <a name="automated-password-rollover"></a>Automatisiertes Kennwortrollover
+## <a name="automated-password-rollover"></a>Automated password rollover (Automatisiertes Kennwortrollover)
 
 |Überwachungskategorie|Aktivität|
 |---|---|
@@ -343,7 +343,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Ressource|Issue an id_token to the application (ID-Token für die Anwendung ausstellen)|
 
 
-## <a name="core-directory"></a>Kernverzeichnis
+## <a name="core-directory"></a>Core directory (Kernverzeichnis)
 
 |Überwachungskategorie|Aktivität|
 |---|---|
@@ -562,7 +562,7 @@ Dieser Artikel enthält die Überwachungsaktivitäten, die in Ihren Überwachung
 |Gruppenverwaltung|Admin generates a temporary password (Administrator generiert ein temporäres Kennwort.)|
 
 
-## <a name="self-service-password-management"></a>Self-Service-Kennwortverwaltung
+## <a name="self-service-password-management"></a>Self-service password management (Self-Service-Kennwortverwaltung)
 
 |Überwachungskategorie|Aktivität|
 |---|---|

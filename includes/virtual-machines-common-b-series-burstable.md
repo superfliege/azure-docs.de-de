@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 95a78df20f5bed07213dfa3cc2c9b35e283f54e7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 7372a0c49f6e41ef4d336188ceb5cf4393f4c982
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet. Zudem haben Sie die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 mit 2,3 GHz oder Intel® Haswell E5-2673 v3 mit 2,4 GHz zu steigern.
 
@@ -58,7 +58,8 @@ Wenn ich nun die 120 Guthaben, die ich während der Nebenzeit gebildet habe, mit
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>F: Unterstützt die B-Serie Storage Premium-Datenträger?
 **A:** Ja. Storage Premium-Datenträger werden von allen Größen der B-Serie unterstützt.   
     
-
+### <a name="q-my-remaining-credit-are-set-to-0-after-a-redepoy-or-a-stopstart"></a>F: Mein Restguthaben wird nach dem erneuten Bereitstellen oder Beenden bzw. Starten auf 0 gesetzt.
+**A**: Wenn eine VM „ERNEUT BEREITGESTELLT“ ist, d.h. die VM auf einen anderen Knoten verschoben wurde, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
 
     
 

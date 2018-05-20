@@ -12,20 +12,27 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/19/2018
+ms.date: 04/20/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 4f0d07d2c64650091b5fc654a645785a12c3c3de
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9f5752a969ff6a191ec60e175494316aea4abcaf
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="quickstart-create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell in Azure Stack
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Schnellstart: Erstellen eines virtuellen Windows Server-Computers mithilfe von PowerShell in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-In dieser Anleitung wird das Erstellen einer Windows Server 2016-VM mithilfe von PowerShell in Azure Stack beschrieben. Führen Sie die in diesem Artikel beschriebenen Schritte entweder über das Azure Stack Development Kit oder über einen Windows-basierten externen Client (wenn Sie über VPN verbunden sind) aus.
+Sie können einen virtuellen Windows Server 2016-Computer mit Azure Stack PowerShell erstellen. Befolgen Sie die Schritte in diesem Artikel zum Erstellen und Verwenden eines virtuellen Computers. In diesem Artikel führen Sie auch die folgenden Schritte aus:
+
+* Herstellen der Verbindung mit dem virtuellen Computer über einen Remoteclient
+* Installieren des IIS-Webservers und Anzeigen der Standardstartseite
+* Bereinigen Ihrer Ressourcen
+
+>[!NOTE]
+ Führen Sie die in diesem Artikel beschriebenen Schritte entweder mithilfe des Azure Stack Development Kits oder eines Windows-basierten externen Clients aus, wenn Sie über ein VPN verbunden sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

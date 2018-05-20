@@ -4,7 +4,7 @@ description: Referenzdokumentation zu den Features der Azure CDN-Regel-Engine.
 services: cdn
 documentationcenter: ''
 author: dksimpson
-manager: akucer
+manager: cfowler
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: c7681d6ed867f218eb871f1e96c18d00813798af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -392,7 +392,7 @@ Konfigurieren Sie dieses Feature durch Definieren der beiden folgenden Optionen:
 Option|BESCHREIBUNG
 --|--
 Original Path| Definieren Sie den relativen Pfad für die Typen von Anforderungen, deren Cacheschlüssel umgeschrieben wird. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden.
-New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden. Ein relativer Pfad kann durch die Verwendung von HTTP-Variablen dynamisch zusammengestellt werden.
+New Path|Definieren Sie den relativen Pfad für den neuen Cacheschlüssel. Ein relativer Pfad kann durch Auswählen eines Basisursprungspfads und durch anschließendes Definieren eines Muster für reguläre Ausdrücke definiert werden. Dieser relative Pfad kann durch die Verwendung von [HTTP-Variablen](cdn-http-variables.md) dynamisch zusammengestellt werden.
 **Standardverhalten:** Der Cacheschlüssel einer Anforderung wird durch den Anforderungs-URI festgelegt.
 
 [Nach oben](#azure-cdn-rules-engine-features)
@@ -884,9 +884,9 @@ Für einen Anforderungsheader kann eine der folgenden Aktionen ausgeführt werde
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):** Wert1 <br/> **Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert1Wert2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):** Wert1 <br/>**Wert des Anforderungsheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Anforderungsheaders:** Wert2 <br/>
-Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Anforderungsheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Wert des Anforderungsheaders (Regel-Engine):**<br/>Wert2 <br/>**Neuer Wert des Anforderungsheaders:** <br/>Value1Value2
+Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Wert des Anforderungsheaders (Regel-Engine):**<br/>Wert2<br/>**Neuer Wert des Anforderungsheaders:**<br/> Wert2 <br/>
+Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Konfiguration von „Modify Client Request Header“:**<br/>Der betreffende Anforderungsheader wird gelöscht.<br/>**Ergebnis:**<br/>Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
 
 Wichtige Informationen:
 
@@ -922,9 +922,9 @@ Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 
 Option|BESCHREIBUNG|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
-Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):** Wert1 <br/>**Wert des Antwortheaders (HTTP-Regel-Engine):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
-Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Response Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**<br />Wert1<br/>**Wert des Antwortheaders (Regel-Engine):**<br/>Wert2<br/>**Neuer Wert des Antwortheaders:**<br/>Value1Value2
+Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**<br/>Wert1<br/>**Wert des Antwortheaders (Regel-Engine):**<br/>Wert2 <br/>**Neuer Wert des Antwortheaders:**<br/>Wert2 <br/>
+Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):**<br/>Wert1<br/>**Konfiguration von „Modify Client Response Header“:**<br/>Der betreffende Antwortheader wird gelöscht.<br/>**Ergebnis:**<br/>Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
 
@@ -1234,31 +1234,31 @@ Zur Konfiguration dieses Features müssen die folgenden Optionen festgelegt werd
 Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
-Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
-Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- HTTP-Variablen <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
+Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
+Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/> 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
 **Beispielszenario**
 
-Dieses Beispiel zeigt, wie eine Edge-CNAME-URL umgeleitet wird, die in diese Basis-CDN-URL aufgelöst wird: http://marketing.azureedge.net/brochures
+Dieses Beispiel zeigt, wie eine Edge-CNAME-URL umgeleitet wird, die in diese Basis-CDN-URL aufgelöst wird: http:\//marketing.azureedge.net/brochures/
 
-Qualifizierte Anforderungen werden an diese Basis-Edge-CNAME-URL umgeleitet: http://cdn.mydomain.com/resources
+Qualifizierte Anforderungen werden an diese Basis-Edge-CNAME-URL umgeleitet: http:\//cdn.mydomain.com/resources
 
-Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
+Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![URL Redirect](./media/cdn-rules-engine-reference/cdn-rules-engine-redirect.png)
 
 **Die wichtigsten Punkte:**
 
 - Das Feature „URL Redirect“ definiert die Anforderungs-URLs, die umgeleitet werden sollen. Daher sind zusätzliche Übereinstimmungsbedingungen nicht erforderlich. Auch wenn die Übereinstimmungsbedingung als „Always“ definiert wurde, werden nur Anforderungen umgeleitet, die auf den Ordner „brochures“ auf dem Kundenursprung „marketing“ verweisen. 
 - Alle übereinstimmenden Anforderungen werden an die in der Option „Destination“ definierte Edge-CNAME-URL umgeleitet. 
     - Beispielszenario 1: 
-        - Beispielanforderung (CDN-URL): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/widgets.pdf  
+        - Beispielanforderung (CDN-URL): http:\//marketing.azureedge.net/brochures/widgets.pdf 
+        - Anforderungs-URL (nach der Umleitung): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - Beispielszenario 2: 
-        - Beispielanforderung (Edge-CNAME-URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/widgets.pdf  Beispielszenario
+        - Beispielanforderung (Edge-CNAME-URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
+        - Anforderungs-URL (nach der Umleitung): http:\//cdn.mydomain.com/resources/widgets.pdf
     - Beispielszenario 3: 
-        - Beispielanforderung (Edge-CNAME-URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
-        - Anforderungs-URL (nach der Umleitung): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
+        - Beispielanforderung (Edge-CNAME-URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
+        - Anforderungs-URL (nach der Umleitung): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - Die Variable „Request Scheme (%{scheme})“ wird in der Option „Destination“ verwendet. Dadurch wird sichergestellt, dass das Schema der Anforderung nach der Umleitung unverändert bleibt.
 - Die aus der Anforderung erfassten URL-Segmente werden über „$1“ an die neue URL angefügt.
 
@@ -1276,23 +1276,23 @@ Wichtige Informationen:
 
 Option|BESCHREIBUNG
 -|-
- Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/>     - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
- Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - HTTP-Variablen <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
+ Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Source (or content access point):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Source (pattern):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen. 
+ Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. 
  Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Die anfordernde Person erhält also den gleichen Antwortcode, den sie auch beim Anfordern der umgeschriebenen URL erhalten hätte.
 
 **Beispielszenario 1**
 
-Dieses Beispiel zeigt, wie eine Edge-CNAME-URL umgeleitet wird, die in diese Basis-CDN-URL aufgelöst wird: http://marketing.azureedge.net/brochures/
+Dieses Beispiel zeigt, wie eine Edge-CNAME-URL umgeleitet wird, die in diese Basis-CDN-URL aufgelöst wird: http:\//marketing.azureedge.net/brochures/
 
-Qualifizierte Anforderungen werden an diese Basis-Edge-CNAME-URL umgeleitet: http://MyOrigin.azureedge.net/resources/
+Qualifizierte Anforderungen werden an diese Basis-Edge-CNAME-URL umgeleitet: http:\//MyOrigin.azureedge.net/resources/
 
-Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
+Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![URL Redirect](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 
 **Beispielszenario 2**
 
 Dieses Beispiel zeigt, wie eine Edge-CNAME-URL mithilfe von regulären Ausdrücken aus GROSSBUCHSTABEN an kleinbuchstaben umgeleitet wird.
 
-Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
+Diese URL-Umleitung kann durch die folgende Konfiguration erreicht werden: ![URL Redirect](./media/cdn-rules-engine-reference/cdn-rules-engine-to-lowercase.png)
 
 
 **Die wichtigsten Punkte:**

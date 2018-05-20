@@ -12,17 +12,17 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/15/2018
+ms.date: 05/11/2018
 ms.author: juliako
-ms.openlocfilehash: def590fa8253d81f3477c3953db684c160e25cd9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 783dc0fd37f98a12d9240ad4b3ee72aa98212eff
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI-Beispiel: Erstellen eines Azure Media Services-Kontos
 
-Dieses Skript erstellt ein Azure Media Services-Konto.
+Das Azure CLI-Skript in diesem Thema zeigt, wie ein Azure Media Services-Konto erstellt wird.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -30,14 +30,14 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 ## <a name="example-script"></a>Beispielskript
 
-[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/media-services-create-account.sh "Create Account")]
+[!code-azurecli-interactive[main](../../../../cli_scripts/media-services/media-services-create-account/Create-Account.sh "Create Account")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
 Führen Sie den folgenden Befehl aus, um die Ressourcengruppe und alle dazugehörigen Ressourcen zu entfernen:
 
 ```azurecli-interactive
-az group delete --name myResourceGroup
+az group delete --name amsResourceGroup
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
@@ -48,9 +48,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Erstellt ein Speicherkonto. |
-| **az ams account create** | Erstellt ein Media Services-Konto. |
-| **az ams account sp create** | Erstellt einen Dienstprinzipal mit Kennwort und konfiguriert dessen Zugriff auf ein Azure Media Services-Konto. |
+| [az ams account create](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest#az-ams-account-create) | Erstellt ein Media Services-Konto. |
+| [az ams account sp create](https://docs.microsoft.com/cli/azure/ams/account/sp?view=azure-cli-latest#az-ams-account-sp-create) | Erstellt einen Dienstprinzipal mit Kennwort und konfiguriert dessen Zugriff auf ein Azure Media Services-Konto. 
 | [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

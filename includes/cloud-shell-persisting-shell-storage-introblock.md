@@ -18,6 +18,9 @@ Wenn Sie die grundlegenden Einstellungen verwenden und nur ein Abonnement auswä
 
 Die Dateifreigabe wird in Ihrem Verzeichnis `$Home` als `clouddrive` bereitgestellt. Dies ist eine einmalige Aktion, und die Dateifreigabe wird in den nachfolgenden Sitzungen automatisch bereitgestellt. 
 
+> [!NOTE]
+> Aus Sicherheitsgründen sollte jeder Benutzer einen eigenen Speicher bereitstellen.  Für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) benötigen Benutzer zumindest die Berechtigungen eines Mitwirkenden.
+
 In Bash enthält die Dateifreigabe auch ein 5-GB-Image, das für Sie erstellt wird und mit dem Daten automatisch in Ihrem Verzeichnis `$Home` beibehalten werden. 
 
 ### <a name="use-existing-resources"></a>Verwenden vorhandener Ressourcen

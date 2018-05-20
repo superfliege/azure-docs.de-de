@@ -1,0 +1,109 @@
+- name: Azure IoT-Grundlagen
+  href: /azure/iot-fundamentals
+- name: Azure IoT Central-Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Azure IoT Central?
+      href: overview-iot-central.md
+    - name: IoT-Lösungsoptionen
+      href: overview-iot-options.md
+    - name: Überblick über die Benutzeroberfläche
+      href: overview-iot-central-tour.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen einer neuen Anwendung
+      href: quick-deploy-iot-central.md
+- name: Tutorials
+  items:
+    - name: Generator
+      items:
+        - name: 1. Definieren eines neuen Gerätetyps
+          href: tutorial-define-device-type.md
+        - name: 2. Konfigurieren von Regeln
+          href: tutorial-configure-rules.md
+        - name: 3. Anpassen des Operatoransicht
+          href: tutorial-customize-operator.md
+    - name: Operator
+      items:
+        - name: 4. Überwachen von Geräten
+          href: tutorial-monitor-devices.md
+        - name: 5. Hinzufügen eines Geräts
+          href: tutorial-add-device.md
+- name: Konzepte
+  items:
+    - name: Architecture
+      href: concepts-architecture.md
+    - name: Konnektivität
+      href: concepts-connectivity.md
+- name: Anleitungen
+  items:
+    - name: Administrator
+      items:
+        - name: Erstellen einer Anwendung
+          href: howto-create-application.md
+        - name: Verwalten Ihrer Anwendung
+          href: howto-administer.md
+    - name: Generator
+      items:
+        - name: Einrichten der Gerätevorlage
+          href: howto-set-up-template.md
+        - name: Gerätevorlagenversion
+          href: howto-version-devicetemplate.md
+        - name: Erstellen einer Telemetrieregel
+          href: howto-create-telemetry-rules.md
+        - name: Erstellen einer Ereignisregel
+          href: howto-create-event-rules.md
+        - name: Vorbereiten und Hochladen von Images
+          href: howto-prepare-images.md
+    - name: Operator
+      items:
+        - name: Verwalten von Geräten
+          href: howto-manage-devices.md
+        - name: Verwenden von Gerätegruppen
+          href: howto-use-device-sets.md
+        - name: Erstellen benutzerdefinierter Analysen
+          href: howto-create-analytics.md
+    - name: Geräteentwickler
+      items:
+        - name: Vorbereiten und Verbinden einer (generischen) Node.js-Anwendung
+          href: howto-connect-nodejs.md
+        - name: Vorbereiten und Verbinden eines MXChip IoT DevKit
+          href: howto-connect-devkit.md
+        - name: Vorbereiten und Verbinden eines Raspberry Pi (Python)
+          href: howto-connect-raspberry-pi-python.md
+        - name: 'Vorbereiten und Verbinden eines Raspberry Pi (C#)'
+          href: howto-connect-raspberry-pi-csharp.md
+        - name: Vorbereiten und Verbinden Sie eines Windows IoT Core-Geräts
+          href: howto-connect-windowsiotcore.md
+- name: Verwandte Themen
+  items:
+    - name: Lösungen
+      items:
+        - name: Vorkonfigurierte IoT Suite-Lösungen
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: /microsoft-iot-central
+    - name: Plattformdienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Location Based Services
+          href: /azure/location-based-services
+        - name: Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: angeben
+  items:
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-central'
