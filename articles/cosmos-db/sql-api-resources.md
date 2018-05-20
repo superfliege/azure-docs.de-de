@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20af4611920328ddcaa6e658101184451217a011
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69ee7baeda524647dd259ea22bb948b0168fd913
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Hierarchisches Azure Cosmos DB-Ressourcenmodell und zentrale Konzepte
 
@@ -50,7 +50,7 @@ Wie die folgende Abbildung veranschaulicht, besteht das hierarchische **Ressourc
 ![Hierarchisches Azure Cosmos DB-Ressourcenmodell][1]  
 **Hierarchisches Ressourcenmodell**   
 
-Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein Datenbankkonto erstellen](create-sql-api-dotnet.md). Ein Datenbankkonto kann aus einer Reihe von **Datenbanken** bestehen, die jeweils mehrere **Sammlungen** enthalten, die jeweils wiederum **gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen, Dokumente und die zugehörigen **Anhänge** enthalten. Einer Datenbank sind zudem **Benutzer** zugeordnet, die jeweils über eine Reihe von **Berechtigungen** verfügen, um auf Sammlungen, gespeicherte Prozeduren, Trigger, UDFs, Dokumente oder Anhänge zuzugreifen. Während Datenbanken, Benutzer, Berechtigungen und Sammlungen vom System definierte Ressourcen mit bekannten Schemas sind, enthalten Dokumente und Anhänge beliebige, benutzerdefinierte JSON-Inhalte.  
+Um mit Ressourcen zu arbeiten, müssen Sie über Ihr Azure-Abonnement [ein Datenbankkonto erstellen](create-sql-api-dotnet.md). Ein Datenbankkonto kann aus einer Reihe von **Datenbanken** mit jeweils mehreren **Sammlungen** bestehen, die jeweils wiederum **gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen, Dokumente und zugehörige Anhänge** enthalten. Einer Datenbank sind zudem **Benutzer** zugeordnet, die jeweils über eine Reihe von **Berechtigungen** verfügen, um auf Sammlungen, gespeicherte Prozeduren, Trigger, UDFs, Dokumente oder Anhänge zuzugreifen. Während Datenbanken, Benutzer, Berechtigungen und Sammlungen vom System definierte Ressourcen mit bekannten Schemas sind, enthalten Dokumente und Anhänge beliebige, benutzerdefinierte JSON-Inhalte.  
 
 | Ressource | BESCHREIBUNG |
 | --- | --- |
