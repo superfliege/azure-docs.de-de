@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1f1c8d0305334d85500b501aee5a71664bb49050
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9a51638ea6d85178e6631ac278c116e4c7e05d61
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/16/2018
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-azure-portal"></a>Erstellen eines öffentlichen Load Balancer Standard mit zonenredundantem öffentlichen IP-Adressen-Front-End mithilfe des Azure-Portals
 
@@ -44,13 +44,10 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 6. Klicken Sie auf **Öffentliche IP-Adresse** und **Neu erstellen**, und geben Sie auf der Seite **Öffentliche IP-Adresse erstellen** unter „Name“ **myPublicIPStandard** ein.
     >[!NOTE] 
     > Die in diesem Schritt erstellte öffentliche IP-Adresse ist von der Standard-SKU und standardmäßig zonenredundant. 
-8. Wählen Sie unter **Standort** **East US2** (USA, Osten 2) aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Lastenausgleichs wird dann gestartet und wird einige Minuten dauern.
-
-    ![Erstellen eines zonenredundanten Load Balancer Standard mit dem Azure-Portal](./media/load-balancer-get-started-internet-az-portal/create-zone-redundant-load-balancer-standard.png)
-
+8. Wählen Sie unter **Standort** **East US2** (USA, Osten 2) aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und dauert einige Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+- Erfahren Sie mehr zu [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 
 

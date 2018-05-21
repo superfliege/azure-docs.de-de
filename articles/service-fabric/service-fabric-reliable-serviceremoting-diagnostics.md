@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric-Diagnose und -Überwachung | Microsoft-Dokumentation"
-description: "In diesem Artikel werden die Funktionen zur Leistungsüberwachung in der Service Fabric Reliable ServiceRemoting-Runtime beschrieben, z.B. die ausgegebenen Leistungsindikatoren."
+title: Azure Service Fabric-Diagnose und -Überwachung | Microsoft-Dokumentation
+description: In diesem Artikel werden die Funktionen zur Leistungsüberwachung in der Service Fabric Reliable ServiceRemoting-Runtime beschrieben, z.B. die ausgegebenen Leistungsindikatoren.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -9,16 +9,16 @@ editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f54e157654fb15d2f7ff48ddc666c6c8803c75a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d462ba0955a362c27b786ee6a5670eec20c52a22
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
 Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
@@ -27,7 +27,7 @@ Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.mi
 ## <a name="performance-counters"></a>Leistungsindikatoren
 Die Reliable ServiceRemoting-Runtime definiert die folgenden Leistungsindikatorkategorien:
 
-| Kategorie | Beschreibung |
+| Category (Kategorie) | BESCHREIBUNG |
 | --- | --- |
 | Service Fabric-Dienst |Leistungsindikatoren für Azure Service Fabric ServiceRemoting, beispielsweise die durchschnittliche Zeit zum Verarbeiten der Anforderung |
 | Service Fabric-Dienstmethode |Leistungsindikatoren für Methoden, die vom Service Fabric Remoting-Dienst implementiert werden, z.B. wie oft eine Dienstmethode aufgerufen wird |
@@ -82,7 +82,7 @@ Im Beispiel oben ist `ivoicemailboxservice.leavemessageasync` der Methodenname, 
 
 Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Ausführung von Dienstmethoden.
 
-| Name der Kategorie | Name des Leistungsindikators | Beschreibung |
+| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienstmethode |Aufrufe pro Sekunde |Anzahl der Aufrufe der Dienstmethode pro Sekunde |
 | Service Fabric-Dienstmethode |Durchschnittliche Anzahl von Millisekunden pro Aufruf |Ausführungsdauer der Dienstmethode in Millisekunden |
@@ -91,7 +91,7 @@ Die Reliable Service-Runtime veröffentlicht die folgenden Leistungsindikatoren 
 ### <a name="service-request-processing-performance-counters"></a>Leistungsindikatoren für die Dienstanforderungsverarbeitung
 Wenn ein Client eine Methode über ein Dienst-Proxy-Objekt aufruft, wird eine Anforderungsnachricht über das Netzwerk an den Remoting-Dienst gesendet. Der Dienst verarbeitet die Anforderungsnachricht und sendet eine Antwort an den Client zurück. Die Reliable ServiceRemoting-Runtime veröffentlicht die folgenden Leistungsindikatoren im Zusammenhang mit der Verarbeitung von Dienstanforderungen.
 
-| Name der Kategorie | Name des Leistungsindikators | Beschreibung |
+| Name der Kategorie | Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- | --- |
 | Service Fabric-Dienst |Anzahl von ausstehenden Anfragen |Anzahl von Anforderungen, die im Dienst verarbeitet werden |
 | Service Fabric-Dienst |Durchschnittliche Anzahl von Millisekunden pro Anforderung |Zeit (in Millisekunden), die der Dienst zum Verarbeiten einer Anforderung erforderte |

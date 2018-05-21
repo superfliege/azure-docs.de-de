@@ -1,24 +1,24 @@
 ---
 title: Defragmentierung von Metriken in Azure Service Fabric | Microsoft Docs
-description: "Eine Übersicht über den Einsatz von Defragmentierung oder Überlastung als Strategie für Metriken in Service Fabric"
+description: Eine Übersicht über den Einsatz von Defragmentierung oder Überlastung als Strategie für Metriken in Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 0b8b2bad967532bb0040407dc6a3a7b9599576d2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a35ae5933729615d634359e64e31d43536d81431
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentierung von Metriken und Lasten in Service Fabric
 Die Standardstrategie des Clusterressourcen-Managers von Service Fabric beim Verwalten von Auslastungsmetriken besteht darin, die Auslastung zu verteilen. Durch die Sicherstellung der gleichmäßigen Nutzung der Knoten werden Hotspots und Coldspots vermieden, die gleichermaßen zu Konflikten und vergeudeten Ressourcen führen. Die Verteilung von Workloads im Cluster ist zudem das sicherste Konzept im Hinblick auf das Überstehen von Ausfällen, da dadurch sichergestellt wird, dass bei einem Ausfall kein hoher Prozentsatz einer Workload verloren geht. 

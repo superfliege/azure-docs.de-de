@@ -1,24 +1,24 @@
 ---
-title: "Clusterressourcen-Manager von Service Fabric – Integration der Verwaltung | Microsoft Docs"
-description: "Übersicht über die Integrationspunkte zwischen dem Clusterressourcen-Manager und der Service Fabric-Verwaltung."
+title: Clusterressourcen-Manager von Service Fabric – Integration der Verwaltung | Microsoft Docs
+description: Übersicht über die Integrationspunkte zwischen dem Clusterressourcen-Manager und der Service Fabric-Verwaltung.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 70c0cc37a1d362c937ab86bd630c5ab051e63870
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f93ca94d5aa3e95637a53a4c8fe3d9d264dd58c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integration des Clusterressourcen-Managers in die Service Fabric-Clusterverwaltung
 Der Clusterressourcen-Manager von Service Fabric führt zwar keine Upgrades in Service Fabric aus, ist jedoch daran beteiligt. Bei der Verwaltung unterstützt Sie der Clusterressourcen-Manager zunächst einmal durch das Verfolgen des gewünschten Clusterstatus und der im Cluster enthaltenen Dienste. Der Clusterressourcen-Manager sendet Integritätsberichte, wenn der Cluster nicht in die gewünschte Konfiguration versetzt werden kann. Dies ist beispielsweise der Fall, wenn nicht genügend Kapazität verfügbar ist. Der Clusterressourcen-Manager sendet dann Integritätswarnungen und Fehler, die das Problem angeben. Ein weiterer Teil der Integration hängt mit der Funktionsweise von Upgrades zusammen. Während Upgrades wird das Verhalten des Clusterressourcen-Managers geringfügig verändert.  
@@ -180,7 +180,7 @@ ClusterManifest.xml
 ```
 
 ## <a name="fault-domain-and-upgrade-domain-constraints"></a>Einschränkungen für Fehlerdomänen und Upgradedomänen
-Der Clusterressourcen-Manager möchte, dass Dienste auf Fehler- und Upgradedomänen verteilt bleiben. Er modelliert diese Anforderung als Einschränkung innerhalb des Moduls des Clusterressourcen-Managers. Weitere Informationen zu ihrer Verwendung und ihrem bestimmten Verhalten finden Sie im Artikel zur [Clusterkonfiguration](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
+Der Clusterressourcen-Manager möchte, dass Dienste auf Fehler- und Upgradedomänen verteilt bleiben. Er modelliert diese Anforderung als Einschränkung innerhalb der Engine des Clusterressourcen-Managers. Weitere Informationen zu ihrer Verwendung und ihrem bestimmten Verhalten finden Sie im Artikel zur [Clusterkonfiguration](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
 
 Der Clusterressourcen-Manager muss möglicherweise einige Replikate in einer Upgradedomäne platzieren, um Upgrades, Fehler oder andere Verstöße gegen Einschränkungen zu verarbeiten. Das Packen in Fehler- oder Upgradedomänen erfolgt normalerweise nur, wenn mehrere Fehler oder andere Änderungen im System eine richtige Platzierung verhindern. Wenn Sie das Packen auch in diesen Situationen verhindern möchten, können Sie die `RequireDomainDistribution`-[Platzierungsrichtlinie](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing) verwenden. Beachten Sie, dass dies möglicherweise Nebenwirkungen auf die Dienstverfügbarkeit und -zuverlässigkeit hat. Prüfen Sie es also sorgfältig.
 

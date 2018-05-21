@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: b08e2b7315d180a387f27ab2082b7f9f6a9bbfff
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 776ae83990a7799102c69347196a72a68561ee6b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
 Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
@@ -76,7 +76,7 @@ $myNic2 = New-AzureRmNetworkInterface -ResourceGroupName "myResourceGroup" `
     -SubnetId $backEnd.Id
 ```
 
-In der Regel erstellen Sie auch eine [Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md), um den Netzwerkdatenverkehr zur VM zu filtern, und einen [Lastenausgleich](../../load-balancer/load-balancer-overview.md) zum Verteilen des Datenverkehrs auf mehrere VMs.
+In der Regel erstellen Sie auch eine [Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md), um den Netzwerkdatenverkehr zur VM zu filtern, und einen [Lastenausgleich](../../load-balancer/load-balancer-overview.md) zum Verteilen des Datenverkehrs auf mehrere VMs.
 
 ### <a name="create-the-virtual-machine"></a>Erstellen des virtuellen Computers
 Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe weist eine maximale Anzahl von Netzwerkkarten auf, die Sie einem virtuellen Computer hinzufügen können. Weitere Informationen finden Sie unter [Windows-VM-Größen](sizes.md) .

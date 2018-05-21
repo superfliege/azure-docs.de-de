@@ -1,11 +1,11 @@
 ---
-title: "URL-basiertes Inhaltsrouting – Übersicht | Microsoft Docs"
-description: "Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Application Gateway sowie über das urlPathMap-Konfigurationselement und die PathBasedRouting-Regel."
+title: URL-basiertes Inhaltsrouting – Übersicht | Microsoft Docs
+description: Diese Seite bietet eine Übersicht über das URL-basierte Inhaltsrouting mit Application Gateway sowie über das urlPathMap-Konfigurationselement und die PathBasedRouting-Regel.
 documentationcenter: na
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 ms.assetid: 4409159b-e22d-4c9a-a103-f5d32465d163
 ms.service: application-gateway
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
-ms.author: davidmu
-ms.openlocfilehash: a5d26a603eb1bbe3ce7f8f95b19ba816c32222c2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: victorh
+ms.openlocfilehash: f6108b5ac628b8bc2c1d74dcc871f96115094859
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -30,7 +30,7 @@ Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für „conto
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Anforderungen für http://contoso.com/video/* werden an „VideoServerPool“ und Anforderungen für http://contoso.com/images/* an „ImageServerPool“ geroutet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
+Anforderungen für http://contoso.com/video/* werden an „VideoServerPool“ und Anforderungen für http://contoso.com/images/* an „ImageServerPool“ weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
 > Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.

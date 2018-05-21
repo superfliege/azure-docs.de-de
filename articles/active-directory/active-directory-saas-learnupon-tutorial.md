@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 2796f280b2f95504be5f9691098bff07fdd93393
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: f9f7cf65cc2742fef705558c3a99f9faa49a7d3d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Tutorial: Azure Active Directory-Integration mit LearnUpon
 
@@ -29,7 +29,7 @@ Die Integration von LearnUpon in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LearnUpon anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -251,7 +251,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

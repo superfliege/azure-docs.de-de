@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 5b46323dc487bbc714c2306ed006afffe8c1bb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3e82cf4ccdc09cd6505994f9db952ac718342bf2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Tutorial: Azure Active Directory-Integration mit LinkedIn Elevate
 
@@ -29,7 +29,7 @@ Die Integration von LinkedIn Elevate in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LinkedIn Elevate anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LinkedIn Elevate aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von LinkedIn Elevate in Azure AD müssen Sie L
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie **LinkedIn Elevate** im Suchfeld ein. Wählen Sie im Ergebnisbereich die Option **LinkedIn Elevate** aus, um die Anwendung hinzuzufügen.
 
@@ -82,10 +82,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei LinkedIn Elevate über Azure AD müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines LinkedIn Elevate-Testbenutzers](#creating-a-linkedin-elevate-test-user)** – um das einmalige Anmelden über Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -96,25 +96,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **LinkedIn Elevate** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedin_01.png)
 
 3. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem LinkedIn Elevate-Mandanten als Administrator an.
 
-4. Klicken Sie im **Account Center** unter **Settings** auf **Global Settings**. Wählen Sie außerdem aus der Dropdownliste die Option **Elevate - Elevate AAD Test** aus.
+4. Klicken Sie im **Kontocenter** unter **Einstellungen** auf **Globale Einstellungen**. Wählen Sie außerdem aus der Dropdownliste die Option **Elevate - Elevate AAD Test** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_01.png)
 
 5. Klicken Sie auf **OR Click Here to load and copy individual fields from the form**, und kopieren Sie die Einträge **Entity Id** und **Assertion Consumer Access (ACS) Url**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_03.png)
 
 6. Führen Sie im Azure-Portal unter **Domäne und URLs für LinkedIn Elevate** die folgenden Schritte aus, wenn Sie das einmalige Anmelden im Modus **IdP-initiiert** konfigurieren möchten.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_01.png)
 
     a. Geben Sie im Textfeld **Bezeichner** die **Entitäts-ID** ein, die Sie aus dem LinkedIn-Portal kopiert haben. 
 
@@ -124,11 +124,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=elevate&applicationInstanceId=<InstanceId>` 
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_signon_02.png) 
     
 8. Die LinkedIn Elevate-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, LinkedIn Elevate erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/updateusermail.png)
 
 9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Sie müssen einen weiteren Anspruch namens **department** hinzufügen, dessen Wert **user.department** zugeordnet werden muss.
 
@@ -149,19 +149,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 10. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_certificate.png) 
 
 11. Klicken Sie auf **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_general_400.png)
 
 12. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Laden Sie die XML-Datei hoch, die Sie gerade aus dem Azure-Portal heruntergeladen haben, indem Sie auf die Option „XML-Datei hochladen“ klicken.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 13. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
@@ -192,7 +192,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**. 
+    d. Klicken Sie auf **Create**. 
 
 ### <a name="creating-a-linkedin-elevate-test-user"></a>Erstellen eines LinkedIn Elevate-Testbenutzers
 
@@ -214,7 +214,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LinkedIn Elevate** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_0001.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinElevate-tutorial/tutorial-linkedinElevate_0001.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -240,7 +240,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LinkedIn Elevate“ klicken, sollt
 
 * [Tutorial: Konfigurieren von LinkedIn Elevate für die automatische Benutzerbereitstellung in Azure Active Directory](active-directory-saas-linkedinelevate-provisioning-tutorial.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

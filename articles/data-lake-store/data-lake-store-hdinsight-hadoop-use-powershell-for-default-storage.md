@@ -10,17 +10,16 @@ ms.assetid: 8917af15-8e37-46cf-87ad-4e6d5d67ecdb
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 81074d303fbcefdf396de09510f69067eac3f3f6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2a9f2e9c2634173cf2feb9ded2e87e49f9c8d1e4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Data Lake Store als Standardspeicher mithilfe von PowerShell
+
 > [!div class="op_single_selector"]
 > * [Verwenden des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [Verwenden von PowerShell (für Standardspeicher)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -38,11 +37,12 @@ Hier finden Sie einige wichtige Überlegungen zur Verwendung von HDInsight mit D
 Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zum Arbeiten mit Data Lake Store mithilfe von PowerShell zu konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllen:
 
 * **Ein Azure-Abonnement**: Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
 * **Azure PowerShell 1.0 oder höher**: Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/en-us/downloads), um Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
+* **Windows Software Development Kit (SDK)**: Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/downloads), um Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
 * **Azure Active Directory-Dienstprinzipal**: In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
     >[!NOTE]
@@ -50,6 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgend
     >
 
 ## <a name="create-a-data-lake-store-account"></a>Erstellen eines Data Lake-Speicherkontos
+
 Führen Sie folgende Schritte aus, um ein Data Lake Store-Konto zu erstellen:
 
 1. Öffnen Sie auf dem Desktop ein PowerShell-Fenster, und geben Sie anschließend die folgenden Codeausschnitte ein. Wenn Sie zum Anmelden aufgefordert werden, melden Sie sich als einer der Abonnementadministrator oder -besitzer an. 
@@ -142,7 +143,7 @@ In diesem Abschnitt erstellen Sie einen Dienstprinzipal für eine Azure AD-Anwen
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
-        $password = Read-Host –Prompt "Enter the password" # This is the password you specified for the .pfx file
+        $password = Read-Host -Prompt "Enter the password" # This is the password you specified for the .pfx file
 
         $certificatePFX = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($certificateFilePath, $password)
 

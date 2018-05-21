@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid-Ereignisschema für Service Bus"
-description: "Beschreibt die Eigenschaften, die mit Azure Event Grid für Service Bus-Ereignisse bereitgestellt werden."
+title: Azure Event Grid-Ereignisschema für Service Bus
+description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Service Bus-Ereignisse bereitgestellt werden.
 services: event-grid
 author: banisadr
 manager: darosa
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 02/21/2018
 ms.author: babanisa
-ms.openlocfilehash: 72780bff3807534efb456a9a7998f7d4de3c6f12
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 991679eeb0f7c98606133750b193a5895f39178f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-event-grid-event-schema-for-service-bus"></a>Azure Event Grid-Ereignisschema für Service Bus
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die Eigenschaften und das Schema für Service Bus-Ereig
 
 Service Bus gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | Beschreibung |
+| Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.ServiceBus.ActiveMessagesAvailableWithNoListeners | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange oder in einem Abonnement vorliegen und kein lauschender Empfänger vorhanden ist. |
 | Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener | Wird ausgelöst, wenn aktive Nachrichten in einer Warteschlange für unzustellbare Nachrichten vorliegen und kein lauschender Empfänger vorhanden ist. |
@@ -77,7 +77,7 @@ Das Schema für ein Ereignis mit Warteschlange für unzustellbare Nachrichten si
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -90,7 +90,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | nameSpaceName | Zeichenfolge | Der Service Bus-Namespace, in dem sich die Ressource befindet. |
 | requestUri | Zeichenfolge | Der URI für die spezifische Warteschlange oder das Abonnement, von der bzw. von dem das Ereignis ausgegeben wird. |

@@ -5,20 +5,20 @@ services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5c291ef864518b2366c61c9e5c11fac9e8468a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26dffa7e57da2ef383f078c7c5cbb7b9664923ee
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Verwalten von Ressourcenverbrauch und Auslastung in Service Fabric mit Metriken
 *Metriken* die Ressourcen, die für Ihre Dienste wichtig sind und die von den Knoten im Cluster bereitgestellt werden. Eine Metrik ist ein beliebiges Element, das Sie verwalten möchten, um die Leistung Ihrer Dienste zu verbessern oder zu steuern. Sie können beispielsweise den Arbeitsspeicherverbrauch überwachen, um festzustellen, ob Ihr Dienst überlastet ist. Eine weitere Verwendungsmöglichkeit: Sie können ermitteln, ob der Dienst an eine andere Position verschoben werden kann, bei der eine geringere Arbeitsspeicherauslastung gegeben ist, um die Leistung zu steigern.
@@ -141,7 +141,7 @@ Zur Erinnerung: Falls Sie nur die Standardmetriken verwenden möchten, müssen S
 Im Folgenden betrachten wir jede dieser Einstellungen eingehender und diskutieren das Verhalten, das von ihnen beeinflusst wird.
 
 ## <a name="load"></a>Laden
-Metriken werden definiert, um eine Auslastung darzustellen. Die *Auslastung* gibt an, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder von einem Replikat auf einem bestimmten Knoten verbraucht wird. Die Auslastung kann an beinahe jedem Punkt konfiguriert werden. Beispiel:
+Metriken werden definiert, um eine Auslastung darzustellen. Die *Auslastung* gibt an, welcher Anteil einer bestimmten Metrik von einer Dienstinstanz oder von einem Replikat auf einem bestimmten Knoten verbraucht wird. Die Auslastung kann an beinahe jedem Punkt konfiguriert werden. Beispiel: 
 
   - Die Auslastung kann beim Erstellen eines Diensts definiert werden. Hierbei wird von der _Standardauslastung_ gesprochen.
   - Die Metrikinformationen für einen Dienst, einschließlich der Standardauslastungen, können nach dem Erstellen des Diensts aktualisiert werden. Dies wird als _Aktualisieren eines Diensts_ bezeichnet. 

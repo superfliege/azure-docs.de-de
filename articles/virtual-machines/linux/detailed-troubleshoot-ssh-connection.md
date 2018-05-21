@@ -1,12 +1,12 @@
 ---
-title: "Ausführliche Schritte zur Behebung von Problemen mit SSH bei einem virtuellen Azure-Computer | Microsoft Docs"
-description: "Weitere detaillierte Schritte zur Problembehandlung für SSH-Verbindungen mit einem virtuellen Azure-Computer"
+title: Ausführliche Schritte zur Behebung von Problemen mit SSH bei einem virtuellen Azure-Computer | Microsoft Docs
+description: Weitere detaillierte Schritte zur Problembehandlung für SSH-Verbindungen mit einem virtuellen Azure-Computer
 keywords: SSH-Verbindung abgelehnt,SSH-Fehler,Azure SSH,SSH-Verbindungsfehler
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 88f3ca3202359f9f45f5b9a5054ab95b40558520
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Ausführliche Schritte zum Beheben von SSH-Verbindungsproblemen mit einem virtuellen Azure-Computer unter Linux
 Wenn der SSH-Client nicht in der Lage ist, den SSH-Dienst auf dem virtuellen Computer zu erreichen, können dafür viele verschiedene Gründe vorliegen. Wenn Sie die [allgemeinen Schritte zur Problembehandlung bei SSH](troubleshoot-ssh-connection.md) befolgt haben, müssen Sie die Ursache der Verbindungsprobleme genauer untersuchen. Dieser Artikel führt Sie durch die detaillierten Schritte zur Problembehandlung, mit denen Sie ermitteln können, wo bei der SSH-Verbindung ein Fehler auftritt und wie Sie diesen beheben.
@@ -39,7 +39,7 @@ Mit den folgenden Schritten können Sie die Fehlerquelle isolieren und Lösungen
 
 2. Wählen Sie **Einstellungen** aus, um Endpunkte, IP-Adressen, Netzwerksicherheitsgruppen und andere Einstellungen zu überprüfen.
 
-   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/virtual-networks-nsg.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
+   Der virtuelle Computer sollte über einen für SSH-Datenverkehr definierten Endpunkt verfügen, den Sie in **Endpunkte** oder **[Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md)** anzeigen können. Endpunkte in virtuellen Computern, die mit Resource Manager erstellt wurden, werden in einer Netzwerksicherheitsgruppe gespeichert. Stellen Sie sicher, dass die Regeln auf die Netzwerksicherheitsgruppe angewendet wurden und im Subnetz auf sie verwiesen wird.
 
 Analysieren Sie zum Überprüfen der Netzwerkverbindung die konfigurierten Endpunkte, und überprüfen Sie, ob Sie über ein anderes Protokoll (z.B. HTTP oder über einen anderen Dienst) eine Verbindung mit dem virtuellen Computer herstellen können.
 
@@ -111,7 +111,7 @@ Entfernen Sie den aktuellen Endpunkt, und erstellen Sie einen anderen Endpunkt m
 
 ## <a name="source-4-network-security-groups"></a>Quelle 4: Netzwerksicherheitsgruppen
 Netzwerksicherheitsgruppen ermöglichen Ihnen eine präzisere Steuerung des zulässigen eingehenden und ausgehenden Datenverkehrs. Sie können Regeln erstellen, die mehrere Subnetze und Clouddienste in einem virtuellen Azure-Netzwerk umfassen. Überprüfen Sie die Regeln der Netzwerksicherheitsgruppe, um sicherzustellen, dass sowohl eingehender als auch ausgehender SSH-Datenverkehr über das Internet zulässig ist.
-Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md).
+Weitere Informationen finden Sie unter [Informationen zu Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md).
 
 Sie können die NSG-Konfiguration auch mithilfe der IP-Überprüfung überprüfen. Weitere Informationen finden Sie unter [Übersicht über die Azure-Netzwerküberwachung](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 

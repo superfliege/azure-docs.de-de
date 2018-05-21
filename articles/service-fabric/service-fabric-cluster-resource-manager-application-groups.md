@@ -1,24 +1,24 @@
 ---
-title: "Clusterressourcen-Manager von Service Fabric – Anwendungsgruppen | Microsoft Docs"
-description: "Übersicht über die Anwendungsgruppenfunktionalität im Clusterressourcen-Manager von Service Fabric"
+title: Clusterressourcen-Manager von Service Fabric – Anwendungsgruppen | Microsoft Docs
+description: Übersicht über die Anwendungsgruppenfunktionalität im Clusterressourcen-Manager von Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3212631ede7125bd849c2d9ba86ba2a0747d69ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 215efc1f0597f5199dd37baf4b109d7e76040aae
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-application-groups"></a>Einführung in Anwendungsgruppen
 Der Clusterressourcen-Manager von Service Fabric verwaltet die Clusterressourcen in der Regel durch gleichmäßiges Verteilen der Last (durch [Metriken](service-fabric-cluster-resource-manager-metrics.md) dargestellt) über den gesamten Cluster. Service Fabric verwaltet die Kapazität der Knoten im Cluster und den Cluster als Ganzes über [Kapazität](service-fabric-cluster-resource-manager-cluster-description.md). Metriken und Kapazität funktionieren hervorragend für eine Vielzahl von Workloads, aber die Muster, die intensiven Gebrauch von anderen Service Fabric-Anwendungsinstanzen machen, bringen manchmal zusätzliche Anforderungen ein. Dazu zählen beispielsweise:
@@ -183,7 +183,7 @@ Die ApplicationLoad-Abfrage gibt grundlegende Informationen zu der Anwendungskap
 * Anwendungskapazität: maximal zulässiger Wert der Anwendungslast.
 
 ## <a name="removing-application-capacity"></a>Entfernen der Anwendungskapazität
-Sobald die Anwendungskapazitätsparameter für eine Anwendung festgelegt sind, können sie mit den APIs zur Anwendungsaktualisierung oder PowerShell-Cmdlets entfernt werden. Beispiel:
+Sobald die Anwendungskapazitätsparameter für eine Anwendung festgelegt sind, können sie mit den APIs zur Anwendungsaktualisierung oder PowerShell-Cmdlets entfernt werden. Beispiel: 
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity

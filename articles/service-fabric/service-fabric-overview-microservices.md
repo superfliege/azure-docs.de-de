@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell
-ms.openlocfilehash: d56b78a0274842c012e57f80f0c2fe5619a62962
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 16757af0bab7cfd43488118f62300fb167c193a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen
 Für Softwareentwickler gibt es nichts Neues, was das Einbeziehen einer Anwendung in Komponententeile betrifft. Es handelt sich hierbei um ein zentrales Paradigma der Objektorientierung, von Softwareabstrahierungen und der „Komponentisierung“. Heute erfolgt diese Faktorisierung meist in Form von Klassen und Schnittstellen zwischen freigegebenen Bibliotheken und Technologieebenen. In der Regel wird ein mehrstufiger Ansatz mit einem Back-End-Speicher, einer Geschäftslogik auf der mittleren Ebene und einer Front-End-Benutzeroberfläche verwendet. Was sich im Laufe der letzten Jahre *doch* geändert hat, ist die Tatsache, dass wir als Entwickler verteilte Anwendungen erstellen, die für die Cloud bestimmt und geschäftlich geboten sind.
@@ -99,7 +99,7 @@ Wir kehren noch einmal kurz zum Vergleich des monolithischen Ansatzes mit dem Mi
 #### <a name="state-storage-between-application-styles"></a>Speichern des Zustands für unterschiedliche Anwendungsstile
 ![Service Fabric-Plattform: Zustandsspeicherung][Image2]
 
-***Der monolithische Ansatz auf der linken Seite enthält eine Einzeldatenbank und die spezifischen Technologieebenen.***
+***Der monolithische Ansatz auf der rechten Seite enthält eine Einzeldatenbank und die spezifischen Technologieebenen.***
 
 ***Der Microservice-Ansatz auf der rechten Seite verfügt über einen Graphen mit verbundenen Microservices, wobei der Zustand meist auf den Microservice beschränkt ist und verschiedene Technologien verwendet werden.***
 

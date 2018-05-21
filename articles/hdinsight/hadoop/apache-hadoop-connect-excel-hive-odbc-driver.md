@@ -13,13 +13,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 432fc630cad172255c6adcdce74291e3ec275c7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 26234ca17d833fef01ad5a6465824c99d84cc556
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Verbinden von Excel mit Hadoop in Azure HDInsight mithilfe des Microsoft Hive ODBC-Treibers
 
@@ -77,7 +77,7 @@ Die folgenden Schritte zeigen Ihnen, wie Sie eine Hive-ODBC-Datenquelle erstelle
 
     ![Erweiterte Optionen](./media/apache-hadoop-connect-excel-hive-odbc-driver/HDI.HiveOdbc.DataSource.AdvancedOptions1.png "Erweiterte DSN-Konfigurationsoptionen")
 
-1. Klicken Sie auf **Test** , um die Datenquelle zu testen. Wenn die Datenquelle korrekt konfiguriert wurde, wird *TESTS ERFOLGREICH ABGESCHLOSSEN.*angezeigt.
+1. Klicken Sie auf **Test** , um die Datenquelle zu testen. Wenn die Datenquelle korrekt konfiguriert wurde, wird *TESTS ERFOLGREICH ABGESCHLOSSEN.* angezeigt.
 2. Klicken Sie auf **OK** , um den Testdialog zu schließen. Die neue Datenquelle wird im **ODBC-Datenquellen-Administrator** aufgeführt.
 3. Klicken Sie auf **OK** , um den Assistenten zu beenden.
 

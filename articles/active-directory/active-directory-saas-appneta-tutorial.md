@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 6c06b2819516664a367ca31925366eabd05e688e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0bfbb7022ad8e70d89d79297b5f5476160bd4e33
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Tutorial: Azure Active Directory-Integration mit AppNeta Performance Monitor
 
@@ -30,7 +30,7 @@ Die Integration von AppNeta Performance Monitor in Azure AD bietet die folgenden
 - Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei AppNeta Performance Monitor anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -234,7 +234,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

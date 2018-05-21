@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 2bb6e6199caf0d5fd001bc83b91eb1ed3a8c0fc5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ffb18ef65bc0d901fe237ec9c4f97fdae43dc472
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB-Bindungen für Azure Functions
 
@@ -35,6 +35,8 @@ Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](..\cosmos-db\server
 Die Cosmos DB-Bindungen für Functions, Version 1.x, finden Sie im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB). Für Functions 2.x ist das Paket [Microsoft.Azure.WebJobs.Extensions.CosmosDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB). Den Quellcode für die Bindungen finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/).
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -775,7 +777,7 @@ Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ei
 
 | Bindung | Verweis |
 |---|---|
-| CosmosDB | [CosmosDB-Fehlercodes](https://docs.microsoft.com/en-us/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
+| CosmosDB | [CosmosDB-Fehlercodes](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
