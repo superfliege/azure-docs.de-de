@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 47ee22df081b71e7bafa40210a9c4cac0a844825
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e5862e99b3e883554b42341d2c1dbe9d8b8ec72
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-networking"></a>Azure-Netzwerke
 
@@ -120,7 +120,7 @@ Die folgende Abbildung zeigt eine Multi-Tier-Anwendung mit Internetzugriff, die 
 
 Sie können Datenverkehr zu und von Azure-Ressourcen mithilfe der folgenden Optionen filtern:
 
-- **Netzwerk:** Sie können Azure-Netzwerksicherheitsgruppen (NSGs) zum Filtern von eingehendem und ausgehendem Datenverkehr auf Azure-Ressourcen implementieren. Jede NSG enthält mindestens eine Regel für eingehenden und ausgehenden Datenverkehr. Jede Regel gibt die Quell-IP-Adressen, die Ziel-IP-Adressen, den Port und das Protokoll an, anhand dessen der Datenverkehr gefiltert wird. NSGs können auf einzelne Subnetze und einzelnen virtuelle Computer angewendet werden. Weitere Informationen zu NSGs finden Sie im Artikel mit der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json).
+- **Netzwerk:** Sie können Azure-Netzwerksicherheitsgruppen (NSGs) zum Filtern von eingehendem und ausgehendem Datenverkehr auf Azure-Ressourcen implementieren. Jede NSG enthält mindestens eine Regel für eingehenden und ausgehenden Datenverkehr. Jede Regel gibt die Quell-IP-Adressen, die Ziel-IP-Adressen, den Port und das Protokoll an, anhand dessen der Datenverkehr gefiltert wird. NSGs können auf einzelne Subnetze und einzelnen virtuelle Computer angewendet werden. Weitere Informationen zu NSGs finden Sie im Artikel mit der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/security-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 - **Anwendung:** Durch die Verwendung eines Anwendungsgateways mit der Web Application Firewall können Sie Ihre Webanwendungen vor Sicherheitsrisiken und Exploits schützen. Typische Beispiele sind Angriffe durch Einschleusung von SQL-Befehlen, siteübergreifende Skripterstellung und falsch formatierte Header. Application Gateway filtert diesen Datenverkehr heraus und verhindert, dass er Ihre Webserver erreicht. Sie können konfigurieren, welche Regeln aktiviert werden sollen. Die Möglichkeit zum Konfigurieren von SSL-Aushandlungsrichtlinien wird bereitgestellt, damit bestimmte Richtlinien deaktiviert werden können. Weitere Informationen zur Web Application Firewall finden Sie im Artikel zur [Web Application Firewall](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 Wenn Sie eine Netzwerkfunktion benötigen, die von Azure nicht bereitgestellt wird, oder wenn Sie Netzwerkanwendungen verwenden möchten, die Sie lokal einsetzen, können Sie die Produkte in virtuellen Computern implementieren und mit Ihrem VNET verbinden. Der [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) enthält mehrere verschiedene VMs mit vorkonfigurierten Netzwerkanwendungen, die Sie zurzeit verwenden können. Diese vorkonfigurierten VMs werden in der Regel als virtuelle Netzwerkgeräte bezeichnet. Virtuelle Netzwerkgeräte stehen mit Anwendungen wie Firewall- und WAN-Optimierung zur Verfügung.

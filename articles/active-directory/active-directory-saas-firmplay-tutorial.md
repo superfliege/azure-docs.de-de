@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Azure Active Directory-Integration in FirmPlay – Employee Advocacy for Recruiting | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und FirmPlay – Employee Advocacy for Recruiting konfigurieren."
+title: 'Tutorial: Azure Active Directory-Integration in FirmPlay – Employee Advocacy for Recruiting | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und FirmPlay – Employee Advocacy for Recruiting konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: e1381f2273ee961a4b72dede8cf8e017814ba909
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b154901d2e31f493c32e47bd331cc2d4e9fdc1a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Tutorial: Azure Active Directory-Integration in FirmPlay – Employee Advocacy for Recruiting
 
@@ -29,7 +29,7 @@ Die Integration von FirmPlay – Employee Advocacy for Recruiting in Azure AD bi
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei FirmPlay – Employee Advocacy for Recruiting anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von FirmPlay – Employee Advocacy for Recruiting aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -67,11 +67,11 @@ Damit Sie die Integration von FirmPlay – Employee Advocacy for Recruiting in A
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie **FirmPlay – Employee Advocacy for Recruiting** in das Suchfeld ein.
 
@@ -91,10 +91,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FirmPlay – Employee Advocacy for Recruiting müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines FirmPlay – Employee Advocacy for Recruiting-Testbenutzers](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** als Entsprechung von Britta Simon in FirmPlay – Employee Advocacy for Recruiting, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -105,44 +105,44 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite von **FirmPlay – Employee Advocacy for Recruiting** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_01.png)
 
 3. Geben Sie im Abschnitt **FirmPlay – Employee Advocacy for Recruiting Domain and URLs** (Domäne und URLs für FirmPlay – Employee Advocacy for Recruiting) im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your-subdomain>.firmplay.com/`
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_02.png)
 
     > [!NOTE] 
     > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von FirmPlay – Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), um diesen Wert zu erhalten. 
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_03.png)   
 
 5. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_general_300.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_general_300.png)
 
 6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_04.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_04.png)
 
 7. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_general_400.png)
 
 8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_05.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_05.png) 
 
 9. Klicken Sie im Abschnitt **FirmPlay - Employee Advocacy for Recruiting Configuration** (FirmPlay – Employee Advocacy for Recruiting-Konfiguration) auf **Configure FirmPlay - Employee Advocacy for Recruiting** (FirmPlay – Employee Advocacy for Recruiting konfigurieren), um das Dialogfeld **Anmeldung konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_06.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_06.png) 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_07.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_07.png)
 
 10. Wenden Sie sich an das [Supportteam von FirmPlay – Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
 
@@ -201,13 +201,13 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 **Führen Sie die folgenden Schritte aus, um Britta Simon zu FirmPlay – Employee Advocacy for Recruiting zuzuweisen:**
 
-1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie dann zur Verzeichnisansicht, wechseln Sie zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. Öffnen Sie im Azure-Verwaltungsportal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
 2. Wählen Sie in der Liste der Anwendungen **FirmPlay – Employee Advocacy for Recruiting** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_50.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-firmplay-tutorial/tutorial_firmplay_50.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -235,7 +235,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „FirmPlay – Employee Advocacy for
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

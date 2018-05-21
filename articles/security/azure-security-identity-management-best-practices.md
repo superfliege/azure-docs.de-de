@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: af01676276232f4dba5a11c219a3b83259945dfb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6632ab962f3df0cfee8d28d7dad40bad8baf3f50
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -64,7 +64,7 @@ Weitere Informationen zur Azure AD-Synchronisierung finden Sie im Artikel [Integ
 
 Wenn Sie mehrere Verzeichnisse verwalten müssen, wird dies nicht nur für die IT-Abteilung zu einem Verwaltungsproblem, sondern auch für die Endbenutzer, die sich mehrere Kennwörter merken müssen. Bei Verwendung von [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) geben Sie Ihren Benutzern die Möglichkeit, die gleiche Gruppe von Anmeldeinformationen zum Anmelden und Zugreifen auf die benötigten Ressourcen zu nutzen. Dabei spielt es keine Rolle, ob sich eine Ressource lokal oder in der Cloud befindet.
 
-Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/active-directory-appssoaccess-whatis.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) und [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
+Verwenden Sie SSO, um Benutzern zu ermöglichen, basierend auf ihrem Organisationskonto in Azure AD auf ihre [SaaS-Anwendungen](../active-directory/manage-apps/what-is-single-sign-on.md) zuzugreifen. Dies gilt nicht nur für Microsoft SaaS-Apps, sondern auch für andere Apps, z.B. [Google-Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) und [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Ihre Anwendung kann so konfiguriert werden, dass Azure AD als [SAML-Identitätsanbieter](../active-directory/fundamentals-identity.md) verwendet wird. Als Sicherheitsmaßnahme stellt Azure AD nur dann ein Token aus, das den Benutzern die Anmeldung bei der Anwendung erlaubt, wenn ihnen zuvor mit Azure AD Zugriff gewährt wurde. Sie können den Zugriff direkt oder über eine Gruppe gewähren, deren Mitglied die Benutzer sind.
 
 > [!NOTE]
 > Die Entscheidung zur Nutzung von SSO wirkt sich auch darauf aus, wie Sie das lokale Verzeichnis in Ihr Cloudverzeichnis integrieren. Wenn Sie SSO verwenden möchten, müssen Sie einen Verbund nutzen, da die Verzeichnissynchronisierung nur eine [Oberfläche für die gleiche Anmeldung (Same Sign-On)](../active-directory/active-directory-aadconnect.md) bietet.

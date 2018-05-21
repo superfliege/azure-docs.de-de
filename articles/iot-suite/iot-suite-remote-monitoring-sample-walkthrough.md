@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 3eaaa1ec09e9bd593a2d14e4a3bc751c431869d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 71b0405975d88e69d3ecea6090983bc3c779395d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="remote-monitoring-solution-accelerator-architecture"></a>Architektur des Solution Accelerators für Remoteüberwachung
 
-Der [Solution Accelerator](iot-suite-what-are-solution-accelerators.md) für Remoteüberwachung implementiert eine End-to-End-Überwachungslösung für mehrere Computer an Remotestandorten. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden und [anpassen](iot-suite-remote-monitoring-customize.md), um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
+Der [Solution Accelerator](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) für Remoteüberwachung implementiert eine End-to-End-Überwachungslösung für mehrere Computer an Remotestandorten. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden und [anpassen](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md), um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
 
 In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist für folgende Zwecke hilfreich:
 
@@ -33,7 +33,7 @@ In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüb
 
 ## <a name="logical-architecture"></a>Logische Architektur
 
-Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators für Remoteüberwachung zusammen mit der [IoT-Architektur](iot-suite-what-is-azure-iot.md) dargestellt:
+Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators für Remoteüberwachung zusammen mit der [IoT-Architektur](../iot-accelerators/iot-accelerators-what-is-azure-iot.md) dargestellt:
 
 ![Logische Architektur](media/iot-suite-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -143,4 +143,4 @@ Wenn Sie den Quellcode und die Entwicklerdokumentation erkunden möchten, könne
 * [Solution Accelerator für Remoteüberwachung mit Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 * [Architektur des Solution Accelerators für Remoteüberwachung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für Remoteüberwachung](iot-suite-remote-monitoring-customize.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
