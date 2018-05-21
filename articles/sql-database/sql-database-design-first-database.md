@@ -1,5 +1,5 @@
 ---
-title: Entwurf Ihrer ersten Azure SQL-Datenbank mithilfe von SSMS | Microsoft-Dokumentation
+title: 'Tutorial: Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS | Microsoft Docs'
 description: Erfahren Sie, wie Sie Ihre erste Azure SQL-Datenbank mit SQL Server Management Studio entwerfen.
 services: sql-database
 author: CarlRabeler
@@ -7,28 +7,30 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 04/23/2018
 ms.author: carlrab
-ms.openlocfilehash: 1415edf8ea70b3835e99daa1691d278fe833b950
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ba14208e971d712184052e7470757ce48ac26879
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="design-your-first-azure-sql-database-using-ssms"></a>Entwurf Ihrer ersten Azure SQL-Datenbank mithilfe von SSMS
+# <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS
 
 Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) in der Microsoft-Cloud (Azure). In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) für folgende Zwecke verwenden: 
 
 > [!div class="checklist"]
-> * Erstellen einer Datenbank im Azure-Portal
+> * Erstellen einer Datenbank im Azure-Portal*
 > * Einrichten einer Firewallregel auf Serverebene im Azure-Portal
 > * Herstellen einer Verbindung für die Datenbank mit SSMS
 > * Erstellen von Tabellen mit SSMS
 > * Massenladen von Daten mit BCP
 > * Abfragen dieser Daten mit SSMS
-> * Wiederherstellen der Datenbank zu einem früheren Zeitpunkt der [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) im Azure-Portal
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+   >[!NOTE]
+   > In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) auszuwählen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,13 +44,13 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-­Datenbank
 
-Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
+Eine Azure SQL-Datenbank wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Datenbankserver](sql-database-features.md) erstellt. 
 
 Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstellen. 
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
-2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **SQL-Datenbank** die Option **Erstellen** aus.
+2. Wählen Sie auf der Seite **Neu** im Abschnitt „Azure Marketplace“ die Option **Datenbanken** aus, und klicken Sie dann im Abschnitt **Empfohlen** auf **SQL-Datenbank**.
 
    ![Leere Datenbank erstellen](./media/sql-database-design-first-database/create-empty-database.png)
 
@@ -74,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 
 5. Klicken Sie auf **Auswählen**.
 
-6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Machen Sie sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut, die für die einzelnen Dienstebenen verfügbar sind. 
+6. Klicken Sie auf **Tarif**, um die Dienstebene, die Anzahl von DTUs oder virtuellen Kernen und die Speichermenge anzugeben. Machen Sie sich mit den Optionen für die Anzahl von DTUs/virtuellen Kernen sowie mit den Speicheroptionen vertraut, die für die einzelnen Dienstebenen verfügbar sind. In diesem Tutorial verwenden wir das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md). Sie haben jedoch auch die Möglichkeit, das [V-Kern-basierte Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) auszuwählen. 
 
 7. Wählen Sie in diesem Tutorial die Dienstebene **Standard** und dann mit dem Schieberegler **100 DTUs (S3)** und **400** GB Speicher aus.
 
@@ -83,10 +85,9 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL-­Datenbank zu erstell
 8. Akzeptieren Sie die Nutzungsbedingungen für die Vorschauversion, um die Option **Add-On-Speicher** zu verwenden. 
 
    > [!IMPORTANT]
-   > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
-   >
-   >\* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   > 
+   > -  Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Informationen finden Sie unter [SQL-Datenbank Preise](https://azure.microsoft.com/pricing/details/sql-database/). 
+   >-  Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. Siehe [Aktuelle Einschränkungen für P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
 
 9. Klicken Sie auf **Übernehmen**, wenn Sie die Dienstebene, die Anzahl von DTUs und die Menge an Speicherplatz ausgewählt haben.  
 
@@ -108,7 +109,7 @@ Der SQL-Datenbankdienst erstellt eine Firewall auf Serverebene, um zu verhindern
 
 1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver20170824.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
 
-2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstartanleitungen eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. 
+2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Tutorials und Schnellstarts eine Verbindung mit Ihrem Server und dessen Datenbanken herzustellen. 
 
    ![Servername](./media/sql-database-get-started-portal/server-name.png) 
 
@@ -297,26 +298,6 @@ Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabell
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time"></a>Wiederherstellen eines früheren Zustands einer Datenbank
-
-Stellen Sie sich vor, Sie haben versehentlich eine Tabelle gelöscht. Dies ist eine Situation, in der Sie die Datenbank nicht einfach wiederherstellen können. Azure SQL-Datenbank ermöglicht es Ihnen, zu einem beliebigen Zeitpunkt innerhalb der letzten 35 Tage zurückzugehen und diesen Zeitpunkt in einer neuen Datenbank wiederherzustellen. Diese Datenbank können Sie dann verwenden, um die gelöschten Daten wiederherzustellen. In den folgenden Schritten wird die Beispieldatenbank für einen Zeitpunkt wiederhergestellt, der vor dem Hinzufügen der Tabellen lag.
-
-1. Klicken Sie auf der Seite „SQL-Datenbank“ für Ihre Datenbank auf der Symbolleiste auf **Wiederherstellen**. Die Seite **Wiederherstellen** wird geöffnet.
-
-   ![Wiederherstellen](./media/sql-database-design-first-database/restore.png)
-
-2. Geben Sie im Formular **Wiederherstellen** die erforderlichen Informationen ein:
-    * Datenbankname: Geben Sie einen Datenbanknamen an. 
-    * Zeitpunkt: Wählen Sie die Registerkarte **Zeitpunkt** im Formular „Wiederherstellen“ aus. 
-    * Wiederherstellungspunkt: Wählen Sie einen Zeitpunkt vor der Änderung der Datenbank aus.
-    * Zielserver: Sie können diesen Wert beim Wiederherstellen einer Datenbank nicht ändern. 
-    * Pool für elastische Datenbanken: Wählen Sie **Keiner** aus.  
-    * Tarif: Wählen Sie **20 DTUs** und **40 GB** Speicher aus.
-
-   ![Wiederherstellungspunkt](./media/sql-database-design-first-database/restore-point.png)
-
-3. Klicken Sie auf **OK**, um die Datenbank [für einen Zeitpunkt wiederherzustellen](sql-database-recovery-using-backups.md#point-in-time-restore), der vor dem Hinzufügen der Tabellen lag. Beim Wiederherstellen einer Datenbank im Zustand eines früheren Zeitpunkts wird ein Duplikat der Datenbank für den von Ihnen angegebenen Zeitpunkt auf demselben Server wie die ursprüngliche Datenbank hergestellt, solange sich dieser Zeitpunkt innerhalb der für Ihre [Dienstebene](sql-database-service-tiers.md) geltenden Beibehaltungsdauer befindet.
-
 ## <a name="next-steps"></a>Nächste Schritte 
 In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Erstellen einer Datenbank und von Tabellen, das Laden und Abfragen von Daten und das Wiederherstellen der Datenbank zu einem früheren Zeitpunkt. Es wurde Folgendes vermittelt:
 > [!div class="checklist"]
@@ -326,7 +307,6 @@ In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Ers
 > * Erstellen von Tabellen.
 > * Massenladen von Daten
 > * Abfragen der Daten
-> * Wiederherstellen eine früheren Zeitpunkts für die Datenbank mit den SQL-Datenbank-Funktionen für die [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Datenbank mit Visual Studio und C# entwerfen.
 
