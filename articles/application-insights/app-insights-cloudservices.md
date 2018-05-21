@@ -1,8 +1,8 @@
 ---
-title: "Application Insights für Azure Cloud Services | Microsoft-Dokumentation"
-description: "Effektives Überwachen Ihrer Web- und Workerrollen mit Application Insights"
+title: Application Insights für Azure Cloud Services | Microsoft-Dokumentation
+description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application Insights
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 keywords: WAD2AI, Azure-Diagnose
 author: mrbullwinkle
 manager: carmonm
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.workload: tbd
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: dd35ef2239469be6ecf478f44a7e97389e5c5dd3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f36a9e21478d2629d705d90179a6db5175c78299
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Microsoft Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) können mit [Application Insights][start] auf Verfügbarkeit, Leistung, Fehler und Verwendung überwacht werden. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.
@@ -223,7 +223,7 @@ Um eine allgemeine Übersicht über Ihr System zu erhalten, können Sie die wich
 
 Wenn in Ihrem System andere Azure-Dienste, z.B. Stream Analytics, verwendet werden, können Sie die entsprechenden Überwachungsdiagramme auch einfügen. 
 
-Fügen Sie bei einer mobilen Client-App einen Teil des Codes zum Senden von benutzerdefinierten Ereignissen für wichtige Benutzervorgänge ein, und erstellen Sie eine [HockeyApp-Brücke](app-insights-hockeyapp-bridge-app.md). Erstellen Sie Abfragen in [Analytics](app-insights-analytics.md), um die Ereigniszähler anzuzeigen, und heften Sie sie an das Dashboard an.
+Wenn Sie über eine mobile Client-App verfügen, verwenden Sie [App Center](app-insights-mobile-center-quickstart.md). Erstellen Sie Abfragen in [Analytics](app-insights-analytics.md), um die Ereigniszähler anzuzeigen, und heften Sie sie an das Dashboard an.
 
 ## <a name="example"></a>Beispiel
 [In diesem Beispiel](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) wird ein Dienst mit einer Webrolle und zwei Workerrollen überwacht.

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: c4f27f59412fbfc72e193f916895c3e67091f5f6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0503b355089fe6bbcc7632ac93fd21e71f268032
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -100,7 +100,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator muss ein AAD-Benutzer oder eine AAD-Gruppe sein, er darf aber kein Dienstprinzipal sein. Dieser Schritt ist erforderlich, damit Sie im nachfolgenden Schritt eine AAD-Identität verwenden können, um einen Benutzer einer eigenständigen Datenbank für den Dienstprinzipal erstellen können.
+2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator muss ein AAD-Benutzer oder eine AAD-Gruppe sein, er darf aber kein Dienstprinzipal sein. Dieser Schritt ist erforderlich, damit Sie im nachfolgenden Schritt eine AAD-Identität verwenden können, um einen Benutzer einer eigenständigen Datenbank für den Dienstprinzipal erstellen können.
 
 3. **Erstellen Sie einen Benutzer für eine eigenständige Datenbank für den Dienstprinzipal**, indem Sie eine Verbindung mit der Datenbank, aus der bzw. in die Sie Daten mithilfe von Tools wie SSMS kopieren möchten, herstellen. Verwenden Sie dazu eine AAD-Identität mit mindestens der Berechtigung „Beliebigen Benutzer ändern“, und führen Sie die folgende T-SQL-Anweisung aus. Weitere Informationen zu Benutzern eigenständiger Datenbanken finden Sie [hier](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -111,7 +111,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu
 4. **Gewähren Sie dem Dienstprinzipal die notwendigen Berechtigungen**, wie bei SQL-Benutzern üblich, indem Sie z.B. Folgendes ausführen:
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. Konfigurieren Sie in ADF einen verknüpften Azure SQL-Datenbank-Dienst.
@@ -160,7 +160,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, 
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator kann ein AAD-Benutzer oder eine AAD-Gruppe sein. Wenn Sie der Gruppe mit der MSI eine Administatorrolle zuweisen, überspringen Sie die Schritte 3 und 4 unten, da der Administrator Vollzugriff auf die Datenbank hätte.
+2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator kann ein AAD-Benutzer oder eine AAD-Gruppe sein. Wenn Sie der Gruppe mit der MSI eine Administatorrolle zuweisen, überspringen Sie die Schritte 3 und 4 unten, da der Administrator Vollzugriff auf die Datenbank hätte.
 
 3. **Erstellen Sie einen Benutzer für eine eigenständige Datenbank für die AAD-Gruppe**, indem Sie eine Verbindung mit der Datenbank, aus der bzw. in die Sie Daten mithilfe von Tools wie SSMS kopieren möchten, herstellen. Verwenden Sie dazu eine AAD-Identität mit mindestens der Berechtigung „Beliebigen Benutzer ändern“, und führen Sie die folgende T-SQL-Anweisung aus. Weitere Informationen zu Benutzern eigenständiger Datenbanken finden Sie [hier](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -171,7 +171,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, 
 4. **Gewähren Sie der AAD-Gruppe die notwendigen Berechtigungen**, wie bei SQL-Benutzern üblich, indem Sie z.B. Folgendes ausführen:
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. Konfigurieren Sie in ADF einen verknüpften Azure SQL-Datenbank-Dienst.
