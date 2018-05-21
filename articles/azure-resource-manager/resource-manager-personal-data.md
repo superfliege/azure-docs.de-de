@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5c176dd185a9d2a245045e9c954279506d713e5f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 71928be07080ed14fdcb93f33ea64d2572955b53
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="manage-personal-data-associated-with-azure-resource-manager"></a>Verwalten von mit Azure Resource Manager verknüpften persönlichen Daten
 
@@ -37,7 +37,7 @@ Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** im Verlauf auf
 
 Verwenden Sie diese Referenzen als Hilfe, um **Bereitstellungen** aus dem Verlauf zu löschen:
 
-* [Delete](/rest/api/resources/deployments/delete) (Löschen)
+* [Löschen](/rest/api/resources/deployments/delete)
 * [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroupDeployment)
 * [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete)
 
@@ -47,13 +47,13 @@ Der Name der Ressourcengruppe wird gespeichert, bis Sie die Ressourcengruppe lö
 
 Verwenden Sie diese Referenzen als Hilfe, um **Ressourcengruppen** aufzulisten:
 
-* [List](/rest/api/resources/resourcegroups/list) (Auflisten)
+* [Liste](/rest/api/resources/resourcegroups/list)
 * [Get-AzureRmResourceGroup](/powershell/module/azurerm.resources/Get-AzureRmResourceGroup)
 * [az group list](/cli/azure/group#az-group-list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Ressourcengruppen** zu löschen:
 
-* [Delete](/rest/api/resources/resourcegroups/delete) (Löschen)
+* [Löschen](/rest/api/resources/resourcegroups/delete)
 * [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)
 * [az group delete](/cli/azure/group#az-group-delete)
 
@@ -63,13 +63,13 @@ Tagnamen und -werte werden gespeichert, bis Sie das Tag löschen oder ändern. U
 
 Verwenden Sie diese Referenzen als Hilfe, um **Tags** aufzulisten:
 
-* [List](/rest/api/resources/tags/list) (Auflisten)
+* [Liste](/rest/api/resources/tags/list)
 * [Get-AzureRmTag](/powershell/module/azurerm.tags/get-azurermtag)
 * [az tag list](/cli/azure/tag#az-tag-list)
 
 Verwenden Sie diese Referenzen als Hilfe, um **Tags** zu löschen:
 
-* [Delete](/rest/api/resources/tags/delete) (Löschen)
+* [Löschen](/rest/api/resources/tags/delete)
 * [Remove-AzureRmTag](/powershell/module/azurerm.tags/remove-azurermtag)
 * [az tag delete](/cli/azure/tag#az-tag-delete)
 

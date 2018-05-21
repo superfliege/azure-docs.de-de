@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric mit Übersicht über API Management | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Management als Gateway für Ihre Service Fabric-Anwendungen."
+title: Azure Service Fabric mit Übersicht über API Management | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Management als Gateway für Ihre Service Fabric-Anwendungen.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: ea3b1f50bada3c1301f8661f8f0b4866cb1c732c
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 6bf7ea90bb5351411984110fd8fb05c2f8cb0650
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric mit Azure API Management-Übersicht
 
@@ -26,7 +26,7 @@ Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutze
 
 Dieser Artikel enthält eine Einführung in die Verwendung von Azure API Management als Gateway für Ihre Service Fabric-Anwendungen. API Management ist direkt in Service Fabric integriert, sodass Sie APIs mit einem umfassenden Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen können. 
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 Für eine allgemeine Service Fabric-Architektur wird eine einseitige Webanwendung verwendet, die HTTP-Aufrufe für Back-End-Dienste durchführt, von denen HTTP-APIs verfügbar gemacht werden. Unter [Service Fabric Getting Started Sample](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started) (Service Fabric-Beispiel für die ersten Schritte) finden Sie ein Beispiel für diese Architektur.
 
 In diesem Szenario dient ein zustandsloser Webdienst als Gateway für die Service Fabric-Anwendung. Bei diesem Ansatz ist es erforderlich, einen Webdienst zu schreiben, mit dem HTTP-Anforderungen über einen Proxy an Back-End-Dienste gesendet werden können. Dies ist im folgenden Diagramm dargestellt:
@@ -78,7 +78,7 @@ In diesem Beispiel wird für jeden Benutzer einer Anwendung eine neue Instanz ei
  
  - `fabric:/app/users/<username>`
 
- Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel:
+ Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel: 
 
   - Eine Anforderung an `/api/users/foo` wird an die Dienstinstanz `fabric:/app/users/foo` weitergeleitet.
   - Eine Anforderung an `/api/users/bar` wird an die Dienstinstanz `fabric:/app/users/bar` weitergeleitet.
@@ -97,7 +97,7 @@ In diesem Beispiel wird für jeden Benutzer der Anwendung eine neue Instanz eine
  
  - `fabric:/app/users/<username>`
 
- Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel:
+ Jeder Dienst hat einen eindeutigen Namen, aber die Namen sind vorher nicht bekannt, da die Dienste als Antwort auf eine Benutzer- oder Administratoreingabe erstellt werden und daher nicht in APIM-Richtlinien oder Routingregeln hartcodiert werden können. Stattdessen wird der Name des Diensts, an den eine Anforderung gesendet werden soll, in der Definition der Back-End-Richtlinie über den Wert `name` generiert, der im URL-Anforderungspfad angegeben ist. Beispiel: 
 
   - Eine Anforderung an `/api/users/foo` wird an die Dienstinstanz `fabric:/app/users/foo` weitergeleitet.
   - Eine Anforderung an `/api/users/bar` wird an die Dienstinstanz `fabric:/app/users/bar` weitergeleitet.
