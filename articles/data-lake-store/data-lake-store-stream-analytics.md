@@ -2,23 +2,21 @@
 title: Streamen von Daten aus Stream Analytics in Data Lake Store | Microsoft Docs
 description: Verwenden von Azure Stream Analytics zum Streamen von Daten in Azure Data Lake-Speicher
 services: data-lake-store,stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 8ced5aff33ed23aee3f3399d876c1ed62d2b5707
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7ff59957cf7700af79425aa005444a135b7ee098
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage-Blob in Data Lake-Speicher mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake-Speicher als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake-Speicher (Ausgabe) geschrieben werden.
@@ -108,7 +106,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     Klicken Sie auf **Starten**, um den Auftrag zu starten. Es kann einige Minuten dauern, bis der Auftrag startet.
 
-3. Um den Auftrag zum Abrufen der Daten aus dem Blob auszulösen, kopieren Sie eine Beispieldatendatei in den Blobcontainer. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Für dieses Tutorial kopieren wir die Datei **vehicle1_09142014.csv**. Sie können verschiedene Clients verwenden, z.B. [Azure-Speicher-Explorer](http://storageexplorer.com/), um Daten in einen Blobcontainer hochzuladen.
+3. Um den Auftrag zum Abrufen der Daten aus dem Blob auszulösen, kopieren Sie eine Beispieldatendatei in den Blobcontainer. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Für dieses Tutorial kopieren wir die Datei **vehicle1_09142014.csv**. Sie können verschiedene Clients verwenden, z.B. den [Azure Storage-Explorer](http://storageexplorer.com/), um Daten in einen Blobcontainer hochzuladen.
 
 4. Auf der Registerkarte **Übersicht** können Sie unter **Überwachung** sehen, wie die Daten verarbeitet wurden.
 

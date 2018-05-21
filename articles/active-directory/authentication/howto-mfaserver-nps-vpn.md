@@ -2,25 +2,22 @@
 title: Erweiterte Szenarien mit Azure MFA und Drittanbieter-VPNs
 description: Enthält Schritt-für-Schritt-Anleitungen für die Integration von Azure MFA in Cisco, Citrix und Juniper.
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: 1f94a214-d6f6-48a8-8a12-006b5896ae45
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: 3d59be74ec73aa10bdfba5b58a1bff4630985259
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 725f2893419b2b921f262fc4516f0f8a2ecf4c37
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="advanced-scenarios-with-azure-multi-factor-authentication-and-third-party-vpn-solutions"></a>Erweiterte Szenarien mit Azure Multi-Factor Authentication und Drittanbieter-VPN-Lösungen
+
 Azure Multi-Factor Authentication kann verwendet werden, um eine nahtlose Verbindung mit verschiedenen VPN-Lösungen von Drittanbietern herzustellen. Dieser Artikel konzentriert sich auf die Cisco® ASA-VPN-Appliance, die Citrix NetScaler SSL-VPN-Appliance und die Juniper Networks Secure Access/Pulse Secure Connect Secure SSL-VPN-Appliance. Wir haben Konfigurationsanleitungen für diese drei häufig verwendeten virtuellen Geräte erstellt. Multi-Factor Authentication-Server kann jedoch in die meisten andere Systeme integriert werden, die RADIUS, LDAP, IIS oder anspruchsbasierte Authentifizierung bei AD FS nutzen. Weitere Details finden Sie unter [MFA-Serverkonfigurationen](howto-mfaserver-deploy.md#next-steps).
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-multi-factor-authentication"></a>Cisco ASA-VPN-Appliance und Azure Multi-Factor Authentication

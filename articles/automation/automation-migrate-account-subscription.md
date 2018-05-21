@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d417f26eb9bad47b9742921156ff232e65ffd5aa
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 75d973388bb8a37cc0b796b1621f847b047d70f9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="migrate-automation-account-and-resources"></a>Migrieren von Automation-Konto und Ressourcen
 Für Automation-Konten und die zugehörigen Ressourcen (d.h. Assets, Runbooks, Module usw.), die Sie im Azure-Portal erstellt haben und aus einer Ressourcengruppe zu einer anderen oder aus einem Abonnement zu einem anderen migrieren möchten, können Sie dies problemlos mit der im Azure-Portal verfügbaren Option [Ressourcen verschieben](../azure-resource-manager/resource-group-move-resources.md) realisieren. Bevor Sie allerdings mit dieser Aktion fortfahren, sollten Sie zunächst die folgende [Prüfliste vor dem Verschieben der Ressourcen](../azure-resource-manager/resource-group-move-resources.md#checklist-before-moving-resources) und darüber hinaus die folgende spezifische Liste für Automation durchsehen.  

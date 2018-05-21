@@ -7,13 +7,13 @@ ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bb64d0c5d94bb198b6ece2ea50a7fc248b93c7dd
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 740e3c16d3d9ce9e1aadb3e04ac2667e908bf51e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 Mit einem *Webhook* können Sie ein bestimmtes Runbook in Azure Automation über eine einfache HTTP-Anforderung starten. Dadurch wird es externen Diensten wie Visual Studio Team Services, GitHub, Azure Log Analytics oder benutzerdefinierten Anwendungen ermöglicht, Runbooks zu starten, ohne eine vollständige Lösung unter Verwendung der Azure Automation-API zu implementieren.  

@@ -1,24 +1,24 @@
 ---
-title: "Ändern der ReliableDictionaryActorStateProvider-Einstellungen in Azure-Microservices | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „ReliableDictionaryActorStateProvider“"
+title: Ändern der ReliableDictionaryActorStateProvider-Einstellungen in Azure-Microservices | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Konfigurieren von statusbehafteten Azure Service Fabric Actors vom Typ „ReliableDictionaryActorStateProvider“
 services: Service-Fabric
 documentationcenter: .net
 author: sumukhs
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 79b48ffa-2474-4f1c-a857-3471f9590ded
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 5dcd1b4f5a070e9a09b6f8338928d93d10227d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurieren von Reliable Actors –ReliableDictionaryActorStateProvider
 Sie können die Standardkonfiguration von „ReliableDictionaryActorStateProvider“ ändern, indem Sie die Datei „settings.xml“, die im Stammverzeichnis des Visual Studio-Pakets im Ordner „Config“ generiert wurde, für den betreffenden Actor ändern.
@@ -38,7 +38,7 @@ Die globale Konfiguration wird im Clustermanifest für den Cluster im Abschnitt 
 Das Clustermanifest ist eine einzelne XML-Datei mit Einstellungen und Konfigurationen, die für alle Knoten und Dienste im Cluster gelten. Die Datei heißt normalerweise „ClusterManifest.xml“. Mit dem PowerShell-Befehl Get-ServiceFabricClusterManifest können Sie das Clustermanifest für Ihren Cluster sehen.
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| Name | Unit | Standardwert | Hinweise |
+| NAME | Unit | Standardwert | Anmerkungen |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |KB-Mindestwert, der im Kernelmodus dem Schreibpuffer-Speicherpool des Protokollierungstools zugeordnet wird. Dieser Speicherpool wird zum Zwischenspeichern von Zustandsinformationen verwendet, bevor auf den Datenträger geschrieben wird. |
 | WriteBufferMemoryPoolMaximumInKB |Kilobytes |Keine Begrenzung |Maximale Größe, auf die der Schreibpuffer-Speicherpool des Protokollierungstools anwachsen kann. |
@@ -79,16 +79,16 @@ Die Standardkonfiguration wird von der Visual Studio-Vorlage generiert und sollt
 &lt;ActorName&gt;ServiceReplicatorConfig
 
 ### <a name="configuration-names"></a>Konfigurationsnamen
-| Name | Unit | Standardwert | Hinweise |
+| NAME | Unit | Standardwert | Anmerkungen |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekunden |0,015 |So lange wartet der Replicator auf dem sekundären Replicator nach dem Empfang eines Vorgangs, bevor er eine Bestätigung an den primären Replicator sendet. Alle anderen Bestätigungen, die für innerhalb dieses Intervalls verarbeitete Vorgänge gesendet werden, werden als eine einzelne Antwort gesendet. |
-| ReplicatorEndpoint |– |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md) . |
+| ReplicatorEndpoint |N/V |Kein Standardwert – Erforderlicher Parameter |Die IP-Adresse und der Port, die der primäre/sekundäre Replicator für die Kommunikation mit anderen Replicatoren in der Replikatgruppe verwendet. Dabei sollte im Dienstmanifest auf einen TCP-Ressourcenendpunkt verwiesen werden. Weitere Informationen zum Definieren von Endpunktressourcen im Dienstmanifest finden Sie unter [Dienstmanifestressourcen](service-fabric-service-manifest-resources.md) . |
 | MaxReplicationMessageSize |Byte |50 MB |Die maximale Größe der Replikationsdaten, die in einer einzelnen Nachricht übertragen werden können. |
 | MaxPrimaryReplicationQueueSize |Anzahl der Vorgänge |8192 |Die maximale Anzahl der Vorgänge in der primären Warteschlange. Ein Vorgang wird freigegeben, nachdem der primäre Replicator eine Bestätigung von allen sekundären Replicators empfangen hat. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
 | MaxSecondaryReplicationQueueSize |Anzahl der Vorgänge |16384 |Die maximale Anzahl der Vorgänge in der sekundären Warteschlange. Ein Vorgang wird freigegeben, nachdem sein Zustand durch Persistenz hochverfügbar gemacht wurde. Dieser Wert muss größer als 64 und eine Potenz von 2 sein. |
 | CheckpointThresholdInMB |MB |200 |Die Menge an Speicherplatz für Protokolldateien, nach dem der Status geprüft wird. |
 | MaxRecordSizeInKB |KB |1024 |Die maximale Datensatzgröße, die der Replicator in das Protokoll schreiben kann. Dieser Wert muss ein Vielfaches von 4 und größer als 16 sein. |
-| OptimizeLogForLowerDiskUsage |Boolean |true |Wenn „true“ festgelegt ist, wird das Protokoll so konfiguriert, dass die dedizierte Protokolldatei des Replikats mithilfe einer NTFS-Datei mit geringer Datendichte erstellt wird. Auf diese Weise verkleinert sich die Datei und damit der Speicherplatzbedarf. Wenn „false“ festgelegt ist, wird die Datei mit festen Zuordnungen erstellt. Dies ermöglicht die beste Schreibleistung. |
+| OptimizeLogForLowerDiskUsage |Boolescher Wert |true |Wenn „true“ festgelegt ist, wird das Protokoll so konfiguriert, dass die dedizierte Protokolldatei des Replikats mithilfe einer NTFS-Datei mit geringer Datendichte erstellt wird. Auf diese Weise verkleinert sich die Datei und damit der Speicherplatzbedarf. Wenn „false“ festgelegt ist, wird die Datei mit festen Zuordnungen erstellt. Dies ermöglicht die beste Schreibleistung. |
 | SharedLogId |GUID |"" |Gibt eine eindeutige GUID zum Identifizieren der freigegebenen Protokolldatei an, die mit diesem Replikat verwendet wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogId angegeben ist, muss SharedLogPath ebenfalls angegeben werden. |
 | SharedLogPath |Vollständig qualifizierter Pfadname |"" |Gibt den vollständig qualifizierten Pfad an, in dem die freigegebene Protokolldatei für dieses Replikat erstellt wird. Diese Einstellung sollte von Diensten normalerweise nicht verwendet werden. Aber wenn SharedLogPath angegeben ist, muss SharedLogId ebenfalls angegeben werden. |
 

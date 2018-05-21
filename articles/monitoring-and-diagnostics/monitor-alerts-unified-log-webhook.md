@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 05/01/2018
 ms.author: vinagara
-ms.openlocfilehash: a786ac2e241657cc0020ecfe9438e3d1a5e4c5fa
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 28c8e6ab6a23a46bdea31c71b08b9c6a28d1be33
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -161,9 +161,6 @@ Im Folgenden sehen Sie eine Beispielnutzlast für einen Standardwebhook *ohne be
     }
 }
 ```
-
-> [!NOTE]
-> Protokollwarnungen für Application Insights befinden sich derzeit in der öffentlichen Vorschauphase; Funktionen und Benutzererfahrung können sich also noch ändern.
 
 #### <a name="log-alert-with-custom-json-payload"></a>Protokollwarnung mit benutzerdefinierter JSON-Nutzlast
 Sie können beispielsweise Folgendes verwenden, um eine benutzerdefinierte Nutzlast zu erstellen, die nur den Warnungsnamen und die Suchergebnisse enthält: 

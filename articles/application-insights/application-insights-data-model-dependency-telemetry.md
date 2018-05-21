@@ -1,9 +1,9 @@
 ---
-title: "Azure Application Insights-Telemetriedatenmodell – Abhängigkeitstelemetrie | Microsoft-Dokumentation"
-description: "Application Insights-Datenmodell für Abhängigkeitstelemetrie"
+title: Azure Application Insights-Telemetriedatenmodell – Abhängigkeitstelemetrie | Microsoft-Dokumentation
+description: Application Insights-Datenmodell für Abhängigkeitstelemetrie
 services: application-insights
 documentationcenter: .net
-author: SergeyKanzhelev
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: TBD
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: aa305c30dc358997420be6802d43fa69e45f4a5f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; sergkanz
+ms.openlocfilehash: 019b24839c20e7f8f46eeccf4a7b9622d18b0ad6
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Abhängigkeitstelemetrie: Application Insights-Datenmodell
 
 Abhängigkeitstelemetrie (in [Application Insights](app-insights-overview.md)) stellt eine Interaktion der überwachten Komponente mit einer Remotekomponente wie SQL oder einem HTTP-Endpunkt dar.
 
-## <a name="name"></a>Name
+## <a name="name"></a>NAME
 
 Name des Befehls, der mit diesem Abhängigkeitsaufruf ausgelöst wird. Niedriger Kardinalitätswert. Beispiele sind der Name einer gespeicherten Prozedur und eine URL-Pfadvorlage.
 

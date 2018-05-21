@@ -1,8 +1,8 @@
 ---
-title: "Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark | Microsoft-Dokumentation"
-description: "Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark"
+title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark | Microsoft-Dokumentation
+description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Store für Spark
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: stewu
 manager: amitkul
 editor: stewu
@@ -10,15 +10,13 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 3c8ef6fd200f67ebc216c967bb1a6250ddcc15d4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: a807bea13063d2a0b3c1c71ddb6c98aa2d2568d3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Store
 
@@ -27,7 +25,7 @@ Beim Optimieren der Leistung in Spark müssen Sie die Anzahl von Apps berücksic
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Azure Data Lake-Speicherkonto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit dem Azure Data Lake-Speicher](data-lake-store-get-started-portal.md)
+* **Ein Azure Data Lake Store-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Store](data-lake-store-get-started-portal.md)
 * **Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake-Speicherkonto. Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
 * **Ausführen eines Spark-Clusters in Azure Data Lake Store**.  Weitere Informationen finden Sie unter [Verwenden des HDInsight Spark-Clusters, um Daten in Data Lake Store zu analysieren](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store).
 * **Leitfaden für die Optimierung der Leistung von Azure Data Lake Store**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance). 
