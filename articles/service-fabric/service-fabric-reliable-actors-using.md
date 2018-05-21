@@ -9,16 +9,16 @@ editor: amanbha
 ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 60989825ecdefa853d0e2df99619e3cb350cb6bc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 41548c3395fa0c8f56e62cfcfb7338a2d53f040f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihren Actordienst
 Wie in [Dienstebenen](service-fabric-reliable-actors-platform.md#service-layering) beschrieben, ist der Actordienst selbst ein zuverlässiger Dienst.  Sie können einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist und Funktionen auf Dienstebene auf die gleiche Weise implementiert wie bei der Vererbung von StatefulService. Beispiel:

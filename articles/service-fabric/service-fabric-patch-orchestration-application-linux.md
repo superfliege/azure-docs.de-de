@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric-Anwendung für die Patchorchestrierung für Linux | Microsoft-Dokumentation"
+title: Azure Service Fabric-Anwendung für die Patchorchestrierung für Linux | Microsoft-Dokumentation
 description: Anwendung zum Automatisieren von Betriebssystempatches in einem Linux-Service Fabric-Cluster.
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/22/2018
 ms.author: nachandr
-ms.openlocfilehash: dac8068705e284b04d84d128eb1ce62c459d44ff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f5d9b39a91567dd04b4e8ca0cd580c58024bb2f2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -270,7 +270,7 @@ Wenn der Reparatur-Manager-Dienst im Cluster nicht gefunden werden kann, wird f�
 
 F: **Warum befindet sich mein Cluster im Status „Fehler“, wenn die App für die Patchorchestrierung ausgeführt wird?**
 
-A: Während des Installationsprozesses deaktiviert die App für die Patchorchestrierung Knoten oder startet sie neu. Dieser Vorgang kann dazu führen, dass die Integrität des Clusters vorübergehend beeinträchtigt wird.
+A. Während des Installationsprozesses deaktiviert die App für die Patchorchestrierung Knoten oder startet sie neu. Dieser Vorgang kann dazu führen, dass die Integrität des Clusters vorübergehend beeinträchtigt wird.
 
 Basierend auf der Richtlinie für die Anwendung kann während eines Patchvorgangs ein Knoten *oder* eine ganze Upgradedomäne gleichzeitig heruntergefahren werden.
 
@@ -284,15 +284,15 @@ Sollte das Problem dauerhaft auftreten, lesen Sie die Informationen im Abschnitt
 
 F: **Die App für die Patchorchestrierung befindet sich im Status „Warnung“.**
 
-A: Überprüfen Sie, ob der für die Anwendung gesendete Integritätsbericht Informationen zur Ursache enthält. Üblicherweise enthält die Warnung Details zum Problem. Wenn das Problem vorübergehend ist, ist zu erwarten, dass die Anwendung automatisch wiederhergestellt wird.
+A. Überprüfen Sie, ob der für die Anwendung gesendete Integritätsbericht Informationen zur Ursache enthält. Üblicherweise enthält die Warnung Details zum Problem. Wenn das Problem vorübergehend ist, ist zu erwarten, dass die Anwendung automatisch wiederhergestellt wird.
 
 F: **Was kann ich tun, wenn mein Cluster einen Fehler aufweist und ich ein dringendes Betriebssystemupdate ausführen muss?**
 
-A: Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versetzen Sie den Cluster in einen fehlerfreien Zustand, um den Workflow der App für die Patchorchestrierung fortzuführen.
+A. Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versetzen Sie den Cluster in einen fehlerfreien Zustand, um den Workflow der App für die Patchorchestrierung fortzuführen.
 
 F: **Warum dauert das Patchen für den gesamten Cluster so lange?**
 
-A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
+A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
 
 - Richtlinie des Koordinatordiensts. 
   - Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird. Besonders bei größeren Clustern sollten Sie die Richtlinie `UpgradeDomainWise` verwenden, um ein schnelleres Patchen bei mehreren Clustern zu erreichen.
@@ -302,22 +302,22 @@ A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 
 F: **Wie ermittelt die App für die Patchorchestrierung, bei welchen Updates es sich um Sicherheitsupdates handelt?**
 
-A: Die App für die Patchorchestrierung verwendet distributionsspezifische Logik zum Ermitteln, bei welchen der verfügbaren Updates es sich um Sicherheitsupdates handelt. Beispiel: In Ubuntu sucht die App nach Updates aus den Archiven „$RELEASE-security“ und „$RELEASE-updates“ („$RELEASE = xenial“ oder die Linux Standard-Basis-Releaseversion). 
+A. Die App für die Patchorchestrierung verwendet distributionsspezifische Logik zum Ermitteln, bei welchen der verfügbaren Updates es sich um Sicherheitsupdates handelt. Beispiel: In Ubuntu sucht die App nach Updates aus den Archiven „$RELEASE-security“ und „$RELEASE-updates“ („$RELEASE = xenial“ oder die Linux Standard-Basis-Releaseversion). 
 
  
 F: **Wie kann ich eine Sperre für eine bestimmte Paketversion festlegen?**
 
-A: Verwenden Sie die ApprovedPatches-Einstellungen, um Pakete für eine bestimmte Version zu sperren. 
+A. Verwenden Sie die ApprovedPatches-Einstellungen, um Pakete für eine bestimmte Version zu sperren. 
 
 
 F: **Wie verhält es sich mit in Ubuntu aktivierten automatischen Updates?**
 
-A: Sobald Sie die App für die Patchorchestrierung im Cluster installieren, wird unattended-upgrades auf dem Clusterknoten deaktiviert. Der gesamte Workflow für regelmäßige Updates wird dann durch die App für die Patchorchestrierung gesteuert.
+A. Sobald Sie die App für die Patchorchestrierung im Cluster installieren, wird unattended-upgrades auf dem Clusterknoten deaktiviert. Der gesamte Workflow für regelmäßige Updates wird dann durch die App für die Patchorchestrierung gesteuert.
 Für die Konsistenz der Umgebung im Cluster empfiehlt es sich, die Updates ausschließlich über die App für die Patchorchestrierung zu installieren. 
  
 F: **Führt die App für die Patchorchestrierung nach dem Upgrade die Bereinigung nicht verwendeter Pakete durch?**
 
-A: Ja, die Bereinigung ist Bestandteil der Schritte nach der Installation. 
+A. Ja, die Bereinigung ist Bestandteil der Schritte nach der Installation. 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

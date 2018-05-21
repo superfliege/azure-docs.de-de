@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 2498c8b1acff79d50f34c703af77c555a00fd1a2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1a6ff01274c4a47730ffe45275aed9d122994260
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -106,7 +106,7 @@ Für die Verwendung von DevTest Labs fallen keine zusätzlichen Kosten an. Die E
 
 Labore oder Produktionssysteme in Azure zu hosten, bedeutet, dass der Zugriff auf Ihre Systeme über das Internet möglich sein muss. Standardmäßig ist bei einem neuen virtuellen Windows-Computer der RDP-Port für den Zugriff aus dem Internet geöffnet. Bei virtuellen Linux-Computern ist der SSH-Port geöffnet. Um das Risiko unberechtigter Zugriffe zu minimieren, ist eine Begrenzung der verfügbar gemachten Endpunkte erforderlich.
 
-Azure bietet Technologien, die Sie bei der Begrenzung des Zugriffs auf diese administrativen Endpunkte unterstützen. In Azure können Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) (NSGs) verwenden. Wenn Sie für die Bereitstellung Azure Resource Manager verwenden, wird mit NSGs der Zugriff aus allen Netzwerken auf die Verwaltungsendpunkte (RDP oder SSH) beschränkt. Wenn Sie über NSGs nachdenken, sollten Sie auch über Zugriffssteuerungslisten (access control lists; ACLs) nachdenken. Mit ACL können Sie die Netzwerkkommunikation zwischen verschiedenen Segmenten Ihrer Azure-Netzwerke genau steuern. Das ist vergleichbar mit dem Erstellen von Netzwerken in Umkreisnetzwerken oder anderen isolierten Netzwerken. ACLs untersuchen zwar nicht den Datenverkehr, helfen aber bei der Netzwerksegmentierung.
+Azure bietet Technologien, die Sie bei der Begrenzung des Zugriffs auf diese administrativen Endpunkte unterstützen. In Azure können Sie [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) (NSGs) verwenden. Wenn Sie für die Bereitstellung Azure Resource Manager verwenden, wird mit NSGs der Zugriff aus allen Netzwerken auf die Verwaltungsendpunkte (RDP oder SSH) beschränkt. Wenn Sie über NSGs nachdenken, sollten Sie auch über Zugriffssteuerungslisten (access control lists; ACLs) nachdenken. Mit ACL können Sie die Netzwerkkommunikation zwischen verschiedenen Segmenten Ihrer Azure-Netzwerke genau steuern. Das ist vergleichbar mit dem Erstellen von Netzwerken in Umkreisnetzwerken oder anderen isolierten Netzwerken. ACLs untersuchen zwar nicht den Datenverkehr, helfen aber bei der Netzwerksegmentierung.
 
 
 In Azure können Sie ein [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) über Ihr lokales Netzwerk konfigurieren. Ein Site-to-Site-VPN erweitert Ihr lokales Netzwerk in die Cloud. Hierbei handelt es sich um eine weitere Verwendungsmöglichkeit für NSGs. Diese können so angepasst werden, dass der Zugriff nur über das lokale Netzwerk möglich ist. Anschließend können Sie festlegen, dass zur Verwaltung zunächst eine VPN-Verbindung mit dem Azure-Netzwerk hergestellt werden muss.

@@ -61,12 +61,10 @@
           href: virtual-networks-acl.md
 - name: Anleitungen
   items:
-    - name: Planen und Entwerfen
+    - name: Plan
       items:
         - name: Virtuelle Netzwerke
           href: virtual-network-vnet-plan-design-arm.md
-        - name: Netzwerksicherheitsgruppen
-          href: virtual-networks-nsg.md
     - name: Bereitstellen
       items:
         - name: Netzwerksicherheitsgruppen

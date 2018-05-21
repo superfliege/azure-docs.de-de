@@ -1,6 +1,6 @@
 ---
-title: "Erstellen von Chaos- und Failovertests für Azure-Microservices | Microsoft-Dokumentation"
-description: "Mithilfe der Chaos- und Failovertestszenarien von Service Fabric können Sie Fehler herbeiführen und die Zuverlässigkeit Ihrer Dienste überprüfen."
+title: Erstellen von Chaos- und Failovertests für Azure-Microservices | Microsoft-Dokumentation
+description: Mithilfe der Chaos- und Failovertestszenarien von Service Fabric können Sie Fehler herbeiführen und die Zuverlässigkeit Ihrer Dienste überprüfen.
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -9,16 +9,16 @@ editor: toddabel
 ms.assetid: 8eee7e89-404a-4605-8f00-7e4d4fb17553
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: d06026c750e01ad5825338a78d9af331265f434a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9c05ba2b98af5ef26ef5b5a7ae0995512df4e75
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="testability-scenarios"></a>Testability-Szenarien
 Große verteilte Systeme, z. B. Cloudinfrastrukturen, sind häufig unzuverlässig. Mit Azure Service Fabric können Entwickler Dienste schreiben, die für unzuverlässige Infrastrukturen ausgeführt werden. Um hochwertige Dienste schreiben zu können, müssen Entwickler dazu in der Lage sein, diese unzuverlässigen Infrastrukturen auszulösen, um die Stabilität ihrer Dienste testen zu können.
@@ -45,7 +45,7 @@ Beim Chaostest werden im angegebenen Zeitraum mehrere Iterationen von Fehlern un
 
 Nehmen wir beispielsweise an, ein Test soll eine Stunde lang ausgeführt werden und maximal drei gleichzeitige Fehler umfassen. Während des Tests werden drei Fehler ausgelöst, und anschließend wird die Clusterintegrität überprüft. Der Test durchläuft den vorherigen Schritt so lange, bis die Integrität des Clusters nicht mehr gewährleistet oder eine Stunde vergangen ist. Falls die Integrität des Clusters bei einer Iteration nicht mehr besteht, also keine Stabilisierung innerhalb eines konfigurierten Zeitraums möglich ist, ist der Test nicht erfolgreich, und es tritt eine Ausnahme auf. Mit der Ausnahme wird angegeben, dass ein Fehler aufgetreten ist, der weiter untersucht werden muss.
 
-In seiner derzeitigen Form enthält das Fehlergenerierungsmodul des Chaostests nur sichere Fehler. Dies bedeutet, dass bei einem Nichtvorhandensein von externen Fehlern niemals ein Quorum- oder Datenverlust auftritt.
+In seiner derzeitigen Form enthält die Fehlergenerierungs-Engine des Chaostests nur sichere Fehler. Dies bedeutet, dass bei einem Nichtvorhandensein von externen Fehlern niemals ein Quorum- oder Datenverlust auftritt.
 
 ### <a name="important-configuration-options"></a>Wichtige Konfigurationsoptionen
 * **TimeToRun**: Gesamtdauer der Ausführung des Tests, bevor er erfolgreich abgeschlossen wird. Beim Auftreten eines Überprüfungsfehlers kann der Test auch früher abgeschlossen werden.

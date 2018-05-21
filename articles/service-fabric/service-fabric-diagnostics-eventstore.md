@@ -9,21 +9,21 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 7e401a310ce9a5f59473353227a9ce36767aac3c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1d235d5a75975c8d58cad1bbde0f16df2b1b3e7a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="eventstore-service-overview"></a>Übersicht über den EventStore-Dienst
 
 >[!NOTE]
->Ab Service Fabric-Version 6.2 sind die EventStore-APIs derzeit in der Vorschau nur für unter Azure ausgeführte Windows-Cluster verfügbar. Wir arbeiten daran, diese Funktionalität sowohl auf Linux als auch auf eigenständige Cluster zu portieren.
+>Ab Service Fabric-Version 6.2 sind die EventStore-APIs derzeit nur für unter Azure ausgeführte Windows-Cluster als Vorschauversion verfügbar. Wir arbeiten daran, diese Funktionalität sowohl für Linux als auch für unseren eigenständigen Cluster zu portieren.
 
 ## <a name="overview"></a>Übersicht
 
