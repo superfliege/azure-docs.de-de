@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – Vergleich | Microsoft Docs"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Vergleichen von Werten verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – Vergleich | Microsoft Docs
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Vergleichen von Werten verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 3291d545bc7a66ffa9b4845acd890a714cf84ef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 364a271d84f9abfe99c7c674a6c504ce94318ac9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Vergleichsfunktionen für Azure Resource Manager-Vorlagen
 
@@ -37,7 +37,7 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der erste auf Gleichheit zu überprüfende Wert. |
 | arg2 |Ja |Ganze Zahl, Zeichenfolge, Array oder Objekt |Der zweite auf Gleichheit zu überprüfende Wert. |
@@ -132,12 +132,12 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| checkInts | Bool | True  |
-| checkStrings | Bool | True  |
-| checkArrays | Bool | True  |
-| checkObjects | Bool | true |
+| checkInts | Bool | True |
+| checkStrings | Bool | True |
+| checkArrays | Bool | True |
+| checkObjects | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -170,9 +170,9 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | true |
+| checkNotEquals | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -193,7 +193,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als“. |
@@ -245,10 +245,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
-| checkStrings | Bool | true |
+| checkStrings | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -269,7 +269,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Größer als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Größer als oder gleich“. |
@@ -321,10 +321,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | checkInts | Bool | False |
-| checkStrings | Bool | true |
+| checkStrings | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -345,7 +345,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als“. |
@@ -397,9 +397,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| checkInts | Bool | True  |
+| checkInts | Bool | True |
 | checkStrings | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -421,7 +421,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Ganz Zahl oder Zeichenfolge |Der erste Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
 | arg2 |Ja |Ganz Zahl oder Zeichenfolge |Der zweite Wert für den Vergleich vom Typ „Kleiner als oder gleich“. |
@@ -473,9 +473,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| checkInts | Bool | True  |
+| checkInts | Bool | True |
 | checkStrings | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:

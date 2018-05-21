@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: fde1d2c5d1a90092ec4528f727dc7af672f80917
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c8dcf4ad49b8f261814c2d442bfdded221e8cbf
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Tutorial: Integration von Azure Active Directory in LinkedIn Sales Navigator
 
@@ -29,7 +29,7 @@ Die Integration von LinkedIn Sales Navigator in Azure AD bietet Ihnen folgende V
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LinkedIn Sales Navigator anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LinkedIn Sales Navigator aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -57,17 +57,17 @@ Zum Konfigurieren der Integration von LinkedIn Sales Navigator in Azure AD müss
 
 **Um LinkedIn Sales Navigator aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte durch:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das **Azure Active Directory**-Symbol. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie in das Suchfeld **LinkedIn Sales Navigator** ein.
 
@@ -86,10 +86,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei LinkedIn Sales Navigator über Azure AD müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines LinkedIn Sales Navigator-Testbenutzers](#creating-a-linkedin-sales-navigator-test-user)**, um eine Entsprechung von Britta Simon in LinkedIn Sales Navigator zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,25 +100,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LinkedIn Sales Navigator** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_samlbase.png)
 
 3. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrer **LinkedIn Sales Navigator**-Website als Administrator an.
 
 4. Klicken Sie im **Kontocenter** unter **Einstellungen** auf **Globale Einstellungen**. Wählen Sie außerdem **Sales Navigator** aus der Dropdownliste aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_01.png)
 
 5. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Access(ACS)-URL**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_031.png)
 
 6. Führen Sie im Azure-Portal unter **Domäne und URLs für LinkedIn Sales Navigator** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** die **Entitäts-ID** ein, die Sie aus dem LinkedIn-Portal kopiert haben. 
 
@@ -126,13 +126,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 7. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://www.linkedin.com/checkpoint/enterprise/login/<account id>?application=salesNavigator`.
 
 8. Die **LinkedIn Sales Navigator**-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Im folgenden Screenshot wird ein Beispiel gezeigt. Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, LinkedIn Sales Navigator erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste oder den entsprechenden Attributwert gemäß Ihrer Organisationskonfiguration verwenden. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/updateusermail.png)
     
 9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Der Benutzer muss vier Ansprüche mit den Namen **email**, **department**, **firstname** und **lastname** hinzufügen, und der Wert muss mit **user.mail**, **user.department**, **user.givenname** bzw. **user.surname** zugeordnet werden.
 
@@ -161,7 +161,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/url_update.png)
 
     b. Löschen Sie den URL-Wert aus dem **Namespace**.
     
@@ -169,19 +169,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
 11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_certificate.png) 
 
 12. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_general_400.png)
 
 13. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Klicken Sie auf **XML-Datei hochladen**, um die Metadaten-XML-Datei hochzuladen, die Sie vom Azure-Portal heruntergeladen haben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_metadata_03.png)
 
 14. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedin_admin_05.png)
 
 
 > [!TIP]
@@ -217,7 +217,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-linkedin-sales-navigator-test-user"></a>Erstellen eines LinkedIn Sales Navigator-Testbenutzers
 
@@ -239,7 +239,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LinkedIn Sales Navigator** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-linkedinsalesnavigator-tutorial/tutorial_linkedinsalesnavigator_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -264,7 +264,7 @@ Wenn Sie auf die Kachel „LinkedIn Sales Navigator“ im Zugriffsbereich klicke
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

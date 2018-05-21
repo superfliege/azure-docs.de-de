@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 8973c3289c5b17c03166c09db821e299d50f2f9c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: db254c7e0f200b447ef6d0b299080a7a542c235a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Tutorial: Azure Active Directory-Integration mit FloQast
 
@@ -30,7 +30,7 @@ Die Integration von FloQast in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei FloQast anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -235,7 +235,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

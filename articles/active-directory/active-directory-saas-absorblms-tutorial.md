@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f877d8fee4a94207fc01f4a5e0e7919f1286f2e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Tutorial: Azure Active Directory-Integration mit Absorb LMS
 
@@ -30,7 +30,7 @@ Die Integration von Absorb LMS in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Absorb LMS anzumelden (per einmaligem Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -113,7 +113,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Absorb L
 
     ![Downloadlink für das Signaturzertifikat](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_certificate.png) 
 
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
@@ -269,7 +269,7 @@ Wenn Sie im Zugriffsbereich die Kachel **Absorb LMS** wählen, werden Sie automa
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 
