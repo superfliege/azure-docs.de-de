@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 130b4a958525cfddf231fa0e9f71025f58ca51a9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 67d2f6e649ff01ec5a4e2ab8c924c764e65c8a5d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Tutorial: Azure Active Directory-Integration mit Kantega SSO for Bamboo
 
@@ -29,7 +29,7 @@ Die Integration von Kantega SSO for Bamboo in Azure AD bietet die folgenden Vort
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Kantega SSO for Bamboo anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Kantega SSO for Bamboo aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -57,17 +57,17 @@ Zum Konfigurieren der Integration von Kantega SSO for Bamboo in Azure AD müssen
 
 **Um Kantega SSO for Bamboo aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das **Azure Active Directory**-Symbol. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
     ![Active Directory][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie in das Suchfeld den Suchbegriff **Kantega SSO for Bamboo** ein.
 
@@ -86,8 +86,8 @@ Weisen Sie in Kantega SSO for Bamboo den Wert für **Benutzername** in Azure AD 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei Kantega SSO for Bamboo über Azure AD müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Kantega SSO for Bamboo-Testbenutzers](#creating-a-kantega-sso-for-bamboo-test-user)**, um eine Entsprechung von Britta Simon in Kantega SSO for Bamboo zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
@@ -100,15 +100,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kantega SSO for Bamboo** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_samlbase.png)
 
 3. Führen Sie im **IDP**-initiierten Modus im Abschnitt **Domäne und URLs für Kantega SSO for Bamboo** den folgenden Schritt aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url1.png)
     
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`
 
@@ -116,7 +116,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 4. Aktivieren Sie im **SP**-initiierten Modus die Option **Erweiterte URL-Einstellungen anzeigen**, und führen Sie den folgenden Schritt aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_url2.png)
     
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<server-base-url>/plugins/servlet/no.kantega.saml/sp/<uniqueid>/login`.
      
@@ -125,93 +125,89 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_general_400.png)
     
 7. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem lokalen Bamboo-Server als Administrator an.
 
 8. Fahren Sie mit dem Mauszeiger über das Zahnrad, und klicken Sie auf die **Add-Ons**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon1.png)
 
 9. Klicken Sie im Registerkartenabschnitt „Add-Ons“ auf **Nach neuen Add-Ons suchen**. Suchen Sie nach **Kantega SSO for Bamboo (SAML & Kerberos)**, und klicken Sie auf die Schaltfläche **Installieren**, um das neue SAML-Plug-In zu installieren.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon2.png)
 
 10. Die Installation des Plug-Ins wird gestartet.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon21.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon21.png)
 
 11. Gehen Sie nach Abschluss der Installation wie folgt vor: Klicken Sie auf **Schließen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon33.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon33.png)
 
 12. Klicken Sie auf **Manage**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon34.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon34.png)
     
 13. Klicken Sie auf **Konfigurieren**, um das neue Plug-In zu konfigurieren.    
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon3.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon3.png)
 
 14. Im Abschnitt **SAML**: Wählen Sie in der Dropdownliste **Identitätsanbieter hinzufügen** die Option **Azure Active Directory (Azure AD)**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon4.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon4.png)
 
 15. Wählen Sie als Abonnementebene die Option **Basic**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon5.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon5.png)
 
 16. Führen Sie im Abschnitt **App-Eigenschaften** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon6.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon6.png)
 
     a. Kopieren Sie den Wert für den **App-ID-URI**, und verwenden Sie ihn als **Bezeichner, Antwort-URL und Anmelde-URL** im Abschnitt **Domäne und URLs für Kantega SSO for Bamboo** des Azure-Portals.
 
     b. Klicken Sie auf **Weiter**.
 
-
 17. Führen Sie im Abschnitt **Metadata import** (Metadatenimport) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon7.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon7.png)
 
     a. Wählen Sie **Metadata file on my computer** (Metadatendatei auf meinem Computer), und laden Sie die Metadatendatei hoch, die Sie aus dem Azure-Portal heruntergeladen haben.
 
     b. Klicken Sie auf **Weiter**.
 
-
 18. Führen Sie im Abschnitt **Name and SSO location** (Name und SSO-Standort) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon8.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon8.png)
 
     a. Fügen Sie im Textfeld **Name des Identitätsanbieters** den Namen des Identitätsanbieters hinzu (z.B. Azure AD).
 
     b. Klicken Sie auf **Weiter**.
 
-
 19. Überprüfen Sie das Signaturzertifikat, und klicken Sie auf **Weiter**.  
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon9.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon9.png)
 
 20. Führen Sie im Abschnitt **Bamboo user accounts** (Bamboo-Benutzerkonten) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon10.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon10.png)
 
     a. Wählen Sie **Create users in Bamboo's internal Directory if needed** (Benutzer im internen Bamboo-Verzeichnis erstellen, falls erforderlich), und geben Sie den entsprechenden Namen der Gruppe für Benutzer ein (können mehrere durch Kommas getrennte Gruppen sein).
 
     b. Klicken Sie auf **Weiter**.
 
-
 21. Klicken Sie auf **Fertig stellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon11.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon11.png)
 
 22. Führen Sie im Abschnitt **Known domains for Azure AD** (Bekannte Domänen für Azure AD) die folgenden Schritte aus: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon12.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon12.png)
 
     a. Wählen Sie im linken Bereich der Seite die Option **Known domains** (Bekannte Domänen).
 
@@ -295,7 +291,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Kantega SSO for Bamboo** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-kantegassoforbamboo-tutorial/tutorial_kantegassoforbamboo_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -321,7 +317,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 
