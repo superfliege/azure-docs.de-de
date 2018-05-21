@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine Reihe von bewährten Methoden für die
 services: security
 documentationcenter: na
 author: TomShinder
-manager: swadhwa
+manager: mbaldwin
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d6d723f40cdc0382fa41a51eb32e7b59f0798627
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-network-security-best-practices"></a>Bewährte Methoden für die Azure-Netzwerksicherheit
 Mit Microsoft Azure können Sie virtuelle Computer und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in Azure Virtual Networks anordnen. Ein Azure Virtual Network ist ein Konstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Virtuelle Azure-Computer, die mit einem virtuellen Azure-Netzwerk verbunden sind, können eine Verbindung mit Geräten im selben virtuellen Azure-Netzwerk, anderen virtuellen Azure-Netzwerken, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
@@ -56,7 +56,7 @@ Sie sollten ähnlich wie in Ihrem lokalen Netzwerk vorgehen und die größeren A
 
 Das Routing zwischen den Subnetzen wird automatisch durchgeführt, und es ist nicht erforderlich, Routingtabellen manuell zu konfigurieren. Die Standardeinstellung ist aber, dass keine Netzwerkzugriffssteuerung zwischen den Subnetzen erfolgt, die Sie im Azure Virtual Network erstellen. Um zwischen Subnetzen Netzwerkzugriffssteuerungen zu erstellen, müssen Sie zwischen die Subnetze Elemente einfügen.
 
-Eine Möglichkeit zur Erreichung dieses Ziels ist die Nutzung einer [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) (NSG). Bei NSGs handelt es sich um einfache zustandsbehaftete Paketuntersuchungsgeräte, für die der 5-Tupel-Ansatz (Quell-IP, Quellport, Ziel-IP, Zielport und Layer-4-Protokoll) verwendet wird, um Zulassen/Verweigern-Regeln für den Netzwerkdatenverkehr zu erstellen. Sie können Datenverkehr für eine einzelne IP-Adresse, mehrere IP-Adressen und gesamte Subnetze in beiden Richtungen zulassen oder verweigern.
+Eine Möglichkeit zur Erreichung dieses Ziels ist die Nutzung einer [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) (NSG). Bei NSGs handelt es sich um einfache zustandsbehaftete Paketuntersuchungsgeräte, für die der 5-Tupel-Ansatz (Quell-IP, Quellport, Ziel-IP, Zielport und Layer-4-Protokoll) verwendet wird, um Zulassen/Verweigern-Regeln für den Netzwerkdatenverkehr zu erstellen. Sie können Datenverkehr für eine einzelne IP-Adresse, mehrere IP-Adressen und gesamte Subnetze in beiden Richtungen zulassen oder verweigern.
 
 Die Verwendung von NSGs für die Netzwerkzugriffssteuerung zwischen Subnetzen ermöglicht Ihnen das Anordnen von Ressourcen, die zu derselben Sicherheitszone oder Rolle gehören, in eigenen Subnetzen. Stellen Sie sich beispielsweise eine einfache Anwendung mit drei Ebenen vor, z.B. einer Webebene, einer Ebene für die Anwendungslogik und einer Datenbankebene. Sie ordnen virtuelle Computer, die zu diesen Ebenen gehören, jeweils in eigenen Subnetzen an. Anschließend verwenden Sie Netzwerksicherheitsgruppen, um den Datenverkehr zwischen den Subnetzen zu steuern:
 
@@ -64,7 +64,7 @@ Die Verwendung von NSGs für die Netzwerkzugriffssteuerung zwischen Subnetzen er
 * Virtuelle Computer der Anwendungslogik können nur Verbindungen mit der Datenbankebene initiieren und nur Verbindungen der Webebene akzeptieren.
 * Virtuelle Computer der Datenbankebene können keine Verbindung mit Elementen außerhalb ihres eigenen Subnetzes initiieren und nur Verbindungen von der Ebene für die Anwendungslogik akzeptieren.
 
-Weitere Informationen zu Netzwerksicherheitsgruppen und deren Verwendung zum logischen Segmentieren von virtuellen Azure-Netzwerken finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+Weitere Informationen zu Netzwerksicherheitsgruppen und deren Verwendung zum logischen Segmentieren von virtuellen Azure-Netzwerken finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
 ## <a name="control-routing-behavior"></a>Steuern des Routingverhaltens
 Wenn Sie einen virtuellen Computer in einem Azure Virtual Network anordnen, werden Sie merken, dass der virtuelle Computer eine Verbindung mit jedem anderen virtuellen Computer in demselben Azure Virtual Network herstellen kann. Dies gilt auch, wenn sich die anderen virtuellen Computer in unterschiedlichen Subnetzen befinden. Dies ist möglich, weil standardmäßig aktivierte Systemrouten vorhanden sind, mit denen diese Art der Kommunikation durchgeführt werden kann. Diese Standardrouten ermöglichen virtuellen Computern in demselben Azure Virtual Network die Initiierung von Verbindungen untereinander und mit dem Internet (gilt nur für ausgehende Kommunikation mit dem Internet).

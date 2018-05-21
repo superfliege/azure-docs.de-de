@@ -8,17 +8,19 @@ ms.service: sql-database
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: quickstart
-ms.date: 03/26/2018
+ms.date: 04/24/2018
 ms.author: carlrab
-ms.openlocfilehash: ddb714d9fb3c750d6cebdb0d94b894dce6dab897
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ec39c5ad0771c2bc78655e52c58949db6e9b3353
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="azure-sql-database-connect-and-query-quickstarts"></a>Azure SQL-Datenbank – Schnellstartanleitung für Verbindungsherstellung und Abfragen
 
-Die folgende Tabelle enthält Links zu Azure Beispielen, die veranschaulichen, wie Sie für Azure SQL-Datenbank eine Verbindung herstellen und Abfragen durchführen.
+Das folgende Dokument enthält Links zu Azure-Beispielen, in denen veranschaulicht wird, wie Sie eine Verbindung mit einer Azure SQL-Datenbank herstellen und Daten in der Datenbank abfragen. Darüber hinaus enthält es einige Empfehlungen zur Sicherheit auf Transportebene.
+
+## <a name="quickstarts"></a>Schnellstarts
 
 | |  |
 |---|---|
@@ -36,4 +38,18 @@ Die folgende Tabelle enthält Links zu Azure Beispielen, die veranschaulichen, w
 |[Ruby](sql-database-connect-query-ruby.md)|In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von Ruby ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt, und mithilfe von Transact-SQL-Anweisungen Daten abfragen.|
 |||
 
+## <a name="tls-considerations-for-sql-database-connectivity"></a>Überlegungen zu TLS für Verbindungen mit einer SQL-Datenbank
+Transport Layer Security (TLS) wird von allen Treibern verwendet, die Microsoft zum Herstellen einer Verbindung mit Azure SQL-Datenbank bereitstellt oder unterstützt. Es ist keine spezielle Konfiguration erforderlich. Für alle Verbindungen mit SQL Server oder Azure SQL-Datenbank empfehlen wir, dass alle Anwendungen auf die folgenden Konfigurationen oder deren Entsprechungen festgelegt sind:
 
+ - **Verschlüsseln = Ein**
+ - **TrustServerCertificate = Aus**
+
+Einige Systeme verwenden andere, jedoch entsprechende Schlüsselwörter für diese Konfigurationsschlüsselwörter. Durch diese Konfigurationen wird sichergestellt, dass der Clienttreiber die Identität des vom Server empfangenen TLS-Zertifikats überprüft.
+
+Außerdem empfiehlt es sich, TLS 1.1 und 1.0 auf dem Client zu deaktivieren, wenn Sie den Payment Card Industry Data Security Standard (PCI-DSS) einhalten müssen.
+
+Nicht von Microsoft stammende Treiber verwenden TLS möglicherweise nicht standardmäßig. Dies kann beim Herstellen einer Verbindung mit Azure SQL-Datenbank ein Faktor sein. Bei Anwendungen mit eingebetteten Treibern können Sie diese Verbindungseinstellungen möglicherweise nicht steuern. Wir empfehlen Ihnen, die Sicherheit solcher Treiber und Anwendungen zu überprüfen, bevor Sie sie auf Systemen verwenden, die mit vertraulichen Daten interagieren.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zur Verbindungsarchitektur finden Sie unter [Verbindungsarchitektur der Azure SQL-Datenbank](sql-database-connectivity-architecture.md).

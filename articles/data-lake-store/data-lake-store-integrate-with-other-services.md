@@ -1,7 +1,7 @@
 ---
 title: Integrieren von Data Lake Store in andere Azure-Dienste | Microsoft Docs
 description: Erfahren Sie, wie Sie Data Lake-Speicher in andere Azure-Dienste integrieren.
-documentationcenter: 
+documentationcenter: ''
 services: data-lake-store
 author: nitinme
 manager: jhubbard
@@ -9,16 +9,14 @@ editor: cgronlun
 ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: d43459b900232612d83506438e6a70daa893eb80
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: e11100118f599b4fee6362625aff05c50bb07c87
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Integrieren von Data Lake-Speicher in andere Azure-Dienste
 Azure Data Lake-Speicher kann zusammen mit anderen Azure-Diensten verwendet werden, um mehr Szenarios zu ermöglichen. Im folgende Artikel werden die Dienste aufgeführt, in die Data Lake-Speicher integriert werden kann.
@@ -67,7 +65,7 @@ Sie können PolyBase verwenden, um Daten aus Azure Data Lake Store in SQL Data W
 Sie können Azure Data Lake Store zum Archivieren und Erfassen von Daten verwenden, die von Azure Event Hubs empfangen werden. Weitere Informationen finden Sie unter [Use Azure Data Lake Store to capture data from Event Hubs](data-lake-store-archive-eventhub-capture.md) (Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs).
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
+* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
 * [Erste Schritte mit Data Lake-Speicher mithilfe des Portals](data-lake-store-get-started-portal.md)
 * [Erste Schritte mit Data Lake-Speicher mithilfe von PowerShell](data-lake-store-get-started-powershell.md)  
 

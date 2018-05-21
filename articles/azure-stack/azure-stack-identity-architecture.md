@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 2/28/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 899e0fc0c1eb93d68c79c92c9cc042462ebc2fef
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a6da27740efd613b8a81ffa85092d6b00b3e47d8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitätsarchitektur für Azure Stack
 Bevor Sie einen Identitätsanbieter für die Verwendung mit Azure Stack auswählen, sollten Sie sich mit den wichtigen Unterschieden zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) vertraut machen. 
@@ -33,7 +33,7 @@ Die Wahl des Identitätsanbieters schränkt unter Umständen Ihre Optionen ein �
 |------------------------------|----------|-------|
 |Verbindung mit dem Internet vorhanden     |Ja       |Optional|
 |Unterstützung mehrerer Mandanten     |Ja       |Nein       |
-|Marketplace-Syndikation       |Ja       |Ja. Erfordert die Verwendung des Tools für die [Marketplace-Offlinesyndikation](azure-stack-download-azure-marketplace-item.md#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity).|
+|Marketplace-Syndikation       |Ja       |Ja. Erfordert die Verwendung des Tools für die [Marketplace-Offlinesyndikation](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).|
 |Unterstützung der Active Directory Authentication Library (ADAL) |Ja |Ja|
 |Unterstützung von Tools wie Azure-Befehlszeilenschnittstelle, Visual Studio und PowerShell  |Ja |Ja|
 |Erstellen von Dienstprinzipalen über das Azure-Portal     |Ja |Nein |
