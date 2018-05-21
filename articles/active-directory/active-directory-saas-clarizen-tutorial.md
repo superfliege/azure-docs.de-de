@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 2925f0a9f582d0dfeca9832ca032b0d847f23f6b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8af9e7023142077fdeed0262e5f39921b158a14f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
 
@@ -32,7 +32,7 @@ Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptaufgaben:
 1. Hinzufügen von Clarizen aus dem Katalog
 2. Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Um die Azure AD-Integration mit Clarizen konfigurieren zu können, benötigen Sie Folgendes:
@@ -182,7 +182,7 @@ Erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
 
 ### <a name="create-a-clarizen-test-user"></a>Erstellen eines Clarizen-Testbenutzers
 Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie Benutzerkonten bereitstellen. Im Fall von Clarizen ist die Bereitstellung eine manuelle Aufgabe.
@@ -203,7 +203,7 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
     a. Geben Sie im Feld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    b. Klicken Sie auf **Invite**.
+    b. Klicken Sie auf **Einladen**.
 
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -243,7 +243,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Clarizen“ klicken, sollten Sie a
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

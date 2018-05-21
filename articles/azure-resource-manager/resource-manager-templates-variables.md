@@ -8,16 +8,16 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8d9f227ad1f450cf6cdfca1dafb1b51bc6f6c9f9
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 08728a3c0b4d4578939004e2d1b1ee2d30a682ab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Abschnitt „Variables“ von Azure Resource Manager-Vorlagen
 Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt variables definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
@@ -268,7 +268,7 @@ Diese Vorgehensweise funktioniert gut, wenn Sie Parameterwerte annehmen und sich
 }
 ```
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>Empfehlungen
 Die folgenden Informationen können bei der Verwendung von Variablen hilfreich sein:
 
 * Verwenden Sie Variablen für Werte, die Sie mehr als einmal in einer Vorlage verwenden müssen. Wenn ein Wert nur einmal verwendet wird, erleichtert ein hartcodierter Wert das Lesen Ihrer Vorlage.
@@ -279,7 +279,7 @@ Die folgenden Informationen können bei der Verwendung von Variablen hilfreich s
 
 Diese Beispielvorlagen veranschaulichen einige Szenarien für die Verwendung von Variablen. Stellen Sie sie bereit, um zu testen, wie Variablen in verschiedenen Szenarien verarbeitet werden. 
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 | [Variablendefinitionen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Zeigt die verschiedenen Typen von Variablen. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Variablenwerte und gibt diese Werte zurück. |
 | [Konfigurationsvariable](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Zeigt die Verwendung einer Variablen, die Konfigurationswerte definiert. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Variablenwerte und gibt diese Werte zurück. |
