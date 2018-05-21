@@ -1,23 +1,23 @@
 ---
 title: Azure Cloud Services-Definitionsschema (CSCFG-Datei) | Microsoft-Dokumentation
-ms.custom: 
+services: cloud-services
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 3ddc7fea-3339-4fc0-bdf9-853c32b25f69
-caps.latest.revision: "35"
+caps.latest.revision: 35
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: bba02688e443d4b5bde89691ca0b74b3597b453a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6347314e7f279356f4f3944f3238deda84f10fc0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services-Konfigurationsschema (CSCFG-Datei)
 Die Dienstkonfigurationsdatei gibt die Anzahl der Rolleninstanzen, die für jede Rolle im Dienst bereitgestellt werden, die Werte aller Konfigurationseinstellungen und die Fingerabdrücke für alle einer Rolle zugeordneten Zertifikate an. Wenn der Dienst Teil eines virtuellen Netzwerks ist, müssen Konfigurationsinformationen für das Netzwerk in der Dienstkonfigurationsdatei sowie in der Konfigurationsdatei für virtuelle Netzwerke bereitgestellt werden. Die Standarderweiterung für die Dienstkonfigurationsdatei ist .cscfg.
@@ -48,8 +48,8 @@ Das grundlegende Format der Dienstkonfigurationsdatei sieht wie folgt aus.
 ## <a name="schema-definitions"></a>Schemadefinitionen
 Die folgenden Themen beschreiben das Schema für das Element `ServiceConfiguration`:
 
-- [Role Schema](schema-cscfg-role.md) (Rollenschema)
-- [NetworkConfiguration Schema](schema-cscfg-networkconfiguration.md) (NetworkConfiguration-Schema)
+- [Rollenschema](schema-cscfg-role.md)
+- [NetworkConfiguration-Schema](schema-cscfg-networkconfiguration.md)
 
 ## <a name="service-configuration-namespace"></a>Dienstkonfigurations-Namespace
 Der XML-Namespace für die Dienstkonfigurationsdatei lautet: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration`.
@@ -59,7 +59,7 @@ Das Element `ServiceConfiguration` ist das Element der obersten Ebene der Dienst
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceConfiguration` beschrieben. Alle Attributwerte sind Zeichenfolgentypen.
 
-| Attribut | Beschreibung |
+| Attribut | BESCHREIBUNG |
 | --------- | ----------- |
 |serviceName|Erforderlich. Der Name des Clouddiensts. Der hier angegebene Name muss mit dem Namen in der Dienstdefinitionsdatei übereinstimmen.|
 |osFamily|Optional. Gibt das Gastbetriebssystem an, das auf Rolleninstanzen im Clouddienst ausgeführt wird. Nähere Informationen zu unterstützten Gastbetriebssystem-Releases finden Sie unter [Azure Gastbetriebssystem-Releases und SDK-Kompatibilitätsmatrix](cloud-services-guestos-update-matrix.md).<br /><br /> Wenn Sie keinen `osFamily`-Wert einschließen, und wenn Sie das `osVersion`-Attribut nicht für eine bestimmte Gastbetriebssystem-Version festgelegt haben, wird ein Standardwert 1 verwendet.|

@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services – Definition NetworkTrafficRules-Schema | Microsoft-Dokumentation"
-ms.custom: 
+title: Azure Cloud Services – Definition NetworkTrafficRules-Schema | Microsoft-Dokumentation
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
-caps.latest.revision: "17"
+caps.latest.revision: 17
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 37ec6c771ad83be680d95e9b5597d8da3cace9ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 779d3b42aeab04bb93756439a0482f32ade6557e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services – Definition NetworkTrafficRules-Schema
 Der `NetworkTrafficRules`-Knoten ist ein optionales Element in der Dienstdefinitionsdatei, das angibt, wie Rollen miteinander kommunizieren. Er begrenzt, welche Rollen auf die internen Endpunkte der bestimmten Rolle zugreifen können. Der `NetworkTrafficRules`-Knoten ist kein eigenständiges Element; er wird mit mindestens zwei Rollen in einer Dienstdefinitionsdatei kombiniert.
@@ -75,7 +75,7 @@ Das `Destinations`-Element beschreibt eine Sammlung von RoleEndpoints, mit denen
 ##  <a name="RoleEndpoint"></a> RoleEndpoint-Element
 Das `RoleEndpoint`-Element beschreibt einen Endpunkt einer Rolle, um die Kommunikation mit ihm zuzulassen. Sie können mehrere `RoleEndpoint`-Elemente angeben, wenn die Rolle mehrere Endpunkte aufweist.
 
-| Attribut      | Typ     | Beschreibung |
+| Attribut      | Typ     | BESCHREIBUNG |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | Erforderlich. Der Name des Endpunkts, mit dem Datenverkehr zugelassen ist.|
 | `roleName`     | `string` | Erforderlich. Der Name der Webrolle, mit der Kommunikation zugelassen ist.|
@@ -86,16 +86,16 @@ Das `AllowAllTraffic`-Element ist eine Regel, die allen Rollen die Kommunikation
 ##  <a name="WhenSource"></a> WhenSource-Element
 Das `WhenSource`-Element beschreibt eine Sammlung von Rollen, die mit den im `Destinations`-Knoten definierten Endpunkten kommunizieren können.
 
-| Attribut | Typ     | Beschreibung |
+| Attribut | Typ     | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `matches` | `string` | Erforderlich. Gibt die Regel an, die beim Zulassen von Kommunikation angewendet werden soll. Derzeit ist `AnyRule` der einzige gültige Wert.|
   
 ##  <a name="FromRole"></a> FromRole-Element
 Das `FromRole`-Element gibt die Rollen an, die mit den im `Destinations`-Knoten definierten Endpunkten kommunizieren können. Sie können mehrere `FromRole`-Elemente angeben, wenn mehrere Rollen mit den Endpunkten kommunizieren können.
 
-| Attribut  | Typ     | Beschreibung |
+| Attribut  | Typ     | BESCHREIBUNG |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | Erforderlich. Der Name für die Rolle, von der aus Kommunikation zugelassen ist.|
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 07e638fbce863833eeb75ce6e680af3d1d6339eb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 71c2463a38f2115bd3aeff82b100e3f2c20e7708
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -31,7 +31,7 @@ Die folgenden Artikel sind gute Ausgangspunkte für diejenigen, die lediglich ei
 | Artikelleitfaden |  |
 |:---:| --- |
 | Eine Einführung in die Probleme der Anwendungsverwaltung, die mit Azure AD gelöst werden |[Verwalten von Anwendungen mit Azure Active Directory (AD)](manage-apps/what-is-application-management.md) |
-| Eine Übersicht über die verschiedenen Funktionen in Azure AD im Zusammenhang mit dem Aktivieren der einmaligen Anmeldung, dem Definieren des Zugriffs auf Apps sowie dem Festlegen der Startmethode für Apps |[Anwendungszugriff und einmaliges Anmelden in Azure Active Directory](active-directory-appssoaccess-whatis.md) |
+| Eine Übersicht über die verschiedenen Funktionen in Azure AD im Zusammenhang mit dem Aktivieren der einmaligen Anmeldung, dem Definieren des Zugriffs auf Apps sowie dem Festlegen der Startmethode für Apps |[Anwendungszugriff und einmaliges Anmelden in Azure Active Directory](manage-apps/what-is-single-sign-on.md) |
 | Ein Blick auf die verschiedenen Schritte beim Integrieren von Apps in Ihr Azure AD |[Integrieren von Azure Active Directory in Anwendungen](manage-apps/plan-an-application-integration.md)<br /><br />[Aktivieren eines einmaligen Anmeldens an SaaS-Apps](active-directory-enterprise-apps-manage-sso.md)<br /><br />[Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md) |
 | Eine technische Erklärung zur Darstellung von Apps in Azure AD |[Wie und warum werden Anwendungen zu Azure AD hinzugefügt?](active-directory-how-applications-are-added.md) |
 
@@ -52,8 +52,8 @@ Durch einmaliges Anmelden können Benutzer mit nur einem Satz von Anmeldeinforma
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Eine Einführung in den Verbund und andere Arten von Anmeldungen |[Einmaliges Anmelden mit Azure AD](active-directory-appssoaccess-whatis.md) |
-| Tausende von SaaS-Apps, die bereits in Azure AD integriert sind, mit vereinfachten Schritten zur Konfiguration der einmaligen Anmeldung |[Erste Schritte mit dem Azure AD-Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Vollständige Liste der vorab integrierten Apps, die den Verbund unterstützen (in englischer Sprache)](active-directory-saas-tutorial-list.md)<br /><br />[Hinzufügen Ihrer App zum Azure AD-App-Katalog](active-directory-app-gallery-listing.md) |
+| Eine Einführung in den Verbund und andere Arten von Anmeldungen |[Einmaliges Anmelden mit Azure AD](manage-apps/what-is-single-sign-on.md) |
+| Tausende von SaaS-Apps, die bereits in Azure AD integriert sind, mit vereinfachten Schritten zur Konfiguration der einmaligen Anmeldung |[Erste Schritte mit dem Azure AD-Anwendungskatalog](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Vollständige Liste der vorab integrierten Apps, die den Verbund unterstützen (in englischer Sprache)](active-directory-saas-tutorial-list.md)<br /><br />[Hinzufügen Ihrer App zum Azure AD-App-Katalog](active-directory-app-gallery-listing.md) |
 | Mehr als 150 App-Tutorials zur Konfiguration des einmaligen Anmeldens für Apps wie [Salesforce](active-directory-saas-salesforce-tutorial.md), [ServiceNow](active-directory-saas-servicenow-tutorial.md), [Google Apps](active-directory-saas-google-apps-tutorial.md), [Workday](active-directory-saas-workday-tutorial.md) und viele mehr |[Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md) |
 | Vorgehensweise zum manuellen Einrichten und Anpassen Ihrer Konfiguration für einmaliges Anmelden |[Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Anpassen ausgestellter Ansprüche im SAML-Token für vorintegrierte Apps](active-directory-saml-claims-customization.md) |
 | Handbuch zur Problembehandlung für Verbund-Apps, die das SAML-Protokoll verwenden |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
@@ -66,7 +66,7 @@ Um das einmalige Anmelden für Anwendungen zu ermöglichen, die den Verbund nich
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Eine Einführung in die Funktionsweise des kennwortbasierten einmaligen Anmeldens und eine kurze technische Übersicht |[Kennwortbasiertes einmaliges Anmelden mit Azure AD](active-directory-appssoaccess-whatis.md#password-based-single-sign-on) |
+| Eine Einführung in die Funktionsweise des kennwortbasierten einmaligen Anmeldens und eine kurze technische Übersicht |[Kennwortbasiertes einmaliges Anmelden mit Azure AD](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | Eine Übersicht über die Szenarien im Zusammenhang mit der Kontofreigabe und Problemlösungen mit Azure AD |[Freigeben von Konten in Azure AD](active-directory-sharing-accounts.md) |
 | Automatisches Ändern des Kennworts für bestimmte Apps in regelmäßigen Intervallen |[Automatisiertes Kennwortrollover (Vorschau)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
 | Handbücher zur Bereitstellung und Problembehandlung für die Internet Explorer-Version der Azure AD-Erweiterung zur Kennwortverwaltung |[How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](active-directory-saas-ie-group-policy.md)<br /><br />[Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
@@ -183,11 +183,11 @@ Der Azure AD-Zugriffsbereich ist der Bereich, in dem Endbenutzer ihre Apps start
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Vergleich der verschiedenen verfügbaren Optionen zum Bereitstellen von Apps für einmaliges Anmelden für Benutzer |[Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) |
+| Vergleich der verschiedenen verfügbaren Optionen zum Bereitstellen von Apps für einmaliges Anmelden für Benutzer |[Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) |
 | Übersicht über den Zugriffsbereich und das mobile Äquivalent MyApps |[Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)<br />— [iOS](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.myapps) |
 | Zugriff auf Azure AD-Apps über die Office 365-Website |[Lernen Sie das Office 365-App-Startfeld kennen](https://support.office.com/en-us/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a) |
 | Zugriff auf Azure AD-Apps über die mobile App Intune Managed Browser |[Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://technet.microsoft.com/library/dn878029.aspx)<br />— [iOS](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)<br />— [Android](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) |
-| Zugreifen auf Azure AD-Apps mit Deep-Links zum Initiieren des einmaligen Anmeldens |[Abrufen von Links zur direkten Anmeldung bei Ihren Apps](active-directory-appssoaccess-whatis.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
+| Zugreifen auf Azure AD-Apps mit Deep-Links zum Initiieren des einmaligen Anmeldens |[Abrufen von Links zur direkten Anmeldung bei Ihren Apps](manage-apps/what-is-single-sign-on.md#direct-sign-on-links-for-federated-password-based-or-existing-apps) |
 
 Der Zugriffsbereich steht für [alle Editionen von Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)zur Verfügung.
 

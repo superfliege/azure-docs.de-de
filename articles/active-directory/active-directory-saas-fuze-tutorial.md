@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 436fa7d8532d55d3a285917b278fd0adeab7fd7c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 18379b26a52551c95ad8a8a5661f0adb76aa9497
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>Tutorial: Azure Active Directory-Integration mit Fuze
 
@@ -29,7 +29,7 @@ Die Integration von Fuze in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Fuze anzumelden (einmaliges Anmelden, SSO).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Fuze aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -67,11 +67,11 @@ Zum Konfigurieren der Integration von Fuze in Azure AD müssen Sie Fuze aus dem 
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **Fuze** ein.
 
@@ -91,10 +91,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Fuze sind die folgenden Bausteine erforderlich:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Fuze-Testbenutzers](#creating-a-fuze-test-user)**, um eine Entsprechung von Britta Simon in Fuze zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -105,25 +105,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Fuze** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_01.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Fuze** aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_020.png)
     
     Geben Sie im Textfeld **Anmelde-URL** die Anmelde-URL im folgenden Format ein: `https://www.thinkingphones.com/jetspeed/portal/`.
 
 4.  Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_general_400.png)
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_05.png) 
 
 6. Zum Konfigurieren des einmaligen Anmeldens bei **Fuze** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [Fuze-Supportteam](https://www.fuze.com/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
@@ -157,7 +157,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**. 
+    d. Klicken Sie auf **Create**. 
 
 
 ### <a name="creating-a-fuze-test-user"></a>Erstellen eines Fuze-Testbenutzers
@@ -178,7 +178,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **Fuze** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-fuze-tutorial/tutorial_fuze_50.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -205,7 +205,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Fuze“ klicken, sollten Sie autom
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

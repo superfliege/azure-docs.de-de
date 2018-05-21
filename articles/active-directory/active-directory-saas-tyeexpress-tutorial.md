@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 09ce6851013e05859572bd00215a9f751db4ca53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8d3980b6169c8a9fc60c04e527814159082a46e4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
 
@@ -29,7 +29,7 @@ Die Integration von T&E Express in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei T&E Express anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von T&E Express aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von T&E Express in Azure AD müssen Sie T&E Ex
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld den Suchbegriff **T&E Express** ein.
 
@@ -86,10 +86,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei T&E Express müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines T&amp;E Express-Testbenutzers](#creating-a-te-express-test-user)**, um in T&amp;E Express eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **T&E Express** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für T&E Express** aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** den Wert `https://<domain>.tyeexpress.com` ein.
 
@@ -119,21 +119,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tutorial_general_400.png)
 
 8. Um das einmalige Anmelden auf der **T&E Express**-Seite zu konfigurieren, melden Sie sich mit Administratoranmeldeinformationen ohne SAML-SSO bei der T&E Express-Anwendung an.
 
 9. Klicken Sie auf der Registerkarte **Administrator** auf **SAML-Domäne**, um die Seite mit den SAML-Einstellungen zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tye-SAML.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tye-SAML.png)
 
 10. Ändern Sie die Option **Activar** (Aktivieren) von **No** (Nein) in **Sí** (Ja). Fügen Sie in das Textfeld mit den **Identitätsanbietermetadaten** die XML-Metadaten ein, die Sie aus dem Azure-Portal heruntergeladen haben.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tyeAdmin.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tyeAdmin.png)
 
 11. Klicken Sie auf die Schaltfläche **Guardar** (Speichern), um die Änderungen zu speichern. 
 
@@ -167,7 +167,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-te-express-test-user"></a>Erstellen eines T&E Express-Testbenutzers
 
@@ -207,7 +207,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **T&E Express**aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -229,10 +229,10 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „T&E Express“ klicken, sollten Sie automatisch bei Ihrer T&E Express-Anwendung angemeldet werden.
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

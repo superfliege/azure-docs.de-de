@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 929caab0aafdad24062e372e458f16a5f36cce73
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: a6a7861b95f82180b72045f10db99d5bc45eed73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Tutorial: Azure Active Directory-Integration von mehreren Amazon Web Services-Konten (AWS-Konten)
 
@@ -30,7 +30,7 @@ Die Integration von Amazon Web Services (AWS) in Azure AD bietet die folgenden V
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch für Amazon Web Services (AWS) anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -227,7 +227,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Melden Sie sich bei der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators/Co-Admins für Ihren Mandanten an.
 
-    b. Sie müssen über ausreichende Berechtigungen zum Erstellen von Rollen verfügen. Klicken Sie auf **Berechtigungen ändern**, um die erforderlichen Berechtigungen zu erhalten. 
+    b. Sie müssen über ausreichende Berechtigungen zum Erstellen der Rollen verfügen. Klicken Sie auf **Berechtigungen ändern**, um die erforderlichen Berechtigungen zu erhalten. 
 
     ![Dialogfeld „Graph-Tester“](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
@@ -245,9 +245,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     ![Dialogfeld „Graph-Tester“](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new1.png)
     
-    f. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Prinzipal, den Sie ändern müssen. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Sie können die folgende Abfrage mit der **Objekt-ID** verwenden, die Sie auf der Seite der Azure AD-Eigenschaften kopiert haben, um zum jeweiligen Dienstprinzipal zu gelangen.
+    f. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Namen, den Sie ändern möchten. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Sie können die folgende Abfrage mit der **Objekt-ID** verwenden, die Sie auf der Seite der Azure AD-Eigenschaften kopiert haben, um zum jeweiligen Dienstprinzipal zu gelangen.
     
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
     ![Dialogfeld „Graph-Tester“](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
@@ -257,7 +257,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     h. Jetzt müssen Sie neue Rollen für Ihre Anwendung generieren. 
 
-    i. Unter JSON finden Sie ein Beispiel für ein appRoles-Objekt. Erstellen Sie ein ähnliches Objekt, um die gewünschten Rollen für Ihre Anwendung hinzuzufügen. 
+    i. Der nachfolgende JSON-Code ist ein Beispiel für ein appRoles-Objekt. Erstellen Sie ein ähnliches Objekt, um die gewünschten Rollen für Ihre Anwendung hinzuzufügen. 
 
     ```
     {
@@ -301,7 +301,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!Note]
     > Neue Rollen können nur nach der Rolle **msiam_access** für den Patchvorgang hinzugefügt werden. Darüber hinaus können Sie je nach Bedarf Ihrer Organisation beliebig viele Rollen hinzufügen. Azure AD sendet den **Wert** dieser Rollen als Anspruchswert in der SAML-Antwort.
     
-    j. Wechseln Sie zurück zum Graph-Tester, und ändern Sie die Methode von **GET** in **PATCH**. Patchen Sie das Dienstprinzipalobjekt so, dass es über die gewünschten Rollen verfügt, indem Sie die appRoles-Eigenschaft entsprechend der oben im Beispiel gezeigten Eigenschaft aktualisieren. Klicken Sie auf **Abfrage ausführen**, um den Patchvorgang auszuführen. In einer Erfolgsmeldung wird die Erstellung der Rolle für Ihre Amazon Web Services-Anwendung bestätigt.
+    j. Wechseln Sie wieder zum Graph-Tester, und ändern Sie die Methode von **GET** in **PATCH**. Patchen Sie das Dienstprinzipalobjekt so, dass es über die gewünschten Rollen verfügt, indem Sie die appRoles-Eigenschaft entsprechend der oben im Beispiel gezeigten Eigenschaft aktualisieren. Klicken Sie auf **Abfrage ausführen**, um den Patchvorgang auszuführen. In einer Erfolgsmeldung wird die Erstellung der Rolle für Ihre Amazon Web Services-Anwendung bestätigt.
 
     ![Dialogfeld „Graph-Tester“](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
@@ -318,7 +318,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Einmaliges Anmelden konfigurieren, Hinzufügen](./media/active-directory-saas-aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
 > [!Note]
-> Damit neue Rollen angezeigt werden, müssen Sie im Azure-Portal Ihre Sitzung aktualisieren.
+> Beachten Sie, dass Sie die Sitzung im Azure-Portal aktualisieren müssen, damit neue Rollen angezeigt werden.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -337,7 +337,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

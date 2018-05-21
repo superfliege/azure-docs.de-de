@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – Numerische Funktionen | Microsoft Docs"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – Numerische Funktionen | Microsoft Docs
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2b7ec44b820e510d1e8bd99ef195546a519c365c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4fc17b997c44560199e65edb01d20c6a24e49877
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -44,7 +44,7 @@ Gibt die Summe der beiden angegebenen ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- | 
 |operand1 |Ja |int |Erste zu addierende Zahl. |
 |operand2 |Ja |int |Zweite zu addierende Zahl. |
@@ -90,7 +90,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
 
@@ -115,10 +115,10 @@ Gibt den Index einer Iterationsschleife zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| loopName | Nein | string | Der Name der Schleife zum Abrufen der Iteration |
-| offset |Nein |int |Die Zahl, die dem nullbasierten (0) Iterationswert hinzugefügt werden soll. |
+| loopName | Nein  | Zeichenfolge | Der Name der Schleife zum Abrufen der Iteration |
+| offset |Nein  |int |Die Zahl, die dem nullbasierten (0) Iterationswert hinzugefügt werden soll. |
 
 ### <a name="remarks"></a>Anmerkungen
 
@@ -161,7 +161,7 @@ Gibt die Ganzzahldivision der beiden angegebenen ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |int |Die Zahl, durch die geteilt wird (Divisor). Diese Zahl darf nicht 0 sein. |
@@ -207,7 +207,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
 
@@ -225,14 +225,14 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="float" />
 
-## <a name="float"></a>float
+## <a name="float"></a>Gleitkommawert
 `float(arg1)`
 
 Konvertiert den Wert in eine Gleitkommazahl. Diese Funktion wird nur beim Übergeben von benutzerdefinierten Parametern an eine Anwendung (z. B. eine Logik-App) verwendet.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der in eine Gleitkommazahl zu konvertierende Wert. |
 
@@ -266,7 +266,7 @@ Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in eine ganze Zahl (Integer) konvertiert werden soll. |
 
@@ -301,7 +301,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
@@ -326,7 +326,7 @@ Gibt den größten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der größte Wert abgerufen werden soll. |
 
@@ -364,7 +364,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -383,14 +383,14 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="min" />
 
-## <a name="min"></a>min
+## <a name="min"></a>Min
 `min (arg1)`
 
 Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trennzeichen getrennten Liste mit ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
 
@@ -428,7 +428,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -454,7 +454,7 @@ Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |int |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
@@ -499,7 +499,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | modResult | int | 1 |
 
@@ -524,7 +524,7 @@ Gibt die Multiplikation der beiden angegebenen ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Erste zu multiplizierende Zahl. |
 | operand2 |Ja |int |Zweite zu multiplizierende Zahl. |
@@ -570,7 +570,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
 
@@ -595,7 +595,7 @@ Gibt die Differenz der beiden angegebenen ganzen Zahlen zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |int |Zahl, von der subtrahiert wird. |
 | operand2 |Ja |int |Zahl, die subtrahiert wird. |
@@ -640,7 +640,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 

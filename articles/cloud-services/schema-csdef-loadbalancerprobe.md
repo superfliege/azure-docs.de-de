@@ -1,28 +1,28 @@
 ---
 title: Azure Cloud Services-Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation
-ms.custom: 
+ms.custom: ''
 ms.date: 04/14/2015
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 113374a8-8072-4994-9d99-de391a91e6ea
-caps.latest.revision: "14"
+caps.latest.revision: 14
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 31c974c5a4b9dc9cff882ff42b73ee023fc4ad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6cd56c9b04fc4657cedf845e7f111005a8dee183
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services-Definition LoadBalancerProbe-Schema
 Der Lastenausgleichstest ist ein vom Kunden definierter Integritätstest von UDP-Endpunkten und Endpunkten in Rolleninstanzen. `LoadBalancerProbe` ist kein eigenständiges Element; es wird mit der Webrolle oder der Workerrolle in einer Dienstdefinitionsdatei kombiniert. Ein `LoadBalancerProbe` kann von mehreren Rollen verwendet werden.
 
-Die Standarderweiterung für die Dienstdefinitionsdatei lautet .csdef.
+Die Standarderweiterung für die Dienstdefinitionsdatei lautet „.csdef“.
 
 ## <a name="the-function-of-a-load-balancer-probe"></a>Die Funktion eines Lastenausgleichstests
 Der Azure Load Balancer ist für das Routing von eingehendem Datenverkehr zu Ihren Rolleninstanzen verantwortlich. Der Lastenausgleich bestimmt, welche Instanzen Datenverkehr empfangen können, indem sie in regelmäßigen Zeitabständen getestet werden, um die Integrität dieser Instanz zu ermitteln. Bei dem Lastenausgleich wird jede Instanz mehrmals pro Minute getestet. Der Zustand der Instanz kann auf zwei Weisen für den Lastenausgleich bereitgestellt werden: mit dem standardmäßigen Lastenausgleichstest oder mit einem benutzerdefinierten Lastenausgleichstest, der durch die Definition des LoadBalancerProbe in der CSDEF-Datei implementiert wird.
@@ -56,9 +56,9 @@ Das Element `LoadBalancerProbes` beschreibt die Sammlung von Lastenausgleichstes
 ##  <a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
 Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. Sie können mehrere Lastenausgleichstests definieren. 
 
-In der folgenden Tabelle werden die Attribute des Elements `LoadBalancerProbe` beschrieben:
+In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:
 
-|Attribut|Typ|Beschreibung|
+|Attribut|Typ|BESCHREIBUNG|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Erforderlich. Der Name des Lastenausgleichstests. Der Name muss eindeutig sein.|
 | `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` und `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|
@@ -67,5 +67,5 @@ In der folgenden Tabelle werden die Attribute des Elements `LoadBalancerProbe` b
 | `intervalInSeconds` | `integer` | Optional. Das Intervall in Sekunden, in dem der Endpunkt auf den Integritätsstatus getestet werden soll. In der Regel ist das Intervall etwas kleiner als die Hälfte des zugeordneten Zeitlimits (in Sekunden). Dies ermöglicht die Durchführung von zwei vollständigen Tests, bevor die Instanz von der Rotation ausgenommen wird.<br /><br /> Der Standardwert beträgt 15, der Mindestwert 5.|
 | `timeoutInSeconds`  | `integer` | Optional. Das Zeitlimit in Sekunden für den Test, bei dem keine Antwort dazu führt, dass die Übermittlung von weiterem Datenverkehr an den Endpunkt beendet wird. Mit diesem Wert können Endpunkte schneller oder langsamer als bei den typischen, in Azure verwendeten Zeiten (Standardwerte) von der Rotation ausgenommen werden.<br /><br /> Der Standardwert beträgt 31, der Mindestwert 11.|
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)

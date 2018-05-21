@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/18/2018
 ms.author: billmath
-ms.openlocfilehash: 2686bdef9c25f4540f9b2a21594b18cbe0404e08
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9cb32d137334141183831e703fb11cd3e6bd5a73
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen
 Vor dem neuesten Azure AD Connect-Build wurde das Delegieren von Administratorrechten bei der Bereitstellung von Konfigurationen, die SQL erforderten, nicht unterstützt.  Benutzer, die Azure AD Connect installieren wollten, benötigten Serveradministratorberechtigungen („SA“) auf dem SQL-Server.
@@ -42,7 +42,7 @@ Gehen Sie zum Out-of-Band-Bereitstellen der Datenbank und Installieren von Azure
 
 
 1.  Lassen Sie die ADSync-Datenbank durch den SQL-Administrator mit einer Sortierreihenfolge unter Berücksichtigung der Groß-/Kleinschreibung **(Latin1_General_CI_AS)** erstellen.  Die Datenbank muss den Namen **ADSync** tragen.  Wiederherstellungsmodell, Kompatibilitätsgrad und Einschlusstyp werden auf die richtigen Werte festgelegt, wenn Azure AD Connect installiert wird.  Die Sortierreihenfolge muss jedoch vom SQL-Administrator ordnungsgemäß festgelegt werden, da andernfalls Azure AD Connect die Installation blockiert.  Zum Wiederherstellen muss der Dienstadministrator die Datenbank löschen und neu erstellen.</br>
-![Sortierung](media/active-directory-aadconnect-sql-delegation/sql1.png)
+![Sortierung](media/active-directory-aadconnect-sql-delegation/sql4.png)
 2.  Gewähren Sie dem Azure AD Connect-Administrator und dem Domänendienstkonto die folgenden Berechtigungen:
     - SQL-Anmeldung 
     - **Datenbankbesitzerrechte (dbo)**  </br>
