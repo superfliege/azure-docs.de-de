@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Konfigurieren von Google Apps für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie Benutzerkonten aus Azure AD für Google Apps automatisch bereitstellen bzw. die Bereitstellung aufheben."
+title: 'Tutorial: Konfigurieren von Google Apps für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Es wird beschrieben, wie Sie Benutzerkonten aus Azure AD für Google Apps automatisch bereitstellen bzw. die Bereitstellung aufheben.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d5c68e709b72e4032eca76dd35103df50030ccca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Google Apps für die automatische Benutzerbereitstellung
 
@@ -164,7 +164,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren von einmaligem Anmelden](active-directory-saas-google-apps-tutorial.md)
 
 
