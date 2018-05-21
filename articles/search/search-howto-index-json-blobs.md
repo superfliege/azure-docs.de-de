@@ -9,11 +9,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 64d16182ce1992ec312ad1620d9d5cf11e0ddea8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 752df29200a5e020ccf10f511ae2f02c0d72bd48
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indizierung der JSON-Blobs mit Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-Blobindexer konfigurieren, um strukturierten Inhalt aus JSON-Blobs in Azure Blob Storage zu extrahieren.
@@ -23,7 +23,7 @@ JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einze
 | JSON-Dokument | parsingMode | BESCHREIBUNG | Verfügbarkeit |
 |--------------|-------------|--------------|--------------|
 | Ein Dokument pro Blob | `json` | JSON-Blobs werden als einzelne Textblöcke analysiert. Jedes JSON-Blob wird zu einem einzelnen Azure Search-Dokument. | Allgemein verfügbar in [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)- und [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer)-APIs. |
-| Mehrere Dokumente pro Blob | `jsonArray` | Analysiert ein JSON-Array im Blob, und jedes Element des Arrays wird zu einem separaten Azure Search-Dokument.  | Befindet sich für [REST api-version=`2016-09-01-Preview`](search-api-2016-09-01-preview.md) und [.NET SDK Preview](https://aka.ms/search-sdk-preview) in der Vorschauphase. |
+| Mehrere Dokumente pro Blob | `jsonArray` | Analysiert ein JSON-Array im Blob, und jedes Element des Arrays wird zu einem separaten Azure Search-Dokument.  | Befindet sich für [REST api-version=`2017-11-11-Preview`](search-api-2017-11-11-preview.md) und [.NET SDK Preview](https://aka.ms/search-sdk-preview) in der Vorschauphase. |
 
 > [!Note]
 > Vorschau-APIs sind für Tests und Evaluierungen bestimmt und sollten nicht in Produktionsumgebungen eingesetzt werden.
@@ -116,7 +116,7 @@ Alternativ dazu können Sie auch das Vorschaufeature mit dem JSON-Array wählen.
 
 Für ein JSON-Array nutzt die Indexeranforderung die Vorschau-API und den Parser `jsonArray`. Dies sind die beiden einzigen Array-spezifischen Anforderungen zum Indizieren von JSON-Blobs.
 
-    POST https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11-Preview
     Content-Type: application/json
     api-key: [admin key]
 
@@ -129,6 +129,8 @@ Für ein JSON-Array nutzt die Indexeranforderung die Vorschau-API und den Parser
     }
 
 Beachten Sie auch hierbei wieder, dass keine Feldzuordnungen erforderlich sind. Bei einem Index mit den Feldern „id“ und „text“ kann der Blobindexer die richtige Zuordnung ohne Feldzuordnungsliste ableiten.
+
+<a name="nested-json-arrays"></a>
 
 ### <a name="nested-json-arrays"></a>Geschachtelte JSON-Arrays
 Was geschieht, wenn Sie ein Array aus JSON-Objekten indizieren möchten, dieses Array aber irgendwo im Dokument geschachtelt ist? Sie können mithilfe der Konfigurationseigenschaft `documentRoot` auswählen, welche Eigenschaft das Array enthält. Angenommen, Ihre Blobs sehen folgendermaßen aus:

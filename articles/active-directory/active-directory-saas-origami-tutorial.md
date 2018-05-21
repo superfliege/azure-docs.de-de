@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 962795cf6dab7231782523e3a850afa84b2b8d1b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c8943d6cdda21970167846d9301556d20750614d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Tutorial: Azure Active Directory-Integration mit Origami
 
@@ -29,7 +29,7 @@ Die Integration von Origami in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Origami anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Origami aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von Origami in Azure AD müssen Sie Origami au
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **Origami**ein.
 
@@ -86,10 +86,10 @@ Weisen Sie in Origami den Wert für **Benutzername** aus Azure AD als Wert für 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Origami müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Origami-Testbenutzers](#creating-an-origami-test-user)**, um in Origami einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,15 +100,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Origami** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für Origami** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://live.origamirisk.com/origami/account/login?account=<companyname>`.
 
@@ -117,25 +117,25 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Origami-Konfiguration** auf **Origami konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_configure.png) 
 
 7. Melden Sie sich mit Administratorrechten beim Origami-Konto an.
 
 8. Klicken Sie oben im Menü auf **Admin**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
 9. Führen Sie auf der Dialogfeldseite „Single Sign On Setup“ die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_531.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_531.png)
 
     a. Wählen Sie **Enable Single Sign On**aus.
 
@@ -148,7 +148,7 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
     e. Klicken Sie auf **Änderungen speichern**.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -180,7 +180,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-an-origami-test-user"></a>Erstellen eines Origami-Testbenutzers
 
@@ -190,19 +190,19 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
 2. Klicken Sie oben im Menü auf **Admin**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
 3. Klicken Sie im Dialogfeld **Users and Security** (Benutzer und Sicherheit) auf **Users** (Benutzer).
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_54.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_54.png)
 
 4. Klicken Sie auf **Add New User**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_55.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_55.png)
 
 5. Führen Sie im Dialogfeld „Add New User“ folgende Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_56.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_56.png)
 
     a. Geben Sie im Textfeld **Benutzername** die E-Mail-Adresse des Benutzers ein (beispielsweise **brittasimon@contoso.com**).
 
@@ -216,11 +216,11 @@ In diesem Abschnitt erstellen Sie in Origami einen Benutzer mit dem Namen Britta
 
     f. Klicken Sie auf **Save**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_57.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_57.png)
 
 6. Weisen Sie dem Benutzer unter **User Roles** (Benutzerrollen) entsprechende Benutzerrollen und unter **Client Access** (Clientzugriff) einen Benutzerzugriff zu. 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_58.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_58.png)
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -236,7 +236,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 2. Wählen Sie in der Anwendungsliste **Origami**aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-origami-tutorial/tutorial_origami_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-origami-tutorial/tutorial_origami_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -261,7 +261,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Origami“ klicken, sollten Sie au
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

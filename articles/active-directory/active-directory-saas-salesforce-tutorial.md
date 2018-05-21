@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: ed127afbca5135ade21f6ac53d18d46e88939fd9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2caf788f1c38c701699e0c275cabe3d12eb75270
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Azure Active Directory-Integration mit Salesforce
 
@@ -30,7 +30,7 @@ Die Integration von Salesforce in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Salesforce anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Salesforce aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -129,7 +129,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Salesforce-Konfiguration** auf **Salesforce konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
@@ -139,29 +139,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 8. Klicken Sie in der oberen rechten Ecke der Seite unter dem **Einstellungssymbol** auf **Setup**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/configure1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/configure1.png)
 
 9. Scrollen Sie im Navigationsbereich nach unten bis zu den **SETTINGS** (EINSTELLUNGEN), und klicken Sie auf **Identity** (Identität), um den zugehörigen Bereich zu erweitern. Klicken Sie dann auf **Einstellungen für einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso.png)
 
 10. Klicken Sie auf der Seite **Einstellungen für einmaliges Anmelden** auf die Schaltfläche **Bearbeiten**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-edit.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-edit.png)
     
     > [!NOTE]
     > Wenn Sie keine Einstellungen für die einmalige Anmeldung für Ihr Salesforce-Konto aktivieren können, müssen Sie sich an das [Kundensupportteam von Salesforce](https://help.salesforce.com/support) wenden. 
 
 11. Wählen Sie **SAML aktiviert**, und klicken Sie dann auf **Speichern**.
 
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-enable-saml.png)
 12. Um Ihre SAML-Einstellungen für die einmalige Anmeldung zu konfigurieren, klicken Sie auf **Neu**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-new.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-admin-sso-new.png)
 
 13. Nehmen Sie auf der Seite **SAML-Einstellung für einmaliges Anmelden bearbeiten** folgende Konfigurationen vor:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-saml-config.png)
 
     a. Geben Sie in das Feld **Name** einen Anzeigenamen für diese Konfiguration ein. Bei Eingabe eines Werts für **Name** wird automatisch das Textfeld **API-Name** gefüllt.
 
@@ -192,21 +192,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 14. Klicken Sie in Salesforce im linken Navigationsbereich auf **Company Settings** (Unternehmenseinstellungen), um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **My Domain** (Meine Domäne).
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-my-domain.png)
 
 15. Führen Sie einen Bildlauf nach unten zum Abschnitt **Authentifizierungskonfiguration** aus, und klicken Sie auf die Schaltfläche **Bearbeiten**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-edit-auth-config.png)
 
 16. Wählen Sie im Abschnitt **Authentication Configuration** (Konfiguration der Authentifizierung) die Option **Login Page** (Anmeldeseite) als **Authentication Service** (Authentifizierungsdienst) Ihrer SAML-SSO-Konfiguration, und klicken Sie dann auf **Save** (Speichern).
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-salesforce-tutorial/sf-auth-config.png)
 
     > [!NOTE]
     > Wenn mehrere Authentifizierungsdienste aktiviert sind, werden Benutzer aufgefordert, einen Authentifizierungsdienst zur Anmeldung auszuwählen, wenn das einmalige Anmelden bei der Salesforce-Umgebung initiiert wird. Wenn Sie dies nicht möchten, sollten Sie **alle anderen Authentifizierungsdienste deaktiviert lassen**.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -239,7 +239,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-salesforce-test-user"></a>Erstellen eines Salesforce-Testbenutzers
 
@@ -286,7 +286,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

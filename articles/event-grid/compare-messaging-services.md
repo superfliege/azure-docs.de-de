@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 manager: timlt
 ms.service: event-grid
-ms.topic: article
+ms.topic: overview
 ms.date: 03/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 30bbe7442cac96a1dcf6959cac2abedd61454a29
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 1437916e62e7c2987c0a1d8c3a5ac4a5f332134d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wählen zwischen Azure-Diensten für die Nachrichtenübermittlung
 
@@ -46,7 +46,7 @@ Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wu
 | ------- | ------- | ---- | ----------- |
 | Event Grid | Reaktive Programmierung | Ereignisverteilung (eigenständig) | Reagieren auf Statusänderungen |
 | Event Hubs | Big Data-Pipeline | Ereignisstreaming (Reihe) | Streamen von Telemetriedaten und verteilten Daten |
-| SERVICE BUS | Hochwertiges Unternehmensmessaging | Message | Auftragsverarbeitung und Finanztransaktionen |
+| Service Bus | Hochwertiges Unternehmensmessaging | Message | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
 
@@ -69,7 +69,7 @@ Merkmale:
 * Geringe Wartezeit
 * Empfang und Verarbeitung von Millionen von Ereignissen pro Sekunde möglich
 
-### <a name="service-bus"></a>SERVICE BUS
+### <a name="service-bus"></a>Service Bus
 
 Service Bus ist für traditionelle Unternehmensanwendungen konzipiert. Für diese Unternehmensanwendungen werden Transaktionen, Sortierfunktionen, Duplikaterkennung und umgehende Konsistenz benötigt. Mit Service Bus können native Cloudanwendungen eine zuverlässige Zustandsübergangsverwaltung für Geschäftsprozesse bereitstellen. Nutzen Sie Azure Service Bus bei Verwendung wichtiger Nachrichten, die nicht verloren gehen oder dupliziert werden dürfen. Service Bus ermöglicht auch eine äußerst sichere Kommunikation über Hybrid Cloud-Lösungen hinweg und kann vorhandene lokale Systeme mit Cloudlösungen verbinden.
 
