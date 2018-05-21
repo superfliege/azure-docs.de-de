@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 57bb448f1bb858d15a7ecaad5a9ba797f5d7d85e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 915b6f9c96bc8dbab54e770340acf795df92a3fb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Tutorial: Azure Active Directory-Integration mit RFPIO
 
@@ -29,7 +29,7 @@ Die Integration von RFPIO in Azure AD bietet die folgenden Vorteile:
 - Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei RFPIO anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von RFPIO in Azure AD müssen Sie RFPIO aus de
 
 2. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **RFPIO** ein.
 
@@ -100,19 +100,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **RFPIO** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für RFPIO** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://www.rfpio.com`
+    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://www.rfpio.com`.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url1.png)
 
     b. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**.
 
@@ -120,39 +120,39 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten: 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_url2.png)
 
     Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://www.app.rfpio.com`.
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_general_400.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der **RFPIO**-Website als Administrator an.
 
 8. Klicken Sie in der linken unteren Ecke auf die Dropdownliste.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
 9. Klicken Sie auf **Organization Settings** (Organisationseinstellungen). 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
 10. Klicken Sie auf **FEATURES & INTEGRATION**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app4.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app4.png)
 
 11. Klicken Sie unter **SAML SSO Configuration** (SAML-SSO-Konfiguration) auf **Edit** (Bearbeiten).
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app3.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app3.png)
 
 12. Führen Sie in diesem Abschnitt folgende Aktionen durch:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app5.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app5.png)
     
     a. Kopieren Sie den Inhalt der heruntergeladenen **XML-Metadatendatei**, und fügen Sie ihn in das Feld **identity configuration** (Identitätskonfiguration) ein.
 
@@ -166,7 +166,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     d. Klicken Sie auf **Submit**.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -198,7 +198,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-rfpio-test-user"></a>Erstellen eines RFPIO-Testbenutzers
 
@@ -211,23 +211,23 @@ Im Fall von RFPIO ist die Bereitstellung eine manuelle Aufgabe.
 
 2. Klicken Sie in der linken unteren Ecke auf die Dropdownliste.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app1.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app1.png)
 
 3. Klicken Sie auf **Organization Settings** (Organisationseinstellungen). 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app2.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app2.png)
 
 4. Klicken Sie auf **TEAM MEMBERS** (TEAMMITGLIEDER).
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app6.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app6.png)
 
 5. Klicken Sie auf **ADD MEMBERS** (MITGLIEDER HINZUFÜGEN).
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app7.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app7.png)
 
 6. Im Abschnitt **Add New Members** (Neue Mitglieder hinzufügen) Führen Sie folgende Aktionen aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/app8.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/app8.png)
 
     a. Geben Sie die **E-Mail-Adresse** in das Feld **Enter one email per line** (eine E-Mail-Adresse pro Zeile eingeben) ein.
 
@@ -252,7 +252,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **RFPIO** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-rfpio-tutorial/tutorial_rfpio_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -278,7 +278,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

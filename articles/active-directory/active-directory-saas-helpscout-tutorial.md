@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 5608df300ad3b5d3fd42bd904a52d43d115ebf53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 596a1ba27516755e586d88ab56a20a1daed63fc2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
 
@@ -30,7 +30,7 @@ Die Integration von Help Scout in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Help Scout anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Help Scout aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -124,26 +124,26 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-helpscout-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-helpscout-tutorial/tutorial_general_400.png)
 
 
 7. Klicken Sie im Abschnitt **Help Scout-Konfiguration** auf **Help Scout konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-helpscout-tutorial/config.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-helpscout-tutorial/config.png) 
 
 8. Melden Sie sich in einem anderen Webbrowserfenster bei der Unternehmenswebsite von Help Scout als Administrator an.
 
 9. Klicken Sie nach erfolgreicher Anmeldung im oberen Menü auf **Verwalten**, und wählen Sie anschließend im Dropdownmenü die Option **Unternehmen** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-helpscout-tutorial/settings1.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-helpscout-tutorial/settings1.png) 
  
 10. Wählen Sie im linken Menü die Option **Authentifizierung** aus. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-helpscout-tutorial/settings2.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-helpscout-tutorial/settings2.png) 
 
 11. Dadurch gelangen Sie zum Abschnitt mit den SAML-Einstellungen. Führen Sie dort die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-helpscout-tutorial/settings3.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-helpscout-tutorial/settings3.png) 
  
     a. Kopieren Sie den Wert der **Postback-URL (Assertionsverbraucherdienst-URL)**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Help Scout** in das Feld **Antwort-URL** ein.
     
@@ -151,7 +151,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 12. Aktivieren Sie **SAML aktivieren**, und führen Sie die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-helpscout-tutorial/settings4.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-helpscout-tutorial/settings4.png) 
  
     a. Fügen Sie die **Dienst-URL für einmalige Anmeldung**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Single Sign-On URL** (URL für einmaliges Anmelden) ein.
     
@@ -196,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-help-scout-test-user"></a>Erstellen eines Help Scout-Testbenutzers
 
@@ -244,7 +244,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 
