@@ -1,6 +1,6 @@
 ---
-title: Azure-Schnellstart – Erstellen einer VM mit der CLI | Microsoft-Dokumentation
-description: Hier lernen Sie schnell, virtuelle Computer mit der Azure CLI zu erstellen.
+title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0 | Microsoft Docs'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure CLI 2.0 einen virtuellen Linux-Computer erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -9,42 +9,40 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
+ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/13/2017
+ms.date: 04/24/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 15dc70e8d60901b71ba7d1d9333b13d8266d18c6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1c45f8f010d69337d21fce327933990a573988a4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer Linux-VM mit der Azure CLI
+# <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In diesem Schnellstart wird die Bereitstellung eines virtuellen Computers mit Ubuntu Server per Azure CLI ausführlich beschrieben. Sobald der Server bereitgestellt ist, wird eine SSH-Verbindung erstellt und ein NGINX-Webserver installiert.
+Azure CLI 2.0 dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit Azure CLI 2.0 einen virtuellen Linux-Computer unter Ubuntu in Azure bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie anschließend eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
-Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
-
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. 
+Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer.
 
 Das folgende Beispiel erstellt einen virtuellen Computer namens *myVM*, fügt ein Benutzerkonto mit dem Namen *azureuser* hinzu und generiert SSH-Schlüssel, sofern sie noch nicht im standardmäßigen Schlüsselspeicherort (*~/.ssh*) vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`:
 
@@ -57,12 +55,12 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im folgenden Beispiel an. Notieren Sie sich den Wert von `publicIpAddress`. Diese Adresse wird verwendet, um auf den virtuellen Computer zuzugreifen.
+Das Erstellen des virtuellen Computers (Virtual Machine, VM) und der unterstützenden Ressourcen dauert einige Minuten. In der folgenden Beispielausgabe wird angezeigt, dass der Vorgang der VM-Erstellung erfolgreich war.
 
-```azurecli-interactive 
+```azurecli-interactive
 {
   "fqdns": "",
-  "id": "/subscriptions/d5b9d4b7-6fc1-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
+  "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
   "location": "eastus",
   "macAddress": "00-0D-3A-23-9A-49",
   "powerState": "VM running",
@@ -72,52 +70,55 @@ Nach dem Erstellen der VM zeigt die Azure CLI ähnliche Informationen wie im fol
 }
 ```
 
-## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr 
+Beachten Sie Ihre eigene `publicIpAddress` in der Ausgabe Ihres virtuellen Computers. Diese Adresse wird in den nächsten Schritten verwendet, um auf den virtuellen Computer zuzugreifen.
 
-Standardmäßig sind für in Azure bereitgestellte virtuelle Linux-Computer nur eingehende SSH-Verbindungen zulässig. Wenn dieser virtuelle Computer als Webserver fungieren soll, muss Port 80 für Datenverkehr aus dem Internet geöffnet werden. Verwenden Sie zum Öffnen des gewünschten Ports den Befehl [az vm open-port](/cli/azure/vm#az_vm_open_port).  
- 
- ```azurecli-interactive 
+## <a name="open-port-80-for-web-traffic"></a>Öffnen von Port 80 für Webdatenverkehr
+
+Standardmäßig werden beim Erstellen eines virtuellen Linux-Computers in Azure nur die SSH-Verbindungen geöffnet. Verwenden Sie [az vm open-port](/cli/azure/vm#az_vm_open_port), um TCP-Port 80 für die Verwendung mit dem NGINX-Webserver zu öffnen:
+
+```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="ssh-into-your-vm"></a>Herstellen einer SSH-Verbindung mit Ihrem virtuellen Computer
+## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie **publicIpAddress** durch die korrekte öffentliche IP-Adresse Ihres virtuellen Computers.  In unserem Beispiel von weiter oben lautete die IP-Adresse *40.68.254.142*.
+Stellen Sie wie gewohnt eine SSH-Verbindung mit Ihrem virtuellen Computer her. Ersetzen Sie **publicIpAddress** durch die öffentliche IP-Adresse Ihres virtuellen Computers, wie in der vorherigen Ausgabe Ihres VMs angegeben:
 
-```bash 
-ssh publicIpAddress
+```bash
+ssh azureuser@publicIpAddress
 ```
 
-## <a name="install-nginx"></a>Installieren von NGINX
+## <a name="install-web-server"></a>Installieren des Webservers
 
-Verwenden Sie die folgenden Befehle, um Paketquellen zu aktualisieren und das neueste NGINX-Paket zu installieren. 
+Wenn Sie den virtuellen Computer in Aktion sehen möchten, installieren Sie den NGINX-Webserver. Führen Sie die folgenden Befehle in Ihrer SSH-Sitzung aus, um Paketquellen zu aktualisieren und das neueste NGINX-Paket zu installieren:
 
-```bash 
-# update package source
+```bash
+# update packages
 sudo apt-get -y update
 
 # install NGINX
 sudo apt-get -y install nginx
 ```
 
-## <a name="view-the-nginx-welcome-page"></a>Anzeigen der NGINX-Willkommensseite
+Beenden Sie die SSH-Sitzung (mittels `exit`), wenn Sie fertig sind.
 
-Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie nun mit einem Webbrowser Ihrer Wahl die NGINX-Standardwillkommensseite anzeigen. Verwenden Sie dabei den weiter oben dokumentierten *publicIpAddress*-Wert, um die Standardseite zu besuchen. 
+## <a name="view-the-web-server-in-action"></a>Anzeigen des Webservers in Aktion
 
-![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png) 
+Nachdem Sie NGINX installiert und Port 80 auf Ihrem virtuellen Computer für den Zugriff über das Internet geöffnet haben, können Sie einen Webbrowser Ihrer Wahl verwenden, um die NGINX-Standardwillkommensseite anzuzeigen. Verwenden Sie die öffentliche IP-Adresse Ihres virtuellen Computers, die Sie in einem vorherigen Schritt abgerufen haben. Im folgenden Beispiel ist die NGINX-Standardwebsite dargestellt:
 
+![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. Beenden Sie die SSH-Sitzung auf Ihrem virtuellen Computer, und löschen Sie die Ressourcen wie folgt:
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) entfernen. Stellen Sie sicher, dass Sie die SSH-Sitzung auf Ihrem virtuellen Computer beendet haben, und löschen Sie dann die Ressourcen wie folgt:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen einfachen virtuellen Computer und eine Netzwerksicherheitsgruppen-Regel bereitgestellt sowie einen Webserver installiert. Fahren Sie mit dem Tutorial für virtuelle Linux-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
+In dieser Schnellstartanleitung haben Sie einen einfachen virtuellen Computer bereitgestellt, einen Netzwerkport für den Webdatenverkehr geöffnet und einen einfachen Webserver installiert. Fahren Sie mit dem Tutorial für virtuelle Linux-Computer fort, um weitere Informationen zu virtuellen Azure-Computern zu erhalten.
 
 
 > [!div class="nextstepaction"]
