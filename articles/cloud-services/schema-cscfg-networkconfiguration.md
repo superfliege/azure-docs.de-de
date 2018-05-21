@@ -1,23 +1,23 @@
 ---
-title: "Azure Cloud Services – Netzwerkkonfigurationsschema | Microsoft-Dokumentation"
-ms.custom: 
+title: Azure Cloud Services – Netzwerkkonfigurationsschema | Microsoft-Dokumentation
+ms.custom: ''
 ms.date: 12/07/2016
-ms.prod: azure
-ms.reviewer: 
+services: cloud-services
+ms.reviewer: ''
 ms.service: cloud-services
-ms.suite: 
-ms.tgt_pltfrm: 
+ms.suite: ''
+ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
-caps.latest.revision: "28"
+caps.latest.revision: 28
 author: thraka
 ms.author: adegeo
 manager: timlt
-ms.openlocfilehash: 2438876e210363e9918e700397d4181990a3983f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebe81b2e4dea347eb22b173ff1e9baf1ee6bb75d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services – Netzwerkkonfigurationsschema
 
@@ -25,7 +25,7 @@ Das `NetworkConfiguration`-Element der Dienstkonfigurationsdatei gibt Werte für
 
 Sie können die folgenden Ressourcen verwenden, um mehr über virtuelle Netzwerke und die zugehörigen Schemata zu erfahren:
 
-- [Clouddienst-Konfigurationsschema (klassisch)](schema-cscfg-file.md)
+- [Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))
 - [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)
 - [Erstellen eines virtuellen Netzwerks (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
 
@@ -65,7 +65,7 @@ Das folgende Beispiel zeigt das `NetworkConfiguration`-Element und seine unterge
 
 Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfiguration`-Elements.
 
-| Element       | Beschreibung |
+| Element       | BESCHREIBUNG |
 | ------------- | ----------- |
 | AccessControl | Optional. Legt die Regeln für den Zugriff auf Endpunkte in einem Clouddienst fest. Der Name der Zugriffssteuerung wird durch eine Zeichenfolge für das `name`-Attribut definiert. Das `AccessControl`-Element enthält ein oder mehrere `Rule`-Elemente. Mehrere `AccessControl`-Elemente können definiert werden.|
 | Regel | Optional. Gibt die Aktion an, die für einen angegebenen Subnetzbereich von IP-Adressen ausgeführt werden soll. Die Reihenfolge der Regel wird durch einen Zeichenfolgenwert für das `order`-Attribut definiert. Je niedriger die Regelzahl, desto höher die Priorität. Beispielsweise können Regeln mit den Ordnungszahlen 100, 200 und 300 angegeben werden. Die Regel mit der Ordnungszahl 100 hat Vorrang vor der Regel mit der Ordnungszahl 200.<br /><br /> Die Aktion für die Regel wird durch eine Zeichenfolge für das `action`-Attribut definiert. Mögliche Werte:<br /><br /> -   `permit` – Gibt an, dass nur Pakete aus dem angegebenen Subnetzbereich mit dem Endpunkt kommunizieren können.<br />-   `deny` – Gibt an, dass der Zugriff auf die Endpunkte im angegebenen Subnetzbereich verweigert wird.<br /><br /> Der Subnetzbereich der IP-Adressen, die von der Regel betroffen sind, wird durch eine Zeichenfolge für das `remoteSubnet`-Attribut definiert. Die Beschreibung für die Regel wird durch eine Zeichenfolge für das `description`-Attribut definiert.|
@@ -76,5 +76,5 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfigu
 | Subnetz | Optional. Gibt das Subnetz an, das dem Subnetznamen in der Netzwerkkonfigurationsdatei entspricht. Der Name des Subnetzes wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 | ReservedIP | Optional. Gibt die reservierte IP-Adresse an, die der Bereitstellung zugeordnet werden soll. Sie müssen mit „Reservierte IP-Adresse erstellen“ die reservierte IP-Adresse erstellen. Jede Bereitstellung in einem Clouddienst kann einer reservierten IP-Adresse zugeordnet werden. Der Name der reservierten IP-Adresse wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 
-## <a name="see-also"></a>Weitere Informationen
-[Clouddienst-Konfigurationsschema (klassisch)](schema-cscfg-file.md)
+## <a name="see-also"></a>Siehe auch
+[Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))

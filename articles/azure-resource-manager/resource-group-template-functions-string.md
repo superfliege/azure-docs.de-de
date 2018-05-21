@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – Zeichenfolge | Microsoft-Dokumentation"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – Zeichenfolge | Microsoft-Dokumentation
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: eeb3e46d9b8a5822b1aea3cc62bb214f3c3fec43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33a49a9fb66240382b0bb4e0bedbb07b8d78a763
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -64,9 +64,9 @@ Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| inputString |Ja |string |Der Wert, der als base64-Darstellung zurückgegeben wird. |
+| inputString |Ja |Zeichenfolge |Der Wert, der als base64-Darstellung zurückgegeben wird. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -115,10 +115,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -142,9 +142,9 @@ Konvertiert eine base64-Darstellung in ein JSON-Objekt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ja |string |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
+| base64Value |Ja |Zeichenfolge |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -193,10 +193,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -220,9 +220,9 @@ Konvertiert eine base64-Darstellung in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| base64Value |Ja |string |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
+| base64Value |Ja |Zeichenfolge |Die in eine Zeichenfolge zu konvertierende base64-Darstellung. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -271,10 +271,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| base64Output | String | b25lLCB0d28sIHRocmVl |
-| toStringOutput | String | one, two, three |
+| base64Output | Zeichenfolge | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Zeichenfolge | one, two, three |
 | toJsonOutput | Objekt | {"one": "a", "two": "b"} |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -298,10 +298,10 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder Array |Der erste Wert für die Verkettung. |
-| zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+| zusätzliche Argumente |Nein  |Zeichenfolge |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
 
 ### <a name="return-value"></a>Rückgabewert
 Eine Zeichenfolge oder ein Array aus verketteten Werten.
@@ -332,9 +332,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
+| concatOutput | Zeichenfolge | prefix-5yj4yjf5mbg72 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -385,7 +385,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -410,7 +410,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -474,13 +474,13 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| stringTrue | Bool | True  |
+| stringTrue | Bool | True |
 | stringFalse | Bool | False |
-| objectTrue | Bool | True  |
+| objectTrue | Bool | True |
 | objectFalse | Bool | False |
-| arrayTrue | Bool | True  |
+| arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -504,9 +504,9 @@ Konvertiert einen Wert in einen Daten-URI.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Ja |string |Der Wert, der in einen Daten-URI konvertiert werden soll. |
+| stringToConvert |Ja |Zeichenfolge |Der Wert, der in einen Daten-URI konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -546,10 +546,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | Zeichenfolge | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Zeichenfolge | Hello, World! |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -572,9 +572,9 @@ Konvertiert einen als Daten-URI formatierten Wert in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Ja |string |Der zu konvertierende Daten-URI-Wert. |
+| dataUriToConvert |Ja |Zeichenfolge |Der zu konvertierende Daten-URI-Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -614,10 +614,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | String | Hello, World! |
+| dataUriOutput | Zeichenfolge | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | Zeichenfolge | Hello, World! |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -640,7 +640,7 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
 
@@ -691,11 +691,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| arrayEmpty | Bool | True  |
-| objectEmpty | Bool | True  |
-| stringEmpty | Bool | true |
+| arrayEmpty | Bool | True |
+| objectEmpty | Bool | True |
+| stringEmpty | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -718,10 +718,10 @@ Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Gro�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -767,13 +767,13 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True  |
+| startsTrue | Bool | True |
 | startsCapTrue | Bool | True  |
 | startsFalse | Bool | False |
-| endsTrue | Bool | True  |
-| endsCapTrue | Bool | True  |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -797,7 +797,7 @@ Gibt das erste Zeichen der Zeichenfolge oder das erste Element des Arrays zurüc
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
@@ -836,10 +836,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
+| arrayOutput | Zeichenfolge | one |
+| stringOutput | Zeichenfolge | O |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -861,10 +861,10 @@ Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf de
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseString |Ja |string |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
-| Zusätzliche Parameter nach Bedarf. |Nein |string |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| baseString |Ja |Zeichenfolge |Der in der Hashfunktion für die Erstellung des GUID verwendete Wert. |
+| Zusätzliche Parameter nach Bedarf. |Nein  |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Anmerkungen
 
@@ -945,10 +945,10 @@ Gibt die erste Position eines Werts innerhalb einer Zeichenfolge zurück. Bei de
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -990,7 +990,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1019,7 +1019,7 @@ Gibt das letzte Zeichen der Zeichenfolge bzw. das letzte Element des Arrays zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
 
@@ -1058,10 +1058,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
+| arrayOutput | Zeichenfolge | three |
+| stringOutput | Zeichenfolge | e |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1084,10 +1084,10 @@ Gibt die letzte Position eines Werts innerhalb einer Zeichenfolge zurück. Bei d
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1129,7 +1129,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1158,7 +1158,7 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge bzw. von Elementen in einem Ar
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Das Array, von dem die Anzahl der Elemente, bzw. die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll. |
 
@@ -1204,7 +1204,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | arraylength | int | 3 |
 | stringLength | int | 13 |
@@ -1230,11 +1230,11 @@ Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der rechtsbündig ausgerichtet werden soll. |
 | totalLength |Ja |int |Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge. |
-| paddingCharacter |Nein |einzelnes Zeichen |Das Zeichen, das für das Auffüllen auf der linken Seite verwendet werden soll, bis die Gesamtlänge erreicht ist. Der Standardwert ist ein Leerzeichen. |
+| paddingCharacter |Nein  |einzelnes Zeichen |Das Zeichen, das für das Auffüllen auf der linken Seite verwendet werden soll, bis die Gesamtlänge erreicht ist. Der Standardwert ist ein Leerzeichen. |
 
 Wenn die Länge der ursprünglichen Zeichenfolge die Anzahl der aufzufüllenden Zeichen überschreitet, werden keine Zeichen hinzugefügt.
 
@@ -1268,9 +1268,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| stringOutput | String | 0000000123 |
+| stringOutput | Zeichenfolge | 0000000123 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1293,11 +1293,11 @@ Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge du
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| originalString |Ja |string |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
-| oldString |Ja |string |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
-| newString |Ja |string |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
+| originalString |Ja |Zeichenfolge |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
+| oldString |Ja |Zeichenfolge |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
+| newString |Ja |Zeichenfolge |Die Zeichenfolge, die anstelle der entfernten Zeichenfolge eingefügt werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1333,10 +1333,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| firstOutput | String | 1231231234 |
-| secodeOutput | String | 123-123-xxxx |
+| firstOutput | Zeichenfolge | 1231231234 |
+| secodeOutput | Zeichenfolge | 123-123-xxxx |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1359,7 +1359,7 @@ Gibt eine Zeichenfolge mit allen Zeichen gemäß der angegebenen Anzahl von Zeic
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
 | numberToSkip |Ja |int |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
@@ -1414,10 +1414,10 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
+| stringOutput | Zeichenfolge | two three |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1440,9 +1440,9 @@ Gibt ein Array mit Zeichenfolgen zurück, das die Teilzeichenfolgen der Eingabez
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| inputString |Ja |string |Die zu teilende Zeichenfolge. |
+| inputString |Ja |Zeichenfolge |Die zu teilende Zeichenfolge. |
 | Trennzeichen |Ja |Zeichenfolge oder Array von Zeichenfolgen |Das Trennzeichen, das zum Teilen der Zeichenfolge verwendet werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
@@ -1486,7 +1486,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1512,10 +1512,10 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
-| stringToFind |Ja |string |Der zu suchende Wert. |
+| stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
+| stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1561,13 +1561,13 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| startsTrue | Bool | True  |
+| startsTrue | Bool | True |
 | startsCapTrue | Bool | True  |
 | startsFalse | Bool | False |
-| endsTrue | Bool | True  |
-| endsCapTrue | Bool | True  |
+| endsTrue | Bool | True |
+| endsCapTrue | Bool | True |
 | endsFalse | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -1584,14 +1584,14 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="string" />
 
-## <a name="string"></a>string
+## <a name="string"></a>Zeichenfolge
 `string(valueToConvert)`
 
 Konvertiert den angegebenen Wert in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja | Beliebig |Der Wert, der in eine Zeichenfolge konvertiert werden soll. Werte aller Typen können konvertiert werden, auch Objekte und Arrays. |
 
@@ -1648,11 +1648,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| objectOutput | String | {"valueA":10,"valueB":"Example Text"} |
-| arrayOutput | String | ["a","b","c"] |
-| intOutput | String | 5 |
+| objectOutput | Zeichenfolge | {"valueA":10,"valueB":"Example Text"} |
+| arrayOutput | Zeichenfolge | ["a","b","c"] |
+| intOutput | Zeichenfolge | 5 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1675,11 +1675,11 @@ Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition begin
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Ja |string |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
-| startIndex |Nein |int |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
-| Länge |Nein |int |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. |
+| stringToParse |Ja |Zeichenfolge |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
+| startIndex |Nein  |int |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
+| length |Nein  |int |Die Anzahl der Zeichen der Teilzeichenfolge. Muss auf eine Position innerhalb der Zeichenfolge verweisen. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1724,9 +1724,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| substringOutput | String | two |
+| substringOutput | Zeichenfolge | two |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1749,7 +1749,7 @@ Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
 | numberToTake |Ja |int |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
@@ -1804,10 +1804,10 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
+| stringOutput | Zeichenfolge | on |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1830,9 +1830,9 @@ Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ja |string |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
+| stringToChange |Ja |Zeichenfolge |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1868,10 +1868,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | Zeichenfolge | one two three |
+| toUpperOutput | Zeichenfolge | ONE TWO THREE |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1894,9 +1894,9 @@ Konvertiert die angegebene Zeichenfolge in Großbuchstaben.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Ja |string |Der Wert, der in Großbuchstaben konvertiert werden soll. |
+| stringToChange |Ja |Zeichenfolge |Der Wert, der in Großbuchstaben konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1932,10 +1932,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| toLowerOutput | String | one two three |
-| toUpperOutput | String | ONE TWO THREE |
+| toLowerOutput | Zeichenfolge | one two three |
+| toUpperOutput | Zeichenfolge | ONE TWO THREE |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -1958,9 +1958,9 @@ Entfernt alle führenden und nachgestellten Leerzeichen aus der angegebenen Zeic
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Ja |string |Der zu kürzende Wert. |
+| stringToTrim |Ja |Zeichenfolge |Der zu kürzende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1992,9 +1992,9 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| return | String | one two three |
+| return | Zeichenfolge | one two three |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -2017,10 +2017,10 @@ Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministi
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseString |Ja |string |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
-| Zusätzliche Parameter nach Bedarf. |Nein |string |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
+| baseString |Ja |Zeichenfolge |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
+| Zusätzliche Parameter nach Bedarf. |Nein  |Zeichenfolge |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
 
 ### <a name="remarks"></a>Anmerkungen
 
@@ -2106,10 +2106,10 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| baseUri |Ja |string |Die Zeichenfolge mit dem Basis-URI. |
-| relativeUri |Ja |string |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
+| baseUri |Ja |Zeichenfolge |Die Zeichenfolge mit dem Basis-URI. |
+| relativeUri |Ja |Zeichenfolge |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
 
 Der Wert für den **baseUri** -Parameter kann eine bestimmte Datei enthalten, beim Erstellen des URI wird jedoch nur der Basispfad verwendet. Beispielsweise führt das Übergeben von `http://contoso.com/resources/azuredeploy.json` als baseUri-Parameter zu einem Basis-URI von `http://contoso.com/resources/`.
 
@@ -2156,11 +2156,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -2183,9 +2183,9 @@ Codiert einen URI.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Ja |string |Der zu codierende Wert. |
+| stringToEncode |Ja |Zeichenfolge |Der zu codierende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -2224,11 +2224,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -2251,9 +2251,9 @@ Gibt eine Zeichenfolge des als URI codierten Werts zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Ja |string |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
+| uriEncodedString |Ja |Zeichenfolge |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -2292,11 +2292,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Zeichenfolge | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | Zeichenfolge | http://contoso.com/resources/nested/azuredeploy.json |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 

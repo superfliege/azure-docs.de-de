@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – logisch | Microsoft-Dokumentation"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – logisch | Microsoft-Dokumentation
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: d16264abf64ef88dfb24948fc04e33de619f4e3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -37,10 +37,10 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Boolescher Wert |Der erste Wert, für den überprüft wird, ob er zutrifft. |
-| arg2 |Ja |Boolescher Wert |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
+| arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
+| arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -74,10 +74,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | true |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -99,7 +99,7 @@ Konvertiert den Parameter in einen booleschen Wert.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 
@@ -138,11 +138,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| trueString | Bool | True  |
+| trueString | Bool | True |
 | falseString | Bool | False |
-| trueInt | Bool | True  |
+| trueInt | Bool | True |
 | falseInt | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -164,9 +164,9 @@ Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| condition |Ja |Boolescher Wert |Der Wert, für den überprüft wird, ob er zutrifft. |
+| condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft. |
 | trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
 | falseValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung nicht zutrifft. |
 
@@ -245,10 +245,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| yesOutput | String | Ja |
-| noOutput | String | no |
+| yesOutput | Zeichenfolge | Ja |
+| noOutput | Zeichenfolge | no |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -269,9 +269,9 @@ Konvertiert den booleschen Wert in seinen gegenteiligen Wert.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Boolescher Wert |Der zu konvertierende Wert. |
+| arg1 |Ja |boolean |Der zu konvertierende Wert. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -305,10 +305,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | true |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
@@ -341,9 +341,9 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | true |
+| checkNotEquals | Bool | True |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -364,10 +364,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Boolescher Wert |Der erste Wert, für den überprüft wird, ob er zutrifft. |
-| arg2 |Ja |Boolescher Wert |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
+| arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
+| arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -401,10 +401,10 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | true |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:

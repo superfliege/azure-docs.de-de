@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Azure Active Directory-Integration in LockPath Keylight | Microsoft-Dokumentation'
-description: "Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und LockPath Keylight konfigurieren."
+description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und LockPath Keylight konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 74d9d80a1ce35f1766261038a985cc6f0cc39fd3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5eb3aa008ccfa5711d8282f6d98df44239d236a4
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Tutorial: Azure Active Directory-Integration in LockPath Keylight
 
@@ -29,7 +29,7 @@ Die Integration von LockPath Keylight in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei LockPath Keylight anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LockPath Keylight aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von LockPath Keylight in Azure AD müssen Sie 
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld den Namen **LockPath Keylight** ein.
 
@@ -86,10 +86,10 @@ Weisen Sie in LockPath Keylight den Wert für **Benutzername** in Azure AD als W
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit LockPath Keylight müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines LockPath Keylight-Testbenutzers](#creating-a-lockpath-keylight-test-user)**, um ein Pendant zu Britta Simon in LockPath Keylight zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **LockPath Keylight** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für LockPath Keylight** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<company name>.keylightgrc.com/`.
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Rohdaten)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_general_400.png)
     
 6. Klicken Sie im Abschnitt **LockPath Keylight-Konfiguration** auf **LockPath Keylight konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_configure.png) 
 
 7. Führen Sie die folgenden Schritte aus, um das einmalige Anmelden in LockPath Keylight zu aktivieren:
    
@@ -137,19 +137,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im klassi
     
     b. Klicken Sie im Menü oben auf **Person**, und wählen Sie **Keylight Setup** aus.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/401.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/401.png) 
 
     c. Klicken Sie in der Strukturansicht links auf **SAML**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/402.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/402.png) 
 
     d. Klicken Sie im Dialogfeld **SAML-Einstellungen** auf **Bearbeiten**.
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/404.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/404.png) 
 
 8. Führen Sie auf der Dialogfeldseite **Edit SAML Settings** die folgenden Schritte aus:
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/405.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/405.png) 
    
     a. Legen Sie für **SAML-Authentifizierung** die Einstellung **Aktiv** fest.
 
@@ -211,7 +211,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-lockpath-keylight-test-user"></a>Erstellen eines LockPath Keylight-Testbenutzers
 
@@ -236,7 +236,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **LockPath Keylight** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-keylight-tutorial/tutorial_keylight_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -261,7 +261,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LockPath Keylight“ klicken, soll
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

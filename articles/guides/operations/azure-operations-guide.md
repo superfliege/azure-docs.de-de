@@ -15,11 +15,11 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 231e8110dc6e1844108502e5c2277edc3ba77132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
@@ -509,7 +509,7 @@ Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage be
 
 ### <a name="access-and-security-for-virtual-networks"></a>Zugriff und Sicherheit für virtuelle Netzwerke
 
-Sie können virtuelle Azure-Netzwerke mit einer Netzwerksicherheitsgruppe schützen. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von eingehendem Netzwerkdatenverkehr für Ihre VM-Instanzen in einem virtuellen Netzwerk. Sie können NSGs entweder Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zuordnen. Wenn Sie eine NSG einem Subnetz zuordnen, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Außerdem können Sie den Datenverkehr weiter auf eine einzelne VM beschränken, indem Sie der VM direkt eine NSG zuordnen. Weitere Informationen finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/virtual-networks-nsg.md).
+Sie können virtuelle Azure-Netzwerke mit einer Netzwerksicherheitsgruppe schützen. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von eingehendem Netzwerkdatenverkehr für Ihre VM-Instanzen in einem virtuellen Netzwerk. Sie können NSGs entweder Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zuordnen. Wenn Sie eine NSG einem Subnetz zuordnen, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Außerdem können Sie den Datenverkehr weiter auf eine einzelne VM beschränken, indem Sie der VM direkt eine NSG zuordnen. Weitere Informationen finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
