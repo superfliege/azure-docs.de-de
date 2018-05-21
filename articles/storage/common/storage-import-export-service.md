@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: 4d6177fe0a50c531ba6c4b3e87eaa08299af2ddd
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f6dc104470ca2bfd738ca9bfc334a1c1325f7318
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store
 Dieser Artikel enthält schrittweise Anweisungen, wie Sie mit dem Import/Export-Dienst von Azure große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen können, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Storage auf Festplattenlaufwerke und zum Versand an Ihre lokalen Standorte nutzen. Daten von einer einzelnen internen SATA-Festplatte können entweder in Azure Blob Storage oder in Azure Files importiert werden. 
@@ -569,6 +569,9 @@ Geben Sie bei Verwendung des [WAImportExport-Tools](http://download.microsoft.co
 DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
 G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631 |
 ```
+
+[!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einrichten des WAImportExport-Tools](storage-import-export-tool-how-to.md)

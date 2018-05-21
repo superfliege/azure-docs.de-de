@@ -9,15 +9,13 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: 7493c10407bfe83bdc7277c49dae1a7e9d7c39f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 

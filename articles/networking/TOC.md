@@ -10,7 +10,6 @@
 ### [Kombinieren von Lastenausgleichsmethoden](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ## Planen und Entwerfen
 ### [Virtuelle Netzwerke](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Filtern von Datenverkehr](../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Standortübergreifende Konnektivität – VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Standortübergreifende Konnektivität – dediziert privat](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: c41a1057bb87c70362477d221b69ca3f5137dec4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a2e2075a735b63588352f3bcdc97e2d6410660fe
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Erstellen eines (klassischen) virtuellen Netzwerks mit mehreren Subnetzen
 
@@ -162,7 +162,6 @@ Sie können ein (klassisches) virtuelles Netzwerk im [Azure-Portal](#portal), ü
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu allen Einstellungen für virtuelle Netzwerke und Subnetze finden Sie unter [Verwalten virtueller Netzwerke](manage-virtual-network.md) und [Verwalten von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md). Für unterschiedliche Anforderungen gibt es verschiedene Optionen für die Verwendung virtueller Netzwerke und Subnetze in einer Produktionsumgebung.
-- Erstellen Sie [Netzwerksicherheitsgruppen](virtual-networks-nsg.md) für Subnetze, und wenden Sie sie an, um eingehenden und ausgehenden Subnetzdatenverkehr zu filtern.
 - Erstellen Sie einen virtuellen [Windows](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer, und verbinden Sie ihn mit einem virtuellen Netzwerk.
 - Zum Verbinden von zwei virtuellen Netzwerken im gleichen Azure-Standort erstellen Sie ein [Peering zwischen diesen virtuellen Netzwerken](create-peering-different-deployment-models.md). Sie können ein Peering zwischen einem virtuellen Netzwerk (Resource Manager) und einem (klassischen) virtuellen Netzwerk erstellen, nicht jedoch zwischen zwei (klassischen) virtuellen Netzwerken.
 - Verbinden Sie das virtuelle Netzwerk mit einem lokalen Netzwerk über ein [VPN-Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eine [Azure ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Verbindung.

@@ -4,13 +4,13 @@ description: Es wird beschrieben, wie Sie eine Bewertung verfeinern, indem Sie f
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 05/15/2018
 ms.author: raynew
-ms.openlocfilehash: a7c1dcae5708164252fa04a0fd1471eb1ae9bf90
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 690231b938f60f16dcd10656b9a1f99c8c8f29cb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Erfahren Sie mehr](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems) zu den Betriebssystemen, die vom Abhängigkeits-Agent unterstützt werden. 
+[Erfahren Sie mehr](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) zu den Betriebssystemen, die vom Abhängigkeits-Agent unterstützt werden. 
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>Verfeinern der Gruppe anhand der Visualisierung der Abhängigkeiten
 Nachdem Sie die Agents auf allen Computern der Gruppe installiert haben, können Sie die Abhängigkeiten der Gruppe visualisieren und diese anhand der unten aufgeführten Schritte verfeinern.
