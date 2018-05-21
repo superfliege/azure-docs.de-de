@@ -1,12 +1,12 @@
 ---
-title: "Checkliste für die Sicherheit der Azure-Datenbank | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet einen Satz von Checklisten für die Sicherheit der Azure-Datenbank."
+title: Checkliste für die Sicherheit der Azure-Datenbank | Microsoft-Dokumentation
+description: Dieser Artikel bietet einen Satz von Checklisten für die Sicherheit der Azure-Datenbank.
 services: security
 documentationcenter: na
 author: unifycloud
-manager: swadhwa
+manager: mbaldwin
 editor: tomsh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 37523506369ece144183dba76feb8b23b6c1acb2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-database-security-checklist"></a>Checkliste für die Sicherheit der Azure-Datenbank
 
 Um die Sicherheit zu verbessern, umfasst die Azure-Datenbank eine Reihe von integrierten Sicherheitsfunktionen, mit denen Sie den Zugriff begrenzen und kontrollieren können.
 
-Diese umfassen:
+Das umfasst:
 
 -   Eine Firewall, die es Ihnen die ermöglicht, [Firewallregeln](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) zu erstellen, die die Konnektivität mit den IP-Adressen beschränken
 -   Firewallregeln auf Serverebene zugänglich vom Azure-Portal
@@ -42,7 +42,7 @@ Cloud Computing erfordert neue Sicherheitsparadigmen, die vielen Anwendungsbenut
 Es wird empfohlen, den Artikel [Azure Database Security Best Practices (Bewährte Methoden für die Sicherheit der Azure-Datenbank)](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) vor dem Überprüfen dieser Checkliste durchzulesen. Wenn Sie die bewährten Methoden kennen, können Sie die Checkliste optimal nutzen. Sie können diese Checkliste dann auch nutzen, um sicherzustellen, dass Sie wichtige Sicherheitsprobleme der Azure-Datenbank behoben haben.
 
 
-|Checklistenkategorie| Beschreibung|
+|Checklistenkategorie| BESCHREIBUNG|
 | ------------ | -------- |
 |**Schützen von Daten**||
 | <br> Verschlüsselung von Daten während der Übertragung| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) für die Datenverschlüsselung beim Verschieben von Daten in die Netzwerke.</li><li>Die Datenbank erfordert sichere Kommunikation von Clients auf der Grundlage des Protokolls [Tabular Data Stream (TDS)](https://msdn.microsoft.com/en-in/library/dd357628.aspx) über Transport Layer Security (TLS).</li></ul> |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: d0443128064332a37c95d5c39cd73b759a002cca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a908c242b5d41d5cd61d8775bdbe53f3cdddd3ec
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="getting-started-with-microsoft-azure-security"></a>Erste Schritte mit Microsoft Azure-Sicherheit
 
@@ -136,7 +136,7 @@ Sie können Ihre virtuellen Computer in [virtuellen Azure-Netzwerken](https://az
 
 Die folgenden Azure Virtual Network-Technologien ermöglichen den Schutz der Kommunikation in Ihrem virtuellen Netzwerk:
 
-* [**Netzwerksicherheitsgruppen (NSGs)**](../virtual-network/virtual-networks-nsg.md): Mit einer NSG können Sie eingehenden Datenverkehr für Instanzen virtueller Computer in Ihrem virtuellen Netzwerk steuern. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert.
+* [**Netzwerksicherheitsgruppen (NSGs)**](../virtual-network/security-overview.md): Mit einer NSG können Sie eingehenden Datenverkehr für Instanzen virtueller Computer in Ihrem virtuellen Netzwerk steuern. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert.
 * [**Benutzerdefiniertes Routing**](../virtual-network/virtual-networks-udr-overview.md): Sie können das Routing von Paketen über ein virtuelles Gerät steuern, indem Sie benutzerdefinierte Routen erstellen, die festlegen, dass der nächste Hop für Pakete, die an ein bestimmtes Subnetz gesendet werden, an ein virtuelles Netzwerksicherheitsgerät erfolgen soll.
 * [**IP-Weiterleitung**](../virtual-network/virtual-networks-udr-overview.md): Ein virtuelles Netzwerksicherheitsgerät muss eingehenden Datenverkehr empfangen können, der nicht an das Gerät selbst adressiert ist. Aktivieren Sie die IP-Weiterleitung für einen virtuellen Computer, damit dieser an andere Ziele gerichteten Datenverkehr empfangen kann.
 * [**Tunnelerzwingung**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md): Über die Tunnelerzwingung können Sie den gesamten Internetdatenverkehr, der von Ihren virtuellen Computern in einem virtuellen Netzwerk generiert wird, zur Überprüfung und Überwachung über einen Site-to-Site-VPN-Tunnel an Ihren lokalen Standort umleiten.

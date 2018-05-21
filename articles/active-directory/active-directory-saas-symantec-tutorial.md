@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 35427941a084e6750d66ccd3e135d7eef1767c6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0dc75a1091c56ddbbffcd54047b2465ece231254
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>Tutorial: Azure Active Directory-Integration mit Symantec Web Security Service (WSS)
 
@@ -32,7 +32,7 @@ Die Integration von Symantec Web Security Service (WSS) in Azure AD bietet die f
 
 - Sie aktivieren die Erzwingung von Richtlinienregeln auf Benutzer- und Gruppenebene, die in Ihrem WSS-Konto definiert sind.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial konfigurieren Sie Ihr Azure AD, um einmaliges Anmelden bei WSS mit den Endbenutzer-Anmeldeinformationen, die in Ihrem Azure AD-Konto definiert sind, zu aktivieren.
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen der Symantec Web Security Service-App (WSS) aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -111,7 +111,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Symantec Web Security Service (WSS)](./media/active-directory-saas-symantec-tutorial/tutorial_symantecwebsecurityservicewss_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://saml.threatpulse.net:8443/saml/saml_realm`
+    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://saml.threatpulse.net:8443/saml/saml_realm`.
 
     b. Geben Sie im Textfeld **Antwort-URL** folgende URL ein: `https://saml.threatpulse.net:8443/saml/saml_realm/bcsamlpost`
 
@@ -124,12 +124,12 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-symantec-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-symantec-tutorial/tutorial_general_400.png)
     
 6. Weitere Informationen zum Konfigurieren des einmaligen Anmeldens auf Seiten von Symantec Web Security Service (WSS) finden Sie in der WSS-Onlinedokumentation. Die heruntergeladene **Metadaten-XML**-Datei muss in das WSS-Portal importiert werden. Wenden Sie sich an das [Supportteam von Symantec Web Security Service (WSS)](https://www.symantec.com/contact-us), wenn Sie Unterstützung bei der Konfiguration im WSS-Portal benötigen.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -161,7 +161,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-symantec-web-security-service-wss-test-user"></a>Erstellen eines Symantec Web Security Service-Testbenutzers (WSS)
 
@@ -209,7 +209,7 @@ Nachdem Sie Ihren Webbrowser für die Weiterleitung von Datenverkehr an WSS konf
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: 9fa87f8dc0c94ec93e049e35be727c031b4b06ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: bb70b3ff84392797ce0d93b8cf5d4018ff8ebdd8
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -45,7 +45,7 @@ Eine vereinfachte Version dieses Themas zum Testen, Auswerten oder Erhalten von 
 
 
 ## <a name="step-1-deprovision-the-vm"></a>Schritt 1: Aufheben der Bereitstellung der VM
-Sie heben die Bereitstellung der VM mithilfe des Azure-VM-Agents auf, um computerspezifische Dateien und Daten zu löschen. Verwenden Sie den Befehl `waagent` mit dem Parameter *-deprovision+user* auf der Linux-Quell-VM. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../windows/agent-user-guide.md).
+Sie heben die Bereitstellung der VM mithilfe des Azure-VM-Agents auf, um computerspezifische Dateien und Daten zu löschen. Verwenden Sie den Befehl `waagent` mit dem Parameter *-deprovision+user* auf der Linux-Quell-VM. Weitere Informationen erhalten Sie im [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md).
 
 1. Stellen Sie mit einem SSH-Client eine Verbindung mit Ihrer Linux-VM her.
 2. Geben Sie im SSH-Fenster den folgenden Befehl ein:
