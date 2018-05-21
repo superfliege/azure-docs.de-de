@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: b668ff70d627a63fb34012b07d9b41fc6f6ecb6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7dc7a1dbf024b6d334ec374f78d5e912db3835c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
@@ -297,7 +297,7 @@ Bei der Suche nach einem Ort mit Azure Maps nimmt der Suchdienst Ihre Suchbegrif
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure Maps-Geocodierung finden Sie auf den [Suchen](https://docs.microsoft.com/rest/api/azure-maps/search)-Referenzseiten.
+Weitere Informationen zur Azure Maps-Geocodierung finden Sie auf den [Suchen](https://docs.microsoft.com/rest/api/maps/search)-Referenzseiten.
 
 Erfahren Sie mehr über die [Abdeckungsbereiche des Verkehrsinfodiensts von Maps](traffic-coverage.md). 
 

@@ -1,0 +1,247 @@
+---
+title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Schnellstart – Azure PowerShell | Microsoft Docs
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers mit der IP-Datenflussüberprüfungsfunktion von Azure Network Watcher diagnostizieren.
+services: network-watcher
+documentationcenter: network-watcher
+author: jimdial
+manager: jeconnoc
+editor: ''
+tags: azure-resource-manager
+Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
+ms.assetid: ''
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: quickstart
+ms.tgt_pltfrm: network-watcher
+ms.workload: infrastructure
+ms.date: 04/20/2018
+ms.author: jdial
+ms.custom: mvc
+ms.openlocfilehash: d98a804961defc80bebe3e3a838dd229c23044bc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+---
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure PowerShell
+
+In dieser Schnellstartanleitung stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation zu einer IP-Adresse und URL und von einer IP-Adresse. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens Version 5.4.1 des AzureRM PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+## <a name="create-a-vm"></a>Erstellen einer VM
+
+Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthält. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+```
+
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die eingegebenen Werte werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
+
+```azurepowershell-interactive
+$vM = New-AzureRmVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVm" `
+    -Location "East US"
+```
+
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von PowerShell eine Ausgabe zurückgegeben wurde.
+
+## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
+
+Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen Sie zuerst eine Komponente zur Netzwerküberwachung in der Region aktivieren, in der sich der zu testende virtuelle Computer befindet. Danach können Sie die Kommunikation mit der IP-Datenflussüberprüfungsfunktion von Network Watcher testen.
+
+### <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
+
+Wenn Sie bereits eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher), um die Komponente zur Netzwerküberwachung abzurufen. Im folgenden Beispiel wird eine vorhandene Komponente zur Netzwerküberwachung namens *NetworkWatcher_eastus* abgerufen, die sich in der Ressourcengruppe *NetworkWatcherRG* befindet:
+
+```azurepowershell-interactive
+$networkWatcher = Get-AzureRmNetworkWatcher `
+  -Name NetworkWatcher_eastus `
+  -ResourceGroupName NetworkWatcherRG
+```
+
+Wenn Sie noch keine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher), um eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ zu erstellen:
+
+```azurepowershell-interactive
+$networkWatcher = New-AzureRmNetworkWatcher `
+  -Name "NetworkWatcher_eastus" `
+  -ResourceGroupName "NetworkWatcherRG" `
+  -Location "East US"
+```
+
+### <a name="use-ip-flow-verify"></a>Verwenden der IP-Datenflussüberprüfung
+
+Wenn Sie einen virtuellen Computer erstellen, wird der Netzwerkdatenverkehr zu und von dem virtuellen Computer von Azure standardmäßig zugelassen und abgelehnt. Sie können später die Azure-Standardeinstellungen außer Kraft setzen, um zusätzliche Typen von Datenverkehr zuzulassen oder abzulehnen. Verwenden Sie den Befehl [Test-AzureRmNetworkWatcherIPFlow](/powershell/module/azurerm.network/test-azurermnetworkwatcheripflow), um zu testen, ob der Datenverkehr zu verschiedenen Zielen und von einer Quell-IP-Adresse zugelassen oder abgelehnt wird.
+
+Testen Sie die ausgehende Kommunikation vom virtuellen Computer mit einer der IP-Adressen für www.bing.com:
+
+```azurepowershell-interactive
+Test-AzureRmNetworkWatcherIPFlow `
+  -NetworkWatcher $networkWatcher `
+  -TargetVirtualMachineId $vM.Id `
+  -Direction Outbound `
+  -Protocol TCP `
+  -LocalIPAddress 192.168.1.4 `
+  -LocalPort 60000 `
+  -RemoteIPAddress 13.107.21.200 `
+  -RemotePort 80
+```
+
+Nach einigen Sekunden werden Sie im zurückgegebenen Ergebnis darüber informiert, dass der Zugriff durch eine Sicherheitsregel mit dem Namen **AllowInternetOutbound** zulässig ist.
+
+Testen Sie die ausgehende Kommunikation vom virtuellen Computer mit 172.31.0.100:
+
+```azurepowershell-interactive
+Test-AzureRmNetworkWatcherIPFlow `
+  -NetworkWatcher $networkWatcher `
+  -TargetVirtualMachineId $vM.Id `
+  -Direction Outbound `
+  -Protocol TCP `
+  -LocalIPAddress 192.168.1.4 `
+  -LocalPort 60000 `
+  -RemoteIPAddress 172.31.0.100 `
+  -RemotePort 80
+```
+
+Im zurückgegebenen Ergebnis werden Sie darüber informiert, dass der Zugriff durch eine Sicherheitsregel mit dem Namen **DefaultOutboundDenyAll** verweigert wird.
+
+Testen Sie die auf dem virtuellen Computer von 172.31.0.100 eingehende Kommunikation:
+
+```azurepowershell-interactive
+Test-AzureRmNetworkWatcherIPFlow `
+  -NetworkWatcher $networkWatcher `
+  -TargetVirtualMachineId $vM.Id `
+  -Direction Inbound `
+  -Protocol TCP `
+  -LocalIPAddress 192.168.1.4 `
+  -LocalPort 80 `
+  -RemoteIPAddress 172.31.0.100 `
+  -RemotePort 60000
+```
+
+Im zurückgegebenen Ergebnis werden Sie darüber informiert, dass der Zugriff aufgrund einer Sicherheitsregel mit dem Namen **DefaultInboundDenyAll** verweigert wird. Da Sie nun wissen, mit welchen Sicherheitsregeln der Datenverkehr zu oder von einem virtuellen Computer zugelassen oder abgelehnt wird, können Sie bestimmen, wie die Probleme gelöst werden können.
+
+## <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
+
+Um zu bestimmen, warum die Regeln unter [Testen der Netzwerkkommunikation](#test-network-communication) die Kommunikation zulassen oder verhindern, überprüfen Sie die effektiven Sicherheitsregeln für die Netzwerkschnittstelle mit [Get-AzureRmEffectiveNetworkSecurityGroup ](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup):
+
+```azurepowershell-interactive
+Get-AzureRmEffectiveNetworkSecurityGroup `
+  -NetworkInterfaceName myVm `
+  -ResourceGroupName myResourceGroup
+```
+
+Die zurückgegebene Ausgabe enthält den folgenden Text für die Regel **AllowInternetOutbound**, die unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) den ausgehenden Zugriff auf www.bing.com zugelassen hat:
+
+```powershell
+{
+  "Name":
+"defaultSecurityRules/AllowInternetOutBound",
+  "Protocol": "All",
+  "SourcePortRange": [
+    "0-65535"
+  ],
+  "DestinationPortRange": [
+    "0-65535"
+  ],
+  "SourceAddressPrefix": [
+    "0.0.0.0/0"
+  ],
+  "DestinationAddressPrefix": [
+    "Internet"
+  ],
+  "ExpandedSourceAddressPrefix": [],
+  "ExpandedDestinationAddressPrefix": [
+    "1.0.0.0/8",
+    "2.0.0.0/7",
+    "4.0.0.0/6",
+    "8.0.0.0/7",
+    "11.0.0.0/8",
+    "12.0.0.0/6",
+    ...
+    ],
+    "Access": "Allow",
+    "Priority": 65001,
+    "Direction": "Outbound"
+  },
+```
+
+Sie können der Ausgabe entnehmen, dass **Internet** als **DestinationAddressPrefix** verwendet wird. Es ist jedoch nicht klar, wie sich 13.107.21.200, die Adresse, die Sie unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) getestet haben, auf **Internet** bezieht. Unter **ExpandedDestinationAddressPrefix** sind mehrere Adresspräfixe aufgelistet. Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Weil 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus werden in der von `Get-AzureRmEffectiveNetworkSecurityGroup` zurückgegebenen Ausgabe keine Regeln mit einer höheren **Priorität** (einer niedrigeren Zahl) aufgeführt, die diese Regel außer Kraft setzen. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zur IP-Adresse verweigert.
+
+Beim Ausführen des Befehls `Test-AzureRmNetworkWatcherIPFlow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `Get-AzureRmEffectiveNetworkSecurityGroup` aufgeführt ist:
+
+```powershell
+{
+"Name": "defaultSecurityRules/DenyAllOutBound",
+"Protocol": "All",
+"SourcePortRange": [
+  "0-65535"
+],
+"DestinationPortRange": [
+  "0-65535"
+],
+"SourceAddressPrefix": [
+  "0.0.0.0/0"
+],
+"DestinationAddressPrefix": [
+  "0.0.0.0/0"
+],
+"ExpandedSourceAddressPrefix": [],
+"ExpandedDestinationAddressPrefix": [],
+"Access": "Deny",
+"Priority": 65500,
+"Direction": "Outbound"
+}
+```
+
+Die Regel listet **0.0.0.0/0** als **DestinationAddressPrefix** auf. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, weil die Adresse nicht im **DestinationAddressPrefix** einer der anderen ausgehenden Regeln in der Ausgabe des Befehls `Get-AzureRmEffectiveNetworkSecurityGroup` enthalten ist. Um die ausgehende Kommunikation zuzulassen, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zu 172.131.0.100 zulässt.
+
+Beim Ausführen des Befehls `Test-AzureRmNetworkWatcherIPFlow` zum Testen der eingehenden Kommunikation von 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultInboundDenyAll** verweigert wurde. Die Regel **DefaultInboundDenyAll** entspricht der Regel **DenyAllInBound**, die in der folgenden Ausgabe des Befehls `Get-AzureRmEffectiveNetworkSecurityGroup` aufgeführt ist:
+
+```powershell
+{
+"Name": "defaultSecurityRules/DenyAllInBound",
+"Protocol": "All",
+"SourcePortRange": [
+  "0-65535"
+],
+"DestinationPortRange": [
+  "0-65535"
+],
+"SourceAddressPrefix": [
+  "0.0.0.0/0"
+],
+"DestinationAddressPrefix": [
+  "0.0.0.0/0"
+],
+"ExpandedSourceAddressPrefix": [],
+"ExpandedDestinationAddressPrefix": [],
+"Access": "Deny",
+"Priority": 65500,
+"Direction": "Inbound"
+},
+```
+
+Die Regel **DenyAllInBound** wird angewendet, weil (wie aus der Ausgabe hervorgeht) keine andere Regel mit einer höheren Priorität in der Ausgabe des Befehls `Get-AzureRmEffectiveNetworkSecurityGroup` vorhanden ist, die von 172.131.0.100 auf dem virtuellen Computer eingehenden Datenverkehr über Port 80 zulässt. Um die eingehende Kommunikation zuzulassen, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die von 172.131.0.100 eingehenden Datenverkehr über Port 80 zulässt.
+
+Mit den Überprüfungen in dieser Schnellstartanleitung wurde die Azure-Konfiguration getestet. Wenn die Überprüfungen die erwarteten Ergebnisse zurückgeben, bei Ihnen jedoch weiterhin Netzwerkprobleme bestehen, stellen Sie sicher, dass zwischen Ihrem virtuellen Computer und dem Endpunkt, mit dem Sie kommunizieren, keine Firewall vorhanden ist und das Betriebssystem auf Ihrem virtuellen Computer nicht über eine Firewall verfügt, die die Kommunikation zulässt oder verweigert.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen:
+
+```azurepowershell-interactive
+Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein-und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den Datenverkehr zu und von einem virtuellen Computer zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
+
+Selbst wenn die richtigen Filter für den Netzwerkdatenverkehr vorhanden sind, kann die Kommunikation mit einem virtuellen Computer aufgrund der Routingkonfiguration trotzdem fehlschlagen. Wenn Sie erfahren möchten, wie Sie VM-Netzwerk-Routingprobleme diagnostizieren können, lesen Sie [Diagnostizieren von VM-Routingproblemen](diagnose-vm-network-routing-problem-powershell.md). Informationen zum Diagnostizieren von Ausgangsrouting- und Latenzproblemen sowie von Problemen beim Filtern des Datenverkehrs mit einem einzigen Tool finden Sie unter [Problembehandlung für Verbindungen](network-watcher-connectivity-powershell.md).
