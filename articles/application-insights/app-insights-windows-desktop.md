@@ -1,6 +1,6 @@
 ---
-title: "Überwachen der Nutzung und Leistung bei Windows-Desktop-Apps"
-description: Analysieren Sie die Nutzung und Leistung Ihrer Windows-Desktop-Apps mit HockeyApp und Application Insights.
+title: Überwachen der Nutzung und Leistung bei Windows-Desktop-Apps
+description: Analysieren Sie die Nutzung und Leistung Ihrer Windows-Desktop-App mit Application Insights.
 services: application-insights
 documentationcenter: windows
 author: mrbullwinkle
@@ -11,25 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/26/2016
+ms.date: 04/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3b91996c12a27847befcacf6daf14457a0e066aa
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5b325fd4326f2594a7386c65dea17a3da19abde8
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/01/2018
 ---
 # <a name="monitoring-usage-and-performance-in-windows-desktop-apps"></a>Überwachen der Nutzung und Leistung von Windows-Desktop-Apps
 
-
-Mit [Azure Application Insights](app-insights-overview.md) und [HockeyApp](https://hockeyapp.net) können Sie die Nutzung und Leistung Ihrer bereitgestellten Anwendung überwachen.
-
-> [!IMPORTANT]
-> Wir empfehlen [HockeyApp](https://hockeyapp.net) zum Verteilen und Überwachen von Desktop- und Geräte-Apps. Mit HockeyApp können Sie die Verteilung, das Durchführen von Livetests und das Feedback von Benutzern verwalten. Außerdem können Sie mit HockeyApp auch Nutzungs-und Absturzberichte überwachen. Sie können auch [Ihre Telemetriedaten mit Analytics exportieren und abfragen](app-insights-hockeyapp-bridge-app.md).
-> 
-> Von einer Desktopanwendung können zwar auch Telemetriedaten an Application Insights gesendet werden. Dies ist allerdings in erster Linie für das Debuggen und für experimentelle Zwecke nützlich.
-> 
-> 
+Von einer Desktopanwendung können zwar auch Telemetriedaten an Application Insights gesendet werden. Dies ist allerdings in erster Linie für das Debuggen und für experimentelle Zwecke nützlich.
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-windows-application"></a>So senden Sie Telemetriedaten aus einer Windows-Anwendung an Application Insights
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) [eine Application Insights-Ressource](app-insights-create-new-resource.md). Wählen Sie als Anwendungstyp "ASP.NET-App" aus.

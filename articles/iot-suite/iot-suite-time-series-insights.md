@@ -9,11 +9,11 @@ ms.author: philmea
 ms.date: 04/29/2018
 ms.topic: article
 ms.service: iot-suite
-ms.openlocfilehash: c7ddac84a16520d6bc4c4eeb845206f84e6edd80
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 09a54e9cb1c6f063e878fd42c42699a906b60c7b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Visualisieren von Remoteüberwachungsdaten mit Time Series Insights
 
@@ -23,7 +23,7 @@ Ein Operator kann die sofort einsatzbereite Datenvisualisierung erweitern, die d
 
 Für diese Vorgehensweise ist Folgendes erforderlich:
 
-* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](/iot-suite/iot-suite-remote-monitoring-deploy)
+* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md)
 
 ## <a name="create-a-consumer-group"></a>Erstellen einer Consumergruppe
 
@@ -57,14 +57,14 @@ Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- 
     | Umgebungsname | Im folgenden Screenshot wird der Name **contorosrmtsi** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Ressourcengruppe | **Neu erstellen**. Wir verwenden den Namen **ContosoRM**. |
-    | Standort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung in derselben Region wie Ihre Remoteüberwachungslösung. |
+    | Speicherort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung in derselben Region wie Ihre Remoteüberwachungslösung. |
     | Sku |**S1** |
     | Capacity | **1** |
     | An Dashboard anheften | **Ja** |
 
     ![Time Series Insights erstellen](media/iot-suite-time-series-insights/new-time-series-insights-create.png)
 
-1. Klicken Sie auf **Erstellen**. Die Erstellung der Umgebung kann einen Moment dauern.
+1. Klicken Sie auf **Create**. Die Erstellung der Umgebung kann einen Moment dauern.
 
 ## <a name="create-event-source"></a>Erstellen der Ereignisquelle
 

@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/2/2017
 ms.author: hshapiro
-ms.openlocfilehash: d089dd24df3308994aab0cf135da8be9a3e28d79
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 095cc724beb9f35896bd02e299523839a9f43f4b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Erstellen einer Flask-App mit der MongoDB-API
 
 Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
-In dieser Kurzanleitung wird anhand des folgenden [Flask-Beispiels](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) gezeigt, wie Sie eine einfache Flask-Aufgaben-App unter Verwendung des [Azure Cosmos DB-Emulators](/local-emulator.md) und der [MongoDB-API](mongodb-introduction.md) für Azure Cosmos DB (anstelle von MongoDB) erstellen.
+In dieser Kurzanleitung wird anhand des folgenden [Flask-Beispiels](https://github.com/Azure-Samples/CosmosDB-Flask-Mongo-Sample) gezeigt, wie Sie eine einfache Flask-Aufgaben-App unter Verwendung des [Azure Cosmos DB-Emulators](local-emulator.md) und der [MongoDB-API](mongodb-introduction.md) für Azure Cosmos DB (anstelle von MongoDB) erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Laden Sie den [Azure Cosmos DB-Emulator](/local-emulator.md) herunter. Der Emulator wird derzeit nur unter Windows unterstützt. Das Beispiel zeigt, wie Sie das Beispiel mit einem Produktionsschlüssel von Azure verwenden, was mit jeder Plattform möglich ist.
+- Laden Sie den [Azure Cosmos DB-Emulator](local-emulator.md) herunter. Der Emulator wird derzeit nur unter Windows unterstützt. Das Beispiel zeigt, wie Sie das Beispiel mit einem Produktionsschlüssel von Azure verwenden, was mit jeder Plattform möglich ist.
 
 - Sollte [Visual Studio Code](https://code.visualstudio.com/Download) bei Ihnen noch nicht installiert sein, können Sie es schnell für Ihre Plattform (Windows, Mac, Linux) installieren.
 
