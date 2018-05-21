@@ -5,14 +5,14 @@ services: log-analytics
 author: MGoedtel
 ms.service: log-analytics
 ms.topic: include
-ms.date: 03/29/2018
+ms.date: 05/16/2018
 ms.author: magoedte
 ms.custom: include file
-ms.openlocfilehash: 29256b3bcfedb7fe5045ff4c6c3842eb25e00a28
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 66cd09df128d454973d008adf4ffc5dd1017a18f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/17/2018
 ---
 Für Log Analytics-Ressourcen gelten pro Abonnement die folgenden Einschränkungen:
 
@@ -39,5 +39,5 @@ Die folgenden Grenzwerte gelten für jeden Log Analytics-Arbeitsbereich:
 | Category (Kategorie) | Einschränkungen | Kommentare
 | --- | --- | --- |
 | Data Collector API (Datensammler-API) | Die maximale Größe für einen einzelnen Beitrag beträgt 30 MB.<br>Die maximale Größe für Feldwerte beträgt 32 KB. | Teilen Sie größere Volumen auf mehrere Beiträge auf.<br>Felder mit einer Länge von mehr als 32 KB werden abgeschnitten. |
-| Search-API | 5000 zurückgegebene Datensätze (nicht aggregierte Daten)<br>500.000 Datensätze (aggregierte Daten) | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `measure` enthält.
+| Search-API | 5000 zurückgegebene Datensätze (nicht aggregierte Daten)<br>500.000 Datensätze (aggregierte Daten) | Bei aggregierten Daten handelt es sich um eine Suche, die den Befehl `summarize` enthält.
  

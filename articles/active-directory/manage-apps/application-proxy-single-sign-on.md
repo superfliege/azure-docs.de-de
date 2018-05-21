@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: d1c9f4dd8504c2409663cb87b0c0d56164229ed2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1d31b11c3307cc2e54b91e68e1e1a3811ae2ef96
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Wie stellt der Azure AD-Anwendungsproxy das einmalige Anmelden bereit?
 
@@ -60,7 +60,7 @@ Informationen zum Einrichten der kennwortbasierten Anmeldung finden Sie unter [E
 
 Wählen Sie **Anmeldung über Link**, wenn Sie bereits eine SSO-Lösung für Ihre lokalen Identitäten eingerichtet haben. Diese Option ermöglicht Azure Active Directory die Nutzung von vorhandenen SSO-Lösungen, aber Ihre Benutzer haben weiterhin Remotezugriff auf die Anwendung. 
 
-Informationen zur Anmeldung über einen Link (wurde früher als „einmaliges Anmelden“ bezeichnet) finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Informationen zur Anmeldung über einen Link (wurde früher als „einmaliges Anmelden“ bezeichnet) finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="integrated-windows-authentication"></a>Integrierte Windows-Authentifizierung
 

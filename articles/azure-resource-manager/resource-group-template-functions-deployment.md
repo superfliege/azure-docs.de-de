@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager-Vorlagenfunktionen – Bereitstellung | Microsoft Docs"
-description: "Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können."
+title: Azure Resource Manager-Vorlagenfunktionen – Bereitstellung | Microsoft Docs
+description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 725bc41f96359d4bf0d9d570f73f91dba5da2cab
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
@@ -158,9 +158,9 @@ Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parame
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |Der Name des zurückzugebenden Parameter. |
+| parameterName |Ja |Zeichenfolge |Der Name des zurückzugebenden Parameter. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -245,13 +245,13 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| stringOutput | String | option 1 |
+| stringOutput | Zeichenfolge | option 1 |
 | intOutput | int | 1 |
 | objectOutput | Objekt | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | option 1 |
+| crossOutput | Zeichenfolge | option 1 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
@@ -274,9 +274,9 @@ Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variab
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| variableName |Ja |String |Der Name der zurückzugebenden Variable. |
+| variableName |Ja |Zeichenfolge |Der Name der zurückzugebenden Variable. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -348,11 +348,11 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Typ | Wert |
+| NAME | Typ | Wert |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
+| exampleOutput1 | Zeichenfolge | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
+| exampleOutput3 | Zeichenfolge | myVariable |
 | exampleOutput4 |  Objekt | {"property1": "value1", "property2": "value2"} |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:

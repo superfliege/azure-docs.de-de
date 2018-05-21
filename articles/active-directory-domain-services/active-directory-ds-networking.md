@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a56413490decc928ff2643213084155ae469871c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: b40aa0e105c0e9fac9c9cab63a5b0a2a6116c4c9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -95,7 +95,7 @@ Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verw
 
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
+Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/security-overview.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Beispiel-NSG für virtuelle Netzwerke in Azure AD Domain Services
 Die folgende Tabelle zeigt ein NSG-Beispiel, das Sie für ein virtuelles Netzwerk mit einer von Azure AD Domain Services verwalteten Domäne konfigurieren können. Diese Regel ermöglicht eingehenden Datenverkehr von den erforderlichen Ports, um sicherzustellen, dass Ihre verwaltete Domäne gepatcht und aktualisiert bleibt und von Microsoft überwacht werden kann. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet.
@@ -141,5 +141,5 @@ Sie können ein Resource Manager-basiertes virtuelles Netzwerk mit einem klassis
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 * [Konfigurieren einer VNet-zu-VNet-Verbindung für das klassische Bereitstellungsmodell](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
-* [Azure-Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
+* [Azure-Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)
 * [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: 2a0e1df5244ef977bdcccc5bcfea615a05efa3bd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ef9d0bb112738e9abea5894fb0f321368b7fc26e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Tutorial: Azure Active Directory-Integration mit GitHub
 
@@ -30,7 +30,7 @@ Die Integration von GitHub in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei GitHub anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Verwaltungsportal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von GitHub aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -68,11 +68,11 @@ Zum Konfigurieren der Integration von GitHub in Azure AD müssen Sie GitHub aus 
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld den Suchbegriff **GitHub.com** ein.
 
@@ -92,10 +92,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei GitHub müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines GitHub-Testbenutzers](#creating-a-GitHub-test-user)**, um eine Entsprechung von Britta Simon in GitHub zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -106,15 +106,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **GitHub** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_01.png)
 
 3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für GitHub** aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_saml011.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_saml011.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** den Wert wie folgt ein: `https://github.com/orgs/<entity-id>/sso`
 
@@ -125,33 +125,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 4. Wählen Sie im Abschnitt **Benutzerattribute** für **Benutzer-ID** die Option „user.mail“.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_attribute_new01.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_attribute_new01.png)
     
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_03.png)
 
 6. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_general_300.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_general_300.png)
 
 7. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_04.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_04.png)
 
 8. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_general_400.png)
 
 9. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_05.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_05.png) 
 
 10. Klicken Sie im Abschnitt **GitHub-Konfiguration** auf **GitHub konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_06.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_06.png) 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_07.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_07.png)
 
 11. Melden Sie sich in einem anderen Webbrowserfenster bei der GitHub-Organisationswebsite als Administrator an.
 
@@ -177,7 +177,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Einstellungen](./media/active-directory-saas-github-tutorial/tutorial_github_config_github_06.png)
 
-16. Klicken Sie unten auf der Seite auf **Speichern**
+16. Klicken Sie unten auf der Seite auf **Speichern**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
@@ -208,7 +208,7 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**. 
+    d. Klicken Sie auf **Create**. 
 
 
 ### <a name="creating-a-github-test-user"></a>Erstellen eines GitHub-Testbenutzers
@@ -256,7 +256,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste den Eintrag **GitHub.com** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-github-tutorial/tutorial_github_search_result021.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-github-tutorial/tutorial_github_search_result021.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -284,7 +284,7 @@ Wenn Sie im Zugriffsbereich auf die GitHub-Kachel klicken, sollten Sie bei Ihrer
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über den Fault Analysis Service | Microsoft Docs"
-description: "In diesem Artikel wird der Fault Analysis Service in Service Fabric zum Auslösen von Fehlern und Ausführen von Testszenarien für Ihre Dienste beschrieben."
+title: Übersicht über den Fault Analysis Service | Microsoft Docs
+description: In diesem Artikel wird der Fault Analysis Service in Service Fabric zum Auslösen von Fehlern und Ausführen von Testszenarien für Ihre Dienste beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -9,21 +9,21 @@ editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: f275fa5d3d6d727b016e55c188321d7e68091a33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 807e4588e23ea01c5ce435282d7af59bb108e6c6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Einführung in den Fault Analysis Service
 Der Fault Analysis Service ist für das Testen von Diensten ausgelegt, die in Microsoft Azure Service Fabric erstellt werden. Mit dem Fault Analysis Service können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
 
-Aktionen sind die individuellen Fehler, die auf einen Dienst angewendet werden, um ihn zu testen. Ein Dienstentwickler kann sie als Bausteine zum Schreiben komplizierter Szenarien verwenden. Beispiel:
+Aktionen sind die individuellen Fehler, die auf einen Dienst angewendet werden, um ihn zu testen. Ein Dienstentwickler kann sie als Bausteine zum Schreiben komplizierter Szenarien verwenden. Beispiel: 
 
 * Starten Sie einen Knoten neu, um eine beliebige Anzahl von Situationen zu simulieren, in denen ein Computer oder ein virtueller Computer neu gestartet wird.
 * Verschieben Sie ein Replikat Ihres zustandsbehafteten Diensts, um Lastenausgleich, Failover oder ein Anwendungsupgrade zu simulieren.
