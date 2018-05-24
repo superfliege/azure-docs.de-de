@@ -1,11 +1,11 @@
 ---
-title: CI/CD von Jenkins auf virtuellen Azure-Computern mit Team Services | Microsoft-Dokumentation
-description: "Einrichten von Continuous Integration (CI) und Continuous Deployment (CD) einer Node.js-App mithilfe von Jenkins auf virtuellen Azure-Computern über Release Management in Visual Studio Team Services oder Microsoft Team Foundation Server"
+title: Tutorial – CI/CD von Jenkins auf virtuellen Azure-Computern mit Team Services | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Continuous Integration (CI) und Continuous Deployment (CD) einer Node.js-App mithilfe von Jenkins auf virtuellen Azure-Computern über Release Management in Visual Studio Team Services oder Microsoft Team Foundation Server einrichten.
 author: ahomer
 manager: douge
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -14,19 +14,17 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fc301edf13f8e6874f0b77440e2b0dc01b2a55fc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Bereitstellen Ihrer App auf virtuellen Linux-Computern mithilfe von Jenkins und Team Services
+# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-visual-studio-team-services"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Jenkins und Visual Studio Team Services
 
 Continuous Integration (CI) und Continuous Deployment (CD) bilden eine Pipeline, über die Sie Ihren Code erstellen, freigeben und bereitstellen können. Visual Studio Team Services bietet eine vollständige Gruppe von CI/CD-Automatisierungstools mit umfassenden Features für die Bereitstellung in Azure. Jenkins ist ein gängiges serverbasiertes CI/CD-Drittanbietertool, das auch CI/CD-Automatisierung beinhaltet. Sie können Team Services und Jenkins zusammen verwenden und so die Bereitstellung Ihrer Cloud-Apps oder Clouddienste anpassen.
 
-In diesem Tutorial erstellen Sie mithilfe von Jenkins eine Node.js-Web-App. Anschließend verwenden Sie entweder Team Services oder Team Foundation Server, um sie in einer [Bereitstellungsgruppe](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) mit virtuellen Linux-Computern bereitzustellen.
-
-In diesem Tutorial führen Sie folgende Schritte aus:
+In diesem Tutorial erstellen Sie mithilfe von Jenkins eine Node.js-Web-App. Anschließend verwenden Sie entweder Team Services oder Team Foundation Server, um sie in einer [Bereitstellungsgruppe](https://www.visualstudio.com/docs/build/concepts/definitions/release/deployment-groups/) mit virtuellen Linux-Computern bereitzustellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Abrufen der Beispiel-App
@@ -78,7 +76,7 @@ Als Erstes müssen zwei Jenkins-Plug-Ins konfiguriert werden: **NodeJS** und **V
 5. Navigieren Sie wieder zum Jenkins-Dashboard, und klicken Sie auf **Manage Jenkins** (Jenkins verwalten).
 6. Klicken Sie auf **Global Tool Configuration** (Globale Toolkonfiguration). Suchen Sie nach **NodeJS**, und klicken Sie auf **NodeJS installations** (NodeJS-Installationen).
 7. Klicken Sie auf **Install automatically** (Automatisch installieren), und geben Sie einen Wert für **Name** ein.
-8. Wählen Sie **Speichern** aus.
+8. Wählen Sie **Speichern**aus.
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Konfigurieren eines Jenkins Freestyle-Projekts für Node.js
 

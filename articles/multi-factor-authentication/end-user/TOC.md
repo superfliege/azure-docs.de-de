@@ -14,3 +14,4 @@
 ### [Mit dem Telefon anmelden](microsoft-authenticator-app-phone-signin-faq.md)
 ### [Sichern und Wiederherstellen von Kontoanmeldeinformationen](microsoft-authenticator-app-backup-and-recovery.md)
 ### [Häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
+### [Aktualisierungen des Anmeldevorgangs](sign-in-experience-updates.md)

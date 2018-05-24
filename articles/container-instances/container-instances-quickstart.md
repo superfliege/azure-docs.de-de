@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/19/2018
+ms.date: 05/11/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 57961cf1cb64f90cec7d2be90f3fbfe33344467d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b68468cd8174d658d04d8e67433a8f18884493bd
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>Schnellstartanleitung: Erstellen Ihres ersten Containers in Azure Container Instances
 
@@ -64,19 +64,21 @@ FQDN                               ProvisioningState
 aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-Wenn der Container den Status **Erfolgreich** hat, ist er über den Browser unter seinem FQDN erreichbar:
+Wenn der Container den Status **Erfolgreich** erreicht, navigieren Sie in Ihrem Browser zu seinem FQDN:
 
 ![Screenshot eines Browsers mit ausgeführter Anwendung in einer Azure-Containerinstanz][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>Herunterladen der Containerprotokolle
 
-Die Protokolle für den erstellten Container können mithilfe des Befehls [az container logs][az-container-logs] abgerufen werden:
+Die Protokolle für eine Containerinstanz sind hilfreich, wenn Sie Probleme mit dem Container oder mit der ausgeführten Anwendung behandeln.
+
+Verwenden Sie den Befehl [az container logs][az-container-logs], um die Protokolle des Containers zu pullen:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
 ```
 
-Die Ausgabe sollte in etwa wie im folgenden Beispiel aussehen:
+Die Ausgabe enthält die Protokolle für den Container und sollte die HTTP GET-Anforderungen anzeigen, die beim Betrachten der Anwendung in Ihrem Browser generiert wurden.
 
 ```console
 $ az container logs --resource-group myResourceGroup -n mycontainer
@@ -113,9 +115,9 @@ listening on port 80
 ::ffff:10.240.255.107 - - [15/Mar/2018:21:18:47 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.146 Safari/537.36"
 ```
 
-## <a name="delete-the-container"></a>Löschen des Containers
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie den Container nicht mehr benötigen, können Sie ihn mithilfe des Befehls [az container delete][az-container-delete] entfernen:
+Wenn Sie den Container nicht mehr benötigen, entfernen Sie ihn mithilfe des Befehls [az container delete][az-container-delete]:
 
 ```azurecli-interactive
 az container delete --resource-group myResourceGroup --name mycontainer
@@ -131,19 +133,19 @@ Der Container **mycontainer** sollte nicht in der Ausgabe des Befehls angezeigt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Den gesamten Code für den Container aus dieser Schnellstartanleitung sowie die Dockerfile-Datei finden Sie auf [GitHub][app-github-repo]. Wenn Sie ihn selbst erstellen und über Azure Container Registry in Azure Container Instances bereitstellen möchten, fahren Sie mit dem Azure Container Instances-Tutorial fort.
+In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz auf der Grundlage eines Images in der öffentlichen Docker Hub-Registrierung erstellt. Wenn Sie selbst ein Containerimage erstellen und über eine private Azure-Containerregistrierung in Azure Container Instances bereitstellen möchten, fahren Sie mit dem Azure Container Instances-Tutorial fort.
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances-Tutorial](./container-instances-tutorial-prepare-app.md)
 
-Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstarts [Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure][service-fabric] oder [Deploy an Azure Container Service (AKS) cluster][container-service] (Bereitstellen eines Azure Container Service-Clusters [AKS]).
+Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstartanleitung für [Service Fabric][service-fabric] oder [Azure Kubernetes Service (AKS)][container-service].
 
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git
-[azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F
+[azure-account]: https://azure.microsoft.com/free/
 [node-js]: http://nodejs.org
 
 <!-- LINKS - Internal -->

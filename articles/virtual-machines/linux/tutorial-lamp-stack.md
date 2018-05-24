@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
-description: Tutorial – Installieren des LAMP-Stacks auf einem virtuellen Linux-Computer in Azure
+title: Tutorial – Bereitstellen von LAMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie den LAMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -15,13 +15,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 21790a44ff60bd11202814efd5c0f32e8b614ec4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bd102645e7546d9ad9d3ce6b064ae9fa0ce415bd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="install-a-lamp-web-server-on-an-azure-vm"></a>Installieren eines LAMP-Webservers auf einem virtuellen Azure-Computer
+# <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LAMP-Webservers auf einem virtuellen Linux-Computer in Azure
+
 In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers sowie von MySQL und PHP (LAMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Wenn Sie den NGINX-Webserver bevorzugen, finden Sie entsprechende Informationen im Tutorial zum [LEMP-Stack](tutorial-lemp-stack.md). Um den LAMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -31,12 +32,11 @@ In diesem Artikel werden Sie durch die Bereitstellung eines Apache-Webservers so
 > * Überprüfen der Installation und Konfiguration
 > * Installieren von WordPress auf dem LAMP-Server
 
-
 Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht. Weitere Informationen zum LAMP-Stack, einschließlich Empfehlungen für eine Produktionsumgebung, finden Sie in der [Ubuntu-Dokumentation](https://help.ubuntu.com/community/ApacheMySQLPHP).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Sichern von IIS mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den IIS-Webserver mit SSL-Zertifikaten auf einem virtuellen Windows-Computer in Azure sichern.
+title: Tutorial – Sichern eines Windows-Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Sichern eines virtuellen Windows-Computers verwenden, auf dem der IIS-Webserver mit im Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c86f7ae9ef3eeaa68708df509020af0f6ecc2d1f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 76d1170f4696c4221233d2b3c1d358375adfe5c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="secure-iis-web-server-with-ssl-certificates-on-a-windows-virtual-machine-in-azure"></a>Sichern eines IIS-Webservers mit SSL-Zertifikaten auf einem virtuellen Windows-Computer in Azure
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Windows-Computer in Azure mit im Key Vault gespeicherten SSL-Zertifikaten
+
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -33,7 +34,7 @@ Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Ve
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 
 ## <a name="overview"></a>Übersicht

@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 63d5d8de82d97e7f8ca65ad04cdd4357cace0be1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e6bf1962115c4ee9212ae73eb98f664efa3b6a2d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Ausführen der erweiterten Überwachung mithilfe der Remoteüberwachungslösung
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="choose-the-devices-to-display"></a>Auswählen der anzuzeigenden Geräte
 
@@ -115,7 +115,7 @@ In diesem Tutorial wurde erläutert, wie Sie auf der Seite **Dashboard** die sim
 
 Sie wissen nun, wie Sie Ihre Geräte überwachen können. In den nächsten empfohlenen Schritten erfahren Sie Folgendes:
 
-* [Erkennen von Problemen mithilfe schwellenwertbasierter Regeln](./iot-suite-remote-monitoring-automate.md)
+* [Erkennen von Problemen mithilfe schwellenwertbasierter Regeln](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md)
 * [Verwalten und Konfigurieren von Geräten](./iot-suite-remote-monitoring-manage.md)
 * [Beheben von Geräteproblemen](./iot-suite-remote-monitoring-maintain.md)
 * [Testen der Lösung mit simulierten Geräten](iot-suite-remote-monitoring-test.md)

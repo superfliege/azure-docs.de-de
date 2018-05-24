@@ -1,40 +1,40 @@
 ---
-title: "Funktionen zum Erstellen von Benutzeroberflächendefinitionen in verwalteten Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier werden die Funktionen beschrieben, mit denen Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellt werden."
-services: azure-resource-manager
+title: Funktionen zum Erstellen von Benutzeroberflächendefinitionen in verwalteten Azure-Anwendungen | Microsoft-Dokumentation
+description: Hier werden die Funktionen beschrieben, mit denen Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellt werden.
+services: managed-applications
 documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.service: azure-resource-manager
+ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: dcf570ca4bdc8eacb7e4d7a8ff0011c8e07b7a40
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a01a59a7e8c9757cb41d328cd26a34fa219f9152
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition-Funktionen
 Dieser Abschnitt enthält die Signaturen für alle unterstützten Funktionen einer CreateUiDefinition.
 
-Setzen Sie die Deklaration in eckige Klammern, um eine Funktion zu verwenden. Beispiel:
+Setzen Sie die Deklaration in eckige Klammern, um eine Funktion zu verwenden. Beispiel: 
 
 ```json
 "[function()]"
 ```
 
-Auf Zeichenfolgen und andere Funktionen kann als Parameter für eine Funktion verwiesen werden, Zeichenfolgen müssen jedoch in einfache Anführungszeichen gesetzt werden. Beispiel:
+Auf Zeichenfolgen und andere Funktionen kann als Parameter für eine Funktion verwiesen werden, Zeichenfolgen müssen jedoch in einfache Anführungszeichen gesetzt werden. Beispiel: 
 
 ```json
 "[fn1(fn2(), 'foobar')]"
 ```
 
-Falls zutreffend, können Sie auf die Eigenschaften der Ausgabe einer Funktion mit dem Punktoperator verweisen. Beispiel:
+Falls zutreffend, können Sie auf die Eigenschaften der Ausgabe einer Funktion mit dem Punktoperator verweisen. Beispiel: 
 
 ```json
 "[func().prop1]"
@@ -163,7 +163,7 @@ Das folgende Beispiel gibt `true`zurück:
 "[contains(steps('foo').element1, 'key1')]"
 ```
 
-### <a name="length"></a>Länge
+### <a name="length"></a>length
 Gibt die Anzahl von Zeichen in einer Zeichenfolge, die Anzahl von Werten in einem Array oder die Anzahl von Schlüsseln in einem Objekt zurück.
 
 #### <a name="example-1-string"></a>Beispiel 1: Zeichenfolge
@@ -438,7 +438,7 @@ Das folgende Beispiel gibt `true`zurück:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>und
+### <a name="and"></a>and
 Gibt `true` zurück, wenn alle Parameter zu `true` ausgewertet werden. Diese Funktion unterstützt zwei oder mehr Parameter vom Typ „Boolesch“.
 
 Das folgende Beispiel gibt `true`zurück:
@@ -510,7 +510,7 @@ Das folgende Beispiel gibt `2`zurück:
 "[int(2.9)]"
 ```
 
-### <a name="float"></a>float
+### <a name="float"></a>Gleitkommawert
 Konvertiert den Parameter in eine Gleitkommazahl. Diese Funktion unterstützt Parameter vom Typ „Zahl“ und „Zeichenfolge“.
 
 Das folgende Beispiel gibt `1.0`zurück:
@@ -525,7 +525,7 @@ Das folgende Beispiel gibt `2.9`zurück:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>string
+### <a name="string"></a>Zeichenfolge
 Konvertiert den Parameter in eine Zeichenfolge. Diese Funktion unterstützt Parameter aller JSON-Datentypen.
 
 Das folgende Beispiel gibt `"1"`zurück:

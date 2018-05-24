@@ -2,35 +2,31 @@
 title: Bereitstellungshandbuch zur Self-Service-Kennwortzurücksetzung – Azure Active Directory
 description: Tipps für ein erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung von Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: e34bf6ec106976c1c3aab0f2b5c4ebf4b6ccc54b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 4d3e07c6c395645ef34b1707f33a4e37a20bf05d
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
 Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory (Azure AD) sicherzustellen, führen die meisten Kunden die folgenden Schritte aus:
 
+> [!VIDEO https://www.youtube.com/embed/OZn5btP6ZXw]
+
 1. [Aktivieren Sie die Kennwortzurücksetzung in Ihrem Verzeichnis.](quickstart-sspr.md)
 2. [Konfigurieren Sie die lokalen Active Directory-Berechtigungen für das Kennwortrückschreiben](howto-sspr-writeback.md#active-directory-permissions).
 3. [Konfigurieren Sie das Kennwortrückschreiben](howto-sspr-writeback.md#configure-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
 4. [Weisen Sie die erforderlichen Lizenzen zu, und überprüfen Sie sie](concept-sspr-licensing.md).
-5. Entscheiden Sie, ob Sie den Rollout schrittweise durchführen möchten. Wenn Sie den SSPR-Rollout in Etappen durchführen möchten, können Sie den Zugriff auf eine Gruppe von Benutzern begrenzen und somit ein Pilotprogramm mit einer bestimmten Gruppe ausführen. Um einen Rollout für eine bestimmte Gruppe durchzuführen, legen Sie **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** fest, und wählen Sie die Sicherheitsgruppe aus, für die die Kennwortzurücksetzung verfügbar sein soll. 
+5. Entscheiden Sie, ob Sie den Rollout schrittweise durchführen möchten. Wenn Sie den SSPR-Rollout in Etappen durchführen möchten, können Sie den Zugriff auf eine Gruppe von Benutzern begrenzen und somit ein Pilotprogramm mit einer bestimmten Gruppe ausführen. Um einen Rollout für eine bestimmte Gruppe durchzuführen, legen Sie **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** fest, und wählen Sie die Sicherheitsgruppe aus, für die die Kennwortzurücksetzung verfügbar sein soll.  Die Schachtelung von Sicherheitsgruppen wird hier unterstützt.
 6. Füllen Sie die [Authentifizierungsdaten](howto-sspr-authenticationdata.md) auf, die die Benutzer zur Registrierung benötigen, beispielsweise die geschäftliche Telefonnummer, die Mobiltelefonnummer und eine alternative E-Mail-Adresse.
 7. [Passen Sie die Azure AD-Benutzeroberfläche für die Anmeldung mit Ihrem Unternehmensbranding an](concept-sspr-customization.md).
 8. Unterweisen Sie die Benutzer in der Verwendung von SSPR. Senden Sie ihnen Anweisungen zum Durchführen der Registrierung und Zurücksetzen ihrer Kennwörter.
@@ -66,6 +62,10 @@ Viele Kunden entscheiden sich für das Hosten einer Webseite und das Erstellen e
 * Weitere organisationsspezifische Informationen
 
 Sie können in allen E-Mails oder auf Flyern eine einprägsame Marken-URL angeben, unter der Benutzer sämtliche Informationen zur Nutzung der Dienste finden. Wir haben eine [Beispielseite für die Kennwortzurücksetzung](https://github.com/ajamess/password-reset-page) erstellt, die Sie verwenden und entsprechend den Anforderungen Ihrer Organisation anpassen können.
+
+## <a name="step-by-step-deployment-plan"></a>Plan für die schrittweise Bereitstellung
+
+Die Azure Active Directory-Produktgruppe hat einen [Plan für die schrittweise Bereitstellung](https://aka.ms/SSPRDeploymentPlan) entwickelt, den Organisationen zusammen mit der Dokumentation auf dieser Website dazu verwenden können, einen Geschäftsvorgang zu erstellen und die Bereitstellung der Self-Service-Kennwortzurücksetzung zu planen.
 
 ## <a name="use-enforced-registration"></a>Verwenden der erzwungenen Registrierung
 

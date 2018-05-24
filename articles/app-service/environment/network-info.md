@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: ccompy
-ms.openlocfilehash: 54257ae3e02a00c5097aa7880fa356da3bc0ecce
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 
@@ -109,7 +109,7 @@ Wenn das VNet mit einem Kunden-DNS auf der anderen Seite eines VPN konfiguriert 
 Neben den funktionalen Abhängigkeiten der ASE gibt es einige weitere zu beachtende Aspekte im Zusammenhang mit der Portalverwendung. Einige der Funktionen im Azure-Portal hängen vom direkten Zugriff auf den _SCM-Standort_ ab. Zu jeder App in Azure App Service gibt es zwei URLs. Die erste URL dient dem Zugriff auf Ihre App. Die zweite URL dient dem Zugriff auf den SCM-Standort, der auch als _Kudu-Konsole_ bezeichnet wird. Funktionen, die den SCM-Standort nutzen:
 
 -   Webaufträge
--   Funktionen
+-   Functions
 -   Protokollstreaming
 -   Kudu
 -   Erweiterungen
@@ -128,7 +128,7 @@ Wenn Ihre ILB-ASE den Domänennamen *contoso.net* aufweist und der App-Name *tes
 
 ## <a name="functions-and-web-jobs"></a>Funktionen und Webaufträge ##
 
-Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Microsoft Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
+Funktionen und Webaufträge hängen von der SCM-Website ab. Ihre Verwendung im Portal wird jedoch unterstützt, selbst wenn sich Ihre Apps in einer ILB-ASE befinden, solange Ihr Browser die SCM-Website erreichen kann.  Wenn Sie ein selbstsigniertes Zertifikat mit Ihrer ILB-ASE verwenden, müssen Sie Ihren Browser anweisen, diesem Zertifikat zu vertrauen.  Für Internet Explorer und Edge bedeutet dies, dass sich das Zertifikat im Vertrauensspeicher des Computers befinden muss.  Wenn Sie Chrome verwenden, müssen Sie das Zertifikat vorab im Browser akzeptieren, indem Sie direkt zur SCM-Website browsen.  Die ideale Lösung stellt die Verwendung eines kommerziellen Zertifikats dar, das in der Vertrauenskette Ihres Browsers enthalten ist.  
 
 ## <a name="ase-ip-addresses"></a>ASE-IP-Adressen ##
 
@@ -224,7 +224,7 @@ Wenn Dienstendpunkte in einem Subnetz mit einer Azure SQL-Instanz aktiviert werd
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/virtual-networks-nsg.md
+[NSGs]: ../../virtual-network/security-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md

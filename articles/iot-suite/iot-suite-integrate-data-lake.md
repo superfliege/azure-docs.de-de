@@ -9,11 +9,11 @@ description: Erfahren Sie, wie Sie die Remoteüberwachungslösung in Azure Data 
 +ms.date: 04/029/2018
 +ms.topic: article
 +ms.service: iot-suite
-ms.openlocfilehash: 701dd51d13ec1880f23c48cc5e8b368b15d0deca
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 75ad9e9ac79dca4db902d7e72511a384dd769463
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 
@@ -23,13 +23,13 @@ In dieser schrittweisen Vorgehensweise verwenden Sie einen Azure Stream Analytic
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese schrittweise Vorgehensweise ist Folgendes erforderlich:
+Für diese Vorgehensweise ist Folgendes erforderlich:
 
-* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](/iot-suite/iot-suite-remote-monitoring-deploy).
+* [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
   * Die Remoteüberwachungslösung stellt den IoT Hub und den Azure Stream Analytics-Auftrag in Ihrem Azure-Abonnement bereit, der in diesem Artikel verwendet wird.
-* [Bereitstellen eines Azure Data Lake Store](/data-lake-store/data-lake-store-get-started-portal)
+* [Bereitstellen eines Azure Data Lake Store](/data-lake-store/data-lake-store-get-started-portal.md)
   * Ihr Data Lake Store sollte in der gleichen Region wie Ihre Remoteüberwachungslösung bereitgestellt werden.
-  * [Erstellen Sie einen Ordner](/data-lake-store/data-lake-store-get-started-portal#createfolder) mit dem Namen „streaming“ in Ihrem Konto.
+  * [Erstellen Sie einen Ordner](/data-lake-store/data-lake-store-get-started-portal.md#createfolder) mit dem Namen „streaming“ in Ihrem Konto.
 
 ## <a name="create-a-consumer-group"></a>Erstellen einer Consumergruppe
 
@@ -67,7 +67,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
 1. Achten Sie darauf, die Standardeinstellung **Cloud** für die Hostingumgebung beizubehalten.
 
-1. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Create**.
 
     ![Erstellen eines Stream Analytics-Auftrags](media/iot-suite-integrate-data-lake/create-stream-analytics-job.png)
 
@@ -148,7 +148,7 @@ Azure Stream Analytics verwendet eine SQL-ähnliche Abfragesprache zum Angeben e
 
 1. Klicken Sie auf der Registerkarte „Übersicht“ auf **Start**.
 
-    ![Starten des Stream Analytics-Auftrags](media/iot-suite-integrate-data-lake/stream-analytics-start.png)
+    ![Dient zum Starten von Stream Analytics-Aufträgen.](media/iot-suite-integrate-data-lake/stream-analytics-start.png)
 
 1. Klicken Sie auf der Registerkarte „Auftrag starten“ auf **Benutzerdefiniert**.
 

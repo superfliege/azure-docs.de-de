@@ -1,12 +1,12 @@
 ---
 title: Active Directory-Verbunddienste in Azure | Microsoft Docs
-description: "In diesem Dokument wird beschrieben, wie Sie AD FS in Azure bereitstellen, um eine hohe Verfügbarkeit zu erzielen."
-keywords: "AD FS in Azure bereitstellen, Azure ADFS bereitstellen, Azure ADFS, Azure AD FS, ADFS bereitstellen, AD FS bereitstellen, ADFS in Azure, ADFS in Azure bereitstellen, AD FS in Azure bereitstellen , ADFS Azure, Einführung in AD FS, Azure, AD FS in Azure, IaaS, ADFS, ADFS in Azure verschieben"
+description: In diesem Dokument wird beschrieben, wie Sie AD FS in Azure bereitstellen, um eine hohe Verfügbarkeit zu erzielen.
+keywords: AD FS in Azure bereitstellen, Azure ADFS bereitstellen, Azure ADFS, Azure AD FS, ADFS bereitstellen, AD FS bereitstellen, ADFS in Azure, ADFS in Azure bereitstellen, AD FS in Azure bereitstellen , ADFS Azure, Einführung in AD FS, Azure, AD FS in Azure, IaaS, ADFS, ADFS in Azure verschieben
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.
@@ -214,7 +214,7 @@ Erstellen Sie für den ILB einen Eintrag unter „%systemroot%\system32\drivers\
 
 **7.2. Installieren der Webanwendungsproxy-Rolle**
 
-Nachdem Sie sichergestellt haben, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen können, können Sie als Nächstes die Webanwendungsproxy-Server installieren. Webanwendungsproxy-Server werden nicht mit der Domäne verknüpft. Installieren Sie die Webanwendungsproxy-Rollen auf den beiden Webanwendungsproxy-Servern, indem Sie die Remotezugriffsrolle auswählen. Sie werden vom Server-Manager durch die Schritte der WAP-Installation geführt.
+Nachdem Sie sichergestellt haben, dass Webanwendungsproxy-Server die AD FS-Server hinter dem ILB erreichen können, können Sie als Nächstes die Webanwendungsproxy-Server installieren. Webanwendungsproxy-Server brauchen nicht mit der Domäne verknüpft werden. Installieren Sie die Webanwendungsproxy-Rollen auf den beiden Webanwendungsproxy-Servern, indem Sie die Remotezugriffsrolle auswählen. Sie werden vom Server-Manager durch die Schritte der WAP-Installation geführt.
 Weitere Informationen zur Bereitstellen von WAP finden Sie unter [Installieren und Konfigurieren des Webanwendungsproxy-Servers](https://technet.microsoft.com/library/dn383662.aspx).
 
 ### <a name="8--deploying-the-internet-facing-public-load-balancer"></a>8.  Bereitstellen des (öffentlichen) Load Balancers mit Internetzugriff
@@ -303,7 +303,7 @@ Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite �
 
 1. Führen Sie das unten angegebene Cmdlet auf dem AD FS-Server aus, und verwenden Sie PowerShell, um es auf „Aktiviert“ festzulegen.
    Set-AdfsProperties -EnableIdPInitiatedSignonPage $true 
-2. Rufen Sie auf einem beliebigen externen Computer „https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx“ auf.  
+2. Von jedem externen Computerzugriff https://adfs.thecloudadvocate.com/adfs/ls/IdpInitiatedSignon.aspx  
 3. Die folgende AD FS-Seite wird angezeigt:
 
 ![Anmeldeseite testen](./media/active-directory-aadconnect-azure-adfs/test1.png)

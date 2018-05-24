@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 905e64d004c02db663634eb784cacf6fab805193
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9b4f7f9a9c501204d48b738089dc3cbd015a744c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="create-a-new-simulated-device"></a>Erstellen eines neuen simulierten Geräts
 
@@ -90,7 +90,7 @@ Im folgenden Video wird eine exemplarische Vorgehensweise zum Verbinden von simu
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
+* Eine bereitgestellte Instanz der Lösung für die Remoteüberwachung in Ihrem Azure-Abonnement. Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
 
 * Visual Studio 2017 Falls Sie Visual Studio 2017 nicht installiert haben, können Sie die kostenlose [Visual Studio Community](https://www.visualstudio.com/free-developer-offers/) Edition herunterladen.
 
@@ -225,7 +225,7 @@ In diesem Tutorial arbeiten Sie mit den Visual Studio-Projekten **device-simulat
 1. Um die .NET-Version des Repositorys **storage-adapter** zu klonen, führen Sie den folgenden Befehl aus:
 
     ```cmd
-    git clone https://github.com/Azure/storage-adapter.git
+    git clone https://github.com/Azure/pcs-storage-adapter-dotnet.git
     ```
 
     Der Gerätesimulationsdienst stellt mithilfe des Speicheradapterdiensts eine Verbindung mit dem Cosmos DB-Dienst in Azure her. Die Remoteüberwachungslösung speichert die Konfigurationsdaten simulierter Geräte in einer Cosmos DB-Datenbank.
@@ -258,7 +258,11 @@ Am einfachsten lässt sich ein neuer Gerätetyp im Gerätesimulationsdienst durc
 
 1. Legen Sie im Abschnitt **Umgebungsvariablen** den Wert der Variable **PCS\_IOTHUB\_CONNSTRING** als IoT Hub-Verbindungszeichenfolge fest, die Sie zuvor notiert haben. Speichern Sie anschließend die Änderungen.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **device-simulation**, und klicken Sie auf **Startprojekte festlegen**. Wählen Sie **Einzelnes Startprojekt** und dann **SimulationAgent**. Klicken Sie dann auf **OK**.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **WebService**, und wählen Sie **Eigenschaften** sowie **Debuggen**.
+
+1. Legen Sie im Abschnitt **Umgebungsvariablen** den Wert der Variable **PCS\_IOTHUB\_CONNSTRING** als IoT Hub-Verbindungszeichenfolge fest, die Sie zuvor notiert haben. Speichern Sie anschließend die Änderungen.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe **device-simulation**, und klicken Sie auf **Startprojekte festlegen**. Wählen Sie **Einzelnes Startprojekt** und dann **WebService**. Klicken Sie dann auf **OK**.
 
 1. Jeder Gerätetyp verfügt über eine JSON-Modelldatei und zugeordnete Skripts im Ordner **Services/data/devicemodels**. Kopieren Sie im Projektmappen-Explorer die **Chiller**-Dateien, um die **Lightbulb**-Dateien wie in der folgenden Tabelle dargestellt zu erstellen:
 
@@ -294,10 +298,12 @@ Die Datei **lightbulb-01.json** definiert die Merkmale des Typs, z.B. die generi
         "status": "on"
       },
       "Interval": "00:00:20",
-      "Scripts": {
-        "Type": "javascript",
-        "Path": "lightbulb-01-state.js"
-      }
+      "Scripts": [
+        {
+          "Type": "javascript",
+          "Path": "lightbulb-01-state.js"
+        }
+      ]
     },
     ```
 
@@ -468,7 +474,7 @@ Um die Anzahl der simulierten Geräte zu beschränken, die während der Tests ei
 
 Sie können nun Ihren neuen simulierten Leuchtmitteltyp testen, indem Sie das Projekt für die Gerätesimulation lokal ausführen.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **SimulationAgent**, und wählen Sie **Debuggen** und dann **Neue Instanz starten**.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **WebService**, und wählen Sie **Debuggen** und dann **Neue Instanz starten**.
 
 1. Um zu überprüfen, ob die beiden simulierten Geräte mit IoT Hub verbunden sind, rufen Sie das Azure-Portal in Ihrem Browser auf.
 

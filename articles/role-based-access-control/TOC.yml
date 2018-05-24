@@ -17,13 +17,11 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
-    - name: Grundlegendes zu Rollendefinitionen
-      href: role-definitions.md
     - name: Integrierte Rollen
       href: built-in-roles.md
     - name: Benutzerdefinierte Rollen
       href: custom-roles.md
-    - name: Verwalten von Rollenzuweisungen für externe Benutzer
+    - name: Zuweisen von benutzerdefinierten Rollen für interne und externe Benutzer
       href: role-assignments-external-users.md
     - name: Aktivitätsprotokolle
       href: change-history-report.md

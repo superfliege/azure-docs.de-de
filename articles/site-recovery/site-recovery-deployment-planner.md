@@ -1,24 +1,24 @@
 ---
-title: "Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation"
+title: Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation
 description: Dies ist ein Leitfaden zum Azure Site Recovery Deployment Planner.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 03/09/2018
+ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: 77e76e5f9960f8a7c54ebcb82321784be5c1aa99
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d14d7af39af59bb0b4fbcd5857e8686176afb71
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
@@ -105,9 +105,9 @@ Sie können das Tool unter Windows Server 2012 R2 ausführen, wenn der Server Ne
 Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist die Datei „ASRDeploymentPlanner.exe“ im übergeordneten Ordner.
 
     Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie.
-    E:\ASR Deployment Planner_v2.1zip
+    E:\ASR Deployment Planner_v2.2.zip
 
-    E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+    E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="update-to-the-latest-version-of-deployment-planner"></a>Aktualisieren auf die neueste Version des Bereitstellungsplaners
 Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Version des Bereitstellungsplaners verfügen:
@@ -123,7 +123,7 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
 
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.1.
+Die aktuelle Version des Site Recovery-Bereitstellungsplaners ist 2.2.
 Auf der Seite [Site Recovery Deployment Planner version history](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

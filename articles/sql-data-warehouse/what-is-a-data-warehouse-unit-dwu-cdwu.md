@@ -10,11 +10,11 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a83a9f9332d81e02a83efc019ad56027316301ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 94791e4dc3d3c841dde4685d34d4e3fdaf7d9af7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUs)
 Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Data Warehouse Units, DWUs, cDWUs) sowie zum Ändern der Anzahl der Einheiten. 
@@ -36,19 +36,19 @@ Erhöhen der Anzahl der DWUs:
 - Erhöht die maximale Anzahl von gleichzeitigen Abfragen und Parallelitätsslots.
 
 ## <a name="service-level-objective"></a>Servicelevelziel
-Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres Data Warehouse festlegt. Die Servicelevel für die Leistungsstufe „Optimiert für Compute“ werden in Compute-Data Warehouse Einheiten (cDWU) gemessen, z.B. DW2000c. Die Leistungsstufe „Optimiert für Elastizität“ werden in DWUs gemessen, z.B. DW2000. 
+Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres Data Warehouse festlegt. Die Servicelevel für Gen2 werden in cDWU (Compute-Data Warehouse-Einheiten) gemessen, z.B. DW2000c. Gen1-Servicelevel werden in DWUs gemessen, z.B. DW2000. 
 
 In T-SQL bestimmt die Einstellung SERVICE_OBJECTIVE den Servicelevel und die Leistungsstufe für das Data Warehouse.
 
 ```sql
---Optimized for Elasticity
+--Gen1
 CREATE DATABASE myElasticSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000'
 )
 ;
 
---Optimized for Compute
+--Gen2
 CREATE DATABASE myComputeSQLDW
 WITH
 (    SERVICE_OBJECTIVE = 'DW1000c'
@@ -60,12 +60,12 @@ WITH
 
 Jede Leistungsstufe verwendet eine etwas andere Maßeinheit für ihre Data Warehouse-Einheiten. Dieser Unterschied wird in der Rechnung berücksichtigt, weil die Skalierungseinheit direkt in eine Abrechnung übersetzt wird.
 
-- Die für die Elastizitätsleistung optimierte Stufe wird in Data Warehouse-Einheiten (DWUs) gemessen.
-- Die für die Computeleistung optimierte Stufe wird in Compute Data Warehouse-Einheiten (cDWUs) gemessen. 
+- Gen1-Data Warehouses werden in DWUs (Data Warehouse-Einheiten) gemessen.
+- Gen2-Data Warehouses werden in cDWUs (Compute-Data Warehouse-Einheiten) gemessen. 
 
-Sowohl DWUs als auch cDWUs unterstützen das zentrale Herunterskalieren und Hochskalieren sowie Computepausen, wenn Sie das Data Warehouse nicht nutzen müssen. Diese Vorgänge werden alle bei Bedarf ausgeführt. Die für die Computeleistung optimierte Stufe verwendet auch einen lokalen datenträgerbasierten Cache auf den Computeknoten, um die Leistung zu verbessern. Wenn Sie das System skalieren oder anhalten, wird der Cache für ungültig erklärt. Daher ist eine „Aufwärmphase“ des Caches erforderlich, bevor eine optimale Leistung erzielt wird.  
+Sowohl DWUs als auch cDWUs unterstützen das zentrale Herunterskalieren und Hochskalieren sowie Computepausen, wenn Sie das Data Warehouse nicht nutzen müssen. Diese Vorgänge werden alle bei Bedarf ausgeführt. Gen2 verwendet einen lokalen datenträgerbasierten Cache auf den Computeknoten, um die Leistung zu verbessern. Wenn Sie das System skalieren oder anhalten, wird der Cache für ungültig erklärt. Daher ist eine „Aufwärmphase“ des Caches erforderlich, bevor eine optimale Leistung erzielt wird.  
 
-Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen linear. Die für die Computeleistung optimierte Stufe bietet die beste Abfrageleistung und die höchste Skalierung, weist jedoch einen höheren Einstiegspreis auf. Sie ist für Unternehmen gedacht, die eine konstante Leistungsanforderung haben. Diese Systeme nutzen den Cache am meisten. 
+Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen linear. Gen2 bietet die beste Abfrageleistung und die höchste Skalierung, weist jedoch einen höheren Einstiegspreis auf. Sie ist für Unternehmen gedacht, die eine konstante Leistungsanforderung haben. Diese Systeme nutzen den Cache am meisten. 
 
 ### <a name="capacity-limits"></a>Kapazitätsgrenzen
 Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../sql-database/sql-database-what-is-a-dtu.md) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
@@ -76,10 +76,9 @@ Die optimale Anzahl der Data Warehouse-Einheiten hängt in hohem Maß von Ihrer 
 
 Schritte zum Ermitteln der besten DWU-Anzahl für Ihre Arbeitsauslastung:
 
-1. Beginnen Sie bei der Entwicklung zunächst mit der Auswahl einer kleineren DWU unter Verwendung der für Elastizität optimierten Leistungsstufe.  Da die Aufgabe in dieser Phase die funktionale Überprüfung ist, stellt die für Elastizität optimierte Leistungsstufe eine sinnvolle Option dar. Ein guter Ausgangspunkt ist DW200. 
+1. Beginnen Sie, indem Sie eine kleinere DWU auswählen. 
 2. Überwachen Sie die Anwendungsleistung, wenn Sie Datenmengen im System testen, und beobachten Sie dabei die Anzahl der ausgewählten DWUs im Vergleich zur beobachteten Leistung.
-3. Identifizieren Sie zusätzliche Anforderungen für periodische Zeiten mit Spitzenauslastung. Wenn die Arbeitsauslastung starke Aktivitätsschwankungen zeigt und es einen guten Grund gibt, häufige Skalierungen auszuführen, sollten Sie sich für die für Elastizität optimierte Leistungsstufe entscheiden.
-4. Wenn Sie mehr als 1.000 DWUs benötigen, sollten Sie die für Computeleistung optimierte Leistungsstufe bevorzugen, da diese die beste Leistung bereitstellt.
+3. Identifizieren Sie zusätzliche Anforderungen für periodische Zeiten mit Spitzenauslastung. Wenn die Arbeitsauslastung starke Aktivitätsschwankungen zeigt und es einen guten Grund gibt, häufige Skalierungen auszuführen.
 
 SQL Data Warehouse ist ein horizontal hochskalierbares System, das große Mengen von Compute- und Abfragedaten bereitstellen kann. Wenn Sie seine wahren Skalierungsfunktionen (insbesondere bei größeren DWUs) in Aktion sehen möchten, wird empfohlen, bei der Skalierung das Dataset zu skalieren, um sicherzustellen, dass genügend Daten zum Übertragen an die CPUs verfügbar sind. Es wird empfohlen, für die Skalierungstests mindestens 1 TB zu verwenden.
 

@@ -10,16 +10,16 @@ ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 02/22/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.reviewer: anirudha
-ms.openlocfilehash: ce61dec785d6207e2d2df21884525f76a6778f4a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 2ae2b628b2e61893a5289151c3b405e7412e7d13
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
@@ -29,13 +29,13 @@ Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen a
 
 1. Rufen Sie in einem Internetbrowser https://adminportal.local.azurestack.external auf.
 2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
-3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal)**.
+3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten – beispielsweise **(lokal)**.
    
    ![](media/azure-stack-manage-storage-accounts/image1.png)
 4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Führen Sie dann im Administratorbereich für Speicherressourcenanbieter einen Bildlauf nach unten zur Registerkarte **Speicherkonten** durch, und klicken Sie darauf.
+5. Scrollen Sie dann im Administratorbereich für Speicherressourcenanbieter nach unten zur Registerkarte **Speicherkonten**, und klicken Sie darauf.
    
    ![](media/azure-stack-manage-storage-accounts/image3.png)
    
@@ -54,10 +54,10 @@ Wenn Sie an einem bestimmten Speicherkonto interessiert sind, können Sie nur **
 
 1. Klicken Sie oben im Bereich auf **Filter**.
 2. Im Bereich „Filter“ können Sie einen **Kontonamen**, eine „Abonnement-ID“ oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
-3. Klicken Sie auf **Aktualisieren**. Die Liste sollte entsprechend aktualisiert werden.
+3. Wählen Sie **Update** aus. Die Liste sollte entsprechend aktualisiert werden.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
-4. Zum Zurücksetzen des Filters klicken Sie auf **Filter**, deaktivieren die Auswahl und aktualisieren die Liste erneut.
+4. Klicken Sie zum Zurücksetzen des Filters auf **Filter**, deaktivieren Sie die getroffene Auswahl, und aktualisieren Sie die Liste.
 
 Mit dem Suchfeld (oben im Bereich mit der Speicherkontenliste) können Sie den ausgewählten Text in der Liste mit den Konten hervorheben. Sie können diese Funktion nutzen, wenn der vollständige Name oder die ID nicht ohne Weiteres verfügbar ist.
 
@@ -66,7 +66,7 @@ Hier können Sie Freitext verwenden, um das gewünschte Konto zu finden.
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>Überprüfen der Kontodetails
-Wenn Sie die Konten, die Sie anzeigen möchten, gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neuer Bereich mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
+Wenn Sie die gewünschten Konten gefunden haben, können Sie auf ein Konto klicken, um bestimmte Details anzuzeigen. Ein neuer Bereich mit Kontodetails wird geöffnet, darunter der Typ des Kontos, die Erstellungszeit, der Standort usw.
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
@@ -105,7 +105,7 @@ Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber 
 
 1. Rufen Sie in einem Internetbrowser https://adminportal.local.azurestack.external auf.
 2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
-3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten, z.B. **(lokal**).
+3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten – beispielsweise **(lokal)**.
 4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
 5. Klicken Sie oben auf **Einstellungen**, um den Bereich mit den Einstellungen zu öffnen.
 6. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
@@ -124,7 +124,7 @@ Sie können Kapazität entweder mithilfe des Azure-Portals oder mit PowerShell f
 **Freigeben von Kapazität mithilfe des Portals:**
 1. Navigieren Sie zum Bereich „Speicherkonten“. Siehe [Suchen eines Speicherkontos](#find).
 2. Klicken Sie oben im Bereich auf **Speicherplatz freigeben**.
-3. Lesen Sie die Meldung, und klicken Sie dann auf **OK**.
+3. Lesen Sie die Meldung, und klicken Sie auf **OK**.
 
     ![](media/azure-stack-manage-storage-accounts/image11.png)
 4. Warten Sie auf eine Erfolgsmeldung – siehe Glockensymbol im Portal.
@@ -139,84 +139,20 @@ Sie können auch PowerShell verwenden, um den Aufbewahrungszeitraum explizit au�
 1. Vergewissern Sie sich, dass Azure PowerShell installiert und konfiguriert ist. Ist dies nicht der Fall, gehen Sie folgendermaßen vor: 
    * Anweisungen zur Installation und zur Zuordnung der aktuellen Azure PowerShell-Version an Ihr Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/).
    Weitere Informationen zu Azure Resource Manager-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767).
-2. Führen Sie das folgende Cmdlet aus:
+2. Führen Sie die folgenden Cmdlets aus:
 
 > [!NOTE]
-> Wenn Sie dieses Cmdlet ausführen, werden die Konten und deren Inhalte endgültig gelöscht. Es kann nicht wiederhergestellt werden. Verwenden Sie diese Option mit Umsicht.
+> Wenn Sie diese Cmdlets ausführen, wird das Konto samt Inhalt endgültig gelöscht. Es kann nicht wiederhergestellt werden. Verwenden Sie diese Option mit Umsicht.
 
-
-        Clear-ACSStorageAccount -ResourceGroupName system.local -FarmName <farm ID>
-
+```PowerShell  
+    $farm_name = (Get-AzsStorageFarm)[0].name
+    Start-AzsReclaimStorageCapacity -FarmName $farm_name
+````
 
 Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Dokumentation](https://msdn.microsoft.com/library/mt637964.aspx).
  
 
-## <a name="migrate-a-container"></a>Migrieren eines Containers
-Aufgrund von ungleichmäßiger Speichernutzung durch Mandanten stellt ein Cloudbetreiber unter Umständen fest, dass mindestens ein zugrunde liegender Mandant einen größeren Teil des gemeinsam genutzten Speicherplatzes als andere Mandanten belegt. In diesem Fall kann der Cloudbetreiber versuchen, Speicherplatz auf der beanspruchten Freigabe freizugeben, indem einige Blob-Container zu einer anderen Freigabe migriert werden. 
+## <a name="next-steps"></a>Nächste Schritte
 
-Sie müssen PowerShell verwenden, um Container zu migrieren.
-> [!NOTE]
->Die Migration von Blob-Containern unterstützt keine Livemigration und ist zurzeit ein Offlinevorgang. Während der Migration und bis zu ihrem Abschluss können die zugrunde liegenden Blobs in diesem Container nicht verwendet werden und sind „offline“. 
-
-**Migrieren von Containern mithilfe von PowerShell:**
-
-1. Vergewissern Sie sich, dass Azure PowerShell installiert und konfiguriert ist. Ist dies nicht der Fall, gehen Sie folgendermaßen vor:
-    * Anweisungen zur Installation und zur Zuordnung der aktuellen Azure PowerShell-Version an Ihr Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](http://azure.microsoft.com/documentation/articles/powershell-install-configure/). Weitere Informationen zu Azure Resource Manager-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767).
-2. Rufen Sie den Farmnamen ab: 
-      
-      `$farm = Get-ACSFarm -ResourceGroupName system.local`
-3. Rufen Sie die Freigeben ab: 
-
-   `$shares = Get-ACSShare -ResourceGroupName system.local -FarmName $farm.FarmName`
-
-4. Rufen Sie die Container für eine angegebene Freigabe ab. Beachten Sie, dass „count“ und „intent“ optionale Parameter sind:
-            
-   `$containers = Get-ACSContainer -ResourceGroupName system.local -FarmName $farm.FarmName -ShareName $shares[0].ShareName -Count 4 -Intent Migration`  
-
-   Untersuchen Sie dann „$containers“:
-
-   `$containers`
-
-    ![](media/azure-stack-manage-storage-accounts/image13.png)
-5. Rufen Sie die besten Zielfreigaben für die Containermigration ab:
-
-    `$destinationshares= Get-ACSSharesForMigration  -ResourceGroupName system.local -FarmName $farm.farmname -SourceShareName $shares[0].ShareName`
-
-    Untersuchen Sie dann „$destinationshares“:
-
-    `$destinationshares`
-
-    ![](media/azure-stack-manage-storage-accounts/image14.png)
-6. Starten Sie die Migration für einen Container. Beachten Sie, dass dies eine asynchrone Implementierung ist, damit eine Freigabeschleife für alle Container verwendet und der Status mithilfe der zurückgegebenen Auftrags-ID nachverfolgt werden kann.
-
-    `$jobId = Start-ACSContainerMigration -ResourceGroupName system.local -FarmName $farm.farmname -ContainerToMigrate $containers[1] -DestinationShareUncPath $destinationshares.UncPath`
-
-    Untersuchen Sie dann „$jobId“:
-
-   ```
-   $jobId
-   d1d5277f-6b8d-4923-9db3-8bb00fa61b65
-   ```
-7. Überprüfen Sie den Status des Migrationsauftrags anhand der Auftrags-ID. Wenn die Containermigration abgeschlossen ist, wird der „MigrationStatus“ auf „Abgeschlossen“ festgelegt.
-
-    `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image15.png)
-
-8. Sie können die Ausführung eines Migrationsauftrags abbrechen. Auch dabei handelt es sich um einen asynchronen Vorgang, der mithilfe von „$jobid“ nachverfolgt werden kann:
-
-    `Stop-ACSContainerMigration-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId-Verbose`
-
-    ![](media/azure-stack-manage-storage-accounts/image16.png)
-
-    Sie können die Statusangaben zum Migrationsabbruch erneut überprüfen:
-
-    `Get-ACSContainerMigrationStatus-ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
-
-    ![](media/azure-stack-manage-storage-accounts/image17.png)
-
-
-
-
-  
-  
+ - Informationen zum Verwalten von Berechtigungen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung](azure-stack-manage-permissions.md).
+ - Informationen zum Verwalten der Speicherkapazität für Azure Stack finden Sie unter [Verwalten der Speicherkapazität für Azure Stack](azure-stack-manage-storage-shares.md).

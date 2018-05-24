@@ -1,145 +1,101 @@
 ---
-title: Einführung in Azure Network Watcher | Microsoft Docs
-description: Diese Seite enthält eine Übersicht über den Network Watcher-Dienst für die Überwachung und Visualisierung von verbundenen Ressourcen in Azure.
+title: Azure Network Watcher | Microsoft-Dokumentation
+description: Enthält Informationen zu den Überwachungs-, Diagnose-, Metrik- und Protokollfunktionen von Azure Network Watcher in einem virtuellen Netzwerk.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
 editor: ''
+Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2017
+ms.date: 04/24/2018
 ms.author: jdial
-ms.openlocfilehash: a546296749ba9373355cfe2b857b83d8af94d5a1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: mvc
+ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/12/2018
 ---
-# <a name="azure-network-monitoring-overview"></a>Übersicht über die Azure-Netzwerküberwachung
+# <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
-Kunden erstellen ein End-to-End-Netzwerk in Azure und orchestrieren und kombinieren dabei verschiedene Netzwerkressourcen wie z.B. VNET, ExpressRoute, Application Gateway, Load Balancer u.v.m. Überwachung steht für jede der Netzwerkressourcen zur Verfügung. Wir bezeichnen diese Art der Überwachung als Überwachung auf Ressourcenebene.
+Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt.
 
-Das End-to-End-Netzwerk kann über komplexe Konfigurationen und Interaktionen zwischen den Ressourcen verfügen. Dies führt zu komplexen Szenarien, die eine szenariobasierte Überwachung mit Network Watcher erfordern.
+## <a name="monitoring"></a>Überwachung
 
-Dieser Artikel behandelt die Überwachung auf Szenario- und Ressourcenebene. Die Netzwerküberwachung in Azure ist umfassend und unterteilt sich in zwei übergeordnete Kategorien:
+### <a name = "connection-monitor"></a>Überwachen der Kommunikation zwischen einem virtuellen Computer und einem Endpunkt
 
-* [**Network Watcher:**](#network-watcher) Die szenariobasierte Überwachung wird mit den Features in Network Watcher bereitgestellt. Dieser Dienst umfasst die Paketerfassung, „Nächster Hop“, die IP-Datenflussüberprüfung, die Sicherheitsgruppenansicht und NSG-Datenflussprotokolle. Die Überwachung auf Szenarioebene bietet im Gegensatz zur Überwachung einzelner Netzwerkressourcen eine End-to-End-Ansicht der Netzwerkressourcen.
-* [**Ressourcenüberwachung:**](#network-resource-level-monitoring) Die Überwachung auf Ressourcenebene umfasst vier Features: Diagnoseprotokolle, Metriken, Problembehandlung und Resource Health. Alle diese Features arbeiten auf Netzwerkressourcenebene.
+Bei Endpunkten kann es sich um einen anderen virtuellen Computer (VM), einen vollqualifizierten Domänennamen (FQDN), einen URI (Uniform Resource Identifier) oder eine IPv4-Adresse handeln. Mit der Funktion *Verbindungsmonitor* wird die Kommunikation in regelmäßigen Abständen überwacht, und Sie werden über Änderungen der Erreichbarkeit, Latenz und Netzwerktopologie zwischen der VM und dem Endpunkt informiert. Beispielsweise verfügen Sie ggf. über eine Webserver-VM, die mit einer Datenbankserver-VM kommuniziert. Es kann sein, dass eine andere Person in Ihrer Organisation (ohne dass Ihnen dies bekannt ist) eine benutzerdefinierte Route oder Netzwerksicherheitsregel auf die Webserver- oder Datenbankserver-VM oder das Subnetz anwendet.
 
-## <a name="network-watcher"></a>Network Watcher
+Wenn ein Endpunkt nicht mehr erreichbar ist, werden Sie von der Problembehandlung der Verbindung über die Ursache informiert. Mögliche Ursachen sind ein Problem mit der DNS-Namensauflösung, die CPU, der Arbeitsspeicher oder die Firewall des Betriebssystems einer VM, der Hop-Typ einer benutzerdefinierten Route oder die Sicherheitsregel für die VM oder das Subnetz der ausgehenden Verbindung. Informieren Sie sich über [Sicherheitsregeln](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#security-rules) und [Hop-Typen von Routen](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) in Azure.
 
-Network Watcher ist ein regionaler Dienst, mit dem Sie Bedingungen auf der Ebene von Netzwerkszenarien in Azure überwachen und diagnostizieren können. Die Tools zur Netzwerkdiagnose und -visualisierung von Network Watcher helfen Ihnen dabei, Ihr Netzwerk in Azure zu verstehen, Diagnosen durchzuführen und Einblicke zu gewinnen.
+Über den Verbindungsmonitor werden auch die Werte für die minimale, durchschnittliche und maximale Latenz angegeben, die im Laufe der Zeit ermittelt wurde. Wenn Sie die Latenz für eine Verbindung kennen, stellt sich unter Umständen heraus, dass Sie sie reduzieren können, indem Sie Ihre Azure-Ressourcen in andere Azure-Regionen verschieben. Informieren Sie sich über die Ermittlung der [relativen Latenzen zwischen Azure-Regionen und Internetdienstanbietern](#determine-relative-latencies-between-azure- regions-and-internet-service-providers) und die Überwachung der Kommunikation zwischen einer VM und einem Endpunkt per [Verbindungsmonitor](connection-monitor.md). Falls Sie eine Verbindung zu einem bestimmten Zeitpunkt und nicht für einen Zeitraum testen möchten (wie mit dem Verbindungsmonitor), können Sie die Funktion [Problembehandlung für Verbindung](#connection-troubleshoot) nutzen.
 
-Network Watcher verfügt derzeit über die folgenden Funktionen:
+### <a name="view-resources-in-a-virtual-network-and-their-relationships"></a>Anzeigen von Ressourcen in einem virtuellen Netzwerk mit den dazugehörigen Beziehungen
 
-* **[Topologie:](network-watcher-topology-overview.md)** bietet eine Ansicht auf Netzwerkebene mit verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen innerhalb einer Ressourcengruppe
-* **[Variable Paketerfassung:](network-watcher-packet-capture-overview.md)** erfasst am virtuellen Computer ein- und ausgehende Paketdaten Erweiterte Filteroptionen und präzise Steuerelemente erlauben z.B. das Festlegen von Zeitraum und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
-* **[IP-Datenflussüberprüfung:](network-watcher-ip-flow-verify-overview.md)** überprüft basierend auf 5-Tupel-Paketparametern (Ziel-IP, Quell-IP, Zielport, Quellport und Protokoll) anhand der Datenflussinformationen, ob ein Paket zugelassen oder verweigert wird. Wenn das Paket durch eine Sicherheitsgruppe verweigert wird, werden die Namen der Regel und der Gruppe, die das Paket verweigert haben, zurückgegeben.
-* **[Nächster Hop:](network-watcher-next-hop-overview.md)** ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose auf falsch konfigurierte benutzerdefinierte Routen durchführen können.
-* **[Sicherheitsgruppenansicht:](network-watcher-security-group-view-overview.md)** ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
-* **[NSG-Datenflussprotokollierung:](network-watcher-nsg-flow-logging-overview.md)** Mithilfe von Datenflussprotokollen für Netzwerksicherheitsgruppen können Sie Protokolle zum Datenverkehr erfassen, der von den Sicherheitsregeln in der Gruppe zugelassen oder verweigert wird. Der Datenfluss wird durch 5-Tupel-Informationen definiert: Quell-IP-Adresse, Ziel-IP-Adresse, Quellport, Zielport und Protokoll.
-* **[Problembehandlung für Virtual Network-Gateways und -Verbindungen:](network-watcher-troubleshoot-manage-rest.md)** bietet die Möglichkeit zum Beheben von Problemen, die bei Virtual Network-Gateways und -Verbindungen auftreten können.
-* **[Grenzwerte für Netzwerkabonnements:](#network-subscription-limits)** ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
-* **[Konfigurieren von Diagnoseprotokollen:](#diagnostic-logs)** stellt einen zentralen Bereich für das Aktivieren oder Deaktivieren von Diagnoseprotokollen für Netzwerkressourcen in einer Ressourcengruppe bereit.
-* **[Problembehandlung für Verbindungen:](network-watcher-connectivity-overview.md)** Überprüft, ob von einem virtuellen Computer zu einem bestimmten, um Azure-Kontext erweiterten Endpunkt eine direkte TCP-Verbindung hergestellt werden kann.
-* **[Verbindungsmonitor](connection-monitor.md)**: Überwacht unter Verwendung von Quell- und Ziel-IP-Adresse und Port Latenz- und Konfigurationsprobleme im Zusammenhang mit einem virtuellen Azure-Computer und einer IP-Adresse.
+Wenn Ressourcen einem virtuellen Netzwerk hinzugefügt werden, kann es schwierig sein, den Überblick darüber zu behalten, welche Ressourcen sich in einem virtuellen Netzwerk befinden und wie sie miteinander in Beziehung stehen. Mit der Funktion *Topologie* können Sie eine visuelle Darstellung der Ressourcen in einem virtuellen Netzwerk mit den Beziehungen zwischen den Ressourcen generieren. Die folgende Abbildung enthält ein Beispieltopologie-Diagramm für ein virtuelles Netzwerk mit drei Subnetzen, zwei VMs, Netzwerkschnittstellen, öffentlichen IP-Adressen, Netzwerksicherheitsgruppen, Routentabellen und den Beziehungen zwischen den Ressourcen:
 
-### <a name="role-based-access-control-rbac-in-network-watcher"></a>Rollenbasierte Zugriffssteuerung (RBAC) in Network Watcher
+![Topologieansicht](./media/network-watcher-monitoring-overview/topology.png)
 
-Network Watcher verwendet das [Azure-Modell zur rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md). Die folgenden Berechtigungen sind für Network Watcher erforderlich. Sie müssen unbedingt sicherstellen, dass die Rolle zum Initiieren von Network Watcher-APIs oder zum Verwenden von Network Watcher über das Portal über die erforderlichen Zugriffsberechtigungen verfügt.
+Sie können eine bearbeitbare Version der Abbildung im SVG-Format herunterladen. Informieren Sie sich über die [Topologieansicht](view-network-topology.md).
 
-|Ressource| Berechtigung|
-|---|---| 
-|Microsoft.Storage/ |Lesen|
-|Microsoft.Authorization/| Lesen| 
-|Microsoft.Resources/subscriptions/resourceGroups/| Lesen|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | anzuzeigen.|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |anzuzeigen.|
-|Microsoft.Storage/storageAccounts/listKeys/ | anzuzeigen.|
-|Microsoft.Compute/virtualMachines/ |Lesen|
-|Microsoft.Compute/virtualMachines/ |Schreiben|
-|Microsoft.Compute/virtualMachineScaleSets/ |Lesen|
-|Microsoft.Compute/virtualMachineScaleSets/ |Schreiben|
-|Microsoft.Network/networkWatchers/packetCaptures/ |Lesen|
-|Microsoft.Network/networkWatchers/packetCaptures/| Schreiben|
-|Microsoft.Network/networkWatchers/packetCaptures/| Löschen|
-|Microsoft.Network/networkWatchers/ |Schreiben |
-|Microsoft.Network/networkWatchers/| Lesen |
-|Microsoft.Insights/alertRules/ |*|
-|Microsoft.Support/ | *|
+## <a name="diagnostics"></a>Diagnose
 
-### <a name="network-subscription-limits"></a>Grenzwerte für Netzwerkabonnements
+### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnostizieren von Problemen mit der Filterung des Netzwerkdatenverkehrs für eine VM (in ein- und ausgehender Richtung)
 
-Grenzwerte für Netzwerkabonnements zeigen Ihnen Details zur Verwendung der einzelnen Netzwerkressourcen in einem Abonnement und einer Region im Vergleich zur Anzahl der maximal verfügbaren Ressourcen an.
+Wenn Sie eine VM bereitstellen, wendet Azure mehrere Standardsicherheitsregeln auf die VM an, mit denen Datenverkehr für die VM zugelassen oder verweigert wird. Sie können die Standardregeln von Azure außer Kraft setzen oder zusätzliche Regeln erstellen. Es kann sein, dass eine VM aufgrund einer Sicherheitsregel irgendwann nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *IP-Datenflussüberprüfung* können Sie eine IPv4-Quell- und -Zieladresse, einen Port, ein Protokoll (TCP oder UDP) und die Richtung des Datenverkehrs (ein- oder ausgehend) angeben. Mit der IP-Datenflussüberprüfung wird dann die Kommunikation getestet, und Sie werden informiert, ob die Verbindungsherstellung erfolgreich war. Falls die Verbindungsherstellung nicht erfolgreich war, werden Sie über die IP-Datenflussüberprüfung benachrichtigt, welche Sicherheitsregel die Kommunikation zugelassen oder verweigert hat, damit Sie das Problem beheben können. Erfahren Sie mehr zur [IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md).
 
-![Grenzwert für Netzwerkabonnements][nsl]
+### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting über eine VM
 
-## <a name="network-resource-level-monitoring"></a>Netzwerküberwachung auf Ressourcenebene
+Wenn Sie ein virtuelles Netzwerk erstellen, erstellt Azure mehrere ausgehende Standardrouten für Netzwerkdatenverkehr. Der ausgehende Datenverkehr aller Ressourcen, z.B. VMs, die in einem virtuellen Netzwerk bereitgestellt werden, wird basierend auf den Standardrouten von Azure weitergeleitet. Sie können die Standardrouten von Azure außer Kraft setzen oder zusätzliche Routen erstellen. Es kann sein, dass eine VM aufgrund einer bestimmten Route nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *Nächster Hop* können Sie eine IPv4-Quell- und -Zieladresse angeben. Bei „Nächster Hop“ wird die Kommunikation getestet, und Sie erhalten die Information, welche Art von nächstem Hop zum Weiterleiten des Datenverkehrs verwendet wird. Sie können eine Route dann entfernen, ändern oder hinzufügen, um ein Routingproblem zu beheben. Erfahren Sie mehr zur Funktion [Nächster Hop](network-watcher-next-hop-overview.md?).
 
-Die folgenden Features stehen für die Überwachung auf Ressourcenebene zur Verfügung:
+### <a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
 
-### <a name="audit-log"></a>Überwachungsprotokoll
+Mit der Funktion *Problembehandlung für Verbindung* können Sie eine Verbindung zwischen einer VM und einer anderen VM, einem FQDN, einem URI oder einer IPv4-Adresse testen. Bei diesem Test werden ähnliche Informationen wie bei Verwendung des [Verbindungsmonitors](#connection-monitor) zurückgegeben. Für die Verbindung wird aber ein bestimmter Zeitpunkt getestet, und sie wird nicht im Zeitverlauf überwacht, wie dies beim Verbindungsmonitor der Fall ist. Informieren Sie sich über die Problembehandlung von Verbindungen mit der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-overview.md).
 
-Vorgänge, die im Rahmen der Konfiguration von Netzwerken durchgeführt werden, werden protokolliert. Diese Protokolle können im Azure-Portal angezeigt oder mithilfe von Microsoft-Tools wie Power BI oder Drittanbietertools abgerufen werden. Die Überwachungsprotokolle sind über das Verwaltungsportal, PowerShell, die Befehlszeilenschnittstelle und die Rest-API verfügbar. Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../resource-group-audit.md).
+### <a name="capture-packets-to-and-from-a-vm"></a>Erfassen von Paketen zu und von einem virtuellen Computer
 
-Überwachungsprotokolle stehen für Vorgänge zur Verfügung, die für alle Netzwerkressourcen durchgeführt werden.
+Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Erfassung kann in Azure Storage, auf dem Datenträger der VM oder an beiden Orten gespeichert werden. Anschließend können Sie die Erfassungsdatei analysieren, indem Sie mehrere Standardanalysetools für die Netzwerkerfassung verwenden. Erfahren Sie mehr zur [Paketerfassung](network-watcher-packet-capture-overview.md).
 
-### <a name="metrics"></a>Metriken
+### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnostizieren von Problemen mit einem Gateway eines virtuellen Azure-Netzwerks und mit Verbindungen
 
-Metriken sind Leistungsmessungen und -indikatoren, die über einen Zeitraum gesammelt werden. Zurzeit sind Metriken für Application Gateway verfügbar. Metriken können verwendet werden, um basierend auf Schwellenwerten Warnungen auszulösen. Unter [Application Gateway-Diagnose](../application-gateway/application-gateway-diagnostics.md) erfahren Sie, wie Metriken verwendet werden können, um Warnungen zu erstellen.
+Gateways eines virtuellen Netzwerks stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Azure-Netzwerken bereit. Die Überwachung der Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Die Funktion *VPN-Diagnose* ermöglicht die Diagnose von Gateways und Verbindungen. Per VPN-Diagnose wird die Integrität des Gateways bzw. der Gatewayverbindung diagnostiziert, und Sie werden informiert, ob ein Gateway und Gatewayverbindungen verfügbar sind. Falls das Gateway oder die Verbindung nicht verfügbar sind, teilt die VPN-Diagnose Ihnen den Grund dafür mit, damit Sie das Problem beheben können. Erfahren Sie mehr zur [VPN-Diagnose](network-watcher-troubleshoot-overview.md).
 
-![Metrikenansicht][metrics]
+### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Bestimmen von relativen Latenzen zwischen Azure-Regionen und Internetdienstanbietern
 
-### <a name="diagnostic-logs"></a>Diagnoseprotokolle
+Sie können über Network Watcher Latenzinformationen zwischen Azure-Regionen und für Internetdienstanbieter abfragen. Wenn Ihnen die Latenzen zwischen Azure-Regionen und für Internetdienstanbieter bekannt sind, können Sie Azure-Ressourcen bereitstellen, um die Antwortzeit des Netzwerks zu optimieren. Informieren Sie sich über [relative Latenzen](view-relative-latencies.md).
 
-Regelmäßige und spontane Ereignisse werden von Netzwerkressourcen erstellt, in Speicherkonten protokolliert und dann an Event Hub oder Log Analytics gesendet. Diese Protokolle geben Einblick in die Integrität einer Ressource. Diese Protokolle können in Tools wie Power BI und Log Analytics angezeigt werden. Informationen zum Anzeigen von Diagnoseprotokollen finden Sie unter [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+### <a name="view-security-rules-for-a-network-interface"></a>Anzeigen der Sicherheitsregeln für eine Netzwerkschnittstelle
 
-Diagnoseprotokolle sind für [Load Balancer](../load-balancer/load-balancer-monitor-log.md), [Netzwerksicherheitsgruppen](../virtual-network/virtual-network-nsg-manage-log.md), Routen und [Application Gateway](../application-gateway/application-gateway-diagnostics.md) verfügbar.
+Die geltenden Sicherheitsregeln für eine Netzwerkschnittstelle stellen eine Kombination aller Sicherheitsregeln, die auf die Netzwerkschnittstelle angewendet werden, und des Subnetzes der Netzwerkschnittstelle dar.  Mit der Funktion *Sicherheitsgruppenansicht* werden alle Sicherheitsregeln, die auf die Netzwerkschnittstelle angewendet werden, das Subnetz, in dem sich die Netzwerkschnittstelle befindet, und die entsprechende Aggregierung angezeigt. Wenn Sie wissen, welche Regeln auf eine Netzwerkschnittstelle angewendet werden, können Sie Regeln hinzufügen, entfernen oder ändern, falls damit Datenverkehr zugelassen oder verweigert wird und Sie dies ändern möchten. Erfahren Sie mehr zur [Sicherheitsgruppenansicht](network-watcher-security-group-view-overview.md).
 
-Network Watcher bietet eine Ansicht der Diagnoseprotokolle. Diese Ansicht enthält alle Netzwerkressourcen, die die Diagnoseprotokollierung unterstützen. In dieser Ansicht können Sie Netzwerkressourcen einfach und schnell aktivieren und deaktivieren.
+## <a name="metrics"></a>Metriken
 
-![Protokolle][logs]
+Es gibt [Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
 
-### <a name="troubleshooting"></a>Problembehandlung
+![Grenzwerte für Abonnements](./media/network-watcher-monitoring-overview/subscription-limit.png)
 
-Das Blatt „Problembehandlung“ – ein Dialogfeld im Portal – wird derzeit für Netzwerkressourcen bereitgestellt, um häufig auftretende Probleme im Zusammenhang mit einer einzelnen Ressource zu diagnostizieren. Dieses Benutzeroberflächenelement ist für die folgenden Netzwerkressourcen verfügbar: ExpressRoute, VPN Gateway, Application Gateway, Netzwerksicherheitsprotokolle, Routen, DNS, Load Balancer und Traffic Manager. Weitere Informationen zur Problembehandlung auf Ressourcenebene finden Sie unter [Diagnose and resolve issues with Azure Troubleshooting](https://azure.microsoft.com/blog/azure-troubleshoot-diagonse-resolve-issues/) (Diagnostizieren und Beheben von Problemen mit der Azure-Problembehandlung).
+Die Informationen sind für die Planung von Bereitstellungen zukünftiger Ressourcen hilfreich.
 
-![Informationen zur Problembehandlung][TS]
+## <a name="logs"></a>Protokolle
 
-### <a name="resource-health"></a>Ressourcenintegrität
+### <a name="analyze-traffic-to-or-from-a-network-security-group"></a>Analysieren des Datenverkehrs zu oder von einer Netzwerksicherheitsgruppe
 
-Die Integrität von Netzwerkressourcen wird in regelmäßigen Abständen bereitgestellt. Zu diesen Ressourcen zählen VPN Gateway und VPN-Tunnel. Sie können über das Azure-Portal auf Resource Health zugreifen. Weitere Informationen zu Resource Health finden Sie unter [Übersicht über Resource Health](../resource-health/resource-health-overview.md)
+Über Netzwerksicherheitsgruppen (NSG) wird ein- oder ausgehender Datenverkehr einer Netzwerkschnittstelle auf einer VM zugelassen oder verweigert. Mit der Funktion *NSG-Flussprotokollierung* können Sie die IP-Quell- und -Zieladresse, den Port und das Protokoll erfassen (und ob Datenverkehr von einer NSG zugelassen oder verweigert wurde). Sie können Protokolle mit vielen verschiedenen Tools analysieren, z.B. Power BI und der Funktion *Datenverkehrsanalyse*. Bei der Datenverkehrsanalyse werden umfassende Visualisierungen von Daten bereitgestellt, die in NSG-Flussprotokolle geschrieben werden. In der folgenden Abbildung sind einige Informationen und Visualisierungen dargestellt, die über die Datenverkehrsanalyse aus den Daten des NSG-Flussprotokolls bereitgestellt werden:
+
+![Datenverkehrsanalyse](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+
+Informieren Sie sich über [NSG-Flussprotokolle](network-watcher-nsg-flow-logging-overview.md) und die [Datenverkehrsanalyse](traffic-analytics.md).
+
+### <a name="view-diagnostic-logs-for-network-resources"></a>Anzeigen von Diagnoseprotokollen für Netzwerkressourcen
+
+Sie können die Diagnoseprotokollierung für Azure-Netzwerkressourcen aktivieren, z.B. Netzwerksicherheitsgruppen, öffentliche IP-Adressen, Lastenausgleichsmodule, Gateways eines virtuellen Netzwerks und Anwendungsgateways. Die Funktion *Diagnoseprotokolle* verfügt über eine Benutzeroberfläche zum Aktivieren und Deaktivieren von Diagnoseprotokollen für alle vorhandenen Netzwerkressourcen, die ein Diagnoseprotokoll generieren. Sie können Diagnoseprotokolle anzeigen, indem Sie Tools wie Microsoft Power BI und Azure Log Analytics verwenden. Weitere Informationen zur Analyse von Azure-Netzwerkdiagnoseprotokollen finden Sie unter [Azure-Netzwerküberwachungslösungen in Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich nach Network Watcher über Folgendes:
-
-Durchführen einer Paketerfassung auf einem virtuellen Computer: [Variable Paketerfassung im Azure-Portal](network-watcher-packet-capture-manage-portal.md)
-
-Durchführen einer proaktiven Überwachung und Diagnose: [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md)
-
-Erkennen von Sicherheitsrisiken mithilfe von Open-Source-Tools: [Analysieren der Paketerfassung mit Wireshark](network-watcher-deep-packet-inspection.md)
-
-Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.
-
-<!--Image references-->
-[TS]: ./media/network-watcher-monitoring-overview/troubleshooting.png
-[logs]: ./media/network-watcher-monitoring-overview/logs.png
-[metrics]: ./media/network-watcher-monitoring-overview/metrics.png
-[nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
-
-
-
-
-
-
-
-
-
-
+Sie haben jetzt einen Überblick über Azure Network Watcher erhalten. Als Einstieg in die Nutzung von Network Watcher können Sie ein häufiges Kommunikationsproblem für einen virtuellen Computer diagnostizieren, indem Sie die IP-Datenflussüberprüfung verwenden. Informationen hierzu finden Sie in der Schnellstartanleitung [Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers](diagnose-vm-network-traffic-filtering-problem.md).

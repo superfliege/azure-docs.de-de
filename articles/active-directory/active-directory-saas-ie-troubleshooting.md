@@ -1,11 +1,11 @@
 ---
-title: "Behandeln von Problemen bei der Azure-Zugriffsbereichserweiterung für IE | Microsoft-Dokumentation"
-description: "So stellen Sie das Internet Explorer-Add-On für das Portal \"Meine Apps\" mithilfe von Gruppenrichtlinien bereit"
+title: Behandeln von Problemen bei der Azure-Zugriffsbereichserweiterung für IE | Microsoft-Dokumentation
+description: So stellen Sie das Internet Explorer-Add-On für das Portal "Meine Apps" mithilfe von Gruppenrichtlinien bereit
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f56b3230-26fd-42ec-9e3d-2c12daf15479
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff6d0b299c45d89ee8d3a79fa98ce4a542174a5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a4f1538cf598da8b5b9aa19def2d5f86ceaca0a0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer
 Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
@@ -92,6 +92,6 @@ Wenn beim Deinstallieren der Erweiterung Probleme auftreten, können Sie diese a
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
-* [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md)
+* [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](manage-apps/what-is-single-sign-on.md)
 * [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (auf Englisch)](active-directory-saas-ie-group-policy.md)
 

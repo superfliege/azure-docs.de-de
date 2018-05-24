@@ -1,24 +1,24 @@
 ---
-title: "Problembehandlung bei Systemintegritätsberichten | Microsoft Docs"
-description: "Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen."
+title: Problembehandlung bei Systemintegritätsberichten | Microsoft Docs
+description: Beschreibt die von Komponenten des Azure Fabric-Diensts versendeten Integritätsberichte und ihre Verwendung bei der Behandlung von Problemen mit Clustern oder Anwendungen.
 services: service-fabric
 documentationcenter: .net
 author: oanapl
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 52574ea7-eb37-47e0-a20a-101539177625
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 8304790b5eba4679b0633641c82d57316e7f8ec4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -637,7 +637,7 @@ Die Eigenschaft und der Text geben an, welche API nicht ausgeführt wurde. Die n
 
 Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IReplicator**-Schnittstelle. Beispiel: 
 
-- **IReplicator.CatchupReplicaSet**: Diese Warnung weist auf eine der beiden folgenden Zustände hin. Es sind nicht ausreichend aktive Replikate vorhanden. Dies kann durch Prüfen des Replikatzustands der Replikate in der Partition oder im System.FM-Integritätsbericht für eine unterbrochene Neukonfiguration ermittelt werden. Oder die Replikate bestätigen Vorgänge nicht. Mit dem PowerShell-Cmdlet `Get-ServiceFabricDeployedReplicaDetail` kann der Zustand aller Replikate ermittelt werden. Das Problem liegt bei den Replikaten, deren `LastAppliedReplicationSequenceNumber`-Wert unter dem `CommittedSequenceNumber`-Wert des primären Replikats liegt.
+- **IReplicator.CatchupReplicaSet**: Diese Warnung weist auf eine der beiden folgenden Zustände hin. Es sind nicht ausreichend aktive Replikate vorhanden. Dies kann durch Prüfen des Replikatzustands der Replikate in der Partition oder im System.FM-Integritätsbericht für eine unterbrochene Neukonfiguration ermittelt werden. oder die Replikate bestätigen Vorgänge nicht. Mit dem PowerShell-Cmdlet `Get-ServiceFabricDeployedReplicaDetail` kann der Zustand aller Replikate ermittelt werden. Das Problem liegt bei den Replikaten, deren `LastAppliedReplicationSequenceNumber`-Wert unter dem `CommittedSequenceNumber`-Wert des primären Replikats liegt.
 
 - **IReplicator.BuildReplica(<Remote ReplicaId>)**: Diese Warnung weist auf ein Problem im Buildprozess hin. Weitere Informationen finden Sie unter [Replikatlebenszyklus](service-fabric-concepts-replica-lifecycle.md). Dies ist möglicherweise auf eine Fehlkonfiguration der Replikationsadresse zurückzuführen. Entsprechende Informationen finden Sie unter [Konfigurieren zustandsbehafteter Reliable Services](service-fabric-reliable-services-configuration.md) und [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md). Ursache kann auch ein Problem mit dem Remoteknoten sein.
 

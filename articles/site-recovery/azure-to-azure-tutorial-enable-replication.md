@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 05/02/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1bc6fcb17732da7f6b0985122dd2cff3c2c9cdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
@@ -134,7 +134,7 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
 
 - **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
 
-- **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“.
+- **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Als Ressourcengruppenstandort der Zielressourcengruppe kann eine beliebige Region ausgewählt werden, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden. 
 
 - **Virtuelles Zielnetzwerk**: Das Netzwerk in der Zielregion, in dem sich Azure-VMs nach einem Failover befinden.
   Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“.

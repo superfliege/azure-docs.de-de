@@ -3,17 +3,17 @@ title: Azure Container Instances-Tutorial – Vorbereiten Ihrer App
 description: Tutorial für Azure Container Instances (Teil 1 von 3) – Vorbereiten einer App für die Breitstellung in Azure Container Instances
 services: container-instances
 author: mmacy
-manager: timlt
+manager: jeconnoc
 ms.service: container-instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 134cc6ea84a5851755c757cbcf20130bf890575c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 79041123196559c5759789638228ea0dd21f2762
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tutorial-create-container-for-deployment-to-azure-container-instances"></a>Tutorial: Erstellen von Containern für die Bereitstellung in Azure Container Instances
 
@@ -116,7 +116,7 @@ $ docker run -d -p 8080:80 aci-tutorial-app
 a2e3e4435db58ab0c664ce521854c2e1a1bda88c9cf2fcff46aedf48df86cccf
 ```
 
-Navigieren Sie in Ihrem Browser jetzt zu http://localhost:8080 , um sicherzustellen, dass der Container ausgeführt wird. Es wird eine Webseite angezeigt, die in etwa wie folgt aussieht:
+Navigieren Sie in Ihrem Browser jetzt zu http://localhost:8080, um sicherzustellen, dass der Container ausgeführt wird. Es wird eine Webseite angezeigt, die in etwa wie folgt aussieht:
 
 ![Lokales Ausführen der App im Browser][aci-tutorial-app-local]
 
@@ -125,9 +125,9 @@ Navigieren Sie in Ihrem Browser jetzt zu http://localhost:8080 , um sicherzustel
 In diesem Tutorial haben Sie ein Containerimage erstellt, das in Azure Container Instances bereitgestellt werden kann, und sich vergewissert, dass die lokale Ausführung möglich ist. Bisher haben Sie Folgendes durchgeführt:
 
 > [!div class="checklist"]
-> * Klonen der Anwendungsquelle von GitHub
+> * Anwendungsquelle von GitHub wurde geklont.
 > * Erstellen eines Containerimages aus der Anwendungsquelle
-> * Lokales Testen des Containers
+> * Container wurde lokal getestet.
 
 Fahren Sie mit dem nächsten Tutorial der Reihe fort, um sich über das Speichern Ihres Containerimages in Azure Container Registry zu informieren:
 

@@ -2,25 +2,19 @@
 title: Schnellstartanleitung zur Self-Service-Kennwortzurücksetzung – Azure Active Directory
 description: Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 6add6e71c9acf6d63858ea921ec85924b4e6c60f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 856ae994e49f809ca2ef906ba6cdc7f8624dd201
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -33,11 +27,13 @@ In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionier
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Aktivieren der SSPR für Ihren Azure AD-Mandanten
 
+> [!VIDEO https://www.youtube.com/embed/Pa0eyqjEjvQ]
+
 1. Wählen Sie auf Ihrem vorhandenen Azure AD-Mandanten im **Azure-Portal** unter **Azure Active Directory** die Option **Kennwortzurücksetzung**.
 
 2. Wählen Sie auf der Seite **Eigenschaften** unter **Self-Service-Kennwortzurücksetzung aktiviert** eine der folgenden Optionen:
    * **None** (Keine): Niemand kann die SSPR-Funktionalität nutzen.
-   * **Selected** (Ausgewählte): Nur Mitglieder einer bestimmten Azure AD-Gruppe, die Sie ausgewählt haben, können die SSPR-Funktionalität nutzen. Es wird empfohlen, eine Gruppe mit Benutzern zu definieren und diese Einstellung zu verwenden, wenn Sie diese Funktionalität für einen Proof of Concept-Vorgang bereitstellen.
+   * **Selected** (Ausgewählte): Nur Mitglieder einer bestimmten Azure AD-Gruppe, die Sie ausgewählt haben, können die SSPR-Funktionalität nutzen. Es wird empfohlen, eine Gruppe mit Benutzern zu definieren und diese Einstellung zu verwenden, wenn Sie diese Funktionalität für einen Proof of Concept-Vorgang bereitstellen. Die Schachtelung von Sicherheitsgruppen wird hier unterstützt.
    * **All** (Alle): Alle Benutzer mit Konten unter Ihrem Azure AD-Mandanten können die SSPR-Funktionalität nutzen. Diese Einstellung wird empfohlen, wenn Sie nach Abschluss eines Proof of Concept-Vorgangs bereit sind, die Funktion im gesamten Mandanten bereitzustellen.
 
    > [!IMPORTANT]

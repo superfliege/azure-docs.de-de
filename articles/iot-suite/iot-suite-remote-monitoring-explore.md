@@ -1,24 +1,24 @@
 ---
-title: "Erste Schritte mit der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation"
-description: "In diesem Tutorial werden simulierte Szenarien verwendet, um die vorkonfigurierte Remoteüberwachungslösung vorzustellen. Diese Szenarien werden erstellt, wenn Sie die vorkonfigurierte Remoteüberwachungslösung zum ersten Mal bereitstellen."
-services: 
+title: Erste Schritte mit der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+description: In diesem Tutorial werden simulierte Szenarien verwendet, um den Solution Accelerator für Remoteüberwachung vorzustellen. Diese Szenarien werden erstellt, wenn Sie den Solution Accelerator für Remoteüberwachung zum ersten Mal bereitstellen.
+services: iot-suite
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/22/2018
+ms.date: 05/01/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 6a38098dc2bbcfc6ff59b9f8c96d1e947c637ab1
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 05/18/2018
 ---
-# <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
+# <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung
 
 In diesem Tutorial werden die wichtigsten Funktionen der vorkonfigurierten Remoteüberwachungslösung veranschaulicht. Zur Einführung in diese Funktionen werden im Tutorial gängige Kundenszenarien beschrieben, indem eine simulierte IoT-Anwendung für das Unternehmen Contoso verwendet wird.
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 >[!div class="checklist"]
 > * Visualisieren und Filtern von Geräten im Dashboard
-> * Reagieren auf einen Alarm
+> * Reagieren auf eine Warnung
 > * Aktualisieren der Firmware auf Ihren Geräten
 > * Organisieren Ihrer Objekte
 > * Anhalten und Starten der simulierten Geräte
@@ -41,21 +41,21 @@ Im folgenden Video wird eine exemplarische Vorgehensweise zur Remoteüberwachung
 
 Zum Durcharbeiten dieses Tutorials benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Contoso-Beispiel für IoT-Bereitstellung
 
 Sie können das Contoso-Beispiel für die IoT-Bereitstellung nutzen, um sich mit den grundlegenden Szenarien vertraut zu machen, die im Lieferumfang der Remoteüberwachungslösung enthalten sind. Diese Szenarien basieren auf IoT-Bereitstellungen aus der Praxis. Sie werden die Remoteüberwachungslösung später wahrscheinlich an Ihre jeweiligen Anforderungen anpassen, aber anhand des Contoso-Beispiels lernen Sie erst einmal die Grundlagen kennen.
 
 > [!NOTE]
-> Wenn Sie die Befehlszeilenschnittstelle zum Bereitstellen der vorkonfigurierten Lösung verwendet haben, enthält die Datei `deployment-{your deployment name}-output.json` Informationen zur Bereitstellung, z. B. die URL für den Zugriff auf das bereitgestellte Beispiel.
+> Wenn Sie die Befehlszeilenschnittstelle zum Bereitstellen des Solution Accelerators verwendet haben, enthält die Datei `deployment-{your deployment name}-output.json` Informationen zur Bereitstellung, z.B. die URL für den Zugriff auf das bereitgestellte Beispiel.
 
 Mit dem Contoso-Beispiel wird eine Reihe von simulierten Geräten und dazugehörigen Regeln bereitgestellt. Nachdem Sie sich mit den grundlegenden Szenarien vertraut gemacht haben, können Sie unter [Perform advanced device monitoring using the remote monitoring solution](iot-suite-remote-monitoring-monitor.md) (Durchführen der erweiterten Geräteüberwachung mit der Remoteüberwachungslösung) weitere Features der Lösung erkunden.
 
 Contoso ist ein Unternehmen, das in unterschiedlichen Umgebungen eine Vielzahl von Objekten verwaltet. Contoso plant den Einsatz von cloudbasierten IoT-Anwendungen, um mehrere Objekte über eine zentralisierte Anwendung per Remotezugriff zu überwachen und zu verwalten. Die folgenden Abschnitte enthalten eine Zusammenfassung der anfänglichen Konfiguration für das Contoso-Beispiel:
 
 > [!NOTE]
-> Das Contoso-Demo ist nur eine Möglichkeit zur Bereitstellung von simulierten Geräten und für die Erstellung von Regeln. Zu den weiteren Bereitstellungsoptionen gehört auch das Erstellen Ihrer eigenen benutzerdefinierten Geräte. Weitere Informationen zur Erstellung Ihrer eigenen Geräte und Regeln finden Sie unter [Manage and configure your devices](iot-suite-remote-monitoring-manage.md) (Verwalten und Konfigurieren Ihrer Geräte) und [Detect issues using threshold-based rules](iot-suite-remote-monitoring-automate.md) (Erkennen von Problemen mit Regeln auf Schwellenwertbasis).
+> Das Contoso-Demo ist nur eine Möglichkeit zur Bereitstellung von simulierten Geräten und für die Erstellung von Regeln. Zu den weiteren Bereitstellungsoptionen gehört auch das Erstellen Ihrer eigenen benutzerdefinierten Geräte. Weitere Informationen zur Erstellung Ihrer eigenen Geräte und Regeln finden Sie unter [Manage and configure your devices](iot-suite-remote-monitoring-manage.md) (Verwalten und Konfigurieren Ihrer Geräte) und [Detect issues using threshold-based rules](../iot-accelerators/iot-accelerators-remote-monitoring-automate.md) (Erkennen von Problemen mit Regeln auf Schwellenwertbasis).
 
 ### <a name="contoso-devices"></a>Contoso-Geräte
 
@@ -67,7 +67,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Typen von bereitgestellte
 | ------------------ | ------------------------------------------ | ------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
 | Kältemaschine            | Temperatur, Luftfeuchtigkeit, Druck            | Typ, Firmwareversion, Modell               | Standort, Etage, Gelände | Neustart, Firmwareupdate, Sicherheitsregelventil, Druckerhöhung                          |
 | Gerät zur Prototyperstellung | Temperatur, Druck, geografischer Standort        | Typ, Firmwareversion, Modell               | Standort, Modus          | Neustart, Firmwareupdate, Gerät verschieben, Gerät beenden, Temperaturregelung, Temperaturanstieg |
-| Motor             | Kraftstoffstand im Tank, Kühlmittelsensor, Vibration | Typ, Firmwareversion, Modell               | Standort, Etage, Gelände | Neustart, Firmwareupdate, Leerer Tank, Tank füllen                                              |
+| Motor             | Kraftstoffstand im Tank, Kühlmittelsensor, Vibration | Typ, Firmwareversion, Modell               | Standort, Etage, Gelände | Firmwareupdate, Leerer Tank, Tank füllen                                              |
 | LKW              | Geografischer Standort, Geschwindigkeit, Ladungstemperatur     | Typ, Firmwareversion, Modell               | Standort, Last          | Ladungstemperatur senken, Ladungstemperatur erhöhen, Firmwareupdate                         |
 | Aufzug           | Boden, Vibration, Temperatur              | Typ, Firmwareversion, Modell, geografischer Standort | Standort, Gelände        | Aufzug stoppen, Aufzug starten, Firmwareupdate                                               |
 
@@ -88,43 +88,35 @@ Die Bediener bei Contoso kennen die Schwellenwerte, die bestimmen, ob ein Gerät
 
 ### <a name="operate-the-contoso-sample-deployment"></a>Durchführen der Bereitstellung für das Contoso-Beispiel
 
-Sie haben jetzt die anfängliche Einrichtung im Contoso-Beispiel gesehen. In den folgenden Abschnitten werden drei Szenarien im Contoso-Beispiel beschrieben, die veranschaulichen, wie die vorkonfigurierte Lösung von einem Bediener genutzt werden kann.
+Sie haben jetzt die anfängliche Einrichtung im Contoso-Beispiel gesehen. In den folgenden Abschnitten werden drei Szenarien im Contoso-Beispiel beschrieben, die veranschaulichen, wie der Solution Accelerator von einem Bediener genutzt werden kann.
 
-## <a name="respond-to-a-pressure-alarm"></a>Reagieren auf einen Druckalarm
+## <a name="respond-to-a-pressure-alert"></a>Reagieren auf eine Druckwarnung
 
-Dieses Szenario verdeutlicht, wie Sie einen Alarm identifizieren, der von einer Kältemaschine ausgelöst wird, und darauf reagieren. Die Kältemaschine befindet sich in Redmond, Gebäude 43, 2. Etage.
+Dieses Szenario verdeutlicht, wie Sie eine Warnung identifizieren, die von einer Kältemaschine ausgelöst wird, und darauf reagieren. Die Kältemaschine befindet sich in Redmond, Gebäude 43, 2. Etage.
 
-Ihnen als Bediener wird im Dashboard ein Alarm in Bezug auf den Druck einer Kältemaschine angezeigt. Sie können die Karte schwenken und zoomen, um weitere Details anzuzeigen.
+Ihnen als Bediener wird im Dashboard eine Warnung in Bezug auf den Druck einer Kältemaschine angezeigt. Sie können die Karte schwenken und zoomen, um weitere Details anzuzeigen.
 
-1. Auf der Seite **Dashboard** im Raster **System Alarms** (Systemalarme) wird der Alarm **Chiller pressure too high** (Druck der Kältemaschine zu hoch) angezeigt. Außerdem wird die Kältemaschine in der Karte hervorgehoben:
+1. Auf der Seite **Dashboard** im Raster **Alerts** (Warnungen) wird die Warnung **Chiller pressure too high** (Druck der Kältemaschine zu hoch) angezeigt. Außerdem wird die Kältemaschine in der Karte hervorgehoben:
 
-    ![Dashboard: Druckalarm und Gerät in der Karte](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
+    ![Dashboard: Druckwarnung und Gerät in der Karte](media/iot-suite-remote-monitoring-explore/dashboardalarm.png)
 
-1. Klicken Sie in der Karte auf die hervorgehobene Kältemaschine, um die Gerätedetails und Telemetriedaten anzuzeigen. In den Telemetriedaten wird ein hoher Wert für den Druck angezeigt:
+1. Navigieren Sie zur Seite **Wartung**, und wählen Sie **Wartung** im Navigationsmenü aus. Auf der Seite **Wartung** können Sie die Details der Regel anzeigen, über die die Druckwarnung für die Kältemaschine ausgelöst wurde.
 
-    ![Auswählen des Geräts in der Karte, um weitere Details anzuzeigen](media/iot-suite-remote-monitoring-explore/dashboarddetail.png)
+1. In der Liste der Warnungen wird die Anzahl von Warnungsauslösungen, Bestätigungen und offenen und geschlossenen Warnungen angezeigt:
 
-1. Wählen Sie **Device detail** (Gerätedetails).
+    ![Seite „Wartung“ mit Liste der ausgelösten Warnungen](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. Navigieren Sie zur Seite **Wartung**, und wählen Sie **Wartung** im Navigationsmenü aus.
+1. Die erste Warnung in der Liste ist die zuletzt aufgetretene Warnung. Klicken Sie auf die Warnung **Chiller Pressure Too High** (Druck der Kältemaschine zu hoch), um die zugeordneten Geräte und Telemetriedaten anzuzeigen. In den Telemetriedaten wird für die Kältemaschine ein hoher Druck angezeigt:
 
-Auf der Seite **Wartung** können Sie die Details der Regel anzeigen, über die der Druckalarm für die Kältemaschine ausgelöst wurde.
+    ![Seite „Wartung“ mit Telemetriedaten für die ausgewählte Warnung](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
-1. In der Liste der Benachrichtigungen wird die Anzahl von Alarmauslösungen, Bestätigungen und offenen und geschlossenen Alarmen angezeigt:
+Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das die Warnung ausgelöst wurde. Für den Bediener sind die nächsten Schritte das Bestätigen der Warnung und das Beheben des Problems.
 
-    ![Seite „Wartung“ mit Liste der ausgelösten Alarme](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
+1. Ändern Sie den **Alert status** (Warnungsstatus) in **Acknowledged** (Bestätigt), um anzugeben, dass Sie jetzt an der Behebung der Warnung arbeiten:
 
-1. Der erste Alarm in der Liste ist der zuletzt aufgetretene Alarm. Klicken Sie auf den Alarm **Chiller Pressure Too High** (Druck der Kältemaschine zu hoch), um die zugeordneten Geräte und Telemetriedaten anzuzeigen. In den Telemetriedaten wird für die Kältemaschine ein hoher Druck angezeigt:
+    ![Auswählen und Bestätigen der Warnung](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
 
-    ![Seite „Wartung“ mit Telemetriedaten für den ausgewählten Alarm](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
-
-Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das der Alarm ausgelöst wurde. Als Bediener sind die nächsten Schritte das Bestätigen des Alarms und das Beheben des Problems.
-
-1. Ändern Sie den **Alarmstatus** in **Bestätigt**, um anzugeben, dass Sie jetzt an der Behebung des Alarms arbeiten:
-
-    ![Auswählen und Bestätigen des Alarms](media/iot-suite-remote-monitoring-explore/maintenanceacknowledge.png)
-
-1. Wählen Sie die Kältemaschine aus, und klicken Sie auf **Schedule** (Zeitplan). Wählen Sie **EmergencyValveRelease**, fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und wählen Sie die Option **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag erstellt, der sofort ausgeführt wird:
+1. Wählen Sie die Kältemaschine aus, und klicken Sie auf **Jobs** (Aufträge). Wählen Sie **Run method** (Ausführungsmethode) und dann **EmergencyValveRelease**, fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und wählen Sie die Option **Apply** (Übernehmen). Mit diesen Einstellungen wird ein Auftrag erstellt, der sofort ausgeführt wird:
 
     ![Auswählen des Geräts und Planen einer Aktion](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
@@ -134,13 +126,13 @@ Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das der
 
 Bestätigen Sie abschließend, dass die Telemetriewerte der Kältemaschine wieder normal sind.
 
-1. Navigieren Sie zum Anzeigen des Alarmrasters zur Seite **Dashboard**.
+1. Navigieren Sie zum Anzeigen des Warnungsrasters zur Seite **Dashboard**.
 
-1. Wählen Sie in der Karte das Gerät für den ursprünglichen Alarm aus, um die Gerätetelemetrie anzuzeigen und sicherzustellen, dass wieder Normalzustand herrscht.
+1. Wählen Sie in der Karte das Gerät für die ursprüngliche Warnung aus, um die Gerätetelemetrie anzuzeigen und sicherzustellen, dass wieder Normalzustand herrscht.
 
-1. Navigieren Sie zum Schließen des Vorfalls zur Seite **Wartung**, wählen Sie den Alarm aus, und legen Sie den Status auf **Geschlossen** fest:
+1. Navigieren Sie zum Schließen des Vorfalls zur Seite **Maintenance** (Wartung), wählen Sie die Warnung aus, und legen Sie den Status auf **Closed** (Geschlossen) fest:
 
-    ![Auswählen und Schließen des Alarms](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
+    ![Auswählen und Schließen der Warnung](media/iot-suite-remote-monitoring-explore/maintenanceclose.png)
 
 ## <a name="update-device-firmware"></a>Aktualisieren der Gerätefirmware
 
@@ -159,7 +151,7 @@ Verwenden Sie die Seite **Geräte**, um die erforderlichen Aufgaben für die Ger
 
     ![Auswählen eines Geräts auf der Seite „Geräte“](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. Klicken Sie auf die Schaltfläche **Schedule** (Zeitplan), und wählen Sie die Option **Firmwareupdate**. Geben Sie Werte für **Job name** (Auftragsname), **Firmware Version** (Firmwareversion) und **Firmware URI** (Firmware-URI) ein. Wählen Sie **Übernehmen**, um den Auftrag zu planen, der jetzt ausgeführt werden soll:
+1. Klicken Sie auf die Schaltfläche **Jobs** (Aufträge), und wählen Sie **Run method** (Ausführungsmethode) und dann **Firmware update** (Firmwareupdate) aus. Geben Sie Werte für **Job name** (Auftragsname), **Firmware Version** (Firmwareversion) und **Firmware URI** (Firmware-URI) ein. Wählen Sie **Übernehmen**, um den Auftrag zu planen, der jetzt ausgeführt werden soll:
 
     ![Planen des Firmwareupdates für das Gerät](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
@@ -176,17 +168,18 @@ Sie können die Seite **Wartung** verwenden, um den Auftrag während der Ausfüh
 
 1. Suchen Sie nach dem Ereignis, das zu dem von Ihnen erstellten Auftrag gehört. Vergewissern Sie sich, dass der Prozess für das Firmwareupdate richtig initiiert wurde.
 
-Sie können einen Filter erstellen, um sicherzustellen, dass die Firmwareversion ordnungsgemäß aktualisiert wurde.
+<!-- 05/01 broken 
+You can create a filter to verify the firmware version updated correctly.
 
-1. Navigieren Sie zum Erstellen eines Filters zur Seite **Geräte**, und wählen Sie **Filter verwalten** aus:
+1. To create a filter, navigate to the **Devices** page and select **Manage device groups**:
 
-    ![Verwalten von Gerätefiltern](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Manage device groups](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
-1. Erstellen Sie einen Filter, der nur Geräte mit der neuen Firmwareversion einschließt:
+1. Create a filter that includes only devices with the new firmware version:
 
-    ![Erstellen eines Gerätefilters](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
+    ![Create device filter](media/iot-suite-remote-monitoring-explore/devicescreatefilter.png)
 
-1. Wechseln Sie zurück zur Seite **Geräte**, und überprüfen Sie, ob das Gerät über die neue Firmwareversion verfügt.
+1. Return to the **Devices** page and verify that the device has the new firmware version. -->
 
 ## <a name="organize-your-assets"></a>Organisieren Ihrer Objekte
 
@@ -203,7 +196,7 @@ Sie können Tagnamen erstellen, die für Geräte verwendet werden.
 
     ![Anzeigen aller Geräte](media/iot-suite-remote-monitoring-explore/devicesalldevices.png)
 
-1. Wählen Sie die Geräte **Trucks** (LKW) und **Prototyping devices** (Geräte für die Prototyperstellung). Wählen Sie anschließend die Option **Tag**:
+1. Wählen Sie die Geräte **Trucks** (LKW) und **Prototyping devices** (Geräte für die Prototyperstellung). Wählen Sie anschließend die Option **Jobs** (Aufträge) aus:
 
     ![Auswählen von Prototyp- und LKW-Geräten](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
@@ -211,19 +204,19 @@ Sie können Tagnamen erstellen, die für Geräte verwendet werden.
 
     ![Hinzufügen von Tags zu Prototyp- und LKW-Geräten](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
-1. Wählen Sie die Geräte **Chiller** (Kältemaschine), **Elevator** (Aufzug) und **Engine** (Motor) aus. Wählen Sie anschließend die Option **Tag**:
+1. Wählen Sie die Geräte **Chiller** (Kältemaschine), **Elevator** (Aufzug) und **Engine** (Motor) aus. Wählen Sie anschließend die Option **Jobs** (Aufträge) aus:
 
     ![Auswählen der Geräte „Chiller“ (Kältemaschine), „Elevator“ (Aufzug) und „Engine“ (Motor)](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Wählen Sie die Option **Tag**, und erstellen Sie anschließend ein neues Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Speichern**:
+1. Wählen Sie die Option **Tag**, und erstellen Sie anschließend ein neues Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Übernehmen**:
 
     ![Hinzufügen eines Tags zu den Geräten „Chiller“ (Kältemaschine), „Engine“ (Motor) und „Elevator“ (Aufzug)](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 
 Sie können die Tagwerte zum Erstellen von Filtern verwenden.
 
-1. Wählen Sie auf der Seite **Geräte** die Option **Manage filters** (Filter verwalten):
+1. Wählen Sie auf der Seite **Devices** (Geräte) die Option **Manage device groups** (Gerätegruppen verwalten) aus:
 
-    ![Verwalten von Gerätefiltern](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
+    ![Verwalten von Gerätegruppen](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
 1. Erstellen Sie einen neuen Filter, für den der Tagname **FieldService** und der Wert **SmartBuilding** verwendet werden. Speichern Sie den Filter unter dem Namen **Smart Building**.
 
@@ -237,9 +230,17 @@ Im Menü „Einstellungen“ können Sie die simulierten Geräte anhalten. Dadur
 
 1. Wählen Sie das Symbol **Einstellungen** aus.
 
-1. Schalten Sie dann **Wird ausgeführt** ein oder aus:
+1. Schalten Sie dann **Flowing** (Fließen) ein oder aus:
 
     ![Einstellungsmenü](media/iot-suite-remote-monitoring-explore/settings.png)
+
+## <a name="customize-the-ui"></a>Anpassen der Benutzeroberfläche
+
+Im Einstellungenmenü können Sie grundlegende Anpassungen für den Solution Accelerator für Remoteüberwachung vornehmen. Ihre Möglichkeiten:
+
+- Wechseln Sie zwischen hellen und dunklen Designs.
+- Ändern Sie den Namen der Lösung.
+- Laden Sie ein benutzerdefiniertes Logo hoch.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -247,7 +248,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 >[!div class="checklist"]
 > * Visualisieren und Filtern von Geräten im Dashboard
-> * Reagieren auf einen Alarm
+> * Reagieren auf eine Warnung
 > * Aktualisieren der Firmware auf Ihren Geräten
 > * Organisieren Ihrer Objekte
 > * Anhalten und Starten der simulierten Geräte
@@ -256,5 +257,5 @@ Nachdem Sie sich mit der Remoteüberwachungslösung vertraut gemacht haben, schl
 
 * [Monitor your devices](./iot-suite-remote-monitoring-monitor.md) (Überwachen von Geräten)
 * [Verwalten von Geräten](./iot-suite-remote-monitoring-manage.md)
-* [Automate your solution with rules](./iot-suite-remote-monitoring-automate.md) (Automatisieren Ihrer Lösung mit Regeln)
+* [Automate your solution with rules](./../iot-accelerators/iot-accelerators-remote-monitoring-automate.md) (Automatisieren Ihrer Lösung mit Regeln)
 * [Maintain your solution](./iot-suite-remote-monitoring-maintain.md) (Warten von Lösungen)

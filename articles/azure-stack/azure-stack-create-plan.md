@@ -1,25 +1,25 @@
 ---
-title: "Erstellen von Plänen in Azure Stack | Microsoft-Dokumentation"
-description: "Erstellen Sie als Cloudadministrator einen Plan, mit dem Abonnenten virtuelle Computer bereitstellen können."
+title: Erstellen von Plänen in Azure Stack | Microsoft-Dokumentation
+description: Erstellen Sie als Cloudadministrator einen Plan, mit dem Abonnenten virtuelle Computer bereitstellen können.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 04/23/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 5eefca3541ae9f73514f80b0f8df9e5027600f87
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: b1bfff16c4f51a9fa53204930df78cbd2cf19b8d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Erstellen von Plänen in Azure Stack
 
@@ -27,44 +27,36 @@ ms.lasthandoff: 02/21/2018
 
 [Pläne](azure-stack-key-features.md) sind Gruppen mit mindestens einem Dienst. Als Anbieter können Sie Pläne erstellen und Ihren Benutzern anbieten. Im Gegenzug abonnieren Ihre Benutzer die Angebote, um die darin enthaltenen Pläne und Dienste zu verwenden. In diesem Beispiel wird veranschaulicht, wie Sie einen Plan erstellen, der die Compute-, Netzwerk- und Speicherressourcenanbieter enthält. Mit diesem Plan erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
 
-1. Melden Sie sich im Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) an. Geben Sie die Anmeldeinformationen für das Konto ein, das Sie in Schritt 5 des Abschnitts zum Thema [Ausführen des PowerShell-Skripts](azure-stack-run-powershell-script.md) erstellt haben.
+1. Melden Sie sich beim Azure Stack-Administratorportal an (https://adminportal.local.azurestack.external).
 
-2. Klicken Sie zum Erstellen von Plänen und Angeboten, die Benutzer abonnieren können, auf **Neu** > **Mandantenangebote + Pläne** > **Plan**.
+2. Wählen Sie zum Erstellen von Plänen und Angeboten, die Benutzer abonnieren können, die Option **Neu** > **Angebote + Pläne** > **Plan**.  
+   ![Auswählen eines Plans](media/azure-stack-create-plan/select-plan.png)
 
-   ![](media/azure-stack-create-plan/image01.png)
-3. Geben Sie auf dem Blatt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Benutzer angezeigt wird. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren den Plan als Azure-Ressourcen-Manager-Ressource bearbeiten.
+3. Geben Sie im Bereich **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Name des Plans, der Benutzern angezeigt wird. Nur der Administrator kann den Ressourcennamen sehen. Dies ist der Name, der von Administratoren zum Verwenden des Plans als Azure Resource Manager-Ressource genutzt wird.  
+   ![Angeben von Details](media/azure-stack-create-plan/plan-name.png)
 
-   ![](media/azure-stack-create-plan/image02.png)
-4. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, die als Container für den Plan dient.
+4. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene aus, die als Container für den Plan dient.  
+   ![Angeben der Ressourcengruppe](media/azure-stack-create-plan/resource-group.png)
 
-   ![](media/azure-stack-create-plan/image02a.png)
-5. Klicken Sie auf **Dienste**, wählen Sie **Microsoft.Compute**, **Microsoft.Network** und **Microsoft.Storage**, und klicken Sie dann auf **Auswählen**.
+5. Wählen Sie **Dienste**, und aktivieren Sie anschließend jeweils das Kontrollkästchen für **Microsoft.Compute**, **Microsoft.Network** und **Microsoft.Storage**. Wählen Sie als Nächstes die Option **Auswählen**, um die Konfiguration zu speichern. Die Kontrollkästchen werden angezeigt, wenn Sie mit der Maus auf eine Option zeigen.  
+   ![Auswählen von Diensten](media/azure-stack-create-plan/services.png)
 
-   ![](media/azure-stack-create-plan/image03.png)
-6. Klicken Sie auf **Kontingente** und dann auf **Microsoft.Storage (local)**. Wählen Sie entweder das Standardkontingent aus, oder klicken Sie auf **Neues Kontingent erstellen**, um das Kontingent anzupassen.
+6. Wählen Sie **Kontingente** und dann **Microsoft.Storage (local)**. Wählen Sie entweder das Standardkontingent aus, oder klicken Sie auf **Neues Kontingent erstellen**, um das Kontingent anzupassen.  
+   ![Kontingente](media/azure-stack-create-plan/quotas.png)
 
-   ![](media/azure-stack-create-plan/image04.png)
-7. Geben Sie beim Erstellen eines neuen Kontingents einen Namen für das Kontingent ein, legen Sie die Kontingentwerte fest, und klicken Sie auf **OK** und dann auf den Namen des neuen Kontingents.
+7. Geben Sie bei der Erstellung eines neuen Kontingents einen **Namen** für das Kontingent ein, geben Sie die Kontingentwerte an, und wählen Sie **OK**. Der Bereich **Kontingent erstellen** wird geschlossen.
+   ![Neues Kontingent](media/azure-stack-create-plan/new-quota.png)
 
-   ![](media/azure-stack-create-plan/image06.png)
-8. Klicken Sie auf **Microsoft.Network (local)**. Wählen Sie entweder das Standardkontingent aus, oder klicken Sie auf **Neues Kontingent erstellen**, um das Kontingent anzupassen.
+   Anschließend wählen Sie das von Ihnen neu erstellte Kontingent aus. Wenn Sie das Kontingent auswählen, wird es zugewiesen, und der Auswahlbereich wird geschlossen.  
+   ![Zuweisen des Kontingents](media/azure-stack-create-plan/assign-quota.png)
 
-    ![](media/azure-stack-create-plan/image07.png)
-9. Geben Sie beim Erstellen eines neuen Kontingents einen Namen für das Kontingent ein, legen Sie die Kontingentwerte fest, und klicken Sie auf **OK** und dann auf den Namen des neuen Kontingents.
+8. Wiederholen Sie die Schritte 6 und 7, um Kontingente für **Microsoft.Network (local)** und **Microsoft.Compute (local)** zu erstellen und zuzuweisen.  Falls allen drei Diensten Kontingente zugewiesen wurden, werden diese in etwa wie in der folgenden Abbildung angezeigt.  
+   ![Durchführen der Kontingentzuweisungen](media/azure-stack-create-plan/all-quotas-assigned.png)
 
-    ![](media/azure-stack-create-plan/image08.png)
-10. Klicken Sie auf **Microsoft.Compute (local)**. Wählen Sie entweder das Standardkontingent aus, oder klicken Sie auf **Neues Kontingent erstellen**, um das Kontingent anzupassen.
-
-    ![](media/azure-stack-create-plan/image09.png)
-11. Geben Sie beim Erstellen eines neuen Kontingents einen Namen für das Kontingent ein, legen Sie die Kontingentwerte fest, und klicken Sie auf **OK** und dann auf den Namen des neuen Kontingents.
-
-    ![](media/azure-stack-create-plan/image10.png)
-12. Klicken Sie auf dem Blatt **Kontingente** auf **OK**. Klicken Sie anschließend auf dem Blatt **Neuer Plan** auf **Erstellen**, um den Plan zu erstellen.
-
-    ![](media/azure-stack-create-plan/image11.png)
-13. Klicken Sie zum Anzeigen des neuen Plans auf **Alle Ressourcen**, suchen Sie nach dem Plan, und klicken Sie auf seinen Namen.
-
-    ![](media/azure-stack-create-plan/image12.png)
+9. Wählen Sie im Bereich **Kontingente** die Option **OK** und dann im Bereich **Neuer Plan** die Option **Erstellen**, um den Plan zu erstellen.  
+    ![Erstellen des Plans](media/azure-stack-create-plan/create.png)
+10. Wählen Sie zum Anzeigen des neuen Plans die Option **Alle Ressourcen**, suchen Sie nach dem Plan, und wählen Sie seinen Namen aus. Wenn Ihre Liste mit den Ressourcen sehr lang ist, können Sie die Option **Suche** verwenden, um anhand des Namens nach Ihrem Plan zu suchen.  
+   ![Überprüfen des Plans](media/azure-stack-create-plan/plan-overview.png)
 
 ### <a name="next-steps"></a>Nächste Schritte
 [Erstellen von Angeboten](azure-stack-create-offer.md)

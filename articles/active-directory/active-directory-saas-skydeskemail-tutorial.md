@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c495bd85fa2c55eec93f2e1100505b64389207f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1b75cf2b61b13957d918ac416b4317f4e65dca0e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Tutorial: Azure Active Directory-Integration mit SkyDesk Email
 
@@ -29,7 +29,7 @@ Die Integration von SkyDesk Email in Azure AD bietet die folgenden Vorteile:
 - Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SkyDesk Email anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie nicht über eine Azure AD-Testumgebung verfügen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von SkyDesk Email aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -63,11 +63,11 @@ Zum Konfigurieren der Integration von SkyDesk Email in Azure AD müssen Sie Sky
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![ANWENDUNGEN][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![ANWENDUNGEN][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **SkyDesk Email**ein.
 
@@ -86,10 +86,10 @@ Weisen Sie in SkyDesk Email den Wert für **Benutzername** in Azure AD als Wert 
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit SkyDesk Email sind die folgenden Bausteine erforderlich:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 3. **[Erstellen eines Skydesk Email-Testbenutzers](#creating-a-skydesk-email-test-user)**, um ein Pendant zu Britta Simon in Skydesk Email zu erhalten, das mit ihrer Repräsentation in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
@@ -100,15 +100,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SkyDesk Email** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_samlbase.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_samlbase.png)
 
 3. Führen Sie auf der Seite **Domäne und URLs für SkyDesk Email** die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_url.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://mail.skydesk.jp/portal/<companyname>`.
 
@@ -117,15 +117,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **SkyDesk Email-Konfiguration** auf **SkyDesk Email konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_configure.png) 
 
 7. Führen Sie die folgenden Schritte aus, um das einmalige Anmelden in **SkyDesk Email** zu aktivieren:
 
@@ -133,34 +133,34 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Klicken Sie im oberen Menü auf **Setup**, und wählen Sie **Org** aus. 
     
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
     c. Klicken Sie im linken Bereich auf **Domains** (Domänen).
     
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
     d. Klicken Sie auf **Add Domain** (Domäne hinzufügen).
     
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
     e. Geben Sie den Namen Ihrer Domäne ein, und überprüfen Sie die Domäne dann.
     
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
     f. Klicken Sie im linken Bereich auf **SAML Authentication** .
     
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 8. Führen Sie auf der Dialogseite **SAML Authentication** die folgenden Schritte aus:
    
-      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+      ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_56.png)
    
     >[!NOTE]
     >Um die SAML-basierte Authentifizierung zu verwenden, sollten Sie entweder eine **überprüfte Domäne** oder eine **Portal-URL** eingerichtet haben. Sie können die Portal-URL mit dem eindeutigen Namen einrichten.
     > 
     > 
    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
    
@@ -175,7 +175,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     f. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -207,7 +207,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="creating-a-skydesk-email-test-user"></a>Erstellen eines SkyDesk Email-Testbenutzers
 
@@ -215,7 +215,7 @@ In diesem Abschnitt erstellen Sie in SkyDesk Email einen Benutzer mit dem Namen 
 
 1. Klicken Sie in SkyDesk Email im linken Bereich auf **User Access**, und geben Sie Ihren Benutzernamen ein. 
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 >[!NOTE] 
 >Wenn Sie mehrere Benutzer erstellen müssen, setzen Sie sich mit dem [Supportteam für den SkyDesk Email-Client](https://www.skydesk.sg/support/) in Verbindung.
@@ -235,7 +235,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **SkyDesk Email** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-skydeskemail-tutorial/tutorial_skydeskemail_app.png) 
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -260,7 +260,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SkyDesk Email“ klicken, sollten 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

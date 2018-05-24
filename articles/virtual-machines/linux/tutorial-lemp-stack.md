@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von LEMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
-description: Tutorial – Installieren des LEMP-Stacks auf einem virtuellen Linux-Computer in Azure
+title: Tutorial – Bereitstellen von LEMP auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie den LEMP-Stack auf einem virtuellen Linux-Computer in Azure installieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: dlepow
@@ -15,13 +15,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: f907b468a409135d4b45e76297fc7cd86eeead78
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1f4c74ab96fc9494d1b3c7dd626265516533330b
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Installieren eines LEMP-Webservers auf einem virtuellen Azure-Computer
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Installieren eines LEMP-Webservers auf einem virtuellen Linux-Computer in Azure
+
 In diesem Artikel werden Sie durch die Bereitstellung eines NGINX-Webservers sowie von MySQL und PHP (LEMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Der LEMP-Stack ist eine Alternative zum gängigen [LAMP-Stack](tutorial-lamp-stack.md), der auch in Azure installiert werden kann. Um den LEMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -31,12 +32,11 @@ In diesem Artikel werden Sie durch die Bereitstellung eines NGINX-Webservers sow
 > * Überprüfen der Installation und Konfiguration
 > * Installieren von WordPress auf dem LEMP-Server
 
-
 Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 [!INCLUDE [virtual-machines-linux-tutorial-stack-intro.md](../../../includes/virtual-machines-linux-tutorial-stack-intro.md)]
 

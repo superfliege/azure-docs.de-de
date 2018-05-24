@@ -1,24 +1,24 @@
 ---
 title: Notfallwiederherstellung in Azure Service Fabric | Microsoft Docs
-description: "Azure Service Fabric bietet Funktionalität für den Umgang mit allen Arten von Notfällen. In diesem Artikel werden die Arten von Notfällen, die auftreten können, und entsprechende Vorgehensweisen beschrieben."
+description: Azure Service Fabric bietet Funktionalität für den Umgang mit allen Arten von Notfällen. In diesem Artikel werden die Arten von Notfällen, die auftreten können, und entsprechende Vorgehensweisen beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 5346e331d76149ac3aed7aaf11eb3171e0ac5cfc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 295772b70529f79c7a4c135d8ea7c12a1c661fe6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. In diesem Artikel werden einige allgemeine Ausfälle beschrieben, die sich als äußerst problematisch erweisen können, wenn sie nicht angemessen im Modell berücksichtigt und behandelt werden. Darüber hinaus enthält der Artikel Informationen zu Abhilfen und Maßnahmen, die Sie ergreifen können, wenn dennoch ein Notfall eintritt. Dadurch soll das Risiko von Ausfallzeiten oder Datenverlusten im Falle von geplanten oder anderweitigen Ausfällen möglichst gering gehalten oder ganz beseitigt werden.
@@ -64,7 +64,7 @@ Koordinierte Ausfälle können in einem Cluster aufgrund von geplanten oder unge
 
 Fehler- und Upgradedomänen werden von Service Fabric bei der Planung des Ausführungsorts Ihrer Dienste standardmäßig berücksichtigt. Service Fabric versucht standardmäßig, Ihre Dienste über mehrere Fehler- und Upgradedomänen hinweg auszuführen, um im Falle von geplanten oder ungeplanten Änderungen die Verfügbarkeit Ihrer Dienste zu gewährleisten. 
 
-Ein Beispiel: Angenommen, aufgrund eines defekten Netzteils fallen mehrere Computer eines Racks gleichzeitig aus. Wenn mehrere Kopien des Diensts ausgeführt werden, ist der Verlust mehrerer Computer in der ausgefallenen Fehlerdomäne nur ein weiteres Beispiel für einen einzelnen Ausfall eines bestimmten Diensts. Aus diesem Grund ist die Verwaltung von Fehlerdomänen so wichtig, um eine hohe Verfügbarkeit Ihrer Dienste zu gewährleisten. Wenn Service Fabric in Azure ausgeführt wird, erfolgt die Verwaltung von Fehlerdomänen automatisch. In anderen Umgebungen ist das unter Umständen nicht der Fall. Wenn Sie Ihre eigenen Cluster lokal erstellen, achten Sie auf eine korrekte Zuordnung und Planung des Fehlerdomänenlayouts.
+Ein Beispiel: Angenommen, aufgrund eines defekten Netzteils fallen mehrere Computer eines Racks gleichzeitig aus. Wenn mehrere Kopien des Diensts ausgeführt werden, ist der Verlust mehrerer Computer in der ausgefallenen Fehlerdomäne nur ein weiteres Beispiel für einen einzelnen Ausfall eines bestimmten Diensts. Aus diesem Grund ist die Verwaltung von Fehlerdomänen so wichtig, um die Hochverfügbarkeit Ihrer Dienste zu gewährleisten. Wenn Service Fabric in Azure ausgeführt wird, erfolgt die Verwaltung von Fehlerdomänen automatisch. In anderen Umgebungen ist das unter Umständen nicht der Fall. Wenn Sie Ihre eigenen Cluster lokal erstellen, achten Sie auf eine korrekte Zuordnung und Planung des Fehlerdomänenlayouts.
 
 Upgradedomänen eignen sich für die Modellierung von Bereichen mit gleichzeitigen Softwareupgrades. Daher definieren Upgradedomänen häufig auch die Bereiche, in denen Software während geplanter Upgrades offline geschaltet wird. Upgrades für Service Fabric und Ihre Dienste folgen dem gleichen Modell. Weitere Informationen zu parallelen Upgrades, Upgradedomänen und dem Service Fabric-Integritätsmodell, mit dem unter anderem verhindert wird, dass unbeabsichtigte Änderungen den Cluster und den Dienst beeinträchtigen, finden Sie in den folgenden Dokumenten:
 
@@ -139,7 +139,7 @@ Sowohl in eigenständigen Service Fabric-Clustern als auch in Azure werden die S
 - Lesen Sie weitere Artikel zu Wiederherstellung und hoher Verfügbarkeit. Microsoft hat sehr umfassende Anleitungen zu diesen Themen veröffentlicht. Während sich einige dieser Dokumente auf bestimmte Techniken für die Verwendung in anderen Produkten beziehen, enthalten viele allgemeine bewährte Methoden, die auch im Service Fabric-Kontext befolgt werden können:
   - [Checkliste für die Verfügbarkeit](../best-practices-availability-checklist.md)
   - [Ausführen von Notfallwiederherstellungsverfahren](../sql-database/sql-database-disaster-recovery-drills.md)
-  - [Notfallwiederherstellung und hohe Verfügbarkeit für Azure-Anwendungen][dr-ha-guide]
+  - [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen][dr-ha-guide]
 - Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).
 
 <!-- External links -->

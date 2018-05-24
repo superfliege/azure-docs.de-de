@@ -1,30 +1,30 @@
 ---
-title: Erste Schritte mit Azure Relay-Hybridverbindungen in Node | Microsoft-Dokumentation
-description: "Schreiben einer Node.js-Konsolenanwendung für Azure Relay-Hybridverbindungen"
+title: Erste Schritte mit WebSockets von Azure Relay Hybrid Connections in Node | Microsoft-Dokumentation
+description: Schreiben einer Node.js-Konsolenanwendung für WebSockets von Azure Relay Hybrid Connections
 services: service-bus-relay
 documentationcenter: node
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e44e4867-3cf3-46be-8f8a-7671e2013bc4
 ms.service: service-bus-relay
 ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: node
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 05/02/2018
 ms.author: sethm
-ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 1e0b76b96029e1a7ed84f1c8cd895090e8acbc6f
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/08/2018
 ---
-# <a name="get-started-with-relay-hybrid-connections"></a>Erste Schritte mit Relay-Hybridverbindungen
+# <a name="get-started-with-relay-hybrid-connections-websockets-in-node"></a>Erste Schritte mit WebSockets von Relay Hybrid Connections in Node
 
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Dieses Tutorial bietet eine Einführung in [Azure Relay-Hybridverbindungen](relay-what-is-it.md#hybrid-connections) und zeigt, wie Sie eine Clientanwendung, die Nachrichten an eine entsprechende Listener-Anwendung sendet, mithilfe von Node.js erstellen können. 
+Dieses Tutorial bietet eine Einführung in das WebSockets-Feature von [Azure Relay Hybrid Connections](relay-what-is-it.md#hybrid-connections) und zeigt, wie Sie eine Clientanwendung, die WebSockets-Nachrichten an eine entsprechende Listeneranwendung sendet, mithilfe von Node.js erstellen können.
 
 ## <a name="what-will-be-accomplished"></a>Ziele
 
