@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7446de27c306f795d885b4d929d7a8f75c3dcf23
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a07e3ed3363ad968156aab2233073406d05b7dba
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364606"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API
 Dieses Tutorial ist der dritte Teil einer Reihe.  Hier erfahren Sie, wie Sie HTTPS in einem ASP.NET Core-Dienst unter Service Fabric aktivieren. Am Ende des Tutorials verfügen Sie über eine Abstimmungsanwendung mit einem HTTPS-fähigen ASP.NET Core-Web-Front-End, das am Port 443 lauscht. Wenn Sie die Abstimmungsanwendung nicht manuell im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/).
@@ -49,7 +50,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - [Installieren Sie das Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Beziehen eines Zertifikats oder Erstellen eines selbstsignierten Entwicklungszertifikats
-Sie benötigen ein digitales Zertifikat.  Verwenden Sie für Produktionsanwendungen ein Zertifikat einer [Zertifizierungsstelle](https://wikipedia.org/wiki/Certificate_authority). Zu Entwicklungs- und Testzwecken können Sie auch ein selbstsigniertes Zertifikat erstellen und verwenden. Das Skript *CertSetup.ps1* aus dem Service Fabric SDK erstellt ein selbstsigniertes Zertifikat und importiert es in den Zertifikatspeicher `Cert:\LocalMachine\My`. Öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus, um ein Zertifikat mit dem Antragsteller „CN=localhost“ zu erstellen:
+Verwenden Sie für Produktionsanwendungen ein Zertifikat einer [Zertifizierungsstelle](https://wikipedia.org/wiki/Certificate_authority). Zu Entwicklungs- und Testzwecken können Sie auch ein selbstsigniertes Zertifikat erstellen und verwenden. Das Skript *CertSetup.ps1* aus dem Service Fabric SDK erstellt ein selbstsigniertes Zertifikat und importiert es in den Zertifikatspeicher `Cert:\LocalMachine\My`. Öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie den folgenden Befehl aus, um ein Zertifikat mit dem Antragsteller „CN=localhost“ zu erstellen:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=localhost
