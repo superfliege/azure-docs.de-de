@@ -9,16 +9,16 @@ editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d36fcac4cbbdf8127e60e23df4ff2d52e68b6689
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -283,7 +283,7 @@ Wenn der Reparatur-Manager-Dienst im Cluster nicht gefunden werden kann, wird f�
 
 F: **Warum befindet sich mein Cluster im Status „Fehler“, wenn die App für die Patchorchestrierung ausgeführt wird?**
 
-A: Während des Installationsprozesses deaktiviert die App für die Patchorchestrierung Knoten und/oder startet diese neu. Dies kann dazu führen, dass die Integrität des Clusters vorübergehend sinkt.
+A. Während des Installationsprozesses deaktiviert die App für die Patchorchestrierung Knoten und/oder startet diese neu. Dies kann dazu führen, dass die Integrität des Clusters vorübergehend sinkt.
 
 Basierend auf der Richtlinie für die Anwendung kann während eines Patchvorgangs ein Knoten *oder* eine ganze Upgradedomäne gleichzeitig heruntergefahren werden.
 
@@ -297,15 +297,15 @@ Sollte das Problem dauerhaft auftreten, lesen Sie die Informationen im Abschnitt
 
 F: **Die App für die Patchorchestrierung befindet sich im Status „Warnung“.**
 
-A: Überprüfen Sie, ob der für die Anwendung gesendete Integritätsbericht Informationen zur Ursache enthält. Üblicherweise enthält die Warnung Details zum Problem. Wenn das Problem vorübergehend ist, ist zu erwarten, dass die Anwendung automatisch wiederhergestellt wird.
+A. Überprüfen Sie, ob der für die Anwendung gesendete Integritätsbericht Informationen zur Ursache enthält. Üblicherweise enthält die Warnung Details zum Problem. Wenn das Problem vorübergehend ist, ist zu erwarten, dass die Anwendung automatisch wiederhergestellt wird.
 
 F: **Was kann ich tun, wenn mein Cluster einen Fehler aufweist und ich ein dringendes Betriebssystemupdate ausführen muss?**
 
-A: Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versuchen Sie, Ihren Cluster in einen fehlerfreien Zustand zu versetzen, um den Workflow der App für die Patchorchestrierung fortzuführen.
+A. Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versuchen Sie, Ihren Cluster in einen fehlerfreien Zustand zu versetzen, um den Workflow der App für die Patchorchestrierung fortzuführen.
 
 F: **Warum dauert das Patchen für den gesamten Cluster so lange?**
 
-A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
+A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
 
 - Richtlinie des Koordinatordiensts. 
   - Die Standardrichtlinie `NodeWise` führt dazu, dass nur jeweils ein Knoten gepatcht wird. Besonders bei größeren Clustern sollten Sie die Richtlinie `UpgradeDomainWise` verwenden, um ein schnelleres Patchen bei mehreren Clustern zu erreichen.
@@ -315,7 +315,7 @@ A: Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 
 F: **Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen einige Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 
-A: Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
+A. Einige Produktupdates werden nur im jeweiligen Update-/Patchverlauf angezeigt. So werden beispielsweise Windows Defender-Updates unter Windows Server 2016 nicht im Windows Update-Verlauf angezeigt.
 
 ## <a name="disclaimers"></a>Haftungsausschlüsse
 

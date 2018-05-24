@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: danlep
-ms.openlocfilehash: 18549a8606285238f26d2c8cec54793e26e3e8d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: d53305aae3b12c0de983dced85a9626cf98c6309
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Einrichten eines Linux RDMA-Clusters zum Ausführen von MPI-Anwendungen
 Hier erfahren Sie, wie Sie in Azure einen Linux RDMA-Cluster mit [HPC-VM-Größen (High Performance Computing)](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) einrichten, um parallele MPI-Anwendungen (Message Passing Interface) auszuführen. Dieser Artikel enthält die Schritte, die ausgeführt werden müssen, um ein Linux-HPC-Image für die Ausführung von Intel MPI auf einem Cluster vorzubereiten. Im Anschluss an die Vorbereitung stellen Sie mithilfe dieses Images und einer der RDMA-fähigen Größen für virtuelle Azure-Computer (derzeit H16r, H16mr, A8 oder A9) einen Cluster mit virtuellen Computern bereit. Mit dem Cluster können Sie MPI-Anwendungen ausführen, die effizient mit geringer Latenz und hohem Durchsatz über ein RDMA-Netzwerk (Remote Direct Memory Access, Remotezugriff auf den direkten Speicher) kommunizieren.
@@ -210,7 +210,7 @@ Bei einem CentOS-basierten HPC-Cluster kann die Vertrauensstellung zwischen den 
 
 Auf [GitHub](https://github.com/tanewill/utils/blob/master/user_authentication.sh) steht ein Beispielskript aus der Community zur Verfügung, das eine einfache Benutzerauthentifizierung in einem CentOS-basierten HPC-Cluster ermöglicht. Laden und verwenden Sie dieses Skript wie im Folgenden beschrieben. Sie können das Skript auch bearbeiten oder eine andere Methode verwenden, um eine kennwortlose SSH-Authentifizierung zwischen den Computeknoten des Clusters einzurichten.
 
-    wget https://raw.githubusercontent.com/tanewill/utils/master/ user_authentication.sh
+    wget https://raw.githubusercontent.com/tanewill/utils/master/user_authentication.sh
 
 Für die Skriptausführung müssen Sie das Präfix Ihrer Subnetz-IP-Adressen kennen. Ermitteln Sie das Präfix durch Ausführung des folgenden Befehls auf einem der Clusterknoten. Die Ausgabe sollte in etwa wie folgt aussehen: 10.1.3.5. In diesem Fall wäre „10.1.3“ das Präfix.
 

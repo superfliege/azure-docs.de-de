@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Entwicklungspipeline in Azure mit Jenkins | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen können, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt.
+title: Tutorial – Erstellen einer Entwicklungspipeline in Azure mit Jenkins | Microsoft-Dokumentation
+description: Tutorial – In diesem Tutorial erfahren Sie, wie Sie in Azure einen virtuellen Computer von Jenkins erstellen, der bei jedem Codecommit Pullvorgänge aus GitHub durchführt und einen neuen Docker-Container zum Ausführen Ihrer Anwendung erstellt.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0bb5db0d0569cbd8a2f5aa1651522dfd117868eb
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>So erstellen Sie in Azure eine Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer mit Jenkins, GitHub und Docker
+# <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
+
 Sie können zum Automatisieren der Erstellungs- und Testphase der Anwendungsentwicklung eine Pipeline für Continuous Integration und Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline auf einer Azure-VM und erfahren, wie Sie:
 
 > [!div class="checklist"]
@@ -33,10 +34,9 @@ Sie können zum Automatisieren der Erstellungs- und Testphase der Anwendungsentw
 > * ein Docker-Image für Ihre Anwendung erstellen können
 > * überprüfen können, ob GitHub-Commits neue Docker-Images und -Updates für die ausgeführte Anwendung erstellen
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.22 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="create-jenkins-instance"></a>Erstellen einer Jenkins-Instanz
 In einem vorherigen Tutorial zum [Anpassen eines virtuellen Linux-Computers beim ersten Start](tutorial-automate-vm-deployment.md) haben Sie erfahren, wie die Anpassung für virtuelle Computer mit cloud-init automatisiert wird. In diesem Tutorial wird eine cloud-init-Datei verwendet, um Jenkins und Docker auf einer VM zu installieren. Jenkins ist ein beliebter Open-Source-Automatisierungsserver, der sich problemlos in Azure integrieren lässt, um Continuous Integration (CI) und Continuous Delivery (CD) zu ermöglichen. Weitere Tutorials zur Verwendung von Jenkins finden Sie unter der [Jenkins in Azure-Hubs](https://docs.microsoft.com/azure/jenkins/).
@@ -107,7 +107,7 @@ Aus Sicherheitsgründen müssen Sie das ursprüngliche Administratorkennwort ein
 ssh azureuser@<publicIps>
 ```
 
-Lassen Sie das `initialAdminPassword` für Ihre Installation anzeigen, und kopieren Sie dieses:
+Zeigen Sie das `initialAdminPassword` für Ihre Jenkins-Installation an, und kopieren Sie es:
 
 ```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -223,7 +223,7 @@ az vm show --resource-group myResourceGroupJenkins --name myVM -d --query [publi
 
 ![Ausgeführte Node.js-App](media/tutorial-jenkins-github-docker-cicd/running_nodejs_app.png)
 
-Bearbeiten Sie anschließend die Datei *index.js* noch einmal in GitHub, und übernehmen Sie die Änderungen. Das Abschließen des Auftrags nimmt einige Sekunden in Anspruch. Aktualisieren Sie danach Ihren Webbrowser, um die aktualisierte Version Ihrer in einem neuen Container ausgeführten App wie folgt anzuzeigen:
+Bearbeiten Sie anschließend die Datei *index.js* noch einmal in GitHub, und übernehmen Sie die Änderungen. Das Abschließen des Auftrags in Jenkins nimmt einige Sekunden in Anspruch. Aktualisieren Sie danach Ihren Webbrowser, um die aktualisierte Version Ihrer in einem neuen Container ausgeführten App wie folgt anzuzeigen:
 
 ![Ausführen der node.js-Anwendung nach einem weiteren GitHub-Commitvorgang](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 

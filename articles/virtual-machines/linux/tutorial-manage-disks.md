@@ -1,12 +1,12 @@
 ---
-title: Verwalten von Azure-Datenträgern mit der Azure-CLI | Microsoft-Dokumentation
-description: 'Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI'
+title: Tutorial – Verwalten von Azure-Datenträgern mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Erstellen und Verwalten von Azure-Datenträgern für virtuelle Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
-tags: azure-service-management
+tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3153c57d6504346f6985823860623dc37977b79f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: dff6af6a68dcc454877532c3d6f06cb86e6fe897
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-disks-with-the-azure-cli"></a>Verwalten von Azure-Datenträgern mit der Azure-CLI
+# <a name="tutorial---manage-azure-disks-with-the-azure-cli-20"></a>Tutorial: Verwalten von Azure-Datenträgern mit Azure CLI 2.0
 
 Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
 
@@ -35,10 +35,9 @@ Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystem
 > * Ändern der Größe von Datenträgern
 > * Momentaufnahmen von Datenträgern
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 

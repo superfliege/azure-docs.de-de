@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2018
+ms.date: 05/04/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: e91e27da5ef80236768d19c5870ac96f19f6b074
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -27,14 +27,12 @@ Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privat
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 
-- **Azure Storage:** allgemein verfügbar. Alle Regionen in der öffentlichen Azure-Cloud und in Azure Government
-- **Azure SQL-Datenbank**: Allgemein verfügbar in allen Azure-Regionen. 
-- **Azure SQL Data Warehouse**: Vorschauversion. Alle Regionen in der öffentlichen Azure-Cloud
+- **Azure Storage**: Allgemein verfügbar in allen Azure-Regionen.
+- **Azure SQL-Datenbank**: Allgemein verfügbar in allen Azure-Regionen.
+- **Azure Cosmos DB**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds. 
+- **Azure SQL Data Warehouse**: Vorschau in allen Azure-Regionen mit öffentlichen Clouds.
 
-Aktuelle Benachrichtigungen zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
-
->[!NOTE]
-> Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
@@ -50,7 +48,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - Das Feature ist nur für virtuelle Netzwerke verfügbar, für die das Azure Resource Manager-Bereitstellungsmodell verwendet wird.
 - Endpunkte sind für Subnetze aktiviert, die in virtuellen Azure-Netzwerken konfiguriert sind. Endpunkte können nicht für Datenverkehr verwendet werden, der aus Ihrer lokalen Umgebung an Azure-Dienste fließt. Weitere Informationen finden Sie unter [Schützen des Zugriffs auf Azure-Dienste aus der lokalen Umgebung](#securing-azure-services-to-virtual-networks).
-- Ein Dienstendpunkt gilt nur für Datenverkehr von Azure-Diensten in der Region eines virtuellen Netzwerks. Damit Datenverkehr vom Typ RA-GRS und GRS für Microsoft Azure Storage unterstützt werden kann, gelten Endpunkte zusätzlich auch für gekoppelte Regionen, in denen das virtuelle Netzwerk bereitgestellt wird. Informieren Sie sich über [Azure-Regionspaare](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
+- Bei Azure SQL gilt ein Dienstendpunkt nur für Datenverkehr von Azure-Diensten in der Region eines virtuellen Netzwerks. Damit Datenverkehr vom Typ RA-GRS und GRS für Azure Storage unterstützt werden kann, gelten Endpunkte zusätzlich auch für Regionspaare, in denen das virtuelle Netzwerk bereitgestellt wird. Informieren Sie sich über [Azure-Regionspaare](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Schützen von Azure-Diensten in virtuellen Netzwerken
 
@@ -68,7 +66,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - Dienstendpunkte werden in einem Subnetz eines virtuellen Netzwerks konfiguriert. Für Endpunkte können alle Arten von Computeinstanzen verwendet werden, die in diesem Subnetz ausgeführt werden.
 - Sie können mehrere Dienstendpunkte für alle unterstützten Azure-Dienste (z.B. Azure Storage oder Azure SQL-Datenbank) eines Subnetzes konfigurieren.
-- Virtuelle Netzwerke müssen sich in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden.
+- Bei Azure SQL müssen sich virtuelle Netzwerke in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden. Für alle anderen Dienste können die Ressourcen des Azure-Diensts in virtuellen Netzwerken in jeder Region gesichert werden. 
 - Das virtuelle Netzwerk, in dem der Endpunkt konfiguriert ist, kann sich unter demselben oder einem anderen Abonnement wie die Ressource des Azure-Diensts befinden. Weitere Informationen zu den erforderlichen Berechtigungen zum Einrichten von Endpunkten und Schützen von Azure-Diensten finden Sie unter [Bereitstellung](#Provisioning).
 - Für unterstützte Dienste können Sie neue oder vorhandene Ressourcen in virtuellen Netzwerken schützen, indem Sie Dienstendpunkte verwenden.
 
@@ -112,7 +110,7 @@ Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben 
 
 ## <a name="pricing-and-limits"></a>Preise und Einschränkungen
 
-Für die Nutzung von Dienstendpunkten fallen keine zusätzlichen Gebühren an. Das aktuelle Preismodell für Azure-Dienste (Azure Storage, Azure SQL-Datenbank) gilt unverändert.
+Für die Nutzung von Dienstendpunkten fallen keine zusätzlichen Gebühren an. Das aktuelle Preismodell für Azure-Dienste (Azure Storage, Azure SQL-Datenbank usw.) gilt unverändert.
 
 Für die Gesamtzahl von Dienstendpunkten in einem virtuellen Netzwerk gilt keine Beschränkung.
 
@@ -124,5 +122,5 @@ Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Di
 - Informieren Sie sich über das [Sichern eines Azure Storage-Konto in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über das [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über die [Azure-Dienstintegration in virtuelle Netzwerke](virtual-network-for-azure-services.md).
--  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/en-us/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz
+-  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz
 

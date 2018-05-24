@@ -1,6 +1,6 @@
 ---
-title: Sichern von virtuellen Linux-Computern in Azure | Microsoft-Dokumentation
-description: Schützen Sie Ihre virtuellen Linux-Computer, indem Sie sie mithilfe von Azure Backup sichern.
+title: Tutorial – Sichern von virtuellen Linux-Computern im Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal zum Schützen Ihrer virtuellen Linux-Computer mit Azure Backup verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,22 +16,20 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4bd532a570a978715ba61880047f3a7e49b446ba
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c91e2b1380e5048fa1dfb7a0e028c88e589cbaa4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-linux--virtual-machines-in-azure"></a>Sichern virtueller Linux-Computer in Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
-Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder nur bestimmte Dateien wiederherstellen. In diesem Artikel wird erläutert, wie eine einzelne Datei von einem virtuellen Linux-Computer mit nginx wiederhergestellt wird. Wenn Sie noch nicht über einen virtuellen Computer verfügen, können Sie diesen mit dem [Linux-Schnellstart](quick-create-cli.md) erstellen. In diesem Tutorial lernen Sie Folgendes:
+Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder bestimmte Dateien wiederherstellen. In diesem Artikel wird erläutert, wie eine einzelne Datei von einem virtuellen Linux-Computer mit nginx wiederhergestellt wird. Wenn Sie noch nicht über einen virtuellen Computer verfügen, können Sie diesen mit dem [Linux-Schnellstart](quick-create-cli.md) erstellen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Sicherung eines virtuellen Computers
 > * Planen einer täglichen Sicherung
 > * Wiederherstellen einer Datei aus einer Sicherung
-
-
 
 ## <a name="backup-overview"></a>Übersicht über Azure Backup
 
@@ -43,7 +41,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 
 
 ## <a name="create-a-backup"></a>Erstellen einer Sicherung
-Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor. 
+Erstellen Sie eine geplante tägliche Sicherung in einem Recovery Services-Tresor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 

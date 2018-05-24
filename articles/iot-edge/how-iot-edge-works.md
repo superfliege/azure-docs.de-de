@@ -15,18 +15,18 @@ ms.workload: na
 ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: ''
-ms.openlocfilehash: 9071caedd9ab3b63527c2c0bdab38db2efadb17c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b14dd7ca2c35f9d660b571436f1d7f1b5185c5c1
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-azure-iot-edge---preview"></a>Was ist Azure IoT Edge? – Vorschauversion
 
 Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit sich Ihre Organisation auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Ermöglichen Sie für Ihre Lösung das richtige Skalieren, indem Sie Ihre IoT-Software konfigurieren und auf Geräten über Standardcontainer bereitstellen und alles über die Cloud überwachen.
 
 >[!NOTE]
->Azure IoT Edge ist nur im Standard-Tarif von IoT Hub verfügbar. Weitere Informationen zu den Tarifen „Basic“ und „Standard“ finden Sie unter [Choose the right IoT Hub tier for your solution](../iot-hub/iot-hub-scaling.md) (Wählen des passenden IoT Hub-Tarifs für Ihre Lösung).
+>Azure IoT Edge ist im Free- und Standard-Tarif von IoT Hub verfügbar. Der Free-Tarif ist ausschließlich für Tests und Bewertungen vorgesehen. Weitere Informationen zu den Tarifen „Basic“ und „Standard“ finden Sie unter [Choose the right IoT Hub tier for your solution](../iot-hub/iot-hub-scaling.md) (Wählen des passenden IoT Hub-Tarifs für Ihre Lösung).
 
 Analysen (Analytics) sind die Grundlage des geschäftlichen Nutzens von IoT-Lösungen, aber nicht alle Analysen müssen sich in der Cloud befinden. Wenn Sie möchten, dass ein Gerät so schnell wie möglich auf Notfälle reagiert, können Sie die Anomalieerkennung auf dem Gerät selbst durchführen. Ebenso können Sie die Datenbereinigung und -aggregierung lokal durchführen, falls Sie die Bandbreitenkosten reduzieren und die Übertragung von Rohdaten im Terabyte-Bereich vermeiden möchten. Anschließend können Sie die Erkenntnisse in die Cloud senden. 
 
