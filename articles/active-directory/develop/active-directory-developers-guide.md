@@ -16,11 +16,12 @@ ms.date: 04/30/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f0f577e2ff18645cfa93763f2345ef4230907e09
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6f3c0e93b20bbc570f4715318a49b502549ff295
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257548"
 ---
 # <a name="azure-active-directory-for-developers"></a>Azure Active Directory für Entwickler
 
@@ -55,7 +56,6 @@ In den folgenden Anleitungen wird die Vorgehensweise für die gängigsten Aufgab
 |[Anwendungsregistrierung](active-directory-integrating-applications.md)           | Enthält Informationen zum Registrieren einer Anwendung in Azure AD. |
 |[Mehrinstanzenfähige Anwendungen](active-directory-devhowto-multi-tenant-overview.md)    | Enthält Informationen zum Anmelden bei einem Microsoft-Geschäftskonto. |
 |[OAuth- und OpenID Connect-Protokoll](active-directory-protocols-openid-connect-code.md)| Enthält Informationen zum Anmelden von Benutzern und zum Aufrufen von Web-APIs unter Verwendung der Microsoft-Authentifizierungsprotokolle. |
-|[Weitere Anleitungen](active-directory-developers-guide-index.md#guides)        |  Eine Liste mit verfügbaren Anleitungen für Azure AD. |
 |  |  |
 
 ## <a name="reference-topics"></a>Referenzthemen
@@ -66,7 +66,6 @@ Die folgenden Artikel enthalten ausführliche Informationen zu APIs, Protokollme
 | [Authentifizierungsbibliotheken (ADAL)](active-directory-authentication-libraries.md)   | Eine Übersicht über die von Azure AD bereitgestellten Bibliotheken und SDKs. |
 | [Codebeispiele](active-directory-code-samples.md)                                  | Eine Liste mit allen Azure AD-Codebeispielen. |
 | [Glossar](active-directory-dev-glossary.md)                                      | Begriffe und Definitionen von Wörtern, die in dieser Dokumentation verwendet werden. |
-| [Weitere Referenzthemen](active-directory-developers-guide-index.md#reference)| Eine Liste mit verfügbaren Referenzthemen für Azure AD. |
 |  |  |
 
 

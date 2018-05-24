@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358658"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Verwenden der Visual Studio Code-Erweiterung für die Erstellung einer Azure Resource Manager-Vorlage
 Dieser Artikel enthält Informationen zu den Vorteilen, die sich durch das Installieren und Nutzen der Azure Resource Manager-Tools-Erweiterung in Visual Studio Code ergeben. Sie können Resource Manager-Vorlagen in VS Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Hierbei werden Funktionen, Parameter und Variablen vorgeschlagen, die in der Vorlage verfügbar sind.

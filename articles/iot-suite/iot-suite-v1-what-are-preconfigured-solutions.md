@@ -1,12 +1,12 @@
 ---
-title: "Vorkonfigurierte Azure IoT-Lösungen | Microsoft Docs"
-description: "Eine Beschreibung der vorkonfigurierten Azure IoT-Lösungen und ihrer Architektur mit Links zu zusätzlichen Ressourcen."
-services: 
+title: Vorkonfigurierte Azure IoT-Lösungen | Microsoft Docs
+description: Eine Beschreibung der vorkonfigurierten Azure IoT-Lösungen und ihrer Architektur mit Links zu zusätzlichen Ressourcen.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
 ms.service: iot-suite
 ms.devlang: na
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 76df013e8e5868fcc9f5d95aa523a6a56dea7163
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d860c768a73737e6c8c52a8652d6b43434a3a07d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361987"
 ---
 # <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Was sind vorkonfigurierte Azure IoT Suite-Lösungen?
 
@@ -43,7 +44,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | [Vorbeugende Wartung][lnk-predictive-maintenance] |Ja |Ja |- |Ja |Ja |Ja |
 | [Verbundene Factory][lnk-getstarted-factory] |Ja |Ja |Ja |Ja |Ja |- |
 
-* *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
+* *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
 * *Geräteverwaltung:* Verwalten von Gerätemetadaten und Ausführen von Vorgängen wie Geräteneustarts und Firmwareupgrades.
 * *Befehl und Steuerung:* Senden von Nachrichten aus der Cloud an ein Gerät, um eine Aktion des Geräts zu veranlassen.
@@ -111,7 +112,7 @@ Mit der Geräteverwaltungsfunktion von IoT Hub können Sie Ihre Geräteeigenscha
 Die vorkonfigurierte Lösung verwendet drei [Azure Stream Analytics][lnk-asa]-Aufträge (ASA), um den Telemetriedatenstrom von den Geräten zu filtern:
 
 * *DeviceInfo-Auftrag* – Gibt Daten an einen Event Hub aus, der geräteregistrierungsspezifische Nachrichten an die Geräteregistrierung der Lösung weiterleitet. Bei dieser Geräteregistrierung handelt es sich eine Azure Cosmos DB-Datenbank. Diese Nachrichten werden gesendet, wenn ein Gerät erstmals eine Verbindung herstellt oder ein Befehl zum **Ändern des Gerätestatus** ausgeführt wurde.
-* *Telemetrieauftrag* – Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an den Azure-Blobspeicher und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
+* *Telemetrieauftrag:* Sendet alle Telemetrierohdaten zu Cold Storage-Zwecken an Azure Blob Storage und berechnet Telemetrieaggregationen, die im Lösungsdashboard angezeigt werden.
 * *Regelauftrag* – Filtert den Telemetriedatenstrom, um Werte zu identifizieren, die Regelschwellenwerte überschreiten, und gibt die Daten an einen Event Hub aus. Wenn eine Regel ausgelöst wird, wird das Ereignis in der Dashboardansicht des Lösungsportals als neue Zeile der Alarmverlaufstabelle angezeigt. Diese Regeln können auf der Grundlage der Einstellungen, die im Lösungsportal in den Ansichten **Regeln** und **Aktionen** definiert sind, auch eine Aktion auslösen.
 
 Bei dieser vorkonfigurierten Lösung bilden die ASA-Aufträge einen Teil des **IoT-Lösungs-Back-Ends** in einer typischen [IoT-Lösungsarchitektur][lnk-what-is-azure-iot].
@@ -174,4 +175,4 @@ Sie wissen nun, worum es sich bei einer vorkonfigurierten Lösung handelt, und k
 [lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+[lnk-getstarted-factory]:../iot-accelerators/iot-accelerators-connected-factory-overview.md

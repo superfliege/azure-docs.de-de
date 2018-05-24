@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: e12487c519a927b18574310b7af04a1811befd38
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 285961279a35d2770f05eb66b961f64e6781d9df
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34336550"
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -175,7 +176,7 @@ Weitere Informationen finden Sie unter
 * Direkte Anmeldung bei Verbund-Apps
 * Deep-Links zu verbundenen, kennwortbasierten oder vorhandene Apps
 
-Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+Weitere Informationen finden Sie unter [Bereitstellen von in Azure AD integrierten Anwendungen für Benutzer](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
 
 - - -
 **F: Auf welche Arten ermöglicht Azure AD die Authentifizierung und das einmalige Anmelden bei Anwendungen?**
@@ -186,7 +187,7 @@ Weitere Informationen finden Sie unter
 
 * [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md)
 * [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx)
-* [Wie funktioniert das einmalige Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
+* [Wie funktioniert das einmalige Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)
 
 - - -
 **F: Kann ich lokal ausgeführte Anwendungen hinzufügen?**
