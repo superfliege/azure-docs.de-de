@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
+title: 'Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und DocuSign konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 921382a727816b6b0b58d185608a7b6a01dae752
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 644d511dc65370c2ec81b4677940bc115da76d29
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von DocuSign für die automatische Benutzerbereitstellung
 
@@ -96,5 +96,5 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 * [Konfigurieren des einmaligen Anmeldens](active-directory-saas-docusign-tutorial.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/02/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47894f0a3d7b74c8d0e271afb7d2657ce7d3be0c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ebad9304c38333173cec66c6b5574a9b45b17cd1
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -67,14 +67,21 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50058|In den angegebenen Anmeldeinformationen wurden keine Informationen zur Benutzeridentität gefunden, der Benutzer wurde unter dem Mandanten nicht gefunden, im Hintergrund wurde eine Anforderung gesendet, aber es hat sich kein Benutzer angemeldet, oder der Benutzer konnte vom Dienst nicht authentifiziert werden.|
 |50072|Benutzer müssen sich für die zweistufige Authentifizierung registrieren (interaktiv).|
 |50074|Der Benutzer hat die MFA-Überprüfung nicht bestanden.|
+|50076|Der Benutzer hat die MFA-Überprüfung nicht bestanden (nicht interaktiv).|
 |50079|Der Benutzer muss sich für die zweistufige Authentifizierung registrieren.|
 |50089|Fehler bei der Überprüfung des Flow-Tokens aufgrund eines Tokenablaufs.|
 |50097|Gerät ist nicht authentifiziert.|
 |50105|Der angemeldete Benutzer ist keiner Rolle für diese Anwendung zugewiesen.|
+|50125|Die Anmeldung wurde aufgrund des Zurücksetzens des Kennworts oder eines Kennwortregistrierungs-Eintrags unterbrochen.|
 |50126|Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort.|
+|50127|Der Benutzer muss für den Zugriff auf diesen Inhalt eine Broker-App installieren.|
+|50129|Das Gerät ist nicht mit dem Arbeitsbereich verbunden: Um das Gerät zu registrieren, ist ein Workplace Join erforderlich.|
 |50131|Wird für verschiedene Fehler in Bezug auf den bedingten Zugriff verwendet. Beispiele: Fehlerhafter Windows-Gerätestatus, Blockierung der Anforderung aufgrund von verdächtigen Aktivitäten und Entscheidungen gemäß Zugriffs- und Sicherheitsrichtlinien.|
 |50133|Die Sitzung ist ungültig, weil das Kennwort abgelaufen ist oder vor Kurzem geändert wurde.|
+|50140|Der Benutzer wird aufgefordert, seine Zustimmung zu geben, bei dem Gerät angemeldet zu bleiben.|
 |50144|Das Active Directory-Kennwort des Benutzers ist abgelaufen.|
+|53000|Die Richtlinie für bedingten Zugriff erfordert ein konformes Gerät, und das Gerät ist nicht konform.|
+|53003|Der Zugriff wurde aufgrund von Richtlinien für bedingten Zugriff blockiert.|
 |65001|Anwendung X ist nicht berechtigt, auf Anwendung Y zuzugreifen, oder die Berechtigung wurde widerrufen. Oder: Der Benutzer oder Administrator hat der Verwendung der Anwendung mit ID X nicht zugestimmt. Senden Sie eine interaktive Autorisierungsanforderung für diesen Benutzer und diese Ressource. Oder: Der Benutzer oder Administrator hat nicht zugestimmt, die Anwendung mit ID X zu verwenden. Senden Sie eine Autorisierungsanforderung an Ihren Mandantenadministrator, damit dieser im Namen der App Y für Ressource Z fungiert.|
 |65005|Die für die Anwendung erforderliche Liste für den Ressourcenzugriff enthält keine Anwendungen, die von der Ressource ermittelt werden können, die Clientanwendung hat den Zugriff auf eine Ressource angefordert, die nicht in der erforderlichen Liste für den Ressourcenzugriff angegeben ist, oder der Graph-Dienst hat „Fehlerhafte Anforderung“ oder „Ressource nicht gefunden“ zurückgegeben.|
 |70001|Die Anwendung mit dem Namen X wurde im Mandanten mit dem Namen Y nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet.|
@@ -98,8 +105,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |81013|Das Benutzerobjekt konnte anhand der Informationen im Kerberos-Ticket des Benutzers nicht gefunden werden.|
 |90014|Wird in unterschiedlichen Fällen verwendet, wenn ein erwartetes Feld in den Anmeldeinformationen nicht vorhanden ist.|
 |90093|Es wurde ein Graph mit einem unzulässigen Fehlercode für die Anforderung zurückgegeben.|
-
-
+|90094|Die Zustimmung des Administrators ist erforderlich.|
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie unter [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](active-directory-reporting-activity-sign-ins.md).

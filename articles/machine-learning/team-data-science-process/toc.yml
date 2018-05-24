@@ -56,6 +56,9 @@
         - name: Erkennung von biomedizinischen Entitäten
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
+        - name: Klassifizierung von Hautkrebsbildern
+          href: isic-image-classification.md
+          maintainContext: true
     - name: Spark mit PySpark und Scala
       href: walkthroughs-spark.md
       items:

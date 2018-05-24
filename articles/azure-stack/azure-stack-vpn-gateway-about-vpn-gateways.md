@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: 9c821f20ce5826666a05121e1a39882fae0930d3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7e489db0d9a65b850df41360ce11616d518c5265
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/04/2018
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informationen zum VPN-Gateway für Azure Stack
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -26,11 +26,11 @@ ms.lasthandoff: 04/23/2018
 
 Um Netzwerkdatenverkehr zwischen Ihrem virtuellen Azure-Netzwerk und Ihrem lokalen Standort senden zu können, müssen Sie für Ihr virtuelles Netzwerk zunächst ein Gateway für virtuelle Netzwerke erstellen.
 
-Ein VPN Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr über eine öffentliche Verbindung gesendet wird. Mit VPN-Gateways können Sie Datenverkehr sicher zwischen einem virtuellen Netzwerk in Azure Stack und einem virtuellen Netzwerk in Azure oder zwischen einem virtuellen Netzwerk und einem anderen, mit einem VPN-Gerät verbundenen Netzwerk senden.
+Ein VPN Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr über eine öffentliche Verbindung gesendet wird. Sie können VPN-Gateways für einen sicheren Datenverkehr zwischen einem virtuellen Netzwerk in Azure Stack und einem virtuellen Netzwerk in Azure verwenden. Zudem können Sie den Datenverkehr zwischen einem virtuellen Netzwerk und einem anderen Netzwerk, das mit einem VPN-Gerät verbunden ist, sicher übertragen.
 
 Der gewünschte Gatewaytyp wird beim Erstellen eines Gateways für virtuelle Netzwerke angegeben. Azure Stack unterstützt eine einzelne Art von Gateway für virtuelle Netzwerke: VPN.
 
-Jedes virtuelle Netzwerk kann über zwei Gateways für virtuelle Netzwerke, aber nur über eins von jedem Typ verfügen. Abhängig von den gewählten Einstellungen können Sie ggf. mehrere Verbindungen mit einem einzelnen VPN-Gateway erstellen. Ein Beispiel hierfür ist eine Verbindungskonfiguration mit mehreren Standorten.
+Jedes virtuelle Netzwerk kann über zwei Gateways für virtuelle Netzwerke, aber nur über eins von jedem Typ verfügen. Abhängig von den gewählten Einstellungen können Sie ggf. mehrere Verbindungen mit einem einzelnen VPN-Gateway erstellen. Ein Beispiel ist eine Verbindungskonfiguration mit mehreren Standorten.
 
 > [!NOTE]
 > In Azure muss der Bandbreitendurchsatz für die gewählte VPN-Gateway-SKU auf alle Verbindungen aufgeteilt werden, die damit hergestellt wurden.  In Azure Stack wird der Bandbreitenwert für die VPN-Gateway-SKU auf jede Verbindungsressource angewendet, die damit verbunden ist.     
@@ -46,10 +46,10 @@ Eine VPN Gateway-Verbindung basiert auf mehreren, mit spezifischen Einstellungen
 Die Einstellungen, die Sie für die einzelnen Ressourcen auswählen, sind für eine erfolgreiche Verbindungserstellung entscheidend. Informationen zu einzelnen Ressourcen und Einstellungen für VPN Gateway finden Sie unter [VPN-Gatewaykonfigurationseinstellungen für Azure Stack](azure-stack-vpn-gateway-settings.md). Dort können Sie sich ausführlicher mit Gatewaytypen, VPN-Typen, Verbindungstypen, Gatewaysubnetzen, lokalen Netzwerkgateways und verschiedenen anderen Ressourceneinstellungen beschäftigen, die Sie ggf. berücksichtigen sollten.
 
 ### <a name="deployment-tools"></a>Bereitstellungstools
-Sie können zunächst mit einem Konfigurationstool wie dem Azure-Portal Ressourcen erstellen und konfigurieren. Später können Sie dann mit einem anderen Tool (beispielsweise PowerShell) zusätzliche Ressourcen konfigurieren oder ggf. vorhandene Ressourcen ändern. Derzeit können nicht alle Ressourcen und Ressourceneinstellungen über das Azure-Portal konfiguriert werden. Sollte ein bestimmtes Konfigurationstool benötigt werden, ist dies in den Anleitungen der Artikel zu den einzelnen Verbindungstopologien angegeben.
+Sie können mit einem Konfigurationstool wie dem Azure-Portal Ressourcen erstellen und konfigurieren. Später können Sie mit einem anderen Tool wie PowerShell zusätzliche Ressourcen konfigurieren oder ggf. vorhandene Ressourcen ändern. Derzeit können nicht alle Ressourcen und Ressourceneinstellungen über das Azure-Portal konfiguriert werden. Sollte ein bestimmtes Konfigurationstool benötigt werden, ist dies in den Anleitungen der Artikel zu den einzelnen Verbindungstopologien angegeben.
 
 ## <a name="connection-topology-diagrams"></a>Verbindungstopologiediagramme
-Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfügbar. Sie müssen ermitteln, welche Konfiguration am besten zu Ihren Anforderungen passt. Die folgenden Abschnitte enthalten Informationen und Topologiediagramme zu den folgenden VPN-Gatewayverbindungen: Die folgenden Abschnitte enthalten Tabellen mit Folgendem:
+Wichtig: Für VPN-Gateway-Verbindungen sind verschiedene Konfigurationen verfügbar. Ermitteln Sie, welche Konfiguration am besten zu Ihren Anforderungen passt. Die folgenden Abschnitte enthalten Informationen und Topologiediagramme zu den folgenden VPN-Gatewayverbindungen: Die folgenden Abschnitte enthalten Tabellen mit Folgendem:
 
 - Verfügbares Bereitstellungsmodell
 - Verfügbare Konfigurationstools
@@ -78,7 +78,7 @@ Wenn Sie eine höhere Gateway-SKU (beispielsweise Standard über Basic oder High
 
 Die Gateway-SKU „UltraPerformance“ wird ausschließlich mit ExpressRoute verwendet und von Azure Stack nicht unterstützt.
 
-Berücksichtigen Sie bei der Auswahl einer SKU Folgendes:
+Beachten Sie bei der Auswahl der SKU Folgendes:
 - Richtlinienbasierte Gateways werden von Azure Stack nicht unterstützt.
 - Das Border Gateway-Protokoll (BGP) wird in der Basic-SKU nicht unterstützt.
 - Die gemeinsame Verwendung von VPN Gateway und ExpressRoute wird in Azure Stack nicht unterstützt.
@@ -93,7 +93,7 @@ In der folgenden Tabelle sind die Gatewaytypen und der geschätzte zusammengefas
 |**Standard-SKU**       | 100 MBit/s  | 10    |
 |**High-Performance-SKU** | 200 MBit/s    | 5 |
 ***(1)*** Der VPN-Durchsatz ist kein garantierter Durchsatz für standortübergreifende Verbindungen über das Internet. Hierbei wird der maximal mögliche Durchsatz gemessen.  
-***(2)*** Bei der maximalen Tunnelanzahl handelt es sich um die Summe pro Azure Stack-Bereitstellung für ALLE Abonnements.
+***(2)*** Bei der maximalen Tunnelanzahl handelt es sich um die Summe pro Azure Stack-Bereitstellung für ALLE Abonnements.  
 ***(3)*** BGP wird für die Basic-SKU nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte

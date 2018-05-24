@@ -1,6 +1,6 @@
 ---
-title: "Erstellen eines virtuellen Windows-Computers mit SQL Server über das Portal | Microsoft-Dokumentation"
-description: "In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server 2017 erstellen."
+title: Erstellen eines virtuellen Windows-Computers mit SQL Server über das Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server 2017 erstellen.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 05/11/2018
 ms.author: jroth
-ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Schnellstartanleitung: Erstellen eines virtuellen Windows-Computers mit SQL Server 2017 über das Azure-Portal
 
@@ -72,11 +72,9 @@ Geben Sie im Fenster **Grundeinstellungen** die folgenden Informationen an:
 
 ## <a name="choose-virtual-machine-size"></a>VM-Größe auswählen
 
-Wählen Sie beim Schritt **Größe** im Fenster **Größe auswählen** eine Größe für den virtuellen Computer aus. Im Fenster werden zuerst die empfohlenen Computergrößen angezeigt. Dies erfolgt basierend auf dem von Ihnen ausgewählten Image. 
+1. Wählen Sie beim Schritt **Größe** im Fenster **Größe auswählen** eine Größe für den virtuellen Computer aus.
 
-1. Klicken Sie auf **Alle anzeigen**, um alle verfügbaren Computergrößen anzuzeigen.
-
-1. Wählen Sie für diesen Schnellstart die Option **D2S_V3**. Im Portal werden die geschätzten monatlichen Computerkosten für die kontinuierliche Nutzung (ohne SQL Server-Lizenzierungskosten) angezeigt. Beachten Sie, dass für die Developer Edition keine zusätzlichen Lizenzierungskosten für SQL Server anfallen. Detailliertere Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+   Wählen Sie für diesen Schnellstart die Option **D2S_V3**. Im Portal werden die geschätzten monatlichen Computerkosten für die kontinuierliche Nutzung (ohne SQL Server-Lizenzierungskosten) angezeigt. Beachten Sie, dass für die Developer Edition keine zusätzlichen Lizenzierungskosten für SQL Server anfallen. Detailliertere Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
    > [!TIP]
    > Mit der Computergröße **D2S_V3** kann beim Testen Geld gespart werden. Bei Produktionsworkloads sollten Sie sich jedoch die Empfehlungen für die Computergröße und -konfiguration unter [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-performance.md) ansehen.
@@ -85,7 +83,14 @@ Wählen Sie beim Schritt **Größe** im Fenster **Größe auswählen** eine Grö
 
 ## <a name="configure-optional-features"></a>Optionale Features konfigurieren
 
-Klicken Sie im Fenster **Einstellungen** auf **OK**, um die Standardeinstellungen auszuwählen.
+1. Wählen Sie im Fenster **Einstellungen** in der Liste **Select public inbound ports** (Öffentliche eingehende Ports auswählen) den Port **RDP (3389)** aus, wenn Sie eine Remotedesktopverbindung mit dem virtuellen Computer herstellen möchten.
+
+   ![Eingehende Ports](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
+
+   > [!NOTE]
+   > Für den Remotezugriff auf SQL Server können Sie den Port **MS SQL (1433)** auswählen. Dies ist allerdings nicht erforderlich, da der Schritt **SQL Server-Einstellungen** diese Option ebenfalls umfasst. Wenn Sie den Port 1433 in diesem Schritt nicht auswählen, wird er unabhängig von Ihrer Auswahl im Schritt **SQL Server-Einstellungen** geöffnet.
+
+1. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
 ## <a name="sql-server-settings"></a>SQL Server-Einstellungen
 

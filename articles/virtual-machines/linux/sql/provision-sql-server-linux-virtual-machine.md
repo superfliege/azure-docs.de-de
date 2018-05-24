@@ -1,22 +1,22 @@
 ---
 title: Erstellen eines virtuellen Linux-Computers mit SQL Server 2017 in Azure | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Linux-Computer mit SQL Server 2017 erstellen."
+description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Linux-Computer mit SQL Server 2017 erstellen.
 services: virtual-machines-linux
 author: rothja
 ms.author: jroth
 manager: jhubbard
-ms.date: 10/25/2017
+ms.date: 05/11/2018
 ms.topic: hero-article
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b86dd47c112c38bc65c045158787d19b470899a0
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
 
@@ -71,7 +71,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Klicken Sie auf **OK**.
 
-1. Wählen Sie im Fenster **Größe** eine Computergröße aus. Weitere Größen können durch Klicken auf **Alle anzeigen** angezeigt werden. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+1. Wählen Sie im Fenster **Größe** eine Computergröße aus. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
     ![Auswählen einer VM-Größe](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
@@ -80,9 +80,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Klicken Sie auf **Auswählen**.
 
-1. Im Fenster **Einstellungen** können Sie die Einstellungen anpassen oder die Standardeinstellungen übernehmen.
+1. Wählen Sie im Fenster **Einstellungen** den **SSH (22)**-Port in der Liste **Öffentliche eingehende Ports auswählen** aus. Dies ist in diesem Schnellstart notwendig, um eine Verbindung herzustellen und die SQL Server-Konfiguration durchzuführen. Wenn Sie eine Remoteverbindung mit SQL Server herstellen möchten, aktivieren Sie auch **MS SQL (1433)**, um Port 1433 für Verbindungen über das Internet zu öffnen.
 
-1. Klicken Sie auf **OK**.
+   ![Eingehende Ports](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+
+1. Sie können weitere Einstellungen vornehmen oder die Standardeinstellungen übernehmen. Klicken Sie dann auf **OK**.
 
 1. Klicken Sie auf der Seite **Zusammenfassung** auf **Kaufen**, um den virtuellen Computer zu erstellen.
 
@@ -145,7 +147,10 @@ Einige [SQL Server-Pakete](sql-server-linux-virtual-machines-overview.md#package
 
 ## <a id="remote"></a> Konfigurieren für Remoteverbindungen
 
-Wenn Sie mit SQL Server auf dem virtuellen Azure-Computer eine Remoteverbindung herstellen möchten, müssen Sie in der Netzwerksicherheitsgruppe eine Eingangsregel konfigurieren. Die Regel lässt Datenverkehr an dem Port zu, an dem SQL Server lauscht (standardmäßig 1433). In den folgenden Schritten wird die Vorgehensweise mit dem Azure-Portal gezeigt: 
+Wenn Sie mit SQL Server auf dem virtuellen Azure-Computer eine Remoteverbindung herstellen möchten, müssen Sie in der Netzwerksicherheitsgruppe eine Eingangsregel konfigurieren. Die Regel lässt Datenverkehr an dem Port zu, an dem SQL Server lauscht (standardmäßig 1433). In den folgenden Schritten wird die Vorgehensweise mit dem Azure-Portal gezeigt:
+
+> [!TIP]
+> Wenn Sie bei der Bereitstellung den eingehenden Port **MS SQL (1433)** in den Einstellungen ausgewählt haben, sind diese Änderungen für Sie relevant. Sie können mit dem nächsten Abschnitt zum Konfigurieren der Firewall fortfahren.
 
 1. Wählen Sie im Portal **Virtuelle Computer**, und wählen Sie dann die SQL Server-VM aus.
 

@@ -1,6 +1,6 @@
 ---
-title: Virtuelle Azure-Netzwerke und virtuelle Windows-Computer | Microsoft-Dokumentation
-description: 'Tutorial: Verwalten von virtuellen Azure-Netzwerken und virtuellen Windows-Computern mit Azure PowerShell'
+title: 'Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Windows-Computer | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Windows-Computer verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -10,19 +10,19 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: feaef679a3090491b64c69ac69bf22153c281d31
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a13163949a52503f42642c109a4fd4c1dedd837f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Verwalten von virtuellen Azure-Netzwerken und virtuellen Windows-Computern mit Azure PowerShell
+# <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerken für virtuelle Windows-Computern mit Azure PowerShell
 
 Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommunikation. Dieses Tutorial enthält ausführliche Informationen zum Bereitstellen von zwei virtuellen Computern sowie zum Konfigurieren von Azure-Netzwerken für diese virtuellen Computer. In den Beispielen in diesem Tutorial wird davon ausgegangen, dass auf den virtuellen Computern eine Webanwendung mit einem Datenbank-Back-End gehostet wird. Eine Anwendung wird im Tutorial jedoch nicht bereitgestellt. In diesem Tutorial lernen Sie Folgendes:
 
@@ -33,9 +33,9 @@ Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommuni
 > * Netzwerkdatenverkehr absichern
 > * Erstellen des virtuellen Back-End-Computers
 
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-
-Für dieses Tutorial ist das AzureRM.Compute-Modul Version 4.3.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM.Compute` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
 
@@ -266,7 +266,7 @@ New-AzureRmVM `
    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
    -ResourceGroupName myRGNetwork `
    -Location "EastUS" `
-   -SubnetName myFrontendSubnet `
+   -SubnetName MyBackendSubnet `
    -VirtualNetworkName myVNet
 ```
 

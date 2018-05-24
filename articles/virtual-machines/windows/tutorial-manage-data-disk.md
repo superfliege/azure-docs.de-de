@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Azure-Datenträgern mit Azure PowerShell | Microsoft-Dokumentation
-description: 'Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell'
+title: Tutorial – Verwalten von Azure-Datenträgern mit Azure PowerShell | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen und Verwalten von Azure-Datenträgern für virtuelle Computer verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4d84d1f5fbd0fcf5d4c6ba374b1fb5c3df2ba5c6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ea9d89b7dd94c38b326b83ff1fbf51595d67599a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="manage-azure-disks-with-powershell"></a>Verwalten von Azure-Datenträgern mit PowerShell
+# <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell
 
 Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten der virtuellen Computer. Beim Erstellen eines virtuellen Computers muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. Dieses Tutorial behandelt die Bereitstellung und Verwaltung der Datenträger von virtuellen Computern. Sie erhalten Informationen zu folgenden Themen:
 
@@ -35,7 +35,7 @@ Virtuelle Azure-Computer verwenden Datenträger zum Speichern des Betriebssystem
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.3 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: b0ea48aea2e13027c5af273a416489e48987b44a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5a56a892ac3b28c4e90ec2ea6360da3d2eff2581
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Tutorial: Azure Active Directory-Integration mit SAP Business Object Cloud
 
@@ -30,7 +30,7 @@ Die Integration von SAP Business Object Cloud in Azure AD bietet die folgenden V
 - Sie können Ihre Benutzer mithilfe des einmaligen Anmeldens und einem Azure AD-Benutzerkonto automatisch bei SAP Business Object Cloud anmelden.
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Empfehlungen zum Testen der Schritte in diesem Tutorial:
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. 
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von SAP Business Object Cloud aus dem Katalog.
 2. Einrichten des einmaligen Anmeldens in Azure AD und Testen.
@@ -133,7 +133,7 @@ So richten Sie einmaliges Anmelden in Azure AD mit SAP Business Object Cloud ein
 
     ![„Metadaten-XML“ wählen](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_certificate.png) 
 
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
     ![„Speichern“ auswählen](./media/active-directory-saas-sapboc-tutorial/tutorial_general_400.png)
 
@@ -252,7 +252,7 @@ So weisen Sie Britta Simon SAP Business Object Cloud zu:
 
 2. Wählen Sie in der Liste der Anwendungen **SAP Business Object Cloud** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
 
 3. Wählen Sie im linken Menü **Benutzer und Gruppen** aus.
 
@@ -281,7 +281,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 <!--Image references-->

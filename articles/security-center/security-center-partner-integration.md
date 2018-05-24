@@ -1,24 +1,24 @@
 ---
-title: "Integrieren von Sicherheitslösungen in Azure Security Center | Microsoft-Dokumentation"
+title: Integrieren von Sicherheitslösungen in Azure Security Center | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Partner in Azure Security Center integriert werden, um die allgemeine Sicherheit Ihrer Azure-Ressourcen zu verbessern.
 services: security-center
 documentationcenter: na
-author: YuriDio
+author: terrylan
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/08/2018
-ms.author: yurid
-ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 05/04/2018
+ms.author: terrylan
+ms.openlocfilehash: ac1e49400f32194ada319f23b5233cc81de02a02
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -32,7 +32,7 @@ Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in
 
 Integrierte Sicherheitslösungen umfassen derzeit Folgendes:
 
-- Endpoint Protection ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec, Windows Defender und System Center Endpoint Protection (SCEP))
+- Endpoint Protection ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), Symantec, McAfee, Windows Defender und System Center Endpoint Protection (SCEP))
 - Web Application Firewall ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets) und [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
 - Firewall der nächsten Generation ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2) und [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html))
 - Sicherheitsrisikobewertung ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
@@ -44,8 +44,8 @@ Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die
 | Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | Nein, in Betriebssystem integriert           | Ja                       |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 | Per Erweiterung                | Ja                       |
 | Trend Micro – alle Versionen         | Windows Server-Familie                 | Per Erweiterung                | Ja                       |
-| Symantec v12.1.1100+                     | Windows Server-Familie                 | Nein                            | Ja                        |
-| MacAfee                           | Windows Server-Familie                 | Nein                            | Nein                         |
+| Symantec v12.1.1100+              | Windows Server-Familie                 | Nein                            | Ja                       |
+| McAfee v10+                       | Windows Server-Familie                 | Nein                            | Ja                       |
 | Kaspersky                         | Windows Server-Familie                 | Nein                            | Nein                         |
 | Sophos                            | Windows Server-Familie                 | Nein                            | Nein                         |
 
@@ -65,7 +65,7 @@ Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die
 
 1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
 
-2. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
+2. Wählen Sie im **Microsoft Azure-Menü** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
 
   ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
 
@@ -86,7 +86,7 @@ Weitere Informationen finden Sie unter [Verwalten von verbundenen Partnerlösung
 Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgeführt werden, aber nicht mit Security Center verbunden sind, und zeigt die Lösungen im Abschnitt **Ermittelte Lösungen** an. Dazu gehören sowohl Azure-Lösungen wie [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) als auch Partnerlösungen.
 
 > [!NOTE]
-> Die Funktion „Ermittelte Lösungen“ ist für den Tarif Standard von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
+> Für das ermittelte Lösungsfeature ist der Standardtarif von Security Center ist auf Abonnementebene erforderlich. Weitere Informationen zu den Tarifen von Security finden Sie unter [Preise](security-center-pricing.md).
 >
 >
 

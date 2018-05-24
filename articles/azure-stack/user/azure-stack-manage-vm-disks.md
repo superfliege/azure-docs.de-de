@@ -1,69 +1,86 @@
 ---
-title: "Verwalten von VM-Datenträgern in Azure Stack | Microsoft-Dokumentation"
-description: "Stellen Sie Datenträger für virtuelle Computer für Azure Stack bereit."
+title: Verwalten von VM-Datenträgern in Azure Stack | Microsoft-Dokumentation
+description: Stellen Sie Datenträger für virtuelle Computer in Azure Stack bereit.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 4e5833cf-4790-4146-82d6-737975fb06ba
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 05/11/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 0c36e2eaaf2d266842b2b7de0b0c8dc0ed1e0145
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8e91b4d83aa90a7e744fb8e73cda788dbf8c58ec
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="virtual-machine-disk-storage-for-azure-stack"></a>VM-Datenträgerspeicher für Azure Stack
+# <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Bereitstellen von VM-Datenträgerspeicher in Azure Stack
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Mit Azure Stack können [nicht verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) auf einem virtuellen Computer als Betriebssystem-Datenträger sowie als Datenträger für Daten verwendet werden. Zur Verwendung nicht verwalteter Datenträger erstellen Sie ein [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) und speichern die Datenträger anschließend innerhalb des Speicherkontos als Seitenblobs in Containern. Diese Datenträger werden dann als VM-Datenträger bezeichnet.
+In diesem Artikel wird beschrieben, wie Sie VM-Datenträgerspeicher mit dem Azure Stack-Portal oder mit PowerShell bereitstellen.
 
-Zur Verbesserung der Leistung und zur Senkung der Verwaltungskosten des Azure Stack-Systems empfiehlt es sich, jeden VM-Datenträger in einem separaten Container zu platzieren. Ein Container sollte entweder einen Betriebssystem-Datenträger oder einen Datenträger für Daten enthalten, aber nicht beides gleichzeitig. Es gibt jedoch keine Einschränkung, die die Platzierung beider Datenträgertypen im gleichen Container verhindert.
+## <a name="overview"></a>Übersicht
 
-Wenn Sie einem virtuellen Computer Datenträger für Daten hinzufügen, planen Sie als Speicherort für diese Datenträger die Verwendung zusätzlicher Container. Der Betriebssystem-Datenträger für zusätzliche virtuelle Computer sollte sich genau wie die Datenträger für Daten jeweils in einem eigenen separaten Container befinden.
+Mit Azure Stack können [nicht verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) auf virtuellen Computern sowohl als Betriebssystemdatenträger als auch als Datenträger für Daten verwendet werden.
 
-Wenn Sie mehrere virtuelle Computer erstellen, können Sie für jeden neuen virtuellen Computer das gleiche Speicherkonto verwenden. Lediglich die erstellten Container sollten getrennt sein.  
+Zum Verwenden von nicht verwalteten Datenträgern erstellen Sie ein [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account), unter dem die Datenträger gespeichert werden können. Die von Ihnen erstellten Datenträger werden als VM-Datenträger bezeichnet und in Containern im Speicherkonto gespeichert.
 
-Verwenden Sie das Benutzerportal oder PowerShell, um einem virtuellen Computer Datenträger hinzuzufügen.
+### <a name="best-practice-guidelines"></a>Richtlinien zu bewährten Methoden
+
+Zur Verbesserung der Leistung und Reduzierung der Gesamtkosten empfehlen wir Ihnen, jeden VM-Datenträger in einem separaten Container anzuordnen. Ein Container sollte entweder einen Betriebssystem-Datenträger oder einen Datenträger für Daten enthalten, aber nicht beides gleichzeitig. (Es hindert Sie aber nichts daran, beide Arten von Datenträgern in demselben Container anzuordnen.)
+
+Wenn Sie einem virtuellen Computer Datenträger für Daten hinzufügen, sollten Sie als Speicherort für diese Datenträger zusätzliche Container verwenden. Der Betriebssystemdatenträger für zusätzliche virtuelle Computer sollte sich ebenfalls in einem eigenen Container befinden.
+
+Wenn Sie mehrere virtuelle Computer erstellen, können Sie für jeden neuen virtuellen Computer das gleiche Speicherkonto wiederverwenden. Lediglich die erstellten Container sollten getrennt sein.
+
+### <a name="adding-new-disks"></a>Hinzufügen von neuen Datenträgern
+
+In der folgenden Tabelle ist zusammengefasst, wie Sie Datenträger über das Portal und mit PowerShell verwenden.
 
 | Methode | Optionen
 |-|-|
-|[Benutzerportal](#use-the-portal-to-add-additional-disks-to-a-vm)|- Fügen Sie einem bereits bereitgestellten virtuellen Computer neue Datenträger hinzu. Von Azure Stack werden neue Datenträger erstellt. </br> </br>- Fügen Sie einem bereits bereitgestellten virtuellen Computer eine vorhandene VHD-Datei als Datenträger hinzu. Hierzu muss die VHD-Datei zunächst vorbereitet und in Azure Stack hochgeladen werden. |
+|[Benutzerportal](#use-the-portal-to-add-additional-disks-to-a-vm)|- Fügen Sie einer vorhandenen VM neue Datenträger für Daten hinzu. Von Azure Stack werden neue Datenträger erstellt. </br> </br>- Fügen Sie eine vorhandene Datenträgerdatei (.vhd) einer vorab bereitgestellten VM hinzu. Zu diesem Zweck müssen Sie die VHD vorbereiten und die Datei dann in Azure Stack hochladen. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - Erstellen Sie einen neuen virtuellen Computer mit einem Betriebssystem-Datenträger, und fügen Sie dem virtuellen Computer gleichzeitig einen oder mehrere Datenträger für Daten hinzu. |
 
+## <a name="use-the-portal-to-add-disks-to-a-vm"></a>Verwenden des Portals zum Hinzufügen von Datenträgern zu einer VM
 
-## <a name="use-the-portal-to-add-additional-disks-to-a-vm"></a>Hinzufügen weiterer Datenträger zu einem virtuellen Computer über das Portal
-Wenn Sie über das Portal einen virtuellen Computer erstellen, wird bei den meisten Marketplace-Elementen standardmäßig nur ein Betriebssystem-Datenträger erstellt. Von Azure erstellte Datenträger werden als verwaltete Datenträger bezeichnet.
+Wenn Sie über das Portal einen virtuellen Computer erstellen, wird bei den meisten Marketplace-Elementen standardmäßig nur der Betriebssystemdatenträger erstellt.
 
-Nach dem Bereitstellen eines virtuellen Computers können Sie ihm über das Portal einen neuen oder bereits vorhandenen Datenträger für Daten hinzufügen. Zusätzliche Datenträger sollten jeweils in einem separaten Container platziert werden. Datenträger, die Sie einem virtuellen Computer hinzufügen, werden als nicht verwaltete Datenträger bezeichnet.
+Nach der Erstellung einer VM können Sie das Portal für folgende Zwecke verwenden:
+* Erstellen Sie einen neuen Datenträger für Daten, und fügen Sie ihn an den virtuellen Computer an.
+* Laden Sie einen vorhandenen Datenträger für Daten hoch, und fügen Sie ihn an die VM an.
 
-### <a name="use-the-portal-to-attach-a-new-data-disk-to-a-vm"></a>Anfügen eines neuen Datenträgers für Daten an einen virtuellen Computer über das Portal
+Jeder nicht verwaltete Datenträger, den Sie hinzufügen, sollte in einem separaten Container angeordnet werden.
 
-1.  Klicken Sie im Portal auf **Virtuelle Computer**.    
+>[!NOTE]
+>Von Azure erstellte und verwaltete Datenträger werden als [verwaltete Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/managed-disks-overview) bezeichnet.
+
+### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Verwenden des Portals zum Erstellen und Anfügen eines neuen Datenträgers für Daten
+
+1.  Wählen Sie im Portal die Option **Virtuelle Computer**.    
     ![Beispiel: VM-Dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
 2.  Wählen Sie einen virtuellen Computer aus, der zuvor bereitgestellt wurde.   
     ![Beispiel: Auswählen eines virtuellen Computers im Dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Klicken Sie für den virtuellen Computer auf **Datenträger** > **Neuen anfügen**.       
+3.  Wählen Sie für den virtuellen Computer die Option **Datenträger** > **Neuen anfügen**.       
     ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Klicken Sie im Bereich **Neuen Datenträger anfügen** auf **Speicherort**. Der Speicherort ist standardmäßig auf den Container festgelegt, der auch den Betriebssystem-Datenträger enthält.      
+4.  Wählen Sie im Bereich **Neuen Datenträger anfügen** die Option **Speicherort**. Der Speicherort ist standardmäßig auf den Container festgelegt, der auch den Betriebssystem-Datenträger enthält.      
     ![Beispiel: Festlegen des Datenträgerspeicherorts](media/azure-stack-manage-vm-disks/disk-location.png)
 
-5.  Wählen Sie das zu verwendende **Speicherkonto** aus. Wählen Sie als Nächstes den **Container** aus, in dem der Datenträger für Daten platziert werden soll. Auf der Seite **Container** können Sie bei Bedarf auch einen neuen Container erstellen. Anschließend können Sie den Speicherort für den neuen Datenträger auf den eigenen Container festlegen. Wenn Sie für jeden Datenträger einen separaten Container verwenden, verteilen Sie die Platzierung des Datenträgers für Daten, was zur Verbesserung der Leistung beitragen kann. Klicken Sie zum Speichern der Auswahl auf **Auswählen**.     
+5.  Wählen Sie das zu verwendende **Speicherkonto** aus. Wählen Sie als Nächstes den **Container** aus, in dem der Datenträger für Daten platziert werden soll. Auf der Seite **Container** können Sie bei Bedarf auch einen neuen Container erstellen. Anschließend können Sie den Speicherort für den neuen Datenträger auf den eigenen Container festlegen. Wenn Sie für jeden Datenträger einen separaten Container verwenden, verteilen Sie die Platzierung des Datenträgers für Daten, was zur Verbesserung der Leistung beitragen kann. Wählen Sie zum Speichern der Auswahl die Option **Auswählen**.     
     ![Beispiel: Auswählen eines Containers](media/azure-stack-manage-vm-disks/select-container.png)
 
-6.  Aktualisieren Sie auf der Seite **Neuen Datenträger anfügen** die Einstellungen für **Name**, **Typ**, **Größe** und **Hostzwischenspeicherung** des Datenträgers. Klicken Sie anschließend auf **Speichern**, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.  
+6.  Aktualisieren Sie auf der Seite **Neuen Datenträger anfügen** die Einstellungen für **Name**, **Typ**, **Größe** und **Hostzwischenspeicherung** des Datenträgers. Wählen Sie anschließend **OK**, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.  
     ![Beispiel: Abschließen der Datenträgeranfügung](media/azure-stack-manage-vm-disks/complete-disk-attach.png)  
 
 7.  Nachdem der Datenträger von Azure Stack erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **DATENTRÄGER** aufgeführt.   
@@ -71,27 +88,28 @@ Nach dem Bereitstellen eines virtuellen Computers können Sie ihm über das Port
 
 
 ### <a name="attach-an-existing-data-disk-to-a-vm"></a>Hinzufügen eines vorhandenen Datenträgers zu einem virtuellen Computer
+
 1.  [Bereiten Sie eine VHD-Datei vor](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd), um sie als Datenträger für einen virtuellen Computer zu verwenden. Laden Sie die VHD-Datei in ein Speicherkonto hoch, das Sie mit dem virtuellen Computer verwenden, an den Sie die VHD-Datei anfügen möchten.
 
   Verwenden Sie für die VHD-Datei nicht den Container, der den Betriebssystem-Datenträger enthält.   
   ![Beispiel: Hochladen einer VHD-Datei](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2.  Nach dem Hochladen der VHD-Datei können Sie die virtuelle Festplatte an einen virtuellen Computer anfügen. Klicken Sie im Menü auf der linken Seite auf **Virtuelle Computer**.  
+2.  Nach dem Hochladen der VHD-Datei können Sie die virtuelle Festplatte an einen virtuellen Computer anfügen. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer**.  
  ![Beispiel: Auswählen eines virtuellen Computers im Dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-3.  Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.    
+3.  Wählen Sie den gewünschten virtuellen Computer in der Liste aus.    
   ![Beispiel: Auswählen eines virtuellen Computers im Dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4.  Klicken Sie auf der Seite für den virtuellen Computer auf **Datenträger** > **Vorhandenen anfügen**.   
+4.  Wählen Sie auf der Seite für den virtuellen Computer die Option **Datenträger** > **Vorhandenen anfügen**.   
   ![Beispiel: Anfügen eines vorhandenen Datenträgers](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
-5.  Klicken Sie auf der Seite **Vorhandenen Datenträger anfügen** auf **VHD-Datei**. Die Seite **Speicherkonten** wird geöffnet.    
+5.  Wählen Sie auf der Seite **Vorhandenen Datenträger anfügen** die Option **VHD-Datei**. Die Seite **Speicherkonten** wird geöffnet.    
   ![Beispiel: Auswählen einer VHD-Datei](media/azure-stack-manage-vm-disks/select-vhd.png)
 
 6.  Wählen Sie unter **Speicherkonten** das zu verwendende Konto und anschließend einen Container aus, der die zuvor hochgeladene VHD-Datei enthält. Wählen Sie die VHD-Datei aus, und klicken Sie auf **Auswählen**, um die Auswahl zu speichern.    
   ![Beispiel: Auswählen eines Containers](media/azure-stack-manage-vm-disks/select-container2.png)
 
-7.  Die ausgewählte Datei wird unter **Vorhandenen Datenträger anfügen** unter **VHD-Datei** angezeigt. Aktualisieren Sie die Einstellung **Hostzwischenspeicherung** des Datenträgers, und klicken Sie dann auf **OK**, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.    
+7.  Die ausgewählte Datei wird unter **Vorhandenen Datenträger anfügen** unter **VHD-Datei** angezeigt. Aktualisieren Sie die Einstellung **Hostzwischenspeicherung** des Datenträgers, und wählen Sie dann **OK**, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.    
   ![Beispiel: Anfügen der VHD-Datei](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
 8.  Nachdem der Datenträger von Azure Stack erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger** aufgeführt.   

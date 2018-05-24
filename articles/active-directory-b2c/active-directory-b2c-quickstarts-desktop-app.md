@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
-ms.openlocfilehash: a312169217ac5476a503d5ad5a9126674f999eac
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d0e50d0a81a3230558da42ab6678c3c354ce0e01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C 
 
@@ -90,7 +90,7 @@ Azure Active Directory B2C bietet Funktionen, mit denen Benutzer ihre Profile ak
 
 ## <a name="access-a-protected-web-api-resource"></a>Zugreifen auf eine geschützte Web-API-Ressource
 
-Klicken Sie auf **Call API** (API aufrufen), um eine Anforderung an die per Azure AD B2C geschützte Ressource https://fabrikamb2chello.azurewebsites.net/hello zu übermitteln. 
+Klicken Sie auf **API aufrufen**, um eine Anforderung an die per Azure AD B2C geschützte Ressource zu übermitteln. 
 
 ![API aufrufen](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 

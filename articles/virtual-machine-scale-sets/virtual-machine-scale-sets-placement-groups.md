@@ -1,11 +1,11 @@
 ---
 title: Verwenden umfangreicher Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: "Alles, was Sie zur Verwendung umfangreicher Azure-VM-Skalierungsgruppe wissen müssen"
+description: Alles, was Sie zur Verwendung umfangreicher Azure-VM-Skalierungsgruppe wissen müssen
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
 ms.author: negat
-ms.openlocfilehash: 192f2c01be0992e22ce67e3df6d641ba707e22fd
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 17c8fdd0bc85b9d1a4e1b50cf422b28f32862a7e
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -77,10 +77,10 @@ Wenn Sie eine umfangreiche Skalierungsgruppe mithilfe einer Azure Resource Manag
       "mode": "Automatic"
     }
 ```
-Ein vollständiges Beispiel für eine umfangreiche Skalierungsgruppenvorlage finden Sie unter [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
+Ein vollständiges Beispiel für eine Vorlage für umfangreiche Skalierungsgruppen finden Sie unter [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Konvertieren einer vorhandenen Skalierungsgruppe in eine Skalierungsgruppe, die mehrere Platzierungsgruppen umfasst
-Wenn eine vorhandene VM-Skalierungsgruppe auf über 100 virtuelle Computer skalierbar sein soll, muss die Eigenschaft _singlePlacementGroup_ im Skalierungsgruppenmodell auf _false_ festgelegt werden. Sie können das Ändern dieser Eigenschaft mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com/) testen. Navigieren Sie zu einer vorhandenen Skalierungsgruppe, wählen Sie _Bearbeiten_ aus, und ändern Sie die Eigenschaft _singlePlacementGroup_. Sollte die Eigenschaft nicht angezeigt werden, betrachten Sie die Skalierungsgruppe möglicherweise mit einer älteren Version der Microsoft.Compute-API.
+Wenn eine vorhandene VM-Skalierungsgruppe auf über 100 VMs skalierbar sein soll, müssen Sie die Eigenschaft _singlePlacementGroup_ im Skalierungsgruppenmodell auf _false_ festlegen. Sie können das Ändern dieser Eigenschaft mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com/) testen. Navigieren Sie zu einer vorhandenen Skalierungsgruppe, wählen Sie _Bearbeiten_ aus, und ändern Sie die Eigenschaft _singlePlacementGroup_. Sollte die Eigenschaft nicht angezeigt werden, betrachten Sie die Skalierungsgruppe möglicherweise mit einer älteren Version der Microsoft.Compute-API.
 
 >[!NOTE] 
 Eine Skalierungsgruppe, die nur eine einzelne Platzierungsgruppe unterstützt (Standardverhalten), kann in eine Skalierungsgruppe konvertiert werden, die mehrere Skalierungsgruppen unterstützt, aber nicht umgekehrt. Machen Sie sich daher vor der Konvertierung sorgfältig mit den Eigenschaften umfangreicher Skalierungsgruppen vertraut.

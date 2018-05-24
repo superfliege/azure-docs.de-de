@@ -53,19 +53,11 @@
 ### [Enterprise-Kostenansicht deaktiviert](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 
 # Verweis
-## [Azure-Abrechnungs-API: Übersicht](billing-usage-rate-card-overview.md)
-### [Azure-Abrechnungs-REST-API](https://docs.microsoft.com/rest/api/billing)
-### [Partnerlösung: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
-## Azure-Nutzungs-API
-### [Azure-Nutzungs-REST-API](https://docs.microsoft.com/rest/api/consumption) 
-### [RateCard-REST-API](https://msdn.microsoft.com/library/azure/mt219005.aspx)
-### [Nutzungs-REST-API](https://msdn.microsoft.com/library/azure/mt219003.aspx)
-## [Übersicht über Unternehmensberichte](billing-enterprise-api.md)
-### [Übersicht über die REST-API für Unternehmensberichte](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary)
-## Abrechnungscodebeispiele
-### [Codebeispiel der Rechnungs-API](https://github.com/Azure-Samples/billing-dotnet-core-invoice-download)
-### [Codebeispiel der Nutzung-API](https://github.com/Azure-Samples/billing-dotnet-usage-api)
-### [Codebeispiel der RateCard-API](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
+## [API-Übersicht](billing-usage-rate-card-overview.md)
+## [Übersicht über die API für Unternehmensberichte](billing-enterprise-api.md)
+## [REST: Rechnung](/rest/api/billing)
+## [REST: Nutzung und RateCard](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
+## [Partnerlösung: Cloud Cruiser](billing-usage-rate-card-partner-solution-cloudcruiser.md)
 
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

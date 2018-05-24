@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: 'Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle'
+title: Tutorial – Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Erstellen und Verwalten virtueller Linux-Computer in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: a3826db21d2e4ed447e1ef8d4016ff1dbbf75b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4e8be3af81ce74b033b2a15ceaf857540c1d9a6e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle
+# <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli-20"></a>Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit Azure CLI 2.0
 
 Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible Computerumgebung. In diesem Tutorial werden grundlegende Vorgänge bei der Bereitstellung von virtuellen Azure-Computern behandelt, z.B. Auswählen einer VM-Größe, Auswählen eines VM-Images und Bereitstellen eines virtuellen Computers. Folgendes wird vermittelt:
 
@@ -33,10 +33,9 @@ Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible C
 > * Ändern der Größe eines virtuellen Computers
 > * Anzeigen und Verstehen des Status von virtuellen Computern
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
@@ -85,7 +84,7 @@ Die Erstellung der VM kann einige Minuten dauern. Nach der Erstellung des virtue
 Nun können Sie mittels SSH in Azure Cloud Shell oder von Ihrem lokalen Computer aus eine Verbindung mit der VM herstellen. Ersetzen Sie die Beispiel-IP-Adresse durch den Wert für `publicIpAddress`, den Sie sich im vorherigen Schritt notiert haben.
 
 ```bash
-ssh 52.174.34.95
+ssh azureuser@52.174.34.95
 ```
 
 Nachdem Sie sich bei der VM angemeldet haben, können Sie Anwendungen installieren und konfigurieren. Wenn Sie fertig sind, schließen Sie wie gewohnt die SSH-Sitzung:

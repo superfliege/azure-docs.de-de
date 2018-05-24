@@ -1,6 +1,6 @@
 ---
-title: Lastenausgleich für virtuelle Linux-Computer in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Azure Load Balancer eine hoch verfügbare und sichere Anwendung für drei virtuelle Linux-Computer erstellen.
+title: Tutorial – Durchführen eines Lastenausgleichs bei virtuellen Linux-Computern in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Erstellen eines Load Balancers für eine hoch verfügbare und sichere Anwendung über drei virtuelle Linux-Computer verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,14 +16,15 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c473a31261337f0b968ca21c85b61dafbf8fa74a
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: baae0ee72056d2f7437a865b11f738ef0a2e6934
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Lastenausgleich für virtuelle Linux-Computer in Azure zum Erstellen einer hoch verfügbaren Anwendung
-Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
+# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli-20"></a>Tutorial: Durchführen eines Lastenausgleichs bei virtuellen Linux-Computern in Azure zum Erstellen einer hoch verfügbaren Anwendung mit Azure CLI 2.0
+
+Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
@@ -34,10 +35,9 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 > * Anzeigen eines Load Balancers im Betrieb
 > * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="azure-load-balancer-overview"></a>Übersicht über den Azure Load Balancer
 Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der Hochverfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.

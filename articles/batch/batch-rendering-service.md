@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch Rendering-Dienst – cloudbasiertes Rendering | Microsoft-Dokumentation"
-description: "Rendern Sie Aufträge auf virtuellen Azure-Computern direkt über Maya – mit einem nutzungsbasierten Zahlungsmodell."
+title: Azure Batch Rendering-Dienst – cloudbasiertes Rendering | Microsoft-Dokumentation
+description: Rendern Sie Aufträge auf virtuellen Azure-Computern direkt über Maya – mit einem nutzungsbasierten Zahlungsmodell.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
-ms.date: 09/14/2017
+ms.date: 05/10/2018
 ms.author: danlep
-ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: df1b2da7628e6c3f9f4bcbb02a936c33aad49698
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Erste Schritte mit dem Batch Rendering-Dienst
 
-Der Azure Batch Rendering-Dienst bietet cloudbasierte Renderfunktionen und ein nutzungsbasiertes Zahlungsmodell. Er kümmert sich um die Auftragsplanung und Auftragswarteschlangen, um Fehler und Wiederholungen sowie um die automatische Skalierung für Ihre Renderaufträge. Der Batch Rendering-Dienst unterstützt [Autodesk Maya](https://www.autodesk.com/products/maya/overview), [3ds Max](https://www.autodesk.com/products/3ds-max/overview), [Arnold](https://www.autodesk.com/products/arnold/overview) und [V-Ray](https://www.chaosgroup.com/vray/maya). Mit dem Batch-Plug-In für Maya 2017 können Sie einen Renderauftrag in Azure ganz einfach direkt über Ihren Desktop starten.
+Der Azure Batch Rendering-Dienst bietet cloudbasierte Renderfunktionen und ein nutzungsbasiertes Zahlungsmodell. Er kümmert sich um die Auftragsplanung und Auftragswarteschlangen, um Fehler und Wiederholungen sowie um die automatische Skalierung für Ihre Renderaufträge. Der Batch Rendering-Dienst unterstützt Rendering-Apps wie [Autodesk Maya](https://www.autodesk.com/products/maya/overview), [3ds Max](https://www.autodesk.com/products/3ds-max/overview), [Arnold](https://www.autodesk.com/products/arnold/overview) und [V-Ray](https://www.chaosgroup.com/vray/maya). Mit dem Batch-Plug-In für Maya 2017 können Sie einen Renderauftrag in Azure ganz einfach direkt über Ihren Desktop starten.
 
 Mit Maya und 3ds Max können Sie Aufträge ausführen, indem Sie die Desktopanwendung [BatchLabs](https://github.com/Azure/BatchLabs) oder die [Batch-CLI-Vorlagen](batch-cli-templates.md) verwenden. Mit der Azure Batch-CLI können Sie Batch-Aufträge ausführen, ohne Code zu schreiben. Stattdessen können Sie Vorlagendateien nutzen, um Batch-Pools, -Aufträge und -Aufgaben zu erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung](batch-cli-templates.md).
 
@@ -25,16 +25,35 @@ Mit Maya und 3ds Max können Sie Aufträge ausführen, indem Sie die Desktopanwe
 
 Der Batch Rendering-Dienst unterstützt derzeit folgende Anwendungen:
 
-•   Autodesk Maya I/O 2017 Update 4 (Version 17.4.5459) •   Autodesk 3ds Max I/O 2018 Update 1 (Version 20.1.0.238) •   Autodesk Arnold for Maya (Version 5.0.1.1) •   Autodesk Arnold for 3ds Max (Version 1.0.836) •   Chaos Group V-Ray for Maya (Version 3.52.03) •   Chaos Group V-Ray for 3ds Max (Version 3.60.02)
+Auf CentOS 7-Renderingknoten:
+- Autodesk Maya I/O 2017 Update 5 (Cut 201708032230)
+- Autodesk Maya I/O 2018 Update 2 (Cut 201711281015)
+- Autodesk Arnold for Maya 2017 (Arnold-Version 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya 2018 (Arnold-Version 5.0.1.4) MtoA-2.1.0.3-2018
+- Chaos Group V-Ray for Maya 2017 (Version 3.60.04) 
+- Chaos Group V-Ray for Maya 2018 (Version 3.60.04) 
+- Blender (2.68)
+
+Auf Windows Server 2016-Renderingknoten:
+- Autodesk Maya I/O 2017 Update 5 (Version 17.4.5459) 
+- Autodesk Maya I/O 2018 Update 2 (Version 18.2.0.6476) 
+- Autodesk 3ds Max I/O 2018 Update 4 (Version 20.4.0.4254) 
+- Autodesk Arnold for Maya (Arnold-Version 5.0.1.1) MtoA-2.0.1.1-2017
+- Autodesk Arnold for Maya (Arnold-Version 5.0.1.4) MtoA-2.0.2.3-2018
+- Autodesk Arnold for 3ds Max (Arnold-Version 5.0.2.4 ) (Version 1.2.926) 
+- Chaos Group V-Ray for Maya (Version 3.52.03) 
+- Chaos Group V-Ray for 3ds Max (Version 3.60.02)
+- Blender (2.79)
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Verwendung des Batch Rendering-Diensts benötigen Sie Folgendes:
 
-- Ein [Azure-Konto](https://azure.microsoft.com/free/).
-- Ein **Azure Batch-Konto.** Eine Anleitung zum Erstellen eines Batch-Kontos im Azure-Portal finden Sie unter [Erstellen eines Batch-Kontos mit dem Azure-Portal](batch-account-create-portal.md).
-- Ein **Azure Storage-Konto.** Die für Ihren Renderauftrag verwendeten Ressourcen werden in Azure Storage gespeichert. Beim Einrichten Ihres Batch-Kontos können Sie automatisch ein Speicherkonto erstellen. Sie können aber auch ein bereits vorhandenes Speicherkonto verwenden. Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
+- [Azure-Konto](https://azure.microsoft.com/free/)
+- **Azure Batch-Konto**. Eine Anleitung zum Erstellen eines Batch-Kontos im Azure-Portal finden Sie unter [Erstellen eines Batch-Kontos mit dem Azure-Portal](batch-account-create-portal.md).
+- **Azure Storage-Konto**. Die für Ihren Renderauftrag verwendeten Ressourcen werden normalerweise in Azure Storage gespeichert. Beim Einrichten Ihres Batch-Kontos können Sie automatisch ein Speicherkonto erstellen. Sie können aber auch ein bereits vorhandenes Speicherkonto verwenden. Informationen zu den Optionen für Speicherkonten in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account).
+- **Umgebungsvariablen**. Falls in Ihrer Lösung Umgebungsvariablen geändert werden, sollten Sie sicherstellen, dass die Werte von `AZ_BATCH_ACCOUNT_URL` und `AZ_BATCH_SOFTWARE_ENTITLEMENT_TOKEN` intakt und vorhanden sind, wenn eine der obigen lizenzierten Anwendungen aufgerufen wird. Andernfalls kann es zu Problemen bei der Softwareaktivierung kommen.
 - **BatchLabs** (optional). [BatchLabs](https://azure.github.io/BatchLabs) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, die Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützen. Es ist für die Verwendung des Rendering-Diensts zwar nicht zwingend erforderlich, aber eine sinnvolle Option beim Entwickeln und Debuggen von Batch-Lösungen.
 
 Für die Verwendung des Batch-Plug-Ins für Maya benötigen Sie Folgendes:
@@ -72,18 +91,11 @@ Im Azure-Portal und in BatchLabs können Sie wie folgt ein VM-Image mit den vori
 
 ![Auswählen des Imagetyps für das Batch-Konto](./media/batch-rendering-service/add-pool.png)
 
-Scrollen Sie nach unten, und klicken Sie auf **Lizenzierung für Grafik und Rendering**, um das Blatt **Choose licenses** (Lizenzen auswählen) zu öffnen. Wählen Sie mindestens eine Softwarelizenz aus:
+Scrollen Sie nach unten zu **Lizenzierung für Grafik und Rendering**, und klicken Sie auf **Software und Preise auswählen**. Wählen Sie eine oder mehrere Softwarelizenzen aus:
 
 ![Auswählen der Lizenz für Grafik und Rendering für den Pool](./media/batch-rendering-service/graphics-licensing.png)
 
-Folgende Lizenzversionen sind verfügbar:
-
-- Maya 2017
-- 3ds Max 2018
-- Arnold for Maya 5.0.1.1
-- Arnold for 3ds Max 1.0.836
-- V-Ray for Maya 3.52.03
-- V-Ray for 3ds Max 3.60.01
+Die angegebenen spezifischen Lizenzversionen stimmen mit den Versionen oben im Abschnitt „Unterstützte Anwendungen“ überein.
 
 ### <a name="custom-images"></a>Benutzerdefinierte Images
 
@@ -175,12 +187,12 @@ Auf der Registerkarte **Env** (Umgebung) können Sie angeben, welche Art von Bet
 
 |Betriebssystem  |Image  |
 |---------|---------|
-|Linux     |Batch CentOS Preview |
-|Windows     |Batch Windows Preview |
+|Linux     |Batch CentOS |
+|Windows     |Batch Windows |
 
 #### <a name="choose-a-vm-size"></a>Auswählen einer VM-Größe
 
-Auf der Registerkarte **Env** (Umgebung) können Sie die Größe des virtuellen Computers angeben. Weitere Informationen zu verfügbaren VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes) sowie unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes). 
+Auf der Registerkarte **Env** (Umgebung) können Sie die Größe des virtuellen Computers angeben. Weitere Informationen zu verfügbaren VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md) sowie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md). 
 
 ![Angeben von Betriebssystemimage und Größe für virtuelle Computer auf der Registerkarte „Env“ (Umgebung)](./media/batch-rendering-service/environment.png)
 
@@ -189,8 +201,7 @@ Auf der Registerkarte **Env** (Umgebung) können Sie die Größe des virtuellen 
 Auf der Registerkarte **Env** (Umgebung) können Sie die zu verwendenden Lizenzen angeben. Beispiele für Optionen:
 
 - **Maya** (standardmäßig aktiviert)
-- 
-            **Arnold** (aktiviert, wenn Arnold als aktive Rendering-Engine in Maya erkannt wird)
+- **Arnold** (aktiviert, wenn Arnold als aktive Rendering-Engine in Maya erkannt wird)
 
  Wenn Sie beim Rendern Ihre eigene Lizenz verwenden möchten, können Sie Ihren Lizenzendpunkt konfigurieren, indem Sie der Tabelle die entsprechenden Umgebungsvariablen hinzufügen. In diesem Fall müssen allerdings die Standardlizenzoptionen deaktiviert werden.
 

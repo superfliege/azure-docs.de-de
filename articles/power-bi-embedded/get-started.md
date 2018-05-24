@@ -3,8 +3,8 @@ title: Erste Schritte mit Microsoft Power BI Embedded | Microsoft-Dokumentation
 description: Integrieren von Power BI Embedded in Ihre Business Intelligence-Anwendung
 services: power-bi-embedded
 documentationcenter: ''
-author: guyinacube
-manager: erikre
+author: markingmyname
+manager: kfile
 editor: ''
 tags: ''
 ms.assetid: 4787cf44-5d1c-4bc3-b3fd-bf396e5c1176
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
-ms.author: asaxton
-ms.openlocfilehash: 3ea302d8cdd9a08d41f863917adeb4505552649d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.author: maghan
+ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Erste Schritte mit Microsoft Power BI Embedded
 
@@ -48,7 +48,7 @@ Wir stellen Beispiele zur Verfügung, um Ihnen den Einstieg zu erleichtern. Eine
 Erstellen Sie Power BI Embedded-Kapazität in Microsoft Azure, um die Produktion Ihrer Anwendung vorzubereiten. Informationen zur Kapazitätserstellung finden Sie unter [Erstellen von Power BI Embedded-Kapazität im Azure-Portal](create-capacity.md).
 
 > [!IMPORTANT]
-> Da Einbettungstoken nur für das Testen während der Entwicklung bestimmt sind, ist die Anzahl von Einbettungstoken, die für ein Power BI-Hauptkonto generiert werden kann, begrenzt. Für Einbettungen in die Produktion muss [Kapazität erworben werden](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Wenn Kapazität erworben wird, gilt keine Beschränkung für die Generierung von Einbettungstoken.
+> Da Einbettungstoken nur für das Testen während der Entwicklung bestimmt sind, ist die Anzahl von Einbettungstoken, die für ein Power BI-Hauptkonto generiert werden kann, begrenzt. Für Einbettungen in die Produktion muss [Kapazität erworben werden](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Wenn Kapazität erworben wird, gilt keine Beschränkung für die Generierung von Einbettungstoken. Wechseln Sie zu [Verfügbare Features abrufen](https://msdn.microsoft.com/en-us/library/mt846473.aspx), um die aktuelle eingebettete Auslastung in Prozent zu überprüfen.
 
 Verwalten Sie die Kapazität über das Power BI-Verwaltungsportal. Weisen Sie Arbeitsbereichszuweiser zu, die Sie bei Ihren App-Arbeitsbereichen unterstützen. Weitere Informationen finden Sie unter [Verwalten von Kapazitäten in Power BI Premium und Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 

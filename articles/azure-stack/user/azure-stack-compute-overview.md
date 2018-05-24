@@ -1,6 +1,6 @@
 ---
-title: "Einführung in virtuelle Azure Stack-Computer"
-description: "Erfahren Sie mehr über virtuelle Azure Stack-Computer."
+title: Einführung in virtuelle Azure Stack-Computer
+description: Erfahren Sie mehr über virtuelle Azure Stack-Computer.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -8,11 +8,11 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 02/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 2453f2449124cb4956797e0d9748f1ee3bf0d9ad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 41e75a6806cc5ff13fad64fd415344376e0d6e88
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Einführung in virtuelle Azure Stack-Computer
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="overview"></a>Übersicht
 Ein virtueller Azure Stack-Computer ist eine Art bedarfsgesteuerte, skalierbare Computingressource, die von Azure Stack angeboten wird. Virtuelle Computer werden in der Regel verwendet, wenn Sie mehr Kontrolle über Ihre Computerumgebung benötigen als bei den anderen Optionen zur Verfügung steht. In diesem Artikel erfahren Sie, was Sie vor der Erstellung eines virtuellen Computers berücksichtigen sollten und wie Sie ihn erstellen und verwalten.
 
-Ein virtueller Azure Stack-Computer bietet die Flexibilität der Virtualisierung, ohne dass Sie einzelne Cluster oder Computer verwalten müssen. Der virtuelle Computer muss allerdings weiterhin verwaltet werden – beispielsweise durch Konfigurieren, Patchen und Verwalten der darauf ausgeführten Software.
+Ein virtueller Azure Stack-Computer bietet die Flexibilität der Virtualisierung, ohne dass Sie Cluster oder einzelne Computer verwalten müssen. Der virtuelle Computer muss allerdings weiterhin verwaltet werden – beispielsweise durch Konfigurieren, Patchen und Verwalten der darauf ausgeführten Software.
 
 Virtuelle Azure Stack-Computer können auf vielfältige Weise genutzt werden. Beispiel: 
 
@@ -29,20 +29,20 @@ Virtuelle Azure Stack-Computer können auf vielfältige Weise genutzt werden. Be
 
 * **Anwendungen in der Cloud:** Da die Nutzung Ihrer Anwendung Schwankungen unterliegen kann, ist es unter Umständen wirtschaftlich sinnvoll, sie auf einem virtuellen Computer in Azure Stack auszuführen. Sie bezahlen für zusätzliche virtuelle Computer, wenn Sie sie benötigen, und fahren sie andernfalls einfach herunter.
 
-* **Erweitertes Rechenzentrum:** Virtuelle Computer in einem virtuellen Azure Stack-Netzwerk lassen sich problemlos mit dem Netzwerk Ihrer Organisation verbinden.
+* **Erweitertes Datencenter:** Virtuelle Computer in einem virtuellen Azure Stack-Netzwerk lassen sich problemlos mit dem Netzwerk Ihrer Organisation oder mit Azure verbinden.
 
-Die Anzahl virtueller Computer, die von Ihrer Anwendung genutzt werden, kann zentral oder horizontal hochskaliert werden, um Ihren jeweiligen Anforderungen gerecht zu werden.
+Die virtuellen Computer, die von Ihrer Anwendung genutzt werden, können zur Erfüllung Ihrer Anforderungen zentral oder horizontal hochskaliert werden.
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>Was muss ich vor dem Erstellen eines virtuellen Computers berücksichtigen?
 
-Beim Einrichten einer Anwendungsinfrastruktur in Azure Stack müssen immer zahlreiche Designaspekte berücksichtigt werden. Machen Sie sich daher zunächst Gedanken über Folgendes:
+Beim Einrichten einer Anwendungsinfrastruktur in Azure Stack müssen immer zahlreiche Designaspekte berücksichtigt werden. Stellen Sie daher vor der Erstellung Ihrer Infrastruktur Überlegungen zu folgenden VM-Aspekten an:
 
-- Die Namen Ihrer Anwendungsressourcen
-- Die Größe des virtuellen Computers
-- Die maximal erstellbare Anzahl virtueller Computer
-- Das Betriebssystem für den virtuellen Computer
-- Die Konfiguration des virtuellen Computers nach dem Start 
-- Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
+* Die Namen Ihrer Anwendungsressourcen
+* Die Größe des virtuellen Computers
+* Die maximal erstellbare Anzahl virtueller Computer
+* Das Betriebssystem für den virtuellen Computer
+* Die Konfiguration des virtuellen Computers nach dem Start
+* Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
 ### <a name="naming"></a>Benennung
 
@@ -64,7 +64,6 @@ Virtuelle Computer verwenden virtuelle Festplatten (VHDs), um ihr Betriebssystem
 Azure Stack bietet einen Marketplace für verschiedene Versionen und Arten von Betriebssystemen. Marketplace-Images werden anhand von Herausgeber, Angebot, SKU und Version (üblicherweise die aktuelle Version) identifiziert.
 
 Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen zu einem Image:
-
 
 |Methode|BESCHREIBUNG|
 |---------|---------|
@@ -112,7 +111,12 @@ Die folgende Tabelle enthält hilfreiche Informationen zur Erstellung Ihres erst
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Wie verwalte ich den erstellten virtuellen Computer?
 
-Virtuelle Computer können über ein browserbasiertes Portal, über Befehlszeilentools mit Skriptunterstützung oder direkt über APIs verwaltet werden. Gängige Verwaltungsaufgaben sind das Abrufen von Informationen zu einem virtuellen Computer, das Anmelden bei einem virtuellen Computer, das Verwalten der Verfügbarkeit und die Durchführung von Sicherungen.
+Sie können virtuelle Computer über ein browserbasiertes Portal, über Befehlszeilentools mit Skriptunterstützung oder direkt über APIs verwalten. Zu den typischen Verwaltungsaufgaben zählen unter anderem folgende:
+
+* Abrufen von Informationen zu einem virtuellen Computer
+* Herstellen einer Verbindung mit einem virtuellen Computer
+* Verwalten der Verfügbarkeit
+* Erstellen von Sicherungskopien
 
 ### <a name="get-information-about-a-vm"></a>Abrufen von Informationen zu einem virtuellen Computer
 
@@ -130,5 +134,5 @@ Die folgende Tabelle zeigt einige der Methoden, mit denen Sie Informationen zu e
 Sie können die Schaltfläche **Verbinden** im Azure Stack-Portal verwenden, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überlegungen zu virtuellen Computern in Azure Stack](azure-stack-vm-considerations.md)
 
+* [Überlegungen zu virtuellen Computern in Azure Stack](azure-stack-vm-considerations.md)

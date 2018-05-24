@@ -1,28 +1,28 @@
 ---
-title: Sichern eines Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den NGINX-Webserver mit SSL-Zertifikaten auf einem virtuellen Linux-Computer in Azure sichern.
+title: Tutorial – Sichern eines Linux-Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Sichern eines virtuellen Linux-Computers verwenden, auf dem der NGINX-Webserver mit im Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/14/2017
+ms.date: 04/30/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 02118533c4ab552f81157f644bb794e68fbc4ce3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f86cc891b67cddf3a4046260d2977371af3d0596
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/01/2018
 ---
-# <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Sichern eines Webservers mit SSL-Zertifikaten auf einem virtuellen Linux-Computer in Azure
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Linux-Computer in Azure mit im Key Vault gespeicherten SSL-Zertifikaten
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Ve
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.22 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.  
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 
 ## <a name="overview"></a>Übersicht
@@ -70,14 +70,14 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Vorbereiten eines Zertifikats für die Verwendung mit einem virtuellen Computer
-Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) ab. Konvertieren Sie das Zertifikat mit [az vm format-secret](/cli/azure/vm#az_vm_format_secret). Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
+Um das Zertifikat während der Erstellung des virtuellen Computers zu verwenden, rufen Sie die ID des Zertifikats mit [az keyvault secret list-versions](/cli/azure/keyvault/secret#az_keyvault_secret_list_versions) ab. Konvertieren Sie das Zertifikat mit [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). Im folgenden Beispiel wird die Ausgabe dieser Befehle Variablen zugewiesen, um die Verwendung in den nächsten Schritten zu vereinfachen:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
           --vault-name $keyvault_name \
           --name mycert \
           --query "[?attributes.enabled].id" --output tsv)
-vm_secret=$(az vm format-secret --secret "$secret")
+vm_secret=$(az vm secret format --secrets "$secret")
 ```
 
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Erstellen einer cloud-init-Konfiguration zum Sichern von NGINX
@@ -159,4 +159,3 @@ Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Com
 
 > [!div class="nextstepaction"]
 > [Virtueller Linux-Computer – Skriptbeispiele](./cli-samples.md)
-

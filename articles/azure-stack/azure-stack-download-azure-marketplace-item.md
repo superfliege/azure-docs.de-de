@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: cdadf48aa23e3dd76d8a511794f00725f073611d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2e92dc96a69400f689e49b70d1b855c955084362
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Herunterladen von Marketplace-Elementen von Azure in Azure Stack
 
@@ -31,7 +31,7 @@ Wenn Sie entscheiden, welche Inhalte in Ihrem Azure Stack-Marketplace enthalten 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>Herunterladen von Marketplace-Elementen in einem verbundenen Szenario (mit Internetverbindung)
 
 1. Zum Herunterladen von Marketplace-Elementen müssen Sie zunächst [Azure Stack bei Azure registrieren](azure-stack-register.md).
-2. Melden Sie sich beim Azure Stack-Administratorportal an (https://portal.local.azurestack.external).
+2. Melden Sie sich beim Azure Stack-Administratorportal an. (Verwenden Sie für das ASDK Folgendes: https://portal.local.azurestack.external).
 3. Einige Marketplace-Elemente sind unter Umständen groß. Stellen Sie sicher, dass auf Ihrem System ausreichend Speicherplatz vorhanden ist. Klicken Sie hierfür auf **Ressourcenanbieter** > **Speicher**.
 
     ![](media/azure-stack-download-azure-marketplace-item/image01.png)
@@ -60,7 +60,7 @@ Vergewissern Sie sich vor der Verwendung des Tools für die Marketplace-Syndikat
 
 Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folgt vor, um die erforderlichen Marketplace-Elemente herunterzuladen:
 
-1. Öffnen Sie eine PowerShell-Konsole als Administrator, und [installieren Sie Azure Stack-spezifische PowerShell-Module](azure-stack-powershell-install.md). Installieren Sie **PowerShell ab Version 1.2.11**.  
+1. Öffnen Sie eine PowerShell-Konsole als Administrator, und [installieren Sie Azure Stack-spezifische PowerShell-Module](azure-stack-powershell-install.md). Installieren Sie **mindestens Version 1.2.11 des Azure Stack-PowerShell-Moduls**.  
 
 2. Fügen Sie das Azure-Konto hinzu, das Sie für die Registrierung von Azure Stack verwendet haben. Führen Sie zum Hinzufügen des Kontos das **Add-AzureRmAccount**-Cmdlet ohne Parameter aus. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Azure-Konto einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden.  
 
@@ -92,7 +92,7 @@ Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folg
 5. Führen Sie die folgenden Befehle aus, um das Syndikationsmodul zu importieren und zu starten:  
 
    ```powershell
-   Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
+   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
      -destination "<Destination folder path>" `
@@ -106,15 +106,22 @@ Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folg
 
 7. Wählen Sie das Image aus, das Sie herunterladen möchten, und notieren Sie sich die Imageversion. Sie können mehrere Images auswählen, indem Sie die STRG-Taste gedrückt halten. Sie verwenden die Imageversion, um das Image im nächsten Abschnitt zu importieren.  Klicken Sie als Nächstes auf **OK**, und akzeptieren Sie anschließend die rechtlichen Bedingungen, indem Sie auf **Ja** klicken. Die Liste mit den Images kann mithilfe der Option **Kriterien hinzufügen** gefiltert werden. 
 
-   Der Downloadvorgang kann abhängig von der Imagegröße eine Weile dauern. Nach Abschluss des Downloadvorgangs steht das Image am zuvor angegebenen Zielpfad zur Verfügung. Der Download enthält die VHD-Datei und die Katalogelemente im AZPKG-Format.
+   Der Downloadvorgang kann abhängig von der Imagegröße eine Weile dauern. Nach Abschluss des Downloadvorgangs steht das Image am zuvor angegebenen Zielpfad zur Verfügung. Der Download enthält eine VHD-Datei (für virtuelle Computer) oder eine ZIP-Datei (für VM-Erweiterungen) und ein Katalogelement im AZPKG-Format.
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>Importieren des Images und Veröffentlichen im Azure Stack-Marketplace
+Im Marketplace gibt es drei Arten von Elementen: virtuelle Computer, VM-Erweiterungen und Lösungsvorlagen. Lösungsvorlagen werden weiter unten erläutert.
+> [!NOTE]
+> VM-Erweiterungen können Azure Stack derzeit nicht hinzugefügt werden.
 
 1. Speichern Sie das heruntergeladene Image und das Katalogpaket sowie die entsprechenden Inhalte im Ordner „AzureStack-Tools-master“ auf einem Wechseldatenträger, und kopieren Sie ihn in die Azure Stack-Umgebung. (Sie können ihn an einen beliebigen lokalen Speicherort kopieren, z.B. „C:\MarketplaceImages“.)     
 
 2. Stellen Sie vor dem Importieren des Images eine Verbindung mit der Umgebung des Azure Stack-Betreibers her. Gehen Sie hierzu wie unter [Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers](azure-stack-powershell-configure-admin.md) beschrieben vor.  
 
-3. Importieren Sie das Image mithilfe des Cmdlets „Add-AzsVMImage“ in Azure Stack. Ersetzen Sie bei Verwendung dieses Cmdlets die Werte für *Herausgeber*, *Angebot* und andere Parameter durch die Werte des Images, das Sie importieren möchten. Die Werte für *Herausgeber*, *Angebot* und *SKU* des Images können Sie über das Objekt „imageReference“ der zuvor heruntergeladenen AZPKG-Datei ermitteln. Den Wert für *Version* erhalten Sie in Schritt 6 des vorherigen Abschnitts.
+3. Wenn der Download eine kleine VHD-Datei (3 MB) namens „fixed3.vhd“ enthält, handelt es sich dabei um eine Lösungsvorlage. Diese Datei wird nicht benötigt. Fahren Sie mit Schritt 5 fort. Laden Sie alle abhängigen Elemente herunter, wie in der Beschreibung für den Download angegeben.
+
+4. Importieren Sie das Image mithilfe des Cmdlets „Add-AzsVMImage“ in Azure Stack. Ersetzen Sie bei Verwendung dieses Cmdlets die Werte für *Herausgeber*, *Angebot* und andere Parameter durch die Werte des Images, das Sie importieren möchten. Die Werte für *Herausgeber*, *Angebot* und *SKU* des Images können Sie über das Objekt „imageReference“ der zuvor heruntergeladenen AZPKG-Datei ermitteln. Den Wert für *Version* erhalten Sie in Schritt 6 des vorherigen Abschnitts.
+
+Das Objekt „imageReference“ finden Sie, indem Sie die AZPKG-Datei mit der Erweiterung „.ZIP“ umbenennen, die Datei in ein temporäres Verzeichnis extrahieren und die Datei „DeploymentTemplates\CreateUiDefinition.json“ mit einem Text-Editor öffnen. Suchen Sie den folgenden Abschnitt:
 
    ```json
    "imageReference": {
@@ -140,9 +147,9 @@ Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folg
     -Location Local
    ```
 
-4. Laden Sie Ihr Marketplace-Element (AZPKG-Datei) über das Portal in den Azure Stack-Blobspeicher hoch. Sie können es in Azure Stack-Speicher oder Azure Storage hochladen. (Es handelt sich um einen temporären Speicherort für das Paket.) Vergewissern Sie sich, dass das Blob öffentlich zugänglich ist, und notieren Sie sich den URI.  
+5. Laden Sie Ihr Marketplace-Element (AZPKG-Datei) über das Portal in den Azure Stack-Blobspeicher hoch. Sie können es in Azure Stack-Speicher oder Azure Storage hochladen. (Es handelt sich um einen temporären Speicherort für das Paket.) Vergewissern Sie sich, dass das Blob öffentlich zugänglich ist, und notieren Sie sich den URI.  
 
-5. Verwenden Sie **Add-AzsGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel: 
+6. Verwenden Sie **Add-AzsGalleryItem**, um das Marketplace-Element in Azure Stack zu veröffentlichen. Beispiel: 
 
    ```powershell
    Add-AzsGalleryItem `
@@ -150,7 +157,7 @@ Gehen Sie auf dem Computer, der über eine Internetverbindung verfügt, wie folg
      –Verbose
    ```
 
-6. Das veröffentlichte Katalogelement können Sie unter **Neu** > **Marketplace** anzeigen.  
+7. Das veröffentlichte Katalogelement können Sie unter **Neu** > **Marketplace** anzeigen. Falls es sich bei dem Download um eine Lösungsvorlage gehandelt hat, laden Sie auch das abhängige VHD-Image herunter.
 
    ![Marketplace](./media/azure-stack-download-azure-marketplace-item/image06.png)
 

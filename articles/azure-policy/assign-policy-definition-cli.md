@@ -1,19 +1,19 @@
 ---
-title: Verwenden der Azure-Befehlszeilenschnittstelle für die Erstellung einer Richtlinienzuweisung zum Identifizieren nicht kompatibler Ressourcen in Ihrer Azure-Umgebung | Microsoft-Dokumentation
-description: Erstellen Sie mithilfe von PowerShell eine Azure Policy-Zuweisung zum Identifizieren nicht kompatibler Ressourcen.
+title: Verwenden der Azure-Befehlszeilenschnittstelle für die Erstellung einer Richtlinienzuweisung zum Identifizieren nicht kompatibler Ressourcen in Ihrer Azure-Umgebung
+description: Erstellen Sie mithilfe von PowerShell eine Azure Policy-Zuweisung zum Identifizieren nicht konformer Ressourcen.
 services: azure-policy
 keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/03/2018
+ms.date: 05/07/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 5c376cc2445253197dd51d8bdd89b341d3130f1a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d4d92dc56a9320a4deb0adf611edded0c018df3f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht kompatibler Ressourcen in Ihrer Azure-Umgebung mit der Azure-Befehlszeilenschnittstelle
 
@@ -27,17 +27,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Für diese Schnellstartanleitung ist es erforderlich, Version 2.0.4 oder höher der Azure CLI auszuführen, um die CLI lokal zu installieren und zu verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Für diese Schnellstartanleitung ist es erforderlich, Version 2.0.4 oder höher der Azure CLI auszuführen, um die CLI lokal zu installieren und zu verwenden. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Registrieren Sie den Ressourcenanbieter Policy Insights mithilfe der Azure-Befehlszeilenschnittstelle. Durch die Registrierung des Ressourcenanbieters wird sichergestellt, dass das Abonnement mit ihm verwendet werden kann. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des Vorgangs „Aktion registrieren“ für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
 
-```
+```azurecli-interactive
 az provider register –-namespace 'Microsoft.PolicyInsights'
 ```
-Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md).
 
+Weitere Informationen zum Registrieren und Anzeigen von Ressourcenanbietern finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md).
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
@@ -45,8 +45,8 @@ In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weis
 
 Führen Sie den folgenden Befehl aus, um eine Richtlinienzuweisung zu erstellen:
 
-```
-az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>' --sku 'standard'
+```azurecli-interactive
+az policy assignment create --name 'Audit Virtual Machines without Managed Disks Assignment' --scope '<scope>' --policy '<policy definition ID>'
 ```
 
 In dem Befehl werden folgende Informationen verwendet:
@@ -54,18 +54,13 @@ In dem Befehl werden folgende Informationen verwendet:
 - **Name:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall *Audit Virtual Machines without Managed Disks Assignment* (Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger).
 - **Richtlinie:** Die Richtliniendefinitions-ID, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die Richtliniendefinition: *Audit Virtual Machines without Managed Disks* (Virtuelle Computer ohne verwaltete Datenträger überwachen). Führen Sie den folgenden Befehl aus, um die Richtliniendefinitions-ID abzurufen: `az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
 - **Bereich:** Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen. Ersetzen Sie &lt;scope&gt; durch den Namen Ihrer Ressourcengruppe.
-- **SKU:** Dieser Befehl erstellt eine Richtlinienzuweisung mit dem Standard-Tarif. Der Standard-Tarif ermöglicht eine skalierbare Verwaltung, Compliancebewertung und Problembehandlung. Weitere Details zu Tarifen finden Sie auf der [Preisseite für Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy).
-
 
 ## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen
 
 Führen Sie zum Anzeigen der Ressourcen, die unter dieser Zuordnung nicht konform sind, die folgenden Befehle aus, um die Richtlinienzuweisungs-ID abzurufen:
 
-```
-$policyAssignment = Get-AzureRmPolicyAssignment | where {$_.properties.displayName -eq "Audit Virtual Machines without Managed Disks"}
-```
-
-```
+```azurepowershell-interactive
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -79,30 +74,28 @@ armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/provider
 
 Ihre Ergebnisse sollten in etwa wie im folgenden Beispiel aussehen:
 
-```
+```json
 {
-"@odata.context":"https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
-"@odata.count": 3,
-"value": [
-{
-    "@odata.id": null,
-    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
-    },
-    {
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
-         },
-{
-      "@odata.id": null,
-      "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
-      "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
-         }
+    "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest",
+    "@odata.count": 3,
+    "value": [{
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachineId>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionId>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine2Id>"
+        },
+        {
+            "@odata.id": null,
+            "@odata.context": "https://management.azure.com/subscriptions/<subscriptionId>/providers/Microsoft.PolicyInsights/policyStates/$metadata#latest/$entity",
+            "ResourceId": "/subscriptions/<subscriptionName>/resourcegroups/<rgname>/providers/microsoft.compute/virtualmachines/<virtualmachine3ID>"
+        }
 
-]
+    ]
 }
-
 ```
 
 Die Ergebnisse sind vergleichbar mit dem, was üblicherweise in der Azure-Portalansicht unter **Nicht konforme Ressourcen** zu sehen ist.
@@ -111,8 +104,8 @@ Die Ergebnisse sind vergleichbar mit dem, was üblicherweise in der Azure-Portal
 
 Andere Leitfäden in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie mit weiteren Tutorials fortfahren möchten, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, löschen Sie die erstellte Zuweisung mithilfe des folgenden Befehls:
 
-```azurecli
-az policy assignment delete –name Audit Virtual Machines without Managed Disks Assignment --scope /subscriptions/ <subscriptionID> / <resourceGroupName>
+```azurecli-interactive
+az policy assignment delete –name 'Audit Virtual Machines without Managed Disks Assignment' --scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -122,4 +115,4 @@ In diesem Schnellstart haben Sie eine Richtliniendefinition zum Identifizieren n
 Wenn Sie mehr über das Zuweisen von Richtlinien erfahren und sicherstellen möchten, dass **zukünftige** von Ihnen erstellte Ressourcen konform sind, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Erstellen und Verwalten von Richtlinien](./create-manage-policy.md)
+> [Erstellen und Verwalten von Richtlinien](create-manage-policy.md)

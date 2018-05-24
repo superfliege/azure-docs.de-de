@@ -16,11 +16,11 @@ f1_keywords:
 - sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: ce561c61d25946a508df3e92c461f1c8e889a07e
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="about-azure-storage-accounts"></a>Informationen zu Azure-Speicherkonten
 
@@ -62,8 +62,8 @@ Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhän
 Sie können auch einen benutzerdefinierten Domänennamen konfigurieren, den Sie mit Ihrem Speicherkonto verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](../blobs/storage-custom-domain-name.md). Sie können für die Konfiguration auch PowerShell verwenden. Weitere Informationen finden Sie unter dem Cmdlet [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount) .  
 
 
-## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Weitere Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 3. Geben Sie einen Namen für Ihr Speicherkonto ein. Unter [Speicherkontoendpunkte](#storage-account-endpoints) finden Sie Details dazu, wie der Name des Speicherkontos zum Adressieren Ihrer Objekte in Azure Storage verwendet wird.
    
@@ -125,7 +125,7 @@ Sie sollten die Zugriffsschlüssel für Ihr Speicherkonto regelmäßig ändern, 
 
 **Anwendungen** : Falls Sie Webanwendungen oder Clouddienste haben, die das Speicherkonto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus.
 
-**Speicher-Explorer** : Wenn Sie beliebige [Speicher-Explorer-Anwendungen](storage-explorers.md)verwenden, müssen Sie möglicherweise den von diesen Anwendungen verwendeten Speicherschlüssel aktualisieren.
+**Storage-Explorer:** Wenn Sie beliebige [Storage-Explorer-Anwendungen](storage-explorers.md)verwenden, müssen Sie möglicherweise den von diesen Anwendungen verwendeten Speicherschlüssel aktualisieren.
 
 Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 
@@ -134,17 +134,17 @@ Mit dem folgenden Prozess wechseln Sie Ihre Speicherzugriffsschlüssel:
 3. Aktualisieren Sie die Verbindungszeichenfolgen in Ihrem Code, um auf den neuen primären Zugriffsschlüssel zu verweisen.
 4. Generieren Sie den sekundären Zugriffsschlüssel auf die gleiche Weise neu.
 
-## <a name="delete-a-storage-account"></a>Löschen eines Speicherkontos
+## <a name="delete-a-storage-account"></a>Löschen von Speicherkonten
 Um ein Speicherkonto zu entfernen, das Sie nicht mehr verwenden, wechseln Sie im [Azure-Portal](https://portal.azure.com)zum entsprechenden Speicherkonto, und klicken Sie auf **Löschen**. Durch das Löschen eines Speicherkontos wird das gesamte Konto gelöscht, einschließlich aller Daten im Konto.
 
 > [!WARNING]
 > Es ist nicht möglich, ein gelöschtes Speicherkonto wiederherzustellen oder Inhalte abzurufen, die das Konto vor dem Löschen enthielt. Sichern Sie alle Inhalte, die Sie speichern möchten, bevor Sie das Konto löschen. Dies gilt auch für alle Ressourcen im Konto – gelöschte Blobs, Tabellen, Warteschlangen oder Dateien können nicht wiederhergestellt werden.
 > 
 
-Wenn Sie versuchen, ein Speicherkonto zu löschen, das einem virtuellen Azure-Computer zugewiesen ist, wird unter Umständen ein Fehler mit dem Hinweis angezeigt, dass das Speicherkonto noch verwendet wird. Hilfe zum Beheben dieses Fehlers finden Sie unter [Troubleshoot errors when you delete Azure storage accounts, containers, or VHDs](../common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md) (Beheben von Fehlern beim Löschen von Speicherkonten, -containern oder -VHDs in Azure).
+Wenn Sie versuchen, ein Speicherkonto zu löschen, das einem virtuellen Azure-Computer zugewiesen ist, wird unter Umständen ein Fehler mit dem Hinweis angezeigt, dass das Speicherkonto noch verwendet wird. Hilfe zum Beheben dieses Fehlers finden Sie unter [Problembehandlung für Datenträger, die an virtuelle Azure-Computer angeschlossen sind](../blobs/storage-troubleshoot-vhds.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Beim [Microsoft Azure-Speicher-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
+* Beim [Microsoft Azure Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine kostenlose eigenständige App von Microsoft, über die Sie ganz einfach visuell mit Azure Storage-Daten arbeiten können – unter Windows, MacOS und Linux.
 * [Azure Blob Storage: Cool and Hot tiers (Azure Blob Storage: Stufen für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data))](../blobs/storage-blob-storage-tiers.md)
 * [Azure Storage-Replikation](storage-redundancy.md)
 * [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage-configure-connection-string.md)

@@ -1,11 +1,11 @@
 ---
-title: "Manuelles Hinzufügen einer SOAP-API mithilfe des Azure-Portals | Microsoft-Dokumentation"
-description: "Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine API manuell hinzuzufügen."
+title: Manuelles Hinzufügen einer SOAP-API mithilfe des Azure-Portals | Microsoft-Dokumentation
+description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine API manuell hinzuzufügen.
 services: api-management
-documentationcenter: 
-author: juliako
+documentationcenter: ''
+author: vladvino
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 9426839f88daece1bb688a2079b7854ccaebdc57
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API 
 
@@ -29,7 +29,7 @@ In diesem Artikel erstellen wir eine leere API und geben als Back-End-API [httpb
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
+Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -47,7 +47,7 @@ Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure 
     |**Name**|**Wert**|**Beschreibung**|
     |---|---|---|
     |**Anzeigename**|„*Blank API*“ |Dieser Name wird im Entwicklerportal angezeigt.|
-    |**Webdienst-URL** (optional)| „*http://httpbin.org*“| Wenn Sie eine API simulieren möchten, müssen Sie nichts eingeben. <br/>In diesem Fall geben wir [http://httpbin.org](http://httpbin.org) ein. Dies ist ein öffentlicher Testdienst. <br/>Wenn Sie eine API importieren möchten, die automatisch einem Back-End zugeordnet wird, sehen Sie sich die Themen im Abschnitt [Verwandte Themen](#related-topics) an.|
+    |**Webdienst-URL** (optional)| „*http://httpbin.org*“| Wenn Sie eine API simulieren möchten, müssen Sie nichts eingeben. <br/>In diesem Fall geben Sie [http://httpbin.org](http://httpbin.org) ein. Dies ist ein öffentlicher Testdienst. <br/>Wenn Sie eine API importieren möchten, die automatisch einem Back-End zugeordnet wird, sehen Sie sich die Themen im Abschnitt [Verwandte Themen](#related-topics) an.|
     |**URL-Schema**|„*HTTPS*“|Obwohl das Back-End in diesem Fall keinen sicheren HTTP-Zugriff hat, geben wir einen sicheren HTTPS-APIM-Zugriff auf das Back-End an. <br/>Diese Art von Szenario (HTTPS nach HTTP) wird als HTTPS-Beendigung bezeichnet. Sie können dies verwenden, wenn sich Ihre API in einem virtuellen Netzwerk befindet (in dem Sie wissen, dass der Zugriff sicher ist, auch wenn nicht HTTPS verwendet wird). <br/>Sie können die „HTTPS-Beendigung“ auch verwenden, um einige CPU-Zyklen zu sparen.|
     |**URL-Suffix**|„*hbin*“| Das Suffix ist ein Name, der diese spezifische API in dieser APIM-Instanz identifiziert. Es muss in dieser APIM-Instanz eindeutig sein.|
     |**Produkte**|„*Unlimited*“ |Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.<br/><br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/><br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unlimited**.| 
@@ -69,7 +69,7 @@ In diesem Abschnitt wird zeigt, wie Sie einen „/get“-Vorgang hinzufügen, um
 2. Klicken Sie auf **+ Vorgang hinzufügen**.
 3. Wählen Sie in **URL** die Option **GET** aus, und geben Sie */get* in der Ressource ein.
 4. Geben Sie *FetchData* als **Anzeigename** ein.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 ### <a name="test-the-operation"></a>Testen des Vorgangs
 
@@ -77,7 +77,7 @@ Testen Sie den Vorgang im Azure-Portal. Alternativ können Sie ihn auch im **Ent
 
 1. Wählen Sie die Registerkarte **Testen** aus.
 2. Wählen Sie **FetchData** aus.
-3. Drücken Sie auf **Senden**.
+3. Klicken Sie auf **Senden**.
 
 Die Antwort, die der Vorgang „http://httpbin.org/get“ generiert, wird angezeigt. Wenn Sie Ihre Vorgänge transformieren möchten, lesen Sie unter [Transformieren und Schützten Ihrer API](transform-api.md) nach.
 
@@ -91,7 +91,7 @@ In diesem Abschnitt wird gezeigt, wie Sie einen Vorgang hinzufügen, der einen P
 2. Klicken Sie auf **+ Vorgang hinzufügen**.
 3. Wählen Sie in **URL** die Option **GET** aus, und geben Sie */status/{Code}* in der Ressource ein. Optional können Sie einige Informationen zu diesem Parameter angeben. Geben Sie z.B. *Number* als **TYPE** oder *200* (Standard) für **VALUES** ein.
 4. Geben Sie „GetStatus“ als **Anzeigename** ein.
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
 ### <a name="test-the-operation"></a>Testen des Vorgangs 
 
@@ -99,7 +99,7 @@ Testen Sie den Vorgang im Azure-Portal.  Alternativ können Sie ihn auch im **En
 
 1. Wählen Sie die Registerkarte **Testen** aus.
 2. Wählen Sie **GetStatus** aus. Standardmäßig ist der Codewert auf *200* festgelegt. Sie können ihn ändern, um andere Werte zu testen. Geben Sie beispielsweise *418* ein.
-3. Drücken Sie auf **Senden**.
+3. Klicken Sie auf **Senden**.
 
     Die Antwort, die der Vorgang „http://httpbin.org/status/200“ generiert, wird angezeigt. Wenn Sie Ihre Vorgänge transformieren möchten, lesen Sie unter [Transformieren und Schützten Ihrer API](transform-api.md) nach.
 
@@ -110,4 +110,4 @@ Testen Sie den Vorgang im Azure-Portal.  Alternativ können Sie ihn auch im **En
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Transformieren und Schützen veröffentlichter APIs](transform-api.md)
+> [Transformieren und Schützen einer veröffentlichten API](transform-api.md)

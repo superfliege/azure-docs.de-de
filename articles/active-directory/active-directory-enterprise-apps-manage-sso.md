@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: baf437294dbbca7f63f9d4cdc80ac1cb33a67e42
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 548bd4ca9e8ec66e4c50ea078dc0bccc1788095a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>Verwalten des einmaligen Anmeldens für Unternehmens-Apps
 
-Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zum Verwalten der Einstellungen für das einmalige Anmelden für Unternehmensanwendungen. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Dieser Artikel gilt insbesondere für Apps, die aus dem [Azure Active Directory-Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
+Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zum Verwalten der Einstellungen für das einmalige Anmelden für Unternehmensanwendungen. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Dieser Artikel gilt insbesondere für Apps, die aus dem [Azure Active Directory-Anwendungskatalog](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. 
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
 Alle Unternehmens-Apps, die für das einmalige Anmelden eingerichtet sind, können im Azure-Portal angezeigt und verwaltet werden. Sie finden die Anwendungen im Portal im Abschnitt **Alle Dienste** &gt; **Unternehmensanwendungen**. 
@@ -43,7 +43,7 @@ Zum Verwalten der Einstellungen für einmaliges Anmelden wählen Sie **Einmalige
 * **Kennwortbasierte Anmeldung:** Diese Option ist verfügbar, wenn Azure AD für diese Anwendung das Ausfüllen eines Kennwortformulars unterstützt.
 * **Anmeldung über Link:** Diese Option wurde früher als „Vorhandenes einmaliges Anmelden“ bezeichnet und ermöglicht Administratoren das Platzieren eines Links zu dieser Anwendung im Azure AD-Zugriffsbereich ihres Benutzers oder im Office 365-Anwendungsstartprogramm.
 
-Weitere Informationen zu diesen Modi finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Weitere Informationen zu diesen Modi finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ## <a name="saml-based-sign-on"></a>SAML-basierte Anmeldung
 Die Option **SAML-basierte Anmeldung** ist in vier Abschnitte unterteilt:
@@ -79,12 +79,12 @@ Das Flyoutmenü **Anwendung konfigurieren** enthält neue präzise, eingebettete
 ![Eingebettete Dokumente](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-embedded-docs.png)
 
 ## <a name="password-based-sign-on"></a>Kennwortbasierte Anmeldung
-Wenn der Modus für das kennwortbasierte einmalige Anmelden von der Anwendung unterstützt wird, können Sie ihn auswählen und **Speichern** wählen, um sofort die kennwortbasierte einmalige Anmeldung zu konfigurieren. Weitere Informationen zur Bereitstellung der kennwortbasierten einmaligen Anmeldung finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Wenn der Modus für das kennwortbasierte einmalige Anmelden von der Anwendung unterstützt wird, können Sie ihn auswählen und **Speichern** wählen, um sofort die kennwortbasierte einmalige Anmeldung zu konfigurieren. Weitere Informationen zur Bereitstellung der kennwortbasierten einmaligen Anmeldung finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Kennwortbasierte Anmeldung](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-password-sso.png)
 
 ## <a name="linked-sign-on"></a>Verknüpfte Anmeldung
-Wenn der Modus für die Anmeldung über einen Link von der Anwendung unterstützt wird, können Sie ihn auswählen und die URL eingeben, an die Benutzer von vom Azure AD-Zugriffsbereich und Office 365 umgeleitet werden sollen, wenn sie auf diese App klicken. Weitere Informationen zur Anmeldung über einen Link (früher als „Vorhandenes einmaliges Anmelden“ bezeichnet) finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work).
+Wenn der Modus für die Anmeldung über einen Link von der Anwendung unterstützt wird, können Sie ihn auswählen und die URL eingeben, an die Benutzer von vom Azure AD-Zugriffsbereich und Office 365 umgeleitet werden sollen, wenn sie auf diese App klicken. Weitere Informationen zur Anmeldung über einen Link (früher als „Vorhandenes einmaliges Anmelden“ bezeichnet) finden Sie unter [Wie funktioniert das einmalige Anmelden mit Azure Active Directory](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work).
 
 ![Verknüpfte Anmeldung](./media/active-directory-enterprise-apps-manage-sso/enterprise-apps-blade-linked-sso.png)
 

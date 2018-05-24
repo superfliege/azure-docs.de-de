@@ -1,13 +1,13 @@
 ---
-title: Anpassen einer Linux-VM beim ersten Start in Azure | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie cloud-init und Key Vault zum Anpassen von Linux-VMs beim ersten Start in Azure verwenden können."
+title: Tutorial – Anpassen eines virtuellen Linux-Computers mit cloud-Init in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie cloud-init und Key Vault zum Anpassen virtueller Linux-Computer beim ersten Start in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 79d87b5d332597f2c0faf3c585eee49aba3e03bc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e3c1c0552b379ff99f27053d8f0ca8a76766a016
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start
+# <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
+
 In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit einem virtuellen Computer hergestellt und NGINX manuell installiert wird. Um VMs auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -32,12 +33,9 @@ In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit eine
 > * Verwenden von Key Vault zum sicheren Speichern der Zertifikate
 > * Automatisieren der sicheren Bereitstellung von NGINX mithilfe von cloud-init
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.  
-
-
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="cloud-init-overview"></a>Übersicht zu cloud-init
 [Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
