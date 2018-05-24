@@ -1,39 +1,50 @@
 ---
-title: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg – Azure-Portal | Microsoft-Dokumentation
-description: Erstellen Sie einen Standard-Lastenausgleich mit einem zonenredundanten Front-End, um mit dem Azure-Portal einen Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg durchzuführen.
+title: 'Tutorial: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg – Azure-Portal | Microsoft-Dokumentation'
+description: In diesem Tutorial wird gezeigt, wie Sie einen Lastenausgleich im Tarif „Standard“ mit einem zonenredundanten Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg durchzuführen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region, so that the customers can still access the web service if a datacenter is unavailable.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/18
+ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: ad476922342844a908961960407eb344711932f5
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.custom: mvc
+ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mit einem Standard-Lastenausgleich im Azure-Portal
+# <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mit einem Standard-Lastenausgleich im Azure-Portal
 
-In diesem Artikel werden die Schritte zum Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem zonenredundanten Front-End erläutert, um Zonenredundanz ohne Abhängigkeit von mehreren DNS-Einträgen zu erzielen. Eine einzelne Front-End-IP-Adresse in einem Standard-Lastenausgleich ist automatisch zonenredundant. Durch die Verwendung eines zonenredundanten Front-Ends für Ihren Lastenausgleich können Sie mit einer einzelnen IP-Adresse jetzt eine beliebige VM in einem virtuellen Netzwerk innerhalb einer Region über alle Verfügbarkeitszonen hinweg erreichen. Verwenden Sie Verfügbarkeitszonen, um Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters zu schützen. Bei Zonenredundanz können eine oder mehrere Verfügbarkeitszonen ausfallen, wobei der Datenpfad solange überdauert, wie eine Zone in der Region fehlerfrei bleibt. 
+Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial werden die einzelnen Schritte zum Erstellen eines öffentlichen Lastenausgleichs (Load Balancer) im Tarif „Standard“ beschrieben, mit dem ein Lastenausgleich für VMs über Verfügbarkeitszonen hinweg durchgeführt wird. So schützen Sie Ihre Apps und Daten vor einem unwahrscheinlichen Fehler oder Ausfall eines gesamten Datencenters. Bei Zonenredundanz können eine oder mehrere Verfügbarkeitszonen ausfallen, aber der Datenpfad bleibt dennoch so lange verfügbar, wie eine Zone in der Region fehlerfrei bleibt. Folgendes wird vermittelt:
+
+> [!div class="checklist"]
+> * Einrichten eines Load Balancers im Tarif „Standard“
+> * Erstellen von Netzwerksicherheitsgruppen zum Definieren von Regeln für eingehenden Datenverkehr
+> * Erstellen von zonenredundanten VMs übergreifend für mehrere Zonen und Anfügen an einen Load Balancer
+> * Erstellen eines Integritätstests für den Load Balancer
+> * Erstellen von Load Balancer-Regeln
+> * Erstellen einer einfachen IIS-Website
+> * Anzeigen eines Load Balancers im Betrieb
 
 Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-## <a name="create-a-public-standard-load-balancer"></a>Erstellen eines öffentlichen Lastenausgleichs im Standard-Tarif
+## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
 
 Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Lastenausgleichs erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
 
@@ -51,9 +62,11 @@ Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie virtuelle Computer in verschiedenen Zonen (Zone 1, Zone 2 und Zone 3) für die Region, die dem Back-End-Pool Ihres Lastenausgleichs hinzugefügt werden soll, und installieren anschließend die IIS auf den virtuellen Computern, um den zonenredundanten Lastenausgleich zu testen. Fällt eine Zone aus, tritt infolgedessen ein Fehler beim Integritätstest für die VM in derselben Zone auf, und der Datenverkehr wird weiterhin von VMs in den anderen Zonen verarbeitet.
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und virtuelle Computer in unterschiedlichen Zonen für die Region und installieren anschließend IIS auf den virtuellen Computern, um den zonenredundanten Lastenausgleich zu testen. Fällt eine Zone aus, tritt infolgedessen ein Fehler beim Integritätstest für die VM in derselben Zone auf, und der Datenverkehr wird weiterhin von VMs in den anderen Zonen verarbeitet.
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+Erstellen Sie ein virtuelles Netzwerk zum Bereitstellen Ihrer Back-End-Server.
+
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**, und geben Sie folgende Werte für das virtuelle Netzwerk ein:
     - *myVnet*: Name des virtuellen Netzwerks
     - *myResourceGroupLBAZ*: Für den Namen der vorhandenen Ressourcengruppe.
@@ -64,6 +77,8 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie virtuelle Comput
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
+Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
+
 1. Klicken Sie auf der oberen linken Seite des Bildschirms auf **Ressource erstellen**, geben Sie in das Suchfeld *Netzwerksicherheitsgruppe* ein, und klicken Sie auf der Seite „Netzwerksicherheitsgruppe erstellen“ auf **Erstellen**.
 2. Geben Sie auf der Seite „Netzwerksicherheitsgruppe erstellen“ die folgenden Werte ein:
     - *myNetworkSecurityGroup*: Für den Namen der Netzwerksicherheitsgruppe.
@@ -71,9 +86,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie virtuelle Comput
    
 ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/create-nsg.png)
 
-### <a name="create-nsg-rules"></a>Erstellen von NSG-Regeln
+### <a name="create-network-security-group-rules"></a>Erstellen von Netzwerksicherheitsgruppen-Regeln
 
-In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbindungen mit dem Azure-Portal zuzulassen.
+In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln, um eingehende HTTP- und RDP-Verbindungen mit dem Azure-Portal zuzulassen.
 
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**. Suchen Sie nach **myNetworkSecurityGroup**, und klicken Sie darauf (in der Ressourcengruppe **myResourceGroupLBAZ**).
 2. Klicken Sie unter **Einstellungen** auf **Eingangssicherheitsregeln** und anschließend auf **Hinzufügen**.
@@ -84,8 +99,8 @@ In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbin
     - *TCP* für **Protokoll**
     - *Zulassen* für **Aktion**
     - *100* für **Priorität**
-    - *myHTTPRule* als Name
-    - *Allow HTTP* als Beschreibung
+    - *myHTTPRule* als Name der Lastenausgleichsregel
+    - *Allow HTTP* als Beschreibung der Lastenausgleichsregel
 4. Klicken Sie auf **OK**.
  
  ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
@@ -99,8 +114,9 @@ In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbin
     - *myRDPRule* als Name
     - *Allow RDP* als Beschreibung
 
-
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
+
+Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und Zone 3) für die Region, die als Back-End-Server für den Lastenausgleich dienen können.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**, und geben Sie folgende Werte für den virtuellen Computer ein:
     - *myVM1*: Name des virtuellen Computers        
@@ -145,12 +161,12 @@ In diesem Abschnitt konfigurieren Sie Lastenausgleichseinstellungen für einen B
 
 ### <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
 
-Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End-Adresspool die IP-Adressen der virtuellen NICs, die mit dem Load Balancer verbunden sind. Erstellen Sie den Back-End-Adresspool *myBackendPool* mit *VM1* und *VM2*.
+Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End-Adresspool die IP-Adressen der virtuellen NICs, die mit dem Load Balancer verbunden sind. Erstellen Sie den Back-End-Adresspool *myBackendPool* mit *VM1*, *VM2* und *VM3*.
 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
 2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und anschließend auf **Hinzufügen**.
 3. Gehen Sie auf der Seite **Back-End-Pool hinzufügen** wie folgt vor:
-    - Geben Sie unter „Name“ die Zeichenfolge „*myBackEndPool“ als Name für Ihren Back-End-Pool ein.
+    - Geben Sie unter „Name“ die Zeichenfolge *myBackEndPool* als Name für Ihren Back-End-Pool ein.
     - Klicken Sie für **Virtuelles Netzwerk** im Dropdownmenü auf **myVNet**
     - Klicken Sie für **Virtueller Computer** im Dropdownmenü auf **myVM1**.
     - Klicken Sie für **IP-Adresse** im Dropdownmenü auf die IP-Adresse von myVM1.
@@ -200,6 +216,8 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
 
       ![IIS-Webserver](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+
+Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Lastenausgleich den Datenverkehr auf die in der Zone angeordneten VMs verteilt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

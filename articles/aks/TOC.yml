@@ -45,13 +45,13 @@
           href: delete-cluster.md
     - name: Konfigurieren von Datenvolumes
       items:
-        - name: 'AzureDisk: Dynamische Bereitstellung'
+        - name: 'Azure Disk: Dynamisch'
           href: azure-disks-dynamic-pv.md
-        - name: 'AzureDisk: Statische Bereitstellung'
+        - name: 'Azure Disk: Statisch'
           href: azure-disk-volume.md
-        - name: 'AzureFile: Dynamische Bereitstellung'
+        - name: 'Azure Files: Dynamisch'
           href: azure-files-dynamic-pv.md
-        - name: 'AzureFile: Statische Bereitstellung'
+        - name: 'Azure Files: Statisch'
           href: azure-files-volume.md
     - name: Konfigurieren der Netzwerkeinstellungen
       items:

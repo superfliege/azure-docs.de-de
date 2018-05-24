@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2017
+ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d416c8953f1e41c04a39141c79e0b1568c1dccb3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5b17b4e8581daa5b19aaafd911765d843a9f3fe4
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](active-directory-aadconnect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](active-directory-aadconnect-health-adds.md).
@@ -116,7 +116,7 @@ Der Bericht enthält die folgenden Informationen:
 >
 >
 
-## <a name="risky-ip-report"></a>Bericht über riskante IP-Adressen 
+## <a name="risky-ip-report-public-preview"></a>Bericht über riskante IP-Adressen (öffentliche Vorschauversion)
 AD FS-Kunden können Endpunkte für die Kennwortauthentifizierung für den Zugriff über das Internet verfügbar machen, um Authentifizierungsdienste für Endbenutzer bereitzustellen, damit diese auf SaaS-Anwendungen wie Office 365 zugreifen können. In diesem Fall ist es möglich, dass ein böswilliger Benutzer versucht, sich an Ihrem AD FS-System anzumelden, um das Kennwort eines Endbenutzers zu erraten und Zugriff auf Anwendungsressourcen zu erhalten. AD FS verfügt seit der Einbindung in Windows Server 2012 R2 über die Funktion zum Sperren von Extranet-Konten, um diese Arten von Angriffen zu verhindern. Falls Sie eine frühere Version verwenden, empfehlen wir Ihnen dringend, Ihr AD FS-System auf Windows Server 2016 zu aktualisieren. <br />
 Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, mehrere Anmeldungen für mehrere Benutzer durchzuführen. In diesen Fällen kann es sein, dass die Anzahl von Versuchen pro Benutzer unter dem Schwellenwert für den Schutz durch Kontosperrung in AD FS liegt. Azure AD Connect Health enthält jetzt einen „Bericht über riskante IP-Adressen“, mit dem dieser Zustand erkannt wird und Administratoren benachrichtigt werden. Hier sind die wichtigsten Vorteile dieses Berichts angegeben: 
 - Erkennung von IP-Adressen, für die ein Schwellenwert für fehlgeschlagene kennwortbasierte Anmeldungen überschritten wird
@@ -152,10 +152,12 @@ Im Berichtseintrag unten ist beispielsweise angegeben, dass für die IP-Adresse 
 > - In diesem Warnbericht werden keine Exchange-IP-Adressen oder privaten IP-Adressen angezeigt. Sie sind weiterhin in der Exportliste enthalten. 
 >
 
-
 ![Azure AD Connect Health-Portal](./media/active-directory-aadconnect-health-adfs/report4c.png)
 
-### <a name="download-risky-ip-report"></a>Herunterladen des Berichts über riskante IP-Adressen
+### <a name="load-balancer-ip-addresses-in-the-list"></a>Load Balancer-IP-Adressen in der Liste
+Bei Anmeldeaktivitäten der Load Balancer-Aggregation ist ein Fehler aufgetreten, und der Warnungsschwellenwert wurde erreicht. Falls IP-Adressen des Lastenausgleichs angezeigt werden, sendet Ihr externer Lastenausgleich höchstwahrscheinlich die Client-IP-Adresse nicht, wenn er die Anforderung an den Webanwendungsproxy-Server übergibt. Konfigurieren Sie Ihren Lastenausgleich so, dass Forward-Client-IP-Adressen ordnungsgemäß weitergegeben werden. 
+
+### <a name="download-risky-ip-report"></a>Herunterladen des Berichts über riskante IP-Adressen 
 Mit der Funktion zum **Herunterladen** kann der gesamte Bericht über riskante IP-Adressen der letzten 30 Tage aus dem Connect Health-Portal kopiert werden. Das Exportergebnis enthält alle fehlgeschlagenen AD FS-Anmeldeaktivitäten jedes Erkennungszeitfensters, damit Sie den Filtervorgang nach dem Export anpassen können. Zusätzlich zu den hervorgehobenen Aggregationen im Portal werden im Exportergebnis auch weitere Details zu fehlgeschlagenen Anmeldeaktivitäten pro IP-Adresse angezeigt:
 
 |  Berichtselement  |  BESCHREIBUNG  | 
@@ -196,12 +198,14 @@ Falls IP-Adressen des Lastenausgleichs angezeigt werden, sendet Ihr externer Las
 
 3. Wie kann ich die IP-Adresse blockieren?  <br />
 Sie sollten identifizierte schädliche IP-Adressen der Firewall hinzufügen oder in Exchange blockieren.   <br />
-Für AD FS 2016 + 1803.C+ QFE können Sie die IP-Adresse direkt in AD FS blockieren. 
 
 4. Warum werden in diesem Bericht keine Elemente angezeigt? <br />
    - Es liegen keine fehlgeschlagenen Anmeldeaktivitäten vor, für die die Schwellenwerteinstellungen überschritten werden. 
    - Stellen Sie sicher, dass in Ihrer AD FS-Serverliste keine Warnung vom Typ „Integritätsdienst ist nicht aktuell” aktiv ist.  Informieren Sie sich über das [Durchführen der Problembehandlung für diese Warnung](active-directory-aadconnect-health-data-freshness.md).
    - Überwachungen sind in AD FS-Farmen nicht aktiviert.
+ 
+5. Warum habe ich keinen Zugriff auf den Bericht?  <br />
+Zugriff erhalten nur globale Administratoren und [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader). Wenden Sie sich an den globalen Administrator aus, um Zugriff zu erhalten.
 
 
 ## <a name="related-links"></a>Verwandte Links

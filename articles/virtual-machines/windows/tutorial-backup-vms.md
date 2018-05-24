@@ -1,6 +1,6 @@
 ---
-title: Sichern virtueller Windows-Computer in Azure | Microsoft-Dokumentation
-description: Schützen Sie Ihre virtuellen Windows-Computer, indem Sie sie mithilfe von Azure Backup sichern.
+title: Tutorial – Sichern von virtuellen Windows-Computern im Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal zum Schützen Ihrer virtuellen Windows-Computer mit Azure Backup verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -10,29 +10,26 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12859bf967cf8de1b57ab9dfd5c0bd080806f2eb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 6ae014597a89c75e4426715227bbb19f1e98a438
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="back-up-windows-virtual-machines-in-azure"></a>Sichern virtueller Windows-Computern in Azure
+# <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Windows-Computer in Azure
 
-Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder nur bestimmte Dateien wiederherstellen. In diesem Artikel wird erläutert, wie eine einzelne Datei von einem virtuellen Computer mit Windows Server und IIS wiederhergestellt wird. Wenn Sie noch nicht über einen virtuellen Computer verfügen, können Sie diesen mit dem [Windows-Schnellstart](quick-create-portal.md) erstellen. In diesem Tutorial lernen Sie Folgendes:
+Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder bestimmte Dateien wiederherstellen. In diesem Artikel wird erläutert, wie eine einzelne Datei von einem virtuellen Computer mit Windows Server und IIS wiederhergestellt wird. Wenn Sie noch nicht über einen virtuellen Computer verfügen, können Sie diesen mit dem [Windows-Schnellstart](quick-create-portal.md) erstellen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Sicherung eines virtuellen Computers
 > * Planen einer täglichen Sicherung
 > * Wiederherstellen einer Datei aus einer Sicherung
-
-
-
 
 ## <a name="backup-overview"></a>Übersicht über Azure Backup
 

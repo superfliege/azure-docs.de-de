@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d05b7ca2ab1d5b2f3d3fd3973eefe1b3ec5a1c04
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 599f8327e9939f400ca18c87fa6193ac3c1e4a61
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>Verwalten und Konfigurieren von Geräten
 
@@ -24,7 +24,7 @@ In diesem Tutorial werden die Geräteverwaltungsfunktionen der Remoteüberwachun
 
 Contoso hat neue Maschinen geordert, um eine seiner Betriebsstätten zu erweitern und die Produktion zu erhöhen. Während Sie auf die Lieferung der neuen Maschinen warten, möchten Sie eine Simulation ausführen, um das Verhalten der Lösung zu überprüfen. Als Bediener möchten Sie die Geräte in der Remoteüberwachungslösung verwalten und konfigurieren.
 
-Um ein breites Spektrum an Möglichkeiten zum Verwalten und Konfigurieren von Geräten bereitzustellen, werden in der Remoteüberwachungslösung IoT Hub-Features wie z.B. [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. Informationen dazu, wie ein Geräteentwickler Methoden auf einem physischen Gerät implementiert, finden Sie unter [Anpassen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-customize.md).
+Um ein breites Spektrum an Möglichkeiten zum Verwalten und Konfigurieren von Geräten bereitzustellen, werden in der Remoteüberwachungslösung IoT Hub-Features wie z.B. [Aufträge](../iot-hub/iot-hub-devguide-jobs.md) und [direkte Methoden](../iot-hub/iot-hub-devguide-direct-methods.md) verwendet. Informationen dazu, wie ein Geräteentwickler Methoden auf einem physischen Gerät implementiert, finden Sie unter [Anpassen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
 
-Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-suite-remote-monitoring-deploy.md).
+Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 

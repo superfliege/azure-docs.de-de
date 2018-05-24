@@ -543,6 +543,8 @@
               href: service-fabric-cluster-delete.md
             - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
               href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+            - name: Upgraden/Migrieren einer VMSS-SKU
+              href: service-fabric-update-vmss-sku.md
         - name: Eigenständige Cluster
           items:
             - name: Erstellen
@@ -656,6 +658,17 @@
       href: service-fabric-cluster-fabric-settings.md
     - name: XML-Schema des Dienstmodells
       href: service-fabric-service-model-schema.md
+      items:
+        - name: Elemente
+          href: service-fabric-service-model-schema-elements.md
+        - name: Komplexe Typen
+          href: service-fabric-service-model-schema-complex-types.md
+        - name: Attributgruppen
+          href: service-fabric-service-model-schema-attribute-groups.md
+        - name: Einfache Typen
+          href: service-fabric-service-model-schema-simple-types.md
+        - name: Elementgruppen
+          href: service-fabric-service-model-schema-element-groups.md
     - name: Umgebungsvariablen
       href: service-fabric-environment-variables-reference.md
 - name: angeben

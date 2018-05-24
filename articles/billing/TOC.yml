@@ -16,8 +16,21 @@
       href: billing-use-existing-azure-account-for-office-365-subscription.md
     - name: Organisieren von Ressourcen mit Verwaltungsgruppen
       href: billing-enterprise-mgmt-group-overview.md
-    - name: Geld sparen mit reservierten VM-Instanzen
+    - name: Speichern mit reservierten Azure-Instanzen
       href: billing-save-compute-costs-reservations.md
+      items:
+        - name: Vorauszahlen für Virtual Machines mit reservierten Instanzen
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Verwalten reservierter Instanzen
+          href: billing-manage-reserved-vm-instance.md
+        - name: Grundlegendes zur Anwendung von Rabatten auf reservierte Instanzen
+          href: billing-understand-vm-reservation-charges.md
+        - name: Grundlegendes zur Nutzung reservierter Instanzen für nutzungsbasierte Bezahlung
+          href: billing-understand-reserved-instance-usage.md
+        - name: Grundlegendes zur Nutzung reservierter Instanzen für Enterprise
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: 'Reservierte Instanzen: Windows-Kosten'
+          href: billing-reserved-instance-windows-software-costs.md
     - name: Grenzen und Kontingente
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Anleitung
@@ -38,20 +51,12 @@
           href: billing-understand-your-azure-marketplace-charges.md
         - name: Grundlegendes zur Zuordnung von Verbrauchseinheiten für kostenlose Dienste
           href: billing-understand-free-service-meter-mapping.md
-        - name: 'Reservierte VM-Instanzen: Windows-Kosten'
-          href: billing-reserved-instance-windows-software-costs.md
-        - name: Grundlegendes zur Anwendung von Rabatten auf reservierte VM-Instanzen
-          href: billing-understand-vm-reservation-charges.md
         - name: Grundlegendes zum Ausgabenlimit
           href: billing-spending-limit.md
         - name: Einrichten von Abrechnungswarnungen
           href: billing-set-up-alerts.md
         - name: Begleichen überfälliger Zahlungen
           href: billing-azure-subscription-past-due-balance.md
-        - name: Grundlegendes zur Nutzung reservierter Instanzen für nutzungsbasierte Bezahlung
-          href: billing-understand-reserved-instance-usage.md
-        - name: Grundlegendes zur Nutzung reservierter Instanzen für Enterprise
-          href: billing-understand-reserved-instance-usage-ea.md
     - name: Verwalten von Abonnements
       items:
         - name: Suchen nach einer Abonnement- oder Verwaltungsgruppe
@@ -82,8 +87,6 @@
           href: billing-partner-admin-link-started.md
         - name: Anzeigen der Abrechnungskonten
           href: billing-view-all-accounts.md
-    - name: Verwalten reservierter VM-Instanzen
-      href: billing-manage-reserved-vm-instance.md
     - name: Problembehandlung
       items:
         - name: Probleme bei der Registrierung

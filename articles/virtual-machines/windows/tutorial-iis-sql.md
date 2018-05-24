@@ -1,6 +1,6 @@
 ---
-title: "Erstellen virtueller Computer mit ausgeführtem SQL-/IIS-/.NET-Stapel in Azure | Microsoft-Dokumentation"
-description: 'Tutorial: Installieren eines Azure SQL-, IIS-, .NET-Stapels auf einem virtuellen Windows-Computer'
+title: 'Tutorial: Erstellen virtueller Computer mit ausgeführtem SQL-/IIS-/.NET-Stapel in Azure | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie den Azure SQL-/IIS-/.NET-Stapel auf einem virtuellen Windows-Computer in Azure installieren.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,13 +15,13 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ac6038f7600d6eb4c8d021998f9cfc40bd369332
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f9fea933dd664955a0bc6f47db775fbc469fd684
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/14/2018
 ---
-# <a name="install-a-sql92iis92net-stack-in-azure"></a>Installieren eines SQL-/IIS-/.NET-Stapels in Azure
+# <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Tutorial: Installieren des SQL-/IIS-/.NET-Stapels auf einem virtuellen Windows-Computer mit Azure PowerShell
 
 In diesem Tutorial installieren wir einen SQL-/IIS-/.NET-Stapel mithilfe von Azure PowerShell. Dieser Stapel besteht aus zwei virtuellen Computern unter Windows Server 2016: einer mit IIS und .NET und der andere mit SQL Server.
 
@@ -33,7 +33,7 @@ In diesem Tutorial installieren wir einen SQL-/IIS-/.NET-Stapel mithilfe von Azu
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 4.3.1 des AzureRM.Compute-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM.Compute` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des AzureRM.Compute-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM.Compute` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="create-a-iis-vm"></a>Erstellen eines virtuellen IIS-Computers 
 

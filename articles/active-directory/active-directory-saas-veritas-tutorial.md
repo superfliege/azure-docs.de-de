@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: eb9243367d0817d37549fa147c6c5e1d2acf3761
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a60df7f743c893305f0b3b4aba05505e761f505d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Tutorial: Azure Active Directory-Integration mit Veritas Enterprise Vault.cloud SSO
 
@@ -29,7 +29,7 @@ Die Integration von Enterprise Vault.cloud SSO in Azure AD bietet die folgenden 
 - Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Veritas Enterprise Vault.cloud SSO anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -114,7 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Verwenden Sie im Textfeld **Bezeichner** die richtige URL für das Rechenzentrum.
 
-    | Rechenzentrum| URL |
+    | Datacenter| URL |
     |----------|----|
     | Nordamerika| `https://auth.lax.archivecloud.net` |
     | Europa | `https://auth.ams.archivecloud.net` |
@@ -122,7 +122,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Verwenden Sie im Textfeld **Antwort-URL** die richtige URL für das Rechenzentrum.
 
-    | Rechenzentrum| URL |
+    | Datacenter| URL |
     |----------|----|
     | Nordamerika| `https://auth.lax.archivecloud.net` |
     | Europa | `https://auth.ams.archivecloud.net` |
@@ -223,7 +223,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Veritas Enterprise Vault.cloud SSO
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

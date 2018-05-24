@@ -1,35 +1,42 @@
 ---
 title: Bereitstellen eines virtuellen Computers mit einem sicher gespeicherten Kennwort in Azure Stack | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie einen virtuellen Computer mithilfe eines Kennworts bereitstellen, das in einem Azure Stack-Schlüsseltresor gespeichert ist."
+description: Hier erfahren Sie, wie Sie einen virtuellen Computer mithilfe eines Kennworts bereitstellen, das in einem Azure Stack-Schlüsseltresor gespeichert ist.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/08/2017
+ms.date: 05/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: 8d9a2cebd7a28ca13cf88518a7c83b217af4c0e1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Erstellen eines virtuellen Computers durch Abrufen des im Schlüsseltresor gespeicherten Kennworts
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Erstellen eines virtuellen Computers mit einem sicheren, in einer Azure Stack Key Vault-Instanz gespeicherten Kennwort
 
-Wenn Sie während der Bereitstellung einen sicheren Wert (etwa ein Kennwort) übergeben müssen, können Sie diesen Wert als Geheimnis in einem Azure Stack-Schlüsseltresor speichern und in den Azure Resource Manager-Vorlagen darauf verweisen. Sie müssen nicht bei jeder Bereitstellung der Ressourcen das Geheimnis manuell eingeben, und Sie können angeben, welche Benutzer oder Dienstprinzipale auf das Geheimnis zugreifen können. 
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-In diesem Artikel werden die Schritte zum Bereitstellen eines virtuellen Windows-Computers in Azure Stack durch Abrufen des Kennworts erläutert, das in einem Schlüsseltresor gespeichert ist. Aus diesem Grund wird das Kennwort nie als Nur-Text in die Vorlagenparameterdatei eingefügt. Führen Sie die Schritte entweder über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung über VPN besteht.
+In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie einen virtuellen Windows Server-Computer mit einem sicheren Kennwort bereitstellen, das in einer Azure Stack Key Vault-Instanz gespeichert ist. Die Verwendung eines Schlüsseltresorkennworts ist sicherer als die Übergabe eines Nur-Text-Kennworts.
+
+## <a name="overview"></a>Übersicht
+
+Sie können Werte (etwa Kennwörter) als Geheimnis in einem Azure Stack-Schlüsseltresor speichern. Auf das erstellte Geheimnis kann dann in Azure Resource Manager-Vorlagen verwiesen werden. Die Verwendung von Geheimnissen mit Resource Manager bietet folgende Vorteile:
+
+* Das Geheimnis muss nicht bei jeder Bereitstellung einer Ressource manuell eingegeben werden.
+* Sie können angeben, welche Benutzer oder Dienstprinzipale Zugriff auf ein Geheimnis haben sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
- 
-* Sie müssen ein Angebot abonnieren, das den Key Vault-Dienst umfasst.  
-* [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)  
+
+* Sie müssen ein Angebot abonnieren, das den Key Vault-Dienst umfasst.
+* [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)
 * [Konfigurieren Sie die PowerShell-Umgebung des Azure Stack-Benutzers.](azure-stack-powershell-configure-user.md)
 
 Die folgenden Schritte beschreiben das Verfahren zum Erstellen eines virtuellen Computers durch Abrufen des Kennworts, das in einem Schlüsseltresor gespeichert ist:
@@ -37,6 +44,8 @@ Die folgenden Schritte beschreiben das Verfahren zum Erstellen eines virtuellen 
 1. Erstellen eines Geheimnisses im Schlüsseltresor
 2. Aktualisieren der Datei „azuredeploy.parameters.json“
 3. Stellen Sie die Vorlage bereit.
+
+>[HINWEIS] Führen Sie die Schritte über das Azure Stack Development Kit oder über einen externen Client aus, wenn eine Verbindung über VPN besteht.
 
 ## <a name="create-a-key-vault-secret"></a>Erstellen eines Geheimnisses im Schlüsseltresor
 
@@ -74,7 +83,7 @@ Wenn Sie das vorherige Skript ausführen, enthält die Ausgabe den URI des Gehei
 
 ## <a name="update-the-azuredeployparametersjson-file"></a>Aktualisieren der Datei „azuredeploy.parameters.json“
 
-Aktualisieren Sie die Datei „azuredeploy.parameters.json“ gemäß Ihrer Umgebung mit den Werten für den Schlüsseltresor-URI, den Geheimnisnamen und den Administratorbenutzernamen des virtuellen Computers. Die folgende JSON-Datei zeigt ein Beispiel der Vorlagenparameterdatei: 
+Aktualisieren Sie die Datei „azuredeploy.parameters.json“ gemäß Ihrer Umgebung mit den Werten für den Schlüsseltresor-URI, den Geheimnisnamen und den Administratorbenutzernamen des virtuellen Computers. Die folgende JSON-Datei zeigt ein Beispiel der Vorlagenparameterdatei:
 
 ```json
 {
@@ -114,13 +123,13 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
+
 Wenn die Vorlage erfolgreich bereitgestellt wurde, erhalten Sie die folgende Ausgabe:
 
 ![Ausgabe der Bereitstellung](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Bereitstellen einer Beispiel-App mit Key Vault](azure-stack-kv-sample-app.md)
 
 [Bereitstellen eines virtuellen Computers mit einem Key Vault-Zertifikat](azure-stack-kv-push-secret-into-vm.md)
-

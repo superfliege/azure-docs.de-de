@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: overview
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: da2ab7b0d8b83238def346790362b680cd8eda23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 27b394a6b2d2f85afeb809fcad3b88564f3054e7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
-# <a name="azure-analysis-services-overview"></a>Azure Analysis Services – Übersicht
+# <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services bietet professionelle Datenmodellierung in der Cloud. Die vollständig verwaltete PaaS-Lösung (Platform-as-a-Service) ist in Azure-Datenplattformdienste integriert. 
 
-Mit Analysis Services können Sie Daten aus verschiedenen Quellen zusammenführen und miteinander kombinieren, Metriken definieren und Ihre Daten in einem einzelnen, vertrauenswürdigen semantischen Datenmodell schützen. Mit diesem Datenmodell können Benutzer einfacher und schneller riesige Datenmengen mit Clientanwendungen wie Power BI, Excel und Reporting Services sowie mit Drittanbieter-Apps und benutzerdefinierten Apps durchsuchen.
+Mit Analysis Services können Sie Daten aus verschiedenen Datenquellen zusammenführen und miteinander kombinieren, Metriken definieren und Ihre Daten in einem einzelnen, vertrauenswürdigen semantischen Datenmodell schützen. Mit diesem Datenmodell können Benutzer einfacher und schneller riesige Datenmengen mit Clientanwendungen wie Power BI, Excel und Reporting Services sowie mit Drittanbieter-Apps und benutzerdefinierten Apps durchsuchen.
 
 ![Datenquellen](./media/analysis-services-overview/aas-overview-data-sources.png)
 
@@ -57,7 +57,7 @@ Azure Analysis Services-Server können in folgenden [Azure-Regionen](https://azu
 
 | Amerika | Europa | Asien-Pazifik |
 |----------|--------|--------------|
-|  Brasilien Süd<br> Kanada, Mitte<br> USA (Ost) 2<br> USA Nord Mitte<br> USA Süd Mitte<br> USA, Westen-Mitte<br> USA (Westen) | Nordeuropa<br> UK, Süden<br> Europa, Westen |   Australien, Südosten<br> Japan, Osten<br> Asien, Südosten<br> Indien, Westen  |
+|  Brasilien Süd<br> Kanada, Mitte<br> USA (Ost)<br> USA (Ost) 2<br> USA Nord Mitte<br> USA (Mitte)<br> USA Süd Mitte<br> USA, Westen-Mitte<br> USA (Westen)<br> USA, Westen 2 | Nordeuropa<br> UK, Süden<br> Europa, Westen |   Australien, Südosten<br> Japan, Osten<br> Asien, Südosten<br> Indien, Westen  |
 
 Diese Liste ist unter Umständen nicht vollständig, da immer wieder neue Regionen hinzukommen. Die Standortauswahl erfolgt, wenn Sie Ihren Server im Azure-Portal oder mithilfe von Azure Resource Manager-Vorlagen erstellen. Aus Leistungsgründen empfiehlt es sich, einen Standort in der Nähe Ihrer größten Benutzerbasis zu wählen. Stellen Sie Ihre Modelle auf redundanten Servern in mehreren Regionen bereit, um [Hochverfügbarkeit](analysis-services-bcdr.md) zu gewährleisten.
 
@@ -134,4 +134,5 @@ Haben Sie Vorschläge oder Funktionsanfragen? Hinterlassen Sie Kommentare im [Az
 Haben Sie Vorschläge zur Dokumentation? Sie können am Ende jedes Artikels mit Livefyre Kommentare hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da Sie jetzt mehr über Azure Analysis Services wissen, können Sie loslegen. Erfahren Sie, wie Sie in Azure [einen Server erstellen](analysis-services-create-server.md). Wenn Ihr Server bereit ist, absolvieren Sie das [Adventure Works-Tutorial](tutorials/aas-adventure-works-tutorial.md). Dort erfahren Sie, wie Sie ein voll funktionsfähiges tabellarisches Modell erstellen und auf Ihrem Server bereitstellen.
+Erfahren Sie, wie Sie in Azure [einen Server erstellen](analysis-services-create-server.md).   
+[Fügen Sie ein Beispielmodell hinzu](analysis-services-create-sample-model.md), nachdem Sie einen Server erstellt haben.   

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 05/02/2018
 ms.author: billmath
-ms.openlocfilehash: 14d2a29e65bf2f3a974f2713f36d9b9fa497ee1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -45,13 +45,14 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 ### <a name="user-sign-in"></a>Benutzeranmeldung
 Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, die Methode für das einmalige Anmelden Ihrer Benutzer auszuwählen. Die folgende Tabelle enthält eine kurze Beschreibung der verfügbaren Optionen. Eine vollständige Beschreibung der Anmeldemethoden finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md).
 
-![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/usersignin2.png)
+![Benutzeranmeldung](./media/active-directory-aadconnect-get-started-custom/usersignin4.png)
 
 | Option zum einmaligen Anmelden | BESCHREIBUNG |
 | --- | --- |
 | Kennworthashsynchronisierung |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden. Die Benutzerkennwörter werden über einen Kennworthash mit Azure AD synchronisiert, und die Authentifizierung erfolgt in der Cloud. Weitere Informationen finden Sie unter [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md). |
 |Passthrough-Authentifizierung|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Das Benutzerkennwort wird zur Überprüfung an den lokalen Active Directory-Domänencontroller übergeben.
 | Verbund mit AD FS |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Die Benutzer werden für die Anmeldung jeweils an ihre lokale AD FS-Instanz umgeleitet, und die Authentifizierung erfolgt lokal. |
+| Verbund mit PingFederate|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Die Benutzer werden für die Anmeldung jeweils zu ihrer lokalen PingFederate-Instanz umgeleitet, und die Authentifizierung erfolgt lokal. |
 | Nicht konfigurieren |Kein Feature für die Benutzeranmeldung wird installiert oder konfiguriert. Wählen Sie diese Option aus, wenn Sie bereits über einen Verbundserver eines Drittanbieters verfügen oder eine andere vorhandene Lösung eingesetzt wird. |
 |Einmaliges Anmelden aktivieren|Diese Option ist sowohl mit Kennwortsynchronisierung als auch mit Passthrough-Authentifizierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk. Weitere Informationen finden Sie unter [Einmaliges Anmelden](active-directory-aadconnect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht</br>
 
@@ -301,6 +302,39 @@ Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connec
 >
 >
 
+## <a name="configuring-federation-with-pingfederate"></a>Konfigurieren des Verbunds mit PingFederate
+Das Konfigurieren von PingFederate mit Azure AD Connect ist mit nur wenigen Mausklicks erledigt. Für die Konfiguration wird Folgendes benötigt:  Jedoch sind die folgenden Komponenten erforderlich:
+- PingFederate 8.4 oder höher.  Weitere Informationen finden Sie unter [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) (PingFederate-Integration in Azure Active Directory und Office 365)
+- Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
+
+### <a name="verify-the-domain"></a>Überprüfen der Domäne
+Nachdem Sie den Verbund mit PingFederate ausgewählt wurde, werden Sie dazu aufgefordert, die Domäne zu überprüfen, mit der ein Verbund hergestellt werden soll.  Wählen Sie im Dropdownfeld die Domäne aus.
+
+![Domäne überprüfen](./media/active-directory-aadconnect-get-started-custom/ping1.png)
+
+### <a name="export-the-pingfederate-settings"></a>Exportieren der PingFederate-Einstellungen
+
+
+PingFederate muss als Verbundserver für jede Azure-Verbunddomäne konfiguriert werden.  Klicken Sie auf die Schaltfläche „Einstellungen exportieren“, und teilen Sie diese Informationen Ihrem PingFederate-Administrator mit.  Der Verbundserveradministrator aktualisiert die Konfiguration und gibt dann die PingFederate-Server-URL und die Portnummer an, damit Azure AD Connect die Metadateneinstellungen überprüfen kann.  
+
+![Domäne überprüfen](./media/active-directory-aadconnect-get-started-custom/ping2.png)
+
+Wenden Sie sich an den PingFederate-Administrator, um alle Überprüfungsprobleme zu beheben.  Im Folgenden finden ein Beispiel für einen PingFederate-Server, der nicht über eine gültige Vertrauensstellung mit Azure verfügt:
+
+![Vertrauen](./media/active-directory-aadconnect-get-started-custom/ping5.png)
+
+
+
+
+### <a name="verify-federation-connectivity"></a>Überprüfen der Verbundkonnektivität
+Azure AD Connect überprüft die Authentifizierungsendpunkte, die aus den PingFederate-Metadaten im vorherigen Schritt abgerufen wurden.  Azure AD Connect versucht zunächst die Endpunkte mithilfe Ihrer lokalen DNS-Server zu beheben.  Als Nächstes wird versucht, die Endpunkte mit einem externen DNS-Anbieter zu beheben.  Wenden Sie sich an den PingFederate-Administrator, um alle Überprüfungsprobleme zu beheben.  
+
+![Überprüfen der Konnektivität](./media/active-directory-aadconnect-get-started-custom/ping3.png)
+
+### <a name="verify-federation-login"></a>Überprüfen der Verbundanmeldung
+Zu guter Letzt können Sie den neu konfigurierten Verbundanmeldevorgang überprüfen, indem Sie sich bei der Verbunddomäne anmelden. Wenn dies erfolgreich ist, wird der Verbund mit PingFederate erfolgreich konfiguriert.
+![Überprüfen der Anmeldung](./media/active-directory-aadconnect-get-started-custom/ping4.png)
+
 ## <a name="configure-and-verify-pages"></a>Konfigurieren und Überprüfen von Seiten
 Die Konfiguration wird auf dieser Seite vorgenommen.
 
@@ -308,6 +342,7 @@ Die Konfiguration wird auf dieser Seite vorgenommen.
 > Wenn Sie einen Verbund konfiguriert haben, sollten Sie sich vor dem Fortsetzen der Installation vergewissern, dass Sie die [Namensauflösung für Verbundserver](active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers) konfiguriert haben.
 >
 >
+
 
 ![Bereit für Konfiguration](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
@@ -336,8 +371,9 @@ Wenn Sie auf die Schaltfläche „Überprüfen“ klicken, überprüft Azure AD 
 
 ![Überprüfen](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-Führen Sie darüber hinaus die folgenden Überprüfungsschritte aus:
+Um zu überprüfen, ob die End-to-End-Authentifizierung erfolgreich war, sollten Sie manuell einen oder mehrere der folgenden Tests ausführen:
 
+* Sobald die Synchronisierung abgeschlossen ist, überprüfen Sie mithilfe der zusätzlichen Aufgabe „Verbundanmeldung überprüfen“ in Azure AD Connect die Authentifizierung für ein lokales Benutzerkonto Ihrer Wahl.
 * Vergewissern Sie sich, dass Sie sich im Intranet auf einem mit der Domäne verknüpften Computer über einen Browser anmelden können: Stellen Sie eine Verbindung mit https://myapps.microsoft.com her, und überprüfen Sie die Anmeldung mit Ihrem angemeldeten Konto. Das integrierte AD DS-Administratorkonto wird nicht synchronisiert und kann nicht für die Überprüfung verwendet werden.
 * Vergewissern Sie sich, dass Sie sich auf einem Gerät über das Extranet anmelden können. Stellen Sie auf einem privaten Computer oder auf einem mobilen Gerät eine Verbindung mit https://myapps.microsoft.com her, und geben Sie Ihre Anmeldeinformationen an.
 * Überprüfen Sie die Anmeldung per Rich Client. Stellen Sie eine Verbindung mit https://testconnectivity.microsoft.com her, klicken Sie auf die Registerkarte **Office 365**, und wählen Sie den **Office 365-Test für einmaliges Anmelden** aus.

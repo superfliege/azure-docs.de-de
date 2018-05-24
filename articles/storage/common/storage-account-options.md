@@ -2,18 +2,18 @@
 title: Optionen für Azure Storage-Konten | Microsoft-Dokumentation
 description: Enthält eine Beschreibung der Optionen zur Verwendung von Azure Storage.
 services: storage
-author: jirwin
+author: hux
 manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 01/17/2018
-ms.author: jirwin
-ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.date: 05/02/2018
+ms.author: hux
+ms.openlocfilehash: 69da15b98e6c519a3a8352cc7ca7212286cb4e52
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -32,7 +32,7 @@ Die einzelnen Kontotypen werden im folgenden Abschnitt ausführlicher beschriebe
 
 Konten vom Typ „General Purpose v2 (GPv2)“ unterstützen alle aktuellen Features für Blobs, Dateien, Warteschlangen und Tabellen. GPv2-Konten unterstützen alle APIs und Features, die auch für GPv1- und Blob-Speicherkonten unterstützt werden. Außerdem werden die gleichen Features in Bezug auf Dauerhaftigkeit, Verfügbarkeit, Skalierbarkeit und Leistung dieser Kontotypen unterstützt. Die Preise für GPv2-Konten wurden so konzipiert, dass die niedrigsten Preise pro GB sowie konkurrenzfähige Transaktionspreise erzielt werden.
 
-Sie können für Ihr GPv1-Konto ein Upgrade auf ein GPv2-Konto per PowerShell oder Azure CLI durchführen. 
+Sie können für Ihr GPv1-Konto ein Upgrade auf ein GPv2-Konto über das Azure-Portal, PowerShell oder Azure CLI durchführen. 
 
 Für Blockblobs in einem GPv2-Speicherkonto können Sie auf Grundlage von Zugriffsmustern zwischen den Speicherebenen „Hot“ und „Cool“ auf Kontoebene bzw. zwischen den Ebenen „Hot“, „Cool“ und „Archiv“ auf Blobebene wählen. Speichern Sie Daten, auf die häufig, weniger häufig und selten zugegriffen wird, auf den Speicherebenen „Hot“, „Cool“ bzw. „Archiv“, um die Kosten zu optimieren. 
 
@@ -72,8 +72,6 @@ Speicherkonten vom Typ „General Purpose v1 (GPv1)“ sind der älteste Typ von
 ### <a name="blob-storage-accounts"></a>Blob-Speicherkonten
 
 Blob-Speicherkonten unterstützen alle Blockblobfeatures, die auch für GPv2 unterstützt werden, aber sie sind ausschließlich auf die Unterstützung von Blockblobs beschränkt. Die Preise sind weitestgehend mit den Preisen für allgemeine Konten vom Typ „General Purpose v2“ identisch. Kunden sollten die Preisunterschiede zwischen Blob-Speicherkonten und GPv2-Konten und die Durchführung eines Upgrades auf GPv2 prüfen. Dieses Upgrade kann nicht rückgängig gemacht werden.
-
-Ein Upgrade auf GPv2 ist in Kürze auch für Blob-Speicherkonten möglich.
 
 > [!NOTE]
 > BLOB-Speicherkonten unterstützen nur Block- und Anfügeblobs, keine Seitenblobs.
@@ -115,9 +113,10 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szenarien veranschaulicht:
 
-* Erstellen eines GPv2-Speicherkontos
-* Konvertieren eines GPv1- oder Blob-Speicherkontos in ein GPv2-Speicherkonto
-* Festlegen der Konto- und Blobebene in einem GPv2-Speicherkonto
+* [Erstellen eines GPv2-Speicherkontos](#create-a-gpv2-storage-account-using-the-azure-portal)
+* [Konvertieren eines GPv1- oder Blob-Speicherkontos in ein GPv2-Speicherkonto](#convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal)
+* [Festlegen eines Kontos in einem GPv2-Speicherkonto](#change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal)
+* [Festlegen der Blobebene in einem Blob- oder GPv2-Speicherkonto](#change-the-storage-tier-of-a-blob-using-the-azure-portal)
 
 In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festgelegt werden, da diese Einstellung für das gesamte Speicherkonto gilt. „Archiv“ kann nur für ein bestimmtes Blob festgelegt werden.
 
@@ -155,7 +154,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 11. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.
 
-### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konvertieren eines GPv1-Kontos in ein GPv2-Speicherkonto über das Azure-Portal
+### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konvertieren eines GPv1- oder Blob-Speicherkontos in ein GPv2-Speicherkonto mit dem Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -245,7 +244,7 @@ Diese gesamte Kapazität, die von Benutzerdaten und Analyseprotokollen (falls ak
 
 #### <a name="transaction-costs"></a>Transaktionskosten
 
-Die Summe von *'TotalBillableRequests'*über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. *Beispiel:* Die Gesamtanzahl von Transaktionen vom Typ *GetBlob* eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *user;GetBlob* berechnet werden.
+Die Summe von *'TotalBillableRequests'* über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. *Beispiel:* Die Gesamtanzahl von Transaktionen vom Typ *GetBlob* eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *user;GetBlob* berechnet werden.
 
 Zur Ermittlung der ungefähren Transaktionskosten für Blob-Speicherkonten müssen die Transaktionen in drei Gruppen unterteilt werden, da jeweils unterschiedliche Preise gelten.
 
@@ -311,13 +310,13 @@ Ja. Bereits vorhandene Speicherkonten (GPv1) sind weiterhin zu gleichen Preisen 
 
 GPv2-Speicherkonten sind auf geringstmögliche GB-Speicherkosten ausgelegt und verfügen gleichzeitig über wettbewerbsfähige Branchenpreise für Transaktionen und Datenzugriff. In Zukunft wird für die Speicherung von Blobs die Verwendung von GPv2-Speicherkonten empfohlen, da Funktionen, z.B. Änderungsbenachrichtigungen, basierend auf diesem Kontotyp eingeführt werden. Es liegt aber bei Ihnen, wann Sie das Upgrade (abhängig von Ihren geschäftlichen Anforderungen) durchführen. Beispielsweise können Sie vor dem Durchführen des Upgrades Ihre Transaktionsmuster optimieren.
 
-Eine Herabstufung von GPv2 wird nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
+Downgrades von GPv2 werden nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
 
 **Kann ich mein vorhandenes Speicherkonto auf ein GPv2-Speicherkonto aktualisieren?**
 
-Ja. GPv1-Konten lassen sich über das Portal komfortabel auf GPv2 upgraden. Sie können dazu aber auch PowerShell oder die Befehlszeilenschnittstelle verwenden. Blob-Speicherkonten können mithilfe von PowerShell oder über die Befehlszeilenschnittstelle auf GPv2 aktualisiert werden. GPv2-Upgrades für Blob-Speicherkonten sind in Kürze aber auch über das Portal möglich.
+Ja. GPv1- oder Blob-Speicherkonten lassen sich über das Portal komfortabel auf GPv2 upgraden. Sie können dazu aber auch PowerShell oder die Befehlszeilenschnittstelle verwenden. 
 
-Eine Herabstufung von GPv2 wird nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
+Downgrades von GPv2 werden nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
 
 **Kann ich Objekte innerhalb des gleichen Kontos auf beiden Speicherebenen speichern?**
 
@@ -329,7 +328,7 @@ Ja. Sie können die Kontospeicherebene ändern, indem Sie für das Speicherkonto
 
 **Wie oft kann ich die Speicherebene für mein Blob-Speicherkonto ändern?**
 
-Die Anzahl von Speicherebenenänderungen wird von uns zwar nicht begrenzt, aber Sie sollten bedenken, dass ein Wechsel von „Cool“ zu „Hot“ mit erheblichen Kosten verbunden ist. Daher ist von häufigen Speicherebenenwechseln abzuraten.
+Die Anzahl von Speicherebenenänderungen ist zwar nicht begrenzt, aber Sie sollten bedenken, dass ein Wechsel von „Cool“ zu „Hot“ mit erheblichen Kosten verbunden ist. Daher ist von häufigen Speicherebenenwechseln abzuraten.
 
 **Verhalten sich die Blobs der Speicherebene „Cool“ anders als die Blobs der Speicherebene „Hot“?**
 
