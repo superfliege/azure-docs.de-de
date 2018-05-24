@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: bb981bcfb391362bad80aabf5808fd085e937232
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193453"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -303,6 +304,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erfahren Sie, wie Sie Azure Content Delivery Network verwenden.
 
 > [!div class="nextstepaction"]
-> [Hinzufügen eines CDN (Content Delivery Network) zu einer Azure App Service-Instanz](../cdn/app-service-web-tutorial-content-delivery-network.md)
+> [Hinzufügen eines CDN (Content Delivery Network) zu einer Azure App Service-Instanz](../cdn/cdn-add-to-web-app.md)
 
 Weitere Informationen finden Sie unter [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md).

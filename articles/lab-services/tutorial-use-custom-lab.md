@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ce4522673bac56f73944413d102b7cb36cf93f30
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361837"
 ---
 # <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein benutzerdefiniertes Lab in Azure DevTest Labs
 In diesem Tutorial verwenden Sie das benutzerdefinierte Lab, das im [Tutorial: Erstellen eines benutzerdefinierten Labs](tutorial-create-custom-lab.md) erstellt wurde.
@@ -35,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="access-the-lab"></a>Zugreifen auf das Lab
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Menü die Option **Alle Ressourcen** aus. 
+2. Wählen Sie im linken Menü die Option **Alle Ressourcen**. 
 3. Wählen Sie **DevTest Labs** als Ressourcentyp aus. 
 4. Wählen Sie das Lab aus. 
 

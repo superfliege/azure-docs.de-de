@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b0b6883abe738791e2f20c7fb0e6cbf696e0ffc1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5201c15e8aad5542e01859f1a65173bf4b10b6e6
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361232"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Tutorial: Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Tutorial stellen Sie als Kursteilnehmer eine Verbindung mit einem virtuellen Computer in einem Classroom-Lab her. 
@@ -40,9 +41,9 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 
-2. Wählen Sie auf der Kachel für den virtuellen Computer des Labs, auf das Sie zugreifen möchten, die Option **Verbinden** aus. 
+2. Klicken Sie auf der Kachel des virtuellen Computers des Labs, auf den Sie zugreifen möchten, auf **Verbinden**. 
 3. Speichern Sie die RDP-Datei auf der Festplatte, und öffnen Sie sie. 
-4. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrem Lehrer bzw. Dozenten erhalten haben, um sich beim Computer anzumelden. 
+4. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrer Lehrkraft erhalten haben, um sich beim Computer anzumelden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie über einen Registrierungslink, den Sie von Ihrem Lehrer bzw. Dozenten erhalten haben, auf ein Classroom-Lab zugegriffen. 

@@ -12,13 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 61a3169229cc121c078a934f6b979bdaffafd565
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8671cba484a779e8d7cd0172df141497bb396a97
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359032"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offlineaktualisieren von Azure App Service in Azure Stack
 
@@ -43,7 +44,7 @@ Mithilfe der Anweisungen in diesem Artikel können Sie den [App Service-Ressourc
 
 Um den App Service-Ressourcenanbieter in einer Azure Stack-Umgebung zu aktualisieren, müssen Sie diese Aufgaben ausführen:
 
-1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate1installer) herunter.
+1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate2installer) herunter.
 2. Erstellen Sie ein Paket für das Offlineupgrade.
 3. Führen Sie das App Service-Installationsprogramm („appservice.exe“) aus, und schließen Sie das Upgrade ab.
 
@@ -78,7 +79,7 @@ Um App Service in einer nicht verbundenen Umgebung zu aktualisieren, müssen Sie
 >
 >
 
-1. Führen Sie „appservice.exe“ als Administrator aus.  
+1. Führen Sie „appservice.exe“ als Administrator aus.
 
     ![App Service-Installationsprogramm][1]
 
@@ -101,7 +102,7 @@ Um App Service in einer nicht verbundenen Umgebung zu aktualisieren, müssen Sie
    1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
         * Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
         * Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: *cloudadmin@azurestack.local* Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
-   2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
+   2. Wählen Sie im Feld **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
    3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
    4. Wenn eine vorhandene App Service-Bereitstellung ermittelt wird, werden Ressourcengruppe und Speicherkonto aufgefüllt und abgeblendet.
    5. Klicken Sie auf **Weiter**, um die Zusammenfassung des Upgrades zu überprüfen.

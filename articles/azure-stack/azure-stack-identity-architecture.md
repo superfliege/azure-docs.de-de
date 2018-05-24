@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257487"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Identitätsarchitektur für Azure Stack
 Bevor Sie einen Identitätsanbieter für die Verwendung mit Azure Stack auswählen, sollten Sie sich mit den wichtigen Unterschieden zwischen Azure Active Directory (Azure AD) und Active Directory-Verbunddienste (AD FS) vertraut machen. 

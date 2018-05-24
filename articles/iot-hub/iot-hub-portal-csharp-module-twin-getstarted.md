@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 99b0acbf6461750c2606cc3d4338c10b03a4b430
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 30a53620a640b0122286a6ac69c0f98cd0bbde40
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361687"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung des Portals und eines .NET-Geräts
 
@@ -69,7 +70,7 @@ Speichern Sie die soeben erstellte Modulidentität, und klicken Sie dann darauf.
 
 Sie haben die Modulidentität in Ihrer IoT Hub-Instanz erstellt. Testen wir nun die Kommunikation zwischen Cloud und simuliertem Gerät. Sobald eine Modulidentität erstellt wurde, wird implizit ein Gerätezwilling in IoT Hub erstellt. In diesem Abschnitt erstellen Sie eine .NET Konsolen-App auf Ihrem simulierte Gerät, die die vom Modulzwilling gemeldeten Eigenschaften aktualisiert.
 
-1. **Erstellen eines Visual Studio-Projekts:** Fügen Sie in Visual Studio in der vorhandenen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework)** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET-Framework-Version 4.6.1 oder höher verwendet wird. Nennen Sie das Projekt **UpdateModuleTwinReportedProperties**.
+1. **Erstellen eines Visual Studio-Projekts:** Fügen Sie in Visual Studio in der vorhandenen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework)** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET Framework, Version 4.6.1 oder höher, verwendet wird. Nennen Sie das Projekt **UpdateModuleTwinReportedProperties**.
 
     ![Erstellen eines Visual Studio-Projekts][13]
 
@@ -92,7 +93,7 @@ Sie haben die Modulidentität in Ihrer IoT Hub-Instanz erstellt. Testen wir nun 
 
     ```csharp
     private const string ModuleConnectionString = "<Your module connection string>“;
-    private static DeviceClient Client = null;
+    private static ModuleClient Client = null;
     ```
 
     Fügen Sie die folgende Methode **OnDesiredPropertyChanged** der Klasse **Program** hinzu:
@@ -121,7 +122,7 @@ Sie haben die Modulidentität in Ihrer IoT Hub-Instanz erstellt. Testen wir nun 
 
         try
         {
-            Client = DeviceClient.CreateFromConnectionString(ModuleConnectionString, transport);
+            Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
             Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
             Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
 

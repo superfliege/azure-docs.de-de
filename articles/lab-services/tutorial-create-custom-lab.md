@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: df70322a2d6562fce8da17fde652dd0dfbfcaec4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362242"
 ---
 # <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines benutzerdefinierten Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein benutzerdefiniertes Lab im Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -65,7 +66,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
     7. Klicken Sie zum Schließen der Seite **Erweitert** auf **OK**. 
     8. Klicken Sie auf **Erstellen**. 
 
-        ![Auswählen eines Basisimages](./media/tutorial-create-custom-lab/new-virtual-machine.png)
+        ![Auswählen einer Grundlage](./media/tutorial-create-custom-lab/new-virtual-machine.png)
     9. Sie sehen den Status der VM in der Liste **Abrufbare virtuelle Computer**. Das Erstellen des virtuellen Computers dauert ca. 25 Minuten. Die VM wird in einer eigenen Azure-Ressourcengruppe angelegt, deren Name mit dem Namen der aktuellen Ressourcengruppe beginnt, zu der das Lab gehört. Wenn sich das Lab beispielsweise in `labrg` befindet, kann die VM in der Ressourcengruppe `labrg3988722144002` erstellt werden. 
 
         ![Status der VM-Erstellung](./media/tutorial-create-custom-lab/vm-creation-status.png)
@@ -82,7 +83,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 1. Gehen Sie auf der Seite **Berechtigungen hinzufügen** folgendermaßen vor:
     1. Wählen Sie für **Rolle** die Option **DevTest Labs-Benutzer**. 
     2. Wählen Sie den **Benutzer** aus, den Sie hinzufügen möchten. 
-    3. Wählen Sie **Speichern** aus.
+    3. Wählen Sie **Speichern**aus.
 
         ![Hinzufügen von Berechtigungen](./media/tutorial-create-custom-lab/add-lab-user.png)
 4. Um **Konfigurations- und Richtlinien – Zugriffssteuerung (IAM)** zu schließen, klicken Sie rechts oben auf **X**. 
