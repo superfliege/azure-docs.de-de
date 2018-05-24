@@ -2,35 +2,29 @@
 title: Azure AD SSPR über den Windows 10-Anmeldebildschirm | Microsoft-Dokumentation
 description: Konfigurieren von Windows 10-Anmeldebildschirm, Azure AD-Kennwortzurücksetzung und „PIN vergessen“
 services: active-directory
-keywords: ''
-documentationcenter: ''
+ms.service: active-directory
+ms.component: authentication
+ms.topic: get-started-article
+ms.date: 04/27/2018
+ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: ''
-ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 01/11/2018
-ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: a85cb6aea1027d657d38007a397321de10e16d07
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 701ab041eb603a1a06025d5bb43964880353ada9
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
 Sie haben die Azure AD-Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) bereits bereitgestellt, aber die Benutzer wenden sich weiterhin per Telefon an den Helpdesk, wenn sie ihr Kennwort vergessen haben. Sie rufen den Helpdesk an, weil sie keinen Webbrowser zum Zugreifen auf SSPR nutzen können.
 
-Mit dem neuen Windows 10 Fall Creators Update wird Benutzern mit in Azure AD eingebundenen Geräten auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn die Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung.
+Mit dem neuen Windows 10 April 2018 Update wird Benutzern mit in **Azure AD eingebundenen Geräten** oder in **Azure AD eingebundenen Hybridgeräten** auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn die Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung.
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD-Kennwort über den Windows 10-Anmeldebildschirm zurücksetzen können:
 
-* Windows 10, Version 1709, oder neuerer Client, der [in Azure AD eingebunden](../device-management-azure-portal.md) ist.
+* Windows 10 April 2018 Update oder ein neuerer Client, der in [Azure AD eingebunden](../device-management-azure-portal.md) oder in [Hybrid-Azure AD eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) ist
 * Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
 * Führen Sie das Konfigurieren und Bereitstellen der Einstellung zum Aktivieren des Links „Kennwort zurücksetzen“ durch, indem Sie eine der folgenden Methoden verwenden:
    * [Profil für Intune-Gerätekonfiguration](tutorial-sspr-windows.md#configure-reset-password-link-using-intune)
@@ -66,7 +60,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Azure Active Directory**.
 2. Navigieren Sie zu **Benutzer und Gruppen** > **Alle Gruppen** > **Neue Gruppe**.
-3. Geben Sie einen Namen für die Gruppe ein, und wählen Sie unter **Mitgliedschaftstyp** die Option **Zugewiesen**. 
+3. Geben Sie einen Namen für die Gruppe ein, und wählen Sie unter **Mitgliedschaftstyp** die Option **Zugewiesen**.
    * Wählen Sie unter **Mitglieder** die in Azure AD eingebundenen Windows 10-Geräte aus, auf die Sie die Richtlinie anwenden möchten.
    * Klicken Sie auf **Auswählen**.
 4. Klicken Sie auf **Erstellen**
@@ -117,6 +111,7 @@ Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort z
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md)

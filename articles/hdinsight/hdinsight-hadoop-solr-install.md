@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: d263f6255eedb9b45b7f0b232e1595197556b7c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caabe0fea6286c9439e8929b054d771868dcb6f1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="install-and-use-solr-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Solr in Windows-basierten HDInsight-Clustern
 
@@ -157,7 +157,7 @@ Sie müssen mit der Indizierung von Solr mit einigen Datendateien beginnen. Sie 
              </lst>
              <str name="status">OK</str>
            </response>
-   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster ist dies **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.*timestamp*** erstellt werden.
+   2. Navigieren Sie in der Remotesitzung zu „{SOLR_HOME}\{{Collection}\data“. Für den mit dem Beispielskript erstellten Cluster ist dies **C:\apps\dist\solr-4.7.2\example\solr\collection1\data**. An diesem Speicherort sollte ein Momentaufnahmenordner mit einem Namen wie **snapshot.* timestamp*** erstellt werden.
    3. Komprimieren Sie den Ordner für Momentaufnahmen im ZIP.-Format, und laden Sie ihn in Azure Blob Storage hoch. Navigieren Sie über die Hadoop-Befehlszeile zum Verzeichnis des Momentaufnahmenordners mithilfe des folgenden Befehls:
 
              hadoop fs -CopyFromLocal snapshot._timestamp_.zip /example/data
@@ -176,11 +176,9 @@ Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe
 * [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen][hdinsight-cluster-customize]: Allgemeine Informationen zum Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen
 * [Entwickeln von Script Action-Skripts für HDInsight](hdinsight-hadoop-script-actions.md)
 * [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]: Skriptaktionsbeispiel zum Installieren von Spark
-* [Installieren von R in HDInsight-Clustern][hdinsight-install-r]: Skriptaktionsbeispiel zum Installieren von R
 * [Installieren von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md): Skriptaktionsbeispiel zum Installieren von Giraph
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
 [hdinsight-provision]: hdinsight-provision-clusters.md
-[hdinsight-install-r]: hdinsight-hadoop-r-scripts.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md

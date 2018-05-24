@@ -1,6 +1,6 @@
 ---
-title: Erstellen benutzerdefinierter VM-Images mithilfe von Azure PowerShell | Microsoft-Dokumentation
-description: 'Tutorial: Erstellen eines benutzerdefinierten VM-Images mithilfe von Azure PowerShell'
+title: Tutorial – Erstellen benutzerdefinierter VM-Images mit Azure PowerShell | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Erstellen eines benutzerdefinierten VM-Images in Azure verwenden.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -10,19 +10,19 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 443f47b98ea063c6fe1f0b3517c00b6cf3692161
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a449c1f9781ffc86de4786eaab3cb83999b86a72
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-custom-image-of-an-azure-vm-using-powershell"></a>Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mithilfe von PowerShell
+# <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell
 
 Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. In diesem Tutorial erstellen Sie ein eigenes benutzerdefiniertes Image eines virtuellen Azure-Computers. Folgendes wird vermittelt:
 
@@ -33,7 +33,6 @@ Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch 
 > * Liste aller Images in Ihrem Abonnement
 > * Löschen eines Images
 
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 In den folgenden Schritten wird erläutert, wie Sie eine vorhandene VM in ein wiederverwendbares benutzerdefiniertes Image umwandeln, mit dem Sie neue VM-Instanzen erstellen können.
@@ -42,7 +41,7 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.6.0 des AzureRM-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des AzureRM-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 ## <a name="prepare-vm"></a>Vorbereiten der VM
 

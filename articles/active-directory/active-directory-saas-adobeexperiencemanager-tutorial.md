@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c366e314b77cd3344a90826b22b96a45e35b0b4e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: d63ee16df9b49517c93cdc405cd2525f578d2a7f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Tutorial: Azure Active Directory-Integration mit Adobe Experience Manager
 
@@ -30,7 +30,7 @@ Die Integration von Adobe Experience Manager in Azure AD bietet die folgenden Vo
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adobe Experience Manager anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -144,16 +144,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin6.png)
 
 11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > TrustStore verwalten).
-=======
-11. Klicken Sie auf **Account settings** > **Manage TrustStore** (Kontoeinstellungen > Vertrauensspeicher verwalten).
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_managetrust.png)
 
@@ -194,16 +184,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Fügen Sie im Feld **IDP URL** (IdP-URL) den Wert der **URL für den SAML-SSO-Dienst** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie in TrustStore hinzugefügt haben.
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie in TrustStore hinzugefügt haben.
-=======
-    c. Geben Sie im Feld **IDP Certificate Alias** (Alias des IdP-Zertifikats) den Wert von **Certificate Alias** (Zertifikatalias) ein, den Sie im Vertrauensspeicher hinzugefügt haben.
->>>>>>> 6def4612c80a1e9bab4008c57d68ccdbec8d0794
->>>>>>> bb0780f466c4ede2eb00246e1afe01b19bb40688
-=======
->>>>>>> ffcb13bb5fc8687cd2f604cdad085442a2a65a08
 
     d. Geben Sie im Feld **Security Provided Entity ID** (Sicherheits-Entitäts-ID) die eindeutige **SAML-Entitäts-ID** ein, die Sie im Azure-Portal konfiguriert haben.
 
@@ -301,7 +281,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

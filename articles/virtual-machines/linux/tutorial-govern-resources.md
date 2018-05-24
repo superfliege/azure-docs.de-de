@@ -1,6 +1,6 @@
 ---
-title: Verwalten von virtuellen Azure-Computern mit der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Tutorial – Verwalten von virtuellen Azure-Computern durch Anwenden von RBAC, Richtlinien, Sperren und Tags mit der Azure-Befehlszeilenschnittstelle
+title: Tutorial – Verwalten von virtuellen Azure-Computern mit Azure CLI 2.0 | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie Azure CLI 2.0 zum Verwalten von virtuellen Azure-Computern durch Anwenden von RBAC, Richtlinien, Sperren und Tags verwenden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -10,22 +10,23 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: a7d44e421162cf5784dde58f757e235d12b63cba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.custom: mvc
+ms.openlocfilehash: 4ce2b133ed4266028f1d99151939538fb8ce60f5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="virtual-machine-governance-with-azure-cli"></a>Verwaltung von virtuellen Computern mit der Azure-Befehlszeilenschnittstelle
+# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli-20"></a>Tutorial: Informationen zur Verwaltung von virtuellen Azure-Computern mit Azure CLI 2.0
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Informationen für die lokale Installation und Verwendung der CLI finden Sie unter [Install Azure CLI 2.0](/cli/azure/install-azure-cli) (Installieren der Azure CLI 2.0).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="understand-scope"></a>Der Bereich
 

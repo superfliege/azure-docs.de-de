@@ -1,27 +1,27 @@
 ---
-title: Tutorial für Synonyme (Vorschau) in Azure Search | Microsoft-Dokumentation
-description: Fügen Sie das Feature „Synonyme“ (Vorschau) einem Index in Azure Search hinzu.
+title: Tutorial für Synonyme in Azure Search | Microsoft-Dokumentation
+description: Fügen Sie das Feature „Synonyme“ einem Index in Azure Search hinzu.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 03/31/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 0f082397f832883b272a2ca38850a340b618adde
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5482185a4a4cc8b76c1094ce12a7ac52985ec57c
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="synonym-preview-c-tutorial-for-azure-search"></a>Synonyme (Vorschau) – C#-Tutorial für Azure Search
+# <a name="synonym-c-tutorial-for-azure-search"></a>Synonyme: C#-Tutorial für Azure Search
 
 Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semantisch gleichwertig angesehen werden, dem eingegebenen Begriff hinzugefügt werden. Es kann beispielsweise sein, dass sich für den Begriff „Auto“ auch Übereinstimmungen für Dokumente ergeben sollen, die die Begriffe „Automobil“ oder „Fahrzeug“ enthalten.
 
 In Azure Search werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Sie können mehrere Synonymzuordnungen erstellen, diese für den gesamten Dienst als Ressource bereitstellen, die für alle Indizes verfügbar ist, und dann auf Feldebene angeben, was jeweils verwendet werden soll. Beim Abfragen führt Azure Search zusätzlich zum Durchsuchen eines Index dann eine Suche in einer Synonymzuordnung durch, falls diese für die Felder einer Abfrage angegeben ist.
 
 > [!NOTE]
-> Das Feature „Synonyme“ befindet sich derzeit in der Vorschauphase und wird nur in den neuesten API- und SDK-Vorschauversionen (api-version=2016-09-01-Preview, SDK version 4.x-preview) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Vorschauversionen von APIs sind nicht durch ein SLA abgedeckt, und die Vorschaufeatures können sich ändern, sodass die Verwendung in Produktionsanwendungen nicht empfehlenswert ist.
+> Das Feature „Synonyme“ wird in den aktuellen API- und SDK-Versionen (API-Version 2017-11-11, SDK-Version 5.0.0) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Falls Unterstützung für Synonyme auch für das Azure-Portal nützlich wäre, lassen Sie uns Feedback über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) zukommen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,7 +29,7 @@ Für das Tutorial gelten die folgenden Anforderungen:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Search-Dienst](search-create-service-portal.md)
-* [Vorschauversion der Microsoft.Azure.Search-.NET-Bibliothek](https://aka.ms/search-sdk-preview)
+* [Microsoft.Azure.Search-.NET-Bibliothek](https://aka.ms/search-sdk)
 * [Verwenden von Azure Search aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>Übersicht

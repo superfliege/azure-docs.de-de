@@ -17,11 +17,11 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) ist ein Ziel für Geschäftsbenutzer zum Entdecken, Ausprobieren und Verwalten branchenspezifischer SaaS-Anwendungen (eigenständiges SaaS und Add-On zu vorhandenen SaaS-Produkten von Microsoft).
@@ -43,7 +43,7 @@ So aktivieren Sie die Mehrinstanzenfähigkeit in Ihrer Anwendung:
 Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter: [Anmelden von Azure Active Directory-Benutzern (AD) mit dem mehrinstanzenfähigen Anwendungsmuster](./active-directory-devhowto-multi-tenant-overview.md).
 
 ### <a name="single-tenant-applications"></a>Anwendungen mit einem Mandanten
-Anwendungen, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptieren, werden *Anwendungen mit einem Mandanten* genannt. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als *Gastkonto* der Azure Active Directory-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. Sie können Benutzer über die [*Azure AD B2B-Zusammenarbeit*](../active-directory-b2b-what-is-azure-ad-b2b.md) als Gastkonten einem Azure Active Directory hinzufügen – und dies kann [programmgesteuert](../active-directory-b2b-code-samples.md) erfolgen. Wenn Sie einen Benutzer einem Azure Active Directory als Gastkonto hinzufügen, wird eine Einladungs-E-Mail an den Benutzer gesendet, der die Einladung durch Klicken auf den Link in der Einladungs-E-Mail annehmen muss. Bei Einladungen, die an weitere Benutzer in einer einladenden Organisation gesendet werden, die auch Mitglied der Partnerorganisation ist, ist das Akzeptieren einer Einladung keine Voraussetzung für die Anmeldung.
+Anwendungen, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptieren, werden *Anwendungen mit einem Mandanten* genannt. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als *Gastkonto* der Azure Active Directory-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. Sie können Benutzer über die [*Azure AD B2B-Zusammenarbeit*](../b2b/what-is-b2b.md) als Gastkonten einem Azure Active Directory hinzufügen – und dies kann [programmgesteuert](../b2b/code-samples.md) erfolgen. Wenn Sie einen Benutzer einem Azure Active Directory als Gastkonto hinzufügen, wird eine Einladungs-E-Mail an den Benutzer gesendet, der die Einladung durch Klicken auf den Link in der Einladungs-E-Mail annehmen muss. Bei Einladungen, die an weitere Benutzer in einer einladenden Organisation gesendet werden, die auch Mitglied der Partnerorganisation ist, ist das Akzeptieren einer Einladung keine Voraussetzung für die Anmeldung.
 
 Anwendungen mit einem Mandanten können die *Kontaktformular*-Oberfläche aktivieren, aber wenn Sie die kostenlose Testbenutzeroberfläche per Einfachklick, die AppSource empfiehlt, aktivieren möchten, ermöglichen Sie stattdessen die Mehrinstanzenfähigkeit Ihrer Anwendung.
 

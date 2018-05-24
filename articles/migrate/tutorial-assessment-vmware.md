@@ -4,14 +4,14 @@ description: In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Com
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 05/03/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d70b4ea2d45c38fa53ab3c00f76c00ef6f3d7663
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 268ec150dbd4b15ad00a56b62b84e268c4469ebd
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -31,14 +31,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen. 
- 
+- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
+
 > [!NOTE]
-> Die Unterstützung für Hyper-V ist Teil der Roadmap und wird in Kürze verfügbar gemacht. 
+> Die Unterstützung für Hyper-V ist Teil der Roadmap und wird in Kürze verfügbar gemacht.
 
 - **vCenter Server-Konto**: Sie benötigen ein schreibgeschütztes Konto, um auf den vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
-- **Berechtigungen:** Auf dem vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format. 
-- **Statistikeinstellungen:** Die Statistikeinstellungen für den vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene als Ebene 3 wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen in diesem Fall werden auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher und Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt. 
+- **Berechtigungen:** Auf dem vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
+- **Statistikeinstellungen:** Die Statistikeinstellungen für den vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene als Ebene 3 wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen in diesem Fall werden auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher und Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
 ## <a name="create-an-account-for-vm-discovery"></a>Erstellen eines Kontos für die VM-Ermittlung
 
@@ -59,10 +59,10 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Suchen Sie nach **Azure Migrate**, und wählen Sie in den Suchergebnissen den Dienst **Azure Migrate** aus. Klicken Sie dann auf **Erstellen**.
 3. Geben Sie einen Projektnamen und das Azure-Abonnement für das Projekt an.
 4. Erstellen Sie eine neue Ressourcengruppe.
-5. Geben Sie die Region an, in der das Projekt erstellt werden soll, und klicken Sie dann auf **Erstellen**. Azure Migrate-Projekte können nur in der Region „USA, Westen-Mitte“ oder „USA, Osten“ erstellt werden. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. Der für das Projekt angegebene Standort wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden. 
+5. Geben Sie die Region an, in der das Projekt erstellt werden soll, und klicken Sie dann auf **Erstellen**. Azure Migrate-Projekte können nur in der Region „USA, Westen-Mitte“ oder „USA, Osten“ erstellt werden. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. Der für das Projekt angegebene Standort wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden.
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
-    
+
 
 
 ## <a name="download-the-collector-appliance"></a>Herunterladen der Collectorappliance
@@ -84,7 +84,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Der generierte Hash muss folgenden Einstellungen entsprechen.
-    
+
     Für OVA-Version 1.0.9.7
 
     **Algorithmus** | **Hashwert**
@@ -92,7 +92,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     MD5 | d5b6a03701203ff556fa78694d6d7c35
     SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
     SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+
     Für OVA-Version 1.0.9.5
 
     **Algorithmus** | **Hashwert**
@@ -100,7 +100,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     MD5 | fb11ca234ed1f779a61fbb8439d82969
     SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
     SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
-    
+
     Für OVA-Version 1.0.9.2
 
     **Algorithmus** | **Hashwert**
@@ -108,7 +108,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     MD5 | 7326020e3b83f225b794920b7cb421fc
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
-    
+
     Für OVA-Version 1.0.8.59:
 
     **Algorithmus** | **Hashwert**
@@ -120,7 +120,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     Für OVA-Version 1.0.8.49:
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8 
+    MD5 | cefd96394198b92870d650c975dbf3b8
     SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
     SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
 
@@ -145,7 +145,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 5. Geben Sie unter **Host/Cluster** den Host oder Cluster an, auf dem der virtuelle Collectorcomputer ausgeführt wird.
 7. Geben Sie im Speicher das Speicherziel für den virtuellen Collectorcomputer an.
 8. Geben Sie unter **Datenträgerformat** den Typ und die Größe des Datenträgers an.
-9. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der virtuelle Collectorcomputer eine Verbindung herstellt. Das Netzwerk benötigt eine Internetverbindung, damit Metadaten an Azure gesendet werden können. 
+9. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der virtuelle Collectorcomputer eine Verbindung herstellt. Das Netzwerk benötigt eine Internetverbindung, damit Metadaten an Azure gesendet werden können.
 10. Überprüfen Sie die Einstellungen, und klicken Sie dann auf **Fertig stellen**.
 
 ## <a name="run-the-collector-to-discover-vms"></a>Ausführen des Collectors zum Ermitteln virtueller Computer
@@ -156,7 +156,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 4. Öffnen Sie im Azure Migrate-Collector die Option **Erforderliche Komponenten einrichten**.
     - Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
     - Der Collector überprüft, ob der virtuelle Computer über Internetzugriff verfügt.
-    - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
+    - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert. [Erfahren Sie mehr](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) über die Anforderungen für Internetkonnektivität und die Liste der URLs, auf die der Collector zugreift.
 
     > [!NOTE]
     > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt.
@@ -167,10 +167,10 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 5. Nehmen Sie in **vCenter Server-Details angeben** die folgenden Einstellungen vor:
     - Geben Sie den Namen (FQDN) oder die IP-Adresse des vCenter-Servers an.
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das der Collector virtuelle Computer auf dem vCenter-Server ermittelt.
-    - Wählen Sie unter **Sammlungsbereich** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1000 virtuelle Computer umfassen. 
+    - Wählen Sie unter **Sammlungsbereich** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen. [Erfahren Sie mehr](how-to-scale-assessment.md) über die Möglichkeiten zum Erkennen einer größeren Umgebung.
 
 6. Geben Sie unter **Migrationsprojekt angeben** die ID und den Schlüssel für das Azure Migrate-Projekt an, die sie im Portal kopiert haben. Wenn Sie diese Angaben nicht kopiert haben, öffnen Sie das Azure-Portal über den virtuellen Collectorcomputer. Klicken Sie auf der Seite **Übersicht** des Projekts auf **Computer ermitteln**, und kopieren Sie die Werte.  
-7. Überwachen Sie in **Sammlungsfortschritt anzeigen** die Ermittlung, und vergewissern Sie sich, dass sich die von den VMs erfassten Metadaten innerhalb des zulässigen Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an.
+7. Überwachen Sie in **Sammlungsfortschritt anzeigen** die Ermittlung, und vergewissern Sie sich, dass sich die von den VMs erfassten Metadaten innerhalb des zulässigen Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an. [Erfahren Sie mehr](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) über die vom Azure Migrate-Collector gesammelten Daten.
 
 > [!NOTE]
 > Der Collector unterstützt nur „Englisch (USA)“ als Sprache des Betriebssystems und die Sprache der Collectorschnittstelle. Die Unterstützung für weitere Sprachen ist in Kürze verfügbar.
@@ -178,7 +178,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 
 ### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
 
-Die Ermittlungszeit hängt von der Anzahl der ermittelten virtuellen Computer ab. Normalerweise dauert der Abschluss der Ermittlung bei 100 virtuellen Computern ungefähr eine Stunde, nachdem der Collector ausgeführt wurde. 
+Die Ermittlungszeit hängt von der Anzahl der ermittelten virtuellen Computer ab. Normalerweise dauert der Abschluss der Ermittlung bei 100 virtuellen Computern ungefähr eine Stunde, nachdem der Collector ausgeführt wurde.
 
 1. Klicken Sie im Migration Planner-Projekt auf **Verwalten** > **Computer**.
 2. Überprüfen Sie, ob die zu ermittelnden virtuellen Computer im Portal angezeigt werden.
@@ -186,7 +186,7 @@ Die Ermittlungszeit hängt von der Anzahl der ermittelten virtuellen Computer ab
 
 ## <a name="create-and-view-an-assessment"></a>Erstellen und Anzeigen einer Bewertung
 
-Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen eine Bewertung. 
+Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen eine Bewertung.
 
 1. Klicken Sie auf der Seite **Übersicht** des Projekts auf **+ Bewertung erstellen**.
 2. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
@@ -198,7 +198,7 @@ Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen ein
 
 ### <a name="assessment-details"></a>Bewertungsdetails
 
-Eine Bewertung enthält Informationen dazu, ob die lokalen virtuellen Computer mit Azure kompatibel sind, welche VM-Größe für die Ausführung des virtuellen Computers in Azure geeignet ist und wie hoch die voraussichtlichen monatlichen Azure-Kosten sind. 
+Eine Bewertung enthält Informationen dazu, ob die lokalen virtuellen Computer mit Azure kompatibel sind, welche VM-Größe für die Ausführung des virtuellen Computers in Azure geeignet ist und wie hoch die voraussichtlichen monatlichen Azure-Kosten sind.
 
 ![Bewertungsbericht](./media/tutorial-assessment-vmware/assessment-report.png)
 
@@ -208,11 +208,11 @@ Die Azure-Bereitschaftsansicht in der Bewertung gibt Aufschluss über den Bereit
 - Bereit für Azure
 - Bedingt bereit für Azure
 - Nicht bereit für Azure
-- Bereitschaft unbekannt 
+- Bereitschaft unbekannt
 
-Für virtuelle Computer, die bereit sind, empfiehlt Azure Migrate eine VM-Größe in Azure. Die Größenempfehlung von Azure Migrate basiert auf dem in den Bewertungseigenschaften angegebenen Größenkriterium. Bei Verwendung des leistungsbasierten Größenkriteriums wird bei der Größenempfehlung der Leistungsverlauf der virtuellen Computer berücksichtigt. Bei Verwendung des Größenkriteriums „Wie lokal“ ist für die Empfehlung die Größe des lokalen virtuellen Computers ausschlaggebend. In diesem Fall werden keine Nutzungsdaten berücksichtigt. Weitere Informationen zur Größenanpassung in Azure Migrate finden Sie [hier](concepts-assessment-calculation.md). 
+Für virtuelle Computer, die bereit sind, empfiehlt Azure Migrate eine VM-Größe in Azure. Die Größenempfehlung von Azure Migrate basiert auf dem in den Bewertungseigenschaften angegebenen Größenkriterium. Bei Verwendung des leistungsbasierten Größenkriteriums wird bei der Größenempfehlung der Leistungsverlauf der virtuellen Computer berücksichtigt. Bei Verwendung des Größenkriteriums „Wie lokal“ ist bei der Größenempfehlung für den virtuellen Computer in Azure die Größe des lokalen virtuellen Computers ausschlaggebend. Daten zur CPU- und Speicherauslastung des virtuellen Computers werden in Hinsicht auf die Größe des virtuellen Computers nicht berücksichtigt. Allerdings wird die Größe der Datenträger bei einer Größenanpassung vom Typ „Wie lokal“ unter Berücksichtigung der Leistungsdaten angepasst.  Weitere Informationen zur Größenanpassung in Azure Migrate finden Sie [hier](concepts-assessment-calculation.md).
 
-Bei virtuellen Computern, die nicht oder nur bedingt für Azure bereit sind, informiert Azure Migrate über die Bereitschaftsprobleme sowie über mögliche Abhilfemaßnahmen. 
+Bei virtuellen Computern, die nicht oder nur bedingt für Azure bereit sind, informiert Azure Migrate über die Bereitschaftsprobleme sowie über mögliche Abhilfemaßnahmen.
 
 Virtuelle Computer, für die Azure Migrate die Azure-Bereitschaft aufgrund fehlender Daten nicht bestimmen kann, werden mit „Bereitschaft unbekannt“ gekennzeichnet.
 
@@ -222,22 +222,20 @@ Neben den Angaben zu Azure-Bereitschaft und Größe schlägt Azure Migrate auch 
 
 #### <a name="monthly-cost-estimate"></a>Geschätzte monatliche Kosten
 
-Diese Ansicht zeigt die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer. Kostenschätzungen werden unter Berücksichtigung der Azure Migrate-Größenempfehlungen für einen Computer sowie unter Berücksichtigung seiner Datenträger und der Bewertungseigenschaften berechnet. 
+Diese Ansicht zeigt die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer. Kostenschätzungen werden unter Berücksichtigung der Azure Migrate-Größenempfehlungen für einen Computer sowie unter Berücksichtigung seiner Datenträger und der Bewertungseigenschaften berechnet.
 
 > [!NOTE]
-> Die Kostenschätzung von Azure Migrate bezieht sich auf die Ausführung der lokalen virtuellen Computer als virtuelle Azure IaaS-Computer (Infrastructure-as-a-Service). Darin werden keine PaaS- (Platform-as-a-Service) oder SaaS-Kosten (Software-as-a-Service) berücksichtigt. 
+> Die Kostenschätzung von Azure Migrate bezieht sich auf die Ausführung der lokalen virtuellen Computer als virtuelle Azure IaaS-Computer (Infrastructure-as-a-Service). Darin werden keine PaaS- (Platform-as-a-Service) oder SaaS-Kosten (Software-as-a-Service) berücksichtigt.
 
-Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert. 
+Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert.
 
-![Bewertung der Kosten für die virtuellen Computer](./media/tutorial-assessment-vmware/assessment-vm-cost.png) 
+![Bewertung der Kosten für die virtuellen Computer](./media/tutorial-assessment-vmware/assessment-vm-cost.png)
 
 #### <a name="confidence-rating"></a>Zuverlässigkeitsstufe
 
-Jeder Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet. Die Skala reicht von einem Stern (niedrigster Wert) bis zu fünf Sternen (höchster Wert). Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind. Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen. 
+Jeder Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet. Die Skala reicht von einem Stern (niedrigster Wert) bis zu fünf Sternen (höchster Wert). Die Zuverlässigkeitsstufe wird einer Bewertung auf der Grundlage der Verfügbarkeit von Datenpunkten zugeordnet, die zum Berechnen der Bewertung erforderlich sind. Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von Azure Migrate bereitgestellten Größenempfehlungen besser einschätzen.
 
-Die Zuverlässigkeitsstufe ist hilfreich, wenn Sie eine *leistungsbasierte Größenanpassung* durchführen, da Azure Migrate möglicherweise nicht über genügend Datenpunkte für eine nutzungsbasierte Größenanpassung verfügt. Bei der Größenanpassung vom Typ *Wie lokal* wird die Zuverlässigkeit immer mit fünf Sternen bewertet, da Azure Migrate über alle Datenpunkte verfügt, die zum Bestimmen der VM-Größe erforderlich sind. 
-
-Bei Verwendung der leistungsbasierten Größenanpassung des virtuellen Computers benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher. Außerdem werden für jeden an den virtuellen Computer angefügten Datenträger Informationen zu den Lese-/Schreib-IOPS sowie zum Durchsatz benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an den virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent):
+Bei Verwendung der leistungsbasierten Größenanpassung des virtuellen Computers benötigt Azure Migrate Nutzungsdaten für CPU und Arbeitsspeicher. Außerdem werden bei der Größenanpassung für jeden an den virtuellen Computer angefügten Datenträger Informationen zu den Lese-/Schreib-IOPS sowie zum Durchsatz benötigt. Analog dazu benötigt Azure Migrate für jeden Netzwerkadapter, der an den virtuellen Computer angefügt ist, Informationen zu ein- und ausgehenden Netzwerkdaten, um die leistungsbasierte Größenanpassung durchführen zu können. Steht eine der oben aufgeführten Nutzungsangaben in vCenter Server nicht zur Verfügung, ist die Größenempfehlung von Azure Migrate unter Umständen nicht zuverlässig. Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Datenpunkte verfügbar sind (in Prozent), wie es nachfolgend angegeben ist:
 
    **Verfügbarkeit von Datenpunkten** | **Zuverlässigkeitsstufe**
    --- | ---
@@ -248,16 +246,17 @@ Bei Verwendung der leistungsbasierten Größenanpassung des virtuellen Computers
    81 % bis 100 % | Fünf Sterne
 
 Dass für eine Bewertung nicht alle Datenpunkte verfügbar sind, kann folgende Ursachen haben:
-- Die Statistikeinstellung in vCenter Server ist nicht auf Stufe 3 festgelegt, und die Bewertung verwendet die leistungsbasierte Größenanpassung als Größenkriterium. Wenn die Statistikeinstellung in vCenter Server auf einen Wert unter 3 festgelegt ist, werden von vCenter Server keine Leistungsdaten für Datenträger und Netzwerk erfasst. In diesem Fall ist die Datenträger- und Netzwerkempfehlung von Azure Migrate nicht nutzungsbasiert. Für den Speicher empfiehlt Azure Migrate Standarddatenträger, da ohne Berücksichtigung der IOPS/des Durchsatzes nicht ermittelt werden kann, ob der Datenträger einen Premium-Datenträger in Azure benötigt.
-- Die Statistikeinstellung in vCenter Server wurde vor dem Start der Ermittlung kurzzeitig auf Stufe 3 festgelegt. Ein Beispiel: Angenommen, Sie haben die Statistikeinstellung heute auf Stufe 3 festgelegt und starten die Ermittlung morgen (also 24 Stunden später) mithilfe der Collectorappliance. Wenn Sie eine Bewertung für einen einzelnen Tag erstellen, verfügen Sie über alle Datenpunkte, und die Zuverlässigkeitsstufe für die Bewertung beträgt fünf Sterne. Wenn Sie die Leistungsdauer in den Bewertungseigenschaften jedoch auf einen Monat festlegen, führt dies zu einer niedrigeren Zuverlässigkeitsstufe, da für den letzten Monat keine Datenträger- und Netzwerkleistungsdaten vorliegen. Wenn Sie die Leistungsdaten des letzten Monats berücksichtigen möchten, empfiehlt es sich, die Statistikeinstellung in vCenter Server vor Beginn der Ermittlung einen Monat lang auf Stufe 3 festzulegen. 
-- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn ein virtueller Computer für eine gewisse Zeit heruntergefahren wird, liegen vCenter Server für diesen Zeitraum keine Leistungsdaten vor. 
+- Die Statistikeinstellung in vCenter Server ist nicht auf Stufe 3 festgelegt. Wenn die Statistikeinstellung in vCenter Server auf einen Wert unter 3 festgelegt ist, werden von vCenter Server keine Leistungsdaten für Datenträger und Netzwerk erfasst. In diesem Fall ist die Datenträger- und Netzwerkempfehlung von Azure Migrate nicht nutzungsbasiert. Da ohne Berücksichtigung der IOPS/des Durchsatzes nicht ermittelt werden kann, ob der Datenträger einen Premium-Datenträger in Azure benötigt, empfiehlt Azure Migrate Standarddatenträger für alle Datenträger.
+- Die Statistikeinstellung in vCenter Server wurde vor dem Start der Ermittlung kurzzeitig auf Stufe 3 festgelegt. Ein Beispiel: Angenommen, Sie haben die Statistikeinstellung heute auf Stufe 3 festgelegt und starten die Ermittlung morgen (also 24 Stunden später) mithilfe der Collectorappliance. Wenn Sie eine Bewertung für einen einzelnen Tag erstellen, verfügen Sie über alle Datenpunkte, und die Zuverlässigkeitsstufe für die Bewertung beträgt fünf Sterne. Wenn Sie die Leistungsdauer in den Bewertungseigenschaften jedoch auf einen Monat festlegen, führt dies zu einer niedrigeren Zuverlässigkeitsstufe, da für den letzten Monat keine Datenträger- und Netzwerkleistungsdaten vorliegen. Wenn Sie die Leistungsdaten des letzten Monats berücksichtigen möchten, empfiehlt es sich, die Statistikeinstellung in vCenter Server vor Beginn der Ermittlung einen Monat lang auf Stufe 3 festzulegen.
+- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn ein virtueller Computer für eine gewisse Zeit heruntergefahren wird, liegen vCenter Server für diesen Zeitraum keine Leistungsdaten vor.
 - Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In solchen Fällen liegt für die neuen virtuellen Computer kein Leistungsverlauf für den gesamten Zeitraum vor.
 
 > [!NOTE]
 > Bei einer Zuverlässigkeitsstufe von weniger als vier Sternen empfiehlt es sich, die Statistikeinstellungen in vCenter Server auf Stufe 3 festzulegen und mit der Ermittlung und Bewertung so lange zu warten, bis Daten für den gewünschten Zeitraum (ein Tag/eine Woche/ein Monat) vorliegen. Sollte das nicht möglich sein, ist die leistungsbasierte Größenanpassung möglicherweise nicht zuverlässig, und es empfiehlt sich, in den Bewertungseigenschaften stattdessen die Größenanpassung vom Typ *Wie lokal* festzulegen.
- 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen](how-to-scale-assessment.md) zum Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
+- [Informationen](how-to-modify-assessment.md) zum Anpassen einer Bewertung entsprechend Ihren Anforderungen
 - Informationen zum Erstellen vertrauenswürdiger Bewertungsgruppen mithilfe der [Zuordnung von Computerabhängigkeiten](how-to-create-group-machine-dependencies.md)
 - [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen
+- [Weitere Informationen](how-to-scale-assessment.md) zum Ermitteln und Bewerten einer umfangreichen VMware-Umgebung

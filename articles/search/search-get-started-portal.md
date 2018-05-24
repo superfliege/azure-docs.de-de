@@ -7,13 +7,13 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 12/04/2017
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: f24777fe5bb482eb74aba4acbd7313665f22c38b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9ee88b254131b40fdf1e01b771afa92127734e18
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Erstellen, Abfragen und Filtern eines Azure Search-Index im Portal
 
@@ -110,7 +110,7 @@ Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suche
 
    ![Index- und API-Befehle][6]
 
-3. Klicken Sie auf der Befehlsleiste auf **API-Version festlegen**, um die verfügbaren REST-APIs anzuzeigen. Über Vorschau-APIs erhalten Sie Zugriff auf neue Features, die noch nicht für die Allgemeinheit veröffentlicht wurden. Verwenden Sie für die Abfragen weiter unten die allgemein verfügbare Version (2016-09-01), sofern nichts anderes angegeben ist. 
+3. Klicken Sie auf der Befehlsleiste auf **API-Version festlegen**, um die verfügbaren REST-APIs anzuzeigen. Über Vorschau-APIs erhalten Sie Zugriff auf neue Features, die noch nicht für die Allgemeinheit veröffentlicht wurden. Verwenden Sie für die Abfragen weiter unten die allgemein verfügbare Version (2017-11-11), sofern nichts anderes angegeben ist. 
 
     > [!NOTE]
     > [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) und die [.NET-Bibliothek](search-howto-dotnet-sdk.md#core-scenarios) sind zwar vollständig gleichwertig, der **Suchexplorer** kann jedoch nur REST-Aufrufe verarbeiten. Er akzeptiert sowohl Syntax für [einfache Abfragen](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) als auch für [vollständige Lucene-Abfrageparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die bei Vorgängen vom Typ [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) zur Verfügung stehen.

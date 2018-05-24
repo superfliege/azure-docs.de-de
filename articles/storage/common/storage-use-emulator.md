@@ -2,23 +2,17 @@
 title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Microsoft-Dokumentation
 description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Authentifizierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools.
 services: storage
-documentationcenter: ''
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: f98b8c3a8217b60fd0ba3754ac4ba72e09039f24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -44,17 +38,10 @@ Es bestehen einige Unterschiede in der Funktionsweise zwischen dem Speicheremula
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>Starten und Initialisieren des Speicheremulators
 
-### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Ausführen des Azure-Speicheremulators in Docker](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
-```
-docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
-```
-
-### <a name="using-sdk"></a>Verwenden des SDK
-
 So starten Sie den Azure-Speicheremulator
 1. Wählen Sie die Schaltfläche **Start** aus, oder drücken Sie die **Windows-Taste**.
-1. Geben Sie `Azure Storage Emulator` ein.
-1. Wählen Sie den Emulator in der Liste der angezeigten Anwendungen aus.
+2. Geben Sie `Azure Storage Emulator` ein.
+3. Wählen Sie den Emulator in der Liste der angezeigten Anwendungen aus.
 
 Beim Start des Speicheremulators wird ein Eingabeaufforderungsfenster angezeigt. In diesem Konsolenfenster können Sie den Speicheremulator starten und beenden, Daten löschen, den Status abfragen und den Emulator initialisieren. Weitere Informationen finden Sie im Abschnitt [Referenz zum Speicheremulator-Befehlszeilentool](#storage-emulator-command-line-tool-reference) weiter unten in diesem Artikel.
 
@@ -71,6 +58,7 @@ Der Speicheremulator wird standardmäßig unter `C:\Program Files (x86)\Microsof
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>Initialisieren des Speicheremulators zur Verwendung einer anderen SQL-Datenbank
+
 Sie können das Speicheremulator-Befehlszeilentool zum Initialisieren des Speicheremulators verwenden, damit dieser auf eine andere SQL-Datenbankinstanz als die Standardinstanz von LocalDB verweist:
 
 1. Öffnen Sie das Konsolenfenster des Speicheremulators gemäß der Beschreibung im Abschnitt [Starten und Initialisieren des Speicheremulators](#start-and-initialize-the-storage-emulator).

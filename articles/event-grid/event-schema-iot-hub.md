@@ -1,20 +1,20 @@
 ---
-title: "Azure Event Grid-Schema für IoT Hub | Microsoft-Dokumentation"
-description: "Referenzseite für das Schemaformat und die Eigenschaften von Ereignissen in IoT Hub"
+title: Azure Event Grid-Schema für IoT Hub | Microsoft-Dokumentation
+description: Referenzseite für das Schemaformat und die Eigenschaften von Ereignissen in IoT Hub
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-grid
-ms.topic: article
+ms.topic: reference
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 29ad1233a344c3085286c27cb925b2dc9fb41f7e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 812ca3ba546112f54a76319fda853d441ce34f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/18/2018
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Eigenschaften und das Schema für Azure IoT Hub-Ere
 
 Azure IoT Hub gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | Beschreibung |
+| Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. | 
@@ -84,43 +84,43 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
 
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene: 
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| topic | string | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
+| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | data | object | IoT Hub-Ereignisdaten.  |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | Typ | Beschreibung |
+| Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| hubName | string | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
-| deviceId | string | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| operationTimestamp | string | Der ISO8601-Zeitstempel des Vorgangs. |
-| opType | string | Der Ereignistyp, der von IoT Hub für diesen Vorgang angegeben wurde: entweder `DeviceCreated` oder `DeviceDeleted`.
+| hubName | Zeichenfolge | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
+| deviceId | Zeichenfolge | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| operationTimestamp | Zeichenfolge | Der ISO8601-Zeitstempel des Vorgangs. |
+| opType | Zeichenfolge | Der Ereignistyp, der von IoT Hub für diesen Vorgang angegeben wurde: entweder `DeviceCreated` oder `DeviceDeleted`.
 | twin | object | Informationen zum Gerätezwilling, der Cloudrepräsentation der Anwendungsgeräte-Metadaten. | 
-| deviceID | string | Der eindeutige Bezeichner des Gerätezwillings. | 
-| etag | string | Informationen, die den Inhalt des Gerätezwillings beschreiben. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. | 
-| status | string | Gibt an, ob der Gerätezwilling aktiviert oder deaktiviert ist. | 
-| statusUpdateTime | string | Der ISO8601-Zeitstempel der letzten Statusaktualisierung für den Gerätezwilling. |
-| connectionState | string | Gibt an, ob das Gerät verbunden oder getrennt ist. | 
-| lastActivityTime | string | Der ISO8601-Zeitstempel der letzten Aktivität. | 
+| deviceID | Zeichenfolge | Der eindeutige Bezeichner des Gerätezwillings. | 
+| etag | Zeichenfolge | Informationen, die den Inhalt des Gerätezwillings beschreiben. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. | 
+| status | Zeichenfolge | Gibt an, ob der Gerätezwilling aktiviert oder deaktiviert ist. | 
+| statusUpdateTime | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Statusaktualisierung für den Gerätezwilling. |
+| connectionState | Zeichenfolge | Gibt an, ob das Gerät verbunden oder getrennt ist. | 
+| lastActivityTime | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Aktivität. | 
 | cloudToDeviceMessageCount | integer | Die Anzahl von Nachrichten, die von der Cloud an das Gerät gesendet wurden. | 
-| authenticationType | string | Der für dieses Gerät verwendete Authentifizierungstyp: entweder `SAS`, `SelfSigned` oder `CertificateAuthority`. |
-| x509Thumbprint | string | Der Fingerabdruck ist ein eindeutiger Wert für das x509-Zertifikat. Dieser wird üblicherweise zur Suche nach einem bestimmten Zertifikat in einem Zertifikatspeicher verwendet. Der Fingerabdruck wird mithilfe des SHA1-Algorithmus dynamisch generiert und ist nicht physisch im Zertifikat vorhanden. | 
-| primaryThumbprint | string | Der primäre Fingerabdruck für das x509-Zertifikat. |
-| secondaryThumbprint | string | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
-| version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
+| authenticationType | Zeichenfolge | Der für dieses Gerät verwendete Authentifizierungstyp: entweder `SAS`, `SelfSigned` oder `CertificateAuthority`. |
+| x509Thumbprint | Zeichenfolge | Der Fingerabdruck ist ein eindeutiger Wert für das x509-Zertifikat. Dieser wird üblicherweise zur Suche nach einem bestimmten Zertifikat in einem Zertifikatspeicher verwendet. Der Fingerabdruck wird mithilfe des SHA1-Algorithmus dynamisch generiert und ist nicht physisch im Zertifikat vorhanden. | 
+| primaryThumbprint | Zeichenfolge | Der primäre Fingerabdruck für das x509-Zertifikat. |
+| secondaryThumbprint | Zeichenfolge | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
+| Version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
 | desired | object | Ein Teil der Eigenschaften, der nur vom Anwendungs-Back-End geschrieben und vom Gerät gelesen werden kann. | 
 | reported | object | Ein Teil der Eigenschaften, der nur vom Gerät geschrieben und vom Anwendungs-Back-End gelesen werden kann. |
-| lastUpdated | string | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
+| lastUpdated | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
+* Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zur Zusammenarbeit von IoT Hub und Event Grid finden Sie unter [Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen](../iot-hub/iot-hub-event-grid.md).

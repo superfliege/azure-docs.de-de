@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines MEAN-Stacks auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen MEAN-Stack (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure erstellen.
+title: Tutorial – Erstellen eines MEAN-Stacks auf einem virtuellen Linux-Computer in Azure | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie einen MEAN-Stack (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,13 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2bd89bf25f619caef07ae099232add55dbe0cda7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a9adcd03c5f75b4065273c4ccf657b01bc3d96d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
+# <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 
 In diesem Tutorial wird veranschaulicht, wie Sie einen MEAN-Stack (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure implementieren. Mit dem erstellten MEAN-Stack können Bücher in einer Datenbank hinzugefügt, gelöscht und aufgelistet werden. Folgendes wird vermittelt:
 
@@ -36,7 +36,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie einen MEAN-Stack (MongoDB, Expr
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.30 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 
 ## <a name="create-a-linux-vm"></a>Erstellen eines virtuellen Linux-Computers
@@ -323,7 +323,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
     nodejs server.js
     ```
 
-2. Öffnen Sie in einem Webbrowser die Adresse, die Sie für den virtuellen Computer aufgezeichnet haben. Beispiel: *http://13.72.77.9:3300*. Eine Seite ähnlich der folgenden sollte angezeigt werden:
+2. Öffnen Sie in einem Webbrowser die Adresse, die Sie für den virtuellen Computer aufgezeichnet haben. Beispiel: *http://13.72.77.9:3300* Eine Seite ähnlich der folgenden sollte angezeigt werden:
 
     ![Buchdatensatz](media/tutorial-mean/meanstack-init.png)
 

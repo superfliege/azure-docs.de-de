@@ -5,21 +5,19 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 8A336052-8520-41D2-AF6F-0CCE23F727B4
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 04/23/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 452ed1de0588b380747edaa44dd0cc3805c51392
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1ea65c9c1f69c8eec77eb498a5963b0d77ce57f1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Verwalten von API-Versionsprofilen in Azure Stack
 
@@ -44,13 +42,26 @@ Dieses Thema enthält folgende Informationen:
     - **Neueste**  
         Die neuesten in Azure veröffentlichen API-Versionen
     - **jjjj-mm-tt-hybrid**  
-    Halbjährliche Veröffentlichung. Bei dieser Veröffentlichung stehen die cloudübergreifende Konsistenz und Stabilität im Vordergrund.
+    Halbjährliche Veröffentlichung. Bei dieser Veröffentlichung stehen die cloudübergreifende Konsistenz und Stabilität im Vordergrund. Das Ziel dieses Profils ist die optimale Kompatibilität mit Azure Stack. 
     - **jjjj-mm-tt-profile**  
     Liegt zwischen der optimalen Stabilität und den neuesten Features.
 
+### <a name="api-profiles-and-azure-stack-compatibility"></a>API-Profile und Azure Stack-Kompatibilität
+
+Die neuesten API-Profile sind nicht mit Azure Stack kompatibel. Die Benennungskonventionen helfen Ihnen dabei, die Profile zu identifizieren, die in Ihren Azure Stack-Lösungen verwendet werden sollen.
+
+**Neueste**  
+Dieses Profil enthält die aktuellsten API-Versionen in der globalen Azure-Umgebung, die in Azure Stack nicht funktionieren. Dieses Profil weist die größte Anzahl von aktuellen Änderungen auf. Das Profil vernachlässigt die Stabilität und Kompatibilität mit anderen Clouds. Wenn Sie versuchen, die aktuellsten API-Versionen zu verwenden, ist dies das Profil, das Sie verwenden sollten.
+
+**jjjj-mm-tt-hybrid**  
+Dieses Profil wird jedes Jähr im März und September veröffentlicht. Dieses Profil bietet optimale Stabilität und Kompatibilität mit den verschiedenen Clouds. Dieses Profil eignet sich für die globale Azure-Umgebung und Azure Stack. Die in diesem Profil aufgeführten Azure-API-Versionen sind mit den Versionen identisch, die für Azure Stack aufgeführt werden. Sie können dieses Profil verwenden, um Code für Hybridcloudlösungen zu entwickeln.
+
+**jjjj-mm-tt-profile**  
+Dieses Profil wird für die globale Azure-Umgebung im Juni und Dezember veröffentlicht. Dieses Profil funktioniert nicht für Azure Stack. Es werden zahlreiche aktuelle Änderungen vorgenommen. Es unterstützt optimale Stabilität und die neuesten Features. Der Unterschied zwischen „Neueste“ und diesem Profil besteht darin, dass „Neueste“ immer aus den neuesten API-Versionen besteht, und zwar unabhängig davon, wann die API veröffentlicht wurde. Wenn morgen eine neue API-Version für die Compute-API erstellt wird, wird diese API-Version im Profil „Neueste“ aufgeführt, aber nicht im Profil „jjjj-mm-tt-profile“, weil dieses Profil im Vorfeld eingerichtet wird. Es umfasst die neuesten Versionen, die vor Juni oder Dezember veröffentlicht wurden.
+
 ## <a name="azure-resource-manager-api-profiles"></a>Azure Resource Manager-API-Profile
 
-Azure Stack verwendet nicht die aktuelle Version der API-Versionen in der globalen Azure-Umgebung. Wenn Sie Ihre eigene Lösung erstellen, müssen Sie die API-Version für jeden Ressourcenanbieter in Azure ermitteln, die mit Azure Stack kompatibel ist.
+Azure Stack verwendet nicht die aktuellste Version der API-Versionen in der globalen Azure-Umgebung. Wenn Sie Ihre eigene Lösung erstellen, müssen Sie die API-Version für jeden Ressourcenanbieter in Azure ermitteln, die mit Azure Stack kompatibel ist.
 
 Sie können ein API-Profil verwenden, um nicht die einzelnen Ressourcenanbieter und die jeweils von Azure Stack unterstützten spezifischen Versionen ermitteln zu müssen. Das Profil gibt verschiedene Ressourcenanbieter und API-Versionen an. Das SDK bzw. ein mit dem SDK erstelltes Tool wählt dann die im Profil angegebene Ziel-API-Version. Bei Verwendung von API-Profilen können Sie eine Profilversion angeben, die für eine gesamte Vorlage gilt. Zur Laufzeit wählt Azure Resource Manager die richtige Version der Ressource aus.
 
@@ -67,14 +78,13 @@ Als Entwickler können Sie sich auf das Schreiben Ihrer Lösung konzentrieren. S
 Es gibt Codebeispiele, die Sie dabei unterstützen, mithilfe von Profilen Ihre Lösung mit Ihrer bevorzugten Sprache in Azure Stack zu integrieren. Derzeit stehen Anleitungen und Beispiele für die folgenden Sprachen zur Verfügung:
 
 - **PowerShell**  
-Sie können mit dem über den PowerShell-Katalog verfügbaren Modul **AzureRM.Bootstrapper** die PowerShell-Cmdlets abrufen, die für die Arbeit mit API-Versionsprofilen erforderlich sind.  
-Informationen finden Sie unter [Use API version profiles for PowerShell in Azure Stack](azure-stack-version-profiles-powershell.md) (Verwenden von API-Versionsprofilen für PowerShell in Azure Stack).
+Sie können mit dem über den PowerShell-Katalog verfügbaren Modul **AzureRM.Bootstrapper** die PowerShell-Cmdlets abrufen, die für die Arbeit mit API-Versionsprofilen erforderlich sind. Informationen finden Sie unter [Use API version profiles for PowerShell in Azure Stack](azure-stack-version-profiles-powershell.md) (Verwenden von API-Versionsprofilen für PowerShell in Azure Stack).
 - **Azure CLI 2.0**  
-Sie können Ihre Umgebungskonfiguration so aktualisieren, dass das spezifische API-Versionsprofil für Azure Stack verwendet wird.  
-Informationen finden Sie unter [Use API version profiles for Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md) (Verwenden von API-Versionsprofilen für die Azure CLI 2.0).
+Sie können Ihre Umgebungskonfiguration so aktualisieren, dass das spezifische API-Versionsprofil für Azure Stack verwendet wird. Informationen finden Sie unter [Use API version profiles for Azure CLI 2.0](azure-stack-version-profiles-azurecli2.md) (Verwenden von API-Versionsprofilen für die Azure CLI 2.0).
 - **GO**  
-Im GO SDK ist ein Profil eine Kombination aus verschiedenen Ressourcentypen mit unterschiedlichen Versionen aus verschiedenen Diensten. Profile sind unter dem Pfad „profiles/“ verfügbar. Ihre Version ist im Format **JJJJ-MM-TT** angegeben.  
-Informationen finden Sie unter [Verwenden von API-Versionsprofilen mit GO in Azure Stack](azure-stack-version-profiles-go.md).
+Im GO SDK ist ein Profil eine Kombination aus verschiedenen Ressourcentypen mit unterschiedlichen Versionen aus verschiedenen Diensten. Profile sind unter dem Pfad „profiles/“ verfügbar. Ihre Version ist im Format **JJJJ-MM-TT** angegeben. Weitere Informationen finden Sie unter [Verwenden von API-Versionsprofilen für GO](azure-stack-version-profiles-go.md).
+- **Ruby**  
+Das Ruby-SDK für Azure Stack Resource Manager bietet Tools zum Erstellen und Verwalten Ihrer Infrastruktur. Im SDK enthaltene Ressourcenanbieter sind z.B. Compute, virtuelle Netzwerke und Speicher mit der Sprache Ruby. Weitere Informationen finden Sie unter [Verwenden von API-Versionsprofilen mit Ruby](azure-stack-version-profiles-ruby.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md)

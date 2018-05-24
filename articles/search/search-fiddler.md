@@ -7,13 +7,13 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/04/2018
+ms.date: 04/20/2018
 ms.author: heidist
-ms.openlocfilehash: 6108e0061c4a8de3000de7f7a07cca313803e80d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: eba41086da645c2ff5cee65f9395267227cb1c11
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman
 
@@ -48,14 +48,14 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 Jedes Tool behält Anforderungsheaderinformationen für die Sitzung bei. Dies bedeutet, dass Sie URL-Endpunkt, API-Version, API-Schlüssel und Inhaltstyp nur einmal eingeben müssen.
 
-Die vollständige URL sollte bei Ihnen ähnlich wie im folgenden Beispiel aussehen, aber es sollte ein gültiger Wert für den Platzhalternamen **`my-app`** vorhanden sein: `https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01`
+Die vollständige URL sollte bei Ihnen ähnlich wie im folgenden Beispiel aussehen, aber es sollte ein gültiger Wert für den Platzhalternamen **`my-app`** vorhanden sein: `https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11`
 
 Die Komposition der Dienst-URL enthält die folgenden Elemente:
 
 + HTTPS-Präfix
 + Dienst-URL aus dem Portal
 + Ressource (ein Vorgang, bei dem in Ihrem Dienst ein Objekt erstellt wird). In diesem Schritt ist dies ein Index mit dem Namen „hotels“.
-+ API-Version (erforderliche Zeichenfolge in Kleinbuchstaben, die für die aktuelle Version als „?api-version=2016-09-01“ angegeben wird). [API-Versionen](search-api-versions.md) werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
++ API-Version (erforderliche Zeichenfolge in Kleinbuchstaben, die für die aktuelle Version als „?api-version=2017-11-11“ angegeben wird). [API-Versionen](search-api-versions.md) werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
 
 Die Komposition des Anforderungsheaders enthält die beiden Elemente „content-type“ (Inhaltstyp) und „api-key“ (API-Schlüssel), die im vorherigen Abschnitt beschrieben sind:
 
@@ -124,7 +124,7 @@ Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgen
 Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Search enthält der Index alle durchsuchbaren Daten, die Sie als JSON-Dokumente bereitstellen können. Informationen zur API für diesen Vorgang finden Sie unter [Add, Update or Delete Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) (Hinzufügen, Aktualisieren oder Löschen von Dokumenten (Azure Search-Dienst-REST-API)).
 
 + Ändern Sie das Verb für diesen Schritt in **POST**.
-+ Ändern Sie den Endpunkt so, dass er `/docs/index` enthält. Die vollständige URL sollte wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01`
++ Ändern Sie den Endpunkt so, dass er `/docs/index` enthält. Die vollständige URL sollte wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 + Übernehmen Sie die Anforderungsheader unverändert. 
 
 Der Anforderungstext enthält vier Dokumente, die zum Index "hotels" hinzugefügt werden sollen.
@@ -213,7 +213,7 @@ Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokumen
 Sie haben nun einen Index erstellt und Dokumente hochgeladen und können beginnen, Abfragen auszuführen. Weitere Informationen zu dieser API finden Sie unter [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Search Documents (Azure Search-Dienst-REST-API)).  
 
 + Ändern Sie das Verb für diesen Schritt in **GET**.
-+ Ändern Sie den Endpunkt so, dass er Abfrageparameter enthält, einschließlich Suchzeichenfolgen. Eine Abfrage-URL kann beispielsweise wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01`.
++ Ändern Sie den Endpunkt so, dass er Abfrageparameter enthält, einschließlich Suchzeichenfolgen. Eine Abfrage-URL kann beispielsweise wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`.
 + Übernehmen Sie die Anforderungsheader unverändert.
 
 Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dokumenten in den Suchergebnissen zurückgegeben. Die Anforderung und die Antwort sollten für Postman in etwa wie im folgenden Screenshot aussehen, nachdem Sie auf **Send** (Senden) geklickt haben. Der Statuscode sollte 200 lauten.
@@ -222,18 +222,18 @@ Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dok
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Tipps zum Ausführen unserer Beispielabfragen in Fiddler
 
-Die folgende Beispielabfrage stammt aus dem Artikel [Search Documents (Azure Search Service REST API)](http://msdn.microsoft.com/library/dn798927.aspx) (Search Documents (Azure Search-Dienst-REST-API)). Viele der Beispielabfragen in diesem Artikel enthalten Leerzeichen, die von Fiddler nicht unterstützt werden. Ersetzen Sie alle Leerzeichen vor dem Einfügen durch ein +-Zeichen, bevor Sie die Abfrage in Fiddler ausführen.
+Die folgende Beispielabfrage stammt aus dem Artikel [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Search Documents (Azure Search-Dienst-REST-API)). Viele der Beispielabfragen in diesem Artikel enthalten Leerzeichen, die von Fiddler nicht unterstützt werden. Ersetzen Sie alle Leerzeichen vor dem Einfügen durch ein +-Zeichen, bevor Sie die Abfrage in Fiddler ausführen.
 
 **Vor dem Ersetzen der Leerzeichen (in „lastRenovationDate desc“):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
 **Nach dem Ersetzen der Leerzeichen durch „+“ (in „lastRenovationDate+desc“):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 
 ## <a name="query-index-properties"></a>Abfragen von Indexeigenschaften
-Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`.
+Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`.
 
 In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.
 

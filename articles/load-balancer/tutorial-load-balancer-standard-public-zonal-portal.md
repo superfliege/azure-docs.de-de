@@ -1,30 +1,42 @@
 ---
-title: Lastenausgleich für virtuelle Computer innerhalb einer Zone – Azure-Portal | Microsoft-Dokumentation
-description: Erstellen Sie einen Lastenausgleich im Standard-Tarif mit einem zonalen Front-End, um mit dem Azure-Portal einen Lastausgleich für virtuelle Computer in einer Verfügbarkeitszone vorzunehmen.
+title: Tutorial – Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone – Azure-Portal | Microsoft-Dokumentation
+description: In diesem Tutorial wird gezeigt, wie Sie einen Load Balancer im Tarif „Standard“ mit einem zonalen Front-End erstellen, um mit dem Azure-Portal einen Lastenausgleich für virtuelle Computer innerhalb einer Verfügbarkeitszone vorzunehmen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: ''
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/18/2018
+ms.date: 04/20/2018
 ms.author: kumud
-ms.openlocfilehash: 41a33436cb0d2c4c2bbfef4888bb704c62e2b91e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.custom: mvc
+ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="load-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Lastenausgleich für virtuelle Computer innerhalb einer Verfügbarkeitszone mit einem Lastenausgleich im Standard-Tarif im Azure-Portal
+# <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit einem Load Balancer im Tarif „Standard“ im Azure-Portal
 
-In diesem Artikel wird die Erstellung eines öffentlichen [Lastenausgleichs im Standard-Tarif](https://aka.ms/azureloadbalancerstandard) mit einem zonalen Front-End mithilfe einer öffentlichen Standard-IP-Adresse und des Azure-Portals erläutert. In diesem Szenario können Sie auch eine bestimmte Zone für Ihre Front-End- und Back-End-Instanzen angeben, um Ihren Datenpfad und Ihre Ressourcen mit einer bestimmten Zone zu verbinden.
-Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+In diesem Tutorial wird die Erstellung eines öffentlichen [Load Balancers im Tarif „Standard“](https://aka.ms/azureloadbalancerstandard) mit einem zonalen Front-End mithilfe einer öffentlichen Standard-IP-Adresse und des Azure-Portals erläutert. In diesem Szenario können Sie auch eine bestimmte Zone für Ihre Front-End- und Back-End-Instanzen angeben, um Ihren Datenpfad und Ihre Ressourcen mit einer bestimmten Zone zu verbinden. Folgendes wird vermittelt:
+
+> [!div class="checklist"]
+> * Erstellen eines Azure-Load Balancers im Tarif „Standard“ mit einem zonalen Front-End
+> * Erstellen von Netzwerksicherheitsgruppen zum Definieren von Regeln für eingehenden Datenverkehr
+> * Erstellen zonaler virtueller Computer und Anfügen an einen Load Balancer
+> * Erstellen eines Integritätstests für den Load Balancer
+> * Erstellen von Load Balancer-Regeln
+> * Erstellen einer einfachen IIS-Website
+> * Anzeigen eines Load Balancers im Betrieb
+
+Informationen zur Verwendung von Verfügbarkeitszonen mit einem Load Balancer im Tarif „Standard“ finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zonal-cli.md) durcharbeiten.
 
@@ -32,9 +44,9 @@ Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load
 
 Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-## <a name="create-a-public-standard-load-balancer"></a>Erstellen eines öffentlichen Lastenausgleichs im Standard-Tarif
+## <a name="create-a-public-standard-load-balancer"></a>Erstellen eines öffentlichen Load Balancers im Tarif „Standard“
 
-Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Lastenausgleichs erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
+Ein Load Balancer im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Load Balancers erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
@@ -178,7 +190,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Lastenausgleichsregel namens *myLoadBalancerRuleWeb*, die an Port 80 des Front-Ends *FrontendLoadBalancer* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Load Balancer-Regel namens *myLoadBalancerRuleWeb*, die an Port 80 des Front-Ends *FrontendLoadBalancer* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
 2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln** und anschließend auf **Hinzufügen**.

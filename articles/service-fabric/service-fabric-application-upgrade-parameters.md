@@ -1,24 +1,24 @@
 ---
 title: 'Anwendungsupgrade: Upgradeparameter | Microsoft Docs'
-description: "Beschreibt Parameter im Zusammenhang mit dem Upgrade einer Service Fabric-Anwendung, einschließlich durchzuführender Integritätsprüfungen und Richtlinien für das automatische Rückgängigmachen des Upgrades."
+description: Beschreibt Parameter im Zusammenhang mit dem Upgrade einer Service Fabric-Anwendung, einschließlich durchzuführender Integritätsprüfungen und Richtlinien für das automatische Rückgängigmachen des Upgrades.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 4dafedb3fef821cd2562cf47937d034fdc59d92e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: eb319b0f4e910163572ee62d8bdee735f27be592
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
 In diesem Artikel werden die verschiedenen Parameter beschrieben, die während des Upgrades einer Azure Service Fabric-Anwendung gelten. Die Parameter enthalten den Namen und die Version der Anwendung. Sie sind Schalter, die die während des Upgrades angewendeten Timeouts und Integritätsprüfungen steuern, und geben die Richtlinien an, die bei einem Upgradefehler angewendet werden müssen.
