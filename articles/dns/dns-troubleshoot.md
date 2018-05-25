@@ -1,11 +1,11 @@
 ---
-title: "Azure DNS – Handbuch zur Problembehandlung | Microsoft-Dokumentation"
-description: "So beheben Sie gängige Probleme mit Azure-DNS"
+title: Azure DNS – Handbuch zur Problembehandlung | Microsoft-Dokumentation
+description: So beheben Sie gängige Probleme mit Azure-DNS
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
-editor: 
+author: genlin
+manager: cshepard
+editor: ''
 ms.assetid: 95b01dc3-ee69-4575-a259-4227131e4f9c
 ms.service: dns
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
-ms.author: jonatul
-ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 

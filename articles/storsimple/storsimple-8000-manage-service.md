@@ -1,24 +1,24 @@
 ---
-title: "Bereitstellen des StorSimple-Geräte-Manager-Diensts in Azure | Microsoft-Dokumentation"
-description: "Erläutert das Erstellen und Löschen des StorSimple-Geräte-Manager-Diensts im Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels."
+title: Bereitstellen des StorSimple-Geräte-Manager-Diensts in Azure | Microsoft-Dokumentation
+description: Erläutert das Erstellen und Löschen des StorSimple-Geräte-Manager-Diensts im Azure-Portal und beschreibt die Verwaltung des Dienstregistrierungsschlüssels.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -29,7 +29,9 @@ Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er ve
 In diesem Tutorial werden die erforderlichen Schritte zum Erstellen, Löschen und Migrieren des Diensts und die Verwaltung des Dienstsregistrierungsschlüssels beschrieben. Die Informationen in diesem Artikel gelten nur für Geräte der StorSimple 8000-Serie. Weitere Informationen zu StorSimple Virtual Arrays finden Sie unter [Bereitstellen eines StorSimple-Geräte-Manager-Diensts für das StorSimple Virtual Array](storsimple-virtual-array-manage-service.md).
 
 > [!NOTE]
-> Alle klassischen StorSimple-Geräte-Manager werden automatisch in das neue Azure-Portal verschoben. Wenn Sie Fragen haben, finden Sie entsprechende Informationen unter [FAQ: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md). Die PowerShell-Cmdlets für Azure Service Management (ASM) werden nach dem Umstieg auf das neue Azure-Portal nicht mehr unterstützt. Aktualisieren Sie die Skripts zum Verwalten Ihrer Geräte. Anschließend finden Sie unter [Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts](storsimple-8000-automation-azurerm-scripts.md) weitere Informationen. Im neuen Azure-Portal werden Geräte mit ausgeführtem Update 5.0 oder höher unterstützt. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, installieren Sie Update 5 sofort. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie dieses Gerät nicht aktualisieren. Verwenden Sie die neueste Version der Software, um ein neues Cloudgerät mit Update 5.0 zu erstellen und dann ein Failover auf das neu erstellte Cloudgerät auszuführen. Alle Geräte mit ausgeführtem Update 4.0 oder früher weisen [reduzierte Verwaltungsfunktionalität](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0) auf. 
+> -  Das Azure-Portal unterstützt Geräte mit ausgeführtem Update 5.0 oder höher. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, installieren Sie Update 5 sofort. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). 
+> - Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie dieses Gerät nicht aktualisieren. Verwenden Sie die neueste Version der Software, um ein neues Cloudgerät mit Update 5.0 zu erstellen und dann ein Failover auf das neu erstellte Cloudgerät auszuführen. 
+> - Alle Geräte mit ausgeführtem Update 4.0 oder früher weisen [reduzierte Verwaltungsfunktionalität](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0) auf. 
 
 ## <a name="create-a-service"></a>Erstellen von Diensten
 Um einen StorSimple-Geräte-Manager-Dienst zu erstellen, benötigen Sie Folgendes:
@@ -38,11 +40,7 @@ Um einen StorSimple-Geräte-Manager-Dienst zu erstellen, benötigen Sie Folgende
 * Ein aktives Microsoft Azure-Speicherkonto
 * Die Abrechnungsinformationen für die Zugriffsverwaltung
 
-Nur Abonnements mit Enterprise Agreement sind zulässig. Microsoft Sponsorship-Abonnements, die im klassischen Azure-Portal zugelassen waren, werden im Azure-Portal nicht unterstützt. Bei Verwendung eines nicht unterstützten Abonnements wird folgende Meldung angezeigt:
-
-![Abonnement ungültig](./media/storsimple-8000-manage-service/subscription-not-valid.jpg)
-
-Sie können beim Erstellen des Diensts auch ein Standardspeicherkonto generieren.
+Nur Abonnements mit Enterprise Agreement sind zulässig. Sie können beim Erstellen des Diensts auch ein Standardspeicherkonto generieren.
 
 Mit einem Dienst können mehrere Geräte verwaltet werden. Ein Gerät kann jedoch nicht mehrere Dienste umfassen. Große Unternehmen können mit mehreren Dienstinstanzen mit verschiedenen Abonnements, Organisationen oder sogar Bereitstellungsstandorten arbeiten. 
 
@@ -149,8 +147,7 @@ Dieser Schritt wird in der Windows PowerShell für StorSimple-Schnittstelle auf 
 
 > [!NOTE]
 > Bis zum Abschluss des Schlüsselrollovers kann im Azure-Portal des StorSimple Managers kein Vorgang erfolgen.
-> 
-> 
+
 
 Wenn Sie die Verbindung zur Windows PowerShell-Schnittstelle über die serielle Gerätekonsole herstellen, führen Sie die folgenden Schritte durch.
 

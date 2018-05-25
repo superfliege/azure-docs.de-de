@@ -9,26 +9,26 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: ca9e2935f3d44952235a1669b3f5bebc7708f4bf
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c84104ac9094980d0e6d16b535dcf13c462a645a
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Optimieren der Leistung bei Azure SQL-Datenbank
 
 Azure SQL-Datenbank bietet [Empfehlungen](sql-database-advisor.md), mit denen Sie die Leistung Ihrer Datenbank verbessern können. Wahlweise können Sie die [automatische Anpassung an Ihre Anwendung](sql-database-automatic-tuning.md) durch Azure SQL-Datenbank veranlassen und Änderungen anwenden, die die Leistung Ihres Workloads verbessern.
 
 Wenn Sie keine entsprechenden Empfehlungen erhalten und trotzdem Leistungsprobleme auftreten, können Sie die Leistung anhand der folgenden Methoden eventuell verbessern:
-1. Erhöhen Sie die [Diensttarife](sql-database-service-tiers.md) und stellen Sie mehr Ressourcen für Ihre Datenbank bereit.
-2. Optimieren Sie Ihre Anwendung, und wenden Sie einige Best Practices zur Verbesserung der Leistung an. 
-3. Optimieren Sie die Datenbank durch die Änderung von Indizes und Abfragen, um ein effizienteres Arbeiten mit Daten sicherzustellen.
+- Erhöhen Sie die Diensttarife in Ihrem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder in Ihrem [V-Kern-basierten Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md), um weitere Ressourcen für Ihre Datenbank bereitzustellen.
+- Optimieren Sie Ihre Anwendung, und wenden Sie einige Best Practices zur Verbesserung der Leistung an. 
+- Optimieren Sie die Datenbank durch die Änderung von Indizes und Abfragen, um ein effizienteres Arbeiten mit Daten sicherzustellen.
 
-Hierbei handelt es sich um manuelle Methoden, da Sie die Entscheidung treffen müssen, welche [Diensttarife](sql-database-service-tiers.md) Sie auswählen würden oder benötigen, um den Anwendungs- oder Datenbankcode neu zu schreiben und die Änderungen bereitzustellen.
+Hierbei handelt es sich um manuelle Methoden, weil Sie entscheiden müssen, welche [Ressourcenlimits im DTU-basierten Modell](sql-database-dtu-resource-limits.md) und welche [Ressourcenlimits im V-Kern-basierten Modell (Vorschauversion)](sql-database-vcore-resource-limits.md) Ihren Anforderungen entsprechen. Andernfalls müssten Sie den Anwendungs- oder Datenbankcode neu schreiben und die Änderungen bereitstellen.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Erhöhen der Leistungsstufe Ihrer Datenbank
 
-Azure SQL-Datenbank verfügt über zwei Kaufmodelle: ein auf DTUs basierendes Kaufmodell und ein auf virtuellen Kernen basierendes Kaufmodell. Jedes Modell verfügt über mehrere [Diensttarife](sql-database-service-tiers.md), aus denen Sie wählen können. Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
+Azure SQL-Datenbank bietet zwei Kaufmodelle zur Auswahl, ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und ein [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md). Auf jeder Dienstebene sind die Ressourcen, die von der SQL-Datenbank genutzt werden können, streng voneinander isoliert, und es wird eine vorhersagbare Leistung für die Dienstebene sichergestellt. In diesem Artikel erhalten Sie nützliche Informationen zum Auswählen der Dienstebene für Ihre Anwendung. Außerdem werden Möglichkeiten zum Optimieren Ihrer Anwendung beschrieben, um mit Azure SQL-Datenbank das beste Ergebnis zu erzielen.
 
 > [!NOTE]
 > In diesem Artikel geht es schwerpunktmäßig um die Verbesserung der Leistung für Einzeldatenbanken in Azure SQL-Datenbank. Informationen zur Verbesserung der Leistung für Pools für elastische Datenbanken finden Sie unter [Wo sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md). Beachten Sie aber, dass Sie viele Optimierungsempfehlungen in diesem Artikel auf Datenbanken in einem Pool für elastische Datenbanken anwenden und ähnliche Leistungsvorteile erzielen können.
@@ -48,7 +48,7 @@ Die Dienstebene, die Sie für Ihre SQL-Datenbank benötigen, richtet sich nach d
 
 ### <a name="service-tier-capabilities-and-limits"></a>Funktionen und Beschränkungen von Dienstebenen
 
-Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-service-tiers.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
+Sie legen die Leistungsebene auf jeder Dienstebene so fest, dass Sie flexibel nur für die jeweils benötige Kapazität bezahlen. Sie können die [Kapazität anpassen](sql-database-service-tiers-dtu.md) (nach oben oder unten), wenn sich die Workload ändert. Wenn Ihre Datenbankworkload beispielsweise während der heißen Einkaufsphase vor dem Schulbeginn hoch ist, können Sie die Leistungsebene für die Datenbank für einen bestimmten Zeitraum erhöhen (z.B. Juli bis September). Sie können sie dann wieder reduzieren, wenn diese Zeit der höheren Auslastung endet. Sie können die zu zahlenden Kosten reduzieren, indem Sie die Cloudumgebung an die Saisongebundenheit Ihres Unternehmens anpassen. Dieses Modell eignet sich auch gut für die Veröffentlichungszyklen von Softwareprodukten. Ein Testteam kann die Kapazität zuordnen und Testläufe durchführen und die Kapazität dann wieder freigeben, wenn das Testing beendet ist. Bei einem Kapazitätsanforderungsmodell bezahlen Sie für die Kapazität, wenn Sie sie benötigen, und haben keine Kosten für dedizierte Ressourcen, die Sie ggf. nur sehr selten nutzen.
 
 ### <a name="why-service-tiers"></a>Warum werden Dienstebenen verwendet?
 Jede Datenbankworkload kann sich zwar unterscheiden, aber der Zweck von Dienstebenen besteht darin, für verschiedene Leistungsebenen eine Vorhersagbarkeit der Leistung zu ermöglichen. Kunden mit höheren Anforderungen an Datenbankressourcen können in einer dedizierteren Computingumgebung arbeiten.
@@ -270,7 +270,8 @@ Einige Anwendungen sind mit vielen Schreibvorgängen verbunden. In einigen Fäll
 Einige Datenbankanwendungen verfügen über Workloads mit einer hohen Zahl von Lesevorgängen. Cachingschichten können dazu beitragen, die Auslastung für die Datenbank zu reduzieren und ggf. die Leistungsebene zu reduzieren, die zum Unterstützen einer Datenbank mit Azure SQL-Datenbank erforderlich ist. Wenn Sie [Azure Redis Cache](https://azure.microsoft.com/services/cache/) verwenden und über Workloads mit vielen Lesevorgängen verfügen, können Sie Daten einmalig lesen (oder je nach Konfiguration ggf. einmal pro Computer auf Anwendungsebene) und dann außerhalb von Azure SQL-Datenbank speichern. Dies ist eine Möglichkeit zur Reduzierung der Datenbanklast (CPU- und Lesevorgang-E/A), aber es kommt zu einer Auswirkung auf die Transaktionskonsistenz, da die aus dem Cache ausgelesenen Daten gegenüber den Daten in der Datenbank ggf. nicht mehr synchron sind. Es gibt zwar viele Anwendungen, bei denen ein gewisser Inkonsistenzgrad akzeptabel ist, aber dies gilt nicht für alle Workloads. Sie sollten sich daher vollständig mit den Anwendungsanforderungen vertraut machen, bevor Sie eine Cachingstrategie auf Anwendungsebene implementieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu Dienstebenen finden Sie unter [SQL-Datenbankoptionen und -leistung](sql-database-service-tiers.md)
+* Weitere Informationen zu den DTU-basierten Diensttarifen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Ressourcenlimits im DTU-basierten Modell](sql-database-dtu-resource-limits.md).
+* Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md) und [Ressourcenlimits im V-Kern-basierten Modell (Vorschauversion)](sql-database-vcore-resource-limits.md).
 * Weitere Informationen zu Pools für elastische Datenbanken finden Sie unter [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md).
 * Informationen zur Leistung und zu Pools für elastische Datenbanken finden Sie unter [Wann ein Pool für elastische Datenbanken in Frage kommt](sql-database-elastic-pool-guidance.md).
 

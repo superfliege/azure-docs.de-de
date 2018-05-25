@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
-ms.openlocfilehash: 9a6e63e95b833c960356b82a19127ec91a791b98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 595abcaafdea5cde3f868567bac7fb9cf0ee424b
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway 
 
@@ -298,7 +298,7 @@ Im folgenden Beispiel wird eine einfache Regel für den Pfad „/echo/" erstellt
 $echoapiRule = New-AzureRmApplicationGatewayPathRuleConfig -Name "externalapis" -Paths "/echo/*" -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
 ```
 
-Die Konfiguration der Regelpfadzuordnung konfiguriert auch dann einen Standard-Back-End-Adresspool namens **dummyBackendPool**, wenn der Pfad keiner der Pfadregeln entspricht, die wir für API Management anwenden möchten. Beispiel: http://api.contoso.net/calc/* wird an **dummyBackendPool** weitergeleitet, da es als Standardpool für nicht übereinstimmenden Datenverkehr definiert wurde.
+Die Konfiguration der Regelpfadzuordnung konfiguriert auch dann einen Standard-Back-End-Adresspool namens **dummyBackendPool**, wenn der Pfad keiner der Pfadregeln entspricht, die wir für API Management anwenden möchten. Beispiel: http://api.contoso.net/calc/sum wird an **dummyBackendPool** weitergeleitet, da es als Standardpool für nicht übereinstimmenden Datenverkehr definiert wurde.
 
 ```powershell
 $urlPathMap = New-AzureRmApplicationGatewayUrlPathMapConfig -Name "urlpathmap" -PathRules $echoapiRule, $dummyPathRule -DefaultBackendAddressPool $dummyBackendPool -DefaultBackendHttpSettings $dummyBackendSetting

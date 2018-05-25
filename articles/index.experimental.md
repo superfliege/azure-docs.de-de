@@ -1,13 +1,13 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/11/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -136,6 +136,7 @@ ms.lasthandoff: 03/09/2018
                                                 </div>
                                                 <div class="ico48Link">
                                                     <a href="/go/azure/">
+                                                        <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt=""/>
                                                         <span>Go</span>
                                                     </a>
                                                 </div>
@@ -156,7 +157,7 @@ ms.lasthandoff: 03/09/2018
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>Verwalten von Daten und API</h3>
+                                                <h3>Verwalten von Daten und AI</h3>
                                                 <h4>Relationale Datenbanken</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL Database as a Service</a></li>
@@ -239,7 +240,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/virtual-machine-scale-sets/">
                                                 <img src="media/index/AvailabilitySetOld.svg" alt="" />
-                                                <p>Skalierungsgruppen für virtuelle Computer</p>
+                                                <p>Virtual Machine Scale Sets</p>
                                             </a>
                                         </li>
                                         <li>
@@ -257,7 +258,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Funktionen</p>
+                                                <p>Functions</p>
                                             </a>
                                         </li>
                                         <li>
@@ -321,7 +322,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/redis-cache/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
-                                                <p>Redis-Cache</p>
+                                                <p>Redis Cache</p>
                                             </a>
                                         </li>
                                         <li>
@@ -342,7 +343,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/container-registry/">
                                                 <img src="media/index/container-registry.svg" alt="" />
-                                                <p>Azure-Containerregistrierung</p>
+                                                <p>Azure Container Registry</p>
                                             </a>
                                         </li>
                                         <li>
@@ -375,7 +376,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/service-bus/">
                                                 <img src="media/index/ServiceBus.svg" alt="" />
-                                                <p>SERVICE BUS</p>
+                                                <p>Service Bus</p>
                                             </a>
                                         </li>
                                         <li>
@@ -443,13 +444,13 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtuelles Netzwerk</p>
+                                                <p>Virtual Network</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/load-balancer/">
                                                 <img src="media/index/LoadBalancer.svg" alt="" />
-                                                <p>Lastenausgleichsmodul</p>
+                                                <p>Load Balancer</p>
                                             </a>
                                         </li>
                                         <li>
@@ -590,7 +591,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home">
                                                 <img src="media/index/API_Spc_CustomSpeechService.svg" alt="" />
-                                                <p>Benutzerdefinierter Spracherkennungsdienst</p>
+                                                <p>Custom Speech Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -602,7 +603,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/cognitive-services/entitylinking/home">
                                                 <img src="media/index/API_Know_EntityLink.svg" alt="" />
-                                                <p>Entitätenverknüpfung</p>
+                                                <p>Entitätsverknüpfung</p>
                                             </a>
                                         </li>
                                         <li>
@@ -687,7 +688,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake-Speicher</p>
+                                                <p>Data Lake Store</p>
                                             </a>
                                         </li>
                                         <li>
@@ -699,7 +700,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Sicherung</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -732,7 +733,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/data-catalog/">
                                                 <img src="media/index/data-catalog.svg" alt="" />
-                                                <p>Datenkatalog</p>
+                                                <p>Data Catalog</p>
                                             </a>
                                         </li>
                                         <li>
@@ -744,7 +745,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/data-lake-store/">
                                                 <img src="media/index/DataLakeStore.svg" alt="" />
-                                                <p>Data Lake-Speicher</p>
+                                                <p>Data Lake Store</p>
                                             </a>
                                         </li>
                                         <li>
@@ -858,7 +859,7 @@ ms.lasthandoff: 03/09/2018
                                     </ul>
                                 </div>
                                 <div class="group">
-                                    <h3>Web und mobil</h3>
+                                    <h3>Web + Mobil</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/app-service-web/">
@@ -915,7 +916,7 @@ ms.lasthandoff: 03/09/2018
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Sicherheit und Identität</h3>
+                                    <h3>Sicherheit + Identität</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/security-center">
@@ -926,7 +927,7 @@ ms.lasthandoff: 03/09/2018
                                         <li>
                                             <a href="/azure/key-vault/">
                                                 <img src="media/index/KeyVault.svg" alt="" />
-                                                <p>Schlüsseltresor</p>
+                                                <p>Key Vault</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1085,7 +1086,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Skalierungsgruppen für virtuelle Computer</h3>
+                                                    <h3>Virtual Machine Scale Sets</h3>
                                                     <p>Zehntausende virtuelle Linux- und Windows-Computer verwalten und skalieren</p>
                                                 </div>
                                             </div>
@@ -1142,7 +1143,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Funktionen</h3>
+                                                    <h3>Functions</h3>
                                                     <p>Ereignisse mit serverlosem Code verarbeiten</p>
                                                 </div>
                                             </div>
@@ -1241,7 +1242,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtuelles Netzwerk</h3>
+                                                    <h3>Virtual Network</h3>
                                                     <p>Bereitstellen privater Netzwerke und optionales Herstellen einer Verbindung mit lokalen Datencentern</p>
                                                 </div>
                                             </div>
@@ -1260,7 +1261,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Lastenausgleichsmodul</h3>
+                                                    <h3>Load Balancer</h3>
                                                     <p>Sicherstellen von Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen</p>
                                                 </div>
                                             </div>
@@ -1417,7 +1418,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Speicher</h3>
+                                                    <h3>Storage</h3>
                                                     <p>Dauerhafter, hoch verfügbarer und in hohem Maße skalierbarer Cloudspeicher</p>
                                                 </div>
                                             </div>
@@ -1436,7 +1437,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake-Speicher</h3>
+                                                    <h3>Data Lake Store</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
@@ -1474,7 +1475,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Sicherung</h3>
+                                                    <h3>Backup</h3>
                                                     <p>Einfache und zuverlässige Serversicherung in die Cloud</p>
                                                 </div>
                                             </div>
@@ -1504,7 +1505,7 @@ ms.lasthandoff: 03/09/2018
                         </ul>
                     </li>
                     <li>
-                        <a href="#web">Web und Mobil</a>
+                        <a href="#web">Web + Mobil</a>
                         <ul id="web" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-web">
@@ -1712,7 +1713,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure-Containerregistrierung</h3>
+                                                    <h3>Azure Container Registry</h3>
                                                     <p>Speichern und Verwalten von Containerimages für alle Arten von Azure-Bereitstellungen</p>
                                                 </div>
                                             </div>
@@ -1907,7 +1908,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Redis-Cache</h3>
+                                                    <h3>Redis Cache</h3>
                                                     <p>Hoher Durchsatz, geringe Latenzzeit beim Zugriff auf Daten zum Erstellen schneller, skalierbarer Anwendungen</p>
                                                 </div>
                                             </div>
@@ -2007,7 +2008,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Benutzerdefinierter Spracherkennungsdienst</h3>
+                                                    <h3>Custom Speech Service</h3>
                                                     <p>Überwinden von Grenzen der Spracherkennung</p>
                                                 </div>
                                             </div>
@@ -2045,7 +2046,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Video-Indexer</h3>
+                                                    <h3>Video Indexer</h3>
                                                     <p>Suchen, Bearbeiten, Analysieren und Kenntnisse durch Videos gewinnen</p>
                                                 </div>
                                             </div>
@@ -2164,7 +2165,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Datenkatalog</h3>
+                                                    <h3>Data Catalog</h3>
                                                     <p>Ermöglichen einer unternehmensweiten Self-Service-Datenquellenermittlung</p>
                                                 </div>
                                             </div>
@@ -2202,7 +2203,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Lake-Speicher</h3>
+                                                    <h3>Data Lake Store</h3>
                                                     <p>Riesiges Repository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
@@ -2278,7 +2279,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure-Botdienst</h3>
+                                                    <h3>Azure Bot Service</h3>
                                                     <p>Intelligenter, serverloser Botdienst mit bedarfsgesteuerter Skalierung</p>
                                                 </div>
                                             </div>
@@ -2446,7 +2447,7 @@ ms.lasthandoff: 03/09/2018
                         </ul>
                     </li>
                     <li>
-                        <a href="#integration">Unternehmensintegration</a>
+                        <a href="#integration">Enterprise Integration</a>
                         <ul id="integration" class="cardsA">
                             <li>
                                 <a href="/azure/logic-apps/">
@@ -2478,7 +2479,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SERVICE BUS</h3>
+                                                    <h3>Service Bus</h3>
                                                     <p>Verbindung zwischen privaten und öffentlichen Cloudumgebungen</p>
                                                 </div>
                                             </div>
@@ -2584,7 +2585,7 @@ ms.lasthandoff: 03/09/2018
                         </ul>
                     </li>
                     <li>
-                        <a href="#security">Sicherheit und Identität</a>
+                        <a href="#security">Sicherheit + Identität</a>
                         <ul id="security" class="cardsA">
                             <li>
                                 <a href="/azure/security-center">
@@ -2616,7 +2617,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Schlüsseltresor</h3>
+                                                    <h3>Key Vault</h3>
                                                     <p>Erfahren, wie Kryptografieschlüssel und geheime Schlüssel verwaltet werden</p>
                                                 </div>
                                             </div>
@@ -2892,7 +2893,7 @@ ms.lasthandoff: 03/09/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Sicherung</h3>
+                                                    <h3>Backup</h3>
                                                     <p>Einfache und zuverlässige Serversicherung in die Cloud</p>
                                                 </div>
                                             </div>
@@ -3254,6 +3255,7 @@ ms.lasthandoff: 03/09/2018
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/en-us/media/logos/logo_Go-lightblue.svg" alt="" />
                                                 </div>
                                             </div>
                                             <div class="cardText">

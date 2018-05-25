@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie auf der Grundlage von Protokollierungsdaten u
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 130bb7f20c030433741a9b9ecebe740fb44f5f81
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2b8b5095fceaa369ae8b7a426ca04685c2d86109
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 ## <a name="introduction"></a>Einführung
@@ -70,7 +70,7 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 |[Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Ereignisse der Steuerungsebene für Azure Resource Manager-Ressourcen|   Sie bieten Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden.| REST-API und [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement| Sie bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor, [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD-Berichterstellung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Protokolle und Berichte|Aktivitäten zur Benutzeranmeldung und Systemaktivitätsinformationen zur Benutzer- und Gruppenverwaltung|[Graph-API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Virtual Machine und Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows-Ereignisprotokoll und Linux-Syslog|    Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
+|[Virtual Machine und Cloud Services](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Windows-Ereignisprotokoll und Linux-Syslog| Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
 |[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung und Bereitstellung von Metrikdaten für ein Speicherkonto|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.|    REST-API oder [Clientbibliothek](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Datenflussprotokolle für Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|Verwendet das JSON-Format und zeigt eingehende und ausgehende Datenflüsse auf Regelbasis|Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Protokolle, Ausnahmen und benutzerdefinierte Diagnosen|    Erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen.| REST-API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
@@ -121,16 +121,16 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen: Azure-Portal, di
 
 | Dienst | Schema und Dokumente | Ressourcentyp | Category (Kategorie) |
 | ------- | ------------- | ------------- | -------- |
-|Lastenausgleichsmodul| [Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent|
+|Load Balancer| [Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent|
 |||Microsoft.Network/loadBalancers| LoadBalancerProbeHealthStatus
 |Netzwerksicherheitsgruppen|[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|
 |||Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|
 |Anwendungsgateways|[Diagnoseprotokollierung für Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|
-|Schlüsseltresor|[Azure Key Vault-Protokollierung](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
+|Key Vault|[Azure Key Vault-Protokollierung](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
 |Azure Search|[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
-|Data Lake-Speicher|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
+|Data Lake Store|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
 |Data Lake Analytics|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
 |||Microsoft.DataLakeAnalytics/accounts|Requests|
 |||Microsoft.DataLakeStore/accounts|Requests|
@@ -143,7 +143,7 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen: Azure-Portal, di
 |||Microsoft.EventHub/namespaces|OperationalLogs|
 |Stream Analytics|[Auftragsdiagnoseprotokolle](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-job-diagnostic-logs)|Microsoft.StreamAnalytics/streamingjobs|Ausführung|
 |||Microsoft.StreamAnalytics/streamingjobs|Erstellen|
-|SERVICE BUS|[Azure Service Bus Diagnoseprotokolle](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
+|Service Bus|[Azure Service Bus Diagnoseprotokolle](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-diagnostic-logs)|Microsoft.ServiceBus/namespaces|OperationalLogs|
 
 ### <a name="azure-active-directory-reporting"></a>Azure Active Directory-Berichterstellung
 Azure Active Directory (Azure AD) umfasst Sicherheits-, Aktivitäts- und Prüfberichte für Ihr Verzeichnis. Der [Azure Active Directory-Überwachungsbericht](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) hilft Kunden, privilegierte Aktionen zu bestimmen, die in ihrem Azure Active Directory aufgetreten sind. Privilegierte Aktionen umfassen Änderungen zur Rechteerweiterung (z. B. das Erstellen von Rollen oder Zurücksetzen von Kennwörtern), das Ändern von Richtlinienkonfigurationen (z. B. Kennwortrichtlinien) oder Änderungen an der Verzeichniskonfiguration (z. B. Änderungen an Domänenverbundeinstellungen).
@@ -364,7 +364,7 @@ Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourc
 |Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   Diagnose|||
 |Event Hub-Namespace|   Microsoft.EventHub/<br>Namespaces|  Diagnose|    Diagnose||
 |IoT Hubs|  Microsoft.Devices/<br>IotHubs||     Diagnose||
-|Schlüsseltresor| Microsoft.KeyVault/<br>Tresore|  Diagnose  || [KeyVault-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Key Vault| Microsoft.KeyVault/<br>Tresore|  Diagnose  || [KeyVault-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
 |Load Balancer|    Microsoft.Network/<br>loadBalancers|    Diagnose|||
 |Logic Apps|    Microsoft.Logic/<br>Workflows|  Diagnose|    Diagnose||
 ||Microsoft.Logic/<br>integrationAccounts||||

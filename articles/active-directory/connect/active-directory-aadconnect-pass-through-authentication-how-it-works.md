@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: Passthrough-Authentifizierung – Funktionsweise | Microsoft-Dokumentation"
+title: 'Azure AD Connect: Passthrough-Authentifizierung – Funktionsweise | Microsoft-Dokumentation'
 description: In diesem Artikel wird die Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory beschrieben.
 services: active-directory
-keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
-documentationcenter: 
+keywords: Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7

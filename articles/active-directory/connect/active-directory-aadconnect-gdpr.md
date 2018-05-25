@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect und die Datenschutz-Grundverordnung | Microsoft-Dokumentation
+title: Azure AD Connect und Datenschutz | Microsoft-Dokumentation
 description: Dieses Dokument beschreibt, wie Sie DSGVO-Konformität mit Azure AD Connect erzielen.
 services: active-directory
 documentationcenter: ''
@@ -11,36 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 04/26/2018
 ms.author: billmath
-ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a1fa7f58040b420bf52d89a57b1234416c2fb939
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="gdpr-compliance-and-azure-ad-connect"></a>DSGVO-Konformität und Azure AD Connect 
+# <a name="user-privacy-and-azure-ad-connect"></a>Datenschutz und Azure AD Connect 
 
-Im Mai 2018 tritt ein europäisches Datenschutzgesetz – die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) – in Kraft. Die DSGVO enthält neue Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der Europäischen Union (EU) Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. Die DSGVO gilt unabhängig von Ihrem Standort. 
-
-Ihnen stehen schon heute Microsoft-Produkte und -Dienste zur Verfügung, mit denen Sie die DSGVO erfüllen können. Weitere Informationen zur Microsoft-Datenschutzrichtlinie finden Sie im [Trust Center](https://www.microsoft.com/trustcenter).
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Dieser Artikel befasst sich mit Azure AD Connect und der DSGVO-Konformität.  Weitere Informationen zu Azure AD Connect Health und der DSGVO-Konformität finden Sie in [diesem Artikel](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
+>Dieser Artikel befasst sich mit Azure AD Connect und dem Schutz der Benutzerdaten.  Informationen zu Azure AD Connect Health und zum Datenschutz finden Sie in [diesem Artikel](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md).
 
-Die Einhaltung der Datenschutz-Grundverordnung für Azure AD Connect-Installationen kann auf zwei Arten erreicht werden:
+Die Einhaltung der Datenschutzbestimmungen für Azure AD Connect-Installationen kann auf zweierlei Weise erreicht werden:
 
 1.  Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus Installationen auf Anforderung
 2.  Sicherstellen, dass keine Daten länger als 48 Stunden beibehalten werden
 
 Das Azure AD Connect-Team empfiehlt die zweite Option, da sie viel einfacher zu implementieren und zu verwalten ist.
 
-Ein Azure AD Connect-Synchronisierungsserver speichert die folgenden Daten, die für die DSGVO-Konformität relevant sind:
+Ein Azure AD Connect-Synchronisierungsserver speichert die folgenden Benutzerdaten, die unter den Datenschutz fallen:
 1.  Daten über eine Person in der **Azure AD Connect-Datenbank**
 2.  Daten in **Windows-Ereignisprotokolldateien**, die Informationen zu einer Person enthalten können
 3.  Daten in **Azure AD Connect-Installationsprotokolldateien**, die Informationen zu einer Person enthalten können
 
-Für die Einhaltung der DSGVO sollten Azure AD Connect-Kunden die folgenden Richtlinien anwenden:
+Beim Entfernen von Benutzerdaten sollten Azure AD Connect-Kunden die folgenden Richtlinien anwenden:
 1.  Löschen Sie den Inhalt des Ordners mit den Azure AD Connect-Installationsprotokolldateien in regelmäßigen Abständen – mindestens alle 48 Stunden.
 2.  Dieses Produkt kann auch Ereignisprotokolle erstellen.  Weitere Informationen zu Ereignisprotokollen finden Sie in [dieser Dokumentation](https://msdn.microsoft.com/library/windows/desktop/aa385780.aspx).
 
@@ -82,5 +80,5 @@ Verwenden Sie die folgenden Schritte, um die Ausführung des Skripts alle 48 Stu
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md)
-- [Azure AD Connect Health und DSGVO](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)
+* [Die Microsoft-Datenschutzrichtlinie im Trust Center](https://www.microsoft.com/trustcenter)
+- [Azure AD Connect Health und Datenschutz](../../active-directory/connect-health/active-directory-aadconnect-health-gdpr.md)

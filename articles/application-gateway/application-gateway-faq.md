@@ -9,11 +9,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/29/2018
 ms.author: victorh
-ms.openlocfilehash: b4b627d16414ea7e4553a18e6620fba60e95ec91
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d5861df9dbfe554f966d19a8e3ed77b55f1f2cd2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -53,7 +53,7 @@ Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Ad
 
 **F: In welchen Regionen ist der Dienst verfügbar?**
 
-Application Gateway ist in allen Regionen des globalen Azure verfügbar. Er ist auch in [Azure China](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) verfügbar.
+Application Gateway ist in allen Regionen des globalen Azure verfügbar. Er ist auch in [Azure China](https://www.azure.cn/) und [Azure Government](https://azure.microsoft.com/overview/clouds/government/) verfügbar.
 
 **F: Ist dies eine dedizierte Bereitstellung für mein Abonnement, oder wird sie zur gemeinsamen Nutzung für Kunden freigegeben?**
 
@@ -155,7 +155,7 @@ Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Applicati
 
 * Zulassen von eingehenden Anforderungen aus allen Quellen an den Ports 65503 65534 für die [Back-End-Integrität-Kommunikation](application-gateway-diagnostics.md).
 
-* Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md).
+* Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md).
 
 * Blockieren des gesamten übrigen eingehenden Datenverkehrs mit einer Alle-verweigern-Regel.
 
@@ -178,6 +178,11 @@ Nein, aber Application Gateway verfügt über eine Durchsatzmetrik, die verwende
 **F: Werden durch das manuelle Hoch- oder Herunterskalieren Ausfallzeiten verursacht?**
 
 Es gibt keine Ausfallzeiten, da Instanzen auf Upgrade- und Fehlerdomänen verteilt sind.
+
+**F: Unterstützt Application Gateway den Verbindungsausgleich?**
+
+Ja. Sie können den Verbindungsausgleich konfigurieren, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Dadurch können vorhandene Verbindungen weiterhin an ihr vorheriges Ziel gesendet werden, bis die jeweilige Verbindung geschlossen wird oder ein konfigurierbares Zeitlimit abläuft. Beachten Sie, dass der Verbindungsausgleich nur auf die Beendigung der aktuellen aktiven Verbindungen wartet. Application Gateway kennt den Status der Anwendungssitzung nicht.
+
 
 **F: Kann ich Instanzgröße ohne Unterbrechung von mittel zu groß ändern?**
 
@@ -329,4 +334,4 @@ Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Application Gateway finden Sie unter [Einführung in Application Gateway](application-gateway-introduction.md).
+Weitere Informationen zu Application Gateway finden Sie unter [Was ist Azure Application Gateway?](overview.md)

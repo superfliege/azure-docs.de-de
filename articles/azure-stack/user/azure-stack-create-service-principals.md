@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Dienstprinzipals für Azure Stack | Microsoft-Dokumentation
-description: Beschreibt das Erstellen eines neuen Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
+description: Beschreibt das Erstellen eines Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -11,121 +11,155 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/28/2018
+ms.date: 04/27/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0517c85c62aaffd1055206120281c7b7de31ad82
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de5712fd7b48a759b366f5b9808bbbefc6e305cd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
 ---
-# <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
+# <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Wenn eine Anwendung Zugriff benötigt, um Ressourcen über Azure Resource Manager in Azure Stack bereitzustellen oder zu konfigurieren, erstellen Sie einen Dienstprinzipal. Dies ist ein Objekt mit Anmeldeinformationen für Ihre Anwendung.  Sie können für diesen Dienstprinzipal dann nur die erforderlichen Berechtigungen delegieren.  
+Sie können einer Anwendung Zugriff auf Azure Stack-Ressourcen gewähren, indem Sie einen Dienstprinzipal erstellen, der Azure Resource Manager verwendet. Mit einem Dienstprinzipal können Sie mithilfe der [rollenbasierten Zugriffssteuerung](azure-stack-manage-permissions.md) bestimmte Berechtigungen delegieren.
 
-Beispiel: Sie verfügen über ein Tool für die Konfigurationsverwaltung, das Azure Resource Manager zum Inventarisieren von Azure-Ressourcen einsetzt.  In diesem Szenario können Sie einen Dienstprinzipal erstellen, dem Dienstprinzipal die Rolle „Leser“ gewähren und das Tool für die Konfigurationsverwaltung auf den schreibgeschützten Zugriff beschränken. 
+Es wird empfohlen, Dienstprinzipale für Ihre Anwendungen zu verwenden. Der Ansatz mit Dienstprinzipalen ist dem Ausführen einer App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
 
-Der Ansatz mit Dienstprinzipalen ist dem Ausführen der App mit Ihren Anmeldeinformationen aus folgenden Gründen vorzuziehen:
+* Sie können dem Dienstprinzipal Berechtigungen zuweisen, die sich von Ihren eigenen Kontoberechtigungen unterscheiden. In der Regel sind die Berechtigungen eines Dienstprinzipals genau auf die Aufgaben der App beschränkt.
+* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Rolle oder Zuständigkeiten ändern.
+* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.
 
-* Sie können dem Dienstprinzipal Berechtigungen zuweisen, die sich von Ihren eigenen Kontoberechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
-* Sie müssen keine Anmeldeinformationen für die App ändern, wenn sich Ihre Zuständigkeiten ändern.
-* Sie können ein Zertifikat verwenden, um die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts zu automatisieren.  
+## <a name="example-scenario"></a>Beispielszenario
+
+Sie verfügen über eine App für die Konfigurationsverwaltung, die Azure-Ressourcen mithilfe von Azure Resource Manager inventarisieren muss. Sie können einen Dienstprinzipal erstellen und ihm die Rolle „Leser“ zuweisen. Mit dieser Rolle erhält die App schreibgeschützten Zugriff auf Azure-Ressourcen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Je nachdem, wie Sie Azure Stack bereitgestellt haben, beginnen Sie mit dem Erstellen eines Dienstprinzipals.  In diesem Dokument wird das Erstellen eines Dienstprinzipals für [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) und [Active Directory-Verbunddienste (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) beschrieben.  Nachdem Sie den Dienstprinzipal erstellt haben, können Sie einige Schritte ausführen, die für AD FS und Azure Active Directory gleich sind, um für die Rolle [Berechtigungen zu delegieren](azure-stack-create-service-principals.md#assign-role-to-service-principal).     
+Führen Sie die Schritte in diesem Artikel für folgende Aufgaben aus:
 
-## <a name="create-service-principal-for-azure-ad"></a>Erstellen des Dienstprinzipals für Azure AD
+* Erstellen eines Dienstprinzipals für Ihre App
+* Registrieren Ihrer App und Erstellen eines Authentifizierungsschlüssels
+* Zuweisen Ihrer App zu einer Rolle
 
-Wenn Sie Azure Stack mit Azure AD als Identitätsspeicher bereitgestellt haben, können Sie Dienstprinzipale genauso wie für Azure erstellen.  In diesem Abschnitt erfahren Sie, wie die Schritte über das Portal ausgeführt werden.  Vergewissern Sie sich vorher, ob Sie über die [erforderlichen Azure AD-Berechtigungen](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) verfügen.
+Die Konfiguration von Active Directory für Azure Stack bestimmt die Vorgehensweise zur Erstellung des Dienstprinzipals. Wählen Sie eine der folgenden Optionen:
+
+* Erstellen eines Dienstprinzipals für [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad)
+* Erstellen eines Dienstprinzipals für [Active Directory-Verbunddienste (Azure Directory Federation Services, AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)
+
+Die Schritte zum Zuweisen eines Dienstprinzipals zu einer Rolle sind für Azure AD und AD FS identisch. Nach der Erstellung des Dienstprinzipals können Sie durch Zuweisung zu einer Rolle [Berechtigungen delegieren](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+
+## <a name="create-a-service-principal-for-azure-ad"></a>Erstellen eines Dienstprinzipals für Azure AD
+
+Wenn Azure Stack Azure AD als Identitätsspeicher nutzt, können Sie mit dem Azure-Portal anhand der gleichen Schritte wie in Azure einen Dienstprinzipal erstellen.
+
+>[!NOTE]
+Stellen Sie vor dem Erstellen eines Dienstprinzipals sicher, dass Sie über die [erforderlichen Azure AD-Berechtigungen](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) verfügen.
 
 ### <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
-In diesem Abschnitt erstellen Sie eine Anwendung (Dienstprinzipal) in Azure AD, die Ihre Anwendung repräsentiert.
+
+So erstellen Sie einen Dienstprinzipal für Ihre Anwendung
 
 1. Melden Sie sich über das [Azure-Portal](https://portal.azure.com) bei Ihrem Azure-Konto an.
-2. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Hinzufügen**.   
+2. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Hinzufügen**.
 3. Geben Sie einen Namen und eine URL für die Anwendung an. Wählen Sie als Typ für die zu erstellende Anwendung entweder **Web-App/API** oder **Nativ** aus. Wählen Sie nach dem Festlegen der Werte **Erstellen** aus.
 
-Sie haben einen Dienstprinzipal für Ihre Anwendung erstellt.
-
 ### <a name="get-credentials"></a>Abrufen von Anmeldeinformationen
-Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und einen Authentifizierungsschlüssel. Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
+
+Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und einen Authentifizierungsschlüssel. Diese Werte erhalten Sie wie folgt:
 
 1. Wählen Sie in Active Directory unter **App Registrierungen** Ihre Anwendung aus.
 
-2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. Die Anwendungen im Abschnitt [Beispielanwendungen](#sample-applications) verweisen auf diesen Wert als Client-ID.
+2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In den [Beispielanwendungen](#sample-applications) wird für **Anwendungs-ID** der Begriff **Client-ID** verwendet.
 
-     ![CLIENT-ID](./media/azure-stack-create-service-principal/image12.png)
+     ![Anwendungs-ID für die Anwendung](./media/azure-stack-create-service-principal/image12.png)
 3. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
 
 4. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
 
-Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopieren Sie diesen Wert jetzt, da Sie ihn später nicht mehr abrufen können. Sie geben den Schlüsselwert zusammen mit der Anwendungs-ID ein, um die Anmeldung als Anwendung durchzuführen. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
+>[!IMPORTANT]
+Wenn Sie den Schlüssel gespeichert haben, wird unter **WERT** der Schlüssel angezeigt. Notieren Sie diesen Wert, da Sie ihn später nicht mehr abrufen können. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
 
-![gespeicherter Schlüssel](./media/azure-stack-create-service-principal/image15.png)
+![Schlüsselwertwarnung für den gespeicherten Schlüssel](./media/azure-stack-create-service-principal/image15.png)
 
-
-Fahren Sie nach Abschluss des Vorgangs mit dem [Zuweisen einer Rolle für Ihre Anwendung](azure-stack-create-service-principals.md#assign-role-to-service-principal) fort.
+Der letzte Schritt besteht im [Zuweisen einer Rolle zu Ihrer Anwendung](azure-stack-create-service-principals.md#assign-role-to-service-principal).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Erstellen eines Dienstprinzipals für AD FS
-Wenn Sie Azure Stack mit AD FS bereitgestellt haben, können Sie PowerShell verwenden, um einen Dienstprinzipal zu erstellen, eine Rolle für den Zugriff zuzuweisen und die Anmeldung über PowerShell mit dieser Identität durchzuführen.
+
+Wenn Sie Azure Stack mit AD FS als Identitätsspeicher bereitgestellt haben, können Sie PowerShell für die folgenden Aufgaben verwenden:
+
+* Erstellen eines Dienstprinzipals
+* Zuweisen eines Dienstprinzipals zu einer Rolle
+* Anmelden mithilfe der Identität des Dienstprinzipals
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
-[Laden Sie die Tools, die für die Arbeit mit Azure Stack erforderlich sind, auf Ihren lokalen Computer herunter.](azure-stack-powershell-download.md)
+[Laden Sie die erforderlichen Azure Stack-Tools auf Ihren lokalen Computer herunter.](azure-stack-powershell-download.md)
 
 ### <a name="import-the-identity-powershell-module"></a>Importieren des PowerShell-Moduls „Identity“
-Navigieren Sie nach dem Herunterladen der Tools zum Downloadordner, und importieren Sie das PowerShell-Modul „Identity“, indem Sie den folgenden Befehl verwenden:
+
+Navigieren Sie zum Downloadordner für die Azure Stack-Tools, und importieren Sie das PowerShell-Modul „Identity“ mithilfe des folgenden Befehls:
 
 ```PowerShell
 Import-Module .\Identity\AzureStack.Identity.psm1
 ```
 
-Beim Importieren des Moduls erhalten Sie ggf. den folgenden Fehler: „AzureStack.Connect.psm1 is not digitally signed. The script will not execute on the system“ (AzureStack.Connect.psm1 ist nicht digital signiert. Das Skript wird auf dem System nicht ausgeführt.) Zum Beheben dieses Problems können Sie eine Ausführungsrichtlinie festlegen, um das Ausführen des Skripts mit dem folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten zu ermöglichen:
+Beim Importieren des Moduls „Identity“ erhalten Sie ggf. den folgenden Fehler: „AzureStack.Connect.psm1 is not digitally signed. The script will not execute on the system“ (AzureStack.Connect.psm1 ist nicht digital signiert. Das Skript wird auf dem System nicht ausgeführt.)
+
+Sie müssen die Ausführungsrichtlinie zum Zulassen der Skriptausführung konfigurieren, um dieses Problem zu beheben. Um die Ausführungsrichtlinie festzulegen, führen Sie den folgenden Befehl in einer PowerShell-Sitzung mit erhöhten Rechten aus:
 
 ```PowerShell
 Set-ExecutionPolicy Unrestricted
 ```
 
 ### <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
-Sie können einen Dienstprinzipal erstellen, indem Sie den folgenden Befehl ausführen. Achten Sie hierbei darauf, dass Sie den Parameter *DisplayName* aktualisieren:
+
+Sie können einen Dienstprinzipal erstellen, indem Sie den folgenden Befehl ausführen. Achten Sie hierbei darauf, dass Sie den Parameter **DisplayName** aktualisieren:
+
 ```powershell
 $servicePrincipal = New-AzSADGraphServicePrincipal `
  -DisplayName "<YourServicePrincipalName>" `
  -AdminCredential $(Get-Credential) `
  -AdfsMachineName "AZS-ADFS01" `
  -Verbose
+
 ```
+
 ### <a name="assign-a-role"></a>Zuweisen einer Rolle
+
 Nach dem Erstellen des Dienstprinzipals müssen Sie [ihn einer Rolle zuweisen](azure-stack-create-service-principals.md#assign-role-to-service-principal).
 
-### <a name="sign-in-through-powershell"></a>Anmelden über PowerShell
-Nachdem Sie eine Rolle zugewiesen haben, können Sie sich mit dem Dienstprinzipal an Azure Stack anmelden, indem Sie den folgenden Befehl verwenden:
+### <a name="sign-in-using-powershell"></a>Anmelden mithilfe von PowerShell
+
+Sie können sich mit dem folgenden Befehl bei Azure Stack anmelden. Aktualisieren Sie dabei den Parameter **EnvironmentName** mit dem Namen Ihrer App:
 
 ```powershell
 Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
  -ServicePrincipal `
  -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId ` 
+ -ApplicationId $servicePrincipal.ApplicationId `
  -TenantId $directoryTenantId
 ```
 
-## <a name="assign-role-to-service-principal"></a>Zuweisen einer Rolle zum Dienstprinzipal
+## <a name="assign-the-service-principal-to-a-role"></a>Zuweisen des Dienstprinzipals zu einer Rolle
+
 Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
-Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
+>[!NOTE]
+Sie können den Bereich der Rolle auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Beispiel: Eine App mit der Rolle „Leser“ für eine Ressourcengruppe kann alle in einer Ressourcengruppe enthaltenen Ressourcen lesen.
 
-1. Navigieren Sie im Azure Stack-Portal zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z.B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus. Sie können stattdessen auch eine Ressourcengruppe oder Ressource auswählen.
+Verwenden Sie die folgenden Schritte als Leitfaden für das Zuweisen einer Rolle zu einem Dienstprinzipal.
 
-2. Wählen Sie das entsprechende Abonnement (Ressourcengruppe oder Ressource) aus, dem die Anwendung zugewiesen werden soll.
+1. Navigieren Sie im Azure Stack-Portal zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z.B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus.
 
-     ![Abonnement für Zuweisung auswählen](./media/azure-stack-create-service-principal/image16.png)
+2. Wählen Sie das Abonnement aus, dem die Anwendung zugewiesen werden soll. In diesem Beispiel wird das Abonnement für Visual Studio Enterprise verwendet.
 
-3. Wählen Sie **Access Control (IAM)** aus.
+     ![Auswählen des Visual Studio Enterprise-Abonnements für die Zuweisung](./media/azure-stack-create-service-principal/image16.png)
 
-     ![„Zugriff“ auswählen](./media/azure-stack-create-service-principal/image17.png)
+3. Wählen Sie für das Abonnement die Option **Zugriffssteuerung (IAM)**.
+
+     ![Auswählen der Zugriffssteuerung](./media/azure-stack-create-service-principal/image17.png)
 
 4. Wählen Sie **Hinzufügen**.
 
@@ -133,9 +167,9 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
 6. Suchen Sie nach Ihrer Anwendung, und wählen Sie sie aus.
 
-7. Wählen Sie **OK** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Kontext zugewiesen sind.
+7. Wählen Sie **OK** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Bereich zugewiesen sind.
 
-Nachdem Sie nun einen Dienstprinzipal erstellt und eine Rolle zugewiesen haben, können Sie diese Elemente in Ihrer Anwendung nutzen, um auf Azure Stack-Ressourcen zuzugreifen.  
+Nachdem Sie nun einen Dienstprinzipal erstellt und eine Rolle zugewiesen haben, kann Ihre Anwendung auf Azure Stack-Ressourcen zugreifen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Passthrough-Authentifizierung – Einhaltung der DSGVO | Microsoft-Dokumentation'
+title: Datenschutz und Passthrough-Authentifizierung von Azure Active Directory | Microsoft-Dokumentation
 description: In diesem Artikel geht es um die Azure AD-Passthrough-Authentifizierung (Azure Active Directory) und die Einhaltung der DSGVO.
 services: active-directory
 keywords: Passthrough-Authentifizierung mit Azure AD Connect, DSGVO, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden
@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/28/2018
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 21874c961163e3efba45c2ee8557c03135987f95
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/28/2018
 ---
-# <a name="azure-active-directory-pass-through-authentication-gdpr-compliance"></a>Azure Active Directory-Passthrough-Authentifizierung: Einhaltung der DSGVO
+# <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Datenschutz und Passthrough-Authentifizierung von Azure Active Directory
+
+
+[!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="overview"></a>Übersicht
-
-Im Mai 2018 tritt ein europäisches Datenschutzgesetz – die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) – in Kraft. Die DSGVO enthält neue Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der Europäischen Union (EU) Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. Die DSGVO gilt unabhängig von Ihrem Standort. 
-
-Ihnen stehen schon heute Microsoft-Produkte und -Dienste zur Verfügung, mit denen Sie die DSGVO erfüllen können. Weitere Informationen zur Microsoft-Datenschutzrichtlinie finden Sie im [Trust Center](https://www.microsoft.com/trustcenter).
 
 Mit der Azure AD-Passthrough-Authentifizierung werden die folgenden Protokolltypen erstellt, die EU II-Richtlinien umfassen können:
 
@@ -35,7 +34,7 @@ Mit der Azure AD-Passthrough-Authentifizierung werden die folgenden Protokolltyp
 - Ablaufverfolgungsprotokoll-Dateien für Authentifizierungs-Agent
 - Windows-Ereignisprotokolldateien
 
-Die Einhaltung der DSGVO für die Passthrough-Authentifizierung kann auf zwei Arten erreicht werden:
+Der Datenschutz für die Passthrough-Authentifizierung kann auf zweierlei Weise erreicht werden:
 
 1.  Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus Installationen auf Anforderung
 2.  Sicherstellen, dass keine Daten länger als 48 Stunden beibehalten werden
@@ -104,4 +103,5 @@ Führen Sie diese Schritte aus, um für das Skript die Ausführung nach jeweils 
 Wenn die Überwachungsprotokollierung aktiviert ist, kann dieses Produkt Sicherheitsprotokolle für Ihre Domänencontroller generieren. Weitere Informationen zum Konfigurieren von Überwachungsrichtlinien finden Sie in [diesem Artikel](https://technet.microsoft.com/library/dd277403.aspx).
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Die Microsoft-Datenschutzrichtlinie im Trust Center](https://www.microsoft.com/trustcenter)
 - [**Problembehandlung**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) – Beheben von häufig auftretenden Problemen mit diesem Feature

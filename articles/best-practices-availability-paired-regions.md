@@ -7,13 +7,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: multiple
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/09/2018
 ms.author: raynew
-ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 754b0bdea4ccb93de16fda4eea5e012e0630daea
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
 
@@ -25,31 +25,30 @@ Jeder Azure-Region ist innerhalb des gleichen geografischen Gebiets eine andere 
 
 ![Azure-Gebiet](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Abbildung 1 – Diagramm von Azure-Regionspaaren
+Abbildung 1: Azure-Regionspaare
 
 | Gebiet | Regionspaare |  |
 |:--- |:--- |:--- |
 | Asien |Asien, Osten |Asien, Südosten |
 | Australien |Australien (Osten) |Australien, Südosten |
+| Brasilien |Brasilien (Süden) (2) |USA Süd Mitte |
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
+| Europa |Nordeuropa |Europa, Westen |
+| Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
 | Indien |Indien, Mitte |Indien (Süden) |
 | Indien |Indien (Westen) (1) |Indien (Süden) |
 | Japan |Japan, Osten |Japan, Westen |
 | Korea |Korea, Mitte |Korea, Süden |
-| Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA (Ost) |USA (Westen) |
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
-| Nordamerika |USA, Westen 2 |USA, Westen-Mitte |
-| Europa |Nordeuropa |Europa, Westen |
-| Japan |Japan, Osten |Japan, Westen |
-| Brasilien |Brasilien (Süden) (2) |USA Süd Mitte |
+| Nordamerika |USA Nord Mitte |USA Süd Mitte |
+| Nordamerika |USA, Westen 2 |USA, Westen-Mitte 
+| UK |UK, Westen |UK, Süden |
+| US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
+| US Government |US Gov Arizona |US Gov Texas |
 | US Government |US Gov Iowa (3) |US Government, Virginia |
 | US Government |US Gov Virginia (4) |US Gov Texas |
-| US Government |US Gov Arizona |US Gov Texas |
-| US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
-| UK |UK, Westen |UK, Süden |
-| Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 

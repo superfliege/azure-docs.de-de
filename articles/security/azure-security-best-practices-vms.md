@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 409ed4618b8ddf022cfc3457851cf434ba810b94
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -55,7 +55,7 @@ Wenn Sie Resource Manager-Richtlinien und RBAC zum Steuern des Zugriffs auf virt
 
 - [Mitwirkender für virtuelle Computer:](../role-based-access-control/built-in-roles.md#virtual-machine-contributor) Kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
 - [Mitwirkender für klassische virtuelle Computer:](../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor) Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
-- [Sicherheits-Manager:](../role-based-access-control/built-in-roles.md#security-manager) Kann Sicherheitskomponenten, Sicherheitsrichtlinien und virtuelle Computer verwalten.
+- [Sicherheitsadministrator:](../role-based-access-control/built-in-roles.md#security-admin) Kann Sicherheitskomponenten und Sicherheitsrichtlinien verwalten.
 - [DevTest Labs-Benutzer:](../role-based-access-control/built-in-roles.md#devtest-labs-user) Kann alles anzeigen sowie virtuelle Computer verbinden, starten, neu starten und herunterfahren.
 
 Administratoren dürfen Konten und Kennwörter nicht gemeinsam verwenden, und Kennwörter dürfen nicht für mehrere Benutzerkonten oder Dienste verwendet werden. Das gilt insbesondere für Kennwörter für soziale Medien oder andere nicht administrative Aktivitäten. Zur sicheren Einrichtung Ihrer virtuellen Computer sollten Sie im Idealfall [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) verwenden. Mit diesem Ansatz können Sie die Sicherheit Ihrer Bereitstellungsoptionen verbessern und Sicherheitseinstellungen in der gesamten Bereitstellung erzwingen.

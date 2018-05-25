@@ -1,19 +1,19 @@
 ---
-title: "Bereitstellen von Modulen für Azure IoT Edge | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Module auf Edge-Geräten bereitgestellt werden."
+title: Bereitstellen von Modulen für Azure IoT Edge | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Module auf Edge-Geräten bereitgestellt werden.
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ffd3a8e6bde7310f6bdbed0e0f87419c73fcd6fc
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig (Vorschau)
 
@@ -59,7 +59,7 @@ Die Konfigurationsmetadaten für jedes Modul enthalten Folgendes:
 
 Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. Nehmen wir an, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Zum Zeitpunkt, da Sie die Bereitstellung starten, gibt es 10 Geräte in der Produktionsumgebung. Die Module werden erfolgreich auf diesen 10 Geräten installiert. Der Status des IoT Edge-Agents wird als 10 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 0 ausstehende Antworten angezeigt. Jetzt fügen Sie 5 weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents ist zu dem Zeitpunkt, da er die Bereitstellung auf den fünf neuen Geräten versucht, 15 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 5 ausstehende Antworten.
 
-Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Beispiel für die Zielbedingung:
 * deviceId ='linuxprod1'

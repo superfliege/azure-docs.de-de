@@ -1,25 +1,26 @@
 ---
-title: "Azure AD Cordova – Erste Schritte | Microsoft-Dokumentation"
-description: "In diesem Thema erfahren Sie, wie Sie eine Cordova-Anwendung erstellen, die sich für die Anmeldung in Azure AD integriert und unter Verwendung von OAuth APIs aufruft, die durch Azure AD geschützt sind."
+title: 'Azure AD Cordova: Erste Schritte | Microsoft-Dokumentation'
+description: In diesem Thema erfahren Sie, wie Sie eine Cordova-Anwendung erstellen, die sich für die Anmeldung in Azure AD integriert und unter Verwendung von OAuth APIs aufruft, die durch Azure AD geschützt sind.
 services: active-directory
-documentationcenter: 
-author: vibronet
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b1a8d7bd-7ad6-44d5-8ccb-5255bb623345
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
 ms.date: 11/30/2017
-ms.author: vittorib
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: d6f1d545265f0965a03afb23e5791cdd5e5e379c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6d6d514875aa675bf160ee08a3e94b58944020ee
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -33,7 +34,7 @@ Ein Cordova-Plug-In umfasst native Azure AD-SDKs für iOS, Android, Windows Stor
 In diesem Tutorial wird das Apache Cordova-Plug-In für die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL) verwendet, um einer einfachen App folgende Features hinzuzufügen:
 
 * Authentifizieren eines Benutzers und Abrufen eines Tokens (mit nur einigen wenigen Codezeilen)
-* Aufrufen der Graph-API unter Verwendung des Tokens, um das Verzeichnis abzufragen und die Ergebnisse anzuzeigen  
+* Aufrufen der Graph-API unter Verwendung des Tokens, um das Verzeichnis abzufragen und die Ergebnisse anzuzeigen 
 * Minimieren der Authentifizierungsaufforderungen für den Benutzer mithilfe des ADAL-Tokencaches
 
 Für die Umsetzung dieser Verbesserungen sind folgende Schritte erforderlich:
@@ -47,7 +48,7 @@ Für die Umsetzung dieser Verbesserungen sind folgende Schritte erforderlich:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Einen Azure AD-Mandanten, unter dem Sie über ein Konto mit Rechten für die App-Entwicklung verfügen
-* Eine Entwicklungsumgebung, die für die Verwendung von Apache Cordova konfiguriert ist  
+* Eine Entwicklungsumgebung, die für die Verwendung von Apache Cordova konfiguriert ist 
 
 Falls Sie beides bereits eingerichtet haben, können Sie direkt mit Schritt 1 fortfahren.
 
@@ -98,8 +99,8 @@ Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwend
 
 Um `DirSearchClient Sample` ausführen zu können, müssen Sie der neu erstellten App die Berechtigung zum Abfragen der Azure AD Graph-API gewähren:
 
-1. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.  
-2. Wählen Sie für die Azure Active Directory-Anwendung als API die Option **Microsoft Graph** aus, und fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Als angemeldeter Benutzer auf das Verzeichnis zugreifen** hinzu.  Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
+1. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus. 
+2. Wählen Sie für die Azure Active Directory-Anwendung als API die Option **Microsoft Graph** aus, und fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Als angemeldeter Benutzer auf das Verzeichnis zugreifen** hinzu. Mit dieser Berechtigung kann die Anwendung die Graph-API nach Benutzern abfragen.
 
 ## <a name="step-2-clone-the-sample-app-repository"></a>Schritt 2: Klonen des Beispiel-App-Repositorys
 Geben Sie in der Shell oder über die Befehlszeile den folgenden Befehl ein:

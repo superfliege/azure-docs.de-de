@@ -3,24 +3,22 @@ title: Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active D
 description: Verwenden Sie Azure Active Directory, um die einmalige Anmeldung für alle SaaS- und Webanwendungen zu aktivieren, die Sie für Ihr Unternehmen benötigen.
 services: active-directory
 documentationcenter: ''
-author: daveba
+author: barbkess
 manager: mtillman
 editor: ''
-ms.assetid: 75d1a3fd-b3c5-4495-a5c8-c4c24145ff00
 ms.service: active-directory
+ms.component: users-groups-roles
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: curtand
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: f19d33c905d6153dffa1e7d5cdaea92ed1b94ff7
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e1bd45027ea9c3dbffc642afedc4e478c96bffe7
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -75,7 +73,7 @@ In beiden Fällen werden Anmeldeinformationen verschlüsselt im Verzeichnis gesp
 Das kennwortbasierte einmalige Anmelden nutzt eine Browsererweiterung, um die Anwendung und benutzerspezifische Informationen sicher aus Azure AD abzurufen und auf den Dienst anzuwenden. Die meisten von Azure AD unterstützten Drittanbieter-SaaS-Anwendungen unterstützen dieses Feature.
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
-* Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
+* Internet Explorer 11 unter Windows 7 oder höher
 * Microsoft Edge in Windows 10 Anniversary Edition oder höher 
 * Chrome – unter Windows 7 oder höher und MacOS x oder höher
 * Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
@@ -193,7 +191,7 @@ Diese Links verwenden die gleichen Mechanismen der Zugriffssteuerung wie der Zug
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
+* [Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 * [Einführung in die Verwaltung des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
 * [Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](active-directory-b2b-compare-external-identities.md)
 

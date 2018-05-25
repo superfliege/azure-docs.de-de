@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 480c1984219a5e2fb79e8eb81ed87710c79611e4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: a62d7a36eeb84b06baa4f2968d48f4a7afcaa05d
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (öffentliche Vorschau)
 Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
 
 > [!IMPORTANT]
-> Diese Methode zur Steuerung der Tokengültigkeitsdauer wird als veraltet markiert.  Während es verfügbar bleibt, bis das Ersatzfeature bereit ist, werden die mit dieser Methode erstellten Richtlinien zur Tokengültigkeitsdauer nicht mehr funktionieren, sobald sie veraltet sind. 
+> Infolge des Feedbacks unserer Kunden während der Vorschau planen wir, diese Funktion durch ein neues Feature im bedingten Zugriff mit Azure Active Directory zu ersetzen.  Sobald das neue Feature fertiggestellt ist, wird die derzeitige Funktionalität nach einem Benachrichtigungszeitraum schließlich als veraltet markiert.  Wenn Sie die Richtlinie für eine konfigurierbare Tokengültigkeitsdauer verwenden, sollten Sie sich auf einen Wechsel zum neuen Feature im bedingten Zugriff vorbereiten, sobald dieses verfügbar ist. 
 >
 >
 
@@ -108,6 +108,8 @@ Sie können eine Richtlinie für die Gültigkeitsdauer von Token erstellen und d
 Ausführliche Informationen zu den Beziehungen zwischen Anwendungsobjekten und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](active-directory-application-objects.md).
 
 Die Gültigkeit des Tokens wird zum Zeitpunkt seiner Verwendung überprüft. Die Richtlinie mit der höchsten Priorität für die Anwendung, auf die zugegriffen wird, wird wirksam.
+
+Alle hier verwendeten Zeiträume werden nach dem C#-Objekt [TimeSpan](https://msdn.microsoft.com/library/system.timespan) (D.HH:MM:SS) formatiert.  Danach werden 80 Tage und 30 Minuten im Format `80.00:30:00` dargestellt.  Das führende D kann gelöscht werden, wenn der Wert 0 ist. Danach werden 90 Minuten im Format `00:90:00` dargestellt.  
 
 > [!NOTE]
 > Hier ist ein Beispielszenario angegeben.

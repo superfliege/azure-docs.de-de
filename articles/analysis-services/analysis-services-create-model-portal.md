@@ -5,25 +5,25 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 30a7f78e7bf13e6e6197e95b266dfd0d6b8f83c0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4b1d4cffc3571297f2b74674156cb7f3bad7c2c8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 
 Das Feature Azure Analysis Services-Web-Designer (Vorschau) im Azure-Portal bietet eine schnelle und einfache Möglichkeit zum Erstellen und Bearbeiten von Tabellenmodellen und Abfragen von Modelldaten direkt im Browser. 
 
-Beachten Sie, dass der Web-Designer eine **Vorschauversion** ist. Während immer neue Funktionen hinzugefügt werden, ist in der Vorschau die Funktionalität begrenzt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
+Beachten Sie, dass der Web-Designer eine **Vorschauversion** ist. Die Funktionalität ist daher eingeschränkt. Bei komplexeren Modellentwicklungen und -tests ist es sinnvoll, Visual Studio (SSDT) und SQL Server Management Studio (SSMS) zu verwenden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 - Ein Azure Analysis Services-Server auf der Ebene „Standard“ oder „Developer“. Neue, mit dem Web-Designer erstellte Modelle, sind DirectQuery, die nur von diesen Ebenen unterstützt werden.
-- Eine Azure SQL-Datenbank, Azure SQL Data Warehouse oder eine Power BI Desktop-Datei (.pbix) als Datenquelle. Neue Modelle, die von Power BI Desktop-Dateien erstellt wurden, unterstützen Azure SQL-Datenbank, Azure SQL Data Warehouse, Oracle und Teradata-Datenquellen.
+- Eine Azure SQL-Datenbank, Azure SQL Data Warehouse oder eine Power BI Desktop-Datei (.pbix) als Datenquelle. Neue Modelle, die anhand von Power BI Desktop-Dateien erstellt wurden, unterstützen Azure SQL-Datenbank und Azure SQL Data Warehouse.
 - Ein SQL Server-Konto und -Kennwort für das Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Data Warehouse-Datenquellen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.

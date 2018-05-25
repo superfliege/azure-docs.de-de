@@ -9,18 +9,18 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: carlrab
-ms.openlocfilehash: 829cedea9752fe41ad24427339d3f13c2f3e371a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3ffae541020a2672affab774ee6da2a8c707745f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Erstellen und Verwalten von Azure SQL-Datenbankservern und -datenbanken
 
 SQL-Datenbank bietet drei Typen von Datenbanken:
 
-- Eine Einzeldatenbank, die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
-- Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von [Compute- und Speicherressourcen für verschiedene Workloads](sql-database-service-tiers.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+- Eine einzelne Datenbank, die in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen](sql-database-service-tiers-vcore.md) erstellt wird. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
+- Eine Datenbank, die als Teil eines [Datenbankpools](sql-database-elastic-pool.md) in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem [kombinierten Satz von Compute- und Speicherressourcen (DTU-basiert)](sql-database-service-tiers-dtu.md) oder einer [unabhängigen Skalierung der Compute- und Speicherressourcen (V-Kern-basiert)](sql-database-service-tiers-vcore.md) erstellt wird, die von allen Datenbanken im Pool gemeinsam verwendet werden. Eine Azure SQL-Datenbank ist einem logischen Azure SQL-Datenbankserver zugeordnet, der innerhalb einer bestimmten Azure-Region erstellt wird.
 - Eine [Instanz von SQL-Server](sql-database-managed-instance.md) (eine verwaltete Instanz), die innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) mit einem definierten Satz von Compute- und Speicherressourcen alle Datenbanken auf dieser Serverinstanz für erstellt wird. Eine verwaltete Instanz enthält sowohl System- als auch Benutzerdatenbanken. Eine verwaltete Instanz ist so konzipiert, dass sie eine Datenbankmigration per Lift & Shift zu einem vollständig verwalteten PaaS ermöglicht, ohne dass die Anwendung neu gestaltet werden muss. Verwaltete Instanzen bieten umfassende Kompatibilität mit dem SQL Server-Programmiermodell sowie Unterstützung für die überwiegende Mehrheit von SQL Server-Features sowie die zugehörigen Tools und Dienste.  
 
 Microsoft Azure SQL-Datenbank unterstützt den TDS-Client (Tabular Data Stream) ab Version 7.3 und lässt nur verschlüsselte TCP/IP-Verbindungen zu.
@@ -52,7 +52,7 @@ Ein logischer Azure Datenbankserver:
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (<serverName>.database.windows.net)
 - bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird 
 - stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten – Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw. 
-- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig 20 Server pro Abonnement – siehe Grenzwerte für Abonnements [hier](../azure-subscription-service-limits.md)).
+- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-subscription-service-limits.md))
 - stellt den Bereich für Datenbank- und DTU- bzw. V-Kern-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU) bereit
 - ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden 
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
@@ -65,7 +65,7 @@ Zum Schutz Ihrer Daten verhindert eine [SQL-Datenbank-Firewall](sql-database-fir
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe des Azure-Portals
 
-Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. 
+Sie können die Ressourcengruppe der Azure SQL-Datenbank im Voraus oder beim Erstellen des Servers selbst erstellen. Es existieren mehrere Methoden zum Erhalten eines Formulars für einen neuen SQL-Server. Sie erhalten ein solches entweder durch das Erstellen eines neuen SQL-Servers oder als Teil der Erstellung einer neuen Datenbank. 
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Erstellen eines leeren SQL-Servers (logischen Servers)
 
@@ -78,7 +78,7 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
   ![Datenbankerstellung 1](./media/sql-database-get-started-portal/create-database-1.png)
 
 > [!IMPORTANT]
-> Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
+> Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
 
 Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
 
@@ -91,7 +91,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
    ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png) 
 
 > [!IMPORTANT]
-> Informationen zum Konfigurieren von Leistungseigenschaften für eine Datenbank finden Sie unter [Dienstebenen](sql-database-service-tiers.md).
+> Informationen zum Konfigurieren der Leistungseigenschaften für eine Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell (Vorschauversion)](sql-database-service-tiers-vcore.md).
 >
 
 > [!TIP]
