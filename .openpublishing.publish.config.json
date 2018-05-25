@@ -216,6 +216,10 @@
       "Publish",
       "PDF"
     ],
+    "live-sxs": [
+      "Publish",
+      "PDF"
+    ],
     "release-event-grid": [
       "Publish",
       "PDF"
