@@ -1,37 +1,44 @@
 ---
-title: "Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal | Microsoft-Dokumentation"
-description: "Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann."
+title: Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal | Microsoft-Dokumentation
+description: Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann.
 services: azure-stack
-documentationcenter: 
-author: mattbriggs
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 56C948E7-4523-43B9-A236-1EF906A0304F
 ms.service: azure-stack
 ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
-ms.author: mabrigg
-ms.openlocfilehash: 456a0db9771f5963c8d4375d54a22257f6ca1c56
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 05/11/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 0ef8247eba4605d3c8e5ef0992ce97bce989002e
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075271"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Aktivieren der Sicherung für Azure Stack über das Verwaltungsportal
+Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack Sicherungen generieren kann. Mit diesen Sicherungen können Sie bei einem [schwerwiegenden Fehler](.\azure-stack-backup-recover-data.md) Ihre Umgebung mittels einer Cloudwiederherstellung wiederherstellen. Die Cloudwiederherstellung soll sicherstellen, dass die Anbieter und Benutzer sich nach Abschluss der Wiederherstellung wieder im Portal anmelden können. Auf diese Weise können Benutzer ihre Abonnements wiederherstellen, einschließlich RBAC-Berechtigungen (Role-Based Access Control) und -Rollen, ursprünglichen Plänen, Angeboten und zuvor definierten Compute-, Speicher- und Netzwerkkontingenten.
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+Allerdings sichert der Infrastructure Backup-Dienst keine IaaS-VMs, Netzwerkkonfigurationen oder Speicherressourcen (z.B. Speicherkonten, Blobs, Tabellen). Daher werden Benutzern zuvor vorhandene Ressourcen nicht angezeigt, wenn sie sich nach einer Cloudwiederherstellung anmelden. PaaS-Ressourcen (Platform as a Service) und -Daten werden ebenfalls nicht vom Dienst gesichert. 
 
-Aktivieren Sie den Dienst für die Infrastruktursicherung über das Verwaltungsportal, sodass Azure Stack Sicherungen generieren kann. Mit diesen Sicherungen können Sie bei einem Fehler Ihre Umgebung wiederherstellen.
+Administratoren und Benutzer sind für die Sicherung und Wiederherstellung von IaaS- und PaaS-Ressourcen verantwortlich, die separat von den Infrastruktursicherungsprozessen erfolgen muss. Informationen zum Sichern von IaaS- und PaaS-Ressourcen finden Sie unter folgenden Links:
+
+- [Virtual Machines](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-protect)
+- [App Service](https://docs.microsoft.com/azure/app-service/web-sites-backup)
+- [SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
+
 
 > [!Note]  
 > Bevor Sie die Sicherung über die Konsole aktivieren, müssen Sie den Sicherungsdienst konfigurieren. Sie können den Sicherungsdienst mithilfe von PowerShell konfigurieren. Weitere Informationen finden Sie unter [Aktivieren der Sicherung für Azure Stack mit PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="enable-backup"></a>Aktivieren der Sicherung
 
-1. Öffnen Sie das Azure Stack-Verwaltungsportal unter [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. Rufen Sie das Azure Stack-Verwaltungsportal unter [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external) auf.
 2. Wählen Sie **Weitere Dienste** > **Infrastructure Backup** aus. Wählen Sie auf dem Blatt **Infrastructure Backup** die Option **Konfiguration** aus.
 
     ![Azure Stack – Backup Controller-Einstellungen](media\azure-stack-backup\azure-stack-backup-settings.png)zu erstellen und zu verwalten.
@@ -49,5 +56,5 @@ Zum Ausführen einer Sicherung müssen Sie die Azure Stack-Tools herunterladen u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Erfahren Sie, wie Sie eine Sicherung ausführen. Lesen Sie dazu die Informationen unter [Sichern von Azure Stack](azure-stack-backup-back-up-azure-stack.md ).
-- Erfahren Sie, wie Sie sicherstellen, dass die Sicherung ausgeführt wurde. Lesen Sie dazu die Informationen unter [Bestätigen der erfolgreichen Sicherung im Verwaltungsportal](azure-stack-backup-back-up-azure-stack.md ).
+- Erfahren Sie, wie Sie eine Sicherung ausführen. Lesen Sie dazu die Informationen unter [Sichern von Azure Stack](azure-stack-backup-back-up-azure-stack.md ).
+- Erfahren Sie, wie Sie sicherstellen, dass die Sicherung ausgeführt wurde. Lesen Sie dazu die Informationen unter [Bestätigen der erfolgreichen Sicherung im Verwaltungsportal](azure-stack-backup-back-up-azure-stack.md).

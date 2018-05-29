@@ -12,13 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 8e128e057e45f6966067ebaaf039d9b14349d926
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9a9c18bfe9073e5af94c7bd8f0fbb91651387731
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071663"
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
 
@@ -34,20 +35,20 @@ Da die Anforderung zur IP-Beibehaltung besteht (z.B. für Anwendungsbindungen), 
 
 Vor dem Failover sieht die Netzwerkarchitektur wie folgt aus:
 - Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet, und es wird ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet. Dieses virtuelle Netzwerk hat den Namen **Quell-VNet**.
-- Die Anwendungsworkloads sind auf die drei Subnetze 10.1.0.0/24, 10.1.1.0/24 und 10.1.2.0/24 verteilt, die als **Subnetz 1**, **Subnetz 2** und **Subnetz 3** bezeichnet werden.
+- Die Anwendungsworkloads sind auf die drei Subnetze 10.1.1.0/24, 10.1.2.0/24 und 10.1.3.0/24 verteilt, die als **Subnetz 1**, **Subnetz 2** und **Subnetz 3** bezeichnet werden.
 - Die Azure-Zielregion ist „Asien, Südosten“. Sie verfügt über ein virtuelles Wiederherstellungsnetzwerk, mit dem der Adressraum und die Subnetzkonfiguration auf der Quelle imitiert werden. Dieses virtuelle Netzwerk hat den Namen **Wiederherstellungs-VNet**.
-- Replikatknoten, z.B. für Always On, Domänencontroller usw., sind in einem virtuellen Netzwerk mit dem Adressraum 20.1.0.0/16 in Subnet 4 mit der Adresse 20.1.0.0/24 angeordnet. Das virtuelle Netzwerk hat den Namen **Azure VNet** und befindet sich in der Azure-Region „Asien, Südosten“.
+- Replikatknoten, wie sie beispielsweise für Always On, Domänencontroller usw. erforderlich sind, werden in einem virtuellen Netzwerk mit dem Adressraum 10.2.0.0/16 im Subnetz 4 mit der Adresse 10.2.4.0/24 platziert. Das virtuelle Netzwerk hat den Namen **Azure VNet** und befindet sich in der Azure-Region „Asien, Südosten“.
 - **Quell-VNet** und **Azure VNet** sind per Standort-zu-Standort-VPN-Konnektivität verbunden.
 - Das **Wiederherstellungs-VNet** ist nicht mit einem anderen virtuellen Netzwerk verbunden.
 - **Unternehmen A** weist die IP-Zieladresse für replizierte Elemente zu bzw. überprüft sie. In diesem Beispiel entspricht die Ziel-IP für jede VM jeweils der Quell-IP.
 
-![Konnektivität von Azure zu Azure vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover.png)
+![Konnektivität von Azure zu Azure vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Failover der gesamten Region
 
 Bei einem regionalen Ausfall kann **Unternehmen A** seine gesamte Bereitstellung schnell und einfach wiederherstellen, indem die leistungsfähigen [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) von Azure Site Recovery verwendet werden. Da **Unternehmen A** bereits für jede VM vor dem Failover die IP-Zieladresse festgelegt hat, kann es das Failover zwischen dem Wiederherstellungs-VNet und dem Azure VNet orchestrieren und die Verbindungsherstellung automatisieren. Dies ist in der Abbildung unten dargestellt.
 
-![Konnektivität von Azure zu Azure – Failover der gesamten Region](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover.png)
+![Konnektivität von Azure zu Azure – Failover der gesamten Region](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
 Je nach den Anwendungsanforderungen können Verbindungen zwischen den beiden VNets in der Zielregion vor, während (als Zwischenschritt) oder nach dem Failover hergestellt werden. Verwenden Sie [Wiederherstellungspläne](site-recovery-create-recovery-plans.md), um Skripts hinzuzufügen und die Failoverreihenfolge zu definieren.
 
@@ -62,23 +63,23 @@ Eine bessere Möglichkeit zur Erfüllung der Anforderungen eines Anwendungsfailo
 Zum Erstellen der Architektur von einzelnen Anwendungen im Hinblick auf Resilienz ist es ratsam, eine Anwendung in einem eigenen dedizierten virtuellen Netzwerk anzuordnen und die Konnektivität zwischen diesen virtuellen Netzwerken je nach Bedarf herzustellen. Auf diese Weise wird das Failover einer isolierten Anwendung ermöglicht, während die ursprünglichen privaten IP-Adressen beibehalten werden.
 
 Die Konfiguration vor dem Failover sieht dann wie folgt aus:
-- Die Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet, und es wird ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 für die erste Anwendung und 15.1.0.0/16 für die zweite Anwendung verwendet. Die virtuellen Netzwerke haben die Namen **Quell-VNet1** und **Quell-VNet2** für die erste bzw. zweite Anwendung.
+- Die virtuellen Anwendungscomputer werden in der Azure-Region „Asien, Osten“ gehostet, und es wird ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 für die erste Anwendung und 10.2.0.0/16 für die zweite Anwendung verwendet. Die virtuellen Netzwerke haben die Namen **Quell-VNet1** und **Quell-VNet2** für die erste bzw. zweite Anwendung.
 - Jedes VNet ist zudem jeweils in zwei Subnetze unterteilt.
 - Die Azure-Zielregion ist „Asien, Südosten“ mit den virtuellen Wiederherstellungsnetzwerken „Wiederherstellungs-VNet1“ und „Wiederherstellungs-VNet2“.
-- Replikatknoten, z.B. für Always On, Domänencontroller usw., sind in einem virtuellen Netzwerk mit dem Adressraum 20.1.0.0/16 in **Subnetz 4** mit der Adresse 20.1.0.0/24 angeordnet. Das virtuelle Netzwerk hat den Namen „Azure VNet“ und befindet sich in der Azure-Region „Asien, Südosten“.
+- Replikatknoten, wie sie beispielsweise für Always On, Domänencontroller usw. erforderlich sind, werden in einem virtuellen Netzwerk mit dem Adressraum 10.3.0.0/16 im **Subnetz 4** mit der Adresse 10.3.4.0/24 platziert. Das virtuelle Netzwerk hat den Namen „Azure VNet“ und befindet sich in der Azure-Region „Asien, Südosten“.
 - **Quell-VNet1** und **Azure VNet** sind per Standort-zu-Standort-VPN-Konnektivität verbunden. **Quell-VNet2** und **Azure VNet** sind ebenfalls per Standort-zu-Standort-VPN-Konnektivität verbunden.
 - **Quell-VNet1** und **Quell-VNet2** sind in diesem Beispiel auch per S2S-VPN-Verbindung verbunden. Da sich die beiden VNets in derselben Region befinden, kann anstelle der S2S-VPN-Verbindung auch das VNet-Peering verwendet werden.
 - **Wiederherstellungs-VNet1** und **Wiederherstellungs-VNet2** sind nicht mit einem anderen virtuellen Netzwerk verbunden.
 - Zur Reduzierung des RTO-Werts (Recovery Time Objective) werden vor dem Failover VPN-Gateways für **Wiederherstellungs-VNet1** und **Wiederherstellungs-VNet2** konfiguriert.
 
-![Konnektivität von Azure zu Azure – Isolierte Anwendung vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover.png)
+![Konnektivität von Azure zu Azure – Isolierte Anwendung vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-before-failover2.png)
 
 In einem Notfall, der nur eine Anwendung betrifft (in diesem Beispiel in Quell-VNet2), kann Unternehmen A die Anwendung wie folgt wiederherstellen:
 - VPN-Verbindungen zwischen **Quell-VNet1** und **Quell-VNet2** und zwischen **Quell-VNet2** und **Azure VNet** werden getrennt.
 - VPN-Verbindungen werden zwischen **Quell-VNet1** und **Wiederherstellungs-VNet2** und zwischen **Wiederherstellungs-VNet2** und **Azure VNet** hergestellt.
 - Für VMs aus **Quell-VNet2** wird ein Failover in **Wiederherstellungs-VNet2** durchgeführt.
 
-![Konnektivität von Azure zu Azure – Isolierte Anwendung nach dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover.png)
+![Konnektivität von Azure zu Azure – Isolierte Anwendung nach dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
 
 Das obige Beispiel für ein isoliertes Failover kann auf mehr Anwendungen und Netzwerkverbindungen erweitert werden. Die Empfehlung besteht darin, bei Failovern von der Quelle zum Ziel, falls möglich, ein „Like-Like“-Verbindungsmodell zu verwenden.
 
@@ -92,13 +93,13 @@ Für das zweite Szenario sehen wir uns **Unternehmen B** an, bei dem ein Teil de
 
 Vor dem Failover sieht die Netzwerkarchitektur wie folgt aus:
 - Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet, und es wird ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet. Dieses virtuelle Netzwerk hat den Namen **Quell-VNet**.
-- Die Anwendungsworkloads sind auf die drei Subnetze 10.1.0.0/24, 10.1.1.0/24 und 10.1.2.0/24 verteilt, die als **Subnetz 1**, **Subnetz 2** und **Subnetz 3** bezeichnet werden.
+- Die Anwendungsworkloads sind auf die drei Subnetze 10.1.1.0/24, 10.1.2.0/24 und 10.1.3.0/24 verteilt, die als **Subnetz 1**, **Subnetz 2** und **Subnetz 3** bezeichnet werden.
 - Die Azure-Zielregion ist „Asien, Südosten“. Sie verfügt über ein virtuelles Wiederherstellungsnetzwerk, mit dem der Adressraum und die Subnetzkonfiguration auf der Quelle imitiert werden. Dieses virtuelle Netzwerk hat den Namen **Wiederherstellungs-VNet**.
 - Für VMs in der Azure-Region „Asien, Osten“ wird per ExpressRoute oder Standort-zu-Standort-VPN eine Verbindung mit dem lokalen Rechenzentrum hergestellt.
 - Zur Reduzierung des RTO-Werts (Recovery Time Objective) stellt Unternehmen B vor dem Failover Gateways im Wiederherstellungs-VNet in der Azure-Region „Asien, Südosten“ bereit.
 - **Unternehmen B** weist die IP-Zieladresse für replizierte Elemente zu bzw. überprüft sie. In diesem Beispiel entspricht die Ziel-IP für jede VM jeweils der Quell-IP.
 
-![Konnektivität vom lokalen Standort zu Azure vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover.png)
+![Konnektivität vom lokalen Standort zu Azure vor dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-before-failover2.png)
 
 ### <a name="full-region-failover"></a>Failover der gesamten Region
 
@@ -106,7 +107,7 @@ Bei einem regionalen Ausfall kann **Unternehmen B** seine gesamte Bereitstellung
 
 Die ursprüngliche Verbindung zwischen der Azure-Region „Asien, Osten“ und dem lokalen Rechenzentrum sollte getrennt werden, bevor die Verbindung zwischen der Azure-Region „Asien, Südosten“ und dem lokalen Rechenzentrum hergestellt wird. Das lokale Routing wird ebenfalls neu konfiguriert, um nach dem Failover auf die Zielregion und die Gateways zu verweisen.
 
-![Konnektivität vom lokalen Standort zu Azure nach dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover.png)
+![Konnektivität vom lokalen Standort zu Azure nach dem Failover](./media/site-recovery-retain-ip-azure-vm-failover/on-premises-to-azure-connectivity-after-failover2.png)
 
 ### <a name="subnet-failover"></a>Subnetzfailover
 

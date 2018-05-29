@@ -2,25 +2,20 @@
 title: Funktionsweise der Self-Service-Kennwortzurücksetzung – Azure Active Directory
 description: Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: 618c5908-5bf6-4f0d-bf88-5168dfb28a88
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro;seohack1
-ms.openlocfilehash: 5933448b40a590b39df5ae4cf07fd858bebcd28f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868603"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -49,7 +44,7 @@ In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur K
        * Sind keine entsprechenden Daten konfiguriert, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
      * Wenn die Richtlinie eine Überprüfung in zwei Schritten vorsieht, wird sichergestellt, dass der Benutzer für mindestens zwei der durch die Administratorrichtlinie aktivierten Überprüfungen geeignete Daten definiert hat.
        * Sind keine entsprechenden Daten konfiguriert, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
-   * Es wird überprüft, ob das Benutzerkennwort lokal verwaltet wird oder nicht (im Verbund oder mit Kennworthashsynchronisierung).
+   * Es wird überprüft, ob das Benutzerkennwort lokal verwaltet wird (im Verbund, mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung).
      * Wenn das Rückschreiben von Kennwörtern konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, kann der Benutzer mit der Authentifizierung fortfahren und sein Kennwort zurücksetzen.
      * Wenn das Rückschreiben von Kennwörtern nicht konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
 4. Wenn festgestellt wird, dass der Benutzer sein Kennwort zurücksetzen darf, wird er durch den Vorgang für die Kennwortzurücksetzung geleitet.
@@ -224,8 +219,8 @@ Auf dieser Seite erhalten Sie einen schnellen Überblick über den Status des lo
 
 Dieses Steuerelement bestimmt, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. Wenn das Rückschreiben aktiviert ist, gibt es den Status des lokalen Diensts für das Rückschreiben an. Dies ist nützlich, wenn Sie das Rückschreiben von Kennwörtern vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.
 
-* Wenn die Option auf **Ja** gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.
-* Wenn die Option auf **Nein** gesetzt ist, wird das Rückschreiben deaktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter nicht zurücksetzen.
+* Wenn die Option auf **Ja** gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.
+* Wenn die Option auf **Nein** gesetzt ist, wird das Rückschreiben deaktiviert, und Verbundbenutzer und Benutzer mit Pass-Through-Authentifizierung oder mit Kennworthashsynchronisierung können ihre Kennwörter nicht zurücksetzen.
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Benutzern das Entsperren von Konten ohne Zurücksetzen des Kennworts erlauben
 

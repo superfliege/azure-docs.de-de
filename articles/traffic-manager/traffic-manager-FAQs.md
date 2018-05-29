@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/18/2018
+ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: 18a0ca32f51e6c1be01e59c3899bc2e625868cad
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 718a7eb1e6457c669456d88e5c6e80157b28066c
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942355"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -29,6 +30,10 @@ ms.lasthandoff: 04/16/2018
 Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) erläutert, auf der DNS-Ebene. Clients werden mithilfe von DNS-Antworten an den geeigneten Dienstendpunkt umgeleitet. Anschließend stellen Clients dann eine direkte Verbindung mit dem Dienstendpunkt her (nicht über Traffic Manager).
 
 Traffic Manager bietet daher keinen Endpunkt und keine IP-Adresse für die Verbindungsherstellung von Clients. Wenn für einen Dienst eine statische IP-Adresse benötigt wird, muss diese im Dienst und nicht in Traffic Manager konfiguriert werden.
+
+### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Welche Arten von Datenverkehr können mithilfe von Traffic Manager weitergeleitet werden?
+Wie unter [Funktionsweise von Traffic Manager](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works) beschrieben, kann ein Traffic Manager-Endpunkt ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Daher kann mithilfe von Traffic Manager Datenverkehr vom öffentlichen Internet an eine Gruppe von Endpunkten weitergeleitet werden, die auch über Internetzugriff verfügen. Bei Endpunkten innerhalb eines privaten Netzwerks (z.B. eine interne Version von [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) oder bei DNS-Anforderungen von Benutzern über solche internen Netzwerke kann Traffic Manager nicht für diese Art von Datenverkehr verwendet werden.
+
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Unterstützt Traffic Manager persistente Sitzungen?
 

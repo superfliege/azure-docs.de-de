@@ -1,30 +1,34 @@
 ---
-title: "Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs"
-description: "Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API"
+title: Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API | Microsoft Docs
+description: Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ddcd9ae0-f6b7-4f13-a5e1-6cbf51a25634
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2018
+ms.date: 05/08/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 859459bbce6b81e2e855201d5c310233d88d0393
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 3831146caad4fe922e482ce782d5d41fb70338f4
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155795"
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Referenz zur Azure Active Directory-Anmeldeaktivitätsbericht-API
-Dieses Thema ist Bestandteil einer Sammlung von Themen zur Azure Active Directory-Berichterstellungs-API.  
-Die Azure AD-Berichterstellung bietet eine API, mit der Sie unter Verwendung von Code oder zugehörigen Tools auf Überwachungsdaten zugreifen können.
-In diesem Thema erhalten Sie Referenzinformationen zur **Berichterstellungs-API zur Anmeldeaktivität**.
+
+> [!TIP] 
+> Ziehen Sie die neue Microsoft Graph-API für die [Berichterstellung](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) in Betracht, die diese API letztendlich ersetzen wird. 
+
+Dieser Artikel ist Bestandteil einer Sammlung von Artikeln zur Azure Active Directory-Berichterstellungs-API (Azure AD). Die Azure AD-Berichterstellung bietet eine API, mit der Sie unter Verwendung von Code oder zugehörigen Tools auf Überwachungsdaten zugreifen können.
+In diesem Artikel finden Sie Referenzinformationen zur **Überwachungs-API**.
 
 Siehe:
 
@@ -49,11 +53,11 @@ Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal
 ## <a name="prerequisites"></a>Voraussetzungen
 Um über die Berichterstellungs-API auf diesen Bericht zugreifen zu können, müssen folgende Bedingungen erfüllt sein:
 
-* Sie verfügen über die [Azure Active Directory Premium P1 oder P2 Edition](active-directory-editions.md)
+* Sie verfügen über die [Azure Active Directory Premium P1 oder P2 Edition](active-directory-whatis.md)
 * Die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites.md)sind erfüllt. 
 
 ## <a name="accessing-the-api"></a>Zugriff auf die API
-Sie können entweder über den [Graph-Tester](https://graphexplorer2.cloudapp.net) oder programmgesteuert, z.B. unter Verwendung von PowerShell, auf diese API zugreifen. Damit PowerShell die in AAD Graph-REST-Aufrufen verwendete OData-Filtersyntax richtig interpretiert, müssen Sie das Graviszeichen als Escapezeichen für das $-Zeichen verwenden. Das Graviszeichen dient als [Escapezeichen in PowerShell](https://technet.microsoft.com/library/hh847755.aspx) und erlaubt PowerShell eine zeichengetreue Interpretation des Zeichens „$“, statt dieses Zeichen als PowerShell-Variablenname (z.B. „$filter“) zu betrachten.
+Sie können entweder über den [Graph-Tester](https://graphexplorer2.cloudapp.net) oder programmgesteuert, z.B. unter Verwendung von PowerShell, auf diese API zugreifen. Verwenden Sie das Graviszeichen als Escapezeichen für das $-Zeichen, damit PowerShell die in AAD Graph-REST-Aufrufen verwendete OData-Filtersyntax richtig interpretieren kann. Das Graviszeichen dient als [Escapezeichen in PowerShell](https://technet.microsoft.com/library/hh847755.aspx) und erlaubt PowerShell eine zeichengetreue Interpretation des Zeichens „$“, statt dieses Zeichen als PowerShell-Variablenname (z.B. „$filter“) zu betrachten.
 
 Der Schwerpunkt in diesem Thema liegt auf dem Graph-Tester. Ein PowerShell-Beispiel finden Sie in diesem [PowerShell-Skript](active-directory-reporting-api-sign-in-activity-samples.md#powershell-script).
 
@@ -64,10 +68,9 @@ Sie können auf diese API mithilfe des folgenden Basis-URI zugreifen:
 
 
 
-Aufgrund der Menge an Daten gilt für diese API ein Limit von einer Million zurückgegebener Datensätze. 
+Aufgrund der Menge an Daten gilt für diese API ein Limit von 1.000.000 zurückgegebenen Datensätzen. 
 
-Dieser Aufruf gibt die Daten in Batches zurück. Jeder Batch umfasst maximal 1.000 Datensätze.  
-Um den nächsten Batch an Datensätzen abzurufen, verwenden Sie den Link „Weiter“. Rufen Sie die [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) -Informationen für den ersten Satz an zurückgegebenen Datensätzen ab. Die skiptoken-Informationen befinden sich am Ende des Resultsets.  
+Dieser Aufruf gibt die Daten in Batches zurück. Jeder Batch umfasst maximal 1.000 Datensätze. Um den nächsten Batch an Datensätzen abzurufen, verwenden Sie den Link „Weiter“. Rufen Sie die [skiptoken](https://msdn.microsoft.com/library/dd942121.aspx) -Informationen für den ersten Satz an zurückgegebenen Datensätzen ab. Die skiptoken-Informationen befinden sich am Ende des Resultsets.  
 
     https://graph.windows.net/$tenantdomain/activities/signinEvents?api-version=beta&%24skiptoken=-1339686058
 
@@ -76,7 +79,7 @@ Um den nächsten Batch an Datensätzen abzurufen, verwenden Sie den Link „Weit
 Sie können die Anzahl von zurückgegeben Datensätzen eingrenzen, indem Sie einen API-Aufruf in Form eines Filters ausführen.  
 Für anmeldebezogene API-Daten werden die folgenden Filter unterstützt:
 
-* **$top=\<Anzahl zurückzugebender Datensätze\>**: Zum Einschränken der Anzahl von Datensätzen, die zurückgegeben werden. Dies ist ein kostenintensiver Vorgang. Sie sollten diesen Filter nicht verwenden, wenn Tausende von Objekten zurückgegeben werden müssen.  
+* **$top=\<Anzahl zurückzugebender Datensätze\>**: Zum Einschränken der Anzahl von Datensätzen, die zurückgegeben werden. Dies ist ein kostenintensiver Vorgang. Verwenden Sie diesen Filter nicht, wenn Tausende von Objekten zurückgegeben werden müssen.  
 * **$filter=\<Ihre Filteranweisung\>**: Legt basierend auf den unterstützten Filterfeldern fest, an welcher Art von Datensätzen Sie interessiert sind.
 
 ## <a name="supported-filter-fields-and-operators"></a>Unterstützte Filterfelder und Operatoren

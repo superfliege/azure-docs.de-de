@@ -15,20 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: ce858553a67bce714ceae43a5bb2f86839d9c507
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 56839c38de135a805c51bb96ad5d7abc41ebcad7
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895371"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 
-In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen und löschen und Einstellungen für vorhandene virtuelle Netzwerke wie DNS-Server und IP-Adressräume ändern.
-
-Ein virtuelles Netzwerk ist eine Darstellung Ihres eigenen Netzwerks in der Cloud. Bei einem virtuellen Netzwerk handelt es sich um eine logische Isolation der dedizierten Azure-Cloud für Ihr Azure-Abonnement. Für jedes virtuelle Netzwerk, das Sie erstellen, können Sie folgende Aktionen durchführen:
-- Wählen Sie den zuzuweisenden Adressraum aus. Ein Adressraum besteht aus einem oder mehreren Adressbereichen, die mithilfe der CIDR-Notation (Classless Inter-Domain Routing) definiert sind, z.B. 10.0.0.0/16.
-- Wählen Sie entweder den von Azure bereitgestellten DNS-Server, oder verwenden Sie Ihren eigenen. Alle Ressourcen, die mit dem virtuellen Netzwerk verbunden sind, werden diesem DNS-Server zum Auflösen der Namen innerhalb des virtuellen Netzwerks zugewiesen.
-- Unterteilen Sie das virtuelle Netzwerk in Subnetze, die im Adressraum des virtuellen Netzwerks jeweils über einen eigenen Adressbereich verfügen. Informationen zum Erstellen, Ändern und Löschen von Subnetzen finden Sie unter [Hinzufügen, Ändern oder Löschen von Subnetzen](virtual-network-manage-subnet.md).
+In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk erstellen und löschen und Einstellungen für vorhandene virtuelle Netzwerke wie DNS-Server und IP-Adressräume ändern. Wenn Sie mit virtuellen Netzwerken noch nicht vertraut sind, lesen Sie mehr darüber in der [Übersicht über virtuelle Netzwerke](virtual-networks-overview.md), oder arbeiten Sie ein [Tutorial](quick-create-portal.md) durch. Ein virtuelles Netzwerk enthält Subnetze. Informationen zum Erstellen, Ändern und Löschen von Subnetzen finden Sie unter [Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -36,8 +32,9 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
-- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.2.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.26 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.31 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden, unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -76,7 +73,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 
 ## <a name="view-virtual-networks-and-settings"></a>Anzeigen von virtuellen Netzwerken und Einstellungen
 
-1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, für das Sie Einstellungen anzeigen möchten.
 3. Für das ausgewählte virtuelle Netzwerk sind folgende Einstellungen aufgeführt:
     - **Übersicht**: Enthält Informationen zum virtuellen Netzwerk, z.B. zum Adressraum und den DNS-Servern. Der folgende Screenshot zeigt die Übersicht über die Einstellungen eines virtuellen Netzwerks mit dem Namen **MyVNet** an:
@@ -94,7 +91,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
     - **Allgemeine Azure-Einstellungen**: Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in folgenden Artikeln:
         *   [Aktivitätsprotokoll](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
         *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-        *   [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+        *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automatisierungsskript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -115,7 +112,7 @@ Sie können Adressbereiche eines virtuellen Netzwerks hinzufügen und entfernen.
 
 Hinzufügen oder Entfernen eines Adressbereichs:
 
-1. Geben Sie oben im Portal *virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, für das Sie einen Adressbereich hinzufügen oder entfernen möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **Adressraum** aus.
 4. Führen Sie eine der folgenden Optionen aus:
@@ -132,7 +129,7 @@ Hinzufügen oder Entfernen eines Adressbereichs:
 
 Alle mit dem virtuellen Netzwerk verbundenen VMs werden bei den DNS-Servern registriert, die Sie für das virtuelle Netzwerk angeben. Zudem wird der angegebene DNS-Server für die Namensauflösung verwendet. Jede Netzwerkschnittstellenkarte (NIC) einer VM hat eigene DNS-Servereinstellungen. Wenn eine Netzwerkkarte mit eigenen DNS-Servereinstellungen versehen ist, überschreiben diese die DNS-Servereinstellungen für das virtuelle Netzwerk. Weitere Informationen zu DNS-Einstellungen von Netzwerkkarten finden Sie unter [Aufgaben und Einstellungen für Netzwerkschnittstellen](virtual-network-network-interface.md#change-dns-servers). Weitere Informationen zur Namensauflösung für VMs und zu Rolleninstanzen in Azure Cloud Services finden Sie unter [Namensauflösung für VMs und Rolleninstanzen](virtual-networks-name-resolution-for-vms-and-role-instances.md). So fügen Sie einen DNS-Server hinzu oder ändern bzw. entfernen diesen:
 
-1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, für das Sie DNS-Server ändern möchten.
 3.  Wählen Sie unter **EINSTELLUNGEN** die Option **DNS-Server** aus.
 4. Wählen Sie eine der folgenden Optionen:
@@ -154,7 +151,7 @@ Alle mit dem virtuellen Netzwerk verbundenen VMs werden bei den DNS-Servern regi
 
 Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr damit verbunden sind. Falls Ressourcen mit den Subnetzen im virtuellen Netzwerk verbunden sind, müssen Sie zuerst die Ressourcen, die mit allen Subnetzen im virtuellen Netzwerk verbunden sind, löschen. Die Schritte zum Löschen einer Ressource variieren abhängig von der Ressource. Informationen zum Löschen von mit Subnetzen verbundenen Ressourcen finden Sie in der Dokumentation zum jeweiligen Ressourcentyp, den Sie löschen möchten. So löschen Sie ein virtuelles Netzwerk:
 
-1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, wählen Sie es aus.
+1. Geben Sie oben im Portal *Virtuelle Netzwerke* in das Suchfeld ein. Wenn **Virtuelle Netzwerke** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, das Sie löschen möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **Verbundene Geräte** aus, um sicherzustellen, dass keine Geräte mit dem virtuellen Netzwerk verbunden sind. Wenn verbundene Geräte vorhanden sind, müssen Sie diese löschen, ehe Sie das virtuelle Netzwerk löschen können. Wenn keine verbundenen Geräte vorhanden sind, wählen Sie **Übersicht**.
 4. Klicken Sie auf **Löschen**.
@@ -167,17 +164,15 @@ Sie können ein virtuelles Netzwerk erst löschen, wenn keine Ressourcen mehr da
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Durchführen von Aufgaben für virtuelle Netzwerke muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
+Zur Durchführung von Aufgaben für virtuelle Netzwerke muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die passenden Aktionen aus der folgenden Tabelle zugewiesen sind:
 
-|Vorgang                                    |   Vorgangsname                    |
-|-------------------------------------------  |   --------------------------------  |
-|Microsoft.Network/virtualNetworks/read       |   Virtual Network abrufen               |
-|Microsoft.Network/virtualNetworks/write      |   Erstellen oder Aktualisieren von Virtual Network  |
-|Microsoft.Network/virtualNetworks/delete     |   Löschen von Virtual Network            |
+| Aktion                                  |   Name                                |
+|---------------------------------------- |   --------------------------------    |
+|Microsoft.Network/virtualNetworks/read   |   Lesen eines virtuellen Netzwerks              |
+|Microsoft.Network/virtualNetworks/write  |   Erstellen oder Aktualisieren eines virtuellen Netzwerks  |
+|Microsoft.Network/virtualNetworks/delete |   Löschen eines virtuellen Netzwerks            |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen dazu, wie Sie eine VM erstellen und mit einem virtuellen Netzwerk verbinden, finden Sie unter [Erstellen virtueller Netzwerke und Verbinden von VMs](quick-create-portal.md#create-virtual-machines).
-- Informationen dazu, wie Sie Netzwerkdatenverkehr zwischen Subnetzen in einem virtuellen Netzwerk filtern, finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md).
-- Um ein virtuelles Netzwerk mittels Peering mit einem anderen virtuellen Netzwerk verbinden zu können, lesen Sie [Erstellen eines Peerings virtueller Netzwerke](tutorial-connect-virtual-networks-portal.md).
-- Weitere Informationen zu Optionen zum Verbinden eines virtuellen Netzwerks mit einem lokalen Netzwerk finden Sie unter [Informationen zu VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams).
+- Erstellen eines virtuellen Netzwerks mithilfe von Beispielskripts für [PowerShell](powershell-samples.md) oder für die [Azure CLI](cli-samples.md) oder mithilfe von [Azure Resource Manager-Vorlagen](template-samples.md)
+- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke

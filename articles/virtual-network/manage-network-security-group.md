@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0e9a66cc52c25bf4d38fd27050a92196227a698c
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7a244a5dbb86b076f99975ad477d4062699270b5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894244"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe 
 
@@ -34,6 +35,8 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 - Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 - Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
+Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen sind.
+
 ## <a name="work-with-network-security-groups"></a>Arbeiten mit Netzwerksicherheitsgruppen
 
 Sie können eine Netzwerksicherheitsgruppe erstellen, [komplett anzeigen](#view-all-network-security-groups), [Details von ihr anzeigen](#view-details-of-a-network-security-group), sie [ändern](#change-a-network-security-group) und [löschen](#delete-a-network-security-group). Sie können eine Netzwerksicherheitsgruppe auch einer Netzwerkschnittstelle oder einem Subnetz [zuordnen bzw. davon trennen](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource).
@@ -44,7 +47,7 @@ Die Anzahl der Netzwerksicherheitsgruppen, die Sie pro Azure-Standort und -Abonn
 
 1. Wählen Sie links oben im Portal **+ Ressource erstellen** aus.
 2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
-3. Geben Sie einen **Namen** für die Netzwerksicherheitsgruppe ein, wählen Sie Ihr **Abonnement** aus, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Speicherort**, und wählen Sie dann die Option **Erstellen**. 
+3. Geben Sie einen **Namen** für die Netzwerksicherheitsgruppe ein, wählen Sie Ihr **Abonnement** aus, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Speicherort**, und wählen Sie dann die Option **Erstellen**.
 
 **Befehle**
 
@@ -67,7 +70,7 @@ Geben Sie im Suchfeld oben im Portal *Netzwerksicherheitsgruppen* ein. Wenn **Ne
 3. Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Sie in den folgenden Artikeln:
     *   [Aktivitätsprotokoll](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
     *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
-    *   [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)
+    *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatisierungsskript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
@@ -123,7 +126,7 @@ Die Anzahl der Sicherheitsregeln, die Sie pro Netzwerksicherheitsgruppe pro Azur
     |Ziel     | Wählen Sie **Beliebig**, **IP-Adressen** oder **Virtuelles Netzwerk**.        | Bei Auswahl von **IP-Adressen** müssen Sie **Ziel-IP-Adressen/CIDR-Bereiche** angeben. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben, und die Anzahl, die Sie angeben können, ist begrenzt. Die Auswahl von **Virtuelles Netzwerk** – eines Diensttags – bedeutet, dass Datenverkehr an allen IP-Adressen innerhalb des Adressraums des virtuellen Netzwerks zulässig ist.        |
     |Zielportbereiche     | Geben Sie einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste von Werten an. | Ähnlich wie bei **Quellportbereiche** können Sie einen einzelnen Port und Bereich oder mehrere angeben, und die Anzahl, die Sie angeben können, ist begrenzt. |
     |Protokoll     | Wählen Sie **Beliebig**, **TCP** oder **UDP**.        |         |
-    |anzuzeigen.     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
+    |Aktion     | Wählen Sie **Zulassen** oder **Verweigern**.        |         |
     |Priorität     | Geben Sie einen Wert von 100-4096 ein, der für alle Sicherheitsregeln innerhalb der Netzwerksicherheitsgruppe eindeutig ist. |Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Je niedriger die Zahl, desto höher die Priorität. Sie sollten beim Erstellen von Regeln eine Lücke zwischen Prioritätsnummern lassen, z.B. 100, 200, 300. Lücken erleichtern das zukünftige Hinzufügen von Regeln, die Sie vielleicht zum Herauf- oder Herabsetzen im Vergleich zu vorhandenen Regeln aufstellen müssen.         |
     |NAME     | Ein eindeutiger Name für die Regel in der Netzwerksicherheitsgruppe.        |  Der Name kann bis zu 80 Zeichen umfassen. Er muss mit einem Buchstaben oder einer Zahl beginnen, mit einem Buchstaben, einer Zahl oder einem Unterstrich enden und darf nur Buchstaben, Zahlen, Unterstriche, Punkte oder Bindestriche umfassen.       |
     |BESCHREIBUNG     | Eine optionale Beschreibung.        |         |
@@ -211,7 +214,7 @@ Sie können zwar einige Einstellungen wie Tags und Berechtigungen für eine vorh
 
 ### <a name="delete-an-application-security-group"></a>Löschen einer Anwendungssicherheitsgruppe
 
-Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn Netzwerkschnittstellen darin enthalten sind. Sie müssen alle Netzwerkschnittstellen entweder durch Ändern der Netzwerkschnittstellen-Einstellungen oder Löschen der Netzwerkschnittstellen aus der Anwendungssicherheitsgruppe entfernen. Weitere Informationen finden Sie unter [Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) oder [Löschen einer Netzwerkschnittstelle](virtual-network-network-interface.md#delete-a-network-interface).
+Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn Netzwerkschnittstellen darin enthalten sind. Entfernen Sie alle Netzwerkschnittstellen aus der Anwendungssicherheitsgruppe, indem Sie entweder die Einstellungen der Netzwerkschnittstellen ändern oder die Netzwerkschnittstellen löschen. Weitere Informationen finden Sie unter [Hinzufügen einer Netzwerkschnittstelle zu einer Anwendungssicherheitsgruppe bzw. deren Entfernen daraus](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) oder [Löschen einer Netzwerkschnittstelle](virtual-network-network-interface.md#delete-a-network-interface).
 
 **Befehle**
 
@@ -220,18 +223,33 @@ Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn Netzwerkschnit
 
 ## <a name="permissions"></a>Berechtigungen
 
-Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln und Anwendungssicherheitsgruppen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
+Zum Durchführen von Aufgaben für Netzwerksicherheitsgruppen, Sicherheitsregeln und Anwendungssicherheitsgruppen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in den folgenden Tabellen aufgeführten Berechtigungen zugewiesen wurden:
 
-|Vorgang                                                       |   Vorgangsname                               |
-|--------------------------------------------------------------  |   -------------------------------------------  |
-|Microsoft.Network/ruleTables/read                              |   Netzwerksicherheitsgruppe abrufen                              |
-|Microsoft.Network/ruleTables/write                             |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                  |
-|Microsoft.Network/ruleTables/delete                            |   Netzwerksicherheitsgruppe löschen                           |
-|Microsoft.Network/ruleTables/join/action                       |   Einer Netzwerksicherheitsgruppe beitreten                             |
-|Microsoft.Network/ruleTables/rules/read                       |   Regel abrufen                                    |
-|Microsoft.Network/ruleTables/rules/write                      |   Regel erstellen oder aktualisieren                       |
-|Microsoft.Network/ruleTables/rules/delete                     |   Regel löschen                                 |
-|Microsoft.Network/networkInterfaces/effectiveruleTable/action  |   Der Netzwerkschnittstelle zugeordnete Netzwerksicherheitsgruppe abrufen  | 
-|Microsoft.Network/networkWatchers/nextHop/action                |   Nächsten Hop von einer VM abrufen                  |
+### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
-Der Vorgang *Einer Netzwerksicherheitsgruppe beitreten* ist erforderlich, um eine Netzwerksicherheitsgruppe einem Subnetz zuzuordnen.
+| Aktion                                                        |   NAME                                                                |
+|-------------------------------------------------------------- |   -------------------------------------------                         |
+| Microsoft.Network/ruleTables/read                             |   Netzwerksicherheitsgruppe abrufen                                          |
+| Microsoft.Network/ruleTables/write                            |   Netzwerksicherheitsgruppe erstellen oder aktualisieren                              |
+| Microsoft.Network/ruleTables/delete                           |   Netzwerksicherheitsgruppe löschen                                       |
+| Microsoft.Network/ruleTables/join/action                      |   Netzwerksicherheitsgruppe einem Subnetz oder einer Netzwerkschnittstelle zuordnen |
+| Microsoft.Network/ruleTables/rules/read                       |   Regel abrufen                                                            |
+| Microsoft.Network/ruleTables/rules/write                      |   Regel erstellen oder aktualisieren                                               |
+| Microsoft.Network/ruleTables/rules/delete                     |   Regel löschen                                                         |
+| Microsoft.Network/networkInterfaces/effectiveruleTable/action |   Der Netzwerkschnittstelle zugeordnete Netzwerksicherheitsgruppe abrufen              |
+| Microsoft.Network/networkWatchers/nextHop/action              |   Nächsten Hop von einer VM abrufen                                         |
+
+### <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
+
+| Aktion                                                                     | NAME                                                     |
+| --------------------------------------------------------------             | -------------------------------------------              |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | IP-Konfiguration mit einer Anwendungssicherheitsgruppe verknüpfen|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Sicherheitsregel mit einer Anwendungssicherheitsgruppe verknüpfen    |
+| Microsoft.Network/applicationSecurityGroups/read                           | Anwendungssicherheitsgruppe abrufen                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | Anwendungssicherheitsgruppe erstellen oder aktualisieren           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | Löschen einer Anwendungssicherheitsgruppe                     |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Erstellen einer Netzwerk- oder Anwendungssicherheitsgruppe mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder mithilfe von Azure [Resource Manager-Vorlagen](template-samples.md)
+- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke

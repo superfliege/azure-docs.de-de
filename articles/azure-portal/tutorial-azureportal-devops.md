@@ -1,8 +1,8 @@
 ---
-title: 'Tutorial: DevOps mit dem Azure-Portal | Microsoft Docs'
+title: 'Tutorial: DevOps mit dem Azure-Portal | Microsoft-Dokumentation'
 description: Es wird beschrieben, welche DevOps-Workflows im Azure-Portal enthalten sind.
 services: azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: mlearned
 manager: douge
 editor: mlearned
@@ -11,14 +11,15 @@ ms.service: azure-portal
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: d2c059fe415b743e4b2265d6dda492878307be93
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 7fb3de72e28b19f9ca30968b267bf985ae384275
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164838"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Tutorial: DevOps mit dem Azure-Portal
 Die Azure-Plattform enthält viele flexible DevOps-Workflows. In diesem Tutorial erfahren Sie, wie Sie die Funktionen des Azure-Portals nutzen, um ausgeführte Anwendungen zu entwickeln, zu testen, bereitzustellen, die Problembehandlung durchzuführen, zu überwachen und zu verwalten. In diesem Tutorial geht es vor allem um Folgendes:
@@ -29,12 +30,12 @@ Die Azure-Plattform enthält viele flexible DevOps-Workflows. In diesem Tutorial
 4. Allgemeine Aufgaben der Anwendungsverwaltung
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Erstellen einer Web-App und Aktivieren von Continuous Deployment
-Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/services/app-service/), die Sie für dieses Tutorial verwenden können. Zuerst ermöglichen Sie den Continuous Deployment-Vorgang aus Ihrem Quellcode-Repository in die aktive Azure-Umgebung.
+Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/services/app-service/), die Sie für dieses Tutorial verwenden können. Zuerst ermöglichen Sie den Continuous Deployment-Vorgang aus Ihrem Quellcoderepository in die aktive Azure-Umgebung.
 
-1. Anmelden am Azure-Portal
+1. Anmelden beim Azure-Portal
 2. Wählen Sie **App Services** &gt; **Symbol hinzufügen** aus, und geben Sie einen Namen ein. Wählen Sie dann Ihr Abonnement aus, und erstellen Sie eine neue Ressourcengruppe, die als Container für den Dienst dienen soll.
    
-   Mit Ressourcengruppen können Sie verschiedene Aspekte der Lösung, z.B. Abrechnung, Bereitstellungen und Überwachung, mit [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) als einzelne Gruppe verwalten.
+   Mit Ressourcengruppen können Sie verschiedene Aspekte der Lösung, z.B. Abrechnung, Bereitstellungen und Überwachung, mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) als einzelne Gruppe verwalten.
    
    ![Bild1][image1]
 3. Der App-Dienst wird nach kurzer Zeit erstellt. Sehen Sie sich die verschiedenen Menüoptionen für den Dienst im Portal an.
@@ -42,8 +43,8 @@ Erstellen Sie eine Web-App mit [Azure App Service](https://azure.microsoft.com/s
    ![Bild2][image2]    
 4. Klicken Sie auf die URL. Beachten Sie die vielen unterschiedlichen Optionen für Tools und Repositorys. Sie können auch die gewünschten Sprachen und Frameworks verwenden, z.B. .NET, Java und Ruby.
    
-   ![Bild3][image3]    
-5. Mit dem Azure-Portal ist Continuous Deployment ein einfacher Prozess, der nur einige einfache Schritte umfasst. Wählen Sie im Azure-Portal über das Symbol für den gerade erstellten App-Dienst die Option „Einstellungen“.
+   ![image3][image3]    
+5. Mit dem Azure-Portal ist Continuous Deployment ein einfacher Prozess, der nur einige einfache Schritte umfasst. Wählen Sie im Azure-Portal über das Symbol für den erstellten App-Dienst die Option „Einstellungen“.
    
    ![Bild4][image4]
    
@@ -152,7 +153,7 @@ Nehmen Sie als Nächstes einige Änderungen an der Codebasis vor, und stellen Si
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Überwachen und Durchführen der Problembehandlung für eine App
 Azure verfügt über viele Funktionen für die Überwachung und Problembehandlung laufender Anwendungen.
 
-1. Wählen Sie im Azure-Portal für unsere Web-App die Option „Tools“.
+1. Wählen Sie im Azure-Portal für die Web-App die Option „Tools“.
    
    ![Bild37][image37]
 2. Beachten Sie in der Kategorie „Problembehandlung“ die verschiedenen Auswahlmöglichkeiten zur Verwendung von Tools zum Durchführen der Problembehandlung für potenzielle Probleme mit einer laufenden App. Sie können beispielsweise HTTP-Livedatenverkehr überwachen, die Selbstreparatur aktivieren, Protokolle anzeigen und vieles mehr.
@@ -204,7 +205,7 @@ Azure verfügt über viele Funktionen für die Überwachung und Problembehandlun
 14. Wechseln Sie zurück zum Blatt „Einstellungen“ auf der linken Seite. Klicken Sie auf „Neue Supportanfrage“.
     
     ![Bild53][image53]
-15. Im Blatt auf der rechten Seite können Sie Details zu den Problemen angeben, Kontaktdaten eingeben und sogar Diagnosedaten hochladen. Durch das Azure-Portal wird die Zusammenarbeit mit dem Microsoft Support zu einem reibungslosen Vorgang.
+15. Im Blatt auf der rechten Seite können Sie Details zu den Problemen angeben, Kontaktdaten eingeben und sogar Diagnosedaten hochladen. Durch das Azure-Portal wird die Zusammenarbeit mit dem Microsoft-Support zu einem reibungslosen Vorgang.
     
     ![Bild54][image54]
     
@@ -248,13 +249,13 @@ Beim Verwalten von Anwendungen müssen Sie häufig viele verschiedene Aktivität
 11. Wählen Sie im Blatt auf der rechten Seite die Option „App Service-Authentifizierung“. Beachten Sie die vielen verschiedenen Optionen, die Sie mit gängigen Anbietern konfigurieren können.
     
      ![Bild66][image66]
-12. Wählen Sie den gewünschten Anbieter, und sehen Sie sich die Bereichsoptionen an. Sie können eine App-ID und einen geheimen App-Schlüssel angeben und die Facebook-Authentifizierung für die App schnell aktivieren. Der Azure-Portal ermöglicht die Authentifizierung als fertige Lösung für Apps.
+12. Wählen Sie den gewünschten Anbieter, und sehen Sie sich die Bereichsoptionen an. Sie können eine App-ID und einen geheimen App-Schlüssel angeben und die Facebook-Authentifizierung für die App schnell aktivieren. Das Azure-Portal ermöglicht die Authentifizierung als sofort einsetzbare Lösung für Apps.
     
      ![Bild67][image67]
 13. Wechseln Sie zurück zum Blatt „Einstellungen“, und wählen Sie in der Kategorie „Ressourcenverwaltung“ die Option „Benutzer“.
     
      ![Bild68][image68]
-14. Sehen Sie sich im Blatt auf der rechten Seite die verschiedenen Optionen zum Hinzufügen von Rollen und Benutzern an. Mit dem Azure-Portal können Sie die rollenbasierte Zugriffssteuerung für die Anwendung leicht steuern.
+14. Sehen Sie sich im Blatt auf der rechten Seite die verschiedenen Optionen zum Hinzufügen von Rollen und Benutzern an. Mit dem Azure-Portal können Sie die rollenbasierte Zugriffssteuerung (RBAC) für die Anwendung leicht steuern.
     
      ![Bild69][image69]
 

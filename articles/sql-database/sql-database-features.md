@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bf9069df55352b4d7884e989be741fc42e06bfdf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7e3b084f833b6d84e5c5102555eb586e306e9de8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895570"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server 
 
@@ -51,7 +52,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Eigenständige Benutzer](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | Ja | Ja |
 | [Schlüsselwörter der Sprache zur Ablaufsteuerung](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | Ja | Ja |
 | [Datenbankübergreifende Abfragen](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein – siehe [Elastische Abfragen](sql-database-elastic-query-overview.md) | Ja, plus [elastische Abfragen](sql-database-elastic-query-overview.md) |
-| [Datenbankübergreifende Transaktionen](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein  | Ja |
+| [Datenbankübergreifende Transaktionen](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein  | Ja – siehe [Verknüpfte Server](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#linked-servers) |
 | [Cursor](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | Ja |Ja | 
 | [Datenkomprimierung](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | Ja |Ja |
 | [Datenbank-E-Mails](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | Nein  | Ja |
@@ -69,8 +70,8 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [DML-Anweisungen](https://docs.microsoft.com/sql/t-sql/queries/queries) | Ja | Ja |
 | [DML-Trigger](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | Die meisten (siehe einzelne Anweisungen) |  Ja |
 | [DMVs](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | Die meisten – siehe einzelne DMVs |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
-|[Dynamische Datenmaskierung](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Ja](sql-database-dynamic-data-masking-get-started.md)| Ja |
-| [Pools für elastische Datenbanken](sql-database-elastic-pool.md) | Ja | Eine einzelne verwaltete Instanz kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. |
+|[Dynamische Datenmaskierung](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[Ja](sql-database-dynamic-data-masking-get-started.md)| [Ja](sql-database-dynamic-data-masking-get-started.md) |
+| [Pools für elastische Datenbanken](sql-database-elastic-pool.md) | Ja | Integriert: Eine einzelne verwaltete Instanz kann mehrere Datenbanken aufweisen, die denselben Ressourcenpool gemeinsam nutzen. |
 | [Ereignisbenachrichtigungen](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | Nein (siehe [Warnungen](sql-database-insights-alerts-portal.md)) | Ja |
 | [Ausdrücke](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |Ja | Ja |
 | [Erweiterte Ereignisse](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | Siehe [Erweiterte Ereignisse in der SQL-Datenbank](sql-database-xevent-db-diff-from-svr.md) | Ja – siehe [Erweiterte Ereignisse](sql-database-managed-instance-transact-sql-information.md#extended-events) |
@@ -83,7 +84,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Georeplikation](sql-database-geo-replication-overview.md) | Ja | Nein  |
 | [Graph-Verarbeitung](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ja | Ja |
 | [In-Memory-Optimierung](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ja – [nur Tarife „Premium“ und „Unternehmenskritisch“](sql-database-in-memory.md) | Nein  |
-| [Unterstützung von JSON-Daten](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | Ja | Ja |
+| [Unterstützung von JSON-Daten](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [Ja](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) | [Ja](https://docs.microsoft.com/azure/sql-database/sql-database-json-features) |
 | [Sprachelemente](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | Die meisten (siehe einzelne Elemente) |  Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Verknüpfte Server](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | Nein (siehe [Elastische Abfrage](sql-database-elastic-query-horizontal-partitioning.md)) | Nur SQL Server und SQL-Datenbank |
 | [Protokollversand](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |[Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
@@ -103,7 +104,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Richtlinienbasierte Verwaltung](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | Nein  | Nein  |
 | [Prädikate](https://docs.microsoft.com/sql/t-sql/queries/predicates) | Ja | Ja |
 | [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | Vorschauversion. Siehe [Neuerungen beim Machine Learning](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)  | Nein  |
-| [Ressourcenkontrolle](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nein  | Nein  |
+| [Ressourcenkontrolle](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | Nein  | Ja |
 | [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | Nein  | Ja – siehe [Wiederherstellung](sql-database-managed-instance-transact-sql-information.md#restore-statement) |
 | [Wiederherstellen einer Datenbank aus der Sicherung](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | Nur auf der Grundlage automatisierter Sicherungen (siehe [SQL-Datenbank-Wiederherstellung](sql-database-recovery-using-backups.md)) | Auf der Grundlage automatisierter Sicherungen – siehe [SQL-­Datenbank-Wiederherstellung](sql-database-recovery-using-backups.md) und auf der Grundlage vollständiger Sicherungen – siehe [Sicherung](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Sicherheit auf Zeilenebene](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | Ja | Ja |
@@ -132,7 +133,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Systemtabellen](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | Einige (siehe einzelne Tabellen) | Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Systemkatalogsichten](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | Einige (siehe einzelne Sichten) | Ja – siehe [T-SQL-Unterschiede](sql-database-managed-instance-transact-sql-information.md) |
 | [Temporäre Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | Lokale und datenbankbezogene globale temporäre Tabellen | Lokale und instanzbezogene globale temporäre Tabellen |
-| [Temporäre Tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | Ja | Ja |
+| [Temporäre Tabellen](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [Ja](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) | [Ja](https://docs.microsoft.com/azure/sql-database/sql-database-temporal-tables) |
 |Bedrohungserkennung|  [Ja](sql-database-threat-detection.md)|[Ja](sql-database-managed-instance-threat-detection.md)|
 | [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nein  | Nein  |
 | [Variablen](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ja | Ja |

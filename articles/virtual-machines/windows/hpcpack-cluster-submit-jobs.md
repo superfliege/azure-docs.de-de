@@ -13,13 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
-ms.date: 10/14/2016
+ms.date: 05/14/2018
 ms.author: danlep
-ms.openlocfilehash: 263946c1a1bd792b2f23a55388b73a82ddad0000
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 025ff3dea365ab75af55f107da1fb7331861eb06
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166368"
 ---
 # <a name="submit-hpc-jobs-from-an-on-premises-computer-to-an-hpc-pack-cluster-deployed-in-azure"></a>Übermitteln von HPC-Aufträgen von einem lokalen Computer an einen in Azure bereitgestellten HPC Pack-Cluster
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -29,9 +30,9 @@ Konfigurieren Sie einen lokalen Clientcomputer, um Aufträge an einen [Microsoft
 ![Übermitteln eines Auftrags an einen Cluster in Azure][jobsubmit]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Auf einer Azure-VM bereitgestellter HPC Pack-Hauptknoten:** Es wird empfohlen, automatisierte Tools wie eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) oder ein [Azure PowerShell-Skript](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) zu verwenden, um den Hauptknoten und den Cluster bereitzustellen. Sie benötigen den DNS-Namen des Hauptknotens und die Anmeldeinformationen eines Clusteradministrators, um die Schritte in diesem Artikel auszuführen.
+* **Auf einer Azure-VM bereitgestellter HPC Pack-Hauptknoten:** Es wird empfohlen, automatisierte Tools wie etwa eine [Azure-Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) zu verwenden, um den Hauptknoten und den Cluster bereitzustellen. Sie benötigen den DNS-Namen des Hauptknotens und die Anmeldeinformationen eines Clusteradministrators, um die Schritte in diesem Artikel auszuführen.
 * **Clientcomputer:** Sie benötigen einen Windows- oder Windows Server-Clientcomputer, auf dem HPC Pack-Clienthilfsprogramme ausgeführt werden können (siehe [Systemanforderungen](https://technet.microsoft.com/library/dn535781.aspx)). Wenn Sie nur das HPC Pack-Webportal oder die REST-API zum Übermitteln von Aufträgen verwenden möchten, können Sie einen Clientcomputer Ihrer Wahl nutzen.
-* **HPC Pack-Installationsmedien:** Für die Installation der HPC Pack-Clienthilfsprogramme ist das kostenlose Installationspaket für die neueste Version von HPC Pack (HPC Pack 2012 R2) im [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024)verfügbar. Stellen Sie sicher, dass Sie die gleiche Version von HPC Pack herunterladen, die auf der Hauptknoten-VM installiert ist.
+* **HPC Pack-Installationsmedien:** Für die Installation der HPC Pack-Clienthilfsprogramme ist das kostenlose Installationspaket für die neueste Version von HPC Pack im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360)verfügbar. Stellen Sie sicher, dass Sie die gleiche Version von HPC Pack herunterladen, die auf der Hauptknoten-VM installiert ist.
 
 ## <a name="step-1-install-and-configure-the-web-components-on-the-head-node"></a>Schritt 1: Installieren und Konfigurieren der Webkomponenten auf dem Hauptknoten
 Um für eine REST-Schnittstelle die Übermittlung von Aufträgen an den Cluster per HTTPS zu ermöglichen, müssen Sie sicherstellen, dass die HPC Pack-Webkomponenten auf dem HPC Pack-Hauptknoten konfiguriert sind. Falls noch nicht geschehen, installieren Sie zuerst die Webkomponenten, indem Sie die Installationsdatei „HpcWebComponents.msi“ ausführen. Anschließend konfigurieren Sie die Komponenten, indem Sie das HPC PowerShell-Skript **Set-HPCWebComponents.ps1**ausführen.
@@ -39,7 +40,7 @@ Um für eine REST-Schnittstelle die Übermittlung von Aufträgen an den Cluster 
 Ausführliche Verfahren finden Sie unter [Installieren der Microsoft HPC Pack-Webkomponenten](http://technet.microsoft.com/library/hh314627.aspx).
 
 > [!TIP]
-> Bestimmte Azure-Schnellstartvorlagen für HPC Pack installieren und konfigurieren die Webkomponenten automatisch. Wenn Sie zum Erstellen des Clusters das [HPC Pack-IaaS-Bereitstellungsskript](classic/hpcpack-cluster-powershell-script.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) verwenden, können Sie die Webkomponenten optional als Teil der Bereitstellung installieren und konfigurieren.
+> Bestimmte Azure-Schnellstartvorlagen für HPC Pack-Cluster installieren und konfigurieren die Webkomponenten automatisch.
 > 
 > 
 
@@ -81,7 +82,7 @@ Ausführliche Verfahren finden Sie unter [Installieren der Microsoft HPC Pack-We
     ```
 
 ## <a name="step-2-install-the-hpc-pack-client-utilities-on-an-on-premises-computer"></a>Schritt 2: Installieren der HPC Pack-Clienthilfsprogramme auf einem lokalen Computer
-Wenn Sie die HPC Pack-Clienthilfsprogramme auf Ihrem Computer installieren möchten, laden Sie die HPC Pack-Setupdateien (vollständige Installation) aus dem [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=328024) herunter. Wenn Sie die Installation starten, wählen Sie die Setupoption für die **HPC Pack-Clienthilfsprogramme** aus.
+Wenn Sie die HPC Pack-Clienthilfsprogramme auf Ihrem Computer installieren möchten, laden Sie die HPC Pack-Setupdateien (vollständige Installation) aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=56360) herunter. Wenn Sie die Installation starten, wählen Sie die Setupoption für die **HPC Pack-Clienthilfsprogramme** aus.
 
 Um die HPC Pack-Clienttools zum Übermitteln von Aufträgen an den Hauptknoten verwenden zu können, müssen Sie außerdem ein Zertifikat vom Hauptknoten exportieren und auf dem Clientcomputer installieren. Das Zertifikat muss im CER-Format vorliegen.
 

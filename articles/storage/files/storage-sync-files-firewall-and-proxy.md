@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072265"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen von Azure File Sync
 Azure File Sync verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.

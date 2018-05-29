@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: jingwang
-ms.openlocfilehash: cac7ba6f538a8efbd09b27888bd5f1059c2290bd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2484ed3f1a03fe0cc20fe5b818ff8a9d73804c69
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011184"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +42,7 @@ Der Dateisystemconnector unterstützt insbesondere Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Kopieren von Daten aus einem oder in ein Dateisystem, das nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
+Zum Kopieren von Daten aus einem oder in ein Dateisystem, das nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integration Runtime einrichten. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -65,7 +66,7 @@ Folgende Eigenschaften werden für den mit einem Dateisystem verknüpften Dienst
 
 | Szenario | „host“ in der Definition des verknüpften Diensts | „folderPath“ in der Datasetdefinition |
 |:--- |:--- |:--- |
-| Lokaler Ordner auf dem Computer mit der Integrationslaufzeit: <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\* |In JSON: `D:\\`<br/>Auf der Benutzeroberfläche: `D:\` |In JSON: `.\\` oder `folder\\subfolder`<br>Auf der Benutzeroberfläche: `.\` oder `folder\subfolder` |
+| Lokaler Ordner auf dem Computer mit der Integration Runtime: <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\* |In JSON: `D:\\`<br/>Auf der Benutzeroberfläche: `D:\` |In JSON: `.\\` oder `folder\\subfolder`<br>Auf der Benutzeroberfläche: `.\` oder `folder\subfolder` |
 | Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\\* |In JSON: `\\\\myserver\\share`<br/>Auf der Benutzeroberfläche: `\\myserver\share` |In JSON: `.\\` oder `folder\\subfolder`<br/>Auf der Benutzeroberfläche: `.\` oder `folder\subfolder` |
 
 >[!NOTE]
@@ -103,12 +104,16 @@ Legen Sie zum Kopieren von Daten von einem bzw. in ein Dateisystem die type-Eige
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **FileShare** festgelegt werden. |Ja |
-| folderPath | Pfad zum Ordner. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) . |Ja |
-| fileName | Geben Sie den Namen der Datei in der Eigenschaft **folderPath** an, wenn Sie einen Kopiervorgang in eine bestimmte bzw. aus einer bestimmten Datei durchführen möchten. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist das Dataset auf alle Dateien im Ordner als Quelle und generiert automatisch den Dateinamen.<br/><br/>**Automatisches Generieren von „fileName“ für Senken:** Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: <br/>- `Data_[activity run id]_[GUID].[format].[compression if configured]`. Beispiel: `Data_0a405f8a-93ff-4c6f-b3be-f69616f1df7a_0d143eda-d5b8-44df-82ec-95c50895ff80.txt.gz` <br/>- oder `[Table name].[format].[compression if configured]` für relationale Quellen, wenn die Abfrage nicht angegeben wird. Beispiel: „MySourceTable.orc“. |Nein  |
-| fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. Ist nur anwendbar, wenn „fileName“ nicht angegeben ist. <br/><br/>Zulässige Werte sind `*` (mehrere Zeichen) oder `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileFilter": "*.log"`<br/>- Beispiel 2: `"fileFilter": 2017-09-??.txt"` |Nein  |
+| folderPath | Pfad zum Ordner. Der Platzhalterfilter wird nicht unterstützt. Beispiele finden Sie unter [Beispieldefinitionen für verknüpfte Dienste und Datasets](#sample-linked-service-and-dataset-definitions) . |Ja |
+| fileName | **Name oder Platzhalterfilter** für die Dateien unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, verweist das Dataset auf alle Dateien im Ordner. <br/><br/>Zulässige Platzhalter für Filter sind `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Dateinamen automatisch mit dem folgenden Format: "*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*". Ein Beispiel hierfür ist „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. |Nein  |
 | format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Wenn Dateien mit einem bestimmten Format analysiert oder generiert werden sollen, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**.<br/>Unterstützte Grade sind: **Optimal** und **Schnellste**. |Nein  |
 
+>[!TIP]
+>Um alle Dateien in einem Ordner zu kopieren, geben Sie nur **folderPath** an.<br>Um eine einzelne Datei mit einem angegebenen Namen zu kopieren, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Dateinamen an.<br>Um eine Teilmenge der Dateien in einem Ordner zu kopieren, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Platzhalterfilter an.
+
+>[!NOTE]
+>Wenn Sie die Eigenschaft „fileFilter“ für den Dateifilter verwendet haben, wird sie weiterhin unverändert unterstützt. Es wird aber empfohlen, ab sofort die Filterfunktion zu verwenden, die „fileName“ neu hinzugefügt wurde.
 
 **Beispiel:**
 

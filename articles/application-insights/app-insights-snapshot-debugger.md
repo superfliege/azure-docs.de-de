@@ -3,20 +3,21 @@ title: Azure Application Insights Snapshot-Debugger für .NET-Apps | Microsoft D
 description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahmen in .NET-Produktions-Apps erfasst.
 services: application-insights
 documentationcenter: ''
-author: pharring
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
-ms.author: mbullwin
-ms.openlocfilehash: 0ba58f1384d7c93af30f9b175a5a154811c9a1e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.date: 05/08/2018
+ms.author: mbullwin; pharring
+ms.openlocfilehash: 66339e5f5d2cc7447df0f8faf70d2d9fd45db738
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34159134"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -55,7 +56,7 @@ Die folgenden Umgebungen werden unterstützt:
         <!-- DeveloperMode is a property on the active TelemetryChannel. -->
         <IsEnabledInDeveloperMode>false</IsEnabledInDeveloperMode>
         <!-- How many times we need to see an exception before we ask for snapshots. -->
-        <ThresholdForSnapshotting>5</ThresholdForSnapshotting>
+        <ThresholdForSnapshotting>1</ThresholdForSnapshotting>
         <!-- The maximum number of examples we create for a single problem. -->
         <MaximumSnapshotsRequired>3</MaximumSnapshotsRequired>
         <!-- The maximum number of problems that we can be tracking at any time. -->
@@ -63,7 +64,7 @@ Die folgenden Umgebungen werden unterstützt:
         <!-- How often we reconnect to the stamp. The default value is 15 minutes.-->
         <ReconnectInterval>00:15:00</ReconnectInterval>
         <!-- How often to reset problem counters. -->
-        <ProblemCounterResetInterval>24:00:00</ProblemCounterResetInterval>
+        <ProblemCounterResetInterval>1.00:00:00</ProblemCounterResetInterval>
         <!-- The maximum number of snapshots allowed in ten minutes.The default value is 1. -->
         <SnapshotsPerTenMinutesLimit>1</SnapshotsPerTenMinutesLimit>
         <!-- The maximum number of snapshots allowed per day. -->
@@ -146,12 +147,12 @@ Die folgenden Umgebungen werden unterstützt:
        "InstrumentationKey": "<your instrumentation key>"
      },
      "SnapshotCollectorConfiguration": {
-       "IsEnabledInDeveloperMode": true,
-       "ThresholdForSnapshotting": 5,
+       "IsEnabledInDeveloperMode": false,
+       "ThresholdForSnapshotting": 1,
        "MaximumSnapshotsRequired": 3,
        "MaximumCollectionPlanSize": 50,
        "ReconnectInterval": "00:15:00",
-       "ProblemCounterResetInterval":"24:00:00",
+       "ProblemCounterResetInterval":"1.00:00:00",
        "SnapshotsPerTenMinutesLimit": 1,
        "SnapshotsPerDayLimit": 30,
        "SnapshotInLowPriorityThread": true,
@@ -193,11 +194,12 @@ Besitzer des Azure-Abonnements können Momentaufnahmen überprüfen. Anderen Ben
 
 Weisen Sie hierzu den Benutzern, die Momentaufnahmen untersuchen, die Rolle `Application Insights Snapshot Debugger` zu. Abonnementbesitzer können diese Rolle einzelnen Benutzern oder Gruppen für die Application Insights-Zielressource oder für die dazugehörige Ressourcengruppe oder das dazugehörige Abonnement zuweisen.
 
-1. Öffnen Sie das Blatt „Zugriffssteuerung (IAM)“.
-1. Klicken Sie auf die Schaltfläche „+Hinzufügen“.
-1. Wählen Sie in der Dropdownliste „Rollen“ die Option „Application Insights-Momentaufnahmedebugger“ aus.
+1. Navigieren Sie im Azure-Portal zu der Application Insights-Ressource.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf die Schaltfläche **+Hinzufügen**.
+1. Wählen Sie in der Dropdownliste **Rollen** die Option **Application Insights-Momentaufnahmedebugger** aus.
 1. Suchen Sie nach dem hinzuzufügenden Benutzer, und geben Sie einen Namen für ihn ein.
-1. Klicken Sie auf die Schaltfläche „Speichern“, um den Benutzer der Rolle hinzuzufügen.
+1. Klicken Sie auf die Schaltfläche **Speichern**, um den Benutzer der Rolle hinzuzufügen.
 
 
 > [!IMPORTANT]
@@ -228,7 +230,22 @@ Die heruntergeladene Momentaufnahme enthält alle Symboldateien, die auf Ihrem W
 
 ## <a name="how-snapshots-work"></a>Funktionsweise von Momentaufnahmen
 
-Beim Starten Ihrer Anwendung wird ein separater Uploader-Prozess für die Momentaufnahme erstellt, der Ihre Anwendung auf Momentaufnahmeanforderungen überwacht. Beim Anfordern einer Momentaufnahme wird innerhalb von etwa 10 bis 20 Millisekunden eine Schattenkopie des ausgeführten Prozesses erstellt. Der Schattenprozess wird dann analysiert, und eine Momentaufnahme wird erstellt, während der Hauptprozess weiterhin ausgeführt wird und Datenverkehr für Benutzer verarbeitet. Die Momentaufnahme wird dann mit allen relevanten Symboldateien (PDB-Dateien), die zum Anzeigen der Momentaufnahme erforderlich sind, in Application Insights hochgeladen.
+Der Snapshot Collector wird als [Application Insights-Telemetrieprozessor](app-insights-configuration-with-applicationinsights-config.md#telemetry-processors-aspnet) implementiert. Wenn die Anwendung ausgeführt wird, wird der Snapshot Collector-Telemetrieprozessor der Telemetriepipeline Ihrer Anwendung hinzugefügt.
+Bei jedem Aufruf von [TrackException](app-insights-asp-net-exceptions.md#exceptions) durch Ihre Anwendung berechnet der Snapshot Collector auf der Grundlage der Art der ausgelösten Ausnahme und der auslösenden Methode eine Problem-ID.
+Bei jedem Aufruf von „TrackException“ durch Ihre Anwendung erhöht sich der Zähler für die entsprechende Problem-ID. Wenn der Zähler den Wert `ThresholdForSnapshotting` erreicht, wird die Problem-ID einem Sammlungsplan hinzugefügt.
+
+Der Snapshot Collector abonniert auch das Ereignis [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception), um ausgelöste Ausnahmen zu überwachen. Wenn dieses Ereignis ausgelöst wird, wird die Problem-ID der Ausnahme berechnet und mit den Problem-IDs im Sammlungsplan verglichen.
+Ist eine Entsprechung vorhanden, wird eine Momentaufnahme des ausgeführten Prozesses erstellt. Der Momentaufnahme wird ein eindeutiger Bezeichner zugewiesen, und die Ausnahme wird mit diesem Bezeichner gekennzeichnet. Nach Ausführung des Handlers „FirstChanceException“ wird die ausgelöste Ausnahme ganz normal verarbeitet. Letztendlich erreicht die Ausnahme wieder die Methode „TrackException“ und wird zusammen mit dem Momentaufnahmebezeichner an Application Insights gemeldet.
+
+Der Hauptprozess wird mit minimaler Unterbrechung weiter ausgeführt und stellt weiter Datenverkehr für Benutzer bereit. In der Zwischenzeit wird die Momentaufnahme an den Snapshot Uploader-Prozess übergeben. Der Snapshot Uploader erstellt einen Minidump mit allen relevanten Symboldateien (PDB-Dateien) und lädt ihn in Application Insights hoch.
+
+> [!TIP]
+> - Bei einer Prozessmomentaufnahme handelt es sich um einen angehaltenen Klon des ausgeführten Prozesses.
+> - Die Erstellung der Momentaufnahme dauert 10 bis 20 Millisekunden.
+> - Der Standardwert für `ThresholdForSnapshotting` ist „1“. Das ist gleichzeitig auch der Mindestwert. Ihre App muss die gleiche Ausnahme also **zweimal** auslösen, bevor eine Momentaufnahme erstellt wird.
+> - Legen Sie `IsEnabledInDeveloperMode` auf „true“ fest, wenn Sie beim Debuggen in Visual Studio Momentaufnahmen generieren möchten.
+> - Die Rate der Momentaufnahmenerstellung wird durch die Einstellung `SnapshotsPerTenMinutesLimit` begrenzt. Standardmäßig ist das Limit auf eine einzelne Momentaufnahme pro zehn Minuten festgelegt.
+> - Pro Tag können maximal 50 Momentaufnahmen hochgeladen werden.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
@@ -242,23 +259,43 @@ Für den Momentaufnahmedebugger müssen Symboldateien auf dem Produktionsserver 
 Stellen Sie für Azure Compute und andere Typen sicher, dass die Symboldateien im selben Ordner wie die DLL-Datei der Hauptanwendung (in der Regel `wwwroot/bin`) liegen oder unter dem aktuellen Pfad verfügbar sind.
 
 ### <a name="optimized-builds"></a>Optimierte Builds
-In einigen Fällen können lokale Variablen aufgrund von Optimierungen, die während des Buildprozesses angewendet werden, nicht in Releasebuilds angezeigt werden.
+In einigen Fällen können lokale Variablen aufgrund von Optimierungen, die durch den JIT-Compiler angewendet werden, nicht in Releasebuilds angezeigt werden.
+In Azure App Services kann der Snapshot Collector allerdings Auslösemethoden deoptimieren, die Teil des entsprechenden Sammlungsplans sind.
+
+> [!TIP]
+> Installieren Sie in Ihrer App Service-Instanz die Application Insights-Websiteerweiterung, um Deoptimierungsunterstützung zu erhalten.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Die folgenden Tipps unterstützen bei der Behandlung von Problemen mit dem Momentaufnahmedebugger.
 
+### <a name="use-the-snapshot-health-check"></a>Verwenden der Integritätsprüfung für Momentaufnahmen
+Einige verbreitete Probleme führen dazu, dass „Debugmomentaufnahme öffnen“ nicht angezeigt wird. Beispiele wären etwa die Verwendung eines veralteten Snapshot Collectors, das Erreichen des täglichen Uploadlimits oder ein zeitaufwendiger Uploadvorgang für die Momentaufnahme. Verwenden Sie die Integritätsprüfung für Momentaufnahmen, um verbreitete Probleme zu behandeln.
+
+Der Ausnahmenbereich der End-to-End-Überwachungsansicht enthält einen Link, über den Sie zur Integritätsprüfung für Momentaufnahmen gelangen.
+
+![Aufrufen der Integritätsprüfung für Momentaufnahmen](./media/app-insights-snapshot-debugger/enter-snapshot-health-check.png)
+
+Die interaktive, chatähnliche Oberfläche sucht nach verbreiteten Problemen und unterstützt Sie bei der Behebung.
+
+![Integritätsprüfung](./media/app-insights-snapshot-debugger/healthcheck.png)
+
+Sollte sich das Problem dadurch nicht beheben lassen, lesen Sie die folgenden Schritte zur manuellen Problembehandlung:
+
 ### <a name="verify-the-instrumentation-key"></a>Überprüfen des Instrumentierungsschlüssels
 
-Stellen Sie sicher, dass Sie den richtigen Instrumentierungsschlüssel in der veröffentlichten Anwendung verwenden. In der Regel liest Application Insights den Instrumentierungsschlüssel aus der Datei „ApplicationInsights.config“ aus. Stellen Sie sicher, dass der Wert mit dem Instrumentierungsschlüssel für die im Portal angezeigte Application Insights-Ressource identisch ist.
+Vergewissern Sie sich, dass Sie in Ihrer veröffentlichten Anwendung den richtigen Instrumentierungsschlüssel verwenden. Der Instrumentierungsschlüssel wird in der Regel aus der Datei „ApplicationInsights.config“ gelesen. Vergewissern Sie sich, dass der Wert dem Instrumentierungsschlüssel für die im Portal angezeigte Application Insights-Ressource entspricht.
+
+### <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>Upgraden auf die neueste Version des NuGet-Pakets
+
+Stellen Sie mithilfe des NuGet-Paket-Managers von Visual Studio sicher, dass Sie die neueste Version von „Microsoft.ApplicationInsights.SnapshotCollector“ verwenden. Versionsanmerkungen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/issues/167.
 
 ### <a name="check-the-uploader-logs"></a>Überprüfen der Uploaderprotokolle
 
-Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf dem Datenträger erstellt. Diese Minidumpdatei sowie alle zugehörigen PDB-Dateien werden in einem separaten Uploadervorgang in den Speicher des Application Insights-Momentaufnahmedebuggers hochgeladen. Nachdem die Minidumpdatei erfolgreich hochgeladen wurde, wird sie vom Datenträger gelöscht. Die Protokolldateien für den Uploader-Prozess werden auf dem Datenträger beibehalten. In einer App Service-Umgebung finden Sie diese Protokolle unter `D:\Home\LogFiles`. Verwenden Sie die Verwaltungswebsite von Kudu für App Service, um nach diesen Protokolldateien zu suchen.
+Nachdem eine Momentaufnahme erstellt wurde, wird eine Minidumpdatei (DMP) auf dem Datenträger erstellt. Diese Minidumpdatei wird durch einen separaten Uploaderprozess erstellt und zusammen mit allen dazugehörigen PDB-Dateien in den Speicher des Application Insights-Momentaufnahmedebuggers hochgeladen. Nachdem die Minidumpdatei erfolgreich hochgeladen wurde, wird sie vom Datenträger gelöscht. Die Protokolldateien für den Uploaderprozess bleiben auf dem Datenträger erhalten. In einer App Service-Umgebung finden Sie diese Protokolle unter `D:\Home\LogFiles`. Verwenden Sie die Verwaltungswebsite von Kudu für App Service, um nach diesen Protokolldateien zu suchen.
 
 1. Öffnen Sie im Azure-Portal Ihre App Service-Anwendung.
-
-2. Wählen Sie das Blatt **Erweiterte Tools** aus, oder suchen Sie nach **Kudu**.
+2. Klicken Sie auf **Erweiterte Tools**, oder suchen Sie nach **Kudu**.
 3. Klicken Sie auf **Start**.
 4. Wählen Sie im Dropdown-Listenfeld **Debugging-Konsole** die Option **CMD** aus.
 5. Klicken Sie auf **LogFiles**.
@@ -292,7 +329,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 ```
 
 > [!NOTE]
-> Das obige Beispiel stammt aus Version 1.2.0 des Microsoft.ApplicationInsights.SnapshotCollector-NuGet-Pakets. In früheren Versionen hatte der Uploader-Prozess die Bezeichnung `MinidumpUploader.exe`, und das Protokoll enthielt weniger Details.
+> Das obige Beispiel stammt aus Version 1.2.0 des NuGet-Pakets „Microsoft.ApplicationInsights.SnapshotCollector“. In früheren Versionen hatte der Uploader-Prozess die Bezeichnung `MinidumpUploader.exe`, und das Protokoll enthielt weniger Details.
 
 Im vorherigen Beispiel lautet der Instrumentierungsschlüssel `c12a605e73c44346a984e00000000000`. Dieser Wert sollte dem Instrumentierungsschlüssel für Ihre Anwendung entsprechen.
 Die Minidumpdatei ist einer Momentaufnahme mit der ID `139e411a23934dc0b9ea08a626db16c5` zugeordnet. Sie können diese ID später verwenden, um nach der zugehörigen Ausnahmetelemetrie in Application Insights Analytics zu suchen.
@@ -316,7 +353,7 @@ Bei Anwendungen, die _nicht_ in App Service gehostet werden, befinden sich die U
 Für Rollen in Cloud Services ist der standardmäßige temporäre Ordner möglicherweise zu klein, um die MiniDump-Dateien zu speichern, was dazu führt, dass Momentaufnahmen verloren gehen.
 Der erforderliche Speicherplatz hängt vom gesamten Arbeitssatz Ihrer Anwendung und der Anzahl gleichzeitiger Momentaufnahmen ab.
 Der Arbeitssatz einer 32-Bit-ASP.NET-Webrolle liegt in der Regel zwischen 200 MB und 500 MB.
-Sie sollten mindestens zwei gleichzeitige Momentaufnahmen zulassen.
+Lassen Sie mindestens zwei gleichzeitige Momentaufnahmen zu.
 Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, sollten Sie sicherstellen, dass ein Speicherplatz von mindestens 2 GB zum Speichern von Momentaufnahmen zur Verfügung steht.
 Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dedizierten lokalen Ressource für Momentaufnahmen zu konfigurieren.
 
@@ -366,7 +403,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dediz
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Suchen nach Ausnahmen mit Momentaufnahmen über die Application Insights-Suche
 
-Wenn eine Momentaufnahme erstellt wird, wird die auslösende Ausnahme mit einer Momentaufnahme-ID gekennzeichnet. Wenn Application Insights die Ausnahmetelemetrie gemeldet wird, ist diese Momentaufnahme-ID als benutzerdefinierte Eigenschaft enthalten. In Application Insights können Sie auf dem Blatt „Suchen“ nach sämtlicher Telemetrie mit der benutzerdefinierten Eigenschaft `ai.snapshot.id` suchen.
+Wenn eine Momentaufnahme erstellt wird, wird die auslösende Ausnahme mit einer Momentaufnahme-ID gekennzeichnet. Diese Momentaufnahme-ID ist als benutzerdefinierte Eigenschaft enthalten, wenn die Ausnahmetelemetrie an Application Insights gemeldet wird. In Application Insights können Sie über die **Suche** nach sämtlicher Telemetrie mit der benutzerdefinierten Eigenschaft `ai.snapshot.id` suchen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Application Insights-Ressource.
 2. Klicken Sie auf **Suchen**.
@@ -383,6 +420,10 @@ Um über die Uploaderprotokolle nach einer bestimmten Momentaufnahme-ID zu suche
 2. Passen Sie mithilfe des Zeitstempels aus dem Uploaderprotokoll den Filter „Zeitbereich“ an, um den jeweiligen Zeitbereich bei der Suche zu berücksichtigen.
 
 Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde Application Insights die Ausnahmetelemetrie nicht gemeldet. Diese Situation kann vorkommen, wenn Ihre Anwendung abgestürzt ist, nachdem die Momentaufnahme erfasst wurde, jedoch bevor die Ausnahmetelemetrie gemeldet wurde. Überprüfen Sie in diesem Fall die App Service-Protokolle unter `Diagnose and solve problems`, um festzustellen, ob unerwartete Neustarts oder Ausnahmefehler vorliegen.
+
+### <a name="edit-network-proxy-or-firewall-rules"></a>Bearbeiten von Netzwerkproxy- oder Firewallregeln
+
+Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie ggf. die Regeln bearbeiten, damit Ihre Anwendung mit dem Momentaufnahmedebugger-Dienst kommunizieren kann. Eine Liste mit IP-Adressen und Ports, die vom Momentaufnahmedebugger verwendet werden, finden Sie [hier](app-insights-ip-addresses.md#snapshot-debugger).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

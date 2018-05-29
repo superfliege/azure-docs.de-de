@@ -1,5 +1,5 @@
 ---
-title: Problembehandelung bei Azure Data Lake Analytics-Aufträgen mithilfe des Azure-Portals | Microsoft Docs
+title: Überwachen von Aufträgen in Azure Data Lake Analytics über das Azure-Portal | Microsoft-Dokumentation
 description: 'Erfahren Sie, wie die Problembehandlung von Data Lake Analytics-Aufträgen im Azure-Portal erfolgt. '
 services: data-lake-analytics
 documentationcenter: ''
@@ -14,42 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f6168997c449be5354bd223c516d4f929a1bf894
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 14b1f4ec9dff78e4b5d2480755a4b1f2579ec135
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33884778"
 ---
-# <a name="troubleshoot-azure-data-lake-analytics-jobs-using-azure-portal"></a>Behandeln von Problemen mit Azure Data Lake Analytics-Aufträgen über das Azure-Portal
-Hier erfahren Sie, wie Sie Probleme mit Data Lake Analytics-Aufträgen über das Azure-Portal behandeln.
-
-In diesem Tutorial simulieren Sie das Problem einer fehlenden Quelldatei und behandeln es anschließend über das Azure-Portal.
-
-## <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
-
-Übermitteln Sie den folgenden U-SQL-Auftrag:
-
-```
-@searchlog =
-   EXTRACT UserId          int,
-           Start           DateTime,
-           Region          string,
-           Query           string,
-           Duration        int?,
-           Urls            string,
-           ClickedUrls     string
-   FROM "/Samples/Data/SearchLog.tsv1"
-   USING Extractors.Tsv();
-
-OUTPUT @searchlog   
-   TO "/output/SearchLog-from-adls.csv"
-   USING Outputters.Csv();
-```
-    
-Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sollte aber **/Samples/Data/SearchLog.tsv** heißen.
-
-
-## <a name="troubleshoot-the-job"></a>Beheben des Problems mit dem Auftrag
+# <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Überwachen von Aufträgen in Azure Data Lake Analytics über das Azure-Portal
 
 **So zeigen Sie alle Aufträge an**
 
@@ -81,5 +53,4 @@ Die im Skript definierte Quelldatei heißt **/Samples/Data/SearchLog.tsv1**, sol
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Erste Schritte mit Azure Data Lake Analytics und U-SQL mithilfe von Visual Studio](data-lake-analytics-u-sql-get-started.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-manage-use-portal.md)

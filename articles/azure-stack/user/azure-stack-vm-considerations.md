@@ -12,19 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 05/10/2018
 ms.author: brenduns
-ms.openlocfilehash: 50c0f293ac669ade4e45a5f45b0adf9a7c4b6c36
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 83a0b8ff040425ac30cff96936f2f639fd1b5643
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076161"
 ---
-# <a name="considerations-for-virtual-machines-in-azure-stack"></a>Aspekte von virtuellen Computern in Azure Stack
+# <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Überlegungen zur Verwendung von virtuellen Computern in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare Computingressourcen, die von Azure Stack angeboten werden. Bei der Nutzung von virtuellen Computern sollte Ihnen klar sein, dass es Unterschiede zwischen den verfügbaren Features in Azure und Azure Stack gibt. Dieser Artikel enthält eine Übersicht über die eindeutigen Aspekte für virtuelle Computer und die entsprechenden Features in Azure Stack. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
+Virtuelle Azure Stack-Computer bieten bedarfsgesteuerte, skalierbare Computingressourcen. Machen Sie sich vor der Bereitstellung virtueller Computer (VMs) mit den Unterschieden zwischen den Features virtueller Computer in Azure Stack und Microsoft Azure vertraut. In diesem Artikel werden diese Unterschiede beschrieben und wichtige Überlegungen zur Planung von Bereitstellungen virtueller Computer erörtert. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Cheat Sheet: Unterschiede bei virtuellen Computern
 
@@ -41,10 +42,12 @@ Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare 
 |VM-Skalierungsgruppen|Automatische Skalierung wird unterstützt|Automatische Skalierung wird nicht unterstützt<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu.
 
 ## <a name="virtual-machine-sizes"></a>Größen virtueller Computer
-Azure erzwingt Ressourcengrenzwerte auf verschiedene Arten, um einen übermäßigen Ressourcenverbrauch auf dem lokalen Server und auf der Dienstebene zu vermeiden. Ohne Einschränkung der Ressourcennutzung durch die Mandanten wird die Leistung eines Mandanten unter Umständen durch den übermäßigen Ressourcenverbrauch eines benachbarten Mandanten (Noisy Neighbor) beeinträchtigt. 
-- Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen. Die Obergrenzen in Azure Stack entsprechen den Obergrenzen in Azure.  
-- Für Speicherressourcen implementiert Azure Stack Speicher-IOPS-Grenzwerte, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden. 
-- Für virtuelle Computer mit mehreren angefügten Datenträgern ist der maximale Durchsatz für die einzelnen Datenträger 500 IOPS für HHDs und 2.300 IOPS für SSDs.
+
+Azure Stack erzwingt Ressourcengrenzwerte, um einen übermäßigen Ressourcenverbrauch (auf dem lokalen Server und auf Dienstebene) zu vermeiden. Durch diese Grenzwerte wird ein besseres Benutzererlebnis im Zusammenhang mit Mandanten sichergestellt, da die Auswirkungen des Ressourcenverbrauchs durch andere Mandanten verringert werden.
+
+- Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen. Die Obergrenzen in Azure Stack sind mit denen in Azure identisch.
+- Für Speicherressourcen implementiert Azure Stack Speicher-IOPS-Grenzwerte, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden.
+- Bei VMs mit mehreren angefügten Datenträgern beträgt der maximale Durchsatz für die einzelnen Datenträger 500 IOPS für HHDs und 2300 IOPS für SSDs.
 
 Die folgende Tabelle enthält die in Azure Stack unterstützten virtuellen Computer sowie ihre Konfiguration:
 
@@ -61,7 +64,7 @@ Die folgende Tabelle enthält die in Azure Stack unterstützten virtuellen Compu
 |Arbeitsspeicheroptimiert|Dv2-Serie     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Arbeitsspeicheroptimiert|DSv2-Serie -  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Die VM-Größen und ihre zugeordneten Ressourcenmengen sind für Azure Stack und Azure konsistent. Diese Konsistenz umfasst beispielsweise die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung der gleichen VM-Größe in Azure Stack richtet sich aber nach den zugrunde liegenden Merkmalen der jeweiligen Azure Stack-Umgebung.
+Die VM-Größen und entsprechenden Ressourcenmengen sind bei Azure Stack und Azure konsistent. Dies umfasst die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung von VMs mit der gleichen Größe richtet sich aber nach den zugrunde liegenden Eigenheiten der jeweiligen Azure Stack-Umgebung.
 
 ## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
 
@@ -92,7 +95,17 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
   where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
 ```
+
 Die Liste mit den unterstützten Ressourcentypen und API-Versionen kann variieren, wenn der Cloudbetreiber Ihre Azure Stack-Umgebung auf eine neuere Version aktualisiert.
+
+## <a name="windows-activation"></a>Aktivierung von Windows
+
+Für die Nutzung von Windows-Produkten gelten die Produktnutzungsrechte und Microsoft-Lizenzbedingungen. Bei Azure Stack werden virtuelle Windows Server-Computer (VMs) über die [automatische VM-Aktivierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) aktiviert.
+
+- Beim Azure Stack-Host wird Windows durch AVMA-Schlüssel für Windows Server 2016 aktiviert. Alle VMs, auf denen Windows Server 2012 oder höher ausgeführt wird, werden automatisch aktiviert.
+- VMs, auf denen Windows Server 2008 R2 ausgeführt wird, werden nicht automatisch aktiviert und müssen über die [MAK-Aktivierung](https://technet.microsoft.com/library/ff793438.aspx) aktiviert werden.
+
+Bei Microsoft Azure werden Windows-VMs über die KMS-Aktivierung aktiviert. Wenn bei der Migration einer VM von Azure Stack nach Azure Probleme mit der Aktivierung auftreten sollten, lesen Sie [Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Weitere Informationen finden Sie im Blogbeitrag des Azure-Supportteams [Behandlung von Windows-Aktivierungsfehlern bei Azure-VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

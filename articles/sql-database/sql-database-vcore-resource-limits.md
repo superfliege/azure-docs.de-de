@@ -7,13 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 204702eee1cf502ac873e0c1f5e3fd257ecce33c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fc32ba4858e7be901d2cd4d773491247e9e0e672
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942495"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Einschränkungen des auf virtuellen Kernen basierenden Einkaufsmodells für Azure SQL-Datenbank (Vorschau)
 
@@ -25,48 +26,95 @@ ms.lasthandoff: 04/28/2018
 Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken auf jeder Dienstebene und Leistungsstufe. Sie können mit [Azure-Portal](sql-database-single-database-resources.md#manage-single-database-resources-using-the-azure-portal), [Transact-SQL](sql-database-single-database-resources.md#manage-single-database-resources-using-transact-sql), [PowerShell](sql-database-single-database-resources.md#manage-single-database-resources-using-powershell), [Azure CLI](sql-database-single-database-resources.md#manage-single-database-resources-using-the-azure-cli) oder [REST-API](sql-database-single-database-resources.md#manage-single-database-resources-using-the-rest-api) Dienstebene, Leistungsstufe und Speichermenge für eine einzelne Datenbank festlegen.
 
 ### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
-|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|Hardwaregeneration|4|4|4|4|4|
-|V-Kerne|1|2|4|8|16|
-|Arbeitsspeicher (GB)|7|14|28|56|112|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|
-|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Maximale Datengröße (GB)|1024|1024|1536|3072|4096|
-|Maximale Protokollgröße|307|307|461|922|1229|
-|tempdb-Größe (Datenbank)|32|64|128|256|384|
-|Ziel-IOPS|320|640|1280|2.560|5120|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|
-|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
-|Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
+|:--- | --: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|4|4|4|4|4|4|
+|V-Kerne|1|2|4|8|16|24|
+|Arbeitsspeicher (GB)|7|14|28|56|112|168|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|
+|Maximale Protokollgröße|307|307|461|922|1229|1229|
+|tempdb-Größe (Datenbank)|32|64|128|256|384|384|
+|Ziel-IOPS (64 KB)|500|1000|2000|4000|7.000|7.000|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|000
+|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+|||
+
+#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48| GP_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
+|Hardwaregeneration|5|5|5|5|5|5|5|
+|V-Kerne|2|4|8|16|24|32|48|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
+|Maximale Protokollgröße|307|307|461|614|1229|1229|1229|1229|
+|tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
+|Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4800|8.000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
 ### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
-|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|Hardwaregeneration|4|4|4|4|4|
-|V-Kerne|1|2|4|8|16|
-|Arbeitsspeicher (GB)|7|14|28|56|112|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|
-|Speichertyp|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|
-|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße|307|307|307|307|307|
-|tempdb-Größe (Datenbank)|32|64|128|256|384|
-|Ziel-IOPS|5.000|10000|20000|40.000|80.000|
-|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|
-|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
-|Anzahl von Replikaten|3|3|3|3|3|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|4|4|4|4|4|4|
+|V-Kerne|1|2|4|8|16|24|
+|Arbeitsspeicher (GB)|7|14|28|56|112|168|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|36|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale Protokollgröße|307|307|307|307|307|307|
+|tempdb-Größe (Datenbank)|32|64|128|256|384|384|
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|80.000|120000|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|3|3|3|3|3|3|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+|||
+
+#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|5|5|5|5|5|5|5|5|
+|V-Kerne|2|4|8|16|24|32|48|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|68,104|131,64|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
+|Maximale Protokollgröße|307|307|307|307|614|1229|1229|1229|
+|tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|120000|200.000
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4800|8.000|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Anzahl von Replikaten|1|1|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
 ## <a name="single-database-change-storage-size"></a>Einzeldatenbank: Ändern der Speichergröße
@@ -101,51 +149,103 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 > Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen den Grenzwerten einzelner Datenbanken außerhalb von Pools, die sich auf der gleichen Leistungsstufe befinden. Auf eine GP_Gen4_1-Datenbank können z.B. max. 200 Worker gleichzeitig zugreifen. Entsprechend können auch maximal 200 Worker auf eine Datenbank in einem GP_Gen4_1-Pool zugreifen. Beachten Sie, dass die Gesamtanzahl gleichzeitiger Worker in einem GP_Gen4_1-Pool 210 beträgt.
 
 ### <a name="general-purpose-service-tier"></a>Universelle Dienstebene
-|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|Hardwaregeneration|4|4|4|4|4|
-|V-Kerne|1|2|4|8|16|
-|Arbeitsspeicher (GB)|7|14|28|56|112|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|
-|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
-|Maximale Datengröße (GB)|512|756|1536|2048|3.584|
-|Maximale Protokollgröße|154|227|461|614|1075|
-|tempdb-Größe (Datenbank)|32|64|128|256|384|
-|Ziel-IOPS|320|640|1280|2.560|5120|
-|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|
-|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
-|Maximale Pooldichte|100|200|500|500|500|
-|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
-|Anzahl von Replikaten|1|1|1|1|1|
-|Multi-AZ|N/V|N/V|N/V|N/V|N/V|
-|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+|Leistungsstufe|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|4|4|4|4|4|4|
+|V-Kerne|1|2|4|8|16|24|
+|Arbeitsspeicher (GB)|7|14|28|56|112|168|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|Maximale Datengröße (GB)|512|756|1536|2048|3.584|4096|
+|Maximale Protokollgröße|154|227|461|614|1075|1229|
+|tempdb-Größe (Datenbank)|32|64|128|256|384|384|
+|Ziel-IOPS (64 KB)|500|1000|2000|4000|7.000|7.000|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|5.040|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Maximale Pooldichte|100|200|500|500|500|500|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Anzahl von Replikaten|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+|||
+
+#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|5|5|5|5|5|5|5|5|
+|V-Kerne|2|4|8|16|24|32|48|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|Maximale Datengröße (GB)|512|756|1536|2048|3072|4096|4096|4096|
+|Maximale Protokollgröße|154|227|461|614|922|1229|1229|1229|
+|tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
+|Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|2.520|3360|5.040|8.400
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maximale Pooldichte|100|200|500|500|500|500|500|500|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Anzahl von Replikaten|1|1|1|1|1|1|1|1|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
 ### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
-|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|
-|:--- | --: |--: |--: |--: |--: |
-|Hardwaregeneration|4|4|4|4|4|
-|V-Kerne|1|2|4|8|16|
-|Arbeitsspeicher (GB)|7|14|28|56|112|
-|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|
-|Speichertyp|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|Angefügter SSD-Datenträger|
-|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße|307|307|307|461|614|
-|tempdb-Größe (Datenbank)|32|64|128|256|384|
-|Ziel-IOPS|320|640|1280|2.560|5120|
-|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
-|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|
-|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|
-|Maximale Pooldichte|N/V|50|100|100|100|
-|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|
-|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|
-|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+#### <a name="generation-4-compute-platform"></a>Computeplattform der 4. Generation
+|Leistungsstufe|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|4|4|4|4|4|4|
+|V-Kerne|1|2|4|8|16|24|
+|Arbeitsspeicher (GB)|7|14|28|56|112|168|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|36|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
+|Maximale Protokollgröße|307|307|307|307|307|307|
+|tempdb-Größe (Datenbank)|32|64|128|256|384|384|
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|80.000|120000|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|3360|5.040|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
+|Maximale Pooldichte|N/V|50|100|100|100|100|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
+
+#### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
+|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|:--- | --: |--: |--: |--: |--: |--: |--: |--: |
+|Hardwaregeneration|5|5|5|5|5|5|5|5|
+|V-Kerne|2|4|8|16|24|48|64|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|68,104|131,64|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
+|Maximale Protokollgröße|307|307|307|307|614|1229|1229|1229|
+|tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|120000|200.000
+|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|2.520|3360|5.040|8.400|
+|Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
+|Maximale Pooldichte|N/V|50|100|100|100|100|100|100|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+|||
+
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Der SQL-Datenbank-Dienst bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
 ### <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Datenbanken in einem Pool

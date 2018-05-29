@@ -10,11 +10,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 18afebefaee9117244767e0a00e293a297bbf9af
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 375142b0e55c741e6ab914e969751833f989d2fb
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161072"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL-Datenbank – Datenermittlung und -klassifizierung
 Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
@@ -22,6 +23,9 @@ Das Ermitteln und Klassifizieren Ihrer sensiblen Daten (Geschäfts-/Finanz-/Gesu
 * Unterstützen der Einhaltung von Datenschutzstandards und behördlichen Vorschriften wie GDPR
 * Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 * Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
+
+> [!NOTE]
+> Dieses Dokument bezieht sich nur auf Azure SQL-Datenbank. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Übersicht
 Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten – nicht nur der Datenbank:

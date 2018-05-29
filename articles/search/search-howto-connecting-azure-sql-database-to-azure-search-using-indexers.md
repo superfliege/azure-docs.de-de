@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 02b4e8cb4963a5c12b528630e8e7906d6c5307fe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778340"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
 
@@ -61,7 +62,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 1. Erstellen Sie die Datenquelle:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2016-09-01
+    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -80,7 +81,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 3. Erstellen Sie den Indexer, indem Sie ihm einen Namen geben und einen Verweis auf die Datenquelle und den Zielindex hinzufügen:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 
@@ -93,7 +94,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 
 Ein auf diese Weise erstellter Indexer verfügt über keinen Zeitplan. Er wird automatisch einmal ausgeführt, wenn er erstellt wird. Sie können ihn jederzeit mithilfe der Anforderung **run indexer** erneut ausführen:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2016-09-01
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
     api-key: admin-key
 
 Sie können einige Aspekte des Indexerverhaltens anpassen, z.B. die Batchgröße, und wie viele Dokumente übersprungen werden können, bevor bei einer Indexerausführung ein Fehler auftritt. Weitere Informationen finden Sie unter [Create Indexer API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (API zum Erstellen eines Indexers).
@@ -102,7 +103,7 @@ Möglicherweise müssen Sie Azure Services erlauben, eine Verbindung mit der Dat
 
 Verwenden Sie zum Überwachen des Indexerstatus und Ausführungsverlaufs (Anzahl der indizierten Elemente, Fehler usw.) die Anforderung **indexer status** :
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2016-09-01
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
     api-key: admin-key
 
 Die Antwort sollte etwa wie folgt aussehen:
@@ -144,7 +145,7 @@ Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](h
 ## <a name="run-indexers-on-a-schedule"></a>Ausführen von Indexern nach einem Zeitplan
 Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2016-09-01
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
     Content-Type: application/json
     api-key: admin-key
 

@@ -2,48 +2,52 @@
 title: Hilfethemen zum App-Registrierungsportal | Microsoft Docs
 description: Eine Beschreibung der verschiedenen Funktionen im App-Registrierungsportal von Microsoft.
 services: active-directory
-documentationcenter: 
-author: lnalepa
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f0507c28-9464-4d3e-bd53-de9053fd5278
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2016
-ms.author: lenalepa
+ms.date: 04/18/2018
+ms.author: celested
+ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 3340df3fcc2456a355e523bfcf09978a16966036
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9d38f6e6d6b9fa47b1cd1497820f7ff887954ad5
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156186"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
-Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features im App-Registrierungsportal von Microsoft: [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).
+Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features im App-Registrierungsportal von Microsoft: [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
 ## <a name="my-applications"></a>Meine Anwendungen
-Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v2.0-Endpunkt registriert sind.  Diese Anwendungen können Benutzer sowohl über persönliche Konten vom Microsoft-Konto aus als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory aus anmelden.  Weitere Informationen zum Azure AD v2.0-Endpunkt finden Sie in unserer [v2.0-Übersicht](active-directory-appmodel-v2-overview.md).  Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
+Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v2.0-Endpunkt registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Azure AD v2.0-Endpunkt finden Sie in der [v2.0-Übersicht](active-directory-appmodel-v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
 
 ## <a name="live-sdk-applications"></a>Live SDK-Anwendungen
-Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwendung mit dem Microsoft-Konto registriert sind.  Sie können mit Azure Active Directory in keiner Weise verwendet werden.  Hier finden Sie alle Anwendungen, die zuvor beim MSA-Entwicklerportal unter `https://account.live.com/developers/applications`registriert wurden.  Alle Funktionen, die Sie zuvor unter `https://account.live.com/developers/applications` ausgeführt haben, können jetzt in diesem neuen Portal unter `https://apps.dev.microsoft.com` ausgeführt werden.  Wenn Sie weitere Fragen zu Ihren Microsoft-Kontoanwendungen haben, setzen Sie sich mit uns in Verbindung.
+Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwendung mit dem Microsoft-Konto registriert sind. Sie können nicht mit Azure Active Directory verwendet werden. Hier finden Sie alle Anwendungen, die zuvor beim MSA-Entwicklerportal unter `https://account.live.com/developers/applications` registriert wurden. Alle Funktionen, die Sie zuvor unter `https://account.live.com/developers/applications` ausgeführt haben, können jetzt in diesem neuen Portal unter `https://apps.dev.microsoft.com` ausgeführt werden. Wenn Sie weitere Fragen zu Ihren Microsoft-Kontoanwendungen haben, setzen Sie sich mit uns in Verbindung.
 
 ## <a name="application-secrets"></a>Geheime Schlüssel für Anwendungen
-Geheime Schlüssel für Anwendungen sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](http://tools.ietf.org/html/rfc6749#section-2.3) bei Azure AD durchführen kann.  In OAuth und OpenID Connect werden geheime Schlüssel für Anwendungen gemeinhin als `client_secret` bezeichnet.  Im v2.0-Protokoll muss jede Anwendung, die ein Sicherheitstoken an einem adressierbaren Webspeicherort (nach `https` -Schema) empfängt, einen geheimen Schlüssel für Anwendungen verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Azure AD zu identifizieren.  Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines geheimen Schlüssels für eine Anwendung zur Clientauthentifizierung untersagt, um das Speichern geheimer Schlüssel in einer unsicheren Umgebung zu verhindern.
+Geheime Schlüssel für Anwendungen sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](http://tools.ietf.org/html/rfc6749#section-2.3) bei Azure AD durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die ein Sicherheitstoken an einem adressierbaren Webspeicherort (nach `https` -Schema) empfängt, einen geheimen Schlüssel für Anwendungen verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Azure AD zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.
 
-Jede Anwendung kann immer nur zwei gültige geheime Schlüssel für eine Anwendung enthalten.  Durch das Verwalten von zwei Schlüsseln haben Sie die Möglichkeit, in der gesamten Umgebung Ihrer Anwendung regelmäßige Schlüsselrollover durchzuführen.  Nachdem Sie Ihre Anwendung vollständig zu einem neuen geheimen Schlüssel migriert haben, können Sie den alten geheimen Schlüssel löschen und einen neuen bereitstellen.
+Jede App kann immer nur zwei gültige Anwendungsgeheimnisse enthalten. Durch das Verwalten von zwei Geheimnissen haben Sie die Möglichkeit, in der gesamten Umgebung Ihrer Anwendung regelmäßige Schlüsselrollover durchzuführen. Nachdem Sie Ihre Anwendung vollständig zu einem neuen Geheimnis migriert haben, können Sie das alte Geheimnis löschen und ein neues bereitstellen.
 
-Zurzeit sind nur zwei Arten von geheimen Schlüsseln für Anwendungen im App-Registrierungsportal zulässig.  Wenn Sie **Neues Kennwort generieren** auswählen, wird ein gemeinsamer geheimer Schlüssel im entsprechenden Datenspeicher generiert und gespeichert, den Sie in Ihrer Anwendung verwenden können.  Wenn Sie **Neues Schlüsselpaar generieren** wählen, wird ein neues Paar aus öffentlichem und privatem Schlüssel erstellt, das heruntergeladen und für die Clientauthentifizierung bei Azure AD verwendet werden kann.
+Zurzeit sind nur zwei Arten von Anwendungsgeheimnissen im App-Registrierungsportal zulässig. Wenn Sie **Neues Kennwort generieren** auswählen, wird ein gemeinsames Geheimnis im entsprechenden Datenspeicher generiert und gespeichert, das Sie in Ihrer Anwendung verwenden können. Wenn Sie **Neues Schlüsselpaar generieren** auswählen, wird ein neues Paar aus öffentlichem und privatem Schlüssel erstellt, das heruntergeladen und für die Clientauthentifizierung bei Azure AD verwendet werden kann. Durch die Auswahl von **Öffentlichen Schlüssel hochladen** können Sie ein eigenes Paar aus öffentlichem und privatem Schlüssel verwenden.
+Sie müssen ein Zertifikat hochladen, das einen öffentlichen Schlüssel enthält.
 
 ## <a name="profile"></a>Profil
-Im Profilabschnitt im App-Registrierungsportal können Sie die Anmeldeseite für Ihre Anwendung anpassen.  Zurzeit können Sie auf der Anmeldeseite das Anwendungslogo, die URL mit den Vertragsbedingungen und die Datenschutzerklärung ändern.  Das Logo muss ein transparentes Bild im Format 48 x 48 oder 50 x 50 Pixel in einer GIF-, PNG- oder JPEG-Datei von höchstens 15 KB sein.  Ändern Sie die Werte nach Belieben, und sehen Sie sich das Ergebnis auf der Anmeldeseite an.
+Im Profilabschnitt des App-Registrierungsportals können Sie die Anmeldeseite für Ihre Anwendung anpassen. Zurzeit können Sie auf der Anmeldeseite das Anwendungslogo, die URL zu den Nutzungsbedingungen und die URL zur Datenschutzerklärung ändern. Das Logo muss ein transparentes Bild im Format 48 x 48 oder 50 x 50 Pixel in einer GIF-, PNG- oder JPEG-Datei von höchstens 15 KB sein. Ändern Sie die Werte nach Belieben, und sehen Sie sich das Ergebnis auf der Anmeldeseite an.
 
 ## <a name="live-sdk-support"></a>Live SDK-Unterstützung
-Wenn Sie „Live SDK-Unterstützung“ aktivieren, werden alle von Ihnen erstellten geheimen Schlüssel für Anwendungen sowohl im Azure AD- als auch im Microsoft-Konto-Datenspeicher bereitgestellt.  Dadurch kann Ihre Anwendung direkt in den Microsoft-Kontodienst (login.live.com) integriert werden.  Wenn Sie eine App direkt über Microsoft-Konto (und nicht über den Azure AD-v2.0-Endpunkt) erstellen möchten, sollten Sie sicherstellen, dass die Live SDK-Unterstützung aktiviert ist.
+Wenn Sie „Live SDK-Unterstützung“ aktivieren, werden alle von Ihnen erstellten geheimen Schlüssel für Anwendungen sowohl im Azure AD- als auch im Microsoft-Konto-Datenspeicher bereitgestellt. Dadurch kann Ihre Anwendung direkt in den Microsoft-Kontodienst (login.live.com) integriert werden. Wenn Sie eine App direkt über das Microsoft-Konto (und nicht über den Azure AD v2.0-Endpunkt) erstellen möchten, sollten Sie sicherstellen, dass die Live SDK-Unterstützung aktiviert ist.
 
-Wenn Sie die Live SDK-Unterstützung deaktivieren, wird der geheime Schlüssel der Anwendung nur in den Azure AD-Datenspeicher geschrieben.  Der Azure AD-Datenspeicher umfasst Vorschriften auf Unternehmensebene, die das Einhalten bestimmter Standards wie z. B. FISMA ermöglichen.  Wenn Sie die Live SDK-Unterstützung aktivieren, kann Ihre Anwendung eventuell keine Kompatibilität mit einigen dieser Standards erzielen.
+Wenn Sie die Live SDK-Unterstützung deaktivieren, wird das Anwendungsgeheimnis nur in den Azure AD-Datenspeicher geschrieben. Der Azure AD-Datenspeicher umfasst Vorschriften auf Unternehmensebene, die das Einhalten bestimmter Standards wie z. B. FISMA ermöglichen. Wenn Sie die Live SDK-Unterstützung aktivieren, kann Ihre Anwendung eventuell keine Kompatibilität mit einigen dieser Standards erzielen.
 
 Wenn Sie ausschließlich den v2.0-Endpunkt von Azure AD verwenden möchten, können Sie die Live SDK-Unterstützung problemlos deaktivieren.
 

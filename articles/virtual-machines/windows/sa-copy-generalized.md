@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3737ea08e593ae1018489633e23e80e1099296ae
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b416acd9a2a3b03502b7eca11eade9dbd56f3afe
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072048"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Erstellen nicht verwalteter VM-Images aus virtuellen Azure-Computern
 
@@ -78,6 +79,11 @@ Sie können auch einen virtuellen Linux-Computer unter Verwendung von `sudo waag
     ```
 
 ## <a name="deallocate-the-vm-and-set-the-state-to-generalized"></a>Aufheben der VM-Zuordnung und Festlegen des Status auf „Generalisiert“
+
+> [!IMPORTANT] 
+> Für einen als generalisiert markierten virtuellen Computer können keine Tags hinzugefügt, bearbeitet oder entfernt werden. Wenn Sie dem virtuellen Computer ein Tag hinzufügen möchten, muss dieser Schritt ausgeführt werden, bevor der Computer als generalisiert markiert wird.
+> 
+
 1. Heben Sie die Zuordnung der VM-Ressourcen auf.
    
     ```powershell

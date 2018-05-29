@@ -6,84 +6,50 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 7DFEFEBE-D6B7-4BE0-ADC1-1C01FB7E81A6
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 5/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 6fbd82c3d49a4d64523bf0e10b67ce3aabe96de2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: hectorl
+ms.openlocfilehash: 4faa6930c37f9d491a3efa4b34519dbb13761a9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074931"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Aktivieren der Sicherung für Azure Stack mit PowerShell
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Aktivieren Sie den Dienst für die Infrastruktursicherung mit Windows PowerShell, sodass Azure Stack bei einem Fehler wiederhergestellt werden kann. Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedienerverwaltung die Sicherung zu aktivieren und zu starten sowie Sicherungsinformationen abzurufen.
+Aktivieren Sie den Infrastructure Backup-Dienst mit Windows PowerShell, um regelmäßige Sicherungen von Folgendem zu erstellen:
+ - Interner Identitätsdienst und Stammzertifikat
+ - Benutzertarife, -angebote und -abonnements
+ - KeyVault-Geheimnisse
+ - RBAC-Rollen und -Richtlinien für Benutzer
 
-## <a name="download-azure-stack-tools"></a>Herunterladen der Azure Stack-Tools
+Sie können auf die PowerShell-Cmdlets zugreifen, um über den Endpunkt der Bedienerverwaltung die Sicherung zu aktivieren und zu starten sowie Sicherungsinformationen abzurufen.
 
-PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein. Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart).
+## <a name="prepare-powershell-environment"></a>Vorbereiten der PowerShell-Umgebung
 
-##  <a name="load-the-connect-and-infrastructure-modules"></a>Laden der Connect- und Infrastructure-Module
+Anweisungen zum Konfigurieren der PowerShell-Umgebung finden Sie unter [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md).
 
-Öffnen Sie Windows PowerShell mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
-
-   ```powershell
-    cd C:\tools\AzureStack-Tools-master\Connect
-    Import-Module .\AzureStack.Connect.psm1
-    
-    cd C:\tools\AzureStack-Tools-master\Infrastructure
-    Import-Module .\AzureStack.Infra.psm1 
-    
-   ```
-
-##  <a name="setup-rm-environment-and-log-into-the-operator-management-endpoint"></a>Einrichten der RM-Umgebung und Anmelden beim Endpunkt der Bedienerverwaltung
-
-Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript durch Hinzufügen der Variablen für Ihre Umgebung. Führen Sie das aktualisierte Skript aus, um die RM-Umgebung einzurichten und sich beim Endpunkt der Bedienerverwaltung anzumelden.
-
-| Variable    | BESCHREIBUNG |
-|---          |---          |
-| $TenantName | Azure Active Directory-Mandantenname |
-| Operator account name        | Name Ihres Azure Stack-Bedienerkontos |
-| Azure Resource Manager Endpoint | URL für Azure Resource Manager |
-
-   ```powershell
-   # Specify Azure Active Directory tenant name
-    $TenantName = "contoso.onmicrosoft.com"
-    
-    # Set the module repository and the execution policy
-    Set-PSRepository `
-      -Name "PSGallery" `
-      -InstallationPolicy Trusted
-    
-    Set-ExecutionPolicy RemoteSigned `
-      -force
-    
-    # Configure the Azure Stack operator’s PowerShell environment.
-    Add-AzureRMEnvironment `
-      -Name "AzureStackAdmin" `
-      -ArmEndpoint "https://adminmanagement.seattle.contoso.com"
-    
-    Set-AzureRmEnvironment `
-      -Name "AzureStackAdmin" `
-      -GraphAudience "https://graph.windows.net/"
-    
-    $TenantID = Get-AzsDirectoryTenantId `
-      -AADTenantName $TenantName `
-      -EnvironmentName AzureStackAdmin
-    
-    # Sign-in to the operator's console.
-    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin" -TenantId $TenantID 
-    
-   ```
 ## <a name="generate-a-new-encryption-key"></a>Generieren eines neuen Verschlüsselungsschlüssels
 
+PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein.
+ - Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart).
+ - Weitere Informationen finden Sie unter [Herunterladen von Azure Stack-Tools von GitHub](azure-stack-powershell-download.md).
+
+Öffnen Sie Windows PowerShell mit erhöhten Rechten, und führen Sie die folgenden Befehle aus:
+   
+   ```powershell
+    cd C:\tools\AzureStack-Tools-master\Infrastructure
+    Import-Module .\AzureStack.Infra.psm1 
+   ```
+   
 Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:
 
    ```powershell
@@ -118,7 +84,7 @@ Bearbeiten Sie in der gleichen PowerShell-Sitzung das folgende PowerShell-Skript
 Führen Sie in der gleichen PowerShell-Sitzung die folgenden Befehle aus:
 
    ```powershell
-   Get-AzsBackupLocation | Select-Object -Property Path, UserName, Password | ConvertTo-Json 
+   Get-AzsBackupLocation | Select-Object -ExpandProperty externalStoreDefault | Select-Object -Property Path, UserName, Password | ConvertTo-Json
    ```
 
 Das Ergebnis sollte der folgenden JSON-Ausgabe ähneln:
@@ -136,4 +102,4 @@ Das Ergebnis sollte der folgenden JSON-Ausgabe ähneln:
 ## <a name="next-steps"></a>Nächste Schritte
 
  - Informationen zum Ausführen einer Sicherung finden Sie unter [Sichern von Azure Stack](azure-stack-backup-back-up-azure-stack.md ).  
-- Informationen zum Überprüfen, ob eine Sicherung durchgeführt wurde, finden Sie unter [Bestätigen der erfolgreichen Sicherung im Verwaltungsportal](azure-stack-backup-back-up-azure-stack.md ).
+ - Informationen zum Überprüfen, ob eine Sicherung durchgeführt wurde, finden Sie unter [Bestätigen der erfolgreichen Sicherung im Verwaltungsportal](azure-stack-backup-back-up-azure-stack.md ).

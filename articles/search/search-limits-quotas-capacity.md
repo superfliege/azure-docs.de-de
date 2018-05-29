@@ -7,13 +7,14 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 59b6efd8459f675bc44891d7b04251260fdd38e9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072588"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
@@ -87,12 +88,13 @@ Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Da
 
 ## <a name="indexer-limits"></a>Indexergrenzwerte
 
-Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht.
+Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen, Qualifikationsgruppen und Indexer erhöht.
 
 | Ressource | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximale Anzahl von Indexern |3 |5 oder 15|50 |200 |200 |N/V |
 | Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |N/V |
+| Maximale Qualifikationsgruppen |3 |5 oder 15 |50 |200 |200 |N/V |
 | Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |N/V |
 | Maximale Ausführungszeit | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |N/V  |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |N/V  |

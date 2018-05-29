@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34057790"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.

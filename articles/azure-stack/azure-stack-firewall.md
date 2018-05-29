@@ -1,25 +1,26 @@
 ---
-title: "Azure Stack-Firewallplanung für integrierte Azure Stack-Systeme | Microsoft-Dokumentation"
-description: "Informationen zu Überlegungen der Azure Stack-Firewall für mit Azure verbundene Bereitstellungen von Azure Stack-Systemen mit mehreren Knoten."
+title: Azure Stack-Firewallplanung für integrierte Azure Stack-Systeme | Microsoft-Dokumentation
+description: Informationen zu Überlegungen der Azure Stack-Firewall für mit Azure verbundene Bereitstellungen von Azure Stack-Systemen mit mehreren Knoten.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 05/09/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3d8a02cc540251d77b61cf0e5b7e2aa8292f1f5f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936177"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack-Firewallintegration
 Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Firewalls können zwar bei verteilten Denial-of-Service-Angriffen (DDoS), bei der Angriffserkennung und bei der Inhaltsuntersuchung hilfreich sein, andererseits können sie sich aber auch als Engpass für den Durchsatz von Azure-Speicherdiensten wie Blobs, Tabellen und Warteschlangen erweisen.
@@ -44,7 +45,7 @@ Die Verwendung der NAT für öffentliche VIPs hat folgende Nachteile:
 Derzeit wird empfohlen, die SSL-Entschlüsselung bei allem Azure Stack-Datenverkehr zu deaktivieren. Wenn sie in zukünftigen Updates unterstützt wird, werden Anleitungen zum Aktivieren der SSL-Entschlüsselung für Azure Stack bereitgestellt.
 
 ## <a name="edge-firewall-scenario"></a>Szenario mit Edgefirewall
-Azure Stack wird in einer Edgebereitstellung direkt hinter dem Edgerouter oder der Firewall bereitgestellt. In diesen Szenarien kann die Firewall dem Border-Gerät übergeordnet sein oder selbst als Border-Vorrichtung fungieren, sofern diese Equal Cost Multi Path (ECMP) mit BGP oder statischem Routing unterstützt.
+Azure Stack wird in einer Edgebereitstellung direkt hinter dem Edgerouter oder der Firewall bereitgestellt. In diesen Szenarien kann die Firewall dem Border-Gerät übergeordnet sein (Szenario 1) und sowohl Aktiv/Aktiv- als auch Aktiv/Passiv-Firewallkonfigurationen unterstützen oder als Border-Gerät fungieren (Szenario 2) und nur eine Aktiv/Aktiv-Firewallkonfiguration unterstützen, wobei ECMP (Equal Cost Multi Path) mit BGP oder statischem Routing für Failover erforderlich ist.
 
 In der Regel werden in einer Edgebereitstellung zum Zeitpunkt der Bereitstellung über das externe Netzwerk routingfähige IP-Adressen für den öffentlichen VIP-Pool angegeben. In einem Edgeszenario wird aus Sicherheitsgründen davon abgeraten, öffentliche routingfähige IP-Adressen in anderen Netzwerken zu verwenden. Dadurch erhalten Benutzer eine vollständig selbstgesteuerte Cloudumgebung – genau wie bei einer öffentlichen Cloud (z.B. Azure).  
 

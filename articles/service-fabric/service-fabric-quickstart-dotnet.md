@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 276c6bf1a476e5c74c5e75e4906f451154becf31
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207205"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Schnellstart: Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -109,6 +110,7 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
     - Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
 
 4. Drücken Sie **F5**, um fortzufahren.
+    - Gewähren Sie bei entsprechender Aufforderung durch den Browser der Gruppe „ServiceFabricAllowedUsers“ Lese- und Ausführungsberechtigungen für den Debugmodus.
     - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
     
     ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
@@ -175,13 +177,15 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
 Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden Sie Service Fabric Explorer.
 
-Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 
-Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nicht vertrauenswürdig ist. Dies ist auf das selbstsignierte Zertifikat zurückzuführen. Sie können die Warnung ignorieren und den Vorgang fortsetzen. Wenn Sie vom Browser dazu aufgefordert werden, wählen Sie das installierte Zertifikat aus, um eine Verbindung herzustellen. 
+Unter Umständen erscheint eine Browserwarnung mit dem Hinweis, dass der Ort nicht vertrauenswürdig ist. Dies ist auf das selbstsignierte Zertifikat zurückzuführen. Sie können die Warnung ignorieren und den Vorgang fortsetzen.
+1. Wenn Sie vom Browser dazu aufgefordert werden, wählen Sie das installierte Zertifikat aus, um eine Verbindung herzustellen. Das in der Liste ausgewählte Partyclusterzertifikat muss dem Partycluster entsprechen, auf den Sie zugreifen möchten. Beispiel: win243uja6w62r.westus.cloudapp.azure.com.
+2. Gewähren Sie bei entsprechender Aufforderung durch den Browser für diese Sitzung Zugriff auf den privaten Schlüssel „CryptoAPI“.
 
 Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren:
 
-1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
+1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster, z.B. `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 2. Erweitern Sie **Anwendungen**->**VotingType**->**fabric:/Voting** in der Strukturansicht. Klicken Sie auf das Auslassungszeichen (drei Punkte) neben dem Knoten **fabric:/Voting/VotingWeb** in der Strukturansicht, und wählen Sie **Scale Service** (Dienst skalieren).
 
     ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/29/2017
+ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 8473c262f98e77708f01d17419e935979a533307
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f633206c03a9639a375535ed7c8f5c84aa334ebf
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory-Integration mit Citrix ShareFile
 
@@ -48,7 +49,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Citrix ShareFile aus dem Katalog
 2. Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
@@ -108,22 +109,41 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Citrix ShareFile](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_url.png)
     
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant-name>.sharefile.com/saml/login`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenant-name>.sharefile.com/saml/login`.
 
-    > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Citrix ShareFile](https://www.citrix.co.in/products/sharefile/support.html), um diesen Wert zu erhalten. 
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL nach folgendem Muster ein:
+
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com`|
+    | `https://<tenant-name>.sharefile.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.com/saml/info`|
+    | `https://<tenant-name>.sharefile1.eu/saml/info`|
+    | `https://<tenant-name>.sharefile.eu/saml/info`|
+    | |
+    
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
+    | |
+    |---|
+    | `https://<tenant-name>.sharefile.com/saml/acs`|
+    | `https://<tenant-name>.sharefile.eu/saml/<URL path>`|
+    | `https://<tenant-name>.sharefile.com/saml/<URL path>`|
+    | |
+
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Clientsupportteam von Citrix ShareFile](https://www.citrix.co.in/products/sharefile/support.html), um diese Werte zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_certificate.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-sharefile-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-sharefile-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Citrix ShareFile-Konfiguration** auf **Citrix ShareFile konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Citrix ShareFile-Konfiguration](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png) 
+    ![Citrix ShareFile-Konfiguration](./media/active-directory-saas-sharefile-tutorial/tutorial_sharefile_configure.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der **Citrix ShareFile** -Unternehmenswebsite als Administrator an.
 
@@ -148,10 +168,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     e. Fügen Sie in das Textfeld **Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
 11. Klicken Sie im Citrix ShareFile-Verwaltungsportal auf **Save** .
-
-> [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -183,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-citrix-sharefile-test-user"></a>Erstellen eines Citrix ShareFile-Testbenutzers
 
@@ -254,8 +270,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_01.png
@@ -269,4 +283,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sharefile-tutorial/tutorial_general_203.png
-

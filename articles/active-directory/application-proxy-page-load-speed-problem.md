@@ -2,10 +2,10 @@
 title: Zu lange Ladezeiten bei einer Anwendungsproxyanwendung | Microsoft-Dokumentation
 description: Behandlung von Leistungsproblemen beim Laden von Seiten mit dem Azure AD-Anwendungsproxy
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,27 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d02c29fa6239cb36cb5fb95da4d325cca57952aa
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 34422cb42768ddbc2997da3eec3d35c11e272855
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158505"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Zu lange Ladezeiten bei einer Anwendungsproxyanwendung
 
-Dieser Artikel enthält Informationen zu möglicherweise auftretenden Leistungsproblemen beim Laden einer Azure AD-Anwendungsproxyanwendung und Schritte zur Behebung der Probleme.
+Dieser Artikel enthält Informationen zu möglicherweise auftretenden Leistungsproblemen beim Laden einer Azure AD-Anwendungsproxyanwendung. Zudem wird erläutert, welche Schritte Sie zur Behebung dieses Problems unternehmen können.
 
 ## <a name="overview"></a>Übersicht
-Wenn Ihre Anwendungen funktionieren, beim Laden jedoch lange Wartezeiten auftreten, können Sie möglicherweise einige kleine Anpassungen an der Netzwerktopologie vornehmen, um die Geschwindigkeit zu erhöhen. Eine Bewertung der unterschiedlichen Topologien finden Sie unter [Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys](https://docs.microsoft.com/azure/active-directory/application-proxy-network-topology-considerations).
+Ihre Anwendungen funktionieren zwar möglicherweise, es können jedoch lange Latenzen auftreten. Eventuell können Sie die Geschwindigkeit durch Optimierung der Netzwerktopologie erhöhen. Eine Bewertung der unterschiedlichen Topologien finden Sie unter [Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys](manage-apps/application-proxy-network-topology.md).
 
-Wenn diese Hinweise nicht hilfreich sind, liegen derzeit leider keine weiteren Empfehlungen zum Optimieren der Leistung vor. Wenn der Anwendungsproxydienst sich über mehrere Rechenzentren erstreckt, die möglicherweise größere räumliche Nähe zu Ihnen aufweisen, kann sich die Latenz direkt verbessern. Eine vollständige Liste der Azure-Rechenzentren finden Sie auf der [Latenztestseite](http://www.azurespeed.com/Azure/Latency). 
+Neben der Netzwerktopologie gibt es derzeit keine weiteren Empfehlungen zur Leistungsoptimierung. Mit zunehmender Erweiterung des Anwendungsproxydiensts kommt ein Rechenzentrum, das physisch näher gelegen ist, möglicherweise eher infrage. Denn die Nähe kann im Hinblick auf Latenzen Abhilfe leisten. Eine Liste der Azure-Rechenzentren finden Sie auf der [Latenztestseite](http://www.azurespeed.com/Azure/Latency). 
 
 Rechenzentren mit Webanwendungsproxy-Dienst können Sie mit dem [Connectorports-Testtool](https://aadap-portcheck.connectorporttest.msappproxy.net/) suchen. 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Feedback zu Anwendungsproxy-Rechenzentrumsstandorten 
-Möglicherweise gibt es Azure-Rechenzentren, die noch keinen Anwendungsproxy haben, aber zu einer starken Leistungssteigerung bei der Latenz führen können. Senden Sie uns unter <aadapfeedback@microsoft.com> eine E-Mail zu Rechenzentrumsstandorten, sodass wir Ihr Feedback zur Planung von Erweiterungen nutzen können.
+Möglicherweise gibt es Azure-Rechenzentren, die noch keinen Anwendungsproxy haben, aber zu einer starken Leistungssteigerung bei der Latenz führen können. Senden Sie den Standort des Rechenzentrums an aadapfeedback@microsoft.com. Microsoft verwendet Ihr Feedback für Erweiterungspläne.
 
-Wir arbeiten an einigen zusätzlichen Funktionen, mit deren Hilfe die Latenz für Mandanten verbessert wird, bei denen derzeit lange Wartezeiten auftreten. Wir werden die Dokumentation freigeben, sobald sie verfügbar ist.
+Microsoft arbeitet an zusätzlichen Funktionen zur Verbesserung der Latenzen. Sobald diese Optimierungsfunktionen verfügbar sind, wird die Dokumentation entsprechend aktualisiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwenden von vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md)
+[Verwenden von vorhandenen lokalen Proxyservern](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)

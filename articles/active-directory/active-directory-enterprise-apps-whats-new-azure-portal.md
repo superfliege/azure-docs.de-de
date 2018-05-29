@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350864"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory 
 
@@ -34,11 +35,11 @@ Hier sind einige Verbesserungen für Azure AD im [Azure-Portal](https://portal.a
 
 ## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Verbesserungen im Azure Active Directory-Anwendungskatalog
 
-Fügen Sie Ihre bevorzugten Anwendungen hinzu, egal ob diese aus dem [Anwendungskatalog](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery) stammen, benutzerdefinierte Anwendungen sind, die Sie in die Cloud erweitern, oder neue Anwendungen, die Sie entwickeln.  Sie können diese neue Benutzeroberfläche aufrufen, indem Sie in der Übersicht mit den **Unternehmensanwendungen** oder auf den Blättern von **Alle Anwendungen** auf **Hinzufügen** klicken.
+Fügen Sie Ihre bevorzugten Anwendungen hinzu, egal ob diese aus dem [Anwendungskatalog](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery) stammen, benutzerdefinierte Anwendungen sind, die Sie in die Cloud erweitern, oder neue Anwendungen, die Sie entwickeln.  Sie können diese neue Benutzeroberfläche aufrufen, indem Sie unter **Unternehmensanwendungen** oder **Alle Anwendungen** auf **Hinzufügen** klicken.
  
   ![Hinzufügen einer Anwendung](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-Im Katalog sind alle Anwendungen aufgeführt, für die die Benutzerbereitstellung unterstützt wird.  Sie können die unterschiedlichen Kategorien durchsuchen, um Informationen zu den für Sie interessanten Anwendungen zu erhalten, oder Sie können die Suchfunktion nutzen, um schnell die Anwendungen zu ermitteln, die Sie integrieren möchten.
+Im Katalog sind alle Anwendungen aufgeführt, für die die Benutzerbereitstellung unterstützt wird. Sie können die unterschiedlichen Kategorien durchsuchen, um Informationen zu den für Sie interessanten Anwendungen zu erhalten, oder Sie können die Suchfunktion nutzen, um schnell die Anwendungen zu ermitteln, die Sie integrieren möchten.
 
   ![Anwendungskatalog](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
@@ -51,7 +52,7 @@ Zusätzlich zum möglichen Hinzufügen von vorab integrierten Anwendungen aus de
  
 **Gehen Sie wie folgt vor, um mit dem Hinzufügen einer eigenen Anwendung zu beginnen**:
 
-1. Klicken Sie oben im Anwendungskatalog auf die Option **add your own link** (Eigenen Link hinzufügen). 
+1. Klicken Sie oben im Anwendungskatalog auf den Link **oder fügen Sie eine eigene Anwendung hinzu**. 
 2. Zwei Optionen werden angezeigt: **deploy an existing application** (Vorhandene Anwendung bereitstellen) und **develop a new application** (Neue Anwendung entwickeln). Lesen Sie weiter, um zu erfahren, wodurch sich die beiden Optionen unterscheiden und wie Sie sie verwenden.
 
 ### <a name="deploying-existing-applications"></a>Bereitstellen von vorhandenen Anwendungen
@@ -64,7 +65,7 @@ Zusätzlich zum möglichen Hinzufügen von vorab integrierten Anwendungen aus de
 ### <a name="developing-new-applications"></a>Entwickeln neuer Anwendungen
 
 1. Beim Entwickeln einer neuen Anwendung haben Sie eine einfache Möglichkeit zum Aufrufen der Anwendungsregistrierung direkt aus dem Katalog:
-2. Klicken Sie im Anwendungskatalog auf die Option **add your own** (Eigene hinzufügen), und wählen Sie **develop an existing application** (Vorhandene Anwendung entwickeln). Es wird ein direkter Link zur Oberfläche zum Hinzufügen von Anwendungen angezeigt.
+2. Klicken Sie im Anwendungskatalog auf die Option **oder fügen Sie eine eigene Anwendung hinzu.**, und wählen Sie **Vorhandene Anwendung entwickeln**. Es wird ein Direktlink zur Oberfläche zum Hinzufügen von Anwendungen angezeigt.
 
   ![Hinzufügen einer neu entwickelten Anwendung mit wenigen Klicks](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
@@ -75,25 +76,25 @@ Zusätzlich zum möglichen Hinzufügen von vorab integrierten Anwendungen aus de
   ![Verwalten des Zugriffs auf Ihre neue Anwendung unter „Unternehmensanwendungen“](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
-## <a name="quick-start-get-going-with-your-new-application-right-away"></a>Schnellstart: Beginnen mit der Verwendung der neuen Anwendung 
+## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Schnellstart: Direkter Einstieg in die Verwendung der neuen Anwendung 
 
 Nach dem Hinzufügen einer Anwendung – ob vorab integriert oder eigene App – können Sie die neue Schnellstart-Benutzeroberfläche nutzen, um sich schnell mit der neuen Umgebung für Anwendungen vertraut zu machen. Wenn Sie die einzelnen Optionen systematisch durchlaufen, werden Sie durch die Benutzeroberfläche geführt, und es wird gezeigt, wie Sie so schnell wie möglich mit einer Pilotversion Ihrer neuen Anwendung starten können. 
  
-  ![Neue Schnellstart-Benutzeroberfläche für Anwendungen](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
+  ![Neue Schnellstartbenutzeroberfläche für Anwendungen](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
 
- Sie können diese neue Schnellstart-Benutzeroberfläche jederzeit und für jede Anwendung aufrufen, indem Sie im linken Navigationsmenü der Anwendung auf **Schnellstart** klicken.
+ Sie können diese neue Schnellstartbenutzeroberfläche jederzeit und für jede Anwendung aufrufen, indem Sie im linken Navigationsmenü der Anwendung auf **Schnellstart** klicken.
 
 
 ## <a name="updated-application-proxy-configuration"></a>Aktualisierte Anwendungsproxykonfiguration
 Angenommen, eine der von Ihnen hinzugefügten neuen Anwendungen wird in Ihrer lokalen Umgebung ausgeführt, und Sie möchten sie in Azure AD integrieren.  Eine nützliche neue Funktion der Konfigurationsoberfläche für neue Anwendungen im neuen Azure AD-Portal ist: Indem der Anmeldemodus der Anwendung von der Anwendungsproxykonfiguration getrennt wird, können Sie Kennwort-SSO- oder Verbundanwendungen, die in Ihrem Unternehmensnetzwerk ausgeführt werden, jetzt leicht direkt in der Cloud verfügbar machen, ohne mehrere Instanzen der Anwendung erstellen zu müssen.
 
-Außerdem können Sie jetzt alle neuen hinzugefügten Anwendungen direkt über das neue Portal für die Verwendung mit dem Azure AD-Anwendungsproxy konfigurieren. Dies gilt auch für Anwendungen, die die native Windows-Authentifizierung unterstützen.
+Außerdem können Sie alle neuen hinzugefügten Anwendungen direkt über das neue Portal für die Verwendung mit dem Azure AD-Anwendungsproxy konfigurieren. Dies gilt auch für Anwendungen, die die native Windows-Authentifizierung unterstützen.
 
   ![Konfigurieren einer Anwendung für die Verwendung der Anmeldeoption „Integrierte Windows-Authentifizierung“](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
 
 Gehen Sie wie folgt vor, um eine Anwendung mit nativer Windows-Authentifizierung mit dem Anwendungsproxy zu konfigurieren:
-1. Klicken Sie auf das Navigationselement für das einmalige Anmelden, und wählen Sie auf dem Blatt mit den Einstellungen für einmaliges Anmelden die Option **Integrierte Windows-Authentifizierung**. Konfigurieren Sie die Einstellungen dann gemäß Ihren Anforderungen.
+1. Klicken Sie auf das Navigationselement für das einmalige Anmelden, und wählen Sie unter den Einstellungen für einmaliges Anmelden die Option **Integrierte Windows-Authentifizierung**. Konfigurieren Sie die Einstellungen dann gemäß Ihren Anforderungen.
 2. Zusätzlich zur Unterstützung dieser neuen Authentifizierungsmodi können Sie jetzt auch Zertifikate aus benutzerdefinierten Domänen hochladen, um Anwendungen zu unterstützen, die auf sicheren Endpunkten in Ihrer Organisation ausgeführt werden.  
  
    ![Hochladen eines Zertifikats für die Verwendung mit dem Anwendungsproxy](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
@@ -102,28 +103,28 @@ Gehen Sie wie folgt vor, um eine Anwendung mit nativer Windows-Authentifizierung
 
 ## <a name="advanced-federated-single-sign-on-configuration"></a>Erweiterte Konfiguration der einmaligen Verbundanmeldung
 
-Für Benutzer, die derzeit Verbundanwendungen nutzen, enthält das Blatt für die Konfiguration des SAML-basierten einmaligen Anmeldens viele neue Features. Beispielsweise können Sie die vorhandenen Benutzerattribute, die als Ansprüche in SAML-Token ausgestellt werden, jetzt vollständig anpassen, hinzufügen, entfernen und zuordnen.
+Für Benutzer, die derzeit Verbundanwendungen nutzen, enthält die Konfiguration des SAML-basierten einmaligen Anmeldens viele neue Features. Beispielsweise können Sie die vorhandenen Benutzerattribute, die als Ansprüche in SAML-Token ausgestellt werden, jetzt vollständig anpassen, hinzufügen, entfernen und zuordnen.
  
   ![Anpassen der SAML-Token-Benutzerattribute, die an eine Verbundanwendung übergeben werden](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
 
 Gehen Sie wie folgt vor, um auf die neue Konfigurationsoberfläche für die einmalige Verbundanmeldung zuzugreifen:
-1. Öffnen Sie über das linke Navigationsmenü das Blatt **Einmaliges Anmelden** für eine Verbundanwendung, und stellen Sie sicher, dass der Modus *SAML-basierte Anmeldung* aktiviert ist. 
+1. Öffnen Sie über das linke Navigationsmenü **Einmaliges Anmelden** für eine Verbundanwendung, und stellen Sie sicher, dass der Modus *SAML-basierte Anmeldung* aktiviert ist. 
 2. Aktivieren Sie dann unter der Überschrift **Benutzerattribute** das Kontrollkästchen, um alle Attribute zu ändern, die im an die Anwendung übergebenen SAML-Token enthalten sind.
 
-Außerdem können Sie Zertifikate, die für die einmalige Verbundanmeldung verwendet werden, erstellen, verwalten und ein Rollover dafür durchführen. Sie können auch ändern, wer benachrichtigt wird, wenn das Zertifikat in Kürze abläuft. Diese neuen Optionen werden auf demselben Blatt „Einmaliges Anmelden“ unter der Überschrift **Zertifikate** angezeigt.
+Außerdem können Sie Zertifikate, die für die einmalige Verbundanmeldung verwendet werden, erstellen, verwalten und ein Rollover dafür durchführen. Sie können auch ändern, wer benachrichtigt wird, wenn das Zertifikat in Kürze abläuft. Diese neuen Optionen werden im selben Bereich „Einmaliges Anmelden“ unter der Überschrift **Zertifikate** angezeigt.
  
   ![Erstellen eines neuen Zertifikats und Anpassen der E-Mail zur Benachrichtigung über den Ablauf und der Optionen für die Signieroptionen](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
-### <a name="relay-state-paramenter"></a>Relayzustandparameter
-Schließlich haben wir die unterstützten SAML-URL-Parameter um den **Relayzustandparameter** erweitert. Auf dieser Seite landen Ihre Benutzer in einer Verbundanwendung, nachdem der Anmeldevorgang abgeschlossen ist. Die Konfiguration dieser Einstellung ist sehr nützlich, wenn Sie Ihre Benutzer an einen bestimmten Ort innerhalb der Anwendung leiten möchten, damit sie schnell mit der Nutzung beginnen können.
+### <a name="relay-state-parameter"></a>Relayzustandsparameter
+Schließlich haben wir die unterstützten SAML-URL-Parameter um den **Relayzustandparameter** erweitert. Auf dieser Seite landen Ihre Benutzer in einer Verbundanwendung, nachdem der Anmeldevorgang abgeschlossen ist. Die Konfiguration dieser Einstellung ist nützlich, wenn Sie Ihre Benutzer an einen bestimmten Ort innerhalb der Anwendung leiten möchten, damit sie schnell mit der Nutzung beginnen können.
 
   ![Festlegen des SAML-Relayzustandparameters](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
 **Gehen Sie wie folgt vor, um den Relayzustandparameter festzulegen**:
 
-1. Aktivieren Sie auf dem Blatt für die Konfiguration des einmaligen Anmeldens unter der Überschrift **Domain and URLs** (Domäne und URLs) das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen**. 
-2. Es wird eine Gruppe von neuen URL-Eingabefeldern angezeigt, über die Sie diese und andere SAML-URL-Einstellungen festlegen können.
+1. Aktivieren Sie im Bereich für die Konfiguration des einmaligen Anmeldens unter der Überschrift **Domäne und URLs** das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen**. 
+2. Es wird eine Gruppe von neuen URL-Eingabefeldern angezeigt, über die Sie diesen Parameter und andere SAML-URL-Einstellungen festlegen können.
 
 ## <a name="bring-your-own-password-sso-applications"></a>Verwenden eigener Kennwort-SSO-Anwendungen
 
@@ -133,7 +134,8 @@ Uns ist bewusst, dass nicht jede Anwendung standardmäßig den Verbund unterstü
 
 **Gehen Sie wie folgt vor, um das Feature „Bring your own applications“ (Nutzen Sie Ihre eigenen Anwendungen) zu erkunden**:
 
-1. Geben Sie nach dem Festlegen des Modus für das einmalige Anmelden für eine neue benutzerdefinierte Anwendung, die Sie unter **Kennwortbasierte Anmeldung** hinzugefügt haben, die URL des Orts ein, an dem die Anwendung den Anmeldebildschirm rendert, und klicken Sie auf **Speichern**.  
+1. Geben Sie nach dem Festlegen des Modus für das einmalige Anmelden für eine neue benutzerdefinierte Anwendung, die Sie unter **Kennwortbasierte Anmeldung** hinzugefügt haben, die URL des Orts ein, an dem die Anwendung den Anmeldebildschirm rendert. 
+2. Klicken Sie auf **Speichern**.  
 2. Diese URL wird von uns dann automatisch auf ein Eingabefeld für einen Benutzernamen und ein Kennwort untersucht, und Sie können Azure AD verwenden, um auf sichere Weise Kennwörter an diese Anwendung zu übertragen, indem Sie die Zugriffsbereich-Browsererweiterung verwenden.
 
 ## <a name="configure-self-service-application-access"></a>Konfigurieren des Self-Service-Anwendungszugriffs
@@ -153,7 +155,7 @@ Wir hoffen, Ihnen gefällt die verbesserte Azure AD-Benutzeroberfläche. Es wär
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md).
+Ausführliche Informationen finden Sie unter [Verwalten von Anwendungen mit Azure Active Directory](manage-apps/what-is-application-management.md).
 
 
 

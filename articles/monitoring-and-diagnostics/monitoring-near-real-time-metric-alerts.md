@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 04/27/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 6ccb095f3739a90bdab2408965a742f9cbc19359
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c4a4a82eedc41b7690af005faecc1505257183ab
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778112"
 ---
 # <a name="newer-metric-alerts-for-azure-services-in-the-azure-portal"></a>Neuere Metrikwarnungen für Azure-Dienste im Azure-Portal
 Azure Monitor unterstützt jetzt eine neue Art von Metrikwarnungen. Die neueren Warnungen unterscheiden sich in einigen Punkten von [klassischen Metrikwarnungen](insights-alerts-portal.md):
@@ -35,7 +36,7 @@ Informationen zum Erstellen einer neueren Metrikwarnung im Azure-Portal finden S
 
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, PowerShell, Befehlszeilenschnittstelle, REST-Unterstützung
-Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal oder in der REST-API erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) wird in Kürze unterstützt.
+Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal, in der [REST-API](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate) oder in [Resource Manager-Vorlagen](monitoring-create-metric-alerts-with-templates.md) erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) wird in Kürze unterstützt.
 
 ## <a name="metrics-and-dimensions-supported"></a>Unterstützte Metriken und Dimensionen
 Neuere Metrikwarnungen unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Sie können alle unterstützten Metriken und die dazugehörigen Dimensionen unter [Azure Monitor-Metrik-Explorer](monitoring-metric-charts.md) erkunden und visualisieren.
@@ -50,13 +51,19 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Cache/Redis     |    N/V     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
 |Microsoft.Compute/virtualMachines     |    N/V     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
 |Microsoft.Compute/virtualMachineScaleSets     |   N/V      |[Skalierungsgruppen für virtuelle Computer](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.ContainerInstance/containerGroups | Ja| [Containergruppen](monitoring-supported-metrics.md#microsoftcontainerinstancecontainergroups)|
+|Microsoft.DataFactory/datafactories| Ja| [Data Factorys V1](monitoring-supported-metrics.md#microsoftdatafactorydatafactories)|
 |Microsoft.DataFactory/factories     |   Ja     |[Data Factorys V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
 |Microsoft.DBforMySQL/servers     |   N/V      |[Datenbank für MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
 |Microsoft.DBforPostgreSQL/servers     |    N/V     | [Datenbank für PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
 |Microsoft.EventHub/namespaces     |  Ja      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.KeyVault/vaults| Nein  | [Tresore](monitoring-supported-metrics.md#microsoftkeyvaultvaults)|
 |Microsoft.Logic/workflows     |     N/V    |[Logik-Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
 |Microsoft.Network/applicationGateways     |    N/V     | [Anwendungsgateways](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/dnsZones | N/V| [DNS-Zonen](monitoring-supported-metrics.md#microsoftnetworkdnszones) |
+|Microsoft.Network/loadBalancers (nur für Standard-SKUs)| Ja| [Lastenausgleichsmodule](monitoring-supported-metrics.md#microsoftnetworkloadbalancers) |
 |Microsoft.Network/publicipaddresses     |  N/V       |[Öffentliche IP-Adressen](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.PowerBIDedicated/capacities | N/V | [Kapazitäten](monitoring-supported-metrics.md#microsoftpowerbidedicatedcapacities)|
 |Microsoft.Search/searchServices     |   N/V      |[Suchdienste](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
 |Microsoft.ServiceBus/namespaces     |  Ja       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
 |Microsoft.Storage/storageAccounts     |    Ja     | [Speicherkonten](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|

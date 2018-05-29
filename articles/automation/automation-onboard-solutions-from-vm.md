@@ -9,11 +9,12 @@ ms.topic: article
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f8c9cb33eb90232f5eb241add284f7ea7b64bc05
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 39febc947f4ab6dc406290273e5e1fc1c58a59e2
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053423"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -42,7 +43,13 @@ Navigieren Sie zu den anderen Lösungen, und klicken Sie auf **Aktivieren**. Die
 
 Jede Lösung verwendet eine Bereichskonfiguration innerhalb des Arbeitsbereichs, um die Computer zu erreichen, welche die Lösung erhalten sollen. Die Bereichskonfiguration besteht aus einer Gruppe von mindestens einem gespeicherten Suchvorgang, der zum Begrenzen des Bereichs der Lösung auf bestimmte Computer verwendet wird. Wenn Sie auf die Bereichskonfigurationen zugreifen möchten, wählen Sie in Ihrem Automation-Konto unter **VERWANDTE RESSOURCEN** die Option **Arbeitsbereich** und dann im Arbeitsbereich unter **Arbeitsbereichsdatenquellen** die **Bereichskonfigurationen** aus.
 
-**MicrosoftDefaultScopeConfig-ChangeTracking** und **MicrosoftDefaultScopeConfig-Updates** sind die beiden Bereichskonfigurationen, die standardmäßig erstellt werden.
+Falls der ausgewählte Arbeitsbereich noch nicht die Lösungen „Updateverwaltung“ und „Änderungsnachverfolgung“ enthält, werden die folgenden Bereichskonfigurationen erstellt:
+
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
+
+* **MicrosoftDefaultScopeConfig-Updates**
+
+Wenn der ausgewählte Arbeitsbereich bereits die Lösung enthält, wird sie nicht erneut bereitgestellt, und die Bereichskonfiguration wird ihm nicht hinzugefügt.
 
 Klicken Sie auf die Auslassungspunkte (...) bei einer Konfiguration, und wählen Sie **Bearbeiten** aus. Wählen Sie auf der Seite **Bereichskonfiguration bearbeiten** die Option **Computergruppen auswählen** aus, um die Seite **Computergruppen** zu öffnen. Auf dieser Seite werden die gespeicherten Suchvorgänge angezeigt, die zum Erstellen der Bereichskonfiguration verwendet werden.
 

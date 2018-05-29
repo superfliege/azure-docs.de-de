@@ -1,31 +1,32 @@
 ---
-title: "Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory konfigurieren."
+title: Konfigurieren des gerätebasierten bedingten Zugriffs für Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 05/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 07957d5ec843c414813d69b7084915bcd70a5a61
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930856"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory
 
-Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie präzise steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können. Sie können z.B. den Zugriff auf bestimmte Ressourcen auf vertrauenswürdige Geräte beschränken. Eine Richtlinie für den bedingten Zugriff, die ein vertrauenswürdiges Gerät erfordert, wird auch als Richtlinie für den gerätebasierten bedingten Zugriff bezeichnet.
+Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) können Sie den Zugriff von autorisierten Benutzern auf Ihre Ressourcen steuern. Sie können z. B. den Zugriff auf bestimmte Ressourcen auf verwaltete Geräte beschränken. Eine Richtlinie für den bedingten Zugriff, die ein verwaltetes Gerät erfordert, wird auch als Richtlinie für den gerätebasierten bedingten Zugriff bezeichnet.
 
-Dieses Thema bietet Informationen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für mit Azure AD verbundene Anwendungen. 
+In diesem Thema wird beschrieben, wie Sie gerätebasierte Richtlinien für bedingten Zugriff für über Azure AD verbundene Anwendungen konfigurieren können. 
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -37,40 +38,65 @@ Beim gerätebasierten bedingten Zugriff werden der **bedingte Zugriff von Azure 
 - **[Einführung in die Geräteverwaltung in Azure Active Directory](device-management-introduction.md):** Dieses Thema bietet eine Übersicht über die verschiedenen Optionen zum Verbinden von Geräten mit Azure AD. 
 
 
-## <a name="trusted-devices"></a>Vertrauenswürdige Geräte
 
-In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Bei bestimmten Ressourcen in Ihrer Umgebung ist das Beschränken des Zugriffs auf die richtigen Benutzer möglicherweise nicht ausreichend. Die richtigen Benutzer müssen möglicherweise auch vertrauenswürdige Geräte verwenden, um auf eine Ressource zuzugreifen. Sie können in Ihrer Umgebung basierend auf den folgenden Komponenten festlegen, was ein vertrauenswürdiges Gerät ist:
+## <a name="managed-devices"></a>Verwaltete Geräte  
 
-- Die [Geräteplattformen](active-directory-conditional-access-conditions.md#device-platforms) auf einem Gerät
-- Ob ein Gerät konform ist
-- Ob ein Gerät einer Domäne angehört 
+In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Bei bestimmten Ressourcen in Ihrer Umgebung ist das Beschränken des Zugriffs auf die richtigen Benutzer möglicherweise nicht ausreichend. Zusätzlich zu den richtigen Benutzern möchten Sie möglicherweise auch vorschreiben, dass der Zugriff nur über ein verwaltetes Gerät ausgeführt werden kann.
 
-Die [Geräteplattformen](active-directory-conditional-access-conditions.md#device-platforms) sind durch das Betriebssystem gekennzeichnet, das auf dem Gerät ausgeführt wird. Sie können den Zugriff auf bestimmte Ressourcen in der Richtlinie für den gerätebasierten bedingten Zugriff auf bestimmte Plattformen beschränken.
+Ein verwaltetes Gerät ist ein Gerät, das Ihre Standards bezüglich Sicherheit und Konformität erfüllt. Einfach ausgedrückt: Verwaltete Geräte sind Geräte, die *in irgendeiner Weise* von der Organisation kontrolliert werden. In Azure AD ist die Registrierung bei Azure AD die Voraussetzung für ein verwaltetes Gerät. Bei der Registrierung eines Geräts wird eine Identität für das Gerät in Form eines Geräteobjekts erstellt. Dieses Objekt wird von Azure verwendet, um Statusinformationen zu einem Gerät zu verfolgen. Als Azure AD-Administrator können Sie dieses Objekt bereits zum Ein-/Ausschalten (Aktivieren/Deaktivieren) des Status eines Geräts verwenden.
+  
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/32.png)
+
+Zum Registrieren eines Geräts bei Azure AD gibt drei Optionen:
+
+- **[Bei Azure AD registrierte Geräte](device-management-introduction.md#azure-ad-registered-devices)**: zum Registrieren eines persönlichen Geräts bei Azure AD.
+
+- **[In Azure AD eingebundene Geräte](device-management-introduction.md#azure-ad-joined-devices)** – zum Registrieren eines Organisationsgeräts mit Windows 10 bei Azure AD, das nicht in ein lokales, registriertes Active Directory eingebunden ist. 
+
+- **[In Azure AD eingebundene Hybridgeräte](device-management-introduction.md#hybrid-azure-ad-joined-devices)**: zum Registrieren eines Organisationsgeräts mit Windows 10 bei Azure AD, das in ein lokales Active Directory eingebunden ist.
+
+Damit aus einem registrierten Gerät ein verwaltetes Gerät wird, muss das Gerät ein in Azure AD eingebundenes Hybridgerät oder ein als kompatibel markiertes Gerät sein.  
+
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/47.png)
 
 
+ 
+## <a name="require-hybrid-azure-ad-joined-devices"></a>In Azure AD eingebundene Hybridgeräte erforderlich
 
-Sie können in einer Richtlinie für den gerätebasierten bedingten Zugriff erzwingen, dass vertrauenswürdige Geräte als konform gekennzeichnet sein müssen.
+In der Richtlinie für bedingten Zugriff können Sie mit der Option **In Azure AD eingebundene Hybridgeräte erforderlich** angeben, dass auf die ausgewählten Cloud-Apps nur über ein verwaltetes Gerät zugegriffen werden kann. 
 
-![Cloud-Apps](./media/active-directory-conditional-access-policy-connected-applications/24.png)
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Geräte können durch folgende Instanzen im Verzeichnis als konform gekennzeichnet werden:
+Diese Einstellung gilt nur für Windows 10-Geräte, die in ein lokales Azure AD eingebunden sind. Sie können diese Geräte nur mit der Azure AD-Einbindung für Hybridgeräte bei Azure AD registrieren – ein [automatischer Vorgang](device-management-hybrid-azuread-joined-devices-setup.md) zum Abrufen einer Windows 10-Geräteregistrierung. 
 
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/45.png)
+
+Wodurch wird ein in Azure AD eingebundenes Hybridgerät zum verwalteten Gerät?  Bei Geräten, die in ein lokales AD eingebunden sind, wird angenommen, dass die Kontrolle über diese Geräte durch Verwaltungslösungen wie **System Center Configuration Manager (SCCM)** oder **Gruppenrichtlinie (GP)** erzwungen wird und die Geräte auf diese Weise verwaltet werden. Da Azure AD über keine Methode verfügt, anhand der festgestellt werden kann, ob eine dieser Methoden auf ein Gerät angewendet wurde, ist das Erforderlichmachen eines in Azure AD eingebundenen Hybridgeräts ein relativ schwacher Mechanismus zum Anfordern eines verwalteten Geräts. Es ist Ihre Aufgabe als Administrator zu ermitteln, ob die für Ihre lokalen domäneneingebundenen Geräte angewandten Methoden stark genug sind, um ein verwaltetes Gerät zu bilden, wenn ein solches Gerät auch ein in Azure AD eingebundenes Hybridgerät ist.
+
+
+## <a name="require-device-to-be-marked-as-compliant"></a>Markieren des Geräts als kompatibel erforderlich
+
+Die Option *Markieren des Geräts als kompatibel erforderlich* ist die sicherste Form, ein verwaltetes Gerät anzufordern.
+
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/11.png)
+
+Diese Option erfordert, dass ein Gerät bei Azure AD registriert und zusätzlich auch als kompatibel markiert wurde von:
+         
 - Intune 
 - Ein durch ein Mobilgerät eines Drittanbieters verwaltetes System, das Windows 10-Geräte über Azure AD-Integration verwaltet. 
  
-  
+![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/46.png)
 
-Nur Geräte, die mit Azure AD verbunden sind, können als konform gekennzeichnet werden. Für das Verbinden eines Geräts mit Azure Active Directory haben Sie die folgenden Möglichkeiten: 
 
-- Bei Azure AD registriert
-- In Azure AD eingebunden
-- Hybrid in Azure AD eingebunden
 
-    ![Cloud-Apps](./media/active-directory-conditional-access-policy-connected-applications/26.png)
+Bei einem als kompatibel markierten Gerät können Sie Folgendes voraussetzen: 
 
-Wenn Sie eine lokale Active Directory-Instanz (AD) verwenden, können Sie Geräte, die nicht mit Azure AD verbunden, aber in Ihr AD eingebunden sind, als vertrauenswürdig kennzeichnen.
+- Die mobilen Geräte, mit denen Ihre Mitarbeiter auf Unternehmensdaten zugreifen, sind verwaltet
+- Mobile Apps, die Ihre Mitarbeiter verwenden, sind verwaltet
+- Ihre Unternehmensdaten sind durch eine bessere Kontrolle der Zugriffs- und Freigabemöglichkeiten Ihrer Mitarbeiter geschützt
+- Das Gerät und seine Apps sind kompatibel mit den Sicherheitsanforderungen des Unternehmens
 
-![Cloud-Apps](./media/active-directory-conditional-access-policy-connected-applications/25.png)
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

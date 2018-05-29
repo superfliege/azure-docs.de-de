@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD für Anwendungen | Microsoft-Dokumentation"
+title: Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD für Anwendungen | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Apps per Self-Service und mithilfe von SAML und kennwortbasiertem SSO mit Azure Active Directory verbinden.
 services: active-directory
 author: asmalser-msft
@@ -15,18 +15,19 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e161bb308f08e2a7c137c696e77bf1dfb86e8d31
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158029"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind
-In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](active-directory-editions.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
+In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](active-directory-whatis.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
 Der Azure Active Directory-Anwendungskatalog enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen, wie [in diesem Artikel](active-directory-appssoaccess-whatis.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
 
-Kunden mit [Azure Active Directory Premium](active-directory-editions.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
+Kunden mit [Azure Active Directory Premium](active-directory-whatis.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
 
 * Self-Service-Integration für Anwendungen, die SAML 2.0-Identitätsanbieter unterstützen (SP-initiiert oder IdP-initiiert)
 * Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
@@ -110,7 +111,7 @@ Informationen zum Hinzufügen und Bearbeiten von Ansprüchen für solche Szenari
 ### <a name="testing-the-saml-application"></a>Testen der SAML-Anwendung
 Nachdem die SAML-URLs und das Zertifikat in Azure AD und in der Anwendung konfiguriert, der Anwendung in Azure die Benutzer oder Gruppen zugewiesen und auch die Ansprüche überprüft und ggf. geändert wurden, kann sich der Benutzer bei der Anwendung anmelden. 
 
-Um dies zu testen, melden Sie sich im Azure AD-Zugriffsbereich unter „https://myapps.microsoft.com“ mit einem Benutzerkonto an, das Sie der Anwendung zugewiesen haben. Dann klicken Sie auf die Kachel für die Anwendung, um den Vorgang für das einmalige Anmelden zu starten. Alternativ können Sie die Anmelde-URL für die Anwendung aufrufen und sich von dort aus anmelden. 
+Um dies zu testen, melden Sie sich im Azure AD-Zugriffsbereich unter https://myapps.microsoft.com mit einem Benutzerkonto an, das Sie der Anwendung zugewiesen haben, und klicken Sie anschließend auf die Kachel für die Anwendung, um den Vorgang für einmaliges Anmelden zu starten. Alternativ können Sie die Anmelde-URL für die Anwendung aufrufen und sich von dort aus anmelden. 
 
 Hinweise zum Debuggen finden Sie in diesem [Artikel zum Debuggen der SAML-basierten einmaligen Anmeldung bei Anwendungen](active-directory-saml-debugging.md) 
 

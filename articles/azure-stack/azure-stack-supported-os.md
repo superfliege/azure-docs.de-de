@@ -1,66 +1,75 @@
 ---
-title: "Unterstützte Gastbetriebssysteme für Azure Stack | Microsoft-Dokumentation"
-description: "Diese Gastbetriebssysteme können mit Azure Stack verwendet werden."
+title: Unterstützte Gastbetriebssysteme für Azure Stack | Microsoft-Dokumentation
+description: Diese Gastbetriebssysteme können mit Azure Stack verwendet werden.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: Brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: 3eceb740b8115d2eaca517017f6158744d6e8e58
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074829"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 ## <a name="windows"></a>Windows
-Azure Stack unterstützt die in der folgenden Tabelle aufgeführten Windows-Gastbetriebssysteme: Images im Marketplace stehen zum Download in Azure Stack zur Verfügung. Windows-Clientimages stehen im Marketplace nicht zur Verfügung.
 
-Während der Bereitstellung fügt Azure Stack eine geeignete Version des Gast-Agents in das Image ein.
+Azure Stack unterstützt die Windows-Gastbetriebssysteme aus der folgenden Tabelle:
 
-| Betriebssystem | BESCHREIBUNG | Herausgeber | OS Type (Betriebssystemtyp) | Marketplace |
+| Betriebssystem | Beschreibung | Im Marketplace verfügbar |
 | --- | --- | --- | --- | --- | --- |
-| Windows Server 2008 R2 SP1 | 64 Bit | Microsoft | Windows | Datacenter |
-| Windows Server 2012 | 64 Bit | Microsoft | Windows | Datacenter |
-| Windows Server 2012 R2 | 64 Bit | Microsoft | Windows | Datacenter |
-| Windows Server 2016 | 64 Bit | Microsoft | Windows | Datacenter, Datacenter Core, Datacenter mit Containern |
-| Windows 10 *(siehe Hinweis 1)* | 64 Bit, Pro und Enterprise | Microsoft | Windows | Nein  |
+| Windows Server, Version 1709 | 64 Bit | Core mit Containern |
+| Windows Server 2016 | 64 Bit |  Datacenter, Datacenter Core, Datacenter mit Containern |
+| Windows Server 2012 R2 | 64 Bit |  Datacenter |
+| Windows Server 2012 | 64 Bit |  Datacenter |
+| Windows Server 2008 R2 SP1 | 64 Bit |  Datacenter |
+| Windows Server 2008 SP2 | 64 Bit |  Verwendung eigener Images (Bring Your Own Image, BYOI) |
+| Windows 10 *(siehe Hinweis 1)* | 64 Bit, Pro und Enterprise | Verwendung eigener Images (Bring Your Own Image, BYOI) |
 
-***Hinweis 1:*** *Um Windows 10-Clientbetriebssysteme für Azure Stack bereitzustellen, benötigen Sie eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx), oder Sie müssen einen Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)) erwerben.*
+***Hinweis 1:*** *Wenn Sie Windows 10-Clientbetriebssysteme für Azure Stack bereitstellen möchten, müssen Sie über eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) verfügen oder den Kauf über einen [QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx) (Qualified Multitenant Hoster) abwickeln.*
 
+Marketplace-Images stehen für eine Lizenzierung mit nutzungsbasierter Abrechnung oder für eine BYOL-Lizenzierung (EA/SPLA) zur Verfügung. Es kann jedoch nicht beides für die gleiche Azure Stack-Instanz verwendet werden. Während der Bereitstellung fügt Azure Stack eine geeignete Version des Gast-Agents in das Image ein.
+
+ Datacenter-Editionen stehen im Marketplace zum Download zur Verfügung. Kunden können ihre eigenen Serverimages mit anderen Editionen verwenden. Windows-Clientimages stehen im Marketplace nicht zur Verfügung.
 
 ## <a name="linux"></a>Linux
 
-Die hier aufgeführten Linux-Distributionen enthalten den erforderlichen Windows Azure Linux Agent (WALA).
+Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderlichen Windows Azure-Linux-Agent (WALA). Wenn Sie in Azure Stack Ihr eigenes Image verwenden möchten, beachten Sie die Richtlinien unter [Hinzufügen von Linux-Images zu Azure Stack](azure-stack-linux.md).
 
-> [!NOTE]   
-> Images, die mit älteren WALA-Versionen als 2.2.3 erstellt wurden, werden *nicht* unterstützt und lassen sich in der Regel nicht bereitstellen. Bei einigen WALA-Agent-Versionen ist bekannt, dass sie nicht auf Azure Stack-VMs, einschließlich der Versionen 2.2.12 und 2.2.13, funktionieren.
+> [!NOTE]
+> Benutzerdefinierte Images müssen mit der neuesten öffentlichen WALA-Version erstellt werden. Versionen vor 2.2.18 funktionieren in Azure Stack möglicherweise nicht ordnungsgemäß.
 >
-> [cloud-init](https://cloud-init.io/) wird nur in Ubuntu-Distributionen in Azure Stack unterstützt.
+> [cloud-init](https://cloud-init.io/) wird derzeit für Azure Stack nicht unterstützt.
 
-| Distribution | BESCHREIBUNG | Herausgeber | Marketplace |
+| Distribution | Beschreibung | Herausgeber | Marketplace |
 | --- | --- | --- | --- | --- | --- |
-| Container Linux |  64 Bit | CoreOS | Stable |
 | 6.9 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
 | 7.4 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
+| ClearLinux | 64 Bit | ClearLinux.org | Ja |
+| Container Linux |  64 Bit | CoreOS | Stable |
 | Debian 8 „Jessie“ | 64 Bit | credativ |  Ja |
 | Debian 9 „Stretch“ | 64 Bit | credativ | Ja |
-| Red Hat Enterprise Linux 7.x (ausstehend) | 64 Bit | Red Hat | Nein  |
+| Red Hat Enterprise Linux 7.x | 64 Bit | Red Hat |Verwendung eigener Images (Bring Your Own Image, BYOI) |
 | SLES 11SP4 | 64 Bit | SUSE | Ja |
 | SLES 12SP3 | 64 Bit | SUSE | Ja |
 | Ubuntu 14.04-LTS | 64 Bit | Canonical | Ja |
 | Ubuntu 16.04-LTS | 64 Bit | Canonical | Ja |
+| Ubuntu 18.04-LTS | 64 Bit | Canonical | Ja |
 
 Andere Linux-Distributionen können in Zukunft unterstützt werden.
+
+Informationen zur Unterstützung von Red Hat Enterprise Linux finden Sie unter [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531) (Red Hat und Azure Stack: Häufig gestellte Fragen).

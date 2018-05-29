@@ -14,6 +14,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166334"
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig (Vorschau)
 

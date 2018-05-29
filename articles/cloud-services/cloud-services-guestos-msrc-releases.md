@@ -12,16 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/6/2018
+ms.date: 5/4/2018
 ms.author: raiye
-ms.openlocfilehash: df5844ff53d8196eb1143913b420d933ba43920f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ea7c01075d9f65ed262681c216f5770d19466507
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765831"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="april-guest-os"></a>Gastbetriebssystem April
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 18-04 | [4093119] |Sicherheitsupdates für Windows 10 |5.18 |10. April 2018 |
+| Rel 18-04 | [4093108] |Nur Windows-Sicherheit |2.73 |10. April 2018 |
+| Rel 18-04 | [4093122] |Nur Windows-Sicherheit |3.60 |10. April 2018 |
+| Rel 18-04 | [4093115] |Nur Windows-Sicherheit |4.53 |10. April 2018 |
+| Rel 18-04 | [4092946] |Internet Explorer |2.73, 3.60, 4.53 |10. April 2018 |
+| Rel 18-04 | [4093110] |Blinken |3.60, 4.53, 5.18 |10. April 2018 |
+| N/V | [4088875] |Nicht sicherheitsrelevanter Rollup für März |2.73 |13. März 2018 |
+| N/V | [4099950] |Voraussetzung für nicht sicherheitsrelevanten Rollup für März|2.73 |13. März 2018 |
+| N/V | [4088877] |Nicht sicherheitsrelevanter Rollup für März |3.60 |13. März 2018 |
+| N/V | [4088876] |Nicht sicherheitsrelevanter Rollup für März |4.53 |13. März 2018 |
 
 ## <a name="march-guest-os"></a>Gastbetriebssystem März
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -613,6 +628,18 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | N/V |[3007054] |PIN-geschützte Druckoption wird beim Drucken eines Dokuments aus einer Windows Store-Anwendung in Windows immer angezeigt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | N/V |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | N/V |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
+
+
+[4093119]: http://support.microsoft.com/kb/4093119
+[4093108]: http://support.microsoft.com/kb/4093108 
+[4093122]: http://support.microsoft.com/kb/4093122
+[4093115]: http://support.microsoft.com/kb/4093115
+[4092946]: http://support.microsoft.com/kb/4092946
+[4093110]: http://support.microsoft.com/kb/4093110
+[4088875]: http://support.microsoft.com/kb/4088875
+[4099950]: http://support.microsoft.com/kb/4099950
+[4088877]: http://support.microsoft.com/kb/4088877
+[4088876]: http://support.microsoft.com/kb/4088876
 
 [4088787]: http://support.microsoft.com/kb/4088787
 [4088776]: http://support.microsoft.com/kb/4088776 

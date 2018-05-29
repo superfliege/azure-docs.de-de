@@ -9,11 +9,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: 3824e4ae72c469ac183a5386d08d2d7f141e27bc
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95c5793bec228e2da8c98ea9263475f55de739d9
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072166"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 Die SQL-Datenbank-Überprüfung in Azure verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
@@ -73,11 +74,11 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
 
     ![Navigationsbereich][3]
 5. Wählen Sie **Speicherdetails**, um das Blatt **Speicherung von Überwachungsprotokollen** zu öffnen. Wählen Sie das Azure Storage-Konto, in dem die Protokolle gespeichert werden sollen, und dann die Beibehaltungsdauer aus. Die alten Protokolle werden gelöscht. Klicken Sie dann auf **OK**.
-   >[!TIP]
-   >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
+    >[!TIP]
+    >Verwenden Sie für alle überwachten Datenbanken dasselbe Speicherkonto, um die Berichtvorlagen für die Überwachung optimal einzusetzen.
 
     <a id="storage-screenshot"></a>![Navigationsbereich][4]
-6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie PowerShell oder die REST-API verwenden.
+6. Wenn Sie die überwachten Ereignisse anpassen möchten, können Sie [PowerShell-Cmdlets](#subheading-7) oder die [REST-API](#subheading-9) verwenden.
 7. Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](sql-database-threat-detection-get-started.md).
 8. Klicken Sie auf **Speichern**.
 
@@ -149,8 +150,8 @@ Wenn Sie bei georeplizierten Datenbanken die Überwachung für die primäre Date
    * Die Blobüberwachung muss in der *primären Datenbank selbst* aktiviert werden, nicht auf dem Server.
    * Nachdem die Blobüberwachung in der primären Datenbank aktiviert wurde, wird sie auch in der sekundären Datenbank aktiv.
 
-     >[!IMPORTANT]
-     >Bei der Überwachung auf Datenbankebene sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Es wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
+    >[!IMPORTANT]
+    >Bei der Überwachung auf Datenbankebene sind die Speichereinstellungen für die sekundäre Datenbank identisch mit den Einstellungen der primären Datenbank, wodurch regionsübergreifender Datenverkehr generiert wird. Es wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
 <br>
 
 ### <a id="subheading-6">Erneute Speicherschlüsselgenerierung</a>
@@ -169,33 +170,41 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 * Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
 
-   > [!IMPORTANT]
-   > Die Azure SQL-Datenbanküberwachung speichert 4000 Datenzeichen für Zeichenfelder in einem Überwachungsdatensatz. Wenn der von einer überwachbaren Aktion zurückgegebene Wert **statement** oder **data_sensitivity_information** mehr als 4000 Zeichen enthält, werden alle Daten über die ersten 4000 Zeichen hinaus **abgeschnitten und nicht überwacht**.
+    > [!IMPORTANT]
+    > Die Azure SQL-Datenbanküberwachung speichert 4000 Datenzeichen für Zeichenfelder in einem Überwachungsdatensatz. Wenn der von einer überwachbaren Aktion zurückgegebene Wert **statement** oder **data_sensitivity_information** mehr als 4000 Zeichen enthält, werden alle Daten über die ersten 4000 Zeichen hinaus **abgeschnitten und nicht überwacht**.
 
-* Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
-   * Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
-   * Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+* Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben:
+    * Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
+    * Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
 
-## <a name="manage-sql-database-auditing-using-azure-powershell"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von Azure PowerShell
+* Die Standardüberwachungsrichtlinie enthält alle Aktionen sowie den folgenden Satz von Aktionsgruppen, mit denen alle Abfragen und gespeicherten Prozeduren, die für die Datenbank ausgeführt werden, sowie erfolgreiche und fehlerhafte Anmeldungen überwacht werden:
 
-* **PowerShell-Cmdlets:**
+    BATCH_COMPLETED_GROUP<br>
+    SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
+    FAILED_DATABASE_AUTHENTICATION_GROUP
 
-   * [Get-AzureRMSqlDatabaseAuditing][101]
-   * [Get-AzureRMSqlServerAuditing][102]
-   * [Set-AzureRMSqlDatabaseAuditing][105]
-   * [Set-AzureRMSqlServerAuditing][106]
+    Sie können die Überwachung für verschiedene Arten von Aktionen und Aktionsgruppen mithilfe von PowerShell konfigurieren, wie im Abschnitt [Verwalten der Überwachung von SQL-Datenbank mithilfe von Azure PowerShell](#subheading-7) beschrieben.
 
-   Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+## <a id="subheading-7"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von Azure PowerShell
 
-## <a name="manage-sql-database-auditing-using-rest-api"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe der REST-API
+**PowerShell-Cmdlets:**
 
-* **REST-API – Blobüberwachung**:
+* [Erstellen oder Aktualisieren der Datenbank-Blobüberwachungsrichtlinie (Set-AzureRMSqlDatabaseAuditing)][105]
+* [Erstellen oder Aktualisieren der Server-Blobüberwachungsrichtlinie (Set-AzureRMSqlServerAuditing)][106]
+* [Abrufen der Datenbank-Blobüberwachungsrichtlinie (Get-AzureRMSqlDatabaseAuditing)][101]
+* [Abrufen der Server-Blobüberwachungsrichtlinie (Get-AzureRMSqlServerAuditing)][102]
 
-   * [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-   * [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-   * [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-   * [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771860.aspx)
-   * [Abrufen des Ergebnisses eines Überwachungsvorgangs für Serverblobs](https://msdn.microsoft.com/library/azure/mt771862.aspx)
+Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
+
+## <a id="subheading-9"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe der REST-API
+
+**REST-API – Blobüberwachung**:
+
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695939.aspx)
+* [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771861.aspx)
+* [Abrufen einer Richtlinie für die Überwachung von Datenbankblobs](https://msdn.microsoft.com/library/azure/mt695938.aspx)
+* [Abrufen einer Richtlinie für die Überwachung von Serverblobs](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Abrufen des Ergebnisses eines Überwachungsvorgangs für Serverblobs](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 
 <!--Anchors-->
@@ -204,8 +213,9 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 [Analyze audit logs and reports]: #subheading-3
 [Practices for usage in production]: #subheading-5
 [Storage Key Regeneration]: #subheading-6
-[Automation (PowerShell / REST API)]: #subheading-7
+[Manage SQL database auditing using Azure PowerShell]: #subheading-7
 [Blob/Table differences in Server auditing policy inheritance]: (#subheading-8)
+[Manage SQL database auditing using REST API]: #subheading-9
 
 <!--Image references-->
 [1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png

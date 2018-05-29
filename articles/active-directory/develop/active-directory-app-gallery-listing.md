@@ -1,25 +1,27 @@
 ---
-title: Auflisten Ihrer Anwendung im Azure Active Directory-Anwendungskatalog | Microsoft-Dokumentation
-description: Auflisten einer Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog
+title: Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie eine Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog listen.
 services: active-directory
 documentationcenter: dev-center-name
-author: bryanla
-manager: mbaldwin
+author: CelesteDG
+manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2018
-ms.author: bryanla
+ms.date: 05/09/2018
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e02c60d46fe709c8d418ea4743ba383147e9ddac
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 5f42a706bd7cb44162765bb77039cc3173d6941e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34354451"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -49,9 +51,27 @@ Damit eine Anwendung im Azure AD-App-Katalog aufgelistet werden kann, müssen Si
 
 *   **OpenID Connect:** Erstellen Sie die mehrinstanzenfähige Anwendung in Azure AD, und implementieren Sie das [Azure AD-Genehmigungsframework](active-directory-integrating-applications.md#overview-of-the-consent-framework) für Ihre Anwendung. Senden Sie die Anmeldeanforderung an einen gemeinsamen Endpunkt, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern. Befolgen Sie zum Integrieren Ihrer Anwendung in Azure AD die [Anweisungen für Entwickler](active-directory-authentication-scenarios.md).
 
+    ![Zeitplan für das Listing einer OpenID Connect-Anwendung im Katalog](./media/active-directory-app-gallery-listing/openid.png)
+
+    * Wenn Sie Ihre Anwendung mit OpenID Connect hinzufügen möchten, um sie im Katalog listen zu lassen, wählen Sie wie oben gezeigt **OpenID Connect und OAuth 2.0** aus.
+
+    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
 *   **SAML 2.0** oder **WS-Fed**: Ihre Anwendung sollte über eine Funktion zur SAML-/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Jede App, die SAML 2.0 unterstützt, kann direkt in einen Azure AD-Mandanten integriert werden. Befolgen Sie dazu die [Anweisungen zum Hinzufügen einer benutzerdefinierten Anwendung](../active-directory-saas-custom-apps.md).
 
-*   **Kennwortbasiertes SSO:** Erstellen Sie eine Webanwendung mit HTML-Anmeldeseite, um das [kennwortbasierte einmalige Anmelden](../active-directory-appssoaccess-whatis.md) zu konfigurieren. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z.B. bei den App-Konten für die sozialen Medien Ihrer Organisation.
+    ![Zeitplan für das Listing einer SAML 2.0- oder WS-Fed-Anwendung im Katalog](./media/active-directory-app-gallery-listing/saml.png)
+
+    * Wenn Sie Ihre Anwendung mit **SAML 2.0** oder **WS-Fed** hinzufügen möchten, um sie im Katalog listen zu lassen, wählen Sie wie oben gezeigt **SAML 2.0/WS-Fed** aus.
+
+    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
+
+*   **Kennwortbasiertes SSO:** Erstellen Sie eine Webanwendung mit HTML-Anmeldeseite, um das [kennwortbasierte einmalige Anmelden](../manage-apps/what-is-single-sign-on.md) zu konfigurieren. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z.B. bei den App-Konten für die sozialen Medien Ihrer Organisation.
+
+    ![Zeitplan für das Listing einer Kennwort-SSO-Anwendung im Katalog](./media/active-directory-app-gallery-listing/passwordsso.png)
+
+    * Wenn Sie Ihre Anwendung mit Kennwort-SSO hinzufügen möchten, um sie im Katalog listen zu lassen, wählen Sie wie oben gezeigt **Kennwort-SSO** aus.
+
+    * Wenn Sie Probleme mit dem Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Aktualisieren bzw. Entfernen vorhandener Auflistungen
 
@@ -60,7 +80,7 @@ Um eine bestehende Anwendung im Azure AD-App-Katalog zu aktualisieren oder zu en
 * Auswählen der geeigneten Option aus der folgenden Abbildung
 
     ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/updateorremove.png)
-
+    
     * Wenn Sie eine vorhandene Anwendung aktualisieren möchten, wählen Sie **Vorhandene Anwendungsauflistung aktualisieren**.
 
     * Wenn Sie eine vorhandene Anwendung aus dem Azure AD-Katalog entfernen möchten, wählen Sie **Vorhandene Anwendungsauflistung entfernen**.
@@ -86,6 +106,10 @@ Das Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog dauert etwa 7 bis
 Das Auflisten einer OpenID Connect-Anwendung im Katalog dauert etwa 2 bis 5 Werktage.
 
    ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/timeline2.png)
+
+Der Zeitplan für das Listing der Anwendung im Katalog mit Unterstützung für Benutzerbereitstellungen beträgt 40 bis 45 Werktage.
+
+   ![Zeitachse für Auflistung einer SAML-Anwendung in der Galerie](./media/active-directory-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eskalationen
 

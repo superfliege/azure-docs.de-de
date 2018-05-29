@@ -12,20 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/11/2018
 ms.author: jeffgilb
 ms.reviewer: avishwan
-ms.openlocfilehash: 0d8c1ebe9688f32c460ef689119313b0682a0a68
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f34c4697439685ce6ea0ce3f2c7e954ee81b5079
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077189"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 Wenn Sie [Azure Stack](azure-stack-poc.md) bei Azure registrieren, können Sie Marketplace-Elemente aus Azure herunterladen und das Senden von Berichten zu Geschäftsdaten an Microsoft einrichten. Nach der Registrierung von Azure Stack wird die Nutzung an Azure Commerce gemeldet und kann unter dem für die Registrierung verwendeten Abonnement angezeigt werden. 
 
 > [!IMPORTANT]
-> Die Registrierung ist obligatorisch, wenn Sie das nutzungsbasierte Abrechnungsmodell wählen. Andernfalls verstoßen Sie gegen die Lizenzbedingungen der Azure Stack-Bereitstellung, da die Nutzung nicht gemeldet wird.
+> Die Registrierung ist für die uneingeschränkte Unterstützung aller Azure Stack-Funktionen (einschließlich Marketplace-Syndikation) erforderlich. Außerdem verstoßen Sie gegen die Lizenzbedingungen von Azure Stack, wenn Sie das nutzungsbasierte Abrechnungsmodell verwenden, ohne sich zu registrieren. Weitere Informationen zu den Azure Stack-Lizenzierungsmodellen finden Sie auf der Seite [Azure Stack erwerben](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vor der Registrierung von Azure Stack in Azure müssen Sie folgende Bedingungen erfüllen:

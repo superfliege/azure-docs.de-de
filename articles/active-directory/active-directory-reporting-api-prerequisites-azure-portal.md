@@ -1,48 +1,56 @@
 ---
-title: "Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API | Microsoft-Dokumentation"
-description: "Erfahren Sie, welche Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API gelten."
+title: Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API | Microsoft-Dokumentation
+description: Erfahren Sie, welche Voraussetzungen für den Zugriff auf die Azure AD-Berichterstellungs-API gelten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ada19f69-665c-452a-8452-701029bf4252
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1f4d79b59d44bc1c151391290e79026051fe1df
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ab05907f1f23c3856b41a941c1b95992ed5a79a4
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929981"
 ---
-# <a name="prerequisites-to-access-the-azure-ad-reporting-api"></a>Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API
+# <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
-Die [Azure AD-Berichterstellungs-APIs](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
+Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
 
-Die Berichterstellungs-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Autorisieren des Zugriffs auf die Web-APIs. 
+Die Berichterstellungs-API verwendet [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) zum Autorisieren des Zugriffs auf die Web-APIs.
+
+Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Schritte ausführen:
+
+1. Zuweisen von Rollen
+2. Registrieren einer Anwendung
+3. Erteilen von Berechtigungen
+4. Erfassen von Konfigurationseinstellungen
+
+
+
+## <a name="assign-roles"></a>Zuweisen von Rollen
 
 Um mithilfe der API auf die Berichtsdaten zuzugreifen, müssen Ihnen eine der folgenden Rollen zugewiesen sein:
 
 - Sicherheit lesen
+
 - Sicherheitsadministrator
+
 - Globaler Administrator
 
 
-Um auf die Berichterstellungs-API zugreifen zu können, müssen Sie folgende Schritte ausführen:
 
-1. Registrieren einer Anwendung 
-2. Erteilen von Berechtigungen 
-3. Erfassen von Konfigurationseinstellungen 
 
-Bei Fragen, Problemen oder zum Senden von Feedback [eröffnen Sie ein Supportticket](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
-
-## <a name="register-an-azure-active-directory-application"></a>Registrieren einer Azure Active Directory-Anwendung
+## <a name="register-an-application"></a>Registrieren einer Anwendung
 
 Sie müssen Apps auch dann registrieren, wenn Sie mithilfe eines Skripts auf die Berichterstellungs-API zugreifen. Dadurch wird Ihnen eine **Anwendungs-ID** zugewiesen, die für einen Autorisierungsaufruf erforderlich ist und den Empfang von Tokens über Ihren Code ermöglicht.
 
@@ -59,15 +67,15 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
    
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Klicken Sie auf dem Blatt **Azure Active Directory** auf **App-Registrierungen**.
+2. Klicken Sie auf der Seite **Azure Active Directory** auf **App-Registrierungen**.
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/02.png) 
 
-3. Klicken Sie auf dem Blatt **App-Registrierungen** auf der Symbolleiste am oberen Rand auf **Registrierung einer neuen Anwendung**.
+3. Klicken Sie auf der Seite **App-Registrierungen** auf der Symbolleiste am oberen Rand auf **Registrierung einer neuen Anwendung**.
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/03.png)
 
-4. Führen Sie auf dem Blatt **Erstellen** die folgenden Schritte durch:
+4. Führen Sie auf der Seite **Erstellen** die folgenden Schritte aus:
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/04.png)
 
@@ -77,33 +85,42 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
 
     c. Geben Sie im Textfeld **Anmelde-URL** die URL `https://localhost` ein.
 
-    d. Klicken Sie auf **Erstellen**. 
+    d. Klicken Sie auf **Create**. 
 
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen 
 
-Durch diesen Schritt soll Ihrer Anwendung die Berechtigung **Verzeichnisdaten lesen** für die **Microsoft Azure Active Directory**-API erteilt werden.
+Abhängig von der API, auf die Sie zugreifen möchten, müssen Sie Ihrer App die folgenden Berechtigungen erteilen:  
 
-![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/16.png)
+| API | Berechtigung |
+| --- | --- |
+| Microsoft Azure Active Directory | Verzeichnisdaten lesen |
+| Microsoft Graph | Alle Überwachungsprotokolldaten lesen |
+
+
+![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/36.png)
+
+
+Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie nicht auf eine der APIs zugreifen möchten, können Sie die zugehörigen Schritte überspringen.
  
 
-**So erteilen Sie Ihrer Anwendung die Berechtigung zur Verwendung der API:**
+**So erteilen Sie Ihrer Anwendung die Berechtigung zur Verwendung der APIs**:
 
-1. Klicken Sie auf dem Blatt **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
+1. Klicken Sie auf der Seite **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
 
-2. Klicken Sie auf dem Blatt **Berichterstellungs-API-Anwendung** auf der Symbolleiste am oberen Rand auf **Einstellungen**. 
+2. Klicken Sie auf der Seite **Berichterstellungs-API-Anwendung** auf der Symbolleiste am oberen Rand auf **Einstellungen**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-3. Klicken Sie auf dem Blatt **Einstellungen** auf **Erforderliche Berechtigungen**. 
+3. Klicken Sie auf der Seite **Einstellungen** auf **Erforderliche Berechtigungen**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/06.png)
 
-4. Klicken Sie auf dem Blatt **Erforderliche Berechtigungen** in der **API**-Liste auf **Microsoft Azure Active Directory**. 
+4. Klicken Sie auf der Seite **Erforderliche Berechtigungen** in der **API**-Liste auf **Microsoft Azure Active Directory**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/07.png)
 
-5. Wählen Sie auf dem Blatt **Zugriff aktivieren** die Option **Verzeichnisdaten lesen** aus. 
+5. Wählen Sie auf der Seite **Zugriff aktivieren** die Option **Verzeichnisdaten lesen** aus, und deaktivieren Sie **Anmelden und Benutzerprofil lesen**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/08.png)
 
@@ -111,17 +128,37 @@ Durch diesen Schritt soll Ihrer Anwendung die Berechtigung **Verzeichnisdaten le
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/15.png)
 
-7. Klicken Sie auf **Berechtigungen erteilen** und dann auf **Ja**.
+7. Klicken Sie auf der Seite **Erforderliche Berechtigungen** auf der Symbolleiste am oberen Rand auf **Hinzufügen**.
+
+    ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/32.png)
+
+8. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **API auswählen**.
+
+    ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/31.png)
+
+9. Klicken Sie auf der Seite **API auswählen** auf **Microsoft Graph** und dann auf **Auswählen**.
+
+    ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/33.png)
+
+10. Wählen Sie auf der Seite **Zugriff aktivieren** die Option **Alle Überwachungsprotokolldaten lesen** aus, und klicken Sie dann auf **Auswählen**.  
+
+    ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/34.png)
+
+
+11. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **Fertig**.  
+
+12. Klicken Sie auf der Seite **Erforderliche Berechtigungen** auf der Symbolleiste am oberen Rand auf **Berechtigungen erteilen** und dann auf **Ja**.
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/17.png)
 
 
 ## <a name="gather-configuration-settings"></a>Erfassen von Konfigurationseinstellungen 
+
 In diesem Abschnitt wird gezeigt, wie Sie die folgenden Einstellungen aus Ihrem Verzeichnis abrufen:
 
-* Domänenname
-* Client-ID
-* Geheimer Clientschlüssel
+- Domänenname
+- Client-ID
+- Geheimer Clientschlüssel
 
 Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigurieren. 
 
@@ -133,7 +170,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Klicken Sie auf dem Blatt **Azure Active Directory** auf **Benutzerdefinierte Domänennamen**.
+2. Klicken Sie auf der Seite **Azure Active Directory** auf **Benutzerdefinierte Domänennamen**.
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/09.png) 
 
@@ -148,9 +185,9 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
    
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Klicken Sie auf dem Blatt **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
+2. Klicken Sie auf der Seite **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
 
-3. Klicken Sie auf dem Blatt **Berichterstellungs-API-Anwendung** unter **Anwendungs-ID** auf **Klicken Sie zum Kopieren**.
+3. Klicken Sie auf der Seite **Berichterstellungs-API-Anwendung** unter **Anwendungs-ID** auf **Zum Kopieren klicken**.
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/11.png) 
 
@@ -165,19 +202,19 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
    
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/01.png) 
 
-2. Klicken Sie auf dem Blatt **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
+2. Klicken Sie auf der Seite **App-Registrierungen** in der App-Liste auf **Berichterstellungs-API-Anwendung**.
 
 
-3. Klicken Sie auf dem Blatt **Berichterstellungs-API-Anwendung** auf der Symbolleiste am oberen Rand auf **Einstellungen**. 
+3. Klicken Sie auf der Seite **Berichterstellungs-API-Anwendung** auf der Symbolleiste am oberen Rand auf **Einstellungen**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/05.png)
 
-4. Klicken Sie auf dem Blatt **Einstellungen** im Abschnitt **APIR-Zugriff** auf **Schlüssel**. 
+4. Klicken Sie auf der Seite **Einstellungen** im Abschnitt **APIR-Zugriff** auf **Schlüssel**. 
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/12.png)
 
 
-5. Führen Sie auf dem Blatt **Schlüssel** die folgenden Schritte durch:
+5. Führen Sie auf der Seite **Schlüssel** die folgenden Schritte durch:
 
     ![Register application (Anwendung registrieren)](./media/active-directory-reporting-api-prerequisites-azure-portal/14.png)
 
@@ -191,6 +228,10 @@ Um den geheimen Clientschlüssel Ihrer Anwendung abzurufen, müssen Sie einen ne
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Möchten Sie programmgesteuert auf die Daten der Azure AD-Berichterstellungs-API zugreifen? Dann lesen Sie den Artikel [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
-* Wenn Sie weitere Informationen zur Azure Active Directory-Berichterstellung benötigen, finden Sie diese im [Leitfaden zur Azure Active Directory-Berichterstellung](active-directory-reporting-guide.md).  
+
+- [Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten](active-directory-reporting-api-with-certificates.md)
+
+- [Verschaffen eines ersten Eindrucks über die Berichterstellungs-APIs](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+
+- [Erstellen Ihrer eigenen Lösung](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

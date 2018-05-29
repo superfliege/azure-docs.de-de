@@ -2,27 +2,30 @@
 title: Zugreifen auf sichere Ressourcen ohne Benutzerinteraktion mithilfe von Azure AD v2.0 | Microsoft-Dokumentation
 description: Erstellen Sie Webanwendungen mithilfe der Azure AD-Implementierung des OAuth 2.0-Authentifizierungsprotokolls.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b7cfbd7-f89f-4e33-aff2-414edd584b07
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
+ms.author: celested
+ms.reviewer: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 28616657c5aae4f6ada1ec592a2a6287e8607b6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: db466a3ae416c47f86bb66b3bb8ba4bcd7741f5f
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157325"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow
-Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](http://tools.ietf.org/html/rfc6749#section-4.4), gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
+Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](http://tools.ietf.org/html/rfc6749#section-4.4), die in RFC 6749 angegeben ist und gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet wird, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
 
 > [!NOTE]
 > Der v2.0-Endpunkt unterstützt nicht alle Szenarios und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
@@ -60,7 +63,7 @@ Wenn Sie Berechtigungen in Ihrer App verwenden möchten, führen Sie die Schritt
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
 1. Wechseln Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) zu Ihrer Anwendung oder zu [Erstellen einer App](active-directory-v2-app-registration.md), sofern noch nicht geschehen. Sie müssen mindestens einen geheimen Anwendungsschlüssel verwenden, wenn Sie Ihre App erstellen.
-2. Suchen Sie den Abschnitt **Direkte Anwendungsberechtigungen**, und fügen Sie die Berechtigungen hinzu, die von Ihrer App benötigt werden.
+2. Suchen Sie nach dem Abschnitt **Microsoft Graph-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
 3. **Speichern** Sie die App-Registrierung.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
@@ -88,7 +91,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | Mandant |Erforderlich |Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Wenn Sie nicht wissen, zu welchem Mandanten der Benutzer gehört, und wenn der Benutzer sich bei jedem Mandanten anmelden können soll, verwenden Sie `common`. |
 | client_id |Erforderlich |Die Anwendungs-ID, die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
@@ -104,7 +107,7 @@ Wenn der Administrator die Berechtigungen für Ihre Anwendung genehmigt, lautet 
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- | --- |
 | Mandant |Der Verzeichnismandant, der Ihrer Anwendung die angeforderten Berechtigungen erteilt hat, im GUID-Format |
 | state |Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
@@ -117,9 +120,9 @@ Wenn der Administrator die Berechtigungen für Ihre Anwendung nicht genehmigt, l
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- | --- |
-| Fehler |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
+| error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Grundursache eines Fehlers identifizieren können. |
 
 Nachdem Sie eine erfolgreiche Antwort vom App-Bereitstellungsendpunkt erhalten haben, erhält Ihre App die direkten Anwendungsberechtigungen, die sie angefordert hat. Als Nächstes können Sie ein Token für eine gewünschte Ressource anfordern.
@@ -130,40 +133,49 @@ Sobald Sie die notwendige Autorisierung für Ihre Anwendung erhalten haben, kön
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 
 ```
-POST /common/oauth2/v2.0/token HTTP/1.1
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1           //Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials
+client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
+&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_secret=qWgdYAmab0YSkuL1qKv5bPX
+&grant_type=client_credentials
 ```
 
 ```
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
+| Mandant |Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | client_id |Erforderlich |Die Anwendungs-ID, die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
-| Bereich |Erforderlich |Der Wert für den `scope`-Parameter in dieser Anforderung muss dem Ressourcenbezeichner (App-ID-URI) der gewünschten Ressource entsprechen, versehen mit dem `.default`-Suffix. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
+| scope |Erforderlich |Der Wert für den `scope`-Parameter in dieser Anforderung muss dem Ressourcenbezeichner (App-ID-URI) der gewünschten Ressource entsprechen, versehen mit dem `.default`-Suffix. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
 | client_secret |Erforderlich |Der geheime Anwendungsschlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben |
 | grant_type |Erforderlich |Muss `client_credentials`lauten. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 
 ```
-POST /common/oauth2/v2.0/token HTTP/1.1
+POST /{tenant}/oauth2/v2.0/token HTTP/1.1               // Line breaks for clarity
 Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
-scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg&grant_type=client_credentials
+scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
+&client_id=97e0a5b7-d745-40b6-94fe-5f77d35c6e05
+&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJ{a lot of characters here}M8U3bSUKKJDEg
+&grant_type=client_credentials
 ```
 
-| Parameter | Bedingung | Beschreibung |
+| Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
+| Mandant |Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | client_id |Erforderlich |Die Anwendungs-ID, die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
-| Bereich |Erforderlich |Der Wert für den `scope`-Parameter in dieser Anforderung muss dem Ressourcenbezeichner (App-ID-URI) der gewünschten Ressource entsprechen, versehen mit dem `.default`-Suffix. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
-| client_assertion_type |erforderlich |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| client_assertion |erforderlich | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+| scope |Erforderlich |Der Wert für den `scope`-Parameter in dieser Anforderung muss dem Ressourcenbezeichner (App-ID-URI) der gewünschten Ressource entsprechen, versehen mit dem `.default`-Suffix. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
+| client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
+| client_assertion |required | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
 | grant_type |Erforderlich |Muss `client_credentials`lauten. |
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
@@ -179,7 +191,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | access_token |Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen wie einer Web-API verwenden. |
 | token_type |Gibt den Wert des Tokentyps an. Der einzige Typ, der von Azure AD unterstützt wird, ist `bearer`. |
@@ -201,9 +213,9 @@ Eine Fehlerantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
-| Fehler |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
+| error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können |
 | error_codes |Eine Liste der STS-spezifischen Fehlercodes, die bei der Diagnose helfen können |
 | timestamp |Der Zeitpunkt, zu dem der Fehler aufgetreten ist |

@@ -1,5 +1,5 @@
 ---
-title: Beispiele für Richtlinienvorlagen | Microsoft-Dokumentation
+title: Beispiele für Richtlinienvorlagen
 description: JSON-Beispiele für Azure Policy
 services: azure-policy
 documentationcenter: ''
@@ -16,11 +16,12 @@ ms.workload: ''
 ms.date: 01/17/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 0956f42812307f88e37ef12078a86eb85f407ce6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 458ce4fb77f501d5feba4cf732fe3ce9a49f9c21
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937197"
 ---
 # <a name="templates-for-azure-policy"></a>Vorlagen für Azure Policy
 
@@ -79,6 +80,9 @@ In der folgenden Tabelle sind Links zu JSON-Vorlagen für Azure Policy enthalten
 | [Zulässige Ressourcentypen](scripts/allowed-res-types.md) | Stellt sicher, dass nur genehmigte Ressourcentypen bereitgestellt werden. Sie geben ein Array von Ressourcentypen an, die erlaubt sind.  |
 | [Zulässige Speicherkonten-SKUs](scripts/allowed-stor-acct-skus.md) | Erfordert, dass Speicherkonten eine genehmigte SKU verwenden. Sie geben ein Array von zulässigen SKUs an. |
 | [Tag und Standardwert anwenden](scripts/apply-tag-def-val.md) | Fügt einen angegebenen Tagnamen und -wert an, wenn dieses Tag nicht bereitgestellt wird. Sie geben den anzuwendenden Tagnamen und -wert an.  |
+| [Überwachen der SQL-Datenbankverschlüsselung](scripts/sql-database-encryption-audit.md) | Überwacht, ob die transparente Datenverschlüsselung für die SQL-Datenbank deaktiviert ist. |
+| [Überwachen der SQL Server-Überwachungseinstellungen](scripts/sql-server-audit.md) | Überwacht SQL Server abhängig davon, ob die Überwachungseinstellungen aktiviert sind. |
+| [Erzwingen der Data Lake Store-Verschlüsselung](scripts/enforce-datalakestore-encryption.md) | Lehnt alle Data Lake Store-Konten ohne aktivierte Verschlüsselung ab. |
 | [Erzwingen eines Tags und dessen zugehörigen Werts](scripts/enforce-tag-val.md) | Erfordert einen angegebenen Tagnamen und-wert. Sie geben den zu erzwingenden Tagnamen und -wert an.  |
 | [Nicht zulässige Ressourcentypen](scripts/not-allowed-res-type.md) | Untersagt die Bereitstellung der angegebenen Ressourcentypen. Sie geben ein Array der zu blockierenden Ressourcentypen an.  |
 | [Verlangen der SQL Server-Version 12.0](scripts/req-sql-12.md) | Erfordert die Verwendung der SQL Server-Version 12.0.  |

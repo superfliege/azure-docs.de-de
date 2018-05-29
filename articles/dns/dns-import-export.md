@@ -1,9 +1,9 @@
 ---
-title: "Importieren und Exportieren einer Domänenzonendatei in Azure DNS mit Azure CLI 1.0 | Microsoft-Dokumentation"
-description: Informationen zum Importieren und Exportieren einer DNS-Zonendatei in Azure DNS mit Azure CLI 1.0
+title: Importieren und Exportieren einer Domänenzonendatei in Azure DNS mit Azure CLI 2.0 | Microsoft-Dokumentation
+description: Informationen zum Importieren und Exportieren einer DNS-Zonendatei in Azure DNS mit Azure CLI 2.0
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 ms.assetid: f5797782-3005-4663-a488-ac0089809010
 ms.service: dns
@@ -11,17 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2016
-ms.author: gwallace
-ms.openlocfilehash: d6d3fa7aa0e8b2462b3a6b4b66d3d87ab5535314
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/30/2018
+ms.author: kumud
+ms.openlocfilehash: 3aee4e20b43d946101e692f0dca76b07e04dbb7a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069376"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-10"></a>Importieren und Exportieren einer DNS-Zonendatei mit Azure CLI 1.0 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure CLI 2.0 
 
-In diesem Artikel wird das Importieren und Exportieren von DNS-Zonendateien für Azure DNS mit Azure CLI 1.0 erläutert.
+In diesem Artikel wird das Importieren und Exportieren von DNS-Zonendateien für Azure DNS mit Azure CLI 2.0 erläutert.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Einführung in die DNS-Zonenmigration
 
@@ -29,11 +30,8 @@ Eine DNS-Zonendatei ist eine Textdatei, die Details aller Domain Name System-Ein
 
 Für Azure DNS wird das Importieren und Exportieren von Zonendateien mit der Azure-Befehlszeilenschnittstelle (CLI) unterstützt. Das Importieren von Zonendateien mithilfe von Azure PowerShell oder dem Azure-Portal wird derzeit **nicht** unterstützt.
 
-Azure CLI 1.0 (Command Line Interface, Befehlszeilenschnittstelle) ist ein plattformübergreifendes Befehlszeilentool zum Verwalten von Azure-Diensten. Sie steht auf der [Azure-Downloadseite](https://azure.microsoft.com/downloads/)für Windows-, Mac- und Linux-Plattformen zur Verfügung. Die plattformübergreifende Unterstützung ist wichtig für das Importieren und Exportieren von Zonendateien, da die am häufigsten verwendete Namenserversoftware ([BIND](https://www.isc.org/downloads/bind/)) meist unter Linux ausgeführt wird.
+Azure CLI 2.0 (Command Line Interface, Befehlszeilenschnittstelle) ist ein plattformübergreifendes Befehlszeilentool zum Verwalten von Azure-Diensten. Sie steht auf der [Azure-Downloadseite](https://azure.microsoft.com/downloads/)für Windows-, Mac- und Linux-Plattformen zur Verfügung. Die plattformübergreifende Unterstützung ist wichtig für das Importieren und Exportieren von Zonendateien, da die am häufigsten verwendete Namenserversoftware ([BIND](https://www.isc.org/downloads/bind/)) meist unter Linux ausgeführt wird.
 
-> [!NOTE]
-> Es gibt derzeit zwei Versionen der Azure-CLI. CLI 1.0 basiert auf Node.js, und die Befehle beginnen mit „azure“.
-> CLI 2.0 basiert auf Python, und die Befehle beginnen mit „az“. In beiden Versionen wird der Import von Zonendateien unterstützt, es wird jedoch empfohlen, die Befehle von CLI 1.0 zu verwenden, wie auf dieser Seite beschrieben.
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Abrufen Ihrer vorhandenen DNS-Zonendatei
 
@@ -58,11 +56,10 @@ Beim Importieren einer Zonendatei wird eine neue Zone in Azure DNS erstellt, sof
 ### <a name="merge-behavior"></a>Zusammenführungsverhalten
 
 * Standardmäßig werden vorhandene und neue Ressourceneintragssätze zusammengeführt. Identische Datensätze innerhalb eines zusammengeführten Ressourceneintragssatzes werden dedupliziert.
-* Alternativ ersetzt der Importvorgang bei Angabe der Option `--force` vorhandene Ressourceneintragssätze durch neue Ressourceneintragssätze. Vorhandene Ressourceneintragssätze, die keinen entsprechenden Ressourceneintragssatz in der importierten Zonendatei haben, werden nicht entfernt.
-* Wenn Ressourceneintragssätze zusammengeführt werden, wird die Gültigkeitsdauer (Time to live, TTL) von bereits vorhandenen Ressourceneintragssätzen verwendet. Bei Verwendung von `--force` wird die Gültigkeitsdauer des neuen Ressourceneintragssatzes verwendet.
-* SOA-Parameter (Start of Authority, Autoritätsursprung) werden – mit Ausnahme von `host` – immer aus der importierten Zonendatei verwendet. Dies gilt unabhängig davon, ob `--force` verwendet wird. Auch für den Namenserver-Ressourceneintragssatz an der Zonenspitze wird die Gültigkeitsdauer stets der importierten Zonendatei entnommen.
-* Ein importierter CNAME-Eintrag ersetzt keinen vorhandenen CNAME-Eintrag mit dem gleichen Namen, es sei denn, der Parameter `--force` wurde angegeben.
-* Wenn ein Konflikt zwischen einem CNAME-Eintrag und einem weiteren Eintrag mit demselben Namen – aber einem anderen Typ – entsteht (unabhängig davon, welcher vorhanden oder neu ist), bleibt der vorhandene Eintrag erhalten. Dies gilt unabhängig von der Verwendung von `--force`.
+* Wenn Ressourceneintragssätze zusammengeführt werden, wird die Gültigkeitsdauer (Time to live, TTL) von bereits vorhandenen Ressourceneintragssätzen verwendet.
+* SOA-Parameter (Start of Authority, Autoritätsursprung) werden (mit Ausnahme von `host`) immer aus der importierten Zonendatei übernommen. Auch für den Namenserver-Ressourceneintragssatz an der Zonenspitze wird die Gültigkeitsdauer stets der importierten Zonendatei entnommen.
+* Ein importierter CNAME-Eintrag ersetzt keinen vorhandenen CNAME-Eintrag mit demselben Namen.  
+* Wenn ein Konflikt zwischen einem CNAME-Eintrag und einem weiteren Eintrag mit demselben Namen – aber einem anderen Typ – entsteht (unabhängig davon, welcher vorhanden oder neu ist), bleibt der vorhandene Eintrag erhalten. 
 
 ### <a name="additional-information-about-importing"></a>Weitere Informationen zum Importieren
 
@@ -81,7 +78,7 @@ Die folgenden Hinweise liefern weitere technische Details zum Zonenimportprozess
 Das Format des Befehls der Azure-Befehlszeilenschnittstelle zum Importieren einer DNS-Zone lautet:
 
 ```azurecli
-azure network dns zone import [options] <resource group> <zone name> <zone file name>
+az network dns zone import -g <resource group> -n <zone name> -f <zone file name>
 ```
 
 Werte:
@@ -90,80 +87,74 @@ Werte:
 * `<zone name>` ist der Name der Zone.
 * `<zone file name>` ist der Pfad/Name der zu importierenden Zonendatei.
 
-Wenn Sie eine Zone mit diesem Namen in der Ressourcengruppe nicht vorhanden ist, wird sie für Sie erstellt. Wenn die Zone bereits vorhanden ist, werden die importierten Ressourceneintragssätze mit vorhandenen Ressourceneintragssätzen zusammengeführt. Verwenden Sie die Option `--force` , um die vorhandenen Ressourceneintragssätze zu überschreiben.
+Wenn Sie eine Zone mit diesem Namen in der Ressourcengruppe nicht vorhanden ist, wird sie für Sie erstellt. Wenn die Zone bereits vorhanden ist, werden die importierten Ressourceneintragssätze mit vorhandenen Ressourceneintragssätzen zusammengeführt. 
 
-Um das Format einer Zonendatei zu überprüfen, ohne sie tatsächlich zu importieren, verwenden Sie die Option `--parse-only`.
 
 ### <a name="step-1-import-a-zone-file"></a>Schritt 1: Importieren einer Zonendatei
 
 So importieren Sie eine Zonendatei für die Zone **contoso.com**
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Azure CLI 1.0 verwenden.
+1. Falls noch nicht vorhanden, müssen Sie eine Ressourcen-Manager-Ressourcengruppe erstellen.
 
     ```azurecli
-    azure login
+    az group create --group myresourcegroup -l westeurope
     ```
 
-2. Wählen Sie das Abonnement aus, in dem Sie die neue DNS-Zone erstellen möchten.
+2. Um die Zone **contoso.com** aus der Datei **contoso.com.txt** in eine neue DNS-Zone in der Ressourcengruppe **myresourcegroup** zu importieren, führen Sie den Befehl `az network dns zone import` aus.<BR>Mit diesem Befehl wird die Zonendatei geladen und analysiert. Der Befehl führt eine Reihe von Befehlen für den Azure DNS-Dienst aus, um die Zone und alle Ressourceneintragssätze in der Zone zu erstellen. Außerdem werden mit dem Befehl im Konsolenfenster der Status sowie Fehler und Warnungen angegeben. Da Ressourceneintragssätze in Reihe erstellt werden, dauert der Import einer großen Zonendatei einige Minuten.
 
     ```azurecli
-    azure account set <subscription name>
+    az network dns zone import -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```
 
-3. Für Azure DNS kann nur der Azure-Ressourcen-Manager verwendet werden. Sie müssen für die Azure-Befehlszeilenschnittstelle also auf den Ressourcen-Manager-Modus umschalten.
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-4. Bevor Sie den Azure DNS-Dienst nutzen können, müssen Sie Ihr Abonnement für die Verwendung des Microsoft.Network-Ressourcenanbieters registrieren. (Dieser Schritt muss einmal für jedes Abonnement ausgeführt werden.)
-
-    ```azurecli
-    azure provider register Microsoft.Network
-    ```
-
-5. Falls noch nicht vorhanden, müssen Sie auch eine Ressourcen-Manager-Ressourcengruppe erstellen.
-
-    ```azurecli
-    azure group create myresourcegroup westeurope
-    ```
-
-6. Um die Zone **contoso.com** aus der Datei **contoso.com.txt** in eine neue DNS-Zone in der Ressourcengruppe **myresourcegroup** zu importieren, führen Sie den Befehl `azure network dns zone import` aus.<BR>Mit diesem Befehl wird die Zonendatei geladen und analysiert. Der Befehl führt eine Reihe von Befehlen für den Azure DNS-Dienst aus, um die Zone und alle Ressourceneintragssätze in der Zone zu erstellen. Außerdem werden mit dem Befehl im Konsolenfenster der Status sowie Fehler und Warnungen angegeben. Da Ressourceneintragssätze in Reihe erstellt werden, dauert der Import einer großen Zonendatei einige Minuten.
-
-    ```azurecli
-    azure network dns zone import myresourcegroup contoso.com contoso.com.txt
-    ```
-
-### <a name="step-2-verify-the-zone"></a>Schritt 2: Überprüfen der Zone
+### <a name="step-2-verify-the-zone"></a>Schritt 2: Überprüfen der Zone
 
 Um die DNS-Zone zu überprüfen, nachdem Sie die Datei importiert haben, können Sie eine der folgenden Methoden verwenden:
 
 * Sie können die Einträge mit dem unten angegebenen Azure CLI-Befehl auflisten:
 
     ```azurecli
-    azure network dns record-set list myresourcegroup contoso.com
+    az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
 * Sie können die Einträge mithilfe des PowerShell-Cmdlets `Get-AzureRmDnsRecordSet`auflisten.
-* Sie können `nslookup` verwenden, um die Namensauflösung für die Einträge zu überprüfen. Da die Zone nicht noch delegiert ist, müssen Sie die richtigen Azure DNS-Namenserver explizit angeben. Im folgenden Beispiel wird gezeigt, wie Sie die Namen der Namenserver abrufen, die der Zone zugewiesen sind. Außerdem wird veranschaulicht, wie Sie den Eintrag „www“ mit `nslookup`abfragen.
+* Sie können `nslookup` verwenden, um die Namensauflösung für die Einträge zu überprüfen. Da die Zone nicht noch delegiert ist, müssen Sie die richtigen Azure DNS-Namenserver explizit angeben. Im folgenden Beispiel wird gezeigt, wie Sie die Namen der Namenserver abrufen, die der Zone zugewiesen sind. Außerdem wird im Beispiel veranschaulicht, wie Sie den „www“-Eintrag mit `nslookup`abfragen.
 
-        C:\>azure network dns record-set show myresourcegroup contoso.com @ NS
-        info:Executing command network dns record-set show
-        + Looking up the DNS Record Set "@" of type "NS"
-        data:Id: /subscriptions/.../resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com/NS/@
-        data:Name: @
-        data:Type: Microsoft.Network/dnszones/NS
-        data:Location: global
-        data:TTL : 3600
-        data:NS records
-        data:Name server domain name : ns1-01.azure-dns.com
-        data:Name server domain name : ns2-01.azure-dns.net
-        data:Name server domain name : ns3-01.azure-dns.org
-        data:Name server domain name : ns4-01.azure-dns.info
-        data:
-        info:network dns record-set show command OK
+    ```azurecli
+    az network dns record-set ns list -g myresourcegroup -z  --output json 
+    ```
 
-        C:\> nslookup www.contoso.com ns1-01.azure-dns.com
+    ```json
+    [
+      {
+       .......
+       "name": "@",
+        "nsRecords": [
+          {
+            "additionalProperties": {},
+            "nsdname": "ns1-03.azure-dns.com."
+          },
+          {
+            "additionalProperties": {},
+            "nsdname": "ns2-03.azure-dns.net."
+          },
+          {
+            "additionalProperties": {},
+            "nsdname": "ns3-03.azure-dns.org."
+          },
+          {
+            "additionalProperties": {},
+            "nsdname": "ns4-03.azure-dns.info."
+          }
+        ],
+        "resourceGroup": "myresourcegroup",
+        "ttl": 86400,
+        "type": "Microsoft.Network/dnszones/NS"
+      }
+    ]
+    ```
+
+    ```cmd
+    nslookup www.contoso.com ns1-03.azure-dns.com
 
         Server: ns1-01.azure-dns.com
         Address:  40.90.4.1
@@ -171,8 +162,9 @@ Um die DNS-Zone zu überprüfen, nachdem Sie die Datei importiert haben, können
         Name:www.contoso.com
         Addresses:  134.170.185.46
         134.170.188.221
+    ```
 
-### <a name="step-3-update-dns-delegation"></a>Schritt 3: Aktualisieren der DNS-Delegierung
+### <a name="step-3-update-dns-delegation"></a>Schritt 3: Aktualisieren der DNS-Delegierung
 
 Nachdem Sie sichergestellt haben, dass die Zone richtig importiert wurde, müssen Sie die DNS-Delegierung so aktualisieren, dass auf die Azure DNS-Namenserver verwiesen wird. Weitere Informationen finden Sie im Artikel [Delegieren von Domänen an Azure DNS](dns-domain-delegation.md).
 
@@ -181,7 +173,7 @@ Nachdem Sie sichergestellt haben, dass die Zone richtig importiert wurde, müsse
 Das Format des Befehls der Azure-Befehlszeilenschnittstelle zum Importieren einer DNS-Zone lautet:
 
 ```azurecli
-azure network dns zone export [options] <resource group> <zone name> <zone file name>
+az network dns zone export -g <resource group> -n <zone name> -f <zone file name>
 ```
 
 Werte:
@@ -194,26 +186,8 @@ Sie müssen sich – wie beim Zonenimport – zunächst anmelden, Ihr Abonnement
 
 ### <a name="to-export-a-zone-file"></a>So exportieren Sie eine Zonendatei
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Azure-Befehlszeilenschnittstelle verwenden.
+Um die vorhandene Azure-DNS-Zone **contoso.com** in die Ressourcengruppe **myresourcegroup** in der Datei **contoso.com.txt** (im aktuellen Ordner) zu exportieren, führen Sie `azure network dns zone export` aus. Mit diesem Befehl wird der Azure DNS-Dienst aufgefordert, die Ressourceneintragssätze in der Zone aufzuzählen und die Ergebnisse in eine mit BIND kompatible Zonendatei zu exportieren.
 
-    ```azurecli
-    azure login
     ```
-
-2. Wählen Sie das Abonnement aus, in dem Sie Ihre DNS-Zone erstellen möchten.
-
-    ```azurecli
-    azure account set <subscription name>
-    ```
-
-3. Azure DNS ist ein nur über Azure-Ressourcen-Manager verfügbarer Dienst. Für die Azure-Befehlszeilenschnittstelle muss in den Ressourcen-Manager-Modus gewechselt werden.
-
-    ```azurecli
-    azure config mode arm
-    ```
-
-4. Um die vorhandene Azure-DNS-Zone **contoso.com** in die Ressourcengruppe **myresourcegroup** in der Datei **contoso.com.txt** (im aktuellen Ordner) zu exportieren, führen Sie `azure network dns zone export` aus. Mit diesem Befehl wird der Azure DNS-Dienst aufgefordert, die Ressourceneintragssätze in der Zone aufzuzählen und die Ergebnisse in eine mit BIND kompatible Zonendatei zu exportieren.
-
-    ```azurecli
-    azure network dns zone export myresourcegroup contoso.com contoso.com.txt
+    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
     ```

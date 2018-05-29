@@ -6,121 +6,176 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
-ms.service: active-directory
+ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/11/2017
+ms.date: 05/12/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c886655f0f9469b742532fa940519176a773ad41
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161055"
 ---
-# <a name="create-custom-roles-for-azure-role-based-access-control"></a>Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure
-Erstellen Sie eine benutzerdefinierte Rolle in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC), falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](role-assignments-powershell.md), der [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md) (Command-Line Interface, CLI) und der [REST-API](role-assignments-rest.md) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten gespeichert und können für mehrere Abonnements genutzt werden.
+# <a name="create-custom-roles-in-azure"></a>Erstellen von benutzerdefinierten Rollen in Azure
 
-Jeder Mandant kann bis zu 2.000 benutzerdefinierte Rollen erstellen. 
+Wenn die [integrierten Rollen](built-in-roles.md) nicht Ihre spezifischen Zugriffsanforderungen erfüllen, können Sie eigene benutzerdefinierte Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden. In diesem Artikel wird ein Beispiel für die ersten Schritte beim Erstellen von benutzerdefinierten Rollen mithilfe von PowerShell und der Azure CLI beschrieben.
 
-Das folgende Beispiel veranschaulicht eine benutzerdefinierte Rolle zum Überwachen und Neustarten virtueller Computer:
+## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Erstellen einer benutzerdefinierten Rolle zum Öffnen von Supportanfragen mithilfe von PowerShell
+
+Zum Erstellen einer benutzerdefinierten Rolle können Sie mit einer integrierten Rolle beginnen, sie bearbeiten und dann eine neue Rolle erstellen. In diesem Beispiel ist die integrierte [Leserolle](built-in-roles.md#reader) auf die Erstellung einer benutzerdefinierten Rolle mit dem Namen „Leserolle mit Zugriff auf Supporttickets“ zugeschnitten. Sie ermöglicht dem Benutzer, alle Inhalte des Abonnement anzuzeigen und auch Supportanfragen zu erstellen.
+
+> [!NOTE]
+> Die beiden einzigen integrierten Rollen, die einem Benutzer das Erstellen von Supportanfragen ermöglichen, sind [Besitzer](built-in-roles.md#owner) und [Mitwirkender](built-in-roles.md#contributor). Damit ein Benutzer Supportanfragen eröffnen kann, muss dem Benutzer eine Rolle für den Abonnementbereich zugewiesen werden, da alle Supportanfragen basierend auf einem Azure-Abonnement erstellt werden.
+
+Verwenden Sie in PowerShell den Befehl [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um die Rolle [Leser](built-in-roles.md#reader) im JSON-Format zu exportieren.
+
+```azurepowershell
+Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\rbacrole2.json
+```
+
+Die JSON-Ausgabe für die [Leserolle](built-in-roles.md#reader) sieht wie folgt aus. Eine typische Rolle besteht aus drei Hauptabschnitten: `Actions`, `NotActions` und `AssignableScopes`. Im Abschnitt `Actions` sind alle zulässigen Vorgänge für die Rolle aufgelistet. Um Vorgänge von `Actions` ausschließen, fügen Sie sie zu `NotActions` hinzu. Die effektiven Berechtigungen werden durch Subtrahieren der `NotActions`-Vorgänge von den `Actions`-Vorgängen berechnet.
 
 ```json
 {
-  "Name": "Virtual Machine Operator",
-  "Id": "cadb4a5a-4e7a-47be-84db-05cad13b6769",
-  "IsCustom": true,
-  "Description": "Can monitor and restart virtual machines.",
-  "Actions": [
-    "Microsoft.Storage/*/read",
-    "Microsoft.Network/*/read",
-    "Microsoft.Compute/*/read",
-    "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/restart/action",
-    "Microsoft.Authorization/*/read",
-    "Microsoft.Resources/subscriptions/resourceGroups/read",
-    "Microsoft.Insights/alertRules/*",
-    "Microsoft.Insights/diagnosticSettings/*",
-    "Microsoft.Support/*"
-  ],
-  "NotActions": [
+    "Name":  "Reader",
+    "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "IsCustom":  false,
+    "Description":  "Lets you view everything, but not make any changes.",
+    "Actions":  [
+                    "*/read"
+                ],
+    "NotActions":  [
 
-  ],
-  "AssignableScopes": [
-    "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624",
-    "/subscriptions/34370e90-ac4a-4bf9-821f-85eeedeae1a2"
-  ]
+                   ],
+    "AssignableScopes":  [
+                             "/"
+                         ]
 }
 ```
-## <a name="actions"></a>Actions
-Mit der **Actions** -Eigenschaft einer benutzerdefinierten Rolle werden die Azure-Vorgänge angegeben, auf die mit der Rolle Zugriff gewährt wird. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Vorgangszeichenfolgen weisen das Format `Microsoft.<ProviderName>/<ChildResourceType>/<action>` auf. Vorgangszeichenfolgen mit Platzhaltern (\*) gewähren Zugriff auf alle Vorgänge, die mit der Vorgangszeichenfolge übereinstimmen. Beispiel:
 
-* `*/read` gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.
-* `Microsoft.Compute/*` gewährt Zugriff auf alle Vorgänge für alle Ressourcentypen im Microsoft.Compute-Ressourcenanbieter.
-* `Microsoft.Network/*/read` gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen im Microsoft.Network-Ressourcenanbieter von Azure.
-* `Microsoft.Compute/virtualMachines/*` gewährt Zugriff auf alle Vorgänge virtueller Maschinen und die dazugehörigen untergeordneten Ressourcentypen.
-* `Microsoft.Web/sites/restart/Action` gewährt Zugriff zum Neustarten von Websites.
+Als Nächstes bearbeiten Sie die JSON-Ausgabe, um Ihre benutzerdefinierte Rolle zu erstellen. In diesem Fall muss für das Erstellen von Supporttickets der Vorgang `Microsoft.Support/*` hinzugefügt werden. Jeder Vorgang wird über einen Ressourcenanbieter verfügbar gemacht. Zum Abrufen einer Liste der Vorgänge für einen Ressourcenanbieter können Sie den Befehl [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) verwenden, oder sehen Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md) nach.
 
-Verwenden Sie `Get-AzureRmProviderOperation` (in PowerShell) oder `azure provider operations show` (in Azure-CLI) zum Auflisten von Vorgängen von Azure-Ressourcenanbietern. Sie können diese Befehle auch verwenden, um zu überprüfen, ob eine Vorgangszeichenfolge gültig ist, und um Zeichenfolgen für Platzhaltervorgänge zu erweitern.
+Es ist zwingend erforderlich, dass die Rolle die expliziten ID der Abonnements enthält, in denen sie verwendet wird. Die Abonnement-IDs sind unter `AssignableScopes` aufgelistet. Andernfalls können Sie die Rolle nicht in Ihr Abonnement importieren.
 
-```powershell
-Get-AzureRMProviderOperation Microsoft.Compute/virtualMachines/*/action | FT Operation, OperationName
+Schließlich müssen Sie die `IsCustom`-Eigenschaft auf `true` festlegen, um anzugeben, dass dies eine benutzerdefinierte Rolle ist.
 
-Get-AzureRMProviderOperation Microsoft.Network/*
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
+
+                   ],
+    "AssignableScopes":  [
+                             "/subscriptions/11111111-1111-1111-1111-111111111111"
+                         ]
+}
 ```
 
-![PowerShell-Screenshot – Get-AzureRMProviderOperation](./media/custom-roles/1-get-azurermprovideroperation-1.png)
+Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) und stellen die aktualisierte JSON-Rollendefinitionsdatei bereit.
+
+```azurepowershell
+New-AzureRmRoleDefinition -InputFile "C:\rbacrole2.json"
+```
+
+Nachdem Sie [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) ausgeführt haben, ist die neue benutzerdefinierte Rolle im Azure-Portal verfügbar und kann Benutzern zugewiesen werden.
+
+![Screenshot der in das Azure-Portal importierten benutzerdefinierten Rolle](./media/custom-roles/18.png)
+
+![Screenshot der Zuweisung der benutzerdefinierten importierten Rolle an einen Benutzer im gleichen Verzeichnis](./media/custom-roles/19.png)
+
+![Screenshot der Berechtigungen für die benutzerdefinierte importierte Rolle](./media/custom-roles/20.png)
+
+Benutzer mit dieser benutzerdefinierten Rolle können jetzt Supportanfragen erstellen.
+
+![Screenshot der Erstellung von Supportanfragen durch benutzerdefinierte Rolle](./media/custom-roles/21.png)
+
+Benutzer mit dieser benutzerdefinierten Rolle können keine weiteren Aktionen wie z.B. das Erstellen von virtuellen Computern oder Ressourcengruppen ausführen.
+
+![Screenshot einer benutzerdefinierten Rolle, die keine virtuellen Computer erstellen kann](./media/custom-roles/22.png)
+
+![Screenshot einer benutzerdefinierten Rolle, die keine neuen RG erstellen kann](./media/custom-roles/23.png)
+
+## <a name="create-a-custom-role-to-open-support-requests-using-azure-cli"></a>Erstellen einer benutzerdefinierten Rolle zum Öffnen von Supportanfragen mithilfe der Azure CLI
+
+Die Schritte zum Erstellen einer benutzerdefinierten Rolle mithilfe der Azure CLI sind ähnlich wie bei der Verwendung von PowerShell, mit dem Unterschied, dass die JSON-Ausgabe anders ist.
+
+In diesem Beispiel können Sie mit der integrierten Rolle [Leser](built-in-roles.md#reader) beginnen. Zum Auflisten der Aktionen der [Leserrolle](built-in-roles.md#reader) verwenden Sie den Befehl [az role definition list](/cli/azure/role/definition#az_role_definition_list).
 
 ```azurecli
-azure provider operations show "Microsoft.Compute/virtualMachines/*/action" --js on | jq '.[] | .operation'
-
-azure provider operations show "Microsoft.Network/*"
+az role definition list --name "Reader" --output json
 ```
 
-![Azure-Befehlszeilenschnittstelle – Screenshot: azure provider operations show „Microsoft.Compute/virtualMachines/\*/action“ ](./media/custom-roles/1-azure-provider-operations-show.png)
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Lets you view everything, but not make any changes.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "permissions": [
+      {
+        "actions": [
+          "*/read"
+        ],
+        "additionalProperties": {},
+        "notActions": [],
+      }
+    ],
+    "roleName": "Reader",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
 
-## <a name="notactions"></a>NotActions
-Verwenden Sie die **NotActions** -Eigenschaft, wenn der Satz von Vorgängen, die Sie zulassen möchten, durch Ausschließen eingeschränkter Vorgänge leichter zu definieren ist. Der von einer benutzerdefinierten Rolle gewährte Zugriff wird berechnet, indem die **NotActions**-Vorgänge von den **Actions**-Vorgängen abgezogen werden.
+Erstellen Sie eine JSON-Datei mit dem folgenden Format. Der Vorgang `Microsoft.Support/*` wurde in den `Actions`-Abschnitten hinzugefügt, sodass dieser Benutzer Supportanfragen erstellen kann und weiterhin die Leserolle innehat. Sie müssen die ID des Abonnements, in dem diese Rolle verwendet wird, im Abschnitt `AssignableScopes` hinzufügen.
 
-> [!NOTE]
-> Wenn einem Benutzer eine Rolle zugewiesen wird, mit der ein Vorgang in **NotActions** ausgeschlossen wird, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf denselben Vorgang gewährt wird, kann der Benutzer den Vorgang durchführen. **NotActions** ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Vorgänge zu erstellen, wenn bestimmte Vorgänge ausgeschlossen werden müssen.
->
->
+```json
+{
+    "Name":  "Reader support tickets access level",
+    "IsCustom":  true,
+    "Description":  "View everything in the subscription and also open support requests.",
+    "Actions":  [
+                    "*/read",
+                    "Microsoft.Support/*"
+                ],
+    "NotActions":  [
 
-## <a name="assignablescopes"></a>AssignableScopes
-Mit der **AssignableScopes**-Eigenschaft der benutzerdefinierten Rolle werden die Bereiche (Abonnements, Ressourcengruppen oder Ressourcen) angegeben, in denen die benutzerdefinierte Rolle für die Zuweisung verfügbar ist. Sie können die Verfügbarkeit der benutzerdefinierten Rolle für die Zuweisung auf die Abonnements oder Ressourcengruppen beschränken, für die dies erforderlich ist. Dadurch wird eine bessere Übersichtlichkeit der restlichen Abonnements oder Ressourcengruppen erzielt.
+                   ],
+    "AssignableScopes": [
+                            "/subscriptions/11111111-1111-1111-1111-111111111111"
+                        ]
+}
+```
 
-Beispiele für gültige zuweisbare Bereiche:
+Zum Erstellen der neuen benutzerdefinierten Rolle verwenden Sie den Befehl [az role definition create](/cli/azure/role/definition#az_role_definition_create).
 
-* „/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e“ und „/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624“: Macht die Rolle für die Zuweisung in zwei Abonnements verfügbar.
-* „/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e“: Macht die Rolle für die Zuweisung in einem einzelnen Abonnement verfügbar.
-* „/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network“: Macht die Rolle für die alleinige Zuweisung in der Netzwerkressourcengruppe verfügbar.
+```azurecli
+az role definition create --role-definition ~/roles/rbacrole1.json
+```
 
-> [!NOTE]
-> Sie müssen mindestens ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
->
->
+Die neue benutzerdefinierte Rolle ist jetzt im Azure-Portal verfügbar, und der Verwendungsprozess dieser Rolle ist der gleiche wie im vorhergehenden PowerShell-Abschnitt.
 
-## <a name="custom-roles-access-control"></a>Zugriffssteuerung für benutzerdefinierte Rollen
-Mit der **AssignableScopes** -Eigenschaft der benutzerdefinierten Rolle wird auch gesteuert, wer die Rolle anzeigen, ändern und löschen kann.
+![Screenshot des Azure-Portals mit der benutzerdefinierten, mithilfe der CLI 1.0 erstellten Rolle](./media/custom-roles/26.png)
 
-* Wer kann eine benutzerdefinierte Rolle erstellen?
-    Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen.
-    Der Ersteller der Rolle muss in der Lage sein, den `Microsoft.Authorization/roleDefinition/write` -Vorgang für alle **AssignableScopes** -Elemente der Rolle auszuführen.
-* Wer kann eine benutzerdefinierte Rolle ändern?
-    Besitzer (und Benutzerzugriffsadministratoren) von Abonnements, Ressourcengruppen und Ressourcen können benutzerdefinierte Rollen in diesen Bereichen ändern. Benutzer müssen in der Lage sein, den `Microsoft.Authorization/roleDefinition/write` -Vorgang für alle **AssignableScopes** -Elemente einer benutzerdefinierten Rolle auszuführen.
-* Wer kann benutzerdefinierte Rollen anzeigen?
-    Alle integrierten Rollen in Azure RBAC ermöglichen das Anzeigen von Rollen, die für die Zuweisung verfügbar sind. Benutzer, die den Vorgang `Microsoft.Authorization/roleDefinition/read` für einen Bereich durchführen können, können die RBAC-Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Rollenbasierte Zugriffssteuerung](role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal.
-* Eine Liste der verfügbaren Vorgänge finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md).
-* Informationen zur Zugriffsverwaltung mit:
-  * [PowerShell](role-assignments-powershell.md)
-  * [Azure-CLI](role-assignments-cli.md)
-  * [REST-API](role-assignments-rest.md)
-* [Integrierte Rollen:](built-in-roles.md)Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
+- [Grundlegendes zu Rollendefinitionen](role-definitions.md)
+- [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](role-assignments-powershell.md)
+- [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](role-assignments-cli.md)
+- [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](role-assignments-rest.md)

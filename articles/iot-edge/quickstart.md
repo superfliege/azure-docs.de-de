@@ -6,14 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 05/03/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f9ad01d3194ee0f8be4c3b4321c83c4bb15ea55c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 888f74d215956f4ad38605ca247f681da700a787
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166215"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Schnellstartanleitung: Bereitstellen des ersten IoT Edge-Moduls aus dem Azure-Portal auf einem Windows-Gerät – Vorschau
 
@@ -29,7 +30,7 @@ Bei diesem Tutorial wird davon ausgegangen, dass Sie einen Computer oder virtuel
    * Windows 10 
    * Windows Server
 2. Installieren Sie [Docker für Windows][lnk-docker], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
-3. Installieren Sie [Python 2.7 unter Windows][lnk-python], und vergewissern Sie sich, dass Sie den Pip-Befehl verwenden können.
+3. Installieren Sie [Python unter Windows][lnk-python], und vergewissern Sie sich, dass Sie den Befehl „pip“ verwenden können. Diese Schnellstartanleitung wurde mit Python-Versionen ab 2.7.9 und ab 3.5.4 getestet.  
 4. Führen Sie den folgenden Befehl aus, um das IoT Edge-Steuerskript herunterzuladen.
 
    ```cmd

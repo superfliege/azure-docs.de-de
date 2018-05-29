@@ -1,35 +1,36 @@
 ---
-title: "Office 365-Lösung in der Operations Management Suite (OMS) | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in OMS.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Log Analytics erstellt werden."
+title: Office 365-Verwaltungslösung in Azure | Microsoft-Dokumentation
+description: Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in Azure.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Log Analytics erstellt werden.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: 711071eaff7ab5e5199793663aa3cbb36a1e8d8a
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8797e08ad942687b7d2defd765f4fe3f9765812f
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777847"
 ---
-# <a name="office-365-solution-in-operations-management-suite-oms"></a>Office 365-Lösung in der Operations Management Suite (OMS)
+# <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
 ![Office 365-Logo](media/oms-solution-office-365/icon.png)
 
-Mit der Office 365-Lösung für die Operations Management Suite (OMS) können Sie Ihre Office 365-Umgebung in Log Analytics überwachen.  
+Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Log Analytics überwachen.
 
 - Überwachen Sie Benutzeraktivitäten mit Ihren Office 365-Konten, um die Verwendungsmuster zu analysieren und Trends beim Verhalten zu identifizieren. Beispielsweise können Sie spezielle Verwendungsszenarien extrahieren, wie z.B. Dateien, die außerhalb Ihrer Organisation freigegeben werden, oder die am häufigsten verwendeten SharePoint-Websites.
 - Überwachen Sie Administratoraktivitäten, um Konfigurationsänderungen oder Vorgänge mit erhöhten Rechten nachzuverfolgen.
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
-- Führen Sie eine operative Problembehandlung mithilfe der OMS-Suche in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../log-analytics/log-analytics-log-search.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wird.
@@ -47,7 +48,7 @@ Bei dieser Lösung werden keine Management Packs in verbundenen Verwaltungsgrupp
 ## <a name="configuration"></a>Konfiguration
 Nachdem Sie [die Office 365-Lösung zu Ihrem Abonnement hinzugefügt haben](../log-analytics/log-analytics-add-solutions.md), müssen Sie sie mit Ihrem Office 365-Abonnement verbinden.
 
-1. Fügen Sie die Alert Management-Lösung dem OMS-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](../log-analytics/log-analytics-add-solutions.md)beschriebenen Prozess verwenden.
+1. Fügen Sie die Warnungsverwaltungslösung dem Log Analytics-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](../log-analytics/log-analytics-add-solutions.md) beschriebenen Prozess verwenden.
 2. Navigieren Sie im OMS-Portal zu **Einstellungen**.
 3. Wählen Sie unter **Verbundene Datenquellen** die Option **Office 365** aus.
 4. Klicken Sie auf **Office 365 verbinden**.<br>![Office 365 verbinden](media/oms-solution-office-365/configure.png)
@@ -63,7 +64,7 @@ Die Office 365-Lösung ruft keine Daten von den [OMS-Agents](../log-analytics/lo
 Office 365 sendet immer, wenn ein Datensatz erstellt wird, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Log Analytics.
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
-Wenn Sie die Office 365-Lösung dem OMS-Arbeitsbereich hinzufügen, wird Ihrem OMS-Dashboard die Kachel **Office 365** hinzugefügt. Auf dieser Kachel werden ein Zahlenwert und eine grafische Darstellung der Anzahl von Computern in Ihrer Umgebung und jeweils die Updatekonformität angezeigt.<br><br>
+Wenn Sie die Office 365-Lösung dem Log Analytics-Arbeitsbereich hinzufügen, wird Ihr Dashboard um die Kachel **Office 365** erweitert. Auf dieser Kachel werden ein Zahlenwert und eine grafische Darstellung der Anzahl von Computern in Ihrer Umgebung und jeweils die Updatekonformität angezeigt.<br><br>
 ![Kachel mit der Office 365-Zusammenfassung](media/oms-solution-office-365/tile.png)  
 
 Klicken Sie auf die Kachel **Office 365**, um das Dashboard **Office 365** zu öffnen.
@@ -72,7 +73,7 @@ Klicken Sie auf die Kachel **Office 365**, um das Dashboard **Office 365** zu ö
 
 Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind die zehn wichtigsten Warnungen nach ihrer Anzahl aufgeführt. Dies richtet sich jeweils nach den Spaltenkriterien für den angegebenen Bereich und Zeitraum. Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie unten in der Spalte auf „Alle anzeigen“ oder indem Sie auf die Spaltenüberschrift klicken.
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |:--|:--|
 | Vorgänge | Bietet Informationen über die aktiven Benutzer aller Ihrer überwachten Office 365-Abonnements. Sie können auch die Anzahl der Aktivitäten sehen, die im Verlauf aufgetreten sind.
 | Exchange | Zeigt die Aufschlüsselung der Exchange Server-Aktivitäten, z.B. Berechtigungen zum Hinzufügen oder Festlegen von Postfächern. |
@@ -89,7 +90,7 @@ Alle im Log Analytics-Arbeitsbereich von der Office 365-Lösung erstellten Daten
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
@@ -106,7 +107,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-Basis
 Die folgenden Eigenschaften gelten für alle Azure Active Directory-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -117,12 +118,12 @@ Die folgenden Eigenschaften gelten für alle Azure Active Directory-Datensätze.
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory-Kontoanmeldung
 Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, sich anzumelden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
 | Anwendung | Die Anwendung, die das Kontoanmeldeereignis auslöst, z.B. Office 15. |
-| Client- | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
+| Client | Details zum Clientgerät, Betriebssystem des Geräts und Gerätebrowser, das bzw. der für das Kontoanmeldeereignis verwendet wurde. |
 | LoginStatus | Diese Eigenschaft stammt direkt von „OrgIdLogon.LoginStatus“. Die Zuordnung von verschiedenen interessanten Anmeldefehlern könnte durch Warnungsalgorithmen erfolgen. |
 | UserDomain | Die Informationen zur Mandantenidentität (Tenant Identity Information, TII). | 
 
@@ -130,7 +131,7 @@ Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure Active Directory-Objekten vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -147,7 +148,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure 
 ### <a name="data-center-security"></a>Sicherheit von Rechenzentren
 Diese Datensätze werden aus Überwachungsdaten für die Sicherheit von Rechenzentren erstellt.  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | EffectiveOrganization | Der Name des Mandanten, der Ziel der Erhöhung der Rechte/des Cmdlets war. |
 | ElevationApprovedTime | Der Zeitstempel des Zeitpunkts, als die Erhöhung der Rechte genehmigt wurde. |
@@ -162,7 +163,7 @@ Diese Datensätze werden aus Überwachungsdaten für die Sicherheit von Rechenze
 ### <a name="exchange-admin"></a>Exchange-Verwaltung
 Diese Datensätze werden erstellt, wenn Änderungen an der Exchange-Konfiguration vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -176,7 +177,7 @@ Diese Datensätze werden erstellt, wenn Änderungen an der Exchange-Konfiguratio
 ### <a name="exchange-mailbox"></a>Exchange-Postfach
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchange-Postfächern vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -198,11 +199,11 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchan
 ### <a name="exchange-mailbox-audit"></a>Exchange-Postfachüberwachung
 Diese Datensätze werden erstellt, wenn ein Eintrag zur Postfachüberwachung erstellt wird.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Element | Stellt das Element dar, für das der Vorgang ausgeführt wurde. | 
+| Item | Stellt das Element dar, für das der Vorgang ausgeführt wurde. | 
 | SendAsUserMailboxGuid | Die Exchange-GUID des Postfachs, auf das zugegriffen wurde, um die E-Mail zu senden. |
 | SendAsUserSmtp | Die SMTP-Adresse des Benutzers, dessen Identität angenommen wird. |
 | SendonBehalfOfUserMailboxGuid | Die Exchange-GUID des Postfachs, auf das zugegriffen wurde, um die E-Mail im Namen eines anderen Benutzers zu senden. |
@@ -212,7 +213,7 @@ Diese Datensätze werden erstellt, wenn ein Eintrag zur Postfachüberwachung ers
 ### <a name="exchange-mailbox-audit-group"></a>Exchange-Postfachüberwachung – Gruppen
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchange-Gruppen vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -230,7 +231,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchan
 ### <a name="sharepoint-base"></a>SharePoint-Basis
 Diese Eigenschaften gelten für alle SharePoint-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -246,7 +247,7 @@ Diese Eigenschaften gelten für alle SharePoint-Datensätze.
 ### <a name="sharepoint-schema"></a>SharePoint-Schema
 Diese Datensätze werden erstellt, wenn Konfigurationsänderungen an SharePoint vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -258,7 +259,7 @@ Diese Datensätze werden erstellt, wenn Konfigurationsänderungen an SharePoint 
 ### <a name="sharepoint-file-operations"></a>SharePoint-Dateivorgänge
 Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -278,7 +279,7 @@ Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 | --- | --- |
 |Anzahl aller Vorgänge in Ihrem Office 365-Abonnement |Type=OfficeActivity &#124; measure count() by Operation |
 |Verwendung von SharePoint-Websites|Type=OfficeActivity OfficeWorkload=sharepoint &#124; measure count() as Count by SiteUrl &#124; sort Count asc|
@@ -292,11 +293,11 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 
 Wenn Ihre Office 365-Lösung nicht wie erwartet Daten erfasst, überprüfen Sie den Status im OMS-Portal unter **Einstellungen** -> **Verbundene Datenquellen** -> **Office 365**. In der folgenden Tabelle werden die einzelnen Statuswerte beschrieben.
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 |:--|:--|
-| Aktiv | Das Office 365-Abonnement ist aktiv, und die Workload wurde erfolgreich mit Ihrem OMS-Arbeitsbereich verbunden. |
-| Ausstehend | Das Office 365-Abonnement ist aktiv, aber die Workload wurde noch nicht erfolgreich mit Ihrem OMS-Arbeitsbereich verbunden. Wenn Sie sich zum ersten Mal mit dem Office 365-Abonnement verbinden, weisen alle Workloads diesen Status auf, bis sie erfolgreich verbunden werden. Warten Sie 24 Stunden, bis alle Workloads auf „Aktiv“ wechseln. |
-| Inaktiv | Das Office 365-Abonnement weist einen inaktiven Status auf. Details finden Sie auf Ihrer Office 365-Verwaltungsseite. Nachdem Sie Ihr Office 365-Abonnement aktiviert haben, trennen Sie die Verbindung mit Ihrem OMS-Arbeitsbereich, und stellen Sie sie erneut her, um mit dem Empfang von Daten zu beginnen. |
+| Aktiv | Das Office 365-Abonnement ist aktiv, und die Workload wurde erfolgreich mit Ihrem Log Analytics-Arbeitsbereich verbunden. |
+| Ausstehend | Das Office 365-Abonnement ist aktiv, aber die Workload wurde noch nicht erfolgreich mit Ihrem Log Analytics-Arbeitsbereich verbunden. Wenn Sie sich zum ersten Mal mit dem Office 365-Abonnement verbinden, weisen alle Workloads diesen Status auf, bis sie erfolgreich verbunden werden. Warten Sie 24 Stunden, bis alle Workloads auf „Aktiv“ wechseln. |
+| Inaktiv | Das Office 365-Abonnement weist einen inaktiven Status auf. Details finden Sie auf Ihrer Office 365-Verwaltungsseite. Nachdem Sie Ihr Office 365-Abonnement aktiviert haben, trennen Sie die Verbindung mit Ihrem Log Analytics-Arbeitsbereich, und stellen Sie sie erneut her, um mit dem Empfang von Daten zu beginnen. |
 
 
 

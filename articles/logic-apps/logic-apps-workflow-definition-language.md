@@ -1,348 +1,479 @@
 ---
 title: Schema der Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Definieren von Workflows auf der Grundlage des Workflowdefinitionsschemas für Azure Logic Apps
+description: Schreiben benutzerdefinierter Workflowdefinitionen für Azure Logic Apps mit der Definitionssprache für Workflows
 services: logic-apps
-author: jeffhollan
-manager: anneta
+author: ecfan
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: article
-ms.date: 03/21/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 42932e6d1727a1444c62f565ae3c48dc178aeb2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
+ms.topic: reference
+ms.date: 04/30/2018
+ms.author: estfan
+ms.openlocfilehash: 14b273841d1fc15df635eb3b41b02ad77cbef90d
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33775280"
 ---
-# <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Schema der Definitionssprache für Workflows für Azure Logic Apps
+# <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps-Workflowdefinitionen mit dem Schema der Definitionssprache für Workflows
 
-Eine Workflowdefinition enthält die eigentliche Logik, die im Rahmen Ihrer Logik-App ausgeführt wird. Diese Definition enthält mindestens einen Trigger zum Starten der Logik-App sowie mindestens eine Aktion, die von der Logik-App ausgeführt werden soll.  
+Beim Erstellen eines Logic-App-Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beschreibt die Ihrem Workflow zugrunde liegende Definition die eigentliche Logik, die für Ihre Logik-App ausgeführt wird. Diese Beschreibung folgt einer Struktur, die vom Schema der Definitionssprache für Workflows definiert und überprüft wird und das Format [JavaScript Object Notation (JSON)](https://www.json.org/) verwendet. 
   
-## <a name="basic-workflow-definition-structure"></a>Grundlegende Workflowdefinitionsstruktur
+## <a name="workflow-definition-structure"></a>Struktur der Workflowdefinition
 
-Die grundlegende Struktur einer Workflowdefinition sieht wie folgt aus:  
+Eine Workflowdefinition verfügt über mindestens einen Trigger, der Ihre Logik-App instanziiert, sowie über mindestens eine Aktion, die Ihre Logik-App ausführt. 
+
+So sieht die allgemeine Struktur einer Workflowdefinition aus:  
   
 ```json
-{
-    "$schema": "<schema-of the-definition>",
-    "contentVersion": "<version-number-of-definition>",
-    "parameters": { <parameter-definitions-of-definition> },
-    "triggers": [ { <definition-of-flow-triggers> } ],
-    "actions": [ { <definition-of-flow-actions> } ],
-    "outputs": { <output-of-definition> }
+"definition": {
+  "$schema": "<workflow-definition-language-schema-version>",
+  "contentVersion": "<workflow-definition-version-number>",
+  "parameters": { "<workflow-parameter-definitions>" },
+  "triggers": { "<workflow-trigger-definitions>" },
+  "actions": { "<workflow-action-definitions>" },
+  "outputs": { "<workflow-output-definitions>" }
 }
 ```
   
-> [!NOTE]
-> Informationen zum Erstellen und Verwalten von Logik-App-Workflows finden Sie in der Dokumentation der [REST-API für die Workflowverwaltung](https://docs.microsoft.com/rest/api/logic/workflows).
-  
-|Elementname|Erforderlich|BESCHREIBUNG|  
-|------------------|--------------|-----------------|  
-|$schema|Nein |Gibt den Speicherort der JSON-Schemadatei an, die die Version der Definitionssprache beschreibt. Dieser Speicherort ist erforderlich, wenn Sie extern auf eine Definition verweisen. Der Speicherort für dieses Dokument lautet wie folgt: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`|  
-|contentVersion|Nein |Gibt die Definitionsversion an. Wenn Sie einen Workflow mithilfe der Definition bereitstellen, können Sie mit diesem Wert die Verwendung der richtigen Definition sicherstellen.|  
-|Parameter|Nein |Gibt Dateneingabeparameter für die Definition an. Es können bis zu 50 Parameter definiert werden.|  
-|Trigger|Nein |Gibt Informationen für die Trigger an, die den Workflow initiieren. Es können bis zu zehn Trigger definiert werden.|  
-|Aktionen|Nein |Gibt Aktionen an, die im Rahmen des Workflows ausgeführt werden. Es können bis zu 250 Aktionen definiert werden.|  
-|outputs|Nein |Gibt Informationen zur bereitgestellten Ressource an. Es können bis zu zehn Ausgaben definiert werden.|  
-  
+| Element | Erforderlich | BESCHREIBUNG | 
+|---------|----------|-------------| 
+| Definition | Ja | Das Startelement für Ihre Workflowdefinition | 
+| $schema | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |   
+| contentVersion | Nein  | Die Versionsnummer für Ihre Workflowdefinition, die standardmäßig „1.0.0.0“ lautet. Geben Sie einen zu verwendenden Wert an, um bei der Bereitstellung eines Workflows die richtige Definition besser ermitteln und bestätigen zu können. | 
+| Parameter | Nein  | Die Definitionen für mindestens einen Parameter, der Daten an Ihren Workflow übergibt <p><p>Maximale Anzahl von Parametern: 50 | 
+| Trigger | Nein  | Die Definitionen für mindestens einen Trigger, der Ihren Workflow instanziiert. Sie können mehrere Trigger definieren, jedoch nur mit der Definitionssprache für Workflows, nicht visuell mit dem Designer für Logik-Apps. <p><p>Maximale Anzahl von Triggern: 10 | 
+| Aktionen | Nein  | Die Definitionen für mindestens eine Aktion, die zur Workflowlaufzeit ausgeführt werden soll <p><p>Maximale Anzahl von Aktionen: 250 | 
+| outputs | Nein  | Die Definitionen für die Ausgaben, die von einer Workflowausführung zurückgegeben werden <p><p>Maximale Anzahl von Ausgaben: 10 |  
+|||| 
+
 ## <a name="parameters"></a>Parameter
 
-Dieser Abschnitt gibt alle Parameter an, die zur Bereitstellungszeit in der Workflowdefinition verwendet werden. Alle Parameter müssen zunächst in diesem Abschnitt deklariert werden, damit sie in anderen Abschnitten der Definition verwendet werden können.  
-  
-Das folgende Beispiel zeigt die Struktur einer Parameterdefinition:  
+Im Abschnitt `parameters` werden alle Workflowparameter definiert, die Ihre Logik-App bei der Bereitstellung zur Annahme von Eingaben verwendet. Bei der Bereitstellung sind sowohl Parameterdeklarationen als auch Parameterwerte erforderlich. Bevor Sie diese Parameter in anderen Workflowabschnitten verwenden können, müssen Sie sicherstellen, dass Sie alle Parameter in diesen Abschnitten deklarieren. 
+
+So sieht die allgemeine Struktur einer Parameterdefinition aus:  
 
 ```json
 "parameters": {
-    "<parameter-name>" : {
-        "type" : "<type-of-parameter-value>",
-        "defaultValue": <default-value-of-parameter>,
-        "allowedValues": [ <array-of-allowed-values> ],
-        "metadata" : { "key": { "name": "value"} }
+  "<parameter-name>": {
+    "type": "<parameter-type>",
+    "defaultValue": "<default-parameter-value>",
+    "allowedValues": [ <array-with-permitted-parameter-values> ],
+    "metadata": { 
+      "key": { 
+        "name": "<key-value>"
+      } 
     }
-}
+  }
+},
 ```
 
-|Elementname|Erforderlich|BESCHREIBUNG|  
-|------------------|--------------|-----------------|  
-|type|Ja|**Typ:** string <p> **Deklaration:**`"parameters": {"parameter1": {"type": "string"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** securestring <p> **Deklaration:**`"parameters": {"parameter1": {"type": "securestring"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **Typ:** int <p> **Deklaration:**`"parameters": {"parameter1": {"type": "int"}}` <p> **Spezifikation:**`"parameters": {"parameter1": {"value" : 5}}` <p> **Typ:** bool <p> **Deklaration:**`"parameters": {"parameter1": {"type": "bool"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": true }}` <p> **Typ:** array <p> **Deklaration:**`"parameters": {"parameter1": {"type": "array"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **Typ:** object <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Typ:** secureobject <p> **Deklaration:**`"parameters": {"parameter1": {"type": "object"}}` <p> **Spezifikation:**`"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **Hinweis:** Die Typen `securestring` und `secureobject` werden bei `GET`-Vorgängen nicht zurückgegeben. Dieser Typ muss für alle Kennwörter, Schlüssel und Geheimnisse verwendet werden.|  
-|defaultValue|Nein |Gibt den Standardwert für den Parameter an. Dieser wird verwendet, falls zum Zeitpunkt der Ressourcenerstellung kein Wert angegeben wird.|  
-|allowedValues|Nein |Gibt ein Array mit zulässigen Werten für den Parameter an.|  
-|metadata|Nein |Gibt zusätzliche Informationen zum Parameter an. Hierzu zählen beispielsweise eine lesbare Beschreibung oder Entwurfszeitdaten für Visual Studio oder andere Tools.|  
-  
-Das folgende Beispiel veranschaulicht die Verwendung eines Parameters im body-Abschnitt einer Aktion:  
-  
-```json
-"body" :
-{
-  "property1": "@parameters('parameter1')"
-}
-```
+| Element | Erforderlich | Typ | BESCHREIBUNG |  
+|---------|----------|------|-------------|  
+| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. | Der Typ des Parameters |
+| defaultValue | Nein  | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird | 
+| allowedValues | Nein  | Identisch mit `type` | Ein Array mit Werten, die vom Parameter akzeptiert werden können |  
+| metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Entwurfszeitdaten |  
+||||
 
- Parameter können auch in Ausgaben verwendet werden.  
-  
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen  
 
-Trigger und Aktionen geben die Aufrufe an, die an der Workflowausführung beteiligt sein können. Ausführliche Informationen zu diesem Abschnitt finden Sie unter [Workflowaktionen und -trigger](logic-apps-workflow-actions-triggers.md).
+In einer Workflowdefinition werden in den Abschnitten `triggers` und `actions` sämtliche Aufrufe definiert, die während der Ausführung Ihres Workflows auftreten. Informationen zur Syntax sowie weitere Informationen zu diesen Abschnitten finden Sie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md).
   
-## <a name="outputs"></a>Ausgaben  
+## <a name="outputs"></a>Ausgaben 
 
-Ausgaben geben Informationen an, die von einer Workflowausführung zurückgegeben werden können. Wenn Sie also beispielsweise einen bestimmten Status oder Wert bei jeder Ausführung nachverfolgen möchten, können Sie die entsprechenden Daten in die Ausführungsausgabe einbeziehen. Die Daten erscheinen in der Verwaltungs-REST-API für diese Ausführung sowie auf der Verwaltungsbenutzeroberfläche für diese Ausführung im Azure-Portal. Die Ausgaben können auch an andere externe Systeme wie etwa Power BI weitergeleitet werden, um Dashboards zu erstellen. Ausgaben werden *nicht* verwendet, um auf eingehende Anforderungen für die Dienst-REST-API zu reagieren. Das folgende Beispiel veranschaulicht, wie Sie mithilfe des Aktionstyps `response` auf eine eingehende Anforderung reagieren:
-  
+Definieren Sie im Abschnitt `outputs` die Daten, die Ihr Workflow nach Abschluss der Ausführung zurückgeben kann. Wenn Sie beispielsweise einen bestimmten Status oder Wert aus den einzelnen Ausführungen nachverfolgen möchten, müssen Sie angeben, dass diese Daten bei der Workflowausgabe zurückgegeben werden. 
+
+> [!NOTE]
+> Verwenden Sie nicht `outputs`, wenn Sie über die REST-API eines Diensts auf eingehende Anforderungen reagieren. Verwenden Sie stattdessen den Aktionstyp `Response`. Weitere Informationen finden Sie unter [Workflowtrigger und -aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md).
+
+So sieht die allgemeine Struktur einer Ausgabedefinition aus: 
+
 ```json
-"outputs": {  
-  "key1": {  
-    "value": "value1",  
-    "type" : "<type-of-value>"  
-  }  
+"outputs": {
+  "<key-name>": {  
+    "type": "<key-type>",  
+    "value": "<key-value>"  
+  }
 } 
 ```
 
-|Elementname|Erforderlich|BESCHREIBUNG|  
-|------------------|--------------|-----------------|  
-|key1|Ja|Gibt den Schlüsselbezeichner für die Ausgabe an. Ersetzen Sie **key1** durch einen Namen, den Sie zum Identifizieren der Ausgabe verwenden möchten.|  
-|value|Ja|Gibt den der Ausgabe an.|  
-|type|Ja|Gibt die Art des angegebenen Werts an. Mögliche Werttypen: <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
-  
-## <a name="expressions"></a>Ausdrücke  
+| Element | Erforderlich | Typ | BESCHREIBUNG | 
+|---------|----------|------|-------------| 
+| <*key-name*> | Ja | Zeichenfolge | Der Schlüsselname des Rückgabewerts der Ausgabe |  
+| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe | 
+| value | Ja | Identisch mit `type` | Der Rückgabewert der Ausgabe |  
+||||| 
 
-Bei den JSON-Werten in der Definition kann es sich um Literalwerte oder um Ausdrücke handeln, die bei der Verwendung der Definition ausgewertet werden. Beispiel:   
-  
+Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf der Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, wie z.B. PowerBI, um Dashboards erstellen zu können. 
+
+<a name="expressions"></a>
+
+## <a name="expressions"></a>Ausdrücke
+
+Mit JSON können Sie über Literalwerte verfügen, die zur Entwurfszeit vorhanden sind. Beispiel:
+
 ```json
-"name": "value"
+"customerName": "Sophia Owen", 
+"rainbowColors": ["red", "orange", "yellow", "green", "blue", "indigo", "violet"], 
+"rainbowColorsCount": 7 
 ```
 
- oder  
-  
+Sie können auch über Werte verfügen, die erst zur Laufzeit vorhanden sind. Zur Darstellung dieser Werte können Sie *Ausdrücke* verwenden, die zur Laufzeit ausgewertet werden. Ein Ausdruck ist eine Sequenz, die mindestens eine [Funktion](#functions), einen [Operator](#operators), eine Variable, einen expliziten Wert oder eine Konstante enthalten kann. In Ihrer Workflowdefinition können Sie einen Ausdruck an einer beliebigen Stelle in einem JSON-Zeichenfolgenwert verwenden, indem Sie dem Ausdruck das at-Zeichen voranstellen (@). Beim Auswerten eines Ausdrucks, der einen JSON-Wert darstellt, wird der Ausdruckskörper durch Entfernen des @-Zeichens extrahiert. Dies führt immer zu einem anderen JSON-Wert. 
+
+Für die zuvor definierte Eigenschaft `customerName` können Sie den Eigenschaftswert in einem Ausdruck beispielsweise über die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) abrufen und diesen Wert der Eigenschaft `accountName` zuweisen:
+
 ```json
-"name": "@parameters('password') "
+"customerName": "Sophia Owen", 
+"accountName": "@parameters('customerName')"
 ```
 
-> [!NOTE]
-> Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung unter Umständen noch nicht vorhanden sind. Einige dieser Werte können mithilfe von **Funktionen** abgerufen werden.  
-  
-Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwendet werden und ergeben immer einen anderen JSON-Wert. Wenn ein JSON-Wert als Ausdruck erkannt wurde, wird der Text des Ausdrucks durch Entfernen des @-Zeichens extrahiert. Falls Sie ein Zeichenfolgenliteral benötigen, das mit einem @-Zeichen beginnt, muss die Zeichenfolge wie folgt mit einem Escapezeichen versehen werden: @. Die folgenden Beispiele veranschaulichen die Auswertung von Ausdrücken.  
-  
-|JSON-Wert|Ergebnis|  
-|----------------|------------|  
-|"parameters"|Die Zeichenfolge „parameters“ wird zurückgegeben.|  
-|"parameters[1]"|Die Zeichenfolge „parameters[1]“ wird zurückgegeben.|  
-|"@@"|Eine Zeichenfolge, die \„\@\“ enthält, wird zurückgegeben (einzelnes Zeichen).|  
-|\" \@\"|Eine Zeichenfolge, die \„  \@ \“ enthält, wird zurückgegeben (zwei Zeichen).|  
-  
-Mit der *Zeichenfolgeninterpolation* können Ausdrücke auch innerhalb von Zeichenfolgen verwendet werden. Dabei werden die Ausdrücke in `@{ ... }` eingeschlossen. Beispiel:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
+Durch die *Zeichenfolgeninterpolation* können Sie auch mehrere Ausdrücke in Zeichenfolgen verwenden, die vom @-Zeichen und geschweiften Klammern ({}) umschlossen sind. Die Syntax sieht wie folgt aus:
 
-Das Ergebnis ist immer eine Zeichenfolge. Somit ist dieses Feature vergleichbar mit der `concat`-Funktion. Angenommen, Sie haben `myNumber` als `42` und `myString` als `sampleString` definiert:  
-  
-|JSON-Wert|Ergebnis|  
-|----------------|------------|  
-|"@parameters('myString')"|Gibt `sampleString` als Zeichenfolge zurück.|  
-|"@{parameters('myString')}"|Gibt `sampleString` als Zeichenfolge zurück.|  
-|"@parameters('myNumber')"|Gibt `42` als *Zahl* zurück.|  
-|"@{parameters('myNumber')}"|Gibt `42` als *Zeichenfolge* zurück.|  
-|"Answer is: @{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"@concat('Answer is: ', string(parameters('myNumber')))"|Gibt die Zeichenfolge `Answer is: 42` zurück.|  
-|"Answer is: @@{parameters('myNumber')}"|Gibt die Zeichenfolge `Answer is: @{parameters('myNumber')}` zurück.|  
-  
-## <a name="operators"></a>Operatoren  
+```json
+@{ "<expression1>", "<expression2>" }
+```
 
-Operatoren sind Zeichen, die Sie innerhalb von Ausdrücken oder Funktionen verwenden können. 
-  
-|Operator|Beschreibung|  
-|--------------|-----------------|  
-|zu erstellen und zu verwalten.|Mit dem Punktoperator können Sie auf Eigenschaften eines Objekts verweisen.|  
-|?|Mit dem Fragezeichenoperator können Sie ohne Laufzeitfehler auf NULL-Eigenschaften eines Objekts verweisen. Mithilfe des folgenden Ausdrucks können Sie beispielsweise NULL-Triggerausgaben behandeln: <p>`@coalesce(trigger().outputs?.body?.property1, 'my default value')`|  
-|'|Das einfache Anführungszeichen ist die einzige Möglichkeit zur Umschließung von Zeichenfolgenliteralen. Innerhalb eines Ausdrucks können keine doppelten Anführungszeichen verwendet werden, da dadurch ein Konflikt mit den JSON-Anführungszeichen entsteht, die den gesamten Ausdruck umschließen.|  
-|[]|Mit eckigen Klammern können Sie einen Wert aus einem Array mit einem bestimmten Index abzurufen. Wenn Sie also beispielsweise über eine Aktion verfügen, die `range(0,10)` an die `forEach`-Funktion übergibt, können Sie mithilfe dieser Funktion Elemente aus Arrays abrufen:  <p>`myArray[item()]`|  
-  
-## <a name="functions"></a>Funktionen  
+Das Ergebnis ist immer eine Zeichenfolge, wodurch diese Funktion der Funktion `concat()` ähnelt. Beispiel: 
 
-Sie können auch Funktionen innerhalb von Ausdrücken aufrufen. Die folgende Tabelle gibt Aufschluss über die Funktionen, die in einem Ausdruck verwendet werden können.  
-  
-|Ausdruck|Auswertung|  
-|----------------|----------------|  
-|"@function('Hello')"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „Hello“ als ersten Parameter auf.|  
-|"@function('It''s Cool!')"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „It's Cool!“ als ersten Parameter auf.|  
-|"@function().prop1"|Gibt den Wert der Eigenschaft „prop1“ des `myfunction`-Elements der Definition zurück.|  
-|"@function('Hello').prop1"|Ruft das Funktionselement der Definition mit dem Zeichenfolgenliteral „Hello“ als ersten Parameter auf und gibt die Eigenschaft „prop1“ des Objekts zurück.|  
-|"@function(parameters('Hello'))"|Wertet den Parameter „Hello“ aus und übergibt den Wert an die Funktion.|  
-  
-### <a name="referencing-functions"></a>Verweisfunktionen  
+```json
+"customerName": "First name: @{parameters('firstName')} Last name: @{parameters('lastName')}"
+```
 
-Mit diesen Funktionen können Sie auf Ausgaben anderer Aktionen in der Logik-App oder auf Werte verweisen, die beim Erstellen der Logik-App übergeben wurden. So können Sie beispielsweise in einem Schritt auf Daten aus einem anderen Schritt verweisen.  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|Parameter|Gibt einen in der Definition definierten Parameterwert zurück. <p>`parameters('password')` <p> **Parameternummer:** 1 <p> **Name:** Parameter <p> **Beschreibung:** Erforderlich. Der Name des Parameters mit den gewünschten Werten.|  
-|action|Ermöglicht es, den Wert eines Ausdrucks von anderen JSON-Name-Wert-Paaren oder von der Ausgabe der aktuellen Laufzeitaktion abzuleiten. Die im folgenden Beispiel durch „propertyPath“ dargestellte Eigenschaft ist optional. Ohne Angabe von „propertyPath" wird auf das gesamte Aktionsobjekt verwiesen. Diese Funktion kann nur innerhalb von do-until-Bedingungen einer Aktion verwendet werden. <p>`action().outputs.body.propertyPath`|  
-|Aktionen|Ermöglicht es, den Wert eines Ausdrucks von anderen JSON-Name-Wert-Paaren oder von der Ausgabe der Laufzeitaktion abzuleiten. Diese Ausdrücke deklarieren explizit, dass eine Aktion von einer anderen Aktion abhängt. Die im folgenden Beispiel durch „propertyPath“ dargestellte Eigenschaft ist optional. Ohne Angabe von „propertyPath" wird auf das gesamte Aktionsobjekt verwiesen. Abhängigkeiten können entweder mit diesem Element oder mithilfe des conditions-Elements angegeben werden. Sie müssen aber nicht beides für die gleiche abhängige Ressource verwenden. <p>`actions('myAction').outputs.body.propertyPath` <p> **Parameternummer:** 1 <p> **Name:** Aktionsname <p> **Beschreibung:** Erforderlich. Der Name der Aktion mit den gewünschten Werten. <p> Verfügbare Eigenschaften für das Aktionsobjekt: <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [Workflows](http://go.microsoft.com/fwlink/p/?LinkID=850646).|
-|trigger|Ermöglicht es, den Wert eines Ausdrucks von anderen JSON-Name-Wert-Paaren oder von der Ausgabe des Laufzeittriggers abzuleiten. Die im folgenden Beispiel durch „propertyPath“ dargestellte Eigenschaft ist optional. Ohne Angabe von „propertyPath" wird auf das gesamte Triggerobjekt verwiesen. <p>`trigger().outputs.body.propertyPath` <p>Bei Verwendung innerhalb der Eingaben eines Triggers gibt die Funktion die Ausgaben der vorherigen Ausführung zurück. Bei Verwendung innerhalb der Bedingung eines Triggers gibt die `trigger`-Funktion hingegen die Ausgaben der aktuellen Ausführung zurück. <p> Verfügbare Eigenschaften für das Triggerobjekt: <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [Workflows](http://go.microsoft.com/fwlink/p/?LinkID=850644).|
-|actionOutputs|Bei dieser Funktion handelt es sich um die Kurzform für `actions('actionName').outputs`. <p> **Parameternummer:** 1 <p> **Name:** Aktionsname <p> **Beschreibung:** Erforderlich. Der Name der Aktion mit den gewünschten Werten.|  
-|actionBody/body|Bei diesen Funktionen handelt es sich um die Kurzform für `actions('actionName').outputs.body`. <p> **Parameternummer:** 1 <p> **Name:** Aktionsname <p> **Beschreibung:** Erforderlich. Der Name der Aktion mit den gewünschten Werten.|  
-|triggerOutputs|Bei dieser Funktion handelt es sich um die Kurzform für `trigger().outputs`.|  
-|triggerBody|Bei dieser Funktion handelt es sich um die Kurzform für `trigger().outputs.body`.|  
-|item|Bei Verwendung innerhalb einer sich wiederholenden Aktion gibt diese Funktion das Element zurück, das sich im Array für diese Iteration der Aktion befindet. Wenn Sie also beispielsweise über eine Aktion verfügen, die für jedes Element eines Nachrichtenarrays ausgeführt wird, können Sie die folgende Syntax verwenden: <p>`"input1" : "@item().subject"`| 
-  
-### <a name="collection-functions"></a>Auflistungsfunktionen  
+Wenn Sie über eine Zeichenfolgenliteral verfügen, das mit dem @-Zeichen beginnt, stellen Sie dem @-Zeichen ein weiteres @-Zeichen als Escapezeichen voran: @@.
 
-Diese Funktionen werden für Auflistungen ausgeführt und gelten im Allgemeinen für Arrays, Zeichenfolgen und manchmal für Wörterbücher.  
+Diese Beispiele veranschaulichen die Auswertung von Ausdrücken:
+
+| JSON-Wert | Ergebnis |
+|------------|--------| 
+| "Sophia Owen" | Folgende Zeichen werden zurückgegeben: „Sophia Owen“ |
+| "array[1]" | Folgende Zeichen werden zurückgegeben: „array[1]“ |
+| "\@@\" | Folgende Zeichen werden als Zeichenfolge mit einem Zeichen zurückgegeben: „@“ |   
+| \" \@\" | Folgende Zeichen werden als Zeichenfolge mit zwei Zeichen zurückgegeben: „@“ |
+|||
+
+Angenommen, für "myBirthMonth" ist der Monat "January" und für "myAge" die Zahl 42 definiert:  
   
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|contains|Gibt „true“ zurück, wenn das Wörterbuch einen Schlüssel, die Liste einen Wert oder die Zeichenfolge eine Teilzeichenfolge enthält. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`contains('abacaba','aca')` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, in der gesucht werden soll. <p> **Parameternummer:** 2 <p> **Name:** Objekt suchen <p> **Beschreibung:** Erforderlich. Das Objekt, das innerhalb der **Auflistung** gesucht werden soll.|  
-|length|Gibt die Anzahl von Elementen in einem Array oder in einer Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `3` zurück:  <p>`length('abc')` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, deren Länge abgerufen werden soll.|  
-|empty|Gibt „true“ zurück, wenn das Objekt, das Array oder die Zeichenfolge leer ist. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`empty('')` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, für die geprüft werden soll, ob sie leer ist.|  
-|Schnittmenge|Gibt ein einzelnes Array oder Objekt zurück, für das gemeinsame Elemente zwischen Arrays oder Objekten übergeben wurden. Die folgende Funktion gibt beispielsweise `[1, 2]` zurück: <p>`intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])` <p>Bei den Parametern für die Funktion kann es sich entweder um eine Gruppe von Objekten oder um eine Gruppe von Arrays (aber nicht um eine Kombination aus beidem) handeln. Sollten zwei Objekte mit dem gleichen Namen vorhanden sein, wird jeweils das letzte Objekt in das endgültige Objekt aufgenommen. <p> **Parameternummer:** 1 ... *n* <p> **Name:** Auflistung *n* <p> **Beschreibung:** Erforderlich. Die auszuwertenden Auflistungen. Ein Objekt muss in allen übergebenen Auflistungen enthalten sein, um in das Ergebnis aufgenommen zu werden.|  
-|union|Gibt ein einzelnes Array oder Objekt mit allen Elementen zurück, die sich im an diese Funktion übergebenen Array oder Objekt befinden. Die folgende Funktion gibt beispielsweise `[1, 2, 3, 10, 101]` zurück: <p>`union([1, 2, 3], [101, 2, 1, 10])` <p>Bei den Parametern für die Funktion kann es sich entweder um eine Gruppe von Objekten oder um eine Gruppe von Arrays (aber nicht um eine Kombination aus beidem) handeln. Sollten in der endgültigen Ausgabe zwei Objekte mit dem gleichen Namen vorhanden sein, wird jeweils das letzte Objekt in das endgültige Objekt aufgenommen. <p> **Parameternummer:** 1 ... *n* <p> **Name:** Auflistung *n* <p> **Beschreibung:** Erforderlich. Die auszuwertenden Auflistungen. Ein Objekt, das in einer der Sammlungen enthalten ist, ist auch im Ergebnis enthalten.|  
-|first|Gibt das erste Element des übergebenen Arrays oder der übergebenen Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `0` zurück: <p>`first([0,2,3])` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, aus der das erste Objekt abgerufen werden soll.|  
-|last|Gibt das letzte Element des übergebenen Arrays oder der übergebenen Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `3` zurück: <p>`last('0123')` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, aus der das letzte Objekt abgerufen werden soll.|  
-|take|Gibt die ersten **Anzahl** Elemente aus dem übergebenen Array oder aus der übergebenen Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `[1, 2]` zurück:  <p>`take([1, 2, 3, 4], 2)` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, aus der die ersten **Anzahl** Objekte abgerufen werden sollen. <p> **Parameternummer:** 2 <p> **Name:** Anzahl <p> **Beschreibung:** Erforderlich. Die Anzahl von Objekten, die aus der **Auflistung** abgerufen werden sollen. Der Wert muss eine positive ganze Zahl sein.|  
-|skip|Gibt die Elemente im Array ab dem Index **Anzahl** zurück. Die folgende Funktion gibt beispielsweise `[3, 4]` zurück: <p>`skip([1, 2 ,3 ,4], 2)` <p> **Parameternummer:** 1 <p> **Name:** Auflistung <p> **Beschreibung:** Erforderlich. Die Auflistung, in der die ersten **Anzahl** Objekte übersprungen werden sollen. <p> **Parameternummer:** 2 <p> **Name:** Anzahl <p> **Beschreibung:** Erforderlich. Die Anzahl von Objekten, die am Beginn der **Auflistung** entfernt werden sollen. Der Wert muss eine positive ganze Zahl sein.|  
-|join|Gibt eine Zeichenfolge mit den einzelnen Elementen eines Arrays zurück und verknüpft diese mit einem Trennzeichen. Die folgende Funktion gibt beispielsweise `"1,2,3,4"` zurück:<br /><br /> `join([1, 2, 3, 4], ',')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Auflistung<br /><br /> **Beschreibung:** Erforderlich. Die Auflistung, deren Elemente verknüpft werden sollen.<br /><br /> **Parameternummer:** 2<br /><br /> **Name:** Trennzeichen<br /><br /> **Beschreibung:** Erforderlich. Die Zeichenfolge, die als Trennzeichen für Elemente fungieren soll.|  
-  
+```json
+"myBirthMonth": "January",
+"myAge": 42
+```
+
+Diese Beispiele veranschaulichen, wie die folgenden Ausdrücke ausgewertet werden:
+
+| JSON-Ausdruck | Ergebnis |
+|-----------------|--------| 
+| "@parameters('myBirthMonth')" | Folgende Zeichenfolge wird zurückgeben: „January“ |  
+| "@{parameters('myBirthMonth')}" | Folgende Zeichenfolge wird zurückgeben: „January“ |  
+| "@parameters('myAge')" | Folgende Zahl wird zurückgeben: 42 |  
+| "@{parameters('myAge')}" | Folgende Zahl wird als Zeichenfolge zurückgegeben: „42“ |  
+| "My age is @{parameters('myAge')}" | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
+| "@concat('My age is ', string(parameters('myAge')))" | Folgende Zeichenfolge wird zurückgegeben: „My age is 42“ |  
+| "My age is @@{parameters('myAge')}" | Folgende Zeichenfolge, die den Ausdruck enthält, wird zurückgegeben: „My age is @{parameters('myAge')}“ | 
+||| 
+
+Wenn Sie im Designer für Logik-Apps visuell arbeiten, können Sie über den Ausdrucks-Generator Ausdrücke erstellen. Beispiel: 
+
+![Designer für Logik-Apps > Ausdrucks-Generator](./media/logic-apps-workflow-definition-language/expression-builder.png)
+
+Wenn Sie fertig sind, wird der Ausdruck für die entsprechende Eigenschaft in Ihrer Workflowdefinition angezeigt, wie im folgenden Beispiel für die Eigenschaft `searchQuery`:
+
+```json
+"Search_tweets": {
+  "inputs": {
+    "host": {
+      "connection": {
+       "name": "@parameters('$connections')['twitter']['connectionId']"
+      }
+    }
+  },
+  "method": "get",
+  "path": "/searchtweets",
+  "queries": {
+    "maxResults": 20,
+    "searchQuery": "Azure @{concat('firstName','', 'LastName')}"
+  }
+},
+```
+
+<a name="operators"></a>
+
+## <a name="operators"></a>Operatoren
+
+In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren bestimmte Tasks aus. Sie verweisen z.B. auf eine Eigenschaft oder einen Wert in einem Array. 
+
+| Operator | Aufgabe | 
+|----------|------|
+| ' | Wenn Sie ein Zeichenfolgenliteral als Eingabe oder in Ausdrücken und Funktionen verwenden möchten, umschließen Sie die Zeichenfolge nur mit einfachen Anführungszeichen. Beispiel: `'<myString>'`. Verwenden Sie keine doppelten Anführungszeichen (""). Dies könnte zu einem Konflikt mit der JSON-Formatierung eines ganzen Ausdrucks führen. Beispiel:  <p>**Ja**: length('Hello') </br>**Nein**: length("Hello") <p>Wenn Sie Arrays oder Zahlen übergeben, sind keine umschließenden Satzzeichen erforderlich. Beispiel:  <p>**Ja**: length([1, 2, 3]) </br>**Nein**: length("[1, 2, 3]") | 
+| [] | Verwenden Sie eckige Klammern, um auf einen Wert an einer bestimmten Position (Index) in einem Array zu verweisen. So können Sie z.B. das zweite Element in einem Array abrufen: <p>`myArray[1]` | 
+| zu erstellen und zu verwalten. | Verwenden Sie den Punktoperator, um auf eine Eigenschaft in einem Objekt zu verweisen. So können Sie z.B. die Eigenschaft `name` für das JSON-Objekt `customer` abrufen: <p>`"@parameters('customer').name"` | 
+| ? | Mit dem Fragezeichenoperator können Sie ohne Laufzeitfehler auf NULL-Eigenschaften in einem Objekt verweisen. Mithilfe des folgenden Ausdrucks können Sie beispielsweise NULL-Ausgaben eines Triggers verarbeiten: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` | 
+||| 
+
+<a name="functions"></a>
+
+## <a name="functions"></a>Functions
+
+Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung einer Logik-App möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen* auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten. So können Sie beispielsweise mathematische Funktionen für Berechnungen verwenden, wie z.B. die Funktion [add()](../logic-apps/workflow-definition-language-functions-reference.md#add), welche die Summe aus ganzen Zahlen oder Gleitkommazahlen zurückgibt. 
+
+Im Folgenden finden Sie nur einige Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können: 
+
+| Aufgabe | Funktionssyntax | Ergebnis | 
+| ---- | --------------- | -------------- | 
+| Gibt eine Zeichenfolge in Kleinbuchstaben zurück. | toLower('<*text*>') <p>Beispiel: toLower('Hello') | "hello" | 
+| Gibt einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) zurück. | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
+|||| 
+
+Dieses Beispiel zeigt, wie Sie den Wert über den Parameter `customerName` abrufen und ihn mithilfe der Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) in einem Ausdruck der Eigenschaft `accountName` zuweisen können:
+
+```json
+"accountName": "@parameters('customerName')"
+```
+
+Im Folgenden werden einige weitere allgemeine Möglichkeiten für die Verwendung von Funktionen in Ausdrücken aufgeführt:
+
+| Aufgabe | Funktionssyntax in einem Ausdruck | 
+| ---- | -------------------------------- | 
+| Führen Sie Aufgaben mit einem Element durch, indem Sie dieses Element an eine Funktion übergeben. | "@<*functionName*>(<*item*>)" | 
+| 1. Rufen Sie den Wert von *parameterName* mit der geschachtelten Funktion `parameters()` ab. </br>2. Führen Sie Aufgaben mit dem Ergebnis durch, indem Sie diesen Wert an *functionName* übergeben. | "@<*functionName*>(parameters('<*parameterName*>'))" | 
+| 1. Rufen Sie das Ergebnis der geschachtelten inneren Funktion *functionName* ab. </br>2. Übergeben Sie das Ergebnis an die äußere Funktion *functionName2*. | "@<*functionName2*>(<*functionName*>(<*item*>))" | 
+| 1. Abrufen des Ergebnisses aus *functionName*. </br>2. Da das Ergebnis ein Objekt mit der Eigenschaft *propertyName* ist, rufen Sie den Eigenschaftswert ab. | "@<*functionName*>(<*item*>).<*propertyName*>" | 
+||| 
+
+Die Funktion `concat()` kann z.B. mindestens zwei Zeichenfolgenwerte als Parameter aufweisen. In dieser Funktion werden diese Zeichenfolgen in einer Zeichenfolge kombiniert. Sie können Zeichenfolgenliterale eingeben, wie z.B. „Sophia“ und „Owen“, um eine kombinierte Zeichenfolge („SophiaOwen“) zu erhalten:
+
+```json
+"customerName": "@concat('Sophia', 'Owen')"
+```
+
+Alternativ können Sie Zeichenfolgenwerte von Parametern abrufen. In diesem Beispiel wird die Funktion `parameters()` in den einzelnen `concat()`-Parametern und den Parametern `firstName` und `lastName` verwendet. Anschließend übergeben Sie die resultierenden Zeichenfolgen an die Funktion `concat()`, um eine kombinierte Zeichenfolge zu erhalten, wie z.B. „SophiaOwen“:
+
+```json
+"customerName": "@concat(parameters('firstName'), parameters('lastName'))"
+```
+
+Das Ergebnis wird in beiden Fällen und Beispielen der Eigenschaft `customerName` zugewiesen. 
+
+Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+Alternativ können Sie basierend auf dem allgemeinen Zweck der Funktionen mehr über diese erfahren.
+
+<a name="string-functions"></a>
+
 ### <a name="string-functions"></a>Zeichenfolgenfunktionen
 
-Die folgenden Funktionen gelten nur für Zeichenfolgen. Für Zeichenfolgen können auch einige Auflistungsfunktionen verwendet werden.  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|concat|Kombiniert eine beliebige Anzahl von Zeichenfolgen. Wenn der Parameter 1 also beispielsweise `p1` lautet, gibt diese Funktion `somevalue-p1-somevalue` zurück: <p>`concat('somevalue-',parameters('parameter1'),'-somevalue')` <p> **Parameternummer:** 1 ... *n* <p> **Name:** Zeichenfolge *n* <p> **Beschreibung:** Erforderlich. Die Zeichenfolgen, die zu einer einzelnen Zeichenfolge zusammengefasst werden sollen.|  
-|substring|Gibt eine Teilmenge der Zeichen aus einer Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `abc` zurück: <p>`substring('somevalue-abc-somevalue',10,3)` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, aus der die Teilzeichenfolge abgerufen wird. <p> **Parameternummer:** 2 <p> **Name:** Startindex <p> **Beschreibung:** Erforderlich. Der Index für den Beginn der Teilzeichenfolge im Parameter 1. <p> **Parameternummer:** 3 <p> **Name:** Länge <p> **Beschreibung:** Erforderlich. Die Länge der Teilzeichenfolge.|  
-|replace|Ersetzt eine Zeichenfolge durch eine angegebene Zeichenfolge. Die folgende Funktion gibt beispielsweise `the new string` zurück: <p>`replace('the old string', 'old', 'new')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die nach dem Parameter 2 durchsucht und mit dem Parameter 3 ersetzt wird, wenn der Parameter 2 im Parameter 1 gefunden wird. <p> **Parameternummer:** 2 <p> **Name:** Alte Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die durch den Parameter 3 ersetzt werden soll, wenn im Parameter 1 eine Übereinstimmung gefunden wird. <p> **Parameternummer:** 3 <p> **Name:** Neue Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, mit der die Zeichenfolge im Parameter 2 ersetzt werden soll, wenn im Parameter 1 eine Übereinstimmung gefunden wird.|  
-|GUID|Diese Funktion generiert eine global eindeutige Zeichenfolge (GUID). Beispiel für eine GUID, die mit dieser Funktion generiert werden kann: `c2ecc88d-88c8-4096-912c-d6f2e2b138ce` <p>`guid()` <p> **Parameternummer:** 1 <p> **Name:** Format <p> **Beschreibung:** Optional. Ein einzelner Formatbezeichner, der angibt, [wie der Wert dieser GUID formatiert werden soll](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). Mögliche Formatparameter sind „N“, „D“, „B“, „P“ und „X“. Sollte kein Format angegeben werden, wird „D“ verwendet.|  
-|toLower|Konvertiert eine Zeichenfolge in Kleinbuchstaben. Die folgende Funktion gibt beispielsweise `two by two is four` zurück: <p>`toLower('Two by Two is Four')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in Kleinbuchstaben konvertiert werden soll. Sollte für ein Zeichen in der Zeichenfolge keine klein geschriebene Variante verfügbar sein, wird das Zeichen unverändert in die zurückgegebene Zeichenfolge eingefügt.|  
-|toUpper|Konvertiert eine Zeichenfolge in Großbuchstaben. Die folgende Funktion gibt beispielsweise `TWO BY TWO IS FOUR` zurück: <p>`toUpper('Two by Two is Four')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in Großbuchstaben konvertiert werden soll. Sollte für ein Zeichen in der Zeichenfolge keine groß geschriebene Variante verfügbar sein, wird das Zeichen unverändert in die zurückgegebene Zeichenfolge eingefügt.|  
-|indexof|Sucht den Index eines Werts innerhalb einer Zeichenfolge ohne Berücksichtigung der Groß-/Kleinschreibung. Die folgende Funktion gibt beispielsweise `7` zurück: <p>`indexof('hello, world.', 'world')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält. <p> **Parameternummer:** 2 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Wert, für den der Index ermittelt werden soll.|  
-|lastindexof|Sucht den letzten Index eines Werts innerhalb einer Zeichenfolge ohne Berücksichtigung der Groß-/Kleinschreibung. Die folgende Funktion gibt beispielsweise `3` zurück: <p>`lastindexof('foofoo', 'foo')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält. <p> **Parameternummer:** 2 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Wert, für den der Index ermittelt werden soll.|  
-|startswith|Überprüft, ob die Zeichenfolge mit einem Wert beginnt (ohne Berücksichtigung der Groß-/Kleinschreibung). Die folgende Funktion gibt beispielsweise `true` zurück: <p>`startswith('hello, world', 'hello')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält. <p> **Parameternummer:** 2 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise beginnt.|  
-|endswith|Überprüft, ob die Zeichenfolge mit einem Wert endet (ohne Berücksichtigung der Groß-/Kleinschreibung). Die folgende Funktion gibt beispielsweise `true` zurück: <p>`endswith('hello, world', 'world')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die möglicherweise den Wert enthält. <p> **Parameternummer:** 2 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Wert, mit dem die Zeichenfolge möglicherweise endet.|  
-|split|Teilt die Zeichenfolge mithilfe eines Trennzeichens auf. Die folgende Funktion gibt beispielsweise `["a", "b", "c"]` zurück: <p>`split('a;b;c',';')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die aufzuteilende Zeichenfolge. <p> **Parameternummer:** 2 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Das Trennzeichen.|  
-  
-### <a name="logical-functions"></a>Logische Funktionen  
+Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden. Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden. 
 
-Diese Funktionen können innerhalb von Bedingungen zur Auswertung einer beliebigen Art von Logik verwendet werden.  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|equals|Gibt „true“ zurück, wenn zwei Werte gleich sind. Wenn „parameter1“ also beispielsweise „someValue“ lautet, gibt diese Funktion `true` zurück: <p>`equals(parameters('parameter1'), 'someValue')` <p> **Parameternummer:** 1 <p> **Name:** Objekt 1 <p> **Beschreibung:** Erforderlich. Das Objekt, das mit **Objekt 2** verglichen werden soll. <p> **Parameternummer:** 2 <p> **Name:** Objekt 2 <p> **Beschreibung:** Erforderlich. Das Objekt, das mit **Objekt 1** verglichen werden soll.|  
-|less|Gibt „true“ zurück, wenn das erste Argument kleiner als das zweite Argument ist. Beachten Sie, dass nur Werte vom Typ „integer“, „float“ oder „string“ verwendet werden können. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`less(10,100)` <p> **Parameternummer:** 1 <p> **Name:** Objekt 1 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es kleiner als **Objekt 2** ist. <p> **Parameternummer:** 2 <p> **Name:** Objekt 2 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es größer als **Objekt 1** ist.|  
-|lessOrEquals|Gibt „true“ zurück, wenn das erste Argument im Vergleich zum zweiten Argument kleiner oder gleich groß ist. Beachten Sie, dass nur Werte vom Typ „integer“, „float“ oder „string“ verwendet werden können. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`lessOrEquals(10,10)` <p> **Parameternummer:** 1 <p> **Name:** Objekt 1 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es im Vergleich zu **Objekt 2** kleiner oder gleich groß ist. <p> **Parameternummer:** 2 <p> **Name:** Objekt 2 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es im Vergleich zu **Objekt 1** größer oder gleich groß ist.|  
-|greater|Gibt „true“ zurück, wenn das erste Argument größer als das zweite Argument ist. Beachten Sie, dass nur Werte vom Typ „integer“, „float“ oder „string“ verwendet werden können. Die folgende Funktion gibt beispielsweise `false` zurück:  <p>`greater(10,10)` <p> **Parameternummer:** 1 <p> **Name:** Objekt 1 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es größer als **Objekt 2** ist. <p> **Parameternummer:** 2 <p> **Name:** Objekt 2 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es kleiner als **Objekt 1** ist.|  
-|greaterOrEquals|Gibt „true“ zurück, wenn das erste Argument im Vergleich zum zweiten Argument größer oder gleich groß ist. Beachten Sie, dass nur Werte vom Typ „integer“, „float“ oder „string“ verwendet werden können. Die folgende Funktion gibt beispielsweise `false` zurück: <p>`greaterOrEquals(10,100)` <p> **Parameternummer:** 1 <p> **Name:** Objekt 1 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es im Vergleich zu **Objekt 2** größer oder gleich groß ist. <p> **Parameternummer:** 2 <p> **Name:** Objekt 2 <p> **Beschreibung:** Erforderlich. Das Objekt, für das geprüft werden soll, ob es im Vergleich zu **Objekt 1** kleiner oder gleich groß ist.|  
-|and|Gibt „true“ zurück, wenn beide Parameter „true“ sind. Bei beiden Argumenten muss es sich um boolesche Werte handeln. Die folgende Funktion gibt beispielsweise `false` zurück: <p>`and(greater(1,10),equals(0,0))` <p> **Parameternummer:** 1 <p> **Name:** Boolescher Wert 1 <p> **Beschreibung:** Erforderlich. Das erste Argument, das `true` sein muss. <p> **Parameternummer:** 2 <p> **Name:** Boolescher Wert 2 <p> **Beschreibung:** Erforderlich. Das zweite Argument, das `true` sein muss.|  
-|oder|Gibt „true“ zurück, wenn einer der Parameter „true“ ist. Bei beiden Argumenten muss es sich um boolesche Werte handeln. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`or(greater(1,10),equals(0,0))` <p> **Parameternummer:** 1 <p> **Name:** Boolescher Wert 1 <p> **Beschreibung:** Erforderlich. Das erste Argument, das möglicherweise `true` ist. <p> **Parameternummer:** 2 <p> **Name:** Boolescher Wert 2 <p> **Beschreibung:** Erforderlich. Das zweite Argument, das möglicherweise `true` ist.|  
-|not|Gibt „true“ zurück, wenn die Parameter `false` sind. Bei beiden Argumenten muss es sich um boolesche Werte handeln. Die folgende Funktion gibt beispielsweise `true` zurück: <p>`not(contains('200 Success','Fail'))` <p> **Parameternummer:** 1 <p> **Name:** Boolescher Wert <p> **Beschreibung:** Gibt „true“ zurück, wenn die Parameter `false` sind. Bei beiden Argumenten muss es sich um boolesche Werte handeln. Die folgende Funktion gibt `true` zurück: `not(contains('200 Success','Fail'))`|  
-|if|Macht die Rückgabe eines angegebenen Werts davon abhängig, ob der Ausdruck `true` oder `false` ergeben hat.  Die folgende Funktion gibt beispielsweise `"yes"` zurück: <p>`if(equals(1, 1), 'yes', 'no')` <p> **Parameternummer:** 1 <p> **Name:** Ausdruck <p> **Beschreibung:** Erforderlich. Ein boolescher Wert, der bestimmt, welchen Wert der Ausdruck zurückgeben soll. <p> **Parameternummer:** 2 <p> **Name:** True <p> **Beschreibung:** Erforderlich. Der zurückzugebende Wert, wenn der Ausdruck `true` ist. <p> **Parameternummer:** 3 <p> **Name:** False <p> **Beschreibung:** Erforderlich. Der zurückzugebende Wert, wenn der Ausdruck `false` ist.|  
-  
-### <a name="conversion-functions"></a>Konvertierungsfunktionen  
+| Zeichenfolgenfunktion | Aufgabe | 
+| --------------- | ---- | 
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombiniert mindestens zwei Zeichenfolgen miteinander und gibt die kombinierte Zeichenfolge zurück. | 
+| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Überprüft, ob eine Zeichenfolge mit der angegebenen Teilzeichenfolge endet. | 
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generiert einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als Zeichenfolge. | 
+| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Gibt die Anfangsposition für eine Teilzeichenfolge zurück. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Gibt die Endposition für eine Teilzeichenfolge zurück. | 
+| [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Gibt ein Array zurück, das sämtliche Zeichen aus einer Zeichenfolge enthält und in dem die einzelnen Zeichen mit einem bestimmten Trennzeichen getrennt werden. | 
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge beginnt. | 
+| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit der angegebenen Position. | 
+| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Gibt eine Zeichenfolge in Kleinbuchstaben zurück. | 
+| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Gibt eine Zeichenfolge in Großbuchstaben zurück. | 
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. | 
+||| 
 
-Diese Funktionen dienen zum Konvertieren zwischen den einzelnen nativen Typen in der Sprache:  
-  
-- Zeichenfolge  
-  
-- integer  
-  
-- Gleitkommawert  
-  
-- boolean  
-  
-- Arrays  
-  
-- Wörterbücher  
+<a name="collection-functions"></a>
 
--   Formulare  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|int|Konvertiert den Parameter in eine ganze Zahl. Die folgende Funktion gibt beispielsweise 100 als Zahl (und nicht als Zeichenfolge) zurück: <p>`int('100')` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in eine ganze Zahl konvertiert wird.|  
-|Zeichenfolge|Konvertiert den Parameter in eine Zeichenfolge. Die folgende Funktion gibt beispielsweise `'10'` zurück: <p>`string(10)` <p>Sie können auch ein Objekt in eine Zeichenfolge konvertieren. Wenn es sich also beispielsweise bei dem Parameter `myPar` um ein Objekt mit der einzelnen Eigenschaft `abc : xyz` handelt, gibt die folgende Funktion `{"abc" : "xyz"}` zurück: <p>`string(parameters('myPar'))` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in eine Zeichenfolge konvertiert wird.|  
-|json|Konvertiert den Parameter in einen JSON-Wert und ist das Gegenteil von `string()`. Die folgende Funktion gibt beispielsweise `[1,2,3]` als Array (und nicht als Zeichenfolge) zurück: <p>`json('[1,2,3]')` <p>Analog dazu können Sie eine Zeichenfolge in ein Objekt konvertieren. Die folgende Funktion gibt beispielsweise `{ "abc" : "xyz" }` zurück: <p>`json('{"abc" : "xyz"}')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die in einen nativen Typwert konvertiert werden soll. <p>Die `json()`-Funktion unterstützt auch XML-Eingaben. So kann beispielsweise der folgende Parameterwert in JSON konvertiert werden: <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>Ergebnis: <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|Gleitkommawert|Konvertiert das Parameterargument in eine Gleitkommazahl. Die folgende Funktion gibt beispielsweise `10.333` zurück: <p>`float('10.333')` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in eine Gleitkommazahl konvertiert wird.|  
-|bool|Konvertiert den Parameter in einen booleschen Wert. Die folgende Funktion gibt beispielsweise `false` zurück: <p>`bool(0)` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in einen booleschen Wert konvertiert wird.|  
-|base64|Rückkehr zur base64-Darstellung der Eingabezeichenfolge. Die folgende Funktion gibt beispielsweise `c29tZSBzdHJpbmc=` zurück: <p>`base64('some string')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge 1 <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die als Base64-Darstellung codiert werden soll.|  
-|base64ToBinary|Gibt eine binäre Darstellung einer Base64-codierten Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise die binäre Darstellung von `some string` zurück: <p>`base64ToBinary('c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Base64-codierte Zeichenfolge.|  
-|base64ToString|Gibt eine Zeichenfolgendarstellung einer Base64-codierten Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `some string` zurück: <p>`base64ToString('c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Base64-codierte Zeichenfolge.|  
-|Binär|Gibt eine binäre Darstellung eines Werts zurück.  Die folgende Funktion gibt beispielsweise eine binäre Darstellung von `some string` zurück: <p>`binary('some string')` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in einen Binärwert konvertiert wird.|  
-|dataUriToBinary|Gibt eine binäre Darstellung eines Daten-URI zurück. Die folgende Funktion gibt beispielsweise die binäre Darstellung von `some string` zurück: <p>`dataUriToBinary('data:;base64,c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Daten-URI, der in eine binäre Darstellung konvertiert werden soll.|  
-|dataUriToString|Gibt eine Zeichenfolgendarstellung eines Daten-URI zurück. Die folgende Funktion gibt beispielsweise `some string` zurück: <p>`dataUriToString('data:;base64,c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge<p> **Beschreibung:** Erforderlich. Der Daten-URI, der in eine Zeichenfolgendarstellung konvertiert werden soll.|  
-|dataUri|Gibt einen Daten-URI eines Werts zurück. Die folgende Funktion gibt beispielsweise den Daten-URI `text/plain;charset=utf8;base64,c29tZSBzdHJpbmc=` zurück: <p>`dataUri('some string')` <p> **Parameternummer:** 1<p> **Name:** Wert<p> **Beschreibung:** Erforderlich. Der Wert, der in einen Daten-URI konvertiert werden soll.|  
-|decodeBase64|Gibt eine Zeichenfolgendarstellung einer Base64-Eingabezeichenfolge zurück. Die folgende Funktion gibt beispielsweise `some string` zurück: <p>`decodeBase64('c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Gibt eine Zeichenfolgendarstellung einer Base64-Eingabezeichenfolge zurück.|  
-|encodeUriComponent|Versieht die übergebene Zeichenfolge mit URL-Escapezeichen. Die folgende Funktion gibt beispielsweise `You+Are%3ACool%2FAwesome` zurück: <p>`encodeUriComponent('You Are:Cool/Awesome')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, in der für URLs ungeeignete Zeichen mit Escapezeichen versehen werden sollen.|  
-|decodeUriComponent|Entfernt URL-Escapezeichen aus der übergebenen Zeichenfolge. Die folgende Funktion gibt beispielsweise `You Are:Cool/Awesome` zurück: <p>`decodeUriComponent('You+Are%3ACool%2FAwesome')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, in der für URLs ungeeignete Zeichen decodiert werden sollen.|  
-|decodeDataUri|Gibt eine binäre Darstellung einer Eingabezeichenfolge des Daten-URI zurück. Die folgende Funktion gibt beispielsweise die binäre Darstellung von `some string` zurück: <p>`decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Der Daten-URI, der in eine binäre Darstellung konvertiert werden soll.|  
-|uriComponent|Gibt eine URI-codierte Darstellung eines Werts zurück. Die folgende Funktion gibt beispielsweise `You+Are%3ACool%2FAwesome` zurück: <p>`uriComponent('You Are:Cool/Awesome')` <p> **Parameternummer:** 1<p> **Name:** Zeichenfolge <p> **Beschreibung:** Erforderlich. Die Zeichenfolge, die als URI codiert werden soll.|  
-|uriComponentToBinary|Gibt eine binäre Darstellung einer URI-codierten Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise eine binäre Darstellung von `You Are:Cool/Awesome` zurück: <p>`uriComponentToBinary('You+Are%3ACool%2FAwesome')` <p> **Parameternummer:** 1 <p> **Name:** Zeichenfolge<p> **Beschreibung:** Erforderlich. Die URI-codierte Zeichenfolge.|  
-|uriComponentToString|Gibt eine Zeichenfolgendarstellung einer URI-codierten Zeichenfolge zurück. Die folgende Funktion gibt beispielsweise `You Are:Cool/Awesome` zurück: <p>`uriComponentToString('You+Are%3ACool%2FAwesome')` <p> **Parameternummer:** 1<p> **Name:** Zeichenfolge<p> **Beschreibung:** Erforderlich. Die URI-codierte Zeichenfolge.|  
-|xml|Gibt eine XML-Darstellung des Werts zurück. Die folgende Funktion gibt beispielsweise durch `'\<name>Alan\</name>'` dargestellten XML-Inhalt zurück: <p>`xml('\<name>Alan\</name>')` <p>Die `xml()`-Funktion unterstützt auch JSON-Objekteingaben. Der Parameter `{ "abc": "xyz" }` wird beispielsweise in XML-Inhalt konvertiert:`\<abc>xyz\</abc>` <p> **Parameternummer:** 1<p> **Name:** Wert<p> **Beschreibung:** Erforderlich. Der Wert, der in XML konvertiert werden soll.|  
-|Array|Konvertiert den Parameter in ein Array. Die folgende Funktion gibt beispielsweise `["abc"]` zurück: <p>`array('abc')` <p> **Parameternummer:** 1 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der in ein Array konvertiert wird.|
-|createArray|Erstellt ein Array auf der Grundlage der Parameter. Die folgende Funktion gibt beispielsweise `["a", "c"]` zurück: <p>`createArray('a', 'c')` <p> **Parameternummer:** 1 ... *n* <p> **Name:** Beliebig *n* <p> **Beschreibung:** Erforderlich. Die Werte, die zu einem Array zusammengefasst werden sollen.|
-|triggerFormDataValue|Gibt einen einzelnen Wert zurück, der dem Schlüsselnamen aus der formulardatenbasierten oder formularcodierten Triggerausgabe entspricht.  Sollten mehrere Übereinstimmungen gefunden werden, tritt ein Fehler auf.  Die folgende Funktion gibt beispielsweise `bar` zurück: `triggerFormDataValue('foo')`<br /><br />**Parameternummer:** 1<br /><br />**Name:** Schlüsselname<br /><br />**Beschreibung:** Erforderlich. Der Schlüsselname des zurückzugebenden Formulardatenwerts.|
-|triggerFormDataMultiValues|Gibt ein Array mit Werten zurück, die dem Schlüsselnamen aus der formulardatenbasierten oder formularcodierten Triggerausgabe entsprechen.  Die folgende Funktion gibt beispielsweise `["bar"]` zurück: `triggerFormDataValue('foo')`<br /><br />**Parameternummer:** 1<br /><br />**Name:** Schlüsselname<br /><br />**Beschreibung:** Erforderlich. Der Schlüsselname der zurückzugebenden Formulardatenwerte.|
-|triggerMultipartBody|Gibt den Text für einen Teil in einer mehrteiligen Ausgabe des Triggers zurück.<br /><br />**Parameternummer:** 1<br /><br />**Name:** Index<br /><br />**Beschreibung:** Erforderlich. Der Index des abzurufenden Teils.|
-|formDataValue|Gibt einen einzelnen Wert zurück, der dem Schlüsselnamen aus der formulardatenbasierten oder formularcodierten Aktionsausgabe entspricht.  Sollten mehrere Übereinstimmungen gefunden werden, tritt ein Fehler auf.  Die folgende Funktion gibt beispielsweise `bar` zurück: `formDataValue('someAction', 'foo')`<br /><br />**Parameternummer:** 1<br /><br />**Name:** Aktionsname<br /><br />**Beschreibung:** Erforderlich. Der Name der Aktion mit einer formulardatenbasierten oder formularcodierten Antwort.<br /><br />**Parameternummer:** 2<br /><br />**Name:** Schlüsselname<br /><br />**Beschreibung:** Erforderlich. Der Schlüsselname des zurückzugebenden Formulardatenwerts.|
-|formDataMultiValues|Gibt ein Array mit Werten zurück, die dem Schlüsselnamen aus der formulardatenbasierten oder formularcodierten Aktionsausgabe entsprechen.  Die folgende Funktion gibt beispielsweise `["bar"]` zurück: `formDataMultiValues('someAction', 'foo')`<br /><br />**Parameternummer:** 1<br /><br />**Name:** Aktionsname<br /><br />**Beschreibung:** Erforderlich. Der Name der Aktion mit einer formulardatenbasierten oder formularcodierten Antwort.<br /><br />**Parameternummer:** 2<br /><br />**Name:** Schlüsselname<br /><br />**Beschreibung:** Erforderlich. Der Schlüsselname der zurückzugebenden Formulardatenwerte.|
-|multipartBody|Gibt den Text für einen Teil in einer mehrteiligen Ausgabe einer Aktion zurück.<br /><br />**Parameternummer:** 1<br /><br />**Name:** Aktionsname<br /><br />**Beschreibung:** Erforderlich. Der Name der Aktion mit einer mehrteiligen Antwort.<br /><br />**Parameternummer:** 2<br /><br />**Name:** Index<br /><br />**Beschreibung:** Erforderlich. Der Index des abzurufenden Teils.|
+### <a name="collection-functions"></a>Auflistungsfunktionen
 
-### <a name="manipulation-functions"></a>Bearbeitungsfunktionen
- 
-Diese Funktionen gelten für XML-Code und Objekte.
- 
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------| 
-|coalesce|Gibt das erste Objekt aus den übergebenen Argumenten zurück, das nicht NULL ist. **Hinweis:** Eine leere Zeichenfolge ist nicht NULL. Wenn also beispielsweise die Parameter 1 und 2 nicht definiert sind, gibt die folgende Funktion `fallback` zurück:  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **Parameternummer:** 1 ... *n* <p> **Name:**: Objekt*n* <p> **Beschreibung:** Erforderlich. Die Objekte, für die geprüft werden soll, ob sie NULL sind.|
-|addProperty|Gibt ein Objekt mit einer zusätzlichen Eigenschaft zurück. Wenn die Eigenschaft zur Laufzeit bereits vorhanden ist, wird ein Fehler ausgelöst. Die folgende Funktion gibt beispielsweise das Objekt `{ "abc" : "xyz", "def": "uvw" }` zurück: <p>`addProperty(json('{"abc" : "xyz"}'), 'def', 'uvw')` <p> **Parameternummer:** 1 <p> **Name:** Objekt <p> **Beschreibung:** Erforderlich. Das Objekt, dem eine neue Eigenschaft hinzugefügt werden soll. <p> **Parameternummer:** 2 <p> **Name:** Eigenschaftenname <p> **Beschreibung:** Erforderlich. Der Name der neuen Eigenschaft <p> **Parameternummer:** 3 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der der neuen Eigenschaft zugewiesen werden soll.|
-|setProperty|Gibt ein Objekt mit einer zusätzlichen Eigenschaft oder einer vorhandenen Eigenschaft, die auf den angegebenen Wert festgelegt ist, zurück. Die folgende Funktion gibt beispielsweise das Objekt `{ "abc" : "uvw" }` zurück: <p>`setProperty(json('{"abc" : "xyz"}'), 'abc', 'uvw')` <p> **Parameternummer:** 1 <p> **Name:** Objekt <p> **Beschreibung:** Erforderlich. Das Objekt, in dem die Eigenschaft festgelegt werden soll<p> **Parameternummer:** 2 <p> **Name:** Eigenschaftenname<p> **Beschreibung:** Erforderlich. Der Name der neuen oder vorhandenen Eigenschaft. <p> **Parameternummer:** 3 <p> **Name:** Wert <p> **Beschreibung:** Erforderlich. Der Wert, der der Eigenschaft zugewiesen werden soll.|
-|removeProperty|Gibt ein Objekt zurück, bei dem eine Eigenschaft entfernt wurde. Wenn die zu entfernende Eigenschaft nicht vorhanden ist, wird das ursprüngliche Objekt zurückgegeben. Die folgende Funktion gibt beispielsweise das Objekt `{ "abc" : "xyz" }` zurück: <p>`removeProperty(json('{"abc" : "xyz", "def": "uvw"}'), 'def')` <p> **Parameternummer:** 1 <p> **Name:** Objekt <p> **Beschreibung:** Erforderlich. Das Objekt, aus dem die Eigenschaft entfernt werden soll.<p> **Parameternummer:** 2 <p> **Name:** Eigenschaftenname <p> **Beschreibung:** Erforderlich. Der Name der zu entfernenden Eigenschaft. <p>|
-|xpath|Gibt ein Array mit XML-Knoten zurück, die dem xpath-Ausdruck eines Werts entsprechen, zu dem der xpath-Ausdruck ausgewertet wird. <p> **Beispiel 1** <p>Angenommen, der Wert des Parameters `p1` ist eine Zeichenfolgendarstellung des folgenden XML-Codes: <p>`<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>` <p>Der Code `xpath(xml(parameters('p1')), '/lab/robot/name')` <p>gibt Folgendes zurück: <p>`[ <name>R1</name>, <name>R2</name> ]` <p>Der Code <p>`xpath(xml(parameters('p1')), ' sum(/lab/robot/parts)')` <p>gibt Folgendes zurück: <p>`13` <p> <p> **Beispiel 2** <p>Angenommen, der folgende XML-Inhalt wird verwendet: <p>`<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>` <p>Der Code `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')` <p>oder der Code <p>`@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')` <p>gibt Folgendes zurück: <p>`<Location xmlns="http://abc.com">xyz</Location>` <p>Der Code `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')` <p>gibt Folgendes zurück: <p>``xyz`` <p> **Parameternummer:** 1 <p> **Name:** XML <p> **Beschreibung:** Erforderlich. Der XML-Code, für den der XPath-Ausdruck ausgewertet werden soll. <p> **Parameternummer:** 2 <p> **Name:** XPath <p> **Beschreibung:** Erforderlich. Der auszuwertende XPath-Ausdruck.|
+Für die Arbeit mit Sammlungen (in der Regel Arrays, Zeichenfolgen und manchmal auch Bibliotheken) können Sie folgende Sammlungsfunktionen verwenden. 
 
-### <a name="math-functions"></a>Mathematische Funktionen  
+| Sammlungsfunktion | Aufgabe | 
+| ------------------- | ---- | 
+| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Überprüft, ob eine Sammlung ein bestimmtes Element enthält. |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Überprüft, ob eine Sammlung leer ist. | 
+| [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | Gibt das erste Element aus einer Sammlung zurück. | 
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Gibt eine Sammlung zurück, die *nur* die gängigen Elemente aus den angegebenen Sammlungen enthält. | 
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Gibt eine Zeichenfolge zurück, die *alle* Elemente aus einem Array enthält, getrennt durch das angegebene Zeichen. | 
+| [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Gibt das letzte Element aus einer Sammlung zurück. | 
+| [Länge](../logic-apps/workflow-definition-language-functions-reference.md#length) | Gibt die Anzahl der Elemente in einer Zeichenfolge oder einem Array zurück. | 
+| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zurück. | 
+| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Gibt Elemente vom Anfang einer Sammlung zurück. | 
+| [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Gibt eine Sammlung zurück, die *sämtliche* Elemente aus den angegebenen Sammlungen enthält. | 
+||| 
 
-Diese Funktionen können für folgende Arten von Zahlen verwendet werden: **ganze Zahlen** und **Gleitkommazahlen**.  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|Hinzufügen|Gibt das Ergebnis der Addition zweier Zahlen zurück. Die folgende Funktion gibt beispielsweise `20.333` zurück: <p>`add(10,10.333)` <p> **Parameternummer:** 1 <p> **Name:** Summand 1 <p> **Beschreibung:** Erforderlich. Die Zahl, die zu **Summand 2** addiert werden soll. <p> **Parameternummer:** 2 <p> **Name:** Summand 2 <p> **Beschreibung:** Erforderlich. Die Zahl, die zu **Summand 1** addiert werden soll.|  
-|sub|Gibt das Ergebnis der Subtraktion zweier Zahlen zurück. Die folgende Funktion gibt beispielsweise `-0.333` zurück: <p>`sub(10,10.333)` <p> **Parameternummer:** 1 <p> **Name:** Minuend <p> **Beschreibung:** Erforderlich. Die Zahl, von der **Subtrahend** abgezogen wird. <p> **Parameternummer:** 2 <p> **Name:** Subtrahend <p> **Beschreibung:** Erforderlich. Die Zahl, die von **Minuend** abgezogen werden soll.|  
-|mul|Gibt das Ergebnis der Multiplikation zweier Zahlen zurück. Die folgende Funktion gibt beispielsweise `103.33` zurück: <p>`mul(10,10.333)` <p> **Parameternummer:** 1 <p> **Name:** Multiplikand 1 <p> **Beschreibung:** Erforderlich. Die Zahl, mit der **Multiplikand 2** multipliziert werden soll. <p> **Parameternummer:** 2 <p> **Name:** Multiplikand 2 <p> **Beschreibung:** Erforderlich. Die Zahl, mit der **Multiplikand 1** multipliziert werden soll.|  
-|div|Gibt das Ergebnis der Division zweier Zahlen zurück. Die folgende Funktion gibt beispielsweise `1.0333` zurück: <p>`div(10.333,10)` <p> **Parameternummer:** 1 <p> **Name:** Dividend <p> **Beschreibung:** Erforderlich. Die Zahl, die durch den **Divisor** dividiert werden soll. <p> **Parameternummer:** 2 <p> **Name:** Divisor <p> **Beschreibung:** Erforderlich. Die Zahl, durch die der **Dividend** dividiert werden soll.|  
-|mod|Gibt den Rest (Modulo) nach der Division der beiden Zahlen zurück. Die folgende Funktion gibt beispielsweise `2` zurück: <p>`mod(10,4)` <p> **Parameternummer:** 1 <p> **Name:** Dividend <p> **Beschreibung:** Erforderlich. Die Zahl, die durch den **Divisor** dividiert werden soll. <p> **Parameternummer:** 2 <p> **Name:** Divisor <p> **Beschreibung:** Erforderlich. Die Zahl, durch die der **Dividend** dividiert werden soll. Nach der Division wird der Rest verwendet.|  
-|Min|Diese Funktion kann auf zwei Arten aufgerufen werden. <p>Im folgenden Beispiel verwendet `min` ein Array, und die Funktion gibt `0` zurück: <p>`min([0,1,2])` <p>Die Funktion kann aber auch eine kommagetrennte Liste mit Werten verwenden. In diesem Fall wird ebenfalls `0` zurückgegeben: <p>`min(0,1,2)` <p> **Hinweis:** Als Werte sind nur Zahlen zulässig. Wenn der Parameter also ein Array ist, darf dieses ausschließlich Zahlen enthalten. <p> **Parameternummer:** 1 <p> **Name:** Auflistung oder Wert <p> **Beschreibung:** Erforderlich. Entweder ein Array mit Werten, um den kleinsten Wert zu ermitteln, oder der erste Wert einer Gruppe. <p> **Parameternummer:** 2 ... *n* <p> **Name:** Wert *n* <p> **Beschreibung:** Optional. Falls es sich bei dem ersten Parameter um einen Wert handelt, können Sie zusätzliche Werte übergeben. In diesem Fall wird der kleinste aller übergebenen Werte zurückgegeben.|  
-|max|Diese Funktion kann auf zwei Arten aufgerufen werden. <p>Im folgenden Beispiel verwendet `max` ein Array, und die Funktion gibt `2` zurück: <p>`max([0,1,2])` <p>Die Funktion kann aber auch eine kommagetrennte Liste mit Werten verwenden. In diesem Fall wird ebenfalls `2` zurückgegeben: <p>`max(0,1,2)` <p> **Hinweis:** Als Werte sind nur Zahlen zulässig. Wenn der Parameter also ein Array ist, darf dieses ausschließlich Zahlen enthalten. <p> **Parameternummer:** 1 <p> **Name:** Auflistung oder Wert <p> **Beschreibung:** Erforderlich. Entweder ein Array mit Werten, um den größten Wert zu ermitteln, oder der erste Wert einer Gruppe. <p> **Parameternummer:** 2 ... *n* <p> **Name:** Wert *n* <p> **Beschreibung:** Optional. Falls es sich bei dem ersten Parameter um einen Wert handelt, können Sie zusätzliche Werte übergeben. In diesem Fall wird der größte aller übergebenen Werte zurückgegeben.|  
-|range|Generiert ein Array mit ganzen Zahlen ab einer bestimmten Zahl. Die Länge des zurückgegebenen Arrays wird von Ihnen definiert. <p>Die folgende Funktion gibt beispielsweise `[3,4,5,6]` zurück: <p>`range(3,4)` <p> **Parameternummer:** 1 <p> **Name:** Startindex <p> **Beschreibung:** Erforderlich. Die erste ganze Zahl im Array. <p> **Parameternummer:** 2 <p> **Name:** Anzahl <p> **Beschreibung:** Erforderlich. Die Anzahl von ganzen Zahlen im Array.|  
-|rand|Generiert nach dem Zufallsprinzip einen Integer aus dem angegebenen Bereich (einschließlich nur erstes Ende). Beispiel: Diese Funktion gibt entweder `0` oder „1“ zurück: <p>`rand(0,2)` <p> **Parameternummer:** 1 <p> **Name:** Mindestwert <p> **Beschreibung:** Erforderlich. Die kleinste ganze Zahl, die zurückgegeben werden kann. <p> **Parameternummer:** 2 <p> **Name:** Maximalwert <p> **Beschreibung:** Erforderlich. Dieser Wert ist der nächste Integer nach dem höchsten Integer, der zurückgegeben werden kann.|  
- 
-### <a name="date-functions"></a>Datumsfunktionen  
+<a name="comparison-functions"></a>
 
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|utcnow|Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. Beispiel: `2017-03-15T13:27:36Z`: <p>`utcnow()` <p> **Parameternummer:** 1 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|addseconds|Addiert eine ganzzahlige Anzahl von Sekunden zu einem übergebenen Zeichenfolgenzeitstempel. Die Sekundenanzahl kann positiv oder negativ sein. Sofern kein Formatbezeichner angegeben wird, ist das Ergebnis standardmäßig eine Zeichenfolge im ISO 8601-Format („o“). Beispiel: `2015-03-15T13:27:00Z`: <p>`addseconds('2015-03-15T13:27:36Z', -36)` <p> **Parameternummer:** 1 <p> **Name:** Zeitstempel <p> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit. <p> **Parameternummer:** 2 <p> **Name:** Sekunden <p> **Beschreibung:** Erforderlich. Die Anzahl zu addierender Sekunden. Bei einem negativen Wert werden die Sekunden subtrahiert. <p> **Parameternummer:** 3 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|addminutes|Addiert eine ganzzahlige Anzahl von Minuten zu einem übergebenen Zeichenfolgenzeitstempel. Die Minutenanzahl kann positiv oder negativ sein. Sofern kein Formatbezeichner angegeben wird, ist das Ergebnis standardmäßig eine Zeichenfolge im ISO 8601-Format („o“). Beispiel: `2015-03-15T14:00:36Z`: <p>`addminutes('2015-03-15T13:27:36Z', 33)` <p> **Parameternummer:** 1 <p> **Name:** Zeitstempel <p> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit. <p> **Parameternummer:** 2 <p> **Name:** Minuten <p> **Beschreibung:** Erforderlich. Die Anzahl zu addierender Minuten. Bei einem negativen Wert werden die Minuten subtrahiert. <p> **Parameternummer:** 3 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|addhours|Addiert eine ganzzahlige Anzahl von Stunden zu einem übergebenen Zeichenfolgenzeitstempel. Die Stundenanzahl kann positiv oder negativ sein. Sofern kein Formatbezeichner angegeben wird, ist das Ergebnis standardmäßig eine Zeichenfolge im ISO 8601-Format („o“). Beispiel: `2015-03-16T01:27:36Z`: <p>`addhours('2015-03-15T13:27:36Z', 12)` <p> **Parameternummer:** 1 <p> **Name:** Zeitstempel <p> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit. <p> **Parameternummer:** 2 <p> **Name:** Stunden <p> **Beschreibung:** Erforderlich. Die Anzahl zu addierender Stunden. Bei einem negativen Wert werden die Stunden subtrahiert. <p> **Parameternummer:** 3 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|adddays|Addiert eine ganzzahlige Anzahl von Tagen zu einem übergebenen Zeichenfolgenzeitstempel. Die Tagesanzahl kann positiv oder negativ sein. Sofern kein Formatbezeichner angegeben wird, ist das Ergebnis standardmäßig eine Zeichenfolge im ISO 8601-Format („o“). Beispiel: `2015-03-13T13:27:36Z`: <p>`adddays('2015-03-15T13:27:36Z', -2)` <p> **Parameternummer:** 1 <p> **Name:** Zeitstempel <p> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit. <p> **Parameternummer:** 2 <p> **Name:** Tage <p> **Beschreibung:** Erforderlich. Die Anzahl zu addierender Tage. Bei einem negativen Wert werden die Tage subtrahiert. <p> **Parameternummer:** 3 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|formatDateTime|Gibt eine Zeichenfolge im Datumsformat zurück. Sofern kein Formatbezeichner angegeben wird, ist das Ergebnis standardmäßig eine Zeichenfolge im ISO 8601-Format („o“). Beispiel: `2015-03-15T13:27:36Z`: <p>`formatDateTime('2015-03-15T13:27:36Z', 'o')` <p> **Parameternummer:** 1 <p> **Name:** Datum <p> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit dem Datum. <p> **Parameternummer:** 2 <p> **Name:** Format <p> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|startOfHour|Gibt für einen übergebenen Zeichenfolgenzeitstempel den Beginn der Stunde zurück. Beispiel: `2017-03-15T13:00:00Z`:<br /><br /> `startOfHour('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.<br /><br />**Parameternummer:** 2<br /><br /> **Name:** Format<br /><br /> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.|  
-|startOfDay|Gibt für einen übergebenen Zeichenfolgenzeitstempel den Beginn des Tages zurück. Beispiel: `2017-03-15T00:00:00Z`:<br /><br /> `startOfDay('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.<br /><br />**Parameternummer:** 2<br /><br /> **Name:** Format<br /><br /> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.| 
-|startOfMonth|Gibt für einen übergebenen Zeichenfolgenzeitstempel den Beginn des Monats zurück. Beispiel: `2017-03-01T00:00:00Z`:<br /><br /> `startOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.<br /><br />**Parameternummer:** 2<br /><br /> **Name:** Format<br /><br /> **Beschreibung:** Optional. Entweder ein [Formatbezeichner aus einem einzelnen Zeichen](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx) oder ein [benutzerdefiniertes Formatmuster](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx), mit dem die gewünschte Formatierung für den Wert des Zeitstempels angegeben wird. Ohne Formatangabe wird das ISO 8601-Format („o“) verwendet.| 
-|dayOfWeek|Gibt die Wochentagkomponente eines Zeichenfolgenzeitstempels zurück.  Sonntag ist 0, Montag ist 1 usw. Beispiel: `3`:<br /><br /> `dayOfWeek('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.| 
-|dayOfMonth|Gibt die Monatstagkomponente eines Zeichenfolgenzeitstempels zurück. Beispiel: `15`:<br /><br /> `dayOfMonth('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.| 
-|dayOfYear|Gibt die Jahrestagkomponente eines Zeichenfolgenzeitstempels zurück. Beispiel: `74`:<br /><br /> `dayOfYear('2017-03-15T13:27:36Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.| 
-|ticks|Gibt die Zeiteinheitseigenschaft eines Zeichenfolgenzeitstempels zurück. Beispiel: `1489603019`:<br /><br /> `ticks('2017-03-15T18:36:59Z')`<br /><br /> **Parameternummer:** 1<br /><br /> **Name:** Zeitstempel<br /><br /> **Beschreibung:** Erforderlich. Eine Zeichenfolge mit der Uhrzeit.| 
-  
-### <a name="workflow-functions"></a>Workflowfunktionen  
+### <a name="comparison-functions"></a>Vergleichsfunktionen
 
-Mit diesen Funktionen können Sie zur Laufzeit Informationen zum eigentlichen Workflow abrufen.  
-  
-|Funktionsname|BESCHREIBUNG|  
-|-------------------|-----------------|  
-|listCallbackUrl|Gibt eine Zeichenfolge zurück, die aufgerufen werden kann, um den Trigger oder die Aktion aufzurufen. <p> **Hinweis:** Diese Funktion kann nur im Kontext von **httpWebhook** und **apiConnectionWebhook**, aber nicht im Kontext von **manual**, **recurrence**, **http** oder **apiConnection** verwendet werden. <p>Die Funktion `listCallbackUrl()` gibt beispielsweise Folgendes zurück: <p>`https://prod-01.westus.logic.azure.com:443/workflows/1235...ABCD/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxx...xxx` |  
-|workflow|Diese Funktion liefert zur Laufzeit sämtliche Informationen zum eigentlichen Workflow. <p> Verfügbare Eigenschaften für das Workflowobjekt: <ul><li>`name`</li><li>`type`</li><li>`id`</li><li>`location`</li><li>`run`</li></ul> <p> Der Wert der `run`-Eigenschaft ist ein Objekt mit folgenden Eigenschaften: <ul><li>`name`</li><li>`type`</li><li>`id`</li></ul> <p>Ausführliche Informationen zu diesen Eigenschaften finden Sie unter [Workflows](http://go.microsoft.com/fwlink/p/?LinkID=525617).<p> Beispiel: Zum Abrufen des Namens der aktuellen Ausführung verwenden Sie `"@workflow().run.name"`-Ausdruck. |
+Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende Vergleichsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Vergleichsfunktion | Aufgabe | 
+| ------------------- | ---- | 
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Überprüft, ob für sämtliche Ausdrücke der Wert „TRUE“ festgelegt ist. | 
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Überprüft, ob beide Werte identisch sind. | 
+| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Überprüft, ob der erste Wert größer als der zweite ist. | 
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Überprüft, ob der erste Wert größer als oder gleich dem zweiten ist. | 
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Überprüft, ob ein Ausdruck auf den Wert „TRUE“ oder „FALSE“ festgelegt ist. Gibt abhängig vom Ergebnis einen angegebenen Wert zurück. | 
+| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Überprüft, ob der erste Wert kleiner als der zweite ist. | 
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Überprüft, ob der erste Wert kleiner als oder gleich dem zweiten ist. | 
+| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Überprüft, ob ein Ausdruck auf den Wert „FALSE“ festgelegt ist. | 
+| [or](../logic-apps/workflow-definition-language-functions-reference.md#or) | Überprüft, ob mindestens ein Ausdruck auf den Wert „TRUE“ festgelegt ist. |
+||| 
+
+<a name="conversion-functions"></a>
+
+### <a name="conversion-functions"></a>Konvertierungsfunktionen
+
+Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern. So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern. Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md). Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Konvertierungsfunktion | Aufgabe | 
+| ------------------- | ---- | 
+| [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | Gibt ein Array aus einer einzelnen angegebenen Eingabe zurück. Für mehrere Eingaben siehe [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). | 
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Gibt die base64-codierte Version für eine Zeichenfolge zurück. | 
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Gibt die Binärversion für eine base64-codierte Zeichenfolge zurück. | 
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Gibt die Zeichenfolgenversion für eine base64-codierte Zeichenfolge zurück. | 
+| [binary](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Gibt die Binärversion für einen Eingabewert zurück. | 
+| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Gibt die Version des booleschen Werts für einen Eingabewert zurück. | 
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Gibt ein Array aus mehreren Eingaben zurück. | 
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Gibt den Daten-URI für einen Eingabewert zurück. | 
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Gibt die Binärversion für einen Daten-URI zurück. | 
+| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Gibt die Zeichenfolgenversion für einen Daten-URI zurück. | 
+| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Gibt die Zeichenfolgenversion für eine base64-codierte Zeichenfolge zurück. | 
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Gibt die Binärversion für einen Daten-URI zurück. | 
+| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Gibt eine Zeichenfolge zurück, die Escapezeichen durch decodierte Versionen ersetzt. | 
+| [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Gibt eine Zeichenfolge zurück, die URL-unsichere Zeichen durch Escapezeichen ersetzt. | 
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Gibt eine Gleitkommazahl für einen Eingabewert zurück. | 
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Gibt die Ganzzahlversion für eine Zeichenfolge zurück. | 
+| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Gibt den JSON-Typwert oder das JSON-Objekt (JSON = JavaScript Object Notation) für eine Zeichenfolge oder XML zurück. | 
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Gibt die Zeichenfolgenversion für einen Eingabewert zurück. | 
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Gibt die URI-codierte Version für einen Eingabewert zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. | 
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Gibt die Binärversion für eine URI-codierte Zeichenfolge zurück. | 
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Gibt die Zeichenfolgenversion für eine URI-codierte Zeichenfolge zurück. | 
+| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Gibt die XML-Version für eine Zeichenfolge zurück. | 
+||| 
+
+<a name="math-functions"></a>
+
+### <a name="math-functions"></a>Mathematische Funktionen
+
+Sie können mithilfe der folgenden mathematischen Funktionen mit ganzen Zahlen und Gleitkommazahlen arbeiten. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Mathematische Funktion | Aufgabe | 
+| ------------- | ---- | 
+| [Hinzufügen](../logic-apps/workflow-definition-language-functions-reference.md#add) | Gibt das Ergebnis der Addition zweier Zahlen zurück. | 
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Gibt das Ergebnis der Division zweier Zahlen zurück. | 
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Gibt den höchsten Wert aus einer Reihe von Zahlen oder einem Array zurück. | 
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Gibt den niedrigsten Wert aus einer Reihe von Zahlen oder einem Array zurück. | 
+| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Gibt den Restwert aus der Division zweier Zahlen zurück. | 
+| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Gibt das Produkt aus der Multiplikation zweier Zahlen zurück. | 
+| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Gibt eine beliebige ganze Zahl aus einem angegebenen Bereich zurück. | 
+| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl beginnt. | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurück. | 
+||| 
+
+<a name="date-time-functions"></a>
+
+### <a name="date-and-time-functions"></a>Datums- und Uhrzeitfunktionen
+
+Sie können für die Arbeit mit Datums- und Uhrzeitangaben folgende Datums- und Uhrzeitfunktionen verwenden.
+Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Datums- oder Zeitfunktion | Aufgabe | 
+| --------------------- | ---- | 
+| [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Fügt eine Anzahl von Tagen zu einem Zeitstempel hinzu. | 
+| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Fügt eine Anzahl von Stunden zu einem Zeitstempel hinzu. | 
+| [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Fügt eine Anzahl von Minuten zu einem Zeitstempel hinzu. | 
+| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Fügt eine Anzahl von Sekunden zu einem Zeitstempel hinzu. |  
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Fügt eine Anzahl von Zeiteinheiten zu einem Zeitstempel hinzu. Siehe auch [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). | 
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Konvertiert einen Zeitstempel von der UTC-Zeitzone (UTC = Universal Time, Coordinated) in die Zielzeitzone. | 
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. | 
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konvertiert einen Zeitstempel von der Quellzeitzone in die UTC-Zeitzone (UTC = Universal Time, Coordinated). | 
+| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Gibt den Tag der Monatskomponente eines Zeitstempels zurück. | 
+| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Gibt den Tag der Wochenkomponente eines Zeitstempels zurück. | 
+| [dayOfYear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Gibt den Tag der Jahreskomponente eines Zeitstempels zurück. | 
+| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Gibt das Datum eines Zeitstempels zurück. | 
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. Siehe auch [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. Siehe auch [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Gibt den Beginn des Tages für einen Zeitstempel zurück. | 
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Gibt den Beginn der Stunde für einen Zeitstempel zurück. | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Gibt den Beginn des Monats für einen Zeitstempel zurück. | 
+| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. Siehe auch [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). | 
+| [ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Gibt den Eigenschaftswert `ticks` für einen angegebenen Zeitstempel zurück. | 
+| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. | 
+||| 
+
+<a name="workflow-functions"></a>
+
+### <a name="workflow-functions"></a>Workflowfunktionen
+
+Diese Workflowfunktionen können für folgende Aktionen hilfreich sein:
+
+* Abrufen von Details zu einer Workflowinstanz zur Laufzeit. 
+* Arbeiten mit den Eingaben für die Instanziierung von Logik-Apps.
+* Verweisen auf die Ausgaben von Triggern und Aktionen.
+
+Sie können beispielsweise auf die Ausgaben einer Aktion verweisen und die Daten in einer späteren Aktion verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Workflowfunktion | Aufgabe | 
+| ----------------- | ---- | 
+| [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | Gibt die Ausgabe der aktuellen Aktion zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Siehe auch [body](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Gibt die Ausgabe einer Aktion zur Laufzeit zurück. Siehe [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Gibt die Ausgabe einer Aktion zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [action](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
+| [body](#body) | Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Siehe auch [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Erstellt ein Array mit den Werten, die mit einem Schlüsselnamen in Aktionsausgaben vom Typ *form-data* oder *form-encoded* übereinstimmen. | 
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in einer Aktionsausgabe vom Typ *form-data* oder *form-encoded* übereinstimmt. | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gibt in einer wiederholten Aktion für ein Array das aktuelle Element im Array während der aktuellen Iteration der Aktion zurück. | 
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gibt in einer „for-each“- oder „do-until“-Schleife das aktuelle Element aus der angegebenen Schleife zurück.| 
+| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Gibt die „Rückruf-URL“ zurück, die einen Trigger oder eine Aktion aufruft. | 
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Gibt einen bestimmten Textteil in einer Aktionsausgabe zurück, die über mehrere Teile verfügt. | 
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Gibt den Wert für einen Parameter zurück, der in der Definition Ihrer Logik-App beschrieben wird. | 
+| [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Gibt die Ausgabe eines Triggers zur Laufzeit oder aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [triggerOutputs](#triggerOutputs) und [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Gibt die `body`-Ausgabe eines Triggers zur Laufzeit zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmt. | 
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Gibt einen bestimmten Textteil in der mehrteiligen Ausgabe eines Triggers zurück. | 
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Erstellt ein Array, dessen Werte mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmen. | 
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Gibt eine Triggerausgabe zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [Variablen](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Gibt den Wert für eine angegebene Variable zurück. | 
+| [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück. | 
+||| 
+
+<a name="uri-parsing-functions"></a>
+
+### <a name="uri-parsing-functions"></a>URI-Analysefunktionen
+
+Sie können für die Arbeit mit URIs (Uniform Resource Identifiers) und das Abrufen verschiedener Eigenschaftswerte für diese URIs folgende URI-Analysefunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| URI-Analysefunktion | Aufgabe | 
+| -------------------- | ---- | 
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Gibt die Werte `path` und `query` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück. | 
+||| 
+
+<a name="manipulation-functions"></a>
+
+### <a name="json-and-xml-functions"></a>JSON- und XML-Funktionen
+
+Für die Arbeit mit JSON-Objekten und XML-Knoten können Sie folgende Bearbeitungsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+
+| Bearbeitungsfunktion | Aufgabe | 
+| --------------------- | ---- | 
+| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. | 
+| [coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Gibt den ersten Wert ungleich NULL aus mindestens einem Parameter zurück. | 
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Entfernt eine Eigenschaft aus einem JSON-Objekt und gibt das aktualisierte Objekt zurück. | 
+| [setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Legt den Wert für die Eigenschaft eines JSON-Objekts fest und gibt das aktualisierte Objekt zurück. | 
+| [xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Überprüft die XML auf Knoten oder Werte, die mit einem XPath-Ausdruck (XML Path Language) übereinstimmen, und gibt die übereinstimmenden Knoten oder Werte zurück. | 
+||| 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Workflowaktionen und -trigger](logic-apps-workflow-actions-triggers.md)
+* Weitere Informationen zu [Aktionen und Triggern für die Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* Weitere Informationen zum programmgesteuerten Erstellen und Verwalten von Logik-Apps mit der [Workflow-REST-API](https://docs.microsoft.com/rest/api/logic/workflows)

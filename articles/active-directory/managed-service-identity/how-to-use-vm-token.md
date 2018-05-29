@@ -7,22 +7,27 @@ author: daveba
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: msi
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 541055eeae5e2c0eaff2fb88d8e83fdc43ba08b0
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2f24eaa65781eb56b641ed179536867ee514f668
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165450"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Dieser Artikel enthält verschiedene Code- und Skriptbeispiele für den Tokenabruf sowie eine Anleitung zu wichtigen Themen, z.B. zur Behandlung bei Tokenablauf und HTTP-Fehlern. Es wird empfohlen, die verwaltete Dienstidentität mit dem IMDS-Endpunkt zu verwenden, da der VM-Erweiterungsendpunkt veraltet ist.
+
+Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+
+Dieser Artikel enthält verschiedene Code- und Skriptbeispiele für den Tokenabruf sowie eine Anleitung zu wichtigen Themen, z.B. zur Behandlung bei Tokenablauf und HTTP-Fehlern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,10 +37,10 @@ Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, m�
 
 
 > [!IMPORTANT]
-> - Bei allen Beispielcodes und -skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem MSI-fähigen virtuellen Computer ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von MSI auf einer VM finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
+> - Bei allen Beispielcodes bzw. -skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem virtuellen Computer mit einer verwalteten Dienstidentität ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von MSI auf einer VM finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
 
 > [!IMPORTANT]
-> - Die Sicherheitsgrenze einer verwalteten Identität ist die Ressource. Der gesamte Code und alle Skripts, die auf einem für MSI aktivierten virtuellen Computer ausgeführt werden, können Token anfordern und abrufen. 
+> - Die Sicherheitsgrenze einer verwalteten Dienstidentität ist die Ressource, für die diese verwendet wird. Alle auf einem virtuellen Computer ausgeführten Code/Skripts können Token für die darin verfügbaren verwalteten Dienstidentitäten anfordern und abrufen. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -48,7 +53,7 @@ Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/active-d
 | [Abrufen eines Tokens über Go](#get-a-token-using-go) | Beispiel zur Verwendung des MSI-REST-Endpunkts über einen Go-Client |
 | [Abrufen eines Tokens über Azure PowerShell](#get-a-token-using-azure-powershell) | Beispiel zur Verwendung des MSI-REST-Endpunkts über einen PowerShell-Client |
 | [Abrufen eines Tokens über cURL](#get-a-token-using-curl) | Beispiel zur Verwendung des MSI-REST-Endpunkts über einen Bash/cURL-Client |
-| [Behandlung bei Tokenablauf](#handling-token-expiration) | Anleitung zur Behandlung abgelaufener Zugriffstoken |
+| [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](#handling-token-caching) | Anleitung zur Behandlung abgelaufener Zugriffstoken |
 | [Fehlerbehandlung](#error-handling) | Anleitung zur Behandlung von vom MSI-Tokenendpunkt zurückgegebenen HTTP-Fehlern |
 | [Ressourcen-IDs für Azure-Dienste](#resource-ids-for-azure-services) | Abrufen von Ressourcen-IDs für unterstützte Azure-Dienste |
 
@@ -56,10 +61,10 @@ Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/active-d
 
 Die grundlegende Schnittstelle zum Abrufen eines Zugriffstokens basiert auf REST, sodass sie für alle auf dem virtuellen Computer ausgeführten Clientanwendungen, die HTTP-REST-Aufrufe ausführen können, zur Verfügung steht. Dies ähnelt dem Azure AD-Programmiermodell, aber der Client verwendet einen Endpunkt auf dem virtuellen Computer (und keinen Azure AD-Endpunkt).
 
-Beispielanforderung mit dem MSI-IMDS-Endpunkt (Instance Metadata Service, Instanzmetadatendienst) *(empfohlen)*:
+Beispielanforderung mit dem Azure-IMDS-Endpunkt (Instance Metadata Service) *(empfohlen)*:
 
 ```
-GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1 Metadata: true
+GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
 ```
 
 | Element | BESCHREIBUNG |
@@ -70,7 +75,7 @@ GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01
 | `resource` | Ein Abfragezeichenfolgenparameter, der den App-ID-URI der Zielressource angibt. Er wird auch im Anspruch `aud` (audience) des ausgestellten Tokens angezeigt. In diesem Beispiel wird ein Token für den Zugriff auf Azure Resource Manager angefordert, das über den App-ID-URI https://management.azure.com/ verfügt. |
 | `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für MSI als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden.
 
-Beispielanforderung mit dem MSI-VM-Erweiterungsendpunkt  *(wird in Kürze als veraltet eingestuft)*:
+Beispielanforderung mit dem MSI-VM-Erweiterungsendpunkt (Managed Service Identity)  *(wird in Kürze als veraltet eingestuft)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -264,23 +269,25 @@ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sy
 echo The MSI access token is $access_token
 ```
 
-## <a name="token-expiration"></a>Tokenablauf 
+## <a name="token-caching"></a>Zwischenspeichern von Tokens
 
-Wenn Sie das Token in Ihrem Code zwischenspeichern, sollten Sie auf die Behandlung von Szenarien vorbereitet sein, bei denen die Ressource angibt, dass das Token abgelaufen ist. 
+Zwar speichert (die IMDS-/MSI-VM-Erweiterung) Tokens des MSI-Subsystems (Managed Service Identity) zwischen, es wird jedoch empfohlen, auch die Zwischenspeicherung von Token in Ihrem Code zu implementieren. Daher sollten Sie Vorbereitungen für Szenarien treffen, bei denen die Ressource angibt, dass das Token abgelaufen ist. 
 
-Hinweis: Da das IMDS-MSI-Subsystem Token zwischenspeichert, erfolgen Aufrufe von Azure AD über das Netzwerk nur unter den folgenden Umständen:
-- Cachefehler aufgrund eines fehlenden Tokens im Cache
-- Tokenablauf
+Aufrufe an Azure AD über das Netzwerk erfolgen nur in folgenden Fällen:
+- Cachefehler aufgrund eines fehlenden Tokens im Cache des MSI-Subsystems
+- Abgelaufenes zwischengespeichertes Token
 
 ## <a name="error-handling"></a>Fehlerbehandlung
 
-Der MSI-Endpunkt signalisiert Fehler über das Statuscodefeld des Nachrichtenheaders der HTTP-Antwort als 4xx- oder 5xx-Fehler:
+Der Endpunkt der verwalteten Dienstidentität signalisiert Fehler über das Statuscodefeld des Nachrichtenheaders der HTTP-Antwort als 4xx- oder 5xx-Fehler:
 
 | Statuscode | Fehlerursache | Fehlerbehandlung |
 | ----------- | ------------ | ------------- |
+| 404 – Nicht gefunden. | Der IMDS-Endpunkt wird gerade aktualisiert. | Wiederholungsversuch mit exponentiellem Backoff. Siehe Anleitung unten. |
 | 429: Zu viele Anforderungen. |  IMDS-Drosselungsgrenzwert erreicht. | Wiederholungsversuch mit exponentiellem Backoff. Siehe Anleitung unten. |
 | 4xx – Fehler in der Anforderung. | Mindestens einer der Anforderungsparameter war falsch. | Wiederholen Sie den Vorgang nicht.  Überprüfen Sie den Fehler, um weitere Informationen zu erhalten.  4xx-Fehler sind Fehler während der Entwurfszeit.|
 | 5xx – Vorübergehender Fehler vom Dienst. | Das MSI-Subsystem oder Azure Active Directory hat einen vorübergehenden Fehler zurückgegeben. | Nach mindestens 1 Sekunde können Sie den Vorgang wiederholen.  Wenn Sie den Vorgang zu schnell oder zu häufig wiederholen, gibt IMDS und/oder Azure AD möglicherweise einen Fehler zum Ratenlimit (429) zurück.|
+| timeout | Der IMDS-Endpunkt wird gerade aktualisiert. | Wiederholungsversuch mit exponentiellem Backoff. Siehe Anleitung unten. |
 
 Wenn ein Fehler auftritt, enthält der entsprechende HTTP-Antworttext JSON-Code mit den Fehlerdetails:
 
@@ -303,11 +310,11 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 |           | access_denied | Der Ressourcenbesitzer oder Autorisierungsserver hat die Anforderung verweigert. |  |
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |
-| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Überprüfen Sie, ob die MSI auf dem virtuellen Computer aktiviert wurde. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für Anforderung“ im [vorherigen REST-Abschnitt](#rest) finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](overview.md#azure-services-that-support-azure-ad-authentication) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
+| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Überprüfen Sie, ob die MSI auf dem virtuellen Computer aktiviert wurde. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für Anforderung“ im [vorherigen REST-Abschnitt](#rest) finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
 
-## <a name="throttling-guidance"></a>Leitfaden zur Drosselung 
+## <a name="retry-guidance"></a>Informationen zur Wiederholung 
 
-Drosselungsgrenzwerte gelten für die Anzahl von Aufrufen, die an den MSI-IMDS-Endpunkt gerichtet werden. Wird der Drosselungsschwellenwert überschritten, schränkt der MSI-IMDS-Endpunkt alle weiteren Anforderungen ein, während die Drosselung aktiv ist. Während dieser Zeit gibt der MSI-IMDS-Endpunkt den HTTP-Statuscode 429 (zu viele Anforderungen) zurück, und die Anforderungen sind nicht erfolgreich. 
+Drosselungsgrenzwerte gelten für die Anzahl von Aufrufen, die an den IMDS-Endpunkt gerichtet werden. Wird der Drosselungsschwellenwert überschritten, schränkt der IMDS-Endpunkt alle weiteren Anforderungen ein, während die Drosselung aktiv ist. Während dieser Zeit gibt der IMDS-Endpunkt den HTTP-Statuscode 429 (zu viele Anforderungen) zurück, und die Anforderungen sind nicht erfolgreich. 
 
 Empfohlene Wiederholungsstrategie: 
 
@@ -317,7 +324,7 @@ Empfohlene Wiederholungsstrategie:
 
 ## <a name="resource-ids-for-azure-services"></a>Ressourcen-IDs für Azure-Dienste
 
-Eine Liste mit Ressourcen, die Azure AD unterstützen und mit MSI getestet wurden, und die jeweiligen zugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](overview.md#azure-services-that-support-azure-ad-authentication).
+Eine Liste mit Ressourcen, die Azure AD unterstützen und mit MSI getestet wurden, und die jeweiligen zugehörigen Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md).
 
 
 ## <a name="related-content"></a>Verwandte Inhalte

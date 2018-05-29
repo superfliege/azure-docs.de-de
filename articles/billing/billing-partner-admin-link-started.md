@@ -10,28 +10,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b135f62e9cb7946dfda106640497850716410a29
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: a5b6bb683538bd5359ebcbbe2640216e574b3e00
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164617"
 ---
-# <a name="link-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten 
+# <a name="link-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
+
 Als Partner können Sie die Auswirkungen Ihrer Kundenbindungen durch Verknüpfen Ihrer Partner-ID mit den Konten nachverfolgen, mit denen Sie die Ressourcen Ihrer Kunden verwalten.
 
-Dieses Feature ist als Public Preview verfügbar. 
+Dieses Feature ist als Public Preview verfügbar.
 
-## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden 
+## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
+
 Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
 
 - **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige RBAC-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Directory-Konto**: Ihr Kunde kann einen neuen Benutzer von Ihrer Organisation in ihrem Verzeichnis erstellen und diesem eine beliebige RBAC-Rolle zuweisen. 
+- **Directory-Konto**: Ihr Kunde kann einen neuen Benutzer von Ihrer Organisation in ihrem Verzeichnis erstellen und diesem eine beliebige RBAC-Rolle zuweisen.
 
 - **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in ihrem Verzeichnis erstellen und dieser/m eine beliebige RBAC-Rolle zuweisen. Die Identität der App oder des Skripts wird als „Dienstprinzipal“ bezeichnet.
 
 ## <a name="link-partner-id"></a>Verknüpfen der Partner-ID
-Wenn Sie Zugriff auf die Ressourcen des Kunden haben, verknüpfen Sie Ihre Microsoft Partner Network-ID (MPN-ID) mithilfe von PowerShell oder der CLI mit Ihrer Benutzer-ID oder Ihrem Dienstprinzipal. Sie müssen die Partner-ID für jeden Kundenmandanten verknüpfen. 
+
+Wenn Sie Zugriff auf die Ressourcen des Kunden haben, verknüpfen Sie Ihre Microsoft Partner Network-ID (MPN-ID) über das Azure-Portal, über PowerShell oder über die CLI mit Ihrer Benutzer-ID oder Ihrem Dienstprinzipal. Sie müssen die Partner-ID bei jedem Kundenmandanten verknüpfen.
+
+### <a name="use-azure-portal-to-link-new-partner-id"></a>Verknüpfen einer neuen Partner-ID im Azure-Portal
+
+1. Wechseln Sie im Azure-Portal zu [Mit einer Partner-ID verknüpfen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade).
+
+2. Melden Sie sich beim Azure-Portal an.
+
+3. Geben Sie die Microsoft-Partner-ID ein. Die Partner-ID ist die [MPN-ID (Microsoft Partner Network)](https://partner.microsoft.com/) Ihrer Organisation.
+
+  ![Screenshot, der Verknüpfen einer Partner-ID zeigt](./media/billing-link-partner-id/link-partner-ID.PNG)
+
+4. Wenn Sie die Partner-ID für einen anderen Kunden verknüpfen möchten, verwenden Sie den Verzeichniswechsler. Wählen Sie unter „Verzeichnis wechseln“ das gewünschte Verzeichnis aus.
+
+  ![Screenshot, der Verknüpfen einer Partner-ID zeigt](./media/billing-link-partner-id/directory-switcher.png)
 
 ### <a name="use-powershell-to-link-new-partner-id"></a>Verknüpfen einer neuen Partner-ID mit PowerShell
 
@@ -67,45 +85,46 @@ C:\> remove-AzureRmManagementPartner -PartnerId 12345
 ### <a name="use-cli-to-link-new-partner-id"></a>Verknüpfen einer neuen Partner-ID mit der CLI
 1.  Installieren Sie die CLI-Erweiterung.
 
-    ```azure-cli
+    ```azurecli-interactive
     C:\ az extension add --name managementpartner
     ``` 
 
 2.  Melden Sie sich mit dem Benutzerkonto oder Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Erste Schritte mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
-    ```azure-cli
+    ```azurecli-interactive
     C:\ az login --tenant <tenant>
     ``` 
 
-
 3.  Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [MPN-ID (Microsoft Partner Network)](https://partner.microsoft.com/) Ihrer Organisation.
 
-     ```azure-cli
+     ```azurecli-interactive
      C:\ az managementpartner create --partner-id 12345
       ```  
 
 #### <a name="get-the-linked-partner-id"></a>Abrufen der verknüpften Partner-ID
-```azure-cli
+```azurecli-interactive
 C:\ az managementpartner show
 ``` 
 
 #### <a name="update-the-linked-partner-id"></a>Aktualisieren der verknüpften Partner-ID
-```azure-cli
+```azurecli-interactive
 C:\ az managementpartner update --partner-id 12345
 ``` 
 
 #### <a name="delete-the-linked-partner-id"></a>Löschen der verknüpften Partner-ID
-```azure-cli
+```azurecli-interactive
 C:\ az managementpartner delete --partner-id 12345
 ``` 
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Schließen Sie sich der Diskussion in der [Microsoft-Partner-Community](https://aka.ms/PALdiscussion) an, um Aktualisierungen zu erhalten oder Feedback zu senden.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **Wer kann die Partner-ID verknüpfen?**
 
 Jeder Benutzer der Partnerorganisation, der eine Ressource des Kunden verwaltet, kann die Partner-ID mit dem Konto verknüpfen.
-  
 
 **Kann eine Partner-ID geändert werden, nachdem diese verknüpft wurde?**
 
@@ -118,5 +137,3 @@ Die Verknüpfung zwischen der Partner-ID und dem Konto erfolgt für jeden Kunden
 **Können andere Partner oder Kunden die Verknüpfung mit der Partner-ID bearbeiten oder entfernen?**
 
 Die Verknüpfung wird auf Kontoebene erstellt. Nur Sie können die Verknüpfung mit der Partner-ID bearbeiten oder entfernen. Weder der Kunde noch andere Partner können die Verknüpfung mit der Partner-ID ändern. 
-
-

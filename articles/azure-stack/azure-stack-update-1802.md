@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: c5237f8e97f76e5dc348322abeb16682aee62f3b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d0641e1c7c09ac081e4dc024d6e231b88bcb58d2
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936669"
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack-Update 1802
 
@@ -84,6 +85,8 @@ Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Az
 - **Verbesserungen an der rollenbasierten Zugriffssteuerung (RBAC)** – Ab sofort können Sie mithilfe der RBAC Berechtigungen an universellen Benutzergruppen delegieren, wenn Azure Stack mit AD FS bereitgestellt wird. Weitere Informationen zur RBAC finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung](azure-stack-manage-permissions.md).
 
 - **Es wurde Unterstützung für mehrere Fehlerdomänen hinzugefügt**.  Weitere Informationen finden Sie unter [Hochverfügbarkeit für Azure Stack](azure-stack-key-features.md#high-availability-for-azure-stack).
+
+- **Unterstützung von Upgrades für den physischen Speicher:** Sie können jetzt die Speicherkapazität des integrierten Azure Stack-Systems nach der Erstbereitstellung erweitern. Weitere Informationen finden Sie unter [Verwalten der Kapazität des physischen Speichers für Azure Stack](azure-stack-manage-storage-physical-memory-capacity.md).
 
 - Es wurden **verschiedene Fehlerbehebungen** hinsichtlich der Leistung, Stabilität, Sicherheit und des von Azure Stack eingesetzten Betriebssystems vorgenommen.
 

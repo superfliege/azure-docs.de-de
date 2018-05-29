@@ -2,23 +2,26 @@
 title: Informationen zum Bereitstellen optionaler Ansprüche für Ihre Azure AD-Anwendung | Microsoft-Dokumentation
 description: Anleitung zum Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token), die von Azure Active Directory ausgestellt werden.
 documentationcenter: na
-author: hpsin
+author: CelesteDG
 services: active-directory
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/15/2018
-ms.author: hirsin
+ms.date: 04/24/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 76e7be62caae7e33caefc3f90a5e57c5f71a31d3
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: c4670a7e957970acea54ff69d56edcd45092c8fe
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157230"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Optionale Ansprüche in Azure AD (Preview)
 
@@ -65,11 +68,9 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `fwd`                      | IP-Adresse.  Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET).                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `ctry`                     | Land des Benutzers                                                                                                                                                                                  | JWT        |           |                                                                                                                                                                                                                                                                                         |
 | `tenant_ctry`              | Land des Ressourcenmandanten                                                                                                                                                                       | JWT        |           |                                                                                                                                                                                                                                                                                         |
-| `is_device_known`          | Gibt an, ob das Gerät in den Arbeitsplatz eingebunden ist. Steht mit der Richtlinie für bedingten Zugriff im Zusammenhang.                                                                                                                 | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
-| `is_device_managed`        | Gibt an, ob MDM auf dem Gerät installiert ist. Steht mit der Richtlinie für bedingten Zugriff im Zusammenhang.                                                                                                                  | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
-| `is_device_compliant`      | Gibt an, dass MDM festgestellt hat, dass das Gerät den Gerätesicherheitsrichtlinien des Unternehmens entspricht.                                                                                  | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
-| `kmsi`                     | Gibt an, ob der Benutzer die Option „Angemeldet bleiben“ ausgewählt hat.                                                                                                                                    | SAML       |           | Bei JWTs in „signin_state“ zusammengefasst.                                                                                                                                                                                                                                                   |
+| `acct`    | Benutzerkontostatus im Mandanten.  Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`.  Bei einem Gastbenutzer lautet der Wert `1`.  | JWT, SAML | | |
 | `upn`                      | Anspruch „UserPrincipalName“.  Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen. | JWT, SAML  |           | Zusätzliche Eigenschaften: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash`                                                                                                                                                                 |
+
 ### <a name="v20-optional-claims"></a>Optionale Ansprüche in v2.0
 Diese Ansprüche sind in v1.0-Token immer enthalten, wurden aber aus v2.0-Token entfernt, sofern nicht angefordert.  Diese Ansprüche gelten nur für JWTs (ID-Token und Zugriffstoken).  
 

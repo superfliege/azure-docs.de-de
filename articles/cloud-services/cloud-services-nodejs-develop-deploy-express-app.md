@@ -1,11 +1,11 @@
 ---
 title: Erstellen und Bereitstellen einer Node.js-Express-App in Azure Cloud Services
-description: "Erstellen und Bereitstellen einer Express.js-Anwendung in Node.js für Azure Cloud Services"
+description: Erstellen und Bereitstellen einer Express.js-Anwendung in Node.js für Azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: craigshoemaker
-manager: routlaw
-editor: 
+author: thraka
+manager: timlt
+editor: ''
 ms.assetid: 24f8e7ef-e90d-4554-9b1e-a9b31d5824e5
 ms.service: cloud-services
 ms.workload: tbd
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: cshoe
-ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.author: adegeo
+ms.openlocfilehash: 8bb78330591b0557b036a161eb83e47b41a8fd43
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010107"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services
 
@@ -97,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Cloud-Dienst-Projekt namens
    
    ![Inhalt der Datei index.jade](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade ist das Standard-Ansichtsmodul, das von Express-Anwendungen verwendet wird. Weitere Informationen zum Ansichtsmodul Jade finden Sie unter [http://jade-lang.com][http://jade-lang.com].
+   Jade ist die Standard-Anzeige-Engine, die von Express-Anwendungen verwendet wird. Weitere Informationen zur Anzeige-Engine Jade finden Sie unter [http://jade-lang.com][http://jade-lang.com].
 2. Ändern Sie die letzte Textzeile, indem Sie **in Azure**anhängen.
    
    ![Die letzte Zeile in der Datei „index.jade“ lautet „p Welcome to \#{title} in Azure“.](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)

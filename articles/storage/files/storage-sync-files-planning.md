@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 9af1a82530d6e2d694f56322b7107796df73a2d5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077673"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -46,7 +47,14 @@ Der Azure File Sync-Agent ist ein herunterladbares Paket, mit dem ein Windows Se
     - C:\Programme\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
 ### <a name="server-endpoint"></a>Serverendpunkt
-Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten Server dar, z. B. einen Ordner auf einem Servervolume. Mehrere Serverendpunkte können auf demselben Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z. B.`F:\sync1` und `F:\sync2`). Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. Derzeit ist es nicht möglich, einen Serverendpunkt für den Stamm eines Volumes zu erstellen (z. B. `F:\` oder `C:\myvolume`, wenn ein Volume als Bereitstellungspunkt bereitgestellt wird).
+Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten Server dar, z. B. einen Ordner auf einem Servervolume. Mehrere Serverendpunkte können auf demselben Volume vorhanden sein, wenn sich deren Namespaces nicht überschneiden (z. B.`F:\sync1` und `F:\sync2`). Sie können Richtlinien für das Cloudtiering für jeden Serverendpunkt separat konfigurieren. 
+
+Sie können einen Serverendpunkt über einen Bereitstellungspunkt erstellen. Beachten Sie, dass Bereitstellungspunkte innerhalb des Serverendpunkts übersprungen werden.  
+
+Sie können einen Serverendpunkt auf dem Systemvolume erstellen, dabei gelten jedoch zwei Einschränkungen:
+* Das Cloudtiering kann nicht aktiviert werden.
+* Die schnelle Wiederherstellung des Namespace (bei dem der gesamte Namespace im System schnell heruntergefahren und dann der Inhalt abgerufen wird) wird nicht ausgeführt.
+
 
 > [!Note]  
 > Es werden nur nicht austauschbare Volumes unterstützt.  Laufwerke, die über eine Remotefreigabe zugeordnet werden, werden für einen Serverendpunktpfad nicht unterstützt.  Außerdem kann ein Serverendpunkt auch dann auf dem Windows-Systemvolume angeordnet sein, wenn das Cloudtiering auf dem Systemvolume nicht unterstützt wird.
@@ -105,7 +113,7 @@ Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröff
 | ~$\*.\* | Temporäre Office-Datei |
 | \*.tmp | Temporäre Datei |
 | \*.laccdb | Access-DB-Sperrdatei|
-| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| 635D02A9D91C401B97884B82B3BCDAEA.* | Interne Synchronisierungsdatei|
 | \\System Volume Information | Volumespezifischer Ordner |
 | $RECYCLE.BIN| Ordner |
 | \\SyncShareState | Ordner für die Synchronisierung |

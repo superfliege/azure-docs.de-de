@@ -1,19 +1,20 @@
 ---
-title: "Schützen von Active Directory und DNS mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungs-Lösung für Active Directory mit Azure Site Recovery."
+title: Schützen von Active Directory und DNS mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt das Implementieren einer Notfallwiederherstellungs-Lösung für Active Directory mit Azure Site Recovery.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 97923af5ed4191f66434166c4743e398f8ac635a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072605"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS
 
@@ -57,16 +58,16 @@ Konfigurieren Sie für die VM, die den Domänencontroller bzw. DNS hostet, die N
 Erstellen Sie einen Domänencontroller am sekundären Standort. Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den Namen der gleichen Domäne an, die am primären Standort verwendet wird. Sie können das Snap-In **Active Directory-Standorte und Dienste** zum Konfigurieren von Einstellungen für das Standortverknüpfungsobjekt nutzen, dem die Standorte hinzugefügt werden. Durch Konfigurieren von Einstellungen für eine Standortverknüpfung können Sie steuern, wann und wie oft eine Replikation zwischen zwei oder mehr Standorten erfolgt. Weitere Informationen finden Sie unter [Planen der Replikation zwischen Standorten](https://technet.microsoft.com/library/cc731862.aspx).
 
 ### <a name="site-to-azure-protection"></a>Standort-zu-Azure-Schutz
-Erstellen Sie zuerst einen [Domänencontroller in einem virtuellen Azure-Netzwerk](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
+Erstellen Sie zuerst einen Domänencontroller in einem virtuellen Azure-Netzwerk. Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
 
-Dann [konfigurieren Sie den DNS-Server für das virtuelle Netzwerk neu](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), um den DNS-Server in Azure zu verwenden.
+Konfigurieren Sie dann den DNS-Server für das virtuelle Netzwerk neu, um den DNS-Server in Azure zu verwenden.
 
 ![Azure-Netzwerk](./media/site-recovery-active-directory/azure-network.png)
 
 ### <a name="azure-to-azure-protection"></a>Azure-zu-Azure-Schutz
-Erstellen Sie zuerst einen [Domänencontroller in einem virtuellen Azure-Netzwerk](../active-directory/active-directory-install-replica-active-directory-domain-controller.md). Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
+Erstellen Sie zuerst einen Domänencontroller in einem virtuellen Azure-Netzwerk. Geben Sie beim Heraufstufen des Servers auf eine Domänencontrollerrolle den gleichen Domänennamen an, der am primären Standort verwendet wird.
 
-Dann [konfigurieren Sie den DNS-Server für das virtuelle Netzwerk neu](../active-directory/active-directory-install-replica-active-directory-domain-controller.md#reconfigure-dns-server-for-the-virtual-network), um den DNS-Server in Azure zu verwenden.
+Konfigurieren Sie dann den DNS-Server für das virtuelle Netzwerk neu, um den DNS-Server in Azure zu verwenden.
 
 ## <a name="test-failover-considerations"></a>Überlegungen zum Test-Failover
 Um Auswirkungen auf Produktionsworkloads zu vermeiden, erfolgt das Testfailover in einem Netzwerk, das vom Produktionsnetzwerk isoliert ist.

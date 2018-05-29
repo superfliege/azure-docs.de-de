@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 03/13/2018
 ms.author: mazha
 ms.custom: mvc
-ms.openlocfilehash: 91bb23b2790ed23c831bb1680f6f2bb2cdecc38f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 87216a861aa150c5f9a16f6193f2abf2af6d57d1
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198706"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts
 In dieser Schnellstartanleitung aktivieren Sie Azure Content Delivery Network (CDN), indem Sie ein neues CDN-Profil und einen CDN-Endpunkt erstellen. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen.
@@ -87,6 +88,6 @@ In den vorherigen Schritten haben Sie ein CDN-Profil und einen Endpunkt in einer
 Im folgenden Tutorial erfahren Sie, wie Sie Ihrem CDN-Endpunkt eine benutzerdefinierte Domäne hinzufügen:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Hinzufügen von Azure CDN zu einer Web-App](app-service-web-tutorial-content-delivery-network.md)
+> [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
 
 

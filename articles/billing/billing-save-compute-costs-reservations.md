@@ -3,8 +3,8 @@ title: Mit vorab bezahlten virtuellen Azure-Computern Geld sparen – Azure | Mi
 description: Informieren Sie sich über reservierte VM-Instanzen, um Kosten für virtuelle Computer einzusparen.
 services: billing
 documentationcenter: ''
-author: vikramdesai01
-manager: vikramdesai01
+author: yashesvi
+manager: yashesvi
 editor: ''
 ms.service: billing
 ms.devlang: na
@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7d85d3500014962a90ae596598332a95f4aa557e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: yashar
+ms.openlocfilehash: 9c73102f09e252b449f78603debaf707b3c89c3b
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34056685"
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen 
 Reservierte VM-Instanzen ermöglichen Ihnen eine Vorausbezahlung für ein oder drei Jahre Rechenkapazität, um einen Rabatt auf die von Ihnen genutzten virtuellen Computern zu erhalten. Mit einer Vorauszahlung für ein oder drei Jahre reduzieren Sie Ihre Kosten für virtuelle Computer erheblich – im Vergleich mit den Preisen bei nutzungsbasierter Bezahlung um bis zu 72 Prozent. Bei reservierten VM-Instanzen handelt es sich um einen Rechnungsrabatt, der sich nicht auf den Laufzeitstatus von virtuellen Computern auswirkt.
@@ -35,6 +36,7 @@ Azure-Kunden mit diesen Abonnementtypen können eine reservierte VM-Instanz erwe
 -   Enterprise Agreement-Abonnement als Angebotstyp (MS-AZR-0017P).
 -   [Nutzungsbasierte Zahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) als Abonnementsangebotstyp (MS-AZR-003P).
 Sie müssen über die Rolle „Besitzer“ für das Abonnement verfügen, um eine reservierte Instanz zu kaufen. Für den Erwerb von Reservierungen in einer Enterprise-Registrierung muss der Enterprise-Administrator im EA-Portal Reservierungskäufe aktivieren; diese Einstellung ist standardmäßig aktiviert.
+-   CSP-Partner (Cloud Solution Provider, Cloudlösungsanbieter) können Reservierungen über das Azure-Verwaltungsportal oder über [Partner Center](https://docs.microsoft.com/partner-center/azure-reservations) erwerben.
 
 ## <a name="how-is-a-reserved-virtual-machine-instances-purchase-billed"></a>Wie wird der Erwerb einer reservierten VM-Instanz in Rechnung gestellt?
 Der Kauf der Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem Abonnement verknüpft ist. Wenn Sie über ein Enterprise-Abonnement verfügen, werden die Reservierungskosten von Ihrem Verpflichtungsguthaben abgezogen. Wenn Ihr Verpflichtungsguthaben die Kosten für die Reservierung nicht abdeckt, wird Ihnen die Überschreitung in Rechnung gestellt.
@@ -69,5 +71,7 @@ Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden A
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
+- [Reservierte Instanzen im Partner Center Cloud Solution Provider (CSP)-Programm](https://docs.microsoft.com/partner-center/azure-reservations)
 
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

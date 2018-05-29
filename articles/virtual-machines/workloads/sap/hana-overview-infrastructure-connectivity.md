@@ -14,18 +14,19 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43debeb710e5ab5112f9f0a85a76761cde3051a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51089ffa05168d2309bd2a96ec44b2ce0fed75f9
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778289"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen) 
 
 Machen Sie sich mit den hier angegebenen Definitionen vertraut, bevor Sie diese Anleitung lesen. In [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wurden zwei unterschiedliche Klassen von HANA-Einheiten (große Instanzen) eingeführt:
 
 - S72, S72m, S144, S144m, S192 und S192m, die wir als „Typ I“-Klassen von SKUs bezeichnen.
-- S384, S384m, S384xm, S576, S768 und S960, die wir als „Typ II“-Klassen“ von SKUs bezeichnen.
+- S384, S384m, S384xm, S576m, S768m und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
 
 Die Klassenspezifizierer werden in der gesamten Dokumentation zu HANA (große Instanzen) verwendet, um auf unterschiedliche Funktionen und Anforderungen basierend auf SKUs für HANA (große Instanzen) zu verweisen.
 
@@ -213,7 +214,7 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 In diesem Beispiel wurde die Gateway-SKU „HighPerformance“ verwendet. Ihre Optionen sind „HighPerformance“ oder „UltraPerformance“ als einzige Gateway-SKUs, die für SAP HANA in Azure (große Instanzen) unterstützt werden.
 
 > [!IMPORTANT]
-> Für HANA (große Instanzen) mit den SKU-Typen S384, S384m, S384xm, S576, S768 und S960 (SKUs der Typ II-Klasse) ist die Verwendung der UltraPerformance-Gateway-SKU obligatorisch.
+> Für HANA (große Instanzen) mit den SKU-Typen S384, S384m, S384xm, S576m, S768m und S960m (SKUs der Typ II-Klasse) ist die Verwendung der UltraPerformance-Gateway-SKU obligatorisch.
 
 ### <a name="linking-vnets"></a>Verknüpfen von VNets
 

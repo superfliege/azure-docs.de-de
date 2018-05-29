@@ -10,11 +10,12 @@ ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4585e563d59d29ba0a026c992d277e5b0607e681
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: de75a7ab907655d84873949460692a921c8d3186
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166096"
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -95,7 +96,7 @@ In Schritt 3 fügen Sie Erstellungsoptionen zum SQL Server-Container hinzu, die 
         }
    ```
 
-3. Ersetzen Sie `<docker registry address>` durch die Adresse, die Sie im Tutorial [Bereitstellen einer Azure-Funktion als IoT Edge-Modul – Vorschau](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-function) angegeben haben.
+3. Ersetzen Sie `<docker registry address>` durch die Adresse, die Sie im Tutorial [Bereitstellen einer Azure-Funktion als IoT Edge-Modul – Vorschau](tutorial-deploy-function.md) angegeben haben.
 
    >[!NOTE]
    >Die Adresse der Containerregistrierung ist identisch mit dem Anmeldeserver, den Sie aus der Registrierung kopiert haben. Sie muss im folgenden Format angegeben werden: `<your container registry name>.azurecr.io`

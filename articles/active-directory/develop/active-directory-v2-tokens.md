@@ -3,23 +3,26 @@ title: Azure Active Directory v2.0-Tokenreferenz | Microsoft Docs
 description: Vom Azure AD v2.0-Endpunkt ausgestellte Token- und Anspruchstypen
 services: active-directory
 documentationcenter: ''
-author: hpsin
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: dc58c282-9684-4b38-b151-f3e079f034fd
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: hirsin
+ms.date: 04/22/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 071e0c2b802b1bb6ef68092362c61bf3960fd45a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164457"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](active-directory-v2-flows.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
@@ -49,7 +52,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 ```
 
 > [!TIP]
-> Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie das Token in [calebb.net](http://calebb.net/) einfügen.
+> Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie das Token in [jwt.ms](http://jwt.ms/) einfügen.
 >
 >
 
@@ -69,8 +72,8 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VL
 | name |`name` |`Babe Ruth` |Der Namensanspruch gibt einen visuell lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | email |`email` |`thegreatbambino@nyy.onmicrosoft.com` |Die primäre E-Mail-Adresse, die mit dem Benutzerkonto verknüpft ist (sofern vorhanden). Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Der Bereich `email` ist erforderlich, um diesen Anspruch zu empfangen. |
 | preferred username |`preferred_username` |`thegreatbambino@nyy.onmicrosoft.com` |Der primäre Benutzername, der zum Darstellen des Benutzers im v2.0-Endpunkt verwendet wird. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-| subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID.  Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch.  Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
-| object ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto.  Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch.  Dies bedeutet, dass die ID bei Abfragen in Microsoft Online Services wie z.B. Microsoft Graph verwendet werden kann.  Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück.  Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
+| subject |`sub` |`MF4f-ggWMEji12KynJUNQZphaUTvLcQug5jdF2nl01Q` | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
+| object ID |`oid` |`a1dbdde8-e4f9-4571-ad93-3059e3750d23` | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto. Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass die ID bei Abfragen in Microsoft Online Services wie z.B. Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 
 ### <a name="access-tokens"></a>Zugriffstoken
 
@@ -83,7 +86,7 @@ Aktualisierungstoken sind Sicherheitstoken, mit denen Ihre App neue Zugriffstoke
 
 Aktualisierungstoken bestehen aus mehreren Ressourcen. Ein Aktualisierungstoken, das bei einer Tokenanforderung für eine Ressource empfangen wurde, kann als Zugriffstoken bei einer völlig anderen Ressource eingelöst werden.
 
-Um eine Aktualisierung bei einer Tokenantwort zu erhalten, muss Ihre App den `offline_acesss`-Bereich anfordern, und dieser Bereich muss gewährt werden. Weitere Informationen zum `offline_access`-Bereich finden Sie im Artikel zu [Bereichen und Zustimmungen](active-directory-v2-scopes.md).
+Um eine Aktualisierung bei einer Tokenantwort zu erhalten, muss Ihre App den `offline_access`-Bereich anfordern, und dieser Bereich muss gewährt werden. Weitere Informationen zum `offline_access`-Bereich finden Sie im Artikel zu [Bereichen und Zustimmungen](active-directory-v2-scopes.md).
 
 Aktualisierungstoken sind für Ihre App niemals transparent. Sie werden vom Azure AD v2.0-Endpunkt ausgestellt und können nur von diesem v2.0-Endpunkt überprüft und interpretiert werden. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Ausführlichere Informationen finden Sie im Abschnitt zum [Widerrufen von Token](active-directory-token-and-claims.md#token-revocation). Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung auf dem v2.0-Endpunkt aus.
 
@@ -123,7 +126,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 >
 >
 
-Bei diesem Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Ort der verschiedenen Endpunkte, die für die OpenID Connect-Authentifizierung erforderlich sind.  Darüber hinaus enthält das Dokument einen *jwks_uri*, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument am jwks_uri verfügt über alle Informationen zum gegenwärtig verwendeten öffentlichen Schlüssel. Ihre App kann mit dem `kid`-Anspruch im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines Tokens verwendet wurde. Sie führt anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus aus.
+Bei diesem Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Ort der verschiedenen Endpunkte, die für die OpenID Connect-Authentifizierung erforderlich sind. Darüber hinaus enthält das Dokument einen *jwks_uri*, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument am jwks_uri verfügt über alle Informationen zum gegenwärtig verwendeten öffentlichen Schlüssel. Ihre App kann mit dem `kid`-Anspruch im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines Tokens verwendet wurde. Sie führt anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus aus.
 
 Die Signaturüberprüfung geht über den Rahmen dieses Dokuments hinaus. Hilfreiche Informationen stehen jedoch in zahlreichen Open Source-Bibliotheken zur Verfügung.
 
