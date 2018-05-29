@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 94b6864bec157694e0192597c0fecfa0d3e407ec
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 62ecacb16c891905eb67a6bae08cf81ac2cdb173
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158560"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](http://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
@@ -30,7 +31,7 @@ Es gibt keine gleichwertige Datei zum Steuern des [SDK in einer Webseite][client
 In diesem Dokument sind die Abschnitte beschrieben, die in der Konfigurationsdatei enthalten sind, wie die Steuerung der Komponenten des SDK damit durchgeführt wird und welche NuGet-Pakete diese Komponenten laden.
 
 > [!NOTE]
-> Die Anweisungen für „ApplicationInsights.config“ und „ApplicationInsights.xml“ gelten nicht für das .NET Core SDK. Für Änderungen an einer .NET Core-Anwendung verwenden wir in der Regel die Datei „appsettings.json“. Ein Beispiel dafür finden Sie der [Dokumentation zu Momentaufnahmedebugger](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications).
+> Die Anweisungen für „ApplicationInsights.config“ und „ApplicationInsights.xml“ gelten nicht für das .NET Core SDK. Für Änderungen an einer .NET Core-Anwendung verwenden wir in der Regel die Datei „appsettings.json“. Ein Beispiel dafür finden Sie der [Dokumentation zu Momentaufnahmedebugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications).
 
 ## <a name="telemetry-modules-aspnet"></a>Telemetriemodule (ASP.NET)
 Jedes Telemetriemodul erfasst eine bestimmte Art von Daten und verwendet die Haupt-API zum Senden der Daten. Die Module werden von verschiedenen NuGet-Paketen installiert, mit denen der CONFIG-Datei auch die erforderlichen Zeilen hinzugefügt werden.

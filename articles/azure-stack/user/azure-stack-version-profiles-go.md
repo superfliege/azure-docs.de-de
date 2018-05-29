@@ -5,21 +5,20 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 84475302-EFC2-4C35-B4CF-60C857A96345
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 09a774e5dda71d87c3862a6152ff5d2c9468c40c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010063"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Go in Azure Stack
 
@@ -35,7 +34,7 @@ Ein Profil ist eine Kombination aus verschiedenen Ressourcentypen mit unterschie
 Im Go SDK sind Profile unter dem Pfad „profiles/“ verfügbar. Ihre Version ist im Format **JJJJ-MM-TT** angegeben. Derzeit ist die neueste Azure Stack-Profilversion **2017-03-09**. Zum Importieren eines bestimmten Diensts aus einem Profil müssen Sie sein entsprechendes Moduls aus dem Profil importieren. So importieren Sie beispielsweise den Dienst **Compute** aus dem Profil **2017-03-09**:
 
 ````go
-import "github.com/Azure/azure-sdk-for-go/profi1es/2e17-e3-eg/compute/mgmt/compute" 
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/compute/mgmt/compute" 
 ````
 
 ## <a name="install-azure-sdk-for-go"></a>Installieren des Azure SDK für Go
@@ -63,7 +62,8 @@ Das GO SDK ist zum Senden von REST-Anforderungen an Azure Resource Manager-Endpu
 So führen Sie ein Beispiel für Go-Code in Azure Stack aus
   1. Installieren Sie das Azure SDK für Go und seine Abhängigkeiten. Anweisungen finden Sie im vorherigen Abschnitt: [Installieren des Azure SDK für Go](#install-azure-sdk-for-go).
   2. Rufen Sie die Metadateninformationen vom Resource Manager-Endpunkt ab. Der Endpunkt gibt eine JSON-Datei mit den zum Ausführen des Go-Codes erforderlichen Informationen zurück.
-  > [!note]  
+
+  > [!Note]  
   > Der **ResourceManagerUrl**-Wert im Azure Stack Development Kit (ASDK) lautet `https://management.local.azurestack.external/`.  
   > Der **ResourceManagerUrl**-Wert in integrierten Systemen lautet `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.  
   > Zum Abrufen der erforderlichen Metadaten verwenden Sie Folgendes: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
@@ -129,7 +129,7 @@ Als Authorizer-Wert muss der Autorisierer für den Ressourcenclient festgelegt w
 
 In diesem Abschnitt wird eine häufig verwendete Methode zum Abrufen von Autorisierertoken in Azure Stack mithilfe von Clientanmeldeinformationen erläutert:
 
-  1. Wenn ein Dienstprinzipal mit der Rolle „Besitzer“ im Abonnement verfügbar ist, überspringen Sie diesen Schritt. Erstellen Sie andernfalls einen Dienstprinzipal (siehe [Anweisungen]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals)), und weisen Sie ihm die Rolle „Besitzer“ zu, die Ihrem Abonnement zugeordnet ist (siehe [Anweisungen]( https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)). Speichern Sie die Anwendungs-ID und das Geheimnis des Dienstprinzipals. 
+  1. Wenn ein Dienstprinzipal mit der Rolle „Besitzer“ im Abonnement verfügbar ist, überspringen Sie diesen Schritt. Erstellen Sie andernfalls einen Dienstprinzipal (siehe [Anweisungen]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)), und weisen Sie ihm die Rolle „Besitzer“ zu, die Ihrem Abonnement zugeordnet ist (siehe [Anweisungen]( https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal)). Speichern Sie die Anwendungs-ID und das Geheimnis des Dienstprinzipals. 
 
   2. Importieren Sie das **adal**-Paket aus Go-AutoRest in Ihren Code. 
   
@@ -178,7 +178,8 @@ In diesem Abschnitt wird eine häufig verwendete Methode zum Abrufen von Autoris
 ## <a name="example"></a>Beispiel
 
 Dieser Abschnitt enthält ein Beispiel für Go-Code zum Erstellen eines virtuellen Netzwerks in Azure Stack. Vollständige Beispiele des Go SDK finden Sie im [Repository mit Azure Go SDK-Beispielen](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure Stack-Beispiele stehen unter dem Pfad „hybrid/“ in den Dienstordnern des Repositorys zur Verfügung.
-> [!note]  
+
+> [!Note]  
 > Vergewissern Sie sich zum Ausführen des Codes in diesem Beispiel, dass für das verwendete Abonnement der **Netzwerkressourcenanbieter** als **registriert** festgelegt ist. Navigieren Sie dazu im Azure Stack-Portal zum Abonnement, und klicken Sie auf **Ressourcenanbieter**.
 
 1. Importieren Sie die erforderlichen Pakete in Ihren Code. Sie sollten das neueste verfügbare Profil in Azure Stack verwenden, um das Netzwerkmodul zu importieren. 
@@ -196,7 +197,7 @@ Dieser Abschnitt enthält ein Beispiel für Go-Code zum Erstellen eines virtuell
   )
   ````
 
-2. Definieren Sie Ihre Umgebungsvariablen. Beachten Sie, dass Sie zum Erstellen eines virtuellen Netzwerks eine Ressourcengruppe benötigen. 
+2. Definieren Sie Ihre Umgebungsvariablen. Zum Erstellen eines virtuellen Netzwerks wird eine Ressourcengruppe benötigt. 
 
   ````go
   var (

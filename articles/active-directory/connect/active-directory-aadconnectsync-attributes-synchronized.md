@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 506206d3e0a28f2ffc0e9e029ec27546bc332754
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32160054"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -42,7 +43,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | cn |X | |
 | displayName |X | |
 | objectSID |X |Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten. |
-| pwdLastSet |X |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | sourceAnchor |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | usageLocation |X |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
@@ -234,7 +235,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | postOfficeBox |X |X | |Dieses Attribut wird derzeit nicht für SharePoint Online verwendet. |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | reportToOriginator | | |X | |
 | reportToOwner | | |X | |
 | securityEnabled | | |X |Abgeleitet von "groupType" |
@@ -289,7 +290,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
@@ -331,7 +332,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | member | | |X | |
 | objectSID |X | |X |Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | securityEnabled | | |X |Abgeleitet von "groupType" |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |
@@ -359,7 +360,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | physicalDeliveryOfficeName |X |X | | |
 | postalCode |X |X | | |
 | preferredLanguage |X | | | |
-| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | securityEnabled | | |X |Abgeleitet von "groupType" |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
@@ -390,7 +391,7 @@ Diese Gruppe umfasst einen Satz von Attributen, die verwendet werden können, we
 | member | | |X | |
 | objectSID |X | | |Mechanische Eigenschaft. AD-Benutzer-ID, die verwendet wird, um die Synchronisierung zwischen Azure AD und AD aufrechtzuerhalten. |
 | proxyAddresses |X |X |X | |
-| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Von Kennwortsynchronisierung und Verbund verwendet. |
+| pwdLastSet |X | | |Mechanische Eigenschaft. Wird verwendet, um zu erfahren, wann bereits ausgestellte Token für ungültig erklärt werden sollen. Wird von Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet. |
 | sn |X |X | | |
 | sourceAnchor |X |X |X |Mechanische Eigenschaft. Unveränderlicher Bezeichner, mit dem die Beziehung zwischen AD DS und Azure AD aufrechterhalten wird. |
 | usageLocation |X | | |Mechanische Eigenschaft. Das Land des Benutzers. Wird für die Lizenzzuweisung verwendet. |

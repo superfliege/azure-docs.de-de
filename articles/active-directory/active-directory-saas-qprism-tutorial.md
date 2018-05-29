@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 1f697b95074e0fc9dbb3e8c7800e69f8ece9e0b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b924ea1df926518ba1d86909f8e6a78deabd5468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Tutorial: Azure Active Directory-Integration mit QPrism
 
@@ -45,7 +46,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von QPrism aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -110,34 +111,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von QPrism](mailto:qsupport-ce@quatrro.com), um diese Werte zu erhalten. 
 
-4. Gehen Sie zum Generieren der **Metadaten-URL** wie folgt vor:
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
-    a. Wählen Sie **App-Registrierungen** aus.
-    
-    ![Einmaliges Anmelden konfigurieren: App-Registrierungen](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appregistrations.png)
-   
-    b. Wählen Sie **Endpunkte** aus, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren: Endpunkt](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpointicon.png)
+     ![Downloadlink für das Zertifikat](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_certificate.png)
 
-    c. Wählen Sie die Schaltfläche „Kopieren“ aus, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren: Endpunkt](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_endpoint.png)
-     
-    d. Kehren Sie nun zur Eigenschaftenseite von **QPrism** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**. Fügen Sie sie dann in Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren: Anwendungs-ID](./media/active-directory-saas-qprism-tutorial/tutorial_qprism_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`. 
-
-5. Wählen Sie **Speichern** aus.
+5. Wählen Sie **Speichern**aus.
 
     ![Einmaliges Anmelden konfigurieren: Schaltfläche „Speichern“](./media/active-directory-saas-qprism-tutorial/tutorial_general_400.png)
     
-6. Zum Konfigurieren des einmaligen Anmeldens auf der **QPrism**-Seite senden Sie die **Metadaten-URL** an das [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com). Sie stellen sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie am unteren Rand im Abschnitt **Konfiguration** die eingebettete Dokumentation auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+6. Zum Konfigurieren des einmaligen Anmeldens bei **QPrism** müssen Sie die **App-Verbundmetadaten-URL** an das [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

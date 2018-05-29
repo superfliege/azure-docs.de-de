@@ -16,15 +16,16 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: cebfc1dcaca562d26eb9e85d9b8bf0fa14e5edc9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 699d621856e9febf7a5d4093d7fdc86c39d5f242
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149235"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung
 
-In *Ihrer Organisation muss mindestens eine Lizenz zugewiesen sein*, damit die Kennwortzurücksetzung in Azure Active Directory (Azure AD) funktioniert. In der Benutzeroberfläche für das Zurücksetzen von Kennwörtern wird keine Einzelbenutzerlizenzierung erzwungen. Um Konformität mit Ihrer Microsoft-Lizenzvereinbarung zu gewährleisten, müssen Sie allen Benutzern Lizenzen zuweisen, die Premiumfeatures verwenden.
+In *Ihrer Organisation muss mindestens eine Lizenz zugewiesen sein*, damit die Kennwortzurücksetzung in Azure Active Directory (Azure AD) funktioniert. In der Benutzeroberfläche für das Zurücksetzen von Kennwörtern wird keine Einzelbenutzerlizenzierung erzwungen. Wenn ein Benutzer direkt oder indirekt von einem durch diese Lizenz abgedeckten Feature profitiert, ist eine vollständige Lizenz erforderlich.
 
 * **Nur Cloudbenutzer**: beliebige kostenpflichtige SKU für Office 365 oder Azure AD Basic
 * **Cloudbenutzer** oder **lokale Benutzer**: Azure AD Premium P1 oder P2, Enterprise Mobility + Security (EMS) oder Microsoft 365
@@ -37,8 +38,9 @@ Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine
 * Azure AD Premium P2
 * Enterprise Mobility + Security E3
 * Enterprise Mobility + Security E5
-* Microsoft 365 (Plan E3)
-* Microsoft 365 (Plan E5)
+* Microsoft 365 E3
+* Microsoft 365 E5
+* Microsoft 365 F1
 
 > [!WARNING]
 > Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für das Kennwortrückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.

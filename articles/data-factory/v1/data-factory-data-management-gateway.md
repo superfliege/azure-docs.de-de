@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 07d720db85a152f08cfeb278b91cce3b10d73800
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771047"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -276,30 +277,30 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 
 [Für Gateways mit einem Knoten]
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript“.
+2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Integration Runtime\3.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off
     ```
 4. So aktivieren Sie das Feature wieder
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on  
+    .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
 [Für hoch verfügbare und skalierbare Gateways mit mehreren Knoten (Vorschauversion)](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
-2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript“.
+2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Integration Runtime\3.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
 
     Für ein Gateway mit Hochverfügbarkeit (Vorschauversion) ist ein zusätzlicher AuthKey-Parameter erforderlich.
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
 4. So aktivieren Sie das Feature wieder
 
     ```PowerShell
-    .\GatewayAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
+    .\IntegrationRuntimeAutoUpdateToggle.ps1  -on -AuthKey <your auth key> 
     ```
 
 ## <a name="configuration-manager"></a>Konfigurations-Manager

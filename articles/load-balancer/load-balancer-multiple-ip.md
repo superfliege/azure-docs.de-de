@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 3bf2f793baec4a0fdacadd7fb6d3d6784aa17f29
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940186"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -120,7 +121,7 @@ Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Front-End
 
 4. Wählen Sie den Lastenausgleich (**mylb**) aus, dem Sie den Front-End-IP-Pool hinzufügen möchten.
 
-5. Wählen Sie unter **Einstellungen** **Front-End-Pools** aus. Wählen Sie oben im nächsten Bereich die Option **Hinzufügen**.
+5. Klicken Sie unter **Einstellungen** auf **Front-End-IP-Konfiguration**. Wählen Sie oben im nächsten Bereich die Option **Hinzufügen**.
 
 6. Geben Sie einen Namen für Ihre Front-End-IP-Adresse ein (z.B. **contosofe** oder **fabrikamfe**).
 
@@ -128,7 +129,7 @@ Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Front-End
 
 8. Erstellen Sie die zweite Front-End-IP-Adresse, indem Sie <a href="#step3-3">Schritt 3</a> bis <a href="#step3-7">Schritt 7</a> dieses Abschnitts wiederholen.
 
-Nachdem der Front-End-Pool konfiguriert wurde, werden die IP-Adressen unter den **Front-End-IP-Pool**-Einstellungen für Ihren Lastenausgleich angezeigt. 
+Nachdem der Front-End-Pool konfiguriert wurde, werden die IP-Adressen in den Einstellungen für Ihren Lastenausgleich unter **Front-End-IP-Konfiguration** angezeigt. 
     
 ### <a name="step-4-configure-the-back-end-pool"></a>Schritt 4: Konfigurieren des Back-End-Pools
 

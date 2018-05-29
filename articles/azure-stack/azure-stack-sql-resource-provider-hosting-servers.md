@@ -1,39 +1,36 @@
 ---
 title: SQL-Hostserver in Azure Stack | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie SQL-Instanzen für die Bereitstellung über den SQL-Adapter-Ressourcenanbieter hinzufügen."
+description: Erfahren Sie, wie Sie SQL-Instanzen für die Bereitstellung über den SQL-Adapter-Ressourcenanbieter hinzufügen.
 services: azure-stack
-documentationCenter: 
-author: mattbriggs
+documentationCenter: ''
+author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0a29ef133a045b2828777050f2d7a204c0add4a8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 05/01/2018
+ms.author: jeffgilb
+ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202591"
 ---
-# <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Hinzufügen von Hostservern für die Verwendung durch den SQL-Adapter
-
-*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
-
+# <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 Sie können SQL Server-Instanzen auf virtuellen Computern in Ihrer [Azure Stack](azure-stack-poc.md)-Umgebung oder eine Instanz außerhalb Ihrer Azure Stack-Umgebung verwenden, sofern der Ressourcenanbieter eine Verbindung mit dieser herstellen kann. Allgemeine Anforderungen:
 
 * Die SQL-Instanz muss für die Verwendung durch den Ressourcenanbieter und durch Benutzerworkloads vorgesehen sein. Sie können keine SQL-Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
-* Der Ressourcenanbieteradapter ist nicht in eine Domäne eingebunden und kann nur per SQL-Authentifizierung eine Verbindung herstellen.
+* Die VM eines SQL-Ressourcenanbieters ist nicht in eine Domäne eingebunden und kann nur per SQL-Authentifizierung eine Verbindung herstellen.
 * Sie müssen ein Konto mit entsprechenden Berechtigungen für die Verwendung durch den Ressourcenanbieter konfigurieren.
 * Der Ressourcenanbieter und die Benutzer (z.B. Web-Apps) verwenden das Benutzernetzwerk, sodass in diesem Netzwerk Konnektivität mit der SQL-Instanz erforderlich ist. Diese Anforderung bedeutet normalerweise, dass sich die IP-Adressen der SQL-Instanzen in einem öffentlichen Netzwerk befinden müssen.
-* Sie sind für die Verwaltung der SQL-Instanzen und deren Hosts verantwortlich. Der Ressourcenanbieter installiert weder Patches, noch führt er Sicherung oder Wechsel von Anmeldeinformationen o.Ä. durch.
+* Sie sind für die Verwaltung der SQL-Instanzen und deren Hosts verantwortlich. Der Ressourcenanbieter installiert weder Patches, noch führt er Sicherungen oder Wechsel von Anmeldeinformationen o.Ä. durch.
 * Mithilfe von SKUs können unterschiedliche Klassen von SQL-Funktionen, z.B. die Leistung, Always On usw., erstellt werden.
 
-
-Einige Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Achten Sie darauf, immer die neueste Version der SQL-IaaS-Erweiterung herunterzuladen, bevor Sie einen virtuellen Computer mit einem Marketplace-Artikel bereitstellen. Die SQL-Images sind mit den in Azure verfügbaren SQL-VMs identisch. Für virtuelle SQL-Computer, die mit diesen Images erstellt werden, stellen die IaaS-Erweiterung und die zugehörigen Portalerweiterungen Features wie das automatische Patchen und Sicherungsfunktionen bereit.
+Einige Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Achten Sie darauf, immer die neueste Version der **SQL-IaaS-Erweiterung** herunterzuladen, bevor Sie eine VM mit einem Marketplace-Artikel bereitstellen. Die SQL-Images sind mit den in Azure verfügbaren SQL-VMs identisch. Für virtuelle SQL-Computer, die mit diesen Images erstellt werden, stellen die IaaS-Erweiterung und die zugehörigen Portalerweiterungen Features wie das automatische Patchen und Sicherungsfunktionen bereit.
 
 Es gibt noch weitere Optionen für die Bereitstellung von SQL-VMs, einschließlich Vorlagen im [Schnellstartkatalog für Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -84,7 +81,10 @@ Zum Hinzufügen eines eigenständigen Hostservers, der bereits bereitgestellt wu
 
   Der SKU-Name sollte die Eigenschaften widerspiegeln, damit Benutzer ihre Datenbanken entsprechend platzieren können. Alle Hostserver in einer SKU sollten die gleichen Funktionen aufweisen.
 
-    Beispiel:
+> [!IMPORTANT]
+> Sonderzeichen, einschließlich Leerzeichen und Interpunktion, werden in den Namen für die **Familie** oder **Ebene** nicht unterstützt, wenn Sie die SKU für die SQL- und MySQL-Ressourcenanbieter erstellen.
+
+Beispiel:
 
 ![SKUs](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
@@ -140,27 +140,6 @@ Um SQL-Always On-Hostserver hinzuzufügen, führen Sie die folgenden Schritte au
 Erstellen Sie Pläne und Angebote, um SQL-Datenbanken für Benutzer zur Verfügung zu stellen. Fügen Sie dem Plan den Dienst Microsoft.SqlAdapter hinzu. Außerdem müssen Sie entweder ein vorhandenes Kontingent hinzufügen oder ein neues erstellen. Wenn Sie ein Kontingent erstellen, geben Sie die Kapazität an, die Sie dem Benutzer gewähren möchten.
 
 ![Erstellen von Plänen und Angeboten, die Datenbanken umfassen](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
-
-## <a name="maintenance-of-the-sql-adapter-rp"></a>Warten des SQL-Adapter-Ressourcenanbieters
-
-Die Wartung von SQL Server-Instanzen wird hier nicht behandelt. Sie finden hier lediglich Informationen zum Kennwortwechsel. Sie sind verantwortlich für das Patchen, Sichern und Wiederherstellen der Datenbankserver, die mit dem SQL-Adapter verwendet werden.
-
-### <a name="patching-and-updating"></a>Patchen und Aktualisieren
- Der SQL-Adapter wird nicht als Teil von Azure Stack gewartet, da es sich um eine Add-On-Komponente handelt. Microsoft stellt bei Bedarf Updates für den SQL-Adapter bereit. Der SQL-Adapter wird auf einem virtuellen _Benutzercomputer_ im Standardabonnement des Anbieters instanziiert. Aus diesem Grund ist es erforderlich, Windows-Patches, Antivirensignaturen usw. bereitzustellen. Die Windows-Updatepakete werden im Rahmen des Patch- und Updatezyklus bereitgestellt und können zum Anwenden eines Updates auf die Windows-VM verwendet werden. Bei der Veröffentlichung eines aktualisierten Adapters wird ein Skript zum Anwenden des Updates bereitgestellt. Dieses Skript erstellt eine neue Ressourcenanbieter-VM und migriert jeden beliebigen bereits verfügbaren Zustand.
-
- ### <a name="backuprestoredisaster-recovery"></a>Sicherung/Wiederherstellung/Notfallwiederherstellung
- Der SQL-Adapter wird nicht als Teil des Sicherungs-/Notfallwiederherstellungsprozesses von Azure Stack gesichert, da es sich um eine Add-On-Komponente handelt. Skripts werden für Folgendes bereitgestellt:
-- Sichern der erforderlichen Zustandsinformationen (in einem Azure Stack-Speicherkonto gespeichert)
-- Wiederherstellen des Ressourcenanbieters bei einer vollständigen Stack-Wiederherstellung.
-Vor dem Ressourcenanbieter müssen die Datenbankserver (sofern erforderlich) wiederhergestellt werden.
-
-### <a name="updating-sql-credentials"></a>Aktualisieren von SQL-Anmeldeinformationen
-
-Sie sind für das Erstellen und Verwalten von Systemadministratorkonten auf Ihren SQL Server-Instanzen verantwortlich. Der Ressourcenanbieter benötigt ein Konto mit diesen Berechtigungen zum Verwalten von Datenbanken im Auftrag von Benutzern – er benötigt keinen Zugriff auf die Daten in diesen Datenbanken. Wenn Sie die Systemadministratorkennwörter auf Ihren SQL Server-Instanzen ändern müssen, können Sie die Updatefunktion der Administratorschnittstelle des Ressourcenanbieters verwenden, um das gespeicherte Kennwort, das vom Ressourcenanbieter verwendet wird, zu ändern. Diese Kennwörter werden in einem Schlüsseltresor in Ihrer Azure Stack-Instanz gespeichert.
-
-Um die Einstellungen zu ändern, klicken Sie auf **Durchsuchen** &gt; **VERWALTUNGSRESSOURCEN** &gt; **SQL-Hostserver** &gt; **SQL-Anmeldungen**, und wählen Sie einen Anmeldenamen aus. Die Änderung muss zuerst auf der SQL-Instanz vorgenommen werden (und ggf. auf allen Replikaten). Klicken Sie im Bereich **Einstellungen** auf **Kennwort**.
-
-![Aktualisieren des Administratorkennworts](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

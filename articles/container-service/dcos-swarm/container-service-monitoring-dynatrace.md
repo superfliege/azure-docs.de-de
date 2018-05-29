@@ -1,19 +1,20 @@
 ---
-title: "Überwachen von Azure-DC/OS-Clustern – Dynatrace"
-description: "Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace. Bereitstellen von Dynatrace OneAgent mithilfe des DC/OS-Dashboards."
+title: Überwachen von Azure-DC/OS-Clustern – Dynatrace
+description: Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace. Bereitstellen von Dynatrace OneAgent mithilfe des DC/OS-Dashboards.
 services: container-service
 author: MartinGoodwell
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 52a8a05f050017f5062ff986bad7ec2e6a650aa5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 3d1bfc3bb61781d487c40831edd5da6fcb5a7df9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162040"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>Überwachen eines Azure Container Service-DC/OS-Clusters mit Dynatrace SaaS/Managed
 
@@ -27,7 +28,7 @@ Die folgende Abbildung zeigt die Benutzeroberfläche von Dynatrace:
 ![Benutzeroberfläche von Dynatrace](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstellen](container-service-deployment.md) und eine [Verbindung damit herstellen](./../container-service-connect.md). Lernen Sie die [Marathon-Benutzeroberfläche](container-service-mesos-marathon-ui.md)kennen. Wechseln Sie zu [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/), um ein Dynatrace SaaS-Konto einzurichten.  
+Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstellen](container-service-deployment.md) und eine [Verbindung damit herstellen](./../container-service-connect.md). Lernen Sie die [Marathon-Benutzeroberfläche](container-service-mesos-marathon-ui.md)kennen. Wechseln Sie zu [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/), um ein Dynatrace-SaaS-Konto einzurichten.  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>Konfigurieren einer Dynatrace-Bereitstellung mit Marathon
 Im Folgenden wird erläutert, wie Sie Dynatrace-Anwendungen für Ihren Cluster mit Marathon konfigurieren und bereitstellen.

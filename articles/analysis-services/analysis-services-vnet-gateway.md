@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61c4463060016ecbd319b027d48c87f3a6a8ad48
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7e792114c61c6257f4f5be5bfa65474d595f0d36
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32149577"
 ---
-# <a name="use-gateway-for-datasources-on-an-azure-virtual-network-vnet"></a>Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz (VNET)
+# <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz (VNET)
 
 In diesem Artikel wird die Servereigenschaft **AlwaysUseGateway** beschrieben, die verwendet werden soll, wenn sich Datenquellen in einer [Azure Virtual Network-Instanz (VNET)](../virtual-network/virtual-networks-overview.md) befinden.
 
-## <a name="server-access-to-vnet-datasources"></a>Serverzugriff auf VNET-Datenquellen
+## <a name="server-access-to-vnet-data-sources"></a>Serverzugriff auf VNET-Datenquellen
 
 Beim Zugriff auf Ihre Datenquellen über ein VNET muss Ihr Azure Analysis Services-Server mit diesen Datenquellen in Ihrer eigenen Umgebung eine Verbindung herstellen, als ob sie lokal wären. Sie können die Servereigenschaft **AlwaysUseGateway** so konfigurieren, dass der Server angewiesen wird, auf alle Datenquellen über ein [lokales Gateway](analysis-services-gateway.md) zuzugreifen. 
 

@@ -14,11 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: iainfou
-ms.openlocfilehash: f174837b8d370ffabdf4148b18d3425d9f3d9f10
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: e06db46d5e1d7862f7b47b75e38d0b10df628f48
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778561"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Windows-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Windows-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Betriebssysteme und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel wird erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
@@ -221,6 +222,8 @@ New-AzureRmVm `
     -OpenPorts 80 `
     -Image "myPackerImage"
 ```
+
+Wenn Sie VMs in einer anderen Ressourcengruppe oder Region als Ihr Packerimage erstellen möchten, geben Sie die Image-ID und nicht den Imagenamen an. Sie können die Image-ID mit [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage) abrufen.
 
 Das Erstellen der VM anhand Ihres Packer-Images dauert einige Minuten.
 

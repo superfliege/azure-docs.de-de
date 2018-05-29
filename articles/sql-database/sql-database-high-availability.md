@@ -6,14 +6,15 @@ author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 69d004ae4c2408e5749d0a7d21b996cec8dba722
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777014"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 Seit der Einführung des PaaS-Angebots von Azure SQL-Datenbank hat Microsoft seinen Kunden zugesichert, Hochverfügbarkeit (High Availability, HA) direkt in den Dienst zu integrieren. So sind auf Kundenseite weder Maßnahmen oder Entscheidungen rund um HA erforderlich, noch muss spezielle Logik implementiert werden. Microsoft bietet Kunden eine Vereinbarung zum Servicelevel (SLA) und behält die vollständige Kontrolle über die Konfiguration und den Betrieb des Hochverfügbarkeitssystems. Die SLA zur Hochverfügbarkeit gilt für eine SQL-Datenbank in einer Region und bietet keinen Schutz vor Totalausfällen einer Region aufgrund von Faktoren, die außerhalb der Kontrolle von Microsoft liegen (z.B. Naturkatastrophen, Kriege, Terroranschläge, Aufstände, staatliche Maßnahmen, Netzwerk- oder Geräteausfälle außerhalb der Rechenzentren von Microsoft, u.a. am Kundenstandort oder zwischen dem Kundenstandort und dem Microsoft-Rechenzentrum).
@@ -30,7 +31,7 @@ Kunden kommt es mehr auf die Resilienz ihrer eigenen Datenbanken an und nicht au
 
 Für Daten verwendet SQL-Datenbank sowohl lokalen Speicher (LS), der auf direkt zugeordneten Datenträgern/VHDs basiert, als auch Remotespeicher (RS), der auf Azure Storage Premium-Seitenblobs basiert. 
 - Lokaler Speicher wird in Datenbanken und Pools für elastische Datenbanken der Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) eingesetzt, die für geschäftskritische OLTP-Anwendungen mit hohen IOPS-Anforderungen ausgelegt sind. 
-- Remotespeicher wird für die Dienstebenen „Basic“ und „Standard“ verwendet, die für budgetorientierte Unternehmensworkloads ausgelegt sind, die Speicher- und Computeleistung für die unabhängige Skalierung benötigen. Sie verwenden ein einzelnes Seitenblob für Datenbank- und Protokolldateien sowie die integrierte Speicherreplikation und Failovermechanismen.
+- Remotespeicher wird für die Dienstebenen „Basic“, „Standard“ und „Universell“ verwendet, die für budgetorientierte Unternehmensworkloads ausgelegt sind, die Speicher- und Computeleistung für die unabhängige Skalierung benötigen. Sie verwenden ein einzelnes Seitenblob für Datenbank- und Protokolldateien sowie die integrierte Speicherreplikation und Failovermechanismen.
 
 Die Replikations-, Fehlererkennungs- und Failovermechanismen von SQL-Datenbank sind in beiden Fällen vollständig automatisiert und funktionieren ohne Benutzereingriffe. Diese Architektur stellt sicher, dass Daten, die bereits committed wurden, niemals verloren gehen und dass die Dauerhaftigkeit von Daten absoluten Vorrang hat.
 
@@ -46,7 +47,7 @@ Hauptvorteile:
 
 ## <a name="data-redundancy"></a>Datenredundanz
 
-Die Hochverfügbarkeitslösung in SQL-Datenbank basiert auf [Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)-Technologie von SQL Server und sorgt dafür, dass diese mit minimalen Unterschieden sowohl für LS- als auch für RS-Datenbanken funktioniert. In LS-Konfigurationen soll die Always On-Verfügbarkeitsgruppen-Technologie Persistenz gewährleisten und in RS-Konfigurationen für Verfügbarkeit sorgen (niedrige RTO). 
+Die Hochverfügbarkeitslösung in SQL-Datenbank basiert auf [Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)-Technologie von SQL Server und sorgt dafür, dass diese mit minimalen Unterschieden sowohl für LS- als auch für RS-Datenbanken funktioniert. In LS-Konfigurationen soll die Always On-Verfügbarkeitsgruppen-Technologie Persistenz gewährleisten und in RS-Konfigurationen für Verfügbarkeit sorgen (niedrige RTO durch aktive Georeplikation). 
 
 ## <a name="local-storage-configuration"></a>Konfiguration mit lokalem Speicher
 
@@ -56,7 +57,7 @@ Das Failoversystem der [Service Fabric](../service-fabric/service-fabric-overvie
 
 ## <a name="remote-storage-configuration"></a>Remotespeicherkonfiguration
 
-Für Remotespeicherkonfigurationen (Ebenen „Basic“ und „Standard“) wird genau eine Kopie im Remote Blob Storage vorgehalten. Dadurch werden die Funktionen des Speichersystems genutzt, um Dauerhaftigkeit, Redundanz und Bit-Rot-Erkennung zu gewährleisten. 
+Für Remotespeicherkonfigurationen (Ebenen „Basic“, „Standard“ und „Universell“) wird genau eine Kopie im Remote Blob Storage vorgehalten. Dadurch werden die Funktionen des Speichersystems genutzt, um Dauerhaftigkeit, Redundanz und Bit-Rot-Erkennung zu gewährleisten. 
 
 Die Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
  
@@ -90,6 +91,11 @@ Wie bereits beschrieben, verwenden die Dienstebenen „Premium“ oder „Untern
 Um die horizontale Leseskalierung mit einer bestimmten Datenbank zu verwenden, müssen Sie das Feature explizit beim Erstellen der Datenbank aktivieren. Sie können es auch später aktivieren, indem Sie die Konfiguration ändern. Hierzu rufen Sie in PowerShell die Cmdlets [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) oder [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) auf oder verwenden die Methode [Datenbanken – Erstellen oder Aktualisieren](/rest/api/sql/databases/createorupdate) in der Azure Resource Manager-REST-API.
 
 Nachdem die horizontale Leseskalierung für eine Datenbank aktiviert wurde, werden Anwendungen, die eine Verbindung mit dieser Datenbank herstellen, entweder an das Replikat mit Lese-/Schreibzugriff oder an ein schreibgeschütztes Replikat dieser Datenbank weitergeleitet. Die Weiterleitung richtet sich nach der `ApplicationIntent`-Eigenschaft, die in der Verbindungszeichenfolge der Anwendung konfiguriert ist. Informationen zur `ApplicationIntent`-Eigenschaft finden Sie unter [Angeben der Anwendungsabsicht](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
+
+Wenn horizontale Leseskalierung deaktiviert ist, oder Sie die ReadScale-Eigenschaft in einer nicht unterstützten Dienstebene festlegen, werden alle Verbindungen unabhängig von der `ApplicationIntent`-Eigenschaft an das Replikat mit Lese-/Schreibzugriff weitergeleitet.  
+
+> [!NOTE]
+> Es ist möglich, horizontale Leseskalierung auf einer „Standard“- oder „Universell“-Datenbank zu aktivieren, obwohl dadurch nicht die schreibgeschützte beabsichtigte Sitzung zu einem separaten Replikat geleitet wird. Dies soll vorhandene Anwendungen unterstützen, die zwischen den Ebenen Standard/Universell und Premium/Unternehmenskritisch nach oben oder unten skaliert werden.  
 
 Das Feature der horizontalen Leseskalierung unterstützt Konsistenz auf Sitzungsebene. Wenn die schreibgeschützte Sitzung nach einem Verbindungsfehler, der durch die Nichtverfügbarkeit eines Replikats verursacht wurde, die Verbindung wiederherstellt, wird sie möglicherweise an ein anderes Replikat weitergeleitet. Obwohl dieser Fall unwahrscheinlich ist, kann dies dazu führen, dass ein veraltetes Dataset verarbeitet wird. Gleiches gilt in diesem Fall: Wenn eine Anwendung Daten mithilfe einer Sitzung mit Lese-/Schreibzugriff schreibt und sie mithilfe einer schreibgeschützten Sitzung sofort liest, ist es möglich, dass die neuen Daten nicht sofort sichtbar sind.
 

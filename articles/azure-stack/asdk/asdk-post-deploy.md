@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 2183576e87aa2fb31f8be8f676a5aee7d52f68df
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4b58f3496b25e4fc04761b9df6e27f8313b35fe9
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204631"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Konfigurationsaufgaben nach der Installation des ASDK
 Nach der [ASDK-Installation](asdk-install.md) empfiehlt es sich, einige Änderungen an der Konfiguration durchzuführen. 
@@ -37,7 +38,10 @@ Set-PSRepository `
 
  Mit Azure Stack kompatible AzureRM-Module werden über API-Versionsprofile installiert. Für Azure Stack ist das API-Versionsprofil „2017-03-09-profile“ erforderlich, das durch Installation des AzureRM.Bootstrapper-Moduls zur Verfügung gestellt wird. 
  
- Sie können Azure Stack PowerShell mit oder ohne Internetverbindung auf dem ASDK-Hostcomputer installieren:
+ Sie können das aktuelle Azure Stack PowerShell-Modul mit oder ohne Internetverbindung mit dem ASDK-Hostcomputer installieren:
+
+> [!IMPORTANT]
+> Vor der Installation der erforderlichen Version [deinstallieren Sie unbedingt alle vorhandenen Azure PowerShell-Module](.\.\azure-stack-powershell-install.md#uninstall-existing-versions-of-powershell).
 
 - **Mit Internetverbindung** auf dem ASDK-Hostcomputer. Führen Sie zum Installieren dieser Module in Ihrer Development Kit-Installation das folgende PowerShell-Skript aus:
 

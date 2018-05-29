@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2018
+ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 684c226e566d6a5a2db456d24ad2fc5811f08067
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33775229"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -218,11 +219,12 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Load Balancer-Back-End-Instanzen dürfen sich zurzeit nicht in virtuellen Peernetzwerken befinden. Alle Back-End-Instanzen müssen sich in der gleichen Region befinden.
 - SKUs sind nicht änderbar. Sie können die SKU einer vorhandenen Ressource nicht ändern.
 - Eine Ressource eines eigenständigen virtuellen Computers, eine Verfügbarkeitsgruppenressource oder eine Ressource einer VM-Skalierungsgruppe kann auf eine SKU verweisen, nie auf beide.
-- [Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitoring-overview-alerts.md) werden zu diesem Zeitpunkt nicht unterstützt.
+- Eine Load Balancer-Regel kann sich nicht über zwei virtuelle Netzwerke erstrecken.  Front-Ends und ihre zugehörigen Back-End-Instanzen müssen sich im gleichen virtuellen Netzwerk befinden.  
+- Load Balancer-Front-Ends sind nicht über globales Peering in virtuellen Netzwerken verfügbar.
 - [Vorgänge zum Verschieben von Abonnements](../azure-resource-manager/resource-group-move-resources.md) werden für Standard-SKU-LB- und -PIP-Ressourcen nicht unterstützt.
+- Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Sie können sich nicht darauf verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie [ausgehende Verbindungen](load-balancer-outbound-connections.md), falls gewünscht, explizit erstellen müssen, wenn Sie nur den internen Standard-Load Balancer verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

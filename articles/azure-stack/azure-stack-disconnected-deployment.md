@@ -1,25 +1,26 @@
 ---
-title: "Entscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Entscheidungen bei der Bereitstellungsplanung für nicht mit Azure verbundenen Azure Stack-Bereitstellungen mit mehreren Knoten treffen."
+title: Entscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Entscheidungen bei der Bereitstellungsplanung für nicht mit Azure verbundenen Azure Stack-Bereitstellungen mit mehreren Knoten treffen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 04/26/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 49697a57e59b652fed4997d57bc7ae15cc596cf7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151126"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
@@ -45,9 +46,9 @@ Azure Stack wurde so konzipiert, dass die Lösung am besten funktioniert, wenn s
 |VM-Bereitstellung mit Docker-Erweiterung zum Ausführen von Docker-Befehlen|Eingeschränkt: Docker durchsucht das Internet nach der neuesten Version, und diese Prüfung schlägt fehl.|
 |Dokumentationslinks im Azure Stack-Portal|Nicht verfügbar: Links, z.B. Feedback geben, Hilfe, Schnellstart usw., die eine Internet-URL verwenden, funktionieren nicht.|
 |Informationen zur Behebung von Warnungen, die auf eine online verfügbare Anleitung verweisen|Nicht verfügbar: Links zu einer Behebung von Warnungen, die eine Internet-URL verwenden, funktionieren nicht.|
-|Marketplace-Syndikation: Die Möglichkeit, Katalogpakete direkt in Azure Marketplace auszuwählen und hinzuzufügen|Nicht verfügbar: Hierfür sind eine Verbindung mit Azure und ein Azure Active Directory-Konto erforderlich.|
+|Marketplace-Syndikation: Die Möglichkeit, Katalogpakete direkt in Azure Marketplace auszuwählen und hinzuzufügen|Beeinträchtigt: Wenn Sie Azure Stack in einem nicht verbundenen Modus (ohne Internetverbindung) bereitstellen, können Sie keine Marketplace-Elemente über das Azure Stack-Portal herunterladen. Sie können jedoch das [Tool für die Marketplace-Syndikation](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) verwenden, um die Marketplace-Elemente auf einen Computer mit Internetverbindung herunterzuladen und anschließend in Ihre Azure Stack-Umgebung zu übertragen.|
 |Verwenden von Azure Active Directory-Verbundkonten zur Verwaltung einer Azure Stack-Bereitstellung|Nicht verfügbar: Hierfür ist eine Verbindung mit Azure erforderlich. Stattdessen muss AD FS mit einer lokalen Active Directory-Instanz verwendet werden.|
-|Ressourcenanbieter wie WebApps und SQL|Nicht verfügbar: Für Ressourcenanbieter wie WebApps und SQL ist Internetzugriff auf den Inhalt erforderlich.|
+|App-Dienste|Beeinträchtigt: WebApps erfordern möglicherweise Internetzugriff für aktualisierte Inhalte.|
 |Befehlszeilenschnittstelle (Command Line Interface, CLI)|Beeinträchtigt: Die CLI bietet weniger Funktionalität in Bezug auf die Authentifizierung und Bereitstellung von Dienstprinzipalen.|
 |Visual Studio: Cloud Discovery|Beeinträchtigt: Cloud Discovery ermittelt entweder andere Clouds oder funktioniert überhaupt nicht.|
 |Visual Studio: AD FS|Beeinträchtigt: Nur Visual Studio Enterprise unterstützt AD FS.

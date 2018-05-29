@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 4c09fa5c454cee6ca9a0ed0d3fd4582b222c0c1a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32138916"
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Benutzerdefinierte Richtlinien
 
@@ -64,7 +65,7 @@ Azure AD B2C interagiert nacheinander mit Identitätsanbietern, Benutzern, ander
 
 ### <a name="identity-experience-framework"></a>Identity Experience Framework
 
-Dies ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die die Vertrauensstellung zwischen Entitäten (allgemein Anspruchsanbietern) in Standardprotokollformaten (z.B. OpenIDConnect, OAuth, SAML, WSFed) sowie einigen nicht standardmäßigen Formaten (z.B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Die I2E sorgt für benutzerfreundliche White-Label-Erfahrungen, die HTML, CSS und Javascript unterstützen.  Derzeit ist das Identity Experience Framework nur im Rahmen des Azure AD B2C-Diensts verfügbar und mit Prioritäten für Aufgaben in Zusammenhang mit CIAM versehen.
+Dies ist eine vollständig konfigurierbare, richtliniengesteuerte und cloudbasierte Azure-Plattform, die die Vertrauensstellung zwischen Entitäten (allgemein Anspruchsanbietern) in Standardprotokollformaten (z.B. OpenIDConnect, OAuth, SAML, WSFed) sowie einigen nicht standardmäßigen Formaten (z.B. REST-API-basierter Austausch von Systemansprüchen) koordiniert. Die I2E sorgt für benutzerfreundliche White-Label-Erfahrungen, die HTML, CSS und JavaScript unterstützen.  Derzeit ist das Identity Experience Framework nur im Rahmen des Azure AD B2C-Diensts verfügbar und mit Prioritäten für Aufgaben in Zusammenhang mit CIAM versehen.
 
 ### <a name="built-in-policies"></a>Integrierte Richtlinien
 

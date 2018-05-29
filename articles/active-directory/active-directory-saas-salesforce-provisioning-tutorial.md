@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
+title: 'Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Salesforce konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 3d300eb397b58b4e1f8c8a6516e0a279980d8d09
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b5a85dd7d4ac6bdabcbab49f654ebfe4adae73cd
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140460"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
@@ -27,9 +28,13 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Salesforce und Azure AD aus
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure Active Directory-Mandanten.
-*   Sie benötigen einen gültigen Mandanten für Salesforce for Work oder Salesforce for Education. Sie können ein kostenloses Testkonto für einen der Dienste verwenden.
-*   Ein Benutzerkonto in Salesforce mit Teamadministratorberechtigung.
+*   Einen Azure Active Directory-Mandanten
+*   Einen Salesforce.com-Mandanten
+
+>[!IMPORTANT] 
+>Bei Verwendung eines Salesforce.com-Testkontos können Sie die automatisierte Benutzerbereitstellung nicht konfigurieren. Bei Testkonten ist der erforderliche API-Zugriff erst nach dem Erwerb aktiviert. Sie können diese Einschränkung umgehen, indem Sie für dieses Tutorial ein [kostenloses Entwicklerkonto](https://developer.salesforce.com/signup) verwenden.
+
+Wenn Sie eine Salesforce Sandbox-Umgebung verwenden, rufen Sie das [Tutorial: Azure Active Directory-Integration in Salesforce Sandbox](https://go.microsoft.com/fwLink/?LinkID=521879)auf.
 
 ## <a name="assigning-users-to-salesforce"></a>Zuweisen von Benutzern zu Salesforce
 
@@ -89,7 +94,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 10. Kopieren Sie das Token, wechseln Sie zu Ihrem Azure AD-Fenster, und fügen Sie es in das Feld **Geheimes Token** ein.
 
-11. Die **Mandanten-URL** muss eingegeben werden, wenn sich die Instanz von Salesforce in der Salesforce Government Cloud befindet. Andernfalls ist die Angabe optional. Geben Sie die Mandanten-URL im Format „https://your-instance.my.salesforce.com“ ein. Ersetzen Sie dabei „your-instance“ durch den Namen Ihrer Salesforce-Instanz.
+11. Die **Mandanten-URL** muss eingegeben werden, wenn sich die Instanz von Salesforce in der Salesforce Government Cloud befindet. Andernfalls ist die Angabe optional. Geben Sie die Mandanten-URL im Format https://your-instance.my.salesforce.com ein. Ersetzen Sie dabei „your-instance“ durch den Namen Ihrer Salesforce-Instanz.
 
 12. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce-App herstellen kann.
 

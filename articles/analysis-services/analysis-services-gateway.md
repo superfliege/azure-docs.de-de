@@ -5,14 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/24/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d327f016237890b506f45c4c494bd08ad2f71bb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abd2d2c8e220a946d08774f8e55ea968008c1757
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32156272"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen mit dem lokalen Azure-Datengateway
 Das lokale Datengateway fungiert als Brücke für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste in derselben Region zuordnen. 
@@ -82,6 +83,11 @@ Sie können erzwingen, dass das Gateway mit Azure Service Bus über HTTPS (und n
     <value>Https</value>
 </setting>
 ```
+
+## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene 
+
+Derzeit können Mandantenadministratoren nicht alle Gateways, die andere Benutzer installiert und konfiguriert haben, zentral verwalten.  Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway, das sie installieren, als Administrator hinzuzufügen. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder über [PowerShell-Befehle](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters) verwalten. 
+
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

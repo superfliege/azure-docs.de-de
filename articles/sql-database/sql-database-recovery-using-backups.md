@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192763"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 Azure SQL-Datenbank bietet diese Optionen für die Datenbankwiederherstellung mit [automatisierten Datenbanksicherungen](sql-database-automated-backups.md) und [Sicherungen mit langfristiger Aufbewahrungsdauer](sql-database-long-term-retention.md). Die Wiederherstellung aus einer Datenbanksicherung kann die folgenden Ziele haben:

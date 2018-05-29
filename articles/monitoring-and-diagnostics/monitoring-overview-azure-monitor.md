@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 1ba2f2be8db424bddfccdf374704ec7be5691feb
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312167"
 ---
 # <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel bietet einen Überblick über den Azure Monitor-Dienst in Microsoft Azure. Er bietet einen Überblick über die Funktionen von Azure Monitor und stellt Verknüpfungen zu zusätzlichen Informationen über die Verwendung von Azure Monitor bereit.  Ein Einführungsvideo finden Sie über die Links im Abschnitt „Nächste Schritte“ weiter unten in diesem Artikel. 
@@ -108,7 +109,7 @@ Beispiele:
 
 ### <a name="store-and-archive"></a>Speicherung und Archivierung
 Einige Überwachungsdaten sind bereits gespeichert und für einen festgelegten Zeitraum in Azure Monitor verfügbar. 
-- Metriken werden 30 Tage lang gespeichert. 
+- Metriken werden 90 Tage lang gespeichert. 
 - Aktivitätsprotokolleinträge werden 90 Tage lang gespeichert. 
 - Diagnoseprotokolle werden überhaupt nicht gespeichert. 
 

@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 6531e6c8c97bfadac898c4aa4943855dcd32bdfe
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b7529b0942cd86b0d9e657d8d0f61313aa7f0a66
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clever"></a>Tutorial: Azure Active Directory-Integration mit Clever
 
@@ -110,10 +111,10 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://clever.com/in/<companyname>`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://clever.com/<companyname>`
+    b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://clever.com/oauth/saml/metadata.xml`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um diese Werte zu erhalten.
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um diesen Wert zu erhalten.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
     
@@ -129,7 +130,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     | Attributname  | Attributwert |
     | --------------- | -------------------- |
-    | clever.student.credentials.district\_benutzername  | user.userprincipalname |
+    | clever.teacher.credentials.district_username|user.userprincipalname|
+    | clever.student.credentials.district_username| user.userprincipalname |
     | Firstname  | user.givenname |
     | Lastname  | user.surname |
 
@@ -157,19 +159,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Sofortige Anmeldung](./media/active-directory-saas-clever-tutorial/ic798984.png "Sofortige Anmeldung")
 
+    > [!NOTE]
+    > Bevor Sie einmaliges Anmelden testen können, müssen Sie das [Clever Client-Supportteam](https://clever.com/about/contact/) kontaktieren, um Office 365 SSO im Back-End zu aktivieren.
+
 10. Führen Sie auf der Seite **Instant Login** die folgenden Schritte aus:
-      
+    
       ![Sofortige Anmeldung](./media/active-directory-saas-clever-tutorial/ic798985.png "Sofortige Anmeldung")
-      
+    
       a. Geben Sie die **Login URL**ein.
-      
+    
       >[!NOTE]
       >Die **Login URL** ist ein benutzerdefinierter Wert. Wenden Sie sich an das [Supportteam für den Clever-Client](https://clever.com/about/contact/), um diesen Wert zu erhalten.
-      
+    
       b. Wählen Sie als **Identitätssystem** die Option **ADFS** aus.
 
       c. Fügen Sie im Textfeld **Metadaten-URL** den Wert für die **Verbundmetadaten-URL der App** ein, den Sie aus dem Azure-Portal kopiert haben.
-      
+    
       d. Klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers

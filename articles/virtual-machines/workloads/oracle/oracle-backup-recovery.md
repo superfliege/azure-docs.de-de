@@ -1,13 +1,13 @@
 ---
 title: Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Sie eine Oracle Database 12c-Datenbank in der Azure-Umgebung sichern und wiederherstellen."
+description: In diesem Artikel wird erläutert, wie Sie eine Oracle Database 12c-Datenbank in der Azure-Umgebung sichern und wiederherstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e804fd17c3dbe9df9e9dc258e67b8f9192c1f8ad
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193104"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer
 
@@ -138,7 +139,7 @@ Anwendungskonsistente Sicherungen sind eine neue Funktion in Azure Backup. Sie k
 
 1. Laden Sie die JSON-Datei herunter.
 
-    Laden Sie „VMSnapshotScriptPluginConfig.json von https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig“ herunter. Die Inhalte der Datei sehen in etwa wie folgt aus:
+    Laden Sie VMSnapshotScriptPluginConfig.json von https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig herunter. Die Inhalte der Datei sehen in etwa wie folgt aus:
 
     ```azurecli
     {
@@ -169,7 +170,7 @@ Anwendungskonsistente Sicherungen sind eine neue Funktion in Azure Backup. Sie k
 
 4. Bearbeiten Sie die JSON-Datei.
 
-    Bearbeiten Sie die Datei „VMSnapshotScriptPluginConfig.json“ so, dass Sie die Parameter `PreScriptLocation` und `PostScriptlocation` enthält. Beispiel:
+    Bearbeiten Sie die Datei „VMSnapshotScriptPluginConfig.json“ so, dass Sie die Parameter `PreScriptLocation` und `PostScriptlocation` enthält. Beispiel: 
 
     ```azurecli
     {
@@ -262,7 +263,7 @@ Anwendungskonsistente Sicherungen sind eine neue Funktion in Azure Backup. Sie k
     # /etc/azure/post_script.sh
     ```
 
-Weitere Informationen finden Sie unter [Application-consistent backup for Linux VMs (Anwendungskonsistente Sicherung für virtuelle Linux-Computer)](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
+Weitere Informationen finden Sie unter [Application-consistent backup for Linux VMs (Anwendungskonsistente Sicherung für virtuelle Linux-Computer)](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
 ### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Schritt 5: Verwenden von Azure Recovery Services-Tresoren zum Sichern des virtuellen Computers

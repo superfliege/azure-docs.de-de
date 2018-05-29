@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 9f3669d205ab4bd24ccba53ffb532fe1d88131ac
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b0476865b19cd078b05e5def4a51c2df17315daa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32155380"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -100,6 +101,11 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 31. Wechseln Sie zurück zu Ihrer API Management-Anwendung. 
 
     Fügen Sie den Schlüssel im Fenster **Identitätsanbieter hinzufügen** in das Textfeld **Clientgeheimnis** ein.
+
+    > [!IMPORTANT]
+    > Aktualisieren Sie unbedingt den **geheimen Clientschlüssel**, bevor der Schlüssel abläuft. 
+    >  
+    >
 32. Das Fenster **Identitätsanbieter hinzufügen** enthält auch das Textfeld **Zulässige Mandanten**. Geben Sie die in diesem Feld die Domänen der Azure AD-Instanzen ein, für die Sie den APIs der API Management-Dienstinstanz Zugriff gewähren möchten. Sie können mehrere Domänen durch neue Zeilen, Leerzeichen oder Kommas trennen.
 
     Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Bevor sich Benutzer aus einer anderen Domäne als der ursprünglichen Domäne (der Domäne, in der die Anwendung registriert wurde) anmelden können, muss ein globaler Administrator dieser anderen Domäne der Anwendung Berechtigungen für den Verzeichnisdatenzugriff erteilen. Um Berechtigungen zu erteilen, müssen Sie als globaler Administrator folgendermaßen vorgehen:

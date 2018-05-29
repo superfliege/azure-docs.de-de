@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung | Microsoft-Dokumentation"
-description: "Informationen zu häufig auftretenden Problemen beim Hinzufügen von benutzerdefinierten nicht im Katalog enthaltenen Anwendungen"
+title: Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung | Microsoft-Dokumentation
+description: Informationen zu häufig auftretenden Problemen beim Hinzufügen von benutzerdefinierten nicht im Katalog enthaltenen Anwendungen
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9abc05dd835d2ec803e32351c75534ebe628a8d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3d54a9bccdf3f940959c2cbe3f85bd5fddff68e1
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34053554"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
@@ -25,15 +26,15 @@ In diesem Artikel finden Sie Informationen zu häufig auftretenden Problemen bei
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Nach dem Klicken auf die Schaltfläche „Hinzufügen“ wurde meine Anwendung erst nach einiger Zeit angezeigt.
 
-Unter bestimmten Umständen kann es 1 bis 2 Minuten (manchmal auch länger) dauern, bis eine Anwendung angezeigt wird, nachdem sie Ihrem Verzeichnis hinzugefügt wurde. Auch wenn dies nicht der normalen Erwartung entspricht, können Sie sehen, dass die Hinzufügung der Anwendung durchgeführt wird, indem Sie auf das Symbol **Benachrichtigungen** (Glockensymbol) oben rechts im [Azure-Portal](https://portal.azure.com/) klicken und nach einer Benachrichtigung des Typs **In Bearbeitung** oder **Abgeschlossen** mit der Bezeichnung **Anwendung erstellen** suchen.
+Unter bestimmten Umständen kann es 1 bis 2 Minuten (manchmal auch länger) dauern, bis eine Anwendung angezeigt wird, nachdem sie Ihrem Verzeichnis hinzugefügt wurde. Auch wenn dies nicht der normalen erwarteten Leistung entspricht, können Sie sehen, dass die Hinzufügung der Anwendung durchgeführt wird, indem Sie auf das Symbol **Benachrichtigungen** (Glockensymbol) oben rechts im [Azure-Portal](https://portal.azure.com/) klicken und nach einer Benachrichtigung des Typs **In Bearbeitung** oder **Abgeschlossen** mit der Bezeichnung **Anwendung erstellen** suchen.
 
-Wenn die Anwendung nicht hinzugefügt wird oder wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen, um diese einem Supporttechniker mitzuteilen, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
+Wenn die Anwendung nicht hinzugefügt wird oder wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen oder diese einem Supporttechniker weitergeben möchten, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Nach dem Klicken auf die Schaltfläche „Hinzufügen“ wurde meine Anwendung nicht angezeigt
 
 In manchen Fällen führen vorübergehende Probleme, Netzwerkprobleme oder ein Fehler dazu, dass eine Anwendung nicht hinzugefügt wird. Dies können Sie feststellen, wenn Sie oben rechts im Azure-Portal auf das Symbol **Benachrichtigungen** (Glockensymbol) klicken und ein rotes (!)-Symbol neben der Benachrichtigung **Anwendung erstellen** angezeigt wird. Dies gibt an, dass beim Erstellen der Anwendung ein Fehler aufgetreten ist.
 
-Wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen, um diese einem Supporttechniker mitzuteilen, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
+Wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen oder diese einem Supporttechniker weitergeben möchten, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Ich weiß nicht, wie die Anwendung nach dem Hinzufügen eingerichtet wird.
 
@@ -52,9 +53,7 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
    >
    >
 
-3.  Hiermit öffnen Sie das Blatt **Benachrichtigungsdetails**.
-
-4.  Diese Informationen helfen Ihnen, das Problem besser zu verstehen.
+4.  Die Informationen unter **Benachrichtigungsdetails** helfen Ihnen, das Problem besser zu verstehen.
 
 5.  Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
 
@@ -66,7 +65,7 @@ Es ist sehr wichtig, dass Sie dem Supporttechniker **alle unten aufgelisteten De
 
 ## <a name="notification-details-explained"></a>Erläuterung der Benachrichtigungsdetails
 
-Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher erläutert, und es werden Beispiele genannt.
+Weitere Informationen über Benachrichtigungen finden Sie in den folgenden Abschnitten.
 
 ### <a name="essential-notification-items"></a>Grundlegende Benachrichtigungselemente
 
@@ -77,11 +76,11 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
    *  Beispiel: **Die eingegebene interne URL wird bereits von einer anderen Anwendung verwendet**
 
--   **Benachrichtigungs-ID:** die eindeutige ID der Benachrichtigung
+-   **Benachrichtigungs-ID**: die eindeutige ID der Benachrichtigung
 
    *  Beispiel: **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Clientanforderungs-ID:** die spezifische Anforderungs-ID, die vom Browser erstellt wurde
+-   **Clientanforderungs-ID**: die spezifische Anforderungs-ID, die vom Browser erstellt wurde
 
    *  Beispiel: **302fd775-3329-4670-a9f3-bea37004f0bc**
 
@@ -89,7 +88,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
    *  Beispiel: **2017-03-23T19:50:43.7583681Z**
 
--   **Interne Transaktions-ID:** die interne ID, über die wir den Fehler in unseren Systemen suchen können
+-   **Interne Transaktions-ID**: die interne ID, über die wir den Fehler in unseren Systemen suchen können
 
    *  Beispiel: **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
@@ -97,7 +96,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
    *  Beispiel: **tperkins@f128.info**
 
--   **Mandanten-ID:** die eindeutige ID des Mandanten, bei dem der Benutzer Mitglied ist, der den Vorgang durchgeführt hat
+-   **Mandanten-ID:** die eindeutige ID des Mandanten, dem der Benutzer angehört, der den Vorgang durchgeführt hat
 
    *  Beispiel: **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
@@ -115,7 +114,7 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
    *  Beispiel: **Fehler**
 
--   **Objekt-ID:****(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
+-   **Objekt-ID**: **(kann leer sein)** die Objekt-ID, für die der Vorgang durchgeführt wurde
 
    *  Beispiel: **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
@@ -123,12 +122,13 @@ Im Folgenden wird die Bedeutung der einzelnen Benachrichtigungselemente näher e
 
    *  Beispiel: **Interne URL 'http://bing.com/' ist ungültig, da sie bereits verwendet wird**
 
--   **Fehler kopieren:** Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
+-   **Fehler kopieren**: Klicken Sie auf das **Kopiersymbol** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker 
+-   mitzuteilen.
 
    *  Beispiel: ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Verwalten von Anwendungen mit Azure Active Directory](manage-apps/what-is-application-management.md)
 
 
 

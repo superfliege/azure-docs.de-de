@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 15a5ede13aebb039c1d17f118ee1acdcf9031d50
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781162"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
@@ -56,8 +57,8 @@ Für jeden Dienst, der direkt in einem virtuellen Netzwerk bereitgestellt wird, 
 - [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Application Gateway (intern)](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- 
-            [Azure Container Service-Engine](../container-service/container-service-intro.md?toc=%2fazure%2fvirtual-network%2ftoc.json): Der Azure Container Service erstellt ein virtuelles Standardnetzwerk. Sie können ein benutzerdefiniertes virtuelles Netzwerk erstellen, das mit der [Azure Container Service-Engine](https://github.com/Azure/acs-engine/tree/master/examples/vnet) verwendet werden soll.
+- [Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Container Service-Engine](https://github.com/Azure/acs-engine) mit dem Azure Virtual Network-CNI-[Plug-In](https://github.com/Azure/acs-engine/tree/master/examples/vnet)
 - [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json): Nur virtuelles Netzwerk (klassisch)
 - [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)
 - [Clouddienste](https://msdn.microsoft.com/library/azure/jj156091): Nur virtuelles Netzwerk (klassisch)

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f3fb7c0be6f69f15b5b761f0c36d983f008282e9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 860a09d004c16de992093e79c0dbda4c469bb775
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771363"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -28,11 +29,13 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [monitor and manage Data Factory pipelines in version 2 (Überwachen und Verwalten von Data Factory-Pipelines in Version 2)](../monitor-visually.md).
 
+In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines mithilfe des Azure-Portals und von PowerShell beschrieben.
+
 > [!IMPORTANT]
 > Die Anwendung „Überwachung und Verwaltung“ bietet eine bessere Unterstützung der Überwachung und Verwaltung Ihrer Datenpipelines und der Problembehandlung. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
-
-In diesem Artikel wird das Überwachen, Verwalten und Debuggen Ihrer Pipelines mithilfe des Azure-Portals und von PowerShell beschrieben. Ferner wird in diesem Artikel erläutert, wie Warnungen erstellt und Benachrichtigungen bei Fehlern eingerichtet werden.
+> [!IMPORTANT]
+> Azure Data Factory Version 1 verwendet jetzt die neue [Azure Monitor-Warnungsinfrastruktur](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). Die alte Warnungsinfrastruktur ist veraltet. Folglich funktionieren Ihre für Data Factorys der Version 1 konfigurierten vorhandenen Warnungen nicht mehr. Ihre vorhandenen Warnungen für Data Factorys der Version 1 werden nicht automatisch migriert. Sie müssen diese Warnungen in der neuen Warnungsinfrastruktur neu erstellen. Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen** zum Erstellen neuer Warnungen zu Metriken (z.B. fehlerhafte oder erfolgreiche Ausführungen) für Ihre Data Factorys der Version 1.
 
 ## <a name="understand-pipelines-and-activity-states"></a>Grundlegendes zu Pipelines und Aktivitätsstatus
 Im Azure-Portal haben Sie folgende Möglichkeiten:
@@ -196,7 +199,8 @@ Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produc
 ## <a name="debug-pipelines"></a>Debuggen von Pipelines
 Azure Data Factory bietet über das Azure-Portal und Azure PowerShell umfangreiche Funktionen zum Debuggen und Beheben von Problemen von Pipelines.
 
-> [!NOTE} Die Behebung von Problemen ist in der App „Überwachung und Verwaltung“ wesentlich einfacher. Im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
+> [!NOTE] 
+> Die Behebung von Problemen ist in der App „Überwachung und Verwaltung“ wesentlich einfacher. Im Artikel [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md) erfahren Sie mehr über die Anwendung. 
 
 ### <a name="find-errors-in-a-pipeline"></a>Suchen von Fehlern in einer Pipeline
 Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat das von der Pipeline erstellte Dataset aufgrund des Fehlers den Status „Fehler“. Sie können Fehler in Azure Data Factory mit den folgenden Methoden debuggen und beheben.
@@ -296,360 +300,35 @@ Im folgenden Beispiel wird der Status aller Slices für die Tabelle „DAWikiAgg
 ```powershell
 Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
+## <a name="create-alerts-in-the-azure-portal"></a>Erstellen von Warnungen im Azure-Portal
 
-## <a name="create-alerts"></a>Erstellen von Warnungen
-Azure protokolliert Benutzerereignisse, wenn eine Azure-Ressource (z.B. eine Data Factory) erstellt, aktualisiert oder gelöscht wird. Sie können Warnungen für diese Ereignisse erstellen. Sie können die Data Factory verwenden, um verschiedene Metriken zu erfassen und Warnungen zu Metriken zu erstellen. Es wird empfohlen, Ereignisse für die Echtzeitüberwachung und Metriken für Nachverfolgungszwecke zu verwenden.
+1.  Melden Sie sich beim Azure-Portal an, und wählen Sie **Überwachen -> Warnungen** aus, um die Seite „Warnungen“ zu öffnen.
 
-### <a name="alerts-on-events"></a>Warnungen zu Ereignissen
-Azure-Ereignisse bieten hilfreiche Einblicke in die Aktivitäten in Ihren Azure-Ressourcen. Bei Verwendung von Azure Data Factory werden Ereignisse in folgenden Fällen generiert:
+    ![Öffnen Sie die Seite „Warnungen“.](media/data-factory-monitor-manage-pipelines/v1alerts-image1.png)
 
-* Eine Data Factory wird erstellt, aktualisiert oder gelöscht.
-* Die Datenverarbeitung (in Form von „Ausführungen“) wurde gestartet oder abgeschlossen.
-* Ein bedarfsbezogener HDInsight-Cluster wird erstellt oder entfernt.
+2.  Wählen Sie **+ Neue Warnungsregel** aus, um eine neue Warnung zu erstellen.
 
-Sie können Warnungen zu diesen Benutzerereignissen erstellen und sie so konfigurieren, dass E-Mail-Benachrichtigungen an den Administrator und an Co-Administratoren des Abonnements gesendet werden. Darüber hinaus können Sie zusätzliche E-Mail-Adressen von Benutzern angeben, die E-Mail-Benachrichtigungen erhalten sollen, wenn bestimmte Bedingungen erfüllt werden. Diese Funktion ist nützlich, wenn Sie sich bei Fehlern benachrichtigen lassen und Ihre Data Factory nicht kontinuierlich überwachen möchten.
+    ![Erstellen einer neuen Warnung](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-> [!NOTE]
-> Das Portal zeigt derzeit keine Warnungen für Ereignisse an. Verwenden Sie die [App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md), um alle Warnungen anzuzeigen.
+3.  Definieren Sie die **Warnungsbedingung**. (Achten Sie darauf, im Feld **Nach Ressourcentyp filtern** die Option **Data Factorys** auszuwählen.) Sie können auch Werte für **Dimensionen** angeben.
 
+    ![Warnungsbedingung definieren – Ziel auswählen](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
-#### <a name="specify-an-alert-definition"></a>Angeben einer Warnungsdefinition
-Zum Angeben einer Warnungsdefinition erstellen Sie eine JSON-Datei mit einer Beschreibung der Vorgänge, über die Sie benachrichtigt werden möchten. Im folgenden Beispiel sendet die Warnung eine E-Mail-Benachrichtigung für den RunFinished-Vorgang. Genauer gesagt: Es wird eine E-Mail-Benachrichtigung gesendet, wenn eine Ausführung in der Data Factory abgeschlossen wurde und ein Fehler aufgetreten ist (Status = FailedExecution).
+    ![Warnungsbedingung definieren – Warnungskriterien hinzufügen](media/data-factory-monitor-manage-pipelines/v1alerts-image4.png)
 
-```JSON
-{
-    "contentVersion": "1.0.0.0",
-     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "parameters": {},
-    "resources":
-    [
-        {
-            "name": "ADFAlertsSlice",
-            "type": "microsoft.insights/alertrules",
-            "apiVersion": "2014-04-01",
-            "location": "East US",
-            "properties":
-            {
-                "name": "ADFAlertsSlice",
-                "description": "One or more of the data slices for the Azure Data Factory has failed processing.",
-                "isEnabled": true,
-                "condition":
-                {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ManagementEventRuleCondition",
-                    "dataSource":
-                    {
-                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleManagementEventDataSource",
-                        "operationName": "RunFinished",
-                        "status": "Failed",
-                        "subStatus": "FailedExecution"   
-                    }
-                },
-                "action":
-                {
-                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                    "customEmails": [ "<your alias>@contoso.com" ]
-                }
-            }
-        }
-    ]
-}
-```
+    ![Warnungsbedingung definieren – Warnungslogik hinzufügen](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-Sie können **subStatus** aus der JSON-Definition entfernen, wenn Sie über einen bestimmten Fehler nicht informiert werden möchten.
+4.  Definieren Sie die **Warnungsdetails**.
 
-In diesem Beispiel wird die Warnung für alle Data Factorys in Ihrem Abonnement eingerichtet. Wenn die Warnung für eine bestimmte Data Factory eingerichtet werden soll, können Sie das **resourceUri**-Element der Data Factory in **dataSource** angeben:
+    ![Definieren der Warnungsdetails](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-```JSON
-"resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>"
-```
+5.  Definieren Sie die **Aktionsgruppe**.
 
-Die folgende Tabelle enthält eine Liste mit den verfügbaren Vorgängen und Status (samt Unterstatus).
+    ![Definieren der Aktionsgruppe – neue Aktionsgruppe erstellen](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 
-| Vorgangsname | Status | Unterstatus |
-| --- | --- | --- |
-| RunStarted |Gestartet |Wird gestartet |
-| RunFinished |Failed / Succeeded |FailedResourceAllocation<br/><br/>Succeeded<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/><Canceled<br/><br/>FailedValidation<br/><br/>Abandoned |
-| OnDemandClusterCreateStarted |Gestartet | |
-| OnDemandClusterCreateSuccessful |Succeeded | |
-| OnDemandClusterDeleted |Succeeded | |
+    ![Definieren der Aktionsgruppe – Eigenschaften festlegen](media/data-factory-monitor-manage-pipelines/v1alerts-image8.png)
 
-Unter [Create Alert Rule](https://msdn.microsoft.com/library/azure/dn510366.aspx) (Benachrichtigungsregel erstellen) finden Sie ausführliche Informationen zu den JSON-Elementen, die im Beispiel verwendet werden.
-
-#### <a name="deploy-the-alert"></a>Bereitstellen der Warnung
-Verwenden Sie zum Bereitstellen der Warnung das Azure PowerShell-Cmdlet **New-AzureRmResourceGroupDeployment** wie im folgenden Beispiel:
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\ADFAlertFailedSlice.json  
-```
-
-Nachdem die Ressourcengruppenbereitstellung erfolgreich abgeschlossen wurde, werden die folgenden Meldungen angezeigt:
-
-```
-VERBOSE: 7:00:48 PM - Template is valid.
-WARNING: 7:00:48 PM - The StorageAccountName parameter is no longer used and will be removed in a future release.
-Please update scripts to remove this parameter.
-VERBOSE: 7:00:49 PM - Create template deployment 'ADFAlertFailedSlice'.
-VERBOSE: 7:00:57 PM - Resource microsoft.insights/alertrules 'ADFAlertsSlice' provisioning status is succeeded
-
-DeploymentName    : ADFAlertFailedSlice
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 10/11/2014 2:01:00 AM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           :
-```
-
-> [!NOTE]
-> Sie können die REST-API [Warnungsregel erstellen](https://msdn.microsoft.com/library/azure/dn510366.aspx) verwenden, um eine Regel für Warnungen zu erstellen. Die JSON-Nutzlast ähnelt dem JSON-Beispiel.  
-
-
-#### <a name="retrieve-the-list-of-azure-resource-group-deployments"></a>Abrufen der Liste mit Azure-Ressourcengruppenbereitstellungen
-Um die Liste mit den bereitgestellten Azure-Ressourcengruppen abzurufen, verwenden Sie das **Get-AzureRmResourceGroupDeployment**-Cmdlet wie im folgenden Beispiel:
-
-```powershell
-Get-AzureRmResourceGroupDeployment -ResourceGroupName adf
-```
-
-```
-DeploymentName    : ADFAlertFailedSlice
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 10/11/2014 2:01:00 AM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           :
-```
-
-#### <a name="troubleshoot-user-events"></a>Durchführen der Problembehandlung für Benutzerereignisse
-1. Alle generierten Ereignisse werden angezeigt, nachdem Sie auf die Kachel **Metriken und Vorgänge** geklickt haben.
-
-    ![Kachel „Metriken und Vorgänge“](./media/data-factory-monitor-manage-pipelines/metrics-and-operations-tile.png)
-2. Klicken Sie auf die Kachel **Ereignisse**, um die Ereignisse anzuzeigen.
-
-    ![Kachel "Ereignisse"](./media/data-factory-monitor-manage-pipelines/events-tile.png)
-3. Auf dem Blatt **Ereignisse** können Sie weitere Informationen zu Ereignissen, gefilterten Ereignissen usw. anzeigen.
-
-    ![Blatt „Ereignisse“](./media/data-factory-monitor-manage-pipelines/events-blade.png)
-4. Klicken Sie in die Liste der Vorgänge auf einen **Vorgang**, der einen Fehler verursacht hat.
-
-    ![Vorgang auswählen](./media/data-factory-monitor-manage-pipelines/select-operation.png)
-5. Klicken Sie auf ein Ereignis vom Typ **Fehler**, um Details zu diesem Fehler anzuzeigen.
-
-    ![Ereignis „Fehler“](./media/data-factory-monitor-manage-pipelines/operation-error-event.png)
-
-Im Artikel [AzureRM.Insights Module](https://msdn.microsoft.com/library/mt282452.aspx) (AzureRM.Insights-Modul) werden PowerShell-Cmdlets beschrieben, mit deren Hilfe Sie Warnungen hinzufügen, empfangen oder entfernen können. Hier sind einige Beispiele für die Verwendung des Cmdlets **Get-AlertRule** :
-
-```powershell
-get-alertrule -res $resourceGroup -n ADFAlertsSlice -det
-```
-
-```
-Properties :
-Action      : Microsoft.Azure.Management.Insights.Models.RuleEmailAction
-Condition   :
-DataSource :
-EventName             :
-Category              :
-Level                 :
-OperationName         : RunFinished
-ResourceGroupName     :
-ResourceProviderName  :
-ResourceId            :
-Status                : Failed
-SubStatus             : FailedExecution
-Claims                : Microsoft.Azure.Management.Insights.Models.RuleManagementEventClaimsDataSource
-Condition      :
-Description : One or more of the data slices for the Azure Data Factory has failed processing.
-Status      : Enabled
-Name:       : ADFAlertsSlice
-Tags       :
-$type          : Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage
-Id: /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/ADFAlertsSlice
-Location   : West US
-Name       : ADFAlertsSlice
-```
-
-```powershell
-Get-AlertRule -res $resourceGroup
-```
-```
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-Location   : West US
-Name       : FailedExecutionRunsWest0
-
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest3
-Location   : West US
-Name       : FailedExecutionRunsWest3
-```
-
-```powershell
-Get-AlertRule -res $resourceGroup -Name FailedExecutionRunsWest0
-```
-
-```
-Properties : Microsoft.Azure.Management.Insights.Models.Rule
-Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage]}
-Id         : /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/microsoft.insights/alertrules/FailedExecutionRunsWest0
-Location   : West US
-Name       : FailedExecutionRunsWest0
-```
-
-Führen Sie die folgenden get-Help-Befehle aus, wenn Ihnen das Cmdlet „Get-AlertRule“ im Detail und anhand von Beispiele vorgeführt werden soll.
-
-```powershell
-get-help Get-AlertRule -detailed
-```
-
-```powershell
-get-help Get-AlertRule -examples
-```
-
-
-Wenn Sie die Ereignisse für die Warnungserzeugung auf dem Blatt „Portal“ sehen, aber keine E-Mail-Benachrichtigungen erhalten, sollten Sie prüfen, ob die angegebene E-Mail-Adresse für den Empfang von E-Mails externer Absender eingerichtet ist. Es kann sein, dass die Benachrichtigungs-E-Mails aufgrund Ihrer E-Mail-Einstellungen blockiert wurden.
-
-### <a name="alerts-on-metrics"></a>Warnungen zu Metriken
-In Data Factory können Sie verschiedene Metriken erfassen und Warnungen zu Metriken erstellen. Sie können Warnungen für die folgenden Metriken für die Slices in Ihrer Data Factory erstellen und überwachen:
-
-* **Fehlerhafte Ausführungen**
-* **Erfolgreiche Ausführungen**
-
-Diese Metriken sind nützlich und ermöglichen es Ihnen, sich einen Überblick über die gesamten fehlerhaften und erfolgreichen Ausführungen in der Data Factory zu verschaffen. Metriken werden bei jeder Ausführung eines Slices ausgegeben. Am Anfang jeder Stunde werden diese Metriken aggregiert und in Ihr Speicherkonto übertragen. Richten Sie ein Speicherkonto ein, um Metriken zu aktivieren.
-
-#### <a name="enable-metrics"></a>Aktivieren von Metriken
-Klicken Sie auf dem Blatt **Data Factory** auf Folgendes, um Metriken zu aktivieren:
-
-**Überwachung** > **Metrik** > **Diagnoseeinstellungen** > **Diagnose**
-
-![Link „Diagnose“](./media/data-factory-monitor-manage-pipelines/diagnostics-link.png)
-
-Klicken Sie auf dem Blatt **Diagnose** auf **Ein**, wählen Sie das Speicherkonto aus, und klicken Sie auf **Speichern**.
-
-![Blatt "Diagnose"](./media/data-factory-monitor-manage-pipelines/diagnostics-blade.png)
-
-Es kann bis zu eine Stunde dauern, bis die Metriken auf dem Blatt **Überwachung** angezeigt werden, da die Aggregation von Metriken stündlich erfolgt.
-
-### <a name="set-up-an-alert-on-metrics"></a>Einrichten einer Warnung für Metriken
-Klicken Sie auf die Kachel **Metrik zur Data Factory**:
-
-![Kachel „Metrik zur Data Factory“](./media/data-factory-monitor-manage-pipelines/data-factory-metrics-tile.png)
-
-Klicken Sie auf dem Blatt **Metrik** auf der Symbolleiste auf **+ Warnung hinzufügen**.
-![Blatt „Metrik zur Data Factory“ &gt; Warnung hinzufügen](./media/data-factory-monitor-manage-pipelines/add-alert.png)
-
-Führen Sie auf der Seite **Warnungsregel hinzufügen** die folgenden Schritte aus, und klicken Sie auf **OK**.
-
-* Geben Sie einen Namen für die Warnung ein (Beispiel: „Fehlerwarnung“).
-* Geben Sie eine Beschreibung für die Warnung ein (Beispiel: „E-Mail senden, wenn ein Fehler auftritt“).
-* Wählen Sie eine Metrik aus („Ausführungen mit Fehlern“ bzw. „Erfolgreiche Ausführungen“).
-* Geben Sie eine Bedingung und einen Schwellenwert ein.   
-* Geben Sie den Zeitraum an.
-* Geben Sie an, ob eine E-Mail an Besitzer, Mitwirkende und Leser gesendet werden soll.
-
-![Blatt „Metrik zur Data Factory“ > Warnungsregel hinzufügen](./media/data-factory-monitor-manage-pipelines/add-an-alert-rule.png)
-
-Sobald die Warnungsregel erfolgreich hinzugefügt wurde, wird das Blatt geschlossen, und Sie sehen die neue Warnung auf dem Blatt **Metrik**.
-
-![Blatt „Metrik zur Data Factory“ > Neue Warnung hinzugefügt](./media/data-factory-monitor-manage-pipelines/failed-alert-in-metric-blade.png)
-
-Außerdem sollte auf der Kachel **Warnungsregeln** die Anzahl von Warnungen angezeigt werden. Klicken Sie auf die Kachel **Warnungsregeln**.
-
-![Blatt „Metrik zur Data Factory“ – Warnungsregeln](./media/data-factory-monitor-manage-pipelines/alert-rules-tile-rules.png)
-
-Auf dem Blatt **Warnungsregeln** werden alle vorhandenen Warnungen angezeigt. Klicken Sie zum Hinzufügen einer Warnung auf der Symbolleiste auf **Warnung hinzufügen**.
-
-![Blatt „Warnungsregeln“](./media/data-factory-monitor-manage-pipelines/alert-rules-blade.png)
-
-### <a name="alert-notifications"></a>Warnungsbenachrichtigungen
-Wenn die Warnungsregel die Bedingung erfüllt, sollten Sie eine E-Mail mit dem Hinweis erhalten, dass die Warnung aktiviert ist. Nachdem das Problem behoben wurde und die Warnungsbedingung nicht mehr erfüllt ist, werden Sie per E-Mail benachrichtigt, dass die Ursache der Warnung behoben wurde.
-
-Dieses Verhalten ist anders als bei Ereignissen, bei denen eine Benachrichtigung bei jedem Fehler gesendet wird, für den die Warnungsregel zutrifft.
-
-### <a name="deploy-alerts-by-using-powershell"></a>Bereitstellen von Warnungen mit PowerShell
-Sie können Warnungen für Metriken auf die gleiche Weise wie für Ereignisse bereitstellen.
-
-**Warnungsdefinition**
-
-```JSON
-{
-    "contentVersion" : "1.0.0.0",
-    "$schema" : "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-    "parameters" : {},
-    "resources" : [
-    {
-            "name" : "FailedRunsGreaterThan5",
-            "type" : "microsoft.insights/alertrules",
-            "apiVersion" : "2014-04-01",
-            "location" : "East US",
-            "properties" : {
-                "name" : "FailedRunsGreaterThan5",
-                "description" : "Failed Runs greater than 5",
-                "isEnabled" : true,
-                "condition" : {
-                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client",
-                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
-                    "dataSource" : {
-                        "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client",
-                        "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
-                        "resourceUri" : "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<resourceGroupName
->/PROVIDERS/MICROSOFT.DATAFACTORY/DATAFACTORIES/<dataFactoryName>",
-                        "metricName" : "FailedRuns"
-                    },
-                    "threshold" : 5.0,
-                    "windowSize" : "PT3H",
-                    "timeAggregation" : "Total"
-                },
-                "action" : {
-                    "$type" : "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client",
-                    "odata.type" : "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
-                    "customEmails" : ["abhinav.gpt@live.com"]
-                }
-            }
-        }
-    ]
-}
-```
-
-Ersetzen Sie *subscriptionId*, *resourceGroupName* und *dataFactoryName* im obigen Beispiel durch die entsprechenden Werte.
-
-Für *metricName* werden derzeit zwei Werte unterstützt:
-
-* FailedRuns
-* SuccessfulRuns
-
-**Bereitstellen der Warnung**
-
-Verwenden Sie zum Bereitstellen der Warnung das Azure PowerShell-Cmdlet **New-AzureRmResourceGroupDeployment** wie im folgenden Beispiel:
-
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName adf -TemplateFile .\FailedRunsGreaterThan5.json
-```
-
-Nach einer erfolgreichen Bereitstellung sollte die folgende Meldung angezeigt werden:
-
-```
-VERBOSE: 12:52:47 PM - Template is valid.
-VERBOSE: 12:52:48 PM - Create template deployment 'FailedRunsGreaterThan5'.
-VERBOSE: 12:52:55 PM - Resource microsoft.insights/alertrules 'FailedRunsGreaterThan5' provisioning status is succeeded
-
-
-DeploymentName    : FailedRunsGreaterThan5
-ResourceGroupName : adf
-ProvisioningState : Succeeded
-Timestamp         : 7/27/2015 7:52:56 PM
-Mode              : Incremental
-TemplateLink      :
-Parameters        :
-Outputs           
-```
-
-Zum Bereitstellen einer Warnungsregel können Sie auch das Cmdlet **Add-AlertRule** verwenden. Ausführliche Informationen und Beispiele finden Sie im Thema [Add-AlertRule](https://msdn.microsoft.com/library/mt282468.aspx).  
+    ![Definieren der Aktionsgruppe – neue Aktionsgruppe erstellt](media/data-factory-monitor-manage-pipelines/v1alerts-image9.png)
 
 ## <a name="move-a-data-factory-to-a-different-resource-group-or-subscription"></a>Verschieben einer Data Factory in eine andere Ressourcengruppe oder ein anderes Abonnement
 Sie können eine Data Factory mithilfe der Schaltfläche **Verschieben** in der Befehlsleiste auf der Homepage Ihrer Data Factory in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben.

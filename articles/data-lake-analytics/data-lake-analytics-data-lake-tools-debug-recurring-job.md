@@ -1,30 +1,31 @@
 ---
-title: "Problembehandlung für einen nicht normalen periodischen Auftrag | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio einen nicht normalen periodischen Auftrag debuggen."
+title: Debuggen von periodischen Aufträgen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio einen nicht normalen periodischen Auftrag debuggen.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: yanancai
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/27/2017
+ms.date: 05/20/2018
 ms.author: yanacai
-ms.openlocfilehash: 9b60c861810d6577b33aa0cdf14f26dc2cfc0e4d
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 02f33fed7f8758066e34ee4e643efd9b696a0e8d
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33205668"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>Problembehandlung für einen nicht normalen periodischen Auftrag
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) Probleme mit periodischen Aufträgen behandeln. Im [Blog zu Azure Data Lake und Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/) erfahren Sie mehr zur Pipeline und zu periodischen Aufträgen.
 
-Periodische Aufträge verwenden in der Regel die gleiche Abfragelogik und ähnliche Eingabedaten. Stellen Sie sich als Beispiel einen periodischen Auftrag vor, der montags um 8:00 Uhr ausgeführt wird, der die in der letzten Woche aktiven Benutzer zählt. Die Skripts für diese Aufträge teilen sich eine Skriptvorlage, die die Abfragelogik enthält. Die Eingaben für diese Aufträge sind die Nutzungsdaten der letzten Woche. Die gemeinsame Nutzung derselben Abfragelogik und ähnlicher Eingaben bedeutet in der Regel, dass die Leistung dieser Aufträge vergleichbar und stabil ist. Wenn einer Ihrer periodischen Aufträge plötzlich eine abnormale Leistung liefert, fehlschlägt oder sich stark verlangsamt, sollten Sie Folgendes tun:
+Periodische Aufträge verwenden in der Regel die gleiche Abfragelogik und ähnliche Eingabedaten. Ein Beispiel wäre ein periodischer Auftrag, der jeden Montag um 8 Uhr ausgeführt wird, um die wöchentlich aktiven Benutzer der letzten Woche zu zählen. Die Skripts für diese Aufträge teilen sich eine Skriptvorlage, die die Abfragelogik enthält. Die Eingaben für diese Aufträge sind die Nutzungsdaten der letzten Woche. Die gemeinsame Nutzung derselben Abfragelogik und ähnlicher Eingaben bedeutet in der Regel, dass die Leistung dieser Aufträge vergleichbar und stabil ist. Wenn einer Ihrer periodischen Aufträge plötzlich eine abnormale Leistung liefert, fehlschlägt oder sich stark verlangsamt, sollten Sie Folgendes tun:
 
 - Ermitteln Sie anhand der Statistikberichte für die vorherigen Ausführungen des periodischen Auftrags, was passiert ist.
 - Vergleichen Sie die den nicht normalen Auftrag mit einem normalen Auftrag, um zu ermitteln, was sich geändert hat.

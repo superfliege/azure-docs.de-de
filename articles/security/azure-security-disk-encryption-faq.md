@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/18/2018
-ms.author: devtiw
-ms.openlocfilehash: cb523b4fbf6e8abdf5c5158ab041d3485add9b23
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 04/27/2018
+ms.author: barclayn
+ms.openlocfilehash: 47ccf91a64653c928cc4da01bc98535c97440d37
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187690"
 ---
 # <a name="azure-disk-encryption-faq"></a>Häufig gestellte Fragen zu Azure Disk Encryption
 
@@ -34,7 +35,7 @@ Azure Disk Encryption mit allgemeiner Verfügbarkeit unterstützt Azure Resource
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Was kostet Azure Disk Encryption?
 
-Für die Verschlüsselung von VM-Datenträgern mit Azure Disk Encryption fallen keine Gebühren an.
+Es fallen keine Gebühren für die Verschlüsselung von VM-Datenträgern mit Azure Disk Encryption an, es werden jedoch Gebühren für die Verwendung von Azure Key Vault berechnet. Weitere Informationen zu den Azure Key Vault-Kosten finden Sie auf der Seite [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="which-virtual-machine-tiers-does-azure-disk-encryption-support"></a>Welche VM-Tarife unterstützt Azure Disk Encryption?
 
@@ -68,7 +69,7 @@ Azure Disk Encryption wird für die folgenden Linux-Serverdistributionen und -Ve
 | SLES | Priorität: 11-SP4 | Datenträger |
 | SLES | 11 SP4 | Datenträger |
 
-*__ADE wird für RHEL für Datenträger unterstützt. Die aktuelle ADE-Implementierung funktioniert zwar für Betriebssystemdatenträger, wird aber derzeit nicht gemeinsam unterstützt. Microsoft und Red Hat arbeiten an einer gemeinsam unterstützten Lösung. In der Zwischenzeit können Sie das ADE-Whitepaper für die Verschlüsselung von Linux-Betriebssystemdatenträgern lesen. Sie finden es [hier](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption).__
+*__ADE wird für RHEL für Datenträger unterstützt. Die aktuelle ADE-Implementierung funktioniert zwar für Betriebssystemdatenträger, wird aber derzeit nicht gemeinsam unterstützt. Microsoft und Red Hat arbeiten an einer gemeinsam unterstützten Lösung. In der Zwischenzeit können Sie das ADE-Whitepaper für die Verschlüsselung von Linux-Betriebssystemdatenträgern lesen. Sie finden es [hier](https://docs.microsoft.com/azure/security/azure-security-disk-encryption).__
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Wie sehen die ersten Schritte mit Azure Disk Encryption aus?
 

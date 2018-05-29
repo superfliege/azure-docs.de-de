@@ -1,8 +1,8 @@
 ---
-title: "Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Azure Active Directory-Berichten."
+title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu Azure Active Directory-Berichten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
@@ -11,27 +11,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 05/10/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a39183e65306ddc7cb81825b7abf27677339a3ba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5fa52099f5cf55b78fd2fea407c34f29237939d3
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067009"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](active-directory-reporting-azure-portal.md). 
 
-**F: Ich verwende die Endpunkt-APIs von https://graph.windows.net/&lt;Mandantenname&gt;/reports/ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+**F: Ich verwende die Endpunkt-APIs unter „https://graph.windows.net/&ltMandantenname&gt;/reports/“ zum programmgesteuerten Abrufen der Azure AD-Überwachungsberichte und integrierten Anwendungsnutzungsberichte in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
-**A:** In der [API-Referenzdokumentation](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie die neuen APIs für den Zugriff auf [Aktivitätsberichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) verwenden können. Dieser Endpunkt verfügt über zwei Berichte (Überwachung und Anmeldevorgänge), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
+**A**: In der [API-Referenzdokumentation](https://developer.microsoft.com/graph/) finden Sie Informationen dazu, wie Sie die neuen APIs für den Zugriff auf [Aktivitätsberichte](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) verwenden können. Dieser Endpunkt verfügt über zwei Berichte (Überwachung und Anmeldevorgänge), die alle Daten des alten API-Endpunkts enthalten. Dieser neue Endpunkt verfügt auch über einen Bericht zu Anmeldeaktivitäten für die Azure AD Premium-Lizenz, über den Sie Informationen zur App-Nutzung, Gerätenutzung und Benutzeranmeldung abrufen können.
 
 
 --- 
 
-**F: Ich verwende die Endpunkt-APIs von https://graph.windows.net/&lt;Mandantenname&gt;/reports/ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Erkennungstypen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
+**F: Ich verwende die Endpunkt-APIs unter „https://graph.windows.net/&ltMandantenname&gt;/reports/“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Erkennungstypen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?**
 
 **A:** Sie können die [API für Identity Protection-Risikoereignisse](active-directory-identityprotection-graph-getting-started.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoereignisse in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), den Microsoft-Standard für diese APIs wie z.B. Office 365 oder Azure AD. So können Sie entweder Ihre aktuellen MS Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
 
@@ -39,7 +40,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie lange werden Aktivitätsprotokolldaten (Überwachung und Anmeldevorgänge) im Azure-Portal aufbewahrt?** 
 
-**A:** 7 Tage für unsere Kunden im Tarif „Free“. Durch Erwerb einer Azure AD Premium 1- oder Premium 2-Lizenz können Sie bis zu 30 Tage auf Daten zugreifen. Weitere Informationen zur Aufbewahrung von Berichten finden Sie unter [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md).
+**A**: Die Antwort zu dieser Frage finden Sie unter [Wie lange werden die gesammelten Daten gespeichert?](active-directory-reporting-retention.md#q-for-how-long-is-the-collected-data-stored).
 
 --- 
 
@@ -100,7 +101,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Es gibt ein Risikoereignis in Identity Protection, aber ich sehe keine entsprechende Anmeldung unter „Alle Anmeldungen“. Entspricht dies dem erwarteten Verhalten?**
 
-**A:** Ja, Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, egal ob diese interaktiv oder nicht interaktiv sind. „Alle Anmeldungen“ führt jedoch nur die interaktiven Anmeldungen auf.
+**A:** Ja, Identity Protection beurteilt das Risiko für alle Authentifizierungsflows, ganz gleich, ob diese interaktiv oder nicht interaktiv sind. „Alle Anmeldungen“ führt jedoch nur die interaktiven Anmeldungen auf.
 
 ---
 
@@ -124,6 +125,6 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Was bedeutet das Risikoereignis „Anmeldung mit erhöhtem Risiko erkannt“?**
 
-**A:** Das Risikoereignis „Anmeldung mit erhöhtem Risiko erkannt“ wird für Anmeldungen angezeigt, die aufgrund exklusiver Erkennungen für Azure AD Identity Protection-Abonnenten als riskant eingestuft werden, um Ihnen einen Einblick in sämtliche riskante Anmeldungen in Ihrer Umgebung zu geben.
+**A:** Das Ereignis „Anmeldung mit erhöhtem Risiko erkannt“ dient als Platzhalter für Anmeldungen für Erkennungen, die exklusiv für Azure AD Identity Protection-Abonnenten sind, um Ihnen einen Einblick in sämtliche riskante Anmeldungen in Ihrer Umgebung zu geben.
 
 ---

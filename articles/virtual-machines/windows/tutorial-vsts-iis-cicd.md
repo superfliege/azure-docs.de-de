@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer CI/CD-Pipeline in Azure mit Team Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer bereitstellt.
+title: 'Tutorial: Erstellen einer CI/CD-Pipeline in Azure mit Team Services | Microsoft-Dokumentation'
+description: In diesem Tutorial erfahren Sie, wie Sie eine Visual Studio Team Services-Pipeline für Continuous Integration und Continuous Delivery erstellen, die eine Web-App in IIS auf einem virtuellen Windows-Computer in Azure bereitstellt.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cf6e3013d4dfc7e18d96a717a76b591cde939139
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d017f2453bbd757c16e2df034f5879f24ffe42f7
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192219"
 ---
-# <a name="create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
+# <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Tutorial: Erstellen einer Continuous Integration-Pipeline mit Visual Studio Team Services und IIS
 Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen der Anwendungsentwicklung eine Pipeline für Continuous Integration und Continuous Deployment (CI/CD) verwenden. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline mit Visual Studio Team Services und einem virtuellen Windows-Computer in Azure, auf dem IIS ausgeführt wird. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
@@ -33,7 +34,7 @@ Sie können zum Automatisieren der Erstellungs-, Test- und Bereitstellungsphasen
 > * Erstellen einer Releasedefinition zum Veröffentlichen neuer Webbereitstellungspakete in IIS
 > * Testen der CI/CD-Pipeline
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell) Informationen dazu.
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren und Konfigurieren von Azure PowerShell) Informationen dazu.
 
 
 ## <a name="create-project-in-team-services"></a>Erstellen eines Projekts in Team Services
@@ -94,29 +95,30 @@ Sie können zusehen, wie der Build auf einem gehosteten Agent geplant und dann e
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 Um eine Plattform für die Ausführung Ihrer ASP.NET-Web-App zur Verfügung zu stellen, benötigen Sie einen virtuellen Windows-Computer mit IIS. Team Services verwendet einen Agent für die Interaktion mit der IIS-Instanz, wenn Sie für Ihren Code einen Commit ausführen und Builds ausgelöst werden.
 
-Erstellen Sie einen virtuellen Computer unter Windows Server 2016 mithilfe [dieses Skriptbeispiels](../scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json). Es dauert einige Minuten, bis das Skript ausgeführt und der virtuelle Computer erstellt wird. Öffnen Sie nach der Erstellung des virtuellen Computers mithilfe von [Add-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermresourcegroup) Port 80 folgendermaßen für Webdatenverkehr:
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) einen virtuellen Computer unter Windows Server 2016. Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* am Standort *USA, Osten* erstellt. Zudem werden die Ressourcengruppe *myResourceGroupVSTS* und unterstützende Netzwerkressourcen erstellt. Um Webdatenverkehr zu ermöglichen, ist TCP-Port *80* für den virtuellen Computer geöffnet. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort als Anmeldeinformationen für den virtuellen Computer ein:
 
 ```powershell
-Get-AzureRmNetworkSecurityGroup `
-  -ResourceGroupName $resourceGroup `
-  -Name "myNetworkSecurityGroup" | `
-Add-AzureRmNetworkSecurityRuleConfig `
-  -Name "myNetworkSecurityGroupRuleWeb" `
-  -Protocol "Tcp" `
-  -Direction "Inbound" `
-  -Priority "1001" `
-  -SourceAddressPrefix "*" `
-  -SourcePortRange "*" `
-  -DestinationAddressPrefix "*" `
-  -DestinationPortRange "80" `
-  -Access "Allow" | `
-Set-AzureRmNetworkSecurityGroup
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a virtual machine
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroupVSTS" `
+  -Name "myVM" `
+  -Location "East US" `
+  -ImageName "Win2016Datacenter" `
+  -VirtualNetworkName "myVnet" `
+  -SubnetName "mySubnet" `
+  -SecurityGroupName "myNetworkSecurityGroup" `
+  -PublicIpAddressName "myPublicIp" `
+  -Credential $cred `
+  -OpenPorts 80
 ```
 
 Rufen Sie zum Herstellen einer Verbindung mit dem virtuellen Computer mithilfe von [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) wie folgt die öffentliche IP-Adresse ab:
 
 ```powershell
-Get-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 ```
 
 Erstellen Sie eine Remotedesktopsitzung für Ihren virtuellen Computer:

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/28/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8271c4c88245e98fd3709c7279904d36ad009682
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770722"
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory 
 
@@ -75,13 +76,13 @@ Die mehrstufige Authentifizierung unterstützt den Schutz Ihrer Ressourcen vor d
 
 ### <a name="compliant-device"></a>Kompatibles Gerät
 
-Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von vertrauenswürdigen Geräten aus zuzulassen. Eine Möglichkeit, zu definieren, was ein vertrauenswürdiges Gerät ist, besteht darin, ein kompatibles Gerät vorauszusetzen. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff Zugriff bei Zugriffsversuchen von Geräten, die Ihrem Azure Active Directory-Verzeichnis angehören und die von Ihrer MDM-Lösung als kompatibel gekennzeichnet sind.
+Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlegen. Das Ziel einer gerätebasierten Richtlinie für den bedingten Zugriff ist, den Zugriff auf die konfigurierten Ressourcen nur von [verwalteten Geräten](active-directory-conditional-access-policy-connected-applications.md#managed-devices) aus zuzulassen. Eine Möglichkeit, zu definieren, was ein verwaltetes Gerät ist, besteht darin, ein konformes Gerät vorauszusetzen. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff den Zugriff bei Zugriffsversuchen von Geräten, die bei Ihrem Azure Active Directory-Verzeichnis [registriert](device-management-introduction.md) und von Ihrer MDM-Lösung als konform gekennzeichnet sind.
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 
-### <a name="domain-joined-device"></a>In eine Domäne eingebundenes Gerät
+### <a name="hybrid-azure-ad-joined-device"></a>Hybrid in Azure AD eingebundenes Gerät
 
-Ein in eine Domäne eingebundenes Gerät zu verlangen, ist eine weitere Option, die Ihnen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff zur Verfügung steht. Diese Anforderung bezieht sich auf Windows-Desktops, Laptops und Enterprise-Tablets, die mit einem lokalen Active Directory verknüpft sind. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff Zugriff bei Zugriffsversuchen von Geräten, die Ihrem lokalen Active Directory-Verzeichnis und Ihrem Azure Active Directory-Verzeichnis angehören.  
+Ein hybrid in Azure AD eingebundenes Gerät zu verlangen, ist eine weitere Option, die Ihnen zum Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff zur Verfügung steht. Diese Anforderung bezieht sich auf Windows-Desktops, Laptops und Enterprise-Tablets, die mit einem lokalen Active Directory verknüpft sind. Wenn diese Option ausgewählt ist, gewährt die Richtlinie für bedingten Zugriff Zugriff bei Zugriffsversuchen von Geräten, die Ihrem lokalen Active Directory-Verzeichnis und Ihrem Azure Active Directory-Verzeichnis angehören.  
 
 Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: ff3fd8ea331c02aa2666ec20b56dbbaef473a4df
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b1dcbfc51e63a5bca9186b62c871b2623653bbab
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33935639"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -35,7 +36,7 @@ Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugän
 ## <a name="certificate-requirements"></a>Zertifikatanforderungen
 Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereitstellung von Azure Stack erfüllt sein müssen: 
 - Zertifikate müssen von einer internen oder öffentlichen Zertifizierungsstelle ausgestellt werden. Wenn eine öffentliche Zertifizierungsstelle verwendet wird, muss diese im Rahmen des Microsoft Trusted Root Authority Program in das Basisbetriebssystem-Image aufgenommen werden. Die vollständige Liste finden Sie hier: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
-- Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf die Zertifizierungsstelle verfügen, die zum Signieren Ihrer Zertifikate verwendet wurde.
+- Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf den im Zertifikat veröffentlichten Speicherort der Zertifikatsperrliste (Certificate Revocation List, CRL) der Zertifizierungsstelle verfügen. Bei dieser CRL muss es sich um einen HTTP-Endpunkt handeln.
 - Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
 - Das Zertifikat kann ein einzelnes Platzhalterzertifikat sein, das alle Namespaces im Feld „Alternativer Antragstellername“ abdeckt. Alternativ können Sie auch einzelne Zertifikate mit Platzhaltern für Endpunkte wie **acs** und Key Vault verwenden, wo sie benötigt werden. 
@@ -45,6 +46,7 @@ Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereits
 - Die PFX-Zertifikatdateien müssen die Werte „Serverauthentifizierung (1.3.6.1.5.5.7.3.1)“ und „Clientauthentifizierung (1.3.6.1.5.5.7.3.2)“ im Feld „Erweiterte Schlüsselverwendung“ aufweisen.
 - Das Feld „Ausgestellt für:“ des Zertifikats darf nicht mit dem Feld „Ausgestellt von:“ identisch sein.
 - Die Kennwörter aller PFX-Zertifikatdateien müssen zum Zeitpunkt der Bereitstellung identisch sein.
+- Für die PFX-Zertifikatdatei muss ein komplexes Kennwort verwendet werden.
 - Stellen Sie sicher, dass die Antragstellernamen und alternativen Antragstellernamen aller Zertifikate mit den in diesem Artikel beschriebenen Vorgaben übereinstimmen, um fehlerhafte Implementierungen zu vermeiden.
 
 > [!NOTE]
@@ -70,9 +72,9 @@ Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der R
 | Azure Resource Manager (Öffentlich) | management.&lt;Region>.&lt;FQDN> | Azure Resource Manager | &lt;Region>.&lt;FQDN> |
 | Azure Resource Manager (Verwaltung) | adminmanagement.&lt;Region>.&lt;FQDN> | Azure Resource Manager | &lt;Region>.&lt;FQDN> |
 | ACSBlob | *.blob.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Blob Storage | blob.&lt;Region>.&lt;FQDN> |
-| ACSTable | *.table.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Tabellenspeicher | table.&lt;Region>.&lt;FQDN> |
-| ACSQueue | *.queue.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Warteschlangenspeicher | queue.&lt;Region>.&lt;FQDN> |
-| KeyVault | *.vault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Schlüsseltresor | vault.&lt;Region>.&lt;FQDN> |
+| ACSTable | *.table.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Table Storage | table.&lt;Region>.&lt;FQDN> |
+| ACSQueue | *.queue.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Queue Storage | queue.&lt;Region>.&lt;FQDN> |
+| KeyVault | *.vault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) | Key Vault | vault.&lt;Region>.&lt;FQDN> |
 | KeyVaultInternal | *.adminvault.&lt;Region>.&lt;FQDN><br>(SSL-Platzhalterzertifikat) |  Interner Schlüsseltresor |  adminvault.&lt;Region>.&lt;FQDN> |
 
 ### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Für Azure-Stack-Umgebung vor der Version 1803
@@ -84,7 +86,7 @@ Für Ihre Bereitstellung müssen die Werte [region] und [externalfqdn] mit der R
 |Azure Resource Manager (Öffentlich)|management.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
 |Azure Resource Manager (Verwaltung)|adminmanagement.*&lt;region>.&lt;fqdn>*|Azure Resource Manager|*&lt;region>.&lt;fqdn>*|
 |ACS<sup>1</sup>|Ein Platzhalterzertifikat für mehrere Unterdomänen mit alternativen Antragstellernamen für:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.table.*&lt;region>.&lt;fqdn>*|Speicher|blob.*&lt;region>.&lt;fqdn>*<br>table.*&lt;region>.&lt;fqdn>*<br>queue.*&lt;region>.&lt;fqdn>*|
-|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|Schlüsseltresor|vault.*&lt;region>.&lt;fqdn>*|
+|KeyVault|&#42;.vault.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|Key Vault|vault.*&lt;region>.&lt;fqdn>*|
 |KeyVaultInternal|&#42;.adminvault.*&lt;region>.&lt;fqdn>*<br>(SSL-Platzhalterzertifikat)|Interner Schlüsseltresor|adminvault.*&lt;region>.&lt;fqdn>*|
 |
 <sup>1</sup> Das ACS-Zertifikat erfordert drei Platzhalter für alternative Antragstellernamen auf einem einzigen Zertifikat. Mehrere Platzhalter für alternative Antragstellernamen auf einem einzigen Zertifikat werden ggf. nicht von allen öffentlichen Zertifizierungsstellen unterstützt. 

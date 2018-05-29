@@ -1,11 +1,11 @@
 ---
 title: SQL Server-Anwendungsmuster auf virtuellen Computern | Microsoft Docs
-description: "Dieser Artikel behandelt die Anwendungsmuster für SQL Server auf Azure-VMs. Er bietet Lösungsarchitekten und Entwicklern eine Grundlage für gute Anwendungsarchitektur und deren Entwurf."
+description: Dieser Artikel behandelt die Anwendungsmuster für SQL Server auf Azure-VMs. Er bietet Lösungsarchitekten und Entwicklern eine Grundlage für gute Anwendungsarchitektur und deren Entwurf.
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
 ms.service: virtual-machines-sql
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
-ms.openlocfilehash: 9a306dc5676bb98baf0c9aa000c4c518279bd932
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: eaeff1e57042b2e6a98559c19dc1dabebbf92ed4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195106"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server in Azure Virtual Machines
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -57,7 +58,7 @@ Dieser Artikel beschreibt mehrere Anwendungsmuster, die für einfache Anwendunge
 * Sie benötigen vollständige lokale Kompatibilität mit SQL Server, und Sie möchten vorhandene Anwendungen direkt nach Azure migrieren.
 * Sie möchten die Funktionen der Azure-Umgebung nutzen, die Azure SQL-Datenbank unterstützt jedoch nicht alle Features, die die Anwendung benötigt. Dies könnte die folgenden Bereiche umfassen:
   
-  * **Datenbankgröße**: Zum Zeitpunkt der Aktualisierung dieses Artikels unterstützt die SQL-Datenbank eine Datenbank mit bis zu 1TB an Daten. Wenn die Anwendung mehr als 1TB an Daten erfordert, und Sie keine benutzerdefinierten Shardinglösungen implementieren möchten, sollten Sie SQL Server auf einem virtuellen Azure-Computer verwenden. Die neuesten Informationen finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/dn495641.aspx) und [Dienst- und Leistungsebenen für Azure SQL-Datenbanken](../../../sql-database/sql-database-service-tiers.md).
+  * **Datenbankgröße**: Zum Zeitpunkt der Aktualisierung dieses Artikels unterstützt die SQL-Datenbank eine Datenbank mit bis zu 1TB an Daten. Wenn die Anwendung mehr als 1TB an Daten erfordert, und Sie keine benutzerdefinierten Shardinglösungen implementieren möchten, sollten Sie SQL Server auf einem virtuellen Azure-Computer verwenden. Aktuelle Informationen finden Sie unter [Erweitern von Azure SQL-Datenbankinstanzen](https://msdn.microsoft.com/library/azure/dn495641.aspx), [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](../../../sql-database/sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL Datenbank (Vorschau)](../../../sql-database/sql-database-service-tiers-vcore.md).
   * **HIPAA-Konformität:** Kunden und unabhängige Softwarehersteller (ISVs) können [SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-server-iaas-overview.md) anstelle von [Azure SQL-Datenbank](../../../sql-database/sql-database-technical-overview.md) auswählen, da SQL Server auf einem virtuellen Azure-Computer vom HIPAA Business Associate Agreement (BAA) abgedeckt wird. Weitere Informationen zur Kompatibilität finden Sie unter [Microsoft Azure Trust Center: Compliance](https://azure.microsoft.com/support/trust-center/compliance/).
   * **Features auf Instanzebene:** Derzeit unterstützt SQL-Datenbank keine Funktionen, die sich außerhalb der Datenbank befinden (z.B. verknüpfte Server, Agent-Aufträge, FileStream, Service Broker usw.). Weitere Informationen finden Sie unter [Azure SQL-Datenbank – allgemeine Einschränkungen und Leitlinien](https://msdn.microsoft.com/library/azure/ff394102.aspx).
 

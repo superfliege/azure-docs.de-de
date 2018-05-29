@@ -11,18 +11,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 0d21a8848222c4b09723e22d2d51ec43b2154553
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770739"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
-Dieses Thema gilt nur für die folgenden Geräte: 
+Dieser Artikel gilt nur für die folgenden Geräte: 
 
 - Windows 7 
 - Windows 8.1 
@@ -33,7 +34,7 @@ Dieses Thema gilt nur für die folgenden Geräte:
 
 Weitere Informationen zu Windows 10 und Windows Server 2016 finden Sie unter [Beheben von Problemen mit Geräten unter Windows 10 und Windows Server 2016 mit Hybrideinbindung in Azure Active Directory](device-management-troubleshoot-hybrid-join-windows-current.md).
 
-In diesem Thema wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in Azure Active Directory konfiguriert haben](device-management-hybrid-azuread-joined-devices-setup.md), um die folgenden Szenarien zu unterstützen:
+In diesem Artikel wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in Azure Active Directory konfiguriert haben](device-management-hybrid-azuread-joined-devices-setup.md), um die folgenden Szenarien zu unterstützen:
 
 - Gerätebasierter bedingter Zugriff
 
@@ -45,7 +46,7 @@ In diesem Thema wird vorausgesetzt, dass Sie [Geräte mit Hybrideinbindung in Az
 
 
 
-Dieses Thema enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme.  
+Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenzieller Probleme.  
 
 **Wichtige Informationen:** 
 
@@ -53,15 +54,17 @@ Dieses Thema enthält Anleitungen zur Problembehandlung zum Beheben potenzieller
 
 - Bei der anfänglichen Gerätekonfiguration für die Registrierung bzw. den Beitritt von Geräten wird zunächst eine Anmeldung oder Sperren/Entsperren versucht. Es kann eine Verzögerung von bis zu 5 Minuten auftreten, die durch eine Aufgabe der Aufgabenplanung ausgelöst wird. 
 
-- Durch eine Neuinstallation des Betriebssystems oder durch manuelles Aufheben der Registrierung und erneutes Registrieren wird in Azure AD möglicherweise eine neue Registrierung erstellt. Dies kann im Azure-Portal zu mehreren Einträgen auf der Registerkarte mit den Benutzerinformationen führen. 
+- Durch eine Neuinstallation des Betriebssystems oder durch manuelles Aufheben der Registrierungen wird in Azure AD möglicherweise eine neue Registrierung erstellt. Dies kann im Azure-Portal zu mehreren Einträgen auf der Registerkarte mit den Benutzerinformationen führen. 
 
 ## <a name="step-1-retrieve-the-registration-status"></a>Schritt 1: Abrufen des Registrierungsstatus 
 
 **So überprüfen Sie den Registrierungsstatus:**  
 
-1. Öffnen Sie die Eingabeaufforderung als Administrator. 
+1. Melden Sie sich mit dem Benutzerkonto an, das eine Hybrideinbindung in Azure AD ausgeführt hat.
 
-2. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /i"` ein
+2. Öffnen Sie die Eingabeaufforderung als Administrator. 
+
+3. Geben Sie `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i` ein
 
 Dieser Befehl zeigt ein Dialogfeld an, das Ihnen ausführliche Informationen zum Einbindungsstatus bietet.
 
@@ -84,16 +87,11 @@ Wenn die Hybrideinbindung in Azure AD nicht erfolgreich war, enthält das Dialog
     
     Dieses Problem kann aus verschiedenen Gründen auftreten:
     
-    1. Der angemeldete Benutzer ist kein Domänenbenutzer (sondern beispielsweise ein lokaler Benutzer). Eine Azure AD-Hybrideinbindung auf Geräten niedriger Ebene wird nur für Domänenbenutzer unterstützt.
+    - Der angemeldete Benutzer ist kein Domänenbenutzer (sondern beispielsweise ein lokaler Benutzer). Eine Azure AD-Hybrideinbindung auf Geräten niedriger Ebene wird nur für Domänenbenutzer unterstützt.
     
-    2. „Autoworkplace.exe“ kann sich aus irgendeinem Grund nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Einige mögliche Gründe: Probleme bei ausgehenden Netzwerkverbindungen mit Azure AD-URLs (überprüfen Sie die Voraussetzungen) oder MFA ist für den Benutzer aktiviert/konfiguriert, aber WIAORMUTLIAUTHN ist auf dem Verbundserver nicht konfiguriert (überprüfen Sie die Konfigurationsschritte). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch „Autoworkplace.exe“ daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
+    - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Die Ursache sind möglicherweise Probleme mit der ausgehenden Netzwerkverbindung mit den Azure AD-URLs (Voraussetzungen überprüfen). Möglicherweise ist auch die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und WIAORMUTLIAUTHN ist nicht beim Verbundserver konfiguriert (Konfigurationsschritte überprüfen). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch **autoworkplace.exe** daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
     
-    3. Wenn die Organisation das nahtlose einmalige Anmelden von Azure AD verwendet, ist die folgende URL in den IE-Intraneteinstellungen des Geräts nicht vorhanden:
-    
-       - https://autologon.microsoftazuread-sso.com
-
-    
-       Die Einstellung „Aktualisierungen der Statusleiste per Skript zulassen“ muss für die Intranetzone aktiviert sein.
+    - Ihre Organisation verwendet nahtloses einmaliges Azure AD-Anmelden, `https://autologon.microsoftazuread-sso.com` oder `https://aadg.windows.net.nsatc.net` ist nicht in den IE-Intraneteinstellungen des Geräts vorhanden, und **Updates der Statusleiste über ein Skript zulassen** ist nicht für die Intranetzone aktiviert.
 
 - Ein Kontingent wurde erreicht
 
@@ -107,7 +105,7 @@ Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs-
   
 **Die häufigsten Ursachen für Fehler bei der Azure AD-Hybrideinbindung sind:** 
 
-- Der Computer befindet sich nicht im internen Netzwerk der Organisation oder im VPN und besitzt keine Verbindung mit einem lokalen AD-Domänencontroller.
+- Der Computer ist weder mit dem internen Netzwerk Ihrer Organisation noch mit einem VPN mit Verbindung mit Ihrem lokalen AD-Domänencontroller verbunden.
 
 - Sie sind über ein lokales Computerkonto bei ihrem Computer angemeldet. 
 
@@ -115,7 +113,7 @@ Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs-
 
   - Der Verbundserver wurde für die Unterstützung von **WIAORMULTIAUTHN** konfiguriert. 
 
-  - Es gibt kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD in der Active Directory-Gesamtstruktur verweist, zu der der Computer gehört.
+  - Die Gesamtstruktur Ihres Computers hat kein Dienstverbindungspunkt-Objekt, das auf Ihren verifizierten Domänennamen in Azure AD verweist. 
 
   - Ein Benutzer hat den Grenzwert von Geräten erreicht. 
 

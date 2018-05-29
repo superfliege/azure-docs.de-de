@@ -1,19 +1,20 @@
 ---
 title: Verwalten eines Azure-DC/OS-Clusters mit der Marathon-REST-API
-description: "Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-DC/OS-Cluster bereit."
+description: Stellen Sie mithilfe der Marathon-REST-API Container für einen Azure Container Service-DC/OS-Cluster bereit.
 services: container-service
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c9322756c30011305ebe6f4f2fd38554f275a1b3
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: edd66be25bf2571a7315372898300476fec101ca
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32165604"
 ---
 # <a name="dcos-container-management-through-the-marathon-rest-api"></a>DC/OS-Containerverwaltung über die Marathon-REST-API
 

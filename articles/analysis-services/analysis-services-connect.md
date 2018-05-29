@@ -1,20 +1,21 @@
 ---
-title: Herstellen einer Verbindung mit Azure Analysis Services | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Azure Analysis Services-Servern | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie in Azure eine Verbindung mit Analysis Services herstellen und Daten abrufen.
 author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 04/23/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8493ff1e2b9be48fc8eec1e727684fe09f6af72c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 53a8a1eea5ffa50fcdaf4a60c9bbd03d30d8e311
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151313"
 ---
-# <a name="connect-to-an-azure-analysis-services-server"></a>Herstellen einer Verbindung mit einem Azure Analysis Services-Server
+# <a name="connecting-to-servers"></a>Herstellen einer Verbindung mit Servern
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von Anwendungen für die Datenmodellierung und -verwaltung, z.B. SQL Server Management Studio (SSMS) oder SQL Server Data Tools (SSDT), eine Verbindung mit einem Server herstellen. Oder mithilfe von Clientanwendungen für die Berichterstellung wie Microsoft Excel, Power BI Desktop oder benutzerdefinierten Anwendungen. Für Verbindungen mit Azure Analysis Services wird HTTPS verwendet.
 

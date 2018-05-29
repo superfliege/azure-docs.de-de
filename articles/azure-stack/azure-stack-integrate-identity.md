@@ -6,15 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ecd08f3750e8521270369a69c6801497e587a75
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dc6c8ef2953b7495c734ec8b16530cdd812ac792
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770518"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -60,6 +61,8 @@ Anforderungen:
 
 ## <a name="setting-up-graph-integration"></a>Einrichten der Graph-Integration
 
+Graph unterstützt nur die Integration in eine einzelne Active Directory-Gesamtstruktur. Wenn mehrere Gesamtstrukturen vorhanden sind, wird nur die in der Konfiguration angegebene Gesamtstruktur verwendet, um Benutzer und Gruppen abzurufen.
+
 Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter erforderlich:
 
 
@@ -95,12 +98,14 @@ Verwenden Sie für diesen Vorgang einen Computer in Ihrem Datencenternetzwerk, d
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
-   Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für das Benutzerkonto ein, das Sie für die Graph-Dienst verwenden möchten (z.B. „graphservice“).
+   Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für das Benutzerkonto ein, das Sie für die Graph-Dienst verwenden möchten (z.B. „graphservice“). Die Eingabe für das Cmdlet Register-DirectoryService muss der Gesamtstrukturname / die Stammdomäne in der Gesamtstruktur sein statt einer anderen Domäne in der Gesamtstruktur.
 
    > [!IMPORTANT]
    > Warten Sie, bis die Anmeldeinformationen angezeigt werden („Get-Credential“ wird im privilegierten Endpunkt nicht unterstützt), und geben Sie die Anmeldeinformationen des Graph-Dienstkontos ein.
 
 #### <a name="graph-protocols-and-ports"></a>Graph-Protokolle und -Ports
+
+Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports für die Kommunikation mit einem beschreibbaren globalen Katalog Server (Global Catalog Server, GC) und Schlüsselverteilungscenter (Key Distribution Center, KDC), die Anmeldeanforderungen in der gewünschten Active Directory-Gesamtstruktur verarbeiten können.
 
 Der Graph-Dienst in Azure Stack verwendet die folgenden Protokolle und Ports für die Kommunikation mit dem Ziel-Active Directory:
 

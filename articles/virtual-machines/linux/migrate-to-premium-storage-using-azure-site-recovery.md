@@ -1,12 +1,12 @@
 ---
 title: Migrieren Ihrer Linux-VMs zu Azure Storage Premium mithilfe von Azure Site Recovery | Microsoft-Dokumentation
-description: "Migrieren Sie Ihre vorhandenen virtuellen Computer mithilfe von Site Recovery zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
+description: Migrieren Sie Ihre vorhandenen virtuellen Computer mithilfe von Site Recovery zu Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 services: virtual-machines-linux
 cloud: Azure
 documentationcenter: na
 author: luywang
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 5d6eb958169b7bf04e206c861250ffd98670652b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ab8ce25e3be85061c3fc0417b30b63e04b764ab
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777984"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
@@ -202,7 +203,7 @@ Site Recovery erstellt eine VM-Instanz, deren Typ einem Storage Premium-fähigen
    * Mit dem klassischen Bereitstellungsmodell erstellter virtueller Computer: Fügen Sie den virtuellen Computer im Azure-Portal der Verfügbarkeitsgruppe hinzu. Ausführliche Schritte finden Sie unter [Fügen Sie einer Verfügbarkeitsgruppe einen vorhandenen virtuellen Computer hinzu](../linux/classic/configure-availability-classic.md).
    * Mit dem Resource Manager-Bereitstellungsmodell erstellter virtueller Computer: Speichern Sie Ihre Konfiguration des virtuellen Computers, löschen Sie die virtuellen Computer in der Verfügbarkeitsgruppe, und erstellen Sie sie neu. Verwenden Sie hierfür das Skript unter [Set Azure Resource Manager VM Availability Set](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4) (Festlegen der Azure Resource Manager-VM-Verfügbarkeitsgruppe). Machen Sie sich vor dem Ausführen dieses Skripts mit dessen Einschränkungen vertraut, und planen Sie Ihre Ausfallzeit.
 
-2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie unter [Problembehandlung bei Fehlern des Typs „Löschen von VHDs“](../../storage/common/storage-resource-manager-cannot-delete-storage-account-container-vhd.md) weiter.
+2. **Löschen Sie alte VMs und Datenträger**. Stellen Sie sicher, dass die Premium-Datenträger mit den Quelldatenträgern konsistent sind und die neuen virtuellen Computer die gleiche Funktion erfüllen wie die virtuellen Quellcomputer. Löschen Sie den virtuellen Computer, und löschen Sie die Datenträger aus Ihren Quellspeicherkonten im Azure-Portal. Falls der Datenträger aufgrund eines Problems nicht gelöscht wird, obwohl Sie den virtuellen Computer gelöscht haben, lesen Sie [Problembehandlung bei Speicherressourcen-Löschfehlern](storage-resource-deletion-errors.md).
 
 3. **Bereinigen Sie die Azure Site Recovery-Infrastruktur**. Wenn Site Recovery nicht mehr benötigt wird, können Sie die dazugehörige Infrastruktur bereinigen. Löschen Sie replizierte Objekte, den Konfigurationsserver, die Wiederherstellungsrichtlinie und anschließend den Azure Site Recovery-Tresor.
 

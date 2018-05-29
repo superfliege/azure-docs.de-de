@@ -11,11 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 731ff24fe9cc1b5dbf0c597139a96ae80b863cc2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140030"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -29,16 +30,16 @@ Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Gra
 * Für interaktive Aufgaben mit einmaliger Ausführung sollten Sie beim Ausführen der Aufgaben ein Administratorkonto im B2C-Mandanten verwenden. In diesem Modus muss sich ein Administrator mit Anmeldeinformationen anmelden, bevor er alle Aufrufe der Graph-API ausführen kann.
 * Für automatisierte, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer **Anwendungs-ID** , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
 
-In diesem Artikel wird erläutert, wie Sie den automatisierten Anwendungsfall durchführen. Wir erstellen zu Demozwecken das .NET 4.5-Element `B2CGraphClient` , das Benutzervorgänge zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD) ausführt. Der Client verfügt über eine Windows-Befehlszeilenschnittstelle, über die Sie verschiedene Methoden aufrufen können. Der Code ist aber so geschrieben, dass er sich auf nicht interaktive, automatisierte Weise verhält.
+In diesem Artikel wird erläutert, wie Sie den automatisierten Anwendungsfall durchführen. Sie erstellen das .NET 4.5-Element `B2CGraphClient`, das Benutzervorgänge zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD) ausführt. Der Client verfügt über eine Windows-Befehlszeilenschnittstelle, über die Sie verschiedene Methoden aufrufen können. Der Code ist aber so geschrieben, dass er sich auf nicht interaktive, automatisierte Weise verhält.
 
 ## <a name="get-an-azure-ad-b2c-tenant"></a>Erhalten eines Azure AD-B2C-Mandanten
-Bevor Sie Anwendungen oder Benutzer erstellen und mit Azure AD interagieren können, benötigen Sie einen Azure AD B2C-Mandanten und ein globales Administratorkonto in diesem Mandanten. Falls Sie noch keinen Mandanten besitzen, führen Sie die [ersten Schritte mit Azure AD B2C](active-directory-b2c-get-started.md)aus.
+Damit Sie Anwendungen oder Benutzer erstellen können, benötigen Sie einen Azure AD B2C-Mandanten. Falls Sie noch keinen Mandanten besitzen, führen Sie die [ersten Schritte mit Azure AD B2C](active-directory-b2c-get-started.md)aus.
 
 ## <a name="register-your-application-in-your-tenant"></a>Registrieren Ihrer Anwendung in Ihrem Mandanten
 Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung über das [Azure-Portal](https://portal.azure.com) registrieren.
 
 > [!IMPORTANT]
-> Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine dedizierte Anwendung über das generische Menü *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Menü *Anwendungen* in Azure AD B2C. Sie können Ihre bereits vorhandenen B2C-Anwendungen, die Sie im Menü *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
+> Um die Graph-API mit dem B2C-Mandanten zu verwenden, müssen Sie eine Anwendung mit dem Dienst *App-Registrierungen* im Azure-Portal registrieren, **NICHT** über das Menü *Anwendungen* in Azure AD B2C. Anhand der folgenden Anweisungen gelangen Sie zum entsprechenden Menü. Sie können vorhandene B2C-Anwendungen, die Sie im Menü *Anwendungen* von Azure AD B2C registriert haben, nicht wiederverwenden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie Ihren Azure AD B2C-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite Ihr Konto auswählen.
@@ -47,7 +48,8 @@ Nachdem Sie über einen B2C-Mandanten verfügen, müssen Sie Ihre Anwendung übe
     1. Wählen Sie **Web-App/API** als Anwendungstyp aus.    
     2. Geben Sie eine **beliebige Anmelde-URL** an (z.B. https://B2CGraphAPI), da dies für dieses Beispiel nicht relevant ist).  
 5. Die Anwendung wird jetzt in der Liste der Anwendungen angezeigt. Klicken Sie darauf, um die **Anwendungs-ID** (auch als Client-ID bezeichnet) abzurufen. Kopieren Sie sie, da Sie sie in einem späteren Abschnitt benötigen.
-6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**, und fügen Sie einen neuen Schlüssel hinzu (auch als Clientgeheimnis bezeichnet). Kopieren Sie ihn ebenfalls für die Verwendung in einem späteren Abschnitt.
+6. Klicken Sie im Menü „Einstellungen“ auf **Schlüssel**.
+7. Geben Sie im Abschnitt **Kennwörter** die Schlüsselbeschreibung ein, und wählen Sie eine Dauer aus. Klicken Sie dann auf **Speichern**. Kopieren Sie den Schlüsselwert (auch als geheimer Clientschlüssel bezeichnet) für die Verwendung in einem späteren Abschnitt.
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>Konfigurieren der Berechtigungen zum Erstellen, Lesen und Aktualisieren für Ihre Anwendung
 Nun müssen Sie Ihre Anwendung so konfigurieren, dass sie alle erforderlichen Berechtigungen zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzern erhält.

@@ -4,14 +4,15 @@ description: Bietet eine Übersicht über die Collectorappliance und deren Konfi
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/23/2017
+ms.date: 05/03/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 059f577c138847af04e92ce9ab12a8de88251c73
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 99f34bce942626cd931c9270192766cc76105f5b
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777830"
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -89,7 +90,7 @@ Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzust
 
 Der Azure Migrate-Collectordienst muss auf dem Computer ausgeführt werden. Dieser Dienst wird beim Hochfahren des Computers automatisch gestartet. Wenn der Dienst nicht ausgeführt wird, können Sie den Dienst *Azure Migrate-Collector* über die Systemsteuerung starten. Der Collectordienst ist dafür zuständig, eine Verbindung mit dem vCenter-Server herzustellen, die Meta- und Leistungsdaten von Computern zu erfassen und diese an den Dienst zu senden.
 
-### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5 
+### <a name="vmware-powercli-65"></a>VMware PowerCLI 6.5
 
 Das Powershell-Modul „VMware PowerCLI“ muss installiert sein, damit der Collector mit dem vCenter-Server kommunizieren und Abfragen für die Details und Leistungsdaten von Computern durchführen kann. Das Powershell-Modul wird im Rahmen der Überprüfung der Voraussetzungen automatisch heruntergeladen und installiert. Der automatische Download erfordert einige URLs in der Whitelist. Andernfalls müssen Sie den Zugriff bereitstellen, indem Sie sie entweder auf die Whitelist setzen oder das Modul manuell installieren.
 
@@ -103,7 +104,7 @@ Installieren Sie das Modul mit den folgenden Schritten manuell:
 
 Der Collector muss eine Verbindung mit vCenter Server herstellen und in der Lage sein, eine Abfrage für die virtuellen Computer, deren Metadaten und Leistungsindikatoren durchzuführen. Diese Daten werden vom Projekt zum Berechnen einer Bewertung verwendet.
 
-1. Zur Verbindung mit vCenter Server kann ein schreibgeschütztes Konto mit Berechtigungen wie in der folgenden Tabelle verwendet werden, um die Ermittlung durchzuführen. 
+1. Zur Verbindung mit vCenter Server kann ein schreibgeschütztes Konto mit Berechtigungen wie in der folgenden Tabelle verwendet werden, um die Ermittlung durchzuführen.
 
     |Aufgabe  |Erforderliche Rolle/erforderliches Konto  |Berechtigungen  |
     |---------|---------|---------|
@@ -118,13 +119,13 @@ Der Collector muss eine Verbindung mit vCenter Server herstellen und in der Lage
 > Nur die vCenter Server-Versionen 5.5, 6.0 und 6.5 werden offiziell unterstützt.
 
 > [!IMPORTANT]
-> Wir empfehlen, für die Statistik die höchste allgemeine Ebene (3) festzulegen, damit alle Leistungsindikatoren ordnungsgemäß erfasst werden. Wenn Sie für vCenter eine niedrigere Ebene festgelegt haben, werden möglicherweise nur einige Leistungsindikatoren vollständig erfasst, und der Rest ist auf 0 festgelegt. Dadurch erhalten Sie in der Bewertung möglicherweise unvollständige Daten. 
+> Wir empfehlen, für die Statistik die höchste allgemeine Ebene (3) festzulegen, damit alle Leistungsindikatoren ordnungsgemäß erfasst werden. Wenn Sie für vCenter eine niedrigere Ebene festgelegt haben, werden möglicherweise nur einige Leistungsindikatoren vollständig erfasst, und der Rest ist auf 0 festgelegt. Dadurch erhalten Sie in der Bewertung möglicherweise unvollständige Daten.
 
 ### <a name="selecting-the-scope-for-discovery"></a>Auswählen des Bereichs für die Ermittlung
 
 Sobald die Verbindung mit vCenter besteht, können Sie einen Bereich für die Ermittlung auswählen. Durch die Auswahl eines Bereichs werden alle virtuellen Computer aus dem angegebenen vCenter-Inventurpfad ermittelt.
 
-1. Der Bereich kann entweder ein Rechenzentrum, ein Ordner oder ein ESXi-Host sein. 
+1. Der Bereich kann entweder ein Rechenzentrum, ein Ordner oder ein ESXi-Host sein.
 2. Sie können jeweils nur einen Bereich auswählen. Zum Auswählen weiterer virtueller Computer können eine Ermittlung abschließen und den Ermittlungsprozess mit einem neuen Bereich neu starten.
 3. Sie können nur einen Bereich mit *weniger als 1500 virtuellen Computern* auswählen.
 
@@ -141,15 +142,16 @@ Sobald die Ermittlung startet, werden die virtuellen vCenter-Computer ermittelt,
 
 ### <a name="what-data-is-collected"></a>Welche Daten werden gesammelt?
 
-Der Sammlungsauftrag ermittelt die folgenden statischen Metadaten zu den ausgewählten virtuellen Computern. 
+Der Sammlungsauftrag ermittelt die folgenden statischen Metadaten zu den ausgewählten virtuellen Computern.
 
 1. Anzeigename des virtuellen Computers (in vCenter)
 2. Inventurpfad des virtuellen Computers (Host/Ordner in vCenter)
 3. IP-Adresse
 4. MAC-Adresse
+5. Betriebssystem
 5. Anzahl der Kerne, Datenträger, NICs
-6. RAM, Datenträgergrößen
-7. Leistungsindikatoren und des virtuellen Computers, Datenträgers und Netzwerks wie in der folgenden Tabelle aufgeführt
+6. Arbeitsspeichergröße, Datenträgergrößen
+7. Und Leistungsindikatoren des virtuellen Computers, Datenträgers und Netzwerks wie in der folgenden Tabelle aufgeführt.
 
 Die folgende Tabelle enthält die erfassten Leistungsindikatoren sowie die Bewertungsergebnisse, die betroffen sind, wenn ein bestimmter Indikator nicht erfasst wird.
 
@@ -190,7 +192,7 @@ Sie können ein Upgrade für den Collector auf die neueste Version durchführen,
 2. Um sicherzustellen, dass der heruntergeladene Hotfix sicher ist, öffnen Sie das Befehlsfenster als Administrator, und führen Sie den folgenden Befehl zum Generieren des Hash für die ZIP-Datei aus. Der generierte Hash sollte mit dem für die betreffende Version genannten Hash übereinstimmen:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
+
     (Beispiel: „C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256“)
 3. Kopieren Sie die ZIP-Datei auf den virtuellen Azure Migrate-Collectorcomputer (Collectorappliance).
 4. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie „Alle extrahieren“ aus.

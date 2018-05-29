@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory B2C: Hinzufügen eines Azure AD-Anbieters mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien."
+title: 'Azure Active Directory B2C: Hinzufügen eines Azure AD-Anbieters mithilfe von benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
+description: Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: parakhj
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: f34326bcb8a7cbf5b5cf75e8f18f2843abc0b3ab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 40943c135746925929daf7ebae4714ef70eeda51
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32140222"
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Anmelden mithilfe von Azure AD-Konten
 
@@ -45,13 +46,13 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 >[!NOTE]
 > Wir verwenden „Contoso.com“ für den Azure AD-Mandanten der Organisation und „fabrikamb2c.onmicrosoft.com“ als den Azure AD B2C-Mandanten in den folgenden Anweisungen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-1. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten der Organisation aus, bei dem Sie Ihre Anwendung registrieren möchten (contoso.com).
-1. Wählen Sie im linken Navigationsbereich **Weitere Dienste** aus, und suchen Sie nach „App-Registrierungen“.
-1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
-1. Geben Sie einen Namen für Ihre Anwendung ein (z.B. `Azure AD B2C App`).
-1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c.onmicrosoft.com`) ersetzt wird:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie in der oberen Leiste Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Azure AD-Mandanten der Organisation aus, bei dem Sie Ihre Anwendung registrieren möchten (contoso.com).
+3. Wählen Sie im linken Navigationsbereich **Weitere Dienste** aus, und suchen Sie nach „App-Registrierungen“.
+4. Wählen Sie **Registrierung einer neuen Anwendung** aus.
+5. Geben Sie einen Namen für Ihre Anwendung ein (z.B. `Azure AD B2C App`).
+6. Wählen Sie **Web-App/API** als Anwendungstyp aus.
+7. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c.onmicrosoft.com`) ersetzt wird:
 
     >[!NOTE]
     >Der Wert für „yourtenant“ muss in der **Anmelde-URL** in Kleinbuchstaben angegeben werden.
@@ -60,10 +61,10 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Speichern Sie die Anwendungs-ID.
-1. Wählen Sie die neu erstellte Anwendung aus.
-1. Wählen Sie auf dem Blatt **Einstellungen** die Option **Schlüssel** aus.
-1. Erstellen Sie einen neuen Schlüssel, und speichern Sie ihn. Sie werden ihn in den Schritten im nächsten Abschnitt verwenden.
+8. Speichern Sie die Anwendungs-ID.
+9. Wählen Sie die neu erstellte Anwendung aus.
+10. Wählen Sie auf dem Blatt **Einstellungen** die Option **Schlüssel** aus.
+11. Geben Sie die Schlüsselbeschreibung ein, wählen Sie eine Dauer aus, und klicken Sie dann auf **Speichern**. Der Wert des Schlüssels wird angezeigt. Kopieren Sie ihn, Sie werden ihn in den Schritten im nächsten Abschnitt verwenden.
 
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Hinzufügen des Azure AD-Schlüssels zu Azure AD B2C
 

@@ -1,0 +1,144 @@
+---
+title: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Netzwerkrouting eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
+services: network-watcher
+documentationcenter: network-watcher
+author: jimdial
+manager: jeconnoc
+editor: ''
+tags: azure-resource-manager
+Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
+ms.assetid: ''
+ms.service: network-watcher
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: network-watcher
+ms.workload: infrastructure
+ms.date: 04/20/2018
+ms.author: jdial
+ms.custom: ''
+ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182170"
+---
+# <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell
+
+In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation für eine IP-Adresse und URL. Sie bestimmen die Ursache eines Kommunikationsfehlers, und wie Sie ihn beheben können.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des AzureRM PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+## <a name="create-a-vm"></a>Erstellen einer VM
+
+Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe für den virtuellen Computer erstellen. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+
+```azurepowershell-interactive
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+```
+
+Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die eingegebenen Werte werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
+
+```azurepowershell-interactive
+$vM = New-AzureRmVm `
+    -ResourceGroupName "myResourceGroup" `
+    -Name "myVm" `
+    -Location "East US"
+```
+
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von PowerShell eine Ausgabe zurückgegeben wurde.
+
+## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
+
+Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen Sie zuerst eine Network Watcher-Instanz in der Region aktivieren, in der sich der zu testende virtuelle Computer befindet. Danach können Sie die Kommunikation mit der „Nächster Hop“-Funktion von Network Watcher testen.
+
+## <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
+
+Wenn Sie bereits eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher), um die Komponente zur Netzwerküberwachung abzurufen. Im folgenden Beispiel wird eine vorhandene Komponente zur Netzwerküberwachung namens *NetworkWatcher_eastus* abgerufen, die sich in der Ressourcengruppe *NetworkWatcherRG* befindet:
+
+```azurepowershell-interactive
+$networkWatcher = Get-AzureRmNetworkWatcher `
+  -Name NetworkWatcher_eastus `
+  -ResourceGroupName NetworkWatcherRG
+```
+
+Wenn Sie noch keine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher), um eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ zu erstellen:
+
+```azurepowershell-interactive
+$networkWatcher = New-AzureRmNetworkWatcher `
+  -Name "NetworkWatcher_eastus" `
+  -ResourceGroupName "NetworkWatcherRG" `
+  -Location "East US"
+```
+
+### <a name="use-next-hop"></a>Verwenden der Funktion „Nächster Hop“
+
+Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinierte Routen erstellen, mit denen die Standardrouten außer Kraft gesetzt werden. In manchen Fällen können benutzerdefinierte Routen zu Fehlern bei der Kommunikation führen. Verwenden Sie zum Testen des Routings von einem virtuellen Computer den Befehl [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop), um den nächsten Routinghop zu bestimmen, wenn Datenverkehr für eine bestimmte Adresse bestimmt ist.
+
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit einer der IP-Adressen für „www.bing.com“:
+
+```azurepowershell-interactive
+Get-AzureRmNetworkWatcherNextHop `
+  -NetworkWatcher $networkWatcher `
+  -TargetVirtualMachineId $VM.Id `
+  -SourceIPAddress 192.168.1.4 `
+  -DestinationIPAddress 13.107.21.200
+```
+
+Nach wenigen Sekunden informiert Sie die Ausgabe darüber, dass **NextHopType** **Internet** und die **RouteTableId** **Systemroute** ist. Durch dieses Ergebnis wissen Sie, dass eine gültige Route zum Ziel besteht.
+
+Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
+
+```azurepowershell-interactive
+Get-AzureRmNetworkWatcherNextHop `
+  -NetworkWatcher $networkWatcher `
+  -TargetVirtualMachineId $VM.Id `
+  -SourceIPAddress 192.168.1.4 `
+  -DestinationIPAddress 172.31.0.100
+```
+
+Die zurückgegebene Ausgabe informiert Sie darüber, dass **Keiner** **NextHopType** ist und die **RouteTableId** ebenfalls **Systemroute** lautet. Durch dieses Ergebnis wissen Sie, dass zwar eine gültige Systemroute zum Ziel besteht, aber kein nächster Hop zum Weiterleiten des Datenverkehrs an das Ziel vorhanden ist.
+
+## <a name="view-details-of-a-route"></a>Anzeigen von Details einer Route
+
+Zur weiteren Analyse des Routings überprüfen Sie die effektiven Routen für die Netzwerkschnittstelle mit dem Befehl [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable):
+
+```azurepowershell-interactive
+Get-AzureRmEffectiveRouteTable `
+  -NetworkInterfaceName myVm `
+  -ResourceGroupName myResourceGroup |
+  Format-table
+```
+
+Eine Ausgabe, die den folgenden Text enthält, wird zurückgegeben:
+
+```powershell
+Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
+---- -----  ------  -------------           ----------- ----------------
+     Active Default {192.168.0.0/16}        VnetLocal   {}              
+     Active Default {0.0.0.0/0}             Internet    {}              
+     Active Default {10.0.0.0/8}            None        {}              
+     Active Default {100.64.0.0/10}         None        {}              
+     Active Default {172.16.0.0/12}         None        {}              
+```
+
+Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem **AaddressPrefix** **0.0.0.0/0** den gesamten Datenverkehr, der nicht für Adressen in den Adresspräfixen anderer Routen bestimmt ist, mit einem nächsten Hop von **Internet** weiter. Wie Sie in der Ausgabe auch sehen können, ist zwar eine Standardroute zum Präfix 172.16.0.0/12 vorhanden, die die Adresse 172.31.0.100 enthält, aber **nextHopType** lautet **Keiner**. Azure erstellt eine Standardroute zu 172.16.0.0/12, gibt aber einen Typ des nächsten Hops erst dann an, wenn es einen Grund dafür gibt. Wenn Sie z.B. den Adressbereich 172.16.0.0/12 dem Adressraum des virtuellen Netzwerks hinzufügen, ändert Azure **nextHopType** für die Route in **Virtuelles Netzwerk**. Bei einer Überprüfung würde dann **Virtuelles Netzwerk** als **nextHopType** angezeigt.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen:
+
+```azurepowershell-interactive
+Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Artikel haben Sie einen virtuellen Computer erstellt und das Netzwerkrouting vom virtuellen Computer diagnostiziert. Sie haben erfahren, dass Azure mehrere Standardrouten erstellt, und haben das Routing an zwei verschiedene Ziele getestet. Erfahren Sie mehr über das [Routing in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen benutzerdefinierter Routen](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+
+Für ausgehende Verbindungen virtueller Computer können Sie auch die Latenz sowie den zulässigen und verweigerten Netzwerkdatenverkehr zwischen dem virtuellen Computer und einem Endpunkt mithilfe der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-powershell.md) von Network Watcher bestimmen. Sie können die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt, z.B. einer IP-Adresse oder URL, mithilfe der Verbindungsmonitorfunktion von Network Watcher für einen Zeitraum überwachen. Weitere Informationen finden Sie unter [Überwachen einer Netzwerkverbindung](connection-monitor.md).

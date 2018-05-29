@@ -3,7 +3,7 @@ title: Microsoft Azure-Datenverschlüsselung ruhender Daten | Microsoft-Dokument
 description: In diesem Artikel erhalten Sie einen Überblick über die Datenverschlüsselung ruhender Daten von Microsoft Azure, die Hauptfunktionen und allgemeine Überlegungen.
 services: security
 documentationcenter: na
-author: YuriDio
+author: barclayn
 manager: mbaldwin
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: yurid
-ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.date: 04/26/2018
+ms.author: barclayn
+ms.openlocfilehash: 54dc97c0d20f90d3b57b715fb21714a11e5a1525
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312575"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 Es gibt verschiedene Tools in Microsoft Azure, um Daten den Sicherheits- und Konformitätsanforderungen Ihres Unternehmens entsprechend zu schützen. In diesem Artikel geht es um folgende Themen:
@@ -236,17 +237,17 @@ Jeder Kunde, der Funktionen von Azure-IaaS verwendet, kann die Verschlüsselung 
 
 #### <a name="azure-storage"></a>Azure-Speicher
 
-Azure Blob und Azure File unterstützen die Verschlüsselung ruhender Daten für Szenarios mit serverseitiger Verschlüsselung sowie für von Kunden verschlüsselte Daten (clientseitige Verschlüsselung).
+Alle Azure Storage-Dienste (Blob Storage, Queue Storage, Table Storage und Azure Files) unterstützen die serverseitige Verschlüsselung im Ruhezustand. Manche Dienste unterstützen auch von Kunden verwaltete Schlüssel und clientseitige Verschlüsselung.  
 
-- Serverseitig: Kunden, die Azure Blob Storage verwenden, können die Verschlüsselung ruhender Daten in jedem Azure-Speicherressourcenkonto aktivieren. Sobald sie aktiviert wurde, wird die serverseitige Verschlüsselung auf transparente Weise auf der Anwendung durchgeführt. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption).
-- Clientseitig: Die clientseitige Verschlüsselung von Azure-Blobs wird unterstützt. Beim Verwenden der clientseitigen Verschlüsselung verschlüsseln Kunden die Daten und laden die Daten als verschlüsselte Blobs hoch. Der Kunde ist für die Schlüsselverwaltung verantwortlich. Weitere Informationen finden Sie unter [Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage (Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage)](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
+- Serverseitig: Alle Azure Storage-Dienste ermöglichen standardmäßig die serverseitige Verschlüsselung mithilfe von dienstverwalteten Schlüsseln, was für die Anwendung transparent ist. Weitere Informationen finden Sie unter [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/storage-service-encryption). Azure Blob Storage und Azure Files unterstützen auch von Kunden verwaltete Schlüssel in Azure Key Vault. Weitere Informationen finden Sie unter [Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption-customer-managed-keys).
+- Clientseitig: Azure-Blobs, -Tabellen und -Warteschlangen unterstützen die clientseitige Verschlüsselung. Beim Verwenden der clientseitigen Verschlüsselung verschlüsseln Kunden die Daten und laden die Daten als verschlüsselte Blobs hoch. Der Kunde ist für die Schlüsselverwaltung verantwortlich. Weitere Informationen finden Sie unter [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-client-side-encryption).
 
 
 #### <a name="sql-azure"></a>SQL Azure
 
 SQL Azure unterstützt aktuell die Verschlüsselung ruhender Daten für von Microsoft verwaltete serverseitige und clientseitige Verschlüsselungsszenarios.
 
-Die Unterstützung für die Serververschlüsselung wird aktuell mit der SQL-Funktion „Transparent Data Encryption“ bereitgestellt. Sobald ein Kunde von SQL Azure TDE aktiviert, werden Schlüssel automatisch für ihn erstellt und verwaltet. Die Verschlüsselung ruhender Daten kann auf Datenbank- und Serverebene aktiviert werden. Ab Juni 2017 ist [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) standardmäßig in neu erstellten Datenbanken aktiviert.
+Die Unterstützung für die Serververschlüsselung wird aktuell mit dem SQL-Feature „Transparent Data Encryption“ bereitgestellt. Sobald ein Kunde von SQL Azure TDE aktiviert, werden Schlüssel automatisch für ihn erstellt und verwaltet. Die Verschlüsselung ruhender Daten kann auf Datenbank- und Serverebene aktiviert werden. Ab Juni 2017 ist [Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/bb934049.aspx) standardmäßig in neu erstellten Datenbanken aktiviert.
 
 Die clientseitige Verschlüsselung von Daten von SQL Azure wird durch die Funktion [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) unterstützt. Always Encrypted verwendet einen Schlüssel, der vom Client erstellt und gespeichert wird. Kunden können den Masterschlüssel in einem Windows-Zertifikatspeicher, Azure Key Vault oder einem lokalen Hardwaresicherheitsmodul speichern. Mit SQL Server Management Studio können SQL-Benutzer auswählen, welchen Schlüssel sie zum Verschlüsseln welcher Spalte verwenden möchten.
 
@@ -257,13 +258,13 @@ Die clientseitige Verschlüsselung von Daten von SQL Azure wird durch die Funkti
 | **Speicher und Datenbanken**            |                |                     |                              |                              |        |
 | Datenträger (IaaS)                      |                | -                   | Ja                          | Ja*                         | -      |
 | SQL Server (IaaS)                |                | Ja                 | Ja                          | Ja                          | Ja    |
-| SQL Azure (PaaS)                 |                | Ja                 | Vorschau                      | -                            | Ja    |
-| Azure Storage (Block-/Seitenblobs) |                | Ja                 | Vorschau                      | -                            | Ja    |
-| Azure Storage (Dateien)            |                | Ja                 | -                            | -                            | -      |
-| Azure Storage (Tabellen, Warteschlangen)   |                | -                   | -                            | -                            | Ja    |
+| SQL Azure (PaaS)                 |                | Ja                 | Ja                          | -                            | Ja    |
+| Azure Storage (Block-/Seitenblobs) |                | Ja                 | Ja                          | -                            | Ja    |
+| Azure Storage (Dateien)            |                | Ja                 | Ja                          | -                            | -      |
+| Azure Storage (Tabellen, Warteschlangen)   |                | Ja                 | -                            | -                            | Ja    |
 | Cosmos DB (Document DB)          |                | Ja                 | -                            | -                            | -      |
 | StorSimple                       |                | Ja                 | -                            | -                            | Ja    |
-| Sicherung                           |                | -                   | -                            | -                            | Ja    |
+| Backup                           |                | -                   | -                            | -                            | Ja    |
 | **Informationen und Analyse**       |                |                     |                              |                              |        |
 | Azure Data Factory               |                | Ja                 | -                            | -                            | -      |
 | Azure Machine Learning           |                | -                   | Vorschau                      | -                            | -      |
@@ -275,7 +276,7 @@ Die clientseitige Verschlüsselung von Daten von SQL Azure wird durch die Funkti
 | Power BI                         |                | Ja                 | -                            | -                            | -      |
 | **IoT-Dienste**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | Ja    |
-| SERVICE BUS                      |                | Ja (Premium-Tarif)              | -                            | -                            | Ja    |
+| Service Bus                      |                | Ja              | -                            | -                            | Ja    |
 | Event Hubs                       |                | Ja             | -                            | -                            | -      |
 
 

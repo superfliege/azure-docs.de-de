@@ -1,18 +1,19 @@
 ---
-title: "Bereitstellen von Azure Batch-Pools über benutzerdefinierte Images | Microsoft-Dokumentation"
-description: "Sie können einen Batch-Pool über ein benutzerdefiniertes Image erstellen, um Serverknoten bereitzustellen, die die Software und die Daten enthalten, die Sie für Ihre Anwendung benötigen. Benutzerdefinierte Images sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen."
+title: Bereitstellen von Azure Batch-Pools über benutzerdefinierte Images | Microsoft-Dokumentation
+description: Sie können einen Batch-Pool über ein benutzerdefiniertes Image erstellen, um Serverknoten bereitzustellen, die die Software und die Daten enthalten, die Sie für Ihre Anwendung benötigen. Benutzerdefinierte Images sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: 63a567e9fdfef8dfceb275953cc0ac606355ea30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 78bc50a1189d8f42281f81643a5e907d94480082
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158611"
 ---
 # <a name="use-a-managed-custom-image-to-create-a-pool-of-virtual-machines"></a>Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools 
 
@@ -40,7 +41,7 @@ Das Verwenden eines benutzerdefinierten Images, das für Ihr Szenario konfigurie
 
     
 ## <a name="prepare-a-custom-image"></a>Vorbereiten eines benutzerdefinierten Images
-Sie können ein verwaltetes Image über eine virtuelle Festplatte, über einen Azure-VM mit verwalteten Datenträgern oder über eine VM-Momentaufnahme vorbereiten. 
+Sie können ein verwaltetes Image über eine virtuelle Festplatte, über einen Azure-VM mit verwalteten Datenträgern oder über eine VM-Momentaufnahme vorbereiten. Für Batch wird empfohlen, ein verwaltetes Image von einem virtuellen Computer mit verwalteten Datenträgern oder einer VM-Momentaufnahme zu erstellen. Das verwaltete Image und die zugrunde liegende Ressource sollten vorhanden sein, damit die Pools zentral hochskaliert und nach dem Löschen des Pools entfernt werden können. 
 
 Beachten Sie bei der Vorbereitung Ihres Images die folgenden Punkte:
 

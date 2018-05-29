@@ -9,11 +9,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 3367ecc48ee8da7aaf657b5278acb19df5a96e75
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: d534e138af7a22b32fbf64e2200016091beac62f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194970"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Gewusst wie: Verbessern der Leistung von SQL-Datenbankanwendungen mithilfe von Batchverarbeitung
 Mit Batchvorgängen für Azure SQL-Datenbank können Sie die Leistung und Skalierbarkeit Ihrer Anwendungen erheblich verbessern. Zur Veranschaulichung der Vorteile werden im ersten Teil dieses Artikels zunächst beispielhaft einige Testergebnisse behandelt, die sequenzielle und batchbasierte SQL-Datenbankanforderungen miteinander vergleichen. Der Rest des Artikels geht auf Techniken, Szenarien und Überlegungen ein, die Sie bei der erfolgreichen Verwendung der Batchverarbeitung in Ihrer Azure-Anwendung unterstützen.
@@ -32,9 +33,9 @@ Die Verwendung von SQL-Datenbank hat unter anderem den Vorteil, dass Sie die Ser
 Im ersten Teil dieses Artikels werden verschiedene Batchverarbeitungstechniken für .NET-Anwendungen untersucht, die SQL-Datenbank verwenden. In den letzten beiden Abschnitten werden Batchverarbeitungsrichtlinien und -szenarien behandelt.
 
 ## <a name="batching-strategies"></a>Batchverarbeitungsstrategien
-### <a name="note-about-timing-results-in-this-topic"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Themas
+### <a name="note-about-timing-results-in-this-article"></a>Hinweis zu den Zeitangaben in den Ergebnissen dieses Artikels
 > [!NOTE]
-> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [Dienstebenen](sql-database-service-tiers.md)erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
+> Die Ergebnisse sind keine Benchmarks, sondern veranschaulichen die **relative Leistung**. Die Zeitangaben basieren auf einem Durchschnittswert von mindestens zehn Testläufen. Bei den Vorgängen handelt es sich um Einfügungen in eine leere Tabelle. Die Testergebnisse wurden vor V12 ermittelt und entsprechen nicht unbedingt dem Durchsatz, der mit einer V12-Datenbank und den neuen [DTU-Dienstebenen](sql-database-service-tiers-dtu.md) oder [Dienstebenen virtueller Kerne](sql-database-service-tiers-vcore.md) erreicht wird. Der relative Nutzen der Batchverarbeitungstechnik dürfte jedoch ähnlich ausfallen.
 > 
 > 
 
@@ -209,7 +210,7 @@ SQL-Massenkopieren ist eine weitere Möglichkeit, um große Datenmengen in eine 
         }
     }
 
-In bestimmten Fällen ist Massenkopieren den Tabellenwertparametern vorzuziehen. Weitere Informationen finden Sie im Thema [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx)in der Vergleichstabelle für Tabellenwertparameter und BULK INSERT-Vorgänge.
+In bestimmten Fällen ist Massenkopieren den Tabellenwertparametern vorzuziehen. Weitere Informationen finden Sie im Artikel [Tabellenwertparameter](https://msdn.microsoft.com/library/bb510489.aspx) in der Vergleichstabelle für Tabellenwertparameter und BULK INSERT-Vorgänge.
 
 Die folgenden Ad-hoc-Testergebnisse zeigen die Leistung der Batchverarbeitung mit **SqlBulkCopy** (in Millisekunden):
 
@@ -309,7 +310,7 @@ In unseren Tests hatte die Aufspaltung großer Batches in kleinere Blöcke in de
 > 
 > 
 
-Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen Tests (hier nicht gezeigt) wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem der Batch in zwei Batches mit jeweils 5000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
+Wie Sie sehen, erzielen Sie bei 1000 Zeilen ein optimales Ergebnis, wenn Sie alle auf einmal übermitteln. In anderen (hier nicht gezeigten) Tests wurde bei einem Batch mit 10.000 Zeilen ein geringer Leistungszuwachs erzielt, indem der Batch in zwei Batches mit jeweils 5.000 Zeilen aufgeteilt wurde. Das Tabellenschema für diese Tests ist verhältnismäßig einfach. Führen Sie daher am besten Tests mit Ihren spezifischen Daten und Batchgrößen durch, um diese Ergebnisse zu überprüfen.
 
 Darüber hinaus ist Folgendes zu berücksichtigen: Wenn der Batch insgesamt zu groß wird, reagiert die SQL-Datenbank möglicherweise mit einer Drosselung und verweigert den Commit des Batchs. Testen Sie Ihr jeweiliges Szenario, um die ideale Batchgröße zu ermitteln und optimale Ergebnisse zu erzielen. Ermöglichen Sie die Konfiguration der Batchgröße zur Laufzeit, um sie auf der Grundlage von Leistung oder Fehlern schnell anpassen zu können.
 
@@ -592,7 +593,7 @@ Erstellen Sie als Nächstes eine gespeicherte Prozedur, die mithilfe der MERGE-A
 Weitere Informationen finden Sie in der Dokumentation und in den Beispielen für die MERGE-Anweisung. Die gleiche Aufgabe könnte zwar auch durch Aufrufen einer mehrstufigen gespeicherten Prozedur mit separaten INSERT- und UPDATE-Vorgängen durchgeführt werden, die MERGE-Anweisung ist jedoch effizienter. Datenbankcode kann auch Transact-SQL-Aufrufe erstellen, die die MERGE-Anweisung direkt (also ohne zwei Datenbankaufrufe für INSERT und UPDATE) verwenden.
 
 ## <a name="recommendation-summary"></a>Zusammenfassung
-Die folgende Liste enthält eine Zusammenfassung der in diesem Thema behandelten Empfehlungen für die Batchverarbeitung:
+Die folgende Liste enthält eine Zusammenfassung der in diesem Artikel behandelten Empfehlungen für die Batchverarbeitung:
 
 * Verwenden Sie Pufferung und Batchverarbeitung, um die Leistung und Skalierbarkeit von SQL-Datenbankanwendungen zu erhöhen.
 * Machen Sie sich mit den Kompromissen zwischen Batchverarbeitung/Pufferung und Stabilität vertraut. Bei einem Rollenausfall überwiegen unter Umständen die Nachteile, die sich durch den Verlust eines nicht verarbeiteten Batchs mit unternehmenskritischen Daten ergeben, die durch die Batchverarbeitung bedingten Leistungsvorteile.

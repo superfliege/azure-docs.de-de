@@ -14,14 +14,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 04/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159867"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -39,6 +40,217 @@ Es werden fortlaufend Verbesserungen an Azure AD vorgenommen. Damit Sie bezügli
 -   Pläne für Änderungen
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
+
+
+## <a name="april-2018"></a>April 2018
+ 
+
+
+### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C-Zugriffstoken jetzt allgemein verfügbar
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
+**Produktfunktion**: B2B/B2C
+ 
+
+Sie können nun mit Zugriffstoken auf Web-APIs zugreifen, die von Azure AD B2C gesichert werden. Das Feature wird von der Public Preview in die allgemeine Verfügbarkeit verlegt. Die Benutzeroberfläche zum Konfigurieren von Azure AD B2C-Anwendungen und Web-APIs wurde verbessert, und andere kleinere Verbesserungen wurden vorgenommen.
+ 
+Weitere Informationen finden Sie unter [Azure AD B2C: Anfordern von Zugriffstoken](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-access-tokens).
+
+
+---
+ 
+
+### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>Testen der SSO-Konfiguration für SAML-basierte Anwendungen
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
+ 
+
+Beim Konfigurieren von SAML-basierten SSO-Anwendungen können Sie die Integration auf der Konfigurationsseite testen. Wenn während des Anmeldens ein Fehler auftritt, können Sie den Fehler in der Testbenutzeroberfläche bereitstellen, und Azure AD bietet Ihnen Lösungsschritte für das spezifische Problem an.
+
+Weitere Informationen finden Sie unter 
+
+- [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps)
+- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+
+---
+ 
+### <a name="azure-ad-terms-of-use-now-has-per-user-reporting"></a>Azure AD-Nutzungsbedingungen jetzt mit benutzerbasierter Berichterstellung
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Nutzungsbedingungen  
+**Produktfunktion:** Konformität
+ 
+
+Administratoren können jetzt bestimmte Nutzungsbedingungen auswählen und alle Benutzer anzeigen, die diesen Nutzungsbedingungen zugestimmt haben, sowie Datum/Uhrzeit der Zustimmung.
+
+
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+ 
+
+---
+ 
+### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: AD FS-Extranetsperrschutz für riskante IP-Adressen 
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** Sonstige  
+**Produktfunktion:** Überwachung und Berichterstellung
+ 
+
+Connect Health unterstützt nun die Möglichkeit, IP-Adressen zu erkennen, die einen Schwellenwert stündlicher oder täglicher fehlerhafter Benutzername/Kennwort-Anmeldungen überschreiten. Dieses Feature bietet folgende Funktionen:
+
+- Umfassender Bericht, der IP-Adressen und die Anzahl der fehlerhaften stündlichen/täglichen Anmeldungen auf der Basis eines anpassbaren Schwellenwerts anzeigt.
+- E-Mail-basierte Warnungen, die anzeigen, wenn eine bestimmte IP-Adresse den Schwellenwert fehlerhafter stündlicher/täglicher Benutzername/Kennwort-Anmeldungen überschritten hat.
+- Eine Downloadoption für eine detaillierte Datenanalyse
+
+
+Weitere Informationen finden Sie unter [Bericht über riskante IP-Adressen (Public Preview)](https://aka.ms/aadchriskyip).
+
+ 
+
+---
+ 
+
+### <a name="easy-app-config-with-metadata-file-or-url"></a>Einfache App-Konfiguration mit Metadatendatei oder URL
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
+ 
+
+Auf der Enterprise-Anwendungsseite können Administratoren eine SAML-Metadatendatei zum Konfigurieren von SAML-basiertem Anmelden für AAD-Katalog- und Nicht-Katalog-Anwendung hochladen.
+
+Darüber hinaus können Sie die Azure AD-Anwendungsverbundmetadaten-URL zum Konfigurieren von einmaligem Anmelden mit der entsprechenden Anwendung verwenden.
+
+Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](https://docs.microsoft.com/azure/active-directory/active-directory-saas-custom-apps).
+ 
+
+---
+ 
+
+### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD-Nutzungsbedingungen jetzt allgemein verfügbar
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Nutzungsbedingungen  
+**Produktfunktion:** Konformität
+ 
+
+Azure AD-Nutzungsbedingungen wurden von der Public Preview in die allgemeine Verfügbarkeit verlegt.
+
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+
+ 
+
+---
+ 
+
+### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** B2B  
+**Produktfunktion**: B2B/B2C
+ 
+
+Sie können jetzt angeben, für welche Partnerorganisationen Sie die Azure AD B2B-Zusammenarbeit und Freigaben einrichten möchten. Zu diesem Zweck können Sie wahlweise eine Liste der spezifischen Zulassungs- oder Verweigerungsdomänen erstellen. Wenn eine Domäne mit diesen Funktionen blockiert wird, können Mitarbeiter nicht mehr Einladungen an Personen in dieser Domäne senden.
+
+So können Sie leichter den Zugriff auf Ihre Ressourcen steuern und dabei die Benutzerfreundlichkeit für berechtigte Benutzer garantieren.
+
+Dieses B2B-Zusammenarbeitsfeature steht allen Kunden von Azure Active Directory zur Verfügung, und in Verbindung mit Azure AD Premium-Features wie bedingtem Zugriff und Identitätsschutz können Sie damit differenzierter steuern, wann und wie sich externe Geschäftsbenutzer anmelden und Zugriff erhalten.
+
+Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-allow-deny-list).
+
+ 
+
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+
+Im April 2018 haben wir die folgenden 13 neuen Apps mit Verbundunterstützung in unseren App-Katalog aufgenommen:
+
+
+
+Criterion HCM, [FiscalNote](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fiscalnote-tutorial), [Secret Server (lokal)](https://docs.microsoft.com/azure/active-directory/active-directory-saas-secretserver-on-premises-tutorial), [Dynamic Signal](https://docs.microsoft.com/azure/active-directory/active-directory-saas-dynamicsignal-tutorial), [mindWireless](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mindwireless-tutorial), [OrgChart Now](https://docs.microsoft.com/azure/active-directory/active-directory-saas-orgchartnow-tutorial), [Ziflow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ziflow-tutorial), [AppNeta Performance Monitor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-appneta-tutorial), [Elium](https://docs.microsoft.com/azure/active-directory/active-directory-saas-elium-tutorial) , [Fluxx Labs](https://docs.microsoft.com/azure/active-directory/active-directory-saas-fluxxlabs-tutorial), [Cisco Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ciscocloud-tutorial), Shelf, [SafetyNet](https://docs.microsoft.com/azure/active-directory/active-directory-saas-safetynet-tutorial)
+
+
+
+ Sie finden die Liste der verfügbaren Tutorials hier: [https://aka.ms/appstutorial](https://aka.ms/appstutorial).
+
+Weitere Informationen finden Sie unter [Auflisten Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+
+
+ 
+
+---
+ 
+### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>Gewähren des Zugriffs auf Ihre lokalen Anwendungen für B2B-Benutzer in Azure AD (Public Preview)
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** B2B  
+**Produktfunktion**: B2B/B2C
+ 
+
+Wenn Ihr Unternehmen Funktionen der Azure Active Directory B2B-Zusammenarbeit (Azure AD) verwendet, um Gastbenutzer aus Partnerunternehmen zu Ihrem Azure AD einzuladen, können Sie für diese B2B-Benutzer jetzt Zugriff auf lokale Apps bereitstellen. Diese lokalen Apps können die SAML-basierte Authentifizierung oder die integrierte Windows-Authentifizierung (Integrated Windows Authentication, IWA) mit eingeschränkter Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) verwenden.
+
+Weitere Informationen finden Sie unter [Gewähren des Zugriffs auf Ihre lokalen Anwendungen für B2B-Benutzer in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-hybrid-cloud-to-on-premises).
+ 
+
+---
+ 
+### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Tutorials zur SSO-Integration im Azure Marketplace verfügbar
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie:** Sonstige  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+
+Wenn eine im [Azure-Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1) aufgelistete Anwendung einmaliges Anmelden auf SAML-Basis unterstützt, erhalten Sie beim Klicken auf **Jetzt anfordern** das der Anwendung zugeordnete Integrationstutorial. 
+
+
+---
+
+### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>Verbesserte Leistung bei der automatischen Azure AD-Benutzerbereitstellung in SaaS-Anwendungen
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+
+Bisher konnten Kunden, die die Connectors für Azure Active Directory-Benutzerbereitstellung für SaaS-Anwendungen nutzten (z.B. Salesforce, ServiceNow und Box) eine sehr geringe Leistung feststellen, wenn ihre Azure AD-Mandanten über 100.000 kombinierte Benutzer und Gruppen enthielten, und sie legten mit Benutzer- und Gruppenzuweisungen fest, welche Benutzer bereitgestellt werden sollten.
+
+Am 2. April wurden sehr bedeutende Verbesserungen der Leistung des Azure AD-Bereitstellungsdiensts wirksam, die die erforderliche Zeitspanne zur Ausführung der Erstsynchronisierung von Azure Active Directory mit Ziel-SaaS-Anwendungen erheblich reduzieren.
+
+
+In der Folge können viele Kunden, bei denen die Erstsynchronisierungen mit Apps mehrere Tage dauerten oder niemals abgeschlossen wurden, den Vorgang jetzt innerhalb Minuten oder Stunden abschließen.
+
+Weitere Informationen finden Sie unter [Vorgänge während der Bereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning).
+
+---
+ 
+
+### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>Self-Service-Kennwortzurücksetzung über Windows 10-Sperrbildschirm für hybride Computer mit Azure AD-Einbindung
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Self-Service-Kennwortzurücksetzung  
+**Produktfunktion**: Benutzerauthentifizierung
+ 
+
+Das Windows 10-SSPR-Feature wurde aktualisiert, sodass es die Unterstützung für hybride Computer mit Azure AD-Einbindung einschließt. Dieses in Windows 10 RS4 verfügbare Feature ermöglicht Benutzern, ihre Kennwörter vom Sperrbildschirm eines Windows 10-Computers aus zurückzusetzen. Benutzer, die für die Self-Service-Kennwortzurücksetzung zugelassen und registriert sind, können dieses Feature nutzen.
+
+Weitere Informationen finden Sie unter [Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows).
+ 
+
+---
+
+
 
 ## <a name="march-2018"></a>März 2018
  
@@ -91,7 +303,7 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit
 
 Weitere Informationen hierzu finden Sie in unserem [Blogbeitrag](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/).
 
-Weitere Informationen:
+Weitere Informationen finden Sie unter 
 
 - [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
@@ -206,7 +418,7 @@ Weitere Informationen finden Sie unter [Optionale Ansprüche in Azure AD](https:
  
 Die Azure AD-Dokumentation wurde um Unterstützung für PKCE ergänzt, das eine sicherere Kommunikation beim Gewährungsflow des OAuth 2.0-Autorisierungscodes ermöglicht.  An v1.0- und v2.0-Endpunkten werden sowohl S256- als auch Klartext-Abfragecodes unterstützt. 
 
-Weitere Informationen finden Sie unter, Anfordern eines Autorisierungscodes[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+Weitere Informationen finden Sie unter „Anfordern eines Autorisierungscodes“[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
 
  
 ---
@@ -362,7 +574,7 @@ Weitere Informationen finden Sie unter [Anpassen ausgestellter Ansprüche im SAM
 
 Um die Anwendungsbereitstellung zu vereinfachen und Ihren Verwaltungsaufwand zu verringern, unterstützen wir nun die Möglichkeit, Anwendungen mithilfe von Platzhaltern zu veröffentlichen. Um eine Platzhalteranwendung zu veröffentlichen, können Sie dem Standardablauf bei der Veröffentlichung von Anwendungen folgen, aber einen Platzhalter in den internen und externen URLs verwenden.
 
-Weitere Informationen finden Sie unter [Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)
+Weitere Informationen finden Sie unter [Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-wildcard)
 
  
 
@@ -521,7 +733,7 @@ Weitere Informationen finden Sie unter
 
 **Typ:** Geänderte Funktion  
 **Dienstkategorie**: Nutzungsbedingungen  
-**Produktfunktion**: Governance
+**Produktfunktion:** Konformität
  
 
 Wenn die Nutzungsbedingungen angezeigt werden, können Sie nun auf Folgendes klicken: **Probleme mit der Anzeige? Klicken Sie hier**. Durch Klicken auf diesen Link werden die Nutzungsbedingungen nativ auf Ihrem Gerät geöffnet. Unabhängig vom Schriftgrad des Dokuments oder der Bildschirmgröße des Geräts können Sie das Dokument bei Bedarf zoomen und lesen. 
@@ -594,7 +806,7 @@ Die Browsererweiterung „Meine Apps“ ist jetzt über ein nützliches Tool ver
 - Die Möglichkeit, sich direkt bei Apps per Kennwort-SSO über die Anmeldeseite der App anzumelden
 - Starten einer App mithilfe der Schnellsuchfunktion
 - Verknüpfungen für zuletzt verwendete Apps über die Erweiterung
-- Die Erweiterung ist für Microsoft Edge, Chrome und Firefox verfügbar.
+- Die Erweiterung ist für Edge, Chrome und Firefox verfügbar.
  
 Weitere Informationen finden Sie unter [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension).
 
@@ -656,7 +868,7 @@ Weitere Informationen finden Sie unter
 
 **Typ:** Neue Funktion  
 **Dienstkategorie**: Nutzungsbedingungen  
-**Produktfunktion:** Governance/Compliance
+**Produktfunktion:** Konformität
  
 Ab sofort können Sie die von Ihnen zuvor akzeptierten Nutzungsbedingungen im Zugriffsbereich einsehen.
 
@@ -707,7 +919,7 @@ Weitere Informationen finden Sie unter [Fewer login prompts: The new “Keep me 
 
 **Typ:** Neue Funktion  
 **Dienstkategorie**: Nutzungsbedingungen  
-**Produktfunktion:** Governance/Compliance
+**Produktfunktion:** Konformität
  
 Eine Option für Administratoren wurde hinzugefügt, mit der Benutzer aufgefordert werden können, die Nutzungsbedingungen vor dem Akzeptieren zu erweitern.
 
@@ -864,7 +1076,7 @@ Weitere Informationen finden Sie unter
 
 **Typ:** Neue Funktion    
 **Dienstkategorie**: Nutzungsbedingungen  
-**Produktfunktion:** Governance/Compliance
+**Produktfunktion:** Konformität
 
 
 
@@ -1154,7 +1366,7 @@ Weitere Informationen finden Sie in der [Referenz zur Berichterstellung für die
 
 **Typ:** Neue Funktion  
 **Dienstkategorie**: Nutzungsbedingungen  
-**Produktfunktion:** Governance/Compliance  
+**Produktfunktion:** Konformität  
 
 
 
@@ -1197,7 +1409,7 @@ Weitere Informationen finden Sie unter [Privileged Identity Management für Azur
 
 **Typ:** Neue Funktion  
 **Dienstkategorie** : Zugriffsüberprüfungen  
-**Produktfunktion:** Governance/Compliance  
+**Produktfunktion:** Konformität  
 
 
 

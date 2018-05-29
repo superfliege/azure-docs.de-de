@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: eb2a670735db8a72163967d89d0359b4b89a3e2f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150344"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
 Das Synchronisierungsfeature von Azure AD Connect besteht aus zwei Komponenten:
@@ -56,7 +57,7 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 | DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
-| PasswordSync |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| PasswordSync |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[Vorschau: Gruppenrückschreiben](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Derzeit nicht unterstützt. |
 
@@ -88,7 +89,7 @@ Früher wurden Updates des userPrincipalName-Attributs mithilfe des Synchronisie
 
 Weitere Informationen finden Sie unter [Benutzernamen in Office 365, Azure oder Intune stimmen nicht mit lokaler UPN oder alternativen Benutzernamen überein](https://support.microsoft.com/kb/2523192).
 
-Durch Aktivierung dieses Features kann das Synchronisierungsmodul den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennwortsynchronisierung verwenden. Wenn Sie einen Verbund verwenden, wird das Feature nicht unterstützt.
+Durch Aktivierung dieses Features kann das Synchronisierungsmodul den userPrincipalName aktualisieren, wenn dieser lokal geändert wird und Sie die Kennworthashsynchronisierung verwenden. Wenn Sie einen Verbund verwenden, wird das Feature nicht unterstützt.
 
 Dieses Feature ist standardmäßig für neu erstellte Azure AD-Verzeichnisse aktiviert. Sie können ermitteln, ob das Feature aktiviert ist, indem Sie Folgendes ausführen:  
 

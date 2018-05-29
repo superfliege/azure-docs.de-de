@@ -1,12 +1,12 @@
 ---
-title: "Erneutes Ausführen des Azure AD Connect-Installations-Assistenten | Microsoft-Dokumentation"
-description: "Erläutert die Funktionsweise des Installations-Assistenten, wenn Sie ihn ein zweites Mal ausführen."
-keywords: "Beim erneuten Ausführen des Azure AD Connect-Installations-Assistenten haben Sie die Möglichkeit, die Wartungseinstellungen zu konfigurieren."
+title: Erneutes Ausführen des Azure AD Connect-Installations-Assistenten | Microsoft-Dokumentation
+description: Erläutert die Funktionsweise des Installations-Assistenten, wenn Sie ihn ein zweites Mal ausführen.
+keywords: Beim erneuten Ausführen des Azure AD Connect-Installations-Assistenten haben Sie die Möglichkeit, die Wartungseinstellungen zu konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d800214e-e591-4297-b9b5-d0b1581cc36a
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: a5a55b15bbffbcfa18e07e251180820e3d9cb6d8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 56cc38275a23eb4529558b876db619768a885a25
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32150514"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Erneutes Ausführen des Installations-Assistenten
 Beim erstmaligen Ausführen des Azure AD Connect-Installations-Assistenten werden Sie durch die Konfiguration Ihrer Installation geführt. Beim erneuten Ausführen des Installations-Assistenten werden Ihnen Wartungsoptionen angeboten.
@@ -79,7 +80,7 @@ Um den Status zu ändern, wählen Sie diese Option aus, und aktivieren bzw. deak
 ![Option, die auch den aktuellen Status des Stagingmodus anzeigt](./media/active-directory-aadconnectsync-installation-wizard/stagingmodeenable.png)
 
 ## <a name="change-user-sign-in"></a>Benutzeranmeldung ändern
-Mit dieser Option können Sie von der Kennwortsynchronisierung zum Verbund oder umgekehrt wechseln. Ein Wechsel zu **Nicht konfigurieren**ist nicht möglich.
+Mit dieser Option können Sie zwischen Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund als Benutzeranmeldemethode wechseln. Ein Wechsel zu **Nicht konfigurieren**ist nicht möglich.
 
 Weitere Informationen zu dieser Option finden Sie unter [Benutzeranmeldung](active-directory-aadconnect-user-signin.md#changing-the-user-sign-in-method).
 

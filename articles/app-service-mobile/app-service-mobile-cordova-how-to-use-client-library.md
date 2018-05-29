@@ -1,11 +1,11 @@
 ---
-title: "Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps"
-description: "Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps"
+title: Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps
+description: Verwenden des Apache Cordova-Plug-Ins für Azure Mobile Apps
 services: app-service\mobile
 documentationcenter: javascript
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: a56a1ce4-de0c-4f3c-8763-66252c52aa59
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: f166d2e533dc49ca7779b45f3dec57a53c22fc40
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 6fb8be96c9793e96f1f7d2ad8e212d056d7e9ba5
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32152585"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Verwenden der Apache Cordova-Clientbibliothek für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -105,7 +106,7 @@ Um die Konfiguration Ihrer lokalen Einstellungen hinzuzufügen, gehen Sie wie fo
              "https://localhost:3000"
          ],
 
-    Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „ http://localhost:3000 “ (für den Node.js-Beispieldienst) oder „ http://localhost:4400 “ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
+    Ersetzen Sie die URLs mit den URLs Ihres Diensts.  Beispiele hierfür sind „http://localhost:3000“ (für den Node.js-Beispieldienst) oder „http://localhost:4400“ (für den Ripple-Dienst).  Diese URLs sind jedoch nur Beispiele – Ihre Situation kann auch für die Dienste, die im Beispiel dargestellt sind, ganz anders sein.
 8. Klicken Sie in der oberen rechten Ecke des Bildschirms auf die Schaltfläche **Lesen/Schreiben** .
 9. Klicken Sie auf die grüne Schaltfläche **PUT** .
 
@@ -180,4 +181,4 @@ Ausführliche Informationen zur API finden Sie in unserer [API-Dokumentation](ht
 [phonegap-plug-in-push]: https://www.npmjs.com/package/phonegap-plugin-push
 [cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
 [cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
-[Query object documentation]: https://msdn.microsoft.com/en-us/library/azure/jj613353.aspx
+[Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

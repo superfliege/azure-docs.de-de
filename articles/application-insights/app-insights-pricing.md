@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2c06c2220d3a3ed0a27b4f0febb4de95b2137ddc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771397"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Verwalten von Preisen und Datenvolumen in Application Insights
 
@@ -34,17 +35,14 @@ Wenn Sie Fragen zu den Preisen für Application Insights haben, können Sie gern
 Aktuelle Preise in Ihrer Währung und Region finden Sie auf der Seite [Application Insights – Preise][pricing].
 
 > [!NOTE]
-> Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das komplette Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model).
+> Im April 2018 haben wir ein [neues Preismodell für die Azure-Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/). Bei diesem Modell gilt für das gesamte Portfolio der Überwachungsdienste das einfache Prinzip der nutzungsbasierten Bezahlung. Erfahren Sie mehr über das [neue Preismodell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), die [Bewertung der Auswirkungen einer Migration zu diesem Modell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) basierend auf Ihren Verwendungsmustern und [die Auswahl des neuen Modells](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model).
 
 ### <a name="basic-plan"></a>Basic-Tarif
 
 Der Basic-Tarif ist der Standardtarif, wenn eine neue Application Insights-Ressource erstellt wird. Der Basic-Tarif ist für alle Kunden die ideale Wahl, ausgenommen Kunden, die über ein Operations Management Suite-Abonnement verfügen.
 
-* Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen. Das Datenvolumen bezieht sich auf die Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. 
-    
-    Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights von Ihrer Anwendung empfängt.
-
-    Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die nicht komprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.
+* Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen. Das Datenvolumen bezieht sich auf die Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights von Ihrer Anwendung empfängt. Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die nicht komprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.
+* Die Datenvolumengebühren Ihrer Anwendung werden jetzt ab April 2018 auf einem neuen Verbrauchszähler mit dem Namen **Data Ingestion** gemeldet. Dieser neue Verbrauchszähler wird von Überwachungstechnologien wie Applications Insights und Log Analytics gemeinsam genutzt und steht derzeit unter dem Dienstnamen **App Services** (der bald in **Log Analytics** geändert wird) zur Verfügung. 
 * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 * [Fortlaufender Export](app-insights-export-telemetry.md) und der [Azure Log Analytics-Connector](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409) sind seit April 2018 im Basic-Tarif ohne zusätzliche Kosten verfügbar.
 

@@ -12,11 +12,12 @@ ms.workload: On Demand
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 46236c11b15f86c26be5e8c1311ba35e8bdd90f2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e5c64ed51fd7c36b1c2cb3b5d98df18b82e08cc3
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192389"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -37,7 +38,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und 
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Verwenden der Point-in-Time-Wiederherstellung für die Wiederherstellung einer Datenbank
 
-SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Diese Sicherungen werden im RA-GRS-Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. In den Dienstebenen „Universell“ und „Unternehmenskritisch“ (Vorschauversion) ist die Vermerkdauer für Sicherungen bis zu 35 Tagen konfigurierbar. Weitere Informationen finden Sie unter [Tarife](sql-database-service-tiers.md). Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers.md). Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
+SQL-Datenbank führt automatisch eine Kombination aus wöchentlichen vollständigen Datenbanksicherungen, stündlichen differenziellen Datenbanksicherungen sowie Transaktionsprotokollsicherungen im Abstand von fünf bis zehn Minuten durch, um Ihr Unternehmen vor Datenverlusten zu schützen. Wenn Sie das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwenden, werden diese Sicherungen im RA-GRS-Speicher gespeichert – für Datenbanken in den Tarifen „Standard“ und „Premium“ 35 Tage lang, für Datenbanken im Tarif „Basic“ sieben Tage lang. Wenn der Aufbewahrungszeitraum für Ihren Tarif Ihre Geschäftsanforderungen nicht erfüllt, können Sie diesen verlängern, indem Sie [den Tarif wechseln](sql-database-service-tiers-dtu.md#choosing-a-service-tier-in-the-dtu-based-purchasing-model). Wenn Sie das [auf virtuellen Kernen basierende Kaufmodell für Azure SQL Datenbank (Vorschau)](sql-database-service-tiers-vcore.md) verwenden, ist die Aufbewahrung von Sicherungen in den Tarifen „Universell“ und „Unternehmenskritisch“ bis zu 35 Tage konfigurierbar. Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Weitere Informationen finden Sie unter [Automatische Datenbanksicherungen](sql-database-automated-backups.md).
 
 Wenn die maximal unterstützte PITR-Aufbewahrungsdauer für Ihre Anwendung nicht ausreicht, können Sie diese verlängern, indem Sie eine Richtlinie für die langfristige Aufbewahrung (LTR) für die Datenbank(en) konfigurieren. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
@@ -97,8 +98,7 @@ Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer 
 
 > [!IMPORTANT]
 > Wenn der logische Server gelöscht wurde, kann eine gelöschte Datenbank nicht wiederhergestellt werden.
->
->
+
 
 ### <a name="restore-backups-from-long-term-retention"></a>Wiederherstellen langfristig aufbewahrter Sicherungen
 

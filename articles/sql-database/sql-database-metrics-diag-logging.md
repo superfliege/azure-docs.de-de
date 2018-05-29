@@ -10,11 +10,12 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: b6ecedac8e5d040c2e75d28e1dc8e8309f359a1c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c63429e80b2e38e9e5c08c6b589afa0086e7171d
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312819"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -51,6 +52,7 @@ Sie können eine neue Azure-Ressource bereitstellen oder eine vorhandene Ressour
 - [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Timeouts, die für eine Datenbank aufgetreten sind.
 - [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen, die für eine Datenbank aufgetreten sind.
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights. [Weitere Informationen zu Intelligent Insights](sql-database-intelligent-insights.md).
+- **Audit** / **SQLSecurityAuditEvents**: derzeit nicht verfügbar.
 
 Wenn Sie Event Hubs oder ein Speicherkonto auswählen, können Sie eine Aufbewahrungsrichtlinie angeben. Diese Richtlinie löscht Daten, die älter als ein ausgewählter Zeitraums sind. Wenn Sie Log Analytics angeben, hängt die Aufbewahrungsrichtlinie vom ausgewählten Tarif ab. Weitere Informationen finden Sie unter [Log Analytics-Preise](https://azure.microsoft.com/pricing/details/log-analytics/). 
 

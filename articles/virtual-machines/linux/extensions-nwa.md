@@ -3,7 +3,7 @@ title: VM-Erweiterung für den Azure Network Watcher-Agent für Linux | Microsof
 description: Stellen Sie den Network Watcher-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
 documentationcenter: ''
-author: dennisg
+author: gurudennis
 manager: amku
 editor: ''
 tags: azure-resource-manager
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 83e2c726228e43612caf94bd8564abc9df3882f9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 5a33f183470ec3879344f0cfe335bab38f9ff30f
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778664"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
@@ -39,11 +40,12 @@ Die VM-Erweiterung für den Network Watcher-Agent kann für folgende Linux-Distr
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS und 12.04 LTS |
 | Debian | 7 und 8 |
-| RedHat | 6.x und 7.x |
-| Oracle Linux | 7x |
-| SUSE | 11 und 12 |
-| openSUSE | 7.0 |
-| CentOS | 7.0 |
+| RedHat | 6 und 7 |
+| Oracle Linux | 6.8 und höher und 7 |
+| SUSE Linux Enterprise Server | 11 und 12 |
+| OpenSUSE Leap | 42.3 und höher |
+| CentOS | 6.5 und höher und 7 |
+| CoreOS | 899.17.0 und höher |
 
 Beachten Sie, dass CoreOS zurzeit nicht unterstützt wird.
 
@@ -112,4 +114,4 @@ Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis
 
 ### <a name="support"></a>Support
 
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie die Dokumentation zu Network Watcher lesen oder den Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/en-us/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/en-us/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/en-us/support/faq/).
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie die Dokumentation zu Network Watcher lesen oder den Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).

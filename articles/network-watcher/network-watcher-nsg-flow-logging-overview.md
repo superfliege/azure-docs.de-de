@@ -1,11 +1,11 @@
 ---
-title: "Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen mit Azure Network Watcher | Microsoft Docs"
-description: "Auf dieser Seite wird erläutert, wie NSG-Datenflussprotokolle – ein Feature von Azure Network Watcher – verwendet werden."
+title: Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen mit Azure Network Watcher | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie das NSG-Datenflussprotokolle-Feature von Azure Network Watcher verwendet wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
 ms.devlang: na
@@ -14,33 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 4eaffba08ccf601e440709d804891668340a376d
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: c6a24fbca37d6aa1d775a70c708a139dfb70b813
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182424"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
-Datenflussprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Datenflussprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
+Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine NSG anzeigen können. Die Flussprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflüsse pro Regel, die Netzwerkschnittstelle, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr an.
 
-![Übersicht über Datenflussprotokolle][1]
+![Übersicht zu Flowprotokollen](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
-Da sich Datenflussprotokolle auf Netzwerksicherheitsgruppen beziehen, werden sie nicht wie andere Protokolle angezeigt. Datenflussprotokolle werden nur innerhalb eines Speicherkontos gespeichert. Der Protokollpfad entspricht dabei dem folgenden Beispiel:
+Da sich Datenflussprotokolle auf NSGs beziehen, werden sie nicht wie andere Protokolle angezeigt. Datenflussprotokolle werden nur innerhalb eines Speicherkontos gespeichert. Der Protokollpfad entspricht dabei dem folgenden Beispiel:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-Für Datenflussprotokolle gelten die gleichen Aufbewahrungsrichtlinien wie für andere Protokolle. Die Protokolle verfügen über eine Aufbewahrungsrichtlinie, die auf einen Zeitraum zwischen einem und 365 Tagen festgelegt werden kann. Wenn keine Aufbewahrungsrichtlinie festgelegt wurde, werden die Protokolle unbegrenzt aufbewahrt.
+Für Datenflussprotokolle gelten die gleichen Aufbewahrungsrichtlinien wie für andere Protokolle. Sie können Protokollaufbewahrungs-Richtlinien von einem Tag bis zu 365 Tagen festlegen. Wenn keine Aufbewahrungsrichtlinie festgelegt wurde, werden die Protokolle unbegrenzt aufbewahrt.
 
 ## <a name="log-file"></a>Protokolldatei
 
-Datenflussprotokolle besitzen mehrere Eigenschaften. In der folgenden Liste finden Sie die Eigenschaften, die im NSG-Datenflussprotokoll zurückgegeben werden:
+Datenflussprotokolle enthalten die folgenden Eigenschaften:
 
 * **time:** Zeitpunkt, zu dem das Ereignis ausgelöst wurde
 * **systemId:** ID der Netzwerksicherheitsgruppen-Ressource
-* **category:** Kategorie des Ereignisses; lautet immer NetworkSecurityGroupFlowEvent
+* **category**: Die Kategorie des Ereignisses. Die Kategorie ist immer **NetworkSecurityGroupFlowEvent**.
 * **resourceid:** Ressourcen-ID der Netzwerksicherheitsgruppe
 * **operationName:** immer NetworkSecurityGroupFlowEvents
 * **properties:** Sammlung der Eigenschaften des Datenflusses
@@ -59,15 +60,14 @@ Datenflussprotokolle besitzen mehrere Eigenschaften. In der folgenden Liste find
                     * **Datenfluss:** Richtung des Datenflusses. Gültige Werte sind **I** für eingehende (inbound) und **O** für ausgehende (outbound) Nachrichten.
                     * **Datenverkehr:** gibt an, ob Datenverkehr zugelassen oder verweigert wurde. Gültige Werte sind **A** für zugelassen (allowed) und **D** für verweigert (denied).
 
-
-Es folgt ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind mehrere Datensätze vorhanden, die der im vorherigen Abschnitt beschriebenen Eigenschaftenliste entsprechen. 
+Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind mehrere Datensätze vorhanden, die der im vorherigen Abschnitt beschriebenen Eigenschaftenliste entsprechen.
 
 > [!NOTE]
-> Die Werte der flowTuples-Eigenschaft sind eine durch Trennzeichen getrennte Liste.
+> Die Werte in der **flowTuples*-Eigenschaft sind eine durch Trennzeichen getrennte Liste.
  
 ```json
 {
-    "records": 
+    "records":
     [
         
         {
@@ -102,12 +102,6 @@ Es folgt ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter [Aktivieren der Datenflussprotokollierung](network-watcher-nsg-flow-logging-portal.md), wie Sie Datenflussprotokolle aktivieren .
-
-Erfahren Sie unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) etwas über die Protokollierung bei Netzwerksicherheitsgruppen.
-
-Erfahren Sie unter [Überprüfen des Datenverkehrs mit der IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), wie Sie ermitteln, ob der Datenverkehr auf einem virtuellen Computer zugelassen oder verweigert wird.
-
-<!-- Image references -->
-[1]: ./media/network-watcher-nsg-flow-logging-overview/figure1.png
-
+- Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
+- Unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) finden Sie weitere Informationen über die NSG-Protokollierung.
+- Wie Sie bestimmen, ob Datenverkehr zu oder von einem virtuellen Computer zugelassen oder verweigert ist, erfahren Sie unter [Schnellstart: Diagnostizieren eines VM-Netzwerkdatenverkehr-Filterproblems](diagnose-vm-network-traffic-filtering-problem.md).

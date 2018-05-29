@@ -1,26 +1,27 @@
 ---
-title: "Überwachen eines Azure Container Service-Clusters mit Sysdig"
-description: "Es wird beschrieben, wie Sie einen Azure Container Service-Cluster mit Sysdig überwachen."
+title: Überwachen eines Azure Container Service-Clusters mit Sysdig
+description: Es wird beschrieben, wie Sie einen Azure Container Service-Cluster mit Sysdig überwachen.
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0f4fd1f3a8242061e198d7b5447656f9008e96
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32162135"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Überwachen eines Azure Container Service-Clusters mit Sysdig
 
 In diesem Artikel stellen wir Sysdig-Agents für alle Agent-Knoten im Azure Container Service-Cluster bereit. Für diese Konfiguration benötigen Sie ein Konto mit Sysdig. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstellen](container-service-deployment.md) und eine [Verbindung damit herstellen](../container-service-connect.md). Lernen Sie die [Marathon-Benutzeroberfläche](container-service-mesos-marathon-ui.md)kennen. Navigieren Sie zu [http://app.sysdigcloud.com](http://app.sysdigcloud.com) , um ein Sysdig-Cloudkonto einzurichten. 
+Sie müssen einen per Azure Container Service konfigurierten Cluster [bereitstellen](container-service-deployment.md) und eine [Verbindung damit herstellen](../container-service-connect.md). Lernen Sie die [Marathon-Benutzeroberfläche](container-service-mesos-marathon-ui.md)kennen. Wechseln Sie zu [http://app.sysdigcloud.com](http://app.sysdigcloud.com), um ein Sysdig-Cloudkonto einzurichten. 
 
 ## <a name="sysdig"></a>Sysdig
 Sysdig ist ein Überwachungsdienst, mit dem Sie Container im Cluster überwachen können. Sysdig ist als Unterstützung bei der Problembehandlung bekannt, verfügt aber auch über grundlegende Überwachungsmetriken für CPU, Netzwerk, Arbeitsspeicher und E/A. Mit Sysdig können Sie leicht erkennen, welche Container am stärksten ausgelastet sind bzw. die größte Menge an Arbeitsspeicher und CPU verbrauchen. Diese Ansicht ist im Abschnitt „Übersicht“ enthalten, der sich derzeit im Betastatus befindet. 

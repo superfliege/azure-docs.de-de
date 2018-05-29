@@ -1,8 +1,8 @@
 ---
-title: "Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau) | Microsoft-Dokumentation"
-description: "Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen."
+title: Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau) | Microsoft-Dokumentation
+description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 26e4af814bad988da02d4e0cf36f17e1beec872e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187741"
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -49,7 +50,7 @@ Unter **Serverendpunkt hinzufügen** sind die folgenden Informationen erforderli
 Wählen Sie **Erstellen** aus, um den Serverendpunkt hinzuzufügen. Die Dateien im Namespace einer Synchronisierungsgruppe bleiben synchron. 
 
 ## <a name="remove-a-server-endpoint"></a>Entfernen eines Serverendpunkts
-Wenn für einen Serverendpunkt das Cloudtiering aktiviert ist, werden Dateien auf Ihre Azure-Dateifreigaben *ausgelagert*. Dadurch können lokale Dateifreigaben als Cache statt als vollständige Kopie des Datasets fungieren, um den Speicherplatz auf dem Dateiserver effizient zu nutzen. Wenn jedoch ein Serverendpunkt entfernt wird und ausgelagerte Dateien noch lokal auf dem Server vorhanden sind, kann auf diese Dateien nicht mehr zugegriffen werden. Aus diesem Grund müssen Sie vor dem Aufheben der Registrierung alle ausgelagerten Dateien aus Azure Files abrufen, wenn ein Zugriff auf die Dateien weiterhin möglich sein soll. 
+Wenn für einen Serverendpunkt das Cloudtiering aktiviert ist, werden Dateien auf Ihre Azure-Dateifreigaben *ausgelagert*. Dadurch können lokale Dateifreigaben als Cache statt als vollständige Kopie des Datasets fungieren, um den Speicherplatz auf dem Dateiserver effizient zu nutzen. **Wenn jedoch ein Serverendpunkt entfernt wird und ausgelagerte Dateien noch lokal auf dem Server vorhanden sind, kann auf diese Dateien nicht mehr zugegriffen werden.** Aus diesem Grund müssen Sie vor dem Löschen des Serverendpunkts alle ausgelagerten Dateien aus Azure Files abrufen, wenn ein Zugriff auf lokale Dateifreigaben weiterhin möglich sein soll. 
 
 Dies kann mithilfe des folgenden PowerShell-Cmdlets durchgeführt werden:
 

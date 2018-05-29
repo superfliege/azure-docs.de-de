@@ -1,23 +1,24 @@
 ---
 title: Azure SQL Data Warehouse-Sicherung und -Wiederherstellung – Momentaufnahmen (georedundant) | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Sicherungen, um Ihr Data Warehouse auf einen Wiederherstellungspunkt in der primären Region wiederherzustellen, oder verwenden Sie georedundante Sicherungen für eine Wiederherstellung in einer anderen geografischen Region.
+description: Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Sicherungen, um Ihr Data Warehouse mithilfe eines Wiederherstellungspunkts in der primären Region wiederherzustellen. Mithilfe von georedundanten Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen.
 services: sql-data-warehouse
-author: ronortloff
-manager: jhubbard
+author: kevinvngo
+manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: design
-ms.date: 03/28/2018
-ms.author: rortloff
+ms.component: manage
+ms.date: 04/17/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f540bca0d2eb2c9009a386bd14a5beda2912014
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187598"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
-Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Sicherungen, um Ihr Data Warehouse auf einen Wiederherstellungspunkt in der primären Region wiederherzustellen, oder verwenden Sie georedundante Sicherungen für eine Wiederherstellung in einer anderen geografischen Region. 
+Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Sicherungen, um Ihr Data Warehouse mithilfe eines Wiederherstellungspunkts in der primären Region wiederherzustellen. Mithilfe von georedundanten Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
 
 ## <a name="what-is-backup-and-restore"></a>Was ist die Sicherung und Wiederherstellung?
 Bei einer *Data Warehouse-Sicherung* handelt es sich um eine Kopie Ihrer Datenbank, die Sie verwenden können, um ein Data Warehouse wiederherzustellen.  Da SQL Data Warehouse ein verteiltes System ist, besteht eine Data Warehouse-Sicherung aus zahlreichen Dateien, die in Azure Storage gespeichert sind. Eine Data Warehouse-Sicherung umfasst die lokalen Datenbankmomentaufnahmen und Geosicherungen aller Datenbanken und Dateien, die einem Data Warehouse zugeordnet sind. 
@@ -55,9 +56,9 @@ Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Mom
 > 
 
 ## <a name="geo-backups"></a>Geosicherungen
-SQL Data Warehouse führt ein Mal pro Tag für ein [geografisch gepaartes Datencenter](../best-practices-availability-paired-regions.md) eine Geosicherung aus. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf dem Server in der geografisch gepaarten Region wiederherstellen. Mit einer Geosicherung wird sichergestellt, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Momentaufnahmen in Ihrer primären Region zugreifen können.
+SQL Data Warehouse führt ein Mal pro Tag für ein [geografisch gepaartes Datencenter](../best-practices-availability-paired-regions.md) eine Geosicherung aus. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf einem Server in einer beliebigen anderen Region wiederherstellen, in der SQL Data Warehouse unterstützt wird. Mit einer Geosicherung wird sichergestellt, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Momentaufnahmen in Ihrer primären Region zugreifen können.
 
-Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse für Elastizität optimiert ist, können Sie diese Option [abwählen](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy), wenn Sie dies wünschen. Sie können Geosicherungen nicht abwählen, wenn Sie die Leistungsebene „Optimiert für Compute“ verwenden.
+Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse Gen1 ist, können Sie diese Option [abwählen](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy), wenn Sie dies wünschen. Sie können Geosicherungen für Gen2 nicht abwählen, da Datenschutz eine integrierte Garantie ist.
 
 ## <a name="backup-costs"></a>Sicherungskosten
 Beachten Sie, dass die Azure-Rechnung einen Eintrag für Azure Storage Premium und einen Eintrag für georedundanten Speicher aufweist. Die Storage Premium-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region. Dies schließt Momentaufnahmen ein.  Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  

@@ -10,19 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/30/2018
 ms.author: douglasl
-ms.openlocfilehash: e021403cd5544f0570e8ea3c73a17a57b241a65f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 16eec117514d040dc91b5d18b73d4cc6025c901e
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32310977"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Continuous Integration und Continuous Deployment in Azure Data Factory
 
 Bei Continuous Integration wird jede Änderung, die an Ihrer Codebasis vorgenommen wird, automatisch und so früh wie möglich getestet. Der Continuous Deployment-Prozess folgt auf das Testen während des Continuous Integration-Prozesses, und Änderungen werden per Pushvorgang in ein Staging- oder Produktionssystem übertragen.
 
 Für Azure Data Factory bedeuten Continuous Integration und Deployment das Verschieben von Data Factory-Pipelines aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere. Für die Durchführung von Continuous Integration und Deployment können Sie die Data Factory-Benutzeroberflächenintegration in Azure Resource Manager-Vorlagen verwenden. Die Data Factory-Benutzeroberfläche kann eine Resource Manager-Vorlage generieren, wenn Sie die Optionen für **ARM-Vorlage** wählen. Wenn Sie **Export ARM template** (ARM-Vorlage exportieren) wählen, generiert das Portal die Resource Manager-Vorlage für die Data Factory und eine Konfigurationsdatei mit Ihren gesamten Verbindungszeichenfolgen und anderen Parametern. Anschließend müssen Sie eine Konfigurationsdatei für jede Umgebung erstellen (Entwicklung, Test, Produktion). Die Hauptdatei mit der Resource Manager-Vorlage bleibt für alle Umgebungen gleich.
+
+Das folgende Video enthält eine neun-minütige Einführung und Demonstration dieses Features:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
 ## <a name="create-a-resource-manager-template-for-each-environment"></a>Erstellen einer Resource Manager-Vorlage für jede Umgebung
 Wählen Sie **Export ARM template** (ARM-Vorlage exportieren), um die Resource Manager-Vorlage für Ihre Data Factory in der Entwicklungsumgebung zu exportieren.
@@ -62,7 +67,9 @@ Hier ist der gesamte Lebenszyklus für Continuous Integration und Continuous Dep
 
 Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Sie die Bereitstellung einer Data Factory für mehrere Umgebungen automatisieren können.
 
-### <a name="requirements"></a>Anforderungen
+![Abbildung zu Continuous Integration mit VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
+
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 -   Ein Azure-Abonnement, das mit Team Foundation Server oder VSTS verknüpft ist und für das der [*Azure Resource Manager-Dienstendpunkt*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm) verwendet wird.
 
@@ -90,7 +97,7 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
     a.  Fügen Sie die Geheimnisse der Parameterdatei hinzu:
 
-        -   Erstellen Sie eine Kopie der Parameterdatei, die in den Branch für die Veröffentlichung hochgeladen wird, und legen Sie die Werte der Parameter fest, die Sie aus dem Schlüsseltresor im folgenden Format abrufen möchten:
+       -   Erstellen Sie eine Kopie der Parameterdatei, die in den Branch für die Veröffentlichung hochgeladen wird, und legen Sie die Werte der Parameter fest, die Sie aus dem Schlüsseltresor im folgenden Format abrufen möchten:
 
         ```json
         {
@@ -100,24 +107,24 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
                         "keyVault": {
                             "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
                         },
-                        "secretName": " &lt secret - name &gt "
+                        "secretName": " < secret - name > "
                     }
-                }        
+                }
             }
         }
         ```
 
-        -   Bei dieser Methode wird das Geheimnis per Pullvorgang automatisch aus dem Schlüsseltresor abgerufen.
+       -   Bei dieser Methode wird das Geheimnis per Pullvorgang automatisch aus dem Schlüsseltresor abgerufen.
 
-        -   Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
+       -   Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
 
     b.  Fügen Sie eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) hinzu:
 
-        -   Wählen Sie die Registerkarte **Aufgaben**, erstellen Sie eine neue Aufgabe, suchen Sie nach **Azure Key Vault**, und fügen Sie sie hinzu.
+       -   Wählen Sie die Registerkarte **Aufgaben**, erstellen Sie eine neue Aufgabe, suchen Sie nach **Azure Key Vault**, und fügen Sie sie hinzu.
 
-        -   Wählen Sie in der Key Vault-Aufgabe das Abonnement aus, unter dem Sie den Schlüsseltresor erstellt haben, geben Sie bei Bedarf die Anmeldeinformationen an, und wählen Sie dann den Schlüsseltresor aus.
+       -   Wählen Sie in der Key Vault-Aufgabe das Abonnement aus, unter dem Sie den Schlüsseltresor erstellt haben, geben Sie bei Bedarf die Anmeldeinformationen an, und wählen Sie dann den Schlüsseltresor aus.
 
-            ![](media/continuous-integration-deployment/continuous-integration-image8.png)
+       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu:
 

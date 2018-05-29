@@ -2,7 +2,7 @@
 title: 'Dienst-zu-Dienst-Authentifizierung: Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Active Directory die Dienst-zu-Dienst-Authentifizierung mit Data Lake Store implementieren.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b3f19bb92d1eeb214150bf118d546cd1c67cd78
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 58f269fa9c153a37a792d9d4efdaf0bd74eb265a
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771312"
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-azure-active-directory"></a>Dienst-zu-Dienst-Authentifizierung mit Data Lake Store mithilfe von Azure Active Directory
 > [!div class="op_single_selector"]
@@ -77,6 +78,9 @@ Beim programmgesteuerten Anmelden benötigen Sie die ID für Ihre Anwendung. Wen
 7. Klicken Sie auf dem Blatt **Benutzerdefinierten Zugriff hinzufügen** auf **OK**. Die neu hinzugefügte Gruppe mit den zugeordneten Berechtigungen wird auf dem Blatt **Zugriff** aufgelistet.
    
     ![Zuweisen von Berechtigungen zu einer Gruppe](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Zuweisen von Berechtigungen zu einer Gruppe")
+
+> [!NOTE]
+> Wenn Sie Ihre Azure Active Directory-Anwendung auf einen bestimmten Ordner beschränken möchten, müssen Sie außerdem derselben Azure Active Directory-Anwendung die **Execute**-Berechtigung für das Stammverzeichnis gewähren, um den Dateierstellungszugriff über das .NET-SDK zu aktivieren.
 
 > [!NOTE]
 > Wenn Sie die SDKs zum Erstellen eines Data Lake Store-Kontos verwenden möchten, müssen Sie die Azure AD-Webanwendung als Rolle der Ressourcengruppe zuweisen, in der Sie das Data Lake Store-Konto erstellen.

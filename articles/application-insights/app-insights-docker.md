@@ -1,8 +1,8 @@
 ---
-title: "Überwachen von Docker-Anwendungen in Azure Application Insights | Microsoft Docs"
-description: "In Application Insights können Docker-Leistungsindikatoren, -Ereignisse und -Ausnahmen zusammen mit der Telemetrie von in Containern ausgeführten Apps angezeigt werden."
+title: Überwachen von Docker-Anwendungen in Azure Application Insights | Microsoft Docs
+description: In Application Insights können Docker-Leistungsindikatoren, -Ereignisse und -Ausnahmen zusammen mit der Telemetrie von in Containern ausgeführten Apps angezeigt werden.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 27a3083d-d67f-4a07-8f3c-4edb65a0a685
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 68f408f18b767ed9c5aba8fed8c97f021cdeb123
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a0476e2f0bf08f76b45e1342ec38137e46008cb1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153692"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Überwachen von Docker-Anwendungen in Application Insights
-Lebenszyklusereignisse und Leistungsindikatoren aus [Docker](https://www.docker.com/) -Containern können in Application Insights in Diagrammen dargestellt werden. Wenn Sie das [Application Insights](app-insights-overview.md) -Image in einem Container auf Ihrem Host installieren, werden Leistungsindikatoren für den Host sowie für die anderen Images angezeigt.
+Lebenszyklusereignisse und Leistungsindikatoren aus [Docker](https://www.docker.com/) -Containern können in Application Insights in Diagrammen dargestellt werden. Wenn Sie das [Application Insights](https://hub.docker.com/r/microsoft/applicationinsights/) -Image in einem Container auf Ihrem Host installieren, werden Leistungsindikatoren für den Host sowie für die anderen Images angezeigt.
 
-Mit Docker verteilen Sie Ihre Apps zusammen mit allen Abhängigkeiten auf schlanke Container. Diese lassen sich auf allen Hostcomputern ausführen, auf denen ein Docker-Modul ausgeführt wird.
+Mit Docker verteilen Sie Ihre Apps zusammen mit allen Abhängigkeiten auf schlanke Container. Diese lassen sich auf allen Hostcomputern ausführen, auf denen eine Docker-Engine ausgeführt wird.
 
 Wenn Sie das [Application Insights-Image](https://hub.docker.com/r/microsoft/applicationinsights/) auf Ihrem Docker-Host ausführen, ergeben sich für Sie folgende Vorteile:
 
@@ -43,6 +44,10 @@ Wenn Sie das [Application Insights-Image](https://hub.docker.com/r/microsoft/app
 2. Fügen Sie die Docker-Kachel hinzu: Wählen Sie **Kachel hinzufügen**, und ziehen Sie die Docker-Kachel aus dem Katalog. Klicken Sie dann auf **Fertig**. 
    
     ![Beispiel](./media/app-insights-docker/03.png)
+
+> [!NOTE]
+> Der Übersichtsbereich in Application Insights ist jetzt gesperrt, sodass keine Kacheln aus dem Katalog hinzugefügt werden können. Sie können weiterhin die Docker-Kachel wie oben beschrieben über die Benutzeroberfläche im Azure-Dashboard hinzufügen.
+
 3. Klicken Sie auf die Dropdownliste **Essentials** , und kopieren Sie den Instrumentierungsschlüssel. Sie benötigen ihn, um dem SDK mitzuteilen, wohin die Telemetrie gesendet werden sollen.
 
     ![Beispiel](./media/app-insights-docker/02-props.png)
@@ -77,7 +82,7 @@ Kehren Sie zu Ihrer Application Insights-Ressource im Azure-Portal zurück.
 
 Klicken Sie durch die Docker-Kachel.
 
-Dort werden Sie gleich die von der Docker-App eingehenden Daten sehen, insbesondere wenn andere Container in Ihrem Docker-Modul ausgeführt werden.
+Dort werden Sie gleich die von der Docker-App eingehenden Daten sehen, insbesondere wenn andere Container in Ihrer Docker-Engine ausgeführt werden.
 
 Hier sind einige Ansichten, die angezeigt werden können:
 

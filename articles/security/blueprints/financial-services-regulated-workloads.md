@@ -3,7 +3,7 @@ title: Azure Security and Compliance Blueprint – Finanzdienstleistungen für g
 description: Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 17794288-9074-44b5-acc8-1dacceb3f56c
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 497c5a987753cbbe577c1d042d6bf61be9d905ab
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: f1339af22132d19f14ea8ebb72fe0e6bd45b7fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895553"
 ---
 # <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure Security and Compliance Blueprint – Finanzdienstleistungen für geregelte Workloads (FFIEC)
 
@@ -346,7 +347,7 @@ Microsoft empfiehlt ausdrücklich, eine Neuinstallation von PowerShell zu verwen
     
 3. Log Analytics-Protokollierung und -Überwachung. Wenn die Lösung bereitgestellt ist, kann ein Log Analytics-Arbeitsbereich geöffnet werden, und anhand der im Lösungsrepository bereitgestellten Beispielvorlagen kann veranschaulicht werden, wie ein Überwachungsdashboard konfiguriert werden kann. Die Beispielvorlagen finden Sie im Ordner [omsDashboards](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Beachten Sie, dass Daten in Log Analytics erfasst werden müssen, damit Vorlagen ordnungsgemäß bereitgestellt werden. Dies kann je nach Standortaktivität eine Stunde oder länger dauern.
  
-    Beim Einrichten Ihrer Log Analytics-Protokollierung können Sie diese Ressourcen einschließen:
+    Beziehen Sie beim Einrichten Ihrer Log Analytics-Protokollierung unter Umständen Sie diese Ressourcen ein:
  
     - Microsoft.Network/applicationGateways
     - Microsoft.Network/NetworkSecurityGroups
@@ -388,8 +389,3 @@ Kunden sind dafür verantwortlich, eine Kopie der [Matrix der Verantwortungsübe
 - Alle Kundennamen, Transaktionsdatensätze und jegliche verknüpften Daten auf dieser Seite sind frei erfunden, wurden für diese grundlegende Architektur erstellt und werden nur zur Veranschaulichung bereitgestellt. Tatsächliche Ähnlichkeiten oder Verbindungen sind rein zufällig, und keine darf als beabsichtigt angesehen werden.  
 - Diese Lösung wurde gemeinsam von Microsoft und Avyan Consulting entwickelt und ist unter der [MIT-Lizenz](https://opensource.org/licenses/MIT) verfügbar.
 
-### <a name="document-authors"></a>Autoren des Dokuments
-
-* *Frank Simorjay (Microsoft)*  
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Code-Repository"

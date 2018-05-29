@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über Azure-Diagnose | Microsoft-Dokumentation"
-description: "Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistungsmessung, zur Überwachung und zur Datenverkehrsanalyse in Clouddiensten, virtuellen Maschinen und Service Fabric."
+title: Übersicht über Azure-Diagnose | Microsoft-Dokumentation
+description: Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistungsmessung, zur Überwachung und zur Datenverkehrsanalyse in Clouddiensten, virtuellen Maschinen und Service Fabric.
 services: multiple
 documentationcenter: .net
 author: rboucher
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: baad40d8-c915-4f93-b486-8b160bf33463
 ms.service: multiple
 ms.workload: na
@@ -14,14 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0231a6c1d78818b948bb24d0c406fb2f2da17a0f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32169134"
 ---
 # <a name="what-is-azure-diagnostics"></a>Was ist die Azure-Diagnose?
-Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts, Azure Virtual Machines unter Microsoft Windows und Service Fabric unterstützt. Andere Azure-Dienste verwenden ihre eigenen separaten Diagnosefunktionen.
+Die Azure-Diagnose ist eine Funktion in Azure, mit der Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md). 
 
 ## <a name="data-you-can-collect"></a>Erfassbare Daten
 Mit der Azure-Diagnose können Sie die folgenden Arten von Daten erfassen:
@@ -38,16 +39,13 @@ Mit der Azure-Diagnose können Sie die folgenden Arten von Daten erfassen:
 | Benutzerdefinierte Fehlerprotokolle |Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |
 | Infrastrukturprotokolle der Azure-Diagnose |Informationen zur Diagnose selbst |
 
-Die Azure-Diagnoseerweiterung kann diese Daten an ein Azure-Speicherkonto übertragen oder an Dienste wie [Application Insights](../application-insights/app-insights-cloudservices.md) senden. Die Daten können zum Debuggen und Beheben von Fehlern, Messen der Leistung, Überwachen der Ressourcenauslastung, Analysieren des Datenverkehrs, Planen der Kapazität und Durchführen der Überwachung verwendet werden.
+Die Azure-Diagnoseerweiterung kann diese Daten an ein Azure-Speicherkonto übertragen oder an [Application Insights](../application-insights/app-insights-cloudservices.md) senden. Sie können sie auch an [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) streamen, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden. Die Daten können zum Debuggen und Beheben von Fehlern, Messen der Leistung, Überwachen der Ressourcenauslastung, Analysieren des Datenverkehrs, Planen der Kapazität und Durchführen der Überwachung verwendet werden.
 
 ## <a name="versioning"></a>Versionsverwaltung
 Informationen finden Sie unter [Azure-Diagnose – Versionsverlauf](azure-diagnostics-versioning-history.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wählen Sie, zu welchem Dienst Sie Diagnoseinformationen erfassen möchten, und lesen Sie zum Einstieg die folgenden Artikel. Verwenden Sie die allgemeinen Links zur Azure-Diagnose als Referenz für bestimmte Aufgaben.
-
-## <a name="web-apps"></a>Web-Apps
-Beachten Sie, dass die Azure-Diagnose nicht von Web-Apps verwendet wird. Entsprechende Informationen finden Sie unter [Web-Apps](../app-service/web-sites-enable-diagnostic-log.md).
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Clouddienste mit der Azure-Diagnose
 * Wenn Sie Visual Studio verwenden, finden Sie unter [Verfolgen einer Cloud Services-Anwendung mit Visual Studio](../vs-azure-tools-debug-cloud-services-virtual-machines.md) Informationen für den Einstieg. Andernfalls finden Sie weitere Informationen in folgenden Artikeln:

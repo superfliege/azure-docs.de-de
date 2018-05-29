@@ -1,46 +1,75 @@
 ---
-title: Erste Schritte mit der Azure AD-Berichterstellungs-API | Microsoft Docs
+title: Erste Schritte mit der Azure AD-Berichterstellungs-API | Microsoft-Dokumentation
 description: Vorgehensweise zum Einstieg in die Azure Active Directory-Berichterstellungs-API
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8813b911-a4ec-4234-8474-2eef9afea11e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 05/07/2018
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c858b8f2d5a4a348bc0b4443ddbe0000a5b62f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a818c9b0e2c9097f45d2fdd39676ef6807d06ca5
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929085"
 ---
-# <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
+# <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
-Azure Active Directory stellt eine Vielzahl von Berichten zur Verfügung. Die Daten dieser Berichte können für Ihre Anwendungen – beispielsweise SIEM-Systeme, Überwachungs- und Business Intelligence-Tools – sehr nützlich sein. Die Azure AD-Berichterstellungs-APIs bieten über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
+Azure Active Directory stellt eine Vielzahl von [Berichten](active-directory-reporting-azure-portal.md) zur Verfügung. Die Daten dieser Berichte können für Ihre Anwendungen – beispielsweise SIEM-Systeme, Überwachungs- und Business Intelligence-Tools – sehr nützlich sein. 
 
-In diesem Artikel erhalten Sie die Informationen, die Sie zum Einstieg in die Azure AD-Berichterstellungs-APIs benötigen.
-Im nächsten Abschnitt finden Sie ausführlichere Informationen zur Verwendung der APIs für Überwachung und Anmeldung. 
+Mit der Azure AD-Berichterstellungs-APIs können Sie über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten erhalten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
 
-Lesen Sie unsere häufig gestellten Fragen (FAQ) unter [FAQ](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-faq). Bei Problemen: [Stellen Sie ein Supportticket aus](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+Dieser Artikel enthält eine Übersicht über den Zugriff auf die Berichtsdaten mit der zugehörigen API.
 
-## <a name="learning-map"></a>Lernschritte
-1. **Vorbereiten** : Damit Sie die Beispielen in diesem Thema verwenden können, müssen die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-API](active-directory-reporting-api-prerequisites-azure-portal.md)erfüllt sein.
-2. **Untersuchen** : Verschaffen Sie sich einen ersten Eindruck der Berichterstellungs-APIs:
+Wenn Probleme auftreten sollten, lesen Sie [Gewusst wie: Beziehen von Support für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
+
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um auf die Berichterstellungs-API zuzugreifen, müssen Sie folgende Schritte durchführen (auch wenn Sie mithilfe eines Skripts auf die API zugreifen möchten):
+
+1. Zuweisen von Rollen (Benutzer mit Leseberechtigung für Sicherheitsfunktionen, Sicherheitsadministrator, globaler Administrator)
+2. Registrieren einer Anwendung
+3. Erteilen von Berechtigungen
+4. Erfassen von Konfigurationseinstellungen
+
+
+ 
+Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API](active-directory-reporting-api-prerequisites-azure-portal.md).
+
+
+## <a name="recommendation"></a>Empfehlung 
+
+Wenn Sie Berichtsdaten ohne Benutzereingriff abrufen möchten, sollten Sie eventuell die Azure AD-Berichterstellungs-API mit Zertifikaten verwenden.
+
+Ausführliche Anweisungen finden Sie unter [Abrufen von Daten per Azure AD-Berichterstellungs-API mit Zertifikaten](active-directory-reporting-api-with-certificates.md).
+
+
+## <a name="explore"></a>Erkunden
+
+Verschaffen Sie sich einen ersten Eindruck über die Berichterstellungs-APIs:
    
-   * [Verwenden der Beispiele für die Überwachungs-API](active-directory-reporting-api-audit-samples.md) 
-   * [Verwenden der Beispiele für die Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-samples.md)
-3. **Anpassen**: Erstellen Sie Ihre eigene Lösung: 
-   
-   * [Verwenden der Referenz zur Überwachungs-API](active-directory-reporting-api-audit-reference.md) 
-   * [Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-reference.md)
+   - [Verwenden der Beispiele für die Überwachungs-API](active-directory-reporting-api-audit-samples.md) 
+ 
+   - [Verwenden der Beispiele für die Anmeldeaktivitätsbericht-API](active-directory-reporting-api-sign-in-activity-samples.md)
 
-## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie alle verfügbaren Azure AD Graph-API-Endpunkte anzeigen möchten, klicken Sie auf diesen Link: [https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta).
+
+## <a name="customize"></a>Anpassen  
+
+Erstellen Sie Ihre eigene Lösung: 
+   
+   - [Verwenden der Referenz zur Überwachungs-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
+
+   - [Verwenden der Referenz zur Anmeldeaktivitätsbericht-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+
+
 

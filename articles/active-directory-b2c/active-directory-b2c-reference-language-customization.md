@@ -11,17 +11,14 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d0f1f2ffd02873df2e2e7eab9894d9c3421b0f7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 097033b78e3e4f640e7bf4008fd970c53315d5d7
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200551"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Sprachanpassung in Azure Active Directory B2C
-
->[!NOTE]
->Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
->
 
 Mit der Sprachanpassung in Azure Active Directory B2C (Azure AD B2C) kann Ihre Richtlinie verschiedene Sprachen abdecken, um Ihre Kundenanforderungen zu erfüllen.  Microsoft stellt Übersetzungen für [36 Sprachen](#supported-languages) bereit. Sie können aber auch eigene Übersetzungen für beliebige Sprachen bereitstellen. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen.  
 
@@ -49,7 +46,7 @@ Wenn Sie die Sprachanpassung für eine Richtlinie aktivieren, können Sie die Sp
 5. Lesen Sie die Informationen im Dialogfeld, und klicken Sie anschließend auf **Ja**.
 
 ## <a name="select-which-languages-in-your-user-journey-are-enabled"></a>Auswählen der in der User Journey zu aktivierenden Sprachen 
-Aktivieren Sie eine Reihe von Sprachen, in die Ihre User Journey übersetzt werden soll, wenn der Parameter `ui_locales` nicht angegeben ist.
+Aktivieren Sie eine Reihe von Sprachen, in die Ihre User Journey übersetzt werden soll, wenn der Browser die Anforderung ohne den `ui_locales`-Parameter stellt.
 1. Stellen Sie anhand der obigen Anleitung sicher, dass die Sprachanpassung für Ihre Richtlinie aktiviert ist.
 2. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
 3. Wählen Sie eine Sprache aus, die Sie unterstützen möchten.
@@ -102,7 +99,7 @@ Ersetzen Sie `<ExtensionAttribute>` durch den Namen Ihres benutzerdefinierten Be
 Ersetzen Sie `<ExtensionAttributeValue>` durch die neue Zeichenfolge, die angezeigt werden soll.
 
 ### <a name="provide-a-list-of-values-by-using-localizedcollections"></a>Angeben einer Liste mit Werten mithilfe von „LocalizedCollections“
-Wenn Sie eine feste Liste mit Werten für Antworten bereitstellen möchten, müssen Sie ein Attribut vom Typ `LocalizedCollections` erstellen.  Bei `LocalizedCollections` handelt es sich um ein Array mit Paaren aus `Name` und `Value`. Verwenden Sie zum Hinzufügen von `LocalizedCollections` das folgende Format:
+Wenn Sie eine feste Liste mit Werten für Antworten bereitstellen möchten, müssen Sie ein Attribut vom Typ `LocalizedCollections` erstellen.  Bei `LocalizedCollections` handelt es sich um ein Array mit Paaren aus `Name` und `Value`. Die Reihenfolge der Elemente ist dieselbe, in der sie angezeigt werden.  Verwenden Sie zum Hinzufügen von `LocalizedCollections` das folgende Format:
 
 ```JSON
 {
@@ -153,9 +150,9 @@ Sie können die Seite in `fr` laden. HTML- und CSS-Inhalte der Seite werden dann
 https://wingtiptoysb2c.blob.core.windows.net/fr/wingtip/unified.html
 ```
 
-## <a name="add-custom-locales"></a>Hinzufügen benutzerdefinierter Gebietsschemas
+## <a name="add-custom-languages"></a>Hinzufügen benutzerdefinierter Sprachen
 
-Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Die Übersetzungen müssen für alle Zeichenfolgen in der Richtlinie bereitgestellt werden.
+Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Übersetzungen bereitstellt. Die Übersetzungen müssen für alle Zeichenfolgen in der Richtlinie bereitgestellt werden.  Sprach- und Gebietsschema-Codes sind auf die begrenzt, die im ISO-Standard 639-1 festgelegt sind. 
 
 1. Wählen Sie auf der Seite **Richtlinie bearbeiten** die Option **Sprachanpassung** aus.
 2. Wählen Sie im oberen Bereich der Seite **Benutzerdefinierte Sprache hinzuzufügen** aus.
@@ -165,6 +162,10 @@ Sie können auch Sprachen hinzufügen, für die Microsoft aktuell keine Überset
 6. Nachdem Sie auf **Aktivieren** geklickt haben, kann Ihre Richtlinie diese Sprache für Ihre Benutzer anzeigen.
 7. Speichern Sie die Sprache.
 
+>[!IMPORTANT]
+>Sie müssen benutzerdefinierte Sprachen aktivieren oder Außerkraftsetzungen dafür hochladen, bevor Sie speichern können.
+>
+
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
 ### <a name="page-ui-customization-labels-as-overrides"></a>Bezeichnungen der Seite für die Benutzeroberflächenanpassung als Außerkraftsetzungen
@@ -172,7 +173,7 @@ Wenn Sie die Sprachanpassung aktivieren, werden Ihre bisherigen Bearbeitungen f�
 ### <a name="up-to-date-translations"></a>Aktuelle Übersetzungen
 Microsoft ist bemüht, Ihnen möglichst aktuelle Übersetzungen zur Verfügung zu stellen. Die Übersetzungen werden kontinuierlich optimiert und auf ihre Konformität überprüft. Microsoft ermittelt Fehler und Änderungen für die globale Terminologie und nimmt geeignete Aktualisierungen für Ihre User Journey vor.
 ### <a name="support-for-right-to-left-languages"></a>Unterstützung für von rechts nach links geschriebene Sprachen
-Von rechts nach links geschriebene Sprachen werden von Microsoft derzeit nicht unterstützt. Sollten Sie dieses Feature benötigen, stimmen Sie im [Azure-Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag) dafür ab.
+Von rechts nach links geschriebene Sprachen werden von Microsoft derzeit nicht unterstützt. Dies erreichen Sie, indem Sie benutzerdefinierte Gebietsschemas verwenden und mithilfe von CSS ändern, wie Zeichenfolgen angezeigt werden.  Sollten Sie dieses Feature benötigen, stimmen Sie im [Azure-Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/19393000-provide-language-support-for-right-to-left-languag) dafür ab.
 ### <a name="social-identity-provider-translations"></a>Übersetzungen für den Fall „Soziales Netzwerk als Identitätsanbieter“
 Für Anmeldungen per sozialem Netzwerk stellt Microsoft den OIDC-Parameter `ui_locales` bereit. Einige soziale Netzwerke, die als Identitätsanbieter fungieren, erkennen diesen jedoch nicht an. Dazu zählen auch Facebook und Google. 
 ### <a name="browser-behavior"></a>Browserverhalten

@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 5/4/18
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 3903e0f55e996d2ff793f17fb710843c5c64127f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87396204933ca964634656f9eb84c6d245c0c6c0
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201197"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -83,6 +84,12 @@ Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den f
    3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
    4. Wählen Sie die App in den Suchergebnissen aus.  
        In der Verknüpfungsliste **Zuletzt verwendet** werden die drei zuletzt verwendeten Apps angezeigt.
+       
+* Um interne Unternehmens-URLs per Remotezugriff zu verwenden, gehen Sie wie folgt vor:
+    1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
+    2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
+    3. Installieren Sie die Erweiterung, und melden Sie sich bei ihr an, indem Sie „Melden Sie sich an, um loszulegen“ auswählen.
+    4. Nun können Sie selbst per Remotezugriff zu der internen Unternehmens-URL browsen.
 
 > [!NOTE]
 > Die obigen Optionen sind nur für Microsoft Edge, Chrome und Firefox verfügbar.

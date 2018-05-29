@@ -15,6 +15,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932538"
 ---
 # <a name="manage-user-access-in-azure-ad-b2c"></a>Verwalten des Benutzerzugriffs in Azure AD B2C
 

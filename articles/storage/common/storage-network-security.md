@@ -1,8 +1,8 @@
 ---
 title: Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage | Microsoft-Dokumentation
-description: "Konfigurieren Sie mehrstufige Netzwerksicherheit für Ihr Speicherkonto."
+description: Konfigurieren Sie mehrstufige Netzwerksicherheit für Ihr Speicherkonto.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: cbrooksmsft
 manager: cbrooks
 editor: cbrooks
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 52d904e7a7e8e5d520d2abd799ef0ae7e99b9894
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192875"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
@@ -37,11 +38,9 @@ Sobald Netzwerkregeln angewendet werden, werden sie für alle Anforderungen erzw
 
 Datenverkehr virtueller Computer (einschließlich Bereitstellungsvorgängen, des Aufhebens von Bereitstellungen und Datenträger-E/A) ist von Netzwerkregeln **nicht** betroffen.  Der REST-Zugriff auf Seitenblobs wird durch Netzwerkregeln geschützt.
 
-> [!NOTE]
-> Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird derzeit nicht unterstützt.  Weitere Informationen finden Sie unter [Einschränkungen beim Sichern und Wiederherstellen eines virtuellen Computers](/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm).
->
-
 Die Funktion „Firewalls und virtuelle Netzwerke“ wird von klassischen Speicherkonten **nicht** unterstützt.
+
+Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit Anwendung von Netzwerkregeln wird über das Erstellen einer Ausnahme gemäß Beschreibung im Abschnitt [Ausnahmen](/storage/common/storage-network-security#exceptions) dieses Artikels unterstützt.  Firewallausnahmen sind nicht mit verwalteten Datenträgern anwendbar, da sie bereits von Azure verwaltet werden.
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
 Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk.  Um den Zugriff auf ausgewählte Netzwerke zu beschränken, müssen Sie zunächst die Standardaktion ändern.
@@ -291,6 +290,7 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 
 |Dienst|Name des Ressourcenanbieters|Zweck|
 |:------|:---------------------|:------|
+|Azure Backup|Microsoft.Backup|Ausführen von Sicherungen und Wiederherstellungen von nicht verwalteten Datenträgern in IAAS-VMs. (nicht für verwaltete Datenträger erforderlich). [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup)|
 |Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)|
 |Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview)|
 |Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|

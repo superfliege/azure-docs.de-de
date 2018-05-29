@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
-ms.topic: article
+ms.date: 04/26/2018
+ms.topic: conceptual
 ms.service: cost-management
-manager: carmonm
+manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b7141d028c496b75b061c17aa19ad6c73c0588c0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32164413"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Herstellen einer Verbindung eines Google Cloud Platform-Kontos
 
@@ -24,7 +25,7 @@ Sie können eine Verbindung Ihres bestehenden Google Cloud Platform-Kontos mit A
 
 Sie beginnen mit dem Sammeln von Informationen zu Ihrem Projekt.
 
-1. Melden Sie sich unter [https://console.cloud.google.com](https://console.cloud.google.com) bei der Google Cloud Platform-Konsole an.
+1. Melden Sie sich bei der Google Cloud Platform-Konsole unter [https://console.cloud.google.com](https://console.cloud.google.com) an.
 2. Überprüfen Sie die Projektinformationen, die Sie Cost Management übergeben möchten, und notieren Sie **Project name (Projektname)** und **Project ID (Projekt-ID)**. Halten Sie die Informationen für spätere Schritte bereit.  
     ![Google Cloud Platform-Konsole](./media/connect-google-account/gcp-console01.png)
 3. Wenn die Abrechnung nicht aktiviert und mit Ihrem Projekt verknüpft ist, erstellen Sie ein Abrechnungskonto. Weitere Informationen finden Sie unter [Neues Rechnungskonto erstellen](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
@@ -59,7 +60,7 @@ Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cost Management vora
 
 ## <a name="add-a-google-cloud-account-to-cost-management"></a>Hinzufügen eines Google Cloud-Kontos zu Cost Management
 
-1. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com/), und melden Sie sich dort an.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com/), und melden Sie sich an.
 2. Klicken Sie auf **Einstellungen** (Zahnrad-Symbol), und wählen Sie dann **Cloud Accounts (Cloudkonten)**.
 3. Wählen Sie unter **Accounts Management (Kontenverwaltung)** die Registerkarte **Google Accounts (Google-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)**.
 4. Geben Sie in **Google Account Name (Google-Kontoname)** die E-Mail-Adresse für das Abrechnungskonto ein, und klicken Sie auf **Next (Weiter)**.

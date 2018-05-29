@@ -1,19 +1,20 @@
 ---
-title: "Überwachen eines Azure-DC/OS-Clusters – ELK-Stapel"
-description: "Überwachen eines DC/OS-Clusters in Azure Container Service-Clustern mit ELK (Elasticsearch, Logstash und Kibana)."
+title: Überwachen eines Azure-DC/OS-Clusters – ELK-Stapel
+description: Überwachen eines DC/OS-Clusters in Azure Container Service-Clustern mit ELK (Elasticsearch, Logstash und Kibana).
 services: container-service
 author: sauryadas
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: b378fc38233534df74582388e6e832d40f431d11
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: dc863894d8846e066c90bdf7b309f141d32a1186
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32163179"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-elk"></a>Überwachen eines Azure Container Service-Clusters mit ELK
 
@@ -27,7 +28,7 @@ Sie müssen einen per Azure Container Service konfigurierten DC/OS-Cluster [bere
 Beim ELK-Stapel handelt es sich um eine Kombination aus Elasticsearch, Logstash und Kibana für einen End-to-End-Stapel, der zum Überwachen und Analysieren von Protokollen in Ihrem Cluster verwendet werden kann.
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>Konfigurieren des ELK-Stapels in einem DC/OS-Cluster
-Greifen Sie auf die DC/OS-Benutzeroberfläche über [http://localhost:80/](http://localhost:80/) zu. Navigieren Sie anschließend zu **Universe**. Suchen und installieren Sie Elasticsearch, Logstash und Kibana in DC/OS Universe in genau dieser Reihenfolge. Weitere Informationen zur Konfiguration finden Sie unter dem Link **Advanced Installation** (Erweiterte Installation).
+Greifen Sie über [http://localhost:80/](http://localhost:80/) auf die DC/OS-Benutzeroberfläche zu. Navigieren Sie anschließend zu **Universe**. Suchen und installieren Sie Elasticsearch, Logstash und Kibana in DC/OS Universe in genau dieser Reihenfolge. Weitere Informationen zur Konfiguration finden Sie unter dem Link **Advanced Installation** (Erweiterte Installation).
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 

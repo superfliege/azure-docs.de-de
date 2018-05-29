@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e3e59395b7066169b8a7863f45a446051b830a71
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159271"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Schnellstartanleitung für PowerShell in Azure Cloud Shell (Vorschauversion)
 
@@ -274,13 +275,13 @@ Generieren Sie zum Authentifizieren für Server oder VMs per SSH das Paar aus ei
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>Verwenden eines benutzerdefinierten Profils zum Beibehalten von GIT- und SSH-Einstellungen
 
-Da Sitzungen beim Abmelden nicht gespeichert und beibehalten werden, sollten Sie das Verzeichnis `$env:USERPROFILE\.ssh` unter `CloudDrive` speichern oder beim Starten von Cloud Shell einen Symlink erstellen.
-Fügen Sie den folgenden Codeausschnitt Ihrer Datei „profile.ps1“ hinzu, um einen symlink zu CloudDrive zu erstellen.
+Da Sitzungen beim Abmelden nicht gespeichert und beibehalten werden, sollten Sie das Verzeichnis `$env:USERPROFILE\.ssh` unter `clouddrive` speichern oder beim Starten von Cloud Shell einen Symlink erstellen.
+Fügen Sie den folgenden Codeausschnitt Ihrer Datei „profile.ps1“ hinzu, um einen Symlink zu `clouddrive` zu erstellen.
 
 ``` PowerShell
 # Check if the .ssh directory exists
-if( -not (Test-Path $home\CloudDrive\.ssh)){
-    mkdir $home\CloudDrive\.ssh
+if( -not (Test-Path $home\clouddrive\.ssh)){
+    mkdir $home\clouddrive\.ssh
 }
 
 # .ssh path relative to this script
@@ -347,21 +348,21 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-files-to-store-your-data"></a>Verwenden von Azure Files zum Speichern Ihrer Daten
 
-Sie können ein Skript erstellen (beispielsweise `helloworld.ps1`) und es in Ihrem `CloudDrive` speichern, um es für verschiedene Shellsitzungen zu verwenden.
+Sie können ein Skript erstellen (beispielsweise `helloworld.ps1`) und es in Ihrem `clouddrive` speichern, um es für verschiedene Shellsitzungen zu verwenden.
 
 ``` PowerShell
-cd C:\users\ContainerAdministrator\CloudDrive
-PS C:\users\ContainerAdministrator\CloudDrive> vim .\helloworld.ps1
+cd C:\users\ContainerAdministrator\clouddrive
+PS C:\users\ContainerAdministrator\clouddrive> vim .\helloworld.ps1
 # Add the content, such as 'Hello World!'
-PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
+PS C:\users\ContainerAdministrator\clouddrive> .\helloworld.ps1
 Hello World!
 ```
 
-Wenn Sie PowerShell das nächste Mal in Cloud Shell verwenden, ist die Datei `helloworld.ps1` im Verzeichnis `CloudDrive` enthalten, der Ihre Azure Files-Freigabe einbindet.
+Wenn Sie PowerShell das nächste Mal in Cloud Shell verwenden, ist die Datei `helloworld.ps1` im Verzeichnis `clouddrive` enthalten, der Ihre Azure Files-Freigabe einbindet.
 
 ## <a name="use-custom-profile"></a>Verwenden benutzerdefinierter Profile
 
-Sie können die PowerShell-Umgebung anpassen, indem Sie PowerShell-Profile – `profile.ps1` oder `Microsoft.PowerShell_profile.ps1` – erstellen. Speichern Sie es unter dem `CloudDrive`, damit es in jeder PowerShell-Sitzung geladen werden kann, wenn Sie Cloud Shell starten.
+Sie können die PowerShell-Umgebung anpassen, indem Sie PowerShell-Profile – `profile.ps1` oder `Microsoft.PowerShell_profile.ps1` – erstellen. Speichern Sie es unter dem `clouddrive`, damit es in jeder PowerShell-Sitzung geladen werden kann, wenn Sie Cloud Shell starten.
 
 Informationen zum Erstellen von Profilen finden Sie unter [Informationen zu Profilen][profile].
 
@@ -373,7 +374,7 @@ Wenn Sie in Cloud Shell ein Git-Repository klonen möchten, müssen Sie ein [per
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-Da Sitzungen in Cloud Shell nicht beibehalten werden, wenn Sie sich abmelden oder das Zeitlimit der Sitzung erreicht wurde, ist die Git-Konfigurationsdatei bei der nächsten Anmeldung nicht mehr vorhanden. Damit Ihre Git-Konfiguration erhalten bleibt, müssen Sie Ihre GITCONFIG-Datei in Ihrem `CloudDrive` speichern und sie kopieren oder einen Symlink erstellen, wenn Cloud Shell gestartet wird. Verwenden Sie den folgenden Codeausschnitt aus Ihrer „profile.ps1“, um einen Symlink zum `CloudDrive` zu erstellen.
+Da Sitzungen in Cloud Shell nicht beibehalten werden, wenn Sie sich abmelden oder das Zeitlimit der Sitzung erreicht wurde, ist die Git-Konfigurationsdatei bei der nächsten Anmeldung nicht mehr vorhanden. Damit Ihre Git-Konfiguration erhalten bleibt, müssen Sie Ihre GITCONFIG-Datei in Ihrem `clouddrive` speichern und sie kopieren oder einen Symlink erstellen, wenn Cloud Shell gestartet wird. Verwenden Sie den folgenden Codeausschnitt aus Ihrer „profile.ps1“, um einen Symlink zum `clouddrive` zu erstellen.
 
  ``` PowerShell
  

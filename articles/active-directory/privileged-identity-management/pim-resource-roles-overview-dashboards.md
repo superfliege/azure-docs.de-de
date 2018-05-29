@@ -1,6 +1,6 @@
 ---
-title: Durchführen einer Zugriffsüberprüfung in Privileged Identity Management für Azure-Ressourcen | Microsoft-Dokumentation
-description: In diesem Dokument wird beschrieben, wie Sie in PIM eine Überprüfung für Azure-Ressourcen durchführen.
+title: 'Übersicht: Durchführen einer Zugriffsüberprüfung in Privileged Identity Management für Azure-Ressourcen | Microsoft-Dokumentation'
+description: In diesem Dokument wird beschrieben, wie Sie in PIM eine Zugriffsüberprüfung für Azure-Ressourcen durchführen.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -14,20 +14,29 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: f1bcf114b997c3056016b84cafc28253ea1af28e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 61be9873cac462c096599680a6e071e104f3a54c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200619"
 ---
-# <a name="resource-dashboards"></a>Ressourcendashboards
+# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>Verwenden eines Ressourcendashboards für die Zugriffsüberprüfung
 
-Das Dashboard mit der Administratoransicht verfügt über vier Hauptkomponenten. Eine grafische Darstellung der Ressourcenrollenaktivierungen der letzten sieben Tage. Diese Daten beziehen sich auf die ausgewählte Ressource und geben Aufschluss über Aktivierungen für die gängigsten Rollen (Besitzer, Mitwirkender, Benutzerzugriffsadministrator) sowie für alle Rollen zusammen.
+Sie können ein Ressourcendashboard verwenden, um eine Zugriffsüberprüfung in Privileged Identity Management (PIM) für Azure-Ressourcen durchzuführen. Das Dashboard mit der Administratoransicht besteht aus drei Hauptkomponenten:
+
+- eine grafische Darstellung der Ressourcenrollenaktivierungen
+- zwei Diagramme, die die Verteilung von Rollenzuweisungen nach Zuweisungstyp darstellen
+- ein Datenbereich, der sich auf neue Rollenzuweisungen bezieht
+
+![Screenshot der Dashboardadministratoransicht mit Diagrammen](media/azure-pim-resource-rbac/rbac-overview-top.png)
+
+![Screenshot der Dashboardadministratoransicht mit Datenlisten](media/azure-pim-resource-rbac/role-settings.png)
+
+Die grafische Darstellung der Ressourcenrollenaktivierungen deckt die letzten sieben Tage ab. Diese Daten beziehen sich auf die ausgewählte Ressource und geben Aufschluss über Aktivierungen für die gängigsten Rollen (Besitzer, Mitwirkender, Benutzerzugriffsadministrator) sowie für alle Rollen zusammen.
 
 Rechts neben dem Aktivierungsdiagramm befinden sich zwei Diagramme mit der Verteilung von Rollenzuweisungen nach Zuweisungstyp (für Benutzer und Gruppen). Wenn Sie auf ein Segment des Diagramms klicken, ändert sich der Wert in einen Prozentsatz (oder umgekehrt).
 
-![](media/azure-pim-resource-rbac/rbac-overview-top.png)
+Unterhalb der Diagramme werden die Anzahl von Benutzern und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen sowie eine (in absteigender Reihenfolge) nach Gesamtzuweisungen sortierte Liste mit Rollen angezeigt.
 
-Unterhalb der Diagramme werden die Anzahl von Benutzern und Gruppen mit neuen Rollenzuweisungen in den letzten 30 Tagen (links) sowie eine absteigend nach Gesamtzuweisungen sortierte Liste mit Rollen angezeigt.
 
-![](media/azure-pim-resource-rbac/role-settings.png)

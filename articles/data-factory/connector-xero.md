@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 09a1bfc47cd048e371575f80933f5bfd0116bf8e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 131f147e2c445e8cfef12288d4d0d29f6fd7fe01
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32167550"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory (Beta)
 
@@ -55,7 +56,7 @@ Folgende Eigenschaften werden für den mit Xero verknüpften Dienst unterstützt
 | type | Die „type“-Eigenschaft muss auf **Xero** festgelegt werden. | Ja |
 | host | Der Endpunkt des Xero-Servers (`api.xero.com`).  | Ja |
 | consumerKey | Der Consumerschlüssel, der der Xero-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| privateKey | Der private Schlüssel aus der PEM-Datei, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines öffentlichen/privaten Schlüsselpaars](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| privateKey | Der private Schlüssel aus der PEM-Datei, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines öffentlichen/privaten Schlüsselpaars](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit NumBits von 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren; 1024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

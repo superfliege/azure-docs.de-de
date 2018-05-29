@@ -4,15 +4,15 @@ description: Ein Whitepaper mit einer Übersicht über die Migration Ihrer lokal
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: tutorial
-ms.date: 04/08/2018
+ms.topic: conceptual
+ms.date: 04/21/2018
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: be322596da0c3e5ba18aa64285c437cdb823fc4b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8ba490998ea5f20efca591327716a6e39e9c1ba8
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32167754"
 ---
 # <a name="migrating-your-on-premises-workloads-to-azure"></a>Migrieren Ihrer lokalen Workloads zu Azure
 
@@ -27,11 +27,11 @@ In dieser Reihe mit Migrationsartikeln wird gezeigt, wie Sie eine Migrationsstra
 
 **Szenario** | **Lösung** | **Dienste** | **Artikel** 
 --- | --- | --- | ---
-[Szenario 1: Ermittlung und Bewertung](migrate-scenarios-assessment.md) | Ermitteln und Bewerten lokaler Apps und Daten für die Migration zu Azure | Datenmigrations-Assistent, Azure Migrate-Dienst  | Jetzt verfügbar
-**Szenario 2: Lift & Shift-Migration** | Hosten interner Apps in Azure. Optimierung in Azure nach der Migration. | Azure Site Recovery, Azure Database Migration Service, Verwaltete Azure SQL-Instanz | Jetzt verfügbar
-**Szenario 3: Umgestalten und Migrieren** | Modernisieren und Umgestalten von lokalen Kunden-Apps während der Migration zu Azure | In Planung | Geplant
-**Szenario 4: Umstrukturieren und Migrieren** | Umstrukturieren und Migrieren der Transaktionswebsites von Kunden während der Migration zu Azure | In Planung | Geplant
-**Szenario 5: Erneutes Erstellen** |Erneutes Erstellen und Migrieren der Kunden-App und -daten zu Azure | In Planung | Geplant
+[Szenario 1: Ermittlung und Bewertung](migrate-scenarios-assessment.md) | Ermitteln und Bewerten von lokalen Apps, Daten und Infrastruktur für die Migration zu Azure | Datenmigrations-Assistent, Azure Migrate-Dienst  | Jetzt verfügbar
+**[Szenario 2: App erneut hosten](migrate-scenarios-lift-and-shift.md)** | Migrieren Sie Apps per Lift & Shift zu Azure. | Azure Site Recovery, Azure Database Migration Service, Verwaltete Azure SQL-Instanz | Jetzt verfügbar
+**Szenario 3: App umgestalten** | Gestalten Sie Apps während der Migration zu Azure um. | In Planung | Geplant
+**Szenario 4: App überarbeiten** | Überarbeiten Sie Apps während der Migration zu Azure. | In Planung | Geplant
+**Szenario 5: App erneut erstellen** |Erstellen Sie Apps während der Migration zu Azure neu. | In Planung | Geplant
 
 
 

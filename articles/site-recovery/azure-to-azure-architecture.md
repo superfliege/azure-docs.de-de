@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 111217e9335b16659c93da88731e0b7ce6d5fecd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ffa60e24b93caaaefcab70c99fa2c76065d97233
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187707"
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektur der Azure-zu-Azure-Replikation
 
@@ -46,7 +47,7 @@ Wenn Sie die Azure-VM-Replikation aktivieren, werden die folgenden Ressourcen au
 
 **Ressource** | **Details**
 --- | ---
-**Zielressourcengruppe** | Die Ressourcengruppe, zu denen replizierte VMs nach einem Failover gehören.
+**Zielressourcengruppe** | Die Ressourcengruppe, zu denen replizierte VMs nach einem Failover gehören. Der Speicherort der Ressourcengruppe kann eine beliebige Azure-Region sein, mit Ausnahme der Azure-Region, in der die virtuellen Quellcomputer gehostet werden.
 **Virtuelles Zielnetzwerk** | Das virtuelle Netzwerk, in dem sich nach einem Failover replizierte VMs befinden. Eine Netzwerkzuordnung von virtuellen Quell- zu Zielnetzwerken (und umgekehrt) wird erstellt.
 **Cachespeicherkonten** | Bevor Änderungen an Quell-VMs in ein Zielspeicherkonto repliziert werden, werden sie nachverfolgt und an das Cachespeicherkonto im Quellspeicherort gesendet. Dieser Schritt stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktion-Apps so gering wie möglich sind.
 **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)**  | Speicherkonten am Zielstandort, an dem die Daten repliziert werden.

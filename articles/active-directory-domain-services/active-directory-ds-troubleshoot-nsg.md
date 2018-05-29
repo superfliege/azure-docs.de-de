@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: ce03ee0e0936cea4b96e48fbc949f40ee0fe83a0
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2336277a960925a92af3578850453ba6ae78abda
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201265"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Netzwerkkonfiguration für verwaltete Domänen
 Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurationsfehlern im Zusammenhang mit dem Netzwerk, die zu der folgenden Fehlermeldung führen:
@@ -28,6 +29,13 @@ Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurati
 
 Die häufigste Ursache von Netzwerkfehlern für Azure AD Domain Services sind ungültige NSG-Konfigurationen. Die für das virtuelle Netzwerk konfigurierte Netzwerksicherheitsgruppe (NSG) muss den Zugriff auf [bestimmte Ports](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services) zulassen. Wenn diese Ports blockiert sind, kann Microsoft die verwaltete Domäne nicht überwachen oder aktualisieren. Darüber hinaus wird die Synchronisierung zwischen Ihrem Azure AD-Verzeichnis und der verwalteten Domäne beeinträchtigt. Halten Sie diese Ports während der Erstellung Ihrer NSG offen, um Dienstunterbrechungen zu vermeiden.
 
+### <a name="checking-your-nsg-for-compliance"></a>Überprüfen der NSG auf Konformität
+
+1. Navigieren Sie zur Seite [Netzwerksicherheitsgruppen](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups) im Azure-Portal.
+2. Wählen Sie in der Tabelle die NSG aus, die dem Subnetz zugeordnet ist, in dem Ihre verwaltete Domäne aktiviert ist.
+3. Klicken Sie im linken Bereich unter **Einstellungen** auf **Eingangssicherheitsregeln**.
+4. Überprüfen Sie die bestehenden Regeln, und finden Sie heraus, welche Regeln den Zugang auf [diese Ports](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services) blockieren.
+5. Bearbeiten Sie die NSG, um Konformität sicherzustellen, indem Sie entweder die Regel löschen, eine Regel hinzufügen oder eine komplett neue NSG erstellen. Schritte zum [Hinzufügen einer Regel](#add-a-rule-to-a-network-security-group-using-the-azure-portal) oder [Erstellen einer neuen, konformen NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) finden Sie weiter unten.
 
 ## <a name="sample-nsg"></a>NSG-Beispiel
 Die folgende Tabelle zeigt ein NSG-Beispiel, das den Schutz Ihrer verwalteten Domäne sicherstellt und es Microsoft zugleich ermöglicht, Informationen zu überwachen, zu verwalten und zu aktualisieren.
@@ -47,7 +55,7 @@ Wenn Sie PowerShell nicht verwenden möchten, können Sie den NSGs mithilfe des 
 5. Überprüfen Sie, ob Ihre Regel erstellt wurde, indem Sie sie in der Tabelle der Regeln suchen.
 
 
-## <a name="create-an-nsg-for-azure-ad-domain-services-using-powershell"></a>Erstellen einer NSG für Azure AD Domain Services mithilfe von PowerShell
+## <a name="create-a-nsg-for-azure-ad-domain-services-using-powershell"></a>Erstellen einer NSG für Azure AD Domain Services mithilfe von PowerShell
 Diese NSG wird so konfiguriert, dass sie eingehenden Datenverkehr an den für Azure AD Domain Services erforderlichen Ports zulässt und andere unerwünschte Zugriffe in eingehender Richtung verweigert.
 
 **Voraussetzung: Installieren und Konfigurieren von Azure PowerShell:** Befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls und Herstellen einer Verbindung mit Ihrem Azure-Abonnement](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?toc=%2fazure%2factive-directory-domain-services%2ftoc.json).

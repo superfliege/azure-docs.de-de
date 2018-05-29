@@ -11,44 +11,30 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 7d6abb72fca71c213f9810784581a9af2dafb3a2
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: b6c2e2b685855455550612abb58ada6a694bbdff
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011525"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
-Mit der Lookupaktivität können Sie einen Datensatz, einen Tabellennamen oder einen Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden. 
 
-Die Lookupaktivität ist nützlich, wenn Sie eine Liste von Dateien, Datensätzen oder Tabellen dynamisch aus einer Konfigurationsdatei oder einer Datenquelle abrufen möchten. Die Ausgabe der Aktivität kann von anderen Aktivitäten weiter verwendet werden, um eine bestimmte Verarbeitung nur für diese Elemente auszuführen.
+Mit einer Nachschlageaktivität kann ein Dataset aus einer beliebigen ADF-fähigen Datenquelle abgerufen werden.  Sie kann im folgenden Szenario verwendet werden:
+- Dynamische Bestimmung der Objekte (Dateien, Tabellen etc.), die in einer nachfolgenden Aktivität verarbeitet werden sollen, statt der Hartcodierung von Objektnamen
+
+Die Nachschlageaktivität kann den Inhalt einer Konfigurationsdatei, einer Konfigurationstabelle oder das Ergebnis der Ausführung einer Abfrage oder gespeicherten Prozedur lesen und zurückgeben.  Die Ausgabe der Nachschlageaktivität kann als Singleton-Wert in einer nachfolgenden Kopier- oder Transformationsaktivitäten oder als Gruppe von Attributen in einer ForEach-Aktivität verwendet werden.
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die folgenden Datenquellen werden derzeit für die Lookupaktivität unterstützt:
+Die folgenden Datenquellen werden zum Nachschlagen unterstützt: Von der Nachschlageaktivität können maximal **5000** Zeilen mit einer Größe von bis zu **2 MB** zurückgegeben werden. Derzeit beträgt die maximale Dauer für die Nachschlageaktivität vor dem Timeout eine Stunde.
 
-- Amazon Redshift
-- Azure Blob Storage
-- Azure Cosmos DB
-- Azure Data Lake Store
-- Azure-Dateispeicher
-- Azure SQL-Datenbank
-- Azure SQL Data Warehouse
-- Azure-Tabellenspeicher
-- Dynamics 365
-- Dynamics CRM
-- Dateisystem
-- PostgreSQL
-- Salesforce
-- Salesforce Service Cloud
-- SFTP
-- SQL Server
-
-Von der Lookup-Aktivität werden maximal **5.000** Zeilen mit einer Größe von bis zu **10 MB** zurückgegeben.
+[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
 ## <a name="syntax"></a>Syntax
 
@@ -77,10 +63,11 @@ dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden
 Quelle | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt „Eigenschaften der Kopieraktivität“. | Schlüssel-Wert-Paar | Ja
 firstRowOnly | Gibt an, ob nur die erste Zeile oder alle Zeilen zurückgegeben werden sollen. | Boolescher Wert | Nein. Der Standardwert ist `true`.
 
-Beachten Sie folgende Punkte:
+**Beachten Sie folgende Punkte:**
 
 1. Eine Quellspalte mit dem Typ „ByteArray“ wird nicht unterstützt.
 2. In der Datasetdefinition wird keine Struktur unterstützt. Bei Textformatdateien können Sie den Spaltennamen in der Kopfzeile angeben.
+3. Wenn Ihre Nachschlagequelle eine JSON-Datei ist, wird die Einstellung `jsonPathDefinition` zur Neustrukturierung des JSON-Objekts nicht unterstützt, und die gesamten Objekte werden abgerufen.
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Verwenden des Ergebnisses der Lookupaktivität in einer nachfolgenden Aktivität
 

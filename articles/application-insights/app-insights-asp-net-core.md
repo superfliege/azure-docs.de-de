@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3f57eb3ede3b57e28c13e053b86ab022fdd21b7e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 2245fcdaa8b7e85ea37e9af9c939cd188c4d7ed9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157141"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
@@ -187,13 +188,13 @@ Nachdem Sie die obigen Schritte ausgeführt haben, können Sie testen, ob alles 
 
    ![Screenshot: Live Metrics Stream](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Wenn Ihr PowerShell-Skript noch ausgeführt wird, sollten Livemetriken angezeigt werden. Ist das Skript bereits beendet, starten Sie es erneut, während Live Stream geöffnet ist.)
+   (Wenn Ihr PowerShell-Skript noch ausgeführt wird, sollten Livemetriken angezeigt werden. Wurde das Skript bereits beendet, starten Sie es erneut, während Live Stream geöffnet ist.)
 
 ## <a name="app-insights-sdk-comparison"></a>Vergleich für das App Insights SDK
 
 Die Application Insights-Produktgruppe hat sich sehr darum bemüht, eine möglichst hohe Featureübereinstimmung zwischen dem [vollständigen .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) und dem .NET Core SDK zu erreichen. Mit der Version 2.2.0 des [ASP.NET Core SDKs](https://github.com/Microsoft/ApplicationInsights-aspnetcore) für Application Insights wurde die Featurelücke größtenteils geschlossen.
 
-Weitere Informationen zu den Unterschieden und Kompromissen zwischen .NET und .NET Core finden Sie [hier](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server).
+Weitere Informationen zu den Unterschieden und Kompromissen zwischen .NET und .NET Core finden Sie [hier](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
 
    | ASK-Vergleich | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
@@ -203,7 +204,7 @@ Weitere Informationen zu den Unterschieden und Kompromissen zwischen .NET und .N
    | **SQL-Abhängigkeitsaufrufe**     | **+** |**-** | **+**|
    | **Leistungsindikatoren*** | **+** | **-**| **-**|
 
-_Leistungsindikatoren_ bezieht sich in diesem Kontext auf [serverseitige Leistungsindikatoren](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) wie Prozessor, Arbeitsspeicher und Datenträgernutzung.
+_Leistungsindikatoren_ bezieht sich in diesem Kontext auf [serverseitige Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) wie Prozessor, Arbeitsspeicher und Datenträgernutzung.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 [Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)

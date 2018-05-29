@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: dukek
-ms.openlocfilehash: a1f163acea4e1965ab90b32e23e502b13f8908be
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32170375"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -96,7 +97,7 @@ Sprachanruf</dt>
 
 <dt>Webhook</dt>
 <dd>Eine Aktionsgruppe kann bis zu zehn Webhookaktionen enthalten.
-<dd>Wiederholungslogik: Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn die HTTP-Statuscodes 408, 429, 503 oder 504 zurückgegeben werden oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite und letzte Wiederholungsversuch erfolgt nach 100 Sekunden.</dd>
+<dd>Wiederholungslogik – Die Timeoutperiode für eine Antwort beträgt 10 Sekunden. Es wird maximal zweimal versucht, den Webhookaufruf durchzuführen, wenn die HTTP-Statuscodes 408, 429, 503 oder 504 zurückgegeben werden oder der HTTP-Endpunkt nicht reagiert. Der erste Wiederholungsversuch erfolgt nach 10 Sekunden. Der zweite und letzte Wiederholungsversuch erfolgt nach 100 Sekunden.</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>Verwalten von Aktionsgruppen ##

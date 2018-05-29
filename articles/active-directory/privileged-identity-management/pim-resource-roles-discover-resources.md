@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management für Azure-Ressourcen – Ermitteln und Verwalten von Azure-Ressourcen | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Azure-Ressourcen schützen.
+title: Ermitteln und Verwalten von Azure-Ressourcen mit Privileged Identity Management | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Azure-Ressourcen mit PIM schützen.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,57 +12,56 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/30/2018
 ms.author: billmath
-ms.openlocfilehash: 78650e47ec92aa144e4ccc8c57f309240bf31ee3
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 51a10ea164e8bd7650ad2823281d9ed6a4c91915
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151279"
 ---
-# <a name="discover-and-manage-azure-resources"></a>Ermitteln und Verwalten von Azure-Ressourcen
+# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Ermitteln und Verwalten von Azure-Ressourcen mit Privileged Identity Management
 
-Wenn in Ihrer Organisation Azure AD PIM bereits genutzt wird, um Administratoren in Ihrem Verzeichnis zu schützen, oder wenn Sie ein Abonnementbesitzer sind, der Produktionsressourcen schützen möchte, sind Sie hier richtig.
+Erfahren Sie, wie Sie Azure-Ressourcen ermitteln und verwalten, wenn Sie Privileged Identity Management (PIM) in Azure Active Directory (Azure AD) verwenden. Diese Informationen können hilfreich sein für Organisationen, die PIM bereits zum Schutz von Administratorressourcen verwenden, und für Abonnementbesitzer, die Produktionsressourcen schützen möchten.
 
-Beim erstmaligen Aktivieren von PIM für Azure-Ressourcen müssen Sie Ressourcen ermitteln und auswählen, die mit PIM geschützt werden sollen. Es gibt keine Beschränkung der Anzahl von Ressourcen, die Sie mit PIM verwalten können, aber wir raten Ihnen, mit Ihren wichtigsten Ressourcen (für die Produktion) zu beginnen.
+Beim erstmaligen Einrichten von PIM für Azure-Ressourcen müssen Sie Ressourcen ermitteln und auswählen, die mit PIM geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit PIM verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Ressourcen (für die Produktion) zu beginnen.
 
-> [!Note]
-> Nur Abonnementressourcen können zu Verwaltungszwecken durchsucht und ausgewählt werden. Wenn Sie für ein Abonnement in PIM die Verwaltung eines Abonnements auswählen, wird die Verwaltung auch für alle untergeordneten Ressourcen aktiviert.
+> [!NOTE]
+> Zur Verwaltung mithilfe von PIM können Sie nur Abonnementressourcen durchsuchen und auswählen. Wenn Sie ein Abonnement in PIM verwalten, können Sie auch die untergeordneten Ressourcen im Abonnement verwalten.
 
 ## <a name="discover-resources"></a>Ermitteln von Ressourcen
 
-Navigieren Sie zu Azure AD PIM, und wählen Sie im linken Navigationsmenü im Abschnitt „Verwalten“ die Azure-Ressourcen aus.
+Navigieren Sie im Azure-Portal zum Bereich **Privileged Identity Management**. Wählen Sie im linken Menü im Abschnitt **VERWALTEN** die Option **Azure-Ressourcen** aus.
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+![Bereich „Privileged Identity Management - Azure-Ressourcen“](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-Falls Sie PIM für Azure-Ressourcen zum ersten Mal verwenden, müssen Sie die Ermittlung für die zu verwaltenden Ressourcen durchführen.
-Klicken Sie in der Mitte des Bildschirms auf die Schaltfläche „Discover resources“ (Ressourcen ermitteln), um die Oberfläche für die Ermittlung zu starten.
+Wenn Sie PIM für Azure-Ressourcen zum ersten Mal verwenden, führen Sie zunächst die Ermittlung für die zu verwaltenden Ressourcen durch. Wählen Sie im Bereich **Ressourcen ermitteln** die Schaltfläche **Ressourcen ermitteln** aus, um die Oberfläche für die Ermittlung zu starten.
 
-![](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
+![Bereich „Ressourcen ermitteln“](media/azure-pim-resource-rbac/aadpim_first_run_discovery.png)
 
-Wenn eine Azure-Ressource bereits von einer anderen Ressource oder einem Verzeichnisadministrator in Ihrer Organisation mit PIM verwaltet wird oder wenn Sie über eine berechtigte Rollenzuweisung für eine Ressource verfügen, enthält die Listenansicht eine Meldung der folgenden Art: „Discover resources or activate an eligible role assignment to continue“ (Ermitteln Sie Ressourcen, oder aktivieren Sie eine berechtigte Rollenzuweisung, um fortzufahren). 
+Wenn eine Azure-Ressource bereits von einem anderen Ressourcen- oder Verzeichnisadministrator in Ihrer Organisation mit PIM verwaltet wird oder wenn Sie über eine berechtigte Rollenzuweisung für eine Ressource verfügen, wird in der Listenansicht die Meldung **Discover resources or activate an eligible role assignment to continue** (Ermitteln Sie Ressourcen, oder aktivieren Sie eine berechtigte Rollenzuweisung, um fortzufahren) angezeigt. 
 
-![](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
+![Schaltfläche „Ressourcen ermitteln“ im Bereich „Privileged Identity Management - Azure-Ressourcen“](media/azure-pim-resource-rbac/aadpim_discover_eligible_not_active.png)
 
-Wenn Sie in der Aktionsleiste oder in der Mitte des Bildschirms die Schaltfläche zum Ermitteln von Ressourcen auswählen, wird eine Liste mit den Abonnements angezeigt, die für die Verwaltung verfügbar sind. Wenn an diesem Punkt hervorgehobene Abonnements angezeigt werden, ist dies ein Hinweis darauf, dass sie per PIM geschützt sind.
+Wenn Sie die Schaltfläche **Ressourcen ermitteln** im oberen Menü oder in der Mitte des Bereichs auswählen, wird eine Liste mit den Abonnements angezeigt, die Sie verwalten können. Abonnements, die hervorgehoben sind, sind bereits durch PIM geschützt.
 
-> [!Note]
-> Wenn ein Abonnement für die Verwaltung festgelegt wurde, kann dies nicht rückgängig gemacht werden. So soll verhindert werden, dass ein anderer Ressourcenadministrator PIM-Einstellungen entfernt.
+> [!NOTE]
+> Nachdem ein Abonnement für die Verwaltung festgelegt wurde, kann dies nicht rückgängig gemacht werden. So soll verhindert werden, dass ein anderer Ressourcenadministrator PIM-Einstellungen entfernt.
 
-![](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
+![Bereich „Azure-Ressourcen - Ermittlung“](media/azure-pim-resource-rbac/aadpim_discovery_some_selected.png)
 
-Zeigen Sie auf ein Abonnement, das Sie per PIM schützen möchten, und aktivieren Sie das Kontrollkästchen ganz links in der Zeile. Sie können mehrere Abonnements gleichzeitig auswählen.
+Zeigen Sie in der Spalte **RESSOURCE** mit der Maus auf ein Abonnement, das Sie mit PIM schützen möchten. Aktivieren Sie dann das Kontrollkästchen links neben dem Namen der Ressource. Sie können mehrere Abonnements gleichzeitig auswählen.
 
-![](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
+![Liste der Ressourcen im Bereich „Azure-Ressourcen – Ermittlung“](media/azure-pim-resource-rbac/aadpim_discovery_all_selected.png)
 
-Wählen Sie zum Initiieren des Onboardingprozesses in der Leiste oben auf dem Bildschirm die Schaltfläche „Ressource verwalten“.
+Wählen Sie zum Initiieren des Onboardingprozesses im oberen Menü die Schaltfläche **Ressource verwalten** aus.
 
-![](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
+![Schaltfläche „Ressource verwalten“ im Bereich „Azure-Ressourcen – Ermittlung“](media/azure-pim-resource-rbac/aadpim_discovery_click_manage.png)
 
-Die ausgewählten Ressourcen werden jetzt über PIM verwaltet. Schließen Sie den Ermittlungsbildschirm, indem Sie das „X“ oben rechts auf der Seite verwenden. Klicken Sie anschließend in der Leiste am oberen Rand des Bildschirms zum Verwalten von Azure-Ressourcen auf die Schaltfläche „Aktualisieren“, um mit dem Verwalten von PIM-Einstellungen und Zuweisen von Mitgliedern zu beginnen.
+Die ausgewählten Ressourcen werden jetzt über PIM verwaltet. Um das Fenster für die Ermittlung zu schließen, wählen Sie oben rechts das **X** aus. Zum Verwalten der PIM-Einstellungen und Zuweisen von Mitgliedern wählen Sie im oberen Menü des Bereichs **Privileged Identity Management – Azure-Ressourcen** die Schaltfläche **Aktualisieren** aus.
 
-![](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
+![Schaltfläche „Aktualisieren“ im oberen Menü des Bereichs „Privileged Identity Management – Azure-Ressourcen“](media/azure-pim-resource-rbac/aadpim_discovery_resources_refresh.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren von Rolleneinstellungen](pim-resource-roles-configure-role-settings.md)
-
-[Zuweisen von Rollen in PIM](pim-resource-roles-assign-roles.md)
+- [Konfigurieren von Rolleneinstellungen](pim-resource-roles-configure-role-settings.md)
+- [Zuweisen von Rollen in PIM](pim-resource-roles-assign-roles.md)

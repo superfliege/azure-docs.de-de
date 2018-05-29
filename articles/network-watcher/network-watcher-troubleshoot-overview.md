@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2f8a41834c1451d80c53cfed4bae3b7e36281702
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779259"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
@@ -211,7 +212,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie unter [Beheben von Gatewayproblemen – Azure-Portal](network-watcher-troubleshoot-manage-portal.md), wie Sie über das Portal Diagnosen von VPN-Gateways und -Verbindungen durchführen.
+Weitere Informationen zum Diagnostizieren eines Problems mit einem Gateway oder einer Gatewayverbindung finden Sie unter [Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal](diagnose-communication-problem-between-networks.md).
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

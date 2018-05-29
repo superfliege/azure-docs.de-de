@@ -1,21 +1,21 @@
 ---
-pageTitle: Synonyms in Azure Search (preview) | Microsoft Docs
-description: Vorläufige Dokumentation für das Feature „Synonyme“ (Vorschau), das in der Azure Search REST-API verfügbar gemacht wird.
+pageTitle: Synonyms in Azure Search | Microsoft Docs
+description: Verwenden von Synonymen, um den Umfang einer Suchabfrage zu erweitern
 authors: mhko
-services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 07/07/2016
+ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 612bf30281703bd9cdec3a904f27df8e7dba3641
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 03e45aae37a0c0474dbd9cc5dd5e3fddd347bd62
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186904"
 ---
-# <a name="synonyms-in-azure-search-preview"></a>Synonyme in Azure Search (Vorschau)
+# <a name="synonyms-in-azure-search"></a>Synonyme in Azure Search
 
 Synonyme in Suchmaschinen ordnen entsprechende Begriffe zu, die den Bereich einer Abfrage implizit erweitern, ohne dass der Benutzer den Begriff tatsächlich bereitstellen muss. Bei dem Begriff „Hund“ und Synonymzuordnungen von „hündisch“ und „Welpe“ fallen z. B. alle Dokumente, die „Hund“, „hündisch“ oder „Welpe“ enthalten, in den Gültigkeitsbereich der Abfrage.
 
@@ -23,7 +23,7 @@ In Azure Search erfolgt die Synonymerweiterung zur Abfragezeit. Sie können Syno
 
 ## <a name="feature-availability"></a>Verfügbarkeit von Funktionen
 
-Das Feature „Synonyme“ befindet sich derzeit in der Vorschauphase und wird nur in den neuesten API-Vorschauversionen (api-version=2016-09-01-Preview) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden. Da die API-Version in der Anforderung angegeben ist, können allgemein verfügbare und Vorschau-APIs in derselben App kombiniert werden. Vorschauversionen von APIs sind nicht durch ein SLA abgedeckt, und die Features können sich ändern, sodass die Verwendung in Produktionsanwendungen nicht empfehlenswert ist.
+Das Feature „Synonyme“ wird in der aktuellen API-Version (api-version=2017-11-11) unterstützt. Für das Azure-Portal ist derzeit noch keine Unterstützung vorhanden.
 
 ## <a name="how-to-use-synonyms-in-azure-search"></a>Verwenden von Synonymen in Azure Search
 
@@ -43,11 +43,11 @@ Das Integrieren von Synonymen in Ihre Suchanwendung ist ein zweistufiger Prozess
 
 Synonymzuordnungen werden über POST oder PUT zum Dienst hochgeladen. Jede Regel muss durch das Zeilenumbruchzeichen („\n“) getrennt werden. Sie können bis zu 5.000 Regeln pro Synonymzuordnung in einem kostenlosen Dienst und 10.000 Regeln in allen anderen SKUs definieren. Jede Regel kann bis zu 20 Erweiterungen aufweisen.
 
-In dieser Vorschau müssen Synonymzuordnungen das „Apache Solr“-Format aufweisen, das unten beschrieben wird. Wenn ein vorhandenes Synonymwörterbuch in einem anderen Format vorliegt und sie es direkt verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
+Synonymzuordnungen müssen das unten beschriebene „Apache Solr“-Format aufweisen. Wenn ein vorhandenes Synonymwörterbuch in einem anderen Format vorliegt und sie es direkt verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
 
 Sie können eine neue Synonymzuordnung mithilfe von HTTP POST erstellen, wie im folgenden Beispiel:
 
-    POST https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -60,7 +60,7 @@ Sie können eine neue Synonymzuordnung mithilfe von HTTP POST erstellen, wie im 
 
 Alternativ können Sie PUT verwenden und den Namen der Synonymzuordnung für den URI angeben. Wenn die Synonymzuordnung nicht vorhanden ist, wird sie erstellt.
 
-    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
     {  
@@ -86,24 +86,24 @@ Washington, Wash., WA => WA
 
 #### <a name="list-synonym-maps-under-your-service"></a>Listen Sie Synonymzuordnungen unter Ihrem Dienst auf.
 
-    GET https://[servicename].search.windows.net/synonymmaps?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="get-a-synonym-map-under-your-service"></a>Rufen Sie eine Synonymzuordnung unter Ihrem Dienst ab.
 
-    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 #### <a name="delete-a-synonyms-map-under-your-service"></a>Löschen Sie eine Synonymzuordnung unter Ihrem Dienst.
 
-    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2016-09-01-Preview
+    DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
 ### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Konfigurieren Sie ein durchsuchbares Feld, um die Synonymzuordnung in der Indexdefinition zu verwenden.
 
 Es kann die neue **synonymMaps**-Feldeigenschaft verwendet werden, um eine Synonymzuordnung anzugeben, die für ein durchsuchbares Feld verwendet werden soll. Synonymzuordnungen sind Ressourcen der Dienstebene. Jedes Feld eines Index unter dem Dienst kann auf die Zuordnungen verweisen.
 
-    POST https://[servicename].search.windows.net/indexes?api-version=2016-09-01-Preview
+    POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
     api-key: [admin key]
 
     {
@@ -138,7 +138,7 @@ Es kann die neue **synonymMaps**-Feldeigenschaft verwendet werden, um eine Synon
 **synonymMaps** kann für durchsuchbare Felder vom Typ „Edm.String“ oder „Collection(Edm.String)“ angegeben werden.
 
 > [!NOTE]
-> In dieser Vorschau können Sie nur eine Synonymzuordnung pro Feld verwenden. Wenn Sie mehrere Synonymzuordnungen verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
+> Sie können nur eine Synonymzuordnung pro Feld verwenden. Wenn Sie mehrere Synonymzuordnungen verwenden möchten, können Sie uns über [UserVoice](https://feedback.azure.com/forums/263029-azure-search) informieren.
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>Auswirkungen von Synonymen auf andere Suchfeatures
 

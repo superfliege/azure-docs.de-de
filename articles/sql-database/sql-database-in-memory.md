@@ -9,11 +9,12 @@ ms.custom: develop databases
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 36a6b32851c4778db3405b6b9b35d9551181abf4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b4f8388fdf104253aad07de77e89c30df4e4b128
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32195167"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -43,7 +44,7 @@ Azure SQL-Datenbank verfügt über die folgenden In-Memory-Technologien:
 
 Sowohl Columnstore-Indizes als auch In-Memory-OLTP gehören seit 2012 bzw. 2014 zum Funktionsumfang von SQL Server. Azure SQL-Datenbank und SQL Server weisen dieselbe Implementierung von In-Memory-Technologien auf. In Zukunft werden neue Funktionen für diese Technologien zunächst in Azure SQL-Datenbank geboten, ehe sie in SQL Server verfügbar sind.
 
-In diesem Thema werden Aspekte von In-Memory-OLTP und Columnstore-Indizes beschrieben, die spezifisch für Azure SQL-Datenbank sind. Außerdem sind Beispiele aufgeführt:
+In diesem Artikel werden Aspekte von In-Memory-OLTP und Columnstore-Indizes beschrieben, die spezifisch für Azure SQL-Datenbank sind. Außerdem sind Beispiele aufgeführt:
 - Sie erfahren etwas über die Auswirkung dieser Technologien auf Speicher und die Grenzwerte für die Datengröße.
 - Sie erfahren, wie Sie das Verschieben von Datenbanken, die diese Technologien nutzen, zwischen verschiedenen Tarifen verwalten.
 - Sie sehen zwei Beispiele, die die Verwendung von In-Memory-OLTP und Columnstore-Indizes in Azure SQL-Datenbank veranschaulichen.
@@ -92,7 +93,7 @@ Bei Pools für elastische Datenbanken wird der In-Memory-OLTP-Speicher von allen
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Datengröße und Speicher für Columnstore-Indizes
 
-Columnstore-Indizes brauchen nicht in den Arbeitsspeicher zu passen. Deshalb ist die einzige Kapazität bei der Indexgröße die maximale Gesamtgröße der Datenbank, die im Artikel zu den [Tarifen von SQL-Datenbank](sql-database-service-tiers.md) dokumentiert ist.
+Columnstore-Indizes brauchen nicht in den Arbeitsspeicher zu passen. Deshalb ist die einzige Begrenzung der Indexgröße die maximale Gesamtgröße der Datenbank, was in den Artikeln [DTU-basiertes Kaufmodell für Azure SQL-Datenbank](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Kaufmodell für Azure SQL Datenbank (Vorschau)](sql-database-service-tiers-vcore.md) dokumentiert ist.
 
 Wenn Sie gruppierte Columnstore-Indizes verwenden, wird eine Spaltenkomprimierung für den Basistabellenspeicher verwendet. Durch diese Komprimierung kann der Speicherbedarf Ihrer Benutzerdaten erheblich reduziert werden, d.h., Sie können mehr Daten in der Datenbank speichern. Die Komprimierung kann außerdem mit [spaltenorientierter Archivierungskomprimierung](https://msdn.microsoft.com/library/cc280449.aspx#Using Columnstore and Columnstore Archive Compression) noch weiter erhöht werden. Der Grad der Komprimierung, die Sie erreichen können, hängt von der Art der Daten ab, jedoch ist eine zehnfache Komprimierung nicht ungewöhnlich.
 
@@ -223,8 +224,8 @@ SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
 
 Der einzige Unterschied zwischen den beiden folgenden *gespeicherten Prozeduren* ist, dass die erste Prozedur speicheroptimierte Versionen der Tabellen verwendet, während die zweite Prozedur die herkömmlichen Tabellen auf dem Datenträger nutzt:
 
-- SalesLT**.**usp_InsertSalesOrder**_inmem**
-- SalesLT**.**usp_InsertSalesOrder**_ondisk**
+- SalesLT **.** usp_InsertSalesOrder **_inmem**
+- SalesLT **.** usp_InsertSalesOrder **_ondisk**
 
 
 In diesem Abschnitt wird veranschaulicht, wie Sie das praktische Hilfsprogramm **ostress.exe** zum Ausführen der beiden gespeicherten Prozeduren bei hohen Belastungsgraden verwenden. Sie können vergleichen, wie lange es dauert, bis die beiden Belastungstests abgeschlossen sind.

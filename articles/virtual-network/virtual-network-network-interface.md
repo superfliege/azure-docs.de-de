@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 72c3968b59fda10d81af553cbf2324a2683c596b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65e461eaebaafab6f8a95bed333928d017c540d4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895419"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
 Erfahren Sie, wie Sie Netzwerkschnittstellenkarten erstellen, ihre Einstellungen ändern und sie löschen. Eine Netzwerkschnittstelle ermöglicht einem virtuellen Azure-Computer die Kommunikation mit Internet, Azure und lokalen Ressourcen. Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine Netzwerkschnittstelle mit Standardeinstellungen. Sie können stattdessen Netzwerkschnittstellen mit benutzerdefinierten Einstellungen erstellen und einem virtuellen Computer bei der Erstellung Netzwerkschnittstellen hinzufügen. Sie können auch die Standardeinstellungen einer vorhandenen Netzwerkschnittstelle ändern. In diesem Artikel wird erläutert, wie Sie Netzwerkschnittstellen mit benutzerdefinierten Einstellungen erstellen, vorhandene Netzwerkschnittstelleneinstellungen ändern, z.B. die Netzwerkfilterzuweisung (Netzwerksicherheitsgruppen), Subnetzzuweisung, DNS-Servereinstellungen und IP-Weiterleitung, und Netzwerkschnittstellen löschen.
 
 Weitere Informationen zum Hinzufügen, Ändern oder Entfernen von IP-Adressen für eine Netzwerkschnittstelle finden Sie unter [Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen](virtual-network-network-interface-addresses.md). Wenn Sie auf einem virtuellen Computer Netzwerkschnittstellen hinzufügen oder entfernen möchten, lesen Sie [Hinzufügen oder Entfernen von Netzwerkschnittstellen](virtual-network-network-interface-vm.md).
-
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -37,7 +37,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 - Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.4.1 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 - Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist mindestens Version 2.0.28 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
-Dem Konto, mit dem Sie sich bei Azure anmelden, müssen mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ Ihres Abonnements zugewiesen sein. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
+Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
 
 ## <a name="create-a-network-interface"></a>Erstellen einer Netzwerkschnittstelle
 
@@ -88,7 +88,7 @@ Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen u
     - **Eigenschaften:** zeigt wichtige Einstellungen für die Netzwerkschnittstelle an, z.B. die MAC-Adresse (leer, wenn die Netzwerkschnittstelle an keine VM angefügt ist) und das Abonnement, dem sie angehört.
     - **Effektive Sicherheitsregeln:** Sicherheitsregeln werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt und der Netzwerkschnittstelle oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Sicherheitsregeln](#view-effective-security-rules). Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](security-overview.md).
     - **Effektive Routen:** Routen werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, dem die Netzwerkschnittstelle zugewiesen ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Routen](#view-effective-routes). Weitere Informationen zu Azure-Standardrouten und benutzerdefinierten Routen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
-    - **Allgemeine Azure Resource Manager-Einstellungen:** Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [Zugriffssteuerung (IAM, Identity and Access Management)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [Tags](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Allgemeine Azure Resource Manager-Einstellungen:** Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [Zugriffssteuerung (IAM, Identity and Access Management)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Befehle**
 
@@ -240,11 +240,30 @@ Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls 
 - Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
 - PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
 
-## <a name="next-steps"></a>Nächste Schritte
-In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren Netzwerkschnittstellen oder IP-Adressen erstellen:
+## <a name="permissions"></a>Berechtigungen
 
-|Aufgabe|Tool|
-|---|---|
-|Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
-|Erstellen eines virtuellen Computers mit einer NIC und einer IPv6-Adresse (mit Azure Load Balancer)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+Zum Durchführen von Aufgaben für Netzwerkschnittstellen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
+
+| Aktion                                                                     | Name                                                      |
+| ---------                                                                  | -------------                                             |
+| Microsoft.Network/networkInterfaces/read                                   | Netzwerkschnittstelle abrufen                                     |
+| Microsoft.Network/networkInterfaces/write                                  | Netzwerkschnittstelle erstellen oder aktualisieren                        |
+| Microsoft.Network/networkInterfaces/join/action                            | Netzwerkschnittstelle an einen virtuellen Computer anfügen           |
+| Microsoft.Network/networkInterfaces/delete                                 | Netzwerkschnittstelle löschen                                  |
+| Microsoft.Network/networkInterfaces/joinViaPrivateIp/action                | Ressource mit einer Netzwerkschnittstelle verknüpfen per...     |
+| Microsoft.Network/networkInterfaces/effectiveRouteTable/action             | Netzwerkschnittstelle für effektive Routingtabelle abrufen               |
+| Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action  | Der Netzwerkschnittstelle zugeordnete Sicherheitsgruppen abrufen           |
+| Microsoft.Network/networkInterfaces/loadBalancers/read                     | Load Balancer der Netzwerkschnittstelle abrufen                      |
+| Microsoft.Network/networkInterfaces/serviceAssociations/read               | Dienstzuordnung abrufen                                   |
+| Microsoft.Network/networkInterfaces/serviceAssociations/write              | Dienstzuordnung erstellen oder aktualisieren                    |
+| Microsoft.Network/networkInterfaces/serviceAssociations/delete             | Dienstzuordnung löschen                                |
+| Microsoft.Network/networkInterfaces/serviceAssociations/validate/action    | Dienstzuordnung überprüfen                              |
+| Microsoft.Network/networkInterfaces/ipconfigurations/read                  | IP-Konfiguration der Netzwerkschnittstelle abrufen                    |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten per [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Erstellen einer einzelnen NIC-VM mit mehreren IPv4-Adressen per [Azure CLI](virtual-network-multiple-ip-addresses-cli.md) oder [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+- Erstellen einer einzelnen NIC-VM mit einer privaten IPv6-Adresse (hinter einem Azure Load Balancer) per [Azure CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+- Erstellen einer Netzwerkschnittstelle per [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskript oder per [Azure Resource Manager-Vorlagen](template-samples.md)
+- Erstellen und Anwenden einer [Azure-Richtlinie](policy-samples.md) für virtuelle Netzwerke

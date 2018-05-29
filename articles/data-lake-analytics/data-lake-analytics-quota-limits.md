@@ -12,11 +12,12 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: 22774511720173915207da80a6ca33d5dbc83e19
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311130"
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics-Kontingentgrenzen
 
@@ -24,9 +25,13 @@ Erfahren Sie, wie Sie Kontingentgrenzen in ADLA-Konten (Azure Data Lake Analytic
 
 ## <a name="azure-subscriptions-limits"></a>Azure-Abonnementgrenzen
 
-**Maximale Anzahl von ADLA-Konten pro Abonnement:** 5.
+**Maximale Anzahl von ADLA-Konten pro Region und Abonnement:** 5
 
-Dies ist die maximale Anzahl von ADLA-Konten, die Sie pro Abonnement und Region erstellen können. Beim Versuch, ein sechstes ADLA-Konto zu erstellen, erhalten Sie folgenden Fehler : Sie haben die maximale Anzahl von Data Lake Analytics-Konten (5) in „Region“ für das Abonnement „Name“ erreicht. In diesem Fall können Sie bei Bedarf eine andere Region auswählen, oder unbenutzte ADLA-Konten in derselben Region löschen, oder den Azure-Support kontaktieren, indem Sie ein [Supportticket öffnen](#increase-maximum-quota-limits), um eine Kontingenterhöhung zu beantragen.
+Beim Versuch, ein sechstes ADLA-Konto zu erstellen, erhalten Sie folgenden Fehler : Sie haben die maximale Anzahl von Data Lake Analytics-Konten (5) in „Region“ für das Abonnement „Name“ erreicht. 
+
+Wenn Sie diesen Grenzwert überschreiten möchten, können Sie diese Optionen versuchen:
+* Wählen Sie nach Möglichkeit eine andere Region aus
+* Wenden Sie sich zur Anforderung einer Kontingenterhöhung durch [Öffnen eines Supporttickets](#increase-maximum-quota-limits) an den Azure-Support.
 
 ## <a name="adla-account-limits"></a>ADLA-Kontobegrenzungen
 

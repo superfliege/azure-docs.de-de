@@ -2,24 +2,20 @@
 title: Übersicht über die Self-Service-Kennwortzurücksetzung in Azure AD | Microsoft-Dokumentation
 description: Wie kann Ihre Organisation von der Self-Service-Kennwortzurücksetzung in Azure AD profitieren?
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: e084db41cd199a9609e3edaf8b427a85ab2366b4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 77d26d860462b1a82315bf1385bccf62047e3da3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866667"
 ---
 # <a name="azure-ad-self-service-password-reset-for-the-it-professional"></a>Self-Service-Kennwortzurücksetzung in Azure AD für IT-Experten
 
@@ -32,6 +28,8 @@ Mit der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) 
    * Senden einer E-Mail an ein überprüftes sekundäres E-Mail-Konto
    * Beantworten seiner Sicherheitsfragen
 * **Self-Service-Kontoentsperrung**: Der Benutzer kann sich nicht mit seinem Kennwort anmelden und wurde gesperrt. Der Benutzer möchte sein Kennwort ohne Eingreifen des Administrators entsperren, indem er seine Authentifizierungsmethoden verwendet.
+
+> [!VIDEO https://www.youtube.com/embed/hc97Yx5PJiM]
 
 ## <a name="why-choose-azure-ad-sspr"></a>Was spricht für Azure AD SSPR?
 
@@ -50,7 +48,7 @@ Die Azure AD SSPR ist abhängig von Ihrem Abonnement in drei Tarifen verfügbar:
 
 * **Azure AD Free**: Cloudadministratoren können ihre eigenen Kennwörter zurücksetzen.
 * **Azure AD Basic** oder ein beliebiges **kostenpflichtiges Office 365-Abonnement**: Cloudbenutzer können ihre eigenen Kennwörter zurücksetzen.
-* **Azure AD Premium**: Alle Benutzer und alle Administratoren können ihre eigenen Kennwörter zurücksetzen, dazu gehören Cloudbenutzer, Verbundbenutzer und Benutzer mit Kennwortsynchronisierung. Für lokale Kennwörter muss das Kennwortrückschreiben aktiviert sein.
+* **Azure AD Premium**: Alle Benutzer und alle Administratoren können ihre eigenen Kennwörter zurücksetzen, dazu gehören Cloudbenutzer, Verbundbenutzer, Benutzer mit Passthrough-Authentifizierung und Benutzer mit Kennwortsynchronisierung. Für lokale Kennwörter muss das Kennwortrückschreiben aktiviert sein.
 
 ## <a name="azure-ad-pricing-sla-updates-and-roadmap"></a>Azure AD-Preise, SLA, Updates und Roadmap
 

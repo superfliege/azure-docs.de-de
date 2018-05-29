@@ -14,11 +14,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: billmath
-ms.openlocfilehash: f47cf18f70572ad93f5075c2f2c883d80af8220e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2f72f2dd3dbaaf17494d09a36159afc464cc64d4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32154289"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -44,7 +45,7 @@ Legende für Bilder im Artikel:
 ## <a name="single-forest-single-azure-ad-tenant"></a>Einzelne Gesamtstruktur, einzelner Azure AD-Mandant
 ![Topologie für einzelne Gesamtstruktur und einzelnen Mandanten](./media/active-directory-aadconnect-topologies/SingleForestSingleDirectory.png)
 
-Die häufigste Topologie ist eine einzelne lokale Gesamtstruktur mit einer oder mehreren Domänen und einem einzelnen Azure AD-Mandanten. Für die Azure AD-Authentifizierung wird die Kennwortsynchronisierung verwendet. Die Expressinstallation von Azure AD Connect unterstützt nur diese Topologie.
+Die häufigste Topologie ist eine einzelne lokale Gesamtstruktur mit einer oder mehreren Domänen und einem einzelnen Azure AD-Mandanten. Für die Azure AD-Authentifizierung wird die Kennworthashsynchronisierung verwendet. Die Expressinstallation von Azure AD Connect unterstützt nur diese Topologie.
 
 ### <a name="single-forest-multiple-sync-servers-to-one-azure-ad-tenant"></a>Einzelne Gesamtstruktur, mehrere Synchronisierungsserver zu einem Azure AD-Mandanten
 ![Nicht unterstützte gefilterte-Topologie für eine einzelne Gesamtstruktur](./media/active-directory-aadconnect-topologies/SingleForestFilteredUnsupported.png)
@@ -64,7 +65,7 @@ Allgemeine Topologien werden in den Abschnitten [Separate Topologien](#multiple-
 
 Die Standardkonfiguration der Azure AD Connect-Synchronisierung basiert auf folgenden Annahmen:
 
-* Jeder Benutzer hat nur ein einziges aktiviertes Konto, und die Gesamtstruktur, in der sich dieses Konto befindet, wird verwendet, um den Benutzer zu authentifizieren. Diese Annahme gilt sowohl für die Kennwortsynchronisierung als auch für den Verbund. „userPrincipalName“ und „sourceAnchor/immutableID“ stammen aus dieser Gesamtstruktur.
+* Jeder Benutzer hat nur ein einziges aktiviertes Konto, und die Gesamtstruktur, in der sich dieses Konto befindet, wird verwendet, um den Benutzer zu authentifizieren. Diese Annahme gilt für die Kennworthashsynchronisierung, Pass-Through-Authentifizierung und den Verbund. „userPrincipalName“ und „sourceAnchor/immutableID“ stammen aus dieser Gesamtstruktur.
 * Jeder Benutzer hat nur ein Postfach.
 * Die Gesamtstruktur, die das Postfach für einen Benutzer hostet, hat die beste Datenqualität für Attribute, die in der globalen Exchange-Adressliste (Global Address List, GAL) sichtbar sind. Wenn kein Postfach für den Benutzer vorhanden ist, kann jede Gesamtstruktur verwendet werden, um diese Attributwerte beizutragen.
 * Wenn Sie über ein verknüpftes Postfach verfügen, wird auch ein Konto in einer anderen Gesamtstruktur für die Anmeldung verwendet.
@@ -157,7 +158,7 @@ Bei dieser Topologie liegen die folgenden Einschränkungen bei ansonsten unterst
 
 * Nur einer der Azure AD-Mandanten kann die Exchange-Hybridbereitstellung mit der lokalen Active Directory-Instanz aktivieren.
 * Windows 10-Geräte können nur mit einem Azure AD-Mandanten verknüpft werden.
-* Die SSO-Option für die Kennwortsynchronisierung und Pass-Through-Authentifizierung kann nur mit einem Azure AD-Mandanten verwendet werden.
+* Die SSO-Option für die Kennworthashsynchronisierung und Pass-Through-Authentifizierung kann nur mit einem Azure AD-Mandanten verwendet werden.
 
 Die Anforderung für wechselseitig exklusive Gruppen von Objekten gilt auch für das Zurückschreiben. Bei dieser Topologie werden einige Zurückschreibfeatures nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen. Zu den Features zählen:
 

@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 05/01/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 168301bbd0e7a59330ee6c87d1821db3fca39f67
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 3cb8e598864bccfbea24a2aec5d9387ff903e51c
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770620"
 ---
 # <a name="conditions-in-azure-active-directory-conditional-access"></a>Bedingungen beim bedingten Zugriff in Azure Active Directory 
 
@@ -38,24 +39,32 @@ Die Kombination aus Ihren Bedingungen und Ihren Zugriffssteuerungen ergibt eine 
 
 ![Kontrolle](./media/active-directory-conditional-access-conditions/61.png)
 
-In diesem Artikel erhalten Sie eine Übersicht über die Bedingungen und ihre Verwendung in einer Richtlinie für bedingten Zugriff. 
 
+Bedingungen, die Sie nicht in einer Richtlinie für bedingten Zugriff konfiguriert haben, werden nicht angewendet. Einige Bedingungen sind [obligatorisch](active-directory-conditional-access-best-practices.md#whats-required-to-make-a-policy-work) für die Anwendung einer Richtlinie für bedingten Zugriff auf eine Umgebung. 
+
+In diesem Artikel erhalten Sie eine Übersicht über die Bedingungen und ihre Verwendung in einer Richtlinie für bedingten Zugriff. 
 
 ## <a name="users-and-groups"></a>Benutzer und Gruppen
 
 Die Bedingung für Benutzer und Gruppen ist in einer Richtlinie für bedingten Zugriff obligatorisch. In Ihrer Richtlinie können Sie entweder die Option **Alle Benutzer** oder bestimmte Benutzer und Gruppen auswählen.
 
-![Kontrolle](./media/active-directory-conditional-access-conditions/02.png)
+![Kontrolle](./media/active-directory-conditional-access-conditions/111.png)
 
 Auswahl von:
 
 - **Alle Benutzer**: Ihre Richtlinie wird auf alle Benutzer im Verzeichnis angewendet. Hierzu gehören auch Gastbenutzer.
 
-- **Benutzer und Gruppen auswählen**: Sie können die Richtlinie auf bestimmte Gruppen von Benutzern ausrichten. Beispielsweise können Sie eine Gruppe auswählen, die alle Mitglieder der HR-Abteilung enthält, wenn Sie eine HR-App als Cloud-App ausgewählt haben. 
+- **Benutzer und Gruppen auswählen**: Sie können die folgenden Optionen festlegen:
 
-- Dies kann eine Gruppe sein (beliebiger Typ von Gruppe in Azure AD), die dynamische oder zugewiesene Sicherheits- und Verteilungsgruppen umfasst.
+    - **Alle Gastbenutzer**: Ermöglicht Ihnen, eine Richtlinie auf B2B-Gastbenutzer anzuwenden. Diese Bedingung entspricht jedem Benutzerkonto, dessen Attribut *userType* auf *guest* gesetzt ist. Sie können diese Einstellung in Fällen verwenden, in denen eine Richtlinie angewendet werden muss, sobald das Konto in einem Einladungsfluss in Azure AD erstellt wird.
 
-Sie können bestimmte Benutzer und Gruppen auch aus einer Richtlinie ausschließen. Ein häufiger Anwendungsfall sind Dienstkonten, falls bei Ihrer Richtlinie die mehrstufige Authentifizierung erzwungen wird. 
+    - **Verzeichnisrollen**: Ermöglicht Ihnen, eine Richtlinie basierend auf der Rollenzuweisung des Benutzers anzuwenden. Diese Bedingung unterstützt Verzeichnisrollen wie *Globaler Administrator* oder *Kennwortadministrator*.
+
+    - **Benutzer und Gruppen**: Ermöglicht Ihnen die Anwendung auf bestimmte Gruppen von Benutzern. Beispielsweise können Sie eine Gruppe auswählen, die alle Mitglieder der HR-Abteilung enthält, wenn Sie eine HR-App als Cloud-App ausgewählt haben.
+
+Dies kann eine Gruppe sein (beliebiger Typ von Gruppe in Azure AD), die dynamische oder zugewiesene Sicherheits- und Verteilungsgruppen umfasst.
+
+Sie können bestimmte Benutzer und Gruppen auch aus einer Richtlinie ausschließen. Ein häufiger Anwendungsfall sind Dienstkonten, falls bei Ihrer Richtlinie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwungen wird. 
 
 Die Ausrichtung auf bestimmte Gruppen von Benutzern ist für die Bereitstellung einer neuen Richtlinie nützlich. Bei einer neuen Richtlinie sollten Sie nur eine Ausrichtung auf eine Anfangsgruppe von Benutzern festlegen, um das Verhalten der Richtlinie zu überprüfen. 
 
@@ -104,7 +113,18 @@ Die Geräteplattform ist durch das Betriebssystem gekennzeichnet, das auf dem Ge
 Eine vollständige Liste der unterstützten Geräteplattformen finden Sie unter [Geräteplattformbedingung](active-directory-conditional-access-technical-reference.md#device-platform-condition).
 
 
-Ein häufiger Anwendungsfall für diese Bedingung ist eine Richtlinie, mit der der Zugriff auf Ihre Cloud-Apps auf [vertrauenswürdige Geräte](active-directory-conditional-access-policy-connected-applications.md#trusted-devices) beschränkt wird. Informationen zu weiteren Szenarien, z.B. zur Geräteplattformbedingung, finden Sie unter [App-basierter bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-mam.md).
+Ein häufiger Anwendungsfall für diese Bedingung ist eine Richtlinie, mit der der Zugriff auf Ihre Cloud-Apps auf [verwaltete Geräte](active-directory-conditional-access-policy-connected-applications.md#managed-devices) beschränkt wird. Informationen zu weiteren Szenarien, z.B. zur Geräteplattformbedingung, finden Sie unter [App-basierter bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-mam.md).
+
+
+
+## <a name="device-state"></a>Gerätestatus
+
+Mit der Gerätestatusbedingung können in Hybrid-Azure AD eingebundene und als konform gekennzeichnete Geräte von einer Richtlinie für bedingten Zugriff ausgenommen werden. Dies ist hilfreich, wenn eine Richtlinie nur auf ein nicht verwaltetes Gerät angewendet werden sollte, um weitere Sitzungssicherheit zu bieten. Erzwingen Sie z.B. nur dann die Microsoft Cloud App Security-Sitzungssteuerung, wenn ein Gerät nicht verwaltet wird. 
+
+
+![Bedingungen](./media/active-directory-conditional-access-conditions/112.png)
+
+Wenn Sie den Zugriff für nicht verwaltete Geräte blockieren möchten, sollten Sie [gerätebasierten bedingten Zugriff](active-directory-conditional-access-policy-connected-applications.md) implementieren.
 
 
 ## <a name="locations"></a>Standorte

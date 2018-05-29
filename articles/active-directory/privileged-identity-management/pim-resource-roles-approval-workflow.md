@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management – Genehmigungsworkflow für Azure-Ressourcenrollen | Microsoft-Dokumentation
-description: Es wird der Prozess des Genehmigungsworkflows für Azure-Ressourcen beschrieben.
+title: Genehmigungsworkflow für Azure-Ressourcenrollen in Privileged Identity Management| Microsoft-Dokumentation
+description: In diesem Artikel wird der Prozess des Genehmigungsworkflows für Azure-Ressourcen beschrieben.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -13,76 +13,85 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: c02d595d75b2d63558896054c185102ebb23cc9e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 7781c858a5c0e4db8593df0cf77b868b6fd23622
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151092"
 ---
-# <a name="privileged-identity-management---resource-roles---approve"></a>Privileged Identity Management – Ressourcenrollen – Genehmigen
+# <a name="approval-workflow-for-azure-resource-roles-in-privileged-identity-management"></a>Genehmigungsworkflow für Azure-Ressourcenrollen in Privileged Identity Management
 
-Über den Genehmigungsworkflow in PIM für Azure-Ressourcenrollen können Administratoren den Zugriff auf wichtige Ressourcen weiter schützen oder einschränken, indem für die Aktivierung der Rollenzuweisungen eine Genehmigung erzwungen wird. Ein spezielles Konzept von Azure-Ressourcenrollen ist die Ressourcenhierarchie. Diese Hierarchie ermöglicht die Vererbung von Rollenzuweisungen von einem übergeordneten Ressourcenobjekt bis hinunter zu allen untergeordneten Ressourcen des übergeordneten Containers. 
+Über den Genehmigungsworkflow in Privileged Identity Management (PIM) für Azure-Ressourcenrollen können Administratoren den Zugriff auf wichtige Ressourcen weiter schützen oder einschränken. Das heißt, Administratoren können für die Aktivierung von Rollenzuweisungen die Notwendigkeit einer Genehmigung festlegen. 
 
-Beispielsweise nutzt Bob als Ressourcenadministrator PIM, um Alice im Contoso-Abonnement der Rolle „Besitzer“ als berechtigtes Mitglied zuzuweisen. Durch diese Zuweisung ist Alice auch eine berechtigte Besitzerin aller Ressourcengruppencontainer im Contoso-Abonnement sowie aller Ressourcen(z.B. virtuelle Computer) in den einzelnen Ressourcengruppen des Abonnements. Angenommen, das Contoso-Abonnement enthält drei Ressourcengruppen: Fabrikam Test, Fabrikam Dev und Fabrikam Prod. Jede dieser Ressourcengruppen enthält einen einzelnen virtuellen Computer.
+Das Konzept der Ressourcenhierarchie gilt nur für Azure-Ressourcenrollen. Diese Hierarchie ermöglicht die Vererbung von Rollenzuweisungen von einem übergeordneten Ressourcenobjekt bis zu allen untergeordneten Ressourcen des übergeordneten Containers. 
 
-PIM-Einstellungen werden für jede Rolle einer Ressource konfiguriert, und im Gegensatz zu Zuweisungen werden diese Einstellungen nicht vererbt und gelten nur für die Ressourcenrolle. [Hier finden Sie weitere Informationen zu berechtigten Zuweisungen und zur Ressourcensichtbarkeit.](pim-resource-roles-eligible-visibility.md)
+Beispielsweise nutzt Bob als Ressourcenadministrator PIM, um Alice im Contoso-Abonnement der Rolle „Besitzer“ als berechtigtes Mitglied zuzuweisen. Durch diese Zuweisung ist Alice eine berechtigte Besitzerin aller Ressourcengruppencontainer im Contoso-Abonnement. Alice ist zudem eine berechtigte Besitzerin aller Ressourcen (z.B. virtuelle Computer) in den einzelnen Ressourcengruppen des Abonnements. 
 
-Im obigen Beispiel nutzt Bob PIM, um für alle Mitglieder der Rolle „Besitzer“ im Contoso-Abonnement die Durchführung des Genehmigungsvorgangs zu erzwingen, bevor die Aktivierung erfolgen kann. Außerdem erzwingt Bob die Genehmigung für Mitglieder der Rolle „Besitzer“ für diese Ressource, um die in der Ressourcengruppe „Fabrikam Prod“ enthaltenen Ressourcen zu schützen. Für die Besitzerrollen in „Fabrikam Test“ und „Fabrikam Dev“ ist keine Genehmigung für die Aktivierung erforderlich.
+Angenommen, das Contoso-Abonnement enthält drei Ressourcengruppen: Fabrikam Test, Fabrikam Dev und Fabrikam Prod. Jede dieser Ressourcengruppen enthält einen einzelnen virtuellen Computer.
 
-Wenn Alice die Aktivierung Ihrer Rolle „Besitzer“ für das Contoso-Abonnement anfordert, muss die Anforderung von einer Person genehmigt (bzw. abgelehnt) werden, bevor die Rolle für sie aktiviert wird. Falls Alice den [Umfang der Aktivierung](pim-resource-roles-activate-your-roles.md#just-enough-administration) auf die Ressourcengruppe „Fabrikam Prod“ ausweiten möchte, muss diese Anforderung ebenfalls von einer Person genehmigt oder abgelehnt werden. Wenn Alice den Umfang der Aktivierung aber auf „Fabrikam Test“ und/oder „Fabrikam Dev“ ausweiten möchte, ist keine Genehmigung erforderlich.
+PIM-Einstellungen werden für jede Rolle einer Ressource konfiguriert. Im Gegensatz zu Zuweisungen werden diese Einstellungen nicht vererbt und gelten nur für die Ressourcenrolle. [Hier finden Sie weitere Informationen zu berechtigten Zuweisungen und zur Ressourcensichtbarkeit](pim-resource-roles-eligible-visibility.md).
 
-Der Genehmigungsworkflow ist ggf. nicht für alle Mitglieder einer Rolle erforderlich. Stellen Sie sich ein Szenario vor, bei dem eine Organisation mehrere Vertragspartner nutzt, um Unterstützung bei der Entwicklung einer Anwendung zu leisten, die in einem Azure-Abonnement ausgeführt wird. Als Ressourcenadministrator möchten Sie, dass Mitarbeiter über eine Zugriffsberechtigung verfügen, ohne dass eine Genehmigung erforderlich ist, während für die Vertragspartner eine Genehmigung angefordert werden muss. Zum Konfigurieren des Genehmigungsworkflows nur für die Vertragspartner können Sie eine benutzerdefinierte Rolle mit den gleichen Berechtigungen wie für die Rolle erstellen, die den Mitarbeitern zugewiesen ist, und eine Genehmigung der Aktivierung dieser benutzerdefinierten Rolle erzwingen. [Hier finden Sie weitere Informationen zu benutzerdefinierten Rollen](pim-resource-roles-custom-role-policy.md).
+Fortführung des Beispiels: Bob nutzt PIM, um für alle Mitglieder der Rolle „Besitzer“ im Contoso-Abonnement die Durchführung des Genehmigungsvorgangs zu erzwingen, bevor die Aktivierung erfolgen kann. Außerdem erzwingt Bob die Genehmigung für Mitglieder der Rolle „Besitzer“ für diese Ressource, um die Ressourcen in der Ressourcengruppe „Fabrikam Prod“ zu schützen. Für die Rollen „Besitzer“ in „Fabrikam Test“ und „Fabrikam Dev“ ist keine Genehmigung für die Aktivierung erforderlich.
 
-Führen Sie unten angegebenen Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
+Wenn Alice die Aktivierung ihrer Rolle „Besitzer“ für das Contoso-Abonnement anfordert, muss die Anforderung von einer Person genehmigt (bzw. abgelehnt) werden, bevor die Rolle für sie aktiviert wird. Wenn Alice den [Umfang der Aktivierung](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) auf die Ressourcengruppe „Fabrikam Prod“ ausweiten möchte, muss diese Anforderung ebenfalls von einer Person genehmigt oder abgelehnt werden. Wenn Alice den Umfang der Aktivierung aber auf „Fabrikam Test“ und/oder „Fabrikam Dev“ ausweiten möchte, ist keine Genehmigung erforderlich.
+
+Der Genehmigungsworkflow ist möglicherweise nicht für alle Mitglieder einer Rolle erforderlich. Stellen Sie sich ein Szenario vor, bei dem eine Organisation auf mehrere Vertragspartner zurückgreift, die Unterstützung bei der Entwicklung einer Anwendung leisten, die in einem Azure-Abonnement ausgeführt wird. Als Ressourcenadministrator möchten Sie, dass Mitarbeiter über eine Zugriffsberechtigung verfügen, ohne dass eine Genehmigung erforderlich ist, während für die Vertragspartner eine Genehmigung angefordert werden muss. Zum Konfigurieren des Genehmigungsworkflows nur für die Vertragspartner können Sie eine benutzerdefinierte Rolle mit den gleichen Berechtigungen wie für die Rolle erstellen, die den Mitarbeitern zugewiesen ist. Sie können eine Genehmigung der Aktivierung dieser benutzerdefinierten Rolle erzwingen. [Hier finden Sie weitere Informationen zu benutzerdefinierten Rollen](pim-resource-roles-custom-role-policy.md).
+
+Führen Sie die folgenden Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
 
 ## <a name="require-approval-to-activate"></a>Erzwingen der Genehmigung für die Aktivierung
 
-Navigieren Sie im Azure-Portal zu PIM, und wählen Sie in der Liste eine Ressource aus.
+1. Browsen Sie im Azure-Portal zu PIM, und wählen Sie in der Liste eine Ressource aus.
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+   ![Bereich „Azure-Ressourcen“ mit einer ausgewählten Ressource](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
-Wählen Sie im linken Navigationsmenü die Option **Rolleneinstellungen**.
+2. Wählen Sie im linken Bereich die Option **Rolleneinstellungen** aus.
 
-Suchen Sie nach einer Rolle, und wählen Sie sie aus. Klicken Sie dann auf **Bearbeiten**, um die Einstellungen zu ändern.
+3. Suchen Sie nach einer Rolle, und wählen Sie sie aus. Wählen Sie dann **Bearbeiten** aus, um die Einstellungen zu ändern.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+   ![Schaltfläche „Bearbeiten“ für die Rolle „Operator“](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
 
-Aktivieren Sie im Abschnitt „Aktivierung“ das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
+4. Aktivieren Sie im Abschnitt **Aktivierung** das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
+   ![Abschnitt „Aktivierung“ der Rolleneinstellungen](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
 
 ## <a name="specify-approvers"></a>Angeben von genehmigenden Personen
 
-Klicken Sie auf **Genehmigende Personen auswählen**, um das Auswahlfenster zu öffnen.
+Klicken Sie auf **Genehmigende Personen auswählen**, um den Bereich **Benutzer oder Gruppe auswählen** zu öffnen.
 
 >[!NOTE]
 >Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, um die Einstellung zu aktualisieren. Für genehmigende Personen gibt es keine Standardeinstellung.
 
 Ressourcenadministratoren können der Liste mit den genehmigenden Personen eine beliebige Kombination von Benutzern und Gruppen hinzufügen. 
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
+![Bereich „Benutzer oder Gruppe auswählen“ mit einem ausgewählten Benutzer](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
 
 ## <a name="request-approval-to-activate"></a>Anfordern der Genehmigung für die Aktivierung
 
-Das Anfordern der Genehmigung hat keinerlei Auswirkungen auf das Verfahren, das ein Mitglied für die Aktivierung einhalten muss. [Sehen Sie sich die Schritte zum Aktivieren einer Rolle an](pim-resource-roles-activate-your-roles.md).
+Das Anfordern der Genehmigung hat keine Auswirkungen auf das Verfahren, das ein Mitglied für die Aktivierung einhalten muss. [Sehen Sie sich die Schritte zum Aktivieren einer Rolle an](pim-resource-roles-activate-your-roles.md).
 
 Wenn ein Mitglied die Aktivierung einer Rolle angefordert hat, für die eine Genehmigung erforderlich ist, und die Rolle nicht mehr benötigt wird, kann das Mitglied die Anforderung in PIM stornieren.
 
-Navigieren Sie zum Stornieren zu PIM, und wählen Sie „Eigene Anforderungen“. Suchen Sie nach der Anforderung, und klicken Sie auf „Abbrechen“.
+Navigieren Sie zum Stornieren zu PIM, und wählen Sie **Eigene Anforderungen** aus. Suchen Sie nach der Anforderung, und wählen Sie **Abbrechen** aus.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+![Bereich „Eigene Anforderungen“](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
 
 ## <a name="approve-or-deny-a-request"></a>Genehmigen oder Ablehnen einer Anforderung
 
-Sie müssen ein Mitglied der Liste mit den genehmigenden Personen sein, um eine Anforderung genehmigen oder ablehnen zu können. Wählen Sie in PIM im linken Navigationsmenü auf der Registerkarte die Option „Anforderungen genehmigen“, und suchen Sie nach der Anforderung.
+Sie müssen ein Mitglied der Liste mit den genehmigenden Personen sein, um eine Anforderung genehmigen oder ablehnen zu können. 
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+1. Wählen Sie in PIM im linken Menü auf der Registerkarte die Option **Anforderungen genehmigen** aus, und suchen Sie nach der Anforderung.
 
-Wählen Sie die Anforderung aus, geben Sie eine Begründung für die Entscheidung an, und wählen Sie „Genehmigen“ oder „Ablehnen“, um die Anforderung abzuschließen.
+   ![Bereich „Anforderungen genehmigen“](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
+2. Wählen Sie die Anforderung aus, geben Sie eine Begründung für die Entscheidung an, und wählen Sie **Genehmigen** oder **Ablehnen** aus. Die Anforderung wird dann abgeschlossen.
+
+   ![Ausgewählte Anforderung mit detaillierten Informationen](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
 
 ## <a name="workflow-notifications"></a>Workflowbenachrichtigungen
+
+Einige Fakten zu Workflowbenachrichtigungen:
 
 - Alle Mitglieder der Liste mit den genehmigenden Personen werden per E-Mail benachrichtigt, wenn für die Anforderung einer Rolle die Überprüfung aussteht. E-Mail-Benachrichtigungen enthalten einen direkten Link zur Anforderung, damit diese von der genehmigenden Person genehmigt oder abgelehnt werden kann.
 - Anforderungen werden von dem Mitglied bearbeitet, das in der Liste der genehmigenden Personen an erster Stelle steht. 
@@ -90,7 +99,7 @@ Wählen Sie die Anforderung aus, geben Sie eine Begründung für die Entscheidun
 - Ressourcenadministratoren werden benachrichtigt, wenn ein genehmigtes Mitglied in seiner Rolle aktiv wird. 
 
 >[!Note]
->Wenn ein Ressourcenadministrator der Meinung ist, dass das genehmigte Mitglied nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in PIM entfernen. Ressourcenadministratoren werden zwar nur über ausstehende Anforderungen benachrichtigt, wenn sie Mitglieder der Liste mit den genehmigenden Personen sind, aber sie können ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie diese in PIM aufrufen. 
+>Wenn ein Ressourcenadministrator der Meinung ist, dass ein genehmigtes Mitglied nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in PIM entfernen. Ressourcenadministratoren werden zwar nur über ausstehende Anforderungen benachrichtigt, wenn sie Mitglieder der Liste mit den genehmigenden Personen sind, aber sie können ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie diese in PIM aufrufen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

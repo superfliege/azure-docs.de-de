@@ -7,19 +7,20 @@ author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7d7ba6a493cca3dd14829e6527136af6df424c05
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778183"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Linux-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Linux-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Distributionen und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
@@ -210,6 +211,8 @@ az vm create \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
+
+Wenn Sie VMs in einer anderen Ressourcengruppe oder Region als Ihr Packerimage erstellen möchten, geben Sie die Image-ID und nicht den Imagenamen an. Sie können die Image-ID mit [az image show](/cli/azure/image#az-image-show) abrufen.
 
 Das Erstellen der VM dauert einige Minuten. Nachdem die VM erstellt wurde, notieren Sie den Wert von `publicIpAddress`, der von der Azure CLI angezeigt wird. Diese Adresse wird verwendet, um über einen Webbrowser auf die NGINX-Website zuzugreifen.
 

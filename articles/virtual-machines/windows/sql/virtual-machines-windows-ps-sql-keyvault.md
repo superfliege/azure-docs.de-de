@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/23/2017
+ms.date: 04/30/2018
 ms.author: jroth
-ms.openlocfilehash: 7df0bc4b74694baa6b1c8a30d0c126b248e51168
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2b398f59aed1610825f495a6089990d393531305
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774725"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurieren der Azure Key Vault-Integration für SQL Server auf virtuellen Azure-Computern (Resource Manager)
+
 > [!div class="op_single_selector"]
 > * [Ressourcen-Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Klassisch](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
@@ -39,7 +41,7 @@ Wenn diese Funktion aktiviert ist, wird der SQL Server-Connector automatisch akt
 Sie können die AKV-Integration während der Bereitstellung aktivieren oder für vorhandene virtuelle Computer konfigurieren.
 
 ### <a name="new-vms"></a>Neue virtuelle Computer
-Wenn Sie mithilfe von Resource Manager einen neuen virtuellen SQL Server-Computer bereitstellen, bietet das Azure-Portal einen Schritt zum Aktivieren der Azure Key Vault-Integration. Das Azure Key Vault-Feature ist nur für die Enterprise-, Developer- und Evaluation-Edition von SQL Server verfügbar.
+Wenn Sie mithilfe von Resource Manager einen neuen virtuellen SQL Server-Computer bereitstellen, bietet das Azure-Portal einen Weg zum Aktivieren der Azure Key Vault-Integration. Das Azure Key Vault-Feature ist nur für die Enterprise-, Developer- und Evaluation-Edition von SQL Server verfügbar.
 
 ![SQL – Azure-Schlüsseltresor-Integration](./media/virtual-machines-windows-ps-sql-keyvault/azure-sql-arm-akv.png)
 

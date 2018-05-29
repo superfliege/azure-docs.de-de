@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: 55a907bdab57ce73533361782a3890466e3076ea
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9b071d166f741df523d6343ba771b7a29cd4a303
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32139660"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung
 
@@ -104,7 +105,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** einen Wert für **Administratorbenutzername** und **Administratorkennwort** Ihres BlueJeans-Kontos ein. Beispiele für diese Werte:
 
-    *   Füllen Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos im BlueJeans-Mandanten auf. Beispiel: admin@contoso.com.
+    *   Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos im BlueJeans-Mandanten ein. Beispiel: admin@contoso.com.
 
     *   Geben Sie im Feld **Administratorkennwort** das Kennwort für den Administratorbenutzernamen ein.
 
@@ -143,6 +144,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in BlueJeans ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](./active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* In BlueJeans sind Benutzernamen mit mehr als 30 Zeichen nicht zulässig.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

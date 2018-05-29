@@ -8,13 +8,14 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: security
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: b45e1434d648096a67c2f12046960926d2c7640d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ea76bc4cc182902fb5618d23358579ec229a5ef4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189716"
 ---
 # <a name="securing-your-sql-database"></a>Sichern der SQL-Datenbank
 
@@ -28,7 +29,7 @@ Eine vollständige Übersicht der für alle Varianten von SQL verfügbaren Siche
 SQL-Datenbank schützt Ihre Daten, indem die Verschlüsselung für Daten in Bewegung mit [Transport Layer Security](https://support.microsoft.com/kb/3135244), für ruhende Daten mit [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) und für verwendete Daten mit [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) ermöglicht wird. 
 
 > [!IMPORTANT]
->Für alle Verbindungen zur Azure SQL-Datenbank ist eine Verschlüsselung (SSL/TLS) erforderlich, und zwar zu jedem Zeitpunkt während der Übertragung von Daten in und aus der Datenbank. Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter zum Verschlüsseln der Verbindung angeben und dürfen dem Serverzertifikat *nicht* vertrauen (dies wird für Sie erledigt, wenn Sie die Verbindungszeichenfolge aus dem Azure-Portal kopieren). Andernfalls wird die Identität des Servers von der Verbindung nicht überprüft, und diese ist anfällig für „Man-in-the-Middle“-Angriffe. Für ADO.NET-Treiber beispielsweise lauten diese Parameter für Verbindungszeichenfolgen **Encrypt=True** und **TrustServerCertificate=False**. 
+>Für alle Verbindungen zur Azure SQL-Datenbank ist eine Verschlüsselung (SSL/TLS) erforderlich, und zwar zu jedem Zeitpunkt während der Übertragung von Daten in und aus der Datenbank. Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter zum Verschlüsseln der Verbindung angeben und dürfen dem Serverzertifikat *nicht* vertrauen (dies wird für Sie erledigt, wenn Sie die Verbindungszeichenfolge aus dem Azure-Portal kopieren). Andernfalls wird die Identität des Servers von der Verbindung nicht überprüft, und diese ist anfällig für „Man-in-the-Middle“-Angriffe. Für ADO.NET-Treiber beispielsweise lauten diese Parameter für Verbindungszeichenfolgen **Encrypt=True** und **TrustServerCertificate=False**. Informationen zu TLS und zur Konnektivität finden Sie unter [Überlegungen zu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 
 Es gibt noch weitere Möglichkeiten zum Verschlüsseln Ihrer Daten:
 

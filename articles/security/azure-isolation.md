@@ -4,7 +4,7 @@ description: Enthält Informationen zu cloudbasierten Computingdiensten mit eine
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: swadhwa
+manager: mbaldwin
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 996079e0062bf1e24ae2bf24354a94167e6adff3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010879"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -125,6 +126,20 @@ Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftri
 ## <a name="compute-isolation"></a>Computeisolation
 Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
 
+### <a name="isolated-virtual-machine-sizes"></a>Isolierte Größen virtueller Computer
+Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/) verwenden.
+
+Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtueller Computer als einziger in der jeweiligen Serverinstanz ausgeführt wird.  Zu den aktuellen Angebote isolierter virtueller Computer zählen Folgende:
+* Standard_E64is_v3
+* Standard_E64i_v3
+* Standard_M128ms
+* Standard_GS5
+* Standard_G5
+* Standard_DS15_v2
+* Standard_D15_v2
+
+Weitere Informationen zu den einzelnen isolierten Größen finden Sie [hier](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
+
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V- und Stammbetriebssystem-Isolation zwischen Stamm-VM und Gast-VMs
 Die Computeplattform von Azure basiert auf der Virtualisierung von Computern. Dies bedeutet, dass der gesamte Kundencode auf einem virtuellen Hyper-V-Computer ausgeführt wird. Auf jedem Azure-Knoten (bzw. Netzwerkendpunkt) ist ein Hypervisor angeordnet, der direkt über die Hardware ausgeführt wird und einen Knoten in eine variable Anzahl von virtuellen Gastcomputern unterteilt.
 
@@ -210,7 +225,7 @@ Sie können Firewalls einrichten und einen IP-Adressbereich für Ihre vertrauens
 IP-Speicherdaten können vor unbefugten Benutzern mit einem Netzwerkmechanismus geschützt werden, der zum Zuordnen eines dedizierten Tunnels für Datenverkehr an den IP-Speicher verwendet wird.
 
 ### <a name="encryption"></a>Verschlüsselung
-Azure verfügt über die folgenden Arten von Verschlüsselung zum Schützen von Daten:
+Azure verfügt über die folgenden Arten von Verschlüsselung zum Schutz von Daten:
 -   Verschlüsselung während der Übertragung
 
 -   Verschlüsselung ruhender Daten

@@ -7,13 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: b0eca20a801bbe431eff8ed0accffe2705d6c41c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b7926dace37803d26ee2dd54a3eeebf37edbab2
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010607"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -134,10 +135,13 @@ Legen Sie zum Kopieren von Daten aus und nach Blob Storage die type-Eigenschaft 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AzureBlob** festgelegt werden. |Ja |
-| folderPath | Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer/myblobfolder/. |Ja |
-| fileName | Geben Sie den Namen des Blobs in der Eigenschaft **folderPath** an, wenn Sie einen Kopiervorgang in ein bestimmtes bzw. aus einem bestimmten Blob durchführen möchten. Wenn Sie für diese Eigenschaft keinen Wert angeben, zeigt das Dataset auf alle Blobs im Ordner.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Blobnamen automatisch mit dem folgenden Format: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Ein Beispiel ist `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`. |Nein  |
+| folderPath | Der Pfad zum Container und Ordner im Blobspeicher. Der Platzhalterfilter wird nicht unterstützt. Beispiel: myblobcontainer/myblobfolder/. |Ja |
+| fileName | **Name oder Platzhalterfilter** für die Blobs unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, zeigt das Dataset auf alle Blobs im Ordner. <br/><br/>Zulässige Platzhalter für Filter sind `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Blobnamen automatisch mit dem folgenden Muster: „*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*“. Ein Beispiel ist „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz“. |Nein  |
 | format | Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), überspringen Sie den Formatabschnitt in den Definitionen der Eingabe- und Ausgabedatasets.<br/><br/>Die folgenden Formate werden unterstützt, wenn Sie Dateien mit einem bestimmten Format analysieren oder generieren möchten,: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**.<br/>Unterstützte Grade sind **Optimal** und **Schnellste**. |Nein  |
+
+>[!TIP]
+>Um alle Blobs in einem Ordner zu kopieren, geben Sie nur **folderPath** an.<br>Um einen einzelnen Blob mit einem angegebenen Namen zu kopieren, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Dateinamen an.<br>Um eine Teilmenge der Blobs in einem Ordner zu kopieren, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Platzhalterfilter an. 
 
 **Beispiel:**
 

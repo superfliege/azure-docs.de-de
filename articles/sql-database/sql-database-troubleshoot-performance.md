@@ -11,11 +11,12 @@ ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: v-shysun
-ms.openlocfilehash: 440f3bf41cd2dcedf964e7476323d7b3a1527624
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 710d517621cb9d4d9d2e9bf29e4facf7d75ab481
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187824"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -49,8 +50,8 @@ Sie können die Leistung Ihrer Abfragen auch automatisch durch Azure SQL-Datenba
 
 ## <a name="improving-database-performance-with-more-resources"></a>Verbesserung der Datenbankleistung mit mehr Ressourcen
 
-Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Sie können mehr Ressourcen zuweisen, indem Sie die [Dienstebene](sql-database-service-tiers.md) einer eigenständigen Datenbank verändern oder die eDTUs eines Pools für elastische Datenbanken zu einer beliebigen Zeit erhöhen.
-1. Für eigenständige Datenbanken können Sie die [Diensttarife bedarfsgesteuert ändern](sql-database-service-tiers.md), um die Datenbankleistung zu steigern.
+Schließlich können Sie noch die Anzahl der in Azure SQL-Datenbank verfügbaren Ressourcen ändern, wenn es keine umsetzbaren Elemente gibt, die die Leistung Ihrer Datenbank verbessern können. Sie können mehr Ressourcen zuweisen, indem Sie die [DTU-Dienstebene](sql-database-service-tiers-dtu.md) einer eigenständigen Datenbank verändern oder die eDTUs eines Pools für elastische Datenbanken zu einer beliebigen Zeit erhöhen. Alternativ können Sie bei Verwendung des [auf virtuellen Kernen basierenden Einkaufsmodells (Vorschau)](sql-database-service-tiers-vcore.md) entweder die Dienstebene ändern oder die Ressourcen heraufsetzen, die der Datenbank zugeordnet werden. 
+1. Für eigenständige Datenbanken können Sie bedarfsgesteuert die [Dienstebenen](sql-database-service-tiers-dtu.md) oder [Computeressourcen](sql-database-service-tiers-vcore.md) ändern, um die Datenbankleistung zu steigern.
 2. Ziehen Sie bei mehreren Datenbanken [Pools für elastische Datenbanken](sql-database-elastic-pool-guidance.md) in Betracht, um Ressourcen automatisch zu skalieren.
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>Optimieren und Ändern von Anwendungs- oder Datenbankcode

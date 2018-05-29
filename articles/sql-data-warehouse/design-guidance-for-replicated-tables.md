@@ -7,21 +7,18 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b1d60cc0a83c95c5e33fbaae6083572af3e183ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1cc796061056ff017e3d778ebb2e50e13d55a4c1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189563"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Entwurfsleitfaden für die Verwendung von replizierten Tabellen in Azure SQL Data Warehouse
 Dieser Artikel enthält Empfehlungen für das Entwerfen von replizierten Tabellen im SQL Data Warehouse-Schema. Nutzen Sie diese Empfehlungen, um die Abfrageleistung zu verbessern, indem Sie die Datenverschiebung und die Komplexität von Abfragen reduzieren.
-
-> [!NOTE]
-> Das Feature für replizierte Tabellen ist derzeit als öffentliche Vorschauversion verfügbar. Manches Verhalten des Features kann noch geändert werden.
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten der Datenverteilung und Datenbewegung in SQL Data Warehouse vertraut sind.  Weitere Informationen finden Sie im Artikel zur [Architektur](massively-parallel-processing-mpp-architecture.md). 
@@ -44,20 +41,13 @@ Replizierte Tabellen eignen sich gut für kleine Dimensionstabellen in einem Ste
 Die Verwendung einer replizierten Tabelle kann sinnvoll sein, wenn folgende Bedingungen zutreffen:
 
 - Die Tabellengröße auf dem Datenträger ist geringer als 2 GB, unabhängig von der Anzahl der Zeilen. Sie können die Größe der Tabelle mit dem [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)-Befehl ermitteln: `DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')`. 
-- Die Tabelle wird in Joins verwendet, die andernfalls Datenverschiebung erfordern. Beispielsweise erfordert ein Join für eine Tabelle mit Hashverteilung Datenverschiebung, wenn es sich bei den zu verknüpfenden Spalten nicht um die gleiche Verteilungsspalte handelt. Wenn eine der Tabellen mit Hashverteilung klein ist, empfiehlt sich möglicherweise eine replizierte Tabelle. Ein Join für eine Roundrobin-Tabelle erfordert Datenverschiebung. In den meisten Fällen wird empfohlen, replizierte Tabellen statt Roundrobintabellen zu verwenden. 
-
-
-Es empfiehlt sich, eine vorhandene verteilte Tabelle in eine replizierte Tabelle zu konvertieren, wenn folgende Bedingungen zutreffen:
-
-- In Abfrageplänen werden Datenverschiebungen verwendet, die die Daten auf alle Computeknoten übertragen. Die BroadcastMoveOperation ist aufwendig und beeinträchtigt die Abfrageleistung. Verwenden Sie [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql), um Datenverschiebungen in Abfrageplänen anzuzeigen.
+- Die Tabelle wird in Joins verwendet, die andernfalls Datenverschiebung erfordern. Beim Verknüpfen von Tabellen, die nicht in derselben Spalte verteilt sind, z.B. einer Tabelle mit Hashverteilung mit einer Roundrobintabelle, ist die Datenverschiebung erforderlich, um die Abfrage abzuschließen.  Wenn eine der Tabellen klein ist, empfiehlt sich möglicherweise eine replizierte Tabelle. In den meisten Fällen wird empfohlen, replizierte Tabellen statt Roundrobintabellen zu verwenden. Verwenden Sie [sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql), um Datenverschiebungen in Abfrageplänen anzuzeigen.  BroadcastMoveOperation ist der typische Datenverschiebungsvorgang, der mithilfe einer replizierten Tabelle gelöscht werden kann.  
  
 Replizierte Tabellen liefern möglicherweise nicht die optimale Abfrageleistung, wenn folgende Bedingungen zutreffen:
 
 - In der Tabelle erfolgen häufig Einfüge-, Aktualisierungs- und Löschvorgänge. Vorgänge der Datenbearbeitungssprache (Data Manipulation Language, DML) erfordern das erneute Erstellen der replizierten Tabelle. Ein häufiges Neuerstellen kann zu Leistungseinbußen führen.
 - Das Data Warehouse wird häufig skaliert. Durch das Skalieren des Data Warehouse ändert sich die Anzahl der Computeknoten, was eine Neuerstellung nach sich zieht.
-- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Hashverteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage Datenverschiebung erfordert, verschiebt SQL Data Warehouse nur Daten in den angeforderten Spalten. 
-
-
+- Die Tabelle enthält eine große Anzahl von Spalten, die Datenvorgänge greifen jedoch in der Regel nur auf eine kleine Anzahl von Spalten zu. In diesem Szenario ist es möglicherweise effektiver, eine Verteilung der Tabelle und dann einen Index für die Spalten mit häufigem Zugriff zu erstellen, statt die gesamte Tabelle zu replizieren. Wenn eine Abfrage Datenverschiebung erfordert, verschiebt SQL Data Warehouse nur Daten für die angeforderten Spalten. 
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Verwenden Sie replizierte Tabellen mit einfachen Abfrageprädikaten
 Bevor Sie sich für das Verteilen oder Replizieren einer Tabelle entscheiden, sollten Sie überlegen, welche Typen von Abfragen Sie für die Tabelle ausführen werden. Gehen Sie nach Möglichkeit wie folgt vor:
@@ -67,7 +57,7 @@ Bevor Sie sich für das Verteilen oder Replizieren einer Tabelle entscheiden, so
 
 CPU-intensive Abfragen zeigen die beste Leistung, wenn die Verarbeitung auf alle Computeknoten verteilt ist. Beispielsweise bieten Abfragen, die Berechnungen für jede Zeile einer Tabelle ausführen, mit verteilten Tabellen eine bessere Leistung als mit replizierten Tabellen. Da eine replizierte Tabelle vollständig auf jedem Computeknoten gespeichert wird, wird eine CPU-intensive Abfrage einer replizierten Tabelle für die gesamte Tabelle auf jedem Computeknoten ausgeführt. Die zusätzliche Berechnung kann die Abfrageleistung beeinträchtigen.
 
-Beispielsweise weist diese Abfrage ein komplexes Prädikat auf.  Sie wird schneller ausgeführt, wenn die Eingabetabelle keine replizierte Tabelle, sondern eine verteilte Tabelle ist. In diesem Beispiel kann dies eine Eingabetabelle mit Hashverteilung oder mit Roundrobinverteilung sein.
+Beispielsweise weist diese Abfrage ein komplexes Prädikat auf.  Sie wird schneller ausgeführt, wenn die Eingabetabelle keine replizierte Tabelle, sondern eine verteilte Tabelle ist. In diesem Beispiel kann dies eine Eingabetabelle mit Roundrobinverteilung sein.
 
 ```sql
 
@@ -132,7 +122,7 @@ Wir haben `DimDate` und `DimSalesTerritory` als replizierte Tabellen neu erstell
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Überlegungen zur Leistung beim Ändern replizierter Tabellen
-SQL Data Warehouse implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung erfolgt, aktualisiert SQL Data Warehouse zuerst die Mastertabelle. Anschließend müssen die Tabellen auf jedem Computeknoten neu erstellt werden. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Computeknoten und das anschließende Neuerstellen der Indizes.
+SQL Data Warehouse implementiert eine replizierte Tabelle, indem eine Masterversion der Tabelle erhalten bleibt. Die Masterversion wird in eine Verteilungsdatenbank auf jedem Computeknoten kopiert. Wenn eine Änderung erfolgt, aktualisiert SQL Data Warehouse zuerst die Mastertabelle. Anschließend werden die Tabellen auf jedem Serverknoten neu erstellt. Das Neuerstellen einer replizierten Tabelle umfasst das Kopieren der Tabelle auf jeden Serverknoten und das anschließende Erstellen der Indizes.  Beispielsweise verfügt eine replizierte Tabelle auf einem DW400 über 5 Kopien der Daten.  Eine Masterkopie und eine vollständige Kopie auf jedem Serverknoten.  Alle Daten werden in Verteilungsdatenbanken gespeichert. SQL Data Warehouse unterstützt mit diesem Modell um schnellere Datenänderungsanweisungen und flexible Skalierungsvorgänge. 
 
 Nach folgenden Vorgängen ist eine Neuerstellung erforderlich:
 - Daten werden geladen oder geändert.
@@ -143,7 +133,7 @@ Nach folgenden Vorgängen ist keine Neuerstellung erforderlich:
 - Anhalten
 - Fortsetzen
 
-Die Neuerstellung erfolgt nicht unmittelbar nach dem Ändern der Daten. Stattdessen wird die Neuerstellung ausgelöst, wenn eine Abfrage zum ersten Mal etwas aus der Tabelle auswählt.  Die erste SELECT-Anweisung für die Tabelle enthält Schritte zum Neuerstellen der replizierten Tabelle.  Da die Neuerstellung innerhalb der Abfrage erfolgt, können abhängig von der Größe der Tabelle die Auswirkungen der ersten SELECT-Anweisung erheblich sein.  Wenn mehrere replizierte Tabellen neu erstellt werden müssen, wird jede Kopie fortlaufend durch Schritte in der Anweisung neu erstellt.  Damit während der Neuerstellung der replizierten Tabelle die Datenkonsistenz erhalten bleibt, wird eine exklusive Sperre auf die Tabelle angewendet.  Die Sperre verhindert für die Dauer der Neuerstellung jeglichen Zugriff auf die Tabelle. 
+Die Neuerstellung erfolgt nicht unmittelbar nach dem Ändern der Daten. Stattdessen wird die Neuerstellung ausgelöst, wenn eine Abfrage zum ersten Mal etwas aus der Tabelle auswählt.  Die Abfrage, die die Neuerstellung ausgelöst hat, liest sofort aus der Masterversion der Tabelle, während die Daten asynchron auf jeden Serverknoten kopiert werden. Solange das Kopieren der Daten noch nicht abgeschlossen ist, verwenden nachfolgende Abfragen weiterhin die Masterversion der Tabelle.  Wenn eine Aktivität an der replizierten Tabelle ausgeführt wird, die eine weitere Neuerstellung erzwingt, wird das Kopieren der Daten für ungültig erklärt, und die nächste Select-Anweisung löst erneutes Kopieren der Daten aus. 
 
 ### <a name="use-indexes-conservatively"></a>Verwenden Sie Indizes zurückhaltend
 Für replizierte Tabellen gelten Standardindizierungsverfahren. SQL Data Warehouse erstellt während der Neuerstellung jeden replizierten Tabellenindex neu. Verwenden Sie Indizes nur, wenn der Leistungsgewinn die Kosten für die Neuerstellung der Indizes überwiegt.  
@@ -172,7 +162,7 @@ Beispielsweise werden in diesem Auslastungsmuster Daten aus vier Quellen geladen
 
 
 ### <a name="rebuild-a-replicated-table-after-a-batch-load"></a>Erstellen Sie nach jedem Batchladevorgang eine replizierte Tabelle neu
-Um einheitliche Abfrageausführungszeiten sicherzustellen, wird empfohlen, nach jedem Batchladevorgang das Aktualisieren der replizierten Tabellen zu erzwingen. Andernfalls kann die erste Abfrage erst ausgeführt werden, nachdem die Tabellen aktualisiert wurden, wozu auch das Neuerstellen der Indizes gehört. Je nach Größe und Anzahl der betroffenen replizierten Tabellen können die Auswirkungen auf die Leistung erheblich sein.  
+Um einheitliche Abfrageausführungszeiten sicherzustellen, erwägen Sie, nach jedem Batchladevorgang das Erstellen der replizierten Tabellen zu erzwingen. Andernfalls wird die erste Abfrage trotzdem eine Datenverschiebung durchführen, um die Abfrage abzuschließen. 
 
 In dieser Abfrage wird die dynamische Verwaltungssicht [sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) verwendet, um die replizierten Tabellen aufzulisten, die geändert, jedoch nicht neu erstellt wurden.
 
@@ -187,7 +177,7 @@ SELECT [ReplicatedTable] = t.[name]
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
  
-Um eine Neuerstellung zu erzwingen, führen Sie für jede Tabelle in der obigen Ausgabe die folgende Anweisung aus. 
+Um eine Neuerstellung auszulösen, führen Sie für jede Tabelle in der obigen Ausgabe die folgende Anweisung aus. 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]

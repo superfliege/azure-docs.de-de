@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: fa6a994f30c301fd6c7b431467aebc9d3489c6bc
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5a0574af04c118d466544d533561eb01639edfc6
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158991"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Konten und Berechtigungen
 Der Azure AD Connect-Installations-Assistent bietet zwei verschiedene Methoden:
@@ -58,7 +59,7 @@ Das [Konto](#active-directory-account) , das für Lese- und Schreibvorgänge in 
 
 | Berechtigung | Verwendung |
 | --- | --- |
-| <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennwortsynchronisierung |
+| <li>Verzeichnisänderungen replizieren</li><li>Verzeichnisänderungen replizieren: Alle |Kennworthashsynchronisierung |
 | Alle Eigenschaften lesen/schreiben: Benutzer |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: iNetOrgPerson |Importieren und Exchange-Hybridbereitstellung |
 | Alle Eigenschaften lesen/schreiben: Gruppe |Importieren und Exchange-Hybridbereitstellung |
@@ -87,7 +88,7 @@ Welche Berechtigungen Sie benötigen, hängt von den aktivierten optionalen Funk
 | Feature | Berechtigungen |
 | --- | --- |
 | Funktion „msDS-ConsistencyGuid“ |Schreibberechtigungen für das Attribut „msDS-ConsistencyGuid-in“, das unter [Entwurfskonzepte – Verwendung von „msDS-ConsistencyGuid“ als „sourceAnchor“](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
-| Kennwortsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
+| Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
 | Exchange-Hybridbereitstellung |Schreibberechtigungen für die Attribute, die in [Exchange-Hybridrückschreiben](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) für Benutzer, Gruppen und Kontakte dokumentiert sind |
 | Öffentlicher Exchange-E-Mail-Ordner |Leseberechtigungen für die Attribute, die im [öffentlichen Exchange-E-Mail-Ordner](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder) für öffentliche Ordner dokumentiert sind. | 
 | Kennwortrückschreiben |Schreibberechtigungen für die Attribute, die in [Erste Schritte mit der Kennwortverwaltung](../authentication/howto-sspr-writeback.md) für Benutzer dokumentiert sind |

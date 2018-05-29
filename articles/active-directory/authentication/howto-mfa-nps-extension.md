@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 05/01/2018
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 38556392624e87611d59e3b96ae63ce8ea30afbd
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32770252"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -117,9 +118,9 @@ Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um ausz
 
 Sie können [nicht unterstützte Authentifizierungsmethoden](howto-mfa-mfasettings.md#selectable-verification-methods) in Azure deaktivieren.
 
-### <a name="enable-users-for-mfa"></a>Aktivieren von Benutzern für MFA
+### <a name="register-users-for-mfa"></a>Registrieren von Benutzern für MFA
 
-Bevor Sie die vollständige NPS-Erweiterung bereitstellen, müssen Sie MFA für die Benutzer aktivieren, die eine zweistufige Überprüfung durchführen sollen. Vorher benötigen Sie zum Testen der Erweiterung bei der Bereitstellung zumindest ein Testkonto, das vollständig für Multi-Factor Authentication registriert ist.
+Bevor Sie die NPS-Erweiterung bereitstellen und verwenden, müssen Benutzer, die die zweistufige Überprüfung durchführen müssen, für MFA registriert werden. Vorher benötigen Sie zum Testen der Erweiterung bei der Bereitstellung zumindest ein Testkonto, das vollständig für Multi-Factor Authentication registriert ist.
 
 Führen Sie die folgende Schritte aus, um ein Testkonto einzurichten:
 1. Melden Sie sich bei [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an. 

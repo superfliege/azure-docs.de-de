@@ -2,7 +2,7 @@
 title: CLI 2.0-Beispiele für den Schnellstart mit Azure Monitor | Microsoft-Dokumentation
 description: CLI 2.0-Beispielbefehle für Azure Monitor-Features Azure Monitor ist ein Microsoft Azure-Dienst, der das Senden von Warnbenachrichtigungen, das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten und die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps ermöglicht.
 author: kamathashwin
-manager: orenr
+manager: ''
 editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/09/2018
 ms.author: ashwink
-ms.openlocfilehash: e429ba460a97daed4a7bdf71895fe24c1619a645
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: a9c6cc0fb81b094e1c980e4c209184a0c0ebd428
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34009757"
 ---
 # <a name="azure-monitor-cli-20-quick-start-samples"></a>CLI 2.0-Beispiele für den Schnellstart mit Azure Monitor
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
@@ -89,18 +90,17 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="work-with-alerts"></a>Verwenden von Warnungen
+## <a name="work-with-alerts"></a>Verwenden von Warnungen 
+[!NOTE] Aktuell wird in der CLI nur „Warnungen (klassisch)“ unterstützt. 
 
-Sie können die Informationen in diesem Abschnitt nutzen, um Warnungen zu verwenden.
-
-### <a name="get-alert-rules-in-a-resource-group"></a>Abrufen von Warnungsregeln in einer Ressourcengruppe
+### <a name="get-alert-classic-rules-in-a-resource-group"></a>Abrufen klassischer Warnungsregeln in einer Ressourcengruppe
 
 ```azurecli
 az monitor activity-log alert list --resource-group <group name>
 az monitor activity-log alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-metric-alert-rule"></a>Erstellen einer metrischen Warnungsregel
+### <a name="create-a-metric-alert-classic-rule"></a>Erstellen einer klassischen Metrikwarnungsregel
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -110,7 +110,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-an-alert-rule"></a>Löschen einer Warnungsregel
+### <a name="delete-an-alert-classic-rule"></a>Löschen einer klassischen Warnungsregel
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -206,7 +206,7 @@ az monitor autoscale list --resource-group <group name>
 az monitor autoscale show --name <settings name> --resource-group <group name>
 ```
 
-### <a name="set-auotoscale-settings"></a>Festlegen der Einstellungen für die automatische Skalierung
+### <a name="set-autoscale-settings"></a>Festlegen von Einstellungen zum automatischen Skalieren
 
 ```azurecli
 az monitor autoscale create --name <settings name> --resource-group <group name> \

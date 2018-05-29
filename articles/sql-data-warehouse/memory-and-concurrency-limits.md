@@ -7,94 +7,68 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
+ms.date: 05/07/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 4e6e95e8601e7ab8b836e2aa1aa21ef4d5779954
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 46d41e3ee85deb20f189bc9c82a255178f3d7eee
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942256"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Speicher- und Parallelitätsgrenzwerte – Azure SQL Data Warehouse
 Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure SQL Data Warehouse zugewiesen sind. Weitere Informationen – auch darüber, wie Sie diese Funktionen in Ihren Workloadverwaltungsplan übernehmen – finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md). 
 
-## <a name="performance-tiers"></a>Leistungsstufen
+SQL Data Warehouse ist zurzeit in zwei Generationen verfügbar: Gen1 und Gen2. Es wird empfohlen, Gen2 von SQL Data Warehouse zu verwenden, um von einer optimalen Leistung für Ihre Data Warehouse-Workloads zu profitieren. In Gen2 wird ein neuer NVMe-SSD-Cache (Solid State Drive) eingeführt, der die am häufigsten verwendeten Daten in der Nähe der CPUs beibehält. Dadurch werden Remote-E/A-Vorgänge für Ihre intensivsten und anspruchsvollen Workloads vermieden. Neben Leistungsvorteilen bietet Gen2 mit einer Skalierbarkeit auf bis zu 30.000 Data Warehouse-Einheiten und einer unbegrenzten spaltenorientierten Speicherung das höchste Skalierungsniveau. Für die Vorgängergeneration (Gen1) von SQL Data Warehouse stellen wir zwar nach wie vor Support und die gleichen Features bereit, wir empfehlen jedoch, so bald wie möglich [ein Upgrade auf Gen2](upgrade-to-latest-generation.md) durchzuführen. 
 
-SQL Data Warehouse bietet zwei Leistungsstufen, die für analytische Workloads optimiert sind. Eine Leistungsstufe ist eine Option, die die Konfiguration Ihres Data Warehouse bestimmt. Diese Option ist die erste Auswahl, die Sie beim Erstellen eines Data Warehouse treffen.  
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T140/player]
-
-- Die **Leistungsstufe „Optimiert für Elastizität“** trennt die Compute- und die Speicherebene in der Architektur. Diese Option eignet sich besonders für Workloads, die durch häufige Skalierung optimal von der Trennung zwischen Compute und Speicher profitieren können, um vorübergehende Aktivitätsspitzen zu unterstützen. Diese Computestufe hat den niedrigsten Einstiegspreis und deckt dank Skalierung den größten Teil der Kundenworkloads ab.
-
-- Die **Leistungsstufe „Optimiert für Compute“** nutzt die neueste Azure-Hardware, um einen neuen NVMe-SSD-Zwischenspeicher einzuführen, der dafür sorgt, dass besonders häufig verwendete Daten in der Nähe der CPUs bleiben – also genau dort, wo Sie sie haben möchten. Dank automatischem Tiering des Speichers eignet sich diese Leistungsstufe hervorragend für komplexe Abfragen, da sämtliche Eingaben/Ausgaben lokal auf der Computeebene abgewickelt werden. Darüber hinaus wird der Columnstore erweitert, um eine unbegrenzte Menge an Daten in Ihrem SQL Data Warehouse speichern zu können. Die Leistungsstufe „Optimiert für Compute“ bietet die größtmögliche Skalierbarkeit und ermöglicht eine Skalierung auf bis zu 30.000 cDWU (compute Data Warehouse Units). Diese Stufe empfiehlt sich für Workloads mit kontinuierlich hohem Leistungsbedarf.
-
-## <a name="data-warehouse-limits"></a>Data Warehouse-Grenzwerte
+## <a name="data-warehouse-capacity-settings"></a>Data Warehouse-Kapazitätseinstellungen
 Die folgenden Tabellen zeigen die maximale Kapazität für das Data Warehouse auf unterschiedlichen Leistungsstufen. Informationen zum Ändern der Leistungsstufe finden Sie unter [Skalieren von Computerressourcen – Portal](quickstart-scale-compute-portal.md).
 
-### <a name="optimized-for-elasticity"></a>Optimiert für Elastizität
+### <a name="gen2"></a>Gen2
 
-Die Servicelevel der Leistungsstufe „Optimiert für Elastizität“ liegen zwischen DW100 und DW6000. 
+Gen2 stellt 2,5-mal mehr Arbeitsspeicher pro Abfrage bereit als Gen1. Diesem zusätzlichen Speicher verdankt Gen2 seine schnelle Ausführungsleistung.  Die Leistungsstufen für Gen2 erstrecken sich von DW1000c bis DW30000c. 
 
-| Leistungsstufe | Max. Anzahl gleichzeitiger Abfragen | Serverknoten | Verteilungen pro Serverknoten | Maximaler Arbeitsspeicher pro Verteilung (MB) | Maximaler Arbeitsspeicher pro Data Warehouse (GB) |
-|:-------------:|:----------------------:|:-------------:|:------------------------------:|:--------------------------------:|:----------------------------------:|
-| DW100         | 4                      | 1             | 60                             | 400                              |  24                                |
-| DW200         | 8                      | 2             | 30                             | 800                              |  48                                |
-| DW300         | 12                     | 3             | 20                             | 1.200                            |  72                                |
-| DW400         | 16                     | 4             | 15                             | 1.600                            |  96                                |
-| DW500         | 20                     | 5             | 12                             | 2.000                            | 120                                |
-| DW600         | 24                     | 6             | 10                             | 2.400                            | 144                                |
-| DW1000        | 32                     | 10            | 6                              | 4.000                            | 240                                |
-| DW1200        | 32                     | 12            | 5                              | 4.800                            | 288                                |
-| DW1500        | 32                     | 15            | 4                              | 6.000                            | 360                                |
-| DW2000        | 32                     | 20            | 3                              | 8.000                            | 480                                |
-| DW3000        | 32                     | 30            | 2                              | 12.000                           | 720                                |
-| DW6000        | 32                     | 60            | 1                              | 24.000                           | 1.440                               |
+| Leistungsstufe | Serverknoten | Verteilungen pro Serverknoten | Arbeitsspeicher pro Data Warehouse (GB) |
+|:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW1000c           | 2             | 30                             |   600                          |
+| DW1500c           | 3             | 20                             |   900                          |
+| DW2000c           | 4             | 15                             |  1200                          |
+| DW2500c           | 5             | 12                             |  1500                          |
+| DW3000c           | 6             | 10                             |  1800                          |
+| DW5000c           | 10            | 6                              |  3000                          |
+| DW6000c           | 12            | 5                              |  3600                          |
+| DW7500c           | 15            | 4                              |  4500                          |
+| DW10000c          | 20            | 3                              |  6000                          |
+| DW15000c          | 30            | 2                              |  9000                          |
+| DW30000c          | 60            | 1                              | 18000                          |
 
-### <a name="optimized-for-compute"></a>Optimiert für Compute
+Die maximale DWU in Gen2 beträgt DW30000c. Sie bietet 60 Serverknoten und eine Verteilung pro Serverknoten. Beispielsweise verarbeitet ein 600-TB-Data Warehouse mit DW30000c etwa 10 TB pro Serverknoten.
 
-Die Leistungsstufe „Optimiert für Compute“ bietet 2,5-mal mehr Arbeitsspeicher pro Abfrage als die Leistungsstufe „Optimiert für Elastizität“. Durch diesen zusätzlichen Arbeitsspeicher kann die Leistungsstufe „Optimiert für Compute“ ihre hohe Leistung bereitstellen.  Die Leistungsstufen für die Leistungsstufe „Optimiert für Compute“ liegen zwischen DW1000c und DW30000c. 
+### <a name="gen1"></a>Gen1
 
-| Leistungsstufe | Max. Anzahl gleichzeitiger Abfragen | Serverknoten | Verteilungen pro Serverknoten | Maximaler Arbeitsspeicher pro Verteilung (GB) | Maximaler Arbeitsspeicher pro Data Warehouse (GB) |
-|:-------------:|:----------------------:|:-------------:|:------------------------------:|:--------------------------------:|:----------------------------------:|
-| DW1000c       | 32                     | 2             | 30                             |  10                              |   600                              |
-| DW1500c       | 32                     | 3             | 20                             |  15                              |   900                              |
-| DW2000c       | 32                     | 4             | 15                             |  20                              |  1200                              |
-| DW2500c       | 32                     | 5             | 12                             |  25                              |  1500                              |
-| DW3000c       | 32                     | 6             | 10                             |  30                              |  1800                              |
-| DW5000c       | 32                     | 10            | 6                              |  50                              |  3000                              |
-| DW6000c       | 32                     | 12            | 5                              |  60                              |  3600                              |
-| DW7500c       | 32                     | 15            | 4                              |  75                              |  4500                              |
-| DW10000c      | 32                     | 20            | 3                              | 100                              |  6000                              |
-| DW15000c      | 32                     | 30            | 2                              | 150                              |  9000                              |
-| DW30000c      | 32                     | 60            | 1                              | 300                              | 18000                              |
+Die Servicelevels für Gen1 erstrecken sich von DW100 bis DW6000. 
 
-Die maximale cDWU beträgt DW30000c. Sie bietet 60 Serverknoten und eine Verteilung pro Serverknoten. Beispielsweise verarbeitet ein 600-TB-Data Warehouse mit DW30000c etwa 10 TB pro Serverknoten.
-
+| Leistungsstufe | Serverknoten | Verteilungen pro Serverknoten | Arbeitsspeicher pro Data Warehouse (GB) |
+|:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW100             | 1             | 60                             |  24                            |
+| DW200             | 2             | 30                             |  48                            |
+| DW300             | 3             | 20                             |  72                            |
+| DW400             | 4             | 15                             |  96                            |
+| DW500             | 5             | 12                             | 120                            |
+| DW600             | 6             | 10                             | 144                            |
+| DW1000            | 10            | 6                              | 240                            |
+| DW1200            | 12            | 5                              | 288                            |
+| DW1500            | 15            | 4                              | 360                            |
+| DW2000            | 20            | 3                              | 480                            |
+| DW3000            | 30            | 2                              | 720                            |
+| DW6000            | 60            | 1                              | 1.440                           |
 
 ## <a name="concurrency-maximums"></a>Parallelitätshöchstwerte
-Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Verarbeitung zur Verfügung stehen, verfolgt SQL Data Warehouse die Nutzung von Computeressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen in eine Warteschlange, in der sie verbleiben, bis genügend [Parallelitätsslots](resource-classes-for-workload-management.md#concurrency-slots) verfügbar sind. 
+Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Verarbeitung zur Verfügung stehen, verfolgt SQL Data Warehouse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen in eine Warteschlange, in der sie verbleiben, bis genügend [Parallelitätsslots](resource-classes-for-workload-management.md#concurrency-slots) verfügbar sind. Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
 
-Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
-
-### <a name="optimized-for-compute"></a>Optimiert für Compute
-Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md). Die Werte gelten für die Leistungsstufe „Optimiert für Compute“.
-
-**Dynamische Ressourcenklassen**
-| Leistungsstufe | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
-|:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
-| DW1000c       | 32                         |   40                        | 1                     |  8                     |  16                   |  32                    |
-| DW1500c       | 32                         |   60                        | 1                     |  8                     |  16                   |  32                    |
-| DW2000c       | 32                         |   80                        | 1                     | 16                     |  32                   |  64                    |
-| DW2500c       | 32                         |  100                        | 1                     | 16                     |  32                   |  64                    |
-| DW3000c       | 32                         |  120                        | 1                     | 16                     |  32                   |  64                    |
-| DW5000c       | 32                         |  200                        | 1                     | 32                     |  64                   | 128                    |
-| DW6000c       | 32                         |  240                        | 1                     | 32                     |  64                   | 128                    |
-| DW7500c       | 32                         |  300                        | 1                     | 64                     | 128                   | 128                    |
-| DW10000c      | 32                         |  400                        | 1                     | 64                     | 128                   | 256                    |
-| DW15000c      | 32                         |  600                        | 1                     | 64                     | 128                   | 256                    |
-| DW30000c      | 32                         | 1200                        | 1                     | 64                     | 128                   | 256                    |
-
+### <a name="gen2"></a>Gen2
+ 
 **Statische Ressourcenklassen**
 
 Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md).  
@@ -102,38 +76,47 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 | Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW2000c       | 32                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW2500c       | 32                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000c       | 32                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW5000c       | 32                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW6000c       | 32                         |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW7500c       | 32                         |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW10000c      | 32                         |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW15000c      | 32                         |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-| DW30000c      | 32                         | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
-
-### <a name="optimized-for-elasticity"></a>Optimiert für Elastizität
-Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md).  Die Werte gelten für die Leistungsstufe „Optimiert für Elastizität“.
+| DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
+| DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW2500c       | 48                         |  100                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW3000c       | 64                         |  120                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW5000c       | 64                         |  200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW6000c       | 128                        |  240                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW7500c       | 128                        |  300                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW10000c      | 128                        |  400                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW15000c      | 128                        |  600                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW30000c      | 128                        | 1200                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
 
 **Dynamische Ressourcenklassen**
 
-| Servicelevel | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | smallrc | mediumrc | largerc | xlargerc |
-|:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
-| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
-| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
-| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
-| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
-| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
-| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
-| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
-| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
-| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
-| DW2000        | 32                         |  80                         | 1       | 16       | 32      |  64      |
-| DW3000        | 32                         | 120                         | 1       | 16       | 32      |  64      |
-| DW6000        | 32                         | 240                         | 1       | 32       | 64      | 128      |
+> [!NOTE]
+> Die Ressourcenklasse „smallrc“ in Gen2 fügt mit steigenden Servicelevels dynamisch Arbeitsspeicher hinzu und unterstützt lediglich max. 32 gleichzeitige Abfragen.  Die von „smallrc“ verwendeten Parallelitätsslots und Arbeitsspeicher erhöhen sich damit mit steigenden Servicelevels. 
+>
+>
 
-**Statische Ressourcenklassen:** Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md).  Die Werte gelten für die Leistungsstufe „Optimiert für Elastizität“.
+Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md). Im Gegensatz zu Gen1 sind dynamische Ressourcenklassen in Gen2 wirklich dynamisch.  Gen2 verwendet in allen Servicelevels eine Speicherbelegung von 3-10-22-70 Prozent für die Ressourcenklassen Klein-Medium-Groß-Extragroß.
+
+| Service Level | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | Durch „smallrc“ verwendete Slots | Durch „mediumrc“ verwendete Slots | Durch „largerc“ verwendete Slots | Durch „xlargerc“ verwendete Slots |
+|:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
+| DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
+| DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |
+| DW2500c       | 32                         |  100                        | 3                     | 10                     |  22                   |  70                    |
+| DW3000c       | 32                         |  120                        | 3                     | 12                     |  26                   |  84                    |
+| DW5000c       | 32                         |  200                        | 6                     | 20                     |  44                   | 140                    |
+| DW6000c       | 32                         |  240                        | 7                     | 24                     |  52                   | 168                    |
+| DW7500c       | 32                         |  300                        | 9                     | 30                     |  66                   | 210                    |
+| DW10000c      | 32                         |  400                        | 12                    | 40                     |  88                   | 280                    |
+| DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
+| DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
+
+
+
+#### <a name="gen1"></a>Gen1
+
+Statische Ressourcenklassen
+
+Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [statische Ressourcenklasse](resource-classes-for-workload-management.md) in **Gen1**.
 
 | Servicelevel | Maximale Anzahl gleichzeitiger Abfragen | Maximale Anzahl von Parallelitätsslots |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
@@ -146,9 +129,33 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 | DW1000        | 32                         |  40                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1200        | 32                         |  48                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500        | 32                         |  60                       | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
-| DW2000        | 32                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW3000        | 32                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
-| DW6000        | 32                         | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+| DW2000        | 48                         |  80                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW3000        | 64                         | 120                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
+| DW6000        | 128                        | 240                       | 1         | 2          | 4          | 8          | 16         | 32         | 64         | 128        |
+
+Dynamische Ressourcenklassen
+> [!NOTE]
+> Die Ressourcenklasse „smallrc“ in Gen1 teilt eine feste Menge an Arbeitsspeicher pro Abfrage zu, ähnlich wie bei der statische Ressourcenklasse „staticrc10“.  Da „smallrc“ statisch ist, kann diese Ressourcenklasse auf 128 gleichzeitige Abfragen skaliert werden. 
+>
+>
+
+Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die Parallelitätsslots für jede [dynamische Ressourcenklasse](resource-classes-for-workload-management.md) in **Gen1**.
+
+| Servicelevel | Maximale Anzahl gleichzeitiger Abfragen | Verfügbare Parallelitätsslots | smallrc | mediumrc | largerc | xlargerc |
+|:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
+| DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
+| DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |
+| DW300         | 12                         |  12                         | 1       |  2       |  4      |   8      |
+| DW400         | 16                         |  16                         | 1       |  4       |  8      |  16      |
+| DW500         | 20                         |  20                         | 1       |  4       |  8      |  16      |
+| DW600         | 24                         |  24                         | 1       |  4       |  8      |  16      |
+| DW1000        | 32                         |  40                         | 1       |  8       | 16      |  32      |
+| DW1200        | 32                         |  48                         | 1       |  8       | 16      |  32      |
+| DW1500        | 32                         |  60                         | 1       |  8       | 16      |  32      |
+| DW2000        | 48                         |  80                         | 1       | 16       | 32      |  64      |
+| DW3000        | 64                         | 120                         | 1       | 16       | 32      |  64      |
+| DW6000        | 128                        | 240                         | 1       | 32       | 64      | 128      |
+
 
 Wenn einer dieser Grenzwerte erreicht wird, werden neue Abfragen in die Warteschlange eingereiht und nach dem Prinzip „First In, First Out“ ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei. 
 

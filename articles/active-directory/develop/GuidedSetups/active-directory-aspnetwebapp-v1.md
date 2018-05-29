@@ -1,24 +1,25 @@
 ---
-title: "Azure AD v1 – ASP.NET-Webserver: erste Schritte | Microsoft-Dokumentation"
-description: "Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Projektmappe mittels einer herkömmlichen webbrowserbasierten Anwendung unter Verwendung des Standards OpenID Connect"
+title: 'Azure AD v1 – ASP.NET-Webserver: erste Schritte | Microsoft-Dokumentation'
+description: Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Projektmappe mittels einer herkömmlichen webbrowserbasierten Anwendung unter Verwendung des Standards OpenID Connect
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/08/2017
+ms.date: 04/09/2018
 ms.author: andret
-ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 00fef27529dd1d69c13ceaf22e16d2b7cd47801f
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32156460"
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
@@ -250,7 +251,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 <!--start-test-->
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
-Drücken Sie `F5`, um das Projekt in Visual Studio auszuführen. Der Browser wird geöffnet und leitet Sie zu *http://localhost:{Port}* weiter, wo die Schaltfläche *Mit Microsoft anmelden* angezeigt wird. Fahren Sie fort, indem Sie darauf klicken, um sich anzumelden.
+Drücken Sie `F5`, um das Projekt in Visual Studio auszuführen. Der Browser wird geöffnet und leitet Sie zu *http://localhost:{port}* weiter, wo die Schaltfläche *Mit Microsoft anmelden* angezeigt wird. Fahren Sie fort, indem Sie darauf klicken, um sich anzumelden.
 
 Wenn Sie einen Test durchführen möchten, verwenden Sie ein Geschäftskonto (Azure Active Directory), um sich anzumelden. 
 
@@ -280,7 +281,7 @@ Darüber hinaus sehen Sie eine Tabelle mit allen Benutzeransprüchen, die in der
 ### <a name="test-accessing-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem *[Authorize]*-Attribut (optional)
 In diesem Schritt testen Sie den Zugriff auf den Claims-Controller als anonymer Benutzer:<br/>
 Klicken Sie auf den Link zum Abmelden des Benutzers, und schließen Sie den Abmeldevorgang ab.<br/>
-Geben Sie nun http://localhost:{Port}/claims in Ihren Browser ein, um auf Ihren Controller zuzugreifen, der durch das `[Authorize]`-Attribut geschützt ist.
+Geben Sie nun http://localhost:{port}/claims im Browser ein, um auf Ihren Controller zuzugreifen, der durch das `[Authorize]`-Attribut geschützt ist.
 
 #### <a name="expected-results"></a>Erwartete Ergebnisse
 Sie sollten zum Anmelden aufgefordert werden, um die Ansicht anzuzeigen.

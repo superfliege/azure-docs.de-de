@@ -9,11 +9,12 @@ ms.custom: security
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: mireks
-ms.openlocfilehash: 1f5f4a4ece116503c8ddb5eaa4998b5b1a407bb1
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 5451046eb2bfc611db863d18cee93a248e651f88
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194248"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank, der verwalteten SQL-Datenbank-Instanz oder SQL Data Warehouse
 
@@ -50,7 +51,7 @@ Bei Verwendung von Azure Active Directory mit Georeplikation muss der Azure Acti
 
 Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD erforderlich, damit Aufgaben wie die Authentifizierung von Benutzern über die Mitgliedschaft in Sicherheitsgruppen oder die Erstellung neuer Benutzer erfolgreich durchgeführt werden können. Damit dies funktioniert, müssen Sie für die verwaltete SQL-Datenbank-Instanz Leseberechtigungen für Azure AD gewähren. Hierfür gibt es zwei Möglichkeiten: das Portal und PowerShell. Die folgenden Schritte gelten für beide Methoden.
 
-1. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. 
+1. Wählen Sie im Azure-Portal in der oberen rechten Ecke Ihre Verbindung aus, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. 
 2. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. 
 
    In diesem Schritt wird das Abonnement, das Active Directory zugeordnet ist, mit der verwalteten SQL-Datenbank-Instanz verknüpft. So wird sichergestellt, dass dasselbe Abonnement sowohl für Azure AD als auch für die verwaltete SQL-Datenbank-Instanz verwendet wird.
@@ -58,7 +59,7 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 
    ![aad](./media/sql-database-aad-authentication/aad.png)
 
-4.  Klicken Sie oben auf der Active Directory-Administratorseite auf das Banner. Wenn Sie an Azure AD als globaler bzw. Unternehmensadministrator angemeldet sind, können Sie dies über das Azure-Portal oder mit PowerShell durchführen.
+4.  Wählen Sie oben auf der Seite „Active Directory-Administrator“ das Banner aus. Wenn Sie an Azure AD als globaler bzw. Unternehmensadministrator angemeldet sind, können Sie dies über das Azure-Portal oder mit PowerShell durchführen.
 
     ![Erteilen von Berechtigungen – Portal](./media/sql-database-aad-authentication/grant-permissions.png)
 
@@ -70,17 +71,17 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 
     ![Erfolg](./media/sql-database-aad-authentication/success.png)
 
-6.  Jetzt können Sie Ihren Azure AD-Administrator für die verwaltete Instanz auswählen. Klicken Sie hierzu auf der Seite „Active Directory-Administrator“ auf **Administrator festlegen**.
+6.  Jetzt können Sie Ihren Azure AD-Administrator für die verwaltete Instanz auswählen. Wählen Sie hierzu auf der Seite „Active Directory-Administrator“ **Administrator festlegen** aus.
 
     ![Administrator festlegen](./media/sql-database-aad-authentication/set-admin.png)
 
-7. Suchen Sie auf der Seite „Administrator hinzufügen“ nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und klicken Sie dann auf **Auswählen**. 
+7. Suchen Sie auf der Seite „Administrator hinzufügen“ nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und wählen Sie dann **Auswählen** aus. 
 
    Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Auf dem Blatt „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. Eine Liste mit den unterstützten Administratoren finden Sie unter [Features und Einschränkungen von Azure AD](sql-database-aad-authentication.md#azure-ad-features-and-limitations). Die rollenbasierte Zugriffskontrolle (Role-Based Access Control, RBAC) gilt nur für das Azure-Portal und wird nicht an SQL Server weitergegeben.
 
     ![Administrator hinzufügen](./media/sql-database-aad-authentication/add-admin.png)
 
-8. Klicken Sie oben auf der Seite „Active Directory-Administrator“ auf **Speichern**.
+8. Wählen Sie oben auf der Seite „Active Directory-Administrator“ **Speichern** aus.
 
     ![Speichern](./media/sql-database-aad-authentication/save.png)
 
@@ -90,7 +91,7 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 > Beim Einrichten des Azure AD-Administrators darf der Name des neuen Administrators (Benutzer oder Gruppe) in der virtuellen Masterdatenbank noch nicht als SQL Server-Authentifizierungsbenutzer vorhanden sein. Wenn er vorhanden ist, schlägt die Einrichtung des Azure AD-Administrators fehl. Die Erstellung wird rückgängig gemacht, und es wird angegeben, dass ein solcher Administrator (Name) bereits vorhanden ist. Da dieser SQL Server-Authentifizierungsbenutzer nicht Teil von Azure AD ist, sind alle Versuche erfolglos, unter der Azure AD-Authentifizierung eine Verbindung mit dem Server herzustellen.
 
 > [!TIP]
-> Wenn Sie später einen Administrator entfernen möchten, klicken Sie oben auf der Seite „Active Directory-Administrator“ auf **Administrator entfernen** und anschließend auf **Speichern**.
+> Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite „Active Directory-Administrator“ **Administrator entfernen** und anschließend **Speichern** aus.
  
 ## <a name="provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server"></a>Bereitstellen eines Azure Active Directory-Administrators für Ihren Azure SQL-Datenbank-Server
 
@@ -100,17 +101,24 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 Die beiden folgenden Verfahren zeigen Ihnen, wie Sie einen Azure Active Directory-Administrator für Ihre Azure SQL Server-Instanz im Azure-Portal und mithilfe von PowerShell bereitstellen.
 
 ### <a name="azure-portal"></a>Azure-Portal
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke auf Ihre Verbindung, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird die mit dem Abonnement verbundene Active Directory-Instanz mit der Azure SQL Server-Instanz verknüpft. So wird sichergestellt, dass das gleiche Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die Azure SQL Server-Instanz kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)   
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in der oberen rechten Ecke Ihre Verbindung aus, um eine Dropdownliste mit möglichen Active Directory-Verzeichnissen zu öffnen. Wählen Sie das richtige Active Directory-Verzeichnis als Standardeinstellung für Azure AD aus. Durch diesen Schritt wird die mit dem Abonnement verbundene Active Directory-Instanz mit der Azure SQL Server-Instanz verknüpft. So wird sichergestellt, dass das gleiche Abonnement sowohl für Azure AD als auch für SQL Server verwendet wird. (Die Azure SQL Server-Instanz kann entweder Azure SQL-Datenbank oder Azure SQL Data Warehouse hosten.)   
     ![choose-ad][8]   
     
-2. Wählen Sie auf dem Banner links **SQL Server** aus, wählen Sie Ihre **SQL Server-Instanz** aus, und klicken Sie dann auf der Seite **SQL Server** auf **Active Directory-Administrator**.   
-3. Klicken Sie auf der Seite **Active Directory-Administrator** auf **Administrator festlegen**.   
+2. Wählen Sie in dem linken Banner **Alle Dienste** aus, und geben Sie im Filtertyp **SQL Server** ein. Wählen Sie **SQL Server** aus. 
+
+    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)    
+
+    >[!NOTE]
+    > Auf dieser Seite können Sie vor der Auswahl von **SQL Server** den **Stern** neben dem Namen auswählen, um die Kategorie den *Favoriten* hinzuzufügen, und **SQL Server** der linken Navigationsleiste hinzufügen. 
+
+1. Wählen Sie auf der Seite **SQL Server** die Option **Active Directory-Administrator** aus.   
+2. Wählen Sie auf der Seite **Active Directory-Administrator** die Option **Administrator festlegen** aus.   
     ![Active Directory auswählen](./media/sql-database-aad-authentication/select-active-directory.png)  
     
-4. Suchen Sie auf der Seite **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und klicken Sie dann auf **Auswählen**. Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Auf dem Blatt „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Siehe Liste mit unterstützten Administratoren im Abschnitt **Funktionen und Einschränkungen von Azure AD** von [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication.md).) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.   
+4. Suchen Sie auf der Seite **Administrator hinzufügen** nach einem Benutzer, wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie als Administrator festlegen möchten, und wählen Sie dann **Auswählen** aus. Auf der Seite „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Auf dem Blatt „Active Directory-Administrator“ werden alle Mitglieder und Gruppen in Ihrem Active Directory-Verzeichnis angezeigt. (Siehe Liste mit unterstützten Administratoren im Abschnitt **Funktionen und Einschränkungen von Azure AD** von [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](sql-database-aad-authentication.md).) Die rollenbasierte Zugriffskontrolle (Role-based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.   
     ![Administrator auswählen](./media/sql-database-aad-authentication/select-admin.png)  
     
-5. Klicken Sie oben auf der Seite **Active Directory-Administrator** auf **SPEICHERN**.   
+5. Wählen Sie oben auf der Seite **Active Directory-Administrator** **SPEICHERN** aus.   
     ![Administrator speichern](./media/sql-database-aad-authentication/save-admin.png)   
 
 Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld **Active Directory-Administrator** angezeigt.
@@ -120,7 +128,7 @@ Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehme
    > 
 
 
-Wenn Sie später einen Administrator entfernen möchten, klicken Sie oben auf der Seite **Active Directory-Administrator** auf **Administrator entfernen** und anschließend auf **Speichern**.
+Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite **Active Directory-Administrator** **Administrator entfernen** und anschließend **Speichern** aus.
 
 ### <a name="powershell"></a>PowerShell
 Zum Ausführen von PowerShell-Cmdlets muss Azure PowerShell installiert sein und ausgeführt werden. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
@@ -273,7 +281,7 @@ Verwenden Sie diese Methode, wenn Sie mit Ihren Azure Active Directory-Anmeldein
 1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbank-Engine herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: integriert** aus. Es ist kein Kennwort erforderlich bzw. es kann kein Kennwort eingegeben werden, weil Ihre vorhandenen Anmeldeinformationen zur Verbindungsherstellung verwendet werden.   
 
     ![Integrierte AD-Authentifizierung auswählen][11]
-2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld  **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll. (Die Option **AD-Domänenname oder Mandanten-ID** wird nur für Optionen der Reihe **universell mit MFA-Unterstützung** unterstützt, andernfalls wird sie abgeblendet dargestellt.)  
+2. Wählen Sie die Schaltfläche **Optionen** aus, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll. (Die Option **AD-Domänenname oder Mandanten-ID** wird nur für Optionen der Reihe **universell mit MFA-Unterstützung** unterstützt, andernfalls wird sie abgeblendet dargestellt.)  
 
     ![Datenbanknamen auswählen][13]
 
@@ -289,7 +297,7 @@ Ein nativer Benutzer ist ein explizit in Azure AD erstellter Benutzer, der mit B
 3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein.
 
     ![AD-Kennwortauthentifizierung auswählen][12]
-4. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld  **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll. (Siehe Grafik in der vorherigen Option.)
+4. Wählen Sie die Schaltfläche **Optionen** aus, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll. (Siehe Grafik in der vorherigen Option.)
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Verwenden einer Azure AD-Identität, um von einer Clientanwendung aus eine Verbindung herzustellen
 

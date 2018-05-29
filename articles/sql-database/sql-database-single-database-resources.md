@@ -9,11 +9,12 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: carlrab
-ms.openlocfilehash: 87cd4c565a7429ffb7096034823a1f5ff49df195
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c1fe162beca258fe8ec3d03ce2844c1abe3176dc
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188972"
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank
 
@@ -109,6 +110,6 @@ Verwenden Sie diese REST-API-Anforderungen, um Dienstebenen, Leistungsstufen und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu Dienstebenen, Leistungsstufen und Speichermengen finden Sie unter [Verfügbare Leistungsoptionen für eine Azure SQL-Datenbank](sql-database-service-tiers.md).
+- Weitere Informationen zu Dienstebenen, Leistungsebenen und Speichermengen finden Sie unter [[DTU-basiertes Einkaufsmodell für Azure SQL-Datenbank](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell für Azure SQL-Datenbank (Vorschau)](sql-database-service-tiers-vcore.md).
 - Informationen zu Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer SQL-Datenbanken](sql-database-elastic-pool.md).
 - Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
