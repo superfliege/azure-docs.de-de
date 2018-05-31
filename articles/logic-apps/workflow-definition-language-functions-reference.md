@@ -1,9 +1,9 @@
 ---
 title: Funktionen der Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Informationen zu Funktionen zum Erstellen von Logik-Apps mit der Definitionssprache für Workflows
+description: Erfahren Sie mehr über die Funktionen, die Sie in Workflowdefinitionen für Logik-Apps verwenden können.
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: SyntaxC4
 editor: ''
 documentationcenter: ''
 ms.assetid: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 04/25/2018
 ms.author: estfan; LADocs
-ms.openlocfilehash: 8240ddf8a93c6589f89f3ad680c1c99c594742c9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0155e35641a0407fe48c4da07400fa188152b0af
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886611"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182250"
 ---
 # <a name="workflow-definition-language-functions-reference-for-azure-logic-apps"></a>Referenz der Funktionen der Definitionssprache für Workflows für Azure Logic Apps
 
-Dieser Artikel beschreibt die Funktionen, die Sie verwenden können, wenn Sie Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen. Weitere Informationen zu Funktionen in Logik-App-Definitionen finden Sie unter [Definitionssprache für Workflows für Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
+Dieser Artikel beschreibt die Funktionen, die Sie verwenden können, wenn Sie Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen. Weitere Informationen zu Logik-App-Definitionen finden Sie unter [Definitionssprache für Workflows für Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md). 
 
 > [!NOTE]
 > In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist. Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
@@ -358,7 +358,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T00:15:00.0000000Z"`
 
 ## <a name="addproperty"></a>addProperty
 
-Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. Wenn das Objekt zur Laufzeit bereits vorhanden ist, löst die Funktion einen Fehler aus.
+Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar, zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. Wenn das Objekt zur Laufzeit bereits vorhanden ist, löst die Funktion einen Fehler aus.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -473,7 +473,7 @@ Dies ist das zurückgegebene Ergebnis mit dem optionalen „D“-Format: `"Tuesd
 
 ## <a name="and"></a>and
 
-Überprüft, ob für sämtliche Ausdrücke der Wert „TRUE“ festgelegt ist. Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind, oder gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist.
+Überprüft, ob alle Ausdrücke gleich „true“ sind. Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind, oder gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist.
 
 ```
 and(<expression1>, <expression2>, ...)
@@ -845,7 +845,7 @@ Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 
 | Rückgabewert | Typ | BESCHREIBUNG | 
 | ------------ | ---- | ----------- | 
-| "true" oder "false" | Boolescher Wert | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| "true" oder "false" | Boolescher Wert | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn es nicht gefunden wurde. |
 |||| 
 
 *Beispiel 1*
@@ -868,7 +868,7 @@ contains('hello world', 'universe')
 
 ## <a name="convertfromutc"></a>convertFromUtc
 
-Konvertiert einen Zeitstempel von der UTC-Zeitzone (UTC = Universal Time, Coordinated) in die Zielzeitzone.
+Konvertiert einen Zeitstempel aus dem UTC-Format (Universal Time Coordinated) in das Format der Zielzeitzone.
 
 ```
 convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
@@ -953,7 +953,7 @@ Dies ist das zurückgegebene Ergebnis: `"Monday, January 1, 2018"`
 
 ## <a name="converttoutc"></a>convertToUtc
 
-Konvertiert einen Zeitstempel von der Quellzeitzone in die UTC-Zeitzone (UTC = Universal Time, Coordinated).
+Konvertiert einen Zeitstempel aus dem Format der Zielzeitzone in das UTC-Format (Universal Time Coordinated).
 
 ```
 convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
@@ -1055,7 +1055,7 @@ Dies ist das zurückgegebene Ergebnis: `"data:text/plain;charset=utf-8;base64,aG
 
 ## <a name="datauritobinary"></a>dataUriToBinary
 
-Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Verwenden Sie diese Funktion anstelle von [decodeDataUri()](#decodeDataUri). Obwohl beide Funktionen in gleicher Weise funktionieren, wird `decodeDataUri()` bevorzugt.
+Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Verwenden Sie diese Funktion anstelle von [decodeDataUri()](#decodeDataUri). Obwohl beide Funktionen in gleicher Weise verwendet werden können, wird `decodeDataUri()` bevorzugt.
 
 ```
 dataUriToBinary('<value>')
@@ -1719,7 +1719,7 @@ Dies ist das zurückgegebene Ergebnis: `"Saturday, January 27, 2018"`
 
 ## <a name="greater"></a>greater
 
-Überprüft, ob der erste Wert größer als der zweite ist. Gibt „true“ zurück, wenn der erste Wert größer ist, gibt andernfalls „false“ zurück.
+Überprüft, ob der erste Wert größer als der zweite Wert ist. Gibt „true“ zurück, wenn der erste Wert größer ist, gibt andernfalls „false“ zurück.
 
 ```
 greater(<value>, <compareTo>)
@@ -1755,7 +1755,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 
-Überprüft, ob der erste Wert größer als oder gleich dem zweiten ist.
+Überprüft, ob der erste Wert größer gleich dem zweiten Wert ist.
 Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist, gibt andernfalls „false“ zurück.
 
 ```
@@ -2039,7 +2039,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 ## <a name="intersection"></a>Schnittmenge
 
-Gibt eine Sammlung zurück, die *nur* die gängigen Elemente aus den angegebenen Sammlungen enthält. Damit ein Element im Ergebnis enthalten ist, muss es in allen Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen.
+Gibt eine Sammlung zurück, die *nur* die Elemente enthält, die in jeder der angegebenen Sammlungen enthalten sind. Damit ein Element im Ergebnis enthalten ist, muss es in allen Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen.
 
 ```
 intersection([<collection1>], [<collection2>], ...)
@@ -2199,7 +2199,7 @@ Dies ist das zurückgegebene Ergebnis: `4`
 
 ## <a name="less"></a>less
 
-Überprüft, ob der erste Wert kleiner als der zweite ist.
+Überprüft, ob der erste Wert kleiner als der zweite Wert ist.
 Gibt „true“ zurück, wenn der erste Wert kleiner ist, gibt andernfalls „false“ zurück.
 
 ```
@@ -2236,7 +2236,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ## <a name="lessorequals"></a>lessOrEquals
 
-Überprüft, ob der erste Wert kleiner als oder gleich dem zweiten ist.
+Überprüft, ob der erste Wert kleiner gleich dem zweiten Wert ist.
 Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist, gibt andernfalls „false“ zurück.
 
 ```
@@ -2523,7 +2523,7 @@ or(false, false)
 Dies sind die zurückgegebenen Ergebnisse:
 
 * Erstes Beispiel: Mindestens ein Ausdruck ist gleich „true“, weshalb die Funktion `true` zurückgibt.
-* Zweites Beispiel: Beide Ausdrücke sind gleich „false“, weshalb die Funktion `false` zurückgibt.
+* Zweites Beispiel: Beide Ausdrücke sind gleich „false“, weshalb die Funktion `false` zurückgegeben.
 
 *Beispiel 2*
 
@@ -2612,7 +2612,7 @@ Eine dieser Zahlen wird als Ergebnis zurückgegeben: `1`, `2`, `3` oder `4`
 
 ## <a name="range"></a>range
 
-Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl beginnt.
+Gibt ein Array mit ganzen Zahlen zurück, das von einer angegebenen ganzen Zahl ausgeht.
 
 ```
 range(<startIndex>, <count>)
@@ -3351,7 +3351,7 @@ Dies ist das zurückgegebene Ergebnis: `"Hello World"`
 
 ## <a name="union"></a>union
 
-Gibt eine Sammlung zurück, die *sämtliche* Elemente aus den angegebenen Sammlungen enthält. Damit ein Element im Ergebnis enthalten ist, kann es in irgendeiner der Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen. 
+Gibt eine Sammlung zurück, die *alle* Elemente aus den angegebenen Sammlungen enthält. Damit ein Element im Ergebnis enthalten ist, kann es in irgendeiner der Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen. 
 
 ```
 union('<collection1>', '<collection2>', ...)
@@ -3477,7 +3477,7 @@ Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
 
 ## <a name="urihost"></a>uriHost
 
-Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück.
+Gibt den `host`-Wert für einen Uniform Resource Identifier (URI) zurück.
 
 ```
 uriHost('<uri>')
@@ -3507,7 +3507,7 @@ Dies ist das zurückgegebene Ergebnis: `"www.localhost.com"`
 
 ## <a name="uripath"></a>uriPath
 
-Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück. 
+Gibt den `path`-Wert für einen Uniform Resource Identifier (URI) zurück. 
 
 ```
 uriPath('<uri>')
@@ -3567,7 +3567,7 @@ Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm?date=today"`
 
 ## <a name="uriport"></a>uriPort
 
-Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück.
+Gibt den `port`-Wert für einen Uniform Resource Identifier (URI) zurück.
 
 ```
 uriPort('<uri>')
@@ -3597,7 +3597,7 @@ Dies ist das zurückgegebene Ergebnis: `8080`
 
 ## <a name="uriquery"></a>uriQuery
 
-Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück.
+Gibt den `query`-Wert für einen Uniform Resource Identifier (URI) zurück.
 
 ```
 uriQuery('<uri>')
