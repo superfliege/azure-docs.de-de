@@ -14,11 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
-ms.openlocfilehash: dbd9d01a00522a0a55828284cd6c0e78a26d9102
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cadd771a516270faf23f18a36f54fa9a1541e6d5
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364898"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Senden von E-Mails mit SendGrid aus Java
 Dieser Leitfaden veranschaulicht die Ausführung allgemeiner Programmierungsaufgaben mit dem E-Mail-Dienst SendGrid in Azure. Die Beispiele sind in Java geschrieben. Die behandelten Szenarien umfassen das **Erstellen einer E-Mail**, **Senden einer E-Mail**, **Hinzufügen von Anhängen**, **Verwenden von Filtern** und **Aktualisieren von Eigenschaften**. Weitere Informationen zu SendGrid und zum Senden von E-Mails erhalten Sie im Abschnitt [Nächste Schritte](#next-steps) .
@@ -158,7 +159,7 @@ SendGrid bietet zusätzliche E-Mail-Funktionen durch die Verwendung von *Filtern
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>Vorgehensweise: E-Mail-Eigenschaften aktualisieren
-Einige E-Mail-Eigenschaften können mit **set*Property*** überschrieben oder mit **add*Property*** angefügt werden.
+Einige E-Mail-Eigenschaften können mit **set Property** überschrieben oder mit **add Property** angefügt werden.
 
 Um z.B. die **ReplyTo**-Adressen anzugeben, können Sie folgenden Code verwenden:
 

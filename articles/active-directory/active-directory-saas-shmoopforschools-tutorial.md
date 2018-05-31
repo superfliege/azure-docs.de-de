@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 799a88344d6c348061af19bfbbd9022025d2d66b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e824fe7a74c4adc619f7fa324aa6fa28dacecf24
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350609"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32153159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Tutorial: Azure Active Directory-Integration mit Shmoop For Schools
 
@@ -31,7 +31,7 @@ Die Integration von Shmoop For Schools in Azure AD hat folgende Vorteile:
 - Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Shmoop For Schools anzumelden.
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -231,7 +231,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

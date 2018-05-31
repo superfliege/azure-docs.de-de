@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29877363"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services
 
@@ -65,7 +66,7 @@ Nachdem Remotedesktop für die Rollen aktiviert wurde, können Sie direkt im Azu
 4. Klicken Sie auf **Öffnen** und dann auf **Verbinden**, um die Remotedesktopverbindung zu starten.
 
 >[!NOTE]
-> Wenn Ihr Clouddienst durch eine NSG geschützt ist, müssen Sie u.U. Regeln erstellen, die den Datenverkehr an den Ports **3389** und **20000** zulassen.  Remotedesktop verwendet Port **3389**.  Für Cloud Services-Instanzen erfolgt ein Lastenausgleich, daher können Sie nicht direkt steuern, mit welcher Instanz eine Verbindung hergestellt wird.  Die Agents *RemoteForwarder* und *RemoteAccess* verwalten den RDP-Datenverkehr und ermöglichen es dem Client, ein RDP-Cookie zu senden und eine bestimmte Instanz anzugeben, mit der eine Verbindung hergestellt werden soll.  Für die Agents *RemoteForwarder* und *RemoteAccess* ist es erforderlich, dass Port **20000** offen ist. Dieser ist bei Vorhandensein einer NSG unter Umständen blockiert.
+> Wenn Ihr Clouddienst durch eine NSG geschützt ist, müssen Sie u.U. Regeln erstellen, die den Datenverkehr an den Ports **3389** und **20000** zulassen.  Remotedesktop verwendet Port **3389**.  Für Cloud Services-Instanzen erfolgt ein Lastenausgleich, daher können Sie nicht direkt steuern, mit welcher Instanz eine Verbindung hergestellt wird.  Die Agents *RemoteForwarder* und *RemoteAccess* verwalten den RDP-Datenverkehr und ermöglichen es dem Client, ein RDP-Cookie zu senden und eine bestimmte Instanz anzugeben, mit der eine Verbindung hergestellt werden soll.  Für die Agents *RemoteForwarder* und *RemoteAccess* ist es erforderlich, dass Port **20000**\* offen ist. Dieser ist bei Vorhandensein einer NSG unter Umständen blockiert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

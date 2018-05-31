@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527153"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indizieren von Tabellen in SQL Data Warehouse
 Empfehlungen und Beispiele für die Indizierung von Tabellen in Azure SQL Data Warehouse
@@ -198,7 +199,7 @@ Kleine Ladevorgänge in SQL Data Warehouse werden manchmal auch als langsame Lad
 In diesen Situationen ist es oft besser, die Daten zunächst in Azure Blob Storage zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikrobatches*bezeichnet.
 
 ### <a name="too-many-partitions"></a>Zu viele Partitionen
-Ein weiterer zu berücksichtigender Aspekt ist die Auswirkung der Partitionierung auf Ihre gruppierten Columnstore-Tabellen.  Vor dem Partitionieren teilt SQL Data Warehouse Ihre Daten bereits auf 60 Datenbanken auf.  Durch die Partitionierung werden die Daten dann noch weiter aufgeteilt.  Beim Partitionieren Ihrer Daten sollten Sie darauf achten, dass **jede** Partition mindestens 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Wenn Sie Ihre Tabelle in 100 Partitionen unterteilen, muss die Tabelle mindestens 6 Milliarden Zeilen aufweisen, um von einem gruppierten Columnstore-Index zu profitieren (60 Distributionen x 100 Partitionen x 1 Million Zeilen). Falls Ihre Tabelle mit 100 Partitionen nicht 6 Milliarden Zeilen enthält, sollten Sie entweder die Anzahl der Partitionen reduzieren oder stattdessen eine Heaptabelle verwenden.
+Ein weiterer zu berücksichtigender Aspekt ist die Auswirkung der Partitionierung auf Ihre gruppierten Columnstore-Tabellen.  Vor dem Partitionieren teilt SQL Data Warehouse Ihre Daten bereits auf 60 Datenbanken auf.  Durch die Partitionierung werden die Daten dann noch weiter aufgeteilt.  Beim Partitionieren Ihrer Daten sollten Sie darauf achten, dass **jede** Partition mindestens 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Wenn Sie Ihre Tabelle in 100 Partitionen unterteilen, muss die Tabelle mindestens 6 Milliarden Zeilen aufweisen, um von einem gruppierten Columnstore-Index zu profitieren (60 Distributionen * 100 Partitionen * 1 Million Zeilen). Falls Ihre Tabelle mit 100 Partitionen nicht 6 Milliarden Zeilen enthält, sollten Sie entweder die Anzahl der Partitionen reduzieren oder stattdessen eine Heaptabelle verwenden.
 
 Führen Sie nach dem Laden der Tabellen mit einigen Daten die unten angegebenen Schritte aus, um Tabellen mit suboptimalen gruppierten Columnstore-Indizes zu identifizieren und neu zu erstellen.
 

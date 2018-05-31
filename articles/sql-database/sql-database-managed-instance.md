@@ -10,11 +10,12 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: eeb6b74fb7dfbf25e27963dd7a2f7f431feebcc8
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 85a0157751a1c26fb7f37152d7c12f56b1c423d1
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32193283"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -67,9 +68,9 @@ In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die ü
 
 ![Einmaliges Anmelden](./media/sql-database-managed-instance/sso.png) 
 
-## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
+## <a name="vcore-based-purchasing-model-preview"></a>V-Kern-basiertes Kaufmodell (Vorschauversion)
 
-Das auf virtuellen Kernen basierende Einkaufsmodell bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
+Das auf virtuellen Kernen basierende Kaufmodell (Vorschau) bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
 
 Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten.
 - Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz.
@@ -186,7 +187,7 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können direkt in der verwalteten Instanz gespeichert werden. Zur Wiederherstellung einer vorhandenen SQL-­Datenbank in einer verwalteten Instanz können Sie wie folgt vorgehen:
 
 - Verwenden Sie [Data Migration Service (DMS)](/sql/dma/dma-overview). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
-- Verwenden Sie den [T-SQL RESTORE-Befehl](https://docs.microsoft.com/en-us/sql/t-sql/statements/restore-statements-transact-sql). 
+- Verwenden Sie den [T-SQL RESTORE-Befehl](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Ein Tutorial zum Wiederherstellen der Standardsicherungsdatei für die Wide World Importers-Datenbank finden Sie unter [Wiederherstellen einer Sicherungsdatei in einer verwalteten Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md). In diesem Tutorial wird gezeigt, wie eine Sicherungsdatei in den Azure Blob Storage hochgeladen und mit einem SAS-Schlüssel (Shared Access Signature) geschützt wird.
   - Weitere Informationen zur Wiederherstellung über eine URL finden Sie unter [Native RESTORE FROM URL-Option](sql-database-managed-instance-migrate.md#native-restore-from-url).
 - [Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank](sql-database-import.md)

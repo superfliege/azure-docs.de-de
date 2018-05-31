@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: jroth
-ms.openlocfilehash: b91638b6b76675711150323bee4aa9ad9d9a73d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: bba9f62a78dea4db1d88f877029796739b023e46
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365201"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -46,7 +47,7 @@ Wenn Sie einen virtuellen SQL Server-Computer mit einem Katalogimage erstellen, 
 
 Wählen Sie für Ihr Szenario die Option mit den höchsten Einschränkungen, um die bestmögliche Sicherheit zu erzielen. Wenn Sie beispielsweise eine Anwendung ausführen, bei der auf SQL Server auf derselben VM zugegriffen wird, ist **Lokal** die Option mit der höchsten Sicherheit. Bei Ausführung einer Azure-Anwendung, für die Zugriff auf SQL Server erforderlich ist, wird mit **Privat** die Kommunikation mit SQL Server nur innerhalb des angegebenen [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md) geschützt. Falls Sie Zugriff vom Typ **Öffentlich (Internet)** auf die SQL Server-VM benötigen, sollten Sie auf jeden Fall auch die weiteren bewährten Methoden in diesem Thema befolgen, um Ihre Angriffsfläche zu reduzieren.
 
-Für die gewählten Optionen im Portal werden Sicherheitsregeln für eingehenden Datenverkehr für die [Netzwerksicherheitsgruppe](../../../virtual-network/virtual-networks-nsg.md) (NSG) der VM verwendet, um den Netzwerkdatenverkehr für Ihren virtuellen Computer zuzulassen oder zu verweigern. Sie können neue NSG-Regeln für eingehenden Datenverkehr ändern oder erstellen, um den Datenverkehr zum SQL Server-Port (Standard: 1433) zuzulassen. Außerdem können Sie bestimmte IP-Adressen angeben, die über diesen Port kommunizieren können.
+Für die ausgewählten Optionen im Portal werden Sicherheitsregeln für eingehenden Datenverkehr für die [Netzwerksicherheitsgruppe](../../../virtual-network/security-overview.md) (NSG) der VM verwendet, um den Netzwerkdatenverkehr für Ihren virtuellen Computer zuzulassen oder zu verweigern. Sie können neue NSG-Regeln für eingehenden Datenverkehr ändern oder erstellen, um den Datenverkehr zum SQL Server-Port (Standard: 1433) zuzulassen. Außerdem können Sie bestimmte IP-Adressen angeben, die über diesen Port kommunizieren können.
 
 ![Netzwerksicherheitsgruppen-Regeln](./media/virtual-machines-windows-sql-security/sql-vm-network-security-group-rules.png)
 

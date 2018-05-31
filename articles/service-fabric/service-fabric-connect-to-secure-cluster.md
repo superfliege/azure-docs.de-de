@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: 759a539e-e5e6-4055-bff5-d38804656e10
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/10/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2ddb72f267fc46d7980007d41c5d512f50eaf47e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f2a181fbae8ab1e08669021c42c5b4be08f66172
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364810"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -115,6 +116,27 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -FindValue $certCN `
     -StoreLocation CurrentUser `
     -StoreName My 
+```
+
+#### <a name="connect-using-certificate-thumbprint"></a>Herstellen einer Verbindung mithilfe des Zertifikatfingerabdrucks
+Stellen Sie den Zertifikatfingerabdruck für den Cluster und den Fingerabdruck des Clientzertifikats bereit, das Berechtigungen für die Clusterverwaltung erhalten hat. Die Details des Zertifikats müssen mit einem Zertifikat auf den Clusterknoten übereinstimmen.
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint <Cluster FQDN>:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint <Certificate Thumbprint> `  
+          -FindType FindByThumbprint -FindValue <Certificate Thumbprint> `  
+          -StoreLocation CurrentUser -StoreName My
+```
+
+*ServerCertThumbprint* ist der Fingerabdruck des Serverzertifikats, das auf den Clusterknoten installiert ist. *FindValue* ist der Fingerabdruck des Clientzertifikats des Administrators.  Beim Auffüllen der Parameter sieht der Befehl wie im folgenden Beispiel aus:
+
+```powershell
+Connect-ServiceFabricCluster -ConnectionEndpoint clustername.westus.cloudapp.azure.com:19000 `  
+          -KeepAliveIntervalInSec 10 `  
+          -X509Credential -ServerCertThumbprint A8136758F4AB8962AF2BF3F27921BE1DF67F4326 `  
+          -FindType FindByThumbprint -FindValue 71DE04467C9ED0544D021098BCD44C71E183414E `  
+          -StoreLocation CurrentUser -StoreName My 
 ```
 
 ### <a name="connect-to-a-secure-cluster-using-windows-active-directory"></a>Herstellen einer Verbindung mit einem sicheren Cluster mit Windows Active Directory
