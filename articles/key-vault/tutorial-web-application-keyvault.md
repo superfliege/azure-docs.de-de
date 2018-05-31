@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault | Microsoft-Dokumentation
+title: 'Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault | Microsoft-Dokumentation'
 description: 'Tutorial: Konfigurieren einer ASP.NET Core-Anwendung zum Lesen eines Geheimnisses aus Key Vault'
 services: key-vault
 documentationcenter: ''
@@ -8,15 +8,16 @@ manager: mbaldwin
 ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
-ms.topic: article
-ms.date: 04/16/2018
+ms.topic: tutorial
+ms.date: 05/17/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: b4e317a82b93513c6161d9da0c55883e99580cbb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 146ea04081a4adebe4a6e9249bb1fe34ba76e3a4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305173"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>Tutorial: Konfigurieren einer Azure-Webanwendung zum Lesen eines Geheimnisses aus Key Vault
 
@@ -48,24 +49,22 @@ Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create)
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurecli
-az group create --name ContosoResourceGroup --location eastus
+# To list locations: az account list-locations --output table
+az group create --name "ContosoResourceGroup" --location "East US"
 ```
 
 Die eben erstellte Ressourcengruppe wird im gesamten Tutorial verwendet.
 
 ## <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
 
-Als Nächstes erstellen Sie eine Key Vault-Instanz in der Ressourcengruppe aus dem vorherigen Schritt. Einige Informationen sind erforderlich:
-
->[!NOTE]
-> In diesem Tutorial lautet der Name für die Key Vault-Instanz zwar „ContosoKeyVault“, Sie müssen jedoch einen eindeutigen Namen verwenden.
+Als Nächstes erstellen Sie eine Key Vault-Instanz in der Ressourcengruppe aus dem vorherigen Schritt. In diesem Tutorial lautet der Name für die Key Vault-Instanz zwar „ContosoKeyVault“, Sie müssen jedoch einen eindeutigen Namen verwenden. Geben Sie die folgenden Informationen ein:
 
 * Der Tresorname lautet **ContosoKeyVault**.
 * Der Ressourcengruppenname lautet **ContosoResourceGroup**.
 * Als Standort wird **USA, Osten** verwendet.
 
 ```azurecli
-az keyvault create --name '<YourKeyVaultName>' --resource-group ContosoResourceGroup --location eastus
+az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "East US"
 ```
 
 Die Ausgabe dieses Befehls zeigt Eigenschaften der neu erstellten Key Vault-Instanz. Beachten Sie die beiden folgenden Eigenschaften:
@@ -85,13 +84,13 @@ Wir fügen ein Geheimnis hinzu, um die Vorgehensweise zu veranschaulichen. Sie k
 Geben Sie die folgenden Befehle ein, um in Key Vault ein Geheimnis namens **AppSecret** mit dem Wert **Pa$$MySecret** zu erstellen:
 
 ```azurecli
-az keyvault secret set --vault-name '<YourKeyVaultName>' --name 'AppSecret' --value 'MySecret'
+az keyvault secret set --vault-name "ContosoKeyVault" --name "AppSecret" --value "MySecret"
 ```
 
 Geben Sie Folgendes ein, um den Wert im Geheimnis als Nur-Text anzuzeigen:
 
 ```azurecli
-az keyvault secret show --name 'AppSecret' --vault-name '<YourKeyVaultName>'
+az keyvault secret show --name "AppSecret" --vault-name "ContosoKeyVault"
 ```
 
 Mit diesem Befehl werden die Geheimnisinformationen einschließlich des URI angezeigt. Nach der Ausführung dieser Schritte sollten Sie einen URI zu einem Geheimnis in einer Azure Key Vault-Instanz besitzen. Notieren Sie sich diese Informationen. Sie benötigen sie in einem späteren Schritt.
@@ -212,8 +211,8 @@ Zwei NuGet-Pakete müssen für Ihre Webanwendung installiert sein. Führen Sie z
 ## <a name="publish-the-web-application-to-azure"></a>Veröffentlichen der Webanwendung in Azure
 
 1. Klicken Sie über dem Editor auf **WebKeyVault**.
-2. Klicken Sie auf **Veröffentlichen**.
-3. Klicken Sie erneut auf **Veröffentlichen**.
+2. Klicken Sie auf **Veröffentlichen** und dann auf **Starten**.
+3. Erstellen Sie eine neue Instanz von **App Service**, und klicken Sie auf **Veröffentlichen**.
 4. Klicken Sie auf **Erstellen**.
 
 >[!IMPORTANT]
@@ -227,11 +226,11 @@ Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinfor
 2. Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
 
 ```azurecli
-az webapp assign-identity --name WebKeyVault --resource-group ContosoResourcegroup
+az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResourcegroup"
 ```
 
 >[!NOTE]
->Dies entspricht dem Aufrufen des Portals und dem Festlegen von **Verwaltete Dienstidentität** auf **Ein** in den Webanwendungseigenschaften.
+>Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen von **Verwaltete Dienstidentität** auf **Ein** in den Webanwendungseigenschaften.
 
 ## <a name="grant-rights-to-the-application-identity"></a>Gewähren von Berechtigungen für die Anwendungsidentität
 
@@ -250,7 +249,7 @@ Ihr Konto in Azure und die Anwendungsidentität verfügen nun über Berechtigung
 Führen Sie zum Löschen einer Ressourcengruppe und all ihrer Ressourcen den Befehl **az group delete** aus.
 
   ```azurecli
-  az group delete -n ContosoResourceGroup
+  az group delete -n "ContosoResourceGroup"
   ```
 
 ## <a name="next-steps"></a>Nächste Schritte

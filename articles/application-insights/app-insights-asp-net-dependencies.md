@@ -1,6 +1,6 @@
 ---
-title: "Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs"
-description: "Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights."
+title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs
+description: Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 060f1c9d2c74ed45e8077ec99503a1d7b885d325
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 99d9ad04ac39d6d0072b13c81e74605e48de175b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010463"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -131,7 +132,7 @@ Klicken Sie auf einen Anforderungsfehler, und sehen Sie sich die zugeordneten Er
 
 ![Klicken Sie auf den Anforderungstyp, klicken Sie auf die Instanz, um eine andere Ansicht derselben Instanz abzurufen, und klicken Sie darauf, um Details zur Ausnahme zu erhalten.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
-## <a name="analytics"></a>Analyse
+## <a name="analytics"></a>Analytics
 Sie können Abhängigkeiten in der [Log Analytics-Abfragesprache](https://docs.loganalytics.io/) nachverfolgen. Hier einige Beispiele.
 
 * Suchen fehlgeschlagener Abhängigkeitsaufrufe:
@@ -200,9 +201,12 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 
 *SQL-Abfrage, die nicht vollständig angezeigt wird*
 
-* Führen Sie ein Upgrade auf die neueste Version des SDK durch. Wenn Ihre Version von .NET niedriger als 4.6. ist:
-  * IIS-Host: Installieren Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) auf den Hostservern.
-  * Azure-Web-App: Öffnen Sie die Schaltfläche „Application Insights“ in der Systemsteuerung der Web-App, und installieren Sie Application Insights.
+* Führen Sie ein Upgrade auf die neueste Version des Application Insights SDK durch.
+
+ Wenn Ihre Version von .NET niedriger als 4.6. ist:
+
+* IIS-Host: Installieren Sie den [Application Insights-Agent](app-insights-monitor-performance-live-website-now.md) auf den Hostservern.
+* Azure-Web-App: Öffnen Sie die Schaltfläche „Application Insights“ in der Systemsteuerung der Web-App, und installieren Sie Application Insights.
 
 ## <a name="video"></a>Video
 

@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: dc7d8a4cc5b755504c2430be187d3ab2b46c51d1
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 07700ecb8a31e6ee724f27e247f377eb869e6c39
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305139"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -189,4 +190,7 @@ Löschen Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md).
+In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Standard-Tarif erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

@@ -3,8 +3,8 @@ title: Erstellen virtueller Azure-Computer mit beschleunigtem Netzwerkbetrieb | 
 description: Erfahren Sie, wie Sie einen virtuellen Linux-Computer mit beschleunigtem Netzwerkbetrieb erstellen.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: gsilva5
+manager: gedegrac
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,23 +14,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/02/2018
-ms.author: jdial
+ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 718990b69cc75709af819ad7df9a77ad0f8f33ce
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0f7f389df96f38bea3634bf712af3f9bf4bdde09
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893948"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
-> [!IMPORTANT] 
-> Virtuelle Computer müssen mit aktiviertem beschleunigtem Netzwerkbetrieb erstellt werden. Dieses Feature kann nicht auf vorhandenen virtuellen Computern aktiviert werden. Führen Sie die folgenden Schritte aus, um den beschleunigten Netzwerkbetrieb zu aktivieren:
->   1. Löschen Sie den virtuellen Computer.
->   2. Erstellen Sie erneut einen virtuellen Computer mit aktiviertem beschleunigtem Netzwerkbetrieb.
->
-
-In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Linux-Computer (VM) mit beschleunigtem Netzwerkbetrieb erstellen. Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) in einer VM und somit eine erhebliche Steigerung der Netzwerkleistung. Über diesen für Hochleistung konzipierten Pfad wird der Host des Datenpfads umgangen, um Latenzen, Jitter und CPU-Auslastung zu verringern. So können mit unterstützten VM-Typen die anspruchsvollsten Netzwerkworkloads genutzt werden. Die folgende Abbildung zeigt die Kommunikation zwischen zwei VMs mit und ohne beschleunigten Netzwerkbetrieb:
+In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Linux-Computer (VM) mit beschleunigtem Netzwerkbetrieb erstellen. Informationen zum Erstellen einer Windows-VM mit beschleunigtem Netzwerkbetrieb finden Sie unter [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](create-vm-accelerated-networking-powershell.md). Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) in einer VM und somit eine erhebliche Steigerung der Netzwerkleistung. Über diesen für Hochleistung konzipierten Pfad wird der Host des Datenpfads umgangen, um Latenzen, Jitter und CPU-Auslastung zu verringern. So können mit unterstützten VM-Typen die anspruchsvollsten Netzwerkworkloads genutzt werden. Die folgende Abbildung zeigt die Kommunikation zwischen zwei VMs mit und ohne beschleunigten Netzwerkbetrieb:
 
 ![Vergleich](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
@@ -46,29 +41,39 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 * **Verringerte CPU-Auslastung:** Das Umgehen des virtuellen Switchs auf dem Host führt zu weniger CPU-Auslastung für die Verarbeitung des Netzwerkdatenverkehrs.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-* **Ubuntu 16.04**: 4.11.0-1013 oder eine höhere Kernelversion
-* **SLES 12 SP3**: 4.4.92-6.18 oder eine höhere Kernelversion
-* **RHEL 7.4:** 7.4.2017120423 oder eine höhere Kernelversion
-* **CentOS 7.4:** 7.4.20171206 oder eine höhere Kernelversion
+Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt: 
+* **Ubuntu 16.04** 
+* **SLES 12 SP3** 
+* **RHEL 7.4**
+* **CentOS 7.4**
+* **CoreOS Linux**
+* **Debian „Stretch“ mit Backports-Kernel**
+* **Oracle Linux 7.4**
 
-## <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
-Der beschleunigte Netzwerkbetrieb wird für die meisten Größen universeller, computeoptimierter Instanzen mit mindestens 4 vCPUs unterstützt. Bei Instanzen wie D/DSv3 oder E/ESv3, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 8 vCPUs unterstützt.  Zu den unterstützten Reihen zählen D/DSv2, D/DSv3, E/ESv3, F/Fs/Fsv2 und Ms/Mms. 
+## <a name="limitations-and-constraints"></a>Einschränkungen
+
+### <a name="supported-vm-instances"></a>Unterstützte VM-Instanzen
+Der beschleunigte Netzwerkbetrieb wird in den meisten allgemeinen, computeoptimierten Instanzgrößen mit mindestens 2 vCPUs unterstützt.  Folgende Reihen werden unterstützt: D/DSv2 und F/Fs
+
+Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="regions"></a>Regionen
+### <a name="regions"></a>Regionen
 Verfügbar in allen öffentlichen Azure-Regionen und in Azure Government-Clouds
 
-## <a name="limitations"></a>Einschränkungen
-Die folgenden Einschränkungen gelten für die Verwendung dieser Funktion:
+### <a name="network-interface-creation"></a>Erstellen der Netzwerkschnittstelle 
+Der beschleunigte Netzwerkbetrieb kann nur für eine neue Netzwerkschnittstelle aktiviert werden. Er kann nicht für eine vorhandene NIC aktiviert werden.
+### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Aktivieren des beschleunigten Netzwerkbetriebs auf einer ausgeführten VM
+Bei einer unterstützten VM-Größe ohne aktivierten beschleunigten Netzwerkbetrieb kann das Feature nur aktiviert werden, wenn die VM beendet und ihre Zuordnung aufgehoben wird.  
+### <a name="deployment-through-azure-resource-manager"></a>Bereitstellung über Azure Resource Manager
+Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
 
-* **Erstellung von Netzwerkschnittstellen:** Der beschleunigte Netzwerkbetrieb kann nur für eine neue NIC aktiviert werden. Er kann nicht für eine vorhandene NIC aktiviert werden.
-* **VM-Erstellung:** Eine NIC mit aktiviertem beschleunigten Netzwerkbetrieb kann nur an eine VM angefügt werden, während diese erstellt wird. Die NIC kann nicht an eine vorhandene VM angefügt werden. Wenn Sie den virtuellen Computer zu einer vorhandenen Verfügbarkeitsgruppe hinzufügen, muss der beschleunigte Netzwerkbetrieb für alle virtuellen Computer in der Verfügbarkeitsgruppe aktiviert sein.
-* **Bereitstellung nur über den Azure Resource Manager:** Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb bereitgestellt werden.
+## <a name="create-a-linux-vm-with-azure-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie unter **Einstellungen** für **Beschleunigter Netzwerkbetrieb** die Option **Aktiviert** aus. Die Option zum Aktivieren des beschleunigten Netzwerkbetriebs wird nur dann im Portal angezeigt, wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und die [Größe des virtuellen Computers](#supported-vm-instances) ausgewählt haben. Nach dem Erstellen des virtuellen Computers müssen Sie die Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) abschließen.
 
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
 Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
@@ -78,7 +83,7 @@ Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Resso
 az group create --name myResourceGroup --location centralus
 ```
 
-Sie müssen eine unterstützte Linux-Region aus der Auflistung unter [Linux accelerated networking (Linux-Regionen mit beschleunigtem Netzwerkbetrieb)](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) auswählen.
+Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine unterstützte Linux-Region aus.
 
 Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz erstellt:
 
@@ -91,7 +96,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
+### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe. Im folgenden Beispiel wird eine Netzwerksicherheitsgruppe namens *myNetworkSecurityGroup* erstellt:
 
 ```azurecli
@@ -117,7 +122,7 @@ az network nsg rule create \
   --destination-port-range 22
 ```
 
-## <a name="create-a-network-interface-with-accelerated-networking"></a>Erstellen einer Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb
+### <a name="create-a-network-interface-with-accelerated-networking"></a>Erstellen einer Netzwerkschnittstelle mit beschleunigtem Netzwerkbetrieb
 
 Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse. Wenn Sie nicht vorhaben, über das Internet auf den virtuellen Computer zuzugreifen, ist keine öffentliche IP-Adresse erforderlich – diese wird jedoch für die Durchführung der Schritte in diesem Artikel benötigt.
 
@@ -140,8 +145,8 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-## <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
-Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Sie müssen eine Größe und Verteilung aus der Auflistung unter [Linux accelerated Networking (Linux-Regionen mit beschleunigtem Netzwerkbetrieb)](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) auswählen. 
+### <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
+Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine Größe und eine Distribution aus. 
 
 Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
 
@@ -173,7 +178,7 @@ Nachdem die VM erstellt wurde, wird eine ähnliche Ausgabe wie die folgende Beis
 }
 ```
 
-## <a name="confirm-that-accelerated-networking-is-enabled"></a>Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs
+### <a name="confirm-that-accelerated-networking-is-enabled"></a>Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie `<your-public-ip-address>` durch die öffentliche IP-Adresse, die dem von Ihnen erstellten virtuellen Computer zugewiesen wurde, und ersetzen Sie *azureuser*, wenn Sie für `--admin-username` einen anderen Wert als bei der VM-Erstellung verwendet haben.
 
@@ -210,3 +215,84 @@ vf_tx_bytes: 1099443970
 vf_tx_dropped: 0
 ```
 Der beschleunigte Netzwerkbetrieb ist nun für Ihre VM aktiviert.
+
+## <a name="enable-accelerated-networking-on-existing-vms"></a>Aktivieren des beschleunigten Netzwerkbetriebs auf vorhandenen VMs
+Wenn Sie eine VM ohne beschleunigten Netzwerkbetrieb erstellt haben, können Sie dieses Feature auf dieser VM aktivieren.  Die VM muss folgende Voraussetzungen erfüllen, um den beschleunigten Netzwerkbetrieb zu unterstützen (siehe auch oben):
+
+* Die VM muss eine unterstützte Größe für den beschleunigten Netzwerkbetrieb aufweisen.
+* Bei der VM muss es sich um ein unterstütztes Image aus dem Azure-Katalog (und eine unterstützte Kernelversion für Linux) handeln.
+* Alle VMs in einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe müssen beendet und ihre Zuordnung muss aufgehoben werden, bevor Sie den beschleunigten Netzwerkbetrieb in einer Netzwerkschnittstelle aktivieren können.
+
+### <a name="individual-vms--vms-in-an-availability-set"></a>Einzelne VMs und VMs in einer Verfügbarkeitsgruppe
+Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine Verfügbarkeitsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus:
+
+```azurecli
+az vm deallocate \
+    --resource-group myResourceGroup \
+    --name myVM
+```
+
+Wichtiger Hinweis: Wenn Ihre VM einzeln erstellt wurde (ohne Verfügbarkeitsgruppe), müssen Sie nur diese eine VM beenden und ihre Zuordnung aufheben, um den beschleunigten Netzwerkbetrieb zu aktivieren.  Wenn Ihre VM mit einer Verfügbarkeitsgruppe erstellt wurde, müssen alle VMs in dieser Verfügbarkeitsgruppe beendet und ihre Zuordnung muss aufgehoben werden, bevor Sie den beschleunigten Netzwerkbetrieb in einer der Netzwerkschnittstellen aktivieren können. 
+
+Aktivieren Sie dann den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle Ihrer VM:
+
+```azurecli
+az network nic update \
+    --name myVM -n myNic \
+    --resource-group myResourceGroup \
+    --accelerated-networking true
+```
+
+Starten Sie Ihre VM bzw. im Fall einer Verfügbarkeitsgruppe alle VMs in der Gruppe neu, und überprüfen Sie, ob der beschleunigte Netzwerkbetrieb aktiviert wurde: 
+
+```azurecli
+az vm start --resource-group myResourceGroup \
+    --name myVM
+```
+
+### <a name="vmss"></a>VM-Skalierungssgruppe
+Eine VM-Skalierungsgruppe funktioniert etwas anders, folgt aber dem gleichen Workflow.  Beenden Sie zuerst die VMs:
+
+```azurecli
+az vmss deallocate \
+    --name myvmss \
+    --resource-group myrg
+```
+
+Sobald alle VMs beendet sind, aktualisieren Sie die Eigenschaft für den beschleunigten Netzwerkbetrieb in der Netzwerkschnittstelle:
+
+```azurecli
+az vmss update --name myvmss \
+    --resource-group myrg \
+    --set virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].enableAcceleratedNetworking=true
+```
+
+Beachten Sie, dass in einer VM-Skalierungsgruppe VM-Upgrades aktiviert sind, die Aktualisierungen anwenden. Dabei gibt es drei Einstellungen: automatisch, parallel und manuell.  In diesen Anweisungen ist die Richtlinie auf „automatisch“ festgelegt, sodass die VM-Skalierungsgruppe die Änderungen sofort nach dem Neustart übernimmt.  So legen Sie die Einstellung auf „automatisch“ fest, damit die Änderungen sofort übernommen werden: 
+
+```azurecli
+az vmss update \
+    --name myvmss \
+    --resource-group myrg \
+    --set upgradePolicy.mode="automatic"
+```
+
+Starten Sie schließlich die VM-Skalierungsgruppe neu:
+
+```azurecli
+az vmss start \
+    --name myvmss \
+    --resource-group myrg
+```
+
+Warten Sie, bis die Upgrades nach dem Neustart vollständig abgeschlossen sind. Nach dem Abschluss wird das Feature in der VM angezeigt.  (Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem und eine unterstützte VM-Größe verwenden.)
+
+### <a name="resizing-existing-vms-with-accelerated-networking"></a>Ändern der Größe vorhandener VMs mit beschleunigtem Netzwerkbetrieb
+
+VMs mit aktiviertem beschleunigtem Netzwerkbetrieb können nur zu VM-Größen geändert werden, die den beschleunigten Netzwerkbetrieb unterstützen.  
+
+Eine VM mit aktiviertem beschleunigtem Netzwerkbetrieb kann nicht in eine VM-Instanz geändert werden, die den beschleunigten Netzwerkbetrieb nicht unterstützt.  Ändern Sie die VM-Größe stattdessen in eine der folgenden VMs: 
+
+* Beenden Sie die VM, und heben Sie ihre Zuordnung auf. Falls es sich um eine VM-Skalierungsgruppe handelt, führen Sie diese Vorgänge für alle VMs in der Gruppe aus.
+* Der beschleunigte Netzwerkbetrieb muss in der Netzwerkschnittstelle der VM bzw. im Fall einer Verfügbarkeits- oder Skalierungsgruppe in den Netzwerkschnittstellen aller VMs deaktiviert werden.
+* Sobald der beschleunigte Netzwerkbetrieb deaktiviert ist, kann die VM bzw. die Verfügbarkeits- oder Skalierungsgruppe in eine neue Größe ohne Unterstützung des beschleunigten Netzwerkbetriebs geändert und neu gestartet werden.  
+

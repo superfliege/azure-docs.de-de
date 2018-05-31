@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: c1be4d649bf4b69a9f749003b5c66142006b78e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ceed8b88b9c81954c967d3d7ddd964c532867ab
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301606"
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
 
@@ -27,7 +28,8 @@ Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
 > * Erstellen eines Benutzers mit Benutzerzugriff
-> * Erstellen von Entitäten
+> * Erstellen und Verwalten von Entitäten
+
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -56,11 +58,11 @@ Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Be
 
 Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Azure Cost Management).
 
-## <a name="create-entities"></a>Erstellen von Entitäten
+## <a name="create-and-manage-entities"></a>Erstellen und Verwalten von Entitäten
 
-Wenn Sie Ihre Kostenentitätshierarchie definieren, besteht eine bewährte Methode darin, die Struktur Ihrer Organisation zu identifizieren.
+Wenn Sie Ihre Kostenentitätshierarchie definieren, besteht eine bewährte Methode darin, die Struktur Ihrer Organisation zu identifizieren. Mithilfe von Entitäten können Sie Ausgaben nach einzelnen Konten oder Abonnements gliedern. Sie erstellen Kostenentitäten, um logische Gruppen für die Ausgabenverwaltung und -verfolgung anzulegen. Berücksichtigen Sie beim Erstellen der Struktur, wie die Kosten nach Geschäftseinheiten, Kostenstellen, Umgebungen und Vertriebsabteilungen unterteilt werden sollen oder müssen. Die Entitätsstruktur in Cloudyn ist aufgrund der Entitätsvererbung flexibel.
 
-Berücksichtigen Sie beim Erstellen der Struktur, wie die Kosten nach Geschäftseinheiten, Kostenstellen, Umgebungen und Vertriebsabteilungen unterteilt werden sollen oder müssen. Die Entitätsstruktur in Cloudyn ist aufgrund der Entitätsvererbung flexibel. Einzelne Abonnements für Ihre Cloudkonten sind mit bestimmten Entitäten verknüpft. Entitäten sind daher mehrinstanzenfähig. Sie können mit Entitäten bestimmten Benutzern den Zugriff auf nur ihre Segmente des Unternehmens zuweisen. Auf diese Weise bleiben die Daten isoliert, selbst bei großen Bereichen eines Unternehmens wie Niederlassungen. Datenisolierung trägt zudem zu Governance bei.  
+Einzelne Abonnements für Ihre Cloudkonten sind mit bestimmten Entitäten verknüpft. Sie können eine Entität dem Konto oder Abonnement eines Cloud-Dienstanbieters zuordnen. Entitäten sind daher mehrinstanzenfähig. Sie können mit Entitäten bestimmten Benutzern den Zugriff auf nur ihre Segmente des Unternehmens zuweisen. Auf diese Weise bleiben die Daten isoliert, selbst bei großen Bereichen eines Unternehmens wie Niederlassungen. Datenisolierung trägt zudem zu Governance bei.  
 
 Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos bei Cloudyn wurden Ihre Azure-Ressourcendaten, einschließlich Auslastung, Leistung, Abrechnung und Tagdaten von Ihren Abonnements in Ihr Cloudyn-Konto kopiert. Ihre Entitätsstruktur müssen Sie jedoch manuell erstellen. Wenn Sie die Azure Resource Manager-Registrierung übersprungen haben, stehen nur Abrechnungsdaten und einige Ressourcenberichte im Cloudyn-Portal zur Verfügung.
 
@@ -74,6 +76,23 @@ Klicken Sie neben **Entities** (Entitäten) auf **Add Entity** (Entität hinzuf�
 
 **Speichern** Sie nach Abschluss die Entität.
 
+### <a name="entity-access-levels"></a>Zugriffsebenen von Entitäten
+
+Mit Entitätszugriffsebenen und dem Benutzerzugriff können Sie festlegen, welche Art von Aktionen im Cloudyn-Portal verfügbar sind.
+
+- **Enterprise**: Ermöglicht das Erstellen und Verwalten von untergeordneten Kostenentitäten.
+- **Enterprise + Cost Allocation** (Enterprise + Kostenzuteilung): Ermöglicht das Erstellen und Verwalten von untergeordneten Kostenentitäten, einschließlich Kostenzuteilung für konsolidierte Konten.
+- **Enterprise, Cost based on parent cost allocation** (Enterprise, Kosten basierend auf übergeordneter Kostenzuteilung): Ermöglicht das Erstellen und Verwalten von untergeordneten Kostenentitäten. Die Kosten für das Konto basieren auf dem Kostenzuteilungsmodell des übergeordneten Elements.
+- **Custom Dashboards Only** (Nur benutzerdefinierte Dashboards): Dem Benutzer werden nur vordefinierte benutzerdefinierte Dashboards angezeigt.
+- **Dashboards Only** (Nur Dashboards): Der Benutzer kann nur Dashboards anzeigen.
+
+### <a name="create-a-cost-entity-hierarchy"></a>Erstellen einer Kostenentitätshierarchie
+
+Zum Erstellen einer Kostenentitätshierarchie benötigen Sie ein Konto mit dem Zugriffstyp „Enterprise“ oder „Enterprise + cost allocation“ (Enterprise + Kostenzuteilung).
+
+Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloud Accounts** (Cloudkonten) aus. Die Struktur **Entitäten** wird im linken Bereich angezeigt. Erweitern Sie ggf. die Entitätsstruktur, damit Sie die Entität anzeigen können, die einem Konto zugeordnet werden soll.  Die Konten des Cloud-Dienstanbieters werden auf Registerkarten im rechten Bereich angezeigt. Wählen Sie eine Registerkarte aus, klicken Sie dann auf ein Konto/Abonnement, und verschieben Sie es per Drag&Drop in eine Entität. Im Feld **Verschieben** werden Sie darüber informiert, dass das Konto verschoben wurde. Klicken Sie auf **OK**.
+
+Sie können einer Entität auch mehrere Konten zuordnen. Wählen Sie die Konten aus, und klicken Sie dann auf **Verschieben**. Wählen Sie im Feld zum Verschieben von Konten die Entität aus, in die Sie das Konto verschieben möchten, und klicken Sie dann auf **Speichern**. Im Feld zum Verschieben von Konten müssen Sie bestätigen, dass Sie die Konten verschieben möchten. Klicken Sie auf **Ja** und dann auf **OK**.
 
 Ein Videotutorial zum Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Erstellen einer Kostenentitätshierarchie in Azure Cost Management).
 
@@ -86,7 +105,8 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
 > * Erstellen eines Benutzers mit Benutzerzugriff
-> * Erstellen von Entitäten
+> * Erstellen und Verwalten von Entitäten
+
 
 Fahren Sie mit dem folgenden Artikel fort, falls Sie den Azure Resource Manager-API-Zugriff für Ihre Konten nicht bereits aktiviert haben.
 

@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: 2e80a090d003770f47d28dfaacf7ba5140f7b41f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bc9883ee64f2d682a6b7b69bd1fb168cddd60001
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304564"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers mit Azure PowerShell
 In dieser Schnellstartanleitung wird gezeigt, wie Sie einen Load Balancer im Tarif „Basic“ mit Azure PowerShell erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch.
@@ -85,7 +86,7 @@ $probe = New-AzureRmLoadBalancerProbeConfig `
   ```
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie VMs Datenverkehr empfangen, definieren Sie auch den zu verwendenden Integritätstest.
+Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie virtuelle Computer Datenverkehr empfangen, definieren Sie zudem den zu verwendenden Integritätstest.
 
 Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
 
@@ -331,4 +332,8 @@ Remove-AzureRmResourceGroup -Name myResourceGroupLB
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Weitere Informationen zu Azure Load Balancer](load-balancer-overview.md)
+
+In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Tarif „Basic“ erstellt, virtuelle Computer angefügt, eine Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)

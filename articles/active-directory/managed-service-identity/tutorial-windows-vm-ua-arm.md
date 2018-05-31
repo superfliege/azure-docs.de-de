@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: arluca
-ms.openlocfilehash: b81d4b669898a7acc428fe22a070ccd76dc5e546
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a2225409e4cb50d91c09207ee70b76df12925192
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932462"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34301210"
 ---
-# <a name="use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Zugreifen auf den Azure Resource Manager mithilfe einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) auf einer Windows-VM
+# <a name="tutorial-use-a-user-assigned-managed-service-identity-msi-on-a-windows-vm-to-access-azure-resource-manager"></a>Tutorial: Zugreifen auf den Azure Resource Manager mithilfe einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) auf einem virtuellen Windows-Computer
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
@@ -81,7 +81,7 @@ New-AzureRmVm `
 Eine durch den Benutzer zugewiesene Identität wird als eigenständige Azure-Ressource erstellt. Mit [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/get-azurermuserassignedidentity) erstellt Azure eine Identität in Ihrem Azure AD-Mandanten, die einer oder mehreren Azure-Dienstinstanzen zugewiesen werden kann.
 
 > [!IMPORTANT]
-> Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS ordnungsgemäß funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
+> Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS richtig funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
 
 ```azurepowershell-interactive
 Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1

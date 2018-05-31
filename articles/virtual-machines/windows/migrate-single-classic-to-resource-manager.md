@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: b81f3719f8781cf6cdb724108f4dd730f3380c86
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0307b26741a6bbbf29626e670467cdd72697646
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33943580"
 ---
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Manuelles Migrieren eines klassischen virtuellen Computers zu einem neuen virtuellen ARM Managed Disks-Computer von der virtuellen Festplatte 
 
@@ -92,6 +93,8 @@ Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migra
 
 Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migration müssen Sie die gesamte Verarbeitung im aktuellen System beenden. Erst dann können Sie den konsistenten Zustand erreichen, den Sie auf die neue Plattform migrieren können. Die Dauer der Ausfallzeit hängt von der Datenmenge auf den zu migrierenden Datenträgern ab.
 
+Für diesen Teil benötigen Sie mindestens Version 6.0.0 des Azure PowerShell-Moduls. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
 
 1.  Legen Sie zunächst die allgemeinen Parameter fest:
 
@@ -121,11 +124,11 @@ Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migra
 
 2.  Erstellen Sie einen verwalteten Betriebssystem-Datenträger mithilfe des VHD-Images der klassischen VM.
 
-    Vergewissern Sie sich, dass Sie den vollständigen URI der Betriebssystem-VHD im Parameter „$osVhdUri“ angegeben haben. Geben Sie außerdem **-AccountType** je nach Datenträgertypen (Premium oder Standard), zu denen Sie migrieren, als **PremiumLRS** oder **StandardLRS** an.
+    Vergewissern Sie sich, dass Sie den vollständigen URI der Betriebssystem-VHD im Parameter „$osVhdUri“ angegeben haben. Geben Sie außerdem für **-AccountType** entweder **PremiumLRS** oder **StandardLRS** an – je nachdem, zu welchem Datenträgertyp (Premium oder Standard) Sie migrieren möchten.
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
+    -AccountType Premium_LRS -Location $location -CreateOption Import -SourceUri $osVhdUri) '
     -ResourceGroupName $resourceGroupName
     ```
 
@@ -134,14 +137,14 @@ Bereiten Sie Ihre Anwendung für Ausfallzeiten vor. Für eine einwandfreie Migra
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
     $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $osDisk.Id '
-    -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
+    -StorageAccountType Premium_LRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
 4.  Erstellen Sie anhand der VHD-Datendatei einen verwalteten Datenträger, und fügen Sie ihn der neuen VM hinzu.
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
-    -AccountType PremiumLRS -Location $location -CreationDataCreateOption Import '
+    -AccountType Premium_LRS -Location $location -CreationDataCreateOption Import '
     -SourceUri $dataVhdUri ) -ResourceGroupName $resourceGroupName
     
     $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name $dataDiskName '

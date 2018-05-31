@@ -14,11 +14,12 @@ ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
 ms.custom: end-user
-ms.openlocfilehash: 0b76d2debb9814188e5551252e52bd0dae38eb50
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e25ccdad5285bfaa96f538aca415746942523d85
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896264"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 **Anwendungsbereich:**
@@ -28,7 +29,7 @@ ms.lasthandoff: 04/23/2018
 Die Microsoft Authenticator-App sichert Ihre Kontoanmeldeinformationen und zugehörige App-Einstellungen, etwa die Reihenfolge Ihrer Konten, in der Cloud. Nach dem Sichern können Sie die App auch zum Wiederherstellen der Informationen auf einem neuen Gerät verwenden und dadurch möglicherweise vermeiden, dass Sie gesperrt werden oder Konten neu erstellen müssen.
 
 >[!IMPORTANT]
-> Sie benötigen ein persönliches Microsoft-Konto und ein iCloud-Konto für jeden Sicherungsspeicherort. An diesem Speicherort können Sie jedoch mehrere Konten sichern. Sie können beispielsweise ein persönliches Konto, ein Geschäfts-, Schul- oder Unikonto und ein Drittanbieterkonto (etwa Facebook, Google usw.) haben.<br><br>Nur ihre Kontoanmeldeinformationen werden gespeichert. Diese umfassen Ihren Benutzernamen und den achtstelligen Kontoprüfcode, der zum Bestätigen Ihrer Identität bei der Microsoft Authenticator-App erforderlich ist. Es werden keine weiteren Informationen zu Ihrem Konto wie E-Mails oder Dateien gespeichert. Darüber hinaus werden Ihre Konten keinesfalls mit einem anderen Produkt oder Dienst verknüpft oder geteilt. Ihr IT-Administrator erhält ebenfalls keine Informationen zu diesen Konten.
+> Sie benötigen ein persönliches Microsoft-Konto und ein iCloud-Konto für jeden Sicherungsspeicherort. An diesem Speicherort können Sie jedoch mehrere Konten sichern. Sie können beispielsweise ein persönliches Konto, ein Geschäfts-, Schul- oder Unikonto und ein Drittanbieterkonto (etwa Facebook, Google usw.) haben.<br><br>Nur ihre persönlichen und Ihre Drittanbieter-Kontoanmeldeinformationen werden gespeichert. Diese umfassen Ihren Benutzernamen und den Kontoprüfcode, der zum Bestätigen Ihrer Identität erforderlich ist. Es werden keine weiteren Informationen zu Ihrem Konto wie E-Mails oder Dateien gespeichert. Darüber hinaus werden Ihre Konten keinesfalls mit einem anderen Produkt oder Dienst verknüpft oder geteilt. Ihr IT-Administrator erhält ebenfalls keine Informationen zu diesen Konten.
 
 ## <a name="back-up-your-account-credentials"></a>Sichern Ihrer Anmeldeinformationen
 Bevor Sie Ihre Anmeldeinformationen sichern können, benötigen Sie Folgendes:
@@ -104,4 +105,4 @@ Sie haben Ihre Kontoinformationen gesichert und auf dem neuen Gerät wiederherge
 
 - [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
 
-- [Multi-Factor Authentication](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/)
+- [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

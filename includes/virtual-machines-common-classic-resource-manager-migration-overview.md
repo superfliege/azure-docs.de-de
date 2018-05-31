@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: virtual-machines
+author: jpconnock
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 05/18/2018
+ms.author: jeconnoc
+ms.custom: include file
+ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371336"
+---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 In diesem Artikel erfahren Sie, wie wir die Migration von IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen zum Resource Manager-Bereitstellungsmodell ermöglichen. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md). Es wird ausführlich beschrieben, wie Sie mit den beiden in Ihrem Abonnement parallel vorhandenen Bereitstellungsmodellen Verbindungen mit Ressourcen herstellen, indem Sie Standort-zu-Standort-Gateways für virtuelle Netzwerke verwenden.
 
@@ -93,7 +110,7 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt. |
 | Compute | Clouddienste mit mehreren Verfügbarkeitsgruppen. |Dies wird derzeit nicht unterstützt. Verschieben Sie die virtuellen Computer vor der Migration in dieselbe Verfügbarkeitsgruppe. |
 | Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, mit dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
-| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Um diese virtuellen Computer zu migrieren, befolgen Sie die Hinweise [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault).  |
+| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
 | Netzwerk |Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten |Dies wird derzeit nicht unterstützt. Verschieben Sie die Web-/Workerrollen vor der Migration in ein eigenes virtuelles Netzwerk. Nach der Migration des klassischen virtuellen Netzwerks kann ein Peering des migrierten virtuellen Azure Resource Manager-Netzwerks mit dem klassischen virtuellen Netzwerk eingerichtet werden, um eine ähnliche Konfiguration wie zuvor zu erhalten.|
 | Netzwerk | Klassische ExpressRoute-Verbindungen |Dies wird derzeit nicht unterstützt. Diese Verbindungen müssen vor dem Beginn der IaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen dazu finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuelle Netzwerke, die App Service-Umgebungen enthalten |Dies wird derzeit nicht unterstützt. |

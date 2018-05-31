@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 263cb6e588c9714504a5bb5d9a064f5c4be73e9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6c7a9bd83af5d23bdc9e6dd8c910dbf64a6efd6f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304918"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI 2.0
 
@@ -262,4 +263,7 @@ Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie d
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In dieser Schnellstartanleitung haben Sie einen Lastenausgleich erstellt, virtuelle Computer angefügt, eine Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zum Lastenausgleich und zu den dazugehörigen Ressourcen finden Sie in den Anleitungsartikeln.
+In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Tarif „Basic“ erstellt, virtuelle Computer angefügt, eine Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)

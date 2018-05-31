@@ -5,18 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8414597c2c394e0b642ff47cba79c87488f56b24
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b3ab749b4610f57e19ad1af0fc74d41340d7555b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192988"
 ---
 # <a name="connect-with-excel"></a>Herstellen einer Verbindung mit Excel
 
-Sobald Sie in Azure einen Server erstellt und ein tabellarisches Modell bereitgestellt haben, können Sie damit beginnen, eine Verbindung herzustellen und Daten zu durchsuchen.
+Nachdem Sie einen Server erstellt und ein tabellarisches Modell dafür bereitgestellt haben, können Clients eine Verbindung herstellen und mit dem Durchsuchen von Daten beginnen.
 
 
 ## <a name="connect-in-excel"></a>Eine Verbindung in Excel herstellen
@@ -27,10 +28,10 @@ Das Herstellen einer Verbindung mit einem Server in Excel wird mithilfe der Funk
 
 1. Klicken Sie in Excel 2016 im Menüband **Daten** auf **Get External Data (Externe Daten abrufen)** > **Aus anderen Quellen** > **Aus Analysis Services**.
 
-2. Geben Sie im Datenverbindungs-Assistenten in **Servername** den Servernamen samt Protokoll und URI ein. Wählen Sie dann unter **Anmeldeinformationen** die Option **Benutzername und Kennwort verwenden** aus, und geben Sie den Benutzernamen der Organisation, z.B. nancy@adventureworks.com, und das Kennwort ein.
+2. Geben Sie im Datenverbindungs-Assistenten in **Servername** den Servernamen samt Protokoll und URI ein. Beispiel: asazure://westcentralus.asazure.windows.net/advworks. Wählen Sie dann unter **Anmeldeinformationen** die Option **Benutzername und Kennwort verwenden** aus, und geben Sie den Benutzernamen der Organisation, z.B. nancy@adventureworks.com, und das Kennwort ein.
 
-    > [!NOTE]
-    > Wenn Sie sich über ein entsprechendes Konto (Microsoft-Konto, Live ID, Yahoo, Gmail usw.) anmelden, oder wenn Sie sich mit mehrstufiger Authentifizierung anmelden müssen, belassen Sie das Kennwortfeld leer. Nachdem Sie auf „Weiter“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
+    > [!IMPORTANT]
+    > Wenn Sie sich mit einem Microsoft-, Live ID-, Yahoo-, Gmail- oder einem anderen entsprechenden Konto anmelden, oder wenn Sie sich mit mehrstufiger Authentifizierung anmelden müssen, lassen Sie das Kennwortfeld leer. Nachdem Sie auf „Weiter“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
 
     ![Herstellen einer Verbindung über die Excel-Anmeldung](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 
