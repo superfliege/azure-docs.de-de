@@ -8,11 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: danlep
-ms.openlocfilehash: fdc68744406c3e995a2764f93d4474b807337ff5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 5898206761e5029f94b6d1f1b48223481ae2ca13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358726"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Konfigurieren oder Deaktivieren des Remotezugriffs auf Computeknoten in einem Azure Batch-Pool
 
@@ -23,7 +24,7 @@ In Ihrer Umgebung müssen Sie diese Standardeinstellungen für den externen Zugr
 ## <a name="about-the-pool-endpoint-configuration"></a>Informationen zur Poolendpunktkonfiguration
 Die Endpunktkonfiguration besteht aus einem oder mehreren [Pools für die Netzwerkadressübersetzung (NAT)](/rest/api/batchservice/pool/add#inboundnatpool) von Front-End-Ports. (Verwechseln Sie NAT-Pools nicht mit dem Batch-Pool von Computeknoten.) Sie können festlegen, dass jeder NAT-Pool die Standardverbindungseinstellungen für Serverknoten auf den Computeknoten des Pools überschreibt. 
 
-Jede NAT-Pool-Konfiguration enthält eine oder mehrere [Regeln für die Netzwerksicherheitsgruppe (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Jede NSG-Regel erlaubt oder verweigert bestimmten Netzwerkdatenverkehr zum Endpunkt. Sie können den kompletten Datenverkehr, durch ein [Standardtag](../virtual-network/virtual-networks-nsg.md#default-tags) (wie „Internet“) identifizierten Datenverkehr oder Datenverkehr von bestimmten IP-Adressen oder Subnetzen zulassen oder verweigern.
+Jede NAT-Pool-Konfiguration enthält eine oder mehrere [Regeln für die Netzwerksicherheitsgruppe (NSG)](/rest/api/batchservice/pool/add#networksecuritygrouprule). Jede NSG-Regel erlaubt oder verweigert bestimmten Netzwerkdatenverkehr zum Endpunkt. Sie können den kompletten Datenverkehr, durch ein [Diensttag](../virtual-network/security-overview.md#service-tags) (wie „Internet“) identifizierten Datenverkehr oder Datenverkehr von bestimmten IP-Adressen oder Subnetzen zulassen oder verweigern.
 
 ### <a name="considerations"></a>Überlegungen
 * Die Konfiguration des Poolendpunkts ist Teil der [Netzwerkkonfiguration](/rest/api/batchservice/pool/add#NetworkConfiguration) des Pools. Die Netzwerkkonfiguration kann optional Einstellungen zum Verknüpfen des Pools mit einem [virtuellen Azure-Netzwerk](batch-virtual-network.md) enthalten. Wenn Sie den Pool in einem virtuellen Netzwerk einrichten, können Sie NSG-Regeln erstellen, die Adresseinstellungen im virtuellen Netzwerk verwenden.
@@ -124,7 +125,7 @@ pool.network_configuration=batchmodels.NetworkConfiguration(
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu NSG-Regeln in Azure finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+- Weitere Informationen zu NSG-Regeln in Azure finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
 - Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
 

@@ -1,24 +1,21 @@
 ---
-title: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals | Microsoft Docs
-description: 'Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Data Lake Analytics-Kontos, Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und Senden des Auftrags verwenden. '
+title: Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
+description: Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Data Lake Analytics-Kontos, Erstellen eines Data Lake Analytics-Auftrags mit U-SQL und Senden des Auftrags verwenden.
 services: data-lake-analytics
-documentationcenter: ''
 author: saveenr
+ms.author: saveenr
 manager: kfile
-editor: cgronlun
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: hero-article
-ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
-ms.author: saveenr
-ms.openlocfilehash: 34967a9853f907c61494e72229d75af1c625ea8f
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 63fc4272dc4b26e9eb4846118bc57cd6aa5bf361
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358284"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -65,10 +62,10 @@ OUTPUT @a
 ## <a name="submit-a-u-sql-job"></a>Senden eines U-SQL-Auftrags
 
 1. Klicken Sie im Data Lake Analytics-Konto auf **Neuer Auftrag**.
-2. Fügen Sie den Text des oben gezeigten U-SQL-Skripts ein. 
-3. Klicken Sie auf **Auftrag senden**.   
-4. Warten Sie, bis sich der Auftragsstatus in **Erfolgreich** ändert.
-5. Klicken Sie auf die Registerkarte **Ausgabe** und dann auf `data.csv`. 
+2. Fügen Sie den Text des obigen U-SQL-Skripts ein. Geben Sie einen Namen für den Auftrag ein. 
+3. Klicken Sie auf die Schaltfläche **Übermitteln**, um den Auftrag zu starten.   
+4. Überwachen Sie den **Status** des Auftrags, und warten Sie, bis sich der Auftragsstatus in **Erfolgreich** ändert.
+5. Klicken Sie auf die Registerkarte **Daten** und anschließend auf die Registerkarte **Ausgaben**. Wählen Sie die Ausgabedatei `data.csv` aus, und zeigen Sie die Ausgabedaten an.
 
 ## <a name="see-also"></a>Weitere Informationen
 

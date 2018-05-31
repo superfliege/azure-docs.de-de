@@ -16,11 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: c161b8fb70f20ef7d82834e6c61daff759726b93
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895322"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -450,9 +451,9 @@ Wenn die Erweiterungsdefinition im VM-Skalierungsgruppenmodell aktualisiert wird
 
 Wenn ein vorhandener virtueller Computer vom Dienst repariert wird, wird das wie ein Neustart behandelt, und die Erweiterungen werden nicht erneut ausgeführt. Wird ein Reimaging durchgeführt, ist das mit dem Austauschen des Betriebssystemdatenträgers mit dem Quellimage vergleichbar. Sämtliche Spezialisierungen aus dem aktuellen Modell (etwa Erweiterungen) werden ausgeführt.
  
-### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-azure-ad-domain"></a>Wie füge ich eine VM-Skalierungsgruppe einer Azure AD-Domäne hinzu?
+### <a name="how-do-i-join-a-virtual-machine-scale-set-to-an-active-directory-domain"></a>Wie füge ich eine VM-Skalierungsgruppe einer Active Directory-Domäne hinzu?
 
-Eine VM-Skalierungsgruppe kann einer Azure AD-Domäne (Azure Active Directory) durch Definieren einer Erweiterung hinzugefügt werden. 
+Eine VM-Skalierungsgruppe kann einer Active Directory-Domäne durch Definieren einer Erweiterung hinzugefügt werden. 
 
 Verwenden Sie zum Definieren einer Erweiterung die JsonADDomainExtension-Eigenschaft:
 

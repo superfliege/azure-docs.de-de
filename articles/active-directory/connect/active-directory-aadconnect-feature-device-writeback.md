@@ -1,10 +1,10 @@
 ---
-title: "Azure AD Connect: Aktivieren des Geräterückschreibens | Microsoft Docs"
-description: "Dieses Dokument erläutert das Aktivieren des Geräterückschreibens mit Azure AD Connect"
+title: 'Azure AD Connect: Aktivieren des Geräterückschreibens | Microsoft Docs'
+description: Dieses Dokument erläutert das Aktivieren des Geräterückschreibens mit Azure AD Connect
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: femila
 editor: curtand
 ms.assetid: c0ff679c-7ed5-4d6e-ac6c-b2b6392e7892
 ms.service: active-directory
@@ -12,19 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: fddbbeda50764ade149e8a8f370bf7341da01736
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c813be558df9dc3bdfd9850402b9458f1fdf971a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34353812"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
 > [!NOTE]
 > Für das Geräterückschreiben ist ein Azure AD Premium-Abonnement erforderlich.
->
->
+> 
+> 
 
 Die folgende Dokumentation enthält Informationen zum Aktivieren des Features "Geräterückschreiben" in Azure AD Connect. Das Geräterückschreiben wird in den folgenden Szenarien verwendet:
 
@@ -34,75 +35,52 @@ Dies bietet zusätzliche Sicherheit und die Gewissheit, dass nur vertrauenswürd
 
 > [!IMPORTANT]
 > <li>Geräte müssen sich in der gleichen Gesamtstruktur befinden wie die Benutzer. Da Geräte in eine einzelne Gesamtstruktur zurückgeschrieben werden müssen, unterstützt diese Funktion derzeit keine Bereitstellung mit mehreren Gesamtstrukturen für Benutzer.</li>
-> <li>In der lokalen Active Directory-Gesamtstruktur kann nur ein Konfigurationsobjekt für die Geräteregistrierung hinzugefügt werden. Diese Funktion ist nicht mit einer Topologie kompatibel, in der das lokale Active Directory mit mehreren Azure AD-Mandanten synchronisiert wird.</li>
->
+> <li>In der lokalen Active Directory-Gesamtstruktur kann nur ein Konfigurationsobjekt für die Geräteregistrierung hinzugefügt werden. Diese Funktion ist nicht mit einer Topologie kompatibel, in der das lokale Active Directory mit mehreren Azure AD-Verzeichnissen synchronisiert wird.</li>> 
 
 ## <a name="part-1-install-azure-ad-connect"></a>Teil 1: Installieren von Azure AD Connect
-1. Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Expresseinstellungen. Microsoft empfiehlt, zunächst alle Benutzer und Gruppen erfolgreich zu synchronisieren, bevor Sie das Geräterückschreiben aktivieren.
+Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Expresseinstellungen. Microsoft empfiehlt, zunächst alle Benutzer und Gruppen erfolgreich zu synchronisieren, bevor Sie das Geräterückschreiben aktivieren.
 
-## <a name="part-2-prepare-active-directory"></a>Teil 2: Vorbereiten von Active Directory
-Gehen Sie folgendermaßen vor, um die Verwendung des Geräterückschreibens vorzubereiten.
+## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>Teil 2: Aktivieren des Geräterückschreibens in Azure AD Connect
+1. Führen Sie den Installations-Assistenten erneut aus. Wählen Sie auf der Seite „Weitere Aufgaben“ die Option **Geräteoptionen konfigurieren**, und klicken Sie auf **Weiter**. 
 
-1. Starten Sie auf dem Computer, auf dem Azure AD Connect installiert ist, PowerShell im erweiterten Modus.
-2. Wenn das Active Directory PowerShell-Modul NICHT installiert ist, sollten Sie die Remoteserver-Verwaltungstools installieren. Sie enthalten das AD PowerShell-Modul und die Datei „dsacls.exe“, die zum Ausführen des Skripts erforderlich ist. Führen Sie den folgenden Befehl aus:
+    ![Geräteoptionen konfigurieren](./media/active-directory-aadconnect-feature-device-writeback/deviceoptions.png)
 
-   ``` powershell
-   Add-WindowsFeature RSAT-AD-Tools
-   ```
+    >[!NOTE]
+    > Die neuen Optionen zum Konfigurieren von Geräten sind nur ab Version 1.1.819.0 verfügbar.
 
-3. Wenn das Azure Active Directory-Modul für PowerShell nicht installiert ist, laden Sie es unter [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](http://go.microsoft.com/fwlink/p/?linkid=236297)herunter und installieren es. Diese Komponente weist eine Abhängigkeit von Anmelde-Assistenten auf, der mit Azure AD Connect installiert wird.  
-4. Führen Sie mit Enterprise-Administratoranmeldeinformationen die folgenden Befehle aus, und beenden Sie dann PowerShell.
+2. Wählen Sie auf der Seite mit den Geräteoptionen die Option **Geräterückschreiben konfigurieren**. Die Option **Geräterückschreiben deaktivieren** ist erst verfügbar, nachdem das Geräterückschreiben aktiviert wurde. Klicken Sie auf **Weiter**, um die nächste Seite des Assistenten anzuzeigen.
+    ![Auswählen des Gerätevorgangs](./media/active-directory-aadconnect-feature-device-writeback/configuredevicewriteback1.png)
 
-   ``` powershell
-   Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'
-   ```
-
-   ``` powershell
-   Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}
-   ```
-
-Enterprise-Administratoranmeldeinfos werden benötigt, da Änderungen an der Namespacekonfiguration erforderlich sind. Ein Domänenadministrator verfügt nicht über ausreichende Berechtigungen.
-
-![PowerShell zum Aktivieren des Geräterückschreibens](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)  
-
-Beschreibung:
-
-* Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn]“ erstellt und konfiguriert.
-* Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=RegisteredDevices,[domain-dn]“ erstellt und konfiguriert. Geräteobjekte werden in diesem Container erstellt.
-* Legt die erforderlichen Berechtigungen für das Azure AD Connector-Konto fest, um Geräte in Active Directory zu verwalten.
-* Muss nur in einer Gesamtstruktur ausgeführt werden, auch wenn Azure AD Connect in mehreren Gesamtstrukturen installiert ist.
-
-Parameter:
-
-* DomainName: Active Directory-Domäne, in der Geräteobjekte erstellt werden. Hinweis: Alle Geräte für eine bestimmte Active Directory-Gesamtstruktur werden in einer einzelnen Domäne erstellt.
-* AdConnectorAccount: Active Directory-Konto, das von Azure AD Connect zum Verwalten von Objekten im Verzeichnis verwendet wird. Dies ist das Konto, das von der Azure AD Connect-Synchronisierung zum Herstellen der Verbindung mit AD verwendet wird. Wenn Sie die Installation mit den Expresseinstellungen durchgeführt haben, ist es das Konto mit dem Präfix „MSOL_“.
-
-## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>Teil 3: Aktivieren des Geräterückschreibens in Azure AD Connect
-Verwenden Sie das folgende Verfahren, um das Geräterückschreiben in Azure AD Connect zu aktivieren.
-
-1. Führen Sie den Installations-Assistenten erneut aus. Wählen Sie auf der Seite „Weitere Aufgaben“ die Option **Synchronisierungsoptionen anpassen**, und klicken Sie auf **Weiter**.
-   ![Benutzerdefinierte Installation - Synchronisierungsoptionen anpassen](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
-2. Auf der Seite "Optionale Features" wird das Geräterückschreiben nicht mehr abgeblendet dargestellt. Beachten Sie, dass auf der Seite "Optionale Features" das Geräterückschreiben abgeblendet dargestellt wird, wenn vorbereitende Azure AD Connect-Schritte nicht abgeschlossenen sind. Aktivieren Sie das Kontrollkästchen für das Geräterückschreiben und klicken Sie auf **Weiter**. Wenn das Kontrollkästchen noch deaktiviert ist, helfen Ihnen die Informationen im [Abschnitt zur Problembehandlung](#the-writeback-checkbox-is-still-disabled)weiter.
-   ![Benutzerdefinierte Installation – optionale Features für Geräterückschreiben](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
 3. Auf der Seite "Rückschreiben" sehen Sie die angegebene Domäne als die standardmäßige Gesamtstruktur für das Geräterückschreiben.
-   ![Benutzerdefinierte Installation – Zielgesamtstruktur für Geräterückschreiben](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
-4. Schließen Sie die Installation des Assistenten ohne zusätzliche Konfigurationsänderungen ab. Bei Bedarf finden Sie weitere Informationen unter [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md).
-5. Wenn Sie in Azure AD Connect [Filterung](active-directory-aadconnectsync-configure-filtering.md) aktiviert haben, vergewissern Sie sich, dass der neu erstellte Container „CN=RegisteredDevices“ in Ihrem Bereich enthalten ist.
+   ![Benutzerdefinierte Installation – Zielgesamtstruktur für Geräterückschreiben](./media/active-directory-aadconnect-feature-device-writeback/writebackforest.png)
 
-## <a name="part-4-verify-devices-are-synchronized-to-active-directory"></a>Teil 4: Überprüfen, ob die Geräte mit Active Directory synchronisiert werden
-Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Bedenken Sie, dass es bis zu drei Stunden dauern kann, bis Geräteobjekte in Active Directory zurückgeschrieben werden. Um sicherzustellen, dass Ihre Geräte ordnungsgemäß synchronisiert werden, gehen Sie nach Abschluss der Synchronisierung wie folgt vor:
+4. Die Seite **Gerätecontainer** enthält eine Option zum Vorbereiten von Active Directory, bei der Sie zwei Möglichkeiten haben:
+
+    a. **Anmeldeinformationen eines Unternehmensadministrators angeben**: Wenn die Anmeldeinformationen eines Unternehmensadministrators für die Gesamtstruktur angegeben werden, für die Geräte zurückgeschrieben werden müssen, bereitet Azure AD Connect die Gesamtstruktur während der Konfiguration des Geräterückschreibens automatisch vor.
+
+    b. **PowerShell-Skript herunterladen**: Azure AD Connect generiert automatisch ein PowerShell-Skript, mit dem Active Directory für das Geräterückschreiben vorbereitet werden kann. Falls die Anmeldeinformationen eines Unternehmensadministrators in Azure AD Connect nicht angegeben werden können, wird vorgeschlagen, das PowerShell-Skript herunterzuladen. Stellen Sie das heruntergeladene PowerShell-Skript **CreateDeviceContainer.psq** für den Unternehmensadministrator der Gesamtstruktur bereit, in die das Rückschreiben der Geräte erfolgt.
+    ![Vorbereiten der Active Directory-Gesamtstruktur](./media/active-directory-aadconnect-feature-device-writeback/devicecontainercreds.png)
+    
+    Zur Vorbereitung der Active Directory-Gesamtstruktur werden die folgenden Vorgänge durchgeführt:
+    * Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=Device Registration Configuration,CN=Services,CN=Configuration,[forest-dn]“ erstellt und konfiguriert.
+    * Falls sie noch nicht vorhanden sind, werden die neuen Container und Objekte unter „CN=RegisteredDevices,[domain-dn]“ erstellt und konfiguriert. Geräteobjekte werden in diesem Container erstellt.
+    * Legt die erforderlichen Berechtigungen für das Azure AD Connector-Konto fest, um Geräte in Active Directory zu verwalten.
+    * Muss nur in einer Gesamtstruktur ausgeführt werden, auch wenn Azure AD Connect in mehreren Gesamtstrukturen installiert ist.
+
+## <a name="verify-devices-are-synchronized-to-active-directory"></a>Überprüfen, ob die Geräte mit Active Directory synchronisiert werden
+Das Geräterückschreiben sollte jetzt ordnungsgemäß ausgeführt werden. Bedenken Sie, dass es bis zu drei Stunden dauern kann, bis Geräteobjekte in Active Directory zurückgeschrieben werden.  Um sicherzustellen, dass Ihre Geräte ordnungsgemäß synchronisiert werden, gehen Sie nach Abschluss der Synchronisierungsregeln wie folgt vor:
 
 1. Starten Sie das Active Directory-Verwaltungscenter.
-2. Erweitern Sie „RegisteredDevices“ innerhalb der Domäne, die in [Teil 2](#part-2-prepare-active-directory) konfiguriert wurde.  
+2. Erweitern Sie "RegisteredDevices" innerhalb der Verbunddomäne.
 
-   ![Active Directory-Verwaltungscenter – registrierte Geräte](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)  
-   
-3. Die gegenwärtig registrierten Geräte sind hier aufgeführt.  
+   ![Active Directory-Verwaltungscenter – registrierte Geräte](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
 
-   ![Active Directory-Verwaltungscenter – Liste der registrierten Geräte](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)  
+3. Die gegenwärtig registrierten Geräte sind hier aufgeführt.
+
+   ![Active Directory-Verwaltungscenter – Liste der registrierten Geräte](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Aktivieren des bedingten Zugriffs
-   Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Ausführliche Informationen zum Aktivieren dieses Szenarios finden Sie unter [Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>Kontrollkästchen für das Rückschreiben ist weiterhin deaktiviert
@@ -117,8 +95,7 @@ Zuerst die wichtigen Dinge:
   * Öffnen Sie die Registerkarte **Connectors** .
   * Suchen Sie nach dem Connector mit dem Typ „Active Directory-Domänendienste“, und wählen Sie ihn aus.
   * Klicken Sie unter **Aktionen** auf **Eigenschaften**.
-  * Navigieren Sie zu **Mit Active Directory-Gesamtstruktur verbinden**. Stellen Sie sicher, dass die Domäne und der Benutzername, die auf diesem Bildschirm angegeben sind, mit dem im Skript angegebenen Konto übereinstimmen.  
-  
+  * Navigieren Sie zu **Mit Active Directory-Gesamtstruktur verbinden**. Stellen Sie sicher, dass die Domäne und der Benutzername, die auf diesem Bildschirm angegeben sind, mit dem im Skript angegebenen Konto übereinstimmen.
     ![Connector-Konto in Synchronization Service Manager](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Überprüfen der Konfiguration in Active Directory:
@@ -151,3 +128,4 @@ Zuerst die wichtigen Dinge:
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).
+

@@ -1,6 +1,6 @@
 ---
-title: "Abschnitt „Parameter“ der Azure Resource Manager-Vorlage | Microsoft-Dokumentation"
-description: "Beschreibt den Abschnitt „Parameters“ der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax."
+title: Abschnitt „Parameter“ der Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+description: Beschreibt den Abschnitt „Parameters“ der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,17 @@ manager: timlt
 editor: tysonn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/19/2018
+ms.date: 05/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a519908f43193e41da9237a236d720fe2db58eb
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 193e74d94017cf0ca8ec0600c7e5a3dc4b7a6dea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359202"
 ---
 # <a name="parameters-section-of-azure-resource-manager-templates"></a>Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen
 Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter resources, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
@@ -85,13 +86,13 @@ Im vorherige Beispiel wurden nur einige der Eigenschaften gezeigt, die Sie im Ab
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | parameterName |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **secureString**, **int**, **bool**, **object**, **secureObject** und **array**. |
+| type |Ja |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. |
 | defaultValue |Nein  |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
 | allowedValues |Nein  |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
 | minValue |Nein  |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
 | maxValue |Nein  |Der Höchstwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
-| minLength |Nein  |Die Mindestlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
-| maxLength |Nein  |Die Höchstlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
+| minLength |Nein  |Die Mindestlänge der Parameter „string“, „securestring“ und „array“, einschließlich des angegebenen Werts. |
+| maxLength |Nein  |Die Höchstlänge der Parameter „string“, „securestring“ und „array“, einschließlich des angegebenen Werts. |
 | Beschreibung |Nein  |Beschreibung des Parameters, der Benutzern im Portal angezeigt wird. |
 
 ## <a name="template-functions-with-parameters"></a>Vorlagenfunktionen mit Parametern
@@ -225,7 +226,7 @@ Die folgenden Informationen können bei der Verwendung von Parametern hilfreich 
    }
    ```
 
-* Verwenden Sie **SecureString** für alle Kennwörter und Geheimnisse. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „secureString“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
+* Verwenden Sie **securestring** für alle Kennwörter und geheimen Schlüssel. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „securestring“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
    
    ```json
    "parameters": {

@@ -12,27 +12,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 151456bbb7f9331730e640e4bece3872c3c92f8d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c822f25e25953b8709f481e51d6a63e6a912a60a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358811"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualisieren von Azure App Service in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1802 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack-Development Kit vor der Bereitstellung von Azure App Service bereit.
+> Wenden Sie Update 1804 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.2 bereit.
 >
 >
 
 Mithilfe der Anweisungen in diesem Artikel können Sie den in einer mit dem Internet verbundenen Azure Stack-Umgebung bereitgestellten [App Service-Ressourcenanbieter](azure-stack-app-service-overview.md) aktualisieren.
 
 > [!IMPORTANT]
-> Stellen Sie vor dem Ausführen des Upgrades sicher, dass Sie die [Bereitstellung von Azure App Service auf dem Azure Stack-Ressourcenanbieter](azure-stack-app-service-deploy.md) bereits abgeschlossen haben.
+> Stellen Sie vor dem Ausführen des Upgrades sicher, dass Sie die [Bereitstellung von Azure App Service im Azure Stack-Ressourcenanbieter](azure-stack-app-service-deploy.md) bereits abgeschlossen haben.
 >
 >
 
@@ -54,7 +55,7 @@ Während dieses Vorgangs führt das Upgrade Folgendes aus:
 
 Gehen Sie folgendermaßen vor, um die Bereitstellung von App Service in Azure Stack zu aktualisieren:
 
-1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate1installer) herunter.
+1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate2installer) herunter.
 
 2. Führen Sie „appservice.exe“ als Administrator aus.
 
@@ -75,7 +76,7 @@ Gehen Sie folgendermaßen vor, um die Bereitstellung von App Service in Azure St
    1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
         * Wenn Sie Azure Active Directory (Azure AD) verwenden, geben Sie das Azure AD-Administratorkonto, das Sie bei der Bereitstellung von Azure Stack angegeben haben, und das zugehörige Kennwort ein. Klicken Sie auf **Anmelden**.
         * Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: *cloudadmin@azurestack.local* Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
-   2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
+   2. Wählen Sie im Feld **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
    3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
    4. Wenn eine vorhandene App Service-Bereitstellung ermittelt wird, werden Ressourcengruppe und Speicherkonto aufgefüllt und abgeblendet.
    5. Klicken Sie auf **Weiter**, um die Zusammenfassung des Upgrades zu überprüfen.

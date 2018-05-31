@@ -2,46 +2,48 @@
 title: Bereitstellen von Vorlagen mithilfe von Visual Studio in Azure Stack | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Vorlagen mit Visual Studio in Azure Stack bereitstellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 628da2ae-64cc-42e0-b8b7-a6a3724cb974
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: ecefa8c3695aad0593516cb9ad8812216e163192
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.reviewer: ''
+ms.openlocfilehash: 4101567eff68789fe5d46a01de26f6a873b519fa
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358182"
 ---
 # <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Bereitstellen von Vorlagen in Azure Stack mithilfe von Visual Studio
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Verwenden Sie Visual Studio zum Bereitstellen von Azure Resource Manager-Vorlagen im Azure Stack Development Kit.
+Sie können Visual Studio zum Bereitstellen von Azure Resource Manager-Vorlagen für Azure Stack verwenden.
+
+So stellen Sie eine Vorlage bereit
 
 1. Verwenden Sie Visual Studio, um Azure Stack zu [installieren und eine Verbindung herzustellen](azure-stack-install-visual-studio.md).
 2. Öffnen Sie Visual Studio.
-3. Klicken Sie auf **Datei**, auf **Neu** und dann im Dialogfeld **Neues Projekt** auf **Azure-Ressourcengruppe**.
-4. Geben Sie einen **Namen** für das neue Projekt ein, und klicken Sie auf **OK**.
-5. Wählen Sie im Dialogfeld **Azure-Vorlage auswählen** in der Dropdownliste *Vorlagen aus diesem Speicherort anzeigen* den Eintrag **Azure Stack-Schnellstart**.
-6. Klicken Sie auf **101-create-storage-account** und dann auf **OK**.  
-7. Im neuen Projekt sehen Sie eine Liste der verfügbaren Vorlagen, wenn Sie den Knoten **Vorlagen** im Bereich **Projektmappen-Explorer** erweitern.
-8. Klicken Sie im Bereich **Projektmappen-Explorer** mit der rechten Maustaste auf den Namen des Projekts, klicken Sie anschließend auf **Bereitstellen** und dann auf **Neue Bereitstellung**.
-9. Wählen Sie im Dialogfeld **Für Ressourcengruppe bereitstellen** in der Dropdownliste **Abonnement** Ihr Microsoft Azure Stack-Abonnement aus.
+3. Wählen Sie **Datei**, und wählen Sie dann **Neu**. Wählen Sie in **Neues Projekt** die Option **Azure-Ressourcengruppe** aus.
+4. Geben Sie einen **Namen** für das neue Projekt ein, und wählen Sie dann **OK**.
+5. Wählen Sie in **Azure-Vorlage auswählen** in der Dropdownliste die Option **Azure Stack-Schnellstart** aus.
+6. Wählen Sie **101-create-storage-account** und dann **OK**.
+7. Erweitern Sie in Ihrem neuen Projekt den Knoten **Vorlagen** im **Projektmappen-Explorer**, um die verfügbaren Vorlagen anzuzeigen.
+8. Wählen Sie im **Projektmappen-Explorer** den Namen des Projekts aus, und wählen Sie dann **Bereitstellen**. Wählen Sie **Neue Bereitstellung** aus.
+9. Wählen Sie in **Für Ressourcengruppe bereitstellen** in der Dropdownliste **Abonnement** Ihr Microsoft Azure Stack-Abonnement aus.
 10. Wählen Sie in der Liste **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue.
-11. Wählen Sie in der Liste **Ressourcengruppenstandort** einen Standort aus, und klicken Sie dann auf **Bereitstellen**.
-12. Geben Sie im Dialogfeld **Parameter bearbeiten** Werte für die Parameter ein (je nach Vorlage unterschiedlich), und klicken Sie dann auf **Speichern**.
+11. Wählen Sie in der Liste **Ressourcengruppenstandort** einen Standort aus, und wählen Sie dann **Bereitstellen**.
+12. Geben Sie in **Parameter bearbeiten** Werte für die Parameter ein (je nach Vorlage unterschiedlich), und wählen Sie dann **Speichern**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von Vorlagen mithilfe der Befehlszeile](azure-stack-deploy-template-command-line.md)
 
-[Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
-
+* [Bereitstellen von Vorlagen mithilfe der Befehlszeile](azure-stack-deploy-template-command-line.md)
+* [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)

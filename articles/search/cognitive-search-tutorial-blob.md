@@ -9,11 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 023e55724124afb9c97d01540c6319a775681c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366748"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)
 
@@ -23,7 +24,7 @@ In diesem Tutorial werden Sie die folgenden Aufgaben mithilfe von REST-API-Aufru
 
 > [!div class="checklist"]
 > * Erstellen einer Indizierungspipeline, die Quelldaten auf dem Weg in einen Index anreichert
-> * Verwenden der integrierten Qualifikationen für Entitätserkennung, Spracherkennung, Textbearbeitung und Extrahierung für ein Beispieldataset
+> * Verwenden der integrierten Qualifikationen für Beispieldaten: Entitätserkennung, Spracherkennung, Textbearbeitung und Schlüsselbegriffserkennung
 > * Erfahren Sie, wie Qualifikationen miteinander verkettet werden, indem die Eingänge den Ausgängen in einer Qualifikationsgruppe zugeordnet werden
 > * Ausführen von Anforderungen und Überprüfen von Ergebnissen
 > * Zurücksetzen des Index und der Indexer für die weitere Entwicklung
@@ -42,7 +43,7 @@ Verwenden Sie das [Azure-Portal](https://portal.azure.com/), um Dienste zu erste
 
 ### <a name="set-up-azure-search"></a>Einrichten von Azure Search
 
-Registrieren Sie sich zuerst für den Azure Search-Dienst. 
+Registrieren Sie sich zunächst beim Azure Search-Dienst. 
 
 1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -84,7 +85,7 @@ Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelld
   Bei der Verbindungszeichenfolge sollte es sich um eine URL ähnlich dem folgenden Beispiel handeln:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=y1NIlE9wFVBIabcd562GzZl+JO9TEGdqOerqfbT78C8zrn28Te8DsWlxvKKnjh67P/HM5k80zt4shOt9vqlbg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
       ```
 
 Es gibt andere Möglichkeiten zum Angeben der Verbindungszeichenfolge, etwa das Bereitstellen einer Shared Access Signature (SAS). Weitere Informationen über Anmeldeinformationen für Datenquellen finden Sie unter [Indizieren von Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
@@ -248,7 +249,7 @@ In diesem Abschnitt definieren Sie das Indexschema, indem Sie angeben, welche Fe
 
 In dieser Übung werden die folgenden Felder und Feldtypen verwendet:
 
-| Feldnamen: | id       | content   | languageCode | keyPhrases         | organizations     |
+| Feldnamen: | id       | Inhalt   | languageCode | keyPhrases         | organizations     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | field-types: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

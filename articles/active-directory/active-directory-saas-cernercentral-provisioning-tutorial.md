@@ -1,8 +1,8 @@
 ---
-title: "Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen von Benutzern in einer Liste in Cerner Central konfigurieren."
+title: 'Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen von Benutzern in einer Liste in Cerner Central konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: a4aca2db0190b97d209fc6769b9db55b0ad468d9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34337111"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
@@ -57,7 +58,7 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts sollten Sie ents
 Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD mit dem Cerner User Roster von Cerner Central unter Verwendung der API zur Bereitstellung von SCIM-Benutzerkonten von Cerner sowie durch das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in Cerner Central basierend auf der Benutzer- und Gruppenzuweisung in Azure AD.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Cerner Central aktivieren. Befolgen Sie dazu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen. Weitere Informationen finden Sie unter [Tutorial: Azure Active Directory-Integration in Cerner Central](active-directory-saas-cernercentral-tutorial.md).
+> Sie können auch das SAML-basierte einmalige Anmelden für Cerner Central aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal] (https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen. Weitere Informationen finden Sie unter [Tutorial: Azure Active Directory-Integration in Cerner Central](active-directory-saas-cernercentral-tutorial.md).
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für Cerner Central in Azure AD
@@ -87,7 +88,7 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
    * Produktion: https://cernercentral.com/system-accounts/
 
-4. Schließlich müssen Sie sowohl für die Sandkasten- als auch die Produktionsumgebung in Cerner User Roster Realm-IDs abrufen, um die Konfiguration abzuschließen. Informationen zum Abrufen dieser Informationen finden Sie unter https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Schließlich müssen Sie sowohl für die Sandkasten- als auch die Produktionsumgebung in Cerner User Roster Realm-IDs abrufen, um die Konfiguration abzuschließen. Informationen zum Abrufvorgang finden Sie unter https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
 5. Jetzt können Sie Azure AD für die Bereitstellung von Benutzerkonten in Cerner konfigurieren. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und browsen Sie zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
@@ -103,7 +104,7 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
    * Geben Sie im Feld **Mandanten-URL** eine URL im unten angegebenen Format an, und ersetzen Sie die Bereichs-ID für die Benutzerliste durch die Bereichs-ID, die Sie in Schritt 4 abgerufen haben.
 
-> Sandkasten: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
 > Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
@@ -130,7 +131,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 * [Cerner Central: Publishing identity data using Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD) (Cerner Central: Veröffentlichung von Identitätsdaten mithilfe von Azure AD)
 * [Tutorial: Konfigurieren von Cerner Central für einmaliges Anmelden mit Azure Active Directory](active-directory-saas-cernercentral-tutorial.md)
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

@@ -1,25 +1,26 @@
 ---
-title: "Konfigurieren von Bereitstellungsquellen für App Services in Azure Stack | Microsoft-Dokumentation"
-description: "Informationen, wie ein Dienstadministrator Bereitstellungsquellen (Git, GitHub, BitBucket, Dropbox und OneDrive) für App Service in Azure Stack konfiguriert"
+title: Konfigurieren von Bereitstellungsquellen für App Services in Azure Stack | Microsoft-Dokumentation
+description: Informationen, wie ein Dienstadministrator Bereitstellungsquellen (Git, GitHub, BitBucket, Dropbox und OneDrive) für App Service in Azure Stack konfiguriert
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 05/10/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4ee333fcc50937679c4bc25b83c2d6aa389ba194
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359593"
 ---
 # <a name="configure-deployment-sources"></a>Konfigurieren von Bereitstellungsquellen
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
@@ -36,7 +37,7 @@ Neben lokalem Git werden die folgenden Quellcodeverwaltungsanbieter unterstützt
 
 ## <a name="view-deployment-sources-in-app-service-administration"></a>Anzeigen der Bereitstellungsquellen in der App Service-Verwaltung
 
-1. Melden Sie sich beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
+1. Melden Sie sich beim Azure Stack-Portal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 2. Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.  ![App Service Resource Provider Admin][1] (Administrator von App Service-Ressourcenanbieter)
 3. Klicken Sie auf **Source control configuration** (Konfiguration der Quellcodeverwaltung).  Hier sehen Sie die Liste aller konfigurierten Bereitstellungsquellen.
     ![App Service Resource Provider Admin: Source Control Configuration][2] (Administrator von App Service-Ressourcenanbieter: Konfiguration der Quellcodeverwaltung)
@@ -45,12 +46,12 @@ Neben lokalem Git werden die folgenden Quellcodeverwaltungsanbieter unterstützt
 
 Sie benötigen ein GitHub-Konto, um diese Aufgabe abzuschließen. Möglicherweise möchten Sie lieber ein Konto für Ihre Organisation anstelle eines persönlichen Kontos verwenden.
 
-1. Melden Sie sich bei GitHub an, browsen Sie zu https://www.github.com/settings/developers, und klicken Sie auf **Register a new application** (Neue Anwendung registrieren).
+1. Melden Sie sich bei GitHub an, navigieren Sie zu https://www.github.com/settings/developers, und klicken Sie auf **Eine neue Anwendung registrieren**.
     ![GitHub – Neue Anwendung registrieren][3]
 2. Geben Sie in **Application name** einen Anwendungsnamen ein, z.B. App Service in Azure Stack.
 3. Geben Sie in **Homepage URL** die URL der Startseite ein. Die URL der Homepage muss die Adresse des Azure Stack-Portals sein. Beispiel: https://portal.local.azurestack.external.
 4. Geben Sie in **Application Description** eine Anwendungsbeschreibung ein.
-5. Geben Sie in **Authorization callback URL** die Autorisierungsrückruf-URL ein.  In einer Azure Stack-Standardbereitstellung hat die URL das Format „https://portal.local.azurestack.external/tokenauthorize“. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „local.azurestack.external“ durch Ihre Domäne. ![GitHub – Registrieren einer neuen Anwendung mit aufgefüllten Werten][4]
+5. Geben Sie in **Authorization callback URL** die Autorisierungsrückruf-URL ein.  In einer Standardbereitstellung von Azure Stack hat die URL das Format https://portal.local.azurestack.external/TokenAuthorize. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „local.azurestack.external“ durch Ihre Domäne.
 6. Klicken Sie zum Registrieren der Anwendung auf **Register application**.  Nun wird die Seite mit der **Client ID** und dem **Client Secret** (geheimen Clientschlüssel) für die Anwendung angezeigt.
     ![GitHub: Anwendungsregistrierung abgeschlossen][5]
 7.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
@@ -69,8 +70,8 @@ Sie benötigen ein Bitbucket-Konto, um diese Aufgabe abzuschließen. Möglicherw
     ![Bitbucket – OAuth-Consumer hinzufügen][8]
 3. Geben Sie in **Name** einen Namen für den Consumer ein, z.B. App Service in Azure Stack.
 4. Geben Sie in **Description** eine Beschreibung der Anwendung ein.
-5. Geben Sie in **Callback URL** die Rückruf-URL ein.  In einer Standardbereitstellung von Azure Stack hat die Rückruf-URL das Format „https://portal.local.azurestack.external/TokenAuthorize“. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne.  Die URL muss die hier aufgeführte Groß-/Kleinschreibung befolgen, damit die BitBucket-Integration erfolgreich ist.
-6. Geben Sie die **URL** ein. Dieses URL muss die des Azure Stack-Portals sein, z.B. https://portal.local.azurestack.external.
+5. Geben Sie in **Callback URL** die Rückruf-URL ein.  In einer Standardbereitstellung von Azure Stack hat die Rückruf-URL das Format https://portal.local.azurestack.external/TokenAuthorize. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne.  Die URL muss die hier aufgeführte Groß-/Kleinschreibung befolgen, damit die BitBucket-Integration erfolgreich ist.
+6. Geben Sie die **URL** ein. Diese URL muss die des Azure Stack-Portals sein, z.B. https://portal.local.azurestack.external.
 7. Wählen Sie unter **Permissions** die erforderlichen Berechtigungen aus:
     - **Repositories**: *Read*
     - **Webhooks**: *Read and write*
@@ -90,7 +91,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 > [!NOTE]
 > OneDrive for Business-Konten werden zurzeit nicht unterstützt.
 
-1. Navigieren Sie zu https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm , und melden Sie sich mit Ihrem Microsoft-Konto an.
+1. Navigieren Sie zu https://apps.dev.microsoft.com/?referrer=https%3A%2F%2Fdev.onedrive.com%2Fapp-registration.htm, und melden Sie sich mit Ihrem Microsoft-Konto an.
 2. Klicken Sie unter **Meine Anwendungen** auf **App hinzufügen**.
 ![OneDrive-Anwendungen][10]
 3. Geben Sie für „Registrierung einer neuen Anwendung“ einen **Namen** wie **App Service in Azure Stack** ein, und klicken Sie auf **Anwendung erstellen**.
@@ -98,7 +99,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 ![OneDrive-Anwendungseigenschaften][11]
 5. Klicken Sie unter **Anwendungsgeheimnisse** auf **Neues Kennwort generieren**. Notieren Sie sich das Kennwort in **Neues Kennwort wurde generiert**. Dies ist Ihr Anwendungsgeheimnis, das nach dem Klicken auf **OK** nicht mehr wiederhergestellt werden kann.
 6. Klicken Sie unter **Plattformen** auf **Plattform hinzufügen**, und wählen Sie **Web** aus.
-7. Geben Sie den **Umleitungs-URI** ein.  In einer Standardbereitstellung von Azure Stack hat die Umleitungs-URL das Format „https://portal.local.azurestack.external/tokenauthorize“. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne. ![OneDrive-Anwendung – Hinzufügen einer Webplattform][12]
+7. Geben Sie den **Umleitungs-URI** ein.  In einer Standardbereitstellung von Azure Stack hat der Umleitungs-URI das Format ][12]. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne. https://portal.local.azurestack.external/TokenAuthorizeOneDrive-Anwendung – Hinzufügen einer Webplattform![
 8. Fügen Sie **Microsoft Graph-Berechtigungen** - **Delegierte Berechtigungen** hinzu.
     - **Files.ReadWrite.AppFolder**
     - **User.Read**  
@@ -115,7 +116,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 > [!NOTE]
 > Sie benötigen für diese Aufgabe ein Dropbox-Konto.  Möglicherweise möchten Sie lieber ein Konto für Ihre Organisation anstelle eines persönlichen Kontos verwenden.
 
-1. Browsen Sie zu https://www.dropbox.com/developers/apps, und melden Sie sich mit Ihrem Dropbox-Konto an.
+1. Navigieren Sie zu https://www.dropbox.com/developers/apps, und melden Sie sich mit Ihrem Dropbox-Konto an.
 2. Klicken Sie auf **Create app**.
 
     ![Dropbox-Anwendungen][14]
@@ -126,7 +127,7 @@ Sie benötigen für diese Aufgabe ein mit einem OneDrive-Konto verknüpftes Micr
 ![Registrierung der Dropbox-Anwendung][15]
 6. Klicken Sie auf **Create app** (App erstellen).  Nun wird eine Seite mit den Einstellungen für die App angezeigt, wie z.B. **App key** (App-Schlüssel) und **App secret** (App-Geheimnis).
 7. Prüfen Sie, ob **App folder name** (Name des App-Ordners) auf **App Service in Azure Stack** festgelegt ist.
-8. Legen Sie den **OAuth 2 Redirect URI** (OAuth 2-Umleitungs-URI) fest, und klicken Sie auf **Add** (Hinzufügen).  In einer Standardbereitstellung von Azure Stack hat der Umleitungs-URI das Format https://portal.local.azurestack.external/tokenauthorize. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne.
+8. Legen Sie den **OAuth 2 Redirect URI** (OAuth 2-Umleitungs-URI) fest, und klicken Sie auf **Add** (Hinzufügen).  In einer Standardbereitstellung von Azure Stack hat der Umleitungs-URI das Format https://portal.local.azurestack.external/TokenAuthorize. Wenn Sie eine andere Domäne verwenden, ersetzen Sie „azurestack.local“ durch Ihre Domäne.
 ![Konfiguration der Dropbox-Anwendung][16]
 9.  Melden Sie sich im Browser auf einer neuen Registerkarte oder in einem neuen Fenster beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) als Dienstadministrator an.
 10.  Navigieren Sie zu **Resource Providers** (Ressourcenanbieter), und wählen Sie **App Service Resource Provider Admin** (Administrator von App Service-Ressourcenanbieter) aus.

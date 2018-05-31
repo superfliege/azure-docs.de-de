@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797701"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Tutorial: Überwachen und Diagnostizieren einer ASP.NET Core-Anwendung in Service Fabric
 Dieses Tutorial ist der fünfte Teil einer Reihe. Es beschreibt die Schritte zur Einrichtung von Überwachung und Diagnose für eine ASP.NET Core-Anwendung, die auf einem Service Fabric-Cluster mithilfe von Application Insights ausgeführt wird. Aus der Anwendung, die im ersten Teil des Tutorials erstellt wurde ([Erstellen einer .NET Service Fabric-Anwendung](service-fabric-tutorial-create-dotnet-app.md)), werden Telemetriedaten gesammelt. 
@@ -237,7 +238,7 @@ public async Task<IActionResult> Delete(string name)
 }
 ```
 
-Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080), und fügen Sie einige Abstimmungsoptionen hinzu oder löschen Sie vorhandene. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt oder gelöscht haben, sollte nun „Benutzerdefiniertes Ereignis“ zusammen mit der Antworttelemetrie angezeigt werden. 
+Sobald Sie mit den Änderungen fertig sind, **starten** Sie die Anwendung, sodass diese erstellt und die aktuelle Version bereitgestellt wird. Sobald die Anwendung bereitgestellt ist, navigieren Sie zu [localhost:8080](localhost:8080), und fügen Sie einige Abstimmungsoptionen hinzu oder löschen Sie vorhandene. Wechseln Sie dann zu Ihrer Application Insights-Ressource zurück, um die Ablaufverfolgung der letzten Ausführung anzuzeigen (wie zuvor kann es 1–2 Minuten dauern, bis diese in Application Insights angezeigt wird). Für alle Stimmen, die Sie hinzugefügt oder gelöscht haben, sollte nun „Benutzerdefiniertes Ereignis“\* zusammen mit der Antworttelemetrie angezeigt werden. 
 
 ![Benutzerdefinierte Ereignisse](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
