@@ -13,11 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: maquaran
-ms.openlocfilehash: 6ae2ae9cdf018652b5ca81efc014c0c6ccb2e813
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7ed5772df4d8677fe878d7ced831dc15bbe8cac0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885135"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -50,6 +51,7 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
 * Verbesserungen der Stabilität.
+  * Korrektur für das Behandeln von Problemen mit abgebrochenen Aufgaben, die dazu führen können, dass Beobachter auf einigen Partitionen beendet werden.
 * Unterstützung für das manuelle Setzen von Prüfpunkten.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21 und höher.
 
@@ -72,7 +74,14 @@ ms.lasthandoff: 05/07/2018
 
 ### <a name="pre-release-builds"></a>Vorabversionen von Builds
 
+### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Vorabversion
+* Geringfügige API-Änderungen:
+  * Die als veraltet gekennzeichnete ChangeFeedProcessorOptions.IsAutoCheckpointEnabled wurde entfernt.
+
 ### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+* Verbesserungen der Stabilität:
+  * Bessere Handhabung der Leasespeicherinitialisierung. Wenn der Leasespeicher leer ist, kann er nur von einer Instanz des Prozessors initialisiert werden, die anderen warten.
+  * Stabilere/effizientere Leaseerneuerung/-freigabe. Das Erneuern und Freigeben einer Lease für eine Partition erfolgt unabhängig von der Erneuerung anderer Leases. In v1 erfolgte dies sequenziell für alle Partitionen.
 * Neue v2-API:
   * Generatormuster für die flexible Erstellung des Prozessors: ChangeFeedProcessorBuilder-Klasse
     * Akzeptiert beliebige Kombinationen aus Parametern
@@ -85,6 +94,7 @@ ms.lasthandoff: 05/07/2018
     * IPartitionProcessor: für benutzerdefinierte Verarbeitungsänderungen an einer Partition
 * Protokollierung: Verwendet die [LibLog](https://github.com/damianh/LibLog)-Bibliothek
 * 100-prozentige Abwärtskompatibilität mit der v1-API
+* Neue Codebasis.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21.1 und höher
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine

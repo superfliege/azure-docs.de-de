@@ -11,16 +11,17 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: b89a404d583e9d495b65180e145295e6a106b3ab
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 78d90dce350282e4e7671104b5ee8ca9756897c6
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200381"
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurieren von Komplexitätsanforderungen für Kennwörter
 
 > [!NOTE]
-> **Dieses Feature befindet sich in der Vorschau.**  Wenden Sie sich an [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com), damit dieses Feature für Ihren Testmandanten aktiviert wird.  Testen Sie dies nicht auf Produktionsmandanten.
+> **Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.**
 
 Azure Active Directory B2C (Azure AD B2C) unterstützt das Ändern der Komplexitätsanforderungen für Kennwörter, die von einem Endbenutzer beim Erstellen eines Kontos bereitgestellt werden.  Standardmäßig verwendet Azure AD B2C `Strong` Kennwörter.  Azure AD B2C unterstützt außerdem Konfigurationsoptionen zur Steuerung der Komplexität von Kennwörtern, die Kunden verwenden können.
 

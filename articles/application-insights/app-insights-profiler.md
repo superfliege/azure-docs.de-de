@@ -1,8 +1,8 @@
 ---
-title: "Profilerstellung für Live-Web-Apps in Azure mit Application Insights Profiler | Microsoft-Dokumentation"
+title: Profilerstellung für Live-Web-Apps in Azure mit Application Insights Profiler | Microsoft-Dokumentation
 description: Identifizieren Sie den langsamsten Pfad in Ihrem Webservercode mithilfe eines kompakten Profilers.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: c65ef9141898369b8fcadd4c52972b767aca7cfe
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 34824401ec8d21949c5c5036a11197a09e240bd7
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936724"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
-*Dieses Feature von Azure Application Insights ist für das Web-Apps-Feature von Azure App Service allgemein und für Azure-Computeressourcen als Vorschauversion verfügbar.*
+*Dieses Feature von Azure Application Insights ist für das Web-Apps-Feature von Azure App Service allgemein und für Azure-Computeressourcen als Vorschauversion verfügbar. Informationen zur lokalen Verwendung von Profiler finden Sie [hier](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).*
 
 In diesem Artikel wird erläutert, wie viel Zeit die einzelnen Methoden Ihrer Live-Webanwendung in Anspruch nehmen, wenn Sie [Application Insights](app-insights-overview.md) verwenden. Das Tool Application Insights Profiler zeigt detaillierte Profile von Liveanforderungen, die von Ihrer Anwendung verarbeitet wurden. Profiler hebt den *langsamsten Pfad* hervor, der die meiste Zeit benötigt. Für Anforderungen mit unterschiedlichen Antwortzeiten wird anhand von Stichproben ein Profil erstellt. Indem Sie mehrere unterschiedliche Verfahren verwenden, können Sie den Mehraufwand im Zusammenhang mit der Anwendung minimieren.
 
@@ -63,7 +64,7 @@ Informationen finden Sie in der [Vorschauversion von Profiler für Azure-Compute
 
 ## <a name="view-profiler-data"></a>Anzeigen von Profiler-Daten
 
-Stellen Sie sicher, dass Ihre Anwendung Datenverkehr empfängt. Beim Ausführen eines Experiments können Sie mithilfe der [Application Insights-Leistungstests](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test) Anforderungen an die Web-App generieren. Wenn Sie Profiler gerade erst aktiviert haben, können Sie einen kurzen Auslastungstest von ca. 15 Minuten ausführen. Dabei sollten Profiler-Ablaufverfolgungen generiert werden. Falls Profiler bereits eine Zeit lang aktiviert ist, wird Profiler nach dem Zufallsprinzip zweimal stündlich jeweils zwei Minuten lang ausgeführt. Es wird empfohlen, einen einstündigen Auslastungstest auszuführen, um sicherzustellen, dass Sie Profiler-Beispielablaufverfolgungen erhalten.
+Stellen Sie sicher, dass Ihre Anwendung Datenverkehr empfängt. Beim Ausführen eines Experiments können Sie mithilfe der [Application Insights-Leistungstests](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test) Anforderungen an die Web-App generieren. Wenn Sie Profiler gerade erst aktiviert haben, können Sie einen kurzen Auslastungstest von ca. 15 Minuten ausführen. Dabei sollten Profiler-Ablaufverfolgungen generiert werden. Falls Profiler bereits eine Zeit lang aktiviert ist, wird Profiler nach dem Zufallsprinzip zweimal stündlich jeweils zwei Minuten lang ausgeführt. Es wird empfohlen, einen einstündigen Auslastungstest auszuführen, um sicherzustellen, dass Sie Profiler-Beispielablaufverfolgungen erhalten.
 
 Nachdem Ihre Anwendung Datenverkehr empfangen hat, wechseln Sie zum Bereich **Leistung**, wählen Sie **Aktion ausführen** aus, um Profiler-Ablaufverfolgungen anzuzeigen, und wählen Sie dann die Schaltfläche **Profiler-Überwachungen** aus.
 
@@ -311,7 +312,7 @@ Obwohl diese Vorgehensweise relativ einfach ist, sollten Sie folgende Punkte bea
 
 * Das Webauftragsfeature von Web-Apps ist auf Eindeutigkeit ausgelegt. Bei der Ausführung des Webauftrags wird sichergestellt, dass Ihr Prozess über die gleichen Umgebungsvariablen und App-Einstellungen verfügt, die auch für Ihre Website gelten sollen. Dies bedeutet, dass Sie den Instrumentierungsschlüssel nicht über die Befehlszeile an Profiler übergeben müssen. Profiler sollte den Instrumentierungsschlüssel aus der Umgebung abrufen. Sie müssen jedoch einen Instrumentierungsschlüssel angeben, wenn Sie den Profiler auf Ihrem Entwicklungscomputer oder auf einem Computer außerhalb von Web-Apps ausführen möchten. Hierzu können Sie das Argument `--ikey <instrumentation-key>` übergeben. Dieser Wert muss mit dem Instrumentierungsschlüssel übereinstimmen, der von Ihrer Anwendung verwendet wird. Der Protokollausgabe von Profiler können Sie entnehmen, mit welchem Instrumentierungsschlüssel Profiler gestartet wurde und ob über diesen Schlüssel während der Profilerstellung Aktivitäten erkannt wurden.
 
-* Manuell ausgelöste Webaufträge können per Webhook ausgelöst werden. Sie können diese URL nun abrufen, indem Sie auf dem Dashboard mit der rechten Maustaste auf den Webauftrag klicken und die Eigenschaften anzeigen. Alternativ können Sie auch auf der Symbolleiste **Eigenschaften** auswählen, nachdem Sie den Webauftrag in der Tabelle ausgewählt haben. Diese Herangehensweise eröffnet endlose Möglichkeiten, z.B. Auslösen von Profiler aus Ihrer CI/CD-Pipeline (wie VSTS) oder aus einer Anwendung wie Microsoft Flow (https://flow.microsoft.com/de-de/). Letztlich hängt Ihre Auswahl davon ab, wie komplex Sie Ihre Datei *run.cmd* gestalten möchten (bei der es sich auch um die Datei *run.ps1* handeln kann), aber die Flexibilität ist gegeben.
+* Manuell ausgelöste Webaufträge können per Webhook ausgelöst werden. Sie können diese URL nun abrufen, indem Sie auf dem Dashboard mit der rechten Maustaste auf den Webauftrag klicken und die Eigenschaften anzeigen. Alternativ können Sie auch auf der Symbolleiste **Eigenschaften** auswählen, nachdem Sie den Webauftrag in der Tabelle ausgewählt haben. Diese Herangehensweise eröffnet endlose Möglichkeiten – etwa das Auslösen von Profiler über Ihre CI/CD-Pipeline (wie VSTS) oder über eine Lösung wie Microsoft Flow (https://flow.microsoft.com/en-us/). Letztlich hängt Ihre Auswahl davon ab, wie komplex Sie Ihre Datei *run.cmd* gestalten möchten (bei der es sich auch um die Datei *run.ps1* handeln kann), aber die Flexibilität ist gegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

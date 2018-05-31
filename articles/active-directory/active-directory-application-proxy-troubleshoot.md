@@ -2,24 +2,25 @@
 title: Problembehandlung von Anwendungsproxys | Microsoft-Dokumentation
 description: Behandelt die Problembehandlung von Azure AD-Anwendungsproxys.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: barbkess
 manager: mtillman
-ms.assetid: 970caafb-40b8-483c-bb46-c8b032a4fb74
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
+ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 838bdccb06e5763d33f63208cb6f941a55778b32
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155812"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
@@ -27,14 +28,14 @@ Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen
 * Öffnen Sie die Windows Services-Konsole, und vergewissern Sie sich, dass der Dienst **Microsoft AAD-Anwendungsproxy-Connector** aktiviert ist und ausgeführt wird. Sie können gegebenenfalls auch – wie in der folgenden Abbildung gezeigt – die Eigenschaftenseite des Anwendungsproxy-Diensts anzeigen:   
   ![Screenshot: Fenster mit Microsoft AAD-Anwendungsproxy-Connector-Eigenschaften](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 * Öffnen Sie die Ereignisanzeige, und suchen Sie unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Administrator** nach Ereignissen, die sich auf den Anwendungsproxy-Connector beziehen.
-* Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie [die Sitzungsprotokolle des Anwendungsproxy-Connectors aktivieren](application-proxy-understand-connectors.md#under-the-hood).
+* Bei Bedarf sind ausführlichere Protokolle verfügbar, indem Sie [die Sitzungsprotokolle des Anwendungsproxy-Connectors aktivieren](manage-apps/application-proxy-connectors.md#under-the-hood).
 
 Weitere Informationen zum Azure AD-Problembehandlungstool finden Sie unter [Troubleshooting tool to validate connector networking prerequisites](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/03/troubleshooting-tool-to-validate-connector-networking-prerequisites) (Problembehandlungstool zum Überprüfen der Netzwerkvoraussetzungen für den Connector).
 
 ## <a name="the-page-is-not-rendered-correctly"></a>Die Seite wird nicht richtig gerendert
 Möglicherweise treten Probleme mit dem Rendern der Anwendung oder einer fehlerhaften Funktionsweise auf, ohne dass Sie spezifische Fehlermeldungen erhalten. Dies kann der Fall sein, wenn Sie den Artikelpfad veröffentlicht haben, für die Anwendung aber Inhalt erforderlich ist, der außerhalb des Pfads vorliegt.
 
-Wenn Sie beispielsweise den Pfad https://yourapp/app veröffentlichen, die Anwendung aber Bilder in https://yourapp/media aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel wäre das http://yourapp/.
+Wenn Sie beispielsweise den Pfad https://yourapp/app veröffentlichen, die Anwendung aber Bilder in https://yourapp/media aufruft, werden sie nicht gerendert. Stellen Sie sicher, dass Sie die Anwendung mit dem Pfad der höchsten benötigten Ebene veröffentlichen, damit der gesamte relevante Inhalt einbezogen wird. In diesem Beispiel lautet er http://yourapp/.
 
 Wenn Sie den Pfad so ändern, dass er referenzierten Inhalt enthält, Benutzer aber an einen Link tiefer im Pfad verwiesen werden sollen, helfen Ihnen die Informationen im folgenden Blogbeitrag weiter: [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)(Festlegen des richtigen Links für Anwendungsproxy-Anwendungen im Azure AD-Zugriffsbereich und Office 365-Startprogramm).
 
@@ -50,7 +51,7 @@ Sobald Sie den Connectorfehler im Ereignisprotokoll gefunden haben, beheben Sie 
 
 | Error | Empfohlene Schritte |
 | ----- | ----------------- |
-| Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: "Mindestens ein Fehler." | Wenn Sie das Registrierungsfenster geschlossen haben, ohne sich bei Azure AD anzumelden, führen Sie den Connector-Assistenten erneut aus, und registrieren Sie den Connector. <br><br> Wenn das Registrierungsfenster geöffnet und dann sofort geschlossen wird, ohne dass Sie sich anmelden können, erhalten Sie ggf. diese Fehlermeldung. Dieser Fehler tritt auf, wenn in Ihrem System ein Netzwerkfehler vorliegt. Stellen Sie sicher, dass es möglich ist, mit einem Browser eine Verbindung mit einer öffentlichen Website herzustellen, und dass die Ports wie unter [Voraussetzungen für den Anwendungsproxy](active-directory-application-proxy-enable.md)angegeben geöffnet sind. |
+| Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: "Mindestens ein Fehler." | Wenn Sie das Registrierungsfenster geschlossen haben, ohne sich bei Azure AD anzumelden, führen Sie den Connector-Assistenten erneut aus, und registrieren Sie den Connector. <br><br> Wenn das Registrierungsfenster geöffnet und dann sofort geschlossen wird, ohne dass Sie sich anmelden können, erhalten Sie ggf. diese Fehlermeldung. Dieser Fehler tritt auf, wenn in Ihrem System ein Netzwerkfehler vorliegt. Stellen Sie sicher, dass es möglich ist, mit einem Browser eine Verbindung mit einer öffentlichen Website herzustellen, und dass die Ports wie unter [Voraussetzungen für den Anwendungsproxy](manage-apps/application-proxy-enable.md)angegeben geöffnet sind. |
 | Klartextfehler wird im Registrierungsfenster angezeigt. Der Vorgang kann nicht fortgesetzt werden. | Wenn diese Fehlermeldung angezeigt und das Fenster dann geschlossen wird, haben Sie den Benutzernamen oder das Kennwort falsch eingegeben. Versuchen Sie es erneut. |
 | Fehler bei der Connector-Registrierung: Stellen Sie sicher, dass Sie den Anwendungsproxy im Azure-Verwaltungsportal aktiviert haben, und dass Sie Ihren Active Directory-Benutzernamen und das Kennwort richtig eingegeben haben. Fehler: AADSTS50059: In der Anforderung oder in den bereitgestellten Anmeldeinformationen wurden keine Informationen gefunden, die den Mandanten identifizieren, und bei der Suche nach dem Dienstprinzipal-URI ist ein Fehler aufgetreten. | Sie versuchen, sich mithilfe eines Microsoft-Kontos und nicht mithilfe einer Domäne anzumelden, die Bestandteil der Organisations-ID des Verzeichnisses ist, auf das Sie zugreifen möchten. Stellen Sie sicher, dass der Administrator Teil des gleichen Domänennamens wie die Mandantendomäne ist. Wenn die Azure AD-Domäne z. B. contoso.com ist, sollte der Administrator admin@contoso.com lauten. |
 | Fehler beim Abrufen der aktuellen Ausführungsrichtlinie für die Ausführung von PowerShell-Skripts. | Falls die Installation des Connectors nicht erfolgreich verläuft, stellen Sie sicher, dass die PowerShell-Ausführungsrichtlinie nicht deaktiviert ist. <br><br>1. Öffnen Sie den Gruppenrichtlinien-Editor.<br>2. Wechseln Sie zu **Computerkonfiguration** > **Administrative Vorlagen**  > **Windows-Komponenten** > **Windows PowerShell**, und doppelklicken Sie auf **Skriptausführung aktivieren**.<br>3. Die Ausführungsrichtlinie kann entweder auf **Nicht konfiguriert** oder auf **Aktiviert** festgelegt sein. Stellen Sie bei der Einstellung **Aktiviert** sicher, dass die Ausführungsrichtlinie unter „Optionen“ auf **Lokale Skripts und remote signierte Skripts zulassen** oder **Alle Skripts zulassen** festgelegt ist. |
@@ -87,10 +88,10 @@ Diese Liste enthält Fehler, die bei Ihren Endbenutzern möglicherweise auftrete
 Wenn ein Fehler oder ein Problem mit dem Azure AD-Anwendungsproxy auftritt, der in diesem Handbuch zur Problembehandlung nicht aufgeführt ist, möchten wir gerne davon erfahren. Senden Sie eine E-Mail mit Details zum aufgetretenen Fehler an unser [Feedbackteam](mailto:aadapfeedback@microsoft.com).
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Aktivieren des Azure AD-Anwendungsproxys](active-directory-application-proxy-enable.md)
-* [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](active-directory-application-proxy-publish.md)
-* [Einmaliges Anmelden aktivieren](active-directory-application-proxy-sso-using-kcd.md)
-* [Aktivieren des bedingten Zugriffs](application-proxy-enable-remote-access-sharepoint.md)
+* [Aktivieren des Azure AD-Anwendungsproxys](manage-apps/application-proxy-enable.md)
+* [Veröffentlichen von Anwendungen mit dem Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md)
+* [Einmaliges Anmelden aktivieren](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
+* [Aktivieren des bedingten Zugriffs](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 
 <!--Image references-->

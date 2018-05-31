@@ -4,16 +4,18 @@ description: Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentl
 keywords: Runbooks, Runbookvorlage, Runbookautomatisierung, Azure-Runbook
 services: automation
 ms.service: automation
+ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 04/13/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 6893d3c79a5f827f214b12ce1dc5f5af7bbc2891
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 7804c67871de546d217d85a4215c817f9c08f6b8
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055743"
 ---
 # <a name="my-first-graphical-runbook"></a>Mein erstes grafisches Runbook
 
@@ -117,6 +119,10 @@ Nachdem Sie nun über eine Variable für Ihre Abonnement-ID verfügen, können S
 1. **Write Hello World to output** wird nicht mehr benötigt. Klicken Sie daher auf die Auslassungspunkte (...) und anschließend auf **Löschen**.
 1. Erweitern Sie im Bibliotheksteuerelement die Optionen **OBJEKTE** und **Verbindungen**, und fügen Sie der Canvas das Element **AzureRunAsConnection** hinzu, indem Sie auf **Zur Canvas hinzufügen** klicken.
 1. Geben Sie im Bibliotheksteuerelement in das Textfeld für die Suche die Zeichenfolge **Connect-AzureRmAccount** ein.
+
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
+
 1. Fügen Sie **Connect-AzureRmAccount** der Canvas hinzu.
 1. Zeigen Sie auf **Get Run As Connection** , bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil zu **Connect-AzureRmAccount**. Bei dem soeben erstellten Pfeil handelt es sich um eine *Verknüpfung*. Das Runbook wird mit **Get Run As Connection** gestartet und führt dann **Connect-AzureRmAccount** aus.<br> ![Verknüpfung zwischen Aktivitäten erstellen](media/automation-first-runbook-graphical/runbook-link-auth-activities.png)
 1. Wählen Sie in der Canvas **Connect-AzureRmAccount** aus, und geben Sie im Konfigurationssteuerungsbereich im Textfeld **Bezeichnung** den Text **Login to Azure** ein.
@@ -135,9 +141,6 @@ Nachdem Sie nun über eine Variable für Ihre Abonnement-ID verfügen, können S
 1. Nachdem Sie den Parametersatz ausgewählt haben, werden die Parameter auf der Seite „Konfiguration der Aktivitätsparameter“ angezeigt. Klicken Sie auf **SubscriptionID**
 1. Wählen Sie auf der Seite „Parameterwert“ für die **Datenquelle** die Option **Variablenasset** und in der Liste die Option **AzureSubscriptionId** aus. Klicken Sie anschließend zweimal auf **OK**.
 1. Zeigen Sie auf **Login to Azure** , bis am unteren Rand der Form ein Kreis erscheint. Klicken Sie auf den Kreis, und ziehen Sie den Pfeil auf **Specify Subscription Id**.
-
-> [!IMPORTANT]
-> **Connect-AzureRmAccount** ist jetzt ein Alias für **verbinden AzureRMAccount**. Wenn beim Durchsuchen der Bibliothekselemente **Connect-AzureRMAccount** nicht angezeigt wird, können Sie **Connect-AzureRmAccount** verwenden, oder Sie können die Module in Ihrem Automation-Konto aktualisieren.
 
 Ihr Runbook sollte nun wie folgt aussehen:  <br>![Konfiguration der Runbook-Authentifizierung](media/automation-first-runbook-graphical/runbook-auth-config.png)
 

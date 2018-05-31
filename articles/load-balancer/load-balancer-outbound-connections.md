@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 990abc5c4e546d72d093bcd9e8f37932e93cbeb4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940223"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -40,11 +41,11 @@ Es gibt mehrere [Szenarien für die ausgehende Richtung](#scenarios). Diese Szen
 
 Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [Azure Resource Manager](#arm) explizit definiert.  In Azure gibt es derzeit drei verschiedene Methoden, wie die ausgehende Konnektivität für Azure Resource Manager-Ressourcen erreicht werden kann. 
 
-| Szenario | Methode | BESCHREIBUNG |
-| --- | --- | --- |
-| [1. Virtuelle Computer mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Azure Load Balancer)](#ilpip) | SNAT, keine Portmaskierung |In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. |
-| [2. Öffentlicher Lastenausgleich, der einem virtuellen Computer zugewiesen ist (keine öffentliche IP-Adresse auf Instanzebene für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
-| [3. Eigenständiger virtueller Computer (kein Azure Load Balancer, keine öffentliche IP-Adresse auf Instanzebene)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
+| Szenario | Methode | IP-Protokolle | BESCHREIBUNG |
+| --- | --- | --- | --- |
+| [1. Virtuelle Computer mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Azure Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. |
+| [2. Öffentlicher Lastenausgleich, der einem virtuellen Computer zugewiesen ist (keine öffentliche IP-Adresse auf Instanzebene für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
+| [3. Eigenständiger virtueller Computer (kein Azure Load Balancer, keine öffentliche IP-Adresse auf Instanzebene)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
 
 Wenn ein virtueller Computer nicht mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum kommunizieren soll, können Sie nach Bedarf zum Blockieren des Zugriffs Netzwerksicherheitsgruppen verwenden. Netzwerksicherheitsgruppen werden im Abschnitt [Verhindern der ausgehenden Konnektivität](#preventoutbound) ausführlicher beschrieben. Das Entwerfen, Implementieren und Verwalten eines virtuellen Netzwerks ohne ausgehenden Zugriff und die entsprechenden Anleitungen hierzu sind nicht Gegenstand dieses Artikels.
 
@@ -52,7 +53,7 @@ Wenn ein virtueller Computer nicht mit Endpunkten außerhalb von Azure im öffen
 
 In diesem Szenario ist der VM eine öffentliche IP-Adresse auf Instanzebene (Instance Level Public IP, ILPIP) zugewiesen. Bei ausgehenden Verbindungen spielt es keine Rolle, ob für den virtuellen Computer ein Lastenausgleich durchgeführt wird. Dieses Szenario hat Vorrang vor den anderen Szenarien. Wenn eine öffentliche IP-Adresse auf Instanzebene (ILPIP) verwendet wird, nutzt die VM die ILPIP für alle ausgehenden Datenflüsse.  
 
-Eine öffentliche IP-Adresse, die einem virtuellen Computer zugewiesen ist, ist eine 1:1-Beziehung (statt 1:n) und ist als eine zustandslose 1:1-NAT implementiert.  Es wird keine Portmaskierung (PAT) verwendet, und für den virtuellen Computer sind alle kurzlebigen Ports verfügbar.
+Eine öffentliche IP-Adresse, die einem virtuellen Computer zugewiesen ist, ist eine 1:1-Beziehung (keine 1:n-Beziehung) und wird als zustandslose 1:1-NAT implementiert.  Es wird keine Portmaskierung (PAT) verwendet, und für den virtuellen Computer sind alle kurzlebigen Ports verfügbar.
 
 Wenn Ihre Anwendung viele ausgehende Datenflüsse initiiert und es zu einer Überlastung der SNAT-Ports kommt, sollten Sie das [Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erwägen, um SNAT-Engpässe zu entschärfen](#assignilpip). Lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust) ganz durch.
 
@@ -119,7 +120,7 @@ Bei Verwendung von [Standard Load Balancer mit Verfügbarkeitszonen](load-balanc
 
 ### <a name="pat"></a>Portmaskierung mit SNAT (PAT)
 
-Wenn eine öffentliche Load Balancer-Ressource mit VM-Instanzen verknüpft ist, wird jede ausgehende Verbindungsquelle erneut geschrieben. Die Quelle wird aus dem privaten IP-Adressraum des virtuellen Netzwerks in die öffentliche Front-End-IP-Adresse des Lastenausgleichs umgeschrieben. Im öffentlichen IP-Adressraum müssen die fünf Tupel des Datenflusses (IP-Quelladresse, Quellport, IP-Transportprotokoll, IP-Zieladresse, Zielport) eindeutig sein.  
+Wenn eine öffentliche Load Balancer-Ressource mit VM-Instanzen verknüpft ist, wird jede ausgehende Verbindungsquelle erneut geschrieben. Die Quelle wird aus dem privaten IP-Adressraum des virtuellen Netzwerks in die öffentliche Front-End-IP-Adresse des Lastenausgleichs umgeschrieben. Im öffentlichen IP-Adressraum müssen die fünf Tupel des Datenflusses (IP-Quelladresse, Quellport, IP-Transportprotokoll, IP-Zieladresse, Zielport) eindeutig sein.  Portmaskierung mit SNAT kann mit entweder mit dem TCP- oder UDP IP-Protokoll verwendet werden.
 
 Hierfür werden kurzlebige Ports (SNAT-Ports) verwendet, nachdem die private IP-Quelladresse umgeschrieben wurde, da mehrere Datenflüsse von einer einzelnen öffentlichen IP-Adresse stammen. 
 
@@ -243,6 +244,7 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 
 ## <a name="limitations"></a>Einschränkungen
 - DisableOutboundSnat ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
+- Auf Web-Workerrollen ohne ein VNet und andere Plattformdienste von Microsoft kann, als Folge eines Nebeneffekts der Funktionsweise von Vor-VNet-Diensten und anderen Plattformdiensten, zugegriffen werden, wenn nur ein interner Load Balancer im Tarif „Standard“ verwendet wird. Sie dürfen sich nicht auf diesen Nebeneffekt verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: caf2c54c986f8c4dd951628fd6908d42e7ddd281
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33940569"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -55,8 +56,8 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
-* Die Sicherung und Wiederherstellung von virtuellen Computern mit nicht verwalteten Datenträgern in Speicherkonten mit angewendeten Netzwerkregeln wird für Kunden mit dem alten VM-Sicherungsstapel nicht unterstützt. 
 * Stellen Sie beim Konfigurieren der Sicherung sicher, dass die Speicherkontoeinstellungen für **Firewalls und virtuelle Netzwerke** Zugriff von allen Netzwerken zulassen.
+* Wählen Sie für ausgewählte Netzwerke nach dem Konfigurieren der Firewall- und VNet-Einstellungen für Ihr Speicherkonto die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** als Ausnahme aus, damit der Azure Backup-Dienst auf das Speicherkonto mit Netzwerkeinschränkung zugreifen kann. Die Wiederherstellung auf Elementebene wird für Speicherkonten mit Netzwerkeinschränkung nicht unterstützt.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
@@ -172,7 +173,7 @@ Nachdem die Sicherung erfolgreich aktiviert wurde, wird die Sicherungsrichtlinie
 Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen Sie die folgenden Informationen zum Installieren des VM-Agents und zu Netzwerkverbindungen. Die folgenden Informationen sind wahrscheinlich nicht erforderlich, wenn Sie in Azure erstellte virtuelle Computer schützen möchten. Wenn Sie jedoch Ihre virtuellen Computer zu Azure migriert haben, vergewissern Sie sich, dass Sie den VM-Agent ordnungsgemäß installiert haben und dass Ihr virtueller Computer mit dem virtuellen Netzwerk kommunizieren kann.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
-Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/windows/agent-user-guide.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
+Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
 
 Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Datencenter migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.
 
@@ -180,9 +181,9 @@ Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewisse
 
 | **Vorgang** | **Windows** | **Linux** |
 | --- | --- | --- |
-| Installieren des VM-Agents |Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |Installieren Sie den neuesten [Linux-Agent](../virtual-machines/linux/agent-user-guide.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird *nicht empfohlen*, den Linux-VM-Agent direkt von GitHub zu installieren.  |
-| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents ](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent über das Repository Ihrer Distribution zu aktualisieren. Es wird *nicht empfohlen*, den Linux-VM-Agent direkt in GitHub zu aktualisieren.<br><br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
-| Überprüfen der VM-Agent-Installation |1. Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner „C:\WindowsAzure\Packages“. <br><br>2. Suchen Sie die Datei „WaAppAgent.exe“. <br><br>3. Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
+| Installieren des VM-Agent |Laden Sie den [Agent-MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. |<li> Installieren Sie den neuesten [Linux-Agent](../virtual-machines/extensions/agent-linux.md). Zum Durchführen der Installation benötigen Sie Administratorberechtigungen. Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu installieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu installieren.  |
+| Aktualisieren des VM-Agents |Das Aktualisieren des VM-Agents ist so einfach wie das Neuinstallieren der [Binärdateien für den VM-Agent](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). <br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |Folgen Sie den Anweisungen unter [Aktualisieren des Linux-VM-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Es wird empfohlen, den Agent aus dem Repository Ihrer Distribution zu aktualisieren. Es wird **nicht empfohlen**, den Linux-VM-Agent direkt von GitHub zu aktualisieren.<br>Stellen Sie sicher, dass kein Sicherungsvorgang ausgeführt wird, während der VM-Agent aktualisiert wird. |
+| Überprüfen der VM-Agent-Installation |<li>Navigieren Sie auf dem virtuellen Azure-Computer zum Ordner *C:\WindowsAzure\Packages*. <li>Dieser Ordner enthält die Datei "WaAppAgent.exe".<li> Klicken Sie mit der rechten Maustaste auf die Datei, wechseln Sie zu **Eigenschaften**, und wählen Sie dann die Registerkarte **Details** aus. Im Feld mit der Produktversion sollte 2.6.1198.718 oder eine höhere Version angegeben sein. |N/V |
 
 ### <a name="backup-extension"></a>Backup-Erweiterung
 Nachdem der VM-Agent auf dem virtuellen Computer installiert wurde, installiert der Azure Backup-Dienst die Sicherungserweiterung für den VM-Agent. Der Sicherungsdienst installiert nahtlos Upgrades und Patches für die Sicherungserweiterung.
