@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 54ae18b9a802fe078d307f4d36400adf806b233f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34193762"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Dokument enthält Schritte zum Beheben von Problemen bei der Objektsynchronisierung mithilfe der Aufgaben zur Problembehandlung.
@@ -34,6 +35,7 @@ Um die Aufgabe zur Problembehandlung im Assistenten auszuführen, führen Sie di
 4.  Navigieren Sie zur Seite „Weitere Aufgaben“, wählen Sie „Problembehandlung“ aus, und klicken Sie auf „Weiter“.
 5.  Klicken Sie auf der Seite „Problembehandlung“ auf „Starten“, um das Menü zur Problembehandlung in PowerShell zu starten.
 6.  Wählen Sie im Hauptmenü „Problembehandlung bei der Objektsynchronisierung“ aus.
+![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>Eingabeparameter für die Problembehandlung
 Die folgenden Eingabeparameter sind für die Problembehandlungsaufgabe erforderlich:
@@ -47,6 +49,8 @@ Die Problembehandlungsaufgabe führt die folgenden Überprüfungen durch:
 1.  Ermitteln von UPN-Konflikten, wenn das Objekt mit Azure Active Directory synchronisiert wird
 2.  Überprüfen, ob das Objekt aufgrund einer Domänenfilterung gefiltert wird
 3.  Überprüfen, ob das Objekt aufgrund einer Organisationseinheitenfilterung gefiltert wird
+4.  Überprüfen, ob die Objektsynchronisierung aufgrund eines verknüpften Postfachs blockiert ist
+5. Überprüfen, ob es sich bei dem Objekt um eine dynamische Verteilergruppe handelt, die nicht synchronisiert werden soll
 
 Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse beschrieben, die von der Aufgabe zurückgegeben werden. In jedem Fall stellt die Aufgabe eine Analyse gefolgt von den empfohlenen Aktionen zum Beheben des Problems bereit.
 
@@ -76,9 +80,19 @@ Das Objekt liegt außerhalb des gültigen Bereichs, da die Domäne nicht konfigu
 Das Objekt befindet sich außerhalb des gültigen Bereichs, da die Domäne über keine Ausführungsprofile/Ausführungsschritte verfügt. Im folgenden Beispiel befindet sich das Objekt nicht im gültigen Synchronisierungsbereich, da die Domäne, zu der es gehört, über keine Ausführungsschritte für das Ausführungsprofil für den vollständigen Import verfügt.
 ![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch6.png)
 
-### <a name="object-is-filtered-due-to-ou-filtering"></a>Das Objekt wird aufgrund einer Organisationseinheitenfilterung gefiltert
-Das Objekt befindet sich aufgrund einer Filterkonfiguration nach Organisationseinheit nicht im gültigen Synchronisierungsbereich. Im folgenden Beispiel gehört das Objekt zur Organisationseinheit „OU=NoSync,DC=bvtadwbackdc,DC=com“.  Diese Organisationseinheit ist nicht im gültigen Synchronisierungsbereich enthalten.
-![](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+## <a name="object-is-filtered-due-to-ou-filtering"></a>Das Objekt wird aufgrund einer Organisationseinheitenfilterung gefiltert
+Das Objekt befindet sich aufgrund einer Filterkonfiguration nach Organisationseinheit nicht im gültigen Synchronisierungsbereich. Im folgenden Beispiel gehört das Objekt zur Organisationseinheit „OU=NoSync,DC=bvtadwbackdc,DC=com“.  Diese Organisationseinheit ist nicht im gültigen Synchronisierungsbereich enthalten.</br>
+
+![Organisationseinheit](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch7.png)
+
+## <a name="linked-mailbox-issue"></a>Problem mit einem verknüpften Postfach
+Ein verknüpftes Postfach sollte einem externen Hauptkonto zugeordnet sein, das sich in einer anderen vertrauenswürdigen Kontogesamtstruktur befindet. Wenn kein externes Hauptkonto vorhanden ist, synchronisiert Azure AD Connect das Benutzerkonto, das dem verknüpften Postfach in der Exchange-Gesamtstruktur entspricht, nicht mit dem Azure AD-Mandanten.</br>
+![Verknüpftes Postfach](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch12.png)
+
+## <a name="dynamic-distribution-group-issue"></a>Problem mit dynamischen Verteilergruppen
+Aufgrund von verschiedenen Unterschieden zwischen dem lokalen Active Directory und Azure Active Directory synchronisiert Azure AD Connect dynamische Verteilergruppen nicht mit dem Azure AD-Mandanten.
+
+![Dynamische Verteilergruppe](media\active-directory-aadconnect-troubleshoot-objectsynch\objsynch13.png)
 
 ## <a name="html-report"></a>HTML-Bericht
 Zusätzlich zur Analyse des Objekts generiert die Problembehandlungsaufgabe auch einen HTML-Bericht, der alle bekannten Informationen über das Objekt enthält. Dieser HTML-Bericht kann bei Bedarf zur weiteren Problembehandlung für das Supportteam freigegeben werden.

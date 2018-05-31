@@ -12,13 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 05/18/2018
 ms.author: genli
-ms.openlocfilehash: 77ce133232b63a590c6c7f9361d1ca456f484093
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2d332ce0da8622441d31a16a0addb9c06058998c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363293"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
 
@@ -106,12 +107,11 @@ Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
 13.  Greifen Sie auf den virtuellen Computer zu. Prüfen Sie, ob RdAgent ausgeführt wird und die Protokolle generiert werden.
 
-Wenn Sie den virtuellen Computer mit dem klassischen Bereitstellungsmodell erstellt haben, ist der Vorgang abgeschlossen.
-
+Wenn Sie den virtuellen Computer mit dem Resource Manager-Bereitstellungsmodell erstellt haben, ist der Vorgang abgeschlossen.
 
 ### <a name="use-the-provisionguestagent-property-for-vms-created-with-azure-resource-manager"></a>Verwenden der ProvisionGuestAgent-Eigenschaft für virtuelle Computer, die mit Azure Resource Manager erstellt wurden
 
-Wenn Sie den virtuellen Computer mit dem Azure Resource Manager-Bereitstellungsmodell erstellt haben, verwenden Sie das Azure PowerShell-Modul zum Aktualisieren der **ProvisionGuestAgent**-Eigenschaft. Die Eigenschaft informiert Azure, dass der VM-Agent auf dem virtuellen Computer installiert ist.
+Wenn Sie den virtuellen Computer mit dem klassischen Bereitstellungsmodell erstellt haben, verwenden Sie das Azure PowerShell-Modul, um die **ProvisionGuestAgent**-Eigenschaft zu aktualisieren. Die Eigenschaft informiert Azure, dass der VM-Agent auf dem virtuellen Computer installiert ist.
 
 Führen Sie zum Festlegen der **ProvisionGuestAgent**-Eigenschaft die folgenden Befehle in Azure PowerShell aus:
 

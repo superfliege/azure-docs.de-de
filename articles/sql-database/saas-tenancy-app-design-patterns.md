@@ -10,11 +10,12 @@ ms.custom: scale out apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: billgib
-ms.openlocfilehash: 3220c538e08753ed3515f42a5b8110df71745a63
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ef35bbb28f5b13068f92f4bf07c7807b4a5d407a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941893"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -88,7 +89,7 @@ Azure SQL-Datenbank stellt die Tools zur Verfügung, die erforderlich sind, um d
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Skalierung des Betriebs für das Modell mit einer Datenbank pro Mandant
 
-Die Azure SQL-Datenbank-Plattform verfügt über viele Verwaltungsfunktionen, die für die Verwaltung einer großen Anzahl von Datenbanken ausgelegt sind (z.B. für weit über 100.000 Datenbanken).  Aufgrund dieser Eigenschaften erweist sich das Muster mit einer Datenbank pro Mandant als sinnvolle Option.
+Die Azure SQL-Datenbank-Plattform verfügt über viele Verwaltungsfeatures, die für die Verwaltung einer großen Anzahl von Datenbanken ausgelegt sind (z.B. weit über 100.000 Datenbanken).  Aufgrund dieser Eigenschaften erweist sich das Muster mit einer Datenbank pro Mandant als sinnvolle Option.
 
 Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenbank mit 1000 Mandanten basiert.  Die Datenbank kann 20 Indizes enthalten.  Wenn das System nun auf 1000 Einzelinstanzdatenbanken umgestellt wird, steigt die Zahl der Indizes folglich auf 20.000.  Standardmäßig sind die automatischen Indizierungsfunktionen in der SQL-Datenbank im Rahmen der [automatischen Optimierung][docu-sql-db-automatic-tuning-771a] aktiviert.  Bei der automatischen Indizierung werden alle 20.000 Indizes sowie die entsprechenden laufenden Optimierungen im Hinblick auf Erstellungs- und Reduzierungsvorgänge für Sie verwaltet.  Diese automatisierten Aktionen finden in einer einzelnen Datenbank statt und werden nicht durch ähnliche Aktionen in anderen Datenbanken koordiniert oder eingeschränkt.  Die automatische Indizierung behandelt Indizes in einer ausgelasteten Datenbank anders als in einer weniger stark ausgelasteten Datenbank.  Diese Art der Indexverwaltungsanpassung wäre bei manueller Ausführung einer derart umfangreichen Verwaltungsaufgabe im Hinblick auf eine Datenbank pro Mandant nicht praktikabel.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 4fb0eb3dd3349bd901850d6b9dd0f3e33ee2e0d7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365660"
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011287"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection – empfohlene Methoden und Referenzarchitekturen
 
@@ -87,8 +87,8 @@ Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-
 
 Hinter der tiefgehenden Verteidigung steht die Idee, dem Risiko mit verschiedenen Verteidigungsstrategien zu begegnen. Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Sie sollten sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform implementieren.
 
-Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/security-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
-Sie können mit [Diensttags](/virtual-network/security-overview.md#service-tags) und [Anwendungssicherheitsgruppen](/virtual-network/security-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
+Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-networks-nsg.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
+Sie können mit [Diensttags](/virtual-network/security-overview.md) und [Anwendungssicherheitsgruppen](/virtual-network/security-overview.md) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
 
 Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
 
@@ -253,7 +253,7 @@ Diese Referenzarchitektur zeigt eine Reihe von bewährten Methoden für die Ausf
 
 In dieser Architektur wird eine Workload auf mehrere VM-Instanzen verteilt. Es gibt eine einzelne öffentliche IP-Adresse, und der Internetdatenverkehr wird durch ein Lastenausgleichsmodul auf die VMs verteilt. DDoS Protection Standard ist im virtuellen Netzwerk des Azure-Lastenausgleichsmoduls (Internet) aktiviert, dem die öffentliche IP-Adresse zugeordnet wurde.
 
-Beim Lastenausgleich werden die eingehenden Internetanforderungen an die VM-Instanzen verteilt. Virtual Machine Scale Sets ermöglichen das horizontale Hoch- oder Herunterskalieren der Anzahl der VMs – sowohl manuell als auch automatisch basierend auf vordefinierten Regeln. Dies ist wichtig, wenn die Ressource einem DDoS-Angriff ausgesetzt ist. Lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm), um weitere Informationen zu dieser Referenzarchitektur zu erhalten.
+Beim Lastenausgleich werden die eingehenden Internetanforderungen an die VM-Instanzen verteilt. Virtual Machine Scale Sets ermöglichen das horizontale Hoch- oder Herunterskalieren der Anzahl der VMs – sowohl manuell als auch automatisch basierend auf vordefinierten Regeln. Dies ist wichtig, wenn die Ressource einem DDoS-Angriff ausgesetzt ist. Lesen Sie diesen [Artikel](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm), um weitere Informationen zu dieser Referenzarchitektur zu erhalten.
 
 #### <a name="application-running-on-windows-n-tier"></a>Auf Windows-n-Schichten ausgeführte Anwendung
 

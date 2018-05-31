@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Backup | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Azure Backup | Microsoft Docs
 description: 'Antworten auf häufig gestellte Fragen zu Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 services: backup
 documentationcenter: ''
@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/11/2018
+ms.date: 5/9/2018
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 9dfd600a0e3271afff0dd7ce634c78bf87ab314f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d16991d15d76caa496b2923c8d0210b6ccb10a9a
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939197"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
 In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -67,12 +68,19 @@ Ja.
 ### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>Kann ich meinen DPM-Server für mehrere Tresore registrieren? <br/>
 Nein. Ein DPM- oder MABS-Server kann nur für einen Tresor registriert werden.
 
-### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>Welche Version von System Center Data Protection Manager wird unterstützt? <br/>
-Es wird empfohlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent des letzten Updaterollups (UR) für System Center Data Protection Manager (DPM) zu installieren. Ab August 2016 gilt Updaterollup 11 als letzte Updateversion.
+### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>Welche Version von System Center Data Protection Manager wird unterstützt?
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich jetzt System Center DPM installieren und zusammen mit dem Azure Backup-Agent verwenden, um lokale Anwendungs- bzw. VM-Workloads mit Azure zu schützen? <br/>
-Um Azure Backup mit System Center Data Protection Manager (DPM) zu verwenden, installieren Sie DPM zuerst, und installieren Sie anschließend den Azure Backup-Agent. Das Installieren der Azure Backup-Komponenten in dieser Reihenfolge stellt sicher, dass der Azure Backup-Agent mit DPM verwendet werden kann. Das Installieren des Azure Backup-Agents vor der Installation von DPM wird nicht empfohlen bzw. unterstützt.
+Es wird empfohlen, den [aktuellen](http://aka.ms/azurebackup_agent) Azure Backup-Agent des letzten Updaterollups (UR) für System Center Data Protection Manager (DPM) zu installieren. 
+- Das neueste Update für System Center DPM 2012 R2 ist [Updaterollup 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager).
+- Das neueste Update für System Center DPM 2016 ist [Updaterollup 2](https://support.microsoft.com/en-us/help/3209593).
 
+### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Ich habe zum Schutz meiner Dateien und Ordner den Azure Backup-Agent installiert. Kann ich System Center DPM installieren, um lokale Anwendungs- bzw. VM-Workloads mit Azure zu schützen?
+
+Ja. Wenn Sie allerdings Azure Backup mit System Center Data Protection Manager (DPM) verwenden möchten, müssen Sie zuerst DPM und anschließend den Azure Backup-Agent installieren. Das Installieren der Azure Backup-Komponenten in dieser Reihenfolge stellt sicher, dass der Azure Backup-Agent mit DPM verwendet werden kann. Das Installieren des Azure Backup-Agents vor der Installation von DPM wird nicht empfohlen bzw. unterstützt.
+
+### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Kann ich mit DPM Apps in Azure Stack sichern?
+
+Nein. Sie können Azure Stack zwar mit Azure Backup schützen, das Sichern von Apps in Azure Stack wird von Azure Backup aber derzeit nicht unterstützt.
 
 ## <a name="how-azure-backup-works"></a>Funktionsweise von Azure Backup
 ### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche? <br/>

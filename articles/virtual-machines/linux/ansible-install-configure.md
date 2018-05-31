@@ -1,84 +1,62 @@
 ---
-title: "Installieren und Konfigurieren von Ansible für die Verwendung mit virtuellen Azure-Computern | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Ansible für die Verwaltung von Azure-Ressourcen unter Ubuntu, CentOS und SLES installieren und konfigurieren."
+title: Installieren und Konfigurieren von Ansible für die Verwendung mit virtuellen Azure-Computern | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ansible für die Verwaltung von Azure-Ressourcen unter Ubuntu, CentOS und SLES installieren und konfigurieren.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/18/2017
+ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: 91173a14d40f8259927af720986a4efbc9c573ce
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896128"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Installieren und Konfigurieren von Ansible für das Verwalten von virtuellen Computern in Azure
-In diesem Artikel wird erläutert, wie Sie Ansible und die erforderlichen Python-SDK-Module für Azure unter einigen der am häufigsten verwendeten Linux-Distributionen installieren. Sie können Ansible auf anderen Distributionen installieren, indem Sie die installierten Pakete entsprechend an Ihre Plattform anpassen. Damit Sie Azure-Ressourcen auf sichere Weise erstellen können, erfahren Sie auch, wie Sie Anmeldeinformationen für Ansible erstellen und definieren. 
+
+Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird erläutert, wie Sie Ansible und die erforderlichen Python-SDK-Module für Azure unter einigen der am häufigsten verwendeten Linux-Distributionen installieren. Sie können Ansible auf anderen Distributionen installieren, indem Sie die installierten Pakete entsprechend an Ihre Plattform anpassen. Damit Sie Azure-Ressourcen auf sichere Weise erstellen können, erfahren Sie auch, wie Sie Anmeldeinformationen für Ansible erstellen und definieren.
 
 Weitere Installationsoptionen und Anleitungen für zusätzliche Plattformen finden Sie im [Ansible-Installationshandbuch](https://docs.ansible.com/ansible/intro_installation.html).
 
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.30 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="install-ansible"></a>Installieren von Ansible
-Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupAnsible* am Standort *eastus*:
+
+Eine der einfachsten Möglichkeiten, Ansible mit Azure zu verwenden, ist die Azure Cloud Shell, eine browserbasierte Shell-Umgebung zum Verwalten und Entwickeln von Azure-Ressourcen. Ansible ist bereits in der Cloud Shell installiert, sodass Sie Anweisungen zum Installieren von Ansible überspringen und mit [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fortfahren können. Eine Liste von weiteren Tools, die ebenfalls in der Cloud Shell verfügbar sind, finden Sie unter [Features und Tools für Bash in der Azure Cloud Shell](../../cloud-shell/features.md#tools).
+
+Mithilfe der folgenden Anweisungen können Sie eine Linux-VM für verschiedene Distributionen erstellen und dann Ansible installieren. Wenn Sie keine Linux-VM erstellen müssen, überspringen Sie diesen ersten Schritt, um eine Azure-Ressourcengruppe zu erstellen. Wenn Sie keinen virtuellen Computer erstellen müssen, erstellen Sie zuerst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
-az group create --name myResourceGroupAnsible --location eastus
+az group create --name myResourceGroup --location eastus
 ```
 
-Nun erstellen Sie eine VM und installieren Ansible für eine der folgenden Distributionen Ihrer Wahl:
+Wählen Sie nun eine der folgenden Distributionen aus, um bei Bedarf Schritte zum Erstellen eines virtuellen Computers zu erhalten und anschließend Ansible zu installieren:
 
+- [CentOS 7.4](#centos-74)
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
-- [CentOS 7.3](#centos-73)
 - [SLES 12 SP2](#sles-12-sp2)
 
-### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
+### <a name="centos-74"></a>CentOS 7.4
+
+Erstellen Sie ggf. mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
 
 ```azurecli
 az vm create \
     --name myVMAnsible \
-    --resource-group myResourceGroupAnsible \
-    --image UbuntuLTS \
-    --admin-username azureuser \
-    --generate-ssh-keys
-```
-
-Stellen Sie per SSH mithilfe der `publicIpAddress` aus der Ausgabe von der Erstellung des virtuellen Computers eine Verbindung mit diesem her:
-
-```bash
-ssh azureuser@<publicIpAddress>
-```
-
-Installieren Sie die erforderlichen Pakete für die Python-SDK-Module für Azure sowie Ansible wie folgt auf dem virtuellen Computer:
-
-```bash
-## Install pre-requisite packages
-sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
-
-## Install Ansible and Azure SDKs via pip
-pip install ansible[azure]
-```
-
-Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
-
-
-### <a name="centos-73"></a>CentOS 7.3
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
-
-```azurecli
-az vm create \
-    --name myVMAnsible \
-    --resource-group myResourceGroupAnsible \
-    --image CentOS \
+    --resource-group myResourceGroup \
+    --image OpenLogic:CentOS:7.4:latest \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
@@ -102,15 +80,46 @@ sudo pip install ansible[azure]
 
 Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
 
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-### <a name="sles-12-sp2"></a>SLES 12 SP2
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
+Erstellen Sie ggf. mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
 
 ```azurecli
 az vm create \
     --name myVMAnsible \
-    --resource-group myResourceGroupAnsible \
-    --image SLES \
+    --resource-group myResourceGroup \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username azureuser \
+    --generate-ssh-keys
+```
+
+Stellen Sie per SSH mithilfe der `publicIpAddress` aus der Ausgabe von der Erstellung des virtuellen Computers eine Verbindung mit diesem her:
+
+```bash
+ssh azureuser@<publicIpAddress>
+```
+
+Installieren Sie die erforderlichen Pakete für die Python-SDK-Module für Azure sowie Ansible wie folgt auf dem virtuellen Computer:
+
+```bash
+## Install pre-requisite packages
+sudo apt-get update && sudo apt-get install -y libssl-dev libffi-dev python-dev python-pip
+
+## Install Ansible and Azure SDKs via pip
+pip install ansible[azure]
+```
+
+Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
+
+### <a name="sles-12-sp2"></a>SLES 12 SP2
+
+Erstellen Sie ggf. mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
+
+```azurecli
+az vm create \
+    --name myVMAnsible \
+    --resource-group myResourceGroup \
+    --image SUSE:SLES:12-SP2:latest \
     --admin-username azureuser \
     --generate-ssh-keys
 ```
@@ -137,13 +146,13 @@ sudo pip uninstall -y cryptography
 
 Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
 
-
 ## <a name="create-azure-credentials"></a>Erstellen von Azure-Anmeldeinformationen
+
 Ansible kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie Ansible verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Zur Erhöhung der Sicherheit über die Bereitstellung eines Benutzernamens und Kennworts hinaus wird in diesem Beispiel ein einfacher Dienstprinzipal erstellt.
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipal, und geben Sie die von Ansible benötigten Anmeldeinformationen aus:
+Erstellen Sie auf dem Hostcomputer oder in der Azure Cloud Shell einen Prinzipal mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac). Die für Ansible erforderlichen Anmeldeinformationen werden auf dem Bildschirm ausgegeben:
 
-```azurecli
+```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
 ```
 
@@ -159,17 +168,17 @@ Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 
 Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#az_account_show) abrufen:
 
-```azurecli
+```azurecli-interactive
 az account show --query "{ subscription_id: id }"
 ```
 
 Die Ausgabe dieser beiden Befehle verwenden Sie im nächsten Schritt.
 
-
 ## <a name="create-ansible-credentials-file"></a>Erstellen einer Ansible-Anmeldeinformationendatei
-Zum Angeben von Anmeldeinformationen für Ansible definieren Sie Umgebungsvariablen oder erstellen eine lokale Datei mit den Anmeldeinformationen. Weitere Informationen zum Definieren von Ansible-Anmeldeinformationen finden Sie unter [Bereitstellen von Anmeldeinformationen für Azure-Module](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules). 
 
-Erstellen Sie für eine Entwicklungsumgebung wie folgt eine Datei mit *Anmeldeinformationen* für Ansible auf der Host-VM:
+Zum Angeben von Anmeldeinformationen für Ansible definieren Sie Umgebungsvariablen oder erstellen eine lokale Datei mit den Anmeldeinformationen. Weitere Informationen zum Definieren von Ansible-Anmeldeinformationen finden Sie unter [Bereitstellen von Anmeldeinformationen für Azure-Module](https://docs.ansible.com/ansible/guide_azure.html#providing-credentials-to-azure-modules).
+
+Erstellen Sie für eine Entwicklungsumgebung eine Datei mit *Anmeldeinformationen* für Ansible auf der Host-VM. Erstellen Sie eine Datei mit Anmeldeinformationen auf dem virtuellen Computer, auf dem Sie in einem vorherigen Schritt Ansible installiert haben:
 
 ```bash
 mkdir ~/.azure
@@ -186,9 +195,11 @@ secret=531dcffa-3aff-4488-99bb-4816c395ea3f
 tenant=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
+Speichern und schließen Sie die Datei.
 
 ## <a name="use-ansible-environment-variables"></a>Verwenden von Ansible-Umgebungsvariablen
-Wenn Sie Tools wie Ansible Tower oder Jenkins verwenden möchten, können Sie wie folgt Umgebungsvariablen definieren. Diese Variablen kombinieren die Abonnement-ID mit der Ausgabe aus der Erstellung eines Dienstprinzipals. Die Ausgabe aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) entspricht der erforderlichen Reihenfolge von *AZURE_CLIENT_ID*, *AZURE_SECRET* und *AZURE_TENANT*. 
+
+Wenn Sie Tools wie Ansible Tower oder Jenkins verwenden möchten, müssen Sie Umgebungsvariablen definieren. Dieser Schritt kann übersprungen werden, wenn Sie nur den Ansible-Client und die im vorherigen Schritt erstellte Datei mit den Azure-Anmeldeinformationen verwenden möchten. In Umgebungsvariablen werden die gleichen Informationen wie in der Datei mit den Azure-Anmeldeinformationen definiert:
 
 ```bash
 export AZURE_SUBSCRIPTION_ID=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
@@ -198,4 +209,5 @@ export AZURE_TENANT=72f988bf-86f1-41af-91ab-2d7cd011db47
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Sie haben nun Ansible und die erforderlichen Python-SDK-Module für Azure installiert und Anmeldeinformationen für Ansible definiert. Erfahren Sie, wie Sie [einen virtuellen Computer mit Ansible erstellen](ansible-create-vm.md). Sie können sich auch darüber informieren, wie Sie [eine vollständige Azure-VM mit den zugehörigen Ressourcen mit Ansible erstellen](ansible-create-complete-vm.md).
