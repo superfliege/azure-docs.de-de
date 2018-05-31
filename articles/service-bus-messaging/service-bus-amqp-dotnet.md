@@ -1,11 +1,11 @@
 ---
-title: Service Bus mit .NET und AMQP 1.0 | Microsoft Docs
+title: Azure Service Bus mit .NET und AMQP 1.0 | Microsoft-Dokumentation
 description: Verwenden von Azure Service Bus aus .NET mit AMQP
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 28b8d7a71f01d8633d020b99fbe6bc5c16f272b4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188496"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
 
@@ -94,14 +95,9 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
 | Zeitraum |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
-## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>Nicht unterstützte Features, Einschränkungen und Verhaltensunterschiede
+## <a name="behavioral-differences"></a>Verhaltensunterschiede
 
-Die folgenden Features der .NET-API von Service Bus werden bei Verwendung von AMQP derzeit nicht unterstützt:
-
-* Transaktionen
-* Senden mithilfe eines Übertragungsziels
-
-Es gibt bei Verwenden von AMQP im Vergleich zum Standardprotokoll auch einige kleine Unterschiede beim Verhalten der .NET-API von Service Bus:
+Es gibt bei Verwenden von AMQP im Vergleich zum Standardprotokoll einige kleine Unterschiede beim Verhalten der .NET-API von Service Bus:
 
 * Die [OperationTimeout][OperationTimeout]-Eigenschaft wird ignoriert.
 * `MessageReceiver.Receive(TimeSpan.Zero)` wird als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` implementiert.

@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: c195cc0bacd9eea7e75fa35cd155845f03dd21cf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 934585082e2832c41885874c82ab43d64a1fa361
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203475"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Bereitstellung
 Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-certs.md) Zertifikatdateien müssen mit Eigenschaften importiert und exportiert werden, die mit den Zertifikatanforderungen von Azure Stack in Einklang stehen.
@@ -28,55 +29,58 @@ Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-cer
 ## <a name="prepare-certificates-for-deployment"></a>Vorbereiten von Zertifikaten für die Bereitstellung
 Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu überprüfen: 
 
+### <a name="import-the-certificate"></a>Importieren des Zertifikats
+
 1.  Kopieren Sie die ursprünglichen Zertifikatsversionen, [die Sie von der Zertifizierungsstelle Ihrer Wahl bezogen haben](azure-stack-get-pki-certs.md), in ein Verzeichnis auf dem Bereitstellungshost. 
   > [!WARNING]
   > Kopieren Sie keine Dateien, die bereits importiert/exportiert wurden oder aus einem anderen Grund nicht mehr den Dateien entsprechen, die direkt von der Zertifizierungsstelle bereitgestellt wurden.
 
-2.  Importieren Sie die Zertifikate in den Zertifikatspeicher des lokalen Computers:
+2.  Klicken Sie mit der rechten Maustaste auf das Zertifikat, und wählen Sie **Zertifikat installieren** oder **PFX installieren** aus – je nachdem, wie das Zertifikat von Ihrer Zertifizierungsstelle übermittelt wurde.
 
-    a.  Klicken Sie mit der rechten Maustaste auf das Zertifikat, und klicken Sie anschließend auf **PFX installieren**.
-
-    b.  Wählen Sie im **Zertifikatimport-Assistenten** als Importspeicherort die Option **Lokaler Computer** aus. Klicken Sie auf **Weiter**.
+3. Wählen Sie im **Zertifikatimport-Assistenten** als Importspeicherort die Option **Lokaler Computer** aus. Klicken Sie auf **Weiter**. Klicken Sie auf dem folgenden Bildschirm erneut auf „Weiter“.
 
     ![Importspeicherort „Lokaler Computer“](.\media\prepare-pki-certs\1.png)
 
-    c.  Klicken Sie auf der Seite **Zu importierende Datei auswählen** auf **Weiter**.
-
-    d.  Geben Sie auf der Seite **Schutz für den privaten Schlüssel** das Kennwort für Ihre Zertifikatdateien ein, und aktivieren Sie die Option **Schlüssel als exportierbar markieren. Dadurch können Sie Ihre Schlüssel später sichern oder transportieren**. Klicken Sie auf **Weiter**.
-
-    ![Markieren des Schlüssels als exportierbar](.\media\prepare-pki-certs\2.png)
-
-    e.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und anschließend **Enterprise Trust** als Speicherort aus. Klicken Sie auf **OK**, um das Dialogfeld für die Zertifikatspeicherauswahl zu schließen, und klicken Sie anschließend auf **Weiter**.
+4.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und anschließend **Enterprise Trust** als Speicherort aus. Klicken Sie auf **OK**, um das Dialogfeld für die Zertifikatspeicherauswahl zu schließen, und klicken Sie anschließend auf **Weiter**.
 
     ![Konfigurieren des Zertifikatspeichers](.\media\prepare-pki-certs\3.png)
 
-  f.    Klicken Sie auf **Fertig stellen**, um den Zertifikatimport-Assistenten abzuschließen.
+    a. Wenn Sie eine PFX-Datei importieren, wird Ihnen ein zusätzliches Dialogfeld angezeigt. Geben Sie auf der Seite **Schutz für den privaten Schlüssel** das Kennwort für Ihre Zertifikatdateien ein, und aktivieren Sie die Option **Schlüssel als exportierbar markieren. Dadurch können Sie Ihre Schlüssel später sichern oder transportieren**. Klicken Sie auf **Weiter**.
 
-  g.    Wiederholen Sie den Vorgang für alle Zertifikate, die Sie für Ihre Bereitstellung bereitstellen.
+    ![Markieren des Schlüssels als exportierbar](.\media\prepare-pki-certs\2.png)
 
-3. Exportieren Sie das Zertifikat in das PFX-Dateiformat mit den Azure Stack-Anforderungen:
+5. Klicken Sie auf „Fertig stellen“, um den Import abzuschließen.
 
-  a.    Öffnen Sie die MMC-Konsole des Zertifikat-Managers, und stellen Sie eine Verbindung mit dem Zertifikatspeicher des lokalen Computers her.
+### <a name="export-the-certificate"></a>Zertifikat exportieren
 
-  b.    Wechseln Sie zum Verzeichnis **Enterprise Trust**.
+Öffnen Sie die MMC-Konsole des Zertifikat-Managers, und stellen Sie eine Verbindung mit dem Zertifikatspeicher des lokalen Computers her.
 
-  c.    Wählen Sie eines der Zertifikate aus, die Sie weiter oben in Schritt 2 importiert haben.
+1. Öffnen Sie Microsoft Management Console; klicken Sie in Windows 10 mit der rechten Maustaste auf das Startmenü, und klicken Sie auf „Ausführen“. Geben Sie **mmc** ein, und klicken Sie auf „OK“.
 
-  d.    Klicken Sie auf der Taskleiste der Zertifikat-Manager-Konsole auf **Aktionen** > **Alle Aufgaben** > **Exportieren**.
+2. Klicken Sie auf „Datei“, „Snap-In hinzufügen/entfernen“, wählen Sie „Zertifikate“ aus, und klicken Sie auf „Hinzufügen“.
 
-  e.    Klicken Sie auf **Weiter**.
+    ![Hinzufügen von Zertifikate-Snap-In](.\media\prepare-pki-certs\mmc-2.png)
+ 
+3. Wählen Sie „Computerkonto“ aus, klicken Sie auf „Weiter“, wählen Sie „Lokaler Computer“ und dann „Fertig stellen“ aus. Klicken Sie auf „OK“, um die Seite „Snap-In hinzufügen/entfernen“ zu schließen.
 
-  f.    Wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
+    ![Hinzufügen von Zertifikate-Snap-In](.\media\prepare-pki-certs\mmc-3.png)
 
-  g.    Wählen Sie im Abschnitt für das Exportdateiformat **Alle erweiterten Eigenschaften exportieren** aus, und klicken Sie dann auf **Weiter**.
+4. Navigieren Sie zu „Zertifikate“ > „Organisationsvertrauen“ > „Zertifikatspeicherort“. Stellen Sie sicher, dass das Zertifikat auf der rechten Seite angezeigt wird.
 
-  h.    Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
+5. Klicken Sie auf der Taskleiste der Zertifikat-Manager-Konsole auf **Aktionen** > **Alle Aufgaben** > **Exportieren**. Klicken Sie auf **Weiter**.
 
-  i.    Wählen Sie einen Dateinamen und einen Speicherort für die zu exportierende PFX-Datei. Klicken Sie auf **Weiter**.
+  > [!NOTE]
+  > Je nachdem, über wie viele Azure Stack-Zertifikate Sie verfügen, müssen Sie diesen Vorgang möglicherweise mehrere Male abschließen.
 
-  j.    Wählen Sie **Fertig stellen** aus.
+4. Wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
 
-  k.    Wiederholen Sie diesen Vorgang für alle Zertifikate, die Sie weiter oben in Schritt 2 für Ihre Bereitstellung importiert haben.
+5. Wählen Sie im Abschnitt für das Exportdateiformat **Alle erweiterten Eigenschaften exportieren** aus, und klicken Sie dann auf **Weiter**.
+
+6. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
+
+7. Wählen Sie einen Dateinamen und einen Speicherort für die zu exportierende PFX-Datei. Klicken Sie auf **Weiter**.
+
+8. Wählen Sie **Fertig stellen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Überprüfen von Azure Stack-PKI-Zertifikaten](azure-stack-validate-pki-certs.md)

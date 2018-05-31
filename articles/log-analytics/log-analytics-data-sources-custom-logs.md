@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: bwren
-ms.openlocfilehash: bf9acd5d7130a5e35182271f07593adab19d448b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e4e2edeb6703e8c55a16b488175fbcdb0dfe56a9
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361888"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -29,7 +30,7 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 
 - Das Protokoll muss entweder pro Zeile einen einzelnen Eintrag enthalten, oder die Einträge müssen jeweils mit einem Zeitstempel in einem der folgenden Formate beginnen:
 
-    JJJJ-MM-TT HH:MM:SS <br>M/T/JJJJ HH:MM:SS AM/PM <br>Mon TT,JJJJ HH:MM:SS
+    JJJJ-MM-TT HH:MM:SS <br>M/T/JJJJ HH:MM:SS AM/PM<br>Mon TT, JJJJ HH:MM:SS<br />jjMMtt HH:mm:ss<br />ttMMjj HH:mm:ss<br />MMM t hh:mm:ss<br />tt/MMM/jjjj:HH:mm:ss zzz<br />jjjj-MM-ttTHH:mm:ssK
 
 - Die Protokolldatei darf keine zirkuläre Protokollierung oder Protokollrotation zulassen, bei der die Datei mit neuen Einträgen überschrieben wird.
 - Die Protokolldatei muss ASCII- oder UTF-8-Codierung verwenden.  Andere Formate wie UTF-16 werden nicht unterstützt.

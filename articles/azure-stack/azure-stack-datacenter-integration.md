@@ -1,25 +1,26 @@
 ---
-title: "Allgemeine Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie die Integration von Rechenzentren mit Azure Stack-Systemen mit mehreren Knoten jetzt planen und vorbereiten können."
+title: Allgemeine Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Integration von Rechenzentren mit Azure Stack-Systemen mit mehreren Knoten jetzt planen und vorbereiten können.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 25ef6ba9ff105486f39cee8b6181a8c63e64ec13
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 55243ead4f088f7a2b3d54c0581c604f0dc63d07
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769691"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme
 Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
@@ -50,7 +51,9 @@ Wenn für die Behandlung von Problemen, die nicht durch Schritte zur Warnungsver
 ## <a name="identity-considerations"></a>Überlegungen zur Identität
 
 ### <a name="choose-identity-provider"></a>Auswählen des Identitätsanbieters
-Sie müssen bedenken, welchen Identitätsanbieter Sie für die Bereitstellung von Azure Stack nutzen möchten, Azure AD oder AD FS. Sie können die Identitätsanbieter nach der Bereitstellung nicht wechseln, ohne das System komplett neu bereitstellen zu müssen.
+Sie müssen bedenken, welchen Identitätsanbieter Sie für die Bereitstellung von Azure Stack nutzen möchten, Azure AD oder AD FS. Sie können die Identitätsanbieter nach der Bereitstellung nicht wechseln, ohne das System komplett neu bereitstellen zu müssen. Wenn Sie Azure AD-Kontos nicht besitzen und ein Konto verwenden, die Sie von Ihrem Cloud-Service-Anbieter bereitgestellt und Sie verwenden möchten, wechseln Sie Anbieter, und verwenden einen anderen Azure AD-Konto, die an diesem Punkt müssen, wenden Sie sich an Ihre Lösungsanbieter, um die f-Lösung erneut bereitstellen oder Sie Ihre Kosten.
+
+
 
 Ihre Wahl des Identitätsanbieters hat keinen Einfluss auf virtuelle Computer des Mandanten, auf das Identitätssystem sowie auf von ihnen verwendete Konten oder darauf, ob sie einer Active Directory-Domäne usw. beitreten können. Das ist was anderes.
 

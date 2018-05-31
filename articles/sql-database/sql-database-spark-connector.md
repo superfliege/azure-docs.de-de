@@ -7,13 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: ''
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/23/2018
 ms.author: xiwu
-ms.openlocfilehash: 46849d551b6996caaf020caec1ab8104d5388c8f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 393af463c4145e1d865c14f2ace7d5123ab12cfa
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187384"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure SQL-Datenbank und SQL Server
 
@@ -38,6 +39,10 @@ Der Datenfluss ist wie folgt:
 1. Der Spark-Masterknoten stellt eine Verbindung mit SQL Server oder Azure SQL-Datenbank her und lädt Daten aus einer spezifischen Tabelle oder unter Verwendung einer bestimmten SQL-Abfrage.
 2. Der Spark-Masterknoten verteilt die Daten zur Transformation auf die Workerknoten. 
 3. Der Workerknoten stellt eine Verbindung mit SQL Server oder Azure SQL-Datenbank her und schreibt Daten in die Datenbank. Benutzer könne auswählen, ob sie die Daten Zeile für Zeile oder in einem Massenvorgang einfügen möchten.
+
+Das folgende Diagramm veranschaulicht den Datenfluss.
+
+   ![Architektur](./media/sql-database-spark-connector/architecture.png)
 
 ### <a name="build-the-spark-to-sql-db-connector"></a>Erstellen des Spark-Connectors für SQL DB
 Derzeit wird für das Connectorprojekt Maven verwendet. Sie können Folgendes ausführen, um den Connector ohne Abhängigkeiten zu erstellen:
@@ -153,7 +158,7 @@ collection.show()
 #### <a name="setup-requirement"></a>Anforderungen für die Einrichtung
 Wenn Sie den auf einem Zugriffstoken basierenden Authentifizierungsmodus verwenden, müssen Sie [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) und zugehörige Abhängigkeiten herunterladen und in den Java-Buildpfad einschließen.
 
-Unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) finden Sie Informationen dazu, wie Sie ein Zugriffstoken für Ihre Azure SQL-Datenbank-Instanz abrufen.
+Unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) finden Sie Informationen dazu, wie Sie ein Zugriffstoken für Ihre Azure SQL-Datenbank-Instanz abrufen.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -211,5 +216,5 @@ Laden Sie – sofern noch nicht geschehen – den Spark-Connector für Azure SQL
 -   [Azure Databricks-Beispielnotebooks](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Beispielskripts (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-Es kann auch nützlich sein, den [Leitfaden zu Apache Spark SQL, DataFrames und Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (in englischer Sprache) und die [Azure Databricks-Dokumentation](https://docs.microsoft.com/en-us/azure/azure-databricks/) zu lesen.
+Es kann auch nützlich sein, den [Leitfaden zu Apache Spark SQL, DataFrames und Datasets Guide](http://spark.apache.org/docs/latest/sql-programming-guide.html) (in englischer Sprache) und die [Azure Databricks-Dokumentation](https://docs.microsoft.com/azure/azure-databricks/) zu lesen.
 

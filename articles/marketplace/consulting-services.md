@@ -14,22 +14,40 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: c8966f3dfa16010b82d1fe9cd02c63bdde65463c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7cd902f289d0743b4aecf004f5f64a04024aa790
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312082"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace-Beratungsdienste
-Der Azure Marketplace, der Dienste zur Unterstützung und Erweiterung ihrer Nutzung von Azure vermitteln soll, unterstützt das Listing von Beratungsdienstangeboten von Microsoft-Systemintegratorpartnern (SI). 
+Beratungsdienste in Azure Marketplace ermöglichen Microsoft-Partnern, Verbindungen zwischen Kunden und Diensten herzustellen, um ihre Nutzung von Azure zu unterstützen und auszuweiten. Azure Marketplace unterstützt die Auflistung der Beratungsdiensteangebote von Systemintegrator-Partnern (SI) von Microsoft. 
 
 Diese Beratungsdienste sind kundenspezifische Angebote. Sie sind in Umfang und Dauer festgelegt, können zum Festpreis oder kostenlos sein und haben ein konkretes Ergebnis. Potenzielle Kunden können einfach eine Kontaktaufnahme durch Partner anfordern. Partner erhalten eine Benachrichtigung in ihrem CRM-System und beantworten Anfragen innerhalb von 48 Stunden.
 
+## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Beratungsdienste in Azure Marketplace im Vergleich zur AppSource-Storefront
+Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte ausgerichtet, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, die bewirken sollen, dass sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Diese Optionen sind in der folgenden Tabelle zusammengefasst:
+
+|         |Azure Marketplace  |AppSource |
+|---------|---------|---------|
+|Zielgruppe   |IT-Profis und Cloudentwickler|Geschäftsbenutzer / Branchenentscheidungsträger|
+|Lösungsrelevanz     |Für Azure oder auf Basis von Azure erstellte technische Apps|Geschäfts-Apps, die D365, Power BI, Office 365, Azure nutzen / erweitern. (Fertig gestellte Add-In- oder Add-On-Apps)|
+|Veröffentlichungsoptionen     |Kontakt mit mir aufnehmen, Testversion, Transact oder Beratungsdienste|Kontakt mit mir aufnehmen, Testversion oder Beratungsdienste|
+|In Produkterfahrung      |Azure-Verwaltungsportal|Dynamics 365, Office 365, Office-Client-Apps| 
+|Andere      |Lokale Veröffentlichung über Azure Stack|Beratungsdienste für Dynamics und Power BI|
+
+Beratungsdienste in Azure Marketplace sollten Angebote nutzen, die sich mit Schwerpunkt auf Azure-technischen Lösungen und Diensten an eine technische Zielgruppe richten.
+
+
 Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Dienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
-## <a name="eligible-services-and-partners"></a>Berechtigte Dienste und Partner
+>[!TIP]
+>Diese Informationen gelten ausschließlich für Azure Marketplace-Dienste. Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“.
 
-Partner müssen zudem über eine Silver- oder Gold-Kompetenz im entsprechenden Bereich für ihren Dienst verfügen. Die Berechtigungskompetenzen sind in der folgenden Tabelle aufgeführt:
+## <a name="eligible-partners-and-supported-countries"></a>Geeignete Partner und unterstützte Länder
+
+Partner müssen zudem über eine **Silver- oder Gold-Kompetenz** im entsprechenden Bereich für ihren Dienst verfügen. Die Berechtigungskompetenzen sind in der folgenden Tabelle aufgeführt:
 
 |Kompetenz  |Lösungsbereich  |
 |---------|---------|
@@ -37,22 +55,8 @@ Partner müssen zudem über eine Silver- oder Gold-Kompetenz im entsprechenden B
 |Anwendungsentwicklung und ISV     |  Anwendungsentwicklung, Anwendungsintegration, DevOps       |
 |Datenverwaltung und -analyse    |  Datenanalyse, Datenplattform       |
 
-Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können mehr als einen auflisten): 
-
-* **Bewertung**: Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und zeitlichen Steuerung zu bieten. 
-* **Briefing**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um die Aufmerksamkeit von Kunden durch Frameworks, Demos und Beispiele für Kunden zu erhöhen. 
-* **Implementierung**: Eine umfassende Installation, die zu einer vollständig funktionierenden Lösung führt. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
-* **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt. 
-* **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
-
-Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
-
 Erfahren Sie mehr zu den [Kompetenzen über das Microsoft Partner Network](https://partner.microsoft.com/en-US/membership/competencies). 
-
->[!TIP]
->Diese Informationen gelten ausschließlich für Azure Marketplace-Dienste. Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“. 
-
-## <a name="supported-countries"></a>Unterstützte Länder
+ 
 
 SI-Partner können Beratungsdienstangebote für die folgenden 18 Länder übermitteln. 
 
@@ -92,16 +96,27 @@ Noch bevor Sie Ihren Dienst nominieren, können Sie mit der Sammlung und Vorbere
 ## <a name="publishing-process"></a>Veröffentlichungsvorgang
 Um Ihr Beratungsdienstangebot im Azure Marketplace zu listen, gehen Sie wie folgt vor:
 
-1. **Anfrage** : Um Ihre Anfrage zu senden, benutzen Sie das [Azure Marketplace-Antragsformular](https://azuremarketplace.microsoft.com/en-us/sell/nominate) und erzählen uns mehr über Ihre Organisation. 
+1. **Anfrage** : Um Ihre Anfrage zu senden, benutzen Sie das [Azure Marketplace-Antragsformular](https://azuremarketplace.microsoft.com/en-us/sell/nominate) und erzählen uns mehr über Ihre Organisation. Hinweis: Herausgeber müssen den Antragsprozess nur einmal durchlaufen, um sich entweder bei Azure Marketplace oder AppSource einzutragen. Sobald der Antrags- und Onboardingprozess abgeschlossen ist, wird ein Cloud-Partnerportal erstellt, in dem Herausgeber ihre Angebotslisten erstellen und übermitteln können.
 2. **Überprüfung**: Ihre Anfrage wird geprüft, um sicherzustellen, dass Sie die Eignungskriterien erfüllen. Wir senden Ihnen dann Anweisungen zum Listen von Beratungsdienstangeboten zu. 
 3. **Übermittlung**: Geben Sie die erforderlichen Informationen ein, wie in den Anweisungen aufgeführt. Alle Inhalte und Begleitmaterialien müssen in englischer Sprache übermittelt werden. 
 4. **Überprüfung**: Unser Marketing- und Redaktionsteam überprüft die von Ihnen übermittelten Angaben und optimiert diese, um deren Lesbarkeit, Grammatik und Effizienz zu verbessern. 
 5. **Staging**: Ihre übermittelten Angaben werden für Sie zur Durchsicht bereitgestellt. 
 6. **Veröffentlichung**: Wenn Sie und Microsoft mit dem bereitgestellten Inhalt zufrieden sind, kann Ihr Angebot im Azure Marketplace online geschaltet werden. Das Datum, an dem das Listing live geschaltet wird, hängt von dem Land ab, das in Ihrem Angebot angegeben wurde. Wenn der Katalog für das ausgewählte Land bereits im Azure Marketplace aktiv ist, wird Ihr Listing innerhalb weniger Stunden angezeigt. Andernfalls wird das Listing erst angezeigt, wenn der Katalog live geschaltet wird.
 
-## <a name="content-review-criteria"></a>Kriterien für die Überprüfung des Inhalts
+## <a name="offer-listings-and-content-review-criteria"></a>Kriterien für Angebotslisten und Überprüfung des Inhalts
+Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können mehr als einen auflisten): 
+
+* **Bewertung**: Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und zeitlichen Steuerung zu bieten. 
+* **Briefing**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um die Aufmerksamkeit von Kunden durch Frameworks, Demos und Beispiele für Kunden zu erhöhen. 
+* **Implementierung**: Eine umfassende Installation, die zu einer vollständig funktionierenden Lösung führt. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
+* **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt. 
+* **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
+
+Hinweis: Abgesehen von der Art des *Briefings* können Beratungsdenste persönlich (d.h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d.h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
 
 Sobald Sie die oben genannten Pflichtelemente konfiguriert haben, prüft das Inhaltsprüfungsteam, ob Ihre Angebotsbeschreibung für Ihre Zielgruppe aussagekräftig und vollständig ist. 
+
+#### <a name="listing-title"></a>Auflistungstitel
 
 Beachten Sie, dass das Feld „Titel“ eine Begrenzung auf 50 Zeichen aufweist und die Dauer und Art der Dienstleistung des Angebots angeben muss. Dies dient zur Suchmaschinenoptimierung. Das erforderliche Format ist wie folgt: NAME: DAUER TYP
 
@@ -114,7 +129,8 @@ Beispiele:
 |Workshop zu intelligenten Toastern        |  Intelligente Toaster: 1-wöchiger Workshop       |
 |  PoC für SQL Server-Migration    | SQL Server-Migration: 3-wöchiger Proof of Concept        |
 
- 
+#### <a name="listing-summaries-and-descriptions"></a>Zusammenfassungen und Beschreibungen der Auflistung
+
 Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichtigt das Team die folgenden Kriterien:
 
 |Angebotstyp  |Erforderlich |Empfohlen  |

@@ -1,18 +1,19 @@
 ---
-title: "Azure Batch-APIs und -Tools für Entwickler | Microsoft-Dokumentation"
-description: "Es werden die APIs und Tools beschrieben, die zum Entwickeln von Lösungen mit dem Azure Batch-Dienst verfügbar sind."
+title: Azure Batch-APIs und -Tools für Entwickler | Microsoft-Dokumentation
+description: Es werden die APIs und Tools beschrieben, die zum Entwickeln von Lösungen mit dem Azure Batch-Dienst verfügbar sind.
 services: batch
 author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: get-started-article
-ms.date: 02/26/2018
+ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 0d3720d33de2237b0d8cce2ae56bcc7ccf6acc43
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a47c7355e8dfea97f7dee6787da87444a7642c3
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359321"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Übersicht über Batch-APIs und -Tools
 
@@ -26,11 +27,10 @@ Sie können größere Workloads für Ihr Unternehmen auf effiziente Weise verarb
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Azure-Konten für die Batch Entwicklung
-Beim Entwickeln von Batch-Lösungen verwenden Sie in Microsoft Azure die folgenden Konten:
+Beim Entwickeln von Batch-Lösungen verwenden Sie die folgenden Konten in Ihrem Azure-Abonnement:
 
-* **Azure-Konto und -Abonnement:** Wenn Sie noch kein Azure-Abonnement haben, können Sie Ihre [Visual Studio-Abonnentenleistungen][msdn_benefits] in Anspruch nehmen oder sich für ein [kostenloses Azure-Konto][free_account] registrieren. Beim Erstellen eines Kontos wird für Sie ein Standardabonnement erstellt.
-* **Batch-Konto:** Azure Batch-Ressourcen (einschließlich Pools, Computeknoten, Aufträge und Aufgaben) werden einem Azure Batch-Konto zugeordnet. Wenn Ihre Anwendung eine Anforderung an den Batch-Dienst richtet, wird die Anforderung anhand des Azure Batch-Kontonamens, der URL des Kontos und entweder eines Zugriffsschlüssels oder eines Azure Active Directory-Tokens authentifiziert. Die [Erstellung eines Batch-Kontos](batch-account-create-portal.md) kann über das Azure-Portal oder programmgesteuert erfolgen.
-* **Speicherkonto:** Batch enthält integrierte Unterstützung zum Verwenden von Dateien in [Azure Storage][azure_storage]. In nahezu jedem Batch-Szenario wird Azure Blob Storage für das Staging der Programme, die von Ihren Aufgaben ausgeführt werden, und für die dabei verarbeiteten Daten sowie für die Speicherung der generierten Ausgabedaten verwendet. Informationen zum Erstellen eines Speicherkontos finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
+* **Batch-Konto:** Azure Batch-Ressourcen (einschließlich Pools, Computeknoten, Aufträgen und Aufgaben) werden einem [Azure Batch-Konto](batch-api-basics.md#account) zugeordnet. Wenn Ihre Anwendung eine Anforderung an den Batch-Dienst richtet, wird die Anforderung anhand des Azure Batch-Kontonamens, der URL des Kontos und entweder eines Zugriffsschlüssels oder eines Azure Active Directory-Tokens authentifiziert. Die [Erstellung eines Batch-Kontos](batch-account-create-portal.md) kann über das Azure-Portal oder programmgesteuert erfolgen.
+* **Speicherkonto:** Batch enthält integrierte Unterstützung zum Verwenden von Dateien in [Azure Storage][azure_storage]. In nahezu jedem Batch-Szenario wird Azure Blob Storage für das Staging der Programme, die von Ihren Aufgaben ausgeführt werden, und für die dabei verarbeiteten Daten sowie für die Speicherung der generierten Ausgabedaten verwendet. Informationen zu den Optionen für Speicherkonten in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account).
 
 ## <a name="batch-service-apis"></a>Batch-Dienst-APIs
 

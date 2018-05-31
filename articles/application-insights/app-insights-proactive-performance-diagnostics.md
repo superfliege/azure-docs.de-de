@@ -1,9 +1,9 @@
 ---
 title: Intelligente Erkennung von Leistungsabweichungen | Microsoft Docs
-description: "Application Insights führt eine intelligente Analyse Ihrer App-Telemetriedaten durch und warnt Sie vor potenziellen Problemen. Dieses Feature muss nicht konfiguriert werden."
+description: Application Insights führt eine intelligente Analyse Ihrer App-Telemetriedaten durch und warnt Sie vor potenziellen Problemen. Dieses Feature muss nicht konfiguriert werden.
 services: application-insights
 documentationcenter: windows
-author: antonfrMSFT
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 6acd41b9-fbf0-45b8-b83b-117e19062dd2
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: mbullwin
-ms.openlocfilehash: 3310239b5569ca5b63bd39acb4d192a4e54780e4
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: mbullwin; antonfr
+ms.openlocfilehash: 59b88a940e83ed89e8638b62680a57ca1514f8b0
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868933"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -132,7 +133,7 @@ Die Benachrichtigung über die beeinträchtigte Antwortzeit enthält folgende In
 * Links mit Informationen zur Problembehebung.
   * Mit Profiler-Ablaufverfolgungen können Sie die Vorgangszeit anzeigen (der Link ist verfügbar, wenn während des Erkennungszeitraums Beispiele der Profiler-Ablaufverfolgung für diesen Vorgang erfasst wurden). 
   * Leistungsberichte im Metrikexplorer, in dem Sie Zeitbereiche/Filter für diesen Vorgang segmentieren können.
-  * Suchen Sie nach diesen Aufrufen, um Eigenschaften bestimmter Aufrufe anzuzeigen.
+  * Suchen Sie nach diesem Aufruf, um bestimmte Aufrufeigenschaften anzuzeigen.
   * Fehlerberichte – Beträgt der Zähler > 1, lagen Fehler im Vorgang vor, die zur Leistungsbeeinträchtigung beigetragen haben könnten.
 
 ## <a name="dependency-duration-degradation"></a>Beeinträchtigung der Abhängigkeitsdauer
@@ -152,7 +153,7 @@ Sie enthält folgende Angaben:
 * Links mit Informationen zur Problembehebung
   * Leistungsberichte im Metrikexplorer für diese Abhängigkeit
   * Suche nach dieser Abhängigkeit, um Eigenschaften von Aufrufen anzuzeigen
-  * Fehlerberichte – Beträgt der Zähler >1, lagen Fehler in Abhängigkeitsaufrufen während des Erkennungszeitraums vor, die zur Beeinträchtigung der Dauer beigetragen haben könnten. 
+  * Fehlerberichte – Beträgt der Zähler > 1, lagen Fehler in Abhängigkeitsaufrufen während des Erkennungszeitraums vor, die zur Beeinträchtigung der Dauer beigetragen haben könnten. 
   * Öffnen von Analytics mit Abfragen, die Dauer und Anzahl dieser Abhängigkeit berechnen  
 
 ## <a name="smart-detection-of-slow-performing-patterns"></a>Intelligente Erkennung langsamer Leistungsmuster 

@@ -1,25 +1,26 @@
 ---
-title: "Bereitstellen und Überwachen von Modulen für Azure IoT Edge | Microsoft-Dokumentation"
-description: "Verwalten von Modulen, die auf Edge-Geräten ausgeführt werden"
+title: Bereitstellen und Überwachen von Modulen für Azure IoT Edge | Microsoft-Dokumentation
+description: Verwalten von Modulen, die auf Edge-Geräten ausgeführt werden
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 6d024dfdd661d6bebe7d163b96659d6e169cc5cc
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33770605"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab – Vorschau
 
 Mit Azure IoT Edge können Sie Analysen in die Edge-Ebene verlagern und erhalten eine Cloudschnittstelle, um Ihre IoT Edge-Geräte auch ohne physischen Zugriff darauf zu verwalten und zu überwachen. Die Möglichkeit zur Remoteverwaltung von Geräten wird immer wichtiger, weil Lösungen für das Internet der Dinge immer umfangreicher und komplexer werden. Azure IoT Edge wurde entwickelt, um Ihre Unternehmensziele unabhängig davon zu unterstützen, wie viele Geräte Sie hinzufügen.
 
-Sie können einzelne Geräte verwalten und die dafür erforderlichen Modelle einzeln bereitstellen. Wenn Sie jedoch in großem Umfang Änderungen an den Geräten vornehmen möchten, können Sie eine **IoT Edge-Bereitstellung** erstellen. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module gleichzeitig auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können. 
+Sie können einzelne Geräte verwalten und die dafür erforderlichen Modelle einzeln bereitstellen. Wenn Sie jedoch Änderungen an Geräten in großem Umfang vornehmen möchten, können Sie eine **automatische IoT Edge-Bereitstellung** erstellen, das Teil der automatischen Geräteverwaltung in IoT Hub ist. Bereitstellungen sind dynamische Prozesse, mit denen Sie mehrere Module gleichzeitig auf mehreren Geräten bereitstellen, Status und Integrität der Module nachverfolgen und bei Bedarf Änderungen vornehmen können. 
 
 ## <a name="identify-devices-using-tags"></a>Identifizieren von Geräten mithilfe von Tags
 
@@ -149,7 +150,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
    * Zielbedingung 
    * Bezeichnungen 
    * Priorität 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 1. Führen Sie die unter [Überwachen eine Bereitstellung][anchor-monitor] beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
 
 ## <a name="delete-a-deployment"></a>Löschen einer Bereitstellung
