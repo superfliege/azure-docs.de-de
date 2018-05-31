@@ -1,11 +1,11 @@
 ---
 title: Automatisierte SaaS-App-Benutzerbereitstellung in Azure AD | Microsoft-Dokumentation
-description: "Einführung in die Verwendung von Azure AD für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen."
+description: Einführung in die Verwendung von Azure AD für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 58c5fa2d-bb33-4fba-8742-4441adf2cb62
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/15/2017
 ms.author: asmalser
-ms.openlocfilehash: e14ba62ce2d6c48e47a6b75387bcede68bb1a5b0
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069892"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?
@@ -80,7 +81,7 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
 
 Die Konfiguration des Azure AD-Bereitstellungsdiensts für eine bestimmte Anwendung beginnt im **[Azure-Portal](https://portal.azure.com)**. Klicken Sie im Abschnitt **Azure Active Directory > Unternehmensanwendungen** auf **Hinzufügen**. Klicken Sie anschließend auf **Alle**, und fügen Sie dann abhängig von Ihrem Szenario eine der folgenden Optionen hinzu:
 
-* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung]active-directory-saas-tutorial-list.md).
+* Alle Anwendungen im Abschnitt **Ausgewählte Anwendungen** unterstützen die automatische Bereitstellung. Weitere Anwendungen finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](active-directory-saas-tutorial-list.md).
 
 * Verwenden Sie die Option „Nicht-Kataloganwendung“ für benutzerdefiniert entwickelte SCIM-Integrationen.
 
@@ -176,7 +177,7 @@ Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle re
 
 Die Leistung unterscheidet sich jeweils in Abhängigkeit davon, ob Ihr Bereitstellungsauftrag eine erste oder eine inkrementelle Synchronisierung durchführt.
 
-Bei einer ersten Synchronisierung hängt die Dauer bis zum Abschluss direkt davon ab, wie viele Benutzer, Gruppen und Gruppenmitglieder im Quellsystem vorhanden sind. Für sehr kleine Quellsysteme mit nur Hunderten von Objekten können erste Synchronisierungen innerhalb von wenigen Minuten durchgeführt werden. Bei Quellsystemen mit mehreren Tausend oder Millionen von kombinierten Objekten kann dieser Vorgang aber sehr lange dauern.
+Bei einer ersten Synchronisierung hängt die Dauer bis zum Abschluss direkt davon ab, wie viele Benutzer, Gruppen und Gruppenmitglieder im Quellsystem vorhanden sind. Für sehr kleine Quellsysteme mit nur Hunderten von Objekten können erste Synchronisierungen innerhalb von wenigen Minuten durchgeführt werden. Bei Quellsystemen mit Hunderttausenden oder Millionen von kombinierten Objekten dauert dieser Vorgang allerdings länger.
 
 Bei inkrementellen Synchronisierungen hängt die Dauer davon ab, wie viele Änderungen im jeweiligen Synchronisierungszyklus erkannt werden. Wenn weniger als 5.000 Änderungen für Benutzer oder der Gruppenmitgliedschaft erkannt werden, können diese meist innerhalb eines 40-minütigen Zyklus synchronisiert werden. 
 
@@ -220,4 +221,5 @@ Setzen Sie über das [Azure Active Directory-Feedbackforum](https://feedback.azu
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
 * [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
+* [Ausführlicher Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung](https://aka.ms/userprovisioningdeploymentplan)
 

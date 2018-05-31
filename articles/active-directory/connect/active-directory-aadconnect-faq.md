@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 05/09/2018
 ms.author: billmath
-ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 46a9bf47b4998c4d5be47f67556fbdb3ba7b71db
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34054093"
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -98,6 +99,68 @@ Wir unterstützen derzeit keine Änderung der HTML-Attribute der Anmeldeseite. W
 
 **F: Gibt es eine Möglichkeit, gleichzeitige Sitzungen zu verhindern?**</br>
 Nein.
+
+## <a name="auto-upgrade"></a>Automatisches Upgrade
+
+**F: Worin bestehen die Vorteile und Folgen der Verwendung des automatischen Upgrades?**</br>
+Allen Kunden wird empfohlen, das automatische Upgrade für ihre Azure AD Connect-Installation zu aktivieren. Die Vorteile bestehen darin, dass sie immer die neuesten Patches erhalten, einschließlich Sicherheitsupdates für Sicherheitsrisiken, die in Azure AD Connect gefunden wurden. Der Upgradeprozess verläuft reibungslos und erfolgt automatisch, sobald eine neue Version verfügbar ist. Mit jeder neuen Version unterstützen wir durch das automatische Upgrade viele Tausende Azure AD Connect-Kunden.
+
+Beim Prozess des automatischen Upgrades wird zunächst immer überprüft, ob eine Installation berechtigt für das automatische Upgrade ist (dazu gehört die Suche nach benutzerdefinierten Änderungen an Regeln, nach spezifischen Umgebungsfaktoren usw.). In diesem Fall wird das Upgrade ausgeführt und getestet. Wenn die Tests ergeben, dass ein Upgrade nicht erfolgreich ausgeführt wurde, wird automatisch die vorherige Version wiederhergestellt.
+
+Je nach der Größe der Umgebung kann der Prozess mehrere Stunden dauern. Während das Upgrade ausgeführt wird, erfolgt keine Synchronisierung zwischen Windows Server AD und Azure AD.
+
+**F: In einer E-Mail wurde mir mitgeteilt, dass das automatische Upgrade nicht mehr funktioniert und dass ich eine neue Version installieren muss. Warum ist dies erforderlich?**</br>
+Letztes Jahr haben wir eine Version von Azure AD Connect veröffentlicht, durch die unter bestimmten Umständen das Feature für automatisches Upgrade auf Ihrem Server deaktiviert wurde. Dieses Problem wurde in Azure AD Connect Version 1.1.750.0 behoben, die Ende des letzten Monats veröffentlicht wurde. Kunden, die möglicherweise von diesem Problem betroffen sind, müssen das Upgrade auf die neueste Version von Azure AD Connect manuell durchführen, um das Problem zu beheben. Für das manuelle Upgrade müssen Sie die neueste Version der Datei „AADConnect.msi“ herunterladen und ausführen.
+ 
+-  Wenn Ihre aktuelle Version älter als 1.1.750.0 ist, müssen Sie das Upgrade auf die neueste Version durchführen, die Sie [hier herunterladen können](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+- Wenn Sie Azure AD Connect 1.1.750.0 oder eine neuere Version installiert haben, müssen Sie keine Aktion ausführen, um das Problem zu beheben, da Sie bereits die Version mit der entsprechenden Fehlerkorrektur verwenden. 
+
+**F: In einer E-Mail wurde mir mitgeteilt, dass ein Upgrade auf die neueste Version erforderlich ist, um das automatische Upgrade erneut zu aktivieren. Ich verwende Version 1.1.654.0. Muss ich das Upgrade durchführen?** </br>    
+Ja, Sie müssen ein Upgrade auf Version 1.1.750 oder eine neuere Version durchführen, um das automatische Upgrade erneut zu aktivieren. Unter folgendem Link erhalten Sie Informationen zum Upgrade auf eine neuere Version.
+
+**F: In einer E-Mail wurde mir mitgeteilt, dass ein Upgrade auf die neueste Version erforderlich ist, um das automatische Upgrade erneut zu aktivieren. Ich habe das automatische Upgrade mithilfe von PowerShell aktiviert. Muss ich dennoch die neueste Version installieren?**</br>    
+Ja, Sie müssen ein Upgrade auf Version 1.1.750.0 oder eine neuere Version durchführen. Durch die Aktivierung des Diensts für das automatische Upgrade mithilfe von PowerShell wird das in Versionen vor 1.1.750 gefundene Problem des automatischen Upgrades nicht behoben.
+
+**F: Ich möchte ein Upgrade auf eine neuere Version durchführen, weiß aber nicht, wer Azure AD Connect installiert hat, und verfüge nicht über den Benutzernamen und das Kennwort.  Werden diese Angaben benötigt?**</br>
+Für ein Upgrade von Azure AD Connect müssen Sie den Benutzernamen und das Kennwort nicht kennen, die ursprünglich verwendet wurden. Dazu kann jedes Azure AD-Konto mit der Rolle „Globaler Administrator“ verwendet werden.
+
+**F: Wie kann ich feststellen, welche Version von Azure AD Connect ich verwende?**</br>   
+Um zu überprüfen, welche Version von Azure AD Connect auf Ihrem Server installiert ist, wechseln Sie zur Systemsteuerung. Unter „Programme > Programme und Funktionen“ können Sie die installierte Version von Microsoft Azure AD Connect einsehen:
+
+![Version](media/active-directory-aadconnect-faq/faq1.png)
+
+**F: Wie führe ich ein Upgrade auf die neueste Version von AADConnect durch?**</br>    
+In diesem [Artikel](active-directory-aadconnect-upgrade-previous-version.md) wird erläutert, wie ein Upgrade auf eine neuere Version durchgeführt wird. 
+
+**F: Wir haben bereits letztes Jahr ein Upgrade auf die neueste Version von AADConnect durchgeführt. Müssen wir erneut ein Upgrade durchführen?**</br> Das Azure AD Connect-Team nimmt häufig Aktualisierungen an diesem Dienst vor. Außerdem ist es wichtig, dass auf Ihrem Server immer die neueste Version installiert ist, sodass Sie von Fehlerkorrekturen und Sicherheitsupdates, aber auch von neuen Features profitieren können. Wenn Sie das automatische Upgrade aktivieren, wird die Softwareversion automatisch aktualisiert. Informationen zum Verlauf der Versionsveröffentlichungen von Azure AD Connect finden Sie unter diesem [Link](active-directory-aadconnect-version-history.md).
+
+**F: Wie lange dauert das Durchführen des Upgrades, und was sind die Auswirkungen für meine Benutzer?**</br>    
+Die erforderliche Zeit für das Upgrade hängt von der Größe Ihres Mandanten ab. Für größere Organisationen empfiehlt sich die Durchführung am Abend oder am Wochenende. Beachten Sie, dass während des Upgrades keine Synchronisierungsvorgänge erfolgen.
+
+**F: Ich bin der Meinung, dass ich das Upgrade auf AADConnect durchgeführt habe, im Office-Portal wird aber weiterhin „DirSync“ angezeigt.  Wie kommt das?**</br>    
+Das Office-Team arbeitet daran, dass bei den Aktualisierungen des Office-Portals der aktuelle Produktname angezeigt wird. Welches Synchronisierungstool Sie verwenden, wird nicht angezeigt.
+
+**F: Ich habe den Status des automatischen Upgrades überprüft, er lautet „Angehalten“. Warum wurde der Dienst angehalten? Muss ich ihn aktivieren?**</br>     
+Eine frühere Version enthielt einen Fehler, der unter bestimmten Umständen dazu führte, dass der Status des automatischen Upgrades auf „Angehalten“ gesetzt wurde. Die manuelle Aktivierung ist technisch möglich, würde aber mehrere komplexe Schritte erfordern. Am besten installieren Sie die neueste Version von Azure AD Connect.
+
+**F: In meinem Unternehmen gelten strenge Anforderungen im Hinblick auf das Change Management, und ich möchte steuern, wann die Übermittlung stattfindet. Kann ich steuern, wann das automatische Upgrade gestartet wird?**</br> Nein, derzeit steht kein solches Feature zur Verfügung. Wir werden dies für eine künftige Version auswerten.
+
+**F: Erhalte ich eine E-Mail, wenn beim automatischen Upgrade Fehler auftreten? Woher weiß ich, dass es erfolgreich ausgeführt wurde?**</br>     
+Sie erhalten keine Benachrichtigung in Bezug auf das Ergebnis des Upgrades. Wir werden dies für eine künftige Version auswerten.
+
+**F: Veröffentlichen Sie eine Zeitachse im Hinblick auf die geplante Übermittlung von automatischen Upgrades?**</br>    
+Das automatische Upgrade ist der erste Schritt unseres Releaseprozesses einer neueren Version, d.h., sobald eine neue Version zur Verfügung steht, werden automatische Upgrades übertragen. Neuere Versionen von Azure AD Connect werden in der [Azure AD-Roadmap](../../active-directory/whats-new.md) vorab angekündigt.
+
+**F: Wird mit dem automatischen Upgrade AAD Connect Health aktualisiert?**</br>   Ja, mit dem automatischen Upgrade wird auch AAD Connect Health aktualisiert.
+
+**F: Wird das automatische Upgrade auch für AAD Connect-Server im Stagingmodus durchgeführt?**</br>   
+Nein, für einen Azure AD Connect-Server im Stagingmodus kann kein automatisches Upgrade durchgeführt werden.
+
+**F: Wie soll ich vorgehen, wenn beim automatischen Upgrade Fehler auftreten und der AAD Connect-Server nicht gestartet wird?**</br>   
+In seltenen Fällen wird der Azure AD Connect-Dienst nach der Durchführung des Upgrades nicht gestartet. Starten Sie in diesen Fällen den Server neu. Das Problem wird dadurch normalerweise behoben. Wenn der Azure AD Connect-Dienst weiterhin nicht gestartet wird, öffnen Sie ein Supportticket. Die entsprechende Beschreibung finden Sie unter diesem [Link](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/). 
+
+**F: Ich bin mir über die Auswirkungen des Upgrades auf eine neuere Version von Azure AD Connect nicht sicher. Können Sie mich anrufen, um mir bei der Durchführung des Upgrades zu helfen?**</br>
+Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von Azure AD Connect benötigen, öffnen Sie bitte ein Supportticket. Entsprechende Informationen finden Sie unter diesem [Link](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 **F: Wie erhalte ich Hilfe zu Azure AD Connect?**

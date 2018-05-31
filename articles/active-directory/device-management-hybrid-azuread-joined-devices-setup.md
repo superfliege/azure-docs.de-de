@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157791"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -83,8 +84,20 @@ Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur 
 
 - https://device.login.microsoftonline.com
 
-Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, muss WPAD (Web Proxy Auto-Discovery) installiert sein, damit Windows 10-Computer bei Azure AD registriert werden können.
+- STS Ihrer Organisation (Verbunddomänen)
 
+Wenn dies noch nicht erfolgt ist, sollte der STS Ihrer Organisation (für Verbunddomänen) in den lokalen Intraneteinstellungen des Benutzers eingefügt werden.
+
+Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden URLs über die Computer innerhalb Ihrer Organisation erreichbar sein und zudem der lokalen Intranetzone des Benutzers hinzugefügt werden:
+
+- https://autologon.microsoftazuread-sso.com
+
+- https://aadg.windows.net.nsatc.net
+
+- Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Aktualisierungen der Statusleiste per Skript zulassen“.
+
+
+Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, müssen Sie WPAD (Web Proxy Auto-Discovery) implementieren, damit Windows 10-Computer bei Azure AD registriert werden können.
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 
@@ -549,8 +562,6 @@ Nachdem Sie die erforderlichen Schritte ausgeführt haben, können in die Domän
 ### <a name="remarks"></a>Anmerkungen
 
 - Sie können ein Gruppenrichtlinienobjekt verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10/Windows Server 2016 zu steuern. **Wenn Sie nicht möchten, dass diese Geräte automatisch für Azure AD registriert werden, oder wenn Sie die Registrierung steuern möchten**, müssen Sie vor dem Ausführen der Konfigurationsschritte zuerst den Rollout für die Gruppenrichtlinie durchführen und die automatische Registrierung auf allen Geräten deaktivieren. Wenn Sie mit dem Konfigurieren fertig und zum Testen bereit sind, müssen Sie den Rollout der Gruppenrichtlinie durchführen und die automatische Registrierung nur für die Testgeräte aktivieren – und anschließend wie gewünscht für alle anderen Geräte.
-
-- Windows 10 November 2015 Update wird **nur** automatisch in Azure AD eingebunden, wenn das Rollout-Gruppenrichtlinienobjekt festgelegt ist.
 
 - Für den Rollout von kompatiblen Windows-Computern ist ein [Windows Installer-Paket](#windows-installer-packages-for-non-windows-10-computers) verfügbar, das auf den von Ihnen ausgewählten Computern bereitgestellt werden kann.
 

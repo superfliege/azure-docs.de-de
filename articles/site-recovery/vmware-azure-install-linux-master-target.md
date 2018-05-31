@@ -7,13 +7,14 @@ author: nsoneji
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/08/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d54ecb3f92754fa6575ec17ec5572b6fb9abb88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a18bc242d10c9eb287d0f3645490acb9ca9fec2a
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072435"
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -240,18 +241,13 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
 
 1. Fügen Sie einen neuen 1 TB-Datenträger auf dem virtuellen Linux-Masterzielcomputer hinzu, und starten Sie den Computer anschließend.
 
-2. Ermitteln Sie mit dem Befehl **multipath -ll** die Multipfad-ID des Aufbewahrungsdatenträgers.
-    
-     `multipath -ll`
+2. Ermitteln Sie mit dem Befehl **multipath -ll** die Multipfad-ID des Aufbewahrungsdatenträgers: **multipath -ll**
 
-        ![The multipath ID of the retention disk](./media/vmware-azure-install-linux-master-target/media/image22.png)
+    ![Multipfad-ID](./media/vmware-azure-install-linux-master-target/image22.png)
 
-3. Formatieren Sie das Laufwerk, und erstellen Sie dann ein Dateisystem auf dem neuen Laufwerk.
-
+3. Formatieren Sie das Laufwerk, und erstellen Sie auf dem neuen Laufwerk ein Dateisystem: **mkfs.ext4 /dev/mapper/<Multipfad-ID des Aufbewahrungsdatenträgers>**.
     
-    `mkfs.ext4 /dev/mapper/<Retention disk's multipath id>`
-    
-    ![Erstellen eines Dateisystems auf dem Laufwerk](./media/vmware-azure-install-linux-master-target/image23-centos.png)
+    ![Dateisystem](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
 4. Nach dem Erstellen des Dateisystems stellen Sie den Aufbewahrungsdatenträger bereit.
 
@@ -335,9 +331,9 @@ Nachdem die Installation abgeschlossen ist, registrieren Sie den Konfigurationss
      Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich registriert wurde, wird es auf der **Site Recovery-Infrastrukturseite** im Portal aufgeführt.
 
 
-### <a name="install-vmware-tools-on-the-master-target-server"></a>Installieren von VMware-Tools auf dem Masterzielserver
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Installieren von VMware-Tools/open-vm-tools auf dem Masterzielserver
 
-Installieren Sie VMware-Tools auf dem Masterziel, damit es die Datenspeicher erkennen kann. Wenn die Tools nicht installiert werden, werden die Datenspeicher nicht auf dem Bildschirm für das erneute Schützen angezeigt. Nach der Installation von VMware-Tools müssen Sie einen Neustart durchführen.
+Installieren Sie VMware-Tools oder open-vm-tools auf dem Masterziel, damit es die Datenspeicher erkennen kann. Wenn die Tools nicht installiert werden, werden die Datenspeicher nicht auf dem Bildschirm für das erneute Schützen angezeigt. Nach der Installation von VMware-Tools müssen Sie einen Neustart durchführen.
 
 ### <a name="upgrade-the-master-target-server"></a>Aktualisieren des Masterzielservers
 
