@@ -5,22 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/9/2018
+ms.date: 5/17/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ffc8be29cecac05fda440eaf72b51ffc6f024424
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302152"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Erstellen einer Blockchainanwendung in Blockchain Workbench
 
 Mithilfe von Azure Blockchain Workbench können Sie Blockchainanwendungen erstellen, die mehrere Workflows darstellen, die durch Konfigurations- und intelligenten Vertragscode definiert werden.
 
-Sie lernen Folgendes:
+Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer Blockchainanwendung
@@ -34,7 +35,11 @@ Sie lernen Folgendes:
 * Azure Active Directory-Benutzer im Mandanten, die mit Blockchain Workbench verknüpft sind. Weitere Informationen finden Sie unter [Hinzufügen von Azure AD-Benutzer in Azure Blockchain Workbench](blockchain-workbench-manage-users.md#add-azure-ad-users).
 * Ein Blockchain Workbench-Administratorkonto. Weitere Informationen finden Sie unter [Hinzufügen von Blockchain Workbench-Administratoren in Azure Blockchain Workbench](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators).
 
+## <a name="hello-blockchain"></a>Blockchain
+
 Erstellen Sie eine einfache Anwendung, in der ein Anforderer eine Anforderung sendet und ein Antwortdienst eine Antwort auf die Anforderung sendet. Zum Beispiel kann eine Anforderung lauten: „Hallo, wie geht es dir?“, und die Antwort kann lauten: „Mir geht es gut“. Sowohl die Anforderung als auch die Antwort werden auf der zugrundeliegenden Blockchain aufgezeichnet. 
+
+Führen Sie die Schritte zum Erstellen der Anwendungsdateien aus, oder [laden Sie das Beispiel aus GitHub herunter](https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/hello-blockchain). 
 
 ## <a name="configuration-file"></a>Konfigurationsdatei
 
@@ -398,4 +403,7 @@ Weitere Informationen zum Verwalten von Benutzern in Blockchain Workbench finden
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun eine Anwendung erstellt haben, versuchen Sie, [eine Blockchainanwendung zu verwenden](blockchain-workbench-use.md).
+In diesem Artikel Sie haben eine allgemeine Anforderung/Antwort-Anwendung erstellt. Informationen zur Verwendung der Anwendung finden Sie im nächsten Artikel.
+
+> [!div class="nextstepaction"]
+> [Verwenden einer Blockchainanwendung](blockchain-workbench-use.md)

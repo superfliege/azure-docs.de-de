@@ -1,65 +1,76 @@
 ---
 title: DNS in Azure Stack | Microsoft-Dokumentation
-description: DNS in Azure Stack
+description: Verwenden von DNS in Azure Stack
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 05/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 394abe5295af4ed99e48d50b5886ac93af87e875
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 4e854a2751ce366e3ca3a353487f2c972401c248
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196524"
 ---
-# <a name="dns-in-azure-stack"></a>DNS in Azure Stack
+# <a name="using-dns-in-azure-stack"></a>Verwenden von DNS in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Azure Stack enthält die folgenden DNS-Features:
-* Unterstützung für DNS-Hostnamenauflösung
-* Erstellen und Verwalten von DNS-Zonen und -Einträgen per API
+Azure Stack unterstützt die folgenden Domain Name System-Features (DNS):
+
+* DNS-Hostnamenauflösung
+* Erstellen und Verwalten von DNS-Zonen und -Einträgen mithilfe der API
 
 ## <a name="support-for-dns-hostname-resolution"></a>Unterstützung für DNS-Hostnamenauflösung
-Sie können eine DNS-Domänennamenbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamenbezeichnung.Standort*.cloudapp.azurestack.external“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure Stack verwalteten DNS-Servern.  
 
-Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als Domänennamenbezeichnung und dem Speicherort „Lokaler Azure Stack“ erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.local.cloudapp.azurestack.external** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit diesem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag erstellen, der auf die öffentliche IP-Adresse in Azure Stack verweist.
+Sie können eine DNS-Domänennamenbezeichnung für öffentliche IP-Ressourcen angeben. Azure Stack verwendet „*domainnamelabel.location*.cloudapp.azurestack.external“ für den Bezeichnungsnamen und nimmt die Zuordnung zur öffentlichen IP-Adresse in von Azure Stack verwalteten DNS-Servern vor.
+
+Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als Domänennamenbezeichnung im Speicherort „Lokaler Azure Stack“ erstellen, wird der [vollqualifizierte Domänenname](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) **contoso.local.cloudapp.azurestack.external** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit diesem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag erstellen, der auf die öffentliche IP-Adresse in Azure Stack verweist.
+
+Weitere Informationen zur Namensauflösung finden Sie im Artikel [DNS-Auflösung](https://docs.microsoft.com/en-us/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamenbezeichnung muss für den Azure Stack-Speicherort eindeutig sein.
 
-Wenn Sie die öffentliche IP-Adresse mit dem Portal erstellen, sieht dies wie folgt aus:
+Die nächste Bildschirmaufnahme zeigt das Dialogfeld **Öffentliche IP-Adresse erstellen** zum Erstellen einer öffentlichen IP-Adresse mithilfe des Portals.
 
 ![Erstellen einer öffentlichen IP-Adresse](media/azure-stack-whats-new-dns/image01.png)
 
-Diese Konfiguration ist nützlich, wenn Sie eine öffentliche IP-Adresse einer Ressource mit Lastenausgleich zuordnen möchten. Es kann beispielsweise sein, dass Sie über einen Lastenausgleich verfügen, der Anforderungen einer Webanwendung verarbeitet. Im Hintergrund des Lastenausgleichs befindet sich eine Website, die auf einem oder mehreren virtuellen Computern angeordnet ist. Jetzt können Sie auf die Website mit Lastenausgleich per DNS-Name zugreifen, anstatt mit einer IP-Adresse.
+**Beispielszenario**
 
-## <a name="create-and-manage-dns-zones-and-records-using-api"></a>Erstellen und Verwalten von DNS-Zonen und -Einträgen per API
-Sie können DNS-Zonen und -Einträge in Azure Stack erstellen und verwalten.  
+Sie verfügen über einen Lastenausgleich, der Anforderungen einer Webanwendung verarbeitet. Im Hintergrund des Lastenausgleichs befindet sich eine Website, die auf einem oder mehreren virtuellen Computern ausgeführt wird. Jetzt können Sie auf die Website mit Lastenausgleich mit einem DNS-Namen zugreifen, statt mit einer IP-Adresse.
 
-Azure Stack stellt einen DNS-Dienst wie unter Azure bereit, und es werden APIs verwendet, die mit den DNS-APIs von Azure konsistent sind.  Durch das Hosten Ihrer Domänen im Azure Stack-DNS stehen Ihnen für die Verwaltung Ihrer DNS-Einträge die gleichen Anmeldeinformationen, APIs und Tools wie für Ihre anderen Azure-Dienste zur Verfügung. Auch Abrechnung und Support erfolgen wie bei diesen Diensten. 
+## <a name="create-and-manage-dns-zones-and-records-using-the-api"></a>Erstellen und Verwalten von DNS-Zonen und -Einträgen mit der API
 
-Aus naheliegenden Gründen ist die Azure Stack-DNS-Infrastruktur kompakter als die von Azure. Der Bereich, die Skalierung und die Leistung richten sich daher nach der Skalierung der Azure Stack-Bereitstellung und der dafür verwendeten Umgebung.  Aspekte wie Leistung, Verfügbarkeit, globale Verteilung und Hochverfügbarkeit können daher von Bereitstellung zu Bereitstellung variieren.
+Sie können DNS-Zonen und -Einträge in Azure Stack erstellen und verwalten.
+
+Azure Stack stellt einen DNS-Dienst wie unter Azure bereit, und es werden APIs verwendet, die mit den DNS-APIs von Azure konsistent sind.  Durch das Hosten Ihrer Domänen in Azure Stack-DNS können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs und Tools verwalten. Sie können auch die gleiche Abrechnung und den gleichen Support wie für die anderen Azure-Dienste verwenden.
+
+Die Azure Stack-DNS-Infrastruktur ist kompakter als die von Azure. Die Größe und der Speicherort einer Azure Stack-Bereitstellung wirken sich auf den Bereich, den Umfang und die Leistung von DNS aus. Dies bedeutet auch, dass Leistung, Verfügbarkeit, globale Verteilung und Hochverfügbarkeit von Bereitstellung zu Bereitstellung variieren können.
 
 ## <a name="comparison-with-azure-dns"></a>Vergleich mit dem Azure-DNS
-Das DNS in Azure Stack ähnelt dem DNS in Azure, aber es gibt zwei wichtige Ausnahmen:
+
+DNS in Azure Stack ist DNS in Azure ähnlich, aber es gibt wichtige Ausnahmen, die Sie kennen sollten.
+
 * **AAAA-Einträge werden nicht unterstützt**
 
     Azure Stack unterstützt KEINE AAAA-Einträge, weil Azure Stack keine Unterstützung von IPv6-Adressen aufweist.  Dies ist ein wichtiger Unterschied zwischen DNS in Azure und Azure Stack.
 * **Nicht mehrinstanzenfähig**
 
-    Im Gegensatz zu Azure ist der DNS-Dienst in Azure Stack nicht mehrinstanzenfähig. Es ist also nicht möglich, dass für jeden Mandanten die gleiche DNS-Zone erstellt wird. Dies ist nur für das erste Abonnement erfolgreich, mit dem versucht wird, die Zone zu erstellen. Nachfolgende Anforderungen schlagen fehl.  Es handelt sich hierbei um ein bekanntes Problem und einen wichtigen Unterschied zwischen Azure und dem Azure Stack-DNS. Dieses Problem wird in einer zukünftigen Version behoben sein.
+    Der DNS-Dienst in Azure Stack ist nicht mehrinstanzenfähig. Es ist also nicht möglich, dass für jeden Mandanten die gleiche DNS-Zone erstellt wird. Dies ist nur für das erste Abonnement erfolgreich, mit dem versucht wird, die Zone zu erstellen. Nachfolgende Anforderungen schlagen fehl.  Es handelt sich hierbei um ein bekanntes Problem und einen wichtigen Unterschied zwischen Azure und dem Azure Stack-DNS. Dieses Problem wird in einer zukünftigen Version behoben sein.
+* **Tags, Metadaten und ETags**
 
-Außerdem gibt es einige kleinere Unterschiede in Bezug darauf, wie für das Azure Stack-DNS Tags, Metadaten, ETags und Grenzwerte implementiert werden.
+    Außerdem gibt es kleinere Unterschiede in Bezug darauf, wie Azure Stack Tags, Metadaten, ETags und Grenzwerte verarbeitet.
 
-Die folgenden Informationen gelten speziell für das Azure Stack-DNS und weichen gegenüber dem Azure-DNS leicht ab. Weitere Informationen zum Azure-DNS finden Sie auf der Website mit der Microsoft Azure-Dokumentation unter [Übersicht über DNS-Zonen und -Einträge](../../dns/dns-zones-records.md).
+Weitere Informationen zu Azure DNS finden Sie unter [DNS-Zonen und -Einträge](../../dns/dns-zones-records.md).
 
 ### <a name="tags-metadata-and-etags"></a>Tags, Metadaten und ETags
 
@@ -99,4 +110,5 @@ Bei Verwendung des Azure Stack-DNS gelten folgende Standardgrenzwerte:
 | Datensätze pro Datensatzgruppe| 20|
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md) (Einführung in iDNS für Azure Stack)

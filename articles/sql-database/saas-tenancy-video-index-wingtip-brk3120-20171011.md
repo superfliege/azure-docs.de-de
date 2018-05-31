@@ -2,20 +2,21 @@
 title: Indiziertes Video, Azure SaaS SQL-App | Microsoft-Dokumentation
 description: Dieser Artikel indiziert verschiedene Zeitpunkte in unserem 81-minütigen Video zum App-Design für SaaS DB-Mandanten von der Ignite-Konferenz vom 11. Oktober 2017. Sie können direkt zu dem Teil wechseln, der Sie interessiert. Es werden mindestens drei Muster beschrieben. Es werden Azure-Features beschrieben, die die Entwicklung und Verwaltung vereinfachen.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 05/14/2018
 ms.service: sql-database
 ms.reviewer: billgib
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.openlocfilehash: 7dcd4681833f227f32534ae3053b7b482bb813bc
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 4ea62855b61cb7439b19204564cbc2d7fcdbd0fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211292"
 ---
-# <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Indiziertes und kommentiertes Video für mehrinstanzenfähige SaaS-App mit Azure SQL-Datenbank
+# <a name="video-indexed-and-annotated-for-multi-tenant-saas-app-using-azure-sql-database"></a>Indiziertes und kommentiertes Video für mehrinstanzenfähige SaaS-App mit Azure SQL-Datenbank
 
 Dieser Artikel ist ein kommentierter Index zu den Zeitpunkten eines 81-minütigen Videos über SaaS-Mandantenmodelle oder -muster. Durch diesen Artikel können Sie im Video direkt zu dem Teil wechseln, der Sie interessiert. Das Video erklärt die wichtigsten Designoptionen für eine mehrinstanzenfähige Datenbankanwendung unter Azure SQL-Datenbank. Das Video enthält Demos, exemplarische Vorgehensweisen zu Verwaltungscode und zuweilen mehr Details, die durch Erfahrungen geprägt werden, als in unserer schriftlichen Dokumentation.
 

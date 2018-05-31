@@ -7,19 +7,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/11/2018
 ms.author: manayar
-ms.openlocfilehash: 9b4fbb34686a12f992b344ac61420c9ba99ee405
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0168849c01add3f714b139c7984e3def74f40a5b
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071762"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-replication-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Replikation nach Azure mit CSP
 
-[Azure Site Recovery](site-recovery-overview.md) unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das Microsoft Cloud Solution Provider-Programm (CSP) erstellt und verwaltet werden. 
+[Azure Site Recovery](site-recovery-overview.md) unterstützt für Mandantenabonnements Umgebungen mit mehreren Mandanten. Unterstützt wird außerdem die Mehrmandantenfähigkeit für Mandantenabonnements, die über das Microsoft Cloud Solution Provider-Programm (CSP) erstellt und verwaltet werden.
 
-Dieser Artikel enthält eine Übersicht über die Implementierung und Verwaltung von VMware-zu-Azure-Replikationen mit mehreren Mandanten. 
+Dieser Artikel enthält eine Übersicht über die Implementierung und Verwaltung von VMware-zu-Azure-Replikationen mit mehreren Mandanten.
 
 ## <a name="multi-tenant-environments"></a>Umgebungen mit mehreren Mandanten
 
@@ -33,7 +34,7 @@ Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 
 ## <a name="shared-hosting-services-provider-hsp"></a>Shared Hosting Services Provider (SHSP)
 
- Die anderen beiden Szenarien sind eine Teilmenge des SHSP-Szenarios und folgen denselben Prinzipien. Die Unterschiede werden am Ende der SHSP-Anleitung beschrieben.
+Die anderen beiden Szenarien sind eine Teilmenge des SHSP-Szenarios und folgen denselben Prinzipien. Die Unterschiede werden am Ende der SHSP-Anleitung beschrieben.
 
 Die grundlegende Anforderung in einem Szenario mit mehreren Mandanten ist deren Isolation. Ein Mandant darf nicht wahrnehmen, was ein anderer Mandant hostet. In einer von einem Partner verwalteten Umgebung ist diese Anforderung nicht so wichtig wie für eine Self-Service-Umgebung, in der sie kritisch sein kann. In diesem Artikel wird davon ausgegangen, dass die Mandantenisolation erforderlich ist.
 
@@ -51,7 +52,7 @@ Aufgrund der Datenisolationsanforderung dürfen gegenüber den Mandanten keine s
 * Prozessserver
 * Masterzielserver
 
-Ein horizontal skalierter Verarbeitungsserver steht ebenfalls unter der Kontrolle des Partners.
+Ein horizontal skalierter Verarbeitungsserver wird ebenfalls vom Partner gesteuert.
 
 ## <a name="configuration-server-accounts"></a>Konfigurationsserverkonten
 
@@ -63,7 +64,7 @@ Jeder Konfigurationsserver im Szenario mit mehreren Mandanten verwendet zwei Kon
 
 ## <a name="vcenter-account-requirements"></a>Anforderungen an das vCenter-Konto
 
-Sie müssen den Konfigurationsserver mit einem Konto installieren, dem eine besondere Rolle zugewiesen ist. 
+Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere Rolle zugewiesen ist.
 
 - Diese Rollenzuweisung muss für das vCenter-Zugriffskonto für jedes vCenter-Objekt erfolgen und darf nicht an die untergeordneten Objekte weitergegeben werden. Diese Konfiguration stellt die Mandantenisolation sicher, da die Weitergabe von Zugangsdaten zu einem versehentlichen Zugriff auf andere Objekte führen kann.
 
@@ -108,22 +109,36 @@ Um Notfallwiederherstellungsvorgänge ausschließlich auf das Failover zu beschr
 - Anstatt die Rolle *Azure_Site_Recovery* dem vCenter-Zugriffskonto zuzuweisen, weisen Sie diesem Konto nur die Rolle *Schreibgeschützt* zu. Dieser Berechtigungssatz lässt die Replikation und ein Failover von VMs, aber kein Failback zu.
 - Alles andere im vorhergehenden Prozess bleibt unverändert. Berechtigungen werden weiterhin nur auf Objektebene zugewiesen und nicht an untergeordnete Objekte weitergegeben, um die Mandantenisolation sicherzustellen und die VM-Ermittlung einzuschränken.
 
+### <a name="deploy-resources-to-the-tenant-subscription"></a>Bereitstellen von Ressourcen für das Mandantenabonnement
+
+1. Erstellen Sie im Azure-Portal eine Ressourcengruppe, und stellen Sie dann einen Recovery Services-Tresor wie üblich bereit.
+2. Laden Sie den Tresorregistrierungsschlüssel herunter.
+3. Registrieren Sie den Konfigurationsserver des Mandanten mithilfe des Tresorregistrierungsschlüssels.
+4. Geben Sie die Anmeldeinformationen für die beiden Zugriffskonten (das Konto für den Zugriff auf den vCenter-Server und das Konto für den Zugriff auf den virtuellen Computer) ein.
+
+    ![Verwalten von Konfigurationsserverkonten](./media/vmware-azure-multi-tenant-overview/config-server-account-display.png)
+
+### <a name="register-servers-in-the-vault"></a>Registrieren von Servern im Tresor
+
+1. Registrieren Sie den vCenter-Server im Azure-Portal in dem zuvor erstellten Tresor auf dem Konfigurationsserver. Verwenden Sie dazu das erstellte vCenter-Konto.
+2. Beenden Sie den Prozess zur Vorbereitung der Infrastruktur für Site Recovery wie üblich.
+3. Die VMs können jetzt repliziert werden. Vergewissern Sie sich, dass in **Replizieren** > **Virtuelle Computer auswählen** nur die VMs des Mandanten angezeigt werden.
 
 ## <a name="dedicated-hosting-solution"></a>Dedizierte Hostinglösung (DHPS)
 
-Wie im folgenden Diagramm dargestellt, ist der architektonische Unterschied bei einer dedizierten Hostinglösung, dass die Infrastruktur jedes Mandanten allein für den jeweiligen Mandanten eingerichtet ist. Da Mandanten mithilfe getrennter vCenter isoliert werden, muss der Hostinganbieter weiterhin die CSP-Schritte ausführen, die für eine gemeinsam genutzte Hostinglösung beschrieben wurden. Er muss sich jedoch nicht um die Mandantenisolation kümmern. Das CSP-Setup bleibt unverändert.
+Wie im folgenden Diagramm dargestellt, ist der architektonische Unterschied bei einer dedizierten Hostinglösung, dass die Infrastruktur jedes Mandanten allein für den jeweiligen Mandanten eingerichtet ist.
 
 ![Architektur beim SHPS-Modell](./media/vmware-azure-multi-tenant-overview/dedicated-hosting-scenario.png)  
 **Dediziertes Hostingszenario mit mehreren vCentern**
 
 ## <a name="managed-service-solution"></a>MSP-Lösung (Managed Services Provider, Managed Services Provider)
 
-Wie im folgenden Diagramm dargestellt, ist der architektonische Unterschiede bei einer MSP-Lösung, dass die Infrastruktur jedes Mandanten auch physisch von der Infrastruktur anderen Mandanten getrennt ist. Dieses Szenario liegt in der Regel vor, wenn der Mandant die Infrastruktur besitzt und lediglich möchte, dass sich ein Lösungsanbieter um die Notfallwiederherstellung kümmert. Da Mandanten wiederum mithilfe unterschiedlicher Infrastrukturen physisch isoliert sind, muss der Partner wiederum die CSP-Schritte ausführen, die für eine gemeinsam genutzte Hostinglösung beschrieben wurden. Er muss sich jedoch nicht um die Mandantenisolation kümmern. Die CSP-Bereitstellung bleibt unverändert.
+Wie im folgenden Diagramm dargestellt, ist der architektonische Unterschiede bei einer MSP-Lösung, dass die Infrastruktur jedes Mandanten auch physisch von der Infrastruktur anderen Mandanten getrennt ist. Dieses Szenario liegt in der Regel vor, wenn der Mandant die Infrastruktur besitzt und lediglich möchte, dass sich ein Lösungsanbieter um die Notfallwiederherstellung kümmert.
 
 ![Architektur beim SHPS-Modell](./media/vmware-azure-multi-tenant-overview/managed-service-scenario.png)  
 **MSP-Szenario mit mehreren vCentern**
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie mehr zur [rollenbasierten Zugriffssteuerung in Site Recovery](site-recovery-role-based-linked-access-control.md).
-Erfahren Sie, wie die [Notfallwiederherstellung von VMware-VMs in Azure eingerichtet wird](vmware-azure-tutorial.md)
-[Einrichten der Notfallwiederherstellung für VMware-VMs mit Mehrinstanzenfähigkeit mit CSP](vmware-azure-multi-tenant-csp-disaster-recovery.md).
+- Erfahren Sie mehr zur [rollenbasierten Zugriffssteuerung in Site Recovery](site-recovery-role-based-linked-access-control.md).
+- Machen Sie sich mit dem [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-tutorial.md) vertraut.
+- Informieren Sie sich über [Mehrinstanzenfähigkeit mit CSP für VMWare-VMs](vmware-azure-multi-tenant-csp-disaster-recovery.md).

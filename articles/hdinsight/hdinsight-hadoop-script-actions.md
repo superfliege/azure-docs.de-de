@@ -14,11 +14,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 98040f10eb15245f36eb0b365dcdf0f5ba7f107a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 921da2db8e235e17611788cae7e976597bd76703
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271614"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Entwickeln von Script Action-Skripts für Windows-basierte HDInsight-Cluster
 Entwickeln von Skriptaktionsskripts für HDInsight Weitere Informationen zu Skriptaktionsskripts finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster.md). Der gleiche Artikel, der für den Linux-basierten HDInsight-Cluster verfasst wurde, befindet sich unter [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md).
@@ -300,14 +301,12 @@ Bei Auftreten eines Ausführungsfehlers enthält die Protokolldatei auch die bes
 ## <a name="see-also"></a>Weitere Informationen
 * [Anpassen von HDInsight-Clustern mithilfe von Skriptaktion][hdinsight-cluster-customize]
 * [Installieren und Verwenden von Spark in HDInsight-Clustern][hdinsight-install-spark]
-* [Installieren und Verwenden von R in HDInsight-Clustern][hdinsight-r-scripts]
 * [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install.md)
 * [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install.md)
 
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster.md
 [hdinsight-install-spark]: hdinsight-hadoop-spark-install.md
-[hdinsight-r-scripts]: hdinsight-hadoop-r-scripts.md
 [powershell-install-configure]: install-configure-powershell.md
 
 <!--Reference links in article-->

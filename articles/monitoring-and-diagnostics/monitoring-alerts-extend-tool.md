@@ -11,16 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/14/2018
 ms.author: vinagara
-ms.openlocfilehash: e5dc48aa5e3c614192ae140dc80b5d9845acc474
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 241ac027a0606f901f51d6a20b9a48a2cf7a9fcf
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166181"
 ---
 # <a name="how-to-extend-copy-alerts-from-oms-into-azure"></a>Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure
 Ab dem **14. Mai 2018** werden die Warnungen aller Kunden, die in [Microsoft Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) konfiguriert sind, auf Azure erweitert. Warnungen, die in Azure erweitert werden, verhalten sich auf die gleiche Weise wie in OMS. Die Überwachungsfunktionen bleiben intakt. Das Erweitern von Warnungen aus OMS in Azure bietet zahlreiche Vorteile. Weitere Informationen zu den Vorteilen und dem Vorgang der Erweiterung von Warnungen aus OMS in Azure finden Sie unter [Erweitern von Warnungen aus OMS in Azure](monitoring-alerts-extend.md).
+
+> [!NOTE]
+> Ab dem 14. Mai 2018 beginnt Microsoft mit dem Vorgang zur automatischen Erweiterung der Warnungen in Azure. Nicht alle Arbeitsbereiche und Warnungen werden an diesem Tag erweitert. Stattdessen beginnt Microsoft in den kommenden Wochen mit der automatischen Erweiterung der Warnungen in Tranchen. Daher werden Ihre Warnungen im OMS-Portal nicht sofort am 14. Mai 2018 automatisch in Azure erweitert, und Benutzer können ihre Warnungen weiterhin manuell erweitern, indem sie die unten beschriebenen Optionen nutzen.
 
 Kunden, die ihre Warnungen sofort aus OMS in Azure verschieben möchten, können dies über eine der angegebenen Optionen erreichen.
 
@@ -221,7 +225,7 @@ Wenn die Erweiterung aller Warnungen im angegebenen Arbeitsbereich in Azure bere
 ```
 
 ## <a name="troubleshooting"></a>Problembehandlung 
-Bei der Erweiterung von Warnungen aus OMS auf Azure kann es gelegentlich zu Problemen kommen, die verhindern, dass die erforderlichen [Aktionsgruppen](monitoring-action-groups.md) vom System erstellt werden können. In diesen Fällen wird im OMS-Portal über ein Banner im Abschnitt „Warnungen“ und für den GET-Aufruf an die API eine Fehlermeldung angezeigt.
+Bei der Erweiterung von Warnungen aus OMS auf Azure kann es gelegentlich zu einem Problem kommen, das die Erstellung der erforderlichen [Aktionsgruppen](monitoring-action-groups.md) durch das System verhindert. In diesen Fällen wird im OMS-Portal über ein Banner im Abschnitt „Warnungen“ und für den GET-Aufruf an die API eine Fehlermeldung angezeigt.
 
 Hier sind die Schritte zum Beheben der Fehler angegeben:
 1. **Error: The subscription is not registered to use the namespace 'microsoft.insights'** (Fehler: Das Abonnement ist nicht für die Verwendung des Namespace „microsoft.insights“ registriert.): ![OMS-Portal: Seite „Warnungseinstellungen“mit Fehlermeldung zur Registrierung](./media/monitor-alerts-extend/ErrorMissingRegistration.png)
@@ -236,6 +240,14 @@ Hier sind die Schritte zum Beheben der Fehler angegeben:
     a. Wenn eine Bereichssperre aktiviert ist, sind alle neuen Änderungen am Abonnement oder der Ressourcengruppe mit dem Log Analytics-Arbeitsbereich (OMS) eingeschränkt. Das System kann keine Warnungen auf Azure erweitern (kopieren) und keine erforderlichen Aktionsgruppen erstellen.
     
     b. Sie können den Fehler beheben, indem Sie die Schreibschutzsperre (*ReadOnly*) für Ihr Abonnement oder die Ressourcengruppe mit dem Arbeitsbereich per Azure-Portal, PowerShell, Azure CLI oder API löschen. Weitere Informationen finden Sie im Artikel zum [Sperren von Ressourcen](../azure-resource-manager/resource-group-lock-resources.md). 
+    
+    c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
+
+3. **Fehler: Richtlinie auf Abonnement-/Ressourcengruppenebene vorhanden**: ![Seite mit Warnungseinstellungen im OMS-Portal mit Meldung zu Richtlinienfehler](./media/monitor-alerts-extend/ErrorPolicy.png)
+
+    a. Wenn [Azure Policy](../azure-policy/azure-policy-introduction.md) angewendet wird, werden alle neuen Ressourcen des Abonnements oder der Ressourcengruppe eingeschränkt, die den Log Analytics-Arbeitsbereich (OMS) enthalten. Das System kann keine Warnungen auf Azure erweitern (kopieren) und keine erforderlichen Aktionsgruppen erstellen.
+    
+    b. Gehen Sie wie folgt vor, um den Fehler zu beheben: Bearbeiten Sie die Richtlinie, die den Fehler *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* verursacht, durch den die Erstellung neuer Ressourcen für Ihr Abonnement oder die Ressourcengruppe mit dem Arbeitsbereich verhindert wird. Verwendung des Azure-Portals, von PowerShell, der Azure CLI oder der API: Sie können Aktionen überwachen, um die entsprechende Richtlinie zu ermitteln, die den Fehler verursacht. Weitere Informationen finden Sie im Artikel [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md). 
     
     c. Nachdem Sie den Fehler mit den im Artikel beschriebenen Schritten behoben haben, führt OMS die Erweiterung Ihrer Warnung auf Azure innerhalb der für den nächsten Tag geplanten Ausführung durch, ohne dass von Ihrer Seite aus eine Aktion oder Initiierung erforderlich ist.
 

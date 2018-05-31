@@ -5,20 +5,21 @@ services: service-fabric
 documentationcenter: .net
 author: LMWF
 manager: rsinha
-editor: 
+editor: ''
 ms.assetid: f4e70f6f-cad9-4a3e-9655-009b4db09c6d
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
-ms.openlocfilehash: 850fbc0c74811ec942292da64064dec867cd1b9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ed18097fa18101c237b4408d26dd1bc9c5d5648
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212577"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Ersetzen der APIs zum Starten und Beenden von Knoten durch die Knotenübergangs-API
 
@@ -41,7 +42,7 @@ Wir haben diese Probleme in einem neuen Satz von APIs behoben.  Die neue Knoten�
 
 **Verwendung**
 
-Wenn die Knotenübergangs-API bei ihrem Aufruf keine Ausnahme auslöst, hat das System den asynchronen Vorgang akzeptiert und führt ihn aus.  Ein erfolgreicher Aufruf bedeutet nicht, dass der Vorgang bereits abgeschlossen ist.  Um Informationen zum aktuellen Status des Vorgangs zu erhalten, rufen Sie die Knotenübergangsstatus-API (verwaltet: [GetNodeTransitionProgressAsync()][gntp]) mit der GUID auf, die beim Aufrufen der Knotenübergangs-API für diesen Vorgang verwendet wurde.  Die Knotenübergangsstatus-API gibt ein „NodeTransitionProgress“-Objekt zurück.  Die „State“-Eigenschaft dieses Objekts gibt den aktuellen Status des Vorgangs an.  Wenn der Status „Running“ ist, wird der Vorgang ausgeführt.  Wenn er „Completed“ ist, wurde der Vorgang ohne Fehler abgeschlossen.  Wenn er „Faulted“ ist, gab es ein Problem bei der Ausführung des Vorgangs.  Die „Exception“-Eigenschaft der „Result“-Eigenschaft gibt an, welcher Fehler vorliegt.  Unter „https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate“ finden Sie weitere Informationen zur „State-“-Eigenschaft. Im nachstehenden Abschnitt „Beispielverwendung“ finden Sie Codebeispiele.
+Wenn die Knotenübergangs-API bei ihrem Aufruf keine Ausnahme auslöst, hat das System den asynchronen Vorgang akzeptiert und führt ihn aus.  Ein erfolgreicher Aufruf bedeutet nicht, dass der Vorgang bereits abgeschlossen ist.  Um Informationen zum aktuellen Status des Vorgangs zu erhalten, rufen Sie die Knotenübergangsstatus-API (verwaltet: [GetNodeTransitionProgressAsync()][gntp]) mit der GUID auf, die beim Aufrufen der Knotenübergangs-API für diesen Vorgang verwendet wurde.  Die Knotenübergangsstatus-API gibt ein „NodeTransitionProgress“-Objekt zurück.  Die „State“-Eigenschaft dieses Objekts gibt den aktuellen Status des Vorgangs an.  Wenn der Status „Running“ ist, wird der Vorgang ausgeführt.  Wenn er „Completed“ ist, wurde der Vorgang ohne Fehler abgeschlossen.  Wenn er „Faulted“ ist, gab es ein Problem bei der Ausführung des Vorgangs.  Die „Exception“-Eigenschaft der „Result“-Eigenschaft gibt an, welcher Fehler vorliegt.  Weitere Informationen zur State-Eigenschaft finden Sie unter https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate. Codebeispiele finden Sie unten im Abschnitt „Beispielverwendung“.
 
 
 **Unterscheidung zwischen einem beendeten Knoten und einem ausgefallenen Knoten** Wenn ein Knoten mithilfe der Knotenübergangs-API *beendet* wurde, gibt die Ausgabe einer Knotenabfrage (verwaltet: [GetNodeListAsync()][nodequery], PowerShell: [Get-ServiceFabricNode][nodequeryps]) an, dass bei diesem Knoten der Wert der *IsStopped*-Eigenschaft „true“ ist.  Beachten Sie, dass sich dies vom Wert der *NodeStatus*-Eigenschaft unterscheidet, der *Down* lautet.  Wenn die *NodeStatus*-Eigenschaft den Wert *Down* hat, aber *IsStopped* „false“ ist, wurde der Knoten nicht mithilfe der Knotenübergangs-API beendet, sondern hat aus einem anderen Grund den Status *Down*.  Wenn die *IsStopped*-Eigenschaft „true“ ist und die *NodeStatus*-Eigenschaft den Wert *Down* hat, wurde der Knoten mithilfe der Knotenübergangs-API beendet.

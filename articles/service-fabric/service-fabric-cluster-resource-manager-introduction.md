@@ -1,29 +1,30 @@
 ---
-title: "Einführung in den Clusterressourcen-Manager von Service Fabric | Microsoft Docs"
-description: "Eine Einführung in den Clusterressourcen-Manager von Service Fabric."
+title: Einführung in den Clusterressourcen-Manager von Service Fabric | Microsoft Docs
+description: Eine Einführung in den Clusterressourcen-Manager von Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
 ms.service: Service-Fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 3e8cd4dc8e960e38ba0e4a9a195b2f61d9ec1924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f25a422385abfcdb7020eb7477c0ae2ee55cd8fb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210595"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Einführung in den Clusterressourcen-Manager von Service Fabric
 Zur Verwaltung von IT-Systemen oder Onlinediensten wurden diesen bisher üblicherweise spezielle physische oder virtuelle Computer zugewiesen. Dienste wurden als Ebenen entworfen. Es gab eine Webebene und eine Daten- oder Speicherebene. Clientanwendungen verfügten über eine Messaging-Ebene, auf der Anforderungen eingingen und ausgingen, und einen speziellen Satz von Computern für die Zwischenspeicherung. Für jede Ebene oder jede Art von Workload gab es bestimmte fest zugeordnete Computer oder Computergruppen, so z.B. für die Datenbank und die Webserver. Wenn eine bestimmte Art von Workload eine Überlastung der Computer verursachte, auf denen sie ausgeführt wurde, wurden dieser Ebene weitere Computer mit derselben Konfiguration hinzugefügt. Jedoch konnten nicht alle Workloads so einfach skaliert werden – insbesondere für die Datenebene mussten Sie in der Regel Computer durch größere Computer ersetzen. Ganz einfach. Wenn ein Computer ausfiel, wurde dieser Teil der gesamten Anwendung mit niedriger Kapazität ausgeführt, bis der Computer wiederhergestellt werden konnte. Noch immer recht einfach (wenn auch nicht unbedingt spaßig).
 
-Inzwischen hat sich jedoch die Dienst- und Softwarearchitektur geändert. Anwendungen verfügen häufiger über ein Design mit horizontaler Skalierung. Es ist inzwischen üblich, Anwendungen mit Containern oder Microservices (oder beiden) zu erstellen. Sie verfügen jetzt eventuell immer noch nur über einige Computer, jedoch führen diese nicht nur eine einzelne Instanz einer Workload aus. Möglicherweise führen sie sogar mehrere unterschiedliche Workloads gleichzeitig aus. Sie verwenden jetzt Dutzende verschiedener Arten von Diensten (von denen keiner die vollständigen Ressourcen eines Computers beansprucht) und möglicherweise Hunderte verschiedener Instanzen dieser Dienste. Für hohe Verfügbarkeit weist jede benannte Instanz eine oder mehrere Instanzen oder Replikate auf. Abhängig von der Größe dieser Workloads und ihrer Auslastung verwenden Sie möglicherweise Hunderte oder Tausende von Computern. 
+Inzwischen hat sich jedoch die Dienst- und Softwarearchitektur geändert. Anwendungen verfügen häufiger über ein Design mit horizontaler Skalierung. Es ist inzwischen üblich, Anwendungen mit Containern oder Microservices (oder beiden) zu erstellen. Sie verfügen jetzt eventuell immer noch nur über einige Computer, jedoch führen diese nicht nur eine einzelne Instanz einer Workload aus. Möglicherweise führen sie sogar mehrere unterschiedliche Workloads gleichzeitig aus. Sie verwenden jetzt Dutzende verschiedener Arten von Diensten (von denen keiner die vollständigen Ressourcen eines Computers beansprucht) und möglicherweise Hunderte verschiedener Instanzen dieser Dienste. Für Hochverfügbarkeit weist jede benannte Instanz eine oder mehrere Instanzen oder Replikate auf. Abhängig von der Größe dieser Workloads und ihrer Auslastung verwenden Sie möglicherweise Hunderte oder Tausende von Computern. 
 
 Dann ist die Verwaltung Ihrer Umgebung nicht mehr so einfach wie das Verwalten einiger Computer, die einzelnen Typen von Workloads fest zugeordnet sind. Ihre Server sind virtuell und haben keine Namen mehr (denn Ihr Modell hat sich tatsächlich von einem [Haustierbestand in eine Rinderherde](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) geändert). Die Konfiguration dreht sich weniger um die Computer und mehr um die Dienste selbst. Hardware, die einer einzelnen Instanz einer Workload fest zugeordnet ist, gehört überwiegend der Vergangenheit an. Dienste sind selbst zu kleinen verteilten Systemen geworden, die mehrere kleinere Standardhardwarekomponenten überspannen.
 
@@ -43,7 +44,7 @@ Der Clusterressourcen-Manager ist die Systemkomponente, durch die Orchestrierung
 2. Optimieren der Umgebung
 3. Helfen bei anderen Prozessen
 
-Sehen Sie sich das folgende Microsoft Virtual Academy-Video zur Funktionsweise der Clusterressourcen-Managers an: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
+Sehen Sie sich das folgende Microsoft Virtual Academy-Video zur Funktionsweise des Clusterressourcen-Managers an: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
 <img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

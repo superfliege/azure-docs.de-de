@@ -1,31 +1,32 @@
 ---
-title: "Hinzufügen einer Web Application Firewall in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Web Application Firewall hinzufügen** und **Anwendungsschutz abschließen** implementieren."
+title: Hinzufügen einer Web Application Firewall in Azure Security Center | Microsoft Docs
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlungen **Web Application Firewall hinzufügen** und **Anwendungsschutz abschließen** implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 05/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 4454d18893d698e49f118048eca0bfc94df315a5
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: e28a1f6b865dae3abe2cb9dfac2921c6a2034491
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203521"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Hinzufügen einer Web Application Firewall in Azure Security Center
 Zum Schutz Ihrer Webanwendungen empfiehlt Azure Security Center unter Umständen das Hinzufügen einer Web Application Firewall (WAF) von einem Microsoft-Partner. Die Umsetzung dieser Empfehlung wird in diesem Dokument anhand eines Beispiels veranschaulicht.
 
 Eine WAF-Empfehlung wird für jede öffentlich zugängliche IP-Adresse (sowohl auf Instanzebene als auch mit Lastenausgleich) angezeigt, die über eine zugeordnete Netzwerksicherheitsgruppe mit offenen eingehenden Webports (80, 443) verfügt.
 
-Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in der App Service-Umgebung. Eine App Service-Umgebung ist eine Option des [Premium](https://azure.microsoft.com/pricing/details/app-service/)-Tarifs von Azure App Service, die eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von Azure App Service-Apps bereitstellt. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/environment/intro.md).
+Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen auf Ihre Webanwendungen auf virtuellen Computern und in externen App Service-Umgebungen (App Service Environments, ASE), die unter dem Serviceplan [Isolated](https://azure.microsoft.com/pricing/details/app-service/windows/) bereitgestellt werden. Unter dem Isolated-Plan werden Ihre Apps in einer privaten, dedizierten Azure-Umgebung gehostet. Er eignet sich ideal für Apps, die eine sichere Verbindung mit dem lokalen Netzwerk oder zusätzliche Leistung und Skalierung erfordern. Ihre App muss sich darüber hinaus in einer isolierten Umgebung befinden sowie über einen Load Balancer mit externer IP-Adresse verfügen. Weitere Informationen zu ASE finden Sie unter [Dokumentation zur App Service-Umgebung](../app-service/environment/intro.md).
 
 > [!NOTE]
 > Der Dienst wird anhand einer Beispielbereitstellung vorgestellt.  Dieses Dokument ist keine Schritt-für-Schritt-Anleitung.
@@ -36,7 +37,7 @@ Security Center empfiehlt die Bereitstellung einer WAF zum Schutz vor Angriffen 
 1. Wählen Sie unter **Empfehlungen** die Option **Webanwendung mit Web Application Firewall sichern** aus.
    ![Sichere Webanwendung][1]
 2. Wählen Sie unter **Webanwendungen mit Web Application Firewall sichern** eine Webanwendung aus. Die Seite **Web Application Firewall hinzufügen** wird geöffnet.
-   ![Web Application Firewall hinzufügen][2]
+   ![Add a web application firewall][2]
 3. Sie können eine vorhandene Web Application Firewall verwenden oder eine neue erstellen. Da in diesem Beispiel noch keine WAFs vorhanden sind, erstellen wir eine neue WAF.
 4. Wählen Sie hierzu in der Liste mit den integrierten Partnern eine Lösung aus. In diesem Beispiel verwenden wir **Barracuda Web Application Firewall**.
 5. Die Seite **Barracuda Web Application Firewall** wird geöffnet und zeigt Informationen zu dieser Partnerlösung an. Klicken Sie auf **Erstellen**.

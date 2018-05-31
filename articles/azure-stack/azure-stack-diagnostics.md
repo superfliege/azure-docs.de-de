@@ -1,25 +1,24 @@
 ---
 title: Diagnose in Azure Stack
-description: "Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln."
+description: Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln.
 services: azure-stack
 author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 04/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: e823aeb4291b3e765b35181c24b41fa58c170cca
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: 28e1939d3c9cb5a9b9080e60230ad5600ad8a6a3
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196462"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
- 
 Bei Azure Stack handelt es sich um eine große Sammlung von Komponenten, die zusammenarbeiten und miteinander interagieren. Alle diese Komponenten generieren eigene eindeutige Protokolle. Dies kann die Diagnose von Problemen zu einer Herausforderung machen – insbesondere bei Fehlern, die von verschiedenen interagierenden Azure Stack-Komponenten stammen. 
 
 Mit unseren Diagnosetools wird sichergestellt, dass der Mechanismus für die Protokollsammlung einfach und effizient ist. Im folgenden Diagramm ist dargestellt, wie Tools zum Sammeln von Protokollen in Azure Stack funktionieren:
@@ -79,7 +78,36 @@ Diese Dateien werden vom Collector der Ablaufverfolgung gesammelt und in einer F
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>So führen Sie Get-AzureStackLog in einem integrierten Azure Stack-System aus
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>So führen Sie Get-AzureStackLog in integrierten Azure Stack-Systemen mit Version 1804 und höher aus
+
+Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- Die Parameter **OutputSharePath** und **OutputShareCredential** werden verwendet, um Protokolle in einen externen freigegebenen Ordner hochzuladen.
+- Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
+
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>So führen Sie Get-AzureStackLog in integrierten Azure Stack-Systemen mit Version 1803 und früher aus
 
 Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
 
@@ -108,6 +136,7 @@ if($s)
 - Die Parameter **OutputSharePath** und **OutputShareCredential** sind optional und werden verwendet, wenn Sie Protokolle in einen externen freigegebenen Ordner hochladen. Verwenden Sie diese Parameter *zusätzlich* zu **OutputPath**. Wenn **OutputPath** nicht angegeben ist, verwendet das Protokollsammlungstool das Systemlaufwerk der PEP-VM für die Speicherung. Dies kann zu einem Fehler beim Skript führen, da der Speicherplatz auf dem Laufwerk begrenzt ist.
 - Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
 
+
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Überlegungen zu den Parametern für das ASDK und integrierte Systeme
 
 - Wenn die Parameter **FromDate** und **ToDate** nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
@@ -117,26 +146,35 @@ if($s)
 
    |   |   |   |
    | - | - | - |
-   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
-   | ACS                     | ACSFabric              | ACSFrontEnd        |
-   | ACSTableMaster          | ACSTableServer         | ACSWac             |
-   | ADFS                    | ASAppGateway           | BareMetal          |
-   | BRP                     | CA                     | CPI                |
-   | CRP                     | DeploymentMachine      | DHCP               |
-   | Domäne                  | ECE                    | ECESeedRing        | 
-   | FabricRing              | FabricRingServices     | FRP                |
-   | Gateway                 | HealthMonitoring       | HRP                |   
-   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
-   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
-   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
-   | SeedRingServices        | SLB                    | SQL                |   
-   | SRP                     | Speicher                | StorageController  |
-   | URP                     | UsageBridge            | VirtualMachines    |  
-   | WAS                     | WASPUBLIC              | WDS                |
-
+   | ACS                    | DeploymentMachine                | NC                         |
+   | ACSBlob                | DiskRP                           | Netzwerk                    |
+   | ACSFabric              | Domäne                           | NonPrivilegedAppGateway    |
+   | ACSFrontEnd            | ECE                              | NRP                        |
+   | ACSMetrics             | ExternalDNS                      | OEM                        |
+   | ACSMigrationService    | Fabric                           | PXE                        |
+   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
+   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
+   | ACSTableMaster         | FRP                              | SLB                        |   
+   | ACSTableServer         | Gallery                          | SlbVips                    |
+   | ACSWac                 | Gateway                          | SQL                        |   
+   | ADFS                   | HealthMonitoring                 | SRP                        |
+   | ASAppGateway           | HRP                              | Speicher                    |   
+   | NCAzureBridge          | IBC                              | Speicherkonten            |    
+   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
+   | AzureStackBitlocker    | iDns                             | Tenant                     |
+   | BareMetal              | InfraServiceController           | TraceCollector             |
+   | BRP                    | Infrastruktur                   | URP                        |
+   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
+   | Cloud                  | KeyVaultControlPlane             | VirtualMachines            |
+   | Cluster                | KeyVaultDataPlane                | WAS                        |
+   | Compute                | KeyVaultInternalControlPlane     | WASBootstrap               |
+   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
+   | CRP                    | KeyVaultNamingService            |                            |
+   | DatacenterIntegration  | MonitoringAgent                  |                            |
+   |                        |                                  |                            |
 
 ### <a name="bkmk_gui"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
-Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open-Source-Tools für Azure Stack verwenden, die Sie im GitHub-Toolrepository unter http://aka.ms/AzureStackTools finden.
+Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open Source-Tools für Azure Stack verwenden, die Sie im GitHub-Toolrepository unter http://aka.ms/AzureStackTools finden.
 
 Das PowerShell-Skript **ERCS_AzureStackLogs.ps1** ist im GitHub-Toolrepository enthalten und wird regelmäßig aktualisiert. Laden Sie es am besten direkt von http://aka.ms/ERCS herunter, um sicherzugehen, dass Sie über die neueste Version verfügen. Beim Start aus einer PowerShell-Administratorsitzung stellt das Skript eine Verbindung mit dem privilegierten Endpunkt her und führt Get-AzureStackLog mit den angegebenen Parametern aus. Wenn keine Parameter angegeben werden, fordert das Skript standardmäßig über eine grafische Benutzeroberfläche zur Eingabe von Parametern auf.
 
@@ -145,7 +183,7 @@ Weitere Informationen zum PowerShell-Skript „ERCS_AzureStackLogs.ps1“ erhalt
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen
 
 * Je nachdem, welche Rollen in den Protokollen gesammelt werden, kann dieser Befehl mehr Zeit beanspruchen. Zu den entscheidenden Faktoren gehören auch der Zeitraum, der für die Protokollsammlung angegeben wurde, und die Anzahl von Knoten in der Azure Stack-Umgebung.
-* Überprüfen Sie nach Abschluss der Protokollsammlung den neuen Ordner, der mit dem **OutputPath**-Parameter des Befehls erstellt wird.
+* Überprüfen Sie während der Protokollsammlung den neuen Ordner, der mit dem **OutputSharePath**-Parameter des Befehls erstellt wird.
 * Für jede Rolle sind die Protokolle in separaten ZIP-Dateien enthalten. Abhängig von der Größe der gesammelten Protokolle kann das Protokoll einer Rolle möglicherweise in mehrere ZIP-Dateien aufgeteilt werden. Wenn Sie alle Protokolldateien in denselben Ordner entzippen möchten, verwenden Sie für eine solche Rolle ein Tool, das den Entzipvorgang in einer Sammeloperation durchführen kann (z.B. 7-Zip). Wählen Sie alle ZIP-Dateien für die Rolle und dann **Hier entpacken** aus. Damit werden die Protokolldateien für diese Rolle in einem zusammengeführten Ordner entzippt.
 * Eine Datei namens **Get-AzureStackLog_Output.log** wird ebenfalls in dem Ordner mit den gezippten Protokolldateien erstellt. Diese Datei ist ein Protokoll der Befehlsausgabe, die Sie zum Beheben von Problemen während der Protokollsammlung verwenden können.
 * Zum Untersuchen eines bestimmten Fehlers werden unter Umständen die Protokolle von mehr als einer Komponente benötigt.

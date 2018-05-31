@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Aktivitätsprotokollwarnungen und Verwenden der neuen Oberfläche „Warnungen“ (Vorschauversion) in Azure Monitor für die Verwaltung | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zur Erstellung von Aktivitätsprotokollwarnungen auf der Registerkarte „Warnungen“ (Vorschauversion) in Azure Monitor. Im Artikel wird die neue Benutzeroberfläche für dieses Feature ausführlich beschrieben.
+title: Erstellen von Aktivitätsprotokollwarnungen und Verwenden der neuen Oberfläche „Warnungen“ in Azure Monitor für die Verwaltung | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zur Erstellung von Aktivitätsprotokollwarnungen auf der Registerkarte „Warnungen“ in Azure Monitor.
 author: JYOTHIRMAISURI
 manager: vvithal
 editor: ''
@@ -15,17 +15,18 @@ ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
 ms.custom: ''
-ms.openlocfilehash: 740edfd158d56fcb224cf93d1720a2330779bfd6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 070acc6fb6f6f744474edeef0e914dda9d24c558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202819"
 ---
-# <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>Erstellen von Aktivitätsprotokollwarnungen mit der neuen Oberfläche „Warnungen“ (Vorschauversion)
+# <a name="create-activity-log-alerts-using-the-new-alerts-experience"></a>Erstellen von Aktivitätsprotokollwarnungen mit der neuen Oberfläche „Warnungen“
 
 Aktivitätsprotokollwarnungen werden aktiviert, wenn ein neues Aktivitätsprotokollereignis eintritt, das die in der Warnung angegebenen Bedingungen erfüllt.
 
-Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Anschließend wird veranschaulicht, wie Sie das Azure-Portal zum Einrichten einer Warnung für Aktivitätsprotokollereignisse einrichten, indem Sie die neue Oberfläche [Azure-Warnungen (Vorschauversion)](monitoring-overview-unified-alerts.md) verwenden.
+Diese Warnungen gelten für Azure-Ressourcen und können mit einer Azure Resource Manager-Vorlage erstellt werden. Sie können auch im Azure-Portal erstellt, aktualisiert oder gelöscht werden. In diesem Artikel werden die Konzepte erläutert, auf denen Aktivitätsprotokollwarnungen basieren. Anschließend wird veranschaulicht, wie Sie das Azure-Portal zum Einrichten einer Warnung für Aktivitätsprotokollereignisse einrichten, indem Sie die neue Oberfläche [Azure-Warnungen](monitoring-overview-unified-alerts.md) verwenden.
 
 Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu erhalten, wenn es für Ressourcen in Ihrem Azure-Abonnement zu spezifischen Änderungen kommt, die häufig für bestimmte Ressourcengruppen oder Ressourcen gelten. Es kann beispielsweise sein, dass Sie benachrichtigt werden möchten, wenn ein virtueller Computer in **myProductionResourceGroup** (Beispielressourcengruppe) gelöscht wird oder wenn einem Benutzer Ihres Abonnements neue Rollen zugewiesen werden.
 
@@ -46,11 +47,11 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 Weitere Informationen zu Dienstintegritätsbenachrichtigungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md).
 
 
-## <a name="whats-new-in-alerts-preview-for-activity-logs"></a>Welche Neuigkeiten gibt es für „Warnungen“ (Vorschauversion) für Aktivitätsprotokolle?
+## <a name="whats-new-in-alerts-for-activity-logs"></a>Welche Neuigkeiten gibt es für „Warnungen“ für Aktivitätsprotokolle?
 
-[Azure-Warnungen (Vorschauversion)](monitoring-overview-unified-alerts.md) verfügt jetzt über eine erweiterte Benutzeroberfläche für Aktivitätsprotokollwarnungen. Mit der [erweiterten Benutzeroberfläche für Warnungen](monitoring-overview-unified-alerts.md) haben Sie nun folgende Möglichkeiten:
+[Azure-Warnungen](monitoring-overview-unified-alerts.md) verfügt jetzt über eine erweiterte Benutzeroberfläche für Aktivitätsprotokollwarnungen. Mit der [erweiterten Benutzeroberfläche für Warnungen](monitoring-overview-unified-alerts.md) haben Sie nun folgende Möglichkeiten:
 
-- [Erstellen](#create-an-alert-rule-for-an-activity-log) und [Verwalten](#view-and-manage-activity-log-alert-rules) der Regeln für Aktivitätsprotokollwarnungen über das Blatt **Überwachen** > **Warnungen (Vorschauversion)**. Erfahren Sie mehr zu [Aktivitätsprotokollen](monitoring-overview-activity-logs.md).
+- [Erstellen](#create-an-alert-rule-for-an-activity-log) und [Verwalten](#view-and-manage-activity-log-alert-rules) der Regeln für Aktivitätsprotokollwarnungen über das Blatt **Überwachen** > **Warnungen**. Erfahren Sie mehr zu [Aktivitätsprotokollen](monitoring-overview-activity-logs.md).
 
 - **Neue Optionen für das Ziel von Warnungen**: Beim Erstellen einer neuen Regel für Aktivitätsprotokollwarnungen können Sie jetzt eine Zielressource bzw. -ressourcengruppe oder ein Abonnement auswählen.
 
@@ -68,8 +69,8 @@ Weitere Informationen zu Dienstintegritätsbenachrichtigungen finden Sie unter [
 
 Gehen Sie dazu wie folgt vor:
 
-1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen (Vorschauversion)**.
-2. Klicken Sie oben im Fenster **Warnungen (Vorschauversion)** auf **Neue Warnungsregel**.
+1. Wählen Sie im Azure-Portal die Option **Überwachen** > **Warnungen**.
+2. Klicken Sie oben im Fenster **Warnungen** auf **Neue Warnungsregel**.
 
      ![Neue Warnungsregel](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule.png)
 
@@ -130,7 +131,7 @@ Gehen Sie dazu wie folgt vor:
 
 ## <a name="view-and-manage-activity-log-alert-rules"></a>Anzeigen und Verwalten von Regeln für Aktivitätsprotokollwarnungen
 
-1. Klicken Sie im Azure-Portal auf **Überwachen** > **Warnungen (Vorschauversion)** und dann oben links im Fenster auf **Regeln verwalten**.
+1. Klicken Sie im Azure-Portal auf **Überwachen** > **Warnungen** und dann oben links im Fenster auf **Regeln verwalten**.
 
     ![ Verwalten von Warnungsregeln](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
 

@@ -12,20 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: fd352d6d073c5eff0ddf17588df022ffa3caef8c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b84744a52426123f2f3e7dd4c14419fef8b779cc
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258629"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>In Azure Stack unterstützte VM-Größen
 
-In diesem Artikel sind die von Azure Stack unterstützten VM-Größen aufgeführt. 
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
+In diesem Artikel sind die in Azure Stack verfügbaren VM-Größen aufgeführt.
 
 ## <a name="general-purpose"></a>Allgemeiner Zweck
+
+Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Sie werden für Test- und Entwicklungsaufgaben, für kleine bis mittlere Datenbanken sowie für Webserver mit geringer bis mittlerer Auslastung verwendet.
 
 ### <a name="basic-a"></a>Basic A
 |Größe – Größe\Name |vCPU     |Arbeitsspeicher | Max. Größe der temporären Datenträger | Max. Durchsatz des Betriebssystem-Datenträgers: (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträgerdurchsatz: (IOPS) | Maximale Anzahl NICs |    
@@ -48,6 +52,18 @@ In diesem Artikel sind die von Azure Stack unterstützten VM-Größen aufgeführ
 |**Standard_A6** |4 |28    |285 |500 |500 |8 x 500  |2/1000 |
 |**Standard_A7** |8 |56    |605 |500 |500 |16 x 500 |4/2000 |
 
+### <a name="av2-series"></a>Av2-Serie
+*Erfordert Azure Stack Version 1804 oder höher*
+
+|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+|-----------------|----|----|-----|-----|------|--------------|---------|
+|**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2/2 x 500   |2/250  |
+|**Standard_A2_v2**  |2   |4   |20   |500 |2000  |4/4 x 500   |2/500  |
+|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8/8 x 500   |4/1000 |
+|**Standard_A8_v2**  |8   |16  |80   |500 |8.000  |16/16 x 500 |8/2000 |
+|**Standard_A2m_v2** |2   |16  |20   |500 |2000  |4/4 x 500   |2/500  |
+|**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8/8 x 500   |4/1000 |
+|**Standard_A8m_v2** |8   |64  |80   |500 |8.000  |16/16 x 500 |8/2000 |
 
 ### <a name="d-series"></a>D-Serie
 |Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
@@ -85,7 +101,47 @@ In diesem Artikel sind die von Azure Stack unterstützten VM-Größen aufgeführ
 |**Standard_DS5_v2** |16  |56  |112 |1000 |64000 |64/64x2300 |8 / 10.000 |
 
 
+## <a name="compute-optimized"></a>Computeoptimiert
+### <a name="f-series"></a>F-Serie
+*Erfordert Azure Stack Version 1804 oder höher*
+
+|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+|-----------------|----|----|-----|----|------|------------|---------|
+|**Standard_F1**  |1   |2   |16   |500 |3000  |4/4 x 400   |2/750  |
+|**Standard_F2**  |2   |4   |32   |500 |6000  |8/8 x 500   |2/1500 |
+|**Standard_F4**  |4   |8   |64   |500 |12000 |16/16 x 500 |4/3000 |
+|**Standard_F8**  |8   |16  |128  |500 |24.000 |32/32 x 500 |8/6000 |
+|**Standard_F16** |16  |32  |256  |500 |48000 |64/64 x 500 |8/6000 - 12000  |
+
+
+### <a name="fs-series"></a>Fs-Serie
+*Erfordert Azure Stack Version 1804 oder höher*  
+
+|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+|------------------|----|----|----|-----|------|-------------|---------|
+|**Standard_F1s**  |1   |2   |4   |1000 |4000  |4/4x2300   |2/750  |
+|**Standard_F2s**  |2   |4   |8   |1000 |8.000  |8/8x2300   |2/1500 |
+|**Standard_F4s**  |4   |8   |16  |1000 |16000 |16/16x2300 |4/3000 |
+|**Standard_F8s**  |8   |16  |32  |1000 |32000 |32/32x2300 |8/6000 |
+|**Standard_F16s** |16  |32  |64  |1000 |64000 |64/64x2300 |8/6000 - 12000  |
+
+
+### <a name="fsv2-series"></a>Fsv2-Serie
+*Erfordert Azure Stack Version 1804 oder höher* 
+
+|Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+|---------------------|----|----|-----|-----|-------|--------------|---------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4/4x2300    |Moderat |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8.000   |8/8x2300    |Moderat |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16/16x2300  |Hoch     |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32/32x2300  |Hoch     |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32/32x2300  |Hoch  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32/32x2300  |Äußerst hoch  |
+
+
 ## <a name="memory-optimized"></a>Arbeitsspeicheroptimiert
+
+Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und sind für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen konzipiert.
 
 ### <a name="mo-d"></a>D-Serie
 |Größe     |vCPU     |Arbeitsspeicher (GiB) | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS) | Maximaler Durchsatz (temporärer Speicher): (IOPS) | Max. Datenträger/Durchsatz (IOPS) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |

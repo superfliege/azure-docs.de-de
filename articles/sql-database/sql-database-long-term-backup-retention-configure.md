@@ -10,11 +10,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 130b3ea0012c5fb21766b26ce2c3e589f0916736
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: df3d843516bce30253c23080716e606dfb56f25e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211560"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 
@@ -80,6 +81,10 @@ Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-R
 ## <a name="use-powershell-to-configure-long-term-retention-policies-and-restore-backups"></a>Konfigurieren von Richtlinien für die langfristige Aufbewahrung und Wiederherstellen von Sicherungen mithilfe von PowerShell
 
 In den folgenden Abschnitten wird erläutert, wie Sie mithilfe von PowerShell die langfristige Sicherungsaufbewahrung konfigurieren, Sicherungen in Azure SQL-Speicher anzeigen und eine Sicherung in Azure SQL-Speicher wiederherstellen.
+
+> [!IMPORTANT]
+> Sie müssen die aktuelle AzureRM-PowerShell verwenden, um die LTR V2-Richtlinien einzurichten. Die aktuelle Version ist [AzureRM 4.5.0-preview](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0-preview). Hierbei handelt es sich um eine Vorschauversion, also verwenden Sie diesen Befehl zur Installation: `Install-Module -Name AzureRM.Sql -AllowPrerelease -Force`.
+> Anweisungen zum Installieren der Vorabversion finden Sie unter [Installieren von PowerShellGet](https://docs.microsoft.com/en-us/powershell/gallery/installing-psget). Das Release von AzureRM-PowerShell von Mai 2018 erscheint in wenigen Tagen (voraussichtliche am 18.5.2018). Wenn Sie die Releaseversion nach ihrer Verfügbarkeit installieren, können Sie den Schalter -AllowPrelease ignorieren und den folgenden Befehl verwenden: `Install-Module -Name AzureRM.Sql -Force`.
 
 ### <a name="create-an-ltr-policy"></a>Erstellen einer LTR-Richtlinie
 

@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/24/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0460d595bc70ec09d492221485749ece32ec07df
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209707"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Migrieren virtueller Azure-Computer zu einer anderen Region
 
@@ -102,7 +103,7 @@ Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptse
 ## <a name="select-the-source"></a>Auswählen der Quelle
 
 1. Klicken Sie unter „Recovery Services-Tresore“ auf **ConsotoVMVault** > **+Replizieren**.
-2. Wählen Sie unter **Quelle** die Option **Azure – VORSCHAU**.
+2. Wählen Sie unter **Quelle** die Option **Azure**.
 3. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 4. Wählen Sie das Ressourcen-Manager-Bereitstellungsmodell. Wählen Sie dann die **Quellressourcengruppe** aus.
 5. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
@@ -115,7 +116,7 @@ Site Recovery ruft eine Liste der VMs ab, die dem Abonnement und der Ressourceng
 
 1. Klicken Sie im Azure-Portal auf **Virtuelle Computer**.
 2. Wählen Sie die VM aus, die Sie migrieren möchten. Klicken Sie dann auf **OK**.
-3. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung (Vorschau)**.
+3. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung**.
 4. Wählen Sie unter **Configure disaster recovery** (Notfallwiederherstellung konfigurieren) > **Zielregion** die Zielregion aus, in die Sie replizieren möchten.
 5. Übernehmen Sie für dieses Tutorial die anderen Standardwerte.
 6. Klicken Sie auf **Replikation aktivieren**. Dadurch wird ein Auftrag gestartet, um die Replikation der VM zu aktivieren.

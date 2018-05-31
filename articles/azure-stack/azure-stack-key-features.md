@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/10/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 958b1757dd773f8c46185b13c84f766ce4f827ee
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 851530910c702d388cd4dc8607bf09ecb5fa44e0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198472"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Wichtige Features und Konzepte in Azure Stack
 Wenn Sie mit Microsoft Azure Stack noch nicht vertraut sind, können diese Begriffe und Featurebeschreibungen möglicherweise hilfreich sein.
@@ -86,14 +87,15 @@ Ein Angebot enthält einen Satz von Basisplänen, und Dienstadministratoren kön
 
 Abonnements helfen Anbietern beim Organisieren von und dem Zugriff auf Cloudressourcen.
 
-Für den Administrator wird während der Bereitstellung ein Standardanbieterabonnement erstellt. Dieses Abonnement kann zum Verwalten von Azure Stack, zum Bereitstellen weiterer Ressourcenanbieter sowie zum Erstellen von Plänen und Angeboten für Mandanten verwendet werden. Es darf nicht zum Ausführen von Workloads und Anwendungen von Kunden verwendet werden. 
-
+Für den Administrator wird während der Bereitstellung ein Standardanbieterabonnement erstellt. Dieses Abonnement kann zum Verwalten von Azure Stack, zum Bereitstellen weiterer Ressourcenanbieter sowie zum Erstellen von Plänen und Angeboten für Mandanten verwendet werden. Es darf nicht zum Ausführen von Workloads und Anwendungen von Kunden verwendet werden. Ab Version 1804 ergänzen zwei zusätzliche Abonnements das Standardabonnement des Anbieters: ein Abonnement für Messungen und ein Abonnement für die Nutzung. Diese Ergänzungen erleichtern die getrennte Verwaltung von Kerninfrastruktur, zusätzlichen Ressourcenanbietern und Workloads.  
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Mithilfe von Azure Resource Manager können Sie in einem vorlagenbasierten, deklarativen Modell mit Ihren Infrastrukturressourcen arbeiten.   Er bietet eine zentrale Benutzeroberfläche, auf der Sie Ihre Lösungskomponenten bereitstellen und verwalten können. Umfassende Informationen und Anleitungen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
 ### <a name="resource-groups"></a>Ressourcengruppen
 Ressourcengruppen sind Sammlungen von Ressourcen, Diensten und Anwendungen. Jede Ressource weist einen Typ auf, z.B. virtueller Computer, virtuelles Netzwerk öffentliche IP-Adresse, Speicherkonto oder Website. Jede Ressource muss einer Ressourcengruppe angehören, damit Ressourcen z.B. nach Workload oder Standort logisch organisiert werden können.  In Microsoft Azure Stack werden Ressourcen wie Pläne und Angebote auch in Ressourcengruppen verwaltet.
+
+Anders als bei [Azure](../azure-resource-manager/resource-group-move-resources.md) können Sie keine Ressourcen zwischen Ressourcengruppen verschieben. Wenn Sie die Eigenschaften einer Ressource oder Ressourcengruppe im Azure Stack-Verwaltungsportal anzeigen, ist die Schaltfläche *Verschieben* abgeblendet und nicht verfügbar. 
  
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 Mit Azure Resource Manager können Sie eine Vorlage (im JSON-Format) erstellen, mit der die Bereitstellung und Konfiguration Ihrer Anwendung definiert wird. Diese Vorlage wird als Azure Resource Manager-Vorlage bezeichnet und ist eine deklarative Möglichkeit zum Definieren der Bereitstellung. Mit einer Vorlage können Sie die Anwendung während des gesamten App-Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
@@ -120,7 +122,7 @@ Jedes Blob ist unter einem Container organisiert. Container sind auch eine prakt
 #### <a name="table-storage"></a>Table Storage
 Table Storage ist ein NoSQL-Schlüssel-/Attributspeicher von Microsoft, der sich durch sein schemaloses Design von herkömmlichen relationalen Datenbanken unterscheidet. Da Datenspeicher keine Schemas aufweisen, können Sie Ihre Daten problemlos an die sich verändernden Anforderungen Ihrer Anwendung anpassen. Die hohe Benutzerfreundlichkeit von Table Storage ermöglicht Entwicklern eine rasche Anwendungserstellung. Bei Table Storage handelt es sich um einen Schlüssel-/Attribut-basierten Speicher. Das bedeutet, dass jeder Wert in einer Tabelle mit einem typisierten Eigenschaftennamen gespeichert wird. Der Eigenschaftenname kann für Filter und Auswahlkriterien verwendet werden. Eine Sammlung mit Eigenschaften und deren Werte bilden eine Entität. Da der Tabellenspeicher schemalos ist, können zwei Entitäten in der gleichen Tabelle unterschiedliche Sammlungen von Eigenschaften enthalten, und diese Eigenschaften können jeweils einen anderen Typ haben. Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwendungen, Adressbücher, Geräteinformationen und jegliche Art von Metadaten speichern, die Ihr Dienst erfordert. Sie können eine beliebige Anzahl von Entitäten in einer Tabelle speichern, und ein Speicherkonto kann eine beliebige Anzahl von Tabellen enthalten (bis zur Speicherkapazitätsgrenze eines Speicherkontos).
 
-#### <a name="queue-storage"></a>Warteschlangenspeicher
+#### <a name="queue-storage"></a>Queue Storage
 Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
 ### <a name="keyvault"></a>KeyVault
@@ -129,12 +131,12 @@ Der KeyVault-Ressourcenanbieter stellt die Verwaltung und Überwachung von Gehei
 ## <a name="high-availability-for-azure-stack"></a>Hochverfügbarkeit für Azure Stack
 *Gilt für: Azure Stack 1802 oder höhere Versionen*
 
-Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Auf diese Weise werden [in Verfügbarkeitsgruppen bereitgestellte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) in separaten Serverracks physisch voneinander isoliert, um die Fehlerresilienz zu ermöglichen. Dies ist im folgenden Diagramm dargestellt:
+Zur Erreichung von Hochverfügbarkeit für ein Produktionssystem mit mehreren VMs in Azure werden die VMs in einer Verfügbarkeitsgruppe angeordnet, um sie auf mehrere Fehlerdomänen und Updatedomänen zu verteilen. Auf diese Weise werden [in Verfügbarkeitsgruppen bereitgestellte VMs](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) in separaten Serverracks physisch voneinander isoliert, um Ausfallresilienz zu ermöglichen. Dies ist im folgenden Diagramm dargestellt:
 
   ![Azure Stack-Hochverfügbarkeit](media/azure-stack-key-features/high-availability.png)
 
-### <a name="availablity-sets-in-azure-stack"></a>Verfügbarkeitsgruppen in Azure Stack
-Die Infrastruktur von Azure Stack verfügt zwar bereits über Resilienz gegenüber Fehlern, aber bei einem Hardwarefehler kommt es bei der zugrunde liegenden Technologie (Failoverclustering) für VMs auf einem betroffenen physischen Server trotzdem noch zu Ausfallzeiten. Azure Stack unterstützt die Verwendung einer Verfügbarkeitsgruppe mit maximal drei Fehlerdomänen, um Konsistenz mit Azure zu erzielen.
+### <a name="availability-sets-in-azure-stack"></a>Verfügbarkeitsgruppen in Azure Stack
+Die Infrastruktur von Azure Stack verfügt zwar bereits über Resilienz gegenüber Ausfällen, aber bei einem Hardwarefehler kommt es bei der zugrunde liegenden Technologie (Failoverclustering) für VMs auf einem betroffenen physischen Server trotzdem noch zu Ausfallzeiten. Azure Stack unterstützt die Verwendung einer Verfügbarkeitsgruppe mit maximal drei Fehlerdomänen, um Konsistenz mit Azure zu erzielen.
 
 - **Fehlerdomänen**: In einer Verfügbarkeitsgruppe angeordnete VMs werden physisch voneinander isoliert, indem sie so gleichmäßig wie möglich auf mehrere Fehlerdomänen (Azure Stack-Knoten) verteilt werden. Bei einem Hardwarefehler werden VMs aus der betroffenen Fehlerdomäne in anderen Fehlerdomänen neu gestartet. Dies sind nach Möglichkeit aber Fehlerdomänen, die von den anderen VMs in derselben Verfügbarkeitsgruppe getrennt sind. Nachdem die Hardware wieder in den Onlinezustand versetzt wurde, wird für die VMs ein neuer Ausgleichsvorgang durchgeführt, um die Hochverfügbarkeit sicherzustellen. 
  
