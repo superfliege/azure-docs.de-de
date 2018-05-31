@@ -10,13 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: f346accd318689bbaa10080111d07e3fedd84556
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 522a285d16901f1237a2ed5463e64d0cbf4bb8c9
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011576"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Store mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -155,10 +156,13 @@ Legen Sie zum Kopieren von Daten nach bzw. aus Azure Data Lake Store die type-Ei
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AzureDataLakeStoreFile** festgelegt werden. |Ja |
-| folderPath | Der Pfad zum Container und Ordner im Dateispeicher. Beispiel: „<Stammordner>/<Unterordner>/“ |Ja |
-| fileName | Geben Sie den Namen der Datei in der Eigenschaft **folderPath** an, wenn Sie einen Kopiervorgang in eine bestimmte bzw. aus einer bestimmten Datei durchführen möchten. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist das Dataset auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei automatisch das folgende Format: `Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]`. Beispiel: `Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz`. |Nein  |
+| folderPath | Pfad zum Ordner in Data Lake Store. Der Platzhalterfilter wird nicht unterstützt. Beispiel: „<Stammordner>/<Unterordner>/“ |Ja |
+| fileName | **Name oder Platzhalterfilter** für die Dateien unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, verweist das Dataset auf alle Dateien im Ordner. <br/><br/>Zulässige Platzhalter für den Filter sind `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br/><br/>Wenn „fileName“ nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, generiert die Kopieraktivität den Dateinamen automatisch mit dem folgenden Format: *Data.[Aktivitätsausführungs-GUID].[GUID bei FlattenHierarchy].[Format, sofern konfiguriert].[Komprimierung, sofern konfiguriert]*. Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz. |Nein  |
 | format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Wenn Dateien mit einem bestimmten Format analysiert oder generiert werden sollen, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**.<br/>Unterstützte Grade sind: **Optimal** und **Schnellste**. |Nein  |
+
+>[!TIP]
+>Wenn Sie alle Dateien eines Ordners kopieren möchten, geben Sie nur **folderPath** an.<br>Wenn Sie eine einzelne Datei mit einem bestimmten Namen kopieren möchten, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Dateinamen an.<br>Wenn Sie eine Teilmenge der Dateien eines Ordners kopieren möchten, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Platzhalterfilter an. 
 
 **Beispiel:**
 

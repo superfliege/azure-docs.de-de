@@ -16,11 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: bcbebc216dbd63acfb33cf72ba774d088149a3a7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 87ecc65d2d4802ae826f3260b66b26e0bbe414e6
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012358"
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Anmelden bei einem virtuellen Windows-Computer über das Azure-Portal
 Im Azure-Portal können Sie über die Schaltfläche **Verbinden** eine Remotedesktopsitzung starten und sich bei einem virtuellen Windows-Computer anmelden.
@@ -42,20 +43,22 @@ Learn how to [perform these steps using new Azure portal](../connect-logon.md?to
 
     ![Virtual-machine-locations](./media/connect-logon/azureportaldashboard.png)
 
-3. Klicken Sie in der Befehlszeile oben im Dashboard des virtuellen Computers auf **Verbinden**.
-
-    ![Symbol „Verbinden“ für den virtuellen Computer](./media/connect-logon/virtualmachine_dashboard_connect.png)
-
-<!-- Don't know if this still applies
-     I think we can zap this.
-> [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
->
->
--->
-
-## <a name="log-on-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
-[!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
+1. Klicken Sie auf der Seite mit den Eigenschaften des virtuellen Computers auf die Schaltfläche **Verbinden**. 
+2. Wählen Sie auf der Seite **Connect to virtual machine** (Verbindung mit virtuellem Computer herstellen) die passenden Optionen aus, und klicken Sie anschließend auf **RDP-Datei herunterladen**.
+2. Öffnen Sie die heruntergeladene RDP-Datei, und klicken Sie auf **Verbinden**, wenn Sie dazu aufgefordert werden. 
+2. Es wird eine Warnung angezeigt mit dem Hinweis, dass die `.rdp`-Datei von einem unbekannten Herausgeber stammt. Dies ist normal. Klicken Sie im Fenster "Remotedesktop" auf **Verbinden** , um den Vorgang fortzusetzen.
+   
+    ![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/connect-logon/rdp-warn.png)
+3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie die Anmeldeinformationen eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.
+   
+     **Lokales Konto**: Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, die Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
+   
+    **In die Domäne eingebundener virtueller Computer**: Falls der virtuelle Computer in eine Domäne eingebunden ist, geben Sie den Benutzernamen im Format *Domäne*&amp;#92;*Benutzername* ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
+   
+    **Domänencontroller** – Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
+4. Klicken Sie auf **Ja** , um die Identität des virtuellen Computers zu bestätigen und das Anmelden zu beenden.
+   
+   ![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/connect-logon/cert-warning.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn die Schaltfläche **Verbinden** inaktiv ist oder andere Probleme mit der Remotedesktopverbindung auftreten, versuchen Sie, die Konfiguration zurückzusetzen. Klicken Sie im Dashboard des virtuellen Computers auf **Remotezugriff zurücksetzen**.

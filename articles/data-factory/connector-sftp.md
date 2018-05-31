@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 917f2e3ff498641acfbdf537b71543f989b4bc16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5d6e66104e602d7e5cbfadab004a4f9547c9b6c7
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010947"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopieren von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -180,11 +181,16 @@ Legen Sie zum Kopieren von Daten aus SFTP die type-Eigenschaft des Datasets auf 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **FileShare** festgelegt werden. |Ja |
-| folderPath | Pfad zum Ordner. Beispiel: „<Ordner>/<Unterordner>/“ |Ja |
-| fileName | Geben Sie den Namen der Datei in der Eigenschaft **folderPath** an, wenn Sie einen Kopiervorgang aus einer bestimmten Datei durchführen möchten. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist das Dataset auf alle Dateien im Ordner als Quelle. |Nein  |
-| fileFilter | Geben Sie einen Filter zur Auswahl einer Teilmenge der Dateien in "folderPath" statt alle Dateien an. Ist nur anwendbar, wenn „fileName“ nicht angegeben ist. <br/><br/>Zulässige Werte sind `*` (mehrere Zeichen) oder `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileFilter": "*.log"`<br/>- Beispiel 2: `"fileFilter": 2017-09-??.txt"` |Nein  |
+| folderPath | Pfad zum Ordner. Der Platzhalterfilter wird nicht unterstützt. Beispiel: „<Ordner>/<Unterordner>/“ |Ja |
+| fileName |  **Name oder Platzhalterfilter** für die Dateien unter dem angegebenen Wert für „folderPath“. Wenn Sie für diese Eigenschaft keinen Wert angeben, verweist das Dataset auf alle Dateien im Ordner. <br/><br/>Zulässige Platzhalter für den Filter sind `*` (mehrere Zeichen) und `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"fileName": "*.csv"`<br/>- Beispiel 2: `"fileName": "???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. |Nein  |
 | format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Wenn Dateien mit einem bestimmten Format analysiert werden sollen, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |
 | Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Weitere Informationen finden Sie unter [Unterstützte Dateiformate und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**.<br/>Unterstützte Grade sind: **Optimal** und **Schnellste**. |Nein  |
+
+>[!TIP]
+>Wenn Sie alle Dateien eines Ordners kopieren möchten, geben Sie nur **folderPath** an.<br>Wenn Sie eine einzelne Datei mit einem bestimmten Namen kopieren möchten, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Dateinamen an.<br>Wenn Sie eine Teilmenge der Dateien eines Ordners kopieren möchten, geben Sie **folderPath** mit dem Ordner und **fileName** mit dem Platzhalterfilter an.
+
+>[!NOTE]
+>Falls Sie bislang die Eigenschaft „fileFilter“ für den Dateifilter verwendet haben, wird diese zwar weiterhin unverändert unterstützt, es wird jedoch empfohlen, in Zukunft die neue Filterfunktion von „fileName“ zu verwenden.
 
 **Beispiel:**
 
