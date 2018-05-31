@@ -1,11 +1,11 @@
 ---
-title: "Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center | Microsoft Docs"
-description: "In diesem Dokument wird gezeigt, wie Sie die Security Center-Empfehlung „Zugriff über Endpunkt mit Internetzugriff einschränken“ umsetzen."
+title: Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center | Microsoft Docs
+description: In diesem Dokument wird gezeigt, wie Sie die Azure Security Center-Empfehlung **Zugriff über Endpunkt mit Internetzugriff einschränken** umsetzen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 727d88c9-163b-4ea0-a4ce-3be43686599f
 ms.service: security-center
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2017
 ms.author: terrylan
-ms.openlocfilehash: f7309c617f1705205e2c9f1b1b48d141391d45da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92906d31f4db21f37094f192dadd080e28cc6e8e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363052"
 ---
 # <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Einschränken des Zugriffs über Endpunkte mit Internetzugriff in Azure Security Center
 Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen (NSGs) mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Durch das Öffnen des Zugriffs für alle Quell-IP-Adressen können Angreifer ggf. auf Ihre Ressourcen zugreifen. Security Center empfiehlt, dass Sie diese Eingangsregeln so ändern, dass der Zugriff auf Quell-IP-Adressen eingeschränkt wird, die tatsächlich Zugriff benötigen.
@@ -44,18 +45,18 @@ Diese Empfehlung wird für alle Ports generiert, bei denen es sich nicht um Webp
 
    ![Eingangssicherheitsregeln][4]
 
-   Sie können auch **Standardregeln** auswählen, um die Standardregeln anzuzeigen, die in allen NSGs enthalten sind. Die Standardregeln können zwar nicht gelöscht werden, haben aber eine niedrigere Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden. Erfahren Sie mehr über [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules).
+   Sie können auch **Standardregeln** auswählen, um die Standardregeln anzuzeigen, die in allen NSGs enthalten sind. Die Standardregeln können zwar nicht gelöscht werden, haben aber eine niedrigere Priorität und können somit durch selbst erstellte Regeln außer Kraft gesetzt werden. Erfahren Sie mehr über [Standardregeln](../virtual-network/security-overview.md#default-security-rules).
 
    ![Standardregeln][5]
-5. Bearbeiten Sie auf dem Blatt **AllowWeb** die Eigenschaften der Eingangsregel, sodass die **Quelle** eine IP-Adresse oder ein Block von IP-Adressen ist. Weitere Informationen zu den Eigenschaften von Eingangsregeln finden Sie unter [NSG-Regeln](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+5. Bearbeiten Sie auf dem Blatt **AllowWeb** die Eigenschaften der Eingangsregel, sodass die **Quelle** eine IP-Adresse oder ein Block von IP-Adressen ist. Weitere Informationen zu den Eigenschaften von Eingangsregeln finden Sie unter [NSG-Regeln](../virtual-network/security-overview.md#security-rules).
 
    ![Eingangsregel bearbeiten][6]
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Zugriff über Endpunkt mit Internetzugriff einschränken“ umsetzen. Weitere Informationen zu NSGs und Regeln finden Sie in den folgenden Artikeln:
 
-* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/virtual-networks-nsg.md)
-* [Verwalten von NSGs mithilfe des Azure-Portals](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/security-overview.md)
+* [Verwalten einer Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md)
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 

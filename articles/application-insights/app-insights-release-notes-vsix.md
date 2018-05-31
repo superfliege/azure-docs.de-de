@@ -1,9 +1,9 @@
 ---
-title: "Versionshinweise für Visual Studio-Erweiterung für Developer Analytics"
-description: "Neueste Updates für Visual Studio-Tools für Developer Analytics"
+title: Versionshinweise für Visual Studio-Erweiterung für Developer Analytics
+description: Neueste Updates für Visual Studio-Tools für Developer Analytics
 services: application-insights
-documentationcenter: 
-author: acearun
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2001db30-efc5-417a-a413-93c1b218975f
 ms.service: application-insights
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: mbullwin
-ms.openlocfilehash: b1181698deee265e4b6b2df8bb18e2297cdc8599
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.author: mbullwin; aruna
+ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869545"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Versionshinweise für Developer Analytics Tools
 
@@ -167,7 +168,7 @@ Nachdem die Verbindung hergestellt wurde, wird das Formular für den Upload im D
 
 ![Dialogfeld „Upload“ für universelle Windows-Apps](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-Wählen Sie den Inhalt für den Upload aus (APPXBUNDLE- oder APPX-Datei), und wählen Sie im Assistenten dann die Veröffentlichungsoptionen aus. Auf der nächsten Seite können Sie optional die Versionshinweise hinzufügen. Wählen Sie die Option **Fertig stellen** , um den Upload zu starten.
+Wählen Sie den Inhalt für den Upload aus (eine APPXBUNDLE- oder APPX-Datei), und wählen Sie im Assistenten dann die Veröffentlichungsoptionen aus. Auf der nächsten Seite können Sie optional die Versionshinweise hinzufügen. Wählen Sie die Option **Fertig stellen** , um den Upload zu starten.
 
 Nach Abschluss des Uploads wird eine HockeyApp-Benachrichtigung mit der Bestätigung und einem Link zur App im HockeyApp-Portal angezeigt.
 
@@ -255,7 +256,7 @@ Diese Version enthält eine Reihe neuer Features und Updates. Update 1 muss inst
 ### <a name="jump-from-an-exception-to-method-in-source-code"></a>Springen von einer Ausnahme zu einer Methode in Quellcode
 Wenn Sie jetzt Ausnahmen aus der Produktions-App im Fenster der Application Insights-Suche anzeigen, können Sie im Code zu der Methode springen, für die die Ausnahme aufgetreten ist. Sie müssen nur das richtige Projekt laden, und Application Insights kümmert sich dann um den Rest! (Weitere Informationen zum Fenster der Application Insights-Suche finden Sie unter den Versionshinweisen für Version 4.0 in den folgenden Abschnitten.)
 
-Wie funktioniert Application Insights? Sie können die Application Insights-Suche auch verwenden, wenn keine Projektmappe geöffnet ist. Im Stapelüberwachungsbereich wird eine Meldung mit Informationen angezeigt, und viele Elemente der Stapelüberwachung sind nicht verfügbar.
+Wie funktioniert dies? Sie können die Application Insights-Suche auch verwenden, wenn keine Projektmappe geöffnet ist. Im Stapelüberwachungsbereich wird eine Meldung mit Informationen angezeigt, und viele Elemente der Stapelüberwachung sind nicht verfügbar.
 
 Falls Dateiinformationen verfügbar sind, kann es sich bei einigen Elemente ggf. um Links handeln, aber das Element mit den Projektmappeninformationen ist weiterhin sichtbar.
 
@@ -289,8 +290,3 @@ Sie müssen sich nicht mehr bei Azure anmelden, um Application Insights-Pakete I
 
 ![Dialogfeld "Neues Projekt"](./media/app-insights-release-notes-vsix/newproject.png)
 
-### <a name="device-support"></a>Unterstützung für Geräte
-Im Rahmen der *Connect();* 2015 haben wir [angekündigt](https://azure.microsoft.com/blog/deep-diagnostics-for-web-apps-with-application-insights/), dass HockeyApp unsere mobile Entwicklerumgebung für Geräte ist. HockeyApp unterstützt Sie beim Verteilen der Beta-Builds an Ihre Tester, beim Sammeln und Analysieren von allen Abstürzen Ihrer App und beim Sammeln von Feedback direkt von Ihren Kunden.
-HockeyApp unterstützt Ihre App auf jeder Plattform, die Sie für die Erstellung wählen. Dies kann iOS, Android oder Windows oder eine plattformübergreifende Lösung wie Xamarin, Cordova oder Unity sein.
-
-In zukünftigen Versionen der Application Insights-Erweiterung werden wir eine stärkere Integration zwischen HockeyApp und Visual Studio ermöglichen. Sie können vorerst mit der Verwendung von HockeyApp beginnen, indem Sie einfach den NuGet-Verweis hinzufügen. Weitere Informationen finden Sie in der [Dokumentation](http://support.hockeyapp.net/kb/client-integration-windows-and-windows-phone) .

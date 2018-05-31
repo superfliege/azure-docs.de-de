@@ -2,7 +2,7 @@
 title: 'Endbenutzerauthentifizierung: Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory umsetzen.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: dca040fba78d6501bc835fdac402e69149d493b5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 39ee32ec8b1d005aac12cb88262d7e2f37898721
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33938578"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory
 > [!div class="op_single_selector"]
@@ -83,7 +84,7 @@ Wenn Sie die Anweisungen unter diesem Link befolgen, stellen Sie sicher, dass Si
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Schritt 2: Abrufen von Anwendungs-ID und Umleitungs-URI
 
-Erfahren Sie unter [Abrufen der Anwendungs-ID](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key), wie Sie die Anwendungs-ID (im klassischen Azure-Portal auch Client-ID genannt) der nativen Azure AD-Anwendung abrufen.
+Informationen zum Abrufen der Anwendungs-ID finden Sie unter [Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 
 Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 
