@@ -1,23 +1,23 @@
 ---
 title: Automatisches Update der Azure-Notfallwiederherstellung in Mobility Service in Azure | Microsoft-Dokumentation
-description: Bietet einen Überblick über die automatische Aktualisierung von Mobility Service, die für die Replikation von Azure-VMs mit Azure Site Recovery verwendet wird.
+description: Bietet einen Überblick über die automatische Aktualisierung von Mobility Service für die Replikation von virtuellen Azure-Computern mit Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: rajanaki
-ms.openlocfilehash: 45f2e2927f699769bb385038c04d4dd23e075a9a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779687"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209830"
 ---
-# <a name="automatic-update-of-mobility-service-extension-in-azure-to-azure-replication"></a>Automatische Aktualisierung der Mobility Service-Erweiterung in Azure-zu-Azure-Replikation
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
-Bei Azure Site Recovery werden in einem monatlichen Versionsrhythmus Verbesserungen an vorhandenen Features vorgenommen oder neue hinzugefügt, und ggf. werden bekannte Probleme behoben. Um den Dienst stets auf dem neuesten Stand zu halten, müssen Sie also die Bereitstellung dieser Patches in monatlichem Rhythmus planen. Um unnötigen Aufwand in Verbindung mit dem Upgrade zu vermeiden, können Benutzer stattdessen wahlweise das Verwalten von Updates der Komponenten durch Site Recovery zulassen. Wie im [Architekturverweis](azure-to-azure-architecture.md) für Azure-zu-Azure-Notfallwiederherstellung beschrieben, wird beim Replizieren virtueller Computer von einer Azure-Region zu einer anderen Mobility Service auf allen Azure-VMs installiert. Dieses Dokument erläutert Folgendes:
+Bei Azure Site Recovery werden in einem monatlichen Versionsrhythmus Verbesserungen an vorhandenen Features vorgenommen oder neue hinzugefügt, und ggf. werden bekannte Probleme behoben. Um den Dienst stets auf dem neuesten Stand zu halten, müssen Sie also die monatliche Bereitstellung dieser Patches planen. Um unnötigen Aufwand in Verbindung mit dem Upgrade zu vermeiden, können Benutzer stattdessen wahlweise das Verwalten von Updates der Komponenten durch Site Recovery zulassen. Wie im [Architekturverweis](azure-to-azure-architecture.md) für Azure-zu-Azure-Notfallwiederherstellung beschrieben, wird beim Replizieren virtueller Computer von einer Azure-Region zu einer anderen Mobility Service auf allen Azure-VMs installiert. Sobald Sie die automatische Aktualisierung aktivieren, wird die Mobility Service-Erweiterung mit jeder neuen Version aktualisiert. Dieses Dokument erläutert Folgendes:
 
 - Wie funktioniert das automatische Update?
 - Aktivieren automatischer Updates
@@ -26,6 +26,9 @@ Bei Azure Site Recovery werden in einem monatlichen Versionsrhythmus Verbesserun
 ## <a name="how-does-automatic-update-work"></a>Wie funktioniert das automatische Update?
 
 Sobald Sie das Verwalten von Updates durch Site Recovery zulassen, wird ein globales Runbook (das von Azure-Diensten verwendet wird) über ein Automatisierungskonto bereitgestellt, das im selben Abonnement wie der Tresor erstellt wird. Ein Automatisierungskonto wird für einen bestimmten Tresor verwendet. Das Runbook überprüft für jeden virtuellen Computer in einem Tresor, welche automatischen Updates eingeschaltet sind, und initiiert ein Upgrade der Mobility Service-Erweiterung, wenn eine neuere Version verfügbar ist. Der Standardzeitplan für das Runbook wird täglich um 12:00 Uhr gemäß der Zeitzone des geografischen Gebiets der replizierten VM ausgeführt. Der Runbook-Zeitplan kann auch ggf. über das Automatisierungskonto durch den Benutzer geändert werden. 
+
+> [!NOTE]
+> Das Aktivieren von automatischen Updates erfordert keinen Neustart der virtuellen Azure-Computer und hat keinen Einfluss auf eine laufende Replikation.
 
 ## <a name="enable-automatic-updates"></a>Aktivieren automatischer Updates
 

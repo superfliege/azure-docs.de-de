@@ -1,27 +1,30 @@
 ---
-title: Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
+title: Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
 description: Dieser Schnellstart enthält eine Anleitung zum Replizieren einer Azure-VM aus einer Azure-Region in eine andere.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 04/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a317d54b56f72373d99af35b806cb231c2ef962e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208837"
 ---
-# <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Replizieren einer Azure-VM in eine andere Azure-Region (Vorschau)
+# <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
-Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird.
+Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird. Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschau.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -31,7 +34,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 1. Klicken Sie im Azure-Portal auf **Virtuelle Computer**, und wählen Sie die VM aus, die Sie replizieren möchten.
 
-2. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung (Vorschau)**.
+2. Klicken Sie in den **Einstellungen** auf **Notfallwiederherstellung**.
 3. Wählen Sie unter **Configure disaster recovery** (Notfallwiederherstellung konfigurieren) > **Zielregion** die Zielregion aus, in die Sie replizieren möchten.
 4. Akzeptieren Sie für diesen Schnellstart die anderen Standardeinstellungen.
 5. Klicken Sie auf **Replikation aktivieren**. Dadurch wird ein Auftrag gestartet, um die Replikation der VM zu aktivieren.
@@ -59,7 +62,7 @@ Die Replikation der VM in der primären Region wird beendet, wenn Sie die Replik
 Beenden Sie die Replikation wie folgt:
 
 1. Wählen Sie den virtuellen Computer aus.
-2. Klicken Sie unter **Notfallwiederherstellung (Vorschau)** auf **Mehr**.
+2. Klicken Sie unter **Notfallwiederherstellung** auf **Mehr**.
 3. Klicken Sie auf **Replikation deaktivieren**.
 
    ![Deaktivieren der Replikation](media/azure-to-azure-quickstart/disable2-replication.png)

@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 9fa0d74b2c07d3e460abc54ea6ef9733f07a64d1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302091"
 ---
 # <a name="azure-blockchain-workbench-messages-overview"></a>Übersicht über Nachrichten in Azure Blockchain Workbench
 
@@ -73,7 +74,7 @@ Abhängig vom „OperationName“ weisen die Benachrichtigungen einen der folgen
 
 Zeigt an, dass ein neues Konto zur angegebenen Blockchain hinzugefügt werden soll.
 
-| Name    | Beschreibung  |
+| NAME    | BESCHREIBUNG  |
 |----------|--------------|
 | UserId  | ID des erstellten Benutzers |
 | ChainIdentifier | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum wäre dies die „On-Chain“-Adresse des Benutzers. |
@@ -90,7 +91,7 @@ public class NewAccountRequest : MessageModelBase
 
 Gibt an, dass eine Anforderung zum Einfügen oder Aktualisieren eines Vertrags in ein Distributed Ledger vorliegt.
 
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 |-----|--------------|
 | ChainID | Ein eindeutiger Bezeichner für die mit der Anforderung verknüpften Kette|
   BlockId | Der eindeutige Bezeichner für einen Block im Ledger|
@@ -100,7 +101,7 @@ Gibt an, dass eine Anforderung zum Einfügen oder Aktualisieren eines Vertrags i
   OriginatingAddress |   Die Adresse des Erstellers des Übergangs|
   ActionName       |     Der Name der Aktion|
   IsUpdate        |      Identifiziert, ob es sich um ein Update handelt.|
-  Parameters       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren.|
+  Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren.|
   TopLevelInputParams |  In Szenarien, in denen ein Vertrag mit mindestens einem anderen Vertrag verbunden ist, sind dies die Parameter aus dem übergeordneten Vertrag. |
 
 ``` csharp
@@ -124,7 +125,7 @@ public class ContractInsertOrUpdateRequest : MessageModelBase
 
 Gibt an, dass eine Anforderung zum Ausführen einer Aktion für einen bestimmten Vertrag in einem Distributed Ledger vorliegt.
 
-| Name                     | Beschreibung                                                                                                                                                                   |
+| NAME                     | BESCHREIBUNG                                                                                                                                                                   |
 |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ContractActionId         | Der eindeutige Bezeichner für diese Vertragsaktion                                                                                                                                |
 | ChainIdentifier          | Der eindeutige Bezeichner für diese Kette                                                                                                                                           |
@@ -163,9 +164,9 @@ Gibt an, dass eine Anforderung zum Aktualisieren des Benutzerguthabens in einem 
 > Diese Nachricht wird nur für diejenigen Ledger generiert, für die eine Kontenfinanzierung erforderlich ist.
 > 
 
-| Name    | Beschreibung                              |
+| NAME    | BESCHREIBUNG                              |
 |---------|------------------------------------------|
-| Address | Die Adresse des finanzierten Benutzers |
+| Adresse | Die Adresse des finanzierten Benutzers |
 | Balance | Das Guthaben des Benutzers         |
 | ChainID | Der eindeutige Bezeichner für die Kette     |
 
@@ -183,7 +184,7 @@ public class UpdateUserBalanceRequest : MessageModelBase
 
 Die Nachricht, die angibt, dass eine Anforderung zum Hinzufügen eines Blocks in einem Distributed Ledger vorliegt.
 
-| Name           | Beschreibung                                                            |
+| NAME           | BESCHREIBUNG                                                            |
 |----------------|------------------------------------------------------------------------|
 | ChainId        | Der eindeutige Bezeichner der Kette, zu der der Block hinzugefügt wurde.             |
 | BlockId        | Der eindeutige Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
@@ -204,14 +205,14 @@ public class InsertBlockRequest : MessageModelBase
 
 Die Nachricht, die Details über eine Anforderung zum Hinzufügen eines Übergangs in einem Distributed Ledger enthält.
 
-| Name            | Beschreibung                                                            |
+| NAME            | BESCHREIBUNG                                                            |
 |-----------------|------------------------------------------------------------------------|
 | ChainId         | Der eindeutige Bezeichner der Kette, zu der der Block hinzugefügt wurde.             |
 | BlockId         | Der eindeutige Bezeichner für den Block innerhalb von Azure Blockchain Workbench |
 | TransactionHash | Der Hash der Transaktion                                           |
 | From            | Die Adresse des Erstellers des Übergangs                      |
 | To              | Die Adresse des beabsichtigten Empfängers der Transaktion              |
-| Value           | Der in der Transaktion enthaltene Wert                                 |
+| Wert           | Der in der Transaktion enthaltene Wert                                 |
 | IsAppBuilderTx  | Identifiziert, ob dies eine Blockchain Workbench-Transkation ist.                         |
 
 ``` csharp
@@ -231,7 +232,7 @@ public class InsertTransactionRequest : MessageModelBase
 
 Enthält Details über die Zuordnung eines Kettenbezeichners für einen Vertrag. In einer Ethereum-Blockchain wäre dies beispielsweise die Adresse eines Vertrags im Ledger.
 
-| Name            | Beschreibung                                                                       |
+| NAME            | BESCHREIBUNG                                                                       |
 |-----------------|-----------------------------------------------------------------------------------|
 | ContractId      | Dies ist der eindeutige Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
 | ChainIdentifier | Dies ist der Bezeichner für den Vertrag in der Kette.                             |
@@ -246,4 +247,5 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Blockchain Workbench-Architektur](blockchain-workbench-architecture.md)
+> [!div class="nextstepaction"]
+> [Smart Contract-Integrationsmuster](blockchain-workbench-integration-patterns.md)

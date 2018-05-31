@@ -1,9 +1,9 @@
 ---
 title: Anmeldeverfahren von Azure AD Identity Protection | Microsoft Docs
-description: "Hier finden Sie eine Übersicht über Anmeldeszenarien, in denen Identity Protection ein Benutzerrisiko gemindert oder beseitigt hat oder in denen aufgrund einer Richtlinie die Verwendung der mehrstufigen Authentifizierung erforderlich ist."
+description: Hier finden Sie eine Übersicht über Anmeldeszenarien, in denen Identity Protection ein Benutzerrisiko gemindert oder beseitigt hat oder in denen aufgrund einer Richtlinie die Verwendung der mehrstufigen Authentifizierung erforderlich ist.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, Verwalten von Anwendungen, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 558d1e04e352d5f33201bb15cb7a2dd1c18f524f
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164202"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Anmeldeverfahren von Azure AD Identity Protection
 Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
@@ -49,10 +50,7 @@ In diesem Thema können Sie sich einen Überblick über alle Fälle verschaffen,
 ## <a name="multi-factor-authentication-registration"></a>Registrierung für die mehrstufige Authentifizierung
 Sowohl bei der Wiederherstellung gefährdeter Konten als auch bei riskanten Anmeldungen ist die Benutzerfreundlichkeit am größten, wenn der Benutzer die Wiederherstellung selbst durchführen kann. Den Konten von Benutzern, die sich für die mehrstufige Authentifizierung registriert haben, ist bereits eine Telefonnummer zugeordnet, die für die Sicherheitsabfragen verwendet werden kann. Das gefährdete Konto kann ganz ohne Beteiligung des Helpdesks oder eines Administrators wiederhergestellt werden. Sie sollten daher unbedingt sicherstellen, dass sich die Benutzer für die mehrstufige Authentifizierung registrieren. 
 
-Administratoren haben folgende Möglichkeiten:
-
-* Sie können eine Richtlinie festlegen, die es für Benutzer erforderlich macht, ihre Konten für eine zusätzliche Sicherheitsüberprüfung einzurichten. 
-* Sie können eine Übergangsphase von bis zu 30 Tagen einrichten, in der die Benutzer die Registrierung für die mehrstufige Authentifizierung überspringen können.
+Administratoren können eine Richtlinie festlegen, die es für Benutzer erforderlich macht, ihre Konten für eine zusätzliche Sicherheitsüberprüfung einzurichten. Diese Richtlinie ermöglicht es Benutzern, die Registrierung für die mehrstufige Authentifizierung bis zu 14 Tage lang zu überspringen. Die Toleranzperiode von 14 Tagen ist nicht konfigurierbar.
 
 **Die Registrierung für die mehrstufige Authentifizierung umfasst drei Schritte:**
 

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271648"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff über das OMS-Gateway
 Dieses Dokument beschreibt, wie die Kommunikation mit Azure Automation and Log Analytics über das OMS-Gateway konfiguriert wird, wenn direkt verbundene oder durch Operations Manager überwachte Computer keinen Internetzugang haben.  Das OMS-Gateway, ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
@@ -131,20 +132,18 @@ Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Net
 
 Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  Die folgenden Schritte beschreiben, wie Sie einen Cluster mit Microsoft-Netzwerklastenausgleich konfigurieren.  
 
-1.  Melden Sie sich mit einem Administratorkonto bei dem Windows-Server an, der dem NLB-Cluster angehört.  
-2.  Öffnen Sie im Server-Manager den Netzwerklastenausgleich-Manager, klicken Sie auf **Tools**, und klicken Sie anschließend auf **Netzwerklastenausgleich-Manager**.
+1. Melden Sie sich mit einem Administratorkonto bei dem Windows-Server an, der dem NLB-Cluster angehört.  
+2. Öffnen Sie im Server-Manager den Netzwerklastenausgleich-Manager, klicken Sie auf **Tools**, und klicken Sie anschließend auf **Netzwerklastenausgleich-Manager**.
 3. Um einen OMS-Gatewayserver mit dem installierten Microsoft Monitoring Agent zu verbinden, klicken Sie mit der rechten Maustaste auf die IP-Adresse des Clusters, und klicken Sie dann auf **Host dem Cluster hinzufügen**.<br><br> ![Netzwerklastenausgleich-Manager – Host dem Cluster hinzufügen](./media/log-analytics-oms-gateway/nlb02.png)<br> 
 4. Geben Sie die IP-Adresse des Gatewayservers ein, mit dem Sie eine Verbindung herstellen möchten.<br><br> ![Netzwerklastenausgleich-Manager – Host dem Cluster hinzufügen: Verbinden](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Konfigurieren von OMS-Agent und Operations Manager-Verwaltungsgruppe
 Im folgenden Abschnitt erfahren Sie, wie Sie direkt verbundene OMS-Agents, eine Operations Manager-Verwaltungsgruppe oder Azure Automation Hybrid Runbook Worker mit dem OMS-Gateway konfigurieren, um die Kommunikation mit Azure Automation und Log Analytics zu ermöglichen.  
 
-Informationen zu den Anforderungen und Schritten zum Installieren des OMS-Agents auf Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](log-analytics-quick-collect-linux-computer.md).  Informationen zum Automation Hybrid Runbook Worker finden Sie unter [Bereitstellen von Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).
-
-### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>Konfigurieren von OMS-Agent und Operations Manager für die Verwendung des OMS-Gateways als Proxyserver
-
 ### <a name="configure-standalone-oms-agent"></a>Konfigurieren eines eigenständigen OMS-Agents
-Informationen zum Konfigurieren eines Agents für die Verwendung eines Proxyservers (in diesem Fall: das Gateway) finden Sie unter [Konfigurieren von Proxy- und Firewalleinstellungen mit dem Microsoft Monitoring Agent](log-analytics-proxy-firewall.md).  Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der OMS-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLBs:<br><br> ![Microsoft Monitoring Agenteigenschaften – Proxyeinstellungen](./media/log-analytics-oms-gateway/nlb04.png)
+Informationen zu den Anforderungen und Schritten zum Installieren des OMS-Agents auf Windows-Computern mit Log Analytics-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden von Linux-Computern mit Log Analytics](log-analytics-quick-collect-linux-computer.md). Statt einen Proxyserver bei der Konfiguration des Agents anzugeben, ersetzen Sie diesen Wert durch die IP-Adresse des OMS-Gatewayservers und die Portnummer.  Wenn Sie mehrere Gatewayserver hinter einem Netzwerklastenausgleich bereitgestellt haben, handelt es sich bei der OMS-Agent-Proxykonfiguration um die virtuelle IP-Adresse des NLB.  
+
+Informationen zum Automation Hybrid Runbook Worker finden Sie unter [Bereitstellen von Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>Konfigurieren von Operations Manager (alle Agents verwenden den gleichen Proxyserver)
 Sie konfigurieren Operations Manager, um den Gatewayserver hinzuzufügen.  Die Operations Manager-Proxykonfiguration wird automatisch auf alle Agents angewendet, die Operations Manager unterstellt sind. Das gilt auch, wenn die Einstellung leer ist.  
