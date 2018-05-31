@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 05/16/2018
 ms.author: sujayt
-ms.openlocfilehash: e3acedf4135166f5239b95eb21eb5dfd66d6100f
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 55eed1afa9d9dbf2c16643cf9186a7e6dafa847e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312626"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211020"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -32,7 +32,7 @@ Das folgende Diagramm zeigt eine typische Azure-Umgebung für Anwendungen, die a
 
 ![Kundenumgebung](./media/site-recovery-azure-to-azure-architecture/source-environment.png)
 
-Wenn Ihr lokales Netzwerk über eine Azure ExpressRoute- oder VPN-Verbindung mit Azure verbunden ist, sieht die Umgebung wie folgt aus:
+Wenn Ihr lokales Netzwerk über Azure ExpressRoute oder VPN mit Azure verbunden ist, sieht die Umgebung wie folgt aus:
 
 ![Kundenumgebung](./media/site-recovery-azure-to-azure-architecture/source-environment-expressroute.png)
 
