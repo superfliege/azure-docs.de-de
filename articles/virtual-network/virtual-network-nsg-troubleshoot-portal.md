@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: be400d674068d89f60d3c999006bc9291944ab1c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 67ffe826ba13576578e8f09e36f84128f4ceb0f2
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366493"
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Problembehandlung bei Netzwerksicherheitsgruppen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -30,9 +31,9 @@ ms.lasthandoff: 05/14/2018
 
 Wenn Sie Netzwerksicherheitsgruppen (NSGs) auf dem virtuellen Computer (VM) konfiguriert haben und Probleme bei der Verbindung mit dem virtuellen Computer auftreten, bietet dieser Artikel eine Übersicht über Diagnosefunktionen für NSGs zur weiteren Problembehandlung.
 
-Über NSGs können Sie die Typen des Datenverkehrs steuern, der bei den virtuellen Computern ein- und ausgeht. NSGs können auf Subnetze in einem virtuellen Azure-Netzwerk (VNET), auf Netzwerkschnittstellen (NIC) oder auf beide angewendet werden. Die auf eine NIC angewendeten effektiven Regeln sind eine Aggregation der Regeln, die in den auf eine NIC angewendeten NSGs und in dem Subnetz vorhanden sind, mit dem sie verbunden ist. Die Regeln für diese NSGs können manchmal in Konflikt miteinander stehen und sich auf die Netzwerkverbindung eines virtuellen Computers auswirken.  
+Über NSGs können Sie die Typen des Datenverkehrs steuern, der bei den virtuellen Computern ein- und ausgeht. NSGs können auf Subnetze in einem virtuellen Azure-Netzwerk (VNET), auf Netzwerkschnittstellen (NIC) oder auf beide angewendet werden. Die auf eine NIC angewendeten effektiven Regeln sind eine Aggregation der Regeln, die in den auf eine NIC angewendeten NSGs und in dem Subnetz vorhanden sind, mit dem sie verbunden ist. Die Regeln für diese NSGs können manchmal in Konflikt miteinander stehen und sich auf die Netzwerkverbindung eines virtuellen Computers auswirken.
 
-Sie können alle effektiven Sicherheitsregeln der NSGs anzeigen, die auf NICs der virtuellen Computer angewendet werden. In diesem Artikel wird erläutert, wie Verbindungsprobleme bei virtuellen Computern mithilfe dieser Regeln im Azure Resource Manager-Bereitstellungsmodell behoben werden. Wenn Sie nicht mit dem VNET- und NSG-Konzept vertraut sind, finden Sie entsprechende Informationen in den Übersichtsartikeln zu [virtuellen Netzwerken](virtual-networks-overview.md) und [Netzwerksicherheitsgruppen](virtual-networks-nsg.md).
+Sie können alle effektiven Sicherheitsregeln der NSGs anzeigen, die auf NICs der virtuellen Computer angewendet werden. In diesem Artikel wird erläutert, wie Verbindungsprobleme bei virtuellen Computern mithilfe dieser Regeln im Azure Resource Manager-Bereitstellungsmodell behoben werden. Wenn Sie nicht mit dem VNET- und NSG-Konzept vertraut sind, finden Sie entsprechende Informationen in der Übersicht über [virtuelle Netzwerke](virtual-networks-overview.md) und [Netzwerksicherheitsgruppen](security-overview.md).
 
 ## <a name="using-effective-security-rules-to-troubleshoot-vm-traffic-flow"></a>Verwenden von effektiven Sicherheitsregeln zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern
 Das folgende Szenario ist ein Beispiel für ein häufig auftretendes Verbindungsproblem:
@@ -66,7 +67,7 @@ Sie können die vollständige Liste der effektiven Sicherheitsregeln für eine N
    * **Bereich:** ist auf den in Schritt 3 ausgewählten virtuellen Computer *VM1*festgelegt.
    * **Netzwerkschnittstelle:***VM1-NIC1* ist ausgewählt. Ein virtueller Computer kann über mehrere Netzwerkschnittstellen (NIC) verfügen. Jede NIC kann eindeutige effektive Sicherheitsregeln aufweisen. Bei der Problembehandlung müssen Sie möglicherweise die effektiven Sicherheitsregeln für jede NIC anzeigen.
    * **Associated NSGs** (Zugeordnete NSGs): NSGs können auf die NIC sowie das Subnetz angewendet werden, mit dem die NIC verbunden ist. In der Abbildung wurde eine NSG sowohl auf die NIC als auch auf das Subnetz angewendet, mit dem sie verbunden ist. Sie können auf die Namen der NSGs klicken, um Regeln in den NSGs direkt zu ändern.
-   * **Registerkarte „VM1-nsg“:** In der Abbildung wird die Liste der Regeln für die auf die NIC angewendete NSG angezeigt. Beim Erstellen einer NSG werden in Azure immer mehrere Standardregeln erstellt. Die Standardregeln können nicht entfernt werden, Sie können sie jedoch durch Regeln mit höherer Priorität überschreiben. Weitere Informationen zu Standardregeln finden Sie im Artikel [Übersicht über NSGs](virtual-networks-nsg.md#default-rules) .
+   * **Registerkarte „VM1-nsg“:** In der Abbildung wird die Liste der Regeln für die auf die NIC angewendete NSG angezeigt. Beim Erstellen einer NSG werden in Azure immer mehrere Standardregeln erstellt. Die Standardregeln können nicht entfernt werden, Sie können sie jedoch durch Regeln mit höherer Priorität überschreiben. Erfahren Sie mehr über [Standardsicherheitsregeln](security-overview.md#default-security-rules).
    * **Spalte „ZIEL“:** Für einige Regeln enthält diese Spalte Text, für andere sind Adresspräfixe aufgeführt. Der Text entspricht dem Namen der Standardtags, die beim Erstellen auf die Sicherheitsregel angewendet werden. Die Tags sind vom System bereitgestellte Bezeichner, die mehrere Präfixe darstellen. Bei der Auswahl einer Regel mit einem Tag, etwa *AllowInternetOutBound*, werden die Präfixe auf dem Blatt **Address prefixes** (Adresspräfixe) aufgeführt.
    * **Herunterladen:** Die Liste der Regeln kann lang sein. Sie können eine CSV-Datei der Regeln für die Offlineanalyse herunterladen, indem Sie auf **Herunterladen** klicken und die Datei speichern.
    * **Eingehende Regel „AllowRDP“:** Diese Regel ermöglicht RDP-Verbindungen mit dem virtuellen Computer.

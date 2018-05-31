@@ -3,17 +3,18 @@ title: Anwenden von Empfehlungen zur Leistung für Azure SQL-Datenbank | Microso
 description: Im Azure-Portal erhalten Sie Empfehlungen zur Leistungsverbesserung, mit denen Sie die Leistung Ihrer Azure SQL-Datenbank optimieren können.
 services: sql-database
 author: stevestein
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 92a7b46469bad56af2e08de98a1f79b4b8059eda
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3361519c260fe842ae362814cbee62aa9257b9f8
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364351"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -98,7 +99,11 @@ Sie können den Azure SQL-Datenbank so konfigurieren, dass Empfehlungen automati
     ![Advisor-Einstellungen](./media/sql-database-advisor-portal/settings.png)
 2. Zu automatisierende Aktionen auswählen:
    
-    ![Empfohlene Indizes](./media/sql-database-advisor-portal/automation.png)
+    ![Empfohlene Indizes](./media/sql-database-automatic-tuning-enable/server.png)
+
+> [!NOTE]
+> Beachten Sie, dass die Option **DROP_INDEX** zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. In diesen Fällen sollte sie nicht aktiviert werden.
+>
 
 ### <a name="manually-run-the-recommended-t-sql-script"></a>Manuelles Ausführen des empfohlenen T-SQL-Skripts
 Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen**. Führen Sie dieses Skript für Ihre Datenbank aus, um die Empfehlung manuell anzuwenden.

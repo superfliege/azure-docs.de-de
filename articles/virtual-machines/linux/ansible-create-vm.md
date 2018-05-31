@@ -7,7 +7,7 @@ author: iainfoulds
 manager: jeconnoc
 editor: na
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 80406994402b488f4172069b13dca593c470efe4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a2bf047d5a08bfd3df6a6c76116d2b9b9ab81fad
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896162"
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Erstellen eines einfachen virtuellen Computers in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie einen einfachen virtuellen Computer mit Ansible erstellen. Sie können sich auch darüber informieren, wie Sie [eine vollständige Umgebung mit virtuellen Computern mit Ansible erstellen](ansible-create-complete-vm.md).
@@ -29,7 +30,7 @@ Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von
 Um Azure-Ressourcen mit Ansible verwalten zu können, benötigen Sie Folgendes:
 
 - Ansible und die Azure Python-SDK-Module auf dem Hostsystem
-    - Installieren von Ansible unter [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts), [CentOS 7.3](ansible-install-configure.md#centos-73) und [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
+    - Installieren von Ansible unter [CentOS 7.4](ansible-install-configure.md#centos-74), [Ubuntu 16.04 LTS](ansible-install-configure.md#ubuntu-1604-lts) und [SLES 12 SP2](ansible-install-configure.md#sles-12-sp2)
 - Azure-Anmeldeinformationen und eine für deren Verwendung konfigurierte Ansible-Instanz
     - [Erstellen von Azure-Anmeldeinformationen und Konfigurieren von Ansible](ansible-install-configure.md#create-azure-credentials)
 - Azure-Befehlszeilenschnittstelle, Version 2.0.4 oder höher. Führen Sie `az --version` aus, um die Version zu finden. 

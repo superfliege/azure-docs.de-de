@@ -1,11 +1,11 @@
 ---
-title: "Bewährte Methoden für die Azure-Netzwerksicherheit | Microsoft-Dokumentation"
+title: Bewährte Methoden für die Azure-Netzwerksicherheit | Microsoft-Dokumentation
 description: Lernen Sie einige der wesentlichen Features von Azure zum Einrichten sicherer Netzwerkumgebungen kennen.
 services: virtual-network
 documentationcenter: na
 author: tracsman
 manager: rossort
-editor: 
+editor: ''
 ms.assetid: d169387a-1243-4867-a602-01d6f2d8a2a1
 ms.service: virtual-network
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf015f4857a22b755813d0be1af5a55a8b7b6535
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360471"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft-Clouddienste und Netzwerksicherheit
 Microsoft Cloud Services bieten hyperskalierbare Dienste und Infrastrukturen, Features auf Unternehmensniveau und vielfältige Auswahlmöglichkeiten für Hybridkonnektivität. Kunden können entweder über das Internet oder mit Azure ExpressRoute auf diese Dienste zugreifen. Letzteres stellt private Netzwerkkonnektivität bereit. Microsoft Azure Platform ermöglicht Kunden eine nahtlose Erweiterung ihrer Infrastruktur auf die Cloud und den Aufbau mehrstufiger Architekturen. Zudem können Drittanbieter über Sicherheitsdienste und virtuelle Geräte erweiterte Funktionen anbieten. Dieses Whitepaper bietet einen Überblick über Aspekte zu Sicherheit und Architektur, die Kunden beim Einsatz von Microsoft-Clouddiensten über ExpressRoute berücksichtigen sollten. Außerdem behandelt es die Erstellung sicherer Dienste in virtuellen Azure-Netzwerken.
@@ -30,10 +31,10 @@ Das folgende logische Diagramm bietet Hilfestellung bei der Auswahl aus den viel
 [Beispiel 1: Erstellen eines Umkreisnetzwerks (auch bekannt als DMZ, demilitarisierte Zone oder überwachtes Subnetz) zum Schutz von Anwendungen durch Netzwerksicherheitsgruppen (NSGs)](#example-1-build-a-perimeter-network-to-help-protect-applications-with-nsgs)</br>
 [Beispiel 2: Erstellen eines Umkreisnetzwerks zum Schutz von Anwendungen durch eine Firewall und NSGs](#example-2-build-a-perimeter-network-to-help-protect-applications-with-a-firewall-and-nsgs)</br>
 [Beispiel 3: Erstellen eines Umkreisnetzwerks zum Schutz von Netzwerken durch eine Firewall, UDR (User-Defined Routing, benutzerdefiniertes Routing) und NSGs](#example-3-build-a-perimeter-network-to-help-protect-networks-with-a-firewall-and-udr-and-nsg)</br>
-[Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Standort-zu-Standort-VPN über ein virtuelles Gerät](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
+[Beispiel 4: Hinzufügen einer Hybridverbindung mit einem Site-to-Site-VPN über ein virtuelles Gerät](#example-4-add-a-hybrid-connection-with-a-site-to-site-virtual-appliance-vpn)</br>
 [Beispiel 5: Hinzufügen einer Hybridverbindung mit einem Site-to-Site-, Azure-VPN-Gateway](#example-5-add-a-hybrid-connection-with-a-site-to-site-azure-vpn-gateway)</br>
 [Beispiel 6: Hinzufügen einer Hybridverbindung mit ExpressRoute](#example-6-add-a-hybrid-connection-with-expressroute)</br>
-Beispiele für das Hinzufügen von Verbindungen zwischen virtuellen Netzwerken, hohe Verfügbarkeit und Dienstverkettung werden diesem Dokument in den nächsten Monaten hinzugefügt.
+Beispiele für das Hinzufügen von Verbindungen zwischen virtuellen Netzwerken, Hochverfügbarkeit und Dienstverkettung werden diesem Dokument in den nächsten Monaten hinzugefügt.
 
 ## <a name="microsoft-compliance-and-infrastructure-protection"></a>Microsoft-Compliance und Infrastrukturschutz
 Um Organisationen bei der Einhaltung nationaler sowie länder- und branchenspezifischer Anforderungen hinsichtlich der Erfassung und Nutzung personenbezogener Daten zu helfen, bietet Microsoft mehr als 40 Zertifizierungen und Nachweise. Dies sind mehr als alle anderen Clouddienstanbieter.
@@ -228,7 +229,7 @@ Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 
 Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an den Webserver sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund wird die HTTP-Anforderung für den Webserver als zulässig eingestuft. Falls derselbe Datenverkehr versuchen würde, den DNS01-Server zu erreichen, würde Regel 5 (Verweigern) zuerst gelten. Für den Datenverkehr wird die Übergabe an den Server also nicht zugelassen. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Mit diesem Regelsatz wird das Back-End-Netzwerk für den Fall geschützt, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
 
-Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Regeln für die ausgehende Richtung geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
+Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
 
 #### <a name="conclusion"></a>Zusammenfassung
 Dieses Beispiel ist eine relativ einfache und direkte Möglichkeit, das Back-End-Subnetz von eingehendem Datenverkehr zu isolieren. Weitere Informationen finden Sie in den [detaillierten Einrichtungsanweisungen][Example1]. In diesen Anweisungen wird Folgendes behandelt:
@@ -276,7 +277,7 @@ Folgende Regeln werden deklarativ für eingehenden Datenverkehr erstellt:
 
 Wenn diese Regeln an die einzelnen Subnetze gebunden sind, gelten beim Eingehen einer HTTP-Anforderung aus dem Internet an die Firewall sowohl Regel 3 (Zulassen) als auch Regel 5 (Verweigern). Aber da Regel 3 eine höhere Priorität hat, wird nur sie angewendet, und Regel 5 findet keine Anwendung. Aus diesem Grund würde die HTTP-Anforderung für die Firewall als zulässig eingestuft werden. Falls versucht würde, denselben Datenverkehr an den IIS01-Server zu senden, würde Regel 5 (Ablehnen) – obwohl der Server sich im Front-End-Subnetz befindet – zuerst angewendet, der Datenverkehr also nicht an den Server übergeben. Regel 6 (Verweigern) verhindert die Kommunikation des Front-End-Subnetzes mit dem Back-End-Subnetz (mit Ausnahme von zulässigem Datenverkehr in den Regeln 1 und 4). Mit diesem Regelsatz wird das Back-End-Netzwerk für den Fall geschützt, dass ein Angreifer die Webanwendung auf dem Front-End gefährdet. Der Angreifer könnte nur eingeschränkt auf das „geschützte“ Back-End-Netzwerk zugreifen (nur auf die Ressourcen, die auf dem Server „AppVM01“ zur Verfügung gestellt werden).
 
-Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine Regeln für die ausgehende Richtung geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
+Es gibt eine Standardregel für ausgehenden Datenverkehr, die das Senden von Datenverkehr an das Internet zulässt. In diesem Beispiel wird ausgehender Datenverkehr zugelassen, und es werden keine ausgehenden Regeln geändert. Um den Datenverkehr in beide Richtungen abzusichern, ist benutzerdefiniertes Routing erforderlich (siehe Beispiel 3).
 
 #### <a name="firewall-rule-description"></a>Beschreibung der Firewallregel
 In der Firewall sollten Weiterleitungsregeln erstellt werden. Da in diesem Beispiel nur eingehender Internetdatenverkehr an die Firewall und dann an den Webserver geleitet wird, ist nur eine NAT-Weiterleitungsregel erforderlich.
@@ -513,9 +514,9 @@ Durch das Hinzufügen einer privaten ExpressRoute-Peering-Netzwerkverbindung kan
 ## <a name="references"></a>Referenzen
 ### <a name="helpful-websites-and-documentation"></a>Hilfreiche Websites und Dokumentation
 * Implementierung mit Azure Resource Manager:
-* Zugreifen auf Azure mit PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
+* Zugriff auf Azure mit PowerShell: [https://docs.microsoft.com/powershell/azureps-cmdlets-docs/](/powershell/azure/overview)
 * Dokumentation zu virtuellen Netzwerken: [https://docs.microsoft.com/azure/virtual-network/](https://docs.microsoft.com/azure/virtual-network/)
-* Dokumentation zu Netzwerksicherheitsgruppen: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/virtual-networks-nsg.md)
+* Dokumentation zu Netzwerksicherheitsgruppen: [https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg](virtual-network/security-overview.md)
 * Dokumentation zum benutzerdefinierten Routing (UDR): [https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview](virtual-network/virtual-networks-udr-overview.md)
 * Virtuelle Azure-Gateways: [https://docs.microsoft.com/azure/vpn-gateway/](https://docs.microsoft.com/azure/vpn-gateway/)
 * Site-to-Site-VPNs: [https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell](vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
