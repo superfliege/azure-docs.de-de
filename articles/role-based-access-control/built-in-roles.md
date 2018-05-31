@@ -15,12 +15,12 @@ ms.date: 05/11/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 85a9b3a4f1fc21cbb47d41a61661de38d6fc246d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 91f721f5508191c7530e57b6dd96cad3301542a7
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160834"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203504"
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern, Gruppen und Dienstprinzipalen zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Ressourcen in Azure zugreifen. Die integrierten Rollen können nicht geändert werden, es können jedoch eigene [benutzerdefinierte Rollen](custom-roles.md) je nach den spezifischen Anforderungen Ihrer Organisation erstellt werden.
@@ -101,7 +101,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Traffic Manager-Mitwirkender](#traffic-manager-contributor) | Ermöglicht Ihnen die Verwaltung von Traffic Manager-Profilen, aber nicht die Steuerung des Zugriffs darauf. |
 | [Benutzerzugriffsadministrator](#user-access-administrator) | Ermöglicht Ihnen die Verwaltung von Benutzerzugriffen auf Azure-Ressourcen. |
 | [VM-Administratoranmeldung](#virtual-machine-administrator-login) | Benutzer mit dieser Rolle haben die Möglichkeit, sich bei einem virtuellen Computer mit Windows-Administrator- oder Linux-Root-Benutzerrechten anzumelden. |
-| [Mitwirkender von virtuellen Computern](#virtual-machine-contributor) | Ermöglicht Ihnen das Verwalten virtueller Computer, nicht aber des Zugriffs auf diese und auf verbundene virtuelle Netzwerke oder Speicherkonten. |
+| [Mitwirkender von virtuellen Computern](#virtual-machine-contributor) | Ermöglicht Ihnen das Verwalten virtueller Computer, aber weder den Zugriff darauf, noch auf deren verbundenen virtuellen Netzwerke oder Speicherkonten. |
 | [VM-Benutzeranmeldung](#virtual-machine-user-login) | Benutzer mit dieser Rolle haben die Möglichkeit, sich als normaler Benutzer an einem virtuellen Computer anzumelden. |
 | [Mitwirkender von Webplan](#web-plan-contributor) | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. |
 | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. |
@@ -1443,7 +1443,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten virtueller Computer, nicht aber des Zugriffs auf diese und auf verbundene virtuelle Netzwerke oder Speicherkonten. |
+> | **Beschreibung** | Ermöglicht Ihnen das Verwalten virtueller Computer, aber weder den Zugriff darauf, noch auf deren verbundenen virtuellen Netzwerke oder Speicherkonten. |
 > | **Id** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |

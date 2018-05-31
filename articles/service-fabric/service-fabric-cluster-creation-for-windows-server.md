@@ -1,24 +1,25 @@
 ---
-title: "Erstellen eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation"
-description: "Erstellen Sie einen Azure Service Fabric-Cluster auf einem beliebigen Computer (physisch oder virtuell) unter Windows Server – lokal oder in einer Cloud."
+title: Erstellen eines eigenständigen Azure Service Fabric-Clusters | Microsoft-Dokumentation
+description: Erstellen Sie einen Azure Service Fabric-Cluster auf einem beliebigen Computer (physisch oder virtuell) unter Windows Server – lokal oder in einer Cloud.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 31349169-de19-4be6-8742-ca20ac41eb9e
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
-ms.author: dekapur;chackdan;maburlik
-ms.openlocfilehash: 7d65845d21205e22a3e5b0868acb637ff614fb42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: dekapur
+ms.openlocfilehash: efa48aa90806b45c99237404af24cb8aba762d15
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209153"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet.
@@ -130,7 +131,7 @@ Beispiel:
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
 ```
 ### <a name="step-3-bring-up-service-fabric-explorer"></a>Schritt 3: Aufrufen von Service Fabric Explorer
-Jetzt können Sie über Service Fabric Explorer eine Verbindung mit dem Cluster herstellen, und zwar entweder direkt von einem der Computer mit „http://localhost:19080/Explorer/index.html“ oder per Remotezugriff mit „http://<*IPAddressofaMachine*>:19080/Explorer/index.html“.
+Nun können Sie mithilfe von Service Fabric Explorer eine Verbindung mit dem Cluster herstellen – entweder direkt von einem der Computer aus (über http://localhost:19080/Explorer/index.html) oder per Remotezugriff (über *http://<IP-Adresse eines Computers>:19080/Explorer/index.html*).
 
 ## <a name="add-and-remove-nodes"></a>Hinzufügen und Entfernen von Knoten
 Wenn sich Ihre geschäftlichen Anforderungen ändern, können Sie dem eigenständigen Service Fabric-Cluster Knoten hinzufügen oder Knoten daraus entfernen. Ausführliche Schritte finden Sie unter [Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server](service-fabric-cluster-windows-server-add-remove-nodes.md).
@@ -156,7 +157,7 @@ Dieses Skript kann auf jedem Computer ausgeführt werden, der Administratorzugri
 ## <a name="telemetry-data-collected-and-how-to-opt-out-of-it"></a>Erfasste Telemetriedaten und Vorgehensweise zum Deaktivieren der Erfassung
 Zur Verbesserung des Produkts werden standardmäßig Telemetriedaten zur Service Fabric-Nutzung erfasst. Der im Rahmen der Einrichtung ausgeführte Best Practices Analyzer überprüft die Verbindung mit [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1). Ist die Adresse nicht erreichbar, ist die Einrichtung nicht erfolgreich – es sei denn, Sie widersprechen der Erfassung von Telemetriedaten.
 
-1. 1) Die Telemetriepipeline versucht einmal täglich, folgende Daten an [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) hochzuladen. Der Upload basiert auf dem Best-Effort-Prinzip und hat keinen Einfluss auf die Funktionen des Clusters. Die Telemetriedaten werden nur von dem Knoten gesendet, der die primäre Komponente des Failover-Managers ausführt. Andere Knoten senden keine Telemetriedaten.
+1. Die Telemetriepipeline versucht einmal täglich, folgende Daten nach [https://vortex.data.microsoft.com/collect/v1](https://vortex.data.microsoft.com/collect/v1) hochzuladen. Der Upload basiert auf dem Best-Effort-Prinzip und hat keinen Einfluss auf die Funktionen des Clusters. Die Telemetriedaten werden nur von dem Knoten gesendet, der die primäre Komponente des Failover-Managers ausführt. Andere Knoten senden keine Telemetriedaten.
 2. Die Telemetriedaten umfassen Folgendes:
 
 * Anzahl von Diensten

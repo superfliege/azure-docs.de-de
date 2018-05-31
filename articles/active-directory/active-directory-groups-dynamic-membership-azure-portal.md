@@ -10,15 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 05/17/2018
 ms.author: curtand
-ms.reviewer: piotrci
+ms.reviewer: krbain
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 43f364ed7e8539397fe8662a8c75804883a82e4f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4eda67f9c28a52667a34af175086be19b627f2ce
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303367"
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Erstellen attributbasierter Regeln für dynamische Gruppenmitgliedschaft in Azure Active Directory
 In Azure Active Directory (Azure AD) können Sie erweiterte Regeln für die Aktivierung von komplexen, attributbasierten dynamischen Mitgliedschaften für Gruppen erstellen. In diesem Artikel werden Attribute und Syntax zum Erstellen der Regeln für dynamische Mitgliedschaft für Benutzer oder Geräte erläutert. Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten.
@@ -278,7 +279,7 @@ Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaf
  deviceModel | Jeder string-Wert. | (device.deviceModel -eq "iPad Air")
  deviceOwnership | Personal, Unternehmen, Unbekannt | (device.deviceOwnership -eq "Company")
  domainName | Jeder string-Wert. | (device.domainName -eq "contoso.com")
- enrollmentProfileName | Profilname für Apple-Geräteregistrierung | (device.enrollmentProfileName -eq "DEP iPhones")
+ enrollmentProfileName | Profilname für Apple-Geräteregistrierung oder für Windows AutoPilot | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (bei mobilen Geräten)<br>PC (bei Computern, die vom Intune-PC-Agent verwaltet werden) | (device.managementType -eq "MDM")
  organizationalUnit | ein beliebiger Zeichenfolgenwert, der mit dem Namen der Organisationseinheit, die von einem lokalen Active Directory festgelegt wurde, übereinstimmt | (device.organizationalUnit -eq "US PCs")

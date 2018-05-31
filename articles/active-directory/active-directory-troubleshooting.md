@@ -3,7 +3,8 @@ title: 'Problembehandlung: Element „Active Directory“ fehlt oder ist nicht v
 description: Vorgehensweise, wenn das Active Directory-Menüelement nicht im Azure-Verwaltungsportal angezeigt wird.
 services: active-directory
 documentationcenter: na
-author: bryanla
+ms.author: joflore
+author: MicrosoftGuyJFlo
 manager: mtillman
 editor: ''
 ms.assetid: 3383020d-6397-43ea-b7aa-c6a9d6a1e3df
@@ -13,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
-ms.author: bryanla
-ms.openlocfilehash: c6e8557ec66db51df0bb463a9511b0cdc94811d4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8996eaf1d780f957445c63eac96cf9a343b9ef90
+ms.sourcegitcommit: c306be629977f6bc22bb7aefd0522a30ed591ff3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34181536"
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>Problembehandlung: Element "Active Directory" fehlt oder ist nicht verfügbar
 Viele der Anweisungen für die Verwendung von Azure Active Directory-Funktionen und -Diensten beginnen mit der Aufforderung, das Azure-Verwaltungsportal aufzurufen und auf **Active Directory**zu klicken. Aber was tun Sie, wenn die Active Directory-Erweiterung oder das entsprechende Menüelement nicht angezeigt wird oder als **Nicht verfügbar**markiert ist? Dieses Thema soll Ihnen helfen. Es beschreibt die Umstände, unter denen **Active Directory** nicht angezeigt wird oder nicht verfügbar ist, und mögliche Abhilfen.

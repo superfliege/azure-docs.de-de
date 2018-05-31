@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 05/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d1862c5ed83033eb8de74459f26260864c646dfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ff48d70a19e99531dcc90a81f8c7c723133ba8a0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153125"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192862"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 Durch Verwendung einer Programmiersprache, die REST-Aufrufe unterstützt, können Sie asynchrone Datenaktualisierungsvorgänge in Ihren tabellarischen Azure Analysis Services-Modellen durchführen. Dies schließt die Synchronisierung von schreibgeschützten Replikaten für die horizontale Skalierung von Abfragen ein. 
@@ -98,7 +98,7 @@ Es müssen keine Parameter angegeben werden. Es wird jeweils der Standard angewe
 
 |NAME  |Typ  |BESCHREIBUNG  |Standard  |
 |---------|---------|---------|---------|
-|Typ     |  Enum       |  Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic, add und defragment.       |   automatic      |
+|Typ     |  Enum       |  Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
 |CommitMode     |  Enum       |  Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
 |MaxParallelism     |   int      |  Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
 |RetryCount    |    int     |   Gibt an, wie oft der Vorgang wiederholt wird, bevor ein Fehler auftritt.      |     0    |

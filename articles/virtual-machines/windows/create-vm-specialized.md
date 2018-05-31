@@ -1,11 +1,11 @@
 ---
 title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD in Azure | Microsoft-Dokumentation
-description: "Erstellen Sie eine neue Windows-VM, indem Sie einen speziellen verwalteten Datenträger als Betriebssystemdatenträger im Resource Manager-Bereitstellungsmodell anfügen."
+description: Erstellen Sie eine neue Windows-VM, indem Sie einen speziellen verwalteten Datenträger als Betriebssystemdatenträger im Resource Manager-Bereitstellungsmodell anfügen.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 3b7d3cd5-e3d7-4041-a2a7-0290447458ea
 ms.service: virtual-machines-windows
@@ -13,13 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: cynthn
-ms.openlocfilehash: 578d31aef5ddeafbd806d0bae4231c135968f78a
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: be7933b038fb5a648249e9b0c73415bff778930b
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012783"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>Erstellen einer Windows-VM von einem speziellen Datenträger mithilfe von PowerShell
 
@@ -40,7 +41,7 @@ In diesem Thema wird gezeigt, wie verwaltete Datenträger verwendet werden. Wenn
 Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. 
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM -RequiredVersion 6.0.0
 ```
 Weitere Informationen finden Sie unter [Azure PowerShell-Versionsverwaltung](/powershell/azure/overview).
 
@@ -137,7 +138,7 @@ Abhängig von Ihrer Netzwerkverbindung und der Größe Ihrer VHD-Datei kann die 
 
 ### <a name="create-a-managed-disk-from-the-vhd"></a>Erstellen verwalteter Datenträger aus der VHD
 
-Erstellen Sie mithilfe von [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) einen verwalteten Datenträger auf Grundlage der speziellen VHD in Ihrem Speicherkonto. In diesem Beispiel wird **myOSDisk1** als Name des Datenträgers verwendet, der Datenträger im *StandardLRS*-Speicher gespeichert und *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI für die Quell-VHD verwendet.
+Erstellen Sie mithilfe von [New-AzureRMDisk](/powershell/module/azurerm.compute/new-azurermdisk) einen verwalteten Datenträger auf Grundlage der speziellen VHD in Ihrem Speicherkonto. Dieses Beispiel verwendet **myOSDisk1** als Datenträgername, platziert den Datenträger in Speicher vom Typ *Standard_LRS* und verwendet *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI für die Quell-VHD.
 
 Erstellen Sie eine neue Ressourcengruppe für die neue VM.
 
@@ -153,7 +154,7 @@ Erstellen Sie den neuen Betriebssystemdatenträger der hochgeladenen VHD.
 $sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
-    (New-AzureRmDiskConfig -AccountType StandardLRS  `
+    (New-AzureRmDiskConfig -AccountType Standard_LRS  `
     -Location $location -CreateOption Import `
     -SourceUri $sourceUri) `
     -ResourceGroupName $destinationResourceGroup
@@ -337,7 +338,7 @@ $vm = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic.Id
 Fügen Sie den Betriebssystemdatenträger mit [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) zur Konfiguration hinzu. In diesem Beispiel wird die Größe des Datenträgers auf *128 GB* festgelegt und der verwaltete Datenträger als *Windows*-Betriebssystem-Datenträger angefügt.
  
 ```powershell
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType StandardLRS `
+$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -StorageAccountType Standard_LRS `
     -DiskSizeInGB 128 -CreateOption Attach -Windows
 ```
 
@@ -367,5 +368,5 @@ $vmList.Name
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Melden Sie sich beim neuen virtuellen Computer an, wechseln Sie zum virtuellen Computer im [Portal](https://portal.azure.com), klicken Sie auf **Verbinden**, und öffnen Sie die Remotedesktop-RDP-Datei. Verwenden Sie die Kontoanmeldeinformationen des ursprünglichen virtuellen Computers für die Anmeldung bei Ihrem neuen virtuellen Computer. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
+Melden Sie sich bei Ihrem neuen virtuellen Computer an. Anweisungen dazu finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden bei diesem Computer](connect-logon.md).
 

@@ -9,16 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1c3ea5b041cf2a961ef57bc168ae86b83412e044
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212822"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -129,7 +130,7 @@ Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine pe
 
 Service Fabric-Cluster können auf virtuellen oder physischen Computern erstellt werden, auf denen Windows Server oder Linux ausgeführt wird. Es lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 
-In dem folgenden Microsoft Virtual Academy-Video werden Service Fabric-Konzepte erläutert: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
+Im folgenden Microsoft Virtual Academy-Video werden Service Fabric-Cluster erläutert: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
 <img src="./media/service-fabric-content-roadmap/ClusterOverview.png" WIDTH="360" HEIGHT="244">
 </a></center>
 
@@ -187,7 +188,7 @@ Service Fabric bietet mehrere Möglichkeiten, um [Integritätsberichte anzuzeige
 * Integritätsabfragen (über [PowerShell](/powershell/module/ServiceFabric/), [CLI](service-fabric-sfctl.md), [FabricClient-APIs von C#](/dotnet/api/system.fabric.fabricclient.healthclient) und [FabricClient-APIs von Java](/java/api/system.fabric._health_client) oder [REST-APIs](/rest/api/servicefabric)).
 * Allgemeine Abfragen, die eine Liste mit Entitäten zurückgeben, von denen eine der Eigenschaften die Integrität ist (über PowerShell, CLI, APIs oder REST).
 
-Im folgende Microsoft Virtual Academy-Video werden das Service Fabric-Integritätsmodell und seine Verwendung beschrieben: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
+Im folgenden Microsoft Virtual Academy-Video werden das Service Fabric-Integritätsmodell und seine Verwendung beschrieben: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
 <img src="./media/service-fabric-content-roadmap/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
 </a></center>
 

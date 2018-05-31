@@ -12,34 +12,80 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: e8e40b763f0c6f1f994535ab2ff335cfcbf02cf7
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4698f2e4c75456de7387ee7fe3bfa9b2ab4dd406
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011389"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
-Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität wird nur für Data Factorys der Version 2 unterstützt. Sie kann in folgenden Szenarien verwendet werden:
+Die Aktivität „Metadaten abrufen“ kann zum Abrufen von **Metadaten** für alle Daten in Azure Data Factory verwendet werden. Diese Aktivität wird nur für Data Factorys der Version 2 unterstützt. Sie kann in folgenden Szenarien verwendet werden:
 
 - Überprüfen der Metadateninformationen von Daten
 - Auslösen einer Pipeline, wenn Daten bereit/verfügbar sind
 
 Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
+
 - Die Ausgabe der Aktivität „Metadaten abrufen“ kann in bedingten Ausdrücken zur Validierung verwendet werden.
 - Eine Pipeline kann über eine „Wiederholen bis“-Schleife ausgelöst werden, wenn die Bedingung erfüllt ist.
-
-Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Eingabe und gibt Metadateninformationen zurück, die als Ausgabe verfügbar sind. Derzeit werden nur Azure-Blobdatasets unterstützt. Die unterstützten Metadatenfelder sind „size“, „structure“ und „lastModified“-Zeit.  
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie die [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md).
 
+## <a name="supported-capabilities"></a>Unterstützte Funktionen
+
+Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als erforderliche Eingabe und gibt Metadateninformationen zurück, die als Ausgabe verfügbar sind. Derzeit werden die folgenden Connectors mit entsprechenden abrufbaren Metadaten unterstützt:
+
+>[!NOTE]
+>Bei der Ausführung der Aktivität „Metadaten abrufen“ für eine selbst gehostete Integration Runtime wird die aktuelle Funktion unter Version 3.6 oder höher unterstützt. 
+
+### <a name="supported-connectors"></a>Unterstützte Connectors
+
+**Dateispeicher**:
+
+| Connector/Metadaten | itemName<br>(Datei/Ordner) | itemType<br>(Datei/Ordner) | size<br>(Datei) | created<br>(Datei/Ordner) | lastModified<br>(Datei/Ordner) |childItems<br>(Ordner) |contentMD5<br>(Datei) | structure<br/>(Datei) | columnCount<br>(Datei) | exists<br>(Datei/Ordner) |
+|:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
+| Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| Dateisystem | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
+| SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+
+**Relationale Datenbank**:
+
+| Connector/Metadaten | structure | columnCount | exists |
+|:--- |:--- |:--- |:--- |
+| Azure SQL-Datenbank | √ | √ | √ |
+| Azure SQL Data Warehouse | √ | √ | √ |
+| SQL Server | √ | √ | √ |
+
+### <a name="metadata-options"></a>Metadatenoptionen
+
+Die folgenden Metadatentypen können im Feld zur Aktivität „Metadaten abrufen“ angegeben werden:
+
+| Metadatentyp | BESCHREIBUNG |
+|:--- |:--- |
+| itemName | Name der Datei oder des Ordners. |
+| itemType | Typ der Datei oder des Ordners. Der Ausgabewert lautet `File` oder `Folder`. |
+| size | Größe der Datei in Byte. Gilt nur für Dateien. |
+| created | Datum/Uhrzeit der Erstellung der Datei oder des Ordners. |
+| lastModified | Datum/Uhrzeit der letzten Änderung der Datei oder des Ordners. |
+| childItems | Liste der Unterordner und Dateien innerhalb des angegebenen Ordners. Gilt nur für Ordner. Der Ausgabewert ist eine Liste von Namen und Typen der einzelnen untergeordneten Elemente. |
+| contentMD5 | MD5 der Datei. Gilt nur für Dateien. |
+| structure | Datenstruktur innerhalb der Datei oder einer relationalen Datenbanktabelle. Der Ausgabewert ist eine Liste von Spaltennamen und Spaltentypen. |
+| columnCount | Anzahl der Spalten in der Datei oder relationalen Tabelle. |
+| exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Hinweis: Wenn „exists“ in der Feldliste „Metadaten abrufen“ angegeben ist, wird die Aktivität auch dann fehlerlos ausgeführt, wenn das Element (Datei/Ordner/Tabelle) nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
+
+>[!TIP]
+>Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie in der Feldliste der Aktivität „Metadaten abrufen“ `exists` an, und überprüfen Sie dann das `exists: true/false`-Ergebnis der Aktivitätsausgabe. Ist `exists` nicht in der Feldliste konfiguriert, gibt die Aktivität „Metadaten abrufen“ einen Fehler aus, wenn das Objekt nicht gefunden wird.
 
 ## <a name="syntax"></a>Syntax
 
-### <a name="get-metadata-activity-definition"></a>Definition der Aktivität „Metadaten abrufen“:
-Im folgenden Beispiel gibt die Aktivität „Metadaten abrufen“ Metadaten zu den Daten zurück, die durch MyDataset dargestellt werden. 
+**Aktivität „Metadaten abrufen“**:
 
 ```json
 {
@@ -54,7 +100,8 @@ Im folgenden Beispiel gibt die Aktivität „Metadaten abrufen“ Metadaten zu d
     }
 }
 ```
-### <a name="dataset-definition"></a>Definition des Datasets:
+
+**Dataset**:
 
 ```json
 {
@@ -67,37 +114,74 @@ Im folgenden Beispiel gibt die Aktivität „Metadaten abrufen“ Metadaten zu d
         },
         "typeProperties": {
             "folderPath":"container/folder",
-            "Filename": "file.json",
+            "filename": "file.json",
             "format":{
                 "type":"JsonFormat"
-                "nestedSeperator": ","
             }
         }
     }
 }
 ```
 
-### <a name="output"></a>Output
+## <a name="type-properties"></a>Typeigenschaften
+
+Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Typen von Metadateninformationen abrufen.
+
+Eigenschaft | BESCHREIBUNG | Erforderlich
+-------- | ----------- | --------
+fieldList | Listet die erforderlichen Typen der Metadateninformationen auf. Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options). | Ja 
+dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. Die unterstützten Connectors werden im Abschnitt [Unterstützte Funktionen](#supported-capabilities) aufgeführt und im Thema zu Connectors finden Sie Einzelheiten zur Datasetsyntax. | Ja
+
+## <a name="sample-output"></a>Beispielausgabe
+
+Das Ergebnis „Metadaten abrufen“ wird in der Aktivitätsausgabe angezeigt. Im Folgenden werden zwei Beispiele mit umfangreichen Metadatenoptionen vorgestellt, die in der Feldliste als Verweis aktiviert sind. Um das Ergebnis in nachfolgenden Aktivitäten zu nutzen, verwenden Sie das Muster `@{activity('MyGetMetadataActivity').output.itemName}`.
+
+### <a name="get-a-files-metadata"></a>Abrufen der Metadaten einer Datei
+
 ```json
 {
-    "size": 1024,
-    "structure": [
-        {
-            "name": "id",
-            "type": "Int64"
-        }, 
-    ],
-    "lastModified": "2016-07-12T00:00:00Z"
+  "exists": true,
+  "itemName": "test.csv",
+  "itemType": "File",
+  "size": 104857600,
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "contentMD5": "cMauY+Kz5zDm3eWa9VpoyQ==",
+  "structure": [
+    {
+        "name": "id",
+        "type": "Int64"
+    },
+    {
+        "name": "name",
+        "type": "String"
+    }
+  ],
+  "columnCount": 2
 }
 ```
 
-## <a name="type-properties"></a>Typeigenschaften
-Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Typen von Metadateninformationen aus einem Azure-Speicherdataset abrufen.
+### <a name="get-a-folders-metadata"></a>Abrufen der Metadaten eines Ordners
 
-Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
--------- | ----------- | -------------- | --------
-fieldList | Listet die erforderlichen Typen der Metadateninformationen auf.  | <ul><li>size</li><li>structure</li><li>lastModified</li></ul> |    Nein <br/>Falls leer, gibt die Aktivität alle drei unterstützten Metadateninformationen zurück. 
-dataset | Das Referenzdataset, dessen Metadatenaktivität von der Aktivität „Metadaten abrufen“ abgerufen werden soll. <br/><br/>Der derzeit unterstützte Datasettyp ist Azure-Blob. Die beiden untergeordneten Eigenschaften sind: <ul><li><b>referenceName</b>: Verweis auf ein vorhandenes Azure-Blobdataset</li><li><b>type</b>: Da auf das Dataset verwiesen wird, ist der Typ „DatasetReference“</li></ul> |    <ul><li>Zeichenfolge</li><li>DatasetReference</li></ul> | Ja
+```json
+{
+  "exists": true,
+  "itemName": "testFolder",
+  "itemType": "Folder",
+  "lastModified": "2017-02-23T06:17:09Z",
+  "created": "2017-02-23T06:17:09Z",
+  "childItems": [
+    {
+      "name": "test.avro",
+      "type": "File"
+    },
+    {
+      "name": "folder hello",
+      "type": "Folder"
+    }
+  ]
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter anderen Ablaufsteuerungsaktivitäten, die von Data Factory unterstützt werden: 
