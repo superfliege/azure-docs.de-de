@@ -7,14 +7,14 @@ manager: abhemraj
 editor: raynew
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 04/25/2018
 ms.author: bsiva
-ms.openlocfilehash: e12d19612e10885f97d4a8023967fb9ba2d1f8cb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 83f167b047fa9c5df7c04304c7955ae838ae8373
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209864"
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32196053"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell
 
@@ -23,13 +23,13 @@ In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für vi
 Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> - Erstellen Sie einen Recovery Services-Tresor.
+> - Erstellen eines Recovery Services-Tresors
 > - Festlegen des Tresorkontexts für die PowerShell-Sitzung
 > - Vorbereiten des Tresors für die Replikation virtueller Azure-Computer
 > - Erstellen von Netzwerkzuordnungen
-> - Erstellen Sie Speicherkonten zum Replizieren der virtuellen Computer.
+> - Erstellen von Speicherkonten zum Replizieren der virtuellen Computer
 > - Replizieren virtueller Azure-Computer in eine Wiederherstellungsregion für die Notfallwiederherstellung
-> - Führen Sie ein Testfailover aus, und überprüfen und bereinigen Sie das Testfailover.
+> - Ausführen eines Testfailovers, Überprüfen und Bereinigen des Testfailovers
 > - Failover zur Wiederherstellungsregion
 
 > [!NOTE]
