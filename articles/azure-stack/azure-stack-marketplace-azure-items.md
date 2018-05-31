@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 05/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 1081fe9f8aceb6b849d595177b7c7cac2a26cbfc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: be8c997df5893782c469eefe4e3c79ab698f4c78
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165246"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -40,8 +41,8 @@ Wann immer Updates der von Ihnen verwendeten Erweiterungen für virtuelle Comput
 | ![VM-Zugriff für Linux](media/azure-stack-marketplace-azure-items/cse.png) | [ VM Access for Linux ](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) (VM-Zugriff für Linux)| <b>Laden Sie dieses Update für die integrierte Version der Erweiterung für VMAccess für Linux herunter. Dieses Update ist wichtig, wenn Sie virtuelle Debian Linux-Computer verwenden möchten.</b> | Microsoft | Linux |
 | ![Acronis Backup-Erweiterung für Linux](media/azure-stack-marketplace-azure-items/acronis.png) | [ Acronis Backup-Erweiterung für Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Die Acronis Backup-Erweiterung für Microsoft Azure ist Teil der Acronis Backup-Produktfamilie zum Schutz von Daten. | Acronis International GmbH | Linux |
 | ![Acronis Backup-Erweiterung für Windows](media/azure-stack-marketplace-azure-items/acronis.png) | [ Acronis Backup-Erweiterung für Windows ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Die Acronis Backup-Erweiterung für Microsoft Azure ist Teil der Acronis Backup-Produktfamilie zum Schutz von Daten. | Acronis International GmbH | Windows |
-| ![CloudLink SecureVM-Erweiterung für Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM-Erweiterung für Linux ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. | Dell EMC | Linux |
-| ![CloudLink SecureVM-Erweiterung für Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM-Erweiterung für Windows ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. | Dell EMC | Windows |
+| ![CloudLink SecureVM-Erweiterung für Linux](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM-Erweiterung für Linux ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. | Dell EMC | Linux |
+| ![CloudLink SecureVM-Erweiterung für Windows](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM-Erweiterung für Windows ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. | Dell EMC | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft-VM-Images und Microsoft-Lösungsvorlagen
 
@@ -82,6 +83,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 ## <a name="linux-distributions"></a>Linux-Distributionen
 |  | Name des Elements | BESCHREIBUNG | Herausgeber |
 | --- | --- | --- | --- |
+| ![Clear Linux OS](media/azure-stack-marketplace-azure-items/clearlinux.png) | [Clear Linux OS](https://azuremarketplace.microsoft.com/marketplace/apps/clear-linux-project.clear-linux-os) | Eine für Intel-Architektur optimierte Linux-Referenzdistribution. | Clear Linux-Projekt |
 | ![Container Linux von CoreOS](media/azure-stack-marketplace-azure-items/coreos.png) | [Container Linux von CoreOS](https://azuremarketplace.microsoft.com/marketplace/apps/CoreOS.CoreOS) | Container Linux ist eine moderne und minimale Linux-Distribution, die eine einfache Möglichkeit zum Ausführen von Containern, zum Verwalten von Clustern und zum nahtlosem Update Ihrer Server bietet – also den Komponenten, die eine Computelösung auf Warehouse-Ebene ermöglichen. | CoreOS |
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/Canonical.UbuntuServer) | Ubuntu Server ist das weltweit beliebteste Linux für Cloudumgebungen. | Canonical |
 | ![Debian 8 „Jessie“](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.Debian) | Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen. | credativ |
@@ -213,11 +215,13 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![Barracuda Web Application Firewall (WAF)](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Web Application Firewall (WAF)](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf) | Sicherheit und DDoS Protection vor automatisierten und gezielten Angriffen | Barracuda Networks, Inc. |
 | ![Check Point vSEC-Sicherheitsverwaltung](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC-Sicherheitsverwaltung](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC bietet erweiterten, mehrschichtigen Schutz vor Bedrohungen, um Kundenressourcen in Azure vor Schadsoftware und ausgefeilten Bedrohungen zu schützen. <b>Laden Sie beide Marketplace-Elemente für Check Point vSEC herunter.</b> | Check Point |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Erstellen, Bereitstellen und Verwalten mit Chef Automate, der Plattform für kontinuierliche Automatisierung. <b>Laden Sie beide Marketplace-Elemente für Chef herunter.</b> | Chef Software, Inc |
-| ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. <b>Laden Sie alle CloudLink SecureVM-Elemente herunter.<b> | Dell EMC |
+| ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM ](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Müheloses und zuverlässiges Steuern, Überwachen und Verschlüsseln virtueller Computer. <b>Laden Sie alle CloudLink SecureVM-Elemente herunter.<b> | Dell EMC |
+| ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [ f5 Big-IP Virtual Edition ](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Erweiterter Lastenausgleich, globaler Serverlastenausgleich, Netzwerkfirewall, DNS, WAF und App-Zugriff. | F5 Networks |
 | ![Hortonworks Data Platform (HDP) Sandbox](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) Sandbox](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Unterstützt von HDP 2.5, der hundertprozentigen Open-Source-Plattform für Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![KEMP LoadMaster Load Balancer ADC Content Switch](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Layer 4-7 Application Delivery Controller (ADC) Load Balancer, Content Switch und Traffic Manager | KEMP Technologies Inc. |
 | ![NooBaa Hybrid AWS S3 compatible – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 compatible – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibler Speicherdienst für öffentliche und lokale Kapazitätsressourcen | NooBaa |
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall erkennt bekannte und unbekannte Sicherheitsrisiken und verhindert Angriffe auf Web-Apps. <b>Laden Sie beide Marketplace-Elemente für PT herunter.</b> | Positive Technologien |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Mit Puppet Enterprise können Sie den gesamten Lebenszyklus der Azure Stack-Infrastruktur automatisieren. <b>Laden Sie beide Marketplace-Elemente für Puppet herunter.</b> | Puppet |
+| ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Der fortschrittliche Datenschutz von Rapid Recovery vereinheitlicht Sicherung, Replikation und Wiederherstellung in einer benutzerfreundlichen Softwarelösung. | Quest-Software |
 | ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Branchenführende Lösung für Open-Source-Infrastrukturverwaltung | SUSE |
 | ![ZeroDown Software Tool](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Tool ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | ZeroDown Software Tool v7.1: Migration + Hochverfügbarkeit. | ZeroDown Software |
