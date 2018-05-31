@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 5cff443ac3bbd89a2245e7adb21458ecc62fd494
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940223"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361946"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -236,9 +236,9 @@ Mit dem Befehl „nslookup“ können Sie eine DNS-Abfrage für den Namen „myi
     nslookup myip.opendns.com resolver1.opendns.com
 
 ## <a name="preventoutbound"></a>Verhindern der Konnektivität in ausgehender Richtung
-Manchmal ist es nicht wünschenswert, einem virtuellen Computer das Erstellen eines ausgehenden Datenflusses zu erlauben. Möglicherweise müssen Sie auch verwalten, welche Ziele mit ausgehenden Datenflüssen erreicht werden bzw. welche Ziele eingehende Datenflüsse beginnen können. In diesem Fall können Sie [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) zum Verwalten der vom virtuellen Computer erreichbaren Ziele verwenden. Mit Netzwerksicherheitsgruppen können Sie auch verwalten, welches öffentliche Ziel eingehende Datenflüsse initiieren kann. 
+Manchmal ist es nicht wünschenswert, einem virtuellen Computer das Erstellen eines ausgehenden Datenflusses zu erlauben. Möglicherweise müssen Sie auch verwalten, welche Ziele mit ausgehenden Datenflüssen erreicht werden bzw. welche Ziele eingehende Datenflüsse beginnen können. In diesem Fall können Sie [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) zum Verwalten der vom virtuellen Computer erreichbaren Ziele verwenden. Mit Netzwerksicherheitsgruppen können Sie auch verwalten, welches öffentliche Ziel eingehende Datenflüsse initiieren kann.
 
-Wenn Sie eine Netzwerksicherheitsgruppe einem virtuellen Computer mit Lastenausgleich zuordnen, müssen Sie auf die [Standardtags](../virtual-network/virtual-networks-nsg.md#default-tags) und [Standardregeln](../virtual-network/virtual-networks-nsg.md#default-rules) achten. Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. 
+Wenn Sie eine Netzwerksicherheitsgruppe einem virtuellen Computer mit Lastenausgleich zuordnen, müssen Sie auf die [Diensttags](../virtual-network/security-overview.md#service-tags) und [Standardsicherheitsregeln](../virtual-network/security-overview.md#default-security-rules) achten. Sie müssen sicherstellen, dass die VM Anforderungen von Integritätstests von Azure Load Balancer empfangen kann. 
 
 Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
 
@@ -250,5 +250,5 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 
 - Weitere Informationen zu [Load Balancer](load-balancer-overview.md).
 - Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md).
-- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.

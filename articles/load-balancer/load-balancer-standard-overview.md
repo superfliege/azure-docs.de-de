@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: e6f3ae71a924840c973b2536d332070b9a12d0dc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775229"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362310"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -120,7 +120,7 @@ Lesen Sie die [ausführliche Erläuterung zu HA-Ports](load-balancer-ha-ports-ov
 
 Standard Load Balancer ist vollständig in das virtuelle Netzwerk integriert.  Das virtuelle Netzwerk ist ein privates geschlossenes Netzwerk.  Da Standard Load Balancer und öffentliche Standard-IP-Adressen so ausgelegt sind, dass sie Zugriff auf dieses virtuelle Netzwerk von außerhalb des virtuellen Netzwerks zulassen, werden diese Ressourcen nun standardmäßig geschlossen, es sei denn, Sie öffnen sie. Dies bedeutet, dass nun Netzwerksicherheitsgruppen (NSGs) verwendet werden, um zulässigen Datenverkehr explizit zu gestatten und whitelistgemäß zu verarbeiten.  Sie können Ihr gesamtes virtuelles Rechenzentrum erstellen und über NSGs entscheiden, was verfügbar sein soll und wann es verfügbar sein soll.  Wenn Sie keine NSG in einem Subnetz oder für eine Netzwerkkarte Ihrer Ressource auf einem virtuellen Computer haben, gibt es keine Erlaubnis für Datenverkehr, diese Ressource zu erreichen.
 
-Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 
 ### <a name="outbound"></a> Ausgehende Verbindungen
 
@@ -225,6 +225,8 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 - Load Balancer-Front-Ends sind nicht über globales Peering in virtuellen Netzwerken verfügbar.
 - [Vorgänge zum Verschieben von Abonnements](../azure-resource-manager/resource-group-move-resources.md) werden für Standard-SKU-LB- und -PIP-Ressourcen nicht unterstützt.
 - Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Sie können sich nicht darauf verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie [ausgehende Verbindungen](load-balancer-outbound-connections.md), falls gewünscht, explizit erstellen müssen, wenn Sie nur den internen Standard-Load Balancer verwenden.
+- Load Balancer ist ein TCP- oder UDP-Produkt für den Lastenausgleich und die Portweiterleitung für diese spezifischen IP-Protokolle.  Regeln für den Lastenausgleich und eingehende NAT-Regeln werden für TCP und UDP, aber nicht für andere IP-Protokolle wie ICMP unterstützt. Der Load Balancer beendet die Payload des UDP- oder TCP-Flows nicht, antwortet nicht auf diese und interagiert auch nicht auf andere Weise mit ihr. Es handelt sich nicht um einen Proxy. Eine erfolgreiche Validierung der Konnektivität auf ein Front-End muss über einen In-Band-Zugriff mit dem Protokoll ausgeführt werden, das in einer Regel für den Lastenausgleich oder die eingehende Netzwerkadressenübersetzung (TCP oder UDP) verwendet wird, _und_ mindestens einer Ihrer virtuellen Computer muss eine Antwort für einen Client generieren, damit eine Antwort von einem Front-End angezeigt werden kann.  Wenn Sie keine In-Band-Antwort vom Load Balancer-Front-End erhalten, deutet dies darauf hin, dass keine virtuellen Computer antworten konnten.  Die Interaktion mit einer Load Balancer-Instanz ist nicht möglich, wenn ein virtueller Computer nicht antworten kann.  Dies gilt auch für ausgehende Verbindungen, für die die [Portmaskierung mit SNAT](load-balancer-outbound-connections.md#snat) nur für TCP und UDP unterstützt wird. Andere IP-Protokolle wir ICMP schlagen fehl.  Weisen Sie eine öffentlichen IP-Adresse auf Instanzebene zu, die eingeschränkt werden soll.
+- Im Gegensatz zu öffentlichen Load Balancer-Instanzen, die [ausgehende Verbindungen](load-balancer-outbound-connections.md) bereitstellen, wenn ein Übergang von privaten IP-Adressen innerhalb des virtuellen Netzwerks auf öffentliche IP-Adressen vorgenommen wird, übersetzen interne Load Balancer-Instanzen keine ursprünglichen ausgehenden Verbindungen mit dem Front-End einer internen Load Balancer-Instanz, da sich beide in einem privaten IP-Adressraum befinden.  Dadurch wird das Risiko einer SNAT-Auslastung innerhalb eines eindeutigen internen IP-Adressraums gemindert, in dem keine Übersetzung erforderlich ist.  Eine Nebenwirkung besteht darin, wenn ein von einem virtuellen Computer ausgehender Flow in den Back-End-Pool versucht, einen Flow auf das Front-End der internen Load Balancer-Instanz in den Pool auszuführen, in dem er sich befindet, _und_ sich selbst zugewiesen ist, stimmen beide Verzweigungen des Flows nicht überein. Somit schlägt der Flow fehl.  Wenn der Flow nicht dem virtuellen Computer im Back-End-Pool zugeordnet ist, die den Flow auf das Front-End erstellt hat, ist der Flow erfolgreich.   Wenn der Flow sich selbst zugeordnet ist, scheint es, als würde der ausgehende Flow vom virtuellen Computer auf das Front-End ausgehen und als würde der zugehörige eingehende Flow vom virtuellen Computer selbst ausgehen. Aus der Sicht des Gastbetriebssystems stimmen die eingehenden und ausgehenden Bestandteile desselben Flows innerhalb des virtuellen Computers nicht überein. Der TCP-Stack erkennt diese Teile desselben Flows als Teil desselben Flows an, da Quelle und Ziel nicht übereinstimmen.  Wenn der Flow keinem anderen virtuellen Computer im Back-End-Pool zugeordnet ist, stimmen die Teile des Flows überein, und der virtuelle Computer kann erfolgreich auf den Flow antworten.  In Folge dieses Szenarios entstehen zeitweilige Verbindungstimeouts. Es gibt einige häufig verwendete Workarounds, damit Sie dieses Szenario zuverlässig abschließen können. Diese Workarounds umfassen entweder das Einfügen eines Proxys eines Drittanbieters hinter dem internen Load Balancer oder die [Verwendung von DSR-Stilregeln](load-balancer-multivip-overview.md).  Sie können zwar einen öffentlichen Load Balancer zur Entschärfung verwenden, aber in dem daraus resultierenden Szenarios kann es zu einer [SNAT-Überlastung](load-balancer-outbound-connections.md#snat) kommen. Daher sollten Sie diesen in dem Zusammenhang nur mit Bedacht verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -236,7 +238,7 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 - Weitere Informationen zu [Standard Load Balancer mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md).
 - Informationen zur Verwendung von [Load Balancer mit mehreren Front-Ends](load-balancer-multivip-overview.md).
 - Weitere Informationen zu [virtuellen Netzwerken](../virtual-network/virtual-networks-overview.md).
-- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md).
+- Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 - Weitere Informationen zu [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.
 - Weitere Informationen zu [Load Balancer](load-balancer-overview.md).

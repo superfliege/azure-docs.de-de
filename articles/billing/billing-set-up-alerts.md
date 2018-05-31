@@ -4,8 +4,8 @@ description: Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung e
 keywords: Guthabenwarnung, Abrechnungswarnung
 services: ''
 documentationcenter: ''
-author: vikdesai
-manager: tonguyen
+author: adpick
+manager: adpick
 editor: ''
 tags: billing
 ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
@@ -15,18 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
-ms.author: vikdesai
+ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8606efc4e0d3050ddd72b6bf8ec87f6ddd84fa2e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359049"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Einrichten von Abrechnungs- oder Guthabenwarnungen für Microsoft Azure-Abonnements
 Wenn Sie der Kontoadministrator für ein Azure-Abonnement sind, können Sie den Dienst für Azure-Abrechnungswarnungen zum Erstellen von benutzerdefinierten Abrechnungswarnungen verwenden, um die Abrechnungsaktivitäten für Ihre Azure-Konten zu überwachen und zu verwalten.
 
 Dieser Dienst befindet sich in der Vorschau, daher müssen Sie ihn zunächst auf der Seite mit Vorschaufeatures aktivieren.
+
+[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>Festlegen des Schwellenwerts für Warnungen und von E-Mail-Empfängern
 1. Besuchen Sie [die Seite mit Vorschaufeatures](https://account.windowsazure.com/PreviewFeatures), und aktivieren Sie **Billing Alert Service**.
@@ -49,7 +52,7 @@ Azure unterstützt beliebige E-Mail-Adressen, überprüft dabei jedoch nicht, ob
 Nach dem Einrichten von Warnungen werden diese im Account Center aufgelistet. Zudem wird angezeigt, wie viele zusätzliche Warnungen eingerichtet werden können. Für jede Warnung werden Datum und Uhrzeit des Sendevorgangs angezeigt. Außerdem wird das festgelegte Limit und die Information angegeben, ob es sich um eine Abrechnungssumme oder monetäre Gutschrift handelt. Die Uhrzeit wird als UTC-Zeit (Universal Time Coordinate) im 24-Stunden-Format und das Datum im Format JJJJ-MM-TT angegeben. Klicken Sie in der Liste auf das Pluszeichen einer Warnung, um diese zu bearbeiten, oder klicken Sie auf den Papierkorb, um sie zu löschen.
 
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Abrechnungswarnungen für Kunden mit Enterprise Agreement (EA)
-EA-Kunden können für alle Abteilungen mit einer Registrierung Warnungen empfangen, indem Ausgabenkontingente eingerichtet werden. Informationen zum Einstieg finden Sie unter [Department Spending Quotas](https://ea.azure.com/helpdocs/departmentSpendingQuotas) (Ausgabenkontingente für Abteilungen) im EA-Portal.
+EA-Abonnements werden von diesem Dienst nicht unterstützt, stattdessen können EA-Kunden für alle Abteilungen mit einer Registrierung Warnungen empfangen, indem Ausgabenkontingente eingerichtet werden. Informationen zum Einstieg finden Sie unter [Department Spending Quotas](https://ea.azure.com/helpdocs/departmentSpendingQuotas) (Ausgabenkontingente für Abteilungen) im EA-Portal.
 
 ## <a name="learn-more-about-azure-cost-management"></a>Erfahren Sie mehr über die Azure-Kostenverwaltung
 - Schätzen Sie Kosten mit dem [Preisrechner](https://azure.microsoft.com/pricing/calculator/), dem [Gesamtbetriebskosten-Rechner](https://aka.ms/azure-tco-calculator) und beim Hinzufügen eines Diensts.
