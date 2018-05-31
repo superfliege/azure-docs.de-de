@@ -1,8 +1,21 @@
-
-
-
-
-Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur eine Reihe von Eigenschaften angeben. In unserem Fall senden wir die Eigenschaften, die beispielsweise die lokalisierte Version der aktuellen Nachrichten enthalten:
+---
+title: Includedatei
+description: Includedatei
+services: notification-hubs
+author: spelluru
+ms.service: notification-hubs
+ms.topic: include
+ms.date: 04/02/2018
+ms.author: spelluru
+ms.custom: include file
+ms.openlocfilehash: 752feca30fdca663aaf8bd88e6686781b9065682
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33836680"
+---
+Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur einen Satz von Eigenschaften bereitstellen. In diesem Szenario enthält der Satz von Eigenschaften die lokalisierte Version der aktuellen Nachrichten.
 
     {
         "News_English": "World News in English!",
@@ -11,63 +24,62 @@ Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur eine Reihe von Eigen
     }
 
 
-Dieser Abschnitt zeigt, wie Benachrichtigungen mit einer Konsolen-App gesendet werden.
 
-Der enthaltene Code wird an Windows Store- und iOS-Geräte übertragen, da das Back-End an ein beliebiges unterstütztes Gerät übertragen kann.
+### <a name="send-notifications-using-a-c-console-app"></a>Senden von Benachrichtigungen mit einer C#-Konsolen-App
+Dieser Abschnitt zeigt, wie Benachrichtigungen mit einer Konsolen-App gesendet werden. Der Code überträgt Benachrichtigungen an Windows Store- und iOS-Geräte. Ändern Sie die `SendTemplateNotificationAsync`-Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code:
 
-### <a name="to-send-notifications-using-a-c-console-app"></a>Senden von Benachrichtigungen mit einer C#-Konsolenanwendung
-Ändern Sie die `SendTemplateNotificationAsync` -Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code. Wie Ihnen möglicherweise auffällt, ist es in diesem Fall nicht erforderlich, mehrere Benachrichtigungen für verschiedene Gebietsschemas und Plattformen zu senden.
+```csharp
+private static async void SendTemplateNotificationAsync()
+{
+    // Define the notification hub.
+    NotificationHubClient hub = 
+        NotificationHubClient.CreateClientFromConnectionString(
+            "<connection string with full access>", "<hub name>");
 
-        private static async void SendTemplateNotificationAsync()
+    // Sending the notification as a template notification. All template registrations that contain 
+    // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
+    // This includes APNS, GCM, WNS, and MPNS template registrations.
+    Dictionary<string, string> templateParams = new Dictionary<string, string>();
+
+    // Create an array of breaking news categories.
+    var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
+    var locales = new string[] { "English", "French", "Mandarin" };
+
+    foreach (var category in categories)
+    {
+        templateParams["messageParam"] = "Breaking " + category + " News!";
+
+        // Sending localized News for each tag too...
+        foreach( var locale in locales)
         {
-            // Define the notification hub.
-            NotificationHubClient hub = 
-                NotificationHubClient.CreateClientFromConnectionString(
-                    "<connection string with full access>", "<hub name>");
+            string key = "News_" + locale;
 
-            // Sending the notification as a template notification. All template registrations that contain 
-            // "messageParam" or "News_<local selected>" and the proper tags will receive the notifications. 
-            // This includes APNS, GCM, WNS, and MPNS template registrations.
-            Dictionary<string, string> templateParams = new Dictionary<string, string>();
-
-            // Create an array of breaking news categories.
-            var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
-            var locales = new string[] { "English", "French", "Mandarin" };
-
-            foreach (var category in categories)
-            {
-                templateParams["messageParam"] = "Breaking " + category + " News!";
-
-                // Sending localized News for each tag too...
-                foreach( var locale in locales)
-                {
-                    string key = "News_" + locale;
-
-                    // Your real localized news content would go here.
-                    templateParams[key] = "Breaking " + category + " News in " + locale + "!";
-                }
-
-                await hub.SendTemplateNotificationAsync(templateParams, category);
-            }
+            // Your real localized news content would go here.
+            templateParams[key] = "Breaking " + category + " News in " + locale + "!";
         }
 
-
-Beachten Sie, dass dieser einfache Aufruf die lokalisierten Nachrichten unabhängig von der Plattform an **alle** Ihre Geräte sendet, da Ihr Notification Hub die korrekte systemeigene Nutzlast erstellt und an alle Geräte sendet, die ein bestimmtes Tag abonniert haben.
-
-### <a name="sending-the-notification-with-mobile-services"></a>Senden der Benachrichtigung mit Mobile Services
-Im Mobile Service-Scheduler können Sie das folgende Skript verwenden:
-
-    var azure = require('azure');
-    var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');
-    var notification = {
-            "News_English": "World News in English!",
-            "News_French": "World News in French!",
-            "News_Mandarin", "World News in Mandarin!"
+        await hub.SendTemplateNotificationAsync(templateParams, category);
     }
-    notificationHubService.send('World', notification, function(error) {
-        if (!error) {
-            console.warn("Notification successful");
-        }
-    });
+}
+```
 
+Die SendTemplateNotificationAsync-Methode übermittelt den lokalisierten Teil der Nachrichten an **alle** Ihre Geräte, unabhängig von der Plattform. Ihr Benachrichtigungshub erstellt und übermittelt die richtige native Nutzlast für alle Geräte, die einen bestimmten Tag abonniert haben.
+
+### <a name="sending-notification-with-mobile-services"></a>Senden von Benachrichtigungen mit Mobile Services
+Verwenden Sie im Mobile Service-Scheduler das folgende Skript:
+
+```csharp
+var azure = require('azure');
+var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string with full access>');
+var notification = {
+        "News_English": "World News in English!",
+        "News_French": "World News in French!",
+        "News_Mandarin", "World News in Mandarin!"
+}
+notificationHubService.send('World', notification, function(error) {
+    if (!error) {
+        console.warn("Notification successful");
+    }
+});
+```
 

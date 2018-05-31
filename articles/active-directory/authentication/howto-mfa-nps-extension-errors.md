@@ -1,25 +1,21 @@
 ---
 title: Fehlercodes zur Problembehandlung für die Azure MFA NPS-Erweiterung | Microsoft-Dokumentation
-description: Hier erhalten Sie anhand von Lösungen für häufige Fehlermeldungen Hilfe beim Beheben von Problemen mit der NPS-Erweiterung für Azure Multi-Factor Authentication
+description: Hilfe zum Auflösen von Problemen mit der NPS-Erweiterung für Azure Multi-Factor Authentication
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: it-pro
-ms.openlocfilehash: c82c96136dc5c1030deeae6a71e196aba2747490
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33867664"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -85,8 +81,8 @@ Wenn einer dieser Fehler auftritt, sollten Sie sich [an den Support wenden](#con
 | Fehlercode | Fehlermeldung |
 | ---------- | ------------- |
 | **InvalidParameter** | Die Anforderung darf nicht null sein. |
-| **InvalidParameter** | ObjectId darf nicht null oder leer sein für ReplicationScope: {0} |
-| **InvalidParameter** | Die Länge von CompanyName \{0}\ ist länger als die maximal zulässige Länge {1}. |
+| **InvalidParameter** | ObjectId darf nicht null oder leer sein für ReplicationScope:{0} |
+| **InvalidParameter** | Die Länge von CompanyName \{0}\ ist länger als die maximal zulässige Länge {1} |
 | **InvalidParameter** | UserPrincipalName darf nicht null oder leer sein. |
 | **InvalidParameter** | Die angegebene TenantId hat nicht das richtige Format. |
 | **InvalidParameter** | SessionId darf nicht null oder leer sein. |
