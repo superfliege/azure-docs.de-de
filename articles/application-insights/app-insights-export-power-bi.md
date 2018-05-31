@@ -1,9 +1,9 @@
 ---
 title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Dokumentation
-description: "Analytics-Abfragen können in Power BI angezeigt werden."
+description: Analytics-Abfragen können in Power BI angezeigt werden.
 services: application-insights
-documentationcenter: 
-author: noamben
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 7f13ea66-09dc-450f-b8f9-f40fdad239f2
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: 19595983ba49a88d9139c85afbf38d3106d4a81d
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c9b53c26eea0a5eced32acf196204aef3c3bb125
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869052"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](http://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
@@ -122,7 +123,7 @@ Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anfo
 1. Erstellen Sie einen [API-Schlüssel](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 2. Aktualisieren Sie das M-Skript von Power BI, das Sie aus Analytics exportiert haben, indem Sie die Azure Resource Manager-URL durch die Application Insights-API ersetzen.
    * Ersetzen Sie **https://management.azure.com/subscriptions/...**
-   * durch **https://api.applicationinsights.io/beta/apps/...**
+   * durch  **https://api.applicationinsights.io/beta/apps/...**
 3. Aktualisieren Sie schließlich die Anmeldeinformationen in „basic“, und verwenden Sie Ihren API-Schlüssel.
   
 

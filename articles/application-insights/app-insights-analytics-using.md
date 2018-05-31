@@ -1,9 +1,9 @@
 ---
-title: "Verwenden von Analytics, dem leistungsfähigen Suchtool von Azure Application Insights | Microsoft Docs"
-description: "Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights "
+title: Verwenden von Analytics, dem leistungsfähigen Suchtool von Azure Application Insights | Microsoft Docs
+description: 'Verwenden von Analytics, dem leistungsfähigen Diagnosesuchtool von Application Insights '
 services: application-insights
-documentationcenter: 
-author: danhadari
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: c3b34430-f592-4c32-b900-e9f50ca096b3
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
-ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5a49d38ddc9d2181f9b35ac948c44df70bad831b
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33869885"
 ---
 # <a name="using-analytics-in-application-insights"></a>Verwenden von Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -143,7 +144,7 @@ Wenn Sie ein Dashboard zum Überwachen der Leistung oder Nutzung Ihrer Webdienst
 Wenn eine Tabelle maximal vier Spalten enthält, können Sie sie an das Dashboard anheften. Nur die ersten sieben Zeilen werden angezeigt.
 
 ### <a name="dashboard-refresh"></a>Dashboard-Aktualisierung
-Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem die Abfrage etwa jede Stunde erneut ausgeführt wird. Sie können auch auf die Schaltfläche „Aktualisieren“ klicken.
+Das an das Dashboard angeheftete Diagramm wird automatisch aktualisiert, indem die Abfrage ungefähr jede Stunde erneut ausgeführt wird. Sie können auch auf die Schaltfläche „Aktualisieren“ klicken.
 
 ### <a name="automatic-simplifications"></a>Automatische Vereinfachungen
 
@@ -205,7 +206,7 @@ Wenn authentifizierte Benutzer in der Telemetrie beispielsweise durch einen Alia
 ### <a name="define-your-data-schema"></a>Definieren des Datenschemas
 
 1. Klicken Sie auf **Einstellungen** (oben links) und dann auf **Datenquellen**. 
-2. Fügen Sie entsprechend den Anweisungen eine Datenquelle hinzu. Sie werden aufgefordert, einen Teil der Daten anzugeben, der mindestens zehn Zeilen enthalten soll. Anschließend korrigieren Sie das Schema.
+2. Fügen Sie entsprechend den Anweisungen eine Datenquelle hinzu. Sie werden aufgefordert, eine Teilmenge der Daten anzugeben, die mindestens 10 Zeilen enthalten soll. Anschließend korrigieren Sie das Schema.
 
 Damit wird eine Datenquelle definiert, die Sie dann zum Importieren einzelner Tabellen verwenden können.
 
