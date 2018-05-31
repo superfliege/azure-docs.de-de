@@ -1,27 +1,24 @@
 ---
 title: Informationen zur zweistufigen Überprüfung in Azure MFA | Microsoft-Dokumentation
-description: 'Was ist Azure Multi-Factor Authentication (MFA), warum wird MFA verwendet, weitere Informationen über den Client für die Multi-Factor Authentication sowie die verschiedenen verfügbaren Methoden und Versionen. '
-keywords: Einführung in die MFA, MFA-Übersicht, Was ist MFA
+description: Was ist Azure Multi-Factor Authentication (MFA)? Wozu wird sie verwendet? Welche unterschiedlichen Methoden und Versionen sind verfügbar?
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: richagi
-ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 06/03/2017
 ms.author: joflore
-ms.openlocfilehash: 74441b5053a9c7c25d94406293828fe92f210bee
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: richagi
+ms.openlocfilehash: 2bf2cbefb2b60ad5278bdee7bd97aff1ed6212a4
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33867157"
 ---
 # <a name="what-is-azure-multi-factor-authentication"></a>Was ist Azure Multi-Factor Authentication?
+
 Die zweistufige Überprüfung ist eine Authentifizierungsmethode, die die Verwendung mehrerer Überprüfungsmethoden erfordert und eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen bietet. Dies funktioniert durch das Anfordern von zwei oder mehr der folgenden Verifizierungsmethoden:
 
 * Etwas, das Sie wissen (normalerweise ein Kennwort)

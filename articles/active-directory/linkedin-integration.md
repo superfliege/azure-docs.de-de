@@ -6,24 +6,28 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: ''
-ms.devlang: ''
+ms.component: users-groups-roles
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 05/02/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762369"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>LinkedIn-Kontoverbindungen für Microsoft-Apps und -Dienste
 In diesem Artikel erfahren Sie, wie Sie LinkedIn-Kontoverbindungen für Ihren Mandanten im Administrationscenter von Azure Active Directory (Azure AD) verwalten. 
 
 > [!IMPORTANT]
 > Die Funktionalität von LinkedIn-Kontoverbindungen wird derzeit auf Azure AD-Mandanten ausgeweitet. Nachdem die Funktionen für Ihren Mandanten zur Verfügung stehen, sind sie standardmäßig aktiviert. Sie sind nicht verfügbar für Regierungskunden in den USA und Organisationen mit Exchange-Onlinepostfächern in Australien, Kanada, China, Frankreich, Deutschland, Indien, Südkorea, Großbritannien, Japan und Südafrika. Schon bald werden auch diese Postfachstandorte unterstützt.  Eine aktuelle Ansicht der Rolloutinformationen finden Sie auf der Seite [Office 365-Roadmap](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc).
+
+## <a name="benefit-to-users"></a>Vorteil für Benutzer
+Nachdem Benutzer ihr LinkedIn-Konto verbunden haben, werden LinkedIn-Daten verwendet, um personalisierte Informationen und 
+Features in verschiedenen Microsoft-Apps oder -Diensten anzuzeigen. Benutzer können in der Microsoft-Profilkarte Einblicke zu den Personen erhalten, mit denen sie zusammenarbeiten, selbst wenn diese Personen außerhalb Ihrer Organisation arbeiten. Im Laufe der Zeit wird auch ihre LinkedIn-Benutzeroberfläche relevanter und auf ihre Arbeit zugeschnitten werden. LinkedIn kann z.B. neue Kontakte vorschlagen, die darauf basieren, mit wem die Benutzer arbeiten, oder Erkenntnisse über Personen in ihrem Tageskalender anzeigen.
 
 ## <a name="how-linkedin-account-connections-appear-to-the-user"></a>Anzeige von LinkedIn-Kontoverbindungen für Benutzer
 LinkedIn-Kontoverbindungen ermöglichen es Benutzern, öffentliche LinkedIn-Profilinformationen in einigen ihrer Microsoft-Anwendungen anzuzeigen. Benutzer in Ihrem Mandanten können wählen, ob sie ihre Geschäfts-, Schul- oder Unikonten von LinkedIn und Microsoft verbinden möchten, um zusätzliche LinkedIn-Profilinformationen anzuzeigen. Weitere Informationen finden Sie unter [LinkedIn-Informationen und -Features in Microsoft-Apps und -Diensten](https://go.microsoft.com/fwlink/?linkid=850740).

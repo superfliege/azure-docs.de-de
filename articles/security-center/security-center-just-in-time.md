@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2018
+ms.date: 05/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 22eee6c2253e6b1ff92de0cebf4fea451a0a8fe5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4f0afe48c37c6cb5dc8c1658f0a7beed4f0e6140
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778095"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -41,7 +42,7 @@ Eine Möglichkeit, die Gefährdung durch Brute-Force-Angriffe zu verringern, ist
 
 Wenn Just-In-Time aktiviert ist, sperrt das Security Center durch das Erstellen einer NSG-Regel eingehenden Datenverkehr auf den Azure-VMs. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die Just-In-Time-Lösung gesteuert.
 
-Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) verfügt, die Schreibzugriff für den virtuellen Computer bereitstellen. Wenn er über Schreibberechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden vom Security Center automatisch so konfiguriert, dass für die angegebene Zeitspanne eingehender Datenverkehr an den Verwaltungsports zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her.
+Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) verfügt, die Schreibzugriff für den virtuellen Computer bereitstellen. Wenn er über Schreibberechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden vom Security Center automatisch so konfiguriert, dass für die angegebene Zeitspanne eingehender Datenverkehr an die ausgewählten Ports zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her.
 
 > [!NOTE]
 > Der durch das Security Center gesteuerte Just-In-Time-Zugriff auf virtuelle Computer unterstützt derzeit nur virtuelle Computer, die über Azure Resource Manager bereitgestellt wurden. Weitere Informationen über das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
@@ -119,6 +120,16 @@ So fordern Sie Zugriff auf einen virtuellen Computer an:
 
 4. Unter **Zugriff anfordern** können Sie für jeden virtuellen Computer die zu öffnenden Ports zusammen mit der Quell-IP-Adresse, für die der Port geöffnet wird, und dem Zeitfenster, in dem der Port geöffnet wird, konfigurieren. Sie können nur Zugriff auf die in der Just-In-Time-Richtlinie konfigurierten Ports anfordern. Für jeden Port gilt eine maximal zulässige Zeitspanne, die aus der Just-In-Time-Richtlinie abgeleitet ist.
 5. Wählen Sie **Ports öffnen** aus.
+
+> [!NOTE]
+> Wenn ein Benutzer auf einen virtuellen Computer zugreift, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) verfügt, die Schreibzugriff für den virtuellen Computer bereitstellen. Wenn er über Schreibberechtigungen verfügt, wird die Anforderung genehmigt.
+>
+>
+
+> [!NOTE]
+> Wenn sich ein Benutzer, der Zugriff anfordert, hinter einem Proxy befindet, funktioniert die Option „My IP“ (Meine IP-Adresse) möglicherweise nicht. Unter Umständen muss der vollständige Bereich der Organisation definiert werden.
+>
+>
 
 ## <a name="editing-a-just-in-time-access-policy"></a>Bearbeiten einer Just-In-Time-Zugriffsrichtlinie
 

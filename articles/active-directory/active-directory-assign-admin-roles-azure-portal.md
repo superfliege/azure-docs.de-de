@@ -14,11 +14,12 @@ ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: fc7a67c644894606b09ed3ad594ff9f87b29f307
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6e663fe275fc195cb611e1032adc147bf4e99b1d
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932148"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
@@ -41,7 +42,7 @@ Die folgenden Administratorrollen sind verfügbar:
   > [!NOTE]
   > Um die Exchange ActiveSync-Richtlinie für bedingten Zugriff in Azure bereitzustellen, muss der Benutzer auch globaler Administrator sein.
   
-* **CRM-Dienstadministrator:** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **Dynamics 365-Dienstadministrator:** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft CRM Online, sofern der Dienst vorhanden ist, und können Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 * **Geräteadministratoren**: Benutzer mit dieser Rolle werden zu lokalen Geräteadministratoren für alle Windows 10-Geräte, die mit Azure Active Directory verknüpft werden. Sie haben nicht die Möglichkeit zum Verwalten von Geräteobjekten in Azure Active Directory.
 

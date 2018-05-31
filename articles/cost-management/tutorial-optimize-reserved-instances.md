@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32177322"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -74,7 +75,7 @@ Jeder Erwerb einer reservierten Instanz gilt für eine VM mit einer bestimmten G
 
 ![Details zu reservierten Azure-Instanzen](./media/tutorial-optimize-reserved-instances/azure02.png)
 
-Der Erwerb einer reservierten Instanz bringt Vorteile, wenn eine VM eine ausreichende Anzahl von Stunden ausgeführt wird, damit der Break-even-Point der Reservierung erreicht wird. Die VM muss zur Größe und einem Standort Ihrer reservierten Instanz passen. Im obigen Diagramm liegt der Break-even-Point beispielsweise ungefähr bei siebeneinhalb Monaten. Der Erwerb lohnt sich also, wenn die VM für die Reservierung mindestens 7,5 Monate (7,5 · 30 Tage · 24 Stunden = 5.400 Stunden) lang ausgeführt wird. Falls die VM weniger als 5.400 Stunden ausgeführt wird, ist die Reservierung teurer als die nutzungsbasierte Bezahlung.
+Der Erwerb einer reservierten Instanz bringt Vorteile, wenn eine VM eine ausreichende Anzahl von Stunden ausgeführt wird, damit der Break-even-Point der Reservierung erreicht wird. Die VM muss zur Größe und einem Standort Ihrer reservierten Instanz passen. Im obigen Diagramm liegt der Break-even-Point beispielsweise ungefähr bei siebeneinhalb Monaten. Der Erwerb lohnt sich also, wenn die VM für die Reservierung mindestens 7,5 Monate (7,5 \* 30 Tage \* 24 Stunden = 5.400 Stunden) lang ausgeführt wird. Falls die VM weniger als 5.400 Stunden ausgeführt wird, ist die Reservierung teurer als die nutzungsbasierte Bezahlung.
 
 Der Break-even-Point kann für jede VM-Größe und jeden Standort variieren. Außerdem spielt der vereinbarte Betrag für die nutzungsbasierte Bezahlung der VM eine Rolle. Prüfen Sie vor dem Erwerb den Break-even-Point, der für Ihren Fall gilt.
 

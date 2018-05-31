@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 17dea2d1106a57aa678a88db6647c71048d8c38f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7799eeb65a109a6ff517d50bb9603fe83f80ed14
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32769878"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Verschieben von Daten von einem FTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -75,6 +76,9 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 | port |Gibt den Port, den der FTP-Server abhört, an. |Nein  |21 |
 | enableSsl |Gibt an, ob FTP über einen SSL/TLS-Kanal verwendet werden soll. |Nein  |true |
 | enableServerCertificateValidation |Gibt an, ob die Überprüfung des SSL-Zertifikats aktiviert werden soll, wenn Sie FTP über SSL/TLS-Kanal verwenden. |Nein  |true |
+
+>[!NOTE]
+>Der FTP-Connector unterstützt den Zugriff auf FTP-Server ohne Verschlüsselung oder mit expliziter SSL/TLS-Verschlüsselung. Er unterstützt keine implizite SSL/TLS-Verschlüsselung.
 
 ### <a name="use-anonymous-authentication"></a>Verwenden von anonymer Authentifizierung
 

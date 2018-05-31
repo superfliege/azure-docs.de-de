@@ -1,11 +1,11 @@
 ---
-title: "Einführung in die Geräteverwaltung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe der Geräteverwaltung Kontrolle über die Geräte erhalten, die auf Ressourcen in Ihrer Umgebung zugreifen."
+title: Einführung in die Geräteverwaltung in Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe der Geräteverwaltung Kontrolle über die Geräte erhalten, die auf Ressourcen in Ihrer Umgebung zugreifen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,12 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: faea960d2b6207aab5a2f5df8dc65fddc9ba5b54
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b1edb9c4574afa77df43e4f017848acd3ae6d28
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33202132"
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
 
@@ -73,7 +74,7 @@ Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elem
 
 
 Diese Ziele werden erreicht, indem Sie den Benutzern Self-Service-Funktionen zum Steuern unternehmenseigener Geräte über Azure AD bereitstellen.  
-**Azure AD Join** ist für Unternehmen bestimmt, die neu auf die Cloud umstellen oder ganz auf die Cloud setzen. Dabei handelt es sich meist um kleine bis mittelgroße Unternehmen, die keine lokale Windows Server Active Directory-Infrastruktur haben. 
+**Azure AD Join** ist für Unternehmen bestimmt, die neu auf die Cloud umstellen oder ganz auf die Cloud setzen. Es gibt keine Einschränkung bezüglich Größe oder Typ von Organisationen, die Azure AD Join bereitstellen können. Azure AD Join funktioniert auch in einer Hybridumgebung gut und kann den Zugriff auf lokale Apps und Ressourcen aktivieren.
 
 Die Implementierung von in Azure AD eingebundenen Geräten bietet die folgenden Vorteile:
 
@@ -81,11 +82,14 @@ Die Implementierung von in Azure AD eingebundenen Geräten bietet die folgenden 
 
 - **Für Unternehmen geeignetes Roaming** von Benutzereinstellungen auf allen eingebundenen Geräten. Benutzer müssen keine Verbindung mit einem Microsoft-Konto (z.B. Hotmail) herstellen, um geräteübergreifende Einstellungen zu sehen.
 
-- **Zugriff auf Windows Store für Unternehmen** über das AD-Konto. Ihre Benutzer können aus einem Bestand von durch das Unternehmen vorausgewählten Anwendungen auswählen.
+- **Zugriff auf Windows Store für Unternehmen** über ein Azure AD-Konto. Ihre Benutzer können aus einem Bestand von durch das Unternehmen vorausgewählten Anwendungen auswählen.
 
 - Unterstützung von **Windows Hello** für einen sicheren und komfortablen Zugriff auf Arbeitsressourcen.
 
 - **Einschränkung des Zugriffs** auf Apps nur über die Geräte, die die Konformitätsrichtlinie erfüllen.
+
+- **Nahtloser Zugriff auf lokale Ressourcen**, wenn das Gerät über Sichtverbindung mit dem lokalen Domänencontroller verfügt.
+
 
 Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über keine lokale Windows Server Active Directory-Infrastruktur verfügen, kann aber auch in folgenden Szenarien verwendet werden:
 

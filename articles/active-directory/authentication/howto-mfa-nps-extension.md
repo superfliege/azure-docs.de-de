@@ -1,26 +1,21 @@
 ---
 title: Bereitstellen von Azure MFA-Funktionen mithilfe vorhandener NPS-Server | Microsoft-Dokumentation
-description: Die Erweiterung „Netzwerkrichtlinienserver“ für Azure Multi-Factor Authentication ist eine einfache Lösung, um der vorhandenen Authentifizierungsinfrastruktur cloudbasierte Funktionen für eine Überprüfung in zwei Schritten hinzuzufügen.
+description: Hinzufügen von cloudbasierten Funktionen für eine Überprüfung in zwei Schritten zu Ihrer vorhandenen Authentifizierungsinfrastruktur
 services: multi-factor-authentication
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.assetid: ''
-ms.service: multi-factor-authentication
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: active-directory
+ms.component: authentication
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
 ms.reviewer: richagi
-ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: d1b598dc19882a91143515e954f7dc9cdce7c384
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 57bf8b81d8d7fee6eaee216b9a2e0c52aa625257
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770252"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868329"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 

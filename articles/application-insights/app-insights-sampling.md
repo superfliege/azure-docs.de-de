@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 8f0c6e6567e82f885bb5cd0c6b6af797b393969c
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32309605"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -38,7 +39,8 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 ## <a name="types-of-sampling"></a>Arten der Stichprobenerstellung
 Es gibt drei alternative Methoden zur Stichprobenerstellung:
 
-* **Adaptive Stichprobenerstellung** : Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Ab der SDK-Version 2.0.0-beta3 ist diese Methode die Standardmethode für die Stichprobenerstellung. Die adaptive Stichprobenerstellung ist derzeit nur für serverseitige Telemetriedaten von ASP.NET verfügbar. 
+* **Adaptive Stichprobenerstellung** : Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Ab der SDK-Version 2.0.0-beta3 ist diese Methode die Standardmethode für die Stichprobenerstellung. Die adaptive Stichprobenerstellung ist derzeit nur für serverseitige Telemetriedaten von ASP.NET verfügbar. Für Asp.NET Core-Anwendungen, die auf das gesamte Framework ausgerichtet sind, steht die adaptive Stichprobenerstellung ab Version 1.0.0 des Microsoft.ApplicationInsights.AspNetCore-SDK zur Verfügung. Für Asp.NET Core-Anwendungen, die auf NetCore ausgerichtet sind, steht die adaptive Stichprobenerstellung ab 2.2.0-beta1 des Microsoft.ApplicationInsights.AspNetCore-SDK zur Verfügung.
+
 * **Stichprobenerstellung mit festem Prozentsatz** : Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET- oder Java-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 * **Erfassungs-Stichprobenerstellung** funktioniert im Azure-Portal. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenerstellungsrate verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung besteht darin, dass die Stichprobenerstellungsrate ohne erneute Bereitstellung Ihrer App festgelegt werden kann und einheitlich für alle Server und Clients funktioniert. 
 
@@ -335,7 +337,7 @@ Feature Stichprobenerstellung mit festem Prozentsatz im ASP.NET-SDK ab Version 2
 
 Der Stichprobenerstellungs-Algorithmus entscheidet, welche Telemetriedaten verworfen, und welche beibehalten werden (sowohl im SDK als auch im Application Insights-Dienst). Diese Entscheidung im Hinblick auf die Stichprobenerstellung wird basierend auf verschiedenen Regeln getroffen, mit denen sichergestellt wird, dass alle zusammenhängenden Datenpunkte intakt bleiben. Dadurch sind die in Application Insights durchgeführten Diagnosen auch bei einer geringeren Datenmenge zuverlässig und ermöglichen es Ihnen, die erforderlichen Maßnahmen zu ergreifen. Wenn Ihre App beispielsweise zusätzliche Telemetrieelemente für eine Anforderung sendet, bei der ein Fehler aufgetreten ist (z. B. Ausnahmen und Ablaufverfolgungen, die für diese Anforderung protokolliert wurden), werden diese Anforderung und andere Telemetriedaten bei der Stichprobenerstellung nicht getrennt. Die Daten werden entweder vollständig beibehalten oder vollständig verworfen. Wenn Sie die Anforderungsdetails in Application Insights anzeigen, wird die Anforderung folglich immer mit den zugehörigen Telemetrieelementen angezeigt. 
 
-Bei Anwendungen, in denen Benutzer definiert sind (also die meisten typischen Webanwendungen), basiert die Entscheidung im Zusammenhang mit der Stichprobenerstellung auf dem Hash der Benutzer-ID. Das heißt, dass die Telemetriedaten für einen bestimmten Benutzer entweder vollständig beibehalten oder vollständig verworfen werden. Bei Anwendungen, in denen keine Benutzer definiert sind (z. B. Webdienste), basiert die Entscheidung bezüglich der Stichprobenerstellung auf der Vorgangs-ID der Anforderung. Für Telemetrieelemente, für die weder ein Benutzer noch eine Vorgangs-ID festgelegt wurde (z. B. Telemetrieelemente aus asynchronen Threads ohne HTTP-Kontext), wird bei der Stichprobenerstellung ein Prozentsatz von Telemetrieelementen der einzelnen Typen erfasst. 
+Die Entscheidung zur Stichprobenerstellung basiert auf der Vorgangs-ID der Anforderung, d.h. alle Telemetrieelemente, die zu einem bestimmten Vorgang gehören, werden entweder beibehalten oder gelöscht. Für Telemetrieelemente, für die keine Vorgangs-ID festgelegt wurde (z.B. Telemetrieelemente aus asynchronen Threads ohne HTTP-Kontext), wird bei der Stichprobenerstellung ein Prozentsatz von Telemetrieelementen der einzelnen Typen erfasst. Vor dem 2.5.0-beta2 von .NET-SDK und 2.2.0-beta3 von ASP.NET Core-SDK hing die Entscheidung zur Stichprobenerstellung vom Hash der Benutzer-ID für Anwendungen ab, die „User“ definieren (d.h. den meisten typischen Webanwendungen). Bei Anwendungen, die keine Benutzer definierten (z.B. Webdienste), basierte die Entscheidung bezüglich der Stichprobenerstellung auf der Vorgangs-ID der Anforderung.
 
 Wenn Ihnen die Telemetriedaten angezeigt werden, passt der Application Insights-Dienst die Metriken basierend auf dem Prozentsatz der Stichprobenerstellung an, der bei der Erfassung der Daten verwendet wurde. Auf diese Weise werden die fehlenden Datenpunkte kompensiert. Bei Betrachtung der Telemetriedaten in Application Insights werden folglich statistisch korrekte Annäherungen angezeigt, die den reellen Zahlen sehr nahe kommen.
 

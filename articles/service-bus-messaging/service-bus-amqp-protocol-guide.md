@@ -1,24 +1,25 @@
 ---
-title: "AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Docs"
-description: "Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs."
+title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Microsoft Docs
+description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 services: service-bus-messaging,event-hubs
 documentationcenter: .net
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d2d3d540-8760-426a-ad10-d5128ce0ae24
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
-ms.author: clemensv;hillaryc;sethm
-ms.openlocfilehash: 4e1fa9db3b4801103069163c55a9b342a27d00ac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.date: 04/30/2018
+ms.author: clemensv
+ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312541"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -143,49 +144,49 @@ Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 
 #### <a name="create-message-receiver"></a>Erstellen eines Nachrichtenempfängers
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) |Client wird Entität als Empfänger zugeordnet |
 | Service Bus antwortet und ordnet sein Ende der Verknüpfung zu |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Entitätsname},<br/>target={Clientverknüpfungs-ID}<br/>) |
 
 #### <a name="create-message-sender"></a>Erstellen des Nachrichtenabsenders
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |Keine Aktion |
 | Keine Aktion |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |
 
 #### <a name="create-message-sender-error"></a>Erstellen des Nachrichtenabsenders (Fehler)
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**sender**,<br/>source={Clientverknüpfungs-ID},<br/>target={Entitätsname}<br/>) |Keine Aktion |
 | Keine Aktion |<-- attach(<br/>name={Name der Verknüpfung},<br/>handle={numerisches Handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**,<br/>error={Fehlerinformationen}<br/>) |
 
 #### <a name="close-message-receiversender"></a>Schließen des Nachrichtenabsenders/-empfängers
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>) |Keine Aktion |
 | Keine Aktion |<-- detach(<br/>handle={numerisches Handle},<br/>closed=**true**<br/>) |
 
 #### <a name="send-success"></a>Senden (Erfolg)
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Keine Aktion |
 | Keine Aktion |<-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>Senden (Fehler)
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |Keine Aktion |
 | Keine Aktion |<-- disposition(<br/>role=receiver,<br/>first={Zustellungs-ID},<br/>last={Zustellungs-ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={Fehlerinformationen}<br/>)<br/>) |
 
 #### <a name="receive"></a>Empfangen
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |Keine Aktion |
 | Keine Aktion |< transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -193,7 +194,7 @@ Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 
 #### <a name="multi-message-receive"></a>Empfangen mehrerer Nachrichten
 
-| Client- | SERVICE BUS |
+| Client | Service Bus |
 | --- | --- |
 | --> flow(<br/>link-credit=3<br/>) |Keine Aktion |
 | Keine Aktion |< transfer(<br/>delivery-id={numerisches Handle},<br/>delivery-tag={binäres Handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
@@ -204,6 +205,8 @@ Die Pfeile in der folgenden Tabelle zeigen die Performativenflussrichtung an.
 ### <a name="messages"></a>Meldungen
 
 In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-Standardnachrichtenabschnitten von Service Bus verwendet werden, und wie sie dem Service Bus-API-Satz zugeordnet werden.
+
+Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-properties`-Zuordnung von AMQP zugeordnet werden.
 
 #### <a name="header"></a>Header
 
@@ -233,6 +236,80 @@ In den folgenden Abschnitten wird erläutert, welche Eigenschaften aus den AMQP-
 | group-sequence |Indikator, der die relative Sequenznummer der Nachricht in einer Sitzung angibt. Wird von Service Bus ignoriert. |Nicht über die Service Bus-API zugänglich. |
 | reply-to-group-id |- |[ReplyToSessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_ReplyToSessionId) |
 
+#### <a name="message-annotations"></a>Nachrichtenanmerkungen
+
+Einige andere Servicebus-Nachrichteneigenschaften sind nicht Teil der AMQP-Nachrichteneigenschaften und werden mit der Nachricht als `MessageAnnotations` übergeben.
+
+| Anmerkungszuordnungsschlüssel | Verwendung | API-Name |
+| --- | --- | --- |
+| x-opt-scheduled-enqueue-time | Deklariert den Zeitpunkt, zu dem die Nachricht auf der Entität angezeigt werden soll. |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
+| x-opt-partition-key | Anwendungsdefinierter Schlüssel, der bestimmt, in welcher Partition die Nachricht aufgenommen werden sollte. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
+| x-opt-via-partition-key | Anwendungsdefinierter Partitionsschlüsselwert, wenn eine Transaktion zum Senden von Nachrichten über eine Übertragungswarteschlange verwendet werden soll. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
+| x-opt-enqueued-time | Vom Dienst definierte UTC-Zeit, die den tatsächlichen Zeitpunkt des Einreihens der Nachricht darstellt. Wird bei der Eingabe ignoriert. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
+| x-opt-sequence-number | Vom Dienst definierte eindeutige Nummer, die einer Nachricht zugewiesen ist. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
+| X-opt-offset | Vom Dienst definierte Warteschlangen-Sequenznummer der Nachricht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
+| x-opt-locked-until | Vom Dienst definiert. Der Zeitpunkt (Datum und Uhrzeit), bis zu dem die Nachricht in der Warteschlange / im Abonnement gesperrt wird. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
+| x-opt-deadletter-source | Vom Dienst definiert. Die Quelle der ursprünglichen Nachricht, wenn die Nachricht von der Warteschlange für unzustellbare Nachrichten empfangen wird. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+
+### <a name="transaction-capability"></a>Transaktionsfunktion
+
+Eine Transaktion gruppiert zwei oder mehr Vorgänge in einem Ausführungsbereich. Solch eine Transaktion muss von sich aus sicherstellen, dass alle Vorgänge, die zu einer bestimmten Gruppe von Vorgängen gehören, entweder gemeinsam gelingen oder gemeinsam fehlschlagen.
+Die Vorgänge werden durch einen Bezeichner `txn-id` gruppiert.
+
+Für die Transaktionsinteraktion fungiert der Client als `transaction controller`, der die Vorgänge steuert, die zusammen gruppiert werden sollten. Der Service Bus-Dienst fungiert als `transactional resource` und führt Aufgaben aus, die vom `transaction controller` angefordert werden.
+
+Die Kommunikation zwischen Client und Dienst über einen `control link`, der vom Client eingerichtet wird. Die `declare`- und `discharge`-Nachrichten werden vom Controller über den Steuerlink gesendet, um Transaktionen zuzuordnen und abzuschließen (sie entsprechen nicht der Abgrenzung von Transaktionsaufgaben). Das tatsächliche Senden/Empfangen wird nicht über diesen Link ausgeführt. Jeder angeforderte Transaktionsvorgang wird explizit mit der gewünschten `txn-id` identifiziert und kann daher auf einem beliebigen Link der Verbindung auftreten. Wenn der Steuerlink geschlossen ist, während von ihm erstellte nicht entladene Transaktionen vorhanden sind, wird für alle solche Transaktionen sofort ein Rollback durchgeführt, und Versuche, weitere Transaktionsaufgaben daran auszuführen, führen zu Fehlern. Über den Steuerlink gesendete Nachrichten dürfen nicht vorab ausgeglichen sein.
+
+Jede Verbindung muss einen eigenen Steuerlink initiieren, um Transaktionen starten und beenden zu können. Der Dienst definiert ein spezielles Ziel, das als `coordinator` fungiert. Der Client/Controller richtet einen Steuerlink zu diesem Ziel ein. Der Steuerlink befindet sich außerhalb der Grenzen einer Entität, d.h. derselbe Steuerlink kann zum Initiieren und Entladen von Transaktionen für mehrere Entitäten verwendet werden.
+
+#### <a name="starting-a-transaction"></a>Starten einer Transaktion
+
+Um mit Transaktionsaufgaben zu beginnen, benötigt der Controller eine `txn-id` vom Koordinator. Dies geschieht durch Senden einer `declare`-Typmeldung. Wenn die Deklaration erfolgreich ist, antwortet der Koordinator mit dem Dispositionsergebnis `declared`, das die zugewiesene `txn-id` enthält.
+
+| Client (Controller) | | Servicebus (Coordinator) |
+| --- | --- | --- |
+| attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
+|  | <------ | attach(<br/>name={Name der Verknüpfung},<br/>... ,<br/>target=Coordinator()<br/>) |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={Transaktions-ID}<br/>)|
+
+#### <a name="discharging-a-transaction"></a>Entladen einer Transaktion
+
+Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-Nachricht an den Koordinator ab. Der Controller gibt durch Festlegen des `fail`-Flags im Entladecode an, dass er ein Commit oder Rollback der Transaktionsaufgaben durchführen möchte. Wenn der Koordinator die Entladung nicht abschließen kann, wird die Nachricht mit diesem Ergebnis zurückgewiesen, das den `transaction-error` enthält.
+
+> Hinweis: „fail=true“ bezieht sich auf das Rollback einer Transaktion und „fail=false“ auf das Commit.
+
+| Client (Controller) | | Servicebus (Coordinator) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+| | zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten. |
+| transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
+| | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
+
+#### <a name="sending-a-message-in-a-transaction"></a>Senden einer Nachricht in einer Transaktion
+
+Alle Transaktionsaufgaben erfolgen mit dem Transaktionsübermittlungsstatus `transactional-state`, der die „txn-id“ enthält. Beim Senden von Nachrichten ist der Transaktionsstatus im Übertragungsrahmen der Nachricht enthalten. 
+
+| Client (Controller) | | Servicebus (Coordinator) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+| transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ Nutzlast }| ------> |  |
+| | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
+
+#### <a name="disposing-a-message-in-a-transaction"></a>Löschen einer Nachricht in einer Transaktion
+
+Die Nachrichtenlöschung umfasst Vorgänge wie `Complete` / `Abandon` / `DeadLetter` / `Defer`. Um diese Vorgänge innerhalb einer Transaktion durchzuführen, übergeben Sie den `transactional-state` mit der Löschung.
+
+| Client (Controller) | | Servicebus (Coordinator) |
+| --- | --- | --- |
+| transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
+| | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ Nutzlast }|  
+| disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
+
+
 ## <a name="advanced-service-bus-capabilities"></a>Erweiterte Service Bus-Funktionen
 
 In diesem Abschnitt werden die erweiterten Funktionen von Azure Service Bus behandelt. Sie basieren auf Erweiterungsentwürfen für AMQP, die derzeit vom OASIS Technical Committee für AMQP entwickelt werden. Service Bus implementiert die aktuellen Versionen dieser Entwürfe und übernimmt die Änderungen, die eingeführt werden, wenn diese Entwürfe den Standardstatus erreichen.
@@ -248,7 +325,7 @@ Die AMQP-Verwaltungsspezifikation ist der erste der in diesem Artikel beschriebe
 
 Für all diese Gesten ist eine Anforderung/Antwort-Interaktion zwischen dem Client und der Messaginginfrastruktur erforderlich. Daher definiert die Spezifikation, wie dieses Interaktionsmuster zusätzlich zu AMQP modelliert wird: Der Client stellt eine Verbindung mit der Messaginginfrastruktur her, initiiert eine Sitzung und erstellt dann ein Verknüpfungspaar. Für die eine Verknüpfung fungiert der Client als Absender, und für die andere als Empfänger. Auf diese Weise wird ein Verknüpfungspaar erstellt, das als bidirektionaler Kanal dienen kann.
 
-| Logischer Vorgang | Client- | Service Bus |
+| Logischer Vorgang | Client | Service Bus |
 | --- | --- | --- |
 | Anforderung/Antwort-Pfad erstellen |--> attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**sender**,<br/>source=**null**,<br/>target=”myentity/$management”<br/>) |Keine Aktion |
 | Anforderung/Antwort-Pfad erstellen |Keine Aktion |\<-- attach(<br/>name={*Name der Verknüpfung*},<br/>handle={*numerisches Handle*},<br/>role=**receiver**,<br/>source=null,<br/>target=”myentity”<br/>) |
@@ -284,14 +361,14 @@ Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 
 | Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| Vorgang |Nein |string |**put-token** |
-| type |Nein |string |Der Typ des abgelegten Tokens. |
-| Name |Nein |string |Die Zielgruppe, für die das Token gilt. |
+| operation |Nein  |Zeichenfolge |**put-token** |
+| type |Nein  |Zeichenfolge |Der Typ des abgelegten Tokens. |
+| name |Nein  |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
 | expiration |Ja |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
 
-| Tokentyp | Tokenbeschreibung | Texttyp | Hinweise |
+| Tokentyp | Tokenbeschreibung | Texttyp | Notizen |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web Token (JWT) |AMQP-Wert (Zeichenfolge) |Noch nicht verfügbar. |
 | amqp:swt |Einfaches Webtoken (Simple Web Token, SWT) |AMQP-Wert (Zeichenfolge) |Wird nur für von AAD/ACS ausgestellte SWTs unterstützt. |
@@ -303,8 +380,8 @@ Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte
 
 | Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| status-code |Nein |int |HTTP-Antwortcode **[RFC2616]** |
-| status-description |Ja |string |Beschreibung des Status |
+| status-code |Nein  |int |HTTP-Antwortcode **[RFC2616]** |
+| status-description |Ja |Zeichenfolge |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 
@@ -315,6 +392,19 @@ Der ANONYMOUS-Mechanismus muss vom gewählten AMQP 1.0-Client also unterstützt 
 Nachdem die Verbindung und die Sitzung eingerichtet wurden, sind das Zuordnen der Verknüpfungen zum Knoten *$cbs* und das Senden der *put-token*-Anforderung die einzigen zulässigen Vorgänge. Nach der Verbindungsherstellung muss innerhalb von 20 Sekunden mithilfe einer *put-token*-Anforderung erfolgreich ein gültiges Token für einen Entitätsknoten festgelegt werden. Andernfalls wird die Verbindung von Service Bus einseitig verworfen.
 
 Der Client ist anschließend dafür zuständig, den Tokenablauf nachzuverfolgen. Wenn ein Token abläuft, verwirft Service Bus sofort alle Verknüpfungen der Verbindung mit der jeweiligen Entität. Um dies zu verhindern, kann der Client das Token für den Knoten jederzeit durch ein neues Token ersetzen, indem er den virtuellen Verwaltungsknoten *$cbs* mit der gleichen *put-token*-Geste verwendet. Der Nutzlast-Datenverkehr anderer Verknüpfungen wird dadurch nicht beeinträchtigt.
+
+### <a name="send-via-functionality"></a>„Senden über“-Funktionalität
+
+Mit der Funktion [Senden über / Übertragungssender](service-bus-transactions.md#transfers-and-send-via) kann Service Bus eine bestimmte Nachricht über eine andere Entität an eine Zielentität weiterleiten. Dies wird hauptsächlich verwendet, um Entitäten übergreifende Vorgänge in einer einzelnen Transaktion auszuführen.
+
+Mit dieser Funktionalität erstellen Sie einen Sender und richten den Link zur `via-entity` ein. Beim Einrichten des Links werden zusätzliche Informationen übergeben, um das „true“-Ziel der Nachrichten/Übertragungen auf diesem Link einzurichten. Nach erfolgreichem Anfügen werden alle Nachrichten, die über diesen Link gesendet wurden, automatisch über die *via-entity* an die *destination-entity* weitergeleitet. 
+
+> Hinweis: Die Authentifizierung muss sowohl für die *via-entity* als auch *destination-entity* vor dem Einrichten dieses Links erfolgen.
+
+| Client | | Service Bus |
+| --- | --- | --- |
+| attach(<br/>name={Name der Verknüpfung},<br/>role=sender,<br/>source={Clientverknüpfungs-ID},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| | <------ | attach(<br/>name={Name der Verknüpfung},<br/>role=receiver,<br/>source={Clientverknüpfungs-ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
