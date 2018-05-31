@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: big-data
 ms.date: 03/15/2018
 ms.author: omidm
-ms.openlocfilehash: c6c39fb0810a7ea8b6facec1ca80da25d2253329
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 4334a438f09d7c18912262e9c70bfffbcdeb1d9e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311130"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34199023"
 ---
 # <a name="azure-data-lake-analytics-quota-limits"></a>Azure Data Lake Analytics-Kontingentgrenzen
 
@@ -33,29 +33,33 @@ Wenn Sie diesen Grenzwert überschreiten möchten, können Sie diese Optionen ve
 * Wählen Sie nach Möglichkeit eine andere Region aus
 * Wenden Sie sich zur Anforderung einer Kontingenterhöhung durch [Öffnen eines Supporttickets](#increase-maximum-quota-limits) an den Azure-Support.
 
-## <a name="adla-account-limits"></a>ADLA-Kontobegrenzungen
+## <a name="default-adla-account-limits"></a>Standardmäßige ADLA-Kontobegrenzungen
 
-**Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto:** 250.
+**Maximale Anzahl von Analytics-Einheiten (AUs) pro Konto:** 32
 
 Dies ist die maximale Anzahl von AUs, die in Ihrem Konto gleichzeitig ausgeführt werden können. Wenn die Gesamtzahl von in allen Aufträgen ausgeführten AUs diesen Grenzwert überschreitet, werden neuere Aufträge automatisch in die Warteschlange eingereiht. Beispiel: 
 
-* Sie führen einen Auftrag mit 250 AUs aus. Wenn Sie einen zweiten Auftrag übermitteln, wartet dieser in der Auftragswarteschlange, bis der erste Auftrag abgeschlossen ist.
-* Wenn bereits fünf Aufträge mit jeweils 50 AUs ausgeführt werden und Sie einen sechsten Auftrag übermitteln, der 20 AUs benötigt, wartet dieser Auftrag in der Auftragswarteschlange, bis 20 AUs verfügbar sind.
+* Sie führen einen Auftrag mit 32 AUs aus. Wenn Sie einen zweiten Auftrag übermitteln, wartet dieser in der Auftragswarteschlange, bis der erste Auftrag abgeschlossen ist.
+* Wenn bereits vier Aufträge mit jeweils 8 AUs ausgeführt werden und Sie einen fünften Auftrag übermitteln, der 8 AUs benötigt, wartet dieser Auftrag in der Auftragswarteschlange, bis 8 AUs verfügbar sind.
+
+**Maximale Anzahl von Analytics-Einheiten (AUs) pro Auftrag:** 32
+
+Dies ist die standardmäßige maximale Anzahl von AUs, die jedem einzelnen Auftrag in Ihrem Konto zugewiesen werden können. Aufträge, denen mehr als diese Begrenzung zugewiesen wird, werden abgelehnt, es sei denn,für den Absender gilt eine Computerichtlinie (Auftragsübermittlungsbegrenzung), die ihm mehr AUs pro Auftrag gewährt. Die Obergrenze dieses Werts ist die AU-Begrenzung für das Konto.
 
 **Maximale Anzahl gleichzeitiger U-SQL-Aufträge pro Konto:** 20.
 
 Dies ist die maximale Anzahl von Aufträgen, die in Ihrem Konto gleichzeitig ausgeführt werden können. Aufträge, die diesen Wert überschreiten, werden automatisch in die Warteschlange eingereiht.
 
-## <a name="adjust-adla-quota-limits-per-account"></a>Anpassen von ADLA-Kontingentgrenzen pro Konto
+## <a name="adjust-adla-account-limits"></a>Anpassen von ADLA-Kontobegrenzungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Wählen Sie ein vorhandenes ADLA-Konto aus.
 3. Klicken Sie auf **Eigenschaften**.
-4. Passen Sie **Parallelität** und **Gleichzeitige Aufträge** Ihren Anforderungen entsprechend an.
-
-    ![Portalseite für Azure Data Lake Analytics](./media/data-lake-analytics-quota-limits/data-lake-analytics-quota-properties.png)
+4. Passen Sie die Werte für **Maximal zulässige AUs**, **Höchstzahl ausgeführter Aufträge** und **Grenzwerte bei der Auftragsübermittlung** Ihren Anforderungen entsprechend an.
 
 ## <a name="increase-maximum-quota-limits"></a>Erhöhen der Kontingentobergrenzen
+
+Weitere Informationen zu Azure-Grenzwerten finden Sie in der [Dokumentation zu dienstspezifischen Azure-Grenzwerten](../azure-subscription-service-limits.md#data-lake-analytics-limits).
 
 1. Öffnen Sie eine Supportanfrage im Azure-Portal.
 
