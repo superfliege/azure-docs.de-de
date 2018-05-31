@@ -2,25 +2,20 @@
 title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit.
 services: active-directory
-documentationcenter: ''
+ms.service: active-directory
+ms.component: B2B
+ms.topic: article
+ms.date: 05/11/2018
+ms.author: twooley
 author: twooley
 manager: mtillman
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: active-directory
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: identity
-ms.date: 03/06/2018
-ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 2f039361bce9615e8b8b9aa62dc152db504a6dc1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 77dc239385261c9544b00cf2cf2e450136dce0ae
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076572"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -37,9 +32,6 @@ Ja. Weitere Informationen zur Verwendung der Funktion zum Hochladen von CSV-Date
 
 ### <a name="how-can-i-customize-my-invitation-emails"></a>Wie kann ich meine Einladungs-E-Mails anpassen?
 Mithilfe der [B2B-Einladungs-APIs](active-directory-b2b-api.md) können Sie nahezu jedes Element des Einladungsprozesses anpassen.
-
-### <a name="can-an-invited-external-user-leave-the-organization-after-being-invited"></a>Kann ein eingeladener externer Benutzer die Organisation verlassen, nachdem er eingeladen wurde?
-Der Administrator der einladenden Organisation kann einen B2B-Zusammenarbeit-Gastbenutzer aus dem eigenen Verzeichnis löschen, der Gastbenutzer kann das Verzeichnis der einladenden Organisation jedoch nicht selbst verlassen. 
 
 ### <a name="can-guest-users-reset-their-multi-factor-authentication-method"></a>Können Gastbenutzer ihre Multi-Factor Authentication-Methode zurücksetzen?
 Ja. Gastbenutzer können ihre Multi-Factor Authentication-Methode auf dieselbe Weise zurücksetzen wie normale Benutzer.
@@ -105,9 +97,7 @@ Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Wir 
 Senden Sie uns zudem über die Website [B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) Ihre Anregungen und Ideen, und stimmen Sie über zukünftige Features ab.
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Können eine automatisch eingelöste Einladung gesendet werden, damit der Benutzer sofort loslegen kann, oder muss sich der Benutzer stets bis zur Einlöse-URL durchklicken?
-Einladungen, die von einem Benutzer in der einladenden Organisation gesendet werden, der auch Mitglied in der Partnerorganisation ist, müssen nicht vom B2B-Benutzer eingelöst werden.
-
-Es wird empfohlen, einen Benutzer aus der Partnerorganisation in die einladende Organisation einzuladen. [Fügen Sie diesen Benutzer der Rolle „Gasteinladender“ in der Ressourcenorganisation zu](active-directory-b2b-add-guest-to-role.md). Dieser Benutzer kann über die Anmeldeoberfläche, PowerShell-Skripts oder APIs andere Benutzer in der Partnerorganisation einladen. Anschließend müssen B2B-Zusammenarbeitsbenutzer aus dieser Organisation ihre Einladungen nicht zwingend einlösen.
+Ein Einladender kann andere Benutzer aus der Partnerorganisation über die Benutzeroberfläche, über PowerShell-Skripts oder über APIs einladen. Anschließend kann der Einladende dem Gastbenutzer einen direkten Link zu einer freigegebenen App senden. In den meisten Fällen muss der Eingeladene keine E-Mail-Einladung mehr öffnen und auf eine Einlösungs-URL klicken. Weitere Informationen finden Sie unter [Azure Active Directory B2B collaboration invitation redemption](active-directory-b2b-redemption-experience.md) (Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen).
 
 ### <a name="how-does-b2b-collaboration-work-when-the-invited-partner-is-using-federation-to-add-their-own-on-premises-authentication"></a>Wie erfolgt die B2B-Zusammenarbeit, wenn der eingeladene Partner den Partnerverbund verwendet, um die eigene lokale Authentifizierung hinzuzufügen?
 Wenn der Partner über einen Azure AD-Mandanten verfügt, der über einen Verbund in die lokale Authentifizierungsinfrastruktur eingebunden ist, wird automatisch lokales einmaliges Anmelden (Single Sign-On, SSO) ausgeführt. Wenn der Partner keinen Azure AD-Mandanten aufweist, wird für neue Benutzer ein Azure AD-Konto erstellt. 
@@ -129,16 +119,5 @@ Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung vo
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
+- [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
 
-* [Was ist die Azure AD B2B-Zusammenarbeit?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Wie fügen Azure AD-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
-* [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
-* [Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit](active-directory-b2b-invitation-email.md)
-* [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
-* [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
-* [Behandlung von Problemen in Bezug auf die Azure AD B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
-* [Azure AD B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)
-* [Multi-Factor Authentication für Benutzer der B2B-Zusammenarbeit](active-directory-b2b-mfa-instructions.md)
-* [Hinzufügen von Benutzern der B2B-Zusammenarbeit ohne Einladung](active-directory-b2b-add-user-without-invite.md)
-* [Artikelindex für die Anwendungsverwaltung in Azure AD](active-directory-apps-index.md)

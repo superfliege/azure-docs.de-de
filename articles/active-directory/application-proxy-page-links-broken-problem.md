@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 17f2afb0aaf3b899784a504b77f33a1284f0a232
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7c505080e6b6144ab3cf24ad89bb084efbb77c29
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155463"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Links auf der Seite funktionieren nicht für eine Anwendungsproxyanwendung
 
@@ -36,14 +37,14 @@ Es gibt drei Möglichkeiten, dieses Problem zu beheben. Die im Folgenden aufgef�
 
     Wenn Sie die interne URL ändern, die Zielseite für Benutzer jedoch nicht geändert werden soll, ändern Sie die URL der Startseite in die zuvor veröffentlichte interne URL. Wechseln Sie dazu zu „Azure Active Directory -&gt; App-Registrierungen -&gt; Anwendung auswählen -&gt; Eigenschaften“. Auf der Registerkarte „Eigenschaften“ befindet sich das Feld „URL der Startseite“, in dem Sie die gewünschte Startseite eingeben können.
 
-2.  Wenn Ihre Anwendung vollqualifizierte Domänennamen (FQDNs) verwendet, verwenden Sie [Benutzerdefinierte Domänen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains), um Ihre Anwendungen zu veröffentlichen. Durch dieses Feature kann dieselbe URL sowohl intern als auch extern verwendet werden.
+2.  Wenn Ihre Anwendung vollqualifizierte Domänennamen (FQDNs) verwendet, verwenden Sie [Benutzerdefinierte Domänen](manage-apps/application-proxy-configure-custom-domain.md), um Ihre Anwendungen zu veröffentlichen. Durch dieses Feature kann dieselbe URL sowohl intern als auch extern verwendet werden.
 
-    Mit dieser Option wird sichergestellt, dass die Links in der Anwendung extern über den Anwendungsproxy zugänglich sind, da die Links mit internen URLs in der Anwendung auch extern erkannt werden. Beachten Sie, dass alle Links trotzdem zu einer veröffentlichten Anwendung gehören müssen. Mit dieser Option müssen die Links jedoch nicht zur gleichen Anwendung gehören und können mehreren Anwendungen angehören.
+    Mit dieser Option wird sichergestellt, dass die Links in der Anwendung extern über den Anwendungsproxy zugänglich sind, da die Links mit internen URLs in der Anwendung auch extern erkannt werden. Alle Links müssen dennoch zu einer veröffentlichten Anwendung gehören. Mit dieser Option müssen die Links jedoch nicht zur gleichen Anwendung gehören und können mehreren Anwendungen angehören.
 
-3.  Wenn keine dieser Optionen möglich ist, sollten Sie die Vorschau eines neuen Features verwenden, das URL-Übersetzung/-Umschreibung ermöglicht. Mit dieser Option können interne URLs oder Links, die im HTML-Text der Anwendungen vorliegen, übersetzt oder den veröffentlichten externen Anwendungsproxy-URLs zugeordnet werden. Dies funktioniert nur für Links in HTML oder CSS. Links, die über JS generiert werden, sind nicht inbegriffen. 
+3.  Wenn keine dieser Optionen möglich ist, können Sie die Vorschau eines neuen Features verwenden, das URL-Übersetzung/-Umschreibung ermöglicht. Mit diesem Feature werden interne URLs oder Links, die im HTML-Text der Anwendungen vorliegen, übersetzt oder den veröffentlichten externen Anwendungsproxy-URLs zugeordnet. Diese Übersetzung funktioniert nur für Links in HTML- oder CSS-Code. Links, die über JS generiert werden, sind nicht inbegriffen. 
 
-Daher wird dringend empfohlen, nach Möglichkeit die Lösung [Benutzerdefinierte Domänen](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) zu nutzen. Wenn Sie an der Vorschau teilnehmen möchten, wenden Sie sich per E-Mail an <aadapfeedback@microsoft.com>, und geben Sie dabei die Anwendungs-IDs an.
+Daher wird dringend empfohlen, nach Möglichkeit die Lösung [Benutzerdefinierte Domänen](manage-apps/application-proxy-configure-custom-domain.md) zu nutzen. Wenn Sie an der Vorschau teilnehmen möchten, wenden Sie sich per E-Mail an <aadapfeedback@microsoft.com>, und geben Sie dabei die Anwendungs-IDs an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwenden von vorhandenen lokalen Proxyservern](application-proxy-working-with-proxy-servers.md)
+[Verwenden von vorhandenen lokalen Proxyservern](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)
 
