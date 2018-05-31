@@ -10,11 +10,12 @@ ms.custom: develop apps
 ms.topic: article
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: dc78a43fb99428eac921dd0cfffe5547f523a133
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 37f143ce9dabdc2d0eaf6c60dd551c682a141c17
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187673"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Azure SQL-Datenbanken berücksichtigen sollte.
@@ -34,7 +35,7 @@ Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheeta
 ## <a name="resource-limitations"></a>Ressourcenbeschränkungen
 Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: Ressourcenkontrolle und Durchsetzung von Grenzen.
 
-* Weitere Informationen: [Ressourceneinschränkungen für Azure SQL-Datenbank](sql-database-service-tiers.md).
+* Weitere Informationen: [Einschränkungen des DTU-basierten Ressourcenmodells für Azure SQL-Datenbank](sql-database-dtu-resource-limits.md) und [Einschränkungen des auf virtuellen Kernen basierenden Ressourcenmodells für Azure SQL-Datenbank (Vorschau)](sql-database-vcore-resource-limits.md).
 
 ## <a name="security"></a>Sicherheit
 Azure SQL-Datenbank stellt Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten sowie zum Überwachen von Aktivitäten in einer SQL-Datenbank bereit.

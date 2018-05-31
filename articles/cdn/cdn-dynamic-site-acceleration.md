@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: rli; v-deasim
-ms.openlocfilehash: 4c0a68fd7b6cdf96bb495f6b447299bdbc5772f7
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 66032a68634be5b52bbfa544d0a3bcd3d1090652
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359984"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
@@ -33,7 +34,7 @@ Das **Azure CDN von Akamai** und das **Azure CDN von Verizon** ermöglichen beid
 >   
 > Bei **Azure CDN von Verizon**-Profilen können Sie nach deren Erstellung die Optimierung eines CDN-Endpunkts nicht ändern.
 
-## <a name="configuring-cdn-endpoint-to-accelerate-delivery-of-dynamic-files"></a>Konfigurieren von CDN-Endpunkten zur Beschleunigung der Übermittlung dynamischer Dateien
+## <a name="cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files"></a>CDN-Endpunktkonfiguration zur Beschleunigung der Übermittlung dynamischer Dateien
 
 Um einen CDN-Endpunkt für die Optimierung der Übermittlung von dynamischen Dateien zu konfigurieren, können Sie entweder das Azure-Portal oder die REST-APIs verwenden oder dies programmgesteuert über eines der Client-SDKs tun. 
 

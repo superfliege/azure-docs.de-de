@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 911d6484421cc9fddad0530bf8d9ab4f01d48bf8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361374"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf virtuellen Data Science-Computern basierende Teamanalyse und KI-Umgebung 
 Der [virtuelle Data Science-Computer](overview.md) (Data Science Virtual Machine, DSVM) bietet eine umfangreiche Umgebung in der Azure-Cloud mit vorgefertigter Software für KI und Datenanalyse. Bisher wurde der DSVM als einzelner Analyse-Desktop verwendet, und einzelne Datenanalysten erzielen durch diese gemeinsame Nutzung ihrer vorgefertigten Analyseumgebung einen Produktivitätsgewinn. Bei der Planung von Analyseumgebungen für Data Scientists und KI-Entwickler durch große Analyseteams ist eines des Leitmotive eine gemeinsam genutzte Analysenentwicklungs- und Experimentinfrastruktur, die entsprechend den IT-Richtlinien des Unternehmens verwaltet wird und außerdem die Zusammenarbeit und Konsistenz über alle Data Science-/Analyseteams hinweg vereinfacht. Eine gemeinsam genutzte Infrastruktur ermöglicht der IT-Abteilung außerdem eine bessere Nutzung der Analyseumgebung. Die teambasierte Data Science-/Analyseinfrastruktur wird von einigen Organisationen auch als „Analyse-Sandbox“ bezeichnet, mit dessen Hilfe die Data Scientists schnell Daten verstehen, Experimente ausführen, Hypothesen überprüfen und Vorhersagemodelle auf sichere Weise und ohne Beeinträchtigung der Produktionsumgebung erstellen können, während sie über Zugriff auf verschiedene Datenressourcen verfügen. 
@@ -32,6 +33,17 @@ Zu den wichtigsten Bausteinen einer Teamanalyseumgebung für Unternehmen gehöre
 * [Automatisch skalierter Pool von virtuellen Data Science-Computern](dsvm-pools.md)
 * [Gemeinsame Identität und Zugriff auf den Arbeitsbereich über jeden DSVM im Pool](dsvm-common-identity.md)
 * [Sicherer Zugriff auf Datenquellen](dsvm-secure-access-keys.md)
-* Governance und Ermittlung von Datasets des Unternehmens und offenen Datasets
 
-In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem dieser Aspekte bereitgestellt. [Azure Architecture Center](https://docs.microsoft.com/en-us/azure/architecture/) bietet eine ausführlichere End-to-End-Architektur für Ihre Analyseinfrastruktur.  
+
+In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem dieser oben genannten Aspekte bereitgestellt. Natürlich gibt es einige zusätzliche Überlegungen und Anforderungen bei der Bereitstellung von DSVM in großen Unternehmenskonfigurationen, die in dieser Artikelserie noch nicht direkt behandelt werden. Hier sind einige der anderen Überlegungen und Hinweise auf die allgemeine Azure-Dokumentation, die bei der Implementierung auf den DSVM-Instanzen in Ihrem Unternehmen verwendet werden kann. 
+
+* [Netzwerksicherheit](https://docs.microsoft.com/azure/security/azure-network-security)
+* [Überwachung](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) und [Verwaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
+* [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/azure-log-audit)
+* [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Richtlinieneinstellung und -erzwingung](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware)
+* [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [Datenermittlung und Governance](https://docs.microsoft.com/azure/data-catalog/)
+
+Das [Azure-Architekturzentrum](https://docs.microsoft.com/en-us/azure/architecture/) ist auch eine großartige Ressource, die detaillierte End-to-End-Architekturen und Muster für den Aufbau und die Verwaltung Ihrer cloudbasierten Analyseinfrastruktur bietet. 
