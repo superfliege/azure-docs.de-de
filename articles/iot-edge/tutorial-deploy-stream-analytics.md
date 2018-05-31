@@ -6,14 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/28/2017
+ms.date: 05/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c94652017216bd9c8ff319e0b19fa3597c75e81c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 5d4c2b3bc55b94b08287a06125e15ac61013834a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362038"
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
 
@@ -57,7 +58,7 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
 1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, geben Sie **Speicherkonto** in das Suchfeld ein und wählen Sie **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 
-2. Geben Sie im Bereich **Speicherkonto erstellen** einen Namen für Ihr Speicherkonto ein, wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist, und wählen Sie dann **Erstellen** aus. Notieren Sie sich den Namen für die spätere Verwendung.
+2. Geben Sie im Bereich **Speicherkonto erstellen** einen Namen für Ihr Speicherkonto ein, und wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist. Wählen Sie die gleiche Ressourcengruppe wie für Ihren IoT Hub aus, und wählen Sie dann **Erstellen**. Notieren Sie sich den Namen für die spätere Verwendung.
 
     ![Speicherkonto erstellen][1]
 
@@ -84,32 +85,25 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
 3. Klicken Sie auf **Erstellen**.
 
-4. Wählen Sie im erstellten Auftrag unter **Auftragstopologie** die Option **Eingaben** und dann **Hinzufügen** aus.
-
-5. Gehen Sie im Bereich **Neue Eingabe** folgendermaßen vor:
-
-    a. Geben Sie im Feld **Eingabealias** den Wert **Temperatur** ein.
-    
-    b. Wählen Sie im Feld **Quelltyp** die Option **Datenstrom** aus.
-    
-    c. Verwenden Sie in den verbleibenden Feldern die Standardwerte.
+4. Öffnen Sie im erstellten Auftrag unter **Auftragstopologie** die Option **Eingaben**.
 
    ![Azure Stream Analytics-Eingabe](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-6. Klicken Sie auf **Erstellen**.
+5. Wählen Sie **Datenstromeingabe hinzufügen** und dann **Edge Hub** aus.
 
-7. Wählen Sie unter **Auftragstopologie** den Eintrag **Ausgaben** und dann **Hinzufügen** aus.
+5. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
 
-8. Gehen Sie im Bereich **Neue Ausgabe** folgendermaßen vor:
+6. Wählen Sie **Speichern**aus.
 
-    a. Geben Sie im Feld **Ausgabealias** den Wert **Warnung** ein.
-    
-    b. Verwenden Sie in den verbleibenden Feldern die Standardwerte. 
-    
-    c. Klicken Sie auf **Erstellen**.
+7. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**.
 
    ![Azure Stream Analytics-Ausgabe](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
+8. Wählen Sie **Hinzufügen** und dann **Edge Hub** aus.
+
+8. Geben Sie im Bereich **Neue Ausgabe** die **Warnung** als Ausgabealias ein. 
+
+9. Klicken Sie auf **Erstellen**.
 
 9. Wählen Sie unter **Auftragstopologie** die Option **Abfrage** aus und ersetzen Sie dann den Standardtext durch die folgende Abfrage:
 

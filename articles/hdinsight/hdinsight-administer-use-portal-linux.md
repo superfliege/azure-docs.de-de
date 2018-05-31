@@ -12,13 +12,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/22/2018
+ms.date: 05/18/2018
 ms.author: jgao
-ms.openlocfilehash: ea5b19abed0b9d2a2b8131f2be3be14e94e17405
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 90261e090f87a5ca0d92b86c33addce2449cfd24
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361970"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -125,7 +126,7 @@ Wenn der Fehler „NoRegisteredProviderFound“ oder „MissingSubscriptionRegis
    * **Standarddatenquelle**: Das Standardcluster-Dateisystem.
    * **Workerknotengröße**: Die ausgewählte VM-Größe des Workerknotens.
    * **Hauptknotengröße**: Die ausgewählte VM-Größe des Hauptknotens.
-   * **Virtuelles Netzwerk**: Der Name des virtuellen Netzwerks und des Subnetzes, für die der Cluster bereitgestellt wird, wenn eines zum Zeitpunkt der Bereitstellung ausgewählt wurde.
+   * **Virtuelles Netzwerk**: Der Name des virtuellen Netzwerks, für das der Cluster bereitgestellt wird, wenn eines zum Zeitpunkt der Bereitstellung ausgewählt wurde.
 
 ## <a name="delete-clusters"></a>Löschen von Clustern
 Wenn Sie einen Cluster löschen, werden weder das Standardspeicherkonto noch die verknüpften Speicherkonten dadurch gelöscht. Sie können den Cluster mit den gleichen Speicherkonten und den gleichen Metastores neu erstellen. Sie sollten einen neuen Standardblobcontainer verwenden, wenn Sie den Cluster neu erstellen.
