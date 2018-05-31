@@ -10,15 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: aa803e823eb3096ea785f1f912293cae82c24b8d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29b662aa2f30083b444483554a78d53f0d05cb7f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196983"
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Optimieren der Leistung von Azure Data Lake Store
 
@@ -66,7 +65,7 @@ In der Regel erzeugen Analyse-Engines wie HDInsight und Azure Data Lake Analytic
 
 Um eine bessere Leistung zu erzielen, organisieren Sie Ihre Daten grundsätzlich in größere Dateien.  Als Faustregel gilt: Organisieren Sie Datasets in Dateien mit mindestens 256 MB. In einigen Fällen wie bei Bildern und binären Daten ist eine parallele Verarbeitung nicht möglich.  Hier wird empfohlen, einzelne Dateien mit maximal 2 GB zu erstellen.
 
-Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen.  Es wird empfohlen, bei der Erstellung größere Dateien für die Verwendung bei Downstreamanwendungen zu generieren.  
+Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen.  Es wird empfohlen, bei der Erstellung größere Dateien für die Verwendung bei Downstreamanwendungen zu generieren.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Organisieren von Zeitreihendaten in Ordnern
 
@@ -123,7 +122,7 @@ Es gibt drei Ebenen in einem HDInsight-Cluster, die sich optimieren lassen, um d
 
 Abhängig von Ihrer Workload ist stets eine Mindestgröße für YARN-Container erforderlich. Wenn Sie einen zu kleinen Container auswählen, treten bei Ihren Aufträgen Probleme aufgrund von unzureichendem Speicherplatz auf. In der Regel dürfen YARN-Container nicht kleiner als 1 GB sein. Üblich sind YARN-Container mit 3 GB. Für einige Workloads benötigen Sie möglicherweise größere YARN-Container.  
 
-**Erhöhen Sie die Anzahl der Kerne pro YARN-Container.**  Erhöhen Sie die Anzahl der Kerne pro Container, um die Anzahl der Aufgaben, die in den einzelnen Containern parallel ausgeführt werden, zu erhöhen.  Dies gilt für Anwendungen wie Spark, die mehrere Aufgaben pro Container ausführt.  Bei Anwendungen wie Hive, die einen einzelnen Thread in jedem Container ausführt, empfiehlt es sich, die Anzahl der Container statt der Anzahl der Kerne pro Container zu erhöhen.   
+**Erhöhen Sie die Anzahl der Kerne pro YARN-Container.**  Erhöhen Sie die Anzahl der Kerne pro Container, um die Anzahl der Aufgaben, die in den einzelnen Containern parallel ausgeführt werden, zu erhöhen.  Dies gilt für Anwendungen wie Spark, die mehrere Aufgaben pro Container ausführt.  Bei Anwendungen wie Hive, die einen einzelnen Thread in jedem Container ausführt, empfiehlt es sich, die Anzahl der Container statt der Anzahl der Kerne pro Container zu erhöhen.
 
 ### <a name="workload-layer"></a>Workloadebene
 

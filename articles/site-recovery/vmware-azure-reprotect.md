@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: 499f363dd6241612553e94e43dd56de6cfc8f71f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0946d5234292cfb69a7e9b5bc7846e6acf94dff4
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072622"
 ---
 # <a name="reprotect-machines-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Computern von Azure an einem lokalen Standort
 
@@ -39,6 +40,8 @@ Wenn Sie zum Erstellen Ihrer virtuellen Computer eine Vorlage verwendet haben, s
 - Stellen Sie sicher, dass Sie die folgenden Ports für Failover und Failback öffnen.
 
     ![Ports für Failover und Failback](./media/vmware-azure-reprotect/failover-failback.png)
+
+- Informationen zu den Anforderungen für Ports und die Aufnahme von URLs in die Whitelist finden Sie [hier](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ## <a name="deploy-a-process-server-in-azure"></a>Bereitstellen eines Prozessservers in Azure
 
@@ -77,7 +80,7 @@ Nachdem Sie einen Masterzielserver erstellt haben, führen Sie folgende Schritte
     - Das Standardaufbewahrungsvolume für Windows ist das R-Volume.
     - Das Standardaufbewahrungsvolume für Linux ist „/mnt/retention“.
 - Sie müssen ein neues Laufwerk hinzufügen, wenn Sie einen vorhandenen Prozessserver-/Konfigurationsservercomputer, eine Skalierungsgruppe oder einen Prozessserver-/Masterzielservercomputer verwenden. Das neue Laufwerk muss die oben genannten Anforderungen erfüllen. Wenn das Aufbewahrungslaufwerk nicht vorhanden ist, wird es in der Auswahl-Dropdownliste im Portal nicht angezeigt. Nach dem Hinzufügen eines Laufwerks zum lokalen Masterziel dauert es bis zu 15 Minuten, bis das Laufwerk in der Auswahl im Portal angezeigt wird. Sie können auch den Konfigurationsserver aktualisieren, wenn das Laufwerk nach 15 Minuten nicht angezeigt wird.
-- Installieren Sie VMware-Tools auf dem Masterzielserver. Ohne die VMware-Tools werden die Datenspeicher auf dem ESXi-Host des Masterziels nicht erkannt.
+- Installieren Sie VMware-Tools oder open-vm-tools auf dem Masterzielserver. Ohne die Tools werden die Datenspeicher auf dem ESXi-Host des Masterziels nicht erkannt.
 - Legen Sie die Einstellung `disk.EnableUUID=true` in den Konfigurationsparametern des virtuellen Masterzielcomputers in VMware fest. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Diese Einstellung ist erforderlich, um für den Datenträger des virtuellen Computers (VMDK) eine einheitliche UUID festzulegen, damit er richtig bereitgestellt wird.
 - An den ESX-Host, auf dem das Masterziel erstellt wird, muss mindestens ein VMFS-Datenspeicher angefügt sein. Wenn keiner vorhanden ist, ist die Eingabe **Datenspeicher** auf der Seite für das erneute Schützen leer, und Sie können den Vorgang nicht fortsetzen.
 - Auf den Datenträgern des Masterzielservers können keine Momentaufnahmen enthalten sein. Wenn Momentaufnahmen vorhanden sind, schlagen das erneute Schützen und das Failback fehl.

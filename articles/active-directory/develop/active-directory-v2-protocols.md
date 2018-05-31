@@ -1,32 +1,34 @@
 ---
-title: "Weitere Informationen zu den von Azure AD v2.0 unterstützten Autorisierungsprotokollen | Microsoft-Dokumentation"
-description: "Anleitung für Protokolle, die vom Azure AD v2.0-Endpunkt unterstützt werden."
+title: Weitere Informationen zu den von Azure AD v2.0 unterstützten Autorisierungsprotokollen | Microsoft-Dokumentation
+description: Anleitung für Protokolle, die vom Azure AD v2.0-Endpunkt unterstützt werden.
 services: active-directory
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: CelesteDG
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
+ms.date: 04/22/2018
+ms.author: celested
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ce9a7cb14b933da23873d69e1f14a744d012a858
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c6031bb135c48a8d58f61c3c96bf18e817809ba
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156220"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0-Protokolle – OAuth 2.0 und OpenID Connect
-Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0 verwenden.  Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben.  Die hier bereitgestellten Informationen sind nützlich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer Open Source-Bibliotheken zu nutzen.
-<!-- TODO: Need link to libraries above -->
+Der v2.0-Endpunkt kann Azure AD als Identity-as-a-Service-Lösung mit den Industriestandardprotokollen OpenID Connect und OAuth 2.0 verwenden. Auch wenn der Dienst den Standard entspricht, kann es feine Unterschiede zwischen zwei Implementierungen dieser Protokolle geben. Die hier bereitgestellten Informationen sind hilfreich, wenn Sie Code direkt durch Senden und Verarbeiten von HTTP-Anforderungen schreiben oder eine Open Source-Bibliothek eines Drittanbieters verwenden, anstatt eine unserer [Open-Source-Bibliotheken](active-directory-v2-libraries.md) zu nutzen.
 
 > [!NOTE]
-> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt.  Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 >
 >
 
@@ -35,13 +37,13 @@ In fast allen OAuth- und OpenID Connect-Vorgängen sind vier Beteiligte am Austa
 
 ![OAuth 2.0-Rollen](../../media/active-directory-v2-flows/protocols_roles.png)
 
-* Der **Autorisierungsserver** ist der v2.0-Endpunkt.  Er ist verantwortlich für das Sicherstellen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token.  Er ist auch als Identitätsanbieter bekannt und verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Vorgang.
-* Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer.  Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.
-* Der **OAuth-Client** ist Ihre App, die durch ihre Anwendungs-ID identifiziert wird.  Dies ist normalerweise der Beteiligte, mit dem der Endbenutzer interagiert, und der Token vom Autorisierungsserver anfordert.  Der Client muss vom Besitzer der Ressource die Berechtigung zum Zugriff darauf erhalten.
-* Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind.  Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
+* Der **Autorisierungsserver** ist der v2.0-Endpunkt. Er ist verantwortlich für das Sicherstellen der Identität des Benutzers, das Erteilen und Widerrufen des Zugriffs auf Ressourcen und das Ausstellen von Token. Er ist auch als Identitätsanbieter bekannt und verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Vorgang.
+* Beim **Ressourcenbesitzer** handelt es sich normalerweise um den Endbenutzer. Diese Person besitzt die Daten und hat die Möglichkeit, Dritten den Zugriff auf die Daten oder die Ressource zu gewähren.
+* Der **OAuth-Client** ist Ihre App, die durch ihre Anwendungs-ID identifiziert wird. Dies ist normalerweise der Beteiligte, mit dem der Endbenutzer interagiert, und der Token vom Autorisierungsserver anfordert. Der Client muss vom Besitzer der Ressource die Berechtigung zum Zugriff darauf erhalten.
+* Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
 ## <a name="app-registration"></a>App-Registrierung
-Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder OpenID Connect unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) registriert werden.  Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
+Jede App, die den v2.0-Endpunkt nutzt, muss vor der Interaktion mit OAuth oder OpenID Connect unter [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) registriert werden. Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
 
 * Eine **Anwendungs-ID** , die Ihre Anwendung eindeutig identifiziert.
 * Einen **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
@@ -59,12 +61,12 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 
 Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
-| Wert | Beschreibung |
+| Wert | BESCHREIBUNG |
 | --- | --- |
 | `common` |Ermöglicht Benutzern mit persönlichen Microsoft-Konten und Geschäfts-, Schul- oder Unikonten aus Azure Active Directory die Anmeldung bei der Anwendung. |
 | `organizations` |Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten aus Azure Active Directory die Anmeldung bei der Anwendung. |
 | `consumers` |Ermöglicht nur Benutzern mit persönlichen Microsoft-Konten (MSA) die Anmeldung bei der Anwendung. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` |Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten eines bestimmten Azure Active Directory-Mandanten die Anmeldung bei der Anwendung.  Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` |Ermöglicht nur Benutzern mit Geschäfts-, Schul- oder Unikonten eines bestimmten Azure Active Directory-Mandanten die Anmeldung bei der Anwendung. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. |
 
 Um weitere Informationen zur Interaktion mit diesen Endpunkten zu erhalten, wählen Sie unten einen bestimmten App-Typ aus.
 
@@ -74,7 +76,7 @@ Die v2.0-Implementierung von OAuth 2.0 und OpenID Connect macht ausgiebig Gebra
 Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der [Tokenreferenz zum v2.0-Endpunkt](active-directory-v2-tokens.md).
 
 ## <a name="protocols"></a>Protokolle
-Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme.  Jedes Lernprogramm entspricht einem bestimmten Szenario.  Wenn Sie Hilfe bei der Bestimmung des richtigen Arbeitsablaufs benötigen, informieren Sie sich über die [App-Typen, die mit dem v2.0-Endpunkt erstellt werden können](active-directory-v2-flows.md).
+Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Arbeitsablaufs benötigen, informieren Sie sich über die [App-Typen, die mit dem v2.0-Endpunkt erstellt werden können](active-directory-v2-flows.md).
 
 * [Erstellen von mobilen und systemeigenen Anwendungen mit OAuth 2.0](active-directory-v2-protocols-oauth-code.md)
 * [Erstellen von Web-Apps mit OpenID Connect](active-directory-v2-protocols-oidc.md)
