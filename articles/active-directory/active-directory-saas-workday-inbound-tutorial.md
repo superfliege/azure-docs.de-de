@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: b632622868480638174b616780441e13c16a52c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8dbe995ac3c6799c2fa17d9faa8be0cb74d6ee23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258996"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -804,20 +805,13 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 * Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
-## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
+## <a name="gdpr-information"></a>Informationen zur DSGVO
 
 Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren. 
 
-Der Azure AD-Bereitstellungsdienst sowie die übrigen Dienste und Features von Microsoft halten die DSGVO ein. Weitere Informationen zur DSGVO von Microsoft finden Sie in den [Nutzungsbedingungen](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
+Weitere Informationen zur DSGVO von Microsoft finden Sie in den [Nutzungsbedingungen](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-Da für die Workday-Bereitstellungslösung für Active Directory ein Synchronisierungs-Agent auf einem in die Domäne eingebundenen Server installiert werden muss, müssen zur Einhaltung der DSGVO einige Ereignisse überwacht werden.
- 
-Der Agent erstellt Protokolle im **Windows-Ereignisprotokoll**, die personenbezogene Daten enthalten können.
-
-Es gibt zwei Möglichkeiten zur Einhaltung der DSGVO:
-
-1. Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus den Windows-Ereignisprotokollen auf Anforderung 
-2. Aufbewahrung von Windows-Ereignisprotokollen aus dem AADSyncAgent-Prozess für maximal 48 Stunden
+Beachten Sie, dass für die Workday-Bereitstellungslösung für Active Directory ein Synchronisierungs-Agent auf einem in die Domäne eingebundenen Server installiert sein muss. Dieser Agent erstellt Protokolle im **Windows-Ereignisprotokoll**, die personenbezogene Daten enthalten können.
 
 Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Settings for event logs](https://technet.microsoft.com/library/cc952132.aspx) (Einstellungen für Ereignisprotokolle). Allgemeine Informationen zum Windows-Ereignisprotokoll finden Sie in [diesem Artikel](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx).
 
@@ -827,4 +821,3 @@ Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisp
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
 * [Lesen Sie, wie Sie das einmalige Anmelden zwischen Workday und Azure Active Directory konfigurieren.](active-directory-saas-workday-tutorial.md)
 * [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](active-directory-saas-tutorial-list.md)
-

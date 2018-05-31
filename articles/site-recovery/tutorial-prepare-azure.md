@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 852c854de9feb9bcc98fc89aa9340b93f2c4e8d3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d6673acaf3cbac2098ac7ae30114696f477045
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212788"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>Vorbereiten von Azure-Ressourcen für die Replikation von lokalen Computern
 
@@ -47,7 +48,7 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs werden aus dem Speicher erstellt, wenn Sie ein Failover von einem lokalen Standort nach Azure ausführen.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) im Menü auf **Neu** > **Speicher** > **Speicherkonto**.
-2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Verwenden Sie für diese Tutorials den Namen **contosovmsacct1910171607**. Der Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
+2. Geben Sie unter **Speicherkonto erstellen** einen Namen für das Konto ein. Verwenden Sie für diese Tutorials **contosovmsacct1910171607**. Der ausgewählte Name muss in Azure eindeutig und zwischen 3 und 24 Zeichen lang sein, wobei nur Ziffern und Kleinbuchstaben zulässig sind.
 3. Wählen Sie unter **Bereitstellungsmodell** die Option **Resource Manager**.
 4. Wählen Sie unter **Kontoart** die Option **Allgemein**. Wählen Sie unter **Leistung** die Option **Standard**. Wählen Sie keinen Blobspeicher aus.
 5. Wählen Sie unter **Replikation** für die Speicherredundanz die Standardoption **Georedundanter Speicher mit Lesezugriff**.
@@ -62,7 +63,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 ## <a name="create-a-vault"></a>Erstellen eines Tresors
 
 1. Wählen Sie im Azure-Portal die Option **Ressource erstellen** > **Überwachung und Verwaltung** > **Backup und Site Recovery**.
-2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. Verwenden Sie für dieses Tutorial den Namen **ContosoVMVault**.
+2. Geben Sie unter **Name**einen Anzeigenamen ein, über den der Tresor identifiziert wird. Für diese Tutorials verwenden wir **ContosoVMVault**.
 3. Wählen Sie unter **Ressourcengruppe** die vorhandene Ressourcengruppe mit dem Namen **contosoRG** aus.
 4. Geben Sie unter **Standort** die Azure-Region **Europa, Westen** ein, die in dieser Tutorialreihe verwendet wird.
 5. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.

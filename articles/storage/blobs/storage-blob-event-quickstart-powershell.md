@@ -8,11 +8,12 @@ ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 6d7ccd94243d7064008197518f6194d5837b17be
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9ea51f6ea55c62fdd01efb155d26fade3941ce41
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261437"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt mit PowerShell
 
@@ -21,7 +22,7 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. In diesem Artikel abonni
 Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereignis reagiert (beispielsweise ein Webhook oder eine Azure-Funktion). Zur Vereinfachung des Beispiels in diesem Artikel werden Ereignisse an eine URL gesendet, die die Nachrichten lediglich sammelt. Sie erstellen diese URL mit einem Drittanbietertool von [Hookbin](https://hookbin.com/).
 
 > [!NOTE]
-> **Hookbin** ist nicht für hohen Durchsatz konzipiert. Die Nutzung dieses Tools dient nur Demonstrationszwecken. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt.
+> **Hookbin** ist nicht für hohen Durchsatz konzipiert. Die Nutzung dieses Tools dient nur Demonstrationszwecken. Wenn Sie gleichzeitig mehrere Ereignisse pushen, werden möglicherweise nicht alle Ereignisse im Tool angezeigt. Beachten Sie außerdem, dass **Hookbin** die [spezielle Behandlung](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-event-grid#create-a-requestbin-endpoint) von Azure Event Grid abruft. Zum vereinfachten Testen sendet Event Grid Ereignisse ohne dass eine richtige Antwort auf Anforderungen zur Abonnementüberprüfung erforderlich ist (die [andernfalls](https://docs.microsoft.com/en-us/azure/event-grid/security-authentication#validation-details) erfolgen würde).
 
 Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet wurden.
 

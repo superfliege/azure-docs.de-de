@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceeec6991aaac64211301313c1bb8dc5f5faa1c0
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: e3342f3057917202d81359a27accf47ba288b128
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077622"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -68,7 +69,7 @@ Im Handbuch zur Architektur und technischen Bereitstellung werden mehrere allgem
 - **Mandant**: Ein im Umfeld von HANA (große Instanz) bereitgestellter Kunde wird in einem *Mandanten* isoliert. Ein Mandant wird in der Schicht der Netzwerke, Speicher und von Compute von anderen Mandanten isoliert. Speicher- und Compute-Einheiten, die unterschiedlichen Mandanten zugewiesen sind, können einander auf der Ebene des Umfelds von HANA (große Instanz) nicht sehen und nicht miteinander kommunizieren. Ein Kunde kann Bereitstellungen in unterschiedlichen Mandanten durchführen. Auch dann ist die Kommunikation auf Ebene der großen HANA-Instanz nicht möglich.
 - **SKU-Kategorie:** Für HANA (große Instanz) werden die folgenden beiden SKU-Kategorien angeboten:
     - **Typ-I-Klasse:** S72, S72m, S144, S144m, S192 und S192m
-    - **Typ-II-Klasse:** S384, S384m, S384xm, S576, S768 und S960
+    - **Typ-II-Klasse:** S384, S384m, S384xm, S576m, S768m und S960m
 
 
 Es sind viele weitere Ressourcen zum Bereitstellen einer SAP-Workload in der Cloud verfügbar. Die Planung einer Bereitstellung von SAP HANA in Azure erfordert, dass Sie mit den Prinzipien von Azure-IaaS und der Bereitstellung von SAP-Workloads in Azure-IaaS vertraut sind. Bevor Sie fortfahren, sollten Sie den Artikel zur [Verwendung von SAP-Lösungen auf Azure-VMs](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lesen. 
@@ -144,9 +145,9 @@ Ab Juli 2017 ist SAP HANA in Azure (große Instanzen) in verschiedenen Konfigura
 |---| SAP HANA in Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-Kerne und 192 CPU-Threads  |  4,0 TB |  16 TB | Verfügbar |
 |---| SAP HANA in Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  6,0 TB |  18 TB | Verfügbar |
 |---| SAP HANA in Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  8,0 TB |  22 TB |  Verfügbar |
-|---| SAP HANA in Azure S576<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  12,0 TB |  28 TB | Verfügbar |
-|---| SAP HANA in Azure S768<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-Kerne und 768 CPU-Threads |  16, 0 TB |  36 TB | Verfügbar |
-|---| SAP HANA in Azure S960<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-Kerne und 960 CPU-Threads |  20,0 TB |  46 TB | Verfügbar |
+|---| SAP HANA in Azure S576m<br /> – 12 x Intel® Xeon® Processor E7-8890 v4<br /> 288 CPU-Kerne und 576 CPU-Threads |  12,0 TB |  28 TB | Verfügbar |
+|---| SAP HANA in Azure S768m<br /> – 16 x Intel® Xeon® Processor E7-8890 v4<br /> 384 CPU-Kerne und 768 CPU-Threads |  16, 0 TB |  36 TB | Verfügbar |
+|---| SAP HANA in Azure S960m<br /> – 20 x Intel® Xeon® Processor E7-8890 v4<br /> 480 CPU-Kerne und 960 CPU-Threads |  20,0 TB |  46 TB | Verfügbar |
 
 - CPU-Kerne = Summe der CPU-Kerne ohne Hyperthreading aus der Gesamtsumme der Prozessoren der Servereinheit.
 - CPU-Threads = Summe der Computethreads von den Hyperthreading-CPU-Kernen aus der Gesamtsumme der Prozessoren der Servereinheit. Alle Einheiten sind standardmäßig zur Verwendung der Hyperthreading-Technologie konfiguriert.
@@ -157,7 +158,7 @@ Die jeweils gewählten Konfigurationen hängen von der Workload, den CPU-Ressour
 Die Hardwarebasis für alle Angebote ist SAP HANA TDI-zertifiziert. Die SKUs werden durch zwei unterschiedliche Hardwareklassen wie folgt unterteilt:
 
 - S72, S72m, S144, S144m, S192 und S192m, die als „Typ-I-Klasse“ von SKUs bezeichnet werden.
-- S384, S384m, S384xm, S576, S768 und S960, die als „Typ-II-Klasse“ von SKUs bezeichnet werden.
+- S384, S384m, S384xm, S576m, S768m und S960m, die als „Typ II-Klasse“ von SKUs bezeichnet werden.
 
 Ein vollständiges Umfeld von HANA (große Instanz) ist nicht ausschließlich zur Verwendung durch einen einzelnen Kunden zugeordnet. Dies gilt für Racks mit Compute- und Speicherressourcen, die über ein in Azure bereitgestelltes Netzwerkfabric verbunden sind. Die Infrastruktur von HANA (große Instanz) stellt wie Azure verschiedene &quot;Kundenmandanten&quot; bereit, die in den drei folgenden Ebenen voneinander isoliert sind:
 
@@ -304,6 +305,8 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 
 Die Supportmatrix der anderen SAP HANA-Versionen mit den verschiedenen Linux-Versionen finden Sie im [SAP-Hinweis 2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
+Die Kompatibilitätsmatrix des Betriebssystems und der HLI-Firmware-/Treiberversionen finden Sie unter [Operating System Upgrade](os-upgrade-hana-large-instance.md) (Betriebssystemupgrade).
+
 
 **Datenbank**
 
@@ -344,9 +347,9 @@ Informationen zur Speicherzuordnung finden Sie in der folgenden Tabelle. Die Tab
 | S384 | 11.520 GB | 1.536 GB | 1.792 GB | 1.536 GB |
 | S384m | 12.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
 | S384xm | 16.000 GB | 2.050 GB | 2.050 GB | 2.040 GB |
-| S576 | 20.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
-| S768 | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
-| S960 | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
+| S576m | 20.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
+| S768m | 28.000 GB | 3.100 GB | 2.050 GB | 3.100 GB |
+| S960m | 36.000 GB | 4.100 GB | 2.050 GB | 4.100 GB |
 
 
 Die tatsächlich bereitgestellten Volumes können je nach Bereitstellung und Tool, das zum Anzeigen der Volumegrößen verwendet wird, variieren.
