@@ -9,11 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: eaaee36a2f4dd5a313f8871cea5fd885812fe351
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe9998e3b1f5e2a3376f833c3dd8212e4a639274
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33941835"
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Verwenden der Azure Stream Analytics-Tools für Visual Studio
 Azure Stream Analytics-Tools für Visual Studio sind jetzt allgemein verfügbar. Diese Tools bieten umfangreichere Funktionen für Stream Analytics-Benutzer beim Beheben von Problemen sowie beim Verfassen komplexer Abfragen und sogar beim lokalen Schreiben von Abfragen. Sie können auch einen Stream Analytics-Auftrag in ein Visual Studio-Projekt exportieren.
@@ -28,6 +29,20 @@ Nach Abschluss dieses Tutorials, werden Sie in der Lage sein, folgende Aufgaben 
 * Lokales Testen Ihres Auftrags mit lokalen Beispieldaten
 * Verwenden der Überwachung zur Behebung von Problemen
 * Exportieren vorhandener Aufträge in Projekte
+
+>[!IMPORTANT]
+>
+>Angesichts der am 25. Mai 2018 in Kraft tretenden Datenschutz-Grundverordnung (DSGVO) sollten Benutzer von Azure Stream Analytics Tools für Visual Studio vorsorglich mindestens ein Upgrade auf die Version 2.3.3000.5 durchführen. Diese Version enthält Änderungen zur Erfüllung der neuesten Datenschutzanforderungen. Ältere Versionen stehen nicht zum Download zur Verfügung und sind veraltet. 
+>
+>**Was muss ich tun?**
+>
+>1. Überprüfen Sie, ob Sie von Azure Stream Analytics Tools für Visual Studio eine niedrigere Version als 2.3.3000.5 verwenden. 
+>   
+>   ![Überprüfen der Toolversion](./media/stream-analytics-tools-for-vs/about-data-lake.png)
+> 
+>2. Falls es sich bei Ihrer Version um eine Version vor 2.3.3000.5 handelt, aktualisieren Sie Ihre Azure Stream Analytics Tools für Visual Studio über das Download Center: 
+>    - [Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ADLTools.AzureDataLakeandStreamAnalyticsTools)
+>    - [Visual Studio 2013 und 2015](https://www.microsoft.com/en-us/download/details.aspx?id=54630)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
