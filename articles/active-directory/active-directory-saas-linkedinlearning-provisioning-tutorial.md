@@ -1,8 +1,8 @@
 ---
-title: "Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in LinkedIn Learning konfigurieren."
+title: 'Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in LinkedIn Learning konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
 manager: mtillman
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f2ef582bd3a5ecd837dd053067cae6c1ea47b6f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: da39a31777323535c90b4d57e316741295aa873a
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34344931"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung
 
@@ -99,7 +100,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 11)  Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
-* Geben Sie im Feld **Mandanten-URL** https://api.linkedin.com ein.
+* Geben Sie im Feld **Mandanten-URL** die URL https://api.linkedin.com ein.
 
 * Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
 
@@ -124,4 +125,4 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)

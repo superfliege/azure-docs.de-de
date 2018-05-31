@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 03/22/2018
 ms.author: migreene
-ms.openlocfilehash: 095b0cba8f7d22920203e5e3c4bcd83666188023
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0a39cabeb35450e98cc7d7d64645642959aacde0
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194987"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -33,7 +34,7 @@ Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler d
 
 Der folgende Codeausschnitt wird in den **Ressourcenabschnitt** der Vorlage eingefügt.
 Die DSC-Erweiterung erbt die Standardwerte für die Erweiterungseigenschaften.
-Weitere Informationen finden Sie unter [VirtualMachineExtension Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.) (VirtualMachineExtension-Klasse).
+Weitere Informationen finden Sie unter [VirtualMachineExtension Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.) (VirtualMachineExtension-Klasse).
 
 ```json
 {
@@ -83,7 +84,7 @@ Ein Knoten einer VM-Skalierungsgruppe weist den Abschnitt **properties** mit dem
 Fügen Sie unter **Erweiterungen** die Details für die DSC-Erweiterung hinzu.
 
 Die DSC-Erweiterung erbt die Standardwerte für die Erweiterungseigenschaften.
-Weitere Informationen finden Sie unter [VirtualMachineScaleSetExtension Class](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet) (VirtualMachineScaleSetExtension-Klasse).
+Weitere Informationen finden Sie unter [VirtualMachineScaleSetExtension Class](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet) (VirtualMachineScaleSetExtension-Klasse).
 
 ```json
 "extensionProfile": {
@@ -197,7 +198,7 @@ Eine Liste mit den verfügbaren Argumenten für das Standardkonfigurationsskript
 
 ## <a name="default-configuration-script"></a>Standardkonfigurationsskript
 
-Weitere Informationen zu den folgenden Werten finden Sie im Abschnitt [Grundlegende Einstellungen](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig#basic-settings) des Artikels zum lokalen Konfigurations-Manager.
+Weitere Informationen zu den folgenden Werten finden Sie im Abschnitt [Grundlegende Einstellungen](https://docs.microsoft.com/powershell/dsc/metaconfig#basic-settings) des Artikels zum lokalen Konfigurations-Manager.
 Sie können das Konfigurationsskript für die DSC-Erweiterung standardmäßig so konfigurieren, dass Sie nur die LCM-Eigenschaften in der folgenden Tabelle verwenden.
 
 | Eigenschaftenname | Typ | BESCHREIBUNG |
@@ -340,9 +341,9 @@ Hier finden Sie einige Fehler, die auftreten können, und die entsprechenden Beh
 
 ### <a name="invalid-values"></a>Ungültige Werte
 
-„Privacy.dataCollection ist „{0}“.
+„Privacy.dataCollection ist '{0}'.
 Die einzig möglichen Werte sind '', 'Aktivieren' und 'Deaktivieren'.“
-„WmfVersion“ ist '{0}'.
+„WmfVersion ist '{0}'.
 Einzig mögliche Werte sind ... und 'neueste'.“
 
 **Problem**: Ein bereitgestellter Wert ist nicht zulässig.
@@ -352,7 +353,7 @@ Ausführlichere Informationen finden Sie in der Tabelle unter [Details](#details
 
 ### <a name="invalid-url"></a>Ungültige URL
 
-„ConfigurationData.url ist „{0}“. Dies ist keine gültige URL“. „DataBlobUri ist „{0}“. Dies ist keine gültige URL“. „Configuration.url ist „{0}“. Dies ist keine gültige URL“
+„ConfigurationData.url ist '{0}'. Dies ist keine gültige URL“ „DataBlobUri ist '{0}'. Dies ist keine gültige URL“ „Configuration.url ist '{0}'. Dies ist keine gültige URL“
 
 **Problem**: Eine bereitgestellte URL ist ungültig.
 
@@ -361,7 +362,7 @@ Stellen Sie sicher, dass alle URLs in gültige Speicherorte aufgelöst werden, a
 
 ### <a name="invalid-configurationargument-type"></a>Ungültiger ConfigurationArgument-Typ
 
-„Ungültiger ConfigurationArgument-Typ {0}“
+„Ungültiger ConfigurationArguments-Typ {0}“
 
 **Problem**: Die Eigenschaft *ConfigurationArguments* kann nicht in ein **Hashtabellenobjekt** aufgelöst werden.
 
@@ -370,7 +371,7 @@ Nutzen Sie das Format im vorherigen Beispiel. Achten Sie auf Anführungszeichen,
 
 ### <a name="duplicate-configurationarguments"></a>„ConfigurationArguments“ doppelt vorhanden
 
-„Doppelte Argumente „{0}“ sowohl in öffentlichen und geschützten configurationArguments-Elementen gefunden“
+„Doppelte Argumente '{0}' sowohl in öffentlichen als auch geschützten configurationArguments-Elementen gefunden“
 
 **Problem**: *ConfigurationArguments* in öffentlichen Einstellungen und *ConfigurationArguments* in geschützten Einstellungen enthalten Eigenschaften mit dem gleichen Namen.
 

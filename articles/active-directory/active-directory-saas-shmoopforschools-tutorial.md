@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 48db70834f96adbb7097457caca8489ea1a57da5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 799a88344d6c348061af19bfbbd9022025d2d66b
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34350609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Tutorial: Azure Active Directory-Integration mit Shmoop For Schools
 
@@ -30,7 +31,7 @@ Die Integration von Shmoop For Schools in Azure AD hat folgende Vorteile:
 - Sie können Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Shmoop For Schools anzumelden.
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,8 +80,6 @@ Zum Konfigurieren der Integration von Shmoop For Schools in Azure AD müssen Sie
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Shmoop For Schools mithilfe einer Testbenutzerin namens Britta Simon.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Shmoop For Schools als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Sie müssen zwischen einem Azure AD-Benutzer und dem dazugehörigen Benutzer in Shmoop For Schools eine Verknüpfung einrichten.
-
-Verwenden Sie in Shmoop For Schools für **Username** den gleichen Wert wie für **Benutzername** in Azure AD. Sie haben jetzt die Linkbeziehung hergestellt.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD bei Shmoop For Schools zu konfigurieren und zu testen:
 
@@ -146,31 +145,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_general_400.png)
 
-7. Führen Sie zum Generieren der **Metadaten-URL** die folgenden Schritte aus:
+7. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
-    a. Wählen Sie **App-Registrierungen** aus.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appregistrations.png)
-   
-    b. Wählen Sie **Endpunkte** aus, um das Dialogfeld **Endpunkte** zu öffnen.  
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpointicon.png)
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_certificate.png)
 
-    c. Wählen Sie die Schaltfläche „Kopieren“ aus, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_endpoint.png)
-     
-    d. Wechseln Sie zur Eigenschaftenseite von **Shmoop For Schools**. Kopieren Sie dann die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**. Fügen Sie sie in Editor ein.
- 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-shmoopforschools-tutorial/tutorial_shmoopforschools_appid.png)
-
-    e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`.   
-
-8. Zum Konfigurieren des einmaligen Anmeldens bei **Shmoop For Schools** müssen Sie die **Metadaten-URL** an das [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) senden.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, navigieren Sie zur Registerkarte **Einmaliges Anmelden**, und rufen Sie am unteren Rand im Abschnitt **Konfiguration** die eingebettete Dokumentation auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+8. Zum Konfigurieren des einmaligen Anmeldens bei **Shmoop For Schools** müssen Sie die **App-Verbundmetadaten-URL** an das [Shmoop For Schools-Supportteam](mailto:support@shmoop.com) senden.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -252,7 +231,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

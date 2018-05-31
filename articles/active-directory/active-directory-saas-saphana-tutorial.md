@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 855525e2c1d3c33cc7134bbc1cd9b53ca59e1a70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 626dfe07c13c90686157dea710715b333a378136
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34352887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Tutorial: Azure Active Directory-Integration mit SAP HANA
 
@@ -30,7 +31,7 @@ Die Integration von SAP HANA in Azure AD bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SAP HANA anzumelden.
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -152,7 +153,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einstellungen für Identitätsanbieter hinzufügen](./media/active-directory-saas-saphana-tutorial/sap2.png)
 
-    b. Wenn der Inhalt des XML-Dokuments gültig ist, extrahiert der Analyseprozess die Informationen, die für die Felder **Subject, Entity ID, and Issuer** (Antragsteller, Entitäts-ID, Zertifikataussteller) im Bildschirmbereich **General data** (Allgemeine Daten) erforderlich sind. Darüber hinaus werden die Informationen für die URL-Felder im Bildschirmbereich **Ziel** extrahiert, etwa **Basis-URL und SingleSignOn URL (*)** (SingleSignOn-URL).
+    b. Wenn der Inhalt des XML-Dokuments gültig ist, extrahiert der Analyseprozess die Informationen, die für die Felder **Subject, Entity ID, and Issuer** (Antragsteller, Entitäts-ID, Zertifikataussteller) im Bildschirmbereich **General data** (Allgemeine Daten) erforderlich sind. Darüber hinaus werden die Informationen für die URL-Felder im Bildschirmbereich **Ziel** extrahiert, z.B. **Basis-URL und SingleSignOn-URL (*)**.
 
     ![Einstellungen für Identitätsanbieter hinzufügen](./media/active-directory-saas-saphana-tutorial/sap3.png)
 
@@ -276,7 +277,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 
 

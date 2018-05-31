@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 05/18/2018
 ms.author: jeffgilb
-ms.openlocfilehash: a89e5bf48c24abf72f18ee98f2dcb0eda6db35cd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e08c0bfd3cbed64f5042e469801e20c913c2f70e
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33202591"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359423"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 Sie können SQL Server-Instanzen auf virtuellen Computern in Ihrer [Azure Stack](azure-stack-poc.md)-Umgebung oder eine Instanz außerhalb Ihrer Azure Stack-Umgebung verwenden, sofern der Ressourcenanbieter eine Verbindung mit dieser herstellen kann. Allgemeine Anforderungen:
@@ -97,25 +97,21 @@ Für das Konfigurieren von SQL-Always On-Instanzen sind zusätzliche Schritte un
 > [!NOTE]
 > Der SQL-Adapter-Ressourcenanbieter unterstützt für Always On _nur_ Instanzen mit SQL 2016 SP1 Enterprise oder höher, da hierfür neue SQL-Features wie z.B. automatisches Seeding erforderlich sind. Zusätzlich zu den allgemeinen Anforderungen ist Folgendes erforderlich:
 
-* Sie müssen zusätzlich zu den SQL-Always On-Computern noch einen Dateiserver bereitstellen. Es gibt eine [Azure Stack-Schnellstartvorlage](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-ha), die diese Umgebung für Sie erstellen kann. Sie kann auch als Richtlinie für das Erstellen Ihrer eigenen Instanz dienen.
+Insbesondere müssen Sie das [automatische Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) in jeder Verfügbarkeitsgruppe für jede Instanz von SQL Server aktivieren:
 
-* Sie müssen die SQL Server-Instanzen einrichten. Insbesondere müssen Sie das [automatische Seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) für jede Verfügbarkeitsgruppe in jeder Instanz von SQL Server aktivieren.
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>]
+      MODIFY REPLICA ON 'InstanceName'
+      WITH (SEEDING_MODE = AUTOMATIC)
+  GO
+  ```
 
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>]
-    MODIFY REPLICA ON 'InstanceName'
-    WITH (SEEDING_MODE = AUTOMATIC)
-GO
-```
+Verwenden Sie auf sekundären Instanzen diese SQL-Befehle:
 
-Auf sekundären Instanzen
-```
-ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
-GO
-
-```
-
-
+  ```
+  ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
 
 Um SQL-Always On-Hostserver hinzuzufügen, führen Sie die folgenden Schritte aus:
 
@@ -125,14 +121,16 @@ Um SQL-Always On-Hostserver hinzuzufügen, führen Sie die folgenden Schritte au
 
     Auf dem Blatt **SQL Hosting Servers** (SQL-Hostserver) können Sie den SQL-Server-Ressourcenanbieter mit tatsächlichen SQL-Serverinstanzen verbinden, die als Back-End des Ressourcenanbieters dienen.
 
-
-3. Füllen Sie das Formular mit den Verbindungsdetails Ihrer SQL Server-Instanz aus, und verwenden Sie dabei den FQDN oder die IPv4-Adresse des Always On-Listeners (und optional die Portnummer). Geben Sie die Kontoinformationen für das Konto, das Sie mit Systemadministratorrechten konfiguriert haben, an.
+3. Füllen Sie das Formular mit den Verbindungsdetails Ihrer SQL Server-Instanz aus, und verwenden Sie dabei den FQDN des Always On-Listeners (und optional die Portnummer). Geben Sie die Kontoinformationen für das Konto, das Sie mit Systemadministratorrechten konfiguriert haben, an.
 
 4. Aktivieren Sie dieses Kontrollkästchen, um Instanzen von SQL-AlwaysOn-Verfügbarkeitsgruppe zu unterstützen.
 
     ![Hostserver](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
-5. Fügen Sie die SQL-Always On-Instanz einer SKU hinzu. Sie können in derselben SKU nicht eigenständige Servern mit Always On-Instanzen kombinieren. Dies wird beim Hinzufügen des ersten Hostservers bestimmt. Der Versuch, die Typen im Nachhinein zu kombinieren, führt zu einem Fehler.
+5. Fügen Sie die SQL-Always On-Instanz einer SKU hinzu. 
+
+> [!IMPORTANT]
+> Sie können in derselben SKU nicht eigenständige Servern mit Always On-Instanzen kombinieren. Der Versuch, nach dem Hinzufügen des ersten Hostservers Typen zu kombinieren, führt zu einem Fehler.
 
 
 ## <a name="making-sql-databases-available-to-users"></a>Verfügbarmachen von SQL-Datenbanken für Benutzer

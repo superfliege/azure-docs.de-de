@@ -13,52 +13,55 @@ ms.workload: identity
 ms.date: 03/27/2018
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 4c6ae3da34fe5157314b8ea422591f7ecbd2a667
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: e164d8adaf5df63dba31bb6aa8e56f768741479c
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33200874"
 ---
-# <a name="enable-subscription-management"></a>Aktivieren der Abonnementverwaltung
+# <a name="enable-subscription-management-in-your-tenant"></a>Aktivieren der Abonnementverwaltung in Ihrem Mandanten
 
-Als globaler Administrator Ihres Verzeichnisses haben Sie unter Umständen keinen Standardzugriff auf alle Abonnementressourcen Ihres Mandanten. In diesem Artikel werden die Schritte beschrieben, mit denen Sie sich selbst Zugriff für alle Abonnements Ihres Mandanten gewähren. Außerdem wird der empfohlene Ansatz zum Einhalten der Konformität mit allen Sicherheitskontrollen, die für Ihre Organisation nach der Erteilung des Zugriffs erforderlich sind, beschrieben.
+Als globaler Administrator Ihres Verzeichnisses haben Sie unter Umständen keinen Standardzugriff auf alle Abonnementressourcen Ihres Mandanten. In diesem Artikel werden die Schritte beschrieben, mit denen Sie sich Zugriff auf alle Abonnements in Ihrem Mandanten gewähren. Darüber hinaus wird ein Ansatz zum Aufrechterhalten der Konformität mit allen Sicherheitssteuerungen empfohlen, die Ihre Organisation benötigt, nachdem Sie Zugriff erhalten.
 
 ## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Wer kann die Verwaltung von Abonnements in meinem Verzeichnis aktivieren?
 
 Jeder Benutzer, der der Rolle „Globaler Administrator“ zugewiesen ist, muss die unten angegebenen Schritte ausführen, um die Abonnementverwaltung zu ermöglichen. Nachdem Sie die Abonnementverwaltung für sich selbst aktiviert haben, können Sie weitere globale Administratoren hinzufügen, die ggf. ebenfalls Ressourcenzugriff benötigen. Es gibt keine Verzeichniseinstellung, mit der der Zugriff für alle Mitglieder der Rolle „Globaler Administrator“ aktiviert wird.
 
-## <a name="log-on-to-the-azure-portal"></a>Anmelden am Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich zunächst mit einem Konto am Azure-Portal an, das für die Rolle „Globaler Administrator“ ein berechtigtes oder aktives Mitglied ist. Wenn das Konto ein berechtigter „Globaler Administrator“ ist, müssen Sie zuerst die Rolle aktivieren, bevor Sie mit dem nächsten Schritt fortfahren.
+Melden Sie sich mit einem Konto beim Azure-Portal an, das für die Rolle „Globaler Administrator“ ein berechtigtes oder aktives Mitglied ist. Wenn das Konto ein berechtigter „Globaler Administrator“ ist, müssen Sie zuerst die Rolle aktivieren, bevor Sie mit dem nächsten Schritt fortfahren.
 
-## <a name="access-the-azure-ad-admin-center"></a>Zugreifen auf das Azure AD Admin Center
+## <a name="access-the-azure-active-directory-admin-center"></a>Zugreifen auf das Azure Active Directory Admin Center
 
-Nachdem Sie sich als globaler Administrator am Azure-Portal angemeldet haben, können Sie die Einstellungen bearbeiten, die den Zugriff auf Azure-Abonnements ermöglichen. Navigieren Sie zum Azure AD Admin Center, und wählen Sie im linken Navigationsbereich die Registerkarte „Eigenschaften“.
+Nachdem Sie sich als globaler Administrator beim Azure-Portal angemeldet haben, können Sie die Einstellungen bearbeiten, die den Zugriff auf Azure-Abonnements ermöglichen. Suchen Sie das Azure Active Directory Admin Center (Azure AD), und wählen Sie **Eigenschaften** aus.
 
-![](media/azure-pim-resource-rbac/aad_properties.png)
+![Screenshot des Azure AD Admin Center, wobei „Eigenschaften“ hervorgehoben ist](media/azure-pim-resource-rbac/aad_properties.png)
 
-Schalten Sie die Option „Ein globaler Administrator kann Azure-Abonnements verwalten“ in der Liste mit den Eigenschaften auf „Ja“ um.
+Wählen Sie in der Liste mit den Eigenschaften unter **Ein globaler Administrator kann Azure-Abonnements verwalten** die Option **Ja** aus.
 
-![](media/azure-pim-resource-rbac/aad_properties_save.png)
+![Screenshot der Eigenschaftenseite mit auf „Ja“ festgelegter Umschaltfläche](media/azure-pim-resource-rbac/aad_properties_save.png)
 
-## <a name="navigate-to-azure-ad-pim"></a>Navigieren zu Azure AD PIM
+Jetzt wird Ihr Konto automatisch der Rolle Benutzerzugriffsadministrator für jede Abonnementressource des Mandanten hinzugefügt.
 
-Wenn diese Option aktiviert ist, wird Ihr Konto automatisch der Rolle „Benutzerzugriffsadministrator“ für jede Abonnementressource des Mandanten hinzugefügt. Navigieren Sie von hier aus zu Azure AD PIM, und wählen Sie im linken Navigationsbereich im Abschnitt „Verwalten“ die Azure-Ressourcen aus.
+## <a name="browse-to-azure-ad-pim"></a>Navigieren zu Azure AD PIM
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+ Wechseln Sie von hier zu Azure AD Privileged Identity Management (PIM). Wählen Sie unter **Verwalten** die Option **Azure-Ressourcen** aus.
+
+![Screenshot von PIM mit hervorgehobenen Azure-Ressourcen](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
 ## <a name="manage-and-discover-resources"></a>Verwalten und Ermitteln von Ressourcen
 
-Wenn Ihre Organisation Azure AD PIM bereits nutzt, um Administratoren in Azure Active Directory zu schützen, wird beim Laden des Blatts eine Liste mit Abonnements angezeigt.
+Wenn Ihre Organisation Azure AD PIM bereits nutzt, um Administratoren in Azure AD zu schützen, wird beim Laden des Blatts eine Liste mit Abonnements angezeigt.
 
-![](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+![Screenshot von PIM mit im Blatt angezeigter Liste der Abonnements](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
 > [!NOTE]
 > Überprüfen Sie Folgendes, wenn keine Ressourcen angezeigt werden:
->- Ablauf der Rolle „Globaler Administrator“ 
->- Vorhandensein eines Azure-Abonnements für Ihre Organisation
+>- Ihre Rolle „Globaler Administrator“ ist nicht abgelaufen. 
+>- Für Ihre Organisation ist ein Azure-Abonnement vorhanden.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
+![Screenshot von PIM mit leerer Ressourcenliste](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
 
 ## <a name="configure-assignments"></a>Konfigurieren von Zuweisungen
 
@@ -69,9 +72,9 @@ Wiederholen Sie diesen Vorgang für jede Ressource, bevor Sie mit dem nächsten 
 
 ## <a name="clean-up-standing-access"></a>Bereinigen des ständigen Zugriffs
 
-Nachdem Sie nun über passende Zuweisungen für die wichtigen Abonnements Ihrer Organisation verfügen, können Sie den ständigen Zugriff bereinigen, indem Sie die Option in den Verzeichniseigenschaften deaktivieren:
+Nachdem Sie nun über passende Zuweisungen für die wichtigen Abonnements Ihrer Organisation verfügen, können Sie den ständigen Zugriff bereinigen, indem Sie die Option in den Verzeichniseigenschaften deaktivieren.
 
-![](media/azure-pim-resource-rbac/aad_properties_no.png)
+![Screenshot der Eigenschaftenseite mit auf „Nein“ festgelegter Umschaltfläche](media/azure-pim-resource-rbac/aad_properties_no.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,24 +15,24 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b76809e615174e7c4e118c6043c8f3fbef3ee94
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5316cca9d3c944735355d7912a0f1e044c585001
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158029"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34339807"
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind
 In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](active-directory-whatis.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
 
-Der Azure Active Directory-Anwendungskatalog enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen, wie [in diesem Artikel](active-directory-appssoaccess-whatis.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
+Der Azure Active Directory-Anwendungskatalog enthält eine Liste der Anwendungen, die bekanntermaßen eine Form der einmaligen Anmeldung mit Azure Active Directory unterstützen, wie [in diesem Artikel](manage-apps/what-is-single-sign-on.md)beschrieben. Wenn Sie (als IT-Spezialist oder Systemintegrator in Ihrer Organisation) die Anwendung gefunden haben, mit der Sie eine Verbindung herstellen möchten, können Sie mithilfe der Schritt-für-Schritt-Anleitungen im Azure-Portal das einmalige Anmelden aktivieren.
 
 Kunden mit [Azure Active Directory Premium](active-directory-whatis.md)-Lizenzen erhalten außerdem diese zusätzlichen Funktionen:
 
 * Self-Service-Integration für Anwendungen, die SAML 2.0-Identitätsanbieter unterstützen (SP-initiiert oder IdP-initiiert)
-* Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
+* Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
 * Self-Service-Verbindung für Anwendungen, die das SCIM-Protokoll für die Benutzerbereitstellung verwenden ([wie hier beschrieben](active-directory-scim-provisioning.md))
-* Möglichkeit zum Hinzufügen von Links zu Anwendungen im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Möglichkeit zum Hinzufügen von Links zu Anwendungen im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users)
 
 Diese Möglichkeiten beziehen sich nicht nur SaaS-Anwendungen, die Sie bereits nutzen, die aber noch nicht per Onboarding in den Azure AD-Anwendungskatalog aufgenommen wurden, sondern auch auf Drittanbieter-Webanwendungen, die Ihre Organisation auf von Ihnen kontrollierten Servern in der Cloud oder lokal bereitgestellt hat.
 
@@ -116,18 +116,18 @@ Um dies zu testen, melden Sie sich im Azure AD-Zugriffsbereich unter https://mya
 Hinweise zum Debuggen finden Sie in diesem [Artikel zum Debuggen der SAML-basierten einmaligen Anmeldung bei Anwendungen](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>Einmaliges Anmelden per Kennwort
-Wählen Sie diese Option aus, um das [kennwortbasierte einmalige Anmelden](active-directory-appssoaccess-whatis.md) für eine Webanwendung zu konfigurieren, die über eine HTML-Anmeldeseite verfügt. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z. B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
+Wählen Sie diese Option aus, um das [kennwortbasierte einmalige Anmelden](manage-apps/what-is-single-sign-on.md) für eine Webanwendung zu konfigurieren, die über eine HTML-Anmeldeseite verfügt. Das kennwortbasierte einmalige Anmelden (auch als „Password Vaulting“ oder „Kennworttresor“ bezeichnet) ermöglicht es Ihnen, den Benutzerzugriff und die Kennwörter für Webanwendungen zu verwalten, die keinen Identitätsverbund unterstützen. Es ist auch für Szenarien nützlich, in denen mehrere Benutzer ein Konto gemeinsam verwenden müssen, wie z. B. bei den App-Konten für die sozialen Medien Ihrer Organisation. 
 
 Nachdem Sie auf **Weiter**geklickt haben, werden Sie aufgefordert, die URL für die webbasierte Anmeldeseite der Anwendung einzugeben. Beachten Sie, dass es sich hierbei um die Seite handeln muss, welche die Eingabefelder für Benutzername und Kennwort enthält. Nach der Eingabe startet Azure AD einen Prozess, bei dem die Anmeldeseite im Hinblick auf eine Benutzernamenseingabe und eine Kennworteingabe analysiert wird. Wenn dieser Prozess nicht erfolgreich ist, wird Ihnen eine Anleitung für einen alternativen Prozess angezeigt, bei dem Sie eine Browsererweiterung installieren (erfordert Internet Explorer, Chrome oder Firefox) und damit die Felder manuell erfassen.
 
-Nachdem die Anmeldeseite erfasst ist, können Sie wie bei regulären [Apps mit einmaligem Anmelden per Kennwort](active-directory-appssoaccess-whatis.md)Benutzer und Gruppen zuweisen und Anmeldeinformationsrichtlinien festlegen.
+Nachdem die Anmeldeseite erfasst ist, können Sie wie bei regulären [Apps mit einmaligem Anmelden per Kennwort](manage-apps/what-is-single-sign-on.md)Benutzer und Gruppen zuweisen und Anmeldeinformationsrichtlinien festlegen.
 
 Hinweis: Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung. 
 
 ## <a name="existing-single-sign-on"></a>Vorhandenes einmaliges Anmelden
 Wählen Sie diese Option, um im Azure AD-Zugriffsbereich oder im Office 365-Portal einen Link auf eine Anwendung hinzufügen. Sie können mit dieser Option Links auf benutzerdefinierte Web-Apps hinzufügen, die derzeit zur Authentifizierung nicht Azure AD verwenden, sondern Azure Active Directory-Verbunddienste (oder andere Verbunddienste). Oder Sie können Deep-Links auf spezifische SharePoint-Seiten oder andere Webseiten hinzufügen, die in den Zugriffsbereichen der betreffenden Benutzer angezeigt werden sollen. 
 
-Nachdem Sie auf **Weiter** geklickt haben, werden Sie aufgefordert, die URL für die Anwendung einzugeben, für die der Link angezeigt werden soll. Wenn Sie dies abgeschlossen haben, können Sie der Anwendung Benutzer und Gruppen zuweisen. Dadurch wird die Anwendung im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) für die betreffenden Benutzer angezeigt.
+Nachdem Sie auf **Weiter** geklickt haben, werden Sie aufgefordert, die URL für die Anwendung einzugeben, für die der Link angezeigt werden soll. Wenn Sie dies abgeschlossen haben, können Sie der Anwendung Benutzer und Gruppen zuweisen. Dadurch wird die Anwendung im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users) für die betreffenden Benutzer angezeigt.
 
 Hinweis: Sie können ein Kachellogo für die Anwendung hochladen. Verwenden Sie hierzu die Schaltfläche **Logo hochladen** auf der Registerkarte **Konfigurieren** für die Anwendung.
 
