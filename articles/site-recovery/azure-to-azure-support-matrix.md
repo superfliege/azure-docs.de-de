@@ -7,13 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2018
+ms.date: 04/25/2018
 ms.author: sujayt
-ms.openlocfilehash: a20ec14181e49443b5caf6ed0bcfaedcd4601b1c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011627"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -30,7 +31,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 --- | ---
 **Azure-Portal** | Unterstützt
 **Klassisches Portal** | Nicht unterstützt
-**PowerShell** | Derzeit nicht unterstützt
+**PowerShell** | [Vorschau](azure-to-azure-powershell.md)
 **REST-API** | Derzeit nicht unterstützt
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | Derzeit nicht unterstützt
 
@@ -95,22 +96,22 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.11 | 3.13.0-24-generic bis 3.13.0-125-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-83-generic |
 14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
 14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
 14.04 LTS | 9.14 | 3.13.0-24-generic bis 3.13.0-141-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-112-generic |
-16.04 LTS | 9.11 | 4.4.0-21-generic bis 4.4.0-83-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-27-generic |
+14.04 LTS | 9.15 | 3.13.0-24-generic bis 3.13.0-143-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-116-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
 16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
 16.04 LTS | 9.14 | 4.4.0-21-generic bis 4.4.0-112-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-32-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1009-azure |
+16.04 LTS | 9.15 | 4.4.0-21-generic bis 4.4.0-116-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-37-generic,<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.14 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
-Debian 8 | 9.14 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
+Debian 7 | 9.14, 9.15 | 3.2.0-4-amd64 bis 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 8 | 9.14, 9.15 | 3.16.0-4-amd64 bis 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.5-amd64 |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen auf virtuellen Azure-Computern unter Linux
 
@@ -125,7 +126,7 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
-Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen
+Europa | „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „Europa, Norden“, „Europa, Westen“, „Frankreich, Mitte“, „Frankreich, Süden“
 Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
 Australien   | „Australien, Osten“, „Australien, Südosten“
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
@@ -175,7 +176,7 @@ GRS | Unterstützt |
 RA-GRS | Unterstützt |
 ZRS | Nicht unterstützt |  
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
-Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage)  | Nein  | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
+Azure Storage-Firewalls für virtuelle Netzwerke  | Nein  | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
 Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein  | Die Transaktionskosten steigen gegenüber allgemeinen V1-Speicherkonten erheblich an.
 
 >[!IMPORTANT]
@@ -200,6 +201,8 @@ Nicht authentifizierter Proxy | Unterstützt | Weitere Informationen finden Sie 
 Authentifizierter Proxy | Nicht unterstützt | Wenn der virtuelle Computer einen authentifizierten Proxy für ausgehende Verbindungen verwendet, kann er nicht mit Azure Site Recovery repliziert werden.    
 Standort-zu-Standort-VPN mit lokalem Netzwerk (mit oder ohne ExpressRoute)| Unterstützt | Stellen Sie sicher, dass die UDRs und NSGs so konfiguriert sind, dass der Datenverkehr für die Sitewiederherstellung nicht lokal weitergeleitet wird. Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
 VNet-zu-VNet-Verbindung | Unterstützt | Weitere Informationen finden Sie im [Richtliniendokument für Netzwerke](site-recovery-azure-to-azure-networking-guidance.md).  
+Dienstendpunkte im virtuellen Netzwerk | Unterstützt | Azure Storage-Firewalls für virtuelle Netzwerke werden nicht unterstützt. Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt.
+Beschleunigter Netzwerkbetrieb | Nicht unterstützt | Ein virtueller Computer mit aktiviertem beschleunigtem Netzwerkbetrieb kann repliziert werden, auf dem virtuellen Failovercomputer ist der beschleunigte Netzwerkbetrieb allerdings nicht aktiviert. Außerdem wird beim Failback der beschleunigte Netzwerkbetrieb für den virtuellen Quellcomputer deaktiviert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

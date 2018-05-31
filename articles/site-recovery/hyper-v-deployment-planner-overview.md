@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“ | Microsoft-Dokumentation"
-description: "Dies ist der Benutzerleitfaden zum Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“."
+title: Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“ | Microsoft-Dokumentation
+description: Dies ist der Benutzerleitfaden zum Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -9,11 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: nisoneji
-ms.openlocfilehash: dc504ee9def6b500eee640521b57dc48dac9cca4
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 17ff3ece76f854cd539172019f8d154742873bb4
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187305"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“
 
@@ -116,9 +117,9 @@ Die empfohlene Konfiguration der VM lautet wie folgt: 8 vCPUs, 16 GB RAM, 300 GB
 3.  Extrahieren Sie den ZIP-Ordner.
 Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist die Datei „ASRDeploymentPlanner.exe“ im übergeordneten Ordner.
 
-Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie. E:\ASR Deployment Planner_v2.1.zip
+Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie. E:\ASR Deployment Planner_v2.2.zip
 
-E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.2\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualisieren auf die neueste Version des Bereitstellungsplaners
 Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Version des Bereitstellungsplaners verfügen:
@@ -133,7 +134,7 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
   >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Tools ASR-Bereitstellungsplaner ist 2.1.
+Die aktuelle Version des Tools ASR-Bereitstellungsplaner ist 2.2.
 Auf der Seite [ASR Deployment Planner Version History](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (ASR-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 

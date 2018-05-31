@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 05/08/2018
 ms.author: billmath
-ms.openlocfilehash: 6a6e83ad73f561cd8aa4fc629fb9b48449af6d0a
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c8b972978743fee33c7b7080cdf9d290bdbb619e
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055085"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -28,6 +29,7 @@ Wenn Sie mit dem Azure AD-Identitätsmodell bereits vertraut sind und mehr über
 * [Kennworthashsynchronisierung](#password-hash-synchronization) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Verbund-SSO (mit Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+* [Verbund mit PingFederate](#federation-with-pingfederate)
 
 > [!NOTE] 
 > Es ist wichtig zu beachten, dass Sie durch die Konfiguration des Verbunds für Azure AD eine Vertrauensstellung zwischen Ihrem Azure AD-Mandanten und Ihren Verbunddomänen einrichten. Mit dieser Vertrauensstellung verfügen Benutzer der Verbunddomäne über Zugriff auf Azure AD-Cloudressourcen innerhalb des Mandanten.  
@@ -88,6 +90,13 @@ Wenn Sie eine neue Farm bereitstellen oder eine vorhandene Farm verwenden, ist F
 * Der Computer, auf dem Sie den Assistenten ausführen, muss eine Verbindung mit allen weiteren Computern herstellen können, auf denen Sie AD FS oder den Webanwendungsproxy über die Windows-Remoteverwaltung installieren möchten.
 
 Weitere Informationen finden Sie unter [Konfigurieren von SSO mit AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs).
+
+### <a name="federation-with-pingfederate"></a>Verbund mit PingFederate
+Durch eine Verbundanmeldung können sich Ihre Benutzer bei Azure AD-basierten Diensten mit ihren lokalen Kennwörtern anmelden. Während sie sich auf dem internen Netzwerk befinden, müssen sie nicht einmal ihre Kennwörter eingegeben.
+
+Weitere Informationen zum Konfigurieren von PingFederate für die Verwendung mit Azure Active Directory finden Sie unter [PingFederate Integration with Azure Active Directory and Office 365](https://www.pingidentity.com/AzureADConnect) (PingFederate-Integration in Azure Active Directory und Office 365).
+
+Informationen zum Einrichten von Azure AD Connect mit PingFederate finden Sie unter [Benutzerdefinierte Installation von Azure AD Connect](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-pingfederate).
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>Anmelden mit einer früheren Version von AD FS oder einer Drittanbieterlösung
 Wenn Sie die Cloudanmeldung bereits mit einer früheren Version von AD FS (z.B. AD FS 2.0) oder einer Drittanbieterlösung konfiguriert haben, können Sie die Konfiguration der Benutzeranmeldung über Azure AD Connect überspringen. Auf diese Weise profitieren Sie von den neuesten Synchronisierungsfunktionen und anderen Features Azure AD Connect und können gleichzeitig Ihre vorhandene Lösung für die Anmeldung nutzen.

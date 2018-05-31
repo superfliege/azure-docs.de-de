@@ -1,6 +1,6 @@
 ---
-title: "Eingabeüberprüfung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation"
-description: "Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren"
+title: Eingabeüberprüfung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: c416ae23565870223abc3f2db1ac460e8bea77f6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d26d869748283718375e35ae4183eef0e51a96ed
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778578"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Sicherheitsrahmen: Eingabeüberprüfung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
-| **Webanwendung** | <ul><li>[Deaktivieren der XSLT-Skripterstellung für alle Transformationen, die nicht vertrauenswürdige Stylesheets verwenden](#disable-xslt)</li><li>[Sicherstellen, dass jede Seite, die von Benutzern steuerbare Inhalte enthalten könnte, von der automatischen MIME-Ermittlung abgemeldet wird](#out-sniffing)</li><li>[Absichern oder Deaktivieren der XML-Entitätsauflösung](#xml-resolution)</li><li>[Anwendungen, die „http.sys“ verwenden, überprüfen die Kanonisierungstransformation](#app-verification)</li><li>[Sicherstellen, dass entsprechende Kontrolle gelten, wenn Dateien vom Benutzer akzeptiert werden](#controls-users)</li><li>[Sicherstellen, dass typsichere Parameter für den Datenzugriff in Webanwendungen verwendet werden](#typesafe)</li><li>[Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenzuweisung vorzubeugen](#binding-mvc)</li><li>[Codieren nicht vertrauenswürdiger Webausgabe vor dem Rendering](#rendering)</li><li>[Ausführen der Eingabeüberprüfung und Filtern von Modelleigenschaften aller Zeichenfolgentypen](#typemodel)</li><li>[Anwenden der Bereinigung auf Formularfelder, die alle Zeichen akzeptieren, z.B. Rich-Text-Editor](#richtext)</li><li>[Kein Zuweisen von DOM-Elementen, die keine integrierte Codierung aufweisen](#inbuilt-encode)</li><li>[Überprüfen, ob alle Umleitungen innerhalb der Anwendung geschlossen sind oder sicher ausgeführt werden](#redirect-safe)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Controllermethoden akzeptiert werden](#string-method)</li><li>[Festlegen einer Obergrenze für Timeouts bei der Verarbeitung regulärer Ausdrücke, um DoS aufgrund ungültiger Ausdrücke zu verhindern ](#dos-expression)</li><li>[Vermeiden der Verwendung von Html.Raw in Razor-Ansichten](#html-razor)</li></ul> | 
+| **Web Application** | <ul><li>[Deaktivieren der XSLT-Skripterstellung für alle Transformationen, die nicht vertrauenswürdige Stylesheets verwenden](#disable-xslt)</li><li>[Sicherstellen, dass jede Seite, die von Benutzern steuerbare Inhalte enthalten könnte, von der automatischen MIME-Ermittlung abgemeldet wird](#out-sniffing)</li><li>[Absichern oder Deaktivieren der XML-Entitätsauflösung](#xml-resolution)</li><li>[Anwendungen, die „http.sys“ verwenden, überprüfen die Kanonisierungstransformation](#app-verification)</li><li>[Sicherstellen, dass entsprechende Kontrolle gelten, wenn Dateien vom Benutzer akzeptiert werden](#controls-users)</li><li>[Sicherstellen, dass typsichere Parameter für den Datenzugriff in Webanwendungen verwendet werden](#typesafe)</li><li>[Verwenden separater Modellbindungsklassen oder Bindungsfilterlisten, um Sicherheitslücken bei der MVC-Massenzuweisung vorzubeugen](#binding-mvc)</li><li>[Codieren nicht vertrauenswürdiger Webausgabe vor dem Rendering](#rendering)</li><li>[Ausführen der Eingabeüberprüfung und Filtern von Modelleigenschaften aller Zeichenfolgentypen](#typemodel)</li><li>[Anwenden der Bereinigung auf Formularfelder, die alle Zeichen akzeptieren, z.B. Rich-Text-Editor](#richtext)</li><li>[Kein Zuweisen von DOM-Elementen, die keine integrierte Codierung aufweisen](#inbuilt-encode)</li><li>[Überprüfen, ob alle Umleitungen innerhalb der Anwendung geschlossen sind oder sicher ausgeführt werden](#redirect-safe)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Controllermethoden akzeptiert werden](#string-method)</li><li>[Festlegen einer Obergrenze für Timeouts bei der Verarbeitung regulärer Ausdrücke, um DoS aufgrund ungültiger Ausdrücke zu verhindern ](#dos-expression)</li><li>[Vermeiden der Verwendung von Html.Raw in Razor-Ansichten](#html-razor)</li></ul> | 
 | **Datenbank** | <ul><li>[Unterlassen dynamischer Abfragen in gespeicherten Prozeduren](#stored-proc)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass die Modellvalidierung auf Web-API-Methoden erfolgt ist](#validation-api)</li><li>[Implementieren der Eingabeüberprüfung für alle Zeichenfolgentypparameter, die von Web-API-Methoden akzeptiert werden](#string-api)</li><li>[Sicherstellen, dass typsichere Parameter in Web-API für den Datenzugriff verwendet werden](#typesafe-api)</li></ul> | 
 | **Azure DocumentDB** | <ul><li>[Verwenden parametrisierter SQL-Abfragen für Azure Cosmos DB](#sql-docdb)</li></ul> | 
@@ -340,7 +341,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 
@@ -643,7 +644,7 @@ using System.Data.SqlClient;
 using (SqlConnection connection = new SqlConnection(connectionString))
 { 
 DataSet userDataset = new DataSet(); 
-SqlDataAdapter myCommand = new SqlDataAdapter(LoginStoredProcedure", connection); 
+SqlDataAdapter myCommand = new SqlDataAdapter("LoginStoredProcedure", connection); 
 myCommand.SelectCommand.CommandType = CommandType.StoredProcedure; 
 myCommand.SelectCommand.Parameters.Add("@au_id", SqlDbType.VarChar, 11); 
 myCommand.SelectCommand.Parameters["@au_id"].Value = SSN.Text; 

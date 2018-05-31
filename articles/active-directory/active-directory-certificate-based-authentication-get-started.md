@@ -1,30 +1,27 @@
 ---
-title: "Zertifikatbasierte Authentifizierung mit Azure Active Directory – erste Schritte | Microsoft-Dokumentation"
+title: Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 description: Erfahren Sie, wie Sie die zertifikatbasierte Authentifizierung in Ihrer Umgebung konfigurieren.
-author: MarkusVi
-documentationcenter: na
-manager: mtillman
-ms.assetid: c6ad7640-8172-4541-9255-770f39ecce0e
+services: active-directory
 ms.service: active-directory
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 01/15/2018
-ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 5c96f33b8f678155dc4b7a84718e5eadc541f441
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: annaba
+ms.openlocfilehash: db2c19bdc303f6f7773772dd7873878ceb892cc3
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33882850"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
 Bei Verwendung der zertifikatbasierten Authentifizierung können Sie von Azure Active Directory mit einem Clientzertifikat auf einem Windows-, Android- oder iOS-Gerät authentifiziert werden, wenn Sie Ihr Exchange Online-Konto mit folgenden Anwendungen oder Clients verbinden:
 
-- Mobile Microsoft-Anwendungen wie Microsoft Outlook und Microsoft Word   
-
+- Mobile Microsoft-Anwendungen wie Microsoft Outlook und Microsoft Word
 - Exchange ActiveSync-Clients (EAS)
 
 Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microsoft Office-Anwendungen auf Ihrem mobilen Gerät nicht länger erforderlich, einen Benutzernamen und ein Kennwort einzugeben.
@@ -32,43 +29,31 @@ Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microso
 Dieses Thema:
 
 - Informiert Sie über die Schritte zum Konfigurieren und Nutzen zertifikatbasierter Authentifizierung für Benutzer von Mandanten in Office 365 Enterprise-, Business-, Education- und US Government-Plänen. Dieses Feature ist als Vorversion in Office 365 China-, US Government Defense- und US Government Federal-Plänen verfügbar.
-
-- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) verfügen und [AD FS](connect/active-directory-aadconnectfed-whatis.md) konfiguriert haben.    
-
+- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) verfügen und [AD FS](connect/active-directory-aadconnectfed-whatis.md) konfiguriert haben.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:  
+Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:
 
-- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen oder native Clients mit moderner Authentifizierung (ADAL) unterstützt. Die einzige Ausnahme ist das Protokoll Exchange ActiveSync (EAS) für EXO, das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
-
-- Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.  
-
-- Jede Zertifizierungsstelle muss über eine Zertifikatsperrliste verfügen, auf die über eine Internet-URL verwiesen werden kann.  
-
-- Sie müssen mindestens eine Zertifizierungsstelle in Azure Active Directory konfiguriert haben. Die entsprechenden Schritte finden Sie im Abschnitt [Konfigurieren Sie die Zertifizierungsstellen](#step-2-configure-the-certificate-authorities).  
-
-- Bei Exchange ActiveSync-Clients muss das Clientzertifikat über die routingfähige E-Mail-Adresse des Benutzers in Exchange Online verfügen (entweder als Prinzipalname oder als Wert des RFC822-Namens im Feld „Alternativer Antragstellername“). Azure Active Directory ordnet den RFC822-Wert dem Attribut für die Proxyadresse innerhalb des Verzeichnisses zu.  
-
-- Ihr Clientgerät benötigt Zugriff auf mindestens eine Zertifizierungsstelle, die Clientzertifikate ausstellt.  
-
-- Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.  
-
-
-
+- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen oder native Clients mit moderner Authentifizierung (ADAL) unterstützt. Die einzige Ausnahme ist das EAS-Protokoll (Exchange ActiveSync) für Exchange Online (EXO), das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
+- Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.
+- Jede Zertifizierungsstelle muss über eine Zertifikatsperrliste verfügen, auf die über eine Internet-URL verwiesen werden kann.
+- Sie müssen mindestens eine Zertifizierungsstelle in Azure Active Directory konfiguriert haben. Die entsprechenden Schritte finden Sie im Abschnitt [Konfigurieren Sie die Zertifizierungsstellen](#step-2-configure-the-certificate-authorities).
+- Bei Exchange ActiveSync-Clients muss das Clientzertifikat über die routingfähige E-Mail-Adresse des Benutzers in Exchange Online verfügen (entweder als Prinzipalname oder als Wert des RFC822-Namens im Feld „Alternativer Antragstellername“). Azure Active Directory ordnet den RFC822-Wert dem Attribut für die Proxyadresse innerhalb des Verzeichnisses zu.
+- Ihr Clientgerät benötigt Zugriff auf mindestens eine Zertifizierungsstelle, die Clientzertifikate ausstellt.
+- Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.
 
 ## <a name="step-1-select-your-device-platform"></a>Schritt 1: Wählen Sie Ihre Geräteplattform
 
 Als ersten Schritt müssen Sie für Ihre Geräteplattform Folgendes überprüfen:
 
 - Die Unterstützung mobiler Office-Anwendungen
-- Die spezifischen Implementierungsanforderungen  
+- Die spezifischen Implementierungsanforderungen
 
 Die entsprechenden Informationen sind für die folgenden Geräteplattformen vorhanden:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
-
 
 ## <a name="step-2-configure-the-certificate-authorities"></a>Schritt 2: Konfigurieren Sie die Zertifizierungsstellen
 
@@ -81,7 +66,7 @@ So sieht das Schema für eine Zertifizierungsstelle aus:
 
     class TrustedCAsForPasswordlessAuth
     {
-       CertificateAuthorityInformation[] certificateAuthorities;    
+       CertificateAuthorityInformation[] certificateAuthorities;
     }
 
     class CertificateAuthorityInformation
@@ -93,7 +78,7 @@ So sieht das Schema für eine Zertifizierungsstelle aus:
         string deltaCrlDistributionPoint;
         string trustedIssuer;
         string trustedIssuerSKI;
-    }                
+    }
 
     enum CertAuthorityType
     {
@@ -101,14 +86,14 @@ So sieht das Schema für eine Zertifizierungsstelle aus:
         IntermediateAuthority = 1
     }
 
-Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/install-adv2?view=azureadps-2.0) verwenden:  
+Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/install-adv2?view=azureadps-2.0) verwenden:
 
 1. Starten Sie Windows PowerShell mit Administratorrechten.
-2. Installieren Sie das Azure AD-Modul. Sie müssen die Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder eine höhere Version installieren.  
+2. Installieren Sie das Azure AD-Modul Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder höher.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-Im ersten Konfigurationsschritt müssen Sie eine Verbindung mit Ihrem Mandanten herstellen. Sobald eine Verbindung mit Ihrem Mandanten vorhanden ist, können Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen überprüfen, hinzufügen, löschen und ändern.
+Im ersten Konfigurationsschritt müssen Sie eine Verbindung mit Ihrem Mandanten herstellen. Sobald eine Verbindung mit Ihrem Mandanten hergestellt ist, können Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen überprüfen, hinzufügen, löschen und ändern.
 
 ### <a name="connect"></a>Verbinden
 
@@ -116,13 +101,11 @@ Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/power
 
     Connect-AzureAD
 
-
 ### <a name="retrieve"></a>Gerätehandle
 
 Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen mit dem [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet ab.
 
     Get-AzureADTrustedCertificateAuthority
-
 
 ### <a name="add"></a>Hinzufügen
 
@@ -135,7 +118,6 @@ Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrus
     $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-
 ### <a name="remove"></a>Remove (Entfernen)
 
 Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
@@ -143,15 +125,13 @@ Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-Azur
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
-
-### <a name="modfiy"></a>Ändern
+### <a name="modify"></a>Ändern
 
 Ändern Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
-
 
 ## <a name="step-3-configure-revocation"></a>Schritt 3: Konfigurieren der Sperrung
 
@@ -181,7 +161,6 @@ Die unten aufgeführten Schritte zeigen, wie Sie das Autorisierungstoken aktuali
 
 Das festgelegte Datum muss in der Zukunft liegen. Wenn das Datum nicht in der Zukunft liegt, wird die **StsRefreshTokensValidFrom** -Eigenschaft nicht festgelegt. Wenn das Datum in der Zukunft liegt, wird **StsRefreshTokensValidFrom** auf die aktuelle Uhrzeit festgelegt (nicht das Datum, das mit dem Befehl „Set-MsolUser“ angegeben ist).
 
-
 ## <a name="step-4-test-your-configuration"></a>Schritt 4: Testen Ihrer Konfiguration
 
 ### <a name="testing-your-certificate"></a>Testen Ihres Zertifikats
@@ -191,14 +170,13 @@ Als ersten Konfigurationstest sollten Sie versuchen, sich bei [OWA](https://outl
 Wenn die Anmeldung erfolgreich ist, wissen Sie:
 
 - Das Benutzerzertifikat wurde auf Ihrem Testgerät bereitgestellt.
-- AD FS ist richtig konfiguriert.  
-
+- AD FS ist richtig konfiguriert.
 
 ### <a name="testing-office-mobile-applications"></a>Testen mobiler Office-Anwendungen
 
 **So testen Sie die zertifikatbasierte Authentifizierung für Ihre mobile Office-Anwendung:**
 
-1. Installieren Sie auf Ihrem Testgerät eine mobile Office-Anwendung (z.B. OneDrive).
+1. Installieren Sie auf Ihrem Testgerät eine mobile Office-Anwendung (z. B. OneDrive).
 3. Starten Sie die Anwendung.
 4. Geben Sie Ihren Benutzernamen ein, und wählen Sie das Benutzerzertifikat aus, das verwendet werden soll.
 
@@ -214,11 +192,17 @@ Das EAS-Profil muss folgende Informationen enthalten:
 
 - Der EAS-Endpunkt (z.B. outlook.office365.com)
 
-Sie können ein EAS-Profil über eine MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) wie Intune konfigurieren und auf dem Gerät platzieren oder das Zertifikat manuell im EAS-Profil auf dem Gerät platzieren.  
+Sie können ein EAS-Profil über eine MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) wie Intune konfigurieren und auf dem Gerät platzieren oder das Zertifikat manuell im EAS-Profil auf dem Gerät platzieren.
 
 ### <a name="testing-eas-client-applications-on-android"></a>Testen von EAS-Clientanwendungen auf Android
 
-**So testen Sie die Zertifikatauthentifizierung:**  
+**So testen Sie die Zertifikatauthentifizierung:**
 
-1. Konfigurieren Sie ein EAS-Profil in der Anwendung, das die oben beschriebenen Anforderungen erfüllt.  
+1. Konfigurieren Sie ein EAS-Profil in der Anwendung, das die im vorigen Abschnitt beschriebenen Anforderungen erfüllt.
 2. Öffnen Sie die Anwendung, und stellen Sie sicher, dass die E-Mail synchronisiert wird.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Weitere Informationen zur zertifikatbasierten Authentifizierung auf Android-Geräten](active-directory-certificate-based-authentication-android.md)
+
+[Weitere Informationen zur zertifikatbasierten Authentifizierung auf iOS-Geräten](active-directory-certificate-based-authentication-ios.md)

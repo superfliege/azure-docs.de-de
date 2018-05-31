@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 271f3231078b8842b040509ccf0406ed2415e5ec
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f4b0758ed6f1a0d11aeb1061cac34f1e9084ef53
+ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363943"
+ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786879"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
@@ -40,9 +40,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | BESCHREIBUNG                                          |
-|---------------|------------------------------------------------------|
-| image         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf ```generateNormalizedImages``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
+| Eingaben     | BESCHREIBUNG |
+|--------------------|-------------|
+| URL | Eindeutiger Locator für das Bild. Hierbei kann es sich um eine Web-URL oder einen Blobspeicherort handeln.|
 
 
 
@@ -63,8 +63,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
     "defaultLanguageCode": "en",
     "inputs": [
         {
-            "name": "image",
-            "source": "/document/normalized_images/*"
+            "name": "url",
+            "source": "/document/metadata_storage_path"
         }
     ],
     "outputs": [
@@ -249,4 +249,3 @@ In den folgenden Fällen werden keine Elemente extrahiert.
 
 + [Vordefinierte Skills](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Indexers (REST)](ref-create-indexer.md)

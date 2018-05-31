@@ -1,11 +1,11 @@
 ---
-title: "Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation"
-description: "Informationen zu den häufig auftretenden Problemen beim Konfigurieren des einmaligen Anmeldens per Kennwort für Anwendungen, die bereits im Azure AD-Anwendungskatalog aufgeführt sind"
+title: Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation
+description: Informationen zu den häufig auftretenden Problemen beim Konfigurieren des einmaligen Anmeldens per Kennwort für Anwendungen, die bereits im Azure AD-Anwendungskatalog aufgeführt sind
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 9550b28b373a59a6d41cee487aed9afc6c464479
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f19b684a6c7426134844a2657b886280af2f061c
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067060"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
 
@@ -25,19 +26,19 @@ In diesem Artikel finden Sie Informationen zu den häufig auftretenden Problemen
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Die Anmeldeinformationen wurden angegeben, werden aber von der Erweiterung nicht gesendet
 
-Dies geschieht normalerweise, wenn der Hersteller kürzlich die Anmeldungsseite geändert hat, um ein Feld hinzuzufügen, einen zugrunde liegenden Bezeichner geändert hat, den wir zum Erkennen der Felder für Benutzername und Kennwort verwenden, oder die Funktionsweise der Anmeldung für die Anwendung geändert hat. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
+Dieses Problem tritt normalerweise auf, wenn der Anwendungsanbieter vor Kurzem die Anmeldungsseite geändert hat, um ein Feld hinzuzufügen, einen Bezeichner zum Erkennen der Felder für Benutzername und Kennwort geändert hat oder die Funktionsweise der Anmeldung für die Anwendung geändert hat. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
-Microsoft verfügt zwar über Technologien, um diese Störungen der Integration automatisch zu erkennen, doch in manchen Fällen sind solche Probleme nicht sofort identifizierbar oder die Behebung dauert eine gewisse Zeit. Falls eine derartige Integration nicht ordnungsgemäß funktioniert, würden wir uns freuen, wenn Sie eine Supportanfrage erstellen, damit wir das Problem so schnell wie möglich beheben können.
+Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Integrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Falls eine dieser Integrationen nicht richtig funktioniert, können Sie eine Supportanfrage erstellen, damit der Fehler so schnell wie möglich behoben werden kann.
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+**Falls Sie Kontakt zum Hersteller der Anwendung haben**, können Sie ihn an Microsoft verweisen, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](./develop/active-directory-app-gallery-listing.md).
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Die Anmeldeinformationen wurden angegeben und gesendet, die Seite gibt jedoch an, dass die Anmeldeinformationen falsch sind
 
-Um dieses Problem zu beheben, überprüfen Sie zuerst Folgendes:
+Probieren Sie es zunächst mit den folgenden Schritten, um dieses Problem zu beheben:
 
 -   Der Benutzer soll unter Verwendung der für ihn gespeicherten Anmeldeinformationen zunächst versuchen, **sich direkt bei der Anwendungswebsite anzumelden**.
 
-  * Wenn dies funktioniert, soll der Benutzer in der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
+  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
 
    * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 
@@ -53,11 +54,11 @@ Um dieses Problem zu beheben, überprüfen Sie zuerst Folgendes:
 
 -   Stellen Sie sicher, dass sich Ihre Benutzer nicht über den Zugriffsbereich bei der Anwendung anmelden möchten, während sie sich in den Modi **inkognito, InPrivate oder privat** befinden. Die Erweiterung für den Zugriffsbereich wird in diesen Modi nicht unterstützt.
 
-Sollte dies nicht funktionieren, wurde möglicherweise auf Anwendungsseite eine Änderung vorgenommen, durch die die Anwendungsintegration in Azure AD vorübergehend unterbrochen wurde. Dies kann beispielsweise vorkommen, wenn der Hersteller der Anwendung ein Skript auf seiner Seite einfügt, das ein anderes Verhalten für die manuelle bzw. automatische Eingabe aufweist, wodurch die automatische Integration (z.B. unsere) unterbrochen wird. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
+Sollten die obigen Vorschläge nicht funktionieren, wurde unter Umständen auf Anwendungsseite eine Änderung vorgenommen, durch die die Anwendungsintegration in Azure AD vorübergehend unterbrochen wurde. Dies kann beispielsweise vorkommen, wenn der Hersteller der Anwendung ein Skript auf seiner Seite einfügt, das ein anderes Verhalten für die manuelle bzw. automatische Eingabe aufweist, wodurch die automatische Integration (z.B. unsere) unterbrochen wird. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
-Microsoft verfügt zwar über Technologien, um diese Störungen der Integration automatisch zu erkennen, doch in manchen Fällen sind solche Probleme nicht sofort identifizierbar oder die Behebung dauert eine gewisse Zeit. Falls eine derartige Integration nicht ordnungsgemäß funktioniert, würden wir uns freuen, wenn Sie eine Supportanfrage erstellen, damit wir das Problem so schnell wie möglich beheben können.
+Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](./develop/active-directory-app-gallery-listing.md).
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Die Erweiterung funktioniert in Chrome und Firefox, jedoch nicht in Internet Explorer.
 
@@ -71,15 +72,15 @@ Es gibt zwei Hauptursachen für dieses Problem:
 
    * Diese Situation kann leider je nach Browserversion, Geschwindigkeit des Computers oder der besuchten Website variieren. In diesem Fall wird empfohlen, sich an den Support zu wenden, damit wir die Integration für die Anwendung wiederherstellen können.
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](./develop/active-directory-app-gallery-listing.md).
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Überprüfen Sie, ob die Anmeldeseite der Anwendung vor Kurzem geändert wurde oder ein zusätzliches Feld erfordert.
 
 Wenn die Anmeldeseite der Anwendung erheblich geändert wurde, kann dies in einigen Fällen zur Unterbrechung unserer Integration führen. Dies kann beispielsweise vorkommen, wenn ein Anwendungshersteller ein Anmeldefeld, ein Captcha oder Multi-Factor Authentication hinzufügt. In vielen Fällen kann Microsoft jedoch mit dem Anwendungshersteller zusammenarbeiten, um diese Probleme schnell zu beheben.
 
-Microsoft verfügt zwar über Technologien, um diese Störungen der Integration automatisch zu erkennen, doch in manchen Fällen sind solche Probleme nicht sofort identifizierbar. Die Behebung kann außerdem eine gewisse Zeit dauern. Falls eine derartige Integration nicht ordnungsgemäß funktioniert, würden wir uns freuen, wenn Sie eine Supportanfrage erstellen, damit wir das Problem so schnell wie möglich beheben können.
+Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing).
+Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](./develop/active-directory-app-gallery-listing.md).
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -106,5 +107,5 @@ Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgen
 -   [Zugriffsbereichserweiterung für Firefox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 

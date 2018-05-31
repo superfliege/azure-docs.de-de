@@ -1,6 +1,6 @@
 ---
-title: Problem beim Anmelden bei der Zugriffspanelwebsite | Microsoft-Dokumentation
-description: Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffspanel auftreten können
+title: Problem beim Anmelden bei der Website des Zugriffsbereichs | Microsoft-Dokumentation
+description: Leitfaden zur Behandlung von Problemen, die bei der Anmeldung beim Zugriffsbereich auftreten können
 services: active-directory
 documentationcenter: ''
 author: ajamess
@@ -14,17 +14,18 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1820ab1e2295e6e0c7795c9d014d001d294bb337
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069611"
 ---
-# <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Zugriffspanelwebsite
+# <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Website des Zugriffsbereichs
 
-Das Zugriffspanel ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über das Zugriffspanel auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Das Zugriffspanel ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
+Das Zugriffspanel ist ein webbasiertes Portal, in dem Benutzer, die in Azure Active Directory (Azure AD) über ein Geschäfts-, Schul- oder Unikonto verfügen, cloudbasierte Anwendungen anzeigen und starten können, für die der Azure AD-Administrator ihnen Zugriff gewährt hat. Ein Benutzer, der über Azure AD-Editionen verfügt, kann über den Zugriffsbereich auch die Funktionen für die Self-Service-basierte Gruppen- und App-Verwaltung nutzen. Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure-Abonnement verfügen.
 
-Benutzer können sich beim Zugriffspanel anmelden, wenn sie über ein Geschäfts-, Schul- oder Unikonto in Azure AD verfügen.
+Benutzer können sich beim Zugriffsbereich anmelden, wenn sie über ein Geschäfts-, Schul- oder Unikonto in Azure AD verfügen.
 
 -   Benutzer können direkt von Azure AD authentifiziert sein.
 
@@ -32,11 +33,11 @@ Benutzer können sich beim Zugriffspanel anmelden, wenn sie über ein Geschäfts
 
 -   Benutzer können durch Windows Server Active Directory authentifiziert sein.
 
-Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Portal oder eine Office 365-Anwendung verwendet hat, kann dieser Benutzer das Zugriffspanel nutzen, ohne sich erneut anmelden zu müssen. Nicht authentifizierte Benutzer werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
+Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und das Azure-Portal oder eine Office 365-Anwendung verwendet hat, kann dieser Benutzer den Zugriffsbereich nutzen, ohne sich erneut anmelden zu müssen. Nicht authentifizierte Benutzer werden aufgefordert, sich mit dem Benutzernamen und Kennwort für ihr Konto in Azure AD anzumelden. Wenn die Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
 ## <a name="general-issues-to-check-first"></a>Allgemeine Probleme, die zuerst überprüft werden sollten 
 
--   Stellen Sie sicher, dass der Benutzer sich bei der **richtigen URL** anmeldet: <https://myapps.microsoft.com>.
+-   Vergewissern Sie sich, dass sich der Benutzer bei der **richtigen URL** anmeldet: <https://myapps.microsoft.com>.
 
 -   Stellen Sie sicher, dass die URL den **vertrauenswürdigen Sites** im Browser des Benutzers hinzugefügt wurde.
 
@@ -54,15 +55,15 @@ Wenn ein Benutzer über ein Abonnement für Azure oder Office 365 verfügt und d
 
 -   Stellen Sie sicher, dass der Benutzer die Cookies im Browser gelöscht hat, bevor er versucht, sich erneut anzumelden.
 
-## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für das Zugriffspanel
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Erfüllen der Browseranforderungen für den Zugriffsbereich
 
-Das Zugriffspanel erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für das Zugriffspanel im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
+Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Für die Verwendung des einmaligen Anmeldens per Kennwort im Anwendungsbereich muss die Erweiterung für den Zugriffsbereich im Browser des Benutzers installiert sein. Diese Erweiterung wird automatisch heruntergeladen, wenn ein Benutzer eine Anwendung auswählt, die für kennwortbasiertes SSO konfiguriert ist.
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 -   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
 
--   Microsoft Edge in Windows 10 Anniversary Edition oder höher 
+-   Edge in Windows 10 Anniversary Edition oder höher 
 
 -   Chrome – unter Windows 7 oder höher und MacOS x oder höher
 
@@ -71,7 +72,7 @@ Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
 ## <a name="problems-with-the-users-account"></a>Probleme mit dem Konto des Benutzers
 
-Der Zugriff auf das Zugriffspanel kann aufgrund eines Problems mit dem Benutzerkonto blockiert sein. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen mit Benutzerkonten und Kontoeinstellungen:
+Der Zugriff auf den Zugriffsbereich kann aufgrund eines Problems mit dem Benutzerkonto blockiert sein. Nachfolgend finden Sie einige Möglichkeiten zum Lösen von Problemen mit Benutzerkonten und Kontoeinstellungen:
 
 -   [Überprüfen, ob ein Benutzerkonto in Azure Active Directory vorhanden ist](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -289,4 +290,4 @@ Um einem Benutzer eine Lizenz zuzuweisen, führen Sie die folgenden Schritte aus
 -   Fiddler-Ablaufverfolgungen
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](active-directory-application-proxy-sso-using-kcd.md)
+[Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy](manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
