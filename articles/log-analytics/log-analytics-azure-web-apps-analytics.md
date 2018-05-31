@@ -12,20 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 7b83b9de08d024b91ca7008a4f0bf970e8d00688
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261367"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Anzeigen von Analysedaten für Metriken über alle Azure-Web-App-Ressourcen
 
 ![Symbol für Web-Apps](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
 
 > [!NOTE]
-> Die Lösung Azure-Web-Apps-Analyse ist veraltet.  Kunden, die die Lösung bereits installiert haben, können sie weiterhin nutzen. Azure-Web-Apps-Analyse kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.
+> Die Lösung Azure-Web-Apps-Analyse ist veraltet.  Kunden, die die Lösung bereits installiert haben, können sie weiterhin nutzen. Azure-Web-Apps-Analyse kann jedoch nicht zu neuen Arbeitsbereichen hinzugefügt werden.  Zur Überwachung Ihrer Webanwendung sollten Sie [Application Insights](../application-insights/app-insights-overview.md) verwenden. 
 
 Die Lösung Azure-Web-Apps-Analyse (Vorschau) bietet Erkenntnisse über Ihre [Azure-Web-Apps](../app-service/app-service-web-overview.md), indem verschiedene Metriken über alle Azure-Web-App-Ressourcen gesammelt werden. Mit der Lösung können Sie Metrikdaten für Web-App-Ressourcen analysieren und nach diesen suchen.
 

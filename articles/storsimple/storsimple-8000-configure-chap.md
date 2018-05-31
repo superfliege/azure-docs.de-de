@@ -1,24 +1,25 @@
 ---
-title: "Konfigurieren von CHAP für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt die Vorgehensweise zum Konfigurieren des Challenge Handshake Authentication-Protokolls (CHAP) auf einem StorSimple-Gerät."
+title: Konfigurieren von CHAP für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt die Vorgehensweise zum Konfigurieren des Challenge Handshake Authentication-Protokolls (CHAP) auf einem StorSimple-Gerät.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 61e0877187759d76b6f7efcef0a5ed8bec8500fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012657"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurieren von CHAP für Ihr StorSimple-Gerät
 
@@ -77,8 +78,8 @@ Bei der unidirektionalen Authentifizierung authentifiziert das Ziel den Initiato
 4. Gehen Sie im Dialogfeld **Erweiterte Einstellungen** folgendermaßen vor:
    
    1. Aktivieren Sie das Kontrollkästchen **CHAP-Anmeldung aktivieren** .
-   2. Geben Sie im Feld **Name** den Benutzernamen an, den Sie im klassischen Portal für den CHAP-Initiator angegeben haben.
-   3. Geben Sie im Feld **Zielschlüssel** das Kennwort an, das Sie im klassischen Portal für den CHAP-Initiator angegeben haben.
+   2. Geben Sie im Feld **Name** den Benutzernamen an, den Sie im Azure-Portal für den CHAP-Initiator angegeben haben.
+   3. Geben Sie im Feld **Zielschlüssel** das Kennwort an, das Sie im Azure-Portal für den CHAP-Initiator angegeben haben.
    4. Klicken Sie auf **OK**.
       
        ![Erweiterte Einstellungen (allgemein)](./media/storsimple-configure-chap/IC740946.png)
@@ -112,7 +113,7 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
    3. Bestätigen Sie das Kennwort.
 
        ![CHAP-Initiator](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zum Speichern der Änderungen auf **OK** .
+4. Klicken Sie auf **Speichern**. Eine Bestätigungsmeldung wird angezeigt. Klicken Sie zum Speichern der Änderungen auf **OK**.
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>So konfigurieren Sie die bidirektionale Authentifizierung auf dem Windows-Hostserver
 
@@ -131,8 +132,8 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
 8. Gehen Sie im Dialogfeld **Erweiterte Eigenschaften** wie folgt vor:
    
    1. Aktivieren Sie das Kontrollkästchen **CHAP-Anmeldung aktivieren** .
-   2. Geben Sie im Feld **Name** den Benutzernamen an, den Sie im klassischen Portal für den CHAP-Initiator angegeben haben.
-   3. Geben Sie im Feld **Zielschlüssel** das Kennwort an, das Sie im klassischen Portal für den CHAP-Initiator angegeben haben.
+   2. Geben Sie im Feld **Name** den Benutzernamen an, den Sie im Azure-Portal für den CHAP-Initiator angegeben haben.
+   3. Geben Sie im Feld **Zielschlüssel** das Kennwort an, das Sie im Azure-Portal für den CHAP-Initiator angegeben haben.
    4. Aktivieren Sie das Kontrollkästchen **Wechselseitige Authentifizierung ausführen** .
       
        ![Erweiterte Einstellungen (gegenseitige Authentifizierung)](./media/storsimple-configure-chap/IC740950.png)
@@ -169,5 +170,5 @@ Mit den folgenden Schritten können Sie überprüfen, ob CHAP verwendet wird.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md)
-* Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
+* Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

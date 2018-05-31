@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8a2715666c4fff490f5184b7b8719b412952b9bf
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 419ed6dc76101366e47ae94067f7b671a10c94e2
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196333"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench
 
@@ -49,8 +50,9 @@ Das Skript akzeptiert die folgenden Parameter:
 |---------|---------|----|
 | SubscriptionID | SubscriptionID zum Erstellen oder Suchen aller Ressourcen. | Ja |
 | ResourceGroupName | Name der Azure-Ressourcengruppe, in der Blockchain Workbench bereitgestellt wurde. | Ja |
-| OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein 
-| OmsSubscriptionId | Die Abonnement-ID, in der OMS bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
+| OutputDirectory | Pfad zum Erstellen der ZIP-Ausgabedatei. Wenn nicht angegeben, wird standardmäßig das aktuelle Verzeichnis verwendet. | Nein  |
+| LookbackHours | Die Anzahl der beim Abrufen von Telemetriedaten zu verwendenden Stunden. Der Standardwert ist 24 Stunden. Der Höchstwert ist 90 Stunden. | Nein  |
+| OmsSubscriptionId | Die Abonnement-ID für die OMS-Bereitstellung. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
 | OmsResourceGroup |Die Ressourcengruppe, in der OMS bereitgestellt wird. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird.| Nein  |
 | OmsWorkspaceName | Der OMS-Arbeitsbereichsname. Übergeben Sie diesen Parameter nur, wenn OMS für das Blockchain-Netzwerk außerhalb der Blockchain Workbench-Ressourcengruppe bereitgestellt wird. | Nein  |
 
@@ -58,15 +60,17 @@ Das Skript akzeptiert die folgenden Parameter:
 
 Die ZIP-Ausgabedatei enthält die folgende Ordnerstruktur:
 
-| Ordner \ Datei | BESCHREIBUNG  |
+| Ordner oder Datei | BESCHREIBUNG  |
 |---------|---------|
 | \Summary.txt | Zusammenfassung des Systems |
-| \metrics\blockchain | Metriken zu der Blockchain |
-| \metrics\workbench | Metriken zu der Workbench |
-| \details\blockchain | Detailprotokolle zu der Blockchain |
-| \details\workbench | Detailprotokolle zu der Workbench |
+| \Metrics\blockchain | Metriken zu der Blockchain |
+| \Metrics\Workbench | Metriken zu der Workbench |
+| \Details\Blockchain | Detailprotokolle zu der Blockchain |
+| \Details\Workbench | Detailprotokolle zu der Workbench |
 
 Die Zusammenfassungsdatei gibt Ihnen einen Überblick über den Gesamtzustand und die Integrität der Anwendung. Die Zusammenfassung enthält empfohlene Aktionen sowie Metadaten zu laufenden Diensten und zeigt die wichtigsten Fehler auf.
+
+Der Ordner **Metrics** enthält Metriken verschiedener Systemkomponenten über einen bestimmten Zeitraum. Die Ausgabedatei `\Details\Workbench\apiMetrics.txt` enthält z. B. eine Zusammenfassung der verschiedenen Antwortcodes und Reaktionszeiten während der gesamten Sammlungsdauer. Der Ordner **Details** enthält detaillierte Protokolle für die Behandlung bestimmter Probleme mit Workbench oder dem zugrunde liegenden Blockchain-Netzwerk. `\Details\Workbench\Exceptions.csv` enthält beispielsweise eine Liste der letzten im System aufgetretenen Ausnahmen, die für die Problembehandlung von Fehlern bei Smart Contracts oder Interaktionen mit der Blockchain nützlich ist. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
