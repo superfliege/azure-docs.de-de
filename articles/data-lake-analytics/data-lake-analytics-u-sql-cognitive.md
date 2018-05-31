@@ -2,7 +2,7 @@
 title: Verwenden von kognitiven U-SQL-Funktionen in Azure Data Lake Analytics | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Intelligenz kognitiver Funktionen in U-SQL einsetzen.
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: saveenr
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: ec48a07af0aba78f2e508bad232f34102f0c2073
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: cd06e1ae56efdfdcfcd4fec5b2c17ee843d9e9dd
+ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 05/01/2018
+ms.locfileid: "32311113"
 ---
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Tutorial: Erste Schritte mit den kognitiven Funktionen von U-SQL
 
@@ -37,8 +38,8 @@ Die folgenden kognitiven Funktionen stehen zur Verfügung:
 
 Der Gesamtprozess ist einfach:
 
-* Verwenden der REFERENCE ASSEMBLY-Anweisung zum Aktivieren der kognitiven Funktionen für das U-SQL-Skript
-* Verwenden Sie die PROCESS-Anweisung für ein Eingaberowset mit einem kognitiven benutzerdefinierten Objekt (UDO), um ein Ausgaberowset zu erstellen.
+* Aktivieren Sie mit der `REFERENCE ASSEMBLY`-Anweisung die kognitiven Features für das U-SQL-Skript.
+* Verwenden Sie die `PROCESS`-Anweisung für ein Eingaberowset mit einem kognitiven benutzerdefinierten Objekt (UDO), um ein Ausgaberowset zu erstellen.
 
 ### <a name="detecting-objects-in-images"></a>Erkennen von Objekten in Bildern
 
