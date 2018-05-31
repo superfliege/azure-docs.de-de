@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 71aa0af2b3b47c1d9960e72aa36c2d5aae80f140
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c3b7e7178ef68475f331edf058ca0f23661af3ea
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32140375"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34338872"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>Tutorial: Azure Active Directory-Integration in Adobe Sign
 
@@ -30,7 +30,7 @@ Die Integration von Azure AD in Adobe Sign bietet die folgenden Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Adobe Sign anzumelden (einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -104,7 +104,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     ![Configure Single Sign-On][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Adobe Sign** durch:
@@ -116,8 +116,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.echosign.com`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Adobe Sign](https://helpx.adobe.com/in/contact/support.html), um diese Werte zu erhalten. 
- 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Adobe Sign](https://helpx.adobe.com/in/contact/support.html), um diese Werte zu erhalten.
+
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_certificate.png) 
@@ -128,15 +128,34 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 6. Klicken Sie im Abschnitt **Adobe Sign-Konfiguration** auf **Adobe Sign konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-adobe-echosign-tutorial/tutorial_adobesign_configure.png)
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Adobe Sign-Unternehmenswebsite als Administrator an.
+7. Vor der Konfiguration müssen Sie sich an das [Adobe Sign Client-Supportteam](https://helpx.adobe.com/in/contact/support.html) wenden, um Ihre Domäne in Adobe Sign auf die Whitelist setzen zu lassen. Führen Sie die folgenden Schritte aus, um der Domäne hinzuzufügen:
 
-8. Klicken Sie im SAML-Menü auf **Kontoeinstellungen** und dann auf **SAML-Einstellungen**.
+    a. Das [Adobe Sign Client-Supportteam](https://helpx.adobe.com/in/contact/support.html) sendet Ihnen ein zufällig generiertes Token. Für Ihre Domäne sieht das Token wie folgt aus: **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx**
+
+    b. Sie müssen das Überprüfungstoken in einem DNS-Texteintrag veröffentlichen und das [Adobe Sign Client-Supportteam](https://helpx.adobe.com/in/contact/support.html) benachrichtigen.
+    
+    > [!NOTE]
+    > Sie können davon ausgehen, dass dies ein paar Tage oder möglicherweise länger dauert. Beachten Sie, dass Verzögerungen bei der DNS-Verteilung bedeuten, dass ein in DNS veröffentlichter Wert für eine Stunde oder länger möglicherweise nicht sichtbar ist. Wir gehen davon aus, dass Ihr IT-Administrator weiß, wie dieses Token in einem DNS-Texteintrag veröffentlicht wird.
+    
+    c. Sobald Sie das [Adobe Sign Client-Supportteam](https://helpx.adobe.com/in/contact/support.html) über das Supportticket benachrichtigen, nachdem das Token veröffentlicht wurde, überprüft das Team die Domäne und fügt sie Ihrem Konto hinzu.
+    
+    d. Allgemeine Schritte zum Veröffentlichen des Tokens in einem DNS-Eintrag
+
+    * Melden Sie sich bei Ihrem Domänenkonto an.
+    * Suchen Sie die Seite zum Aktualisieren des DNS-Eintrags. Diese Seite heißt z.B. „DNS-Verwaltung“, „Namensserververwaltung“ oder „Erweiterte Einstellungen“.
+    * Suchen Sie die TXT-Einträge für Ihre Domäne.
+    * Fügen Sie einen TXT-Eintrag mit den vollständigen von Adobe bereitgestellten Tokenwert hinzu.
+    * Speichern Sie die Änderungen.
+
+8. Melden Sie sich in einem anderen Webbrowserfenster bei der Adobe Sign-Unternehmenswebsite als Administrator an.
+
+9. Klicken Sie im SAML-Menü auf **Kontoeinstellungen** und dann auf **SAML-Einstellungen**.
    
     ![Konto](./media/active-directory-saas-adobe-echosign-tutorial/ic789520.png "Konto")
 
-9. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
+10. Führen Sie im Abschnitt für die **SAML-Einstellungen** die folgenden Schritte aus:
   
     ![SAML-Einstellungen](./media/active-directory-saas-adobe-echosign-tutorial/ic789521.png "SAML-Einstellungen")
    
@@ -251,7 +270,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -266,4 +285,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-echosign-tutorial/tutorial_general_203.png
-
