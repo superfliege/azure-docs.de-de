@@ -1,21 +1,22 @@
 ---
-title: "Durchführen eines Notfallwiederherstellungsverfahrens für Azure-VMs in eine sekundäre Azure-Region mit Azure Site Recovery (Vorschauversion)"
-description: "Erfahren Sie, wie Sie ein Notfallwiederherstellungsverfahren für Azure-VMs in eine sekundäre Azure-Region mit Azure Site Recovery durchführen."
+title: Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region mit Azure Site Recovery
+description: Erfahren Sie, wie Sie ein Notfallwiederherstellungsverfahren für Azure-VMs in eine sekundäre Azure-Region mit Azure Site Recovery durchführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/07/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 66ad4f782917d41a0fd1fbbe5ce50de0dda4589e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fb1c41e6fe254fbcbee8cb91a177777ed4e37fbb
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208973"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>Durchführen eines Notfallwiederherstellungsverfahrens für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
+# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Durchführen eines Notfallwiederherstellungsverfahrens für virtuelle Azure-Computer in einer sekundären Azure-Region
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
@@ -24,6 +25,8 @@ In diesem Tutorial wird erläutert, wie ein Notfallwiederherstellungsverfahren f
 > [!div class="checklist"]
 > * Überprüfen der Voraussetzungen
 > * Ausführen eines Testfailovers für eine einzelne VM
+
+Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: sedusch
-ms.openlocfilehash: b1a7b962d07b64aaa662aab937feed1782851a7b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 53bc4a6f4ecca8ffe3575a038b86192a8663c35c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261482"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -129,12 +130,11 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
 1. Erstellen Sie eine Verfügbarkeitsgruppe.  
    Richten Sie die maximale Updatedomäne ein.
 1. Erstellen Sie den virtuellen Computer 1.   
-   Verwenden Sie mindestens SLES4SAP 12 SP1 – in diesem Beispiel das SLES4SAP 12 SP1 BYOS-Image https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES für SAP-Anwendungen 12 SP1 (BYOS) verwendet.  
+   Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image, „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Erstellen Sie den virtuellen Computer 2.   
-   Verwenden Sie mindestens SLES4SAP 12 SP1 – in diesem Beispiel das SLES4SAP 12 SP1 BYOS-Image https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
-   SLES für SAP-Anwendungen 12 SP1 (BYOS) verwendet.  
+   Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image,  
+   „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie einen Datenträger für jedes SAP-System auf beiden virtuellen Computern hinzu.
 1. Erstellen Sie einen Load Balancer (intern)  

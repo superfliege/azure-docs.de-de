@@ -8,11 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b4d208ca28f6287489f104ba4e2ea9696e7a1f58
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b8b61f2a512cca2a88274b93d04a1fdc8893a88f
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34222912"
 ---
 ## <a name="about-vhds"></a>Informationen zu VHDs
 
@@ -20,15 +21,14 @@ Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem St
 
 Azure unterstützt das VHD-Format mit eingebauten („festen“) Datenträgern. Das feste Format legt den logischen Datenträger in der Datei linear aus, daher wird Datenträger-Offset X bei Blob-Offset X gespeichert. Eine kleinere Fußzeile am Ende des Blobs beschreibt die Eigenschaften der VHD. Oftmals verschwendet das feste Format Speicherplatz, da die meisten Datenträger über große ungenutzte Bereiche davon verfügen. Azure speichert VHD-Dateien jedoch in einem platzsparenden Format. Daher profitieren Sie gleichzeitig von den Vorteilen fester und dynamischer Datenträger. Nähere Informationen finden Sie unter [Erste Schritte mit virtuellen Festplatten](https://technet.microsoft.com/library/dd979539.aspx).
 
-Alle VHD-Dateien in Azure, die Sie als Quelle für die Erstellung von Datenträgern oder Images verwenden möchten, sind schreibgeschützt. Eine Ausnahme bilden die vom Benutzer hochgeladenen oder in Azure-Speicher kopierten VHD-Dateien (die entweder Lese-/Schreibzugriff bieten oder schreibgeschützt sein können). Beim Erstellen eines Datenträgers oder Images werden Kopien der VHD-Quelldateien von Azure erstellt. Diese Kopien sind je nach Verwendung der VHD entweder schreibgeschützt oder ermöglichen Lese- und Schreibvorgänge.
+Alle VHD-Dateien in Azure, die Sie als Quelle für die Erstellung von Datenträgern oder Images verwenden möchten, sind schreibgeschützt. Eine Ausnahme bilden die vom Benutzer hochgeladenen oder in Azure Storage kopierten VHD-Dateien (die entweder Lese-/Schreibzugriff bieten oder schreibgeschützt sein können). Beim Erstellen eines Datenträgers oder Images werden Kopien der VHD-Quelldateien von Azure erstellt. Diese Kopien sind je nach Verwendung der VHD entweder schreibgeschützt oder ermöglichen Lese- und Schreibvorgänge.
 
 Beim Erstellen eines virtuellen Computers mithilfe eines Images, erstellt Azure einen Datenträger für den virtuellen Computer, bei dem es sich um eine Kopie der VHD-Quelldatei handelt. Um ein versehentliches Löschen zu vermeiden, setzt Azure eine Lease für alle VHD-Quelldateien, die zum Erstellen eines Images, Betriebssystem-Datenträgers oder Datenträgers für Daten verwendet wird.
 
 Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, indem Sie den Datenträger oder das Image löschen. Um eine VHD-Datei zu löschen, die von einem virtuellen Computer als Betriebssystem-Datenträger verwendet wird, können Sie den virtuellen Computer, den Betriebssystem-Datenträger und die VHD-Quelldatei auf einmal entfernen, indem Sie den virtuellen Computer und alle verbundenen Datenträger löschen. Zum Entfernen einer VHD-Datei, die als Quelle für einen Datenträger verwendet wird, sind jedoch mehrere Schritte in einer bestimmten Reihenfolge erforderlich. Trennen Sie den Datenträger zunächst vom virtuellen Computer, und löschen Sie den Datenträger und dann die VHD-Datei.
+
 > [!WARNING]
 > Wenn Sie eine VHD-Quelldatei aus dem Speicher löschen oder das Speicherkonto löschen, kann Microsoft diese Daten nicht wiederherstellen.
-> 
-> Seitenblobs in Storage Premium sind nur zur Verwendung als VHDs ausgelegt. Microsoft rät davon ab, andere Datentypen in Seitenblobs in Storage Premium zu speichern, da die Kosten deutlich höher sein können. Speichern Sie Daten, die sich nicht auf einer VHD befinden, mithilfe von Blockblobs.
 
 ## <a name="types-of-disks"></a>Datenträgertypen 
 

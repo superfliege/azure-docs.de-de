@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory-Risikoereignisse | Microsoft-Dokumentation
-description: "In diesem Thema erhalten Sie eine ausführliche Übersicht über Risikoereignisse."
+description: In diesem Artikel erhalten Sie eine ausführliche Übersicht über Risikoereignisse.
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 author: MarkusVi
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 05/14/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e883caa63bde26e13234dde949ce4517b328e3a5
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195317"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
 
@@ -39,12 +40,13 @@ Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erka
 Welche Informationen Sie zu einem erkannten Risikoereignis erhalten, richtet sich nach Ihrem Azure AD-Abonnement. Die Azure AD Premium P2-Edition bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen. Mit der Azure AD Premium-P1-Edition werden erkannte Ereignisse, die nicht durch Ihre Lizenz abgedeckt sind, als das Risikoereignis **Anmeldung mit erhöhtem Risiko erkannt** angezeigt.
 
 
-Dieses Thema enthält eine ausführliche Übersicht darüber, was Risikoereignisse sind und wie Sie diese zum Schutz Ihrer Azure AD-Identitäten verwenden können.
+Dieser Artikel enthält eine ausführliche Übersicht darüber, was Risikoereignisse sind und wie Sie diese zum Schutz Ihrer Azure AD-Identitäten verwenden können.
 
 
 ## <a name="risk-event-types"></a>Risikoereignistypen
 
-Die Risikoereignistyp-Eigenschaft ist eine Kennung für die verdächtige Aktivität, für die ein Risikoereignis-Datensatz erstellt wurde.  
+Die Risikoereignistyp-Eigenschaft ist eine Kennung für die verdächtige Aktivität, für die ein Risikoereignis-Datensatz erstellt wurde.
+
 Die laufenden Investitionen von Microsoft in den Erkennungsprozess führen zu:
 
 - Verbesserungen an der Erkennungsgenauigkeit vorhandener Risikoereignisse 
@@ -76,6 +78,8 @@ Bei diesem Algorithmus werden offensichtliche falsch positive Ergebnisse ignorie
 
 Diese Art von Risikoereignis berücksichtigt die Standorte der letzten Anmeldung (IP, Breiten-/Längengrad und ASN), um neue oder unbekannte Standorte zu ermitteln. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Das Risikoereignis wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der vertrauten Standorte noch nicht enthalten ist. Das System benötigt einen anfänglichen Lernzeitraum von 30 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
 
+Identity Protection erkennt Anmeldungen von unbekannten Standorten auch bei der Standardauthentifizierung/älteren Protokollen. Da diese Protokolle nicht über die modernen vertrauten Funktionen wie Client-ID verfügen, reichen die Telemetriedaten nicht aus, um falsch positive Ergebnisse zu reduzieren. Um die Anzahl der erkannten Risikoereignisse zu reduzieren, sollten Sie zur modernen Authentifizierung wechseln.   
+
 ### <a name="sign-ins-from-infected-devices"></a>Anmeldungen von infizierten Geräten
 
 Bei dieser Art von Risikoereignis werden Anmeldungen von Geräten identifiziert, die mit Schadsoftware infiziert sind und für die bekannt ist, dass sie aktiv mit einem Botserver kommunizieren. Dies wird ermittelt, indem IP-Adressen den Benutzergeräts mit IP-Adressen korreliert werden, die in Kontakt mit einem Botserver gestanden haben. 
@@ -86,8 +90,7 @@ Bei dieser Art von Risikoereignis werden IP-Adressen identifiziert, für die ein
 
 ## <a name="detection-type"></a>Erkennungstyp
 
-Die Erkennungstyp-Eigenschaft ist ein Hinweis auf den Erkennungszeitrahmen (Echtzeit oder Offline) eines Risikoereignisses.  
-Derzeit werden die meisten Risikoereignisse offline in einem Nachverarbeitungsvorgang nach dem Auftreten des Risikoereignisses erkannt.
+Die Erkennungstyp-Eigenschaft ist ein Hinweis auf den Erkennungszeitrahmen (Echtzeit oder Offline) eines Risikoereignisses. Derzeit werden die meisten Risikoereignisse offline in einem Nachverarbeitungsvorgang nach dem Auftreten des Risikoereignisses erkannt.
 
 In der folgenden Tabelle sind die jeweiligen Zeitspannen bis zur Anzeige eines bestimmten Erkennungstyps in einem entsprechenden Bericht aufgelistet:
 
@@ -113,16 +116,15 @@ Für die von Azure Active Directory erkannten Risikoereignistypen werden folgend
 
 Die Risikoebenen-Eigenschaft eines Risikoereignisses ist ein Hinweis auf den Schweregrad und die Zuverlässigkeit (Hoch, Mittel oder Niedrig) eines Risikoereignisses. Anhand dieser Eigenschaft können Sie die erforderlichen Maßnahmen priorisieren. 
 
-Der Schweregrad des Risikoereignisses steht für die Stärke des Signals, das zum Vorhersagen der Kompromittierung einer Identität dient.  
-Die Zuverlässigkeit gibt die Möglichkeit falsch positiver Ergebnisse an. 
+Der Schweregrad des Risikoereignisses steht für die Stärke des Signals, das zum Vorhersagen der Kompromittierung einer Identität dient. Die Zuverlässigkeit gibt die Möglichkeit falsch positiver Ergebnisse an. 
 
 Beispiel: 
 
-* **Hoch:**Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
+* **Hoch:** Risikoereignis mit hohem Vertraulichkeitsgrad und hohem Schweregrad. Ereignisse dieser Art sind starke Indikatoren dafür, dass die Identität des Benutzers kompromittiert wurde, und für alle betroffenen Benutzerkonten sollten sofort Korrekturmaßnahmen eingeleitet werden.
 
-* **Mittel:**Risikoereignis mit hohem Schweregrad, aber niedrigerem Vertraulichkeitsgrad (oder umgekehrt). Diese Ereignisse sind potenziell risikobehaftet, und für alle betroffenen Benutzerkonten sollten Korrekturmaßnahmen eingeleitet werden.
+* **Mittel:** Risikoereignis mit hohem Schweregrad, aber niedrigerem Vertraulichkeitsgrad (oder umgekehrt). Diese Ereignisse sind potenziell risikobehaftet, und für alle betroffenen Benutzerkonten sollten Korrekturmaßnahmen eingeleitet werden.
 
-* **Niedrig:**Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
+* **Niedrig:** Risikoereignis mit niedrigem Vertraulichkeits- und Schweregrad. Bei diesem Ereignis ist unter Umständen keine sofortige Aktion erforderlich, aber zusammen mit anderen Risikoereignissen kann auch dies ein starker Hinweis dafür sein, dass die Identität kompromittiert wurde.
 
 ![Risikostufe](./media/active-directory-reporting-risk-events/01.png)
 
@@ -132,8 +134,7 @@ Risikoereignisse vom Typ „Kompromittierte Anmeldeinformationen“ werden als *
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Anmeldungen von anonymen IP-Adressen
 
-Die Risikostufe für diese Art von Risikoereignis lautet **Mittel**, da eine anonyme IP-Adresse kein starker Hinweis auf eine Kompromittierung eines Kontos ist.  
-Es wird empfohlen, dass Sie sich sofort an den Benutzer wenden, um zu überprüfen, ob dieser die anonyme IP-Adresse verwendet hat.
+Die Risikostufe für diese Art von Risikoereignis lautet **Mittel**, da eine anonyme IP-Adresse kein starker Hinweis auf eine Kompromittierung eines Kontos ist. Es wird empfohlen, dass Sie sich sofort an den Benutzer wenden, um zu überprüfen, ob dieser die anonyme IP-Adresse verwendet hat.
 
 
 ### <a name="impossible-travel-to-atypical-locations"></a>Unmöglicher Ortswechsel zu atypischen Orten

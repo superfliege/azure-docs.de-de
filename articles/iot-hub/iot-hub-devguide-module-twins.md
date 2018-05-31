@@ -15,11 +15,12 @@ ms.workload: na
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6fbbce06653e60cd914c2ed4d5990aac78ef53a8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 1e6f52da6f7524828cef928c2ee5d5cd92a1de1e
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34201073"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -49,9 +50,9 @@ Der Lebenszyklus eines Modulzwillings ist mit der entsprechenden [Modulidentitä
 
 Ein Modulzwilling ist ein JSON-Dokument, das Folgendes enthält:
 
-* **Tags:** Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
-* **Gewünschte Eigenschaften:** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Modul-App gelesen werden können. Die Modul-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
-* **Gemeldete Eigenschaften:** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Die Modul-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
+* **Tags**. Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Module auf dem Gerät nicht sichtbar. Tags werden zu Abfragezwecken festgelegt.
+* **Gewünschte Eigenschaften** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Modul-App gelesen werden können. Die Modul-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
+* **Gemeldete Eigenschaften** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. Die Modul-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
 * **Modulidentitätseigenschaften:** Der Stamm des JSON-Dokuments für einen Modulzwilling enthält die schreibgeschützten Eigenschaften der dazugehörigen Modulidentität aus der [Identitätsregistrierung][lnk-identity].
 
 ![][img-module-twin]
@@ -214,7 +215,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
 Alle oben genannten Vorgänge unterstützen [optimistische Parallelität][lnk-concurrency] und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Sicherheit][lnk-security] definiert.
 
-Neben diesen Vorgängen kann das Lösungs-Back-End auch Folgendes durchführen:
+Neben diesen Vorgängen kann das Lösungs-Back-End auch folgende Aktionen ausführen:
 
 * Abfragen der Modulzwillinge mithilfe der SQL-ähnlichen [IoT Hub-Abfragesprache][lnk-query]
 
@@ -222,8 +223,8 @@ Neben diesen Vorgängen kann das Lösungs-Back-End auch Folgendes durchführen:
 Die Modul-App führt mithilfe folgender atomarer Vorgänge Aktionen für den Modulzwilling aus:
 
 * **Abrufen des Modulzwillings:** Dieser Vorgang gibt das Dokument für den Modulzwilling für das derzeit verbundene Modul zurück (einschließlich Tags sowie gewünschter und gemeldeter Systemeigenschaften).
-* **Partielles Aktualisieren gemeldeter Eigenschaften:** Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
-* **Beobachten gewünschter Eigenschaften:** Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
+* **Teilweises Aktualisieren gemeldeter Eigenschaften**. Dieser Vorgang ermöglicht die partielle Aktualisierung der gemeldeten Eigenschaften des derzeit verbundenen Moduls. Dabei wird das gleiche JSON-Updateformat wie bei der partiellen Aktualisierung der gewünschten Eigenschaften durch das Lösungs-Back-End verwendet.
+* **Beobachten gewünschter Eigenschaften**. Das derzeit verbundene Modul kann auf Wunsch benachrichtigt werden, sobald die gewünschten Eigenschaften aktualisiert werden. Das Modul erhält die gleiche Form der Aktualisierung (partielle oder vollständige Ersetzung), die durch das Lösungs-Back-End ausgeführt wird.
 
 Alle oben genannten Vorgänge erfordern die Berechtigung **ModuleConnect**, wie im [Artikel zur Sicherheit][lnk-security] definiert.
 

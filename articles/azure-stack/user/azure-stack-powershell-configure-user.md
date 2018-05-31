@@ -12,32 +12,45 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/26/2017
+ms.date: 5/15/2018
 ms.author: mabrigg
 ms.reviewer: Balsu.G
-ms.openlocfilehash: e17fc85de3d11034889c39fd205b7ddc8cb344cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2655b682d35dd1879c649ed58d524ecd80808896
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258021"
 ---
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers
 
-Als Azure Stack-Benutzer können Sie die PowerShell-Umgebung des Azure Stack Development Kits konfigurieren. Nach der Konfigurierung können Sie PowerShell verwenden, um Azure Stack-Ressourcen zu verwalten, z.B. Angebote abonnieren, VMs erstellen, Azure Resource Manager-Vorlagen bereitstellen usw. Dieses Thema ist auf die Nutzung mit den Benutzerumgebungen beschränkt. Wenn Sie PowerShell für die Umgebung des Cloudbetreibers einrichten möchten, finden Sie weitere Informationen im Artikel [Configure the Azure Stack operator's PowerShell environment (Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers)](../azure-stack-powershell-configure-admin.md). 
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-## <a name="prerequisites"></a>Voraussetzungen 
+Verwenden Sie die Anweisungen in diesem Artikel, um die PowerShell-Umgebung für einen Azure Stack-Benutzer zu konfigurieren.
+Nachdem Sie die Umgebung konfiguriert haben, können Sie PowerShell zum Verwalten von Azure Stack-Ressourcen verwenden. Beispielsweise können Sie PowerShell verwenden, um Angebote zu abonnieren, virtuelle Computer zu erstellen und Azure Resource Manager-Vorlagen bereitzustellen.
 
-Führen Sie die folgenden erforderlichen Schritte entweder über das [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder auf einem Windows-basierten externen Client aus, wenn Sie [über VPN verbunden](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) sind:
+>[!NOTE]
+>Dieser Artikel gilt für Azure Stack-Benutzerumgebungen. Wenn Sie PowerShell für die Umgebung des Cloudbetreibers einrichten möchten, finden Sie weitere Informationen im Artikel [Konfigurieren der PowerShell-Umgebung des Azure Stack-Betreibers](../azure-stack-powershell-configure-admin.md).
 
-* Installieren Sie [mit Azure Stack kompatible Azure PowerShell-Module](azure-stack-powershell-install.md).  
-* Laden Sie die [Tools herunter, die zum Arbeiten mit Azure Stack erforderlich sind](azure-stack-powershell-download.md). 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie können diese Voraussetzungen über das [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder auf einem Windows-basierten externen Client konfigurieren, sofern [eine VPN-Verbindung](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) besteht:
+
+* Installieren Sie [mit Azure Stack kompatible Azure PowerShell-Module](azure-stack-powershell-install.md).
+* Laden Sie die [Tools herunter, die zum Arbeiten mit Azure Stack erforderlich sind](azure-stack-powershell-download.md).
 
 ## <a name="configure-the-user-environment-and-sign-in-to-azure-stack"></a>Konfigurieren der Benutzerumgebung und Anmelden bei Azure Stack
 
-Führen Sie basierend auf dem Bereitstellungstyp (Azure AD oder AD FS) eines der folgenden Skripts aus, um PowerShell für Azure Stack zu konfigurieren (Ersetzen Sie die AAD-Werte „tenantName“ und „ArmEndpoint“ und den Wert für den GraphAudience-Endpunkt gemäß Ihrer Umgebungskonfiguration.):
+Führen Sie basierend auf der Art der Azure Stack-Bereitstellung (Azure AD oder AD FS) eins der folgenden Skripts aus, um PowerShell für Azure Stack zu konfigurieren.
+
+Sie müssen die folgenden Skriptvariablen durch Werte der Azure Stack-Konfiguration ersetzen:
+
+* AAD tenantName
+* GraphAudience-Endpunkt
+* ArmEndpoint
 
 ### <a name="azure-active-directory-aad-based-deployments"></a>Auf Azure Active Directory (AAD) basierende Bereitstellungen
-       
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -67,11 +80,11 @@ Führen Sie basierend auf dem Bereitstellungstyp (Azure AD oder AD FS) eines der
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
    ```
 
-### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Auf Active Directory-Verbunddienste (AD FS) basierende Bereitstellungen 
-          
+### <a name="active-directory-federation-services-ad-fs-based-deployments"></a>Auf Active Directory-Verbunddienste (AD FS) basierende Bereitstellungen
+
   ```powershell
   # Navigate to the downloaded folder and import the **Connect** PowerShell module
   Set-ExecutionPolicy RemoteSigned
@@ -94,7 +107,7 @@ Führen Sie basierend auf dem Bereitstellungstyp (Azure AD oder AD FS) eines der
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-  # Get the Active Directory tenantId that is used to deploy Azure Stack     
+  # Get the Active Directory tenantId that is used to deploy Azure Stack
   $TenantID = Get-AzsDirectoryTenantId `
     -ADFS `
     -EnvironmentName "AzureStackUser"
@@ -102,29 +115,30 @@ Führen Sie basierend auf dem Bereitstellungstyp (Azure AD oder AD FS) eines der
   # Sign in to your environment
   Login-AzureRmAccount `
     -EnvironmentName "AzureStackUser" `
-    -TenantId $TenantID 
+    -TenantId $TenantID
   ```
 
 ## <a name="register-resource-providers"></a>Registrieren von Ressourcenanbietern
 
-Wenn die Ressourcenanbieter auf einem neu erstellten Abonnement arbeiten, für das über das Portal keine Ressourcen bereitgestellt sind, sind sie nicht automatisch registriert. Sie sollten diese explizit registrieren, indem Sie das folgende Skript verwenden:
+Ressourcenanbieter werden nicht automatisch für neue Benutzerabonnements registriert, für die über das Portal keine Ressourcen bereitgestellt wurden. Sie können explizit einen Ressourcenanbieter registrieren, indem Sie das folgende Skript ausführen:
 
 ```powershell
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
 Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
-    } 
+    }
 ```
 
 ## <a name="test-the-connectivity"></a>Testen der Konnektivität
 
-Nachdem nun alles eingerichtet ist, können Sie mit PowerShell Ressourcen in Azure Stack erstellen. Sie können beispielsweise eine Ressourcengruppe für eine Anwendung erstellen und einen virtuellen Computer hinzufügen. Verwenden Sie den folgenden Befehl, um eine Ressourcengruppe mit dem Namen „MyResourceGroup“ zu erstellen:
+Wenn alles eingerichtet ist, können Sie mit PowerShell die Konnektivität testen, um Ressourcen in Azure Stack zu erstellen. Erstellen Sie als Test eine Ressourcengruppe für eine Anwendung, und fügen Sie einen virtuellen Computer hinzu. Führen Sie den folgenden Befehl aus, um eine Ressourcengruppe mit dem Namen „MyResourceGroup“ zu erstellen:
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
 * [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)

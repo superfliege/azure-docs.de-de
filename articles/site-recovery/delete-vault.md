@@ -7,13 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2018
+ms.date: 05/16/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 62792747b4efe2de4c22af6f0886503d7d63ed44
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 1c069e8b09f71ac46017974dfd94945c404b16ba
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209891"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Löschen eines Site Recovery-Tresors
 Abhängigkeiten können das Löschen eines Azure Site Recovery-Tresors verhindern. Die auszuführenden Aktionen variieren basierend auf dem Site Recovery-Szenario: VMware zu Azure, Hyper-V (mit und ohne System Center Virtual Machine Manager) zu Azure und Azure Backup. Informationen zum Löschen eines in Azure Backup verwendeten Tresors finden Sie unter [Löschen eines Azure Backup-Tresors](../backup/backup-azure-delete-vault.md).
@@ -69,6 +70,8 @@ Verwenden Sie die folgenden Befehle, um den Site Recovery-Tresor zu löschen, se
 
     Select-AzureRmSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzureRmSiteRecoveryVault -Name "vaultname"
+    $vault = Get-AzureRmRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzureRmSiteRecoveryVault -Vault $vault
+    Remove-AzureRmRecoveryServicesVault -Vault $vault
+
+Erfahren Sie mehr über [Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault?view=azurermps-6.0.0) und [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault?view=azurermps-6.0.0).

@@ -1,18 +1,19 @@
 ---
-title: "Failover und Failback von Hyper-V-VMs, die mit Site Recovery nach einem sekundären Rechenzentrum repliziert werden | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie mit Azure Site Recovery ein Failover von Hyper-V-VMs auf Ihren sekundären lokalen Standort und ein Failback auf den primären Standort ausgeführt wird."
+title: Failover und Failback von Hyper-V-VMs, die mit Site Recovery nach einem sekundären Rechenzentrum repliziert werden | Microsoft-Dokumentation
+description: Erfahren Sie, wie mit Azure Site Recovery ein Failover von Hyper-V-VMs auf Ihren sekundären lokalen Standort und ein Failback auf den primären Standort ausgeführt wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 05/02/2018
 ms.author: raynew
-ms.openlocfilehash: 3740ec9917499f6a1e87905befe86598a18f68e6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecb0b9395ce7071442ddf0dd976e1ca57b8be906
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161140"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover und Failback von Hyper-V-VMs, die nach Ihrem sekundären lokalen Standort repliziert werden
 
@@ -45,48 +46,31 @@ Failover und Failback weisen drei Phasen auf:
 
 Sie können ein reguläres oder geplantes Failover für virtuelle Hyper-V-Computer ausführen.
 
-- Verwenden Sie ein reguläres Failover für unerwartete Ausfälle. Beim Ausführen dieses Failovers erstellt Site Recovery einen virtuellen Computer am sekundären Standort und fährt ihn hoch. Sie führen das Failover für einen bestimmten Wiederherstellungspunkt aus. Je nachdem, welchen Wiederherstellungspunkt Sie verwenden, können Datenverluste auftreten.
+- Verwenden Sie ein reguläres Failover für unerwartete Ausfälle. Beim Ausführen dieses Failovers erstellt Site Recovery einen virtuellen Computer am sekundären Standort und fährt ihn hoch. Datenverlust kann in Abhängigkeit von ausstehenden Daten auftreten, die nicht synchronisiert wurden.
 - Ein geplantes Failover kann zu Wartungszwecken oder bei erwarteten Ausfällen verwendet werden. Mit dieser Option vermeiden Sie jeglichen Datenverlust. Wenn ein geplantes Failover ausgelöst wird, werden die Quell-VMs heruntergefahren. Nicht synchronisierte Daten werden synchronisiert, und das Failover wird ausgelöst. 
 - 
 In diesem Verfahren erfahren Sie, wie Sie ein reguläres Failover durchführen.
 
 
 1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
-2. Wählen Sie in **Failover** einen **Wiederherstellungspunkt** für das Failover aus. Sie können eine der folgenden Optionen auswählen:
-    - **Neueste** (Standard): Mit dieser Option werden zuerst alle an Site Recovery gesendeten Daten verarbeitet. Sie bietet die niedrigste RPO (Recovery Point Objective), da der nach dem Failover erstellte virtuelle Replikatscomputer über alle Daten verfügt, die bei Auslösung des Failovers nach Site Recovery repliziert wurden.
-    - **Letzte Verarbeitung**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. Diese Option bietet eine niedrige Recovery Time Objective (RTO), da keine Zeit für die Verarbeitung unverarbeiteter Daten aufgewendet wird.
-    - **Letzte App-Konsistenz**: Mit dieser Option wird ein Failover des virtuellen Computers auf den letzten App-konsistenten Wiederherstellungspunkt ausgeführt, der von Site Recovery verarbeitet wurde. 
-3. Der Verschlüsselungsschlüssel ist für dieses Szenario nicht relevant.
-4. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, Quell-VMs herunterzufahren, bevor das Failover ausgelöst wird. Site Recovery wird vor dem Auslösen des Failovers auch versuchen, lokale Daten zu synchronisieren, die noch nicht an den sekundären Standort gesendet wurden. Beachten Sie, dass das Failover auch dann fortgesetzt wird, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
-5. Sie sollten nun die VM in der sekundären VMM-Cloud sehen.
-6. Nachdem Sie die VM überprüft haben, **committen** Sie das Failover. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
+1. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, Quell-VMs herunterzufahren, bevor das Failover ausgelöst wird. Site Recovery wird vor dem Auslösen des Failovers auch versuchen, lokale Daten zu synchronisieren, die noch nicht an den sekundären Standort gesendet wurden. Beachten Sie, dass das Failover auch dann fortgesetzt wird, wenn das Herunterfahren nicht erfolgreich ist. Der Fortschritt des Failovers wird auf der Seite **Aufträge** angezeigt.
+2. Sie sollten nun die VM in der sekundären VMM-Cloud sehen.
+3. Nachdem Sie die VM überprüft haben, **committen** Sie das Failover. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht.
 
 > [!WARNING]
 > **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.  
 
 
-## <a name="reprotect-and-fail-back"></a>Erneutes Schützen und Failback
+## <a name="reverse-replicate-and-failover"></a>„Umgekehrt replizieren“ und „Failover“
 
-Starten Sie die Replikation vom sekundären nach dem primären Standort, und führen Sie ein Failback auf den primären Standort aus. Sobald die virtuellen Computer wieder am primären Standort ausgeführt werden, können Sie sie wieder nach dem sekundären Standort replizieren.  
+Starten Sie die Replikation vom sekundären nach dem primären Standort, und führen Sie ein Failback auf den primären Standort aus. Sobald die virtuellen Computer wieder am primären Standort ausgeführt werden, können Sie sie im sekundären Standort replizieren.  
 
-1. Klicken Sie in **Einstellungen** > **Replizierte Elemente** auf den virtuellen Computer, und aktivieren Sie **Umgekehrt replizieren**. Die Replikation des virtuellen Computers zurück nach dem primären Standort wird gestartet.
-2. Klicken Sie auf den virtuellen Computer > **Geplantes Failover**.
-3. Überprüfen Sie in **Geplantes Failover bestätigen** die Failoverrichtung (von der sekundären VMM-Cloud), und wählen Sie Quell- und Zielspeicherort. 
-4. Geben Sie in **Datensynchronisierung** an, wie Sie synchronisieren möchten:
-    - **Daten vor dem Failover synchronisieren (nur Deltaänderungen synchronisieren):** Diese Option minimiert die VM-Ausfallzeit, da die Synchronisierung ohne Herunterfahren der VM ausgeführt wird. Dies funktioniert folgendermaßen:
-        - Eine Momentaufnahme der Replikat-VM wird erstellt, und sie wird in den primären Hyper-V-Host kopiert. Die Replikat-VM wird weiterhin ausgeführt.
-        - Die Replikat-VM wird heruntergefahren, sodass dort keine neuen Änderungen auftreten. Der abschließende Satz von Deltaänderungen wird zum primären Standort übertragen, und der virtuelle Computer am primären Standort wird gestartet.
-    - **Daten nur während Failover synchronisieren (vollständiger Download)**: Verwenden Sie diese Option nach Ausführung am sekundären Standort über einen längeren Zeitraum. Diese Option ist schneller, da mehrere Datenträgeränderungen erwartet werden, und keine Zeit für die Berechnung von Prüfsummen aufgewendet wird. Diese Option führt einen Datenträgerdownload durch. Sie ist auch nützlich, wenn der primäre virtuelle Computer gelöscht wurde.
-5. Der Verschlüsselungsschlüssel ist für dieses Szenario nicht relevant.
-6. Initiieren Sie das Failover. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt.
-7. Wenn Sie das Synchronisieren der Daten vor dem Failover aktiviert haben, klicken Sie auf **Aufträge** > Auftragsname des geplanten Failovers > **Failover abschließen**, sobald die erste Datensynchronisierung abgeschlossen ist und Sie zum Herunterfahren der Replikats-VM am sekundären Standort bereit sind. Hiermit wird der sekundäre virtuelle Computer heruntergefahren, die neuesten Änderungen werden an den primären Standort übertragen, und der primäre virtuelle Computer wird gestartet.
-8. Überprüfen Sie, ob der virtuelle Computer in der primären VMM-Cloud verfügbar ist.
-9. Der primäre virtuelle Computer befindet sich nun im Status „Commit Ausstehend“. Klicken Sie auf **Committen**, um das Failover zu committen.
-10. Wenn Sie das Replizieren des primären virtuellen Computers zurück nach dem sekundären Standort starten möchten, aktivieren Sie **Umgekehrt replizieren**.
-
-
-> [!NOTE]
-> Die umgekehrte Replikation repliziert nur Änderungen, die seit dem Ausschalten der Replikats-VM aufgetreten sind, und es werden nur Deltaänderungen gesendet.
+ 
+1. Klicken Sie auf den virtuellen Computer > **Umgekehrt replizieren**.
+2. Sobald der Auftrag abgeschlossen ist, klicken Sie auf den virtuellen Computer > **Failover**, überprüfen Sie die Failoverrichtung (von der sekundären VMM-Cloud), und wählen Sie den Quell- und den Zielspeicherort aus. 
+4. Initiieren Sie das Failover. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt.
+5. Überprüfen Sie, ob der virtuelle Computer in der primären VMM-Cloud verfügbar ist.
+6. Wenn Sie das Replizieren des primären virtuellen Computers zurück nach dem sekundären Standort starten möchten, klicken Sie auf **Umgekehrt replizieren**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden Sie den Schritt](hyper-v-vmm-disaster-recovery.md) zum Replizieren von virtuellen Hyper-V-Computern an einem sekundären Standort.

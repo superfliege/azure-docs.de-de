@@ -2,10 +2,10 @@
 title: Problembehandlung bei der automatischen Skalierung von VM-Skalierungsgruppen | Microsoft Docs
 description: Beheben Sie Probleme bei der automatischen Skalierung von VM-Skalierungsgruppen. Sie erhalten grundlegende Informationen zu typischen Problemen sowie zu ihrer Behebung.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: negat
-ms.openlocfilehash: 02a3acf818bfca31a56b364f7abab97551e0d3f0
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: ea634ea8bcb4fed1ed63dc8d1e17d215a00758c6
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161021"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
-**Problem**: Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
+**Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 Folgende Punkte sollten berücksichtigt werden:
@@ -45,13 +46,13 @@ Folgende Punkte sollten berücksichtigt werden:
     Fehler können ganz leicht passieren. Beginnen Sie daher mit einer Vorlage wie der obigen, die sich bewährt hat, und nehmen Sie nach und nach kleine Änderungen vor. 
 * Können Sie manuell horizontal herunter- und hochskalieren?
   
-    Versuchen Sie, die VM-Skalierungsgruppenressource mit einer anderen Kapazitätseinstellung erneut bereitzustellen, um die Anzahl der virtuellen Computer manuell zu ändern. Hier finden Sie eine Beispielvorlage dafür: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing. Sie müssen die Vorlage ggf. bearbeiten, damit sie die gleiche Computergröße wie die Skalierungsgruppe verwendet. Wenn Sie die Anzahl der virtuellen Computer manuell ändern können, wissen Sie, dass das Problem nur im Zusammenhang mit der automatischen Skalierung besteht.
+    Versuchen Sie, die VM-Skalierungsgruppenressource mit einer anderen Kapazitätseinstellung erneut bereitzustellen, um die Anzahl der virtuellen Computer manuell zu ändern. Hier finden Sie eine Beispielvorlage dafür: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing. Sie müssen die Vorlage gegebenenfalls bearbeiten, damit sie die gleiche Computergröße wie die Skalierungsgruppe verwendet. Wenn Sie die Anzahl der virtuellen Computer manuell ändern können, wissen Sie, dass das Problem nur im Zusammenhang mit der automatischen Skalierung besteht.
 * Überprüfen Sie im [Azure-Ressourcen-Explorer](https://resources.azure.com/)
   
     Der Azure-Ressourcen-Explorer ist ein unverzichtbares Tool für die Problembehandlung, das Aufschluss über den Zustand Ihrer Azure Resource Manager-Ressourcen gibt. Klicken Sie auf Ihr Abonnement, und sehen Sie sich die Ressourcengruppe an, für die Sie die Problembehandlung ausführen. Sehen Sie unter dem Compute-Ressourcenanbieter die von Ihnen erstellte VM-Skalierungsgruppe an, und überprüfen Sie die Instanzansicht, in der der Zustand einer Bereitstellung angezeigt wird. Überprüfen Sie außerdem die Instanzansicht der virtuellen Computer in der VM-Skalierungsgruppe. Wechseln Sie anschließend zum Microsoft.Insights-Ressourcenanbieter, und überprüfen Sie die Regeln für die automatische Skalierung auf ihre Richtigkeit.
 * Funktioniert die Diagnoseerweiterung, und gibt sie Leistungsdaten aus?
   
-    **Update**: Die automatische Skalierung in Azure wurde erweitert und verwendet jetzt eine hostbasierte Metrikpipeline, für die keine Diagnoseerweiterung mehr installiert werden muss. Die nächsten Abschnitte treffen daher nicht mehr zu, wenn Sie mithilfe der neuen Pipeline eine Anwendung mit automatischer Skalierung erstellen. Ein Beispiel für Azure-Vorlagen, die konvertiert wurden, um die Hostpipeline zu verwenden, finden Sie hier: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Update**: Die automatische Skalierung in Azure wurde erweitert und verwendet jetzt eine hostbasierte Metrikpipeline, für die keine Diagnoseerweiterung mehr installiert werden muss. Die nächsten Abschnitte treffen daher nicht mehr zu, wenn Sie mithilfe der neuen Pipeline eine Anwendung mit automatischer Skalierung erstellen. Ein Beispiel für Azure-Vorlagen, die zur Verwendung der Hostpipeline konvertiert wurden, finden Sie hier: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
   
     Die Verwendung hostbasierter Metriken für die automatische Skalierung ist aus folgenden Gründen besser geeignet:
   
@@ -78,7 +79,7 @@ Folgende Punkte sollten berücksichtigt werden:
     Wenn keine Daten vorhanden sind, impliziert dies, dass ein Problem mit der Diagnoseerweiterung auf den virtuellen Computern vorliegt. Sind Daten vorhanden, weist dies darauf hin, dass entweder ein Problem mit den Skalierungsregeln oder mit dem Insights-Dienst vorliegt. Überprüfen Sie den [Azure-Status](https://azure.microsoft.com/status/).
     
     Sobald Sie diese Schritte absolviert haben, können Sie die folgenden Ressourcen nutzen, sollten immer noch Probleme mit der automatischen Skalierung auftreten: 
-    * Lesen Sie die Foren auf [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp) oder [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) 
+    * Lesen Sie die Foren auf [MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=WAVirtualMachinesforWindows) oder [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) 
     * Melden Sie einen Supportanruf an. Bereiten Sie das Teilen der Vorlage und einer Ansicht Ihrer Leistungsdaten vor.
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png

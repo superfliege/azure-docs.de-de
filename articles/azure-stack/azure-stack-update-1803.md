@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/08/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 26c77b706f17f49eff782e6d0d73087050739874
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2fdb77c133d5d8955ad6ae15864cbe0c78bc4e2f
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258758"
 ---
 # <a name="azure-stack-1803-update"></a>Azure Stack-Update 1803
 
@@ -40,13 +41,23 @@ Die Buildnummer des Azure Stack-Updates 1803 ist **20180329.1**.
 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-- Installieren Sie das Azure Stack-[Update 1802](azure-stack-update-1802.md), bevor Sie das Azure Stack-Update 1803 anwenden.    
+- Installieren Sie das Azure Stack-[Update 1802](azure-stack-update-1802.md), bevor Sie das Azure Stack-Update 1803 anwenden.   
 
+- Installieren Sie **AzS Hotfix – 1.0.180312.1 – Build 20180222.2**, bevor Sie das Azure Stack 1803-Update anwenden. Durch diesen Hotfix wird Windows Defender aktualisiert. Dieser ist beim Herunterladen von Updates für Azure Stack verfügbar.
+
+  Um den Hotfix zu installieren, führen Sie die üblichen Verfahren zum [Installieren von Updates für Azure Stack](azure-stack-apply-updates.md) durch. Der Name des Updates wird als **AzS Hotfix – 1.0.180312.1** angezeigt und enthält die folgenden Dateien: 
+    - PUPackageHotFix_20180222.2-1.exe
+    - PUPackageHotFix_20180222.2-1.bin
+    - Metadata.xml
+
+  Nachdem Sie diese Dateien in ein Speicherkonto und in einen Container hochgeladen haben, führen Sie die Installation im Verwaltungsportal über die Kachel „Aktualisieren“ aus. 
+  
+  Im Gegensatz zu Updates für Azure Stack wird die Version von Azure Stack nicht durch die Installation dieses Updates geändert. Um zu überprüfen, ob dieses Update installiert wurde, sehen Sie sich die Liste **Installierte Updates** an.
 
 ### <a name="post-update-steps"></a>Schritte nach dem Update
 - Installieren Sie nach der Installation von 1803 alle entsprechenden Hotfixes. Weitere Informationen finden Sie in den folgenden Knowledge Base-Artikeln sowie in unserer [Wartungsrichtlinie](azure-stack-servicing-policy.md).
 
-  - [KB 4103348 – Netzwerkcontroller-API-Dienst stürzt ab, wenn versucht wird, ein Azure Stack-Update zu installieren](https://support.microsoft.com/en-us/help/4103348)
+  - [KB 4294441: Bei Vorgängen mit Mandantenressourcen tritt ein Fehler auf, und unerwartete Freigaben werden auf dem gleichen Mandanten oder Infrastrukturvolume erstellt.](https://support.microsoft.com/en-us/help/4294441)
 
 - Überprüfen Sie nach der Installation dieses Updates die Firewallkonfiguration, um sicherzustellen, dass die [erforderlichen Ports](azure-stack-integrate-endpoints.md) offen sind. Mit diesem Update beispielsweise wird Azure Monitor eingeführt, der einen Wechsel von Überwachungsprotokollen zu Aktivitätsprotokollen beinhaltet. Durch diese Änderung wird jetzt Port 13012 verwendet, der ebenfalls offen sein muss.  
 
@@ -108,8 +119,6 @@ Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180323
 - Es ist es u.U. nicht möglich, Compute- oder Speicherressourcen im Administratorportal anzuzeigen. Grund für dieses Problem ist ein Fehler bei der Installation des Updates, der dazu führt, dass das Update fälschlicherweise als erfolgreich gemeldet wird. Wenn dieses Problem auftritt, wenden Sie sich an Microsoft Customer Support Services, um Unterstützung zu erhalten.
 
 - Es kann sein, dass im Portal ein leeres Dashboard angezeigt wird. Wählen Sie zum Wiederherstellen des Dashboards oben rechts im Portal das Zahnradsymbol und dann die Option **Standardeinstellungen wiederherstellen**.
-
-- Die Schaltfläche **Verschieben** ist deaktiviert, wenn Sie die Eigenschaften einer Ressource oder Ressourcengruppe anzeigen. Dies ist das erwartete Verhalten. Das Verschieben von Ressourcen oder Ressourcengruppen zwischen Ressourcengruppen oder Abonnements wird derzeit nicht unterstützt.
 
 - Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
 
@@ -234,6 +243,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180323
 
 - Auf Servern, die SQL oder MySQL hosten, kann nur der Ressourcenanbieter Elemente erstellen. Die auf einem Hostserver erstellten Elemente, die nicht vom Ressourcenanbieter erstellt wurden, könnten zu einem Zustand ohne Entsprechung führen.  
 
+- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
 
 > [!NOTE]  
 > Nachdem Sie ein Update auf Azure Stack 1803 ausgeführt haben, können Sie die zuvor bereitgestellten Ressourcenanbieter SQL und MySQL weiterhin verwenden.  Es wird empfohlen, SQL und MySQL zu aktualisieren, sobald ein neues Release verfügbar ist. Wenden Sie Updates wie bei Azure Stack sequenziell auf die Ressourcenanbieter SQL und MySQL an.  Wenn Sie z.B. Version 1711 verwenden, wenden Sie zuerst Version 1712, dann 1802 und schließlich 1803 an.      

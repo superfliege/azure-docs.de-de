@@ -4,26 +4,28 @@ description: Anleitung zu ersten Schritten mit Azure Stack-Speicher-Entwicklungs
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 02/21/2018
+ms.date: 05/14/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 81c62fc569e9f758d08bfca0bdfc5bcc9ed5860f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198934"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Microsoft Azure Stack bietet eine Reihe von Speicherdiensten einschließlich Azure Blob, Table und Queue Storage.
+Microsoft Azure Stack bietet eine Reihe von Speicherdiensten einschließlich Blob-, Tabellen- und Warteschlangenspeicher.
 
-Dieser Artikel ist eine Kurzanleitung zum Einstieg in die Verwendung von Azure Stack-Speicher-Entwicklungstools. Ausführlichere Informationen und Beispielcode finden Sie in den entsprechenden Azure Storage-Tutorials.
+Nutzen Sie diesen Artikel als Anleitung für die ersten Schritte mit Azure Stack-Speicherentwicklungstools. Ausführlichere Informationen und Beispielcode finden Sie in den entsprechenden Azure Storage-Tutorials.
 
-Es gibt bekannte Unterschiede zwischen Azure Storage und Azure Stack-Speicher, einschließlich einiger besonderen Anforderungen für jede Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
+>[!NOTE]
+>Es gibt bekannte Unterschiede zwischen Azure Stack-Speicher und Azure Storage, einschließlich besonderer Anforderungen für jede Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Azure-Clientbibliotheken
 
@@ -46,6 +48,7 @@ Die unterstützten REST-API-Versionen für Azure Stack-Speicher lauten 2017-04-1
 Installation per Composer: (Blob als Beispiel verwenden).
 
 1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
+
   ```php
     {
       "require": {
@@ -53,6 +56,7 @@ Installation per Composer: (Blob als Beispiel verwenden).
       }
     }
   ```
+
 2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
 3. Führen Sie `php composer.phar install` aus.
 
@@ -73,6 +77,7 @@ Installation per Composer: (Blob als Beispiel verwenden).
 So führen Sie eine Installation mit dem Composer durch:
 
 1. Erstellen Sie eine Datei mit dem Namen **composer.json** im Stammverzeichnis des Projekts mit folgendem Code:
+
   ```php
     {
           "require":{
@@ -80,6 +85,7 @@ So führen Sie eine Installation mit dem Composer durch:
           }
     }
   ```
+
 2. Laden Sie [composer.phar](http://getcomposer.org/composer.phar) in das Stammverzeichnis des Projekts herunter.
 3. Führen Sie `php composer.phar install` aus.
 
@@ -91,16 +97,16 @@ Wenn Sie sich über Ihren Endpunkt nicht sicher sind, wenden Sie sich an den Clo
 
 ## <a name="examples"></a>Beispiele
 
-
 ### <a name="net"></a>.NET
 
 Für Azure Stack ist das Endpunktsuffix in der Datei „app.config“ angegeben:
 
 ```
-<add key="StorageConnectionString" 
+<add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
 ```
+
 ### <a name="java"></a>Java
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
@@ -121,6 +127,7 @@ Für Azure Stack ist das Endpunktsuffix in der Deklarationsinstanz angegeben:
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
+
 ### <a name="c"></a>C++
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
@@ -152,6 +159,7 @@ block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
 ```
+
 ### <a name="ruby"></a>Ruby
 
 Für Azure Stack ist das Endpunktsuffix im Setup der Verbindungszeichenfolge angegeben:
@@ -187,7 +195,6 @@ Die folgenden Tutorials zu Azure Queue Storage gelten für Azure Stack. Beachten
 * [Gewusst wie: Verwenden von Queue Storage mit PHP](../../storage/queues/storage-php-how-to-use-queues.md)
 * [Gewusst wie: Verwenden von Queue Storage mit Python](../../storage/queues/storage-python-how-to-use-queue-storage.md)
 * [Gewusst wie: Verwenden von Queue Storage mit Ruby](../../storage/queues/storage-ruby-how-to-use-queue-storage.md)
-
 
 ## <a name="table-storage"></a>Table Storage
 
