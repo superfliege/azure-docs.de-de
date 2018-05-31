@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34347498"
 ---
 # <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
 
@@ -50,9 +51,7 @@ Auf den Zugriffsbereich können Sie unter `http://myapps.microsoft.com` zugreife
 
 Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie das Branding laden, indem Sie die Domäne Ihrer Organisation an die URL anhängen (Beispiel: `http://myapps.microsoft.com/<your domain>.com`).
 
-Sie können jeden aktiven oder überprüften Domänennamen verwenden, der in Ihrem Azure-Portal konfiguriert wurde, wie hier zu sehen:
-
-![Wingtip Toys-Domänenname][2]  
+Sie können jeden aktiven oder überprüften Domänennamen verwenden, der in Ihrem Azure-Portal konfiguriert wurde, wie hier zu sehen: ![Wingtip Toys-Domänenname][2]  
 
 Geben Sie diese URL an alle Benutzer weiter, die sich bei den in Azure AD integrierten Anwendungen anmelden.
 
@@ -62,7 +61,7 @@ Zum Erreichen des Zugriffsbereichs müssen Sie mit einem Geschäfts-, Schul- ode
 
 Wenn Sie über ein Abonnement für Azure oder Office 365 verfügen und das Azure-Portal oder eine Office 365-Anwendung verwendet haben, können Sie die Anwendungsliste ohne erneute Anmeldung anzeigen. Falls Sie nicht authentifiziert sind, werden Sie aufgefordert, sich mit dem Benutzernamen und Kennwort für Ihr Konto in Azure AD anzumelden. Wenn Ihre Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
-Nach der Authentifizierung können Sie mit den Anwendungen interagieren, die Ihr Administrator in das Verzeichnis integriert hat. Informationen zum Integrieren von Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Nach der Authentifizierung können Sie mit den Anwendungen interagieren, die Ihr Administrator in das Verzeichnis integriert hat. Informationen zum Integrieren von Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="web-browser-requirements"></a>Webbrowseranforderungen
 
@@ -75,7 +74,7 @@ Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
 - **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
-- **Internet Explorer 8, 9, 10, 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
+- **Internet Explorer 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
 
 ## <a name="my-apps-secure-sign-in-extension"></a>Erweiterung zur sicheren Anmeldung bei „Meine Apps“
 Diese Erweiterung muss für kennwortbasiertes einmaliges Anmelden verwendet werden. Nach der Installation der Erweiterung können Sie sich anmelden, um zusätzliche Features zu aktivieren. Klicken Sie hierzu auf **Melden Sie sich an, um loszulegen**. 
@@ -83,10 +82,15 @@ Diese Erweiterung muss für kennwortbasiertes einmaliges Anmelden verwendet werd
 - Über die **Anmelde-URL** einer App können Sie sich direkt bei der App anmelden. Wenn Sie die URL der App verwenden, erkenn die Erweiterung die Aktion und ermöglicht die Anmeldung über die Erweiterung.
 - Mit der *Schnellsuche* der Erweiterung können Sie jede Ihrer Apps über den Zugriffsbereich starten. 
 - Im Bereich **Zuletzt verwendet** werden die drei zuletzt gestarteten Anwendungen angezeigt.
+- Beim Remotezugriff über den [Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started) können Sie interne Unternehmens-URLs verwenden.
 
 > [!NOTE]
 > Zusätzliche Features sind nur für Microsoft Edge, Chrome und Firefox verfügbar.
 >
+Sie können die Erweiterung direkt über die folgenden Websites herunterladen:
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Falls sich Ihre Meine Apps-URL von `https://myapps.microsoft.com` unterscheidet, konfigurieren Ihre Standard-URL wie folgt:
 1. Klicken Sie mit der rechten Maustaste auf das Symbol für die Erweiterung, *ohne* bei der Erweiterung angemeldet zu sein.
@@ -94,6 +98,12 @@ Falls sich Ihre Meine Apps-URL von `https://myapps.microsoft.com` unterscheidet,
 3. Wählen Sie Ihre Standard-URL aus.
 4. Wählen Sie das Symbol für die Erweiterung aus.
 5. Klicken Sie auf **Melden Sie sich an, um loszulegen**.
+
+Um interne Unternehmens-URLs per Remotezugriff auf die Erweiterung zu verwenden, gehen Sie wie folgt vor:
+1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
+2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
+3. Installieren Sie die Erweiterung, und melden Sie sich bei ihr an, indem Sie „Melden Sie sich an, um loszulegen“ auswählen.
+4. Nun können Sie selbst per Remotezugriff zu der internen Unternehmens-URL browsen.
 
 ## <a name="mobile-app-support"></a>Unterstützung für mobile Apps
 
@@ -206,7 +216,7 @@ Wenn eine Anwendung beispielsweise für die Benutzerauthentifizierung per AD FS 
  
 - Informationen zum Integrieren einer SaaS-App in Azure AD finden Sie in der [Liste der Tutorials zur Integration von SaaS-Apps](active-directory-saas-tutorial-list.md).
  
-- Informationen zum Verwalten von Apps in Azure AD finden Sie in der [Einführung in das einmalige Anmelden und das Verwalten von App-Zugriff mit Azure Active Directory](active-directory-appssoaccess-whatis.md).
+- Informationen zum Verwalten von Apps in Azure AD finden Sie in der [Einführung in das einmalige Anmelden und das Verwalten von App-Zugriff mit Azure Active Directory](manage-apps/what-is-single-sign-on.md).
  
 - Weitere Informationen zur Benutzerbereitstellung finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen](active-directory-saas-app-provisioning.md).
 

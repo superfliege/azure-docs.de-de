@@ -17,6 +17,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31785160"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -30,7 +31,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 ## <a name="added-references"></a>Hinzugefügte Verweise
 
-Betrifft die Projektdatei (.NET-Verweise) und `packages.config` (NuGet-Verweise).
+Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
 | Typ | Verweis |
 | --- | --- |

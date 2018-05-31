@@ -11,14 +11,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83eadb3f88c2d83bf2ce39ec67550e602308ff0e
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 6c0e9c96840995c7d5a067e60264c66ce987af93
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360086"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -156,6 +157,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Virtual Machines (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * VM-Skalierungsgruppen – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Virtual Network – siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations)
+* Visual Studio Team Services – VSTS-Konten mit dem Erwerb von Nicht-Microsoft-Erweiterungen müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Dienste, die nicht verschoben werden können
@@ -170,10 +172,10 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Azure Migrate
 * BizTalk Services
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
-* Kubernetes Service
 * DevTest-Labs: Das Verschieben in eine neue Ressourcengruppe im gleichen Abonnement ist möglich, ein abonnementübergreifendes Verschieben jedoch nicht.
 * Dynamics LCS
 * ExpressRoute
+* Kubernetes Service
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)

@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: db0fab5b619ddbca4663a0f6afedfff373d406f9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 223fa9bc4a19264cc1dcba9830726b30b0f7446c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355082"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -168,6 +169,7 @@ Ausgehend von der obigen Berechnung ist /29 die maximale Größe des Subnetzes, 
 * Das Subnetz und der API Management-Dienst müssen sich im selben Abonnement befinden.
 * Ein Subnetz, das API Management-Instanzen enthält, kann nicht zwischen Abonnements verschoben werden.
 * Bei API Management-Bereitstellungen in mehreren Regionen mit Konfiguration im Modus interner virtueller Netzwerke sind die Benutzer dafür verantwortlich, den Lastenausgleich über mehrere Regionen zu verwalten, da sie Besitzer des Routings sind.
+* Die Konnektivität zwischen einer Ressource in einem VNET mit globalem Peering in einer anderen Region und dem API Management-Dienst im internen Modus funktioniert aufgrund einer Plattformbeschränkung nicht. Weitere Informationen finden Sie unter den Informationen zum Thema [Ressourcen in einem virtuellen Netzwerk können nicht mit dem internen Azure-Lastenausgleich in einem per Peering verbundenen virtuellen Netzwerk kommunizieren](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints).
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
@@ -188,4 +190,4 @@ Ausgehend von der obigen Berechnung ist /29 die maximale Größe des Subnetzes, 
 [Related content]: #related-content
 
 [UDRs]: ../virtual-network/virtual-networks-udr-overview.md
-[Network Security Group]: ../virtual-network/virtual-networks-nsg.md
+[Network Security Group]: ../virtual-network/security-overview.md

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 84988c815759a726abe93d931f73c284d771a5ba
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48253b68a329d17f213369e8e4ee2e06bdf17992
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786709"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365823"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
@@ -35,7 +35,7 @@ Der Skill **OCR** extrahiert Text aus Bilddateien. Folgende Dateiformate werden 
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | detectOrientation | Aktiviert die automatische Erkennung der Bildausrichtung. <br/> Gültige Werte: „true“ und „false“|
 |defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`  Wenn der Sprachcode nicht angegeben oder Null ist, wird die Sprache automatisch erkannt.|
@@ -43,13 +43,13 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | Beschreibung                                          |
+| Eingabename      | BESCHREIBUNG                                          |
 |---------------|------------------------------------------------------|
 | image         | Komplexer Typ. Arbeitet derzeit mit dem Feld „/document/normalized_images“, das vom Azure Blob-Indexer generiert wird, wenn ```imageAction``` auf ```generateNormalizedImages``` gesetzt ist. Weitere Informationen finden Sie im [Beispiel](#sample-output).|
 
 
 ## <a name="skill-outputs"></a>Skillausgaben
-| Ausgabename     | Beschreibung                   |
+| Ausgabename     | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | text          | Aus dem Bild extrahierter Nur-Text-Inhalt.   |
 | layoutText    | Komplexer Typ, der den extrahierten Text sowie die Fundstelle beschreibt.|
@@ -186,16 +186,14 @@ Im folgenden Beispiel für das Skillset wird ein Feld *merged_text* erstellt, da
 Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Feld mit normalisierten Bildern vorhanden ist. Um ein Feld zu erhalten, legen Sie die Konfiguration *imageAction* in Ihrer Indexerdefinition auf *generateNormalizedImages* fest, wie unten gezeigt:
 
 ```json
-{
-  //...rest of your indexer definition goes here ...
-  "parameters":
-  {
-    "configuration": 
-    {
-        "dataToExtract": "contentAndMetadata",
-        "imageAction": "generateNormalizedImages"
-        }
-  }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
+      }
+   }
 }
 ```
 
@@ -203,3 +201,4 @@ Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Fe
 + [Vordefinierte Skills](cognitive-search-predefined-skills.md)
 + [Der Skill „Text zusammenführen“](cognitive-search-skill-textmerger.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Erstellen eines Indexers (REST)](ref-create-indexer.md)

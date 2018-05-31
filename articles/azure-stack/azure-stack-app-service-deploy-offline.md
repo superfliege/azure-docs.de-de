@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 7907056635049ce90a2653b0d58ef6299b77c71e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 5b4281de4a6c2efee8e96f98a3cd46fec191fe22
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359899"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1802 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack-Development Kit vor der Bereitstellung von Azure App Service bereit.
+> Wenden Sie Update 1804 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.2 bereit.
 >
 >
 
@@ -80,7 +81,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 7. Auf der nächsten Seite:
     1. Klicken Sie neben dem Feld **Azure Stack-Abonnements** auf die Schaltfläche **Verbinden**.
         - Geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
-    2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
+    2. Wählen Sie im Feld **Azure Stack-Abonnements** das **Standardabonnement des Anbieters** aus.
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
     4. Klicken Sie auf **Weiter**.
 
@@ -126,7 +127,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     ![App Service-Installationsprogramm][11]
 
-12. Geben Sie die SQL Server-Informationen für die Serverinstanz ein, auf der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen, und klicken Sie dann auf **Weiter**. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften.
+12. Geben Sie die SQL Server-Informationen für die Serverinstanz ein, auf der die Datenbanken des App Service-Ressourcenanbieters gehostet werden sollen, und klicken Sie dann auf **Weiter**. Das Installationsprogramm überprüft die SQL-Verbindungseigenschaften. Sie **müssen** entweder die interne IP-Adresse oder den vollqualifizierten Domänennamen für den SQL Server-Namen eingeben.
 
 > [!NOTE]
 > Das Installationsprogramm versucht, die Konnektivität mit SQL Server zu testen, bevor es fortgesetzt wird.  Wenn Sie sich jedoch für die Bereitstellung in einem vorhandenen virtuellen Netzwerk entschieden haben, kann das Installationsprogramm möglicherweise keine Verbindung mit SQL Server herstellen, und es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten.  Überprüfen Sie die SQL Server-Informationen, und fahren Sie fort, wenn diese richtig sind.

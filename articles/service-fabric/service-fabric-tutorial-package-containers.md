@@ -2,13 +2,13 @@
 title: Erstellen und Bereitstellen einer Service Fabric-Containeranwendung | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie die Definition einer Azure Service Fabric-Anwendung mit Yeoman generieren und aus der Anwendung ein Paket erstellen.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
 keywords: Docker, Container, Microservices, Service Fabric, Azure
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 6e3200676807bbd9a15c5c7b19312a2e0c18d77a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365378"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung
 
@@ -45,7 +46,8 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Anwe
 1. Installieren Sie Node.js und npm auf dem Computer. Beachten Sie, dass Mac OSX-Benutzer den Paket-Manager Homebrew verwenden müssen.
 
     ```bash
-    sudo apt-get install npm && sudo apt install nodejs-legacy
+    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
+    sudo apt-get install -y nodejs 
     ```
 2. Installieren des Yeoman-Vorlagengenerators auf dem Computer über npm 
 
@@ -247,11 +249,11 @@ Verwenden Sie das im Verzeichnis **TestContainer** bereitgestellte Installations
 ./install.sh
 ```
 
-Navigieren Sie in einem Browser zu Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer). Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie einen Eintrag für Ihren Anwendungstyp und einen weiteren für die Instanz.
+Öffnen Sie einen Browser, und navigieren Sie zu Service Fabric Explorer (http://lin4hjim3l4.westus.cloudapp.azure.com:19080/Explorer). Erweitern Sie den Knoten „Anwendungen“. Hier finden Sie einen Eintrag für Ihren Anwendungstyp und einen weiteren für die Instanz.
 
 ![Service Fabric Explorer][sfx]
 
-Um eine Verbindung zur ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und wechseln Sie zu der Cluster-Url – z.B. http://lin0823ryf2he.cloudapp.azure.com:80 . Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
+Um eine Verbindung mit der ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und navigieren Sie zur Cluster-URL, etwa http://lin0823ryf2he.cloudapp.azure.com:80. Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
 
 ![votingapp][votingapp]
 

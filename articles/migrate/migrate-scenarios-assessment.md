@@ -5,14 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/16/2018
+ms.date: 05/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb102cc43c6e1d17afaa78a2833ae447600a96af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0d8ef36e001aaf417b84efaf99a992fd64f01b6f
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366340"
 ---
 # <a name="scenario-1-assess-on-premises-workloads-for-migration-to-azure"></a>Szenario 1: Bewerten von lokalen Workloads für die Migration zu Azure
 
@@ -22,9 +23,9 @@ Als Einstieg und zum besseren Verständnis der beteiligten Technologie bewertet 
 
 **Technologie** | **Beschreibung** | **Kosten**
 --- | --- | ---
-[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Der DMA bewertet und erkennt Kompatibilitätsprobleme, die sich auf die Datenbankfunktionalität in Azure auswirken können. Außerdem wird die Featureparität zwischen Ihrer SQL Server-Quelle und dem dazugehörigen Ziel bewertet, und für die Zielumgebung werden Verbesserungen in Bezug auf die Leistung und Zuverlässigkeit empfohlen. | Sie können das Tool kostenlos herunterladen. 
+[DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Der DMA bewertet und erkennt Kompatibilitätsprobleme, die sich auf die Datenbankfunktionalität in Azure auswirken können. Außerdem wird die Featureparität zwischen Ihrer SQL Server-Quelle und dem dazugehörigen Ziel bewertet, und für die Zielumgebung werden Verbesserungen in Bezug auf die Leistung und Zuverlässigkeit empfohlen. | Sie können das Tool kostenlos herunterladen.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Der Dienst ermöglicht es Ihnen, lokale Computer für die Migration zu Azure zu bewerten. Die Migrationseignung der Computer wird bewertet, und es werden Größenanpassungs- und Kostenschätzungen für die Ausführung in Azure bereitgestellt. Derzeit kann der Azure Migrate-Dienst lokale VMware-VMs für die Migration zu Azure bewerten. | Für die Nutzung dieses Diensts werden derzeit (April 2018) keine Gebühren berechnet.
-[Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Für Azure Migrate wird eine Dienstzuordnung verwendet, um Abhängigkeiten zwischen Computern anzuzeigen, die Sie migrieren möchten. |  Die Dienstzuordnung ist Teil von Azure Log Analytics. Sie kann derzeit 180 Tage lang genutzt werden, ohne dass Kosten berechnet werden. 
+[Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Für Azure Migrate wird eine Dienstzuordnung verwendet, um Abhängigkeiten zwischen Computern anzuzeigen, die Sie migrieren möchten. |  Die Dienstzuordnung ist Teil von Azure Log Analytics. Sie kann derzeit 180 Tage lang genutzt werden, ohne dass Kosten berechnet werden.
 
 Für dieses Szenario laden wir den DMA herunter und führen ihn aus, um die lokale SQL Server-Datenbank für die Reise-App zu bewerten. Wir verwenden Azure Migrate mit Zuordnung von Abhängigkeiten, um die App-VMs zu bewerten, bevor wir sie zu Azure migrieren.
 
@@ -50,7 +51,7 @@ Szenario:
 Für die Bereitstellung dieses Szenarios benötigen Sie Folgendes:
 
 - Einen lokalen vCenter Server mit Version 5.5, 6.0 oder 6.5.
-- Ein Konto mit Lesezugriff für den vCenter Server bzw. Berechtigungen für die Kontoerstellung. 
+- Ein Konto mit Lesezugriff für den vCenter Server bzw. Berechtigungen für die Kontoerstellung.
 - Berechtigungen zum Erstellen einer VM auf dem vCenter Server mit einer .OVA-Vorlage.
 - Mindestens einen ESXi-Host mit Version 5.0 oder höher.
 - Mindestens zwei lokale VMware-VMs (mit Ausführung einer SQL Server-Datenbank auf einer VM).
@@ -106,15 +107,15 @@ Führen Sie eine Bewertung durch, um Ihre SQL Server-Quellinstanz für ein angeg
       Derzeit wird die Bewertung für die Migration zu einer verwalteten SQL-Instanz vom DMA nicht unterstützt. Als Problemumgehung verwenden wir SQL Server auf einer Azure-VM als unser angenommenes Ziel für die Bewertung.
 
 1.  Geben Sie unter **Select Target Version** (Zielversion auswählen) die SQL Server-Zielversion an, die sie in Azure ausführen möchten, und was bei der Bewertung ermittelt werden soll:
-    - Unter **Compatibility Issues** (Kompatibilitätsprobleme) werden Informationen zu Änderungen angezeigt, die die Migration ggf. verhindern oder für die vor der Migration eine kleinere Anpassung erforderlich ist. Außerdem erhalten Sie hier Informationen zu allen derzeit verwendeten Features, die als veraltet eingestuft wurden. Die Probleme sind nach Kompatibilitätsgrad angegeben. 
-    - Unter **Empfehlung zu neuen Features** werden Informationen zu neuen Features auf der SQL Server-Zielplattform angezeigt, die nach der Migration für Ihre Datenbank verwendet werden können. Diese sind nach Leistung, Sicherheit und Speicher angegeben. 
+    - Unter **Compatibility Issues** (Kompatibilitätsprobleme) werden Informationen zu Änderungen angezeigt, die die Migration ggf. verhindern oder für die vor der Migration eine kleinere Anpassung erforderlich ist. Außerdem erhalten Sie hier Informationen zu allen derzeit verwendeten Features, die als veraltet eingestuft wurden. Die Probleme sind nach Kompatibilitätsgrad angegeben.
+    - Unter **Empfehlung zu neuen Features** werden Informationen zu neuen Features auf der SQL Server-Zielplattform angezeigt, die nach der Migration für Ihre Datenbank verwendet werden können. Diese sind nach Leistung, Sicherheit und Speicher angegeben.
 
     ![Ziel auswählen](./media/migrate-scenarios-assessment/dma-assessment-2.png)
 
 2. Geben Sie unter **Verbindung mit einem Server herstellen** den Namen des Computers, auf dem die SQL Server-Instanz ausgeführt wird, den Authentifizierungstyp und die Verbindungsdetails an. Klicken Sie auf **Verbinden**.
 
     ![Ziel auswählen](./media/migrate-scenarios-assessment/dma-assessment-3.png)
-    
+
 3. Wählen Sie unter **Quelle hinzufügen** die Datenbank aus, die Sie bewerten möchten, und klicken Sie auf **Hinzufügen**.
 4. Es wird eine Bewertung mit dem von Ihnen angegebenen Namen erstellt.
 
@@ -126,7 +127,7 @@ Führen Sie eine Bewertung durch, um Ihre SQL Server-Quellinstanz für ein angeg
 
 ### <a name="analyze-the-database-assessment"></a>Analysieren der Datenbankbewertung
 
-Die Ergebnisse werden im Assistenten angezeigt, sobald sie verfügbar sind. 
+Die Ergebnisse werden im Assistenten angezeigt, sobald sie verfügbar sind.
 
 1. Überprüfen Sie im Bericht **Compatibility Issues** (Kompatibilitätsprobleme), ob für Ihre Datenbank für die einzelnen Kompatibilitätsgrade Probleme vorliegen, und lesen Sie ggf. die Informationen zur Behebung. Kompatibilitätsgrade sind den SQL Server-Versionen wie folgt zugeordnet:
     - 100: SQL Server 2008/Azure SQL-Datenbank
@@ -141,7 +142,7 @@ Die Ergebnisse werden im Assistenten angezeigt, sobald sie verfügbar sind.
 
     ![Featureempfehlungen](./media/migrate-scenarios-assessment/dma-assessment-6.png)
 
-3. Nachdem Sie die Probleme behoben haben, können Sie auf **Bewertung neu starten** klicken, um die Bewertung erneut durchzuführen. 
+3. Nachdem Sie die Probleme behoben haben, können Sie auf **Bewertung neu starten** klicken, um die Bewertung erneut durchzuführen.
 4. Klicken Sie auf **Bericht exportieren**, um den Bewertungsbericht im JSON- oder CSV-Format abzurufen.
 
 Bei Durchführung einer umfangreicheren Bewertung:
@@ -182,8 +183,8 @@ Bevor Sie die Bereitstellung starten, sollten die Statistikeinstellungen für vC
     - Für den Speicher wird für Azure Migrate ein Standarddatenträger in Azure empfohlen, der die gleiche Größe wie der lokale Datenträger hat.
     - In Bezug auf das Netzwerk wird für jeden lokalen Netzwerkadapter die Verwendung eines entsprechenden Netzwerkadapters in Azure empfohlen.
     - Für den Computebereich untersucht Azure Migrate die VM-Kerne und die Arbeitsspeichergröße und empfiehlt eine Azure-VM mit der gleichen Konfiguration. Wenn mehrere geeignete Azure-VM-Größen vorhanden sind, wird die mit den geringsten Kosten empfohlen.
-   
-    
+
+
 [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#sizing) zur Größenanpassung für Ebene 3.
 
 Legen Sie die Ebene wie folgt fest:
@@ -215,7 +216,7 @@ Erstellen Sie ein Azure Migrate-Projekt, und führen Sie das Herunterladen und E
     ![Azure Migrate](./media/migrate-scenarios-assessment/project-1.png)
 
 
-    
+
 
 ### <a name="download-the-collector-appliance"></a>Herunterladen der Collectorappliance
 
@@ -225,7 +226,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
 2. Klicken Sie in **Computer ermitteln** auf **Herunterladen**, um die OVA-Datei herunterzuladen.
 3. Kopieren Sie in **Projektanmeldeinformationen kopieren** die Projekt-ID und den Projektschlüssel. Diese benötigen Sie beim Konfigurieren des Collectors.
 
-    ![Herunterladen der OVA-Datei](./media/migrate-scenarios-assessment/download-ova.png) 
+    ![Herunterladen der OVA-Datei](./media/migrate-scenarios-assessment/download-ova.png)
 
 ### <a name="verify-the-collector-appliance"></a>Überprüfen der Collectorappliance
 
@@ -235,14 +236,14 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für den generierten Hash müssen diese Einstellungen vorhanden sein (Version 1.0.9.7).
-    
+3. Der generierte Hash muss den folgenden Einstellungen entsprechen (Version 1.0.9.8):
+
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | d5b6a03701203ff556fa78694d6d7c35
-    SHA1 | f039feaa10dccd811c3d22d9a59fb83d0b01151e
-    SHA256 | e5e997c003e29036f62bf3fdce96acd4a271799211a84b34b35dfd290e9bea9c
-    
+    MD5 | b5d9f0caf15ca357ac0563468c2e6251
+    SHA1 | d6179b5bfe84e123fabd37f8a1e4930839eeb0e5
+    SHA256 | 09c68b168719cb93bd439ea6a5fe21a3b01beec0e15b84204857061ca5b116ff
+
 
 ### <a name="create-the-collector-appliance"></a>Erstellen der Collectorappliance
 
@@ -250,14 +251,14 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 
 1. Klicken Sie in der vSphere-Clientkonsole auf **Datei** > **Deploy OVF Template** (OVF-Vorlage bereitstellen).
 
-    ![Bereitstellen der OVF-Vorlage](./media/migrate-scenarios-assessment/vcenter-wizard.png) 
+    ![Bereitstellen der OVF-Vorlage](./media/migrate-scenarios-assessment/vcenter-wizard.png)
 
 2. Geben Sie im Assistenten zum Bereitstellen der OVF-Vorlage unter **Quelle** den Speicherort der OVA-Datei an, und klicken Sie auf **Weiter**.
 3. Klicken Sie unter **OVF Template Details** (Details zur OVF-Vorlage) auf **Weiter**. Klicken Sie unter **Endbenutzer-Lizenzvertrag** auf **Akzeptieren**, um die Vereinbarung zu akzeptieren, und klicken Sie dann auf **Weiter**.
 4. Geben Sie unter **Name und Speicherort** einen Anzeigenamen für die Collector-VM und den Inventarspeicherort an, unter dem die VM gehostet wird, und klicken Sie auf **Weiter**. Geben Sie den Host oder Cluster an, auf bzw. in dem die Collectorappliance ausgeführt werden soll.
 5. Geben Sie unter **Speicher** an, wo die Dateien für die Appliance gespeichert werden sollen, und klicken Sie auf **Weiter**.
 6. Geben Sie unter **Datenträgerformat** an, wie Sie den Speicher bereitstellen möchten.
-7. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der virtuelle Collectorcomputer eine Verbindung herstellt. Das Netzwerk benötigt eine Internetverbindung, damit Metadaten an Azure gesendet werden können. 
+7. Geben Sie unter **Netzwerkzuordnung** das Netzwerk an, mit dem der virtuelle Collectorcomputer eine Verbindung herstellt. Das Netzwerk benötigt eine Internetverbindung, damit Metadaten an Azure gesendet werden können.
 8. Überprüfen Sie unter **Ready to Complete** (Für Fertigstellung bereit) die Einstellungen, wählen Sie **Power on after deployment** (Nach Bereitstellung einschalten), und klicken Sie dann auf **Fertig stellen**.
 
 Nachdem die Appliance erstellt wurde, wird eine Meldung mit dem Hinweis angezeigt, dass der Vorgang erfolgreich abgeschlossen wurde.
@@ -270,22 +271,22 @@ Beachten Sie Folgendes, bevor Sie beginnen: Der Collector unterstützt derzeit n
 2. Geben Sie für die Appliance die Einstellungen für Sprache, Zeitzone und Kennwort an.
 3. Klicken Sie auf dem Desktop auf die Verknüpfung **Collector ausführen**.
 
-    ![Collectorverknüpfung](./media/migrate-scenarios-assessment/collector-shortcut.png) 
-    
+    ![Collectorverknüpfung](./media/migrate-scenarios-assessment/collector-shortcut.png)
+
 4. Öffnen Sie im Azure Migrate-Collector die Option **Erforderliche Komponenten einrichten**.
     - Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
-    - Der Collector überprüft, ob die VM über Internetzugriff verfügt, die Uhrzeit synchronisiert ist und der Collectordienst ausgeführt wird (standardmäßig auf der VM installiert). Außerdem wird überprüft, ob VMWare PowerCLI installiert ist. 
-    
+    - Der Collector überprüft, ob die VM über Internetzugriff verfügt, die Uhrzeit synchronisiert ist und der Collectordienst ausgeführt wird (standardmäßig auf der VM installiert). Außerdem wird überprüft, ob VMWare PowerCLI installiert ist.
+
     > [!NOTE]
     > Wir setzen voraus, dass die VM über direkten Internetzugriff ohne Proxy verfügt.
 
     ![Überprüfen der Voraussetzungen](./media/migrate-scenarios-assessment/collector-verify-prereqs.png)
-    
+
 
 5. Nehmen Sie in **vCenter Server-Details angeben** die folgenden Einstellungen vor:
     - Geben Sie den Namen (FQDN) oder die IP-Adresse des vCenter-Servers an.
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das der Collector virtuelle Computer auf dem vCenter-Server ermittelt.
-    - Wählen Sie unter **Bereich auswählen** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen. 
+    - Wählen Sie unter **Bereich auswählen** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen.
 
     ![Herstellen einer Verbindung mit vCenter](./media/migrate-scenarios-assessment/collector-connect-vcenter.png)
 
@@ -296,7 +297,7 @@ Beachten Sie Folgendes, bevor Sie beginnen: Der Collector unterstützt derzeit n
 7. Überwachen Sie in **Sammlungsfortschritt anzeigen** die Ermittlung, und vergewissern Sie sich, dass sich die von den VMs erfassten Metadaten innerhalb des zulässigen Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an.
 
     ![Collector-Vorgang wird durchgeführt](./media/migrate-scenarios-assessment/collector-collection-process.png)
-   
+
 
 
 ### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
@@ -309,7 +310,7 @@ Nachdem der Collector-Vorgang abgeschlossen ist, sollten Sie überprüfen, ob di
     ![Ermittelte Computer](./media/migrate-scenarios-assessment/discovery-complete.png)
 
 3. Beachten Sie, dass auf den Computern derzeit keine Azure Migrate-Agents installiert sind. Wir müssen diese installieren, damit wir die Abhängigkeiten anzeigen können.
-    
+
     ![Ermittelte Computer](./media/migrate-scenarios-assessment/machines-no-agent.png)
 
 
@@ -322,7 +323,7 @@ Wir laden die Agents herunter und installieren sie auf den Web-App-VMs (WEBVM un
 
 Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möchten, können Sie vor dem Installieren der Agents eine Momentaufnahme erstellen.
 
-![Momentaufnahme eines Computers](./media/migrate-scenarios-assessment/snapshot-vm.png) 
+![Momentaufnahme eines Computers](./media/migrate-scenarios-assessment/snapshot-vm.png)
 
 
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
@@ -331,7 +332,7 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
 2.  Führen Sie auf der Seite **Computer ermitteln** für jede VM den Download und die Installation des Microsoft Monitoring Agent (MMA) und des Abhängigkeits-Agents durch.
 3.  Kopieren Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel. Sie benötigen diese Angaben für die MMA-Installation.
 
-    ![Agent-Download](./media/migrate-scenarios-assessment/download-agents.png) 
+    ![Agent-Download](./media/migrate-scenarios-assessment/download-agents.png)
 
 
 
@@ -339,12 +340,12 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
 
 1. Doppelklicken Sie auf den heruntergeladenen Agent.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**. Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
-3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, und klicken Sie anschließend auf **Weiter**. 
-4. Wählen Sie unter **Agent-Setupoptionen** die Option **Connect the agent to Azure Log Analytics (Agent mit Azure Log Analytics verbinden)** > **Weiter**. 
+3. Behalten Sie unter **Zielordner** den Standardinstallationsordner bei, und klicken Sie anschließend auf **Weiter**.
+4. Wählen Sie unter **Agent-Setupoptionen** die Option **Connect the agent to Azure Log Analytics (Agent mit Azure Log Analytics verbinden)** > **Weiter**.
 
-    ![MMA-Installation](./media/migrate-scenarios-assessment/mma-install.png) 
+    ![MMA-Installation](./media/migrate-scenarios-assessment/mma-install.png)
 5. Fügen Sie in **Azure Log Analytics** die Arbeitsbereichs-ID und den dazugehörigen Schlüssel ein, die bzw. den Sie im Portal kopiert haben. Klicken Sie auf **Weiter**.
-    ![MMA-Installation](./media/migrate-scenarios-assessment/mma-install2.png) 
+    ![MMA-Installation](./media/migrate-scenarios-assessment/mma-install2.png)
 
 6. Installieren Sie unter **Bereit für die Installation** den MMA.
 
@@ -356,10 +357,10 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
 2.  Klicken Sie auf der Seite **Lizenzbedingungen** auf **Ich stimme zu**, um die Lizenzbedingungen zu akzeptieren.
 3.  Warten Sie unter **Installieren**, bis die Installation abgeschlossen ist. Klicken Sie auf **Weiter**.
 
-    ![Abhängigkeits-Agent](./media/migrate-scenarios-assessment/dependency-agent.png) 
+    ![Abhängigkeits-Agent](./media/migrate-scenarios-assessment/dependency-agent.png)
 
 
-       
+
 ## <a name="step-7-run-and-analyze-the-vm-assessment"></a>Schritt 7: Durchführen und Analysieren der VM-Bewertung
 
 Überprüfen Sie die Abhängigkeiten der Computer, und erstellen Sie eine Gruppe. Führen Sie anschließend die Bewertung durch.
@@ -368,7 +369,7 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
 
 1.  Klicken Sie auf der Seite **Computer** für die VMs, die Sie analysieren möchten, auf **Abhängigkeiten anzeigen**.
 
-    ![Anzeigen von Computerabhängigkeiten](./media/migrate-scenarios-assessment/view-machine-dependencies.png) 
+    ![Anzeigen von Computerabhängigkeiten](./media/migrate-scenarios-assessment/view-machine-dependencies.png)
 
 2. Für die SQLVM werden in der Abhängigkeitsübersicht die folgenden Informationen angezeigt:
 
@@ -376,8 +377,8 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
     - Eingehende (Client) und ausgehende TCP-Verbindungen (Server) zu bzw. von allen abhängigen Computern.
     - Abhängige Computer mit installierten Azure Migrate-Agents werden als separate Felder angezeigt
     - Für Computer ohne installierte Agents werden Informationen zum Port und zur IP-Adresse angezeigt.
-    
- 3. Klicken Sie für Computer mit installiertem Agent (WEBVM) auf das Computerfeld, um weitere Informationen anzuzeigen, z.B. FQDN, Betriebssystem und MAC-Adresse. 
+
+ 3. Klicken Sie für Computer mit installiertem Agent (WEBVM) auf das Computerfeld, um weitere Informationen anzuzeigen, z.B. FQDN, Betriebssystem und MAC-Adresse.
 
     ![Anzeigen der Gruppenabhängigkeiten](./media/migrate-scenarios-assessment/sqlvm-dependencies.png)
 
@@ -385,7 +386,7 @@ Falls Sie vor dem Vornehmen von Änderungen eine Kopie Ihrer VM erstellen möcht
 5. Klicken Sie auf **Gruppe erstellen**, und geben Sie einen Namen an (smarthotelapp).
 
 > [!NOTE]
-    > Sie können den Zeitbereich erweitern, um detailliertere Abhängigkeiten anzuzeigen. Sie können eine bestimmte Dauer oder das Start- und Enddatum auswählen. 
+    > Sie können den Zeitbereich erweitern, um detailliertere Abhängigkeiten anzuzeigen. Sie können eine bestimmte Dauer oder das Start- und Enddatum auswählen.
 
 
 ### <a name="run-an-assessment"></a>Durchführen einer Bewertung
@@ -409,7 +410,7 @@ Für dieses Tutorial haben wir die Standardeinstellungen für Bewertungen verwen
     **Einstellung** | **Details** | **Standard**
     --- | --- | ---
     **Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll. | Keine Standardeinstellung.
-    **Speicherredundanz** | Die Speicherredundanz, die von den virtuellen Azure-Computern nach der Migration verwendet wird. | Der Standardwert ist [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy-lrs.md). Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger wiederum unterstützen nur LRS, sodass nur die LRS-Option verfügbar ist. 
+    **Speicherredundanz** | Die Speicherredundanz, die von den virtuellen Azure-Computern nach der Migration verwendet wird. | Der Standardwert ist [Lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy-lrs.md). Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger wiederum unterstützen nur LRS, sodass nur die LRS-Option verfügbar ist.
     **Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können eine *leistungsbasierte* Größenanpassung vornehmen oder die Größe der virtuellen Computer *lokal* ändern, ohne den Leistungsverlauf zu berücksichtigen. | Die leistungsbasierte Größenanpassung ist die Standardoption.
     **Leistungsverlauf** | Die zur Bewertung der Leistung der virtuellen Computer zu berücksichtigende Dauer. Diese Eigenschaft ist nur anwendbar, wenn als Größenkriterium die *leistungsbasierte Größenanpassung* festgelegt ist. | Standardmäßig ist ein Tag festgelegt.
     **Perzentilwert der Nutzung** | Der für die Größenanpassung zu berücksichtigende Perzentilwert des festgelegten Leistungsbeispiels. Diese Eigenschaft ist nur anwendbar, wenn als Größenkriterium die *leistungsbasierte Größenanpassung* festgelegt ist.  | Der Standardwert ist das 95. Perzentil.
@@ -425,7 +426,7 @@ Für dieses Tutorial haben wir die Standardeinstellungen für Bewertungen verwen
 
 ### <a name="analyze-the-vm-assessment"></a>Analysieren der VM-Bewertung
 
-Eine Azure Migrate-Bewertung enthält Informationen dazu, ob die lokalen VMs mit Azure kompatibel sind, welche Größenanpassung für die Azure-VM richtig ist und welche geschätzten monatlichen Azure-Kosten anfallen. 
+Eine Azure Migrate-Bewertung enthält Informationen dazu, ob die lokalen VMs mit Azure kompatibel sind, welche Größenanpassung für die Azure-VM richtig ist und welche geschätzten monatlichen Azure-Kosten anfallen.
 
 ![Bewertungsbericht](./media/migrate-scenarios-assessment/assessment-overview.png)
 
@@ -470,12 +471,12 @@ Im Bewertungsbericht sind die Informationen in einer Tabelle zusammengefasst. Be
 
 #### <a name="review-monthly-cost-estimates"></a>Überprüfen der geschätzten monatlichen Kosten
 
-In dieser Ansicht sind die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer angegeben. 
+In dieser Ansicht sind die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer angegeben.
 
-![Bewertungsbereitschaft](./media/migrate-scenarios-assessment/azure-costs.png) 
+![Bewertungsbereitschaft](./media/migrate-scenarios-assessment/azure-costs.png)
 
 - Kostenschätzungen werden anhand der Größenempfehlungen für einen Computer berechnet.
-- Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert. 
+- Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert.
 
 
 ## <a name="conclusion"></a>Zusammenfassung
@@ -490,6 +491,3 @@ In diesem Szenario haben wir Folgendes durchgeführt:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Fahren Sie mit dem nächsten Szenario fort, um für die lokalen VMs und die Datenbank eine [Migration per Lift & Shift](migrate-scenarios-lift-and-shift.md) zu Azure durchzuführen.
-
-
-

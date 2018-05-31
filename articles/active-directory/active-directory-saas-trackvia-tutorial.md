@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 51b040e1dfaba8fff8136e8947edf716919f53b0
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: f0b0a2f29a1c14477fcd52e03fdfc47fee728c78
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34348392"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Tutorial: Azure Active Directory-Integration mit TrackVia
 
@@ -30,7 +31,7 @@ Die Integration von TrackVia in Azure AD hat folgende Vorteile:
 - Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei TrackVia anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -126,11 +127,22 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 6. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-trackvia-tutorial/tutorial_general_400.png)
-    
-7. Zum Konfigurieren des einmaligen Anmeldens bei **TrackVia** müssen Sie die heruntergeladene**XML-Metadatendatei** an das [TrackVia-Supportteam](mailto:support@trackvia.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+7. Klicken Sie im Abschnitt **TrackVia-Konfiguration** auf **TrackVia konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
+
+    ![TrackVia-Konfiguration](./media/active-directory-saas-trackvia-tutorial/tutorial_trackvia_configure.png)
+    
+8. Melden Sie sich in einem anderen Webbrowserfenster bei der TrackVia-Unternehmenswebsite als Administrator an.
+
+9. Klicken Sie auf der TrackVia-Website auf die Einstellung **My Account** (Mein Konto), und klicken Sie dann auf die Registerkarte **Single Sign On** (Einmaliges Anmelden). Führen Sie die folgenden Schritte aus:
+
+    ![TrackVia-Konfiguration](./media/active-directory-saas-trackvia-tutorial/configure1.png)
+
+    a. Fügen Sie in das Textfeld **Identity Provider Entity ID** (Entitäts-ID des Identitätsanbieters) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    b. Klicken Sie auf **Choose File** (Datei auswählen), um die Metadaten-Datei hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben.
+
+    c. Klicken Sie unten auf der Seite auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -210,9 +222,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 
@@ -227,4 +237,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-trackvia-tutorial/tutorial_general_203.png
-

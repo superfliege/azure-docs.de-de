@@ -12,13 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/18/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: fd706737491a4644b0730ea197f6a2a9ed5480e5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 5fcd42a2453bddbfc1c1d1939dd9e63e7e09bdb0
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366527"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -198,6 +199,8 @@ Der im Container ausgeführte Dienst erfordert einen Endpunkt für die Kommunika
 ```
 
 Durch die Definition eines Endpunkts veröffentlicht Service Fabric den Endpunkt an den Naming Service. Dieser Container kann von anderen im Cluster ausgeführten Diensten aufgelöst werden. Mithilfe des [Reverseproxys](service-fabric-reverseproxy.md) können Sie auch Container-zu-Container-Kommunikation durchführen. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden.
+
+Der Dienst lauscht an einem bestimmten Port (in diesem Beispiel: 8081). Bei der Bereitstellung eines Clusters in Azure durch die Anwendung werden sowohl der Cluster als auch die Anwendung hinter einem Azure-Lastenausgleichsmodul ausgeführt. Der Anwendungsport muss im Azure-Lastenausgleichsmodul geöffnet sein, damit eingehender Datenverkehr an den Dienst gesendet werden kann.  Sie können diesen Port im Azure-Lastenausgleichsmodul mithilfe eines [PowerShell-Skripts](./scripts/service-fabric-powershell-open-port-in-load-balancer.md) oder im [Azure-Portal](https://portal.azure.com) öffnen.
 
 ## <a name="configure-and-set-environment-variables"></a>Konfigurieren und Festlegen von Umgebungsvariablen
 Zu jedem Codepaket im Dienstmanifest können Umgebungsvariablen angegeben werden. Diese Funktion ist für alle Dienste verfügbar, unabhängig davon, ob diese als Container, Prozesse oder ausführbare Gastdateien bereitgestellt werden. Die können die Werte von Umgebungsvariablen im Anwendungsmanifest überschreiben oder während der Bereitstellung als Anwendungsparameter angeben.
