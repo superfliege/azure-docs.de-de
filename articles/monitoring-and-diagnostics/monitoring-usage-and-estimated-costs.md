@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: Dale.Koetke;mbullwin
-ms.openlocfilehash: f25c39b602449be3ab9d1cd7e67d6fcfc78afb17
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 08991565d56ffbf7d798944f108a1b86e4463c58
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32176285"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Überwachen der Nutzung und der geschätzten Kosten
 
@@ -39,12 +40,11 @@ Hier ist eine andere ähnliche Verwendung und Kostenzusammenfassung. Dieses Beis
 
 ## <a name="new-pricing-model"></a>Neues Preismodell
 
-Im April 2018 wurde ein neues Preismodell für die Überwachung eingeführt. Es handelt sich um für die Cloud optimierte und verbrauchsbasierte Preise. Sie zahlen ausschließlich nutzungsabhängig und gehen keine knotenbasierten Verpflichtungen ein. Die Details des neuen Preismodells sind jetzt für [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar.
+Im April 2018 wurde ein [neues Preismodell für die Überwachung eingeführt](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/).  Es handelt sich hierbei um für die Cloud optimierte und verbrauchsbasierte Preise. Sie zahlen ausschließlich nutzungsabhängig und gehen keine knotenbasierten Verpflichtungen ein. Die Details des neuen Preismodells sind jetzt für [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) verfügbar. 
 
-Für Kunden, die mit der Verwendung von Log Analytics oder Application Insights nach dem 2. April 2018 begonnen haben, ist das neue Preismodell die einzige Option. Für Kunden, die diese Dienste bereits nutzen, ist die Umstellung auf das neue Preismodell optional.
+Für Kunden, die das Onboarding für Log Analytics oder Application Insights nach dem 2. April 2018 durchführen, ist das neue Preismodell die einzige Option. Für Kunden, die diese Dienste bereits nutzen, ist die Umstellung auf das neue Preismodell optional.
 
 ## <a name="assessing-the-impact-of-the-new-pricing-model"></a>Auswirkungen des neuen Preismodells
-
 Das neue Preismodell hat für jeden Kunden je nach Nutzungsmuster der Überwachung unterschiedliche Auswirkungen. Für Kunden, die Log Analytics oder Application Insights vor dem 2. April 2018 verwendet haben, wird auf der Seite **Nutzung und geschätzte Kosten** in Azure Monitor alle Änderungen der Kosten geschätzt, wenn sie auf das neue Preismodell umsteigen. Sie bietet die Möglichkeit, ein Abonnement in das neue Modell zu übernehmen. Für die meisten Kunden wird das neue Preismodell von Vorteil sein. Bei Kunden mit besonders hohem Datennutzungsverhalten oder in Regionen mit höheren Kosten ist dies möglicherweise nicht der Fall.
 
 Um eine Kostenschätzung für die Abonnements zu sehen, die Sie auf der Seite **Nutzung und geschätzte Kosten** ausgewählt haben, wählen Sie das blaue Banner oben auf der Seite aus. Am besten ist es, wenn Sie dies für nur ein Abonnement auf einmal ausführen, denn das ist die Grundlage, auf der das neue Preismodell übernommen werden kann.
@@ -71,11 +71,30 @@ Es gibt eine weitere Änderung der in Log Analytics oder Application Insights er
 
 ## <a name="new-pricing-model-and-operations-management-suite-subscription-entitlements"></a>Neues Preismodell und Berechtigungen für Operations Management Suite-Abonnement
 
-Kunden, die Microsoft Operations Management Suite E1 und E2 erworben haben, verfügen über Datenerfassungsberechtigungen pro Knoten für [Log Analytics](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite) und [Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-pricing#the-price-plans). Um diese Berechtigungen für Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen in einem bestimmten Abonnement zu erhalten, muss für dieses Abonnement das Preismodell für den Zeitraum vor April 2018 weiterverwendet werden. In diesem Modell sind der Log Analytics-Tarif „Pro Knoten (OMS)“ und der Application Insights-Tarif „Enterprise“ verfügbar. Je nach Anzahl von Knoten einer Suite, die von Ihrer Organisation erworben wurde, kann die Umstellung von Abonnements auf das neue Preismodell trotzdem vorteilhaft sein. Dieser Schritt bedarf aber sorgfältiger Überlegung.
+Kunden, die Microsoft Operations Management Suite E1 und E2 erworben haben, verfügen über Datenerfassungsberechtigungen pro Knoten für [Log Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite) und [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-pricing#the-price-plans). Um diese Berechtigungen für Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen in einem bestimmten Abonnement zu erhalten, muss folgende Voraussetzung erfüllt sein: 
+
+- Als Preismodell für dieses Abonnement muss das vor April 2018 gültige Modell weiterverwendet werden.
+- Log Analytics-Arbeitsbereiche sollten den Tarif „Pro-Knoten (OMS)“ verwenden.
+- Application Insights-Ressourcen sollten den „Enterprise“-Preisplan verwenden.
+
+Je nach Anzahl von Knoten einer Suite, die von Ihrer Organisation erworben wurde, könnte die Umstellung von Abonnements auf das neue Preismodell trotzdem vorteilhaft sein. Dieser Schritt bedarf aber sorgfältiger Überlegung. Im Allgemeinen ist es empfehlenswert, einfach wie oben beschrieben das vor April 2018 gültige Modell beizubehalten.
+
+> [!WARNING]
+> Wenn Ihre Organisation Microsoft Operations Management Suite E1 und E2 erworben hat, sollten Sie normalerweise für Ihre Abonnements das vor April 2018 gültige Preismodell beibehalten. 
+>
 
 ## <a name="changes-when-youre-moving-to-the-new-pricing-model"></a>Änderungen bei der Umstellung auf das neue Preismodell
 
-Beim Umstellen eines Abonnements auf das neue Preismodell ändert sich der Tarif für jede Log Analytics-Instanz in einen neuen Tarif pro GB, und alle Ressourcen werden umgestellt (in Azure Resource Manager als „pergb2018“ bezeichnet). Im Rahmen dieser Umstellung werden auch alle Application Insights-Ressourcen des Enterprise-Tarifs in den Basic-Tarif geändert. Die Kostenschätzung zeigt die Auswirkungen dieser Änderungen.
+Das neue Preismodell reduziert Log Analytics- und Application Insights-Preisoptionen auf nur einen einzigen Tarif (oder Plan). Die Umstellung eines Abonnements auf das neue Preismodell hat folgende Konsequenzen:
+
+- Der Tarif für jede Log Analytics-Instanz wird in einen neuen Pro-GB-Tarif (im Azure Resource Manager „pergb2018“ genannt) umgewandelt.
+- Alle Application Insights-Ressourcen des Enterprise-Tarifs werden in den Basic-Tarif geändert.
+
+Die Kostenschätzung zeigt die Auswirkungen dieser Änderungen.
+
+> [!WARNING]
+> Beachten Sie den folgenden wichtigen Hinweis, wenn Sie Azure Resource Manager oder PowerShell verwenden, um [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-template-workspace-configuration) oder [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-powershell) in einem Abonnement bereitzustellen, das Sie auf das neue Preismodell umgestellt haben. Wenn Sie einen anderen Tarif/Plan als „pergb2018“ für Log Analytics oder „Basic“ für Application Insights angeben, wird die Bereitstellung nicht wegen Angabe eines ungültigen Tarifs/Plans erfolglos sein, **aber es wird nur der gültige Tarif/Plan verwendet**. 
+>
 
 ## <a name="moving-to-the-new-pricing-model"></a>Durchführen der Umstellung auf das neue Preismodell
 

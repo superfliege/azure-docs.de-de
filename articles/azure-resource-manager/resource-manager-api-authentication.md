@@ -1,6 +1,6 @@
 ---
-title: "Authentifizierung über Azure Active Directory und Resource Manager | Microsoft-Dokumentation"
-description: "Entwicklerhandbuch für die Authentifizierung mit der Azure Resource Manager-API und Azure Active Directory für die Integration einer App in andere Azure-Abonnements"
+title: Authentifizierung über Azure Active Directory und Resource Manager | Microsoft-Dokumentation
+description: Entwicklerhandbuch für die Authentifizierung mit der Azure Resource Manager-API und Azure Active Directory für die Integration einer App in andere Azure-Abonnements
 services: azure-resource-manager,active-directory
 documentationcenter: na
 author: dushyantgill
@@ -9,16 +9,17 @@ editor: tysonn
 ms.assetid: 17b2b40d-bf42-4c7d-9a88-9938409c5088
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
-ms.author: dugill;tomfitz
-ms.openlocfilehash: 0b7ddaa7e8a98cdff0e92c87f8a1f7e24efbd67e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: dugill
+ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359861"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 ## <a name="introduction"></a>Einführung
@@ -29,7 +30,7 @@ Ihre App kann auf die Resource Manager-APIs auf verschiedene Arten zugreifen:
 1. **Benutzer- und App-Zugriff**: Für Apps, die für einen angemeldeten Benutzer auf Ressourcen zugreifen. Diese Methode funktioniert für Apps wie Web-Apps und Befehlszeilentools, die nur für die „interaktive Verwaltung“ von Azure-Ressourcen verwendet werden.
 2. **Nur App-Zugriff**: Für Apps, die Daemondienste und geplante Aufträge ausführen. Der App-Identität wird direkter Zugriff auf die Ressourcen gewährt. Diese Methode funktioniert für Apps, die einen langfristigen monitorlosen (unbeaufsichtigten) Zugriff auf Azure benötigen.
 
-Dieser Artikel enthält eine schrittweise Anleitung zum Erstellen einer App, in der beide Autorisierungsmethoden genutzt werden. Es beschreibt, wie jeder Schritt mit REST-API oder C# ausgeführt wird. Die vollständige ASP.NET MVC-Anwendung finden Sie unter [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Dieser Artikel enthält eine schrittweise Anleitung zum Erstellen einer App, in der beide Autorisierungsmethoden genutzt werden. Es beschreibt, wie jeder Schritt mit REST-API oder C# ausgeführt wird. Die vollständige ASP.NET MVC-Anwendung ist verfügbar unter [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 ## <a name="what-the-web-app-does"></a>Funktionen der Web-App
 Die Web-App führt folgende Aktionen aus:
@@ -65,7 +66,7 @@ Verwalten Sie die verbundenen Abonnements:
 
 ![Abonnement verbinden](./media/resource-manager-api-authentication/sample-ux-7.png)
 
-## <a name="register-application"></a>Registrieren einer Anwendung
+## <a name="register-application"></a>Register application (Anwendung registrieren)
 Bevor Sie mit dem Programmieren beginnen, müssen Sie Ihre Web-App bei Azure Active Directory (AD) registrieren. Durch die App-Registrierung wird eine zentrale Identität für Ihre App in Azure AD erstellt. Sie enthält grundlegende Informationen über Ihre Anwendung wie die OAuth-Client-ID, Antwort-URLs und Anmeldeinformationen, die Ihre Anwendung zur Authentifizierung von Azure Resource Manager-APIs und zum Zugriff darauf verwendet. Die App-Registrierung zeichnet auch die verschiedenen delegierten Berechtigungen auf, die Ihre Anwendung benötigt, um für den Benutzer auf Microsoft-APIs zuzugreifen.
 
 Da Ihre App auf andere Abonnements zugreift, müssen Sie sie als mehrinstanzenfähige Anwendung konfigurieren. Geben Sie eine Domäne an, die Ihrem Azure Active Directory zugeordnet ist, damit die Überprüfung erfolgreich ausgeführt werden kann. Melden Sie sich beim Portal an, um die Domänen zu sehen, die Ihrem Azure Active Directory zugeordnet sind.
@@ -224,7 +225,7 @@ Sie haben nur ein Zugriffstoken für Azure Resource Manager. Sie benötigen ein 
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API
-Geben Sie zum Authentifizieren Ihrer App und zum Abrufen eines Tokens für die Azure AD Graph-API eine Tokenanforderung zur Gewährung von Clientanmeldeinformationen im OAuth2.0-Datenfluss an den Azure AD-Tokenendpunkt aus (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
+Geben Sie zum Authentifizieren Ihrer App und zum Abrufen eines Tokens für die Azure AD Graph-API eine Tokenanforderung zur Gewährung von Clientanmeldeinformationen im OAuth2.0-Flow an den Azure AD-Tokenendpunkt aus (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**).
 
 Die Methode [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) der ASP.NET MVC-Beispielanwendung ruft unter Verwendung der Active Directory Authentication Library für .NET ein nur für die App geltendes Zugriffstoken für die Graph-API ab.
 
@@ -323,7 +324,7 @@ Beispielanforderung zum Zuweisen einer RBAC-Rolle zur Anwendung:
 
 In der Anforderung werden die folgenden Werte verwendet:
 
-| Guid | Beschreibung |
+| Guid | BESCHREIBUNG |
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |Die ID des Abonnements |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |Die Objekt-ID des Dienstprinzipals der Anwendung |

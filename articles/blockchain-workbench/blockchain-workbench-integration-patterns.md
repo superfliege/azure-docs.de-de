@@ -10,11 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 0fe4816dbafc28974796c7d9cd307b04fdb9d6d4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a6a44e30fe58617b43c5491a72fc882015bc9591
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886062"
 ---
 # <a name="smart-contract-integration-patterns"></a>Smart Contract-Integrationsmuster
 
@@ -78,7 +79,7 @@ Dieser Abschnitt befasst sich mit Mustern, die sich auf die Aspekte der nachrich
 
 In diesem Szenario tritt ein Ereignis innerhalb eines Smart Contract auf, z.B. ein Zustandswechsel oder die Ausführung einer bestimmten Art von Transaktion. Dieses Ereignis wird über ein Event Grid an nachgeschaltete Consumer übertragen, und diese Consumer ergreifen dann geeignete Maßnahmen.
 
-Ein Beispiel für dieses Szenario ist, dass beim Auftreten einer Transaktion ein Consumer benachrichtigt wird und Maßnahmen ergreifen kann, z.B. die Aufzeichnung der Informationen in einer SQL-Datenbank oder dem Common Data Service. Dies ist dasselbe Muster, dem Workbench folgt, um die *nicht verkettete* SQL-Datenbank mit Daten aufzufüllen.
+Ein Beispiel für dieses Szenario ist, dass beim Auftreten einer Transaktion ein Consumer benachrichtigt wird und Maßnahmen ergreifen kann, z.B. die Aufzeichnung der Informationen in einer SQL-Datenbank oder dem Common Data Service. Dies ist dasselbe Muster, dem Workbench folgt, um die zugehörige *nicht verkettete* SQL-Datenbank mit Daten aufzufüllen.
 
 Ein anderes Beispiel wäre, wenn ein Smart Contract in einen bestimmten Zustand übergeht, z.B. wenn ein Vertrag in den Zustand *OutOfCompliance* wechselt. Wenn diese Zustandsänderung eintritt, kann sie eine Warnung auslösen, die an das Mobiltelefon eines Administrators gesendet wird.
 
@@ -213,7 +214,7 @@ Die Datenintegration ist gut bekannt:
 
 ## <a name="storage-integration"></a>Speicherintegration
 
-Viele Szenarien können die Notwendigkeit aufweisen, belegbare Dateien einzubinden. Aus mehreren Gründen ist es unangebracht, Dateien in eine Blockchain zu integrieren. Stattdessen ist es üblich, einen unidirektionalen Hash für eine Datei zu generieren und diesen Hash für einen verteilten Ledger freizugeben. Eine erneute Ausführung des Hash zu einem späteren Zeitpunkt sollte das gleiche Ergebnis liefern. Wenn die Datei geändert wird (auch wenn nur ein Pixel in einem Bild geändert wird), gibt der Hash einen anderen Wert zurück.
+Viele Szenarien können die Notwendigkeit aufweisen, belegbare Dateien einzubinden. Aus mehreren Gründen ist es unangebracht, Dateien in eine Blockchain zu integrieren. Stattdessen ist es üblich, einen kryptografischen Hash (z. B. SHA-256) für eine Datei auszuführen und diesen Hash für ein Distributed Ledger freizugeben. Eine erneute Ausführung des Hash zu einem späteren Zeitpunkt sollte das gleiche Ergebnis liefern. Wenn die Datei geändert wird (auch wenn nur ein Pixel in einem Bild geändert wird), gibt der Hash einen anderen Wert zurück.
 
 ![Speicherintegration](media/blockchain-workbench-integration-patterns/storage-integration.png)
 

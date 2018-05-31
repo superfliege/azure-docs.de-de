@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32778341"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -1124,7 +1125,7 @@ Time taken to execute above cell: 25.98 seconds
 ### <a name="gradient-boosting-trees-regression"></a>Gradient-Boosted-Strukturenregression
 Der Code in diesem Abschnitt zeigt, wie ein Gradient-Boosted-Strukturmodell, das den Trinkgeldbetrag für die NYC-Taxifahrtendaten vorhersagt, trainiert, evaluiert und gespeichert werden kann.
 
-**Trainieren und bewerten **
+**Trainieren und bewerten**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 
@@ -1413,7 +1414,7 @@ Löschen Sie mit `unpersist()` zwischengespeicherte Objekte aus dem Arbeitsspeic
 
 PythonRDD[122] at RDD at PythonRDD.scala: 43
 
-**Drucken Sie den Pfad zu den Modelldateien zur Verwendung im „Consumption Notebook“. **Um Nutzung und Bewertung für ein unabhängiges Dataset zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
+\*\*Drucken Sie den Pfad zu den Modelldateien zur Verwendung im „Consumption Notebook“. \*\*Um Nutzung und Bewertung für ein unabhängiges Dataset zu erhalten, müssen Sie diese Dateinamen kopieren und in das „Consumption Notebook“ einfügen.
 
     # PRINT MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";

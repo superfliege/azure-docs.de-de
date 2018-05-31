@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen benutzerdefinierten Test für ein Anwendungsgateway über das Portal erstellen."
+title: Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (Azure-Portal) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen benutzerdefinierten Test für ein Anwendungsgateway über das Portal erstellen.
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 33fd5564-43a7-4c54-a9ec-b1235f661f97
 ms.service: application-gateway
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: bb77c9b39e1aa89f6411de8ec3b1fca41e954bf2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 45737c1c378ec56a5e2bedec8c1f7b7bc7ba6225
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203908"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
@@ -53,7 +54,7 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
   |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
   |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird.|
   |**Host**|z.B.: contoso.com|Dieser Wert ist der Hostname, der für den Test verwendet wird. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers.|
-  |**Path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http://contoso.com“ nur „/“. |
+  |**Path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Für den Standardpfad von http://contoso.com verwenden Sie einfach „/“. |
   |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
   |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist.|
   |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Ein Schwellenwert von 0 bedeutet, dass das Back-End bei einer fehlerhaften Integritätsprüfung sofort als fehlerhaft eingestuft wird.|

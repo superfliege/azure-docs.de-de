@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2018
+ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 0bc24fb0206455c723acf5e6f4b82d82002f727c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ba48a9072a85e7d8e6e9fb17957efbf27711df8
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886846"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -103,7 +104,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu
     - Anwendungsschlüssel
     - Mandanten-ID
 
-2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator kann ein AAD-Benutzer oder eine AAD-Gruppe sein. Wenn Sie der Gruppe mit der MSI eine Administatorrolle zuweisen, überspringen Sie die Schritte 3 und 4 unten, da der Administrator Vollzugriff auf die Datenbank hätte.
+2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der AAD-Administrator kann ein AAD-Benutzer oder eine AAD-Gruppe sein. Wenn Sie der Gruppe mit der MSI eine Administatorrolle zuweisen, überspringen Sie die Schritte 3 und 4 unten, da der Administrator Vollzugriff auf die Datenbank hätte.
 
 3. **Erstellen Sie einen Benutzer einer eigenständigen Datenbank für den Dienstprinzipal**, indem Sie eine Verbindung mit dem Data Warehouse, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten, herstellen. Verwenden Sie dazu eine AAD-Identität mit mindestens der Berechtigung „Beliebigen Benutzer ändern“, und führen Sie die folgende T-SQL-Anweisung aus. Weitere Informationen zu Benutzern eigenständiger Datenbanken finden Sie [hier](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -114,7 +115,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu
 4. **Gewähren Sie dem Dienstprinzipal die notwendigen Berechtigungen**, wie bei SQL-Benutzern üblich, indem Sie z.B. Folgendes ausführen:
 
     ```sql
-    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your application name];
     ```
 
 5. Konfigurieren Sie in ADF einen verknüpften Azure SQL Data Warehouse-Dienst.
@@ -151,6 +152,9 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzipal zu
 
 Eine Data Factory kann einer [verwalteten Dienstidentität (MSI)](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese Dienstidentität für die Azure SQL Data Warehouse-Authentifizierung verwenden, die dieser Factory den Zugriff auf Daten und das Kopieren in das bzw. aus dem Data Warehouse ermöglicht.
 
+> [!IMPORTANT]
+> PolyBase wird für die MSI-Authentifizierung derzeit nicht unterstützt.
+
 Um die AAD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, gehen Sie folgendermaßen vor:
 
 1. **Erstellen Sie eine Gruppe in Azure AD, und fügen Sie die MSI als Mitglied dieser Gruppe hinzu.**
@@ -163,7 +167,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, 
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
     ```
 
-2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist.
+2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist.
 
 3. **Erstellen Sie einen Benutzer einer eigenständigen Datenbank für die AAD-Gruppe**, indem Sie eine Verbindung mit dem Data Warehouse, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten, herstellen. Verwenden Sie dazu eine AAD-Identität mit mindestens der Berechtigung „Beliebigen Benutzer ändern“, und führen Sie die folgende T-SQL-Anweisung aus. Weitere Informationen zu Benutzern eigenständiger Datenbanken finden Sie [hier](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
     
@@ -174,7 +178,7 @@ Um die AAD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwenden, 
 4. **Gewähren Sie der AAD-Gruppe die notwendigen Berechtigungen**, wie bei SQL-Benutzern üblich, indem Sie z.B. Folgendes ausführen:
 
     ```sql
-    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    EXEC sp_addrolemember [role name], [your AAD group name];
     ```
 
 5. Konfigurieren Sie in ADF einen verknüpften Azure SQL Data Warehouse-Dienst.
@@ -381,7 +385,7 @@ Mit **[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/po
 * Wenn der Speicher und das Format der Quelldaten von PolyBase ursprünglich nicht unterstützt wird, können Sie stattdessen das Feature **[Gestaffeltes Kopieren mit PolyBase](#staged-copy-using-polybase)** verwenden. Es bietet auch einen besseren Durchsatz, da die Daten automatisch in ein PolyBase-kompatibles Format konvertiert und in Azure Blob Storage gespeichert werden. Anschließend werden die Daten in SQL Data Warehouse geladen.
 
 > [!IMPORTANT]
-> Beachten Sie, dass PolyBase nur die SQL-Authentifizierung für Azure SQL Data Warehouse, nicht jedoch die Azure Active Directory-Authentifizierung unterstützt.
+> PolyBase wird für die AAD-Anwendungstokenauthentifizierung basierend auf der verwalteten Dienstidentität (Managed Service Identity, MSI) derzeit nicht unterstützt.
 
 ### <a name="direct-copy-using-polybase"></a>Direktes Kopieren mithilfe von PolyBase
 

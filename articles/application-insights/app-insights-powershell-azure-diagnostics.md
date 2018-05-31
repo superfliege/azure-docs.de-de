@@ -3,7 +3,7 @@ title: Einrichten von Application Insights in Azure mit PowerShell | Microsoft D
 description: Automatisieren der Konfiguration der Azure-Diagnose zum Senden von Daten an Application Insights.
 services: application-insights
 documentationcenter: .net
-author: sbtron
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 4ac803a8-f424-4c0c-b18f-4b9c189a64a5
 ms.service: application-insights
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 46f148cc69a8e36500dc351f74fa87576eb86a6b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1be5e07da1f8d9ba2db6bbe37c84fa242b830d35
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868159"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Einrichten von Application Insights für eine Azure-Web-App mit PowerShell
 [Microsoft Azure](https://azure.com) kann zum [Senden von Azure-Diagnosedaten](app-insights-azure-diagnostics.md) an [Azure Application Insights](app-insights-overview.md) konfiguriert werden. Die Diagnosedaten beziehen sich auf Azure Cloud Services und Azure VMs. Sie ergänzen die Telemetriedaten, die Sie mit dem Application Insights SDK aus der App senden. Als Teil der Automatisierung des Prozesses zum Erstellen neuer Ressourcen in Azure können Sie die Diagnose mit PowerShell konfigurieren.
@@ -43,10 +44,10 @@ Wenn sich die Web-App in Azure befindet und Sie Ihre Ressourcen mit einer Azure 
      } 
 
 * `nameOfAIAppResource` : Name für die Application Insights-Ressource
-* `myWebAppName` : ID der Web-App
+* `myWebAppName`: die ID der Web-App
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Aktivieren der Diagnoseerweiterung bei der Bereitstellung eines Clouddiensts
-Das Cmdlet `New-AzureDeployment` hat den `ExtensionConfiguration`-Parameter, der ein Array von Diagnosekonfigurationen verwendet. Diese können mit dem Cmdlet `New-AzureServiceDiagnosticsExtensionConfig` erstellt werden. Beispiel:
+Das Cmdlet `New-AzureDeployment` hat den `ExtensionConfiguration`-Parameter, der ein Array von Diagnosekonfigurationen verwendet. Diese können mit dem Cmdlet `New-AzureServiceDiagnosticsExtensionConfig` erstellt werden. Beispiel: 
 
 ```ps
 

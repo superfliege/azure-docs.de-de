@@ -13,6 +13,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31531054"
 ---
 Im Folgenden werden häufig vorkommende Zuordnungsszenarien aufgeführt, die bewirken, dass eine Zuordnungsanforderung „verknüpft“ wird. Die einzelnen Szenarien werden weiter unten in diesem Artikel genauer erläutert.
 
@@ -79,7 +80,7 @@ Falls die Verwendung einer anderen VIP akzeptabel ist, löschen Sie die ursprün
 ## <a name="stagingproduction-deployments-platform-as-a-service-only"></a>Staging/Produktionsbereitstellungen (nur Platform-as-a-Service)
 **Fehler**
 
-New_General* oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported\*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -92,7 +93,7 @@ Löschen Sie die erste Bereitstellung und den ursprünglichen Clouddienst und st
 ## <a name="affinity-group-vmservice-proximity"></a>Affinitätsgruppe (Nähe von virtuellem Computer und Dienst)
 **Fehler**
 
-New_General* oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported\*
 
 **Ursache der Verknüpfung mit dem Cluster**
 
@@ -105,7 +106,7 @@ Falls dies nicht erforderlich ist, verwenden Sie keine Affinitätsgruppe oder gr
 ## <a name="affinity-group-based-virtual-network"></a>Auf Affinitätsgruppe basierendes virtuelles Netzwerk
 **Fehler**
 
-New_General* oder New_VMSizeNotSupported*
+New_General* oder New_VMSizeNotSupported\*
 
 **Ursache der Verknüpfung mit dem Cluster**
 

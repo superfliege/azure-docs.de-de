@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: c4dc9b231668315af16c625314c737fee99d672d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: da8eb0b9e2e5aba60b61a36d83f525c7ce4a7958
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32776260"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migration von Azure Storage-Metriken
 
@@ -117,7 +118,7 @@ A: Wenn Sie klassische Warnungsregeln basierend auf Legacyspeichermetriken erste
 
 * Werden neue Metrikdaten standardmäßig im selben Speicherkonto gespeichert?
 
-A: Nein. Wenn Sie die Metrikdaten im Speicherkonto archivieren müssen, können Sie die [Diagnoseeinstellung in Azure Monitor](https://azure.microsoft.com/blog/azure-monitor-multiple-diagnostic-settings/) verwenden.
+A: Nein. Wenn Sie die Metrikdaten im Speicherkonto archivieren müssen, können Sie die [Azure Monitor Diagnostic Setting API (Diagnoseeinstellung-Anwendungsprogrammierschnittstelle in Azure Monitor)](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

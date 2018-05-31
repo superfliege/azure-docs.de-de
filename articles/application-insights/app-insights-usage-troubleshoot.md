@@ -1,9 +1,9 @@
 ---
-title: "Problembehandlung für Nutzungsanalysen in Azure Application Insights"
-description: "Leitfaden zur Problembehandlung – Analysieren von Website- und Appnutzung mithilfe von Application Insights."
+title: Problembehandlung für Nutzungsanalysen in Azure Application Insights
+description: Leitfaden zur Problembehandlung – Analysieren von Website- und Appnutzung mithilfe von Application Insights.
 services: application-insights
-documentationcenter: 
-author: numberbycolors
+documentationcenter: ''
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb5f3052301b23eb10cd6b84ab6fae98bcc7ea18
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: mbullwin;daviste
+ms.openlocfilehash: 654b99085c406f13fe95476457234761bf840422
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33867567"
 ---
 # <a name="troubleshoot-usage-analytics-in-application-insights"></a>Problembehandlung für Nutzungsanalysen in Application Insights
 Haben Sie Fragen zu den [Tools für Nutzungsanalysen in Application Insights](app-insights-usage-overview.md): [Benutzer, Sitzungen, Ereignisse](app-insights-usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](app-insights-usage-flows.md), [Vermerkdauer](app-insights-usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.
@@ -37,7 +38,7 @@ Die Tools zur Nutzungsanalyse unterstützen aktuell das Zählen von Benutzern od
 ## <a name="naming-events"></a>Benennen von Ereignissen
 **Meine App weist Tausende verschiedener Namen für Seitenansichten und benutzerdefinierte Ereignisse auf. Sie sind nur schwer zu unterscheiden, und die Tools zur Nutzungsanalyse zeigen häufig keine Reaktion. Wie kann ich diese Benennungsprobleme beheben?**
 
-Namen für Seitenansichten und benutzerdefinierte Ereignisse werden überall in den Tools zur Nutzungsanalyse verwendet. Die gute Benennung von Ereignissen ist entscheidend dafür, Werte aus diesen Tools abzurufen. Das Ziel ist ein Gleichgewicht zwischen zu wenigen, übermäßig allgemeinen Namen („Klick auf Schaltfläche“) und zu vielen, übermäßig spezifischen Namen („Klick auf Schaltfläche ‚Bearbeiten‘ auf http://www.contoso.com/index“).
+Namen für Seitenansichten und benutzerdefinierte Ereignisse werden überall in den Tools zur Nutzungsanalyse verwendet. Die gute Benennung von Ereignissen ist entscheidend dafür, Werte aus diesen Tools abzurufen. Das Ziel ist ein Gleichgewicht zwischen zu wenigen, übermäßig allgemeinen Namen („Klick auf Schaltfläche“) und zu vielen, übermäßig speziellen Namen („Klick auf Schaltfläche ‚Bearbeiten‘ auf http://www.contoso.com/index“).
 
 Um Änderungen an den Namen von Seitenansichten und benutzerdefinierten Ereignissen vorzunehmen, die von Ihrer App gesendet werden, müssen Sie den Quellcode Ihrer App ändern und sie erneut bereitstellen. **Alle Telemetriedaten in Application Insights werden 90 Tage lang gespeichert und können nicht gelöscht werden**, sodass Änderungen, die Sie an Ereignisnamen vornehmen, erst nach 90 Tagen vollständig umgesetzt sind. Für die 90 Tage nach dem Vornehmen einer Änderung treten in Ihrer Telemetrie sowohl die alten als auch die neuen Namen auf, also passen Sie die Abfragen entsprechend an und kommunizieren Sie dies in Ihren Teams.
 
