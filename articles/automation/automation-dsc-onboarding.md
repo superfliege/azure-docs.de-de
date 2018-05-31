@@ -3,16 +3,18 @@ title: Integrieren von Computern für die Verwaltung durch Azure Automation DSC
 description: Einrichten von Computern für die Verwaltung mit Azure Automation DSC
 services: automation
 ms.service: automation
+ms.component: dsc
 author: georgewallace
 ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 12d3d2d4b0c35dc7d21cb78465225e3c029ca33e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c1090751db4df54e36e5263c4036d447c95d7b50
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055520"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Integrieren von Computern für die Verwaltung durch Azure Automation DSC
 
@@ -62,6 +64,7 @@ $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
 # fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# NOTE: DSC Node Configuration names are case sensitive in the portal.
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
@@ -111,6 +114,9 @@ $VM = Set-AzureVMExtension `
 
 $VM | Update-AzureVM
 ```
+
+> [!NOTE]
+> Bei DSC-Knotenkonfigurationsnamen wird im Portal die Groß-/Kleinschreibung beachtet. Bei abweichender Groß-/Kleinschreibung wird der Knoten nicht unter den DSC-Knoten angezeigt.
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
@@ -205,6 +211,9 @@ Sie können eine [DSC-Metakonfiguration](https://msdn.microsoft.com/powershell/d
 1. Öffnen Sie PowerShell ISE als Administrator auf einem Computer in Ihrer lokalen Umgebung. Auf dem Computer muss die neueste Version von [WMF 5](http://aka.ms/wmf5latest) installiert sein.
 2. Kopieren Sie das folgende Skript in Ihre lokale Umgebung. Dieses Skript enthält eine PowerShell DSC-Konfiguration zum Erstellen von Metakonfigurationen und einen Befehl zum Starten der Metakonfigurationserstellung.
 
+> [!NOTE]
+> Bei DSC-Knotenkonfigurationsnamen wird im Portal die Groß-/Kleinschreibung beachtet. Bei abweichender Groß-/Kleinschreibung wird der Knoten nicht unter den DSC-Knoten angezeigt.
+
     ```powershell
     # The DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
@@ -296,6 +305,7 @@ Sie können eine [DSC-Metakonfiguration](https://msdn.microsoft.com/powershell/d
     }
 
     # Create the metaconfigurations
+    # NOTE: DSC Node Configuration names are case sensitive in the portal.
     # TODO: edit the below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';

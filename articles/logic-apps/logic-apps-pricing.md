@@ -1,24 +1,25 @@
 ---
-title: "Preise und Abrechnung – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Preisdetails und Abrechnung für Azure Logic Apps funktionieren."
-author: kevinlam1
-manager: anneta
-editor: 
+title: Preise und Abrechnung – Azure Logic Apps | Microsoft-Dokumentation
+description: Erfahren Sie, wie Preisdetails und Abrechnung für Azure Logic Apps funktionieren.
 services: logic-apps
-documentationcenter: 
+author: kevinlam1
+manager: cfowler
+editor: ''
+documentationcenter: ''
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.workload: logic-apps
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 11/11/2017
-ms.author: LADocs; klam
-ms.openlocfilehash: 096fdd5a6604ed8cecc931da2169194b777664d2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 05/11/2018
+ms.author: klam
+ms.openlocfilehash: 3f01ac12bb3987d564f8d9f70706ae6aabd0a0ee
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34166283"
 ---
 # <a name="logic-apps-pricing-model"></a>Preismodell für Logik-Apps
 
@@ -57,7 +58,7 @@ Aktionen, die innerhalb von Schleifen ausgeführt werden, werden pro Schleifenzy
 
 ## <a name="integration-account-usage"></a>Nutzung des Integrationskontos
 
-Die verbrauchsbasierte Nutzung umfasst ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md), unter dem Sie die Features [B2B/EDI](logic-apps-enterprise-integration-b2b.md) und [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) von Logic Apps ohne zusätzliche Kosten erkunden, entwickeln und testen können. Sie können eines dieser Integrationskonten pro Region verwenden und bis zu 10 Vereinbarungen und 25 Zuordnungen speichern. Sie können eine unbegrenzte Zahl von Partnern, Schemas und Zertifikaten nutzen und hochladen.
+Die verbrauchsbasierte Nutzung umfasst ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md), unter dem Sie die Features [B2B/EDI](logic-apps-enterprise-integration-b2b.md) und [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) in Logic Apps ohne zusätzliche Kosten erkunden, entwickeln und testen können. Sie können jeweils ein Integrationskonto pro Region nutzen und eine bestimmte [Anzahl von Artefakten](../logic-apps/logic-apps-limits-and-config.md) speichern – beispielsweise EDI-Handelspartner und -Vereinbarungen, Zuordnungen, Schemas, Assemblys, Zertifikate und Batchkonfigurationen.
 
 Für Logic Apps sind außerdem Basic- und Standard-Integrationskonten mit unterstützter Logic Apps-SLA verfügbar. Sie können Basic-Integrationskonten verwenden, wenn Sie entweder nur die Behandlung von Nachrichten nutzen oder als Partner für ein kleines Unternehmen fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist. Standard-Integrationskonten unterstützen komplexere B2B-Beziehungen und erhöhen die Anzahl von Entitäten, die Sie verwalten können. Weitere Informationen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/details/logic-apps).
 

@@ -2,22 +2,21 @@
 title: 'Endbenutzerauthentifizierung: REST-API mit Data Lake Store mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Data Lake Store mithilfe von Azure Active Directory und der REST-API umsetzen.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 5ee13756e4276055a8c9bdd9642d0766c3ca7e5c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 7bebe1948d26b26716262cafb92e3563f5c6b349
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198951"
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-rest-api"></a>Authentifizierung von Endbenutzern bei Data Lake Store mithilfe der REST-API
 > [!div class="op_single_selector"]
@@ -50,7 +49,7 @@ In diesem Szenario wird der Benutzer in der Anwendung zum Anmelden aufgefordert.
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<APPLICATION-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<REDIRECT-URI&gt; muss für die Verwendung in einer URL codiert werden. Verwenden Sie für „https://localhost“ also `https%3A%2F%2Flocalhost`.
+   > \<REDIRECT-URI&gt; muss für die Verwendung in einer URL codiert werden. Für https://localhost verwenden Sie also `https%3A%2F%2Flocalhost`).
    > 
    > 
    

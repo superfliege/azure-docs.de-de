@@ -1,25 +1,28 @@
 ---
-title: "Den Im-Auftrag-Fluss von OAuth 2.0 für die Dienst-zu-Dienst-Authentifizierung in Azure AD verwenden | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden."
+title: Den Im-Auftrag-Fluss von OAuth 2.0 für die Dienst-zu-Dienst-Authentifizierung in Azure AD verwenden | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
-ms.author: nacanuma
+ms.author: celested
+ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: bb3e01b1b8741253a459a41cfff27da558573551
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2f7566bc696d07ad3a8003b3493a382f494c4599
+ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157213"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer Stellvertreter-Benutzeridentität im Im-Auftrag-Fluss
 Der Im-Auftrag-Fluss von OAuth 2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
@@ -41,7 +44,7 @@ Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand d
 ## <a name="register-the-application-and-service-in-azure-ad"></a>Registrieren der Anwendung und des Diensts in Azure AD
 Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure AD.
 ### <a name="register-the-middle-tier-service"></a>Registrieren des Diensts auf der mittleren Ebene
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Neue Awendungsregistrierung**.
@@ -49,7 +52,7 @@ Registrieren der Clientanwendungen des Diensts auf der mittleren Ebene in Azure 
 6. Wählen Sie im Azure-Portal Ihre Anwendung aus, und klicken Sie auf **Einstellungen**. Wählen Sie im Menü Einstellungen **Schlüssel**, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von ein oder zwei Jahren hinzu. Wenn Sie diese Seite speichern, wird der Schlüsselwert angezeigt. Kopieren und speichern Sie diesen an einem sicheren Ort – Sie benötigen den Schlüssel später, um die Anwendungseinstellungen in Ihrer Implementierung zu konfigurieren. Der Schlüsselwert wird nicht wieder angezeigt und kann auch nicht auf andere Weise ausgegeben werden. Deshalb ist es wichtig, ihn sofort zu speichern, wenn er im Azure-Portal angezeigt wird.
 
 ### <a name="register-the-client-application"></a>Registrieren der Clientanwendung
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Neue Awendungsregistrierung**.
@@ -74,15 +77,15 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |erforderlich | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| Assertion |erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
-| client_id |erforderlich | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
-| client_secret |erforderlich | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| Ressource |erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
-| requested_token_use |erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
-| Bereich |erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
+| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
 #### <a name="example"></a>Beispiel
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für die Web-API https://graph.windows.net angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
@@ -106,21 +109,21 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |erforderlich | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| Assertion |erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
-| client_id |erforderlich | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
-| client_assertion_type |erforderlich |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| client_assertion |erforderlich | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden.  Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
-| resource |erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
-| requested_token_use |erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
-| Bereich |erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
+| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
+| Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
+| client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Klicken Sie zum Ermitteln der App-ID im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis und den Anwendungsnamen. |
+| client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
+| client_assertion |required | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, den Anwendungsnamen, **Alle Einstellungen** und **Eigenschaften**. |
+| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
 
 #### <a name="example"></a>Beispiel
-Mit der folgenden HTTP POST-Anforderung wird ein Zugriffstoken für die Web-API „https://graph.windows.net“ mit einem Zertifikat angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
+Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für die Web-API https://graph.windows.net mit einem Zertifikat angefordert. Mit der `client_id` wird der Dienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
 // line breaks for legibility only
@@ -142,19 +145,19 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt). |
-| Bereich |Der durch das Token gewährte Zugriffsbereich. |
+| scope |Der durch das Token gewährte Zugriffsbereich. |
 | expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
 | expires_on |Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen. |
-| Ressource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
+| resource |Der App-ID-URI des empfangenden Diensts (geschützte Ressource). |
 | access_token |Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
 | id_token |Das angeforderte ID-Token. Dies kann von dem aufrufenden Dienst dazu verwendet werden, die Identität des Benutzers zu überprüfen und eine Sitzung mit dem Benutzer zu beginnen. |
 | refresh_token |Das Aktualisierungstoken für das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf des aktuellen Zugriffstokens ein neues Zugriffstoken anzufordern. |
 
 ### <a name="success-response-example"></a>Beispiel für eine erfolgreiche Antwort
-Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für ein Zugriffstoken auf die Web-API https://graph.windows.net.
+Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung für ein Zugriffstoken für die Web-API https://graph.windows.net.
 
 ```
 {

@@ -1,6 +1,6 @@
 ---
-title: Übersicht über Azure-Verfügbarkeitszonen | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht über die Verwendung von Verfügbarkeitszonen, um hoch verfügbare und robuste Anwendungen in Azure zu erstellen.
+title: Was sind Azure-Verfügbarkeitszonen? | Microsoft-Dokumentation
+description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure bieten Verfügbarkeitszonen physisch voneinander getrennte Orte für die Ressourcenausführung.
 services: ''
 documentationcenter: ''
 author: iainfoulds
@@ -16,13 +16,14 @@ ms.workload: na
 ms.date: 03/21/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: a4133779538e412a19a11de678b1527fb8023a87
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 9eb7105b2d1a95eb8ccfa96ea0bc5188aab1b4aa
+ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164720"
 ---
-# <a name="overview-of-availability-zones-in-azure"></a>Übersicht über Verfügbarkeitszonen in Azure
+# <a name="what-are-availability-zones-in-azure"></a>Was sind Verfügbarkeitszonen in Azure?
 Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 Integrieren Sie hohe Verfügbarkeit in Ihre Anwendungsarchitektur, indem Sie Ihre Compute-, Speicher-, Netzwerk- und Datenressourcen in eine Zone aufnehmen und in anderen Zonen replizieren. Azure-Dienste, die Verfügbarkeitszonen unterstützen, können in zwei Kategorien unterteilt werden:
@@ -36,7 +37,7 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 
 ## <a name="regions-that-support-availability-zones"></a>Regionen, die Verfügbarkeitszonen unterstützen
 
-- USA, Mitte
+- USA (Mitte)
 - Frankreich, Mitte
 - USA, Osten 2 (Vorschau)
 - Europa, Westen (Vorschau)
@@ -48,9 +49,9 @@ Die folgenden Azure Dienste unterstützen Verfügbarkeitszonen:
 
 - Virtuelle Linux-Computer
 - Virtuelle Windows-Computer
-- Skalierungsgruppen für virtuelle Computer
+- Virtual Machine Scale Sets
 - Managed Disks
-- Lastenausgleichsmodul
+- Load Balancer
 - Öffentliche IP-Adresse
 - Zonenredundanter Speicher
 - SQL-Datenbank
