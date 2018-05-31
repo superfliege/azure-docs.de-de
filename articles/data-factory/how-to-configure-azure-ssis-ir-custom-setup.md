@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: douglasl
-ms.openlocfilehash: b377b5ca9d46d66fe99a8f60383076920b098a7d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ff47060ddfee458279c9fed0fd3fcafcf35229d2
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33769714"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885437"
 ---
 # <a name="custom-setup-for-the-azure-ssis-integration-runtime"></a>Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime
 
@@ -33,6 +33,10 @@ Sie können sowohl kostenlose bzw. unlizenzierte als auch kostenpflichtige oder 
 -   Wenn Sie `gacutil.exe` für die Installation von Assemblys im globalen Assemblycache (GAC) verwenden möchten, müssen Sie diese bei Ihrem benutzerdefinierten Setup angeben oder die im Public Preview-Container bereitgestellte Kopie verwenden.
 
 -   Wenn Azure-SSIS IR im Rahmen des benutzerdefinierten Setups einem VNet beitreten soll, wird nur das Azure Resource Manager-VNET unterstützt. Das klassische VNET wird nicht unterstützt.
+
+-   Administrative Freigabe wird für die Azure-SSIS-Integrationslaufzeit derzeit nicht unterstützt.
+
+-   Wenn Sie eine Dateifreigabe einem Laufwerk in Ihrem benutzerdefinierten Setup zuordnen möchten, wird der `net use`-Befehl derzeit nicht unterstützt. Daher können Sie keinen Befehl wie `net use d: \\fileshareserver\sharename` verwenden. Verwenden Sie stattdessen den `cmdkey`-Befehl – z.B. `cmdkey /add:fileshareserver /user:yyy /pass:zzz` – für den Zugriff auf `\\fileshareserver\folder` direkt in Ihren Paketen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -136,15 +140,15 @@ Zum Anpassen von Azure-SSIS IR benötigen Sie Folgendes:
 
        4. Ein Ordner `MSDTC` mit einem benutzerdefinierten Setup zum Ändern der Netz- und Sicherheitskonfigurationen des Microsoft Distributed Transaction Coordinator (MSDTC)-Diensts auf jedem Knoten von Azure-SSIS IR.
 
-       5. Ein Ordner `ORACLE ENTERPRISE` mit einem benutzerdefinierten Setupskript (`main.cmd`) und einer Konfigurationsdatei für die unbeaufsichtigte Installation (`client.rsp`) zum Installieren des Oracle OCI-Treibers auf jedem Knoten von Azure-SSIS IR, Enterprise Edition („Private Vorschau“). Bei diesem Setup können Sie Oracle Connection Manager, Quelle und Ziel verwenden. Sie müssen zunächst `winx64_12102_client.zip` von [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) herunterladen und anschließend zusammen mit `main.cmd` und `client.rsp` in Ihren Container hochladen. Wenn Sie bei der Herstellung einer Verbindung mit Oracle TNS verwenden, müssen Sie auch `tnsnames.ora` herunterladen, bearbeiten und in Ihren Container hochladen, damit die Datei während des Setups in den Oracle-Installationsordner kopiert werden kann.
+       5. Ein Ordner namens `ORACLE ENTERPRISE` mit einem benutzerdefinierten Setupskript (`main.cmd`) und einer Konfigurationsdatei für die unbeaufsichtigte Installation (`client.rsp`) zum Installieren des Oracle OCI-Treibers auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie Oracle Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst den aktuellen Oracle-Client – z.B. `winx64_12102_client.zip` – von [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) herunter, und laden Sie ihn anschließend zusammen mit `main.cmd` und `client.rsp` in Ihren Container hoch. Wenn Sie bei der Herstellung einer Verbindung mit Oracle TNS verwenden, müssen Sie auch `tnsnames.ora` herunterladen, bearbeiten und in Ihren Container hochladen, damit die Datei während des Setups in den Oracle-Installationsordner kopiert werden kann.
 
-       6. Ein Ordner `ORACLE STANDARD` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des Oracle ODP.NET-Treibers auf jedem Knoten von Azure-SSIS IR. Bei diesem Setup können Sie ADO.NET Connection Manager, Quelle und Ziel verwenden. Laden Sie zuerst `ODP.NET_Managed_ODAC122cR1.zip` von [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) herunter, und laden Sie die Datei dann zusammen mit `main.cmd` in Ihren Container hoch.
+       6. Ein Ordner `ORACLE STANDARD` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des Oracle ODP.NET-Treibers auf jedem Knoten von Azure-SSIS IR. Bei diesem Setup können Sie ADO.NET Connection Manager, Quelle und Ziel verwenden. Laden Sie zunächst den aktuellen Oracle ODP.NETe-Treiber – z.B. `ODP.NET_Managed_ODAC122cR1.zip` – von [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html) herunter, und laden Sie ihn anschließend zusammen mit `main.cmd` in Ihren Container hoch.
 
-       7. Ein Ordner `SAP BW` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des .NET-Connector-Assemblys von SAP (`librfc32.dll`) auf jedem Knoten von Azure-SSIS IR, Enterprise Edition („Private Vorschau“). Bei diesem Setup können Sie SAP BW-Verbindungs-Manager, Quelle und Ziel verwenden. Laden Sie zuerst die 64-Bit- oder 32-Bit-Version von `librfc32.dll` aus dem SAP-Installationsordner zusammen mit `main.cmd`in Ihren Container hoch. Das Skript kopiert dann während des Setups die SAP-Assembly in den Ordner `%windir%\SysWow64` oder `%windir%\System32`.
+       7. Ein Ordner namens `SAP BW` mit einem benutzerdefinierten Setupskript (`main.cmd`) zum Installieren des .NET-Connector-Assemblys von SAP (`librfc32.dll`) auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie SAP BW-Verbindungs-Manager, Quelle und Ziel verwenden. Laden Sie zuerst die 64-Bit- oder 32-Bit-Version von `librfc32.dll` aus dem SAP-Installationsordner zusammen mit `main.cmd`in Ihren Container hoch. Das Skript kopiert dann während des Setups die SAP-Assembly in den Ordner `%windir%\SysWow64` oder `%windir%\System32`.
 
        8. Ein Ordner `STORAGE` mit einem benutzerdefinierten Setup zum Installieren von Azure PowerShell auf jedem Knoten von Azure-SSIS IR. Bei diesem Setup können Sie SSIS-Pakete bereitstellen und ausführen, die [PowerShell-Skripts zum Bearbeiten Ihres Azure Storage-Kontos](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell) ausführen. Kopieren Sie `main.cmd`, ein Muster von `AzurePowerShell.msi` (oder installieren Sie die neueste Version) und `storage.ps1` auf den Container. Verwenden Sie PowerShell.dtsx als Vorlage für Ihre Pakete. In der Paketvorlage sind der [Azure Blob-Download-Task](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), der `storage.ps1` als modifizierbares PowerShell-Skript herunterlädt, und der [Task „Prozess ausführen“](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/), der das Skript auf jedem Knoten ausführt, zusammengefasst.
 
-       9. Ein Ordner `TERADATA`, der ein benutzerdefiniertes Setupskript (`main.cmd)` mit der zugehörigen Datei `install.cmd`) und die Installationspakete (`.msi`) enthält. Diese Dateien installieren Teradata-Connectors, die TPT-API und den ODBC-Treiber auf jedem Knoten von Azure-SSIS IR, Enterprise Edition („Private Vorschau“). Bei diesem Setup können Sie Teradata-Verbindungs-Manager, Quelle und Ziel verwenden. Laden Sie zuerst die 15.x-ZIP-Datei (z. B. `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) mit den Teradata Tools und Utilities (TTU) von [Teradata](http://partnerintelligence.teradata.com) herunter, und laden Sie diese dann zusammen mit den oben genannten Dateien `.cmd` und `.msi` in Ihren Container hoch.
+       9. Ein Ordner `TERADATA`, der ein benutzerdefiniertes Setupskript (`main.cmd)` mit der zugehörigen Datei `install.cmd`) und die Installationspakete (`.msi`) enthält. Diese Dateien installieren Teradata-Connectors, die TPT-API und den ODBC-Treiber auf jedem Knoten von Azure-SSIS IR, Enterprise Edition. Bei diesem Setup können Sie Teradata-Verbindungs-Manager, Quelle und Ziel verwenden. Laden Sie zuerst die 15.x-ZIP-Datei (z. B. `TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip`) mit den Teradata Tools und Utilities (TTU) von [Teradata](http://partnerintelligence.teradata.com) herunter, und laden Sie diese dann zusammen mit den oben genannten Dateien `.cmd` und `.msi` in Ihren Container hoch.
 
     ![Ordner im Ordner „Benutzerszenarios“](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 

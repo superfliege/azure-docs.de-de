@@ -3,7 +3,7 @@ title: Schema der Definitionssprache für Workflows – Azure Logic Apps | Micro
 description: Schreiben benutzerdefinierter Workflowdefinitionen für Azure Logic Apps mit der Definitionssprache für Workflows
 services: logic-apps
 author: ecfan
-manager: SyntaxC4
+manager: cfowler
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 14b273841d1fc15df635eb3b41b02ad77cbef90d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775280"
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886804"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Logic Apps-Workflowdefinitionen mit dem Schema der Definitionssprache für Workflows
 
@@ -220,7 +220,8 @@ In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren b
 
 ## <a name="functions"></a>Functions
 
-Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung einer Logik-App möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen* auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten. So können Sie beispielsweise mathematische Funktionen für Berechnungen verwenden, wie z.B. die Funktion [add()](../logic-apps/workflow-definition-language-functions-reference.md#add), welche die Summe aus ganzen Zahlen oder Gleitkommazahlen zurückgibt. 
+Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung einer Logik-App möglicherweise noch nicht vorhanden sind. Sie können mithilfe von [*Funktionen*](../logic-apps/workflow-definition-language-functions-reference.md) auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten. So können Sie beispielsweise mathematische Funktionen für Berechnungen verwenden, wie z.B. die Funktion [add()](../logic-apps/workflow-definition-language-functions-reference.md#add), welche die Summe aus ganzen Zahlen oder Gleitkommazahlen zurückgibt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Workflow Definition Language functions reference for Azure Logic Apps (Funktionsreferenz für die Workflowdefinitionssprache für Azure Logic Apps)](../logic-apps/workflow-definition-language-functions-reference.md).
+Alternativ können Sie mehr über Funktionen und deren allgemeinen Zweck erfahren.
 
 Im Folgenden finden Sie nur einige Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können: 
 
