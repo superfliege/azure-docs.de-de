@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/2/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: cec2ab862a34a8753601dfeef3081ae9e9ca9fd9
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 63e87c59a2e560b5a78708482c2ed89f5f8fb127
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257902"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Verwenden der REST-API von Azure Blockchain Workbench 
 
@@ -26,12 +27,14 @@ Die REST-API von Azure Blockchain Workbench bietet Entwicklern und Information W
 * Auflisten der verfügbaren Aktionen für einen Vertrag
 * Ausführen einer Aktion für einen Vertrag
 
+Die in diesen Szenarien verwendeten Blockchain-Beispielanwendungen können [von GitHub heruntergeladen werden](https://github.com/Azure-Samples/blockchain). 
+
 ## <a name="list-applications"></a>Auflisten von Anwendungen
 
-Nachdem sich ein Benutzer am Blockchainclient angemeldet hat, besteht die erste Aufgabe darin, alle Blockchainanwendungen von Blockchain Workbench für den Benutzer abzurufen. In diesem Szenario besitzt der Benutzer Zugriff auf zwei Anwendungen:
+Nachdem sich ein Benutzer am Blockchainclient angemeldet hat, besteht die erste Aufgabe darin, alle Anwendungen von Blockchain Workbench für den Benutzer abzurufen. In diesem Szenario besitzt der Benutzer Zugriff auf zwei Anwendungen:
 
-1.  AssetTransfer (Vermögensübertragung)
-2.  RefrigeratedTransportation (Transport mit Kühlkette)
+1.  [AssetTransfer](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer/readme.md) (Vermögensübertragung)
+2.  [RefrigeratedTransportation](https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation/readme.md) (Transport mit Kühlkette)
 
 Verwenden Sie die [GET-API für Anwendungen](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/applicationsget):
 
@@ -40,7 +43,7 @@ GET /api/v1/applications
 Authorization : Bearer {access token}
 ```
 
-Die Antwort listet alle Blockchainanwendungen auf, auf die ein Benutzer in Blockchain Workbench Zugriff besitzt. Für Blockchain Workbench-Administratoren werden alle Blockchainanwendungen abgerufen, während für Benutzer, die keine Workbench-Administratoren sind, alle Blockchains abgerufen werden, für die sie über mindestens eine zugehörige Anwendungsrolle oder eine zugehörige Smart Contract-Instanzrolle verfügen.
+In der Antwort sind alle Blockchainanwendungen aufgelistet, auf die ein Benutzer in Blockchain Workbench Zugriff hat. Für Blockchain Workbench-Administratoren werden alle Blockchainanwendungen abgerufen, während für Benutzer, die keine Workbench-Administratoren sind, alle Blockchains abgerufen werden, für die sie über mindestens eine zugehörige Anwendungsrolle oder eine zugehörige Smart Contract-Instanzrolle verfügen.
 
 ``` http
 HTTP/1.1 200 OK
@@ -74,7 +77,7 @@ Content-type: application/json
 
 ## <a name="list-workflows-for-an-application"></a>Auflisten von Workflows für eine Anwendung
 
-Sobald ein Benutzer die entsprechende Blockchainanwendung (in diesem Fall „AssetTransfer“) ausgewählt hat, ruft der Blockchainclient alle Workflows der jeweiligen Blockchainanwendung ab. Benutzer können dann den entsprechenden Workflow auswählen, bevor alle Smart Contract Instanzen für den Workflow für sie angezeigt werden. Jede Blockchainanwendung besitzt mindestens einen Workflow, und jeder Workflow verfügt über null oder mehr Smart Contract-Instanzen. Beim Erstellen von Blockchain-Clientanwendungen wird empfohlen, den Benutzeroberflächenschritt zu überspringen, der Benutzern die Auswahl des entsprechenden Workflows ermöglicht, wenn nur ein Workflow für die Blockchainanwendung vorhanden ist. In diesem Fall weist AssetTransfer nur einen Workflow auf, der ebenfalls den Namen AssetTransfer trägt.
+Sobald ein Benutzer die entsprechende Blockchainanwendung (in diesem Fall **AssetTransfer**) ausgewählt hat, ruft der Blockchainclient alle Workflows der jeweiligen Blockchainanwendung ab. Benutzer können dann den entsprechenden Workflow auswählen, bevor alle Smart Contract Instanzen für den Workflow für sie angezeigt werden. Jede Blockchainanwendung besitzt mindestens einen Workflow, und jeder Workflow verfügt über null oder mehr Smart Contract-Instanzen. Beim Erstellen von Blockchain-Clientanwendungen wird empfohlen, den Benutzeroberflächenschritt zu überspringen, der Benutzern die Auswahl des entsprechenden Workflows ermöglicht, wenn nur ein Workflow für die Blockchainanwendung vorhanden ist. In diesem Fall weist **AssetTransfer** nur einen Workflow auf, der ebenfalls den Namen **AssetTransfer** hat.
 
 Verwenden Sie die [GET-API für Anwendungsworkflows](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/applications/workflowsget):
 
@@ -106,7 +109,7 @@ Content-type: application/json
 
 ## <a name="list-smart-contract-instances-for-a-workflow"></a>Auflistung von Smart Contract-Instanzen für einen Workflow
 
-Sobald ein Benutzer den entsprechenden Workflow (in diesem Fall „AssetTransfer“) auswählt, ruft der Blockchainclient alle Smart Contract-Instanzen für den angegebenen Workflow ab. Sie können diese Informationen verwenden, um alle Smart Contract-Instanzen für den Workflow anzuzeigen und Benutzern die Möglichkeit zu geben, jede der angezeigten Smart Contract-Instanzen ausführlich zu untersuchen. Nehmen Sie in diesem Beispiel an, dass ein Benutzer mit einer der Smart Contract-Instanzen interagieren möchte, um Maßnahmen zu ergreifen.
+Sobald ein Benutzer den entsprechenden Workflow (in diesem Fall **AssetTransfer**) auswählt, ruft der Blockchainclient alle Smart Contract-Instanzen für den angegebenen Workflow ab. Sie können diese Informationen verwenden, um alle Smart Contract-Instanzen für den Workflow anzuzeigen und Benutzern die Möglichkeit zu geben, jede der angezeigten Smart Contract-Instanzen ausführlich zu untersuchen. Nehmen Sie in diesem Beispiel an, dass ein Benutzer mit einer der Smart Contract-Instanzen interagieren möchte, um Maßnahmen zu ergreifen.
 
 Verwenden Sie die [GET-API für Verträge](https://docs.microsoft.com/rest/api/azure-blockchain-workbench/contracts/contractsget):
 

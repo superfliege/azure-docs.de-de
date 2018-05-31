@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/18/2018
 ms.author: sngun
-ms.openlocfilehash: 25a84c42430c76d296e12d3f83040fa18febdcb1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9dae401bc007b78d8ee3c6993735650e3b26b9d1
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359525"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -55,6 +56,18 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
+* Unterstützung für die Richtlinie des eindeutigen Index wurde hinzugefügt.
+* Unterstützung für die Begrenzung der Antwort bezüglich der Größe von Fortsetzungstoken in Feedoptionen wurde hinzugefügt.
+* Unterstützung für die Partitionsaufteilung in partitionsübergreifenden Abfragen wurde hinzugefügt.
+* Fehler in der JSON-Zeitstempelserialisierung wurde behoben ([github #32](https://github.com/Azure/azure-cosmosdb-java/issues/32)).
+* Fehler in der JSON-Enumerationsserialisierung wurde behoben.
+* Fehler bei der Verwaltung von Dokumenten mit einer Größe von 2 MB wurde behoben ([github #33](https://github.com/Azure/azure-cosmosdb-java/issues/33)).
+* Abhängigkeit von com.fasterxml.jackson.core:jackson-databind wurde auf 2.9.5 aufgrund eines Fehlers aktualisiert ([jackson-databind: github #1599](https://github.com/FasterXML/jackson-databind/issues/1599)).
+* Abhängigkeit von rxjava-extras wurde auf 0.8.0.17 aufgrund eines Fehlers aktualisiert ([rxjava-extras: github #30](https://github.com/davidmoten/rxjava-extras/issues/30)).
+* Die Metadatenbeschreibung in der Pom-Datei wurde aktualisiert, damit sie mit dem Rest der Dokumentation übereinstimmt.
+* Syntaxverbesserung ([github #41](https://github.com/Azure/azure-cosmosdb-java/issues/41)), ([github 40 #](https://github.com/Azure/azure-cosmosdb-java/issues/40))
+
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
 * Rückstauunterstützung in Abfrage hinzugefügt
 * Unterstützung für die ID des Partitionsschlüsselbereichs in der Abfrage hinzugefügt
@@ -79,6 +92,7 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.0.2](#1.0.2) |18. Mai 2018|--- |
 | [1.0.1](#1.0.1) |20. April 2018|--- |
 | [1.0.0](#1.0.0) |27. Februar 2018|--- |
 

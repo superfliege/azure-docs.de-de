@@ -3,7 +3,7 @@ title: Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen f
 description: Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 services: security
 documentationcenter: na
-author: simorjay
+author: jomolesk
 manager: mbaldwin
 editor: tomsh
 ms.assetid: 2f1e00a8-0dd6-477f-9453-75424d06a1df
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
-ms.author: frasim
-ms.openlocfilehash: 5851d5499c61cf99d7f85d07642a292f3b8c19d2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jomolesk
+ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
+ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895485"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 
@@ -173,7 +174,7 @@ Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, di
 
 Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für die sichere und richtige Arbeitsweise der Lösung geöffnet sind. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
 - Aktivierte [Diagnoseprotokolle und -ereignisse](/azure/virtual-network/virtual-network-nsg-manage-log) werden im Speicherkonto gespeichert. 
-- Log Analytics verbunden mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
+- Log Analytics mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden
 
 #### <a name="subnets"></a>Subnetze
  Stellen Sie sicher, dass jedes Subnetz seiner entsprechenden NSG zugeordnet ist.
@@ -299,7 +300,7 @@ Die standardmäßige Bereitstellung dient dazu, ein Mindestmaß an Security Cent
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
-Die Komponenten für die Bereitstellung dieser Lösung sind im [Repository für PCI Blueprint-Code][code-repo] verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dies wird mit dem Parameter `-customHostName` in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
+Die Komponenten für die Bereitstellung dieser Lösung sind im [PCI Blueprint-Coderepository][code-repo] verfügbar. Die Bereitstellung der grundlegenden Architektur erfordert mehrere Schritte, die über Microsoft PowerShell 5.x ausgeführt werden. Um eine Verbindung mit der Website herzustellen, müssen Sie einen benutzerdefinierten Domänennamen (z. B. „contoso.com“) bereitstellen. Dies wird mit dem Parameter `-customHostName` in Schritt 2 angegeben. Weitere Informationen finden Sie unter [Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Ein benutzerdefinierter Domänenname ist nicht erforderlich, um die Lösung erfolgreich bereitzustellen und auszuführen, aber es wird Ihnen nicht möglich sein, zu Demonstrationszwecken eine Verbindung mit der Website herzustellen.
 
 In den Skripts werden Domänenbenutzer zu dem Azure AD-Mandanten hinzugefügt, den Sie angeben. Es wird empfohlen, einen neuen Azure AD-Mandanten zu erstellen, der zum Testen verwendet wird.
 
@@ -384,11 +385,3 @@ Die Lösung wurde von Coalfire Systems Inc. (Qualified Security Assessor für PC
 - Alle Kundennamen, Transaktionsdatensätze und jegliche verknüpften Daten auf dieser Seite sind frei erfunden, wurden für diese grundlegende Architektur erstellt und werden nur zur Veranschaulichung bereitgestellt. Tatsächliche Ähnlichkeiten oder Verbindungen sind rein zufällig, und keine darf als beabsichtigt angesehen werden.  
 - Diese Lösung wurde gemeinsam von Microsoft und Avyan Consulting entwickelt und ist unter der [MIT-Lizenz](https://opensource.org/licenses/MIT) verfügbar.
 - Diese Lösung wurde von Coalfire geprüft. Coalfire ist Microsofts PCI-DSS-Prüfer. Der [PCI Compliance Review](https://aka.ms/pciblueprintcrm32) stellt eine unabhängige Drittanbieterüberprüfung der Lösung und der Komponenten bereit, die zu beachten sind. 
-
-### <a name="document-authors"></a>Autoren des Dokuments
-
-- *Frank Simorjay (Microsoft)*  
-- *Gururaj Pandurangi (Avyan Consulting)*
-
-
-[code-repo]: https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms "Code-Repository"

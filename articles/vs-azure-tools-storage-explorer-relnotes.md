@@ -14,17 +14,113 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 8ec74f69d2de7b167fcc66d0e2499d052f0bf18e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7e290b3bbe3fa70522533f23febe587fbb873e35
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779004"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
-Dieser Artikel enthält die Versionshinweise für den Azure Storage-Explorer 0.9.6 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
+Dieser Artikel enthält die Versionshinweise für das Release von Azure Storage-Explorer 1.0.0 sowie die Versionshinweise für frühere Versionen.
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
+
+## <a name="version-100"></a>Version 1.0.0
+16.04.2018
+
+### <a name="download-azure-storage-explorer-100"></a>Herunterladen von Azure Storage-Explorer 1.0.0
+- [Azure Storage-Explorer 1.0.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 1.0.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 1.0.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+* Verbesserte Authentifizierung, durch die Storage-Explorer den gleichen Kontospeicher wie Visual Studio 2017 verwenden kann. Für die Verwendung dieses Features müssen Sie sich erneut bei Ihren Konten anmelden und Ihre gefilterten Abonnements neu festlegen.
+* Bei Azure Stack-Konten mit Sicherung durch AAD ruft Storage-Explorer jetzt Azure Stack-Abonnements ab, wenn „Target Azure Stack“ (Ziel-Azure Stack) aktiviert ist. Sie müssen keine benutzerdefinierte Anmeldungsumgebung mehr erstellen.
+* Es wurden mehrere Verknüpfungen für eine schnellere Navigation hinzugefügt. Dazu gehören das Umschalten verschiedener Bereiche und das Verschieben zwischen Editoren. Weitere Einzelheiten finden Sie im Menü „Ansicht“.
+* Feedback zu Storage-Explorer ist jetzt bei GitHub zu finden. Sie erreichen unsere Seite „Probleme“, indem Sie unten links auf die Schaltfläche „Feedback“ klicken oder [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) aufrufen. Sie können gerne Vorschläge machen, Probleme melden, Fragen stellen oder auf andere Weise ein Feedback hinterlassen.
+* Wenn Probleme mit Ihrem SSL-Zertifikat auftreten und Sie das betreffende Zertifikat nicht finden können, können Sie Storage-Explorer jetzt mit dem Flag `--ignore-certificate-errors` über die Befehlszeile starten. Wenn Storage-Explorer mit diesem Flag gestartet wird, ignoriert er SSL-Zertifikatfehler.
+* Das Kontextmenü enthält jetzt die Option „Herunterladen“ für Blob- und Dateielemente.
+* Die Barrierefreiheit und Unterstützung von Bildschirmlesegeräten wurden verbessert. Wenn Sie Barrierefreiheitsfeatures benötigen, finden Sie unter [Dokumentationen zu Barrierefreiheit](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) weitere Informationen.
+* Storage-Explorer verwendet jetzt Electron 1.8.3.
+
+### <a name="breaking-changes"></a>Wichtige Änderungen
+* Storage-Explorer hat zu einer neuen Authentifizierungsbibliothek gewechselt. Im Rahmen des Wechsels zu der Bibliothek müssen Sie sich erneut bei Ihren Konten anmelden und Ihre gefilterten Abonnements neu festlegen.
+* Die Methode zum Verschlüsseln vertraulicher Daten wurde geändert. Dadurch müssen möglicherweise einige Ihrer Elemente für den Schnellzugriff erneut hinzugefügt und/oder einige Ihrer angefügten Ressourcen erneut angefügt werden.
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Bei einigen Benutzern hinter Proxys wurden Uploads oder Downloads der Gruppe „Blob“ durch folgende Fehlermeldung unterbrochen: „Unable to resolve“ (Auflösung nicht möglich). Dies wurde korrigiert.
+* Wenn bei der Verwendung eines direkten Links eine Anmeldung erforderlich war, wurde durch Klicken auf die Anmeldeaufforderung „Anmelden“ in einem Popupfenster ein leeres Dialogfeld geöffnet. Dies wurde korrigiert.
+* Wenn Storage-Explorer nicht gestartet werden kann, da ein GPU-Prozess abgebrochen wird, werden Sie jetzt unter Linux darüber informiert und angewiesen, die Option „--disable-gpu“ zu verwenden. Anschließend wird Storage-Explorer mit der aktivierten Option automatisch neu gestartet.
+* Ungültige Zugriffsrichtlinien konnten im Dialogfeld „Zugriffsrichtlinien“ nur schwer identifiziert werden. Ungültige Zugriffsrichtlinien-IDs werden jetzt für bessere Sichtbarkeit in Rot hervorgehoben.
+* Zwischen den verschiedenen Bereichen einer Aktivität waren im Aktivitätsprotokoll manchmal viele Leerzeichen enthalten. Dies wurde korrigiert.
+* Im Abfrage-Editor der Tabelle ist der Editor abgestürzt, wenn Sie eine Zeitstempelklausel in einem ungültigen Status belassen und anschließend versucht haben, eine andere Klausel zu ändern. Der Editor stellt die Zeitstempelklausel jetzt im letzten gültigen Zustand wieder her, wenn in einer anderen Klausel eine Änderung festgestellt wird.
+* Wenn Sie während der Eingabe Ihrer Suchabfrage in die Strukturansicht eine Pause gemacht haben, wurde die Suche gestartet und der Fokus vom Textfeld gelenkt. Jetzt müssen Sie die Suche explizit durch Drücken der Eingabetaste oder durch Klicken auf die Schaltfläche „Suche starten“ starten.
+* Der Befehl „Get Shared Access Signature“ (Shared Access Signature abrufen) wurde manchmal deaktiviert, wenn mit der rechten Maustaste auf eine Datei in einer Dateifreigabe geklickt wurde. Dies wurde korrigiert.
+* Wenn der relevante Ressourcenstrukturknoten während der Suche herausgefiltert wurde, konnten Sie mit der Tabulatortaste nicht in die Ressourcenstruktur gelangen und mit den Pfeiltasten nicht durch die Ressourcenstruktur navigieren. Wenn der relevante Ressourcenstrukturknoten ausgeblendet wird, wird der erste Knoten in der Ressourcenstruktur jetzt automatisch als relevant angezeigt.
+* In der Editor-Symbolleiste war gelegentlich ein zusätzliches Trennzeichen sichtbar. Dies wurde korrigiert.
+* Das Breadcrumb-Textfeld war gelegentlich überfüllt. Dies wurde korrigiert.
+* Der Blob-Editor und der Dateifreigabe-Editor wurden manchmal konstant aktualisiert, wenn viele Dateien gleichzeitig hochgeladen wurden. Dies wurde korrigiert.
+* Das Feature „Ordnerstatistik“ hatte in der Ansicht „Verwaltung der Momentaufnahmen von Dateifreigaben“keinen Nutzen. Es wurde jetzt deaktiviert.
+* Unter Linux wurde das Menü „Datei“ nicht angezeigt. Dies wurde korrigiert.
+* Wenn Sie einen Ordner in eine Dateifreigabe hochgeladen haben, wurden standardmäßig nur die Inhalte des Ordners hochgeladen. Jetzt werden die Inhalte des Ordners standardmäßig in einen geeigneten Ordner in der Dateifreigabe hochgeladen.
+* Die Reihenfolge von Schaltflächen wurde in mehreren Dialogfeldern umgekehrt. Dies wurde korrigiert.
+* Verschiedene sicherheitsbezogene Fehlerbehebungen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden. 
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 und 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 und 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 und 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-096"></a>Version 0.9.6
 28.02.2018
@@ -66,30 +162,6 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 0.9.5](#version-095)
-* [Version 0.9.4 und 0.9.3](#version-094-and-093)
-* [Version 0.9.2](#version-092)
-* [Version 0.9.1 und 0.9.0](#version-091-and-090)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
-* [Version 0.8.9 und 0.8.8](#version-089-and-088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>Version 0.9.5
 06.02.2018
@@ -227,7 +299,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 * Wenn Sie versucht haben, einen Blob mit einem ungültigen Windows-Dateinamen zu öffnen oder herunterzuladen, ist bei dem Vorgang ein Fehler aufgetreten. Storage-Explorer erkennt jetzt, ob ein Blobname ungültig ist und fragt Sie, ob Sie den Blob codieren oder überspringen möchten. Storage-Explorer erkennt zudem, ob ein Dateiname codiert ist und fragt Sie, ob Sie den Dateinamen vor dem Hochladen decodieren möchten.
 * Der Editor für den Blobzielcontainer würde beim Hochladen des Blobs in einigen Fällen nicht ordnungsgemäß aktualisiert werden. Dies wurde korrigiert.
 * Die Unterstützung für verschiedene Typen von Verbindungszeichenfolgen und SAS-URIs ist rückläufig. Wir haben alle bekannten Probleme behandelt. Senden Sie jedoch weiterhin Feedback, wenn weitere Probleme auftreten.
-* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/en-us/features/storage-explorer/) herunterladen.
+* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/features/storage-explorer/) herunterladen.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 * Storage-Explorer unterstützt keine ADFS-Konten.
@@ -281,7 +353,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 * Wenn Sie versucht haben, einen Blob mit einem ungültigen Windows-Dateinamen zu öffnen oder herunterzuladen, ist bei dem Vorgang ein Fehler aufgetreten. Storage-Explorer erkennt jetzt, ob ein Blobname ungültig ist und fragt Sie, ob Sie den Blob codieren oder überspringen möchten. Storage-Explorer erkennt zudem, ob ein Dateiname codiert ist und fragt Sie, ob Sie den Dateinamen vor dem Hochladen decodieren möchten.
 * Der Editor für den Blobzielcontainer würde beim Hochladen des Blobs in einigen Fällen nicht ordnungsgemäß aktualisiert werden. Dies wurde korrigiert.
 * Die Unterstützung für verschiedene Typen von Verbindungszeichenfolgen und SAS-URIs ist rückläufig. Wir haben alle bekannten Probleme behandelt. Senden Sie jedoch weiterhin Feedback, wenn weitere Probleme auftreten.
-* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/en-us/features/storage-explorer/) herunterladen.
+* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/features/storage-explorer/) herunterladen.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 * Storage-Explorer unterstützt keine ADFS-Konten.

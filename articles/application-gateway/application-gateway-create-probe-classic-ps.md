@@ -1,11 +1,11 @@
 ---
-title: "Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell – klassisch) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinierten Test für ein Application Gateway im klassischen Bereitstellungsmodell erstellen."
+title: Erstellen eines benutzerdefinierten Tests – Azure Application Gateway (PowerShell – klassisch) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinierten Test für ein Application Gateway im klassischen Bereitstellungsmodell erstellen.
 services: application-gateway
 documentationcenter: na
-author: davidmu1
-manager: timlt
-editor: 
+author: vhorne
+manager: jpconnock
+editor: ''
 tags: azure-service-management
 ms.assetid: 338a7be1-835c-48e9-a072-95662dc30f5e
 ms.service: application-gateway
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
-ms.author: davidmu
-ms.openlocfilehash: b167a0584740a4e583a35bd6d44ec5d616ba04f7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: victorh
+ms.openlocfilehash: 97d1376dc7908b72d8e8ec15145229cf3cf4acae
+ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 05/04/2018
+ms.locfileid: "33201945"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -39,7 +40,7 @@ In diesem Artikel fügen Sie einen benutzerdefinierten Test zu einem vorhandenen
 
 So erstellen Sie ein Application Gateway
 
-1. Erstellen Sie eine neue Application Gateway-Ressource.
+1. Erstellen einer Application Gateway-Ressource
 2. Erstellen Sie eine XML-Konfigurationsdatei oder ein Konfigurationsobjekt.
 3. Ordnen Sie die Konfiguration der neu erstellten Anwendungsgatewayressource zu.
 
@@ -147,7 +148,7 @@ Es wird ein neues Konfigurationselement vom Typ \<Test\> hinzugefügt, um benutz
 
 Die Konfigurationsparameter sind:
 
-|Parameter|Beschreibung|
+|Parameter|BESCHREIBUNG|
 |---|---|
 |**Name** |Referenzname für den benutzerdefinierten Test. |
 * **Protocol** | Verwendetes Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).|

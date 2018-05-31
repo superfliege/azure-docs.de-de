@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: de3fcc4abcc8558066d9e524011047d6a117f4e5
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196762"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -194,21 +195,6 @@ Dieses Problem tritt nur bei verwalteten virtuellen Computern auf, auf denen Ben
 
 #### <a name="solution"></a>Lösung
 
-Zum Beheben des Problems führen Sie die folgenden Schritte aus, um die Wiederherstellungspunktsammlung zu entfernen: <br>
- 
-1. Entfernen Sie die Sperre der Ressourcengruppe, in der sich der virtuelle Computer befindet. 
-2. Installieren Sie ARMClient mithilfe von Chocolatey: <br>
-   https://github.com/projectkudu/ARMClient
-3. Melden Sie sich bei ARMClient an: <br>
-    `.\armclient.exe login`
-4. Rufen Sie die zum virtuellen Computer gehörige Wiederherstellungspunktsammlung ab: <br>
-    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
-
-    Beispiel: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. Löschen Sie die Wiederherstellungspunktsammlung: <br>
-    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. Die nächste geplante Sicherung generiert automatisch eine Wiederherstellungspunktsammlung und neue Wiederherstellungspunkte.
-
- 
-Das Problem wird erneut auftreten, wenn Sie die Ressourcengruppe wieder sperren. 
+Heben Sie zur Lösung des Problems die Sperre für die Ressourcengruppe auf, und sorgen Sie dafür, dass der Azure Backup-Dienst die Wiederherstellungspunktsammlung und die zugrunde liegenden Momentaufnahmen in der nächsten Sicherung löscht.
+Sobald dies erfolgt ist, können Sie die Sperre für die VM-Ressourcengruppe wieder einrichten. 
 

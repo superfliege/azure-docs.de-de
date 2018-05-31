@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/30/2018
+ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3b2fd59444f50f4ac5da6bf569cb0247f3a36943
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34361181"
 ---
-# <a name="compare-managed-and-custom-labs-in-azure-lab-services"></a>Vergleichen verwalteter und benutzerdefinierter Labs in Azure Lab Services
+# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Vergleichen verwalteter Labs und DevTest Labs in Azure Lab Services
 Sie können zwei Arten von Labs erstellen: **verwaltete Labs** mit Azure Lab Services und **benutzerdefinierte Labs** mit Azure DevTest Labs. Wenn Sie lediglich Ihre Lab-Anforderungen eingeben und die Einrichtung und Verwaltung der dafür erforderlichen Infrastruktur dem Dienst überlassen möchten, wählen Sie eines der **verwalteten Labs**. Aktuell können mit Azure Lab Services nur verwaltete Labs vom Typ **Classroom-Lab** erstellt werden. Wenn Sie Ihre eigene Infrastruktur verwalten möchten, erstellen Sie mithilfe von Azure DevTest Labs ein **benutzerdefiniertes Lab**.
 
 Ausführlichere Informationen zu diesen Labs finden Sie in den folgenden Abschnitten. 
@@ -37,10 +38,10 @@ Im Anschluss finden Sie einige **Anwendungsfälle für verwaltete Labs**:
 - Stellen Sie schnell ein Lab mit virtuellen Computern für einen Hackathon bereit. Löschen Sie das Lab mit nur einem Mausklick, wenn Sie es nicht mehr benötigen. 
 
 
-## <a name="custom-labs"></a>Benutzerdefinierte Labs
+## <a name="devtest-labs"></a>DevTest Labs
 In bestimmten Szenarien kann es wünschenswert sein, die gesamte Infrastruktur und Konfiguration selbst innerhalb des eigenen Abonnements zu verwalten. Zu diesem Zweck können Sie über das Azure-Portal mithilfe von Azure DevTest Labs ein benutzerdefiniertes Lab erstellen. Für diese Labs muss kein Lab-Konto erstellt werden. Diese Labs werden nicht im Lab-Konto für die verwalteten Labs angezeigt.  
 
-Im Anschluss finden Sie einige **Anwendungsfälle für benutzerdefinierte Labs**: 
+Im Anschluss finden Sie einige **Anwendungsfälle für DevTest Labs**: 
 
 - Stellen Sie schnell ein Lab mit virtuellen Computern für einen Hackathon oder eine Praxiseinheit für eine Konferenz bereit. Löschen Sie das Lab mit nur einem Mausklick, wenn Sie es nicht mehr benötigen. 
 - Erstellen Sie einen Pool mit virtuellen Computern, die mit Ihrer Anwendung konfiguriert sind, und ermöglichen Sie Ihrem Team ganz einfach die Verwendung eines virtuellen Computers für die Fehlerbeseitigung.  
@@ -50,10 +51,10 @@ Im Anschluss finden Sie einige **Anwendungsfälle für benutzerdefinierte Labs**
 - Verwenden Sie ein Lab, das mit der neuesten Version Ihres Produkts konfiguriert ist, um Schulungen für Kunden anzubieten. Geben Sie jedem Kunden ein begrenztes Zeitkontingent für die Lab-Verwendung. 
 
 
-## <a name="managed-labs-vs-custom-labs"></a>Vergleich zwischen verwalteten und benutzerdefinierten Labs
+## <a name="managed-labs-vs-devtest-labs"></a>Verwaltete Labs und DevTest Labs
 In der folgenden Tabelle werden die beiden Arten von Labs verglichen, die von Azure Lab Services unterstützt werden: 
 
-| Features | Verwaltete Labs | Benutzerdefinierte Labs |
+| Features | Verwaltete Labs | DevTest Labs |
 | -------- | ----------------  | ---------- |
 | Verwaltung der Azure-Infrastruktur im Lab |  Automatisch durch den Dienst | Manuelle Verwaltung  |
 | Integrierte Resilienz gegen Infrastrukturprobleme | Automatisch durch den Dienst | Manuelle Verwaltung  |

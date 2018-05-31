@@ -1,27 +1,28 @@
 ---
-title: "Installieren eines lokalen Datengateways – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Bevor Sie auf lokale Datenquellen zugreifen, installieren Sie das lokale Datengateway für schnelle Datenübertragung und Verschlüsselung zwischen den lokalen Datenquellen und den Logik-Apps"
-keywords: "Zugreifen auf Daten, lokal, Datenübertragung, Verschlüsselung, Datenquellen"
+title: Installieren eines lokalen Datengateways – Azure Logic Apps | Microsoft-Dokumentation
+description: Bevor Sie auf lokale Datenquellen zugreifen, installieren Sie das lokale Datengateway für schnelle Datenübertragung und Verschlüsselung zwischen den lokalen Datenquellen und den Logik-Apps
+keywords: Zugreifen auf Daten, lokal, Datenübertragung, Verschlüsselung, Datenquellen
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 47e3024e-88a0-4017-8484-8f392faec89d
 ms.service: logic-apps
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 6c1c954209c08c4ce1262bdc1620755e4a3a6d7e
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179009"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
+# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
 
 Damit Ihre Logik-Apps auf lokale Datenquellen zugreifen können, müssen Sie das lokale Datengateway installieren und einrichten. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Systemen und Ihren Logik-Apps bereitstellt. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über Azure Service Bus. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](#gateway-cloud-service).
 
@@ -52,7 +53,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 <a name="requirements"></a>
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 **Mindestanforderungen**
 
@@ -242,6 +243,11 @@ Somit geschieht Folgendes, wenn ein Benutzer in der Cloud mit einem Element inte
 6. Die Ergebnisse werden aus der Datenquelle zurück an das Gateway und dann an den Gatewayclouddienst gesendet. Der Gatewayclouddienst verwendet dann die Ergebnisse.
 
 <a name="faq"></a>
+
+## <a name="tenant-level-administration"></a>Verwaltung auf Mandantenebene 
+
+Derzeit können Mandantenadministratoren nicht alle Gateways zentral verwalten, die andere Benutzer installiert und konfiguriert haben.  Als Mandantenadministrator sollten Sie die Benutzer in Ihrer Organisation bitten, Sie jedem Gateway als Administrator hinzuzufügen, das sie installieren. So können Sie alle Gateways in Ihrer Organisation über die Seite „Gatewayeinstellungen“ oder [PowerShell-Befehle](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters#powershell-support-for-gateway-clusters) verwalten. 
+
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

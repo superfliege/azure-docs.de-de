@@ -2,25 +2,20 @@
 title: Datenanforderungen von Azure AD SSPR | Microsoft-Dokumentation
 description: Datenanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung und deren Bereitstellung
 services: active-directory
-keywords: ''
-documentationcenter: ''
-author: MicrosoftGuyJFlo
-manager: mtillman
-ms.reviewer: sahenry
-ms.assetid: ''
 ms.service: active-directory
-ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.component: authentication
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 790ca2ccb2d365876e15ca57e1aa199ac519fd73
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+author: MicrosoftGuyJFlo
+manager: mtillman
+ms.reviewer: sahenry
+ms.openlocfilehash: 5409bf198d0e3f6537619ef4698d9f2e31bd27c5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257586"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
@@ -39,16 +34,27 @@ Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Land
 
 Wenn Sie die Standardeinstellungen in Azure AD Connect verwenden, werden die folgenden Zuordnungen vorgenommen:
 
-| Lokales Active Directory | Azure AD | Kontaktinformationen für die Azure AD-Authentifizierung |
-| --- | --- | --- |
-| telephoneNumber | Bürotelefon | Alternatives Telefon |
-| mobile | Mobiltelefon | Phone |
+| Lokales Active Directory | Azure AD |
+| --- | --- |
+| telephoneNumber | Bürotelefon |
+| mobile | Mobiltelefon |
 
-Diese Felder werden möglicherweise leer angezeigt, bis ein Benutzer seine Authentifizierungsdaten bestätigt.
+Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer in Azure AD unter den „Kontaktinformationen für Authentifizierung“ in das Feld „Telefon“ eingefügt.
 
-Ein globaler Administrator kann die Kontaktinformationen des Benutzers für die Authentifizierung manuell festlegen, wie im folgenden Screenshot gezeigt.
+## <a name="authentication-contact-info"></a>Kontaktinformationen für Authentifizierung
+
+Ein globaler Administrator kann die Kontaktinformationen eines Benutzers für die Authentifizierung manuell festlegen, wie im folgenden Screenshot gezeigt.
 
 ![Kontakt][Contact]
+
+Wenn das Feld „Telefon“ ausgefüllt und „Mobiltelefon“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt. 
+
+Das Feld „Alternatives Telefon“ wird nicht für die Kennwortzurücksetzung verwendet.
+
+Wenn das Feld „E-Mail“ ausgefüllt und „E-Mail“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
+
+Wenn das Feld „Alternative E-Mail-Adresse“ ausgefüllt und „E-Mail“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung **nicht** angezeigt – aber während des Workflows für die Kennwortzurücksetzung. 
+
 
 ## <a name="security-questions-and-answers"></a>Sicherheitsfragen und -antworten
 

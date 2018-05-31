@@ -12,20 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 05/18/2018
 ms.author: anwestg
-ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 95393df03ffc33748f0f14344d989d58ae52297c
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359878"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1802 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack-Development Kit vor der Bereitstellung von Azure App Service bereit.
+> Wenden Sie Update 1804 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.2 bereit.
 >
 >
 
@@ -49,7 +50,7 @@ Bevor Sie Azure App Service in Azure Stack bereitstellen, müssen die erforderli
 
 Aufgrund des 1802-Release von Azure Stack, mit dem Unterstützung für Fehlerdomänen hinzugefügt wurde, werden neue Bereitstellungen von Azure App Service in Azure Stack über Fehlerdomänen hinweg verteilt und sorgen für Fehlertoleranz.  Für vorhandene Bereitstellungen von Azure App Service in Azure Stack, die vor der Veröffentlichung von Update 1802 bereitgestellt wurden, lesen Sie in der [Dokumentation](azure-stack-app-service-fault-domain-update.md) nach, wie die Bereitstellung ausgeglichen wird.
 
-Neben Azure App Service in Azure Stack für Hochverfügbarkeit stellen Sie auch den erforderlichen Dateiserver und die SQL Server-Instanz in einer Hochverfügbarkeitskonfiguration bereit. 
+Neben Azure App Service in Azure Stack für Hochverfügbarkeit stellen Sie auch den erforderlichen Dateiserver und die SQL Server-Instanz in einer Hochverfügbarkeitskonfiguration bereit.
 
 ## <a name="get-certificates"></a>Abrufen von Zertifikaten
 
@@ -57,7 +58,11 @@ Neben Azure App Service in Azure Stack für Hochverfügbarkeit stellen Sie auch 
 
 Führen Sie in einer PowerShell-Sitzung, die als „azurestack\CloudAdmin“ auf einem Computer ausgeführt wird, der den privilegierten Endpunkt im integrierten Azure Stack-System oder auf dem Azure Stack Development Kit-Host erreichen kann, das Skript „Get-AzureStackRootCert.ps1“ in dem Ordner aus, in dem Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner des Skripts, das App Service zum Erstellen von Zertifikaten benötigt, ein Stammzertifikat.
 
-| Parameter für „Get-AzureStackRootCert.ps1“ | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
+```PowerShell
+    Get-AzureStackRootCert.ps1
+```
+
+| Parameter | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | Erforderlich | AzS-ERCS01 | Privilegierter Endpunkt |
 | CloudAdminCredential | Erforderlich | AzureStack\CloudAdmin | Anmeldeinformationen des Domänenkontos für Azure Stack-Cloudadministratoren |
@@ -80,6 +85,10 @@ Führen Sie das Skript auf dem Azure Stack Development Kit-Host aus, und stellen
 
 #### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 – Parameter
 
+```PowerShell
+    Create-AppServiceCerts.ps1
+```
+
 | Parameter | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | pfxPassword | Erforderlich | Null | Kennwort zum Schutz des privaten Zertifikatschlüssels |
@@ -93,7 +102,7 @@ Um den Ressourcenanbieter in der Produktion einsetzen zu können, müssen Sie di
 
 Das Standarddomänenzertifikat wird der Front-End-Rolle zugeordnet. Benutzeranwendungen für Platzhalter- oder Standarddomänenanforderungen an Azure App Service verwenden dieses Zertifikat. Das Zertifikat wird auch für Quellcodeverwaltungsvorgänge (Kudu) verwendet.
 
-Das Zertifikat muss das PFX-Format aufweisen und sollte ein Platzhalterzertifikat mit drei Antragstellern sein. Dadurch können sowohl die Standarddomäne als auch der SCM-Endpunkt für Quellcodeverwaltungsvorgänge durch ein einziges Zertifikat abgedeckt werden.
+Das Zertifikat muss das PFX-Format aufweisen und sollte ein Platzhalterzertifikat mit drei Antragstellern sein. Durch diese Anforderung können sowohl die Standarddomäne als auch der SCM-Endpunkt für Quellcodeverwaltungsvorgänge durch ein einziges Zertifikat abgedeckt werden.
 
 | Format | Beispiel |
 | --- | --- |
@@ -130,7 +139,7 @@ Das Zertifikat für die Identität muss einen Antragsteller enthalten und dem fo
 | --- | --- |
 | sso.appservice.\<Region\>.\<Domänenname\>.\<Erweiterung\> | sso.appservice.redmond.azurestack.external |
 
-## <a name="virtual-network"></a>Virtuelles Netzwerk
+## <a name="virtual-network"></a>Virtual Network
 
 Azure App Service in Azure Stack ermöglicht Ihnen das Bereitstellen des Ressourcenanbieters entweder in einem vorhandenen virtuellen Netzwerk oder in einem Netzwerk, das App Service im Rahmen der Bereitstellung erstellt.  Die Verwendung eines vorhandenen virtuellen Netzwerks ermöglicht die Verwendung von internen IP-Adressen zum Herstellen der Verbindung mit dem Dateiserver und dem SQL-Server, die für Azure App Service in Azure Stack erforderlich sind.  Das virtuelle Netzwerk muss vor der Installation von Azure App Service in Azure Stack mit dem folgenden Adressbereich und folgenden Subnetzen konfiguriert werden:
 
@@ -138,11 +147,11 @@ Virtual Network - /16
 
 Subnetze
 
-* ControllersSubnet /24
-* ManagementServersSubnet /24
-* FrontEndsSubnet /24
-* PublishersSubnet /24
-* WorkersSubnet /21
+- ControllersSubnet /24
+- ManagementServersSubnet /24
+- FrontEndsSubnet /24
+- PublishersSubnet /24
+- WorkersSubnet /21
 
 ## <a name="prepare-the-file-server"></a>Vorbereiten des Dateiservers
 
@@ -272,6 +281,9 @@ Für die Produktion und Lösungen mit Hochverfügbarkeit sollten Sie eine Vollve
 
 Auf die SQL Server-Instanz für Azure App Service in Azure Stack muss von allen App Service-Rollen zugegriffen werden können. Sie können SQL Server im Standardabonnement des Anbieters in Azure Stack bereitstellen. Alternativ können Sie die vorhandene Infrastruktur in Ihrer Organisation nutzen (solange eine Verbindung mit Azure Stack besteht). Denken Sie bei Verwendung eines Azure Marketplace-Images daran, die Firewall entsprechend zu konfigurieren.
 
+>[!NOTE]
+> Einige Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Achten Sie darauf, immer die neueste Version der SQL-IaaS-Erweiterung herunterzuladen, bevor Sie einen virtuellen Computer mit einem Marketplace-Artikel bereitstellen. Die SQL-Images sind mit den in Azure verfügbaren SQL-VMs identisch. Für virtuelle SQL-Computer, die mit diesen Images erstellt werden, stellen die IaaS-Erweiterung und die zugehörigen Portalerweiterungen Features wie das automatische Patchen und Sicherungsfunktionen bereit.
+>
 Sie können für alle SQL Server-Rollen eine Standardinstanz oder eine benannte Instanz verwenden. Wenn Sie eine benannte Instanz verwenden, sollten Sie den SQL Server-Browserdienst manuell starten und Port 1434 öffnen.
 
 >[!IMPORTANT]
@@ -280,7 +292,7 @@ Sie können für alle SQL Server-Rollen eine Standardinstanz oder eine benannte 
 
 ## <a name="create-an-azure-active-directory-application"></a>Erstellen einer Azure Active Directory-Anwendung
 
-Konfigurieren eines Azure AD-Dienstprinzipals für Folgendes:
+Konfigurieren Sie einen Azure AD-Dienstprinzipal zur Unterstützung folgender Vorgänge:
 
 - Integration von VM-Skalierungsgruppen auf Workerebenen
 - Einmaliges Anmelden (SSO) für das Azure Functions-Portal und erweiterte Entwicklertools
@@ -309,7 +321,11 @@ Folgen Sie diesen Schritten:
 13. Klicken Sie auf **Einstellungen**.
 14. Klicken Sie auf **Erforderliche Berechtigungen** > **Berechtigungen erteilen** > **Ja**.
 
-| Parameter von „Create-AADIdentityApp.ps1“ | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
+```PowerShell
+    Create-AADIdentityApp.ps1
+```
+
+| Parameter | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | DirectoryTenantName | Erforderlich | Null | Azure AD-Mandanten-ID; Geben Sie die GUID oder Zeichenfolge an. Beispiel: myazureaaddirectory.onmicrosoft.com |
 | AdminArmEndpoint | Erforderlich | Null | Azure Resource Manager-Endpunkt des Administrators. Beispiel: adminmanagement.local.azurestack.external |
@@ -320,7 +336,7 @@ Folgen Sie diesen Schritten:
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Erstellen einer Active Directory-Verbunddienste-Anwendung
 
-Für Azure Stack-Umgebungen, die durch AD FS geschützt werden, müssen Sie einen AD FS-Dienstprinzipal für Folgendes konfigurieren:
+Für Azure Stack-Umgebungen, die durch AD FS geschützt werden, müssen Sie einen AD FS-Dienstprinzipal zur Unterstützung folgender Vorgänge konfigurieren:
 
 - Integration von VM-Skalierungsgruppen auf Workerebenen
 - Einmaliges Anmelden (SSO) für das Azure Functions-Portal und erweiterte Entwicklertools
@@ -340,7 +356,11 @@ Folgen Sie diesen Schritten:
 5. Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihrer AD FS-Cloud ein. Klicken Sie auf **OK**.
 6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet **sso.appservice.local.azurestack.external.pfx**.
 
-| Parameter von „Create-ADFSIdentityApp.ps1“ | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
+```PowerShell
+    Create-ADFSIdentityApp.ps1
+```
+
+| Parameter | Erforderlich oder optional | Standardwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | Erforderlich | Null | Azure Resource Manager-Endpunkt des Administrators. Beispiel: adminmanagement.local.azurestack.external |
 | PrivilegedEndpoint | Erforderlich | Null | Privilegierter Endpunkt, Beispiel: AzS-ERCS01 |
