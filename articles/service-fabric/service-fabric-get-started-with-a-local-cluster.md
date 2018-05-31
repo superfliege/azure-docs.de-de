@@ -5,7 +5,7 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 60a1f6a5-5478-46c0-80a8-18fe62da17a8
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -13,12 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
-ms.author: ryanwi;mikhegn
-ms.openlocfilehash: 9d547039491f6b0c0d308c64d11e9c54b4b4e3d5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.author: ryanwi
+ms.openlocfilehash: ca19b70e3651f72d6fe87fcb3cd2ace2eecf3402
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205245"
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>Erste Schritte beim Bereitstellen und Aktualisieren von Anwendungen im lokalen Cluster
 Das Azure Service Fabric-SDK umfasst eine vollständige lokale Entwicklungsumgebung, die Sie verwenden können, um schnell mit der Bereitstellung und Verwaltung von Anwendungen in einem lokalen Cluster zu beginnen. In diesem Artikel verwenden Sie Windows PowerShell, um einen lokalen Cluster zu erstellen, eine vorhandene Anwendung bereitzustellen und die Anwendung auf eine neue Version zu aktualisieren.
@@ -124,7 +125,7 @@ Nach dem Bereitstellen der Anwendung sehen wir uns nun die App-Details in PowerS
    
     Die Befehle, die Sie verwendet haben, sind wie alle Service Fabric-PowerShell-Befehle für alle Cluster verfügbar, mit denen Sie eine Verbindung herstellen – lokal oder remote.
    
-    Für eine eher visuelle Möglichkeit der Interaktion mit dem Cluster können Sie das webbasierte Tool Service Fabric-Explorer verwenden, indem Sie im Browser zu [http://localhost:19080/Explorer](http://localhost:19080/Explorer) navigieren.
+    Für eine eher visuelle Möglichkeit der Interaktion mit dem Cluster können Sie das webbasierte Tool Service Fabric Explorer verwenden, indem Sie im Browser zu [http://localhost:19080/Explorer](http://localhost:19080/Explorer) navigieren.
    
     ![Anzeigen von Anwendungsdetails im Service Fabric-Explorer][sfx-service-overview]
    

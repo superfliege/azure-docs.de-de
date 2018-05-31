@@ -2,9 +2,9 @@
 title: Problembehandlung beim Status "Heruntergestuft" in Azure Traffic Manager
 description: Problembehandlung bei Traffic Manager-Profilen, bei denen der Status "Heruntergestuft" angezeigt wird.
 services: traffic-manager
-documentationcenter: 
-author: kumudd
-manager: timlt
+documentationcenter: ''
+author: chadmath
+manager: cshepard
 ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
@@ -12,12 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: kumud
-ms.openlocfilehash: b1d00fb84695d2289f37647f55a7c56cf28c8c96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: genli
+ms.openlocfilehash: f5b2f471b13db67411f15f32abad5afc644c04ba
+ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777729"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 
@@ -48,7 +49,7 @@ Zum Beheben eines Testfehlers wird ein Tool benötigt, mit dem der von der Test-
 
 Sie können aber auch die Registerkarte „Netzwerk“ der F12-Tools zum Debuggen in Internet Explorer verwenden, um die HTTP-Antworten anzuzeigen.
 
-In diesem Beispiel soll die Antwort der folgenden Test-URL angezeigt werden: http://watestsdp2008r2.cloudapp.net:80/Probe. Das folgende PowerShell-Beispiel dient als Veranschaulichung des Problems.
+In diesem Beispiel soll die Antwort der folgenden Test-URL angezeigt werden: „http://watestsdp2008r2.cloudapp.net:80/Probe“. Das folgende PowerShell-Beispiel dient als Veranschaulichung des Problems.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -85,7 +86,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Was ist Traffic Manager?](traffic-manager-overview.md)
 
-[Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
+[Service Fabric](http://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure-Web-Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
 

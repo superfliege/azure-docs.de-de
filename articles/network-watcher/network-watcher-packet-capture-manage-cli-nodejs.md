@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von Paketerfassungen mit Azure Network Watcher – Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe von Azure CLI 1.0 verwaltet wird."
+title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure CLI 1.0 | Microsoft-Dokumentation
+description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe von Azure CLI 1.0 verwaltet wird.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 2124dadd1fc6b5d57250c09d31155a4b421fac26
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c74d1a94971495f7cd5f5bed42b33869fa9710d9
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185384"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-cli-10"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe von Azure CLI 1.0
 
@@ -208,7 +209,7 @@ azure network watcher packet-capture delete -g resourceGroupName -w networkWatch
 
 ## <a name="download-a-packet-capture"></a>Herunterladen einer Paketerfassung
 
-Nachdem die Paketerfassungssitzung abgeschlossen wurde, kann die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen werden. Der Speicherort der Paketerfassung wird beim Erstellen der Sitzung definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure-Speicher-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
+Nachdem die Paketerfassungssitzung abgeschlossen wurde, kann die Erfassungsdatei in den Blobspeicher oder in eine lokale Datei auf dem virtuellen Computer hochgeladen werden. Der Speicherort der Paketerfassung wird beim Erstellen der Sitzung definiert. Ein nützliches Tool für den Zugriff auf diese in einem Speicherkonto gespeicherten Erfassungsdateien ist der Microsoft Azure Storage-Explorer, der hier heruntergeladen werden kann: http://storageexplorer.com/
 
 Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Speicherkonto am folgenden Speicherort gespeichert:
 
@@ -220,6 +221,6 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 Informationen zur Automatisierung von Paketerfassungen mit VM-Warnungen finden Sie unter [Erstellen einer durch Warnungen ausgelösten Paketerfassung](network-watcher-alert-triggered-packet-capture.md).
 
-Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](network-watcher-check-ip-flow-verify-portal.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
+Lesen Sie den Artikel zur [IP-Datenflussüberprüfung](diagnose-vm-network-traffic-filtering-problem.md), um herauszufinden, ob bestimmter eingehender oder ausgehender Datenverkehr für Ihren virtuellen Computer zulässig ist.
 
 <!-- Image references -->

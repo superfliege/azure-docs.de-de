@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a628374841126a750ebf6881f8adec66340c1d29
+ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/28/2018
+ms.locfileid: "32178344"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server-Aktivität "Gespeicherte Prozedur"
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -161,7 +162,7 @@ Beachten Sie die folgenden Eigenschaften:
 
 - Die **type**-Eigenschaft ist auf **SqlServerStoredProcedure** festgelegt. 
 - **storedProcedureName** in Typeigenschaften ist auf **sp_sample** (Name der gespeicherten Prozedur) festgelegt.
-- Der Abschnitt **storedProcedureParameters** enthält einen Parameter mit dem Namen **DataTime**. Name und Schreibweise des Parameters im JSON-Format müssen mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: `"param1": null` (nur Kleinbuchstaben).
+- Der Abschnitt **storedProcedureParameters** enthält einen Parameter mit dem Namen **DateTime**. Name und Schreibweise des Parameters im JSON-Format müssen mit dem Namen und der Schreibweise des Parameters in der Definition der gespeicherten Prozedur übereinstimmen. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: `"param1": null` (nur Kleinbuchstaben).
  
 1. Klicken Sie in der Symbolleiste auf **... Weitere** und dann auf **Neue Pipeline**.
 2. Kopieren Sie folgenden JSON-Codeausschnitt, und fügen Sie ihn ein:   

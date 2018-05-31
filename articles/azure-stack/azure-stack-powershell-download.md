@@ -1,24 +1,25 @@
 ---
 title: Herunterladen von Azure Stack-Tools von GitHub | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie Tools herunterladen, die für die Arbeit mit Azure Stack benötigt werden."
+description: Erfahren Sie, wie Sie Tools herunterladen, die für die Arbeit mit Azure Stack benötigt werden.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: E4DF77FA-F468-42B5-B44F-F10ED8049171
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 05/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 219fd8e4e164df8c3002044719a90a7be56a9edf
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.reviewer: thoroet
+ms.openlocfilehash: a116b7a048ff95ca601a65633cdc63f98fefee9d
+ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075288"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
 
@@ -53,13 +54,10 @@ Das Repository **AzureStack-Tools** umfasst PowerShell-Module, die die folgenden
 | Funktionalität | BESCHREIBUNG | Wer kann dieses Modul verwenden? |
 | --- | --- | --- |
 | [Cloudfunktionen](user/azure-stack-validate-templates.md) | Verwenden Sie dieses Modul, um die Cloudfunktionen einer Cloud zu nutzen. Mithilfe dieses Moduls können Sie z.B. Cloudfunktionen wie die API-Version und Azure Resource Manager-Ressourcen abrufen. Mithilfe dieses Moduls können Sie auch die VM-Erweiterungen für Azure Stack und Azure-Clouds abrufen. | Cloudoperatoren und Benutzer |
-| [Azure Stack-Computeverwaltung](azure-stack-add-vm-image.md) | Mit diesem Modul können Sie dem Azure Stack-Marketplace ein VM-Image hinzufügen bzw. dieses daraus entfernen. | Cloudoperatoren |
-| [Verwaltung der Azure Stack-Infrastruktur](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | Verwenden Sie dieses Modul zum Verwalten von virtuellen Computern, Warnungen, Updates usw. der Azure Stack-Infrastruktur. |  Cloudoperatoren|
 | [Resource Manager-Richtlinie für Azure Stack](user/azure-stack-policy-module.md) | Verwenden Sie dieses Modul zum Konfigurieren eines Azure-Abonnements oder einer Azure-Ressourcengruppe mit der gleichen Versionsverwaltung und Dienstverfügbarkeit wie Azure Stack. | Cloudoperatoren und Benutzer |
 | [Registrieren bei Azure](azure-stack-register.md) | Verwenden Sie dieses Modul zum Registrieren Ihrer Development Kit-Instanz bei Azure. Nach der Registrierung können Sie die Marketplace-Elemente von Azure herunterladen und in Azure Stack verwenden. | Cloudoperatoren |
 | [Azure Stack-Bereitstellung](azure-stack-run-powershell-script.md) | Verwenden Sie dieses Modul zum Vorbereiten des Azure Stack-Hostcomputers auf die Bereitstellung und die erneute Bereitstellung mithilfe des Azure Stack-VHD-Images (virtuelle Festplatte). | Cloudoperatoren|
-| [Herstellen einer Verbindung mit Azure Stack](azure-stack-connect-powershell.md) | Verwenden Sie dieses Modul zum Herstellen einer Verbindung mit einer Azure Stack-Instanz über PowerShell und zum Konfigurieren der VPN-Konnektivität mit Azure Stack. | Cloudoperatoren und Benutzer |
-| [Azure Stack-Dienstverwaltung](azure-stack-create-offer.md) | Verwenden Sie dieses Modul, um ein Standardmandantenangebot mit unbegrenztem Kontingent in Compute-, Azure Storage-, Netzwerk- und Key Vault-Diensten zu erstellen.   | Cloudoperatoren|
+| [Herstellen einer Verbindung mit Azure Stack](azure-stack-connect-powershell.md) | Verwenden Sie dieses Modul, um die VPN-Konnektivität für Azure Stack zu konfigurieren. | Cloudoperatoren und Benutzer |
 | [Validierungssteuerelement für Vorlagen](user/azure-stack-validate-templates.md) | Verwenden Sie dieses Modul, um zu überprüfen, ob eine vorhandene oder eine neue Vorlage für Azure Stack bereitgestellt werden kann. | Cloudoperatoren und Benutzer|
 
 

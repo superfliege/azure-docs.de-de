@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: heidist
-ms.openlocfilehash: 9fd046efd01281de6d5b46cca37d22a48671b1b2
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b964f5c127d627ede6d3ff671ac695e1b33e4558
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072588"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203391"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
@@ -45,10 +45,13 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Maximale Anzahl von Indizes |3 |5 oder 15 |50 |200 |200 |1000 pro Partition oder 3000 pro Dienst |
 | Maximale Anzahl von Feldern pro Index |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximale Anzahl von Bewertungsprofilen pro Index |100 |100 |100 |100 |100 |100 |
+| Maximale Anzahl von [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |
+| Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |
 | Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
+
+<a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Dokumentgrenzwerte 
 
@@ -94,7 +97,7 @@ Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde 
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Maximale Anzahl von Indexern |3 |5 oder 15|50 |200 |200 |N/V |
 | Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |N/V |
-| Maximale Qualifikationsgruppen |3 |5 oder 15 |50 |200 |200 |N/V |
+| Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |N/V |
 | Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |N/V |
 | Maximale Ausführungszeit | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |N/V  |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |N/V  |
@@ -105,6 +108,8 @@ Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde 
 <sup>2</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5.
 
 <sup>3</sup> S3 HD-Dienste beinhalten keine Indexerunterstützung.
+
+<sup>4</sup> Maximal 30 Fähigkeiten pro Qualifikationsgruppe.
 
 ## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
 
