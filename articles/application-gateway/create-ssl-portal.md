@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Beendigung – Azure-Portal | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mit dem Azure-Portal ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Beendigung hinzufügen.
+title: Konfigurieren eines Anwendungsgateways mit SSL-Beendigung – Azure-Portal | Microsoft Docs
+description: Hier erfahren Sie, wie Sie im Azure-Portal ein Anwendungsgateway konfigurieren und ein Zertifikat für die SSL-Beendigung hinzufügen.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -8,18 +8,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: a24cec5dfa8034cf43ce7cfe26308587cf20dc44
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: c64754595ef67b7c083ee8d47da5b412467c191b
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195912"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals
+# <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Konfigurieren eines Anwendungsgateways mit SSL-Beendigung mithilfe des Azure-Portals
 
-Sie können mit dem Azure-Portal ein [Anwendungsgateway](overview.md) mit einem Zertifikat für SSL-Beendigung erstellen, das virtuelle Computer als Back-End-Server verwendet.
+Sie können im Azure-Portal ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die SSL-Beendigung konfigurieren, das virtuelle Computer als Back-End-Server verwendet.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

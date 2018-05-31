@@ -7,18 +7,23 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: article
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 0154ec9f08f81d2aa47c607c05f09309f7c23c7e
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: f26f9b6f1b0ddef348c39df5aa4badc5df93b725
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942427"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurieren und Wiederherstellen einer langfristig aufbewahrten Sicherung von Azure SQL-Datenbank mit einem Azure Recovery Services-Tresor
 
 Sie können konfigurieren, dass der Azure Recovery Services-Tresor Azure SQL-Datenbanksicherungen speichert und dann eine Datenbank mithilfe im Tresor aufbewahrter Sicherungen mit dem Azure-Portal oder PowerShell wiederherstellen.
+
+> [!NOTE]
+> Beim ersten Release der Vorschauversion der langfristigen Aufbewahrung von Sicherungen im Oktober 2016 wurden Sicherungen im Azure Services Recovery Service-Tresor gespeichert. Bei diesem Update wird die Abhängigkeit entfernt, aus Gründen der Abwärtskompatibilität wird die ursprüngliche API jedoch bis zum 31. Mai 2018 unterstützt. Wenn Sie mit Sicherungen im Azure Services Recovery-Tresor interagieren müssen, lesen Sie die Informationen unter [Configure and restore from Azure SQL Database long-term backup retention using Azure Recovery Services Vault](sql-database-long-term-backup-retention-configure-vault.md) (Konfigurieren und Wiederherstellen auf der Grundlage der langfristigen Sicherungsaufbewahrung in Azure SQL-Datenbank mit dem Azure Recovery Services-Tresor). 
+
 
 ## <a name="azure-portal"></a>Azure-Portal
 

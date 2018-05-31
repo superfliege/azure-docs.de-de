@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c54454dd2e7b56820834e4f3cd7452be10d5ddca
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6d07bd333e4d1663e37a840975cde2d9c73cec9c
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211717"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -30,7 +31,7 @@ Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellung
 
 * **Protokoll**: Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
 * **Port**: Wählen Sie den Port aus, der für die Anforderung verwendet wird.
-* **Pfad**: Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das TCP-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
+* **Pfad**: Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
 * **Testintervall**: Dieser Wert gibt an, wie oft die Integrität eines Endpunkts mit einem Test-Agent von Traffic Manager überprüft wird. Sie können hier zwei Werte angeben: 30 Sekunden (Standardtest) und 10 Sekunden (schneller Test). Wenn keine Werte angegeben sind, wird für das Profil ein Standardwert von 30 Sekunden festgelegt. Weitere Informationen zu den Preisen für schnelle Tests finden Sie auf der Seite [Traffic Manager – Preise](https://azure.microsoft.com/pricing/details/traffic-manager).
 * **Tolerierte Anzahl von Fehlern**: Dieser Wert gibt an, wie viele Fehler von einem Traffic Manager-Test-Agent toleriert werden, bevor der Endpunkt als fehlerhaft markiert wird. Der Wert kann zwischen 0 und 9 liegen. Der Wert 0 bedeutet, dass der Endpunkt schon bei nur einem Überwachungsfehler als fehlerhaft markiert werden kann. Wenn kein Wert angegeben ist, wird der Standardwert 3 verwendet.
 * **Überwachungstimeout**: Mit dieser Eigenschaft wird angegeben, wie lange der Traffic Manager-Test-Agent warten soll, bevor der Test einen Fehler ergibt, wenn ein Integritätsprüfungstest an den Endpunkt gesendet wird. Bei einem Testintervall von 30 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 10 Sekunden festlegen. Wenn kein Wert angegeben ist, wird der Standardwert von 10 Sekunden verwendet. Bei einem Testintervall von 10 Sekunden können Sie für den Timeout einen Wert zwischen 5 und 9 Sekunden festlegen. Wenn kein Timeoutwert angegeben ist, wird der Standardwert von 9 Sekunden verwendet.

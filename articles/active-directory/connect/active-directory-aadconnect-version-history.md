@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2018
+ms.date: 05/15/2018
 ms.author: billmath
-ms.openlocfilehash: 4d5bd28f6e2831ef7bcecc6e5cb80cb28736ec27
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: eb824913a4b3482879ccc45e2f660342695b1618
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165484"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258945"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -38,14 +38,13 @@ Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?Link
 
 ## <a name="118190"></a>1.1.819.0
 
-04.05.2018: Veröffentlichung für automatisches Upgrade; in Kürze als Download verfügbar.
+### <a name="release-status"></a>Releasestatus
 
-
+14.05.2018: Veröffentlichung für automatisches Upgrade und als Download.
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 
 Neue Features und Verbesserungen
-
 
 - Diese Version enthält die Public Preview der PingFederate-Integration in Azure AD Connect. Mit dieser Version können Kunden ihre Azure Active Directory-Umgebung einfach und zuverlässig mit PingFederate als Verbundanbieter konfigurieren. Weitere Informationen zur Verwendung dieses neuen Features finden Sie in unserer [Onlinedokumentation](active-directory-aadconnect-user-signin.md#federation-with-pingfederate). 
 - Wir haben das Problembehandlungs-Hilfsprogramm des Azure AD Connect-Assistenten aktualisiert, um mehr Fehlerszenarien wie etwa verknüpfte Postfächer und dynamische AD-Gruppen zu analysieren. Weitere Informationen zum Hilfsprogramm für die Problembehandlung finden Sie [hier](active-directory-aadconnect-troubleshoot-objectsync.md).
@@ -63,14 +62,16 @@ Neue Features und Verbesserungen
 
 ### <a name="fixed-issues"></a>Behobene Probleme 
 
-
+- Mit dieser Version wird die SQL Server Express-Installation auf SQL Server 2012 SP4 aktualisiert, die u.a. Fehlerbehebungen für mehrere Sicherheitsrisiken bereitstellt.  [Hier](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) finden Sie weitere Informationen zu SQL Server 2012 SP4.
 - Verarbeitung von Synchronisierungsregeln: Synchronisierungsregeln für ausgehende Verknüpfungen ohne Verknüpfungsbedingung sollten nicht mehr angewendet werden, wenn die übergeordnete Synchronisierungsregel nicht mehr relevant ist.
+- Mehrere Fehlerbehebungen für Bedienungshilfen wurden auf die Synchronization Service Manager-Benutzeroberfläche und den Synchronisierungsregel-Editor angewendet.
 - Azure AD Connect-Assistent: Fehler beim Erstellen des AD Connector-Kontos, wenn sich Azure AD Connect in einer Arbeitsgruppe befindet
 - Azure AD Connect-Assistent: Anzeige des Kontrollkästchens für die Überprüfung auf der Azure AD-Anmeldeseite, wenn AD-Domänen und überprüfte Azure AD-Domänen nicht übereinstimmen
 - Korrektur des automatischen PowerShell-Upgrades zur korrekten Festlegung des Status des automatischen Upgrades in bestimmten Fällen nach versuchtem automatischen Upgrade
 - Azure AD Connect-Assistent: Aktualisierung von Telemetriedaten zur Erfassung zuvor fehlender Informationen
-- Azure AD Connect-Assistent: Installation des PTA-Agents vor der Konvertierung eines Domänenkontos in ein verwaltetes Konto
-- Azure AD Connect-Assistent: Keine Konvertierung von Benutzern in verwaltete Benutzer für PTA (nur Konvertierung der Domäne)
+- Azure AD Connect-Assistent: Die folgenden Änderungen wurden vorgenommen, wenn Sie die Aufgabe **Benutzeranmeldung ändern** zum Wechseln von AD FS zur Passthrough-Authentifizierung verwenden:
+    - Der Passthrough-Authentifizierungs-Agent ist auf dem Azure AD Connect-Server installiert, und die Passthrough-Authentifizierungsfunktion ist aktiviert, bevor wir Verbunddomänen in verwaltete Domänen konvertieren.
+    - Verbundbenutzer werden nicht mehr in verwaltete Benutzer konvertiert. Nur Domänen werden konvertiert.
 - Azure AD Connect-Assistent: Inkorrekter regulärer Ausdruck für mehrere AD FS-Domänen, wenn der Benutzer-UPN das Sonderzeichen „'“ enthält – Aktualisierung des regulären Ausdrucks zur Unterstützung von Sonderzeichen
 - Azure AD Connect-Assistent: Entfernung der falschen Meldung zur Konfiguration des Quellankerattributs, wenn keine Änderung stattgefunden hat 
 - Azure AD Connect-Assistent: AD FS-Unterstützung des dualen Verbundszenarios
