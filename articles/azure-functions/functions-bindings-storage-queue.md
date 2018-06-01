@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: d140822b47325e8749d3b2788b47cf820f720a39
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a1ca2b821678b48f65fe6ec6e58fa65cd8e4304f
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303412"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -33,6 +34,10 @@ In diesem Artikel erfahren Sie, wie Sie Azure Queue Storage-Bindungen in Azure F
 Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+
+[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+
+[!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
 ## <a name="trigger"></a>Trigger
 
@@ -241,7 +246,7 @@ Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Nutzlast des W
 
 ## <a name="trigger---message-metadata"></a>Trigger: Nachrichtenmetadaten
 
-Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](functions-triggers-bindings.md#binding-expressions---trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Die Werte haben die gleiche Semantik wie [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage).
+Der Warteschlangentrigger stellt mehrere [Metadateneigenschaften](functions-triggers-bindings.md#binding-expressions---trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Im Folgenden werden Eigenschaften der [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage)-Klasse aufgeführt:
 
 |Eigenschaft|Typ|BESCHREIBUNG|
 |--------|----|-----------|

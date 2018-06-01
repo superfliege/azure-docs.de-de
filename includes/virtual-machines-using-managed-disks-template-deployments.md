@@ -216,4 +216,4 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
 * Im Dokument [Azure Managed Disks – Übersicht](../articles/virtual-machines/windows/managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).
- 
+* Informationen zum Verwenden von verwalteten Datenträgern in Azure VM Scale Sets finden Sie im Dokument [Verwenden von Datenträgern mit Skalierungsgruppen](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md).

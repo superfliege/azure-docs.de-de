@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 35a45947c2766ccc5e64f4c3523ce163a9680680
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258038"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Verwenden von Anwendungen in Azure Blockchain Workbench
 
@@ -33,7 +34,7 @@ Sie müssen sich als Mitglied der Blockchain Workbench anmelden. Wenn keine Anwe
 
 ## <a name="create-new-contract"></a>Erstellen eines neuen Vertrags 
 
-Um einen neuen Vertrag zu erstellen, müssen Sie Mitglied der Rolle **AllowedInstanceRoles** sein. 
+Um einen neuen Vertrag zu erstellen, müssen Sie ein Mitglied sein, das als ein **Initiator** des Vertrags angegeben wurde. Informationen zum Definieren der Anwendungsrollen und Initiatoren für den Vertrag finden Sie in der [Übersicht über Workflows in der Konfiguration](blockchain-workbench-configuration-overview.md#workflows). Informationen zum Zuweisen von Mitgliedern zu Anwendungsrollen finden Sie unter [Hinzufügen eines Mitglieds zu einer Anwendung](blockchain-workbench-manage-users.md#add-member-to-application).
 
 1. Wählen Sie im Abschnitt der Blockchain Workbench-Anwendung die Anwendungskachel aus, die den zu erstellenden Vertrag enthält. Sie erhalten eine Liste der aktiven Verträge.
 
@@ -51,15 +52,10 @@ Um einen neuen Vertrag zu erstellen, müssen Sie Mitglied der Rolle **AllowedIns
 
 ## <a name="take-action-on-contract"></a>Ausführen von Aktionen für den Vertrag
 
+Abhängig vom Status des Vertrags können Mitglieder Aktionen für den Übergang in den nächsten Status des Vertrags ausführen. Aktionen sind als [Übergänge](blockchain-workbench-configuration-overview.md#transitions) innerhalb eines [Status](blockchain-workbench-configuration-overview.md#states) definiert. Mitglieder, die zu einer zulässigen Anwendungs- oder Instanzrolle für den Übergang gehören, können die Aktion ausführen. 
+
 1. Wählen Sie im Abschnitt der Blockchain Workbench-Anwendung die Anwendungskachel, die den Vertrag enthält, um die Aktion auszuführen.
-
-    ![Anwendungsliste](media/blockchain-workbench-use/apps-list.png)
-
-2. Wählen Sie den Vertrag in der Liste aus.
-
-    ![Vertragsliste](media/blockchain-workbench-use/select-contract.png)
-
-    Die Details zum Vertrag werden in verschiedenen Abschnitten angezeigt. 
+2. Wählen Sie den Vertrag in der Liste aus. Die Details zum Vertrag werden in verschiedenen Abschnitten angezeigt. 
 
     ![Vertragsdetails](media/blockchain-workbench-use/contract-details.png)
 
@@ -74,9 +70,14 @@ Um einen neuen Vertrag zu erstellen, müssen Sie Mitglied der Rolle **AllowedIns
 
 4. Die Details zum aktuellen Status des Vertrags werden in einem Bereich angezeigt. Wählen Sie im Dropdownfeld die gewünschte Aktion aus. 
 
+    ![Aktion auswählen](media/blockchain-workbench-use/choose-action.png)
+
+5. Wählen Sie **Aktion ausführen** aus, um die Aktion zu initiieren.
+6. Wenn Parameter für die Aktion erforderlich sind, geben Sie die Werte für die Aktion an.
+
     ![Ausführen einer Aktion](media/blockchain-workbench-use/take-action.png)
 
-5. Wählen Sie **Ausführen**, um die Aktion auszuführen.
+7. Wählen Sie **Aktion ausführen** aus, um die Aktion auszuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

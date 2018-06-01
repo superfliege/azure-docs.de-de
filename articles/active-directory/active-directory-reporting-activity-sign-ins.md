@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2018
+ms.date: 05/17/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cd057704197eb4bf66eff33d3c83a2ca9d5712d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 78d3399aab8e3c3b1d98946cb3ac6ffab353d95c
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257712"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -36,10 +37,10 @@ Die Architektur für die Berichterstellung in Azure Active Directory umfasst die
 
 In diesem Thema erhalten Sie einen Überblick über die Anmeldeaktivitäten.
 
-## <a name="pre-requisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
-* Benutzer mit den Rollen „Sicherheitsadministrator“ oder der Berechtigung „Sicherheit lesen“
+* Benutzer mit den Rollen „Sicherheitsadministrator“, „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ oder „Berichtsleser“
 * Globale Administratoren
 * Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
 
@@ -47,7 +48,7 @@ In diesem Thema erhalten Sie einen Überblick über die Anmeldeaktivitäten.
 * Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann.
 
 
-## <a name="signs-in-activities"></a>Anmeldeaktivitäten
+## <a name="sign-in-activities"></a>Anmeldeaktivitäten
 
 Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
@@ -61,14 +62,16 @@ Ihr erster Einstiegspunkt für alle Anmeldeaktivitäten ist **Anmeldungen** im A
 ![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/61.png "Anmeldeaktivität")
 
 
-Ein Überwachungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
+Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Informationen:
 
+- Anmeldedatum
 - Zugehöriger Benutzer
-- Anwendung, an der sich der Benutzer angemeldet hat
+- Anwendung, bei der sich der Benutzer angemeldet hat
 - Anmeldestatus
-- Zeitpunkt der Anmeldung
+- Status der Risikoerkennung
+- Status der MFA-Anforderung (Multi-Factor Authentication) 
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/41.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/01.png "Anmeldeaktivität")
 
 Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spalten** klicken.
 
@@ -76,58 +79,94 @@ Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spal
 
 Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/42.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/02.png "Anmeldeaktivität")
 
-Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden alle Details dazu angezeigt.
+Wenn Sie in der Listenansicht auf einen Eintrag klicken, werden alle dazu verfügbaren Details in einer horizontalen Ansicht angezeigt.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/43.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/03.png "Anmeldeaktivität")
 
 
-## <a name="filtering-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
+## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
-Sie können die Anmeldedaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
+Sie können die Anmeldungsdaten mit den folgenden Standardfeldern filtern, um die gemeldeten Daten einzugrenzen:
 
-- Zeitintervall
 - Benutzer
 - Anwendung
-- Client
 - Anmeldestatus
+- Status der Risikoerkennung
+- Datum
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/44.png "Anmeldeaktivität")
+
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/04.png "Anmeldeaktivität")
+
+Mit dem Filter **Benutzer** können Sie den Namen oder den Dienstprinzipalnamen (UPN) des gewünschten Benutzers angeben. 
+
+Mit dem Filter **Anwendung** können Sie den Namen der gewünschten Anwendung angeben.  
+
+Für den Filter **Anmeldestatus** können Sie eine der folgenden Optionen auswählen:
+
+- Alle 
+- Erfolgreich
+- Fehler
+
+Für den Filter **Risiko erkannt** können Sie eine der folgenden Optionen auswählen:
+
+- Alle
+- Ja
+- Nein  
 
 
-Mit dem Filter **Zeitintervall** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
+Mit dem Filter **Datum** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
 
 - 1 Monat
 - 7 Tage
 - 24 Stunden
-- Benutzerdefiniert
+- Benutzerdefiniertes Zeitintervall
 
 Beim Auswählen eines benutzerdefinierten Zeitraums können Sie eine Startzeit und eine Endzeit konfigurieren.
 
-Mit dem Filter **Benutzer** können Sie den Namen oder den Dienstprinzipalnamen (UPN) des gewünschten Benutzers angeben.
+Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese automatisch in die Filterliste aufgenommen. Wenn Sie Ihrer Liste also beispielsweise das Feld **Client-App** hinzufügen, erhalten Sie auch eine weitere Filteroption, mit der Sie folgende Filter festlegen können:
 
-Mit dem Filter **Anwendung** können Sie den Namen der gewünschten Anwendung angeben.
+- "Browser"      
+- Exchange ActiveSync (unterstützt)               
+- Exchange ActiveSync (nicht unterstützt)
+- Andere Clients               
+    - IMAP
+    - MAPI
+    - Ältere Office-Clients
+    - POP
+    - SMTP
 
-Mit dem Filter **Client** können Sie Informationen zum gewünschten Gerät angeben.
 
-Für den Filter **Anmeldestatus** können Sie eine der folgenden Filteroptionen auswählen:
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/12.png "Anmeldeaktivität")
 
-- Alle
-- Erfolgreich
-- Fehler
+
+> [!TIP] 
+> Zusätzlich zu den Standardfiltern werden alle zusätzlichen Felder, die Sie zur Anmeldungsansicht hinzufügen, zu Filterfeldern.
+
+
+## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
+
+Sie können die Daten zu Anmeldeaktivitäten herunterladen, wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Neben einer Downloadschaltfläche steht im Azure-Portal eine Option zum Generieren eines Skripts zum Herunterladen Ihrer Daten zur Verfügung.  
+
+![Herunterladen](./media/active-directory-reporting-activity-sign-ins/71.png "Herunterladen")
+
+Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt. Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption verwenden. Wenn Sie auf **Skript** klicken, wird ein Skript mit allen von Ihnen festgelegten Filtern erstellt. Neben der technischen Implementierung ist die Anzahl der herunterladbaren Datensätze durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) eingeschränkt.  
+
 
 
 ## <a name="sign-in-activities-shortcuts"></a>Optionen für Anmeldeaktivitäten
 
 Zusätzlich zu Azure Active Directory enthält das Azure-Portal zwei weitere Einstiegspunkte für Daten zu Anmeldeaktivitäten:
 
-- Benutzer und Gruppen
+- Übersicht über Identitätssicherheit und Schutz
+- Benutzer
+- Gruppen
 - Unternehmensanwendungen
 
 
-### <a name="users-and-groups-sign-ins-activities"></a>Anmeldeaktivitäten für Benutzer und Gruppen
+### <a name="users-sign-ins-activities"></a>Anmeldeaktivitäten von Benutzern
 
 Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
@@ -137,29 +176,39 @@ Mit den Informationen, die vom Bericht zur Benutzeranmeldung geliefert werden, k
 
 
 
-Ihr Einstiegspunkt für diese Daten ist der Graph zur Benutzeranmeldung im Abschnitt **Übersicht** unter **Benutzer und Gruppen**.
+Ihr Einstiegspunkt für diese Daten ist der Graph zu Benutzeranmeldungen auf der Übersichtsseite **Identitätssicherheit und Schutz**. Der Graph für die Benutzeranmeldung zeigt wöchentliche Aggregationen von Anmeldungen für alle Benutzer in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/45.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/06.png "Anmeldeaktivität")
 
-Der Graph für die Benutzeranmeldung zeigt wöchentliche Aggregationen von Anmeldungen für alle Benutzer in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
+Wenn Sie im Anmeldungsgraph auf einen Tag klicken, wird eine Übersicht über die Anmeldeaktivitäten für den entsprechenden Tag angezeigt.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/46.png "Anmeldeaktivität")
 
-Wenn Sie im Graph für die Anmeldung auf einen Tag klicken, wird eine ausführliche Liste mit den Anmeldeaktivitäten für den entsprechenden Tag angezeigt.
-
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/41.png "Anmeldeaktivität")
-
-In jeder Zeile der Liste mit den Anmeldeaktivitäten erhalten Sie die ausführlichen Informationen zur ausgewählten Anmeldung, z.B.:
+Jede Zeile in der Liste mit den Anmeldeaktivitäten zeigt Folgendes:
 
 * Wer hat sich angemeldet?
-* Welcher UPN wurde verwendet?
 * Welche Anwendung war das Ziel der Anmeldung?
-* Wie lautet die IP-Adresse der Anmeldung?
-* Wie lautete der Status der Anmeldung?
+* Welchen Status hat die Anmeldung?
+* Welchen MFA-Status hat die Anmeldung?
 
-Mit der Option **Anmeldungen** erhalten Sie eine vollständige Übersicht über alle Benutzeranmeldungen.
+Durch Klicken auf ein Element können Sie ausführlichere Informationen zum entsprechenden Anmeldevorgang anzeigen:
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/51.png "Anmeldeaktivität")
+- Benutzer-ID
+- Benutzer
+- Username
+- Anwendungs-ID
+- Anwendung
+- Client
+- Speicherort
+- IP-Adresse
+- Datum
+- MFA erforderlich
+- Anmeldestatus
+
+ 
+Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevorgänge** klicken, wird eine umfassenden Übersicht über alle Benutzeranmeldungen angezeigt.
+
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/08.png "Anmeldeaktivität")
+
 
 
 
@@ -171,9 +220,9 @@ Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispiel
 * Welche drei Anwendungen sind im Unternehmen am beliebtesten?
 * Ich habe vor Kurzem eine Anwendung eingeführt. Wie gut funktioniert sie?
 
-Ihr Einstiegspunkt für diese Daten ist die Liste mit den beliebtesten drei Anwendungen in Ihrem Unternehmen im Bericht zu den letzten 30 Tagen (Abschnitt **Übersicht** unter **Unternehmensanwendungen**).
+Ihr Einstiegspunkt für diese Daten ist der *Bericht mit den drei wichtigsten Anwendungen der letzten 30 Tage in Ihrer Organisation* im Abschnitt **Übersicht** unter **Unternehmensanwendungen**.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/64.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/10.png "Anmeldeaktivität")
 
 Der Graph zur App-Nutzung gibt die wöchentlichen Aggregationen von Anmeldungen für Ihre beliebtesten drei Anwendungen in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
@@ -187,15 +236,15 @@ Wenn Sie möchten, können Sie den Fokus auf eine bestimmte Anwendung festlegen.
 Wenn Sie im Graph für die App-Nutzung auf einen Tag klicken, wird eine ausführliche Liste mit den Anmeldeaktivitäten angezeigt.
 
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/48.png "Anmeldeaktivität")
 
 
 Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über alle Anmeldeereignisse für Ihre Anwendungen anzeigen.
 
-![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/49.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/active-directory-reporting-activity-sign-ins/11.png "Anmeldeaktivität")
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Fehlercodes von Anmeldeaktivitäten finden Sie unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal](active-directory-reporting-activity-sign-ins-errors.md).
+

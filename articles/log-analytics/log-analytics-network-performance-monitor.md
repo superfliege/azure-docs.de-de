@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 1d12df7c37c4c96198865479326851040b46986a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304656"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -74,7 +75,7 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
 Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwerkleistung zwischen Quell- und Ziel-Agents zu überwachen. Bei der Überwachung im Systemmonitor und im Dienstendpunktmonitor kann zwischen dem TCP- und dem ICMP-Protokoll gewählt werden. Für ExpressRoute-Monitor wird hingegen TCP verwendet. Stellen Sie sicher, dass die Firewall die Kommunikation zwischen den für die Überwachung verwendeten Operations Management Suite-Agents über das ausgewählte Protokoll zulässt. 
 
-* **TCP-Protokoll**: Wenn Sie sich für TCP als Überwachungsprotokoll entschieden haben, öffnen Sie den Firewallport für die Agents, die für den Netzwerkleistungsmonitor und ExpressRoute-Monitor verwendet werden, um sicherzustellen, dass die Agents eine Verbindung miteinander herstellen können. Um den Port zu öffnen, führen Sie das PowerShell-Skript „EnableRules.ps1“ ohne Parameter in einem PowerShell-Fenster mit Administratorrechten aus.
+* **TCP-Protokoll**: Wenn Sie sich für TCP als Überwachungsprotokoll entschieden haben, öffnen Sie den Firewallport für die Agents, die für den Netzwerkleistungsmonitor und ExpressRoute-Monitor verwendet werden, um sicherzustellen, dass die Agents eine Verbindung miteinander herstellen können. Um den Port zu öffnen, führen Sie das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript) ohne Parameter in einem PowerShell-Fenster mit Administratorrechten aus.
 
     Das Skript erstellt die für die Lösung erforderlichen Registrierungsschlüssel. Außerdem erstellt es Regeln für die Windows-Firewall, damit Agents TCP-Verbindungen miteinander herstellen können. Die vom Skript erstellten Registrierungsschlüssel geben an, ob die Debugprotokolle und der Pfad zur Protokolldatei protokolliert werden sollen. Ferner definiert das Skript den für die Kommunikation verwendeten TCP-Port des Agents. Die Werte für diese Schlüssel werden vom Skript automatisch festgelegt. Ändern Sie diese Schlüssel nicht manuell. Standardmäßig wird Port 8084 geöffnet. Sie können einen benutzerdefinierten Port verwenden, indem Sie im Skript den Parameter „portNumber“ angeben. Verwenden Sie auf allen Computern, auf denen das Skript ausgeführt wird, den gleichen Port. 
 
@@ -82,7 +83,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     > Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Netzwerkfirewall müssen Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
 
     >[!NOTE]
-    > Für den Dienstendpunktmonitor muss das PowerShell-Skript „EnableRules.ps1“ nicht ausgeführt werden.
+    > Für den Dienstendpunktmonitor muss das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript ) nicht ausgeführt werden.
 
     
 
@@ -250,7 +251,7 @@ Bei der in der Karte gezeigten Topologie handelt es sich um eine Layer 3-Topolog
 
 Alle im Dashboard des Netzwerkleistungsmonitors und auf den Drilldownseiten grafisch dargestellten Daten sind auch nativ über die [Log Analytics-Suche](log-analytics-log-search-new.md) verfügbar. Sie können eine interaktive Analyse von Daten im Repository ausführen und Daten aus verschiedenen Quellen korrelieren. Sie können auch benutzerdefinierte Warnungen und Ansichten erstellen und die Daten nach Excel, Power BI oder in einen freigegebenen Link exportieren. Der Bereich  **Allgemeine Abfragen** im Dashboard enthält einige praktische Abfragen, die Sie als Ausgangspunkt für die Erstellung eigener Abfragen und Berichte verwenden können. 
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 
 Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 

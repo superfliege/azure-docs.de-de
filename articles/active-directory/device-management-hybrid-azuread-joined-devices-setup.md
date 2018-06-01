@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f3abaefbeb9e941e41bf664654bb67803156be7b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a74a16fa583ac3bc7ea2250f916e855a0bd9d1c1
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157791"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258311"
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -96,6 +96,7 @@ Wenn Ihre Organisation das nahtlose SSO verwenden möchte, müssen die folgenden
 
 - Darüber hinaus muss die folgende Einstellung in der Intranetzone des Benutzers aktiviert werden: „Aktualisierungen der Statusleiste per Skript zulassen“.
 
+Wenn Ihre Organisation die verwaltete Einrichtung (ohne Verbund) über lokales AD und nicht AD FS zum Herstellens eines Verbunds mit Azure AD verwendet, basiert die hybride Azure AD-Einbindung unter Windows 10 auf den Computerobjekten in AD, die mit Azure AD synchronisiert werden sollen. Stellen Sie sicher, dass alle Organisationseinheiten (OU), die die Computerobjekte enthalten, die hybrid in Azure AD eingebunden werden müssen, in der Azure AD Connect-Synchronisierungskonfiguration für die Synchronisierung aktiviert sind.
 
 Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, müssen Sie WPAD (Web Proxy Auto-Discovery) implementieren, damit Windows 10-Computer bei Azure AD registriert werden können.
 
@@ -187,6 +188,14 @@ Bei einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen sollten S
 
     $deSCP.CommitChanges()
 
+Im Skript oben
+
+- ist `$verifiedDomain = "contoso.com"` ein Platzhalter, den Sie durch einen Ihrer überprüften Domänennamen in Azure AD ersetzen müssen. Sie müssen die Domäne besitzen, bevor Sie sie verwenden können.
+
+Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das Cmdlet [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) verwenden. 
+
+![Get-AzureADDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
 
 ## <a name="step-2-setup-issuance-of-claims"></a>Schritt 2: Einrichten der Ausstellung von Ansprüchen
 
@@ -330,6 +339,7 @@ Im Anspruch oben
 
 
 Weitere Informationen zu überprüften Domänennamen finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md).  
+
 Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie das [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0)-Cmdlet verwenden. 
 
 ![Get-MsolDomain](./media/active-directory-conditional-access-automatic-device-registration-setup/01.png)
