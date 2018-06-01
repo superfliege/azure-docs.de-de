@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/17/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 17737c2b272f2a123df3d58c62c471b3da5bebe1
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 69a4529e009d9fdd7081bc4d4b53c468befd8e6d
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936147"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304357"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Generieren von Signieranforderungen für Azure Stack-Zertifikate
 
@@ -69,10 +69,10 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
     > [!note]  
     > Wenn ein allgemeiner Name (CN) angegeben ist, wird dieser vom ersten DNS-Namen der Zertifikatanforderung überschrieben.
 
-3.  Deklarieren Sie ein Ausgabeverzeichnis, das bereits vorhanden ist:
+3.  Deklarieren Sie ein Ausgabeverzeichnis, das bereits vorhanden ist. Beispiel: 
 
     ````PowerShell  
-    $outputDirectory = "$ENV:USERNAME\Documents\AzureStackCSR" 
+    $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ````
 4.  Deklarieren Sie das Identitätssystem.
 
@@ -96,7 +96,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
     ````
 
     > [!note]  
-    > `<regionName>.<externalFQDN>` bildet die Grundlage für die Erstellung aller externen DNS-Namen in Azure Stack. In diesem Beispiel heißt das Portal `portal.east.azurestack.contoso.com`.
+    > `<regionName>.<externalFQDN>` bildet die Grundlage für die Erstellung aller externen DNS-Namen in Azure Stack. In diesem Beispiel heißt das Portal `portal.east.azurestack.contoso.com`.  
 
 6. So generieren Sie eine einzige Zertifikatsanforderung mit mehreren alternativen Antragstellernamen:
 
