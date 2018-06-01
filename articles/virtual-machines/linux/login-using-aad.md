@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2018
+ms.date: 05/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 652f9867b7423ce4307dba1c77e8f38fcd596c67
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ec330570604494503de2fa3f5484a1e41ddf4603
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943992"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271959"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -35,6 +35,7 @@ Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen 
   - Durch die Verringerung der Abhängigkeit von lokalen Administratorkonten müssen Sie sich nicht damit auseinandersetzen, dass Anmeldeinformationen verloren gehen oder gestohlen werden, dass Benutzer unsichere Anmeldeinformationen konfigurieren usw.
   - Auch die für Ihr Azure AD-Verzeichnis konfigurierten Richtlinien zur Kennwortkomplexität und Kennwortgültigkeitsdauer tragen zur Sicherheit von virtuellen Linux-Computern bei.
   - Zum weiteren Schutz der Anmeldung bei virtuellen Azure-Computern können Sie die mehrstufige Authentifizierung konfigurieren.
+  - Die Möglichkeit zur Anmeldung bei virtuellen Linux-Computern mit Azure Active Directory besteht auch für Kunden, die [Verbunddienste](../../active-directory/connect/active-directory-aadconnectfed-whatis.md) verwenden.
 
 - **Nahtlose Zusammenarbeit:** Mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie angeben, wer sich bei einem bestimmten virtuellen Computer als normaler Benutzer oder als Benutzer mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Diese Vorgehensweise ist wesentlich einfacher, als virtuelle Computer bereinigen zu müssen, um unnötige öffentliche SSH-Schlüssel zu entfernen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
 
@@ -50,7 +51,7 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Linux-Di
 
 Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
 
-- Alle öffentlichen Azure-Regionen
+- Alle globalen Azure-Regionen
 
 >[!IMPORTANT]
 > Zur Verwendung dieses Vorschaufeatures kann die Bereitstellung nur in einer unterstützten Linux-Distribution und in einer unterstützten Azure-Region durchgeführt werden. Das Feature wird in einer Azure Government Cloud oder Sovereign Cloud nicht unterstützt.
@@ -167,6 +168,10 @@ Nachdem Sie die Authentifizierung in einem Webbrowser erfolgreich abgeschlossen 
 - Überprüfen Sie, ob der an der SSH-Eingabeaufforderung angegebene Anmeldename richtig ist. Ein Tippfehler im Anmeldenamen kann dazu führen, dass der an der SSH-Eingabeaufforderung angegebene Anmeldename nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. Beispiel: Sie haben *azuresuer@contoso.onmicrosoft.com* anstelle von *azureuser@contoso.onmicrosoft.com* eingegeben.
 - Wenn Sie über mehrere Benutzerkonten verfügen, achten Sie darauf, dass Sie im Browserfenster kein anderes Benutzerkonto als bei der Anmeldung bei Azure AD angeben.
 - Linux ist ein Betriebssystem, bei dem die Groß-/Kleinschreibung berücksichtigt wird. Es besteht also ein Unterschied zwischen „Azureuser@contoso.onmicrosoft.com“ und „azureuser@contoso.onmicrosoft.com“. Dies kann zu einer Nichtübereinstimmung führen. Stellen Sie sicher, dass Sie den Benutzerprinzipalnamen (UPN) an der SSH-Eingabeaufforderung mit der richtigen Groß- und Kleinschreibung angeben.
+
+## <a name="preview-feedback"></a>Feedback zur Vorschauversion
+
+Geben Sie Feedback zu diesem Vorschaufeature oder melden Sie Probleme bei der Verwendung davon im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

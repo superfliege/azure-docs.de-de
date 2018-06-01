@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 610aa8d5652b89f36aeb2a6ae517d378c5bfa666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304877"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ mit dem Azure-Portal
 
@@ -194,4 +195,7 @@ Sie können die Ressourcengruppe, den Load Balancer und alle dazugehörigen Ress
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Ressourcengruppe, Netzwerkressourcen und Back-End-Server erstellt. Danach haben Sie diese Ressourcen verwendet, um einen Lastenausgleich zu erstellen. Weitere Informationen zum Lastenausgleich und zu den dazugehörigen Ressourcen finden Sie in den Tutorials.
+In dieser Schnellstartanleitung haben Sie eine Ressourcengruppe, Netzwerkressourcen und Back-End-Server erstellt. Danach haben Sie diese Ressourcen verwendet, um einen Lastenausgleich im Tarif „Basic“ zu erstellen. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)

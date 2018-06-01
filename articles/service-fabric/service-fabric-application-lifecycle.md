@@ -5,20 +5,21 @@ services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 08837cca-5aa7-40da-b087-2b657224a097
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 923778e54a1ae5967d681751841c3a2b3fb45130
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: e7dddfca3640615cb851fb6dce9eaa80260ccbf6
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212560"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Lebenszyklus der Service Fabric-Anwendung
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Azure Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Update, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. Dieser Artikel bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden.
@@ -57,7 +58,7 @@ Beispiele finden Sie unter [Deploy an application](service-fabric-deploy-remove-
 
 ## <a name="test"></a>Test
 1. Nach der Bereitstellung im lokalen Entwicklungscluster oder in einem Testcluster führt ein *Dienstentwickler* das integrierte Failovertestszenario mithilfe der Klassen [**FailoverTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters#System_Fabric_Testability_Scenario_FailoverTestScenarioParameters) und [**FailoverTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario#System_Fabric_Testability_Scenario_FailoverTestScenario) oder des [**Invoke-ServiceFabricFailoverTestScenario**-Cmdlets](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps) aus. Im Failovertestszenario wird ein bestimmter Dienst über wichtige Übergänge und Failover ausgeführt, um sicherzustellen, dass er weiterhin verfügbar und aktiv ist.
-2. Der *Dienstentwickler* führt dann das integrierte Chaostestszenario mithilfe der Klassen [**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters#System_Fabric_Testability_Scenario_ChaosTestScenarioParameters) und [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) oder des [**Invoke-ServiceFabricChaosTestScenario-**Cmdlets](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps) aus. Im Chaostestszenario werden nach dem Zufallsprinzip mehrere Knoten-, Codepaket- und Replikatfehler im Cluster ausgelöst.
+2. Der *Dienstentwickler* führt dann das integrierte Chaostestszenario mithilfe der Klassen [**ChaosTestScenarioParameters**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters#System_Fabric_Testability_Scenario_ChaosTestScenarioParameters) und [**ChaosTestScenario**](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) oder des [**Invoke-ServiceFabricChaosTestScenario-** Cmdlets](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps) aus. Im Chaostestszenario werden nach dem Zufallsprinzip mehrere Knoten-, Codepaket- und Replikatfehler im Cluster ausgelöst.
 3. Der *Dienstentwickler* [testet die Dienst-zu-Dienst-Kommunikation](service-fabric-testability-scenarios-service-communication.md) durch das Erstellen von Testszenarien, die primäre Replikate im Cluster verschieben.
 
 Weitere Informationen finden Sie unter [Testability – Übersicht](service-fabric-testability-overview.md) .

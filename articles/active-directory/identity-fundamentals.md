@@ -13,11 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 7c00ccf214cfd683d04a76cc3cfad9bd27080561
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3603a1e91bc6bcf8a472b41bb0d0a276bf231d7c
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302858"
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Grundlagen der Azure-Identitätsverwaltung
 
@@ -30,17 +31,17 @@ Azure AD Premium ist eine cloudbasierte Identitäts- und Zugriffsverwaltungslös
 In diesem kurzen Video erhalten Sie einen schnellen Überblick über Identitätsverwaltung und Schutz mit Azure AD:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Microsoft stellt nicht nur die Identität bereit, mit der Sie umfassenden Zugriff haben, sondern auch einen Satz von Tools zum Automatisieren, Sichern und Verwalten der IT in Ihrer Organisation. Auch nach der Einführung von Cloud Computing besteht immer noch eine Nachfrage nach der Verwaltung und Steuerung von IT-Aufgaben wie z.B. Anrufe beim Helpdesk, um Benutzerkennwörter zurückzusetzen, Benutzergruppenverwaltung und Anwendungsanforderungen. Dass Mitarbeiter jetzt ihre persönlichen Geräte zur Arbeit mitbringen und frei verfügbare SaaS-Anwendungen nutzen, macht die Dinge noch komplizierter. So wird das Aufrechterhalten der Kontrolle über Anwendungen in den Unternehmensrechenzentren und auf öffentlichen Cloudplattformen zu einer erheblichen Herausforderung.
+Microsoft stellt nicht nur die Identität bereit, mit der Sie umfassenden Zugriff haben, sondern auch einen Satz von Tools zum Automatisieren, Sichern und Verwalten der IT in Ihrer Organisation. Auch nach der Einführung von Cloud Computing besteht immer noch eine Nachfrage nach der Verwaltung und Steuerung von IT-Aufgaben wie z.B. Anrufe beim Helpdesk, um Benutzerkennwörter zurückzusetzen, Benutzergruppenverwaltung und Anwendungsanforderungen. Es wird noch komplizierter, weil Mitarbeiter jetzt ihre eigenen Geräte mit zur Arbeit bringen und verfügbare SaaS-Anwendungen nutzen. Das Behalten der Kontrolle über ihre Anwendungen in Datencentern des Unternehmens und auf öffentlichen Cloudplattformen wird so zu einer erheblichen Herausforderung.
 
 [!INCLUDE [identity](../../includes/azure-ad-licenses.md)]
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>Verbinden einer lokalen Active Directory-Instanz mit Azure AD und Office 365
-Organisationen, die umfangreiche Investitionen in eine lokale Active Directory-Struktur getätigt haben, können diese Investitionen in die Cloud erweitern, indem sie ihre lokalen Verzeichnisse mit Azure AD in eine [Hybrididentitätsverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview) integrieren. Dadurch werden Benutzer produktiver, da eine allgemeine Identität für den standortunabhängigen Zugriff auf Ressourcen bereitgestellt wird. Benutzer und Organisationen können dann das einmalige Anmelden (SSO) für den Zugriff sowohl auf lokale Ressourcen als auch Clouddienste wie Office 365 nutzen.
+Organisationen, die umfangreiche Investitionen in eine lokale Active Directory-Struktur getätigt haben, können diese Investitionen in die Cloud erweitern, indem sie ihre lokalen Verzeichnisse mit Azure AD in eine [Hybrididentitätsverwaltung](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview) integrieren. Dadurch werden Benutzer produktiver, da eine allgemeine Identität für den standortunabhängigen Zugriff auf Ressourcen bereitgestellt wird. Benutzer und Organisationen können dann das einmalige Anmelden (SSO) für den Zugriff sowohl auf lokale Ressourcen als auch auf Clouddienste wie Office 365 nutzen.
 
 [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) ist das einzige Tool, das Sie für die Integration benötigen. Azure AD Connect bietet die Funktionen, um Ihre Anforderungen an Identitätssynchronisierung zu erfüllen, und ersetzt ältere Versionen von Identitätsintegrationstools wie DirSync und Azure AD Sync. Mit Azure AD wird die Identitätsverwaltung und -synchronisierung zwischen lokaler Umgebung und Azure AD durch folgende Funktionen ermöglicht:
 
 - Synchronisierung: Diese Komponente ist verantwortlich für das Erstellen von Benutzern, Gruppen und anderen Objekten. Er stellt ebenfalls sicher, dass Identitätsinformationen für Ihre lokalen Benutzer und Gruppen denen in der Cloud entsprechen. Kennwortrückschreiben kann auch aktiviert werden, um lokale Verzeichnisse synchron zu halten, wenn ein Benutzer sein Kennwort in Azure AD aktualisiert.
-- AD FS: Der Verbund ist eine optionale Funktion von Azure AD Connect, die zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden kann. Der Verbund kann von Organisationen verwendet werden, um sich mit komplexen Bereitstellungen zu befassen, z.B. einmaliges Anmelden, Erzwingen von AD-Anmelderichtlinien und Smartcard- bzw. Drittanbieter-MFA.
+- AD FS: Der Verbund ist eine optionale Funktion von Azure AD Connect, die zum Konfigurieren einer Hybridumgebung mithilfe einer lokalen AD FS-Infrastruktur verwendet werden kann. Der Verbund kann von Organisationen genutzt werden, um Lösungen für komplexe Bereitstellungen zu finden, z.B. Smartcard oder Drittanbieter-MFA.
 - Systemüberwachung: [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) bietet eine stabile Überwachung und einen zentralen Speicherort im Azure-Portal, um diese Aktivität anzuzeigen.
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>Mehr Produktivität und weniger Helpdeskkosten durch Self-Service und Single Sign-On

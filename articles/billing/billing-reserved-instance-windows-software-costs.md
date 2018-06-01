@@ -1,6 +1,6 @@
 ---
-title: Windows-Softwarekosten für reservierte Azure-VM-Instanzen | Microsoft Docs
-description: Erfahren Sie, welche Verbrauchseinheiten für Windows-Software nicht in den Kosten für reservierte VM-Instanzen enthalten sind.
+title: Windows-Softwarekosten für reservierte Azure-Instanzen – Azure-Abrechnung | Microsoft-Dokumentation
+description: Erfahren Sie, welche Verbrauchseinheiten für Windows-Software nicht in den Kosten für reservierte Azure-VM-Instanzen enthalten sind.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/03/2017
+ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 20fd3c6c118b33ca91d717d30d77bb9c7843f4e6
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: b526ca578a72d7d35fb4198affeb02db4d308b20
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34303350"
 ---
-# <a name="windows-software-costs-not-included-with-reserved-instances"></a>Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten
+# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten
 
 Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil besitzen, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Windows-Software berechnet.
 
@@ -52,11 +53,18 @@ Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil besitzen
 Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard-API abrufen. Informationen zum Abrufen der Tarife für eine Azure-Verbrauchseinheit finden Sie unter [Abrufen von Preis- und Metadateninformationen für in einem Azure-Abonnement verwendete Ressourcen](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu reservierten VM-Instanzen finden Sie in den folgenden Artikeln.
+Weitere Informationen zu reservierten Azure-Instanzen finden Sie in den folgenden Artikeln:
 
+- [Einsparung von Kosten für virtuelle Computer mit reservierten Azure-Instanzen](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit reservierten VM-Instanzen](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von reservierten Azure-VM-Instanzen](billing-manage-reserved-vm-instance.md)
-- [Mit reservierten VM-Instanzen Kosten für virtuelle Computer sparen](billing-save-compute-costs-reservations.md)
+- [Verwalten von reservierten Instanzen](billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
 - [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
+
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+
+Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+
+
+

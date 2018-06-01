@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Microsoft Azure StorSimple Data Manager | Microsoft Docs"
-description: "Hier finden Sie eine Übersicht über den StorSimple Data Manager-Dienst."
+title: Übersicht über Microsoft Azure StorSimple Data Manager | Microsoft Docs
+description: Hier finden Sie eine Übersicht über den StorSimple Data Manager-Dienst.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 429f1edae15a98b3c38ae4980a630f23b3a85d23
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271903"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>Übersicht über die StorSimple Data Manager-Lösung
 
@@ -80,6 +81,11 @@ Mit dem Schlüssel führen die Serverressourcen die Transformation aus. Diese Co
 Wenn Ihre Data Manager-Region sich von Ihrer Auftragsdefinitionsregion unterscheidet, müssen Sie wissen, welche Daten/Metadaten sich in den beiden Regionen befinden. Das folgende Diagramm veranschaulicht die Auswirkungen von unterschiedlichen Regionen für Data Manager und den Auftrag.
 
 ![Dienst und Auftragsdefinition in unterschiedlichen Regionen](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="gdpr-compliance"></a>Einhaltung der DSGVO
+
+Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält zahlreiche Bestimmungen für die Sammlung, Speicherung und Verwendung persönlicher Informationen. Die Regeln der DSGVO gelten für Unternehmen, Regierungsbehörden und andere Organisationen, die in der EU tätig sind und Daten sammeln/analysieren, die mit EU-Bürgern zusammenhängen. Der StorSimple Data Manager ist DSGVO-konform. Der Data Manager-Dienst sammelt keine personenbezogenen Daten.
+Weitere Informationen finden Sie im [Trust Center](https://www.microsoft.com/trustcenter) in der Microsoft-Datenschutzrichtlinie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

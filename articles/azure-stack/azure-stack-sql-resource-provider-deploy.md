@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 70b07cae9a1dc8b45e27f95e19fbc84f06a0b6d3
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 20b289c16a73bd20ed020987116975c8abe893f0
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204580"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198574"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 Verwenden Sie den SQL Server-Ressourcenanbieter von Azure Stack, um SQL-Datenbanken als Dienst in Azure Stack verfügbar zu machen. Der SQL-Ressourcenanbieterdienst wird auf der VM des SQL-Ressourcenanbieters ausgeführt, was ein virtueller Computer unter Windows Server Core ist.
@@ -74,6 +74,8 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn Sie keine Paramete
 | **Deinstallieren** | Entfernt den Ressourcenanbieter und alle zugeordneten Ressourcen (siehe folgende Hinweise). | Nein  |
 | **DebugMode** | Verhindert die automatische Bereinigung nach einem Fehler. | Nein  |
 
+>[!NOTE]
+> Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst eine Datenbank erstellen, wenn die SKU erstellt wurde.
 
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Bereitstellen des SQL-Ressourcenanbieters mithilfe eines benutzerdefinierten Skripts
