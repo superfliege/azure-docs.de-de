@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/16/2018
 ms.author: sujayt
-ms.openlocfilehash: d7bfbbe834ac8506b7d12d5748406460df0fe3bc
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: daaca3c7b389642a288f738eb0954050e168abef
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011627"
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210561"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -31,7 +31,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 --- | ---
 **Azure-Portal** | Unterstützt
 **Klassisches Portal** | Nicht unterstützt
-**PowerShell** | [Vorschau](azure-to-azure-powershell.md)
+**PowerShell** | [Replikation von Azure zu Azure mit PowerShell](azure-to-azure-powershell.md)
 **REST-API** | Derzeit nicht unterstützt
 **BEFEHLSZEILENSCHNITTSTELLE (CLI)** | Derzeit nicht unterstützt
 

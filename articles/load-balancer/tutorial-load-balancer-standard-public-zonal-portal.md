@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9067ea350997ed0c4fc5c65dccb72f403adfa774
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 52d0aeabab173caf4460827ca0d5984070688f0e
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304724"
 ---
 # <a name="tutorialload-balance-vms-within-an-availability-zone-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit einem Load Balancer im Tarif „Standard“ im Azure-Portal
 
@@ -36,7 +37,7 @@ In diesem Tutorial wird die Erstellung eines öffentlichen [Load Balancers im Ta
 > * Erstellen einer einfachen IIS-Website
 > * Anzeigen eines Load Balancers im Betrieb
 
-Informationen zur Verwendung von Verfügbarkeitszonen mit einem Load Balancer im Tarif „Standard“ finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zonal-cli.md) durcharbeiten.
 
@@ -44,9 +45,9 @@ Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load
 
 Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
 
-## <a name="create-a-public-standard-load-balancer"></a>Erstellen eines öffentlichen Load Balancers im Tarif „Standard“
+## <a name="create-a-public-standard-load-balancer"></a>Erstellen eines öffentlichen Lastenausgleichs im Standard-Tarif
 
-Ein Load Balancer im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Load Balancers erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
+Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Lastenausgleichs erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert und ist automatisch auch zonenredundant.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
@@ -139,7 +140,7 @@ In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbin
 2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, um eine RDP-Verbindung mit dem virtuellen Computer herzustellen.
 3. Melden Sie sich mit dem Benutzernamen und dem Kennwort an, die Sie beim Erstellen des virtuellen Computers angegeben haben. (Unter Umständen müssen Sie auf **Weitere Optionen** und dann auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben.) Klicken Sie anschließend auf **OK**. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** aus, um mit dem Herstellen der Verbindung fortzufahren.
 4. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Windows PowerShell**.
-6. Führen Sie im PowerShell-Fenster die folgenden Befehle aus, um den IIS-Server zu installieren, die Datei „default.htm“ zu entfernen und eine neue Datei „default.htm“ hinzuzufügen, die den Namen des virtuellen Computers enthält:
+6. Führen Sie im PowerShell-Fenster die folgenden Befehle aus, um den IIS-Server zu installieren, die Standarddatei „iisstart.htm“ zu entfernen und dann eine neue Datei „iisstart.htm“ hinzuzufügen, die den Namen des virtuellen Computers enthält:
 
    ```azurepowershell-interactive
     # install IIS server role
@@ -147,10 +148,10 @@ In diesem Abschnitt erstellen Sie NSG-Regeln, um eingehende HTTP- und RDP-Verbin
     # remove default htm file
      remove-item  C:\inetpub\wwwroot\iisstart.htm
     # Add a new htm file that displays server name
-     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello from" + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
    ```
-8. Schließen Sie die RDP-Sitzung mit *myVM1*.
-9. Wiederholen Sie die Schritte 1 bis 8 für die Installation von IIS auf *myVM2*.
+7. Schließen Sie die RDP-Sitzung mit *myVM1*.
+8. Wiederholen Sie die Schritte 1 bis 7 für die Installation von IIS auf *myVM2*.
 
 ## <a name="create-load-balancer-resources"></a>Erstellen von Lastenausgleichsressourcen
 
@@ -190,7 +191,7 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Load Balancer-Regel namens *myLoadBalancerRuleWeb*, die an Port 80 des Front-Ends *FrontendLoadBalancer* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Erstellen Sie eine Lastenausgleichsregel namens *myLoadBalancerRuleWeb*, die an Port 80 des Front-Ends *FrontendLoadBalancer* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und dann in der Ressourcenliste auf **myLoadBalancer**.
 2. Klicken Sie unter **Einstellungen** auf **Lastenausgleichsregeln** und anschließend auf **Hinzufügen**.
