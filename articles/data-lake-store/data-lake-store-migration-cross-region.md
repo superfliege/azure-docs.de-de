@@ -10,15 +10,14 @@ ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 488a9954cef210b727518375e218fe084129a6f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1199eca457c3f06fdd6a4b68a05da3210ea9a2c9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197238"
 ---
 # <a name="migrate-data-lake-store-across-regions"></a>Regionsübergreifende Migration in Azure Data Lake Store
 
@@ -33,7 +32,7 @@ Wenn Azure Data Lake Store in neuen Regionen verfügbar wird, möchten Sie viell
 
 ## <a name="migration-considerations"></a>Überlegungen zur Migration
 
-Ermitteln Sie zuerst die Migrationsstrategie, die am besten zu Ihrer Anwendung passt, die Daten in Data Lake Store schreibt, liest oder verarbeitet. Rechnen Sie bei der Auswahl einer Strategie die Verfügbarkeitsanforderungen Ihrer Anwendung und die Ausfallzeit, die während der Migration auftritt, mit ein. Die einfachste Vorgehensweise könnte z.B. das Cloudmigrationsmodell per Lift & Shift sein. Bei dieser Vorgehensweise halten Sie die Anwendung in Ihrer vorhandenen Region an, während Ihre gesamten Daten in die neue Region kopiert werden. Wenn der Kopiervorgang abgeschlossen ist, können Sie Ihre Anwendung in der neuen Region wieder aufnehmen; löschen Sie anschließend das alte Data Lake Store-Konto. Eine Ausfallzeit während der Migration ist erforderlich.
+Ermitteln Sie zuerst die Migrationsstrategie, die am besten zu Ihrer Anwendung passt, die Daten in Data Lake Store schreibt, liest oder verarbeitet. Berücksichtigen Sie bei der Auswahl einer Strategie die Verfügbarkeitsanforderungen Ihrer Anwendung und die bei einer Migration entstehende Ausfallzeit. Die einfachste Vorgehensweise könnte z. B. die Verwendung des Cloudmigrationsmodells „Lift & Shift“ sein. Bei dieser Vorgehensweise halten Sie die Anwendung in Ihrer vorhandenen Region an, während Ihre gesamten Daten in die neue Region kopiert werden. Wenn der Kopiervorgang abgeschlossen ist, können Sie Ihre Anwendung in der neuen Region wieder aufnehmen; löschen Sie anschließend das alte Data Lake Store-Konto. Eine Ausfallzeit während der Migration ist erforderlich.
 
 Um Ausfallzeiten zu reduzieren, können Sie sofort damit beginnen, neue Daten in der neuen Region zu erfassen. Wenn die mindestens erforderlichen Daten vorhanden sind, führen Sie die Anwendung in der neuen Region aus. Im Hintergrund fahren Sie mit dem Kopieren älterer Daten aus dem alten Azure Data Lake Store-Konto in das neue Azure Data Lake Store-Konto in der neuen Region fort. Mithilfe dieses Ansatzes können Sie den Wechsel in die neue Region mit wenig Ausfallzeit durchführen. Wenn alle älteren Daten kopiert wurden, löschen Sie das alte Data Lake Store-Konto.
 

@@ -13,23 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 05/14/2018
 ms.author: markvi
-ms.openlocfilehash: 0aac3a9d3595ea0e761ba14070bf7cff4d4b264c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f33376d5f68d64495a7a90e62870f3ec14f73246
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258713"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Roaming von Einstellungen und Daten – Häufig gestellte Fragen
-Dieses Thema enthält Antworten auf einige Fragen, die für IT-Administratoren in Bezug auf die Synchronisierung von Einstellungen und App-Daten unter Umständen interessant sind.
+Dieser Artikel enthält Antworten auf Fragen zur Synchronisierung von Einstellungen und App-Daten, die von IT-Administratoren häufig gestellt werden.
 
 ## <a name="what-data-roams"></a>Für welche Daten wird das Roaming durchgeführt?
 **Windows-Einstellungen**: Die PC-Einstellungen, die in das Windows-Betriebssystem integriert sind. Im Allgemeinen sind dies Einstellungen, mit denen Ihr PC personalisiert wird. Sie lassen sich in die folgenden Kategorien unterteilen:
 
 * *Design*: beispielsweise Desktopdesign und Taskleisteneinstellungen.
 * *Internet Explorer-Einstellungen:*: zuletzt geöffnete Registerkarten, Favoriten usw.
-* *Einstellungen des Microsoft Edge-Browsers*: beispielsweise Favoriten und Leseliste.
+* *Einstellungen des Edge-Browsers*: beispielsweise Favoriten und Leseliste.
 * *Kennwörter:*: Internet-Kennwörter, WLAN-Profile usw.
 * *Spracheinstellungen:*: Einstellungen für Tastaturlayouts, Systemsprache, Datum und Uhrzeit usw.
 * *Funktionen für die erleichterte Bedienung:*: Design mit hohem Kontrast, Sprachausgabe, Bildschirmlupe usw.
@@ -70,12 +71,12 @@ Wenn Sie persönliche Daten auf Ihren Unternehmensgeräten gespeichert haben, so
 In den Windows 10-Versionen ab November 2015 wird Enterprise State Roaming nur für jeweils ein Konto unterstützt. Wenn Sie sich mit einem Azure AD-Geschäfts-, Schul- oder Unikonto bei Windows anmelden, werden alle Daten über Azure AD synchronisiert. Wenn Sie sich mit einem persönlichen Microsoft-Konto bei Windows anmelden, werden alle Daten über das Microsoft-Konto synchronisiert. Für universelle App-Daten wird das Roaming nur mit dem primären Anmeldekonto auf dem Gerät durchgeführt – und auch nur dann, wenn sich die Lizenz der App im Besitz des primären Kontos befindet. Universelle App-Daten für Apps, die sich im Besitz von sekundären Konten befinden, werden nicht synchronisiert.
 
 ## <a name="do-settings-sync-for-azure-ad-accounts-from-multiple-tenants"></a>Können Einstellungen für Azure AD-Konten mehrerer Mandanten synchronisiert werden?
-Wenn sich mehrere Azure AD-Konten von verschiedenen Azure AD-Mandanten auf demselben Gerät befinden, müssen Sie die Registrierung des Geräts aktualisieren, um mit dem Azure Rights Management-Dienst (RMS) für jeden Azure AD-Mandanten zu kommunizieren.  
+Wenn sich mehrere Azure AD-Konten von verschiedenen Azure AD-Mandanten auf demselben Gerät befinden, müssen Sie die Registrierung des Geräts aktualisieren, um mit dem Azure Rights Management-Dienst für jeden Azure AD-Mandanten zu kommunizieren.  
 
-1. Suchen Sie die GUID für jeden Azure AD-Mandanten. Öffnen Sie das Azure-Portal, und wählen Sie einen Azure AD-Mandanten aus. Die GUID für den Mandanten befindet sich auf der Eigenschaftenseite für den ausgewählten Mandanten (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) unter **Verzeichnis-ID**. 
+1. Suchen Sie die GUID für jeden Azure AD-Mandanten. Öffnen Sie das Azure-Portal, und wählen Sie einen Azure AD-Mandanten aus. Die GUID für den Mandanten befindet sich auf der Seite „Eigenschaften“ für den ausgewählten Mandanten (https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties), mit der Bezeichnung **Verzeichnis-ID**. 
 2. Wenn Sie die GUID ermittelt haben, müssen Sie den folgenden Registrierungsschlüssel hinzufügen: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<Mandanten-ID-GUID>**.
    Erstellen Sie im Schlüssel **Mandanten-ID-GUID** einen neuen mehrteiligen Zeichenfolgenwert (REG-MULTI-SZ) namens **AllowedRMSServerUrls**. Geben Sie als Daten die URLs der Lizenzverteilungspunkte der anderen Azure-Mandanten an, auf die das Gerät zugreift.
-3. Sie können die Lizenzverteilungspunkt-URLs ermitteln, indem Sie das **Get-AadrmConfiguration** -Cmdlets ausführen. Falls sich die Werte für **LicensingIntranetDistributionPointUrl** und **LicensingExtranetDistributionPointUrl** unterscheiden, müssen Sie beide Werte angeben. Wenn die Werte gleich sind, müssen Sie den Wert nur einmal angeben.
+3. Sie können die Lizenzverteilungspunkt-URLs ermitteln, indem Sie das Cmdlet **Get-AadrmConfiguration** aus dem AADRM-Modul ausführen. Falls sich die Werte für **LicensingIntranetDistributionPointUrl** und **LicensingExtranetDistributionPointUrl** unterscheiden, müssen Sie beide Werte angeben. Wenn die Werte gleich sind, müssen Sie den Wert nur einmal angeben.
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Welche Optionen stehen für das Roaming von Einstellungen für bereits vorhandene Windows-Desktopanwendungen zur Verfügung?
 Roaming kann nur für universelle Windows-Apps verwendet werden. Das Roaming für eine bereits vorhandene Windows-Desktopanwendung kann auf zwei Arten aktiviert werden:
@@ -95,9 +96,9 @@ Es ist möglich, dass Microsoft in Zukunft nach Wegen suchen wird, wie UE-V fest
 Enterprise State Roaming speichert alle synchronisierten Daten in der Azure-Cloud. UE-V bietet eine Lösung für lokales Roaming.
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Wem gehören die Daten, für die das Roaming durchgeführt wird?
-Daten, für die Enterprise State Roaming verwendet wird, gehören den Unternehmen. Die Daten werden in einem Azure-Datencenter gespeichert. Alle Benutzerdaten sind sowohl bei der Übertragung als auch im Ruhezustand in der Cloud über Azure RMS verschlüsselt. Dies ist eine Verbesserung im Vergleich zur Einstellungssynchronisierung basierend auf Microsoft-Konten, da dabei nur bestimmte vertrauliche Daten, z.B. Anmeldeinformationen von Benutzern, verschlüsselt werden, bevor sie das Gerät verlassen.
+Daten, für die Enterprise State Roaming verwendet wird, gehören den Unternehmen. Die Daten werden in einem Azure-Datencenter gespeichert. Alle Benutzerdaten werden sowohl bei der Übertragung als auch der Speicherung in der Cloud mithilfe des Azure Rights Management-Diensts von Azure Information Protection verschlüsselt. Dies ist eine Verbesserung im Vergleich zur Einstellungssynchronisierung basierend auf Microsoft-Konten, da dabei nur bestimmte vertrauliche Daten, z.B. Anmeldeinformationen von Benutzern, verschlüsselt werden, bevor sie das Gerät verlassen.
 
-Microsoft liegt der Schutz von Kundendaten am Herzen. Die Einstellungsdaten eines Unternehmensbenutzers werden immer automatisch per Azure RMS verschlüsselt, bevor sie ein Windows 10-Gerät verlassen, damit kein anderer Benutzer diese Daten lesen kann. Wenn Ihr Unternehmen über ein kostenpflichtiges Abonnement für Azure RMS verfügt, können Sie weitere Azure RMS-Features nutzen, z. B. Nachverfolgen und Widerrufen von Dokumenten, automatisches Schützen von E-Mails mit vertraulichen Informationen und Verwalten Ihrer eigenen Schlüssel (Lösung „Bring Your Own Key“ (BYOK)). Unter [Was ist Azure Rights Management?](https://technet.microsoft.com/jj585026.aspx) finden Sie weitere Informationen zu diesen Features und zur Funktionsweise von Azure RMS.
+Microsoft liegt der Schutz von Kundendaten am Herzen. Die Einstellungsdaten eines Unternehmensbenutzers werden automatisch mithilfe des Azure Rights Management-Diensts verschlüsselt, bevor sie ein Windows 10-Gerät verlassen, damit kein anderer Benutzer diese Daten lesen kann. Wenn Ihr Unternehmen über ein kostenpflichtiges Abonnement für den Azure Rights Management-Dienst verfügt, können Sie weitere Schutzfunktionen nutzen, z. B. Nachverfolgen und Widerrufen von Dokumenten, automatisches Schützen von E-Mails mit vertraulichen Informationen und Verwalten Ihrer eigenen Schlüssel (Lösung „Bring Your Own Key“ (BYOK)). Unter [Was ist Azure Rights Management?](https://docs.microsoft.com/azure/information-protection/understand-explore/what-is-information-protection) finden Sie weitere Informationen zu diesen Features und zur Funktionsweise dieses Schutzdiensts.
 
 ## <a name="can-i-manage-sync-for-a-specific-app-or-setting"></a>Kann ich die Synchronisierung für eine bestimmte Anwendung oder Einstellung verwalten?
 Unter Windows 10 gibt es keine MDM- oder Gruppenrichtlinien-Einstellung, mit der das Roaming für eine einzelne Anwendung deaktiviert werden kann. Mandantenadministratoren können die Synchronisierung von App-Daten für alle Apps auf einem verwalteten Gerät deaktivieren, es gibt jedoch keine präzisere Steuerung auf App-Ebene oder innerhalb der Apps.
@@ -116,8 +117,8 @@ Bei der parallelen Nutzung der Synchronisierung von Unternehmenseinstellungen vo
 ## <a name="how-does-enterprise-state-roaming-support-virtual-desktop-infrastructure-vdi"></a>Wie unterstützt Enterprise State Roaming die virtuelle Desktopinfrastruktur (Virtual Desktop Infrastructure, VDI)?
 Enterprise State Roaming wird nur für Windows 10-Client-SKUs unterstützt, nicht für Server-SKUs. Wenn ein virtueller Clientcomputer auf einem Hypervisorcomputer gehostet wird und Sie sich remote bei dem virtuellen Computer anmelden, wird das Roaming für Ihre Benutzerdaten durchgeführt. Wenn mehrere Benutzer das gleiche Betriebssystem verwenden und sich remote bei einem Server anmelden, um uneingeschränkte Desktopfeatures zu nutzen, findet möglicherweise kein Roaming statt. Dieses sitzungsbasierte Szenario wird offiziell nicht unterstützt.
 
-## <a name="what-happens-when-my-organization-purchases-azure-rms-after-using-roaming"></a>Was passiert, wenn meine Organisation Azure RMS erwirbt, nachdem das Roaming genutzt wurde?
-Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlose, eingeschränkte Azure RMS-Abonnement nutzt, hat der Erwerb eines kostenpflichtigen Azure RMS-Abonnements keinerlei Auswirkungen auf die Funktionen des Roamingfeatures, und Ihr IT-Administrator muss keine Änderungen an der Konfiguration vornehmen.
+## <a name="what-happens-when-my-organization-purchases-a-subscription-that-includes-azure-rights-management-after-using-roaming"></a>Was geschieht, wenn meine Organisation Roaming verwendet und anschließend ein Abonnement erwirbt, das Azure Rights Management enthält?
+Falls Ihre Organisation das Roaming unter Windows 10 bereits über das kostenlose, eingeschränkte Azure Rights Management-Abonnement nutzt, hat der Erwerb eines [kostenpflichtigen Abonnements](https://azure.microsoft.com/pricing/details/information-protection/), das den Azure Rights Management-Schutzdienst enthält, keinerlei Auswirkungen auf die Funktionen des Roamingfeatures, und Ihr IT-Administrator muss keine Änderungen an der Konfiguration vornehmen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 In der Dokumentation im Abschnitt [Problembehandlung](active-directory-windows-enterprise-state-roaming-troubleshooting.md) finden Sie eine Liste der bekannten Probleme. 

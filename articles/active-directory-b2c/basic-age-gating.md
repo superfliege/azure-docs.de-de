@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 3d6804f7e546547d734f966656362111b31078a4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206320"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34261281"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Verwenden einer Altersbeschränkung in Active Directory B2C
 
@@ -51,22 +51,19 @@ Nach der Aktivierung der Altersbeschränkung in Ihrem Benutzerflow ändert sich 
 Sie können wählen, ob Sie Minderjährige ohne Zustimmung eines Erziehungsberechtigten in Active Directory B2C sperren lassen möchten oder ob Sie die Anwendung darüber entscheiden soll, wie weiter mit ihnen verfahren wird.  
 
 ###<a name="allowing-minors-without-parental-consent"></a>Zulassen von Minderjährigen ohne Zustimmung eines Erziehungsberechtigten
-Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides umfassen, können Sie wählen, ob Minderjährige ohne Zustimmung Ihre Anwendung verwenden können sollen.  Minderjährigen ohne Zustimmung eines Erziehungsberechtigten ist es gestattet, sich normal anzumelden oder zu registrieren. Dabei stellt Azure Directory B2C ein ID-Token mit dem `legalAgeGroupClassification`-Anspruch aus.  Bei Verwendung dieses Anspruchs können Sie wählen, welche Benutzeroberfläche diesen Benutzern angezeigt werden soll, wie z.B. die, über die eine Zustimmung eines Erziehungsberechtigten eingeholt wird (wobei wird das Feld `consentProvidedForMinor` aktualisiert wird).
+Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides zulassen, können Sie wählen, ob Minderjährige ohne Zustimmung Ihre Anwendung verwenden können sollen.  Minderjährigen ohne Zustimmung eines Erziehungsberechtigten ist es gestattet, sich normal anzumelden oder zu registrieren. Dann stellt Azure AD B2C ein ID-Token mit dem `legalAgeGroupClassification`-Anspruch aus.  Bei Verwendung dieses Anspruchs können Sie wählen, welche Benutzeroberfläche diesen Benutzern angezeigt werden soll, wie z.B. die, über die eine Zustimmung eines Erziehungsberechtigten eingeholt wird (wobei wird das Feld `consentProvidedForMinor` aktualisiert wird).
 
 ###<a name="blocking-minors-without-parental-consent"></a>Sperren von Minderjährigen ohne Zustimmung eines Erziehungsberechtigten
-Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides umfassen, können Sie wählen, ob Minderjährige ohne Zustimmung für Ihre Anwendung gesperrt werden sollen.  Es gibt zwei Optionen, wie in Active Directory B2C gesperrte Benutzer behandelt werden sollen:
+Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides zulassen, können Sie festlegen, ob Minderjährige ohne Zustimmung für die Anwendung gesperrt werden.  Es gibt zwei Optionen, wie in Active Directory B2C gesperrte Benutzer behandelt werden sollen:
 * JSON-Funktion zurück an die Anwendung senden: Diese Option sendet eine Antwort zurück an die Anwendung, dass ein Minderjähriger gesperrt wurde.
 * Fehlerseite anzeigen: Dem Benutzer wird eine Seite angezeigt, die ihn darüber informiert, dass er nicht auf die Anwendung zugreifen kann.
 
 ##<a name="known-issues"></a>Bekannte Probleme
-###<a name="customization-unavailable-for-new-pages"></a>Anpassung ist für neue Seiten nicht verfügbar.
-Es gibt zwei neue Seiten, die in Ihrem Benutzerflow angezeigt werden können, wenn Sie die Altersbeschränkung aktivieren.  Diese Seiten zum Sammeln von Wohnsitz- und Geburtsdaten bei der Anmeldung und die Fehlerseite können nicht mit dem Seitenlayout oder der Sprachanpassung verwendet werden.  Diese Option steht in einem der nächsten Updates zur Verfügung.
-
 ###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Das Format für die Antwort, wenn ein Minderjähriger blockiert ist.
 Die Antwort ist derzeit nicht korrekt formatiert. Dieser Fehler wird in einem kommenden Update behoben.
 
 ###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Die Altersbeschränkung ist ggf. nicht möglich, wenn bestimmte, während der Einrichtung hinzugefügte Attribute gelöscht wurden.
-Bei der Einrichtung für die Altersbeschränkung haben Sie Ihr Verzeichnis über eine Option in Ihren `Properties` konfiguriert.  Wenn Sie entweder `legalCountry` oder `dateOfBirth` löschen, kann Ihr Mandant keine Altersbeschränkung mehr verwenden und diese Eigenschaften können nicht wiederhergestellt werden.
+Bei der Einrichtung für die Altersbeschränkung haben Sie Ihr Verzeichnis über eine Option in Ihren `Properties` konfiguriert.  Wenn Sie entweder `legalCountry` oder `dateOfBirth` über Graph löschen, kann Ihr Verzeichnis keine Altersbeschränkung mehr verwenden und diese Eigenschaften können nicht wiederhergestellt werden.
 
 ###<a name="list-of-countries-is-incomplete"></a>Liste der Länder ist unvollständig.
 Derzeit ist die Liste der Länder für „legalCountry“ unvollständig. Die restlichen Länder werden in einem kommenden Update hinzugefügt.

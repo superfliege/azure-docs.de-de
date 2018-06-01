@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 681831dcc65fa74d8d2e26f58849140498843c49
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: f0604007255d829cab0502e93895ca541da3b93a
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33931263"
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260508"
 ---
 # <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Behandeln von Problemen bei Zugriff und Verwendung des Portals „Meine Apps“
 
@@ -58,10 +58,11 @@ Stellen Sie sicher, dass folgende Browseranforderungen erfüllt sind:
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 - **Internet Explorer 11:** Unter Windows 7 oder höher (eingeschränkte Unterstützung)
 
-Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den folgenden Websites herunterladen:
+Sie können die Erweiterung auch direkt über die folgenden Websites herunterladen:
 
-- [Chrome-Erweiterung](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
-- [Edge-Erweiterung](https://www.microsoft.com/store/apps/9pc9sckkzk84)
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 Wenn Sie die Erweiterung installiert haben und dennoch weiterhin Probleme auftreten, versuchen Sie Folgendes:
 
@@ -79,13 +80,13 @@ Wenn Sie die Erweiterung installiert haben und dennoch weiterhin Probleme auftre
    5. Klicken Sie auf **Melden Sie sich an, um loszulegen**, um sich bei der Erweiterung anzumelden.
 
 * Gehen Sie wie folgt vor, um sich im Browser direkt bei einer App anzumelden:
-   1. Melden Sie sich nach der Erweiterungsinstallation bei der Erweiterung an, indem Sie auf **Melden Sie sich an, um loszulegen** klicken.
+   1. Melden Sie sich nach der Installation bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
    2. Melden Sie sich mit der Anmelde-URL bei der App an.  
        Bei der Anmelde-URL handelt es sich üblicherweise um die URL, unter der das Anmeldeformular einer App angezeigt wird.
       Die Erweiterung sollte ihren Status ändern und Sie darüber informieren, dass ein Kennwort verfügbar ist.
    3. Klicken Sie auf das Symbol für die Erweiterung, um sich anzumelden.
 
-* Um eine App über die Erweiterung zu starten, gehen Sie wie folgt vor:
+* Gehen Sie wie folgt vor, um eine App über die Erweiterung zu starten:
    1. Melden Sie sich nach der Installation bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
    2. Klicken Sie auf das Symbol für die Erweiterung, um das dazugehörige Menü zu öffnen.
    3. Suchen Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
