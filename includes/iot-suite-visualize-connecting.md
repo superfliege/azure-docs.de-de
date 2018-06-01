@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/24/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 5eca35141544e8ea451dfc7471a83e3e1e980360
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34307616"
+---
 ## <a name="view-device-telemetry"></a>Anzeigen der Gerätetelemetrie
 
 Sie können die von Ihrem Gerät gesendeten Telemetriedaten in der Lösung auf der Seite **Geräte** sehen.
@@ -24,7 +41,7 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die
 
     ![Auswählen des physischen Geräts](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. Um eine Liste der Methoden anzuzeigen, können Sie diese auf Ihrem Gerät aufrufen und **Planen** wählen. Um eine Methode für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auswählen. Der Bereich **Planen** zeigt die für alle ausgewählten Geräte gemeinsamen Methodentypen an.
+1. Um eine Liste der Methoden anzuzeigen, die Sie auf Ihrem Gerät aufrufen können, wählen Sie **Aufträge** und dann **Run method** (Methode ausführen) aus. Um einen Auftrag für die Ausführung auf mehreren Geräten zu planen, können Sie mehrere Geräte in der Liste auswählen. Im Bereich **Aufträge** werden die für alle ausgewählten Geräte gemeinsamen Methodentypen angezeigt.
 
 1. Wählen Sie **FirmwareUpdate** aus, und legen Sie **UpdatePhysischesKühlgerät** als Auftragsnamen fest. Legen Sie die **Firmwareversion** auf **2.0.0** und den **Firmware-URI** auf **http://contoso.com/updates/firmware.bin** fest, und klicken Sie dann auf **Anwenden**:
 
@@ -41,4 +58,4 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Lösung für die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Anpassen der vorkonfigurierten Lösung für die Remoteüberwachung](../articles/iot-suite/iot-suite-remote-monitoring-customize.md) werden einige Möglichkeiten zur Anpassung der vorkonfigurierten Lösung beschrieben.
+Im Artikel [Anpassen des Solution Accelerators für Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) werden einige Möglichkeiten zum Anpassen des Solution Accelerators beschrieben.
