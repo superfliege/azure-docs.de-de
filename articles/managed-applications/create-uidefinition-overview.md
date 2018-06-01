@@ -1,6 +1,6 @@
 ---
-title: "Grundlegendes zum Erstellen von Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Hier wird beschrieben, wie Sie Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellen."
+title: Grundlegendes zum Erstellen von Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie Benutzeroberflächendefinitionen für verwaltete Azure-Anwendungen erstellen.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -8,16 +8,17 @@ manager: timlt
 editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1e995a3de33960fa3255074a704528bec9d21491
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 59003e71324f5342cb2b724f670603fd6b67afe4
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305224"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung
 In diesem Dokument werden die grundlegenden Konzepte der Datei „createUiDefinition.json“ vorgestellt. Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung.
@@ -70,7 +71,7 @@ Um den Ressourcennamen der verwalteten Anwendung festzulegen, müssen Sie einen 
 }
 ```
 
-## <a name="functions"></a>Funktionen
+## <a name="functions"></a>Functions
 Ähnlich wie bei Vorlagenfunktionen in Azure Resource Manager (sowohl in Bezug auf Syntax als auch auf Funktionalität) stellt das CreateUiDefinition-Element Funktionen zum Arbeiten mit Ein- und Ausgaben von Elementen sowie Features wie konditionelle Abschnitte bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -79,6 +80,6 @@ Die Datei „createUiDefinition.json“ besitzt selbst ein einfaches Schema. Die
 - [CreateUiDefinition-Elemente](create-uidefinition-elements.md)
 - [Funktionen](create-uidefinition-functions.md)
 
-Ein aktuelles JSON-Schema für „createUiDefinition“ ist hier verfügbar: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
+Ein aktuelles JSON-Schema für createUiDefinition ist unter folgendem Link verfügbar: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
 
 Ein Beispiel für eine Benutzeroberflächendatei finden Sie unter [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).

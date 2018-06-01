@@ -8,11 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: raynew
-ms.openlocfilehash: d2c637dc742ee854c7787cf7cd883930c4eaa8bc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f8149d2af5542fb311ff83160d674e4d525289dc
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011372"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
@@ -23,9 +24,9 @@ In diesem Artikel werden die unterstützten Komponenten und Einstellungen für d
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
 **Szenario** | **Details**
---- | --- 
+--- | ---
 Hyper-V mit Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](tutorial-vmm-to-vmm.md).
-Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen. 
+Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
 
 
 ## <a name="on-premises-servers"></a>Lokale Server
@@ -39,7 +40,7 @@ Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2016
 ## <a name="replicated-vms"></a>Replizierte VMs
 
 
-In der folgenden Tabelle wird die VM-Unterstützung zusammengefasst. Site Recovery unterstützt alle Workloads, die auf einem unterstützten Betriebssystem ausgeführt werden. 
+In der folgenden Tabelle wird die VM-Unterstützung zusammengefasst. Site Recovery unterstützt alle Workloads, die auf einem unterstützten Betriebssystem ausgeführt werden.
 
  **Komponente** | **Details**
 --- | ---
@@ -78,7 +79,8 @@ Multi-NIC | Ja | Ja
 Reservierte IP | Ja | Ja
 IPv4 | Ja | Ja
 Quell-IP-Adresse beibehalten | Ja | Ja
-Azure Virtual Network-Dienstendpunkte<br/><br/> (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein  | Nein 
+Azure Virtual Network-Dienstendpunkte<br/> (ohne Azure Storage-Firewalls) | Ja | Ja
+Beschleunigter Netzwerkbetrieb | Nein  | Nein 
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V-Hostspeicher
@@ -125,7 +127,7 @@ Blockblobs | Nein  | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Storage Premium | Ja | Ja
 Import-/Exportdienst | Nein  | Nein 
-Dienstendpunkte virtueller Azure-Netzwerke (Azure Storage-Firewalls und -VNETs) auf Ziel für Cachespeicherkonto für Replikationsdaten | Nein  | Nein 
+Azure Storage-Firewalls für virtuelle Netzwerke, konfiguriert im Zielspeicher-/Cachespeicherkonto (zum Speichern von Replikationsdaten) | Nein  | Nein 
 
 
 ## <a name="azure-compute-features"></a>Azure-Computefeatures
@@ -159,9 +161,9 @@ VM-Typ | Generation 1<br/><br/> Generation 2 – Windows | Zwei virtuelle Comput
 ## <a name="recovery-services-vault-actions"></a>Aktionen mit dem Recovery Services-Tresor
 
 **Aktion** |  **Hyper-V mit Virtual Machine Manager** | **Hyper-V ohne Virtual Machine Manager**
---- | --- | --- 
-Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  
-Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  
+--- | --- | ---
+Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein 
+Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein 
 
 
 ## <a name="provider-and-agent"></a>Anbieter und Agent
@@ -179,4 +181,4 @@ Microsoft Azure Recovery Services-Agent | Koordiniert die Replikation zwischen H
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erfahren Sie, wie Sie Azure für die Notfallwiederherstellung von lokalen Hyper-V-VMs [vorbereiten](tutorial-prepare-azure.md). 
+Erfahren Sie, wie Sie Azure für die Notfallwiederherstellung von lokalen Hyper-V-VMs [vorbereiten](tutorial-prepare-azure.md).

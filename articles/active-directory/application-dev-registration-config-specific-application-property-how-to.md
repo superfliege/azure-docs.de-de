@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cb85971d6d3d4dade69b9dc04e070c67341533a5
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
+ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34055616"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Ausfüllen bestimmter Felder für eine benutzerdefiniert entwickelte Anwendung
 
-Dieser Artikel bietet eine kurze Beschreibung aller verfügbaren Felder im Registrierungsformular für Anwendungen im [Azure-Portal](https://portal.azure.com).
+Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anwendungsregistrierungsformular im [Azure-Portal](https://portal.azure.com).
 
 ## <a name="register-a-new-application"></a>Registrieren einer neuen Anwendung
 
@@ -43,7 +44,7 @@ Dieser Artikel bietet eine kurze Beschreibung aller verfügbaren Felder im Regis
 | |**Nativ**: Eine Anwendung, die auf dem Gerät oder Computer eines Benutzers installiert werden kann.           |
 | Anmelde-URL      | Die URL, unter der sich Benutzer bei Ihrer Anwendung anmelden können.                                  |
 
-Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert und Sie werden auf die Anwendungsseite weitergeleitet. Mit der Schaltfläche **Einstellungen** im Bereich der Anwendung öffnen Sie die Einstellungsseite, die weitere Felder enthält, mit denen Sie Ihre Anwendung anpassen können. Die folgende Tabelle beschreibt alle Felder auf der Einstellungsseite. Beachten Sie, dass Ihnen möglicherweise nur ein Teil dieser Felder angezeigt wird, je nachdem, ob Sie eine Webanwendung oder eine native Anwendung erstellt haben.
+Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im Azure-Portal registriert, und Sie werden auf die Anwendungsseite weitergeleitet. Mit der Schaltfläche **Einstellungen** im Bereich der Anwendung öffnen Sie die Einstellungsseite, die weitere Felder enthält, mit denen Sie Ihre Anwendung anpassen können. Die folgende Tabelle beschreibt alle Felder auf der Einstellungsseite. Beachten Sie, dass Ihnen möglicherweise nur ein Teil dieser Felder angezeigt wird, je nachdem, ob Sie eine Webanwendung oder eine native Anwendung erstellt haben.
 
 | Feld           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                     |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -58,4 +59,4 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 | Schlüssel            | Sie können Schlüssel erstellen, um programmgesteuert und ohne Benutzerinteraktion auf Web-APIs zuzugreifen, die von Azure AD gesichert werden. Geben Sie auf der Seite \*\*Schlüssel\*\* eine Beschreibung des Schlüssels sowie das Ablaufdatum ein, und speichern Sie die Informationen, um den Schlüssel zu generieren. Stellen Sie sicher, dass Sie den Schlüssel an sicherer Stelle speichern, da Sie später nicht mehr darauf zugreifen können.             |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Verwalten von Anwendungen mit Azure Active Directory](active-directory-enable-sso-scenario.md)
+[Verwalten von Anwendungen mit Azure Active Directory](manage-apps/what-is-application-management.md)

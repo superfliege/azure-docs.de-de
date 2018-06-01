@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: e6fd51cb2550549e14934c3f4774a40d42281247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b3d7c94e8b1415a24427e1f90f5613d8c181608a
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197992"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
@@ -151,6 +152,21 @@ Im obigen Beispiel löst der Rückruf einen Fehler aus, wenn der Vorgang fehlsch
 Diese gespeicherte Prozedur kann so geändert werden, dass ein Array von Dokumenttexten als Eingabe übernommen wird und alle während der Ausführung derselben gespeicherten Prozedur erstellt werden, anstatt mehrere Anforderungen zu verwenden, um sie jeweils einzeln zu erstellen. Mit dieser gespeicherten Prozedur kann eine effiziente Massenimportfunktion für Cosmos DB implementiert werden (dies wird später in diesem Tutorial erörtert).   
 
 Das beschriebene Beispiel hat die Verwendung gespeicherter Prozeduren veranschaulicht. Trigger und benutzerdefinierte Funktionen (UDFs) werden später in diesem Tutorial behandelt.
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+Beim Definieren einer gespeicherten Prozedur mithilfe des Azure-Portals werden Eingabeparameter immer als Zeichenfolge an die gespeicherte Prozedur gesendet. Selbst wenn Sie ein Array von Zeichenfolgen als Eingabe übergeben, wird das Array in eine Zeichenfolge konvertiert und an die gespeicherte Prozedur gesendet. Zur Umgehung dieses Problems können Sie eine Funktion in der gespeicherten Prozedur definieren, mit der die Zeichenfolge als Array analysiert wird. Der folgende Code ist ein Beispiel für das Analysieren der Zeichenfolge als Array: 
+
+``` 
+function sample(arr) {
+    if (typeof arr === "string") arr = JSON.parse(arr);
+    
+    arr.forEach(function(a) {
+        // do something here
+        console.log(a);
+    });
+}
+```
 
 ## <a name="database-program-transactions"></a>Datenbankprogrammtransaktionen
 Eine Transaktion in einer typischen Datenbank kann als Folge von Vorgängen definiert werden, die als einzelne logische Arbeitseinheit ausgeführt wird. Jede Transaktion bietet **ACID-Garantien**. ACID (Atomicity, Consistency, Isolation, Durability) ist ein bekanntes Akronym, das für vier Eigenschaften steht: Unteilbarkeit, Konsistenz, Isolation und Dauerhaftigkeit.  

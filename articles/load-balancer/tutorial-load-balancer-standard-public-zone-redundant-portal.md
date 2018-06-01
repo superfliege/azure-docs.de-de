@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/20/2018
+ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 9ff0b53f6c6f10a2e97bd3158f874fa5cfe33bb6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ec1cc42a0c932e47c08493fa632495426abc4c7
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34304459"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mit einem Standard-Lastenausgleich im Azure-Portal
 
@@ -37,6 +38,8 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 > * Anzeigen eines Load Balancers im Betrieb
 
 Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+
+Sie können dieses Tutorial auch mit der [Azure-Befehlszeilenschnittstelle](load-balancer-standard-public-zone-redundant-cli.md) durcharbeiten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
@@ -141,18 +144,21 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
 1. Klicken Sie im linken Menü auf **Alle Ressourcen** und anschließend in der Ressourcenliste auf **myVM1** (in der Ressourcengruppe *myResourceGroupLBAZ*).
 2. Klicken Sie auf der Seite **Übersicht** auf **Verbinden**, um eine RDP-Verbindung mit dem virtuellen Computer herzustellen.
 3. Melden Sie mit dem Benutzernamen *azureuser* bei dem virtuellen Computer.
-4. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Server-Manager**.
-5. Klicken Sie auf der Schnellstartseite des Server-Manager auf **Rollen und Features hinzufügen**.
-
-   ![Hinzufügen zum Back-End-Adresspool ](./media/load-balancer-standard-public-availability-zones-portal/servermanager.png)    
-
-1. Verwenden Sie im Assistenten **Rollen und Features hinzufügen** folgende Werte:
-    - Klicken Sie auf der Seite **Installationstyp auswählen** auf die Option **Rollenbasierte oder featurebasierte Installation**.
-    - Klicken Sie auf der Seite **Zielserver auswählen** auf **myVM1**.
-    - Klicken Sie auf der Seite **Serverrolle auswählen** auf **Webserver (IIS)**.
-    - Folgen Sie den Anweisungen, um die restlichen Schritte des Assistenten abzuschließen.
-2. Schließen Sie die RDP-Sitzung mit dem virtuellen Computer *myVM1*.
-3. Wiederholen Sie die Schritte 1 bis 7 für die Installation der IIS auf den VMs *myVM2* und *myVM3*.
+4. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Windows PowerShell**.
+5. Führen Sie im PowerShell-Fenster die folgenden Befehle aus, um den IIS-Server zu installieren, die Standarddatei „iisstart.htm“ zu entfernen und dann eine neue Datei „iisstart.htm“ hinzuzufügen, die den Namen des virtuellen Computers enthält:
+   ```azurepowershell-interactive
+    
+    # install IIS server role
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from" + $env:computername)
+   ```
+6. Schließen Sie die RDP-Sitzung mit *myVM1*.
+7. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf *myVM2* und *myVM3* zu installieren.
 
 ## <a name="create-load-balancer-resources"></a>Erstellen von Lastenausgleichsressourcen
 
@@ -215,7 +221,7 @@ Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virt
 
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
 
-      ![IIS-Webserver](./media/load-balancer-standard-public-availability-zones-portal/9-load-balancer-test.png)
+      ![IIS-Webserver](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
 Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Lastenausgleich den Datenverkehr auf die in der Zone angeordneten VMs verteilt.
 

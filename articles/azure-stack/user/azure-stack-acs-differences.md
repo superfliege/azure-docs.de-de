@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2017
+ms.date: 05/14/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 165a899dbad0893b3a2bddcfc68c9b5d737e9d3d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5a4d3312d6574f761da9a28bfb01a34acf11c9cc
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34197809"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack-Speicher: Unterschiede und Überlegungen
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 04/28/2018
 
 Azure Stack-Speicher ist eine Reihe von Speicherclouddiensten in Microsoft Azure Stack. Der Azure Stack-Speicher bietet Blob-, Tabellen-, Warteschlangen- und Kontoverwaltungsfunktionen mit einer mit Azure konsistenten Semantik.
 
-Dieser Artikel beschreibt die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage. Außerdem enthält er noch weitere Überlegungen, die Sie bei der Bereitstellung von Azure Stack beachten sollten. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Thema [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
+Dieser Artikel fasst die bekannten Unterschiede des Azure Stack-Speichers im Vergleich zu Azure Storage-Diensten zusammen. Außerdem werden dort die Aspekte erläutert, die beim Bereitstellen von Azure Stack berücksichtigt werden sollten. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Thema [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
 ## <a name="cheat-sheet-storage-differences"></a>Spickzettel: Speicherunterschiede
 
@@ -49,26 +50,28 @@ Vorläufiges Löschen für Blobspeicher|Vorschau|Noch nicht unterstützt.
 |Größe für Tabellenpartitionsschlüssel und Zeilenschlüssel|1.024 Zeichen (2.048 Bytes)|400 Zeichen (800 Bytes)
 |Momentaufnahme eines Blobs|Die maximale Anzahl von Momentaufnahmen eines Blobs ist nicht beschränkt.|Die maximale Anzahl von Momentaufnahmen eines Blobs beträgt 1.000.|
 
-### <a name="metrics"></a>Metriken
-Es gibt auch einige Unterschiede zu Speichermetriken:
+Es gibt auch Unterschiede zu Speichermetriken:
+
 * Die Transaktionsdaten in Speichermetriken unterscheiden nicht zwischen interner oder externer Netzwerkbandbreite.
 * Die Transaktionsdaten in Speichermetriken beinhalten keinen Zugriff auf die bereitgestellten Datenträger über virtuelle Computer.
 
 ## <a name="api-version"></a>API-Version
+
 Die folgenden Versionen werden für Azure Stack-Speicher unterstützt:
 
 Azure Storage-Dienst-APIs:
 
 Update 1802 oder neuer:
+
  - [2017-04-17](https://docs.microsoft.com/rest/api/storageservices/version-2017-04-17)
  - [2016-05-31](https://docs.microsoft.com/rest/api/storageservices/version-2016-05-31)
  - [2015-12-11](https://docs.microsoft.com/rest/api/storageservices/version-2015-12-11)
- - [2015-07-08 ](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
+ - [2015-07-08](https://docs.microsoft.com/rest/api/storageservices/version-2015-07-08)
  - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Vorherige Versionen:
- - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
+ - [2015-04-05](https://docs.microsoft.com/rest/api/storageservices/version-2015-04-05)
 
 Verwaltungs-APIs für Azure Storage-Dienste:
 
@@ -78,7 +81,7 @@ Verwaltungs-APIs für Azure Storage-Dienste:
 
 ## <a name="sdk-versions"></a>SDK-Versionen
 
-Die folgenden Clientbibliotheken werden für Azure Stack-Speicher unterstützt:
+Azure Stack-Speicher unterstützt die folgenden Clientbibliotheken:
 
 | Clientbibliothek | Von Azure Stack unterstützte Version | Link                                                                                                                                                                                                                                                                                                                                     | Endpunktspezifikation       |
 |----------------|-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -94,4 +97,3 @@ Die folgenden Clientbibliotheken werden für Azure Stack-Speicher unterstützt:
 
 * [Get started with Azure Stack Storage development tools](azure-stack-storage-dev.md) (Erste Schritte mit den Azure Stack-Speicherentwicklungstools)
 * [Introduction to Azure Stack Storage](azure-stack-storage-overview.md) (Einführung zu Azure Stack-Speicher)
-

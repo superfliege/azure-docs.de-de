@@ -1,21 +1,22 @@
 ---
-title: "Ausführen eines Failovers und Failbacks von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery (Vorschau)"
-description: "Erfahren Sie, wie Sie ein Failover und Failback von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery durchführen."
+title: Ausführen eines Failovers und Failbacks von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery
+description: Erfahren Sie, wie Sie ein Failover und Failback von replizierten Azure-VMs auf eine sekundäre Azure-Region mit Azure Site Recovery durchführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 05/15/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc7ead9e7d55d1b22118774e98c741991e8af2d9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4a27142f9110fd26daa8ea0ebd151a67769e6568
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209272"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen (Vorschau)
+# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
 
@@ -26,6 +27,8 @@ In diesem Tutorial wird beschrieben, wie für eine einzelne Azure-VM ein Failove
 > * Erneutes Schützen der sekundären Azure-VM, damit sie zur primären Region repliziert wird
 > * Ausführen des Failbacks der sekundären VM
 > * Erneutes Schützen der primären VM zurück zur sekundären Region
+
+Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschauphase.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
