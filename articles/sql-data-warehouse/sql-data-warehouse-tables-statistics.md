@@ -7,14 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 05/09/2018
+ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8d91714e6864ff0a9816f5ec518878334f6ba84
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2922a859f741c6b6420f49d34b982b7ec4968a8c
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011763"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Erstellen, Aktualisieren von Statistiken von Tabellen in Azure SQL Data Warehouse
 Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
@@ -22,24 +23,46 @@ Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierun
 ## <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 Je mehr Informationen Azure SQL Data Warehouse zu Ihren Daten besitzt, desto schneller können Abfragen dafür durchgeführt werden. Das Sammeln von Statistiken für Ihre Daten und das anschließende Laden in SQL Data Warehouse ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung Ihrer Abfragen treffen können. Der Grund ist, dass der Abfrageoptimierer von SQL Data Warehouse ein kostenbasierter Optimierer ist. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. Dies ist meistens der Plan, der am schnellsten ausgeführt wird. Wenn vom Optimierer beispielsweise geschätzt wird, dass für das Filterdatum der Abfrage eine Zeile zurückgegeben wird, wird unter Umständen ein anderer Plan gewählt, als wenn die Schätzung lautet, dass für das ausgewählte Datum 1 Million Zeilen zurückgegeben werden.
 
-Das Erstellen und Aktualisieren von Statistiken ist derzeit ein manueller Prozess, der aber nicht schwierig ist.  In Kürze können Sie Statistiken für einzelne Spalten und Indizes automatisch erstellen und aktualisieren.  Mit den unten angegebenen Informationen können Sie die Verwaltung der Statistiken über Ihre Daten stark automatisieren. 
+## <a name="automatic-creation-of-statistics"></a>Automatische Erstellung von Statistiken
+Wenn die Option zur automatischen Erstellung von Statistiken AUTO_CREATE_STATISTICS aktiviert ist, analysiert SQL Data Warehouse eingehende Benutzerabfragen, wobei Statistiken für Spalten mit fehlenden Statistiken erstellt werden. Der Abfrageoptimierer erstellt Statistiken für einzelne Spalten im Abfrageprädikat oder der Verknüpfungsbedingung, um Kardinalitätsschätzungen für den Abfrageplan zu verbessern. Die automatische Erstellung von Statistiken ist zurzeit standardmäßig aktiviert.
 
-## <a name="scenarios"></a>Szenarien
-Das Erstellen von erfassten Statistiken für jede Spalte ist eine einfache Möglichkeit, um in das Thema einzusteigen. Veraltete Statistiken führen zu einer suboptimalen Abfrageleistung. Das Aktualisieren von Statistiken für alle Spalten bei zunehmendem Datenumfang kann jedoch Arbeitsspeicher beanspruchen. 
+Sie können überprüfen, ob diese bei Ihrem Data Warehouse konfiguriert ist, indem Sie den folgenden Befehl ausführen:
 
-Es folgen einige Empfehlungen für verschiedene Szenarien:
-| **Szenario** | Empfehlung |
-|:--- |:--- |
-| **Erste Schritte** | Aktualisieren aller Spalten nach der Migration zu SQL Data Warehouse |
-| **Wichtigste Spalte für Statistiken** | Hashverteilungsschlüssel |
-| **Zweitwichtigste Spalte für Statistiken** | Partitionsschlüssel |
-| **Andere wichtige Spalten für Statistiken** | Date, Frequent JOINs, GROUP BY, HAVING und WHERE |
-| **Aktualisierungshäufigkeit für Statistiken**  | Konservativ: Täglich <br></br> Nach dem Laden oder Transformieren von Daten |
-| **Stichproben** |  Weniger als 1 Milliarde Zeilen, Standard-Stichprobenentnahme verwenden (20 Prozent) <br></br> Bei mehr als 1 Milliarde Zeilen sind Statistiken für einen Bereich von 2 Prozent gut geeignet |
+```sql
+SELECT name, is_auto_create_stats_on 
+FROM sys.databases
+```
+Wenn AUTO_CREATE_STATISTICS nicht für Ihr Data Warehouse konfiguriert ist, sollten Sie diese Eigenschaft durch Ausführen des folgenden Befehls aktivieren:
+
+```sql
+ALTER DATABASE <yourdatawarehousename> 
+SET AUTO_CREATE_STATISTICS ON
+```
+Die Anweisungen SELECT, INSERT-SELECT, CTAS, UPDATE, DELETE und EXPLAIN lösen die automatische Erstellung von Statistiken aus, wenn eine Verknüpfung enthalten ist oder das Vorhandensein eines Prädikats erkannt wird. 
+
+> [!NOTE]
+> Die automatische Erstellung von Statistiken ist nicht bei temporären oder externen Tabellen möglich.
+> 
+
+Die automatische Erstellung von Statistiken erfolgt synchron, sodass möglicherweise eine geringfügige Verlangsamung bei der Abfrageleistung auftreten kann, sofern von Ihren Spalten noch keine Statistiken für diese erstellt wurden. Die Erstellung von Statistiken kann je nach Größe der Tabelle für eine einzelne Spalte einige Sekunden dauern. Um Leistungseinbußen bei der Messung zu verhindern, insbesondere bei der Leistung in Benchmarks, sollten Sie zuerst durch Ausführung der Benchmarkworkload sicherstellen, dass Statistiken erstellt wurden, bevor Sie Profile für das System erstellen.
+
+> [!NOTE]
+> Die Erstellung von Statistiken wird zudem in [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016) in einem anderen Benutzerkontext protokolliert.
+> 
+
+Bei der automatischen Erstellung von Statistiken weisen diese das folgende Muster auf: _WA_Sys_<8-stellige Spalten-ID im Hexadezimalformat>_<8-stellige Tabellen-ID im Hexadezimalformat>. Sie können Statistiken anzeigen, die bereits erstellt wurden, indem Sie den folgenden Befehl ausführen:
+
+```sql
+DBCC SHOW_STATISTICS (<tablename>, <targetname>)
+```
 
 ## <a name="updating-statistics"></a>Aktualisieren von Statistiken
 
 Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hinzufügens neuer Daten täglich zu aktualisieren. Bei jedem Laden von neuen Zeilen in das Data Warehouse werden neue Datumsangaben für Lade- oder Transaktionsvorgänge hinzugefügt. Hierdurch wird die Datenverteilung geändert, und die Statistiken sind nicht mehr aktuell. Im Gegensatz dazu müssen Statistiken zu einer Länderspalte in einer Kundentabelle unter Umständen nie aktualisiert werden, da sich die Verteilung der Werte in der Regel nicht ändert. Wenn davon auszugehen ist, dass die Verteilung zwischen Kunden konstant ist, bewirkt das Hinzufügen neuer Zeilen zur Tabellenvariante keine Änderung der Datenverteilung. Wenn Ihr Data Warehouse allerdings nur ein Land enthält und Sie Daten eines neuen Lands hinzufügen, führt dies dazu, dass Daten aus mehreren Ländern gespeichert werden. Sie müssen dann die Statistiken in der Länderspalte aktualisieren.
+
+Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
+
+| **Häufigkeit von Updates für Statistiken** | Konservativ: täglich <br></br> Nach dem Laden oder der Umwandlung Ihrer Daten || **Sampling** |  Bei weniger als 1 Milliarde Zeilen Sampling verwenden (20 Prozent) <br></br> Bei mehr als 1 Milliarde Zeilen sind Statistiken für einen Bereich von 2 Prozent gut geeignet |
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 
