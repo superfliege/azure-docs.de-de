@@ -17,11 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 997129d1c67a690fb4890aeb2de9f45a681e3efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 48ed4270838a32c8060bf96a63fcfdd8c65f9689
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34305071"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Schnellstart: Erstellen eines Lastenausgleichs im Standard-Tarif für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
 
@@ -59,7 +60,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
   - Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
   - Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
 
-### <a name="create-the-load-balancer"></a>Erstellen des Load Balancers
+### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 
 Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#create) einen öffentlichen Azure Load Balancer mit dem Namen **myLoadBalancer**, der den Front-End-Pool **myFrontEnd** und den Back-End-Pool **myBackEndPool** enthält (mit Zuordnung zur öffentlichen IP-Adresse **myPublicIP**, die Sie im vorherigen Schritt erstellt haben).
 
@@ -262,5 +263,8 @@ Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie d
   az group delete --name myResourceGroupSLB
 ```
 ## <a name="next-step"></a>Nächster Schritt
-Weitere Informationen zum [Load Balancer Standard](load-balancer-standard-overview.md).
+In dieser Schnellstartanleitung haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+
+> [!div class="nextstepaction"]
+> [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
 

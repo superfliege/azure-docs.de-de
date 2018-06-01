@@ -1,24 +1,25 @@
 ---
-title: "Tutorial für Service Fabric-Anwendungsupgrades | Microsoft Docs"
-description: "Dieser Artikel bietet eine exemplarische Vorgehensweise für das Bereitstellen einer Service Fabric-Anwendung, das Ändern des Codes und das Einführen eines Upgrades mithilfe von Visual Studio."
+title: Tutorial für Service Fabric-Anwendungsupgrades | Microsoft Docs
+description: Dieser Artikel bietet eine exemplarische Vorgehensweise für das Bereitstellen einer Service Fabric-Anwendung, das Ändern des Codes und das Einführen eines Upgrades mithilfe von Visual Studio.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a3181a7a-9ab1-4216-b07a-05b79bd826a4
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3388257399ce8d2e0ac84b9bff746e1acf153312
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0a94dc91308f21d9e2b440f9638829ee03a8b903
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205194"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Tutorial für das Upgraden von Service Fabric-Anwendungen mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -40,7 +41,7 @@ Durch Auswahl von **Veröffentlichen** wird ein Popupfenster geöffnet. Sie kön
 
 ![Veröffentlichen einer Service Fabric-Anwendung][image2]
 
-Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung „Visual Objects“ enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie in die Adressleiste [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
+Sie können nun im Dialogfeld auf **Veröffentlichen** klicken. Nun können Sie in [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung Visual Objects enthält einen Webdienst, zu dem Sie in Ihrem Browser wechseln können, indem Sie in die Adressleiste [http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/) eingeben.  Sie sollten 10 unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.
 
 **HINWEIS:** Bei Bereitstellen im Profil `Cloud.xml` (Azure Service Fabric) sollte die Anwendung unter **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** verfügbar sein. Stellen Sie sicher, dass Sie `8081/TCP` im Load Balancer konfiguriert haben (der Load Balancer befindet sich in derselben Ressourcengruppe wie die Service Fabric-Instanz).
 
