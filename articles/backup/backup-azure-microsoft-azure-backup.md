@@ -13,13 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/5/2018
+ms.date: 5/14/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: 3b37afc9d768313f6cc202eeecca22528cc57b07
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ef6be97144d05f18362ef707ef255b93c8cf21d9
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196677"
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Vorbereiten der Sicherung von Workloads per Azure Backup Server
 > [!div class="op_single_selector"]
@@ -73,40 +74,19 @@ Sie können die DPM-Speicherung deduplizieren, indem Sie die Windows Server-Dedu
 > - Einem Computer, auf dem Exchange Server ausgeführt wird
 > - Einem Computer, der einen Knoten eines Clusters darstellt
 
-Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, wird empfohlen, den Server vor der Installation von Azure Backup Server in eine neue Domäne einzubinden. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
+Binden Sie Azure Backup Server immer in eine Domäne ein. Wenn Sie den Server in eine andere Domäne verschieben möchten, installieren Sie zuerst Azure Backup Server, und binden Sie dann den Server in die neue Domäne ein. Das Verschieben eines vorhandenen Azure Backup Server-Computers in eine neue Domäne nach der Bereitstellung wird *nicht unterstützt*.
 
-## <a name="recovery-services-vault"></a>Recovery Services-Tresor
-Die Software muss unabhängig davon über eine Verbindung mit Azure verfügen, ob Sie Sicherungsdaten an Azure senden oder lokal verwalten. Genauer gesagt: Der Azure Backup Server-Computer muss für einen Recovery Services-Tresor registriert sein.
+Unabhängig davon, ob Sie Sicherungsdaten an Azure senden oder lokal speichern, muss Azure Backup Server bei einem Recovery Services-Tresor registriert sein.
 
-So erstellen Sie einen Recovery Services-Tresor:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
-
-    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
-
-    Das Blatt „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
-4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen.
-8. Klicken Sie auf **Create**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal.
-   Nachdem der Tresor erstellt wurde, wird er im Portal geöffnet.
+[!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Recovery Services-Tresore verwenden standardmäßig georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihren primären Tresor handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
-1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Blatt „Einstellungen“ zu öffnen. Sollte das Blatt **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie auf dem Blatt **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
+1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Menü „Einstellungen“ zu öffnen. Sollte das Menü **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
+2. Klicken Sie im Menü **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen. Wählen Sie im Menü **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
 
     ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
@@ -115,7 +95,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 ## <a name="software-package"></a>Softwarepaket
 ### <a name="downloading-the-software-package"></a>Herunterladen des Softwarepakets
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben und sich im Azure-Portal befinden, klicken Sie im Hub-Menü auf **Durchsuchen**.
+2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, klicken Sie im Hauptmenü auf **Durchsuchen**.
 
    * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
    * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
