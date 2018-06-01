@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 832f842aeae53e9c089a9889bf064918de417ed5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: e0c823982bb799e324dc6fb0fb811fd9ace37878
+ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160545"
+ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364402"
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -69,7 +69,7 @@ Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügba
 
 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) setzt außerdem voraus, dass virtuelle Computer mit Lastenausgleich der gleichen Verfügbarkeitsgruppe angehören. Falls auf diese virtuellen Computer über das Internet zugegriffen werden muss, müssen Sie einen [Load Balancer mit Internetzugriff](../load-balancer/load-balancer-internet-overview.md) konfigurieren.
 
-Bei virtuellen Computern, die über das Internet verfügbar gemacht werden, muss der [Netzwerkdatenverkehr mit Netzwerksicherheitsgruppen (NSGs) gesteuert](../virtual-network/virtual-networks-nsg.md) werden. Da NSGs auf Subnetze angewendet werden können, können Sie die Anzahl von NSGs verringern, indem Sie Ihre Ressourcen nach Subnetz gruppieren und die NSGs anschließend auf die Subnetze anwenden. Das Ziel besteht in der Schaffung einer Netzwerkisolationsebene durch ordnungsgemäße Konfiguration der [Netzwerksicherheitsfunktionen](../best-practices-network-security.md) in Azure.
+Bei virtuellen Computern, die über das Internet verfügbar gemacht werden, muss der [Netzwerkdatenverkehr mit Netzwerksicherheitsgruppen (NSGs) gesteuert](../virtual-network/security-overview.md) werden. Da NSGs auf Subnetze angewendet werden können, können Sie die Anzahl von NSGs verringern, indem Sie Ihre Ressourcen nach Subnetz gruppieren und die NSGs anschließend auf die Subnetze anwenden. Das Ziel besteht in der Schaffung einer Netzwerkisolationsebene durch ordnungsgemäße Konfiguration der [Netzwerksicherheitsfunktionen](../best-practices-network-security.md) in Azure.
 
 Sie können auch das Just-in-Time-Zugriffsfeature für virtuelle Computer aus dem Azure Security Center verwenden, um zu steuern, wer wie lange Remotezugriff auf einen bestimmten virtuellen Computer haben soll.
 
