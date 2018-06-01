@@ -47,7 +47,7 @@ Wir sehen uns die einzelnen Aspekte nun genauer an.
 **Speichertyp:** Managed Disks verfügt über zwei Leistungsstufen: [Premium](../articles/virtual-machines/windows/premium-storage.md) (SSD-basiert) und [Standard](../articles/virtual-machines/windows/standard-storage.md) (HDD-basiert). Die Abrechnung für einen verwalteten Datenträger richtet sich danach, welchen Speichertyp Sie für den Datenträger ausgewählt haben.
 
 
-**Datenträgergröße**: Die Abrechnung für verwaltete Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GB angeben, wird die Abrechnung gemäß den Preisen für den Datenträgertyp S20 durchgeführt.
+**Datenträgergröße**: Die Abrechnung für verwaltete Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standarddatenträger erstellen und eine bereitgestellte Größe von 200 GB angeben, wird die Abrechnung gemäß den Preisen für den Datenträgertyp S15 durchgeführt.
 
 Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Premium-Datenträger verfügbar sind:
 
@@ -58,9 +58,9 @@ Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Premi
 
 Hier sind die Datenträgergrößen aufgeführt, die für einen verwalteten Standard-Datenträger verfügbar sind:
 
-| **Datenträgertyp<br>Standard – verwaltet** | **S4** | **S6** | **S10** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|----------------|----------------|----------------| 
-| Datenträgergröße        | 32 GiB   | 64 GiB   | 128 GB | 512 GB | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
+| **Datenträgertyp<br>Standard – verwaltet** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
 
 
 **Anzahl von Transaktionen**: Ihnen wird die Anzahl von Transaktionen berechnet, die Sie für einen verwalteten Standard-Datenträger durchführen. Für einen verwalteten Premium-Datenträger fallen keine Kosten für Transaktionen an.

@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Files | Microsoft-Dokumentation
+title: Häufig gestellte Fragen (FAQ) zu Azure Files | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Files.
 services: storage
 documentationcenter: ''
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: ef8b5b30edaef61eca1be0cf80c5defd09c4dac2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210530"
 ---
-# <a name="frequently-asked-questions-about-azure-files"></a>Häufig gestellte Fragen zu Azure Files
+# <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung von Azure File Sync mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
@@ -229,10 +230,10 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Wie kann ich eine Azure-Dateifreigabe auf meinem lokalen Computer bereitstellen?**  
     Sie können die Dateifreigabe über das SMB-Protokoll bereitstellen, sofern Port 445 (TCP ausgehend) geöffnet ist und Ihr Client das SMB 3.0-Protokoll unterstützt (beispielsweise unter Windows 10 oder Windows Server 2016 der Fall). Wenn Port 445 durch eine Richtlinie Ihrer Organisation oder Ihres ISP blockiert ist, können Sie über Azure File Sync auf Ihre Azure-Dateifreigabe zugreifen.
 
-## <a name="backup"></a>Sicherung
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Wie sichere ich meine Azure-Dateifreigabe?**  
-    Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. 
+    Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. Azure Backup ermöglicht die Sicherung von Azure Files. Erfahren Sie mehr über das [Sichern von Azure-Dateifreigaben mit Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Freigabemomentaufnahmen
 ### <a name="share-snapshots-general"></a>Freigabemomentaufnahmen: allgemein

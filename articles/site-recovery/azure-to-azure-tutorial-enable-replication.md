@@ -1,21 +1,22 @@
 ---
-title: Einrichten der Notfallwiederherstellung für Azure-VMs in eine sekundäre Region mit Azure Site Recovery (Vorschau)
+title: Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Region mit Azure Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Azure-VMs in eine andere Region mit dem Dienst „Azure Site Recovery“ durchführen.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/02/2018
+ms.date: 05/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca1f8fcd3a69e3f2e287c3d627f41c0f493bea1f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: d707122f79b37dd6b979be09693011dead988156
+ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211666"
 ---
-# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
+# <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
 
@@ -27,6 +28,7 @@ In diesem Tutorial wird erläutert, wie Sie die Notfallwiederherstellung in eine
 > * Einrichten des ausgehenden Zugriffs für VMs
 > * Aktivieren der Replikation für eine VM
 
+Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschauphase.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
@@ -109,7 +111,7 @@ Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access
 ### <a name="select-the-source"></a>Auswählen der Quelle
 
 1. Klicken Sie unter „Recovery Services-Tresore“ auf den Tresornamen > **+Replizieren**.
-2. Wählen Sie unter **Quelle** die Option **Azure – VORSCHAU**.
+2. Wählen Sie unter **Quelle** die Option **Azure**.
 3. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 4. Wählen Sie das **Azure-VM-Bereitstellungsmodell** für Ihre VMs: **Resource Manager** oder **Klassisch**.
 5. Wählen Sie für Resource Manager-VMs die **Quellressourcengruppe** oder für klassische VMs den **Clouddienst**.
