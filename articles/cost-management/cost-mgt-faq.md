@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: af6e15a86107aeb74a20c3e78a8f91f07d6d377a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 01d880a668140b5a7ffcff8947ccc6083bca7ea0
+ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168648"
+ms.lasthandoff: 05/18/2018
+ms.locfileid: "34302738"
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
 
@@ -149,4 +149,4 @@ Nein. Agents werden nicht verwendet. Metrikdaten für Azure-VMs werden von der M
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Zeigt ein einzelner Cloudyn-Bericht mehrere AD-Mandanten?
 
-Ja. Sie können [eine entsprechende Cloudkontoentität](tutorial-user-access.md#create-entities) für jeden Ihrer AD-Mandanten erstellen. Anschließend können Sie alle Ihre Azure AD-Mandantendaten und andere Cloudplattformanbieter einschließlich Amazon Web Services und Google Cloud Platform anzeigen.
+Ja. Sie können [eine entsprechende Cloudkontoentität](tutorial-user-access.md#create-and-manage-entities) für jeden Ihrer AD-Mandanten erstellen. Anschließend können Sie alle Ihre Azure AD-Mandantendaten und andere Cloudplattformanbieter einschließlich Amazon Web Services und Google Cloud Platform anzeigen.
