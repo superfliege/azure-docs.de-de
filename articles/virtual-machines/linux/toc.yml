@@ -89,6 +89,8 @@
               href: n-series-driver-setup.md
         - name: High Performance Computing
           href: sizes-hpc.md
+        - name: Vorherige Generationen
+          href: sizes-previous-gen.md
         - name: Azure-Computeeinheiten (ACU)
           href: acu.md
         - name: Benchmarkergebnisse
@@ -140,6 +142,8 @@
           href: create-cli-complete.md
         - name: Verwenden einer Vorlage
           href: create-ssh-secured-vm-from-template.md
+        - name: REST-API
+          href: create-vm-rest-api.md
         - name: Kopieren oder Klonen eines virtuellen Computers
           href: copy-vm.md
     - name: Schützen von virtuellen Computern
@@ -188,7 +192,12 @@
         - name: Kennzeichnen eines virtuellen Computers
           href: tag.md
         - name: Ausführen von Skripts für einen virtuellen Computer
-          href: extensions-customscript.md
+          href: run-scripts-in-vm.md
+          items:
+            - name: Benutzerdefinierte Skripterweiterung
+              href: ../extensions/custom-script-linux.md
+            - name: Befehl ausführen
+              href: run-command.md
         - name: Verwenden von Remotedesktop
           href: use-remote-desktop.md
         - name: Hinzufügen eines virtuellen Computers zu Azure Active Directory
@@ -416,21 +425,7 @@
             - name: Verwenden des internen DNS
               href: static-dns-name-resolution-for-linux-on-azure.md
     - name: Verwenden von VM-Erweiterungen
-      items:
-        - name: Übersicht über VM-Erweiterungen
-          href: extensions-features.md
-        - name: Benutzerdefinierte Skripterweiterung
-          href: extensions-customscript.md
-        - name: OMS-Agent-Erweiterung
-          href: extensions-oms.md
-        - name: Linux-Diagnoseerweiterung
-          href: diagnostic-extension.md
-        - name: Network Watcher-Agent
-          href: extensions-nwa.md
-        - name: VMAccess-Erweiterung
-          href: using-vmaccess-extension.md
-        - name: Beschränken der Erweiterungsinstallation
-          href: ../extensions/extensions-rmpolicy-howto-cli.md
+      href: ../extensions/overview.md
     - name: Migrieren virtueller Computer
       items:
         - name: Migrieren von AWS und lokalen virtuellen Computern

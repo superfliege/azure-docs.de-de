@@ -1,5 +1,7 @@
 - name: Data Factory V2-Dokumentation
   href: index.yml
+- name: Wechseln zur Dokumentation für Version 1
+  href: v1/data-factory-introduction.md
 - name: Übersicht
   items:
     - name: Einführung in Data Factory
@@ -372,17 +374,19 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Ausführen von SSIS-Paketen in Azure
       items:
-        - name: Einbinden einer Azure SSIS-Integrationslaufzeit in ein VNET
+        - name: Verknüpfen einer Azure-SSIS-IR mit einem VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
-        - name: Konfigurieren einer hohen Leistung für Azure SSIS Integration Runtime
+        - name: Aktivieren der Azure AD-Authentifizierung für Azure-SSIS IR
+          href: enable-aad-authentication-azure-ssis-ir.md
+        - name: Konfigurieren einer hohen Leistung für Azure-SSIS-IR
           href: configure-azure-ssis-integration-runtime-performance.md
-        - name: Bereitstellen von Enterprise Edition für Azure-SSIS Integration Runtime
+        - name: Bereitstellen von Enterprise Edition für Azure-SSIS-IR
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
-        - name: Anpassen der Einrichtung für Azure SSIS Integration Runtime
+        - name: Anpassen der Einrichtung für Azure-SSIS-IR
           href: how-to-configure-azure-ssis-ir-custom-setup.md
-        - name: Bereitstellen von lizenzierten Komponenten für Azure SSIS Integration Runtime
+        - name: Installieren von lizenzierten Komponenten für Azure-SSIS-IR
           href: how-to-develop-azure-ssis-ir-licensed-components.md
-        - name: Ausführen von SSIS-Paketen mit der SSIS-Aktivität
+        - name: Ausführen von SSIS-Paketen mit der Aktivität „SSIS-Paket ausführen“
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: Ausführen von SSIS-Paketen mit der Aktivität „Gespeicherte Prozedur“
           href: how-to-invoke-ssis-package-stored-procedure-activity.md

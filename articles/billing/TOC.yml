@@ -1,104 +1,116 @@
-- name: Dokumentation zur Azure-Abrechnung
+- name: Dokumentation zur Abrechnungs- und Kostenverwaltung in Azure
   href: index.md
-- name: Erste Schritte
+- name: Erläuterungen zur Azure-Abrechnung
+  expanded: true
+  items:
+    - name: Erläuterungen zur Rechnung
+      href: billing-understand-your-bill.md
+    - name: Abrufen der Rechnungs- und Nutzungsdaten
+      href: billing-download-azure-invoice-daily-usage-date.md
+    - name: Gebühren für Drittanbieterdienste
+      href: billing-understand-your-azure-marketplace-charges.md
+    - name: Erläuterung der Nutzungsbedingungen
+      href: billing-understand-your-usage.md
+    - name: Erläuterung der Rechnungsbedingungen
+      href: billing-understand-your-invoice.md
+- name: Verwalten von Kosten
   items:
     - name: Vermeiden unerwarteter Kosten
       href: billing-getting-started.md
-    - name: Erstellen von Diensten im Rahmen des kostenlosen Kontos
-      href: billing-create-free-services-included-free-account.md
-    - name: Vermeiden von Gebühren für das kostenlose Konto
-      href: billing-avoid-charges-free-account.md
+    - name: Einrichten von Abrechnungswarnungen
+      href: billing-set-up-alerts.md
+    - name: Berechnen von Preisen
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Verwenden von Ressourcentags
+      href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+    - name: Grundlegendes zum Ausgabenlimit
+      href: billing-spending-limit.md
+    - name: Sparen mit reservierten VM-Instanzen
+      items:
+        - name: Was sind reservierte Instanzen?
+          href: billing-save-compute-costs-reservations.md
+        - name: Kaufen einer reservierten Instanz
+          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Anwendung des Rabatts
+          href: billing-understand-vm-reservation-charges.md
+        - name: Nicht enthaltene Softwarekosten
+          href: billing-reserved-instance-windows-software-costs.md
+        - name: Verbrauch für nutzungsbasierte Bezahlung
+          href: billing-understand-reserved-instance-usage.md
+        - name: Verbrauch für Enterprise
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: Verwalten von reservierten Instanzen
+          href: billing-manage-reserved-vm-instance.md
+- name: Verwalten eines Kontos
+  items:
+    - name: Kostenloses Konto
+      items:
+        - name: Erstellen kostenloser Dienste
+          href: billing-create-free-services-included-free-account.md
+        - name: Vermeiden von Kosten
+          href: billing-avoid-charges-free-account.md
+        - name: Überprüfen der Nutzung
+          href: billing-check-free-service-usage.md
+        - name: Upgrade des Abonnements ausführen
+          href: billing-upgrade-azure-subscription.md
+        - name: Erläuterung der Zuordnung der Verbrauchseinheit
+          href: billing-understand-free-service-meter-mapping.md
+    - name: Bearbeiten eines Profils
+      href: billing-how-to-change-azure-account-profile.md
     - name: Gewähren des Zugriffs auf die Abrechnung
       href: billing-manage-access.md
+    - name: Verknüpfen der Partner-ID
+      href: billing-partner-admin-link-started.md
+    - name: Anzeigen der Abrechnungskonten
+      href: billing-view-all-accounts.md
+    - name: Begleichen überfälliger Zahlungen
+      href: billing-azure-subscription-past-due-balance.md
     - name: Anmelden mit Office 365-Konto
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Registrieren für Office 365 mit einem Azure-Konto
       href: billing-use-existing-azure-account-for-office-365-subscription.md
-    - name: Organisieren von Ressourcen mit Verwaltungsgruppen
-      href: billing-enterprise-mgmt-group-overview.md
-    - name: Speichern mit reservierten Azure-Instanzen
-      href: billing-save-compute-costs-reservations.md
-      items:
-        - name: Vorauszahlen für Virtual Machines mit reservierten Instanzen
-          href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-        - name: Verwalten reservierter Instanzen
-          href: billing-manage-reserved-vm-instance.md
-        - name: Grundlegendes zur Anwendung von Rabatten auf reservierte Instanzen
-          href: billing-understand-vm-reservation-charges.md
-        - name: Grundlegendes zur Nutzung reservierter Instanzen für nutzungsbasierte Bezahlung
-          href: billing-understand-reserved-instance-usage.md
-        - name: Grundlegendes zur Nutzung reservierter Instanzen für Enterprise
-          href: billing-understand-reserved-instance-usage-ea.md
-        - name: 'Reservierte Instanzen: Windows-Kosten'
-          href: billing-reserved-instance-windows-software-costs.md
+- name: Abonnement verwalten
+  items:
+    - name: Erneutes Aktivieren von Abonnements
+      href: billing-subscription-become-disable.md
+    - name: Übertragen des Besitzes
+      href: billing-subscription-transfer.md
+    - name: Kündigen eines Abonnements
+      href: billing-how-to-cancel-azure-subscription.md
+    - name: Ändern der Kreditkarte
+      href: billing-how-to-change-credit-card.md
+    - name: Ändern des Administrators
+      href: billing-add-change-azure-subscription-administrator.md
+    - name: Umstellen des Abonnementangebots
+      href: billing-how-to-switch-azure-offer.md
+    - name: Zahlung per Rechnung
+      href: billing-how-to-pay-by-invoice.md
+    - name: Erstellen von Verwaltungsgruppen
+      href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
+    - name: Verschieben von Azure-Ressourcen
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
+    - name: Erstellen von Enterprise-Abonnements
+      href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
+    - name: Exportieren der Abonnementinformationen
+      href: billing-export-subscriptions.md
+    - name: Verknüpfen des Azure AD-Mandanten
+      href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Grenzen und Kontingente
       href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
-- name: Anleitung
+- name: Problembehandlung
   items:
-    - name: Nachverfolgen von Nutzung und Kosten
-      items:
-        - name: Abrufen der Rechnung und Nutzung
-          href: billing-download-azure-invoice-daily-usage-date.md
-        - name: Überprüfen der Nutzung von kostenlosen Diensten
-          href: billing-check-free-service-usage.md
-        - name: Erläuterungen zur Rechnung
-          href: billing-understand-your-bill.md
-        - name: Grundlegendes zu Bedingungen Ihrer Rechnung
-          href: billing-understand-your-invoice.md
-        - name: Grundlegendes zu Bedingungen Ihrer Nutzung
-          href: billing-understand-your-usage.md
-        - name: Grundlegendes zu Gebühren für externe Dienste
-          href: billing-understand-your-azure-marketplace-charges.md
-        - name: Grundlegendes zur Zuordnung von Verbrauchseinheiten für kostenlose Dienste
-          href: billing-understand-free-service-meter-mapping.md
-        - name: Grundlegendes zum Ausgabenlimit
-          href: billing-spending-limit.md
-        - name: Einrichten von Abrechnungswarnungen
-          href: billing-set-up-alerts.md
-        - name: Begleichen überfälliger Zahlungen
-          href: billing-azure-subscription-past-due-balance.md
-    - name: Verwalten von Abonnements
-      items:
-        - name: Suchen nach einer Abonnement- oder Verwaltungsgruppe
-          href: billing-enterprise-mgmt-grp-find.md
-        - name: Verwalten von Administratorrollen
-          href: billing-add-change-azure-subscription-administrator.md
-        - name: Übertragen des Abonnements
-          href: billing-subscription-transfer.md
-        - name: Reaktivieren des deaktivierten Abonnements
-          href: billing-subscription-become-disable.md
-        - name: Upgrade eines kostenlosen Abonnements
-          href: billing-upgrade-azure-subscription.md
-        - name: Umstellen des Abonnementangebots
-          href: billing-how-to-switch-azure-offer.md
-        - name: Verknüpfen des Azure AD-Mandanten
-          href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
-        - name: Kündigen eines Abonnements
-          href: billing-how-to-cancel-azure-subscription.md
-    - name: Verwalten eines Kontos
-      items:
-        - name: Bearbeiten eines Profils
-          href: billing-how-to-change-azure-account-profile.md
-        - name: Aktualisieren von Zahlungsinformationen
-          href: billing-how-to-change-credit-card.md
-        - name: Zahlen für Abonnements per Rechnung
-          href: billing-how-to-pay-by-invoice.md
-        - name: Verknüpfen der Partner-ID
-          href: billing-partner-admin-link-started.md
-        - name: Anzeigen der Abrechnungskonten
-          href: billing-view-all-accounts.md
-    - name: Problembehandlung
-      items:
-        - name: Probleme bei der Registrierung
-          href: 'https://support.microsoft.com/en-us/help/4042959'
-        - name: Karte abgelehnt
-          href: 'https://support.microsoft.com/en-us/help/4042960'
-        - name: Probleme bei der Anmeldung
-          href: 'https://support.microsoft.com/en-us/help/4042961'
-        - name: Keine Abonnements gefunden
-          href: billing-no-subscriptions-found.md
-        - name: Enterprise-Kostenansicht deaktiviert
-          href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Keine Abonnements gefunden
+      href: billing-no-subscriptions-found.md
+    - name: Karte abgelehnt
+      href: 'https://support.microsoft.com/en-us/help/4042960'
+    - name: Probleme bei der Registrierung
+      href: 'https://support.microsoft.com/en-us/help/4042959'
+    - name: Probleme bei der Anmeldung
+      href: 'https://support.microsoft.com/en-us/help/4042961'
+    - name: Enterprise-Kostenansicht deaktiviert
+      href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: Support kontaktieren
+      href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: Verweis
   items:
     - name: 'Azure-Abrechnungs-API: Übersicht'
@@ -129,11 +141,3 @@
           href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
         - name: Codebeispiel der RateCard-API
           href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
-- name: angeben
-  items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Support kontaktieren
-      href: ../azure-supportability/how-to-create-azure-support-request.md
-    - name: Preisrechner
-      href: 'https://azure.microsoft.com/pricing/calculator/'

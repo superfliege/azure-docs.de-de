@@ -73,6 +73,8 @@
           href: batch-custom-images.md
         - name: Erstellen eines Pools in einem virtuellen Netzwerk
           href: batch-virtual-network.md
+        - name: Bereitstellen einer Azure-Dateifreigabe
+          href: pool-file-shares.md
         - name: Verwenden von rechenintensiven virtuellen Computern
           href: batch-pool-compute-intensive-sizes.md
         - name: Verwenden von Linux-Computeknoten

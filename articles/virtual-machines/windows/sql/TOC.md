@@ -19,7 +19,8 @@
 #### [Konfigurieren der Integration von Azure Key Vault](virtual-machines-windows-ps-sql-keyvault.md)
 ## Sichern und Wiederherstellen
 ### [Sichern und Wiederherstellen](virtual-machines-windows-sql-backup-recovery.md)
-### [Automatisierte Sicherung](virtual-machines-windows-sql-automated-backup.md)
+### [Automatisierte Sicherung für SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
+### [Automatisierte Sicherung für SQL Server 2016+](virtual-machines-windows-sql-automated-backup-v2.md)
 ### [Verwenden von Azure Storage für Sicherung und Wiederherstellung](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 
 # Anleitungen
@@ -29,7 +30,7 @@
 ## Migrieren
 ### [Migrieren einer SQL Server-Datenbank](virtual-machines-windows-migrate-sql.md)
 ## Konfigurieren von Hochverfügbarkeit
-### [Optionen für Hochverfügbarkeit](virtual-machines-windows-sql-high-availability-dr.md) 
+### [Optionen für hohe Verfügbarkeit](virtual-machines-windows-sql-high-availability-dr.md) 
 ### [AlwaysOn-Verfügbarkeitsgruppe](virtual-machines-windows-portal-sql-availability-group-overview.md)
 #### [Automatisch – mit Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [Manuell – Voraussetzungen](virtual-machines-windows-portal-sql-availability-group-prereq.md)
@@ -40,14 +41,14 @@
 ### Failoverclusterinstanz
 #### [Konfigurieren](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/)
 ## [T-SQL](https://docs.microsoft.com/sql/t-sql/language-reference)
 ## [SQL Server-Treiber](https://docs.microsoft.com/sql/connect/sql-connection-libraries)
 ## [REST](/rest/api/)
 
-# Ressourcen
+# angeben
 ## [Häufig gestellte Fragen](virtual-machines-windows-sql-server-iaas-faq.md)
 ## [Preise](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [PaaS oder IaaS?](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)

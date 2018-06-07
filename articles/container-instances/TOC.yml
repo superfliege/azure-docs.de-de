@@ -45,14 +45,14 @@
           href: container-instances-using-azure-container-registry.md
         - name: Festlegen von Umgebungsvariablen (env)
           href: container-instances-environment-variables.md
-        - name: Behandeln von Bereitstellungsproblemen
-          href: container-instances-troubleshooting.md
     - name: Verwalten
       items:
         - name: Ausführen eines Befehls (exec)
           href: container-instances-exec.md
         - name: Überwachen der CPU- und Arbeitsspeicherauslastung
           href: container-instances-monitor.md
+        - name: Protokollierung mit Azure Log Analytics
+          href: container-instances-log-analytics.md
     - name: Ausführen von Workloads
       items:
         - name: Ausführen von Aufgaben in Containern
@@ -69,6 +69,12 @@
           href: container-instances-volume-gitrepo.md
         - name: secret
           href: container-instances-volume-secret.md
+    - name: Problembehandlung
+      items:
+        - name: Abrufen von Containerprotokollen und -ereignissen
+          href: container-instances-get-logs.md
+        - name: Häufig auftretende Probleme und Problembehandlung
+          href: container-instances-troubleshooting.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -78,7 +84,7 @@
     - name: PowerShell
       href: '/powershell/module/azurerm.containerinstance#container_instances'
     - name: .NET
-      href: /dotnet/api/overview/azure/containerinstances
+      href: /dotnet/api/overview/azure/containerinstance
     - name: Python
       href: /python/api/overview/azure/containerinstance
     - name: Java

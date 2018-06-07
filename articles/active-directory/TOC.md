@@ -204,11 +204,17 @@
 ##### [Installation im Hintergrund](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [Benutzerdefinierte Startseite](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [Übersetzen von Inline-Links](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
+##### [Platzhalter](active-directory-application-proxy-wildcard.md)
+##### [Entfernen von personenbezogenen Daten](manage-apps/application-proxy-remove-personal-data.md)
+
+
 #### Veröffentlichen von exemplarische Vorgehensweisen
 ##### [Remotedesktop](manage-apps/application-proxy-integrate-with-remote-desktop-services.md)
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 ##### [Tableau](active-directory-application-proxy-tableau.md)
+##### [Qlik](active-directory-application-proxy-qlik.md)
+
 
 #### [Problembehandlung](active-directory-application-proxy-troubleshoot.md)
 
@@ -225,7 +231,7 @@
 ### [Configure Sign-In Auto-Acceleration using HRD Policy (Konfigurieren der automatischen Anmeldebeschleunigung per HRD Policy)](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
-#### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
+#### [SSO-Zugriff](manage-apps/what-is-single-sign-on.md)
 #### [Zertifikate für SSO](active-directory-sso-certs.md)
 #### [Mandanteneinschränkungen](active-directory-tenant-restrictions.md)
 #### [Verwenden von SCIM zum Bereitstellen von Benutzern](active-directory-scim-provisioning.md)
@@ -303,7 +309,7 @@
 ##### [Einrichten des gerätebasierten bedingten Zugriffs](active-directory-conditional-access-policy-connected-applications.md)
 ##### [Einrichten des App-basierten bedingten Zugriffs](active-directory-conditional-access-mam.md)
 ##### [Angeben von Nutzungsbedingungen für Benutzer und Apps](active-directory-tou.md)
-##### [Einrichten der VPN-Konnektivität](active-directory-conditional-access-vpn-connectivity-windows10.md)
+##### [Einrichten der VPN-Konnektivität](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/always-on-vpn-deploy)
 ##### [Einrichten von SharePoint und Exchange Online](active-directory-conditional-access-no-modern-authentication.md)
 ##### [Problembehandlung](active-directory-conditional-access-device-remediation.md)
 #### [Technische Referenz](active-directory-conditional-access-technical-reference.md)
