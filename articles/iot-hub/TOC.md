@@ -151,11 +151,6 @@
 #### [Verwenden des Serialisierungsprogramms](iot-hub-device-sdk-c-serializer.md)
 ### [Entwickeln für eingeschränkte Geräte](iot-hub-devguide-develop-for-constrained-devices.md)
 ### [Entwickeln für mobile Geräte](iot-hub-how-to-develop-for-mobile-devices.md)
-### Weiterleiten von Nachrichten
-#### [.NET](iot-hub-csharp-csharp-process-d2c.md)
-#### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
-#### [Python](iot-hub-python-python-process-d2c.md)
 ### [Abfragen von Avro-Daten aus einer Hubroute](iot-hub-query-avro-data.md)
 ### Senden von C2D-Nachrichten.
 #### [.NET](iot-hub-csharp-csharp-c2d.md)

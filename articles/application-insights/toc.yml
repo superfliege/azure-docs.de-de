@@ -268,6 +268,8 @@
           href: app-insights-export-power-bi.md
     - name: Schützen
       items:
+        - name: Behandlung von personenbezogenen Daten
+          href: app-insights-customer-data.md
         - name: 'Datensammlung, -aufbewahrung und -speicherung'
           href: app-insights-data-retention-privacy.md
         - name: 'Ressourcen, Rollen und Zugriffssteuerung'

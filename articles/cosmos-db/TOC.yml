@@ -1,3 +1,4 @@
+metadata: {}
 items:
   - name: Dokumentation für Azure Cosmos DB
     href: index.yml
@@ -70,6 +71,8 @@ items:
     items:
       - name: Globale Verteilung
         href: distribute-data-globally.md
+      - name: Einrichtung mit mehreren Mastern
+        href: multi-region-writers.md
       - name: Partitionierung
         href: partition-data.md
       - name: Throughput
@@ -80,8 +83,6 @@ items:
         href: unique-keys.md
       - name: Serverlose Datenbank
         href: serverless-computing-database.md
-      - name: 'BulkExecutor: Übersicht'
-        href: bulk-executor-overview.md
       - name: Sicherheit
         href: database-security.md
         items:
@@ -167,8 +168,6 @@ items:
                 href: sql-api-resources.md
               - name: Modelldokumentdaten
                 href: modeling-data.md
-              - name: Einrichtung mit mehreren Mastern
-                href: multi-region-writers.md
           - name: Anleitungen
             items:
               - name: 'BulkExecutor: .NET'
@@ -399,8 +398,6 @@ items:
                 href: table-storage-how-to-use-dotnet.md
               - name: 'F#'
                 href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
-              - name: Node.js
-                href: table-storage-cloud-service-nodejs.md
               - name: Java
                 href: table-storage-how-to-use-java.md
               - name: Node.js
@@ -413,8 +410,6 @@ items:
                 href: table-storage-how-to-use-python.md
               - name: Ruby
                 href: table-storage-how-to-use-ruby.md
-              - name: PowerShell
-                href: table-storage-how-to-use-powershell.md
           - name: Verweis
             items:
               - name: .NET
@@ -467,10 +462,14 @@ items:
         href: regional-failover.md
       - name: Diagnoseprotokollierung
         href: logging.md
+      - name: 'BulkExecutor: Übersicht'
+        href: bulk-executor-overview.md
       - name: Kostengünstige Lese- und Schreibvorgänge
         href: key-value-store-cost.md
       - name: Festlegen des automatischen Ablaufens für Daten
         href: time-to-live.md
+      - name: Verwalten mit PowerShell
+        href: manage-account-with-powershell.md
       - name: Verwalten mithilfe des Storage-Explorers
         href: storage-explorer.md
   - name: angeben
