@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32787462"
 ---
 | Mobile und native Apps | Web-Apps und Web-APIs | Direktes Integrieren mit Protokollen |
 | --- | --- | --- |
