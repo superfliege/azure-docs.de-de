@@ -63,6 +63,8 @@
           items:
             - name: Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal
               href: backup-azure-microsoft-azure-backup.md
+            - name: Installieren von Azure Backup Server in Azure Stack
+              href: backup-mabs-install-azure-stack.md
             - name: Hinzufügen von Speicher zu Azure Backup Server
               href: backup-mabs-add-storage.md
             - name: Upgraden von Azure Backup Server auf v.2
@@ -157,12 +159,10 @@
           href: backup-dpm-automation.md
         - name: Windows Server im Azure-Portal
           href: backup-client-automation.md
-    - name: "Azure\_SQL-Datenbank"
+    - name: SQL auf virtuellen Azure-Computern
       items:
-        - name: 'Konfigurieren und Wiederherstellen von Sicherungen für SQL-Datenbank: SQL-Speicher'
-          href: ../sql-database/sql-database-long-term-backup-retention-configure.md?toc=%2fazure%2fbackup%2ftoc.json
-        - name: 'Konfigurieren und Wiederherstellen von Sicherungen für SQL-Datenbank: Recovery Services-Tresor'
-          href: ../sql-database/sql-database-long-term-backup-retention-configure-vault.md?toc=%2fazure%2fbackup%2ftoc.json
+        - name: Sichern einer SQL-Datenbank in Azure
+          href: backup-azure-sql-database.md
     - name: Windows Server
       items:
         - name: Sichern von Windows Server-Dateien und -Ordnern

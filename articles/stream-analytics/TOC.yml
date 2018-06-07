@@ -50,8 +50,6 @@
   items:
     - name: Verwalten
       items:
-        - name: Aktualisieren eines Auftrags
-          href: stream-analytics-job-reliability.md
         - name: Aktualisieren von Anmeldeinformationen
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurieren von Warnungen
@@ -60,6 +58,10 @@
           href: stream-analytics-test-query.md
         - name: Anzeigen der Ergebnisse auf einem Dashboard
           href: stream-analytics-power-bi-dashboard.md
+        - name: Bereinigen Ihres Auftrags
+          href: stream-analytics-clean-up-your-job.md
+        - name: Koppeln von Aufträgen für Zuverlässigkeit
+          href: stream-analytics-job-reliability.md
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse
