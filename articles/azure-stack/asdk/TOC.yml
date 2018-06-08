@@ -9,27 +9,11 @@
       href: asdk-release-notes.md
 - name: Tutorials
   items:
-    - name: 1. Bereitstellen des ASDK
-      items:
-        - name: 'Bereitstellen des ASDK: Installer'
-          href: asdk-deploy.md
-        - name: 'Bereitstellen des ASDK: PowerShell'
-          href: asdk-deploy-powershell.md
-        - name: Erneutes Bereitstellen des ASDK
-          href: asdk-redeploy.md
-    - name: 2. Hinzufügen eines Marketplace-Elements
-      items:
-        - name: Herunterladen aus Azure
-          href: asdk-marketplace-item.md
-        - name: Hinzufügen aus einer lokalen Quelle
-          href: asdk-marketplace-item-offline.md
-    - name: 3. Anbieten von IaaS-Diensten
-      href: asdk-offer-services.md
-    - name: 4. Abonnieren von Angeboten
+    - name: Abonnieren von Angeboten
       href: asdk-subscribe-services.md
-    - name: 5. Aktualisieren von Angeboten und Plänen
+    - name: Aktualisieren von Angeboten und Plänen
       href: asdk-update-offers.md
-    - name: 6. Erstellen eines virtuellen Computers über eine Vorlage
+    - name: Erstellen eines virtuellen Computers über eine Vorlage
       href: asdk-create-vm-template.md
 - name: Konzepte
   items:
@@ -49,10 +33,14 @@
           href: asdk-download.md
         - name: Vorbereiten des ASDK-Hostcomputers
           href: asdk-prepare-host.md
-        - name: Installieren des ASDK
+        - name: 'Bereitstellen des ASDK: Installer'
           href: asdk-install.md
+        - name: 'Bereitstellen des ASDK: PowerShell'
+          href: asdk-deploy-powershell.md
         - name: Konfiguration nach der Bereitstellung
           href: asdk-post-deploy.md
+        - name: Erneutes Bereitstellen des ASDK
+          href: asdk-redeploy.md
     - name: Registrieren des ASDK
       href: asdk-register.md
     - name: Konfigurieren von Azure Stack-Telemetrieeinstellungen

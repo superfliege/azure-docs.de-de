@@ -21,6 +21,8 @@
       href: custom-event-quickstart-portal.md
     - name: Senden von Ereignissen an Queue Storage
       href: custom-event-to-queue-storage.md
+    - name: Senden von Ereignissen an Event Hubs
+      href: custom-event-to-eventhub.md
 - name: Tutorials
   items:
     - name: Senden einer E-Mail bei VM-Änderungen
