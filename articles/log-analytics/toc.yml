@@ -27,6 +27,8 @@
       href: powershell-samples.md
 - name: Konzepte
   items:
+    - name: Übergang zum OMS-Portal
+      href: log-analytics-oms-portal-faq.md
     - name: Upgrade des Arbeitsbereichs
       items:
         - name: Upgradeübersicht
@@ -137,24 +139,20 @@
           href: log-analytics-powerbi.md
     - name: Erstellen von Warnungen
       items:
-        - name: Grundlegendes zu Warnungen
-          href: log-analytics-alerts.md
-        - name: Warnungsaktionen
-          href: log-analytics-alerts-actions.md
-        - name: Erstellen von Warnungsregeln
-          items:
-            - name: OMS-Portal
-              href: log-analytics-alerts-creating.md
-            - name: REST-API
-              href: log-analytics-api-alerts.md
-            - name: Resource Manager-Vorlage
-              href: ../monitoring/monitoring-solutions-resources-searches-alerts.md
-        - name: Beispiel für Webhookaktion
-          href: log-analytics-alerts-webhooks.md
-        - name: Lösung Warnungsverwaltung
-          href: log-analytics-solution-alert-management.md
+        - name: Grundlegendes zu Protokollwarnungen
+          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md
+        - name: Erstellen einer Protokollwarnung
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md
+        - name: Webhookaktionen für Protokollwarnungen
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md
+        - name: Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md
+        - name: Kopieren von Warnungen aus Log Analytics in Azure-Warnungen
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md
     - name: Verwalten
       items:
+        - name: Behandlung von personenbezogenen Daten
+          href: log-analytics-personal-data-mgmt.md
         - name: Agentverwaltung
           href: log-analytics-agent-manage.md
         - name: Verwalten der Arbeitsbereichskosten
@@ -218,8 +216,6 @@
               href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
             - name: Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema
               href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Malware Assessment
-          href: log-analytics-malware.md
         - name: Netzwerkanalysen
           href: log-analytics-azure-networking-analytics.md
         - name: Netzwerkleistungsmonitor
@@ -239,7 +235,7 @@
         - name: SCOM-Integritätsprüfung
           href: log-analytics-scom-assessment.md
         - name: Sicherheitsüberwachung
-          href: ../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json
+          href: ../security-center/security-center-intro.md
         - name: Service Fabric mit Azure PowerShell
           href: log-analytics-service-fabric.md
           items:

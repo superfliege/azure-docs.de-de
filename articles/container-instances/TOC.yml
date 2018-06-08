@@ -39,7 +39,9 @@
   items:
     - name: Bereitstellen
       items:
-        - name: Bereitstellen von Gruppen mit mehreren Containern
+        - name: Gruppen mit mehreren Containern – YAML
+          href: container-instances-multi-container-yaml.md
+        - name: Gruppen mit mehreren Containern – Resource Manager
           href: container-instances-multi-container-group.md
         - name: Bereitstellen aus Azure Container Registry
           href: container-instances-using-azure-container-registry.md
