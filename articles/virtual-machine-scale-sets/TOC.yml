@@ -5,6 +5,7 @@
     - name: Was sind Skalierungsgruppen für virtuelle Computer?
       href: overview.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Erstellen im Azure-Portal
       href: quick-create-portal.md
@@ -64,6 +65,102 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+- name: Konzepte
+  items:
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
+      maintainContext: true
+    - name: Regionen und Verfügbarkeit
+      href: ../virtual-machines/windows/regions-and-availability.md
+      maintainContext: true
+    - name: Arten und Größen von virtuellen Computern
+      href: ../virtual-machines/windows/sizes.md
+      maintainContext: true
+      items:
+        - name: Allgemeiner Zweck
+          href: ../virtual-machines/windows/sizes-general.md
+          maintainContext: true
+          items:
+            - name: Burstable-Computer der B-Serie
+              href: ../virtual-machines/windows/b-series-burstable.md
+              maintainContext: true
+        - name: Computeoptimiert
+          href: ../virtual-machines/windows/sizes-compute.md
+          maintainContext: true
+        - name: Arbeitsspeicheroptimiert
+          href: ../virtual-machines/windows/sizes-memory.md
+          maintainContext: true
+          items:
+            - name: Eingeschränkte vCPUs
+              href: ../virtual-machines/windows/constrained-vcpu.md
+              maintainContext: true
+        - name: Speicheroptimiert
+          href: ../virtual-machines/windows/sizes-storage.md
+          maintainContext: true
+        - name: GPU-optimiert
+          href: ../virtual-machines/windows/sizes-gpu.md
+          maintainContext: true
+          items:
+            - name: Einrichten von GPU-Treibern
+              href: ../virtual-machines/windows/n-series-driver-setup.md
+              maintainContext: true
+        - name: High Performance Computing
+          href: ../virtual-machines/windows/sizes-hpc.md
+          maintainContext: true
+        - name: Azure-Computeeinheiten (ACU)
+          href: ../virtual-machines/windows/acu.md
+          maintainContext: true
+        - name: Benchmarkergebnisse
+          href: ../virtual-machines/windows/compute-benchmark-scores.md
+          maintainContext: true
+    - name: Unterstützte Linux-Distributionen
+      href: ../virtual-machines/linux/endorsed-distros.md
+      maintainContext: true
+    - name: Wartung und Updates
+      href: ../virtual-machines/windows/maintenance-and-updates.md
+      maintainContext: true
+    - name: Datenträgerspeicher
+      href: ../virtual-machines/windows/about-disks-and-vhds.md
+      maintainContext: true
+      items:
+        - name: Managed Disks
+          href: ../virtual-machines/windows/managed-disks-overview.md
+          maintainContext: true
+        - name: Storage Premium
+          href: ../virtual-machines/windows/premium-storage.md
+          maintainContext: true
+        - name: Storage Premium-Leistung
+          href: ../virtual-machines/windows/premium-storage-performance.md
+          maintainContext: true
+        - name: Standardspeicher
+          href: ../virtual-machines/windows/standard-storage.md
+          maintainContext: true
+        - name: Skalierbarkeitsziele für Datenträger
+          href: ../virtual-machines/windows/disk-scalability-targets.md
+          maintainContext: true
+        - name: Sicherung und Notfallwiederherstellung für Datenträger
+          href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
+          maintainContext: true
+    - name: Netzwerk
+      href: ../virtual-machines/windows/network-overview.md
+      maintainContext: true
+    - name: Infrastrukturautomatisierung
+      href: ../virtual-machines/windows/infrastructure-automation.md
+      maintainContext: true
+    - name: Sicherheit und Richtlinien
+      href: ../virtual-machines/windows/security-policy.md
+      maintainContext: true
+    - name: Überwachung
+      href: ../virtual-machines/windows/monitor.md
+      maintainContext: true
+    - name: High Performance Computing
+      href: ../virtual-machines/windows/high-performance-computing.md
+      maintainContext: true
+    - name: Überlegungen zur Bereitstellung
+      items:
+        - name: vCPU-Kontingente
+          href: ../virtual-machines/windows/quotas.md
+          maintainContext: true
 - name: Anleitung
   items:
     - name: Planen und Entwerfen

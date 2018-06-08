@@ -4,20 +4,19 @@ title: Azure IoT-Grundlagen
 metadata:
   title: Azure IoT-Grundlagen
   description: Azure IoT ist eine Sammlung von Clouddiensten, die von Microsoft verwaltet werden und Milliarden von IoT-Ressourcen (Internet of Things, Internet der Dinge) verbinden, überwachen und steuern.
-  services: iot
   author: BryanLa
   manager: timlt
-  ms.service: iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.service: iot-fundamentals
+  services: iot-fundamentals
   ms.topic: landing-page
-  ms.date: 04/20/2018
+  ms.date: 05/18/2018
   ms.author: bryanla
-  ms.openlocfilehash: 0a5f1d482b0298ddd65746783e3744728b1a5da5
-  ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+  ms.openlocfilehash: 32db74234f05fcf76c8ccfe18ce295fd30a15b58
+  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/16/2018
+  ms.lasthandoff: 06/01/2018
+  ms.locfileid: "34631155"
 abstract:
   description: 'Willkommen bei Microsoft Azure und dem Internet der Dinge (IoT). Azure IoT ist eine umfassende Sammlung von Diensten und Lösungen zur Erstellung von End-to-End-IoT-Anwendungen in Azure. Von vollständig gehosteten und verwalteten SaaS-Lösungen (Software-as-a-Service) über individuelle und spezielle PaaS-Angebote (Plattform-as-a-Service) bis hin zu Technologien für eine intelligente Edgelösung: Azure IoT bietet eine umfangreichen Palette an Optionen und Tools, die speziell auf Ihre branchenspezifischen Anforderungen sowie auf das Know-how und die Ressourcen Ihres Unternehmens zugeschnitten sind.'
 sections:
@@ -29,7 +28,7 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/iot-central/quick-deploy-iot-central">Erfahren Sie, wie Sie eine neue Azure IoT Central-Anwendung erstellen.</a>
-    - html: <a href="/azure/iot-suite/iot-suite-remote-monitoring-deploy">Hier erfahren Sie, wie Sie den Solution Accelerator für Remoteüberwachung bereitstellen.</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-deploy">Hier erfahren Sie, wie Sie den Solution Accelerator für Remoteüberwachung bereitstellen.</a>
     - html: <a href="/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started">Erfahren Sie, wie Sie eine IoT Hub-Instanz erstellen und Ihr erstes simuliertes Gerät mit Azure (Node.js) verbinden.</a>
     - html: <a href="/azure/iot-edge/quickstart-linux">Stellen Sie Ihr erstes IoT Edge-Modul bereit, und verarbeiten Sie Daten auf einem simulierten Gerät unter Windows, Linux oder macOS.</a>
     - html: <a href="/azure/azure-maps/quick-demo-map-app">Starten Sie eine App für die Kartensuche mit Azure Maps.</a>

@@ -1,5 +1,7 @@
 - name: Data Factory V1-Dokumentation
   href: null
+- name: Zur Dokumentation der aktuellen Version wechseln
+  href: ../index.yml
 - name: Übersicht
   items:
     - name: Einführung in Azure Data Factory
@@ -8,7 +10,7 @@
       items:
         - name: Pipelines und Aktivitäten
           href: data-factory-create-pipelines.md
-        - name: DATASETS
+        - name: Datasets
           href: data-factory-create-datasets.md
         - name: Planung und Ausführung
           href: data-factory-scheduling-and-execution.md
@@ -78,7 +80,7 @@
               href: data-factory-azure-datalake-connector.md
             - name: Azure Search
               href: data-factory-azure-search-connector.md
-            - name: Azure SQL-Datenbank
+            - name: "Azure\_SQL-Datenbank"
               href: data-factory-azure-sql-connector.md
             - name: Azure SQL Data Warehouse
               href: data-factory-azure-sql-data-warehouse-connector.md
@@ -181,7 +183,7 @@
           href: data-factory-troubleshoot-gateway-issues.md
     - name: Aufrufen von SSIS-Paketen mithilfe der Aktivität „Gespeicherte Prozedur“
       href: how-to-invoke-ssis-package-stored-procedure-activity.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
@@ -193,7 +195,7 @@
       href: /rest/api/datafactory/
     - name: JSON
       href: data-factory-json-scripting-reference.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

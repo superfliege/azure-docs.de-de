@@ -101,6 +101,14 @@
               href: hyper-v-vmm-secondary-support-matrix.md
             - name: Hyper-V-zu-sekundärem-Standort-Architektur
               href: hyper-v-vmm-architecture.md
+    - name: Netzwerk
+      items:
+        - name: Azure Traffic Manager mit Site Recovery
+          href: concepts-traffic-manager-with-site-recovery.md
+        - name: ExpressRoute mit Site Recovery
+          href: concepts-expressroute-with-site-recovery.md
+        - name: Netzwerksicherheitsgruppen mit Site Recovery
+          href: concepts-network-security-group-with-site-recovery.md
     - name: Notfallwiederherstellung für Apps
       href: site-recovery-workload.md
     - name: Informationen zu Wiederherstellungsplänen
@@ -109,10 +117,6 @@
       href: migrate-overview.md
     - name: Informationen zur rollenbasierten Zugriffssteuerung mit Site Recovery
       href: site-recovery-role-based-linked-access-control.md
-    - name: Informationen zu Azure Traffic Manager mit Site Recovery
-      href: concepts-traffic-manager-with-site-recovery.md
-    - name: Informationen zu ExpressRoute mit Site Recovery
-      href: concepts-expressroute-with-site-recovery.md
     - name: Häufig gestellte Fragen
       href: site-recovery-faq.md
 - name: Anleitungen

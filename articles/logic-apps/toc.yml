@@ -47,6 +47,8 @@
               href: logic-apps-control-flow-loops.md
             - name: Bereiche
               href: logic-apps-control-flow-run-steps-group-scopes.md
+        - name: Erstellen von Variablen für das Speichern von Werten
+          href: logic-apps-create-variables-store-values.md
         - name: Hinzufügen von benutzerdefiniertem Code mit Azure Functions
           href: logic-apps-azure-functions.md
         - name: Aufrufen von Logik-Apps mit Azure Functions

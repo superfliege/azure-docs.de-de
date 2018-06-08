@@ -61,17 +61,25 @@
       href: cognitive-search-concept-intro.md
     - name: Volltextsuche
       href: search-lucene-query-architecture.md
-    - name: Linguistische Analyse
-      href: search-analyzers.md
-    - name: Indizierung
-      href: search-what-is-data-import.md
-    - name: Indexdefinition
-      href: search-what-is-an-index.md
-    - name: Indexer
-      href: search-indexer-overview.md
 - name: Anleitungen
   items:
-    - name: Planen und Entwerfen
+    - name: Cognitive Search (Vorschauversion)
+      items:
+        - name: Definieren von Fertigkeiten
+          href: cognitive-search-defining-skillset.md
+        - name: Verweisen auf eine Anmerkung
+          href: cognitive-search-concept-annotations-syntax.md
+        - name: Zuordnen zu Indexfeldern
+          href: cognitive-search-output-field-mapping.md
+        - name: Verarbeiten und Extrahieren von Informationen aus Bildern
+          href: cognitive-search-concept-image-scenarios.md
+        - name: Integrieren benutzerdefinierter Fertigkeiten
+          href: cognitive-search-custom-skill-interface.md
+        - name: Beispiel für benutzerdefinierte Fertigkeiten
+          href: cognitive-search-create-custom-skill-example.md
+        - name: Tipps zur Problembehandlung
+          href: cognitive-search-concept-troubleshooting.md
+    - name: Planung
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
@@ -81,8 +89,6 @@
           href: search-capacity-planning.md
         - name: Entwurfsmuster für Mehrinstanzenfähigkeit
           href: search-modeling-multitenant-saas-applications.md
-        - name: Leistung und Optimierung
-          href: search-performance-optimization.md
     - name: Sicherheit
       items:
         - name: Sicherheitsübersicht
@@ -117,55 +123,59 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Upgraden der REST-API
           href: search-api-migration.md
+    - name: Indexdesign
+      items:
+        - name: Indexdefinition
+          href: search-what-is-an-index.md
+        - name: Analysemodule
+          items:
+            - name: Textanalysen
+              href: search-analyzers.md
+            - name: Sprachanalysen-API
+              href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
+            - name: API für benutzerdefinierte Analysen
+              href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+        - name: Automatische Vorschläge
+          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
         - name: Modellieren von komplexen Datentypen
           href: search-howto-complex-data-types.md
-        - name: Verarbeiten gleichzeitiger Aktualisierungen
-          href: search-howto-concurrency.md
-        - name: Auslagerungsergebnisse
-          href: search-pagination-page-layout.md
-    - name: Textanalyse
-      items:
-        - name: Sprachanalysen
-          href: 'https://docs.microsoft.com/rest/api/searchservice/language-support'
-        - name: Benutzerdefinierte Analysen
-          href: 'https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search'
+        - name: Facettennavigation
+          href: search-faceted-navigation.md
+        - name: Relevanzoptimierung
+          href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
+        - name: Synonyme (Vorschau)
+          href: search-synonyms.md
     - name: Indizieren von Daten
       items:
-        - name: Azure Blob Storage-Indexer
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Azure Table Storage-Indexer
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL-Indexer
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB-Indexer
-          href: search-howto-index-cosmosdb.md
-        - name: Indizieren von CSV-Blobs
-          href: search-howto-index-csv-blobs.md
-        - name: Indizieren von JSON-Blobs
-          href: search-howto-index-json-blobs.md
-        - name: Konfigurieren von Indexerverbindungen mit SQL Server auf virtuellen Azure-Computern
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-        - name: Feldzuordnungen in Indexern
-          href: search-indexer-field-mappings.md
+        - name: Push- vs. Pull-Indizierung
+          href: search-what-is-data-import.md
         - name: Neuerstellen eines Indexes
           href: search-howto-reindex.md
-    - name: Cognitive Search (Vorschauversion)
-      items:
-        - name: Definieren von Fertigkeiten
-          href: cognitive-search-defining-skillset.md
-        - name: Verweisen auf eine Anmerkung
-          href: cognitive-search-concept-annotations-syntax.md
-        - name: Zuordnen zu Indexfeldern
-          href: cognitive-search-output-field-mapping.md
-        - name: Verarbeiten und Extrahieren von Informationen aus Bildern
-          href: cognitive-search-concept-image-scenarios.md
-        - name: Integrieren benutzerdefinierter Fertigkeiten
-          href: cognitive-search-custom-skill-interface.md
-        - name: Beispiel für benutzerdefinierte Fertigkeiten
-          href: cognitive-search-create-custom-skill-example.md
-        - name: Tipps zur Problembehandlung
-          href: cognitive-search-concept-troubleshooting.md
-    - name: Volltextsuche
+        - name: Indizieren großer Datasets
+          href: search-howto-large-index.md
+        - name: Verarbeiten gleichzeitiger Aktualisierungen
+          href: search-howto-concurrency.md
+        - name: Indexer
+          items:
+            - name: Übersicht über Indexer
+              href: search-indexer-overview.md
+            - name: Blobspeicher-Indexer
+              href: search-howto-indexing-azure-blob-storage.md
+            - name: Tabellenspeicher-Indexer
+              href: search-howto-indexing-azure-tables.md
+            - name: SQL DB-Indexer
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Cosmos DB-Indexer
+              href: search-howto-index-cosmosdb.md
+            - name: CSV-Blob-Indizierung
+              href: search-howto-index-csv-blobs.md
+            - name: JSON-Blob-Indizierung
+              href: search-howto-index-json-blobs.md
+            - name: Herstellen einer Verbindung mit virtuellen SQL Server-Computern
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+            - name: Feldzuordnungen
+              href: search-indexer-field-mappings.md
+    - name: Durchsuchen von Daten
       items:
         - name: Grundlegende Abfrageerstellung
           href: search-query-overview.md
@@ -173,24 +183,22 @@
           href: 'https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search'
         - name: Lucene-Abfragesyntax
           href: 'https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search'
-        - name: Beispiele für Lucene-Syntaxabfragen
+        - name: Lucene-Abfragebeispiele
           href: search-query-lucene-examples.md
-        - name: Facettennavigation
-          href: search-faceted-navigation.md
-        - name: Bewertungsprofile
+        - name: Auslagerungsergebnisse
+          href: search-pagination-page-layout.md
+        - name: Relevanzoptimierung
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: Vorschläge
-          href: 'https://docs.microsoft.com/rest/api/searchservice/suggesters'
-        - name: Synonyme (Vorschau)
-          href: search-synonyms.md
-    - name: Filter
-      items:
-        - name: Übersicht über Filter
-          href: search-filters.md
-        - name: Facettenfilter
-          href: search-filters-facets.md
-        - name: Filterausdruckssyntax
-          href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+        - name: Filter
+          items:
+            - name: Übersicht über Filter
+              href: search-filters.md
+            - name: Facettenfilter
+              href: search-filters-facets.md
+            - name: Filterausdruckssyntax
+              href: 'https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search'
+        - name: Leistung und Optimierung
+          href: search-performance-optimization.md
     - name: Verwaltung und Analyse
       items:
         - name: Verwaltung (Portal)
@@ -211,41 +219,31 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html'
     - name: REST
       href: /rest/api/searchservice
-      items:
-        - name: 2017-11-11-Preview
-          href: search-api-2017-11-11-preview.md
     - name: REST (Verwaltung)
       href: /rest/api/searchmanagement
-    - name: Cognitive Search (Vorschauversion)
+    - name: REST (Vorschauversion)
+      href: search-api-preview.md
+    - name: Vordefinierte Skills (Vorschauversion)
+      href: cognitive-search-predefined-skills.md
       items:
-        - name: 2017-11-11-Preview (REST)
-          href: search-api-2017-11-11-preview.md
-          items:
-            - name: Erstellen von Fertigkeiten (Vorschau)
-              href: ref-create-skillset.md
-            - name: Erstellen eines Indexers (Vorschau)
-              href: ref-create-indexer.md
-        - name: Vordefinierte Fertigkeiten
-          href: cognitive-search-predefined-skills.md
-          items:
-            - name: Schlüsselwortextraktion
-              href: cognitive-search-skill-keyphrases.md
-            - name: Spracherkennung
-              href: cognitive-search-skill-language-detection.md
-            - name: Erkennung benannter Entitäten
-              href: cognitive-search-skill-named-entity-recognition.md
-            - name: Textzusammenführung
-              href: cognitive-search-skill-textmerger.md
-            - name: Textaufteilung
-              href: cognitive-search-skill-textsplit.md
-            - name: Stimmung
-              href: cognitive-search-skill-sentiment.md
-            - name: Bildanalyse
-              href: cognitive-search-skill-image-analysis.md
-            - name: OCR
-              href: cognitive-search-skill-ocr.md
-            - name: Shaper
-              href: cognitive-search-skill-shaper.md
+        - name: Schlüsselwortextraktion
+          href: cognitive-search-skill-keyphrases.md
+        - name: Spracherkennung
+          href: cognitive-search-skill-language-detection.md
+        - name: Erkennung benannter Entitäten
+          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Textzusammenführung
+          href: cognitive-search-skill-textmerger.md
+        - name: Textaufteilung
+          href: cognitive-search-skill-textsplit.md
+        - name: Stimmung
+          href: cognitive-search-skill-sentiment.md
+        - name: Bildanalyse
+          href: cognitive-search-skill-image-analysis.md
+        - name: OCR
+          href: cognitive-search-skill-ocr.md
+        - name: Shaper
+          href: cognitive-search-skill-shaper.md
 - name: angeben
   items:
     - name: FAQ – Häufig gestellte Fragen

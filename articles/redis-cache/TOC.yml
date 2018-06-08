@@ -10,6 +10,8 @@
       href: cache-web-app-howto.md
     - name: Erstellen einer .NET-App
       href: cache-dotnet-how-to-use-azure-redis-cache.md
+    - name: Erstellen einer .NET Core-App
+      href: cache-dotnet-core-quickstart.md
     - name: Erstellen einer Node.js-App
       href: cache-nodejs-get-started.md
     - name: Erstellen einer Java-App
@@ -48,6 +50,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Verteilen Ihres Caches mit Clustering
           href: cache-how-to-premium-clustering.md
+        - name: Migrieren von Managed Cache Service
+          href: cache-migrate-to-redis.md
     - name: Automatisieren
       items:
         - name: Bereitstellen und Verwalten mithilfe von Azure PowerShell

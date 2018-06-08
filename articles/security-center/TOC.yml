@@ -109,6 +109,8 @@
           href: security-center-just-in-time.md
         - name: Adaptive Anwendungssteuerungen
           href: security-center-adaptive-application.md
+        - name: Überwachung der Dateiintegrität
+          href: security-center-file-integrity-monitoring.md
     - name: Verwalten von Sicherheitslösungen
       href: security-center-partner-integration.md
       items:
@@ -145,6 +147,8 @@
           href: security-center-threat-intel.md
         - name: Untersuchung
           href: security-center-investigation.md
+        - name: Benutzerdaten für Untersuchung verwalten
+          href: security-center-investigation-user-data.md
     - name: Automatisieren des Sicherheitsworkflows
       items:
         - name: Logic Apps-Playbooks
@@ -169,6 +173,8 @@
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'
 - name: angeben
   items:
+    - name: Verwalten von Benutzerdaten
+      href: security-center-privacy.md
     - name: Häufig gestellte Fragen
       href: security-center-faq.md
     - name: Unterstützte Plattformen

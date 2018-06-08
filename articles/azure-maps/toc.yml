@@ -30,12 +30,14 @@
       href: render-coverage.md
     - name: Abgedeckter Routingbereich
       href: routing-coverage.md
-    - name: Suchkategorien
-      href: search-categories.md
+    - name: Unterstützte Suchkategorien
+      href: supported-search-categories.md
     - name: Unterstützte Sprachen
       href: supported-languages.md
     - name: Nutzungsmodell
       href: consumption-model.md
+    - name: geoJSON erweitern
+      href: extend-geojson.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
@@ -70,17 +72,33 @@
           href: map-show-traffic.md
         - name: Interaktion mit Mausereignissen
           href: map-events.md
+        - name: Zugängliche Kartenanwendungen
+          href: map-accessibility.md
 - name: Verweis
   items:
-    - name: 'Services API: REST'
-      href: 'https://docs.microsoft.com/rest/api/maps/'
-    - name: Kartensteuerelement-API – Javascript
-      href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+    - name: REST
+      items:
+        - name: Renderingdienst
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+        - name: Routendienst
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+        - name: Suchdienst
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+        - name: Zeitzonendienst
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+        - name: Verkehrsinfodienst
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+        - name: Kartenkontoverwaltung
+          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: Kartensteuerelement
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
 - name: Verwandte Themen
   items:
     - name: Lösungen
       items:
-        - name: Vorkonfigurierte IoT Suite-Lösungen
+        - name: IoT Solution Accelerators
           href: /azure/iot-suite
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
