@@ -7,14 +7,6 @@
       href: asdk-what-is.md
     - name: Versionshinweise zum ASDK
       href: asdk-release-notes.md
-- name: Tutorials
-  items:
-    - name: Abonnieren von Angeboten
-      href: asdk-subscribe-services.md
-    - name: Aktualisieren von Angeboten und Plänen
-      href: asdk-update-offers.md
-    - name: Erstellen eines virtuellen Computers über eine Vorlage
-      href: asdk-create-vm-template.md
 - name: Konzepte
   items:
     - name: Überlegungen zur Bereitstellungsplanung
