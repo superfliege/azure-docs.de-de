@@ -1,3 +1,6 @@
+## <a name="automatic-device-management"></a>Automatische Geräteverwaltung
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands über den gesamten Lebenszyklus. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und IoT Hub die Geräte aktualisieren lassen, sobald sie in den entsprechenden Bereich fallen.  Umfasst [automatische Gerätekonfigurationen](/articles/iot-hub/iot-hub-auto-device-config.md) und [automatische IoT Edge-Bereitstellungen](/articles/iot-edge/how-to-deploy-monitor.md).
+
 ## <a name="iot-edge"></a>IoT Edge
 Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten und lösungsspezifischem Code auf lokalen Geräten. IoT Edge-Geräte können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor die Daten an die Cloud gesendet werden. Weitere Informationen finden Sie unter [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/).
 
@@ -7,8 +10,8 @@ Die für die Bereitstellung und Überwachung von Modulen zuständige Komponente 
 ## <a name="iot-edge-device"></a>IoT Edge-Gerät
 IoT Edge-Geräte verfügen über eine Installation der IoT Edge-Laufzeit und sind in den Gerätedetails als „IoT Edge device“ (IoT Edge-Gerät) gekennzeichnet. Informationen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
-## <a name="iot-edge-deployment"></a>IoT Edge-Bereitstellung
-Eine IoT Edge-Bereitstellung konfiguriert eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+## <a name="iot-edge-automatic-deployment"></a>Automatische IoT Edge-Bereitstellung
+Eine automatische IoT Edge-Bereitstellung konfiguriert eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Erfahren Sie mehr zur [automatischen IoT Edge-Bereitstellung](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge-Bereitstellungsmanifest
 Ein JSON-Dokument mit Informationen, die in mindestens einen Modulzwilling von IoT Edge-Geräten kopiert werden, um eine Gruppe von Modulen, Routen und zugeordneten gewünschten Moduleigenschaften bereitzustellen.

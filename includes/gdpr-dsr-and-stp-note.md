@@ -1,7 +1,7 @@
 ---
- Titel: Beschreibung Includedatei: Dienste Includedatei: azure-policy Autor: eross-msft
+ Titel: Beschreibung Includedatei: Dienste Includedatei: active-directory Autor: eross-msft
  
-ms.service: azure-policy ms.topic: include ms.date: 24.04.2018 ms.author: lizross ms.custom: Includedatei
+ms.service: active-directory ms.topic: include ms.date: 04/24/2018 ms.author: lizross ms.custom: include file
 ---
 
 >[!Note] 

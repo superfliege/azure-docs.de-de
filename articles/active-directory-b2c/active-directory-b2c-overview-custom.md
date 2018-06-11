@@ -1,22 +1,20 @@
 ---
-title: 'Azure Active Directory B2C: Benutzerdefinierte Richtlinien | Microsoft-Dokumentation'
-description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
+title: Azure Active Directory B2C – Benutzerdefinierte Richtlinien | Microsoft-Dokumentation
+description: Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 0d507c2116aa9e420ddc0dec4999ea21d28e60fc
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32138916"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709256"
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Benutzerdefinierte Richtlinien
 
@@ -46,10 +44,10 @@ Wir empfehlen, drei Typen von Richtliniendateien zu verwenden:
 
 - **Eine BASISDATEI**, die den Großteil der Definitionen enthält und für die Azure ein vollständiges Beispiel zur Verfügung stellt.  Es wird empfohlen, dass Sie eine minimale Anzahl von Änderungen an dieser Datei vornehmen, um die Problembehandlung und eine langfristige Verwaltung Ihrer Richtlinien zu unterstützen.
 - **Eine Erweiterungsdatei**, die eindeutige Konfigurationsänderungen für Ihren Mandanten enthält.
-- **Eine Datei der vertrauenden Seite**, die die einzige aufgabenorientierte Datei darstellt, die direkt von der Anwendung oder dem Dienst (auch als „vertrauenden Seite“ bezeichnet) aufgerufen wird.  Weitere Informationen finden Sie im Artikel zu Richtliniendateidefinitionen.  Jede eindeutige Aufgabe erfordert eine eigene Datei der vertrauenden Seite und die Anzahl kann abhängig von den Branding-Anforderungen die Gesamtanzahl der Anwendungen multipliziert mit der Gesamtanzahl von Anwendungsfällen betragen.
+- **Eine Datei der vertrauenden Seite** als einzige aufgabenorientierte Datei, die direkt von der Anwendung oder vom Dienst (auch als „vertrauende Seite“ bezeichnet) aufgerufen wird.  Weitere Informationen finden Sie im Artikel zu Richtliniendateidefinitionen.  Jede eindeutige Aufgabe erfordert eine eigene Datei der vertrauenden Seite, und die Anzahl kann abhängig von den Branding-Anforderungen die „Gesamtzahl von Anwendungen multipliziert mit der Gesamtzahl von Anwendungsfällen“ betragen.
 
 
-Integrierte Richtlinien in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, der Entwickler sieht jedoch nur die Datei der vertrauenden Seite, während das Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
+Integrierte Richtlinien in Azure AD B2C folgen dem oben dargestellten 3-Dateien-Muster, aber der Entwickler sieht nur die Datei der vertrauenden Seite, während das Portal Änderungen an der Erweiterungsdatei im Hintergrund vornimmt.
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>Wichtige Konzepte für die Verwendung benutzerdefinierter Richtlinien
 
@@ -58,8 +56,8 @@ Integrierte Richtlinien in Azure AD B2C folgen dem oben dargestellten 3-Dateien-
 CIAM-Dienst (Customer Identity and Access Management) von Azure. Der Dienst umfasst Folgendes:
 
 1. Ein Benutzerverzeichnis in Form eines speziellen Azure Active Directory, das über Microsoft Graph aufgerufen werden kann und Benutzerdaten für lokale und Verbundkonten enthält. 
-2. Zugriff auf das **Identity Experience Framework**, die die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert und Ansprüche zwischen ihnen zur Durchführung von Identitäts-/Zugriffsverwaltungsaufgaben weiterleitet 
-3. Ein Sicherheitstokendienst (STS), der ID-Tokens ausstellt, Tokens aktualisiert, auf Tokens (und entsprechende SAML-Assertionen) zugreift und diese zum Schutz von Ressourcen überprüft.
+2. Zugriff auf das **Identity Experience Framework**, mit dem die Vertrauensstellung zwischen Benutzern und Entitäten koordiniert wird und Ansprüche zur Durchführung von Identitäts-/Zugriffsverwaltungsaufgaben dazwischen ausgetauscht werden. 
+3. Ein Sicherheitstokendienst (STS), der ID-Token ausstellt, Token aktualisiert, auf Token (und entsprechende SAML-Assertionen) zugreift und diese zum Schutz von Ressourcen überprüft.
 
 Azure AD B2C interagiert nacheinander mit Identitätsanbietern, Benutzern, anderen Systemen und dem lokalen Benutzerverzeichnis zur Durchführung einer Identitätsaufgabe (z.B. Anmelden eines Benutzers, Registrieren eines neuen Benutzers, Zurücksetzen von Kennwörtern). Die zugrunde liegende Plattform, die die Vertrauensstellung zwischen mehreren Seiten herstellt und diese Schritte ausführt, wird als Identity Experience Framework bezeichnet. Eine Richtlinie (auch als „User Journey“ oder „Vertrauensframeworkrichtlinie“ bezeichnet) definiert explizit die Akteure, Aktionen, Protokolle und die Abfolge der durchzuführenden Schritte.
 
@@ -76,7 +74,7 @@ Dies sind vordefinierte Konfigurationsdateien, die das Verhalten von Azure AD B2
 
 Dies sind Konfigurationsdateien, die das Verhalten des Identity Experience Framework in Ihrem Azure AD B2C-Mandanten definieren. Eine benutzerdefinierte Richtlinie kann als eine oder mehrere XML-Dateien aufgerufen werden (siehe Richtliniendateidefinitionen), die vom Identity Experience Framework beim Aufrufen durch eine vertrauende Seite (z.B. eine Anwendung) ausgeführt wird bzw. werden. Benutzerdefinierte Richtlinien können direkt von einem Identitätsentwickler bearbeitet werden, um eine nahe unbegrenzte Anzahl von Aufgaben durchzuführen. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
 
-## <a name="policy-file-definitions-for-identity-experience-framework-trustframeworks"></a>Richtliniendateidefinitionen für Identity Experience Framework-Vertrauensframeworks
+## <a name="policy-file-definitions-for-identity-experience-framework-trust-frameworks"></a>Richtliniendateidefinitionen für Identity Experience Framework-Vertrauensframeworks
 
 ### <a name="policy-files"></a>Richtliniendateien
 

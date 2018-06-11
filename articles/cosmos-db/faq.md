@@ -5,20 +5,17 @@ keywords: Datenbankfragen,häufig gestellte Fragen,DocumentDB,Azure,Microsoft Az
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: fe192fb83c8bf29af0d02f47da366d8551dd6af6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e20e360fc1bfb839476a1f4dccf6acf0f25174d2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735163"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -61,6 +58,9 @@ Es gibt keine Beschränkung in Bezug auf die Gesamtmenge der Daten, die von eine
 
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Wo liegen die Durchsatzgrenzwerte von Azure Cosmos DB?
 Es gibt keine Beschränkung in Bezug auf den Durchsatz, der von einem Container in Azure Cosmos DB unterstützt werden kann. Der wichtigste Punkt hierbei ist, dass Ihre Workload zu ungefähr gleichen Teilen auf eine ausreichend große Anzahl von Partitionsschlüsseln verteilt wird.
+
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>Sind die Konnektivitätsmodi „Direkt“ und „Gateway“ verschlüsselt? 
+Ja, beide Modi sind immer vollständig verschlüsselt. 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Wie viel kostet Azure Cosmos DB?
 Ausführliche Informationen hierzu finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Nutzungsgebühren für Azure Cosmos DB werden von der Anzahl von bereitgestellten Containern, der Anzahl der Stunden, die die Container online waren, und dem bereitgestellten Durchsatz für jeden Container bestimmt. Der Begriff *Container* bezieht sich hier auf die SQL-API-Sammlung, den Graph-API-Graphen, die MongoDB-API-Sammlung und die Tabellen-API-Tabellen. 
@@ -164,6 +164,10 @@ Sie haben zwei Möglichkeiten, um in Azure Cosmos DB die Masseneinfügung für D
 * Mit dem Datenmigrationstool, wie unter [Datenbankmigrationstool für Azure Cosmos DB](import-data.md) beschrieben.
 * Mit serverseitigen Verfahren, wie unter [Serverseitige JavaScript-Programmierung für Azure Cosmos DB](programming.md) beschrieben.
 
+### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Ich habe für meine Sammlung die verzögerte Indizierung eingerichtet, und bei meinen Abfragen werden nicht die erwarteten Ergebnisse zurückgegeben. 
+Wie im Abschnitt zur Indizierung beschrieben, kann die verzögerte Indizierung zu diesem Verhalten führen. Sie sollten für alle Anwendungen immer eine einheitliche Indizierung verwenden. 
+
+
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Unterstützt die SQL-API die Zwischenspeicherung von Ressourcenlinks?
 Ja. Da es sich bei Azure Cosmos DB um einen RESTful-Dienst handelt, sind Ressourcenlinks unveränderbar und können zwischengespeichert werden. SQL-API-Clients können einen „If-None-Match“-Header für Lesevorgänge für ressourcenähnliche Dokumente oder Sammlungen festlegen und dann ihre lokalen Kopien aktualisieren, nachdem die Serverversion geändert wurde.
 
@@ -171,7 +175,12 @@ Ja. Da es sich bei Azure Cosmos DB um einen RESTful-Dienst handelt, sind Ressour
 Ja. Der [Azure Cosmos DB-Emulator](local-emulator.md) stellt eine High-Fidelity-Emulation des Cosmos DB-Diensts bereit. Es werden die gleichen Funktionen wie bei Azure Cosmos DB unterstützt, z.B. Erstellen und Abfragen von JSON-Dokumenten, Bereitstellen und Skalieren von Sammlungen und Ausführen von gespeicherten Prozeduren und Triggern. Sie können Anwendungen mit dem Azure Cosmos DB-Emulator entwickeln und testen und diese in Azure auf globaler Ebene bereitstellen, indem Sie eine einzige Konfigurationsänderung am Verbindungsendpunkt für Azure Cosmos DB vornehmen.
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Warum werden lange Gleitkommawerte in einem Dokument gerundet, wenn sie im Daten-Explorer im Portal angezeigt werden? 
-Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkommaformat mit doppelter Genauigkeit (gemäß Definition in IEEE 754) und kann nur Zahlen zwischen -(253 - 1) und 253 - 1 (d.h. 9007199254740991) genau darstellen.
+Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkommaformat mit doppelter Genauigkeit (gemäß Definition in IEEE 754) und kann nur Zahlen zwischen -(253-1) und 253-1 (d.h. 9007199254740991) genau darstellen.
+
+### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Wo sind in der Objekthierarchie Berechtigungen zulässig?
+
+Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Sammlungsebene und den untergeordneten Elementen (z.B. Dokumente, Anlagen) zulässig. Hieraus ergibt sich, dass auf Datenbank- oder Kontoebene derzeit keine Berechtigung erstellt werden kann.
+
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Entwickeln mit der API für MongoDB
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?

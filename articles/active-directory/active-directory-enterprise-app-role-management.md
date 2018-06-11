@@ -12,248 +12,249 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/30/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 43a4db9114cd47da5bef98ed634847b547589b47
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5aa716f91a3155e81ef8dc7c436b4a9a5811238b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34723251"
 ---
-# <a name="configuring-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen in Azure Active Directory
+# <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen in Azure Active Directory
 
-Dieses Feature ermöglicht Benutzern, den Anspruchstyp für Rollenansprüche im Antworttoken, das für das Autorisieren einer App mithilfe von Azure AD empfangen wurde, anzupassen.
+Mit Azure Active Directory (Azure AD) können Sie den Anspruchstyp für den Rollenanspruch in dem Antworttoken anpassen, das Sie nach dem Autorisieren der App erhalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Ein Azure AD-Abonnement mit eingerichtetem Verzeichnis
-- Ein Abonnement, das für das einmalige Anmelden aktiviert ist
-- Sie müssen SSO mit Ihrer Anwendung konfigurieren
+- Ein Azure AD-Abonnement mit eingerichtetem Verzeichnis.
+- Ein Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist. Sie müssen SSO mit Ihrer Anwendung konfigurieren.
 
 ## <a name="when-to-use-this-feature"></a>Verwendung dieses Features
 
-Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in SAML-Antworten übergeben werden, müssen Sie dieses Feature verwenden. Mit diesem Feature können Sie so viele Rollen erstellen, wie von Azure AD an Ihre Anwendung zurückgegeben werden müssen.
+Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwort übergeben werden, müssen Sie dieses Feature verwenden. Sie können so viele Rollen erstellen, wie von Azure AD an Ihre Anwendung zurückgegeben werden müssen.
 
-## <a name="steps-to-use-this-feature"></a>Schritte zur Verwendung dieses Features
+## <a name="create-roles-for-an-application"></a>Erstellen von Rollen für eine Anwendung
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf das Symbol **Azure Active Directory**. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Azure Active Directory-Symbol][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Wählen Sie **Unternehmensanwendungen**. Wählen Sie anschließend **Alle Anwendungen**.
 
-    ![Blatt „Unternehmensanwendungen“][2]
+    ![Bereich für Unternehmensanwendungen][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld den Namen Ihrer Anwendung ein, wählen Sie die Anwendung im Ergebnispanel aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um sie hinzuzufügen.
+4. Geben Sie im Suchfeld den Namen Ihrer Anwendung ein, und wählen Sie Ihre Anwendung im Ergebnisbereich aus. Wählen Sie die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Anwendung in der Ergebnisliste](./media/active-directory-enterprise-app-role-management/tutorial_app_addfromgallery.png)
 
-5. Nachdem die Anwendung hinzugefügt wurde, wechseln Sie zur Seite **Eigenschaften**, und kopieren Sie die **Objekt-ID**.
+5. Wechseln Sie nach dem Hinzufügen der Anwendung zur Seite **Eigenschaften**, und kopieren Sie die Objekt-ID.
 
-<!-- ![Properties Page](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png) Note: Image is missing. -->
+    ![Eigenschaftenseite](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
+6. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster, und führen Sie die folgenden Schritte aus:
 
-    a. Melden Sie sich bei der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators/Co-Admins für Ihren Mandanten an.
+    a. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
-    b. Sie müssen über ausreichende Berechtigungen zum Erstellen der Rollen verfügen. Klicken Sie auf **Berechtigungen ändern**, um die erforderlichen Berechtigungen zu erhalten. 
+    b. Sie müssen über ausreichende Berechtigungen zum Erstellen der Rollen verfügen. Wählen Sie **Berechtigungen ändern**, um die Berechtigungen abzurufen. 
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
+      ![Schaltfläche „Berechtigungen ändern“](./media/active-directory-enterprise-app-role-management/graph-explorer-new9.png)
 
-    c. Wählen Sie in der Liste die folgenden Berechtigungen aus (sofern Sie noch nicht darüber verfügen), und klicken Sie auf „Berechtigungen ändern“. 
+    c. Wählen Sie in der Liste die folgenden Berechtigungen aus (sofern Sie noch nicht darüber verfügen), und wählen Sie **Berechtigungen ändern**. 
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+      ![Liste mit Berechtigungen und Schaltfläche „Berechtigungen ändern“](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
 
-    d. Darin werden Sie aufgefordert, sich erneut anzumelden und die Zustimmungserklärung zu akzeptieren. Nachdem Sie die Zustimmungserklärung akzeptiert haben, werden Sie erneut beim System angemeldet.
+    d. Erteilen Sie die Zustimmung. Sie werden wieder am System angemeldet.
 
-    e. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste der Dienstprinzipale von Ihrem Mandanten ab:
+    e. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste mit den Dienstprinzipalen von Ihrem Mandanten ab:
     
      `https://graph.microsoft.com/beta/servicePrincipals`
         
-    Wenn Sie mehrere Verzeichnisse verwenden, sollten Sie diesem Muster folgen: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+      Halten Sie sich an das folgende Muster, wenn Sie mehrere Verzeichnisse verwenden: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+      ![Graph-Tester-Dialogfeld mit der Abfrage zum Abrufen von Dienstprinzipalen](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-    f. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Namen, den Sie ändern möchten. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Suchen Sie nach der **Objekt-ID**, die Sie auf der Seite „Eigenschaften“ kopiert haben, und verwenden Sie folgende Abfrage, um zum jeweiligen Dienstprinzipal zu gelangen.
+    f. Wählen Sie in der Liste mit den abgerufenen Dienstprinzipalen den Dienstprinzipal aus, den Sie ändern möchten. Sie können auch mit STRG+F in den aufgeführten Dienstprinzipalen nach der Anwendung suchen. Suchen Sie nach der Objekt-ID, die Sie von der Seite **Eigenschaften** kopiert haben, und verwenden Sie die folgende Abfrage, um den Dienstprinzipal abzurufen:
     
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+      `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+      ![Abfrage zum Abrufen des Dienstprinzipals, den Sie ändern müssen](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    g. Extrahieren Sie die appRoles-Eigenschaft aus dem Dienstprinzipalobjekt. 
+    g. Extrahieren Sie die **appRoles**-Eigenschaft aus dem Dienstprinzipalobjekt. 
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+      ![Details zur appRoles-Eigenschaft](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+
+      > [!Note]
+      > Bei Verwendung der benutzerdefinierten App (nicht der Azure Marketplace-App) werden zwei Standardrollen angezeigt: „user“ und „msiam_access“. Für die Marketplace-App ist „msiam_access“ die einzige Standardrolle. Sie müssen keine Änderungen in den Standardrollen vornehmen.
+
+    h. Generieren Sie neue Rollen für Ihre Anwendung. 
+
+      Der folgende JSON-Code ist ein Beispiel für das **appRoles**-Objekt. Erstellen Sie ein ähnliches Objekt, um die gewünschten Rollen für Ihre Anwendung hinzuzufügen. 
+
+      ```
+      {
+         "appRoles": [
+          {
+              "allowedMemberTypes": [
+                  "User"
+              ],
+              "description": "msiam_access",
+              "displayName": "msiam_access",
+              "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
+              "isEnabled": true,
+              "origin": "Application",
+              "value": null
+          },
+          {
+              "allowedMemberTypes": [
+                  "User"
+              ],
+              "description": "Administrators Only",
+              "displayName": "Admin",
+              "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
+              "isEnabled": true,
+              "origin": "ServicePrincipal",
+              "value": "Administrator"
+          }
+      ]
+      }
+      ```
+      
+      > [!Note]
+      > Neue Rollen können nur nach der Rolle „msiam_access“ für den Patchvorgang hinzugefügt werden. Darüber hinaus können Sie Ihrer Organisation je nach Bedarf beliebig viele Rollen hinzufügen. Azure AD sendet den Wert dieser Rollen als Anspruchswert in der SAML-Antwort. Verwenden Sie zum Generieren der GUID-Werte für die ID von neuen Rollen Webtools wie [dieses](https://www.guidgenerator.com/).
+    
+    i. Wechseln Sie wieder zum Graph-Tester, und ändern Sie die Methode von **GET** in **PATCH**. Patchen Sie das Dienstprinzipalobjekt, damit es über die gewünschten Rollen verfügt, indem Sie die **appRoles**-Eigenschaft (siehe vorheriges Beispiel) aktualisieren. Wählen Sie die Option **Abfrage ausführen**, um den Patchvorgang auszuführen. Die Erstellung der Rolle wird in einer Erfolgsmeldung bestätigt.
+
+      ![Patchvorgang mit Erfolgsmeldung](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
+
+7. Nachdem der Dienstprinzipal mit weiteren Rollen gepatcht wurde, können Sie den jeweiligen Rollen Benutzer zuweisen. Sie können die Benutzer zuweisen, indem Sie im Portal zur Anwendung navigieren. Wählen Sie die Registerkarte **Benutzer und Gruppen**. Auf dieser Registerkarte werden alle Benutzer und Gruppen angezeigt, die der App bereits zugewiesen sind. Sie können für die neuen Rollen neue Benutzer hinzufügen. Außerdem können Sie einen vorhandenen Benutzer auswählen und dann die Option **Bearbeiten** verwenden, um die Rolle zu ändern.
+
+    ![Registerkarte „Benutzer und Gruppen“](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
+
+    Um die Rolle einem Benutzer zuzuweisen, wählen Sie die neue Rolle aus und wählen dann unten auf der Seite die Schaltfläche **Zuweisen**.
+
+    ![Bereich „Zuweisung bearbeiten“ und Bereich „Rolle auswählen“](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
 
     > [!Note]
-    > Wenn Sie die benutzerdefinierte (nicht im Katalog enthaltene) App verwenden, sehen Sie die zwei Standardrollen: „User“ und „msiam_access“. Bei einer Katalog-App ist „msiam_access“ die einzige Standardrolle. Sie müssen keine Änderungen in den Standardrollen vornehmen.
+    > Sie müssen Ihre Sitzung im Azure-Portal aktualisieren, damit neue Rollen angezeigt werden.
 
-    h. Jetzt müssen Sie neue Rollen für Ihre Anwendung generieren. 
+8. Aktualisieren Sie die Tabelle **Attribute**, um eine benutzerdefinierte Zuordnung des Rollenanspruchs zu definieren.
 
-    i. Der nachfolgende JSON-Code ist ein Beispiel für ein appRoles-Objekt. Erstellen Sie ein ähnliches Objekt, um die gewünschten Rollen für Ihre Anwendung hinzuzufügen. 
-
-    ```
-    {
-       "appRoles": [
-        {
-            "allowedMemberTypes": [
-                "User"
-            ],
-            "description": "msiam_access",
-            "displayName": "msiam_access",
-            "id": "b9632174-c057-4f7e-951b-be3adc52bfe6",
-            "isEnabled": true,
-            "origin": "Application",
-            "value": null
-        },
-        {
-            "allowedMemberTypes": [
-                "User"
-            ],
-            "description": "Administrators Only",
-            "displayName": "Admin",
-            "id": "4f8f8640-f081-492d-97a0-caf24e9bc134",
-            "isEnabled": true,
-            "origin": "ServicePrincipal",
-            "value": "Administrator"
-        }
-    ]
-    }
-    ```
-    > [!Note]
-    > Neue Rollen können nur nach der Rolle **msiam_access** für den Patchvorgang hinzugefügt werden. Darüber hinaus können Sie je nach Bedarf Ihrer Organisation beliebig viele Rollen hinzufügen. Azure AD sendet den **Wert** dieser Rollen als Anspruchswert in der SAML-Antwort.
-    
-    j. Wechseln Sie wieder zum Graph-Tester, und ändern Sie die Methode von **GET** in **PATCH**. Patchen Sie das Dienstprinzipalobjekt so, dass es über die gewünschten Rollen verfügt, indem Sie die appRoles-Eigenschaft entsprechend der oben im Beispiel gezeigten Eigenschaft aktualisieren. Klicken Sie auf **Abfrage ausführen**, um den Patchvorgang auszuführen. Die Erstellung der Rolle wird in einer Erfolgsmeldung bestätigt.
-
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new11.png)
-
-7. Nachdem der Dienstprinzipal mit weiteren Rollen gepatcht wurde, können Sie den jeweiligen Rollen Benutzer zuweisen. Wechseln Sie zu diesem Zweck zum Portal, und navigieren Sie zu der entsprechenden App. Klicken Sie oben auf die Registerkarte **Benutzer und Gruppen**. Dadurch werden alle Benutzer und Gruppen angezeigt, die der Anwendung bereits zugewiesen sind. Sie können neue Benutzer für die neue Rolle hinzufügen und zudem den vorhandenen Benutzer auswählen und auf **Bearbeiten** klicken, um die Rolle zu ändern.
-
-    ![Einmaliges Anmelden konfigurieren, Hinzufügen](./media/active-directory-enterprise-app-role-management/graph-explorer-new5.png)
-
-     Um die Rolle einem Benutzer zuzuweisen, wählen Sie die neue Rolle aus, und klicken Sie unten auf der Seite auf die Schaltfläche **Zuweisen**.
-
-    ![Einmaliges Anmelden konfigurieren, Hinzufügen](./media/active-directory-enterprise-app-role-management/graph-explorer-new6.png)
-
-    > [!Note]
-    > Beachten Sie, dass Sie die Sitzung im Azure-Portal aktualisieren müssen, damit neue Rollen angezeigt werden.
-
-8. Nachdem den Benutzern Rollen zugewiesen wurden, müssen Sie die Tabelle **Attribute** aktualisieren, um eine angepasste Zuordnung des Anspruchs **Rolle** zu definieren.
-
-9. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
+9. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden** wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus.
     
     | Attributname | Attributwert |
     | -------------- | ----------------|    
     | Rollenname      | user.assignedrole |
 
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+    a. Wählen Sie **Attribut hinzufügen**, um den Bereich **Attribut hinzufügen** zu öffnen.
 
-    ![Einmaliges Anmelden konfigurieren, Hinzufügen](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
+      ![Schaltfläche „Attribut hinzufügen“](./media/active-directory-enterprise-app-role-management/tutorial_attribute_04.png)
 
-    ![Konfigurieren des SSO-Attributs](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
+      ![Bereich „Attribut bearbeiten“](./media/active-directory-enterprise-app-role-management/tutorial_attribute_05.png)
 
-    b. Geben Sie im Textfeld **Name** den gewünschten Attributnamen ein. In diesem Beispiel wurde **Role Name** als Anspruchsname verwendet.
+    b. Geben Sie im Feld **Name** den gewünschten Attributnamen ein. In diesem Beispiel wird **Rollenname** als Anspruchsname verwendet.
 
     c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
 
-    d. Lassen Sie den **Namespace** leer.
+    d. Lassen Sie das Feld **Namespace** leer.
     
     e. Klicken Sie auf **OK**.
 
-10. Um Ihre Anwendung mit einem durch den Identitätsanbieter initiierten Prozess für das einmalige Anmelden zu testen, melden Sie sich beim Zugriffspanel (https://myapps.microsoft.com) an, und klicken Sie auf die Kachel Ihrer Anwendung. Im SAML-Token sollten alle zugewiesenen Rollen für den Benutzer mit dem von Ihnen festgelegten Anspruchsnamen angezeigt werden.
+10. Melden Sie sich am [Zugriffsbereich](https://myapps.microsoft.com) an, und wählen Sie Ihre Anwendungskachel aus, um für die Anwendung das einmalige Anmelden zu testen, das von einem Identitätsanbieter initiiert wird. Im SAML-Token sollten alle zugewiesenen Rollen für den Benutzer mit dem von Ihnen festgelegten Anspruchsnamen angezeigt werden.
 
-## <a name="update-existing-role"></a>Aktualisieren vorhandener Rollen
+## <a name="update-an-existing-role"></a>Aktualisieren einer vorhandenen Rolle
 
-Führen Sie folgende Schritte aus, um eine vorhandene Rolle zu aktualisieren:
+Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu aktualisieren:
 
 1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 
-2. Melden Sie sich bei der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators/Co-Admins für Ihren Mandanten an.
+2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
     
-3. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste der Dienstprinzipale von Ihrem Mandanten ab:
+3. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste mit den Dienstprinzipalen von Ihrem Mandanten ab:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
     
-    Wenn Sie mehrere Verzeichnisse verwenden, sollten Sie diesem Muster folgen: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Halten Sie sich an das folgende Muster, wenn Sie mehrere Verzeichnisse verwenden: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+    ![Graph-Tester-Dialogfeld mit der Abfrage zum Abrufen von Dienstprinzipalen](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-4. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Namen, den Sie ändern möchten. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Suchen Sie nach der **Objekt-ID**, die Sie auf der Seite „Eigenschaften“ kopiert haben, und verwenden Sie folgende Abfrage, um zum jeweiligen Dienstprinzipal zu gelangen.
+4. Wählen Sie in der Liste mit den abgerufenen Dienstprinzipalen den Dienstprinzipal aus, den Sie ändern möchten. Sie können auch mit STRG+F in den aufgeführten Dienstprinzipalen nach der Anwendung suchen. Suchen Sie nach der Objekt-ID, die Sie von der Seite **Eigenschaften** kopiert haben, und verwenden Sie die folgende Abfrage, um den Dienstprinzipal abzurufen:
     
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+    ![Abfrage zum Abrufen des Dienstprinzipals, den Sie ändern müssen](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-5. Extrahieren Sie die appRoles-Eigenschaft aus dem Dienstprinzipalobjekt.
+5. Extrahieren Sie die **appRoles**-Eigenschaft aus dem Dienstprinzipalobjekt.
     
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
+    ![Details zur appRoles-Eigenschaft](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
     
-6. Führen Sie folgende Schritte aus, um die vorhandene Rolle zu aktualisieren:
+6. Verwenden Sie die folgenden Schritte, um die vorhandene Rolle zu aktualisieren.
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
+    ![Anforderungstext für „PATCH“ mit Hervorhebung von „description“ und „displayname“](./media/active-directory-enterprise-app-role-management/graph-explorer-patchupdate.png)
     
-    * Ändern Sie die Methode von **GET** in **PATCH**.
+    a. Ändern Sie die Methode von **GET** in **PATCH**.
 
-    * Kopieren Sie die vorhandenen Rollen, und fügen Sie sie in **Request Body** (Anforderungstext) ein.
+    b. Kopieren Sie die vorhandenen Rollen, und fügen Sie sie unter **Request Body** (Anforderungstext) ein.
 
-    * Aktualisieren Sie den Wert der Rolle, indem Sie **Role description** (Rollenbeschreibung), **Role value** (Rollenwert) oder **Role displayname** (Anzeigename der Rolle) bei Bedarf ändern.
+    c. Aktualisieren Sie den Wert einer Rolle, indem Sie die Rollenbeschreibung, den Rollenwert oder den Anzeigenamen der Rolle je nach Bedarf ändern.
 
-    * Nachdem Sie alle erforderlichen Rollen aktualisiert haben, klicken Sie auf **Run Query** (Abfrage ausführen).
+    d. Wählen Sie **Abfrage ausführen**, nachdem Sie alle erforderlichen Rollen aktualisiert haben.
         
-## <a name="delete-existing-role"></a>Löschen einer vorhandener Rolle
+## <a name="delete-an-existing-role"></a>Löschen einer vorhandenen Rolle
 
-Führen Sie folgende Schritte aus, um eine vorhandene Rolle zu löschen:
+Führen Sie die folgenden Schritte aus, um eine vorhandene Rolle zu löschen:
 
 1. Öffnen Sie den [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) in einem anderen Fenster.
 
-2. Melden Sie sich bei der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators/Co-Admins für Ihren Mandanten an.
+2. Melden Sie sich an der Graph-Tester-Website mit den Anmeldeinformationen des globalen Administrators bzw. Co-Admins für Ihren Mandanten an.
 
-3. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste der Dienstprinzipale von Ihrem Mandanten ab:
+3. Ändern Sie die Version in **Beta**, und rufen Sie mithilfe der folgenden Abfrage die Liste mit den Dienstprinzipalen von Ihrem Mandanten ab:
     
     `https://graph.microsoft.com/beta/servicePrincipals`
     
-    Wenn Sie mehrere Verzeichnisse verwenden, sollten Sie diesem Muster folgen: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    Halten Sie sich an das folgende Muster, wenn Sie mehrere Verzeichnisse verwenden: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
     
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
+    ![Graph-Tester-Dialogfeld mit der Abfrage zum Abrufen der Liste mit den Dienstprinzipalen](./media/active-directory-enterprise-app-role-management/graph-explorer-new1.png)
     
-4. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Namen, den Sie ändern möchten. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Suchen Sie nach der **Objekt-ID**, die Sie auf der Seite „Eigenschaften“ kopiert haben, und verwenden Sie folgende Abfrage, um zum jeweiligen Dienstprinzipal zu gelangen.
+4. Wählen Sie in der Liste mit den abgerufenen Dienstprinzipalen den Dienstprinzipal aus, den Sie ändern möchten. Sie können auch mit STRG+F in den aufgeführten Dienstprinzipalen nach der Anwendung suchen. Suchen Sie nach der Objekt-ID, die Sie von der Seite **Eigenschaften** kopiert haben, und verwenden Sie die folgende Abfrage, um den Dienstprinzipal abzurufen:
      
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
+    ![Abfrage zum Abrufen des Dienstprinzipals, den Sie ändern müssen](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
     
-5. Extrahieren Sie die appRoles-Eigenschaft aus dem Dienstprinzipalobjekt.
+5. Extrahieren Sie die **appRoles**-Eigenschaft aus dem Dienstprinzipalobjekt.
     
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
+    ![Details zur appRoles-Eigenschaft aus dem Dienstprinzipalobjekt](./media/active-directory-enterprise-app-role-management/graph-explorer-new7.png)
 
-6. Führen Sie folgende Schritte aus, um die vorhandene Rolle zu löschen:
+6. Verwenden Sie die folgenden Schritte, um die vorhandene Rolle zu löschen.
 
-    ![Dialogfeld „Graph-Tester“](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
+    ![Anforderungstext für „PATCH“ mit Festlegung von „IsEnabled“ auf „false“](./media/active-directory-enterprise-app-role-management/graph-explorer-new8.png)
 
-    * Ändern Sie die Methode von **GET** in **PATCH**.
+    a. Ändern Sie die Methode von **GET** in **PATCH**.
 
-    * Kopieren Sie die vorhandenen Rollen aus der Anwendung, und fügen Sie sie in **Request Body** (Anforderungstext) ein.
+    b. Kopieren Sie die vorhandenen Rollen aus der Anwendung, und fügen Sie sie unter **Request Body** (Anforderungstext) ein.
         
-    * Legen Sie den Wert **IsEnabled** für die Rolle, die Sie löschen möchten, auf **false** fest.
+    c. Legen Sie den Wert **IsEnabled** für die Rolle, die Sie löschen möchten, auf **false** fest.
 
-    * Klicken Sie auf **Run Query** (Abfrage ausführen).
+    d. Wählen Sie **Run Query** (Abfrage ausführen) aus.
     
     > [!NOTE] 
-    > Stellen Sie sicher, dass Sie die Benutzerrolle **msiam_access** besitzen und die ID in der generierten Rolle übereinstimmt.
+    > Stellen Sie sicher, dass Sie über die Rolle „msiam_access“ verfügen und die ID in der generierten Rolle übereinstimmt.
     
-7. Löschen Sie nach dem Deaktivieren der Rolle den entsprechenden Rollenblock im appRoles-Abschnitt, behalten Sie die Methode **PATCH** bei, und klicken Sie auf **Abfrage ausführen**.
+7. Löschen Sie diesen Rollenblock aus dem Abschnitt **appRoles**, nachdem die Rolle deaktiviert wurde. Behalten Sie **PATCH** als Methode bei, und wählen Sie **Abfrage ausführen**.
     
-8. Nach dem Ausführen der Abfrage wird die Rolle gelöscht.
+8. Nachdem die Abfrage ausgeführt wurde, wird die Rolle gelöscht.
     
     > [!NOTE]
-    > Die Rolle muss zuerst deaktiviert werden, bevor sie entfernt werden kann. 
+    > Die Rolle muss deaktiviert werden, bevor sie entfernt werden kann. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zusätzliche Schritte finden Sie in der [App-Dokumentation](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Informationen zu den weiteren Schritten finden Sie in der [App-Dokumentation](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
 <!--Image references-->
 <!--Image references-->

@@ -6,19 +6,20 @@ author: MichaelHauss
 manager: vamshik
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 05/31/2018
 ms.author: mihauss
-ms.openlocfilehash: 0e728f9f9754d76d893b12309bb52201d772efbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 93b60f8957a6ae225dbc5beb33a7de817ffc5bc2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34701682"
 ---
-# <a name="soft-delete-for-azure-storage-blobs-preview"></a>Vorläufigen Löschen für Azure Storage-Blobs (Vorschau)
+# <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 
 ## <a name="overview"></a>Übersicht
 
-Azure Storage bietet jetzt vorläufiges Löschen (Vorschau) für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
+Azure Storage ermöglicht jetzt das vorläufige Löschen für Blobobjekte, sodass Sie Ihre Daten leichter wiederherstellen können, wenn sie irrtümlich von einer Anwendung oder einem anderen Benutzer des Speicherkontos geändert oder gelöscht wurden.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
@@ -29,10 +30,6 @@ Sie können die Zeitspanne konfigurieren, die vorläufig gelöschte Daten wieder
 
 Vorläufiges Löschen ist abwärtskompatibel. Sie müssen keine Änderungen an Ihren Anwendungen vornehmen, um die Schutzvorteile dieses Features zu nutzen. Allerdings wird mit der [Datenwiederherstellung](#recovery) eine neue API zum **Wiederherstellen von Blobs** eingeführt.
 
-> [!NOTE]
-> Während der öffentlichen Vorschau ist das Aufrufen der Ebene „Set Blob“ für ein Blob mit Momentaufnahmen unzulässig.
-Vorläufiges Löschen generiert Momentaufnahmen zum Schutz Ihrer Daten, wenn diese überschrieben werden. Wir arbeiten aktiv an einer Lösung, um das Tiering von Blobs mit Momentaufnahmen zu aktivieren.
-
 ### <a name="configuration-settings"></a>Konfigurationseinstellungen
 
 Wenn Sie ein neues Konto erstellen, ist vorläufiges Löschen standardmäßig deaktiviert. Vorläufiges Löschen ist auch für vorhandene Speicherkonten standardmäßig deaktiviert. Sie können das Feature während der Lebensdauer eines Speicherkontos jederzeit aktivieren bzw. deaktivieren.
@@ -41,7 +38,7 @@ Sie können weiterhin auf vorläufig gelöschte Daten zugreifen und diese wieder
 
 Die Beibehaltungsdauer gibt die Zeitspanne an, für die vorläufig gelöschte Daten gespeichert werden und für die Wiederherstellung verfügbar sind. Für Blobs und Blobmomentaufnahmen, die explizit gelöscht werden, beginnt die Beibehaltungsdauer, wenn die Daten gelöscht werden. Für vorläufig gelöschte Momentaufnahmen, die durch das Feature zum vorläufigen Löschen generiert werden, wenn Daten überschrieben werden, beginnt die Beibehaltungsdauer beim Generieren der Momentaufnahme. Zurzeit können Sie vorläufig gelöschte Daten zwischen einem Tag und 365 Tagen aufbewahren.
 
-Sie können die Beibehaltungsdauer beim vorläufigen Löschen jederzeit ändern. Eine aktualisierte Beibehaltungsdauer gilt nur für neu gelöschten Daten. Zuvor gelöschte Daten laufen basierend auf der Beibehaltungsdauer ab, die konfiguriert war, als diese Daten gelöscht wurden.
+Sie können die Beibehaltungsdauer beim vorläufigen Löschen jederzeit ändern. Eine aktualisierte Beibehaltungsdauer gilt nur für neu gelöschten Daten. Zuvor gelöschte Daten laufen basierend auf der Beibehaltungsdauer ab, die konfiguriert war, als diese Daten gelöscht wurden. Der Versuch, ein vorläufig gelöschtes Objekt zu löschen, wirkt sich nicht auf dessen Ablaufzeit aus.
 
 ### <a name="saving-deleted-data"></a>Speichern gelöschter Daten
 
@@ -140,7 +137,7 @@ Copy a snapshot over the base blob:
 - HelloWorld (is soft deleted: False, is snapshot: False)
 ```
 
-Im Abschnitt [Nächste Schritte](#Next steps) finden Sie einen Hinweis auf die Anwendung, die diese Ausgabe generiert.
+Im Abschnitt [Nächste Schritte](#next-steps) finden Sie einen Hinweis auf die Anwendung, die diese Ausgabe generiert.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
@@ -204,6 +201,19 @@ $Blobs.ICloudBlob.Properties
 # Undelete the blobs
 $Blobs.ICloudBlob.Undelete()
 ```
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
+
+```azurecli-interactive
+az storage blob service-properties delete-policy update --days-retained 7  --account-name mystorageaccount --enable true
+```
+
+Verwenden Sie den folgenden Befehl, um sicherzustellen, dass das vorläufige Löschen aktiviert ist: 
+
+```azurecli-interactive
+az storage blob service-properties delete-policy show --account-name mystorageaccount 
+```
+
 ### <a name="python-client-library"></a>Python-Clientbibliothek
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
@@ -276,11 +286,15 @@ Zurzeit ist vorläufiges Löschen nur für Blobspeicher (Objektspeicher) verfüg
 
 **Ist vorläufiges Löschen für alle Speicherkontotypen verfügbar?**
 
-Ja, vorläufiges Löschen ist für Blobspeicherkonten sowie für Blobs in allgemeinen Speicherkonten verfügbar. Dies gilt für Standard- und Premium-Konten. Vorläufiges Löschen ist für verwaltete Datenträger nicht verfügbar.
+Ja, vorläufiges Löschen ist für Blobspeicherkonten sowie für Blobs in allgemeinen Speicherkonten (sowohl GPv1 als auch GPv2) verfügbar. Dies gilt für Standard- und Premium-Konten. Vorläufiges Löschen ist für verwaltete Datenträger nicht verfügbar.
 
 **Ist vorläufiges Löschen für alle Speicherebenen verfügbar?**
 
 Ja, vorläufiges Löschen ist für alle Speicherebenen einschließlich „heiß“, „kalt“ und „Archiv“ verfügbar. Vorläufiges Löschen bietet jedoch keinen Überschreibschutz für Blobs in der Archivebene.
+
+**Kann ich die API zum Festlegen des Blobtarifs für Blobs mit vorläufig gelöschten Momentaufnahmen verwenden?**
+
+Ja. Die vorläufig gelöschten Momentaufnahmen verbleiben im ursprünglichen Tarif, aber das Basisblob wird in den neuen Tarif verschoben. 
 
 **Storage Premium-Konten weisen eine Momentaufnahmengrenze von 100 pro Blob auf. Werden vorläufig gelöschte Momentaufnahmen für diesen Grenzwert berücksichtigt?**
 

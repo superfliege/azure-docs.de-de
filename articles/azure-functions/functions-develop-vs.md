@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2018
+ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a38729c266a4dd214c3de97c6b9d92df6ed2dd96
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34735118"
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
 
@@ -31,7 +32,7 @@ Azure Functions-Tools bieten folgende Vorteile:
 * Entwickeln und Bereitstellen vorkompilierter C#-Funktionen. Vorkompilierte Funktionen bieten eine bessere Leistung beim Kaltstart als auf skriptbasierende Funktionen von C#. 
 * Codieren Ihrer Funktionen in C# während Sie von allen Vorteilen der Entwicklung mit Visual Studio profitieren. 
 
-In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Functions-Tools für Visual Studio 2017 Ihre Funktionen in C# entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt in Azure als .NET-Assembly veröffentlichen.
+In diesem Artikel wird gezeigt, wie Sie mithilfe von Azure Functions-Tools für Visual Studio 2017 Ihre Funktionen in C# entwickeln. Außerdem erfahren Sie, wie Sie Ihr Projekt in Azure als .NET-Assembly veröffentlichen.
 
 > [!IMPORTANT]
 > Kombinieren Sie die lokale Entwicklung und die Portalentwicklung nicht in der gleichen Funktions-App. Bei der Veröffentlichung aus einem lokalen Projekt in einer Funktions-App überschreibt der Bereitstellungsprozess alle Funktionen, die Sie im Portal entwickelt haben.
@@ -74,15 +75,15 @@ Zum Erstellen und Bereitstellen von Funktionen benötigen Sie ebenso:
 
 4. Nachdem das Update abgeschlossen ist, wählen Sie **Schließen** und starten Visual Studio neu.
 
-## <a name="create-an-azure-functions-project"></a>Erstellen eines Azure Functions-Projekts 
+## <a name="create-an-azure-functions-project"></a>Erstellen eines Azure Functions-Projekts
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
 Die Projektvorlage erstellt ein C#-Projekt, installiert das NuGet-Paket `Microsoft.NET.Sdk.Functions` und legt das Zielframework fest. Functions 1.x ist für .NET Framework ausgelegt, und Functions 2.x ist für .NET Standard ausgelegt. Das neue Projekt enthält die folgenden Dateien:
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten für die lokale Ausführung und die Ausführung in Azure. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
-    
-* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nicht von Azure benutzt, sondern von den [Azure Functions Core-Tools](functions-run-local.md). Verwenden Sie diese Datei, um Einstellungen wie Verbindungszeichenfolgen zu anderen Azure-Diensten anzugeben. Fügen Sie dem **Values**-Array für jede Verbindung, die von Funktionen in Ihrem Projekt benötigt wird, einen neuen Schlüssel hinzu. Weitere Informationen finden Sie unter [Local settings file (Datei mit lokalen Einstellungen)](functions-run-local.md#local-settings-file) im Thema zu Azure Functions Core-Tools.
+
+* **local.settings.json**: Behält Einstellungen beim lokalen Ausführen von Funktionen bei. Diese Einstellungen werden nicht von Azure benutzt, sondern von den [Azure Functions Core-Tools](functions-run-local.md). Verwenden Sie diese Datei zum Angeben von App-Einstellungen für Variablen, die für Ihre Funktionen erforderlich sind. Fügen Sie dem Array **Values** für jede Verbindung, die für die Funktionsbindungen in Ihrem Projekt erforderlich sind, ein neues Element hinzu. Weitere Informationen finden Sie unter [Datei für lokale Einstellungen](functions-run-local.md#local-settings-file) im Artikel zu Azure Functions Core Tools.
 
 Weitere Informationen finden Sie unter [Funktionsklassenbibliotheks-Projekt](functions-dotnet-class-library.md#functions-class-library-project).
 
@@ -92,13 +93,13 @@ Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen fü
 
 [!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
 
- So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
+So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
-1. Öffnen Sie in Visual Studio den **Cloud-Explorer**, erweitern Sie **Speicherkonto** > **Ihr Speicherkonto**, wählen Sie **Eigenschaften** aus, und kopieren Sie dann den Wert von **Primäre Verbindungszeichenfolge**.   
+1. Öffnen Sie in Visual Studio den **Cloud-Explorer**, erweitern Sie **Speicherkonto** > **Ihr Speicherkonto**, wählen Sie **Eigenschaften** aus, und kopieren Sie dann den Wert von **Primäre Verbindungszeichenfolge**.
 
 2. Öffnen Sie in Ihrem Projekt die Datei „local.settings.json“, und legen Sie den Wert des Schlüssels **AzureWebJobsStorage** auf die kopierte Verbindungszeichenfolge fest.
 
-3. Wiederholen Sie den vorherigen Schritt zum Hinzufügen von eindeutigen Schlüsseln zum **Values**-Array für alle anderen Verbindungen, die von Ihren Funktionen benötigt werden.  
+3. Wiederholen Sie den vorherigen Schritt zum Hinzufügen von eindeutigen Schlüsseln zum **Values**-Array für alle anderen Verbindungen, die von Ihren Funktionen benötigt werden.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
@@ -108,11 +109,11 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
 
 2. Wählen Sie den Trigger aus, legen Sie die Bindungseigenschaften fest, und klicken Sie auf **Erstellen**. Im folgenden Beispiel werden die Einstellungen beim Erstellen einer Funktion gezeigt, die durch Queue Storage ausgelöst wird. 
 
-    ![](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
-    
-    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit einem Schlüssel namens **QueueStorage** verwendet. Diese Einstellung für die Verbindungszeichenfolge muss in der Datei „local.settings.json“ definiert werden. 
- 
-3. Untersuchen Sie die neu hinzugefügte Klasse. Es wird eine statische **Run**-Methode angezeigt, der das Attribut **FunctionName** zugewiesen wird. Dieses Attribut gibt an, dass die Methode den Einstiegspunkt für die Funktion darstellt. 
+    ![Erstellen einer Funktion mit Auslösung per Warteschlange](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
+
+    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit einem Schlüssel namens **QueueStorage** verwendet. Diese Einstellung für die Verbindungszeichenfolge muss in der Datei „local.settings.json“ definiert werden.
+
+3. Untersuchen Sie die neu hinzugefügte Klasse. Es wird eine statische **Run**-Methode angezeigt, der das Attribut **FunctionName** zugewiesen wird. Dieses Attribut gibt an, dass die Methode den Einstiegspunkt für die Funktion darstellt.
 
     Die folgende C#-Klasse stellt beispielsweise eine einfache Funktion dar, die durch Queue Storage ausgelöst wird:
 
@@ -120,25 +121,56 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
     using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Host;
-    
+
     namespace FunctionApp1
     {
         public static class Function1
         {
-            [FunctionName("QueueTriggerCSharp")]        
+            [FunctionName("QueueTriggerCSharp")]
             public static void Run([QueueTrigger("myqueue-items", Connection = "QueueStorage")]string myQueueItem, TraceWriter log)
             {
                 log.Info($"C# Queue trigger function processed: {myQueueItem}");
             }
         }
-    } 
+    }
     ````
- 
     Ein bindungsspezifisches Attribut wird auf jeden Bindungsparameter angewendet, der der Einstiegspunktmethode bereitgestellt wird. Das Attribut verwendet die Bindungsinformationen als Parameter. Im vorherigen Beispiel wurde auf den ersten Parameter ein **QueueTrigger**-Attribut angewendet, das die durch eine Warteschlange ausgelöste Funktion angab. Die Namen der Warteschlange und der Einstellung für die Verbindungszeichenfolge werden als Parameter an das Attribut **QueueTrigger** übergeben.
+    
+Sie können das obige Verfahren nutzen, um Ihrem Funktions-App-Projekt weitere Funktionen hinzuzufügen. Jede Funktion im Projekt kann über einen anderen Trigger verfügen, aber einer Funktion muss genau ein Trigger zugeordnet sein. Weitere Informationen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md).
+
+## <a name="add-bindings"></a>Hinzufügen von Bindungen
+
+Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als Bindungsattribute hinzugefügt. Fügen Sie Bindungen einer Funktion wie folgt hinzu:
+
+1. Stellen Sie sicher, dass Sie [das Projekt für die lokale Entwicklung konfiguriert haben](#configure-the-project-for-local-development).
+
+2. Fügen Sie für die entsprechende Bindung das geeignete NuGet-Erweiterungspaket hinzu. Weitere Informationen finden Sie im Artikel zu Triggern und Bindungen unter [Lokale Entwicklung in C# mit Visual Studio oder Visual Studio Code](functions-triggers-bindings.md#local-csharp). Die bindungsspezifischen Anforderungen für NuGet-Pakete sind im Referenzartikel für die Bindung angegeben. Paketanforderungen für den Event Hubs-Trigger finden Sie im [Referenzartikel zu Event Hubs-Bindungen](functions-bindings-event-hubs.md).
+
+3. Falls für die Bindung bestimmte App-Einstellungen erforderlich sind, können Sie diese der Sammlung **Values** in der [Datei mit lokalen Einstellungen](functions-run-local.md#local-settings-file) hinzufügen. Diese Werte werden verwendet, wenn die Funktion lokal ausgeführt wird. Wenn die Funktion in der Funktions-App in Azure ausgeführt wird, werden die [Einstellungen für Funktions-Apps](#function-app-settings) verwendet.
+
+4. Fügen Sie der Methodensignatur das entsprechende Bindungsattribut hinzu. Im folgenden Beispiel löst eine Warteschlangennachricht die Funktion aus, und die Ausgabebindung erstellt eine neue Warteschlangennachricht mit demselben Text in einer anderen Warteschlange.
+
+    ```csharp
+    public static class SimpleExampleWithOutput
+    {
+        [FunctionName("CopyQueueMessage")]
+        public static void Run(
+            [QueueTrigger("myqueue-items-source", Connection = "AzureWebJobsStorage")] string myQueueItem, 
+            [Queue("myqueue-items-destination", Connection = "AzureWebJobsStorage")] out string myQueueItemCopy,
+            TraceWriter log)
+        {
+            log.Info($"CopyQueueMessage function processed: {myQueueItem}");
+            myQueueItemCopy = myQueueItem;
+        }
+    }
+    ```
+Die Verbindung mit dem Warteschlangenspeicher stammt aus der Einstellung `AzureWebJobsStorage`. Weitere Informationen finden Sie im Referenzartikel für die spezifische Bindung. 
+
+[!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 ## <a name="testing-functions"></a>Testen von Funktionen
 
-Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem lokalen Entwicklungscomputer ausführen. Sie werden beim ersten Starten einer Funktion in Visual Studio zum Installieren dieser Tools aufgefordert.  
+Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem lokalen Entwicklungscomputer ausführen. Sie werden beim ersten Starten einer Funktion in Visual Studio zum Installieren dieser Tools aufgefordert.
 
 Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der Azure Functions Core (CLI)-Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
 
@@ -152,9 +184,9 @@ Weitere Informationen über die Verwendung der Azure Functions Core-Tools finden
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Einstellungen für Funktions-Apps   
+## <a name="function-app-settings"></a>Einstellungen für Funktions-Apps
 
-Alle Einstellungen, die Sie in „local.settings.json“ hinzugefügt haben, müssen auch der Funktions-App in Azure hinzugefügt werden. Diese Einstellungen werden nicht automatisch hochgeladen, wenn Sie das Projekt veröffentlichen. 
+Alle Einstellungen, die Sie in „local.settings.json“ hinzugefügt haben, müssen auch der Funktions-App in Azure hinzugefügt werden. Diese Einstellungen werden nicht automatisch hochgeladen, wenn Sie das Projekt veröffentlichen.
 
 Die einfachste Möglichkeit zum Hochladen der erforderlichen Einstellungen in Ihre Funktions-App in Azure ist die Verwendung des Links **Anwendungseinstellungen verwalten**, der angezeigt wird, nachdem Sie das Projekt veröffentlicht haben. 
 
@@ -176,4 +208,4 @@ Weitere Informationen zu Azure Functions-Tools finden Sie im Abschnitt „Common
 
 Weitere Informationen zu Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).
 
-Weitere Informationen zum Entwickeln von Funktionen als .NET-Klassenbibliotheken finden Sie unter [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md). Dieses Thema enthält auch Links zu Beispielen für die Verwendung von Attributen zum Deklarieren der verschiedenen Typen von Bindungen, die von Azure Functions unterstützt werden.    
+Weitere Informationen zum Entwickeln von Funktionen als .NET-Klassenbibliotheken finden Sie unter [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md). Dieser Artikel enthält auch Links zu Beispielen für die Verwendung von Attributen zum Deklarieren der verschiedenen Typen von Bindungen, die von Azure Functions unterstützt werden.    

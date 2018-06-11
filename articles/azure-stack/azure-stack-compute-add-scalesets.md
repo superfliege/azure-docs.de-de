@@ -1,20 +1,21 @@
 ---
 title: Bereitstellen von VM-Skalierungsgruppen in Azure Stack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Cloudbediener VM-Skalierungsgruppen zum Azure Stack-Marketplace hinzufügen können.
+description: Erfahren Sie, wie Cloudbediener dem Azure Stack-Marketplace VM-Skalierungsgruppen hinzufügen können.
 services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34800639"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Bereitstellen von VM-Skalierungsgruppen in Azure Stack
 
@@ -28,52 +29,27 @@ VM-Skalierungsgruppen in Azure Stack sind wie VM-Skalierungsgruppen in Azure. We
 * [Mark Russinovich spricht über Azure-Skalierungsgruppen](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [VM-Skalierungsgruppen mit Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung. Sie können einer Skalierungsgruppe mithilfe des Azure Stack-Portals, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzufügen.
+In Azure Stack unterstützen VM-Skalierungsgruppen keine automatische Skalierung. Sie können einer Skalierungsgruppe weitere Instanzen hinzufügen, indem Sie Resource Manager-Vorlagen, die CLI oder PowerShell verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **PowerShell und Tools**
 
-   PowerShell muss installiert und für Azure Stack und die Azure Stack-Tools konfiguriert sein. Weitere Informationen finden Sie unter [Einrichten von PowerShell in Azure Stack](azure-stack-powershell-configure-quickstart.md).
-
-   Importieren Sie nach der Installation der Azure Stack-Tools das folgende PowerShell-Modul (Pfad relativ zum Ordner „.\ComputeAdmin“ im Ordner „AzureStack-Tools-master“):
-  ````PowerShell
-        Import-Module .\AzureStack.ComputeAdmin.psm1
-  ````
-
-* **Betriebssystemimage**
-
-   Wenn Sie Ihrem Azure Stack-Marketplace kein Betriebssystemimage hinzugefügt haben, finden Sie unter [Add the Windows Server 2016 VM image to the Azure Stack marketplace](azure-stack-add-default-image.md) (Hinzufügen des VM-Images für Windows Server 2016 zum Azure Stack-Marketplace) weitere Informationen.
-
-   Wenn Sie Unterstützung für Linux benötigen, laden Sie Ubuntu Server 16.04 herunter, und fügen Sie es mithilfe von ```Add-AzsPlatformImage``` mit den folgenden Parametern hinzu: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
-
+- **Marketplace-Syndikation**  
+    Registrieren Sie Azure Stack global für Azure, um die Marketplace-Syndikation zu ermöglichen. Befolgen Sie die Anleitung unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
+- **Betriebssystemimage**  
+    Wenn Sie dem Azure Stack-Marketplace kein Betriebssystemimage hinzugefügt haben, helfen Ihnen die Informationen unter [Hinzufügen eines Azure Stack-Marketplace-Elements aus Azure](asdk/asdk-marketplace-item.md) weiter.
 
 ## <a name="add-the-virtual-machine-scale-set"></a>Hinzufügen der VM-Skalierungsgruppe
 
-Bearbeiten Sie das folgende PowerShell-Skript für Ihre Umgebung, und führen Sie es anschließend aus, um eine VM-Skalierungsgruppe zu Ihrem Azure Stack-Marketplace hinzuzufügen. 
+1. Öffnen Sie den Azure Stack-Marketplace, und stellen Sie eine Verbindung mit Azure her. Wählen Sie **Marketplace management**> **+ Add from Azure** (Marketplace-Verwaltung > + Aus Azure hinzufügen).
 
-``$User`` ist das Konto, das zum Herstellen einer Verbindung mit dem Administratorportal verwendet wird. Beispiel: serviceadmin@contoso.onmicrosoft.com.
+    ![Marketplace-Verwaltung](media/azure-stack-compute-add-scalesets/image01.png)
 
-````PowerShell  
-$Arm = "https://adminmanagement.local.azurestack.external"
-$Location = "local"
+2. Fügen Sie das Marketplace-Element für VM-Skalierungsgruppen (Virtual Machine Scale Sets) hinzu, und laden Sie es herunter.
 
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint $Arm
+    ![VM-Skalierungsgruppe](media/azure-stack-compute-add-scalesets/image02.png)
 
-$Password = ConvertTo-SecureString -AsPlainText -Force "<your Azure Stack administrator password>"
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualisieren von Images in einer VM-Skalierungsgruppe
 
-$User = "<your Azure Stack service administrator user name>"
-
-$Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
-
-$AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-
-Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
-
-Add-AzsVMSSGalleryItem -Location $Location
-````
-
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualisieren von Images in einer VM-Skalierungsgruppe 
 Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Skalierungsgruppe aktualisieren, ohne dass diese neu erstellt werden muss. Die Vorgehensweise zum Aktualisieren eines Images hängt von den folgenden Szenarien ab:
 
 1. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **latest** für *version* angegeben:  
@@ -102,7 +78,7 @@ Nach der Erstellung einer VM-Skalierungsgruppe können Benutzer Images in der Sk
 
 2. In der Bereitstellungsvorlage der VM-Skalierungsgruppe ist **nicht** „latest“ für *version*, sondern eine Versionsnummer angegeben:  
 
-     Wenn Sie ein Image mit einer neueren Version herunterladen (wodurch sich die verfügbare Version ändert), kann die Skalierungsgruppe nicht zentral hochskaliert werden. Dies ist beabsichtigt, da die in der Skalierungsgruppenvorlage angegebene Imageversion verfügbar sein muss.  
+    Wenn Sie ein Image mit einer neueren Version herunterladen (wodurch sich die verfügbare Version ändert), kann die Skalierungsgruppe nicht zentral hochskaliert werden. Dies ist beabsichtigt, da die in der Skalierungsgruppenvorlage angegebene Imageversion verfügbar sein muss.  
 
 Weitere Informationen finden Sie unter [Einführung in virtuelle Azure Stack-Computer](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
@@ -112,7 +88,7 @@ Weitere Informationen finden Sie unter [Einführung in virtuelle Azure Stack-Com
 Führen Sie zum Entfernen eines Katalogelements einer VM-Skalierungsgruppe den folgenden PowerShell-Befehl aus:
 
 ```PowerShell  
-    Remove-AzsVMSSGalleryItem
+    Remove-AzsGalleryItem
 ````
 
 > [!NOTE]

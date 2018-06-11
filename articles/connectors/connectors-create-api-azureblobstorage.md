@@ -1,76 +1,123 @@
 ---
-title: Hinzufügen des Azure Blob Storage-Connectors in Ihren Logik-Apps | Microsoft Docs
-description: Verwenden und Konfigurieren des Azure Blob Storage-Connectors in einer Logik-App
-services: ''
-documentationcenter: ''
+title: Herstellen einer Verbindung mit Azure-Blobspeicher – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen und Verwalten von Blobs in Azure-Speicher mit Azure Logic Apps
 author: ecfan
-manager: anneta
-editor: ''
-tags: connectors
-ms.assetid: b5dc3f75-6bea-420b-b250-183668d2848d
-ms.service: logic-apps
-ms.devlang: na
+manager: cfowler
+ms.author: estfan
+ms.date: 05/21/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 05/02/2017
-ms.author: estfan; ladocs
-ms.openlocfilehash: 7aaff2ac78201c4484105c6cacc5f0fef19ca7b5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 15d737cd85f70717bfdf15dfb3d179f977b63c72
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34723431"
 ---
-# <a name="use-the-azure-blob-storage-connector-in-a-logic-app"></a>Verwenden des Azure Blob Storage-Connectors in einer Logik-App
-Mit dem Azure Blob Storage-Connector können Sie Blobs in Ihr(em) Speicherkonto hochladen, aktualisieren, abrufen und löschen – und all das in einer Logik-App.  
+# <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure-Blobspeicher mit Azure Logic Apps
 
-Azure Blob Storage ermöglicht Folgendes:
+In diesem Artikel wird veranschaulicht, wie Sie auf Dateien zugreifen und diese verwalten können, die als Blobs in Ihrem Azure-Speicherkonto gespeichert sind, indem Sie eine Logik-App und den Azure Blob Storage-Connector verwenden. Auf diese Weise können Sie Logik-Apps erstellen, mit denen Aufgaben und Workflows für das Verwalten Ihrer Dateien automatisiert werden. Beispielsweise können Sie Logik-Apps erstellen, mit denen Dateien in Ihrem Speicherkonto erstellt, abgerufen, aktualisiert und gelöscht werden.
 
-* Gestalten Sie Ihren Workflow, indem Sie neue Projekte hochladen oder kürzlich aktualisierte Dateien abrufen.
-* Mithilfe von Aktionen können Sie unter anderem Dateimetadaten abrufen, eine Datei löschen und Dateien kopieren. Wenn also beispielsweise ein Tool auf einer Azure-Website aktualisiert wird (Trigger), kann eine Datei in Blob Storage aktualisiert werden (Aktion). 
+Angenommen, Sie verfügen über ein Tool, das auf einer Azure-Website aktualisiert wird, die als Trigger für Ihre Logik-App fungiert. Wenn dieses Ereignis eintritt, können Sie über Ihre Logik-App eine Datei in Ihrem Blobspeichercontainer aktualisieren. Hierbei handelt es sich um eine Aktion in Ihrer Logik-App. 
 
-In diesem Thema wird beschrieben, wie Sie den Blob Storage-Connector in einer Logik-App verwenden.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Connectorspezifische technische Informationen finden Sie in der <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Referenz zu Azure Blob Storage</a>.
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Was sind Logik-Apps](../logic-apps/logic-apps-overview.md) sowie unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="connect-to-azure-blob-storage"></a>Herstellen einer Verbindung mit Azure Blob Storage
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, muss zunächst eine *Verbindung* mit dem Dienst hergestellt werden. Eine Verbindung stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her. Um eine Verbindung mit einem Speicherkonto herzustellen, müssen Sie beispielsweise zuerst eine Blob Storage-*Verbindung* erstellen. Hierzu geben Sie die Anmeldeinformationen ein, mit denen Sie normalerweise auf den Dienst zugreifen, mit dem Sie eine Verbindung herstellen möchten. Geben Sie für Azure Storage also die Anmeldeinformationen Ihres Speicherkontos ein, um die Verbindung zu erstellen. 
+* Ein [Azure-Speicherkonto und -Speichercontainer](../storage/blobs/storage-quickstart-blobs-portal.md)
 
-#### <a name="create-the-connection"></a>Erstellen der Verbindung
-> [!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
+* Die Logik-App, für die Sie Zugriff auf Ihr Azure-Blobspeicherkonto benötigen. Um Ihre Logik-App mit einem Azure Blob Storage-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
 
-## <a name="use-a-trigger"></a>Verwenden eines Triggers
-Dieser Connector verfügt über keine Trigger. Verwenden Sie andere Trigger, um die Logik-App zu starten – beispielsweise einen Wiederholungstrigger, einen HTTP-Webhook-Trigger oder einen Trigger eines anderen Connectors. Unter [Erstellen einer Logik-App zum Verbinden von SaaS-Diensten](../logic-apps/quickstart-create-first-logic-app-workflow.md) finden Sie ein Beispiel.
+<a name="add-trigger"></a>
 
-## <a name="use-an-action"></a>Verwenden einer Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird.
+## <a name="add-blob-storage-trigger"></a>Hinzufügen eines Blob Storage-Triggers
 
-1. Wählen Sie das Pluszeichen aus. Es stehen mehrere Auswahlmöglichkeiten zur Verfügung: **Aktion hinzufügen**, **Bedingung hinzufügen** oder eine der Optionen unter **Mehr**.
-   
-    ![](./media/connectors-create-api-azureblobstorage/add-action.png)
-2. Wählen Sie **Aktion hinzufügen**aus.
-3. Geben Sie im Textfeld die Zeichenfolge „blob“ ein, um eine Liste mit allen verfügbaren Aktionen zu erhalten.
-   
-    ![](./media/connectors-create-api-azureblobstorage/actions.png) 
-4. In unserem Beispiel wählen wir **AzureBlob - Get file metadata using path** (AzureBlob – Dateimetadaten anhand des Pfads abrufen) aus. Falls bereits eine Verbindung vorhanden ist, wählen Sie die Schaltfläche **...** aus. (Auswahl anzeigen) aus, um eine Datei auszuwählen.
-   
-    ![](./media/connectors-create-api-azureblobstorage/sample-file.png)
-   
-    Wenn Sie zur Eingabe der Verbindungsinformationen aufgefordert werden, geben Sie die Details ein, um die Verbindung zu erstellen. Die Eigenschaften werden in diesem Thema unter [Erstellen der Verbindung](connectors-create-api-azureblobstorage.md#create-the-connection) beschrieben. 
-   
-   > [!NOTE]
-   > In diesem Beispiel rufen wir die Metadaten einer Datei ab. Fügen Sie zum Anzeigen der Metadaten eine weitere Aktion hinzu, die unter Verwendung eines anderen Connectors eine neue Datei erstellt. Fügen Sie beispielsweise eine OneDrive-Aktion hinzu, die auf der Grundlage der Metadaten eine neue Testdatei erstellt. 
+In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) beginnen, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder eine bestimmte Bedingung erfüllt wird. Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz und startet die Ausführung des Workflows Ihrer App.
 
+In diesem Beispiel wird veranschaulicht, wie Sie einen Logik-App-Workflow mit dem Trigger **Azure Blob Storage – Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)** starten können, wenn die Eigenschaften eines Blobs in Ihrem Speichercontainer hinzugefügt oder aktualisiert werden. 
 
-5. Speichern Sie Ihre Änderungen. (Die Option **Speichern** befindet sich links oben auf der Symbolleiste.) Ihre Logik-App wird gespeichert und ggf. automatisch aktiviert.
+1. Erstellen Sie im Azure-Portal oder in Visual Studio eine leere Logik-App, die den Logik-App-Designer öffnet. In diesem Beispiel wird das Azure-Portal verwendet.
 
-> [!TIP]
-> Der [Storage-Explorer](http://storageexplorer.com/) ist ein praktisches Verwaltungstool für mehrere Speicherkonten.
+2. Geben Sie im Suchfeld „azure blob“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+   In diesem Beispiel wird der folgende Trigger verwendet: **Azure Blob Storage – Beim Hinzufügen oder Ändern eines Blobs (nur Eigenschaften)**.
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/azureblobconnector/) an. 
+   ![Trigger auswählen](./media/connectors-create-api-azureblobstorage/azure-blob-trigger.png)
+
+3. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Blobspeicherverbindung erstellen](#create-connection). Falls die Verbindung bereits besteht, können Sie die erforderlichen Informationen für den Trigger angeben.
+
+   Wählen Sie für dieses Beispiel den Container und Ordner aus, den Sie überwachen möchten.
+
+   1. Wählen Sie im Feld **Container** das Ordnersymbol.
+
+   2. Wählen Sie in der Ordnerliste den Pfeil nach rechts (**>**), und navigieren Sie zum gewünschten Ordner. 
+
+      ![Ordner auswählen](./media/connectors-create-api-azureblobstorage/trigger-select-folder.png)
+
+   3. Wählen Sie das Intervall und die Häufigkeit aus, um anzugeben, wie oft der Trigger den Ordner auf Änderungen überprüfen soll.
+
+4. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
+
+5. Fahren Sie nun damit fort, der Logik-App weitere Aktionen für die Aufgaben hinzuzufügen, die anhand der Triggerergebnisse durchgeführt werden sollen.
+
+<a name="add-action"></a>
+
+## <a name="add-blob-storage-action"></a>Hinzufügen einer Blobspeicheraktion
+
+In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) um einen Schritt in Ihrem Workflow, der einem Trigger oder einer anderen Aktion folgt. Bei diesem Beispiel beginnt die Logik-App mit dem [Trigger „Wiederholung“](../connectors/connectors-native-recurrence.md).
+
+1. Öffnen Sie im Azure-Portal oder in Visual Studio Ihre Logik-App im Logik-App-Designer. In diesem Beispiel wird das Azure-Portal verwendet.
+
+2. Wählen Sie im Logik-App-Designer unter dem Trigger oder der Aktion die Optionen **Neuer Schritt** > **Aktion hinzufügen** aus.
+
+   ![Hinzufügen einer Aktion](./media/connectors-create-api-azureblobstorage/add-action.png) 
+
+   Um eine Aktion zwischen vorhandenen Schritten hinzuzufügen, bewegen Sie den Mauszeiger über den Verbindungspfeil. 
+   Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) aus, und wählen Sie dann **Aktion hinzufügen** aus.
+
+3. Geben Sie im Suchfeld „azure blob“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+
+   In diesem Beispiel wird folgende Aktion verwendet: **Azure Blob Storage – Blobinhalt abrufen**.
+
+   ![Aktion auswählen](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+
+4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Azure Blob Storage-Verbindung erstellen](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben. 
+
+   Wählen Sie für dieses Beispiel die gewünschte Datei aus.
+
+   1. Wählen Sie im Feld **Blob** das Ordnersymbol.
+  
+      ![Ordner auswählen](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
+
+   2. Suchen Sie anhand der **ID**-Nummer des Blobs nach der gewünschten Datei, und wählen Sie sie aus. Sie finden diese **ID**-Nummer in den Blobmetadaten, die vom oben beschriebenen Blobspeichertrigger zurückgegeben werden.
+
+5. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus.
+Stellen Sie zum Testen Ihrer Logik-App sicher, dass der ausgewählte Ordner ein Blob enthält.
+
+In diesem Beispiel wird nur der Inhalt für ein Blob abgerufen. Fügen Sie zum Anzeigen des Inhalts eine weitere Aktion hinzu, die mit dem Blob eine Datei erstellt, indem ein anderer Connector verwendet wird. Fügen Sie beispielsweise eine OneDrive-Aktion hinzu, die basierend auf dem Blobinhalt eine Datei erstellt.
+
+<a name="create-connection"></a>
+
+## <a name="connect-to-storage-account"></a>Herstellen einer Verbindung mit dem Speicherkonto
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+[!INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/azureblobconnector/). 
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

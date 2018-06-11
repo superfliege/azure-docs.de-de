@@ -10,19 +10,20 @@ featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
+ms.component: fundamentals
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/25/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b7ad535976508cb195991c374995b0a0b6e45e10
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d0554aacf3f81231d9a09f1b20115fcf268f29af
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159867"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34713965"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -31,7 +32,7 @@ ms.locfileid: "32159867"
 
 
 
-Es werden fortlaufend Verbesserungen an Azure AD vorgenommen. Damit Sie bezüglich der neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
+Es werden fortlaufend Verbesserungen an Azure AD vorgenommen. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
 
 -   Neueste Versionen
 -   Bekannte Probleme
@@ -40,6 +41,286 @@ Es werden fortlaufend Verbesserungen an Azure AD vorgenommen. Damit Sie bezügli
 -   Pläne für Änderungen
 
 Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
+
+
+## <a name="may-2018"></a>Mai 2018
+ 
+
+
+### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>Microsoft Graph-APIs zum Verwalten der Nutzungsbedingungen
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Nutzungsbedingungen  
+**Produktfunktion**: Entwickleroberfläche
+ 
+
+ Wir haben Microsoft Graph-APIs für die Verwaltung der Azure AD-Nutzungsbedingungen hinzugefügt. Sie können das Objekt mit den Nutzungsbedingungen erstellen, aktualisieren und löschen.
+
+---
+ 
+
+
+### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>Möglichkeit zum Hinzufügen des mehrinstanzenfähigen Azure AD-Endpunkts als Identitätsanbieter in Azure AD B2C
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
+**Produktfunktion**: B2B/B2C
+ 
+
+Mit benutzerdefinierten Richtlinien können Sie jetzt den gemeinsamen Endpunkt für Azure AD als Identitätsanbieter in Azure AD B2C hinzufügen. Auf diese Weise können Sie einen zentralen Zugangspunkt (Single Point of Entry) für alle Azure AD-Benutzer verwenden, die sich an Ihren Anwendungen anmelden. Weitere Informationen finden Sie unter [Azure Active Directory B2C: Benutzern mithilfe von benutzerdefinierten Richtlinien die Anmeldung bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter ermöglichen](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom).
+
+ 
+
+---
+
+
+### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>Verwendung interner URLs für einen standortunabhängigen App-Zugriff – dank Erweiterung zur sicheren Anmeldung bei „Meine Apps“ und Azure AD-Anwendungsproxy
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Meine Apps  
+**Produktfunktion**: SSO
+ 
+
+Benutzer können über interne URLs jetzt auch dann auf Anwendungen zugreifen, wenn sie sich außerhalb Ihres Unternehmensnetzwerks befinden, indem sie die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ verwenden. Dies funktioniert mit allen Anwendungen, die Sie per Azure AD-Anwendungsproxy veröffentlicht haben, und mit jedem Browser, für den die Browsererweiterung für den Zugriffsbereich installiert ist. Die Funktion für die URL-Umleitung wird automatisch aktiviert, nachdem sich ein Benutzer an der Erweiterung angemeldet hat. Die Erweiterung ist für [Edge](https://go.microsoft.com/fwlink/?linkid=845176), [Chrome](https://go.microsoft.com/fwlink/?linkid=866367) und [Firefox](https://go.microsoft.com/fwlink/?linkid=866366) als Download verfügbar.
+ 
+
+---
+ 
+
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>Anzeige von Legacyauthentifizierungen über Protokolle zur Anmeldeaktivität
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Berichterstellung  
+**Produktfunktion:** Überwachung und Berichterstellung
+ 
+
+Dank der Einführung des Felds **Client-App** in den Protokollen zur Anmeldeaktivität können Kunden jetzt Benutzer anzeigen, die Legacyauthentifizierungen nutzen. Kunden können auf diese Informationen zugreifen, indem sie die Microsoft Graph-API für Anmeldungen oder die Protokolle zur Anmeldeaktivität im Azure AD-Portal verwenden. Hier können Sie das Steuerelement **Client-App** nutzen, um nach Legacyauthentifizierungen zu filtern. Weitere Informationen finden Sie in der Dokumentation.
+ 
+
+---
+ 
+
+### <a name="azure-active-directory---data-in-europe-for-europe-customers"></a>Azure Active Directory – Datenspeicherung in Europa für europäische Kunden
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** Sonstige  
+**Produktfunktion:** GoLocal
+ 
+
+Die Daten von Kunden in Europa müssen in Europa bleiben und dürfen nicht außerhalb von europäischen Datencentern repliziert werden. Dies ist erforderlich, um den Datenschutz zu gewährleisten und europäische Gesetze einzuhalten. [Dieser Artikel](https://go.microsoft.com/fwlink/?linkid=872328) enthält spezifische Details dazu, welche Identitätsinformationen in Europa gespeichert werden, und außerdem Details zu den Informationen, die außerhalb von europäischen Datencentern gespeichert werden. 
+
+ 
+
+---
+ 
+
+### <a name="new-user-provisioning-saas-app-integrations---may-2018"></a>Neue Integrationen zur Benutzerbereitstellung in SaaS-Apps – Mai 2018
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** App-Bereitstellung  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+
+Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in SaaS-Anwendungen, z.B. Dropbox, Salesforce, ServiceNow und anderen. Für Mai 2018 haben wir für die folgenden Anwendungen im Azure AD-App-Katalog Unterstützung für die Benutzerbereitstellung hinzugefügt:
+
+- [BlueJeans](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-bluejeans-provisioning-tutorial)
+
+- [Cornerstone OnDemand](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
+
+- [Zendesk](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
+
+Eine Liste mit allen Anwendungen, für die die Benutzerbereitstellung im Azure AD-Katalog unterstützt wird, finden Sie unter [https://aka.ms/appstutorial](https://aka.ms/appstutorial).
+
+ 
+
+---
+ 
+
+### <a name="azure-ad-access-reviews-of-groups-and-app-access-now-provides-recurring-reviews"></a>Möglichkeit zur regelmäßigen Durchführung von Azure AD-Zugriffsüberprüfungen für Gruppen- und App-Zugriff
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Zugriffsüberprüfungen  
+**Produktfunktion**: Governance
+ 
+
+Zugriffsüberprüfungen von Gruppen und Apps sind für Azure AD Premium P2 jetzt allgemein verfügbar.  Administratoren können die Zugriffsüberprüfungen von Gruppenmitgliedschaften und Anwendungszuordnungen so konfigurieren, dass sie automatisch in bestimmten Intervallen durchgeführt werden, z.B. monatlich oder einmal pro Quartal.
+ 
+
+---
+ 
+
+### <a name="azure-ad-activity-logs-sign-ins-and-audit-are-now-available-through-ms-graph"></a>Azure AD-Aktivitätsprotokolle (Anmeldevorgänge und Überwachung) jetzt über MS Graph verfügbar
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Berichterstellung  
+**Produktfunktion:** Überwachung und Berichterstellung
+ 
+
+Azure AD-Aktivitätsprotokolle, die auch Anmeldungen und Überwachungsprotokolle umfassen, sind jetzt über MS Graph verfügbar. Wir haben zwei Endpunkte über MS Graph verfügbar gemacht, um auf diese Protokolle zuzugreifen. Sehen Sie sich als Einstieg unsere [Dokumente](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) zum programmgesteuerten Zugriff auf Azure AD-Berichterstellungs-APIs an. 
+ 
+
+---
+ 
+
+
+
+### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>Verbesserungen an der B2B-Oberfläche für die Einlösung und einfacheres Verlassen einer Organisation
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** B2B  
+**Produktfunktion**: B2B/B2C
+ 
+
+**Just-in-Time-Einlösung:** Nachdem Sie eine Ressource für einen Gastbenutzer per B2B-API freigegeben haben, müssen Sie keine spezielle Einladungs-E-Mail mehr senden. In den meisten Fällen kann der Gastbenutzer einfach auf die Ressource zugreifen, und der Einlösevorgang wird „just in time“ durchgeführt. Es entstehen keine Probleme aufgrund von verloren gegangenen E-Mails mehr. Sie müssen Ihren Gastbenutzern nicht mehr die folgende Frage stellen: „Haben Sie auf den vom System gesendeten Link für die Einlösung geklickt?“ Sobald SPO den Einladungs-Manager verwendet, können Anhänge aus der Cloud für alle Benutzer dieselbe kanonische URL verwenden – sowohl intern als auch extern und in jedem Stadium der Einlösung.
+
+**Moderne Oberfläche für die Einlösung:** Es gibt keine Startseite mit geteiltem Bildschirm mehr. Benutzer sehen eine moderne Oberfläche für die Zustimmung, auf der die Datenschutzerklärung der einladenden Organisation angezeigt wird – genau wie bei Drittanbieter-Apps.
+
+
+**Gastbenutzer können die Organisation verlassen:** Sobald die Beziehung eines Benutzers zu einer Organisation beendet ist, kann dieser die Organisation selbständig verlassen. Anrufe beim Administrator der einladenden Organisation zum Entfernen des Benutzers entfallen, ebenso wie das Erstellen von Supporttickets.
+ 
+
+---
+ 
+
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar – Mai 2018
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+
+Im Mai 2018 haben wir die folgenden 18 neuen Apps mit Verbundunterstützung in unseren App-Katalog aufgenommen:
+
+ 
+
+[AwardSpring](https://docs.microsoft.com/azure/active-directory/active-directory-saas-awardspring-tutorial), [Infogix Data3Sixty Govern](), [Yodeck](https://docs.microsoft.com/azure/active-directory/active-directory-saas-infogix-tutorial), [Jamf Pro](https://docs.microsoft.com/azure/active-directory/active-directory-saas-jamfprosamlconnector-tutorial), [KnowledgeOwl](https://docs.microsoft.com/azure/active-directory/active-directory-saas-knowledgeowl-tutorial), [Envi MMIS](https://docs.microsoft.com/azure/active-directory/active-directory-saas-envimmis-tutorial), [LaunchDarkly](https://docs.microsoft.com/azure/active-directory/active-directory-saas-launchdarkly-tutorial), [Adobe Captivate Prime](https://docs.microsoft.com/azure/active-directory/active-directory-saas-adobecaptivateprime-tutorial), [Montage Online](https://docs.microsoft.com/azure/active-directory/active-directory-saas-montageonline-tutorial), [まなびポケット](https://docs.microsoft.com/azure/active-directory/active-directory-saas-manabipocket-tutorial), OpenReel, [Arc Publishing – SSO](https://docs.microsoft.com/azure/active-directory/active-directory-saas-arc-tutorial), [PlanGrid](https://docs.microsoft.com/azure/active-directory/active-directory-saas-plangrid-tutorial), [iWellnessNow](https://docs.microsoft.com/azure/active-directory/active-directory-saas-iwellnessnow-tutorial), [Proxyclick](https://docs.microsoft.com/azure/active-directory/active-directory-saas-proxyclick-tutorial), [Riskware](https://docs.microsoft.com/azure/active-directory/active-directory-saas-riskware-tutorial), [Flock](https://docs.microsoft.com/azure/active-directory/active-directory-saas-flock-tutorial), [Reviewsnap](https://docs.microsoft.com/azure/active-directory/active-directory-saas-reviewsnap-tutorial)
+
+ 
+
+Die Dokumentation zu allen Anwendungen finden Sie auch [hier](https://aka.ms/appstutorial).
+
+Informationen zum Eintragen Ihrer Anwendung in den Azure AD-App-Katalog finden Sie unter [Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-app-gallery-listing). 
+
+ 
+
+---
+ 
+
+### <a name="deployment-plans---guidance-to-get-you-started-with-azure-active-directory"></a>Bereitstellungspläne – Leitfaden zum Einstieg in Azure Active Directory
+
+**Typ:** Neue Funktion  
+**Dienstkategorie:** Sonstige  
+**Produktfunktion**: Verzeichnis
+ 
+
+Suchen Sie nach Schritt-für-Schritt-Anleitungen für die Bereitstellung (SSPR, SSO, Zertifizierungsstelle, App-Proxy, Benutzerbereitstellung, ADFS zu PTA oder ADFS zu PHS)? Wir verfügen über die Bereitstellungspläne, um Sie hierbei zu unterstützen!
+
+Navigieren Sie zu [Aka.ms/DeploymentPlans](http://Aka.ms/DeploymentPlans), und verwenden Sie die umfassenden Leitfäden, um in den Genuss dieser Funktionen zu kommen.
+
+
+
+- [Wie erhalte ich die Bereitstellungspläne](http://Aka.ms/DeploymentPlans)? 
+
+- Feedback können Sie [hier](http://aka.ms/DeploymentPlanFeedback) übermitteln.
+
+- Fragen? Wenden Sie sich an: [IDGitDeploy@microsoft.com](mailto:IDGitDeploy@microsoft.com)
+
+
+
+     
+
+ 
+
+---
+ 
+
+### <a name="enterprise-applications-search---load-more-apps"></a>Suche nach Unternehmensanwendungen – Laden weiterer Apps
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: SSO
+ 
+
+Haben Sie Probleme, Ihre Anwendungen bzw. Dienstprinzipale zu finden? Wir haben eine Funktion hinzugefügt, um mehr Anwendungen in Ihre Liste der Unternehmensanwendungen zu laden. Standardmäßig werden 20 Anwendungen angezeigt. Sie können ab sofort auf „Weitere laden“ klicken, um zusätzliche Anwendungen anzuzeigen. 
+ 
+
+---
+ 
+
+
+### <a name="public-preview-of-new-and-improved-sign-ins-user-experience-in-azure-portal"></a>Öffentliche Vorschau der neuen und verbesserten Benutzeroberfläche für die Anmeldung im Azure-Portal
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Berichterstellung  
+**Produktfunktion:** Überwachung und Berichterstellung
+ 
+
+Wir freuen uns, die neue und verbesserte Benutzeroberfläche für Anmeldeprotokolle im Azure AD-Portal vorstellen zu können. Diese neue Benutzeroberfläche für die Anmeldung bietet Kunden Folgendes:
+
+- Verbesserte Latenz von 2 Stunden auf weniger als 5 Minuten. Weitere Informationen finden Sie in der Dokumentation zur [Latenz](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-latencies-azure-portal).
+
+- Möglichkeit zum Hinzufügen dynamischer Filter über die Schaltfläche „Spalten“. Nach dem Hinzufügen von Spalten zum Anmeldebericht in der Benutzeroberfläche werden Ihnen diese automatisch als verwendbare Filter angezeigt.
+
+- Möglichkeit zur Sortierung nach Datum, Benutzername und Anwendung.
+
+- Einbindung von Legacyauthentifizierungen und Möglichkeit, über die Spalte „Client-App“ nach Legacyauthentifizierungen zu filtern.
+
+- Einbindung eines herunterladbaren PowerShell-Skripts, das basierend auf den von Ihnen in der Benutzeroberfläche ausgewählten Filterbedingungen angepasst wird. Mit diesem PowerShell-Skript können Sie beliebig viele Datenzeilen (basierend auf Ihren Filterkriterien) abrufen und im CSV-Format ausgeben.
+
+Weitere Details zu diesem Feature finden Sie unter [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-activity-sign-ins).
+ 
+
+---
+ 
+
+
+### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>Die im Mai veröffentlichte Version von AADConnect umfasst eine öffentliche Vorschau der PingFederate-Integration, wichtige Sicherheitsupdates, zahlreiche Fehlerkorrekturen und neue großartige Tools für die Problembehandlung. 
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: AD Connect  
+**Produktfunktion**: Verwaltung des Identitätslebenszyklus
+ 
+
+Die im Mai veröffentlichte Version von AADConnect umfasst eine öffentliche Vorschau der PingFederate-Integration, wichtige Sicherheitsupdates, zahlreiche Fehlerkorrekturen und neue großartige Tools für die Problembehandlung. Die Versionshinweise finden Sie [hier](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-version-history#118190).
+
+ 
+
+---
+ 
+
+
+### <a name="azure-ad-access-reviews-auto-apply"></a>Azure AD-Zugriffsüberprüfungen: automatische Anwendung
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Zugriffsüberprüfungen  
+**Produktfunktion**: Governance
+ 
+
+Zugriffsüberprüfungen von Gruppen und Apps sind für Azure AD Premium P2 jetzt allgemein verfügbar. Ein Administrator kann konfigurieren, dass die Änderungen des Prüfers automatisch auf diese Gruppe oder App angewendet werden, sobald die Zugriffsüberprüfung abgeschlossen wurde. Der Administrator kann auch festlegen, was mit dem fortgesetzten Zugriff des Benutzers geschieht, wenn die Prüfer nicht antworten. Mögliche Optionen hierbei sind: Zugriff entfernen, Zugriff beibehalten oder Systemempfehlungen annehmen. 
+
+ 
+
+---
+ 
+
+
+### <a name="id-tokens-can-no-longer-be-returned-using-the-query-responsemode-for-new-apps"></a>Für neue Apps können ID-Token nicht mehr über den response_mode „query“ zurückgegeben werden. 
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
+ 
+
+Apps, die ab dem 25.04.2018 erstellt wurden, sind nicht mehr in der Lage, ein **id_token** über den response_mode **query** anzufordern.  Damit entspricht Azure AD den OIDC-Spezifikationen und trägt dazu bei, die Angriffsfläche Ihrer Apps zu verringern.  Anwendungen, die vor dem 25.04.2018 erstellt wurden, werden nicht daran gehindert, den response_mode **query** mit dem response_typ **id_token** zu verwenden.  Der zurückgegebene Fehler beim Anfordern eines id_token aus AAD lautet: **AADSTS70007: „query“ ist beim Anfordern eines Tokens kein unterstützter Wert von „response_mode“**.
+
+Die response_mode-Werte **fragment** und **form_post** funktionieren weiterhin. Vergewissern Sie sich beim Erstellen neuer Anwendungsobjekte (z.B. für die App-Proxyverwendung) vor dem Erstellen einer neuen Anwendung, dass einer dieser response_mode-Werte verwendet wird.  
+ 
+
+---
+ 
+
 
 
 ## <a name="april-2018"></a>April 2018
@@ -335,7 +616,7 @@ Weitere Informationen finden Sie unter [AzureAD](https://docs.microsoft.com/powe
  
 Benutzer, die native Office 365-Clients (Version 16.0.8730.xxxx und höher) einsetzen, genießen mit nahtlosem einmaligem Anmelden eine Anmeldung ohne Benutzereingriff. Diese Unterstützung wird durch die Ergänzung von Azure AD durch ein nicht interaktives Protokoll (WS-Trust) bereitgestellt.
 
-Weitere Informationen finden Sie unter [Wie funktioniert die Anmeldung auf einem nativen Client mit dem nahtlosen einmaligen Anmelden?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work)
+Weitere Informationen finden Sie unter [Wie funktioniert die Anmeldung auf einem nativen Client mit dem nahtlosen einmaligen Anmelden?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work).
 
  
 ---
@@ -347,7 +628,7 @@ Weitere Informationen finden Sie unter [Wie funktioniert die Anmeldung auf einem
 **Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion**: Benutzerauthentifizierung
  
-Benutzer genießen mit dem nahtlosen einmaligen Anmelden eine Anmeldung ohne Benutzereingriff, wenn eine Anwendung (z. B. `https://contoso.sharepoint.com`) Anmeldeanforderungen an Mandantenendpunkte von Azure AD – d.h. `https://login.microsoftonline.com/contoso.com/<..>` oder `https://login.microsoftonline.com/<tenant_ID>/<..>` – anstelle des allgemeinem Azure AD-Endpunkts (`https://login.microsoftonline.com/common/<...>`) sendet.
+Benutzer erhalten mit dem nahtlosen einmaligen Anmelden eine Anmeldung ohne Benutzereingriff, wenn eine Anwendung (z.B. `https://contoso.sharepoint.com`) Anmeldeanforderungen nicht mehr an den allgemeinen Azure AD-Endpunkt (`https://login.microsoftonline.com/common/<...>`) sendet, sondern an Mandantenendpunkte von Azure AD – d.h. `https://login.microsoftonline.com/contoso.com/<..>` oder `https://login.microsoftonline.com/<tenant_ID>/<..>`.
 
 Weitere Informationen finden Sie unter [Nahtlose einmalige Anmeldung mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso). 
 
@@ -418,7 +699,7 @@ Weitere Informationen finden Sie unter [Optionale Ansprüche in Azure AD](https:
  
 Die Azure AD-Dokumentation wurde um Unterstützung für PKCE ergänzt, das eine sicherere Kommunikation beim Gewährungsflow des OAuth 2.0-Autorisierungscodes ermöglicht.  An v1.0- und v2.0-Endpunkten werden sowohl S256- als auch Klartext-Abfragecodes unterstützt. 
 
-Weitere Informationen finden Sie unter „Anfordern eines Autorisierungscodes“[](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
+Weitere Informationen finden Sie unter [Anfordern eines Autorisierungscodes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code). 
 
  
 ---
@@ -667,12 +948,7 @@ Dieses Release enthält die folgenden Updates und Änderungen:
 
 **Neue Features und Verbesserungen**
 
-- Im Rahmen der DSGVO sind wir verpflichtet, die Arten von Kundendaten anzugeben, die an Microsoft weitergegeben werden (Daten zu Telemetrie, Integrität usw.), Links zur detaillierten Onlinedokumentation bereitzustellen und Ihnen die Möglichkeit zu bieten, ihre Voreinstellungen zu ändern.  Es werden folgende neue Funktionen bereitgestellt:
-    - Benachrichtigung zu Datenweitergabe und Datenschutz – bei Neuinstallationen auf der Seite mit den Lizenzbedingungen.
 
-    - Benachrichtigung zu Datenweitergabe und Datenschutz auf der Upgradeseite.
-
-    - Eine neue zusätzliche Aufgabe **Datenschutzeinstellungen**, in der Benutzer ihre Einstellungen ändern können.
  
 - Anwendungstelemetrie: Administratoren können diese Datenklasse aktivieren/deaktivieren.
 
