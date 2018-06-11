@@ -8,6 +8,7 @@
 ### [Bewährte Methoden für die Netzwerksicherheit](../security/azure-security-network-security-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Hoch verfügbare virtuelle Netzwerkgeräte](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha )
 ### [Kombinieren von Lastenausgleichsmethoden](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Notfallwiederherstellung mit Azure DNS und Traffic Manager](disaster-recovery-dns-traffic-manager.md)
 ## Planen und Entwerfen
 ### [Virtuelle Netzwerke](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Standortübergreifende Konnektivität – VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)

@@ -125,7 +125,7 @@
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [Referenz zu Überwachungsaktivitäten](active-directory-reporting-activity-audit-reference.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Multi-factor authentication](active-directory-reporting-activity-sign-ins-mfa.md
+#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 
 
 
@@ -326,6 +326,7 @@
 #### [Bedingungen](active-directory-conditional-access-conditions.md)
 #### [Standortbedingungen](active-directory-conditional-access-locations.md)
 #### [Kontrollen](active-directory-conditional-access-controls.md)
+#### [Baselineschutz](active-directory-conditional-access-baseline-protection.md)
 #### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
 #### [Grundlegendes zu Geräterichtlinien für Office 365-Dienste](active-directory-conditional-access-device-policies.md)

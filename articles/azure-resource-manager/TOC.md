@@ -47,7 +47,8 @@
 ### [Azure-Portal](resource-group-portal.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
-### [Programmgesteuerte Erstellung von EA-Abonnements](programmatically-create-subscription.md)
+### [Erstellen von EA-Abonnements](programmatically-create-subscription.md)
+### [Gewähren des Zugriffs zur Erstellung von EA-Abonnements](grant-access-to-create-subscription.md)
 ### [Erstellen von Verwaltungsgruppen](management-groups-create.md)
 ### [Verwalten Ihrer Verwaltungsgruppen](management-groups-manage.md)
 

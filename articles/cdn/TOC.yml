@@ -116,6 +116,8 @@
           href: cdn-troubleshoot-endpoint.md
         - name: Dateikomprimierung
           href: cdn-troubleshoot-compression.md
+        - name: Zulässige Zertifizierungsstellen
+          href: cdn-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
     - name: Regel-Engine – Referenz

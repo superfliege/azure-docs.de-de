@@ -41,6 +41,8 @@
       href: traffic-manager-rum-overview.md
     - name: Datenverkehrsansicht
       href: traffic-manager-traffic-view-overview.md
+    - name: Notfallwiederherstellung mit Azure DNS und Traffic Manager
+      href: ../networking/disaster-recovery-dns-traffic-manager.md
     - name: Häufig gestellte Fragen
       href: traffic-manager-FAQs.md
 - name: Anleitung
