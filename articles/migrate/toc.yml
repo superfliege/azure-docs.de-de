@@ -14,7 +14,7 @@
       href: concepts-collector.md
     - name: Bewertungsberechnungen
       href: concepts-assessment-calculation.md
-    - name: Visualisierung von Abhängigkeiten
+    - name: Informationen zur Visualisierung von Abhängigkeiten
       href: concepts-dependency-visualization.md
 - name: Anleitungen
   items:
@@ -30,6 +30,8 @@
           href: contoso-migration-rehost-vm-sql-managed-instance.md
         - name: 5. Contoso – Rehosten einer App auf virtuellen Azure-Computern
           href: contoso-migration-rehost-vm.md
+        - name: 6. Contoso – Rehosten einer App auf virtuellen Azure-Computern und Azure SQL AlwaysOn
+          href: contoso-migration-rehost-vm-sql-ag.md
     - name: Erkunden und Bewerten einer großen Umgebung
       href: how-to-scale-assessment.md
     - name: Gruppieren von Computern

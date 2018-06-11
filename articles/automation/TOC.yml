@@ -29,6 +29,8 @@
   items:
     - name: Onboarding
       items:
+        - name: Integrieren mehrerer virtueller Computer über das Portal
+          href: automation-onboard-solutions-from-browse.md
         - name: Integrieren über einen virtuellen Azure-Computer
           href: automation-onboard-solutions-from-vm.md
         - name: Integrieren über ein Automation-Konto
