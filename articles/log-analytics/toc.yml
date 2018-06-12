@@ -28,7 +28,11 @@
 - name: Konzepte
   items:
     - name: Übergang zum OMS-Portal
-      href: log-analytics-oms-portal-faq.md
+      items:
+        - name: Übersicht
+          href: log-analytics-oms-portal-transition.md
+        - name: Häufig gestellte Fragen
+          href: log-analytics-oms-portal-faq.md
     - name: Upgrade des Arbeitsbereichs
       items:
         - name: Upgradeübersicht
