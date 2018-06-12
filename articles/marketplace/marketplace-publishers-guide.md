@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: f84be4ec4d42b77e93cf0855d7fe4740256ed199
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 79e7d049ebf184e273e05250bd6f112d4c6be53d
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34715359"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34806869"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Herausgeberleitfaden für Azure Marketplace und AppSource
 
@@ -144,7 +144,7 @@ Dies ist die Liste der Supportoptionen für Azure Marketplace:
 |Supportkanal  |BESCHREIBUNG  |
 |---------|---------|
 |MSDN-Foren: [Marketplace](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=DataMarket)     | Microsoft Developer Network-Forum.         |
-|Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    Stack Overflow-Umgebung zum Abrufen von Lösungen und Stellen von allgemeinen Fragen zu Azure und zum Marketplace:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Dokumentation zu virtuellen Computern](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li></ul> |
+|Stack Overflow: [Azure](https://stackoverflow.com/questions/tagged/azure)     |    Stack Overflow-Umgebung zum Abrufen von Lösungen und Stellen von allgemeinen Fragen zu Azure und zum Marketplace:<ul><li>[Azure Marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li><li>[Azure Resource Manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li><li>[Dokumentation zu virtuellen Computern](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Container in Azure](https://stackoverflow.com/search?q=azure+container)</li></ul> |
 
 
 **Marketingressourcen**
@@ -215,7 +215,10 @@ Weitere Informationen zu unseren Vorteilen für die Markteinführung und den Mö
 |**Anforderung**  |**Details** |**Veröffentlichungsoption**  |
 |---------|---------|---------|
 |**Abrechnung und Messung**   |  Der Container muss Abrechnungsmodelle für kostenlose oder BYOL-Lizenzen (Bring Your Own License) unterstützen.       |  Transaktion       |
-|**Docker-basiertes Image**    |   Containerimages müssen auf dem Docker-Imageformat basieren und aus Azure-Containerregistrierungen abgerufen werden.      |  Transaktion       |
+|**Auf Grundlage von Dockerfile erstelltes Image**    |   Containerimages müssen auf der Docker-Imagespezifikation basieren und auf der Grundlage einer Dockerfile-Datei erstellt werden. Weitere Informationen zum Erstellen von Docker-Images finden Sie [hier].(https://docs.docker.com/engine/reference/builder/#usage)     |  Transaktion       |
+|**Hosten in ACR**    |   Containerimages müssen in einem ACR-Repository (Azure Container Registry) gehostet werden. Weitere Informationen zur Verwendung von ACR finden Sie [hier].(https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     |  Transaktion       |
+|**Imagemarkierung**    |   Containerimages müssen mindestens 1 Tag enthalten (maximale Tags: 16). Weitere Informationen zum Markieren eines Images finden Sie [hier]. (https://docs.docker.com/engine/reference/commandline/tag/)     |  Transaktion       |
+
 
 #### <a name="prerequisites-specific-to-transation-publishing-for-saas-app-subscriptions"></a>Besondere Voraussetzungen für die Transaktionsveröffentlichung für SaaS-App-Abonnements
 
@@ -223,8 +226,9 @@ Weitere Informationen zu unseren Vorteilen für die Markteinführung und den Mö
 |---------|---------|---------|
 |**Abrechnung und Messung**    |   Ihr Angebot wird über eine monatliche Flatrate abgerechnet. Derzeit werden nutzungsbasierte Preise und nutzungsbasierte Anpassungsfunktionen nicht unterstützt.      |   Transaktion      |
 |**Stornierung**  |   Ihr Angebot kann jederzeit vom Kunden storniert werden.      |   Transaktion      |
-|**Transaktions-Landing Page**     |   Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können.      |    Transaktion     |
-|**SaaS-Abonnement-API**    |   Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht.      |     Transaktion    |
+|**Transaktionszielseite**     |   Sie hosten eine Transaktion-Landing Page mit Azure-Co-Branding, auf der Benutzer ihr SaaS-Dienstkonto erstellen und verwalten können.      |    Transaktion     |
+|**Abonnement-API**    |   Sie machen einen Dienst verfügbar, der mit dem SaaS-Abonnement interagiert, um Benutzerkonten und Servicepläne erstellen, aktualisieren und löschen zu können. Wichtige API-Änderungen müssen innerhalb von 24 Stunden unterstützt werden. Weniger wichtige API-Änderungen werden regelmäßig veröffentlicht.      |     Transaktion    |
+
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>Bestimmte Voraussetzungen für die Veröffentlichung von Beratungsdiensten
 
