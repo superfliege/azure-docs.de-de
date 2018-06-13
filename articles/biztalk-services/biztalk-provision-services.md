@@ -1,11 +1,11 @@
 ---
 title: Erstellen von Azure BizTalk Services im Azure-Portal | Microsoft Docs
-description: "Erfahren Sie mehr über das Bereitstellen oder Erstellen von Azure-BizTalk Services im Azure-Portal; MABS, WABS"
+description: Erfahren Sie mehr über das Bereitstellen oder Erstellen von Azure-BizTalk Services im Azure-Portal; MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 3ad18876-a649-40d6-9aa0-1509c1d62c43
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26632719"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Konfigurieren von BizTalk Services im Azure-Portal
 

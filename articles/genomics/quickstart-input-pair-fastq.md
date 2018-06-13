@@ -1,7 +1,7 @@
 ---
-title: "Schnellstartanleitung: Übermitteln eines Workflows mit FASTQ-Eingabedateien | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Übermitteln eines Workflows mit FASTQ-Eingabedateien | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: "In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben."
+description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684482"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs"></a>Übermitteln eines Workflows mit FASTQ-Eingabedateien
 
