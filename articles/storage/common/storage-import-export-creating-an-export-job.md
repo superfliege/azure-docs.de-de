@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363246"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Erstellen eines Exportauftrags für den Azure Import/Export-Dienst
 Zum Erstellen eines Exportauftrags für den Microsoft Azure Import/Export-Dienst per REST-API sind die folgenden Schritte erforderlich:

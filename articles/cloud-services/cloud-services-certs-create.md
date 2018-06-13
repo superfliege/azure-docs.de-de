@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969201"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und [Bereitstellung](#deploy) in Azure.
@@ -60,7 +61,7 @@ Ein selbstsigniertes Zertifikat können Sie mit allen verfügbaren Tools erstell
     > Sie können kein SSL-Zertifikat für die Domäne cloudapp.net (oder für eine andere Domäne in Zusammenhang mit Azure) beziehen; der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die auf Ihre Anwendung zugegriffen wird. Beispielsweise **contoso.net**, nicht **contoso.cloudapp.net**.
 
 * Mindestens 2048-Bit-Verschlüsselung.
-* **Nur Dienstzertifikat:**Das clientseitige Zertifikat muss sich im *persönlichen* Zertifikatspeicher befinden.
+* **Nur Dienstzertifikat:** Das clientseitige Zertifikat muss sich im *persönlichen* Zertifikatspeicher befinden.
 
 Es gibt zwei einfache Möglichkeiten zum Erstellen eines Zertifikats unter Windows: mithilfe des Dienstprogramms `makecert.exe` oder mit IIS.
 

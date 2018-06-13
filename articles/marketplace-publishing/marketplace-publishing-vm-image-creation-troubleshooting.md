@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29941600"
 ---
 # <a name="how-to-troubleshoot-common-issues-encountered-during-vhd-creation"></a>Behandlung häufig auftretender Probleme bei der Erstellung virtueller Festplatten
 Dieser Artikel soll Azure Marketplace-Herausgeber und/oder Co-Administratoren unterstützen, die Probleme oder allgemeine Fragen beim Veröffentlichen oder Verwalten ihrer Lösungen mit virtuellen Computern haben.

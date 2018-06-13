@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246473"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe mit nur einer Zone mit PowerShell
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu in einer einzelnen Verfügbarkeitszone. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
