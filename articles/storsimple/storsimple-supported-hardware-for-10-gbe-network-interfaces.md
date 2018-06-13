@@ -1,11 +1,11 @@
 ---
-title: "Hardware für StorSimple-10-GbE-Schnittstellen | Microsoft Docs"
-description: "Beschreibt die unterstützten SFP-Transceiver, Kabel und Switches für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät."
+title: Hardware für StorSimple-10-GbE-Schnittstellen | Microsoft Docs
+description: Beschreibt die unterstützten SFP-Transceiver, Kabel und Switches für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: df8d40c7-f5ad-4f84-93eb-779fbd5f7243
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110568"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Unterstützte Hardware für 10-GbE-Netzwerkschnittstellen auf Ihrem StorSimple-Gerät
 ## <a name="overview"></a>Übersicht

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23125498"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von Netzwerksicherheitsgruppen mit klassischem PowerShell
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]

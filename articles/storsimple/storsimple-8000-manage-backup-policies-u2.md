@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von Sicherungsrichtlinien auf Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt, wie Sie den StorSimple-Geräte-Manager-Dienst zum Erstellen und Verwalten von manuellen Sicherungen, Sicherungszeitplänen und zur Sicherungsaufbewahrung auf Geräten der StorSimple 8000-Serie verwenden können."
+title: Verwalten von Sicherungsrichtlinien auf Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt, wie Sie den StorSimple-Geräte-Manager-Dienst zum Erstellen und Verwalten von manuellen Sicherungen, Sicherungszeitplänen und zur Sicherungsaufbewahrung auf Geräten der StorSimple 8000-Serie verwenden können.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108278"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Verwalten von Sicherungsrichtlinien
 

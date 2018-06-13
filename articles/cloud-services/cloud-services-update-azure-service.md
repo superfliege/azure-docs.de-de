@@ -1,11 +1,11 @@
 ---
 title: Aktualisieren eines Clouddiensts | Microsoft Docs
-description: "Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist."
+description: Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c6a8b5e6-5c99-454c-9911-5c7ae8d1af63
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860670"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 

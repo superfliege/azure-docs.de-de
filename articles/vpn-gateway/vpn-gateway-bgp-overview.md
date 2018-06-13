@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über BGP mit Azure-VPN-Gateways | Microsoft Docs"
-description: "Dieser Artikel enthält eine Übersicht über die Verwendung von BGP mit Azure-VPN-Gateways."
+title: Übersicht über BGP mit Azure-VPN-Gateways | Microsoft Docs
+description: Dieser Artikel enthält eine Übersicht über die Verwendung von BGP mit Azure-VPN-Gateways.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: f8c3985c-c128-4f34-835c-0e88742bf36e
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23123798"
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Übersicht über BGP mit Azure-VPN-Gateways
 Dieser Artikel enthält eine Übersicht über die Unterstützung des Border Gateway-Protokolls (BGP) in Azure-VPN-Gateways.

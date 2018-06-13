@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von Zugriffssteuerungsdatensätzen für das StorSimple Virtual Array | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie mit Access Control-Datensätzen (Access Control Records, ACRs) bestimmen, welche Hosts Verbindungen mit einem Volume auf dem StorSimple Virtual Array herstellen können."
+title: Verwalten von Zugriffssteuerungsdatensätzen für das StorSimple Virtual Array | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie mit Access Control-Datensätzen (Access Control Records, ACRs) bestimmen, welche Hosts Verbindungen mit einem Volume auf dem StorSimple Virtual Array herstellen können.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e154bb4f-faab-4d92-a593-900c3ddc9595
 ms.service: storsimple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110038"
 ---
 # <a name="use-storsimple-device-manager-to-manage-access-control-records-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Access Control-Datensätzen für StorSimple Virtual Array
 

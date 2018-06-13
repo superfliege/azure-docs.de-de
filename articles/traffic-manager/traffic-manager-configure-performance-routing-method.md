@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Azure Traffic Manager | Microsoft Docs"
-description: "In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an den Endpunkt mit der kürzesten Wartezeit geleitet wird."
+title: Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr mit Azure Traffic Manager | Microsoft Docs
+description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an den Endpunkt mit der kürzesten Wartezeit geleitet wird.
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110658"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurieren der leistungsorientierten Routingmethode für Datenverkehr
 
