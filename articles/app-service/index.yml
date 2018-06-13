@@ -3,7 +3,7 @@ documentType: LandingData
 title: Web-Apps-Dokumentation
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: "Dokumentation für Azure Web-Apps – Tutorials, API-Referenz"
+  title: Dokumentation für Azure Web-Apps – Tutorials, API-Referenz
   meta.description: Learn how to use App Service Web Apps to build and host websites and web applications.
   services: app-service
   author: czeumault
@@ -19,8 +19,9 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27785456"
 abstract:
-  description: "Azure-Web-Apps ermöglichen das Erstellen und Hosten von Webanwendungen in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure-Web-Apps verwenden."
+  description: Azure-Web-Apps ermöglichen das Erstellen und Hosten von Webanwendungen in der Programmiersprache Ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure-Web-Apps verwenden.
   aside:
     image:
       alt: 
@@ -31,7 +32,7 @@ abstract:
     href: https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/
     width: 250
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: 'Erfahren Sie, wie Sie mit Web-Apps Ihre erste Anwendung in der Cloud bereitstellen:'
@@ -63,7 +64,7 @@ sections:
       text: HTML
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html
   - type: paragraph
-    text: "Erfahren Sie mehr über die kontinuierliche Bereitstellung:"
+    text: 'Erfahren Sie mehr über die kontinuierliche Bereitstellung:'
   - type: list
     style: icon48
     items:
@@ -71,17 +72,17 @@ sections:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
       text: VSTS
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: "Informationen zum Bereitstellen, Verwalten und Überwachen von sicheren Webanwendungen in Azure"
+    text: Informationen zum Bereitstellen, Verwalten und Überwachen von sicheren Webanwendungen in Azure
   - type: list
     style: ordered
     items:
     - html: Erstellen einer Anwendung mithilfe von <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET mit Azure SQL-Datenbank</a> oder <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js mit MongoDB</a>
-    - html: "<a href=\"/azure/app-service/app-service-web-tutorial-custom-domain\">Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung</a>"
+    - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung</a>
     - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Binden eines vorhandenen SSL-Zertifikats an Ihre Anwendung</a>
-    - html: "<a href=\"/azure/app-service/app-service-web-tutorial-content-delivery-network\">Hinzufügen eines CDN zur Anwendung</a>"
+    - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Hinzufügen eines CDN zur Anwendung</a>
 - title: Kostenloses PluralSight-Videotraining
   items:
   - type: list

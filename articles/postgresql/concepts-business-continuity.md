@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL"
-description: "Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL"
+title: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
+description: Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29693118"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Übersicht über die Geschäftskontinuität mit Azure Database for PostgreSQL
 

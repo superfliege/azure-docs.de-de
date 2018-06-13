@@ -1,6 +1,6 @@
 ---
-title: "Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux – Microsoft Azure | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die an unter Linux ausgeführte virtuelle Computer angefügt sind."
+title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux – Microsoft Azure | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die an unter Linux ausgeführte virtuelle Computer angefügt sind.
 services: virtual-machines
 author: tamram
 manager: jeconnoc
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24871504"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux
 

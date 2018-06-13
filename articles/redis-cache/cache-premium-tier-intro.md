@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27911202"
 ---
 # <a name="introduction-to-the-azure-redis-cache-premium-tier"></a>Einführung in den Premium-Tarif von Azure Redis Cache
 Azure Redis Cache ist ein verteilter, verwalteter Cache, mit der Sie hoch skalierbare und reaktionsschnelle Anwendungen erstellen können, indem Sie äußerst schnellen Zugriff auf Daten bieten. 

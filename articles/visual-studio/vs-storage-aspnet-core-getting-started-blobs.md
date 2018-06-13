@@ -1,11 +1,11 @@
 ---
 title: Erste Schritte mit Azure-Blobspeicher und verbundenen Visual Studio-Diensten (ASP.NET Core) | Microsoft-Dokumentation
-description: "Hier erfahren Sie etwas über die ersten Schritte mit Azure-Blobspeicher in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben."
+description: Hier erfahren Sie etwas über die ersten Schritte mit Azure-Blobspeicher in einem ASP.NET Core-Projekt in Visual Studio, nachdem Sie mithilfe von verbundenen Visual Studio-Diensten eine Verbindung mit einem Speicherkonto hergestellt haben.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: camsoper
 manager: wpickett
-editor: 
+editor: ''
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621222"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
 

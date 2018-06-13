@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Site Recovery-Dokumentation
 metadata:
-  title: "Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation"
+  title: Dokumentation für Azure Site Recovery – Tutorials, API-Referenz | Microsoft-Dokumentation
   meta.description: Learn how to set up cloud disaster recovery and business continuity for physical servers and virtual machines by deploying and managing replication.
   services: site-recovery
   author: czeumault
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 01/10/2018
+  ms.locfileid: "27740083"
 abstract:
-  description: "Azure Site Recovery orchestriert und verwaltet die Wiederherstellung im Notfall für Azure-VMs sowie lokale virtuelle Computer und physische Server. Erfahren Sie mit unseren Schnellstarts und Tutorials, wie Sie Replikationen, Failover und Failbacks durchführen."
+  description: Azure Site Recovery orchestriert und verwaltet die Wiederherstellung im Notfall für Azure-VMs sowie lokale virtuelle Computer und physische Server. Erfahren Sie mit unseren Schnellstarts und Tutorials, wie Sie Replikationen, Failover und Failbacks durchführen.
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: "Schnelle Einrichtung der Wiederherstellung im Notfall für eine Azure-VM"
+    text: Schnelle Einrichtung der Wiederherstellung im Notfall für eine Azure-VM
   - type: list
     style: icon48
     items:
@@ -32,18 +33,18 @@ sections:
         src: /azure/site-recovery/media/index/portal.svg
       text: Azure-Portal
       href: /azure/site-recovery/azure-to-azure-quickstart
-- title: "Schritt-für-Schritt-Tutorials"
+- title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: "Informationen zum Einrichten der Notfallwiederherstellung für virtuelle Computer und physische Server."
+    text: Informationen zum Einrichten der Notfallwiederherstellung für virtuelle Computer und physische Server.
   - type: text
     html: <h3>Azure zu Azure</h3>
   - type: list
     style: ordered
     items:
     - html: <a href="azure-to-azure-tutorial-enable-replication">Einrichten der Notfallwiederherstellung</a>
-    - html: "<a href=\"azure-to-azure-tutorial-dr-drill\">Durchführen eines Notfallwiederherstellungsverfahrens</a>"
-    - html: "<a href=\"azure-to-azure-tutorial-failover-failback\">Run failover and failback</a> (Ausführen von Failover und Failback)"
+    - html: <a href="azure-to-azure-tutorial-dr-drill">Durchführen eines Notfallwiederherstellungsverfahrens</a>
+    - html: <a href="azure-to-azure-tutorial-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
   - type: text
     html: <h3>VMware</h3>
   - type: list
@@ -52,8 +53,8 @@ sections:
     - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
     - html: <a href="tutorial-prepare-on-premises-vmware">Prepare on-premises VMware</a> (Lokales Vorbereiten von VMware)
     - html: <a href="tutorial-vmware-to-azure">Set-up disaster recovery</a> (Einrichten der Notfallwiederherstellung)
-    - html: "<a href=\"tutorial-dr-drill-azure\">Durchführen eines Notfallwiederherstellungsverfahrens</a>"
-    - html: "<a href=\"tutorial-vmware-to-azure-failover-failback\">Run failover and failback</a> (Ausführen von Failover und Failback)"
+    - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
+    - html: <a href="tutorial-vmware-to-azure-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
@@ -61,10 +62,10 @@ sections:
     items:
     - html: <a href="tutorial-prepare-azure">Prepare Azure</a> (Vorbereiten von Azure)
     - html: <a href="tutorial-prepare-on-premises-hyper-v">Vorbereiten lokaler Hyper-V-Instanzen</a>
-    - html: "<a href=\"tutorial-hyper-v-to-azure\">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer</a>"
-    - html: "<a href=\"tutorial-hyper-v-vmm-to-azure\">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer, die von System Center VMM verwaltet werden</a>"
-    - html: "<a href=\"tutorial-dr-drill-azure\">Durchführen eines Notfallwiederherstellungsverfahrens</a>"
-    - html: "<a href=\"tutorial-hyper-v-to-azure-failover-failback\">Run failover and failback</a> (Ausführen von Failover und Failback)"
+    - html: <a href="tutorial-hyper-v-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer</a>
+    - html: <a href="tutorial-hyper-v-vmm-to-azure">Einrichten der Notfallwiederherstellung für virtuelle Hyper-V-Computer, die von System Center VMM verwaltet werden</a>
+    - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
+    - html: <a href="tutorial-hyper-v-to-azure-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
   - type: text
     html: <h3>Migrieren zu Azure</h3>
   - type: list

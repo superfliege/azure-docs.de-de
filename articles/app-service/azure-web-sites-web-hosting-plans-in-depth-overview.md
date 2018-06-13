@@ -1,12 +1,12 @@
 ---
-title: "Azure App Service-Pläne – Übersicht | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie App Service-Pläne für Azure App Service funktionieren, und wie Ihre Verwaltungsumgebung davon profitiert."
+title: Azure App Service-Pläne – Übersicht | Microsoft-Dokumentation
+description: Erfahren Sie, wie App Service-Pläne für Azure App Service funktionieren, und wie Ihre Verwaltungsumgebung davon profitiert.
 keywords: App-Dienst, Azure App Service, Skalierung, skalierbar, Skalierbarkeit, App Service-Plan, App Service-Kosten
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.service: app-service
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862358"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 

@@ -1,8 +1,8 @@
 ---
-title: "Anmeldeinformationen für die Azure App Service-Bereitstellung | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Anmeldeinformationen für die Azure App Service-Bereitstellung verwenden."
+title: Anmeldeinformationen für die Azure App Service-Bereitstellung | Microsoft Docs
+description: Erfahren Sie, wie Sie Anmeldeinformationen für die Azure App Service-Bereitstellung verwenden.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "27778546"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md). Diese sind nicht identisch mit Ihren Azure Active Directory-Anmeldeinformationen.
