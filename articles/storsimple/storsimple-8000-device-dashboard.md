@@ -1,12 +1,12 @@
 ---
-title: "Verwenden der Übersicht über Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt die Übersicht über den StorSimple-Geräte-Manager-Dienst und erläutert, wie diese verwendet wird, um Speichermetriken und verbundene Initiatoren anzuzeigen sowie nach der Seriennummer und dem IQN zu suchen."
+title: Verwenden der Übersicht über Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt die Übersicht über den StorSimple-Geräte-Manager-Dienst und erläutert, wie diese verwendet wird, um Speichermetriken und verbundene Initiatoren anzuzeigen sowie nach der Seriennummer und dem IQN zu suchen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108258"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 

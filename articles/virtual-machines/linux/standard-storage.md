@@ -1,8 +1,8 @@
 ---
-title: "Standardspeicher für Linux-VM-Datenträger in Azure | Microsoft-Dokumentation"
-description: "Hier finden Sie Informationen zu kostengünstigem Standardspeicher und verwalteten/nicht verwalteten Linux-VM-Datenträgern."
+title: Standardspeicher für Linux-VM-Datenträger in Azure | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu kostengünstigem Standardspeicher und verwalteten/nicht verwalteten Linux-VM-Datenträgern.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: jeconnoc
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23666872"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

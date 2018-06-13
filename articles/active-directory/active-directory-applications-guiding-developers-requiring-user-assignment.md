@@ -1,11 +1,11 @@
 ---
-title: "Erfordern der Benutzerzuweisung – Azure AD | Microsoft-Dokumentation"
-description: "Informationen zum Erfordern der Benutzerzuweisung für Azure-Anwendungen"
+title: Erfordern der Benutzerzuweisung – Azure AD | Microsoft-Dokumentation
+description: Informationen zum Erfordern der Benutzerzuweisung für Azure-Anwendungen
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 30b78cba-1e0f-472f-8314-f2250a9b91c3
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598828"
 ---
 # <a name="azure-ad-and-applications-require-user-assignment"></a>Azure AD und Anwendungen: Erfordern der Benutzerzuweisung
 ## <a name="requiring-user-assignment"></a>Erfordern der Benutzerzuweisung

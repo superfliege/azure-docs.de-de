@@ -1,11 +1,11 @@
 ---
-title: "Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie das Failover für das StorSimple Virtual Array durchführen."
+title: Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie das Failover für das StorSimple Virtual Array durchführen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3c1f9c62-af57-4634-a0d8-435522d969aa
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110748"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 

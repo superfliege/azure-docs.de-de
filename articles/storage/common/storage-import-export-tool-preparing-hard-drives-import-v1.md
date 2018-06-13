@@ -1,11 +1,11 @@
 ---
-title: "Vorbereiten von Festplatten für einen Importauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie Festplatten mit dem WAImportExport V1-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten."
+title: Vorbereiten von Festplatten für einen Importauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Festplatten mit dem WAImportExport V1-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23107848"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen Sie in folgenden Schritten vor:

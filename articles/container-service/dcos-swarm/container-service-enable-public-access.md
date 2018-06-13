@@ -1,6 +1,6 @@
 ---
 title: Aktivieren des Zugriffs auf die Azure-DC/OS-Container-App
-description: "Es wird beschrieben, wie Sie den öffentlichen Zugriff auf DC/OS-Container in Azure Container Service ermöglichen."
+description: Es wird beschrieben, wie Sie den öffentlichen Zugriff auf DC/OS-Container in Azure Container Service ermöglichen.
 services: container-service
 author: sauryadas
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26332278"
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Ermöglichen des öffentlichen Zugriffs auf eine Azure Container Service-Anwendung
 

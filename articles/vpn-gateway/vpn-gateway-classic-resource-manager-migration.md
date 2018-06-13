@@ -1,6 +1,6 @@
 ---
 title: Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager | Microsoft Docs
-description: "Diese Seite bietet einen Überblick über das Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager."
+description: Diese Seite bietet einen Überblick über das Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23127098"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Migrieren von VPN Gateways aus dem klassischen Modell zu Resource Manager
 VPN Gateways können jetzt aus dem klassischen Modell zum Resource Manager-Bereitstellungsmodell migriert werden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). In diesem Artikel wird erklärt, wie man von klassischen Bereitstellungen zu neueren Resource Manager-basierten Modellen migriert. 

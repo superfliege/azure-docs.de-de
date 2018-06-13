@@ -1,11 +1,11 @@
 ---
-title: "Handbücher zur Problembehandlung für Azure HDInsight | Microsoft-Dokumentation"
-description: "Führen Sie die Problembehandlung für Hadoop-Workloads mit Azure HDInsight aus. Anhand einer schrittweisen Dokumentation wird veranschaulicht, wie mithilfe von HDInsight häufig auftretende Probleme mit Hive, Spark, YARN, HBase, HDFS und Storm behoben werden."
+title: Handbücher zur Problembehandlung für Azure HDInsight | Microsoft-Dokumentation
+description: Führen Sie die Problembehandlung für Hadoop-Workloads mit Azure HDInsight aus. Anhand einer schrittweisen Dokumentation wird veranschaulicht, wie mithilfe von HDInsight häufig auftretende Probleme mit Hive, Spark, YARN, HBase, HDFS und Storm behoben werden.
 services: hdinsight
 author: arijitt
 manager: arijitt
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984719"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Problembehandlung mit Azure HDInsight
 

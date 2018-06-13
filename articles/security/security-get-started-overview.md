@@ -1,6 +1,6 @@
 ---
-title: "Azure-Sicherheitsübersicht | Microsoft Docs"
-description: "Auf der Microsoft-Website für Informationen zur Azure-Sicherheit auf Azure.com finden Sie technische Antworten auf Ihre Fragen zur Azure-Sicherheit."
+title: Azure-Sicherheitsübersicht | Microsoft Docs
+description: Auf der Microsoft-Website für Informationen zur Azure-Sicherheit auf Azure.com finden Sie technische Antworten auf Ihre Fragen zur Azure-Sicherheit.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542145"
 ---
 # <a name="azure-security-overview"></a>Azure-Sicherheitsübersicht
 Auf der Microsoft-Website für Informationen zur Azure-Sicherheit auf Azure.com finden Sie technische Antworten auf Ihre Fragen zur Azure-Sicherheit. Informationen zur Compliance von Azure und zur eigenständigen Sicherung der Azure-Infrastruktur finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).

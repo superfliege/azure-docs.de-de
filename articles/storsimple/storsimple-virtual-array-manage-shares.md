@@ -1,11 +1,11 @@
 ---
 title: Verwalten von StorSimple Virtual Array-Freigaben | Microsoft-Dokumentation
-description: "Beschreibt den StorSimple-Geräte-Manager und erläutert, wie Sie darüber Freigaben auf Ihrem StorSimple Virtual Array verwalten."
+description: Beschreibt den StorSimple-Geräte-Manager und erläutert, wie Sie darüber Freigaben auf Ihrem StorSimple Virtual Array verwalten.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 0a799c83-fde5-4f3f-af0e-67535d1882b6
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23110588"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Freigaben auf dem StorSimple Virtual Array
 

@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Konfigurationen für hohe Verfügbarkeit mit Azure-VPN-Gateways | Microsoft Docs"
-description: "Dieser Artikel enthält eine Übersicht über die Optionen zur Konfiguration für hohe Verfügbarkeit mit Azure-VPN-Gateways."
+title: Übersicht über Konfigurationen für hohe Verfügbarkeit mit Azure-VPN-Gateways | Microsoft Docs
+description: Dieser Artikel enthält eine Übersicht über die Optionen zur Konfiguration für hohe Verfügbarkeit mit Azure-VPN-Gateways.
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23126308"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit hoher Verfügbarkeit
 In diesem Artikel erhalten Sie einen Überblick über Optionen zur Konfiguration der hohen Verfügbarkeit für standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways.
