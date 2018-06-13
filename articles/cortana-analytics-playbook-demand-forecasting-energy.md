@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs | Microsoft Docs"
-description: "Lösungsvorlage mit Microsoft Cortana Intelligence, mit deren Hilfe Versorgungsunternehmen im Energiesektor den Bedarf vorhersagen können."
+title: Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs | Microsoft Docs
+description: Lösungsvorlage mit Microsoft Cortana Intelligence, mit deren Hilfe Versorgungsunternehmen im Energiesektor den Bedarf vorhersagen können.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: ilanr9
 manager: ilanr9
 editor: yijichen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23004035"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs
 ## <a name="executive-summary"></a>Kurzfassung
