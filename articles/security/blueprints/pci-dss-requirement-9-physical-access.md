@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895636"
 ---
 # <a name="physical-access-requirements-for-pci-dss-compliant-environments"></a>Anforderungen für den physischen Zugriff in PCI-DSS-konformen Umgebungen 
 ## <a name="pci-dss-requirement-9"></a>PCI-DSS-Anforderung 9

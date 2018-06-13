@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 05/17/2018
+  ms.locfileid: "34259174"
 abstract:
   description: Chef Software ist eine DevOps-Automatisierungsplattform für Linux und Windows und ermöglicht die Verwaltung der Konfigurationen von physischen und virtuellen Servern. Erfahren Sie anhand von Schnellstartanleitungen und Tutorials, wie Sie mithilfe von Chef Software IaC-Rezepte (Infrastructure as Code) automatisieren und virtuelle Computer in Azure verwalten und bereitstellen.
   aside:

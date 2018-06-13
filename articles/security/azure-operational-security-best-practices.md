@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896515"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das die über verschiedene für Microsoft einzigartige Funktionen erworbenen Kenntnisse einbezieht, einschließlich Microsoft Security Development Lifecycle (SDL), dem Microsoft Security Response Center-Programm und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.

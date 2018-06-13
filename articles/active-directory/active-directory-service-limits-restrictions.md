@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33759979"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
 Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschränkungen für den Azure Active Directory-Dienst. Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
