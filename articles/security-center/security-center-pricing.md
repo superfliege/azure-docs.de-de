@@ -1,11 +1,11 @@
 ---
-title: "Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center."
+title: Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/20/2017
+ms.locfileid: "23473933"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
