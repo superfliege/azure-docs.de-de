@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von inkrementellen Momentaufnahmen für die Sicherung und Wiederherstellung von nicht verwalteten Azure-Linux-VM-Datenträgern | Microsoft-Dokumentation"
-description: "Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Linux-Computer mithilfe inkrementeller Momentaufnahmen."
+title: Verwenden von inkrementellen Momentaufnahmen für die Sicherung und Wiederherstellung von nicht verwalteten Azure-Linux-VM-Datenträgern | Microsoft-Dokumentation
+description: Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure-Linux-Computer mithilfe inkrementeller Momentaufnahmen.
 services: virtual-machines-linux
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23115068"
 ---
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

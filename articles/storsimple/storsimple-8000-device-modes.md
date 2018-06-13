@@ -1,12 +1,12 @@
 ---
-title: "Ändern des StorSimple-Gerätemodus | Microsoft-Dokumentation"
-description: "Beschreibt die StorSimple-Gerätemodi und erläutert, wie Sie den Gerätemodus mithilfe von Windows PowerShell für StorSimple ändern."
+title: Ändern des StorSimple-Gerätemodus | Microsoft-Dokumentation
+description: Beschreibt die StorSimple-Gerätemodi und erläutert, wie Sie den Gerätemodus mithilfe von Windows PowerShell für StorSimple ändern.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108538"
 ---
 # <a name="change-the-device-mode-on-your-storsimple-device"></a>Ändern des Gerätemodus auf Ihrem StorSimple-Gerät
 

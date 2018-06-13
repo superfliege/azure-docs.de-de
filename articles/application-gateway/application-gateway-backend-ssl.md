@@ -1,6 +1,6 @@
 ---
 title: Aktivieren von End-to-End-SSL in Azure Application Gateway | Microsoft-Dokumentation
-description: "Diese Seite bietet eine Übersicht über die Unterstützung von End-to-End-SSL in Application Gateway."
+description: Diese Seite bietet eine Übersicht über die Unterstützung von End-to-End-SSL in Application Gateway.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22704709"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Übersicht über End-to-End-SSL mit Applicaiton Gateway
 
