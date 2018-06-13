@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30914934"
 ---
 # <a name="manage-the-number-and-availability-of-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Verwalten der Anzahl und Verfügbarkeit von Computeknoten in einem HPC Pack-Cluster in Azure
 Wenn Sie einen HPC Pack 2012 R2-Cluster auf virtuellen Azure-Computern erstellt haben, möchten Sie wahrscheinlich einige virtuelle Computer für Computeknoten im Cluster hinzufügen, entfernen, starten (bereitstellen) oder beenden (Bereitstellung aufheben). Zum Durchführen dieser Aufgaben können Sie Azure PowerShell-Skripts ausführen, die auf dem Hauptknoten des virtuellen Computers installiert sind. Mit diesen Skripts können Sie die Anzahl und Verfügbarkeit der HPC Pack-Clusterressourcen steuern und so auch Kosten senken.
@@ -119,7 +120,7 @@ Start-HPCIaaSNode.ps1 -Node <Object> [<CommonParameters>]
 * **Node**: Das HpcNode-Objekt für die zu startenden Knoten, das über das HPC PowerShell-Cmdlet [Get-HpcNode](https://technet.microsoft.com/library/dn887927.aspx)abgerufen werden kann. Der Name des Parametersatzes ist "Node". Sie können nicht beide Parameter **Name** und **Node** angeben.
 
 ### <a name="example"></a>Beispiel
-Im folgenden Beispiel werden Knoten gestartet, deren Namen mit *HPCNode-CN-*beginnen.
+Im folgenden Beispiel werden Knoten gestartet, deren Namen mit *HPCNode-CN-* beginnen.
 
 ```PowerShell
 Start-HPCIaaSNode.ps1 –Name HPCNodeCN-*

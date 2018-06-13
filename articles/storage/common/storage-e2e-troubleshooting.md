@@ -18,6 +18,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323303"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -264,7 +265,7 @@ Zusätzlich zur Verwendung der Azure-Speicheransichtslayouts können Sie auch ei
 ### <a name="apply-color-rules-to-the-analysis-grid"></a>Anwenden von Farbregeln auf das Analyseraster
 Die Speicherressourcen umfassen auch Farbregeln, die ein visuelles Mittel zum Identifizieren der verschiedenen Arten von Fehlern im Analyseraster bieten. Die vordefinierten Farbregeln gelten für HTTP-Fehler, sodass sie nur für das Serverprotokoll und die Netzwerkablaufverfolgung angezeigt werden.
 
-Um die Farbregeln anzuwenden, wählen Sie auf der Symbolleiste die Option **Color Rules** aus. Daraufhin werden die Azure-Speicherfarbregeln im Menü angezeigt. Wählen Sie für das Lernprogramm **Client Errors (StatusCode between 400 and 499)**aus, wie in der folgenden Abbildung dargestellt.
+Um die Farbregeln anzuwenden, wählen Sie auf der Symbolleiste die Option **Color Rules** aus. Daraufhin werden die Azure-Speicherfarbregeln im Menü angezeigt. Wählen Sie für das Lernprogramm **Client Errors (StatusCode between 400 and 499)** aus, wie in der folgenden Abbildung dargestellt.
 
 ![Layout: Azure-Speicheransicht](./media/storage-e2e-troubleshooting/color-rules-menu.png)
 

@@ -9,10 +9,11 @@ ms.date: 03/26/2018
 ms.author: v-mamcge
 ms.custom: include file
 ms.openlocfilehash: 5ffc16a4337c928cc166841e660cb0335c4d8b9e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "31432758"
 ---
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 Ihr erstes Azure-Speicherkonto erstellen Sie am einfachsten im [Azure-Portal](https://portal.azure.com). Weitere Informationen finden Sie unter [Erstellen von Speicherkonten](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).

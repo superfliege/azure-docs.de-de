@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31416039"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>Erstellen einer VM-Skalierungsgruppe mit nur einer Zone mit PowerShell
 Mit diesem Skript wird eine VM-Skalierungsgruppe erstellt, in der Windows Server 2016 in einer einzelnen Verfügbarkeitszone ausgeführt wird. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
