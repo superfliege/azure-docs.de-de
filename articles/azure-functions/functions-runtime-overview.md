@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Azure Functions Runtime | Microsoft-Dokumentation"
-description: "Übersicht über Azure Functions Runtime Preview"
+title: Übersicht über Azure Functions Runtime | Microsoft-Dokumentation
+description: Übersicht über Azure Functions Runtime Preview
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/05/2017
+ms.locfileid: "26290224"
 ---
 # <a name="azure-functions-runtime-overview"></a>Übersicht über Azure Functions Runtime
 

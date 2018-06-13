@@ -1,9 +1,9 @@
 ---
-title: "Verwalten der Einstellungen für die zweistufige Überprüfung | Microsoft-Dokumentation"
-description: "Verwalten Sie die Verwendung von Azure Multi-Factor Authentication, z. B. das Ändern Ihrer Kontaktinformationen oder das Konfigurieren Ihrer Geräte."
+title: Verwalten der Einstellungen für die zweistufige Überprüfung | Microsoft-Dokumentation
+description: Verwalten Sie die Verwendung von Azure Multi-Factor Authentication, z. B. das Ändern Ihrer Kontaktinformationen oder das Konfigurieren Ihrer Geräte.
 services: multi-factor-authentication
-keywords: "Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID"
-documentationcenter: 
+keywords: Client für Multi-Factor Authentication, Authentifizierungsproblem, Korrelations-ID
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626657"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Verwalten der Einstellungen für die zweistufige Überprüfung
 Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen für die zweistufige Überprüfung oder die Multi-Factor Authentication. Wenn bei der Anmeldung bei Ihrem Konto Probleme auftreten, finden Sie Hilfe unter [Probleme bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md).

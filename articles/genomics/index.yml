@@ -18,17 +18,18 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 12/13/2017
+  ms.locfileid: "26684584"
 abstract:
-  description: "Hier erfahren Sie, wie Microsoft Genomics mithilfe einer Cloudimplementierung des Burrows-Wheeler Aligner (BWA) und des Genome Analysis Toolkit (GATK) für Sekundäranalysen die Genomsequenzierung unterstützen kann."
+  description: Hier erfahren Sie, wie Microsoft Genomics mithilfe einer Cloudimplementierung des Burrows-Wheeler Aligner (BWA) und des Genome Analysis Toolkit (GATK) für Sekundäranalysen die Genomsequenzierung unterstützen kann.
 sections:
-- title: "Fünfminütige Schnellstarts"
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: "Übermitteln Sie einen Workflow über den Microsoft Genomics-Dienst."
+    text: Übermitteln Sie einen Workflow über den Microsoft Genomics-Dienst.
   - type: list
     style: icon48
     items:
     - image:
         src: media/index/helix-blue-orange.svg
-      text: "Übermitteln eines Workflows"
+      text: Übermitteln eines Workflows
       href: quickstart-run-genomics-workflow-portal

@@ -1,12 +1,12 @@
 ---
-title: "Bereitstellen von Geräten der StorSimple 8000-Serie im Government-Portal | Microsoft-Dokumentation"
-description: "Beschreibung der Schritte und bewährten Methoden für die Bereitstellung von Geräten der StorSimple 8000-Serie mit Update 3 und höher und des StorSimple-Geräte-Manager-Diensts im Azure Government-Portal."
+title: Bereitstellen von Geräten der StorSimple 8000-Serie im Government-Portal | Microsoft-Dokumentation
+description: Beschreibung der Schritte und bewährten Methoden für die Bereitstellung von Geräten der StorSimple 8000-Serie mit Update 3 und höher und des StorSimple-Geräte-Manager-Diensts im Azure Government-Portal.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108748"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Bereitstellen lokaler StorSimple-Geräte im Government-Portal
 

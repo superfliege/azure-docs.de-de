@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte der Authentifizierung für Mobile Apps in der Xamarin.Forms-App | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren von Benutzern Ihrer Xamarin.Forms-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
+title: Erste Schritte der Authentifizierung für Mobile Apps in der Xamarin.Forms-App | Microsoft Docs
+description: Erfahren Sie, wie Sie Mobile Apps zum Authentifizieren von Benutzern Ihrer Xamarin.Forms-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: panarasi
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 9c55e192-c761-4ff2-8d88-72260e9f6179
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593397"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Hinzufügen von Authentifizierung zu Ihrer Xamarin Forms-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

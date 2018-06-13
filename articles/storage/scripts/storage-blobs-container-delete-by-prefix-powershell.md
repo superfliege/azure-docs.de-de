@@ -1,12 +1,12 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Löschen von Containern nach Präfix | Microsoft-Dokumentation"
-description: "Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens."
+title: Azure PowerShell-Skriptbeispiel – Löschen von Containern nach Präfix | Microsoft-Dokumentation
+description: Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/29/2017
+ms.locfileid: "25983897"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens
 

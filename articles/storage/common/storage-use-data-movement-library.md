@@ -1,12 +1,12 @@
 ---
-title: "Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek | Microsoft-Dokumentation"
+title: Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek | Microsoft-Dokumentation
 description: Verwenden Sie die Data Movement-Bibliothek zum Verschieben oder Kopieren von Daten in oder aus Blob- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/02/2018
+ms.locfileid: "27564738"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
 

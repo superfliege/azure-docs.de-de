@@ -1,11 +1,11 @@
 ---
 title: Fehlerbehandlung bei Azure API Management-Richtlinien | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie auf Fehlerbedingungen reagieren, die bei der Verarbeitung von Anforderungen in Azure API Management auftreten können."
+description: Erfahren Sie, wie Sie auf Fehlerbedingungen reagieren, die bei der Verarbeitung von Anforderungen in Azure API Management auftreten können.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128225"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 Mit Azure API Management können Herausgeber auf Fehlerbedingungen reagieren, die bei der Verarbeitung von Anforderungen im Proxy auftreten können, indem sie ein `ProxyError`-Objekt bereitstellen. Der Zugriff auf das Objekt `ProxyError` erfolgt über die Eigenschaft [context.LastError](api-management-policy-expressions.md#ContextVariables) und kann von Richtlinien im Richtlinienabschnitt `on-error` verwendet werden. Dieses Thema enthält eine Referenz für die Fehlerbehandlungsfunktionen in Azure API Management.  

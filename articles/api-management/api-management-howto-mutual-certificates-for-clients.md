@@ -1,11 +1,11 @@
 ---
-title: "Sichern von APIs über die Clientzertifikatauthentifizierung in API Management – Azure API Management | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie den Zugriff auf APIs mithilfe von Clientzertifikaten sichern können."
+title: Sichern von APIs über die Clientzertifikatauthentifizierung in API Management – Azure API Management | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff auf APIs mithilfe von Clientzertifikaten sichern können.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26406742"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Sichern von APIs über eine Clientzertifikatauthentifizierung in API Management
 

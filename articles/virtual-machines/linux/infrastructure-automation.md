@@ -1,5 +1,5 @@
 ---
-title: "Verwenden von Infrastrukturautomatisierungstools für Linux-VMs in Azure | Microsoft-Dokumentation"
+title: Verwenden von Infrastrukturautomatisierungstools für Linux-VMs in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie mit Infrastrukturautomatisierungstools wie Ansible, Chef, Puppet, Terraform und Packer virtuelle Linux-Computer in Azure erstellt und verwaltet werden.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -7,7 +7,7 @@ author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
@@ -20,5 +20,6 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26692859"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

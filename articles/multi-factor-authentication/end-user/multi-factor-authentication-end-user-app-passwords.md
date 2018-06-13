@@ -1,8 +1,8 @@
 ---
-title: "Verwenden von App-Kennwörtern in Azure MFA | Microsoft-Dokumentation"
-description: "Auf dieser Seite finden Benutzer Informationen zu App-Kennwörtern und zu deren Verwendung im Zusammenhang mit Azure MFA."
+title: Verwenden von App-Kennwörtern in Azure MFA | Microsoft-Dokumentation
+description: Auf dieser Seite finden Benutzer Informationen zu App-Kennwörtern und zu deren Verwendung im Zusammenhang mit Azure MFA.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700349"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?
 Bestimmte Nicht-Browser-Apps, z. B. der systemeigene E-Mail-Client von Apple, der Exchange Active Sync verwendet, unterstützen derzeit keine Multi-Factor Authentication. Die Multi-Factor Authentication wird pro Benutzer aktiviert. Wenn die Multi-Factor Authentication für einen bestimmten Benutzer aktiviert wurde, können die betreffenden Nicht-Browser-Apps von diesem Benutzer nicht verwendet werden. Um dennoch eine Authentifizierung zu ermöglichen, wird ein App-Kennwort festgelegt. Wenn Sie die Multi-Factor Authentication über Richtlinien zum bedingten Zugriff und nicht über die MFA pro Benutzer erzwingen, können Sie keine Anwendungskennwörter erstellen. Anwendungen, die Richtlinien zum bedingten Zugriff für die Zugriffskontrolle verwenden, benötigen keine Anwendungskennwörter.

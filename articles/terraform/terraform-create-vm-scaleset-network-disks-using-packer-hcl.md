@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
-description: "Verwenden Sie Terraform, um eine Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image zu konfigurieren und mit einer Version zu versehen – einschließlich eines virtuellen Netzwerks und verwalteter angefügter Datenträger."
+description: Verwenden Sie Terraform, um eine Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image zu konfigurieren und mit einer Version zu versehen – einschließlich eines virtuellen Netzwerks und verwalteter angefügter Datenträger.
 keywords: Terraform, DevOps, Skalierungsgruppe, virtueller Computer, Netzwerk, Speicher, Module, benutzerdefinierte Images, Packer
 author: VaijanathB
 ms.author: tarcher
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23655392"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
 

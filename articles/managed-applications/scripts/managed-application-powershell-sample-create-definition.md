@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Beispielskript – Erstellen einer Definition für die verwaltete Anwendung | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Erstellen einer Definition für die verwaltete Anwendung"
+title: Azure PowerShell-Beispielskript – Erstellen einer Definition für die verwaltete Anwendung | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Erstellen einer Definition für die verwaltete Anwendung
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636990"
 ---
 # <a name="create-a-managed-application-definition-with-powershell"></a>Erstellen einer Definition für die verwaltete Anwendung mit PowerShell
 

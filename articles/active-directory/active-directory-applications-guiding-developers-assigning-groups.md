@@ -1,11 +1,11 @@
 ---
 title: Zuweisen von Gruppen zu Azure AD-Apps | Microsoft-Dokumentation
-description: "Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen"
+description: Informationen zum Implementieren der Zuweisung von Gruppen für Azure-Anwendungen
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kgremban
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 29b5ba89-a1c7-4f1f-a294-248a40106617
 ms.service: active-directory
 ms.workload: identity
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26597143"
 ---
 # <a name="assign-azure-active-directory-groups-to-an-application"></a>Zuweisen von Azure Active Directory-Gruppen zu einer Anwendung
 Bevor Sie einer Anwendung Benutzer und Gruppen zuweisen können, müssen Sie die Benutzerzuweisung erfordern. Informationen zum Erfordern der Benutzerzuweisung finden Sie im Artikel zum [Erfordern der Benutzerzuweisung](active-directory-applications-guiding-developers-requiring-user-assignment.md) .

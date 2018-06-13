@@ -1,13 +1,13 @@
 ---
-title: "Produktnamen und Serviceplanbezeichner für die Lizenzierung in Azure Active Directory | Microsoft-Dokumentation"
+title: Produktnamen und Serviceplanbezeichner für die Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
 description: Bezeichnerzuordnung zum Verwalten der Azure AD-Lizenzierung im Azure-Portal, im Office 365-Portal, in PowerShell oder in Microsoft Graph
 services: active-directory
-keywords: "Servicepläne für die Azure Active Directory-Lizenzierung"
-documentationcenter: 
+keywords: Servicepläne für die Azure Active Directory-Lizenzierung
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609327"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Produktnamen und Serviceplanbezeichner für die Lizenzierung
 
