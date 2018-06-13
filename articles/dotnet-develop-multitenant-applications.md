@@ -1,11 +1,11 @@
 ---
-title: "Muster für mehrinstanzenfähige Webanwendungen | Microsoft-Dokumentation"
-description: "Hier finden Sie Übersichten über die Architektur und Entwurfsmuster, die beschreiben, wie Sie eine mehrinstanzenfähige Webanwendung in Azure implementieren."
-services: 
+title: Muster für mehrinstanzenfähige Webanwendungen | Microsoft-Dokumentation
+description: Hier finden Sie Übersichten über die Architektur und Entwurfsmuster, die beschreiben, wie Sie eine mehrinstanzenfähige Webanwendung in Azure implementieren.
+services: ''
 documentationcenter: .net
 author: wadepickett
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 4f0281d2-1555-42b0-a99d-1222fade0b0f
 ms.service: active-directory
 ms.workload: identity
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23013025"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
 Eine mehrinstanzenfähige Anwendung ist eine gemeinsame Ressource, mit der unterschiedliche Benutzer, oder "Mandanten", die Anwendung so anzeigen können, als handele es sich um ihre eigene. Ein typisches Szenario für eine mehrinstanzenfähige Anwendung ist, wenn alle Benutzer das Benutzererlebnis individualisieren möchten, aber ansonsten die gleichen grundlegenden Geschäftsanforderungen haben. Beispiele für große mehrinstanzenfähige Anwendungen sind Office 365, Outlook.com und visualstudio.com.

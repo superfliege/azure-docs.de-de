@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29817002"
 ---
 Bei der Bereitstellung von Ressourcen in Azure sind Sie äußerst flexibel in Bezug auf die bereitzustellenden Ressourcentypen sowie den Speicherort und die Einrichtung der Ressourcen. Durch diese Flexibilität können jedoch mehr Optionen bereitgestellt werden, als Sie in Ihrer Organisation zulassen möchten. Bei der Bereitstellung von Ressourcen in Azure stellen Sie unter Umständen folgende Überlegungen an:
 

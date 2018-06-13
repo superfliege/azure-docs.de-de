@@ -1,11 +1,11 @@
 ---
-title: "Einführung in die App Service-Umgebung v1"
-description: "Hier finden Sie Informationen zur App Service-Umgebung v1. Diese Umgebung bietet sichere, in ein VNET eingebundene, dedizierte Skalierungseinheiten für die App-Ausführung."
+title: Einführung in die App Service-Umgebung v1
+description: Hier finden Sie Informationen zur App Service-Umgebung v1. Diese Umgebung bietet sichere, in ein VNET eingebundene, dedizierte Skalierungseinheiten für die App-Ausführung.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986695"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Einführung in die App Service-Umgebung v1
 

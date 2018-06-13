@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über virtuelle Windows-Computer | Microsoft-Dokumentation"
-description: "Enthält hilfreiche Informationen zur Übersicht über virtuelle Windows-Computer im Azure-Portal."
+title: Übersicht über virtuelle Windows-Computer | Microsoft-Dokumentation
+description: Enthält hilfreiche Informationen zur Übersicht über virtuelle Windows-Computer im Azure-Portal.
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073859"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 

@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit der Azure-CDN-Bibliothek für .NET | Microsoft Docs"
+title: Erste Schritte mit der Azure-CDN-Bibliothek für .NET | Microsoft Docs
 description: Erfahren Sie, wie Sie in Visual Studio .NET-Anwendungen zum Verwalten von Azure CDN schreiben.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "22998175"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Erste Schritte mit der Azure CDN-Entwicklung
 > [!div class="op_single_selector"]
@@ -50,7 +51,7 @@ Das Projekt soll einige Azure-Bibliotheken verwenden, die in NuGet-Paketen entha
 1. Klicken Sie im Menü **Extras** auf **NuGet-Paket-Manager** und danach auf **Paket-Manager-Konsole**.
    
     ![Verwalten von NuGet-Paketen](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. Führen Sie in der Paket-Manager-Konsole den folgenden Befehl aus, um die **Active Directory Authentication Library (ADAL)**zu installieren:
+2. Führen Sie in der Paket-Manager-Konsole den folgenden Befehl aus, um die **Active Directory Authentication Library (ADAL)** zu installieren:
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. Führen Sie den folgenden Befehl aus, um die **Azure CDN-Verwaltungsbibliothek**zu installieren:

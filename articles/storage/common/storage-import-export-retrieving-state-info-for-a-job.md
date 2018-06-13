@@ -1,11 +1,11 @@
 ---
-title: "Abrufen von Statusinformationen für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation"
-description: "Informationen zum Abrufen von Statusinformationen für Aufträge des Microsoft Azure Import/Export-Diensts."
+title: Abrufen von Statusinformationen für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation
+description: Informationen zum Abrufen von Statusinformationen für Aufträge des Microsoft Azure Import/Export-Diensts.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059905"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Abrufen von Statusinformationen für einen Import/Export-Auftrag
 Sie können den Vorgang [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) zum Abrufen von Informationen zu Import- und Exportaufträgen aufrufen. Die zurückgegebenen Informationen enthalten:

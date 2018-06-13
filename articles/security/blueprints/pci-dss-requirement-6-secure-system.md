@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895417"
 ---
 # <a name="secure-system-requirements-for-pci-dss-compliant-environments"></a>Anforderungen für ein sicheres System für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-6"></a>PCI-DSS-Anforderung 6

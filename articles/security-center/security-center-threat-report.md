@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896111"
 ---
 # <a name="azure-security-center-threat-intelligence-report"></a>Azure Security Center-Bericht mit Bedrohungsinformationen
 In diesem Dokument erfahren Sie, wie Sie anhand von Azure Security Center-Berichten mit Bedrohungsinformationen weitere Informationen zu einer Bedrohung ermitteln können, die eine Sicherheitswarnung generiert hat.
