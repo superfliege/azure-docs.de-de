@@ -1,13 +1,13 @@
 ---
-title: "Beheben der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ | Microsoft-Dokumentation"
-description: "Behebung der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihrer Web-App, die im Azure App Service gehostet wird."
+title: Beheben der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ | Microsoft-Dokumentation
+description: Behebung der Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihrer Web-App, die im Azure App Service gehostet wird.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "„502 Ungültiges Gateway“, „503 Dienst nicht verfügbar“, Fehler 503, Fehler 502"
+keywords: „502 Ungültiges Gateway“, „503 Dienst nicht verfügbar“, Fehler 503, Fehler 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22986255"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihren Azure-Web-Apps
 „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer Web-App, die im [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.

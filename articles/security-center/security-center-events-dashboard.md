@@ -1,11 +1,11 @@
 ---
-title: "Überwachen und Verarbeiten von Sicherheitsereignissen in Azure Security Center | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie mit dem Security Center-Dashboard für Ereignisse Sicherheitsereignisse von Ihren virtuellen Azure-Computern und Azure-fremden Computern anzeigen können."
+title: Überwachen und Verarbeiten von Sicherheitsereignissen in Azure Security Center | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit dem Security Center-Dashboard für Ereignisse Sicherheitsereignisse von Ihren virtuellen Azure-Computern und Azure-fremden Computern anzeigen können.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040655"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Überwachen und Verarbeiten von Sicherheitsereignissen in Azure Security Center
 Das Ereignis-Dashboard enthält eine Übersicht über die Anzahl der im Laufe der Zeit erfassten Sicherheitsereignisse sowie eine Liste relevanter Ereignisse, die unter Umständen Ihre Aufmerksamkeit erfordern.  
