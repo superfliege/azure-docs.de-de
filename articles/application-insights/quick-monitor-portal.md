@@ -1,8 +1,8 @@
 ---
-title: "Überwachen Ihrer ASP.NET-Web-App mit Azure Application Insights | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet Informationen zum schnellen Einrichten einer ASP.NET-Web-App für die Überwachung mit Application Insights."
+title: Überwachen Ihrer ASP.NET-Web-App mit Azure Application Insights | Microsoft-Dokumentation
+description: Dieser Artikel bietet Informationen zum schnellen Einrichten einer ASP.NET-Web-App für die Überwachung mit Application Insights.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/14/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23660548"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 

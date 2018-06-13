@@ -1,6 +1,6 @@
 ---
 title: Hilfedokumentation zu virtuellen Linux-Computern | Microsoft-Dokumentation
-description: "Enthält hilfreiche Übersichtsinformationen zu virtuellen Linux-Computern im Azure-Portal."
+description: Enthält hilfreiche Übersichtsinformationen zu virtuellen Linux-Computern im Azure-Portal.
 services: virtual-machines-linux
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24057653"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentation zu virtuellen Linux-Computern
 

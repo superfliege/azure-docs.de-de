@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage Premium: Entwurf für hohe Leistung auf Windows-VMs | Microsoft-Dokumentation"
-description: "Entwerfen Sie Hochleistungsanwendungen mithilfe von Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden."
+title: 'Azure Storage Premium: Entwurf für hohe Leistung auf Windows-VMs | Microsoft-Dokumentation'
+description: Entwerfen Sie Hochleistungsanwendungen mithilfe von Azure Storage Premium. Storage Premium bietet Datenträgerunterstützung für hohe Leistung mit geringer Latenz für E/A-intensive Workloads, die auf virtuellen Azure-Computern ausgeführt werden.
 services: virtual-machines-windows
 documentationcenter: na
 author: aungoo-msft
@@ -19,5 +19,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23667032"
 ---
 [!INCLUDE [virtual-machines-common-premium-storage-performance.md](../../../includes/virtual-machines-common-premium-storage-performance.md)]
