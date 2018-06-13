@@ -1,6 +1,6 @@
 ---
-title: "Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal | Microsoft-Dokumentation"
-description: "Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über das Portal"
+title: Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal | Microsoft-Dokumentation
+description: Informationen zum Verwalten Ihres Abonnements in Azure Deutschland über das Portal
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647067"
 ---
 # <a name="connect-to-azure-germany-by-using-the-azure-portal"></a>Herstellen einer Verbindung mit Azure Deutschland über das Azure-Portal
 
