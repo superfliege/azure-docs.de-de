@@ -75,6 +75,10 @@
               href: devtest-lab-use-resource-manager-template.md
             - name: Neustarten eines virtuellen Computers
               href: devtest-lab-restart-vm.md
+            - name: Ändern der Größe eines virtuellen Computers
+              href: devtest-lab-resize-vm.md
+            - name: Erneutes Bereitstellen eines virtuellen Computers
+              href: devtest-lab-redeploy-vm.md
         - name: Verwenden von Umgebungen in einem Lab
           items:
             - name: Erstellen einer Umgebung

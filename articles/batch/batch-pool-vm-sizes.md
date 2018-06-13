@@ -1,14 +1,14 @@
 ---
-title: "Auswählen von VM-Größen für Azure Batch-Pools | Microsoft-Dokumentation"
-description: "Wählen aus den verfügbaren VM-Größen für Computeknoten in Azure Batch-Pools"
+title: Auswählen von VM-Größen für Azure Batch-Pools | Microsoft-Dokumentation
+description: Wählen aus den verfügbaren VM-Größen für Computeknoten in Azure Batch-Pools
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29763944"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 

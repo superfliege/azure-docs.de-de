@@ -2,7 +2,7 @@
 title: Speicherkonten in Azure Stack | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein Azure Stack-Speicherkonto erstellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733722"
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Speicherkonten in Azure Stack
 Speicherkonten enthalten Blob-und Tabellenspeicherdienste und den eindeutigen Namespace für Ihre Speicherdatenobjekte. Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Speicherkontobesitzer verfügbar.

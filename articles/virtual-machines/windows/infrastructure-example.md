@@ -21,6 +21,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809868"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Windows-VMs
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich Namenskonventionen, Verfügbarkeit, virtuelle Netzwerke und Lastenausgleiche relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
@@ -53,7 +54,7 @@ Alle oben aufgeführten Elemente werden anhand der folgenden Namenskonventionen 
 
 * Adventure Works Cycles verwendet **[IT-Workload]-[Standort]-[Azure-Ressource]** als Präfix.
   * In diesem Beispiel ist **azos** (Azure-Onlineshop) der Name der IT-Workload und **use** (USA, Osten 2) der Standort.
-* Virtuelle Netzwerke folgen der Konvention „AZOS-USE-VN**[Nummer]**“.
+* Virtuelle Netzwerke folgen der Konvention „AZOS-USE-VN **[Nummer]**“.
 * Verfügbarkeitsgruppen folgen der Konvention „azos-use-as-**[Rolle]**“.
 * Die Namen der virtuellen Computer folgen der Konvention „azos-use-vm-**[VM-Name]**“.
 
