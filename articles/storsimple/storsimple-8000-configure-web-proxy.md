@@ -1,12 +1,12 @@
 ---
-title: "Einrichten eines Webproxys für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie Webproxyeinstellungen für Ihr StorSimple-Gerät mithilfe von Windows PowerShell für StorSimple konfigurieren."
+title: Einrichten eines Webproxys für ein Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Webproxyeinstellungen für Ihr StorSimple-Gerät mithilfe von Windows PowerShell für StorSimple konfigurieren.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108508"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurieren des Webproxys für Ihr StorSimple-Gerät
 
@@ -62,7 +63,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
    
     `Invoke-HcsSetupWizard`
 2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, übernehmen Sie alle konfigurierten Netzwerkeinstellungen, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja**ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
-3. Geben Sie als Webproxy-URL ****die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
+3. Geben Sie als Webproxy-URL **** die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Beispiele – verwaltete Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Azure PowerShell-Beispiele – verwaltete Azure-Anwendungen"
+title: Azure PowerShell-Beispiele – verwaltete Azure-Anwendungen | Microsoft-Dokumentation
+description: Azure PowerShell-Beispiele – verwaltete Azure-Anwendungen
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23636980"
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 

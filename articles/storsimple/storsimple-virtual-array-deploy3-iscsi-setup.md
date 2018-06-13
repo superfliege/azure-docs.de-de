@@ -1,11 +1,11 @@
 ---
 title: Setup von Microsoft Azure StorSimple Virtual Array als iSCSI-Server | Microsoft Docs
-description: "Es wird beschrieben, wie Sie die anfängliche Einrichtung durchführen, den StorSimple-iSCSI-Server registrieren und die Geräteinstallation durchführen."
+description: Es wird beschrieben, wie Sie die anfängliche Einrichtung durchführen, den StorSimple-iSCSI-Server registrieren und die Geräteinstallation durchführen.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 4db116d1-978b-48e8-b572-a719a8425dbc
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23112278"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 

@@ -1,11 +1,11 @@
 ---
-title: "Zuweisen von MSI-Zugriff zu einer Azure-Ressource über das Azure-Portal"
-description: "Ausführliche Anweisungen für das Zuweisen von MSI zu einer Ressource und das Zuweisen des Zugriffs für eine andere Ressource über das Azure-Portal."
+title: Zuweisen von MSI-Zugriff zu einer Azure-Ressource über das Azure-Portal
+description: Ausführliche Anweisungen für das Zuweisen von MSI zu einer Ressource und das Zuweisen des Zugriffs für eine andere Ressource über das Azure-Portal.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28978836"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des MSI-Zugriffs (MSI = Managed Service Identity, verwaltete Dienstidentität) zu einer Ressource über das Azure-Portal
 

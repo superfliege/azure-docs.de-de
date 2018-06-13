@@ -5,7 +5,7 @@ services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23111288"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Verwenden Sie StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs
 
@@ -91,7 +92,7 @@ Verwenden Sie das folgende Verfahren, um ein Duplikat (Klon) eines Volumes oder 
    
    1. Geben Sie im Textfeld **Name** einen Namen für das geklonte Volume ein. Dieser Name wird im Knoten **Volumes** angezeigt. 
    2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste.
-   3. (Optional) Wählen Sie **Ordner (NTFS)**aus, und geben Sie einen Ordnerpfad ein oder klicken Sie auf „Durchsuchen“, und wählen dann einen Speicherort für den Ordner. 
+   3. (Optional) Wählen Sie **Ordner (NTFS)** aus, und geben Sie einen Ordnerpfad ein oder klicken Sie auf „Durchsuchen“, und wählen dann einen Speicherort für den Ordner. 
    4. Klicken Sie auf **Erstellen**.
 5. Wenn der Klonvorgang abgeschlossen ist, müssen Sie das geklonte Volume initialisieren. Starten Sie den Server-Manager, und starten Sie dann die Datenträgerverwaltung. Ausführliche Anweisungen finden Sie unter [Laden von Volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Nach der Initialisierung wird das Volume unter dem Knoten **Volumes** im Fensterbereich **Bereich** aufgeführt. Wenn Sie das aufgeführte Volume nicht erscheint, aktualisieren Sie die Liste der Volumes (mit der rechten Maustaste auf den Knoten **Volumes** klicken, und dann auf **Aktualisieren**).
 
@@ -124,7 +125,7 @@ Bevor Sie loslegen, stellen Sie sicher, dass Sie über eine aktuelle Sicherung d
    
    1. Geben Sie im Textfeld **Name** einen Namen für das geklonte Volume ein. Dieser Name wird im Knoten **Volumes** angezeigt. 
    2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste. 
-   3. (Optional) Wählen Sie **Ordner (NTFS)**aus, und geben Sie einen Ordnerpfad ein, oder klicken Sie auf **Durchsuchen**, und wählen dann einen Speicherort für den Ordner. 
+   3. (Optional) Wählen Sie **Ordner (NTFS)** aus, und geben Sie einen Ordnerpfad ein, oder klicken Sie auf **Durchsuchen**, und wählen dann einen Speicherort für den Ordner. 
    4. Klicken Sie auf **Erstellen**. 
 5. Wenn der Klonvorgang abgeschlossen ist, müssen Sie das geklonte Volume initialisieren. Starten Sie den Server-Manager, und starten Sie dann die Datenträgerverwaltung. Ausführliche Anweisungen finden Sie unter [Laden von Volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Nach der Initialisierung wird das Volume unter dem Knoten **Volumes** im Fensterbereich **Bereich** aufgeführt. 
    
