@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die Azure Event Hubs-API | Microsoft-Dokumentation"
-description: "Übersicht über verfügbare Azure Event Hubs-APIs"
+title: Übersicht über die Azure Event Hubs-API | Microsoft-Dokumentation
+description: Übersicht über verfügbare Azure Event Hubs-APIs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3f221a0c-182d-4e39-9f3d-3a3c16c5c6ed
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/28/2017
+ms.locfileid: "25957526"
 ---
 # <a name="available-event-hubs-apis"></a>Verfügbare Event Hubs-APIs
 
