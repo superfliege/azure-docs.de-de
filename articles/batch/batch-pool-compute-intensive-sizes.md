@@ -1,12 +1,12 @@
 ---
 title: Verwenden rechenintensiver Azure-VMs mit Batch | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie die Vorteile RDMA-fähiger oder GPU-fähiger VM-Größen in Azure Batch-Pools nutzen."
+description: Erfahren Sie, wie Sie die Vorteile RDMA-fähiger oder GPU-fähiger VM-Größen in Azure Batch-Pools nutzen.
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762440"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 

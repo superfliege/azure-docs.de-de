@@ -1,11 +1,11 @@
 ---
-title: "Hinzufügen von Authentifizierung auf iOS mit Azure Mobile Apps"
-description: "Erfahren Sie, wie Sie Azure Mobile Apps zum Authentifizieren Ihrer iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
+title: Hinzufügen von Authentifizierung auf iOS mit Azure Mobile Apps
+description: Erfahren Sie, wie Sie Azure Mobile Apps zum Authentifizieren Ihrer iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592693"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hinzufügen der Authentifizierung zu Ihrer iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

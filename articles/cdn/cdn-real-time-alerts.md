@@ -1,11 +1,11 @@
 ---
 title: Echtzeitwarnungen in Azure CDN | Microsoft-Dokumentation
-description: "Echtzeitwarnungen in Microsoft Azure CDN. Echtzeitwarnungen informieren über die Leistung der Endpunkte in Ihrem CDN-Profil."
+description: Echtzeitwarnungen in Microsoft Azure CDN. Echtzeitwarnungen informieren über die Leistung der Endpunkte in Ihrem CDN-Profil.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1e85b809-e1a9-4473-b835-69d1b4ed3393
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22998325"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Echtzeitwarnungen in Microsoft Azure CDN
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]

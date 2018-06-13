@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit Azure Mobile Apps für Xamarin.Android-Apps"
-description: "Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Azure Mobile Apps für die Xamarin Android-Entwicklung."
+title: Erste Schritte mit Azure Mobile Apps für Xamarin.Android-Apps
+description: Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Azure Mobile Apps für die Xamarin Android-Entwicklung.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592778"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Erstellen einer Xamarin.Android-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
