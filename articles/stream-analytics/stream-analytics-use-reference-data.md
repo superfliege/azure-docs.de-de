@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192042"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 Verweisdaten (auch als Nachschlagetabellen bezeichnet) sind ein begrenzter Satz von Daten, der statisch ist oder sich nur langsam ändert und der für eine Suche oder Korrelation mit Ihrem Datenstrom verwendet wird. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. Stream Analytics verwendet Azure Blob Storage als Speicherschicht für Verweisdaten, und mit Azure Data Factory können Verweisdaten aus einer [beliebigen Anzahl von cloudbasierten und lokalen Datenspeichern](../data-factory/copy-activity-overview.md) transformiert und/oder in Azure Blob Storage kopiert werden, um sie als Verweisdaten zu verwenden. Referenzdaten werden als (in der Eingabekonfiguration definierte) Blobsequenz in aufsteigender Reihenfolge nach dem im Blobnamen angegebenen Datums- bzw. Uhrzeitwert modelliert. Hinzufügungen sind jeweils **nur** am Sequenzende möglich. Hierzu muss der verwendete Datums-/Uhrzeitwert den Wert des letzten Blobs in der Sequenz **übersteigen**.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781899"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs
 Wenn Sie bereits [Ihren ersten virtuellen Computer erstellt haben](devtest-lab-create-first-vm.md), haben Sie dazu wahrscheinlich ein vorkonfiguriertes [Marketplace-Image](devtest-lab-configure-marketplace-images.md) verwendet. Wenn Sie Ihrem Lab nun weitere virtuelle Computer hinzufügen möchten, können Sie auch eine *Basis* auswählen, die entweder ein [benutzerdefiniertes Image](devtest-lab-create-template.md) oder eine [Formel](devtest-lab-manage-formulas.md) ist. Dieses Tutorial führt Sie durch die Verwendung des Azure-Portals zum Hinzufügen eines virtuellen Computers zu einem Lab in DevTest Labs.

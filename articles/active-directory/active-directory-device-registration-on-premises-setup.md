@@ -21,6 +21,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33764205"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.

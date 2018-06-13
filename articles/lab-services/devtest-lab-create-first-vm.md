@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781819"
 ---
 # <a name="create-your-first-vm-in-a-lab-in-azure-devtest-labs"></a>Erstellen Ihres ersten virtuellen Computers in einem Lab in Azure DevTest Labs
 

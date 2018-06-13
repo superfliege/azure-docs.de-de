@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31604057"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>T-SQL-Anweisungen, die in Azure SQL Data Warehouse unterstützt werden
 Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
