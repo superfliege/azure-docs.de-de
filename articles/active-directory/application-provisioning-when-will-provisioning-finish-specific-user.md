@@ -1,11 +1,11 @@
 ---
 title: Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann | Microsoft-Dokumentation
-description: "Ermitteln, wann ein ausgesprochen wichtiger Benutzer auf eine Anwendung zugreifen kann, die Sie für die Benutzerbereitstellung mit Azure AD konfiguriert haben"
+description: Ermitteln, wann ein ausgesprochen wichtiger Benutzer auf eine Anwendung zugreifen kann, die Sie für die Benutzerbereitstellung mit Azure AD konfiguriert haben
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26613622"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann
 Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (in der Regel alle 10 Minuten) automatisch Benutzerkonten in einer App, die auf Dingen wie [Benutzer- und Gruppenzuordnung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) basiert, bereit und aktualisiert diese.

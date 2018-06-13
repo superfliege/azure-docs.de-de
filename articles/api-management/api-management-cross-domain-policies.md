@@ -1,11 +1,11 @@
 ---
-title: "Domänenübergreifende Richtlinien in Azure API Management | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die domänenübergreifenden Richtlinien, die für die Verwendung in Azure API Management verfügbar sind."
+title: Domänenübergreifende Richtlinien in Azure API Management | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die domänenübergreifenden Richtlinien, die für die Verwendung in Azure API Management verfügbar sind.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129033"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

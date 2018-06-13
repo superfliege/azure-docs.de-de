@@ -1,11 +1,11 @@
 ---
-title: "Dokumentation für Azure Biztalk Services – Tutorials | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie die Cloud mithilfe von BizTalk Services in die lokale Umgebung und in Branchenanwendungen integrieren. Dabei wird die Integration für SAP, Oracle EBS, SQL Server und PeopleSoft behandelt."
+title: Dokumentation für Azure Biztalk Services – Tutorials | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie die Cloud mithilfe von BizTalk Services in die lokale Umgebung und in Branchenanwendungen integrieren. Dabei wird die Integration für SAP, Oracle EBS, SQL Server und PeopleSoft behandelt.
 services: biztalk-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: biztalk-services
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26625095"
 ---
 # <a name="biztalk-services-documentation"></a>BizTalk Services-Dokumentation
 

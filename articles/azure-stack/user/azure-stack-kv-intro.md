@@ -1,11 +1,11 @@
 ---
-title: "Einführung in Azure Stack Key Vault | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Azure Stack Key Vault Schlüssel und Geheimnisse verwaltet"
+title: Einführung in Azure Stack Key Vault | Microsoft-Dokumentation
+description: Erfahren Sie, wie Azure Stack Key Vault Schlüssel und Geheimnisse verwaltet
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 70f1684a-3fbb-4cd1-bf29-9f9882e98fe9
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26636725"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Einführung in Key Vault in Azure Stack
 

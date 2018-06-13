@@ -1,8 +1,8 @@
 ---
 title: Benutzerdefinierte Felder in Azure Log Analytics | Microsoft-Dokumentation
-description: "Mit dem Log Analytics-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von Log Analytics-Datensätzen eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis."
+description: Mit dem Log Analytics-Feature „Benutzerdefinierte Felder“ können Sie auf der Grundlage von Log Analytics-Datensätzen eigene durchsuchbare Felder erstellen, um die Eigenschaften gesammelter Datensätze zu erweitern.  Dieser Artikel beschreibt die Erstellung eines benutzerdefinierten Felds und enthält eine ausführliche exemplarische Vorgehensweise mit einem Beispielereignis.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030699"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Benutzerdefinierte Felder in Log Analytics
 Mit dem Feature **Benutzerdefinierte Felder** von Log Analytics können Sie vorhandene Datensätze in Log Analytics durch eigene durchsuchbare Felder erweitern.  Benutzerdefinierte Felder werden automatisch auf der Grundlage von Daten aufgefüllt, die aus anderen Eigenschaften im gleichen Datensatz extrahiert wurden.
