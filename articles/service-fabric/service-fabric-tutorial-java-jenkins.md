@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949836"
 ---
 # <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Tutorial: Einrichten einer Jenkins-Umgebung mit Service Fabric
 Dieses Tutorial ist der fünfte Teil einer Reihe. Hier erfahren Sie, wie unter Verwendung von Jenkins Upgrades für Ihre Anwendung bereitstellen. In diesem Tutorial werden das Service Fabric-Jenkins-Plug-In und ein GitHub-Repository mit der Voting-Anwendung verwendet, um die Anwendung in einem Cluster bereitzustellen. 

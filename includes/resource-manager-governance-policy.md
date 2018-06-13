@@ -13,6 +13,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29817008"
 ---
 [Azure-Richtlinien](/azure/azure-policy/) helfen Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Verwenden Sie Richtlinien, um die Kosten zu reduzieren, indem Sie die Bereitstellungsoptionen auf genehmigte Ressourcentypen und SKUs beschränken. Sie definieren die Regeln und Aktionen für Ihre Ressourcen, und diese Regeln werden während der Bereitstellung automatisch erzwungen. Sie können beispielsweise die Typen von Ressourcen steuern, die bereitgestellt werden. Sie können auch die zulässigen Standorte für Ressourcen eingrenzen. Einige Richtlinien verweigern bestimmte Aktionen, während andere Richtlinien die Überwachung einer Aktion festlegen.
 

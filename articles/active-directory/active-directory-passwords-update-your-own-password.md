@@ -1,9 +1,9 @@
 ---
-title: "Azure AD: Zurücksetzen Ihres Kennworts | Microsoft-Dokumentation"
-description: "Stellen Sie den Zugriff auf Ihr Geschäfts-, Schul- oder Unikonto mithilfe der Self-Service-Kennwortzurücksetzung wieder her."
+title: 'Azure AD: Zurücksetzen Ihres Kennworts | Microsoft-Dokumentation'
+description: Stellen Sie den Zugriff auf Ihr Geschäfts-, Schul- oder Unikonto mithilfe der Self-Service-Kennwortzurücksetzung wieder her.
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29463777"
 ---
 # <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 

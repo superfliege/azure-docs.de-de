@@ -1,11 +1,11 @@
 ---
-title: "Schätzen der Replikationskapazität in Azure | Microsoft-Dokumentation"
-description: "Anhand dieses Artikel können Sie die Kapazität bei der Replikation mit Azure Site Recovery abschätzen."
+title: Schätzen der Replikationskapazität in Azure | Microsoft-Dokumentation
+description: Anhand dieses Artikel können Sie die Kapazität bei der Replikation mit Azure Site Recovery abschätzen.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/12/2018
+ms.locfileid: "29875904"
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Planen der Kapazität für den Schutz von Hyper-V-VMs mit Site Recovery
 

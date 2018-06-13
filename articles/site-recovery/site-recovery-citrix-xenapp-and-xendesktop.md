@@ -1,11 +1,11 @@
 ---
 title: Replizieren einer Citrix XenDesktop- und and XenApp-Bereitstellung mit mehreren Schichten mit Azure Site Recovery | Microsoft-Dokumentation
-description: "In diesem Artikel werden das Schützen und Wiederherstellen von Citrix XenDesktop- und XenApp-Bereitstellungen mithilfe von Azure Site Recovery beschrieben."
+description: In diesem Artikel werden das Schützen und Wiederherstellen von Citrix XenDesktop- und XenApp-Bereitstellungen mithilfe von Azure Site Recovery beschrieben.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: 
+editor: ''
 ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559705"
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Replizieren einer Citrix XenApp- und and XenDesktop-Bereitstellung mit mehreren Schichten mit Azure Site Recovery
 

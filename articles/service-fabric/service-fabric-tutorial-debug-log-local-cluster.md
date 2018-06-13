@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949802"
 ---
 #  <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Tutorial: Debuggen einer in einem lokalen Service Fabric-Cluster bereitgestellten Java-Anwendung 
 Dieses Tutorial ist der zweite Teil einer Reihe. Hier erfahren Sie, wie Sie mithilfe von Eclipse einen Remotedebugger für die Service Fabric-Anwendung anfügen. Außerdem erfahren Sie, wie Sie Protokolle von den ausgeführten Anwendungen an einen geeigneten Speicherort für den Entwickler umleiten.
