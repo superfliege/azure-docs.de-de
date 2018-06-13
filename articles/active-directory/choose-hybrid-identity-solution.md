@@ -1,23 +1,24 @@
 ---
-title: "Auswählen einer Azure-Hybrididentitätslösung | Microsoft-Dokumentation"
-description: "Erhalten Sie grundlegende Informationen zu den verfügbaren Hybrididentitätslösungen und Empfehlungen, nach denen Sie für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance treffen können."
-keywords: 
+title: Auswählen einer Azure-Hybrididentitätslösung | Microsoft-Dokumentation
+description: Erhalten Sie grundlegende Informationen zu den verfügbaren Hybrididentitätslösungen und Empfehlungen, nach denen Sie für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance treffen können.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800736"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Hybrididentitätslösungen
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie synchronisierte Identitäten oder einen Identitätsverbund verwenden möchten. Mit synchronisierten Identitäten (und optional Kennworthashes) können Ihre Benutzer dasselbe Kennwort zum Zugreifen auf lokale und cloudbasierte Organisationsressourcen verwenden. Für die Anforderungen erweiterter Szenarien wie einmaliges Anmelden (Single-Sign-On, SSO) oder lokales MFA müssen Sie Active Directory-Verbunddienste (AD FS) für den Identitätsverbund bereitstellen. 

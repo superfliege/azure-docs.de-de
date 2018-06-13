@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811107"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-replication"></a>Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Replikation
 In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) eine Replikationsrichtlinie für die Replikation von VMware-VMs in Azure konfigurieren.

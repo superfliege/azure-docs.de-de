@@ -22,6 +22,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257530"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) ist ein Ziel für Geschäftsbenutzer zum Entdecken, Ausprobieren und Verwalten branchenspezifischer SaaS-Anwendungen (eigenständiges SaaS und Add-On zu vorhandenen SaaS-Produkten von Microsoft).

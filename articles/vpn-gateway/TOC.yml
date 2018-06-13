@@ -30,7 +30,7 @@
       href: vpn-gateway-highlyavailable.md
     - name: Informationen zu Point-to-Site-Verbindungen
       href: point-to-site-about.md
-    - name: Informationen zum Point-to-Site-Routing
+    - name: Informationen zu Point-to-Site-VPN-Routing
       href: vpn-gateway-about-point-to-site-routing.md
 - name: Anleitungen
   items:

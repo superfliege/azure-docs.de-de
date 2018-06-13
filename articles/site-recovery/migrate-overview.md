@@ -1,6 +1,6 @@
 ---
 title: Informationen zur Migration in Azure Site Recovery | Microsoft-Dokumentation
-description: "In diesem Artikel wird erläutert, wie Sie lokale Computer und Azure-VMs mithilfe des Azure Site Recovery-Diensts migrieren."
+description: In diesem Artikel wird erläutert, wie Sie lokale Computer und Azure-VMs mithilfe des Azure Site Recovery-Diensts migrieren.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811187"
 ---
 # <a name="about-migration"></a>Informationen zur Migration
 

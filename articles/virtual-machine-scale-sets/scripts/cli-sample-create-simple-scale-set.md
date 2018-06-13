@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246456"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Erstellen einer VM-Skalierungsgruppe mithilfe der Azure CLI 2.0
 Dieses Skript erstellt eine Azure-VM-Skalierungsgruppe mit einem Ubuntu-Betriebssystem und den dazugehörigen Netzwerkressourcen (einschließlich eines Lastenausgleichs). Nach dem Ausführen des Skripts können Sie über SSH auf die VM-Instanzen zugreifen.

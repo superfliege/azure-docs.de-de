@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30230645"
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>Erstellen einer PHP-Web-App in App Service unter Linux
 
