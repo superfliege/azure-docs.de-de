@@ -1,11 +1,11 @@
 ---
-title: "Erste Schritte mit der Authentifizierung für mobile Apps in Xamarin Android"
-description: "Erfahren Sie, wie Sie mobile Apps zum Authentifizieren Ihrer Xamarin Android-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
+title: Erste Schritte mit der Authentifizierung für mobile Apps in Xamarin Android
+description: Erfahren Sie, wie Sie mobile Apps zum Authentifizieren Ihrer Xamarin Android-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: panarasi
-editor: 
+editor: ''
 ms.assetid: 570fc12b-46a9-4722-b2e0-0d1c45fb2152
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595294"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hinzufügen der Authentifizierung zu Ihrer Xamarin.Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]

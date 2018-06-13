@@ -1,13 +1,13 @@
 ---
-title: "Registrieren für die Self-Service-Kennwortzurücksetzung – Azure Active Directory"
-description: "Registrieren von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung von Azure AD"
+title: Registrieren für die Self-Service-Kennwortzurücksetzung – Azure Active Directory
+description: Registrieren von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung von Azure AD
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460474"
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
 

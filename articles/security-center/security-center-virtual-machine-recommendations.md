@@ -1,11 +1,11 @@
 ---
-title: "Schützen Ihrer virtuellen Computer in Azure Security Center | Microsoft Docs"
+title: Schützen Ihrer virtuellen Computer in Azure Security Center | Microsoft Docs
 description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihrer virtuellen Computer sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27623497"
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Schützen Ihrer virtuellen Computer in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL und Anwendungen.
