@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905550"
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure CLI 1.0 und einer Azure Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer mithilfe von Azure CLI 1.0 und einer Azure Resource Manager-Vorlage erstellen. Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30906272"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Kontinuierliche Integration und Entwicklung mit Stream Analytics-Tools
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe der Azure Stream Analytics-Tools für Visual Studio einrichten.

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30929341"
 ---
 1. Wechseln Sie auf der Seite **Einstellungen** für Ihr virtuelles Netzwerk zu **DNS-Server**, und klicken Sie darauf, um die Seite **DNS-Server** zu öffnen.
 

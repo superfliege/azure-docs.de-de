@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31405944"
 ---
 # <a name="run-hive-queries-using-the-query-console"></a>Ausführen von Hive-Abfragen mithilfe der Abfragekonsole
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

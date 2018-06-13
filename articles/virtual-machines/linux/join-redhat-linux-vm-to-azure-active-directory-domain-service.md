@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912512"
 ---
 # <a name="join-a-redhat-linux-vm-to-an-azure-active-directory-domain-service"></a>Verknüpfen einer RedHat Linux-VM mit einer über Azure Active Directory Domain Services verwalteten Domäne
 

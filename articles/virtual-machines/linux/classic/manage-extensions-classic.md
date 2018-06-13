@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841451"
 ---
 # <a name="manage-virtual-machine-extensions"></a>Verwalten von Erweiterungen für virtuelle Computer
 Beschreibt, wie VM-Erweiterungen mit virtuellen Windows- oder Linux-Computern in Azure gesucht, hinzugefügt, geändert oder entfernt werden.

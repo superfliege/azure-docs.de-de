@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912228"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure
 In diesem Dokument wird das Konfigurieren von Logical Volume Manager (LVM) auf Ihrem virtuellen Azure-Computer erläutert. Es zwar möglich, LVM auf einem beliebigen, mit dem virtuellen Computer verbundenen Datenträger zu konfigurieren, bei den meisten Cloudimages wird LVM jedoch nicht auf dem Betriebssystemdatenträger konfiguriert. So werden Probleme mit doppelten Volumegruppen vermieden, wenn der Betriebssystemdatenträger einmal an einen anderen virtuellen Computer mit der gleichen Distribution und dem gleichen Typ angeschlossen wird, z.B. in einem Wiederherstellungsszenario. Es wird daher empfohlen, LVM nur auf den Datenträgern zu verwenden.
