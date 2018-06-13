@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156805"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Wo liegen die Unterschiede beim v2.0-Endpunkt?
 Wenn Sie mit Azure Active Directory vertraut sind oder in der Vergangenheit Apps in Azure AD integriert haben, gibt es möglicherweise einige Unterschiede im v2.0-Endpunkt, die Sie nicht erwarten. In diesem Dokument werden die Unterschiede zu Ihrem Verständnis erläutert.

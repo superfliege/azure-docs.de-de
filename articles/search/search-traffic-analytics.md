@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777258"
 ---
 # <a name="what-is-search-traffic-analytics"></a>Was ist „Datenverkehrsanalyse durchsuchen“?
 „Datenverkehrsanalyse durchsuchen“ ist ein Muster für das Implementieren einer Feedbackschleife für Ihren Suchdienst. Dieses Muster beschreibt die erforderlichen Daten, und wie Sie sie mit Application Insights sammeln, einem branchenführenden Tool für die Überwachung von Diensten auf mehrere Plattformen.

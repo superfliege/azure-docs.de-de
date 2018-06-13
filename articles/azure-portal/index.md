@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163845"
 ---
 # <a name="azure-portal-documentation"></a>Dokumentation zum Azure-Portal
 Erfahren Sie mehr über die Features, die zum Bereitstellen von Ressourcen im Azure-Portal verwendet werden können. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Azure-Ressourcen bereitstellen, verwalten und überwachen.

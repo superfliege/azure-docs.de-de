@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527452"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrieren von SQL-Code nach SQL Data Warehouse
 Dieser Artikel beschreibt Codeänderungen, die Sie sicherlich benötigen, wenn Sie Ihren Code von einer anderen Datenbank zu SQL Data Warehouse migrieren. Mit einigen SQL Data Warehouse-Funktionen kann die Leistung erheblich verbessert werden, da sie speziell für eine verteilte Ausführung entwickelt wurden. Um jedoch eine gleichbleibende Leistung und Skalierung zu gewährleisten, sind einige Funktionen auch nicht verfügbar.

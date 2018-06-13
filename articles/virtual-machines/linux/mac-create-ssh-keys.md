@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31602629"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Schnelle Schritte: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder Linux-Host, dem Windows-Subsystem für Linux und anderen Tools ausführen, die OpenSSH unterstützen. 

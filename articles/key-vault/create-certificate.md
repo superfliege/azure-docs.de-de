@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34058397"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 

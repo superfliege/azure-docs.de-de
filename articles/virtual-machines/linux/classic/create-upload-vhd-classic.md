@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841893"
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Erstellen und Hochladen einer virtuellen Festplatte, die das Linux-Betriebssystem enthält
 > [!IMPORTANT] 

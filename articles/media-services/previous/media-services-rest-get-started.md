@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33786089"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]

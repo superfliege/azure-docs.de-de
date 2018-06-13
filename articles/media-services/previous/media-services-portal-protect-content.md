@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33785879"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
  Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt sichern, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie Inhalte dynamisch mit AES (Advanced Encryption Standard) unter Verwendung von 128-Bit-Verschlüsselungsschlüsseln verschlüsselt übermitteln. Sie können es auch mit herkömmlicher Verschlüsselung (CENC) verwenden, indem Sie PlayReady und/oder Widevine Digital Rights Management (DRM) und Apple FairPlay verwenden. 

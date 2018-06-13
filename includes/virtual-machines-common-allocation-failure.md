@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33901328"
 ---
 Wenn Sie einen virtuellen Computer (Virtual Machine, VM) erstellen, beendete VMs (VMs, deren Zuordnung aufgehoben wurde) neu starten oder die Größe eines VMs ändern, weist Microsoft Azure Ihrem Abonnement Computeressourcen zu. Wir investieren kontinuierlich in zusätzliche Infrastruktur und Funktionen, um sicherzustellen, dass immer alle VM-Typen zur Verfügung stehen, um die Kundenanforderungen erfüllen zu können. Gelegentlich können jedoch aufgrund der bisher beispiellosen Nachfrage nach Azure-Dienste in bestimmten Regionen Ressourcenzuordnungsfehler auftreten. Dieses Problem kann auftreten, wenn Sie versuchen, VMs in einer Region zu erstellen oder zu starten, obwohl auf den VMs der folgende Fehlercode und die folgende Meldung angezeigt werden:
 

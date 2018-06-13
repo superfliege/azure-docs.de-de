@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194518"
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
 Viele Kunden erstellen mehr als eine Ressourcengruppe. Einige werden unter Umständen für die Verwaltung von Produktionsanwendungen verwendet, und andere werden vielleicht als Entwicklungs-, Test- und Stagingumgebungen genutzt. Dabei kann nicht nur die Bereitstellung dieser Ressourcen automatisiert werden, es ist auch möglich, eine Ressourcengruppe mit nur einem Klick außer Betrieb zu setzen. Mit Azure Automation können Sie diese häufig anfallende Verwaltungsaufgabe optimieren. Darüber hinaus ist dieses Szenario auch hilfreich, wenn Sie ein Azure-Abonnement verwenden, für das ein durch ein Mitgliedsangebot wie MSDN oder das Microsoft Partner Network Cloud Essentials-Programm bedingtes Ausgabenlimit gilt.

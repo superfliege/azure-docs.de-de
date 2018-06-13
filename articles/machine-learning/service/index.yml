@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33774906"
 abstract:
   description: Azure Machine Learning-Dienste (Vorschauversion) ermöglichen das Erstellen, Bereitstellen und Verwalten von Machine Learning- und KI-Modellen mit allen Python-Tools und -Bibliotheken. Sie können eine Vielzahl von Daten- und Computediensten in Azure verwenden, um Ihre Daten zu speichern und zu verarbeiten.
 sections:

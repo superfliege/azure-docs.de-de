@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782949"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Zuschneiden von Videos mit Media Encoder Standard
 Mit Media Encoder Standard (MES) können Sie Ihr Eingabevideo zuschneiden. Zuschneiden ist der Prozess der Auswahl eines rechteckigen Fensters innerhalb des Videoframes und die ausschließliche Codierung der Pixel innerhalb dieses Fensters. Das folgende Diagramm veranschaulicht diesen Prozess.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781569"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Neustarten eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Sie können einen virtuellen Computer mithilfe der Schritte in diesem Artikel schnell und problemlos neu starten. Beachten Sie Folgendes vor dem Neustart eines virtuellen Computers:

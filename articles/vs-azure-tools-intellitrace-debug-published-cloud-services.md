@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292556"
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>Debuggen eines veröffentlichten Azure-Clouddiensts mit Visual Studio und IntelliTrace
 Mit IntelliTrace können Sie umfangreiche Debuginformationen für eine Rolleninstanz protokollieren, wenn sie in Azure ausgeführt wird. Wenn Sie die Ursache eines Problems finden möchten, können Sie mithilfe der IntelliTrace-Protokolle den Code aus Visual Studio schrittweise so durchlaufen, als ob er in Azure ausgeführt würde. Tatsächlich zeichnet IntelliTrace während der Ausführung der Azure-Anwendung als Clouddienst in Azure wichtige Codeausführungs- und Umgebungsdaten auf und ermöglicht die Wiedergabe der aufgezeichneten Daten von Visual Studio aus. 

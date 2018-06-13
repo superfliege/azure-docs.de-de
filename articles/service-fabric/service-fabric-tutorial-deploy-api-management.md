@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599253"
 ---
 # <a name="tutorial-deploy-api-management-with-service-fabric"></a>Tutorial: Bereitstellen von API Management mit Service Fabric
 Dieses Tutorial ist der vierte Teil einer Serie.  Bei der Bereitstellung von Azure API Management mit Service Fabric handelt es sich um ein erweitertes Szenario.  API Management ist nützlich, wenn Sie APIs mit einem umfangreichen Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen möchten. Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein, der für den Eingang von Datenverkehr ausgelegt ist, z.B. eine ASP.NET Core-Anwendung, Event Hubs, IoT Hub oder Azure API Management. 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783269"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
 Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:

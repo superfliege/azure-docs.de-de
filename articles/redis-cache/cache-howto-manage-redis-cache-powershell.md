@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599321"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Verwalten von Azure-Redis-Cache mit Azure PowerShell
 > [!div class="op_single_selector"]

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30291281"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI 2.0 erweitert werden können. Sie können auch den nicht verwalteten Betriebssystemdatenträger mit [Azure CLI 1.0](expand-disks-nodejs.md) erweitern.

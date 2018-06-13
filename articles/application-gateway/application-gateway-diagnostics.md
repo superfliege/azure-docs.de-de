@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30314047"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 

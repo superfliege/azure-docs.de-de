@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30314781"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure-Clouddienste
 Bei Microsoft setzen wir uns mit großen Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.

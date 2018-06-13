@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33204121"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure mithilfe der rollenbasierten Zugriffssteuerung
 

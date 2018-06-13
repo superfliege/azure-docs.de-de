@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30904252"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Verwenden des FreeBSD-Paketfilters zum Erstellen einer sicheren Firewall in Azure
 In diesem Artikel wird erläutert, wie Sie eine NAT-Firewall mithilfe eines FreeBSD-Paketfilters über die Azure Resource Manager-Vorlage für allgemeine Webserverszenarien bereitstellen.
