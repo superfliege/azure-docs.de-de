@@ -1,6 +1,6 @@
 ---
 title: Webdienste und Mobile Services von Azure Deutschland | Microsoft-Dokumentation
-description: "Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland"
+description: Featurevergleich und Hilfestellung zum Entwickeln von Anwendungen für Azure Deutschland
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647076"
 ---
 # <a name="azure-germany-web-and-mobile-services"></a>Webdienste und Mobile Services von Azure Deutschland
 ## <a name="app-service"></a>App Service
