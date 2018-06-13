@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181819"
 ---
 # <a name="azure-status"></a>Azure-Status
 [Azure-Status](https://azure.microsoft.com/status/) bietet Ihnen eine globale Ansicht der Integrität von Azure-Diensten. Mit Azure-Status können Sie minutengenaue Informationen zur Dienstverfügbarkeit abrufen. Alle Beteiligten können auf Azure-Status zugreifen und alle Dienste anzeigen, die ihre Dienstintegrität melden. 
