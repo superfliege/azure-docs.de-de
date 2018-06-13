@@ -1,6 +1,6 @@
 ---
-title: "Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL – Übersicht"
-description: "Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL – Übersicht"
+title: Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL – Übersicht
+description: Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL – Übersicht
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151377"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>Übersicht über die Prinzipien zur Sicherheit in der Cloud des National Cyber Security Centers
 

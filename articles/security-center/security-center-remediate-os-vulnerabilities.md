@@ -1,11 +1,11 @@
 ---
 title: Korrigieren von Sicherheitskonfigurationen in Azure Security Center | Microsoft-Dokumentation
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen."
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103930"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
 Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.

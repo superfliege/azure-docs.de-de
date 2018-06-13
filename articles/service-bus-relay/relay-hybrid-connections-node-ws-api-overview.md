@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die Azure Relay-Node-APIs | Microsoft-Dokumentation"
-description: "Relay-Node-API – Übersicht"
+title: Übersicht über die Azure Relay-Node-APIs | Microsoft-Dokumentation
+description: Relay-Node-API – Übersicht
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b7d6e822-7c32-4cb5-a4b8-df7d009bdc85
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019454"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Node-API für Relay Hybrid Connections – Übersicht
 

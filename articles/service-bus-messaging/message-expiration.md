@@ -1,11 +1,11 @@
 ---
 title: Ablauf von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
-description: "Ablauf und Gültigkeitsdauer von Azure Service Bus-Nachrichten"
+description: Ablauf und Gültigkeitsdauer von Azure Service Bus-Nachrichten
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196767"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 

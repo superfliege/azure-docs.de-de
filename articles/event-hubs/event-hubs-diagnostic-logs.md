@@ -1,13 +1,13 @@
 ---
 title: Azure Event Hubs-Diagnoseprotokolle | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie Diagnoseprotokolle für Event Hubs in Azure einrichten."
-keywords: 
-documentationcenter: 
+description: Hier erfahren Sie, wie Sie Diagnoseprotokolle für Event Hubs in Azure einrichten.
+keywords: ''
+documentationcenter: ''
 services: event-hubs
 author: banisadr
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932714"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Event Hubs-Diagnoseprotokolle
 

@@ -1,8 +1,8 @@
 ---
 title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Log Analytics | Microsoft-Dokumentation
-description: "Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  In diesem Artikel wird beschrieben, wie Sie die Erfassung von Windows-Ereignisprotokollen konfigurieren, und aus welchen Bestandteilen die im Log Analytics-Arbeitsbereich erstellten Datensätze bestehen."
+description: Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  In diesem Artikel wird beschrieben, wie Sie die Erfassung von Windows-Ereignisprotokollen konfigurieren, und aus welchen Bestandteilen die im Log Analytics-Arbeitsbereich erstellten Datensätze bestehen.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782029"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](log-analytics-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.

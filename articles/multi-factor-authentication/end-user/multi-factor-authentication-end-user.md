@@ -1,8 +1,8 @@
 ---
-title: "Erste Schritte mit der zweistufigen Überprüfung | Microsoft-Dokumentation"
+title: Erste Schritte mit der zweistufigen Überprüfung | Microsoft-Dokumentation
 description: Auf dieser Seite zur Azure Multi-Factor Authentication finden Ihre Endbenutzer Informationen zu den ersten Schritten mit Azure Multi-Factor Authentication.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
@@ -20,6 +20,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198104"
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Was ist Azure Multi-Factor Authentication?
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen gesagt, dass für Ihr Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt wurde.  Was bedeutet dies?

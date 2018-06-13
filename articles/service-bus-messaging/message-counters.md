@@ -2,10 +2,10 @@
 title: Abrufen der Anzahl von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
 description: Informationen zum Abrufen der Anzahl von Azure Service Bus-Nachrichten.
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28197730"
 ---
 # <a name="message-counters"></a>Nachrichtenzähler
 

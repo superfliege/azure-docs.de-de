@@ -1,11 +1,11 @@
 ---
-title: "Exemplarische Vorgehensweise für die Azure Event Hubs-Erfassung | Microsoft-Dokumentation"
+title: Exemplarische Vorgehensweise für die Azure Event Hubs-Erfassung | Microsoft-Dokumentation
 description: Ein Beispiel zur Veranschaulichung der Verwendung des Erfassungsfeatures von Event Hubs unter Verwendung des Azure Python SDKs.
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: djrosanova
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28016456"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Exemplarische Vorgehensweise für die Event Hubs-Erfassung: Python
 

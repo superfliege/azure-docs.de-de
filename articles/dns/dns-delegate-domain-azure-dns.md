@@ -1,6 +1,6 @@
 ---
-title: "Delegieren einer Domäne an Azure DNS | Microsoft Docs"
-description: "Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden von DNS-Namenserver zum Hosten von Domänen."
+title: Delegieren einer Domäne an Azure DNS | Microsoft Docs
+description: Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden von DNS-Namenserver zum Hosten von Domänen.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030522"
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>Delegieren von Domänen an Azure DNS
 
