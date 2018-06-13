@@ -1,8 +1,8 @@
 ---
 title: Alle Themen zum SQL Server Stretch-Datenbankdienst | Microsoft Docs
-description: "Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung"
+description: Tabelle mit allen Themen für den Azure-Dienst namens „SQL Server Stretch-Datenbank“ unter „https://azure.microsoft.com/de-de/documentation/articles/“, Titel und Beschreibung
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23055525"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Alle Themen für den SQL Server Stretch-Datenbankdienst
 Dieses Thema führt alle Themen mit direktem Bezug zum **SQL Server Stretch-Datenbankdienst** von Azure auf. Sie können auf dieser Webseite mit **STRG+F**nach Schlüsselwörtern suchen, um aktuell interessante Themen zu finden.

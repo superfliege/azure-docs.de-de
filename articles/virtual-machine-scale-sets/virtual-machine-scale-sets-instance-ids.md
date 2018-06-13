@@ -1,11 +1,11 @@
 ---
-title: "Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen"
+title: Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29742891"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen
 In diesem Artikel werden Instanz-IDs für Skalierungsgruppen und die verschiedenen Arten beschrieben, wie sie in Erscheinung treten.
