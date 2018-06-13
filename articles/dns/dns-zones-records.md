@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über DNS-Zonen und -Einträge – Azure DNS | Microsoft-Dokumentation"
-description: "Übersicht über die Unterstützung für das Hosten von DNS-Zonen und -Einträgen in Microsoft Azure DNS."
+title: Übersicht über DNS-Zonen und -Einträge – Azure DNS | Microsoft-Dokumentation
+description: Übersicht über die Unterstützung für das Hosten von DNS-Zonen und -Einträgen in Microsoft Azure DNS.
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/19/2017
+ms.locfileid: "26761912"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 

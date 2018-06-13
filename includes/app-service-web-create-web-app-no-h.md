@@ -13,6 +13,7 @@ ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/14/2018
+ms.locfileid: "29348881"
 ---
 Erstellen Sie in der Cloud Shell im App Service-Plan `myAppServicePlan` eine [Web-App](../articles/app-service/app-service-web-overview.md). Verwenden Sie hierfür den Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Ersetzen Sie im folgenden Beispiel *\<App_Name>* durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). 
 

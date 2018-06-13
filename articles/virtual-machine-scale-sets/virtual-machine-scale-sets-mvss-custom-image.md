@@ -1,11 +1,11 @@
 ---
-title: "Verweisen auf ein benutzerdefiniertes Image in einer Vorlage für eine Azure-Skalierungsgruppe | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einer vorhandenen Vorlage für eine Azure-VM-Skalierungsgruppe ein benutzerdefiniertes Image hinzufügen."
+title: Verweisen auf ein benutzerdefiniertes Image in einer Vorlage für eine Azure-Skalierungsgruppe | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einer vorhandenen Vorlage für eine Azure-VM-Skalierungsgruppe ein benutzerdefiniertes Image hinzufügen.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780917"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Hinzufügen eines benutzerdefinierten Images zu einer Azure-Skalierungsgruppenvorlage
 

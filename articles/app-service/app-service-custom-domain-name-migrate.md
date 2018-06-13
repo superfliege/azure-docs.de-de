@@ -1,8 +1,8 @@
 ---
 title: Migrieren eines aktiven DNS-Namens zu Azure App Service | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie einen benutzerdefinierte DNS-Domänennamen, der bereits einer Livewebsite zugewiesen ist, ohne Ausfallzeiten zu Azure App Service migrieren."
+description: Erfahren Sie, wie Sie einen benutzerdefinierte DNS-Domänennamen, der bereits einer Livewebsite zugewiesen ist, ohne Ausfallzeiten zu Azure App Service migrieren.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27566490"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 

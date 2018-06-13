@@ -1,8 +1,8 @@
 ---
-title: "Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Key Vault"
-description: "Dieses Tutorial erläutert, wie Sie eine Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) verwenden, um auf Azure Resource Manager zuzugreifen."
+title: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Key Vault
+description: Dieses Tutorial erläutert, wie Sie eine Linux-VM-MSI (Managed Service Identity, verwaltete Dienstidentität) verwenden, um auf Azure Resource Manager zuzugreifen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384700"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Verwenden einer mit einer Linux-VM verwalteten Dienstidentität (Managed Service Identity, MSI) für den Zugriff auf Azure Key Vault 
 

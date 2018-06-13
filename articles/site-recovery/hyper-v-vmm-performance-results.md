@@ -1,6 +1,6 @@
 ---
-title: "Testergebnisse der Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Dieser Artikel bietet Informationen zu Leistungstests für die Replikation von virtuellen Hyper-V-Computern in VVM-Clouds an einen sekundären Standort mithilfe von Azure Site Recovery."
+title: Testergebnisse der Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation
+description: Dieser Artikel bietet Informationen zu Leistungstests für die Replikation von virtuellen Hyper-V-Computern in VVM-Clouds an einen sekundären Standort mithilfe von Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378685"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Testergebnisse für die Hyper-V-Replikation an einen sekundären Standort
 

@@ -1,6 +1,6 @@
 ---
 title: Verbinden mit virtuellen SQL Server-Computern (Resource Manager) | Microsoft Docs
-description: "Erfahren Sie, wie eine Verbindung mit einer SQL Server-Instanz hergestellt wird, die auf einem virtuellen Computer in Azure ausgeführt wird. In diesem Thema wird das klassische Bereitstellungsmodell verwendet. Die Szenarien unterscheiden sich abhängig von der Netzwerkkonfiguration und dem Clientstandort."
+description: Erfahren Sie, wie eine Verbindung mit einer SQL Server-Instanz hergestellt wird, die auf einem virtuellen Computer in Azure ausgeführt wird. In diesem Thema wird das klassische Bereitstellungsmodell verwendet. Die Szenarien unterscheiden sich abhängig von der Netzwerkkonfiguration und dem Clientstandort.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400238"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure
 

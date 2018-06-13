@@ -18,15 +18,15 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: f793a201b3fbf57ac2f420c4f4e57a230bc11468
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "32182170"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell
 
-In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation für eine IP-Adresse und URL. Sie bestimmen die Ursache eines Kommunikationsfehlers, und wie Sie ihn beheben können.
+In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die Kommunikation für eine IP-Adresse und URL. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -36,7 +36,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe für den virtuellen Computer erstellen. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthalten soll. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
@@ -55,7 +55,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst m
 
 ## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
-Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen Sie zuerst eine Network Watcher-Instanz in der Region aktivieren, in der sich der zu testende virtuelle Computer befindet. Danach können Sie die Kommunikation mit der „Nächster Hop“-Funktion von Network Watcher testen.
+Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen Sie zuerst eine Komponente zur Netzwerküberwachung in der Region aktivieren, in der sich der zu testende virtuelle Computer befindet. Danach können Sie die Kommunikation mit der Network Watcher-Funktion „Nächster Hop“ testen.
 
 ## <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
@@ -127,7 +127,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
      Active Default {172.16.0.0/12}         None        {}              
 ```
 
-Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem **AaddressPrefix** **0.0.0.0/0** den gesamten Datenverkehr, der nicht für Adressen in den Adresspräfixen anderer Routen bestimmt ist, mit einem nächsten Hop von **Internet** weiter. Wie Sie in der Ausgabe auch sehen können, ist zwar eine Standardroute zum Präfix 172.16.0.0/12 vorhanden, die die Adresse 172.31.0.100 enthält, aber **nextHopType** lautet **Keiner**. Azure erstellt eine Standardroute zu 172.16.0.0/12, gibt aber einen Typ des nächsten Hops erst dann an, wenn es einen Grund dafür gibt. Wenn Sie z.B. den Adressbereich 172.16.0.0/12 dem Adressraum des virtuellen Netzwerks hinzufügen, ändert Azure **nextHopType** für die Route in **Virtuelles Netzwerk**. Bei einer Überprüfung würde dann **Virtuelles Netzwerk** als **nextHopType** angezeigt.
+Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem **AaddressPrefix** **0.0.0.0/0** den gesamten Datenverkehr, der nicht für Adressen in den Adresspräfixen anderer Routen bestimmt ist, mit einem nächsten Hop von **Internet** weiter. Wie Sie in der Ausgabe auch sehen können, ist zwar eine Standardroute zum Präfix 172.16.0.0/12 vorhanden, die die Adresse 172.31.0.100 enthält, aber **nextHopType** lautet **Keiner**. Azure erstellt eine Standardroute zu 172.16.0.0/12, gibt aber einen Typ des nächsten Hops erst dann an, wenn es einen Grund dafür gibt. Wenn Sie z. B. den Adressbereich 172.16.0.0/12 zum Adressraum des virtuellen Netzwerks hinzufügen, ändert Azure den **nextHopType** für die Route in **Virtuelles Netzwerk**. Bei einer Überprüfung würde dann **Virtuelles Netzwerk** als **nextHopType** angezeigt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -139,6 +139,6 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen virtuellen Computer erstellt und das Netzwerkrouting vom virtuellen Computer diagnostiziert. Sie haben erfahren, dass Azure mehrere Standardrouten erstellt, und haben das Routing an zwei verschiedene Ziele getestet. Erfahren Sie mehr über das [Routing in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen benutzerdefinierter Routen](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
+In diesem Artikel haben Sie einen virtuellen Computer erstellt und das Netzwerkrouting vom virtuellen Computer diagnostiziert. Sie haben erfahren, dass Azure mehrere Standardrouten erstellt, und Sie haben das Routing an zwei verschiedene Ziele getestet. Erfahren Sie mehr über das [Routing in Azure](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen benutzerdefinierter Routen](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 
-Für ausgehende Verbindungen virtueller Computer können Sie auch die Latenz sowie den zulässigen und verweigerten Netzwerkdatenverkehr zwischen dem virtuellen Computer und einem Endpunkt mithilfe der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-powershell.md) von Network Watcher bestimmen. Sie können die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt, z.B. einer IP-Adresse oder URL, mithilfe der Verbindungsmonitorfunktion von Network Watcher für einen Zeitraum überwachen. Weitere Informationen finden Sie unter [Überwachen einer Netzwerkverbindung](connection-monitor.md).
+Für ausgehende Verbindungen virtueller Computer können Sie auch die Latenz sowie den zulässigen und verweigerten Netzwerkdatenverkehr zwischen dem virtuellen Computer und einem Endpunkt mithilfe der Funktion [Problembehandlung für Verbindung](network-watcher-connectivity-powershell.md) von Network Watcher bestimmen. Sie können die Kommunikation zwischen einem virtuellen Computer und einem Endpunkt, z. B. einer IP-Adresse oder URL, mithilfe der Verbindungsmonitorfunktion von Network Watcher über einen Zeitraum überwachen. Informationen hierzu finden Sie unter [Überwachen einer Netzwerkverbindung](connection-monitor.md).

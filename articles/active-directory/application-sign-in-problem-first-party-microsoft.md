@@ -2,10 +2,10 @@
 title: Probleme beim Anmelden bei Microsoft-Anwendungen | Microsoft-Dokumentation
 description: Behandlung von allgemeinen Problemen bei der Anmeldung in eigenen Microsoft-Anwendungen mithilfe von Azure AD (z.B. Office 365)
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384220"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
