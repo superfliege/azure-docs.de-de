@@ -1,12 +1,12 @@
 ---
-title: "Austauschen von Gerätecontrollern für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "In diesem Thema wird erläutert, wie Sie ein oder beide Controllermodule in einem Gerät der StorSimple 8000-Serie austauschen oder entfernen."
+title: Austauschen von Gerätecontrollern für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: In diesem Thema wird erläutert, wie Sie ein oder beide Controllermodule in einem Gerät der StorSimple 8000-Serie austauschen oder entfernen.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109128"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Ersetzen des Controllermoduls auf dem StorSimple-Gerät
 ## <a name="overview"></a>Übersicht
