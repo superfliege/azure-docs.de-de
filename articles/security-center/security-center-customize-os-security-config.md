@@ -1,12 +1,12 @@
 ---
 title: Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau) | Microsoft-Dokumentation
-description: "Dieser Artikel erläutert, wie Sie Security Center-Bewertungen anpassen."
+description: Dieser Artikel erläutert, wie Sie Security Center-Bewertungen anpassen.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28200009"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Anpassen der Sicherheitskonfigurationen von Betriebssystemen in Azure Security Center (Vorschau)
 

@@ -1,11 +1,11 @@
 ---
 title: Georedundante Notfallwiederherstellung in Azure Event Hubs | Microsoft-Dokumentation
-description: "Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Event Hubs"
+description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Event Hubs
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/16/2017
+ms.locfileid: "26745893"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Event Hubs
 

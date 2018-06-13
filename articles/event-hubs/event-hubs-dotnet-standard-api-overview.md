@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die .NET Standard-APIs in Azure Event Hubs | Microsoft-Dokumentation"
-description: ".NET Standard-API – Übersicht"
+title: Übersicht über die .NET Standard-APIs in Azure Event Hubs | Microsoft-Dokumentation
+description: .NET Standard-API – Übersicht
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a173f8e4-556c-42b8-b856-838189f7e636
 ms.service: event-hubs
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782998"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard-API – Übersicht
 

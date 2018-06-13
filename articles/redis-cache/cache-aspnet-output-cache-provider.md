@@ -1,5 +1,5 @@
 ---
-title: "Cache – ASP.NET-Ausgabecacheanbieter"
+title: Cache – ASP.NET-Ausgabecacheanbieter
 description: Erfahren Sie, wie Sie die ASP.NET-Seitenausgabe mit Azure Redis Cache zwischenspeichern.
 services: redis-cache
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27909821"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>ASP.NET-Ausgabecacheanbieter für Azure Redis Cache
 Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde.

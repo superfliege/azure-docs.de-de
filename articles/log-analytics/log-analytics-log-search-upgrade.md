@@ -1,11 +1,11 @@
 ---
 title: Upgrade von Azure Log Analytics auf die neue Protokollsuche | Microsoft-Dokumentation
-description: "Die neue Log Analytics-Abfragesprache ist fast da – Sie können an der öffentlichen Vorschau teilnehmen.  Dieser Artikel beschreibt die Vorteile der neuen Sprache und die Konvertierung Ihres Arbeitsbereichs."
+description: Die neue Log Analytics-Abfragesprache ist fast da – Sie können an der öffentlichen Vorschau teilnehmen.  Dieser Artikel beschreibt die Vorteile der neuen Sprache und die Konvertierung Ihres Arbeitsbereichs.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28983987"
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Upgrade von Azure Log Analytics auf die neue Protokollsuche
 
