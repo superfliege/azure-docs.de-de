@@ -2,7 +2,7 @@
 title: Einrichten der Quellumgebung (physische Server in Azure) | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie Ihre lokale Umgebung einrichten, um mit dem Replizieren von physischen Servern unter Windows oder Linux in Azure zu beginnen.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29811137"
 ---
 # <a name="set-up-the-source-environment-physical-server-to-azure"></a>Einrichten der Quellumgebung (physische Server in Azure)
 

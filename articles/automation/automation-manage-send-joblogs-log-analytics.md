@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194399"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics
 Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Analytics-Arbeitsbereich senden. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Log Analytics bietet folgende Vorteile:

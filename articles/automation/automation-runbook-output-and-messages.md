@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194249"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 Die meisten Azure Automation-Runbooks haben eine Ausgabe, z.B. eine Fehlermeldung für den Benutzer oder ein komplexes Objekt, das von einem anderen Workflow genutzt werden soll. Windows PowerShell bietet [mehrere Datenströme](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) zum Senden der Ausgabe eines Skripts oder Workflows. Da jeder dieser Datenströme in Azure Automation unterschiedlich verwendet wird, sollten Sie beim Erstellen eines Runbooks die bewährten Methoden befolgen.

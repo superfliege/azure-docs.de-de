@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30247340"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe per Azure CLI 2.0
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Ein Azure Load Balancer verteilt Datenverkehr dann auf die VM-Instanzen in der Skalierungsgruppe. In diesem Schnellstart erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit Azure CLI 2.0 bereit.
