@@ -1,12 +1,12 @@
 ---
-title: "App Service-Übersicht: Azure Stack | Microsoft-Dokumentation"
-description: "Übersicht über App Service in Azure Stack"
+title: 'App Service-Übersicht: Azure Stack | Microsoft-Dokumentation'
+description: Übersicht über App Service in Azure Stack
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386075"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Übersicht über App Service in Azure Stack
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*

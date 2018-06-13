@@ -1,11 +1,11 @@
 ---
 title: Referenz zur Azure CDN-Regel-Engine | Microsoft-Dokumentation
-description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine."
+description: Referenzdokumentation zu den Übereinstimmungsbedingungen und Features der Azure CDN-Regel-Engine.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733678"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Referenz für die Azure CDN-Regel-Engine
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen und Features für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).

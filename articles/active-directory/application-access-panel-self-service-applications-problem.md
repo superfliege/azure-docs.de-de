@@ -2,10 +2,10 @@
 title: Probleme beim Self-Service-Anwendungszugriff | Microsoft-Dokumentation
 description: Beheben von Problemen in Zusammenhang mit dem Self-Service-Anwendungszugriff
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29382354"
 ---
 # <a name="problem-using-self-service-application-access"></a>Probleme beim Self-Service-Anwendungszugriff
 

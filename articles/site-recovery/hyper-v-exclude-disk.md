@@ -1,6 +1,6 @@
 ---
-title: "Ausschließen von Datenträgern vom Schutz per Azure Site Recovery | Microsoft-Dokumentation"
-description: "Es wird beschrieben, warum und wie Sie VM-Datenträger von der Replikation für das Szenario „Hyper-V in Azure“ ausschließen können."
+title: Ausschließen von Datenträgern vom Schutz per Azure Site Recovery | Microsoft-Dokumentation
+description: Es wird beschrieben, warum und wie Sie VM-Datenträger von der Replikation für das Szenario „Hyper-V in Azure“ ausschließen können.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466836"
 ---
 # <a name="exclude-disks-from-replication"></a>Ausschließen von Datenträgern von der Replikation
 In diesem Artikel wird beschrieben, wie Datenträger von der Replikation ausgeschlossen werden. Durch diesen Ausschluss können die beanspruchte Replikationsbandbreite oder die zielseitigen Ressourcen optimiert werden, die solche Datenträger verwenden.

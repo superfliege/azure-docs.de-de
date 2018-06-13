@@ -1,6 +1,6 @@
 ---
-title: "SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Übersicht | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält eine Einführung in SQL Server-Verfügbarkeitsgruppen auf virtuellen Azure-Computern."
+title: SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Übersicht | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Einführung in SQL Server-Verfügbarkeitsgruppen auf virtuellen Azure-Computern.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29396430"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern #
 

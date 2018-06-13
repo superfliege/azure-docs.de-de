@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation"
-description: "Schnelles Konfigurieren der umfassenden Benutzerkontobereitstellung und das Aufheben der Bereitstellung für Anwendungen, die bereits im Azure AD-Anwendungskatalog aufgeführt sind"
+title: Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung | Microsoft-Dokumentation
+description: Schnelles Konfigurieren der umfassenden Benutzerkontobereitstellung und das Aufheben der Bereitstellung für Anwendungen, die bereits im Azure AD-Anwendungskatalog aufgeführt sind
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464424"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 
