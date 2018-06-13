@@ -1,6 +1,6 @@
 ---
 title: Azure Deutschland-Images | Microsoft-Dokumentation
-description: "Dieser Artikel verschafft Ihnen einen Überblick über die Images, die der Azure Deutschland-Marketplace bietet."
+description: Dieser Artikel verschafft Ihnen einen Überblick über die Images, die der Azure Deutschland-Marketplace bietet.
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993962"
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 ## <a name="overview"></a>Übersicht

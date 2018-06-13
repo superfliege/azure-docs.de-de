@@ -1,8 +1,8 @@
 ---
-title: "Verschieben großer Datenmengen in/aus Cloudspeicher in Azure | Microsoft-Dokumentation"
-description: "Hier finden Sie eine Übersicht über die verschiedenen Methoden zum Verschieben von Daten in und aus Azure Storage."
+title: Verschieben großer Datenmengen in/aus Cloudspeicher in Azure | Microsoft-Dokumentation
+description: Hier finden Sie eine Übersicht über die verschiedenen Methoden zum Verschieben von Daten in und aus Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984594"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
 Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), steht Ihnen eine Vielzahl von Methoden zur Verfügung. Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Dieser Artikel bietet eine kurze Übersicht über die verschiedenen Szenarien und die jeweiligen Angebote.

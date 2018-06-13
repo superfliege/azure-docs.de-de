@@ -1,8 +1,8 @@
 ---
 title: Erstellen Ihrer ersten Funktion unter Linux in der Azure-Befehlszeilenschnittstelle (Vorschauversion) | Microsoft-Dokumentation
-description: "Hier erfahren Sie, wie Sie Ihre erste Azure-Funktion für ein Linux-Image mit der Azure-Befehlszeilenschnittstelle erstellen."
+description: Hier erfahren Sie, wie Sie Ihre erste Azure-Funktion für ein Linux-Image mit der Azure-Befehlszeilenschnittstelle erstellen.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919388"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Erstellen Ihrer ersten Funktion unter Linux in der Azure-Befehlszeilenschnittstelle (Vorschauversion)
 

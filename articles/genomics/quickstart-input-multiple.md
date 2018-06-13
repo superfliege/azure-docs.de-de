@@ -1,7 +1,7 @@
 ---
-title: "Schnellstartanleitung: Übermitteln eines Workflows mit mehreren Eingaben | Microsoft-Dokumentation"
+title: 'Schnellstartanleitung: Übermitteln eines Workflows mit mehreren Eingaben | Microsoft-Dokumentation'
 titleSuffix: Azure
-description: "In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben."
+description: In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie den msgen-Client installiert und erfolgreich die Beispieldaten über den Dienst ausgeführt haben.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29119994"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel
 

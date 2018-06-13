@@ -1,12 +1,12 @@
 ---
-title: "Verwaltete Dienstidentität mit Azure Event Hubs – Vorschau | Microsoft-Dokumentation"
-description: "Verwenden von verwalteten Dienstidentitäten mit Azure Event Hubs"
+title: Verwaltete Dienstidentität mit Azure Event Hubs – Vorschau | Microsoft-Dokumentation
+description: Verwenden von verwalteten Dienstidentitäten mit Azure Event Hubs
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783347"
 ---
 # <a name="managed-service-identity-preview"></a>Verwaltete Dienstidentität (Vorschau)
 
