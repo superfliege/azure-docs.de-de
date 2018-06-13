@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31418708"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -118,7 +119,7 @@ Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entw
     cat ./example/data/WordCountOutput/part-r-00000 | findstr "there"
     ```
 
-    Der MapReduce-Auftrag erzeugt die Datei *part-r-00000*, welche die Wörter und deren Anzahl enthält. Das Skript verwendet den Befehl **findstr**, um alle Wörter aufzulisten, die *"there"*enthalten.
+    Der MapReduce-Auftrag erzeugt die Datei *part-r-00000*, welche die Wörter und deren Anzahl enthält. Das Skript verwendet den Befehl **findstr**, um alle Wörter aufzulisten, die *"there"* enthalten.
 3. Legen Sie die ersten drei Variablen fest, und führen Sie das Skript dann aus.
 
 ## <a name="hdinsight-sample-csharp-streaming"></a>Wortzählung – C#-Streaming

@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526983"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Erstellen von Ersatzschlüsseln mit IDENTITY in Azure SQL Data Warehouse
 Empfehlungen und Beispiele zum Erstellen von Ersatzschlüsseln für Tabellen in Azure SQL Data Warehouse mithilfe der IDENTITY-Eigenschaft

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778061"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 Unternehmen gehen mehr und mehr dazu über, mobile Anwendungen entweder für ihre Endbenutzer (extern) oder für ihre Mitarbeiter (intern) zu erstellen. Sie verfügen über Back-End-Systeme – beispielsweise Mainframecomputer oder Branchenanwendungen –, die in die Architektur der mobilen Anwendungen integriert werden müssen. Dieser Leitfaden zeigt, wie sich diese Integration am besten umsetzen lässt, und empfiehlt mögliche Lösungen für allgemeine Szenarien.

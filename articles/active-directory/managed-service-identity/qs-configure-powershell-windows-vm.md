@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
 ms.openlocfilehash: 6981c0f917fb7175f444ceca8c55c0df186774db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/05/2018
 ms.locfileid: "33932318"
 ---
 # <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurieren einer VM-MSI (Managed Service Identity, verwaltete Dienstidentität) mit PowerShell
@@ -32,7 +32,7 @@ Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit der verwalteten Dienstidentität vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Installieren Sie [die aktuelle Version von Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM), sofern noch nicht geschehen.
 
@@ -42,7 +42,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die vom System zugewiesene Identität 
 
 ### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm"></a>Aktivieren einer vom System zugewiesenen Identität beim Erstellen einer Azure-VM
 
-So erstellen Sie eine Azure-VM mit vom System zugewiesener aktivierter Identität:
+So erstellen Sie einen virtuellen Azure-Computer mit aktivierter systemzugewiesener Identität:
 
 1. Verwenden Sie einen der folgenden Schnellstarts für virtuelle Azure-Computer, und setzen Sie nur die erforderlichen Abschnitte um („Anmelden bei Azure“, „Erstellen einer Ressourcengruppe“, „Erstellen einer Netzwerkgruppe“, „Erstellen des virtuellen Computers“).
     
@@ -74,7 +74,7 @@ Wenn Sie eine vom System zugewiesene Identität auf einem vorhandenen virtuellen
    Login-AzureRmAccount
    ```
 
-2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzureRmVM` ab. Verwenden Sie dann zum Aktivieren einer vom System zugewiesenen Identität den `-AssignIdentity`-Switch im Cmdlet [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm):
+2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzureRmVM` ab. Verwenden Sie dann, um die systemzugewiesene Identität zu aktivieren, den `-AssignIdentity`-Schalter im [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm)-Cmdlet:
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
@@ -93,7 +93,7 @@ Wenn Sie eine vom System zugewiesene Identität auf einem vorhandenen virtuellen
 ## <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Deaktivieren der vom System zugewiesenen Identität von einer Azure-VM
 
 > [!NOTE]
->  Die Deaktivierung einer verwalteten Dienstidentität über einen virtuellen Computer wird derzeit nicht unterstützt. In der Zwischenzeit können Sie zwischen vom System zugewiesenen und vom Benutzer zugewiesenen Identitäten wechseln.
+>  Die Deaktivierung von „Verwaltete Dienstidentität“ von einem virtuellen Computer wird derzeit nicht unterstützt. In der Zwischenzeit können Sie zwischen vom System zugewiesenen und vom Benutzer zugewiesenen Identitäten wechseln.
 
 Wenn Sie über einen virtuellen Computer verfügen, der nicht mehr die vom System zugewiesene Identität, jedoch weiterhin vom Benutzer zugewiesene Identitäten benötigt, verwenden Sie das folgende Cmdlet:
 
@@ -154,7 +154,7 @@ So weisen Sie eine vom Benutzer zugewiesenen Identität zu einer vorhandenen Azu
 2. Erstellen Sie mit dem Cmdlet [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) eine vom Benutzer zugewiesene Identität.  Beachten Sie die `Id` in der Ausgabe, da Sie diese im nächsten Schritt benötigen.
 
     > [!IMPORTANT]
-    > Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS ordnungsgemäß funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
+    > Für die Erstellung von Identitäten, die vom Benutzer zugewiesen werden, werden nur alphanumerische Zeichen und Bindestriche („0-9“, „a-Z“ bzw. „A-Z“ oder „-“) unterstützt. Darüber hinaus sollten Namen max. 24 Zeichen enthalten, damit die Zuordnung zur VM/VMSS richtig funktioniert. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. Weitere Informationen finden Sie unter [FAQs und bekannte Probleme mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für Azure Active Directory](known-issues.md).
 
 
   ```powershell
@@ -187,7 +187,7 @@ $vm.Identity.IdentityIds = "<MSI NAME>"
 Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm
 ```
 
-Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten aufweist, können Sie alle vom Benutzer zugewiesene Identitäten entfernen, indem Sie ausschließlich vom System zugewiesene Identitäten verwenden. Verwenden Sie den folgenden Befehl:
+Wenn Ihr virtueller Computer sowohl system- als auch benutzerzugewiesene Identitäten hat, können Sie alle benutzerzugewiesene Identitäten entfernen, indem Sie in den Modus wechseln, in dem nur die systemzugewiesene Identität verwendet wird. Verwenden Sie den folgenden Befehl:
 
 ```powershell 
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31421429"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Entwickeln von C#-Topologien für Apache Storm mithilfe von Data Lake-Tools für Visual Studio
 
@@ -147,9 +148,9 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
 
    * **Program.cs:** Diese Datei definiert die Topologie für Ihr Projekt. Eine Standardtopologie, die aus einem Spout und einem Bolt besteht, wird standardmäßig erstellt.
 
-   * **Spout.cs:**ein Beispiel-Spout, der Zufallszahlen ausgibt.
+   * **Spout.cs:** ein Beispiel-Spout, der Zufallszahlen ausgibt.
 
-   * **Bolt.cs:**ein Beispiel-Bolt, der eine Anzahl der vom Spout ausgegebenen Zahlen aufnimmt.
+   * **Bolt.cs:** ein Beispiel-Bolt, der eine Anzahl der vom Spout ausgegebenen Zahlen aufnimmt.
 
      Wenn Sie das Projekt erstellen, lädt NuGet das neueste [SCP.NET-Paket](https://www.nuget.org/packages/Microsoft.SCP.Net.SDK/) herunter.
 
@@ -159,7 +160,7 @@ Ein Topologiebeispiel, die diese Komponente verwendet und mit Storm auf HDInsigh
 
 1. Öffnen Sie **Spout.cs**. Mithilfe der Spouts werden Daten aus einer externen Quelle in eine Topologie eingelesen. Wichtigste Komponenten für einen Spout:
 
-   * **NextTuple:**wird von Storm aufgerufen, wenn der Spout neue Tupel ausgeben darf.
+   * **NextTuple:** wird von Storm aufgerufen, wenn der Spout neue Tupel ausgeben darf.
 
    * **Bestätigung** (nur transaktionale Topologie): Verarbeitet Bestätigungen, die von anderen Komponenten in der Topologie initiiert wurden, für Tupel, die von dem Spout gesendet wurden. Durch die Tupelbestätigung erfährt der Spout, dass die Verarbeitung durch nachgelagerte Komponenten erfolgreich ausgeführt wurde.
 
