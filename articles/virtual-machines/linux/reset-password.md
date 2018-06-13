@@ -1,13 +1,13 @@
 ---
-title: "Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs | Microsoft-Dokumentation"
-description: "Führen Sie die Schritte zum Zurücksetzen des lokalen Linux-Kennworts auf der Azure-VM ein"
+title: Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs | Microsoft-Dokumentation
+description: Führen Sie die Schritte zum Zurücksetzen des lokalen Linux-Kennworts auf der Azure-VM ein
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: cshepard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27578361"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs
 

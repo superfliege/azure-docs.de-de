@@ -1,6 +1,6 @@
 ---
-title: "Überwachung in Azure Database for PostgreSQL"
-description: "In diesem Artikel werden die Metriken (u.a. CPU, Speicher und Verbindungsstatistiken) für Überwachung und Warnungen für Azure Database for PostgreSQL beschrieben."
+title: Überwachung in Azure Database for PostgreSQL
+description: In diesem Artikel werden die Metriken (u.a. CPU, Speicher und Verbindungsstatistiken) für Überwachung und Warnungen für Azure Database for PostgreSQL beschrieben.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687607"
 ---
 # <a name="monitoring-in-azure-database-for-postgresql"></a>Überwachung in Azure Database for PostgreSQL
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Metriken, die Einblicke in das Verhalten der Ressourcen gewähren, die dem PostgreSQL-Server zugrunde liegen. 

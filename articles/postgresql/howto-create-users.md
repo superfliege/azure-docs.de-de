@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server
-description: "In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for PostgreSQL-Server erstellen können."
+description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einem Azure Database for PostgreSQL-Server erstellen können.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29574183"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie Benutzer auf einem Azure Database for PostgreSQL-Server erstellen können.

@@ -1,15 +1,15 @@
 ---
-title: "Bereitstellen von Azure File Storage über einen virtuellen Windows Azure-Computer | Microsoft-Dokumentation"
-description: "Speichern Sie die Datei mit Azure File Storage in der Cloud, und stellen Sie Ihre Clouddateifreigabe über einen virtuellen Azure-Computer bereit."
-documentationcenter: 
+title: Bereitstellen von Azure File Storage über einen virtuellen Windows Azure-Computer | Microsoft-Dokumentation
+description: Speichern Sie die Datei mit Azure File Storage in der Cloud, und stellen Sie Ihre Clouddateifreigabe über einen virtuellen Azure-Computer bereit.
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27577550"
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Verwenden von Azure-Dateifreigaben mit virtuellen Windows-Computern 
 

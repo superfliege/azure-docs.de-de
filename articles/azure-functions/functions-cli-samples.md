@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Beispiele – Azure Functions | Microsoft-Dokumentation"
-description: "Azure CLI-Beispiele – Azure Functions"
+title: Azure CLI-Beispiele – Azure Functions | Microsoft-Dokumentation
+description: Azure CLI-Beispiele – Azure Functions
 services: functions
 documentationcenter: functions
 author: syntaxc4
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27740100"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-Beispiele
 

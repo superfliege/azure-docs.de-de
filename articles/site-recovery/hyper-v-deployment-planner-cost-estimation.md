@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery-Bereitstellungsplaner – Details zur Kostenvorkalkulation für „Hyper-V zu Azure“ | Microsoft-Dokumentation"
-description: "In diesem Artikel werden die Details zur Kostenvorkalkulation aus dem Bericht beschrieben, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wurde."
+title: Azure Site Recovery-Bereitstellungsplaner – Details zur Kostenvorkalkulation für „Hyper-V zu Azure“ | Microsoft-Dokumentation
+description: In diesem Artikel werden die Details zur Kostenvorkalkulation aus dem Bericht beschrieben, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wurde.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466826"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
