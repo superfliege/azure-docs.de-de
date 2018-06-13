@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31429392"
 ---
 Sie können nun mithilfe des Daten-Explorers Daten zu einer neuen Sammlung hinzufügen.
 

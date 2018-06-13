@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156890"
 ---
 # <a name="permissions-in-azure-ad"></a>Berechtigungen in Azure AD
 In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- als auch für OIDC-Datenflüsse (OpenID Connect) viel eingesetzt. Wenn Ihre App ein Zugriffstoken von Azure AD empfängt, sind darin Ansprüche enthalten. Mit diesen Ansprüchen werden die Berechtigungen (auch als „Bereiche“ bezeichnet) beschrieben, über die Ihre App in Bezug auf eine bestimmte Ressource verfügt. Dies vereinfacht die Autorisierung für die Ressource, da sie nur prüfen muss, ob Ihre Token die richtige Berechtigung für die von Ihnen aufgerufene API enthält. 

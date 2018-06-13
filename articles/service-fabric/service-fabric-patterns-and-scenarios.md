@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206139"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Muster und Szenarien für Service Fabric
 Benutzer, die umfangreiche Microservices mit Azure Service Fabric erstellen möchten, erhalten hier Informationen von den Experten, die diese PaaS (Platform-as-a-Service) konzipiert und erstellt haben. Beginnen Sie mit der richtigen Architektur, und erfahren Sie, wie Sie Ressourcen für Ihre Anwendung optimieren. Der Kurs [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) (Service Fabric-Muster und -Methoden) gibt Antworten auf häufig gestellte Fragen von echten Kunden zu Service Fabric-Szenarien und Anwendungsbereichen.

@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32777178"
 abstract:
   description: Hier erfahren Sie, wie Sie Azure Network Watcher verwenden. In Schnellstartanleitungen, Tutorials und Ähnlichem wird gezeigt, wie Sie mit Tools wie der Paketerfassung sowie anhand von NSG-Datenflussprotokollen Einblicke in Ihr virtuelles Azure-Netzwerk gewinnen können, um Probleme mit der Filterung und Weiterleitung von Datenverkehr zu diagnostizieren und Verbindungen zu überwachen.
 sections:
