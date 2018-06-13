@@ -1,8 +1,8 @@
 ---
-title: "Empfohlene Methoden für Azure App Service"
-description: "Informationen zu empfohlenen Methoden und zur Problembehandlung für Azure App Service."
+title: Empfohlene Methoden für Azure App Service
+description: Informationen zu empfohlenen Methoden und zur Problembehandlung für Azure App Service.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: dariagrigoriu
 manager: erikre
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27868317"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)zusammengefasst. 

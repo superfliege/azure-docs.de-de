@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über die .NET Framework-APIs in Azure Event Hubs | Microsoft-Dokumentation"
+title: Übersicht über die .NET Framework-APIs in Azure Event Hubs | Microsoft-Dokumentation
 description: Hier finden Sie eine Zusammenfassung der wichtigsten .NET Framework-Client-APIs in Event Hubs.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781893"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Übersicht über die .NET Framework-API in Event Hubs
 
