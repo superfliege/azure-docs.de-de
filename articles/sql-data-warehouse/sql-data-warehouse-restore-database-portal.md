@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31526871"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)
 > [!div class="op_single_selector"]

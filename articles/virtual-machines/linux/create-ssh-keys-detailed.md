@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31600341"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
 Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 

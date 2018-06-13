@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33785939"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Wiederholungslogik im Media Services SDK für .NET
 Bei der Arbeit mit Microsoft Azure-Diensten können vorübergehende Fehler auftreten. Wenn ein vorübergehender Fehler auftritt, ist der Vorgang in der Regel nach ein paar Wiederholungsversuchen erfolgreich. Das Media Services SDK für .NET implementiert die Wiederholungslogik zum Behandeln von vorübergehenden Fehlern, die mit Ausnahmen und Fehlern in Verbindung stehen, die durch Webanforderungen, das Ausführen von Abfragen, das Speichern von Änderungen und Speichervorgänge hervorgerufen werden.  Standardmäßig führt das Media Services SDK für .NET vier Wiederholungsversuche aus, bevor es die Ausnahme zu Ihrer Anwendung erneut auslöst. Der Code in Ihrer Anwendung muss diese Ausnahme dann ordnungsgemäß behandeln.  

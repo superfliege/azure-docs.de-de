@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33783169"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Hyperlapsing von Mediendateien mit Azure Media Hyperlapse
 Azure Media Hyperlapse ist ein Medienprozessor, der ruckelfreie Zeitraffervideos aus der Ich-Perspektive oder Action-Kamera-Inhalten erzeugt.  Als cloudbasiertes Pendant zu [Desktop Hyperlapse Pro von Microsoft Research und dem smartphonebasierten Hyperlapse Mobile](http://aka.ms/hyperlapse)nutzt Microsoft Hyperlapse für Azure Media Services die umfassende Skalierbarkeit der Medienverarbeitungsplattform von Azure Media Services zum horizontalen Skalieren und Parallelisieren der Hyperlapse-Massenverarbeitung.

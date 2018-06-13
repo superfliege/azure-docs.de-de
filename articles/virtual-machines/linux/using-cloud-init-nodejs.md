@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918437"
 ---
 # <a name="use-cloud-init-to-customize-a-linux-vm-during-creation-with-the-azure-cli-10"></a>Verwenden von Cloud-Init zum Anpassen einer Linux-VM während der Erstellung mithilfe von Azure CLI 1.0
 In diesem Artikel wird gezeigt, wie ein Cloud-Init-Skript zum Festlegen des Hostnamens, Aktualisieren installierter Pakete und Verwalten von Benutzerkonten erstellt wird.  Diese Cloud-Init-Skripts werden dann während der Erstellung der virtuellen Computer über die Azure-Befehlszeilenschnittstelle aufgerufen.  Zum Ausführen der Schritte in diesem Artikel ist Folgendes erforderlich:
