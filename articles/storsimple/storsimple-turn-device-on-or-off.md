@@ -1,11 +1,11 @@
 ---
-title: "Ein- und Ausschalten von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation"
-description: "Dieses Thema erläutert Folgendes: Einschalten eines neuen StorSimple-Geräts oder ein Geräts, das heruntergefahren werden musste oder dessen Stromversorgung unterbrochen war, sowie Ausschalten eines ausgeführten Geräts."
+title: Ein- und Ausschalten von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation
+description: 'Dieses Thema erläutert Folgendes: Einschalten eines neuen StorSimple-Geräts oder ein Geräts, das heruntergefahren werden musste oder dessen Stromversorgung unterbrochen war, sowie Ausschalten eines ausgeführten Geräts.'
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27779447"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Ein- und Ausschalten von Geräten der StorSimple 8000-Serie
 

@@ -1,13 +1,13 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Durchführen eines Upgrades für eine Service Fabric-Anwendung | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Durchführen eines Upgrades für eine Service Fabric-Anwendung."
+title: Azure PowerShell-Skriptbeispiel – Durchführen eines Upgrades für eine Service Fabric-Anwendung | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Durchführen eines Upgrades für eine Service Fabric-Anwendung.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27927912"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Durchführen eines Upgrades für eine Service Fabric-Anwendung
 

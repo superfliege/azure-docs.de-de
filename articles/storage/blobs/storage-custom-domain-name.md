@@ -1,5 +1,5 @@
 ---
-title: "Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Azure Blob Storage-Endpunkt | Microsoft Docs"
+title: Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Azure Blob Storage-Endpunkt | Microsoft Docs
 description: Verwenden Sie das Azure-Portal, um Ihren eigenen kanonischen Namen (CNAME) dem Blob Storage-Endpunkt in einem Azure Storage-Konto zuzuordnen.
 services: storage
 author: tamram
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559926"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt
 

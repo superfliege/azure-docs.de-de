@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure StorSimple Data Manager Benutzeroberfläche| Microsoft Docs"
-description: "Beschreibt, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden"
+title: Microsoft Azure StorSimple Data Manager Benutzeroberfläche| Microsoft Docs
+description: Beschreibt, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/17/2018
+ms.locfileid: "27862256"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 

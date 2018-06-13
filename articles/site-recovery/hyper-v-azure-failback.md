@@ -1,5 +1,5 @@
 ---
-title: "Durchführen eines Failbacks zu einem lokalen Standort für virtuelle Hyper-V-Computer | Microsoft-Dokumentation"
+title: Durchführen eines Failbacks zu einem lokalen Standort für virtuelle Hyper-V-Computer | Microsoft-Dokumentation
 description: Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Informationen zum Failback von Azure auf das lokale Rechenzentrum
 services: site-recovery
 author: rajani-janaki-ram
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29466746"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 

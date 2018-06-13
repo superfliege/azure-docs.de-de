@@ -1,12 +1,12 @@
 ---
 title: Empfangen von Ereignissen von Azure Event Hubs mit der .NET Standard-Bibliothek | Microsoft-Dokumentation
-description: "Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard"
+description: Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: get-started-article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29389834"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
 

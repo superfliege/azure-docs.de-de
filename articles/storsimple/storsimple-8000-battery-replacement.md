@@ -1,12 +1,12 @@
 ---
-title: "Austauschen von Akkus bei Microsoft Azure-Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation"
-description: "Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf dem StorSimple-Gerät."
+title: Austauschen von Akkus bei Microsoft Azure-Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation
+description: Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf dem StorSimple-Gerät.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27742812"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Ersetzen des Notfallakkus auf dem StorSimple-Gerät
 

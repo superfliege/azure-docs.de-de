@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 02/28/2018
+  ms.locfileid: "29686570"
 abstract:
   description: Sie können mithilfe von Batch umfangreiche auf Parallelverarbeitung ausgelegte HPC-Anwendungen (High Performance Computing) effizient in der Cloud ausführen. Definieren Sie ohne manuelle Konfiguration oder Verwaltung der Infrastruktur die Azure-Computeressourcen für die parallele oder skalierte Ausführung Ihrer Anwendung. Sie können rechenintensive Tasks planen und basierend auf Ihren Anforderungen Computeressourcen dynamisch hinzufügen oder entfernen. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure Batch verwenden.
 sections:

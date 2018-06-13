@@ -1,12 +1,12 @@
 ---
-title: "Problembehandlung für die Azure Log Analytics-VM-Erweiterung | Microsoft-Dokumentation"
-description: "Beschrieben werden die Symptome, Ursachen und Lösungen für die häufigsten Probleme, die bei der Log Analytics-Erweiterung für virtuelle Windows und Linux Azure-Computer auftreten."
+title: Problembehandlung für die Azure Log Analytics-VM-Erweiterung | Microsoft-Dokumentation
+description: Beschrieben werden die Symptome, Ursachen und Lösungen für die häufigsten Probleme, die bei der Log Analytics-Erweiterung für virtuelle Windows und Linux Azure-Computer auftreten.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29394985"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Problembehandlung für die Log Analytics-VM-Erweiterung
 Dieser Artikel enthält Hilfe zur Problembehandlung von Fehlern, die im Zusammenhang mit der Log Analytics-VM-Erweiterung für virtuelle Windows- und Linux-Computer mit Microsoft Azure auftreten können, sowie Vorschläge für mögliche Problemlösungen.

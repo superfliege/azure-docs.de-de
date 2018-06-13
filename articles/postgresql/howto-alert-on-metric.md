@@ -1,6 +1,6 @@
 ---
-title: "Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL im Azure-Portal"
-description: "In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for PostgreSQL konfigurieren und auf diese zugreifen."
+title: Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL im Azure-Portal
+description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for PostgreSQL konfigurieren und auf diese zugreifen.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29690253"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL 
 

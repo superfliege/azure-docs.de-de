@@ -1,11 +1,11 @@
 ---
-title: "Kommunikation für Rollen in Clouddiensten | Microsoft-Dokumentation"
-description: "Rolleninstanzen in Clouddiensten können Endgeräte (HTTP, HTTPS, TCP und UDP) besitzen, die mit der Außenseite oder anderen Rolleninstanzen kommunizieren."
+title: Kommunikation für Rollen in Clouddiensten | Microsoft-Dokumentation
+description: Rolleninstanzen in Clouddiensten können Endgeräte (HTTP, HTTPS, TCP und UDP) besitzen, die mit der Außenseite oder anderen Rolleninstanzen kommunizieren.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7008a083-acbe-4fb8-ae60-b837ef971ca1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27701889"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>Ermöglichen der Kommunikation für Rolleninstanzen in Azure
 Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endgeräten ändern.

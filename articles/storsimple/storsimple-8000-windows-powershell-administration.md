@@ -1,12 +1,12 @@
 ---
-title: "Geräteverwaltung mit PowerShell für StorSimple | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Windows PowerShell für StorSimple zum Verwalten von StorSimple-Geräten verwenden."
+title: Geräteverwaltung mit PowerShell für StorSimple | Microsoft Docs
+description: Erfahren Sie, wie Sie Windows PowerShell für StorSimple zum Verwalten von StorSimple-Geräten verwenden.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743717"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 

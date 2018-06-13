@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines virtuellen Computers mit SQL Server in Azure PowerShell (klassisch) | Microsoft Docs
-description: "Enthält Schritte und PowerShell-Skripts zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server. In diesem Thema wird der klassische Bereitstellungsmodus verwendet."
+description: Enthält Schritte und PowerShell-Skripts zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server. In diesem Thema wird der klassische Bereitstellungsmodus verwendet.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399660"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Bereitstellen eines virtuellen SQL Server-Computers mit Azure PowerShell (klassisch)
 

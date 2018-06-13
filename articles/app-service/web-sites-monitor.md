@@ -1,11 +1,11 @@
 ---
-title: "Überwachen von Apps in Azure App Service | Microsoft Docs"
-description: "In diesem Thema wird die Überwachung von Apps in Azure App Service mit dem Azure-Portal beschrieben."
+title: Überwachen von Apps in Azure App Service | Microsoft Docs
+description: In diesem Thema wird die Überwachung von Apps in Azure App Service mit dem Azure-Portal beschrieben.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: btardif
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29573802"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Gewusst wie: Überwachen von Apps in Azure App Service
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) stellt integrierte Überwachungsfunktionen im [Azure-Portal](https://portal.azure.com) bereit.

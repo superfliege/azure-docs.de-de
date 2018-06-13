@@ -1,11 +1,11 @@
 ---
-title: "Schnellstart für Azure Security Center: Einbinden Ihres Azure-Abonnements in Security Center Standard | Microsoft-Dokumentation"
-description: "Dieser Schnellstart zeigt Ihnen, wie Sie für zusätzliche Sicherheit ein Upgrade auf den Security Center-Tarif Standard durchführen können."
+title: 'Schnellstart für Azure Security Center: Einbinden Ihres Azure-Abonnements in Security Center Standard | Microsoft-Dokumentation'
+description: Dieser Schnellstart zeigt Ihnen, wie Sie für zusätzliche Sicherheit ein Upgrade auf den Security Center-Tarif Standard durchführen können.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29531671"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard die ersten 60 Tage kostenlos testen.
