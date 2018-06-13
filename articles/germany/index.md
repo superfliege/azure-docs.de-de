@@ -1,11 +1,11 @@
 ---
 layout: LandingPage
-title: "Azure Deutschland-Dokumentation – Tutorials und API-Referenz | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Funktionen, die Designmerkmale und Sicherheitsmaßnahmen von Azure Deutschland, die die wichtigsten deutschen und internationalen Compliancestandards unterstützen."
+title: Azure Deutschland-Dokumentation – Tutorials und API-Referenz | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Funktionen, die Designmerkmale und Sicherheitsmaßnahmen von Azure Deutschland, die die wichtigsten deutschen und internationalen Compliancestandards unterstützen.
 services: germany
 author: czeumault
 manager: carolz
-ms.assetid: 
+ms.assetid: ''
 ms.service: germany
 ms.devlang: na
 ms.topic: landing-page
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647070"
 ---
 # <a name="azure-germany-documentation"></a>Azure Deutschland-Dokumentation
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Deutschland im Überblick | Microsoft-Dokumentation"
-description: "Dieser Artikel enthält einen Überblick über Azure Deutschland-Cloudfunktionen, den vertrauenswürdigen Aufbau und die Sicherheitsmerkmale, die die Complianceanforderungen deutscher Datenschutzrichtlinien unterstützen."
+title: Azure Deutschland im Überblick | Microsoft-Dokumentation
+description: Dieser Artikel enthält einen Überblick über Azure Deutschland-Cloudfunktionen, den vertrauenswürdigen Aufbau und die Sicherheitsmerkmale, die die Complianceanforderungen deutscher Datenschutzrichtlinien unterstützen.
 services: germany
 cloud: na
 documentationcenter: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22647082"
 ---
 # <a name="welcome-to-azure-germany"></a>Willkommen bei Azure Deutschland
 ## <a name="overview"></a>Übersicht
