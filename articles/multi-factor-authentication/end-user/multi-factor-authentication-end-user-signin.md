@@ -1,9 +1,9 @@
 ---
-title: "Azure MFA-Anmeldung mit zweistufiger Überprüfung | Microsoft-Dokumentation"
-description: "Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind."
-keywords: "Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon"
+title: Azure MFA-Anmeldung mit zweistufiger Überprüfung | Microsoft-Dokumentation
+description: Auf dieser Seite finden Sie eine Anleitung zu den verschiedenen Anmeldemethoden, die mit Azure MFA verfügbar sind.
+keywords: Benutzerauthentifizierung, Anmeldevorgang, Anmelden mit dem Mobiltelefon, Anmelden mit dem Bürotelefon
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26628413"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [!NOTE]

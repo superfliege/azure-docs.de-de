@@ -1,11 +1,11 @@
 ---
 title: Verwenden von Anforderungs- und Antwortaktionen | Microsoft Docs
-description: "Übersicht über den Anforderungs- und Antworttrigger und die Anforderungs- und Antwortaktion in einer Azure-Logik-App"
-services: 
-documentationcenter: 
+description: Übersicht über den Anforderungs- und Antworttrigger und die Anforderungs- und Antwortaktion in einer Azure-Logik-App
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27960560"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>Erste Schritte mit den Anforderungs- und Antwortkomponenten
 Mit den Anforderungs- und Antwortkomponenten in einer Logik-App können Sie in Echtzeit auf Ereignisse reagieren.

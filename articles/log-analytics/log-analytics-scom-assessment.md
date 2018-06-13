@@ -1,8 +1,8 @@
 ---
 title: Optimieren Ihrer System Center Operations Manager-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
-description: "Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten."
+description: Sie können die Lösung zur System Center Operations Manager-Integritätsüberprüfung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29180035"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
