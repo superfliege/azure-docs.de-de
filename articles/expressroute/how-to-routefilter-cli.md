@@ -1,13 +1,13 @@
 ---
-title: "Konfigurieren von Routenfiltern für Azure ExpressRoute-Verbindungen mit Microsoft-Peering: CLI | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie mithilfe von Azure CLI Routenfilter für das Microsoft-Peering konfiguriert werden."
+title: 'Konfigurieren von Routenfiltern für Azure ExpressRoute-Verbindungen mit Microsoft-Peering: CLI | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie mithilfe von Azure CLI Routenfilter für das Microsoft-Peering konfiguriert werden.
 documentationcenter: na
 services: expressroute
 author: anzaman
 manager: ganesr
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23013195"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurieren von Routenfiltern für Microsoft-Peering: Azure CLI
 

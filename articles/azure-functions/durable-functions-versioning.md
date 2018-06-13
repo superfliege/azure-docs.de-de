@@ -1,12 +1,12 @@
 ---
-title: "Versionsverwaltung in Durable Functions – Azure"
-description: "Es wird beschrieben, wie Sie die Versionsverwaltung in der Erweiterung „Durable Functions“ für Azure Functions implementieren."
+title: Versionsverwaltung in Durable Functions – Azure
+description: Es wird beschrieben, wie Sie die Versionsverwaltung in der Erweiterung „Durable Functions“ für Azure Functions implementieren.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22991285"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Versionsverwaltung in Durable Functions (Azure Functions)
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603843"
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automatisches Vergrößern oder Verkleinern der HPC Pack-Clusterressourcen in Azure gemäß der Clusterworkload
 Wenn Sie Azure-Burstknoten im HPC Pack-Cluster bereitstellen oder einen HPC Pack-Cluster auf virtuellen Azure-Computern erstellen, möchten Sie möglicherweise die Anzahl der Clusterressourcen, wie z.B. Knoten oder Kerne, entsprechend der Workload im Cluster automatisch vergrößern oder verkleinern. Indem Sie die Clusterressourcen auf diese Weise skalieren, können Sie Ihre Azure-Ressourcen effizienter nutzen und die Kosten kontrollieren.
