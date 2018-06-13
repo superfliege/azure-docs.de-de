@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI-Skriptbeispiel – Löschen eines Containers nach Präfix | Microsoft-Dokumentation"
-description: "Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens."
+title: Azure CLI-Skriptbeispiel – Löschen eines Containers nach Präfix | Microsoft-Dokumentation
+description: Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens.
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29848286"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens
 

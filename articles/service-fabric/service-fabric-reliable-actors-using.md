@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212890"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihren Actordienst
 Wie in [Dienstebenen](service-fabric-reliable-actors-platform.md#service-layering) beschrieben, ist der Actordienst selbst ein zuverlässiger Dienst.  Sie können einen eigenen Dienst schreiben, der von `ActorService` abgeleitet ist und Funktionen auf Dienstebene auf die gleiche Weise implementiert wie bei der Vererbung von StatefulService. Beispiel:

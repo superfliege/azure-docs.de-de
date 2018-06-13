@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206865"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementieren der Sicherung und Wiederherstellung von Reliable Actors
 Im folgenden Beispiel stellt der benutzerdefinierte Actordienst eine Methode zum Sichern von Actordaten bereit. Diese nutzt die Vorteile des Remoting-Listeners, der bereits in `ActorService` enthalten ist:

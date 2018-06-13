@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072401"
 ---
 # <a name="troubleshoot-a-windows-classic-vm-by-attaching-the-os-disk-to-a-recovery-vm"></a>Beheben von Problemen mit einer klassischen Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM
 

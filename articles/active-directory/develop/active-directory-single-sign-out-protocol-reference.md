@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155496"
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
 Azure Active Directory (Azure AD) unterstützt das SAML 2.0-Webbrowserprofil für einmaliges Abmelden. Damit die einmalige Abmeldung ordnungsgemäß funktioniert, muss die **LogoutURL** der Anwendung bei der Anwendungsregistrierung explizit in Azure AD registriert worden sein. Azure AD verwendet die LogoutURL zur Umleitung von Benutzern nach deren Abmeldung.

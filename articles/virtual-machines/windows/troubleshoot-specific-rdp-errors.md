@@ -21,6 +21,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072149"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Problembehandlung bei bestimmten RDP-Fehlermeldungen in einer Windows-VM in Azure
 Sie erhalten möglicherweise eine bestimmte Fehlermeldung bei Verwendung einer Remotedesktopverbindung mit einem virtuellen Windows-Computer (VM) in Azure. In diesem Artikel werden einige der häufigeren Fehlermeldungen beschrieben, zusammen mit Problemlösungsschritten zur Fehlerbehebung. Wenn beim Herstellen einer Verbindung mit Ihrem virtuellen Computer mit RDP keine bestimmte Fehlermeldung auftritt, finden Sie Informationen im [Handbuch zur Problembehandlung bei Remotedesktopfehlern](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212223"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>WCF-basierter Kommunikationsstapel für Reliable Services
 Das Reliable Services-Framework ermöglicht Dienstautoren, den Kommunikationsstapel für ihren Dienst zu wählen. Sie können den Kommunikationsstapel ihrer Wahl über den von der **CreateServiceReplicaListeners- oder CreateServiceInstanceListeners** -Methode zurückgegebenen [ICommunicationListener](service-fabric-reliable-services-communication.md) implementieren. Das Framework bietet eine Implementierung des auf WCF (Windows Communication Foundation) basierenden Kommunikationsstapels für Dienstautoren, die eine WCF-basierte Kommunikation verwenden möchten.

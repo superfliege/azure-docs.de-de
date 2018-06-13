@@ -1,11 +1,11 @@
 ---
 title: Verwenden des Azure Import/Export-Tools (V1) | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mit dem Import/Export-Tool Festplatten für einen Importauftrag vorbereiten sowie einen Import- oder Exportauftrag reparieren."
+description: Erfahren Sie, wie Sie mit dem Import/Export-Tool Festplatten für einen Importauftrag vorbereiten sowie einen Import- oder Exportauftrag reparieren.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f77535bb-d577-438a-bdd3-e15a82e0c543
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059355"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Verwenden des Azure Import/Export-Tools (klassisches Bereitstellungsmodell)
 

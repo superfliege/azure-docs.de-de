@@ -1,7 +1,7 @@
 ---
 title: store-sendgrid-java-how-to-send-email-example
 description: Senden von E-Mails mit SendGrid aus Java in einer Azure-Bereitstellung
-services: 
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059795"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Senden von E-Mails mit SendGrid aus Java in einer Azure-Bereitstellung
 Das folgende Beispiel zeigt, wie Sie mit SendGrid E-Mails von einer in Azure gehosteten Webseite senden können. Die Anwendung fragt den Benutzer nach Werten für die E-Mail, wie im folgenden Screenshot gezeigt.

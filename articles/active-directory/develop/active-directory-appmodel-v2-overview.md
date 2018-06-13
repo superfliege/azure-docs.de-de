@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155339"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Anmelden von Microsoft-Konto- und Azure Active Directory-Benutzern in einer einzelnen Anwendung
 In der Vergangenheit benötigten Anwendungsentwickler, die sowohl persönliche Microsoft-Konten als auch Geschäftskonten über Azure Active Directory unterstützen möchten, eine Integration für zwei separate Systeme. Der Azure AD v2.0-Endpunkt (Azure Active Directory) führt zur Vereinfachung dieses Prozesses eine neue Authentifizierungs-API-Version ein. Mit dem Azure AD v2.0-Endpunkt ist die Anmeldung über beide Arten von Konten mit einer einzelnen Integration möglich. Anwendungen, die den Azure AD v2.0-Endpunkt verwenden, können auch die REST-APIs aus der [Microsoft Graph-API](https://graph.microsoft.io) mit beiden Kontotypen nutzen.

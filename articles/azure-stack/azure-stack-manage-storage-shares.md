@@ -20,6 +20,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077410"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack
 

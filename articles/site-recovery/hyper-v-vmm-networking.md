@@ -1,6 +1,6 @@
 ---
-title: "Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover mit Azure Site Recovery | Microsoft Docs"
-description: "Beschreibt, wie die IP-Adressierung für die Verbindung mit virtuellen Computern an einem sekundären lokalen Standort nach einem Failover Azure mit Site Recovery eingerichtet wird."
+title: Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover mit Azure Site Recovery | Microsoft Docs
+description: Beschreibt, wie die IP-Adressierung für die Verbindung mit virtuellen Computern an einem sekundären lokalen Standort nach einem Failover Azure mit Site Recovery eingerichtet wird.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378675"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover
 

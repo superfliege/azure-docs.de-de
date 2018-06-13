@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29821044"
 ---
 Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen Git-Repository einen Azure-Remotespeicherort hinzu. Ersetzen Sie _&lt;deploymentLocalGitUrl-from-create-step>_ durch die URL des Git-Remotespeicherorts, den Sie in [Erstellen einer Web-App](#create) gespeichert haben.
 

@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157668"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 Die Möglichkeit des einmaligen Anmeldens (Single Sign-On, SSO), bei dem Benutzer ihre Anmeldeinformationen nur einmal eingeben und diese Anmeldeinformationen automatisch auch für andere Anwendungen funktionieren, wird heute von den Kunden erwartet. Die Schwierigkeit, den Benutzernamen und das Kennwort auf einem kleinen Bildschirm einzugeben – häufig in Kombination mit einer weiteren Datenabfrage wie etwa einem Telefonanruf oder einem per SMS gesendeten Code (zweistufige Authentifizierung) – führt beim Benutzer schnell zu Unmut, wenn dieser Vorgang für Ihr Produkt mehrfach durchgeführt werden muss.

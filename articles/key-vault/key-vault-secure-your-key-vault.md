@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070378"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.

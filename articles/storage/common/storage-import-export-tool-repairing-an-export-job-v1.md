@@ -1,11 +1,11 @@
 ---
 title: Reparieren eines Exportauftrags in Azure Import/Export (V1) | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie einen Exportauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde."
+description: Erfahren Sie, wie Sie einen Exportauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 728e2a42-04ce-4be8-9375-e9e2bc6827a5
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23059675"
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
 Nach Abschluss eines Exportauftrags können Sie das Microsoft Azure Import/Export-Tool lokal ausführen, um folgende Vorgänge durchzuführen:  

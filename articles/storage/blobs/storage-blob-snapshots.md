@@ -1,6 +1,6 @@
 ---
-title: "Erstellen einer schreibgeschützten Momentaufnahme eines Blobs in Azure Storage | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, um Blobdaten zu einem angegebenen Zeitpunkt zu sichern. Sie erhalten grundlegende Informationen dazu, wie Momentaufnahmen in Rechnung gestellt und wie Sie mithilfe von Momentaufnahmen Ihre Kapazitätskosten minimieren können."
+title: Erstellen einer schreibgeschützten Momentaufnahme eines Blobs in Azure Storage | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Momentaufnahme eines Blobs erstellen, um Blobdaten zu einem angegebenen Zeitpunkt zu sichern. Sie erhalten grundlegende Informationen dazu, wie Momentaufnahmen in Rechnung gestellt und wie Sie mithilfe von Momentaufnahmen Ihre Kapazitätskosten minimieren können.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/09/2018
+ms.locfileid: "29852930"
 ---
 # <a name="create-a-blob-snapshot"></a>Erstellen einer Momentaufnahme eines Blobs
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165110"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Unterstützte Browser und Geräte für das Azure-Portal
 Das [Azure-Portal](https://portal.azure.com) kann auf allen modernen Desktop- und Tabletgeräten und mit allen Browsern ausgeführt werden.

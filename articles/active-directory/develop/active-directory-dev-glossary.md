@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158148"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory-Glossar für Entwickler
 Dieser Artikel enthält hilfreiche Definitionen für einige der zentralen Entwicklerkonzepte von Azure Active Directory (AD) im Zusammenhang mit der Anwendungsentwicklung für Azure AD.
