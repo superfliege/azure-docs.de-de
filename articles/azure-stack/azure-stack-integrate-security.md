@@ -1,6 +1,6 @@
 ---
-title: "Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen"
-description: "Erfahren Sie, wie Sie Azure Stack-Sicherheitsfunktionen in Ihre Datencenter-Sicherheitslösungen integrieren."
+title: Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen
+description: Erfahren Sie, wie Sie Azure Stack-Sicherheitsfunktionen in Ihre Datencenter-Sicherheitslösungen integrieren.
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 8ce9045a3e4fd12d61e9b1600ee98880762bc544
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29734426"
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Integrieren von Azure Stack-Sicherheitsfunktionen in Datencenter-Sicherheitslösungen
 Azure Stack wurde unter Berücksichtigung von Sicherheitsaspekten entworfen und entwickelt. Aus diesem Grund ist Azure Stack ein in sich geschlossenes System, in dem die Installation eines Softwaresicherheitsagents nicht unterstützt wird.

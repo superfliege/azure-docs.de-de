@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29937307"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Leitfaden zum Erstellen einer Lösungsvorlage für den Azure Marketplace
 Nach Abschluss von Schritt 1, [Erstellen und Registrieren eines Kontos][link-acct-creation], wurden Sie unter [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage](marketplace-publishing-solution-template-creation-prerequisites.md) durch die Erstellung einer mit Azure kompatiblen Lösungsvorlage geleitet. Jetzt werden Sie die Schritte zum Erstellen einer Lösungsvorlage für mehrere virtuelle Computer im [Veröffentlichungsportal][link-pubportal] für den Azure Marketplace durchlaufen.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29974138"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit – Architektur
 Das Azure Stack Development Kit (ASDK) ist eine Bereitstellung von Azure Stack mit einem Knoten. Alle Komponenten werden auf virtuellen Computern installiert, die auf einem einzigen Hostcomputer ausgeführt werden. 

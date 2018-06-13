@@ -1,8 +1,8 @@
 ---
-title: "Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App"
-description: "Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren."
+title: Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
+description: Erfahren Sie, wie Sie Ihre Webanwendung für die Clientzertifikatauthentifizierung für TLS konfigurieren.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22985765"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für eine Web-App
 ## <a name="overview"></a>Übersicht

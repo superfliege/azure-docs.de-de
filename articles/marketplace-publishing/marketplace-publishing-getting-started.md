@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943172"
 ---
 > [!NOTE]
 > Diese Dokumentation ist nicht mehr aktuell und ist nicht genau. Wechseln Sie stattdessen zum [Azure Marketplace-Verkäuferhandbuch](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide), um einen Leitfaden zur Veröffentlichung eines Angebots im Azure Marketplace zu erhalten.

@@ -1,11 +1,11 @@
 ---
-title: "SSL-Richtlinienübersicht für Azure Application Gateway | Microsoft-Dokumentation"
-description: "Erfahren Sie, welche Konfigurationsmöglichkeiten Azure Application Gateway für die SSL-Richtlinie bietet."
+title: SSL-Richtlinienübersicht für Azure Application Gateway | Microsoft-Dokumentation
+description: Erfahren Sie, welche Konfigurationsmöglichkeiten Azure Application Gateway für die SSL-Richtlinie bietet.
 services: application gateway
 documentationcenter: na
 author: amsriva
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure resource manager
 ms.service: application gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22987075"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>SSL-Richtlinienübersicht für Azure Application Gateway
 

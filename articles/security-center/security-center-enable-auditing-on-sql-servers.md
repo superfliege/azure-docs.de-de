@@ -1,11 +1,11 @@
 ---
-title: "Aktivieren der Überwachung und Bedrohungserkennung für SQL-Server in Azure Security Center | Microsoft-Dokumentation"
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Überwachung und Bedrohungserkennung für SQL-Server aktivieren“ implementieren."
+title: Aktivieren der Überwachung und Bedrohungserkennung für SQL-Server in Azure Security Center | Microsoft-Dokumentation
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Überwachung und Bedrohungserkennung für SQL-Server aktivieren“ implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23040455"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>Aktivieren der Überwachung und Bedrohungserkennung für SQL-Server in Azure Security Center
 Azure Security Center empfiehlt Ihnen, die Überwachung und Bedrohungserkennung für alle Datenbanken auf Ihren Azure SQL-Servern zu aktivieren, sofern noch nicht erfolgt. Die Überwachung und Bedrohungserkennung kann Ihnen dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können.

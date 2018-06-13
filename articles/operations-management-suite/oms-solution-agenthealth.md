@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30182727"
 ---
 #  <a name="agent-health-solution-in-oms"></a>Lösung für die Agent-Integritätsdiagnose in OMS
 Mit der Lösung für die Agent-Integritätsdiagnose in OMS können Sie für alle Agents, die ihre Daten direkt an den OMS-Arbeitsbereich oder eine mit OMS verbundene System Center Operations Manager-Verwaltungsgruppe melden, die Agents ermitteln, die nicht mehr reagieren und Betriebsdaten übermitteln.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
