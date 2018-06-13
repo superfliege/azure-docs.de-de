@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-Beispiele – verwaltete Azure-Anwendungen | Microsoft-Dokumentation"
-description: "Azure CLI-Beispiele – verwaltete Azure-Anwendungen"
+title: Azure CLI-Beispiele – verwaltete Azure-Anwendungen | Microsoft-Dokumentation
+description: Azure CLI-Beispiele – verwaltete Azure-Anwendungen
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "23632551"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-Beispiele
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-Skriptbeispiel – Bereitstellen einer verwalteten Anwendung | Microsoft-Dokumentation"
-description: "Azure PowerShell-Skriptbeispiel – Bereitstellen einer Definition für die verwaltete Anwendung"
+title: Azure PowerShell-Skriptbeispiel – Bereitstellen einer verwalteten Anwendung | Microsoft-Dokumentation
+description: Azure PowerShell-Skriptbeispiel – Bereitstellen einer Definition für die verwaltete Anwendung
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23637040"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Bereitstellen einer verwalteten Anwendung für einen Dienstkatalog mit PowerShell
 
