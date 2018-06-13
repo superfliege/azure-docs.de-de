@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896420"
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>Verschlüsselungsanforderungen für PCI-DSS-konforme Umgebungen 
 ## <a name="pci-dss-requirement-4"></a>PCI-DSS-Anforderung 4

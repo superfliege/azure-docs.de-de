@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30833403"
 ---
 # <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Sicherungs- und Wiederherstellungsoptionen für virtuelle Linux-Computer in Azure
 

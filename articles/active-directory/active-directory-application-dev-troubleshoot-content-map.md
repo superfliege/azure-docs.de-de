@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33932386"
 ---
 # <a name="troubleshoot-azure-active-directory-application-development"></a>Problembehandlung bei der Azure Active Directory-Anwendungsentwicklung
 Über die folgenden Links gelangen Sie zu einer Inhaltsübersicht, die Sie bei der Behebung einiger der am häufigsten auftretenden Probleme bei der Anwendungsentwicklung mit der **Anwendungsregistrierung** in Azure Active Directory unterstützt.

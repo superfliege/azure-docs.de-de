@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911680"
 ---
 # <a name="encrypt-disks-on-a-linux-vm-using-the-azure-cli-10"></a>Verschlüsseln von Datenträgern auf einem virtuellen Linux-Computer mithilfe von Azure CLI 1.0
 Zur Verbesserung der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure im Ruhezustand verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel erfahren Sie, wie Sie virtuelle Datenträger auf einem virtuellen Linux-Computer unter Verwendung von Azure CLI 1.0 und des Resource Manager-Bereitstellungsmodells verschlüsseln.
