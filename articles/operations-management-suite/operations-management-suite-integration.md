@@ -1,8 +1,8 @@
 ---
 title: Integration in die Operations Management Suite (OMS) | Microsoft Docs
-description: "Sie können nicht nur die Standardfunktionen der OMS verwenden, sondern die Suite auch in andere Verwaltungsanwendungen und -lösungen integrieren, um eine hybride Verwaltungsumgebung, benutzerdefinierte und speziell auf Ihre Umgebung zugeschnittene Verwaltungsszenarien oder eine benutzerdefinierte Verwaltungslösung für Ihre Kunden bereitzustellen.  Dieser Artikel bietet eine Übersicht über die verschiedenen Optionen für die Integration in die OMS sowie Links zu anderen Artikeln mit detaillierten technischen Informationen."
+description: Sie können nicht nur die Standardfunktionen der OMS verwenden, sondern die Suite auch in andere Verwaltungsanwendungen und -lösungen integrieren, um eine hybride Verwaltungsumgebung, benutzerdefinierte und speziell auf Ihre Umgebung zugeschnittene Verwaltungsszenarien oder eine benutzerdefinierte Verwaltungslösung für Ihre Kunden bereitzustellen.  Dieser Artikel bietet eine Übersicht über die verschiedenen Optionen für die Integration in die OMS sowie Links zu anderen Artikeln mit detaillierten technischen Informationen.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23039465"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Integration in die Operations Management Suite (OMS)
 Die Operations Management Suite ist die cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen das Verwalten und Schützen Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.  Sie können nicht nur die Standardfunktionen der OMS verwenden, sondern die Suite auch in andere Verwaltungsanwendungen und -lösungen integrieren, um eine hybride Verwaltungsumgebung, benutzerdefinierte und speziell auf Ihre Umgebung zugeschnittene Verwaltungsszenarien oder eine benutzerdefinierte Verwaltungslösung für Ihre Kunden bereitzustellen.  Dieser Artikel bietet eine Übersicht über die verschiedenen Optionen für die Integration in die OMS-Dienste sowie Links zu anderen Artikeln mit detaillierten technischen Informationen. 

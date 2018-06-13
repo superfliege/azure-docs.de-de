@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840888"
 ---
 # <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-the-classic-deployment-model"></a>Häufig gestellte Fragen zu virtuellen Azure-Computern unter Linux, die mit dem klassischen Bereitstellungsmodell erstellt wurden
 > [!IMPORTANT] 

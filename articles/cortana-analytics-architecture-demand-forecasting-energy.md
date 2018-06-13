@@ -1,9 +1,9 @@
 ---
-title: "Cortana Intelligence-Lösungsvorlagenarchitektur für die Prognose des Energiebedarfs | Microsoft-Dokumentation"
-description: "Architektur der Microsoft Cortana Intelligence-Lösungsvorlage, mithilfe derer die Nachfrage an einen Energieversorger vorhergesagt wird."
-keywords: "Lösungsbeschleunigung;Cortana Analytics;Energieprognose"
+title: Cortana Intelligence-Lösungsvorlagenarchitektur für die Prognose des Energiebedarfs | Microsoft-Dokumentation
+description: Architektur der Microsoft Cortana Intelligence-Lösungsvorlage, mithilfe derer die Nachfrage an einen Energieversorger vorhergesagt wird.
+keywords: Lösungsbeschleunigung;Cortana Analytics;Energieprognose
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23002385"
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlagenarchitektur für die Prognose des Energiebedarfs
 Das nachstehende Diagramm bietet eine Architekturübersicht über die [Cortana Intelligence-Lösungsvorlage für die Prognose des Energiebedarfs](cortana-analytics-playbook-demand-forecasting-energy.md).

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: de-DE
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943177"
 abstract:
   description: Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/><b>Neue Vorschauversion für Cognitive Search.</b> Verwenden Sie eine Vorabversion der REST-API, um KI-basierte Algorithmen an die Indizierungspipeline zu binden. Extrahieren Sie Daten und rufen Sie die Verarbeitung von natürlicher Sprache und Bildern auf, um Rohdaten in unstrukturierten Inhalten in durchsuchbare Inhalte in einem Azure Search-Index umzuwandeln. <p/>Fangen Sie mit <a href="/azure/search/cognitive-search-quickstart-blob">Ressourcen und Beispieldaten</a> an, oder erfahren Sie mehr <a href="/azure/search/cognitive-search-concept-intro">Konzepte</a>.
   aside:

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31433329"
 ---
 Sie können die Ressourcengruppe löschen, wenn Sie fertig sind. Dadurch werden das Speicherkonto, die Azure-Dateifreigabe und alle anderen Ressourcen gelöscht, die Sie innerhalb der Ressourcengruppe bereitgestellt haben.
 

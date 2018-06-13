@@ -1,12 +1,12 @@
 ---
-title: "Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Azure Traffic Manager | Microsoft-Dokumentation"
-description: "Dieser Artikel erläutert die Konfiguration der geografischen Routingmethode für Datenverkehr mithilfe von Azure Traffic Manager"
+title: Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Azure Traffic Manager | Microsoft-Dokumentation
+description: Dieser Artikel erläutert die Konfiguration der geografischen Routingmethode für Datenverkehr mithilfe von Azure Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397802"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
 

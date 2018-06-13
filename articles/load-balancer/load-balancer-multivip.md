@@ -1,6 +1,6 @@
 ---
-title: "Mehrere VIPs für einen Clouddienst"
-description: "Übersicht über MultiVIP und das Festlegen von mehreren virtuellen IP-Adressen für einen Clouddienst"
+title: Mehrere VIPs für einen Clouddienst
+description: Übersicht über MultiVIP und das Festlegen von mehreren virtuellen IP-Adressen für einen Clouddienst
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23020845"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>Konfigurieren mehrerer VIPs für einen Clouddienst
 

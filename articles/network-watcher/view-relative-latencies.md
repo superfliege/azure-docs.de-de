@@ -1,13 +1,13 @@
 ---
-title: "Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie relative Latenzen zwischen Internetanbietern und Azure-Regionen von bestimmten Standorten aus anzeigen können."
+title: Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie relative Latenzen zwischen Internetanbietern und Azure-Regionen von bestimmten Standorten aus anzeigen können.
 services: network-watcher
-documentationcenter: 
+documentationcenter: ''
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: a6c2ffa619eeff8b455df8a8b2157525af12c640
 ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27600887"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus
 
