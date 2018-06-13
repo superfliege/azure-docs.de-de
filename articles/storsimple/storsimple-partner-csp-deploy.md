@@ -1,12 +1,12 @@
 ---
-title: "Übersicht über Microsoft Azure StorSimple und das Cloudlösungsanbieter-Programm | Microsoft-Dokumentation"
-description: "Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner."
+title: Übersicht über Microsoft Azure StorSimple und das Cloudlösungsanbieter-Programm | Microsoft-Dokumentation
+description: Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23109578"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloudlösungsanbieter-Programm
 

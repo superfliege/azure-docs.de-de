@@ -1,12 +1,12 @@
 ---
-title: "Verwalten von Zugriffssteuerungsdatensätzen in StorSimple | Microsoft Docs"
-description: "Beschreibt, wie Sie mit Zugriffssteuerungsdatensätzen (Access Control Record, ACR) angeben, welche Hosts Verbindungen mit einem Volume auf dem StorSimple-Gerät herstellen können."
+title: Verwalten von Zugriffssteuerungsdatensätzen in StorSimple | Microsoft Docs
+description: Beschreibt, wie Sie mit Zugriffssteuerungsdatensätzen (Access Control Record, ACR) angeben, welche Hosts Verbindungen mit einem Volume auf dem StorSimple-Gerät herstellen können.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23108338"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Verwalten von Zugriffssteuerungsdatensätzen mithilfe des StorSimple Manager-Diensts
 
@@ -58,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um einen ACR hinzuzufügen:
 
     1. Geben Sie einen Namen für den ACR ein.
     
-    2. Geben Sie unter **iSCSI-Initiatorname (IQN)**den qualifizierten IQN-Namen Ihres Windows Server-Hosts an.
+    2. Geben Sie unter **iSCSI-Initiatorname (IQN)** den qualifizierten IQN-Namen Ihres Windows Server-Hosts an.
 
     3. Klicken Sie auf **Hinzufügen**, um den ACR hinzuzufügen.
 
