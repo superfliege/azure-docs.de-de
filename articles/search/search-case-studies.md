@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790269"
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Verwendung von Azure Search: Fallstudien und Kundenberichte
 Erfahren Sie, wie die folgenden Organisationen sich positiv entwickeln konnten, indem die vielfältigen Suchfunktionen von Azure Search in ihre Onlineanwendungen integriert wurden.

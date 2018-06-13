@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168281"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
 Dieser Artikel bietet Einzelheiten zum Konfigurieren des [OMS-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  

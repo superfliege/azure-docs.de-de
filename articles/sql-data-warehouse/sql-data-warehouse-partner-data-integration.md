@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188513"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partner für die Datenintegration bei SQL Data Warehouse
 Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools und Lösungen für die Datenintegration anbieten, die Azure SQL Data Warehouse unterstützen.

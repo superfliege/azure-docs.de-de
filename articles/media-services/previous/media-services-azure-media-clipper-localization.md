@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782679"
 ---
 # <a name="configure-localization"></a>Konfigurieren der Lokalisierung
 Azure Media Clipper ist in 18 Sprachen verfügbar. Um die Widgetsprache festzulegen, müssen Sie während der Initialisierung den `language`-Parameter definieren. Übergeben Sie die Zeichenfolge für den gewünschten Sprachcode aus der folgenden Liste:

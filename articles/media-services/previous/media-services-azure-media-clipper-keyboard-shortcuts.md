@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33782579"
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurieren von Azure Media Clipper-Tastenkombinationen
 Azure Media Clipper unterstützt die Anpassung von Tastenkombinationen über den optionalen JSON-Parameter `keymap`.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937554"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack-Überprüfungsbericht
 Das Azure Stack Readiness Checker-Tool führt Überprüfungen durch, die die Bereitstellung und Wartung einer Azure Stack-Umgebung unterstützen. Das Tool schreibt die Überprüfungsergebnisse in eine JSON-Berichtsdatei. Der Bericht zeigt detaillierte und zusammengefasste Daten über den Stand der Voraussetzungen für die Bereitstellung von Azure Stack und über Secrets Rotation für bestehende Azure Stack-Bereitstellungen.  

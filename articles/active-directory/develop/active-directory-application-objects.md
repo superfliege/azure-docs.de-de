@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155618"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)
 In einigen Fällen kann der Begriff „Anwendung“ im Kontext von Azure AD falsch verstanden werden. Das Ziel dieses Artikels ist die Veranschaulichung der konzeptuellen und konkreten Aspekte der Azure AD-Anwendungsintegration, gefolgt von einer Erläuterung der Registrierung und Zustimmung zu einer [mehrinstanzenfähigen Anwendung](active-directory-dev-glossary.md#multi-tenant-application).
