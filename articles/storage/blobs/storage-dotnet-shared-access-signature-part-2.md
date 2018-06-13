@@ -1,8 +1,8 @@
 ---
 title: Erstellen und Verwenden von Shared Access Signatures (SAS) mit Azure Blob Storage | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie, wie Sie Shared Access Signatures für die Verwendung mit Blob Storage erstellen und sie in Ihren Clientanwendungen nutzen."
+description: In diesem Tutorial erfahren Sie, wie Sie Shared Access Signatures für die Verwendung mit Blob Storage erstellen und sie in Ihren Clientanwendungen nutzen.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23056795"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196898"
 ---
 Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus für eine klassische VNet-VPN Gateway-Instanz anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
 

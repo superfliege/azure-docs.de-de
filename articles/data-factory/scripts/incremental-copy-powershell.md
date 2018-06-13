@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30169738"
 ---
 # <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>PowerShell-Skript: Inkrementelles Laden von Daten mithilfe von Azure Data Factory
 Dieses PowerShell-Beispielskript lädt nach der vollständigen Erstkopie von Daten aus der Quelle in die Senke nur neue oder aktualisierte Datensätze aus einem Quelldatenspeicher in einen Senkendatenspeicher.  

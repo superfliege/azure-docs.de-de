@@ -20,6 +20,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30284556"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
 Für das Testen der Leistung von Clouddiensten stehen zahlreiche Tools und Techniken zur Verfügung.
@@ -30,7 +31,7 @@ Sie können Ihre Anwendung auch lokal im Serveremulator profilieren, bevor Sie s
 Dieser Artikel behandelt die CPU-Sampling-Methode der Profilerstellung, welche lokal im Emulator erfolgen kann. CPU-Sampling ist eine wenig intrusive Profilerstellungsmethode. Zu einem festgelegten Sampling-Intervall erstellt der Profiler eine Momentaufnahme der Aufrufliste. Die Daten werden über einen bestimmte Zeitraum hinweg erfasst und in einem Bericht angezeigt. Diese Profilerstellungsmethode gibt vor allem an, wo in einer rechenintensiven Anwendung die meiste CPU-Arbeit erfolgt.  Dadurch können Sie sich auf den "Hot Path" konzentrieren, wo Ihre Anwendung die meiste Zeit verbringt.
 
 ## <a name="1-configure-visual-studio-for-profiling"></a>1: Konfigurieren von Visual Studio für die Profilerstellung
-Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)**aufgelistet ist.  Sie können auch unter http://referencesource.microsoft.com/symbols nachschauen, wo Sie ggf. weitere Symboldateien finden.
+Es gibt wenige Visual Studio-Konfigurationsoptionen, die für die Profilerstellung hilfreich sind. Um Profilberichte sinnvoll zu nutzen, benötigen Sie sowohl Symbole (.pdb-Dateien) für die Anwendung als auch Symbole für Systembibliotheken. Sie möchten möglicherweise überprüfen, dass Sie auf die verfügbaren Symbolserver verweisen. Wählen Sie dazu im Menü **Extras** in Visual Studio **Optionen**, und wählen Sie dann **Debugging** und anschließend **Symbole**. Überprüfen Sie, dass Microsoft Symbol Servers unter **Speicherorte für Symboldateien (.pdb)** aufgelistet ist.  Sie können auch unter http://referencesource.microsoft.com/symbols nachschauen, wo Sie ggf. weitere Symboldateien finden.
 
 ![Symboloptionen][4]
 

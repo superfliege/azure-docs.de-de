@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33781949"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Anzeigen des monatlichen geschätzten Labkostentrends in Azure DevTest Labs
 Mithilfe des DevTest Labs-Features für das Kostenmanagement können Sie die Kosten Ihres Labs nachverfolgen. Dieser Artikel veranschaulicht, wie Sie das Diagramm **Monatlicher geschätzter Kostentrend** verwenden, um die bisherigen geschätzten Kosten für den aktuellen Kalendermonat sowie die veranschlagten Kosten am Monatsende für den aktuellen Kalendermonat anzuzeigen. Außerdem wird in diesem Artikel beschrieben, wie Sie die Labkosten besser verwalten können, indem Sie Ausgabenziele und Schwellenwerte festlegen, bei denen beim Erreichen des entsprechenden Werts das Melden der Ergebnisse durch DevTest Labs ausgelöst wird.

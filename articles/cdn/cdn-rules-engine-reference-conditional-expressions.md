@@ -1,11 +1,11 @@
 ---
-title: "Bedingte Ausdrücke des Azure CDN-Regelmoduls | Microsoft-Dokumentation"
-description: "Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls."
+title: Bedingte Ausdrücke des Azure CDN-Regelmoduls | Microsoft-Dokumentation
+description: Referenzdokumentation zu den Übereinstimmungsbedingungen und Features des Azure CDN-Regelmoduls.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "22997975"
 ---
 # <a name="azure-cdn-rules-engine-conditional-expressions"></a>Bedingte Ausdrücke des Azure CDN-Regelmoduls
 Dieses Thema enthält ausführliche Beschreibungen der bedingten Ausdrücke für das [Regelmodul](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).

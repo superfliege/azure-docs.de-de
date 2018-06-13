@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194195"
 ---
 # <a name="runbook-settings"></a>Runbookeinstellungen
 Jedes Runbook in Azure Automation verfügt über mehrere Einstellungen, mit denen das Runbook identifiziert und sein Protokollierungsverhalten geändert werden kann. Nachfolgend wird jede dieser Einstellungen beschrieben, und Sie erfahren, wie die Einstellungen geändert werden können.
