@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über Logic Apps-Connectors | Microsoft Docs"
-description: "Übersicht über Connectors, die in einer Logik-App verwendet werden können"
-services: 
-documentationcenter: 
+title: Übersicht über Logic Apps-Connectors | Microsoft Docs
+description: Übersicht über Connectors, die in einer Logik-App verwendet werden können
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: ca8dab2e-9b69-4b1e-865d-1facd9f0cdac
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27961651"
 ---
 # <a name="using-connectors-in-a-logic-app"></a>Verwenden von Connectors in einer Logik-App
 Connectors ermöglichen den schnellen dienst-, protokoll- und plattformübergreifenden Zugriff auf Ereignisse, Daten und Aktionen.  Eine umfassende Liste mit von Logic Apps unterstützten Connectors finden Sie [hier](apis-list.md).  Connectors können als Trigger oder Aktion in einer Logik-App verwendet werden und benötigen unter Umständen eine konfigurierte *Verbindung* (beispielsweise bei der Autorisierung eines Twitter-Kontos für den Zugriff oder die Beitragsveröffentlichung in Ihrem Namen).

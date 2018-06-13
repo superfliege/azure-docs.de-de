@@ -1,11 +1,11 @@
 ---
-title: "Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher – Azure CLI 1.0 | Microsoft-Dokumentation"
-description: "Auf dieser Seite wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher mit Azure CLI 1.0 verwaltet werden."
+title: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Azure Network Watcher – Azure CLI 1.0 | Microsoft-Dokumentation
+description: Auf dieser Seite wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher mit Azure CLI 1.0 verwaltet werden.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2dfc3112-8294-4357-b2f8-f81840da67d3
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774487"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli-10"></a>Konfigurieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Azure CLI 1.0
 

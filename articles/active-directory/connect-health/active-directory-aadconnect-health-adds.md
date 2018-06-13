@@ -1,8 +1,8 @@
 ---
 title: Verwenden von Azure AD Connect Health mit AD DS | Microsoft-Dokumentation
-description: "Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen."
+description: Auf dieser Seite zu Azure AD Connect Health wird beschrieben, wie Sie AD DS überwachen.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: arluca
 manager: mtillman
 editor: curtand
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614412"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>Verwenden von Azure AD Connect Health mit AD DS
 Die folgende Dokumentation gilt speziell für die Überwachung von Active Directory-Domänendiensten mit Azure AD Connect Health. Folgende AD DS-Versionen werden unterstützt: Windows Server 2008 R2, Windows Server 2012, Windows Server 2012 R2 und Windows Server 2016.

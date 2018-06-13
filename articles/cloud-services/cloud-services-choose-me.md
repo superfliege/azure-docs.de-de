@@ -1,8 +1,8 @@
 ---
-title: "Compute-Optionen in Azure – Azure Cloud Services | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über die Compute-Hostingoptionen in Azure und deren Funktionsweise: App Service, Azure Cloud Services und Virtual Machines"
+title: Compute-Optionen in Azure – Azure Cloud Services | Microsoft-Dokumentation
+description: 'Erfahren Sie mehr über die Compute-Hostingoptionen in Azure und deren Funktionsweise: App Service, Azure Cloud Services und Virtual Machines'
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
 ms.assetid: ed7ad348-6018-41bb-a27d-523accd90305
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120283"
 ---
 # <a name="should-i-choose-azure-cloud-services-or-something-else"></a>Sollte ich mich für Azure Cloud Services oder eine andere Lösung entscheiden?
 Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes bietet einen anderen Satz von Diensten an. Welches Sie auswählen, hängt ausschließlich davon ab, was Sie versuchen möchten.

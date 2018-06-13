@@ -1,9 +1,9 @@
 ---
-title: "Einrichten der zweistufigen Überprüfung für mein Geschäfts-, Schul- oder Unikonto | Microsoft-Dokumentation"
-description: "Wenn Ihr Unternehmen Azure Multi-Factor Authentication konfiguriert, werden Sie aufgefordert, sich für die zweistufige Überprüfung anzumelden. Hier erfahren Sie, wie Sie das Verfahren einrichten. "
+title: Einrichten der zweistufigen Überprüfung für mein Geschäfts-, Schul- oder Unikonto | Microsoft-Dokumentation
+description: 'Wenn Ihr Unternehmen Azure Multi-Factor Authentication konfiguriert, werden Sie aufgefordert, sich für die zweistufige Überprüfung anzumelden. Hier erfahren Sie, wie Sie das Verfahren einrichten. '
 services: multi-factor-authentication
 keywords: Verwenden von Azure Active Directory, Active Directory in der Cloud, Tutorial zu Active Directory
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28198354"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
 Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.

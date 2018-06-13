@@ -1,11 +1,11 @@
 ---
-title: "Übersicht über Azure DNS | Microsoft Docs"
-description: "Übersicht über DNS-Hostingdienste in Microsoft Azure. Hosten Ihrer Domäne in Microsoft Azure."
+title: Übersicht über Azure DNS | Microsoft Docs
+description: Übersicht über DNS-Hostingdienste in Microsoft Azure. Hosten Ihrer Domäne in Microsoft Azure.
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
 ms.service: dns
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/19/2017
+ms.locfileid: "26761629"
 ---
 # <a name="azure-dns-overview"></a>Übersicht über Azure DNS
 
