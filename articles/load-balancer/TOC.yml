@@ -74,6 +74,8 @@
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Zone (CLI)
       href: load-balancer-standard-public-zonal-cli.md
+    - name: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
+      href: create-load-balancer-rest-api.md
     - name: Einrichten eines Lastenausgleichs im Basic-Tarif (Vorlage)
       href: load-balancer-get-started-internet-arm-template.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
@@ -106,6 +108,8 @@
           href: load-balancer-multiple-ip-powershell.md
     - name: Protokollanalysen für den Azure-Lastenausgleich
       href: load-balancer-monitor-log.md
+    - name: Abrufen von Load Balancer-Metriken mit REST
+      href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurieren von Hochverfügbarkeitsports für den internen Lastenausgleich
       href: load-balancer-configure-ha-ports.md
     - name: Problembehandlung
