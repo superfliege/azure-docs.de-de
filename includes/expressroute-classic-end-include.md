@@ -9,10 +9,11 @@ ms.date: 03/22/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 064bda1b4201d30e32766b4d0e19e9950901152f
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "30197481"
 ---
 > [!IMPORTANT] 
 > Das Erstellen neuer ExpressRoute-Verbindungen im klassischen Bereitstellungsmodell ist ab dem 1. März 2017 nicht mehr möglich.
