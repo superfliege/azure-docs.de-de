@@ -128,6 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: Verwalten von Netzwerkressourcen
           href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: Ändern des Benutzerabonnementbesitzers
+          href: azure-stack-change-subscription-owner.md
         - name: Verwalten von virtuellen Computern mit Windows Azure Pack
           href: azure-stack-manage-windows-azure-pack.md
         - name: Starten und Beenden von Azure Stack
@@ -216,7 +218,7 @@
           items:
             - name: Bereitstellen des SQL Server-Ressourcenanbieters
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: Hinzufügen von Hostservern
+            - name: Hinzufügen von SQL-Hostservern
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: Erstellen von SQL-Datenbanken
               href: azure-stack-sql-resource-provider-databases.md
@@ -227,7 +229,20 @@
             - name: Entfernen des SQL Server-Ressourcenanbieters
               href: azure-stack-sql-resource-provider-remove.md
         - name: Anbieten von MySQL als PaaS
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: Bereitstellen des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: Hinzufügen von MySQL-Hostservern
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: Erstellen von MySQL-Datenbanken
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: Aktualisieren des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: Warten des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: Entfernen des MySQL Server-Ressourcenanbieters
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: App Service als PaaS anbieten
           items:
             - name: Übersicht über App Service in Azure Stack

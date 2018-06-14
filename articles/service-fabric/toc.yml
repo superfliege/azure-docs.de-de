@@ -163,6 +163,13 @@
           href: service-fabric-application-model.md
         - name: Anwendungs- und Dienstmanifeste
           href: service-fabric-application-and-service-manifests.md
+        - name: Beispiele für Anwendungs- und Dienstmanifeste
+          href: service-fabric-manifest-examples.md
+          items:
+            - name: 'Reliable Services: Beispiele für Anwendungs- und Dienstmanifeste'
+              href: service-fabric-manifest-example-reliable-services-app.md
+            - name: 'Mehrere Container: Beispiele für Anwendungs- und Dienstmanifeste'
+              href: service-fabric-manifest-example-container-app.md
         - name: Hostingmodell
           href: service-fabric-hosting-model.md
         - name: Anwendungssicherheit
@@ -399,6 +406,8 @@
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
         - name: Erstellen eines ASP.NET Core-Diensts
           href: service-fabric-add-a-web-frontend.md
+        - name: Erstellen eines Apache Tomcat-Servercontainers unter Linux
+          href: service-fabric-get-started-tomcat.md
         - name: Konfigurieren der Sicherheit
           items:
             - name: Verwalten von Anwendungsgeheimnissen

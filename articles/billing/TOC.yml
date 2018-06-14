@@ -41,6 +41,12 @@
           href: billing-understand-reserved-instance-usage-ea.md
         - name: Verwalten von reservierten Instanzen
           href: billing-manage-reserved-vm-instance.md
+    - name: REST-Beispiele
+      items:
+        - name: Überprüfen der Unternehmenskosten
+          href: billing-review-enterprise-billing.md
+        - name: Überprüfen der Abonnementnutzung
+          href: billing-review-subscription-billing.md
 - name: Verwalten eines Kontos
   items:
     - name: Kostenloses Konto

@@ -61,16 +61,14 @@
       href: access-api-cli-how-to.md
     - name: 'Auftragsstatusereignisse: CLI'
       href: job-state-events-cli-how-to.md
-    - name: 'Hochladen von Inhalten: .NET'
+    - name: Hochladen von Inhalten
       items:
-        - name: Über HTTP(s)
+        - name: 'Über HTTP(s): .NET'
           href: job-input-from-http-how-to.md
-        - name: Aus einer lokalen Datei
+        - name: 'Über eine lokale Datei: .NET'
           href: job-input-from-local-file-how-to.md
-    - name: Anpassen der Transformationsvoreinstellungen
-      items:
-        - name: Mit .NET Core
-          href: customize-encoder-presets-how-to.md
+    - name: 'Anpassen der Transformationsvoreinstellungen: .NET Core'
+      href: customize-encoder-presets-how-to.md
 - name: Verweis
   items:
     - name: OpenAPI-Spezifikation (Swagger)

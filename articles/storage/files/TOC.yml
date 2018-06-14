@@ -16,7 +16,7 @@
       href: storage-how-to-use-files-windows.md
     - name: Bereitstellen unter Linux
       href: storage-how-to-use-files-linux.md
-    - name: Bereitstellen auf Mac
+    - name: Bereitstellen unter macOS
       href: storage-how-to-use-files-mac.md
     - name: Verwalten mit dem Azure-Portal
       href: storage-how-to-use-files-portal.md
