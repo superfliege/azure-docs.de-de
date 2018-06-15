@@ -1,11 +1,11 @@
 ---
-title: "X12-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Austauschen von X12-Nachrichten im EDI-Format für die B2B-Unternehmensintegration mit Azure Logic Apps"
+title: X12-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+description: Austauschen von X12-Nachrichten im EDI-Format für die B2B-Unternehmensintegration mit Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: b269a5171dcb8867f7ea40215d6b8a75d5d918bc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299078"
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von X12-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -41,7 +42,7 @@ Wenn Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise-in
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com "Azure-Portal") an. 
 
-2. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
+2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.  
 
    ![Suchen Ihres Integrationskontos](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
@@ -288,11 +289,11 @@ Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine 
 
 ## <a name="find-your-created-agreement"></a>Suchen der erstellten Vereinbarung
 
-1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zur Seite Ihres Integrationskontos zurückzukehren.
+1.  Wählen Sie nach dem Festlegen der Vereinbarungseigenschaften auf der Seite **Hinzufügen** die Option **OK** aus, um die Erstellung Ihrer Vereinbarung abzuschließen und zu Ihrem Integrationskonto zurückzukehren.
 
     Die neu hinzugefügte Vereinbarung ist nun in der Liste **Vereinbarungen** enthalten.
 
-2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus.
+2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie im Menü Ihres Integrationskontos die Option **Übersicht** aus, und wählen Sie dann die Kachel **Vereinbarungen** aus.
 
     ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 

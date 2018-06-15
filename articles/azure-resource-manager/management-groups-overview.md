@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: 53de4afb42e9ea5b7845a9c862dc1e06c6de36df
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: e4ce2a17f475fa3e11a4101c448f1c1c60dc66ec
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604742"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen 
 
@@ -69,7 +70,7 @@ Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, di
 
 Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung (RBAC) in Azure](../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen. Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt.   
 
-Auch wenn einer Verwaltungsgruppe alle [integrierten RBAC-Rollen](../role-based-access-control/overview.md#built-in-roles) zugewiesen werden können, werden im Allgemeinen vier Rollen verwendet: 
+Auch wenn einer Verwaltungsgruppe alle [integrierten RBAC-Rollen](../role-based-access-control/built-in-roles.md) zugewiesen werden können, werden im Allgemeinen vier Rollen verwendet: 
 - **Besitzer** verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. 
 - **Mitwirkende** können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
 - **Mitwirkende bei Ressourcenrichtlinien** können Richtlinien im Verzeichnis für die Ressourcen erstellen und verwalten.     

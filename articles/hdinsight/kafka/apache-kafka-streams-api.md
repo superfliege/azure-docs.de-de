@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 8aff28079a0aaa7c02d8a187cb379ecdbedcd854
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5391d6ae101a97e9b62215621267e591b2a995f5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626393"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
 
@@ -252,7 +253,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
         jumped  13641
    
     > [!NOTE]
-    > Der Parameter `--from-beggining` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
+    > Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
 
 7. Drücken Sie __STRG+C__, um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
 

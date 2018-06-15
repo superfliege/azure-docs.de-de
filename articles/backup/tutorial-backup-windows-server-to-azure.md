@@ -1,26 +1,21 @@
 ---
-title: Sichern von Windows Server in Azure | Microsoft-Dokumentation
-description: "Dieses Tutorial enthält Informationen zum Sichern lokaler Windows Server-Instanzen in einem Recovery Services-Tresor."
+title: Sichern von Windows Server in Azure
+description: Dieses Tutorial enthält Informationen zum Sichern lokaler Windows Server-Instanzen in einem Recovery Services-Tresor.
 services: backup
-documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
-editor: 
 keywords: Windows Server sichern; Sichern von Windows Server; Sicherung und Notfallwiederherstellung
-ms.assetid: 
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 2/14/2018
-ms.author: saurabhsensharma;markgal;
+ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: de0398b7f295894a3cac7c67b68cef237c3ac2c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609017"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -36,7 +31,7 @@ Mit Azure Backup können Sie Ihre Windows Server-Instanzen vor Beschädigungen, 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -119,7 +114,6 @@ Verwenden Sie den Microsoft Azure Recovery Services-Agent, um die Zeitpunkte fü
 4. Klicken Sie auf **Elemente hinzufügen**, und wählen Sie im angezeigten Dialogfeld die Option **Systemstatus** sowie die Dateien oder Ordner aus, die Sie sichern möchten. Klicken Sie dann auf **OK**.
 
 5. Klicken Sie auf **Weiter**.
-
 
 6. Geben Sie auf der Seite **Sicherungszeitplan angeben (Systemstatus)** an, zu welchen Tageszeiten oder wann in der Woche Sicherungen für den Systemstatus ausgelöst werden sollen. Klicken Sie anschließend auf **Weiter**. 
 

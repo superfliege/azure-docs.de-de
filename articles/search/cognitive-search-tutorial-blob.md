@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366748"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757569"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschau)
 
@@ -85,7 +85,7 @@ Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelld
   Bei der Verbindungszeichenfolge sollte es sich um eine URL ähnlich dem folgenden Beispiel handeln:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 Es gibt andere Möglichkeiten zum Angeben der Verbindungszeichenfolge, etwa das Bereitstellen einer Shared Access Signature (SAS). Weitere Informationen über Anmeldeinformationen für Datenquellen finden Sie unter [Indizieren von Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
@@ -446,9 +446,9 @@ Sie können GET oder POST verwenden, abhängig von der Komplexität und Länge d
 
 Mithilfe der kognitiven Suche können Sie die Struktur des angereicherten Dokuments anzeigen. Angereicherte Dokumente sind temporäre Strukturen, die während der Anreicherung erstellt und nach dem Abschluss des Vorgangs gelöscht werden.
 
-Um eine Momentaufnahme des angereicherten Dokuments zu erfassen, das während der Indizierung erstellt wird, fügen Sie Ihrem Index ein Feld ```enriched``` hinzu. Der Indexer lädt in diesem Feld automatisch eine Zeichenfolgendarstellung aller Anreicherungen für das betreffende Dokument ab.
+Um eine Momentaufnahme des angereicherten Dokuments zu erfassen, das während der Indizierung erstellt wird, fügen Sie Ihrem Index ein Feld ```enriched``` hinzu. Der Indexer gibt für alle Anreicherungen dieses Dokuments automatisch eine Zeichenfolgendarstellung im Feld aus.
 
-Das ```enriched```-Feld enthält dann eine Zeichenfolge, die eine logische Darstellung des angereicherten Dokuments im Arbeitsspeicher in JSON darstellt.  Der Feldwert ist jedoch ein gültiges JSON-Dokument. Anführungszeichen werden mit Escapezeichen versehen, sodass Sie `\"` durch `"` ersetzen müssen, um das Dokument als formatierten JSON-Code anzuzeigen.  
+Das Feld ```enriched``` enthält eine Zeichenfolge, die eine logische Darstellung des im Speicher angereicherten Dokuments im JSON-Format ist.  Der Feldwert ist jedoch ein gültiges JSON-Dokument. Anführungszeichen werden mit Escapezeichen versehen, sodass Sie `\"` durch `"` ersetzen müssen, um das Dokument als formatierten JSON-Code anzuzeigen.  
 
 Das ```enriched```-Feld ist für Debugzwecke vorgesehen und soll Sie beim Verständnis der logischen Form der Inhalte unterstützen, für die Ausdrücke ausgewertet werden. Es kann ein nützliches Tool zum Verstehen und Debuggen Ihrer Qualifikationsgruppe sein.
 

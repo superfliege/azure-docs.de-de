@@ -1,19 +1,20 @@
 ---
-title: "Kompatibilität von MySQL-Treibern und -Verwaltungstools"
+title: Kompatibilität von MySQL-Treibern und -Verwaltungstools
 description: In diesem Artikel werden die MySQL-Treiber und -Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
 services: mysql
 author: ajlam
 ms.author: andrela
 editor: jasonwhowell
 manager: kfile
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 5fc13ef07b61feb9e9fdd73123a09daa61f6aaf3
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a133ccdd0b40f9a878ba627e6c093787316aea35
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264118"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.

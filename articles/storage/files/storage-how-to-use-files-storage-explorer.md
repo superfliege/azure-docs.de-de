@@ -4,8 +4,8 @@ description: Es wird beschrieben, wie Sie Azure Storage-Explorer zum Verwalten v
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: 1953ee18fe878c33a1a0965937f64056278875cf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f628f393f1ff5922d9d2c82b30d4fdbf4b5caf23
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738172"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Verwalten von Azure-Dateifreigaben mit Azure Storage-Explorer 
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. In diesem Artikel werden die Grundlagen der Arbeit mit Azure-Dateifreigaben per [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) Schritt für Schritt beschrieben. Storage-Explorer ist ein beliebtes Clienttool, das für Windows, macOS und Linux verfügbar ist. Sie können Storage-Explorer zum Verwalten von Azure-Dateifreigaben und anderen Speicherressourcen verwenden.

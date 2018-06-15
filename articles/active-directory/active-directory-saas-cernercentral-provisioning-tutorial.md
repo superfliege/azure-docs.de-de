@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 060686089634eda5d15345da9668ff294d350012
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5440f9e747957a017eac109cddc4881244e506eb
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34337111"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292686"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
@@ -42,7 +42,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts sollten Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Cerner Central benötigen. Anschließend können Sie diese Benutzer Cerner Central anhand der folgenden Anweisungen zuweisen:
 
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Cerner Central
 
@@ -130,7 +130,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Cerner Central: Publishing identity data using Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD) (Cerner Central: Veröffentlichung von Identitätsdaten mithilfe von Azure AD)
 * [Tutorial: Konfigurieren von Cerner Central für einmaliges Anmelden mit Azure Active Directory](active-directory-saas-cernercentral-tutorial.md)
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -3,16 +3,17 @@ title: Beispiele für Azure Analysis Services-Codes, -Projekte und -Datenbanken 
 description: Erfahren Sie mehr über Code-, Projekt- und Datenbankbeispiele für Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 55f350f21111e8937fa1687c890d4f7bb4ab07ed
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 54913fa7940ac83f5de87ad9f35d6dcee07d29d0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598428"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 Nutzen Sie die folgenden Beispielressourcen, um mehr über Analysis Services für Ihre Umgebung zu erfahren und es zu testen.

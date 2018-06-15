@@ -1,24 +1,19 @@
 ---
-title: Streamen von Azure-Diagnoseprotokollen an Log Analytics | Microsoft-Dokumentation
+title: Streamen von Azure-Diagnoseprotokollen an Log Analytics
 description: Hier erfahren Sie, wie Sie Azure-Diagnoseprotokolle an einen Log Analytics-Arbeitsbereich streamen.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
-ms.openlocfilehash: 82011126375a3c5016e110aac9ce6bc1b2d59cdf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: logs
+ms.openlocfilehash: 634cecb247686afd8c5c749d6e28b301d7e07c4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263506"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
 

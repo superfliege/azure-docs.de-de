@@ -1,11 +1,11 @@
 ---
-title: "Entwickeln für Azure Files mit .NET | Microsoft-Dokumentation"
+title: Entwickeln für Azure Files mit .NET | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie .NET-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: 6a889ee1-1e60-46ec-a592-ae854f9fb8b6
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 11bc2418e439f86a228ff7d5c845caef683d9018
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 95f890ccbe03fc734b54ac8c5edee2ec7b56d9c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737628"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -41,7 +42,7 @@ Weitere Informationen zu Azure Files finden Sie in der [Einführung in Azure Fil
 
 Azure Files bietet zwei allgemeine Ansätze für Clientansätze: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze von den APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
 
-API | Einsatzgebiete | Hinweise
+API | Einsatzgebiete | Notizen
 ----|-------------|------
 [System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Ihre Anwendung: <ul><li>Muss Dateien über SMB lesen/schreiben</li><li>Wird auf einem Gerät ausgeführt, das über Port 445 Zugriff auf Ihr Azure Files-Konto hat</li><li>Muss keine Verwaltungseinstellungen der Dateifreigabe verwalten</li></ul> | Die Codierung von Datei-E/A-Vorgängen mit Azure Files über SMB entspricht im Allgemeinen der Codierung von E/A-Vorgängen mit einer beliebigen Netzwerkdateifreigabe oder einem beliebigen lokalen Speichergerät. Eine Einführung in eine Reihe von Funktionen in .NET (einschließlich Datei-E/A) finden Sie in [diesem Tutorial](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter).
 [WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | Ihre Anwendung: <ul><li>Kann aufgrund von Firewall- oder ISP-Einschränkungen nicht über SMB an Port 445 auf Azure Files zugreifen</li><li>Benötigt Verwaltungsfunktionen, etwa die Möglichkeit, das Kontingent einer Dateifreigabe festzulegen oder eine SAS (Shared Access Signature) zu erstellen</li></ul> | Dieser Artikel veranschaulicht die Verwendung von `WindowsAzure.Storage` für Datei-E/A-Vorgänge über REST (anstelle von SMB) sowie die Verwaltung der Dateifreigabe.
@@ -466,14 +467,14 @@ Weitere Informationen zu Azure Files erhalten Sie über diese Links.
 
 ### <a name="conceptual-articles-and-videos"></a>Konzeptionelle Artikel und Videos
 * [Azure Files: a frictionless cloud SMB file system for Windows and Linux (Azure Files: ein reibungsloses Cloud-SMB-Dateisystem für Windows und Linux)](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md)
+* [How to use Azure Files with Linux (Verwenden von Azure Files mit Linux)](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>Toolunterstützung für Dateispeicher
 * [Verwenden von AzCopy mit Microsoft Azure Storage](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [Troubleshooting Azure Files problems (Behandeln von Azure Files-Problemen)](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>Referenz
+### <a name="reference"></a>Verweis
 * [Referenz zur Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [Referenz zur REST-API des Dateidiensts](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 

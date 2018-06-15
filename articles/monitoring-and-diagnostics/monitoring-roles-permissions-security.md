@@ -1,24 +1,19 @@
 ---
-title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor | Microsoft Docs
+title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 description: Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken.
 author: johnkemnetz
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: 248d45a59fa2769c4cfcc4b169bd9e61059f11b0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.component: ''
+ms.openlocfilehash: 82ec2b71ee83d2ec697fa44521c103b11976f1ed
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264601"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -125,7 +120,7 @@ Alle drei Datentypen können in einem Speicherkonto gespeichert oder an Event Hu
 
 * Verwenden Sie ein einzelnes dediziertes Speicherkonto für die Überwachung von Daten. Wenn Sie Überwachungsdaten auf mehrere Speicherkonten aufteilen müssen, nutzen Sie niemals ein Speicherkonto sowohl für Überwachungsdaten als auch für überwachungsfremde Daten, da Lösungen, die nur auf Überwachungsdaten zugreifen müssen (beispielsweise eine Drittanbieter-SIEM-Lösung), dadurch unbeabsichtigterweise Zugriff auf überwachungsfremde Daten erhalten.
 * Verwenden Sie aus demselben Grund einen einzelnen dedizierten Service Bus- oder Event Hub-Namespace über alle Diagnoseeinstellungen hinweg.
-* Schränken Sie den Zugriff auf überwachungsbezogene Speicherkonten oder Event Hubs ein, indem Sie sie in einer separaten Ressourcengruppe verwalten, und verwenden Sie [Bereiche](../role-based-access-control/overview.md#basics-of-access-management-in-azure) für Ihre Überwachungsrollen, um den Zugriff ausschließlich auf diese Ressourcengruppe zu beschränken.
+* Schränken Sie den Zugriff auf überwachungsbezogene Speicherkonten oder Event Hubs ein, indem Sie sie in einer separaten Ressourcengruppe verwalten, und verwenden Sie [Bereiche](../role-based-access-control/overview.md#scope) für Ihre Überwachungsrollen, um den Zugriff ausschließlich auf diese Ressourcengruppe zu beschränken.
 * Erteilen Sie niemals die ListKeys-Berechtigung für Speicherkonten oder Event Hubs im Abonnementbereich, wenn ein Benutzer nur auf Überwachungsdaten zugreifen muss. Erteilen Sie dem Benutzer diese Berechtigungen stattdessen im Ressourcen- oder Ressourcengruppenbereich (wenn Sie eine dedizierte Überwachungsressourcengruppe verwenden).
 
 ### <a name="limiting-access-to-monitoring-related-storage-accounts"></a>Einschränken des Zugriffs auf überwachungsbezogene Speicherkonten

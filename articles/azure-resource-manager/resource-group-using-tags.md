@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6f9b2b04c3bdfc02065e2a01e1975d734a5f53ac
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8c828bb49548adfdb02ed6fb1611eb405ebf4ff2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358981"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602923"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
 
@@ -136,6 +136,10 @@ if ($group.Tags -ne $null) {
                 }
             }
             Set-AzureRmResource -Tag $resourcetags -ResourceId $r.ResourceId -Force
+        }
+        else
+        {
+            Set-AzureRmResource -Tag $group.Tags -ResourceId $r.ResourceId -Force
         }
     }
 }
@@ -272,4 +276,4 @@ Wenn Sie die CSV-Nutzungsdatei für Dienste herunterladen, die die Verwendung vo
 * Eine Einführung zur Verwendung von Azure PowerShell beim Bereitstellen von Ressourcen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](powershell-azure-resource-manager.md).
 * Eine Einführung zur Verwendung der Azure CLI beim Bereitstellen von Ressourcen finden Sie unter [Verwenden der Azure-Befehlszeilenschnittstelle für Mac, Linux und Windows mit dem Azure Resource Manager](xplat-cli-azure-resource-manager.md).
 * Eine Einführung zum Verwenden des Portals finden Sie unter [Verwenden des Azure-Portals zum Verwalten Ihrer Azure-Ressourcen](resource-group-portal.md).  
-* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](resource-manager-subscription-governance.md).
+* Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

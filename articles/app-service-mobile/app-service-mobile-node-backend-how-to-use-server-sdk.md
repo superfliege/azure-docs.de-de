@@ -14,11 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 33a447e2161925d23385cbd0c471e0f5babd618f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598078"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -155,7 +156,7 @@ Microsoft Azure bietet viele Verfahren zum Veröffentlichen Ihres Mobile Apps-No
 
 Azure App Service bietet spezielle Hinweise für Node.js-Anwendungen, die Sie vor dem Veröffentlichen des Back-Ends lesen sollten:
 
-* [Angeben der Node-Version]
+* [Angeben der Node.js-Version]
 * Vorgehensweise: [Verwenden von Node.js-Modulen]
 
 ### <a name="howto-enable-homepage"></a>Aktivieren einer Startseite für Ihre Anwendung
@@ -250,7 +251,7 @@ Das Mobile Apps Node.js SDK verwendet das [mssql-Node.js-Paket], um eine Verbind
 >
 >
 
-1. Laden Sie [Microsoft SQL Server 2014 Express]herunter, und installieren Sie die Anwendung. Stellen Sie sicher, dass Sie SQL Server 2014 Express-Edition mit Tools installieren. Falls Sie nicht unbedingt 64-Bit-Unterstützung benötigen, können Sie die 32-Bit-Version verwenden, die bei der Ausführung weniger Arbeitsspeicher verbraucht.
+1. Laden Sie [Microsoft SQL Server 2014 Express]herunter, und installieren Sie die Anwendung. Stellen Sie sicher, dass Sie SQL Server 2014 Express-Edition mit Tools installieren. Falls Sie nicht unbedingt 64-Bit-Unterstützung benötigen, können Sie die 32-Bit-Version verwenden, die bei der Ausführung weniger Arbeitsspeicher verbraucht.
 2. Führen Sie den SQL Server 2014-Konfigurations-Manager aus:
 
    a. Erweitern Sie im Strukturmenü den Knoten **SQL Server-Netzwerkkonfiguration**.
@@ -885,7 +886,7 @@ Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdatei
 [Überwachen von Azure App Service]: ../app-service/web-sites-monitor.md
 [Aktivieren der Diagnoseprotokollierung in Azure App Service]: ../app-service/web-sites-enable-diagnostic-log.md
 [Problembehandlung für Azure App Service in Visual Studio]: ../app-service/web-sites-dotnet-troubleshoot-visual-studio.md
-[Angeben der Node-Version]: ../nodejs-specify-node-version-azure-apps.md
+[Angeben der Node.js-Version]: ../nodejs-specify-node-version-azure-apps.md
 [Verwenden von Node.js-Modulen]: ../nodejs-use-node-modules-azure-apps.md
 [Create a new Azure App Service]: ../app-service/
 [azure-mobile-apps]: https://www.npmjs.com/package/azure-mobile-apps
@@ -902,6 +903,6 @@ Durch Verwendung des Azure-Portals können Sie Ihre Node.js-Back-End-Skriptdatei
 [QueryJS]: https://github.com/Azure/queryjs
 [Node.js-Tools 1.1 für Visual Studio]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [mssql-Node.js-Paket]: https://www.npmjs.com/package/mssql
-[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
+[Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS-Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

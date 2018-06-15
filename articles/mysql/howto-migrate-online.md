@@ -6,14 +6,15 @@ author: HJToland3
 ms.author: jtoland
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: e1be72d97570643cc8a7c6eb05d3d363e96357b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 99add55188615debdc96b6cfc8b21e34552fd9d4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267253"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migration nach Azure Database for MySQL mit minimaler Ausfallzeit
 Sie können Ihre vorhandene MySQL-Datenbank mithilfe von Attunity Replicate for Microsoft Migrations nach Azure Database for MySQL migrieren. Attunity Replicate ist ein gemeinsames Angebot von Attunity und Microsoft. Es wird Microsoft-Kunden in Verbindung mit Azure Database Migration Service ohne Zusatzkosten zur Verfügung gestellt. 
