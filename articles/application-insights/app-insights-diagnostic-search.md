@@ -2,7 +2,7 @@
 title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentation
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: ce2fd9ed1ce796762cc15622cb1c59a316c1909d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c6a94fd1cebff4aa657ad5293715550161003d21
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294383"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 Search ist eine Funktion in [Application Insights](app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
@@ -113,14 +114,14 @@ Sie können auch einen Zeitbereich festlegen, da die Suche in einem kürzeren Be
 
 Suchen Sie nach vollständigen Wörtern, nicht nach Teilzeichenfolgen. Verwenden Sie Anführungszeichen, um Sonderzeichen zu umschließen.
 
-| string | wurde *nicht* gefunden von | wird aber von diesen gefunden |
+| Zeichenfolge | wurde *nicht* gefunden von | wird aber von diesen gefunden |
 | --- | --- | --- |
 | HomeController.Info |home<br/>controller<br/>out | homecontroller<br/>about<br/>"homecontroller.about"|
 |USA|Uni<br/>ted|united<br/>states<br/>united AND states<br/>"united states"
 
 Dies sind einige Suchausdrücke, die Sie verwenden können:
 
-| Beispielabfrage | Effekt |
+| Beispielabfrage | Wirkung |
 | --- | --- |
 | `apple` |Findet alle Ereignisse im Uhrzeitbereich, deren Felder den Begriff „apple“ enthalten. |
 | `apple AND banana` |Findet Ereignisse, die beide Wörter enthalten. Verwenden Sie „AND“ in Großbuchstaben, nicht „and“. |
@@ -132,7 +133,7 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 ## <a name="sampling"></a>Stichproben
 Wenn die Anwendung viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Version 2.0.0-beta3 oder höher verwenden), reduziert das adaptive Stichprobenmodul automatisch die an das Portal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die mit derselben Anforderung im Zusammenhang stehen, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. 
 
-[Erfahren Sie mehr über das Erstellen von Stichproben](app-insights-sampling.md).
+[Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
 
 

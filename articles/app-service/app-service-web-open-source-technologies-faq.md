@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069859"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -166,7 +167,7 @@ So beheben Sie den Fehler
 
 1. Entfernen Sie die Datei „sqljdbc*.jar-“ aus Ihrem Ordner „app/lib“.
 2. Bei Verwendung des benutzerdefinierten Tomcat- oder Azure Marketplace Tomcat-Webservers kopieren Sie diese JAR-Datei in den Tomcat-Ordner „lib“.
-3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
+3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc\*“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
 
     ```
     <httpPlatform>

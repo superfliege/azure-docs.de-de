@@ -1,24 +1,20 @@
 ---
 title: Azure IoT-Geräte-SDK für C – IoTHubClient | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die IoTHubClient-Bibliothek im Azure IoT-Geräte-SDK für C zum Erstellen von Geräte-Apps, die mit einer IoT Hub-Instanz kommunizieren, verwenden.
-services: iot-hub
-documentationcenter: ''
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
+manager: arjmands
 ms.service: iot-hub
-ms.devlang: cpp
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: c
+ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 0fa07b2a785bd7d1a26924918e4428fd420e1547
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 15541c8719e89080ba7685781cedf36fb4335e70
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633093"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>Azure IoT-Geräte-SDK für C – weitere Informationen zu IoTHubClient
 Im [ersten Artikel](iot-hub-device-sdk-c-intro.md) dieser Serie wurde das **Azure IoT-Geräte-SDK für C** vorgestellt. Wie in diesem Artikel beschrieben wurde, gibt es zwei Architekturebenen im SDK. Basis ist die **IoTHubClient** -Bibliothek, die die direkte Kommunikation mit IoT Hub verwaltet. Zudem gibt es die Bibliothek des **Serialisierungsprogramms** , die darauf aufbaut, um Serialisierungsdienste bereitzustellen. In diesem Artikel stellen wir weitere Details zur **IoTHubClient** -Bibliothek zur Verfügung.

@@ -9,10 +9,11 @@ ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 634bb14cfef3df2cf944eeafbfa8d671afa4ac98
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "33835796"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 In den folgenden Abschnitten wird die Erstellung eines neuen ASP.NET-WebAPI-Back-Ends erläutert. Dieser Prozess hat drei Hauptfunktionen:

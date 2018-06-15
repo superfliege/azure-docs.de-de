@@ -1,28 +1,27 @@
 ---
 title: Grundlegendes zum Azure IoT Hub-Nachrichtenformat | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Beschreibung des Formats und des erwarteten Inhalts von IoT Hub-Nachrichten.'
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 832010181059e2ec42834e54622f374c367c8d4f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1d84fa5ca580a1e56ba9ce17dece9ad9680c74c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633926"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
-Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat für alle geräteseitigen Protokolle. Dieses Nachrichtenformat wird sowohl für [D2C][lnk-d2c]- als auch für [C2D][lnk-c2d]-Nachrichten verwendet. Eine [IoT Hub-Nachricht][lnk-messaging] enthält Folgendes:
+Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, definiert IoT Hub ein gemeinsames Nachrichtenformat für alle geräteseitigen Protokolle. Dieses Nachrichtenformat wird sowohl für [D2C][lnk-d2c]- als auch für [C2D][lnk-c2d]-Nachrichten verwendet. 
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+Eine [IoT Hub-Nachricht][lnk-messaging] enthält Folgendes:
 
 * Einen Satz an *Systemeigenschaften*. Eigenschaften, die von IoT Hub interpretiert oder festgelegt werden. Dieser Satz ist vordefiniert.
 * Einen Satz an *Anwendungseigenschaften*. Ein Wörterbuch mit Zeichenfolgeneigenschaften. Die Anwendung kann diese definieren und darauf zugreifen, ohne den Nachrichtentext deserialisieren zu müssen. IoT Hub ändert diese Eigenschaften nie.

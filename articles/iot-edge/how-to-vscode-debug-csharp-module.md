@@ -1,20 +1,19 @@
 ---
 title: Debuggen von C#-Modulen mit Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden Sie Visual Studio Code, um ein C#-Modul mit Azure IoT Edge in Visual Studio Code zu debuggen.
-services: iot-edge
-keywords: ''
 author: shizn
-manager: timlt
+manager: ''
 ms.author: xshi
 ms.date: 03/18/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 035cb129bc3933c10f430b593226108f5d160972
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+services: iot-edge
+ms.openlocfilehash: 5d521a4e5b22222f0b0a5505f14684598d7d5b0a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165722"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631393"
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Verwenden von Visual Studio Code zum Debuggen eines C#-Moduls mit Azure IoT Edge
 Dieser Artikel enthält detaillierte Anweisungen für die Verwendung von [Visual Studio (VS) Code](https://code.visualstudio.com/) als Hauptentwicklungstool zum Debuggen Ihrer Azure IoT Edge-Module.
@@ -41,7 +40,7 @@ Führen Sie die Schritte unter [Entwickeln einer IoT Edge-Projektmappe mit mehre
 Sie können Ihren Containerstatus im VS Code-Docker-Explorer oder durch Ausführen des Befehls `docker images` im Terminal überprüfen.
 
 ## <a name="start-debugging-c-module-in-vs-code"></a>Debuggen des C#-Moduls in VS Code
-1. VS Code speichert die Konfigurationsinformationen für das Debuggen in einer Datei `launch.json`, die sich in einem Ordner `.vscode` in Ihrem Arbeitsbereich befindet. Die Datei `launch.json` wurde beim Erstellen einer neuen IoT Edge-Lösung generiert. Sie wird jedes Mal aktualisiert, wenn Sie ein neues Modul mit Debuggingunterstützung hinzufügen. Navigieren Sie zur Debugansicht, und wählen Sie die entsprechende Debugkonfigurationsdatei aus.
+1. VS Code speichert die Konfigurationsinformationen für das Debuggen in einer Datei `launch.json`, die sich in einem Ordner `.vscode` in Ihrem Arbeitsbereich befindet. Die Datei `launch.json` wurde beim Erstellen einer neuen IoT Edge-Lösung generiert. Sie wird jedes Mal aktualisiert, wenn Sie ein neues Modul hinzufügen, für das Debuggen unterstützt wird. Navigieren Sie zur Debugansicht, und wählen Sie die entsprechende Debugkonfigurationsdatei aus.
     ![Auswählen der Debugkonfiguration](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
 2. Navigieren Sie zu `program.cs`. Fügen Sie einen Breakpoint in dieser Datei hinzu.

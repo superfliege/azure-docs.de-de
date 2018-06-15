@@ -1,11 +1,11 @@
 ---
 title: Verwenden von Service Bus-Warteschlangen in Node.js | Microsoft Docs
-description: "Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App."
+description: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a87a00f9-9aba-4c49-a0df-f900a8b67b3f
 ms.service: service-bus-messaging
 ms.workload: tbd
@@ -14,11 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 5b309534f7aef602610cfdb6aa784d180551e1ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bc291c3a453b4dec5e6c47ab4a7f2e2ac2b9967
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641440"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Verwenden von Service Bus-Warteschlangen mit Node.js
 
@@ -64,8 +65,6 @@ var azure = require('azure');
 
 ### <a name="set-up-an-azure-service-bus-connection"></a>Einrichten einer Azure Service Bus-Verbindung
 Das Azure-Modul liest die Umgebungsvariable `AZURE_SERVICEBUS_CONNECTION_STRING`, um Informationen zu erhalten, die für eine Verbindung mit Service Bus benötigt werden. Wenn diese Umgebungsvariable nicht festgelegt wurde, müssen Sie beim Aufrufen von `createServiceBusService` die Kontoinformationen angeben.
-
-Ein Beispiel zum Festlegen der Umgebungsvariablen in einer Konfigurationsdatei für einen Azure-Clouddienst finden Sie unter [Node.js-Clouddienst mit Speicher][Node.js Cloud Service with Storage].
 
 Ein Beispiel zum Festlegen der Umgebungsvariablen im [Azure-Portal][Azure portal] für eine Azure-Website finden Sie unter [Node.js-Webanwendung mit Storage][Node.js Web Application with Storage].
 
@@ -182,7 +181,7 @@ Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 
 * [Warteschlangen, Themen und Abonnements][Queues, topics, and subscriptions]
 * [Azure SDK für Node][Azure SDK for Node]-Repository auf GitHub
-* [Node.js Developer Center](https://azure.microsoft.com/develop/nodejs/)
+* [Node.js Developer Center (in englischer Sprache)](https://azure.microsoft.com/develop/nodejs/)
 
 [Azure SDK for Node]: https://github.com/Azure/azure-sdk-for-node
 [Azure portal]: https://portal.azure.com
@@ -190,6 +189,5 @@ Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
-[Node.js Cloud Service with Storage]:../cosmos-db/table-storage-cloud-service-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md
