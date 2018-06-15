@@ -8,18 +8,19 @@ author: gopitk
 manager: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
+ms.component: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 6a755ef4d933046377a6a25be76655b44f4bf508
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d2aa3c8582227363e9365f213cdf351b9f4a81af
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361374"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830536"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf virtuellen Data Science-Computern basierende Teamanalyse und KI-Umgebung 
 Der [virtuelle Data Science-Computer](overview.md) (Data Science Virtual Machine, DSVM) bietet eine umfangreiche Umgebung in der Azure-Cloud mit vorgefertigter Software für KI und Datenanalyse. Bisher wurde der DSVM als einzelner Analyse-Desktop verwendet, und einzelne Datenanalysten erzielen durch diese gemeinsame Nutzung ihrer vorgefertigten Analyseumgebung einen Produktivitätsgewinn. Bei der Planung von Analyseumgebungen für Data Scientists und KI-Entwickler durch große Analyseteams ist eines des Leitmotive eine gemeinsam genutzte Analysenentwicklungs- und Experimentinfrastruktur, die entsprechend den IT-Richtlinien des Unternehmens verwaltet wird und außerdem die Zusammenarbeit und Konsistenz über alle Data Science-/Analyseteams hinweg vereinfacht. Eine gemeinsam genutzte Infrastruktur ermöglicht der IT-Abteilung außerdem eine bessere Nutzung der Analyseumgebung. Die teambasierte Data Science-/Analyseinfrastruktur wird von einigen Organisationen auch als „Analyse-Sandbox“ bezeichnet, mit dessen Hilfe die Data Scientists schnell Daten verstehen, Experimente ausführen, Hypothesen überprüfen und Vorhersagemodelle auf sichere Weise und ohne Beeinträchtigung der Produktionsumgebung erstellen können, während sie über Zugriff auf verschiedene Datenressourcen verfügen. 

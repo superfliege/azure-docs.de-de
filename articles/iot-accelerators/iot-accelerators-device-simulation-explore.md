@@ -1,22 +1,19 @@
 ---
 title: Erste Schritte mit der Gerätesimulationslösung – Azure | Microsoft-Dokumentation
 description: Die IoT Solution Accelerators-Simulationslösung ist ein Tool, das Sie beim Entwickeln und Testen einer IoT-Lösung unterstützen kann. Dieser Simulationsdienst ist ein eigenständiges Angebot, das zusammen mit anderen Solution Accelerators oder mit Ihren eigenen benutzerdefinierten Lösungen verwendet werden kann.
-services: iot device simulation
-suite: iot-suite
 author: troyhopwood
-manager: timlt
+manager: ''
 ms.author: troyhop
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 12/15/2017
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 742998dce07f6ceef0ad906831c60f11a7d08bd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: c427f2640e605533324eb349579c6a40a2a6a47f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627124"
 ---
 # <a name="device-simulation-walkthrough"></a>Exemplarische Vorgehensweise bei der Gerätesimulation
 
@@ -39,7 +36,7 @@ Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, sollten Sie zun�
 
 ## <a name="configuring-device-simulation"></a>Konfigurieren der Gerätesimulation
 
-Sie können die Gerätesimulation komplett im Dashboard konfigurieren und ausführen. Öffnen Sie das Dashboard auf der IoT Solution Accelerators-Seite [Bereitgestellte Lösungen](https://www.azureiotsuite.com/). Klicken Sie unterhalb Ihrer neuen Gerätesimulation auf **Starten**.
+Sie können die Gerätesimulation komplett im Dashboard konfigurieren und ausführen. Öffnen Sie das Dashboard auf der IoT Solution Accelerators-Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/). Klicken Sie unterhalb Ihrer neuen Gerätesimulation auf **Starten**.
 
 ### <a name="target-iot-hub"></a>IoT-Zielhub
 

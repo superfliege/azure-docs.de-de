@@ -1,4 +1,4 @@
-|Parametername| Typ | Beschreibung| Mögliche Werte|
+|Parametername| Typ | BESCHREIBUNG| Mögliche Werte|
 |-|-|-|-|
 | /ServerMode|Erforderlich|Gibt an, ob die Installation sowohl den Konfigurations- als auch den Prozessserver oder nur den Prozessserver umfassen soll.|CS<br>PS|
 |/InstallLocation|Erforderlich|Der Ordner, in dem die Komponenten installiert werden.| Beliebiger Ordner auf dem Computer|

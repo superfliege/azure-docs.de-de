@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Sync: Operative Aufgaben und Überlegungen | Microsoft-Dokumentation"
-description: "In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync und die Vorbereitung dieser Komponente für den Betrieb beschrieben."
+title: 'Azure AD Connect Sync: Operative Aufgaben und Überlegungen | Microsoft-Dokumentation'
+description: In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync und die Vorbereitung dieser Komponente für den Betrieb beschrieben.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
 ms.devlang: na
@@ -13,12 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0dfdae45ef7508337a1233c651d355d83b9f0430
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 6e35dc0ad8493d2f92b7e81fc66f444048482bd9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592941"
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: Operative Aufgaben und Überlegungen
 In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync beschrieben.
@@ -64,9 +66,9 @@ Wenn Sie benutzerdefinierte Änderungen an den primären Server vorgenommen habe
 
 #### <a name="import-and-synchronize"></a>Importieren und Synchronisieren
 1. Wählen Sie **Connectors** aus, und wählen Sie dann den ersten Connector mit dem Typ **Active Directory Domain Services** aus. Klicken Sie auf **Ausführen**, wählen Sie **Vollständiger Import** aus, und klicken Sie auf **OK**. Führen Sie diese Schritte für alle Connectors dieses Typs aus.
-2. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)**aus. Klicken Sie auf **Ausführen**, wählen Sie **Vollständiger Import** aus, und klicken Sie auf **OK**.
+2. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)** aus. Klicken Sie auf **Ausführen**, wählen Sie **Vollständiger Import** aus, und klicken Sie auf **OK**.
 3. Stellen Sie sicher, dass die Registerkarte „Connectors“ noch ausgewählt ist. Klicken Sie für jeden Connector mit dem Typ **Active Directory Domain Services** auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf **OK**.
-4. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)**aus. Klicken Sie auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf **OK**.
+4. Wählen Sie den Connector mit dem Typ **Azure Active Directory (Microsoft)** aus. Klicken Sie auf **Ausführen**, wählen Sie **Deltasynchronisierung** aus, und klicken Sie auf **OK**.
 
 Sie haben einen Stagingexport der Änderungen an Azure AD und der lokalen Active Directory-Umgebung durchgeführt (wenn Sie eine Exchange-Hybridbereitstellung verwenden). In den nächsten Schritten können Sie überprüfen, was geändert wird, bevor Sie mit dem Export in die Verzeichnisse beginnen.
 

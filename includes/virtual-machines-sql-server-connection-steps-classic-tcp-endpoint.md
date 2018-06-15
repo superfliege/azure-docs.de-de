@@ -6,7 +6,7 @@ Für den Zugriff auf SQL Server über das Internet benötigt der virtuelle Compu
 > 
 > 
 
-1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)**aus.
+1. Wählen Sie im Azure-Portal **Virtuelle Computer (klassisch)** aus.
 2. Wählen Sie dann Ihren virtuellen Computer mit SQL Server aus.
 3. Wählen Sie **Endpunkte** aus, und klicken Sie dann oben auf dem Blatt „Endpunkte“ auf die Schaltfläche **Hinzufügen**.
    

@@ -12,14 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 05dd42b049c75b9ea592ffe341f44e3b02b9757f
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849507"
 ---
 # <a name="asdk-administration-basics"></a>Grundlagen zur Verwaltung des ASDK 
 Wenn Sie mit der Verwaltung des Azure Stack Development Kits (ASDK) noch nicht vertraut sind, gibt es verschiedene Aspekte, die Sie kennen müssen. Dieser Leitfaden bietet eine Übersicht über Ihre Rolle als Azure Stack-Bediener in der Evaluierungsumgebung und erläutert, wie Sie dafür sorgen, dass Ihre Testbenutzer schnell produktiv arbeiten können.
@@ -64,5 +65,5 @@ Die einzige Supportoption für das Development Kit besteht darin, Fragen im [Mic
 > Da das ASDK eine Evaluierungsumgebung ist, wird über den Microsoft-Kundensupport kein offizieller Support angeboten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Bereitstellen des ASDK](asdk-deploy.md)
+[Bereitstellen des ASDK](asdk-install.md)
 

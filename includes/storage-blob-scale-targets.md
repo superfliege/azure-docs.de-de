@@ -1,6 +1,6 @@
 | Ressource | Ziel |
 |----------|---------------|
-| Maximale Größe eines einzelnen Blobcontainers | 500 TiB |
+| Maximale Größe eines einzelnen Blobcontainers | Identisch mit maximaler Speicherkontokapazität |
 | Maximale Anzahl von Blöcken in einem Blockblob oder einem Anfügeblob | 50.000 Blöcke |
 | Maximale Größe eines Blocks in einem Blockblob | 100 MiB |
 | Maximale Größe eines Blockblobs | 50.000 × 100 MiB (ca. 4,75 TiB) |
