@@ -1,24 +1,21 @@
 ---
-title: Analysieren von Websiteprotokollen mit Azure Data Lake Analytics | Microsoft Docs
-description: 'Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysieren. '
+title: Analysieren von Websiteprotokollen mit Azure Data Lake Analytics
+description: Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysieren.
 services: data-lake-analytics
-documentationcenter: 
 author: saveenr
 manager: saveenr
-editor: cgronlun
+editor: jasonwhowell
 ms.assetid: 3a196735-d0d9-4deb-ba68-c4b3f3be8403
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: 52d19297ae5c34f9daf5e42250a53a78e0168192
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cb8e0f683c2790d7aebb87a684798ea0a36417f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623365"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Analysieren von Websiteprotokollen mit Azure Data Lake Analytics
 Erfahren Sie, wie Sie Websiteprotokolle mit Azure Data Lake Analytics analysieren, um insbesondere herauszufinden, bei welchen Verweisern beim Versuch des Besuchs der Website Fehler aufgetreten sind.
@@ -172,7 +169,7 @@ Sie können der Anwendung außerdem benutzerdefinierte Operatoren hinzufügen.  
 3. Doppelklicken Sie auf **UnsuccessfulResponses.log**.
 4. Sie können auch in der Diagrammansicht des Auftrags auf die Ausgabedatei doppelklicken, um direkt zur Ausgabe zu navigieren.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 Informationen zu den ersten Schritten mit Data Lake Analytics unter Verwendung unterschiedlicher Tools finden Sie unter:
 
 * [Erste Schritte mit Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
