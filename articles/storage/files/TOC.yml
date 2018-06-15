@@ -103,7 +103,7 @@
         - name: Vorschreiben einer sicheren Übertragung
           href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Authentifizierung mit gemeinsam verwendetem Schlüssel
-          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
+          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: Shared Access Signatures (SAS)
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Überwachen und Behandeln von Problemen
