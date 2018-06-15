@@ -1,24 +1,20 @@
 ---
-title: "Konfigurationsschema für die Azure-Diagnose 1.0 | Microsoft-Dokumentation"
-description: "NUR relevant, wenn Sie Azure SDK 2.4 und früher mit Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric oder Cloud Services verwenden."
-services: monitoring-and-diagnostics
-documentationcenter: .net
+title: Konfigurationsschema für die Azure-Diagnose 1.0
+description: NUR relevant, wenn Sie Azure SDK 2.4 und früher mit Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric oder Cloud Services verwenden.
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: 
-ms.assetid: 
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: a8fdfb52d5091d3fc9779657737c7430fcfada51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: diagnostic-extension
+ms.openlocfilehash: 916e2123262402e23f35778e66683ecce2cec4b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262584"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.0
 > [!NOTE]
@@ -105,7 +101,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 Attribute:
 
-|Attribut  |Typ   |Erforderlich| Standard | Beschreibung|  
+|Attribut  |Typ   |Erforderlich| Standard | BESCHREIBUNG|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|Optional | PT1M| Gibt das Intervall an, in dem der Diagnosemonitor Diagnosekonfigurationsänderungen abruft.|  
 |**overallQuotaInMB**|unsignedInt|Optional| 4.000 MB. Wenn Sie einen Wert angeben, darf er diese Menge nicht übersteigen. |Die Gesamtmenge des Dateisystemspeichers, die für alle Protokollierungspuffer zugewiesen wurde|  
@@ -117,10 +113,10 @@ Definiert die Pufferkonfiguration für die Protokolle, die von der zugrunde lieg
 
 Attribute:
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
-|**scheduledTransferLogLevelFilter**|string|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
+|**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
 
 ## <a name="logs-element"></a>Logs-Element  
@@ -130,10 +126,10 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
-|**scheduledTransferLogLevelFilter**|string|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
+|**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
 
 ## <a name="directories-element"></a>Directories-Element  
@@ -144,7 +140,7 @@ Definiert die Pufferkonfiguration für dateibasierte Protokolle, die Sie definie
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -156,9 +152,9 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**container**|string|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
+|**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs-Element  
@@ -168,9 +164,9 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**container**|string|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
+|**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
 
 ##  <a name="iislogs-element"></a>IISLogs-Element  
@@ -180,9 +176,9 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**container**|string|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
+|**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
 
 ## <a name="datasources-element"></a>DataSources-Element  
@@ -197,9 +193,9 @@ Attribute:
 
 Attribute:
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**container**|string|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
+|**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
 
 ## <a name="absolute-element"></a>Absolute-Element  
@@ -209,10 +205,10 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**path**|string|Erforderlich. Der absolute Pfad zum Verzeichnis, das überwacht werden soll|  
-|**expandEnvironment**|Boolescher Wert|Erforderlich. Umgebungsvariablen im Pfad werden erweitert, wenn für sie **true** festgelegt ist.|  
+|**path**|Zeichenfolge|Erforderlich. Der absolute Pfad zum Verzeichnis, das überwacht werden soll|  
+|**expandEnvironment**|boolean|Erforderlich. Umgebungsvariablen im Pfad werden erweitert, wenn für sie **true** festgelegt ist.|  
 
 ## <a name="localresource-element"></a>LocalResource-Element  
  Definiert einen Pfad in Relation zu einer lokalen Ressource, die in der Dienstdefinition definiert ist.
@@ -221,10 +217,10 @@ Attribute:
 
 Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**name**|string|Erforderlich. Der Name der lokalen Ressource, die das zu überwachende Verzeichnis enthält|  
-|**relativePath**|string|Erforderlich. Der Pfad in Relation zur lokalen Ressource, die überwacht werden soll|  
+|**name**|Zeichenfolge|Erforderlich. Der Name der lokalen Ressource, die das zu überwachende Verzeichnis enthält|  
+|**relativePath**|Zeichenfolge|Erforderlich. Der Pfad in Relation zur lokalen Ressource, die überwacht werden soll|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters-Element  
  Definiert den Pfad zum zu erfassenden Leistungsindikator.
@@ -234,7 +230,7 @@ Attribute:
 
  Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -246,9 +242,9 @@ Attribute:
 
  Attribute:  
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|string|Erforderlich. Der Pfad zum zu erfassenden Leistungsindikator|  
+|**counterSpecifier**|Zeichenfolge|Erforderlich. Der Pfad zum zu erfassenden Leistungsindikator|  
 |**sampleRate**|duration|Erforderlich. Die Rate, mit der der Leistungsindikator erfasst werden soll|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog-Element  
@@ -258,10 +254,10 @@ Attribute:
 
   Attribute:
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
-|**scheduledTransferLogLevelFilter**|string|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
+|**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
 
 ## <a name="datasource-element"></a>DataSource-Element  
@@ -271,6 +267,6 @@ Attribute:
 
  Attribute:
 
-|Attribut|Typ|Beschreibung|  
+|Attribut|Typ|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**name**|string|Erforderlich. Ein XPath-Ausdruck, der das zu erfassende Protokoll angibt|  
+|**name**|Zeichenfolge|Erforderlich. Ein XPath-Ausdruck, der das zu erfassende Protokoll angibt|  

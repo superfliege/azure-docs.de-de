@@ -4,7 +4,7 @@ description: Erstellen, Verknüpfen, Verschieben und Löschen von Integrationsko
 services: logic-apps
 documentationcenter: ''
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: e661920974c2b0d28200d4c3d82bd644a7a55395
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166238"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297987"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für B2B-Lösungen mit Logik-Apps
 
@@ -58,7 +58,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
    | Abonnement | Ja | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements | 
    | Ressourcengruppe | Ja | test-integration-account-rg | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. Erstellen Sie für dieses Beispiel eine neue Ressourcengruppe mit dem angegebenen Namen. | 
    | Preisstufe | Ja | Kostenlos | Der Tarif, den Sie verwenden möchten. Wählen Sie für dieses Beispiel **Free** aus. Weitere Informationen finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md) und [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Speicherort | Ja | USA (Westen) | Die Region, in der die Informationen zu Ihrem Integrationskonto gespeichert werden sollen. Wählen Sie entweder den gleichen Standort wie für die Logik-App aus, oder erstellen Sie eine Logik-App am gleichen Standort wie das Integrationskonto. Dieses Beispiel: | 
+   | Speicherort | Ja | USA (Westen) | Die Region, in der die Informationen zu Ihrem Integrationskonto gespeichert werden sollen. Wählen Sie entweder den gleichen Standort wie für die Logik-App aus, oder erstellen Sie eine Logik-App am gleichen Standort wie das Integrationskonto. | 
    | Log Analytics | Nein  | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    ||||| 
 

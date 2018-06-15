@@ -1,25 +1,19 @@
 ---
-title: Erstellen einer Metrikwarnung in Azure anhand einer Resource Manager-Vorlage | Microsoft-Dokumentation
+title: Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 description: Erfahren Sie, wie Sie mit einer Resource Manager-Vorlage eine Metrikwarnung erstellen.
 author: snehithm
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
-ms.openlocfilehash: 4b8b5c8d1991cc65c1efe11c930ddb8956c895ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: alerts
+ms.openlocfilehash: 0a4e6c2ebb57aca13a53a8ff12953f0c7a90bc61
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182150"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263445"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) [neuere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) verfügbar.

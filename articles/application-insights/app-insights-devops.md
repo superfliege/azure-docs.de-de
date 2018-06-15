@@ -1,8 +1,8 @@
 ---
-title: "Leistungsüberwachung für Webanwendungen – Azure Application Insights | Microsoft-Dokumentation"
+title: Leistungsüberwachung für Webanwendungen – Azure Application Insights | Microsoft-Dokumentation
 description: Application Insights im DevOps-Zyklus
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 479522a9-ff5c-471e-a405-b8fa221aedb3
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 24e249bb515c509f2fba1f943ac5e23a1ea9965e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a9a6e513d95df5dafba82556f74ec209529ff58d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294910"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Eingehende Diagnose für Web-Apps und Dienste mit Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Wofür benötigen Sie Application Insights?
@@ -133,7 +134,7 @@ Folgende Vorgänge werden erheblich vereinfacht:
 * Verfolgen Sie Sitzungen und Antwortzeiten für bestimmte Benutzer, damit Support- und Betriebsteams den Kunden sofortigen Support bieten können.
 * Ermitteln Sie häufig genutzte App-Features, um Fragen zur Priorisierung von Features beantworten zu können.
 
-Ein Erfahrungsbericht von DNN: „Application Insights hat uns den fehlenden Teil der Formel geliefert – jetzt können wir Daten nach Bedarf kombinieren, sortieren, abfragen und filtern. Unser Team konnte seine Fähigkeiten und Erfahrungen in Bezug auf das Suchen von Daten optimal in diese leistungsstarke Abfragesprache einbringen – so konnten wir Erkenntnisse gewinnen und Probleme lösen, von denen wir nicht einmal wussten, dass wir sie hatten. Aus Fragen, die mit *,Ich frage mich, ob...‘*beginnen, entstehen viele interessante Antworten.“
+Ein Erfahrungsbericht von DNN: „Application Insights hat uns den fehlenden Teil der Formel geliefert – jetzt können wir Daten nach Bedarf kombinieren, sortieren, abfragen und filtern. Unser Team konnte seine Fähigkeiten und Erfahrungen in Bezug auf das Suchen von Daten optimal in diese leistungsstarke Abfragesprache einbringen – so konnten wir Erkenntnisse gewinnen und Probleme lösen, von denen wir nicht einmal wussten, dass wir sie hatten. Aus Fragen, die mit *,Ich frage mich, ob...‘* beginnen, entstehen viele interessante Antworten.“
 
 ## <a name="development-tools-integration"></a>Integration von Entwicklungstools
 ### <a name="configuring-application-insights"></a>Konfigurieren von Application Insights

@@ -14,12 +14,12 @@ ms.date: 09/11/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: b185f53f8f13ebbe1efc57a99b7d65269f5559c0
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3f1225b71d16419a3dd100bfaccfbfa1e1c1c41c
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34354512"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292890"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?
 Einmaliges Anmelden bedeutet, dass Sie Zugriff auf sämtliche für Ihre Geschäftsaktivitäten benötigten Anwendungen und Ressourcen erhalten, indem Sie sich nur einmal mit einem einzigen Benutzerkonto anmelden. Nach der Anmeldung können Sie auf alle benötigten Anwendungen zugreifen, ohne sich ein zweites Mal (z.B. durch Eingabe eines Kennworts) authentifizieren zu müssen.
@@ -59,7 +59,7 @@ Wenn Sie bereits bei Azure AD angemeldet sind und auf Ressourcen zugreifen möch
 
 Azure AD kann die einmalige Verbundanmeldung für Anwendungen unterstützen, die Protokolle wie SAML 2.0, WS-Verbund oder OpenID Connect unterstützen.
 
-Siehe auch: [Verwalten von Zertifikaten für die einmalige Verbundanmeldung](../active-directory-sso-certs.md)
+Siehe auch: [Verwalten von Zertifikaten für die einmalige Verbundanmeldung](manage-certificates-for-federated-single-sign-on.md)
 
 ### <a name="password-based-single-sign-on"></a>Kennwortbasiertes einmaliges Anmelden
 Das Konfigurieren der kennwortbasierten einmaligen Anmeldung ermöglicht die automatische Anmeldung der Benutzer in Ihrer Organisation bei einer Drittanbieter-SaaS-Anwendung durch Azure AD mithilfe der Benutzerkontoinformationen aus der Drittanbieter-SaaS-Anwendung. Wenn Sie dieses Feature aktivieren, sammelt Azure AD die Benutzerkontoinformationen und das zugehörige Kennwort und speichert sie sicher.
@@ -194,7 +194,7 @@ Diese Links verwenden die gleichen Mechanismen der Zugriffssteuerung wie der Zug
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../active-directory-saas-tutorial-list.md)
 * [Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery](cloud-app-discovery.md)
-* [Einführung in die Verwaltung des Zugriffs auf Apps](../active-directory-managing-access-to-apps.md)
+* [Einführung in die Verwaltung des Zugriffs auf Apps](what-is-access-management.md)
 * [Vergleich von Funktionen zum Verwalten externer Identitäten in Azure AD](../active-directory-b2b-compare-b2c.md)
 
 

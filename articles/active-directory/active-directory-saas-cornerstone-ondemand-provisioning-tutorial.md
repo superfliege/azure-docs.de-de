@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 203bc0934b8db15478e78cbc64e463eafdf83fa9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8ad2baef4534c3457fc30bb9589c6fdd99fde8d9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34338634"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292819"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cornerstone OnDemand für die automatische Benutzerbereitstellung
 
@@ -75,7 +75,7 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Cornerstone OnDemand benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen Cornerstone OnDemand anhand der folgenden Anweisungen zuweisen:
 
-*   [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
+*   [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cornerstone-ondemand"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Cornerstone OnDemand
 
@@ -156,7 +156,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
     
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](active-directory-enterprise-apps-manage-provisioning.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](manage-apps/what-is-single-sign-on.md)
 
 

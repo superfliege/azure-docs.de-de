@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2018
 ms.author: kumud
-ms.openlocfilehash: 14dc28bdca9b1c3cfa78c8120a68f7e2a16fbea1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361946"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824998"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -141,7 +141,7 @@ Dieselbe Anzahl von SNAT-Ports wird vorab für UDP bzw. TCP zugeordnet und unabh
 >[!IMPORTANT]
 >Standard-SKU-SNAT Programmierung erfolgt pro IP-Transportprotokoll und wird aus der Lastenausgleichsregel abgeleitet.  Ist nur eine TCP-Lastenausgleichsregel vorhanden, ist SNAT nur für TCP verfügbar. Wenn Sie nur eine TCP-Lastenausgleichsregel haben und ausgehendes SNAT für UDP benötigen, erstellen Sie eine UDP-Lastenausgleichsregel vom selben Front-End- zum selben Back-End-Pool.  Dadurch wird SNAT-Programmierung für UDP ausgelöst.  Eine Arbeitsregel oder ein Integritätstest ist nicht erforderlich.  Basic-SKU-SNAT bewirkt immer, dass SNAT für beide IP-Transportprotokolle programmiert wird, unabhängig von dem Transportprotokoll, das in der Lastenausgleichsregel angegeben ist.
 
-In Azure werden SNAT-Ports vorab der IP-Konfiguration der NIC jeder VM zugeordnet. Wenn dem Pool eine IP-Konfiguration hinzugefügt wird, werden die SNAT-Ports für diese IP-Konfiguration basierend auf der Größe des Back-End-Pools vorab zugeordnet. Bei Erstellung von ausgehenden Datenflüssen werden diese Ports von [PAT](#pat) dynamisch genutzt (bis zum vorab festgelegten Grenzwert) und wieder freigegeben, wenn der Datenfluss geschlossen wird oder ein [Leerlauftimeout](#ideltimeout) eintritt.
+In Azure werden SNAT-Ports vorab der IP-Konfiguration der NIC jeder VM zugeordnet. Wenn dem Pool eine IP-Konfiguration hinzugefügt wird, werden die SNAT-Ports für diese IP-Konfiguration basierend auf der Größe des Back-End-Pools vorab zugeordnet. Bei Erstellung von ausgehenden Datenflüssen werden diese Ports von [PAT](#pat) dynamisch genutzt (bis zum vorab festgelegten Grenzwert) und wieder freigegeben, wenn der Datenfluss geschlossen wird oder ein [Leerlauftimeout](#idletimeout) eintritt.
 
 In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der Back-End-Poolgrößen angegeben:
 
@@ -244,7 +244,7 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 
 ## <a name="limitations"></a>Einschränkungen
 - DisableOutboundSnat ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
-- Auf Web-Workerrollen ohne ein VNet und andere Plattformdienste von Microsoft kann, als Folge eines Nebeneffekts der Funktionsweise von Vor-VNet-Diensten und anderen Plattformdiensten, zugegriffen werden, wenn nur ein interner Load Balancer im Tarif „Standard“ verwendet wird. Sie dürfen sich nicht auf diesen Nebeneffekt verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
+- Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Sie dürfen sich nicht auf diesen Nebeneffekt verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
