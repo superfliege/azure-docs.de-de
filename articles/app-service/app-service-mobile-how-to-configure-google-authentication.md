@@ -14,11 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 1a174913446c0a1d5e3e3b01123db8b40bfd172c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233818"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Nutzung der Google-Anmeldung
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -32,11 +33,11 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 2. Navigieren Sie zur Website [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) (Google-APIs), melden Sie sich mit den Anmeldeinformationen für Ihr Google-Konto an, klicken Sie auf **Create project** (Projekt erstellen), geben Sie einen **Projektnamen** an, und klicken Sie auf **Create** (Erstellen).
 3. Nachdem das Projekt erstellt wurde, wählen Sie es aus. Klicken Sie im Projektdashboard auf **Go to APIs overview** (Zur API-Übersicht wechseln).
 4. Wählen Sie **Enable APIs and Services** (APIs und Dienste aktivieren) aus. Suchen Sie nach **Google + API**, und wählen Sie diese Option aus. Klicken Sie dann auf **Enable** (Aktivieren).
-6. Klicken Sie im linken Navigationsbereich auf **Credentials** > **OAuth consent screen** (Anmeldeinformationen > OAuth-Zustimmungsbildschirm), wählen Sie dann Ihre **E-Mail-Adresse** aus, geben Sie einen **Produktnamen** ein, und klicken Sie auf **Save** (Speichern).
-7. Klicken Sie auf der Registerkarte **Credentials** (Anmeldeinformationen) auf **Create credentials** > **OAuth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID). Klicken Sie auf **Configure Consent Screen** (Genehmigungsbildschirm konfigurieren), und geben Sie unter **Product name** einen Produktnamen an. Klicken Sie dann auf **Save** (Speichern).
-8. Wählen Sie auf dem Bildschirm "Create Client ID“ (Client-ID erstellen) die Option **Web application** (Webanwendung) aus.
-9. Fügen Sie die zuvor kopierte App Service-**URL** in **Authorized JavaScript Origins** (Autorisierte JavaScript-Ursprünge) und dann Ihren Umleitungs-URI in **Authorized Redirect-URI** (Autorisierter Umleitungs-URI) ein. Der Umleitungs-URI ist die URL Ihrer Anwendung mit angefügtem Pfad */.auth/login/google/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. Klicken Sie dann auf **Erstellen**.
-10. Notieren Sie sich auf dem nächsten Bildschirm die Werte für die Client-ID und den geheimen Clientschlüssel.
+5. Klicken Sie im linken Navigationsbereich auf **Credentials** > **OAuth consent screen** (Anmeldeinformationen > OAuth-Zustimmungsbildschirm), wählen Sie dann Ihre **E-Mail-Adresse** aus, geben Sie einen **Produktnamen** ein, und klicken Sie auf **Save** (Speichern).
+6. Klicken Sie auf der Registerkarte **Credentials** (Anmeldeinformationen) auf **Create credentials** > **OAuth client ID** (Anmeldeinformationen erstellen > OAuth-Client-ID).
+7. Wählen Sie auf dem Bildschirm "Create Client ID“ (Client-ID erstellen) die Option **Web application** (Webanwendung) aus.
+8. Fügen Sie die zuvor kopierte App Service-**URL** in **Authorized JavaScript Origins** (Autorisierte JavaScript-Ursprünge) und dann Ihren Umleitungs-URI in **Authorized Redirect-URI** (Autorisierter Umleitungs-URI) ein. Der Umleitungs-URI ist die URL Ihrer Anwendung mit angefügtem Pfad */.auth/login/google/callback*. Beispiel: `https://contoso.azurewebsites.net/.auth/login/google/callback`. Stellen Sie sicher, dass Sie das HTTPS-Schema verwenden. Klicken Sie dann auf **Erstellen**.
+9. Notieren Sie sich auf dem nächsten Bildschirm die Werte für die Client-ID und den geheimen Clientschlüssel.
 
     > [!IMPORTANT]
     > Der geheime Clientschlüssel ist eine wichtige Anmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.

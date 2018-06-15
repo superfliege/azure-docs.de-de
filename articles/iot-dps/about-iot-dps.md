@@ -1,22 +1,19 @@
 ---
-title: "Übersicht über den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation"
-description: "Beschreibt die Gerätebereitstellung in Azure mit dem Device Provisioning-Dienst und IoT Hub"
-services: iot-dps
-keywords: 
+title: Übersicht über den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
+description: Beschreibt die Gerätebereitstellung in Azure mit dem Device Provisioning-Dienst und IoT Hub
 author: nberdy
 ms.author: nberdy
 ms.date: 12/05/2017
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-dps
-documentationcenter: 
-manager: timlt
-ms.devlang: na
-ms.custom: mvc
-ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+services: iot-dps
+manager: briz
+ms.openlocfilehash: 45f47a553f94da2759c4db2b79c8ef5a1b42b8e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630240"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können.

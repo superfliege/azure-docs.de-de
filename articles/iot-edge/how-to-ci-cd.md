@@ -1,25 +1,24 @@
 ---
 title: Continuous Integration und Continuous Deployment für Azure IoT Edge | Microsoft-Dokumentation
 description: Übersicht über Continuous Integration und Continuous Deployment für Azure IoT Edge
-services: iot-Edge
-documentationcenter: ''
 author: shizn
-manager: timlt
+manager: ''
 ms.author: xshi
-ms.date: 4/30/2018
-ms.topic: article
+ms.date: 04/30/2018
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 2f635a4c02dd8fd2b58598e53662d1a4d82ea611
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+services: iot-edge
+ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311740"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631019"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Continuous Integration und Continuous Deployment für Azure IoT Edge – Vorschau
 In diesem Tutorial wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von Visual Studio Team Services (VSTS) und Microsoft Team Foundation Server (TFS) zum schnellen und effizienten Erstellen, Testen und Bereitstellen von Anwendungen in Azure IoT Edge verwenden können. 
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Lernprogramm lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen und Einchecken einer IoT Edge-Beispielprojektmappe, die Komponententests enthält
 > * Installieren der Azure IoT Edge-Erweiterung für Ihre VSTS
@@ -429,7 +428,7 @@ In diesem Abschnitt erstellen Sie eine Builddefinition, die so konfiguriert ist,
 
 1. Wählen Sie in der daraufhin angezeigten Meldungsleiste den Link für den Build aus. Sie können auch zur Builddefinition wechseln, um den zuletzt in die Warteschlange gestellten Buildauftrag anzuzeigen.
 
-    ![Build](./media/how-to-ci-cd/build-def.png)
+    ![Entwickeln](./media/how-to-ci-cd/build-def.png)
 
 1. Nachdem der Build abgeschlossen ist, werden die Zusammenfassung für jede Aufgabe und die Ergebnisse in der Liveprotokolldatei angezeigt. 
     

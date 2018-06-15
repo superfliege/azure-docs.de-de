@@ -13,14 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/16/2018
+ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5a268a29c7a767084049bf56270aa8bc9d2ccc3f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850626"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Was ist das Azure Stack Development Kit?
 [Integrierte Microsoft Azure Stack-Systeme](.\.\azure-stack-poc.md) haben eine Größe von vier bis zwölf Knoten, und der Support wird von einem Hardwarepartner und von Microsoft gemeinsam bereitgestellt. Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads. Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur integrierter Systeme verwaltet und Dienste anbietet, hilft Ihnen die [Dokumentation für Betreiber](https://docs.microsoft.com/azure/azure-stack) weiter.
@@ -44,9 +45,9 @@ Weitere Informationen zum ASDK erhalten Sie im folgenden kurzen Video:
 ## <a name="asdk-and-multi-node-azure-stack-differences"></a>Unterschiede zwischen ASDK und Azure Stack mit mehreren Knoten
 Zwischen ASDK-Bereitstellungen mit einem einzelnen Knoten und Azure Stack-Bereitstellungen mit mehreren Knoten gibt es einige wichtige Unterschiede:
 
-|Beschreibung|ASDK|Azure Stack mit mehreren Knoten|
+|BESCHREIBUNG|ASDK|Azure Stack mit mehreren Knoten|
 |-----|-----|-----|
-|**Skalierung**|Alle Komponenten werden auf einem Servercomputer mit einem einzelnen Knoten installiert.|Kann zwischen vier und zwölf Knoten umfassen.|
+|**Skalieren**|Alle Komponenten werden auf einem Servercomputer mit einem einzelnen Knoten installiert.|Kann zwischen vier und zwölf Knoten umfassen.|
 |**Resilienz**|Die Konfiguration mit einem einzelnen Knoten bietet keine Hochverfügbarkeit.|Funktionen für [Hochverfügbarkeit](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) werden unterstützt.|
 |**Netzwerk**|Das ASDK verwendet für das Routing des gesamten ASDK-Netzwerkdatenverkehrs einen virtuellen Computer namens „AzS-BGPNAT01“. Es müssen keine zusätzlichen Switchanforderungen erfüllt werden.|Bei Bereitstellungen mit mehreren Knoten ist der virtuelle Computer „AzS-BGPNAT01“ nicht vorhanden. Es wird eine komplexere [Netzwerkroutinginfrastruktur](.\.\azure-stack-network.md#network-infrastructure) benötigt – einschließlich TOR-Switches (Top-Of-Rack), BMC-Switches (Baseboard Management Controller, Baseboard-Verwaltungscontroller) und Grenzswitches (Datencenter-Netzwerkswitches).|
 |**Patch- und Updateprozess**|Wenn Sie zu einer neuen ASDK-Version wechseln möchten, müssen Sie das ASDK erneut auf dem Development Kit-Hostcomputer bereitstellen.|Zum Aktualisieren der installierten Azure Stack-Version wird der Prozess zum [Patchen und Aktualisieren](.\.\azure-stack-updates.md) verwendet.|
@@ -61,7 +62,7 @@ Azure Stack umfasst bei der Bereitstellung des ASDKs standardmäßig folgende gr
 - Compute
 - Speicher
 - Netzwerk
-- Schlüsseltresor
+- Key Vault
 
 Mit diesen grundlegenden Dienste können Sie Ihren Benutzern Infrastructure-as-a-Service (IaaS) mit Minimalkonfiguration anbieten.
 
@@ -79,4 +80,4 @@ Die Unterstützung von Azure-Diensten in Azure Stack wird kontinuierlich weiter 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Um mit der Evaluierung von Azure Stack beginnen zu können, müssen Sie den Development Kit-Hostservercomputer vorbereiten und dann [das ASDK installieren](asdk-deploy.md). Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
+Um mit der Evaluierung von Azure Stack beginnen zu können, müssen Sie den Development Kit-Hostservercomputer vorbereiten und dann [das ASDK installieren](asdk-install.md). Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.

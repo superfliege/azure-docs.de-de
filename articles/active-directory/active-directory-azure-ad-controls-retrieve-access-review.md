@@ -11,18 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: cdd07fd837863d9a5abced0db8cacaded6288a41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: c30d166335e31cdbf03283371da42fa6b7cda162
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192223"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233113"
 ---
 # <a name="retrieve-access-review-results"></a>Abrufen der Ergebnisse der Zugriffsüberprüfung
 
 Mit Azure Active Directory (Azure AD) können Administratoren [eine Zugriffsüberprüfung erstellen](active-directory-azure-ad-controls-create-access-review.md). Diese kann für Mitglieder einer Gruppe oder Benutzer, die einer Anwendung zugewiesen sind, durchgeführt werden.  Benutzern mit den Rollen **Globaler Administrator**, **Sicherheitsadministrator** oder **Benutzer mit Leseberechtigung für Sicherheitsfunktionen** können auch die Ergebnisse einer Zugriffsüberprüfung lesen.  Zum Zuweisen von Benutzern zu einer dieser Rollen kann ein Administrator für privilegierte Rollen mithilfe von Azure AD PIM Benutzern die Berechtigung zum Aktivieren der Rolle erteilen. Alternativ kann ein globaler Administrator [einem Benutzer die Rolle dauerhaft zuweisen](active-directory-users-assign-role-azure-portal.md).
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>Suchen einer Zugriffsüberprüfung
 
@@ -42,8 +45,6 @@ Klicken Sie zum Anzeigen der Ergebnisse einer abgeschlossenen Instanz einer Seri
 
 
 ## <a name="removing-users-from-an-access-review"></a>Entfernen von Benutzern aus einer Zugriffsüberprüfung
-
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 Ein gelöschter Benutzer bleibt in Azure AD standardmäßig 30 Tage lang gelöscht. In diesem Zeitraum kann er von einem Administrator wiederhergestellt werden, sofern erforderlich.  Nach 30 Tagen wird dieser Benutzer endgültig gelöscht.  Darüber hinaus kann ein globaler Administrator über das Azure Active Directory-Portal explizit [einen kürzlich gelöschten Benutzer endgültig löschen](active-directory-users-restore.md), bevor dieser Zeitraum abgelaufen ist.  Wurde ein Benutzer endgültig gelöscht, werden nachfolgende Daten zu diesem Benutzer aus aktiven Zugriffsüberprüfungen entfernt.  Überwachungsinformationen zu gelöschten Benutzern verbleiben im Überwachungsprotokoll.
 
