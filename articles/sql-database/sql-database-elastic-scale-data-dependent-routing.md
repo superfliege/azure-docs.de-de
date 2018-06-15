@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 8a9b0b2c0541504954c4a1352180552cc650a31f
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 715b6e55b053b3f999f3bd938c14d72a8e20ad1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646880"
 ---
 # <a name="data-dependent-routing"></a>Datenabhängiges Routing
 **Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)).

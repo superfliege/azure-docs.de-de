@@ -15,11 +15,13 @@
           href: tutorial-role-assignments-user-powershell.md
         - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
           href: tutorial-role-assignments-group-powershell.md
+        - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
+          href: tutorial-custom-role-powershell.md
+        - name: 'Erstellen einer benutzerdefinierten Rolle: CLI'
+          href: tutorial-custom-role-cli.md
     - name: Verwalten von Rollenzuweisungen
       items:
-        - name: Benutzer
-          href: role-assignments-users.md
-        - name: Ressource
+        - name: Portal
           href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
         - name: Azure-Befehlszeilenschnittstelle
           href: role-assignments-cli.md

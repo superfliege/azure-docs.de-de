@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: Schnellstarts
   items:
-    - name: 'Erstellen einer DNS-Zone und eines Eintrags: Portal'
+    - name: 'Namensauflösung: Portal'
       href: dns-getstarted-portal.md
     - name: 'Erstellen einer DNS-Zone und eines Eintrags: PowerShell'
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: Tutorials
   items:
-    - name: Erstellen einer privaten DNS-Zone und eines Eintrags
-      href: private-dns-getstarted-powershell.md
-    - name: Delegieren einer Domäne an Azure DNS
+    - name: Hosten Ihrer Domäne in Azure DNS
       href: dns-delegate-domain-azure-dns.md
     - name: Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App
       href: dns-web-sites-custom-domain.md
+    - name: Erstellen einer privaten DNS-Zone und eines Eintrags
+      href: private-dns-getstarted-powershell.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle

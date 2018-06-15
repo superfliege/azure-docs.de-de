@@ -7,14 +7,14 @@ manager: abhemraj
 editor: raynew
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/25/2018
+ms.date: 05/31/2018
 ms.author: bsiva
-ms.openlocfilehash: 83f167b047fa9c5df7c04304c7955ae838ae8373
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3fa9ee27a1b9717d8011b7b46a1116f1f1ac1df5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32196053"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716328"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell
 
@@ -23,17 +23,17 @@ In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung für vi
 Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> - Erstellen eines Recovery Services-Tresors
+> - Erstellen Sie einen Recovery Services-Tresor.
 > - Festlegen des Tresorkontexts für die PowerShell-Sitzung
 > - Vorbereiten des Tresors für die Replikation virtueller Azure-Computer
 > - Erstellen von Netzwerkzuordnungen
-> - Erstellen von Speicherkonten zum Replizieren der virtuellen Computer
+> - Erstellen Sie Speicherkonten zum Replizieren der virtuellen Computer.
 > - Replizieren virtueller Azure-Computer in eine Wiederherstellungsregion für die Notfallwiederherstellung
-> - Ausführen eines Testfailovers, Überprüfen und Bereinigen des Testfailovers
+> - Führen Sie ein Testfailover aus, und überprüfen und bereinigen Sie das Testfailover.
 > - Failover zur Wiederherstellungsregion
 
 > [!NOTE]
-> Die PowerShell-Unterstützung von Azure Site Recovery für das Szenario *Notfallwiederherstellung für virtuelle Azure-Computer* befindet sich derzeit in der Vorschauphase. Möglicherweise stehen nicht alle Szenariofunktionen, die über das Portal verfügbar sind, über Azure PowerShell bereit. Unter anderem werden die folgenden Szenariofunktionen derzeit nicht über Azure PowerShell unterstützt:
+> Möglicherweise stehen nicht alle Szenariofunktionen, die über das Portal verfügbar sind, über Azure PowerShell bereit. Unter anderem werden die folgenden Szenariofunktionen derzeit nicht über Azure PowerShell unterstützt:
 > - Die Möglichkeit, virtuelle Azure-Computer zu replizieren, die verwaltete Datenträger verwenden.
 > - Die Möglichkeit festzulegen, dass alle Datenträger eines virtuellen Computers repliziert werden sollen, ohne jeden einzelnen Datenträger des virtuellen Computers explizit angeben zu müssen.  
 

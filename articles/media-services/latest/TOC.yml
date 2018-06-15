@@ -59,16 +59,16 @@
       href: create-account-cli-how-to.md
     - name: 'Datenzugriffs-API: CLI'
       href: access-api-cli-how-to.md
-    - name: 'Auftragsstatusereignisse: CLI'
+    - name: 'Überwachen von Auftragsstatusereignissen: CLI'
       href: job-state-events-cli-how-to.md
+    - name: 'Anpassen der Transformationsvoreinstellungen: .NET Core'
+      href: customize-encoder-presets-how-to.md
     - name: Hochladen von Inhalten
       items:
         - name: 'Über HTTP(s): .NET'
           href: job-input-from-http-how-to.md
         - name: 'Über eine lokale Datei: .NET'
           href: job-input-from-local-file-how-to.md
-    - name: 'Anpassen der Transformationsvoreinstellungen: .NET Core'
-      href: customize-encoder-presets-how-to.md
 - name: Verweis
   items:
     - name: OpenAPI-Spezifikation (Swagger)
