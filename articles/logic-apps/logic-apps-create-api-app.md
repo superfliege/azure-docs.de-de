@@ -1,12 +1,12 @@
 ---
-title: "Erstellen von Web- und REST-APIs für Azure Logic Apps | Microsoft-Dokumentation"
-description: "Informationen zum Erstellen von Web- und REST-APIs, um Ihre APIs, Dienste oder Systeme in Logik-App-Workflows für die Systemintegration aufzurufen"
+title: Erstellen von Web- und REST-APIs für Azure Logic Apps | Microsoft-Dokumentation
+description: Informationen zum Erstellen von Web- und REST-APIs, um Ihre APIs, Dienste oder Systeme in Logik-App-Workflows für die Systemintegration aufzurufen
 keywords: Web-APIs, REST-APIs, Workflows, Systemintegrationen
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: jeconnoc
+editor: ''
+documentationcenter: ''
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
 ms.workload: integration
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/26/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: ec7fe2adfb89edd635adcf247eea0b98f7007b1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3ca55bb0a9f4719bd2229aca626d20c53af9fd1e
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299527"
 ---
 # <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Erstellen benutzerdefinierter APIs, die in Logik-App-Workflows aufgerufen werden können
 
@@ -107,11 +108,9 @@ Hier werden die einzelnen Schritte Ihrer API aus API-Sicht beschrieben:
    
    Die `202 ACCEPTED`-Antwort sollte diese Header enthalten:
    
-   * 
-               *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann
+   * *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann
 
-   * 
-               *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
+   * *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
 
      Standardmäßig führt die Engine alle 20 Sekunden eine Überprüfung durch. Schließen Sie zum Angeben eines anderen Zeitintervalls den `retry-after`-Header und die Anzahl der Sekunden bis zum nächsten Abruf ein.
 
@@ -139,11 +138,9 @@ Wenn der Auftrag abgeschlossen ist, benachrichtigt Ihre API die Engine über die
 
 Richten Sie für dieses Muster zwei Endpunkte auf dem Controller ein: `subscribe` und`unsubscribe`.
 
-*  
-            `subscribe`-Endpunkt: Wenn die Ausführung die Aktion Ihrer API im Workflow erreicht, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert, und dann auf den Rückruf von Ihrer API wartet, wenn die Arbeit abgeschlossen ist. Dann sendet Ihre API wieder einen HTTP POST-Rückruf an die URL und übergibt alle zurückgegebenen Inhalte und Header als Eingabe an die Logik-App.
+*  `subscribe`-Endpunkt: Wenn die Ausführung die Aktion Ihrer API im Workflow erreicht, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert, und dann auf den Rückruf von Ihrer API wartet, wenn die Arbeit abgeschlossen ist. Dann sendet Ihre API wieder einen HTTP POST-Rückruf an die URL und übergibt alle zurückgegebenen Inhalte und Header als Eingabe an die Logik-App.
 
-* 
-            `unsubscribe`-Endpunkt: Wenn die Logik-App abgebrochen wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
+* `unsubscribe`-Endpunkt: Wenn die Logik-App abgebrochen wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
 
 ![Webhookaktionsmuster](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
@@ -203,11 +200,9 @@ Um beispielsweise Ihren Dienst in regelmäßigen Abständen auf neue Dateien zu 
 Ein Webhooktrigger ist ein *Pushtrigger*, der an Ihrem Dienstendpunkt auf neue Daten oder Ereignisse wartet und lauscht. Wenn neue Daten oder Ereignisse die angegebene Bedingung erfüllen, wird der Trigger ausgelöst und erstellt eine Instanz der Logik-App, die dann die Daten als Eingabe verarbeitet.
 Webhooktrigger fungieren ähnlich wie die zuvor in diesem Thema beschriebenen [Webhookaktionen](#webhook-actions) und werden mit `subscribe`- und `unsubscribe`-Endpunkten eingerichtet. 
 
-* 
-            `subscribe`-Endpunkt: Wenn Sie in der Logik-App einen Webhooktrigger hinzufügen und speichern, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert. Wenn neue Daten oder Ereignisse vorliegen, die die angegebene Bedingung erfüllen, ruft Ihre API mit einem HTTP POST zur URL zurück. Inhaltsnutzlast und Header werden der Logik-App als Eingabe übergeben.
+* `subscribe`-Endpunkt: Wenn Sie in der Logik-App einen Webhooktrigger hinzufügen und speichern, ruft die Logic Apps-Engine den `subscribe`-Endpunkt auf. Dieser Schritt bewirkt, dass die Logik-App eine Rückruf-URL erstellt, die Ihre API speichert. Wenn neue Daten oder Ereignisse vorliegen, die die angegebene Bedingung erfüllen, ruft Ihre API mit einem HTTP POST zur URL zurück. Inhaltsnutzlast und Header werden der Logik-App als Eingabe übergeben.
 
-* 
-            `unsubscribe`-Endpunkt: Wenn der Webhooktrigger oder die gesamte Logik-App gelöscht wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
+* `unsubscribe`-Endpunkt: Wenn der Webhooktrigger oder die gesamte Logik-App gelöscht wird, ruft die Logic Apps-Engine den `unsubscribe`-Endpunkt auf. Ihre API kann dann die Registrierung der Rückruf-URL aufheben und alle Prozesse nach Bedarf beenden.
 
 ![Webhooktriggermuster](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 

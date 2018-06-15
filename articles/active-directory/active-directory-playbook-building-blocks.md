@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 97a77de2fe1111f0a65b5325a5db96ad30f40f15
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293108"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -140,7 +141,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | --- | --- |
 | Testumgebung für die SaaS-Anwendung ist verfügbar. In diesem Handbuch verwendet wir ServiceNow als Beispiel.<br/>Es wird dringend empfohlen, eine Testinstanz zu verwenden, um Unstimmigkeiten beim Navigieren mit der vorhandenen Datenqualität und den Zuordnungen zu minimieren. | Navigieren Sie zu https://developer.servicenow.com/app.do#!/home, um den Prozess zur Beschaffung einer Testinstanz zu starten. |
 | Administratorzugriff auf die Verwaltungskonsole für ServiceNow | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die PoC-Benutzer in einer Sicherheitsgruppe zusammenzufassen. <br/>Wenn die Erstellung der Gruppe nicht möglich ist, weisen Sie die Benutzer für den PoC direkt der Anwendung zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die PoC-Benutzer in einer Sicherheitsgruppe zusammenzufassen. <br/>Wenn die Erstellung der Gruppe nicht möglich ist, weisen Sie die Benutzer für den PoC direkt der Anwendung zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Schritte
 
@@ -148,13 +149,13 @@ Geschätzter Zeitaufwand: 60 Minuten
 | --- | --- |
 | Teilen Sie das Tutorial über die Microsoft-Dokumentation mit allen Akteuren.  | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
 | Setzen Sie ein Arbeitstreffen an, und gehen Sie das Tutorial mit jedem Akteur durch. | [Tutorial: Azure Active Directory-Integration mit ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. Wenn der PoC in diesem Bereich bedingten Zugriff erfordert, können Sie später darauf zurückkommen, um MFA u.ä. hinzuzufügen. <br/>Hinweis: Dadurch wird der Bereitstellungsvorgang gestartet (wenn konfiguriert). |  [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. Wenn der PoC in diesem Bereich bedingten Zugriff erfordert, können Sie später darauf zurückkommen, um MFA u.ä. hinzuzufügen. <br/>Hinweis: Dadurch wird der Bereitstellungsvorgang gestartet (wenn konfiguriert). |  [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md) |
 | Verwenden Sie das Azure AD-Verwaltungsportal, um die ServiceNow-Anwendung über den Katalog hinzuzufügen.| [Azure AD-Verwaltungsportal: Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | Aktivieren Sie in der ServiceNow-App auf dem Blatt „Einmaliges Anmelden“ die Einstellung „SAML-basierte Anmeldung“. |  |
 | Füllen Sie die Felder „Anmelde-URL“ und „Bezeichner“ mit der ServiceNow-URL aus.<br/>Aktivieren Sie das Kontrollkästchen „Neues Zertifikat aktivieren“.<br/>Speichern Sie die Einstellungen. |  |
 | Öffnen Sie das Blatt „ServiceNow konfigurieren“, das sich im Bereich unten befindet, um spezielle Anweisungen für die Konfiguration von ServiceNow abzurufen. |  |
 | Führen Sie die Anweisungen zum Konfigurieren von ServiceNow aus. |  |
-| Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](active-directory-enterprise-apps-manage-provisioning.md) |
+| Aktivieren Sie auf dem Blatt „Bereitstellung“ der ServiceNow-App die Bereitstellungsform „Automatisch“. | [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im neuen Azure-Portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
 | Warten Sie einige Minuten, während die Bereitstellung abgeschlossen wird.  In der Zwischenzeit können Sie die Bereitstellungsberichte überprüfen. |  |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](active-directory-saas-access-panel-introduction.md) |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. Bestätigen Sie den Zugriff. |  |
@@ -175,7 +176,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | --- | --- |
 | Testumgebung für SaaS-Anwendungen. Beispiele für Kennwort-SSO sind HipChat und Twitter. Für andere Anwendungen benötigen Sie die genaue URL der Seite, auf der sich das HTML-Anmeldeformular befindet. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Testkonten für die Anwendungen. | [Registrieren bei Twitter](https://twitter.com/signup?lang=en)<br/>[Kostenlos registrieren bei HipChat](https://www.hipchat.com/sign_up) |
-| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die Benutzer in einer Sicherheitsgruppe zusammenzufassen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Zielbenutzer, denen Sie die Anwendung zuweisen können. Es wird empfohlen, die Benutzer in einer Sicherheitsgruppe zusammenzufassen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Schritte
@@ -184,8 +185,8 @@ Geschätzter Zeitaufwand: 15 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. |  |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
@@ -210,7 +211,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 | --- | --- |
 | Halten Sie die Liste der Zielanwendungen und die genauen Anmelde-URLs bereit. Als Beispiel können Sie Twitter verwenden. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Registrieren bei Twitter](https://twitter.com/signup?lang=en) |
 | Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (Blog zu Enterprise Mobility + Security) (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Anmeldeinformationen für mindestens zwei Teammitglieder, die auf das gleiche Konto zugreifen werden. Sie müssen einer Sicherheitsgruppe angehören. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Lokaler Administratorzugriff auf einen Computer zum Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer, Chrome oder Firefox | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Schritte
@@ -219,8 +220,8 @@ Geschätzter Zeitaufwand: 30 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](active-directory-enterprise-apps-manage-sso.md#password-based-sign-on) |
-| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich als verschiedene Benutzer an, die auf die App als **das gleiche freigegebene Konto** zugreifen.  |  |
 | Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
 

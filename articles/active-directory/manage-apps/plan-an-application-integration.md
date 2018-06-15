@@ -15,11 +15,12 @@ ms.workload: identity
 ms.date: 01/15/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ac3438f0c706988323318146965a87461dcce1e8
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 183c5f3196653ce9519c0742db7a67cd36c63fb9
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35292836"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -64,7 +65,7 @@ Vielleicht können Sie nicht alle Fragen im Voraus beantworten, aber das ist kei
 Wie oben erwähnt sind möglicherweise Anwendungen im Einsatz, die bis jetzt von Ihrer Organisation noch nicht verwaltet wurden.  Im Rahmen der Bestandsaufnahme können Sie nicht genehmigte Cloudanwendungen finden. Weitere Informationen hierzu finden Sie unter [Finden nicht genehmigter Cloudanwendungen mit Cloud App Discovery](cloud-app-discovery.md).
 
 ### <a name="authentication-types"></a>Authentifizierungstypen
-Für jede Ihrer Anwendungen gelten möglicherweise unterschiedliche Authentifizierungsanforderungen. Bei Azure AD können Signaturzertifikate mit Anwendungen verwendet werden, die die Protokolle SAML 2.0, WS-Verbund oder OpenID Connect sowie das einmalige Anmelden per Kennwort verwenden. Weitere Informationen zu Anwendungsauthentifizierungstypen, die mit Azure AD verwendet werden können, finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](../active-directory-sso-certs.md) und unter [Kennwortbasierte einmalige Anmeldung](what-is-single-sign-on.md).
+Für jede Ihrer Anwendungen gelten möglicherweise unterschiedliche Authentifizierungsanforderungen. Bei Azure AD können Signaturzertifikate mit Anwendungen verwendet werden, die die Protokolle SAML 2.0, WS-Verbund oder OpenID Connect sowie das einmalige Anmelden per Kennwort verwenden. Weitere Informationen zu Anwendungsauthentifizierungstypen, die mit Azure AD verwendet werden können, finden Sie unter [Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-certificates-for-federated-single-sign-on.md) und unter [Kennwortbasierte einmalige Anmeldung](what-is-single-sign-on.md).
 
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Aktivieren von SSO mit Azure AD-App-Proxy
 Mit dem Microsoft Azure AD-Anwendungsproxy können Sie sicheren Zugriff von jedem Ort und mit jedem Gerät auf Anwendungen bereitstellen, die sich in Ihrem privaten Netzwerk befinden. Nachdem Sie einen Anwendungsproxy-Connector in Ihrer Umgebung installiert haben, können Sie ihn mit Azure AD leicht konfigurieren.
@@ -79,7 +80,7 @@ In den folgenden Artikeln werden die verschiedenen Methoden zur Integration von 
 ## <a name="managing-access-to-applications"></a>Verwalten des Zugriffs auf Anwendungen
 In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf Anwendungen beschrieben, nachdem sie mithilfe von Azure AD-Connectors und Azure AD in Azure AD integriert wurden.
 
-* [Verwalten des Zugriffs auf Apps mit Azure AD](../active-directory-managing-access-to-apps.md)
+* [Verwalten des Zugriffs auf Apps mit Azure AD](what-is-access-management.md)
 * [Automatisieren mit Azure AD-Connectors](../active-directory-saas-app-provisioning.md)
 * [Zuweisen von Benutzern zu einer Anwendung](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Zuweisen von Gruppen zu einer Anwendung](../active-directory-applications-guiding-developers-assigning-groups.md)

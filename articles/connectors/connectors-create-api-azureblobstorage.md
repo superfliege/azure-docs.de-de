@@ -2,7 +2,7 @@
 title: Herstellen einer Verbindung mit Azure-Blobspeicher – Azure Logic Apps | Microsoft-Dokumentation
 description: Erstellen und Verwalten von Blobs in Azure-Speicher mit Azure Logic Apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 ms.author: estfan
 ms.date: 05/21/2018
 ms.topic: article
@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 15d737cd85f70717bfdf15dfb3d179f977b63c72
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34723431"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294678"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure-Blobspeicher mit Azure Logic Apps
 
@@ -84,7 +84,7 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
    In diesem Beispiel wird folgende Aktion verwendet: **Azure Blob Storage – Blobinhalt abrufen**.
 
-   ![Aktion auswählen](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
+   ![Aktion select](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
 4. Wenn Sie zum Angeben von Verbindungsdetails aufgefordert werden, können Sie [jetzt Ihre Azure Blob Storage-Verbindung erstellen](#create-connection). Falls Ihre Verbindung bereits besteht, können Sie die erforderlichen Informationen für die Aktion angeben. 
 

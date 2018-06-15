@@ -2,29 +2,26 @@
 title: Erstellen eines HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Functions mit HTTP-Triggern zum Abfragen von Azure Cosmos DB verwenden.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818898"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung
 
 Azure Cosmos DB ist eine global verteilte schema- und serverlose Datenbank mit Unterstützung mehrerer Modelle. Azure Functions ist ein serverloser Computedienst, der die bedarfsgesteuerte Codeausführungs ermöglicht. Kombinieren Sie diese beiden Azure-Dienste, und schaffen Sie so die Grundlage für eine serverlose Architektur. Dank dieser Architektur können Sie sich auf die Entwicklung großartiger Apps konzentrieren und müssen sich keine Gedanken über die Bereitstellung und Wartung von Servern für Ihre Compute- und Datenbankanforderungen machen.
 
-Dieses Tutorial baut auf dem unter [Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Graph-API](create-graph-dotnet.md) erstellten Code auf. In diesem Tutorial wird eine Azure-Funktion mit einem [HTTP-Trigger](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger) hinzugefügt. Der HTTP-Trigger verwendet eine Azure Cosmos DB-[Eingabebindung](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md), um Daten aus der in der Schnellstartanleitung erstellten Diagrammdatenbank abzurufen. Dieser HTTP-Trigger fragt Daten aus Azure Cosmos DB ab. Mit Eingabebindungen von Azure Cosmos DB können Sie jedoch Dateneingabewerte für alles abrufen, was Ihre Funktion benötigt.
+Dieses Tutorial baut auf dem unter [Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Graph-API](create-graph-dotnet.md) erstellten Code auf. In diesem Tutorial wird eine Azure-Funktion mit einem [HTTP-Trigger](../azure-functions/functions-bindings-http-webhook.md) hinzugefügt. Der HTTP-Trigger verwendet eine Azure Cosmos DB-[Eingabebindung](../azure-functions/functions-triggers-bindings.md), um Daten aus der in der Schnellstartanleitung erstellten Diagrammdatenbank abzurufen. Dieser HTTP-Trigger fragt Daten aus Azure Cosmos DB ab. Mit Eingabebindungen von Azure Cosmos DB können Sie jedoch Dateneingabewerte für alles abrufen, was Ihre Funktion benötigt.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
