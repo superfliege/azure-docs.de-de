@@ -6,20 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: df9c22877eeac381d936f2fb86f5720c9cc9c930
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: scottnap
+ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196694"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724257"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Einführung in iDNS für Azure Stack
 
@@ -31,9 +31,9 @@ iDNS ist ein Netzwerkfeature von Azure Stack, mit dem Sie externe DNS-Namen (z.B
 
 Mit iDNS in Azure Stack erhalten Sie die folgenden Funktionen, ohne benutzerdefinierte DNS-Servereinträge angeben zu müssen:
 
-* Gemeinsam genutzte DNS-Namensauflösungsdienste für Mandantenworkloads.
-* Autorisierender DNS-Dienst für Namensauflösung und DNS-Registrierung innerhalb des virtuellen Netzwerks des Mandanten.
-* Rekursiver DNS-Dienst für die Auflösung von Internetnamen aus den Mandanten-VMs. Mandanten müssen nicht mehr benutzerdefinierte DNS-Einträge zum Auflösen von Internetnamen (z. B. „www.bing.com“) angeben.
+- Gemeinsam genutzte DNS-Namensauflösungsdienste für Mandantenworkloads.
+- Autorisierender DNS-Dienst für Namensauflösung und DNS-Registrierung innerhalb des virtuellen Netzwerks des Mandanten.
+- Rekursiver DNS-Dienst für die Auflösung von Internetnamen aus den Mandanten-VMs. Mandanten müssen nicht mehr benutzerdefinierte DNS-Einträge zum Auflösen von Internetnamen (z. B. „www.bing.com“) angeben.
 
 Sie können weiterhin Ihr eigenes DNS und benutzerdefinierte DNS-Server verwenden. Mit iDNS können Sie Internet-DNS-Namen auflösen und eine Verbindung mit anderen virtuellen Computern im gleichen virtuellen Netzwerk herstellen, müssen aber keine benutzerdefinierten DNS-Einträge erstellen.
 
@@ -49,10 +49,10 @@ In der Abbildung oben erstellt Azure einen A-Eintrag im DNS für die DNS-Namensb
 
 Azure Stack unterstützt iDNS nur für die Registrierung interner Namen, sodass Folgendes nicht möglich ist:
 
-* Erstellen eines DNS-Eintrags unter einer vorhandenen gehosteten DNS-Zone (z.B. „local.azurestack.external“).
-* Erstellen einer DNS-Zone (z.B. „contoso.com“).
-* Erstellen eines Eintrags unter Ihrer eigenen benutzerdefinierten DNS-Zone.
-* Unterstützen des Erwerbs von Domänennamen.
+- Erstellen eines DNS-Eintrags unter einer vorhandenen gehosteten DNS-Zone (z.B. „local.azurestack.external“).
+- Erstellen einer DNS-Zone (z.B. „contoso.com“).
+- Erstellen eines Eintrags unter Ihrer eigenen benutzerdefinierten DNS-Zone.
+- Unterstützen des Erwerbs von Domänennamen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
