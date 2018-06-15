@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zur Azure IoT Edge-Laufzeit | Microsoft-Dokumentation
-description: "Hier erhalten Sie Informationen über die Azure IoT Edge-Laufzeit und wie Sie sie für Ihre Edgegeräte nutzen können."
-services: iot-edge
-keywords: 
+description: Hier erhalten Sie Informationen über die Azure IoT Edge-Laufzeit und wie Sie sie für Ihre Edgegeräte nutzen können.
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 02/15/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8bd725e2201cb08853f4fb63d156b6359427663b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+services: iot-edge
+ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632073"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Grundlegendes zur Azure IoT Edge-Laufzeit und ihre Architektur – Vorschau
 
@@ -23,7 +23,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 * Installieren und Aktualisieren von Workloads auf dem Gerät
 * Aufrechterhalten von Azure IoT Edge-Sicherheitsstandards auf dem Gerät
-* Sicherstellen, dass die [IoT Edge-Module][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] immer ausgeführt werden
+* Sicherstellen, dass die [IoT Edge-Module][Ink-Module] immer ausgeführt werden
 * Melden der Modulintegrität an die Cloud für die Remoteüberwachung
 * Ermöglichen der Kommunikation zwischen nachgeschalteten Blattknotengeräten und dem IoT Edge-Gerät
 * Ermöglichen der Kommunikation zwischen Modulen auf dem IoT Edge-Gerät
@@ -33,7 +33,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Modulverwaltung und -kommunikation. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
 
-Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] 
+Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Ink-Module] 
 
 ## <a name="iot-edge-hub"></a>IoT Edge-Hub
 
@@ -120,7 +120,7 @@ Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]
+- [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau][Ink-Module]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -129,4 +129,4 @@ Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]: iot-edge-modules.md
+[Ink-Module]: iot-edge-modules.md
