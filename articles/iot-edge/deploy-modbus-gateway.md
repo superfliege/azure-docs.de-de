@@ -1,25 +1,19 @@
 ---
-title: "Bereitstellen von ModBus für Azure IoT Edge | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie es Geräten mit Verwendung von ModBus-TCP die Kommunikation mit Azure IoT Hub ermöglichen, indem Sie ein IoT Edge-Gatewaygerät erstellen."
-services: iot-Edge
-documentationcenter: 
+title: Bereitstellen von ModBus für Azure IoT Edge | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie es Geräten mit Verwendung von ModBus-TCP die Kommunikation mit Azure IoT Hub ermöglichen, indem Sie ein IoT Edge-Gatewaygerät erstellen.
 author: kgremban
 manager: timlt
-editor: chrisgmsft
-ms.assetid: 
-ms.service: iot-hub
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.service: iot-edge
+services: iot-edge
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: kgremban
-ms.custom: 
-ms.openlocfilehash: e239bde48c3da0d899e3c78bdd39f520c4128b95
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: d6e831cdd7cd18305beb617693ee1026bb6429e9
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631465"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway---preview"></a>Verbinden von ModBus-TCP-Geräten über ein IoT Edge-Gerätegateway – Vorschauversion
 
@@ -81,7 +75,7 @@ Falls Sie Ihr eigenes Modul erstellen und für Ihre Umgebung anpassen möchten, 
       }
       ```
 
-   6. Wählen Sie **Speichern** aus.
+   6. Wählen Sie **Speichern**aus.
 5. Wenn Sie zum Schritt **Module hinzufügen** zurückgekehrt sind, wählen Sie **Weiter** aus.
 7. Kopieren Sie im Schritt **Routen angeben** den unten angegebenen JSON-Code in das Textfeld. Für diese Route werden alle Nachrichten, die vom ModBus-Modul gesammelt wurden, an den IoT Hub gesendet. Bei dieser Route ist „modbusOutput“ der Endpunkt, der vom ModBus-Modul zum Ausgeben von Daten verwendet wird, und „upstream“ ist ein spezielles Ziel, das dem Edge-Hub zum Senden von Nachrichten an den IoT Hub anweist. 
    ```JSON

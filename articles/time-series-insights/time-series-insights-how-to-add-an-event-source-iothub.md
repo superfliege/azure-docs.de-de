@@ -1,21 +1,21 @@
 ---
-title: "Gewusst wie: Hinzufügen einer IoT Hub-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation"
-description: "In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit einem IoT Hub in Ihrer Time Series Insights-Umgebung verbunden ist."
-services: time-series-insights
+title: 'Gewusst wie: Hinzufügen einer IoT Hub-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation'
+description: In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit einem IoT Hub in Ihrer Time Series Insights-Umgebung verbunden ist.
 ms.service: time-series-insights
+services: time-series-insights
 author: sandshadow
 ms.author: edett
 manager: jhubbard
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 0469c35056d1d02457c162b8540af472b84f1e92
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 01ab5017a5f16a0c46ea2bc600cef6bbf81de963
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652524"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinzugefügt wird, die Daten aus einem IoT Hub in Ihre Time Series Insights-Umgebung einliest.
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 - Erstellen Sie eine dedizierte Consumergruppe in IoT Hub, die die Time Series Insight-Umgebung verwenden kann. Jede Time Series Insights-Ereignisquelle benötigt eine eigene dedizierte Consumergruppe, die nicht mit anderen Consumern gemeinsam genutzt wird. Wenn mehrere Leser Ereignisse aus der gleichen Consumergruppe nutzen, werden allen Lesern wahrscheinlich Fehler angezeigt. Weitere Details finden Sie im [IoT Hub-Entwicklerhandbuch](../iot-hub/iot-hub-devguide.md).
 
 ## <a name="add-a-new-event-source"></a>Hinzufügen einer neuen Ereignisquelle
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie die vorhandene Time Series Insights-Umgebung. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
@@ -50,7 +50,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
    ![Details zu Abonnements und Event Hub](media/time-series-insights-how-to-add-an-event-source-iothub/3-new-event-source.png)
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
    | Abonnement-ID | Wählen Sie das Abonnement aus, in dem dieser IoT Hub erstellt wurde.
    | IoT Hub-Name | Wählen Sie den Namen des IoT Hubs.
@@ -62,7 +62,7 @@ In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinz
 
 9. Wenn Sie die Option **IoT Hub-Einstellungen manuell angeben** ausgewählt haben, finden Sie in der folgenden Tabelle die erforderlichen Eigenschaften:
 
-   | Eigenschaft | Beschreibung |
+   | Eigenschaft | BESCHREIBUNG |
    | --- | --- |
    | Abonnement-ID | Das Abonnement, in dem dieser IoT Hub erstellt wurde.
    | Ressourcengruppe | Der Name der Ressourcengruppe, in der dieser IoT Hub erstellt wurde.

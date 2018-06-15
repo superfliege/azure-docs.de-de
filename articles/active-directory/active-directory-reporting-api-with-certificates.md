@@ -1,6 +1,6 @@
 ---
-title: Abrufen von Daten per Azure AD-Berichtserstellungs-API mit Zertifikaten | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Azure AD-Berichtserstellungs-API mit Zertifikatanmeldeinformationen verwenden, um Daten ohne Benutzereingriff aus Verzeichnissen abzurufen.
+title: Abrufen von Daten per Azure AD Reporting-API mit Zertifikaten | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die Azure AD Reporting-API mit Zertifikatanmeldeinformationen verwenden, um Daten ohne Benutzereingriff aus Verzeichnissen abzurufen.
 services: active-directory
 documentationcenter: ''
 author: ramical
@@ -12,17 +12,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/07/2018
 ms.author: ramical
-ms.openlocfilehash: 54e661284c539b835089e858ba7b5e0016e89a83
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5ceb3d1ef99189e5b0cfcc48b38906ed28c07730
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588956"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
-Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über einen Satz von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
+Die [Berichtserstellungs-APIs von Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) bieten Ihnen über eine Gruppe von REST-basierten APIs programmgesteuerten Zugriff auf die Daten. Sie können diese APIs über verschiedene Programmiersprachen und Tools aufrufen.
 
 Wenn Sie ohne Benutzereingriff auf die Azure AD-Berichtserstellungs-API zugreifen möchten, können Sie Ihren Zugriff auf die Verwendung von Zertifikaten konfigurieren.
 
@@ -107,7 +109,7 @@ Nun können Sie den Export in eine CSV-Datei durchführen und die Daten in einem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verschaffen Sie sich einen ersten Eindruck über die Berichterstellungs-APIs](active-directory-reporting-api-getting-started-azure-portal.md#explore)
+- [Verschaffen eines ersten Eindrucks über die Berichterstellungs-APIs](active-directory-reporting-api-getting-started-azure-portal.md#explore)
 
 - [Erstellen Ihrer eigenen Lösung](active-directory-reporting-api-getting-started-azure-portal.md#customize)
 

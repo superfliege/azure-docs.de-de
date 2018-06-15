@@ -1,13 +1,13 @@
 ---
-title: "Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure | Microsoft-Dokumentation"
-description: "Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure"
+title: Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure | Microsoft-Dokumentation
+description: Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 626c1523-1026-478f-bd8a-22c83b869231
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1895fb1910c5f30cbcff1c16ca66057d31a580b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656481"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.
@@ -105,7 +106,7 @@ Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstel
 
     ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. Klicken Sie auf **Erstellen**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
+3. Klicken Sie auf **Create**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
 
     ![SAP CAL-Instanzen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

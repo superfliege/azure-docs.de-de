@@ -6,14 +6,15 @@ manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 99b2b1b475fddc32f36636cbd792883d6a02aee7
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6619f2dfe5f58cd23dbd0ffe6e2b545b803f3acc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647927"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Verwenden der Clientbibliothek für elastische Datenbanken
 Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch mithilfe von [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) Anwendungen erstellen möchten, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren.  Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren. 
@@ -47,7 +48,7 @@ Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken u
 
 * **Horizontales Hochskalieren:** Datenbanken sollen entsprechend den Kapazitätsanforderungen der partitionierten Anwendung der Datenbankebene der Anwendung hinzugefügt oder daraus entfernt werden können. 
 * **Konsistenz:** Da die Anwendung mithilfe von Sharding horizontal hochskaliert wird, müssen Sie datenabhängiges Routing ausführen. Wir möchten zu diesem Zweck das datenabhängige Routing der Bibliothek verwenden. Vor allem sollten Sie die Überprüfungs- und Konsistenzzusicherungen der Verbindungen beibehalten, die über den Shardzuordnungs-Manager vermittelt werden. Dies hilft dabei, Datenverfälschung oder falsche Abfrageergebnisse zu vermeiden. Dadurch wird sichergestellt, dass Verbindungen mit einem bestimmten Shardlet zurückgewiesen oder unterbrochen werden, wenn das Shardlet z. B. gerade mithilfe von Split/Merge-APIs auf einen anderen Shard verschoben wird.
-* **Objekt-Zuordnung:**Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen. 
+* **Objekt-Zuordnung:** Wir möchten die programmierfreundlichen Dapper-Zuordnungen beibehalten, um Code zwischen Klassen in der Anwendung und den zugrunde liegenden Datenbankstrukturen zu übersetzen. 
 
 Der folgende Abschnitt erläutert, wie Sie diese Anforderungen für Anwendungen auf Grundlage von **Dapper** und **DapperExtensions** erfüllen.
 

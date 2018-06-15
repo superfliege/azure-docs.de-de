@@ -191,6 +191,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: Rotieren von Geheimnissen
           href: azure-stack-rotate-secrets.md
+        - name: Aktualisieren des Virenschutzes
+          href: azure-stack-security-av.md
     - name: Anbieten von Diensten
       items:
         - name: Übersicht über das Anbieten von Diensten

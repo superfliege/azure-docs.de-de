@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 469e72a70d23b3d23eeeb68b3aa2a9e3527d038e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940136"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34617891"
 ---
 # <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopieren von Daten aus Netezza mithilfe von Azure Data Factory (Beta)
 
@@ -54,10 +54,10 @@ Folgende Eigenschaften werden für den mit Netezza verknüpften Dienst unterstü
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |:--- |
 | SecurityLevel | Der Sicherheitsgrad (SSL/TLS), den der Treiber für die Verbindung mit dem Datenspeicher verwendet. Beispiel: `SecurityLevel=preferredSecured`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Folgende Werte werden unterstützt:<br/>- Nur ungesichert (**OnlyUnSecured**): Der Treiber verwendet kein SSL.<br/>- Bevorzugt ungesichert (**PreferredUnSecured**) (Standardeinstellung): Wenn der Server eine Wahl bietet, verwendet der Treiber kein SSL. <br/>- Bevorzugt gesichert (**PreferredSecured**): Wenn der Server eine Wahl bietet, verwendet der Treiber SSL. <br/>- Nur gesichert (**OnlySecured**): Der Treiber stellt nur eine Verbindung her, wenn eine SSL-Verbindung verfügbar ist. | Nein  |
-| CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `UseSystemTrustStore=<cert path>;`| Ja, wenn SSL aktiviert ist |
+| CaCertFile | Der vollständige Pfad zum vom Server verwendeten SSL-Zertifikat. Beispiel: `CaCertFile=<cert path>;`| Ja, wenn SSL aktiviert ist |
 
 **Beispiel:**
 

@@ -3,22 +3,19 @@ title: PDF-Abfragespickzettel für Azure Cosmos DB | Microsoft-Dokumentation
 description: Druckbare PDF-Spickzettel, mit denen Sie die SQL-, MongoDB-, Graph- und Tabellen-APIs von Azure Cosmos DB verwenden können, um Ihre Daten abzufragen.
 keywords: SQL-Spickzettel, PDF-Datei mit Sql-Spickzettel, Spickzettel für SQL-Abfragen
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: fdbdbc39-5a46-4129-b4ed-b049d1c9ccab
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 765da315919b16e9f4b27fa891e2072dcddd377b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 10ee398bce30b82d1e199a12cd471ae52d4fae21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34614117"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Abfragespickzettel für Azure Cosmos DB
 

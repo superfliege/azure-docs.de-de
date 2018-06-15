@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cff2ca87ab2916c9d5aa8bb308325cb7a0227d75
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34624660"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs
 
@@ -56,12 +57,12 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
     c. Klicken Sie unter **Berechtigungen zuweisen** auf **Berechtigungen auswählen**. Legen Sie **Berechtigungen** auf **Ausführen** fest. Legen Sie **Add to** (Hinzufügen zu) auf **Diesen Ordner und alle untergeordneten Ordner** fest. Legen Sie **Add as** (Hinzufügen als) auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** fest.
 
-> [!IMPORTANT]
-> Wenn Sie eine neue Ordnerhierarchie für die Erfassung der von Azure Event Hubs empfangenen Daten erstellen, ist dies eine einfache Möglichkeit, den Zugriff auf den Zielordner sicherzustellen.  Das Hinzufügen von Berechtigungen zu allen untergeordneten Ordnern eines Ordners auf oberster Ebene mit vielen untergeordneten Dateien und Ordnern kann jedoch lange dauern.  Wenn Ihr Stammordner eine große Anzahl von Dateien und Ordnern enthält, kann es schneller sein, die Berechtigung **Ausführen** für `Microsoft.EventHubs` jedem Ordner im Pfad zu Ihrem endgültigen Zielordner einzeln hinzuzufügen. 
+    > [!IMPORTANT]
+    > Wenn Sie eine neue Ordnerhierarchie für die Erfassung der von Azure Event Hubs empfangenen Daten erstellen, ist dies eine einfache Möglichkeit, den Zugriff auf den Zielordner sicherzustellen.  Das Hinzufügen von Berechtigungen zu allen untergeordneten Ordnern eines Ordners auf oberster Ebene mit vielen untergeordneten Dateien und Ordnern kann jedoch lange dauern.  Wenn Ihr Stammordner eine große Anzahl von Dateien und Ordnern enthält, kann es schneller sein, die Berechtigung **Ausführen** für `Microsoft.EventHubs` jedem Ordner im Pfad zu Ihrem endgültigen Zielordner einzeln hinzuzufügen. 
 
-    ![Assign permissions for Data Lake Store root](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Assign permissions for Data Lake Store root")
+    ![Zuweisen von Berechtigungen für den Data Lake Store-Stamm](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Zuweisen von Berechtigungen für den Data Lake Store-Stamm")
 
-    Click **OK**.
+    Klicken Sie auf **OK**.
 
 4. Weisen Sie Berechtigungen für den Ordner im Data Lake Store-Konto zu, in dem Sie Daten erfassen möchten.
 

@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b71ad5701cfd1f8a274318c69d3464cf4fa34708
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621087"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit der App „Überwachung und Verwaltung“
 > [!div class="op_single_selector"]
@@ -30,7 +31,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen unter [monitor and manage Data Factory pipelines in version 2 (Überwachen und Verwalten von Data Factory-Pipelines in Version 2)](../monitor-visually.md).
 
-In diesem Artikel wird beschrieben, wie Sie mithilfe der App „Überwachung und Verwaltung“ Ihre Data Factory-Pipelines überwachen, verwalten und debuggen. Ferner wird erläutert, wie Warnungen erstellt werden, um bei Fehlern benachrichtigt zu werden. Machen Sie sich zunächst mit der Anwendung vertraut, indem Sie sich das folgende Video ansehen:
+In diesem Artikel wird beschrieben, wie Sie mithilfe der App „Überwachung und Verwaltung“ Ihre Data Factory-Pipelines überwachen, verwalten und debuggen. Machen Sie sich zunächst mit der Anwendung vertraut, indem Sie sich das folgende Video ansehen:
 
 > [!NOTE]
 > Die im Video gezeigte Benutzerschnittstelle entspricht möglicherweise nicht exakt der Benutzerschnittstelle, die Sie im Portal sehen. Die gezeigte Benutzerschnittstelle ist etwas älter, aber das Konzept bleibt unverändert. 
@@ -296,42 +297,3 @@ Sie können auch mehrere Aktivitätsfenster in der Liste auswählen und diese gl
 Mithilfe der STRG-TASTE können Sie mehrere Pipelines auswählen. Sie können die Schaltflächen auf der Befehlsleiste (in der folgenden Abbildung durch ein rotes Rechteck gekennzeichnet) verwenden, um sie anzuhalten bzw. fortzusetzen.
 
 ![Fortsetzen/Anhalten auf Befehlsleiste](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>Erstellen von Warnungen
-Auf der Seite **Warnungen** können Sie eine Warnung erstellen und vorhandene Warnungen anzeigen, bearbeiten und löschen. Sie können eine Warnung auch aktivieren/deaktivieren. Klicken Sie auf die Registerkarte **Warnungen**, um die Seite „Warnungen“ anzuzeigen.
-
-![Registerkarte „Warnungen“](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>So erstellen Sie eine Warnung
-1. Klicken Sie auf **Warnung hinzufügen** , um eine Warnung hinzuzufügen. Die Seite **Details** wird angezeigt.
-
-    ![Warnungen erstellen – Seite „Details“](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. Geben Sie **Name** und **Beschreibung** für die Warnung an, und klicken Sie auf **Weiter**. Daraufhin sollte die Seite **Filter** angezeigt werden.
-
-    ![Warnung erstellen – Seite „Filter“](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Wählen Sie das **Ereignis**, den **Status** und den **Unterstatus** (optional) für die Warnung durch den Data Factory-Dienst aus, und klicken Sie auf **Weiter**. Daraufhin sollte die Seite **Empfänger** angezeigt werden.
-
-    ![Warnung erstellen – Seite „Empfänger“](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. Wählen Sie die Option **E-Mail-Abonnementadministratoren**, und/oder füllen Sie **E-Mail an weiteren Administrator** aus, und klicken Sie auf **Fertig stellen**. Sie sollten die Warnung in der Liste sehen.
-
-    ![Liste „Warnungen“](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-In der Liste „Warnungen“ können Sie eine Warnung über die entsprechende Schaltflächen bearbeiten, löschen, deaktivieren und aktivieren.
-
-### <a name="eventstatussubstatus"></a>Ereignis/Status/Unterstatus
-Die folgende Tabelle enthält die Liste mit den verfügbaren Ereignissen und Status (samt Unterstatus).
-
-| Ereignisname | Status | Unterstatus |
-| --- | --- | --- |
-| Aktivitätsausführung gestartet |Gestartet |Wird gestartet |
-| Aktivitätsausführung beendet |Succeeded |Succeeded |
-| Aktivitätsausführung beendet |Fehler |Fehlerhafte Ressourcenzuordnung<br/><br/>Fehler bei der Ausführung<br/><br/>Zeitüberschreitung<br/><br/>Fehler bei der Überprüfung<br/><br/>Abandoned |
-| Bedarfsgesteuerte Erstellung eines HDI-Clusters gestartet |Gestartet |-|
-| Bedarfsgesteuerte Erstellung eines HDI-Clusters erfolgreich |Succeeded |-|
-| Bedarfsgesteuert erstellten HDI-Cluster gelöscht |Succeeded |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>So bearbeiten, löschen oder deaktivieren Sie eine Warnung
-
-Verwenden Sie die folgenden Schaltflächen (rot hervorgehoben), um eine Warnung zu bearbeiten, löschen oder deaktivieren.
-
-![Schaltflächen „Warnungen“](./media/data-factory-monitor-manage-app/AlertButtons.png)

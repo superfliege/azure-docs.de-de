@@ -1,22 +1,20 @@
 ---
 title: Suchen mit Azure Maps | Microsoft-Dokumentation
 description: Suchen nach einem Point of Interest in der Nähe mit Azure Maps
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a4479ceebd4c8aad477b5f13a5bcc06d24c1202d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4a414b5b865d31dd99b54ef9693abafb5490a50f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601784"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -40,7 +38,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 Erstellen Sie mithilfe der folgenden Schritte ein neues Maps-Konto:
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) links oben auf **Ressource erstellen**.
-2. Geben Sie im Feld *Marketplace durchsuchen* den Begriff **Maps** ein.
+2. Geben Sie im Feld *Marketplace durchsuchen* das Wort **Maps** ein.
 3. Wählen Sie in den *Ergebnissen* die Option **Maps** aus. Klicken Sie auf die unterhalb der Karte angezeigte Schaltfläche **Erstellen**. 
 4. Geben Sie auf der Seite **Azure Maps-Konto erstellen** die folgenden Werte ein:
     - *Name* des neuen Kontos 
@@ -252,7 +250,7 @@ Die erstellte Karte verwendet bisher nur die Breiten-/Längengraddaten für die 
     ```
     Die API **atlas.Popup** stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. Der Codeausschnitt legt den Inhalt und die Position für das Popup fest, fügt einen Ereignislistener zum `map`-Steuerelement hinzu und wartet, dass die _Maus_ über das Popup bewegt wird. 
 
-4. Speichern Sie die Datei, und aktualisieren Sie den Browser. Auf der Karte im Browser werden jetzt Popupelemente mit Informationen angezeigt, wenn Sie mit der Maus auf eine der angezeigten Suchstecknadeln zeigen. 
+4. Speichern Sie die Datei, und aktualisieren Sie Ihren Browser. Auf der Karte im Browser werden jetzt Popupelemente mit Informationen angezeigt, wenn Sie mit der Maus auf eine der angezeigten Suchstecknadeln zeigen. 
 
     ![Azure-Kartensteuerelement und Suchdienst](./media/tutorial-search-location/popup-map.png)
 
