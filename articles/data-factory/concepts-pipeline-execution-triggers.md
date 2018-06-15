@@ -11,13 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/03/2018
+ms.date: 05/29/2018
 ms.author: shlo
-ms.openlocfilehash: 08fcc2eec1914d9f7535ea66d33045240452e2a6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715036"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -138,6 +139,7 @@ Ein vollständiges Beispiel finden Sie unter [Schnellstart: Erstellen einer Data
 Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt Data Factory zwei Arten von Triggern:
 
 - Zeitplantrigger: ein Trigger, der eine Pipeline nach einem Realzeitplan aufruft.
+
 - Trigger für ein rollierendes Fenster: ein Trigger, der in einem regelmäßigen Intervall ausgeführt wird, während der Zustand beibehalten wird. Azure Data Factory unterstützt derzeit keine ereignisbasierten Trigger. Der Trigger für eine Pipelineausführung, die auf ein Dateieingangsereignis reagiert, wird beispielsweise nicht unterstützt.
 
 Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, oder ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden Triggerdefinition bezieht sich die **Pipelines**-Eigenschaft auf eine Liste von Pipelines, die vom jeweiligen Trigger ausgelöst werden. Die Eigenschaftendefinition enthält Werte für die Pipelineparameter.
@@ -175,7 +177,9 @@ Ein Zeitplantrigger führt Pipelines nach einem Realzeitplan aus. Dieser Trigger
 Weitere Informationen zu Zeitplantriggern und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan](how-to-create-schedule-trigger.md).
 
 ## <a name="tumbling-window-trigger"></a>Trigger für ein rollierendes Fenster
-Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe. Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
+Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
+
+Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definition für Zeitplantrigger
 Wenn Sie einen Zeitplantrigger erstellen, geben den Zeitplan und die Wiederholung mithilfe einer JSON-Definition an. 

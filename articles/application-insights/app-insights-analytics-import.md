@@ -1,23 +1,24 @@
 ---
 title: Importieren von Daten in Analytics in Azure Application Insights | Microsoft-Dokumentation
-description: "Importieren Sie statische Daten zur Verknüpfung mit App-Telemetrie, oder importieren Sie einen separaten Datenstrom zum Abfragen durch Analytics."
+description: Importieren Sie statische Daten zur Verknüpfung mit App-Telemetrie, oder importieren Sie einen separaten Datenstrom zum Abfragen durch Analytics.
 services: application-insights
-keywords: "Öffnen des Schemas, Datenimport"
-documentationcenter: 
+keywords: Öffnen des Schemas, Datenimport
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: 963e5cfd929f57b34dcb045df82b64f870e897e2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 688d620e19a8a6f536d134d9c4d7c837ec06bbdc
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293620"
 ---
 # <a name="import-data-into-analytics"></a>Importieren von Daten in Analytics
 
@@ -133,7 +134,7 @@ Zum Importieren von Daten laden Sie sie in Azure-Speicher hoch, erstellen einen 
 
 Sie können den folgenden Vorgang manuell ausführen oder ein automatisiertes System einrichten, um ihn in regelmäßigen Abständen ausführen zu lassen. Sie müssen diese Schritte für jeden Datenblock ausführen, den Sie importieren möchten.
 
-1. Laden Sie die Daten in [Azure-Blobspeicher](../storage/blobs/storage-dotnet-how-to-use-blobs.md) hoch. 
+1. Laden Sie die Daten in [Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) hoch. 
 
  * Blobs können eine maximale unkomprimierte Größe bis zu 1 GB haben. Große Blobs mit Hunderten von MB sind aus Leistungssicht ideal.
  * Sie können Blobs mit Gzip komprimieren, um die Hochladezeit und Latenz der Daten zu verbessern, die zum Abfragen verfügbar sein sollen. Verwenden Sie die Dateierweiterung `.gz`.
