@@ -3,16 +3,17 @@ title: Authentifizierung und Benutzerberechtigungen in Azure Analysis Services |
 description: Informationen zu Authentifizierung und Benutzerberechtigungen in Azure Analysis Services.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ede05667d794267443babacaa8b016206d86ab2c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 47846af015bf02940da7a7b8a4154113aab57b08
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597629"
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
 Azure Analysis Services verwendet Azure Active Directory (Azure AD) zur Identitätsverwaltung und Benutzerauthentifizierung. Jeder Benutzer, der einen Azure Analysis Services-Server erstellt, verwaltet oder eine Verbindung mit diesem herstellt, muss über eine gültige Benutzeridentität in einem [Azure AD-Mandanten](../active-directory/active-directory-administer.md) im selben Abonnement verfügen.

@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: Erneutes Bereitstellen eines virtuellen Computers
               href: devtest-lab-redeploy-vm.md
+            - name: Importieren eines virtuellen Computers
+              href: devtest-lab-import-vm.md
         - name: Verwenden von Umgebungen in einem Lab
           items:
             - name: Erstellen einer Umgebung

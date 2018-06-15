@@ -7,15 +7,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: e56a40e1afef9c622d14804cb7f845b7b6edae6a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 44d68d69a7034e80846fb44f3ae26c0d73c61f28
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32192620"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34648308"
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Überwachen der Datenbankleistung mithilfe von Azure SQL-Datenbank
 Die Überwachung der Leistung einer SQL-Datenbank in Azure beginnt mit der Überwachung der Ressourcennutzung relativ zur gewählten Datenbankleistung. Dank der Überwachung können Sie ermitteln, ob Ihre Datenbank über Zusatzkapazität verfügt, oder ob Probleme infolge ausgeschöpfter Kapazität auftreten. Anschließend können Sie entscheiden, ob Leistungsstufe und Dienstebenen Ihrer Datenbank im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [auf virtuellen Kernen basierenden Kaufmodell (Vorschau)](sql-database-service-tiers-vcore.md) angepasst werden müssen. Sie können die Datenbank mithilfe grafischer Tools im [Azure-Portal](https://portal.azure.com) oder mithilfe [dynamischer Verwaltungssichten](https://msdn.microsoft.com/library/ms188754.aspx) in SQL überwachen.

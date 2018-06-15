@@ -1,24 +1,20 @@
 ---
 title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit .NET | Microsoft-Dokumentation
 description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für .NET. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
-services: iot-hub
-documentationcenter: .net
 author: fsautomata
-manager: timlt
-editor: ''
-ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
+manager: ''
 ms.service: iot-hub
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: 901b4b6c631d47a6c37eb232f66d8350faa9be76
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c57f93a755d01dc17b369e712285c2ac8f0ef37
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807491"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub unter Verwendung von .NET
 
@@ -29,7 +25,7 @@ Dieses Tutorial baut auf dem Code im Tutorial [Senden von Nachrichten von Cloud-
 - Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
 - Verwenden der IoT Hub-Dateihochlade-Benachrichtigungen zum Auslösen der Dateiverarbeitung in Ihrem App-Back-End.
 
-Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](iot-hub-csharp-csharp-process-d2c.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel: 
+Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](tutorial-routing.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure Blob Storage beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel: 
 
 * Große Dateien, die Bilder enthalten
 * Videos
@@ -111,7 +107,7 @@ In diesem Abschnitt schreiben Sie eine .NET-Konsolen-App, die Uploadbenachrichti
 
 1. Suchen Sie im Fenster **NuGet-Paket-Manager** nach **Microsoft.Azure.Devices**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
-    Diese Aktion lädt das [NuGet-Paket mit dem SDK des Azure IoT-Diensts] herunter, installiert es und fügt im **ReadFileUploadNotification**-Projekt einen Verweis darauf hinzu.
+    Diese Aktion lädt das [NuGet-Paket mit dem Azure IoT-Dienst-SDK] herunter, installiert es und fügt im **ReadFileUploadNotification**-Projekt einen Verweis darauf hinzu.
 
 1. Fügen Sie zu Beginn der Datei **Program.cs** die folgenden Anweisungen hinzu:
 
@@ -195,7 +191,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
 
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-[NuGet-Paket mit dem SDK des Azure IoT-Diensts]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+[NuGet-Paket mit dem Azure IoT-Dienst-SDK]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 
 [lnk-create-hub]: iot-hub-rm-template-powershell.md
