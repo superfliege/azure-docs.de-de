@@ -3,20 +3,21 @@ title: Hinzufügen oder Entfernen einer Benutzerrolle | Microsoft Docs
 description: Erfahren Sie, wie Sie mit der Anwendung Azure Active Directory Privileged Identity Management Rollen zu privilegierten Identitäten hinzufügen.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
+ms.component: protection
 ms.date: 01/03/2018
-ms.author: curtand
-ms.openlocfilehash: 6024016d7c59551e5678069cb6a6e1e7ab45ad6e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: rolyon
+ms.openlocfilehash: 856fdc69bd5ce582ca772c01f8af615fbc455887
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233219"
 ---
 # <a name="azure-ad-privileged-identity-management-how-to-add-or-remove-a-user-role"></a>Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle
 In Azure Active Directory (AD) kann ein globaler Administrator (oder ein Unternehmensadministrator) festlegen, welchen Benutzern Rollen in Azure AD **permanent** zugewiesen werden. Dies erfolgt über PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember`. Administratoren können auch das Azure-Portal verwenden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](active-directory-assign-admin-roles.md) beschrieben.

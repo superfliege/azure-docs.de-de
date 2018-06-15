@@ -3,18 +3,18 @@ title: Erstellen und Bereitstellen eines Vorhersagemodells mithilfe des Azure Ma
 description: Erfahren Sie, wie ein Vorhersagemodell mithilfe des Azure Machine Learning-Pakets für Vorhersagen erstellt, trainiert, getestet und bereitgestellt wird.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.component: service
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 160ea82177368ce9b47f298cca661c40599b3bbe
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886560"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833528"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Vorhersagemodellen mit Azure Machine Learning
 
