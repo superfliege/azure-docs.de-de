@@ -2,28 +2,26 @@
 title: Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit PowerShell | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Cosmos DB-Tabellen-API-Vorgänge mit PowerShell ausführen.
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
+author: SnehaGunda
+manager: kfile
 editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
-ms.author: robinsh
-ms.openlocfilehash: d40a56ca3c07bfadcf6e24d407b059a39522ca2b
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: sngun
+ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798643"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell 
 
 >[!NOTE]
->Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für Table Storage wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. Die PowerShell-Befehle in diesem Artikel können zwar in den meisten Fällen sowohl für die Azure Cosmos DB-Tabellen-API als auch für Azure Table Storage verwendet werden, dieser Artikel beschäftigt sich jedoch speziell mit der Azure Cosmos DB-Tabellen-API. Falls Sie Azure Table Storage verwenden, lesen Sie unter [Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell](table-storage-how-to-use-powershell.md).
+>Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für Table Storage wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. Die PowerShell-Befehle in diesem Artikel können zwar in den meisten Fällen sowohl für die Azure Cosmos DB-Tabellen-API als auch für Azure Table Storage verwendet werden, dieser Artikel beschäftigt sich jedoch speziell mit der Azure Cosmos DB-Tabellen-API. Falls Sie Azure Table Storage verwenden, lesen Sie unter [Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell](../storage/tables/table-storage-how-to-use-powershell.md).
 >
 
 Mit der Azure Cosmos DB-Tabellen-API können Sie große Mengen von strukturierten, nicht relationalen Daten speichern und abfragen. Die Hauptkomponenten des Diensts sind Tabellen, Entitäten und Eigenschaften. Eine Tabelle ist eine Sammlung von Entitäten. Eine Entität ist ein Satz von Eigenschaften. Jede Entität kann über bis zu 252 Eigenschaften verfügen, bei denen es sich um Name-Wert-Paare handelt. In diesem Artikel wird vorausgesetzt, dass Sie bereits mit den Konzepten der Azure Cosmos DB-Tabellen-API vertraut sind. Ausführliche Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](table-introduction.md) sowie unter [Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Table-API](create-table-dotnet.md).

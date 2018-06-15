@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: bb0a667c28e4ed0be3e67a7d89f10903be2c9d2a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: abacea02ee40cf899b58ab1fe4ac454784ff7d18
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757194"
 ---
 # <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure Security and Compliance Blueprint – Automatisierung dreischichtiger Webanwendungen für UK-OFFICIAL
 
@@ -109,7 +110,7 @@ Verfügbarkeitsgruppen
 - (1) Gruppe Geschäftsschicht-VMs: 2 VMs
 - (1) Gruppe Datenschicht-VMs: 2 VMs
 
-Lastenausgleichsmodul
+Load Balancer
 - (1) Lastenausgleichsmodul für die Webschicht
 - (1) Lastenausgleichsmodul für die Geschäftsschicht
 - (1) Lastenausgleichsmodul für die Datenschicht
@@ -148,7 +149,7 @@ Speicher
 
 **Internetgateway und öffentliche IP-Adresse**: Das Internetgateway macht Anwendungsdienste über das Internet für Benutzer verfügbar. Datenverkehr, der auf diese Dienste zugreift, ist mithilfe eines [Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) geschützt, das Funktionen zum Routing in Schicht 7 und Lastenausgleich mit Schutz durch die Web Application Firewall (WAF) bietet.
 
-**Verwaltungs-VNet**: Dieses [VNet](https://docs.microsoft.com/azure/Virtual-Network/virtual-networks-overviewcontains) enthält Ressourcen, die Verwaltungs- und Überwachungsfunktionen für die im Produktions-VNet ausgeführten Workloads implementieren.
+**Verwaltungs-VNet**: Dieses [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) enthält Ressourcen, die Verwaltungs- und Überwachungsfunktionen für die im Produktions-VNet ausgeführten Workloads implementieren.
 
 **Jumpbox**: Auch als [Bollwerkhost](https://en.wikipedia.org/wiki/Bastion_host) bezeichnet, ist sie eine VM im Netzwerk, die von Administratoren für das Herstellen von Verbindungen mit VMs im Produktions-VNet verwendet wird. Die Jumpbox verfügt über eine NSG, die Remotedatenverkehr nur von öffentlichen IP-Adressen zulässt, die in einer Liste mit sicheren Absendern aufgeführt sind. Damit Remotedesktopverkehr (RDP) zugelassen wird, muss die Quelle des Datenverkehrs in der NSG definiert sein. Die Verwaltung der Produktionsressourcen erfolgt über RDP unter Verwendung einer geschützten Jumpbox-VM.
 

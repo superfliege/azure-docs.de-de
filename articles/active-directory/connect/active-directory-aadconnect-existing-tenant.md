@@ -1,24 +1,26 @@
 ---
-title: "Azure AD Connect: Wenn Sie bereits über Azure AD verfügen | Microsoft-Dokumentation"
+title: 'Azure AD Connect: Wenn Sie bereits über Azure AD verfügen | Microsoft-Dokumentation'
 description: Dieses Thema beschreibt die Verwendung von Connect, wenn ein Azure AD-Mandant vorhanden ist.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: fa264487c68ea5403300d9b5b9978934a639a2a4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 726d8998d24a630808186eea417f236fdbfb565e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725206"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect mit vorhandenem Mandanten
 Bei den meisten Themen zur Verwendung von Azure AD Connect wird davon ausgegangen, dass Sie mit einem neuen Azure AD-Mandanten starten und dass es keine weiteren Benutzer oder Objekte gibt. Wenn Sie jedoch bereits über einen Azure AD-Mandanten verfügen, der mit Benutzern und anderen Objekten aufgefüllt ist, und jetzt Connect verwenden möchten, eignet sich dieses Thema perfekt für Sie.
@@ -56,7 +58,7 @@ Für e-mail-aktivierte Gruppen und Kontakte können Sie ein Soft-Match basierend
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Erstellen eines neuen lokalen Active Directory aus Daten in Azure AD
 Einige Kunden beginnen mit einer reinen Cloudlösung mit Azure AD und verfügen nicht über ein lokales Active Directory. Später möchten diese Kunden ihre lokalen Ressourcen nutzen und ein lokales Active Directory basierend auf den Azure AD-Daten aufbauen. Für dieses Szenario kann Azure AD Connect nicht eingesetzt werden. Connect erstellt keine lokalen Benutzer und bietet keine Möglichkeit, lokale Kennwörter auf die gleichen Kennwörter festzulegen, die in Azure AD verwendet werden.
 
-Wenn der einzige Grund, aus dem Sie ein lokales Active Directory planen, die Unterstützung von branchenspezifischen Apps ist, sollten Sie stattdessen die Verwendung von [Azure AD Domain Services](../../active-directory-domain-services/index.md) erwägen.
+Wenn der einzige Grund, aus dem Sie ein lokales Active Directory planen, die Unterstützung von branchenspezifischen Apps ist, sollten Sie stattdessen die Verwendung von [Azure AD Domain Services](../../active-directory-domain-services/index.yml) erwägen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

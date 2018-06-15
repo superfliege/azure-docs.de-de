@@ -14,23 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 88505126389f51f59cf0538da8b72139f86e58d5
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d3e64cc232aa01a5619a55290f9b07421165a6d5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698729"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung in Azure Active Directory
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in ServiceNow und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in ServiceNow automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
+> [!NOTE]
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](./active-directory-saas-app-provisioning.md).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Um die Azure AD-Integration mit ServiceNow konfigurieren zu können, benötigen Sie Folgendes:
 
-*   Einen Azure Active Directory-Mandanten
-*   Sie benötigen einen gültigen Mandanten für ServiceNow for Work oder ServiceNow for Education. Sie können ein kostenloses Testkonto für einen der Dienste verwenden.
-*   Ein Benutzerkonto in ServiceNow mit Teamadministratorberechtigung
+- Ein Azure AD-Abonnement
+- Für ServiceNow eine Instanz oder einen Mandanten von ServiceNow, Calgary-Version oder höher
+- Für ServiceNow Express eine Instanz von ServiceNow Express, Helsinki-Version oder höher
+
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+
 
 ## <a name="assigning-users-to-servicenow"></a>Zuweisen von Benutzern zu ServiceNow
 

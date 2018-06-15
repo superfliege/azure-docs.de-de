@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/04/2018
 ms.author: iainfou
-ms.openlocfilehash: e6fad548eda35d1832cb4ecc2fd9bdabf825f361
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c00ebcb771081f8e35c67bf384f5f6822e16f268
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33896128"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652990"
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Installieren und Konfigurieren von Ansible für das Verwalten von virtuellen Computern in Azure
 
@@ -150,7 +150,7 @@ Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#cre
 
 Ansible kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie Ansible verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Zur Erhöhung der Sicherheit über die Bereitstellung eines Benutzernamens und Kennworts hinaus wird in diesem Beispiel ein einfacher Dienstprinzipal erstellt.
 
-Erstellen Sie auf dem Hostcomputer oder in der Azure Cloud Shell einen Prinzipal mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac). Die für Ansible erforderlichen Anmeldeinformationen werden auf dem Bildschirm ausgegeben:
+Erstellen Sie auf dem Hostcomputer oder in der Azure Cloud Shell einen Prinzipal mit [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac). Die für Ansible erforderlichen Anmeldeinformationen werden auf dem Bildschirm ausgegeben:
 
 ```azurecli-interactive
 az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
@@ -166,7 +166,7 @@ Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 }
 ```
 
-Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#az_account_show) abrufen:
+Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#az-account-show) abrufen:
 
 ```azurecli-interactive
 az account show --query "{ subscription_id: id }"

@@ -6,23 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ffa60e24b93caaaefcab70c99fa2c76065d97233
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 67552b05d70e3ae44d75cbe1005743b6d17b2c2c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187707"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716226"
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektur der Azure-zu-Azure-Replikation
 
 
 Dieser Artikel beschreibt die Architektur, die unter Verwendung des [Azure Site Recovery](site-recovery-overview.md)-Diensts für die Replikation, die Ausführung eines Failovers und die Wiederherstellung von virtuellen Azure-Computern (VMs) zwischen Azure-Regionen verwendet wird.
 
->[!NOTE]
->Die Replikation von Azure-VMs mit dem Site Recovery-Dienst ist derzeit in der Vorschau verfügbar.
 
 
 
