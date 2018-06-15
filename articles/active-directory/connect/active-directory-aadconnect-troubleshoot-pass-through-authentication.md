@@ -2,8 +2,8 @@
 title: 'Azure AD Connect: Behandlung von Passthrough-Authentifizierungsproblemen | Microsoft-Dokumentation'
 description: In diesem Artikel wird beschrieben, wie Probleme bei der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) behandelt werden.
 services: active-directory
-keywords: "Probleme bei der Passthrough-Authentifizierung mit Azure AD Connect behandeln, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On"
-documentationcenter: 
+keywords: Probleme bei der Passthrough-Authentifizierung mit Azure AD Connect behandeln, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -13,12 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b842791be74094c87643528c0b4d3a65be6b3cb1
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 3296ee114d3e285e77070995156ef6a242c1fc87
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592196"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
