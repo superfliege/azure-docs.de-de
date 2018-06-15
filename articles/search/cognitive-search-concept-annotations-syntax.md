@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 2e838e9c94d5b19565bea3d02890fe6164bb37d0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786789"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640905"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Suche
 
@@ -27,7 +27,7 @@ Die Beispiele in diesem Artikel basieren auf dem *content*-Feld, das automatisch
 
 Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzepte durch, um die später in diesem Artikel vorgestellten Beispiele besser zu verstehen.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 |------|-------------|
 | Angereichertes Dokument | Ein angereichertes Dokument ist eine interne Struktur, die von der Pipeline erstellt und verwendet wird, um alle Anmerkungen zu einem Dokument zu speichern. Stellen Sie sich ein angereichertes Dokument als einen Baum von Anmerkungen vor. Im Allgemeinen wird eine Anmerkung, die aus einer vorherigen Anmerkung erstellt wurde, zu deren untergeordnetem Element.<p/>Angereicherte Dokumente existieren nur für die Dauer der Skillsetausführung. Sobald der Inhalt dem Suchindex zugeordnet ist, wird das angereicherte Dokument nicht mehr benötigt. Obwohl Sie nicht direkt mit angereicherten Dokumenten interagieren, ist es nützlich, ein Gedankenmodell der Dokumente zu haben, wenn Sie ein Skillset erstellen. |
 | Anreicherungskontext | Der Kontext, in dem die Anreicherung stattfindet, d.h. welches Element angereichert wird. Standardmäßig befindet sich der Anreicherungskontext auf der Ebene `"/document"`, die auf einzelne Dokumente bezogen ist. Wenn ein Skill ausgeführt wird, werden die Ergebnisse dieses Skills zu [Eigenschaften des definierten Kontexts](#example-2).|
@@ -125,5 +125,5 @@ Beachten Sie, dass die Kardinalität von `"/document/people/*/lastname"` größe
 ## <a name="see-also"></a>Weitere Informationen
 + [Integrieren eines benutzerdefinierten Skills in einer Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](ref-create-skillset.md)
++ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder zu einem Index](cognitive-search-output-field-mapping.md)

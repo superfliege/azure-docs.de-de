@@ -15,27 +15,23 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 7bf08849cd03a77095ffe717c8387d79d1961b06
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: baaa53b04f608e2cb3546fcac6a6eb4eda4d3c4b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640753"
 ---
 # <a name="quickstart-create-a-aspnet-web-app-with-redis-cache"></a>Schnellstart: Erstellen einer ASP.NET-Web-App mit Redis Cache
 
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.js](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
->
 
 ## <a name="introduction"></a>Einführung
 
 In dieser Schnellstartanleitung wird erörtert, wie Sie mit Visual Studio 2017 eine ASP.NET-Webanwendung erstellen und für Azure App Service bereitstellen. Die Beispielanwendung stellt eine Verbindung mit einem Azure Redis Cache her, um Daten aus dem Cache abzurufen zu speichern. Nach der Ausführung der in dieser Schnellstartanleitung beschriebenen Schritte verfügen Sie über eine funktionsfähige, in Azure gehostete Web-App, die Lese- und Schreibvorgänge in einem Azure Redis Cache ausführt.
 
 ![Einfacher abgeschlossener Azure-Test](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,8 +40,6 @@ Für die Ausführung der in dieser Schnellstartanleitung beschriebenen Schritte 
 * Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     * ASP.NET und Webentwicklung
     * Azure-Entwicklung
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-visual-studio-project"></a>Erstellen des Visual Studio-Projekts
 
@@ -98,7 +92,7 @@ Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
 > Der sekundäre Zugriffsschlüssel wird bei der Schlüsselrotation als alternativer Schlüssel verwendet, während Sie den primären Zugriffsschlüssel neu generieren.
 >
 
-Speichern Sie die Datei.
+Speichern Sie die Datei .
 
 ## <a name="update-the-mvc-application"></a>Aktualisieren der MVC-Anwendung
 
@@ -277,7 +271,7 @@ Klicken Sie auf **Microsoft Azure App Service**, wählen Sie **Neu erstellen** a
 
 Nehmen Sie im Dialogfeld **App Service erstellen** die folgenden Änderungen vor:
 
-| Einstellung | Empfohlener Wert | Beschreibung |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG |
 | ------- | :---------------: | ----------- |
 | **App-Name** | Verwenden Sie den Standardwert. | Bei der Bereitstellung der App für Azure wird der App-Name als Hostname für die App verwendet. Dem Namen kann bei Bedarf ein Zeitstempelsuffix hinzugefügt werden, um ihn eindeutig zu machen. |
 | **Abonnement** | Wählen Sie Ihr Azure-Abonnement aus. | Für dieses Abonnement werden alle damit verbundenen Hostinggebühren berechnet. Wenn Sie über mehrere Azure-Abonnements verfügen, stellen Sie sicher, dass das gewünschte Abonnement ausgewählt ist.|
@@ -322,11 +316,11 @@ Wenn Sie die Schnellstart-Beispielanwendung nicht mehr benötigen, können Sie d
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In den Anweisungen zu diesem Thema wurde eine Ressourcengruppe namens *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
+Geben Sie im Textfeld **Nach Name filtern...** den Namen Ihrer Ressourcengruppe ein. In diesem Artikel wurde eine Ressourcengruppe mit dem Namen *TestResources* verwendet. Klicken Sie in Ihrer Ressourcengruppe in der Ergebnisliste auf **...** und dann auf **Ressourcengruppe löschen**.
 
 ![Löschen](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
-Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
+Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie den Namen der entsprechenden Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 
 Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 

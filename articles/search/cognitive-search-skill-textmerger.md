@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: e288748d7433f4b3c7da7db1ab1ef2ee487318df
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ba779ebcbc791f9caa60948feeb38b88a23ef379
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786739"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640661"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
@@ -28,7 +28,7 @@ Microsoft.Skills.Util.TextMerger
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | insertPreTag  | Zeichenfolge, die vor jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
 | insertPostTag | Zeichenfolge, die nach jedem Einfügen hinzugefügt wird. Standardwert: `" "`. Um das Leerzeichen wegzulassen, setzen Sie den Wert auf `""`.  |
@@ -129,16 +129,14 @@ Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text au
 Im oben gezeigten Beispiel wird davon ausgegangen, dass ein Feld mit normalisierten Bildern vorhanden ist. Um ein Feld mit normalisierten Bildern zu erhalten, legen Sie die Konfiguration *imageAction* in Ihrer Indexerdefinition auf *generateNormalizedImages* fest, wie unten gezeigt:
 
 ```json
-{
-    "values": [
-      {
-        "recordId": "1",
-        "data":
-           {
-             "mergedText": "The quick brown fox jumps over the lazy dog" 
-           }
+{  
+   //...rest of your indexer definition goes here ... 
+  "parameters":{  
+      "configuration":{  
+         "dataToExtract":"contentAndMetadata",
+         "imageAction":"generateNormalizedImages"
       }
-    ]
+   }
 }
 ```
 
@@ -146,3 +144,4 @@ Im oben gezeigten Beispiel wird davon ausgegangen, dass ein Feld mit normalisier
 
 + [Vordefinierte Skills](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

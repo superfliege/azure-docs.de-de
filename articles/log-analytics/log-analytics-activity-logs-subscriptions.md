@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636969"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
 
@@ -113,7 +114,7 @@ Stellen Sie vor dem Erstellen der Logik-App sicher, dass Ihnen die folgenden Inf
 - ID des Log Analytics-Arbeitsbereichs
 - Gemeinsam verwendeter Schlüssel für Log Analytics
 
-Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs) beschriebenen Schritte aus.
+Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die unter [Überprüfen von Berechtigungen für Event Hub-Namespaces und Suchen nach der Verbindungszeichenfolge](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string) beschriebenen Schritte aus.
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Erstellen einer neuen leeren Logik-App

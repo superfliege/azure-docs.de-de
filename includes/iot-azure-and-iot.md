@@ -1,4 +1,20 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: iot-suite
+author: dominicbetts
+ms.service: iot-suite
+ms.topic: include
+ms.date: 04/25/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: f27dbf20eab5866ac3061d888c17e970a1d197f7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666754"
+---
 # <a name="azure-and-the-internet-of-things"></a>Azure und das Internet der Dinge
 
 Willkommen bei Microsoft Azure und dem Internet der Dinge (IoT). In diesem Artikel werden die häufigsten Merkmale einer IoT-Lösung in der Cloud beschrieben. IoT-Lösungen sind auf eine sichere, bidirektionale Kommunikation zwischen unzähligen Geräten und einem Lösungs-Back-End angewiesen. Eine Lösung kann beispielsweise mithilfe einer automatisierten, prognoseorientierten Analyse Informationen zum Ereignisdatenstrom zwischen Ihrem Gerät und der Cloud ermitteln.
@@ -58,14 +74,14 @@ In einem Szenario mit der vorhersagbaren Wartung werden mit dem Cloud-Back-End b
 
 ### <a name="presentation-and-business-connectivity"></a>Präsentations- und Geschäftskonnektivität
 
-Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern die Interaktion mit der IoT-Lösung und den Geräten. Damit können die Benutzer die auf den Geräten erfassten Daten anzeigen und analysieren. Diese Sichten können in Form von Dashboards oder BI-Berichten vorkommen, die jeweils historische Daten oder Daten in Echtzeit anzeigen. Ein Bediener kann z.B. den Status eines bestimmten Pumpwerks überprüfen und alle Warnungen anzeigen, die vom System ausgelöst wurden. Diese Ebene ermöglicht auch die Integration des IoT-Lösungs-Back-Ends in vorhandene Branchenanwendungen, um es in Geschäftsprozesse oder Workflows im Unternehmen einzubinden. Beispielsweise kann eine Lösung zur vorbeugenden Wartung mit einem Terminplanungssystem integriert werden, um einen Techniker in ein Pumpwerk zu bestellen, sobald angezeigt wird, dass für eine Pumpe Wartungsbedarf besteht.
+Die Präsentations- und Geschäftskonnektivitätsebene ermöglicht Endbenutzern die Interaktion mit der IoT-Lösung und den Geräten. Damit können die Benutzer die auf den Geräten erfassten Daten anzeigen und analysieren. Diese Sichten können in Form von Dashboards oder BI-Berichten vorkommen, die jeweils historische Daten oder Daten in Echtzeit anzeigen. Ein Bediener kann z.B. den Status eines bestimmten Pumpwerks überprüfen und alle Warnungen anzeigen, die vom System ausgelöst wurden. Diese Ebene ermöglicht auch die Integration des IoT-Lösungs-Back-Ends in vorhandene Branchenanwendungen, um es in Geschäftsprozesse oder Workflows im Unternehmen einzubinden. Beispielsweise kann ein Solution Accelerator für Predictive Maintenance mit einem Terminplanungssystem integriert werden, um einen Techniker in ein Pumpwerk zu bestellen, sobald angezeigt wird, dass für eine Pumpe Wartungsbedarf besteht.
 
 [img-solution-architecture]: ./media/iot-azure-and-iot/iot-reference-architecture.png
 [img-dashboard]: ./media/iot-azure-and-iot/iot-suite.png
 
 [lnk-iot-hub]: ../articles/iot-hub/iot-hub-what-is-iot-hub.md
-[lnk-iot-suite]: ../articles/iot-suite/iot-suite-overview.md
+[lnk-iot-suite]: ../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md
 [lnk-machinelearning]: http://azure.microsoft.com/documentation/services/machine-learning/
-[Azure IoT Suite]: http://azure.microsoft.com/solutions/iot
+[Azure IoT solution accelerators]: http://azure.microsoft.com/solutions/iot
 [lnk-protocol-gateway]:  ../articles/iot-hub/iot-hub-protocol-gateway.md
 [lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf

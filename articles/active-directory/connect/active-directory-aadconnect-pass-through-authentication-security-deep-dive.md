@@ -12,12 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595035"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -130,7 +132,7 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 1. Der Benutzer versucht, auf eine Anwendung zuzugreifen (z.B. [Outlook Web-App](https://outlook.office365.com/owa)).
 2. Wenn der Benutzer nicht bereits angemeldet ist, leitet die Anwendung den Browser auf die Anmeldeseite von Azure AD um.
 3. Der Azure AD-Sicherheitstokendienst (STS) reagiert mit der Seite **Benutzeranmeldung**.
-4. Der Benutzer gibt auf der Seite **Benutzeranmeldung** seinen Benutzernamen und sein Kennwort ein und klickt anschließend auf die Schaltfläche **Weiter**.
+4. Der Benutzer gibt auf der Seite **Benutzeranmeldung** seinen Benutzernamen und sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
 5. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
 6. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts. 
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.

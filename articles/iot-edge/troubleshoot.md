@@ -1,20 +1,19 @@
 ---
 title: Beheben von Problemen mit Azure IoT Edge | Microsoft-Dokumentation
 description: Beheben häufig auftretender Probleme und Aneignen von Fähigkeiten bei der Problembehandlung bei Azure IoT Edge
-services: iot-edge
-keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 03/23/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+services: iot-edge
+ms.openlocfilehash: ad22b0cd1457c1d4146a75047ff18e916c0c7ccd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34633535"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 

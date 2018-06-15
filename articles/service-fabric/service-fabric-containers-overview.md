@@ -12,22 +12,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/20/2017
+ms.date: 5/21/2018
 ms.author: msfussell
-ms.openlocfilehash: c70db92d6071a295dfc329768ab8a0fd561f8ce5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fe6db569c0f70362676251a9413fa859f27f5046
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641911"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
-> [!NOTE]
-> Das Bereitstellen von Containern in einem Service Fabric-Cluster unter Windows 10 oder mit Docker CE wird nicht unterstützt. 
->   
-
-> [!NOTE]
-> Version 6.1 von Service Fabric verfügt über eine Vorschauunterstützung für Windows Server-Version 1709. Der Netzwerkmodus „Open“ und der Service Fabric-DNS-Dienst funktionieren nicht mit Windows Server-Version 1709. 
-> 
 
 ## <a name="introduction"></a>Einführung
 Azure Service Fabric ist ein [Orchestrator](service-fabric-cluster-resource-manager-introduction.md) von Diensten in einem Cluster von Computern, der seit Jahren für zahlreiche Dienste bei Microsoft verwendet und optimiert wird. Dienste können auf vielerlei Arten entwickelt werden – von der Nutzung von [Service Fabric](service-fabric-choose-framework.md)-Programmiermodellen bis zur Bereitstellung von [ausführbaren Gastanwendungsdateien](service-fabric-guest-executables-introduction.md). Standardmäßig werden diese Dienste von Service Fabric als Prozesse bereitgestellt und aktiviert. Prozesse ermöglichen die schnellste Aktivierung und Nutzung von Ressourcen in einem Cluster mit der höchsten Dichte. Service Fabric kann Dienste auch in Containerimages bereitstellen. Wichtig ist, dass Sie in derselben Anwendung Dienste in Prozessen und Dienste in Containern mischen können.   
@@ -44,10 +38,6 @@ Container sind eine Virtualisierungstechnologie, bei der das zugrunde liegende B
 
 ## <a name="container-types-and-supported-environments"></a>Containertypen und unterstützte Umgebungen
 Service Fabric unterstützt Container unter Linux und Windows. Unter Windows wird auch der Hyper-V-Isolationsmodus unterstützt. 
-
-> [!NOTE]
-> Das Bereitstellen von Containern für einen Service Fabric-Cluster unter Windows 10 wird noch nicht unterstützt. 
-> 
 
 ### <a name="docker-containers-on-linux"></a>Docker-Container unter Linux
 Docker bietet High-Level-APIs zum Erstellen und Verwalten von Containern oberhalb von Linux-Kernelcontainern. Docker Hub ist ein zentrales Repository zum Speichern und Abrufen von Containerimages.
