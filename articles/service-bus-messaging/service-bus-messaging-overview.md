@@ -1,59 +1,131 @@
 ---
-title: "Übersicht über Azure Service Bus-Messaging | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung des Service Bus-Messaging und von Azure Relay."
+title: Übersicht über Azure Service Bus-Messaging | Microsoft-Dokumentation
+description: Beschreibung von Service Bus-Messaging
 services: service-bus-messaging
-documentationcenter: .net
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
+editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: get-started-article
-ms.date: 12/21/2017
+ms.topic: overview
+ms.date: 05/22/2018
+ms.custom: mvc
 ms.author: sethm
-ms.openlocfilehash: e299ccfe587d37757cd67cb4367f019b21a09b4a
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 0357602e6085b25fc6d11363113ebc962dc4d008
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643089"
 ---
-# <a name="service-bus-messaging-flexible-data-delivery-in-the-cloud"></a>Service Bus Messaging: Flexible Datenübermittlung in der Cloud
+# <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 
-Microsoft Azure Service Microsoft Azure Service Bus ist ein zuverlässiger Dienst für die Übermittlung von Informationen. Der Zweck dieses Dienstes ist es, die Kommunikation zu erleichtern. Wenn zwei oder mehr Parteien Informationen austauschen möchten, benötigen sie einen Kommunikationsmechanismus. Service Bus ist ein Kommunikationsmechanismus, der auf einem Broker oder Drittanbieter basiert. Der Dienst funktioniert ähnlich wie ein Postdienst in der realen Welt. Über Postdienste lassen sich verschiedene Arten von Briefen und Paketen mit unterschiedlichen Übermittlungsgarantien überall in der Welt versenden.
+Microsoft Azure Service Bus ist ein vollständig verwalteter Nachrichtenbroker für die Unternehmensintegration. Service Bus wird in der Regel verwendet, um Anwendungen und Dienste voneinander zu entkoppeln, und ist eine zuverlässige und sichere Plattform für die asynchrone Übertragung von Daten und Zuständen. Die Datenübertragung zwischen verschiedenen Anwendungen und Diensten erfolgt mithilfe von *Nachrichten*. Nachrichten liegen im Binärformat vor und können JSON-Code, XML-Code oder nur Text enthalten. 
 
-Bei Service Bus geht es, ähnlich wie bei einem Postdienst, der Briefe zustellt, um eine flexible Übermittlung von Informationen zwischen Absender und Empfänger. Der Messagingdienst stellt sicher, dass die Informationen übermittelt werden, selbst wenn Absender und Empfänger niemals gleichzeitig online oder zum exakt gleichen Zeitpunkt verfügbar sind. Messaging entspricht also dem Senden eines Briefes. Eine Kommunikation ohne Broker dagegen lässt sich eher mit einem Telefonanruf vergleichen (zumindest Anrufen in früheren Zeiten, als es noch keine Anklopffunktion und Anruferkennung gab - diese Funktionen entsprechen eher der brokerbasierten Nachrichtenübermittlung).
+Im Anschluss finden Sie einige gängige Messagingszenarien:
 
-Der Absender der Nachricht kann auch eine Vielzahl von Übermittlungsmerkmalen anfordern, wie z. B. Transaktionen, Duplikaterkennung, Ablaufdatum und -uhrzeit und Batchverarbeitung. Auch diese Muster weisen Analogien mit einem Postdienst auf: wiederholte Übermittlung, erforderliche Signatur, Adressänderung oder Rückruf.
+* Messaging: Übertragung von Geschäftsdaten (beispielsweise Verkäufe/Bestellungen, Journale oder Bestandsbewegungen)
+* Entkoppelung von Anwendungen: Verbesserung der Zuverlässigkeit und Skalierbarkeit von Anwendungen und Diensten (Client und Dienst müssen nicht gleichzeitig online sein.)
+* Themen und Abonnements: Ermöglichung von 1:*n*-Beziehungen zwischen Herausgebern und Abonnenten
+* Nachrichtensitzungen: Implementierung von Workflows, die die Sortierung oder Verzögerung von Nachrichten erfordern
 
-Service Bus unterstützt zwei unterschiedliche Muster für das Messaging: *Azure Relay* und *Service Bus-Messaging*.
+## <a name="namespaces"></a>Namespaces
 
-## <a name="azure-relay"></a>Azure Relay
+Ein Namespace ist ein Bereichscontainer für alle Messagingkomponenten. Ein einzelner Namespace kann mehrere Warteschlangen und Themen enthalten, und Namespaces fungieren häufig als Anwendungscontainer.
 
-Die [WCF Relay-Komponente](../service-bus-relay/relay-what-is-it.md) von Azure Relay ist ein zentralisierter Dienst (aber mit starkem Lastenausgleich), der viele verschiedene Transportprotokolle und Webdienststandards unterstützt. Dies schließt SOAP, WS-* und sogar REST ein. Der [Relaydienst](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) stellt unterschiedliche Relayverbindungsoptionen bereit und kann bei der Aushandlung von direkten Peer-to-Peer-Verbindungen behilflich sein, sofern diese möglich sind. Service Bus ist für .NET-Entwickler optimiert, die die Windows Communication Foundation (WCF) verwenden, und zwar sowohl im Hinblick auf die Leistung als auch auf die Nutzbarkeit. Der vollständige Zugriff auf den dazugehörigen Relaydienst wird über SOAP- und REST-Schnittstellen bereitgestellt. So kann jede SOAP- oder REST-Programmierumgebung für die Integration in Service Bus integriert werden.
+## <a name="queues"></a>Warteschlangen
 
-Der Relaydienst unterstützt herkömmliches unidirektionales Messaging, Anforderungs-/Antwortmessaging und Peer-to-Peer-Messaging. Er unterstützt außerdem die Ereignisverteilung im Internetumfang, um Veröffentlichen-/Abonnieren-Szenarios und bidirektionale Socketkommunikation für erhöhte Punkt-zu-Punkt-Effizienz zu ermöglichen. Im Relaymessaging stellt ein lokaler Dienst eine Verbindung zu dem Relaydienst über einen ausgehenden Port her und erstellt einen bidirektionalen Socket für die mit einer bestimmten Rendezvous-Adresse gekoppelte Kommunikation. Der Client kann dann mit dem lokalen Dienst durch das Senden von Nachrichten an den Relaydienst unter Verwendung der Rendezvousadresse kommunizieren. Der Relaydienst leitet dann Nachrichten an den lokalen Dienst über den bidirektionalen, bereits vorhandenen Socket weiter. Der Client benötigt keine direkte Verbindung zum lokalen Dienst und muss auch nicht wissen, wo der Dienst angesiedelt ist, und für den lokalen Dienst sind keine geöffneten eingehenden Ports in der Firewall notwendig.
+Nachrichten werden an *Warteschlangen* gesendet und daraus empfangen. Warteschlangen ermöglichen die Speicherung von Nachrichten, bis die empfangende Anwendung empfangs- und verarbeitungsbereit ist.
 
-Sie initiieren die Verbindung zwischen dem lokalen Dienst und dem Relaydienst mithilfe einer Sammlung von WCF-Bindungen vom Typ „Relay“. Im Prinzip werden die Relaybindungen Transportbindungselementen zugeordnet, die entwickelt wurden, um WCF-Kanalkomponenten zu erstellen, die in der Cloud in Service Bus integriert werden.
+![Warteschlange](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-WCF Relay bietet viele Vorteile. Dafür ist es aber erforderlich, dass der Server und der Client gleichzeitig online sind, damit Nachrichten gesendet und empfangen werden können. Dies ist für die Kommunikation im HTTP-Stil nicht optimal, da die Anforderungen meist keine sehr lange Lebensdauer aufweisen. Ebenso ist dies nicht gut für Clients geeignet, die nur gelegentlich eine Verbindung herstellen, z. B. Browser, mobile Anwendungen usw. Beim Brokermessaging wird die entkoppelte Kommunikation unterstützt, und es ergeben sich einige besondere Vorteile. Clients und Server können bei Bedarf jederzeit eine Verbindung herstellen und ihre Vorgänge auf asynchrone Weise durchführen.
+Nachrichten in Warteschlangen werden bei ihrem Eingang sortiert und mit einem Zeitstempel versehen. Nachdem eine Nachricht akzeptiert wurde, wird sie sicher in redundantem Speicher gespeichert. Nachrichten werden im *Pull-Modus* zugestellt, der Nachrichten auf Anforderung übermittelt.
 
-## <a name="brokered-messaging"></a>Brokermessaging
+## <a name="topics"></a>Themen
 
-Im Gegensatz zum Relayschema können Sie sich das Service Bus-Messaging mit [Warteschlangen, Themen und Abonnements](service-bus-queues-topics-subscriptions.md) als asynchron oder „temporär entkoppelt“ vorstellen. Produzent (Absender) und Konsumenten (Empfänger) müssen nicht gleichzeitig online sein. Die Messaginginfrastruktur speichert Nachrichten zuverlässig in einem „Broker“ (z.B. einer Warteschlange), bis die Empfängerseite für den Empfang bereit ist. Auf diese Weise können die Komponenten verteilter Anwendungen voneinander entkoppelt werden, und zwar entweder gewollt (z.B. zu Wartungszwecken) oder aufgrund eines Komponentenausfalls, ohne das Gesamtsystem zu beeinträchtigen. Außerdem muss die empfangende Anwendung ggf. nur zu bestimmten Tageszeiten online sein, z. B. bei einem System für die Bestandsverwaltung, das nur am Ende eines Arbeitstages ausgeführt wird.
+Nachrichten können auch unter Verwendung von *Themen* gesendet und empfangen werden. Themen sind in Veröffentlichungs-/Abonnementszenarien hilfreich. Bei der Punkt-zu-Punkt-Kommunikation werden dagegen häufig Warteschlangen verwendet.
 
-Die Hauptkomponenten der Service Bus-Messaginginfrastruktur sind Warteschlangen, Themen und Abonnements. Der Hauptunterschied besteht darin, dass Themen Funktionen zum Veröffentlichen/Abonnieren unterstützen, die für anspruchsvolle inhaltsbasierte Routing- und Übermittlungslogik verwendet werden können, wie z. B. zum Senden an mehrere Empfänger. Diese Komponenten ermöglichen neue Szenarien für asynchrones Messaging, z. B. temporäre Entkopplung, Veröffentlichen/Abonnieren und Lastenausgleich. Weitere Informationen zu diesen Messagingentitäten finden Sie unter [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md).
+![Thema](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Wie bei der WCF Relay-Infrastruktur wird auch das Brokermessaging für WCF- und .NET Framework-Programmierer und über REST bereitgestellt.
+Themen können über mehrere unabhängige Abonnements verfügen. Ein Abonnent eines Themas kann eine Kopie jeder Nachricht erhalten, die an das Thema gesendet wird. Abonnements sind benannte Entitäten. Diese werden dauerhaft erstellt, können aber optional auch ablaufen oder automatisch gelöscht werden.
 
+In bestimmten Szenarien sollen einzelne Abonnements unter Umständen nicht alle Nachrichten erhalten, die an ein Thema gesendet werden. In einem solchen Fall können Sie [Regeln und Filter](topic-filters.md) verwenden, um Bedingungen zu definieren, die optionale [Aktionen](topic-filters.md#actions) auslösen, bestimmte Nachrichten filtern und Nachrichteneigenschaften festlegen oder ändern.
+
+## <a name="advanced-features"></a>Erweiterte Funktionen
+
+Service Bus verfügt auch über erweiterte Features für komplexere Messagingszenarien. Die wichtigsten dieser Features werden in den folgenden Abschnitten beschrieben:
+
+### <a name="message-sessions"></a>Nachrichtensitzungen
+
+Mithilfe von Sitzungen können Sie in Service Bus eine FIFO-Garantie (First In – First Out) implementieren. [Nachrichtensitzungen](message-sessions.md) ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten. 
+
+### <a name="auto-forwarding"></a>Automatische Weiterleitung
+
+Mit der Funktion [Automatische Weiterleitung](service-bus-auto-forwarding.md) können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus dem selben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein.
+
+### <a name="dead-lettering"></a>Unzustellbare Nachrichten
+
+Service Bus unterstützt eine [Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) (Dead-Letter Queue, DLQ). Darin werden Nachrichten gespeichert, die an keinen Empfänger übermittelt oder nicht verarbeitet werden können. Nachrichten aus der DLQ können entfernt und untersucht werden.
+
+### <a name="scheduled-delivery"></a>Zeitgesteuerte Zustellung
+
+Sie können Nachrichten zur [verzögerten Verarbeitung](message-sequencing.md#scheduled-messages) an eine Warteschlange oder ein Thema übergeben und so beispielsweise einen Auftrag planen, der zu einem bestimmten Zeitpunkt für die Verarbeitung durch ein System zur Verfügung gestellt werden soll.
+
+### <a name="message-deferral"></a>Nachrichtenverzögerung
+
+Wenn eine Warteschlangen- oder ein Abonnementclient eine Nachricht erhält, die verarbeitet werden soll, aber die Verarbeitung aufgrund von besonderen Umständen innerhalb der Anwendung zu diesem Zeitpunkt nicht möglich ist, hat die Entität die Möglichkeit, das [Abrufen der Nachricht auf später zu verschieben](message-deferral.md). Die Nachricht verbleibt in der Warteschlange oder im Abonnement, wird jedoch zurückgestellt.
+
+### <a name="batching"></a>Batchverarbeitung
+
+Durch die [clientseitige Batchverarbeitung](service-bus-performance-improvements.md#client-side-batching) kann ein Warteschlangen- oder Themenclient das Senden einer Nachricht für einen bestimmten Zeitraum verzögern. Wenn der Client während dieses Zeitraums weitere Nachrichten sendet, werden die Nachrichten in einem einzigen Batch übertragen. 
+
+### <a name="transactions"></a>Transaktionen
+
+Eine [Transaktion](service-bus-transactions.md) gruppiert mehrere Vorgänge in einem Ausführungsbereich. Service Bus unterstützt Gruppierungsvorgänge für eine einzelne Nachrichtenentität (Warteschlange, Thema, Abonnement) innerhalb eines Transaktionsbereichs.
+
+### <a name="filtering-and-actions"></a>Filtern und Aktionen
+
+Abonnenten können definieren, welche Nachrichten von einem Thema empfangen werden sollen. Diese Nachrichten werden in Form von [benannten Abonnementregeln](topic-filters.md) angegeben. Für jede übereinstimmende Regelbedingung erzeugt das Abonnement eine Kopie der Nachricht, die für jede übereinstimmende Regel anders kommentiert werden kann.
+
+### <a name="auto-delete-on-idle"></a>Automatisches Löschen nach Leerlauf
+
+[Automatisches Löschen nach Leerlauf](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) ermöglicht das Angeben eines Leerlaufintervalls, nach dem die Warteschlange automatisch gelöscht wird. Die Mindestdauer ist fünf Minuten.
+
+### <a name="duplicate-detection"></a>Duplikaterkennung
+
+Sollte ein Fehler dazu führen, dass der Client das Ergebnis eines Sendevorgangs nicht mit Bestimmtheit ermitteln kann, sorgt die [Duplikaterkennung](duplicate-detection.md) für Klarheit: Der Absender kann die gleiche Nachricht erneut senden, und die Warteschlange oder das Thema verwirft mögliche Duplikate.
+
+### <a name="sas-rbac-and-msi"></a>SAS, RBAC und MSI
+
+Service Bus unterstützt Sicherheitsprotokolle wie [Shared Access Signatures](service-bus-sas.md) (SAS), die [rollenbasierte Zugriffssteuerung](service-bus-role-based-access-control.md) (Role Based Access Control, RBAC) und die [verwaltete Dienstidentität](service-bus-managed-service-identity.md) (Managed Service Identity, MSI).
+
+### <a name="geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung
+
+Sollte eine Azure-Region oder ein Azure-Datencenter ausfallen, kann die Datenverarbeitung dank [georedundanter Notfallwiederherstellung](service-bus-geo-dr.md) in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden.
+
+### <a name="security"></a>Sicherheit
+
+Service Bus unterstützt die Standardprotokolle [AMQP 1.0](service-bus-amqp-overview.md) und [HTTP/REST](/rest/api/servicebus/).
+
+## <a name="client-libraries"></a>Clientbibliotheken
+
+Service Bus unterstützt Clientbibliotheken für [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master) und [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
+
+## <a name="integration"></a>Integration
+
+Service Bus lässt sich vollständig in folgende Azure-Dienste integrieren:
+
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Funktionen](https://azure.microsoft.com/services/functions/) 
+- [Dynamics 365](https://dynamics.microsoft.com)
+- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Service Bus Messaging finden Sie in folgenden Themen.
+Informationen zu den ersten Schritten mit Service Bus-Messaging finden Sie in folgenden Artikeln:
 
-* [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
-* [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
-* [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
-* [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-
+* [Gegenüberstellung der Azure-Messagingdienste](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* [Informationen zum Standard- und Premium-Tarif für Azure Service Bus](https://azure.microsoft.com/pricing/details/service-bus/)
+* [Leistung und Wartezeit beim Premium-Tarif von Azure Service Bus](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
+* Schnellstartanleitung für [.NET](service-bus-quickstart-powershell.md), [Java](service-bus-quickstart-powershell.md) oder [JMS](service-bus-quickstart-powershell.md)
