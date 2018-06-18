@@ -13,7 +13,7 @@
 
 # Erste Schritte
 ## [Erste Schritte mit Azure AD](fundamentals/get-started-azure-ad.md)
-## [Registrieren für Azure AD Premium](active-directory-get-started-premium.md)
+## [Registrieren für Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Hinzufügen eines benutzerdefinierten Domänennamens](fundamentals/add-custom-domain.md)
 ## [Konfigurieren des Unternehmensbrandings](fundamentals/customize-branding.md)
 ## [Hinzufügen von Benutzern zu Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [Verwalten von Gruppen und Mitgliedern](fundamentals/active-directory-manage-groups.md)
 ### Verwalten von Gruppen
-#### [Azure-Portal](active-directory-groups-create-azure-portal.md)
+#### [Azure-Portal](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell für Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [Verwalten von Gruppenmitgliedern](active-directory-groups-members-azure-portal.md)
+### [Verwalten von Gruppenmitgliedern](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Verwalten von Gruppenbesitzern](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Verwalten der Gruppenmitgliedschaft](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [Zuweisen von Lizenzen mithilfe von Gruppen](fundamentals/active-directory-licensing-whatis-azure-portal.md)

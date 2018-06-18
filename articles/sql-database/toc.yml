@@ -343,7 +343,7 @@
         - name: Laden von Daten mit BCP
           href: sql-database-load-from-csv-with-bcp.md
         - name: Laden von Daten mit ADF
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: Synchronisieren von Daten
           href: sql-database-get-started-sql-data-sync.md
     - name: Überwachen & optimieren
