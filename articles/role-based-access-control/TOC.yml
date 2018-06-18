@@ -1,51 +1,57 @@
 - name: Übersicht über die Zugriffsverwaltung
   href: manage-access-to-azure-resources.md
-- name: Zugriff auf Ressourcen in Azure
-  href: rbac-and-directory-admin-roles.md
-- name: 'Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)'
-  href: overview.md
+  items: null
+- name: Übersicht
   items:
-    - name: Schnellstarts
-      items:
-        - name: 'Gewähren des Zugriffs für einen Benutzer: Portal'
-          href: quickstart-assign-role-user-portal.md
-    - name: Tutorials
-      items:
-        - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
-          href: tutorial-role-assignments-user-powershell.md
-        - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
-          href: tutorial-role-assignments-group-powershell.md
-        - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
-          href: tutorial-custom-role-powershell.md
-        - name: 'Erstellen einer benutzerdefinierten Rolle: CLI'
-          href: tutorial-custom-role-cli.md
-    - name: Verwalten von Rollenzuweisungen
-      items:
-        - name: Portal
-          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
-        - name: Azure-Befehlszeilenschnittstelle
-          href: role-assignments-cli.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: REST
-          href: role-assignments-rest.md
+    - name: Was ist RBAC?
+      href: overview.md
+    - name: Grundlegendes zu den verschiedenen Rollen
+      href: rbac-and-directory-admin-roles.md
+- name: Schnellstarts
+  items:
+    - name: Gewähren des Zugriffs für einen Benutzer
+      href: quickstart-assign-role-user-portal.md
+- name: Tutorials
+  items:
+    - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
+      href: tutorial-role-assignments-user-powershell.md
+    - name: 'Gewähren des Zugriffs für eine Gruppe: PowerShell'
+      href: tutorial-role-assignments-group-powershell.md
+    - name: 'Erstellen einer benutzerdefinierten Rolle: PowerShell'
+      href: tutorial-custom-role-powershell.md
+    - name: 'Erstellen einer benutzerdefinierten Rolle: CLI'
+      href: tutorial-custom-role-cli.md
+- name: Konzepte
+  items:
     - name: Grundlegendes zu Rollendefinitionen
       href: role-definitions.md
     - name: Integrierte Rollen
       href: built-in-roles.md
     - name: Benutzerdefinierte Rollen
       href: custom-roles.md
-    - name: Verwalten von Rollenzuweisungen für externe Benutzer
-      href: role-assignments-external-users.md
+    - name: Ressourcenanbietervorgänge
+      href: resource-provider-operations.md
+    - name: Privileged Identity Management (PIM) für RBAC
+      href: pim-azure-resource.md
+    - name: Bedingter Zugriff für die Azure-Verwaltung
+      href: conditional-access-azure-management.md
+- name: Anleitungen
+  items:
+    - name: Verwalten des Zugriffs
+      items:
+        - name: Portal
+          href: role-assignments-portal.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST
+          href: role-assignments-rest.md
     - name: Aktivitätsprotokolle
       href: change-history-report.md
     - name: Erhöhen der Zugriffsrechte für den globalen Administrator
       href: elevate-access-global-admin.md
+    - name: Verwalten des Zugriffs für externe Benutzer
+      href: role-assignments-external-users.md
     - name: Problembehandlung
       href: troubleshooting.md
-    - name: Ressourcenanbietervorgänge
-      href: resource-provider-operations.md
-- name: Privileged Identity Management (PIM) für RBAC
-  href: pim-azure-resource.md
-- name: Bedingter Zugriff für die Azure-Verwaltung
-  href: conditional-access-azure-management.md

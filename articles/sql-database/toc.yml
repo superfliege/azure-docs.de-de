@@ -202,6 +202,30 @@
           href: sql-database-xevent-db-diff-from-svr.md
         - name: Überwachen von In-Memory
           href: sql-database-in-memory-oltp-monitoring.md
+    - name: Aufträge für die elastische Datenbank
+      items:
+        - name: Übersicht
+          href: elastic-jobs-overview.md
+        - name: Erstellen und Verwalten (PowerShell)
+          href: elastic-jobs-powershell.md
+        - name: Erstellen und Verwalten (T-SQL)
+          href: elastic-jobs-tsql.md
+        - name: Migrieren (aus alten elastischen Aufträgen)
+          href: elastic-jobs-migrate.md
+        - name: Elastische Aufträge (veraltet)
+          items:
+            - name: Übersicht (veraltet)
+              href: sql-database-elastic-jobs-overview.md
+            - name: Installieren eines elastischen Auftrags (veraltet)
+              href: sql-database-elastic-jobs-service-installation.md
+            - name: Erstellen eines Auftrags – Portal (veraltet)
+              href: sql-database-elastic-jobs-create-and-manage.md
+            - name: Erstellen eines Auftrags – Azure PowerShell (veraltet)
+              href: sql-database-elastic-jobs-powershell.md
+            - name: Erstellen eines Auftrags – Beispiel-App (veraltet)
+              href: sql-database-elastic-jobs-getting-started.md
+            - name: Deinstallieren eines elastischen Auftrags (veraltet)
+              href: sql-database-elastic-jobs-uninstall.md
     - name: Horizontales Skalieren
       items:
         - name: Übersicht
@@ -212,8 +236,6 @@
           href: sql-database-elastic-query-overview.md
         - name: Elastische Transaktionen
           href: sql-database-elastic-transactions-overview.md
-        - name: Elastische Aufträge
-          href: sql-database-elastic-jobs-overview.md
         - name: Shardzuordnungen
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Abfragerouting
@@ -276,16 +298,6 @@
       items:
         - name: Upgraden der Clientbibliothek für elastische Datenbanken
           href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: Installieren eines elastischen Auftrags
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: Erstellen eines Auftrags – Portal
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: Erstellen eines Auftrags – Azure PowerShell
-          href: sql-database-elastic-jobs-powershell.md
-        - name: Erstellen eines Auftrags – Beispiel-App
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: Deinstallieren eines elastischen Auftrags
-          href: sql-database-elastic-jobs-uninstall.md
         - name: Abfragen vertikal partitionierter Daten
           href: sql-database-elastic-query-getting-started-vertical.md
         - name: Erstellen übergreifender Berichte für die horizontal hochskalierte Datenschicht
@@ -454,8 +466,6 @@
   items:
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
-    - name: PowerShell (elastische Datenbank)
-      href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET
