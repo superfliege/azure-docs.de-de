@@ -1,5 +1,5 @@
-- name: Übersicht über die Zugriffsverwaltung
-  href: manage-access-to-azure-resources.md
+- name: 'Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)'
+  href: index.yml
   items: null
 - name: Übersicht
   items:
@@ -36,6 +36,7 @@
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
 - name: Anleitungen
+  expanded: true
   items:
     - name: Verwalten des Zugriffs
       items:

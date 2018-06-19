@@ -122,7 +122,6 @@
 ### Verweis
 #### [Vermerkdauer](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
-#### [Notifications](active-directory-reporting-notifications.md)
 #### [Referenz zu Überwachungsaktivitäten](active-directory-reporting-activity-audit-reference.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [SSPR-Anpassung](authentication/concept-sspr-customization.md)
 ### [SSPR-Datenanforderungen](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR-Berichterstellung](authentication/howto-sspr-reporting.md)
+### [Entfernen unsicherer Kennwörter](authentication/concept-password-ban-bad.md)
+### [Konfigurieren der Liste gesperrter Kennwörter](authentication/howto-password-ban-bad.md)
+### [Lokale Integration](authentication/concept-password-ban-bad-on-premises.md)
+### [Bereitstellen des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises.md)
+### [Konfigurieren des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [Überwachen des Kennwortschutzes für Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### IT-Administratoren: Zurücksetzen von Kennwörtern
 #### [Azure-Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Lizenzieren von SSPR](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## Verwalten von Apps
 ### [Übersicht](manage-apps/what-is-application-management.md)
 ### [Erste Schritte](manage-apps/plan-an-application-integration.md)
-### [Tutorials für die Integration von SaaS-Apps](active-directory-saas-tutorial-list.md)
+### [Tutorials für die Integration von SaaS-Apps](saas-apps/tutorial-list.md)
 ### [Cloud-App-Ermittlung](manage-apps/cloud-app-discovery.md)
 #### [Erstellen von Momentaufnahmenberichten](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
 
 ### [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von SaaS-Apps](active-directory-saas-app-provisioning.md) 
-#### [Tutorials für die App-Integration](active-directory-saas-tutorial-list.md) 
+#### [Tutorials für die App-Integration](saas-apps/tutorial-list.md) 
 #### [Automatisieren der Bereitstellung in SCIM-fähigen Apps](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [Anpassen von Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) 
 #### [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md) 

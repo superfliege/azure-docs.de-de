@@ -69,6 +69,8 @@
       href: post-to-custom-topic.md
     - name: Empfangen von Ereignissen am HTTP-Endpunkt
       href: receive-events.md
+    - name: Verwalten der Ereignisbereitstellung
+      href: manage-event-delivery.md
     - name: Überwachen der Ereignisbereitstellung
       href: monitor-event-delivery.md
     - name: Abfragen von Ereignisabonnements

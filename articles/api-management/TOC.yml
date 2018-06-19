@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Gegenseitige Zertifikatauthentifizierung
           href: api-management-howto-mutual-certificates.md
+        - name: Verwalten von Protokollen und Chiffren
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassen der Entwickleroberfläche
       items:
         - name: Ändern von Seiteninhalt und Layout
