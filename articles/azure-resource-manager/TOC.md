@@ -17,6 +17,7 @@
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
 #### [Parameter](resource-manager-templates-parameters.md)
 #### [Variablen](resource-manager-templates-variables.md)
+#### [Funktionen](resource-group-authoring-templates.md#functions)
 #### [Ressourcen](resource-manager-templates-resources.md)
 #### [Ausgaben](resource-manager-templates-outputs.md)
 ### [Verknüpfte und geschachtelte Vorlagen](resource-group-linked-templates.md)

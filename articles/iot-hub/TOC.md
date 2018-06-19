@@ -1,4 +1,4 @@
-# [Azure IoT-Grundlagen](../iot-fundamentals/index.yml)
+# [Azure IoT-Grundlagen](/azure/iot-fundamentals)
 # [Dokumentation zu IoT Hub](index.yml)
 
 # Übersicht
@@ -84,10 +84,10 @@
 ### [Verwenden von IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Verwenden des Serialisierungsprogramms](iot-hub-device-sdk-c-serializer.md)
 
-## [Sicherheit von Anfang an](iot-hub-security-ground-up.md)
-## [Bewährte Methoden für die Sicherheit](iot-hub-security-best-practices.md)
-## [Sicherheitsarchitektur](iot-hub-security-architecture.md)
-## [Schützen Ihrer IoT-Bereitstellung](iot-hub-security-deployment.md)
+## [Sicherheit von Anfang an](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+## [Bewährte Methoden für die Sicherheit](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+## [Sicherheitsarchitektur](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+## [Schützen Ihrer IoT-Bereitstellung](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## Schützen mit X.509-Zertifikaten einer Stammzertifizierungsstelle
 ### [Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Übersicht](iot-hub-x509ca-overview.md)
 #### [Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Konzepte](iot-hub-x509ca-concept.md)
