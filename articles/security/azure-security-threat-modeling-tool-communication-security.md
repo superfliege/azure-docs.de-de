@@ -167,8 +167,7 @@ Diese Regel funktioniert durch die Rückgabe eines HTTP-Statuscode von 301 (Perm
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Lokal |
 | **Attribute**              | SQL-Version: MsSQL2016, SQL-Version: MsSQL2012, SQL-Version: MsSQL2014 |
-| **Referenzen**              | 
-            [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine (SQL Server-Konfigurations-Manager)](https://msdn.microsoft.com/library/ms191192)  |
+| **Referenzen**              | [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine (SQL Server-Konfigurations-Manager)](https://msdn.microsoft.com/library/ms191192)  |
 | **Schritte** | Die Aktivierung der SSL-Verschlüsselung erhöht die Sicherheit von Daten, die über Netzwerke zwischen Instanzen von SQL Server und Anwendungen übertragen werden. |
 
 ## <a id="comm-storage"></a>Stellen Sie sicher, dass die Kommunikation mit Azure Storage über HTTPS abgewickelt wird.
