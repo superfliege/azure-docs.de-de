@@ -159,7 +159,7 @@ Im ersten Schritt muss entschieden werden, wie viele Sicherheitsgrenzen in einem
 Die Anzahl und Art der erforderlichen Grenzen variiert basierend darauf, wie hoch die Risikotoleranz eines Unternehmens ist und welches Szenario implementiert wird. Diese Entscheidung wird häufig gemeinsam von verschiedenen Gruppen innerhalb einer Organisation getroffen – z.B. durch ein Team für Risiko und Compliance, ein Netzwerk- und Plattformteam und ein Team für die Anwendungsentwicklung. Bei dieser Entscheidung sollten Personen mit Einblick in die Sicherheit, relevante Daten und die eingesetzte Technologie einbezogen werden, um ein angemessenes Sicherheitsniveau für jede Implementierung zu gewährleisten.
 
 > [!TIP]
-> Verwenden Sie die kleinstmögliche Anzahl von Grenzen, mit denen die Sicherheitsanforderungen für ein vorgegebenes Szenario erfüllt werden können. Je mehr Grenzen implementiert werden, desto schwieriger können sich Betrieb und Problembehandlung gestalten. Gleichzeitig steigt mit der Zeit der Aufwand für das Verwalten der verschiedenen Grenzrichtlinien. Durch eine unzureichende Anzahl von Grenzen steigt jedoch das Risiko. Entscheidend ist, die richtige Balance zu finden.
+> Verwenden Sie die kleinstmögliche Anzahl von Grenzen, mit denen die Sicherheitsanforderungen für ein vorgegebenes Szenario erfüllt werden können. Je mehr Grenzen implementiert werden, desto schwieriger können sich Betrieb und Problembehandlung gestalten. Gleichzeitig steigt mit der Zeit der Aufwand für das Verwalten der verschiedenen Grenzrichtlinien. Durch eine unzureichende Anzahl von Grenzen steigt jedoch das Risiko. Entscheidend ist, das richtige Gleichgewicht zu finden.
 >
 >
 
