@@ -12,16 +12,16 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: virtual-networ
+ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2efbd6e0fc3f90909553bc839a8b61ff3ed681ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267389"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe des Azure-Portals
 
@@ -65,6 +65,8 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-a-service-endpoint"></a>Aktivieren eines Dienstendpunkts
 
+Dienstendpunkte werden pro Dienst und pro Subnetz aktiviert. Erstellen Sie ein Subnetz, und fügen Sie einen Dienstendpunkt für das Subnetz hinzu.
+
 1. Geben Sie oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** *myVirtualNetwork* ein. Wenn **myVirtualNetwork** in den Suchergebnissen angezeigt wird, können Sie den Begriff auswählen.
 2. Hinzufügen eines Subnetzes zum virtuellen Netzwerk Klicken Sie unter **EINSTELLUNGEN** auf **Subnetze** und anschließend auf **+ Subnetz**, wie in der folgenden Abbildung gezeigt:
 
@@ -78,11 +80,16 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
     |Adressbereich| 10.0.1.0/24|
     |Dienstendpunkte| Wählen Sie unter **Dienste** **Microsoft.Storage** aus.|
 
+> [!CAUTION]
+> Lesen Sie vor der Aktivierung eines Dienstendpunkts für ein vorhandenes Subnetz, das Ressourcen enthält, die Informationen unter [Ändern von Subnetzeinstellungen](virtual-network-manage-subnet.md#change-subnet-settings).
+
 ## <a name="restrict-network-access-for-a-subnet"></a>Einschränken des Netzwerkzugriffs für ein Subnetz
+
+Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ressourcen kommunizieren. Sie können die bidirektionale Kommunikation mit allen Ressourcen in einem Subnetz einschränken, indem Sie eine Netzwerksicherheitsgruppe erstellen und dem Subnetz zuordnen.
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie die Option **Netzwerk** und dann **Netzwerksicherheitsgruppe** aus.
-Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
+3. Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
     |Einstellung|Wert|
     |----|----|
@@ -94,7 +101,7 @@ Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informatio
 4. Nachdem die Sicherheitsgruppe erstellt wurde geben Sie im Feld **Ressourcen, Dienste und Dokumente durchsuchen** oben im Portal *myNsgPrivate* ein. Wenn **myNsgPrivate** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 5. Wählen Sie unter **EINSTELLUNGEN** **Ausgangssicherheitsregeln** aus.
 6. Wählen Sie **+ Hinzufügen**.
-7. Erstellen Sie eine Regel, die den ausgehenden Zugriff auf die öffentlichen IP-Adressen erlaubt, die dem Azure Storage-Dienst zugewiesen sind: Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **OK** aus:
+7. Erstellen Sie eine Regel, die ausgehende Kommunikation mit dem Azure Storage-Dienst zulässt. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **OK** aus:
 
     |Einstellung|Wert|
     |----|----|
@@ -104,10 +111,11 @@ Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informatio
     |Zieldiensttag | Wählen Sie **Storage** aus.|
     |Zielportbereiche| * |
     |Protokoll|Beliebig|
-    |anzuzeigen.|ZULASSEN|
+    |Aktion|ZULASSEN|
     |Priorität|100|
     |NAME|Allow-Storage-All|
-8. Erstellen Sie eine Regel, die eine Standardsicherheitsregel außer Kraft setzt, die den ausgehenden Zugriff auf alle öffentlichen IP-Adressen zulässt. Führen Sie die Schritte 6 und 7 erneut aus, und verwenden Sie dabei die folgenden Werte:
+    
+8. Erstellen Sie eine Regel, die ausgehende Kommunikation mit dem Internet verweigert. Diese Regel überschreibt eine Standardregel in allen Netzwerksicherheitsgruppen, die ausgehende Internetkommunikation zulässt. Führen Sie die Schritte 6 und 7 erneut aus, und verwenden Sie dabei die folgenden Werte:
 
     |Einstellung|Wert|
     |----|----|
@@ -117,7 +125,7 @@ Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informatio
     |Zieldiensttag| Wählen Sie **Internet** aus.|
     |Zielportbereiche| * |
     |Protokoll|Beliebig|
-    |anzuzeigen.|Verweigern|
+    |Aktion|Verweigern|
     |Priorität|110|
     |NAME|Deny-Internet-All|
 
@@ -133,7 +141,7 @@ Geben Sie unter **Netzwerksicherheitsgruppe erstellen** die folgenden Informatio
     |Zieldiensttag| Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| 3389 |
     |Protokoll|Beliebig|
-    |anzuzeigen.|ZULASSEN|
+    |Aktion|ZULASSEN|
     |Priorität|120|
     |NAME|Allow-RDP-All|
 
@@ -171,9 +179,9 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
 4. Geben Sie unter **Name** *my-file-share* ein, und wählen Sie dann **OK** aus.
 5. Schließen Sie das Feld **Dateidienst**.
 
-### <a name="enable-network-access-from-a-subnet"></a>Aktivieren des Netzwerkzugriffs aus einem Subnetz
+### <a name="restrict-network-access-to-a-subnet"></a>Einschränken des Netzwerkzugriffs auf ein Subnetz
 
-Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in allen Netzwerken. Um den Zugriff nur aus einem bestimmten Netzwerk zuzulassen und Netzwerkzugriff aus allen anderen Netzwerken zu verweigern, führen Sie die folgenden Schritte aus:
+Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in allen Netzwerken, einschließlich des Internets. Verweigern Sie den Zugriff über das Internet sowie alle anderen Subnetze in allen virtuellen Netzwerken außer über das Subnetz *Private* im virtuellen Netzwerk *myVirtualNetwork*.
 
 1. Wählen Sie unter **EINSTELLUNGEN** für das Speicherkonto **Firewalls und virtuelle Netzwerke** aus.
 2. Wählen Sie unter **Virtuelle Netzwerke** **Ausgewählte Netzwerke** aus.
@@ -256,13 +264,13 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 
     Die Azure-Dateifreigabe wurde dem Laufwerk Z erfolgreich zugeordnet.
 
-7. Bestätigen Sie an einer Eingabeaufforderung, dass der virtuelle Computer über keine ausgehende Verbindung mit einer beliebigen anderen öffentlichen IP-Adresse verfügt:
+7. Bestätigen Sie an einer Eingabeaufforderung, dass der virtuelle Computer über keine ausgehende Verbindung mit dem Internet verfügt:
 
     ```
     ping bing.com
     ```
     
-    Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf andere öffentliche IP-Adressen als auf die dem Azure Storage-Dienst zugewiesenen Adressen erlaubt.
+    Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf das Internet zulässt.
 
 8. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
 
@@ -272,7 +280,7 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 2. Wenn **myVmPublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 3. Führen Sie in [Bestätigen des Zugriffs auf das Speicherkonto](#confirm-access-to-storage-account) für die VM *myVmPublic* die Schritte 1–6 aus.
 
-    Der Zugriff wird verweigert, und die Fehlermeldung `New-PSDrive : Access is denied` wird angezeigt. Der Zugriff wird verweigert, da der virtuelle Computer *myVmPublic* im Subnetz *Public* bereitgestellt wird. Für das Subnetz *Public* ist kein Dienstendpunkt für Azure Storage aktiviert, und das Speicherkonto erlaubt nur den Netzwerkzugriff aus dem Subnetz *Private*, nicht aus dem Subnetz *Public*.
+    Der Zugriff wird verweigert, und die Fehlermeldung `New-PSDrive : Access is denied` wird angezeigt. Der Zugriff wird verweigert, da der virtuelle Computer *myVmPublic* im Subnetz *Public* bereitgestellt wird. Das Subnetz *Public* verfügt nicht über einen Dienstendpunkt, der für Azure Storage aktiviert ist. Das Speicherkonto lässt Netzwerkzugriff nur über das Subnetz *Private*, nicht jedoch über das Subnetz *Public* zu.
 
 4. Schließen Sie die Remotedesktopsitzung für den virtuellen Computer *myVmPublic*.
 
@@ -295,7 +303,7 @@ Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die mit mehreren Azure-Diensten bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md) und [Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
+In diesem Tutorial haben Sie einen Dienstendpunkt für ein Subnetz eines virtuellen Netzwerks aktiviert. Sie haben erfahren, dass Dienstendpunkte für Ressourcen aktiviert werden können, die über mehrere Azure-Dienste bereitgestellt werden. Sie haben ein Azure Storage-Konto erstellt und den Netzwerkzugriff auf das Speicherkonto ausschließlich auf Ressourcen im Subnetz eines virtuellen Netzwerks eingeschränkt. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md) und [Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke](virtual-network-manage-subnet.md).
 
 Wenn Sie mehrere virtuelle Netzwerke in Ihrem Konto verwenden, können Sie zwei virtuelle Netzwerke miteinander verbinden, damit die Ressourcen in jedem virtuellen Netzwerk miteinander kommunizieren können. Im nächsten Tutorial erfahren Sie, wie Sie Verbindungen zwischen virtuellen Netzwerken herstellen.
 

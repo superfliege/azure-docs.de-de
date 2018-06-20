@@ -6,30 +6,31 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 06/04/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a9b33469a439c9f99c80391bfeb1fb4040dbbc2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737594"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
-In diesem Tutorial wird gezeigt, wie Sie Ihre lokale VMware-Infrastruktur vorbereiten, wenn Sie VMware-VMs in Azure replizieren möchten. In diesem Tutorial lernen Sie Folgendes:
+[Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
+
+- Dies ist das zweite Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer veranschaulicht. Im ersten Tutorial [richten wir die erforderlichen Azure-Komponenten](tutorial-prepare-azure.md) für die VMware-Notfallwiederherstellung ein.
+- Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. 
+
+In diesem Artikel erfahren Sie, wie Sie Ihre lokale VMware-Umgebung vorbereiten, wenn Sie virtuelle VMware-Computer mithilfe von Azure Site Recovery in Azure replizieren möchten. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Vorbereiten eines Kontos auf dem vCenter-Server oder dem vSphere ESXi-Host zum Automatisieren der VM-Ermittlung
 > * Vorbereiten eines Kontos für die automatische Installation des Mobility Service auf VMware-VMs
-> * Überprüfen der Anforderungen für VMware-Server
-> * Überprüfen der Anforderungen für VMware-VMs
+> * Überprüfen der Anforderungen für VMware-Server und virtuelle Computer
+> * Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 
-In dieser Tutorialreihe erfahren Sie, wie Sie einen einzelnen virtuellen Computer mithilfe von Azure Site Recovery replizieren. 
-
-Dies ist das zweite Tutorial in der Reihe. Stellen Sie sicher, dass Sie die [Azure-Komponenten eingerichtet haben](tutorial-prepare-azure.md). Die Vorgehensweise dazu wird im vorhergehenden Tutorial beschrieben.
-
-Laden Sie für die Replikation mehrerer virtueller Computer das [Bereitstellungsplaner-Tool](https://aka.ms/asr-deployment-planner) für die VMware-Replikation herunter. [Weitere Informationen](site-recovery-deployment-planner.md)
 
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Vorbereiten eines Kontos für die automatische Ermittlung
@@ -54,12 +55,17 @@ Erstellen Sie das Konto wie folgt:
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>Vorbereiten eines Kontos für die Installation des Mobility Services
 
-Der Mobility Service muss auf der VM installiert sein, die Sie replizieren möchten. Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto vorbereiten, mit dem Site Recovery auf die VM zugreift. Sie geben dieses Konto an, wenn Sie die Notfallwiederherstellung an der Azure-Konsole einrichten.
+Der Mobilitätsdienst muss auf Computern installiert sein, die Sie replizieren möchten. Site Recovery kann eine Pushinstallation dieses Diensts ausführen, wenn Sie die Replikation für einen Computer aktivieren. Sie haben auch die Möglichkeit, den Dienst manuell oder mithilfe von Installationstools zu installieren.
 
-1. Bereiten Sie ein Domänen- oder lokales Konto mit den Berechtigungen zum Installieren auf dem virtuellen Computer vor.
-2. Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für die Installation auf Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer.
-   - Fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** mit dem Wert 1 hinzu.
-3. Für die Installation auf virtuellen Linux-Computern bereiten Sie ein root-Konto auf dem Linux-Quellserver vor.
+- In diesem Tutorial installieren wir den Mobilitätsdienst mit der Pushinstallation.
+- Für diese Pushinstallation müssen Sie ein Konto vorbereiten, das Site Recovery verwenden kann, um auf die den virtuellen Computer zuzugreifen. Sie geben dieses Konto an, wenn Sie die Notfallwiederherstellung an der Azure-Konsole einrichten.
+
+Bereiten Sie das Konto wie folgt vor:
+
+Bereiten Sie ein Domänen- oder lokales Konto mit den Berechtigungen zum Installieren auf dem virtuellen Computer vor.
+
+- **Virtuelle Windows-Computer**: Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für die Installation auf Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer. Dazu fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** mit dem Wert 1 hinzu.
+- **Virtuelle Linux-Computer**: Für die Installation auf virtuellen Linux-Computern bereiten Sie einen Superuser auf dem Linux-Quellserver vor.
 
 
 ## <a name="check-vmware-requirements"></a>Überprüfen der VMware-Anforderungen
@@ -67,7 +73,7 @@ Der Mobility Service muss auf der VM installiert sein, die Sie replizieren möch
 Stellen Sie sicher, dass VMware-Server und virtuelle Computer die Anforderungen erfüllen.
 
 1. [Überprüfen](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) Sie die Anforderungen für VMware-Server.
-2. [Überprüfen](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) Sie für Linux die Dateisystem- und Speicheranforderungen. 
+2. [Überprüfen](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) Sie für virtuelle Linux-Computer die Dateisystem- und Speicheranforderungen. 
 3. Überprüfen Sie die Unterstützung für das lokale [Netzwerk](vmware-physical-azure-support-matrix.md#network) und den lokalen [Speicher](vmware-physical-azure-support-matrix.md#storage). 
 4. Überprüfen Sie, was nach einem Failover für [Azure-Netzwerke](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [Speicher](vmware-physical-azure-support-matrix.md#azure-storage) und [Computer](vmware-physical-azure-support-matrix.md#azure-compute) unterstützt wird.
 5. Ihre lokalen virtuellen Computer, die Sie in Azure replizieren, müssen die [Azure-VM-Anforderungen](vmware-physical-azure-support-matrix.md#azure-vm-requirements) einhalten.
@@ -75,21 +81,31 @@ Stellen Sie sicher, dass VMware-Server und virtuelle Computer die Anforderungen 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 
-Bei einem Failoverszenario können Sie von Ihrem lokalen Netzwerk aus eine Verbindung mit Ihren replizierten virtuellen Computern in Azure herstellen.
+Nach einem Failover sollten Sie von Ihrem lokalen Netzwerk aus eine Verbindung mit den virtuellen Azure-Computern herstellen.
 
 Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Windows-VMs nach dem Failover per RDP herstellen möchten:
 
-1. Aktivieren Sie vor dem Failover RDP auf dem lokalen virtuellen Computer, um über das Internet darauf zuzugreifen. Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.
-2. Für den Zugriff über ein Site-to-Site-VPN aktivieren Sie RDP auf dem lokalen Computer. RDP sollte unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen werden.
-   Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135) Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr auf dem virtuellen Computer anmelden.
-3. Aktivieren Sie nach dem Failover auf der Windows-Azure-VM die **Startdiagnose**, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
+- **Zugriff auf das Internet**. Aktivieren Sie vor dem Failover RDP auf dem lokalen virtuellen Computer. Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.
+- **Standort-zu-Standort-VPN-Zugriff**:
+    - Aktivieren Sie vor dem Failover RDP auf dem lokalen Computer.
+    - RDP sollte unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen werden.
+    - Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)
+- Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr auf dem virtuellen Computer anmelden.
+- Aktivieren Sie nach dem Failover auf der Windows-Azure-VM die **Startdiagnose**, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 
 Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Linux-VMs nach dem Failover per SSH herstellen möchten:
 
-1. Überprüfen Sie vor dem Failover auf dem lokalen Computer, ob der Secure Shell-Dienst für den automatischen Start beim Systemstart aktiviert ist. Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung zulassen.
+- Überprüfen Sie vor dem Failover auf dem lokalen Computer, ob der Secure Shell-Dienst für den automatischen Start beim Systemstart aktiviert ist.
+- Überprüfen Sie, ob die Firewallregeln eine SSH-Verbindung zulassen.
+- Erlauben Sie nach dem Failover auf der Azure-VM in den Netzwerksicherheitsgruppen-Regeln eingehende Verbindungen am SSH-Port und für das Azure-Subnetz, mit dem der virtuelle Computer verbunden ist.
+- Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md) hinzu.
+- Sie können die **Startdiagnose** aktivieren, um einen Screenshot des virtuellen Computers anzuzeigen.
 
-2. Erlauben Sie nach dem Failover auf der Azure-VM in den Netzwerksicherheitsgruppen-Regeln eingehende Verbindungen am SSH-Port und für das Azure-Subnetz, mit dem der virtuelle Computer verbunden ist.
-   Fügen Sie der VM eine [öffentliche IP-Adresse](site-recovery-monitoring-and-troubleshooting.md) hinzu. Sie können die **Startdiagnose** aktivieren, um einen Screenshot des virtuellen Computers anzuzeigen.
+## <a name="useful-links"></a>Nützliche Links
+
+Wenn Sie mehrere virtuelle Computer replizieren, müssen Sie Kapazität und Bereitstellung vorab planen. [Weitere Informationen](site-recovery-deployment-planner.md)
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
