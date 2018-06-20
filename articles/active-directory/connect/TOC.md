@@ -18,6 +18,7 @@
 ### [Upgrade von einer früheren Version](active-directory-aadconnect-upgrade-previous-version.md)
 ### [Installation mit einer vorhandenen ADSync-Datenbank](active-directory-aadconnect-existing-database.md)
 ### [Installation mit Berechtigungen eines delegierten SQL-Administrators](active-directory-aadconnect-sql-delegation.md)
+### [Verschieben der Azure AD Connect-Datenbank auf einen SQL Server-Remoteserver](active-directory-aadconnect-move-db.md)
 
 # Anleitung
 ## Planen und Entwerfen

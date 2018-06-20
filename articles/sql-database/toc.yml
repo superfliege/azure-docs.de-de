@@ -346,6 +346,14 @@
           href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: Synchronisieren von Daten
           href: sql-database-get-started-sql-data-sync.md
+        - name: Replizieren von Schemaänderungen für die SQL-Datensynchronisierung
+          href: sql-database-update-sync-schema.md
+        - name: Überwachen der SQL-Datensynchronisierung mit OMS Log Analytics
+          href: sql-database-sync-monitor-oms.md
+        - name: Bewährte Methoden für die SQL-Datensynchronisierung
+          href: sql-database-best-practices-data-sync.md
+        - name: Problembehandlung der SQL-Datensynchronisierung
+          href: sql-database-troubleshoot-data-sync.md
     - name: Überwachen & optimieren
       items:
         - name: Überwachen und Verbessern der Leistung
@@ -374,12 +382,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure-Automatisierung
           href: sql-database-manage-automation.md
-        - name: Überwachen der SQL-Datensynchronisierung mit OMS Log Analytics
-          href: sql-database-sync-monitor-oms.md
-        - name: Bewährte Methoden für die SQL-Datensynchronisierung
-          href: sql-database-best-practices-data-sync.md
-        - name: Problembehandlung der SQL-Datensynchronisierung
-          href: sql-database-troubleshoot-data-sync.md
     - name: Horizontales Skalieren
       items:
         - name: Erstellen einer App mit Sharding

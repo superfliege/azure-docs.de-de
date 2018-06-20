@@ -290,6 +290,13 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: Verweis
   items:
+    - name: Architekturmuster
+      href: logic-apps-architectures-simple-enterprise-integration.md
+      items:
+        - name: Einfache Unternehmensintegration
+          href: logic-apps-architectures-simple-enterprise-integration.md
+        - name: Unternehmensintegration mit Warteschlangen und Ereignissen
+          href: logic-apps-architectures-enterprise-integration-with-queues-events.md
     - name: 'Connectors: Details'
       href: 'https://docs.microsoft.com/connectors/'
     - name: Grenzwerte und Konfiguration
