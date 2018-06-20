@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640260"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten
 
@@ -95,6 +96,8 @@ Ein Vorteil des **Datenimport**-Assistenten besteht darin, dass er ebenfalls Ihr
 ### <a name="step-2-add-cognitive-skills"></a>Schritt 2: Hinzufügen von kognitiven Qualifikationen
 
 Fügen Sie als nächstes der Indizierungspipeline Anreicherungsschritte hinzu. Das Portal stellt Ihnen vordefinierte kognitive Qualifikationen für die Bildanalyse und die Textanalyse zur Verfügung. Im Portal arbeitet eine Qualifikationsgruppe auf einem einzelnen Quellfeld. Das sieht vielleicht nach einer sehr bescheidenen Zielsetzung aus, aber im Fall von Azure-Blobs enthält das Feld `content` den größten Teil des Blob-Dokuments (beispielsweise ein Word-Dokument oder einen PowerPoint-Foliensatz). Daher stellt dieses Feld die ideale Eingabe dar, da sich hier alle Inhalte eines Blobs finden.
+
+Manchmal kann es hilfreich sein, eine Textdarstellung aus Dateien zu extrahieren, die größtenteils aus gescannten Bildern bestehen – beispielsweise aus einer PDF-Datei, die durch einen Scanner erzeugt wurde. Azure Search kann automatisch Inhalte aus Bildern extrahieren, die in das Dokument eingebettet sind. Verwenden Sie hierzu die Option **OCR aktivieren und den gesamten Text im Feld "merged_content" zusammenführen**. Dadurch wird automatisch ein Feld namens `merged_content` erstellt, das sowohl den aus dem Dokument extrahierten Text als auch die Textdarstellung von Bildern enthält, die in das Dokument eingebettet sind. Bei Verwendung dieser Option wird `Source data field` auf `merged_content` festgelegt.
 
 Wählen Sie unter **Add cognitive skills**, (Kognitive Qualifikationen hinzufügen) Qualifikationen aus, die Verarbeitung natürlicher Sprache ausführen. Wählen Sie für diesen Schnellstart Entitätserkennung für Personen, Organisationen und Orte aus.
 

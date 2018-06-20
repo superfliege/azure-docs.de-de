@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202846"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236364"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -48,8 +48,8 @@ Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer er
 **Eigenschaft** | **Details**
 --- | ---
 **Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 30 Regionen, einschließlich „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „China, Osten“, „China, Norden“, „Asien, Osten“, „USA, Osten“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „US Gov Arizona“, „US Gov Texas“, „US Gov Virginia“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt.
-**Speicherredundanz** | Die Art von [Speicherredundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy), die von den virtuellen Azure-Computern nach der Migration verwendet wird. Standardmäßig wird lokal redundanter Speicher (LRS) verwendet. Hinweis: Azure Migrate unterstützt nur Bewertungen, die auf verwalteten Datenträgern basieren. Verwaltete Datenträger unterstützen wiederum nur LRS. Daher ist für die Eigenschaft derzeit nur die LRS-Option verfügbar.
-**Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können die Größenanpassung auf der Grundlage des *Leistungsverlaufs* der lokalen virtuellen Computer vornehmen oder die Größe der virtuellen Computer ohne Berücksichtigung des Leistungsverlaufs *an die lokale Umgebung* für Azure anpassen. Standardmäßig wird die leistungsbasierte Größenanpassung verwendet.
+**Speichertyp** | Sie können die Art der Datenträger angeben, die Sie in Azure zuordnen möchten. Diese Eigenschaft ist bei Verwendung des Größenkriteriums „Wie lokal“ relevant. Der Zieldatenträgertyp kann als „Managed Disks Premium“ oder als „Managed Disks Standard“ angegeben werden. Standardmäßig wird „Managed Disks Premium“ verwendet. Bei der leistungsbasierten Größenanpassung werden für die Größenempfehlung automatisch die Leistungsdaten der virtuellen Computer herangezogen. Hinweis: Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
+**Größenkriterium** | Das Kriterium, das in Azure Migrate zur Größenanpassung virtueller Computer für Azure verwendet werden soll. Sie können die Größenanpassung auf der Grundlage des *Leistungsverlaufs* der lokalen virtuellen Computer vornehmen oder die Größe der virtuellen Computer ohne Berücksichtigung des Leistungsverlaufs *an die lokale Umgebung* für Azure anpassen. Standardmäßig wird die Größenanpassung vom Typ „Wie lokal“ verwendet.
 **Tarife** | Für die Kostenberechnung berücksichtigt die Bewertung, ob Sie über Software Assurance verfügen und ob Sie Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) haben. Außerdem werden [Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) berücksichtigt, für die Sie möglicherweise registriert sind, und Sie können abonnementspezifische Rabatte (in Prozent) angeben, die Sie ggf. zusätzlich zum Angebot erhalten.
 **Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die virtuellen Azure-Zielcomputer angeben. Wenn Sie beispielsweise eine Produktionsumgebung migrieren möchten, sollten Sie den Standard-Tarif angeben, der virtuelle Computer mit geringer Latenz umfasst, jedoch auch kostenintensiver sein kann. Bei einer Entwicklungs- und Testumgebung sollten Sie dagegen den Basic-Tarif angeben, der virtuelle Computer mit einer höheren Latenz und geringeren Kosten umfasst. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
 **Leistungsverlauf** | Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert. Diese Werte können in den Bewertungseigenschaften geändert werden.
@@ -100,4 +100,6 @@ Nachdem Sie die lokalen Computer für die Migration mit dem Azure Migrate-Dienst
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Arbeiten Sie ein Tutorial durch](tutorial-assessment-vmware.md), in dem es um die Erstellung einer Bewertung für eine lokale VMware-VM geht.
+
+- [Arbeiten Sie ein Tutorial durch](tutorial-assessment-vmware.md), in dem es um die Erstellung einer Bewertung für eine lokale VMware-VM geht.
+- [Weitere Informationen](resources-faq.md) zu den häufig gestellten Fragen für Azure Migrate

@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248240"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Tutorial: Überwachen von Windows-Containern in Service Fabric mit Log Analytics
 
@@ -212,18 +213,14 @@ Durch Klicken auf einen der folgenden Bereiche gelangen Sie zu der Log Analytics
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurieren des OMS-Agent zum Erfassen von Leistungsindikatoren
 
-Ein weiterer Vorteil der Verwendung des OMS-Agent ist die Fähigkeit, die Leistungsindikatoren ändern zu können, die Sie über die OMS-Benutzeroberfläche erfassen möchten, anstatt den Azure-Diagnose-Agent konfigurieren und jedes Mal ein Upgrade auf Basis der Resource Manager-Vorlage durchführen zu müssen. Klicken Sie hierzu auf der Landing Page Ihrer Containerüberwachungslösung (oder Service Fabric-Lösung) auf **OMS-Portal**.
+Ein weiterer Vorteil der Verwendung des OMS-Agent ist die Fähigkeit, die Leistungsindikatoren ändern zu können, die Sie über die OMS-Benutzeroberfläche erfassen möchten, anstatt den Azure-Diagnose-Agent konfigurieren und jedes Mal ein Upgrade auf Basis der Resource Manager-Vorlage durchführen zu müssen. Klicken Sie hierzu auf der Landing Page Ihrer Containerüberwachungslösung (oder Service Fabric-Lösung) auf **OMS-Arbeitsbereich**.
 
-![OMS-Portal](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-So gelangen Sie zu Ihrem Arbeitsbereich im OMS-Portal, in dem Sie Ihre Lösungen anzeigen, benutzerdefinierte Dashboards erstellen sowie den OMS-Agent konfigurieren können. 
-* Klicken Sie in der oberen rechten Ecke des Bildschirms auf das **Zahnrad**, um das Menü *Einstellungen* zu öffnen.
+Daraufhin gelangen Sie zu Ihrem OMS-Arbeitsbereich. Dort können Sie Ihre Lösungen anzeigen, benutzerdefinierte Dashboards erstellen sowie den OMS-Agent konfigurieren. 
+* Klicken Sie zum Öffnen des Menüs mit den erweiterten Einstellungen auf **Erweiterte Einstellungen**.
 * Klicken Sie auf **Verbundene Quellen** > **Windows-Server**, um sicherzustellen: *5 Windows-Computer sind verbunden*.
-* Klicken Sie auf **Daten** > **Windows-Leistungsindikatoren**, um neue Leistungsindikatoren zu suchen und hinzuzufügen. Hier sehen Sie eine Liste mit den Log Analytics-Empfehlungen für Leistungsindikatoren, die Sie erfassen könnten, sowie die Option zum Suchen nach anderen Indikatoren. Klicken Sie auf **Ausgewählte Leistungsindikatoren hinzufügen**, um mit dem Sammeln der vorgeschlagenen Metriken zu beginnen.
+* Klicken Sie auf **Daten** > **Windows-Leistungsindikatoren**, um neue Leistungsindikatoren zu suchen und hinzuzufügen. Hier sehen Sie eine Liste mit den Log Analytics-Empfehlungen für Leistungsindikatoren, die Sie erfassen können, sowie die Option zum Suchen nach anderen Indikatoren. Vergewissern Sie sich, dass die Leistungsindikatoren **Processor(_Total)\%Prozessorzeit** und **Memory(*)\Verfügbare MB** erfasst werden.
 
-    ![Perf counters](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-Zurück im Azure-Portal, **aktualisieren** Sie Ihre Containerüberwachungslösung in ein paar Minuten, und Sie sollten zunächst den Eingang der Daten für *Computerleistung* sehen. Dies hilft Ihnen zu verstehen, wie Ihre Ressourcen verwendet werden. Sie können diese Metriken auch für entsprechende Entscheidungen zur Skalierung Ihrer Cluster verwenden, oder um zu überprüfen, ob ein Cluster Ihre Last wie erwartet ausgleicht.
+**Aktualisieren** Sie Ihre Containerüberwachungslösung nach einigen Minuten. Daraufhin sollten Daten zur *Computerleistung* eingehen. Dies hilft Ihnen zu verstehen, wie Ihre Ressourcen verwendet werden. Sie können diese Metriken auch für entsprechende Entscheidungen zur Skalierung Ihrer Cluster verwenden, oder um zu überprüfen, ob ein Cluster Ihre Last wie erwartet ausgleicht.
 
 *Hinweis: Stellen Sie sicher, dass Ihre Zeitfilter gemäß Ihrer Nutzung dieser Metriken festgelegt sind.* 
 

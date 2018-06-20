@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/06/2017
+ms.date: 05/22/2018
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: f05b0baee3f11f498976377c69c38b3118f3c922
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 190d4713f5c84281bc2637fc0d8323a2dabf6f21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358658"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603762"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Verwenden der Visual Studio Code-Erweiterung für die Erstellung einer Azure Resource Manager-Vorlage
 Dieser Artikel enthält Informationen zu den Vorteilen, die sich durch das Installieren und Nutzen der Azure Resource Manager-Tools-Erweiterung in Visual Studio Code ergeben. Sie können Resource Manager-Vorlagen in VS Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Hierbei werden Funktionen, Parameter und Variablen vorgeschlagen, die in der Vorlage verfügbar sind.
@@ -171,7 +171,18 @@ Dieser Artikel baut auf der Vorlage auf, die Sie unter [Erstellen und Bereitstel
 
    ![Anzeigen von Variablen](./media/resource-manager-vscode-extension/show-variables.png) 
 
-10. Wählen Sie die Variable **storageName** aus. Fügen Sie die schließende Klammer hinzu. Im folgenden Beispiel ist der Abschnitt „outputs“ dargestellt:
+10. Wählen Sie die Variable **storageName** aus. Der Code sieht jetzt wie folgt aus:
+
+   ```json
+   "storageUri": {
+      "type": "string",
+      "value": "[reference(variables('storageName'))"
+   }
+   ```
+   
+11. Der obige Code funktioniert nicht, da `reference` ein Objekt zurückgibt, Ihr Ausgabewert aber auf *Zeichenfolge* festgelegt ist. Sie müssen einen der Werte für das Objekt angeben. Die Verweisfunktion kann mit einem beliebigen Ressourcentyp verwendet werden. Daher werden von VS Code keine Eigenschaften für das Objekt vorgeschlagen. Stattdessen können Sie sehen, dass ein Wert, der [für ein Speicherkonto zurückgegeben](/rest/api/storagerp/storageaccounts/getproperties) wird, `.primaryEndpoints.blob` lautet. 
+
+   Fügen Sie diese Eigenschaft nach der letzten Klammer hinzu. Fügen Sie die schließende Klammer hinzu. Im folgenden Beispiel ist der Abschnitt „outputs“ dargestellt:
 
    ```json
    "outputs": { 
@@ -181,7 +192,7 @@ Dieser Artikel baut auf der Vorlage auf, die Sie unter [Erstellen und Bereitstel
        },
        "storageUri": {
          "type": "string",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+         "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
        }
    }
    ```
@@ -249,7 +260,7 @@ Die endgültige Vorlage sieht wie folgt aus:
     },
     "storageUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+      "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
     }
   }
 }
@@ -257,7 +268,7 @@ Die endgültige Vorlage sieht wie folgt aus:
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
-Nun können Sie die Vorlage bereitstellen. Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um eine Ressourcengruppe zu erstellen. Stellen Sie anschließend ein Speicherkonto für diese Ressourcengruppe bereit.
+Die Vorlage kann nun bereitgestellt werden. Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um eine Ressourcengruppe zu erstellen. Stellen Sie anschließend ein Speicherkonto für diese Ressourcengruppe bereit.
 
 * Führen Sie bei Verwendung von PowerShell die folgenden Befehle in dem Ordner mit der Vorlage aus:
 

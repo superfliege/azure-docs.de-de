@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 618ed0f72886fff1c2de11e2fd856f6cc065a7b3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657586"
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -54,7 +55,7 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 |Protokoll     | TCP, UDP oder „Any“ (Alle), also z.B. TCP, UDP und ICMP. Das Angeben von ICMP allein ist unzulässig. Wenn Sie ICMP benötigen, müssen Sie also „Any“ (Alle) verwenden. |
 |Richtung| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
-|anzuzeigen.     | Zulassen oder Verweigern        |
+|Aktion     | Zulassen oder Verweigern        |
 
 NSG-Sicherheitsregeln werden nach Priorität anhand der 5-Tupel-Informationen (Quelle, Quellport, Ziel, Zielport und Protokoll) ausgewertet, um den Datenverkehr zuzulassen oder zu verweigern. Für vorhandene Verbindungen wird ein Flussdatensatz erstellt, und die Kommunikation wird basierend auf dem Verbindungszustand der Flussdatensätze zugelassen oder verweigert. Auf diese Weise kann die NSG zustandsbehaftet sein. Wenn Sie beispielsweise eine Sicherheitsregel für Datenverkehr in ausgehender Richtung an eine beliebige Adresse über Port 80 angeben, ist es nicht erforderlich, für die Antwort auf den ausgehenden Datenverkehr eine Sicherheitsregel für Datenverkehr in eingehender Richtung anzugeben. Sie müssen nur dann eine Sicherheitsregel für Datenverkehr in eingehender Richtung angeben, wenn die Kommunikation extern initiiert wird. Dies gilt auch für den umgekehrten Fall. Wenn eingehender Datenverkehr über einen Port zugelassen wird, ist es nicht erforderlich, für die Beantwortung des Datenverkehrs über den Port eine Sicherheitsregel für Datenverkehr in ausgehender Richtung anzugeben.
 Eine vorhandene Verbindung kann nicht unterbrochen werden, wenn Sie eine Sicherheitsregel entfernen, die den Datenfluss ermöglicht hat. Datenverkehrsflüsse werden unterbrochen, wenn die Verbindungen beendet wurden und in beide Richtungen mindestens einige Minuten lang kein Datenverkehr fließt.
@@ -138,7 +139,7 @@ Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraf
 
 Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren sowie auf der Grundlage dieser Gruppen Netzwerksicherheitsrichtlinien definieren. Dieses Feature ermöglicht Ihnen die bedarfsabhängige Wiederverwendung Ihrer Sicherheitsrichtlinie, ohne dass Sie explizite IP-Adressen manuell warten müssen. Die Plattform übernimmt die komplexe Verarbeitung von expliziten IP-Adressen und mehreren Regelsätzen, damit Sie sich auf Ihre Geschäftslogik konzentrieren können.
 
-Sie können eine Anwendungssicherheitsgruppe in einer Sicherheitsregel als Quelle und Ziel angeben. Nachdem Sie Ihre Sicherheitsrichtlinie definiert haben, können Sie virtuelle Computer erstellen und die Netzwerkschnittstellen auf dem virtuellen Computer einer Anwendungssicherheitsgruppe zuweisen. Die Richtlinie wird in Abhängigkeit davon angewendet, ob eine Netzwerkschnittstelle eines virtuellen Computers Mitglied der Anwendungssicherheitsgruppe ist. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Anwendungssicherheitsgruppe für alle Webserver in Ihrem Abonnement nutzen können:
+Sie können eine einzelne Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben. In der Quelle und am Ziel können nicht mehrere Anwendungssicherheitsgruppen angegeben werden. Nachdem Sie Ihre Sicherheitsrichtlinie definiert haben, können Sie virtuelle Computer erstellen und die Netzwerkschnittstellen auf dem virtuellen Computer einer Anwendungssicherheitsgruppe zuweisen. Die Richtlinie wird in Abhängigkeit davon angewendet, ob eine Netzwerkschnittstelle eines virtuellen Computers Mitglied der Anwendungssicherheitsgruppe ist. Im folgenden Beispiel wird veranschaulicht, wie Sie eine Anwendungssicherheitsgruppe für alle Webserver in Ihrem Abonnement nutzen können:
 
 1. Erstellen Sie eine Anwendungssicherheitsgruppe mit dem Namen *WebServers*.
 2. Erstellen Sie eine Netzwerksicherheitsgruppe mit dem Namen *MyNSG*.
@@ -152,7 +153,7 @@ Informationen zu den Grenzwerten beim Erstellen von Anwendungssicherheitsgruppen
 Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
 
 -   Alle Netzwerkschnittstellen, die einer Anwendungssicherheitsgruppe zugewiesen sind, müssen in demselben virtuellen Netzwerk vorhanden sein, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde. Wenn sich die erste Netzwerkschnittstelle, die einer Anwendungssicherheitsgruppe mit dem Namen *ASG1* zugewiesen ist, im virtuellen Netzwerk *VNet1* befindet, müssen alle nachfolgenden Netzwerkschnittstellen, die *ASG1* zugewiesen werden, in *VNet1* enthalten sein. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden.
-- Wenn Sie Anwendungssicherheitsgruppen als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden, da sich alle Netzwerkschnittstellen in VNet1 befinden müssen.
+- Wenn Sie eine Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden. Alle Netzwerkschnittstellen müssen sich in VNet1 befinden.
 
 ## <a name="azure-platform-considerations"></a>Aspekte der Azure Platform
 

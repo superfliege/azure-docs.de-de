@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Erstellen und Überprüfen eines virtuellen Computers in einem benutzerdefinierten Lab | Microsoft-Dokumentation'
-description: Dieses Azure CLI-Skript erstellt einen virtuellen Computer in einem benutzerdefinierten Lab, und überprüft, ob der Computer verfügbar ist.
+title: 'Azure CLI-Skriptbeispiel: Erstellen und Überprüfen eines virtuellen Computers in einem Lab | Microsoft-Dokumentation'
+description: Dieses Azure CLI-Skript erstellt einen virtuellen Computer in einem Lab, und überprüft, ob er verfügbar ist.
 services: lab-services
 author: spelluru
 manager: ''
@@ -14,15 +14,16 @@ ms.workload: na
 ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: bd564cda7b4d5c2158b8499b48b8faa68309b461
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 1adffd067a2a140f901469182f02cd76ba1da10c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763067"
 ---
-# <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-custom-lab"></a>Verwenden von Azure CLI zum Erstellen eines virtuellen Computers in einem benutzerdefinierten Lab und zum Überprüfen seiner Verfügbarkeit
+# <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Erstellen eines virtuellen Computers in einem Lab in Azure DevTest Labs und Überprüfen der Verfügbarkeit mithilfe der Azure CLI
 
-Dieses Azure CLI-Skript erstellt einen virtuellen Computer in einem benutzerdefinierten Lab. Der virtuelle Computer basiert auf einem Marketplace-Image mit SSH-Authentifizierung. Das Skript überprüft dann, ob der virtuelle Computer für die Verwendung verfügbar ist. 
+Dieses Azure CLI-Skript erstellt einen virtuellen Computer in einem Lab. Der virtuelle Computer basiert auf einem Marketplace-Image mit SSH-Authentifizierung. Das Skript überprüft dann, ob der virtuelle Computer für die Verwendung verfügbar ist. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -47,11 +48,11 @@ Das Skript verwendet die folgenden Befehle:
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az lab vm create ](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | Erstellt einen virtuellen Computer in einem benutzerdefinierten Lab. |
-| [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | Zeigt den Status des virtuellen Computers in einem benutzerdefinierten Lab an. |
+| [az lab vm create ](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-create) | Erstellt einen virtuellen Computer (virtual machine, VM) in einem Lab. |
+| [az lab vm show](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-show) | Zeigt den Status des virtuellen Computers in einem Lab an. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 
-Weitere PowerShell-Skriptbeispiele für Azure Lab Services finden Sie in den [Azure Lab Services – Beispiele für die Befehlszeilenschnittstelle](../samples-cli.md).
+Weitere CLI-Skriptbeispiele für Azure Lab Services finden Sie unter [Azure Lab Services – Beispiele für die Befehlszeilenschnittstelle](../samples-cli.md).

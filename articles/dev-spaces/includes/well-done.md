@@ -10,20 +10,20 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: f1e997b9e7f948f29cce940574fe7db34a503dc6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5aee9a96270b4bcafb4ee696c0cbf6a424515cb1
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199091"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825541"
 ---
 ## <a name="well-done"></a>Gut gemacht!
 Sie haben den Leitfaden zu den ersten Schritten abgeschlossen. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer für die Entwicklung optimierten, Kubernetes-basierten Umgebung in Azure.
-> * Iteratives Entwickeln von Code in Containern mit VS Code und der Befehlszeile.
+> * Erstellen einer für die Entwicklung optimierten, Kubernetes-basierten Umgebung in Azure (ein _Entwicklungsbereich_)
+> * Iteratives Entwickeln von Code in Containern mit VS Code und der Befehlszeile
 > * Unabhängiges Entwickeln von zwei separaten Diensten, und Verwenden der DNS-Dienstermittlung von Kubernetes, um einen anderen Dienst aufzurufen.
-> * Produktives Entwickeln und Testen Ihres Codes in einer Teamumgebung.
+> * Produktives Entwickeln und Testen Ihres Codes in einer Teamumgebung
 
-Nachdem Sie nun Azure Dev Spaces erkundet haben, [geben Sie Ihre Entwicklungsumgebung für Teammitglieder frei](../how-to/share-dev-spaces.md) und zeigen Sie ihnen, wie einfach es ist zusammenzuarbeiten.
+Nachdem Sie sich mit Azure Dev Spaces vertraut gemacht haben, können Sie [Ihren Entwicklungsbereich für Teammitglieder freigeben](../how-to/share-dev-spaces.md) und ihnen zeigen, wie dies die Zusammenarbeit vereinfacht.

@@ -1,5 +1,5 @@
 ---
-title: Zugreifen auf ein benutzerdefiniertes Lab in Azure DevTest Labs | Microsoft-Dokumentation
+title: Zugreifen auf ein Lab in Azure DevTest Labs | Microsoft-Dokumentation
 description: In diesem Tutorial greifen Sie auf das Lab zu, das unter Verwendung von Azure DevTest Labs erstellt wird, beanspruchen virtuelle Computer, verwenden diese, und heben den Anspruch wieder auf.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361837"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638023"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein benutzerdefiniertes Lab in Azure DevTest Labs
-In diesem Tutorial verwenden Sie das benutzerdefinierte Lab, das im [Tutorial: Erstellen eines benutzerdefinierten Labs](tutorial-create-custom-lab.md) erstellt wurde.
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Tutorial: Zugreifen auf ein Lab in Azure DevTest Labs
+In diesem Tutorial verwenden Sie das Lab, das im Tutorial [Erstellen eines benutzerdefinierten Labs mithilfe von Azure DevTest Labs](tutorial-create-custom-lab.md) erstellt wurde.
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 > [!div class="checklist"]
-> * Beanspruchen eines virtuellen Computers in einem benutzerdefinierten Lab
+> * Beanspruchen eines virtuellen Computers (virtual machine, VM) im Lab
 > * Herstellen der Verbindung zur VM
 > * Aufheben des Anspruchs auf den virtuellen Computer
 
@@ -70,8 +70,8 @@ Wenn Sie den virtuellen Computer nicht benötigen, führen Sie folgende Schritte
 1. Nachdem der Anspruch aufgehoben wurde, wird der virtuelle Computer unten in der Liste **Abrufbare virtuelle Computer** angezeigt. 
     
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial wurde gezeigt, wie Sie auf ein benutzerdefiniertes Lab zugreifen und dieses verwenden, das unter Verwendung von Azure DevTest Labs erstellt wurde. Weitere Informationen zum Zugreifen auf und Verwenden von virtuellen Computern in einem benutzerdefinierten Lab finden Sie hier: 
+In diesem Tutorial wurde gezeigt, wie Sie auf ein Lab zugreifen, das unter Verwendung von Azure DevTest Labs erstellt wurde, und wie Sie dieses Lab verwenden. Weitere Informationen zum Zugriff auf virtuelle Computer in einem Lab sowie zu deren Verwendung finden Sie hier: 
 
 > [!div class="nextstepaction"]
-> [Verwenden von virtuellen Computern in einem benutzerdefinierten Lab](devtest-lab-add-vm.md)
+> [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md)
 

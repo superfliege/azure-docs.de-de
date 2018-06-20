@@ -1,3 +1,1 @@
-Wählen Sie **Azure AD B2C** aus der Dienstliste im Azure-Portal aus.
-
-![Auswählen des B2C-Diensts](media/active-directory-b2c-find-service-settings/select-b2c-service.png)
+Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf. Sie sollten nun den Mandanten verwenden, den Sie im vorherigen Tutorial erstellt haben.

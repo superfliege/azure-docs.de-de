@@ -1,35 +1,35 @@
 ---
-title: Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
-description: Anleitung zu ersten Schritten mit Azure Stack-Speicher-Entwicklungstools
+title: Erste Schritte mit den Azure Stack-Speicherentwicklungstools | Microsoft-Dokumentation
+description: Anleitung für die ersten Schritte mit Azure Stack-Speicher-Entwicklungstools
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 05/14/2018
+ms.date: 05/21/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: ce5c72262e7c046de2f06c474c585082804dcdf4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0ceda393412f8217a893a347ec5f3a9ac03efa3d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198934"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604476"
 ---
-# <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit Azure Stack-Speicher-Entwicklungstools
+# <a name="get-started-with-azure-stack-storage-development-tools"></a>Erste Schritte mit den Azure Stack-Speicherentwicklungstools
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Microsoft Azure Stack bietet eine Reihe von Speicherdiensten einschließlich Blob-, Tabellen- und Warteschlangenspeicher.
 
-Nutzen Sie diesen Artikel als Anleitung für die ersten Schritte mit Azure Stack-Speicherentwicklungstools. Ausführlichere Informationen und Beispielcode finden Sie in den entsprechenden Azure Storage-Tutorials.
+Nutzen Sie diesen Artikel als Leitfaden für die ersten Schritte mit den Azure Stack-Speicherentwicklungstools. Ausführlichere Informationen und Beispielcode finden Sie in den entsprechenden Azure-Speichertutorials.
 
->[!NOTE]
->Es gibt bekannte Unterschiede zwischen Azure Stack-Speicher und Azure Storage, einschließlich besonderer Anforderungen für jede Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
+> [!NOTE]  
+> Es gibt bestimmte Unterschiede zwischen Azure Stack-Speicher und Azure-Speicher sowie besondere Anforderungen für die jeweilige Plattform. Beispielsweise gelten bestimmte Clientbibliotheken- und Endpunktsuffix-Anforderungen für Azure Stack. Weitere Informationen finden Sie unter [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md).
 
 ## <a name="azure-client-libraries"></a>Azure-Clientbibliotheken
 
-Die unterstützten REST-API-Versionen für Azure Stack-Speicher lauten 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 für das Update 1802 und neuere Versionen und 2015-04-05 für vorherige Versionen. Die Azure Stack-Endpunkte sind der neuesten Version der REST-API von Azure Storage nicht vollständig gleichgestellt. Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
+Für Azure Stack-Speicher werden folgende REST-API-Versionen unterstützt: 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08 und 2015-04-05 für das Update 1802 oder neuere Versionen sowie 2015-04-05 für ältere Versionen. Die Azure Stack-Endpunkte sind der neuesten Version der REST-API von Azure-Speicher nicht vollständig gleichgestellt. Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
 
 ### <a name="1802-update-or-newer-versions"></a>Update 1802 oder neuere Versionen
 
@@ -210,4 +210,4 @@ Die folgenden Tutorials zu Azure Table Storage gelten für Azure Stack. Beachten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)
+* [Einführung in Azure Storage](../../storage/common/storage-introduction.md)

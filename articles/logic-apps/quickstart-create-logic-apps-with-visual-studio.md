@@ -1,29 +1,26 @@
 ---
-title: Automatisieren von Aufgaben und Prozessen mit Visual Studio und Azure Logic Apps | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Workflows erstellen, mit denen Aufgaben und Prozesse mit Azure Logic Apps in Visual Studio automatisiert werden.
-author: ecfan
-manager: SyntaxC4
-editor: ''
+title: Erstellen von Logik-Apps zur Automatisierung von Workflows mit Visual Studio – Azure Logic Apps | Microsoft-Dokumentation
+description: Schnellstartanleitung zur Automatisierung von Aufgaben, Prozessen und Workflows mit Azure Logic Apps in Visual Studio
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 03/15/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 02e19de97654d751dc0cd557791a61a863a9a4e0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300751"
 ---
-# <a name="quickstart-automate-tasks-and-processes-with-azure-logic-apps---visual-studio"></a>Schnellstart: Automatisieren von Aufgaben und Prozessen mit Azure Logic Apps – Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen und Automatisieren von Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) können Sie Workflows erstellen, die zum Automatisieren von Aufgaben und Prozessen für die Integration von Apps, Daten, Systemen und Diensten in Unternehmen und Organisationen dienen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie diese Workflows entwerfen und erstellen können, indem Sie in Visual Studio Logik-Apps erstellen und diese Apps über <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> in der Cloud bereitstellen. Sie können diese Aufgaben zwar auch im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> durchführen, aber mit Visual Studio können Sie Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und Azure Resource Manager-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen. 
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und Visual Studio können Sie Workflows zur Automatisierung von Aufgaben und Prozessen für die Integration von Apps, Daten, Systemen und Diensten in Unternehmen und Organisationen erstellen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie diese Workflows entwerfen und erstellen können, indem Sie in Visual Studio Logik-Apps erstellen und diese Apps über <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> in der Cloud bereitstellen. Sie können diese Aufgaben zwar auch im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> durchführen, aber mit Visual Studio können Sie Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und Azure Resource Manager-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen. 
 
 Wenn Sie mit Azure Logic Apps noch nicht vertraut sind und sich nur über die grundlegenden Konzepte informieren möchten, hilft Ihnen die [Schnellstartanleitung zur Erstellung einer Logik-App im Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md) weiter. Der Logik-App-Designer funktioniert im Azure-Portal und in Visual Studio ähnlich. 
 
@@ -94,12 +91,12 @@ Führen Sie nach der Erstellung Ihres Azure-Ressourcengruppenobjekts die Erstell
 
    Visual Studio benötigt Ihr Azure-Abonnement und eine Ressourcengruppe, um Ressourcen erstellen und bereitstellen zu können, die Ihrer Logik-App und den Verbindungen zugeordnet sind. 
 
-   | Einstellung | Beispielwert | Beschreibung | 
+   | Einstellung | Beispielwert | BESCHREIBUNG | 
    | ------- | ------------- | ----------- | 
    | Benutzerprofilliste | Contoso <br> jamalhartnett@contoso.com | Standardmäßig das zum Anmelden verwendete Konto | 
    | **Abonnement** | Nutzungsbasierte Bezahlung <br> (jamalhartnett@contoso.com) | Name für Ihr Azure-Abonnement und das zugeordnete Konto |
    | **Ressourcengruppe** | MyLogicApp-RG <br> (USA, Westen) | Azure-Ressourcengruppe und Standort zum Speichern und Bereitstellen von Ressourcen für Ihre Logik-App | 
-   | **Standort** | MyLogicApp-RG2 <br> (USA, Westen) | Anderer Standort, falls Sie nicht den Ressourcengruppenstandort verwenden möchten |
+   | **Location** | MyLogicApp-RG2 <br> (USA, Westen) | Anderer Standort, falls Sie nicht den Ressourcengruppenstandort verwenden möchten |
    ||||
 
 3. Der Logik-App-Designer wird geöffnet, und es wird eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern angezeigt. Scrollen Sie nach unten, bis der Bereich unter dem Video und den Triggern angezeigt wird. Wählen Sie unter **Vorlagen** die Option **Leere Logik-App**.
@@ -151,7 +148,7 @@ Bevor Sie Ihre Logik-App ausführen können, müssen Sie sie aus Visual Studio i
 
    Nach Abschluss der Bereitstellung befindet sich Ihre Logik-App im Azure-Portal im Livezustand und prüft den RSS-Feed gemäß Ihrem angegebenen Zeitplan (jede Minute). 
    Falls der RSS-Feed über neue Elemente verfügt, sendet Ihre Logik-App für jedes neue Element eine E-Mail. 
-   Andernfalls wartet Ihre Logik bis zum nächsten Intervall, bevor eine erneute Prüfung durchgeführt wird. 
+   Andernfalls wartet Ihre Logik mit einer erneuten Prüfung bis zum nächsten Intervall. 
 
    Hier sind Beispiele für E-Mails angegeben, die von dieser Logik-App gesendet werden: 
    Überprüfen Sie Ihren Ordner mit den Junk-E-Mails, falls Sie keine E-Mails erhalten. 
@@ -187,4 +184,5 @@ Wenn Sie sie nicht mehr benötigen, löschen Sie die Ressourcengruppe mit Ihrer 
 In diesem Artikel haben Sie Ihre Logik-App mit Visual Studio erstellt, bereitgestellt und ausgeführt. Die folgenden Artikel enthalten weitere Informationen zur Verwaltung und Durchführung der erweiterten Bereitstellung für Logik-Apps mit Visual Studio:
 
 > [!div class="nextstepaction"]
-> [Verwalten von Logik-Apps mit Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Verwalten von Logik-Apps mit Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Erstellen von Azure Resource Manager-Vorlagen für die Bereitstellung von Logik-Apps](../logic-apps/logic-apps-create-deploy-template.md)

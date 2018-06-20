@@ -6,20 +6,20 @@ documentationcenter: cosmosdb
 author: SnehaGunda
 manager: kfile
 tags: azure-service-management
-ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: cosmosdb
 ms.workload: database
-ms.date: 06/02/2017
+ms.date: 05/23/2018
 ms.author: sngun
-ms.openlocfilehash: e3df30250642617927cb2c98830a8420cb07bc20
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c29428d95a825f71a494fa70746ce742248764d7
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795593"
 ---
 # <a name="scale-azure-cosmos-db-container-throughput-using-the-azure-cli"></a>Skalieren des Durchsatzes für Azure Cosmos DB-Container mithilfe der Azure CLI
 
@@ -32,6 +32,24 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 ## <a name="sample-script"></a>Beispielskript
 
 [!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/scale-cosmosdb-throughput/scale-cosmosdb-throughput.sh?highlight=40-46 "Scale Azure Cosmos DB throughput")]
+
+Mit dem obigen Beispielskript können Sie eine feste Sammlung erstellen und skalieren. Wenn Sie eine Sammlung mit unbegrenzter Speicherkapazität erstellen und skalieren möchten, sind folgende Schritte erforderlich: 
+ 
+* Erstellen Sie die Sammlung mit mindestens 1000 RU/s. Und: 
+* Geben Sie bei der Erstellung der Sammlung einen Partitionsschlüssel an. 
+
+Der folgende Befehl zeigt ein Beispiel für die Erstellung einer Sammlung mit unbegrenzter Speicherkapazität:
+
+```cli
+az cosmosdb collection create \
+    --collection-name $collectionName \
+    --name $name \
+    --db-name $databaseName \
+    --resource-group $resourceGroupName \
+    --throughput 1000
+    --partition-key-path /deviceId
+
+```
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 

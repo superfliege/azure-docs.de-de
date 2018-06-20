@@ -1,24 +1,20 @@
 ---
-title: "Übersicht über die Grundlagen zu Azure Azure Service Bus | Microsoft-Dokumentation"
-description: "Enthält eine Einführung in die Verwendung von Service Bus zum Herstellen einer Verbindung für Azure-Anwendungen mit anderer Software."
+title: Übersicht über die Grundlagen zu Azure Azure Service Bus | Microsoft-Dokumentation
+description: Enthält eine Einführung in die Verwendung von Service Bus zum Herstellen einer Verbindung für Azure-Anwendungen mit anderer Software.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 12654cdd-82ab-4b95-b56f-08a5a8bbc6f9
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/31/2018
+ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: fab765480a2f480e8c54035d903d24843490ee38
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641321"
 ---
 # <a name="azure-service-bus"></a>Azure-Servicebus
 
@@ -37,14 +33,14 @@ Service Bus ist ein Clouddienst mit mehreren Mandanten. Das bedeutet, dass der D
 Innerhalb eines Namespace können Sie eine oder mehr Instanzen von drei verschiedenen Kommunikationsmechanismen verwenden, von denen jeder die Anwendungen auf andere Weise verbindet. Die Auswahlmöglichkeiten sind:
 
 * *Warteschlangen*für eine unidirektionale Kommunikation. Jede Warteschlange agiert als Zwischenstufe (manchmal auch *Broker*genannt), die gesendete Nachrichten speichert, bis diese empfangen werden. Jede Nachricht wird von einem einzelnen Empfänger empfangen.
-* *Themen* für die unidirektionale Kommunikation mithilfe von *Abonnements*, wobei ein einzelnes Thema mehrere Abonnements umfassen kann. Wie bei einer Warteschlange agiert ein Thema als Broker, aber jedes Abonnement kann optional Filter verwenden, um nur Nachrichten zu empfangen, die bestimmte Kriterien erfüllen.
+* *Themen* für eine unidirektionale Kommunikation über *Abonnements*. Ein einzelnes Thema kann über mehrere Abonnements verfügen. Wie bei einer Warteschlange agiert ein Thema als Broker, aber jedes Abonnement kann optional Filter verwenden, um nur Nachrichten zu empfangen, die bestimmte Kriterien erfüllen.
 * *Relays*für eine bidirektionale Kommunikation. Im Gegensatz zu Warteschlangen und Themen speichert ein Relay keine gesendeten Nachrichten – es ist kein Broker. Stattdessen leitet es sie an eine Zielanwendung weiter.
 
 Wenn Sie eine Warteschlange, ein Thema oder ein Relais erstellen, geben Sie diesem Objekt einen Namen. In Kombination mit der Bezeichnung Ihres Namespace ist dieser Name ein eindeutiger Bezeichner für das Objekt. Anwendungen können diesen Namen an Service Bus übermitteln und dann mithilfe der Warteschlange, des Themas oder des Relays miteinander kommunizieren. 
 
 Für die Verwendung eines dieser Objekte im Relayszenario können Windows-Anwendungen Windows Communication Foundation (WCF) nutzen. Dieser Dienst wird als [WCF Relay](../service-bus-relay/relay-what-is-it.md) bezeichnet. Für Warteschlangen und Themen können Windows-Anwendungen eine über Service Bus definierte Messaging-API verwenden. Damit diese Objekte von Nicht-Windows-Anwendungen einfacher verwendet werden können, stellt Microsoft SDKs für Java, Node.js und andere Sprachen bereit. Sie können auch mithilfe von [REST-APIs](/rest/api/servicebus/) über HTTP(s) auf Warteschlangen und Themen zugreifen. 
 
-Es ist wichtig zu verstehen, dass, obwohl Service Bus selbst in einer Cloud (in den Azure-Rechenzentren von Microsoft) ausgeführt wird, die Anwendungen, die es verwenden, überall laufen können. Sie können Service Bus zum Verbinden von Anwendungen auf Azure oder innerhalb Ihres eigenen Datencenters verwenden. Sie können damit auch eine Anwendung, die auf Azure oder einer anderen Cloud-Plattform läuft, mit einer lokalen Anwendung oder mit Tablets oder Telefonen verbinden. Es ist auch möglich, Haushaltsgeräte, Sensoren und andere Vorrichtungen mit einer zentralen Anwendung oder diese Geräte untereinander zu verbinden. Service Bus ist ein Kommunikationsmechanismus in der Cloud, auf den praktisch von überall aus zugegriffen werden kann. Wie Sie es verwenden, hängt davon ab, was Ihre Anwendungen leisten müssen.
+Wichtig: Service Bus selbst wird zwar in der Cloud (sprich: in den Microsoft Azure-Datencentern) ausgeführt, die Anwendungen, die Service Bus verwenden, können jedoch an einem beliebigen Ort ausgeführt werden. Sie können Service Bus zum Verbinden von Anwendungen auf Azure oder innerhalb Ihres eigenen Datencenters verwenden. Außerdem können Sie damit eine Anwendung, die unter Azure oder auf einer anderen Cloud-Plattform ausgeführt wird, mit einer lokalen Anwendung oder mit Tablets oder Smartphones verbinden. Service Bus ist ein Kommunikationsmechanismus in der Cloud, auf den praktisch von überall aus zugegriffen werden kann. Wie Sie es verwenden, hängt davon ab, was Ihre Anwendungen leisten müssen.
 
 ## <a name="queues"></a>Warteschlangen
 
@@ -54,9 +50,9 @@ Angenommen, Sie entscheiden sich dafür, zwei Anwendungen über eine Service Bus
 
 **Abbildung 2: Service Bus-Warteschlangen bieten eine asynchrone unidirektionale Kommunikation.**
 
-Ein Sender sendet eine Nachricht an eine Service Bus-Warteschlange, und ein Empfänger greift diese Nachricht zu einem späteren Zeitpunkt auf. Eine Warteschlange kann einen einzelnen Empfänger besitzen, wie in Abbildung 2 dargestellt. Alternativ können auch mehrere Anwendungen aus der gleichen Warteschlange lesen. Im zweiten Fall wird jede Nachricht nur von einem einzelnen Empfänger gelesen. Bei einem Multicastdienst empfiehlt sich stattdessen die Verwendung eines Themas.
+Ein Sender sendet eine Nachricht an eine Service Bus-Warteschlange, und ein Empfänger nutzt diese Nachricht zu einem späteren Zeitpunkt. Eine Warteschlange kann einen einzelnen Empfänger besitzen, wie in Abbildung 2 dargestellt. Alternativ können auch mehrere Anwendungen aus der gleichen Warteschlange lesen. Im zweiten Fall wird jede Nachricht nur von einem einzelnen Empfänger gelesen. Bei einem Multicastdienst empfiehlt sich stattdessen die Verwendung eines Themas.
 
-Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (jede davon ist ein Paar aus Schlüssel und Wert) und einer Nutzlast der Nachricht. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften **Verkäufer=„Ava“** und **Menge=10000 enthalten**. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
+Jede Nachricht besteht aus zwei Teilen: einem Satz von Eigenschaften (Schlüssel-Wert-Paar) und einer Nachrichtennutzlast. Die Nutzlast kann binärer Art, Text oder sogar XML sein. Die Art der Verwendung richtet sich danach, welche Aufgaben in der Anwendung ausgeführt werden sollen. Wenn eine Anwendung z.B. eine Nachricht über einen kürzlich erfolgten Verkauf sendet, kann die Nachricht die Eigenschaften **Verkäufer=„Ava“** und **Menge=10000 enthalten**. Der Nachrichtentext kann ein gescanntes Bild des unterzeichneten Verkaufsvertrags enthalten oder auch leer sein.
 
 Ein Empfänger kann eine Nachricht von einem Servicebus auf zwei verschiedene Arten lesen. Bei Verwendung der ersten Option (*[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)*) wird eine Nachricht aus der Warteschlange empfangen und sofort gelöscht. Diese Option ist unkompliziert, aber wenn der Empfänger ausfällt, bevor die Verarbeitung der Nachricht abgeschlossen ist, geht die Nachricht verloren. Da die Nachricht dann aus der Warteschlange entfernt worden ist, kann kein anderer Empfänger auf sie zugreifen. 
 
@@ -68,7 +64,7 @@ Die zweite Option, *[PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemod
 
 Beachten Sie, was in diesem Fall geschehen kann: Die gleiche Nachricht kann zweimal zugestellt werden – möglicherweise sogar an zwei verschiedene Empfänger. Anwendungen, die Service Bus-Warteschlangen verwenden, müssen darauf vorbereitet sein. Um die Erkennung von Duplikaten zu erleichtern, verfügt jede Nachricht über die eindeutige Eigenschaft [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid#Microsoft_Azure_ServiceBus_Message_MessageId) , die standardmäßig gleich bleibt – unabhängig davon, wie oft die Nachricht aus einer Warteschlange gelesen wird. 
 
-Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen eine Kommunikation zwischen Anwendungen auch dann, wenn beide zur selben Zeit ausgeführt werden, was insbesondere bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
+Warteschlangen sind in einigen Situationen sinnvoll. Sie ermöglichen die Kommunikation zwischen Anwendungen auch dann, wenn beide Apps zur selben Zeit ausgeführt werden, was insbesondere bei Batch- und Mobilanwendungen sehr praktisch sein kann. Eine Warteschlange mit mehreren Empfängern bietet auch automatischen Lastenausgleich, da gesendete Nachrichten zwischen diesen Empfängern verteilt werden.
 
 ## <a name="topics"></a>Themen
 
@@ -78,11 +74,11 @@ So hilfreich sie generell auch sind – Warteschlangen sind nicht immer die best
 
 **Abbildung 3: Auf Grundlage des in einer Abonnementanwendung definierten Filters kann diese einige oder alle Nachrichten empfangen, die an ein Service Bus-Thema gesendet wurden.**
 
-Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der Unterschied liegt darin, dass bei Themen jede empfangende Anwendung ihr eigenes *Abonnement* erstellen und optional einen *Filter* definieren kann. Ein Abonnent sieht dann nur die Nachrichten, die mit diesem Filter übereinstimmen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
+Ein *Thema* ähnelt in vielen Punkten einer Warteschlange. Sender schicken Nachrichten an ein Thema auf dieselbe Weise, auf die sie Nachrichten an eine Warteschlange schicken, und diese Nachrichten sehen genauso aus wie bei den Warteschlangen. Der Unterschied liegt darin, dass bei Themen jede empfangende Anwendung ihr eigenes *Abonnement* erstellen und optional einen *Filter* definieren kann. Ein Abonnent erhält eine Kopie jeder Nachricht im Thema. Die Verwendung eines Filters sorgt jedoch dafür, dass er nur die Nachrichten erhält, die dem Filter entsprechen. Abbildung 3 zeigt z. B. einen Sender und ein Thema mit drei Abonnenten, jeder mit seinem eigenen Filter:
 
-* Abonnent 1 empfängt nur Nachrichten, die die Eigenschaft *Verkäufer="Ava"*haben.
-* Abonnent 2 empfängt Nachrichten, die die Eigenschaft *Verkäufer=„Ruby“* und/oder eine Eigenschaft namens *Menge* haben, deren Wert größer ist als 100.000. Ruby könnte die Vertriebschefin sein, die sowohl ihre eigenen Verkäufe als auch diejenigen anderer Verkäufer ab einer bestimmten Menge sehen möchte.
-* Abonnent 3 hat seinen Filter auf *True* gesetzt, was bedeutet, dass er alle Nachrichten empfängt. Diese Anwendung könnte z. B. zum Verwalten eines Überwachungspfads zuständig sein. Daher muss sie alle Nachrichten sehen können.
+* Abonnent 1 empfängt nur Nachrichten, die die Eigenschaft **Verkäufer="Ava"** haben.
+* Abonnent 2 empfängt Nachrichten, die die Eigenschaft **Verkäufer=„Ruby“** und/oder eine Eigenschaft namens **Menge** haben, deren Wert größer ist als 100.000. Ruby könnte die Vertriebschefin sein, die sowohl ihre eigenen Verkäufe als auch diejenigen anderer Verkäufer ab einer bestimmten Menge sehen möchte.
+* Abonnent 3 hat seinen Filter auf **True** gesetzt, was bedeutet, dass er alle Nachrichten empfängt. Diese Anwendung kann beispielsweise für die Pflege eines Überwachungspfads zuständig sein. Daher müssen für sie alle Nachrichten sichtbar sein.
 
 Wie bei Warteschlangen können Abonnenten eines Themas Nachrichten entweder über [ReceiveAndDelete oder über PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) lesen. Anders als bei Warteschlangen kann jedoch eine einzelne an ein Thema gesendete Nachricht von mehreren Abonnements empfangen werden. Dieser Ansatz, der allgemein als *Veröffentlichen und Abonnieren* (oder *Pub/Sub*) bezeichnet wird, ist sinnvoll, wenn mehrere Anwendungen an den gleichen Nachrichten interessiert sind. Durch Definition eines passenden Filters kann jeder Abonnent genau den Teil aus der Nachricht herausziehen, den er mitbekommen muss.
 
@@ -92,7 +88,7 @@ Sowohl Warteschlangen als auch Themen ermöglichen eine asynchrone unidirektiona
 
 ![][4]
 
-**Abbildung 4: Service Bus Relay ermöglicht eine synchrone bidirektionale Kommunikation zwischen Anwendungen.**
+**Abbildung 4: Service Bus Relay ermöglicht eine synchrone bidirektionale Kommunikation zwischen Anwendungen.**
 
 Die naheliegende Frage lautet: Welchen Grund gibt es für den Einsatz eines Relays? Selbst wenn ich keine Warteschlangen benötige, wieso sollten Anwendungen über einen Clouddienst kommunizieren und nicht direkt miteinander interagieren? Die Antwort ist, dass eine direkte Kommunikation schwieriger sein kann, als Sie denken.
 

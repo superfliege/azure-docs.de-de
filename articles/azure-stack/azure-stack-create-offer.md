@@ -12,53 +12,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 06/07/2018
 ms.author: brenduns
-ms.openlocfilehash: 6a59d0c8144492ef907e5c395f05e4e8a16678a5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: e5b96a9464bf4d0e3b69d2f635da32c6648ce793
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247516"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
 
-[Angebote](azure-stack-key-features.md) sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zum Erwerben oder Abonnieren anbieten. Dieses Dokument zeigt Ihnen, wie Sie ein Angebot erstellen, das den im letzten Schritt [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer bereitzustellen.
+[Angebote](azure-stack-key-features.md) sind Gruppen mit mindestens einem Plan, die Anbieter Benutzern zum Kauf oder in Form von Abonnements anbieten. In diesem Dokument erfahren Sie, wie Sie ein Angebot erstellen, das den [von Ihnen erstellten Plan](azure-stack-create-plan.md) enthält. Durch dieses Angebot erhalten Abonnenten die Möglichkeit, virtuelle Computer einzurichten.
 
 1. Melden Sie sich beim Azure Stack-Administratorportal (https://adminportal.local.azurestack.external) an, und klicken Sie auf **Neu** > **Mandantenangebote + Pläne** > **Angebot**.
 
-   ![](media/azure-stack-create-offer/image01.png)
-2. Geben Sie im Bereich **Neues Angebot** den **Anzeigenamen** und den **Ressourcennamen** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Dieser Anzeigename ist die einzige Information zum Angebot, die Benutzern beim Abonnieren angezeigt wird. Verwenden Sie daher einen intuitiven Namen, anhand dessen die Benutzer wissen, was im Angebot enthalten ist. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
+   ![Erstellen von Angeboten](media/azure-stack-create-offer/image01.png)
+  
+2. Geben Sie unter **Neues Angebot** einen Wert für **Anzeigename** und **Ressourcenname** ein, und klicken Sie anschließend unter **Ressourcenname** auf **Neu erstellen** oder **Vorhandenes Element verwenden**. Der Anzeigename ist der verständliche Anzeigename des Angebots. Dieser Anzeigename ist die einzige Information zum Angebot, die Benutzern beim Abonnieren eines Angebots angezeigt wird. Verwenden Sie einen aussagekräftigen Namen, der Aufschluss darüber gibt, was das Angebot umfasst. Nur der Administrator kann den Ressourcennamen einsehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
 
-   ![](media/azure-stack-create-offer/image01a.png)
-3. Klicken Sie auf **Basispläne**, um den Bereich **Plan** zu öffnen, und wählen Sie die Pläne aus, die im Angebot enthalten sein sollen. Klicken Sie anschließend auf **Auswählen**. Klicken Sie auf **Erstellen** , um das Angebot zu erstellen.
+   ![Neues Angebot](media/azure-stack-create-offer/image01a.png)
+  
+3. Klicken Sie auf **Basispläne**, um den **Plan** zu öffnen. Wählen Sie die Pläne aus, die Sie in das Angebot einschließen möchten, und klicken Sie anschließend auf **Auswählen**. Klicken Sie zum Erstellen des Angebots auf **Erstellen**.
 
-   ![](media/azure-stack-create-offer/image02.png)
+   ![Auswählen des Plans](media/azure-stack-create-offer/image02.png)
+  
 4. Nach dem Erstellen des Angebots können Sie dessen Zustand ändern. Angebote müssen *öffentlich* gemacht werden, damit Benutzer beim Abonnieren die vollständige Ansicht erhalten. Angebote können Folgendes sein:
-   - **Öffentlich:** Für Benutzer sichtbar.
-   - **Privat:** Nur für Cloudadministratoren sichtbar. Dies ist hilfreich beim Entwerfen des Plans oder Angebots, oder wenn der Cloudadministrator [jedes Abonnement für Benutzer erstellen](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) möchte.
-   - **Außer Betrieb:**für neue Abonnenten geschlossen. Der Cloudadministrator kann mit dem Status „Außer Betrieb“ zukünftige Abonnements verhindern und derzeitige Abonnenten unverändert lassen.
+
+   - **Öffentlich:** Für Benutzer sichtbar
+   - **Privat:** Nur für Cloudadministratoren sichtbar. Diese Einstellung ist hilfreich beim Entwerfen des Plans oder Angebots oder wenn der Cloudadministrator [jedes Abonnement für Benutzer erstellen](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) möchte.
+   - **Außer Betrieb:** für neue Abonnenten geschlossen. Der Cloudadministrator kann mit dem Status „Außer Betrieb“ zukünftige Abonnements verhindern, ohne aktuelle Abonnenten zu beeinträchtigen.
 
    > [!TIP]  
-   > Änderungen am Angebot sind für den Benutzer nicht sofort sichtbar. Um die Änderungen zu sehen, müssen sich Benutzer möglicherweise abmelden und erneut beim Benutzerportal anmelden, damit das neue Angebot angezeigt wird. 
+   > Änderungen am Angebot sind nicht sofort für Benutzer sichtbar. Um die Änderungen zu sehen, müssen sich Benutzer möglicherweise ab- und erneut beim Benutzerportal anmelden, damit das neue Angebot angezeigt wird.
 
-   So ändern Sie den Zustand des Angebots: 
+   So ändern Sie den Zustand des Angebots:
 
    - **Ab Version 1803:**  
-     Klicken Sie auf dem Übersichtsblatt für das Angebot auf **Status der Barrierefreiheit**, wählen Sie den gewünschten Zustand aus (beispielsweise *Öffentlich*), und klicken Sie anschließend auf **Speichern**. 
+     Klicken Sie in der Übersicht für das Angebot auf **Status der Barrierefreiheit**. Wählen Sie den gewünschten Status aus (beispielsweise *Öffentlich*), und klicken Sie anschließend auf **Speichern**.
  
-     ![Auswählen von „Status der Barrierefreiheit“](media/azure-stack-create-offer/change-state.png) 
+     ![Auswählen von „Status der Barrierefreiheit“](media/azure-stack-create-offer/change-state.png)
 
-     Alternativ können Sie nach dem Zugriff auf ein Angebot zu **Angebotseinstellungen** navigieren und auf **Status der Barrierefreiheit** klicken, um den Zustand zu ändern. 
+     Alternativ können Sie nach dem Aufrufen eines Angebots zu **Angebotseinstellungen** navigieren. Klicken Sie auf **Status der Barrierefreiheit**, um den Status zu ändern.
 
    - **Vor Version 1803:**  
-     Klicken Sie auf **Alle Ressourcen**, suchen Sie Ihr neues Angebot, und klicken Sie dann zuerst auf das neue Angebot, dann auf **Status ändern** und anschließend auf **Öffentlich**.
+     Klicken Sie auf **Alle Ressourcen**, suchen Sie nach Ihrem neuen Angebot, und wählen Sie es aus. Klicken Sie auf **Status ändern**, und wählen Sie **Öffentlich** aus.
 
-  
-   > [!NOTE] 
+   > [!NOTE]
    > Sie können auch PowerShell verwenden, um Standardangebote, Pläne und Kontingente zu erstellen. Weitere Informationen finden Sie in den [Informationen für Azure Stack-Dienstadministratoren](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin).
-   >
 
+## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="next-steps"></a>Nächste Schritte
-[Erstellen von Abonnements](azure-stack-subscribe-plan-provision-vm.md)      
-[Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)
+- [Erstellen von Abonnements](azure-stack-subscribe-plan-provision-vm.md)
+- [Bereitstellen von virtuellen Computern](azure-stack-provision-vm.md)

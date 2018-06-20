@@ -1,21 +1,22 @@
 ---
 title: Anpassen der Ansichten für Bediener in Azure IoT Central | Microsoft-Dokumentation
 description: Als Ersteller können Sie die Ansichten für Bediener in Ihrer Azure IoT Central-Anwendung anpassen.
-services: iot-central
 author: sandeeppujar
 ms.author: sadeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 3e0dfab05fc7972a055853af45f0d1b13d52c0a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202321"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235367"
 ---
-# <a name="3---customize-the-azure-iot-central-operators-view"></a>3: Anpassen der Azure IoT Central-Ansicht für Bediener
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener
 
 Dieses Tutorial richtet sich an Ersteller und erläutert, wie Sie die Darstellung Ihrer Anwendung für Bediener anpassen. Wenn Sie als Ersteller eine Änderung an der Anwendung vornehmen, können Sie in der Microsoft Azure IoT Central-Anwendung eine Vorschau der Ansicht für Bediener anzeigen.
 
@@ -35,8 +36,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial wird vorausgesetzt, dass Sie bereits die beiden vorherigen Tutorials absolviert haben:
 
-1. [Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung](tutorial-define-device-type.md)
-1. [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central](tutorial-configure-rules.md)
+* [Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung](tutorial-define-device-type.md)
+* [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central](tutorial-configure-rules.md)
 
 ## <a name="configure-your-device-dashboard"></a>Konfigurieren Ihres Gerätedashboards
 
@@ -46,17 +47,17 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
     ![Explorer-Seite](media/tutorial-customize-operator/explorer.png)
 
-1. Klicken Sie auf die Gerätevorlage **Connected Air Conditioner (1.0.0)**, um mit der Anpassung des Dashboards für Ihre verbundene Klimaanlage zu beginnen. Wählen Sie das Gerät **Connected Air Conditioner-1** aus, das Sie im Tutorial [Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung](tutorial-define-device-type.md) erstellt haben:
+2. Klicken Sie auf die Gerätevorlage **Connected Air Conditioner (1.0.0)**, um mit der Anpassung des Dashboards für Ihre verbundene Klimaanlage zu beginnen. Wählen Sie das Gerät **Connected Air Conditioner-1** aus, das Sie im Tutorial [Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung](tutorial-define-device-type.md) erstellt haben:
 
     ![Auswählen der verbundenen Klimaanlage](media/tutorial-customize-operator/selectdevice.png)
 
     Wenn Sie eine Änderung an einem Gerät vornehmen (beispielsweise an **Connected Air Conditioner-1**), nehmen Sie eine Änderung an der zugrunde liegenden Vorlage vor. Weitere Informationen finden Sie unter [Erstellen einer neuen Gerätevorlagenversion](howto-version-devicetemplate.md).
 
-1. Klicken Sie zum Bearbeiten des Dashboards auf **Dashboard**:
+3. Klicken Sie zum Bearbeiten des Dashboards auf **Dashboard**:
 
     ![Dashboardseite der Gerätevorlage](media/tutorial-customize-operator/dashboard.png)
 
-1. Klicken Sie auf **KPI**, um dem Dashboard eine Kachel hinzuzufügen:
+4. Klicken Sie auf **KPI**, um dem Dashboard eine Kachel hinzuzufügen:
 
     ![Hinzufügen eines KPIs](media/tutorial-customize-operator/addkpi.png)
 
@@ -64,16 +65,16 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
 
     | Einstellung     | Wert |
     | ----------- | ----- |
-    | Name        | Maximum temperature |
+    | NAME        | Maximum temperature |
     | Messung | Temperatur |
     | Aggregation | Maximum |
     | Zeitbereich  | Past 1 week (Letzte Woche) |
 
-1. Wählen Sie **Speichern** aus. Auf dem Dashboard wird nun die KPI-Kachel angezeigt:
+5. Wählen Sie **Speichern** aus. Auf dem Dashboard wird nun die KPI-Kachel angezeigt:
 
     ![KPI-Kachel](media/tutorial-customize-operator/temperaturekpi.png)
 
-1. Wenn Sie eine Kachel verschieben oder ihre Größe ändern möchten, zeigen Sie mit dem Mauszeiger auf die Kachel. Sie können die Kachel an einen anderen Ort ziehen oder ihre Größe ändern:
+6. Wenn Sie eine Kachel verschieben oder ihre Größe ändern möchten, zeigen Sie mit dem Mauszeiger auf die Kachel. Sie können die Kachel an einen anderen Ort ziehen oder ihre Größe ändern:
 
     ![Bearbeiten des Dashboardlayouts](media/tutorial-customize-operator/dashboardlayout.png)
 
@@ -85,7 +86,7 @@ Als Ersteller können Sie auch die Darstellung der Geräteeinstellungen für Bed
 
     ![Seite "Einstellungen"](media/tutorial-customize-operator/settings.png)
 
-1. Sie können die Einstellungskacheln verschieben und ihre Größe ändern:
+2. Sie können die Einstellungskacheln verschieben und ihre Größe ändern:
 
     ![Bearbeiten des Layouts der Einstellungen](media/tutorial-customize-operator/settingslayout.png)
 
@@ -100,7 +101,7 @@ Neben dem Dashboard und den Einstellungen können Sie auch die Darstellung der G
 
     ![Eigenschaftenseite](media/tutorial-customize-operator/properties.png)
 
-1. Sie können die Eigenschaftenfelder verschieben und ihre Größe ändern:
+2. Sie können die Eigenschaftenfelder verschieben und ihre Größe ändern:
 
     ![Bearbeiten des Layouts der Eigenschaften](media/tutorial-customize-operator/propertieslayout.png)
 
@@ -113,17 +114,17 @@ Im **Entwurfsmodus** können Sie die Seiten „Dashboard“, „Einstellungen“
 
 1. Wenn Sie Ihre verbundene Klimaanlage als Bediener anzeigen möchten, müssen Sie den **Entwurfsmodus** deaktivieren. Legen Sie zum Deaktivieren des **Entwurfsmodus** den Umschalter für den **Entwurfsmodus** rechts oben auf der Seite auf „Aus“ fest.
 
-1. Bearbeiten Sie zum Aktualisieren der Seriennummer dieses Geräts den Wert in der Kachel für die Seriennummer, und klicken Sie anschließend auf **Speichern**:
+2. Bearbeiten Sie zum Aktualisieren der Seriennummer dieses Geräts den Wert in der Kachel für die Seriennummer, und klicken Sie anschließend auf **Speichern**:
 
     ![Eingeben eines Eigenschaftswerts](media/tutorial-customize-operator/editproperty.png)
 
-1. Klicken Sie auf **Einstellungen**, ändern Sie einen Einstellungswert in einer Kachel, und klicken Sie anschließend auf **Aktualisieren**, um eine Einstellung an Ihre verbundene Klimaanlage zu senden:
+3. Klicken Sie auf **Einstellungen**, ändern Sie einen Einstellungswert in einer Kachel, und klicken Sie anschließend auf **Aktualisieren**, um eine Einstellung an Ihre verbundene Klimaanlage zu senden:
 
     ![Senden einer Einstellung an das Gerät](media/tutorial-customize-operator/sendsetting.png)
 
     Wenn das Gerät den neuen Einstellungswert bestätigt, wird die Einstellung auf der Kachel als **synchronisiert** angezeigt.
 
-1. Als Bediener können Sie das vom Ersteller konfigurierte Gerätedashboard anzeigen:
+4. Als Bediener können Sie das vom Ersteller konfigurierte Gerätedashboard anzeigen:
 
     ![Ansicht des Gerätedashboards für Bediener](media/tutorial-customize-operator/operatordashboard.png)
 
@@ -131,18 +132,18 @@ Im **Entwurfsmodus** können Sie die Seiten „Dashboard“, „Einstellungen“
 
 Wenn sich ein Ersteller oder Bediener bei einer Azure IoT Central-Anwendung anmeldet, wird eine Startseite angezeigt. Ersteller können den Inhalt dieser Startseite anpassen, sodass einem Bediener möglichst hilfreiche und relevante Inhalte angezeigt werden.
 
-1. Navigieren Sie zum Anpassen der Standardstartseite zur**Startseite**, und aktivieren Sie rechts oben auf der Seite den **Entwurfsmodus**. Nach der Aktivierung des **Entwurfsmodus** wird von rechts ein Bereich mit einer Liste von Objekten eingeblendet, die Sie Ihrer Startseite hinzufügen können.
+1. Navigieren Sie zum Anpassen der Standardstartseite zur**Startseite**, und aktivieren Sie rechts oben auf der Seite den **Entwurfsmodus**. Nach Aktivierung des **Entwurfsmodus** wird von rechts ein Bereich mit einer Liste von Objekten eingeblendet, die Sie Ihrer Startseite hinzufügen können.
 
     ![Seite „Application Builder“ (Anwendungs-Generator)](media/tutorial-customize-operator/builderhome.png)
 
-1. Fügen Sie zum Anpassen der Startseite Kacheln aus der **Bibliothek** hinzu. Klicken Sie auf **Link**, und fügen Sie Details zur Website Ihrer Organisation hinzu. Klicken Sie anschließend auf **Speichern**:
+2. Fügen Sie zum Anpassen der Startseite Kacheln aus der **Bibliothek** hinzu. Klicken Sie auf **Link**, und fügen Sie Details zur Website Ihrer Organisation hinzu. Klicken Sie anschließend auf **Speichern**:
 
     ![Hinzufügen eines Links zur Startseite](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Sie können auch Links zu Seiten innerhalb Ihrer Azure IoT Central-Anwendung hinzufügen. So können Sie beispielsweise einen Link zu einem Gerätedashboard oder zu einer Einstellungsseite hinzufügen.
 
-1. Klicken Sie optional auf **Bild**, und laden Sie ein Bild hoch, das auf Ihrer Startseite angezeigt werden soll. Ein Bild kann über eine URL verfügen, zu der Sie navigieren, wenn Sie darauf klicken:
+3. Klicken Sie optional auf **Bild**, und laden Sie ein Bild hoch, das auf Ihrer Startseite angezeigt werden soll. Ein Bild kann über eine URL verfügen, zu der Sie navigieren, wenn Sie darauf klicken:
 
     ![Hinzufügen eines Bilds zur Startseite](media/tutorial-customize-operator/addimage.png)
 

@@ -2,7 +2,7 @@
 title: Zugreifen auf Key Vault hinter der Firewall | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie aus einer Anwendung hinter einer Firewall auf Azure Key Vault zugreifen.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d017c0d9940288cb5eeaa45694b324f93b9bb144
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736247"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>F: Meine Key Vault-Clientanwendung muss hinter einer Firewall angeordnet sein. Welche Ports, Hosts oder IP-Adressen sollten geöffnet sein, um den Zugriff auf einen Schlüsseltresor zu ermöglichen?
@@ -26,12 +27,12 @@ Für den Zugriff auf einen Schlüsseltresor muss Ihre Schlüsseltresor-Clientanw
 
 * Authentifizierung über Azure Active Directory (Azure AD)
 * Verwaltung von Azure Key Vault Dies umfasst das Erstellen, Lesen, Aktualisieren, Löschen und Festlegen von Zugriffsrichtlinien per Azure Resource Manager.
-* Der Zugriff auf und die Verwaltung von Objekten (Schlüssel und Geheimnisse), die im Schlüsseltresor selbst gespeichert sind, verläuft über den schlüsseltresorspezifischen Endpunkt (z.B. [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
+* Der Zugriff auf Objekte (Schlüssel und Geheimnisse), die in Key Vault gespeichert sind, sowie deren Verwaltung werden über den Key Vault-spezifischen Endpunkt abgewickelt (Beispiel: [https://yourvaultname.vault.azure.net](https://yourvaultname.vault.azure.net)).  
 
 Je nach Konfiguration und Umgebung gibt es verschiedene Varianten.   
 
 ## <a name="ports"></a>Ports
-Der gesamte Datenverkehr an einen Schlüsseltresor verläuft für alle drei Funktionen (Authentifizierung, Verwaltung und Datenebenenzugriff) über „HTTPS: Port 443“. Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an. Clients mit Unterstützung von OCSP sollten die Zertifikatsperrliste nicht erreichen, sondern nur gelegentlich [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
+Der gesamte Datenverkehr an einen Schlüsseltresor verläuft für alle drei Funktionen (Authentifizierung, Verwaltung und Datenebenenzugriff) über „HTTPS: Port 443“. Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an. Clients mit OCSP-Unterstützung sollten die Zertifikatsperrliste nicht erreichen, sondern nur gelegentlich [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
 
 ## <a name="authentication"></a>Authentifizierung
 Schlüsseltresor-Clientanwendungen müssen zur Authentifizierung auf Azure Active Directory-Endpunkte zugreifen. Der verwendete Endpunkt richtet sich nach der Azure AD-Mandantenkonfiguration, dem Typ von Prinzipal (Benutzerprinzipal oder Dienstprinzipal) und dem Kontotyp, z.B. Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto.  
@@ -60,7 +61,7 @@ Für alle Schlüsseltresorvorgänge in Bezug auf die Objektverwaltung (Schlüsse
 | Vorgänge, z.B. kryptografische Vorgänge für Schlüssel, Erstellen, Lesen, Aktualisieren und Löschen von Schlüsseln und Geheimnissen, Festlegen oder Abrufen von Tags und anderen Attributen für Sicherheitstresorobjekte (Schlüssel oder Geheimnisse) |**Global:**<br> &lt;Tresorname&gt;.vault.azure.net:443<br><br> **Azure China:**<br> &lt;Tresorname&gt;.vault.azure.cn:443<br><br> **Azure US Government:**<br> &lt;Tresorname&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Deutschland:**<br> &lt;Tresorname&gt;.vault.microsoftazure.de:443 |
 
 ## <a name="ip-address-ranges"></a>IP-Adressbereiche
-Der Key Vault-Dienst nutzt andere Azure-Ressourcen, z.B. die PaaS-Infrastruktur. Daher ist es nicht möglich, einen bestimmten Bereich mit IP-Adressen anzugeben, über die Endpunkte des Key Vault-Diensts zu bestimmten Zeiten verfügen. Wenn Ihre Firewall nur IP-Adressbereiche unterstützt, helfen Ihnen die Informationen im Dokument zu den [Microsoft Azure Datacenter-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) weiter. Für die Authentifizierung und Identitätsverwaltung (Azure Active Directory) muss Ihre Anwendung eine Verbindung mit den Endpunkten herstellen können, die unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) beschrieben sind.
+Der Key Vault-Dienst nutzt andere Azure-Ressourcen, z.B. die PaaS-Infrastruktur. Daher ist es nicht möglich, einen bestimmten Bereich mit IP-Adressen anzugeben, über die Endpunkte des Key Vault-Diensts zu bestimmten Zeiten verfügen. Wenn Ihre Firewall nur IP-Adressbereiche unterstützt, helfen Ihnen die Informationen im Dokument zu den [Microsoft Azure Datacenter-IP-Bereichen](https://www.microsoft.com/download/details.aspx?id=41653) weiter. Authentifizierung und Identität (Azure Active Directory) ist ein globaler Dienst und kann ohne vorherige Ankündigung ein Failover auf andere Regionen durchführen oder Datenverkehr verlagern. In diesem Szenario müssen alle [IP-Adressbereiche für Authentifizierung und Identität](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) der Firewall hinzugefügt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sollten Sie Fragen zu Key Vault haben, besuchen Sie die [Azure Key Vault-Foren](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).

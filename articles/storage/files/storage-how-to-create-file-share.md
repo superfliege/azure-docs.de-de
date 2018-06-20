@@ -5,7 +5,7 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 4dfc4bca4453b5a8027086bd7c3625efc8feda03
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 85e021d439698e864a26bde9515369ae801c3796
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737859"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
-* [Erstellen einer Azure-Dateifreigabe über das Azure-Portal](#Create file share through the Portal)
-* [Erstellen einer Azure-Dateifreigabe mithilfe von PowerShell](#Create file share using PowerShell)
-* [Erstellen einer Azure-Dateifreigabe unter Verwendung der Befehlszeilenschnittstelle](#create-file-share-using-command-line-interface-cli)
+* [Erstellen einer Azure-Dateifreigabe über das Azure-Portal](#create-file-share-through-the-azure-portal)
+* [Erstellen einer Azure-Dateifreigabe mithilfe von PowerShell](#create-file-share-through-powershell)
+* [Erstellen einer Azure-Dateifreigabe unter Verwendung der Befehlszeilenschnittstelle](#create-file-share-through-command-line-interface-cli)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie können eine Azure-Dateifreigabe entweder unter Verwendung eines bereits vorhandenen Storage-Kontos erstellen oder ein [neues Azure Storage-Konto erstellen](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Wenn Sie eine Azure-Dateifreigabe mithilfe von PowerShell erstellen möchten, benötigen Sie den Kontoschlüssel und -namen Ihres Speicherkontos. Wenn Sie PowerShell oder die Befehlszeilenschnittstelle verwenden möchten, benötigen Sie den Speicherkontoschlüssel.

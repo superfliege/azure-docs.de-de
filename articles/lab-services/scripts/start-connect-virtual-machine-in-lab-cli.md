@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Starten eines virtuellen Computers in einem benutzerdefinierten Lab | Microsoft-Dokumentation'
-description: Dieses Azure CLI-Skript startet einen virtuellen Computer in einem benutzerdefinierten Lab.
+title: 'Azure CLI-Skriptbeispiel: Starten eines virtuellen Computers in einem Lab | Microsoft-Dokumentation'
+description: Dieses Azure CLI-Skript startet einen virtuellen Computer in einem Lab in Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -14,15 +14,16 @@ ms.workload: na
 ms.date: 04/12/2018
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: c14328904f29f8160a1ccc1130fe6d2cfa629822
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a635766c1a7fb9ae10a651d09ecd7da9a5f01e51
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763135"
 ---
-# <a name="use-azure-cli-to-start-a-virtual-machine-in-a-custom-lab"></a>Verwenden von Azure CLI zum Starten eines virtuellen Computers in einem benutzerdefinierten Lab
+# <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Starten eines virtuellen Computers in einem Lab in Azure DevTest Labs mithilfe der Azure CLI
 
-Dieses Azure CLI-Skript startet einen virtuellen Computer in einem benutzerdefinierten Lab. 
+Dieses Azure CLI-Skript startet einen virtuellen Computer in einem Lab. 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -39,10 +40,10 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [az lab vm start ](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | Startet einen virtuellen Computer in einem benutzerdefinierten Lab. Dieser Vorgang kann eine Weile dauern. |
+| [az lab vm start ](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | Startet einen virtuellen Computer (virtual machine, VM) in einem Lab. Dieser Vorgang kann eine Weile dauern. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 
-Weitere PowerShell-Skriptbeispiele für Azure Lab Services finden Sie in den [Azure Lab Services – Beispiele für die Befehlszeilenschnittstelle](../samples-cli.md).
+Weitere CLI-Skriptbeispiele für Azure Lab Services finden Sie unter [Azure Lab Services – Beispiele für die Befehlszeilenschnittstelle](../samples-cli.md).

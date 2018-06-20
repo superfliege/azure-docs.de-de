@@ -1,6 +1,6 @@
 ---
 title: Vergleichen verschiedener Arten von Labs in Azure Lab Services | Microsoft-Dokumentation
-description: Hier werden verschiedene Arten von Labs erläutert und verglichen, die Sie mithilfe von Azure Lab Services (ehemals DevTest Labs) erstellen können.
+description: Hier werden verschiedene Arten von Labs erläutert und verglichen, die Sie mithilfe von Azure Lab Services erstellen können.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7e86ba2b7fc729bd4663503282a936a5eaddf3ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361181"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637872"
 ---
-# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Vergleichen verwalteter Labs und DevTest Labs in Azure Lab Services
-Sie können zwei Arten von Labs erstellen: **verwaltete Labs** mit Azure Lab Services und **benutzerdefinierte Labs** mit Azure DevTest Labs. Wenn Sie lediglich Ihre Lab-Anforderungen eingeben und die Einrichtung und Verwaltung der dafür erforderlichen Infrastruktur dem Dienst überlassen möchten, wählen Sie eines der **verwalteten Labs**. Aktuell können mit Azure Lab Services nur verwaltete Labs vom Typ **Classroom-Lab** erstellt werden. Wenn Sie Ihre eigene Infrastruktur verwalten möchten, erstellen Sie mithilfe von Azure DevTest Labs ein **benutzerdefiniertes Lab**.
+# <a name="compare-managed-labs-in-azure-lab-services-and-devtest-labs"></a>Vergleichen verwalteter Labs in Azure Lab Services und DevTest Labs
+Sie können zwei Arten von Labs erstellen: **verwaltete Labs** mit Azure Lab Services und **benutzerdefinierte Labs** mit Azure DevTest Labs. Wenn Sie lediglich Ihre Lab-Anforderungen eingeben und die Einrichtung und Verwaltung der dafür erforderlichen Infrastruktur dem Dienst überlassen möchten, wählen Sie eines der **verwalteten Labs**. Aktuell können mit Azure Lab Services nur verwaltete Labs vom Typ **Classroom-Lab** erstellt werden. Wenn Sie Ihre eigene Infrastruktur verwalten möchten, erstellen Sie ein Lab mithilfe von Azure DevTest Labs.
 
 Ausführlichere Informationen zu diesen Labs finden Sie in den folgenden Abschnitten. 
 
@@ -39,7 +39,7 @@ Im Anschluss finden Sie einige **Anwendungsfälle für verwaltete Labs**:
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-In bestimmten Szenarien kann es wünschenswert sein, die gesamte Infrastruktur und Konfiguration selbst innerhalb des eigenen Abonnements zu verwalten. Zu diesem Zweck können Sie über das Azure-Portal mithilfe von Azure DevTest Labs ein benutzerdefiniertes Lab erstellen. Für diese Labs muss kein Lab-Konto erstellt werden. Diese Labs werden nicht im Lab-Konto für die verwalteten Labs angezeigt.  
+In bestimmten Szenarien kann es wünschenswert sein, die gesamte Infrastruktur und Konfiguration selbst innerhalb des eigenen Abonnements zu verwalten. Zu diesem Zweck können Sie über das Azure-Portal mithilfe von Azure DevTest Labs ein Lab erstellen. Für diese Labs muss kein Lab-Konto erstellt werden. Diese Labs werden nicht im Lab-Konto für die verwalteten Labs angezeigt.  
 
 Im Anschluss finden Sie einige **Anwendungsfälle für DevTest Labs**: 
 
@@ -64,5 +64,5 @@ In der folgenden Tabelle werden die beiden Arten von Labs verglichen, die von Az
 ## <a name="next-steps"></a>Nächste Schritte
 Machen Sie sich mit der Einrichtung eines Labs mit Azure Lab Services vertraut:
 
-- [Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md)
-- [Einrichten eines benutzerdefinierten Labs](tutorial-create-custom-lab.md)
+- [Einrichten eines Classroom-Labs](classroom-labs/tutorial-setup-classroom-lab.md)
+- [Einrichten eines Labs](tutorial-create-custom-lab.md)

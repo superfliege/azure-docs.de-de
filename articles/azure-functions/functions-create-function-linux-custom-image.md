@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261320"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
@@ -43,7 +44,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Git-Client](https://git-scm.com/downloads)
 * Ein aktives [Azure-Abonnement](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
+* [Docker](https://docs.docker.com/install/)
 * Ein [Docker-Hub-Konto](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
@@ -226,7 +227,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen einer Funktions-App über Docker Hub.
 > * Hinzufügen von Anwendungseinstellungen für die Funktions-App.
 
-Weitere Informationen zur lokalen Azure Functions-Entwicklung mit Azure Functions Core Tools.
+Informieren Sie sich, wie Sie die in die App Service-Kernplattform integrierte Continuous Integration-Funktion aktivieren. Sie können Ihre Funktions-App so konfigurieren, dass der Container erneut bereitgestellt wird, wenn Sie Ihr Image in Docker Hub aktualisieren.
 
 > [!div class="nextstepaction"] 
-> [Lokales Codieren und Testen von Azure Functions](functions-run-local.md)
+> [Continuous Deployment mit Web-App für Container](../app-service/containers/app-service-linux-ci-cd.md)

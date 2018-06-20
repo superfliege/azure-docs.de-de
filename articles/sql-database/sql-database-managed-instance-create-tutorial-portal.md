@@ -11,11 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850609"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal
 
@@ -161,16 +162,16 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
 
    ![Verwaltete Instanz – Erstellen](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
-3. Wählen Sie Ihr Abonnement aus, und stellen Sie sicher, dass für die Nutzungsbedingungen für die Vorschau **Akzeptiert** angezeigt wird.
+4. Wählen Sie Ihr Abonnement aus, und stellen Sie sicher, dass für die Nutzungsbedingungen für die Vorschau **Akzeptiert** angezeigt wird.
 
    ![Verwaltete Instanz – Vorschauversion akzeptiert](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
-4. Füllen Sie das Formular für die verwaltete Instanz mit den geforderten Informationen aus, indem Sie die Angaben in der folgenden Tabelle verwenden:
+5. Füllen Sie das Formular für die verwaltete Instanz mit den geforderten Informationen aus, indem Sie die Angaben in der folgenden Tabelle verwenden:
 
    | Einstellung| Empfohlener Wert | BESCHREIBUNG |
    | ------ | --------------- | ----------- |
    |**Name der verwalteten Instanz**|Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Administratoranmeldung für verwaltete Instanz**|Beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).| 
+   |**Administratoranmeldung für verwaltete Instanz**|Beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.| 
    |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens 16 Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
    |**Ressourcengruppe**|Die zuvor erstellte Ressourcengruppe||
    |**Location**|Der zuvor ausgewählte Standort|Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
@@ -178,17 +179,17 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
 
    ![Formular für die Erstellung der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
 
-5. Klicken Sie auf **Tarif**, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Standardmäßig werden für Ihre Instanz 32 GB an kostenlosem Speicherplatz festgelegt. Dies reicht für Ihre Anwendungen unter Umständen nicht aus.
-6. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben. 
-   ![Formular für die Erstellung der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+6. Klicken Sie auf **Tarif**, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Standardmäßig werden für Ihre Instanz 32 GB an kostenlosem Speicherplatz festgelegt. Dies reicht für Ihre Anwendungen unter Umständen nicht aus.
+7. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben. 
+   ![Tarif der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
 
-7. Klicken Sie nach Abschluss des Vorgangs auf **Übernehmen**, um Ihre Auswahl zu speichern.  
-8. Klicken Sie auf **Erstellen**, um die verwaltete Instanz bereitzustellen.
-9. Klicken Sie auf das Symbol **Benachrichtigungen**, um den Status der Bereitstellung anzuzeigen.
+8. Klicken Sie nach Abschluss des Vorgangs auf **Übernehmen**, um Ihre Auswahl zu speichern.  
+9. Klicken Sie auf **Erstellen**, um die verwaltete Instanz bereitzustellen.
+10. Klicken Sie auf das Symbol **Benachrichtigungen**, um den Status der Bereitstellung anzuzeigen.
  
    ![Bereitstellungsstatus](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
 
-9. Klicken Sie auf **Die Bereitstellung wird ausgeführt**, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen.
+11. Klicken Sie auf **Die Bereitstellung wird ausgeführt**, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen.
  
    ![Bereitstellungsstatus 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
@@ -248,18 +249,18 @@ In den folgenden Schritten wird veranschaulicht, wie Sie einen virtuellen Comput
 
    ![Formular für die Erstellung des virtuellen Computers](./media/sql-database-managed-instance-tutorial/virtual-machine-create-form.png)
 
-3. Klicken Sie auf **OK**.
-4. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Für dieses Tutorial benötigen Sie nur einen kleinen virtuellen Computer.
+4. Klicken Sie auf **OK**.
+5. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Für dieses Tutorial benötigen Sie nur einen kleinen virtuellen Computer.
 
     ![VM-Größen](./media/sql-database-managed-instance-tutorial/virtual-machine-size.png)  
 
-5. Klicken Sie auf **Auswählen**.
-6. Klicken Sie im Formular **Einstellungen** auf **Subnetz**, und wählen Sie **vm_subnet**. Wählen Sie nicht das Subnetz aus, in dem die verwaltete Instanz bereitgestellt wurde, sondern ein anderes Subnetz in demselben VNET.
+6. Klicken Sie auf **Auswählen**.
+7. Klicken Sie im Formular **Einstellungen** auf **Subnetz**, und wählen Sie **vm_subnet**. Wählen Sie nicht das Subnetz aus, in dem die verwaltete Instanz bereitgestellt wurde, sondern ein anderes Subnetz in demselben VNET.
 
     ![VM-Einstellungen](./media/sql-database-managed-instance-tutorial/virtual-machine-settings.png)  
 
-7. Klicken Sie auf **OK**.
-8. Sehen Sie sich auf der Seite mit der Zusammenfassung die Angebotsdetails an, und klicken Sie dann auf **Erstellen**, um mit der Bereitstellung des virtuellen Computers zu beginnen.
+8. Klicken Sie auf **OK**.
+9. Sehen Sie sich auf der Seite mit der Zusammenfassung die Angebotsdetails an, und klicken Sie dann auf **Erstellen**, um mit der Bereitstellung des virtuellen Computers zu beginnen.
  
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
@@ -308,7 +309,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie SSMS herunterladen und 
 Nach der Verbindungsherstellung können Sie Ihre System- und Benutzerdatenbanken auf dem Knoten „Datenbanken“ und verschiedene Objekte auf den Knoten „Sicherheit“, „Serverobjekte, „Replikation“, „Verwaltung“, „SQL Server-Agent“ und „XEvent Profiler“ anzeigen.
 
 > [!NOTE]
-> Wenn Sie eine vorhandene SQL-­Datenbank in einer verwalteten Instanz wiederherstellen möchten, können Sie den [Azure Database Migration Service (DMS) für die Migration](../dms/tutorial-sql-server-to-managed-instance.md) oder den [T-SQL-Befehl „RESTORE“](sql-database-managed-instance-restore-from-backup-tutorial.md) verwenden, um eine Datenbanksicherungsdatei wiederherzustellen, oder eine [BACPAC-Datei importieren](sql-database-import.md).
+> Für die Wiederherstellung einer vorhandenen SQL-Datenbank in einer verwalteten Instanz haben Sie folgende Möglichkeiten: Verwenden Sie [Azure Database Migration Service (DMS) für die Migration](../dms/tutorial-sql-server-to-managed-instance.md) oder den [T-SQL-Befehl „RESTORE“](sql-database-managed-instance-restore-from-backup-tutorial.md), um die Wiederherstellung mit einer Datenbanksicherungsdatei durchzuführen, oder führen Sie einen [Import aus einer BACPAC-Datei](sql-database-import.md) durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

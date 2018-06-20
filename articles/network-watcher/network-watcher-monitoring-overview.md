@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639342"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
@@ -48,11 +49,11 @@ Sie können eine bearbeitbare Version der Abbildung im SVG-Format herunterladen.
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnostizieren von Problemen mit der Filterung des Netzwerkdatenverkehrs für eine VM (in ein- und ausgehender Richtung)
 
-Wenn Sie eine VM bereitstellen, wendet Azure mehrere Standardsicherheitsregeln auf die VM an, mit denen Datenverkehr für die VM zugelassen oder verweigert wird. Sie können die Standardregeln von Azure außer Kraft setzen oder zusätzliche Regeln erstellen. Es kann sein, dass eine VM aufgrund einer Sicherheitsregel irgendwann nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *IP-Datenflussüberprüfung* können Sie eine IPv4-Quell- und -Zieladresse, einen Port, ein Protokoll (TCP oder UDP) und die Richtung des Datenverkehrs (ein- oder ausgehend) angeben. Mit der IP-Datenflussüberprüfung wird dann die Kommunikation getestet, und Sie werden informiert, ob die Verbindungsherstellung erfolgreich war. Falls die Verbindungsherstellung nicht erfolgreich war, werden Sie über die IP-Datenflussüberprüfung benachrichtigt, welche Sicherheitsregel die Kommunikation zugelassen oder verweigert hat, damit Sie das Problem beheben können. Erfahren Sie mehr zur [IP-Datenflussüberprüfung](network-watcher-ip-flow-verify-overview.md).
+Wenn Sie eine VM bereitstellen, wendet Azure mehrere Standardsicherheitsregeln auf die VM an, mit denen Datenverkehr für die VM zugelassen oder verweigert wird. Sie können die Standardregeln von Azure außer Kraft setzen oder zusätzliche Regeln erstellen. Es kann sein, dass eine VM aufgrund einer Sicherheitsregel irgendwann nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *IP-Datenflussüberprüfung* können Sie eine IPv4-Quell- und -Zieladresse, einen Port, ein Protokoll (TCP oder UDP) und die Richtung des Datenverkehrs (ein- oder ausgehend) angeben. Mit der IP-Datenflussüberprüfung wird dann die Kommunikation getestet, und Sie werden informiert, ob die Verbindungsherstellung erfolgreich war. Falls die Verbindungsherstellung nicht erfolgreich war, werden Sie über die IP-Datenflussüberprüfung benachrichtigt, welche Sicherheitsregel die Kommunikation zugelassen oder verweigert hat, damit Sie das Problem beheben können. Weitere Informationen zur IP-Datenflussüberprüfung erhalten Sie im Tutorial [Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal](diagnose-vm-network-traffic-filtering-problem.md).
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting über eine VM
 
-Wenn Sie ein virtuelles Netzwerk erstellen, erstellt Azure mehrere ausgehende Standardrouten für Netzwerkdatenverkehr. Der ausgehende Datenverkehr aller Ressourcen, z.B. VMs, die in einem virtuellen Netzwerk bereitgestellt werden, wird basierend auf den Standardrouten von Azure weitergeleitet. Sie können die Standardrouten von Azure außer Kraft setzen oder zusätzliche Routen erstellen. Es kann sein, dass eine VM aufgrund einer bestimmten Route nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *Nächster Hop* können Sie eine IPv4-Quell- und -Zieladresse angeben. Bei „Nächster Hop“ wird die Kommunikation getestet, und Sie erhalten die Information, welche Art von nächstem Hop zum Weiterleiten des Datenverkehrs verwendet wird. Sie können eine Route dann entfernen, ändern oder hinzufügen, um ein Routingproblem zu beheben. Erfahren Sie mehr zur Funktion [Nächster Hop](network-watcher-next-hop-overview.md?).
+Wenn Sie ein virtuelles Netzwerk erstellen, erstellt Azure mehrere ausgehende Standardrouten für Netzwerkdatenverkehr. Der ausgehende Datenverkehr aller Ressourcen, z.B. VMs, die in einem virtuellen Netzwerk bereitgestellt werden, wird basierend auf den Standardrouten von Azure weitergeleitet. Sie können die Standardrouten von Azure außer Kraft setzen oder zusätzliche Routen erstellen. Es kann sein, dass eine VM aufgrund einer bestimmten Route nicht mehr mit anderen Ressourcen kommunizieren kann. Mit der Funktion *Nächster Hop* können Sie eine IPv4-Quell- und -Zieladresse angeben. Bei „Nächster Hop“ wird die Kommunikation getestet, und Sie erhalten die Information, welche Art von nächstem Hop zum Weiterleiten des Datenverkehrs verwendet wird. Sie können eine Route dann entfernen, ändern oder hinzufügen, um ein Routingproblem zu beheben. Erfahren Sie mehr zur Funktion [Nächster Hop](diagnose-vm-network-routing-problem.md).
 
 ### <a name="connection-troubleshoot"></a>Diagnostizieren ausgehender Verbindungen von einer VM
 
@@ -64,7 +65,7 @@ Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweis
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnostizieren von Problemen mit einem Gateway eines virtuellen Azure-Netzwerks und mit Verbindungen
 
-Gateways eines virtuellen Netzwerks stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Azure-Netzwerken bereit. Die Überwachung der Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Die Funktion *VPN-Diagnose* ermöglicht die Diagnose von Gateways und Verbindungen. Per VPN-Diagnose wird die Integrität des Gateways bzw. der Gatewayverbindung diagnostiziert, und Sie werden informiert, ob ein Gateway und Gatewayverbindungen verfügbar sind. Falls das Gateway oder die Verbindung nicht verfügbar sind, teilt die VPN-Diagnose Ihnen den Grund dafür mit, damit Sie das Problem beheben können. Erfahren Sie mehr zur [VPN-Diagnose](network-watcher-troubleshoot-overview.md).
+Gateways eines virtuellen Netzwerks stellen die Konnektivität zwischen lokalen Ressourcen und anderen virtuellen Azure-Netzwerken bereit. Die Überwachung der Gateways und ihrer Verbindungen ist wichtig, damit die Kommunikation nicht unterbrochen wird. Die Funktion *VPN-Diagnose* ermöglicht die Diagnose von Gateways und Verbindungen. Per VPN-Diagnose wird die Integrität des Gateways bzw. der Gatewayverbindung diagnostiziert, und Sie werden informiert, ob ein Gateway und Gatewayverbindungen verfügbar sind. Falls das Gateway oder die Verbindung nicht verfügbar sind, teilt die VPN-Diagnose Ihnen den Grund dafür mit, damit Sie das Problem beheben können. Weitere Informationen zur VPN-Diagnose erhalten Sie im Tutorial [Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal](diagnose-communication-problem-between-networks.md).
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Bestimmen von relativen Latenzen zwischen Azure-Regionen und Internetdienstanbietern
 
@@ -90,7 +91,7 @@ Die Informationen sind für die Planung von Bereitstellungen zukünftiger Ressou
 
 ![Datenverkehrsanalyse](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-Informieren Sie sich über [NSG-Flussprotokolle](network-watcher-nsg-flow-logging-overview.md) und die [Datenverkehrsanalyse](traffic-analytics.md).
+Weitere Informationen zur NSG-Flussprotokollierung erhalten Sie im Tutorial [Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md). Informationen zur Implementierung der Datenverkehrsanalyse finden Sie [hier](traffic-analytics.md).
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Anzeigen von Diagnoseprotokollen für Netzwerkressourcen
 

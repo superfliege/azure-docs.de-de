@@ -3,22 +3,20 @@ title: Tutorial zur Java-Anwendungsentwicklung mit Verwendung von Azure Cosmos D
 description: In diesem Tutorial zu Java-Webanwendungen erfahren Sie, wie Sie Azure Cosmos DB und die SQL-API verwenden, um Daten einer auf Azure-Websites gehosteten Java-Anwendung zu speichern und abzurufen.
 keywords: Anwendungsentwicklung, Datenbanktutorial, Java-Anwendung, Java-Webanwendungstutorial, Azure, Microsoft Azure
 services: cosmos-db
-documentationcenter: java
 author: dennyglee
 manager: kfile
-ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 2124e22ca5ab47b5e1836384132014cc0b356ff1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 4e3fd2fc31bda1dd8172c574fe087d9fcc6068db
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796824"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Erstellen einer Java-Webanwendung mithilfe von Azure Cosmos DB und der SQL-API
 > [!div class="op_single_selector"]
@@ -29,12 +27,12 @@ ms.lasthandoff: 04/06/2018
 > 
 > 
 
-In diesem Tutorial zur Java-Webanwendung erfahren Sie, wie Sie den [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)-Dienst verwenden, um Daten einer in Azure App Service-Web-Apps gehosteten Java-Anwendung zu speichern und abzurufen. In diesem Thema lernen Sie Folgendes:
+In diesem Tutorial zur Java-Webanwendung erfahren Sie, wie Sie den [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)-Dienst verwenden, um Daten einer in Azure App Service-Web-Apps gehosteten Java-Anwendung zu speichern und abzurufen. In diesem Artikel lernen Sie Folgendes:
 
 * Erstellen einer einfachen JSP-Anwendung (JavaServer Pages) in Eclipse
 * Verwenden des Azure Cosmos DB-Diensts mit dem [Azure Cosmos DB-Java-SDK](https://github.com/Azure/azure-documentdb-java)
 
-In diesem Java-Anwendungslernprogramm erfahren Sie, wie Sie eine webbasierte Aufgabenverwaltungsanwendung erstellen, mit der Sie Aufgaben erstellen, abrufen und als abgeschlossen kennzeichnen können, wie in der folgenden Abbildung gezeigt. Alle Aufgaben in der Aufgabenliste sind als JSON-Dokumente in Azure Cosmos DB gespeichert.
+In diesem Java-Anwendungslernprogramm erfahren Sie, wie Sie eine webbasierte Aufgabenverwaltungsanwendung erstellen, mit der Sie Aufgaben erstellen, abrufen und als abgeschlossen kennzeichnen können, wie in der folgenden Abbildung gezeigt. Die einzelnen Aufgaben in der Aufgabenliste sind als JSON-Dokumente in Azure Cosmos DB gespeichert.
 
 ![Java-Anwendung "My ToDo List"](./media/sql-api-java-application/image1.png)
 
@@ -75,7 +73,7 @@ So erstellen Sie eine JSP-Anwendung
    
     ![Erstellen einer neuen JSP-Datei – Java-Webanwendungs-Lernprogramm](./media/sql-api-java-application/image11.png)
 5. Wählen Sie im Dialogfeld **JSP-Vorlage auswählen** im Rahmen dieses Lernprogramms **Neue JSP-Datei (HTML)**, und klicken Sie dann auf **Fertig stellen**.
-6. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello World!** ein, damit er dynamisch im vorhandenen <body>-Element angezeigt wird. Der aktualisierte <body> -Inhalt sollte wie im folgenden Code aussehen:
+6. Wenn in Eclipse die Datei „index.jsp“ geöffnet wird, geben Sie den Text **Hello World!** ein, damit er dynamisch im vorhandenen <body>-Element angezeigt wird. Der aktualisierte Inhalt von <body> sollte wie im folgenden Code aussehen:
    
         <body>
             <% out.println("Hello World!"); %>
@@ -120,7 +118,7 @@ Dazu müssen Sie das Projekt zu einem Maven-Projekt konvertieren, indem Sie die 
             private String name;
         }
    
-    In diesem Projekt verwenden wir [Project Lombok](http://projectlombok.org/) , um den Konstruktor, die Getter, die Setter und einen Generator zu generieren. Alternativ können Sie diesen Code manuell eingeben oder von der IDE generieren lassen.
+    In diesem Projekt verwenden Sie [Project Lombok](http://projectlombok.org/), um den Konstruktor, die Getter, die Setter und einen Generator zu generieren. Alternativ können Sie diesen Code manuell eingeben oder von der IDE generieren lassen.
 2. Um den Azure Cosmos DB-Dienst aufzurufen, müssen Sie eine neue **DocumentClient**-Instanz instanziieren. Im Allgemeinen ist es am besten, **DocumentClient** wiederzuverwenden, anstatt für jede nachfolgende Anforderung einen neuen Client zu erstellen. Der Client kann wiederverwendet werden, indem der Client in ein **DocumentClientFactory**eingehüllt wird. In „DocumentClientFactory.java“ müssen Sie auch die Werte für URI und PRIMÄRSCHLÜSSEL einfügen, die Sie in [Schritt 1](#CreateDB) in der Zwischenablage gespeichert haben. Ersetzen Sie [YOUR\_ENDPOINT\_HERE] durch den URI und [YOUR\_KEY\_HERE] durch den PRIMÄRSCHLÜSSEL.
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
@@ -223,7 +221,7 @@ Dazu müssen Sie das Projekt zu einem Maven-Projekt konvertieren, indem Sie die 
                 return collectionCache;
             }
         }
-4. Der nächste Schritt besteht darin, einigen Code zum Speichern der Aufgabenelemente in der Sammlung zu schreiben. In diesem Beispiel wird [Gson](https://code.google.com/p/google-gson/) verwendet, um TodoItem-POJOs (Plain Old Java Objects) in JSON-Dokumenten zu serialisieren oder zu deserialisieren.
+4. Als Nächstes muss etwas Code zum Speichern der Aufgabenelemente in der Sammlung geschrieben werden. In diesem Beispiel wird [Gson](https://code.google.com/p/google-gson/) verwendet, um TodoItem-POJOs (Plain Old Java Objects) in JSON-Dokumenten zu serialisieren oder zu deserialisieren.
    
         // We'll use Gson for POJO <=> JSON serialization for this example.
         private static Gson gson = new Gson();
@@ -726,7 +724,7 @@ Azure-Websites gestaltet die Bereitstellung von Java-Anwendungen so einfach wie 
 3. Nachdem Sie jetzt über eine WAR-Datei verfügen, können Sie diese ganz einfach in das Verzeichnis **webapps** Ihrer Azure-Website hochladen. Anweisungen zum Hochladen der Datei finden Sie unter [Hinzufügen einer Java-Anwendung zu Azure App Service-Web-Apps](../app-service/web-sites-java-add-app.md).
    
     Sobald die WAR-Datei in das Verzeichnis "webapps" hochgeladen wurde, erkennt die Laufzeitumgebung, dass sie hinzugefügt wurde. Anschließend wird sie automatisch geladen.
-4. Navigieren Sie zum Anzeigen Ihres fertigen Produkts zu „http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/“, und beginnen Sie mit dem Hinzufügen Ihrer Aufgaben!
+4. Navigieren Sie zum Anzeigen Ihres fertigen Produkts zu http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/, und fügen Sie Ihre Aufgaben hinzu.
 
 ## <a id="GetProject"></a>Abrufen des Projekts von GitHub
 Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) auf GitHub. Zum Importieren des Todo-Projekts in Eclipse müssen Sie sicherstellen, dass Sie über die im Abschnitt [Voraussetzungen](#Prerequisites) aufgeführten Softwareanwendungen und Ressourcen verfügen. Gehen Sie anschließend folgendermaßen vor:
@@ -736,7 +734,7 @@ Alle Beispiele in diesem Tutorial befinden sich im Projekt [todo](https://github
 3. Klicken in Eclipse im Menü **Datei** auf **Importieren**.
 4. Klicken Sie im Fenster **Importieren** auf **Git**, dann auf **Projekte aus Git** und schließlich auf **Weiter**.
 5. Klicken Sie auf dem Bildschirm **Repositoryquelle auswählen** auf **URI klonen**.
-6. Geben Sie im Bildschirm **Source Git Repository (Quell-Git-Repository)** im Feld **URI** „https://github.com/Azure-Samples/java-todo-app.git“ ein, und klicken Sie auf **Next (Weiter)**.
+6. Geben Sie im Bildschirm **Source Git Repository (Quell-Git-Repository)** im Feld **URI** „https://github.com/Azure-Samples/documentdb-java-todo-app.git“ ein, und klicken Sie auf **Next (Weiter)**.
 7. Stellen Sie auf dem Bildschirm **Verzweigungsauswahl** sicher, dass **Master** ausgewählt ist, und klicken Sie dann auf **Weiter**.
 8. Klicken Sie auf dem Bildschirm **Lokales Ziel** auf **Durchsuchen**, um einen Ordner auszuwählen, in den das Repository kopiert werden kann, und klicken Sie dann auf **Weiter**.
 9. Stellen Sie auf dem Bildschirm **Assistent zum Importieren von Projekten auswählen** sicher, dass **Vorhandene Projekte importieren** ausgewählt ist, und klicken Sie dann auf **Weiter**.

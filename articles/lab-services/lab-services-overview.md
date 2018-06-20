@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: spelluru
-ms.openlocfilehash: b42183369b9ad88c77a05a91fdba8fe0efca2a8c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f8de53f03cc1378e8aaafa9a2f486eadc23fe14
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637852"
 ---
-# <a name="an-introduction-to-azure-lab-services-formerly-azure-devtest-labs"></a>Einführung in Azure Lab Services (früher Azure DevTest Labs)
+# <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
 Mit Azure Lab Services können Sie schnell eine Umgebung für Ihr Team (z.B. Entwicklungsumgebung, Testumgebung, Classroom-Lab-Umgebung) in der Cloud einrichten. Der Besitzer des Labs erstellt ein Lab, stellt virtuelle Windows- oder Linux-Computer bereit, installiert die erforderlichen Programme und Tools und stellt sie Lab-Benutzern zur Verfügung. Lab-Benutzer verbinden sich mit virtuellen Computern (VMs) im Lab und nutzen sie für ihre tägliche Arbeit, kurzzeitige Projekte oder für Übungen im Classroom. Sobald Benutzer die Ressourcen im Lab nutzen, kann ein Lab-Administrator die Kosten und Nutzung mehrerer Labs analysieren und übergreifende Richtlinien festlegen, um die Kosten Ihrer Organisation oder Ihres Teams zu optimieren.
 
 > [!IMPORTANT]
-> Azure DevTest Labs wird um neue Lab-Typen (Azure Lab Services) erweitert! 
+> **Azure DevTest Labs** wird um neue Lab-Typen (Azure Lab Services) erweitert! 
 > 
 > Azure Lab Services ermöglicht Ihnen, verwaltete Labs, wie z.B. Classroom-Labs, zu erstellen. Der Dienst selbst übernimmt die gesamte Infrastrukturverwaltung für ein verwaltetes Lab – vom Hochfahren der VMs über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Verwaltete Labs befinden sich derzeit in der Vorschauphase. Nach Ablauf der Vorschauphase werden die neuen Lab-Typen und bestehenden DevTest Labs unter dem neuen gemeinsamen Namen Azure Lab Services geführt, unter dem alle Lab-Typen weiterentwickelt werden. 
 
@@ -31,7 +32,7 @@ Mit Azure Lab Services können Sie schnell eine Umgebung für Ihr Team (z.B. Ent
 Azure Lab Services unterstützt Folgendes: 
 
 - **Schnelle und flexible Einrichtung eines Labs**. Mithilfe von Azure Lab Services können Lab-Besitzer schnell ein Lab ihren Anforderungen entsprechend einrichten. Der Dienst bietet die Möglichkeit, alle Aufgaben im Zusammenhang mit der Azure-Infrastruktur für verwaltete Labs zu übernehmen oder es den Besitzern von Labs zu überlassen, die Infrastruktur im Rahmen ihres Abonnements selbst zu verwalten und anzupassen. Der Dienst bietet eine integrierte Skalierung und Resilienz von Infrastruktur für Labs, die er für Sie verwaltet. 
-- **Vereinfachte Umgebung für Lab-Benutzer**. In einem verwalteten Lab, z.B. einem Classroom-Lab, können sich Lab-Benutzer mit einem Registrierungscode registrieren und jederzeit auf das Lab zugreifen, um dessen Ressourcen zu nutzen. In einem benutzerdefinierten Lab, das in DevTest Labs erstellt wurde, kann ein Lab-Besitzer Lab-Benutzern die Berechtigung erteilen, virtuelle Computer zu erstellen und darauf zuzugreifen, Datenträger zu verwalten und wiederzuverwenden und wiederverwendbare Geheimnisse einzurichten.  
+- **Vereinfachte Umgebung für Lab-Benutzer**. In einem verwalteten Lab, z.B. einem Classroom-Lab, können sich Lab-Benutzer mit einem Registrierungscode registrieren und jederzeit auf das Lab zugreifen, um dessen Ressourcen zu nutzen. In einem Lab, das in DevTest Labs erstellt wurde, kann ein Lab-Besitzer Lab-Benutzern die Berechtigung erteilen, virtuelle Computer zu erstellen und darauf zuzugreifen, Datenträger zu verwalten und wiederzuverwenden und wiederverwendbare Geheimnisse einzurichten.  
 - **Kostenoptimierung und -analyse**. Ein Lab-Besitzer kann Lab-Zeitpläne festlegen, gemäß denen virtuelle Computer automatisch herunter- und hochgefahren werden. Der Lab-Besitzer kann in einem Zeitplan die Zeitfenster festlegen, in denen die virtuellen Computer des Labs für Benutzer zugänglich sind, zur Kostenoptimierung Nutzungsrichtlinien lab- oder benutzerbezogen festlegen, um die Kosten zu optimieren, und Nutzungs- und Aktivitätstrends in einem Lab analysieren. Für verwaltete Labs wie z.B. Classroom-Labs steht derzeit eine kleinere Teilmenge von Optimierungs- und Analyseoptionen zur Verfügung. 
 - **Integrierte Sicherheit**. Ein Lab-Besitzer kann ein privates virtuelles Netzwerk und ein Subnetz für ein Lab einrichten und eine gemeinsame öffentliche IP-Adresse aktivieren. Lab-Benutzer können über virtuelle Netzwerke, die mit ExpressRoute oder Site-to-Site-VPNs konfiguriert sind, auf sichere Weise auf Ressourcen zugreifen. (derzeit in nur DevTest Labs verfügbar)
 - **Integration in Ihre Workflows und Tools**. Azure Lab Services ermöglicht Ihnen, die Labs in die Website- und Verwaltungssysteme Ihres Unternehmens zu integrieren. Mithilfe Ihrer CI/CD-Tools (Continuous Integration/Continuous Deployment) können Sie Umgebungen automatisch bereitstellen. (derzeit in nur DevTest Labs verfügbar)
@@ -91,7 +92,7 @@ Ein Lab-Benutzer führt die folgenden Aufgaben aus:
 - Herstellen einer Verbindung mit einem virtuellen Computer im Lab, der für Entwicklungs-, Test oder Unterrichtszwecke verwendet wird 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Erste Schritte zur Einrichtung eines Labs mit Azure Lab Services:
+Machen Sie sich mit der Einrichtung eines Labs mit Azure Lab Services vertraut:
 
-- [Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md)
-- [Einrichten eines benutzerdefinierten Labs](tutorial-create-custom-lab.md)
+- [Einrichten eines Classroom-Labs](classroom-labs/tutorial-setup-classroom-lab.md)
+- [Einrichten eines Labs](tutorial-create-custom-lab.md)

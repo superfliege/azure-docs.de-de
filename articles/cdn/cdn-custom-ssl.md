@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 86b20e0f317a14db415feff68b17aa99e1e42cb4
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3f0ba3034c1ba9e68f83caaaf9aacb96134ca74b
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258436"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235497"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
 > [!IMPORTANT]
-> Dieses Feature ist für Produkte vom Typ **Azure CDN Standard von Akamai** nicht verfügbar. Einen Vergleich der CDN-Features finden Sie in der [Übersicht über das Azure CDN](cdn-features.md).
+> Dieses Feature ist für Produkte vom Typ **Azure CDN Standard von Akamai** nicht verfügbar. Eine Gegenüberstellung der Features des Azure Content Delivery Network (CDN) finden Sie unter [Vergleichen von Azure CDN-Produktfeatures](cdn-features.md).
 
-In diesem Tutorial erfahren Sie, wie Sie das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die einem Azure CDN-Endpunkt (Content Delivery Network) zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (z.B. „https:\//www.contoso.com“) stellen Sie sicher, dass Ihre sensiblen Daten per SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. HTTPS sorgt für Vertrauen und bietet Authentifizierung und Angriffsschutz für Ihre Webanwendungen. 
+In diesem Tutorial erfahren Sie, wie Sie das HTTPS-Protokoll für eine benutzerdefinierte Domäne aktivieren, die einem Azure CDN-Endpunkt zugeordnet ist. Durch die Verwendung des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne (Beispiel: https:\//www.contoso.com) stellen Sie sicher, dass Ihre sensiblen Daten per TLS/SSL-Verschlüsselung sicher zugestellt werden, wenn diese über das Internet gesendet werden. Wenn Ihr Webbrowser über HTTPS eine Verbindung mit einer Website herstellt, überprüft er das Sicherheitszertifikat der Website, um sicherzustellen, dass es von einer legitimen Zertifizierungsstelle stammt. Dieser Prozess sorgt für Sicherheit und schützt Ihre Webanwendungen vor Angriffen.
 
 Azure CDN unterstützt HTTPS standardmäßig für einen CDN-Endpunkt-Hostnamen. Wenn Sie also beispielsweise einen CDN-Endpunkt erstellen (z.B. „https:\//contoso.azureedge.net“), wird HTTPS automatisch aktiviert.  
 
@@ -94,13 +94,13 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 > Diese Option ist nur für Profile vom Typ **Azure CDN Standard von Microsoft** verfügbar. 
 >
  
-Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure CDN nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich.
+Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erfolgt eine Integration in Azure Key Vault, was eine sichere Speicherung Ihrer Zertifikate ermöglicht. Azure CDN nutzt diesen sicheren Mechanismus zum Abrufen Ihres Zertifikats, und es sind einige zusätzliche Schritte erforderlich. Wenn Sie Ihr SSL-Zertifikat erstellen, müssen Sie dafür eine zulässige Zertifizierungsstelle (certificate authority, CA) verwenden. Bei Verwendung einer unzulässigen Zertifizierungsstelle wird Ihre Anforderung abgelehnt. Eine Liste mit zulässigen Zertifizierungsstellen für die Aktivierung von benutzerdefiniertem HTTPS für Azure CDN finden Sie [hier](cdn-troubleshoot-allowed-ca.md).
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Vorbereiten Ihres Azure Key Vault-Kontos und Ihres Zertifikats
  
 1. Azure Key Vault: Sie benötigen ein aktives Azure Key Vault-Konto. Dieses muss zu dem gleichen Abonnement gehören wie das Azure CDN-Profil und die CDN-Endpunkte, für die Sie benutzerdefiniertes HTTPS aktivieren möchten. Erstellen Sie bei Bedarf ein Azure Key Vault-Konto.
  
-2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partnerzertifizierungsstellen (Certificate Authorities, CAs) mit Azure Key Vault-Integration erstellen. 
+2. Azure Key Vault-Zertifikate: Wenn Sie bereits über ein Zertifikat verfügen, können Sie es direkt in Ihr Azure Key Vault-Konto hochladen. Alternativ können Sie direkt in Azure Key Vault ein neues Zertifikat über eine der Partner-CAs mit Azure Key Vault-Integration erstellen. 
 
 ### <a name="register-azure-cdn"></a>Registrieren von Azure CDN
 
@@ -123,9 +123,9 @@ Gewähren Sie Azure CDN Berechtigungen für den Zugriff auf die Zertifikate (Geh
 
     ![Erstellen einer neuen Zugriffsrichtlinie](./media/cdn-custom-ssl/cdn-new-access-policy.png)
 
-    ![Zugriffsrichtlinieneinstellungen](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
+2. Suchen Sie unter **Prinzipal auswählen** nach **205478c0-bd83-4e1b-a9d6-db63a3e1e1c8**, und wählen Sie **Microsoft.Azure.Cdn** aus. Klicken Sie auf **Auswählen**.
 
-2. Suchen Sie unter **Prinzipal auswählen** nach **Azure CDN**, und klicken Sie darauf.
+    ![Zugriffsrichtlinieneinstellungen](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
 3. Klicken Sie unter **Berechtigungen für Geheimnis** auf **Abrufen**, um dem CDN das Abrufen und Auflisten der Zertifikate zu ermöglichen. 
 
@@ -165,7 +165,7 @@ Wenn Sie bereits eine benutzerdefinierte Domäne verwenden, die Ihrem benutzerde
 
 ### <a name="custom-domain-is-mapped-to-your-cdn-endpoint-by-a-cname-record"></a>Benutzerdefinierte Domäne ist Ihrem CDN-Endpunkt mit einem CNAME-Eintrag zugeordnet
 
-Nach dem Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-Zertifizierungsstelle (Certificate Authority, CA) verwendet, um den Besitz Ihrer benutzerdefinierten Domäne automatisch zu überprüfen. 
+Nach dem Hinzufügen einer benutzerdefinierten Domäne zu Ihrem Endpunkt haben Sie einen CNAME-Eintrag in der DNS-Tabelle Ihrer Domänenregistrierungsstelle erstellt, um ihn Ihrem CDN-Endpunkt-Hostnamen zuzuordnen. Wenn dieser CNAME-Eintrag noch vorhanden ist und die cdnverify-Unterdomäne nicht enthält, wird er von der DigiCert-CA verwendet, um den Besitz Ihrer benutzerdefinierten Domäne automatisch zu überprüfen. 
 
 Wenn Sie Ihr eigenes Zertifikat verwenden, ist keine Domänenüberprüfung erforderlich.
 
@@ -188,7 +188,7 @@ Die automatische Überprüfung dauert normalerweise einige Minuten. Öffnen Sie 
 
 Wenn der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder die cdnverify-Unterdomäne enthält, folgen Sie den weiteren Anweisungen in diesem Schritt.
 
-Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-Zertifizierungsstelle, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registrant der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
+Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
 
 ![WHOIS-Datensatz](./media/cdn-custom-ssl/whois-record.png)
 
