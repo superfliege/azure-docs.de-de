@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724097"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Was ist die verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen?
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen, die für die Authentifizierung bei Clouddiensten im Code enthalten sein müssen. Der Schutz dieser Anmeldeinformationen ist eine wichtige Aufgabe. Im Idealfall werden sie nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt. Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
+Verwaltete Dienstidentitäten sind im Lieferumfang von Azure Active Directory Free enthalten. Dies ist die Standardbereitstellung für Azure-Abonnements. Für verwaltete Dienstidentitäten fallen keine zusätzlichen Kosten an.
+
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Es gibt zwei Arten von verwalteten Dienstidentitäten: **durch das System zugewiesene Identitäten** und **durch den Benutzer zugewiesene Identitäten**.
 
 - Eine **durch das System zugewiesene Identität** wird direkt für eine Azure-Dienstinstanz aktiviert. Wenn diese Identität aktiviert ist, erstellt Azure eine Identität für die Dienstinstanz in dem Azure AD-Mandanten, dem von dem Abonnement der Dienstinstanz vertraut wird. Nach Erstellung der Identität werden die dazugehörigen Anmeldeinformationen in der Dienstinstanz bereitgestellt. Der Lebenszyklus einer durch das System zugewiesenen Identität ist direkt an die Azure-Dienstinstanz gebunden, für die sie aktiviert wurde. Wenn die Dienstinstanz gelöscht wird, bereinigt Azure automatisch die Anmeldeinformationen und die Identität in Azure AD.
-- Eine **durch den Benutzer zugewiesene Identität** (Public Preview) wird als eigenständige Azure-Ressource erstellt. Azure erstellt eine Identität in dem Azure AD-Mandanten, dem vom verwendeten Abonnement vertraut wird. Nachdem die Identität erstellt wurde, kann sie einer oder mehreren Azure-Dienstinstanzen zugewiesen werden. Der Lebenszyklus einer durch den Benutzer zugewiesenen Identität wird getrennt vom Lebenszyklus der Azure-Dienstinstanzen verwaltet, denen sie zugewiesen ist.
+- Eine **vom Benutzer zugewiesene Identität** wird als eigenständige Azure-Ressource erstellt. Azure erstellt eine Identität in dem Azure AD-Mandanten, dem vom verwendeten Abonnement vertraut wird. Nachdem die Identität erstellt wurde, kann sie einer oder mehreren Azure-Dienstinstanzen zugewiesen werden. Der Lebenszyklus einer durch den Benutzer zugewiesenen Identität wird getrennt vom Lebenszyklus der Azure-Dienstinstanzen verwaltet, denen sie zugewiesen ist.
 
 Daher können Sie in Ihrem Code entweder eine durch das System zugewiesene Identität oder eine durch den Benutzer zugewiesene Identität verwenden, um Zugriffstoken für Dienste anzufordern, die die Azure AD-Authentifizierung unterstützen. Derweil übernimmt Azure die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen.
 
@@ -103,17 +106,6 @@ Testen Sie ein Tutorial für verwaltete Dienstidentitäten, um mehr über End-to
 
 Verwaltete Identitäten können für die Authentifizierung bei Diensten verwendet werden, die die Azure AD-Authentifizierung unterstützen. Eine Liste mit Azure-Diensten, die die verwaltete Dienstidentität unterstützen, finden Sie im folgenden Artikel:
 - [Services that support Managed Service Identity](services-support-msi.md) (Dienste, die verwaltete Dienstidentitäten unterstützen)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>Wie viel kosten verwaltete Dienstidentitäten?
-
-Verwaltete Dienstidentitäten sind im Lieferumfang von Azure Active Directory Free enthalten. Dies ist die Standardbereitstellung für Azure-Abonnements. Für verwaltete Dienstidentitäten fallen keine zusätzlichen Kosten an.
-
-## <a name="support-and-feedback"></a>Support und Feedback
-
-Wir freuen uns darauf, von Ihnen zu hören.
-
-* Stellen Sie Fragen zu Stack Overflow mit dem Tag [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi).
-* Fordern Sie Funktionen an, oder geben Sie Feedback im [Azure AD-Feedbackforum für Entwickler](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

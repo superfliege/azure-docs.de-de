@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361470"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823910"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Erste Schritte in Azure Dev Spaces mit Node.js
 
@@ -32,7 +32,7 @@ Sie können nun eine Kubernetes-basierte Entwicklungsumgebung in Azure erstellen
 Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihrer Entwicklungsumgebung wird in der Cloud gespeichert und kann für andere Benutzer freigegeben werden. Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus.
 
 > [!IMPORTANT]
-> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.32 der CLI handelt.
+> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.33 handelt.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -185,25 +185,25 @@ Schreiben Sie nun Code in `webfrontend`, der eine Anforderung an `mywebapi` send
 1. Fügen Sie die folgenden Codezeilen oben in `server.js` ein:
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. *Ersetzen Sie* den Code für den GET-Handler für `/api`. Bei der Verarbeitung einer Anforderung ruft diese wiederum `mywebapi` auf und gibt anschließend die Ergebnisse aus beiden Diensten zurück.
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-Beachten Sie, wie mit der DNS-Dienstermittlung von Kubernetes auf den Dienst als `http://mywebapi` verwiesen wird. **Code wird in der Entwicklungsumgebung auf die gleiche Weise ausgeführt wie in der Produktion.**
-
-Im Codebeispiel oben wird ein Hilfsmodul mit dem Namen `propagateHeaders` verwendet. Dieses Hilfsmodul wurde Ihrem Codeordner zum Zeitpunkt der Ausführung von `azds prep` hinzugefügt. Die Funktion `propagateHeaders.from()` gibt bestimmte Header von einem vorhandenen http.IncomingMessage-Objekt an ein Headerobjekt für eine ausgehende Anforderung weiter. Sie erfahren später, wie dadurch Teams bei der gemeinsamen Entwicklung unterstützt werden.
+Im obigen Codebeispiel wird der Header `azds-route-as` aus der eingehenden Anforderung an die ausgehende Anforderung weitergeleitet. Sie erfahren später, wie dadurch Teams bei der gemeinsamen Entwicklung unterstützt werden.
 
 ### <a name="debug-across-multiple-services"></a>Debuggen mehrerer Dienste
 1. Zu diesem Zeitpunkt sollte `mywebapi` noch mit angefügtem Debugger ausgeführt werden. Ist dies nicht der Fall, drücken Sie im Projekt `mywebapi` F5.

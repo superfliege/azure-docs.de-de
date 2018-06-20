@@ -1,21 +1,22 @@
 ---
 title: Überwachen Ihrer Geräte in Azure IoT Central | Microsoft-Dokumentation
 description: Als Bediener können Sie mit der Azure IoT Central-Anwendung Ihre Geräte überwachen.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201386"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235480"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>Überwachen Ihrer Geräte mithilfe von Azure IoT Central
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Tutorial: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 
 Dieses Tutorial richtet sich an Bediener und erläutert, wie Sie mithilfe Ihrer Microsoft Azure IoT Central-Anwendung Ihre Geräte überwachen und Einstellungen ändern.
 
@@ -50,11 +51,11 @@ Die Seite **Gerät** für das simulierte Gerät **Connected Air Conditioner-1**,
 
 Als Bediener können Sie auf den Seiten **Measurements** (Messungen), **Einstellungen**, **Eigenschaften**, **Regeln** und **Dashboard** Informationen zum Gerät anzeigen. Der Ersteller hat das **Dashboard** so angepasst, dass dort wichtige Informationen zu einer verbundenen Klimaanlage angezeigt werden.
 
-* Klicken Sie auf die Ansicht **Dashboard**, um Informationen zum Gerät anzuzeigen:
+Klicken Sie auf die Ansicht **Dashboard**, um Informationen zum Gerät anzuzeigen.
 
-    ![Gerätedashboard](media/tutorial-monitor-devices/initial_screen.png)
+![Gerätedashboard](media/tutorial-monitor-devices/initial_screen.png)
 
-    Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Auf der Kachel **Set target temperature** (Festgelegte Zieltemperatur) wird zudem die aktuelle Zieltemperatur für das Gerät angezeigt. Sie entscheiden, dass die Zieltemperatur zu hoch ist.
+Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Auf der Kachel **Set target temperature** (Festgelegte Zieltemperatur) wird zudem die aktuelle Zieltemperatur für das Gerät angezeigt. Sie entscheiden, dass die Zieltemperatur zu hoch ist.
 
 ## <a name="remediate-an-issue"></a>Beheben eines Problems
 
@@ -64,7 +65,7 @@ Verwenden Sie zum Ändern der Zieltemperatur des Geräts die Seite **Einstellung
 
     ![Aktualisieren der Einstellungen](media/tutorial-monitor-devices/change_settings.png)
 
-1. Klicken Sie auf **Dashboard**, und überprüfen Sie den neuen Einstellungswert:
+2. Klicken Sie auf **Dashboard**, und überprüfen Sie den neuen Einstellungswert:
 
     ![Aktualisiertes Gerätedashboard](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Untersuchen eines Problems
 > * Beheben eines Problems
 
-Nachdem Sie nun Ihr Gerät überwacht haben, können Sie als Nächstes [ein Gerät hinzufügen](tutorial-add-device.md).
+Nachdem Sie nun wissen, wie Sie Ihr Gerät überwachen, können Sie als Nächstes [ein Gerät hinzufügen](tutorial-add-device.md).

@@ -1,34 +1,29 @@
 ---
-title: Erste Schritte mit Azure Data Lake Analytics unter Verwendung von Visual Studio | Microsoft-Dokumentation
+title: Erste Schritte mit Azure Data Lake Analytics unter Verwendung von Visual Studio
 description: Erfahren Sie, wie Sie Data Lake-Tools für Visual Studio installieren und U-SQL-Skripts entwickeln und testen.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
-ms.devlang: na
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/02/2018
-ms.author: saveenr, yanacai
-ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735792"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-
 Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstellen, Aufträge in [U-SQL](data-lake-analytics-u-sql-get-started.md) definieren und Aufträge an den Data Lake Analytics-Dienst übermitteln. Weitere Informationen zu Data Lake Analytics finden Sie unter [Übersicht über Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 >[!IMPORTANT]
->
->Angesichts der am 25. Mai 2018 in Kraft tretenden Datenschutz-Grundverordnung (DSGVO) sollten Benutzer von Azure Data Lake Tools für Visual Studio vorsorglich mindestens ein Upgrade auf die Version 2.3.3000.4 durchführen. Diese Version enthält Änderungen zur Erfüllung der neuesten Datenschutzanforderungen. Ältere Versionen stehen nicht zum Download zur Verfügung und sind veraltet. 
+> Microsoft empfiehlt Ihnen das Upgrade auf Version 2.3.3000.4 (oder höher) der Azure Data Lake Tools für Visual Studio. Ältere Versionen stehen nicht mehr als Download zur Verfügung und sind veraltet. 
 >
 >**Was muss ich tun?**
 >
@@ -52,19 +47,7 @@ Erfahren Sie, wie Sie mit Visual Studio Azure Data Lake Analytics-Konten erstell
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Installieren von Azure Data Lake Tools für Visual Studio
 
-### <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Installieren von Azure Data Lake Tools für Visual Studio 2017
-
-Azure Data Lake Tools für Visual Studio wird in Visual Studio 2017 ab Version 15.3 unterstützt. Das Tool ist Teil der Workloads **Datenspeicherung und -verarbeitung** und **Azure-Entwicklung** im Visual Studio-Installer. Aktivieren Sie eine dieser beiden Workloads im Rahmen Ihrer Visual Studio-Installation.  
-
-Aktivieren Sie die Workload **Datenspeicherung und -verarbeitung** wie folgt: ![Aktivieren der Workload „Datenspeicherung und -verarbeitung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
-
-Aktivieren Sie die Workload **Azure-Entwicklung** wie folgt: ![Aktivieren der Workload „Azure-Entwicklung“](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
-
-### <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Installieren von Azure Data Lake Tools für Visual Studio 2013 und 2015
-
-Sie können Azure Data Lake Tools für Visual Studio [über das Download Center](http://aka.ms/adltoolsvs) herunterladen und installieren. Beachten Sie nach der Installation Folgendes:
-* Der Knoten **Server-Explorer** > **Azure** enthält den Knoten **Data Lake Analytics**. 
-* Das Menü **Extras** enthält die Option **Data Lake**.
+Für dieses Tutorial muss Data Lake Tools für Visual Studio installiert sein. Befolgen Sie die [Installationsanweisungen](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Herstellen einer Verbindung mit einem Azure Data Lake Analytics-Konto
 

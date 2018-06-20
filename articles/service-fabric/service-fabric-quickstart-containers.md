@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 04/30/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d78dbc9a32e804e37eb76047edcc050482df5761
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b868ac82951a831013d66fc0ca0a420cb94968d5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642062"
 ---
 # <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>Schnellstart: Bereitstellen einer Service Fabric-Containeranwendung unter Windows in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -57,6 +58,26 @@ Konfigurieren Sie die Zuordnung von Containerport zu Hostport, sodass an Port 80
 Nennen Sie den Dienst „MyContainerService“, und klicken Sie auf **OK**.
 
 ![Dialogfeld „Neuer Dienst“][new-service]
+
+## <a name="specify-the-os-build-for-your-container-image"></a>Angeben des Betriebssystembuilds für Ihr Containerimage
+Mit einer bestimmten Windows Server-Version erstellte Container können unter Umständen nicht auf einem Host mit einer anderen Version von Windows Server ausgeführt werden. Beispielsweise können Container, die mit Windows Server 1709 erstellt wurden, nicht auf Hosts mit Windows Server 2016 ausgeführt werden. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). 
+
+Bei Version 6.1 oder höheren Version der Service Fabric-Runtime können Sie mehrere Betriebssystemimages pro Container angeben und jedes Image mit der Buildversion des Betriebssystems markieren, unter dem es bereitgestellt werden soll. Dadurch wird sichergestellt, dass Ihre Anwendung auf Hosts mit verschiedenen Versionen des Windows-Betriebssystems ausgeführt wird. Weitere Informationen finden Sie unter [Angeben spezifischer Containerimages für den Build des Betriebssystems](service-fabric-get-started-containers.md#specify-os-build-specific-container-images). 
+
+Microsoft veröffentlicht verschiedene Images für IIS-Versionen, die auf unterschiedlichen Versionen von Windows Server basieren. Fügen Sie der Datei *ApplicationManifest.xml* die folgenden Zeilen hinzu, um sicherzustellen, dass Service Fabric einen mit der Version von Windows Server kompatiblen Container bereitstellt, die auf den Clusterknoten ausgeführt wird, auf denen Ihre Anwendung bereitgestellt wird. Die Buildversion für Windows Server 2016 lautet 14393, und die Buildversion für Windows Server-Version 1709 lautet 16299. 
+
+```xml
+    <ContainerHostPolicies CodePackageRef="Code"> 
+      <ImageOverrides> 
+        ...
+          <Image Name="microsoft/iis:nanoserverDefault" /> 
+          <Image Name= "microsoft/iis:nanoserver" Os="14393" /> 
+          <Image Name="microsoft/iis:windowsservercore-1709" Os="16299" /> 
+      </ImageOverrides> 
+    </ContainerHostPolicies> 
+```
+
+Das Dienstmanifest gibt weiterhin nur ein Image für den Nanoserver `microsoft/iis:nanoserver` an. 
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 Sie können einem Partycluster beitreten, um die Anwendung in einem Cluster in Azure bereitzustellen. Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann.  Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit. Partycluster unterstützen Container. Wenn Sie einen eigenen Cluster einrichten und verwenden möchten, muss der Cluster unter einer SKU ausgeführt werden, die Container unterstützt (beispielsweise Windows Server 2016 Datacenter mit Containern).

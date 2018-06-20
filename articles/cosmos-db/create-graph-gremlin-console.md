@@ -4,19 +4,18 @@ description: Schnellstart von Azure Cosmos DB zum Erstellen von Scheitelpunkten,
 services: cosmos-db
 author: luisbosquez
 manager: kfile
-ms.assetid: bf08e031-718a-4a2a-89d6-91e12ff8797d
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: terminal
+ms.component: cosmosdb-graph
+ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 0f50443385f483fd948d7f19164050600fa8c143
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 00e4da5fa1867aeddebe0e452f78ea24a3d0a821
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808518"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Erstellen, Abfragen und Traversieren in der Gremlin-Konsole
 
@@ -48,7 +47,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](http://tinkerpop.apache.org/) instal
 1. Erstellen bzw. ändern Sie die Konfigurationsdatei „remote-secure.yaml“ im Verzeichnis `apache-tinkerpop-gremlin-console-3.2.5/conf`, bevor Sie die Gremlin-Konsole starten.
 2. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsprogramm* aus:
 
-    Einstellung|Empfohlener Wert|Beschreibung
+    Einstellung|Empfohlener Wert|BESCHREIBUNG
     ---|---|---
     hosts|[*Kontoname*.gremlin.cosmosdb.azure.com] oder [*Kontoname*.graphs.azure.com] für Konten, die vor dem 20. Dezember 2017 erstellt wurden.|Der folgende Screenshot zeigt dies. Dies ist der Wert für den Gremlin-URI auf der Seite „Übersicht“ des Azure-Portals (in Winkelklammern mit entferntem Zusatz „:443/“).<br><br>Sie können diesen Wert auch über die Registerkarte „Schlüssel“ abrufen, indem Sie den URI-Wert verwenden und „https://“ entfernen, „documents“ in „graphs“ oder „gremlin.cosmosdb“ ändern und den Zusatz „:443/“ entfernen.
     port|443|Legen Sie den Wert 443 fest.
@@ -79,6 +78,8 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
     > [!TIP]
     > Sollte die Fehlermeldung `No appenders could be found for logger` angezeigt werden, vergewissern Sie sich, dass der Serialisierungsmodulwert in der Datei „remote-secure.yaml“ wie in Schritt 2 beschrieben aktualisiert wurde. 
+
+5. Führen Sie als Nächstes `:remote console` aus, um alle Konsolenbefehle an den Remoteserver umzuleiten.
 
 Prima. Damit ist die Einrichtung abgeschlossen. Jetzt können Sie mit dem Ausführen von Konsolenbefehlen beginnen.
 

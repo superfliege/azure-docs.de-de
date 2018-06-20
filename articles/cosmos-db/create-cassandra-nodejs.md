@@ -2,23 +2,21 @@
 title: 'Schnellstartanleitung: Cassandra-API mit Node.js – Azure-Cosmos-DB | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Cassandra-API von Azure Cosmos DB eine Profilanwendung mit Node.js erstellen.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 4732e57d-32ed-40e2-b148-a8df4ff2630d
 ms.service: cosmos-db
+ms.component: cosmosdb-cassandra
 ms.custom: quick start connect, mvc
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cc8fd5ef77407274187411da593be7b68ae114d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 08ac75ca008f3054a85d9c90834720e26cefcfea
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796450"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Node.js und Azure Cosmos DB
 
@@ -186,7 +184,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     
 ## <a name="use-the-x509-certificate"></a>Verwenden des X.509-Zertifikats 
 
-1. Falls Sie „Baltimore CyberTrust Root“ hinzufügen müssen, verwenden Sie die Seriennummer „02:00:00:b9“ und den SHA1-Fingerabdruck „d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74“. Das Zertifikat kann unter https://cacert.omniroot.com/bc2025.crt heruntergeladen und als lokale Datei mit der Erweiterung „.cer“ gespeichert werden. 
+1. Wenn Sie das Zertifikat „Baltimore CyberTrust Root“ hinzufügen müssen, sei darauf hingewiesen, dass es die Seriennummer „02:00:00:b9“ und den SHA1-Fingerabdruck „d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74“ verwendet. Das Zertifikat kann unter https://cacert.omniroot.com/bc2025.crt heruntergeladen und als lokale Datei mit der Erweiterung „.cer“ gespeichert werden. 
 
 2. Öffnen Sie „uprofile.py“ und ändern Sie „path\to\cert“, um auf das neue Zertifikat zu verweisen. 
 

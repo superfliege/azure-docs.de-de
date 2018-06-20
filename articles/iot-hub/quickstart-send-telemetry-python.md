@@ -1,23 +1,21 @@
 ---
 title: 'Schnellstart: Senden von Telemetriedaten an Azure IoT Hub (Python) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie eine Python-Beispielanwendung aus, um simulierte Telemetriedaten an eine IoT Hub-Instanz zu senden und mithilfe eines Hilfsprogramms Telemetriedaten aus der IoT Hub-Instanz zu lesen.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 2abc978d6f40808a1bea46a01647444bb79b1211
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: a6bece43f003ed5ddd2db2b03f12c02c1ccaa28e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636272"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (Python) aus dem Hub
 
@@ -100,7 +98,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 Die Anwendung zur Simulation eines Geräts stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her und sendet simulierte Telemetriedaten für Temperatur und Luftfeuchtigkeit.
 
-1. Navigieren Sie in einem Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie anschließend zum Ordner **Quickstarts\simulated-device**.
+1. Navigieren Sie in einem Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device**.
 
 1. Öffnen Sie die Datei **SimulatedDevice.py** in einem Text-Editor Ihrer Wahl.
 

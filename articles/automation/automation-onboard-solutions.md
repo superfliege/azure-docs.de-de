@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 manager: carmonm
 ms.topic: tutorial
-ms.date: 03/16/2018
+ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 97db493b77483d68860c6124f1063bc4a743c3be
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5d03ec7c5e0aaa68c1db34fedbd428f264e49e43
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830519"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 
@@ -36,7 +37,7 @@ Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 ## <a name="onboard-an-azure-vm"></a>Integrieren einer Azure-VM
 
-Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung von einem virtuellen Computer, [über Ihr Automation-Konto](automation-onboard-solutions-from-vm.md) oder per [Runbook](automation-onboard-solutions-from-automation-account.md) integrieren. In diesem Tutorial wird das Aktivieren der Updateverwaltung per Runbook Schritt für Schritt beschrieben. Um virtuelle Azure-Computer bedarfsgesteuert zu integrieren, muss eine vorhandene VM mit der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
+Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md), [über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md) oder per Runbook integrieren. In diesem Tutorial wird das Aktivieren der Updateverwaltung per Runbook Schritt für Schritt beschrieben. Um virtuelle Azure-Computer bedarfsgesteuert zu integrieren, muss eine vorhandene VM mit der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 

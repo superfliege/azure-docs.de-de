@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cc5f685efdf3ed680acf4d95185c58b4c43f5ac5
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 13d350950e91d771b7b4b2310a788537c4c36bd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642392"
 ---
 # <a name="quickstart-deploy-a-java-service-fabric-reliable-services-application-to-azure"></a>Schnellstart: Bereitstellen einer Java Service Fabric Reliable Services-Anwendung in Azure
 Azure Service Fabric ist eine Plattform, mit der verteilte Systeme bereitgestellt und skalierbare und zuverlässige Microservices und Container verwaltet werden können. 
@@ -82,7 +83,7 @@ Um die Anwendung in einem Cluster in Azure bereitzustellen, erstellen Sie einen 
 
 Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team betrieben werden. Mithilfe von Partyclustern können Sie Anwendungen bereitstellen und sich mit der Plattform vertraut machen. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
 
-Melden Sie sich an, und treten Sie einem [Linux-Cluster](http://aka.ms/tryservicefabric) bei. Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Unter dem Link **ReadMe** finden Sie das Zertifikatkennwort sowie Anweisungen zum Konfigurieren verschiedener Umgebungen für die Verwendung des Zertifikats. Lassen Sie sowohl die**Willkommensseite**als auch die Seite mit der**Infodatei** geöffnet, da Sie einige der Anweisungen in den folgenden Schritten benötigen. 
+Melden Sie sich an, und treten Sie einem [Linux-Cluster](http://aka.ms/tryservicefabric) bei. Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Unter dem Link **ReadMe** finden Sie das Zertifikatkennwort sowie Anweisungen zum Konfigurieren verschiedener Umgebungen für die Verwendung des Zertifikats. Lassen Sie sowohl die**Willkommensseite** als auch die Seite mit der**Infodatei** geöffnet, da Sie einige der Anweisungen in den folgenden Schritten benötigen. 
 
 > [!Note]
 > Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte beim Registrieren für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte unter [Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md) ausführen, um einen Cluster in Ihrem Abonnement zu erstellen. 
@@ -98,7 +99,7 @@ Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugeh
 
 In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle sowie Service Fabric Explorer. 
 
-Um die Befehlszeilenschnittstelle verwenden zu können, müssen Sie auf der Grundlage der heruntergeladenen PFX-Datei eine PEM-Datei erstellen. Verwenden Sie den folgenden Befehl, um die Datei zu konvertieren. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PFX-Datei aus den Anweisungen auf der Seite mit der**Infodatei** kopieren.)
+Um die Befehlszeilenschnittstelle verwenden zu können, müssen Sie auf der Grundlage der heruntergeladenen PFX-Datei eine PEM-Datei erstellen. Verwenden Sie den folgenden Befehl, um die Datei zu konvertieren. (Für Partycluster können Sie einen spezifischen Befehl für Ihre PFX-Datei aus den Anweisungen auf der Seite mit der**Infodatei**kopieren.)
 
     ```bash
     openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
@@ -108,7 +109,7 @@ Zur Verwendung von Service Fabric Explorer müssen Sie die von der Partycluster-
 
 Importieren Sie das Zertifikat mit der von Ihnen bevorzugten Methode in Ihr System. Beispiel: 
 
-- Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei**angegebenen PowerShell-Befehl ausführen.
+- Unter Windows: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrem persönlichen Zertifikatspeicher (`Certificates - Current User\Personal\Certificates`) zu installieren. Alternativ können Sie den in der**Infodatei** angegebenen PowerShell-Befehl ausführen.
 - Auf einem Mac: Doppelklicken Sie auf die PFX-Datei, und befolgen Sie die Anweisungen, um das Zertifikat in Ihrer Keychain zu installieren.
 - Unter Ubuntu: Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
  

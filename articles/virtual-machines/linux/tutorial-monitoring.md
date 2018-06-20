@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 06/06/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f1dedc83d0d7040a4f7b9760c567437f58dde54
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839655"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Tutorial: Überwachen und Aktualisieren eines virtuellen Linux-Computers in Azure
 
@@ -43,13 +44,13 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-vm"></a>Erstellen eines virtuellen Computers
 
-Um die Diagnose und die Metriken in Aktion anzuzeigen, benötigen Sie einen virtuellen Computer. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupMonitor* am Standort *eastus*.
+Um die Diagnose und die Metriken in Aktion anzuzeigen, benötigen Sie einen virtuellen Computer. Erstellen Sie zunächst mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Das folgende Beispiel erstellt die Ressourcengruppe *myResourceGroupMonitor* am Standort *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Jetzt können Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) einen virtuellen Computer erstellen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
+Jetzt können Sie mit [az vm create](/cli/azure/vm#az-vm-create) einen virtuellen Computer erstellen. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt, und es werden SSH-Schlüssel generiert, sofern noch nicht unter *~/.ssh/* vorhanden:
 
 ```azurecli-interactive
 az vm create \
@@ -64,7 +65,7 @@ az vm create \
 
 Wenn virtuelle Linux-Computer starten, erfasst die Startdiagnoseerweiterung die Startausgabe und speichert sie in Azure Storage. Diese Daten können zum Beheben von Startproblemen bei virtuellen Computern verwendet werden. Die Startdiagnose wird nicht automatisch aktiviert, wenn Sie eine Linux-VM mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
 
-Vor dem Aktivieren der Startdiagnose muss ein Speicherkonto zum Speichern der Startprotokolle erstellt werden. Speicherkonten benötigen einen global eindeutigen Namen, der zwischen 3 und 24 Zeichen lang sein muss und nur Ziffern und Kleinbuchstaben enthalten darf. Sie erstellen ein Speicherkonto mit dem Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create). In diesem Beispiel wird eine zufällige Zeichenfolge verwendet, um einen eindeutigen Speicherkontonamen zu erstellen.
+Vor dem Aktivieren der Startdiagnose muss ein Speicherkonto zum Speichern der Startprotokolle erstellt werden. Speicherkonten benötigen einen global eindeutigen Namen, der zwischen 3 und 24 Zeichen lang sein muss und nur Ziffern und Kleinbuchstaben enthalten darf. Sie erstellen ein Speicherkonto mit dem Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create). In diesem Beispiel wird eine zufällige Zeichenfolge verwendet, um einen eindeutigen Speicherkontonamen zu erstellen.
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -82,7 +83,7 @@ Bei der Aktivierung der Startdiagnose wird der URI zum Blob Storage-Container be
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-Aktivieren Sie nun die Startdiagnose mit [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). Der `--storage`-Wert ist der Blob-URI, der im vorherigen Schritt erfasst wurde.
+Aktivieren Sie nun die Startdiagnose mit [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable). Der `--storage`-Wert ist der Blob-URI, der im vorherigen Schritt erfasst wurde.
 
 ```azurecli-interactive
 az vm boot-diagnostics enable \
@@ -93,19 +94,19 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>Anzeigen der Startdiagnose
 
-Wenn die Startdiagnose aktiviert ist, werden bei jedem Beenden und Starten des virtuellen Computers Informationen zum Startvorgang in eine Protokolldatei geschrieben. Heben Sie in diesem Beispiel zunächst die Zuordnung des virtuellen Computers mit dem Befehl [az vm deallocate](/cli/azure/vm#az_vm_deallocate) wie folgt auf:
+Wenn die Startdiagnose aktiviert ist, werden bei jedem Beenden und Starten des virtuellen Computers Informationen zum Startvorgang in eine Protokolldatei geschrieben. Heben Sie in diesem Beispiel zunächst die Zuordnung des virtuellen Computers mit dem Befehl [az vm deallocate](/cli/azure/vm#az-vm-deallocate) wie folgt auf:
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Starten Sie nun den virtuellen Computer mit dem Befehl [az vm start]( /cli/azure/vm#az_vm_stop) wie folgt:
+Starten Sie nun den virtuellen Computer mit dem Befehl [az vm start]( /cli/azure/vm#az-vm-stop) wie folgt:
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Sie erhalten die Startdiagnosedaten für *myVM* mithilfe des Befehls [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) wie folgt:
+Sie erhalten die Startdiagnosedaten für *myVM* mithilfe des Befehls [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) wie folgt:
 
 ```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
@@ -116,23 +117,17 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 Eine Linux-VM verfügt über einen dedizierten Host in Azure, mit dem sie interagiert. Es werden automatisch Metriken für den Host gesammelt, die folgendermaßen im Azure-Portal angezeigt werden können:
 
 1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
-1. Um die Leistung der Host-VM anzuzeigen, klicken Sie dem Blatt der VM auf **Metriken**, und wählen Sie dann eine der *[Host]*-Metriken unter **Verfügbare Metriken** aus.
+1. Um die Leistung des virtuellen Hostcomputers anzuzeigen, klicken Sie im Fenster des virtuellen Computers auf **Metriken**, und wählen Sie dann eine der *[Host]*-Metriken unter **Verfügbare Metriken** aus.
 
     ![Anzeigen von Hostmetriken](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>Installieren der Diagnoseerweiterung
 
-> [!IMPORTANT]
-> Dieses Dokument beschreibt Version 2.3 der Linux-Diagnoseerweiterung, die veraltet ist. Version 2.3 wird bis zum 30. Juni 2018 unterstützt.
->
-> Stattdessen kann Version 3.0 der Linux-Diagnoseerweiterung aktiviert werden. Weitere Informationen finden Sie in der [Dokumentation](./diagnostic-extension.md).
-
 Die grundlegenden Hostmetriken sind direkt verfügbar. Wenn Sie aber detailliertere und VM-spezifische Metriken anzeigen möchten, müssen Sie die Azure-Diagnose-Erweiterung auf dem virtuellen Computer installieren. Die Azure-Diagnose-Erweiterung ermöglicht das Abrufen zusätzlicher Überwachungs- und Diagnosedaten von virtuellen Computern. Sie können diese Leistungsmetriken anzeigen und basierend auf der VM-Leistung Benachrichtigungen erstellen. Die Diagnose-Erweiterung wird wie folgt über das Azure-Portal installiert:
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroup** und dann in der Ressourcenliste **myVM** aus.
-1. Klicken Sie auf **Diagnoseeinstellungen**. Die Liste zeigt, dass die *Startdiagnose* bereits im vorherigen Abschnitt aktiviert wurde. Klicken Sie auf das Kontrollkästchen für *Grundlegende Metriken*.
-1. Wählen Sie im Abschnitt *Speicherkonto* das Konto *mydiagdata[1234]* aus, das im vorherigen Abschnitt erstellt wurde.
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Klicken Sie auf **Diagnoseeinstellungen**. Wählen Sie im Dropdownmenü *Pick a storage account* (Speicherkonto auswählen) das im vorherigen Abschnitt erstellte Konto *mydiagdata[1234]* aus, sofern noch nicht geschehen.
+1. Klicken Sie auf die Schaltfläche **Überwachung auf Gastebene aktivieren**.
 
     ![Anzeigen von Diagnosemetriken](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -140,8 +135,8 @@ Die grundlegenden Hostmetriken sind direkt verfügbar. Wenn Sie aber detailliert
 
 Sie können die VM-Metriken auf die gleiche Weise anzeigen, wie Sie die Metriken zur Host-VM angezeigt haben:
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroup** und dann in der Ressourcenliste **myVM** aus.
-1. Um die Leistung des virtuellen Computers anzuzeigen, klicken Sie dem Blatt der VM auf **Metriken**, und wählen Sie dann eine der Diagnosemetriken unter **Verfügbare Metriken** aus.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+1. Um die Leistung des virtuellen Computers anzuzeigen, klicken Sie im Fenster des virtuellen Computers auf **Metriken**, und wählen Sie dann unter **Verfügbare Metriken** eine der Diagnosemetriken vom Typ *[Gast]* aus.
 
     ![Anzeigen von Metriken des virtuellen Computers](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
@@ -151,8 +146,8 @@ Sie können Warnungen auf Grundlage von bestimmten Leistungsmetriken erstellen. 
 
 Das folgende Beispiel erstellt eine Warnung für die durchschnittliche CPU-Auslastung.
 
-1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroup** und dann in der Ressourcenliste **myVM** aus.
-2. Klicken Sie auf dem Blatt des virtuellen Computers auf **Warnungsregeln** und dann am oberen Rand des Warnungsblatts auf **Metrikwarnung hinzufügen**.
+1. Klicken Sie im Azure-Portal auf **Ressourcengruppen**, und wählen Sie **myResourceGroupMonitor** und dann in der Ressourcenliste **myVM** aus.
+2. Klicken Sie auf **Warnungen (klassisch)** und anschließend oben im Warnungsfenster auf **Metrikwarnung hinzufügen (klassisch)**.
 3. Geben Sie einen **Namen** für die Warnung ein, z.B. *myAlertRule*.
 4. Um eine Warnung auszulösen, wenn der CPU-Prozentsatz 1.0 für fünf Minuten überschreitet, belassen Sie alle anderen Standardeinstellungen ausgewählt.
 5. Aktivieren Sie optional das Kontrollkästchen *E-Mail-Besitzer, Mitwirkende und Leser*, um E-Mail-Benachrichtigungen zu senden. Als Standardaktion wird im Portal eine Benachrichtigung angezeigt.
@@ -171,7 +166,7 @@ So aktivieren Sie die Updateverwaltung für Ihre VM
 
 1. Wählen Sie auf der linken Seite des Bildschirms **Virtuelle Computer** aus.
 2. Wählen Sie einen virtuellen Computer in der Liste aus.
-3. Klicken Sie auf dem VM-Bildschirm im Abschnitt **Vorgänge** auf **Updateverwaltung**. Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet.
+3. Klicken Sie auf dem Bildschirm des virtuellen Computers im Abschnitt **Vorgänge** auf **Updateverwaltung**. Der Bildschirm **Updateverwaltung aktivieren** wird geöffnet.
 
 Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist.
 Die Überprüfung umfasst Prüfungen für einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto, und ob die Lösung im Arbeitsbereich vorhanden ist.
@@ -191,7 +186,7 @@ Wenn beim Onboarding festgestellt wird, dass eine der folgenden Voraussetzungen 
 * [Automation](../../automation/automation-offering-get-started.md)
 * Ein [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) ist auf dem virtuellen Computer aktiviert.
 
-Der Bildschirm **Updateverwaltung** wird geöffnet. Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
+Der Bildschirm **Updateverwaltung** wird geöffnet. Konfigurieren Sie den Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen.
 
 ![Aktivieren der Updateverwaltungslösung](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -218,7 +213,7 @@ Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicke
   ![Bildschirm für Updatezeitplan-Einstellungen](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
 * **Zeitplaneinstellungen**: Sie können entweder Standarddatum und Standarduhrzeit (30 Minuten nach der aktuellen Zeit) akzeptieren oder einen anderen Zeitpunkt angeben.
-  Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Klicken Sie unter „Wiederholung“ auf die Option „Wiederholt“, um einen sich wiederholenden Zeitplan einzurichten.
+  Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie zum Einrichten eines sich wiederholenden Zeitplans unter „Wiederholung“ die Option „Serie“ aus.
 
   ![Bildschirm für Updatezeitplan-Einstellungen](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
@@ -248,9 +243,9 @@ Die Tabelle rechts enthält eine detaillierte Analyse der einzelnen Updates und 
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 
-Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks anzuzeigen, dass für die Verwaltung der Updatebereitstellung auf der Ziel-VM verantwortlich ist.
+Klicken Sie auf die Kachel **Ausgabe**, um den Auftragsdatenstrom des Runbooks anzuzeigen, das für die Verwaltung der Updatebereitstellung auf dem virtuellen Zielcomputer verantwortlich ist.
 
-Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern aus der Bereitstellung anzuzeigen.
+Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Bereitstellung anzuzeigen.
 
 ## <a name="monitor-changes-and-inventory"></a>Überwachen von Änderungen und Bestand
 
@@ -264,7 +259,7 @@ So aktivieren Sie die Änderungs- und Bestandsverwaltung für Ihren virtuellen C
 2. Wählen Sie einen virtuellen Computer in der Liste aus.
 3. Klicken Sie auf dem Bildschirm des virtuellen Computers im Abschnitt **Vorgänge** auf **Bestand** oder **Änderungsnachverfolgung**. Der Bildschirm **Änderungsnachverfolgung und Bestand aktivieren** wird geöffnet.
 
-Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen. Die Lösungen sind zwar im Menü getrennt, es handelt sich jedoch um dieselbe Lösung. Wenn Sie eine der Lösungen aktivieren, wird automatisch auch die andere Lösung für Ihren virtuellen Computer aktiviert.
+Konfigurieren Sie den Standort, den Log Analytics-Arbeitsbereich und das Automation-Konto, und klicken Sie auf **Aktivieren**. Wenn die Felder ausgegraut sind, bedeutet dies, dass eine andere Automatisierungslösung für die VM aktiviert ist und derselbe Arbeitsbereich und dasselbe Automation-Konto verwendet werden müssen. Die Lösungen sind zwar im Menü getrennt, es handelt sich jedoch um dieselbe Lösung. Wenn Sie eine der Lösungen aktivieren, wird automatisch auch die andere Lösung für Ihren virtuellen Computer aktiviert.
 
 ![Aktivieren der Änderungs- und Bestandsnachverfolgung](./media/tutorial-monitoring/manage-inventory-enable.png)
 

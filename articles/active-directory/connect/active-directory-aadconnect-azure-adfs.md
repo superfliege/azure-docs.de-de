@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595198"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.

@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 04/27/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 5151a4ac930f5f6fb11a9aad7fb2ab872ef04e6c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 91759155a828c9da4de7f2190b1d27fd1d312bd6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601665"
 ---
 # <a name="audit-sql-database-encryption"></a>Überwachen der SQL-Datenbankverschlüsselung
 
@@ -103,4 +104,4 @@ az policy assignment delete --name "SQL TDE Audit" --resource-group myResourceGr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Zusätzliche Beispielvorlagen für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](../json-samples.md).
+- Sehen Sie sich weitere Beispiele unter [Azure Policy-Beispiele](../json-samples.md) an.

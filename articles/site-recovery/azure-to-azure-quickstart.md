@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d52691dbec932a3515c90e757863be01ade086cc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208837"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715954"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
-Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird. Die Azure-zu-Azure-Replikation befindet sich derzeit in der Vorschau.
+Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -47,7 +47,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 Nach Abschluss des Replikationsauftrags können Sie den Replikationsstatus überprüfen, die Replikationseinstellungen ändern und die Bereitstellung testen.
 
-1. Klicken Sie im VM-Menü auf **Notfallwiederherstellung (Vorschau)**.
+1. Klicken Sie im VM-Menü auf **Notfallwiederherstellung**.
 2. Sie können die Replikationsintegrität, die erstellten Wiederherstellungspunkte und die Quell- und Zielregionen auf der Karte überprüfen.
 
    ![Replikationsstatus](media/azure-to-azure-quickstart/replication-status.png)

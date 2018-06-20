@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 39708248160b029185b64ed927a453562e1003f2
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 309bd35eabe1d5c4af9a35d5f2b879bce225a402
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604368"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines VM-Images in Azure Stack
 
@@ -108,7 +109,7 @@ Auf Images muss über einen Blobspeicher-URI verwiesen werden können. Bereiten 
     Beispiel: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
     Sie können einen Blobspeicher-URI für ein `osDisk`-Element angeben.  
 
-    Weitere Informationen zum Add-AzsPlatformimage-Cmdlet finden Sie in der [Dokumentation zum Azure Stack-Bedienermodul](https://docs.microsoft.com/powershell/module/) für Microsoft PowerShell.
+    Weitere Informationen finden Sie in der PowerShell-Referenz für das Cmdlet [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) und das Cmdlet [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject).
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Hinzufügen eines benutzerdefinierten VM-Images zum Marketplace mit PowerShell
 

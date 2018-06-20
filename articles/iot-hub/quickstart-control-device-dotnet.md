@@ -1,23 +1,21 @@
 ---
 title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (.NET) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei C#-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Back-End-Anwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
+ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: d0233d2bd68397491e22cc7eb6993d0909f92218
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 8eefb66e50b4dfd601428eec90784b0991276b5a
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807888"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (.NET)
 
@@ -91,7 +89,7 @@ Notieren Sie sich die Dienstverbindungszeichenfolge (`Hostname=...=`). Dieser We
 
 Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her, sendet simulierte Telemetriedaten und lauscht auf Aufrufe direkter Methoden aus Ihrem Hub. In dieser Schnellstartanleitung weist der Aufruf einer direkten Methode aus dem Hub das Gerät an, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
 
-1. Navigieren Sie in einem Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **Quickstarts\simulated-device-2**.
+1. Navigieren Sie in einem Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device-2**.
 
 1. Öffnen Sie die Datei **SimulatedDevice.cs** in einem Text-Editor Ihrer Wahl.
 
@@ -117,7 +115,7 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
 Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihre IoT Hub-Instanz Aufrufe direkter Methoden an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
 
-1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie dann zum Ordner **Quickstarts\back-end-application**.
+1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\back-end-application**.
 
 1. Öffnen Sie die Datei **BackEndApplication.js** in einem Text-Editor Ihrer Wahl.
 
@@ -156,4 +154,4 @@ In dieser Schnellstartanleitung haben Sie in einer Back-End-Anwendung eine direk
 Um zu erfahren, wie Sie Gerät-zu-Cloud-Nachrichten an verschiedene Ziele in der Cloud weiterleiten, fahren Sie mit dem nächsten Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](iot-hub-csharp-csharp-process-d2c.md)
+> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](tutorial-routing.md)

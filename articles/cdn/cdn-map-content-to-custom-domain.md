@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196503"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261269"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 
@@ -134,7 +134,7 @@ Nachdem Sie Ihre benutzerdefinierte Domäne registriert haben, können Sie sie d
    Es kann einige Zeit dauern, bis die neuen Einstellungen der benutzerdefinierten Domäne für alle CDN-Edgeknoten übernommen werden: 
     - Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
     - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
-    - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen.   
+    - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen.   
 
 
 ## <a name="verify-the-custom-domain"></a>Überprüfen der benutzerdefinierten Domäne

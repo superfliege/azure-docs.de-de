@@ -12,33 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/22/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: d54f392eddfcca99e7fe0b037b9efd0a4e90433c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 848df59b01cc0c03b9a5f3dae2644d469c8651bb
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234885"
 ---
 # <a name="what-is-azure-stack"></a>Was ist Azure Stack?
 
-Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste über das Rechenzentrum Ihrer Organisation bereitstellen können.  Azure Stack soll in gängigen Szenarien (etwa in Edge-Umgebungen und getrennten Umgebungen) neue Möglichkeiten für Ihre modernen Anwendungen eröffnen und zur Erfüllung spezifischer Sicherheits- und Konformitätsanforderungen beitragen.  Azure Stack wird in zwei auf Ihre Anforderungen abgestimmten Bereitstellungsoptionen angeboten.
+Microsoft Azure Stack ist eine Hybrid Cloud-Plattform, die das Bereitstellen von Azure-Diensten in Ihrem Datencenter ermöglicht. Diese Plattform bietet flexible Unterstützung für sich verändernde Geschäftsanforderungen. Azure Stack kann für Ihre modernen Anwendungen wie etwa Edge-Umgebungen und getrennte Umgebungen neue Möglichkeiten eröffnen und zur Erfüllung spezifischer Sicherheits- und Konformitätsanforderungen beitragen.
+
+Azure Stack wird in zwei auf Ihre Anforderungen abgestimmten Bereitstellungsoptionen angeboten.
 
 ## <a name="azure-stack-integrated-systems"></a>Integrierte Azure Stack-Systeme
-Integrierte Azure Stack-Systeme werden im Rahmen einer Partnerschaft zwischen Microsoft und [Hardwarepartnern](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) angeboten. Dadurch entsteht eine ausgewogene Lösung mit cloudbasierten Innovationen und komfortabler Verwaltung.  Bei Azure Stack handelt es sich um ein integriertes System mit Hardware und Software. Somit bietet die Plattform genau das richtige Maß an Flexibilität und Kontrolle bei gleichzeitiger Bereitstellung von cloudbasierten Innovationen.  Integrierte Azure Stack-Systeme haben eine Größe von vier bis zwölf Knoten, und der Support wird vom Hardwarepartner und von Microsoft gemeinsam bereitgestellt.  Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien für Ihre Produktionsworkloads.    
+Integrierte Azure Stack-Systeme werden im Rahmen einer Partnerschaft zwischen Microsoft und [Hardwarepartnern](https://azure.microsoft.com/overview/azure-stack/integrated-systems/) angeboten. Dadurch entsteht eine Lösung mit cloudbasierten Innovationen und komfortabler Computeverwaltung. Als integriertes Hardware- und Softwaresystem bietet Ihnen Azure Stack nicht nur genau die Flexibilität und Kontrolle, die Sie benötigen, sondern auch die Möglichkeit zur Nutzung innovativer Cloudfeatures. Integrierte Azure Stack-Systeme haben eine Größe von vier bis zwölf Knoten, und der Support wird vom Hardwarepartner und von Microsoft gemeinsam bereitgestellt.  Mit integrierten Azure Stack-Systemen ermöglichen Sie neue Szenarien und stellen neue Lösungen für Ihre Produktionsworkloads bereit.
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
-[Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) von Microsoft ist eine Einzelknotenbereitstellung von Azure Stack, mit der Sie Azure Stack evaluieren und kennenlernen können.  Sie können das ASDK auch für Entwicklungsarbeiten mit APIs und Tools verwenden, die mit Azure konsistent sind. Das ASDK ist nicht für die Verwendung in einer Produktionsumgebung vorgesehen.
+
+Das [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) von Microsoft ist eine Einzelknotenbereitstellung von Azure Stack, mit der Sie Azure Stack evaluieren und kennenlernen können.  Sie können das ASDK auch für Entwicklungsarbeiten zum Erstellen von Apps mit APIs und Tools verwenden, die mit Azure konsistent sind.
+
+>[!Note]
+>Das ASDK ist nicht für die Verwendung in einer Produktionsumgebung vorgesehen.
 
 Für das ASDK gelten folgende Einschränkungen:
+
 * Das ASDK wird einem einzelnen Identitätsanbieter zugeordnet. Dabei handelt es sich entweder um Azure Active Directory (Azure AD) oder um Active Directory-Verbunddienste (Active Directory Federation Services, AD FS). Sie können mehrere Benutzer in diesem Verzeichnis erstellen und jedem Benutzer Abonnements zuweisen.
-* Da alle Komponenten auf einem einzigen Computer bereitgestellt werden, stehen für Mandantenressourcen nur begrenzte physische Ressourcen zur Verfügung. Diese Konfiguration ist nicht für die Beurteilung von Skalierung oder Leistung vorgesehen.
-* Netzwerkszenarios sind aufgrund der Anforderungen an einen einzelnen Host mit einer NIC beschränkt.  
+* Da Azure Stack-Komponenten auf einem Hostcomputer bereitgestellt werden, sind für Mandantenressourcen die verfügbaren physischen Ressourcen begrenzt. Diese Konfiguration ist nicht für die Beurteilung von Skalierung oder Leistung vorgesehen.
+* Netzwerkszenarien sind aufgrund der Bereitstellungsanforderungen für Einzelhosts und NICs eingeschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Wichtige Features und Konzepte](azure-stack-key-features.md)
 
-[Azure Stack: Eine Erweiterung von Azure (PDF)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
-
+- [Wichtige Features und Konzepte](azure-stack-key-features.md)
+- [Azure Stack: Eine Erweiterung von Azure (PDF)](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)

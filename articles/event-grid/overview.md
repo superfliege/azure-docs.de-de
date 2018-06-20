@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/27/2018
+ms.date: 06/01/2018
 ms.author: babanisa
-ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303976"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725240"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
@@ -71,8 +71,6 @@ Derzeit unterstützen die folgenden Azure-Dienste das Verarbeiten von Ereignisse
 * Queue Storage
 * WebHooks
 
-Wenn Sie Azure Functions als Handler einsetzen, verwenden Sie den Event Grid-Trigger anstelle der generischen HTTP-Trigger. Event Grid überprüft Event Grid-Funktionstrigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
-
 Links zu Artikeln zur Verwendung der einzelnen Ereignishandler finden Sie unter [Ereignishandler in Azure Event Grid](event-handlers.md).
 
 ## <a name="concepts"></a>Konzepte
@@ -80,7 +78,7 @@ Links zu Artikeln zur Verwendung der einzelnen Ereignishandler finden Sie unter 
 Es gibt fünf Konzepte in Azure Event Grid, die Sie nutzen können:
 
 * **Ereignisse**: Was ist passiert?
-* **Ereignisquellen/-herausgeber**: Wo das Ereignis stattgefunden hat.
+* **Ereignisquellen**: Wo das Ereignis stattgefunden hat
 * **Themen**: Der Endpunkt, an den Herausgeber Ereignisse senden.
 * **Ereignisabonnements**: Der Endpunkt oder integrierte Mechanismus zum Weiterleiten von Ereignissen, und zwar mitunter zu mehreren Handlern. Abonnements werden auch vom Handler verwendet, um eingehende Ereignisse intelligent zu filtern.
 * **Ereignishandler**: Die App oder der Dienst, die/der auf das Ereignis reagiert.
@@ -126,7 +124,7 @@ Event Grid verknüpft Ihre App mit anderen Diensten. Sie können z.B. ein benutz
 
 ## <a name="how-much-does-event-grid-cost"></a>Was kostet Event Grid?
 
-Das Preismodell von Azure Event Grid orientiert sich an einer Zahlung pro Ereignis, sodass Sie nur für die tatsächliche Verwendung zahlen. Die ersten 100.000 Vorgänge pro Monat sind kostenlos. Vorgänge sind definiert als Ereigniseingänge, erweiterte Übereinstimmungen, Übermittlungsversuche und Verwaltungsaufrufe. Details finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/event-grid/).
+Das Preismodell von Azure Event Grid orientiert sich an einer Zahlung pro Ereignis, sodass Sie nur für die tatsächliche Verwendung zahlen. Die ersten 100.000 Vorgänge pro Monat sind kostenlos. Vorgänge sind als Ereigniseingang, Abonnementübermittlungsversuche, Verwaltungsaufrufe und Filterung nach Betreffsuffix definiert. Details finden Sie auf der Seite mit der [Preisübersicht](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

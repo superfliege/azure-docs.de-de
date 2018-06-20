@@ -1,23 +1,21 @@
 ---
 title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub (Python) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei Python-Beispielanwendungen aus. Eine dieser Anwendungen ist eine Back-End-Anwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 42d70fe28b07f81f4f417612e323359c6dec9468
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c26f41ce1d3a58b0b3a0fe35823d8dcb04845b6e
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808586"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)
 
@@ -27,7 +25,7 @@ IoT Hub ist ein Azure-Dienst, mit dem Sie große Mengen an Telemetriedaten von I
 
 In dieser Schnellstartanleitung werden zwei vorab geschriebene Python-Anwendungen verwendet:
 
-* Eine simulierte Geräteanwendung, das auf direkte Methoden reagiert, die von einer Back-End-Anwendung aufgerufen werden. Um die direkten Methodenaufrufe zu empfangen, stellt diese Anwendung eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her.
+* Eine simulierte Geräteanwendung, das auf direkte Methoden reagiert, die von einer Back-End-Anwendung aufgerufen werden. Um die Aufrufe der direkten Methode zu empfangen, stellt diese Anwendung eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her.
 * Eine Back-End-Anwendung, die die direkten Methoden auf dem simulierten Gerät aufruft. Um eine direkte Methode auf einem Gerät aufzurufen, stellt diese Anwendung eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -68,8 +66,10 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName}--device-id MyPythonDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
     ```
+
+    Wenn Sie einen anderen Namen für Ihr Gerät auswählen, aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor sie ausgeführt werden.
 
 1. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
@@ -89,9 +89,9 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 ## <a name="listen-for-direct-method-calls"></a>Lauschen auf direkte Methodenaufrufe
 
-Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her, sendet simulierte Telemetriedaten und lauscht auf direkte Methodenaufrufe aus Ihrem Hub. In dieser Schnellstartanleitung teilt der direkte Methodenaufruf aus dem Hub dem Gerät mit, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
+Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her, sendet simulierte Telemetriedaten und lauscht auf Aufrufe direkter Methoden aus Ihrem Hub. In dieser Schnellstartanleitung weist der Aufruf einer direkten Methode aus dem Hub das Gerät an, das Intervall zu ändern, in dem es Telemetriedaten sendet. Das simulierte Gerät sendet eine Bestätigung an Ihren Hub, nachdem es die direkte Methode ausgeführt hat.
 
-1. Navigieren Sie in einem Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie anschließend zum Ordner **Quickstarts\simulated-device-2**.
+1. Navigieren Sie in einem Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device-2**.
 
 1. Öffnen Sie die Datei **SimulatedDevice.py** in einem Text-Editor Ihrer Wahl.
 
@@ -109,15 +109,15 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
     python SimulatedDevice.py
     ```
 
-    Der folgende Screenshot zeigt die Ausgabe, während die simulierte Geräteanwendung Telemetriedaten an Ihre IoT Hub-Instanz sendet:
+    Der folgende Screenshot zeigt die Ausgabe, während die Anwendung zur Simulation eines Geräts Telemetriedaten an Ihre IoT Hub-Instanz sendet:
 
     ![Ausführen des simulierten Geräts](media/quickstart-control-device-python/SimulatedDevice-1.png)
 
 ## <a name="call-the-direct-method"></a>Aufrufen der direkten Methode
 
-Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihre IoT Hub-Instanz direkte Methodenaufrufe an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
+Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt in Ihrer IoT Hub-Instanz her. Die Anwendung sendet über Ihre IoT Hub-Instanz Aufrufe direkter Methoden an ein Gerät und lauscht auf Bestätigungen. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt.
 
-1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie dann zum Ordner **Quickstarts\back-end-application**.
+1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des Python-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\back-end-application**.
 
 1. Öffnen Sie die Datei **BackEndApplication.py** in einem Text-Editor Ihrer Wahl.
 
@@ -135,13 +135,13 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
     python BackEndApplication.py
     ```
 
-    Der folgende Screenshot zeigt die Ausgabe, nachdem die Anwendung einen direkten Methodenaufruf an das Gerät ausgeführt und eine Bestätigung empfangen hat:
+    Der folgende Screenshot zeigt die Ausgabe, nachdem die Anwendung einen Aufruf einer direkten Methode an das Gerät gerichtet und eine Bestätigung empfangen hat:
 
     ![Ausführen der Back-End-Anwendung](media/quickstart-control-device-python/BackEndApplication.png)
 
     Nachdem Sie die Back-End-Anwendung ausgeführt haben, sehen Sie eine Nachricht im Konsolenfenster, in dem das simulierte Gerät ausgeführt wird, und die Häufigkeit, mit der das Gerät Nachrichten sendet, ändert sich:
 
-    ![Änderungen im simulierten Client](media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![Änderung im simulierten Client](media/quickstart-control-device-python/SimulatedDevice-2.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -151,9 +151,9 @@ Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie von einer Back-End-Anwendung aus eine direkte Methode auf einem Gerät aufgerufen und in einer simulierten Geräteanwendung auf den direkten Methodenaufruf geantwortet.
+In dieser Schnellstartanleitung haben Sie in einer Back-End-Anwendung eine direkte Methode auf einem Gerät aufgerufen und in einer simulierten Geräteanwendung auf den Aufruf einer direkten Methode geantwortet.
 
 Um zu erfahren, wie Sie Gerät-zu-Cloud-Nachrichten an verschiedene Ziele in der Cloud weiterleiten, fahren Sie mit dem nächsten Tutorial fort.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](iot-hub-python-python-process-d2c.md)
+> [Tutorial: Weiterleiten von Telemetriedaten zur Verarbeitung an verschiedene Endpunkte](tutorial-routing.md)

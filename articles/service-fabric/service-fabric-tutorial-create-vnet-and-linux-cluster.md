@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/22/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: ff57aec76171b45dbebff928f2898bd5f91ec1c2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 53adf8045e1c947466cf5080b8c967a928d2dc24
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365541"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643225"
 ---
 # <a name="tutorial-deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 Dieses Tutorial ist der erste Teil einer Serie. Es wird beschrieben, wie Sie einen Linux Service Fabric-Cluster in einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) und eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/security-overview.md) bereitstellen, indem Sie die Azure-Befehlszeilenschnittstelle und eine Vorlage verwenden. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können. Informationen zum Erstellen eines Windows-Clusters mithilfe von PowerShell finden Sie unter [Bereitstellen eines sicheren Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
@@ -157,7 +157,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Herstellen einer Verbindung mit dem sicheren Cluster
-Stellen Sie eine Verbindung mit dem Cluster über den Service Fabric-CLI-Befehl `sfctl cluster select` unter Verwendung Ihres Schlüssels her.  Verwenden Sie für ein selbstsigniertes Zertifikat nur die Option **--no-verify**.
+Stellen Sie mit dem Service Fabric-CLI-Befehl `sfctl cluster select` unter Verwendung Ihres Schlüssels eine Verbindung mit dem Cluster her.  Verwenden Sie für ein selbstsigniertes Zertifikat nur die Option **--no-verify**.
 
 ```azurecli
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \

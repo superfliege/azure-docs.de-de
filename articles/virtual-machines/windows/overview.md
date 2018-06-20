@@ -16,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ff709d021c9d4201301edd9890f1e4a94f555313
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 105eb95ed28d9a278d60d538aabaadb412c16f4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267110"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Übersicht über virtuelle Windows-Computer in Azure
 
@@ -75,7 +76,7 @@ Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../a
 ### <a name="operating-system-disks-and-images"></a>Betriebssystem-Datenträger und Images
 Betriebssystem (Operating System, OS) und Daten werden bei virtuellen Computern auf [virtuellen Festplatten (Virtual Hard Disks, VHDs)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) gespeichert. VHDs werden auch für die Images verwendet, die Sie auswählen können, um ein Betriebssystem zu installieren. 
 
-Azure bietet zahlreiche [Marketplace-Images](https://azure.microsoft.com/marketplace/virtual-machines/) für verschiedene Versionen und Arten von Windows Server-Betriebssystemen. Marketplace-Images werden anhand von Herausgeber, Angebot, SKU und Version (üblicherweise die aktuelle Version) identifiziert. 
+Azure bietet zahlreiche [Marketplace-Images](https://azure.microsoft.com/marketplace/virtual-machines/) für verschiedene Versionen und Arten von Windows Server-Betriebssystemen. Marketplace-Images werden anhand von Herausgeber, Angebot, SKU und Version (üblicherweise die aktuelle Version) identifiziert. Es werden nur 64-Bit-Betriebssysteme unterstützt. Weitere Informationen zu den unterstützten Gastbetriebssystemen, Rollen und Features finden Sie unter [Microsoft-Serversoftwaresupport für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
 Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen zu einem Image:
 

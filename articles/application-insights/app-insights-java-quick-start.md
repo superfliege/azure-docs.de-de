@@ -10,11 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 0198614f34b5e4ad31d9cf19f6799913dc71e21f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798439"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -33,6 +34,8 @@ So führen Sie diesen Schnellstart durch:
 Wenn Sie noch nicht über ein Java Dynamic Web Project verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Java-Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java) eines erstellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+Wenn Sie das Spring-Framework bevorzugen, lesen Sie den Leitfaden zum [Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 

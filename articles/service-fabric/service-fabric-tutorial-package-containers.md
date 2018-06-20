@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98c1995aa9051029049711ece18aeb23c444f1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365378"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642793"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung
 
@@ -237,7 +237,7 @@ Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstell
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Erstellen der Anwendung und Bereitstellen im Cluster
 Sie können die Anwendung mithilfe der Service Fabric-Befehlszeilenschnittstelle im Azure-Cluster bereitstellen. Wenn die Service Fabric-CLI nicht auf dem Computer installiert ist, installieren Sie sie mittels [dieser](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) Anweisungen. 
 
-Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her. Ersetzen Sie den Platzhalterendpunkt durch Ihren eigenen Endpunkt. Der Endpunkt muss wie unten angegeben einer vollständigen URL entsprechen.
+Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her. Ersetzen Sie den Beispielendpunkt durch Ihren eigenen Endpunkt. Der Endpunkt muss wie unten angegeben einer vollständigen URL entsprechen.
 
 ```bash
 sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify

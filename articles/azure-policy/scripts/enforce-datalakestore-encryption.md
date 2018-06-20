@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 04/27/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 54880ec79d0530d952c81696da0d4c1d55cba128
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 470adb5f27c8a5318197c100a8f973319d9c5001
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602430"
 ---
 # <a name="require-data-lake-store-encryption"></a>Data Lake Store-Verschlüsselung erforderlich
 
@@ -49,7 +50,7 @@ Mit dieser integrierten Richtlinie werden alle Data Lake Store-Konten abgelehnt,
 }
 ```
 
-Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal), mit [PowerShell](#deploy-with-powershell) oder mit der [Azure CLI](#deploy-with-azure-cli) bereitstellen. Zum Abrufen der integrierten Richtlinie verwenden Sie die ID `a7ff3161-0087-490a-9ad9-ad6217f4f43a`.
+Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal), mit [PowerShell](#deploy-with-powershell) oder mit der [Azure CLI](#deploy-with-azure-cli) bereitstellen. Verwenden Sie zum Abrufen der integrierten Richtlinie die ID `a7ff3161-0087-490a-9ad9-ad6217f4f43a`.
 
 ## <a name="deploy-with-the-portal"></a>Bereitstellen über das Portal
 
@@ -91,4 +92,4 @@ az policy assignment delete --name "Data Lake Store encryption" --resource-group
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Zusätzliche Beispielvorlagen für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](../json-samples.md).
+- Sehen Sie sich weitere Beispiele unter [Azure Policy-Beispiele](../json-samples.md) an.

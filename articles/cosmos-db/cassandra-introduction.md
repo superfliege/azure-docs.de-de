@@ -3,21 +3,19 @@ title: Einführung in die Cassandra-API für Azure Cosmos DB | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie Azure Cosmos DB für das „Lift & Shift“ vorhandener Anwendungen sowie das Erstellen neuer Anwendungen mithilfe der Cassandra-API unter Verwendung der Cassandra-Treiber und der bereits vertrauten CQL verwenden können.
 services: cosmos-db
 author: govindk
-manager: ''
-documentationcenter: ''
-ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-cassandra
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 65ab01031ed0fe554ef162f0115bdda39fd1c80b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: edc8ba7f8dd52a5facbfeb930a8660b082d72877
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795270"
 ---
 # <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Einführung in Azure Cosmos DB: Apache Cassandra-API
 
@@ -57,7 +55,7 @@ Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosm
 
 **Auswahl der Konsistenzebene**: Azure Cosmos DB stellt fünf wohl definierte Konsistenzebenen zur Auswahl, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Diese Konsistenzebenen sind: „Strong“ (Sicher), „Bounded Staleness“ (Begrenzte Veraltung), „Session“ (Sitzung), „Consistent Prefix“ (Präfixkonsistenz) und „Eventual“ (Letztlich). Mit diesen granularen, gut abgegrenzten Konsistenzebenen können Entwickler fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz schließen. Weitere Informationen finden Sie unter [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung](consistency-levels.md). 
 
-**Unternehmensniveau**: Azure Cosmos DB bietet standardmäßig Sicherheit und Compliance und somit [Compliancezertifizierungen](https://www.microsoft.com/trustcenter), um sicherzustellen, dass Benutzer die Plattform verwenden können, ohne sich Gedanken über Complianceprobleme zu machen. Azure Cosmos DB bietet außerdem Verschlüsselung ruhender Daten sowie von Daten während der Übertragung, eine IP-Firewall und Überwachungsprotokolle für Aktivitäten auf Steuerungsebene.  
+**Für große Unternehmen geeignet**: In Azure Cosmos DB stehen [Compliancezertifizierungen](https://www.microsoft.com/trustcenter) zur Verfügung, um die sichere Nutzung der Plattform durch Benutzer sicherzustellen. Azure Cosmos DB bietet außerdem Verschlüsselung ruhender Daten sowie von Daten während der Übertragung, eine IP-Firewall und Überwachungsprotokolle für Aktivitäten auf Steuerungsebene.  
 
 <a id="sign-up-now"></a>
 ## <a name="sign-up-now"></a>Jetzt anmelden 

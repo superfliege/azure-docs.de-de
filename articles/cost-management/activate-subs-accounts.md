@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297970"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivieren von Azure-Abonnements und -Konten mit Azure Cost Management
 
@@ -95,14 +96,39 @@ Sie können die Probleme wie folgt beheben:
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 2. Generieren Sie den Azure Enterprise Agreement-Schlüssel für die Verwendung mit Azure Cost Management. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Cost Management kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend.
-
 Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure Enterprise Agreement-API-Schlüssel für die Einrichtung von Azure Cost Management generieren können. Befolgen Sie hierzu diese Anweisungen:
 
 - [Überblick über Berichterstellungs-APIs für Unternehmenskunden](../billing/billing-enterprise-api.md)
 - [Microsoft Azure Enterprise Portal-Berichterstellungs-API](https://ea.azure.com/helpdocs/reportingAPI) unter **Aktivieren des Datenzugriffs für die API**
 
 Unter Umständen müssen Sie auch Abteilungsadministratoren, Kontobesitzern und Unternehmensadministratoren Berechtigungen zum _Anzeigen von Gebühren_ per Abrechnungs-API gewähren.
+
+Cost Management kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector**.
+
+```
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#Tenant - enter your tenant ID or Name
+$tenant = "<ReplaceWithYourTenantID>"
+
+#Cloudyn Collector application ID
+$appId = "83e638ef-7885-479f-bbe8-9150acccdb3d"
+
+#URL to activate the consent screen
+$url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&response_type=code&client_id="+$appId+"&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FCloudynJava&prompt=consent"
+
+#Choose your browser, the default is Internet Explorer
+
+#Chrome
+#[System.Diagnostics.Process]::Start("chrome.exe", "--incognito $url")
+
+#Firefox
+#[System.Diagnostics.Process]::Start("firefox.exe","-private-window $url" )
+
+#IExplorer
+[System.Diagnostics.Process]::Start("iexplore.exe","$url -private" )
+
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

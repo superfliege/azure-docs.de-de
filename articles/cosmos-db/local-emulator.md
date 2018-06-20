@@ -2,24 +2,21 @@
 title: Lokale Entwicklung mit dem Azure Cosmos DB-Emulator | Microsoft-Dokumentation
 description: Mit dem Azure Cosmos DB-Emulator können Sie Ihre Anwendung kostenlos lokal entwickeln und testen, ohne ein Azure-Abonnement zu erstellen.
 services: cosmos-db
-documentationcenter: ''
 keywords: Azure Cosmos DB-Emulator
 author: David-Noble-at-work
 manager: kfile
 editor: ''
-ms.assetid: 90b379a6-426b-4915-9635-822f1a138656
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 109bd61963b918f2a20c48a5bf7bd89dc353db96
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6869698f2e6dca321d371bb22ded316f32cdeb51
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824093"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -55,7 +52,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 > * Sammeln von Ablaufverfolgungsdateien
 > * Problembehandlung
 
-Es wird empfohlen, als Einstieg das folgende Video anzusehen, in dem Kirill Gavrylyuk Ihnen die ersten Schritte mit dem Azure Cosmos DB-Emulator zeigt. Beachten Sie, dass sich das Video auf den DocumentDB-Emulator bezieht, das Tool selbst jedoch nach Aufzeichnung des Videos in Azure Cosmos DB-Emulator umbenannt wurde. Alle Informationen im Video für den Azure Cosmos DB-Emulator sind weiterhin korrekt. 
+Es wird empfohlen, als Einstieg das folgende Video anzusehen, in dem Kirill Gavrylyuk Ihnen die ersten Schritte mit dem Azure Cosmos DB-Emulator zeigt. Das Video bezieht sich auf den DocumentDB-Emulator, das Tool selbst wurde jedoch nach Aufzeichnung des Videos in Azure Cosmos DB-Emulator umbenannt. Alle Informationen im Video für den Azure Cosmos DB-Emulator sind weiterhin korrekt. 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
 > 
@@ -69,6 +66,7 @@ Wir haben zwar eine sehr detailgetreue Emulation des tatsächlichen Azure Cosmos
 ## <a name="differences-between-the-emulator-and-the-service"></a>Unterschiede zwischen dem Emulator und dem Dienst 
 Da der Azure Cosmos DB-Emulator eine emulierte Umgebung bereitstellt, die auf einer lokalen Entwicklerarbeitsstation ausgeführt wird, gibt es einige funktionelle Unterschiede zwischen dem Emulator und einem Azure Cosmos DB-Konto in der Cloud:
 
+* Derzeit bietet der Daten-Explorer im Emulator nur für SQL-API-Sammlungen und MongoDB-Sammlungen Unterstützung. Tabellen-, Graph- und Cassandra-APIs werden noch nicht unterstützt.  
 * Der Azure Cosmos DB-Emulator unterstützt nur ein einziges festgelegtes Konto und einen bekannten Hauptschlüssel.  Im Azure Cosmos DB-Emulator ist es nicht möglich, einen Schlüssel neu zu generieren.
 * Der Azure Cosmos DB-Emulator ist kein skalierbarer Speicherdienst und unterstützt keine große Anzahl von Sammlungen.
 * Mit dem Azure Cosmos DB-Emulator werden keine unterschiedlichen [Azure Cosmos DB-Konsistenzebenen](consistency-levels.md) simuliert.
@@ -83,7 +81,7 @@ Für den Azure Cosmos DB-Emulator gelten folgende Hardware- und Softwareanforder
   * Windows Server 2012 R2, Windows Server 2016 oder Windows 10
 *   Minimale Hardwareanforderungen
   * 2 GB RAM
-  * 10 GB verfügbarer Festplattenspeicher
+  * 10 GB verfügbarer Speicherplatz
 
 ## <a name="installation"></a>Installation
 Sie können den Azure Cosmos DB-Emulator aus dem [Microsoft Download Center](https://aka.ms/cosmosdb-emulator) herunterladen und installieren. Alternativ können Sie den Emulator auch unter Docker für Windows ausführen. Anweisungen zum Verwenden des Emulators unter Docker für Windows finden Sie unter [Ausführen unter Docker](#running-on-docker). 
@@ -116,7 +114,7 @@ Der Daten-Explorer gibt an, ob ein neues Update zum Download zur Verfügung steh
 > Der Zugriff auf Daten, die in einer bestimmten Version des Azure Cosmos DB-Emulators erstellt wurden, ist bei Verwendung einer anderen Version nicht gewährleistet. Wenn Sie die Daten langfristig beibehalten müssen, wird empfohlen, sie in einem Azure Cosmos DB-Konto zu speichern, nicht im Azure Cosmos DB-Emulator. 
 
 ## <a name="authenticating-requests"></a>Authentifizieren von Anforderungen
-Genau wie bei Azure Cosmos DB in der Cloud muss jede Anforderung, die Sie für den Azure Cosmos DB-Emulator durchführen, authentifiziert werden. Der Azure Cosmos DB-Emulator unterstützt ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel für die Authentifizierung per Hauptschlüssel. Dieses Konto und dieser Schlüssel sind die einzigen Anmeldeinformationen, die für den Azure Cosmos DB-Emulator verwendet werden dürfen. Sie lauten wie folgt:
+Wie bei Azure Cosmos DB in der Cloud muss jede Anforderung, die Sie für den Azure Cosmos DB-Emulator durchführen, authentifiziert werden. Der Azure Cosmos DB-Emulator unterstützt ein einziges festgelegtes Konto und einen bekannten Authentifizierungsschlüssel für die Authentifizierung per Hauptschlüssel. Dieses Konto und dieser Schlüssel sind die einzigen Anmeldeinformationen, die für den Azure Cosmos DB-Emulator verwendet werden dürfen. Sie lauten wie folgt:
 
     Account name: localhost:<port>
     Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
@@ -305,7 +303,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Cosmos
 
 ## <a id="set-partitioncount"></a>Ändern der Anzahl von Sammlungen
 
-Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit einer einzelnen Partition oder eine partitionierte Sammlung erstellen. Wenn Sie den Wert **PartitionCount** ändern, können Sie bis zu 250 Sammlungen mit nur einer Partition oder 10 partitionierte Sammlungen oder eine Kombination aus beidem erstellen, bei der insgesamt maximal 250 einzelne Partitionen vorhanden sind (wobei 1 partitionierte Sammlung = 25 Sammlungen mit einer Partition).
+Mithilfe des Azure Cosmos DB-Emulators können Sie standardmäßig bis zu 25 Sammlungen mit einer einzelnen Partition oder eine partitionierte Sammlung erstellen. Wenn Sie den Wert **PartitionCount** ändern, können Sie bis zu 250 Sammlungen mit nur einer Partition oder 10 partitionierte Sammlungen oder eine Kombination aus beidem erstellen, bei der insgesamt maximal 250 einzelne Partitionen vorhanden sind (dabei gilt: 1 partitionierte Sammlung = 25 Sammlungen mit einer Partition).
 
 Wenn Sie versuchen, eine Sammlung zu erstellen, wenn die aktuelle Anzahl von Partitionen überschritten wurde, löst der Emulator eine ServiceUnavailable-Ausnahme mit der folgenden Meldung aus.
 
@@ -477,7 +475,7 @@ Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an ein
 
 ## <a name="change-list"></a>Änderungsliste
 
-Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste auf das lokale Emulatorsymbol in der Taskleiste und auf das Menüelement „Info“ klicken.
+Sie können die Versionsnummer überprüfen, indem Sie mit der rechten Maustaste auf das Symbol des lokalen Emulators in der Taskleiste und auf das Menüelement „Info“ klicken.
 
 ### <a name="1220-released-on-april-20-2018"></a>1.22.0. Veröffentlicht am 20. April 2018
 
@@ -509,7 +507,7 @@ In dieser Version gibt es ein neues Feature und zwei Fehlerbehebungen. Vielen Da
 
    Dies wurde korrigiert, indem ein Feature zur Außerkraftsetzung der Konfiguration zum Emulator hinzugefügt wurde. Es wird jetzt ein Vielfaches von 1 angewendet. Die Anzahl der Aufgaben, die für die Ausführung verschiedener Dienste zugewiesen wurden, entspricht nun der Anzahl der Kerne auf einem Host.
 
-   Wenn wir nichts anderes für diese Version getan hätten, dann hätten wir dieses Problem gelöst. Viele Entwicklungs-/Testumgebungen, die den Emulator hosten, haben einen Kern oder zwei Kerne.
+   Bei dieser Version haben wir uns in erster Linie auf die Behebung dieses Problems konzentriert. Viele Entwicklungs-/Testumgebungen, die den Emulator hosten, haben einen Kern oder zwei Kerne.
 
 2. Es ist nicht mehr erforderlich, für den Emulator Microsoft Visual C++ 2015 Redistributable zu installieren.
 

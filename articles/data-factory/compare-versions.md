@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e78051c4eb0cd79d636a6af31db8ffb6cd7e6aef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7d7fcaded1f088961fb139b1fba6b1944b383435
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34616510"
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Vergleich von Azure Data Factory V1 und V2
 In diesem Artikel wird Azure Data Factory V2 mit V1 verglichen. Eine Einführung in V1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). Eine Einführung in V2 finden Sie [hier](introduction.md).
@@ -139,7 +140,7 @@ Die für V2 aktualisierten SDKs sind nicht mit V1-Clients kompatibel.
 
 ## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
 
-Mit der Rolle „Mitwirkender“ der Data Factory-Version 1 können Ressourcen von Data Factory V2 erstellt und verwaltet werden.
+Mit der Rolle „Mitwirkender“ der Data Factory-Version 1 können Ressourcen von Data Factory V2 erstellt und verwaltet werden. Weitere Informationen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md#data-factory-contributor).
 
 ## <a name="monitoring-experience"></a>Benutzeroberfläche für die Überwachung
 In V2 können Sie Data Factorys auch unterstützen, indem Sie [Azure Monitor](monitor-using-azure-monitor.md) verwenden. Die neuen PowerShell-Cmdlets unterstützen die Überwachung von [Integrationslaufzeiten](monitor-integration-runtime.md). Sowohl V1 als auch V2 unterstützen die visuelle Überwachung unter Verwendung einer Überwachungsanwendung, die über das Azure-Portal gestartet werden kann.

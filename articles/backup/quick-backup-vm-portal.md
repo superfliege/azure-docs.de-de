@@ -1,26 +1,22 @@
 ---
-title: "Azure-Schnellstartanleitung: Sichern eines virtuellen Computers über das Azure-Portal | Microsoft-Dokumentation"
+title: 'Azure-Schnellstart: Sichern eines virtuellen Computers über das Azure-Portal'
 description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit dem Azure-Portal sichern.
 services: backup
-documentationcenter: virtual-machines
 author: saurabhsensharma
 manager: shivamg
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 60963553e012e6655e7ef9bf90d4ff6958427c9f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19711fcac4bdcca93abb4dcbb830dd9869360362
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609034"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 Azure-Sicherungen können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um Azure-Sicherungen und alle dazugehörigen Ressourcen zu erstellen und zu konfigurieren. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure-Portal sichern. 
@@ -29,7 +25,7 @@ In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtue
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
+Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 ## <a name="select-a-vm-to-back-up"></a>Auswählen einer zu sichernden VM
 Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor. 

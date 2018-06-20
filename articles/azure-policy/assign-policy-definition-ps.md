@@ -4,17 +4,17 @@ description: In dieser Schnellstartanleitung erstellen Sie mithilfe von PowerShe
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 770b3b1b52953f6fd3bd1874c28b2de45251ed17
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 50c6a0cc268e2b638a03494bed96d294789da9ab
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195640"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794665"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>Schnellstartanleitung: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure RM-PowerShell-Moduls
 
@@ -26,6 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+- Installieren Sie den [ARMClient](https://github.com/projectkudu/ARMClient), falls Sie dies noch nicht durchgeführt haben. Mit diesem Tool werden HTTP-Anforderungen an Azure Resource Manager-basierte APIs gesendet.
 - Stellen Sie vor Beginn sicher, dass die aktuelle Version von PowerShell installiert ist. Ausführliche Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
 - Aktualisieren Sie Ihr AzureRM-PowerShell-Modul auf die neueste Version. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 - Registrieren Sie den Ressourcenanbieter Policy Insights mithilfe von Azure PowerShell. Durch die Registrierung des Ressourcenanbieters wird sichergestellt, dass das Abonnement mit ihm verwendet werden kann. Um einen Ressourcenanbieter zu registrieren, benötigen Sie die Berechtigungen zum Ausführen des Vorgangs „Aktion registrieren“ für den Ressourcenanbieter. Dieser Vorgang ist in den Rollen „Mitwirkender“ und „Besitzer“ enthalten. Führen Sie den folgenden Befehl aus, um den Ressourcenanbieter zu registrieren:
@@ -45,13 +46,14 @@ Führen Sie die folgenden Befehle aus, um eine neue Richtlinienzuweisung zu erst
 ```azurepowershell-interactive
 $rg = Get-AzureRmResourceGroup -Name '<resourceGroupName>'
 $definition = Get-AzureRmPolicyDefinition | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs that do not use managed disks' }
-New-AzureRmPolicyAssignment -Name 'Audit Virtual Machines without Managed Disks' -Scope $rg.ResourceId -PolicyDefinition $definition
+New-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -DisplayName 'Audit Virtual Machines without Managed Disks Assignment' -Scope $rg.ResourceId -PolicyDefinition $definition
 ```
 
 In diesen Befehlen werden folgende Informationen verwendet:
 
-- **Name:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall *Audit Virtual Machines without Managed Disks Assignment* (Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger).
-- **Definition:** Die Richtliniendefinition, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die Richtliniendefinition: *Audit Virtual Machines without Managed Disks* (Virtuelle Computer ohne verwaltete Datenträger überwachen).
+- **Name:** Der tatsächliche Name der Zuweisung.  In diesem Beispiel wurde *audit-vm-manageddisks* verwendet.
+- **DisplayName:** Der Anzeigename für die Richtlinienzuweisung. Verwenden Sie in diesem Fall *Audit Virtual Machines without Managed Disks Assignment* (Zuweisung für die Überwachung virtueller Computer ohne verwaltete Datenträger).
+- **Definition:** Die Richtliniendefinition, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die ID der Richtliniendefinition *Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden*.
 - **Bereich:** Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen. Ersetzen Sie &lt;scope&gt; durch den Namen Ihrer Ressourcengruppe.
 
 Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszustand Ihrer Umgebung nachzuvollziehen.
@@ -61,7 +63,7 @@ Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszu
 Verwenden Sie folgende Informationen, um Ressourcen zu identifizieren, die mit der erstellten Richtlinienzuweisung nicht konform sind. Führen Sie die folgenden Befehle aus:
 
 ```azurepowershell-interactive
-$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks' }
+$policyAssignment = Get-AzureRmPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit Virtual Machines without Managed Disks Assignment' }
 $policyAssignment.PolicyAssignmentId
 ```
 
@@ -106,7 +108,7 @@ Die Ergebnisse sind vergleichbar mit dem, was üblicherweise in der Azure-Portal
 Nachfolgende Anleitungen in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie mit weiteren Tutorials fortfahren möchten, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. Wenn Sie nicht fortfahren möchten, können Sie die erstellte Zuweisung mit dem folgenden Befehl löschen:
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyAssignment -Name 'Audit Virtual Machines without Managed Disks Assignment' -Scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
+Remove-AzureRmPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/<resourceGroupName>'
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

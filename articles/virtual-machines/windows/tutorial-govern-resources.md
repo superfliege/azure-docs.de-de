@@ -11,22 +11,23 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 154ba47881c65d963729f9074d93c7bb61020389
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657239"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Azure-Computern mit Azure PowerShell
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, lesen Sie die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps). Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei lokalen Installationen müssen Sie auch [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/), um eine neue Azure Active Directory-Gruppe zu erstellen.
+Die Beispiele in diesem Artikel erfordern Version 6.0 oder höher von Azure PowerShell. Wenn Sie PowerShell lokal ausführen und nicht mindestens über Version 6.0 verfügen, [aktualisieren Sie Ihre Version](/powershell/azure/install-azurerm-ps). Sie müssen außerdem `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. Bei lokalen Installationen müssen Sie auch [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/), um eine neue Azure Active Directory-Gruppe zu erstellen.
 
 ## <a name="understand-scope"></a>Der Bereich
 
@@ -196,13 +197,13 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 Um Ressourcen über einen Tagnamen und einen Wert zu suchen, verwenden Sie den Befehl [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Get-AzureRmResource -Tag @{ Environment="Test"}).Name
 ```
 
 Sie können die zurückgegebenen Werte für Verwaltungstasks verwenden, z.B. zum Beenden aller virtuellen Computer mit einem Tagwert.
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>Anzeigen von Kosten nach Tagwert

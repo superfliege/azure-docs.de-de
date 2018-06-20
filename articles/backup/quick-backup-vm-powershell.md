@@ -1,26 +1,22 @@
 ---
-title: 'Azure-Schnellstartanleitung: Sichern eines virtuellen Computers mit PowerShell | Microsoft-Dokumentation'
+title: 'Azure-Schnellstart: Sichern eines virtuellen Computers mit PowerShell'
 description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit Azure PowerShell sichern.
 services: backup
-documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: ''
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: ''
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 2/14/2018
-ms.author: iainfou
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 91303368f96b477f0756e4d3b9d19601797f0ba8
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4161b11e88d2b3201e18e095e13db864e25d7bfc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607535"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure PowerShell-Modul sichern. Sie können diese Schritte auch mit der [Azure CLI](quick-backup-vm-cli.md) oder mit dem [Azure-Portal](quick-backup-vm-portal.md) ausführen.

@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824685"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -31,6 +32,7 @@ Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar:
 - **Azure SQL-Datenbank**: Allgemein verfügbar in allen Azure-Regionen.
 - **Azure Cosmos DB**: Allgemein verfügbar in allen Azure-Regionen mit öffentlichen Clouds. 
 - **Azure SQL Data Warehouse**: Vorschau in allen Azure-Regionen mit öffentlichen Clouds.
+- **Azure-Datenbankdienste für PostgreSQL und MySQL**: Vorschau in Azure-Regionen, in denen der Datenbankdienst verfügbar ist
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -98,7 +100,7 @@ Nachdem Dienstendpunkte für einen bestimmten Dienst konfiguriert wurden, könne
   - Gibt an, dass – gegenüber Routen mit Tunnelerzwingung – eine direktere Verbindung mit dem Dienst vorhanden ist.
 
 >[!NOTE]
-> Die Dienstendpunktroute setzt alle BGP- oder UDR-Routen für die Übereinstimmung mit dem Adresspräfix eines Azure-Diensts außer Kraft. Informieren Sie sich über das [Verwenden von effektiven Routen zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow).
+> Die Dienstendpunktroute setzt alle BGP- oder UDR-Routen für die Übereinstimmung mit dem Adresspräfix eines Azure-Diensts außer Kraft. Informieren Sie sich über das [Verwenden von effektiven Routen zur Problembehandlung des Datenverkehrsflusses auf virtuellen Computern](diagnose-network-routing-problem.md).
 
 ## <a name="provisioning"></a>Bereitstellung
 

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642698"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>Tutorial: Skalieren eines Service Fabric-Clusters
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für PowerShell den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den Befehl `sfctl cluster select`.
+Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für **PowerShell** den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den Befehl `sfctl cluster select`.
 
 ## <a name="scale-out"></a>Horizontales Skalieren
 
@@ -131,15 +132,15 @@ Der Service Fabric-Cluster muss wissen, dass dieser Knoten entfernt wird. Hierzu
 
 1. Deaktivieren Sie den Knoten, sodass es sich dabei nicht mehr um ein Replikat für Daten handelt.  
 PowerShell: `Disable-ServiceFabricNode`  
-sfcli: `sfctl node disable`
+sfctl: `sfctl node disable`
 
 2. Beenden Sie den Knoten, damit die Service Fabric-Laufzeit ordnungsgemäß heruntergefahren wird und Ihre App eine Beendigungsanforderung erhält.  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfcli: `sfctl node transition --node-transition-type Stop`
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. Entfernen Sie den Knoten aus dem Cluster.  
 PowerShell: `Remove-ServiceFabricNodeState`  
-sfcli: `sfctl node remove-state`
+sfctl: `sfctl node remove-state`
 
 Nachdem diese drei Schritte für den Knoten ausgeführt wurden, kann er aus der Skalierungsgruppe entfernt werden. Bei Verwendung einer anderen Dauerhaftigkeitsstufe als [Bronze][durability] werden diese Schritte automatisch ausgeführt, wenn die Skalierungsgruppeninstanz entfernt wird.
 

@@ -1,74 +1,74 @@
 ---
 title: Reagieren auf Ereignisse mit Azure Log Analytics-Warnungen | Microsoft-Dokumentation
-description: "In diesem Tutorial lernen Sie, Warnungen in Log Analytics zu verstehen, die wichtige Informationen in Ihrem OMS-Repository identifizieren und Sie proaktiv über Probleme informieren oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben."
+description: In diesem Tutorial lernen Sie, Warnungen in Log Analytics zu verstehen, die wichtige Informationen in Ihrem Arbeitsbereich identifizieren und Sie proaktiv über Probleme informieren oder Aktionen aufrufen, um die Probleme zu beheben.
 services: log-analytics
 documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2017
+ms.date: 05/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fcfaa849f67ffcfa69672d116837e96d318c2124
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 70698dc233dac60a2fa2d1444930d21d3fba8773
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637122"
 ---
-# <a name="respond-to-events-with-log-analytics-alerts"></a>Reagieren auf Ereignisse mit Log Analytics-Warnungen
-Mit Warnungen werden in Log Analytics wichtige Informationen in Ihrem Log Analytics-Repository identifiziert. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen, und wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, und er kann zur Ausführung einer automatischen Antwort konfiguriert werden.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](log-analytics-tutorial-dashboards.md).   
+# <a name="respond-to-events-with-azure-monitor-alerts"></a>Reagieren auf Ereignisse mit Azure Monitor-Warnungen
+Mit Warnungen in Azure Monitor können wichtige Informationen in Ihrem Log Analytics-Repository identifiziert werden. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen. Wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, der zur Ausführung einer automatischen Antwort konfiguriert werden kann.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](log-analytics-tutorial-dashboards.md).   
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Warnungsregel
-> * Konfigurieren einer Warnungsregel zum Senden einer E-Mail-Benachrichtigung
+> * Konfigurieren einer Aktionsgruppe zum Senden einer E-Mail-Benachrichtigung
 
 Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein, der [mit dem Log Analytics-Arbeitsbereich verbunden](log-analytics-quick-collect-azurevm.md) ist.  
 
 ## <a name="log-in-to-azure-portal"></a>Anmelden beim Azure-Portal
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an. 
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 
 
 ## <a name="create-alerts"></a>Erstellen von Warnungen
+Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in regelmäßigen Abständen automatisch gespeicherte Abfragen oder benutzerdefinierte Protokollsuchen ausführen.  Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen.  Warnungen können Sie beispielsweise benachrichtigen, wenn die durchschnittliche CPU-Auslastung einen bestimmten Schwellenwert überschreitet, ein fehlendes Update ermittelt wird oder ein Ereignis generiert wird, wenn ein bestimmter Windows-Dienst oder Linux-Daemon nicht ausgeführt wird.  Wenn die Ergebnisse der Protokollsuche bestimmte Kriterien erfüllen, wird eine Warnung erstellt. Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie über die Warnung zu informieren oder einen anderen Prozess aufzurufen. 
 
-Warnungen werden mithilfe von Warnungsregeln erstellt, für die in regelmäßigen Abständen automatisch Protokollsuchen durchgeführt werden.  Sie können Warnungen auf der Grundlage bestimmter Leistungsmetriken oder des Entstehens bestimmter Ereignisse, der Abwesenheit eines Ereignisses oder des Entstehens einer Anzahl von Ereignissen innerhalb eines bestimmten Zeitfensters erstellen.  Warnungen können Sie beispielsweise benachrichtigen, wenn die durchschnittliche CPU-Auslastung einen bestimmten Schwellenwert überschreitet, oder ein Ereignis generiert wird, wenn ein bestimmter Windows-Dienst oder Linux-Daemon nicht ausgeführt wird.   Wenn die Ergebnisse der Protokollsuche bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen. 
-
-Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die eine Warnung für jedes Computerobjekt in der Abfrage erstellt, deren Wert einen Schwellenwert von 90 Prozent überschreitet.
+Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die auf der Abfrage *Azure-VMs – Prozessorauslastung* basiert, die unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](log-analytics-tutorial-dashboards.md) gespeichert wurde.  Eine Warnung wird für jeden virtuellen Computer erstellt, der einen Schwellenwert von 90 Prozent überschreitet.  
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
-2. Starten Sie das OMS-Portal durch Auswahl von „OMS-Portal“, und wählen Sie auf der Seite **Übersicht** die Option **Protokollsuche**.  
-3. Wählen Sie **Favoriten** ganz oben im Portal und im Bereich **Gespeicherte Suchvorgänge** auf der rechten Seite die Abfrage *Azure-VMs – Prozessorauslastung*.  
-4. Klicken Sie oben auf der Seite auf **Warnung**, um den Bildschirm **Warnungsregel hinzufügen** zu öffnen.  
-5. Konfigurieren Sie die Warnungsregel mit den folgenden Informationen:  
-   a. Geben Sie einen **Namen** für die Warnung an, wie z.B. *VM-Prozessorauslastung überschritten >90*.  
-   b. Geben Sie für **Zeitfenster** einen Zeitraum für die Abfrage an, z.B. *30*.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  
-   c. **Warnungshäufigkeit** gibt an, wie oft die Abfrage ausgeführt werden soll.  Geben Sie in diesem Beispiel *5* Minuten an, was innerhalb des angegebenen Zeitfensters liegt.  
-   d. Wählen Sie **Metrische Maßeinheit**, und geben Sie *90* für **Aggregatwert**  und *3* für **Warnung auslösen basierend auf**  an.  
-   e. Deaktivieren Sie unter **Aktionen** die E-Mail-Benachrichtigung.
-6. Klicken Sie auf **Speichern** , um die Warnungsregel abzuschließen. Die Ausführung beginnt sofort.<br><br> ![Warnungsregelbeispiel](media/log-analytics-tutorial-response/log-analytics-alert-01.png)
+2. Klicken Sie im linken Bereich auf **Warnungen** und dann oben auf der Seite auf **Neue Warnungsregel**, um eine neue Warnung zu erstellen.<br><br> ![Erstellen einer neuen Warnungsregel](./media/log-analytics-tutorial-response/alert-rule-02.png)<br>
+3. Im ersten Schritt wählen Sie im Abschnitt **Warnung erstellen** Ihren Log Analytics-Arbeitsbereich als Ressource aus, da es sich dabei um ein protokollbasiertes Warnungssignal handelt.  Wenn Sie mehrere Abonnements besitzen, filtern Sie die Ergebnisse, indem Sie in der Dropdownliste das gewünschte **Abonnement** auswählen, das den zuvor erstellten virtuellen Computer und Log Analytics-Arbeitsbereich enthält.  Filtern Sie den **Ressourcentyp**, indem Sie in der Dropdownliste **Log Analytics** auswählen.  Wählen Sie abschließend die **Ressource** mit dem Namen **DefaultLAWorkspace**, und klicken Sie dann auf **Fertig**.<br><br> ![Schritt 1: Erstellen einer Warnung](./media/log-analytics-tutorial-response/alert-rule-03.png)<br>
+4. Klicken Sie im Abschnitt **Warnungskriterien** auf **Kriterien hinzufügen**, um die gespeicherte Abfrage auszuwählen, und geben Sie dann eine Logik für die Warnungsregel ein.  Wählen Sie im Bereich **Signallogik konfigurieren** in der Liste *Azure-VMs – Prozessorauslastung* aus.  Der Bereich wird aktualisiert und zeigt die Konfigurationseinstellungen für die Warnung an.  Am oberen Rand werden die Ergebnisse für die letzten 30 Minuten des ausgewählten Signals und die Suchabfrage selbst angezeigt.  
+5. Konfigurieren Sie die Warnung mit den folgenden Informationen:  
+   a. Wählen Sie in der Dropdownliste **Basierend auf* die Option **Metrische Maßeinheit** aus.  Mit „Metrische Maßeinheit“ wird eine Warnung für jedes Objekt in der Abfrage mit einem Wert erzeugt, der den angegebenen Schwellenwert überschreitet.  
+   b. Wählen Sie für **Bedingung** die Option **Größer als** aus, und geben Sie für **Schwellenwert** den Wert **90** ein.  
+   c. Wählen Sie im Abschnitt „Warnung auslösen basierend auf“ die Option **Aufeinanderfolgende Sicherheitsverletzungen** und in der Dropdownliste **Größer als** aus, und geben Sie den Wert „3“ ein.  
+   d. Übernehmen Sie im Abschnitt „Evaluation based on“ (Auswertung basierend auf) die Standardwerte. Die Regel wird alle fünf Minuten ausgeführt und gibt Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  
+6. Klicken Sie auf **Fertig**, um die Warnungsregel fertig zu stellen.<br><br> ![Konfigurieren eines Warnungssignals](./media/log-analytics-tutorial-response/alert-signal-logic-02.png)<br> 
+7. Geben Sie nun im zweiten Schritt im Feld **Name der Warnungsregel** einen Namen für Ihre Warnung ein, etwa **CPU in Prozent größer als 90 Prozent**.  Geben Sie eine **Beschreibung** mit Details zu Ihrer Warnung ein, und wählen Sie für **Schweregrad** aus den angegebenen Optionen **Kritisch (Schweregrad 0)** aus.<br><br> ![Konfigurieren der Warnungsdetails](./media/log-analytics-tutorial-response/alert-signal-logic-04.png)<br>
+8. Um die Warnungsregel direkt bei der Erstellung zu aktivieren, übernehmen Sie den Standardwert für **Regel beim Erstellen aktivieren**.
+9. Im dritten und letzten Schritt geben Sie eine **Aktionsgruppe** an. Dadurch wird sichergestellt, dass bei jeder Warnungsauslösung die gleichen Aktionen ausgeführt werden und diese für jede definierte Regel verwendet werden können.  Konfigurieren Sie eine neue Aktionsgruppe mit den folgenden Informationen:  
+   a. Klicken Sie auf **Neue Aktionsgruppe**, und der Bereich **Aktionsgruppe hinzufügen** wird angezeigt.
+   b. Geben Sie unter **Name der Aktionsgruppe** einen Namen wie **IT-Vorgänge – Benachrichtigen** und einen **Kurznamen** wie **itops-n** ein.  
+   c. Überprüfen Sie, ob die Standardwerte für **Abonnement** und **Ressourcengruppe** richtig sind. Ist dies nicht der Fall, wählen Sie die korrekten Werte in der Dropdownliste aus.   
+   d. Geben Sie im Bereich „Aktionen“ einen Namen für die Aktion ein, beispielsweise **E-Mail senden**, und wählen Sie unter **Aktionstyp** in der Dropdownliste **E-Mail/SMS/Push/Sprachanruf** aus. Der Eigenschaftenbereich **E-Mail/SMS/Push/Sprachanruf** wird mit weiteren Informationen auf der rechten Seite geöffnet.
+   e. Aktivieren Sie im Bereich **E-Mail/SMS/Push/Sprachanruf** die Option **E-Mail**, und geben Sie eine gültige SMTP-E-Mail-Adresse ein, an die die Nachricht gesendet werden soll. f. Klicken Sie zum Speichern der Änderungen auf **OK** .<br><br> ![Erstellen einer neuen Aktionsgruppe](./media/log-analytics-tutorial-response/action-group-properties-01.png)<br>
+10. Klicken Sie auf **OK**, um die Aktionsgruppe zu erstellen. 
+11. Klicken Sie auf **Warnungsregel erstellen**, um die Warnungsregel fertig zu stellen. Die Ausführung beginnt sofort.<br><br> ![Abschließen der Erstellung der neuen Warnungsregel](./media/log-analytics-tutorial-response/alert-rule-01.png)<br> 
 
-Für Warnungsdatensätze, die in Log Analytics mit Warnungsregeln erstellt wurden, ist **Warnung** als Typ und **OMS** als SourceSystem festgelegt.<br><br> ![Beispiel für generierte Warnungsereignisse](media/log-analytics-tutorial-response/log-analytics-alert-events-01.png)  
+## <a name="view-your-alerts-in-azure-portal"></a>Anzeigen von Warnungen im Azure-Portal
+Sie haben eine Warnung erstellt und können nun Azure-Warnungen in einem einzelnen Bereich anzeigen sowie alle Warnungsregeln in allen Ihren Azure-Abonnements verwalten. Sie listet alle (aktivierten oder deaktivierten) Warnungsregeln auf und kann basierend auf Zielressourcen, Ressourcengruppen, Regelnamen oder Status sortiert werden. Der Bereich enthält eine aggregierte Zusammenfassung von allen ausgelösten Warnungen und konfigurierten bzw. aktivierten Warnungsregeln.<br><br> ![Statusseite der Azure-Warnungen](./media/log-analytics-tutorial-response/azure-alerts-02.png)  
 
-## <a name="alert-actions"></a>Warnungsaktionen
-Sie können erweiterte Aktionen mit Warnungen ausführen – z.B. Erstellen einer E-Mail-Benachrichtigung, Starten eines [Automation-Runbooks](../automation/automation-runbook-types.md), Verwenden eines Webhooks zum Erstellen eines Incident-Datensatzes in Ihrem ITSM-Incident-Verwaltungssystem oder mit der [IT Service Management Connector-Lösung](log-analytics-itsmc-overview.md) als Reaktion, wenn die Warnungskriterien erfüllt sind.   
-
-Bei E-Mail-Aktionen wird eine E-Mail mit Details der Warnung an einen oder mehrere Empfänger gesendet. Sie können den Betreff der E-Mail angeben, der Inhalt ist jedoch ein von Log Analytics erstelltes Standardformat.  Aktualisieren Sie die Warnungsregel, die Sie zuvor erstellt haben, und konfigurieren Sie sie so, dass Sie eine E-Mail-Nachricht erhalten, anstatt aktiv mit einer Protokollsuche nach Warnungsdatensätzen suchen zu müssen.     
-
-1. Klicken Sie im OMS-Portal auf der oberen Menüleiste auf **Einstellungen** und anschließend auf **Warnungen**.
-2. Klicken Sie in der Liste der Warnungsregeln neben der Warnung, die Sie zuvor erstellt haben, auf das Bleistiftsymbol.
-3. Aktivieren Sie im Abschnitt **Aktionen** E-Mail-Benachrichtigungen.
-4. Geben Sie einen **Betreff** für die E-Mail an, z.B. *Schwellenwert der Prozessorauslastung überschritten > 90*.
-5. Fügen Sie die Adressen eines oder mehrerer E-Mail-Empfänger in das Feld **Empfänger** ein.  Verwenden Sie als Trennzeichen ein Semikolon (;), wenn Sie mehrere Adressen angeben.
-6. Klicken Sie auf **Speichern** , um die Warnungsregel abzuschließen. Die Ausführung beginnt sofort.<br><br> ![Warnungsregel mit E-Mail-Benachrichtigung](media/log-analytics-tutorial-response/log-analytics-alert-02.png)
+Bei Auslösung der Warnung gibt die Tabelle die Bedingung sowie die Anzahl von Vorkommnissen im auswählten Zeitbereich (Standardwert: letzte sechs Stunden) an.  Ihr Posteingang sollte eine entsprechende E-Mail mit dem betroffenen virtuellen Computer und den wichtigsten Ergebnissen enthalten, die der Suchabfrage in diesem Fall entsprachen. Die E-Mail sieht in etwa wie folgt aus:<br><br> ![Beispiel für eine Warnungs-E-Mail-Aktion](./media/log-analytics-tutorial-response/azure-alert-email-notification-01.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, wie Warnungsregeln ein Problem proaktiv erkennen und darauf reagieren können, wenn sie in geplanten Intervallen Protokollsuchen ausführen und bestimmten Kriterien entsprechen.  
+In diesem Tutorial haben Sie gelernt, wie Warnungsregeln ein Problem proaktiv erkennen und darauf reagieren können, wenn sie in geplanten Intervallen Protokollsuchen ausführen und bestimmten Kriterien entsprechen.
 
 Unter diesem Link finden Sie vordefinierte Log Analytics-Skriptbeispiele.  
 

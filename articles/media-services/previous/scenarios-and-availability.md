@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 777ba32a6c3ec7545c9911c820ceda7ac823096a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809278"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
 Mit Microsoft Azure Media Services (AMS) können Sie Video- oder Audioinhalte auf sichere Weise hochladen, speichern, codieren, verpacken und bedarfsgesteuert oder als Livestream auf verschiedenen Clients (wie Fernsehern, PCs und mobilen Geräten) bereitstellen.
 
-AMS nutzt mehrere Rechenzentren auf der ganzen Welt. Diese Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/)überprüfen. 
+AMS wird in mehreren Datencentern weltweit betrieben. Diese Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Sie können die [Liste der Regionen und Standorte](https://azure.microsoft.com/regions/)überprüfen. 
 
-Dieses Thema enthält allgemeine Szenarien für die Übermittlung von Inhalten ([live](#live_scenarios) oder [bedarfsgesteuert](#vod_scenarios)). Außerdem finden Sie hier Details zur rechenzentrumsübergreifenden Verfügbarkeit von Medienfeatures und -diensten.
+Dieses Thema enthält allgemeine Szenarien für die Übermittlung von Inhalten ([live](#live_scenarios) oder [bedarfsgesteuert](#vod_scenarios)). Außerdem finden Sie hier Details zur datencenterübergreifenden Verfügbarkeit von Medienfeatures und -diensten.
 
 ## <a name="overview"></a>Übersicht
 
@@ -165,7 +166,7 @@ Dieser Abschnitt enthält Details zur datencenterübergreifenden Verfügbarkeit 
 
 #### <a name="availability"></a>Verfügbarkeit
 
-Um festzustellen, ob Media Services in einem Rechenzentrum verfügbar ist, navigieren Sie zu https://azure.microsoft.com/status/ und scrollen zur Tabelle MEDIA.
+Um festzustellen, ob Media Services in einem Datencenter verfügbar ist, navigieren Sie zu https://azure.microsoft.com/status/ und scrollen zur Tabelle MEDIA.
 
 ### <a name="streaming-endpoints"></a>Streamingendpunkte 
 

@@ -1,27 +1,25 @@
 ---
-title: Verwenden von Azure Table Storage und Azure Cosmos DB mit C++ | Microsoft-Dokumentation
-description: Speichern Sie strukturierte Daten mit Azure Table Storage, einem NoSQL-Datenspeicher, in der Cloud.
+title: Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++ | Microsoft-Dokumentation
+description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
 manager: kfile
-ms.assetid: f191f308-e4b2-4de9-85cb-551b82b1ea7c
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.component: cosmosdb-table
+ms.devlang: cpp
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 60c419a45e795d5968b58fbb6b469d06750a0679
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 520c0868e51f1212ee1beca8967d3c08f1d6e869
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797912"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Übersicht
 In diesem Leitfaden wird gezeigt, wie häufige Szenarien mit dem Azure-Tabellenspeicherdienst oder der Azure Cosmos DB-Tabellen-API ausgeführt werden. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück. Die behandelten Szenarios umfassen das **Erstellen und Löschen einer Tabelle** sowie das **Arbeiten mit Tabellenentitäten**.

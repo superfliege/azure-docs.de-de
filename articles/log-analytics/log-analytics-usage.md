@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802050"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
@@ -116,7 +117,7 @@ Im folgenden Screenshot werden für den Computer vom Datentyp *LogManagement/Per
 
 Wechseln Sie als Nächstes zurück zum Dashboard *Nutzung*, und sehen Sie sich das Diagramm *Datenmenge nach Lösung* an. Klicken Sie in der Liste auf den Namen einer Lösung, um die Computer anzuzeigen, die die meisten Daten für die Lösung senden. Klicken Sie auf den Namen der ersten Lösung in der Liste. 
 
-Im folgenden Screenshot ist zu erkennen, dass der Computer *acmetomcat* die meisten Daten für die Lösung „LogManagement“ (Protokollverwaltung) sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+Im folgenden Screenshot ist zu erkennen, dass der Computer *mycon* die meisten Daten für die Protokollverwaltungslösung sendet.<br><br> ![Datenvolumen für eine Lösung](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 Führen Sie bei Bedarf zusätzliche Analysen aus, um große Mengen innerhalb einer Lösung oder eines Datentyps zu identifizieren. Beispiele für Abfragen:
 

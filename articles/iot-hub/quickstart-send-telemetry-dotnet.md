@@ -1,23 +1,21 @@
 ---
 title: 'Schnellstart: Senden von Telemetriedaten an Azure IoT Hub (C#) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei C#-Beispielanwendungen aus, um simulierte Telemetriedaten an eine IoT Hub-Instanz zu senden und Telemetriedaten zur Verarbeitung in der Cloud aus der IoT Hub-Instanz zu lesen.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 9feade4407f800312556a1db39ce6c315c9330c2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3fe783f8b5a7955ebe117df02edcdc6aafeff4f8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636850"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)
 
@@ -86,7 +84,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
 Die Anwendung zur Simulation eines Geräts stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihrer IoT Hub-Instanz her und sendet simulierte Telemetriedaten für Temperatur und Luftfeuchtigkeit.
 
-1. Navigieren Sie in einem Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **Quickstarts\simulated-device**.
+1. Navigieren Sie in einem Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device**.
 
 1. Öffnen Sie die Datei **SimulatedDevice.cs** in einem Text-Editor Ihrer Wahl.
 
@@ -112,7 +110,7 @@ Die Anwendung zur Simulation eines Geräts stellt eine Verbindung mit einem ger�
 
 Die Back-End-Anwendung stellt eine Verbindung mit dem dienstseitigen Endpunkt **Events** in Ihrer IoT Hub-Instanz her. Die Anwendung empfängt die vom simulierten Gerät gesendeten Gerät-zu-Cloud-Nachrichten. Eine IoT Hub-Back-End-Anwendung wird in der Regel in der Cloud ausgeführt, um Gerät-zu-Cloud-Nachrichten zu empfangen und zu verarbeiten.
 
-1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie dann zum Ordner **Quickstarts\read-d2c-messages**.
+1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\read-d2c-messages**.
 
 1. Öffnen Sie die Datei **ReadDeviceToCloudMessages.cs** in einem Text-Editor Ihrer Wahl.
 

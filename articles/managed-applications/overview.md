@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304996"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639206"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -53,7 +53,9 @@ Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace fi
 
 ## <a name="resource-groups-for-managed-applications"></a>Ressourcengruppen für verwaltete Anwendungen
 
-Die Ressourcen für eine verwaltete Anwendung befinden sich üblicherweise in zwei Ressourcengruppen. Eine wird vom Verbraucher verwaltet, die andere vom Herausgeber. Beim Definieren der verwalteten Anwendung gibt der Herausgeber die Zugriffsebenen an. Die folgende Abbildung zeigt ein Szenario, in dem der Herausgeber die Besitzerrolle für die verwaltete Ressourcengruppe anfordert. Der Herausgeber hat die Ressourcengruppe für den Verbraucher mit einer Schreibschutzsperre belegt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
+Die Ressourcen für eine verwaltete Anwendung befinden sich üblicherweise in zwei Ressourcengruppen. Eine wird vom Verbraucher verwaltet, die andere vom Herausgeber. Beim Definieren der verwalteten Anwendung gibt der Herausgeber die Zugriffsebenen an. Das Einschränken des Zugriffs für [Datenvorgänge](../role-based-access-control/role-definitions.md) wird derzeit nicht für alle Datenanbieter in Azure unterstützt.
+
+Die folgende Abbildung zeigt ein Szenario, in dem der Herausgeber die Besitzerrolle für die verwaltete Ressourcengruppe anfordert. Der Herausgeber hat die Ressourcengruppe für den Verbraucher mit einer Schreibschutzsperre belegt. Dies gilt nicht für Herausgeberidentitäten, denen Zugriff auf die verwaltete Ressourcengruppe gewährt wird.
 
 ![Ressourcengruppenzugriff](./media/overview/access.png)
 

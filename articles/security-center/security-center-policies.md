@@ -3,7 +3,7 @@ title: Festlegen von Sicherheitsrichtlinien in Azure Security Center | Microsoft
 description: Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364385"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756990"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Festlegen von Sicherheitsrichtlinien in Azure Security Center
 Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlinien in Security Center.
@@ -28,7 +28,7 @@ Dieser Artikel enthält Informationen zur Konfiguration der Sicherheitsrichtlini
 Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Standardsicherheitsrichtlinie. In Security Center können Sie die Richtlinien bearbeiten und die Einhaltung überwachen.
 
 > [!NOTE]
-> Sie können Security Center-Richtlinien jetzt mithilfe der eingeschränkten Vorschauversion von Azure Policy erweitern. Navigieren Sie zur [Registrierungsseite für Azure Policy](https://aka.ms/getpolicy), um an der Nutzung der Vorschauversion teilzunehmen. Weitere Informationen finden Sie unter [Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy](security-center-azure-policy.md).
+> Sie können Security Center-Richtlinien jetzt mithilfe von [Azure Policy](../azure-policy/azure-policy-introduction.md) erweitern. Weitere Informationen finden Sie unter [Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy](security-center-azure-policy.md).
 
 Die Sicherheitsanforderungen für Ressourcen, die zu Entwicklungs- oder Testzwecken verwendet werden, weichen unter Umständen von den Anforderungen der Ressourcen ab, die für Produktionsanwendungen verwendet werden. Für Anwendungen mit reglementierten Daten, z.B. personenbezogene Informationen, kann ggf. eine höhere Sicherheitsstufe erforderlich sein. Die in Azure Security Center aktivierten Sicherheitsrichtlinien werden dazu verwendet, Sicherheitsempfehlungen und die Überwachung zu steuern, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen entschärfen können. Weitere Informationen dazu, wie Sie die am besten geeignete Option ermitteln können, finden Sie unter [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md).
 
@@ -75,3 +75,5 @@ In diesem Artikel haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
+
+Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md).
