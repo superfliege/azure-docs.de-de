@@ -27,13 +27,14 @@ Die folgenden Schritte zeigen, wie Sie die Kennwortauthentifizierung für eine A
 2. Notieren Sie sich Ihre **TenantId** und Ihre **SubscriptionId**. Diese werden später benötigt.
 3. Erstellen Sie mit dem folgenden Befehl eine neue Azure Active Directory-Anwendung, und ersetzen Sie die Platzhalter:
    
-   * **{Display name}:** Der Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
+   * **{Display name}:** ein Anzeigename für Ihre Anwendung, z.B. **MySampleApp**.
    * **{Home page URL}:** Die URL der Startseite Ihrer App, z.B. **http://mysampleapp/home**. Diese URL muss nicht auf eine echte Anwendung verweisen.
    * **{Application identifier}:** Ein eindeutiger Bezeichner, z.B. **http://mysampleapp**. Diese URL muss nicht auf eine echte Anwendung verweisen.
    * **{Password}:** Ein Kennwort, das Sie zur Authentifizierung mit Ihrer App verwenden werden.
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. Notieren Sie sich die **ApplicationId** der Anwendung, die Sie erstellt haben. Sie benötigen sie später.
 5. Erstellen Sie einen neuen Dienstprinzipal mithilfe des folgenden Befehls, und ersetzen Sie dabei **{MyApplicationId}** durch die **ApplicationId** aus dem vorherigen Schritt:

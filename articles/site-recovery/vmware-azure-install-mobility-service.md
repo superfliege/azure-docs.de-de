@@ -1,19 +1,17 @@
 ---
 title: Installieren von Mobility Service (VMware oder physisch in Azure) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie den Mobility Service-Agent installieren, um lokale VMware-VMs und physische Server mit Azure Site Recovery zu schützen.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 7c292af91fea7f0e0d3b32412cfa9907560d68d9
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33942134"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287778"
 ---
 # <a name="install-the-mobility-service"></a>Installieren des Mobilitätsdiensts 
 

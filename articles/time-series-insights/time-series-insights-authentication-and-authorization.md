@@ -3,7 +3,7 @@ title: Informationen zum Authentifizieren und Autorisieren mithilfe der API in A
 description: In diesem Artikel wird die Konfiguration der Authentifizierung und Autorisierung für eine benutzerdefinierte Anwendung erläutert, die die Azure Time Series Insights-API aufruft.
 ms.service: time-series-insights
 services: time-series-insights
-author: dmdenmsft
+author: ashannon7
 ms.author: dmden
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: a18caf03dbc5377f0adc540c8550129ef3bdb9e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 90fb5ee2bf222e260da802c149d80ed15df2e259
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652432"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295086"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 

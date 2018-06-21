@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 165249d5-e0e7-4ed1-aa26-91a05a87bdc9
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 172477af5d5ae19cd0362cb1de0a8c66332cb0bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 550354ceab3026cfd724cd77c3266b22682e4431
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587833"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212570"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>So entscheiden Sie, ob die Azure AD Domain Services für Ihren Anwendungsfall geeignet sind
 Mit den Azure AD Domain Services können Sie Ihre Workloads in Azure-Infrastrukturdiensten bereitstellen, ohne sich über die Wartung der Identitätsinfrastruktur in Azure Gedanken machen zu müssen. Dieser verwaltete Dienst unterscheidet sich von einer typischen Windows Server Active Directory-Bereitstellung, die Sie selbst bereitstellen und verwalten. Der Dienst ist einfach bereitzustellen und bietet eine automatisierte Systemüberwachung und Wartung. Wir verbessern den Dienst fortlaufend, um Unterstützung für gängige Bereitstellungsszenarios hinzuzufügen.

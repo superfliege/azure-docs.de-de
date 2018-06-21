@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248808"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231609"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Funktionsvergleich: Azure SQL-Datenbank und SQL Server 
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | [Automatische Sicherungen](sql-database-automated-backups.md) | Ja | Ja |
 | [Automatische Optimierung (Planerzwingung)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ja](sql-database-automatic-tuning.md)| [Ja](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatische Optimierung (Indizes)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ja](sql-database-automatic-tuning.md)| Nein  |
-| [BACPAC Datei (Export)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja: siehe [Export der SQL-Datenbank](sql-database-export.md) | Ja |
+| [BACPAC Datei (Export)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ja: siehe [Export der SQL-Datenbank](sql-database-export.md) | Nein  |
 | [BACPAC Datei (Import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ja: siehe [Import der SQL-Datenbank](sql-database-import.md) | Nein  |
 | [Befehl „BACKUP“](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nein, nur vom System initiierte automatische Sicherungen – siehe [Automatisierte Sicherungen](sql-database-automated-backups.md) | Vom System initiierte automatisierte Sicherungen und benutzerinitiierte Kopiesicherungen – siehe [Sicherung](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Integrierte Funktionen](https://docs.microsoft.com/sql/t-sql/functions/functions) | Die meisten (siehe einzelne Funktionen) | Ja – siehe [Gespeicherte Prozeduren, Funktionen, Trigger](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

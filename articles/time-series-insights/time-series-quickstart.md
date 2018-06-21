@@ -3,20 +3,20 @@ title: Schnellstart – Azure Time Series Insights-Explorer | Microsoft-Dokument
 description: Dieser Schnellstart veranschaulicht die ersten Schritte mit dem Azure Time Series Insights-Explorer im Webbrowser zum Visualisieren großer IoT-Datenmengen. Übersicht über die wichtigsten Features in einer Demoumgebung.
 ms.service: time-series-insights
 services: time-series-insights
-author: MarkMcGeeAtAquent
-ms.author: v-mamcge
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: dbf0aef7a032c9b9808db14031555c7498874ac3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 45eb469fdbd3603d1ebdcb558485ff0f93822f6b
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652116"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293859"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Schnellstart: Erkunden von Azure Time Series Insights
 Dieser Schnellstart veranschaulicht die ersten Schritte mit dem Azure Time Series Insights-Explorer in einer kostenlosen Demoumgebung. Sie erfahren, wie Sie große IoT-Datenmengen im Webbrowser visualisieren, und lernen die wichtigsten Features des Time Series Insights-Explorers kennen. 

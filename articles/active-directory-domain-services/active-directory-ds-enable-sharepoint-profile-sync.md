@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 936d760b05fcf48586739bd7538cac3dae2b6b77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e1162a3f87c9242e7366109302b3bd807b1fdcc8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587724"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214374"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurieren einer verwalteten Domäne für die Unterstützung der Profilsynchronisierung für SharePoint Server
 SharePoint Server umfasst einen Benutzerprofildienst, der für die Benutzerprofilsynchronisierung verwendet wird. Zum Einrichten des Benutzerprofildiensts müssen in einer Active Directory-Domäne entsprechende Berechtigungen erteilt werden. Weitere Informationen finden Sie unter [Erteilen von Berechtigungen für Active Directory Domain Services für die Profilsynchronisierung in SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
