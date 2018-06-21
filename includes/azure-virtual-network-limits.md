@@ -1,4 +1,21 @@
-<a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement).
+---
+title: Includedatei
+description: Includedatei
+services: networking
+author: jimdial
+ms.service: networking
+ms.topic: include
+ms.date: 06/12/2018
+ms.author: jdial
+ms.custom: include file
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568125"
+---
+<a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -18,7 +35,7 @@
 | Endpunkt-Zugriffssteuerungslisten (ACLs) |50 |50 |
 
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
-Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden.
+Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -58,7 +75,10 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Front-End-IP-Konfiguration, Standard | 10 | 600 |
 | Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | 100, eine Verfügbarkeitsgruppe |
 | Back-End-Pool, Standard | 1000, einzelnes VNET | 1000, einzelnes VNET |
+| Back-End-Ressourcen pro Lastenausgleich, Standard &ast; | 50 | 150 |
 | Hochverfügbarkeitsports, Standard | 1 pro internem Front-End | 1 pro internem Front-End |
+
+&ast; Bis zu 150 Ressourcen, jede Kombination aus eigenständigen virtuellen Computern, Verfügbarkeitsgruppen und VM-Skalierungsgruppen.
 
 [Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.
 

@@ -1,24 +1,19 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor | Microsoft-Dokumentation
+title: Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor
 description: Verwenden Sie die neue einheitliche Oberfläche für Azure-Warnungen, um über eine zentrale Oberfläche Metrik- und Protokollwarnungsregeln zu erstellen, anzuzeigen und zu verwalten.
 author: msvijayn
-manager: kmadnani1
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: fdb3ebe3820191a642c4503851b04dd5fc5e6048
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: alerts
+ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264339"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor  
 
@@ -50,7 +45,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     ![Erstellen einer Regel](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
-4.  Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen *Abonnement*, *Ressourcentyp* und schließlich die erforderliche Option *Ressource* auswählen.
+4.  Definieren Sie die Warnungsbedingung, indem Sie auf den Link **Ressource auswählen** klicken und dann durch Auswahl einer Ressource das Ziel angeben. Filtern Sie, indem Sie die Optionen „*Abonnement“, „*Ressourcentyp“ und schließlich die erforderliche Option *Ressource* auswählen.
 
     >[!NOTE]
 
@@ -67,7 +62,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     > Warnungen für Aktivitätsprotokolle werden ebenfalls unterstützt, jedoch nur in der Vorschauversion. [Weitere Informationen](monitoring-activity-log-alerts-new-experience.md)
 
-5. *Metrikwarnungen*: Stellen Sie sicher, dass **Ressourcentyp** mit dem Signaltyp **Metrik** ausgewählt ist. Klicken Sie nach dem Auswählen der entsprechenden **Ressource** auf die Schaltfläche *Fertig*, um zu „Warnung erstellen“ zurückzukehren. Verwenden Sie als Nächstes die Schaltfläche **Kriterien hinzufügen**, um für die zuvor ausgewählte Ressource das jeweilige Signal aus der Liste von Signaloptionen, den entsprechenden Überwachungsdienst und den aufgeführten Typ auszuwählen.
+5. *Metrikwarnungen: Stellen Sie sicher, dass **Ressourcentyp** mit dem Signaltyp **Metrik** ausgewählt ist. Klicken Sie nach dem Auswählen der entsprechenden **Ressource** auf die Schaltfläche *Fertig*, um zu „Warnung erstellen“ zurückzukehren. Verwenden Sie als Nächstes die Schaltfläche **Kriterien hinzufügen**, um für die zuvor ausgewählte Ressource das jeweilige Signal aus der Liste von Signaloptionen, den entsprechenden Überwachungsdienst und den aufgeführten Typ auszuwählen.
 
     ![Auswählen einer Ressource](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
@@ -83,7 +78,7 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
     a. Wählen Sie eine Dauer aus der Dropdownliste **Verlauf anzeigen** aus, um einen anderen Zeitraum zu visualisieren. Sie können für die unterstützten Metriken Dimensionen zum Filtern nach Zeitreihen auswählen. Die Auswahl von Dimensionen (bis zu fünf Optionen) ist optional. 
 
-    b. Die **Warnungslogik** kann aus den angezeigten Optionen *Bedingung*, *Aggregation* und *Schwellenwert* ausgewählt werden. Die Bedingung wird als Vorschauversion der angegebenen Logik zusammen mit dem Signalverlauf in der Visualisierung angezeigt, wodurch dargestellt wird, wann die Warnung in der Vergangenheit ausgelöst wurde. 
+    b. Die **Warnungslogik** kann aus den angezeigten Optionen *Bedingung*, „*Aggregation“ und *Schwellenwert* ausgewählt werden. Die Bedingung wird als Vorschauversion der angegebenen Logik zusammen mit dem Signalverlauf in der Visualisierung angezeigt, wodurch dargestellt wird, wann die Warnung in der Vergangenheit ausgelöst wurde. 
 
     c. Wählen Sie für die Angabe der Zeitdauer **Zeitraum** sowie die **Häufigkeit** aus, mit der eine Warnung ausgeführt werden soll.
 
@@ -125,14 +120,20 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 
         ![Unterdrücken von Warnungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
 
+        > [!TIP]
+        > Geben Sie einen größeren Wert für das Unterdrücken von Warnungen als für die Häufigkeit der Warnung an, um sicherzustellen, dass Benachrichtigungen ohne Überlappung beendet werden.
+
 12. Legen Sie im dritten und letzten Schritt bei Bedarf fest, dass eine **Aktionsgruppe** für die Warnungsregel ausgelöst werden muss, wenn die Warnungsbedingung erfüllt ist. Sie können eine vorhandene Aktionsgruppe mit einer Warnung auswählen oder eine neue Aktionsgruppe erstellen. Entsprechend der ausgewählten Aktionsgruppe werden beim Auslösen einer Warnung u.a. folgende Vorgänge in Azure ausgeführt: Senden von E-Mails, Senden von SMS, Aufrufen von Webhooks, Wiederherstellen mit Azure Runbooks und Übertragen von Inhalten an das ITSM-Tool mithilfe von Push. Erfahren Sie mehr über [Aktionsgruppen](monitoring-action-groups.md).
 
     Für **Protokollwarnungen** sind einige zusätzliche Funktionen zum Überschreiben der Standardaktionen verfügbar:
 
-    - **E-Mail-Benachrichtigung:**: Überschreibt den *E-Mail-Betreff* in der E-Mail, die über die Aktionsgruppe gesendet wurde wenn mindestens eine E-Mail-Aktion in der genannten Aktionsgruppe vorhanden ist. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
-    - **Benutzerdefinierte JSON-Nutzlast einschließen:** Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook, wenn mindestens eine Webhookaktion in der genannten Aktionsgruppe vorhanden ist. Der Benutzer kann das JSON-Format angeben, das für alle in zugewiesenen Aktionsgruppen konfigurierte Webhooks verwendet werden kann. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md). Mit der Option zum Testen von Webhooks können das Format und die Verarbeitung nach Ziel mithilfe von JSON-Beispielformaten überprüft werden. Diese Option ist nur zu **Testzwecken** vorgesehen.
+    - **E-Mail-Benachrichtigung**: Überschreibt den *E-Mail-Betreff* in der E-Mail, die über die Aktionsgruppe gesendet wurde, wenn mindestens eine E-Mail-Aktion in der genannten Aktionsgruppe vorhanden ist. Der Text der E-Mail kann nicht geändert werden, und dieses Feld ist **nicht** für E-Mail-Adressen vorgesehen.
+    - **Benutzerdefinierte JSON-Nutzlast einschließen**: Diese Option überschreibt den von Aktionsgruppen verwendeten JSON-Webhook, wenn mindestens eine Webhookaktion in der genannten Aktionsgruppe vorhanden ist. Der Benutzer kann das JSON-Format angeben, das für alle in zugewiesenen Aktionsgruppen konfigurierte Webhooks verwendet werden soll. Weitere Informationen zu Webhookformaten finden Sie unter [Webhookaktionen für Protokollwarnungsregeln](monitor-alerts-unified-log-webhook.md). Mit der Option „Testwebhook“ können das Format und die Verarbeitung nach Ziel mithilfe von JSON-Beispielformaten überprüft werden. Diese Option ist nur zu **Testzwecken** vorgesehen.
 
         ![Aktionsüberschreibungen für Protokollwarnungen](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+
+        > [!NOTE]
+        > Damit die Option **Testwebhook** funktioniert, muss der Endpunkt [Cross Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) unterstützen und Benutzer müssen in der Lage sein, den CORS-Proxy zur Umgehung von Problemen des Typs „Kein Access-Control-Allow-Origin-Header“ zu verwenden.
 
 13. Wenn alle Felder gültig sind und mit einem grünen Häkchen versehen sind, kann auf die Schaltfläche **Warnungsregel erstellen** geklickt werden, wodurch eine Warnung in Azure Monitor unter „Warnungen“ erstellt wird. Alle Warnungen können über das Dashboard „Warnungen“ angezeigt werden.
 

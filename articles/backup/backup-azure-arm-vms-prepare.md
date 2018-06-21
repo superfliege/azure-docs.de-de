@@ -1,26 +1,20 @@
 ---
-title: 'Azure Backup: Vorbereiten der Sicherung virtueller Computer | Microsoft-Dokumentation'
+title: 'Azure Backup: Vorbereiten der Sicherung virtueller Computer'
 description: Vergewissern Sie sich, dass Ihre Umgebung für die Sicherung virtueller Computer in Azure vorbereitet ist.
 services: backup
-documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: ''
 keywords: Sicherung; Sichern;
-ms.assetid: e87e8db2-b4d9-40e1-a481-1aa560c03395
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/1/2018
-ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 489875e595c9f28a1e30cbb29cde078f1b716f7f
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: markgal
+ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940569"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606635"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -60,6 +54,7 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Wählen Sie für ausgewählte Netzwerke nach dem Konfigurieren der Firewall- und VNet-Einstellungen für Ihr Speicherkonto die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** als Ausnahme aus, damit der Azure Backup-Dienst auf das Speicherkonto mit Netzwerkeinschränkung zugreifen kann. Die Wiederherstellung auf Elementebene wird für Speicherkonten mit Netzwerkeinschränkung nicht unterstützt.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
+* Momentaufnahmen des Datenträgers, für den die Schreibbeschleunigung aktiviert ist, werden nicht unterstützt. Aufgrund dieser Einschränkung kann der Azure Backup-Dienst keine anwendungskonsistente Momentaufnahme aller Datenträger der VM erstellen.
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
   * Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)
   * Virtuelle Computer mit mehreren reservierten IP-Adressen
@@ -175,7 +170,9 @@ Wenn Sie Probleme beim Registrieren des virtuellen Computers haben, überprüfen
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Installieren des VM-Agents auf dem virtuellen Computer
 Damit die Sicherungserweiterung funktioniert, muss der Azure-[VM-Agent](../virtual-machines/extensions/agent-windows.md) auf dem virtuellen Azure-Computer installiert sein. Wenn Ihr virtueller Computer über Azure Marketplace erstellt wurde, ist der VM-Agent auf dem virtuellen Computer bereits vorhanden. 
 
-Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Datencenter migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.
+Die folgenden Informationen werden für Situationen bereitgestellt, in denen Sie *keinen* in Azure Marketplace erstellten virtuellen Computer verwenden. **Angenommen, Sie haben einen virtuellen Computer aus einem lokalen Rechenzentrum migriert. In diesem Fall muss der VM-Agent installiert werden, um den virtuellen Computer zu schützen.**
+
+**Hinweis:** Nach der Installation des VM-Agents müssen Sie Azure PowerShell verwenden, um auch die ProvisionGuestAgent-Eigenschaft zu aktualisieren, damit Azure weiß, dass der Agent auf dem virtuellen Computer installiert ist. 
 
 Falls beim Sichern des virtuellen Azure-Computers Probleme auftreten, vergewissern Sie sich mithilfe der folgenden Tabelle, dass der Azure-VM-Agent auf dem virtuellen Computer ordnungsgemäß installiert ist. Die Tabelle enthält weitere Informationen zum VM-Agent für virtuelle Windows- und Linux-Computer.
 

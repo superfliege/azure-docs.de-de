@@ -9,11 +9,12 @@ ms.topic: include
 ms.date: 04/26/2018
 ms.author: menchi
 ms.custom: include file
-ms.openlocfilehash: a94a68d238a731388d8b13bd962b0db1007c5ca4
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d2b409c7454645893665b080b927998402056cdd
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666907"
 ---
 ## <a name="create-a-module-identity"></a>Erstellen einer Modulidentität
 
@@ -43,7 +44,16 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, mit der eine Geräte- 
     const string moduleID = "myFirstModule";
     ```
 
-5. Fügen Sie der **Program**-Klasse die folgenden Methoden hinzu:
+5. Fügen Sie den folgenden Code der **Main**-Klasse hinzu.
+    ```csharp
+    static void Main(string[] args)
+    {
+        AddDeviceAsync().Wait();
+        AddModuleAsync().Wait();
+    }
+    ```
+
+6. Fügen Sie der **Program**-Klasse die folgenden Methoden hinzu:
 
     ```csharp
     private static async Task AddDeviceAsync()
@@ -87,7 +97,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, mit der eine Geräte- 
 
 [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-6. Führen Sie diese Anwendung aus, und notieren Sie den Geräte- und Modulschlüssel.
+7. Führen Sie diese Anwendung aus, und notieren Sie den Geräte- und Modulschlüssel.
 
 > [!NOTE]
 > Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].

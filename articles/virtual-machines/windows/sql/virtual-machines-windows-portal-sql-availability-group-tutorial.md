@@ -16,11 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8796cd3224670c6d1c8b1b3c6da8d1c096b01d03
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716719"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -57,7 +58,7 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
 <a name="CreateCluster"></a>
 ## Erstellen des Clusters
 
-Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.  
+Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Server-Failovercluster mit zwei SQL Server-Instanzen und einem Zeugenserver erstellen.
 
 1. Stellen Sie eine RDP-Verbindung mit der ersten SQL Server-Instanz her. Verwenden Sie dabei ein Domänenkonto, das in beiden SQL Server-Instanzen sowie auf dem Zeugenserver über Administratorberechtigungen verfügt.
 
@@ -85,7 +86,8 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
    ![Eigenschaften des Clusters](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie im Textfeld für die Adresse eine verfügbare Adresse aus dem Subnetz an, in dem sich die SQL Server-Instanz befindet. Klicken Sie dann auf **OK**.
+3. Wählen Sie **Statische IP-Adresse** aus, und geben Sie eine verfügbare Adresse aus dem APIPA-Bereich (automatische Privat-IP-Adressierung) 169.254.0.1 bis 169.254.255.254 im Textfeld „Adresse“ ein. In diesem Beispiel können Sie eine beliebige Adresse in diesem Bereich verwenden. Beispiel: `169.254.0.1`. Klicken Sie dann auf **OK**.
+
 4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie dann, bis beide Ressourcen online sind. Wenn die Clusternamensressource online ist, aktualisiert sie den DC-Server mit einem neuen AD-Computerkonto. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
 
 ### <a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster

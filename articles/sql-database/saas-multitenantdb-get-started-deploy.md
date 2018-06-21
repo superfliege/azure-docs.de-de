@@ -8,14 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 4cbf758b82bccae8efe77e197d23a090d71fd7e5
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646455"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
@@ -123,7 +124,7 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
 1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;user&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
+    - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -135,7 +136,7 @@ Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu de
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die Wingtip-App den [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Die Veranstaltungsseite für die einzelnen Mandanten enthalten den Mandantennamen in der URL. Jede URL enthält auch den jeweiligen Benutzerwert. Bei jeder URL wird durch Ausführung der folgenden Schritte die Erfüllung des angezeigten Formats sichergestellt:
 
-- http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. Die Veranstaltungs-App analysiert den Mandantennamen aus der URL. Der Mandantenname in der vorangehenden Beispiel-URL lautet *fabrikamjazzclub*.
 2. Die App hashcodiert anschließend den Mandantennamen, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shardzuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen.

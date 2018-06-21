@@ -1,9 +1,9 @@
 ---
-title: "Überlegungen zum Entwurf von Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
-description: "Erfahren Sie mehr über Überlegungen zum Entwurf Ihrer Azure-VM-Skalierungsgruppen."
-keywords: "virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer"
+title: Überlegungen zum Entwurf von Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
+description: Erfahren Sie mehr über Überlegungen zum Entwurf Ihrer Azure-VM-Skalierungsgruppen.
+keywords: virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -16,36 +16,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 8c9253caad8b85b25e3142429c1e23be6f92dd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652398"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
 In diesem Artikel werden Überlegungen zum Entwurf von VM-Skalierungsgruppen erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wann sollten Sie Skalierungsgruppen statt virtuellen Computern verwenden?
-Im Allgemeinen sind Skalierungsgruppen nützlich für das Bereitstellen hochgradig verfügbarer Infrastruktur, wenn eine Reihe Computer ähnlich konfiguriert sind. Jedoch sind einige Funktionen nur in Skalierungsgruppen verfügbar, andere nur bei virtuellen Computern. Um eine fundierte Entscheidung über die jeweils geeignete Technologie treffen zu können, müssen Sie sich zunächst mit einigen häufig verwendeten Funktionen beschäftigen, die nur in Skalierungsgruppen und nicht bei VMs verfügbar sind:
+Skalierungsgruppen sind im Allgemeinen hilfreich für das Bereitstellen einer hoch verfügbaren Infrastruktur, in der eine Gruppe von Computern ähnlich konfiguriert sind. Jedoch sind einige Funktionen nur in Skalierungsgruppen verfügbar, andere nur bei virtuellen Computern. Um eine fundierte Entscheidung über die jeweils geeignete Technologie treffen zu können, müssen Sie sich zunächst mit einigen häufig verwendeten Funktionen beschäftigen, die nur in Skalierungsgruppen und nicht bei VMs verfügbar sind:
 
 ### <a name="scale-set-specific-features"></a>Skalierungsgruppenspezifische Funktionen
 
-- Nach der Festlegung einer Skalierungsgruppenkonfiguration können Sie die Eigenschaft „capacity“ aktualisieren, um mehrere VMs parallel bereitzustellen. Dies ist viel einfacher, als ein Skript zu schreiben, um viele einzelne virtuelle Computer parallel zu orchestrieren.
+- Nachdem Sie die Konfiguration der Skalierungsgruppe festgelegt haben, können Sie die *Capacity*-Eigenschaft aktualisieren, um mehrere VMs parallel bereitzustellen. Das ist besser, als ein Skript zu schreiben, um die parallele Bereitstellung von vielen einzelnen VMs zu orchestrieren.
 - Sie können [Azure Autoscale dazu verwenden, Skalierungsgruppen automatisch zu skalieren](./virtual-machine-scale-sets-autoscale-overview.md), nicht jedoch einzelne virtuelle Computer.
 - Sie können [ein Reimaging für virtuelle Computer in einer Skalierungsgruppe ](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) durchführen, [nicht jedoch für einzelne virtuelle Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](./virtual-machine-scale-sets-design-overview.md), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Mit einzelnen virtuellen Computern ist dies nur mit benutzerdefiniertem Code möglich.
+- Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](./virtual-machine-scale-sets-design-overview.md), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Eine Überprovisionierung einzelner VMs ist nur möglich, wenn Sie benutzerdefinierten Code zum Ausführen dieser Aktion schreiben.
 - Sie können eine [Upgraderichtlinie](./virtual-machine-scale-sets-upgrade-scale-set.md) festlegen, um Upgrades auf den virtuellen Computern in Ihrer Skalierungsgruppe auf einfache Weise durchzuführen. Bei einzelnen virtuellen Computern müssen Sie die Updates selbst orchestrieren.
 
 ### <a name="vm-specific-features"></a>Spezifische Funktionen von virtuellen Computern
 
 Einige Features sind derzeit nur auf VMs verfügbar:
 
-- Sie können Datenträger an spezifische einzelne virtuelle Computer anfügen, aber die angefügten Datenträger werden für alle virtuellen Computer in der Skalierungsgruppe konfiguriert.
-- Sie können nicht leere Datenträger an einzelne virtuelle Computer anfügen, nicht jedoch an virtuelle Computer in einer Skalierungsgruppe.
-- Sie können Momentaufnahmen von einzelnen virtuellen Computern erstellen, nicht jedoch von virtuellen Computern in einer Skalierungsgruppe.
-- Sie können ein Image von einem einzelnen virtuellen Computer erfassen, nicht jedoch von einem virtuellen Computer in einer Skalierungsgruppe.
-- Sie können einen einzelnen virtuellen Computer von einem nativen Datenträger zu einem verwalteten Datenträger migrieren, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich.
-- Sie können den NICs von virtuellen Computern öffentliche IPv6-IP-Adressen zuweisen, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich. Sie können Load Balancern sowohl bei VMs als auch bei VMs in einer Skalierungsgruppe öffentliche IPv6-Adressen zuweisen.
+- Sie können ein Image von einem einzelnen VM erfassen, nicht jedoch von einem VM in einer Skalierungsgruppe.
+- Sie können einen einzelnen virtuellen Computer von einem nativen Datenträger zu einem verwalteten Datenträger migrieren, aber Sie können keine VM-Instanzen in einer Skalierungsgruppe migrieren.
+- Sie können den virtuellen Netzwerkschnittstellenkarten (Network Interface Cards, NICs) einzelner VMs öffentliche IPv6-IP-Adressen zuweisen, bei VM-Instanzen in einer Skalierungsgruppe ist dies jedoch nicht möglich. Sie können Load Balancern sowohl bei VMs als auch bei VMs in einer Skalierungsgruppe öffentliche IPv6-Adressen zuweisen.
 
 ## <a name="storage"></a>Speicher
 

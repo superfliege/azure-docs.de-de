@@ -1,24 +1,20 @@
 ---
-title: Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas | Microsoft-Dokumentation
+title: Azure-Diagnoseerweiterung – Versionsverlauf des Konfigurationsschemas
 description: Relevant für die Erfassung von Leistungsindikatoren in Azure Virtual Machines, VM Scale Sets, Service Fabric und Cloud Services.
-services: monitoring-and-diagnostics
-documentationcenter: .net
+services: azure-monitor
 author: rboucher
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: reference
 ms.date: 05/16/2017
 ms.author: robb
-ms.openlocfilehash: 45a092452bc702a6a593cd6c21a8d2eaf4ff44bd
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.component: diagnostic-extension
+ms.openlocfilehash: 47fb598e9a0e722d51493fda1ff5180d4b022524
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262197"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
@@ -26,7 +22,7 @@ Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerwe
 > [!NOTE]
 > Die Azure-Diagnoseerweiterung ist die Komponente, die zum Sammeln von Leistungsindikatoren und anderen Statistiken aus diesen Produkten verwendet wird:
 > - Azure Virtual Machines 
-> - Skalierungsgruppen für virtuelle Computer
+> - Virtual Machine Scale Sets
 > - Service Fabric 
 > - Cloud Services 
 > - Netzwerksicherheitsgruppen

@@ -1,6 +1,6 @@
 ---
 title: Migration von Azure Storage-Metriken | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über die Migration von Legacymetriken zu den neuen von Azure Monitor verwalteten Metriken.
+description: Erfahren Sie, wie alte Metriken zu den neuen von Azure Monitor verwalteten Metriken migriert werden.
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 03/30/2018
 ms.author: fryu
-ms.openlocfilehash: da8eb0b9e2e5aba60b61a36d83f525c7ce4a7958
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: c64061aee94e8c08a3f6bcae78cffca0b4172d97
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776260"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650671"
 ---
 # <a name="azure-storage-metrics-migration"></a>Migration von Azure Storage-Metriken
 
-In Übereinstimmung mit der Strategie zur Vereinheitlichung der Monitor-Oberfläche in Azure migriert Azure Storage Metriken zur Azure Monitor-Plattform. Der Dienst mit Legacymetriken wird in Zukunft mit vorheriger Benachrichtigung gemäß der Azure-Richtlinie eingestellt. Wenn Sie Legacyspeichermetriken benötigen, müssen Sie vor dem Enddatum des Diensts eine Migration durchführen, um Ihre Metrikdaten beizubehalten.
+In Übereinstimmung mit der Strategie zur Vereinheitlichung der Monitor-Oberfläche in Azure integriert Azure Storage Metriken für die Azure Monitor-Plattform. Der Dienst mit den alten Metriken wird in Zukunft mit einer rechtzeitigen Benachrichtigung gemäß der Azure-Richtlinie eingestellt. Wenn Sie alte Speichermetriken benötigen, müssen Sie vor dem Enddatum des Diensts eine Migration durchführen, um Ihre Metrikdaten beizubehalten.
 
-In diesem Artikel werden die Schritte zur Migration von Legacymetriken zu den neuen Metriken beschrieben.
+In diesem Artikel wird erläutert, wie Sie die alten Metriken zu den neuen Metriken migrieren.
 
-## <a name="understand-legacy-metrics-managed-by-azure-storage"></a>Informationen zu den von Azure Storage verwalteten Legacymetriken
+## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>Informationen zu den von Azure Storage verwalteten alten Metriken
 
-Azure Storage sammelt Legacymetrikwerte, aggregiert diese und speichert sie im Speicherkonto in $Metric-Tabellen. Über das Azure-Portal können Sie Überwachungsdiagramme einrichten, während Sie mit Azure Storage-SDKs auch die Daten aus $Metric-Tabellen basierend auf dem Schema lesen können. Weitere Einzelheiten finden Sie in diesem Artikel zu [Storage Analytics](./storage-analytics.md).
+Azure Storage sammelt alte Metrikwerte und aggregiert und speichert diese in $Metric-Tabellen im selben Speicherkonto. Sie können das Azure-Portal verwenden, um ein Überwachungsdiagramm einzurichten. Sie können auch die Azure Storage SDKs verwenden, um die Daten aus $Metric-Tabellen zu lesen, die auf dem Schema basieren. Weitere Informationen finden Sie unter [Storage Analytics](./storage-analytics.md).
 
-Legacymetriken bieten Kapazitätsmetriken nur für Blobs und Transaktionsmetriken für Blobs, Tabellen, Dateien und Warteschlangen.
+Alte Metriken bieten Kapazitätsmetriken nur für Azure-BLOB-Speicher. Alte Metriken bieten Transaktionsmetriken für BLOB-Speicher, Tabellenspeicher, Azure Files und Warteschlangenspeicher. 
 
-Legacymetriken werden im Flatfile-Schema entworfen. Wenn die Metrik nicht durch die Datenverkehrsmuster ausgelöst wird, weist der Entwurf einen Metrikwert von Null auf. **ServerTimeoutError** ist in $Metric-Tabellen beispielsweise auf 0 festgelegt, auch wenn Sie keine Servertimeoutfehler beim Livedatenverkehr zum Speicherkonto erhalten.
+Alte Metriken sind im Flatfile-Schema entworfen. Wenn die Metrik nicht durch die Datenverkehrsmuster ausgelöst wird, weist der Entwurf einen Metrikwert von Null auf. Beispielsweise ist der Wert **ServerTimeoutError** in $Metric-Tabellen auf „0“ festgelegt, auch wenn Sie keine Servertimeoutfehler beim Livedatenverkehr zu einem Speicherkonto erhalten.
 
 ## <a name="understand-new-metrics-managed-by-azure-monitor"></a>Informationen zu den von Azure Monitor verwalteten neuen Metriken
 
@@ -41,84 +41,84 @@ Für neue Speichermetriken gibt Azure Storage die Metrikdaten an das Azure Monit
 
 Neue Metriken bieten Kapazitäts- und Transaktionsmetriken für Blobs, Tabellen, Dateien, Warteschlangen und Storage Premium.
 
-Das Feature für mehrere Dimensionen ist eines der von Azure Monitor bereitgestellten Features. Azure Storage übernimmt den Entwurf bei der Definition des Schemas für neue Metriken. Informationen zu unterstützten Dimensionen für Metriken finden Sie in diesem Artikel zu [Azure Storage-Metriken in Azure Monitor](./storage-metrics-in-azure-monitor.md). Ein mehrdimensionaler Entwurf bietet Kosteneffizienz sowohl im Hinblick auf den Bandbreitenverbrauch bei der Erfassung als auch im Hinblick auf die Kapazität bei der Speicherung von Metriken. Wenn Ihr Datenverkehr keine entsprechenden Metriken ausgelöst hat, werden die zugehörigen Metrikdaten infolgedessen nicht generiert. Beispiel: Wenn Ihr Datenverkehr keine Servertimeoutfehler ausgelöst hat, gibt Azure Monitor keine Daten zurück, wenn Sie den Wert der Metrik **Transactions** mit der Dimension **ResponseType** gleich **ServerTimeoutError** abfragen.
+Das Feature für mehrere Dimensionen ist eines der von Azure Monitor bereitgestellten Features. Azure Storage übernimmt den Entwurf bei der Definition des Schemas für neue Metriken. Informationen zu unterstützten Dimensionen für Metriken finden Sie unter [Azure Storage-Metriken in Azure Monitor](./storage-metrics-in-azure-monitor.md). Ein mehrdimensionaler Entwurf bietet Kosteneffizienz sowohl im Hinblick auf den Bandbreitenverbrauch bei der Erfassung als auch im Hinblick auf die Kapazität bei der Speicherung von Metriken. Wenn Ihr Datenverkehr keine entsprechenden Metriken ausgelöst hat, werden die zugehörigen Metrikdaten infolgedessen nicht generiert. Beispiel: Wenn Ihr Datenverkehr keine Servertimeoutfehler ausgelöst hat, gibt Azure Monitor keine Daten zurück, wenn Sie den Wert der Metrik **Transactions** mit der Dimension **ResponseType** gleich **ServerTimeoutError** abfragen.
 
-## <a name="metrics-mapping-between-legacy-metrics-and-new-metrics"></a>Zuordnung von Metriken zwischen Legacymetriken und neuen Metriken
+## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>Zuordnung von Metriken zwischen alten und neuen Metriken
 
 Wenn Sie Metrikdaten programmgesteuert lesen, müssen Sie das Schema für neue Metriken in Ihren Programmen verwenden. Zur Verdeutlichung der Änderungen wird in der folgenden Tabelle die entsprechende Zuordnung aufgeführt:
 
 **Kapazitätsmetriken**
 
-| Legacymetrik | Neue Metrik |
+| Alte Metrik | Neue Metrik |
 | ------------------- | ----------------- |
-| Capacity            | BlobCapacity mit der Dimension „BlobType“ gleich BlockBlob oder PageBlob |
-| ObjectCount         | BlobCount mit der Dimension „BlobType“ gleich BlockBlob oder PageBlob |
-| ContainerCount      | ContainerCount |
+| **Capacity**            | **BlobCapacity** mit der Dimension **BlobType** gleich **BlockBlob** oder **PageBlob** |
+| **ObjectCount**        | **BlobCount** mit der Dimension **BlobType** gleich **BlockBlob** oder **PageBlob** |
+| **ContainerCount**      | **ContainerCount** |
 
-Die folgenden Metriken sind neue Angebote, die Legacymetriken nicht unterstützen:
-* TableCapacity
-* TableCount
-* TableEntityCount
-* QueueCapacity
-* QueueCount
-* QueueMessageCount
-* FileCapacity
-* FileCount
-* FileShareCount
-* UsedCapacity
+Die folgenden Metriken sind neue Angebote, die von den alten Metriken nicht unterstützt werden:
+* **TableCapacity**
+* **TableCount**
+* **TableEntityCount**
+* **QueueCapacity**
+* **QueueCount**
+* **QueueMessageCount**
+* **FileCapacity**
+* **FileCount**
+* **FileShareCount**
+* **UsedCapacity**
 
 **Transaktionsmetriken**
 
-| Legacymetrik | Neue Metrik |
+| Alte Metrik | Neue Metrik |
 | ------------------- | ----------------- |
-| AnonymousAuthorizationError | Transactions mit der Dimension „ResponseType“ gleich AuthorizationError |
-| AnonymousClientOtherError | Transactions mit der Dimension „ResponseType“ gleich ClientOtherError |
-| AnonymousClientTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ClientTimeoutError |
-| AnonymousNetworkError | Transactions mit der Dimension „ResponseType“ gleich NetworkError |
-| AnonymousServerOtherError | Transactions mit der Dimension „ResponseType“ gleich ServerOtherError |
-| AnonymousServerTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ServerTimeoutError |
-| AnonymousSuccess | Transactions mit der Dimension „ResponseType“ gleich Success |
-| AnonymousThrottlingError | Transactions mit der Dimension „ResponseType“ gleich ClientThrottlingError oder ServerBusyError |
-| AuthorizationError | Transactions mit der Dimension „ResponseType“ gleich AuthorizationError |
-| Verfügbarkeit | Verfügbarkeit |
-| AverageE2ELatency | SuccessE2ELatency |
-| AverageServerLatency | SuccessServerLatency |
-| ClientOtherError | Transactions mit der Dimension „ResponseType“ gleich ClientOtherError |
-| ClientTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ClientTimeoutError |
-| NetworkError | Transactions mit der Dimension „ResponseType“ gleich NetworkError |
-| PercentAuthorizationError | Transactions mit der Dimension „ResponseType“ gleich AuthorizationError |
-| PercentClientOtherError | Transactions mit der Dimension „ResponseType“ gleich ClientOtherError |
-| PercentNetworkError | Transactions mit der Dimension „ResponseType“ gleich NetworkError |
-| PercentServerOtherError | Transactions mit der Dimension „ResponseType“ gleich ServerOtherError |
-| PercentSuccess | Transactions mit der Dimension „ResponseType“ gleich Success |
-| PercentThrottlingError | Transactions mit der Dimension „ResponseType“ gleich ClientThrottlingError oder ServerBusyError |
-| PercentTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ServerTimeoutError oder ClientTimeoutError|
-| SASAuthorizationError | Transactions mit der Dimension „ResponseType“ gleich AuthorizationError |
-| SASClientOtherError | Transactions mit der Dimension „ResponseType“ gleich ClientOtherError |
-| SASClientTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ClientTimeoutError |
-| SASNetworkError | Transactions mit der Dimension „ResponseType“ gleich NetworkError |
-| SASServerOtherError | Transactions mit der Dimension „ResponseType“ gleich ServerOtherError |
-| SASServerTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ServerTimeoutError |
-| SASSuccess | Transactions mit der Dimension „ResponseType“ gleich Success |
-| SASThrottlingError | Transactions mit der Dimension „ResponseType“ gleich ClientThrottlingError oder ServerBusyError |
-| ServerOtherError | Transactions mit der Dimension „ResponseType“ gleich ServerOtherError |
-| ServerTimeoutError | Transactions mit der Dimension „ResponseType“ gleich ServerTimeoutError |
-| Erfolgreich | Transactions mit der Dimension „ResponseType“ gleich Success |
-| ThrottlingError | Transactions mit der Dimension „ResponseType“ gleich ClientThrottlingError oder ServerBusyError |
-| TotalBillableRequests | Transaktionen |
-| TotalEgress | Ausgehende Daten |
-| TotalIngress | Eingehende Daten |
-| TotalRequests | Transaktionen |
+| **AnonymousAuthorizationError** | Transaktionen mit der Dimension **ResponseType** gleich **AuthorizationError** |
+| **AnonymousClientOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientOtherError** |
+| **AnonymousClientTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientTimeoutError** |
+| **AnonymousNetworkError** | Transaktionen mit der Dimension **ResponseType** gleich **NetworkError** |
+| **AnonymousServerOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerOtherError** |
+| **AnonymousServerTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerTimeoutError** |
+| **AnonymousSuccess** | Transaktionen mit der Dimension **ResponseType** gleich **Success** |
+| **AnonymousThrottlingError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientThrottlingError** oder **ServerBusyError** |
+| **AuthorizationError** | Transaktionen mit der Dimension **ResponseType** gleich **AuthorizationError** |
+| **Availability** | **Availability** |
+| **AverageE2ELatency** | **SuccessE2ELatency** |
+| **AverageServerLatency** | **SuccessServerLatency** |
+| **ClientOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientOtherError** |
+| **ClientTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientTimeoutError** |
+| **NetworkError** | Transaktionen mit der Dimension **ResponseType** gleich **NetworkError** |
+| **PercentAuthorizationError** | Transaktionen mit der Dimension **ResponseType** gleich **AuthorizationError** |
+| **PercentClientOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientOtherError** |
+| **PercentNetworkError** | Transaktionen mit der Dimension **ResponseType** gleich **NetworkError** |
+| **PercentServerOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerOtherError** |
+| **PercentSuccess** | Transaktionen mit der Dimension **ResponseType** gleich **Success** |
+| **PercentThrottlingError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientThrottlingError** oder **ServerBusyError** |
+| **PercentTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerTimeoutError** oder **ResponseType** gleich **ClientTimeoutError** |
+| **SASAuthorizationError** | Transaktionen mit der Dimension **ResponseType** gleich **AuthorizationError** |
+| **SASClientOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientOtherError** |
+| **SASClientTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientTimeoutError** |
+| **SASNetworkError** | Transaktionen mit der Dimension **ResponseType** gleich **NetworkError** |
+| **SASServerOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerOtherError** |
+| **SASServerTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerTimeoutError** |
+| **SASSuccess** | Transaktionen mit der Dimension **ResponseType** gleich **Success** |
+| **SASThrottlingError** | Transaktionen mit der Dimension **ResponseType** gleich **ClientThrottlingError** oder **ServerBusyError** |
+| **ServerOtherError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerOtherError** |
+| **ServerTimeoutError** | Transaktionen mit der Dimension **ResponseType** gleich **ServerTimeoutError** |
+| **Erfolgreich** | Transaktionen mit der Dimension **ResponseType** gleich **Success** |
+| **ThrottlingError** | **Transaktionen** mit der Dimension **ResponseType** gleich **ClientThrottlingError** oder **ServerBusyError**|
+| **TotalBillableRequests** | **Transaktionen** |
+| **TotalEgress** | **Ausgehend** |
+| **TotalIngress** | **Eingehend** |
+| **TotalRequests** | **Transaktionen** |
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-* Wie sollte ich vorhandene Warnungsregeln migrieren?
+### <a name="how-should-i-migrate-existing-alert-rules"></a>Wie sollte ich vorhandene Warnungsregeln migrieren?
 
-A: Wenn Sie klassische Warnungsregeln basierend auf Legacyspeichermetriken erstellt haben, müssen Sie neue Warnungsregeln basierend auf dem Schema für neue Metriken erstellen.
+Wenn Sie klassische Warnungsregeln basierend auf alten Speichermetriken erstellt haben, müssen Sie neue Warnungsregeln basierend auf dem Schema für neue Metriken erstellen.
 
-* Werden neue Metrikdaten standardmäßig im selben Speicherkonto gespeichert?
+### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>Werden neue Metrikdaten standardmäßig im selben Speicherkonto gespeichert?
 
-A: Nein. Wenn Sie die Metrikdaten im Speicherkonto archivieren müssen, können Sie die [Azure Monitor Diagnostic Setting API (Diagnoseeinstellung-Anwendungsprogrammierschnittstelle in Azure Monitor)](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate) verwenden.
+Nein. Wenn Sie die Metrikdaten in einem Speicherkonto archivieren möchten, verwenden Sie die [Azure Monitor Diagnostic Setting API](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings/createorupdate) (Diagnoseeinstellung-Anwendungsprogrammierschnittstelle in Azure Monitor).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

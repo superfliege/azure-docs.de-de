@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2018
+ms.date: 05/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 0e4c4c9e950610526a29e02d70827a1279d9686a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 43f7f1160fa36745bcfd697d91d1b46615b99edc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637513"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics
 Log Analytics ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu verstehen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
@@ -36,7 +37,7 @@ Für Daten können abhängig von den folgenden Faktoren erhebliche Kosten anfall
 > [!NOTE]
 > Lesen Sie die Dokumentationen für die einzelnen Lösungen, da diese eine Schätzung des Umfang der gesammelten Daten bietet.   
 
-Im Tarif *Free* ist die Aufbewahrung der Daten ist auf sieben Tage beschränkt. In den Tarifen *Standalone* und *Paid* stehen die gesammelten Daten der letzten 31 Tage zur Verfügung. Im Tarif *Free* liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen kostenpflichtigen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
+Wenn Sie ein Enterprise Agreement vor dem 1. Juli 2018 unterzeichnet haben oder wenn Sie bereits einen Log Analytics-Arbeitsbereich in einem Abonnement erstellt haben, können Sie weiterhin auf den Tarif *Free* zugreifen. Wenn Ihr Abonnement nicht an eine vorhandene EA-Registrierung gebunden ist, steht der Tarif *Free* nicht zur Verfügung, wenn Sie nach dem 2. April 2018 einen Arbeitsbereich in einem neuen Abonnement erstellen.  Im Tarif *Free* ist die Aufbewahrung von Daten auf sieben Tage beschränkt.  In den Tarifen *Standalone* und *Paid* stehen die gesammelten Daten der letzten 31 Tage zur Verfügung. Im Tarif *Free* liegt das Erfassungslimit bei 500 MB pro Tag. Sollten Sie dieses zulässige Volumen immer wieder überschreiten, können Sie Ihren Arbeitsbereich auf einen kostenpflichtigen Tarif umstellen, um Daten über diesen Grenzwert hinaus zu sammeln. 
 
 > [!NOTE]
 > Gebühren fallen an, wenn Sie in einem kostenpflichtigen Tarif eine längere Aufbewahrungsdauer auswählen. Sie können Ihren Tariftyp jederzeit ändern. Weitere Informationen zu den Preisen finden Sie unter [Preisdetails](https://azure.microsoft.com/pricing/details/log-analytics/). 

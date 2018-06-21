@@ -5,20 +5,17 @@ keywords: Änderungsfeed
 services: cosmos-db
 author: rafats
 manager: kfile
-documentationcenter: ''
-ms.assetid: 2d7798db-857f-431a-b10f-3ccbc7d93b50
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: ''
-ms.topic: article
+ms.devlang: dotnet
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: be59f1a9dc19fffdb6a952c7db73756909036bf6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2600565493a334c7227e5c0d67a5808f30751108
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261067"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -47,9 +44,9 @@ Zur Unterstützung des Änderungsfeeds in Azure Cosmos DB wird gelauscht, ob in 
 
 Sie können den Änderungsfeed auf drei verschiedene Arten lesen, wie weiter unten in diesem Artikel erläutert:
 
-1.  [Verwenden von Azure Functions](#azure-functions)
-2.  [Arbeiten mit der REST-API und den DocumentDB SDKs](#rest-apis)
-3.  [Change Feed Processor-Bibliothek](#change-feed-processor)
+*   [Verwenden von Azure Functions](#azure-functions)
+*   [Arbeiten mit der REST-API und den DocumentDB SDKs](#sql-sdk)
+*   [Verwenden der Change Feed Processor-Bibliothek von Azure Cosmos DB](#change-feed-processor)
 
 Der Änderungsfeed ist für jeden Partitionsschlüsselbereich innerhalb der Dokumentsammlung verfügbar. Daher kann er für eine parallele Verarbeitung über einen oder mehrere Consumer verteilt werden, wie in der folgenden Abbildung gezeigt.
 
@@ -92,7 +89,7 @@ Wenn Sie Azure Functions verwenden, ist die einfachste Möglichkeit zum Herstell
 
 Trigger können im Azure Functions-Portal, Azure Cosmos DB-Portal oder programmgesteuert erstellt werden. Weitere Informationen finden Sie unter [Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions](serverless-computing-database.md).
 
-<a id="rest-apis"></a>
+<a id="sql-sdk"></a>
 ## <a name="using-the-sdk"></a>Verwenden des SDK
 
 Mit dem [SQL SDK](sql-api-sdk-dotnet.md) für Azure Cosmos DB können Sie einen Änderungsfeed uneingeschränkt lesen und verwalten. Doch mit zunehmendem Leistungspotenzial wächst auch die Verantwortung. Wenn Sie Prüfpunkte verwalten, mit Dokumentsequenznummern umgehen und präzise Kontrolle über Partitionsschlüssel haben möchten, ist der Einsatz des SDK wohl der richtige Ansatz.
@@ -167,7 +164,7 @@ Dieser Abschnitt führt Sie durch das Arbeiten mit einem Änderungsfeed mithilfe
 
 Wenn Sie über mehrere Reader verfügen, können Sie mit **ChangeFeedOptions** die Leselast auf verschiedene Threads oder Clients verteilen.
 
-Das war schon alles, und mit diesen wenigen Codezeilen können Sie beginnen, den Änderungsfeed zu lesen. Sie erhalten den vollständigen in diesem Artikel verwendeten Code im [GitHub-Repository](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+Das war schon alles, und mit diesen wenigen Codezeilen können Sie beginnen, den Änderungsfeed zu lesen. Sie erhalten den vollständigen in diesem Artikel verwendeten Code im [GitHub-Repository](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeed).
 
 Im Code von Schritt 4 oben enthält **ResponseContinuation** in der letzten Zeile die letzte logische Sequenznummer (Logical Sequence Number, LSN) des Dokuments, die Sie verwenden werden, wenn Sie das nächste Mal nach dieser Sequenznummer neue Dokumente lesen. Mithilfe von **StartTime** von **ChangeFeedOption** können Sie den Zeitraum erweitern, um die Dokumente zu erhalten. Wenn also **ResponseContinuation** NULL ist, Ihre **StartTime** jedoch zeitlich zurückliegt, erhalten Sie alle Dokumente, die seit **StartTime** geändert wurden. Wenn aber **ResponseContinuation** einen Wert enthält, erhalten Sie vom System alle Dokumente ab dieser LSN.
 
@@ -191,7 +188,7 @@ Beachten Sie: Wenn zwei serverlose Azure-Funktionen dieselbe Sammlung überwache
 <a id="understand-cf"></a>
 ### <a name="understanding-the-change-feed-processor-library"></a>Grundlegendes zur Change Feed Processor-Bibliothek
 
-Es gibt vier Hauptkomponenten der Implementierung von Change Feed Processor: die überwachte Sammlung, die Lease-Sammlung, den Prozessor-Host und die Consumer. 
+Es gibt vier Hauptkomponenten der Implementierung der Change Feed Processor-Bibliothek: die überwachte Sammlung, die Lease-Sammlung, den Prozessor-Host und die Consumer. 
 
 > [!WARNING]
 > Das Erstellen einer Sammlung hat Auswirkungen auf die Preise, da Sie Durchsatz für die Anwendung zur Kommunikation mit Azure Cosmos DB reservieren. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/).
@@ -279,7 +276,152 @@ using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destColl
 }
 ```
 
-Das ist alles. Nach diesen wenigen Schritten gehen Dokumente in die **DocumentFeedObserver ProcessChangesAsync**-Methode ein.
+Das ist alles. Nach diesen wenigen Schritten gehen Dokumente in die **DocumentFeedObserver ProcessChangesAsync**-Methode ein. Suchen Sie den oben aufgeführten Code im [GitHub-Repository](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>Auf welche verschiedenen Weisen kann ein Änderungsfeed gelesen werden? Und wann sind die einzelnen Methoden geeignet?
+
+Es bestehen drei Optionen zum Lesen von Änderungsfeeds:
+
+* **[Mithilfe des Azure Cosmos DB-SQL-API-.NET-SDKs](#sql-sdk)**
+   
+   Mit dieser Methode erhalten Sie ein geringes Maß an Kontrolle über den Änderungsfeed. Sie können den Prüfpunkt verwalten, auf einen bestimmten Partitionsschlüssel zugreifen usw. Wenn Sie über mehrere Reader verfügen, können Sie mit [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) die Leselast auf verschiedene Threads oder Clients verteilen. zu erstellen und zu verwalten.
+
+* **[Mithilfe der Change Feed Processor-Bibliothek von Azure Cosmos DB](#change-feed-processor)**
+
+   Wenn Sie einen großen Teil der Komplexität von Änderungsfeeds auslagern möchten, können Sie die Change Feed Processor-Bibliothek verwenden. Diese Bibliothek blendet einen großen Teil der Komplexität aus, gibt Ihnen aber trotzdem volle Kontrolle über den Änderungsfeed. Diese Bibliothek folgt einem [Beobachtermuster](https://en.wikipedia.org/wiki/Observer_pattern), Ihre Verarbeitungsfunktion wird vom SDK aufgerufen. 
+
+   Wenn Ihr Änderungsfeed einen hohen Durchsatz aufweist, können Sie zum Lesen des Änderungsfeeds mehrere Clients instanziieren. Da Sie die „Change Feed Processor-Bibliothek“ verwenden, wird die Last automatisch zwischen den verschiedenen Clients aufgeteilt. Sie brauchen gar nichts zu tun. Die gesamte Komplexität wird vom SDK behandelt. Wenn Sie aber ein eigenes Lastenausgleichsmodul verwenden möchten, können Sie IParitionLoadBalancingStrategy implementieren und eine benutzerdefinierte Partitionsstrategie verwenden. Implementieren von IPartitionProcessor – für benutzerdefinierte Verarbeitungsänderungen in einer Partition. Mit SDK können Sie zwar einen Partitionsbereich verarbeiten, aber wenn Sie einen bestimmten Partitionsschlüssel verarbeiten möchten, müssen Sie die SDK für SQL-API verwenden.
+
+* **[Mithilfe von Azure Functions](#azure-functions)** 
+   
+   Die letzte Option, Azure Functions, ist die einfachste. Wir empfehlen die Verwendung dieser Option. Wenn Sie einen Azure Cosmos DB-Trigger in einer Azure Functions-App erstellen, wählen Sie die Azure Cosmos DB-Sammlung aus, mit der eine Verbindung hergestellt werden soll, und die Funktion wird immer dann ausgelöst, wenn eine Änderung der Sammlung erfolgt ist. Einen [Screencast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) zur Verwendung von Azure Functions mit Änderungsfeeds anzeigen
+
+   Trigger können im Azure Functions-Portal, Azure Cosmos DB-Portal oder programmgesteuert erstellt werden. Visual Studio und VS Code bieten hervorragende Unterstützung zum Schreiben von Azure-Funktionen. Sie können den Code auf Ihrem Desktop schreiben und debuggen und dann die Funktion mit einem Klick bereitstellen. Weitere Informationen finden Sie im Artikel [Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions](serverless-computing-database.md).
+
+### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>Welche Sortierreihenfolge gilt für Dokumente im Änderungsfeed?
+
+Dokumente im Änderungsfeed treten in der Reihenfolge des Zeitpunkts ihrer letzten Änderung auf. Diese Sortierreihenfolge ist nur pro Partition garantiert.
+
+### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>Was geschieht bei einem Konto, das mehrere Regionen überspannt, mit dem Änderungsfeed, wenn ein Failover der schreibenden Region eintritt? Tritt dann auch für den Änderungsfeed ein Failover ein? Wäre der Änderungsfeed immer noch zusammenhängend, oder würde der Failover zu einem Zurücksetzen des Änderungsfeeds führen?
+
+Ja, der Änderungsfeed funktioniert übergreifend über den manuellen Failovervorgang hinweg und bleibt zusammenhängend.
+
+### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>Wie lange bleiben die geänderten Daten im Änderungsfeed erhalten, wenn ich die TTL-Eigenschaft (Time to Live) für das Dokument auf -1 festlege?
+
+Der Änderungsfeed bleibt dauerhaft erhalten, ohne zeitliche Beschränkung. Wenn Daten nicht gelöscht werden, verbleiben sie im Änderungsfeed.
+
+### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>Wie kann ich Azure-Funktionen zum Lesen aus einer bestimmten Region konfigurieren, da der Änderungsfeed standardmäßig in allen Leseregionen verfügbar ist?
+
+Derzeit ist es nicht möglich, Azure Functions für das Lesen aus einer bestimmten Region zu konfigurieren. Es besteht ein GitHub-Problem im Azure Functions-Repository beim Festlegen der bevorzugten Regionen von Azure Cosmos DB-Bindungen und -Triggern.
+
+Azure Functions verwendet die Standard-Verbindungsrichtlinie. Sie können den Verbindungsmodus in Azure Functions konfigurieren, und standardmäßig erfolgt das Lesen aus der Schreibregion, daher sollte Azure Functions auch in der gleichen Region platziert werden.
+
+### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Was ist die Standardgröße von Batches in Azure Functions?
+
+100 Dokumente bei jedem Aufruf von Azure Functions. Diese Zahl kann jedoch in der JSON-Datei der Funktion konfiguriert werden. Hier finden Sie die vollständige [Liste der Konfigurationsoptionen](../azure-functions/functions-run-local.md). Wenn Sie lokal entwickeln, aktualisieren Sie die Anwendungseinstellungen in der Datei [local.settings.json](../azure-functions/functions-run-local.md).
+
+### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>Ich überwache eine Sammlung und lese ihren Änderungsfeed, ich stelle aber fest, dass nicht alle eingefügten Dokumente enthalten sind, einige Dokumente fehlen. Was geht da vor?
+
+Vergewissern sie sich, dass keine andere Funktion die gleiche Sammlung mit der gleichen Lease-Sammlung liest. Das ist mir passiert, und erst später habe ich festgestellt, dass die fehlenden Dokumente von meinen anderen Azure-Funktionen verarbeitet wurden, die ebenfalls die gleiche Lease-Dauer verwenden.
+
+Wenn Sie mehrere Azure-Funktionen zum Lesen des gleichen Änderungsfeeds erstellen, müsse sie verschiedene Lease-Sammlungen verwenden oder die leasePrefix-Konfiguration verwenden, wenn sie die gleiche Sammlung teilen sollen. Beim Einsatz der Change Feed Processor-Bibliothek können Sie allerdings mehrere Instanzen Ihrer Funktion starten, und das SDK übernimmt automatisch die Aufteilung der Dokumente auf die verschiedenen Instanzen.
+
+### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Mein Dokument wird jede Sekunde aktualisiert, ich erhalte aber beim Lauschen am Änderungsfeed nicht alle Änderungen in Azure Functions.
+
+Azure Functions fragt den Änderungsfeed alle 5 Sekunden ab, daher gehen alle Änderungen verloren, die zwischen den 5-Sekunden-Intervallen liegen. Azure Cosmos DB speichert alle 5 Sekunden nur eine Version, Sie erhalten also die fünfte Änderung am Dokument. Wenn Sie allerdings unter 5 Sekunden gehen möchten und den Änderungsfeed jede Sekunde abfragen möchten, können Sie die Abrufzeit „feedPollTime“ konfigurieren, siehe dazu [Azure Cosmos DB-Bindungen](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Sie ist in Millisekunden mit dem Standardwert 5000 definiert. Intervalle unterhalb einer Sekunde sind möglich, aber nicht ratsam, da die CPU-Belastung dadurch deutlich ansteigt.
+
+### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Ich habe ein Dokument in die Mongo-API-Sammlung eingefügt, aber wenn ich das Dokument im Änderungsfeed abrufe, hat es einen anderen ID-Wert. Was ist hier schiefgelaufen?
+
+Ihre Sammlung ist die Mongo API-Sammlung. Beachten Sie aber, dass der Änderungsfeed mithilfe des SQL-Clients gelesen wird und Elemente in das JSON-Format serialisiert. Aufgrund der JSON-Formatierung tritt bei MongoDB-Clients ein Konflikt zwischen BSON-formatierten Dokumenten und dem JSON-formatierten Änderungsfeed auf. Was Sie sehen, ist die Darstellung eines BSON-Dokuments in JSON. Wenn Sie in einem Mongo-Konto binäre Attribute verwenden, werden sie nach JSON konvertiert.
+
+### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>Gibt es eine Möglichkeit, Änderungsfeeds nur für Aktualisierungen zu steuern, nicht aber für Einfügungen?
+
+Bisher noch nicht, aber diese Funktionalität ist in Planung. Heute können Sie Dokumenten für Aktualisierungen eine schwache Markierung hinzufügen.
+
+### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Gibt es eine Möglichkeit, Löschvorgänge in Änderungsfeeds aufzunehmen?
+
+Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Änderungsfeeds werden fortlaufend verbessert, und diese Funktionalität ist in Planung. Heute können Sie einem Dokument eine schwache Markierung für einen Löschvorgang hinzufügen. Fügen Sie dem Dokument ein Attribut „gelöscht“ hinzu, legen Sie es auf „true“ fest, und legen Sie eine TTL für das Dokument fest, damit es automatisch gelöscht werden kann.
+
+### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Kann ich den Änderungsfeed für historische Dokumente lesen (z. B. Dokumente, die vor fünf Jahren hinzugefügt wurden)?
+
+Ja, wenn das Dokument nicht gelöscht wurde, können Sie den Änderungsfeed bis zurück zum Ursprung Ihrer Sammlung lesen.
+
+### <a name="can-i-read-change-feed-using-javascript"></a>Kann ich den Änderungsfeed mithilfe von JavaScript lesen?
+
+Ja, die Node.js-SDK-Anfangsunterstützung für Änderungsfeeds wurde vor Kurzem hinzugefügt. Sie kann wie im folgenden Beispiel gezeigt verwendet werden; bitte aktualisieren Sie das documentdb-Modul auf die aktuelle Version, bevor Sie den Code ausführen:
+
+```js
+
+var DocumentDBClient = require('documentdb').DocumentClient;
+const host = "https://your_host:443/";
+const masterKey = "your_master_key==";
+const databaseId = "db";
+const collectionId = "c1";
+const dbLink = 'dbs/' + databaseId;
+const collLink = dbLink + '/colls/' + collectionId;
+var client = new DocumentDBClient(host, { masterKey: masterKey });
+let options = {
+    a_im: "Incremental feed",
+    accessCondition: {
+        type: "IfNoneMatch",        // Use: - empty condition (or remove accessCondition entirely) to start from beginning.
+        //      - '*' to start from current.
+        //      - specific etag value to start from specific continuation.
+        condition: ""
+    }
+};
+ 
+var query = client.readDocuments(collLink, options);
+query.executeNext((err, results, headers) =&gt; {
+    // Now we have headers.etag, which can be used in next readDocuments in accessCondition option.
+    console.log(results);
+    console.log(headers.etag);
+    console.log(results.length);
+    options.accessCondition = { type: "IfNoneMatch", condition: headers.etag };
+    var query = client.readDocuments(collLink, options);
+    query.executeNext((err, results, headers) =&gt; {
+        console.log("next one:", results[0]);
+    });
+});<span id="mce_SELREST_start" style="overflow:hidden;line-height:0;"></span>
+
+```
+
+### <a name="can-i-read-change-feed-using-java"></a>Kann ich den Änderungsfeed mithilfe von Java lesen?
+
+Die Java-Bibliothek zum Lesen von Änderungsfeeds steht im [Github-Repository](https://github.com/Azure/azure-documentdb-changefeedprocessor-java) zur Verfügung. Aktuell liegt die Java-Bibliothek jedoch um einige Versionen hinter der .NET-Bibliothek zurück. Bald werden beide Bibliotheken jedoch synchron sein.
+
+### <a name="can-i-use-etag-lsn-or-ts-for-internal-bookkeeping-which-i-get-in-response"></a>Kann ich „_etag“, „_lsn“ oder „_ts“, die ich als Antwort erhalte, für die interne Buchhaltung verwenden?
+
+Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen (es nicht analysieren), da es jederzeit geändert werden kann.
+„_ts“ ist der Zeitstempel der Änderung oder Erstellung. Sie können „_ts“ für chronologische Vergleiche verwenden.
+„_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird, sie stellt die Transaktions-ID aus dem Speicher dar. Viele Dokumente können den gleichen _lsn-Wert aufweisen.
+Dazu ist noch anzumerken, dass ETag in der FeedResponse sich von dem „_etag“ unterscheidet, das für das Dokument angezeigt wird. „_etag“ ist ein interner Bezeichner und wird für Parallelität eingesetzt, es ist eine Information über die Dokumentversion, während „ETag“ für die Sequenzierung des Feeds verwendet wird.
+
+### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Verursacht das Lesen des Änderungsfeeds irgendwelche Zusatzkosten?
+
+Ihnen werden die genutzten RUs in Rechnung gestellt, d.h., die Datenbewegungen in und aus Azure Cosmos DB-Sammlungen verbrauchen immer RU. Benutzern werden von der Lease-Sammlung verbrauchte RUs in Rechnung gestellt.
+
+### <a name="can-multiple-azure-functions-read-one-collections-change-feed"></a>Können mehrere Azure-Funktionen den Änderungsfeed einer Sammlung lesen?
+
+Ja. Mehrere Azure-Funktionen können den Änderungsfeed der gleichen Sammlung lesen. Allerdings muss für die Azure-Funktionen ein separates „leaseCollectionPrefix“ definiert sein.
+
+### <a name="should-the-lease-collection-be-partitioned"></a>Sollte die Lease-Sammlung partitioniert sein?
+
+Nein, die Lease-Sammlung kann fest sein. Partitionierte Lease-Sammlungen sind nicht erforderlich und werden derzeit nicht unterstützt.
+
+### <a name="can-i-read-change-feed-from-spark"></a>Kann ich den Änderungsfeed von Spark lesen?
+
+Ja, das ist möglich. Weitere Informationen finden Sie unter [Azure Cosmos DB-Spark-Connector](spark-connector.md). Hier finden Sie einen [Screencast](https://www.youtube.com/watch?v=P9Qz4pwKm_0&t=1519s), aus dem Sie ersehen können, wie ein Änderungsfeed als strukturierter Stream verarbeitet werden kann.
+
+### <a name="if-i-am-processing-change-feed-by-using-azure-functions-say-a-batch-of-10-documents-and-i-get-an-error-at-7th-document-in-that-case-the-last-three-documents-are-not-processed-how-can-i-start-processing-from-the-failed-documentie-7th-document-in-my-next-feed"></a>Angenommen, ich verarbeite einen Änderungsfeed mithilfe von Azure Functions, z. B. einen Stapel von 10 Dokumenten, und beim 7. Dokument wird ein Fehler ausgegeben. In diesem Fall werden die letzten drei Dokumente nicht verarbeitet. Wie kann ich in meinem nächsten Feed mit der Verarbeitung ab dem Dokument mit dem Fehler (d.h. dem 7. Dokument) beginnen?
+
+Das empfohlene Muster zum Behandeln des Fehlers besteht darin, Ihren Code in einen try-catch-Block einzuschließen. Fangen Sie den Fehler ab, und stellen Sie das Dokument in eine Warteschlange (unzustellbare Nachrichten) ein. Definieren Sie anschließend Logik zum Verarbeiten der Dokumente, die den Fehler verursacht haben. Mit dieser Methode brauchen Sie bei einem Stapel aus 200 Dokumenten, von denen nur bei einem Dokument ein Fehler aufgetreten ist, nicht den gesamten Stapel wegzuwerfen.
+
+Im Fehlerfall sollten Sie den Prüfpunkt nicht zum Anfang zurücksetzen, andernfalls erhalten Sie erneut diese Dokumente aus dem Änderungsfeed. Beachten Sie, dass der Änderungsfeed die letzte endgültige Momentaufnahme der Dokumente aufbewahrt, und Sie so die vorhergehende Momentaufnahme des Dokuments verlieren können. Der Änderungsfeed bewahrt nur eine letzte Version des Dokuments aus, und zwischenzeitlich kann das Dokument von anderen Prozessen verändert worden sein.
+
+Sie werden während der Problembehebung an Ihrem Code bald keine Dokumente mehr in der Warteschlange für unzustellbare Nachrichten finden.
+Azure Functions wird vom Änderungsfeedsystem automatisch aufgerufen, und der Prüfpunkt usw. wird intern von Azure Functions verwaltet. Wenn Sie einen Rollback des Prüfpunkts ausführen und jeden Aspekt davon steuern möchten, sollten Sie die Verwendung des Change Feed Processor-SDKs in Erwägung ziehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

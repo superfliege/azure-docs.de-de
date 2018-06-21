@@ -2,13 +2,12 @@
 title: Einrichten von Abrechnungs- oder Guthabenwarnungen für Azure-Abonnements | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie Warnungen für Ihre Azure-Rechnung einrichten können, um Überraschungen bei der Abrechnung zu vermeiden.
 keywords: Guthabenwarnung, Abrechnungswarnung
-services: ''
+services: billing
 documentationcenter: ''
 author: adpick
 manager: adpick
 editor: ''
 tags: billing
-ms.assetid: 9b7b3eeb-cd9d-4690-86a3-51b1e2a8974f
 ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,20 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/9/2017
 ms.author: adpick
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa7d1853226647917925e8c75e01a1c83d84daeb
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 981cb1153e0268e6572207f8d2401edb23485863
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359049"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607802"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Einrichten von Abrechnungs- oder Guthabenwarnungen für Microsoft Azure-Abonnements
 Wenn Sie der Kontoadministrator für ein Azure-Abonnement sind, können Sie den Dienst für Azure-Abrechnungswarnungen zum Erstellen von benutzerdefinierten Abrechnungswarnungen verwenden, um die Abrechnungsaktivitäten für Ihre Azure-Konten zu überwachen und zu verwalten.
 
 Dieser Dienst befindet sich in der Vorschau, daher müssen Sie ihn zunächst auf der Seite mit Vorschaufeatures aktivieren.
 
-[!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="set-the-alert-threshold-and-email-recipients"></a>Festlegen des Schwellenwerts für Warnungen und von E-Mail-Empfängern
 1. Besuchen Sie [die Seite mit Vorschaufeatures](https://account.windowsazure.com/PreviewFeatures), und aktivieren Sie **Billing Alert Service**.
@@ -51,6 +49,11 @@ Azure unterstützt beliebige E-Mail-Adressen, überprüft dabei jedoch nicht, ob
 ## <a name="check-on-your-alerts"></a>Überprüfen Ihrer Warnungen
 Nach dem Einrichten von Warnungen werden diese im Account Center aufgelistet. Zudem wird angezeigt, wie viele zusätzliche Warnungen eingerichtet werden können. Für jede Warnung werden Datum und Uhrzeit des Sendevorgangs angezeigt. Außerdem wird das festgelegte Limit und die Information angegeben, ob es sich um eine Abrechnungssumme oder monetäre Gutschrift handelt. Die Uhrzeit wird als UTC-Zeit (Universal Time Coordinate) im 24-Stunden-Format und das Datum im Format JJJJ-MM-TT angegeben. Klicken Sie in der Liste auf das Pluszeichen einer Warnung, um diese zu bearbeiten, oder klicken Sie auf den Papierkorb, um sie zu löschen.
 
+## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Löschen von Warnungen oder E-Mail-Adressen vom Azure-Abrechnungswarndienst
+Wenn Sie Informationen vom Dienst entfernen müssen, aktualisieren Sie die gespeicherte E-Mail-Adresse, oder löschen Sie die Warnung vollständig.
+
+   ![Screenshot der Ansicht zum Löschen der Warnung, in der Sie persönliche Informationen entfernen können][Image4]
+
 ## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Abrechnungswarnungen für Kunden mit Enterprise Agreement (EA)
 EA-Abonnements werden von diesem Dienst nicht unterstützt, stattdessen können EA-Kunden für alle Abteilungen mit einer Registrierung Warnungen empfangen, indem Ausgabenkontingente eingerichtet werden. Informationen zum Einstieg finden Sie unter [Department Spending Quotas](https://ea.azure.com/helpdocs/departmentSpendingQuotas) (Ausgabenkontingente für Abteilungen) im EA-Portal.
 
@@ -64,3 +67,4 @@ Weitere Informationen finden Sie im [Leitfaden zur Azure-Kostenverwaltung](billi
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png
 [Image3]: ./media/azure-billing-set-up-alerts/billingalerts3.png 
+[Image4]: ./media/azure-billing-set-up-alerts/AlertsDeleteScreen1.PNG

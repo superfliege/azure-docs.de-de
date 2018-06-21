@@ -1,6 +1,6 @@
 ---
-title: Planen von Azure-SSIS-Integration Runtimes | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime mithilfe von Azure Automation und Data Factory.
+title: Planen der Azure SSIS Integration Runtime | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure SSIS Integration Runtime mithilfe von Azure Automation und Data Factory.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,23 +10,29 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
-ms.topic: article
-ms.date: 05/18/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: douglasl
-ms.openlocfilehash: dfb54aeeff1b1f1640609be708e1b9d767a18c3a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360324"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297793"
 ---
-# <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Planen des Startens und Beendens einer Azure SSIS-Integration Runtime 
-Das Ausführen einer Azure SSIS (SQL Server Integration Services)-Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und sie andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden. Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Folgende allgemeine Schritte werden in diesem Artikel beschrieben:
+# <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden der Azure SSIS Integration Runtime nach einem Zeitplan
+Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure SSIS Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
+
+Sie können z.B. Webaktivitäten mit Webhooks zu einem Azure Automation-PowerShell-Runbook erstellen und diese mit einer Aktivität „SSIS-Paket ausführen“ verketten. Die Webaktivitäten können die Azure SSIS-IR rechtzeitig vor und nach dem Ausführen des Pakets starten und beenden. Weitere Informationen zur Aktivität „SSIS-Paket ausführen“ finden Sie unter [Ausführen eines SSIS-Pakets mit der SSIS-Aktivität in Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md).
+
+## <a name="overview-of-the-steps"></a>Übersicht über die Schritte
+
+Folgende allgemeine Schritte werden in diesem Artikel beschrieben:
 
 1. **Erstellen und Testen eines Azure Automation-Runbooks.** In diesem Schritt erstellen Sie ein PowerShell-Runbook mit dem Skript, das eine Azure SSIS-IR startet oder beendet. Anschließend testen Sie das Runbook in Start- und Stoppszenarien und bestätigen, dass IR gestartet oder beendet wird. 
 2. **Erstellen von zwei Zeitplänen für das Runbook.** Für den ersten Zeitplan konfigurieren Sie das Runbook mit „Start“ als Vorgang. Für den zweiten Zeitplan konfigurieren Sie das Runbook mit „Stopp“ als Vorgang. Geben Sie für beide Zeitpläne den Rhythmus an, in dem das Runbook ausgeführt werden soll. Beispielsweise empfiehlt es sich, das erste für die tägliche Ausführung um 8 Uhr und das zweite für die tägliche Ausführung um 23 Uhr zu planen. Wenn das erste Runbook ausgeführt wird, startet es die Azure SSIS-IR. Wenn das zweite Runbook ausgeführt wird, beendet es die Azure SSIS-IR. 
 3. **Erstellen Sie zwei Webhooks für das Runbook** – einen für den Startvorgang und den anderen für den Stoppvorgang. Sie verwenden die URLs dieser Webhooks beim Konfigurieren von Webaktivitäten in einer Data Factory-Pipeline. 
-4. **Erstellen einer Data Factory-Pipeline.** Die erstellte Pipeline umfasst drei Aktivitäten. Die erste **Web**-Aktivität ruft den ersten Webhook auf, um die Azure SSIS-IR zu starten. Die **Gespeicherte Prozedur**-Aktivität führt ein SQL­-Skript aus, das das SSIS-Paket ausführt. Die zweite **Web**-Aktivität beendet die Azure SSIS-IR. Weitere Informationen zum Aufrufen eines SSIS-Pakets aus einer Data Factory-Pipeline mit der „Gespeicherte Prozedur“-Aktivität finden Sie unter [Aufrufen eines SSIS-Pakets](how-to-invoke-ssis-package-stored-procedure-activity.md). Anschließend erstellen Sie einen Zeitplantrigger zum Planen der Pipeline für die Ausführung im angegebenen Rhythmus.
+4. **Erstellen einer Data Factory-Pipeline.** Die erstellte Pipeline umfasst drei Aktivitäten. Die erste **Web**-Aktivität ruft den ersten Webhook auf, um die Azure SSIS-IR zu starten. Die Aktivität **Gespeicherte Prozedur** führt ein SQL-­Skript aus, das wiederum das SSIS-Paket ausführt. Die zweite **Web**-Aktivität beendet die Azure SSIS-IR. Weitere Informationen zum Aufrufen eines SSIS-Pakets aus einer Data Factory-Pipeline mit der „Gespeicherte Prozedur“-Aktivität finden Sie unter [Aufrufen eines SSIS-Pakets](how-to-invoke-ssis-package-stored-procedure-activity.md). Anschließend erstellen Sie einen Zeitplantrigger zum Planen der Pipeline für die Ausführung im angegebenen Rhythmus.
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Invoke SSIS packages using stored procedure activity in version 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md) (Aufrufen von SSIS-Paketen mithilfe einer Aktivität einer gespeicherten Prozedur in Version 1).
@@ -74,11 +80,11 @@ Wenn Sie nicht über ein Azure Automation-Konto verfügen, erstellen Sie eines a
 
     ![Überprüfen der erforderlichen Module](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  Navigieren Sie für das [AzureRM.DataFactoryV2 0.5.2-Modul](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/0.5.2) zum PowerShell-Katalog, klicken Sie auf **In Azure Automation bereitstellen**, wählen Sie Ihr Automation-Konto aus, und klicken Sie dann auf **OK**. Kehren Sie zur Ansicht **Module** unter **Gemeinsame Ressourcen** im Menü auf der linken Seite zurück, und warten Sie darauf, dass der **Status** des Moduls **AzureRM.DataFactoryV2 0.5.2** auf **Verfügbar** wechselt.
+2.  Navigieren Sie für das [AzureRM.DataFactoryV2-Modul](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/) zum PowerShell-Katalog, klicken Sie auf **In Azure Automation bereitstellen**, wählen Sie Ihr Automation-Konto aus, und klicken Sie dann auf **OK**. Kehren Sie zur Ansicht **Module** unter **Gemeinsame Ressourcen** im Menü auf der linken Seite zurück, und warten Sie darauf, dass der **Status** des Moduls **AzureRM.DataFactoryV2** auf **Verfügbar** wechselt.
 
     ![Überprüfen des Data Factory-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  Navigieren Sie für das [AzureRM.Profile 4.5.0-Modul](https://www.powershellgallery.com/packages/AzureRM.profile/4.5.0) zum PowerShell-Katalog, klicken Sie auf **In Azure Automation bereitstellen**, wählen Sie Ihr Automation-Konto aus, und klicken Sie dann auf **OK**. Kehren Sie zur Ansicht **Module** unter **Gemeinsame Ressourcen** im Menü auf der linken Seite zurück, und warten Sie darauf, dass der **Status** des Moduls **AzureRM.Profile 4.5.0** auf **Verfügbar** wechselt.
+3.  Navigieren Sie für das [AzureRM.Profile-Modul](https://www.powershellgallery.com/packages/AzureRM.profile/) zum PowerShell-Katalog, klicken Sie auf **In Azure Automation bereitstellen**, wählen Sie Ihr Automation-Konto aus, und klicken Sie dann auf **OK**. Kehren Sie zur Ansicht **Module** unter **Gemeinsame Ressourcen** im Menü auf der linken Seite zurück, und warten Sie darauf, dass der **Status** des Moduls **AzureRM.Profile** auf **Verfügbar** wechselt.
 
     ![Überprüfen des Profile-Moduls](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
@@ -240,7 +246,7 @@ Nachdem Sie die Pipeline erstellt und getestet haben, erstellen Sie einen Zeitpl
  
    Der Name der Azure Data Factory muss **global eindeutig**sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>MyAzureSsisDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
   
-       `Data factory name “MyAzureSsisDataFactory” is not available`
+       `Data factory name �MyAzureSsisDataFactory� is not available`
 3. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
 4. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus:
      
@@ -382,6 +388,9 @@ Nun, da die Pipeline wie erwartet funktioniert, können Sie einen Trigger zum Au
     ![Triggerausführungen](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+Informationen finden Sie im folgenden Blogbeitrag:
+-   [Modernisieren und Erweitern von ETL/ELT-Workflows mit SSIS-Aktivitäten in ADF-Pipelines](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/)
+
 Informationen finden Sie in den folgenden Artikeln der SSIS-Dokumentation: 
 
 - [Deploy, run, and monitor an SSIS package on Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial) (Bereitstellen, Ausführen und Überwachen eines SSIS-Pakets in Azure)   

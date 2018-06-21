@@ -1,24 +1,19 @@
 ---
-title: "Azure Backup für SQL Server-Workloads mit Azure Backup Server | Microsoft-Dokumentation"
-description: "Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup Server"
+title: Azure Backup für SQL Server-Workloads mit Azure Backup Server
+description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup Server
 services: backup
-documentationcenter: 
 author: pvrk
 manager: Shivamg
-editor: 
-ms.assetid: c8b1f7ec-26b1-4ef0-a3f2-91aec959daea
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: pullabhk
-ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d0fc66ff81672116d3d98ee9970456515ab3c9e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606391"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Sichern von SQL Server in Azure mit Azure Backup Server
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
@@ -58,7 +53,7 @@ Bevor Sie beginnen, stellen Sie sicher, [dass Azure Backup Server installiert un
    >
    >
 
-8. Klicken Sie auf **Weiter**
+8. Klicken Sie unten auf der Seite auf **Weiter**
 
     MABS zeigt den verfügbaren Gesamtspeicherplatz sowie die wahrscheinliche Festplattenspeicherbelegung an.
 

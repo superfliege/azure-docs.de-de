@@ -2,23 +2,20 @@
 title: Diagnoseprotokollierung für Azure Cosmos DB | Microsoft-Dokumentation
 description: Dieses Tutorial dient als Hilfe bei den ersten Schritten mit der Azure Cosmos DB-Protokollierung.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 103d9d36ae1290f7af18be83f41bd9b83dbd3fbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 66ee0856851a301a6849b71b64cb904c925ad18d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34612213"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Diagnoseprotokollierung für Azure Cosmos DB
 
@@ -34,7 +31,7 @@ Die folgende Abbildung zeigt die verschiedenen Arten verfügbarer Azure-Protokol
 
 In der Abbildung sind die **Computeressourcen** die Azure-Ressourcen, für die Sie auf das Microsoft-Gastbetriebssystem zugreifen können. Beispielsweise werden Azure Virtual Machines, VM-Skalierungsgruppen, Azure Container Service usw. als Computeressourcen angesehen. Computeressourcen generieren Aktivitätsprotokolle, Diagnoseprotokolle und Anwendungsprotokolle. Weitere Informationen finden Sie im Artikel [Azure-Überwachung: Computeressourcen](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset).
 
-Die **Nicht-Computeressourcen** sind Ressourcen, bei denen Sie nicht auf das zugrunde liegende Betriebssystem zugreifen und direkt mit der Ressource arbeiten können. Beispiele hierfür sind Netzwerksicherheitsgruppen, Logik-Apps usw. Azure Cosmos DB ist eine Nicht-Computeressource. Sie können Protokolle für Nicht-Computeressourcen im Aktivitätsprotokoll anzeigen, oder Sie können im Portal die Option „Diagnoseprotokolle“ aktivieren. Weitere Informationen finden Sie im Artikel [Azure-Überwachung: Nicht-Computeressourcen](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else).
+**Nicht-Computeressourcen** sind Ressourcen, bei denen Sie nicht auf das zugrunde liegende Betriebssystem zugreifen und direkt mit der Ressource arbeiten können. Beispiele hierfür sind Netzwerksicherheitsgruppen, Logik-Apps usw. Azure Cosmos DB ist eine Nicht-Computeressource. Sie können Protokolle für Nicht-Computeressourcen im Aktivitätsprotokoll anzeigen, oder Sie können im Portal die Option „Diagnoseprotokolle“ aktivieren. Weitere Informationen finden Sie im Artikel [Azure-Überwachung: Nicht-Computeressourcen](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else).
 
 Das Aktivitätsprotokoll zeichnet die Vorgänge auf einer Abonnementebene für Azure Cosmos DB auf. Vorgänge wie ListKeys, Write DatabaseAccounts usw. werden protokolliert. Diagnoseprotokolle ermöglichen eine feiner abgestimmte Protokollierung, und Sie können DataPlaneRequests (Create, Read, Query usw.) sowie MongoRequests protokollieren.
 

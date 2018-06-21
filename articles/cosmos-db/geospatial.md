@@ -2,23 +2,20 @@
 title: Arbeiten mit Geodaten in Azure Cosmos DB | Microsoft-Dokumentation
 description: Grundlegendes zum Erstellen, Indizieren und Abfragen räumlicher Objekte mit Azure Cosmos DB und der SQL-API.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 82ce2898-a9f9-4acf-af4d-8ca4ba9c7b8f
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 858d6c2154a74a6e5fe16c9392827cc8a6354f9c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611366"
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Arbeiten mit Geodaten und GeoJSON-Standortdaten in Azure Cosmos DB
 Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
@@ -30,7 +27,7 @@ Dieser Artikel bietet eine Einführung in die Funktionalität für Geodaten in [
 In diesem Artikel wird die Arbeit mit räumlichen Daten mit der SQL-API veranschaulicht. In diesem [GitHub-Projekt](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) finden Sie Codebeispiele.
 
 ## <a name="introduction-to-spatial-data"></a>Einführung in räumliche Daten
-Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Gängige Anwendungsfälle sind Abfragen der Entfernung, z.B. „alle Cafés in der Nähe meines aktuellen Standorts suchen“. 
+Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Zu den häufigen Einsatzbereichen gehören oft Abfragen zur örtlichen Nähe, z.B.: „suche alle Cafés in der Nähe meines aktuellen Standorts“. 
 
 ### <a name="geojson"></a>GeoJSON
 Azure Cosmos DB unterstützt eine Volltextindizierung und Abfrage von Geopunktdaten, die mithilfe der [GeoJSON-Spezifikation](https://tools.ietf.org/html/rfc7946) dargestellt werden. GeoJSON-Datenstrukturen sind stets gültige JSON-Objekte, weshalb sie mit Azure Cosmos DB gespeichert und ohne spezielle Tools oder Bibliotheken abgefragt werden können. Die Azure Cosmos DB SDKs bieten Hilfsklassen und Methoden, die das Arbeiten mit räumlichen Daten erleichtern. 
@@ -98,7 +95,7 @@ Zusätzlich zu Punkten unterstützt GeoJSON auch LineStrings und Polygone. **Lin
 Zusätzlich zu Punkten, LineStrings und Polygonen gibt GeoJSON auch das Darstellen der Gruppierung mehrerer Geodatenstandorte sowie das Zuweisen beliebiger Eigenschaften mit Geolocation als **Feature**an. Da diese Objekte gültige JSON sind, können sie alle in Azure Cosmos DB gespeichert und verarbeitet werden. Azure Cosmos DB unterstützt jedoch nur die automatische Indizierung von Punkten.
 
 ### <a name="coordinate-reference-systems"></a>Koordinatenreferenzsysteme
-Da die Form der Erde unregelmäßig ist, werden Koordinaten von Geodaten in zahlreichen Koordinatenreferenzsystemen (KRS) abgebildet, die jeweils eigene Bezugsrahmen und Maßeinheiten aufweisen. Das "National Grid of Britain" ist beispielsweise ein Referenzsystem, das sehr genau für Großbritannien ist, außerhalb davon hingegen nicht. 
+Da die Form der Erde unregelmäßig ist, werden Koordinaten von Geodaten in zahlreichen Koordinatenreferenzsystemen (KRS) abgebildet, die jeweils eigene Bezugsrahmen und Maßeinheiten aufweisen. Das „National Grid of Britain“ ist beispielsweise ein Referenzsystem, das sehr genau für Großbritannien ist, außerhalb davon hingegen nicht. 
 
 Das am häufigsten verwendete KRS ist derzeit das World Geodetic System [WGS-84](http://earth-info.nga.mil/GandG/wgs84/). GPS-Geräte und viele Kartendienste einschließlich Google Maps- und Bing Maps-APIs verwenden WGS-84. Azure Cosmos DB unterstützt ausschließlich die Indizierung und Abfrage von Geodaten mit dem Koordinatenreferenzsystem WGS-84. 
 
@@ -391,7 +388,7 @@ Hier wird gezeigt, wie Sie eine vorhandene Sammlung so ändern können, dass die
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB ausgeführt haben, haben Sie folgende Möglichkeiten:
+Nachdem Sie die ersten Schritte mit räumlichen Daten in Azure Cosmos DB erlernt haben, haben Sie folgende Möglichkeiten:
 
 * Beginnen Sie die Codierung mit den [.NET-Codebeispielen auf GitHub für räumliche Daten](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs).
 * Praktisches Arbeiten mit Abfragen von Geodaten im [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)

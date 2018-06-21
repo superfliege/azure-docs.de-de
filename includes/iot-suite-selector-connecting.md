@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 500e335d0b2eddc56cdfb9828236bc4676d9b6aa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 28290718d15a893c5d676c887b9f810449075746
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371166"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34665998"
 ---
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -22,7 +22,7 @@ ms.locfileid: "34371166"
 > * [Node.js auf Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
 > * [C auf Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 
-In diesem Tutorial implementieren Sie ein **Kühlgerät**, das die folgenden Telemetriedaten an den [Solution Accelerator](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) für die Remoteüberwachung sendet:
+In diesem Tutorial implementieren Sie ein **Kühlgerät**, das die folgenden Telemetriedaten an den [Solution Accelerator](../articles/iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) für Remoteüberwachung sendet:
 
 * Temperatur
 * Pressure
@@ -44,7 +44,7 @@ Bevor Sie Code für Ihr Gerät schreiben, stellen Sie Ihren Solution Accelerator
 
 ### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Bereitstellen des Solution Accelerators für Remoteüberwachung
 
-Das in diesem Tutorial erstellte **Kühlgerät** sendet Daten an eine Instanz des Solution Accelerators für [Remoteüberwachung](../articles/iot-suite/iot-suite-remote-monitoring-explore.md). Wenn Sie den Solution Accelerator für Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, lesen Sie den Artikel [Bereitstellen des Solution Accelerators für Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
+Das in diesem Tutorial erstellte **Kühlgerät** sendet Daten an eine Instanz des Solution Accelerators für [Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-explore.md). Wenn Sie den Solution Accelerator für Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, lesen Sie [Bereitstellen des Solution Accelerators für Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-deploy.md).
 
 Wenn der Bereitstellungsvorgang für die Remoteüberwachungslösung abgeschlossen ist, klicken Sie auf **Starten**, um das Lösungsdashboard im Browser zu öffnen.
 
@@ -57,7 +57,7 @@ Wenn der Bereitstellungsvorgang für die Remoteüberwachungslösung abgeschlosse
 
 Damit ein Gerät eine Verbindung mit dem Solution Accelerator herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie haben die Möglichkeit, die Verbindungszeichenfolge mit den Anmeldeinformationen zu speichern, wenn Sie das Gerät der Lösung hinzufügen. Die Geräte-Verbindungszeichenfolge wird zu einem späteren Zeitpunkt in diesem Lernprogramm in Ihre Clientanwendung einbezogen.
 
-Um Ihrer Lösung für die Remoteüberwachung ein Gerät hinzuzufügen, führen Sie in der Lösung auf der Seite **Geräte** die folgenden Schritte durch:
+Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie in der Lösung auf der Seite **Geräte** die folgenden Schritte durch:
 
 1. Wählen Sie **+ Neues Gerät** und dann **Physisch** als **Gerätetyp** aus:
 

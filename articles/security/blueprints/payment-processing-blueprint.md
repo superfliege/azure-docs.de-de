@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 1b77aee3bceef13128ada34fb325240dda98bc41
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895485"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35301370"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure Security and Compliance Blueprint – PCI-DSS-konforme Umgebungen für die Zahlungsverarbeitung
 
@@ -44,7 +44,7 @@ Die grundlegende Architektur besteht aus den folgenden Komponenten:
 - **Bereitstellungsvorlagen**. In dieser Bereitstellung werden [Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-overview#template-deployment) verwendet, um die Komponenten der Architektur automatisch in Microsoft Azure bereitzustellen, indem während des Setups Konfigurationsparameter angegeben werden.
 - **Automatisierte Bereitstellungsskripts**. Diese Skripts unterstützen beim Bereitstellen der End-to-End-Lösung. Zu den Skripts gehören:
     - Ein Skript zur Modulinstallation und zur Einrichtung für [globale Administratoren](/azure/active-directory/active-directory-assign-admin-roles-azure-portal). Mit diesem Skript werden die erforderlichen PowerShell-Module und globalen Administratorrollen installiert und wird geprüft, ob diese ordnungsgemäß konfiguriert sind.
-    - Ein PowerShell-Installationsskript wird verwendet, um die End-to-End-Lösung bereitzustellen. Diese wird als ZIP-Datei und BACPAC-Datei bereitgestellt, die eine vorgefertigte Demowebanwendung mit [Beispielinhalten für eine SQL-Datenbank](https://github.com/Microsoft/azure-sql-security-sample) enthalten. Den Quellcode für diese Lösung finden Sie im [Blueprint-Coderepository][code-repo]. 
+    - Ein Skript zur PowerShell-Installation wird verwendet, um die End-to-End-Lösung bereitzustellen. Diese wird als ZIP-Datei und BACPAC-Datei bereitgestellt, die eine vorgefertigte Demo-Webanwendung mit [Beispielinhalten für eine SQL-Datenbank](https://github.com/Microsoft/azure-sql-security-sample) enthalten. Der Quellcode für diese Lösung ist zur Überprüfung auf [GitHub](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms) verfügbar. 
 
 ## <a name="architectural-diagram"></a>Architekturdiagramm
 
@@ -169,8 +169,6 @@ Jede der Netzwerkschichten hat eine dedizierte Netzwerksicherheitsgruppe (NSG):
 - Eine DMZ-Netzwerksicherheitsgruppe für Firewall- und Application Gateway-WAF
 - Eine NSG für die verwaltende Jumpbox (Bastionhost bzw. geschützter Host)
 - Eine NSG für die App Service-Umgebung
-
-Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für den sicheren und richtigen Betrieb der Lösung geöffnet sind. Weitere Informationen finden Sie unter [PCI-Anleitungen für Netzwerksicherheitsgruppen](#network-security-groups).
 
 Jede der Netzwerksicherheitsgruppen (NSG) hat bestimmte Ports und Protokolle, die für die sichere und richtige Arbeitsweise der Lösung geöffnet sind. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
 - Aktivierte [Diagnoseprotokolle und -ereignisse](/azure/virtual-network/virtual-network-nsg-manage-log) werden im Speicherkonto gespeichert. 

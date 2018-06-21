@@ -1,6 +1,6 @@
 ---
 title: Serverkonzepte in Azure Database for PostgreSQL
-description: "Dieser Artikel enthält Aspekte und Richtlinien für das Konfigurieren und Verwalten von Azure Database for PostgreSQL-Servern."
+description: Dieser Artikel enthält Aspekte und Richtlinien für das Konfigurieren und Verwalten von Azure Database for PostgreSQL-Servern.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 05/22/2018
+ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640012"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL-Server
 Dieser Artikel enthält Erwägungen und Richtlinien für die Arbeit mit Azure-Datenbank für PostgreSQL-Server.
@@ -45,13 +46,22 @@ Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sic
 | **TCP/IP** | Das Protokoll wird über TCP/IP- und Unix-Domänensockets unterstützt. |
 | **Firewall** | Zum Schutz Ihrer Daten verhindert eine Firewallregel jeglichen Zugriff auf Ihren Server und auf dessen Datenbanken, solange Sie nicht angeben, welche Computer zugriffsberechtigt sind. Weitere Informationen finden Sie unter [Firewallregeln für Azure-Datenbank für PostgreSQL-Server](concepts-firewall-rules.md). |
 
-## <a name="how-do-i-manage-a-server"></a>Wie verwalte ich einen Server?
+## <a name="managing-your-server"></a>Verwalten Ihres Servers
 Sie können Azure Database for PostgreSQL-Server mithilfe des [Azure-Portals](https://portal.azure.com) oder der [Azure CLI](/cli/azure/postgres) verwalten.
+
+Beim Erstellen eines Servers richten Sie die Anmeldeinformationen für Ihren Administratorbenutzer ein. Der Administratorbenutzer ist der Benutzer mit den höchsten Berechtigungen für den Server. Er gehört der Rolle „azure_pg_admin“ an. Diese Rolle verfügt nicht über vollständige Administratorrechte. 
+
+Das PostgreSQL-Superuser-Attribut ist dem „azure_superuser“ zugewiesen, der dem verwalteten Dienst angehört. Sie haben keinen Zugriff auf diese Rolle.
+
+Ein Azure Database for PostgreSQL-Server verfügt über zwei Standarddatenbanken: 
+- **postgres**: Eine Standarddatenbank, mit der Sie nach der Erstellung Ihres Servers eine Verbindung herstellen können.
+- **azure_maintenance**: Diese Datenbank wird verwendet, um die Prozesse, die den verwalteten Dienst bereitstellen, von den Benutzeraktionen zu trennen. Sie haben keinen Zugriff auf diese Datenbank.
+
 
 ## <a name="server-parameters"></a>Serverparameter
 Die PostgreSQL-Serverparameter bestimmen die Konfiguration des Servers. In Azure Database for PostgreSQL kann die Liste der Parameter über das Azure-Portal oder die Azure CLI angezeigt und bearbeitet werden. 
 
-Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfigurierbaren Parameter in Azure Database for PostgreSQL eine Teilmenge der Parameter in einer lokalen Postgres-Instanz dar. (Weitere Informationen zu Postgres-Parametern finden Sie in der [PostgreSQL-Dokumentation](https://www.postgresql.org/docs/9.6/static/runtime-config.html).) Bei der Erstellung wird der Azure Database for PostgreSQL-Server mit Standardwerten für die einzelnen Parameter konfiguriert. Parameter, die einen Serverneustart oder Superuser-Zugriff erfordern, damit sie übernommen werden, können nicht vom Benutzer konfiguriert werden.
+Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfigurierbaren Parameter in Azure Database for PostgreSQL eine Teilmenge der Parameter in einer lokalen Postgres-Instanz dar. (Weitere Informationen zu Postgres-Parametern finden Sie in der [PostgreSQL-Dokumentation](https://www.postgresql.org/docs/9.6/static/runtime-config.html).) Bei der Erstellung wird der Azure Database for PostgreSQL-Server mit Standardwerten für die einzelnen Parameter konfiguriert. Einige Parameter, die einen Serverneustart oder Administratorenzugriff erfordern, damit die Änderungen wirksam werden, können nicht vom Benutzer konfiguriert werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

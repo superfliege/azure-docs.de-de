@@ -1,24 +1,20 @@
 ---
-title: 'Azure Backup: Anwendungskonsistente Sicherungen von Linux-VMs | Microsoft-Dokumentation'
-description: "Erstellen Sie anwendungskonsistente Sicherungen Ihrer virtuellen Linux-Computer in Azure. In diesem Artikel wird beschrieben, wie Sie das Skriptframework zum Sichern von in Azure bereitgestellten Linux-VMs konfigurieren. Außerdem enthält dieser Artikel Informationen zur Problembehandlung."
+title: 'Azure Backup: anwendungskonsistente Sicherungen von Linux-VMs'
+description: Erstellen Sie anwendungskonsistente Sicherungen Ihrer virtuellen Linux-Computer in Azure. In diesem Artikel wird beschrieben, wie Sie das Skriptframework zum Sichern von in Azure bereitgestellten Linux-VMs konfigurieren. Außerdem enthält dieser Artikel Informationen zur Problembehandlung.
 services: backup
-documentationcenter: dev-center-name
 author: anuragmehrotra
 manager: shivamg
-keywords: "App-konsistente Sicherung; anwendungskonsistente Sicherung für Azure-VM; Linux-VM-Sicherung; Azure-Sicherung"
-ms.assetid: bbb99cf2-d8c7-4b3d-8b29-eadc0fed3bef
+keywords: App-konsistente Sicherung; anwendungskonsistente Sicherung für Azure-VM; Linux-VM-Sicherung; Azure-Sicherung
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 1/12/2018
-ms.author: anuragm;markgal
-ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.author: anuragm
+ms.openlocfilehash: 027fc4098e7760de276a8548453bb83599ed0521
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34605211"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 

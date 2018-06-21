@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234518"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 
@@ -67,6 +68,8 @@ Dieser Abschnitt enthält Name-Wert-Paare, die Ihre Web-App beim Start lädt.
 * Bei .NET-Apps werden diese Einstellungen zur Laufzeit in die `AppSettings` der .NET-Konfiguration eingefügt, wobei vorhandene Einstellungen überschrieben werden. 
 * PHP-, Python-, Java- und Node-Anwendungen können auf diese Einstellungen als Umgebungsvariablen zur Laufzeit zugreifen. Für jede App-Einstellung werden zwei Umgebungsvariablen erstellt: eine mit dem Namen, der für die App-Einstellung eingegeben wurde, und eine weitere mit dem Präfix APPSETTING_. Beide enthalten denselben Wert.
 
+App-Einstellungen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
+
 ### <a name="connection-strings"></a>Verbindungszeichenfolgen
 Verbindungszeichenfolgen für verknüpfte Ressourcen. 
 
@@ -80,6 +83,8 @@ Bei PHP-, Python-, Java- und Node-Anwendungen sind diese Einstellungen als Umgeb
 * Benutzerdefiniert: `CUSTOMCONNSTR_`
 
 Wenn beispielsweise eine MySQL-Verbindungszeichenfolge "`connectionstring1`" heißt, wird sie über die Umgebungsvariable `MYSQLCONNSTR_connectionString1` aufgerufen.
+
+Verbindungszeichenfolgen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
 ### <a name="default-documents"></a>Standarddokumente
 Das Standarddokument ist die Webseite, die an der Stamm-URL für eine Website angezeigt wird.  Die erste übereinstimmende Datei in der Liste wird verwendet. 

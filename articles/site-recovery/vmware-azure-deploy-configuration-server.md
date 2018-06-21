@@ -2,18 +2,18 @@
 title: Bereitstellen des Konfigurationsservers für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure Site Recovery bereitstellen.
 services: site-recovery
-author: AnoopVasudavan
-manager: gauravd
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: 2389ff6824a005db46c04bd1b45eabfd5ce50481
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 05/06/2018
+ms.author: raynew
+ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188479"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267508"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -21,11 +21,19 @@ Sie stellen einen lokalen Konfigurationsserver bereit, wenn Sie [Azure Site Reco
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Es wird empfohlen, den Konfigurationsserver als hoch verfügbare VMware-VM bereitzustellen. Die Hardwareanforderungen werden in der folgenden Tabelle zusammengefasst.
+Es wird empfohlen, den Konfigurationsserver als hoch verfügbare VMware-VM bereitzustellen. Die Anforderungen an Konfigurationsserver sind in der folgenden Tabelle zusammengefasst.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 
+
+### <a name="prepare-for-mysql-installation"></a>Vorbereiten der Installation von MySQL
+
+MySQL muss auf den Konfigurationsserver installiert werden. Hierfür können Sie eine der folgenden Methoden verwenden:
+
+- Lassen Sie Site Recovery herunterladen, und installieren Sie es, wenn der Konfigurationsserver-Verwaltungs-Assistent ausgeführt wird. Sie brauchen keine bestimmten Maßnahmen zu ergreifen.
+- Laden Sie MySQL manuell herunter, und platzieren Sie es im Ordner „C:\Temp\ASRSetup“. Führen Sie dann die Installation aus. Site Recovery erkennt, dass es installiert ist, wenn der Assistent ausgeführt wird.
+- Laden Sie MySQL manuell herunter, und platzieren Sie es im Ordner „C:\Temp\ASRSetup“. Wenn der Assistent ausgeführt wird, findet er die Setupdatei und führt die Installation von diesem Speicherort aus durch. 
 
 
 ## <a name="capacity-planning"></a>Kapazitätsplanung
@@ -101,7 +109,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 1. Wählen Sie im Assistent für die Konfigurationsserververwaltung die Option **Konnektivität einrichten**. Wählen Sie die NIC zum Empfangen von Replikationsdatenverkehr aus, und klicken Sie dann auf **Speichern**. Sie können diese Einstellung nach der Konfiguration nicht mehr ändern.
 2. Wählen Sie unter **Recovery Services-Tresor auswählen** Ihr Azure-Abonnement, die entsprechende Ressourcengruppe und den entsprechenden Tresor aus.
-3. Akzeptieren Sie unter **Drittanbietersoftware installieren** den Lizenzvertrag. Klicken Sie auf **Herunterladen und installieren**, um MySQL-Server zu installieren.
+3. Akzeptieren Sie unter **Drittanbietersoftware installieren** den Lizenzvertrag. Installieren Sie MySQL gemäß der [Methode, die Sie zum Installieren von MySQL verwenden](#prepare-for-mysql-installation).
 4. Klicken Sie auf **VMware PowerCLI installieren**. Stellen Sie sicher, dass alle Browserfenster geschlossen sind, bevor Sie diesen Schritt ausführen. Klicken Sie anschließend auf **Weiter**.
 5. Unter **Anwendungskonfiguration überprüfen** werden die Voraussetzungen überprüft, bevor der Vorgang fortgesetzt wird.
 6. Geben Sie unter **vCenter-Server/vSphere ESXi-Server konfigurieren** den FQDN oder die IP-Adresse des vCenter-Servers oder vSphere-Hosts ein, auf dem sich die virtuellen Computer befinden, die repliziert werden sollen. Geben Sie den Port, an dem der Server lauscht, sowie einen Anzeigenamen für den VMware-Server im Tresor ein.

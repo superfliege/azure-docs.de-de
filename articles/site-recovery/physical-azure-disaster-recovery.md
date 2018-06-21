@@ -6,13 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/23/2018
 ms.author: raynew
-ms.openlocfilehash: 207ff17f7b113bf4a94bb6c157cf53e7b1c46b45
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4c83e495e269cdca35844a699d714b55cf1f500
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643310"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -27,18 +28,25 @@ In diesem Tutorial erfahren Sie, wie Sie die Notfallwiederherstellung von physis
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für einen Server
 
+[Überprüfen Sie die Architektur](concepts-hyper-v-to-azure-architecture.md) für dieses Notfallwiederherstellungsszenario.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](physical-azure-architecture.md) verstehen.
+- Stellen Sie sicher, dass Sie die [Architektur und die Komponenten](physical-azure-architecture.md) des Szenarios verstehen.
 - Überprüfen Sie die [Supportanforderungen](vmware-physical-secondary-support-matrix.md) für alle Komponenten.
 - Überprüfen Sie, ob die Server, die Sie replizieren möchten, die [Azure-VM-Anforderungen](vmware-physical-secondary-support-matrix.md#replicated-vm-support) erfüllen.
 - Bereiten Sie Azure vor. Sie benötigen ein Azure-Abonnement, ein virtuelles Azure-Netzwerk und ein Speicherkonto.
 - Vorbereiten eines Kontos für die automatische Installation des Mobility Service auf jedem Server, den Sie replizieren möchten.
 
-> [!NOTE]
-> Bevor Sie beginnen, beachten Sie, dass nach dem Failover auf Azure für physische Server kein Failback auf lokale physische Computer erfolgen kann. Es kann nur ein Failback auf VMware-VMs ausgeführt werden. 
+Bevor Sie beginnen, beachten Sie Folgendes:
+
+- Nach dem Failover auf Azure für physische Server kann kein Failback auf lokale physische Computer erfolgen. Es kann nur ein Failback auf VMware-VMs ausgeführt werden. 
+- In diesem Tutorial wird die Notfallwiederherstellung physischer Computer in Azure mit den einfachsten Einstellungen eingerichtet. Wenn Sie weitere Informationen zu anderen Optionen benötigen, lesen Sie die Leitfäden:
+    - Einrichten der [Replikationsquelle](physical-azure-set-up-source.md), einschließlich der Site Recovery-Konfigurationsserver
+    - Einrichten des [Replikationsziels](physical-azure-set-up-target.md)
+    - Einrichten einer [Replikationsrichtlinie](vmware-azure-set-up-replication.md) und [Aktivieren der Replikation](vmware-azure-enable-replication.md)
 
 
 ### <a name="set-up-an-azure-account"></a>Einrichten eines Azure-Kontos

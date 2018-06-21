@@ -5,16 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: dac04ed9a43e19d022720979c8f83aa2b4132f78
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34677358"
 ---
-**Letzte Aktualisierung des Dokuments**: 3. April, 3:00 Uhr PST.
+**Letzte Aktualisierung des Dokuments:** 21. Mai 2018, 15:00 Uhr PST.
 
 Eine vor kurzem öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, sich mehr Klarheit wünschen.  
 
@@ -23,6 +24,8 @@ Microsoft hat Maßnahmen zur Minderung dieser Risiken für alle Clouddienste ber
 Darüber hinaus erweitert Azure die Nutzung der [Wartung mit Speicherbeibehaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance), wo immer dies möglich ist. Damit wird ein virtueller Computer bis zu 30 Sekunden lang angehalten, während der Host aktualisiert oder der virtuelle Computer auf einen bereits aktualisierten Host verschoben wird.  Die Wartung mit Speicherbeibehaltung minimiert mögliche Auswirkungen für Kunden weiter und macht Neustarts überflüssig.  Azure nutzt diese Methoden bei der Durchführung von systemweiten Updates auf dem Host.
 
 > [!NOTE] 
+Am 21. Mai 2018 veröffentlichten Google Projekt Zero und Microsoft eine neue Unterklasse des Seitenkanal-Sicherheitsrisikos durch spekulative Ausführung, das als Speculative Store Bypass bekannt ist. Über die Microsoft-Cloudinfrastruktur wurden zusätzliche tief greifende Gegenmaßnahmen verteilt, die Sicherheitsrisiken durch spekulative Ausführung direkt behandeln. Weitere Informationen sind hier verfügbar: https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180012 
+>
 > Ende Februar 2018 veröffentlichte die Intel Corporation aktuelle [Microcode-Revisionsrichtlinien](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) zum Status ihrer Microcodereleases, die die Stabilität verbessern und vor den vor Kurzem durch [Google Project Zero](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html) offengelegten Schwachstellen schützen. Die von Azure am [3. Januar 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) eingerichteten Entschärfungen sind durch das Intel-Microcodeupdate nicht betroffen. Microsoft hat bereits eine umfassende Risikominderung zum Schutz von Azure-Kunden vor anderen virtuellen Azure-Computern eingerichtet.  
 >
 > Der Microcode von Intel betrifft Spectre-Variante 2 ([CVE-2017-5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) oder Branch Target Injection) zum Schutz vor Angriffen. Dies betrifft Sie nur, wenn Sie freigegebene oder nicht vertrauenswürdige Workloads in Ihren virtuellen Computern in Azure ausführen. Unsere Techniker testen derzeit die Stabilität zur Minimierung von Leistungsauswirkungen auf den Microcode, bevor dieser Azure-Kunden zur Verfügung gestellt wird.  Da nur wenige Kunden nicht vertrauenswürdige Workloads auf ihren virtuellen Computern ausführen, müssen die meisten Kunden diese Funktion nach der Veröffentlichung nicht aktivieren. 

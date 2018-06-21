@@ -5,35 +5,36 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 04/03/2018
+ms.date: 05/29/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e925dba3805ec8994aeba730e325c407468a5c87
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0264f92fa10bd503a2811ce40ee0b8d4edd5f3b1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/24/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34669831"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Unterstützte Verteilungen und Treiber
 
-### <a name="nc-ncv2-ncv3-and-nd-series---nvidia-cuda-drivers"></a>NC-, NCv2-, NCv3- und ND-Serie – NVIDIA CUDA-Treiber
+### <a name="nvidia-cuda-drivers"></a>NVIDIA CUDA-Treiber
 
-Die CUDA-Treiberinformationen in der folgenden Tabelle sind zum Zeitpunkt der Veröffentlichung aktuell. Die aktuellsten CUDA-Treiber finden Sie auf der [NVIDIA](https://developer.nvidia.com/cuda-zone)-Website. Stellen Sie sicher, dass Sie eine Installation der bzw. ein Upgrade auf die neuesten CUDA-Treiber für Ihre Distribution ausgeführt haben. 
+NVIDIA CUDA-Treiber für virtuelle Computer der Serien NC, NCv2, NCv3 und ND (optional für NV-Serie) werden nur unter den in der folgenden Tabelle aufgeführten Linux-Distributionen unterstützt. Die CUDA-Treiberinformationen sind zum Zeitpunkt der Veröffentlichung aktuell. Die aktuellsten CUDA-Treiber finden Sie auf der [NVIDIA](https://developer.nvidia.com/cuda-zone)-Website. Stellen Sie sicher, dass Sie eine Installation der bzw. ein Upgrade auf die neuesten CUDA-Treiber für Ihre Distribution ausgeführt haben. 
 
 > [!TIP]
 > Alternativ zur manuellen CUDA-Treiberinstallation auf einem virtuellen Linux-Computer können Sie ein [Azure Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md)-Image bereitstellen. Bei den DSVM-Editionen für Ubuntu 16.04 LTS oder CentOS 7.4 sind NVIDIA CUDA-Treiber, die CUDA Deep Neural Network-Bibliothek und weitere Tools vorinstalliert.
 
 | Distribution | Treiber |
-| --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/> CentOS 7.3 oder 7.4, 7.4 HPC (CentOS-basiert) | NVIDIA CUDA 9.1, Treiberbranch R390 |
+| --- | -- | 
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/> 7.3 oder 7.4 (CentOS-basiert), 7.4 HPC (CentOS-basiert) | NVIDIA CUDA 9.1, Treiberbranch R390 |
 
-### <a name="nv-series---nvidia-grid-drivers"></a>NV-Serie – NVIDIA GRID-Treiber
+### <a name="nvidia-grid-drivers"></a>NVIDIA GRID-Treiber
 
-Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle NV-Computer weiter. Installieren Sie auf virtuellen Azure NV-Computern nur diese GRID-Treiber. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten.
+Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle Computer der NV-Serie, die als virtuelle Arbeitsstationen oder für virtuelle Anwendungen verwendet werden. Installieren Sie nur diese GRID-Treiber auf Azure NV-VMs, und zwar nur unter den in der folgenden Tabelle aufgeführten Distributionen. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten.
 
 | Distribution | Treiber |
-| --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>7.3 (CentOS-basiert) | NVIDIA GRID 6.0, Treiberbranch R390|
+| --- | -- |
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/>7.3 oder 7.4 (CentOS-basiert) | NVIDIA GRID 6.0, Treiberbranch R390|
 
 
 

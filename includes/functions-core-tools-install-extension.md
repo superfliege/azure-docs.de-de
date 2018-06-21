@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 4c9b579534d9a7f2c55e9c589b1738fe060b1cf2
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 6fb497a5b6da00dece43c7f41ea3c411f385a2ba
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726886"
 ---
-Wenn Sie Funktionen lokal entwickeln, können Sie die erforderlichen Erweiterungen mithilfe der Azure Functions Core Tools über das Terminal oder über eine Eingabeaufforderung installieren. Der folgende `func extensions install`-Befehl installiert die Azure Cosmos DB-Bindungserweiterung:
+Wenn Sie Funktionen lokal entwickeln, können Sie die erforderlichen Erweiterungen mithilfe der Azure Functions Core Tools über das Terminal oder über eine Eingabeaufforderung installieren. 
+
+Nachdem Sie Ihre Datei *function.json* aktualisiert haben, sodass sie alle von der Funktion benötigten Bindungen einschließt, führen Sie den Befehl `func extensions install` im Projektordner aus. Der Befehl liest die Datei *function.json*, um zu ermitteln, welche Pakete Sie benötigen, und installiert diese dann.
+
+Wenn Sie eine bestimmte Version eines Pakets installieren möchten oder wenn Sie Pakete installieren möchten, bevor Sie die Datei *function.json* bearbeiten, verwenden Sie den Befehl `func extensions install` mit dem Namen des Pakets, wie im folgenden Beispiel gezeigt:
 
 ```
 func extensions install --package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version <target_version>
 ```
 
-Ersetzen Sie `<taget_version>` durch eine bestimmte Version des Pakets. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt.
+Ersetzen Sie `<target_version>` durch eine bestimmte Version des Pakets. Gültige Versionen sind auf den Seiten der einzelnen Pakete auf [NuGet.org](https://nuget.org) aufgeführt.

@@ -161,12 +161,8 @@
               href: virtual-networks-dmz-nsg.md
     - name: Konfigurieren
       items:
-        - name: Virtuelle Computer
-          items:
-            - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
-              href: virtual-network-network-interface-vm.md
-            - name: Namensauflösung für virtuelle Computer und Clouddienste
-              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: Namensauflösung für virtuelle Computer und Clouddienste
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Verwenden eines dynamischen DNS mit eigenem DNS-Server
           href: virtual-networks-name-resolution-ddns.md
         - name: Optimieren des Netzwerkdurchsatzes
@@ -191,17 +187,16 @@
               href: virtual-network-nsg-manage-log.md
         - name: Routentabellen
           href: manage-route-table.md
-        - name: Netzwerkschnittstellen
-          href: virtual-network-network-interface.md
+        - name: Netzwerk für virtuelle Computer
           items:
-            - name: IP-Adressen
+            - name: Erstellen oder Löschen von Netzwerkschnittstellen
+              href: virtual-network-network-interface.md
+            - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
+              href: virtual-network-network-interface-vm.md
+            - name: Hinzufügen oder Entfernen von IP-Adressen
               href: virtual-network-network-interface-addresses.md
         - name: Öffentliche IP-Adressen
           href: virtual-network-public-ip-address.md
-        - name: Virtuelle Computer
-          items:
-            - name: Verschieben einer VM in ein anderes Subnetz
-              href: virtual-networks-move-vm-role-to-subnet.md
     - name: Problembehandlung
       items:
         - name: Netzwerksicherheitsgruppen
@@ -277,6 +272,8 @@
                       href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                     - name: Azure PowerShell
                       href: virtual-networks-acl-powershell.md
+                - name: Verschieben eines virtuellen Computers in ein anderes Subnetz
+                  href: virtual-networks-move-vm-role-to-subnet.md
         - name: Clouddienst und Netzwerksicherheit
           href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
           items:

@@ -1,24 +1,20 @@
 ---
-title: 'IoT DevKit in der Cloud: Verbinden von MXChip IoT DevKit mit Azure IoT Hub | Microsoft-Dokumentation'
+title: IoT DevKit in der Cloud – Verbinden von MXChip IoT DevKit mit Azure IoT Hub | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie der Status von Sensoren auf IoT DevKit AZ3166 an den Solution Accelerator für die Azure IoT-Remoteüberwachung gesendet wird.
-services: iot-hub
-documentationcenter: ''
 author: liydu
-manager: timlt
-tags: ''
-keywords: ''
+manager: jeffya
 ms.service: iot-hub
-ms.devlang: arduino
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
+ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: d59a739e2222aca27993f6ae944a1d3bda567041
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6c5c12ffeacad9a3dd56ac561d9b4fe1a6e67eea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631495"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Herstellen der Verbindung des MXChip IoT DevKit mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung
 
@@ -40,7 +36,7 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 
 ## <a name="create-an-azure-iot-remote-monitoring-solution-accelerator"></a>Erstellen eines Solution Accelerators für die Azure IoT-Remoteüberwachung
 
-1. Wechseln Sie zur [Azure IoT Solution Accelerators-Website](https://www.azureiotsuite.com/), und klicken Sie auf **Neue Lösung erstellen**.
+1. Wechseln Sie zur [Azure IoT Solution Accelerators-Website](https://www.azureiotsolutions.com/), und klicken Sie auf **Neue Lösung erstellen**.
   ![Azure IoT Solution Accelerator-Typ auswählen](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/azure-iot-suite-solution-types.png)
   > [!WARNING]
   > Standardmäßig wird mit diesem Beispiel nach dem Erstellen eines Solution Accelerators für die IoT-Remoteüberwachung ein S2 IoT Hub erstellt. Wenn dieser IoT Hub nicht für eine große Anzahl von Geräten verwendet wird, wird dringend empfohlen, ein Downgrade von S2 auf S1 durchzuführen und den Solution Accelerator für die Remoteüberwachung zu löschen, damit auch der zugehörige IoT Hub gelöscht werden kann, wenn Sie ihn nicht mehr benötigen. 
@@ -124,4 +120,4 @@ Wenn Probleme auftreten, lesen Sie die [häufig gestellten Fragen](https://micro
 Nachdem Sie nun erfahren haben, wie Sie die Verbindung eines DevKit-Geräts mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung herstellen und die Sensordaten darstellen, werden die folgenden nächsten Schritte empfohlen:
 
 * [Was sind die IoT Solution Accelerators?](https://docs.microsoft.com/azure/iot-suite/)
-* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Microsoft IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)
+* [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](https://docs.microsoft.com/microsoft-iot-central/howto-connect-devkit)

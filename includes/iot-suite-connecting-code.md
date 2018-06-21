@@ -8,17 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e15016da271d512fd9b87d5c14091305a92770b5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a2405eb9698b326693b873edf1cc1396eecadafa
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34666005"
 ---
 ## <a name="specify-the-behavior-of-the-iot-device"></a>Angeben des Verhaltens des IoT-Geräts
 
 Die Clientbibliothek des IoT Hub-Serialisierungsprogramms verwendet ein Modell, um das Format der Nachrichten anzugeben, die das Gerät mit IoT Hub austauscht.
 
-1. Fügen Sie die folgenden Variablendeklarationen nach den `#include` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte `[Device Id]` und `[Device connection string]` durch die Werte, die Sie für das physische Gerät notiert haben, das Sie zur Remoteüberwachungslösung hinzugefügt haben:
+1. Fügen Sie die folgenden Variablendeklarationen nach den `#include` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte `[Device Id]` und `[Device connection string]` durch die notierten Werte für das physische Gerät, das Sie zur Remoteüberwachungslösung hinzugefügt haben:
 
     ```c
     static const char* deviceId = "[Device Id]";

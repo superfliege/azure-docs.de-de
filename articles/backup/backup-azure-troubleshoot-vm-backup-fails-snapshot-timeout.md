@@ -1,26 +1,20 @@
 ---
-title: 'Problembehandlung bei Azure Backup-Fehlern: Status des Gast-Agents ist unbekannt | Microsoft-Dokumentation'
+title: 'Beheben von Azure Backup-Fehlern: Status des Gast-Agents unbekannt'
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 services: backup
-documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: ''
 keywords: Azure Backup; VM-Agent; Netzwerkkonnektivität;
-ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
-ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 17f4f832af0177ad588058833672c0986adeb3fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: genli
+ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196762"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34606357"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -64,7 +58,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Fehler bei der Sicherung, weil der VM-Agent nicht reagiert
 
-Fehlermeldung: „Der Vorgang kann nicht durchgeführt werden, weil der VM-Agent nicht antwortet“ <br>
+Fehlermeldung: „Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich.“ <br>
 Fehlercode: „GuestAgentSnapshotTaskStatusError“
 
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Jede der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird. Wenn die Momentaufnahme nicht ausgelöst wird, kann bei der Sicherung ein Fehler auftreten. Führen Sie die folgenden Problembehandlungsschritte in der angegebenen Reihenfolge aus, und versuchen Sie dann erneut, den Vorgang auszuführen:  
@@ -92,6 +86,16 @@ Gemäß Bereitstellungsanforderung verfügt der virtuelle Computer nicht über I
 
 Die Sicherungserweiterung muss eine Verbindung mit öffentlichen Azure-IP-Adressen herstellen können, damit sie richtig funktioniert. Die Erweiterung sendet Befehle an einen Azure Storage-Endpunkt (HTTP-URL), um die Momentaufnahmen des virtuellen Computers zu verwalten. Wenn die Erweiterung keinen Zugriff auf das öffentliche Internet hat, tritt bei der Sicherung letztendlich ein Fehler auf.
 
+Sie können einen Proxyserver bereitstellen, um den VM-Datenverkehr weiterzuleiten.
+##### <a name="create-a-path-for-http-traffic"></a>Erstellen eines Pfads für HTTP-Datenverkehr
+
+1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
+2. Um den Zugriff auf das Internet über den HTTP-Proxyserver zuzulassen, fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu.
+
+Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+
+Der gesicherte virtuelle Computer oder der Proxyserver, über den der Datenverkehr weitergeleitet wird, benötigt Zugriff auf öffentliche IP-Adressen in Azure.
+
 ####  <a name="solution"></a>Lösung
 Um dieses Problem zu lösen, probieren Sie eine der folgenden Methoden aus:
 
@@ -105,13 +109,6 @@ Schauen Sie sich zum besseren Verständnis der Schrittanleitung zur Konfiguratio
 
 > [!WARNING]
 > Diensttags für Speicher befinden sich in der Vorschau. Sie sind nur in bestimmten Regionen verfügbar. Eine Liste der Regionen finden Sie unter [Diensttags](../virtual-network/security-overview.md#service-tags).
-
-##### <a name="create-a-path-for-http-traffic"></a>Erstellen eines Pfads für HTTP-Datenverkehr
-
-1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
-2. Um den Zugriff auf das Internet über den HTTP-Proxyserver zuzulassen, fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu.
-
-Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
 
@@ -195,6 +192,19 @@ Dieses Problem tritt nur bei verwalteten virtuellen Computern auf, auf denen Ben
 
 #### <a name="solution"></a>Lösung
 
-Heben Sie zur Lösung des Problems die Sperre für die Ressourcengruppe auf, und sorgen Sie dafür, dass der Azure Backup-Dienst die Wiederherstellungspunktsammlung und die zugrunde liegenden Momentaufnahmen in der nächsten Sicherung löscht.
-Sobald dies erfolgt ist, können Sie die Sperre für die VM-Ressourcengruppe wieder einrichten. 
+Zum Beheben des Problems heben Sie die Sperre in der Ressourcengruppe auf und führen die folgenden Schritte aus, um die Wiederherstellungspunktsammlung zu entfernen: 
+ 
+1. Entfernen Sie die Sperre der Ressourcengruppe, in der sich der virtuelle Computer befindet. 
+2. Installieren Sie ARMClient mithilfe von Chocolatey: <br>
+   https://github.com/projectkudu/ARMClient
+3. Melden Sie sich bei ARMClient an: <br>
+    `.\armclient.exe login`
+4. Rufen Sie die zum virtuellen Computer gehörige Wiederherstellungspunktsammlung ab: <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
+    Beispiel: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+5. Löschen Sie die Wiederherstellungspunktsammlung: <br>
+    `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+6. Die nächste geplante Sicherung generiert automatisch eine Wiederherstellungspunktsammlung und neue Wiederherstellungspunkte.
+
+Sobald dies erfolgt ist, können Sie die Sperre für die VM-Ressourcengruppe wieder einrichten. 

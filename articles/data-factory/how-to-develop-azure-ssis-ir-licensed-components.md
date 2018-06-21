@@ -1,6 +1,6 @@
 ---
-title: Entwickeln kostenpflichtiger oder lizenzierter Komponenten für Azure SSIS Integration Runtime | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie ein ISV kostenpflichtige oder lizenzierte benutzerdefinierten Komponenten für die Azure SSIS Integration Runtime entwickeln und installieren kann
+title: Installieren lizenzierter Komponenten für Azure SSIS Integration Runtime | Microsoft-Dokumentation
+description: Erfahren Sie, wie ein ISV kostenpflichtige oder lizenzierte benutzerdefinierte Komponenten für die Azure SSIS Integration Runtime entwickeln und installieren kann.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -9,28 +9,31 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: douglasl
-ms.openlocfilehash: e22ca4bd5b749e8752f800590938199e06abbd34
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6351381e525d256ef5e9693ea1fb5e3a6f4e5ea3
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298575"
 ---
-# <a name="develop-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Entwickeln kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime
+# <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime
 
-## <a name="problem---the-azure-ssis-ir-requires-a-different-approach"></a>Problem: Die Azure SSIS IR erfordert einen anderen Ansatz
+In diesem Artikel wird erläutert, wie ein ISV kostenpflichtige oder lizenzierte benutzerdefinierte Komponenten für SSIS-Pakete (SQL Server Integration Services) entwickeln und installieren kann, die in Azure in der Azure SSIS Integration Runtime ausgeführt werden.
 
-Die Eigenart der Azure SSIS Integration Runtime bringt verschiedene Herausforderungen mit sich, aufgrund derer die typischen Lizenzierungsmethoden für die lokale Installation benutzerdefinierter Komponenten unzureichend sind.
+## <a name="the-problem"></a>Die Problematik
+
+Die Eigenart der Azure SSIS Integration Runtime bringt verschiedene Herausforderungen mit sich, aufgrund derer die typischen Lizenzierungsmethoden für die lokale Installation benutzerdefinierter Komponenten unzureichend sind. Daher erfordert die Azure SSIS IR einen anderen Ansatz.
 
 -   Die Knoten der Azure SSIS IR sind flüchtig und können jederzeit zugeordnet oder freigegeben werden. Beispielsweise können Sie Knoten starten oder beenden, um die Kosten im Griff zu behalten, oder durch verschiedene Knotengrößen zentral hoch- und herunterskalieren. Dadurch ist es nicht mehr möglich, eine Komponentenlizenz eines Drittanbieters über computerspezifische Informationen wie MAC-Adresse oder CPU-ID an einen bestimmten Knoten zu binden.
 
 -   Sie können die Azure SSIS IR auch horizontal herunter- oder hochskalieren, sodass die Anzahl der Knoten jederzeit verkleinert oder vergrößert werden kann.
 
-## <a name="solution---windows-environment-variables-and-ssis-system-variables-for-license-binding-and-validation"></a>Lösung: Windows-Umgebungsvariablen und SSIS-Systemvariablen für Lizenzbindung und -validierung
+## <a name="the-solution"></a>Die Lösung
 
-Aufgrund der im vorherigen Abschnitt beschriebenen Einschränkungen herkömmlicher Lizenzierungsmethoden stellt die Azure SSIS IR Windows-Umgebungsvariablen und SSIS-Systemvariablen für die Lizenzbindung und -validierung von Komponenten von Drittanbietern zur Verfügung. ISVs können diese Variablen nutzen, um eindeutige und persistente Informationen für eine Azure SSIS IR zu erhalten, wie z.B. Cluster-ID und Anzahl der Clusterknoten. Mit dieser Information können ISVs die Lizenz für ihre Komponente *als Cluster* an eine Azure SSIS IR binden. Dies erfolgt mit einer ID, die sich nicht ändert, wenn Kunden die Azure SSIS IR starten oder beenden, zentral oder horizontal hoch- oder herunterskalieren oder auf andere Weise neu konfigurieren.
+Aufgrund der im vorherigen Abschnitt beschriebenen Einschränkungen herkömmlicher Lizenzierungsmethoden bietet die Azure SSIS IR eine neue Lösung. Bei dieser Lösung werden Windows-Umgebungsvariablen und SSIS-Systemvariablen für die Lizenzbindung und -validierung von Drittanbieterkomponenten verwendet. ISVs können diese Variablen nutzen, um eindeutige und persistente Informationen für eine Azure SSIS IR zu erhalten, wie z.B. Cluster-ID und Anzahl der Clusterknoten. Anhand dieser Informationen können ISVs dann die Lizenz für ihre Komponente an eine Azure SSIS IR *als ein Cluster* binden. Diese Bindung verwendet eine ID, die sich nicht ändert, wenn Kunden die Azure SSIS IR in jeglicher Form starten oder beenden, horizontal oder vertikal hoch- oder herunterskalieren oder neu konfigurieren.
 
 Die folgende Abbildung zeigt die typischen Installations-, Aktivierungs- und Lizenzbindungsabläufe für Komponenten von Drittanbietern, die diese neuen Variablen verwenden:
 
@@ -71,8 +74,12 @@ Die folgende Abbildung zeigt die typischen Installations-, Aktivierungs- und Liz
     }
     ```
 
+## <a name="isv-partners"></a>ISV-Partner
+
+Eine Liste von ISV-Partnern, die ihre Komponenten und Erweiterungen für die Azure SSIS IR angepasst haben, finden Sie am Ende des Blogbeitrags [Enterprise Edition, Benutzerdefiniertes Setup und Erweiterbarkeit durch Drittanbieter für SSIS in ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
--   [Benutzerdefiniertes Setup von Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
+-   [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md)
 
 -   [Enterprise Edition von Azure SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)

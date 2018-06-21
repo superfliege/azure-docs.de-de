@@ -2,7 +2,7 @@
 title: Azure Application Insights-Datenmodell | Microsoft-Dokumentation
 description: Beschreibt die Eigenschaften, die aus dem fortlaufenden Export in JSON exportiert und als Filter verwendet wurden.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: mbullwin
-ms.openlocfilehash: 86aef6ba93224bbbb41bc7e651aaeec394fd8718
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ee6597b78ac8de8fc3a7f3796010f22919243b23
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294893"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights-Exportdatenmodell
 In dieser Tabelle sind die Eigenschaften der Telemetriedaten aufgelistet, die von [Application Insights](app-insights-overview.md) SDKs an das Portal gesendet werden.
@@ -114,189 +115,189 @@ Beachten Sie Folgendes:
 ## <a name="context"></a>Kontext
 Alle Telemetriedatentypen umfassen einen Kontextabschnitt. Nicht alle dieser Felder werden mit jedem Datenpunkt übertragen.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | context.custom.dimensions [0] |object [ ] |Schlüssel-Wert-Paare, die über benutzerdefinierte Eigenschaftenparameter festgelegt werden. Maximale Länge des Schlüssels: 100, maximale Länge des Werts: 1024. Mehr als 100 eindeutige Werte, die Eigenschaft kann durchsucht, aber nicht zur Segmentierung verwendet werden. Maximal 200 Schlüssel pro „ikey“. |
 | context.custom.metrics [0] |object [ ] |Schlüssel-Wert-Paare, die über benutzerdefinierte Messparameter und über TrackMetrics festgelegt werden. Maximale Länge des Schlüssels: 100, Werte können numerisch sein. |
-| context.data.eventTime |string |UTC |
+| context.data.eventTime |Zeichenfolge |UTC |
 | context.data.isSynthetic |boolean |Anforderung scheint von einem Bot oder Webtest zu stammen. |
 | context.data.samplingRate |number |Prozentsatz der vom SDK generierten Telemetriedaten, die an das Portal gesendet werden. Bereich liegt zwischen 0.0 und 100.0. |
 | context.device |object |Clientgerät |
-| context.device.browser |string |IE, Chrome, ... |
-| context.device.browserVersion |string |Chrome 48.0, ... |
-| context.device.deviceModel |string | |
-| context.device.deviceName |string | |
-| context.device.id |string | |
-| context.device.locale |string |en-GB, de-DE, ... |
-| context.device.network |string | |
-| context.device.oemName |string | |
-| context.device.osVersion |string |Hostbetriebssystem |
-| context.device.roleInstance |string |ID des Serverhosts |
-| context.device.roleName |string | |
-| context.device.type |string |PC, Browser, ... |
+| context.device.browser |Zeichenfolge |IE, Chrome, ... |
+| context.device.browserVersion |Zeichenfolge |Chrome 48.0, ... |
+| context.device.deviceModel |Zeichenfolge | |
+| context.device.deviceName |Zeichenfolge | |
+| context.device.id |Zeichenfolge | |
+| context.device.locale |Zeichenfolge |en-GB, de-DE, ... |
+| context.device.network |Zeichenfolge | |
+| context.device.oemName |Zeichenfolge | |
+| context.device.osVersion |Zeichenfolge |Hostbetriebssystem |
+| context.device.roleInstance |Zeichenfolge |ID des Serverhosts |
+| context.device.roleName |Zeichenfolge | |
+| context.device.type |Zeichenfolge |PC, Browser, ... |
 | context.location |object |Abgeleitet von „clientip“. |
-| context.location.city |string |Abgeleitet von „clientip“, falls bekannt |
-| context.location.clientip |string |Letztes Oktagon wird als 0 anonymisiert. |
-| context.location.continent |string | |
-| context.location.country |string | |
-| context.location.province |string |Bundesland oder Kanton |
-| context.operation.id |string |Elemente mit derselben Vorgangs-ID werden im Portal als verwandte Elemente angezeigt. Üblicherweise die Anforderungs-ID. |
-| context.operation.name |string |URL oder Anforderungsname |
-| context.operation.parentId |string |Ermöglicht geschachtelte verwandte Elemente. |
-| context.session.id |string |ID einer Gruppe von Vorgängen derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
+| context.location.city |Zeichenfolge |Abgeleitet von „clientip“, falls bekannt |
+| context.location.clientip |Zeichenfolge |Letztes Oktagon wird als 0 anonymisiert. |
+| context.location.continent |Zeichenfolge | |
+| context.location.country |Zeichenfolge | |
+| context.location.province |Zeichenfolge |Bundesland oder Kanton |
+| context.operation.id |Zeichenfolge |Elemente mit derselben Vorgangs-ID werden im Portal als verwandte Elemente angezeigt. Üblicherweise die Anforderungs-ID. |
+| context.operation.name |Zeichenfolge |URL oder Anforderungsname |
+| context.operation.parentId |Zeichenfolge |Ermöglicht geschachtelte verwandte Elemente. |
+| context.session.id |Zeichenfolge |ID einer Gruppe von Vorgängen derselben Quelle. Ein Zeitraum von 30 Minuten ohne Vorgang signalisiert das Ende einer Sitzung. |
 | context.session.isFirst |boolean | |
-| context.user.accountAcquisitionDate |string | |
-| context.user.anonAcquisitionDate |string | |
-| context.user.anonId |string | |
-| context.user.authAcquisitionDate |string |[Authentifizierter Benutzer](app-insights-api-custom-events-metrics.md#authenticated-users) |
+| context.user.accountAcquisitionDate |Zeichenfolge | |
+| context.user.anonAcquisitionDate |Zeichenfolge | |
+| context.user.anonId |Zeichenfolge | |
+| context.user.authAcquisitionDate |Zeichenfolge |[Authentifizierter Benutzer](app-insights-api-custom-events-metrics.md#authenticated-users) |
 | context.user.isAuthenticated |boolean | |
-| internal.data.documentVersion |string | |
-| internal.data.id |string | |
+| internal.data.documentVersion |Zeichenfolge | |
+| internal.data.id |Zeichenfolge | Eindeutige ID, die beim Erfassen eines Elements in Application Insights zugewiesen wird. |
 
 ## <a name="events"></a>Ereignisse
 Von [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | event [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
-| event [0] name |string |Ereignisname.  Länge: 250 |
-| event [0] url |string | |
-| event [0] urlData.base |string | |
-| event [0] urlData.host |string | |
+| event [0] name |Zeichenfolge |Ereignisname.  Länge: 250 |
+| event [0] url |Zeichenfolge | |
+| event [0] urlData.base |Zeichenfolge | |
+| event [0] urlData.host |Zeichenfolge | |
 
 ## <a name="exceptions"></a>Ausnahmen
 Melden [Ausnahmen](app-insights-asp-net-exceptions.md) auf dem Server und im Browser.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
-| basicException [0] assembly |string | |
+| basicException [0] assembly |Zeichenfolge | |
 | basicException [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
-| basicException [0] exceptionGroup |string | |
-| basicException [0] exceptionType |string | |
-| basicException [0] failedUserCodeMethod |string | |
-| basicException [0] failedUserCodeAssembly |string | |
-| basicException [0] handledAt |string | |
+| basicException [0] exceptionGroup |Zeichenfolge | |
+| basicException [0] exceptionType |Zeichenfolge | |
+| basicException [0] failedUserCodeMethod |Zeichenfolge | |
+| basicException [0] failedUserCodeAssembly |Zeichenfolge | |
+| basicException [0] handledAt |Zeichenfolge | |
 | basicException [0] hasFullStack |boolean | |
-| basicException [0] id |string | |
-| basicException [0] method |string | |
-| basicException [0] message |string |Ausnahmemeldung. Max. Länge: 10.000 |
-| basicException [0] outerExceptionMessage |string | |
-| basicException [0] outerExceptionThrownAtAssembly |string | |
-| basicException [0] outerExceptionThrownAtMethod |string | |
-| basicException [0] outerExceptionType |string | |
-| basicException [0] outerId |string | |
-| basicException [0] parsedStack [0] assembly |string | |
-| basicException [0] parsedStack [0] fileName |string | |
+| basicException [0] id |Zeichenfolge | |
+| basicException [0] method |Zeichenfolge | |
+| basicException [0] message |Zeichenfolge |Ausnahmemeldung. Max. Länge: 10.000 |
+| basicException [0] outerExceptionMessage |Zeichenfolge | |
+| basicException [0] outerExceptionThrownAtAssembly |Zeichenfolge | |
+| basicException [0] outerExceptionThrownAtMethod |Zeichenfolge | |
+| basicException [0] outerExceptionType |Zeichenfolge | |
+| basicException [0] outerId |Zeichenfolge | |
+| basicException [0] parsedStack [0] assembly |Zeichenfolge | |
+| basicException [0] parsedStack [0] fileName |Zeichenfolge | |
 | basicException [0] parsedStack [0] level |integer | |
 | basicException [0] parsedStack [0] line |integer | |
-| basicException [0] parsedStack [0] method |string | |
-| basicException [0] stack |string |Max. Länge: 10.000 |
-| basicException [0] typeName |string | |
+| basicException [0] parsedStack [0] method |Zeichenfolge | |
+| basicException [0] stack |Zeichenfolge |Max. Länge: 10.000 |
+| basicException [0] typeName |Zeichenfolge | |
 
 ## <a name="trace-messages"></a>Ablaufverfolgungsmeldungen
 Gesendet von [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace) und über die [Protokollierungsadapter](app-insights-asp-net-trace-logs.md).
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
-| message [0] loggerName |string | |
-| message [0] parameters |string | |
-| message [0] raw |string |Die Protokollmeldung, maximale Länge: 10.000. |
-| message [0] severityLevel |string | |
+| message [0] loggerName |Zeichenfolge | |
+| message [0] parameters |Zeichenfolge | |
+| message [0] raw |Zeichenfolge |Die Protokollmeldung, maximale Länge: 10.000. |
+| message [0] severityLevel |Zeichenfolge | |
 
 ## <a name="remote-dependency"></a>Remoteabhängigkeit
 Gesendet von TrackDependency. Wird zum Berichten von Leistung und Nutzung von [Aufrufen von abhängigen Komponenten](app-insights-asp-net-dependencies.md) auf dem Server sowie von AJAX-Aufrufen im Browser verwendet.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | remoteDependency [0] async |boolean | |
-| remoteDependency [0] baseName |string | |
-| remoteDependency [0] commandName |string |Beispiel: "home/index" |
+| remoteDependency [0] baseName |Zeichenfolge | |
+| remoteDependency [0] commandName |Zeichenfolge |Beispiel: "home/index" |
 | remoteDependency [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
-| remoteDependency [0] dependencyTypeName |string |HTTP, SQL, ... |
+| remoteDependency [0] dependencyTypeName |Zeichenfolge |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Zeit vom Aufruf bis zum Abschließen der Antwort durch die Abhängigkeit. |
-| remoteDependency [0] id |string | |
-| remoteDependency [0] name |string |URL, Max. Länge: 250 |
-| remoteDependency [0] resultCode |string |Aus HTTP-Abhängigkeit |
+| remoteDependency [0] id |Zeichenfolge | |
+| remoteDependency [0] name |Zeichenfolge |URL, Max. Länge: 250 |
+| remoteDependency [0] resultCode |Zeichenfolge |Aus HTTP-Abhängigkeit |
 | remoteDependency [0] success |boolean | |
-| remoteDependency [0] type |string |HTTP, SQL, ... |
-| remoteDependency [0] url |string |Max. Länge: 2000 |
-| remoteDependency [0] urlData.base |string |Max. Länge: 2000 |
-| remoteDependency [0] urlData.hashTag |string | |
-| remoteDependency [0] urlData.host |string |Max. Länge: 200 |
+| remoteDependency [0] type |Zeichenfolge |HTTP, SQL, ... |
+| remoteDependency [0] url |Zeichenfolge |Max. Länge: 2000 |
+| remoteDependency [0] urlData.base |Zeichenfolge |Max. Länge: 2000 |
+| remoteDependency [0] urlData.hashTag |Zeichenfolge | |
+| remoteDependency [0] urlData.host |Zeichenfolge |Max. Länge: 200 |
 
-## <a name="requests"></a>Anforderungen
+## <a name="requests"></a>Requests
 Gesendet von [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | request [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 = &gt; 25 %. |
 | request [0] durationMetric.value |number |Zeit vom Empfang der Anforderung bis zur Antwort. 1e7 == 1s |
-| request [0] id |string |Vorgangs-ID |
-| request [0] name |string |GET/POST + URL-Basis.  Max. Länge: 250 |
+| request [0] id |Zeichenfolge |Vorgangs-ID |
+| request [0] name |Zeichenfolge |GET/POST + URL-Basis.  Max. Länge: 250 |
 | request [0] responseCode |integer |HTTP-Antwort, die an den Client gesendet wird. |
-| request [0] success |Boolescher Wert |Standard == (responseCode &lt; 400) |
-| request [0] url |string |Host nicht eingeschlossen |
-| request [0] urlData.base |string | |
-| request [0] urlData.hashTag |string | |
-| request [0] urlData.host |string | |
+| request [0] success |boolean |Standard == (responseCode &lt; 400) |
+| request [0] url |Zeichenfolge |Host nicht eingeschlossen |
+| request [0] urlData.base |Zeichenfolge | |
+| request [0] urlData.hashTag |Zeichenfolge | |
+| request [0] urlData.host |Zeichenfolge | |
 
 ## <a name="page-view-performance"></a>Leistung der Seitenaufrufe
 Gesendet vom Browser. Misst die Zeit zum Verarbeiten einer Seite, von der Initialisierung der Anforderung durch den Benutzer bis zur vollständigen Anzeige (asynchrone AJAX-Aufrufe ausgenommen).
 
 Kontextwerte zeigen Clientbetriebssystem und Browserversion.
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess.value |integer |Zeit vom vollständigen Empfang der HTML-Daten bis zur Anzeige der Seite. |
-| clientPerformance [0] name |string | |
+| clientPerformance [0] name |Zeichenfolge | |
 | clientPerformance [0] networkConnection.value |integer |Benötigte Zeit zum Herstellen einer Netzwerkverbindung. |
 | clientPerformance [0] receiveRequest.value |integer |Zeit vom vollständigen Senden der Anforderung bis zum Empfang der HTML-Daten in der Antwort. |
 | clientPerformance [0] sendRequest.value |integer |Benötigte Zeit zum Senden der HTTP-Anforderung. |
 | clientPerformance [0] total.value |integer |Zeit vom Sendebeginn der Anforderung bis zur Anzeige der Seite. |
-| clientPerformance [0] url |string |URL dieser Anforderung. |
-| clientPerformance [0] urlData.base |string | |
-| clientPerformance [0] urlData.hashTag |string | |
-| clientPerformance [0] urlData.host |string | |
-| clientPerformance [0] urlData.protocol |string | |
+| clientPerformance [0] url |Zeichenfolge |URL dieser Anforderung. |
+| clientPerformance [0] urlData.base |Zeichenfolge | |
+| clientPerformance [0] urlData.hashTag |Zeichenfolge | |
+| clientPerformance [0] urlData.host |Zeichenfolge | |
+| clientPerformance [0] urlData.protocol |Zeichenfolge | |
 
 ## <a name="page-views"></a>Seitenaufrufe
 Gesendet von trackPageView() oder [stopTrackPage](app-insights-api-custom-events-metrics.md#page-views)
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
 | view [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
 | view [0] durationMetric.value |integer |Wert optional in trackPageView() oder über startTrackPage() - stopTrackPage() festgelegt. Ist nicht dasselbe wie die clientPerformance-Werte. |
-| view [0] name |string |Seitentitel, Max.  Länge: 250 |
-| view [0] url |string | |
-| view [0] urlData.base |string | |
-| view [0] urlData.hashTag |string | |
-| view [0] urlData.host |string | |
+| view [0] name |Zeichenfolge |Seitentitel, Max.  Länge: 250 |
+| view [0] url |Zeichenfolge | |
+| view [0] urlData.base |Zeichenfolge | |
+| view [0] urlData.hashTag |Zeichenfolge | |
+| view [0] urlData.host |Zeichenfolge | |
 
 ## <a name="availability"></a>Verfügbarkeit
 Liefert Berichtdaten zu [Verfügbarkeitswebtests](app-insights-monitor-web-app-availability.md).
 
-| Pfad | Typ | Hinweise |
+| path | Typ | Notizen |
 | --- | --- | --- |
-| availability [0] availabilityMetric.name |string |Verfügbarkeit |
+| availability [0] availabilityMetric.name |Zeichenfolge |Verfügbarkeit |
 | availability [0] availabilityMetric.value |number |1.0 oder 0.0 |
 | availability [0] count |integer |100/([Stichproben](app-insights-sampling.md) -Prozentsatz). Beispiel: 4 =&gt; 25 %. |
-| availability [0] dataSizeMetric.name |string | |
+| availability [0] dataSizeMetric.name |Zeichenfolge | |
 | availability [0] dataSizeMetric.value |integer | |
-| availability [0] durationMetric.name |string | |
+| availability [0] durationMetric.name |Zeichenfolge | |
 | availability [0] durationMetric.value |number |Dauer des Tests. 1e7==1s |
-| availability [0] message |string |Fehlerdiagnose |
-| availability [0] result |string |Erfolgreich/Fehler |
-| availability [0] runLocation |string |Geoquelle der HTTP-Anforderung. |
-| availability [0] testName |string | |
-| availability [0] testRunId |string | |
-| availability [0] testTimestamp |string | |
+| availability [0] message |Zeichenfolge |Fehlerdiagnose |
+| availability [0] result |Zeichenfolge |Erfolgreich/Fehler |
+| availability [0] runLocation |Zeichenfolge |Geoquelle der HTTP-Anforderung. |
+| availability [0] testName |Zeichenfolge | |
+| availability [0] testRunId |Zeichenfolge | |
+| availability [0] testTimestamp |Zeichenfolge | |
 
 ## <a name="metrics"></a>Metriken
 Generiert von TrackMetric().
 
 Der Metrikwert befindet sich in context.custom.metrics[0].
 
-Beispiel:
+Beispiel: 
 
     {
      "metric": [ ],
@@ -322,7 +323,7 @@ Beispiel:
     }
 
 ## <a name="about-metric-values"></a>Grundlegendes zu Metrikwerten
-Informationen zu Metrikwerten werden, sowohl in Metrikberichten als auch an anderer Stelle, mit einer Standardobjektstruktur bereitgestellt. Beispiel:
+Informationen zu Metrikwerten werden, sowohl in Metrikberichten als auch an anderer Stelle, mit einer Standardobjektstruktur bereitgestellt. Beispiel: 
 
       "durationMetric": {
         "name": "contoso.org",

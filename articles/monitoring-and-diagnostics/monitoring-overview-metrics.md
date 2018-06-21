@@ -1,39 +1,25 @@
 ---
-title: Überblick über Metriken in Microsoft Azure | Microsoft-Dokumentation
+title: Überblick über Metriken in Microsoft Azure
 description: Überblick über Metriken und ihre Verwendung in Microsoft Azure
 author: anirudhcavale
-manager: orenr
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 405ec51c-0946-4ec9-b535-60f65c4a5bd1
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 03/19/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.author: ancav
-ms.openlocfilehash: 537213fdf106da1c07d549d65b1d8cf71887db9f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.component: metrics
+ms.openlocfilehash: 3501c8d35968ecf8e32c806dfb05ccfebc7f4386
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264220"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
 
 ## <a name="what-are-metrics"></a>Was sind Metriken?
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
-
-## <a name="what-can-you-do-with-metrics"></a>Wozu kann ich Metriken nutzen?
-Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende Aufgaben ausführen können:
-
-* **Verfolgen der Leistung** Ihrer Ressourcen (z.B. virtuelle Computer, Websites oder Logik-Apps) durch Darstellung der entsprechenden Metriken in einem Diagramm im Portal, das Sie an Ihr Dashboard anheften.
-* **Erhalten von Benachrichtigungen über Probleme**, die die Leistung Ihrer Ressourcen beeinträchtigen, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
-* **Konfigurieren automatisierter Aktionen**, z. B. der automatischen Skalierung einer Ressource oder der Auslösung eines Runbooks, wenn ein Metrikwert einen bestimmten Schwellenwert überschreitet.
-* **Ausführen fortgeschrittener Analysen** oder Erstellen von Berichten zu Leistungs- oder Nutzungstrends für Ihre Ressource.
-* **Archivieren** des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu **Kompatibilitäts- oder Überwachungszwecken**.
 
 ## <a name="what-are-the-characteristics-of-metrics"></a>Was sind die Merkmale von Metriken?
 Metriken weisen folgende Merkmale auf:
@@ -43,19 +29,17 @@ Metriken weisen folgende Merkmale auf:
 * Sie können für jede Metrik auf einen **Verlauf von 93 Tagen** zugreifen. Sie können schnell den aktuellen und monatlichen Trend für die Leistung oder Integrität Ihrer Ressource überblicken.
 * Einige Metriken können über Attribute für Name/Wert-Paare verfügen, die als **Dimensionen** bezeichnet werden. Dadurch können Sie eine Metrik auf sinnvollere Weise weiter segmentieren und untersuchen.
 
-Weitere Funktionen:
+## <a name="what-can-you-do-with-metrics"></a>Wozu kann ich Metriken nutzen?
+Mithilfe von Metriken können Sie die folgenden Aufgaben ausführen:
 
-* Konfigurieren einer **Warnungsregel für eine Metrik, die eine Benachrichtigung sendet oder eine automatisierte Aktion ausführt**, sobald der Metrikwert einen von Ihnen festgelegten Schwellenwert überschreitet. Die automatische Skalierung ist eine besondere automatisierte Aktion, mit der Sie Ihre Ressource horizontal hochskalieren können, um die auf Ihrer Website oder Ihren Computeressourcen eingehenden Anforderungen oder Lasten zu bewältigen. Sie können eine Regel für die automatische Skalierung konfigurieren, die das horizontale Hoch- und Herunterskalieren auslöst, sobald eine Metrik einen bestimmten Schwellenwert überschreitet.
 
-* **Leiten** Sie alle Metriken an Application Insights oder Log Analytics weiter, um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen. Sie können auch Metriken an einen Event Hub streamen, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Event Hub-Streaming wird mit Diagnoseeinstellungen eingerichtet.
-
-* **Archivieren Sie Metriken im Speicher**, um sie länger aufzubewahren oder zur Erstellung von Offlineberichten zu verwenden. Sie können Ihre Metriken an Azure Blob Storage weiterleiten, wenn Sie die Diagnoseeinstellungen für Ihre Ressource konfigurieren.
-
-* Einfaches Entdecken, Zugreifen auf und **Anzeigen aller Metriken** über das Azure-Portal, wenn Sie eine Ressource auswählen und die Metriken in einem Diagramm darstellen.
-
-* **Nutzen** von Metriken über die neuen Azure Monitor-REST-APIs.
-
-* **Abfragen** von Metriken mithilfe von PowerShell-Cmdlets oder der plattformübergreifenden REST-API.
+- Konfigurieren einer **Warnungsregel für eine Metrik, die eine Benachrichtigung sendet oder eine automatisierte Aktion ausführt**, sobald der Metrikwert einen von Ihnen festgelegten Schwellenwert überschreitet. Aktionen werden durch [Aktionsgruppen](monitoring-action-groups.md) gesteuert. Zu den Beispielen für Aktionen gehören E-Mail-, Telefon- und SMS-Benachrichtigungen, das Aufrufen eines Webhooks, das Starten eines Runbooks und mehr. **Automatisch skalieren** ist eine besondere automatisierte Aktion, die es Ihnen ermöglicht, Ihre Ressourcengruppe zur Verarbeitung von Lasten hoch- und herunterzuskalieren und zugleich die Kosten ohne Last gering zu halten. Sie können eine Regel für die automatische Skalierung konfigurieren, die das horizontale Hoch- und Herunterskalieren auslöst, sobald eine Metrik einen bestimmten Schwellenwert überschreitet.
+- **Leiten** Sie alle Metriken an *Application Insights* oder *Log Analytics* weiter, um unmittelbare Analysen, Suchen und benutzerdefinierte Warnungen für von Ihren Ressourcen gesendete Metrikdaten zu ermöglichen. Sie können auch Metriken an einen *Event Hub* streamen, wodurch Sie sie dann an Azure Stream Analytics oder benutzerdefinierte Apps weiterleiten können, um Analysen nahezu in Echtzeit durchführen zu können. Event Hub-Streaming wird mit Diagnoseeinstellungen eingerichtet.
+- **Archivieren** des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung.  Sie können Ihre Metriken an Azure Blob Storage weiterleiten, wenn Sie die Diagnoseeinstellungen für Ihre Ressource konfigurieren.
+- Verwenden Sie das **Azure-Portal**, um alle Metriken zu entdecken, anzuzeigen und darauf zuzugreifen, wenn Sie eine Ressource auswählen und die Metriken in einem Diagramm darstellen. Sie können die Leistung Ihrer Ressourcen (z.B. virtuelle Computer, Websites oder Logik-Apps) nachverfolgen, indem Sie das betreffende Diagramm an Ihr Dashboard anheften.  
+- **Ausführen fortgeschrittener Analysen** oder Erstellen von Berichten zu Leistungs- oder Nutzungstrends für Ihre Ressource.
+- **Abfragen** von Metriken mithilfe von PowerShell-Cmdlets oder der plattformübergreifenden REST-API.
+- **Nutzen** von Metriken über die neuen Azure Monitor-REST-APIs.
 
   ![Routing von Metriken in Azure Monitor](./media/monitoring-overview-metrics/Metrics_Overview_v4.png)
 

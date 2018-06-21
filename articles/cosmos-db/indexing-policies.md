@@ -3,22 +3,19 @@ title: Indizierungsrichtlinien für Azure Cosmos DB | Microsoft-Dokumentation
 description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert.
 keywords: Funktionsweise von Indizierung, automatische Indizierung, Indizierungsdatenbank
 services: cosmos-db
-documentationcenter: ''
 author: rafats
 manager: kfile
-ms.assetid: d5e8f338-605d-4dff-8a61-7505d5fc46d7
 ms.service: cosmos-db
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 277ddd5777ff8edf5195e79885929e3a8c758d7c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: d867079b9a5546dc9555697a9066472e4e470977
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298295"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -79,9 +76,9 @@ Azure Cosmos DB unterstützt die folgenden drei Indizierungsmodi, die Sie über 
 
 Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Diese Verringerung ist eine Funktion der eindeutigen Pfade, die indiziert werden müssen, und der „Konsistenzebene“. Der konsistente Indizierungsmodus ist für Workloads mit schnellem Schreiben und sofortigem Abfragen vorgesehen.
 
-**Verzögert**: Der Index wird asynchron aktualisiert, wenn eine Azure Cosmos DB-Sammlung untätig ist, d. h. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist. Der Indizierungsmodus „Verzögert“ kann für Workloads mit „jetzt erfassen, später abfragen“, die eine Dokumenterfassung erfordern, geeignet sein. Beachten Sie, dass Sie möglicherweise inkonsistente Ergebnisse erhalten, weil die Daten langsam erfasst und indiziert werden. Das bedeutet, dass Ihre COUNT-Abfragen oder bestimmte Abfrageergebnisse zu einem bestimmten Zeitpunkt möglicherweise nicht konsistent oder wiederholbar sind. 
+**Verzögert**: Der Index wird asynchron aktualisiert, wenn eine Azure Cosmos DB-Sammlung untätig ist, d. h. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist.  Beachten Sie, dass Sie möglicherweise inkonsistente Ergebnisse erhalten, weil die Daten langsam erfasst und indiziert werden. Das bedeutet, dass Ihre COUNT-Abfragen oder bestimmte Abfrageergebnisse zu einem bestimmten Zeitpunkt möglicherweise nicht konsistent oder wiederholbar sind. 
 
-Der Index befindet sich im Allgemeinen im Abgleichmodus mit erfassten Daten. Bei der verzögerten Indizierung führen Änderungen der Gültigkeitsdauer (Time to live, TTL) dazu, dass der Index gelöscht und neu erstellt wird. Dadurch werden die COUNT- und Abfrageergebnisse für einen bestimmten Zeitraum inkonsistent. Aus diesem Grund sollten die meisten Azure Cosmos DB-Konten den Indizierungsmodus „Konsistent“ verwenden.
+Der Index befindet sich im Allgemeinen im Abgleichmodus mit erfassten Daten. Bei der verzögerten Indizierung führen Änderungen der Gültigkeitsdauer (Time to live, TTL) dazu, dass der Index gelöscht und neu erstellt wird. Dadurch werden die COUNT- und Abfrageergebnisse für einen bestimmten Zeitraum inkonsistent. Die meisten Azure Cosmos DB-Konten sollten den Indizierungsmodus „Konsistent“ verwenden.
 
 **Keine**: Einer Sammlung mit dem Indexmodus „Keine“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Dokumente nur nach ihrer ID-Eigenschaft zugegriffen wird. 
 
@@ -229,11 +226,11 @@ Das folgende Beispiel zeigt, wie die Genauigkeit für Bereichsindizes in einer S
 
 Auf ähnliche Weise können Sie Pfade vollständig von der Indizierung ausschließen. Im nächsten Beispiel wird gezeigt, wie Sie einen gesamten Abschnitt der Dokumente (eine *Unterstruktur*) mit dem Platzhalterzeichen \* von der Indizierung ausschließen.
 
-    var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*" });
+    var excluded = new DocumentCollection { Id = "excludedPathCollection" };
+    excluded.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+    excluded.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*" });
 
-    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+    await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
 
 
 

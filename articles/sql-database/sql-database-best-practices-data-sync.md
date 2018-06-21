@@ -3,16 +3,17 @@ title: Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauvers
 description: Hier können Sie sich über bewährte Methoden zum Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung (Vorschauversion) informieren.
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7ce7830d853a77b54706201fa614e9f4bee637a4
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646006"
 ---
 # <a name="best-practices-for-sql-data-sync-preview"></a>Bewährte Methoden für die SQL-Datensynchronisierung (Vorschauversion) 
 
@@ -215,7 +216,7 @@ Weitere Informationen zur SQL-Datensynchronisierung (Vorschauversion) finden Sie
 -   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics](sql-database-sync-monitor-oms.md)
 -   [Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion](sql-database-troubleshoot-data-sync.md)  
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung (Vorschauversion) veranschaulichen:  
-    -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [Verwenden von PowerShell zum Synchronisieren zwischen mehreren Azure SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Herunterladen der Dokumentation zur REST-API der SQL-Datensynchronisierung (Vorschauversion)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 

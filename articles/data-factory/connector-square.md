@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3181ee143ac655606b5e9c98d743e30aef28b8cc
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 81da88c019ff46e98e0f8811c846ab7488fa1910
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34618141"
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Kopieren von Daten aus Square mithilfe von Azure Data Factory (Beta)
 
@@ -51,7 +52,7 @@ Folgende Eigenschaften werden für den mit Square verknüpften Dienst unterstüt
 | host | Die URL der Square-Instanz. (mystore.mysquare.com)  | Ja |
 | clientId | Die Client-ID, die Ihrer Square-Anwendung zugeordnet ist.  | Ja |
 | clientSecret | Der geheime Clientschlüssel, der Ihrer Square-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| redirectUri | Die Umleitungs-URL, die im Dashboard der Square-Anwendung zugewiesen ist. (http://localhost:2500)  | Ja |
+| redirectUri | Die Umleitungs-URL, die im Dashboard der Square-Anwendung zugewiesen ist. (Beispiel: http://localhost:2500)  | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein  |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein  |
 | usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein  |

@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/06/2016
+ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 561f317cd7afd740b83709efc8a75ed515626192
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2ec08b45fab9987e9271c1ff3101eaf321dc84be
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234222"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -26,29 +27,23 @@ In diesem Artikel erfahren Sie, wie Sie eine Web-App, das mobile App-Back-End od
 
 Der FTP/S-Endpunkt für Ihre App ist bereits aktiv. Zum Aktivieren der FTP/S-Bereitstellung ist keine Konfiguration erforderlich.
 
-<a name="step1"></a>
-## <a name="step-1-set-deployment-credentials"></a>Schritt 1: Festlegen von Anmeldeinformationen für die Bereitstellung
+## <a name="open-ftp-dashboard"></a>Öffnen des FTP-Dashboards
 
-Für den Zugriff auf den FTP-Server für Ihre App benötigen Sie zuerst Anmeldeinformationen für die Bereitstellung. 
+Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
 
-Informationen zum Festlegen oder Zurücksetzen Ihrer Anmeldeinformationen für die Bereitstellung finden Sie unter [Anmeldeinformationen für die Azure App Service-Bereitstellung](app-service-deployment-credentials.md). Dieses Tutorial veranschaulicht die Verwendung von Anmeldeinformationen auf Benutzerebene.
+Um das FTP-Dashboard zu öffnen, klicken Sie auf **Continuous Delivery (Vorschau)** > **FTP** > **Dashboard**.
 
-## <a name="step-2-get-ftp-connection-information"></a>Schritt 2: Abrufen der FTP-Verbindungsinformationen
+![Öffnen des FTP-Dashboards](./media/app-service-deploy-ftp/open-dashboard.png)
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Seite [Ressourcen](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App.
-2. Wählen Sie im linken Menü **Übersicht** aus, und notieren Sie die Werte für **FTP/Bereitstellungsbenutzer**, **FTP-Hostname** und **FTPS-Hostname**. 
+## <a name="get-ftp-connection-information"></a>Abrufen der FTP-Verbindungsinformationen
 
-    ![FTP-Verbindungsinformationen](./media/app-service-deploy-ftp/FTP-Connection-Info.PNG)
+Klicken Sie auf dem FTP-Dashboard auf **Kopieren**, um den FTPS-Endpunkt und App-Anmeldeinformationen zu kopieren.
 
-    > [!NOTE]
-    > Der im Azure-Portal angezeigte Wert **FTP/Bereitstellungsbenutzer** schließt den App-Namen ein, um den richtigen Kontext für den FTP-Server bereitzustellen.
-    > Die gleichen Informationen finden Sie, indem Sie im linken Navigationsbereich **Eigenschaften** auswählen. 
-    >
-    > Das Kennwort für die Bereitstellung wird nie angezeigt. Wenn Sie Ihr Kennwort für die Bereitstellung vergessen haben, wechseln Sie zurück zu [Schritt1](#step1), und setzen Sie es zurück.
-    >
-    >
+![Kopieren von FTP-Informationen](./media/app-service-deploy-ftp/ftp-dashboard.png)
 
-## <a name="step-3-deploy-files-to-azure"></a>Schritt 3: Bereitstellen von Dateien in Azure
+Es wird empfohlen, **App-Anmeldeinformationen** für die Bereitstellung in Ihrer App zu verwenden, da diese für jede App eindeutig sind. Wenn Sie jedoch auf **Benutzeranmeldeinformationen** klicken, können Sie Anmeldeinformationen auf Benutzerebene festlegen, die Sie für die FTP/S-Anmeldung bei allen App Service-Anwendungen in Ihrem Abonnement verwenden können.
+
+## <a name="deploy-files-to-azure"></a>Bereitstellen von Dateien in Azure
 
 1. Verwenden Sie in Ihrem FTP-Client (z.B. [Visual Studio](https://www.visualstudio.com/vs/community/) oder [FileZilla](https://filezilla-project.org/download.php?type=client)) die gesammelten Verbindungsinformationen, um eine Verbindung mit Ihrer App herzustellen.
 3. Kopieren Sie Ihre Dateien und die entsprechende Verzeichnisstruktur in das Verzeichnis [**/site/wwwroot**](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) in Azure (bzw. für WebJobs in das Verzeichnis **/site/wwwroot/App_Data/Jobs/**).
@@ -75,6 +70,14 @@ Um unverschlüsselte FTP-Verbindungen zu deaktivieren, aktivieren Sie **Nur FTPS
 
 ![Deaktivieren von FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
+## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
+
+Informationen zur FTP-Bereitstellung mithilfe der [Azure CLI](/cli/azure) finden Sie unter [Erstellen einer Web-App und Bereitstellen von Dateien über FTP (Azure CLI)](./scripts/app-service-cli-deploy-ftp.md).
+
+Informationen zur FTP-Bereitstellung mithilfe von [Azure PowerShell](/cli/azure) finden Sie unter [Hochladen von Dateien in eine Web-App mithilfe von FTP (PowerShell)](./scripts/app-service-powershell-deploy-ftp.md).
+
+[!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
+
 ## <a name="troubleshoot-ftp-deployment"></a>Problembehandlung bei der FTP-Bereitstellung
 
 - [Wie behebe ich Probleme bei der FTP-Bereitstellung?](#how-can-i-troubleshoot-ftp-deployment)
@@ -85,13 +88,12 @@ Um unverschlüsselte FTP-Verbindungen zu deaktivieren, aktivieren Sie **Nur FTPS
 
 Der erste Schritt in der Problembehandlung bei der FTP-Bereitstellung besteht darin, ein Bereitstellungsproblem von einem Laufzeitproblem der Anwendung zu trennen.
 
-Bereitstellungsprobleme führen in der Regel dazu, dass für Ihre Anwendung keine oder die falschen Dateien bereitgestellt werden. Dies kann durch Untersuchen Ihrer FTP-Bereitstellung oder Auswählen einer alternativen Bereitstellungsmethode (z.B. Quellcodeverwaltung) behoben werden.
+Bereitstellungsprobleme führen in der Regel dazu, dass für Ihre Anwendung keine oder die falschen Dateien bereitgestellt werden. Sie können dies durch Untersuchen Ihrer FTP-Bereitstellung oder Auswählen einer alternativen Bereitstellungsmethode (z.B. Quellcodeverwaltung) beheben.
 
-Laufzeitprobleme der Anwendung führen in der Regel dazu, dass die richtigen Dateien für Ihre App bereitgestellt werden, die App jedoch ein falsches Verhalten aufweist. Dies kann behoben werden, indem Sie sich auf das Codeverhalten zur Laufzeit konzentrieren und spezifische Fehlerpfade untersuchen.
+Laufzeitprobleme der Anwendung führen in der Regel dazu, dass die richtigen Dateien für Ihre App bereitgestellt werden, die App jedoch ein falsches Verhalten aufweist. Sie können dies beheben, indem Sie sich auf das Codeverhalten zur Laufzeit konzentrieren und spezifische Fehlerpfade untersuchen.
 
 Weitere Informationen zur Ermittlung, ob es sich um ein Bereitstellungs- oder Laufzeitproblem handelt, finden Sie unter [Probleme mit Bereitstellung oder Laufzeit](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues).
 
- 
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Ich kann meinen Code nicht mit FTP erreichen und veröffentlichen. Wie kann ich das Problem beheben?
 Vergewissern Sie sich, dass Sie den richtigen Hostnamen und die richtigen [Anmeldeinformationen](#step-1--set-deployment-credentials) eingegeben haben. Stellen Sie auch sicher, dass die folgenden FTP-Ports auf dem Computer nicht durch eine Firewall blockiert werden:
 

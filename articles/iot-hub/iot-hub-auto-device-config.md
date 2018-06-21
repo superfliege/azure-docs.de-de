@@ -1,22 +1,19 @@
 ---
 title: Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit Azure IoT Hub | Microsoft-Dokumentation
 description: Verwenden Sie automatische Azure IoT Hub-Gerätekonfigurationen, um eine Konfiguration mehreren Geräten zuzuweisen
-services: iot-hub
-documentationcenter: ''
 author: ChrisGMsft
-manager: timlt
-editor: ''
+manager: bruz
 ms.service: iot-hub
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: 7146fba69857c3a612ce1b3dbb83387c1f3068d6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34632447"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten – Vorschau
 
@@ -31,6 +28,9 @@ Bei automatischen Gerätekonfigurationen wird ein Satz von Gerätezwillingen mit
 * Der **Zielinhalt** definiert die gewünschten Eigenschaften, die in den Zielgerätezwillingen hinzugefügt oder aktualisiert werden sollen. Der Inhalt umfasst einen Pfad zu dem Abschnitt der gewünschten Eigenschaften, die geändert werden sollen.
 
 * Die **Metriken** definieren die zusammenfassenden Angaben zu verschiedenen Konfigurationszuständen wie z.B. **Erfolgreich**, **In Bearbeitung** und **Fehler**. Benutzerdefinierte Metriken werden als Abfragen für gemeldete Gerätezwillingseigenschaften angegeben.  Systemmetriken sind Standardmetriken, die den Zwillingsupdatestatus messen, z.B. die Anzahl von Zielgerätezwillingen und die Anzahl von Zwillingen, die erfolgreich aktualisiert wurden. 
+
+> [!Note]
+> Während der Vorschau ist dieses Feature nicht für IoT Hubs in den Regionen „USA, Osten“, „USA, Westen“, „Europa, Norden“ und „Europa, Westen“ verfügbar.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementieren von Gerätezwillingen für die Gerätekonfiguration
 
@@ -52,7 +52,7 @@ Bevor Sie eine Konfiguration erstellen können, müssen Sie angeben, welche Ger�
 ## <a name="create-a-configuration"></a>Erstellen einer Konfiguration
 
 1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
-1. Wählen Sie **Gerätekonfiguration (Vorschau)**.
+1. Wählen Sie **IoT device configuration (preview)** (IoT-Gerätekonfiguration (Vorschau)) aus.
 1. Wählen Sie **Konfiguration hinzufügen**.
 
 Zum Erstellen einer Konfiguration müssen fünf Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben. 
@@ -86,7 +86,7 @@ Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ei
 
 Beispiel: `SELECT deviceId FROM devices WHERE properties.reported.chillerWaterSettings.status='pending'`
 
-Sie können in einer Klausel einschließen, dass die Konfiguration angewendet wurde. Beispiel: `SELECT deviceId FROM devices WHERE configurations.yourconfigname.status='Applied'`
+Sie können in einer Klausel einschließen, dass die Konfiguration angewandt wurde. Beispiel: `SELECT deviceId FROM devices WHERE configurations.[[yourconfigname]].status='Applied'` (einschließlich der doppelten Klammern).
 
 
 ### <a name="step-4-target-devices"></a>Schritt 4: Festlegen von Zielgeräten
@@ -108,7 +108,7 @@ Da mehrere Konfigurationen dasselbe Gerät als Ziel verwenden können, sollten S
 Gehen Sie folgendermaßen vor, um ausführliche Informationen zu einer Konfiguration anzuzeigen und die Geräte zu überwachen, auf denen die Konfiguration ausgeführt wird:
 
 1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
-1. Wählen Sie **Gerätekonfiguration (Vorschau)**.
+1. Wählen Sie **IoT device configuration (preview)** (IoT-Gerätekonfiguration (Vorschau)) aus.
 1. Überprüfen Sie die Konfigurationsliste. Für jede Konfiguration können Sie die folgenden Details anzeigen:
    * **ID**: Name der Konfiguration.
    * **Zielbedingung**: Abfrage zum Definieren von Zielgeräten.
@@ -136,7 +136,7 @@ Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpas
 Gehen Sie wie folgt vor, um Änderungen an einer Konfiguration vorzunehmen: 
 
 1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
-1. Wählen Sie **Gerätekonfiguration (Vorschau)**. 
+1. Wählen Sie **IoT device configuration (preview)** (IoT-Gerätekonfiguration (Vorschau)) aus. 
 1. Wählen Sie die Konfiguration aus, die Sie ändern möchten. 
 1. Nehmen Sie die gewünschten Änderungen an den folgenden Feldern vor: 
    * Zielbedingung 
@@ -151,7 +151,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Konfiguration vorzunehmen:
 Wenn Sie eine Konfiguration löschen, übernehmen alle Gerätezwillinge die nächste Konfiguration mit der höchsten Priorität. Wenn Gerätezwillinge keine Zielbedingung einer anderen Konfiguration erfüllen, werden keine weiteren Einstellungen angewendet. 
 
 1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
-1. Wählen Sie **Gerätekonfiguration (Vorschau)**. 
+1. Wählen Sie **IoT device configuration (preview)** (IoT-Gerätekonfiguration (Vorschau)) aus. 
 1. Wählen Sie die zu löschende Konfiguration durch Aktivieren des zugehörigen Kontrollkästchens aus. 
 1. Klicken Sie auf **Löschen**.
 1. Sie werden aufgefordert, den Vorgang zu bestätigen.

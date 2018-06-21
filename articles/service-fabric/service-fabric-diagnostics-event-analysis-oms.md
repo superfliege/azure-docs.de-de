@@ -12,13 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/16/2018
+ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: b51f7dc43f390152b2b0be223541e381bbddd3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839587"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Ereignisanalyse und -visualisierung mit Log Analytics
 
@@ -36,17 +37,15 @@ Nachdem Daten von Log Analytics empfangen wurden, verfügt Azure über mehrere *
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Zugriff auf die Service Fabric-Analyse-Lösung
 
-1. Navigieren Sie zu der Ressourcengruppe, in der Sie die Lösung der Service Fabric-Analyse erstellt haben. Wählen Sie die Ressource **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite.
+1. Navigieren Sie im Azure-Portal zur Ressourcengruppe, in der Sie die Service Fabric Analytics-Lösung erstellt haben.
 
-2. Klicken Sie auf der Übersichtsseite auf den Link oben, um zum OMS-Portal zu wechseln.
+2. Wählen Sie die Ressource **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus.
 
-    ![Link zum OMS-Portal](media/service-fabric-diagnostics-event-analysis-oms/oms-portal-link.png)
+2. In der Übersicht sehen Sie Kacheln in Form eines Graphen für jede der aktivierten Lösungen, auch eine für Service Fabric. Klicken Sie auf den Graphen **Service Fabric** (erste Abbildung unten), um zur Service Fabric Analytics-Lösung (zweite Abbildung unten) zu gelangen.
 
-3. Im OMS-Portal können Sie nun die Lösungen anzeigen, die Sie aktiviert haben. Klicken Sie auf das Diagramm mit dem Titel „Service Fabric“ (erste Abbildung unten), um zur Service Fabric-Lösung (zweite Abbildung unten) zu wechseln.
+    ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms-workspace-all-solutions.png)
-
-    ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new.png)
+    ![OMS – SF-Lösung](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 In der Abbildung oben ist die Startseite der Service Fabric-Analyse-Lösung dargestellt. Es handelt sich um eine Momentaufnahmenansicht der Vorgänge im Cluster. Wenn Sie die Diagnose bei der Clustererstellung aktiviert haben, werden folgende Ereignisse angezeigt: 
 
@@ -57,15 +56,15 @@ In der Abbildung oben ist die Startseite der Service Fabric-Analyse-Lösung darg
 >[!NOTE]
 >Neben den Ereignissen des Betriebskanals können durch [Aktualisieren der Konfiguration der Diagnoseerweiterung](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations) detailliertere Systemereignisse erfasst werden.
 
-### <a name="view-operational-events-including-actions-on-nodes"></a>Anzeigen von Betriebsereignissen einschließlich Aktionen auf Knoten
+### <a name="view-service-fabric-events-including-actions-on-nodes"></a>Anzeigen von Service Fabric-Ereignissen einschließlich Aktionen auf Knoten
 
-1. Klicken Sie auf der Seite „Service Fabric-Analyse“ im OMS-Portal auf das Diagramm für den Betriebskanal.
+1. Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Service Fabric-Ereignisse**.
 
-    ![OMS – SF-Lösung: Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-new-operational.png)
+    ![OMS – SF-Lösung: Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
-2. Klicken Sie auf „Tabelle“, um die Ereignisse in einer Liste anzuzeigen. In der Liste werden alle gesammelten Systemereignisse angezeigt. Zur Referenz: Diese stammen aus WADServiceFabricSystemEventsTable im Azure Storage-Konto. Auch die Reliable Services- und Reliable Actors-Ereignisse, die als Nächstes angezeigt werden, stammen von diesen entsprechenden Tabellen.
+2. Klicken Sie auf **Liste**, um die Ereignisse in einer Liste anzuzeigen. In der Liste werden alle gesammelten Systemereignisse angezeigt. Zur Referenz: Diese stammen aus WADServiceFabricSystemEventsTable im Azure Storage-Konto. Auch die Reliable Services- und Reliable Actors-Ereignisse, die als Nächstes angezeigt werden, stammen von diesen entsprechenden Tabellen.
     
-    ![OMS-Abfrage – Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/oms-query-operational-channel.png)
+    ![OMS-Abfrage – Betriebskanal](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
 Alternativ können Sie auf die Lupe links klicken und mit der Abfragesprache Kusto die gewünschten Ereignisse suchen. Um beispielsweise alle Aktionen zu suchen, die im Cluster für Knoten durchgeführt wurden, können Sie die folgende Abfrage verwenden. Die unten verwendeten Ereignis-IDs finden Sie in der [Referenz der Betriebskanalprotokolle](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -78,13 +77,13 @@ Sie können Abfragen für viele weitere Felder durchführen, z. B. für bestimm
 
 ### <a name="view-service-fabric-reliable-service-and-actor-events"></a>Anzeigen von Service Fabric Reliable Service- und Reliable Actor-Ereignissen
 
-1. Klicken Sie auf der Seite „Service Fabric-Analyse“ im OMS-Portal auf das Diagramm für Reliable Services.
+1. Klicken Sie auf der Seite „Service Fabric-Analyse“ auf den Graphen für **Reliable Services**.
 
-    ![OMS – SF-Lösung: Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-reliable-services.png)
+    ![OMS – SF-Lösung: Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
-2. Klicken Sie auf „Tabelle“, um die Ereignisse in einer Liste anzuzeigen. Hier werden Ereignisse aus den zuverlässigen Diensten angezeigt. Es werden unterschiedliche Ereignisse für den Start und das Ende des runasync-Diensts angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades. 
+2. Klicken Sie auf **Liste**, um die Ereignisse in einer Liste anzuzeigen. Hier werden Ereignisse aus den zuverlässigen Diensten angezeigt. Es werden unterschiedliche Ereignisse für den Start und das Ende des runasync-Diensts angezeigt. Dies erfolgt normalerweise bei Bereitstellungen und Upgrades. 
 
-    ![OMS-Abfrage – Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms-query-reliable-services.png)
+    ![OMS-Abfrage – Reliable Services](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
 Reliable Actor-Ereignisse können auf ähnliche Weise angezeigt werden. Um ausführlichere Ereignisse für Reliable Actors zu konfigurieren, müssen Sie `scheduledTransferKeywordFilter` in der Konfiguration für die Diagnoseerweiterung ändern (siehe unten). Details zu den entsprechenden Werten finden Sie in der [Referenz der Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md#keywords).
 
@@ -100,9 +99,9 @@ Reliable Actor-Ereignisse können auf ähnliche Weise angezeigt werden. Um ausf�
                 },
 ```
 
-Die Abfragesprache Kusto ist leistungsstark. Eine weitere nützliche Abfrage ist die Suche der Knoten, die die meisten Ereignisse generieren. In der Abfrage im folgenden Screenshot ist das aggregierte Reliable Services-Ereignis mit dem spezifischen Dienst und Knoten zu sehen.
+Die Abfragesprache Kusto ist leistungsstark. Eine weitere nützliche Abfrage ist die Suche der Knoten, die die meisten Ereignisse generieren. In der Abfrage im folgenden Screenshot sind mit anhand des spezifischen Diensts und Knotens aggregierte Reliable Services-Ereignisse zu sehen.
 
-![OMS-Abfrage – Ereignisse pro Knoten](media/service-fabric-diagnostics-event-analysis-oms/oms-query-events-per-node.png)
+![OMS-Abfrage – Ereignisse pro Knoten](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

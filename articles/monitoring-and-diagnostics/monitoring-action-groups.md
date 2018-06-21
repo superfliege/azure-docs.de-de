@@ -1,31 +1,25 @@
 ---
-title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal | Microsoft-Dokumentation
+title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
-manager: chrad
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/20/2018
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
+ms.date: 06/1/2018
 ms.author: dukek
-ms.openlocfilehash: 07e3c1a95aa223121117f3deba0269fb6cc280c2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: alerts
+ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170375"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263064"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
-In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
+Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Benutzer definiert wurden. Warnungen von Azure Monitor und Service Health sind beim Auslösen der Warnung für die Verwendung einer bestimmten Aktionsgruppe konfiguriert. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden.
 
-Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Gruppen können Sie dann bei jeder Warnung wiederverwenden, die Sie definieren, um sicherzustellen, dass jedes Mal, wenn eine Warnung ausgelöst wird, die gleichen Aktionen ausgeführt werden.
+In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 
 Jede Aktion besteht aus den folgenden Eigenschaften:
 
@@ -71,15 +65,21 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
 <dt>
 E-Mail</dt>
-<dd>Eine Aktionsgruppe kann bis zu 50 E-Mail-Aktionen enthalten.</dd>
+<dd>E-Mails werden von den folgenden E-Mail-Adressen gesendet. Achten Sie darauf, dass Ihre E-Mail-Filterung ordnungsgemäß konfiguriert ist.
+
+    - azure-noreply@microsoft.com
+    - azureemail-noreply@microsoft.com
+    - alerts-noreply@mail.windowsazure.com
+    
+</dd>
+<dd>Eine Aktionsgruppe kann bis zu 1000 E-Mail-Aktionen enthalten.</dd>
 <dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
 
 <dt>ITSM</dt>
 <dd>Eine Aktionsgruppe kann bis zu zehn ITSM-Aktionen enthalten.</dd>
 <dd>Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md).</dd>
 
-<dt>
-Logik-App</dt>
+<dt>Logik-App</dt>
 <dd>Eine Aktionsgruppe kann bis zu zehn Logik-App-Aktionen enthalten.</dd>
 
 <dt>Runbook</dt>
@@ -90,8 +90,7 @@ Logik-App</dt>
 <dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
 <dd>Weitere Informationen finden Sie im Artikel [SMS-Warnungsverhalten in Aktionsgruppen](monitoring-sms-alert-behavior.md).</dd>
 
-<dt>
-Sprachanruf</dt>
+<dt>Sprachanruf</dt>
 <dd>Eine Aktionsgruppe kann bis zu zehn Sprachanrufaktionen enthalten.</dd>
 <dd>Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./monitoring-alerts-rate-limiting.md).</dd>
 

@@ -328,6 +328,8 @@ items:
                 href: mongodb-readpreference.md
               - name: Indizierung
                 href: mongodb-indexing.md
+              - name: Gültigkeitsdauer in MongoDB
+                href: mongodb-ttl.md
               - name: Visualisieren Ihrer Daten mit Power BI
                 href: powerbi-visualize.md
               - name: Verwalten mithilfe des Storage-Explorers
