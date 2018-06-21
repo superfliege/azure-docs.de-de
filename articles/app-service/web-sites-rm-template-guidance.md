@@ -12,11 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc816bb6e95d2800d79124dfac60b55e88eaa500
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8c29cf5a65e9587b281a6000b5b4eff47f11da91
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807321"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -58,19 +59,20 @@ Sie stellen Ressourcen in der folgenden Reihenfolge bereit:
 
 In der Regel enthält Ihre Lösung nur einige dieser Ressourcen und Ebenen. Bei fehlenden Ebenen ordnen Sie die Ressourcen auf niedrigerer Ebene der nächsthöheren Ebene zu.
 
-Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab.
+Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungszeichenfolgen-Konfiguration hängt von der MSDeploy-Erweiterung ab. Die MS Deploy-Erweiterung hängt von der Web-App und der Datenbank ab. 
 
 ```json
 {
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Web/sites",
+    "name": "[parameters('appName')]",
+    "type": "Microsoft.Web/Sites",
+    ...
     "resources": [
       {
           "name": "MSDeploy",
           "type": "Extensions",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'))]",
-            "[concat('SuccessBricks.ClearDB/databases/', parameters('databaseName'))]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'))]",
+            "[concat('Microsoft.Sql/servers/', parameters('dbServerName'), '/databases/', parameters('dbName'))]",
           ],
           ...
       },
@@ -78,13 +80,15 @@ Das folgende Beispiel zeigt einen Teil einer Vorlage. Der Wert der Verbindungsze
           "name": "connectionstrings",
           "type": "config",
           "dependsOn": [
-            "[concat('Microsoft.Web/Sites/', parameters('name'), '/Extensions/MSDeploy')]"
+            "[concat('Microsoft.Web/Sites/', parameters('appName'), '/Extensions/MSDeploy')]"
           ],
           ...
       }
     ]
 }
 ```
+
+Ein lauffähiges Beispiel, das den oben stehenden Code verwendet, finden Sie unter [Template: Build a simple Umbraco Web App](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple) (Vorlage: Erstellen einer einfachen Umbraco-Web-App).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Suchen von Informationen zu MS Deploy-Fehlern
 

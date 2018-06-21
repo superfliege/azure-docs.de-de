@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcc733308f4c0441545dc0d03cca2ca1112812ac
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 045b433fdea2cfb97f3002fbe692ea8e4988fbb4
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726413"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle und Abonnements
 
@@ -106,7 +107,7 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. Die restlichen Schritte müssen mithilfe einer Bash-Shell mit [installierter](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 2.0.4 oder höher oder Azure Cloud Shell ausgeführt werden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie in den folgenden Skripts auf die Schaltfläche **Ausprobieren**, um eine Cloud Shell zu öffnen, über die Sie sich bei Ihrem Azure-Konto anmelden. Optionen zum Ausführen von Bash CLI-Skripts auf einem Windows-Client finden Sie unter [Verwenden der Azure CLI unter Windows](../virtual-machines/windows/cli-options.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
+5. Die restlichen Schritte müssen mithilfe einer Bash-Shell mit [installierter](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) Azure CLI 2.0.4 oder höher oder Azure Cloud Shell ausgeführt werden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie in den folgenden Skripts auf die Schaltfläche **Ausprobieren**, um eine Cloud Shell zu öffnen, über die Sie sich bei Ihrem Azure-Konto anmelden. Optionen zum Ausführen von Bash CLI-Skripts auf einem Windows-Client finden Sie unter [Installieren der Azure CLI 2.0 unter Windows](/cli/azure/install-azure-cli-windows). 
 6. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<SubscriptionB-Id>` durch Ihre Abonnement-ID. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `az account show` ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID. Kopieren Sie das geänderte Skript, fügen Sie es in Ihre CLI 2.0-Sitzung ein, und drücken Sie dann `Enter`. 
 
     ```azurecli-interactive

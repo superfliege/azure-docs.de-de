@@ -1,11 +1,11 @@
 ---
-title: "Entwickeln für Azure Files mit C++ | Microsoft-Dokumentation"
+title: Entwickeln für Azure Files mit C++ | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: .net
 author: renashahmsft
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: a1e8c99e-47a6-43a9-9541-c9262eb00b38
 ms.service: storage
 ms.workload: storage
@@ -14,31 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
-ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737570"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
-## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-
+## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 In diesem Tutorial erfahren Sie, wie Sie grundlegende Vorgänge in Azure Files ausführen. Anhand von in C++ geschriebenen Beispielen lernen Sie, wie Sie Freigaben und Verzeichnisse erstellen sowie Dateien hochladen, auflisten und löschen. Wenn Sie noch nicht mit Azure Files vertraut sind, helfen die in den folgenden Abschnitten erläuterten Konzepte, die Beispiele besser zu verstehen.
-
 
 * Erstellen und Löschen von Azure-Dateifreigaben
 * Erstellen und Löschen von Verzeichnissen
 * Auflisten von Dateien und Verzeichnissen in einer Azure-Dateifreigabe
 * Hochladen, Herunterladen und Löschen einer Datei
-* Festlegen des Kontingents (der maximalen Größe) einer Azure-Dateifreigabe
+* Festlegen des Kontingents (maximale Größe) für eine Azure-Dateifreigabe
 * Erstellen eines SAS-Schlüssels (Shared Access Signature) für eine Datei, die eine für die Freigabe definierte SAS-Richtlinie verwendet
 
 > [!Note]  
-> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen C++-Klassen und -Funktionen für die Ein- und Ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Datei-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
+> Da der Zugriff auf Azure Files über SMB möglich ist, können Sie einfache Anwendungen schreiben, die über die standardmäßigen E/A-Klassen und -Funktionen von C++ auf die Azure-Dateifreigabe zugreifen. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage C++ SDK verwenden, das über die [Datei-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="create-a-c-application"></a>Erstellen einer C++-Anwendung
 Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0 für C++ installieren. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
@@ -255,7 +254,7 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Festlegen des Kontingents (der maximalen Größe) einer Azure-Dateifreigabe
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Festlegen des Kontingents (maximale Größe) für eine Azure-Dateifreigabe
 Sie können das Kontingent (also die maximale Größe) für eine Dateifreigabe in Gigabytes festlegen. Sie können auch überprüfen, wie viele Daten sich aktuell auf der Freigabe befinden.
 
 Durch Festlegen des Kontingents für eine Freigabe können Sie die Gesamtgröße der Dateien einschränken, die in der Freigabe gespeichert werden. Überschreitet die Gesamtgröße der Dateien in der Freigabe das für die Freigabe festgelegte Kontingent, können die Clients weder die Größe von vorhandenen Dateien ändern noch neue Dateien erstellen – es sei denn, diese sind leer.
@@ -357,6 +356,6 @@ if (share.exists())
 Weitere Informationen zu Azure Storage finden Sie in den folgenden Ressourcen:
 
 * [Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)
-* [Beispiele für den Azure Storage File-Dienst in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
-* [Azure-Speicher-Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
-* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage-Dateidienstbeispiele in C++] (https://github.com/Azure-Samples/storage-file-cpp-getting-started)
+* [Azure Storage-Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
+* [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)

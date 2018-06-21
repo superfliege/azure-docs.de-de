@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: 0e060e67d615f0d6aa8ca6cbe305670956ac3faf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: be04a1cd723cf27e764daa468607d6495baf0291
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849929"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute-Verbindungen und Routingdomänen
  Für eine Verbindung Ihrer lokalen Infrastruktur mit Microsoft über einen Konnektivitätsanbieter müssen Sie eine *ExpressRoute-Verbindung* anfordern. Die folgende Abbildung zeigt eine logische Darstellung der Konnektivität zwischen Ihrem WAN und Microsoft.
@@ -86,6 +87,11 @@ In der folgenden Tabelle werden die drei Routingdomänen verglichen.
 Sie können mehrere Routingdomänen als Teil der ExpressRoute-Verbindung aktivieren. Sie können alle Routingdomänen durch das gleiche VPN leiten, wenn sie diese zu einer einzelnen Routingdomäne zusammenführen möchten. Sie können sie auch getrennt halten, ähnlich wie im Diagramm. Die empfohlene Konfiguration sieht folgendermaßen aus: Das private Peering ist direkt mit dem Kernnetzwerk verbunden, und die öffentlichen Peeringlinks und die Microsoft-Peeringlinks sind mit Ihrer DMZ verbunden.
 
 Wenn Sie sich für alle drei Peeringsitzungen entscheiden, müssen Sie über drei BGP-Sitzungspaare (ein Paar für jeden Peeringtyp) verfügen. Die BGP-Sitzungspaare bieten einen hoch verfügbaren Link. Wenn Sie die Verbindung über Layer-2-Konnektivitätsanbieter herstellen, sind Sie für das Konfigurieren und Verwalten des Routings verantwortlich. Weitere Informationen erhalten Sie, wenn Sie sich [Workflows](expressroute-workflows.md) zum Einrichten von ExpressRoute anschauen.
+
+## <a name="expressroute-health"></a>ExpressRoute-Integrität
+ExpressRoute-Leitungen können mit dem [Netzwerkleistungsmonitor](https://docs.microsoft.com/en-us/azure/networking/network-monitoring-overview) auf Verfügbarkeit, Konnektivität zu VNETs und Bandbreitennutzung überwacht werden.
+
+Der Netzwerkleistungsmonitor überwacht die Integrität von privatem Azure-Peering und Microsoft-Peering.  Weitere Informationen finden Sie in unserem [Blogbeitrag](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Suchen Sie nach einem Service Provider. Informationen finden Sie unter [ExpressRoute-Dienstanbieter und -Standorte](expressroute-locations.md).

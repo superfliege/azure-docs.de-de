@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 06/05/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b4bf8d8ca43110dcfa4aeaed279a8e340e5d529
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 8b6d85fbfdde463352ae80cc8922025a7dcc03f3
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807532"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -43,12 +44,12 @@ In einem App Service-Plan können Sie zwischen verschiedenen Stufen skalieren, u
 
 ## <a name="consumption-plan"></a>Verbrauchsplan
 
-Bei Verwendung eines Verbrauchsplans werden Instanzen des Azure Functions-Hosts dynamisch, basierend auf der Anzahl der eingehenden Ereignisse hinzugefügt und entfernt. Dieser Plan wird automatisch skaliert, sodass Ihnen nur dann Computeressourcen berechnet werden, wenn Ihre Funktionen ausgeführt werden. In einem Verbrauchsplan kann eine Funktion für maximal 10 Minuten ausgeführt werden. 
+Bei Verwendung eines Verbrauchsplans werden Instanzen des Azure Functions-Hosts dynamisch, basierend auf der Anzahl der eingehenden Ereignisse hinzugefügt und entfernt. Dieser Plan wird automatisch skaliert, sodass Ihnen nur dann Computeressourcen berechnet werden, wenn Ihre Funktionen ausgeführt werden. In einem Verbrauchsplan tritt für eine Funktionsausführung nach einem konfigurierbaren Zeitraum ein Timeout auf. 
 
 > [!NOTE]
-> Das Standardtimeout für Funktionen in einem Verbrauchsplan beträgt 5 Minuten. Der Wert kann durch Ändern der Eigenschaft `functionTimeout` in der Projektdatei [host.json](functions-host-json.md#functiontimeout) für die Funktions-App auf 10 Minuten erhöht werden.
+> Das Standardtimeout für Funktionen in einem Verbrauchsplan beträgt 5 Minuten. Der Wert kann durch Ändern der Eigenschaft `functionTimeout` in der Projektdatei [host.json](functions-host-json.md#functiontimeout) für die Funktions-App auf maximal 10 Minuten erhöht werden.
 
-Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausführungszeit und des verwendeten Arbeitsspeichers. Die Abrechnung wird für alle Funktionen innerhalb einer Funktions-App aggregiert. Weitere Informationen finden Sie unter [Preisseite für Azure Functions].
+Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausführungszeit und des verwendeten Arbeitsspeichers. Die Abrechnung wird für alle Funktionen innerhalb einer Funktions-App aggregiert. Weitere Informationen finden Sie unter [Azure Functions – Preise].
 
 Der Verbrauchsplan ist der Standardhostingplan. Er bietet folgende Vorteile:
 - Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.
@@ -90,7 +91,7 @@ Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in di
 
 ## <a name="how-the-consumption-plan-works"></a>Funktionsweise des Verbrauchsplans
 
-Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.  Eine Instanz des Hosts ist die Funktions-App, d.h. alle Funktionen innerhalb einer Funktions-App verwenden innerhalb einer Instanz die gleichen Ressourcen und skalieren gleichzeitig.
+Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.  Eine Instanz des Hosts ist die Funktions-App, d.h. alle Funktionen innerhalb einer Funktions-App verwenden innerhalb einer Instanz die gleichen Ressourcen und werden gleichzeitig skaliert. Funktions-Apps, die den gleichen Verbrauchsplan nutzen, werden unabhängig voneinander skaliert.  
 
 Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscodedateien in Azure Files-Freigaben im Hauptspeicherkonto der Funktion gespeichert. Wenn Sie das Hauptspeicherkonto der Funktions-App löschen, werden die Funktionscodedateien gelöscht und können nicht wiederhergestellt werden.
 
@@ -121,8 +122,8 @@ Es gibt viele Aspekte einer Funktions-App, die sich auf die Skalierung auswirken
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 
-Die Abrechnung des Verbrauchsplans wird detailliert auf der [Preisseite für Azure Functions] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausführt wurde. Folgende Einheiten werden für die Abrechnung verwendet: 
+Die Abrechnung des Verbrauchsplans wird detailliert auf der [Azure Functions – Preise] beschrieben. Der Verbrauch wird auf Ebene der Funktions-App zusammengefasst, wobei nur die Zeit gezählt wird, für die der Funktionscode ausführt wurde. Folgende Einheiten werden für die Abrechnung verwendet: 
 * **Ressourcenverbrauch in Gigabytesekunden (GB-s)** – berechnet als Kombination aus Arbeitsspeichergröße und Ausführungsdauer für alle Funktionen in einer Funktions-App. 
 * **Ausführungen** – werden bei jeder Ausführung einer Funktion als Antwort auf einen Ereignisauslöser gezählt.
 
-[Preisseite für Azure Functions]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions – Preise]: https://azure.microsoft.com/pricing/details/functions

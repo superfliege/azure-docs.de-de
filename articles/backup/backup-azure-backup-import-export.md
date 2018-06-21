@@ -1,25 +1,19 @@
 ---
-title: Azure Backup – Offlinesicherung oder anfängliches Seeding mithilfe des Azure Import/Export-Diensts | Microsoft Docs
+title: Azure Backup – Offlinesicherung oder anfängliches Seeding mithilfe des Azure Import/Export-Diensts
 description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden können. Dieser Artikel erläutert das Offlineseeding der ersten Sicherungsdaten mit dem Azure Import/Export-Dienst.
 services: backup
-documentationcenter: ''
 author: saurabhsensharma
 manager: shivamg
-editor: ''
-ms.assetid: ada19c12-3e60-457b-8a6e-cf21b9553b97
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 5/8/2018
-ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 801de343ebb88394f04a65236997f9ec80a2f535
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 05/17/2018
+ms.author: saurse
+ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939708"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831453"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die Daten der Offlinesicherung in Azure hochzuladen.
@@ -57,7 +51,7 @@ Die Verwendung der Offlinesicherung wird von folgenden Azure Backup-Features ode
 Führen Sie vor der Initiierung des Workflows zur Offlinesicherung die folgenden Schritte aus: 
 * Erstellen Sie einen [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md). Informationen zur Tresorerstellung finden Sie in den Schritten in [diesem Artikel](tutorial-backup-windows-server-to-azure.md#create-a-recovery-services-vault).
 * Vergewissern Sie sich, dass auf dem Windows-Server bzw. auf dem Windows-Client die [neueste Version des Azure Backup-Agents](https://aka.ms/azurebackup_agent) installiert und der Computer beim Recovery Services-Tresor registriert ist.
-* Der Computer, auf dem der Azure Backup-Agent ausgeführt wird, muss mindestens über Azure PowerShell 3.7.0 verfügen. Es wird empfohlen, die [neueste Version von Azure PowerShell zu installieren](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+* Der Computer, auf dem der Azure Backup-Agent ausgeführt wird, muss über Azure PowerShell 3.7.0 verfügen. Es wird empfohlen, die Sie [die Version 3.7.0 von Azure PowerShell herunterladen und installieren](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 * Auf dem Computer mit dem Azure Backup-Agent müssen Microsoft Edge oder Internet Explorer 11 installiert und JavaScript aktiviert sein. 
 * Erstellen Sie ein Azure Storage-Konto in dem Abonnement, in dem sich auch der Recovery Services-Tresor befindet. 
 * Vergewissern Sie sich, dass Sie über die [erforderlichen Berechtigungen](../azure-resource-manager/resource-group-create-service-principal-portal.md) für die Erstellung der Azure Active Directory-Anwendung verfügen. Der Workflow zur Offlinesicherung erstellt eine Azure Active Directory-Anwendung in dem Abonnement, das dem Azure Storage-Konto zugeordnet ist. Die Anwendung dient dazu, Azure Backup sicheren und bereichsbezogenen Zugriff auf den Azure-Importdienst zu ermöglichen, der für den Workflow zur Offlinesicherung erforderlich ist. 
@@ -68,7 +62,7 @@ Führen Sie vor der Initiierung des Workflows zur Offlinesicherung die folgenden
     4. Scrollen Sie in der Anbieterliste nach unten zu „Microsoft.ImportExport“. Falls der Status „NotRegistered“ lautet, klicken Sie auf **Registrieren**.
     ![Registrieren des Ressourcenanbieters](./media/backup-azure-backup-import-export/registerimportexport.png)
 * Es wurde ein Stagingspeicherort, bei dem es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer (intern oder extern) handeln kann, mit genügend Speicherplatz zum Speichern der Erstkopie erstellt. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
-* Senden Sie nur interne Festplatten vom Typ SSD (2,5 Zoll) oder SATA II/III (2,5 Zoll oder 3,5 Zoll) an Azure. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md#hard-disk-drives) die aktuell vom Dienst unterstützten Laufwerke nach.
+* Senden Sie nur interne Festplatten vom Typ SSD (2,5 Zoll) oder SATA II/III (2,5 Zoll oder 3,5 Zoll) an Azure. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-requirements.md#supported-hardware) die aktuell vom Dienst unterstützten Laufwerke nach.
 * Die SATA-Laufwerke müssen mit einem Computer verbunden sein (als *Kopiercomputer* bezeichnet), auf dem die Sicherungsdaten vom *Stagingspeicherort* auf die SATA Laufwerke kopiert werden. Stellen Sie sicher, dass BitLocker auf dem *Kopiercomputer* aktiviert ist.
 
 ## <a name="workflow"></a>Workflow
@@ -114,7 +108,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
     * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
     * BitLocker ist auf dem Kopiercomputer aktiviert.
-    * Azure PowerShell 3.7.0 (oder eine höhere Version) ist installiert.
+    * Azure PowerShell 3.7.0 wurde installiert.
     * Die neuesten kompatiblen Browser (Edge oder Internet Explorer 11) sind installiert, und JavaScript ist aktiviert. 
     * Der Kopiercomputer kann auf das Azure-Portal zugreifen. Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
     

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: tdykstra
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: a1ca2b821678b48f65fe6ec6e58fa65cd8e4304f
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 71adccabc0778e2765c574f3714aab0ed0179deb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303412"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724468"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -29,13 +29,17 @@ In diesem Artikel erfahren Sie, wie Sie Azure Queue Storage-Bindungen in Azure F
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakete
+## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src).
+Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+
+Die Warteschlangenspeicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue).
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -241,6 +245,8 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `string paramName
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
+
+Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 Verwenden Sie in JavaScript `context.bindings.<name>`, um auf die Nutzlast des Warteschlangenelements zuzugreifen. Falls es sich um eine JSON-Nutzlast handelt, wird sie in ein Objekt deserialisiert.
 
@@ -475,6 +481,8 @@ Verwenden Sie in C# und C#-Skripts einen Methodenparameter wie `out T paramName`
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 
+
+Wenn Sie versuchen, eine Bindung an `CloudQueueMessage` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 Verwenden Sie einen der folgenden Typen, um in C# und C#-Skripts mehrere Warteschlangennachrichten zu schreiben: 
 

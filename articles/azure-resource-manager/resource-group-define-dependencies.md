@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2017
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1bb3827036f0d8957ac0830f707da71dd4cd373
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5a9bde85e894f2f4283348771dc5cacc7a08f23
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824654"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen
 Vor dem Bereitstellen einer bestimmten Ressource kann es erforderlich sein, dass bereits andere Ressourcen vorhanden sind. Zum Beispiel muss SQL Server vorhanden sein, bevor versucht wird, eine SQL-Datenbank bereitzustellen. Diese Beziehung definieren Sie, indem Sie eine Ressource als von einer anderen Ressource abhängig kennzeichnen. Sie definieren eine Abhängigkeit mit dem **dependsOn**-Element oder mit der **reference**-Funktion. 
@@ -59,7 +60,7 @@ Wenn Sie Abhängigkeiten definieren, können Sie Ressourcenanbieter-Namespace un
 ]
 ``` 
 
-Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von „dependsOn“ zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im „dependsOn“-Element definiert waren. Bei Verwenden von „dependsOn“ beeinträchtigen Sie möglicherweise die Bereitstellungszeit, da der Resource Manager zwei Ressourcen, die eine Abhängigkeit aufweisen, nicht parallel bereitstellt. Um Beziehungen zwischen Ressourcen zu dokumentieren, sollten Sie die [Ressourcenverknüpfung](/rest/api/resources/resourcelinks) nutzen.
+Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von „dependsOn“ zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im dependsOn-Element definiert waren. Durch Verwendung von „dependsOn“ beeinträchtigen Sie möglicherweise die Bereitstellungszeit, da Resource Manager zwei Ressourcen, die eine Abhängigkeit aufweisen, nicht parallel bereitstellt. Um Beziehungen zwischen Ressourcen zu dokumentieren, sollten Sie die [Ressourcenverknüpfung](/rest/api/resources/resourcelinks) nutzen.
 
 ## <a name="child-resources"></a>Untergeordnete Ressourcen
 Mit der resources-Eigenschaft können Sie untergeordnete Ressourcen angeben, die mit der definierten Ressource verknüpft sind. Untergeordnete Ressourcen können nur mit fünf Ebenen definiert werden. Es ist wichtig zu beachten, dass keine implizite Abhängigkeit zwischen einer untergeordneten Ressource und der übergeordneten Ressource erstellt wird. Wenn die untergeordnete Ressource nach der übergeordneten Ressource bereitgestellt werden muss, müssen Sie diese Abhängigkeit explizit mit der dependsOn-Eigenschaft angeben. 
@@ -106,11 +107,19 @@ Das folgende Beispiel zeigt einen SQL Server und eine SQL-Datenbank. Beachten Si
 ]
 ```
 
-## <a name="reference-function"></a>reference-Funktion
-Mit der [reference](resource-group-template-functions-resource.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. reference-Ausdrücke deklarieren implizit, dass eine Ressource von einer anderen abhängt. Das allgemeine Format lautet wie folgt:
+## <a name="reference-and-list-functions"></a>Funktionen „reference“ und „list“
+Mit der [reference](resource-group-template-functions-resource.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. Die [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)-Funktionen geben Werte für eine Ressource aus einem list-Vorgang zurück.  reference- und list-Ausdrücke deklarieren implizit, dass eine Ressource von der anderen abhängig ist, wenn die referenzierte Ressource in der gleichen Vorlage bereitgestellt wird und anhand ihres Namens (nicht ihrer Ressourcen-ID) auf sie verwiesen wird. Wenn Sie die Ressourcen-ID an die reference- oder list-Funktionen übergeben, wird kein impliziter Verweis erstellt.
+
+Das allgemeine Format der reference-Funktion sieht folgendermaßen aus:
 
 ```json
 reference('resourceName').propertyPath
+```
+
+Das allgemeine Format der listKeys-Funktion sieht folgendermaßen aus:
+
+```json
+listKeys('resourceName', 'yyyy-mm-dd')
 ```
 
 Im folgenden Beispiel hängt ein CDN-Endpunkt explizit vom CDN-Profil und implizit von einer Web-App ab.
@@ -140,12 +149,12 @@ Verwenden Sie die folgenden Richtlinien für die Entscheidung, welche Abhängigk
 
 * Legen Sie möglichst wenige Abhängigkeiten fest.
 * Legen Sie für eine untergeordnete Ressource eine Abhängigkeit von der übergeordneten Ressource fest.
-* Verwenden Sie die **reference**-Funktion zum Festlegen impliziter Abhängigkeiten zwischen den Ressourcen, die Eigenschaften gemeinsam nutzen müssen. Fügen Sie keine explizite Abhängigkeit (**DependsOn**) hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten. 
+* Verwenden Sie die **reference**-Funktion, und übergeben Sie den Ressourcennamen, um implizite Abhängigkeiten zwischen Ressourcen festzulegen, die eine Eigenschaft gemeinsam nutzen müssen. Fügen Sie keine explizite Abhängigkeit (**dependsOn**) hinzu, wenn Sie bereits eine implizite Abhängigkeit definiert haben. Dieser Ansatz reduziert das Risiko unnötiger Abhängigkeiten. 
 * Legen Sie eine Abhängigkeit fest, wenn eine Ressource nicht ohne Funktionen einer anderen Ressource **erstellt** werden kann. Legen Sie keine Abhängigkeit fest, wenn die Ressourcen erst nach der Bereitstellung interagieren.
-* Lassen Sie die Abhängigkeiten ohne explizites Festlegen überlappen. Beispiel: Ihr virtueller Computer hängt von einer virtuellen Netzwerkschnittstelle ab, die wiederum von einem virtuellen Netzwerk und einer öffentlichen IP-Adressen abhängt. Deshalb wird der virtuelle Computer nach allen drei Ressourcen bereitgestellt, aber nicht explizit festgelegt, dass er von allen drei Ressourcen abhängig ist. Dieser Ansatz verdeutlicht die Reihenfolge der Abhängigkeiten und vereinfacht spätere Änderungen an der Vorlage.
-* Falls vor der Bereitstellung ein Wert bestimmt werden kann, versuchen Sie, die Ressource ohne Abhängigkeit bereitzustellen. Beispiel: Wenn ein Konfigurationswert den Namen einer anderen Ressource benötigt, ist möglicherweise keine Abhängigkeit erforderlich. Dieser Tipp funktioniert nicht immer, da einige Ressourcen das Vorhandensein der anderen Ressource überprüfen. Wenn Sie einen Fehler erhalten, fügen Sie eine Abhängigkeit hinzu. 
+* Lassen Sie die Abhängigkeiten ohne explizites Festlegen überlappen. Beispiel: Ihr virtueller Computer hängt von einer virtuellen Netzwerkschnittstelle ab, die wiederum von einem virtuellen Netzwerk und einer öffentlichen IP-Adressen abhängt. Deshalb wird der virtuelle Computer nach allen drei Ressourcen bereitgestellt, es wird aber nicht explizit festgelegt, dass er von allen drei Ressourcen abhängig ist. Dieser Ansatz verdeutlicht die Reihenfolge der Abhängigkeiten und vereinfacht spätere Änderungen an der Vorlage.
+* Falls vor der Bereitstellung ein Wert bestimmt werden kann, versuchen Sie, die Ressource ohne Abhängigkeit bereitzustellen. Beispiel: Wenn ein Konfigurationswert den Namen einer anderen Ressource benötigt, ist möglicherweise keine Abhängigkeit erforderlich. Dieses Vorgehen funktioniert nicht immer, da einige Ressourcen überprüfen, ob die andere Ressource vorhanden ist. Wenn Sie einen Fehler erhalten, fügen Sie eine Abhängigkeit hinzu. 
 
-Resource Manager kennzeichnet Ringabhängigkeiten während der Überprüfung der Vorlage. Falls Sie einen Fehler erhalten, der besagt, dass eine Ringabhängigkeit vorhanden ist, bewerten Sie Ihre Vorlage, um festzustellen, ob bestimmte Abhängigkeiten nicht erforderlich sind und möglicherweise entfernt werden können. Wenn das Entfernen der Abhängigkeiten nicht funktioniert, können Sie Ringabhängigkeiten vermeiden, indem Sie einige Bereitstellungsvorgänge in untergeordnete Ressourcen verschieben, die nach den Ressourcen mit Ringabhängigkeit bereitgestellt werden. Nehmen wir beispielsweise an, Sie stellen zwei virtuelle Computer bereit, müssen aber Eigenschaften festlegen, die auf den jeweils anderen verweisen. Sie können diese in der folgenden Reihenfolge bereitstellen:
+Resource Manager kennzeichnet Ringabhängigkeiten während der Überprüfung der Vorlage. Falls Sie einen Fehler erhalten, der besagt, dass eine Ringabhängigkeit vorhanden ist, überprüfen Sie Ihre Vorlage, um festzustellen, ob bestimmte Abhängigkeiten nicht erforderlich sind und entfernt werden können. Wenn das Entfernen der Abhängigkeiten nicht funktioniert, können Sie Ringabhängigkeiten vermeiden, indem Sie einige Bereitstellungsvorgänge in untergeordnete Ressourcen verschieben, die nach den Ressourcen mit der Ringabhängigkeit bereitgestellt werden. Nehmen wir beispielsweise an, Sie stellen zwei virtuelle Computer bereit, müssen aber Eigenschaften festlegen, die auf den jeweils anderen verweisen. Sie können diese in der folgenden Reihenfolge bereitstellen:
 
 1. VM1
 2. VM2

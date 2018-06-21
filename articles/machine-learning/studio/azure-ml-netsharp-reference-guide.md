@@ -9,16 +9,18 @@ manager: hjerez
 editor: cgronlun
 ms.assetid: cfd1454b-47df-4745-b064-ce5f9b3be303
 ms.service: machine-learning
+ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 03/01/2018
-ms.openlocfilehash: 599dc158cde0508aa0836c7028a87ed708ba1d86
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2571420e3497e85ec1bf37b340015b061e8c91d4
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833912"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Erläuterungen zur Spezifikationssprache Net# für neuronale Netzwerke für Azure Machine Learning
 
@@ -261,7 +263,7 @@ Weitere Informationen zu Poolingschichten finden Sie in den folgenden Artikeln (
 
 ## <a name="response-normalization-bundles"></a>Antwortnormalisierungsbündel
 
-Die **Antwortnormalisierung** ist ein lokales Normalisierungsschema, das zuerst von Geoffrey Hinton et al. im Dokument [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (ImageNet-Klassifikation mit tiefen neuronalen Konvolutionsnetzwerken) eingeführt wurde. 
+**Antwortnormalisierung** ist ein lokales Normalisierungsschema, das von Geoffrey Hinton, et al, in diesem Dokument [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (ImageNet-Klassifizierung mit umfassenden neuronalen Konvolutionsnetzwerken) eingeführt wurde. 
 
 Die Antwortnormalisierung unterstützt die Generalisierung in neuronalen Netzwerken. Wenn ein Neuron auf einem sehr hohen Aktivierungsniveau auslöst, unterdrückt eine lokale Antwortnormalisierungsschicht das Aktivierungsniveau der umgebenden Neuronen. Hierfür werden drei Parameter (`α`, `β` und `k`) und eine Konvolutionsstruktur (oder „Nachbarschaftsform“) verwendet. Jedes Neuron in der Zielschicht **y** entspricht einem Neuron **x** in der Quellschicht. Das Aktivierungsniveau **y** wird durch die folgende Formel angegeben, wobei `f` das Aktivierungsniveau eines Neurons und `Nx` der Kernel (bzw. der Satz mit den Neuronen in der Umgebung von **x**) ist. Dies wird durch die folgende Konvolutionsstruktur definiert:  
 

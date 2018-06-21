@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1c8cee149e99786b58e4584e5e7b508b1040389d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 51b9f7bfd25da7dfd4ae9038f8dab70e9232b944
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724580"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -27,13 +28,17 @@ In diesem Artikel erfahren Sie, wie Sie Azure Table Storage-Bindungen in Azure F
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakete
+## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Die Tabellenseicher-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/).
+Die Tabellenspeicherbindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+
+Die Tabellenspeicherbindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs), Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Table).
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
@@ -104,6 +109,9 @@ public class TableStorage
     }
 }
 ```
+
+  > [!NOTE]
+  > `IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein [CloudTable paramName-Methodenparameter verwendet werden](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable), um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 ### <a name="input---c-script-example-1"></a>Eingabe: C#-Skriptbeispiel 1
 
@@ -382,8 +390,8 @@ Die Table Storage-Eingabebindung unterstützt folgende Szenarien:
 
   Verwenden Sie für den Zugriff auf die Tabellendaten einen Methodenparameter vom Typ `IQueryable<T> <paramName>`. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. Bei `T` muss es sich um einen Typ handeln, der `ITableEntity` implementiert oder von `TableEntity` abgeleitet wird. Für ggf. erforderliche Filtervorgänge können Sie `IQueryable`-Methoden verwenden. Die Eigenschaften `partitionKey`, `rowKey`, `filter` und `take` werden in diesem Szenario nicht verwendet.  
 
-> [!NOTE]
-> `IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein [CloudTable paramName-Methodenparameter verwendet werden](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable), um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen.
+  > [!NOTE]
+  > `IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein [CloudTable paramName-Methodenparameter verwendet werden](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable), um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 * **Lesen von Zeilen in JavaScript**
 
@@ -640,7 +648,7 @@ Die Table Storage-Ausgabebindung unterstützt folgende Szenarien:
 
   Verwenden Sie in C# und C#-Skripts einen Methodenparameter vom Typ `ICollector<T> paramName` oder `IAsyncCollector<T> paramName`, um auf die Ausgabetabellenentität zuzugreifen. In C#-Skripts ist `paramName` der Wert, der in der Eigenschaft `name` von *function.json* angegeben ist. `T` gibt das Schema der hinzuzufügenden Entitäten an. In der Regel leitet sich `T` von `TableEntity` ab oder implementiert `ITableEntity`, dies ist aber nicht zwingend erforderlich. Die Partitionsschlüssel- und Zeilenschlüsselwerte in *function.json* oder im Konstruktor des Attributs `Table` werden in diesem Szenario nicht verwendet.
 
-  Als Alternative kann beispielsweise ein `CloudTable paramName`-Methodenparameter verwendet werden, um unter Verwendung des Azure Storage SDKs in die Tabelle zu schreiben.
+  Als Alternative kann beispielsweise ein `CloudTable paramName`-Methodenparameter verwendet werden, um unter Verwendung des Azure Storage SDKs in die Tabelle zu schreiben. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
 * **Schreiben von Zeilen in JavaScript**
 

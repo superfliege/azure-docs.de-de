@@ -1,11 +1,11 @@
 ---
-title: "Hochverfügbarkeitskonfiguration mit STONITH für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation"
-description: "Herstellen von Hochverfügbarkeit für SAP HANA in Azure (große Instanzen) unter SUSE mit STONITH"
+title: Hochverfügbarkeitskonfiguration mit STONITH für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+description: Herstellen von Hochverfügbarkeit für SAP HANA in Azure (große Instanzen) unter SUSE mit STONITH
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: saghorpa
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d710fe24673c6ddc581d36e4f0cacdb750ff74f9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 344a48ff82bd93bf8dc9924e09399e72b9f88e2f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656362"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
 Dieses Dokument enthält detaillierte Schritt-für-Schritt-Anweisungen zur Konfiguration der Hochverfügbarkeit unter dem Betriebssystem SUSE mit dem STONITH-Gerät.
@@ -34,8 +35,8 @@ Um mit SUSE-Clustern die Hochverfügbarkeit zu konfigurieren, müssen folgende V
 - NTP (Zeitserver) ist eingerichtet.
 - Sie haben die aktuelle Version der SUSE-Dokumentation für die Hochverfügbarkeitskonfiguration gelesen und verstanden.
 
-### <a name="set-up-details"></a>Einzelheiten zur Konfiguration
-- In diesem Leitfaden wird die folgende Konfiguration verwendet:
+### <a name="setup-details"></a>Details zur Konfiguration
+In diesem Leitfaden wird folgendes Setup verwendet:
 - Betriebssystem: SLES 12 SP1 für SAP
 - Große HANA-Instanzen: 2 x S192 (vier Sockets, 2 TB)
 - HANA-Version: HANA 2.0 SP1
@@ -134,12 +135,12 @@ zypper in SAPHanaSR SAPHanaSR-doc
 ![zypperpatternSAPHANASR-doc.png](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3.2 Einrichten des Clusters
-3.2.1 Sie können den Cluster entweder mit dem Befehl *ha-cluster-init* oder dem Assistenten yast2 konfigurieren. In diesem Fall haben wir den Assistenten yast2 verwendet. Führen Sie diesen Schritt **nur auf dem primären Knoten** durch.
+3.2.1 Sie können den Cluster entweder mit dem Befehl *ha-cluster-init* oder dem Assistenten yast2 konfigurieren. In diesem Fall wird der Assistent „yast2“ verwendet. Führen Sie diesen Schritt **nur auf dem primären Knoten** durch.
 
 Navigieren Sie zu „yast2“ > „Hochverfügbarkeit“ > „Cluster“. ![yast-control-center.png](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
 ![yast-hawk-install.png](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
 
-Da wir bereits das halk2-Paket installiert haben, klicken Sie auf **Abbrechen**.
+Da das halk2-Paket bereits installiert ist, klicken Sie auf **Abbrechen**.
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
@@ -261,7 +262,7 @@ crm_mon
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurieren von Clustereigenschaften und -ressourcen 
 In diesem Abschnitt werden die Schritte zum Konfigurieren von Clusterressourcen beschrieben.
-In diesem Beispiel haben wir folgende Ressource eingerichtet. Der Rest kann (bei Bedarf) anhand des Hochverfügbarkeitsleitfadens für SUSE konfiguriert werden. Führen Sie die Konfiguration nur auf **einem der Knoten** aus. Führen Sie die folgende Konfiguration auf dem primären Knoten aus:
+In diesem Beispiel wurde die folgende Ressource eingerichtet. Der Rest kann (bei Bedarf) anhand des Hochverfügbarkeitsleitfadens für SUSE konfiguriert werden. Führen Sie die Konfiguration nur auf **einem der Knoten** aus. Führen Sie die folgende Konfiguration auf dem primären Knoten aus:
 
 - Cluster-Bootstrap
 - STONITH-Gerät
@@ -342,7 +343,7 @@ Beenden Sie nun den Pacemaker-Dienst auf **node2** und die Ressourcen, für die 
 
 
 ## <a name="9-troubleshooting"></a>9. Problembehandlung
-In diesem Abschnitt werden einige Fehlerszenarien beschrieben, die bei der Einrichtung auftreten können. Diese Probleme müssen nicht zwingend bei Ihnen auftreten.
+In diesem Abschnitt werden einige Fehlerzenarien beschrieben, die bei der Einrichtung auftreten können. Diese Probleme müssen nicht zwingend bei Ihnen auftreten.
 
 ### <a name="scenario-1-cluster-node-not-online"></a>Szenario 1: Der Clusterknoten ist nicht online.
 Wenn der Knoten im Cluster-Manager nicht als online angezeigt wird, können Sie Folgendes versuchen, um ihn wieder online zu schalten.
@@ -369,7 +370,7 @@ Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal
 Login to [iface: default, target: iqn.1992-08.com.netapp:hanadc11:1:t020, portal: 10.250.22.21,3260] successful.
 ```
 ### <a name="scenario-2-yast2-does-not-show-graphical-view"></a>Szenario 2: yast2 zeigt keine grafische Ansicht an.
-In diesem Dokument haben wir den grafischen yast2-Bildschirm zum Konfigurieren des Hochverfügbarkeitsclusters verwendet. Wenn yast2 nicht wie gezeigt mit dem grafischen Fenster geöffnet und stattdessen ein Qt-Fehler ausgelöst wird, führen Sie die folgenden Schritte durch. Wenn es mit dem grafischen Fenster geöffnet wird, können Sie die Schritte überspringen.
+In diesem Dokument wurde der grafische yast2-Bildschirm zum Konfigurieren des Hochverfügbarkeitsclusters verwendet. Wenn yast2 nicht wie gezeigt mit dem grafischen Fenster geöffnet und stattdessen ein Qt-Fehler ausgelöst wird, führen Sie die folgenden Schritte durch. Wenn es mit dem grafischen Fenster geöffnet wird, können Sie die Schritte überspringen.
 
 **Fehler**
 
@@ -422,7 +423,7 @@ Wählen Sie unter „Yast2“ > „Software“ > „Softwareverwaltung“ folgen
 
 - SAP HANA-Serverbasis
 - C/C++-Compiler und -Tools
-- Hohe Verfügbarkeit
+- Hochverfügbarkeit
 - SAP-Anwendungsserverbasis
 
 Auf dem folgenden Bildschirm werden die Schritte zum Installieren der Muster angezeigt.

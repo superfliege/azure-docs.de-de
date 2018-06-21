@@ -1,27 +1,27 @@
 ---
 title: Planen der Azure SSIS Integration Runtime | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure SSIS Integration Runtime mithilfe von Azure Automation und Data Factory.
+description: Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime mithilfe von Azure Automation und Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/01/2018
-ms.author: douglasl
-ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297793"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266820"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden der Azure SSIS Integration Runtime nach einem Zeitplan
-Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure SSIS Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
+Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS-Integration Runtime (IR) mithilfe von Azure Automation und Azure Data Factory. Das Ausführen einer Azure SSIS (SQL Server Integration Services) Integration Runtime (IR) ist mit einer Gebühr verbunden. Sie sollten die IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR andernfalls beenden. Sie können die Data Factory-Benutzeroberfläche oder Azure PowerShell zum [manuellen Starten oder Beenden einer Azure SSIS-IR](manage-azure-ssis-integration-runtime.md) verwenden.
 
 Sie können z.B. Webaktivitäten mit Webhooks zu einem Azure Automation-PowerShell-Runbook erstellen und diese mit einer Aktivität „SSIS-Paket ausführen“ verketten. Die Webaktivitäten können die Azure SSIS-IR rechtzeitig vor und nach dem Ausführen des Pakets starten und beenden. Weitere Informationen zur Aktivität „SSIS-Paket ausführen“ finden Sie unter [Ausführen eines SSIS-Pakets mit der SSIS-Aktivität in Azure Data Factory](how-to-invoke-ssis-package-ssis-activity.md).
 

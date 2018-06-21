@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: c1db81594f44f805cf50523b449af62d76099a08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: abc542f79d722f24ff6a6e9d96d12364ed76894b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771047"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34621182"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -490,12 +490,12 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
 3. Verwenden Sie das **New-AzureRmDataFactoryGateway** -Cmdlet, um wie folgt ein logisches Gateway zu erstellen:
 
     ```PowerShell
-    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
+    $MyDMG = New-AzureRmDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF �Description <desc>
     ```
     **Beispiel für eine Befehlszeile und Ausgabe**:
 
     ```
-    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzureRmDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF �Description �gateway for walkthrough�
 
     Name              : MyGateway
     Description       : gateway for walkthrough

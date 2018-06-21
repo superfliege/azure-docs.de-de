@@ -9,14 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/16/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 52b6489d14c016ce2efdd06614102a40651b94c0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700535"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +51,6 @@ Dies ist die JSON-Beispieldefinition einer Spark-Aktivität:
         },
         "rootPath": "adfspark\\pyFiles",
         "entryFilePath": "test.py",
-        "arguments": [ "arg1", "arg2" ],
         "sparkConfig": {
             "ConfigItem1": "Value"
         },
@@ -72,7 +72,7 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | linkedServiceName     | Name des mit HDInsight Spark verknüpften Diensts, in dem das Spark-Programm ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
 | SparkJobLinkedService | Der verknüpfte Azure Storage-Dienst, der die Datei sowie die Abhängigkeiten und Protokolle für den Spark-Auftrag enthält.  Wenn Sie für diese Eigenschaft keinen Wert angeben, wird der Speicher verwendet, der dem HDInsight-Cluster zugeordnet ist. Der Wert dieser Eigenschaft darf nur ein mit Azure Storage verknüpfter Dienst sein. | Nein        |
 | rootPath              | Der Azure-Blobcontainer und -ordner mit der Spark-Datei. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. Details zur Struktur dieses Ordners finden Sie im Abschnitt „Ordnerstruktur“ (nächster Abschnitt). | Ja      |
-| entryFilePath         | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja      |
+| entryFilePath         | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. Die Eingabedatei muss eine Python-Datei oder eine JAR-Datei sein. | Ja      |
 | className             | Die Java-/Spark-Hauptklasse der Anwendung.      | Nein        |
 | arguments             | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein        |
 | proxyUser             | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein        |

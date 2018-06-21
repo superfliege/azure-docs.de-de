@@ -1,24 +1,20 @@
 ---
-title: 'Azure Backup: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung | Microsoft-Dokumentation'
+title: 'Azure Backup: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung'
 description: Informationen zum Wiederherstellen von Dateien aus einem Wiederherstellungspunkt für virtuelle Azure-Computer
 services: backup
-documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
 keywords: Wiederherstellung auf Elementebene; Wiederherstellung von Dateien aus Azure-VM-Sicherung; Wiederherstellen von Dateien aus Azure-VM
-ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
 ms.service: backup
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
+ms.topic: conceptual
 ms.date: 12/20/2017
-ms.author: pullabhk;markgal
-ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: pullabhk
+ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737017"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -31,7 +27,7 @@ Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-
 
 ## <a name="mount-the-volume-and-copy-files"></a>Bereitstellen des Volumes und Kopien von Dateien
 
-Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt wechseln Sie zum virtuellen Computer und wählen den Wiederherstellungspunkt. 
+Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt wechseln Sie zum virtuellen Computer und wählen den gewünschten Wiederherstellungspunkt aus. 
 
 1. Melden Sie sich beim [Azure-Portal](http://portal.Azure.com) an, und klicken Sie im linken Menü auf **Virtuelle Computer**. Wählen Sie in der Liste der virtuellen Computer den gewünschten virtuellen Computer aus, um sein Dashboard zu öffnen. 
 
@@ -43,7 +39,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/file-recovery-blade.png)
 
-4. Wählen Sie im Dropdownmenü  **Wiederherstellungspunkt auswählen**  den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
+4. Wählen Sie im Dropdownmenü **Wiederherstellungspunkt auswählen** den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
 
 5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen. 
 

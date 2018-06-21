@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: jingwang
-ms.openlocfilehash: d7dea9a3d9eabdc9e4cdf21e6e584b745d22a54e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808722"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,8 +40,8 @@ Dieser MySQL-Connector unterstützt insbesondere MySQL **Version 5.1 oder höher
 
 Führen Sie zum Verwenden dieses MySQL-Connectors diese Schritte aus:
 
-- Einrichten einer selbstgehosteten Integrationslaufzeit. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details.
-- Installieren des [MySQL-Connectors bzw. von NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) Version 6.6.5 oder höher auf dem Computer mit der Integrationslaufzeit Dieser 32-Bit-Treiber ist mit 64-Bit-IR kompatibel.
+- Einrichten einer selbstgehosteten Integrationslaufzeit. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
+- Installieren des [MySQL-Connectors bzw. von NET für Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) (Version 6.6.5 bis 6.10.7) auf dem Computer mit der Integrationslaufzeit. Dieser 32-Bit-Treiber ist mit 64-Bit-IR kompatibel.
 
 > [!TIP]
 > Wenn der Fehler „Fehler bei Authentifizierung, da die Gegenstelle den Transportdatenstrom geschlossen hat.“ auftritt, sollten Sie ein Upgrade für den MySQL-Connector/Net auf eine höhere Version durchführen.

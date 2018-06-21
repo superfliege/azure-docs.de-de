@@ -1,24 +1,20 @@
 ---
 title: Durchführen eines Firmwareupdates mit Azure IoT Hub (.NET/:NET) | Microsoft-Dokumentation
 description: Erfahren Sie, wie die Geräteverwaltung in Azure IoT Hub verwendet wird, um ein Firmwareupdate zu initiieren. Sie können das Azure IoT-Geräte-SDK für .NET verwenden, um eine simulierte Geräte-App zu implementieren, und das Azure IoT-Dienst-SDK, um eine Service-App zu implementieren, die das Firmwareupdate auslöst.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.devlang: csharp
+ms.topic: conceptual
 ms.date: 10/19/2017
-ms.author: v-jamebr;dobett
-ms.openlocfilehash: 50bb2ada9cf848bdcfb4f958272ff918996bf411
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: dobett
+ms.openlocfilehash: cd669a9585ac5aecf935202a04065a828a2174be
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736754"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>Initiieren eines Firmwareupdates mithilfe der Geräteverwaltung (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
@@ -345,7 +341,7 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 > [!NOTE]
 > Diese Methode löst die Ausführung des simulierten Updates als **Aufgabe** aus und antwortet dann sofort auf den Methodenaufruf, wobei der Dienst informiert wird, dass das Firmwareupdate gestartet wurde. Aktualisierungsstatus und -abschluss werden über die gemeldeten Eigenschaften des Gerätezwillings an den Dienst gesendet. Wir antworten beim Starten des Updates auf den Methodenaufruf, anstatt auf seinen Abschluss zu warten. Dies hat folgende Gründe:
 > * Ein realer Updatevorgang dauert wahrscheinlich länger als der Timeout für den Methodenaufruf.
-> * Ein realer Updatevorgang erfordert wahrscheinlich einen Neustart, wodurch diese App neu gestartet wird und dann das **MetodRequest**-Objekt nicht mehr verfügbar ist. (Das Aktualisieren gemeldeter Eigenschaften ist jedoch auch nach einem Neustart möglich.) 
+> * Ein realer Updatevorgang erfordert wahrscheinlich einen Neustart, wodurch diese App neu gestartet wird und dann das **MethodRequest**-Objekt nicht mehr verfügbar ist. (Das Aktualisieren gemeldeter Eigenschaften ist jedoch auch nach einem Neustart möglich.) 
 
 14. Fügen Sie abschließend der **Main**-Methode folgenden Code hinzu, um die Verbindung mit dem IoT Hub zu öffnen und den Listener der Methode zu initialisieren:
    

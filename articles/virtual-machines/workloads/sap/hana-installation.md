@@ -4,29 +4,29 @@ description: Vorgehensweise zum Installieren von SAP HANA in Azure (große Insta
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: timlt
+manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/01/2016
+ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 768d9c31cdf019bf73a9d3b3a239c537c72725f6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778595"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763447"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)
 
 Hier sind einige wichtige Definitionen angegeben, die Sie kennen sollten, bevor Sie diesen Leitfaden lesen. In [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) wurden zwei unterschiedliche Klassen von HANA-Einheiten (große Instanzen) eingeführt:
 
-- S72, S72m, S144, S144m, S192 und S192m, die wir als „Typ I“-Klassen von SKUs bezeichnen.
-- S384, S384m, S384xm, S576m, S768m und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
+- S72, S72m, S144, S144m, S192, S192m und S192xm, die wir als „Typ I“-Klassen von SKUs bezeichnen.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm und S960m, die wir als „Typ II-Klasse“ von SKUs bezeichnen.
 
 Der Klassenspezifizierer wird in der gesamten Dokumentation zu HANA (große Instanzen) verwendet, um auf unterschiedliche Funktionen und Anforderungen basierend auf SKUs für HANA (große Instanzen) zu verweisen.
 

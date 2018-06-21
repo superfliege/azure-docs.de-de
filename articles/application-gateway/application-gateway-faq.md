@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 3/29/2018
+ms.date: 5/21/2018
 ms.author: victorh
-ms.openlocfilehash: 37d069b1be86d59d0b1f79c382dc494b067cb934
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32309469"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699902"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -83,6 +83,11 @@ Nein, Application Gateway unterstützt keine statischen öffentlichen IP-Adresse
 **F: Unterstützt Application Gateway mehrere öffentliche IP-Adressen auf dem Gateway?**
 
 Nur eine öffentliche IP-Adresse wird auf einer Application Gateway-Instanz unterstützt.
+
+**F: Wie groß soll ich mein Subnetz für Application Gateway auslegen?**
+
+Application Gateway nutzt eine private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP-Konfiguration konfiguriert ist. Darüber hinaus reserviert Azure die ersten vier IP-Adressen sowie die letzte IP-Adresse in jedem Subnetz für die interne Verwendung.
+Wenn Application Gateway beispielsweise auf drei Instanzen festgelegt und keine private Front-End-IP-Konfiguration vorhanden ist, ist eine Größe von mindestens /29 für das Subnetz erforderlich. In diesem Fall verwendet Application Gateway drei IP-Adressen. Wenn Sie drei Instanzen und eine IP-Adresse für die private Front-End-IP-Konfiguration haben, ist eine Größe von mindestens /28 für das Subnetz erforderlich, da vier IP-Adressen erforderlich sind.
 
 **F: Werden X-Forwarded-For-Header von Application Gateway unterstützt?**
 
@@ -156,7 +161,7 @@ Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Applicati
 
 * Zulassen von eingehenden Anforderungen aus allen Quellen an den Ports 65503 65534 für die [Back-End-Integrität-Kommunikation](application-gateway-diagnostics.md).
 
-* Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md).
+* Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md).
 
 * Blockieren des gesamten übrigen eingehenden Datenverkehrs mit einer Alle-verweigern-Regel.
 
@@ -184,6 +189,21 @@ Es gibt keine Ausfallzeiten, da Instanzen auf Upgrade- und Fehlerdomänen vertei
 
 Ja. Sie können den Verbindungsausgleich konfigurieren, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Dadurch können vorhandene Verbindungen weiterhin an ihr vorheriges Ziel gesendet werden, bis die jeweilige Verbindung geschlossen wird oder ein konfigurierbares Zeitlimit abläuft. Beachten Sie, dass der Verbindungsausgleich nur auf die Beendigung der aktuellen aktiven Verbindungen wartet. Application Gateway kennt den Status der Anwendungssitzung nicht.
 
+**F: In welchen Größen ist Application Gatewaxy verfügbar?**
+
+Application Gateway wird derzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
+
+Sie können bis zu 50 Application Gateways pro Abonnement erstellen, und jedes Application Gateway kann jeweils bis zu 10 Instanzen aufweisen. Jedes Anwendungsgateway kann aus 20 HTTP-Listenern bestehen. Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+
+Die folgende Tabelle zeigt einen durchschnittlichen Leistungsdurchsatz für jede Anwendungsgatewayinstanz mit aktivierter SSL-Auslagerung:
+
+| Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
+| --- | --- | --- | --- |
+| 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
+| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
+
+> [!NOTE]
+> Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.
 
 **F: Kann ich Instanzgröße ohne Unterbrechung von mittel zu groß ändern?**
 

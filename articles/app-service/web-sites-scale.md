@@ -1,8 +1,8 @@
 ---
 title: Zentrales Hochskalieren einer App in Azure | Microsoft Docs
-description: "Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen."
+description: Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: mollybos
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2016
 ms.author: cephalin
-ms.openlocfilehash: f6244e3f739424be169f1ea117500159bd5e4254
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c07105a34f6778fcd62f6f1bc1d3930f6a8bf173
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714934"
 ---
 # <a name="scale-up-an-app-in-azure"></a>Zentrales Hochskalieren einer App in Azure
 
@@ -50,7 +51,7 @@ Informationen zur Preisgestaltung und zu den Funktionen der einzelnen App Servic
 2. Klicken Sie auf der Seite Ihrer App Service-App auf **Alle Einstellungen** und anschließend auf **Zentral hochskalieren**.
    
     ![Navigieren Sie, um Ihre Azure-App zentral hochzuskalieren.][ChooseWHP]
-3. Wählen Sie Ihren Tarif, und klicken Sie auf **Auswählen**.
+3. Wählen Sie Ihren Tarif aus, und klicken Sie auf **Übernehmen**.
    
     Auf der Registerkarte **Benachrichtigungen** wird in grüner Schrift der Text **ERFOLGREICH** angezeigt, nachdem der Vorgang abgeschlossen wurde.
 

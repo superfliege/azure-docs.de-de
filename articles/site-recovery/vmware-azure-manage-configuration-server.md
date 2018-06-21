@@ -2,43 +2,50 @@
 title: Verwalten des Konfigurationsservers für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen vorhandenen Konfigurationsserver für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery verwalten.
 services: site-recovery
-author: AnoopVasudavan
+author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/05/2018
-ms.author: anoopkv
-ms.openlocfilehash: b5ba316b21e0c31e0ecc99fc2d57f81b0f24c086
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.date: 06/04/2018
+ms.author: raynew
+ms.openlocfilehash: 64f5f2105a9048d649503b0790231676182a4c4f
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737502"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Verwalten des Konfigurationsservers für virtuelle VMware-Computer
 
 Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden. Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Konfigurationsservers nach dessen Bereitstellung zusammengefasst.
 
 
+
 ## <a name="modify-vmware-settings"></a>Ändern von VMware-Einstellungen
 
-Ändern Sie die Einstellungen für den VMware-Server, mit dem der Konfigurationsserver eine Verbindung herstellt.
+Sie können wie folgt auf den Konfigurationsserver zugreifen:
+    - Melden Sie sich bei der VM an, auf der er bereitgestellt wird, und starten Sie den Azure Site Recovery Configuration Manager über die Desktopverknüpfung.
+    - Alternativ können Sie remote über **https://*ConfigurationServerName*/:44315 /** auf den Konfigurationsserver zugreifen. Melden Sie sich mit Administratoranmeldeinformationen an.
+   
+### <a name="modify-vmware-server-settings"></a>Ändern von VMware-Servereinstellungen
 
-1. Melden Sie sich auf dem Computer an, auf dem der Konfigurationsserver ausgeführt wird.
-2. Starten Sie den Azure Site Recovery-Konfigurations-Manager über die Desktopverknüpfung. Öffnen Sie alternativ die [diesen Link](https://configuration-server-name/IP:44315).
-3. Wählen Sie **vCenter-Server/vSPhere ESXi-Server verwalten** aus, und führen Sie dann folgende Schritte aus:
+1. Um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen, wählen Sie nach dem Anmelden **vCenter-Server/vSphere ESXi-Server hinzufügen** aus.
+2. Geben Sie die Eigenschaften ein, und wählen Sie dann **OK** aus.
 
-    * Um dem Konfigurationsserver einen anderen VMware-Server zuzuordnen, klicken Sie auf **vCenter-Server/vSphere ESXi-Server hinzufügen**. Geben Sie die Informationen zum Server an.
 
-    * Wenn Sie die Anmeldeinformationen für die Verbindung mit dem VMware-Server für die automatische Ermittlung von VMware-VMs ändern möchten, klicken Sie auf **Bearbeiten**. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
+### <a name="modify-credentials-for-automatic-discovery"></a>Ändern der Anmeldeinformationen für die automatische Ermittlung
+
+1. Wenn Sie die Anmeldeinformationen für die Verbindung mit dem VMware-Server für die automatische Ermittlung von VMware-VMs ändern möchten, klicken Sie nach dem Anmelden auf **Bearbeiten**.
+2. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
 
     ![Ändern von VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
+
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Ändern der Anmeldeinformationen für die Installation von Mobility Service
 
 Ändern Sie die Anmeldeinformationen für die automatische Installation von Mobility Service auf VMware-VMs, die Sie für die Replikation aktivieren möchten.
 
-1. Melden Sie sich auf dem Computer an, auf dem der Konfigurationsserver ausgeführt wird.
-2. Starten Sie den Site Recovery-Konfigurations-Manager über die Desktopverknüpfung. Öffnen Sie alternativ [diesen Link](https://configuration-server-name/IP:44315).
-3. Klicken Sie auf **VM-Anmeldeinformationen verwalten**, und geben Sie die neuen Anmeldeinformationen an. Klicken Sie auf **OK**, um die Einstellungen zu aktualisieren.
+1. Wählen Sie nach der Anmeldung **VM-Anmeldeinformationen verwalten** aus.
+2. Geben Sie die neuen Anmeldeinformationen ein, und klicken Sie dann auf **OK**.
 
     ![Ändern der Anmeldeinformationen für Mobility Service](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
 
@@ -46,15 +53,15 @@ Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recover
 
 Ändern Sie die Proxyeinstellungen, die vom Konfigurationsservercomputer für den Internetzugriff in Azure verwendet werden. Ändern Sie die Einstellungen auf beiden Computern, wenn Sie zusätzlich zum Standardprozessserver, der auf dem Konfigurationsservercomputer ausgeführt wird, über einen weiteren Prozessservercomputer verfügen.
 
-1. Melden Sie sich auf dem Computer an, auf dem der Konfigurationsserver ausgeführt wird.
-2. Starten Sie den Site Recovery-Konfigurations-Manager über die Desktopverknüpfung. Öffnen Sie alternativ [diesen Link](https://configuration-server-name/IP:44315).
-3. Klicken Sie auf **Konnektivität verwalten**, und aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern**, um die Einstellungen zu aktualisieren.
+1. Wählen Sie nach der Anmeldung beim Konfigurationsserver **Konnektivität verwalten** aus.
+2. Aktualisieren Sie die Proxywerte. Klicken Sie auf **Speichern**, um die Einstellungen zu aktualisieren.
 
 ## <a name="add-a-network-adapter"></a>Hinzufügen eines Netzwerkadapters
 
-Die OVF-Vorlage (Open Virtualization Format) stellt die Konfigurationsserver-VM mit einem einzelnen Netzwerkadapter bereit. Sie können [der VM einen zusätzlichen Adapter hinzufügen](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), müssen diesen Schritt aber vor der Registrierung des Konfigurationsservers im Tresor durchführen.
+Die OVF-Vorlage (Open Virtualization Format) stellt die Konfigurationsserver-VM mit einem einzelnen Netzwerkadapter bereit.
 
-Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Registrieren Sie anschließend den Server im Tresor.
+- Sie können [der VM einen zusätzlichen Adapter hinzufügen](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), müssen diesen Schritt aber vor der Registrierung des Konfigurationsservers im Tresor durchführen.
+- Nach dem Registrieren des Konfigurationsservers im Tresor fügen Sie einen Adapter in den Eigenschaften des virtuellen Computers hinzu. Dann müssen Sie den Server erneut im Tresor registrieren.
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Erneutes Registrieren eines Konfigurationsservers im selben Tresor
@@ -65,7 +72,7 @@ Sie können den Konfigurationsserver bei Bedarf im selben Tresor erneut registri
   1. Öffnen Sie im Tresor **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
   2. Klicken Sie unter **Server** auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
   3. Melden Sie sich auf dem Konfigurationsservercomputer an.
-  4. Öffnen Sie in **%ProgramData%\ASR\home\svagent\bin** die Datei **cspsconfigtool.exe**.
+  4. Öffnen Sie in **%ProgramData%\ASR\home\svsystems\bin** die Datei **cspsconfigtool.exe**.
   5. Klicken Sie auf der Registerkarte **Tresorregistrierung** auf **Durchsuchen**, und suchen Sie die Datei mit den Anmeldeinformationen für den Tresor, die Sie heruntergeladen haben.
   6. Geben Sie bei Bedarf die Proxyserverdetails an. Klicken Sie anschließend auf **Registrieren**.
   7. Öffnen Sie als Administrator ein PowerShell-Eingabefenster, und führen Sie den folgenden Befehl aus:
@@ -88,15 +95,27 @@ Links zu Updaterollups zum Aktualisieren aller Versionen des Konfigurationsserve
 
 Aktualisieren Sie den Server wie folgt:
 
+1. Gehen Sie im Tresor zu **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**.
+2. Wenn ein Update verfügbar ist, wird ein Link in der Spalte **Agent-Version** angezeigt.
+
+    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update2.png)
+
 1. Laden Sie die Datei mit dem Update-Installer auf den Konfigurationsserver herunter.
-2. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
-3. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird.
-4. Klicken Sie auf **OK**, um den Vorgang zu bestätigen und das Upgrade durchzuführen. 
+
+    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update1.png)
+
+4. Doppelklicken Sie auf die Datei, um das Installationsprogramm auszuführen.
+2. Das Installationsprogramm erkennt die aktuelle Version, die auf dem Computer ausgeführt wird. Klicken Sie auf **Ja**, um das Upgrade zu starten. 
+3. Nach Abschluss des Upgrades wird die Serverkonfiguration überprüft.
+
+    ![Aktualisieren](./media/vmware-azure-manage-configuration-server/update3.png)
+
+4. Klicken Sie auf **Fertig stellen**, um das Installationsprogramm zu schließen.
 
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>Löschen oder Aufheben der Registrierung eines Konfigurationsservers
 
-1. Deaktivieren Sie die Option [Schutz deaktivieren](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für alle virtuellen Computer unter dem Konfigurationsserver.
+1. Wählen Sie [Schutz deaktivieren](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) für alle virtuellen Computer unter dem Konfigurationsserver.
 2. [Heben Sie die Zuordnung von allen Replikationsrichtlinien zum Konfigurationsserver auf](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy), oder [löschen](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) Sie sie.
 3. [Löschen](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) Sie alle vCenter-Server/vSphere-Hosts, die dem Konfigurationsserver zugeordnet sind.
 4. Öffnen Sie im Tresor **Site Recovery-Infrastruktur** > **Konfigurationsserver**.

@@ -1,11 +1,11 @@
 ---
-title: "Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps"
-description: "Erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für eine Web-App in Azure App Service kaufen."
+title: Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
+description: Erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für eine Web-App in Azure App Service kaufen.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
 ms.workload: web
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16a6d8e34bdec6e597c5f04faf421d387a877bff
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714883"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
@@ -57,17 +58,17 @@ Scrollen Sie im linken Navigationsbereich der App-Seite zum Abschnitt **Einstell
 
 ![Menü „Zentral hochskalieren“](./media/app-service-web-tutorial-custom-domain/scale-up-menu.png)
 
-Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Stellen Sie sicher, dass sich die App nicht im Tarif **Free** befindet. Benutzerdefinierte DNS-Einträge werden im Tarif **Free** nicht unterstützt. 
+Der aktuelle Tarif der App wird durch einen blauen Rahmen hervorgehoben. Vergewissern Sie sich, dass sich die App nicht im Tarif **F1** befindet. Benutzerdefiniertes DNS wird im Tarif **F1** nicht unterstützt. 
 
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
-Wenn für den App Service-Plan nicht der Tarif **Free** gilt, können Sie die Seite **Choose your pricing tier** (Preisstufe auswählen) schließen und zu [Buy the domain](#buy-the-domain) (Domäne kaufen) springen.
+Wenn sich der App Service-Plan nicht im Tarif **F1** befindet, schließen Sie die Seite **Zentral hochskalieren**, und fahren Sie mit [Domäne kaufen](#buy-the-domain) fort.
 
 ### <a name="scale-up-the-app-service-plan"></a>Zentrales Hochskalieren des App Service-Plans
 
-Wählen Sie einen der kostenpflichtigen Tarife aus (**Shared**, **Basic**, **Standard** oder **Premium**). 
+Wählen Sie einen der kostenpflichtigen Tarife aus (**D1**, **B1**, **B2**, **B3** oder einen beliebigen Tarif aus der Kategorie **Produktion**). Klicken Sie auf **Alle Optionen anzeigen**, um weitere Optionen anzuzeigen.
 
-Klicken Sie auf **Auswählen**.
+Klicken Sie auf **Anwenden**.
 
 ![Überprüfen des Tarifs](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

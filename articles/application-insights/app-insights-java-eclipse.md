@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure Application Insights mit Java in Eclipse | Microsoft Docs
+title: Erste Schritte mit Azure Application Insights mit Java in Eclipse | Microsoft-Dokumentation
 description: Verwenden Sie das Eclipse-Plug-In zum Hinzufügen einer Leistungs- und Nutzungsüberwachung zu Ihrer Java-Website mit Application Insights
 services: application-insights
 documentationcenter: java
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3cddfb918f98dfd41e84a6cc5473df6e26d1a482
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795559"
 ---
 # <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Erste Schritte mit Application Insights mit Java in Eclipse
 Das Application Insights SDK sendet Telemetriedaten aus Ihrer Java-Anwendung, damit Sie die Nutzung und Leistung analysieren können. Das Eclipse-Plug-In für Application Insights installiert das SDK automatisch in Ihrem Projekt, damit Sie ohne Konfiguration Telemetriedaten sowie eine API verwenden können, mit der Sie benutzerdefinierte Telemetrie programmieren können.   
@@ -32,6 +33,8 @@ Sie benötigen Folgendes:
 * Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/).
 * [Eclipse IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/), Indigo oder höher.
 * Windows 7 oder höher oder Windows Server 2008 oder höher
+
+Wenn Sie das Spring-Framework bevorzugen, lesen Sie den Leitfaden zum [Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="install-the-sdk-on-eclipse-one-time"></a>Installation des SDK in Eclipse (einmalig)
 Sie müssen diesen Schritt nur einmal pro Computer durchführen. Bei diesem Schritt wird ein Toolkit installiert, mit dem dann das SDK jedem dynamischen Webprojekt hinzugefügt werden kann.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: ecfe3fb6db6b0fb0561e31b3c8aa70b74785b807
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eeb5fd765a6cad10be5706162566605feaa8af4c
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781162"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802560"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
@@ -67,11 +67,7 @@ Sie können für den Lastenausgleich vieler der in der Liste oben aufgeführten 
 
 ## <a name="service-endpoints-for-azure-services"></a>Dienstendpunkte für Azure-Dienste
 
-Einige Azure-Dienste können nicht in virtuellen Netzwerken bereitgestellt werden. Sie können ggf. den Zugriff auf einige der Dienstressourcen auf bestimmte Subnetze des virtuellen Netzwerks beschränken, indem Sie einen virtuellen Netzwerkdienstendpunkt aktivieren. Informieren Sie sich über [Dienstendpunkte von virtuellen Netzwerken](virtual-network-service-endpoints-overview.md).
-
-Derzeit werden Dienstendpunkte für die folgenden Dienste unterstützt: 
-- **Azure Storage:** [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- **Azure SQL-Datenbank:** [Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Einige Azure-Dienste können nicht in virtuellen Netzwerken bereitgestellt werden. Sie können ggf. den Zugriff auf einige der Dienstressourcen auf bestimmte Subnetze des virtuellen Netzwerks beschränken, indem Sie einen virtuellen Netzwerkdienstendpunkt aktivieren. Erfahren Sie mehr über [Dienstendpunkte von virtuellen Netzwerken](virtual-network-service-endpoints-overview.md) und die Dienste, für die Dienstendpunkte aktiviert werden können.
 
 ## <a name="virtual-network-integration-across-multiple-azure-services"></a>Integration virtueller Netzwerke für mehrere Azure-Dienste
 

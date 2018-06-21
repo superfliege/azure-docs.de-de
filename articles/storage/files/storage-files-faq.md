@@ -5,23 +5,23 @@ services: storage
 documentationcenter: ''
 author: RenaShahMSFT
 manager: aungoo
-editor: tysonn
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/04/2017
+ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 67884df9e38906ba7dc426b63275941dba2b8130
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e93e55161d965210e260e1664b330f2d77ff75c6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210530"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737808"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung von Azure File Sync mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
@@ -189,6 +189,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="afs-os-support"></a>
 **Kann ich Azure File Sync entweder mit Windows Server 2008 R2, Linux oder meinem NAS-Gerät (Network Attached Storage) verwenden?**  
     Gegenwärtig unterstützt Azure File Sync ausschließlich Windows Server 2016 und Windows Server 2012 R2. Zurzeit sind keine anderen Optionen geplant. Je nach Kundennachfrage sind wir aber offen dafür, weitere Plattformen zu unterstützen. Teilen Sie uns über [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) mit, für welche Plattformen Sie Unterstützung von uns wünschen.
+
+* <a id="afs-tiered-files-out-of-endpoint"></a>
+**Warum sind mehrstufige Dateien außerhalb des Serverendpunkt-Namespaces vorhanden?**  
+    Vor der Agent-Version 3 von Azure File Sync blockierte Azure File Sync die Verschiebung mehrstufiger Dateien außerhalb des Serverendpunkts, aber auf demselben Volume wie der Serverendpunkt. Kopiervorgänge, Verschiebungen nicht mehrstufiger Dateien und Verschiebungen mehrstufiger Dateien in andere Volumes waren hiervon nicht betroffen. Der Grund für dieses Verhalten war die implizite Annahme, dass Datei-Explorer und andere Windows-APIs Verschiebungen auf dem gleichen Volume durchführen, die (fast) unmittelbare Umbenennungsvorgänge sind. Dies bedeutet, dass Datei-Explorer oder andere Methoden zum Verschieben (z.B. über die Befehlszeile oder PowerShell) scheinbar nicht mehr reagieren, während Azure File Sync die Daten aus der Cloud abruft. Beginnend mit [Azure File Sync-Agent-Version 3.0.12.0](storage-files-release-notes.md#agent-version-30120) lässt Azure File Sync zu, dass Sie eine mehrstufige Datei außerhalb des Serverendpunkts verschieben. Wir vermeiden die bereits erwähnten negativen Auswirkungen, indem wir zulassen, dass die mehrstufige Datei außerhalb des Serverendpunkts als mehrstufige Datei vorhanden ist, und dann die Datei im Hintergrund abrufen. Dies bedeutet, dass Verschiebungen auf dem gleichen Volume unmittelbar sind, und wir erledigen die gesamte Arbeit zum Abrufen der Datei auf den Datenträger, nachdem der Verschiebevorgang abgeschlossen ist. 
+
+* <a id="afs-do-not-delete-server-endpoint"></a>
+**Es besteht ein Problem mit Azure File Sync auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?**  
+    [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="security-authentication-and-access-control"></a>Sicherheit, Authentifizierung und Zugriffssteuerung
 * <a id="ad-support"></a>

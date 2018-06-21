@@ -1,24 +1,25 @@
 ---
 title: Bereitstellen von Azure Files | Microsoft-Dokumentation
-description: "Informationen über sämtliche Schritte zum Bereitstellen von Azure Files."
+description: Informationen über sämtliche Schritte zum Bereitstellen von Azure Files.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 05/22/2018
 ms.author: wgries
-ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 193a403a64cea31a2e4cea21a5838be71af8dd53
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737349"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -62,7 +63,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
 
         ![Screenshot des Assistenten „Neues einfaches Volume“ in der Datenträgerverwaltungs-MMC](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 
-4. Erstellen Sie die Dataset-CSV-Datei. Die Dataset-CSV-Datei ist eine Zuordnung des Pfads der lokalen Daten lokal zur gewünschten Azure-Dateifreigabe, in die die Daten kopiert werden sollen. Beispielsweise wird mit der folgenden Dataset-CSV-Datei eine lokale Dateifreigabe (F:\shares\scratch) einer Azure-Dateifreigabe (MyAzureFileShare) zugeordnet:
+4. Erstellen Sie die Dataset-CSV-Datei. Die Dataset-CSV-Datei ist eine Zuordnung des Pfads der lokalen Daten zur gewünschten Azure-Dateifreigabe, in die die Daten kopiert werden sollen. Beispielsweise wird mit der folgenden Dataset-CSV-Datei eine lokale Dateifreigabe (F:\shares\scratch) einer Azure-Dateifreigabe (MyAzureFileShare) zugeordnet:
     
     ```
     BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -91,7 +92,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
     > [!Warning]  
     > Ändern Sie die Daten auf den Festplatten oder die Journaldatei nicht mehr, nachdem Sie die Festplattenvorbereitung abgeschlossen haben.
 
-7. [Erstellen Sie einen Importauftrag](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-an-export-job).
+7. [Erstellen Sie einen Importauftrag](../common/storage-import-export-data-to-files.md#step-2-create-an-import-job).
     
 ### <a name="robocopy"></a>Robocopy
 Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalten ist. Robocopy kann zum Übertragen von Daten in Azure Files verwendet werden, indem die Dateifreigabe lokal bereitgestellt wird. Anschließend wird der bereitgestellte Speicherort als Ziel des Robocopy-Befehls verwendet. Die Verwendung von Robocopy ist ganz einfach:
@@ -102,7 +103,7 @@ Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalt
     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
     ```
 
-2. Verwenden Sie `robocopy` auf der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben:
+2. Verwenden Sie `robocopy` in der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben:
 
     ```
     robocopy <path-to-local-share> <path-to-azure-file-share> /E /Z /MT:32
@@ -114,7 +115,7 @@ Robocopy ist ein bekanntes Kopiertool, das in Windows und Windows Server enthalt
 AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azure Files sowie Azure Blob Storage entwickelt wurde, wobei durch einfache Befehle eine optimale Leistung erzielt wird. Die Verwendung von AzCopy ist ganz einfach:
 
 1. Laden Sie die [neueste Version von AzCopy für Windows](http://aka.ms/downloadazcopy) oder [Linux](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#download-and-install-azcopy) herunter.
-2. Verwenden Sie `azcopy` auf der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben. Die Syntax für Windows lautet wie folgt: 
+2. Verwenden Sie `azcopy` in der Befehlszeile, um Daten in die Azure-Dateifreigabe zu verschieben. Die Syntax für Windows lautet wie folgt: 
 
     ```
     azcopy /Source:<path-to-local-share> /Dest:https://<storage-account>.file.core.windows.net/<file-share>/ /DestKey:<storage-account-key> /S
@@ -132,7 +133,7 @@ AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azur
 Um eine lokale Dateifreigabe zu ersetzen, sollten Sie die Freigaben auf den Computern vorab bereitzustellen, auf denen sie verwendet werden sollen. Dies kann automatisch für eine Liste von Computern erfolgen.
 
 > [!Note]  
-> Um eine Azure-Dateifreigabe bereitzustellen, müssen Sie den Speicherkontoschlüssel als Kennwort verwenden, daher sollten die Bereitstellung nur in vertrauenswürdigen Umgebungen durchführen. 
+> Um eine Azure-Dateifreigabe einzubinden, müssen Sie den Speicherkontoschlüssel als Kennwort verwenden, daher sollten Sie die Einbindung nur in vertrauenswürdigen Umgebungen durchführen. 
 
 ### <a name="windows"></a>Windows
 Mit PowerShell können Sie den Bereitstellungsbefehl auf mehreren PCs ausführen. Im folgenden Beispiel wird `$computers` manuell aufgefüllt, Sie können die Liste der Computer für die Bereitstellung aber auch automatisch generieren. Beispielsweise können Sie diese Variable mit Ergebnissen aus Active Directory auffüllen.

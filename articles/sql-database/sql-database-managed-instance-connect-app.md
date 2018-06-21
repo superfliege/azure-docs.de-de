@@ -5,15 +5,16 @@ ms.service: sql-database
 author: srdjan-bozovic
 manager: craigg
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1eecd28d5e7043acae5cfd52edf93e8d301bd31e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bea1dc88d66717717cdeacbc8504f5df7e37ba04
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34647832"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -39,10 +40,10 @@ Es gibt zwei Optionen zum Herstellen einer Verbindung mit VNETs:
 - [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md) 
 - VNET-zu-VNET-VPN-Gateway ([Azure-Portal](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md), [Azure CLI](../vpn-gateway/vpn-gateway-howto-vnet-vnet-cli.md)) 
  
-Dabei ist die Option des Peerings vorzuziehen, da beim Peering das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen erkennbaren Unterschied der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. Das VNET-Peering beschränkt sich auf die Netzwerke in derselben Region. Dennoch ist das regionsübergreifende Peering in einigen Regionen als Vorschauversion aktiviert.  
+Dabei ist die Option des Peerings vorzuziehen, da beim Peering das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen erkennbaren Unterschied der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. VNET-Peering ist auf die Netzwerke in der gleichen Region beschränkt.  
  
 > [!IMPORTANT]
-> Regionsübergreifend erstellte VNET-Peerings bieten gegebenenfalls nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Peerings in einer allgemein verfügbaren Version. VNET-Peerings weisen unter Umständen eingeschränkte Funktionen auf und stehen gegebenenfalls nicht in allen Azure-Regionen zur Verfügung. Aktuelle Hinweise zur Verfügbarkeit und zum Status dieses Features finden Sie auf der Seite  [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network). 
+> Das VNET-Peering-Szenario für die verwaltete Instanz ist aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in der gleichen Region beschränkt. 
 
 ## <a name="connect-an-on-premises-application"></a>Herstellen einer Verbindung mit einer lokalen Anwendung 
 

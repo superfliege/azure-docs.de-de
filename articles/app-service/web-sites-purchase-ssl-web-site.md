@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 63592a1a1c20dd25e5eea66d501f26efeaf0cf21
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807457"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
@@ -196,13 +197,24 @@ Klicken Sie auf die Schaltfläche **Erneute Schlüsselerstellung**, um den Proze
 
 Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierungsstelle ein neues Zertifikat ausgestellt.
 
+## <a name="renew-the-certificate"></a>Erneuern von Zertifikaten
+
+Um die automatische Verlängerung zu aktivieren, klicken Sie auf der Zertifikatverwaltungsseite auf **Einstellungen für die automatische Verlängerung**. Klicken Sie nacheinander auf **Ein** und **Speichern**.
+
+![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+
+Um das Zertifikat manuell zu verlängern, klicken Sie stattdessen auf **Manuelle Verlängerung**.
+
+> [!NOTE]
+> Das verlängerte Zertifikat ist nicht automatisch an Ihre App gebunden, unabhängig davon, ob es manuell oder automatisch verlängert wurde. Informationen dazu, wie Sie es an Ihre App binden, finden Sie unter [Erneuern von Zertifikaten](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+
 <a name="notrenewed"></a>
-## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>Warum wird mein SSL-Zertifikat nicht automatisch verlängert?
+## <a name="why-is-my-certificate-not-auto-renewed"></a>Warum wird mein Zertifikat nicht automatisch verlängert?
 
 Wenn Ihr SSL-Zertifikat für die automatische Verlängerung konfiguriert ist, aber nicht automatisch verlängert wird, liegt möglicherweise eine ausstehende Domänenüberprüfung vor. Beachten Sie Folgendes: 
 
-- Für GoDaddy (wird zum Generieren von App Service-Zertifikaten verwendet) ist alle drei Jahre eine Überprüfung der Domäne erforderlich. Der Domänenadministrator erhält alle drei Jahre eine E-Mail mit dem Hinweis, die Domäne zu überprüfen. Wenn E-Mail oder Domäne nicht überprüft werden, kann das App Service-Zertifikat nicht automatisch verlängert werden. 
-- Alle App Service-Zertifikate, die vor dem 31. März 2017 ausgestellt wurden, erfordern bei der nächsten Verlängerung eine erneute Überprüfung der Domäne (selbst wenn die automatische Verlängerung des Zertifikats aktiviert ist). Dies ist das Ergebnis einer GoDaddy-Richtlinienänderung. Überprüfen Sie Ihre E-Mail, und führen Sie diese einmalige Domänenüberprüfung durch, um die automatische Verlängerung des App Service-Zertifikats fortzusetzen. 
+- Für GoDaddy (wird zum Generieren von App Service-Zertifikaten verwendet) ist alle zwei Jahre eine Überprüfung der Domäne erforderlich. Der Domänenadministrator erhält alle drei Jahre eine E-Mail mit dem Hinweis, die Domäne zu überprüfen. Wenn E-Mail oder Domäne nicht überprüft werden, kann das App Service-Zertifikat nicht automatisch verlängert werden. 
+- Aufgrund einer Änderung in der GoDaddy-Richtlinie erfordern alle App Service-Zertifikate, die vor dem 1. März 2018 ausgestellt wurden, bei der nächsten Verlängerung eine erneute Überprüfung der Domäne (selbst wenn für das Zertifikat die automatische Verlängerung aktiviert ist). Überprüfen Sie Ihre E-Mail, und führen Sie diese einmalige Domänenüberprüfung durch, um die automatische Verlängerung des App Service-Zertifikats fortzusetzen. 
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648124"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215523"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält die Hauptunterschiede und vorgesehenen Verwendungs
 
 | | Verwendungsszenario | 
 | --- | --- | 
-|Verwaltete SQL-Datenbank-Instanz |Schlagen Sie Kunden, die eine große Anzahl von selbst erstellten oder über ISVs bereitgestellten Anwendungen lokal oder per IaaS mit möglichst geringem Migrationsaufwand migrieren möchten, eine verwaltete Instanz vor. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](/sql/dma/dma-overview) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. |
+|Verwaltete SQL-Datenbank-Instanz |Schlagen Sie Kunden, die eine große Anzahl von selbst erstellten oder über ISVs bereitgestellten Anwendungen lokal oder per IaaS mit möglichst geringem Migrationsaufwand migrieren möchten, eine verwaltete Instanz vor. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. |
 |Azure SQL-Datenbank (Einzelinstanz oder Pool) |**Elastische Pools**: Schlagen Sie Kunden, die neue mehrinstanzenfähige SaaS-Anwendungen entwickeln oder bewusst ihre vorhandenen lokalen Anwendungen in mehrinstanzenfähige SaaS-Anwendungen transformieren, Pools für elastische Datenbanken vor. Dieses Modell bietet folgende Vorteile: <br><ul><li>Umstellung des Geschäftsmodells vom Verkauf von Lizenzen zum Verkauf von Dienstabonnements (für ISVs)</li></ul><ul><li>Einfache und sichere Mandantenisolation</li></ul><ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul><ul><li>Potenzial für horizontales Hochskalieren ohne feste Begrenzung</li></ul>**Einzelne Datenbanken**: Schlagen Sie Kunden, die andere neue Anwendungen als mehrinstanzenfähige SaaS-Anwendungen entwickeln, deren Workload stabil und vorhersagbar ist, einzelne Datenbanken vor. Dieses Modell bietet folgende Vorteile:<ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul>  <ul><li>Vorhersagbare Leistung für die einzelnen Datenbanken</li></ul>|
 |Virtueller SQL-IaaS-Computer|Schlagen Sie Kunden, die das Betriebssystem oder den Datenbankserver anpassen müssen, und Kunden, die spezifische Anforderungen an die Ausführung von Drittanbieteranwendungen neben SQL Server (auf dem gleichen virtuellen Computer) haben, virtuelle SQL-Computer und SQL-IaaS als optimale Lösung vor.|
 |||
@@ -186,11 +186,10 @@ Azure Database Migration Service ist ein vollständig verwalteter Dienst, der di
 
 Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können direkt in der verwalteten Instanz gespeichert werden. Um eine vorhandene SQL-­Datenbank in einer verwalteten Instanz wiederherzustellen, haben Sie folgende Möglichkeiten:
 
-- Verwenden Sie [Data Migration Service (DMS)](/sql/dma/dma-overview). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
+- Verwenden Sie [Data Migration Service (DMS)](../dms/dms-overview.md). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
 - Verwenden Sie den [T-SQL RESTORE-Befehl](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Ein Tutorial zum Wiederherstellen der Standardsicherungsdatei für die Wide World Importers-Datenbank finden Sie unter [Wiederherstellen einer Sicherungsdatei in einer verwalteten Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md). In diesem Tutorial wird gezeigt, wie eine Sicherungsdatei in den Azure Blob Storage hochgeladen und mit einem SAS-Schlüssel (Shared Access Signature) geschützt wird.
   - Weitere Informationen zur Wiederherstellung über eine URL finden Sie unter [Native RESTORE FROM URL-Option](sql-database-managed-instance-migrate.md#native-restore-from-url).
-- [Importieren einer BACPAC-Datei in eine neue Azure SQL-Datenbank](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Unterstützte SQL-Features 
 

@@ -15,12 +15,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: end-user
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 571fa77a22effacbeb495a4c05089c515be9d3d4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 97dec128c162cd2793227adc9cb321564382743a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367982"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824811"
 ---
 # <a name="updates-to-the-sign-in-experience-for-online-services"></a>Updates für den Anmeldevorgang für Onlinedienste
 
@@ -38,7 +38,7 @@ Sehen Sie sich die vorhandene Benutzeroberfläche im Vergleich zur neuen Benutze
 
 Die Änderung wird nach folgendem Zeitplan umgesetzt:
 
-| Zeitraum | Änderung |
+| Zeitraum | Change |
 |-----------|--------|
 | Anfang Mai | Auf der vorhandenen Anmeldeseite wird ein Benachrichtigungsbanner angezeigt. Hier können Sie sich über die Änderungen informieren und sich darauf vorbereiten. |
 | Mitte Mai   | Das Benachrichtigungsbanner enthält einen Link, über den Sie sich eine Vorschau der aktualisierten Benutzeroberfläche ansehen können. Sie können während der Vorschau einen Link verwenden, der Sie zurück zur vorhandenen Oberfläche führt. |

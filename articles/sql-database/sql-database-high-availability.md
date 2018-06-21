@@ -5,16 +5,16 @@ services: sql-database
 author: anosov1960
 manager: craigg
 ms.service: sql-database
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: e541513890d357587e5c1e792165123c2beb5d96
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 27f0c49913b424a6bd77b7cb6f7d6e97598c2157
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32777014"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839808"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hochverfügbarkeit und Azure SQL-Datenbank
 Seit der Einführung des PaaS-Angebots von Azure SQL-Datenbank hat Microsoft seinen Kunden zugesichert, Hochverfügbarkeit (High Availability, HA) direkt in den Dienst zu integrieren. So sind auf Kundenseite weder Maßnahmen oder Entscheidungen rund um HA erforderlich, noch muss spezielle Logik implementiert werden. Microsoft bietet Kunden eine Vereinbarung zum Servicelevel (SLA) und behält die vollständige Kontrolle über die Konfiguration und den Betrieb des Hochverfügbarkeitssystems. Die SLA zur Hochverfügbarkeit gilt für eine SQL-Datenbank in einer Region und bietet keinen Schutz vor Totalausfällen einer Region aufgrund von Faktoren, die außerhalb der Kontrolle von Microsoft liegen (z.B. Naturkatastrophen, Kriege, Terroranschläge, Aufstände, staatliche Maßnahmen, Netzwerk- oder Geräteausfälle außerhalb der Rechenzentren von Microsoft, u.a. am Kundenstandort oder zwischen dem Kundenstandort und dem Microsoft-Rechenzentrum).
@@ -79,7 +79,7 @@ Standardmäßig werden die Quorumssatzreplikate für die Konfigurationen mit lok
 Da der zonenredundante Quorumssatz über Replikate in verschiedenen Rechenzentren mit einiger Entfernung dazwischen verfügt, kann sich durch die erhöhte Netzwerklatenz die Commitzeit erhöhen und dadurch die Leistung einiger OLTP-Workloads beeinträchtigt werden. Sie können jederzeit zur Einzelzonenkonfiguration zurückkehren, indem Sie die zonenredundante Einstellung deaktivieren. Dieser Prozess ist datenintensiv und ähnelt dem SLO-Update (Service Level Objective). Am Ende des Prozesses wird die Datenbank oder der Pool aus einem zonenredundanten Ring zum Ring einer einzelnen Zone migriert (oder umgekehrt).
 
 > [!IMPORTANT]
-> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden nur auf den Dienstebenen „Premium“ oder „Unternehmenskritisch“ (Vorschau) unterstützt. In der Public Preview-Phase werden Sicherungen und Überwachungsdatensätze im RA-GRS-Speicher gespeichert und sind daher möglicherweise bei einem Ausfall der gesamten Zone nicht automatisch verfügbar. 
+> Zonenredundante Datenbanken und Pools für elastische Datenbanken werden derzeit nur für den Diensttarif „Premium“ unterstützt. In der Public Preview-Phase werden Sicherungen und Überwachungsdatensätze im RA-GRS-Speicher gespeichert und sind daher möglicherweise bei einem Ausfall der gesamten Zone nicht automatisch verfügbar. 
 
 Die zonenredundante Version der Hochverfügbarkeitsarchitektur wird im folgenden Diagramm veranschaulicht:
  

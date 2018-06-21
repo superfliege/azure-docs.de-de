@@ -17,11 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: a8844ea44bf604944c5980b0d41ab5d01a30b876
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725444"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -29,13 +30,17 @@ Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages"></a>Pakete
+## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
-Der Trigger mit Timer wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/).
+Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Timers/).
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-[!INCLUDE [functions-package-versions](../../includes/functions-package-versions.md)]
+## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+
+Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/).
+
+[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
 ## <a name="example"></a>Beispiel
 
@@ -214,6 +219,8 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"5,8,10 * * * * *"</nobr>|um hh:mm:05, hh:mm:08 und hh:mm:10, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:05:00, hh:10:00, hh:15:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
 
+Um Monate oder Tage anzugeben, können Sie eine aus drei Buchstaben bestehende Abkürzung anstelle von numerischen Werten verwenden. Verwenden Sie z. B. „Jan“ für Januar und „Sun“ für Sonntag.
+
 ### <a name="cron-examples"></a>CRON-Beispiele
 
 Die folgenden Beispiele zeigen CRON-Ausdrücke, die Sie für den Trigger mit Timer in Azure Functions verwenden können.
@@ -272,7 +279,7 @@ Wenn Sie ein Speicherkonto für mehrere Funktionen-Apps verwenden, stellen Sie s
 
 ## <a name="retry-behavior"></a>Wiederholungsverhalten
 
-Im Gegensatz zum Warteschlangentrigger führt der Trigger mit Timer nach dem Fehlschlagen einer Funktion keine Wiederholung aus. Wenn eine Funktion fehlschlägt, wird sie erst beim nächsten Termin im Zeitplan erneut aufgerufen.
+Im Gegensatz zum Warteschlangentrigger führt der Trigger mit Timer nach dem Fehlschlagen einer Funktion keine Wiederholung aus. Wenn eine Funktion fehlerhaft ist, wird sie erst beim nächsten Termin im Zeitplan erneut aufgerufen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

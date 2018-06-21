@@ -11,11 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 2780438e715b6f6cb04d820c02d09f14e14b480f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6a098f43819bb6581b2c5978fbcc4a378a8514c1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638499"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Weiterleiten von Azure Media Services-Ereignissen an einen benutzerdefinierten Webendpunkt mithilfe der CLI
 
@@ -25,7 +26,7 @@ Ereignisse werden üblicherweise an einen Endpunkt gesendet, der auf das Ereigni
 
 Nach Abschluss der Schritte in diesem Artikel sehen Sie, dass die Ereignisdaten an einen Endpunkt gesendet wurden.
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an, und starten Sie **CloudShell**, um CLI-Befehle auszuführen, wie in den nächsten Schritten gezeigt.
 
@@ -185,3 +186,7 @@ az group delete --name <resource_group_name>
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Reagieren auf Ereignisse](reacting-to-media-services-events.md)
+
+## <a name="see-also"></a>Weitere Informationen
+
+[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

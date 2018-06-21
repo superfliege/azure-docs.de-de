@@ -1,11 +1,11 @@
 ---
-title: "Ausführen eines Cassandra-Clusters unter Linux in Azure aus Node.js"
-description: "Ausführen eines Cassandra-Clusters unter Linux auf virtuellen Azure-Computern aus einer Node.js-Anwendung."
+title: Ausführen eines Cassandra-Clusters unter Linux in Azure aus Node.js
+description: Ausführen eines Cassandra-Clusters unter Linux auf virtuellen Azure-Computern aus einer Node.js-Anwendung.
 services: virtual-machines-linux
 documentationcenter: nodejs
 author: craigshoemaker
 manager: routlaw
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 30de1f29-e97d-492f-ae34-41ec83488de0
 ms.service: virtual-machines-linux
@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 00e42a00dffd1be37073f10f6ff7bff619fdee85
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 5d800daa2589effe342cb2bf8b1d59d7bfce6d8c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652837"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Ausführen eines Cassandra-Clusters unter Linux in Azure mit Node.js
 
@@ -77,7 +78,7 @@ Cassandra-Clusterkonfiguration mit einer Region:
 | Replikationsstrategie |NetworkTopologyStrategy Weitere Informationen finden Sie unter [Datenreplikation](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) in der Cassandra-Dokumentation. |Verstehen der Bereitstellungstopologie und Platzieren von Replikaten auf Knoten, damit sich letztlich nicht alle Replikate im gleichen Rack befinden. |
 | Snitch |GossipingPropertyFileSnitch. Weitere Informationen finden Sie unter [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) in der Cassandra-Dokumentation. |NetworkTopologyStrategy verwendet ein Snitch-Konzept, um die Topologie zu verstehen. GossipingPropertyFileSnitch bietet eine bessere Steuerung bei der Zuordnung der einzelnen Knoten zum Rechenzentrum und Rack. Der Cluster verwendet dann gossip, um diese Informationen zu verteilen. Dies ist viel einfacher in einer dynamischen IP-Einstellung im Vergleich zu PropertyFileSnitch. |
 
-**Azure-Überlegungen zum Cassandra-Cluster**: Microsoft Azure Virtual Machines verwendet Azure-Blobspeicher für die Dauerhaftigkeit von Datenträgern. Azure Storage speichert für eine hohe Zuverlässigkeit drei Replikate der Datenträger. Dies bedeutet, dass jede Datenzeile, die in eine Tabelle Cassandra eingefügt wurde, bereits in drei Replikaten gespeichert ist. Daher ist die Datenkonsistenz bereits beachtet, selbst wenn der Replikationsfaktor (RF) gleich „1“ ist. Das Hauptproblem beim Replikationsfaktor 1 besteht darin, dass für die Anwendung schon dann eine Ausfallzeit auftritt, wenn nur ein Cassandra-Knoten ausfällt. Wenn ein Knoten jedoch aufgrund von durch Azure Fabric Controller erkannten Problemen (z. B. Hardware- oder Systemsoftwarefehlern) ausfällt, wird ein neuer Knoten an seiner Stelle mithilfe derselben Speicherlaufwerke bereitgestellt. Die Bereitstellung eines neuen Knotens zum Ersetzen des alten Knotens kann einige Minuten in Anspruch nehmen.  Für geplante Wartungsaktivitäten (z. B. Änderungen am Gastbetriebssystem, Cassandra-Upgrades und Anwendungsänderungen) führt Azure Fabric Controller parallele Upgrades der Knoten im Cluster aus.  Durch parallele Upgrades können ebenfalls mehrere Knoten gleichzeitig ausfallen. Der Cluster kann daher kurzzeitig für mehrere Partitionen ausfallen. Die Daten gehen wegen der integrierten Redundanz von Azure Storage jedoch nicht verloren.  
+**Azure-Überlegungen zum Cassandra-Cluster:** Microsoft Azure Virtual Machines verwendet Azure Blob Storage für die Dauerhaftigkeit von Datenträgern. Azure Storage speichert für eine hohe Zuverlässigkeit drei Replikate der Datenträger. Dies bedeutet, dass jede Datenzeile, die in eine Tabelle Cassandra eingefügt wurde, bereits in drei Replikaten gespeichert ist. Daher ist die Datenkonsistenz bereits beachtet, selbst wenn der Replikationsfaktor (RF) gleich „1“ ist. Das Hauptproblem beim Replikationsfaktor 1 besteht darin, dass für die Anwendung schon dann eine Ausfallzeit auftritt, wenn nur ein Cassandra-Knoten ausfällt. Wenn ein Knoten jedoch aufgrund von durch Azure Fabric Controller erkannten Problemen (z. B. Hardware- oder Systemsoftwarefehlern) ausfällt, wird ein neuer Knoten an seiner Stelle mithilfe derselben Speicherlaufwerke bereitgestellt. Die Bereitstellung eines neuen Knotens zum Ersetzen des alten Knotens kann einige Minuten in Anspruch nehmen.  Für geplante Wartungsaktivitäten (z. B. Änderungen am Gastbetriebssystem, Cassandra-Upgrades und Anwendungsänderungen) führt Azure Fabric Controller parallele Upgrades der Knoten im Cluster aus.  Durch parallele Upgrades können ebenfalls mehrere Knoten gleichzeitig ausfallen. Der Cluster kann daher kurzzeitig für mehrere Partitionen ausfallen. Die Daten gehen wegen der integrierten Redundanz von Azure Storage jedoch nicht verloren.  
 
 Für Systeme, die in Azure bereitgestellt werden und die keine Hochverfügbarkeit benötigen (z. B. ungefähr 99,9%, diese entspricht 8,76 Stunden/Jahr, Details finden Sie unter [Hochverfügbarkeit](http://en.wikipedia.org/wiki/High_availability)), können Sie für die Ausführung ggf. RF=1 und Konsistenzebene=ONE verwenden.  Für Anwendungen mit Anforderungen für Hochverfügbarkeit können RF=3 und Konsistenzebene=QUORUM den Ausfall eines der Knoten für eines der Replikate tolerieren. RF=1 in herkömmlichen (z. B. lokalen) Bereitstellungen kann aufgrund möglicher Datenverluste nicht verwendet werden, die durch Probleme wie etwa Datenträgerfehler verursacht werden.   
 
@@ -355,7 +356,7 @@ Das oben beschriebene Verfahren kann über das Azure-Portal ausgeführt werden. 
         #Tested with Azure Powershell - November 2014
         #This powershell script deployes a number of VMs from an existing image inside an Azure region
         #Import your Azure subscription into the current Powershell session before proceeding
-        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. crate a list of VMs from the template
+        #The process: 1. create Azure Storage account, 2. create virtual network, 3.create the VM template, 2. create a list of VMs from the template
 
         #fundamental variables - change these to reflect your subscription
         $country="us"; $region="west"; $vnetName = "your_vnet_name";$storageAccount="your_storage_account"
@@ -498,7 +499,7 @@ Erstellen Sie zwei lokale Netzwerke mit den folgenden Details:
 ### <a name="step-3-map-local-network-to-the-respective-vnets"></a>Schritt 3: Zuordnen des "lokalen" Netzwerks zu den entsprechenden VNETs
 Wählen Sie im Azure-Portal jedes VNet aus, klicken Sie auf „Konfigurieren“, aktivieren Sie „Eine Verbindung mit dem lokalen Netzwerk herstellen“, und wählen Sie dann die lokalen Netzwerke mit den folgenden Details aus:
 
-| Virtuelles Netzwerk | Lokales Netzwerk |
+| Virtual Network | Lokales Netzwerk |
 | --- | --- |
 | hk-vnet-west-us |hk-lnet-map-to-east-us |
 | hk-vnet-east-us |hk-lnet-map-to-west-us |
@@ -585,7 +586,7 @@ Sie sollten die gleiche Anzeige wie für die Region "West" erhalten:
 Führen Sie weitere Einfügevorgänge aus, und beobachten Sie, dass diese in die Region "USA (West)" des Clusters repliziert werden.
 
 ## <a name="test-cassandra-cluster-from-nodejs"></a>Testen des Cassandra-Clusters aus Node.js
-Mithilfe eines der zuvor auf der „web“-Ebene erstellten virtuellen Linux-Computers führen Sie nun ein einfaches Node.js-Skript zum Lesen der zuvor eingefügten Daten aus.
+Mithilfe eines der zuvor auf der „Web“-Ebene erstellten virtuellen Linux-Computers führen Sie nun ein einfaches Node.js-Skript zum Lesen der zuvor eingefügten Daten aus.
 
 **Schritt 1: Installieren von Node.js und des Cassandra-Clients**
 

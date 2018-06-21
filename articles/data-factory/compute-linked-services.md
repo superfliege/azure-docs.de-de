@@ -8,14 +8,15 @@ manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: 6f9f0f9a9bab7e6865ae5a48552ac702ae2bf6fb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824930"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -37,8 +38,6 @@ Bei dieser Konfiguration wird die Compute-Umgebung vollständig vom Azure Data F
 
 > [!NOTE]
 > Die bedarfsgesteuerte Konfiguration wird gegenwärtig nur für Azure HDInsight-Cluster unterstützt.
->
-> 
 
 ## <a name="azure-hdinsight-on-demand-linked-service"></a>Bedarfsgesteuerter verknüpfter Azure HDInsight-Dienst
 Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen bedarfsgesteuerten HDInsight-Cluster erstellen. Der Cluster wird in derselben Region erstellt wie das Speicherkonto (Eigenschaft „linkedServiceName“ in JSON), das dem Cluster zugeordnet ist. Das Speicherkonto muss ein allgemeines Azure Storage-Standardkonto sein. 
@@ -48,11 +47,14 @@ Beachten Sie die folgenden **wichtigen** Hinweise zum bedarfsgesteuerten verknü
 * Der bedarfsgesteuerte HDInsight-Cluster wird in Ihrem Azure-Abonnement erstellt. Der Cluster wird in Ihrem Azure-Portal angezeigt, wenn der Cluster ausgeführt wird. 
 * Die Protokolle für Aufträge, die in einem bedarfsgesteuerten HDInsight-Cluster ausgeführt werden, werden in das mit dem HDInsight-Cluster verknüpfte Speicherkonto kopiert. Die in Ihrer Definition des verknüpften Diensts definierten Elemente clusterUserName, clusterPassword, clusterSshUserName und clusterSshPassword werden während des Lebenszyklus des Clusters zur Anmeldung bei dem Cluster für die eingehende Problembehandlung verwendet. 
 * Ihnen wird nur die Zeit in Rechnung gestellt, in der der HDInsight-Cluster verfügbar ist und Aufträge ausführt.
+* Sie können eine Skriptaktion nicht mit dem bedarfsgesteuerten verknüpften Azure HDInsight-Dienst verwenden. Wenn Sie beispielsweise andere Abhängigkeiten installieren müssen, sollten Sie Azure Automation verwenden, um ein PowerShell-Skript für Folgendes auszuführen:  
+  a. Erstellen Sie den HDInsight-Cluster.  
+  b. Führen Sie eine Skriptaktion aus, um z.B. andere Abhängigkeiten zu installieren.  
+  c. Erstellen Sie eine Data Factory-Pipeline.  
+  d. Löschen Sie den Cluster.  
 
 > [!IMPORTANT]
 > Die bedarfsgesteuerte Bereitstellung eines Azure HDInsight-Clusters dauert üblicherweise **20 Minuten** oder länger.
->
-> 
 
 ### <a name="example"></a>Beispiel
 Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsight verknüpften Dienst. Der Data Factory-Dienst erstellt automatisch einen **Linux-basierten** HDInsight-Cluster zur Verarbeitung der angeforderten Aktivität. 

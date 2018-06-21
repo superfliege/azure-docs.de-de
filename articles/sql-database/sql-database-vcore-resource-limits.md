@@ -6,15 +6,15 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.topic: article
-ms.date: 05/15/2018
+ms.topic: conceptual
+ms.date: 05/31/2018
 ms.author: carlrab
-ms.openlocfilehash: d225af55a705d56a94bb0e8dcfcc938b64f3633a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 324f9f35de37c717d57e46413cd881dce785f4fd
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210799"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737662"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-preview"></a>Einschränkungen des auf virtuellen Kernen basierenden Einkaufsmodells für Azure SQL-Datenbank (Vorschau)
 
@@ -50,11 +50,11 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48| GP_Gen5_80|
+|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|
-|V-Kerne|2|4|8|16|24|32|48|80|
-|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Maximale Protokollgröße|307|307|461|614|1229|1229|1229|1229|
 |tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4800|8.000|
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|1|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
@@ -90,28 +90,28 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|3|3|3|3|3|3|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
-|V-Kerne|2|4|8|16|24|32|48|80|
-|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|68,104|131,64|
+|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|52,22|131,64|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maximale Protokollgröße|307|307|307|307|614|1229|1229|1229|
 |tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
-|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|120000|200.000
-|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4800|8.000|
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|100.000|200.000
+|Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
-|Anzahl von Replikaten|1|1|1|1|1|1|1|1|
+|Anzahl von Replikaten|3|3|3|3|3|3|3|3|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
@@ -175,11 +175,11 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_48|GP_Gen5_80|
+|Leistungsstufe|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
-|V-Kerne|2|4|8|16|24|32|48|80|
-|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
@@ -188,10 +188,10 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
-|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|2.520|3360|5.040|8.400
+|Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|2.520|3360|4.200|8.400
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximale Pooldichte|100|200|500|500|500|500|500|500|
-|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|1|
 |Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
@@ -218,30 +218,32 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
 |Maximale Pooldichte|N/V|50|100|100|100|100|
 |Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|
+|Anzahl von Replikaten|3|3|3|3|3|3|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||
 
 #### <a name="generation-5-compute-platform"></a>Computeplattform der 5. Generation
-|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_48|BC_Gen5_80|
+|Leistungsstufe|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Hardwaregeneration|5|5|5|5|5|5|5|5|
-|V-Kerne|2|4|8|16|24|32|48|80|
-|Arbeitsspeicher (GB)|11|22|44|88|132|176|264|440|
+|V-Kerne|2|4|8|16|24|32|40|80|
+|Arbeitsspeicher (GB)|11|22|44|88|132|176|220|440|
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
-|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|68,104|131,64|
+|In-Memory-OLTP-Speicher (GB)|1,571|3,142|6,284|15,768|25,252|37,936|52,22|131,64|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maximale Protokollgröße|307|307|307|307|614|1229|1229|1229|
 |tempdb-Größe (Datenbank)|64|128|256|384|384|384|384|384|
-|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|120000|200.000
+|Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|100.000|200.000
 |Max. gleichzeitige Worker (Anforderungen)|210|420|840|1680|2.520|3360|5.040|8.400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
 |Maximale Pooldichte|N/V|50|100|100|100|100|100|100|
-|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 48, 80|
-|Multi-AZ|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
+|Minimale/maximale click-stop-Ereignisse in Pools für elastische Datenbanken|N/V|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, 0,5, 1, 2, 4, 8, 16, 24, 32|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Anzahl von Replikaten|3|3|3|3|3|3|3|3|
+|Multi-AZ|N/V|N/V|N/V|N/V|N/V|N/V|N/V|N/V|
 |Horizontale Leseskalierung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
 |||

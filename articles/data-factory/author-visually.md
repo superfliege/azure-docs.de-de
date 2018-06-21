@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/27/2018
+ms.topic: conceptual
+ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: a226402f16f98c830c1e1cf34653b8f6513f06b4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265287"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -46,8 +47,8 @@ Das visuelle Erstellen mit VSTS Git-Integration unterstützt Quellcodeverwaltung
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurieren eines VSTS Git-Repositorys mit Azure Data Factory
 Es gibt zwei Methoden zum Konfigurieren eines VSTS Git-Repositorys mit einer Data Factory.
 
-<a name="method1"></a>
-#### <a name="configuration-method-1-lets-get-started-page"></a>Konfigurationsmethode 1: Seite „Erste Schritte“
+#### <a name="method1"></a> Konfigurationsmethode 1: Seite „Erste Schritte“
+
 Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
 
 ![Konfigurieren eines VSTS-Coderepositorys](media/author-visually/configure-repo.png)
@@ -62,11 +63,11 @@ Im Bereich werden die folgenden Einstellungen für den VSTS-Coderepository angez
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des VSTS Coderepositorys.<br/>**Hinweis**: GitHub wird derzeit nicht unterstützt. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | <your tenant name> |
-| **Visual Studio Team Services-Konto** | Ihr VSTS-Kontoname. Den VSTS-Kontonamen finden Sie unter `https://{account name}.visualstudio.com`. Sie können sich [bei Ihrem VSTS-Konto anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | \<Ihr Kontoname> |
-| **Projektname** | Ihr VSTS-Projektname. Den VSTS-Projektnamen finden Sie unter `https://{account name}.visualstudio.com/{project name}`. | \<Ihr VSTS-Projektname> |
-| **Repositoryname** | Der Name Ihres VSTS-Coderepositorys. VSTS-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt größer wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | \<Name Ihres VSTS-Coderepositorys> |
-| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die VSTS-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | \<Name Ihres Kollaborationsbranchs> |
-| **Stammordner** | Ihr Stammordner im Branch für die VSTS-Kollaboration. | \<Name Ihres Stammordners> |
+| **Visual Studio Team Services-Konto** | Ihr VSTS-Kontoname. Den VSTS-Kontonamen finden Sie unter `https://{account name}.visualstudio.com`. Sie können sich [bei Ihrem VSTS-Konto anmelden](https://www.visualstudio.com/team-services/git/), um auf Ihr Visual Studio-Profil zuzugreifen und Ihre Repositorys und Projekte anzuzeigen. | <your account name> |
+| **Projektname** | Ihr VSTS-Projektname. Den VSTS-Projektnamen finden Sie unter `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **Repositoryname** | Der Name Ihres VSTS-Coderepositorys. VSTS-Projekte enthalten Git-Repositorys zum Verwalten Ihres Quellcodes, wenn Ihr Projekt größer wird. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Projekt befindet. | <your VSTS code repository name> |
+| **Collaboration branch** (Kollaborationsbranch) | Ihr Branch für die VSTS-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies `master`. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten. | <your collaboration branch name> |
+| **Stammordner** | Ihr Stammordner im Branch für die VSTS-Kollaboration. | <your root folder name> |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas** für die Erstellung in ein VSTS Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurationsmethode 2: UX-Canvas für die Erstellung
@@ -75,6 +76,14 @@ Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach I
 Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den Beschreibungen zu <a href="#method1">Konfigurationsmethode 1</a>.
 
 ![Konfigurieren der Repositoryeinstellungen für Erstellung in der UX-Canvas](media/author-visually/configure-repo-2.png)
+
+#### <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
+
+Um zu einem anderen Git-Repository zu wechseln, verwenden Sie das Symbol oben rechts auf der Data Factory-Übersichtseite, wie im folgenden Screenshot gezeigt. Wenn das Symbol nicht angezeigt wird, löschen Sie den lokalen Browsercache. Wählen Sie das Symbol aus, um die Zuordnung zum aktuellen Repository zu entfernen.
+
+Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren. Dann können Sie vorhandene Data Factory-Ressourcen in das neue Repository importieren.
+
+![Entfernen Sie die Zuordnung zum aktuellen Git-Repository.](media/author-visually/remove-repo.png)
 
 ### <a name="use-version-control"></a>Verwenden von Versionskontrolle
 Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von an der Codebasis vorgenommenen Änderungen. Quellcodeverwaltung ist ein unverzichtbares Tool für Projekte, an denen mehrere Entwickler arbeiten.

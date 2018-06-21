@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager-Vorlagenfunktionen – Ressourcen | Microsoft Docs
+title: Azure Resource Manager-Vorlagenfunktionen – Ressourcen | Microsoft-Dokumentation
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 services: azure-resource-manager
 documentationcenter: na
@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/22/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ba4c9d9cd5f8a43be0f97053c02798e3b84a5f7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f1271a6afba91cf75820f2e4b973b7cd42782449
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824335"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -95,7 +96,7 @@ Um zu bestimmen, welche Ressourcentypen einen list-Vorgang aufweisen, stehen die
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-Geben Sie die Ressource entweder mithilfe der [resourceId-Funktion](#resourceid) oder des Formats `{providerNamespace}/{resourceType}/{resourceName}` an.
+Geben Sie die Ressource entweder mithilfe des Ressourcennamens oder der [resourceId-Funktion](#resourceid) an. Wenn Sie diese Funktion in der gleichen Vorlage verwenden, die auch die referenzierte Ressource bereitstellt, verwenden Sie den Ressourcennamen.
 
 ### <a name="example"></a>Beispiel
 
@@ -257,7 +258,7 @@ Jeder Ressourcentyp gibt andere Eigenschaften für die Verweisfunktion zurück. 
 
 Die Verweisfunktion leitet ihren Wert von einem Laufzeitstatus ab und kann somit nicht im Variablenabschnitt verwendet werden. Sie kann im Ausgabeabschnitt einer Vorlage oder [verknüpften Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Sie kann nicht im Ausgabeabschnitt einer [verschachtelten Vorlage](resource-group-linked-templates.md#link-or-nest-a-template) verwendet werden. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage. 
 
-Mithilfe der Referenzfunktion können Sie implizit deklarieren, dass eine Ressource von einer anderen abhängt, wenn die referenzierte Ressource innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Die „dependsOn“-Eigenschaft muss nicht zusätzlich verwendet werden. Die Funktion wird nicht ausgewertet, bis die Ressource, auf die verwiesen wird, die Bereitstellung abgeschlossen hat.
+Mithilfe der Referenzfunktion deklarieren Sie implizit, dass eine Ressource von einer anderen abhängt, wenn die referenzierte Ressource innerhalb der gleichen Vorlage zur Verfügung gestellt wird und Sie anhand des Ressourcennamens (nicht der Ressourcen-ID) auf die Ressource verweisen. Die „dependsOn“-Eigenschaft muss nicht zusätzlich verwendet werden. Die Funktion wird nicht ausgewertet, bis die Ressource, auf die verwiesen wird, die Bereitstellung abgeschlossen hat.
 
 Um die Eigenschaftennamen und Werte für einen Ressourcentyp anzuzeigen, erstellen Sie eine Vorlage, die das Objekt im Abschnitt „outputs“ zurückgibt. Wenn Sie über eine Ressource dieses Typs verfügen, gibt Ihre Vorlage das Objekt zurück, ohne neue Ressourcen bereitzustellen. 
 

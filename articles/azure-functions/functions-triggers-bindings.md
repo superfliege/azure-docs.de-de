@@ -13,13 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/07/2018
+ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: 56b0f8e24dfc38b542f4bbfc7975f1704d70f22c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725342"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 
@@ -45,38 +46,39 @@ Informationen darüber, welche Bindungen sich in der Vorschauversion befinden od
 
 ## <a name="register-binding-extensions"></a>Registrieren von Bindungserweiterungen
 
-In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-App verwendeten [Bindungserweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md) explizit registrieren. 
+In Version 2.x der Azure Functions Runtime müssen Sie die in Ihrer Funktions-App verwendeten Bindungserweiterungen (Bindungstypen) explizit registrieren. 
 
-Erweiterungen werden als NuGet-Pakete bereitgestellt. Der Paketnamen beginnt in der Regel mit [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Das Installieren und Registrieren Ihrer Bindungserweiterungen hängt davon ab, wie Sie Ihre Funktionen entwickeln: 
+Version 2.x der Functions Runtime ist derzeit als Vorschau verfügbar. Informationen dazu, wie Sie eine Functions-App so einrichten, dass sie die Version 2.x der Functions Runtime verwendet, finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
+
+Ein Kernsatz von Bindungen in Version 2.x wird automatisch registriert, sodass Sie ihn nicht explizit registrieren müssen: HTTP, Timer und Azure Storage (Blobs, Warteschlangen und Tabellen). 
+
+Erweiterungen werden als NuGet-Pakete bereitgestellt. Der Paketnamen beginnt in der Regel mit [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Das Registrieren Ihrer Bindungserweiterungen hängt davon ab, wie Sie Ihre Funktionen entwickeln: 
 
 + [Lokal in C# mit Visual Studio oder VS Code](#local-c-development-using-visual-studio-or-vs-code)
 + [Lokal mit Azure Functions Core Tools](#local-development-azure-functions-core-tools)
 + [Im Azure-Portal](#azure-portal-development) 
 
-Es gibt einen Kernsatz von Bindungen in Version 2.x, die nicht als Erweiterungen bereitgestellt werden. Für die folgenden Trigger und Bindungen müssen Sie Erweiterungen nicht registrieren: HTTP, Timer und Azure Storage. 
-
-Informationen dazu, wie Sie eine Functions-App so einrichten, dass sie die Version 2.x der Functions Runtime verwendet, finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md). Version 2.x der Functions Runtime ist derzeit als Vorschau verfügbar. 
-
 Die in diesem Abschnitt gezeigten Paketversionen dienen nur als Beispiele. Auf der [NuGet.org-Website](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) können Sie ermitteln, welche Version einer bestimmten Erweiterung für die anderen Abhängigkeiten in Ihrer Funktions-App erforderlich sind.    
 
-###  <a name="local-c-development-using-visual-studio-or-vs-code"></a>Lokale Entwicklung in C# mit Visual Studio oder Visual Studio-Code 
+### <a name="local-csharp"></a> Lokale Entwicklung in C# mit Visual Studio oder Visual Studio-Code
 
-Wenn Sie Funktionen lokal in C# mit Visual Studio oder Visual Studio Code entwickeln, müssen Sie lediglich das NuGet-Paket für die Erweiterung hinzufügen. 
+Wenn Sie Funktionen lokal in C# mit Visual Studio oder Visual Studio Code entwickeln, installieren Sie das NuGet-Paket für die Erweiterung. 
 
 + **Visual Studio**: Verwenden Sie die NuGet-Paket-Manager-Tools. Der folgende Befehl [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) installiert die Azure Cosmos DB-Erweiterung aus der Paket-Manager-Konsole:
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
     ```
+
 + **Visual Studio Code**: Sie können Pakete über die Eingabeaufforderung installieren. Verwenden Sie dazu wie folgt den Befehl [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) in der .NET-Befehlszeilenschnittstelle:
 
-    ```
+    ```terminal
     dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
     ```
 
 ### <a name="local-development-azure-functions-core-tools"></a>Lokale Entwicklung mit Azure Functions Core Tools
 
-[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
 ### <a name="azure-portal-development"></a>Entwicklung im Azure-Portal
 

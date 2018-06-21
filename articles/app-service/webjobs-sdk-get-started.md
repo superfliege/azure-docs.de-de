@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit dem WebJobs SDK – Azure
+title: Erste Schritte mit dem Azure WebJobs SDK
 description: Einführung in das WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung. Erfahren Sie, wie Sie auf Daten in Azure-Diensten und Diensten von Drittanbietern zugreifen.
 services: app-service\web, storage
 documentationcenter: .net
@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: b1de898ec4f661c54b5227367ad416a5edec80ed
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234517"
 ---
-# <a name="get-started-with-the-webjobs-sdk"></a>Erste Schritte mit dem WebJobs SDK
+# <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
-In diesem Artikel wird aufgezeigt, wie Sie ein WebJobs SDK-Projekt erstellen, es lokal ausführen und in Azure bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie ein Azure WebJobs SDK-Projekt erstellen, es lokal ausführen und in Azure App Service bereitstellen.
 
 Die Anweisungen gelten für [Visual Studio 2017](https://www.visualstudio.com/vs/), die gleichen Aufgaben können jedoch auch mit anderen Tools wie z. B. [Visual Studio Code](https://code.visualstudio.com/) ausgeführt werden.
 
-## <a name="what-is-the-webjobs-sdk"></a>Was ist das WebJobs SDK?
+## <a name="what-is-the-azure-webjobs-sdk"></a>Was ist das Azure WebJobs-SDK?
 
 Das Azure WebJobs SDK ist ein Framework, das die Aufgabe vereinfacht, Hintergrundverarbeitungscode zu schreiben, der auf Daten in Azure-Diensten zugreift. Das SDK unterstützt eine deklarative Syntax für das Angeben von Ereignissen, die eine Funktion auslösen sollen, z. B. eine neue Nachricht, die einer Warteschlange hinzugefügt wird. Eine ähnliche deklarative Syntax steuert das Lesen und Schreiben von Daten, nachdem eine Funktion ausgelöst wurde. Dieses System von Triggern und Bindungen übernimmt die meisten einfachen Codierungsaufgaben, die mit dem Zugreifen auf Azure und Dienste von Drittanbietern verbunden sind.
 
@@ -47,7 +48,7 @@ public static void Run(
 
 Die Anweisungen beschreiben das Erstellen eines WebJobs SDK 2.x-Projekts und enthalten Anmerkungen zu den Unterschieden in Version 3.x (Vorschauversion). Die wichtigste in 3.x eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework.
 
-### <a name="azure-functions"></a>Azure Functions
+### <a name="azure-functions"></a>Azure-Funktionen
 
 [Azure Functions](../azure-functions/functions-overview.md) basiert auf dem WebJobs SDK und ist eine Option, wenn Sie das WebJobs SDK direkt verwenden müssen. Azure Functions 1.x verwendet das WebJobs SDK 2.x. Weitere Informationen finden Sie unter [Vergleich zwischen Azure Functions und dem WebJobs SDK](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
@@ -68,7 +69,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie über [ein Azure-Konto](https://a
 
 3. Weisen Sie dem Projekt den Namen *WebJobsSDKSample* zu, und wählen Sie dann **OK** aus.
 
-   ![Dialogfeld „Neues Projekt“](./media/webjobs-sdk-get-started/new-project.png)
+   ![Dialogfeld "Neues Projekt"](./media/webjobs-sdk-get-started/new-project.png)
 
 ## <a name="add-webjobs-nuget-package"></a>Hinzufügen des WebJobs NuGet-Pakets
 
@@ -179,7 +180,7 @@ In diesem Abschnitt richten Sie die Konsolenprotokollierung ein, die das neue Fr
 
    Der `message`-Parameter muss keine Zeichenfolge sein. Sie können auch eine Bindung an ein JSON-Objekt, Bytearray oder [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage)-Objekt erstellen. Weitere Informationen finden Sie unter [Verwendung des Warteschlangentriggers](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Jeder Bindungstyp (z. B. Warteschlangen, Blobs oder Tabellen) weist einen anderen Satz von Parametertypen auf, an die Sie binden können.
 
-## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Der lokal ausgeführte Azure Storage-Emulator verfügt nicht über alle Funktionen, die das WebJobs SDK benötigt. Daher erstellen Sie in diesem Abschnitt ein Speicherkonto in Azure und konfigurieren das Projekt für dessen Verwendung.
 
@@ -252,17 +253,17 @@ In diesem Abschnitt wird das Projekt lokal erstellt und ausgeführt, und die Fun
 
 3. Geben Sie *queue* als Namen für die Warteschlange ein, und wählen Sie dann **OK** aus.
 
-   ![Warteschlange erstellen](./media/webjobs-sdk-get-started/create-queue.png)
+   ![Erstellen einer Warteschlange](./media/webjobs-sdk-get-started/create-queue.png)
 
 4. Klicken Sie mit der rechten Maustaste auf den Knoten für die neue Warteschlange, und wählen Sie dann **Warteschlange anzeigen** aus.
 
 5. Wählen Sie das Symbol **Nachricht hinzufügen** aus.
 
-   ![Warteschlange erstellen](./media/webjobs-sdk-get-started/create-queue-message.png)
+   ![Erstellen einer Warteschlange](./media/webjobs-sdk-get-started/create-queue-message.png)
 
 6. Geben Sie im Dialogfeld **Nachricht hinzufügen** die Zeichenfolge *Hello World!* als **Nachrichtentext** ein, und wählen Sie dann **OK** aus.
 
-   ![Warteschlange erstellen](./media/webjobs-sdk-get-started/hello-world-text.png)
+   ![Erstellen einer Warteschlange](./media/webjobs-sdk-get-started/hello-world-text.png)
 
 7. Führen Sie das Projekt erneut aus.
 
@@ -319,13 +320,13 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 4. Fügen Sie im Feld **Verbindungszeichenfolgen** den folgenden Eintrag hinzu.
 
-   |Name  |Verbindungszeichenfolge  |Datenbanktyp|
+   |NAME  |Verbindungszeichenfolge  |Datenbanktyp|
    |---------|---------|------|
    |AzureWebJobsStorage | {die zuvor kopierte Verbindungszeichenfolge für den Speicher}|Benutzerdefiniert|
    
 6. Wenn das Feld **Anwendungseinstellungen** keinen Application Insights-Instrumentierungsschlüssel enthält, fügen Sie den zuvor kopierten hinzu. (Der Instrumentierungsschlüssel ist möglicherweise bereits vorhanden, je nachdem, wie Sie die App Service-App erstellt haben.)
 
-   |Name  |Wert  |
+   |NAME  |Wert  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentierungsschlüssel} |
 
@@ -522,7 +523,7 @@ Eingabebindungen vereinfachen Code, der Daten liest. In diesem Beispiel ist die 
 
 Ausgabebindungen vereinfachen Code, der Daten schreibt. In diesem Beispiel wird der vorherige Code geändert, indem eine Kopie des Blobs geschrieben wird, statt dessen Größe zu protokollieren.
 
-1. Ersetzen Sie die `ProcessQueueMessage`-Methode durch den folgenden Code:
+1. Ersetzen Sie die `ProcessQueueMessage` -Methode durch den folgenden Code:
 
    ```cs
    public static void ProcessQueueMessage(

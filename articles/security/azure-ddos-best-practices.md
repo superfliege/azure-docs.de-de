@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/20/2018
+ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 042dd4876a63e5881e67456b449570b01cb967a5
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011287"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824709"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection – empfohlene Methoden und Referenzarchitekturen
 
@@ -87,8 +87,8 @@ Wählen Sie für [Azure App Service](../app-service/app-service-value-prop-what-
 
 Hinter der tiefgehenden Verteidigung steht die Idee, dem Risiko mit verschiedenen Verteidigungsstrategien zu begegnen. Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Sie sollten sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform implementieren.
 
-Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-networks-nsg.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
-Sie können mit [Diensttags](/virtual-network/security-overview.md) und [Anwendungssicherheitsgruppen](/virtual-network/security-overview.md) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
+Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/security-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
+Sie können mit [Diensttags](/virtual-network/security-overview.md#service-tags) und [Anwendungssicherheitsgruppen](/virtual-network/security-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
 
 Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
 
@@ -253,7 +253,7 @@ Diese Referenzarchitektur zeigt eine Reihe von bewährten Methoden für die Ausf
 
 In dieser Architektur wird eine Workload auf mehrere VM-Instanzen verteilt. Es gibt eine einzelne öffentliche IP-Adresse, und der Internetdatenverkehr wird durch ein Lastenausgleichsmodul auf die VMs verteilt. DDoS Protection Standard ist im virtuellen Netzwerk des Azure-Lastenausgleichsmoduls (Internet) aktiviert, dem die öffentliche IP-Adresse zugeordnet wurde.
 
-Beim Lastenausgleich werden die eingehenden Internetanforderungen an die VM-Instanzen verteilt. Virtual Machine Scale Sets ermöglichen das horizontale Hoch- oder Herunterskalieren der Anzahl der VMs – sowohl manuell als auch automatisch basierend auf vordefinierten Regeln. Dies ist wichtig, wenn die Ressource einem DDoS-Angriff ausgesetzt ist. Lesen Sie diesen [Artikel](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm), um weitere Informationen zu dieser Referenzarchitektur zu erhalten.
+Beim Lastenausgleich werden die eingehenden Internetanforderungen an die VM-Instanzen verteilt. Virtual Machine Scale Sets ermöglichen das horizontale Hoch- oder Herunterskalieren der Anzahl der VMs – sowohl manuell als auch automatisch basierend auf vordefinierten Regeln. Dies ist wichtig, wenn die Ressource einem DDoS-Angriff ausgesetzt ist. Lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm), um weitere Informationen zu dieser Referenzarchitektur zu erhalten.
 
 #### <a name="application-running-on-windows-n-tier"></a>Auf Windows-n-Schichten ausgeführte Anwendung
 
@@ -292,18 +292,9 @@ In dieser Architektur wird der für den HDInsight-Cluster bestimmte Datenverkehr
 
 Weitere Informationen zu dieser Referenzarchitektur finden Sie in der Dokumentation [Erweitern von Azure HDInsight per Azure Virtual Network](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-### <a name="azure-api-management"></a>Azure API Management
-
-Diese Referenzarchitektur schützt den öffentlichen Endpunkt der Ressourcenveröffentlichung-APIs von [Azure API Management](../api-management/api-management-key-concepts.md) für Kunden außerhalb der Organisation. Stellen Sie API Management zum Aktivieren von DDoS Protection in einem externen virtuellen Netzwerk bereit.
-
-![Diagramm der Referenzarchitektur für API Management](media/azure-ddos-best-practices/image15.png)
-
-Durch Konfigurieren des externen virtuellen Netzwerks ist der Zugriff auf Gateway und Entwicklerportal von API Management aus dem öffentlichen Internet über ein öffentliches Lastenausgleichsmodul möglich. In dieser Architektur ist DDoS Protection Standard im externen virtuellen Netzwerk für API Management aktiviert. Datenverkehr wird über das Internet an die öffentliche IP-Adresse von API Management weitergeleitet, die vor Netzwerkangriffen auf Schicht 3 und Schicht 4 geschützt ist. Zum Schutz vor HTTP/HTTPS-Angriffen auf Schicht 7 können Sie ein Application Gateway im WAF-Modus konfigurieren.
-
-Eine Liste der zusätzlichen Dienste, die in einem virtuellen Netzwerk bereitgestellt werden und für DDoS Protection Standard konfiguriert werden können, finden Sie [hier](../virtual-network/virtual-network-for-azure-services.md). DDoS Protection Standard unterstützt nur Azure Resource Manager-Ressourcen. 
 
 > [!NOTE]
-> Die eingefügte Bereitstellung einer App Service-Umgebung für PowerApps in einem virtuellen Netzwerk mit öffentlicher IP-Adresse wird nicht nativ unterstützt. Ausführliche Informationen zum Schutz der App Service-Umgebung finden Sie in diesem Abschnitt.
+> Weder die Azure App Service-Umgebung für PowerApps noch die API-Verwaltung in einem virtuellen Netzwerk mit öffentlicher IP-Adresse werden nativ unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

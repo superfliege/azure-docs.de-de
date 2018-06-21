@@ -1,23 +1,21 @@
 ---
-title: Azure-Tabellenspeicher – Handbuch für den Entwurf | Microsoft Docs
+title: Azure-Tabellenspeicher – Handbuch für den Entwurf | Microsoft-Dokumentation
 description: Entwurf skalierbarer und leistungsfähiger Tabellen in Azure-Tabellenspeicher
 services: cosmos-db
-documentationcenter: na
 author: SnehaGunda
 manager: kfile
-ms.assetid: 8e228b0c-2998-4462-8101-9f16517393ca
 ms.service: cosmos-db
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
+ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: sngun
-ms.openlocfilehash: 667fef855238b2524c05bbc2f137d466c0e56de8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4f3cafd80c713697a8b8fdde56c021be1c5319fb
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824586"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure-Speichertabelle – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -525,7 +523,7 @@ Aktivieren Sie Eventual Consistency über Partitions- oder Speichersystemgrenzen
 #### <a name="context-and-problem"></a>Kontext und Problem
 EGTs ermöglichen atomische Transaktionen über mehrere Entitäten, die den gleichen Partitionsschlüssel gemeinsam nutzen. Aus Gründen der Leistung und Skalierbarkeit möchten Sie Entitäten speichern, die Anforderungen an die Datenkonsistenz in separaten Partitionen oder in einem separaten Speichersystem haben. In diesem Fall können keine EGTs zur Gewährleistung der Konsistenz verwendet werden. Beispiel: Sie haben eine Anforderung, bei der in den folgenden Fällen Eventual Consistency beibehalten werden muss:  
 
-* Entitäten, die in verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
+* Entitäten, die in zwei verschiedenen Partitionen in derselben Tabelle, in verschiedenen Tabellen oder in verschiedenen Speicherkonten gespeichert sind.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und einen Blob, der im Blob-Dienst gespeichert ist.  
 * Eine Entität, die im Tabellenspeicherdienst gespeichert ist und eine Datei in einem Dateisystem.  
 * Speicherung einer Entität im Tabellenspeicherdienst, der jedoch mithilfe des Azure-Suchdienstes indiziert ist.  
@@ -720,7 +718,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
 
 #### <a name="context-and-problem"></a>Kontext und Problem
-Eine gängige Anforderung ist, die zuletzt erstellten Entitäten abzurufen, z. B. die letzten zehn Kostenabrechnungen, die von einem Mitarbeiter übermittelt wurden. Tabellenabfragen unterstützen einen **$top**-Abfragevorgang, um die ersten *n* Entitäten einer Menge zurückzugeben. Es gibt keinen entsprechenden Abfragevorgang, mit dem die letzten n Entitäten einer Menge zurückgegeben werden können.  
+Eine gängige Anforderung ist, die zuletzt erstellten Entitäten abzurufen, z.B. die letzten zehn Kostenabrechnungen, die von einem Mitarbeiter übermittelt wurden. Tabellenabfragen unterstützen einen **$top**-Abfragevorgang, um die ersten *n* Entitäten einer Menge zurückzugeben. Es gibt keinen entsprechenden Abfragevorgang, mit dem die letzten n Entitäten einer Menge zurückgegeben werden können.  
 
 #### <a name="solution"></a>Lösung
 Speichern von Entitäten unter Verwendung eines **RowKey**-Werts, der von Natur aus in umgekehrter Datum-/Zeit-Reihenfolge sortiert wird. Damit ist der neueste Eintrag immer der erste Eintrag in der Tabelle.  
@@ -1061,7 +1059,7 @@ employeeQuery.TakeCount = 50;
 ```
 
 #### <a name="server-side-projection"></a>Serverseitige Projektion
-Eine einzelne Entität kann bis zu 255 Eigenschaften haben und bis zu 1 MB groß sein. Wenn Sie die Tabelle durchsuchen und Entitäten abrufen, benötigen Sie möglicherweise nicht alle Eigenschaften und Sie können unnötiges Übertragen von Daten vermeiden (trägt zum Verringern der Latenz und Kosten bei). Sie können auch eine serverseitige Projektion verwenden, um nur die benötigten Eigenschaften zu übertragen. Im folgenden Beispiel wird nur die **Email**-Eigenschaft (zusammen mit **PartitionKey**, **RowKey**, **Timestamp** und **ETag**) aus den Entitäten abgerufen, die durch die Abfrage ausgewählt werden.  
+Eine einzelne Entität kann bis zu 255 Eigenschaften haben und bis zu 1 MB groß sein. Wenn Sie die Tabelle durchsuchen und Entitäten abrufen, benötigen Sie möglicherweise nicht alle Eigenschaften und Sie können unnötiges Übertragen von Daten vermeiden (trägt zum Verringern der Latenz und Kosten bei). Sie können auch eine serverseitige Projektion verwenden, um nur die benötigten Eigenschaften zu übertragen. Das folgende Beispiel ruft nur die **Email**-Eigenschaft (zusammen mit **PartitionKey**, **RowKey**, **Timestamp** und **ETag**) aus den Entitäten ab, die durch die Abfrage ausgewählt werden.  
 
 ```csharp
 string filter = TableQuery.GenerateFilterCondition(

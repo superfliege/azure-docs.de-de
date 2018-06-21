@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 83558b9d8d47ac5e6bd15dd54db38125376d11bd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365041"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656906"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -27,7 +27,7 @@ Das Erstellen eines virtuellen Netzwerks zum Testen ist einfach. Aber die Wahrsc
 
 ## <a name="naming"></a>Benennung
 
-Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Alle Azure-Ressourcen haben einen Namen. Der Name muss innerhalb eines Bereichs eindeutig sein, der für jeden Ressourcentyp unterschiedlich sein kann. Der Name eines virtuellen Netzwerks muss beispielsweise innerhalb einer [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) eindeutig sein, kann jedoch innerhalb eines [Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) oder einer Azure-[Region](https://azure.microsoft.com/regions/#services) dupliziert werden. Das Definieren einer Namenskonvention, die Sie beim Benennen von Ressourcen konsistent verwenden können, ist hilfreich, wenn mit der Zeit mehrere Netzwerkressourcen verwaltet werden. Empfehlungen finden Sie unter [Namenskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking).
 
 ## <a name="regions"></a>Regionen
 
@@ -39,7 +39,7 @@ Alle Azure-Ressourcen werden in einer Azure-Region und unter einem Abonnement er
 
 ## <a name="subscriptions"></a>Abonnements
 
-Innerhalb jedes Abonnements können Sie bis zum geltenden [Limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) beliebig viele virtuelle Netzwerke bereitstellen. Einige Organisationen verfügen beispielsweise für unterschiedliche Abteilungen über unterschiedliche Abonnements. Weitere Informationen und Überlegungen zu Abonnements finden Sie unter [Abonnementgovernance](../azure-resource-manager/resource-manager-subscription-governance.md?toc=%2fazure%2fvirtual-network%2ftoc.json#define-your-hierarchy).
+Innerhalb jedes Abonnements können Sie bis zum geltenden [Limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) beliebig viele virtuelle Netzwerke bereitstellen. Einige Organisationen verfügen beispielsweise für unterschiedliche Abteilungen über unterschiedliche Abonnements. Weitere Informationen und Überlegungen zu Abonnements finden Sie unter [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
 ## <a name="segmentation"></a>Segmentierung
 
@@ -82,7 +82,7 @@ Sie können sich Beispielentwürfe für die Implementierung einer DMZ zwischen A
 ### <a name="traffic-routing"></a>Routing von Datenverkehr
 
 In Azure werden mehrere Standardrouten für ausgehenden Datenverkehr aus einem Subnetz erstellt. Sie können das Azure-Standardrouting außer Kraft setzen, indem Sie eine Routingtabelle erstellen und einem Subnetz zuordnen. Häufige Gründe für das Außerkraftsetzen des Azure-Standardroutings:
-- Der Datenverkehr zwischen Subnetzen soll über ein virtuelles Netzwerkgerät weitergeleitet werden. Weitere Informationen zum [Konfigurieren von Routingtabellen zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](tutorial-create-route-table-portal.md).
+- Der Datenverkehr zwischen Subnetzen soll über ein virtuelles Netzwerkgerät weitergeleitet werden. Hier finden Sie weitere Informationen zum [Konfigurieren von Routingtabellen zum Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](tutorial-create-route-table-portal.md).
 - Der gesamte Internetdatenverkehr soll über ein virtuelles Netzwerkgerät oder lokal über ein Azure VPN Gateway erfolgen. Die Erzwingung der lokalen Weiterleitung von Internetdatenverkehr zur Überprüfung und Protokollierung wird häufig als Tunnelerzwingung bezeichnet. Weitere Informationen zum Konfigurieren der [Tunnelerzwingung](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2Fazure%2Fvirtual-network%2Ftoc.json).
 
 Wenn Sie das benutzerdefinierte Routing implementieren möchten, empfiehlt es sich, sich mit dem [Routing in Azure](virtual-networks-udr-overview.md) vertraut zu machen.
@@ -93,7 +93,7 @@ Sie können ein virtuelles Netzwerk mittels VNET-Peering mit anderen virtuellen 
 
 ### <a name="peering"></a>Peering
 
-Bei Verwendung des [Peerings virtueller Netzwerke](virtual-network-peering-overview.md) können sich die virtuellen Netzwerke in derselben oder in unterschiedlichen unterstützten Azure-Regionen befinden. Die virtuellen Netzwerke können sich im selben oder in unterschiedlichen Azure-Abonnements befinden. Beide Abonnements müssen jedoch demselben Azure Active Directory-Mandanten zugewiesen sein. Es wird empfohlen, sich mit den [Peeringanforderungen und -einschränkungen](virtual-network-manage-peering.md#requirements-and-constraints) vertraut zu machen, bevor Sie ein Peering erstellen. Die Bandbreite zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering miteinander verknüpft sind, ist dieselbe wie zwischen Ressourcen, die sich im selben virtuellen Netzwerk befinden.
+Bei Verwendung des [Peerings virtueller Netzwerke](virtual-network-peering-overview.md) können sich die virtuellen Netzwerke in derselben oder in unterschiedlichen unterstützten Azure-Regionen befinden. Die virtuellen Netzwerke können sich im selben oder in unterschiedlichen Azure-Abonnements befinden. Beide Abonnements müssen jedoch demselben Azure Active Directory-Mandanten zugewiesen sein. Es wird empfohlen, sich mit den [Peeringanforderungen und -einschränkungen](virtual-network-manage-peering.md#requirements-and-constraints) vertraut zu machen, bevor Sie ein Peering erstellen. Die Bandbreite zwischen Ressourcen in virtuellen Netzwerken, die mittels Peering in derselben Region miteinander verknüpft sind, ist dieselbe wie zwischen Ressourcen, die sich im selben virtuellen Netzwerk befinden.
 
 ### <a name="vpn-gateway"></a>VPN-Gateway
 
@@ -107,10 +107,14 @@ Ressourcen in einem virtuellen Netzwerk können die Namen von Ressourcen in dem 
 
 ## <a name="permissions"></a>Berechtigungen
 
-In Azure wird die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Role-Based Access Control, RBAC) für Ressourcen verwendet. Berechtigungen werden einem [Bereich](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-hierarchy-and-access-inheritance) in der folgenden Hierarchie zugewiesen: Abonnement, Verwaltungsgruppe, Ressourcengruppe und einzelne Ressource. Weitere Informationen zu dieser Hierarchie finden Sie unter [Organisieren Ihrer Ressourcen](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Um virtuelle Azure-Netzwerke und alle zugehörigen Funktionen, z.B. Peering, Netzwerksicherheitsgruppen, Dienstendpunkte und Routingtabellen, verwenden zu können, können Sie Mitglieder Ihrer Organisation den integrierten Rollen [Besitzer](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Mitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor) oder [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) und dann die einzelnen Rollen dem entsprechenden Bereich zuweisen. Wenn Sie bestimmte Berechtigungen für eine Teilmenge der Funktionen des virtuellen Netzwerks zuweisen möchten, erstellen Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und weisen der Rolle diese Berechtigungen für [virtuelle Netzwerke](manage-virtual-network.md#permissions), [ Subnetze und Dienstendpunkte](virtual-network-manage-subnet.md#permissions), [Netzwerkschnittstellen](virtual-network-network-interface.md), [Peering](virtual-network-manage-peering.md#permissions), [Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen](manage-network-security-group.md#permissions) oder [Routingtabellen](manage-route-table.md#permissions) zu.
+In Azure wird die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Role-Based Access Control, RBAC) für Ressourcen verwendet. Berechtigungen werden einem [Bereich](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) in der folgenden Hierarchie zugewiesen: Abonnement, Verwaltungsgruppe, Ressourcengruppe und einzelne Ressource. Weitere Informationen zu dieser Hierarchie finden Sie unter [Organisieren Ihrer Ressourcen](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Um virtuelle Azure-Netzwerke und alle zugehörigen Funktionen, z.B. Peering, Netzwerksicherheitsgruppen, Dienstendpunkte und Routingtabellen, verwenden zu können, können Sie Mitglieder Ihrer Organisation den integrierten Rollen [Besitzer](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner), [Mitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor) oder [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) und dann die einzelnen Rollen dem entsprechenden Bereich zuweisen. Wenn Sie bestimmte Berechtigungen für eine Teilmenge der Funktionen des virtuellen Netzwerks zuweisen möchten, erstellen Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und weisen der Rolle diese Berechtigungen für [virtuelle Netzwerke](manage-virtual-network.md#permissions), [ Subnetze und Dienstendpunkte](virtual-network-manage-subnet.md#permissions), [Netzwerkschnittstellen](virtual-network-network-interface.md#permissions), [Peering](virtual-network-manage-peering.md#permissions), [Netzwerksicherheitsgruppen und Anwendungssicherheitsgruppen](manage-network-security-group.md#permissions) oder [Routingtabellen](manage-route-table.md#permissions) zu.
 
 ## <a name="policy"></a>Richtlinie
 
-Mit Azure Policy können Sie Richtliniendefinitionen erstellen, zuweisen und verwalten. Richtliniendefinitionen erzwingen unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen, damit diese stets mit den Standards Ihrer Organisation und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy führt eine Auswertung Ihrer Ressourcen durch, um zu prüfen, welche Ressourcen nicht den festgelegten Richtliniendefinitionen entsprechen. Sie können beispielsweise eine Richtlinie festlegen, die die Erstellung von virtuellen Netzwerken nur in einer bestimmten Ressourcengruppe zulässt. In einer anderen Richtlinie können Sie z.B. festlegen, dass jedem Subnetz eine Netzwerksicherheitsgruppe zugeordnet werden muss. Die Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen ausgewertet.
+Mit Azure Policy können Sie Richtliniendefinitionen erstellen, zuweisen und verwalten. Richtliniendefinitionen erzwingen unterschiedliche Regeln für Ihre Ressourcen, damit diese stets mit den Standards Ihrer Organisation und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy führt eine Auswertung Ihrer Ressourcen durch, um zu prüfen, welche Ressourcen nicht den festgelegten Richtliniendefinitionen entsprechen. Sie können beispielsweise eine Richtlinie definieren und anwenden, welche die Erstellung von virtuellen Netzwerken nur in einer bestimmten Ressourcengruppe oder Region zulässt. In einer anderen Richtlinie können Sie festlegen, dass jedem Subnetz eine Netzwerksicherheitsgruppe zugeordnet werden muss. Die Richtlinien werden beim Erstellen und Aktualisieren von Ressourcen ausgewertet.
 
 Richtlinien werden in der folgenden Hierarchie angewandt: Abonnement, Verwaltungsgruppe und Ressourcengruppe. Erfahren Sie mehr über [Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json), oder stellen Sie Beispiele für [ Richtlinienvorlagen](policy-samples.md) für virtuelle Netzwerke bereit.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Erfahren Sie mehr über alle Aufgaben, Einstellungen und Optionen für [ein virtuelles Netzwerk](manage-virtual-network.md), [Subnetz und Dienstendpunkt](virtual-network-manage-subnet.md), [Netzwerkschnittstelle](virtual-network-network-interface.md), [Peering](virtual-network-manage-peering.md), [Netzwerk- und Anwendungssicherheitsgruppe](manage-network-security-group.md) oder [Routingtabelle](manage-route-table.md).

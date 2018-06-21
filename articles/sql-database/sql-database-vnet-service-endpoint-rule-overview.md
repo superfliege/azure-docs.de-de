@@ -3,19 +3,19 @@ title: Dienstendpunkte und Regeln eines virtuellen Netzwerks für Azure SQL-Date
 description: Markieren Sie ein Subnetz als Dienstendpunkt eines virtuellen Netzwerks. Nutzen Sie dann den Endpunkt als Regel für ein virtuelles Netzwerk für die Zugriffssteuerungsliste Ihrer Azure SQL-Datenbank-Instanz. Ihre Azure SQL-Datenbank-Instanz akzeptiert anschließend Nachrichten von allen virtuellen Computern und anderen Knoten im Subnetz.
 services: sql-database
 ms.service: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
-ms.topic: article
-ms.date: 04/19/2018
+ms.topic: conceptual
+ms.date: 06/05/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: 9f72ce802f5a2a07ad310968152ab359b4a6c31b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d708d55c64306636910a85b5b490e25ecc794bd6
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778171"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802594"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -319,7 +319,7 @@ Das Feature für Regeln für virtuelle Netzwerke für Azure SQL-Datenbank wurde 
 
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
 
-[expressroute-indexmd-744v]: ../expressroute/index.md
+[expressroute-indexmd-744v]: ../expressroute/index.yml
 
 [rbac-what-is-813s]:../role-based-access-control/overview.md
 

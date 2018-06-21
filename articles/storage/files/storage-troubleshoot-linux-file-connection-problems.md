@@ -3,9 +3,9 @@ title: Beheben von Problemen mit Azure Files unter Linux | Microsoft-Dokumentati
 description: Behandeln von Azure Files-Problemen unter Linux
 services: storage
 documentationcenter: ''
-author: genlin
-manager: willchen
-editor: na
+author: wmgries
+manager: aungoo
+editor: tamram
 tags: storage
 ms.service: storage
 ms.workload: na
@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 7b5567359e7ca87d26e05d336337b55af364031e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: wgries
+ms.openlocfilehash: 4a80b868529b18875100d8205fd8c3a664b6b9e2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738363"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -86,7 +87,7 @@ Bei einigen Linux-Distributionen, die noch nicht die Verschlüsselungsfunktionen
 
 ### <a name="solution"></a>Lösung
 
-Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Diese Funktionen ermöglichen das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
+Die Verschlüsselungsfunktionen für SMB 3.0 für Linux wurden im Kernel 4.11 eingeführt. Dieses Feature ermöglicht das Einbinden einer Azure-Dateifreigabe aus einer lokalen oder anderen Azure-Region. Zum Zeitpunkt der Veröffentlichung wurden diese Funktionen zu Ubuntu 17.04 und Ubuntu 16.10 zurückportiert. Wenn Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einer Azure Linux-VM aus ein, die sich im gleichen Rechenzentrum wie das File Storage-Konto befindet.
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Langsame Leistung in einer Azure-Dateifreigabe, die in einer Linux-VM bereit gestellt ist
@@ -129,7 +130,7 @@ Verwenden Sie das Speicherbenutzerkonto, um die Dateien zu kopieren:
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
 
-## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Azure-Dateifreigabe kann nicht verbunden oder bereitgestellt werden
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Azure-Dateifreigabe kann nicht verbunden oder eingebunden werden
 
 ### <a name="cause"></a>Ursache
 

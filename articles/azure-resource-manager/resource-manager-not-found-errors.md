@@ -11,17 +11,18 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 03/08/2018
+ms.date: 06/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: f5da2a74b3a399c60c518f386ccf2e60a617aeda
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 494526ae2084053f23bb3a096ac7d089c47a731a
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823434"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Beheben von Fehlern aufgrund nicht gefundener Azure-Ressourcen
 
-In diesem Artikel werden die Fehler beschrieben, die auftreten können, wenn eine Ressource während der Bereitstellung nicht gefunden wird.
+In diesem Artikel werden mögliche Fehler beschrieben, wenn eine Ressource während der Bereitstellung nicht gefunden wird.
 
 ## <a name="symptom"></a>Symptom
 
@@ -32,7 +33,7 @@ Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Wenn Sie versuchen, die Funktionen [reference](resource-group-template-functions-resource.md#reference) oder [listKeys](resource-group-template-functions-resource.md#listkeys) mit einer Ressource zu verwenden, die nicht aufgelöst werden kann, erhalten Sie folgenden Fehler:
+Wenn die Funktionen [reference](resource-group-template-functions-resource.md#reference) oder [listKeys](resource-group-template-functions-resource.md#listkeys) mit einer Ressource verwenden, die nicht aufgelöst werden kann, erhalten Sie folgenden Fehler:
 
 ```
 Code=ResourceNotFound;
@@ -59,7 +60,7 @@ Wenn Sie versuchen, die fehlende Ressource in der Vorlage bereitzustellen, sollt
 }
 ```
 
-Es ist ratsam, das Einrichten von Abhängigkeiten zu vermeiden, die nicht benötigt werden. Wenn Sie über nicht benötigte Abhängigkeiten verfügen, verlängern Sie die Dauer der Bereitstellung, indem Sie verhindern, dass nicht voneinander abhängige Ressourcen parallel bereitgestellt werden. Außerdem besteht die Gefahr, dass Sie Ringabhängigkeiten erstellen, die die Bereitstellung blockieren. Mit der Funktion [reference](resource-group-template-functions-resource.md#reference) wird eine implizite Abhängigkeit von der angegebenen Ressource erstellt, wenn diese Ressource in derselben Vorlage bereitgestellt wird. Aus diesem Grund verfügen Sie ggf. über eine höhere Zahl von Abhängigkeiten als in der **dependsOn**-Eigenschaft angegeben. Mit der Funktion [resourceId](resource-group-template-functions-resource.md#resourceid) wird keine implizite Abhängigkeit erstellt und nicht überprüft, ob die Ressource vorhanden ist.
+Es ist jedoch ratsam, keine Abhängigkeiten einzurichten, die nicht benötigt werden. Wenn Sie nicht benötigte Abhängigkeiten einrichten, verlängern Sie die Dauer der Bereitstellung, indem Sie verhindern, dass nicht voneinander abhängige Ressourcen parallel bereitgestellt werden. Außerdem besteht die Gefahr, dass Sie Ringabhängigkeiten erstellen, die die Bereitstellung blockieren. Die Funktion [reference](resource-group-template-functions-resource.md#reference) und die [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)-Funktionen erstellen eine implizite Abhängigkeit von der angegebenen Ressource, wenn diese Ressource in derselben Vorlage bereitgestellt und mit ihrem eigenen Namen (nicht ihrer Ressourcen-ID) auf sie verwiesen wird. Aus diesem Grund verfügen Sie ggf. über eine höhere Zahl von Abhängigkeiten als in der **dependsOn**-Eigenschaft angegeben. Die Funktion [resourceId](resource-group-template-functions-resource.md#resourceid) erstellt keine implizite Abhängigkeit und überprüft nicht, ob die Ressource vorhanden ist. Die Funktion [reference](resource-group-template-functions-resource.md#reference) und die [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)-Funktionen erstellen keine implizite Abhängigkeit, wenn mit der Ressourcen-ID auf die Ressource verwiesen wird. Um eine implizite Abhängigkeit zu erstellen, übergeben Sie den Namen der Ressource, die in der gleichen Vorlage bereitgestellt wird.
 
 Wenn Abhängigkeitsprobleme auftreten, benötigen Sie Informationen zur Reihenfolge der Ressourcenbereitstellung. So zeigen Sie die Reihenfolge der Vorgänge bei der Bereitstellung an:
 
@@ -92,7 +93,7 @@ Wenn die Ressource in einer anderen Ressourcengruppe als der Ressourcengruppe en
 
 ## <a name="solution-3---check-reference-function"></a>Lösung 3: Überprüfen der reference-Funktion
 
-Suchen Sie nach einem Ausdruck, der die [reference](resource-group-template-functions-resource.md#reference)-Funktion enthält. Die von Ihnen bereitgestellten Werte variieren basierend darauf, ob sich die Ressource in der gleichen Vorlage und Ressourcengruppe und im gleichen Abonnement befindet. Überprüfen Sie, ob die erforderlichen Parameterwerte für Ihr Szenario angegeben wurden. Befindet sich die Ressource in einer anderen Ressourcengruppe, geben Sie die vollständige Ressourcen-ID an. Verwenden Sie zum Verweisen auf ein Speicherkonto in einer anderen Ressourcengruppe beispielsweise Folgendes:
+Suchen Sie nach einem Ausdruck, der die [reference](resource-group-template-functions-resource.md#reference)-Funktion enthält. Die von Ihnen bereitgestellten Werte variieren basierend darauf, ob sich die Ressource in der gleichen Vorlage und Ressourcengruppe und im gleichen Abonnement befindet. Vergewissern Sie sich, dass die erforderlichen Parameterwerte für Ihr Szenario angegeben wurden. Befindet sich die Ressource in einer anderen Ressourcengruppe, geben Sie die vollständige Ressourcen-ID an. Verwenden Sie zum Verweisen auf ein Speicherkonto in einer anderen Ressourcengruppe beispielsweise Folgendes:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"

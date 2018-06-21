@@ -10,14 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 798af75625e0d2fed1220932c172683fe71f9aad
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34620339"
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Überwachen von Data Factorys mit Azure Monitor  
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -106,7 +107,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
 | storageAccountId |Zeichenfolge | Die Ressourcen-ID des Speicherkontos, an das Diagnoseprotokolle gesendet werden sollen. |
-| serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat dieses Format: {Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}.|
+| serviceBusRuleId |Zeichenfolge | Die Service Bus-Regel-ID des Service Bus-Namespace, in dem Event Hubs für das Streaming von Diagnoseprotokollen erstellt werden sollen. Die Regel-ID hat dieses Format: „{Service Bus-Ressourcen-ID}/authorizationrules/{Schlüsselname}“.|
 | workspaceId | Komplexer Typ | Array metrischer Zeiteinheiten und ihrer Aufbewahrungsrichtlinien. Diese Eigenschaft ist derzeit leer. |
 |Metriken| Parameterwerte der Pipelineausführung, die an die aufgerufene Pipeline übergeben werden sollen| Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | 
 | Protokolle| Komplexer Typ| Der Name einer Diagnoseprotokollkategorie für einen Ressourcentyp. Um die Liste der Diagnoseprotokollkategorien für eine Ressource zu erhalten, führen Sie zuerst einen GET-Vorgang zum Abrufen von Diagnoseeinstellungen aus. |

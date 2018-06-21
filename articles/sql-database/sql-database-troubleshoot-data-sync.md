@@ -3,17 +3,18 @@ title: Behandeln von Problemen mit der Azure SQL-Datensynchronisierung (Vorschau
 description: Hier erfahren Sie, wie Sie häufige Probleme mit der Azure SQL-Datensynchronisierung (Vorschauversion) behandeln.
 services: sql-database
 ms.date: 04/01/2018
-ms.topic: article
+ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 6e29c93f37017a88aa4b6d69168e649f7397d56b
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757535"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Behandeln von Problemen mit der SQL-Datensynchronisierung (Vorschau)
 
@@ -240,9 +241,8 @@ Bevor Sie fortfahren, überprüfen Sie die folgenden Bedingungen:
 
 -   Der Windows-Dienst für die SQL-Datensynchronisierung-Vorschauversion wird ausgeführt.  
 -   Das Dienstkonto für den Windows-Dienst „SQL Data Sync (Preview) Preview“ (SQL-Datensynchronisierung-Vorschauversion: Vorschauversion) verfügt über Netzwerkzugriff.    
--   Der Client-Agent kann den Locatordienst kontaktieren. Vergewissern Sie sich, dass der folgende Registrierungsschlüssel den Wert https://locator.sync.azure.com/LocatorServiceApi.svc: hat:  
-    -   x86-Computer: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
-    -   x64-Computer: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
+-   Der ausgehende Port 1433 ist in Ihrer lokalen Firewallregel geöffnet.
+-   Die lokale IP-Adresse wird zum Server oder zur Datenbankfirewallregel für die Synchronisierung der Metadaten-Datenbank hinzugefügt.
 
 #### <a name="cause"></a>Ursache
 
@@ -444,7 +444,7 @@ Weitere Informationen zur SQL-Datensynchronisierung (Vorschauversion) finden Sie
 -   [Bewährte Methoden für die Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-best-practices-data-sync.md)  
 -   [Überwachen der Azure SQL-Datensynchronisierung (Vorschauversion) mit Log Analytics](sql-database-sync-monitor-oms.md)  
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung (Vorschauversion) veranschaulichen:  
-    -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
+    -   [Verwenden von PowerShell zum Synchronisieren zwischen mehreren SQL-Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Verwenden von PowerShell zum Synchronisieren zwischen einer Azure SQL-Datenbank und einer lokalen SQL Server-Datenbank](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [Herunterladen der Dokumentation zur REST-API der SQL-Datensynchronisierung (Vorschauversion)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 

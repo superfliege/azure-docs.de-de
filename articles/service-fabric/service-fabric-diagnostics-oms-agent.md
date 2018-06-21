@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: a3ce72e51477c1eda99461b3910bfeeac207be55
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 74a738f85a969e3c3451dc326de9b4284c0984c8
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809572"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Leistungsüberwachung mit Log Analytics
 
@@ -73,19 +74,27 @@ Sie können diese Vorlage herunterladen und anpassen, um einen Cluster bereitzus
 
 Jetzt haben Sie den OMS-Agent hinzugefügt und können im Log Analytics-Portal die Leistungsindikatoren auswählen, die Sie erfassen möchten. 
 
-1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, in der Sie die Service Fabric Analytics-Lösung erstellt haben. Wählen Sie **ServiceFabric\<OMS-Arbeitsbereichsname\>** aus, und wechseln Sie zur zugehörigen Übersichtsseite. Klicken Sie im oberen Bereich auf den Link für den Wechsel zum OMS-Portal.
+1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe, in der Sie die Service Fabric Analytics-Lösung erstellt haben. Wählen Sie **ServiceFabric\<nameOfOMSWorkspace\>** aus.
 
-2. Im Portal sehen Sie Kacheln in Form eines Graphs für jede der aktivierten Lösungen, auch eine für Service Fabric. Klicken Sie darauf, um mit Service Fabric Analytics fortzufahren. 
+2. Klicken Sie auf **OMS-Arbeitsbereich**.
 
-3. Jetzt sehen Sie einige Kacheln mit Graphen zu Betriebskanal- und Reliable Services-Ereignisse. Klicken Sie auf der rechten Seite auf das Zahnradsymbol, um zur Einstellungenseite zu wechseln.
+3. Klicken Sie auf **Erweiterte Einstellungen**.
 
-    ![OMS-Einstellungen](media/service-fabric-diagnostics-oms-agent/oms-solutions-settings.png)
+4. Klicken Sie auf **Daten** und dann auf **Windows- oder Linux-Leistungsindikatoren**. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Sammlungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx) verwiesen.
 
-4. Klicken Sie auf der Einstellungenseite auf „Daten“, und wählen Sie Windows- oder Linux-Leistungsindikatoren aus. Es gibt eine Liste von Standardindikatoren, deren Aktivierung Sie auswählen und für die Sie auch das Erfassungsintervall festlegen können. Sie können auch [weitere Leistungsindikatoren](service-fabric-diagnostics-event-generation-perf.md) hinzufügen, die erfasst werden sollen. Auf das richtige Format wird in diesem [Artikel](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85).aspx) verwiesen.
+5. Klicken Sie auf **Speichern** und dann auf **OK**.
 
-Sobald die Indikatoren konfiguriert sind, wechseln Sie wieder zur Lösungenseite, wo bald in den Graphen unter **Knotenmetriken** Dateneingänge angezeigt werden. Sie können Leistungsindikatordaten ähnlich wie Clusterereignisse abfragen und mithilfe der Abfragesprache Kusto nach Knoten, Name des Leistungsindikators und Werten filtern. 
+6. Schließen Sie das Blatt „Erweiterte Einstellungen“.
 
-![OMS-Leistungsindikatorabfrage](media/service-fabric-diagnostics-oms-agent/oms-perf-counter-query.png)
+7. Klicken Sie unter der Überschrift „Allgemein“ auf **Übersicht**.
+
+8. Sie sehen Kacheln in Form eines Graphs für jede der aktivierten Lösungen, auch eine für Service Fabric. Klicken Sie auf den Graph **Service Fabric**, um mit der Service Fabric-Analyse-Lösung fortzufahren.
+
+9. Sie sehen einige Kacheln mit Graphen zu Betriebskanal- und Reliable Services-Ereignissen. Die grafische Darstellung der Daten, die für die ausgewählten Leistungsindikatoren eingehen, werden unter „Knotenmetriken“ angezeigt. 
+
+10. Klicken Sie auf den Graph einer Containermetrik, um weitere Details anzuzeigen. Sie können Leistungsindikatordaten ähnlich wie Clusterereignisse abfragen und mithilfe der Abfragesprache Kusto nach Knoten, Name des Leistungsindikators und Werten filtern.
+
+![OMS-Leistungsindikatorabfrage](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

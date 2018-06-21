@@ -4,7 +4,7 @@ description: Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: MSSedusch
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c78b764b66e677144186831b6139fd6a0aae7e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366357"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34656192"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -540,9 +540,10 @@ Es gibt einige Szenarien, in denen Sie als Kunde einen bereitgestellten virtuell
 Wenn Sie Managed Disks verwenden, können Sie eine Migration auf Storage Premium durchführen:
 
 1. Heben Sie die Zuordnung des virtuellen Computers auf.
-2. Ändern Sie ggf. die Größe des virtuellen Computers in eine Größe, die Storage Premium (z.B. DS oder GS) unterstützt.
-3. Ändern Sie den Kontotyp „Verwalteter Datenträger“ in „Premium (SSD)“.
-4. Starten des virtuellen Computers
+1. Ändern Sie ggf. die Größe des virtuellen Computers in eine Größe, die Storage Premium (z.B. DS oder GS) unterstützt.
+1. Ändern Sie den Kontotyp „Verwalteter Datenträger“ in „Premium (SSD)“.
+1. Ändern Sie das Zwischenspeichern der Datenträger, wie im Kapitel [Zwischenspeichern für VMs und Datenträger][dbms-guide-2.1] empfohlen.
+1. Starten des virtuellen Computers
 
 ### <a name="deployment-of-vms-for-sap-in-azure"></a>Bereitstellung von virtuellen Computern für SAP in Azure
 Microsoft Azure bietet verschiedene Methoden der Bereitstellung von VMs und der zugehörigen Datenträger. Daher ist es wichtig, die Unterschiede zu kennen, da die Vorbereitung der VMs von der Bereitstellungsart abhängt. Allgemein werden die in den folgenden Kapiteln beschriebenen Szenarien betrachtet.

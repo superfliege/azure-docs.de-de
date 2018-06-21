@@ -6,15 +6,15 @@ author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vvasic
-ms.openlocfilehash: e4c3a2c1f21bf14bfc75f20dd18cefca68fd2067
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4d3b7f54c7393b57339ea149e8a79f97891dc20
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364470"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34646030"
 ---
 # <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 
@@ -24,7 +24,7 @@ Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierl
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten sind FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
 ### <a name="azure-portal"></a>Azure-Portal
-Wenn Sie die automatische Optimierung für den Azure SQL-Datenbank-**Server** aktivieren möchten, navigieren Sie im Azure-Portal zum entsprechenden Server, und aktivieren Sie im Menü die Option **Automatische Optimierung**. Wählen Sie die gewünschten Optionen für die automatische Optimierung und anschließend **Übernehmen** aus.
+Wenn Sie die automatische Optimierung für den logischen Azure SQL-Datenbank-**Server** aktivieren möchten, navigieren Sie im Azure-Portal zum entsprechenden Server, und aktivieren Sie im Menü die Option **Automatische Optimierung**.
 
 ![Server](./media/sql-database-automatic-tuning-enable/server.png)
 
@@ -32,28 +32,32 @@ Wenn Sie die automatische Optimierung für den Azure SQL-Datenbank-**Server** ak
 > Beachten Sie, dass die Option **DROP_INDEX** zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. In diesen Fällen sollte sie nicht aktiviert werden.
 >
 
-Die Optionen für die automatische Optimierung des Servers werden auf alle Datenbanken auf dem Server angewendet. Standardmäßig erben alle Datenbanken die Konfiguration von ihrem übergeordneten Server, dies kann jedoch außer Kraft gesetzt und einzeln für jede Datenbank angegeben werden.
+Wählen Sie die gewünschten Optionen für die automatische Optimierung und anschließend **Übernehmen** aus.
+
+Die Optionen für die automatische Optimierung auf einem Server werden auf alle Datenbanken auf diesem Server angewendet. Standardmäßig erben alle Datenbanken die Konfiguration von ihrem übergeordneten Server. Dies kann jedoch außer Kraft gesetzt und einzeln für jede Datenbank angegeben werden.
 
 ### <a name="rest-api"></a>REST-API
 Weitere Informationen zum Aktivieren der automatischen Optimierung auf Serverebene mithilfe der REST-API finden Sie [hier](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Aktivieren der automatischen Optimierung für eine einzelne Datenbank
 
-Über Azure SQL-Datenbank können Sie die Konfiguration der automatischen Optimierung für einzelne Datenbanken angeben. Auf Datenbankebene kann auf Wunsch die Konfiguration der automatischen Optimierung vom übergeordneten Server oder von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten ist „FORCE_LAST_GOOD_PLAN“ aktiviert, „CREATE_INDEX“ aktiviert und „DROP_INDEX“ deaktiviert.
+Über Azure SQL-Datenbank können Sie die Konfiguration der automatischen Optimierung für einzelne Datenbanken angeben. Auf Datenbankebene kann auf Wunsch die Konfiguration der automatischen Optimierung vom übergeordneten Server geerbt („Azure-Standardwerte“) oder nicht geerbt werden. Die Azure-Standardwerte sind wie folgt festgelegt: FORCE_LAST_GOOD_PLAN aktiviert, CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
 > [!NOTE]
-> Es empfiehlt sich im Allgemeinen, die automatische Optimierung auf der Serverebene zu verwalten, damit für jede Datenbank automatisch die gleichen Konfigurationseinstellungen angewendet werden können. Konfigurieren Sie die automatische Optimierung für eine einzelne Datenbank, wenn diese sich von anderen Datenbanken auf dem gleichen Server unterscheidet.
+> Es empfiehlt sich im Allgemeinen, die automatische Optimierung auf **Serverebene** zu verwalten, damit für jede Datenbank automatisch die gleichen Konfigurationseinstellungen angewendet werden können. Konfigurieren Sie die automatische Optimierung für eine einzelne Datenbank nur dann, wenn diese Datenbank andere Einstellungen haben muss als die anderen Datenbanken, die ihre Einstellungen vom gleichen Server erben.
 >
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Wenn Sie die automatische Optimierung für eine **einzelne Datenbank** aktivieren möchten, navigieren Sie im Azure-Portal zur entsprechenden Datenbank, und wählen Sie **Automatische Optimierung** aus. Durch Aktivieren der Option können Sie eine einzelne Datenbank so konfigurieren, dass sie die Einstellungen des Servers übernimmt. Sie können aber auch eine individuelle Konfiguration für eine Datenbank angeben.
+Wenn Sie die automatische Optimierung für eine **einzelne Datenbank** aktivieren möchten, navigieren Sie im Azure-Portal zur entsprechenden Datenbank, und wählen Sie **Automatische Optimierung** aus.
+
+Einzelne Einstellungen für die automatische Optimierung können für jede Datenbank separat konfiguriert werden. Sie können manuell eine einzelne automatische Optimierungsoption konfigurieren oder angeben, dass eine Option die Einstellungen vom Server erbt.
 
 ![Datenbank](./media/sql-database-automatic-tuning-enable/database.png)
 
-Klicken Sie nach der Wahl der passenden Konfiguration auf **Übernehmen**.
-
 Beachten Sie, dass die Option DROP_INDEX zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. In diesen Fällen sollte sie nicht aktiviert werden.
+
+Klicken Sie nach der Auswahl der gewünschten Konfiguration auf **Übernehmen**.
 
 ### <a name="rest-api"></a>REST-API
 Weitere Informationen zum Aktivieren der automatischen Optimierung für eine einzelne Datenbank mithilfe der REST-API finden Sie [hier](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).

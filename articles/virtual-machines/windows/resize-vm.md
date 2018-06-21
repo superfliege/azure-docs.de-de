@@ -13,43 +13,55 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2016
+ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: d2010ee9017416360069c74118b8ae25e71e1da7
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8854f694ce067aaa80a159430a9f48440bcdd95a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701869"
 ---
 # <a name="resize-a-windows-vm"></a>Ändern der Größe eines virtuellen Windows-Computers
-In diesem Artikel erfahren Sie, wie die Größe eines virtuellen Windows-Computers, der im Resource Manager-Bereitstellungsmodell erstellt wurde, mithilfe von Azure Powershell geändert wird.
+
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Powershell einen virtuellen Computer auf eine andere [VM-Größe](sizes.md) verschieben.
 
 Nachdem Sie einen virtuellen Computer (virtual machine; VM) erstellen, können Sie den virtuellen Computer zentral hoch- oder herunterskalieren, indem Sie die VM-Größe ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM aktuell gehostet wird.
 
+Wenn Ihr virtueller Computer Storage Premium verwendet, stellen Sie sicher, dass Sie für die Größe eine **s**-Version auswählen, damit Storage Premium unterstützt wird. Wählen Sie z. B. Standard_E4**s**_v3 statt Standard_E4_v3 aus.
+
 ## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Ändern der Größe eines virtuellen Windows-Computers nicht in einer Verfügbarkeitsgruppe
-1. Listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird. 
+
+Legen Sie einige Variablen fest. Ersetzen Sie die Werte durch Ihre eigenen Informationen.
+
+```powershell
+$resourceGroup = "myResourceGroup"
+$vmName = "myVM"
+```
+
+Listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird. 
    
-    ```powershell
-    Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName> 
-    ```
-2. Führen Sie die folgenden Befehle aus, um die Größe der VM zu ändern, sofern die gewünschte Größe aufgelistet ist. Wenn die gewünschte Größe nicht aufgeführt ist, fahren Sie mit Schritt 3 fort.
+```powershell
+Get-AzureRmVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
+```
+
+Führen Sie die folgenden Befehle aus, um die Größe des virtuellen Computers zu ändern, wenn die gewünschte Größe aufgelistet ist. Wenn die gewünschte Größe nicht aufgeführt ist, fahren Sie mit Schritt 3 fort.
    
-    ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
-    $vm.HardwareProfile.VmSize = "<newVMsize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
-    ```
-3. Führen Sie die folgenden Befehle aus, falls die gewünschte Größe nicht aufgelistet ist. Damit heben Sie die Zuordnung der VM auf, ändern ihre Größe, und starten sie neu.
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName
+$vm.HardwareProfile.VmSize = "<newVMsize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+```
+
+Führen Sie die folgenden Befehle aus, wenn die gewünschte Größe nicht aufgelistet ist. Damit heben Sie die Zuordnung des virtuellen Computers auf, ändern seine Größe, und starten ihn neu. Ersetzen Sie **<newVMsize>** durch die gewünschte Größe.
    
-    ```powershell
-    $rgname = "<resourceGroupName>"
-    $vmname = "<vmName>"
-    Stop-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force
-    $vm = Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-    $vm.HardwareProfile.VmSize = "<newVMSize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName $rgname
-    Start-AzureRmVM -ResourceGroupName $rgname -Name $vmname
-    ```
+```powershell
+Stop-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName
+$vm.HardwareProfile.VmSize = "<newVMSize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+Start-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+```
 
 > [!WARNING]
 > Die Aufhebung der Zuordnung der VM gibt alle dynamischen IP-Adressen frei, die der VM zugewiesen sind. Das Betriebssystem und die Datenträger sind nicht betroffen. 
@@ -57,50 +69,59 @@ Nachdem Sie einen virtuellen Computer (virtual machine; VM) erstellen, können S
 > 
 
 ## <a name="resize-a-windows-vm-in-an-availability-set"></a>Ändern der Größe eines virtuellen Windows-Computers in einer Verfügbarkeitsgruppe
+
 Wenn die neue Größe für einen virtuellen Computer in einer Verfügbarkeitsgruppe nicht im Hardwarecluster verfügbar ist, auf dem der virtuelle Computer derzeit gehostet wird, muss bei allen virtuellen Computern in der Verfügbarkeitsgruppe die Zuordnung aufgehoben werden, um die Größe des virtuellen Computers ändern zu können. Sie müssen möglicherweise auch die Größe der anderen virtuellen Computer in der Verfügbarkeitsgruppe aktualisieren, nachdem die Größe eines virtuellen Computers geändert wurde. Führen Sie die folgenden Schritte zum Ändern der Größe eines virtuellen Computers in einer Verfügbarkeitsgruppe aus.
 
-1. Listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird.
+```powershell
+$resourceGroup = "myResourceGroup"
+$vmName = "myVM"
+```
+
+Listet die VM-Größen auf, die auf dem Hardwarecluster verfügbar sind, auf dem die VM gehostet wird. 
    
-    ```powershell
-    Get-AzureRmVMSize -ResourceGroupName <resourceGroupName> -VMName <vmName>
-    ```
-2. Führen Sie die folgenden Befehle aus, um die Größe der VM zu ändern, sofern die gewünschte Größe aufgelistet ist. Wenn sie nicht aufgelistet ist, gehen Sie zu Schritt 3.
+```powershell
+Get-AzureRmVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
+```
+
+Führen Sie die folgenden Befehle aus, um die Größe der VM zu ändern, sofern die gewünschte Größe aufgelistet ist. Wenn sie nicht aufgelistet ist, fahren Sie mit dem nächsten Abschnitt fort.
    
-    ```powershell
-    $vm = Get-AzureRmVM -ResourceGroupName <resourceGroupName> -Name <vmName>
-    $vm.HardwareProfile.VmSize = "<newVmSize>"
-    Update-AzureRmVM -VM $vm -ResourceGroupName <resourceGroupName>
-    ```
-3. Wenn die gewünschte Größe nicht aufgelistet ist, fahren Sie mit den folgenden Schritten zum Aufheben der Zuordnung aller virtuellen Computer in der Verfügbarkeitsgruppe fort, skalieren die VMs, und starten sie neu.
-4. Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
+```powershell
+$vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -VMName $vmName 
+$vm.HardwareProfile.VmSize = "<newVmSize>"
+Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
+```
+    
+Wenn die gewünschte Größe nicht aufgelistet ist, fahren Sie mit den folgenden Schritten fort. Damit heben Sie die Zuordnung aller virtuellen Computer in der Verfügbarkeitsgruppe auf, skalieren die VMs, und starten sie neu.
+
+Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
    
-   ```powershell
-   $rg = "<resourceGroupName>"
-   $as = Get-AzureRmAvailabilitySet -ResourceGroupName $rg
-   $vmIds = $as.VirtualMachinesReferences
-   foreach ($vmId in $vmIDs){
-     $string = $vmID.Id.Split("/")
-     $vmName = $string[8]
-     Stop-AzureRmVM -ResourceGroupName $rg -Name $vmName -Force
-   } 
-   ```
-5. Skalieren Sie alle virtuellen Computer in der Verfügbarkeitsgruppe und starten sie neu.
+```powershell
+$as = Get-AzureRmAvailabilitySet -ResourceGroupName $resourceGroup
+$vmIds = $as.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+```
+
+Skalieren Sie alle virtuellen Computer in der Verfügbarkeitsgruppe und starten sie neu.
    
-   ```powershell
-   $rg = "<resourceGroupName>"
-   $newSize = "<newVmSize>"
-   $as = Get-AzureRmAvailabilitySet -ResourceGroupName $rg
-   $vmIds = $as.VirtualMachinesReferences
-   foreach ($vmId in $vmIDs){
-     $string = $vmID.Id.Split("/")
-     $vmName = $string[8]
-     $vm = Get-AzureRmVM -ResourceGroupName $rg -Name $vmName
-     $vm.HardwareProfile.VmSize = $newSize
-     Update-AzureRmVM -ResourceGroupName $rg -VM $vm
-     Start-AzureRmVM -ResourceGroupName $rg -Name $vmName
-   }
-   ```
+```powershell
+$newSize = "<newVmSize>"
+$as = Get-AzureRmAvailabilitySet -ResourceGroupName $resourceGroup
+$vmIds = $as.VirtualMachinesReferences
+  foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    $vm = Get-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+    $vm.HardwareProfile.VmSize = $newSize
+    Update-AzureRmVM -ResourceGroupName $resourceGroup -VM $vm
+    Start-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
+    }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Windows-Computern in einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
+
+Führen Sie mehrere VM-Instanzen aus, und skalieren Sie diese zentral hoch, um zusätzliche Skalierbarkeit zu erhalten. Weitere Informationen finden Sie unter [Automatisches Skalieren von Windows-Computern in einer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

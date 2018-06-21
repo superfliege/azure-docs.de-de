@@ -1,11 +1,11 @@
 ---
-title: "Entwickeln für Azure Files mit Java | Microsoft-Dokumentation"
+title: Entwickeln für Azure Files mit Java | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Java-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
 documentationcenter: java
-author: tamram
-manager: timlt
-editor: tysonn
+author: wmgries
+manager: aungoo
+editor: tamram
 ms.assetid: 3bfbfa7f-d378-4fb4-8df3-e0b6fcea5b27
 ms.service: storage
 ms.workload: storage
@@ -14,19 +14,20 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 8cd3698d4281b933881c45dfa5e7868bd7b0bdaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738199"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Entwickeln für Azure Files mit Java
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
-Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Java und Azure Files ausführen:
+## <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
+Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine Konsolenanwendung und zeigen Ihnen, wie Sie grundlegende Aktionen mit Java und Azure Files ausführen:
 
 * Erstellen und Löschen von Azure-Dateifreigaben
 * Erstellen und Löschen von Verzeichnissen
@@ -34,10 +35,10 @@ Dieses Tutorial veranschaulicht die grundlegende Verwendung von Java bei der Ent
 * Hochladen, Herunterladen und Löschen einer Datei
 
 > [!Note]  
-> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Java-E/A-Klassen einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Java SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
+> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der standardmäßigen Java-E/A-Klassen Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, die das Azure Storage Java SDK verwenden, das über die [Azure File Storage-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert.
 
 ## <a name="create-a-java-application"></a>Erstellen einer Java-Anwendung
-Zum Erstellen der Beispiele benötigen Sie das Java Development Kit (JDK) und das [Azure Storage-SDK für Java][]. Sie sollten auch ein Azure-Speicherkonto erstellt haben.
+Zum Erstellen der Beispiele benötigen Sie das Java Development Kit (JDK) und das [Azure Storage-SDK für Java](https://github.com/Azure/azure-storage-java). Sie sollten auch ein Azure-Speicherkonto erstellt haben.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Einrichten der Anwendung für die Verwendung von Azure Files
 Um die Azure-Speicher-APIs zu verwenden, fügen Sie die folgende Anweisung am Anfang der Java-Datei dort ein, wo der Zugriff auf den Speicherdienst erfolgen soll.
@@ -144,7 +145,7 @@ if (sampleDir.createIfNotExists()) {
 ```
 
 ## <a name="delete-a-directory"></a>Löschen eines Verzeichnisses
-Das Löschen eines Verzeichnisses ist eine ziemlich einfache Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
+Das Löschen eines Verzeichnisses ist eine unkomplizierte Angelegenheit. Dabei ist jedoch zu beachten, dass Verzeichnisse, die noch Dateien oder andere Verzeichnisse enthalten, nicht gelöscht werden können.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -172,7 +173,7 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 ```
 
 ## <a name="upload-a-file"></a>Hochladen einer Datei
-Eine Azure-Dateifreigabe enthält mindestens ein Stammverzeichnis, in dem Dateien gespeichert werden können. In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
+In diesem Abschnitt erfahren Sie, wie Sie eine Datei vom lokalen Speicher in das Stammverzeichnis einer Freigabe hochladen.
 
 Im ersten Schritt beim Hochladen einer Datei wird ein Verweis auf das Verzeichnis abgerufen, in dem sie gespeichert werden soll. Rufen Sie dazu die **getRootDirectoryReference** -Methode des Freigabeobjekts auf.
 
