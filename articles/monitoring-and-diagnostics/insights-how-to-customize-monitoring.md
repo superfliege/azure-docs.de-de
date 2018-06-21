@@ -1,24 +1,19 @@
 ---
-title: "Überblick über Metriken in Microsoft Azure | Microsoft Docs"
-description: "Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen."
+title: 'Übersicht: Metriken in Azure Monitor'
+description: Erfahren Sie, wie Sie Überwachungsdiagramme in Azure anpassen.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: c36031eb-4df5-4cd5-9479-311d493a40d2
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 06/06/2017
 ms.author: robb
-ms.openlocfilehash: 3f9ebb0f5737714dd685f0dcc1ff4b1c0c89528f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: metrics
+ms.openlocfilehash: 878ba004e7572ad78f574c15fd76c8868b281117
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35262255"
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 Alle Azure-Dienste verfolgen wichtige Metriken, die Ihnen das Überwachen der Integrität, Leistung, Verfügbarkeit und Nutzung Ihrer Dienste ermöglichen. Sie können diese Metriken im Azure-Portal anzeigen, und Sie können darüber hinaus mithilfe von [REST-API](https://msdn.microsoft.com/library/azure/dn931930.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) programmgesteuert auf sämtliche Metriken zugreifen.
@@ -62,7 +57,7 @@ Wie bei den Metriken können Sie mithilfe von [REST-API](https://msdn.microsoft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Empfangen von Warnbenachrichtigungen](insights-receive-alert-notifications.md) , wenn eine Metrik einen Schwellenwert überschreitet.
-* [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md) , um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln.
+* [Aktivieren von Überwachung und Diagnose](insights-how-to-use-diagnostics.md) , um detaillierte Hochfrequenzmetriken zu Ihrem Dienst zu sammeln
 * [Automatisches Skalieren der Instanzenanzahl](insights-how-to-scale.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.
 * [Überwachen der Anwendungsleistung](../application-insights/app-insights-azure-web-apps.md) , um präzise Informationen zur Leistung Ihres Codes in der Cloud zu ermitteln.
 * Verwenden von [Application Insights für JavaScript-Apps und Webseiten](../application-insights/app-insights-web-track-usage.md) , um eine Clientanalyse über die Browser zu erhalten, mit denen auf eine Webseite zugegriffen wird.

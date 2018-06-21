@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/02/2018
+ms.topic: conceptual
+ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: fe68797090926f2e0e0e2fbb66ba2bb7f6d940e7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770960"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235276"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,8 +37,11 @@ Sie können Daten aus einer Cassandra-Datenbank in beliebige unterstützte Senke
 
 Der Cassandra-Connector unterstützt insbesondere Folgendes:
 
-- Cassandra **Version 2.X**
+- Cassandra **Version 2.x und 3.x**.
 - Kopieren von Daten unter Verwendung der **Standard**- oder **anonymen** Authentifizierung
+
+>[!NOTE]
+>Für Aktivitäten, die auf einer selbst gehosteten Integration Runtime ausgeführt werden, wird Cassandra 3.x seit IR-Version 3.7 oder höher unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,6 +66,9 @@ Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterst
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+
+>[!NOTE]
+>Verbindungen mit Cassandra über SSL werden zurzeit nicht unterstützt.
 
 **Beispiel:**
 

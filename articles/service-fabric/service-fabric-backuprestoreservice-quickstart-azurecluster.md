@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: b2e2e7dcc26bece79ae0423d55b08416065d599e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 73b5356f63199c7530fe5eef0c4b4b7ee617ff5f
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236119"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric (Vorschau)
 > [!div class="op_single_selector"]
@@ -117,13 +118,13 @@ Jetzt erläutern wir schrittweise das Aktivieren der regelmäßigen Sicherung f�
 
 Der erste Schritt ist das Erstellen der Sicherungsrichtlinie, die den Sicherungszeitplan, den Zielspeicher für Sicherungsdaten, den Richtliniennamen und die maximal zulässige Anzahl inkrementeller Sicherungen vor dem Auslösen einer vollständigen Sicherung beschreibt. 
 
-Verwenden Sie für den Sicherungsspeicher das oben erstellte Azure Storage-Konto. In diesem Beispiel wird ein Azure Storage-Konto mit dem Namen `sfbackupstore` verwendet. Der Container `backup-container` ist zum Speichern von Sicherungen konfiguriert. Ein Container mit diesem Namen wird beim Hochladen von Sicherungen erstellt, wenn er nicht bereits vorhanden ist. Geben Sie für `ConnectionString` die gültige Verbindungszeichenfolge für das Azure Storage-Konto an.
+Verwenden Sie für den Sicherungsspeicher das oben erstellte Azure Storage-Konto. Container `backup-container` ist zum Speichern von Sicherungen konfiguriert. Ein Container mit diesem Namen wird während des Sicherungsuploads erstellt, wenn er nicht bereits vorhanden ist. Füllen Sie `ConnectionString` mit einer gültigen Verbindungszeichenfolge für das Azure Storage-Konto auf, und ersetzen Sie dabei `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
 
-Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die neue Richtlinie zu erstellen.
+Führen Sie das folgende PowerShell-Skript zum Aufrufen der erforderlichen REST-API aus, um die neue Richtlinie zu erstellen. Ersetzen Sie `account-name` durch den Namen Ihres Speicherkontos und `account-key` durch Ihren Speicherkontoschlüssel.
 
 ```powershell
 $StorageInfo = @{
-    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=sfbackupstore;AccountKey=64S+3ykBgOuKhd2DK1qHJJtDml3NtRzgaZUa+8iwwBAH4EzuGt95JmOm7mp/HOe8V3l645iv5l8oBfnhhc7dJA==;EndpointSuffix=core.windows.net'
+    ConnectionString = 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net'
     ContainerName = 'backup-container'
     StorageKind = 'AzureBlobStore'
 }

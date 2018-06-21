@@ -1,35 +1,39 @@
 ---
-title: "Azure-Protokollintegration mit Azure Active Directory-Überwachungsprotokollen | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie den Dienst Azure-Protokollintegration installieren und Azure-Überwachungsprotokolle integrieren."
+title: Azure-Protokollintegration mit Azure Active Directory-Überwachungsprotokollen | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Dienst Azure-Protokollintegration installieren und Azure-Überwachungsprotokolle integrieren.
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 02/16/2018
+ms.date: 06/07/2018
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0f45f43a0296a7d90a68b0526f805ea50a1ce6c6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 07299b960747528dde8dcefc70055442c2150486
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235990"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Integrieren von Azure Active Directory-Überwachungsprotokollen
 
 Azure AD-Überwachungsereignisse (Azure Active Directory) helfen Ihnen, privilegierte Aktionen zu bestimmen, die in Azure Active Directory aufgetreten sind. Sie können die Typen von Ereignissen anzeigen, die Sie nachverfolgen können, indem Sie [Azure Active Directory-Überwachungsberichtereignisse](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md) überprüfen.
 
 
-> [!NOTE]
-> Zur Vorbereitung auf die Schritte in diesem Artikel müssen zunächst die Schritte im Artikel [Erste Schritte](security-azure-log-integration-get-started.md) ausgeführt werden.
+>[!IMPORTANT]
+> Die Azure-Protokollintegrationsfunktion wird ab dem 01.06.2019 als veraltet markiert. AzLog-Downloads werden ab dem 27. Juni 2018 deaktiviert. Um Unterstützung bei der zukünftigen Vorgehensweise zu erhalten, lesen Sie den Beitrag [Use Azure Monitor to integrate with SIEM tools](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/) (Verwenden von Azure Monitor für die Integration mit SIEM-Tools). 
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Schritte zum Integrieren von Azure Active Directory-Überwachungsprotokollen
+
+> [!NOTE]
+> Zur Vorbereitung auf die Ausführung der in diesem Artikel beschriebenen Schritte müssen zunächst die relevanten Schritte im Artikel [Erste Schritte](security-azure-log-integration-get-started.md) ausgeführt werden.
 
 1. Öffnen Sie die Eingabeaufforderung, und führen Sie diesen Befehl aus:
 

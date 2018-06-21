@@ -1,24 +1,19 @@
 ---
-title: "Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps | Microsoft Docs"
-description: "Enthält eine Übersicht über die automatische Skalierung in Microsoft Azure. Gilt für Virtual Machines, Cloud Services und Web-Apps."
+title: Übersicht über die automatische Skalierung in Virtual Machines, Cloud Services und Web-Apps
+description: Automatische Skalierung in Microsoft Azure. Gilt für Virtual Machines, VM-Skalierungsgruppen, Clouddienste und Web-Apps.
 author: rboucher
-manager: carmonm
-editor: 
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: 74bf03be-e658-4239-a214-c12424b53e4c
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: conceptual
 ms.date: 03/02/2016
 ms.author: robb
-ms.openlocfilehash: 0a30f0c3b799f76858424d97218c5a6e4386e78e
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.component: autoscale
+ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264669"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -48,7 +43,7 @@ Für Skalierungsgruppen für virtuelle Computer werden Telemetriedaten von Azure
 ## <a name="custom-metrics"></a>Benutzerdefinierte Metriken
 Sie können auch eigene benutzerdefinierten Metriken verwenden, die von Ihren Anwendungen ausgegeben werden können. Wenn Sie Ihre Anwendungen für das Senden von Metriken an Application Insights konfiguriert haben, können Sie anhand dieser Metriken entscheiden, ob die Skalierung angewendet werden soll oder nicht. 
 
-## <a name="time"></a>Time
+## <a name="time"></a>Zeit
 Für zeitplanbasierte Regeln gilt die UTC-Zeit. Sie müssen die Zeitzone richtig einrichten, wenn Sie Ihre Regeln festlegen.  
 
 ## <a name="rules"></a>Regeln
@@ -69,7 +64,7 @@ Mit Regeln können eine oder mehrere Arten von Aktionen ausgelöst werden.
 ## <a name="autoscale-settings"></a>Einstellungen für die automatische Skalierung
 Für die automatische Skalierung wird die folgende Terminologie bzw. Struktur verwendet.
 
-- Eine **Autoskalierungseinstellung** wird vom Modul für die automatische Skalierung gelesen, um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll. Sie enthält mindestens ein Profil, Informationen zur Zielressource und Benachrichtigungseinstellungen.
+- Eine **Einstellung für die automatische Skalierung** wird von der Engine für die automatische Skalierung gelesen, um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll. Sie enthält mindestens ein Profil, Informationen zur Zielressource und Benachrichtigungseinstellungen.
 
     - Ein **Profil für die automatische Skalierung** ist eine Kombination aus:
 
@@ -88,7 +83,7 @@ Die vollständige Liste mit den konfigurierbaren Feldern und Beschreibungen find
 
 Codebeispiele finden Sie unter:
 
-* [Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
+* [Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
 * [REST-API für die automatische Skalierung](https://msdn.microsoft.com/library/dn931953.aspx)
 
 ## <a name="horizontal-vs-vertical-scaling"></a>Horizontale und vertikale Skalierung
@@ -114,7 +109,7 @@ Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 | Virtuelle Computer: Klassisch |[Scaling Classic Virtual Machine Availability Sets (Skalieren von klassischen VM-Verfügbarkeitsgruppen)](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
 | Virtuelle Computer: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | Virtuelle Computer: Linux-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
-| Virtuelle Computer: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM-Skalierungsgruppen](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Virtuelle Computer: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung können Sie den obigen exemplarischen Vorgehensweisen für die automatische Skalierung oder den folgenden Ressourcen entnehmen:
