@@ -1,0 +1,231 @@
+---
+title: 'Tutorial: Azure Active Directory-Integration mit RedVector | Microsoft Docs'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und RedVector konfigurieren.
+services: active-directory
+documentationCenter: na
+author: jeevansd
+manager: mtillman
+ms.assetid: 99042f39-0ab2-475b-8df8-3016d7f875e9
+ms.service: active-directory
+ms.component: saas-app-tutorial
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 06/28/2017
+ms.author: jeedes
+ms.openlocfilehash: 06bdb52664a5e47b8c2f9d775244816f9e2e5fe5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224197"
+---
+# <a name="tutorial-azure-active-directory-integration-with-redvector"></a>Tutorial: Azure Active Directory-Integration mit RedVector
+
+In diesem Tutorial erfahren Sie, wie Sie RedVector in Azure Active Directory (Azure AD) integrieren.
+
+Die Integration von RedVector in Azure AD bietet folgende Vorteile:
+
+- Sie können in Azure AD steuern, wer Zugriff auf RedVector haben soll.
+- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei RedVector anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um die Azure AD-Integration mit RedVector konfigurieren zu können, benötigen Sie Folgendes:
+
+- Ein Azure AD-Abonnement
+- Ein SSO-fähiges RedVector-Abonnement
+
+> [!NOTE]
+> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+
+Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+
+## <a name="scenario-description"></a>Beschreibung des Szenarios
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+
+1. Hinzufügen von RedVector über den Katalog
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+
+## <a name="adding-redvector-from-the-gallery"></a>Hinzufügen von RedVector über den Katalog
+Zum Konfigurieren der Integration von RedVector in Azure AD müssen Sie RedVector über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
+
+**Führen Sie die folgenden Schritte aus, um RedVector über den Katalog hinzuzufügen:**
+
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+
+    ![Active Directory][1]
+
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+
+    ![ANWENDUNGEN][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+    ![ANWENDUNGEN][3]
+
+4. Geben Sie im Suchfeld die Zeichenfolge **RedVector**ein.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/tutorial_redvector_search.png)
+
+5. Wählen Sie im Ergebnisbereich die Option **RedVector** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/tutorial_redvector_addfromgallery.png)
+
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit RedVector.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in RedVector als Gegenpart für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in RedVector muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in RedVector den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit RedVector zu konfigurieren und zu testen:
+
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+3. **[Erstellen eines RedVector-Testbenutzers](#creating-a-redvector-test-user)** , um in RedVector einen Gegenpart von Britta Simon zu erhalten, der mit der Darstellung dieses Benutzers in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer RedVector-Anwendung.
+
+**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit RedVector zu konfigurieren:**
+
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **RedVector** auf **Einmaliges Anmelden**.
+
+    ![Configure Single Sign-On][4]
+
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_redvector_samlbase.png)
+
+3. Führen Sie auf der Seite **Domäne und URLs für RedVector** die folgenden Schritte aus:
+
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_redvector_url.png)
+
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://sso2.redvector.com/adfs/<Companyname>`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<Companyname>.redvector.com/saml2`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an den [RedVector-Support](mailto:sso@redvector.com), um diese Werte zu erhalten. 
+ 
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_redvector_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_general_400.png)
+
+6. Klicken Sie im Abschnitt **RedVector-Konfiguration** auf **RedVector konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_redvector_configure.png) 
+
+7. Zum Konfigurieren des einmaligen Anmeldens bei **RedVector** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Dienst-URL für einmaliges Anmelden** an das [RedVector-Supportteam](mailto:sso@redvector.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+> [!TIP]
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+![Azure AD-Benutzer erstellen][100]
+
+**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+
+1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/create_aaduser_01.png) 
+
+2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+    
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/create_aaduser_02.png) 
+
+3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/create_aaduser_03.png) 
+
+4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+ 
+    ![Erstellen eines Azure AD-Testbenutzers](./media/redvector-tutorial/create_aaduser_04.png) 
+
+    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+
+    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+
+    d. Klicken Sie auf **Create**.
+ 
+### <a name="creating-a-redvector-test-user"></a>Erstellen eines RedVector-Testbenutzers
+
+In diesem Abschnitt erstellen Sie in RedVector einen Benutzer namens Britta Simon. Falls Sie nicht wissen, wie Sie Britta Simon in RedVector hinzufügen sollen, können Sie sich beim Hinzufügen des Testbenutzers und beim Aktivieren von SSO vom [RedVector-Supportteam](mailto:sso@redvector.com) unterstützen lassen.
+
+### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf RedVector gewähren.
+
+![Benutzer zuweisen][200] 
+
+**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu RedVector durchzuführen:**
+
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
+
+2. Wählen Sie in der Anwendungsliste die Option **RedVector**aus.
+
+    ![Configure Single Sign-On](./media/redvector-tutorial/tutorial_redvector_app.png) 
+
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+
+    ![Benutzer zuweisen][202] 
+
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Benutzer zuweisen][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+
+Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+
+Wenn Sie im Zugriffsbereich auf die Kachel „RedVector“ klicken, sollten Sie automatisch bei Ihrer RedVector-Anwendung angemeldet werden.
+
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
+* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+
+
+
+<!--Image references-->
+
+[1]: ./media/redvector-tutorial/tutorial_general_01.png
+[2]: ./media/redvector-tutorial/tutorial_general_02.png
+[3]: ./media/redvector-tutorial/tutorial_general_03.png
+[4]: ./media/redvector-tutorial/tutorial_general_04.png
+
+[100]: ./media/redvector-tutorial/tutorial_general_100.png
+
+[200]: ./media/redvector-tutorial/tutorial_general_200.png
+[201]: ./media/redvector-tutorial/tutorial_general_201.png
+[202]: ./media/redvector-tutorial/tutorial_general_202.png
+[203]: ./media/redvector-tutorial/tutorial_general_203.png
+

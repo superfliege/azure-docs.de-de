@@ -1,25 +1,17 @@
 ---
 title: Beibehalten von IP-Adressen beim Durchführen eines Failovers von virtuellen Azure-Computern in eine andere Azure-Region | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie IP-Adressen für Failoverszenarien von Azure zu Azure mit Azure Site Recovery beibehalten.
-services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/11/2018
+author: mayanknayar
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: manayar
-ms.openlocfilehash: 9a9c18bfe9073e5af94c7bd8f0fbb91651387731
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ec15456dcb80478e36560cde7ac0710ca8e6ca3b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071663"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285106"
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Beibehaltung von IP-Adressen für das Failover von virtuellen Azure-Computern
 

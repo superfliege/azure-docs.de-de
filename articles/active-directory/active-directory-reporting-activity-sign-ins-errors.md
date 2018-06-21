@@ -3,25 +3,25 @@ title: Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Dire
 description: Enthält eine Referenz zu den Fehlercodes des Berichts mit den Anmeldeaktivitäten.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698508"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231988"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -65,13 +65,13 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |40008|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |40009|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
 |40014|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
-|50000|Es besteht ein Problem mit unserem Anmeldedienst. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md), um dieses Problem zu beheben.|
+|50000|Es besteht ein Problem mit unserem Anmeldedienst. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md), um dieses Problem zu beheben.|
 |50001|Der Dienstprinzipalname wurde unter diesem Mandanten nicht gefunden. Dies kann passieren, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde. Es kann auch sein, dass der Ressourcenprinzipal nicht im Verzeichnis gefunden wurde oder ungültig ist.|
 |50002|Fehler bei der Anmeldung aufgrund von eingeschränktem Proxyzugriff auf dem Mandanten. Falls es sich um Ihre eigene Mandantenrichtlinie handelt, können Sie die Einschränkungseinstellungen des Mandanten ändern, um dieses Problem zu beheben.|
 |50003|Fehler bei der Anmeldung aufgrund eines fehlenden Signaturschlüssels oder Zertifikats. Der Grund hierfür kann sein, dass in der Anwendung kein Signaturschlüssel konfiguriert wurde. Sehen Sie sich die Lösungen unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured) an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der Anwendung wenden.|
 |50005|Der Benutzer hat versucht, sich über eine Plattform an einem Gerät anzumelden, die aufgrund einer Richtlinie für bedingten Zugriff nicht unterstützt wird.|
 |50006| Fehler bei der Signaturüberprüfung aufgrund einer ungültigen Signatur. Sehen Sie sich die Lösung unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery) an. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden.|
-|50007|Das Partnerverschlüsselungszertifikat für diese Anwendung wurde nicht gefunden. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md) bei Microsoft, um dieses Problem zu beheben.|
+|50007|Das Partnerverschlüsselungszertifikat für diese Anwendung wurde nicht gefunden. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md) bei Microsoft, um dieses Problem zu beheben.|
 |50008|Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert. Wenden Sie sich an Ihren Verbundanbieter.|
 |50010|Fehler bei der Überprüfung des Benutzergruppen-URI für die Anwendung, da keine Tokenzielgruppen konfiguriert wurden. Wenden Sie sich an den Besitzer der Anwendung.|
 |50011|Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein. Versuchen Sie es mit der Lösung, die unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) angegeben ist. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden.|
@@ -114,8 +114,8 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |50133|Die Sitzung ist ungültig, weil das Kennwort abgelaufen ist oder vor Kurzem geändert wurde.|
 |50135|Aufgrund eines Risikos, das für das Konto besteht, ist eine Kennwortänderung erforderlich.|
 |50136|Umleitung der MSA-Sitzung an die App: Einzelne MSA-Sitzung erkannt |
-|50140|Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interrupt-Vorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
-|50143|Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen.|
+|50140|Dieser Fehler ist aufgetreten, weil beim Anmelden des Benutzers der Interrupt-Vorgang „Angemeldet bleiben“ aufgetreten ist. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen. |
+|50143|Sitzungskonflikt: Die Sitzung ist ungültig, weil der Benutzermandant aufgrund einer anderen Ressource nicht mit dem Domänenhinweis übereinstimmt. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md) mit der Korrelations-ID, Anforderungs-ID und dem Fehlercode, um weitere Details anzuzeigen.|
 |50144|Das Active Directory-Kennwort des Benutzers ist abgelaufen. Generieren Sie ein neues Kennwort für den Benutzer, oder bitten Sie ihn, das Self-Service-Tool für die Zurücksetzung zu nutzen.|
 |50146|Diese Anwendung muss mit einem anwendungsspezifischen Signaturschlüssel konfiguriert werden. Entweder ist dies nicht der Fall, oder der Schlüssel ist abgelaufen oder noch nicht gültig. Wenden Sie sich an den Besitzer der Anwendung.|
 |50148|Der „code_verifier“ stimmt in der Autorisierungsanforderung für PKCE nicht mit dem „code_challenge“-Element überein. Wenden Sie sich an den Anwendungsentwickler. |
@@ -150,7 +150,7 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |70007|Die Anwendung hat beim Anfordern eines Tokens den nicht unterstützten Wert „response_mode“ zurückgegeben. Wenden Sie sich an den Besitzer der App.|
 |70008|Der bereitgestellte Autorisierungscode oder das Aktualisierungstoken ist abgelaufen: - Wurde widerrufen. Bitten Sie den Benutzer, die Anmeldung noch einmal durchzuführen.|
 |70011|Der von der Anwendung angeforderte Bereich ist ungültig. Wenden Sie sich an den Besitzer der Anwendung.|
-|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
+|70012|Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
 |70018|Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt.|
 |70019|Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen.|
 |70037|Falsche Überprüfungsantwort angegeben. Die Remote-Authentifizierungssitzung wurde verweigert.|
@@ -161,15 +161,15 @@ Der folgende Abschnitt enthält eine vollständige Übersicht über alle möglic
 |75011|Die Authentifizierungsmethode, mit der sich der Benutzer beim Dienst authentifiziert hat, stimmt nicht mit der angeforderten Authentifizierungsmethode überein. Wenden Sie sich an den Besitzer der App.|
 |75016|Die SAML2-Authentifizierungsanforderung verfügt über eine ungültige NameIdPolicy. Wenden Sie sich an den Besitzer der App.|
 |80001|Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. Stellen Sie sicher, dass der Authentifizierungs-Agent auf einem in die Domäne eingebundenen Computer mit „Sichtverbindung“ zu einem Domänencontroller installiert ist, über den die Anmeldeanforderung des Benutzers bereitgestellt werden kann.|
-|80002|Interner Fehler. Für die Anforderung zur Kennwortüberprüfung ist ein Timeout aufgetreten. Es war nicht möglich, die Authentifizierungsanforderung an den internen Hybrid-Identitätsdienst zu senden. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
-|80003|Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten. Beim Versuch, die Authentifizierung über die lokale Active Directory-Instanz durchzuführen, ist ein unbekannter Fehler aufgetreten. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
-|80005|Authentifizierungs-Agent: Beim Verarbeiten der Antwort vom Authentifizierungs-Agent ist ein unbekannter Fehler aufgetreten. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
+|80002|Interner Fehler. Für die Anforderung zur Kennwortüberprüfung ist ein Timeout aufgetreten. Es war nicht möglich, die Authentifizierungsanforderung an den internen Hybrid-Identitätsdienst zu senden. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
+|80003|Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten. Beim Versuch, die Authentifizierung über die lokale Active Directory-Instanz durchzuführen, ist ein unbekannter Fehler aufgetreten. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
+|80005|Authentifizierungs-Agent: Beim Verarbeiten der Antwort vom Authentifizierungs-Agent ist ein unbekannter Fehler aufgetreten. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten.|
 |80007|Der Authentifizierungs-Agent kann das Kennwort des Benutzers nicht überprüfen.|
 |80010|Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln. |
 |80011|Der Authentifizierungs-Agent kann den Verschlüsselungsschlüssel nicht abrufen.|
 |80012|Die Benutzer haben versucht, sich außerhalb der zulässigen Zeiten (in AD angegeben) anzumelden.|
 |80013|Der Authentifizierungsversuch konnte nicht abgeschlossen werden, da zwischen dem Computer, auf dem der Authentifizierungs-Agent ausgeführt wird, und AD eine Zeitabweichung besteht. Beheben Sie die Probleme mit der Zeitsynchronisierung.|
-|80014|Für den Authentifizierungs-Agent ist ein Timeout aufgetreten. [Öffnen Sie ein Supportticket](active-directory-troubleshooting-support-howto.md) mit dem Fehlercode, der Korrelations-ID und dem Datetime-Wert, um weitere Details zu diesem Fehler zu erhalten.|
+|80014|Für den Authentifizierungs-Agent ist ein Timeout aufgetreten. [Öffnen Sie ein Supportticket](fundamentals/active-directory-troubleshooting-support-howto.md) mit dem Fehlercode, der Korrelations-ID und dem Datetime-Wert, um weitere Details zu diesem Fehler zu erhalten.|
 |81001|Das Kerberos-Ticket des Benutzers ist zu groß. Dies kann passieren, wenn der Benutzer zu vielen Gruppen angehört und das Kerberos-Ticket aus diesem Grund zu viele Gruppenmitgliedschaften enthält. Reduzieren Sie die Gruppenmitgliedschaften des Benutzers, und versuchen Sie es erneut.|
 |81005|Das Authentifizierungspaket wird nicht unterstützt.|
 |81007|Der Mandant ist nicht für das nahtlose einmalige Anmelden aktiviert.|
