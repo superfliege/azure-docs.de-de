@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 506ff0bce0b68b1477f27f913bd3fe119e36cca1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8e3cc261576e38cc304dc740f89582f7fd857e1a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293033"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -84,7 +85,23 @@ Sharepointserviceaccount kann das SPS-Computerkonto oder ein Dienstkonto sein, u
 
 
 ## <a name="sso-for-non-windows-apps"></a>SSO für Nicht-Windows-Apps
-Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. Es gibt mehrere Protokolle, die definieren, wie solche Anforderungen gesendet werden. Die meisten Nicht-Windows-Server erwarten Negotiate/SPNego, das jetzt im Azure AD-Anwendungsproxy unterstützt wird.
+
+Der Ablauf der Kerberos-Delegierung im Azure AD-Anwendungsproxy wird gestartet, wenn Azure AD den Benutzer in der Cloud authentifiziert. Sobald die Anforderung lokal ankommt, gibt der Azure AD-Anwendungsproxy-Connector durch Interaktion mit dem lokalen Active Directory ein Kerberos-Ticket für den Benutzer aus. Dieser Prozess wird als Kerberos Constrained Delegation (KCD) bezeichnet. In der nächsten Phase wird mit diesem Kerberos-Ticket eine Anforderung an die Back-End-Anwendung gesendet. 
+
+Es gibt mehrere Protokolle, die definieren, wie solche Anforderungen gesendet werden. Die meisten Nicht-Windows Server erwarten, dass die Aushandlung über SPNEGO erfolgt. Dieses Protokoll wird auf dem Azure AD-Anwendungsproxy unterstützt, ist aber standardmäßig deaktiviert. Ein Server kann für SPNEGO oder die standardmäßige KCD konfiguriert werden, jedoch nicht für beide.
+
+Wenn Sie einen Connectorcomputer für SPNEGO konfigurieren, stellen Sie sicher, dass alle anderen Connectors in dieser Connectorgruppe ebenfalls mit SPNEGO konfiguriert sind. Anwendungen, die eine standardmäßige KCD erwarten, sollten über andere Connectors weitergeleitet werden, die nicht für SPNEGO konfiguriert sind.
+ 
+
+So aktivieren Sie SPNEGO:
+
+1. Öffnen Sie eine Eingabeaufforderung, die mit Administratorrechten ausgeführt wird.
+2. Führen Sie an der Eingabeaufforderung für die Connectorserver, die SPNEGO benötigen, die folgenden Befehle aus.
+
+    ```
+    REG ADD "HKLM\SOFTWARE\Microsoft\Microsoft AAD App Proxy Connector" /v UseSpnegoAuthentication /t REG_DWORD /d 1
+    net stop WAPCSvc & net start WAPCSvc
+    ```
 
 Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
 
@@ -124,7 +141,7 @@ In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwen
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [Problembehandlung von Anwendungsproxys](../active-directory-application-proxy-troubleshoot.md)
+* [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](http://blogs.technet.com/b/applicationproxyblog/)

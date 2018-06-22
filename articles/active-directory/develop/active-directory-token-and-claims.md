@@ -17,12 +17,12 @@ ms.date: 05/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 95ce83a3f1288d1b731aeeb8dcc32e58bcaefe21
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157920"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801863"
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
 Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben. 
@@ -56,7 +56,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | JWT-Anspruch | NAME | BESCHREIBUNG |
 | --- | --- | --- |
 | `aud` |Zielgruppe |Der vorgesehene Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind. <br><br> **SAML-Beispielwert**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT-Beispielwert**: <br> `"aud":"https://contoso.com"` |
-| `appidacr` |Application Authentication Context Class Reference (Kontextklassenreferenz für die Anwendungsauthentifizierung) |Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. <br><br> **JWT-Beispielwert**: <br> `"appidacr": "0"` |
+| `appidacr` |Application Authentication Context Class Reference (Kontextklassenreferenz für die Anwendungsauthentifizierung) |Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. Wenn ein Clientzertifikat für die Authentifizierung verwendet wurde, lautet der Wert 2. <br><br> **JWT-Beispielwert**: <br> `"appidacr": "0"` |
 | `acr` |Authentication Context Class Reference (Klassenreferenz des Anwendungskontexts) |Gibt an, wie der Antragsteller authentifiziert wurde (im Gegensatz zum Client im Anspruch „Kontextklassenreferenz für die Anwendungsauthentifizierung“). Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt. <br><br> **JWT-Beispielwert**: <br> `"acr": "0"` |
 | Authentifizierungszeitpunkt |Erfasst Datum und Uhrzeit der Authentifizierung. <br><br> **SAML-Beispielwert**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
 | `amr` |Authentifizierungsmethode |Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. <br><br> **SAML-Beispielwert**: <br> `<AuthnContextClassRef>`<br>`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod/password`<br>`</AuthnContextClassRef>` <br><br> **JWT-Beispielwert**: `“amr”: ["pwd"]` |
@@ -153,21 +153,31 @@ Eine vollständige Liste mit Anspruchsüberprüfungen für ID-Token, die von Ihr
 ## <a name="token-revocation"></a>Widerrufen von Token
 
 Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungültig werden. Hierbei gibt es zwei Hauptkategorien: Zeitüberschreitungen und Widerrufe. 
-* Tokenzeitüberschreitungen
-  * MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig. 
-  * MaxSessionAge: Wenn MaxAgeSessionMultiFactor oder MaxAgeSessionSingleFactor auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der unter MaxAgeSession* festgelegte Zeitraum abgelaufen ist. 
-  * Beispiele:
-    * Der MaxInactiveTime-Wert des Mandanten beträgt fünf Tage, und der Benutzer war eine Woche lang im Urlaub. Aus diesem Grund hat AAD sieben Tage lang keine neue Tokenanforderung vom Benutzer erhalten. Bei der nächsten Anforderung eines neuen Tokens durch den Benutzer wurde das Aktualisierungstoken widerrufen, sodass der Benutzer seine Anmeldeinformationen erneut eingeben muss. 
-    * Eine sensible Anwendung verfügt über einen MaxAgeSessionSingleFactor-Wert von einem Tag. Wenn sich ein Benutzer am Montag anmeldet, muss er sich am Dienstag (nach Ablauf von 25 Stunden) erneut authentifizieren. 
-* Widerruf
-  * Freiwillige Kennwortänderung: Wenn ein Benutzer sein Kennwort ändert, muss er für einige seiner Anwendungen je nach Erhalt des Tokens ggf. eine erneute Authentifizierung durchführen. Unten sind Hinweise zu den Ausnahmen angegeben. 
-  * Unfreiwillige Kennwortänderung: Wenn ein Administrator einen Benutzer zwingt, sein Kennwort zu ändern, oder das Kennwort zurücksetzt, werden die Token des Benutzers ungültig, wenn sie mit seinem Kennwort beschafft wurden. Unten sind Hinweise zu den Ausnahmen angegeben. 
-  * Sicherheitsverletzung: Bei einer Sicherheitsverletzung (z.B. einer Verletzung des lokalen Kennwortspeichers) kann der Administrator alle derzeit ausgestellten Aktualisierungstoken widerrufen. Hierdurch wird erzwungen, dass sich alle Benutzer erneut authentifizieren müssen. 
+
+**Tokenzeitüberschreitungen**
+
+* MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig. 
+* MaxSessionAge: Wenn MaxAgeSessionMultiFactor oder MaxAgeSessionSingleFactor auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der unter MaxAgeSession* festgelegte Zeitraum abgelaufen ist. 
+* Beispiele:
+  * Der MaxInactiveTime-Wert des Mandanten beträgt fünf Tage, und der Benutzer war eine Woche lang im Urlaub. Aus diesem Grund hat AAD sieben Tage lang keine neue Tokenanforderung vom Benutzer erhalten. Bei der nächsten Anforderung eines neuen Tokens durch den Benutzer wurde das Aktualisierungstoken widerrufen, sodass der Benutzer seine Anmeldeinformationen erneut eingeben muss. 
+  * Eine sensible Anwendung verfügt über einen MaxAgeSessionSingleFactor-Wert von einem Tag. Wenn sich ein Benutzer am Montag anmeldet, muss er sich am Dienstag (nach Ablauf von 25 Stunden) erneut authentifizieren. 
+
+**Widerruf**
+
+|   | Kennwortbasiertes Cookie | Kennwortbasiertes Token | Nicht kennwortbasiertes Cookie | Nicht kennwortbasiertes Token | Vertrauliches Clienttoken| 
+|---|-----------------------|----------------------|---------------------------|--------------------------|--------------------------|
+|Kennwort läuft ab| Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|
+|Kennwort wird vom Benutzer geändert| Widerrufen | Widerrufen | Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|
+|Benutzer verwendet SSPR|Widerrufen | Widerrufen | Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|
+|Administrator setzt Kennwort zurück|Widerrufen | Widerrufen | Bleibt aktiv|Bleibt aktiv|Bleibt aktiv|
+|Benutzer widerruft Aktualisierungstoken [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen |Widerrufen | Widerrufen |
+|Admin widerruft alle Aktualisierungstoken für den Mandanten [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen |Widerrufen | Widerrufen |
+|[Einmaliges Abmelden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code#single-sign-out) im Web | Widerrufen | Bleibt aktiv |Widerrufen | Bleibt aktiv |Bleibt aktiv |Bleibt aktiv |
 
 > [!NOTE]
->Wenn zum Beschaffen des Tokens ein Authentifizierungsverfahren ohne Kennwort verwendet wurde (Windows Hello, Authenticator-App, biometrisch, z.B. Gesichtserkennung oder Fingerabdruck), wird bei einer Änderung des Benutzerkennworts keine erneute Authentifizierung des Benutzers erzwungen (aber für die Authenticator-App). Der Grund ist, dass sich die gewählte Authentifizierungseingabe (z.B. ein Gesicht) nicht geändert hat und daher erneut für die Authentifizierung verwendet werden kann.
+> Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden.  Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO-Schlüssel oder eine PIN. 
 >
-> Auf vertrauliche Clients hat die Sperrung von Kennwortänderungen keine Wirkung. Ein vertraulicher Client mit einem Aktualisierungstoken, das vor einer Kennwortänderung ausgegeben wurde, kann unter Verwendung dieses Aktualisierungstokens weiterhin weitere Token abzurufen. 
+> Beim primären Aktualisierungstoken in Windows liegt ein bekanntes Problem vor.  Wenn das primäre Aktualisierungstoken (Primary Refresh Token, PRT) über ein Kennwort abgerufen wird und der Benutzer sich über Hello anmeldet, ändert sich der Ursprung des PRTs nicht, und es wird widerrufen, wenn der Benutzer sein Kennwort ändert. 
 
 ## <a name="sample-tokens"></a>Beispieltoken
 

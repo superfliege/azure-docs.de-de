@@ -1,59 +1,61 @@
 ---
-title: Privileged Identity Management für Azure-Ressourcen – MFA | Microsoft-Dokumentation
+title: Erzwingen der Azure Multi-Factor Authentication in Azure-Ressourcen anhand von Privileged Identity Management | Microsoft-Dokumentation
 description: In diesem Dokument wird beschrieben, wie Sie die mehrstufige Authentifizierung für PIM-Ressourcen aktivieren.
 services: active-directory
 documentationcenter: ''
-author: billmath
+author: rolyon
 manager: mtillman
-editor: mwahl
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 04/02/2018
-ms.author: billmath
+ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8d1c05e7f61ed76c47613bfab7bb8afd9b66cbe7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0c50a17b651fc1fb5d49915da5da4a37d40a0d3e
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260062"
 ---
-# <a name="privileged-identity-management---resource-roles---mfa"></a>Privileged Identity Management – Ressourcenrollen – MFA
+# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Erzwingen der Azure Multi-Factor Authentication in Azure-Ressourcen anhand von Privileged Identity Management
 
-Mit PIM für Azure-Ressourcenrollen können Ressourcenadministratoren und Identitätsadministratoren wichtige Azure-Infrastruktur mit zeitgebundenen Mitgliedschaften und Just-in-Time-Zugriff schützen. Außerdem ist in PIM die optionale Erzwingung der Azure Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien möglich.
+Mit Privileged Identity Management (PIM) für Azure-Ressourcenrollen können Ressourcenadministratoren und Identitätsadministratoren wichtige Azure-Infrastruktur mit zeitgebundenen Mitgliedschaften und Just-in-Time-Zugriff schützen. Außerdem ist in PIM die optionale Erzwingung der Azure Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien möglich.
 
-## <a name="require-mfa-to-activate"></a>Erzwingen von MFA für die Aktivierung
+## <a name="require-multi-factor-authentication-to-activate"></a>Erfordern von Multi-Factor Authentication zur Aktivierung
 
-Ressourcenadministratoren können erzwingen, dass berechtigte Mitglieder einer Rolle zuerst erfolgreich einen Azure-MFA-Vorgang absolvieren müssen, bevor sie aktiviert werden können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde. 
+Ressourcenadministratoren können erfordern, dass berechtigte Mitglieder einer Rolle zuerst einen Azure-Multi-Factor Authentication-Vorgang ausführen müssen, bevor sie aktiviert werden können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde. 
 
 Wählen Sie zum Erzwingen dieser Anforderung in der Liste mit den verwalteten Ressourcen eine Ressource aus. Wählen Sie im [Übersichtsdashboard](pim-resource-roles-overview-dashboards.md) unten rechts auf dem Bildschirm in der Liste mit den Rollen eine Rolle aus.
 
-Außerdem können Sie auf Rolleneinstellungen im linken Navigationsmenü entweder über die Registerkarte „Rollen“ oder „Rolleneinstellungen“ zugreifen.
+Außerdem können Sie auf Rolleneinstellungen im linken Bereich entweder über die Registerkarte **Rollen** oder **Rolleneinstellungen** zugreifen.
 
 >[!Note]
->Wenn die Optionen im linken Navigationsmenü ausgegraut sind und oben auf der Seite ein Banner mit einem Hinweis der Art „Sie verfügen über berechtigte Rollen, die aktiviert werden können“ angezeigt wird, sind Sie kein aktiver Administrator und müssen vor dem Fortfahren die [Aktivierung](pim-resource-roles-activate-your-roles.md) durchführen.
+>Wenn die Optionen im linken Bereich ausgegraut sind und oben auf der Seite ein Banner mit einem Hinweis der Art „Sie verfügen über berechtigte Rollen, die aktiviert werden können“ angezeigt wird, sind Sie kein aktiver Administrator. Das bedeutet, dass Sie vor dem Fortfahren die [Aktivierung](pim-resource-roles-activate-your-roles.md) durchführen müssen.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
+![Registerkarten „Rollen“ und „Rolleneinstellungen“ ](media/azure-pim-resource-rbac/aadpim_rbac_manage_a_role_v2.png)
 
-Wählen Sie beim Anzeigen der Mitgliedschaft einer Rolle in der Leiste am oberen Rand des Bildschirms die Option „Rolleneinstellungen“, um die Option „Details zur Rolleneinstellung“ zu öffnen.
+Wählen Sie beim Anzeigen der Mitgliedschaft einer Rolle in der Leiste am oberen Rand des Bildschirms die Option **Rolleneinstellungen**, um die Option **Details zur Rolleneinstellung** zu öffnen.
 
-Klicken Sie oben auf die Schaltfläche **Bearbeiten**, um die Rolleneinstellungen zu ändern.
+Klicken Sie oben auf die Schaltfläche **Bearbeiten**, um die Rolleneinstellungen zu bearbeiten.
 
-Klicken Sie im Abschnitt unter **Aktivieren** auf das Kontrollkästchen **Require Multi-Factor Authentication to activate** (Multi-Factor Authentication für Aktivierung erzwingen) und dann auf „Speichern“.
+Klicken Sie im Abschnitt unter **Aktivieren** auf das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern**. Klicken Sie dann auf **Speichern**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
+![Bei Aktivierung Multi-Factor Authentication anfordern](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa.png)
 
-## <a name="require-mfa-on-assignment"></a>Erzwingen von MFA bei der Zuweisung
+## <a name="require-multi-factor-authentication-on-assignment"></a>Bei Zuweisung Multi-Factor Authentication anfordern
 
-Es kann vorkommen, dass ein Ressourcenadministrator ein Mitglied einer Rolle für einen kurzen Zeitraum (z.B. einen Tag) zuweisen möchte, ohne dass die zugewiesenen Mitglieder die Aktivierung anfordern müssen. In diesem Szenario kann MFA von PIM nicht erzwungen werden, wenn das Mitglied seine Rollenzuweisung verwendet, da die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
+Es kann vorkommen, dass ein Ressourcenadministrator ein Mitglied einer Rolle für einen kurzen Zeitraum (z.B. einen Tag) zuweisen möchte. In diesem Fall müssen die zugewiesenen Mitglieder die Aktivierung nicht anfordern. In diesem Szenario kann Multi-Factor Authentication von PIM nicht erzwungen werden, wenn das Mitglied seine Rollenzuweisung verwendet, da die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
 
-Um sicherzustellen, dass der Administrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, können Sie für die Zuweisung MFA erzwingen.
+Um sicherzustellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, können Sie für die Zuweisung Multi-Factor Authentication erzwingen.
 
-Aktivieren Sie auf dem Bildschirm „Details zur Rolleneinstellung“ das Kontrollkästchen „Require Multi-Factor Authentication on assignment“ (Multi-Factor Authentication bei Zuweisung erzwingen).
+Aktivieren Sie auf dem Bildschirm „Details zur Rolleneinstellung“ das Kontrollkästchen **Multi-Factor Authentication bei direkter Zuweisung erforderlich**.
 
-![](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
+![Multi-Factor Authentication bei direkter Zuweisung erforderlich](media/azure-pim-resource-rbac/aadpim_rbac_require_mfa_on_assignment.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

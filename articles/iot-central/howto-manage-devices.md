@@ -1,19 +1,19 @@
 ---
 title: Verwalten der Geräte in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwalten.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 75472d701160e7cfd331d01efcdc1a19ae20fb2d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303578"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34807474"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -54,7 +54,7 @@ So fügen Sie ein Gerät Ihrer Azure IoT Central-Anwendung hinzu:
 Um eine Verbindung einer großen Anzahl von Geräten mit Ihrer Anwendung herzustellen, ermöglicht Azure IoT Central das Massenimportieren von Geräten über eine CSV-Datei. 
 
 Anforderungen an die CSV-Datei:
-1. Die CSV-Datei sollte nur eine Spalte mit den Geräte-IDs aufweisen.
+1. Die CSV-Datei sollte nur eine Spalte aufweisen, die Geräte-IDs enthält.
 
 1. Die Datei sollte keine Kopfzeile enthalten.
 
@@ -79,6 +79,31 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
 Wenn beim Geräteimport ein Fehler auftritt, wird auf dem Geräteraster eine Fehlermeldung angezeigt. Eine Protokolldatei, die alle Fehler erfasst, wird generiert und kann durch Klicken auf die Fehlermeldung heruntergeladen werden.
 
+## <a name="export-devices"></a>Exportieren von Geräten
+
+Um Geräte für die Verbindung mit IoT Central bereitzustellen, benötigen Sie die Verbindungszeichenfolge des Geräts, die von IoT Central generiert wird. Sie können das Feature „Export“ verwenden, um einen Massenkopiervorgang der Verbindungszeichenfolgen und anderen Eigenschaften der Geräte aus Ihrer Anwendung vorzunehmen. Durch „Export“ wird eine CSV-Datei mit der Geräteidentität, dem Gerätenamen sowie eine primäre Verbindungszeichenfolge für alle ausgewählten Geräte erstellt.
+
+So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
+1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Explorer** aus.
+
+1. Wählen Sie im linken Bereich die Gerätevorlage aus, für die Sie die Geräte exportieren möchten.
+
+1. Wählen Sie die Geräte aus, die Sie exportieren möchten, und klicken Sie dann auf die Aktion **Exportieren**.
+
+    [![Export](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
+
+1. Der Exportprozess wird gestartet, und Sie können den Status oben im Raster nachverfolgen. 
+
+1. Sobald der Exportvorgang abgeschlossen ist, wird eine Erfolgsmeldung zusammen mit einem Link zum Download der generierten Datei angezeigt.
+
+1. Klicken Sie auf die **Erfolgsmeldung**, um die Datei in einen lokalen Ordner auf dem Datenträger herunterzuladen.
+
+    [![Export erfolgreich](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
+
+1. Die exportierte CSV-Datei verfügt über folgende Informationen:
+    1. NAME
+    1. Geräte-ID
+    1. Primäre Verbindungszeichenfolge
 
 
 ## <a name="delete-a-device"></a>Gerät löschen

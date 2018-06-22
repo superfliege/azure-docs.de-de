@@ -4,7 +4,7 @@ description: Enthält eine Schritt-für-Schritt-Anleitung zur Bereitstellung von
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 687356b60ad0bbc469d67e071ce3bccc8b61ebd7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609000"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 
@@ -55,9 +56,9 @@ Stellen Sie vor dem Einrichten des UAA-Befehlszeilenclients sicher, dass Rubygem
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Erstellen eines Log Analytics-Arbeitsbereichs in Azure
 
-Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erstellen. Laden Sie die vorkonfigurierten OMS-Ansichten und Warnungen, nachdem Sie die Nozzle-Bereitstellung abgeschlossen haben.
+Sie können den Log Analytics-Arbeitsbereich manuell oder mit einer Vorlage erstellen. Die Vorlage stellt ein Setup von vorkonfigurierten OMS KPI-Ansichten und -Warnungen für die OMS-Konsole bereit. 
 
-Gehen Sie wie folgt vor, um den Arbeitsbereich manuell zu erstellen:
+#### <a name="to-create-the-workspace-manually"></a>Gehen Sie wie folgt vor, um den Arbeitsbereich manuell zu erstellen:
 
 1. Suchen Sie im Azure-Portal in der Marketplace-Dienstliste nach „Log Analytics“, und wählen Sie den Eintrag aus.
 2. Wählen Sie die Option **Erstellen** und anschließend Optionen für die folgenden Elemente aus:
@@ -70,7 +71,22 @@ Gehen Sie wie folgt vor, um den Arbeitsbereich manuell zu erstellen:
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
-Alternativ können Sie den Log Analytics-Arbeitsbereich auch über die OMS-Vorlage erstellen. Bei dieser Methode lädt die Vorlage die vorkonfigurierten OMS-Ansichten und -Warnungen automatisch. Weitere Informationen finden Sie in der [Azure Log Analytics-Lösung für Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution).
+#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Gehen Sie wie folgt vor, um den OMS-Arbeitsbereich über die OMS-Überwachungsvorlage aus Azure Marketplace zu erstellen:
+
+1. Öffnen Sie das Azure-Portal.
+2. Klicken Sie oben links auf das Symbol „+“ oder auf „Ressource erstellen“.
+3. Geben Sie im Suchfenster „Cloud Foundry“ ein, und wählen Sie „OMS Cloud Foundry-Überwachungslösung“ aus.
+4. Die Titelseite der Vorlage der OMS Cloud Foundry-Überwachungslösung wird geladen. Klicken Sie auf „Erstellen“, um die Vorlage zu starten.
+5. Geben Sie die erforderlichen Parameter ein:
+    * **Subscription**: Wählen Sie ein Azure-Abonnement für den OMS-Arbeitsbereich aus, in der Regel identisch mit der Cloud Foundry-Bereitstellung.
+    * **Resource group**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe für den OMS-Arbeitsbereich.
+    * **Resource Group Location**: Wählen Sie den Speicherort der Ressourcengruppe aus.
+    * **OMS_Workspace_Name**: Geben Sie einen Arbeitsbereichnamen ein. Wenn der Arbeitsbereich noch nicht vorhanden ist, wird die Vorlage einen neuen erstellen.
+    * **OMS_Workspace_Region**: Wählen Sie den Speicherort des Arbeitsbereichs ein.
+    * **OMS_Workspace_Pricing_Tier**: Wählen Sie die OMS-Arbeitsbereich-SKU aus. Sie können diese [Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/) als Referenz nutzen.
+    * **Legal terms**: Klicken Sie auf „Rechtliche Bedingungen“ und dann auf „Erstellen“, um die rechtlichen Bedingungen zu akzeptieren.
+- Wenn Sie alle Parameter angegeben haben, klicken Sie auf „Erstellen“, um die Vorlage bereitzustellen. Wenn die Bereitstellung abgeschlossen ist, wird der Status auf der Registerkarte „Benachrichtigung“ angezeigt.
+
 
 ## <a name="deploy-the-nozzle"></a>Bereitstellen der Nozzle-Komponente
 
@@ -78,9 +94,9 @@ Sie haben verschiedene Möglichkeiten, um die Nozzle-Komponente bereitzustellen:
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>Bereitstellen der Nozzle-Komponente als PCF Operations Manager-Kachel
 
-Falls Sie PCF mit Ops Manager bereitgestellt haben, sollten Sie die Schritte zum [Installieren und Konfigurieren der Nozzle-Komponente für PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html) ausführen. Die Nozzle-Komponente wird mit Ops Manager als Kachel installiert.
+Gehen Sie wie folgt vor, um [Azure Log Analytics Nozzle für PCF zu installieren und zu konfigurieren](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Das ist der vereinfachte Ansatz, die PCF Operations Manager-Kachel wird die Nozzle-Komponente automatisch konfigurieren und pushen. 
 
-### <a name="deploy-the-nozzle-as-a-cf-application"></a>Bereitstellen der Nozzle-Komponente als CF-Anwendung
+### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Manuelles Bereitstellen der Nozzle-Komponente als CF-Anwendung
 
 Wenn Sie PCF Ops Manager nicht verwenden, stellen Sie die Nozzle-Komponente als Anwendung bereit. In den folgenden Abschnitten wird dieser Prozess beschrieben.
 
@@ -163,6 +179,10 @@ Vergewissern Sie sich, dass die OMS-Nozzle-Anwendung ausgeführt wird.
 
 ## <a name="view-the-data-in-the-oms-portal"></a>Anzeigen der Daten im OMS-Portal
 
+Wenn Sie die OMS-Überwachungslösung über die Marketplace-Vorlage bereitgestellt haben, gehen Sie zum Azure-Portal und suchen Sie dort nach der OMS-Lösung. Sie finden sie in der Ressourcengruppe, die Sie in der Vorlage angegeben haben. Klicken Sie auf die Lösung, und navigieren Sie zu „OMS-Konsole“. Dort werden die vorkonfigurierten Ansichten mit den besten Cloud Foundry-System-KPIs, Anwendungsdaten, Warnungen und VM-Integritätsmetriken aufgeführt. 
+
+Wenn Sie den OMS-Arbeitsbereich manuell erstellt haben, gehen Sie wie folgt vor, um Ansichten und Warnungen zu erstellen:
+
 ### <a name="1-import-the-oms-view"></a>1. Importieren der OMS-Ansicht
 
 Navigieren Sie über das OMS-Portal zu **Ansicht-Designer** > **Importieren** > **Durchsuchen**, und wählen Sie einige OMSVIEW-Dateien aus. Wählen Sie beispielsweise *Cloud Foundry.omsview* aus, und speichern Sie die Ansicht. Auf der Seite **Übersicht** wird nun eine Kachel angezeigt. Wählen Sie diese Kachel aus, um visualisierte Metriken anzuzeigen.
@@ -226,6 +246,6 @@ Azure Log Analytics Nozzle ist eine Open-Source-Komponente. Senden Sie Ihre Frag
 
 ## <a name="next-step"></a>Nächster Schritt
 
-Zusätzlich zu den Cloud Foundry-Metriken, die mit der Nozzle-Komponente abgedeckt werden, können Sie den OMS-Agent nutzen, um Einblicke in die Betriebsdaten auf VM-Ebene (z.B. Syslog, Leistung, Warnungen, Bestand) zu erhalten. Der OMS-Agent wird als Bosh-Add-On für Ihre CF-VMs installiert.
+Seit PCF 2.0 werden VM-Leistungsmetriken vom System Metrics Forwarder an Azure Log Analytics Nozzle übertragen und in den OMS-Arbeitsbereich integriert. Sie benötigen keinen OMS-Agent für VM-Leistungsmetriken mehr. Jedoch können Sie den OMS-Agent weiterhin verwenden, um Syslog-Informationen zu erfassen. Der OMS-Agent wird als Bosh-Add-On für Ihre CF-VMs installiert. 
 
 Ausführliche Informationen finden Sie unter [Deploy OMS agent to your Cloud Foundry deployment](https://github.com/Azure/oms-agent-for-linux-boshrelease) (Bereitstellen des OMS-Agents für Ihre Cloud Foundry-Bereitstellung).

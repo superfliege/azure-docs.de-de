@@ -1,34 +1,36 @@
 ---
-title: "Entwerfen von Hybrididentitäten – Anforderungen für den Datenschutz in Azure | Microsoft-Dokumentation"
-description: "Beim Planen der Hybrididentitätslösung müssen Sie die Anforderungen für den Schutz der Daten ermitteln, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, welche Optionen verfügbar sind, um diese Anforderungen am besten zu erfüllen."
-documentationcenter: 
+title: Entwerfen von Hybrididentitäten – Anforderungen für den Datenschutz in Azure | Microsoft-Dokumentation
+description: Wenn Sie eine Hybrid-Identitätslösung planen, müssen Sie zuerst die für Ihr Unternehmen geltenden Datenschutzanforderungen und die Möglichkeiten ermitteln, diese bestmöglich zu erfüllen.
+documentationcenter: ''
 services: active-directory
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 40dc4baa-fe82-4ab6-a3e4-f36fa9dcd0df
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 1a2feca8d24fabda4c191b5a181ab6606c912657
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 423624e999e4170ceddf097125e4fb3e9a40384b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34800920"
 ---
-# <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>Planen einer Erweiterung der Datensicherheit mit einer starken Identitätslösung
-Der erste Schritt zum Schützen der Daten besteht in der Identifizierung, wer auf die Daten zugreifen kann. Im Rahmen dieses Prozesses benötigen Sie eine Identitätslösung, die in Ihr System integriert werden kann und mit der Funktionen für die Authentifizierung und Autorisierung bereitgestellt werden können. Authentifizierung und Autorisierung werden häufig miteinander verwechselt, und ihre jeweilige Rolle wird falsch verstanden. In Wirklichkeit besteht ein deutlicher Unterschied, wie in der folgenden Abbildung dargestellt:
+# <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Planen einer Verbesserung der Datensicherheit mit einer starken Identitätslösung
+Um Daten zu schützen, müssen Sie zuerst in Erfahrung bringen, wer auf diese Daten zugreifen kann. Außerdem benötigen Sie eine Identitätslösung, die in Ihr System integrierbar ist, um Authentifizierung und Autorisierung bereitstellen zu können. Authentifizierung und Autorisierung werden häufig miteinander verwechselt, und ihre jeweilige Rolle wird falsch verstanden. Dabei handelt es sich um unterschiedliche Funktionen, wie in der folgenden Abbildung dargestellt:
 
 ![](./media/hybrid-id-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Lebenszyklusphasen der Mobilgerätverwaltung**
 
-Beim Planen Ihrer Hybrid-Identitätslösung müssen Sie die Anforderungen für den Schutz der Daten kennen, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, welche Optionen verfügbar sind, um diese Anforderungen am besten zu erfüllen.
+Beim Planen Ihrer Hybrid-Identitätslösung müssen Sie die Anforderungen für den Datenschutz kennen, die für Ihr Unternehmen gelten. Außerdem müssen Sie wissen, wie Sie diese Anforderungen am besten erfüllen.
 
 > [!NOTE]
 > Nach Abschluss der Planung für den Schutz der Daten sollten Sie sich die Informationen unter [Ermitteln der Anforderungen an die Multi-Factor Authentication für Ihre Hybrididentitätslösung](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md) durchlesen. So können Sie sicherstellen, dass Ihre Auswahl in Bezug auf Multi-Factor Authentication-Anforderungen nicht negativ von den Entscheidungen beeinflusst wird, die Sie in diesem Abschnitt getroffen haben.
@@ -36,9 +38,9 @@ Beim Planen Ihrer Hybrid-Identitätslösung müssen Sie die Anforderungen für d
 > 
 
 ## <a name="determine-data-protection-requirements"></a>Bestimmen der Datenschutzanforderungen
-Im Zeitalter der Mobilität haben die meisten Unternehmen das gleiche Ziel: Benutzer sollen mit ihren mobilen Geräten lokal oder per Remoteverbindung an jedem Ort produktiv arbeiten können, um die Produktivität zu steigern. Dies ist zwar ein häufiges Ziel, aber Unternehmen mit dieser Anforderung sorgen sich auch um die zahlreichen Bedrohungen, denen begegnet werden muss, um die Daten des Unternehmens zu schützen und den Datenschutz für Benutzer zu wahren. Die jeweiligen Anforderungen unterscheiden sich hierbei von Unternehmen zu Unternehmen. Unterschiedliche Compliance-Regeln, die häufig von der Branche des Unternehmens abhängen, führen zu unterschiedlichen Entwurfsentscheidungen. 
+Im Zeitalter der Mobilität haben die meisten Unternehmen das gleiche Ziel: Benutzer sollen mit ihren mobilen Geräten lokal oder per Remoteverbindung an jedem Ort produktiv arbeiten können, um die Produktivität zu steigern. Unternehmen, die diese Anforderung haben, sorgen sich auch um die zahlreichen Bedrohungen, denen begegnet werden muss, um die Daten des Unternehmens zu schützen und den Datenschutz für Benutzer zu wahren. Die jeweiligen Anforderungen unterscheiden sich hierbei von Unternehmen zu Unternehmen. Unterschiedliche Compliance-Regeln, die häufig von der Branche des Unternehmens abhängen, führen zu unterschiedlichen Entwurfsentscheidungen. 
 
-Es gibt aber einige Sicherheitsaspekte, die unabhängig von der Branche untersucht und überprüft werden sollten. Dies wird im nächsten Abschnitt erläutert.
+Branchenunabhängig gibt es jedoch einige Sicherheitsaspekte, die immer geprüft werden sollten. Diese werden im nächsten Abschnitt erläutert.
 
 ## <a name="data-protection-paths"></a>Wege zum Datenschutz
 ![](./media/hybrid-id-design-considerations/data-protection-paths.png)
@@ -52,7 +54,7 @@ Im obigen Diagramm wird zuerst die Identitätskomponente überprüft, bevor auf 
 3. Schutz von Daten im lokalen Ruhezustand
 4. Schutz von Daten im Ruhezustand in der Cloud
 
-Die technischen Kontrollen, mit denen das IT-Personal die eigentlichen Daten in diesen einzelnen Phasen schützen kann, werden nicht direkt von der Hybrid-Identitätslösung bereitgestellt. Es ist aber erforderlich, dass die Hybrid-Identitätslösung die Ressourcen für die Identitätsverwaltung (sowohl lokal als auch in der Cloud) zum Identifizieren von Benutzern verwenden kann, bevor der Zugriff auf die Daten gewährt wird. Stellen Sie beim Planen Ihrer Hybrid-Identitätslösung sicher, dass die folgenden Fragen gemäß den Anforderungen Ihres Unternehmens beantwortet werden:
+Die Hybrid-Identitätslösung muss sowohl lokale als auch Cloudressourcen zur Identitätsverwaltung nutzen können, um den Benutzer zu identifizieren, bevor ihm Zugriff auf die Daten gewährt wird. Beim Planen der Hybrid-Identitätslösung sollten Sie auch sicherstellen, dass Sie die folgenden Fragen den Anforderungen Ihrer Organisation entsprechend beantworten können:
 
 ## <a name="data-protection-at-rest"></a>Schutz von Daten im Ruhezustand
 Unabhängig davon, an welchem Ort sich die Daten im Ruhezustand befinden (Gerät, Cloud oder lokal), ist die Durchführung einer Bewertung wichtig, um die jeweiligen Unternehmensanforderungen zu verstehen. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
@@ -70,10 +72,11 @@ Daten, die zwischen dem Gerät und dem Rechenzentrum oder dem Gerät und der Clo
 * Sorgt die Cloud-Identitätsverwaltung dafür, dass der Datenverkehr an den Verzeichnisspeicher bzw. im Verzeichnisspeicher (innerhalb und zwischen Rechenzentren) immer signiert ist?
 
 ## <a name="compliance"></a>Compliance
-Die Regulierungen, Gesetze und Compliance-Anforderungen variieren je nach Branche des Unternehmens. Unternehmen aus Branchen mit starker Regulierung müssen sich um die Aspekte der Identitätsverwaltung kümmern, die mit Compliance-Problemen verbunden sind. Vorschriften wie Sarbanes-Oxley (SOX), Health Insurance Portability and Accountability Act (HIPAA), Gramm-Leach-Bliley Act (GLBA) und der Payment Card Industry Data Security Standard (PCI DSS) sind sehr streng, was die Identität und den Zugriff betrifft. Die Hybrid-Identitätslösung, die von Ihrem Unternehmen eingeführt wird, muss über die Kernfunktionen verfügen, mit denen eine oder mehrere dieser Vorschriften erfüllt werden. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
+Vorschriften, Gesetze und regulierende Compliance-Anforderungen hängen von der Branche ab, in der Ihr Unternehmen tätig ist. Unternehmen aus Branchen mit starker Regulierung müssen sich um die Aspekte der Identitätsverwaltung kümmern, die mit Compliance-Problemen verbunden sind. Vorschriften wie „Sarbanes-Oxley“ (SOX), „Health Insurance Portability and Accountability Act“ (HIPAA), „Gramm-Leach-Bliley Act“ (GLBA) und der „Payment Card Industry Data Security Standard“ (PCI DSS) sind sehr streng, was die Identität und den Zugriff betrifft. Die Hybrid-Identitätslösung, die von Ihrem Unternehmen eingeführt wird, muss über die Kernfunktionen verfügen, mit denen eine oder mehrere dieser Vorschriften erfüllt werden. Stellen Sie für diesen Bereich sicher, dass die folgenden Fragen gestellt werden:
 
 * Ist die Hybrid-Identitätslösung mit den gesetzlichen Vorschriften für Ihr Unternehmen kompatibel?
-* Verfügt die Hybrid-Identitätslösung über integrierte Funktionen, die Ihr Unternehmen in die Lage versetzen, die gesetzlichen Vorschriften zu erfüllen? 
+* Verfügt die Hybrid-Identitätslösung über integrierte 
+* Funktionen, die Ihr Unternehmen in die Lage versetzen, die gesetzlichen Vorschriften zu erfüllen? 
 
 > [!NOTE]
 > Notieren Sie sich alle Antworten, und stellen Sie sicher, dass Ihnen die Begründung der Antwort jeweils klar ist. [Definieren der Strategie zum Schutz von Daten](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) sind die verfügbaren Optionen und die jeweiligen Vor- und Nachteile beschrieben.  Indem Sie diese Fragen beantworten, wählen Sie aus, welche Option Ihre Geschäftsanforderungen am besten erfüllt.

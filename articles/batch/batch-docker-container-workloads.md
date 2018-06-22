@@ -8,23 +8,24 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 05/07/2018
+ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 8c9f772c9d3908e450961239797f6ce2bd4982e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885875"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801114"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
 
-Mit Azure Batch können Sie eine große Anzahl von Batchcomputingaufträgen in Azure ausführen und skalieren. Bisher wurden Batch-Aufgaben direkt auf virtuellen Computern (VMs) in einem Batch-Pool ausgeführt, doch nun können Sie einen Batch-Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. In diesem Artikel wird erläutert, wie Sie das Batch .NET SDK zum Erstellen eines Pools von Computeknoten verwenden, die das Ausführen von Containeraufgaben unterstützen. Außerdem erfahren Sie, wie Sie Containeraufgaben im Pool ausführen.
+Mit Azure Batch können Sie eine große Anzahl von Batchcomputingaufträgen in Azure ausführen und skalieren. Stapelverarbeitungsaufgaben lassen sich direkt auf virtuellen Computern (Knoten) in einem Batch-Pool ausführen, doch Sie können auch einen Batch-Pool zum Ausführen von Aufgaben in Docker-kompatiblen Containern auf den Knoten einrichten. In diesem Artikel wird erläutert, wie Sie einen Pool von Computeknoten erstellen, die das Ausführen von Containeraufgaben unterstützen. Außerdem erfahren Sie, wie Sie anschließend Containeraufgaben im Pool ausführen. 
 
-Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in einer Vielzahl von Umgebungen ausgeführt werden können. Sie können z. B. einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien. 
+Sie sollten mit Containerkonzepten sowie dem Erstellen von Batch-Pools und -aufträgen vertraut sein. In den Codebeispielen werden der .NET-Batch und Python-SDKs verwendet. Sie können auch andere Batch-SDKs und -Tools, einschließlich des Azure-Portals, verwenden, um containerfähige Batch-Pools zu erstellen und Containeraufgaben auszuführen.
 
-Dieser Artikel setzt Kenntnisse über die Docker-Containerkonzepte und das Erstellen eines Batch-Pools und -Auftrags mit dem .NET SDK voraus. Die Codeausschnitte sind für die Verwendung in einer Clientanwendung ähnlich dem [DotNetTutorial-Beispiel](batch-dotnet-get-started.md) gedacht und sind Beispiele für Code, der zur Unterstützung von Containeranwendungen in Batch erforderlich ist.
+## <a name="why-use-containers"></a>Gründe für die Verwendung von Containern
 
+Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen von Batch-Aufgaben, ohne eine Umgebung und Abhängigkeiten zum Ausführen von Anwendungen verwalten zu müssen. Container stellen Anwendungen als einfache, portable, eigenständige Einheiten bereit, die in vielen verschiedenen Umgebungen ausgeführt werden können. Sie können z. B. einen Container lokal erstellen und testen und dann das Containerimage in eine Registrierung in Azure oder an anderer Stelle hochladen. Das Containerbereitstellungsmodell stellt sicher, dass die Laufzeitumgebung der Anwendung immer ordnungsgemäß installiert und konfiguriert ist, und zwar ganz unabhängig davon, wo Sie die Anwendung hosten. Containerbasierte Vorgänge in Batch können auch Funktionen von Nicht-Containeraufgaben nutzen, z.B. Anwendungspakete und die Verwaltung von Ressourcendateien und Ausgabedateien. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,107 +38,133 @@ Dieser Artikel setzt Kenntnisse über die Docker-Containerkonzepte und das Erste
 
 * **Konten**: Sie müssen in Ihrem Azure-Abonnement ein Batch-Konto und optional ein Azure Storage-Konto erstellen.
 
-* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ angegeben sind. Wenn Sie ein benutzerdefiniertes Image bereitstellen, muss Ihre Anwendung die Azure Active Directory-[Authentifizierung (Azure AD)](batch-aad-auth.md) verwenden, um containerbasierte Workloads auszuführen. 
+* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ angegeben sind. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md). 
 
-
-## <a name="supported-virtual-machine-images"></a>Unterstützte Images virtueller Computer
-
-Sie müssen ein unterstütztes Windows- oder Linux-Image verwenden, um einen Pool mit VM-Computeknoten für Containerworkloads zu erstellen.
-
-### <a name="windows-images"></a>Windows-Images
-
-Für Windows-Containerworkloads unterstützt Batch derzeit benutzerdefinierte Images, die Sie von VMs erstellen, auf denen Docker unter Windows ausgeführt wird, oder Sie können das Image „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace verwenden. Dieses Image ist mit der Knoten-Agent-SKU-ID von `batch.node.windows amd64` kompatibel. Der unterstützte Containertyp ist derzeit auf Docker beschränkt.
-
-### <a name="linux-images"></a>Linux-Images
-
-Für Linux-Containerworkloads unterstützt Batch derzeit nur benutzerdefinierte Images, die Sie von VMs erstellen, auf denen Docker unter den folgenden Linux-Distributionen ausgeführt wird: Ubuntu 16.04 LTS oder CentOS 7.3. Wenn Sie ein eigenes benutzerdefiniertes Linux-Image bereitstellen möchten, finden Sie Anleitungen dazu unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
-
-Für Docker-Unterstützung installieren Sie [Docker Community Edition (CE)](https://www.docker.com/community-edition) oder [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
-
-Wenn Sie die GPU-Leistung von virtuellen Azure-NC- oder -NV-Computern nutzen möchten, müssen Sie NVIDIA-Treiber auf dem Image installieren. Außerdem müssen Sie das Docker-Engine-Hilfsprogramm für NVIDIA-GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), installieren und ausführen.
-
-Verwenden Sie für den Zugriff auf das Azure RDMA-Netzwerk RDMA-fähige VM-Größen wie A8, A9, H16r, H16mr oder NC24r. Erforderliche RDMA-Treiber werden in den CentOS 7.3 HPC- und Ubuntu 16.04 LTS-Images aus dem Azure Marketplace installiert. Zum Ausführen von MPI-Workloads können zusätzliche Konfigurationsschritte erforderlich sein. Informationen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).
-
-
-## <a name="limitations"></a>Einschränkungen
+### <a name="limitations"></a>Einschränkungen
 
 * Batch bietet RDMA-Unterstützung nur für Container, die in Linux-Pools ausgeführt werden.
 
+## <a name="supported-virtual-machine-images"></a>Unterstützte Images virtueller Computer
 
-## <a name="authenticate-using-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
+Sie müssen eines der folgenden unterstützten Windows- oder Linux-Images verwenden, um einen Pool mit VM-Computeknoten für Containerworkloads zu erstellen. Weitere Informationen zu Marketplace-Images, die mit Batch kompatibel sind, finden Sie in der [Liste mit VM-Images](batch-linux-nodes.md#list-of-virtual-machine-images). 
 
-Wenn Sie ein benutzerdefiniertes VM-Image zum Erstellen des Batch-Pools verwenden, muss Ihre Clientanwendung eine Authentifizierung anhand der in Azure AD integrierten Authentifizierung vornehmen (eine Authentifizierung mit gemeinsam verwendetem Schlüssel kann nicht verwendet werden). Stellen Sie vor dem Ausführen der Anwendung sicher, dass Sie sie in Azure AD registrieren, um eine Identität dafür einzurichten und die jeweiligen Berechtigungen für andere Anwendungen anzugeben.
+### <a name="windows-images"></a>Windows-Images
 
-Wenn Sie ein benutzerdefiniertes VM-Image verwenden, müssen Sie der Anwendung außerdem die IAM-Zugriffssteuerung für den Zugriff auf das VM-Image erteilen. Klicken Sie im Azure-Portal auf **Alle Ressourcen**, wählen Sie das Containerimage aus, und klicken Sie auf der Imageseite im Abschnitt **Zugriffssteuerung (IAM)** auf **Hinzufügen**. Geben Sie auf der Seite **Berechtigungen hinzufügen** eine **Rolle** an, wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus, und geben Sie dann unter **Auswählen** den Anwendungsnamen ein.
+Für Windows-Containerworkloads unterstützt Batch derzeit das Image **Windows Server 2016 Datacenter mit Containern** in Azure Marketplace. Nur die Docker-Containerimages werden unter Windows unterstützt.
 
-Übergeben Sie in der Anwendung ein Azure AD-Authentifizierungstoken, wenn Sie den Batch-Client erstellen. Wenn Sie mithilfe des Batch .NET SDK entwickeln, verwenden Sie [BatchClient.Open](/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_), wie in [Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory](batch-aad-auth.md) beschrieben.
+Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter Windows ausführen.
 
+### <a name="linux-images"></a>Linux-Images
 
-## <a name="reference-a-vm-image-for-pool-creation"></a>Verweisen auf ein VM-Image zur Poolerstellung
+Für Linux-Containerworkloads unterstützt Batch derzeit die folgenden von Microsoft Azure Batch in Azure Marketplace veröffentlichten Linux-Images:
 
-Geben Sie in Ihrem Anwendungscode einen Verweis auf das VM-Image an, das beim Erstellen der Computeknoten des Pools verwendet werden soll. Dazu erstellen Sie ein [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference)-Objekt. Sie können das zu verwendende Image auf eine der folgenden Arten angeben:
+* **CentOS für Azure Batch-Container-Pools**
 
-* Wenn Sie ein benutzerdefiniertes Image verwenden, geben Sie einen Azure Resource Manager-Ressourcenbezeichner für das Image des virtuellen Computers an. Der Imagebezeichner weist ein Pfadformat wie im folgenden Beispiel auf:
+* **CentOS (mit RDMA-Treibern) für Azure Batch-Container-Pools**
 
-  ```csharp
-  // Provide a reference to a custom image using an image ID
-  ImageReference imageReference = new ImageReference("/subscriptions/<subscription-ID>/resourceGroups/<resource-group>/providers/Microsoft.Compute/images/<imageName>");
-  ```
+* **Ubuntu Server für Azure Batch-Container-Pools**
 
-    Zum Abrufen dieser Image-ID aus dem Azure-Portal öffnen Sie **Alle Ressourcen**, wählen Sie das benutzerdefinierte Image aus, und kopieren Sie auf der Imageseite im Abschnitt **Übersicht** den Pfad in **Ressourcen-ID**.
+* **Ubuntu Server (mit RDMA-Treibern) für Azure Batch-Container-Pools**
 
-* Wenn Sie ein [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based)-Image verwenden, geben Sie eine Gruppe von Parametern zur Beschreibung des Images an: Herausgeber, Angebotstyp, Herausgeber, SKU und Version des Images gemäß der [Liste mit VM-Images](batch-linux-nodes.md#list-of-virtual-machine-images):
+Diese Images werden nur für die Verwendung in Azure Batch-Pools unterstützt. Sie bieten:
 
-  ```csharp
-  // Provide a reference to an Azure Marketplace image for
-  // "Windows Server 2016 Datacenter with Containers"
-  ImageReference imageReference = new ImageReference(
-    publisher: "MicrosoftWindowsServer",
-    offer: "WindowsServer",
-    sku: "2016-Datacenter-with-Containers",
-    version: "latest");
-  ```
+* Eine vorinstallierte [Moby](https://github.com/moby/moby)-Containerlaufzeit 
+
+* Vorinstallierte NVIDIA GPU-Treiber zum Optimieren der Bereitstellung auf Azure-VMs der N-Serie
+
+* Images mit oder ohne vorinstallierte RDMA-Treiber; durch diese Treiber wird Poolknoten bei der Bereitstellung auf RDMA-fähigen VM-Größen der Zugriff auf das RDMA-Netzwerk von Azure ermöglicht  
+
+Sie können auch benutzerdefinierte Images über VMs erstellen, die Docker unter einer der Linux-Distributionen ausführen, die mit Batch kompatibel sind. Wenn Sie ein eigenes benutzerdefiniertes Linux-Image bereitstellen möchten, finden Sie Anleitungen dazu unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
+
+Für Docker-Unterstützung für ein benutzerdefiniertes Image installieren Sie [Docker Community Edition (CE)](https://www.docker.com/community-edition) oder [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition).
+
+Weitere Überlegungen zum Verwenden eines benutzerdefinierten Linux-Images:
+
+* Wenn Sie die GPU-Leistung von Azure-Größen der N-Serie bei der Verwendung eines benutzerdefinierten Images optimal nutzen möchten, installieren Sie im Voraus NVIDIA-Treiber. Außerdem müssen Sie das Docker-Engine-Hilfsprogramm für NVIDIA-GPUs, [NVIDIA Docker](https://github.com/NVIDIA/nvidia-docker), installieren.
+
+* Verwenden Sie für den Zugriff auf das RDMA-Netzwerk von Azure eine RDMA-fähige VM-Größe. Erforderliche RDMA-Treiber sind in den von Batch unterstützten CentOS-HPC- und Ubuntu-Images installiert. Zum Ausführen von MPI-Workloads können zusätzliche Konfigurationsschritte erforderlich sein. Informationen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).
 
 
 ## <a name="container-configuration-for-batch-pool"></a>Containerkonfiguration für Batch-Pool
 
-Damit ein Batch-Pool Containerworkloads ausführen kann, müssen Sie [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration)-Einstellungen im [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-Objekt des Pools festlegen.
+Damit ein Batch-Pool Containerworkloads ausführen kann, müssen Sie [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration)-Einstellungen im [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-Objekt des Pools festlegen. (Dieser Artikel enthält Links zur .NET-API-Referenz von Batch. Die entsprechenden Einstellungen befinden sich in der [Batch Python](/python/api/azure.batch)-API.)
 
-Sie können einen containerfähigen Pool mit oder ohne vorabgerufene Containerimages erstellen, wie in den folgenden Beispielen gezeigt. Mithilfe des Pull-Vorgangs (oder Vorabrufs) können Sie Containerimages entweder über Docker Hub oder eine andere Containerregistrierung im Internet vorab laden. Der Vorteil vorabgerufener Containerimages ist, dass bei der ersten Ausführung von Aufgaben diese nicht auf das Herunterladen des Containerimages warten müssen. Die Containerkonfiguration führt beim Erstellen des Pools eine Pullübertragung von Containerimages auf die virtuellen Computer durch. Für den Pool ausgeführte Aufgaben können dann auf die Liste der Containerimages und auf die Containerausführungsoptionen verweisen.
+Sie können einen containerfähigen Pool mit oder ohne vorabgerufene Containerimages erstellen, wie in den folgenden Beispielen gezeigt. Mithilfe des Pull-Vorgangs (oder Vorabrufs) können Sie Containerimages entweder über Docker Hub oder eine andere Containerregistrierung im Internet vorab laden. Verwenden Sie für optimale Leistung eine [Azure-Containerregistrierung](../container-registry/container-registry-intro.md) in der gleichen Region wie das Batch-Konto.
 
+Der Vorteil vorabgerufener Containerimages ist, dass bei der ersten Ausführung von Aufgaben diese nicht auf das Herunterladen des Containerimages warten müssen. Die Containerkonfiguration führt beim Erstellen des Pools eine Pullübertragung von Containerimages auf die virtuellen Computer durch. Für den Pool ausgeführte Aufgaben können dann auf die Liste der Containerimages und auf die Containerausführungsoptionen verweisen.
 
 
 ### <a name="pool-without-prefetched-container-images"></a>Pool ohne vorabgerufene Containerimages
 
-Zum Konfigurieren eines containerfähigen Pools ohne vorabgerufene Containerimages definieren Sie die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration`, wie im folgenden Beispiel gezeigt. Bei diesem und den folgenden Beispielen wird davon ausgegangen, dass Sie ein benutzerdefiniertes Ubuntu 16.04 LTS-Image mit installierter Docker-Engine verwenden.
+Zum Konfigurieren eines containerfähigen Pools ohne vorabgerufene Containerimages definieren Sie die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration`, wie im folgenden Python-Beispiel gezeigt. In diesem Beispiel wird für das Azure Batch-Container-Pool-Image aus Marketplace der Ubuntu Server verwendet.
 
-```csharp
-// Specify container configuration. This is required even though there are no prefetched images.
-ContainerConfiguration containerConfig = new ContainerConfiguration();
 
-// VM configuration
-VirtualMachineConfiguration virtualMachineConfiguration = new VirtualMachineConfiguration(
-    imageReference: imageReference,
-    containerConfiguration: containerConfig,
-    nodeAgentSkuId: "batch.node.ubuntu 16.04");
+```python
+image_ref_to_use = batch.models.ImageReference(
+        publisher='microsoft-azure-batch',
+        offer='ubuntu-server-container',
+        sku='16-04-lts',
+        version='latest')
 
-// Create pool
-CloudPool pool = batchClient.PoolOperations.CreatePool(
-    poolId: poolId,
-    targetDedicatedComputeNodes: 4,
-    virtualMachineSize: "Standard_NC6",
-    virtualMachineConfiguration: virtualMachineConfiguration);
+"""
+Specify container configuration. This is required even though there are no prefetched images.
+"""
 
-// Commit pool creation
-pool.Commit();
+container_conf = batch.models.ContainerConfiguration()
+
+new_pool = batch.models.PoolAddParameter(
+        id=pool_id,
+        virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+            image_reference=image_ref_to_use,
+            container_configuration=container_conf,
+            node_agent_sku_id='batch.node.ubuntu 16.04'),
+        vm_size='STANDARD_D1_V2',
+        target_dedicated_nodes=1)
+...
 ```
 
 
 ### <a name="prefetch-images-for-container-configuration"></a>Vorabrufen von Images für die Containerkonfiguration
 
-Zum Vorabrufen von Containerimages im Pool fügen Sie `ContainerConfiguration` die Liste der Containerimages (`containerImageNames`) hinzu und geben der Imageliste einen Namen. Beim folgenden Beispiel wird davon ausgegangen, dass Sie ein benutzerdefiniertes Ubuntu 16.04 LTS-Image verwenden und ein TensorFlow-Image über [Docker Hub](https://hub.docker.com) vorabrufen. Dieses Beispiel enthält eine Startaufgabe, die auf den Poolknoten im VM-Host ausgeführt wird. Beispielsweise können Sie eine Startaufgabe auf dem Host ausführen, um einen Dateiserver einzubinden, der über die Container zugänglich ist.
+Zum Vorabrufen von Containerimages im Pool fügen Sie die Liste der Containerimages (`container_image_names`, in Python) zur `ContainerConfiguration` hinzu. 
+
+Im folgenden grundlegenden Python-Beispiel wird gezeigt, wie ein standardmäßiges Ubuntu-Containerimage aus [Docker Hub](https://hub.docker.com) vorabgerufen wird.
+
+```python
+image_ref_to_use = batch.models.ImageReference(
+    publisher='microsoft-azure-batch',
+    offer='ubuntu-server-container',
+    sku='16-04-lts',
+    version='latest')
+
+"""
+Specify container configuration, fetching the official Ubuntu container image from Docker Hub. 
+"""
+
+container_conf = batch.models.ContainerConfiguration(container_image_names=['ubuntu'])
+
+new_pool = batch.models.PoolAddParameter(
+    id=pool_id,
+    virtual_machine_configuration=batch.models.VirtualMachineConfiguration(
+        image_reference=image_ref_to_use,
+        container_configuration=container_conf,
+        node_agent_sku_id='batch.node.ubuntu 16.04'),
+    vm_size='STANDARD_D1_V2',
+    target_dedicated_nodes=1)
+...
+```
+
+
+Beim folgenden Beispiel C# wird davon ausgegangen, dass Sie ein TensorFlow-Image über [Docker Hub](https://hub.docker.com) vorabrufen möchten. Dieses Beispiel enthält eine Startaufgabe, die auf den Poolknoten im VM-Host ausgeführt wird. Beispielsweise können Sie eine Startaufgabe auf dem Host ausführen, um einen Dateiserver einzubinden, der über die Container zugänglich ist.
 
 ```csharp
+
+ImageReference imageReference = new ImageReference(
+    publisher: "microsoft-azure-batch",
+    offer: "ubuntu-server-container",
+    sku: "16-04-lts",
+    version: "latest");
+
 // Specify container configuration, prefetching Docker images
 ContainerConfiguration containerConfig = new ContainerConfiguration(
     containerImageNames: new List<string> { "tensorflow/tensorflow:latest-gpu" } );
@@ -157,15 +184,13 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration, startTaskContainer);
-
-// Commit pool creation
-pool.Commit();
+...
 ```
 
 
 ### <a name="prefetch-images-from-a-private-container-registry"></a>Vorabrufen von Images aus einer privaten Containerregistrierung
 
-Sie können Containerimages auch durch Authentifizierung bei einem Server für die Containerregistrierung vorabrufen. Beim folgenden Beispiel verwenden die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration` ein benutzerdefiniertes Ubuntu 16.04 LTS-Image, um ein privates TensorFlow-Image aus einer privaten Azure-Containerregistrierung vorabzurufen.
+Sie können Containerimages auch durch Authentifizierung bei einem Server für die Containerregistrierung vorabrufen. Beim folgenden Beispiel rufen die Objekte `ContainerConfiguration` und `VirtualMachineConfiguration` ein privates TensorFlow-Image aus einer privaten Azure-Containerregistrierung vorab ab. Der Bildverweis ist derselbe wie im vorherigen Beispiel.
 
 ```csharp
 // Specify a container registry
@@ -192,9 +217,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 4,
     virtualMachineSize: "Standard_NC6",
     virtualMachineConfiguration: virtualMachineConfiguration);
-
-// Commit pool creation
-pool.Commit();
+...
 ```
 
 
@@ -208,7 +231,22 @@ Wenn Sie Aufgaben in Containerimages ausführen, sind für die [Cloudaufgabe](/d
 
 Beim Konfigurieren der Containereinstellungen werden alle Verzeichnisse rekursiv unter dem `AZ_BATCH_NODE_ROOT_DIR` (Stamm der Azure Batch-Verzeichnisse auf dem Knoten) dem Container zugeordnet, alle Variablen der Aufgabenumgebung werden dem Container zugeordnet, und die Befehlszeile für die Aufgabe wird im Container ausgeführt.
 
-Im Codebeispiel unter [Vorabrufen von Images für die Containerkonfiguration](#prefetch-images-for-container-configuration) wurde gezeigt, wie Sie eine Containerkonfiguration für eine Startaufgabe angeben. Im folgenden Codebeispiel wird gezeigt, wie Sie eine Containerkonfiguration für eine Cloudaufgabe angeben:
+Der folgende Python-Codeausschnitt zeigt eine grundlegende Befehlszeile, die in einem aus Docker Hub gepullten Ubuntu-Container ausgeführt wird. Die Optionen für die Containerausführung sind zusätzliche Argumente für den von der Aufgabe ausgeführten `docker create`-Befehl. Hier entfernt die Option `--rm` den Container, nachdem die Aufgabe abgeschlossen ist.
+
+```python
+task_id = 'sampletask'
+task_container_settings = batch.models.TaskContainerSettings(
+    image_name='ubuntu', 
+    container_run_options='--rm')
+task = batch.models.TaskAddParameter(
+    id=task_id,
+    command_line='echo hello',
+    container_settings=task_container_settings
+)
+
+```
+
+Im folgenden Beispiel C# werden die grundlegenden Containereinstellungen für eine Cloudaufgabe gezeigt:
 
 ```csharp
 // Simple container task command
@@ -234,3 +272,5 @@ CloudTask containerTask = new CloudTask (
 * Weitere Informationen zur Installation und Verwendung von Docker CE unter Linux finden Sie in der [Docker](https://docs.docker.com/engine/installation/)-Dokumentation.
 
 * Weitere Informationen zur Verwendung benutzerdefinierter Images finden Sie unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
+
+* Informieren Sie sich über das [Moby-Projekt](https://mobyproject.org/), ein Framework zum Erstellen containerbasierter Systeme.

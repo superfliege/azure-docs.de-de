@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: db7663623ada5d7799c46018be9e3b66afd004ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1a2067228629b04f1ef2cc407a28f379acc75f60
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297514"
 ---
 # <a name="use-cost-management-reports"></a>Verwenden von Cost Management-Berichten
 
@@ -23,6 +24,8 @@ In diesem Artikel wird beschrieben, wie Sie verschiedene Cost Management-Bericht
 ## <a name="cost-analysis-reports"></a>Berichte zur Kostenanalyse
 
 In Berichten zur Kostenanalyse werden Abrechnungsdaten von Ihren Cloudanbietern angezeigt. Mithilfe der Berichte können Sie verschiedene in der Abrechnungsdatei aufgeführte Datensegmente gruppieren und detailliert anzeigen. Die Berichte ermöglichen eine differenzierte Navigation durch die Kosten in den Abrechnungsrohdaten der Cloudanbieter.
+
+Bei der Anzeige als Diagramm haben Analyseberichte eine Y-Achse *Kosten* und eine X-Achse für eine *Kategorie oder ein Tag*, die bzw. das Sie auswählen. Obwohl das Diagramm über einen Bereich verfügt, beispielsweise die letzten 30 Tage, wird der Bereich als Filter verwendet. Analyseberichte sind ideal zum Vergleichen von Kategorien. Beispielsweise können die Kosten jedes Abonnements in den letzten 30 Tagen verglichen werden oder die Kosten für Speicher- oder Computedienste über einen bestimmten Zeitraum.
 
 In Berichten zur Kostenanalyse werden Kosten nicht nach Tags gruppiert. Die tagbasierte Berichterstellung ist nur in den Berichten zur Kostenzuteilung verfügbar, nachdem Sie mit „Cost Allocation 360“ ein Kostenmodell erstellt haben.
 
@@ -50,6 +53,8 @@ Sie können mit der rechten Maustaste auf die Berichtsergebnisse klicken und wei
 ### <a name="actual-cost-over-time"></a>Actual Cost Over Time (Ist-Kosten im Zeitverlauf)
 
 Der Bericht „Actual Cost Over Time“ (Ist-Kosten im Zeitverlauf) ist ein Standardbericht zur Kostenanalyse, in dem Kosten über eine definierte Zeitauflösung verteilt werden. Im Bericht werden Ausgaben im Zeitverlauf angezeigt, sodass Sie Trends beobachten und Unregelmäßigkeiten bei den Kosten erkennen können. In diesem Bericht werden die hauptsächlichen Kostenbeiträge, einschließlich der laufenden Kosten und einmaligen Gebühren für reservierte Instanzen, angezeigt, die innerhalb eines ausgewählten Zeitraums aufgewendet werden.
+
+Bei der Anzeige als Diagramm verfügen Berichte, die die Kosten im Zeitverlauf darstellen, über eine Y-Achse *Kosten* und eine X-Achse *Zeitraum*. Diese Berichte zeigen die Kostenentwicklung im Zeitverlauf.
 
 Sie können den Bericht „Actual Cost Over Time“ (Ist-Kosten im Zeitverlauf) für Folgendes verwenden:
 

@@ -1,19 +1,19 @@
 ---
 title: Einrichten einer Gerätevorlage in einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Informationen zum Einrichten einer Gerätevorlage mit Messungen, Einstellungen, Eigenschaften, Regeln und Dashboard.
-services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 52c6c8fe4375354d650f92b73bffc288c9a2ccfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpr
+ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201508"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261983"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
@@ -161,6 +161,59 @@ Nachdem Sie auf **Speichern** geklickt haben, wird der Gerätestandort als Kache
 > [!NOTE]
 > Nach dem Erstellen einer neuen Kachel können Sie den Wert der Eigenschaft ändern. Deaktivieren Sie als Erstes den Entwurfsmodus oben rechts im Bildschirm.
 
+### <a name="create-a-location-property-powered-by-azure-maps"></a>Erstellen einer von Azure Maps unterstützten Standorteigenschaft
+Sie können Ihre Standortdaten mit geografischem Kontext in Azure IoT Central versehen und Breiten- und Längengradkoordinaten einer Anschrift oder einfach die Breiten- und Längengradkoordinaten zuordnen. Diese Funktion in Azure IoT Central wird von Azure Maps unterstützt.
+
+Es gibt zwei Arten von Standorteigenschaften, die Sie hinzufügen können:
+- **Standort als Anwendungseigenschaft**, die ausschließlich in der Anwendung gespeichert wird. Das Gerät hat von Anwendungseigenschaften keine Kenntnis.
+- **Standort als Geräteeigenschaft**, die vom Gerät gemeldet wird.
+
+####<a name="adding-location-as-an-application-property"></a>Hinzufügen eines Standorts als Anwendungseigenschaft 
+Sie können mithilfe von Azure Maps eine Standorteigenschaft als Anwendungseigenschaft in Ihrer Azure IoT Central-Anwendung erstellen. Beispielsweise können Sie die Geräteinstallationsadresse hinzufügen. 
+
+1. Navigieren Sie zur Registerkarte „Geräteeigenschaft“, und stellen Sie sicher, dass der Entwurfsmodus aktiviert ist.
+
+![Standorteigenschaft](./media/howto-set-up-template/locationcloudproperty1.png)
+
+2. Klicken Sie auf der Registerkarte „Eigenschaft“ auf „Standort“.
+3. Konfigurieren Sie optional den Anzeigenamen, Feldnamen und Anfangswert des Standorts. 
+
+![Formular für die Standorteigenschaften](./media/howto-set-up-template/locationcloudproperty2.png)
+
+Es gibt zwei unterstützte Formate zum Hinzufügen eines Standorts:
+- **Standort als Adresse**
+- **Standort als Koordinaten** 
+
+4. Klicken Sie auf Speichern. 
+
+![Feld für die Standorteigenschaft](./media/howto-set-up-template/locationcloudproperty3.png)
+
+Ab sofort kann ein Operator den Standortwert im Formular für das Standortfeld aktualisieren. 
+
+####<a name="adding-location-as-a-device-property"></a>Hinzufügen eines Standorts als Geräteeigenschaft 
+
+Sie können eine Standorteigenschaft als Geräteeigenschaft erstellen, die vom Gerät gemeldet wird.
+Nehmen wir beispielsweise an, Sie möchten den Gerätestandort nachverfolgen.
+
+1.  Navigieren Sie zur Registerkarte „Geräteeigenschaft“, und stellen Sie sicher, dass der Entwurfsmodus aktiviert ist.
+2.  Klicken Sie in der Bibliothek auf „Geräteeigenschaft“.
+
+![Feld für die Standorteigenschaft](./media/howto-set-up-template/locationdeviceproperty1.png)
+
+3.  Konfigurieren Sie den Anzeigenamen und den Feldnamen, und wählen Sie „location“ als Datentyp. 
+
+> [!NOTE]
+Der Feldname muss mit dem Namen der Eigenschaft der Geräteberichte genau übereinstimmen. 
+
+![Feld für die Standorteigenschaft](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+![Ansicht des Operators für die Standorteigenschaft](./media/howto-set-up-template/locationdeviceproperty2.png)
+
+Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren. Weitere Informationen finden Sie unter [Hinzufügen eines Standorts auf dem Azure Maps-Dashboard](howto-set-up-template.md).
+
+
+
+
 ## <a name="rules"></a>Regeln
 
 Anhand von Regeln können Operatoren Geräte nahezu in Echtzeit überwachen. Regeln rufen automatisch **Aktionen** auf. Beispielsweise kann bei Auslösen der Regel eine E-Mail gesendet werden. Zurzeit ist ein Regeltyp verfügbar:
@@ -178,6 +231,31 @@ Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzu
 Wenn ein Operator nun das Dashboard aufruft, wird ihm diese Kachel mit den Eigenschaften und Einstellungen des Geräts angezeigt:
 
 ![Dashboardkachel](./media/howto-set-up-template/dashboardtile.png)
+
+### <a name="add-location-azure-map-in-dashboard"></a>Hinzufügen eines Standorts auf dem Azure Maps-Dashboard
+
+Wenn Sie eine Standorteigenschaft konfiguriert haben, wie in den Schritten unter [Erstellen einer von Azure Maps unterstützten Standorteigenschaft]((howto-set-up-template.md) beschrieben wird, können Sie den Standort mithilfe einer Karte auf der rechten Seite auf Ihrem Gerätedashboard visualisieren.
+
+1.  Navigieren Sie zur Registerkarte „Gerätedashboard“, und stellen Sie sicher, dass der Entwurfsmodus aktiviert ist.
+2.  Wählen Sie auf der Registerkarte „Gerätedashboard“ die Option „Karte“ aus der Bibliothek aus. 
+
+![Auswählen eines Standorts auf dem Azure Maps-Dashboard](./media/howto-set-up-template/locationcloudproperty4map.png)
+
+3.  Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
+
+![Konfigurieren eines Standorts auf dem Azure Maps-Dashboard](./media/howto-set-up-template/locationcloudproperty5map.png)
+
+4.  Speichern Sie diese. Daraufhin wird die Kartenkachel mit dem Standort angezeigt, den Sie ausgewählt haben. 
+
+![Visualisieren eines Standorts auf dem Azure Maps-Dashboard](./media/howto-set-up-template/locationcloudproperty6map.png) 
+
+Sie können die Karte auf die gewünschte Größe ändern.
+
+Wenn ein Operator nun das Dashboard anzeigt, kann dieser alle von Ihnen konfigurierte Dashboardkacheln einsehen, einschließlich einer Standortkarte.
+
+![Azure Maps-Dashboard mit Standort](./media/howto-set-up-template/locationcloudproperty7map.png) 
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

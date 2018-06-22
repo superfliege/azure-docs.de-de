@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 3ab06b624d1e433641d190d9621592ef83df3344
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236398"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
@@ -29,7 +30,14 @@ ms.lasthandoff: 04/18/2018
     - Für die zu überwachenden Netzwerksicherheitsgruppen aktivierte NSG-Datenflussprotokolle
     - Ein Azure Storage-Konto zum Speichern von unformatierte Datenflussprotokollen
     - Ein Log Analytics (OMS)-Arbeitsbereich mit Lese- und Schreibzugriff
-    - Ihrem Konto müssen folgende Aktionen für den Anbieter „Microsoft.Network“ zugewiesen werden:
+    - Benutzern muss eine der folgenden Rollen auf Abonnementebene zugewiesen sein:
+    
+            All permissions *
+            All Read permissions */read
+            All network permissions Microsoft.Network/*
+            All network read permissions Microsoft.Network/*/read
+
+    Alternativ müssen Benutzern alle der folgenden Rollen auf Abonnementebene zugewiesen sein: 
 
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
@@ -41,6 +49,19 @@ ms.lasthandoff: 04/18/2018
         - Microsoft.Network/routeTables/read
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
+        
+Um die einem Benutzer für ein Abonnement zugewiesenen Rollen zu überprüfen, führen Sie die folgenden Schritte aus:
+
+Melden Sie sich mit „Login-AzureRmAccount“ bei Azure an. 
+
+Wählen Sie mit „Select-AzureRmSubscription“ das richtige Abonnement aus. 
+
+Listen Sie nun mit „Get-AzureRmRoleAssignment -SignInName <user email> -IncludeClassicAdministrators“ alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
+
+Falls nach dem Ausführen der Befehle keine Ausgabe angezeigt wird, wenden Sie sich bitte an den betreffenden Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten.  
+
+Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+
 
 2.  In welchen Azure-Regionen sind Datenverkehrsanalysen verfügbar?
 
@@ -106,11 +127,11 @@ ms.lasthandoff: 04/18/2018
 
 14. Kann ich Datenverkehrsanalysen mithilfe von PowerShell oder einer Azure Resource Manager-Vorlage konfigurieren?
 
-    Nein, Datenverkehrsanalysen können nur im Azure-Portal konfiguriert werden.
+Ja, die Konfiguration von Datenverkehrsanalysen mithilfe von Windows PowerShell wird ab Version 6.2.1 oder höher unterstützt. Unterstützung für Azure Resource Manager-Vorlagen ist zurzeit jedoch nicht verfügbar. Weitere Informationen dazu, wie Sie mit PowerShell Datenverkehrsanalysen konfigurieren können, finden Sie in der folgenden [Dokumentation](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Was kosten Datenverkehrsanalysen?
 
-        Bei Datenverkehrsanalysen werden die Erweiterung reduzierter Protokolle sowie die Speicherung der erweiterten Protokolle in einem Log Analytics-Arbeitsbereich gemessen. Während der Vorschauphase fallen bei Datenverkehrsanalysen keine Gebühren für die Erweiterung der reduzierten Protokolle an. Die Speicherung von Daten in einem Arbeitsbereich wird jedoch nach den veröffentlichten Tarifen abgerechnet. Diese Antwort wird aktualisiert, sobald die Preise für Datenverkehrsanalysen verfügbar sind.
+Entscheidend sind die Flussprotokolldaten, die vom Dienst verarbeitet werden, und der Speicherplatz der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. Um weitere Informationen zu Preisen zu erhalten, [klicken Sie hier](https://azure.microsoft.com/en-us/pricing/details/network-watcher/). 
 
 16.  Wie kann ich mit einer Tastatur in der Kartenansicht navigieren?
 

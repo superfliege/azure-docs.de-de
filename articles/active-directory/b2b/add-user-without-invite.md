@@ -6,35 +6,36 @@ documentationcenter: ''
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 05/21/2018
 ms.author: twooley
 author: twooley
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 589d9a417dae5c40d24d25c4ef864ce903fbfbe3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 50c64386f1eab07c299112617283b1d8d7295295
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259577"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591050"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Hinzufügen von Gastbenutzern der B2B-Zusammenarbeit ohne Einladung
 
-> [!NOTE]
-> Die E-Mail-Einladung wird nur noch in einigen Sonderfällen benötigt. Weitere Informationen finden Sie unter [Azure Active Directory B2B collaboration invitation redemption](redemption-experience.md) (Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen).  
+Sie können nun Gastbenutzer einladen, indem Sie ihnen einen direkten Link zu einer freigegebenen App senden. Eine E-Mail-Einladung ist nur noch in einigen Sonderfällen erforderlich. Gastbenutzer können nahtlos auf die App zugreifen, wenn sie auf den App-Link klicken und dann die Datenschutzrichtlinien lesen und akzeptieren. Weitere Informationen finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md).   
 
-Sie können festlegen, dass ein Benutzer, z.B. ein Mitarbeiter einer Partnerorganisation, Ihrer Organisation Benutzer der Partnerorganisation hinzufügen kann, ohne dass dazu Einladungen erforderlich sind. Dazu müssen Sie dem entsprechenden Benutzer lediglich in dem Verzeichnis, das Sie für die Partnerorganisation verwenden, Enumerationsberechtigungen zuweisen. 
-
-Die Erteilung dieser Berechtigungen empfiehlt sich in den folgenden Fällen:
+Früher mussten Sie Gastbenutzern keine E-Mail-Einladung senden. Aus Ihrer Organisation oder einer Partnerorganisation wurde ein Einladender der Verzeichnisrolle **Gasteinladender** hinzugefügt. Dieser fügte über die Benutzeroberfläche oder PowerShell dem Verzeichnis, den Gruppen oder den Anwendungen einen Gastbenutzer hinzu. Wenn Sie PowerShell verwenden, müssen Sie keine Einladung per E-Mail versenden. Beispiel: 
 
 1. Ein Benutzer in der Hostorganisation (z.B. WoodGrove) lädt einen Benutzer aus der Partnerorganisation (z.B. Sam@litware.com) als Gast ein.
-2. Der Administrator der Hostorganisation [legt Richtlinien fest](delegate-invitations.md), die es Sam erlauben, weitere Benutzer aus der Partnerorganisation (Litware) zu identifizieren und hinzuzufügen.
-3. Jetzt kann Sam dem Verzeichnis sowie den Gruppen und Anwendungen von WoodGrove weitere Benutzer von Litware hinzufügen, ohne dass Einladungen eingelöst werden müssen. Wenn Sam über entsprechende Enumerationsberechtigungen in Litware verfügt, erfolgt dies automatisch.
+2. Der Administrator der Hostorganisation [legt Richtlinien fest](delegate-invitations.md), die es Sam erlauben, weitere Benutzer aus der Partnerorganisation (Litware) zu identifizieren und hinzuzufügen. Sam muss der Rolle **Gasteinladender** hinzugefügt werden.
+3. Jetzt kann Sam dem Verzeichnis, den Gruppen und den Anwendungen von WoodGrove weitere Benutzer von Litware hinzufügen, ohne dass Einladungen eingelöst werden müssen. Wenn Sam über entsprechende Enumerationsberechtigungen in Litware verfügt, erfolgt dies automatisch.
+ 
+Dieses Verfahren funktioniert weiterhin. Es gibt jedoch einen kleinen Unterschied. Wenn Sie PowerShell verwenden, werden Sie feststellen, dass ein eingeladener Gast nun den Status **PendingAcceptance** hat und nicht direkt **Accepted**. Obwohl die Annahme noch aussteht, kann sich der Gastbenutzer in der App anmelden und auf diese zugreifen, ohne auf den Einladungslink in der E-Mail zu klicken. Dieser Status bedeutet, dass der Benutzer noch nicht den [Zustimmungsprozess](redemption-experience.md#privacy-policy-agreement) durchlaufen hat, während dem er den Datenschutzrichtlinien der Organisation zustimmt. Der Gastbenutzer sieht bei der ersten Anmeldung diesen Zustimmungsbildschirm. 
+
+Wenn Sie einen Benutzer in das Verzeichnis einladen, muss der Gastbenutzer direkt auf die Azure-Portal-URL des spezifischen Ressourcenmandanten zugreifen (z.B. https://portal.azure.com/*ressourcenmandant*.onmicrosoft.com), um die Datenschutzrichtlinien anzusehen und diesen zuzustimmen.
 
 ### <a name="next-steps"></a>Nächste Schritte
 
 - [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
-- [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](add-users-information-worker.md)
 - [B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md)
 - [Delegieren von Einladungen zur Azure Active Directory B2B-Zusammenarbeit](delegate-invitations.md)
+- [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](add-users-information-worker.md)
 

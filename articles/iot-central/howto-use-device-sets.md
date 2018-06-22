@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwenden.
-services: iot-central
 author: ellenfosborne
 ms.author: elfarber
 ms.date: 01/21/2018
-ms.topic: article
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 932c8315b5af22c3adf18de50cf03deaf6b2a53e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.topic: conceptual
+ms.service: iot-central
+services: iot-central
+manager: peterpfr
+ms.openlocfilehash: ef1fa64a276926a35dbf98646317bfe29200bb22
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201148"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261677"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
@@ -86,10 +86,40 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
     > [!NOTE]
     > Sie können mehrere Bilder, Links und Raster hinzufügen.
-
-1. Deaktivieren Sie **Entwurfsmodus**.
+  
+    1. Deaktivieren Sie **Entwurfsmodus**.
 
     ![Entwurfsmodus ausschalten](media/howto-use-device-sets/image10.png)
+
+
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Gerätegruppen-Dashboard 
+Sie können eine Standortkarte hinzufügen, um die Standorte Ihrer Gerätegruppen in einer Karte zu visualisieren. 
+
+Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können, müssen Sie sicherstellen, dass die Standorteigenschaft in der Gerätevorlage konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen einer von Azure Maps unterstützten Standorteigenschaft](howto-set-up-template.md).
+
+
+1. Wählen Sie im Gerätegruppen-Dashboard „Karte“ aus der Bibliothek aus. 
+
+    ![Gerätegruppen-Dashboard – Karten](media/howto-use-device-sets/LocationMaps1.png)
+
+
+2. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
+
+    ![Dashboardkarten konfigurieren](media/howto-use-device-sets/LocationMaps2.png)
+
+3. Nach dem Speichern wird in der Kartenkachel der Standort Ihrer Geräte in der Gerätegruppe angezeigt.
+
+    ![Dashboardkarten speichern](media/howto-use-device-sets/LocationMaps3.png)
+
+
+5. Wenn ein Benutzer das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann.
+
+    ![Dashboardkarten – Benutzeransicht](media/howto-use-device-sets/LocationMaps4.png)
+
+    Sie können die Kartengröße an Ihre Anforderungen anpassen.
+
+
+
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe
 
