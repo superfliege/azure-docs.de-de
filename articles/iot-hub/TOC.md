@@ -259,6 +259,7 @@
 ## [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot/)
 ## [Kundendatenanforderungen](iot-hub-customer-data-requests.md)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=internet-of-things)
+## [Azure IoT-Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 ## [DeviceExplorer-Tool](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [iothub-diagnostics-Tool](https://github.com/Azure/iothub-diagnostics)
 ## [iothub-explorer-Tool](https://github.com/Azure/iothub-explorer)
