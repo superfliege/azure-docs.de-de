@@ -3,7 +3,7 @@ title: Melden von Azure Stack-Nutzungsdaten an Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Melden von Nutzungsdaten in Azure Stack einrichten.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,14 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
-ms.author: mabrigg
+ms.date: 05/30/2018
+ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 602cd6c3b2be8881bebbcebe30ec2520358b731f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603701"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Melden von Azure Stack-Nutzungsdaten an Azure 
 
@@ -42,7 +43,7 @@ Um die Berichterstellung zu Nutzungsdaten einzurichten, müssen Sie [Ihre Azure 
 - **Menge**: Menge der Ressourcennutzung.
 - **Speicherort**: Der Speicherort, an dem die aktuelle Azure Stack-Ressource bereitgestellt wurde
 - **Ressourcen-URI**: Ein vollqualifizierter URI der Ressource, deren Nutzung gemeldet wird
-- **Abonnement-ID**: Die Abonnement-ID des Azure Stack-Benutzers Dies ist das lokale (Azure Stack-)Abonnement.
+- **Abonnement-ID:** Die Abonnement-ID des Azure Stack-Benutzers. Dies ist das lokale (Azure Stack-)Abonnement.
 - **Zeit**: Die Start- und Endzeit der Nutzungsdaten Es besteht eine Verzögerung zwischen der Zeit, zu der die Ressourcen in Azure Stack verwendet werden, und der Zeit, zu der die Nutzungsdaten an das Commerce-System gemeldet werden. Azure Stack aggregiert Nutzungsdaten für jeweils 24 Stunden, und der Vorgang des Meldens von Nutzungsdaten an das Commerce-System in Azure dauert zusätzlich einige Stunden. Daher kann es vorkommen, dass eine Nutzung kurz vor Mitternacht am nächsten Tag in Azure angezeigt wird.
 
 ## <a name="generate-usage-data-reporting"></a>Generieren der Berichterstellung zu Nutzungsdaten
@@ -68,7 +69,7 @@ Wenn Sie Ihre Azure Stack-Instanz mit einem anderen Abonnementtyp, z.B. einem nu
 
    ![Abrechnungsablauf](media/azure-stack-usage-reporting/pricing-details.png)
 
-Für das Azure Stack Development Kit fallen für Azure-Ressourcen keine Gebühren an. Daher wird als Preis $0,00 angezeigt. Wenn Azure Stack mit mehreren Knoten allgemein verfügbar ist, werden die tatsächlichen Kosten für jede dieser Ressourcen angezeigt.
+Für das Azure Stack Development Kit fallen für Azure-Ressourcen keine Gebühren an. Daher wird als Preis $0,00 angezeigt.
 
 ## <a name="which-azure-stack-deployments-are-charged"></a>Welche Azure Stack-Bereitstellungen werden in Rechnung gestellt?
 
@@ -82,7 +83,7 @@ Benutzern werden nur VMs in Rechnung gestellt, die unter den Mandantenabonnement
 
 ## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Wie kann ich eine Windows Server-Lizenz für Azure Stack verwenden?
 
-Durch die Verwendung der vorhandenen Lizenzen wird die Inanspruchnahme von Nutzungsverbrauchseinheiten vermieden. Vorhandene Windows Server-Lizenzen können in Azure Stack verwendet werden, wie im [Azure Stack-Lizenzierungshandbuch](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409) im Abschnitt „Verwendung der vorhandenen Software mit Azure Stack“ beschrieben wird. Kunden müssen ihre virtuellen Windows Server-Computer wie im Thema [Azure-Hybridvorteil für Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) beschrieben bereitstellen, um Ihre vorhandenen Lizenzen verwenden zu können.
+Durch die Verwendung der vorhandenen Lizenzen wird die Inanspruchnahme von Nutzungsverbrauchseinheiten vermieden. Vorhandene Windows Server-Lizenzen können in Azure Stack verwendet werden, wie im [Azure Stack-Lizenzierungshandbuch](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409) im Abschnitt „Verwendung der vorhandenen Software mit Azure Stack“ beschrieben wird. Kunden müssen ihre virtuellen Windows Server-Computer wie im Artikel [Azure-Hybridvorteil für Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) beschrieben bereitstellen, um ihre vorhandenen Lizenzen verwenden zu können.
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Welchem Abonnement wird die Nutzung der Ressourcen in Rechnung gestellt?
 Die Nutzung wird dem bei der [Registrierung von Azure Stack bei Azure](azure-stack-register.md) angegebene Abonnement in Rechnung gestellt.

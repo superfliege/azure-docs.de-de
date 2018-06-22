@@ -5,53 +5,88 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3eaefbe011c4d98fe9a76d4f277a76a2f167b191
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.reviewer: unknown
+ms.openlocfilehash: cbd5e5dbcdd2565e8066b0721f45863569bfd90a
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34301892"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295029"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Installieren von Visual Studio und Herstellen einer Verbindung mit Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Verwenden Sie Visual Studio zum Erstellen und Bereitstellen von Azure Resource Manager-[Vorlagen](azure-stack-arm-templates.md) in Azure Stack. Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Visual Studio entweder über das [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder über einen Windows-basierten externen Client (wenn Sie über [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) verbunden sind) zu installieren. Mit diesen Schritten in diesem Artikel führen Sie eine neue Installation von Visual Studio 2015 Community Edition durch. Erfahren Sie mehr zur [Koexistenz](https://msdn.microsoft.com/library/ms246609.aspx) mit anderen Versionen von Visual Studio.
+Sie können Visual Studio zum Schreiben und Bereitstellen von [Azure Resource Manager-Vorlagen](azure-stack-arm-templates.md) für Azure Stack verwenden. Die Schritte in diesem Artikel beschreiben die Installation von Visual Studio in [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder auf einem externen Computer, wenn Sie eine Verbindung mit Azure Stack per [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) herstellen möchten.
 
 ## <a name="install-visual-studio"></a>Installieren von Visual Studio
 
-1. Laden Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) herunter, und führen Sie ihn aus.
-2. Suchen Sie nach **Visual Studio Community 2015 with Microsoft Azure SDK – 2.9.6**, klicken Sie auf **Hinzufügen** und anschließend auf **Installieren**.
+1. Laden Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) herunter, und führen Sie ihn aus.  
 
-    ![Bildschirmaufnahme der WebPI-Installationsschritte](./media/azure-stack-install-visual-studio/image1.png)
+2. Öffnen Sie den **Microsoft-Webplattform-Installer**.
 
-3. Deinstallieren Sie **Microsoft Azure PowerShell**, das als Teil des Azure SDK installiert ist.
+3. Suchen Sie nach **Visual Studio Community 2015 with Microsoft Azure SDK – 2.9.6**. Klicken Sie auf **Hinzufügen** und anschließend auf **Installieren**.
 
-    ![Bildschirmaufnahme der Oberfläche zum Hinzufügen/Entfernen von Programmen für Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png)
+4. Deinstallieren Sie das **Microsoft Azure PowerShell**, das als Teil des Azure SDKs installiert ist.
 
-4. [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md)
+    ![Screenshot der WebPI-Installationsschritte](./media/azure-stack-install-visual-studio/image1.png) 
 
-5. Starten Sie nach Abschluss der Installation das Betriebssystem neu.
+5. [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md)
 
-## <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
+6. Starten Sie nach Abschluss der Installation das Betriebssystem neu.
+
+## <a name="connect-to-azure-stack-with-azure-ad"></a>Herstellen einer Verbindung mit Azure Stack über Azure AD
 
 1. Starten Sie Visual Studio.
 
 2. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
 
-3. Wählen Sie im neuen Bereich die Option **Konto hinzufügen** aus, und melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen an.
-    ![Bildschirmaufnahme des Cloud-Explorer nach dem Anmelden und dem Herstellen einer Verbindung mit Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
+3. Wählen Sie im neuen Bereich die Option **Konto hinzufügen** aus, und melden Sie sich mit Ihren Azure Active Directory-Anmeldeinformationen (Azure AD) an.  
 
-Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-template-visual-studio.md) oder die verfügbaren Ressourcentypen und Ressourcengruppen durchsuchen, um Ihre eigenen Vorlagen zu erstellen.
+    ![Screenshot von Cloud-Explorer nach dem Anmelden und dem Herstellen einer Verbindung mit Azure Stack](./media/azure-stack-install-visual-studio/image2.png)
+
+Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-template-visual-studio.md) oder die verfügbaren Ressourcentypen und Ressourcengruppen durchsuchen, um Ihre eigenen Vorlagen zu erstellen.  
+
+## <a name="connect-to-azure-stack-with-ad-fs"></a>Herstellen einer Verbindung mit Azure Stack über AD FS
+
+1. Starten Sie Visual Studio.
+
+2. Wählen Sie unter **Tools** den Eintrag **Optionen** aus.
+
+3. Erweitern Sie **Umgebung** im **Navigationsbereich**, und wählen Sie **Konten** aus.
+
+4. Wählen Sie **Hinzufügen** aus, und geben Sie den Azure Resource Manager-Endpunkt des Benutzers ein.  
+  Für das Azure Stack Development Kit lautet die URL `https://management.local.azurestack/external`.  
+  Für integrierte Azure Stack-Systeme lautet die URL `https://management.[Region}.[External FQDN]`.
+
+    ![X](./media/azure-stack-install-visual-studio/image5.png)
+
+5. Wählen Sie **Hinzufügen**.  
+
+    Visual Studio ruft Azure Resource Manager auf und ermittelt die Endpunkte, einschließlich des Authentifizierungsendpunkts für Active Directory-Verbunddienste (AD FS).
+
+    ![Screenshot von Cloud-Explorer nach dem Anmelden und dem Herstellen einer Verbindung mit Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
+
+6. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
+7. Wählen Sie **Konto hinzufügen** aus, und melden Sie sich mit Ihren AD FS-Anmeldeinformationen an.  
+
+    ![X](./media/azure-stack-install-visual-studio/image7.png)
+
+    Cloud-Explorer fragt die verfügbaren Abonnements ab. Sie können ein für die Verwaltung verfügbares Abonnement auswählen.
+
+    ![X](./media/azure-stack-install-visual-studio/image8.png)
+
+8. Durchsuchen Sie Ihre vorhandenen Ressourcen und Ressourcengruppen, oder stellen Sie Vorlagen bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)
+ - Erfahren Sie mehr zur [Koexistenz](https://msdn.microsoft.com/library/ms246609.aspx) mit anderen Versionen von Visual Studio.
+ - [Entwickeln von Vorlagen für Azure Stack](azure-stack-develop-templates.md)

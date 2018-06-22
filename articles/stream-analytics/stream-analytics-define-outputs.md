@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: e14c4671669bc00e52c84c821a5229d26b2ba1c1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f2f616c5908d8583764425b62acd1650283d0695
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211370"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701716"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
@@ -28,6 +28,8 @@ Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt,
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Stream Analytics unterstützt [Azure Data Lake-Speicher](https://azure.microsoft.com/services/data-lake-store/). Azure Data Lake-Speicher ist ein unternehmensweites riesiges Repository für Big Data-Analyseworkloads. Data Lake-Speicher ermöglicht es Ihnen, Daten von beliebiger Größe, Art und Erfassungsgeschwindigkeit zur Durchführung operativer und explorativer Analysen zu speichern. Stream Analytics muss autorisiert werden, um auf Data Lake Store zugreifen zu können.
+
+Die Azure Data Lake Store-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
 
 ### <a name="authorize-an-azure-data-lake-store-account"></a>Autorisieren eines Azure Data Lake Store-Kontos
 
@@ -45,7 +47,7 @@ Stream Analytics unterstützt [Azure Data Lake-Speicher](https://azure.microsoft
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Data Lake Store weiterzuleiten. | 
 | Kontoname | Der Name des Data Lake-Speicherkontos, an das Sie die Ausgabe senden. Eine Dropdownliste der in Ihrem Abonnement verfügbaren Data Lake Store-Konten wird angezeigt. |
-| Präfixmuster des Pfads | Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake-Speicherkonto geschrieben werden. Sie können eine oder mehrere Instanzen der Variablen {date} und {time} angeben.</br><ul><li>Beispiel 1: folder1/logs / {date} / {time}</li><li>Beispiel 2: folder1/logs / {date}</li></ul>Wenn das Dateipfadmuster keinen nachgestellten Schrägstrich („/“) enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt. </br></br>In diesen Fällen werden neue Dateien erstellt:<ul><li>Änderung im Ausgabeschema</li><li>Externer oder interner Neustart eines Auftrags</li></ul> |
+| Präfixmuster des Pfads | Der Dateipfad, mit dem Ihre Dateien im angegebenen Data Lake-Speicherkonto geschrieben werden. Sie können eine oder mehrere Instanzen der Variablen {date} und {time} angeben.</br><ul><li>Beispiel 1: folder1/logs / {date} / {time}</li><li>Beispiel 2: folder1/logs / {date}</li></ul><br>Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.</br><br>Wenn das Dateipfadmuster keinen nachgestellten Schrägstrich („/“) enthält, wird auch das letzte Muster im Dateipfad als Dateinamenpräfix behandelt. </br></br>In diesen Fällen werden neue Dateien erstellt:<ul><li>Änderung im Ausgabeschema</li><li>Externer oder interner Neustart eines Auftrags</li></ul> |
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/TT |
 |Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt.| 
@@ -87,7 +89,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Speicherkonto | Der Name des Speicherkontos, an das Sie die Ausgabe senden. |
 | Speicherkontoschlüssel | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. |
 | Speichercontainer | Container stellen eine logische Gruppierung für Blobs bereit, die im Microsoft Azure-Blobdienst gespeichert sind. Wenn Sie ein Blob in den Blobdienst hochladen, müssen Sie einen Container für das Blob angeben. |
-| Pfadmuster | Optional. Das Dateipfadmuster, mit dem Ihre Blobs im angegebenen Container geschrieben werden. </br></br> In dem Pfadmuster können Sie mindestens eine Instanz der date/time-Variablen verwenden, um die Häufigkeit anzugeben, mit der Blobs geschrieben werden: </br> {date}, {time} </br> </br>Wenn Sie für die [Vorschauversion](https://aka.ms/ASAPreview) registriert sind, können Sie außerdem einen benutzerdefinierten Namen ({field}) aus Ihren Ereignisdaten angeben, nach dem Blobs partitioniert werden. Hierbei ist der Feldname alphanumerisch und kann Leerstellen, Bindestriche und Unterstriche enthalten. Für benutzerdefinierte Felder gelten die folgenden Einschränkungen: <ul><li>Keine Berücksichtigung der Groß-/Kleinschreibung (kein Unterschied zwischen Spalte „ID“ und Spalte „id“)</li><li>Geschachtelte Felder sind unzulässig (stattdessen Verwendung eines Alias in der Auftragsabfrage zum Vereinfachen des Felds)</li><li>Ausdrücke können nicht als Feldname verwendet werden</li></ul>Beispiele: <ul><li>Beispiel 1: cluster1/logs/{date}/{time}</li><li>Beispiel 2: cluster1/logs/{date}</li><li>Beispiel 3 (Vorschauversion): cluster1/{client_id}/{date}/{time}</li><li>Beispiel 4 (Vorschauversion): cluster1/{myField}; hierbei lautet die Abfrage: SELECT data.myField AS myField FROM Input;</li></ul><BR> Die Dateibenennung erfolgt gemäß der nachstehenden Konvention: </br> {Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension </br></br> Beispielausgabedateien: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
+| Pfadmuster | Optional. Das Dateipfadmuster, mit dem Ihre Blobs im angegebenen Container geschrieben werden. </br></br> In dem Pfadmuster können Sie mindestens eine Instanz der date/time-Variablen verwenden, um die Häufigkeit anzugeben, mit der Blobs geschrieben werden: </br> {date}, {time} </br> </br>Wenn Sie für die [Vorschauversion](https://aka.ms/ASAPreview) registriert sind, können Sie außerdem einen benutzerdefinierten Namen ({field}) aus Ihren Ereignisdaten angeben, nach dem Blobs partitioniert werden. Hierbei ist der Feldname alphanumerisch und kann Leerstellen, Bindestriche und Unterstriche enthalten. Für benutzerdefinierte Felder gelten die folgenden Einschränkungen: <ul><li>Keine Berücksichtigung der Groß-/Kleinschreibung (kein Unterschied zwischen Spalte „ID“ und Spalte „id“)</li><li>Geschachtelte Felder sind unzulässig (stattdessen Verwendung eines Alias in der Auftragsabfrage zum Vereinfachen des Felds)</li><li>Ausdrücke können nicht als Feldname verwendet werden</li></ul>Beispiele: <ul><li>Beispiel 1: cluster1/logs/{date}/{time}</li><li>Beispiel 2: cluster1/logs/{date}</li><li>Beispiel 3 (Vorschauversion): cluster1/{client_id}/{date}/{time}</li><li>Beispiel 4 (Vorschauversion): cluster1/{myField}; hierbei lautet die Abfrage: SELECT data.myField AS myField FROM Input;</li></ul><br>Der Zeitstempel der erstellten Ordnerstruktur folgt der UTC, nicht der lokalen Zeit.</br><BR> Die Dateibenennung erfolgt gemäß der nachstehenden Konvention: </br> {Präfixmuster des Pfads}/schemaHashcode_Guid_Number.extension </br></br> Beispielausgabedateien: </br><ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li><li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul><br/>
 | Datumsformat | Optional. Wenn das date-Token im Pfadpräfix verwendet wird, können Sie das Datumsformat auswählen, unter dem die Dateien gespeichert werden. Beispiel: YYYY/MM/TT |
 | Zeitformat | Optional. Wenn das time-Token im Pfadpräfix verwendet wird, können Sie das Zeitformat auswählen, unter dem die Dateien gespeichert werden. Der einzige derzeit unterstützte Wert ist HH |
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten.  Es werden JSON, CSV und Avro unterstützt.
@@ -104,7 +106,7 @@ Wenn Blobspeicher als Ausgabe verwendet wird, wird in den folgenden Fällen eine
 * Wenn eine Datei oder ein Container des Speicherkontos vom Benutzer gelöscht wird.  
 * Wenn die Ausgabe zeitpartitioniert ist, indem das Pfadpräfixmuster verwendet wird, wird ein neues Blob verwendet, wenn die Abfrage zur nächsten Stunde wechselt.
 * Wenn die Ausgabe über ein benutzerdefiniertes Feld partitioniert wird, wird pro Partitionsschlüssel ein neues Blob erstellt, falls es noch nicht vorhanden ist.
-*   Falls die Ausgabe über ein benutzerdefiniertes Feld partitioniert wird, für das die Kardinalität des Partitionsschlüssels den Wert 8000 übersteigt, kann pro Partitionsschlüssel ein neues Blob erstellt werden.
+* Falls die Ausgabe über ein benutzerdefiniertes Feld partitioniert wird, für das die Kardinalität des Partitionsschlüssels den Wert 8000 übersteigt, kann pro Partitionsschlüssel ein neues Blob erstellt werden.
 
 ## <a name="event-hub"></a>Event Hub
 Der Dienst [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) ist ein hoch skalierbarer Veröffentlichen-Abonnieren-Ereignisingestor. Er kann mehrere Millionen Ereignisse pro Sekunde erfassen. Eine Verwendungsmöglichkeit eines Event Hubs als Ausgabe ergibt sich, wenn die Ausgabe eines Stream Analytics-Auftrags zur Eingabe eines anderen Streamingauftrags wird.
@@ -126,6 +128,8 @@ Es gibt einige Parameter, die erforderlich sind, um Event Hub-Datenströme als A
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) kann als Ausgabe für einen Stream Analytics-Auftrag verwendet werden, um eine umfassende Visualisierungsumgebung für die Analyseergebnisse bereitzustellen. Diese Funktionalität kann für Vorgangsdashboards, die Erstellung von Berichten und eine metrikgesteuerte Berichterstellung verwendet werden.
+
+Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
 
 ### <a name="authorize-a-power-bi-account"></a>Autorisieren eines Power BI-Kontos
 1. Wenn Power BI im Azure-Portal als Ausgabe ausgewählt ist, werden Sie aufgefordert, einen vorhandenen Power BI-Benutzer zu autorisieren oder ein neues Power BI-Konto zu erstellen.  
@@ -248,6 +252,8 @@ Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../ser
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ist ein global verteilter Datenbankdienst mit mehreren Modellen, der eine grenzenlose elastische Skalierung rund um den Globus, umfangreiche Abfragen und automatische Indizierung über schemaunabhängige Datenmodelle, garantiert niedrige Latenz und branchenführende umfassende SLAs bietet. Weitere Informationen zu den Cosmos DB-Sammlungsoptionen für Stream Analytics finden Sie im Artikel [Azure Stream Analytics-Ausgabe an Cosmos DB](stream-analytics-documentdb-output.md).
 
+Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
+
 > [!Note]
 > Derzeit unterstützt Azure Stream Analytics die Verbindung mit Cosmos DB nur über die **SQL-API**.
 > Andere Azure Cosmos DB-APIs werden noch nicht unterstützt. Wenn Sie Azure Stream Analytics auf die mit anderen APIs erstellten Azure Cosmos DB-Konten verweisen, werden die Daten unter Umständen nicht richtig gespeichert. 
@@ -267,6 +273,8 @@ In der folgenden Tabelle werden die Eigenschaften zum Erstellen einer Azure Cosm
 
 ## <a name="azure-functions"></a>Azure-Funktionen
 Azure Functions ist ein serverloser Computedienst, mit dem Sie Code bedarfsgesteuert ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Mit diesem Dienst können Sie Codes implementieren, die durch in Azure- oder Drittanbieterdiensten auftretende Ereignisse ausgelöst werden.  Aufgrund der Möglichkeit, auf Trigger zu antworten, ist Azure Functions die ideale Ausgabe für Azure Stream Analytics. Mithilfe dieses Ausgabeadapters können Benutzer eine Verbindung zwischen Stream Analytics und Azure Functions herstellen und als Reaktion auf verschiedenste Ereignisse ein Skript oder einen Codeausschnitt ausführen.
+
+Die Azure Functions-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azure China (21Vianet) und Azure Deutschland (T-Systems International) verfügbar.
 
 Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der neue Azure Functions-Ausgabeadapter wird mit folgenden konfigurierbaren Eigenschaften zur Verfügung gestellt:
 

@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2017
+ms.date: 06/07/2018
 ms.author: asmalser
-ms.openlocfilehash: 72f796f0a4522b66feb55b827b02a83dcfdd3a01
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069892"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35293295"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Was ist eine automatisierte Benutzerbereitstellung für SaaS-Apps?
 Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), wie z.B. Dropbox, Salesforce und ServiceNow.
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
 
 **Nachstehend finden Sie einige Beispiele für Aufgaben, die Sie mit diesem Feature ausführen können:**
 
@@ -69,7 +71,7 @@ Azure AD unterstützt standardmäßig verschiedene beliebte SaaS-Apps und Person
 
 Eine Aufstellung aller Anwendungen, für die Azure AD einen vorab integrierten Bereitstellungsconnector unterstützt, finden Sie in der [Liste mit den Anwendungstutorials zur Benutzerbereitstellung](active-directory-saas-tutorial-list.md).
 
-Informationen dazu, wie Sie einer Anwendung die Unterstützung für die Azure AD-Benutzerbereitstellung hinzufügen, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md).
+Informationen dazu, wie Sie einer Anwendung die Unterstützung für die Azure AD-Benutzerbereitstellung hinzufügen, finden Sie unter [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md).
 
 Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungsunterstützung für zusätzliche Anwendungen anzufordern, senden Sie uns eine Nachricht über das [Azure Active Directory-Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
 
@@ -78,6 +80,8 @@ Wenn Sie das Azure AD-Entwicklungsteam kontaktieren möchten, um Bereitstellungs
     
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Wie richte ich die automatische Bereitstellung für eine Anwendung ein?
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 Die Konfiguration des Azure AD-Bereitstellungsdiensts für eine bestimmte Anwendung beginnt im **[Azure-Portal](https://portal.azure.com)**. Klicken Sie im Abschnitt **Azure Active Directory > Unternehmensanwendungen** auf **Hinzufügen**. Klicken Sie anschließend auf **Alle**, und fügen Sie dann abhängig von Ihrem Szenario eine der folgenden Optionen hinzu:
 
@@ -102,7 +106,7 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 
     * **Filter für Attributwerte:** Über das Menü „Quellobjektbereich“ in den Attributzuordnungen kann nach bestimmten Attributwerten gefiltert werden. So können Sie beispielsweise angeben, dass nur Benutzer mit dem Abteilungsattribut „Vertrieb“ zum Geltungsbereich für die Bereitstellung gehören sollen. Weitere Informationen finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](active-directory-saas-scoping-filters.md).
 
-    * **Filter für Zuweisungen:** Über das Bereichsmenü im Abschnitt „Bereitstellung“ &gt; „Einstellungen“ des Portals können Sie angeben, ob nur zugewiesene Benutzer und Gruppen zum Geltungsbereich für die Bereitstellung gehören oder ob alle Benutzer im Azure AD-Verzeichnis bereitgestellt werden sollen. Informationen zum Zuweisen von Benutzern und Gruppen finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](active-directory-coreapps-assign-user-azure-portal.md).
+    * **Filter für Zuweisungen:** Über das Bereichsmenü im Abschnitt „Bereitstellung“ &gt; „Einstellungen“ des Portals können Sie angeben, ob nur zugewiesene Benutzer und Gruppen zum Geltungsbereich für die Bereitstellung gehören oder ob alle Benutzer im Azure AD-Verzeichnis bereitgestellt werden sollen. Informationen zum Zuweisen von Benutzern und Gruppen finden Sie unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md).
     
 * **Einstellungen** steuern den Betrieb des Bereitstellungsdiensts für eine Anwendung (unter anderem, ob er derzeit ausgeführt wird).
 
@@ -122,7 +126,7 @@ Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das [Feat
 Nachdem der Bereitstellungsdienst gestartet wurde, umfasst die erste jemals durchgeführte Synchronisierung Folgendes:
 
 1. Abfragen aller Benutzer und Gruppen aus dem Quellsystem und Abrufen aller Attribute, die in den [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) definiert sind.
-2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](active-directory-coreapps-assign-user-azure-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
+2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](manage-apps/assign-user-or-group-access-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
 3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties) verwendet werden. Beispiel: Wenn der userPrincipal-Name auf dem Quellsystem das übereinstimmende Attribut ist und dem userName auf dem Zielsystem zugeordnet ist, fragt der Bereitstellungsdienst beim Zielsystem userNames ab, die mit den Werten von userPrincipal-Namen auf dem Quellsystem übereinstimmen.
 4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
 5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
@@ -135,7 +139,7 @@ Einige Anwendungen, z.B. ServiceNow, Google Apps und Box, unterstützen nicht nu
 Nach der ersten Synchronisierung gilt für alle nachfolgenden Synchronisierungen Folgendes:
 
 1. Fragen Sie vom Quellsystem alle Benutzer und Gruppen ab, die aktualisiert wurden, seitdem der letzte Grenzwert gespeichert wurde.
-2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](active-directory-coreapps-assign-user-azure-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
+2. Filtern der zurückgegebenen Benutzer und Gruppen, indem alle konfigurierten [Zuweisungen](manage-apps/assign-user-or-group-access-portal.md) oder [attributbasierten Bereichsfilter](active-directory-saas-scoping-filters.md) verwendet werden.
 3. Wenn für einen Benutzer ermittelt wird, dass er zugewiesen ist oder in den Bereich für die Bereitstellung fällt, sendet der Dienst eine Anfrage zu einem übereinstimmenden Benutzer an das Zielsystem, indem die angegebenen [Abgleichattribute](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-properties) verwendet werden.
 4. Wenn auf dem Zielsystem kein übereinstimmender Benutzer gefunden wird, wird er erstellt, indem die vom Quellsystem zurückgegebenen Attribute verwendet werden.
 5. Falls ein übereinstimmender Benutzer gefunden wird, wird er aktualisiert, indem die vom Quellsystem bereitgestellten Attribute verwendet werden.
@@ -171,31 +175,50 @@ In der Quarantäne wird die Häufigkeit der inkrementellen Synchronisierungen al
 Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus beginnt. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert.
 
 
+## <a name="how-long-will-it-take-to-provision-users"></a>Wie lange dauert die Bereitstellung von Benutzern?
+
+Die Leistung unterscheidet sich jeweils in Abhängigkeit davon, ob Ihr Bereitstellungsauftrag eine erste oder eine inkrementelle Synchronisierung durchführt, wie im vorherigen Abschnitt beschrieben.
+
+Bei **ersten Synchronisierungen** hängt die Auftragsdauer von einer Vielzahl von Faktoren ab, einschließlich der Anzahl der Benutzer und Gruppen im Umfang der Bereitstellung und der Gesamtzahl der Benutzer und Gruppen im Quellsystem. Eine umfassende Liste der Faktoren, die die Leistung erster Synchronisierungen beeinflussen, finden Sie später in diesem Abschnitt.
+
+Bei **inkrementellen Synchronisierungen** hängt die Auftragsdauer davon ab, wie viele Änderungen im jeweiligen Synchronisierungszyklus erkannt werden. Wenn weniger als 5.000 Änderungen an Benutzern oder Gruppenmitgliedschaften vorhanden sind, kann der Auftrag innerhalb eines einzelnen inkrementellen Synchronisierungszyklus ausgeführt werden. 
+
+Die folgende Tabelle fasst die Synchronisierungsdauer für gängige Bereitstellungsszenarien zusammen. In diesen Szenarien ist das Quellsystem Azure AD und das Zielsystem eine SaaS-Anwendung. Die jeweilige Synchronisierungsdauer ergibt sich aus einer statistischen Analyse der Synchronisierungsaufträge für die SaaS-Anwendungen ServiceNow, Workplace, Salesforce und Google Apps.
+
+
+| Bereichskonfiguration | Benutzer, Gruppen und Mitglieder im Bereich | Dauer der ersten Synchronisierung | Dauer der inkrementellen Synchronisierung |
+| -------- | -------- | -------- | -------- |
+| Nur zugewiesene Benutzer und Gruppen synchronisieren |  < 1.000 |  < 30 Minuten | < 30 Minuten |
+| Nur zugewiesene Benutzer und Gruppen synchronisieren |  1.000 - 10.000 | 142 - 708 Minuten | < 30 Minuten |
+| Nur zugewiesene Benutzer und Gruppen synchronisieren |   10.000 - 100.000 | 1.170 - 2.340 Minuten | < 30 Minuten |
+| Alle Benutzer und Gruppen in Azure AD synchronisieren |  < 1.000 | < 30 Minuten  | < 30 Minuten |
+| Alle Benutzer und Gruppen in Azure AD synchronisieren |  1.000 - 10.000 | < 30 - 120 Minuten | < 30 Minuten |
+| Alle Benutzer und Gruppen in Azure AD synchronisieren |  10.000 - 100.000  | 713 - 1.425 Minuten | < 30 Minuten |
+| Alle Benutzer in Azure AD synchronisieren|  < 1.000  | < 30 Minuten | < 30 Minuten |
+| Alle Benutzer in Azure AD synchronisieren | 1.000 - 10.000  | 43 - 86 Minuten | < 30 Minuten |
+
+
+Nur für die Konfiguration **Nur zugewiesene Benutzer und Gruppen synchronisieren** können Sie die folgenden Formeln verwenden, um den ungefähren Mindest- und Höchstwert für die erwartete **Dauer der ersten Synchronisierung** zu bestimmen:
+
+    Minimum minutes =  0.01 x [Number of assigned users, groups, and group members]
+    Maximum minutes = 0.08 x [Number of assigned users, groups, and group members] 
+    
+Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss einer **ersten Synchronisierung** auswirken:
+
+* Die Gesamtanzahl von Benutzern und Gruppen im Bereitstellungsumfang
+
+* Die Gesamtanzahl von Benutzern, Gruppen und Gruppenmitgliedern im Quellsystem (Azure AD)
+
+* Ob Benutzer im Bereitstellungsumfang mit vorhandenen Benutzern in der Zielanwendung übereinstimmen, oder ob sie zum ersten Mal erstellt werden müssen. Synchronisierungsaufträge, für die alle Benutzer zum ersten Mal angelegt werden, dauern etwa *doppelt so lange* wie Synchronisierungsaufträge, für die alle Benutzer mit vorhandenen Benutzern übereinstimmen.
+
+* Anzahl von Fehlern in den [Überwachungsprotokollen](active-directory-saas-provisioning-reporting.md). Die Leistung wird zudem beeinträchtigt, wenn viele Fehler auftreten und der Bereitstellungsdienst in den Quarantänezustand versetzt wurde.   
+
+* Fordern Sie die Einschränkung der Datenübertragungsrate an, die vom Zielsystem implementiert wird. Einige Zielsysteme implementieren Anforderungen von Grenzwerten und Einschränkungen der Datenübertragungsrate, die die Leistung bei umfangreichen Synchronisierungsvorgängen beeinträchtigen können. Unter diesen Bedingungen kann eine App, die zu viele Anforderungen zu schnell empfängt, ihre Antwortrate verlangsamen oder die Verbindung trennen. Zur Leistungssteigerung muss der Connector angepasst werden, sodass er die App-Anforderungen nicht schneller sendet, als die App sie verarbeiten kann. Diese Anpassung ist durch die Bereitstellung von Connectors möglich, die von Microsoft erstellt wurden. 
+
+* Die Anzahl und Größe der zugewiesenen Gruppen. Das Synchronisieren zugewiesener Gruppen dauert länger als das Synchronisieren von Benutzern. Sowohl die Anzahl als auch die Größe der zugewiesenen Gruppen beeinflussen die Leistung. Wenn für eine Anwendung [Zuordnungen für die Synchronisierung von Gruppenobjekten aktiviert sind](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), werden zusätzlich zu den Benutzern auch Gruppeneigenschaften wie Gruppennamen und Mitgliedschaften synchronisiert. Diese zusätzlichen Synchronisierungen dauern länger als die ausschließliche Synchronisierung von Benutzerobjekten.
+ 
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-**Wie lange dauert die Bereitstellung meiner Benutzer?**
-
-Die Leistung unterscheidet sich jeweils in Abhängigkeit davon, ob Ihr Bereitstellungsauftrag eine erste oder eine inkrementelle Synchronisierung durchführt.
-
-Bei einer ersten Synchronisierung hängt die Dauer bis zum Abschluss direkt davon ab, wie viele Benutzer, Gruppen und Gruppenmitglieder im Quellsystem vorhanden sind. Für sehr kleine Quellsysteme mit nur Hunderten von Objekten können erste Synchronisierungen innerhalb von wenigen Minuten durchgeführt werden. Bei Quellsystemen mit Hunderttausenden oder Millionen von kombinierten Objekten dauert dieser Vorgang allerdings länger.
-
-Bei inkrementellen Synchronisierungen hängt die Dauer davon ab, wie viele Änderungen im jeweiligen Synchronisierungszyklus erkannt werden. Wenn weniger als 5.000 Änderungen für Benutzer oder der Gruppenmitgliedschaft erkannt werden, können diese meist innerhalb eines 40-minütigen Zyklus synchronisiert werden. 
-
-Beachten Sie hierbei, dass die Gesamtleistung sowohl vom Quell- als auch vom Zielsystem abhängig ist. Bei einigen Zielsystemen werden Limits für die Anforderungsrate und Drosselung implementiert, die sich bei umfangreichen Synchronisierungsvorgängen auf die Leistung auswirken können. Dies wird von den vordefinierten Azure AD-Bereitstellungsconnectors für diese Systeme berücksichtigt.
-
-Die Leistung wird zudem beeinträchtigt, wenn viele Fehler auftreten und der Bereitstellungsdienst in den Quarantänezustand versetzt wurde. (Die Fehler werden in den [Überwachungsprotokollen](active-directory-saas-provisioning-reporting.md) erfasst.)
-
-**Wie kann ich die Synchronisierungsleistung verbessern?**
-
-Die meisten Leistungsprobleme treten bei den ersten Synchronisierungen von Systemen auf, die über eine große Zahl von Gruppen und Gruppenmitgliedern verfügen.
-
-Wenn keine Synchronisierung von Gruppen oder Gruppenmitgliedschaften erforderlich ist, kann die Synchronisierungsleistung wie folgt deutlich verbessert werden:
-
-1. Legen Sie im Menü **Bereitstellung > Einstellungen > Bereich** die Option **Alle synchronisieren** fest, anstatt zugewiesene Benutzer und Gruppen zu synchronisieren.
-2. Verwenden Sie [Bereichsfilter](active-directory-saas-scoping-filters.md) anstelle von Zuweisungen, um die Liste mit den bereitgestellten Benutzern zu filtern.
-
-> [!NOTE]
-> Für Anwendungen, die die Bereitstellung von Gruppennamen und Gruppeneigenschaften (z.B. ServiceNow und Google Apps) unterstützen, bewirkt eine Deaktivierung dieser Option auch eine Verringerung der erforderlichen Dauer für die erste Synchronisierung. Wenn Sie in Ihrer Anwendung keine Gruppennamen und Gruppenmitgliedschaften bereitstellen möchten, deaktivieren Sie diese Option in den [Attributzuordnungen](active-directory-saas-customizing-attribute-mappings.md) Ihrer Bereitstellungskonfiguration.
 
 **Wie kann ich den Fortschritt des aktuellen Bereitstellungsauftrags verfolgen?**
 
@@ -219,7 +242,7 @@ Setzen Sie über das [Azure Active Directory-Feedbackforum](https://feedback.azu
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](active-directory-saas-customizing-attribute-mappings.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](active-directory-saas-scoping-filters.md)
-* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](active-directory-scim-provisioning.md)
+* [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
 * [Ausführlicher Bereitstellungsplan für die ausgehende Benutzerbereitstellung einer Anwendung](https://aka.ms/userprovisioningdeploymentplan)
 

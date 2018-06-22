@@ -2,29 +2,30 @@
 title: Verwenden des Administratorportals in Azure Stack | Microsoft-Dokumentation
 description: Erfahren Sie als Azure Stack-Betreiber, wie Sie das Administratorportal verwenden.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 02c7ff03-874e-4951-b591-28166b7a7a79
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 06/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 34d9d207225327758d535a11c870019f3db31cb0
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248519"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Verwenden des Administratorportals in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-In Azure Stack stehen zwei Portale zur Verfügung: das Administratorportal und das Benutzerportal (manchmal auch als *Mandantenportal* bezeichnet). Als Azure Stack-Betreiber können Sie mit dem Administratorportal tägliche Verwaltungsaufgaben und Vorgänge in Azure Stack ausführen. 
+In Azure Stack stehen zwei Portale zur Verfügung: das Administratorportal und das Benutzerportal (manchmal auch als *Mandantenportal* bezeichnet). Als Azure Stack-Betreiber können Sie mit dem Administratorportal tägliche Verwaltungsaufgaben und Vorgänge in Azure Stack ausführen.
 
 ## <a name="access-the-administrator-portal"></a>Zugreifen auf das Administratorportal
 
@@ -44,39 +45,42 @@ Im Administratorportal können Sie etwa folgende Aktionen ausführen:
 
 * Verwalten der Infrastruktur (Systemintegrität, Updates, Kapazität usw.)
 * Auffüllen des Marketplace
-* Erstellen von Plänen und Angeboten
 * Erstellen von Abonnements für Benutzer
+* Erstellen von Plänen und Angeboten
 
-Auf der Kachel **Quickstart tutorial** (Schnellstarttutorial) stehen Links zur Onlinedokumentation für die häufigsten Aufgaben zur Verfügung.
- 
-Ein Betreiber kann zwar im Administratorportal Ressourcen wie virtuelle Computer, virtuelle Netzwerke und Speicherkonten erstellen, Sie sollten sich jedoch [beim Benutzerportal anmelden](user/azure-stack-use-portal.md), um Ressourcen zu erstellen und zu testen. (Der Link **Virtuellen Computer erstellen** auf der Kachel für das Schnellstarttutorial ermöglicht die Erstellung eines virtuellen Computers im Administratorportal, diese Methode dient jedoch nur zum Überprüfen von Azure Stack nach der ersten Bereitstellung.)
+Auf der Kachel **Schnellstart-Lernprogramme** stehen Links zur Onlinedokumentation für die häufigsten Aufgaben zur Verfügung.
 
-## <a name="subscription-behavior"></a>Abonnementverhalten
- 
-Im Administratorportal ist nur ein einzelnes Abonnement verfügbar. Bei diesem Abonnement handelt es sich um das *Standardabonnement des Anbieters*. Sie können keine weiteren Abonnements für die Verwendung im Administratorportal hinzufügen.
+Ein Betreiber kann zwar im Administratorportal Ressourcen wie virtuelle Computer, virtuelle Netzwerke und Speicherkonten erstellen, Sie sollten sich jedoch [beim Benutzerportal anmelden](user/azure-stack-use-portal.md), um Ressourcen zu erstellen und zu testen.
 
-Als Azure Stack-Betreiber können Sie über das Administratorportal Abonnements für Ihre Benutzer (einschließlich Sie selbst) hinzufügen. Benutzer (einschließlich Sie selbst) können auf diese Abonnements über das Benutzerportal zugreifen und die Abonnements verwenden. Über das Benutzerportal kann nicht auf die administrativen oder operativen Funktionen des Administratorportals zugegriffen werden.
+>[!NOTE]
+>Der Link **Virtuellen Computer erstellen** auf der Kachel „Schnellstart-Lernprogramme“ ermöglicht die Erstellung eines virtuellen Computers im Administratorportal, dies dient jedoch nur zum Überprüfen von Azure Stack nach der ersten Bereitstellung.
 
-Das Administratorportal und das Benutzerportal basieren auf separaten Instanzen von Azure Resource Manager. Aufgrund der Trennung von Resource Manager sind Abonnements nicht portalübergreifend. Ein Beispiel: Wenn Sie sich als Azure Stack-Betreiber beim Benutzerportal anmelden, können Sie nicht auf das Standardabonnement des Anbieters zugreifen. Somit haben Sie auch keinen Zugriff auf administrative Funktionen. Sie können zwar auf der Grundlage öffentlicher Angebote Abonnements für sich selbst erstellen, werden aber als Mandantenbenutzer betrachtet.
+## <a name="understand-subscription-behavior"></a>Grundlegendes zum Abonnementverhalten
+
+Im Administratorportal ist nur ein einzelnes Abonnement verfügbar. Bei diesem Abonnement handelt es sich um das *Standardabonnement des Anbieters*. Sie können im Administratorportal keine weiteren Abonnements hinzufügen und verwenden.
+
+Als Azure Stack-Betreiber können Sie über das Administratorportal Abonnements für Ihre Benutzer (einschließlich Sie selbst) hinzufügen. Benutzer (einschließlich Sie selbst) können auf diese Abonnements über das **Benutzerportal** zugreifen und die Abonnements verwenden. Über das Benutzerportal kann jedoch nicht auf die administrativen oder operativen Funktionen des Administratorportals zugegriffen werden.
+
+Das Administratorportal und das Benutzerportal basieren auf separaten Instanzen von Azure Resource Manager. Aufgrund dieser Trennung von Resource Manager sind Abonnements nicht portalübergreifend. Wenn Sie sich beispielsweise als Azure Stack-Betreiber beim Benutzerportal anmelden, können Sie nicht auf das *Standardabonnement des Anbieters* zugreifen. Obwohl Sie keinen Zugriff auf administrative Funktionen haben, können Sie jedoch auf der Grundlage verfügbarer öffentlicher Angebote Abonnements für sich selbst erstellen. Solange Sie beim Benutzerportal angemeldet sind, gelten Sie als Mandantenbenutzer.
 
   >[!NOTE]
-  In der Development Kit-Umgebung gilt: Wenn ein Benutzer dem gleichen Mandantenverzeichnis angehört wie der Azure Stack-Betreiber, kann er sich beim Administratorportal anmelden. Er hat jedoch keinen Zugriff auf die administrativen Funktionen. Außerdem kann er über das Administratorportal keine Abonnements hinzufügen oder auf Angebote zugreifen, die für ihn im Benutzerportal verfügbar gemacht werden.
+  >In der Development Kit-Umgebung gilt: Wenn ein Benutzer dem gleichen Mandantenverzeichnis angehört wie der Azure Stack-Betreiber, kann er sich beim Administratorportal anmelden. Er hat jedoch keinen Zugriff auf die administrativen Funktionen. Außerdem kann er über das Administratorportal keine Abonnements hinzufügen und auf keine Angebote zugreifen, die für ihn im Benutzerportal zur Verfügung stehen.
 
 ## <a name="administrator-portal-tips"></a>Tipps zum Administratorportal
 
 ### <a name="customize-the-dashboard"></a>Anpassen des Dashboards
 
-Das Dashboard enthält eine Reihe von Standardkacheln. Klicken Sie auf **Dashboard bearbeiten**, um das Standarddashboard anzupassen, oder auf **Neues Dashboard**, um benutzerdefinierte Dashboards hinzuzufügen. Sie können dem Dashboard einfach Kacheln hinzufügen. Klicken Sie beispielsweise auf **Neu**, klicken Sie mit der rechten Maustaste auf **Offers + Plans** (Angebote und Pläne), und klicken Sie dann auf **An Dashboard anheften**.
+Das Dashboard enthält eine Reihe von Standardkacheln. Wählen Sie **Dashboard bearbeiten** aus, um das Standarddashboard anzupassen, oder wählen Sie **Neues Dashboard** aus, um ein benutzerdefiniertes Dashboard hinzuzufügen. Sie können einem Dashboard einfach Kacheln hinzufügen. Wählen Sie beispielsweise **Neu** aus, klicken Sie mit der rechten Maustaste auf **Offers + Plans** (Angebote und Pläne), und wählen Sie dann **An Dashboard anheften** aus.
 
 ### <a name="quick-access-to-online-documentation"></a>Schneller Zugriff auf Onlinedokumentation
 
-Klicken Sie oben rechts im Administratorportal auf das Hilfe- und Supportsymbol (Fragezeichen) und dann auf **Hilfe und Support**, um auf die Dokumentation für Azure Stack-Betreiber zuzugreifen.
+Verwenden Sie das Hilfe- und Supportsymbol (Fragezeichen) oben rechts im Administratorportal, um auf die Dokumentation für Azure Stack-Betreiber zuzugreifen. Bewegen Sie den Cursor über das Symbol, und wählen Sie dann **Hilfe und Support** aus.
 
 ### <a name="quick-access-to-help-and-support"></a>Schneller Zugriff auf Hilfe und Support
 
-Wenn Sie oben rechts im Administratorportal auf das Hilfe- und Supportsymbol (Fragezeichen) und dann auf **Neue Supportanfrage** klicken, geschieht Folgendes:
+Wenn Sie oben rechts im Administratorportal das Hilfe- und Supportsymbol (Fragezeichen) und dann **Neue Supportanfrage** auswählen, geschieht Folgendes:
 
-- Bei Verwendung eines integrierten Systems wird mit dieser Aktion eine Website geöffnet, auf der Sie direkt ein Supportticket beim Microsoft-Kundensupport (Microsoft Customer Support Services, CSS) öffnen können. Informationen dazu, wann Sie den Microsoft-Support und wann den Support des OEM-Hardwareanbieters kontaktieren sollten, finden Sie unter [Azure Stack administration basics](azure-stack-manage-basics.md) (Grundlagen zur Verwaltung von Azure Stack) im Abschnitt „Where to get support“ (Supportquellen).
+- Bei Verwendung eines integrierten Systems wird mit dieser Aktion eine Website geöffnet, auf der Sie direkt ein Supportticket beim Microsoft-Kundensupport (Microsoft Customer Support Services, CSS) öffnen können. Informationen dazu, wann Sie den Microsoft-Support und wann den Support des OEM-Hardwareanbieters kontaktieren sollten, finden Sie unter [Supportquellen](azure-stack-manage-basics.md#where-to-get-support).
 - Bei Verwendung des Development Kits wird mit dieser Aktion direkt die Website mit den Azure Stack-Foren geöffnet. Diese Foren werden regelmäßig überprüft. Da das Development Kit eine Evaluierungsumgebung ist, wird über den Microsoft CSS kein offizieller Support angeboten.
 
 ## <a name="next-steps"></a>Nächste Schritte

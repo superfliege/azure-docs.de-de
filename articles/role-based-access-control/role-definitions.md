@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/12/2018
+ms.date: 05/18/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7a9e257d445ff7dadfe27d1c75cde6f58a393397
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 9bb7808f2b483fe9cd7d22c6df3fe80d4a98f1f4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161813"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266855"
 ---
 # <a name="understand-role-definitions"></a>Grundlegendes zu Rollendefinitionen
 
@@ -28,7 +28,7 @@ Wenn Sie die Funktionsweise eine Rolle nachvollziehen oder eine eigene [benutzer
 
 ## <a name="role-definition-structure"></a>Struktur einer Rollendefinition
 
-Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Gelegentlich wird sie auch einfach als *Rolle* bezeichnet. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Sie kann auch die nicht ausführbaren Vorgänge auflisten. Eine Rollendefinition hat folgende Struktur:
+Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Gelegentlich wird sie auch einfach als *Rolle* bezeichnet. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Sie kann auch die Vorgänge auflisten, die nicht ausgeführt werden können, oder Vorgänge, die im Zusammenhang mit den zugrunde liegenden Daten stehen. Eine Rollendefinition hat folgende Struktur:
 
 ```
 assignableScopes []
@@ -37,7 +37,9 @@ id
 name
 permissions []
   actions []
+  dataActions []
   notActions []
+  notDataActions []
 roleName
 roleType
 type
@@ -49,7 +51,7 @@ Vorgänge werden mit Zeichenfolgen im folgenden Format angegeben:
 
 Der Teil `{action}` einer Vorgangszeichenfolge gibt die Art der Vorgänge an, die Sie für einen Ressourcentyp ausführen können. So weist `{action}` beispielsweise folgende Teilzeichenfolgen auf:
 
-| Aktionsteilzeichenfolge    | Beschreibung         |
+| Aktionsteilzeichenfolge    | BESCHREIBUNG         |
 | ------------------- | ------------------- |
 | `*` | Das Platzhalterzeichen gewährt Zugriff auf alle Vorgänge, die der Zeichenfolge entsprechen. |
 | `read` | Ermöglicht Lesevorgänge (GET). |
@@ -74,11 +76,13 @@ Hier sehen Sie die Rollendefinition [Mitwirkender](built-in-roles.md#contributor
           "*"
         ],
         "additionalProperties": {},
+        "dataActions": [],
         "notActions": [
           "Microsoft.Authorization/*/Delete",
           "Microsoft.Authorization/*/Write",
           "Microsoft.Authorization/elevateAccess/Action"
         ],
+        "notDataActions": []
       }
     ],
     "roleName": "Contributor",
@@ -88,7 +92,7 @@ Hier sehen Sie die Rollendefinition [Mitwirkender](built-in-roles.md#contributor
 ]
 ```
 
-## <a name="management-operations"></a>Verwaltungsvorgänge
+## <a name="management-and-data-operations-preview"></a>Verwaltungs- und Datenvorgänge (Vorschauversion)
 
 Die rollenbasierte Zugriffssteuerung für Verwaltungsvorgänge wird in den Abschnitten `actions` und `notActions` einer Rollendefinition angegeben. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge in Azure:
 
@@ -96,13 +100,99 @@ Die rollenbasierte Zugriffssteuerung für Verwaltungsvorgänge wird in den Absch
 - Erstellen, Aktualisieren oder Löschen eines Blobcontainers
 - Löschen einer Ressourcengruppe und aller dazugehörigen Ressourcen
 
-Verwaltungszugriff geht nicht auf Ihre Daten über. Diese Trennung verhindert, dass Rollen mit Platzhaltern (`*`) uneingeschränkten Zugriff auf Ihre Daten erhalten. Wenn einem Benutzer also beispielsweise die Rolle [Leser](built-in-roles.md#reader) für ein Abonnement zugewiesen ist, kann er das Speicherkonto anzeigen, aber nicht die zugrunde liegenden Daten.
+Verwaltungszugriff geht nicht auf Ihre Daten über. Diese Trennung verhindert, dass Rollen mit Platzhaltern (`*`) uneingeschränkten Zugriff auf Ihre Daten erhalten. Wenn einem Benutzer also beispielsweise die Rolle [Leser](built-in-roles.md#reader) für ein Abonnement zugewiesen ist, kann er das Speicherkonto anzeigen, aber standardmäßig nicht die zugrunde liegenden Daten.
 
-## <a name="actions"></a>actions
+Vorher wurde die rollenbasierte Zugriffssteuerung nicht bei Datenvorgängen verwendet. Die Autorisierung bei Datenvorgängen variiert je nach Ressourcenanbieter. Das gleiche Modell der Autorisierung mit der rollenbasierten Zugriffssteuerung, das für Verwaltungsvorgänge verwendet wurde, wurde auf Datenvorgänge erweitert (zurzeit als Vorschauversion verfügbar).
+
+Zur Unterstützung von Datenvorgängen wurden neue Datenabschnitte zur Struktur der Rollendefinition hinzugefügt. Datenvorgänge werden in den Abschnitten `dataActions` und `notDataActions` angegeben. Durch Hinzufügen dieser Datenabschnitte wird die Trennung zwischen Verwaltung und Daten beibehalten. Hierdurch wird verhindert, dass aktuelle Rollenzuweisungen mit Platzhaltern (`*`) wider Erwarten über Zugriff auf Daten verfügen. Im Folgenden werden einige Datenvorgänge aufgeführt, die in `dataActions` und `notDataActions` angegeben werden können:
+
+- Lesen einer Liste von Blobs in einem Container
+- Schreiben eines Speicherblobs in einem Container
+- Löschen einer Nachricht in einer Warteschlange
+
+Im Folgenden wird die Rollendefinition für [Storage-Blobdatenleser (Vorschauversion)](built-in-roles.md#storage-blob-data-reader-preview) angegeben, die Vorgänge in den Abschnitten `actions` und `dataActions` beinhaltet. In dieser Rolle können Sie den Blobcontainer sowie die zugrunde liegenden Blobdaten lesen.
+
+```json
+[
+  {
+    "additionalProperties": {},
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Allows for read access to Azure Storage blob containers and data.",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+    "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+        ],
+        "additionalProperties": {},
+        "dataActions": [
+          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Storage Blob Data Reader (Preview)",
+    "roleType": "BuiltInRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+Es können nur Datenvorgänge zu den Abschnitten `dataActions` und `notDataActions` hinzugefügt werden. Durch Festlegen der Eigenschaft `isDataAction` auf `true` identifizieren Ressourcenanbieter, bei welchen Vorgängen es sich um Datenvorgänge handelt. Wie Sie eine Liste der Vorgänge anzeigen, in denen `isDataAction` auf `true` festgelegt ist, erfahren Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md). Bei Rollen, bei denen keine Datenvorgänge vorhanden sind, sind die Abschnitte `dataActions` und `notDataActions` in der Rollendefinition nicht erforderlich.
+
+Die Autorisierung für alle API-Aufrufe für Verwaltungsvorgänge wird vom Azure Resource Manager verarbeitet. Die Autorisierung für API-Aufrufe für Datenvorgänge wird von einem Ressourcenanbieter oder vom Azure Resource Manager verarbeitet.
+
+### <a name="data-operations-example"></a>Beispiel für Datenvorgänge
+
+Werfen wir einen Blick auf ein bestimmtes Beispiel, um die Funktionsweise von Verwaltungs-und Datenvorgängen besser zu verstehen. Alice wurde die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zugewiesen. Bob wurde die Rolle [Mitwirkender an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) in einem Speicherkontobereich zugewiesen. Die folgende Abbildung veranschaulicht dieses Beispiel.
+
+![Erweiterte rollenbasierte Zugriffssteuerung zur Unterstützung von Verwaltungs- und Datenvorgängen](./media/role-definitions/rbac-management-data.png)
+
+Die Rolle [Besitzer](built-in-roles.md#owner) für Alice und die Rolle [Mitwirkender an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) für Bob verfügen über die folgenden Aktionen:
+
+Owner (Besitzer)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`*`
+
+Mitwirkender an Storage-Blobdaten (Vorschauversion)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;DataActions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
+
+Da Alice über eine Platzhalteraktion (`*`) in einem Abonnementbereich verfügt, werden ihre Berechtigungen nach unten vererbt, um ihr die Durchführung aller Verwaltungsaktionen zu ermöglichen. Allerdings kann Alice keine Datenvorgänge durchführen. Beispielsweise kann Alice standardmäßig die Blobs in einem Container nicht lesen, jedoch Container lesen, schreiben und löschen.
+
+Die Berechtigungen von Bob sind ausschließlich auf `actions` und `dataActions` beschränkt, die in der Rolle [Mitwirkenden an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) angegeben sind. Basierend auf der Rolle kann Bob Verwaltungs- und Datenvorgänge durchführen. Beispielsweise kann Bob Container im angegebenen Speicherkonto lesen, schreiben und löschen und zudem die Blobs lesen, schreiben und löschen.
+
+### <a name="what-tools-support-using-rbac-for-data-operations"></a>Welche Tools unterstützt die RBAC für Datenvorgänge?
+
+Um Datenvorgänge anzuzeigen und mit diesen zu arbeiten, müssen Sie über die richtigen Tool- oder SDK-Versionen verfügen:
+
+| Tool  | Version  |
+|---------|---------|
+| [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 oder höher |
+| [Azure-CLI](/cli/azure/install-azure-cli) | 2.0.30 oder höher |
+| [Azure für .NET](/dotnet/azure/) | 2.8.0-preview oder höher |
+| [Azure SDK für Go](/go/azure/azure-sdk-go-install) | 15.0.0 oder höher |
+| [Azure für Java](/java/azure/) | 1.9.0 oder höher |
+| [Azure für Python](/python/azure) | 0.40.0 oder höher |
+| [Azure SDK für Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 oder höher |
+
+## <a name="actions"></a>Aktionen
 
 Die Berechtigung `actions` gibt die Verwaltungsvorgänge an, auf die die Rolle Zugriff gewährt. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge, die in `actions` verwendet werden können.
 
-| Vorgangszeichenfolge    | Beschreibung         |
+| Vorgangszeichenfolge    | BESCHREIBUNG         |
 | ------------------- | ------------------- |
 | `*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.|
 | `Microsoft.Compute/*` | Gewährt Zugriff auf alle Vorgänge für alle Ressourcentypen im Microsoft.Compute-Ressourcenanbieter.|
@@ -116,6 +206,25 @@ Die Berechtigung `notActions` gibt die Verwaltungsvorgänge an, die von den zul�
 
 > [!NOTE]
 > Wenn einem Benutzer eine Rolle zugewiesen wird, die einen Vorgang in `notActions` ausschließt, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf diesen Vorgang gewährt wird, kann der Benutzer den Vorgang durchführen. `notActions` ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Vorgänge zu erstellen, wenn bestimmte Vorgänge ausgeschlossen werden müssen.
+>
+
+## <a name="dataactions-preview"></a>dataActions (Vorschauversion)
+
+Die Berechtigung `dataActions` gibt die Datenvorgänge an, denen die Rolle Zugriff auf Ihre Daten in diesem Objekt gewährt. Wenn ein Benutzer z.B. über Lesezugriff auf Blobdaten auf ein Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto dann lesen. Im Anschluss finden Sie einige Beispiele für Datenvorgänge, die in `dataActions` verwendet werden können.
+
+| Vorgangszeichenfolge    | BESCHREIBUNG         |
+| ------------------- | ------------------- |
+| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | Gibt ein Blob oder eine Liste von Blobs zurück. |
+| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
+| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Gibt eine Nachricht zurück. |
+| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Gibt eine Nachricht oder das Ergebnis beim Schreiben oder Löschen einer Nachricht zurück. |
+
+## <a name="notdataactions-preview"></a>notDataActions (Vorschauversion)
+
+Die Berechtigung `notDataActions` gibt die Datenvorgänge an, die von den zulässigen Aktionen (`dataActions`) ausgeschlossen sind. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `notDataActions`-Vorgänge von den `dataActions`-Vorgängen subtrahiert. Jedem Ressourcenanbieter steht eine entsprechende Gruppe von APIs zur Verfügung, um Datenvorgänge durchzuführen.
+
+> [!NOTE]
+> Wenn einem Benutzer eine Rolle zugewiesen wird, die einen Datenvorgang in `notDataActions` ausschließt, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf diesen Datenvorgang gewährt wird, kann der Benutzer den Datenvorgang durchführen. `notDataActions` ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Datenvorgänge zu erstellen, wenn bestimmte Datenvorgänge ausgeschlossen werden müssen.
 >
 
 ## <a name="assignablescopes"></a>assignableScopes
@@ -137,7 +246,7 @@ Beispiele für gültige zuweisbare Bereiche:
 
 Der Abschnitt `assignableScopes` für eine benutzerdefinierte Rolle steuert auch, wer zum Erstellen, Löschen, Ändern oder Anzeigen der benutzerdefinierten Rolle berechtigt ist.
 
-| Aufgabe | Vorgang | Beschreibung |
+| Aufgabe | Vorgang | BESCHREIBUNG |
 | --- | --- | --- |
 | Erstellen/Löschen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/write` | Benutzer, die für alle `assignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen (oder löschen). Hierzu zählen etwa [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Abonnements, Ressourcengruppen und Ressourcen. |
 | Ändern einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/write` | Benutzer, die für alle `assignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen in diesen Bereichen ändern. Hierzu zählen etwa [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Abonnements, Ressourcengruppen und Ressourcen. |
@@ -163,7 +272,9 @@ Das folgende Beispiel zeigt die Azure CLI-Darstellung der Rollendefinition [Lese
           "*/read"
         ],
         "additionalProperties": {},
+        "dataActions": [],
         "notActions": [],
+        "notDataActions": []
       }
     ],
     "roleName": "Reader",
@@ -196,6 +307,12 @@ Das folgende Beispiel zeigt die Azure PowerShell-Darstellung einer benutzerdefin
   "NotActions":  [
 
                  ],
+  "DataActions":  [
+
+                  ],
+  "NotDataActions":  [
+
+                     ],
   "AssignableScopes":  [
                            "/subscriptions/{subscriptionId1}",
                            "/subscriptions/{subscriptionId2}",

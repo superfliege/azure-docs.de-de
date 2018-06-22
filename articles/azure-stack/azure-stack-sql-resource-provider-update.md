@@ -1,6 +1,6 @@
 ---
-title: Verwenden von SQL-Datenbanken in Azure Stack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in wenigen Schritten SQL-Datenbanken als Dienst in Azure Stack und den SQL Server-Ressourcenanbieteradapter bereitstellen können.
+title: Aktualisieren des SQL-Ressourcenanbieters in Azure Stack | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den SQL-Ressourcenanbieter in Azure Stack aktualisieren können.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/11/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 9154f509f9019c28515970869678aa6633d16163
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 3a7656e54181c8e8e7b6b1bd39f80ce8ed01c807
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206174"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35294859"
 ---
-# <a name="update-the-sql-resource-provider-adapter"></a>Aktualisieren des SQL-Ressourcenanbieteradapters
-Unter Umständen wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht, wenn Azure Stack-Builds aktualisiert werden. Der vorhandene Adapter funktioniert zwar weiterhin, aber es ist ratsam, so schnell wie möglich das Update auf den aktuellen Build durchzuführen. Updates müssen in der richtigen Reihenfolge installiert werden. Es ist nicht möglich, Versionen zu überspringen (siehe Liste der Versionen in [Verwenden von SQL-Datenbanken in Microsoft Azure Stack](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
+# <a name="update-the-sql-resource-provider"></a>Aktualisieren des SQL-Ressourcenanbieters
+Unter Umständen wird ein neuer SQL-Ressourcenanbieter veröffentlicht, wenn Azure Stack-Builds aktualisiert werden. Der vorhandene Adapter funktioniert zwar weiterhin, aber es ist ratsam, so schnell wie möglich das Update auf den aktuellen Build durchzuführen. Updates müssen in der richtigen Reihenfolge installiert werden. Es ist nicht möglich, Versionen zu überspringen (siehe Liste der Versionen in [Verwenden von SQL-Datenbanken in Microsoft Azure Stack](.\azure-stack-sql-resource-provider-deploy.md#prerequisites)).
 
 Verwenden Sie zum Aktualisieren des Ressourcenanbieters das Skript *UpdateSQLProvider.ps1*. Der Prozess ähnelt dem Prozess zum Installieren eines Ressourcenanbieters, wie im Artikel [Bereitstellen des Ressourcenanbieters](.\azure-stack-sql-resource-provider-deploy.md) beschrieben. Das Skript ist im Download des Ressourcenanbieters enthalten.
 
@@ -38,10 +38,9 @@ Hier ist ein Beispiel für das Skript *UpdateSQLProvider.ps1* angegeben, das Sie
 > Der Updateprozess gilt nur für integrierte Systeme.
 
 ```powershell
-# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
+# Install the AzureRM.Bootstrapper module and set the profile.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
-Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"

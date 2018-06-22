@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 05/24/2018
 ms.author: brenduns
-ms.openlocfilehash: e9c39c374d7dfa6759da9f9b9a12816d77c647b1
-ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+ms.openlocfilehash: b4c5b53a46792e31316f752f8902d7a05554b57d
+ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604147"
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack-Update 1712
 
@@ -116,7 +117,25 @@ Dieser Abschnitt enthält bekannte Probleme, die für Build **180106.1** nach de
 
 #### <a name="health-and-monitoring"></a>Integrität und Überwachung
 
+- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+
+   Warnung 1:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Heartbeat Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.  
+
+  Warnung 2:
+   - NAME: Infrastrukturrolle fehlerhaft
+   - SCHWEREGRAD: Warnung
+   - KOMPONENTE: Health Controller
+   - BESCHREIBUNG: Fault Scanner von Health Controller ist nicht verfügbar. Dies kann sich auf Integritätsberichte und Metriken auswirken.
+
+  Beide Warnungen können ignoriert werden. Sie werden mit der Zeit automatisch geschlossen.  
+
 - Wenn Sie eine Infrastrukturrolleninstanz neu starten, wird ggf. eine Meldung mit dem Hinweis angezeigt, dass der Neustart nicht erfolgreich war. Der Neustart wurde aber erfolgreich durchgeführt.
+
+
 
 #### <a name="marketplace"></a>Marketplace
 - Einige Marketplace-Elemente wurden aus dieser Version aus Kompatibilitätsgründen entfernt. Sie werden nach einer weiteren Überprüfung erneut aktiviert.

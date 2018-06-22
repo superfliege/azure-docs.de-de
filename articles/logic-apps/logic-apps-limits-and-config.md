@@ -2,24 +2,20 @@
 title: Grenzwerte und Konfiguration – Azure Logic Apps | Microsoft-Dokumentation
 description: Dienstlimits und Konfigurationswerte für Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
 author: ecfan
-manager: cfowler
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/14/2018
+manager: jeconnoc
 ms.author: estfan
-ms.openlocfilehash: 8c2ac4b8f55d25d5d3fcfdd6a9bcb6f6c8cfc201
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.topic: article
+ms.date: 05/30/2018
+ms.service: logic-apps
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 2534210c903e77462ece91c577d731d9c8e3726f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166300"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299714"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -66,7 +62,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 ### <a name="change-run-duration-and-storage-retention"></a>Ändern von Ausführungsdauer und Aufbewahrungsdauer im Speicher
 
-Sie können diesen Grenzwert auf einen Wert zwischen sieben Tage und 90 Tage ändern. Wenn Sie aber den maximalen Grenzwert überschreiten müssen, [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten.
+Sie können diesen Grenzwert auf einen Wert zwischen 7 Tage und 90 Tage ändern. Um den maximalen Grenzwert zu überschreiten, [wenden Sie sich an das Logic Apps-Team ](mailto://logicappsemail@microsoft.com), um Hilfestellung zu Ihren Anforderungen zu erhalten.
 
 1. Wählen Sie im Azure-Portal im Menü Ihrer Logik-App den Befehl **Workfloweinstellungen** aus. 
 
@@ -84,7 +80,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | ---- | ----- | ----- | 
 | Until-Iterationen | 5.000 | | 
 | ForEach-Elemente | 100.000 | Bei Bedarf können Sie die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
-| ForEach-Parallelität | 50 | Der Standardwert ist 20. <p>Legen Sie die Eigenschaft `runtimeConfiguration` in der Aktion `foreach` fest, um ein bestimmtes Maß an Parallelität in einer ForEach-Schleife zu definieren. <p>Legen Sie die Eigenschaft `operationOptions` in der Aktion `foreach` auf „Sequenziell“ fest, um eine ForEach-Schleife sequenziell auszuführen. | 
+| ForEach-Parallelität | 50 | Der Standardwert ist 20. <p>Um diese Standardebene in einer ForEach-Schleife zu ändern, legen Sie die `runtimeConfiguration`-Eigenschaft in der `foreach`-Aktion fest. <p>Legen Sie die Eigenschaft `operationOptions` in der Aktion `foreach` auf „Sequenziell“ fest, um eine ForEach-Schleife sequenziell auszuführen. | 
 | SplitOn-Elemente | 100.000 | | 
 |||| 
 
@@ -99,8 +95,8 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | Aktionsausführungen pro 5 Minuten | 100.000 | Um das Limit auf 300.000 zu erhöhen, führen Sie eine Logik-App im `High Throughput`-Modus aus. Um den Modus mit hohem Durchsatz zu konfigurieren, legen Sie unter der `runtimeConfiguration` der Workflowressource die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest. <p>**Hinweis**: Beachten Sie, dass sich dieser Modus für den hohen Durchsatz in der Vorschauphase befindet. Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 | Gleichzeitige ausgehende Aufrufe für Aktionen | ca. 2.500 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
 | Endpunkt zur Laufzeit: Gleichzeitige eingehende Aufrufe | ca. 1.000 | Verringern Sie nach Bedarf die Anzahl gleichzeitiger Anforderungen oder die Dauer. | 
-| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
-| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten| 45.000 |Bei Bedarf können Workloads auf mehrere Apps verteilt werden. | 
+| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
+| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten| 45.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. | 
 |||| 
 
 Wenn diese Grenzwerte bei der normalen Verarbeitung überschritten oder Auslastungstests ausgeführt werden sollen, bei denen diese Grenzwerte möglicherweise überschritten werden, [bitten Sie das Logic Apps-Team](mailto://logicappsemail@microsoft.com) um Unterstützung im Hinblick auf Ihre Anforderungen.
@@ -126,7 +122,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
 | Nachrichtengröße | 100 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. | 
-| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen oder für die Blockerstellungsunterstützung in der Laufzeitkonfiguration aktiviert werden kann. Weitere Informationen hierzu finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). | 
+| Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. Weitere Informationen hierzu finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). | 
 | Grenzwert für die Auswertung von Ausdrücken | 131.072 Zeichen | Keiner der Ausdrücke `@concat()`, `@base64()` und `@string()` darf länger sein, als dieser Grenzwert angibt. | 
 |||| 
 
@@ -159,9 +155,11 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 
 ### <a name="artifact-limits-per-integration-account"></a>Artefaktgrenzwerte pro Integrationskonto
 
-Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integrationskonto. Weitere Informationen hierzu finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/).
+Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integrationskonto. Weitere Informationen hierzu finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/). 
 
 *Free-Tarif*
+
+Verwenden Sie den Free-Tarif nur für Versuchsszenarien, nicht für Produktionsszenarien. Dieser Tarif beschränkt Durchsatz und Nutzung und ist nicht mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) verbunden.
 
 | Artefakt | Begrenzung | Notizen | 
 |----------|-------|-------| 
@@ -208,9 +206,9 @@ Die folgenden Grenzwerte gelten für die Anzahl von Artefakten für jedes Integr
 | ---- | ----- | ----- | 
 | Schema | 8 MB | Wenn Sie Dateien hochladen möchten, die größer sind als 2 MB, verwenden Sie den [Blob-URI](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
 | Zuordnung (XSLT-Datei) | 2 MB | | 
-| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Sie können den Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Sie können den Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Aufrufüberwachungen pro 5 Minuten | 45.000 | Sie können den Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Endpunkt zur Laufzeit: Aufrufüberwachungen pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
 | Endpunkt zur Laufzeit: Gleichzeitige Aufrufe zum Blockieren | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
 ||||  
 
@@ -233,8 +231,7 @@ Hier sind die Grenzwerte, die für B2B-Protokolle gelten:
 
 ### <a name="azure-logic-apps-service"></a>Azure Logic Apps-Dienst
 
-Für alle Logik-Apps in einer Region wird derselbe Bereich von IP-Adressen verwendet.
-Die Aufrufe, die Logik-Apps direkt über [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) oder andere HTTP-Anforderungen vornehmen, stammen von IP-Adressen in dieser Liste. 
+Für alle Logik-Apps in einer Region werden dieselben Bereiche von IP-Adressen verwendet. Um die Aufrufe zu unterstützen, die Logik-Apps direkt mit [HTTP](../connectors/connectors-native-http.md), [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) und anderen HTTP-Anforderungen durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie je nachdem, wo Ihre Logik-Apps sich befinden, diese aus- und eingehenden IP-Adressen enthalten:
 
 | Logic Apps-Bereich | Ausgehende IP-Adresse |
 |-------------------|-------------|
@@ -265,7 +262,7 @@ Die Aufrufe, die Logik-Apps direkt über [HTTP](../connectors/connectors-native-
 | | |
 
 | Logic Apps-Bereich | Eingehende IP-Adresse |
-|-------------------|-------------|
+|-------------------|------------|
 | Australien (Osten) | 3.75.153.66, 104.210.89.222, 104.210.89.244 |
 | Australien, Südosten | 13.73.115.153, 40.115.78.70, 40.115.78.237 |
 | Brasilien Süd | 191.235.86.199, 191.235.95.229, 191.235.94.220 |
@@ -294,37 +291,41 @@ Die Aufrufe, die Logik-Apps direkt über [HTTP](../connectors/connectors-native-
 
 ### <a name="connectors"></a>Connectors
 
-Die Aufrufe der [Connectors](../connectors/apis-list.md) stammen von den IP-Adressen in dieser Liste.
+Um die Aufrufe zu unterstützen, die [Connectors](../connectors/apis-list.md) durchführen, richten Sie Ihre Firewallkonfigurationen so ein, dass sie je nachdem, in welchen Regionen sich Ihre Logik-Apps befinden, diese ausgehenden IP-Adressen enthalten.
 
-| Logic Apps-Bereich | Ausgehende IP-Adresse |
-|-------------------|-------------|
-| Australien (Osten) | 40.126.251.213 |
-| Australien, Südosten | 40.127.80.34 |
-| Brasilien Süd | 191.232.38.129 |
-| Kanada, Mitte | 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 |
-| Kanada, Osten | 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 |
-| Indien, Mitte | 104.211.98.164 |
-| USA (Mitte) | 40.122.49.51 |
-| Asien, Osten | 23.99.116.181 |
-| USA (Ost) | 191.237.41.52 |
-| USA (Ost) 2 | 104.208.233.100 |
-| Japan, Osten | 40.115.186.96 |
-| Japan, Westen | 40.74.130.77 |
-| USA Nord Mitte | 65.52.218.230 |
-| Nordeuropa | 104.45.93.9 |
-| USA Süd Mitte | 104.214.70.191 |
-| Indien (Süden) | 104.211.227.225 |
-| Asien, Südosten | 13.76.231.68 |
-| Europa, Westen | 40.115.50.13 |
-| Indien, Westen | 104.211.161.203 |
-| USA (Westen) | 104.40.51.248 |
-| UK, Süden | 51.140.80.51 |
-| UK, Westen | 51.141.47.105 |
+> [!IMPORTANT]
+>
+> Aktualisieren Sie ggf. vorhandene Konfigurationen **so bald wie möglich vor dem 1. September 2018**, damit sie die IP-Adressen in dieser Liste für die Regionen, in denen sich Ihre Logik-Apps befinden, enthalten und mit ihnen übereinstimmen. 
+
+| Logic Apps-Bereich | Ausgehende IP-Adresse | 
+|-------------------|-------------|  
+| Australien (Osten) | 13.70.72.192 - 13.70.72.207, 13.72.243.10, 40.126.251.213 | 
+| Australien, Südosten | 13.77.50.240 - 13.77.50.255, 13.70.136.174, 40.127.80.34 | 
+| Brasilien Süd | 191.233.203.192 - 191.233.203.207, 104.41.59.51, 191.232.38.129 | 
+| Kanada, Mitte | 13.71.170.208 - 13.71.170.223, 13.71.170.224 - 13.71.170.239, 52.237.24.126, 52.233.31.197, 52.228.42.205, 52.228.33.76, 52.228.34.13 | 
+| Kanada, Osten | 40.69.106.240 - 40.69.106.255, 52.242.35.152, 52.229.123.98, 52.229.120.178, 52.229.126.202, 52.229.120.52 | 
+| Indien, Mitte | 104.211.81.192 - 104.211.81.207, 52.172.211.12, 104.211.98.164 | 
+| USA (Mitte) | 13.89.171.80 - 13.89.171.95, 52.173.245.164, 40.122.49.51 | 
+| Asien, Osten | 13.75.36.64 - 13.75.36.79, 52.175.23.169, 23.99.116.181 | 
+| USA (Ost) | 40.71.11.80 - 40.71.11.95, 40.71.249.205, 191.237.41.52 | 
+| USA (Ost) 2 | 40.70.146.208 - 40.70.146.223, 52.232.188.154, 104.208.233.100 | 
+| Japan, Osten | 13.78.108.0 - 13.78.108.15, 13.71.153.19, 40.115.186.96 | 
+| Japan, Westen | 40.74.100.224 - 40.74.100.239, 104.215.61.248, 40.74.130.77 | 
+| USA Nord Mitte | 52.162.107.160 - 52.162.107.175, 52.162.242.161, 65.52.218.230 | 
+| Nordeuropa | 13.69.227.208 - 13.69.227.223, 52.178.150.68, 104.45.93.9 | 
+| USA Süd Mitte | 104.214.19.48 - 104.214.19.63, 13.65.86.57, 104.214.70.191 | 
+| Indien (Süden) | 40.78.194.240 - 40.78.194.255, 13.71.125.22, 104.211.227.225 | 
+| Asien, Südosten | 13.67.8.240 - 13.67.8.255, 52.187.68.19, 13.76.231.68 | 
+| USA, Westen-Mitte | 13.71.195.32 - 13.71.195.47, 52.161.102.22, 52.161.27.108, 52.161.30.5, 52.161.29.35, 52.161.26.212 | 
+| Europa, Westen | 13.69.64.208 - 13.69.64.223, 52.174.88.118, 40.115.50.13 | 
+| Indien, Westen | 104.211.146.224 - 104.211.146.239, 104.211.189.218, 104.211.161.203 | 
+| USA (Westen) | 40.112.243.160 - 40.112.243.175, 104.42.122.49, 104.40.51.248 | 
+| USA, Westen 2 | 13.66.140.128 - 13.66.140.143, 52.183.78.157, 13.66.225.219, 13.66.218.78, 13.66.220.135, 13.66.219.14 | 
+| UK, Süden | 51.140.148.0 - 51.140.148.15, 51.140.80.51, 51.140.80.51 | 
+| UK, Westen | 51.140.211.0 - 51.140.211.15, 51.141.47.105, 51.141.47.105 | 
 | | | 
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-* [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)  
-* [Allgemeine Beispiele und Szenarios](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Video: Automatisieren von Geschäftsprozessen mit Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
-* [Video: Integrieren Ihrer Systeme in Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
+* Erfahren Sie, wie Sie [Ihre erste Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).  
+* Lernen Sie [allgemeine Beispiele und Szenarien](../logic-apps/logic-apps-examples-and-scenarios.md) kennen.

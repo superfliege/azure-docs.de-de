@@ -11,67 +11,76 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 06/04/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eb1f939f76c3528f05a9002b6365359fb6599aa2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357723"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757466"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-Registrierung
 Sie können Ihre ASDK-Installation (Azure Stack Development Kit) bei Azure registrieren, um Marketplace-Elemente von Azure herunterzuladen und die Berichterstellung zu E-Commerce-Daten für Microsoft einzurichten. Die Registrierung ist für die uneingeschränkte Unterstützung aller Azure Stack-Funktionen (einschließlich Marketplace-Syndikation) erforderlich. Es wird empfohlen, eine Registrierung durchzuführen, da Sie hierüber wichtige Azure Stack-Funktionen wie die Marketplace-Syndikation und Berichterstellung zur Verwendung testen können. Nachdem Sie Azure Stack registrieren, wird Ihre Nutzung an den Azure-Commerce übermittelt. Dies wird im Abonnement angezeigt, das Sie zur Registrierung verwendet haben. Die übermittelte Nutzung durch Benutzer des ASDK wird diesen jedoch nicht in Rechnung gestellt.
 
 Wenn Sie Ihr ASDK nicht registrieren, wird Ihnen die Warnung **Aktivierung erforderlich** angezeigt, die Ihnen dazu rät, Ihr Azure Stack Development Kit zu registrieren. Dies ist das erwartete Verhalten.
 
-## <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure 
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie die folgenden Anweisungen zur Registrierung des ASDK bei Azure befolgen, installieren Sie die mit Azure Stack kompatiblen PowerShell-Module, und laden Sie die Azure Stack-Tools herunter. Dies wird im Artikel [Konfiguration nach der Bereitstellung](asdk-post-deploy.md) beschrieben.
+
+Außerdem muss der PowerShell-Sprachmodus auf dem Computer, der zur Registrierung des ASDK bei Azure verwendet wird, auf **FullLanguageMode** festgelegt werden. Um zu überprüfen, ob der aktuelle Sprachmodus auf vollständig festgelegt ist, öffnen Sie ein PowerShell-Fenster mit erhöhten Rechten, und führen Sie die folgenden PowerShell-Befehle aus:
+
+```powershell
+$ExecutionContext.SessionState.LanguageMode
+```
+
+Vergewissern Sie sich, dass in der Ausgabe **FullLanguageMode** zurückgegeben wird. Wenn ein anderer Sprachmodus zurückgegeben wird, muss die Registrierung auf einem anderen Computer ausgeführt oder der Sprachmodus auf **FullLanguageMode** festgelegt werden, damit Sie fortfahren können.
+
+## <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 Führen Sie diese Schritte aus, um das ASDK bei Azure zu registrieren.
 
 > [!NOTE]
-> Alle diese Schritte müssen von einem Computer ausgeführt werden, der Zugriff auf den privilegierten Endpunkt hat. Beim ASDK ist das der Development Kit-Hostcomputer. 
-
-Bevor Sie die folgenden Schritte zur Registrierung des ASDK bei Azure durchführen, installieren Sie die mit Azure Stack kompatiblen PowerShell-Module, und laden Sie die Azure Stack-Tools herunter. Dies wird im Artikel [Konfiguration nach der Bereitstellung](asdk-post-deploy.md) beschrieben. 
+> Alle diese Schritte müssen von einem Computer ausgeführt werden, der Zugriff auf den privilegierten Endpunkt hat. Beim ASDK ist das der Development Kit-Hostcomputer.
 
 1. Öffnen Sie eine PowerShell-Konsole als Administrator.  
 
-2. Führen Sie die folgenden PowerShell-Befehle zum Registrieren Ihrer ASDK-Installation bei Azure aus (Sie müssen sich sowohl bei Ihrem Azure-Abonnement als auch bei der lokalen ASDK-Installation anmelden):
+2. Führen Sie die folgenden PowerShell-Befehle zum Registrieren Ihrer ASDK-Installation bei Azure aus. Sie müssen sich sowohl bei Ihrem Azure-Abonnement als auch bei der lokalen ASDK-Installation anmelden. Wenn Sie noch nicht über ein Azure-Abonnement verfügen, [können Sie hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?b=17.06). Durch das Registrieren von Azure Stack fallen keine zusätzlichen Kosten in Ihrem Azure-Abonnement an.
 
-    ```PowerShell
-    # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
-    Add-AzureRmAccount -EnvironmentName "AzureCloud"
+  ```powershell
+  # Add the Azure cloud subscription environment name. Supported environment names are AzureCloud or, if using a China Azure Subscription, AzureChinaCloud.
+  Add-AzureRmAccount -EnvironmentName "AzureCloud"
 
-    # Register the Azure Stack resource provider in your Azure subscription
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+  # Register the Azure Stack resource provider in your Azure subscription
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
-    #Import the registration module that was downloaded with the GitHub tools
-    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
+  #Import the registration module that was downloaded with the GitHub tools
+  Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
-    #Register Azure Stack
-    $AzureContext = Get-AzureRmContext
-    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
-    Set-AzsRegistration `
-        -PrivilegedEndpointCredential $CloudAdminCred `
-        -PrivilegedEndpoint AzS-ERCS01 `
-        -BillingModel Development
+  #Register Azure Stack
+  $AzureContext = Get-AzureRmContext
+  $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+  Set-AzsRegistration `
+      -PrivilegedEndpointCredential $CloudAdminCred `
+      -PrivilegedEndpoint AzS-ERCS01 `
+      -BillingModel Development
+  ```
+3. Wenn das Skript abgeschlossen ist, sollte folgende Meldung angezeigt werden: **Your environment is now registered and activated using the provided parameters** (Ihre Umgebung ist nun mit den angegebenen Parametern registriert und aktiviert).
 
-3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
+    ![](media/asdk-register/1.PNG)
 
-    ![](media/asdk-register/1.PNG) 
+## <a name="verify-the-registration-was-successful"></a>Überprüfen der erfolgreichen Ausführung der Registrierung
+Führen Sie die folgenden Schritte aus, um zu überprüfen, ob die Registrierung des ASDK bei Azure erfolgreich ausgeführt wurde.
 
-## Verify the registration was successful
-Follow these steps to verify that the ASDK registration with Azure was successful.
+1. Melden Sie sich beim [Azure Stack-Verwaltungsportal](https://adminportal.local.azurestack.external) an.
 
-1. Sign in to the [Azure Stack administration portal](https://adminportal.local.azurestack.external).
+2. Klicken Sie auf **Marketplace management** >  **Add from Azure** (Marketplace-Verwaltung > Aus Azure hinzufügen).
 
-2. Click **Marketplace Management** > **Add from Azure**.
+    ![](media/asdk-register/2.PNG)
 
-    ![](media/asdk-register/2.PNG) 
+3. Wenn Sie eine Liste der in Azure verfügbaren Elemente sehen, war die Aktivierung erfolgreich.
 
-3. If you see a list of items available from Azure, your activation was successful.
+    ![](media/asdk-register/3.PNG)
 
-    ![](media/asdk-register/3.PNG) 
-
-## Next steps
-[Add an Azure Stack marketplace item](asdk-marketplace-item.md)
+## <a name="next-steps"></a>Nächste Schritte
+[Hinzufügen eines Azure Stack-Marketplace-Elements](asdk-marketplace-item.md)
