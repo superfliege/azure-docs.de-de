@@ -3,17 +3,16 @@ title: Rehost-Migrate und Zuweisen eines neuen Hosts für eine lokale Linux-App 
 description: Dieser Artikel enthält Informationen zum Zuweisen eines neuen Hosts für eine lokale Linux-App durch Migration zu Azure-VMs.
 services: site-recovery
 author: rayne-wiselman
-manager: ''
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 85c377c0fbca32a33cc68c9a1bedfa00ce0a366a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8f039884ca0ea46c128078984d6cab6fd29ac9af
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300373"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220549"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale Linux-App zu Azure-VMs
 
@@ -24,11 +23,11 @@ Dieses Dokument ist das siebte in einer Reihe von Artikeln, die dokumentieren, w
 **Artikel** | **Details** | **Status**
 --- | --- | ---
 [Artikel 1: Übersicht](contoso-migration-overview.md) | Bietet eine Übersicht über die Migrationsstrategie von Contoso, die Artikelreihe und die Beispiel-Apps, die wir verwenden. | Verfügbar
-[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Beschreibt, wie Contoso die lokale Infrastruktur und die Azure-Infrastruktur für die Migration vorbereitet. Für sämtliche Contoso-Migrationsszenarios wird dieselbe Infrastruktur verwendet. | Verfügbar
-[Artikel 3: Bewerten von lokalen Ressourcen](contoso-migration-assessment.md)  | Zeigt, wie Contoso eine Bewertung der lokalen, zweischichtige App SmartHotel auf einer VMware ausführt. Sie bewerten App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die App SQL Server-Datenbank mit dem [Datenbankmigrations-Assistent von Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
+[Artikel 2: Bereitstellen einer Azure-Infrastruktur](contoso-migration-infrastructure.md) | Beschreibt, wie Contoso die lokale Infrastruktur und die Azure-Infrastruktur für die Migration vorbereitet. Für sämtliche Contoso-Migrationsszenarien wird dieselbe Infrastruktur verwendet. | Verfügbar
+[Artikel 3: Bewerten von lokalen Ressourcen](contoso-migration-assessment.md)  | Zeigt, wie Contoso eine Bewertung der lokalen, zweischichtigen, unter VMware ausgeführten App SmartHotel durchführt. Sie bewerten App-VMs mit dem Dienst [Azure Migrate](migrate-overview.md) und die App SQL Server-Datenbank mit dem [Datenbankmigrations-Assistent von Azure](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | Verfügbar
 [Artikel 4: Zuweisen eines neuen Hosts zu Azure-VMs und einer verwalteten SQL-Instanz](contoso-migration-rehost-vm-sql-managed-instance.md) | Veranschaulicht, wie Contoso die App SmartHotel zu Azure migriert. Das Unternehmen migriert die Front-End-VM der App mithilfe von [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview), und verwendet die App-Datenbank und den Dienst [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview), um zu einer verwalteten SQL-Instanz zu migrieren. | Verfügbar
 [Artikel 5: Zuweisen eines neuen Hosts zu Azure-VMs](contoso-migration-rehost-vm.md) | Veranschaulicht, wie Contoso die VMs der App SmartHotel nur mit SiteRecovery migriert.
-[Artikel 6: Zuweisen eines neuen Hosts zu Azure-VMs und SQL Server-Verfügbarkeitsgruppen](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Das Unternehmen verwendet Site Recovery zum Migrieren der App-VMs und den Database Migration Service zum Migrieren der App-Datenbank zu einer SQL Server-Verfügbarkeitsgruppe. | Verfügbar
+[Artikel 6: Zuweisen von Azure-VMs und SQL Server-Verfügbarkeitsgruppen als neue Hosts](contoso-migration-rehost-vm-sql-ag.md) | Veranschaulicht, wie Contoso die App SmartHotel migriert. Das Unternehmen verwendet Site Recovery zum Migrieren der App-VMs und den Database Migration Service zum Migrieren der App-Datenbank zu einer SQL Server-Verfügbarkeitsgruppe. | Verfügbar
 Artikel 7: Zuweisen eines neuen Hosts für eine Linux-App zu Azure-VMs (in diesem Artikel) | Dieser Artikel enthält Informationen darüber, wie Contoso die Linux-App osService mithilfe von Azure Site Recovery migriert.
 [Artikel 8: Zuweisen eines neuen Hosts für eine Linux-App zu Azure-VMs und Azure MySQL Server](contoso-migration-rehost-linux-vm-mysql.md) | Veranschaulicht, wie Contoso die Linux-App osService mithilfe von Site Recovery und MySQL Workbench für die Migration (zu einer Azure MySQL Server-Instanz) migriert. | Verfügbar
 
@@ -92,8 +91,8 @@ Für dieses Szenario benötigen Sie (und Contoso) Folgendes.
 
 **Anforderungen** | **Details**
 --- | ---
-**Azure-Abonnement** | Sie sollten bereits in früheren Artikeln dieser Reihe ein Abonnement erstellt haben. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.<br/><br/> Wenn Sie ein kostenloses Konto erstellen, sind Sie der Administrator Ihres Abonnements und können alle Aktionen durchführen.<br/><br/> Falls Sie ein vorhandenes Abonnement verwenden und nicht der Administrator sind, müssen Sie mit dem Administrator zusammenarbeiten, damit er Ihnen Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ zuweist.<br/><br/> Wenn Sie detailliertere Berechtigungen benötigen, lesen Sie [diesen Artikel](../site-recovery/site-recovery-role-based-linked-access-control.md). 
-**Azure-Infrastruktur** | Contoso richtet die Azure-Infrastruktur ein, wie unter [Azure-Infrastruktur für die Migration](contoso-migration-infrastructure.md) beschrieben.<br/><br/> Erfahren Sie mehr zu spezifischen [Netzwerk](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)- und [Speicheranforderungen](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) für Site Recovery.
+**Azure-Abonnement** | Sie sollten bereits im Zuge früherer Artikel dieser Reihe ein Abonnement erstellt haben. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.<br/><br/> Wenn Sie ein kostenloses Konto erstellen, sind Sie der Administrator Ihres Abonnements und können alle Aktionen durchführen.<br/><br/> Falls Sie ein vorhandenes Abonnement verwenden und nicht der Administrator sind, müssen Sie mit dem Administrator zusammenarbeiten, damit er Ihnen Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ zuweist.<br/><br/> Wenn Sie detailliertere Berechtigungen benötigen, lesen Sie [diesen Artikel](../site-recovery/site-recovery-role-based-linked-access-control.md). 
+**Azure-Infrastruktur** | Contoso richtet die Azure-Infrastruktur ein, wie in [Azure infrastructure for migration (Azure-Infrastruktur für die Migration)](contoso-migration-infrastructure.md) beschrieben.<br/><br/> Erfahren Sie mehr zu spezifischen [Netzwerk](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#network)- und [Speicheranforderungen](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#storage) für Site Recovery.
 **Lokale Server** | Ihr lokaler Server von vCenter Server sollte als Version 5.5, 6.0 oder 6.5 ausgeführt werden.<br/><br/> Einen ESXi-Host mit Version 5.5, 6.0 oder 6.5.<br/><br/> Mindestens eine VMware-VM auf dem ESXi-Host.
 **Lokale VMs** | [Überprüfen Sie die Linux-Computer](https://docs.microsoft.com//azure/site-recovery/vmware-physical-azure-support-matrix#replicated-machines), die für die Migration mit Site Recovery unterstützt werden.<br/><br/> Überprüfen Sie unterstützte [Linux-Datei- und -Speichersysteme](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#linux-file-systemsguest-storage).<br/><br/> VMs müssen die [Azure-Anforderungen](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements) erfüllen.
 
@@ -115,14 +114,14 @@ Contoso benötigt eine Reihe von Azure-Komponenten für Site Recovery:
 
 - Ein VNet, in dem sich Ressourcen befinden, für die ein Failover ausgeführt wurde (Contoso verwendet das bereits bereitgestellte Produktions-VNet)
 - Ein neues Azure-Speicherkonto für die Speicherung replizierter Daten. 
-- Einen Recovery Services-Tresor in Azure.
+- Ein Recovery Services-Tresor in Azure.
 
 Contoso hat das VNet bereits während der [Bereitstellung der Azure-Infrastruktur](contoso-migration-infrastructure.md) erstellt und muss daher nur ein Speicherkonto und einen Tresor erstellen.
 
 1. Contoso erstellt ein Azure-Speicherkonto (contosovmsacc20180528) in der Region „USA, Osten 2“.
 
     - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-    - Das Unternehmen verwendet ein universelles Konto mit Standardspeicher und LRS-Replikation.
+    - Das Unternehmen verwendet hierzu ein Konto für allgemeine Zwecke mit Standardspeicher und LRS-Replikation.
 
     ![Site Recovery-Speicher](./media/contoso-migration-rehost-linux-vm/asr-storage.png)
 
@@ -226,7 +225,7 @@ Contoso führt diese Schritte wie folgt aus:
     ![Konfigurationsserver registrieren](./media/contoso-migration-rehost-linux-vm/config-server-register2.png)
 
 7. Das Tool führt einige Konfigurationsaufgaben und anschließend einen Neustart durch.
-8. Contoso meldet sich erneut bei dem Computer an. Der Assistent für die Konfigurationsserververwaltung wird automatisch gestartet.
+8. Contoso meldet sich erneut am Computer an. Der Assistent für die Konfigurationsserververwaltung wird automatisch gestartet.
 9. Im Assistenten wählt das Unternehmen die NIC zum Empfangen von Replikationsdatenverkehr aus. Diese Einstellung kann nach der Konfiguration nicht mehr geändert werden.
 10. Das Unternehmen wählt das Abonnement, die Ressourcengruppe und den Tresor aus, in dem der Konfigurationsserver registriert werden soll.
 
@@ -253,7 +252,7 @@ Contoso konfiguriert nun die Zielreplikationseinstellungen.
 Nach der Einrichtung der Quelle und des Ziels kann Contoso nun eine Replikationsrichtlinie erstellen.
 
 1. Unter **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **Replikationsrichtlinie** >  **Erstellen und zuordnen** erstellt das Unternehmen die Richtlinie **ContosoMigrationPolicy**.
-2. Es verwendet die Standardeinstellungen:
+2. Es werden die Standardeinstellungen verwendet:
     - **RPO-Schwellenwert**: Standardwert von 60 Minuten. Mit diesem Wert wird festgelegt, wie oft Wiederherstellungspunkte erstellt werden. Wenn dieser Grenzwert bei der fortlaufenden Replikation überschritten wird, wird eine Warnung generiert.
     - **Aufbewahrung des Wiederherstellungspunkts**. Standardwert von 24 Stunden. Dieser Wert gibt den Aufbewahrungszeitraum für die einzelnen Wiederherstellungspunkte an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden.
     - **Häufigkeit von Momentaufnahmen für App-Konsistenz**. Der Standardwert ist eine Stunde. Dieser Wert gibt die Häufigkeit an, mit der anwendungskonsistente Momentaufnahmen erstellt werden.
@@ -303,7 +302,7 @@ Contoso kann nun mit der Replikation der VM **OSTICKETWEB** beginnen.
      ![Mobilitätsdienst](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. Unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren** überprüft das Unternehmen, ob die richtige Replikationsrichtlinie angewendet wird, und wählt **Replikation aktivieren** aus.
-6.  Es verfolgt den Replikationsfortschritt unter **Aufträge**. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
+6.  Der Replikationsfortschritt wird unter **Aufträge** nachverfolgt. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 
 
 
@@ -332,7 +331,7 @@ Contoso führt ein schnelles Testfailover aus und migriert die VMs anschließend
 Das Ausführen eines Testfailovers dient zur Sicherstellung, dass vor der Migration alles wie erwartet funktioniert. 
 
 1. Contoso führt ein Testfailover zum letzten verfügbaren Zeitpunkt aus (**Zuletzt verarbeitet**).
-2. Es wählt **Computer vor Starten des Failovers herunterfahren** aus, damit Site Recovery versucht, die Quell-VM vor dem Auslösen des Failovers herunterzufahren. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. 
+2. **Computer vor Starten des Failovers herunterfahren** wird ausgewählt, damit Site Recovery versucht, die Quell-VM vor dem Auslösen des Failovers herunterzufahren. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. 
 3. Testfailover durchführen: 
     - Eine Überprüfung der erforderlichen Komponenten wird ausgeführt, um sicherzustellen, dass alle Bedingungen für eine Migration erfüllt sind.
     - Durch das Failover werden die Daten verarbeitet, sodass eine Azure-VM erstellt werden kann. Wenn der letzte Wiederherstellungspunkt ausgewählt wird, wird ein Wiederherstellungspunkt auf der Grundlage der Daten erstellt.
@@ -348,7 +347,7 @@ Das Ausführen eines Testfailovers dient zur Sicherstellung, dass vor der Migrat
 - Da das Unternehmen eine zweischichtige App migrieren möchte, passt es den Wiederherstellungsplan so an, dass die Daten-VM (SQLVM) vor der Front-End-VM (WEBVM) gestartet wird.
 
 
-1. Unter **Wiederherstellungsplan (Site Recovery)** > **+ Wiederherstellungsplan** erstellt das Unternehmen einen Plan und fügt die VMs zu dem Plan hinzu.
+1. Unter **Wiederherstellungspläne (Site Recovery)** > **+Wiederherstellungsplan** erstellt das Unternehmen einen Plan und fügt die VMs dem Plan hinzu.
 
     ![Wiederherstellungsplan](./media/contoso-migration-rehost-linux-vm/recovery-plan.png)
 
@@ -417,7 +416,7 @@ Der letzte Schritt im Migrationsprozess besteht in der Aktualisierung der Verbin
 
 **Benötigen Sie weitere Hilfe?**
 
-- [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure) zum Ausführen eines Testfailovers. 
+- [Informationen](https://docs.microsoft.com/azure/site-recovery/tutorial-dr-drill-azure) zum Ausführen eines Testfailovers. 
 - [Informationen](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans) zum Erstellen eines Wiederherstellungsplans.
 - [Informationen](https://docs.microsoft.com/azure/site-recovery/site-recovery-failover) zum Ausführen eines Failovers für Azure.
 
@@ -444,17 +443,17 @@ Das Sicherheitsteam von Contoso überprüft die VMs OSTICKETWEB und OSTICKETMYSQ
 - Es überprüft die Netzwerksicherheitsgruppen der VMs zur Steuerung des Zugriffs. Mithilfe von Netzwerksicherheitsgruppen wird sichergestellt, dass nur für die App zulässiger Datenverkehr übergeben werden kann.
 - Das Sicherheitsteam zieht darüber hinaus in Erwägung, die Daten auf den VM-Datenträgern über Datenträgerverschlüsselung und Azure KeyVault zu sichern.
 
-[Weitere Informationen](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) zu Sicherheitsverfahren für VMs.
+[Erfahren Sie mehr](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) über Sicherheitsverfahren für VMs.
 
 ### <a name="backups"></a>Backups
 
 Contoso sichert die Daten auf den VMs mithilfe des Azure Backup-Diensts. [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="licensing-and-cost-optimization"></a>Lizenzierungs- und Kostenoptimierung
+### <a name="licensing-and-cost-optimization"></a>Lizenzierung und Kostenoptimierung
 
 - Nach der Bereitstellung von Ressourcen, weist der Contoso Azure Tags zu, die während der [Bereitstellung der Azure-Infrastruktur](contoso-migration-infrastructure.md#set-up-tagging) definiert wurden.
 - Contoso hat mit seinen Ubuntu-Servern keine Lizenzierungsprobleme.
-- Contoso aktiviert Azure Cost Management. Es ist durch Cloudyn lizenziert, ein Tochterunternehmen von Microsoft. Dabei handelt es sich um eine Kostenverwaltungslösung mit mehreren Clouds, die Ihnen das Verwenden und Verwalten von Azure und anderen Cloudressourcen erleichtert.  [Weitere Informationen](https://docs.microsoft.com/azure/cost-management/overview) zu Azure Cost Management. 
+- Contoso aktiviert Azure Cost Management. Es ist durch Cloudyn lizenziert, ein Tochterunternehmen von Microsoft. Dabei handelt es sich um eine Kostenverwaltungslösung mit mehreren Clouds, die Ihnen das Verwenden und Verwalten von Azure und anderen Cloudressourcen erleichtert.  [Erfahren Sie mehr](https://docs.microsoft.com/azure/cost-management/overview) über die Azure Cost Management. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
