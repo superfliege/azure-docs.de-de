@@ -84,7 +84,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Administrator für privilegierte Rollen**: Benutzer mit dieser Rolle können Rollenzuweisungen in Azure Active Directory und in Azure AD Privileged Identity Management vornehmen. Überdies ermöglicht diese Rolle die vollumfängliche Verwaltung von Privileged Identity Management.
 
-* **Berichts-Reader**: Benutzer mit dieser Rolle können Verwendungsberichtsdaten und das Berichtsdashboard in Office 365 Admin Center und das Anpassungskontextpaket in Power BI anzeigen. Darüber hinaus stellt die Rolle Zugriff auf Anmeldeberichte und -aktivitäten in Azure AD und von der Microsoft Graph-Berichterstellungs-API zurückgegebene Daten zur Verfügung. Ein Benutzer, dem die Rolle „Berichts-Reader“ zugewiesen ist, kann nur auf relevante Nutzungs- und Anpassungsmetriken zugreifen. Sie verfügen nicht über Administratorrechte, um Einstellungen zu konfigurieren oder auf produktspezifische Verwaltungskonsolen wie das Exchange Admin Center zuzugreifen. 
+* **Berichte lesen**: Benutzer mit dieser Rolle können Verwendungsberichtsdaten und das Berichtsdashboard in Office 365 Admin Center und das Anpassungskontextpaket in Power BI anzeigen. Darüber hinaus stellt die Rolle Zugriff auf Anmeldeberichte und -aktivitäten in Azure AD und von der Microsoft Graph-Berichterstellungs-API zurückgegebene Daten zur Verfügung. Ein Benutzer, dem die Rolle „Berichte lesenr“ zugewiesen ist, kann nur auf relevante Nutzungs- und Anpassungsmetriken zugreifen. Sie verfügen nicht über Administratorrechte, um Einstellungen zu konfigurieren oder auf produktspezifische Verwaltungskonsolen wie das Exchange Admin Center zuzugreifen. 
 
 * **Sicherheitsadministrator**: Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Azure Information Protection, Privileged Identity Management und Office 365 Security &amp; Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
@@ -132,7 +132,7 @@ Geben Sie in | Möglich
 -------- | ---------
 Azure Information Protection | <li>Konfigurieren von Bezeichnungen und Einstellungen in globalen und bereichsbezogenen Richtlinien<li>Konfigurieren und Verwalten von Schutzvorlagen<li>Aktivieren oder Deaktivieren des Schutzes
  
-### <a name="reports-reader"></a>Berichts-Reader 
+### <a name="reports-reader"></a>Berichte lesen 
 Möglich | Nicht möglich
 ------ | ----------
 Anzeigen von Azure AD-Anmeldeberichten und -Überwachungsprotokollen<br>Anzeigen von Unternehmens- und Benutzerinformationen<br>Zugreifen auf das Office 365-Nutzungsdashboard | Erstellen und Verwalten von Benutzeransichten<br>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen<br>Delegieren von Administratorrollen an andere Benutzer<br>Verwalten von Unternehmensinformationen
