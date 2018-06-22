@@ -1,34 +1,36 @@
 ---
-title: "Azure Active Directory Domain Services: Synchronisierung in verwalteten Domänen | Microsoft Docs"
-description: "Grundlegendes zur Synchronisierung in einer durch Azure Active Directory Domain Services verwalteten Domäne"
+title: 'Azure Active Directory Domain Services: Synchronisierung in verwalteten Domänen | Microsoft Docs'
+description: Grundlegendes zur Synchronisierung in einer durch Azure Active Directory Domain Services verwalteten Domäne
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
-ms.service: active-directory-ds
+ms.service: active-directory
+ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 5c324ea5e268d97134202eff6e96764bedc6ca75
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2449c8178f726eacad089debeae6cf1db56cc67a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34698440"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne
 In der folgenden Abbildung ist die Synchronisierung in durch Azure AD Domain Services verwalteten Domänen dargestellt.
 
-![Synchronisierungstopologie in Azure AD Domain Services](./media/active-directory-domain-services-design-guide/sync-topology.png)
+![Synchronisierung in Azure AD Domain Services](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
 ## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>Synchronisierung aus dem lokalen Verzeichnis mit dem Azure AD-Mandanten
 Mithilfe der Azure AD Connect-Synchronisierung werden Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes mit dem Azure AD-Mandanten synchronisiert. Die Attribute von Benutzerkonten wie der UPN und die lokale SID (Sicherheits-ID) werden synchronisiert. Wenn Sie Azure AD Domain Services verwenden, werden ältere Anmeldeinformationshashes, die für die NTLM- und Kerberos-Authentifizierung benötigt werden, auch mit dem Azure AD-Mandanten synchronisiert.
 
-Wenn Sie das Zurückschreiben konfigurieren, werden Änderungen im Azure AD-Verzeichnis wieder mit dem lokalen Active Directory synchronisiert. Wenn Sie beispielsweise Ihr Kennwort mit den Azure AD-Funktionen zur Self-Service-Kennwortänderung ändern, wird das geänderte Kennwort in der lokalen AD-Domäne aktualisiert.
+Wenn Sie das Zurückschreiben konfigurieren, werden Änderungen im Azure AD-Verzeichnis wieder mit dem lokalen Active Directory synchronisiert. Wenn Sie beispielsweise Ihr Kennwort mit der Azure AD-Verwaltung zur Self-Service-Kennwortänderung ändern, wird das geänderte Kennwort in der lokalen AD-Domäne aktualisiert.
 
 > [!NOTE]
 > Verwenden Sie immer die neueste Version von Azure AD Connect, um sicherzustellen, dass Sie über die Fehlerbehebungen für alle bekannten Fehler verfügen.
@@ -36,14 +38,14 @@ Wenn Sie das Zurückschreiben konfigurieren, werden Änderungen im Azure AD-Verz
 >
 
 ## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Synchronisierung aus dem Azure AD-Mandanten mit der verwalteten Domäne
-Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden aus dem Azure AD-Mandanten mit der durch Azure AD Domain Services verwalteten Domäne synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Nach Abschluss der einmaligen Erstsynchronisierung Ihres Verzeichnisses dauert es in der Regel ca. 20 Minuten bis Änderungen in Azure AD in Ihrer verwalteten Domäne sichtbar werden. Dieses Synchronisierungsintervall gilt für Kennwortänderungen oder Änderungen an Attributen, die in Azure AD vorgenommen werden.
+Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes werden aus dem Azure AD-Mandanten mit der durch Azure AD Domain Services verwalteten Domäne synchronisiert. Dieser Synchronisierungsvorgang erfolgt automatisch. Sie müssen diesen Vorgang nicht konfigurieren, überwachen oder verwalten. Die erste Synchronisierung kann von einigen wenigen Stunden bis hin zu mehreren Tagen dauern – dies hängt von der Anzahl von Objekten in Ihrem Azure AD-Verzeichnis ab. Nach Abschluss der anfänglichen Synchronisierung dauert es in der Regel etwa 20–30 Minuten, bis in Azure AD durchgeführte Änderungen in Ihrer verwalteten Domäne wirksam werden. Dieses Synchronisierungsintervall gilt für Kennwortänderungen oder Änderungen an Attributen, die in Azure AD vorgenommen werden.
 
 Der Synchronisierungsvorgang wird zudem unidirektional durchgeführt. Die verwaltete Domäne ist größtenteils schreibgeschützt, mit Ausnahme der benutzerdefinierten Organisationseinheiten, die Sie erstellen. Aus diesem Grund können Sie keine Änderungen an den Benutzerattributen, Benutzerkennwörtern oder Gruppenmitgliedschaften in der verwalteten Domäne vornehmen. Daher erfolgt keine umgekehrte Synchronisierung der Änderungen aus der verwalteten Domäne mit dem Azure AD-Mandanten.
 
 ## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>Synchronisierung aus einer lokalen Umgebung mit mehreren Gesamtstrukturen
 Viele Organisationen verfügen über eine relativ komplexe lokale Identitätsinfrastruktur mit mehreren Kontogesamtstrukturen. Azure AD Connect unterstützt die Synchronisierung von Benutzern, Gruppen und Anmeldeinformationshashes aus Umgebungen mit mehreren Gesamtstrukturen mit dem Azure AD-Mandanten.
 
-Im Gegensatz dazu handelt es sich bei dem Azure AD-Mandanten um einen viel einfacheren und flachen Namespace. Damit Benutzer verlässlich auf durch Azure AD gesicherte Anwendungen zugreifen können, müssen UPN-Konflikte in den Benutzerkonten in den unterschiedlichen Gesamtstrukturen behoben werden. Die durch Azure AD Domain Services verwaltete Domäne hat eine große Ähnlichkeit mit dem Azure AD-Mandanten. Daher sehen Sie eine flache OE-Struktur in der verwalteten Domäne. Alle Benutzer und Gruppen werden im Container „AADDC-Benutzer“ gespeichert, unabhängig von der lokalen Domäne oder Gesamtstruktur, aus der sie synchronisiert wurden. Möglicherweise haben Sie eine hierarchische lokale OE-Struktur konfiguriert. Die verwaltete Domäne weist jedoch weiterhin eine einfache flache OE-Struktur auf.
+Im Gegensatz dazu handelt es sich bei dem Azure AD-Mandanten um einen viel einfacheren und flachen Namespace. Damit Benutzer verlässlich auf durch Azure AD gesicherte Anwendungen zugreifen können, müssen UPN-Konflikte in den Benutzerkonten in den unterschiedlichen Gesamtstrukturen behoben werden. Die durch Azure AD Domain Services verwaltete Domäne hat eine große Ähnlichkeit mit dem Azure AD-Mandanten. Sie sehen eine flache OE-Struktur in Ihrer verwalteten Domäne. Alle Benutzerkonten und -gruppen werden ungeachtet der Synchronisierung aus verschiedenen lokalen Domänen oder Gesamtstrukturen im Container „AADDC Users“ gespeichert. Möglicherweise haben Sie eine hierarchische lokale OE-Struktur konfiguriert. Ihre verwaltete Domäne weist weiterhin eine einfache, flache OE-Struktur auf.
 
 ## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>Ausschlüsse – Objekte oder Attribute, die nicht mit der verwalteten Domäne synchronisiert werden
 Die folgenden Objekte oder Attribute werden nicht mit dem Azure AD-Mandanten oder mit der verwalteten Domäne synchronisiert:
@@ -58,7 +60,7 @@ Die folgenden Objekte oder Attribute werden nicht mit dem Azure AD-Mandanten ode
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>Synchronisierung bestimmter Attribute mit der verwalteten Domäne
 In der folgenden Tabelle sind einige allgemeine Attribute sowie entsprechende Beschreibungen dazu aufgeführt, wie die Synchronisierung mit der verwalteten Domäne erfolgt.
 
-| Attribut in der verwalteten Domäne | Quelle | Hinweise |
+| Attribut in der verwalteten Domäne | Quelle | Notizen |
 |:--- |:--- |:--- |
 | UPN |UPN-Attribut des Benutzers im Azure AD-Mandanten |Das UPN-Attribut aus dem Azure AD-Mandanten wird unverändert mit der verwalteten Domäne synchronisiert. Daher ist die Verwendung des UPN die zuverlässigste Möglichkeit der Anmeldung in der verwalteten Domäne. |
 | SAMAccountName |mailNickname-Attribut des Benutzers im Azure AD-Mandanten oder automatisch generiert |Das SAMAccountName-Attribut wird aus dem mailNickname-Attribut im Azure AD-Mandanten erstellt. Wenn mehrere Benutzerkonten dasselbe mailNickname-Attribut aufweisen, wird das SAMAccountName-Attribut automatisch generiert. Wenn das mailNickname-Attribut oder das UPN-Präfix des Benutzers länger als 20 Zeichen ist, wird das SAMAccountName-Attribut automatisch generiert, wobei die Beschränkung von 20 Zeichen für SAMAccountName-Attribute eingehalten wird. |
@@ -112,6 +114,15 @@ In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Gruppenob
 | objectid |msDS-AzureADObjectId |
 | onPremiseSecurityIdentifier |sidHistory |
 | securityEnabled |groupType |
+
+## <a name="password-hash-synchronization-and-security-considerations"></a>Kennworthashsynchronisierung und Sicherheitsüberlegungen
+Wenn Sie Azure AD Domain Services aktivieren, generiert und speichert Ihr Azure AD-Verzeichnis Kennworthashes in NTLM- und Kerberos-kompatiblen Formaten. 
+
+Für vorhandene Cloudbenutzerkonten können diese Hashes nicht automatisch generiert werden, weil Azure AD niemals die zugehörigen Klartextkennwörter speichert. Microsoft fordert deshalb [Cloudbenutzer auf, ihre Kennwörter zurückzusetzen/zu ändern](active-directory-ds-getting-started-password-sync.md), damit die Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. 
+
+Für Benutzerkonten, die unter Verwendung von Azure AD Connect Sync aus lokalen AD-Verzeichnissen synchronisiert werden, müssen Sie [Azure AD Connect zum Synchronisieren von Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten konfigurieren](active-directory-ds-getting-started-password-sync-synced-tenant.md).
+
+Die NTLM- und Kerberos-kompatiblen Kennworthashes werden immer verschlüsselt in Azure AD gespeichert. Die Hashes werden so verschlüsselt, dass nur Azure AD Domain Services Zugriff auf die Entschlüsselungsschlüssel hat. Andere Dienste oder Komponenten in Azure AD können nicht auf die Entschlüsselungsschlüssel zugreifen. Die Verschlüsselungsschlüssel sind für jeden Azure AD-Mandanten eindeutig. Azure AD Domain Services synchronisiert die Kennworthashes mit den Domänencontrollern für Ihre verwaltete Domäne. Diese Kennworthashes werden auf diesen Domänencontrollern in ähnlicher Weise gespeichert und geschützt wie Kennwörter auf Windows Server-AD-Domänencontrollern. Die Datenträger für diese verwalteten Domänencontroller werden im Ruhezustand verschlüsselt.
 
 ## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>Objekte, die aus der verwalteten Domäne nicht mit dem Azure AD-Mandanten synchronisiert werden
 Wie in einem vorherigen Abschnitt dieses Artikels beschrieben wurde, erfolgt keine Synchronisierung aus der verwalteten Domäne mit dem Azure AD-Mandanten. Sie können [eine benutzerdefinierte Organisationseinheit (OE)](active-directory-ds-admin-guide-create-ou.md) in der verwalteten Domäne erstellen. Darüber hinaus können Sie andere Organisationseinheiten, Benutzer, Gruppen oder Dienstkonten in diesen benutzerdefinierten Organisationseinheiten erstellen. Keines der in benutzerdefinierten Organisationseinheiten erstellten Objekte wird wieder mit dem Azure AD-Mandanten synchronisiert. Diese Objekte können nur in der verwalteten Domäne verwendet werden. Daher sind diese Objekte über Azure AD PowerShell-Cmdlets, die Azure AD Graph-API oder die Azure AD-Verwaltungsoberfläche nicht sichtbar.

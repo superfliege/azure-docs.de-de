@@ -489,7 +489,7 @@ Melden Sie sich an der WordPress-Administration an. Wählen Sie im linken Naviga
 
 Anzeige aller Plug-Ins
 
-Navigieren Sie auf der Seite mit den Plug-Ins zu **Redis Object Cache** (Redis-Objektcache), und klicken Sie auf **Activate** (Aktivieren).
+Navigieren Sie auf der Seite mit den Plug-Ins zu **Redis Object Cache**, und klicken Sie auf **Activate** (Aktivieren).
 
 ![Aktivieren von Redis][3]
 
@@ -497,9 +497,9 @@ Klicken Sie auf **Settings** (Einstellungen).
 
 ![Klicken auf „Settings“ (Einstellungen)][4]
 
-Klicken Sie auf die Schaltfläche **Enable Object Cache** (Objektcache aktivieren).
+Klicken Sie auf die Schaltfläche **Enable Object Cache** (Object Cache aktivieren).
 
-![Klicken auf die Schaltfläche „Enable Object Cache“ (Objektcache aktivieren)][5]
+![Klicken auf die Schaltfläche „Enable Object Cache“ (Object Cache aktivieren)][5]
 
 WordPress stellt die Verbindung mit dem Redis-Server her. Der **Status** der Verbindung wird auf derselben Seite angezeigt.
 

@@ -63,7 +63,7 @@ Wenn Sie Ihre Rechnung nicht per E-Mail erhalten möchten, klicken Sie auf „Op
 
     ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
-4. Sie können Ihre Daten zur tägliche Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen. 
+4. Sie können Ihre Daten zur täglichen Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen. 
 
 Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
@@ -103,7 +103,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Es sind weniger als 30 Tage seit dem Abschluss Ihres Azure-Abonnements vergangen.
 
-- Die Rechnung ist nicht noch erstellt. Warten Sie bis zum Ende des Abrechnungszeitraums.
+- Die Rechnung ist noch nicht erstellt. Warten Sie bis zum Ende des Abrechnungszeitraums.
 
 - Wenn Sie nicht der Kontoadministrator sind, stehen Ihnen ältere Rechnungen möglicherweise nicht zur Verfügung.
 
