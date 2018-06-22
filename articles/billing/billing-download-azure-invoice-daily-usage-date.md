@@ -59,7 +59,7 @@ Wenn Sie keine E-Mail erhalten, nachdem Sie diese Schritte befolgt haben, stelle
 
     ![Screenshot mit Abrechnungszeiträumen, der Option „Herunterladen“ und den Gesamtgebühren für jeden Abrechnungszeitraum](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
-4. Sie können Ihre Daten zur täglicheN Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen. 
+4. Sie können Ihre Daten zur täglichen Nutzung auch durch Klicken auf den Abrechnungszeitraum anzeigen. 
 
 Weitere Informationen über Ihre Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](billing-understand-your-bill.md). Hilfe beim Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md).
 
