@@ -128,7 +128,7 @@ Die folgenden Administratorrollen sind verfügbar:
 | <p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Ändern von Kennwörtern ausschließlich für Benutzer und andere Helpdeskadministratoren</p>|<p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Anzeigen von Berichten</p>|
 
 ### <a name="information-protection-administrator"></a>Information Protection-Administrator
-Geben Sie in | Möglich
+In | Möglich
 -------- | ---------
 Azure Information Protection | <li>Konfigurieren von Bezeichnungen und Einstellungen in globalen und bereichsbezogenen Richtlinien<li>Konfigurieren und Verwalten von Schutzvorlagen<li>Aktivieren oder Deaktivieren des Schutzes
  
@@ -138,14 +138,14 @@ Möglich | Nicht möglich
 Anzeigen von Azure AD-Anmeldeberichten und -Überwachungsprotokollen<br>Anzeigen von Unternehmens- und Benutzerinformationen<br>Zugreifen auf das Office 365-Nutzungsdashboard | Erstellen und Verwalten von Benutzeransichten<br>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen und Verwalten von Benutzerlizenzen<br>Delegieren von Administratorrollen an andere Benutzer<br>Verwalten von Unternehmensinformationen
 
 ### <a name="security-reader"></a>Sicherheit lesen
-| Geben Sie in | Möglich |
+| In | Möglich |
 | --- | --- |
 | Identity Protection Center |Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Nachrichtenflussregeln |
 | Privileged Identity Management |<p>Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD PIM: Richtlinien und Berichte für Azure AD-Rollenzuweisungen, Sicherheitsüberprüfungen und in Zukunft Lesezugriff auf Richtliniendaten und Berichte für Szenarios zusätzlich zur Azure AD-Rollenzuweisung.<p>**Kann sich nicht** für Azure AD PIM registrieren oder Änderungen durchführen. Im PIM-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z.B. globaler Administrator oder Administrator für privilegierte Rollen) aktivieren, wenn der Benutzer für sie geeignet ist. |
 | <p>Überwachen der Office 365-Dienstintegrität</p><p>Office 365 Security & Compliance Center</p> |<ul><li>Lesen und Verwalten von Warnungen<li>Lesen von Sicherheitsrichtlinien<li>Lesen von Bedrohungsanalysen, Cloud App Discovery und Quarantäne in Suchen und Untersuchungen<li>Lesen aller Berichte |
 
 ### <a name="security-administrator"></a>Sicherheitsadministrator
-| Geben Sie in | Möglich |
+| In | Möglich |
 | --- | --- |
 | Identity Protection Center |<ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“<li>Darüber hinaus die Möglichkeit, alle IPC-Vorgänge außer des Zurücksetzens von Kennwörtern auszuführen. |
 | Privileged Identity Management |<ul><li>Alle Berechtigungen der Rolle „Sicherheit lesen“<li>**nicht** verwalten. |
