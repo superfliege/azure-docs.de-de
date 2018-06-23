@@ -27,8 +27,6 @@
       href: role-definitions.md
     - name: Integrierte Rollen
       href: built-in-roles.md
-    - name: Benutzerdefinierte Rollen
-      href: custom-roles.md
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
     - name: Privileged Identity Management (PIM) für RBAC
@@ -42,12 +40,21 @@
       items:
         - name: Portal
           href: role-assignments-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: role-assignments-cli.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: REST
+        - name: Azure-Befehlszeilenschnittstelle
+          href: role-assignments-cli.md
+        - name: REST-API
           href: role-assignments-rest.md
+    - name: Benutzerdefinierte Rollen
+      href: custom-roles.md
+      items:
+        - name: PowerShell
+          href: custom-roles-powershell.md
+        - name: Azure-Befehlszeilenschnittstelle
+          href: custom-roles-cli.md
+        - name: REST-API
+          href: custom-roles-rest.md
     - name: Anzeigen von Aktivitätsprotokollen
       href: change-history-report.md
     - name: Erhöhen der Zugriffsrechte für den globalen Administrator

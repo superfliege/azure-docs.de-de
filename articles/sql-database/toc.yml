@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: Skalieren einzelner Datenbankressourcen
           href: sql-database-single-database-scale.md
-        - name: Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken
-          items:
-            - name: Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken
-              href: sql-database-elastic-pool.md
-            - name: Verwalten von Pools und in einem Pool zusammengefassten Datenbanken
-              href: sql-database-elastic-pool-manage.md
-            - name: V-Kern-basierte Ressourceneinschränkungen
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: DTU-basierte Ressourceneinschränkungen
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: Skalieren der Ressourcen von Pools für elastische Datenbanken
-          href: sql-database-elastic-pool-scale.md
         - name: Verbindungsarchitektur
           href: sql-database-connectivity-architecture.md
         - name: T-SQL-Unterschiede
           href: sql-database-transact-sql-information.md
+    - name: Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken
+      items:
+        - name: Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken
+          href: sql-database-elastic-pool.md
+        - name: Verwalten von Pools und in einem Pool zusammengefassten Datenbanken
+          href: sql-database-elastic-pool-manage.md
+        - name: V-Kern-basierte Ressourceneinschränkungen
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: DTU-basierte Ressourceneinschränkungen
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: Skalieren der Ressourcen von Pools für elastische Datenbanken
+          href: sql-database-elastic-pool-scale.md
     - name: Verwaltete Instanzen
       items:
         - name: Verwaltete Instanzen
