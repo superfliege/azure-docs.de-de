@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: e4e2866e18c508c0df7a9a9e85a22c98e4372661
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: a4b704f433f02afcff7b94f98c19a478caaa02b2
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302152"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808059"
 ---
 # <a name="create-a-blockchain-application-in-azure-blockchain-workbench"></a>Erstellen einer Blockchainanwendung in Blockchain Workbench
 
@@ -238,7 +238,7 @@ Fügen Sie das folgende Versionspragma am Anfang der intelligenten Vertragscoded
 
 ### <a name="base-class"></a>Basisklasse
 
-Mithilfe der Basisklasse **WorkbenchBase** kann Blockchain Workbench ein Update des Vertrags erstellen. Diese Basisklasse ist für Blockchain Workbench-spezifische intelligente Vertragscodes erforderlich. Ihr Vertrag muss von der Basisklasse **WorkbenchBase** erben.
+Mithilfe der Basisklasse **WorkbenchBase** kann Blockchain Workbench den Vertrag erstellen und aktualisieren. Diese Basisklasse ist für Blockchain Workbench-spezifische intelligente Vertragscodes erforderlich. Ihr Vertrag muss von der Basisklasse **WorkbenchBase** erben.
 
 Fügen Sie in der intelligenten Vertragscodedatei `HelloBlockchain.sol` die Klasse **WorkbenchBase** am Anfang der Datei hinzu. 
 
@@ -375,7 +375,7 @@ Bevor Sie die Funktion beenden, rufen Sie die `ContractUpdated()`-Funktion auf. 
 Um eine Blockchainanwendung zu Blockchain Workbench hinzuzufügen, laden Sie die Konfigurations- und intelligenten Vertragsdateien hoch, um die Anwendung zu definieren.
 
 1. Navigieren Sie in einem Webbrowser zur Blockchain Workbench-Webadresse. (Beispiel: `https://{workbench URL}.azurewebsites.net/`) Die Webanwendung wird erstellt, wenn Sie Blockchain Workbench bereitstellen. Informationen darüber, wie Sie Ihre Blockchain Workbench-Webadresse finden, erhalten Sie unter [Blockchain Workbench-Web-URL](blockchain-workbench-deploy.md#blockchain-workbench-web-url).
-2. Melden Sie sich als Blockchain Workbench-Administrator an. Weitere Informationen zur Benutzerverwaltung finden Sie unter [Verwalten von Benutzern in Azure Blockchain Workbench](blockchain-workbench-manage-users.md).
+2. Melden Sie sich als [Blockchain Workbench-Administrator](blockchain-workbench-manage-users.md#manage-blockchain-workbench-administrators) an.
 3. Wählen Sie **Anwendungen** > **Neu**. Der Bereich **Neue Anwendung** wird angezeigt.
 4. Wählen Sie **Vertragskonfiguration hochladen** > **Durchsuchen**, um die von Ihnen erstellte Konfigurationsdatei **HelloBlockchain.json** zu finden. Die Konfigurationsdatei wird automatisch überprüft. Wählen Sie den Link **Anzeigen**, um Überprüfungsfehler anzuzeigen. Beheben Sie Überprüfungsfehler, bevor Sie die Anwendung bereitstellen.
 5. Wählen Sie **Vertragscode hochladen** > **Durchsuchen**, um die intelligente Vertragscodedatei **HelloBlockchain.sol** zu finden. Die Codedatei wird automatisch überprüft. Wählen Sie den Link **Anzeigen**, um Überprüfungsfehler anzuzeigen. Beheben Sie Überprüfungsfehler, bevor Sie die Anwendung bereitstellen.

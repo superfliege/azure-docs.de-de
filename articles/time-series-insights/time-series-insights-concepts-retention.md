@@ -1,21 +1,21 @@
 ---
 title: Grundlagen der Datenaufbewahrung in der Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 description: In diesem Artikel werden zwei Einstellungen beschrieben, mit denen die Datenaufbewahrung in Ihrer Azure Time Series Insights-Umgebung gesteuert wird.
-services: time-series-insights
 ms.service: time-series-insights
+services: time-series-insights
 author: anshan
 ms.author: anshan
 manager: kfile
-editor: MicrosoftDocs/tsidocs
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 46e0c4fa25c7d8a56763b80bf7de97c775c7ee99
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad0cbf38a1a32632869c490c5a46796eaa3884f4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652449"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Grundlagen der Datenaufbewahrung in Time Series Insights
 In diesem Artikel werden zwei Einstellungen beschrieben, die sich auf die Datenaufbewahrung in Ihrer TSI-Umgebung (Time Series Insights) auswirken.
@@ -40,7 +40,7 @@ Vergleichen Sie das Verhalten in Bezug auf die Datenaufbewahrung:
 - Die ältesten erfassten Daten werden zuerst bereinigt (FIFO-Ansatz).
 
 ### <a name="example-1"></a>Beispiel 1:
-Wir sehen uns eine Beispielanwendung mit dem Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) an: In diesem Beispiel ist die **Datenaufbewahrungszeit** auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB.   Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die eingehenden Daten gilt Folgendes: 500 MB pro Tag · 60 Tage = 30 GB. 
+Wir sehen uns eine Beispielanwendung mit dem Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) an: In diesem Beispiel ist die **Datenaufbewahrungszeit** auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB.   Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB. 
 
 In diesem Beispiel werden in der Umgebung am 61. Tag die aktuellen Daten angezeigt, aber Daten, die älter als 60 Tage sind, werden bereinigt. Durch die Bereinigung wird Platz für die neu eintreffenden Daten geschaffen, damit weiter neue Daten untersucht werden können. 
 

@@ -1,24 +1,21 @@
 ---
-title: "Exportieren einer U-SQL-Datenbank mithilfe von Azure Data Lake Tools für Visual Studio | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio eine U-SQL-Datenbank exportieren und automatisch in ein lokales Konto importieren."
+title: Exportieren einer U-SQL-Datenbank mithilfe von Azure Data Lake Tools für Visual Studio
+description: Erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio eine U-SQL-Datenbank exportieren und automatisch in ein lokales Konto importieren.
 services: data-lake-analytics
-documentationcenter: 
 author: yanancai
-manager: 
-editor: 
+ms.author: yanacai
+manager: kfile
+editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: yanacai
-ms.openlocfilehash: 441606258f9541c9552925e7c0cbc9b3a9effb4d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1dbcf9b88af7777a1103876a429ccc26450e2f58
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623409"
 ---
 # <a name="export-a-u-sql-database"></a>Exportieren einer U-SQL-Datenbank
 
@@ -55,7 +52,7 @@ In diesem Schritt können Sie die ausgewählten Objekte im Feld **Objektliste ex
 
 Sie können auch andere Einstellungen für das Exportziel konfigurieren. Konfigurationsbeschreibungen sind in der folgenden Tabelle aufgeführt:
 
-|Konfiguration|Beschreibung|
+|Konfiguration|BESCHREIBUNG|
 |-------------|-----------|
 |Zielname|Dieser Name gibt an, wo die exportierten Datenbankressourcen gespeichert werden sollen. Beispiele sind Assemblys, zusätzliche Dateien und Beispieldaten. Unter dem Stammordner für Ihre lokalen Daten wird ein Ordner mit diesem Namen erstellt.|
 |Projektverzeichnis|Dieser Pfad legt fest, wo das exportierte U-SQL-Skript gespeichert werden soll. Alle Datenbankobjektdefinitionen werden an dieser Stelle gespeichert.|

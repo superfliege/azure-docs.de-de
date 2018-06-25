@@ -1,22 +1,19 @@
 ---
 title: Visualisieren von Remoteüberwachungsdaten mit Power BI – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial werden Daten aus einer Remoteüberwachungslösung unter Verwendung von Power BI Desktop und Cosmos DB in eine benutzerdefinierte Visualisierung integriert. So können Benutzer ihre eigenen benutzerdefinierten Dashboards erstellen und sie mit Benutzern teilen, die die Lösung nicht verwenden.
-services: iot-suite
-suite: iot-suite
 author: asdonald
 manager: hegate
 ms.author: asdonald
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 55feb56008a54676bd0af332e251da94a9653aaf
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e396d69a61679a85fdfbd3e8fd43216635dec51d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627789"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -105,7 +102,7 @@ Darüber hinaus sollten Sie die [Daten für das veröffentlichte Dashboard aktua
 
 In diesem Artikel haben Sie erfahren, wie Sie Remoteüberwachungsdaten mithilfe von Power BI visualisieren.
 
-Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie in folgenden Quellen:
+Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie hier:
 
 * [Anpassen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize.md)
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)

@@ -1,25 +1,27 @@
 ---
 title: Latenzen bei Azure Active Directory-Berichten | Microsoft-Dokumentation
-description: "Erfahren Sie etwas über den erforderliche Zeitraum, bis Ereignisse in Ihrem Azure-Portal angezeigt werden."
+description: Erfahren Sie etwas über den erforderliche Zeitraum, bis Ereignisse in Ihrem Azure-Portal angezeigt werden.
 services: active-directory
-documentationcenter: 
-author: MarkusVi
+documentationcenter: ''
+author: rolyon
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 9b88958d-94a2-4f4b-a18c-616f0617a24e
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 12/15/2017
-ms.author: markvi;dhanyahk
+ms.author: rolyon;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ec41817fede495b8262e28d2d614a480d98ff3b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: f27efab05dc8580735c58eed20e9b48d8003dd17
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589779"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
 
@@ -37,10 +39,10 @@ Es gibt zwei Bereiche von Aktivitätsberichten:
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Aktivitätsberichte.
 
-| Bericht | Minimum | Durchschnitt | Anmerkungen |
-| :-- | --- | --- | :-- |
-| Überwachungsprotokolle | 30 Minuten  | 1 Stunde  |In einigen Fällen kann es bis zu 2 Stunden dauern, bis Daten zur Überwachungsaktivität angezeigt werden.|
-| Anmeldungen | 15 Minuten  | 2 Stunden |In einigen Fällen kann es bis zu 24 Stunden dauern, bis Daten zur Anmeldeaktivität angezeigt werden. Dies umfasst Daten zur Anmeldeaktivität von Legacy-Office-Anwendungen. |
+| Bericht | Wartezeit (P95) |Wartezeit (P99)|
+| :-- | --- | --- | 
+| Überwachungsprotokolle | 2 Min.  | 5 Min.  |
+| Anmeldungen | 2 Min.  | 5 Min. |
 
 
 

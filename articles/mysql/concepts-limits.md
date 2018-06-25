@@ -6,45 +6,37 @@ author: kamathsun
 ms.author: sukamat
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/04/2018
+ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264883"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
 
-## <a name="service-tier-maximums"></a>Maximalwerte der Diensttarife
-Azure Database for MySQL weist mehrere Diensttarife auf, aus denen Sie bei der Erstellung eines Servers wählen können. Weitere Informationen finden Sie unter [Optionen und Leistung von Azure Database for MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen](concepts-pricing-tiers.md).  
+## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
+Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
 
-In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheiten und Speicherkapazitäten verfügbar. Es gelten folgende Maximalwerte: 
+|**Tarif**|**vCore(s)**| **Max. Anzahl von Verbindungen**|
+|---|---|---|
+|Basic| 1| 50|
+|Basic| 2| 100|
+|Allgemeiner Zweck| 2| 300|
+|Allgemeiner Zweck| 4| 625|
+|Allgemeiner Zweck| 8| 1250|
+|Allgemeiner Zweck| 16| 2500|
+|Allgemeiner Zweck| 32| 5.000|
+|Arbeitsspeicheroptimiert| 2| 600|
+|Arbeitsspeicheroptimiert| 4| 1250|
+|Arbeitsspeicheroptimiert| 8| 2500|
+|Arbeitsspeicheroptimiert| 16| 5.000|
 
-|**Tarif**| **Computegeneration**|**vCore(s)**| **Max. Anzahl von Verbindungen**|
-|---|---|---|---|
-|Basic| Gen 4| 1| 50|
-|Basic| Gen 4| 2| 100|
-|Basic| Gen 5| 1| 50|
-|Basic| Gen 5| 2| 100|
-|Allgemeiner Zweck| Gen 4| 2| 300|
-|Allgemeiner Zweck| Gen 4| 4| 625|
-|Allgemeiner Zweck| Gen 4| 8| 1250|
-|Allgemeiner Zweck| Gen 4| 16| 2500|
-|Allgemeiner Zweck| Gen 4| 32| 5.000|
-|Allgemeiner Zweck| Gen 5| 2| 300|
-|Allgemeiner Zweck| Gen 5| 4| 625|
-|Allgemeiner Zweck| Gen 5| 8| 1250|
-|Allgemeiner Zweck| Gen 5| 16| 2500|
-|Allgemeiner Zweck| Gen 5| 32| 5.000|
-|Arbeitsspeicheroptimiert| Gen 5| 2| 600|
-|Arbeitsspeicheroptimiert| Gen 5| 4| 1250|
-|Arbeitsspeicheroptimiert| Gen 5| 8| 2500|
-|Arbeitsspeicheroptimiert| Gen 5| 16| 5.000|
-
-Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
+Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > FEHLER 1040 (08004): Zu viele Verbindungen
 
 ## <a name="storage-engine-support"></a>Speicher-Engine-Unterstützung
@@ -85,8 +77,6 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 ### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 - Die Wiederherstellung in anderen Diensttarifen und/oder Compute-Einheiten und Speichergrößen ist nicht zulässig.
 - Die Wiederherstellung eines gelöschten Servers wird nicht unterstützt.
-
-## <a name="functional-limitations"></a>Funktionale Beschränkungen
 
 ### <a name="subscription-management"></a>Abonnementverwaltung
 - Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.

@@ -1,21 +1,21 @@
 ---
-title: Verknüpfen eines Azure-Abonnements mit Azure AD B2C | Microsoft-Dokumentation
+title: Verknüpfen eines Azure-Abonnements mit Azure Active Directory B2C | Microsoft-Dokumentation
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Vorgehensweise, mit der die Abrechnung für einen Azure AD B2C-Mandanten in einem Azure-Abonnement ermöglicht wird.
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: davidmu
-ms.openlocfilehash: bb9324b01bb810ba15994612bac2ff20dc83ab82
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 4dd99d492fe4f337509cacfce0e2b254e8465424
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712078"
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
 

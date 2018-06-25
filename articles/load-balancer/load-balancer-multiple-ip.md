@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2fbf7bd736a59cbcd6231fa8325a084f54927467
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261454"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637377"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
 
@@ -173,7 +173,7 @@ Konfigurieren Sie einen Integritätstest für Ihren Lastenausgleich:
 
 Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) die Lastenausgleichsregeln:
     
-1. <a name="step6-1"></a>Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** aus. Wählen Sie oben im nächsten Bereich die Option **Hinzufügen**. 
+1. <a name="step6-1"></a>Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln**. Wählen Sie oben im nächsten Bereich die Option **Hinzufügen**. 
 
 2. Geben Sie unter **Name** einen Namen für die Lastenausgleichsregel ein (z.B. **HTTPc** für contoso.com oder **HTTPf** für fabrikam.com).
 

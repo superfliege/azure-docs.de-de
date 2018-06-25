@@ -9,19 +9,20 @@ manager: mtillman
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
+ms.component: protection
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/23/2018
+ms.date: 06/08/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 19878b7fa023ecf0d9c2a62001a5ea93ca3eb6db
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 0730fbd2df6c2a0a8b8d0930c86709c0e3012002
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257732"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248719"
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
 
@@ -31,6 +32,7 @@ Sicherheit ist ein wichtiges Anliegen von Organisationen, die die Cloud nutzen. 
 ![Kontrolle](./media/active-directory-conditional-access-azure-portal/81.png)
 
 Dieser Artikel bietet eine konzeptionelle Übersicht über den bedingten Zugriff in Azure AD.
+
 
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
@@ -82,32 +84,8 @@ Mit dem bedingten Zugriff von Azure AD können Sie den Zugriff von autorisierten
 
 Ein Vorteil der Verwendung eines richtlinienbasierten Ansatzes zum Schutz des Zugriffs auf Ihre Cloud-Apps ist, dass Sie die Richtlinienanforderungen für Ihre Umgebung mit der in diesem Artikel beschriebenen Struktur beginnen können, ohne sich über die technische Implementierung Gedanken machen zu müssen. 
 
-## <a name="what-you-need-to-know"></a>Wichtige Informationen
 
-### <a name="general-requirements-for-using-conditional-access"></a>Allgemeine Anforderungen für die Verwendung des bedingten Zugriffs
-
-Mithilfe des bedingten Zugriffs mit Azure AD können Sie Cloud-Apps schützen, wenn ein Authentifizierungsversuch aus diesen Quellen erfolgt:
-
-- Aus einem Webbrowser
-
-- Aus einer Client-App, die moderne Authentifizierungsmethoden nutzt
-
-- Exchange ActiveSync
-
-Weitere Informationen finden Sie unter [Client-Apps](active-directory-conditional-access-conditions.md#client-apps).
-
-Einige [Cloud-Apps](active-directory-conditional-access-conditions.md#cloud-apps) unterstützen auch ältere Authentifizierungsprotokolle. Dies gilt beispielsweise auch für SharePoint Online und Exchange Online. Wenn eine Client-App mit einem älteren Authentifizierungsprotokoll auf eine Cloud-App zugreifen kann, kann Azure AD für diesen Zugriffsversuch keine Richtlinie für den bedingten Zugriff erzwingen. Um zu verhindern, dass eine Client-App die Erzwingung von Richtlinien umgeht, sollten Sie überprüfen, ob es möglich ist, für die betroffenen Cloud-Apps nur die moderne Authentifizierung zu aktivieren.
-
-Beispiele für Client-Apps, auf die der bedingte Zugriff nicht zutrifft:
-
-- Office 2010 und frühere Versionen
-
-- Office 2013, wenn die moderne Authentifizierung nicht aktiviert ist
-
-Weitere Informationen erhalten Sie unter [Einrichten von SharePoint Online und Exchange Online für bedingten Zugriff mit Azure Active Directory](active-directory-conditional-access-no-modern-authentication.md).
-
-
-### <a name="license-requirements-for-using-conditional-access"></a>Lizenzanforderungen für die Verwendung des bedingten Zugriffs
+## <a name="license-requirements-for-using-conditional-access"></a>Lizenzanforderungen für die Verwendung des bedingten Zugriffs
 
 Für die Verwendung des bedingten Zugriffs ist eine Azure AD Premium-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 

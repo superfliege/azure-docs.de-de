@@ -17,16 +17,16 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c1390945848901dd71214e01469ab3bfa765ef4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 0f535e8a74822319d472c62fe1b65e5145e58a74
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157570"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261643"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Authentifizierungsszenarien für Azure AD
 
-Azure Active Directory (Azure AD) vereinfacht die Authentifizierung für Entwickler mittels Identity-as-a-Service, durch Unterstützung branchenüblicher Protokolle wie OAuth 2.0 und OpenID Connect sowie durch Open-Source-Bibliotheken für verschiedene Plattformen, sodass Sie schnell mit der Programmierung beginnen können. Dieser Artikel enthält Informationen zu den verschiedenen, von Azure AD unterstützten Szenarien und vereinfacht den Einstieg. Er ist in folgende Abschnitte unterteilt:
+Azure Active Directory (Azure AD) vereinfacht die Authentifizierung für Entwickler mittels Identity-as-a-Service, durch Unterstützung branchenüblicher Protokolle wie OAuth 2.0 und OpenID Connect sowie durch Open-Source-Bibliotheken für verschiedene Plattformen, sodass Sie schnell mit der Programmierung beginnen können. Dieser Artikel enthält Informationen zu den verschiedenen, von Azure AD unterstützten Szenarien und vereinfacht den Einstieg. Es ist in folgende Abschnitte unterteilt:
 
 * [Grundlegendes zur Authentifizierung in Azure AD](#basics-of-authentication-in-azure-ad)
 * [Ansprüche in Sicherheitstokens von Azure AD](#claims-in-azure-ad-security-tokens)
@@ -64,7 +64,7 @@ Nachdem Sie nun mit den Grundlagen vertraut sind, finden Sie in den folgenden Ab
 
 Von Azure AD ausgestellte Sicherheitstoken (Zugriffs- und ID-Token) enthalten Ansprüche oder Assertionen von Informationen zum authentifizierten Antragsteller. Diese Ansprüche können von der Anwendung für unterschiedliche Aufgaben verwendet werden. Anwendungen können Ansprüche beispielsweise zum Überprüfen des Tokens, zum Ermitteln des Verzeichnismandanten des Antragstellers, zum Anzeigen von Benutzerinformationen oder zum Bestimmen der Autorisierung des Antragstellers verwenden. Welche Ansprüche in einem Sicherheitstoken enthalten sind, hängt von der Art des Tokens, von der Art der Anmeldeinformationen für die Benutzerauthentifizierung sowie von der Anwendungskonfiguration ab. Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Anspruchsarten, die von Azure AD ausgegeben werden. Weitere Informationen finden Sie unter [Unterstützte Token und Anspruchstypen](active-directory-token-and-claims.md).
 
-| Anspruch | Beschreibung |
+| Anspruch | BESCHREIBUNG |
 | --- | --- |
 | Anwendungs-ID | Die Anwendung, die das Token verwendet. |
 | Zielgruppe | Die Empfängerressource, für die das Token vorgesehen ist. |
@@ -138,7 +138,7 @@ Dieser Abschnitt beschreibt eine Anwendung, die einen Benutzer in einem Webbrows
 1. Wenn ein Benutzer die Anwendung aufruft und sich anmelden muss, wird er über eine Anmeldeanforderung an den Authentifizierungsendpunkt in Azure AD umgeleitet.
 1. Der Benutzer meldet sich auf der Anmeldeseite an.
 1. Nach erfolgreicher Authentifizierung erstellt Azure AD ein Authentifizierungstoken und gibt eine Anmeldeantwort an die im Azure-Portal konfigurierte Antwort-URL der Anwendung zurück. Bei Produktionsanwendungen empfiehlt sich die Verwendung einer Antwort-URL mit HTTPS. Das zurückgegebene Token enthält Ansprüche für den Benutzer und Azure AD, die die Anwendung zum Überprüfen des Tokens benötigt.
-1. Die Anwendung überprüft das Token mithilfe eines öffentlichen Signaturschlüssels und der Ausstellerinformationen aus dem Verbundmetadatendokument für Azure AD. Nach der Überprüfung des Tokens durch die Anwendung startet Azure AD eine neue Sitzung mit dem Benutzer. Anschließend kann der Benutzer bis zum Ablauf der Sitzung auf die Anwendung zugreifen.
+1. Die Anwendung überprüft das Token mithilfe eines öffentlichen Signaturschlüssels und der Ausstellerinformationen aus dem Verbundmetadatendokument für Azure AD. Nach der Überprüfung des Tokens durch die Anwendung startet Azure AD eine neue Sitzung mit dem Benutzer. Anschließend kann der Benutzer bis zum Ablauf der Sitzung auf die Anwendung zugreifen.
 
 #### <a name="code-samples"></a>Codebeispiele
 

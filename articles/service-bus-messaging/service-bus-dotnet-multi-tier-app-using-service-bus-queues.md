@@ -1,24 +1,21 @@
 ---
 title: .NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus | Microsoft-Dokumentation
-description: "Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet."
+description: Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren Ebenen in Azure zu erstellen, die Service Bus-Warteschlangen für die Kommunikation zwischen Ebenen verwendet.
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 1b8608ca-aa5a-4700-b400-54d65b02615c
 ms.service: service-bus-messaging
-ms.workload: tbd
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: 667efced715b904234bd2b941453ed27e9ef1c42
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 34b647c0405e4d0997eca12758c10b60cf862a5f
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809453"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
 
@@ -58,25 +55,19 @@ Dieser Kommunikationsmechanismus bietet verschiedene Vorteile gegenüber direkte
 
 In den folgenden Abschnitten wird der Code für die Implementierung dieser Architektur behandelt.
 
-## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
-Bevor Sie mit der Entwicklung von Azure-Anwendungen beginnen können, müssen Sie über die entsprechenden Tools verfügen und die Entwicklungsumgebung einrichten.
-
-1. Installieren Sie das Azure SDK für .NET über die [Downloadseite](https://azure.microsoft.com/downloads/) des SDK.
-2. Klicken Sie in der Spalte **.NET** auf die von Ihnen verwendete Version von [Visual Studio](http://www.visualstudio.com). Für die Schritte in diesem Tutorial wird Visual Studio 2015 verwendet, aber sie funktionieren auch mit Visual Studio 2017.
-3. Wenn Sie aufgefordert werden, das Installationsprogramm auszuführen oder zu speichern, klicken Sie auf **Ausführen**.
-4. Klicken Sie im **Webplattform-Installer** auf **Installieren**, und setzen Sie die Installation fort.
-5. Nach Abschluss der Installation haben Sie alles zur Hand, was Sie benötigen, um mit der Entwicklung der App zu beginnen. Das SDK enthält Tools, mit denen Sie ganz leicht Azure-Anwendungen in Visual Studio entwickeln können.
-
 ## <a name="create-a-namespace"></a>Erstellen eines Namespace
-Der nächste Schritt ist das Erstellen eines *Namespace* und das Abrufen eines [SAS (Shared Access Signature)-Schlüssels](service-bus-sas.md) für diesen Namespace. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace-Name und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
+
+Der erste Schritt besteht im Erstellen eines *Namespace* und Abrufen eines [SAS-Schlüssels](service-bus-sas.md) (Shared Access Signature) für diesen Namespace. Ein Namespace stellt eine Anwendungsgrenze für jede Anwendung bereit, die über Service Bus zur Verfügung steht. Das System generiert einen SAS-Schlüssel, wenn ein Namespace erstellt wird. Namespace-Name und SAS-Schlüssel bilden gemeinsam die Anmeldeinformationen, mit denen sich der Service Bus bei der Anwendung authentifiziert.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-web-role"></a>Erstellen einer Webrolle
+
 In diesem Abschnitt lernen Sie, wie Sie das Front-End Ihrer Anwendung erstellen. Zunächst erstellen Sie die Seiten, aus denen Ihre Anwendung besteht.
 Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Warteschlange übermittelt und Statusinformationen zur Warteschlange angezeigt werden.
 
 ### <a name="create-the-project"></a>Erstellen des Projekts
+
 1. Starten Sie Visual Studio mit Administratorrechten: Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
    
    Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.

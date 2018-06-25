@@ -1,25 +1,21 @@
 ---
-title: Verwalten von Azure Data Lake Analytics-Richtlinien | Microsoft-Dokumentation
+title: Verwalten von Azure Data Lake Analytics-Richtlinien
 description: Erfahren Sie, wie Sie Richtlinien zum Steuern der Verwendung eines Data Lake Analytics-Kontos verwenden.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 04/30/2018
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: db2712f0b57f2a5d60eae4aec21a4070c7a907a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+manager: kfile
+editor: jasonwhowell
+ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
+ms.topic: conceptual
+ms.date: 04/30/2018
+ms.openlocfilehash: 2c074b1a75c5bfef07ffb90e719bd3247a474e63
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771223"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623943"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>Verwalten von Azure Data Lake Analytics-Richtlinien
 
