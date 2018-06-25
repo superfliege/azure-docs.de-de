@@ -1,32 +1,29 @@
 ---
 title: Geräteschema in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt das JSON-Schema, das ein simuliertes Gerät in der Remoteüberwachungslösung definiert.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 186eaee952435573a861d144195c3165e4940cc1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 1ba73d24aaa113a9124e17ea91946c205b21fba6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627432"
 ---
 # <a name="understand-the-device-model-schema"></a>Grundlegendes zum Gerätemodellschema
 
-Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um deren Verhalten zu testen. Beim Bereitstellen der Remoteüberwachungslösung wird automatisch eine Sammlung simulierter Geräte bereitgestellt. Sie können die vorhandenen simulierten Geräte anpassen oder eigene erstellen.
+Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um ihr Verhalten zu testen. Beim Bereitstellen der Remoteüberwachungslösung wird automatisch eine Sammlung simulierter Geräte bereitgestellt. Sie können die vorhandenen simulierten Geräte anpassen oder eigene erstellen.
 
 Dieser Artikel beschreibt das Gerätemodellschema, das die Funktionen und das Verhalten eines simulierten Geräts bestimmt. Das Gerätemodell ist in einer JSON-Datei gespeichert.
 
 Die folgenden Artikel beziehen sich auf den aktuellen Artikel:
 
-* [Implementieren des Gerätemodellverhaltens](../iot-suite/iot-suite-remote-monitoring-device-behavior.md) beschreibt die JavaScript-Dateien, mit denen Sie das Verhalten eines simulierten Geräts implementieren.
+* [Implementieren des Gerätemodellverhaltens](iot-accelerators-remote-monitoring-device-behavior.md) beschreibt die JavaScript-Dateien, mit denen Sie das Verhalten eines simulierten Geräts implementieren.
 * [Erstellen eines neuen simuliertes Geräts](iot-accelerators-remote-monitoring-test.md) zeigt, wie Sie einen neuen simulierten Gerätetyp in Ihrer Lösung bereitstellen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
@@ -39,7 +36,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="the-parts-of-the-device-model-schema"></a>Die Komponenten des Gerätemodellschemas
 
-Jedes Gerätemodell, z.B. eine Kühlanlage oder ein LKW, definiert einen simulierten Gerätetyp zum Verbinden mit der Remoteüberwachungslösung. Jedes Gerätemodell wird in einer JSON-Datei mit folgendem Schema gespeichert:
+Jedes Gerätemodell (beispielsweise eine Kühlanlage oder ein LKW) definiert einen simulierten Gerätetyp, der mit der Remoteüberwachungslösung verbunden werden kann. Jedes Gerätemodell wird in einer JSON-Datei mit folgendem Schema gespeichert:
 
 ```json
 {
@@ -246,7 +243,7 @@ Dieser Artikel beschreibt, wie Sie Ihr eigenes benutzerdefiniertes simuliertes G
 
 Nachdem Sie nun mit dem JSON-Schema vertraut sind, sollten Sie mehr über das [Implementieren des Verhaltens Ihres simulierten Geräts](iot-accelerators-remote-monitoring-device-behavior.md) erfahren.
 
-Weitere Informationen für Entwickler zur Remoteüberwachungslösung finden Sie in folgenden Quellen:
+Weitere Entwicklerinformationen zur Remoteüberwachungslösung finden Sie hier:
 
 * [Referenzhandbuch für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Handbuch zur Problembehandlung für Entwickler](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)

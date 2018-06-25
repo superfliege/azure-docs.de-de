@@ -1,26 +1,19 @@
 ---
 title: Übersicht über Azure IoT-Solution Accelerators | Microsoft-Dokumentation
 description: Hier finden Sie eine Beschreibung der Azure IoT Solution Accelerators und ihrer Architektur mit Links zu zusätzlichen Ressourcen.
-services: iot-suite
-suite: iot-suite
-documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 59009f37-9ba0-4e17-a189-7ea354a858a2
-ms.service: iot-suite
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 17/01/2018
+ms.service: iot-accelerators
+services: iot-accelerators
+ms.topic: conceptual
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: 80192b115f4c6c8f6961fdd4d9fb7f3876fda898
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b961217317cea65b05cd58d66e64f0e4f012131e
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362123"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808552"
 ---
 # <a name="what-are-the-iot-solution-accelerators"></a>Was sind IoT Solution Accelerators?
 
@@ -54,7 +47,7 @@ Bei jedem Solution Accelerator handelt es sich um eine vollständige End-to-End-
 Derzeit stehen drei Solution Accelerators zur Verfügung:
 
 * [Remoteüberwachung](iot-accelerators-remote-monitoring-explore.md)
-* [Predictive Maintenance](../iot-suite/iot-suite-predictive-overview.md)
+* [Predictive Maintenance](iot-accelerators-predictive-overview.md)
 * [Verbundene Factory](iot-accelerators-connected-factory-overview.md)
 
 In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeordnet sind:
@@ -62,7 +55,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | Lösung | Datenerfassung | Geräteidentität | Geräteverwaltung | Verarbeitung im Edge-Bereich | Befehl und Steuerung | Regeln und Aktionen | Predictive Analytics |
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [Remoteüberwachung](iot-accelerators-remote-monitoring-explore.md)  |Ja |Ja |Ja |-   |Ja |Ja |-   |
-| [Predictive Maintenance](../iot-suite/iot-suite-predictive-overview.md)   |Ja |Ja |-   |-   |Ja |Ja |Ja |
+| [Predictive Maintenance](iot-accelerators-predictive-overview.md)   |Ja |Ja |-   |-   |Ja |Ja |Ja |
 | [Verbundene Factory](iot-accelerators-connected-factory-overview.md) |Ja |- |- |Ja |Ja |Ja |-   |
 
 * *Datenerfassung:* Skalierbarer Dateneingang in der Cloud
@@ -73,7 +66,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 * *Predictive Analytics:* Das Lösungs-Back-End analysiert D2C-Daten, um vorherzusagen, wann bestimmte Aktionen ausgeführt werden sollen. Beispiel: Analysieren von Telemetriedaten eines Flugzeugtriebwerks, um zu bestimmen, wann die Triebwerkwartung erforderlich ist.
 
 > [!NOTE]
-> Informationen zum Bereitstellen von Solution Accelerators und zu ihrer Anpassung finden Sie unter [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsuite.com/).
+> Informationen zum Bereitstellen von Solution Accelerators und zu ihrer Anpassung finden Sie unter [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/).
 
 ## <a name="azure-services"></a>Azure-Dienste
 
@@ -85,20 +78,20 @@ Wenn Sie einen Solution Accelerator bereitstellen, konfiguriert der Bereitstellu
 | Event Hubs           |                    | Ja                    |                   |
 | Time Series Insights |                    |                        | Ja               |
 | Containerdienste   | Ja                |                        |                   |
-| Stream Analytics     |                    | Ja                    |                   |
+| Stream Analytics     | Ja                | Ja                    |                   |
 | Web-Apps             | Ja                | Ja                    | Ja               |
 | Cosmos DB            | Ja                | Ja                    |                    |
 | Azure Storage         |                    | Ja                    | Ja               |
 
 > [!NOTE]
-> Weitere Informationen zu den Ressourcen, die im Solution Accelerator für die Remoteüberwachung bereitgestellt werden, finden Sie in diesem [Artikel](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) auf GitHub.
+> Weitere Informationen zu den Ressourcen, die im Solution Accelerator für die Remoteüberwachung bereitgestellt werden, finden Sie unter [Optionen für die Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-architectural-choices.md).
 
 * [Azure IoT Hub](../iot-hub/index.yml): Dieser Dienst stellt die Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen bereit und fungiert als Gateway zur Cloud und andere wichtige Solution Accelerator-Dienste. Der Dienst ermöglicht das Empfangen von Nachrichten von Ihren verwendeten Geräten und das Senden von Befehlen an diese Geräte. Außerdem können Sie mit dem Dienst Ihre [Geräte verwalten](../iot-hub/iot-hub-device-management-overview.md). Beispielsweise können Sie für Geräte, die mit dem Hub verbunden sind, die Konfiguration, einen Neustart oder das Zurücksetzen auf die Werkseinstellungen durchführen.
-* [Azure Event Hubs](../active-directory-domain-services/index.md): Dieser Dienst ermöglicht eine Ereigniserfassung in der Cloud in hohem Umfang. Siehe [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
+* [Azure Event Hubs](../active-directory-domain-services/index.yml): Dieser Dienst ermöglicht eine Ereigniserfassung in der Cloud in hohem Umfang. Siehe [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
 * [Azure Time Series Insights](../time-series-insights/index.yml): Die Solution Accelerators verwenden diesen Dienst, um die Telemetriedaten von Ihren Geräten zu analysieren und anzuzeigen.
 * [Azure Container Service](../container-service/index.yml): Dieser Dienst hostet und verwaltet die Microservices in den Solution Accelerators.
 * [Azure Cosmos DB](../cosmos-db/index.yml) und [Azure Storage](../storage/index.yml) für die Datenspeicherung.
-* [Azure Stream Analytics](../stream-analytics/index.yml): Die vorkonfigurierte Lösung für die vorbeugende Wartung nutzt diesen Dienst zum Verarbeiten von eingehenden Telemetriedaten, Durchführen der Aggregation und Erkennen von Ereignissen. Diese vorkonfigurierte Lösung verwendet Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten.
+* [Azure Stream Analytics](../stream-analytics/index.yml): Der Solution Accelerator für Predictive Maintenance nutzt diesen Dienst zur Verarbeitung eingehender Telemetriedaten, zur Aggregation sowie zur Erkennung von Ereignissen. Diese vorkonfigurierte Lösung verwendet Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten.
 * [Azure-Web-Apps](../app-service/index.yml) zum Hosten des benutzerdefinierten Anwendungscodes in den vorkonfigurierten Lösungen.
 
 Eine Übersicht über die Architektur einer typischen IoT-Lösung finden Sie unter [Microsoft Azure und das Internet der Dinge (IoT)](iot-accelerators-what-is-azure-iot.md).
@@ -152,7 +145,7 @@ Die Benutzeroberfläche wird basierend auf der [React](https://facebook.github.i
 Nachdem Sie nun eine Übersicht über die IoT Solution Accelerators erhalten haben, finden Sie hier die vorgeschlagenen nächsten Schritte für jeden Solution Accelerator:
 
 * [Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung](iot-accelerators-remote-monitoring-explore.md)
-* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](../iot-suite/iot-suite-predictive-overview.md)
+* [Übersicht über die vorkonfigurierte Lösung für vorhersagbaren Wartungsbedarf](iot-accelerators-predictive-overview.md)
 * [Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung](iot-accelerators-connected-factory-overview.md)
 
-Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf) (Microsoft Azure IoT-Dienste: Referenzarchitektur).
+Weitere Informationen zu den IoT-Lösungsarchitekturen finden Sie unter [Microsoft Azure IoT services: Reference Architecture](https://aka.ms/iotrefarchitecture) (Microsoft Azure IoT-Dienste: Referenzarchitektur).

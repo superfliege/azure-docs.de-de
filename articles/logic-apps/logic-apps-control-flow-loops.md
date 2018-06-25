@@ -1,29 +1,25 @@
 ---
-title: Schleifen – Verarbeiten von Arrays oder Wiederholen von Aktionen – Azure Logic Apps | Microsoft-Dokumentation
-description: Verarbeiten von Arrays mit „ForEach“-Schleifen oder Wiederholen von Aktionen, bis bestimmte Bedingungen erfüllt sind, in Logic Apps
+title: Hinzufügen von Schleifen zum Wiederholen von Aktionen oder Verarbeiten von Arrays – Azure Logic Apps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie in Azure Logic Apps Schleifen erstellen, die Workflowaktionen wiederholen oder Arrays verarbeiten.
 services: logic-apps
-keywords: „ForEach“-Schleifen
-documentationcenter: ''
-author: ecfan
-manager: anneta
-editor: ''
-ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 4029da2c7ad59b1e61dabe0af252834746a4c5c6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 87595eeb0330a2d8210258c097c29b205b628cf4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298184"
 ---
-# <a name="loops-process-arrays-or-repeat-actions-until-a-condition-is-met"></a>Schleifen: Verarbeiten von Arrays oder Wiederholen von Aktionen, bis eine Bedingung erfüllt ist
+# <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
-Zum Durchlaufen von Arrays in der Logik-App können Sie eine [„ForEach“-Schleife](#foreach-loop) oder eine [sequenzielle „ForEach“-Schleife](#sequential-foreach-loop) verwenden. In einer standardmäßigen „ForEach“-Schleife werden Zyklen parallel ausgeführt, in einer sequenziellen „ForEach“-Schleife hingegen jeweils einzeln. Informationen über die maximale Anzahl der Arrayelemente, die „ForEach“-Schleifen in einer einzelnen Logik-App-Ausführung verarbeiten können, finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Arrays in einer Logik-App können mithilfe einer [ForEach-Schleife](#foreach-loop) oder mithilfe einer [sequenziellen ForEach-Schleife](#sequential-foreach-loop) durchlaufen werden. Die Iterationen für eine standardmäßige ForEach-Schleife werden parallel ausgeführt. Bei einer sequenziellen ForEach-Schleife werden die Iterationen dagegen einzeln ausgeführt. Informationen über die maximale Anzahl der Arrayelemente, die „ForEach“-Schleifen in einer einzelnen Logik-App-Ausführung verarbeiten können, finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP] 
 > Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*. 

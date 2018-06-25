@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-Skript: Hinzufügen eines Marketplace-Images zu einem benutzerdefinierten Lab in Azure Lab Services | Microsoft-Dokumentation'
-description: Dieses PowerShell-Skript fügt ein Marketplace-Image zu einem benutzerdefinierten Lab in Azure Lab Services hinzu.
+title: 'PowerShell-Skript: Hinzufügen eines Marketplace-Images zu einem Lab in Azure DevTest Labs | Microsoft-Dokumentation'
+description: Dieses PowerShell-Skript fügt einem Lab in Azure DevTest Labs ein Marketplace-Image hinzu.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 64d168c132edce4ecd128b795fbfa5ab2607cb19
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 9a65237b3eba6c9878d73148f0143f20dd60dd79
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636547"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-custom-lab"></a>Verwenden von PowerShell zum Hinzufügen eines Marketplace-Images zu einem benutzerdefinierten Lab
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen eines Marketplace-Images zu einem Lab in Azure DevTest Labs mithilfe von PowerShell
 
-Dieses PowerShell-Beispielskript fügt ein Marketplace-Image zu einem benutzerdefinierten Lab in Azure Lab Services hinzu.
+Dieses PowerShell-Beispielskript fügt einem Lab in Azure DevTest Labs ein Marketplace-Image hinzu. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Ein benutzerdefiniertes Lab**. Das Skript erfordert ein vorhandenes benutzerdefiniertes Lab. 
+* **Ein Lab.** Das Skript erfordert ein vorhandenes Lab. 
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/add-marketplace-images-to-lab/add-marketplace-images-to-lab.ps1 "Add marketplace images to a lab")]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 

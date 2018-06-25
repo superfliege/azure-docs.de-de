@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 43681ce665bec088472b5c33f64d52d3d9fda5a1
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 424ea1eca637653c5e7cfed9dc4b970d5afd91ad
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164202"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713407"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Anmeldeverfahren von Azure AD Identity Protection
 Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
@@ -30,7 +31,7 @@ Azure Active Directory Identity Protection bietet folgende Möglichkeiten:
 
 Die Reaktion des Systems auf diese Probleme wirkt sich auf die Anmeldung des betroffenen Benutzers aus, da keine direkte Anmeldung mit Benutzername und Kennwort mehr möglich ist. Stattdessen müssen zusätzliche Schritte ausgeführt werden, damit sich der Benutzer wieder sicher anmelden kann.
 
-In diesem Thema können Sie sich einen Überblick über alle Fälle verschaffen, die im Zusammenhang mit der Benutzeranmeldung auftreten können.
+In diesem Artikel können Sie sich einen Überblick über alle Fälle verschaffen, die im Zusammenhang mit der Benutzeranmeldung auftreten können.
 
 **Mehrstufige Authentifizierung**
 

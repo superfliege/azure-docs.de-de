@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1f34255bdbcc8761f1c68adbb2f1828521f789e4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 658686bec41fe1a6cfa8ca4ba6fe61d2e559297c
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194018"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34833718"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -35,31 +35,16 @@ Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die Updateverwaltung wird für die unten angegebenen Betriebssysteme unterstützt.
+Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
 
-### <a name="windows"></a>Windows
-
-- Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 SP1 und höher. Nano Server wird nicht unterstützt.
-
-  Damit die Bereitstellung von Updates für Windows Server 2008 R2 SP1 unterstützt wird, sind .NET Framework 4.5 und Windows Management Framework 5.0 oder höher erforderlich.
-
-- Windows-Clientbetriebssysteme werden nicht unterstützt.
-
-Windows-Agents müssen entweder für die Kommunikation mit einem WSUS-Server (Windows Server Update Services) konfiguriert sein oder über Zugriff auf Microsoft-Update verfügen.
-
-> [!NOTE]
-> System Center Configuration Manager kann den Windows-Agent nicht gleichzeitig verwalten.
->
-
-### <a name="linux"></a>Linux
-
-- CentOS 6 (x86/x64) und 7 (x64)
-
-- Red Hat Enterprise 6 (x86/x64) und 7 (x64)
-
-- SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)
-
-- Ubuntu 12.04 LTS und höher (x86/x64)
+|Betriebssystem  |Notizen  |
+|---------|---------|
+|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen         |
+|Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher erforderlich ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855)).</br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616)) empfohlen.         |
+|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
+|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
+|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
+|Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
 
 > [!NOTE]
 > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Weitere Informationen finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
@@ -152,6 +137,9 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
   - Definitionsupdates
   - Tools
   - Aktualisierungen
+
+- **Auszuschließende Updates**: Öffnet die Seite **Ausschließen**. Geben Sie die auszuschließenden KBs oder Paketnamen an.
+
 - **Zeitplaneinstellungen**: Sie können das Standarddatum und die Standarduhrzeit (30 Minuten nach der aktuellen Zeit) übernehmen. Alternativ können Sie eine andere Zeit angeben.
    Sie können auch angeben, ob die Bereitstellung einmalig erfolgt, oder einen sich wiederholenden Zeitplan einrichten. Wählen Sie zum Einrichten eines sich wiederholenden Zeitplans unter **Wiederholung** die Option **Serie** aus.
 

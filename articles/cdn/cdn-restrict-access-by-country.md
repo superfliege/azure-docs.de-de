@@ -3,8 +3,8 @@ title: Einschränken von Azure CDN-Inhalten nach Ländern | Microsoft-Dokumentat
 description: Hier erfahren Sie, wie Sie den Zugriff auf Ihre Azure CDN-Inhalte mithilfe der Geofilterung einschränken.
 services: cdn
 documentationcenter: ''
-author: lichard
-manager: akucer
+author: dksimpson
+manager: cfowler
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
@@ -12,13 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: rli
-ms.openlocfilehash: bb757ab115d03ab04dac4468d23f446696a971a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: 93321c4c8a7f8d79835d702ca07132eed94f6493
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260751"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Einschränken von Azure-CDN-Inhalten nach Land
 
@@ -26,7 +27,7 @@ ms.lasthandoff: 05/07/2018
 Wenn ein Benutzer Ihren Inhalt anfordert, wird unabhängig davon, wo der Benutzer diese Anforderung vorgenommen hat, der Inhalt angezeigt. In einigen Fällen empfiehlt es sich, den Zugriff auf Ihre Inhalte nach Ländern einzuschränken. In diesem Artikel wird erläutert, wie Sie die *Geofilterung* einsetzen, um den Zugriff je nach Land zu genehmigen oder zu verweigern.
 
 > [!IMPORTANT]
-> Die Azure CDN-Produkte bieten die gleichen Geofilterungsfunktionen, die jeweils unterstützten Ländercodes unterscheiden sich jedoch geringfügig. Ein Link zu den Unterschieden finden Sie unter Schritt 3.
+> Die Azure CDN-Produkte bieten die gleichen Geofilterungsfunktionen, die jeweils unterstützten Ländercodes unterscheiden sich jedoch geringfügig. Weitere Informationen finden Sie unter [Azure CDN Country Codes](https://msdn.microsoft.com/library/mt761717.aspx) (Azure CDN-Ländercodes).
 
 
 Informationen zu Überlegungen, die Sie beim Konfigurieren dieser Art von Einschränkungen berücksichtigen sollten, finden Sie im Abschnitt [Überlegungen](cdn-restrict-access-by-country.md#considerations).  
@@ -71,8 +72,11 @@ Die Geofilterung verwendet Ländercodes, um die Länder zu definieren, von denen
 * Änderungen an der Länderfilterkonfiguration treten nicht sofort in Kraft:
    * Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
    * Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
-   * Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen.  
+   * Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
+ 
 * Diese Funktion unterstützt keine Platzhalterzeichen (z. B. "*").
+
 * Die dem relativen Pfad zugeordnete Geofilterkonfiguration wird rekursiv auf diesen Pfad angewendet.
-* Pro relativen Pfad kann nur eine Regel angewendet werden (Sie können nicht mehrere Länderfilter erstellen, die auf den gleichen relativen Pfad verweisen). Jedoch können mehrere Länderfilter auf einen Ordner angewendet werden. Das liegt an der rekursiven Natur der Länderfilter. Anders ausgedrückt: Ein Unterordner eines zuvor konfigurierten Ordners kann einem anderen Länderfilter zugewiesen werden.
+
+* Auf einen relativen Pfad kann immer nur jeweils eine Regel angewendet werden. Sie können also nicht mehrere Länderfilter erstellen, die auf den gleichen relativen Pfad verweisen. Aufgrund der rekursiven Natur der Länderfilter kann ein Ordner jedoch über mehrere Länderfilter verfügen. Anders ausgedrückt: Ein Unterordner eines zuvor konfigurierten Ordners kann einem anderen Länderfilter zugewiesen werden.
 

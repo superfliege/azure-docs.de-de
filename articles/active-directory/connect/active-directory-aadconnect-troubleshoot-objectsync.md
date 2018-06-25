@@ -12,19 +12,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9945ad30cc7d8882d8b99f6b4278f2063ab4b7f7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f65e84bff63bbdb781991ff6648b0fb98ca5208f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193762"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34592312"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung
-Dieses Dokument enthält Schritte zum Beheben von Problemen bei der Objektsynchronisierung mithilfe der Aufgaben zur Problembehandlung.
+Dieser Artikel enthält Schritte zum Behandeln von Problemen bei der Objektsynchronisierung mithilfe der Problembehandlungsaufgabe. Die Funktionsweise der Problembehandlung in Azure Active Directory (Azure AD) wird in [diesem kurzen Video](https://aka.ms/AADCTSVideo) veranschaulicht.
 
 ## <a name="troubleshooting-task"></a>Aufgaben zur Problembehandlung
-Verwenden Sie für die Bereitstellung von Azure Active Directory (AAD) Connect mit Version 1.1.749.0 oder höher den Problembehandlungstask im Assistenten, um Probleme bei der Objektsynchronisierung zu beheben. Für frühere Versionen führen Sie die Problembehandlung manuell wie [hier](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) beschrieben aus.
+Verwenden Sie für die Azure AD Connect-Bereitstellung ab Version 1.1.749.0 die Problembehandlungsaufgabe im Assistenten, um Probleme bei der Objektsynchronisierung zu behandeln. Für frühere Versionen führen Sie die Problembehandlung manuell wie [hier](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) beschrieben aus.
 
 ### <a name="run-the-troubleshooting-task-in-the-wizard"></a>Ausführen der Problembehandlungsaufgabe im Assistenten
 Um die Aufgabe zur Problembehandlung im Assistenten auszuführen, führen Sie die folgenden Schritte aus:

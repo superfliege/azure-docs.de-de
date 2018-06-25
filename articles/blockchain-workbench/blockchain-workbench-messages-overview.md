@@ -1,5 +1,5 @@
 ---
-title: Übersicht über Nachrichten in Azure Blockchain Workbench
+title: Übersicht über die Integration von Nachrichten in Azure Blockchain Workbench
 description: Übersicht über die Verwendung von Nachrichten in Azure Blockchain Workbench
 services: azure-blockchain
 keywords: ''
@@ -10,23 +10,22 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4a2e85cc619d17745be9d8f72af5f99049ce7c6b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: f45396c3af285026e16ce641bd37bf0eadcee56d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302091"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607599"
 ---
-# <a name="azure-blockchain-workbench-messages-overview"></a>Übersicht über Nachrichten in Azure Blockchain Workbench
+# <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
 Neben der Bereitstellung einer REST-API bietet Azure Blockchain Workbench auch eine nachrichtenbasierte Integration. Workbench veröffentlicht ledgerorientierte Ereignisse über Azure Event Grid, sodass Downstreamconsumer Daten erfassen oder basierend auf diesen Ereignissen Aktionen ausführen können. Für Clients, die eine zuverlässige Nachrichtenübermittlung erfordern, liefert Azure Blockchain Workbench zudem Nachrichten an einen Azure Service Bus-Endpunkt.
 
 Entwickler haben auch Interesse an der Möglichkeit geäußert, dass externe Systeme Transaktionen initiieren, um Benutzer und Verträge zu erstellen sowie Verträge in einem Ledger zu aktualisieren. Obwohl diese Funktionalität derzeit nicht in der öffentlichen Vorschau enthalten ist, finden Sie ein Beispiel zu dieser Funktion unter [http://aka.ms/blockchain-workbench-integration-sample](http://aka.ms/blockchain-workbench-integration-sample).
 
-
 ## <a name="event-notifications"></a>Ereignisbenachrichtigungen
 
-Durch Ereignisbenachrichtigungen können Benutzer und Downstreamsysteme über Ereignisse informieren werden, die in Workbench und dem damit verbundenen Blockchainnetzwerk auftreten. Ereignisbenachrichtigungen können direkt im Code genutzt oder mit Tools wie Logic Apps und Flow verwendet werden, um den Datenfluss zu Downstreamsystemen auszulösen.
+Durch Ereignisbenachrichtigungen können Benutzer und Downstreamsysteme über Ereignisse informiert werden, die in Blockchain Workbench und dem damit verbundenen Blockchainnetzwerk auftreten. Ereignisbenachrichtigungen können direkt im Code genutzt oder mit Tools wie Logic Apps und Flow verwendet werden, um den Datenfluss zu Downstreamsystemen auszulösen.
 
 Weitere Informationen zu den verschiedenen Nachrichten, die empfangen werden können, finden Sie unter [Referenz zur Benachrichtigungsnachricht](#notification-message-reference).
 
@@ -61,14 +60,14 @@ Mithilfe von Service Bus-Themen können Benutzer über Ereignisse in Blockchain 
 ### <a name="consuming-service-bus-messages-with-logic-apps"></a>Nutzen von Service Bus-Nachrichten mit Logic Apps
 
 1. Erstellen Sie im Azure-Portal eine neue **Azure Logic-App**.
-2.  Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Geben Sie in das Suchfeld **Service Bus** ein, und wählen Sie den passenden Trigger für den Typ der Interaktion mit dem Service Bus. Zum Beispiel, **Service Bus – Wenn eine Nachricht in einem Themenabonnement empfangen wird (automatisch abschließen)**.
+2. Beim Öffnen der Azure Logic-App im Portal werden Sie aufgefordert, einen Trigger auszuwählen. Geben Sie in das Suchfeld **Service Bus** ein, und wählen Sie den passenden Trigger für den Typ der Interaktion mit dem Service Bus. Zum Beispiel, **Service Bus – Wenn eine Nachricht in einem Themenabonnement empfangen wird (automatisch abschließen)**.
 3. Wenn der Workflow-Designer angezeigt wird, geben Sie die Verbindungsinformationen für den Service Bus an.
 4. Wählen Sie Ihr Abonnement aus, und legen Sie das Thema **workbench-external** fest.
 5. Entwickeln Sie die Logik für Ihre Anwendung, die die Nachricht von diesem Trigger verwendet.
 
 ## <a name="notification-message-reference"></a>Referenz zur Benachrichtigungsnachricht
 
-Abhängig vom „OperationName“ weisen die Benachrichtigungen einen der folgenden Nachrichtentypen auf.
+Abhängig von **OperationName** weisen die Benachrichtigungen einen der folgenden Nachrichtentypen auf:
 
 ### <a name="accountcreated"></a>AccountCreated
 
@@ -76,8 +75,8 @@ Zeigt an, dass ein neues Konto zur angegebenen Blockchain hinzugefügt werden so
 
 | NAME    | BESCHREIBUNG  |
 |----------|--------------|
-| UserId  | ID des erstellten Benutzers |
-| ChainIdentifier | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum wäre dies die „On-Chain“-Adresse des Benutzers. |
+| UserId  | ID des erstellten Benutzers. |
+| ChainIdentifier | Adresse des Benutzers, der im Blockchainnetzwerk erstellt wurde. In Ethereum wäre dies die **on-chain**-Adresse des Benutzers. |
 
 ``` csharp
 public class NewAccountRequest : MessageModelBase
@@ -94,15 +93,15 @@ Gibt an, dass eine Anforderung zum Einfügen oder Aktualisieren eines Vertrags i
 | NAME | BESCHREIBUNG |
 |-----|--------------|
 | ChainID | Ein eindeutiger Bezeichner für die mit der Anforderung verknüpften Kette|
-  BlockId | Der eindeutige Bezeichner für einen Block im Ledger|
-  ContractId | Ein eindeutiger Bezeichner für den Vertrag|
-  ContractAddress |       Die Adresse des Vertrags im Ledger|
-  TransactionHash  |     Der Hash des Übergangs zum Ledger|
-  OriginatingAddress |   Die Adresse des Erstellers des Übergangs|
-  ActionName       |     Der Name der Aktion|
-  IsUpdate        |      Identifiziert, ob es sich um ein Update handelt.|
-  Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren.|
-  TopLevelInputParams |  In Szenarien, in denen ein Vertrag mit mindestens einem anderen Vertrag verbunden ist, sind dies die Parameter aus dem übergeordneten Vertrag. |
+| BlockId | Der eindeutige Bezeichner für einen Block im Ledger|
+| ContractId | Ein eindeutiger Bezeichner für den Vertrag|
+| ContractAddress |       Die Adresse des Vertrags im Ledger|
+| TransactionHash  |     Der Hash des Übergangs zum Ledger|
+| OriginatingAddress |   Die Adresse des Erstellers des Übergangs|
+| ActionName       |     Der Name der Aktion|
+| IsUpdate        |      Identifiziert, ob es sich um ein Update handelt.|
+| Parameter       |     Eine Liste von Objekten, die den Namen, den Wert und den Datentyp der an eine Aktion gesendeten Parameter identifizieren.|
+| TopLevelInputParams |  In Szenarien, in denen ein Vertrag mit mindestens einem anderen Vertrag verbunden ist, sind dies die Parameter aus dem übergeordneten Vertrag. |
 
 ``` csharp
 public class ContractInsertOrUpdateRequest : MessageModelBase
@@ -242,6 +241,65 @@ public class AssignContractChainIdentifierRequest : MessageModelBase
 {
     public int ContractId { get; set; }
     public string ChainIdentifier { get; set; }
+}
+```
+
+## <a name="classes-used-by-message-types"></a>Von Nachrichtentypen verwendete Klassen
+
+### <a name="messagemodelbase"></a>MessageModelBase
+
+Das Basismodell für alle Nachrichten.
+
+| NAME          | BESCHREIBUNG                          |
+|---------------|--------------------------------------|
+| NameVorgang | Der Name des Vorgangs.           |
+| RequestId     | Ein eindeutiger Bezeichner für die Anforderung. |
+
+``` csharp
+public class MessageModelBase
+{
+    public string OperationName { get; set; }
+    public string RequestId { get; set; }
+}
+```
+
+### <a name="contractinputparameter"></a>ContractInputParameter
+
+Enthält Name, Wert und Typ eines Parameters.
+
+| NAME  | BESCHREIBUNG                 |
+|-------|-----------------------------|
+| NAME  | Der Name des Parameters.  |
+| Wert | Der Wert des Parameters. |
+| Typ  | Der Typ des Parameters.  |
+
+``` csharp
+public class ContractInputParameter
+{
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string Type { get; set; }
+}
+```
+
+#### <a name="contractproperty"></a>ContractProperty
+
+Enthält ID, Name, Wert und Typ einer Eigenschaft.
+
+| NAME  | BESCHREIBUNG                |
+|-------|----------------------------|
+| id    | Die ID der Eigenschaft.    |
+| NAME  | Der Name der Eigenschaft.  |
+| Wert | Der Wert der Eigenschaft. |
+| Typ  | Der Typ der Eigenschaft.  |
+
+``` csharp
+public class ContractProperty
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Value { get; set; }
+    public string DataType { get; set; }
 }
 ```
 

@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 05/30/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 290c41e62080edcd9a2fad1b5045bac4328cc4cd
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9107464acefe75141950c0d07298c8ad946e0ddc
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260361"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
 In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die hier erörtert wurden:
@@ -32,7 +34,7 @@ In dieser Aufgabe definieren Sie die Strategie zur Hybrididentitätsübernahme f
 Die erste Aufgabe ist, die Geschäftsanforderungen der Organisation zu ermitteln.  Dies kann sehr umfangreich sein, und Sie müssen darauf achten, sich auf das Wesentliche zu konzentrieren.  Halten Sie den Entwurf zu Anfang einfach, planen Sie jedoch stets mit ein, dass er in Zukunft einfach geändert werden kann.  Azure Active Directory ist sowohl für einfache als auch äußerst komplexe Entwürfe die Microsoft Identity Platform, die Office 365, Microsoft Online Services und cloudfähige Anwendungen unterstützt.
 
 ## <a name="define-an-integration-strategy"></a>Definieren einer Integrationsstrategie
-Die drei wichtigsten Integrationsszenarien von Microsoft sind Cloudidentitäten, synchronisierte Identitäten und verbundene Identitäten.  Sie sollten eine dieser Integrationsstrategien anwenden.  Die Strategie, die Sie auswählen, kann variieren, und die Auswahlentscheidungen können davon abhängen, welche Art von Benutzeroberfläche Sie bereitstellen möchten, ob ein Teil der vorhandenen Infrastruktur bereits eingerichtet und welche Lösung die kostengünstigste ist.  
+Die drei wichtigsten Integrationsszenarien von Microsoft sind Cloudidentitäten, synchronisierte Identitäten und verbundene Identitäten.  Sie sollten eine dieser Integrationsstrategien anwenden.  Die Entscheidung für die zu verwendende Strategie kann unter anderem davon abhängen, welche Art von Benutzeroberfläche Sie bereitstellen möchten, ob bereits eine Infrastruktur vorhanden ist und welche Lösung die kostengünstigste ist.  
 
 ![](./media/hybrid-id-design-considerations/integration-scenarios.png)
 
@@ -51,7 +53,7 @@ Die folgende Tabelle hilft Ihnen bei der Bestimmung der Vor- und Nachteile der f
 
 | Strategie | Vorteile | Nachteile |
 | --- | --- | --- |
-| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation – keine zusätzliche Hardware erforderlich<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
+| **Cloudidentitäten** |Für kleine Organisationen einfacher zu verwalten. <br> Keine lokale Installation erforderlich. Keine zusätzliche Hardware erforderlich.<br>Problemlos deaktivierbar, wenn der Benutzer das Unternehmen verlässt |Benutzer müssen sich für den Zugriff auf Workloads in der Cloud anmelden <br> Kennwörter können, müssen aber nicht für Cloud- und lokale Identitäten identisch sein |
 | **Synchronisiert** |Lokales Kennwort dient zur Authentifizierung sowohl bei lokalen als auch bei Cloudverzeichnissen <br>Einfacher zu verwalten für kleine, mittlere und große Organisationen <br>Benutzer können für einige Ressourcen einmaliges Anmelden (Single Sign-On, SSO) verwenden. <br> Von Microsoft bevorzugte Synchronisierungsmethode <br> Einfacher zu verwalten |Einige Kunden sind aufgrund spezifischer Unternehmensrichtlinien möglicherweise zurückhaltend bezüglich der Synchronisierung ihrer Verzeichnisse mit der Cloud |
 | **Im Verbund** |Benutzer können einmaliges Anmelden (Single Sign-On, SSO) nutzen  <br>Wenn ein Benutzer aufhört oder das Unternehmen verlässt, kann das Konto sofort deaktiviert und der Zugriff widerrufen werden.<br> Unterstützt erweiterte Szenarien, die mit Synchronisierung nicht möglich sind |Mehr Schritte für Einrichtung und Konfiguration <br> Höherer Wartungsaufwand <br> Erfordert ggf. zusätzliche Hardware für die STS-Infrastruktur <br> Möglicherweise muss zusätzliche Hardware auf dem Verbundserver installiert werden. Bei Verwendung von AD FS ist zusätzliche Software erforderlich <br> Erfordert umfangreiches Einrichtung für SSO <br> Kritischer Point of Failure: Wenn der Verbundserver ausfällt, können sich die Benutzer nicht authentifizieren. |
 
@@ -65,7 +67,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 | Webbrowser |Formularbasierte Authentifizierung |Einmaliges Anmelden, manchmal muss die Organisations-ID angegeben werden |
 | Outlook |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
 | Skype for Business (Lync) |Aufforderung zur Eingabe von Anmeldeinformationen |Einmaliges Anmelden für Lync, Aufforderung zur Eingabe von Anmeldeinformationen für Exchange |
-| Skydrive Pro |Aufforderung zur Eingabe von Anmeldeinformationen |Einmaliges Anmelden |
+| OneDrive for Business |Aufforderung zur Eingabe von Anmeldeinformationen |Einmaliges Anmelden |
 | Office Pro Plus-Abonnement |Aufforderung zur Eingabe von Anmeldeinformationen |Einmaliges Anmelden |
 
 **Externe oder nicht vertrauenswürdige Quellen**:
@@ -73,7 +75,7 @@ Von der Strategie, die Sie verwenden, hängt die Benutzeranmeldung ab.  Die folg
 |  | Synchronisierte Identität | Verbundidentität |
 | --- | --- | --- |
 | Webbrowser |Formularbasierte Authentifizierung |Formularbasierte Authentifizierung |
-| Outlook, Skype for Business (Lync), Skydrive Pro, Office-Abonnement |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
+| Outlook, Skype for Business (Lync), OneDrive for Business, Office-Abonnement |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
 | Exchange ActiveSync |Aufforderung zur Eingabe von Anmeldeinformationen |Einmaliges Anmelden für Lync, Aufforderung zur Eingabe von Anmeldeinformationen für Exchange |
 | Mobile Apps |Aufforderung zur Eingabe von Anmeldeinformationen |Aufforderung zur Eingabe von Anmeldeinformationen |
 
@@ -119,7 +121,7 @@ Bei der Definition einer Strategie für die Synchronisierung muss die verwendete
 
 Szenario mit mehreren Gesamtstrukturen
 
-Wenn dies der Fall ist, sollte die einzelne Azure AD-Topologie mit mehreren Gesamtstrukturen erwogen werden, wenn Folgendes zutrifft:
+In diesem Fall empfiehlt sich ggf. die Verwendung der einzelnen Azure AD-Topologie mit mehreren Gesamtstrukturen, sofern Folgendes zutrifft:
 
 * Benutzer haben nur 1 Identität in allen Gesamtstrukturen – weiter unten im Abschnitt zu sich eindeutig identifizierenden Benutzern wird dies ausführlich beschrieben.
 * Der Benutzer authentifiziert sich bei der Gesamtstruktur, in der seine Identität gespeichert ist.
@@ -149,7 +151,7 @@ Eine lokale Instanz von Active Directory wie in der folgenden Abbildung dargeste
 
 **Szenario einer einzelnen Gesamtstruktur mit Filterung**
 
-Hierfür gelten folgende Voraussetzungen:
+Hierfür müssen folgende Voraussetzungen erfüllt sein:
 
 * Die Azure AD Connect-Synchronisierungsserver müssen für das Filtern konfiguriert werden, sodass sie über jeweils exklusive Gruppen von Objekten verfügen.  Hierzu wird z. B. der Gültigkeitsbereich jedes Servers auf eine bestimmte Domäne oder OE festgelegt.
 * Eine DNS-Domäne kann nur in einem einzelnen Azure AD-Verzeichnis registriert werden, sodass die UPNs der Benutzer im lokalen AD separate Namespaces verwenden müssen.

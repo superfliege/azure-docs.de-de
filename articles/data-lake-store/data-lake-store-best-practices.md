@@ -9,13 +9,14 @@ editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 03/02/2018
+ms.date: 05/25/2018
 ms.author: sachins
-ms.openlocfilehash: ac0a01ed7a067688732aa54eb1b76e0e299e4263
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34625337"
 ---
 # <a name="best-practices-for-using-azure-data-lake-store"></a>Bewährte Methoden für die Verwendung von Azure Data Lake Store
 In diesem Artikel erfahren Sie mehr zu den bewährten Methoden und Aspekten in Bezug auf die Arbeit mit Azure Data Lake Store. Der Artikel enthält Informationen zu den Bereichen Sicherheit, Leistung, Resilienz und Überwachung für Data Lake Store. Vor der Einführung von Data Lake Store war die Arbeit mit wirklich großen Datenmengen (Big Data) in Diensten wie Azure HDInsight sehr komplex. Daten mussten per Sharding auf mehrere Blobspeicherkonten verteilt werden, um die Speicherung im Petabyte-Bereich und eine entsprechende optimale Leistung zu erzielen. Dank Data Lake Store gelten die meisten festen Grenzwerte im Hinblick auf die Größe und Leistung nicht mehr. In diesem Artikel werden aber trotzdem noch einige Aspekte beschrieben, damit Sie für Data Lake Store die bestmögliche Leistung erzielen können. 
@@ -65,9 +66,9 @@ POSIX-Berechtigungen und die Überwachung in Data Lake Store führen zu Mehraufw
 * Schnelles Kopieren/Replizieren
 * Weniger zu verarbeitende Dateien beim Aktualisieren von Data Lake Store-POSIX-Berechtigungen 
 
-Je nachdem, welche Dienste und Workloads die Daten nutzen, ist eine Dateigröße von 256 MB bis 1 GB ein guter Bereich (idealerweise nicht weniger als 100 MB und mehr als 2 GB). Falls die Dateigrößen vor dem Eintreffen in Data Lake Store nicht zu Batches zusammengefasst werden können, können Sie einen separaten Komprimierungsauftrag verwenden, mit dem diese Dateien zu größeren Dateien kombiniert werden. Weitere Informationen und Empfehlungen zu Dateigrößen und zur Organisation der Daten in Data Lake Store finden Sie unter [Strukturieren Ihres Datasets](data-lake-store-performance-tuning-guidance.md#structure-your-data-set). 
+Für Dateien empfiehlt sich eine Größe von mindestens 256 MB (je nachdem, welche Dienste und Workloads die Daten verwenden). Falls die Dateigrößen vor dem Eintreffen in Data Lake Store nicht zu Batches zusammengefasst werden können, können Sie einen separaten Komprimierungsauftrag verwenden, mit dem diese Dateien zu größeren Dateien kombiniert werden. Weitere Informationen und Empfehlungen zu Dateigrößen und zur Organisation der Daten in Data Lake Store finden Sie unter [Strukturieren Ihres Datasets](data-lake-store-performance-tuning-guidance.md#structure-your-data-set).
 
-### <a name="large-file-sizes-and-potential-performance-impact"></a>Große Dateien und potenzielle Auswirkungen auf die Leistung 
+### <a name="large-file-sizes-and-potential-performance-impact"></a>Große Dateien und potenzielle Auswirkungen auf die Leistung
 
 Data Lake Store unterstützt zwar große Dateien bis in den Petabyte-Bereich, aber zur Erzielung der optimalen Leistung und je nach dem Prozess zum Lesen der Daten ist es unter Umständen nicht ideal, wenn die durchschnittliche Größe oberhalb von 2 GB liegt. Wenn Sie beispielsweise **Distcp** zum Kopieren von Daten zwischen Standorten oder unterschiedlichen Speicherkonten verwenden, sind Dateien die feinste Granularitätsebene, die zum Ermitteln von Zuordnungsaufgaben herangezogen wird. Wenn Sie also zehn Dateien kopieren, die jeweils eine Größe von 1 TB haben, werden maximal zehn Zuordnungen durchgeführt. Falls Sie über eine hohe Zahl von Dateien mit zugewiesenen Zuordnungen verfügen, arbeiten die Zuordnungen anfänglich außerdem parallel, um die großen Dateien zu verschieben. Wenn der Auftrag dem Ende entgegen geht, sind nur noch wenige Zuordnungen vorhanden, und es kann passieren, dass nur noch eine Zuordnung zu einer großen Datei besteht. Microsoft hat Verbesserungsvorschläge an Distcp gesendet, damit dieses Problem in zukünftigen Hadoop-Versionen behoben werden kann.  
 

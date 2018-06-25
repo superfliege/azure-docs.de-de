@@ -3,22 +3,24 @@ title: Verbinden von Azure Analysis Services mit Excel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Excel eine Verbindung mit einem Azure Analysis Services-Server herstellen.
 author: minewiskan
 manager: kfile
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3ab749b4610f57e19ad1af0fc74d41340d7555b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6585648cbb461f52a22bc6ea239c0899caa2c2e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192988"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597262"
 ---
 # <a name="connect-with-excel"></a>Herstellen einer Verbindung mit Excel
 
-Nachdem Sie einen Server erstellt und ein tabellarisches Modell dafür bereitgestellt haben, können Clients eine Verbindung herstellen und mit dem Durchsuchen von Daten beginnen.
+Nachdem Sie einen Server erstellt und ein tabellarisches Modell dafür bereitgestellt haben, können Clients eine Verbindung herstellen und mit dem Durchsuchen von Daten beginnen. 
 
+## <a name="before-you-begin"></a>Voraussetzungen
+Das Konto, mit dem Sie sich anmelden, muss zu einer Modelldatenbankrolle gehören, die mindestens über Leseberechtigungen verfügt. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md). 
 
 ## <a name="connect-in-excel"></a>Eine Verbindung in Excel herstellen
 
@@ -31,7 +33,7 @@ Das Herstellen einer Verbindung mit einem Server in Excel wird mithilfe der Funk
 2. Geben Sie im Datenverbindungs-Assistenten in **Servername** den Servernamen samt Protokoll und URI ein. Beispiel: asazure://westcentralus.asazure.windows.net/advworks. Wählen Sie dann unter **Anmeldeinformationen** die Option **Benutzername und Kennwort verwenden** aus, und geben Sie den Benutzernamen der Organisation, z.B. nancy@adventureworks.com, und das Kennwort ein.
 
     > [!IMPORTANT]
-    > Wenn Sie sich mit einem Microsoft-, Live ID-, Yahoo-, Gmail- oder einem anderen entsprechenden Konto anmelden, oder wenn Sie sich mit mehrstufiger Authentifizierung anmelden müssen, lassen Sie das Kennwortfeld leer. Nachdem Sie auf „Weiter“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert.
+    > Wenn Sie sich mit einem Microsoft-, Live ID-, Yahoo-, Gmail- oder einem anderen entsprechenden Konto anmelden, oder wenn Sie sich mit mehrstufiger Authentifizierung anmelden müssen, lassen Sie das Kennwortfeld leer. Nachdem Sie auf „Weiter“ geklickt haben, werden Sie zur Eingabe des Kennworts aufgefordert. 
 
     ![Herstellen einer Verbindung über die Excel-Anmeldung](./media/analysis-services-connect-excel/aas-connect-excel-logon.png)
 

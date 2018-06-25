@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 2c7dd89d9c2e5d50f2533101499a6e50e52047b3
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: a6bd63598781a60c2dd717c07b96fcb498a67d30
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636605"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 Mit Azure Key Vault können Benutzer kryptografische Schlüssel in der Microsoft Azure-Umgebung speichern und verwenden. Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. Darüber hinaus ermöglicht Key Vault Benutzern das sichere Speichern von geheimen Schlüsseln. Geheime Schlüssel sind Oktettobjekte von begrenzter Größe ohne spezifische Semantik. Key Vault unterstützt auch Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen und ein automatisiertes Verlängerungsfeature hinzufügen.
@@ -327,7 +328,7 @@ Die Zertifikatattribute werden in Attributen des adressierbaren Schlüssels und 
 
 Ein Key Vault-Zertifikat weist folgende Attribute auf:  
 
--   *enabled*: Boolesch, optional, Standardwert ist **true**. Mithilfe dieses Attributs kann angegeben werden, ob die Zertifikatdaten als Geheimnis abgerufen werden können oder als Schlüssel funktionsfähig sind. Dies wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und „exp“ auftritt, wird er nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des *nbf*- und *exp*-Fensters werden automatisch nicht zugelassen.  
+-   *enabled*: Boolesch, optional, Standardwert ist **true**. Mithilfe dieses Attributs kann angegeben werden, ob die Zertifikatdaten als Geheimnis abgerufen werden können oder als Schlüssel funktionsfähig sind. Es wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und *exp* stattfindet, wird er nur zugelassen, wenn „enabled“ auf „true“ festgelegt ist. Vorgänge außerhalb des Fensters zwischen *nbf* und *exp* werden automatisch nicht zugelassen.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen werden:
 

@@ -2,19 +2,18 @@
 title: Struktur von Azure Policy-Definitionen
 description: Beschreibt, wie die von Azure Policy verwendete Definition von Ressourcenrichtlinien es Ihnen ermöglicht, Konventionen für Ressourcen in Ihrer Organisation einzurichten, indem Sie beschreiben, wann die Richtlinie erzwungen werden soll und welche Auswirkungen erfolgen sollen.
 services: azure-policy
-keywords: ''
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
-ms.topic: article
+ms.date: 05/24/2018
+ms.topic: conceptual
 ms.service: azure-policy
-ms.custom: ''
-ms.openlocfilehash: a56fa61c6d77ab50dc1342c5a7feeaf1c579697d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+manager: carmonm
+ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057249"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260480"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -65,7 +64,7 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
 }
 ```
 
-Zusätzliche Vorlagenbeispiele für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](json-samples.md).
+Alle Azure Policy-Beispiele finden Sie unter [Azure Policy-Beispiele](json-samples.md).
 
 ## <a name="mode"></a>Mode
 
@@ -193,7 +192,7 @@ Eine Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgen
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert einen Platzhalter (*) angeben.
+Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert einen Platzhalter (*) angeben. Der Wert darf maximal einen Platzhalter (*) enthalten.
 
 Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?` und für ein Zeichen das gewünschte Zeichen ein. Beispiele finden Sie unter [Zulassen mehrerer Namensmuster](scripts/allow-multiple-name-patterns.md).
 
@@ -205,7 +204,7 @@ Folgende Felder werden unterstützt:
 
 - `name`
 - `fullName`
-  - Gibt den vollständigen Namen der Ressource zurück, einschließlich aller übergeordneten Elemente (z.B. „myServer/myDatabase“).
+  - Gibt den vollständigen Namen der Ressource zurück. Der vollständige Name einer Ressource setzt sich zusammen aus dem Namen der Ressource und den vorangestellten Namen übergeordneter Ressourcen, sofern vorhanden (Beispiel: meinServer/meineDatenbank).
 - `kind`
 - `type`
 - `location`
@@ -252,6 +251,8 @@ Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
 Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer zugehörigen Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. erforderlich machen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
 Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](scripts/audit-ext-not-exist.md).
+
+Umfassende Informationen zu den einzelnen Auswirkungen, zur Reihenfolge der Auswertung und zu Eigenschaften sowie Beispiele finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](policy-effects.md).
 
 ## <a name="aliases"></a>Aliase
 
@@ -393,4 +394,4 @@ Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Zusätzliche Vorlagenbeispiele für Azure Policy finden Sie unter [Templates for Azure Policy (Vorlagen für Azure Policy)](json-samples.md).
+- Unter [Azure Policy-Beispiele](json-samples.md) finden Sie weitere Beispiele.

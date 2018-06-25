@@ -1,25 +1,22 @@
 ---
-title: "Hinzufügen des DB2-Connectors zu Ihren Logik-Apps | Microsoft Docs"
-description: "Übersicht über den DB2-Connector mit REST-API-Parametern"
-services: 
-documentationcenter: 
+title: Herstellen einer Verbindung mit DB2 – Azure Logic Apps | Microsoft-Dokumentation
+description: Verwalten von Ressourcen mit DB2-REST-APIs und Azure Logic Apps
 author: gplarsen
-manager: erikre
-editor: 
-tags: connectors
-ms.assetid: 1c6b010c-beee-496d-943a-a99e168c99aa
-ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
+manager: jeconnoc
+ms.author: plarsen
 ms.date: 09/26/2016
-ms.author: plarsen; ladocs
-ms.openlocfilehash: 7ad246ede7e891de42235443c1bc6a90b88ad5ac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.topic: article
+ms.service: logic-apps
+services: logic-apps
+ms.reviewer: klam, estfan
+ms.suite: integration
+tags: connectors
+ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35295090"
 ---
 # <a name="get-started-with-the-db2-connector"></a>Erste Schritte mit dem DB2-Connector
 Mit dem Microsoft Connector für DB2 werden Logik-Apps mit Ressourcen verbunden, die in einer IBM DB2-Datenbank gespeichert sind. Dieser Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Bluemix dashDB oder IBM DB2 für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe [Liste mit unterstützten IBM DB2-Plattformen und -Versionen](connectors-create-api-db2.md#supported-db2-platforms-and-versions) (in diesem Thema).
@@ -148,7 +145,7 @@ Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer DB2-Tabelle 
     ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
 10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern** aus. 
+12. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
 13. Wählen Sie auf dem Blatt **Db2getRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -175,7 +172,7 @@ Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer DB2-Tabel
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus.
+10. Wählen Sie **Speichern**aus.
     
     ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
 11. Wählen Sie auf dem Blatt **Db2insertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -203,7 +200,7 @@ Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer DB2-Tabelle 
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
 10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern** aus. 
+11. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
 12. Wählen Sie auf dem Blatt **Db2getRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
@@ -230,7 +227,7 @@ Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer DB2-Tabelle d
     ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
 8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
 9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern** aus. 
+10. Wählen Sie **Speichern**aus. 
     
     ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
 11. Wählen Sie auf dem Blatt **Db2updateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.

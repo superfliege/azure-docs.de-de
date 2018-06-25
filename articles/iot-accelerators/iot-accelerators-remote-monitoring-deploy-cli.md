@@ -1,26 +1,23 @@
 ---
 title: Bereitstellen der Java-Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieses Tutorial zeigt, wie Sie mithilfe der CLI den Solution Accelerator für die Remoteüberwachung bereitstellen.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 01/29/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 3178d51cd2c04f3be8d4a6284a4f1635845def8c
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628122"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
-Dieses Tutorial zeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie unter [Deploy the remote monitoring solution accelerator](iot-accelerators-remote-monitoring-deploy.md) (Bereitstellen des Solution Accelerators für die Remoteüberwachung).
+Dieses Tutorial zeigt, wie Sie den Solution Accelerator für die Remoteüberwachung bereitstellen. Sie stellen die Lösung über die Befehlszeilenschnittstelle bereit. Sie können die Lösung auch über die webbasierte Benutzeroberfläche auf azureiotsuite.com bereitstellen. Informationen zu dieser Möglichkeit finden Sie unter [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -96,7 +93,7 @@ Bei der Erstellung einer Standard-Lösung werden folgende Azure-Dienste kostenpf
 
 ### <a name="example-deploy-net-version"></a>Beispiel: Bereitstellen der .NET-Version
 
-Das folgende Beispiel veranschaulicht die Bereitstellung der .NET-Version des Solution Accelerators vom Typ „Basic“ für die Remoteüberwachung:
+Das folgende Beispiel veranschaulicht die Bereitstellung der grundlegenden .NET-Version des Solution Accelerators für die Remoteüberwachung:
 
 ```cmd/sh
 pcs -t remotemonitoring -s basic -r dotnet
@@ -104,7 +101,7 @@ pcs -t remotemonitoring -s basic -r dotnet
 
 ### <a name="example-deploy-java-version"></a>Beispiel: Bereitstellen der Java-Version
 
-Das folgende Beispiel veranschaulicht die Bereitstellung der Java-Version des Solution Accelerators vom Typ „Standard“ für die Remoteüberwachung:
+Das folgende Beispiel veranschaulicht die Bereitstellung der Java-Standardversion des Solution Accelerators für die Remoteüberwachung:
 
 ```cmd/sh
 pcs -t remotemonitoring -s standard -r java
@@ -138,6 +135,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach dem Bereitstellen der Remoteüberwachungslösung können Sie nun im nächsten Schritt [die Funktionen des Lösungsdashboards untersuchen](./iot-accelerators-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./iot-accelerators-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

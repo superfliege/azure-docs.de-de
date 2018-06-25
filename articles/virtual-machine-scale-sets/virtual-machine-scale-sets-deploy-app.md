@@ -13,13 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 05/29/2018
 ms.author: iainfou
-ms.openlocfilehash: e033439ba9f525307edb857a358d1f760a08aad0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bbbe677b0a0d47147ace41ff5a229282f80bbf1b
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839514"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
@@ -39,6 +40,7 @@ Die benutzerdefinierte Skripterweiterung lädt Skripts auf Azure-VMs herunter un
 
 - [Azure CLI 2.0](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
+- [Azure Resource Manager-Vorlage](tutorial-install-apps-template.md)
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Installieren einer App auf einer Windows-VM mit PowerShell DSC
@@ -112,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Installieren von Anwendungen mit Betriebssystemupdates
 Wenn neue Releases von Betriebssystemen verfügbar sind, können Sie ein neues benutzerdefiniertes Image verwenden oder erstellen und [Betriebssystemupgrades](virtual-machine-scale-sets-upgrade-scale-set.md) für eine Skalierungsgruppe bereitstellen. Jede VM-Instanz wird auf das aktuelle Image aktualisiert, das Sie angegeben haben. Sie können ein benutzerdefiniertes Image mit der vorinstallierten Anwendung, der benutzerdefinierten Skripterweiterung oder PowerShell DSC verwenden, damit die Anwendung automatisch verfügbar ist, wenn Sie das Upgrade durchführen. Unter Umständen müssen Sie die Anwendungswartung planen, wenn Sie diesen Prozess durchführen, um sicherzustellen, dass keine Probleme aufgrund der Kompatibilität von Versionen auftreten.
 
-Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwenden, können Sie die Anwendungsupdates in eine Bereitstellungspipeline integrieren, um die neuen Images zu erstellen und Betriebssystemupgrades für die gesamte Skalierungsgruppe bereitzustellen. Bei diesem Ansatz kann die Pipeline die aktuellen Builds der Anwendung nutzen, ein VM-Image erstellen und überprüfen und anschließend die VM-Instanzen in der Skalierungsgruppe aktualisieren. Zum Ausführen einer Bereitstellungspipeline, mit der Anwendungsupdates über benutzerdefinierte VM-Images hinweg erstellt und bereitgestellt werden, können Sie [Visual Studio Team Services](https://www.visualstudio.com/team-services/), [Spinnaker](https://www.spinnaker.io/) oder [Jenkins](https://jenkins.io/) verwenden.
+Wenn Sie ein benutzerdefiniertes VM-Image mit vorinstallierter Anwendung verwenden, können Sie die Anwendungsupdates in eine Bereitstellungspipeline integrieren, um die neuen Images zu erstellen und Betriebssystemupgrades für die gesamte Skalierungsgruppe bereitzustellen. Bei diesem Ansatz kann die Pipeline die aktuellen Builds der Anwendung nutzen, ein VM-Image erstellen und überprüfen und anschließend die VM-Instanzen in der Skalierungsgruppe aktualisieren. Zum Ausführen einer Bereitstellungspipeline, mit der Anwendungsupdates über benutzerdefinierte VM-Images hinweg erstellt und bereitgestellt werden, können Sie [mit Visual Studio Team Services ein Packer-Image erstellen und bereitstellen](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset) oder eine andere Plattform (beispielsweise [Spinnaker](https://www.spinnaker.io/) oder [Jenkins](https://jenkins.io/)) verwenden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

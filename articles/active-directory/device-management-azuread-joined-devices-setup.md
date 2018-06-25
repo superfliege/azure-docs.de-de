@@ -1,13 +1,14 @@
 ---
-title: "Einrichten von in Azure Active Directory eingebundenen Geräten | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie in Azure Active Directory eingebundene Geräte einrichten."
+title: Einrichten von in Azure Active Directory eingebundenen Geräten | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Geräte einrichten.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ac6c9224925e5bfd3cb056c6c8d9cf2a96b0eb2b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 791181f11af38e4b78743ddb372207bd21893a6b
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260928"
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Einrichten von in Azure Active Directory eingebundenen Geräten
 
@@ -45,12 +47,16 @@ Um ein Windows 10-Gerät einzubinden, muss der Geräteregistrierungsdienst so ko
 
 - Wenn Sie ein verwalteter Benutzer sind, führt Windows Sie über die automatische Anmeldung auf den Desktop.
 
-- Wenn Sie ein Verbundbenutzer sind, müssen Sie sich mit Ihren Anmeldeinformationen anmelden.
+- Verbundbenutzer müssen sich mit ihren Anmeldeinformationen anmelden.
+
+- Bei Verwendung eines Verbunds MUSS Ihr Identitätsanbieter den WS-Fed- und WS-Trust-Endpunkt mit Benutzername/Kennwort unterstützen. Zulässige Versionen sind 1.3 und 2005. Dieses Protokoll muss unterstützt werden, um das Gerät mit Azure AD verknüpfen und sich mit einem Kennwort bei dem Gerät anmelden zu können. 
+
+
 
 
 ## <a name="joining-a-device"></a>Einbinden eines Geräts
 
-Dieser Abschnitt enthält die Schritte zum Einbinden Ihres Windows 10-Geräts in Azure AD. Wenn Sie Ihr Gerät in Azure AD eingebunden haben, wird im Dialogfeld **Auf Arbeits- oder Schulkonto zugreifen** der Eintrag **Verbunden mit \<Ihre Azure AD-Instanz\>** angezeigt.
+Dieser Abschnitt enthält die Schritte zum Einbinden Ihres Windows 10-Geräts in Azure AD. Erfolgreich verknüpfte Geräte werden als **Mit \<Ihre Azure AD-Instanz\> verbunden** angezeigt.
 
 ![Verbunden](./media/device-management-azuread-joined-devices-setup/13.png)
 

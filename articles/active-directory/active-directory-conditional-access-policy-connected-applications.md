@@ -8,19 +8,20 @@ manager: mtillman
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/07/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 07957d5ec843c414813d69b7084915bcd70a5a61
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33930856"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849524"
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Konfigurieren von Richtlinien für den gerätebasierten bedingten Zugriff für Azure Active Directory
 
@@ -51,7 +52,7 @@ Zum Registrieren eines Geräts bei Azure AD gibt drei Optionen:
 
 - **[Bei Azure AD registrierte Geräte](device-management-introduction.md#azure-ad-registered-devices)**: zum Registrieren eines persönlichen Geräts bei Azure AD.
 
-- **[In Azure AD eingebundene Geräte](device-management-introduction.md#azure-ad-joined-devices)** – zum Registrieren eines Organisationsgeräts mit Windows 10 bei Azure AD, das nicht in ein lokales, registriertes Active Directory eingebunden ist. 
+- **[In Azure AD eingebundene Geräte](device-management-introduction.md#azure-ad-joined-devices)**: Diese Option ermöglicht es, ein Windows 10-Organisationsgerät bei Azure AD zu registrieren, das nicht in ein lokales Active Directory eingebunden ist. 
 
 - **[In Azure AD eingebundene Hybridgeräte](device-management-introduction.md#hybrid-azure-ad-joined-devices)**: zum Registrieren eines Organisationsgeräts mit Windows 10 bei Azure AD, das in ein lokales Active Directory eingebunden ist.
 
@@ -67,7 +68,7 @@ In der Richtlinie für bedingten Zugriff können Sie mit der Option **In Azure A
 
 ![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/10.png)
 
-Diese Einstellung gilt nur für Windows 10-Geräte, die in ein lokales Azure AD eingebunden sind. Sie können diese Geräte nur mit der Azure AD-Einbindung für Hybridgeräte bei Azure AD registrieren – ein [automatischer Vorgang](device-management-hybrid-azuread-joined-devices-setup.md) zum Abrufen einer Windows 10-Geräteregistrierung. 
+Diese Einstellung ist nur für Windows 10-Geräte relevant, die in ein lokales AD eingebunden sind. Sie können diese Geräte nur mit der Azure AD-Einbindung für Hybridgeräte bei Azure AD registrieren – ein [automatischer Vorgang](device-management-hybrid-azuread-joined-devices-setup.md) zum Abrufen einer Windows 10-Geräteregistrierung. 
 
 ![Gerätebasierte Bedingungen](./media/active-directory-conditional-access-policy-connected-applications/45.png)
 

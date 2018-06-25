@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-Skript: Erstellen einer benutzerdefinierte Rolle in einem benutzerdefinierten Lab in Azure Lab Services | Microsoft-Dokumentation'
-description: Dieses PowerShell-Skript fügt einen externen Benutzer zu einem benutzerdefinierten Lab in Azure Lab Services hinzu.
+title: 'PowerShell-Skript: Erstellen einer benutzerdefinierten Rolle in einem Lab in Azure DevTest Labs | Microsoft-Dokumentation'
+description: Dieses PowerShell-Skript fügt einem Lab in Azure DevTest Labs einen externen Benutzer hinzu.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: df91c9f842d338e1725fec2734129f2f1f3d3721
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 295f742342fba7d77b556724c8005f3ac4816482
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636714"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-custom-lab-in-azure-lab-services"></a>Erstellen einer benutzerdefinierte Rolle in einem benutzerdefinierten Lab in Azure Lab Services mithilfe von PowerShell
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierte Rolle in einem Lab in Azure DevTest Labs mithilfe von PowerShell
 
-Dieses PowerShell-Beispielskript erstellt eine benutzerdefinierte Rolle für ein benutzerdefiniertes Lab in Azure Lab Services. 
+Dieses PowerShell-Beispielskript erstellt eine benutzerdefinierte Rolle für ein Lab in Azure DevTest Labs. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Ein benutzerdefiniertes Lab**. Das Skript erfordert ein vorhandenes benutzerdefiniertes Lab. 
+* **Ein Lab.** Das Skript erfordert ein vorhandenes Lab. 
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a custom lab")]
+[!code-powershell[main](../../../powershell_scripts/devtest-lab/create-custom-role-in-lab/create-custom-role-in-lab.ps1 "Add external user to a lab")]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 

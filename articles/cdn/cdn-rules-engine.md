@@ -1,24 +1,25 @@
 ---
-title: "Überschreiben des HTTP-Verhaltens mithilfe der Azure CDN-Regel-Engine | Microsoft-Dokumentation"
-description: "Mit der Regel-Engine können Sie anpassen, wie HTTP-Anforderungen von Azure CDN behandelt werden, z.B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern."
+title: Überschreiben des HTTP-Verhaltens mithilfe der Azure CDN-Regel-Engine | Microsoft-Dokumentation
+description: Mit der Regel-Engine können Sie anpassen, wie HTTP-Anforderungen von Azure CDN behandelt werden, z.B. Sperren der Übermittlung bestimmter Inhaltstypen, Definieren einer Zwischenspeicherungsrichtlinie oder Ändern von HTTP-Headern.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: akucer
-editor: 
+manager: cfowler
+editor: ''
 ms.assetid: 625a912b-91f2-485d-8991-128cc194ee71
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
-ms.author: mazha
-ms.openlocfilehash: fe3df703f7eb244a52756c4d015e9ea598224ce1
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 06/11/2018
+ms.author: v-deasim
+ms.openlocfilehash: df8114aaf5b4672ea51482978abde6f0ce724528
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261048"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Azure CDN-Regel-Engine
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -46,9 +47,10 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
 ## <a name="tutorial"></a>Tutorial
 1. Klicken Sie auf der Seite **CDN-Profil** auf **Verwalten**.
    
-    ![Verwaltungsschaltfläche für CDN-Profile](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-rules-engine/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
+
 2. Wählen Sie die Registerkarte **HTTP Large** und dann **Regel-Engine** aus.
    
     Die Optionen für eine neue Regel werden angezeigt.
@@ -58,7 +60,9 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
    > [!IMPORTANT]
    > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
    > 
+
 3. Geben Sie einen Namen in das Textfeld **Name/Beschreibung** ein.
+
 4. Ermitteln Sie die Anforderungstypen, auf die die Regel angewendet wird. Verwenden Sie die Standardübereinstimmungsbedingung **Immer**. 
    
    ![Übereinstimmungsbedingung für CDN-Regeln](./media/cdn-rules-engine/cdn-request-type.png)
@@ -71,7 +75,8 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
    > Eine ausführliche Liste von Übereinstimmungsbedingungen finden Sie unter [Übereinstimmungsbedingungen der Regel-Engine](cdn-rules-engine-reference-match-conditions.md).
    > 
    > 
-1. Um ein neues Feature hinzuzufügen, klicken Sie auf die Schaltfläche **+** neben **Features**.  Wählen Sie in der Dropdownliste auf der linken Seite **Force Internal Max-Age**aus.  Geben Sie **300**in das angezeigte Textfeld ein. Ändern Sie nicht die übrigen Standardwerte.
+
+5. Um ein neues Feature hinzuzufügen, klicken Sie auf die Schaltfläche **+** neben **Features**.  Wählen Sie in der Dropdownliste auf der linken Seite **Force Internal Max-Age**aus.  Geben Sie **300**in das angezeigte Textfeld ein. Ändern Sie nicht die übrigen Standardwerte.
    
    ![Features der CDN-Regel-Engine](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -83,10 +88,11 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
    > Eine detaillierte Liste der Features finden Sie unter [Features der Azure CDN-Regel-Engine](cdn-rules-engine-reference-features.md).
    > 
    > 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen** , um die neue Regel zu speichern.  Die neue Regel wartet jetzt auf ihre Genehmigung. Nachdem sie genehmigt wurde, wird der Status von **Pending XML** in **Active XML** geändert.
+
+6. Klicken Sie auf **Hinzufügen**, um die neue Regel zu speichern.  Die neue Regel wartet jetzt auf ihre Genehmigung. Nachdem sie genehmigt wurde, wird der Status von **Pending XML** in **Active XML** geändert.
    
    > [!IMPORTANT]
-   > Es kann bis zu 90 Minuten dauern, Regeländerungen über das CDN weiterzugeben.
+   > Es kann bis zu zehn Minuten dauern, bis Regeländerungen über das Azure CDN verteilt wurden.
    > 
    > 
 

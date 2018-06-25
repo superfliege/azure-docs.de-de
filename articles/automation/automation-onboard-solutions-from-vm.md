@@ -4,21 +4,21 @@ description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2fbfd733a57d0e2f91d119b614917abf172b8379
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 675aebf35a6bee6e4cc4fd884204edb5bae4b848
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193093"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830560"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
-Azure Automation stellt Lösungen zum Verwalten der Sicherheitsupdates für das Betriebssystem, zum Nachverfolgen von Änderungen und für den Bestand bereit, der auf Ihren Computern installiert ist. Es gibt mehrere Möglichkeiten, Computer zu integrieren; Sie können die Lösung von einem virtuellen Computer, [über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md) oder per [Runbook](automation-onboard-solutions.md) integrieren. Dieser Artikel behandelt das Integrieren dieser Lösungen von einem virtuellen Azure-Computer.
+Azure Automation stellt Lösungen zum Verwalten der Sicherheitsupdates für das Betriebssystem, zum Nachverfolgen von Änderungen und für den Bestand bereit, der auf Ihren Computern installiert ist. Computer können auf unterschiedliche Weise integriert werden. Sie können die Lösung über einen virtuellen Computer, [über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md) oder per [Runbook](automation-onboard-solutions.md) integrieren. Dieser Artikel behandelt das Integrieren dieser Lösungen von einem virtuellen Azure-Computer.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -28,13 +28,13 @@ Anmelden bei Azure unter https://portal.azure.com
 
 Navigieren Sie zu einem vorhandenen virtuellen Computer, und wählen Sie unter **VORGÄNGE** entweder **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus.
 
+Wenn Sie die Lösung für den virtuellen Computer aktiveren möchten, achten Sie nur darauf, dass das Optionsfeld **Enable for this VM** (Für diesen virtuellen Computer aktivieren) ausgewählt ist. Wenn Sie mehrere Computer in die Lösung integrieren möchten, wählen Sie **Enable for VMs in this subscription** (Für virtuelle Computer in diesem Abonnement aktivieren) aus, und klicken Sie auf **Click to select machines to enable** (Hier klicken, um die zu aktivierenden Computer auszuwählen). Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
+
 Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
 
 ![Integrieren der Updatelösung](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
 Navigieren Sie zu den anderen Lösungen, und klicken Sie auf **Aktivieren**. Die Dropdownfelder für Log Analytics und Automation-Konto sind dabei deaktiviert, da auch die anderen Lösungen den Arbeitsbereich und das Automation-Konto verwenden, die Sie bei der zuvor aktivierten Lösung angegeben haben.
-
-![Integrieren der Updatelösung](media/automation-onboard-solutions-from-vm/onboard-solutions2.png)
 
 > [!NOTE]
 > **Änderungsnachverfolgung** und **Bestand** verwenden dieselbe Lösung. Ist die eine Option aktiviert, ist die andere ebenfalls aktiviert.

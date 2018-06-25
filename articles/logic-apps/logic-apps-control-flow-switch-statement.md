@@ -1,29 +1,25 @@
 ---
-title: "switch-Anweisungen – Ausführen von Schritten basierend auf bestimmten Werten – Azure Logic Apps | Microsoft-Dokumentation"
-description: "Ausführen verschiedener Schritte basierend auf den Werten von Objekten, Ausdrücken oder Token in Logik-Apps"
+title: Hinzufügen von switch-Anweisungen zu Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie switch-Anweisungen erstellen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps steuern.
 services: logic-apps
-keywords: switch-Anweisung
-author: ecfan
-manager: anneta
-editor: 
-documentationcenter: 
-ms.assetid: 
 ms.service: logic-apps
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.date: 03/05/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: e1f515189be8a5659af0f6c29b3fac0550abc9f9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.topic: article
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35299615"
 ---
-# <a name="switch-statements-run-different-steps-based-on-specific-values-in-logic-apps"></a>switch-Anweisungen: Ausführen verschiedener Schritte basierend auf bestimmten Werten in Logik-Apps
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
 
-Zum Ausführen verschiedener Schritte basierend auf den Werten eines Objekts, Ausdrucks oder Tokens verwenden Sie eine *switch*-Anweisung. Diese Struktur wertet das Objekt, den Ausdruck oder das Token aus, wählt den Fall, der dem Ergebnis entspricht, und führt Schritte nur für diesen Fall aus. Beim Ausführen der switch-Anweisung sollte nur ein Fall mit dem Ergebnis übereinstimmen.
+Fügen Sie eine Anweisung vom Typ *switch* hinzu, wenn Sie bestimmte Aktionen auf der Grundlage der Werte von Objekten, Ausdrücken oder Token ausführen möchten. Diese Struktur wertet das Objekt, den Ausdruck oder das Token aus, wählt den entsprechenden Fall für das Ergebnis und bestimmte Aktionen für genau diesen Fall aus. Beim Ausführen der Switch-Anweisung sollte nur ein Fall mit dem Ergebnis übereinstimmen.
 
 Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend auf einer Option ausführt, die in einer E-Mail ausgewählt ist. In diesem Beispiel überprüft die Logik-App den RSS-Feed einer Website auf neuen Inhalt. Wenn ein neues Element im RSS-Feed angezeigt wird, sendet die Logik-App eine E-Mail an eine genehmigende Person. Je nachdem, ob die genehmigende Person „Genehmigen“ oder „Ablehnen“ auswählt, führt die Logik-App unterschiedliche Schritte aus.
 
@@ -66,7 +62,7 @@ Angenommen, Sie möchten, dass eine Logik-App verschiedene Schritte basierend au
    
 6. Fügen Sie den entsprechenden Fällen diese Aktionen hinzu:
 
-   | Fallnr. | **SelectedOption** | anzuzeigen. |
+   | Fallnr. | **SelectedOption** | Aktion |
    |:------ |:-------------------|:------ |
    | Fall 1 | **Genehmigen** | Fügen Sie die Outlook-Aktion **E-Mail senden** für das Senden von Details zum RSS-Element nur hinzu, wenn die genehmigende Person **Genehmigen** ausgewählt hat. |
    | Fall 2 | **Ablehnen** | Fügen Sie die Outlook-Aktion **E-Mail senden** hinzu, um andere genehmigende Personen zu darüber zu benachrichtigen, dass das RSS-Element abgelehnt wurde. |

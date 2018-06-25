@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 6f755754097336fc97678940ea1fa0aa28315fab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 42471687e0a56ff0bacf5c9effecb0e2466b4690
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868603"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593590"
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -153,6 +153,8 @@ Sämtliche folgenden vordefinierten Fragen werden in alle Office 365-Sprachen lo
 Benutzerdefinierte Sicherheitsfragen sind nicht für verschiedene Gebietsschemas lokalisiert. Alle benutzerdefinierten Fragen werden auch bei abweichendem Gebietsschema im Browser in der Sprache angezeigt, in der sie in der administrativen Benutzeroberfläche eingegeben wurden. Wenn Sie lokalisierte Fragen benötigen, verwenden Sie die vordefinierten Fragen.
 
 Die Länge von benutzerdefinierten Sicherheitsfragen ist auf 200 Zeichen begrenzt.
+
+Wenn Sie das Portal für die Kennwortzurücksetzung und die Fragen in einer anderen Sprache anzeigen möchten, fügen Sie am Ende der URL für die Kennwortzurücksetzung „?mkt=<Locale>“ hinzu, wie im folgenden Beispiel für Spanisch zu sehen: [https://passwordreset.microsoftonline.com/?mkt=es-us](https://passwordreset.microsoftonline.com/?mkt=es-us).
 
 ### <a name="security-question-requirements"></a>Anforderungen an Sicherheitsfragen
 

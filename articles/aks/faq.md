@@ -6,13 +6,14 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/09/2018
+ms.date: 6/08/2018
 ms.author: nepeters
-ms.openlocfilehash: 3152dc69bc8fb9a94111f85976e5d999c4b18261
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 79236ae7134a27b9a5b89ee8151803befa7b51e1
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260793"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -72,9 +73,13 @@ Um Windows Server-Container auszuführen, müssen Sie Windows Server-basierte Kn
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Warum werden zwei Ressourcengruppen mit AKS erstellt?
 
-Jede AKS-Bereitstellung umfasst zwei Ressourcengruppen. Die erste Ressourcengruppe wird von Ihnen erstellt und enthält nur die AKS-Ressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe mit einem Namen wie z.B. *MC_myResourceGRoup_myAKSCluster_eastus*. Die zweite Ressourcengruppe enthält alle Infrastrukturressourcen für den Cluster, etwa virtuelle Computer, Netzwerke und Speicherressourcen. Sie wird erstellt, um die Ressourcenbereinigung zu vereinfachen.
+Jede AKS-Bereitstellung umfasst zwei Ressourcengruppen. Die erste Ressourcengruppe wird von Ihnen erstellt und enthält nur die AKS-Ressource. Der AKS-Ressourcenanbieter erstellt während der Bereitstellung automatisch die zweite Ressourcengruppe mit einem Namen wie z.B. *MC_myResourceGroup_myAKSCluster_eastus*. Die zweite Ressourcengruppe enthält alle Infrastrukturressourcen für den Cluster, etwa virtuelle Computer, Netzwerke und Speicherressourcen. Sie wird erstellt, um die Ressourcenbereinigung zu vereinfachen.
 
 Wenn Sie Ressourcen erstellen, die mit Ihrem AKS-Cluster verwendet werden sollen (z.B. Speicherkonten oder eine reservierte öffentliche IP-Adresse), sollten Sie diese in der automatisch generierten Ressourcengruppe platzieren.
+
+## <a name="does-aks-offer-a-service-level-agreement"></a>Bietet AKS eine Vereinbarung zum Servicelevel?
+
+In einer Vereinbarung zum Servicelevel (service level agreement, SLA) sichert der Anbieter zu, dem Kunden die Kosten des Diensts zu erstatten, falls das veröffentliche Servicelevel nicht erfüllt wird. AKS ist kostenlos. Da keine Kosten erstattet werden können, gibt es auch keine formale SLA. Wir sind jedoch bestrebt, für den Kubernetes-API-Server eine Verfügbarkeit von mindestens 99,5 Prozent zu bieten.
 
 <!-- LINKS - external -->
 [auto-scaler]: https://github.com/kubernetes/autoscaler

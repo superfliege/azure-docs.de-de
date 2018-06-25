@@ -1,12 +1,13 @@
 ---
-title: "Azure Active Directory Identity Protection – FAQ| Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Azure AD Identity Protection"
+title: Azure Active Directory Identity Protection – FAQ| Microsoft-Dokumentation
+description: Häufig gestellte Fragen zu Azure AD Identity Protection
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,11 +15,12 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 102cf0108aeefa255d40bd932e41f1e7b5536205
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4637420b712f98c3a8bf9d5965704cd043bb9a1c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713438"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection – FAQ
 
@@ -27,7 +29,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 ## <a name="why-do-some-risk-events-have-closed-system-status"></a>Warum weisen einige Risikoereignisse den Status „Geschlossen (System)“ auf?
 
-**A:** Dies sind Ereignisse, die von Azure Active Directory Identity Protection erkannt werden und später geschlossen wurden, da die Ereignisse nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
+**A:** Diese Risikoereignisse wurden von Identity Protection erkannt und später geschlossen, da sie nicht mehr als riskant angesehen wurden. Diese Ereignisse werden hinsichtlich der Risikostufe des Benutzers nicht berücksichtigt. 
 
 ---
 

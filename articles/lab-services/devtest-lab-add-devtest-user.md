@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 0303f16de143247ac30a7dd4773b4da11f29c9d3
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8f9504458b1f332193e8457bcc9cf41e85fd6aca
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736186"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -60,25 +61,27 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 > 
 
 ## <a name="add-an-owner-or-user-at-the-lab-level"></a>Hinzufügen eines Besitzers oder Benutzers auf der Lab-Ebene
-Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Das schließt externe Benutzer mit einem [Microsoft-Konto (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)ein.
+Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Bei einem Benutzer kann es sich um einen externen Benutzer mit gültigem [Microsoft-Konto (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) handeln.
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
-4. Wählen Sie auf dem Blatt des Labs **Konfiguration**aus. 
-5. Wählen Sie auf dem Blatt **Konfiguration** die Option **Benutzer** aus.
-6. Wählen Sie auf dem Blatt **Benutzer** **+Hinzufügen**.
-   
+4. Wählen Sie auf dem Blatt des Labs die Option **Konfiguration und Richtlinien** aus. 
+5. Klicken Sie auf der Seite **Konfiguration und Richtlinien** im Menü auf der linken Seite auf **Zugriffssteuerung (IAM)**. 
+6. Klicken Sie auf der Symbolleiste auf **Hinzufügen**, um einen Benutzer einer Rolle hinzuzufügen.
+
     ![Benutzer hinzufügen](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-7. Wählen Sie auf dem Blatt **Rolle auswählen** die gewünschte Rolle aus. Im Abschnitt [Aktionen, die in jeder Rolle ausgeführt werden können](#actions-that-can-be-performed-in-each-role) finden Sie die verschiedenen Aktionen, die Benutzer in den Rollen „Besitzer“, „DevTest-Benutzer“ und „Beitragender“ ausführen können.
-8. Geben Sie auf dem Blatt **Hinzufügen von Benutzern** die E-Mail-Adresse oder den Namen des Benutzers ein, den Sie der Rolle hinzufügen möchten. Wenn der Benutzer nicht gefunden werden kann, erhalten Sie eine Fehlermeldung, die das Problem erklärt. Wird der Benutzer gefunden, so wird dieser Benutzer aufgeführt und ausgewählt. 
-9. Wählen Sie **Auswählen**.
-10. Wählen Sie **OK**, um das Blatt **Zugriff hinzufügen** zu schließen.
+1. Gehen Sie im Fenster **Berechtigungen hinzufügen** wie folgt vor: 
+    1. Wählen Sie eine Rolle aus (beispielsweise „DevTest Labs-Benutzer“). Im Abschnitt [Aktionen, die in jeder Rolle ausgeführt werden können](#actions-that-can-be-performed-in-each-role) finden Sie die verschiedenen Aktionen, die Benutzer in den Rollen „Besitzer“, „DevTest-Benutzer“ und „Beitragender“ ausführen können.
+    2. Wählen Sie den Benutzer aus, den Sie der Rolle hinzufügen möchten. 
+    3. Wählen Sie **Speichern**aus. 
+
+        ![Hinzufügen des Benutzers zur Rolle](./media/devtest-lab-add-devtest-user/add-user.png) 
 11. Wenn Sie zum Blatt **Benutzer** zurückkehren, wurde der Benutzer hinzugefügt.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Hinzufügen eines externen Benutzers zu einem Lab mit PowerShell
-Sie können nicht nur Benutzer im Azure-Portal hinzufügen, sondern auch externe Benutzer über ein PowerShell-Skript zu Ihrem Lab hinzufügen. Ändern Sie im folgenden Beispiel einfach die Werte der Parameter unter dem Kommentar **Values to change** .
+Sie können nicht nur Benutzer im Azure-Portal hinzufügen, sondern auch externe Benutzer über ein PowerShell-Skript zu Ihrem Lab hinzufügen. Ändern Sie im folgenden Beispiel die Werte der Parameter unter dem Kommentar **Values to change** .
 Sie können die Werte `subscriptionId`, `labResourceGroup` und `labName` aus dem Labblatt im Azure-Portal abrufen.
 
 > [!NOTE]

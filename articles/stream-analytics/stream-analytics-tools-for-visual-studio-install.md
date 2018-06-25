@@ -1,5 +1,5 @@
 ---
-title: Einrichten des Azure Stream Analytics-Tools für Visual Studio
+title: Einrichten der Azure Stream Analytics-Tools für Visual Studio
 description: In diesem Artikel werden die Installationsanforderungen und die Einrichtung der Azure Stream Analytics-Tools für Visual Studio beschrieben.
 services: stream-analytics
 author: su-jie
@@ -8,15 +8,16 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 09/19/2017
-ms.openlocfilehash: 511658fc0e2b480987455007dac5f55cd7850feb
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 05/22/2018
+ms.openlocfilehash: 94ed603990859d12f709e4a6121e3736221cf10a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651177"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Installieren der Azure Stream Analytics-Tools für Visual Studio
-Die Azure Stream Analytics-Tools unterstützen jetzt Visual Studio 2017, 2015 und 2013. In diesem Dokument wird beschrieben, wie Sie die Tools installieren und deinstallieren.
+Die Azure Stream Analytics-Tools unterstützen Visual Studio 2017, 2015 und 2013. In diesem Artikel wird beschrieben, wie Sie die Tools installieren und deinstallieren.
 
 Weitere Informationen zur Nutzung dieser Tools finden Sie unter [Verwenden der Azure Stream Analytics-Tools für Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
@@ -27,11 +28,11 @@ Weitere Informationen zur Nutzung dieser Tools finden Sie unter [Verwenden der A
 
 Aktivieren Sie die Workload **Datenspeicherung und -verarbeitung** wie gezeigt:
 
-![Workload „Datenspeicherung und -verarbeitung“](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-01.png)
+![Ausgewählte Workload „Datenspeicherung und -verarbeitung“](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-01.png)
 
 Aktivieren Sie die Workload **Azure-Entwicklung** wie gezeigt:
 
-![Workload „Azure-Entwicklung“](./media/stream-analytics-tools-for-vs/stream-analytics-tools-for-vs-2017-install-02.png)
+![Ausgewählte Workload „Azure-Entwicklung“](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
 
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
@@ -39,14 +40,12 @@ Aktivieren Sie die Workload **Azure-Entwicklung** wie gezeigt:
 * Installieren Sie das Microsoft Azure SDK für .NET Version 2.7.1 oder höher mit dem [Webplattform-Installer](http://www.microsoft.com/web/downloads/platform.aspx).
 * Installieren Sie die [Azure Stream Analytics-Tools für Visual Studio](http://aka.ms/asatoolsvs).
 
-
-
 ## <a name="update"></a>Aktualisieren
 
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 Die neue Versionserinnerung wird in der Visual Studio-Benachrichtigung angezeigt. 
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 und Visual Studio 2015
 Die installierten Stream Analytics-Tools für Visual Studio prüfen automatisch auf neue Versionen. Befolgen Sie die Anweisungen im Popupfenster, um die neueste Version zu installieren. 
 
 
@@ -55,7 +54,7 @@ Die installierten Stream Analytics-Tools für Visual Studio prüfen automatisch 
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
 Doppelklicken Sie auf den Visual Studio-Installer, und wählen Sie **Ändern** aus. Deaktivieren Sie das Kontrollkästchen **Azure Data Lake- und Stream Analytics-Tools** in der Workload **Datenspeicherung und -verarbeitung** oder **Azure-Entwicklung**.
 
-### <a name="visual-studio-2013-2015"></a>Visual Studio 2013, 2015
+### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 und Visual Studio 2015
 Wechseln Sie zur Systemsteuerung, und deinstallieren Sie **Microsoft Azure Data Lake- und Stream Analytics-Tools für Visual Studio**.
 
 

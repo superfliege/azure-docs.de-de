@@ -12,17 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 01/04/2018
+ms.date: 05/31/2018
 ms.author: maghan
-ms.openlocfilehash: 1bc641e210a5bd965c5cdbf41efe853e9b297132
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d68a950438a332cdf8ddd8d4f13a316c87aa0a5
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715920"
 ---
-# <a name="about-power-bi-embedded"></a>Informationen zu Power BI Embedded
+# <a name="what-is-power-bi-embedded"></a>Was ist Power BI Embedded?
 
-Power BI Embedded soll ISVs und Entwicklern das Nutzen von Power BI-Funktionen erleichtern. Power BI Embedded vereinfacht Power BI-Funktionen, indem es Ihnen hilft, beeindruckende Visuals, Berichte und Dashboards schnell in Ihre Apps einzubinden. Nutzen Sie ähnlich wie Apps, die auf Microsoft Azure basieren, Dienste wie Machine Learning und IoT. ISVs können in ihren Apps Datenuntersuchungen mit benutzerfreundlicher Navigation ermöglichen, sodass ihre Kunden schnell und sicher fundierte Entscheidungen kontextbezogen treffen können.
+Power BI Embedded soll ISVs und Entwicklern das Nutzen von Power BI-Funktionen erleichtern. Power BI Embedded vereinfacht die Verwendung von Power BI-Funktionen und unterstützt Sie bei der schnellen Einbindung beeindruckender Visualisierungen, Berichte und Dashboards in Ihre Apps. Nutzen Sie ähnlich wie Apps, die auf Microsoft Azure basieren, Dienste wie Machine Learning und IoT. ISVs können in ihren Apps Datenuntersuchungen mit benutzerfreundlicher Navigation ermöglichen, sodass ihre Kunden schnell und sicher fundierte Entscheidungen kontextbezogen treffen können.
 
 > [!VIDEO https://www.youtube.com/embed/iEHfUuoZseo]
 
@@ -30,7 +31,7 @@ Im Mai 2017 haben wir die Verschmelzung der Dienste Power BI und Power BI Embedd
 
 Mit Power BI Embedded haben ISVs und Entwickler mehr Flexibilität bei der Einbettung von BI-Intelligenz in ihre Anwendungen mithilfe der Power BI-APIs. ISVs und Entwickler können von einem minimierten Entwicklungsaufwand profitieren, um schneller auf den Markt zu kommen und sich von der Konkurrenz abzuheben, indem sie Microsofts erstklassige Analyse-Engine in ihre App integrieren. Zudem können Entwickler sich auf ihre Lösung konzentrieren, um den Kundenanforderungen gerecht zu werden, anstatt visuelle Analysefunktionen entwickeln zu müssen. Zusätzlich ermöglicht Power BI Embedded die Arbeit in den vertrauten Entwicklungsumgebungen (Visual Studio und Azure), die Sie bereits einsetzen.
 
-Verfügen Sie eine bereits bei Nutzung von Power BI Premium über eine App mit eingebettetem Power BI-Inhalt? Wenn Sie ein ISV oder Entwickler sind, der Apps erstellt, oder ein Unternehmen, das damit arbeitet, müssen Sie nichts tun. Sie und Ihre Kunden können diese Apps ohne Unterbrechung weiter nutzen. Wenn Sie bereits eine auf Power BI-Arbeitsbereichssammlungen basierende App haben und daran interessiert sind, die Vorteile der integrierten API-Oberfläche und der neuen kapazitätsbasierten Azure-SKUs zu nutzen, lesen Sie die Dokumentation mit der Migrationsanleitung.
+Verfügen Sie bereits über eine App mit eingebettetem Power BI-Inhalt und Power BI Premium-Verwendung? Wenn Sie ein ISV oder Entwickler sind, der Apps erstellt, oder ein Unternehmen, das damit arbeitet, müssen Sie nichts tun. Sie und Ihre Kunden können diese Apps ohne Unterbrechung weiter nutzen. Wenn Sie bereits eine auf Power BI-Arbeitsbereichssammlungen basierende App haben und daran interessiert sind, die Vorteile der integrierten API-Oberfläche und der neuen kapazitätsbasierten Azure-SKUs zu nutzen, lesen Sie die Dokumentation mit der Migrationsanleitung.
 
 ## <a name="comparing-power-bi-embedded-with-power-bi-premium"></a>Vergleichen von Power BI Embedded mit Power BI Premium
 

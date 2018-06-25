@@ -3,7 +3,7 @@ title: Integrieren von Apache Spark in Azure Event Hubs | Microsoft-Dokumentatio
 description: Integrieren von Apache Spark für strukturiertes Streaming mit Event Hubs
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: sethmanheim
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -11,29 +11,29 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
-ms.author: shvija
-ms.openlocfilehash: 09790852d28f2f68e854b37256ca1c8edba992e6
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.date: 05/21/2018
+ms.author: sethm
+ms.openlocfilehash: 9f1cf75fdea1dd7f5842c2efdaeca663d611065c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311293"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626920"
 ---
 # <a name="integrating-apache-spark-with-azure-event-hubs"></a>Integrieren von Apache Spark in Azure Event Hubs
 
 Azure Event Hubs lässt sich nahtlos in [Apache Spark](https://spark.apache.org/) integrieren, um die Erstellung von Anwendungen für verteiltes Streaming zu ermöglichen. Diese Integration unterstützt [Spark Core](http://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](http://spark.apache.org/docs/latest/streaming-programming-guide.html) und [Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Der Event Hubs-Connector für Apache Spark ist auf [GitHub](https://github.com/Azure/azure-event-hubs-spark) verfügbar. Diese Bibliothek steht zudem für die Verwendung in Maven-Projekten über das [zentrale Maven-Repository](http://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C) bereit.
 
-In diesem Artikel erfahren Sie, wie Sie eine fortlaufende Anwendung in [Azure Databricks](https://azure.microsoft.com/services/databricks/) erstellen. Wenngleich in diesem Artikel auf [Azure Databricks](https://azure.microsoft.com/services/databricks/) eingegangen wird, so stehen auch Spark-Cluster in [HDInsight](../hdinsight/spark/apache-spark-overview.md) zur Verfügung.
+In diesem Artikel erfahren Sie, wie Sie eine fortlaufende Anwendung in [Azure Databricks](https://azure.microsoft.com/services/databricks/) erstellen. In diesem Artikel wird zwar Azure Databricks verwendet, Spark-Cluster stehen aber auch bei Verwendung von [HDInsight](../hdinsight/spark/apache-spark-overview.md) zur Verfügung.
 
-Im folgenden Beispiel werden zwei Scala-Notebooks verwendet: eins für das Streaming von Ereignissen aus einem Event Hub und eins für das Zurücksenden von Ereignissen.
+Im Beispiel dieses Artikels werden zwei Scala-Notebooks verwendet: eins für das Streaming von Ereignissen aus einem Event Hub und eins für das Zurücksenden von Ereignissen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie noch keins haben, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Eine Event Hubs-Instanz. Wenn Sie noch keine haben, [erstellen Sie eine](event-hubs-create.md).
-* Eine [Azure Databricks](https://azure.microsoft.com/services/databricks/)-Instanz. Wenn Sie noch keine haben, [erstellen Sie eine](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
-* [Erstellen Sie eine Bibliothek mithilfe der Maven-Koordinate](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`
+* Ein Azure-Abonnement. Falls Sie noch kein Konto besitzen, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Eine Event Hubs-Instanz. Falls Sie noch keine besitzen, [erstellen Sie eine](event-hubs-create.md).
+* Eine [Azure Databricks](https://azure.microsoft.com/services/databricks/)-Instanz. Falls Sie noch keine besitzen, [erstellen Sie eine](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
+* [Erstellen Sie eine Bibliothek mithilfe von Maven-Koordinaten](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
 Verwenden Sie den folgenden Code, um Ereignisse aus Ihrem Event Hub zu streamen:
 
@@ -61,7 +61,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-Der folgende Beispielcode sendet Ereignisse mit den Spark-Batch-APIs an Ihren Event Hub. Sie können auch eine Streamingabfrage schreiben, um Ereignisse an den Event Hub zu senden.
+Der folgende Code sendet Ereignisse mit den Spark-Batch-APIs an Ihren Event Hub. Sie können auch eine Streamingabfrage schreiben, um Ereignisse an den Event Hub zu senden:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -81,7 +81,7 @@ val bodyColumn = concat(lit("random nunmber: "), rand()).as("body")
 val df = spark.range(200).select(bodyColumn)
 df.write
   .format("eventhubs")
-  .options(eventHubsConf.toMap)
+  .options(ehConf.toMap)
   .save() 
 ```
 

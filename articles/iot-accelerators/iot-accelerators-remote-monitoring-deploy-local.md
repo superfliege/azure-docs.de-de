@@ -1,30 +1,27 @@
 ---
 title: Lokales Bereitstellen der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird gezeigt, wie der Solution Accelerator für Remoteüberwachung auf Ihrem lokalen Computer für Test und Entwicklung bereitgestellt wird.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 03/07/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: a11df1dc17b4dcbacece85526eeac39502cbbe34
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.topic: conceptual
+ms.openlocfilehash: 3f723d716a652e64527310a499d6b06a6cf6bc6f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627230"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für Remoteüberwachung auf Ihrem lokalen Computer für Test und Entwicklung bereitgestellt wird. Dieser Ansatz stellt die Microservices in einem lokalen Docker-Container bereit und nutzt IoT Hub-, Cosmos DB- und Azure-Speicherdienste in der Cloud. Sie verwenden die CLI für Solution Accelerators (PCS, Preconfigured Solutions), um die Azure-Clouddienste bereitzustellen.
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Dieser Ansatz stellt die Microservices in einem lokalen Docker-Container bereit und nutzt IoT Hub-, Cosmos DB- und Azure-Speicherdienste in der Cloud. Sie verwenden die CLI für Solution Accelerators (PCS, Preconfigured Solutions), um die Azure-Clouddienste bereitzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Bereitstellung der vom Solution Accelerator für Remoteüberwachung benötigten Azure-Dienste benötigen Sie ein aktives Azure-Abonnement.
+Für die Bereitstellung der vom Solution Accelerator für die Remoteüberwachung benötigten Azure-Dienste benötigen Sie ein aktives Azure-Abonnement.
 
 Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](http://azure.microsoft.com/pricing/free-trial/).
 
@@ -52,7 +49,7 @@ Weitere Informationen zur Befehlszeilenschnittstelle finden Sie unter [How to us
 
 ### <a name="download-the-source-code"></a>Herunterladen des Quellcodes
 
- Das Remoteüberwachungs-Quellcoderepository umfasst die Docker-Konfigurationsdateien, die Sie benötigen, um die Docker-Images, die die Microservices enthalten, herunterzuladen, zu konfigurieren und auszuführen. Um eine lokale Version des Repositorys zu klonen und zu erstellen, navigieren Sie über Ihre bevorzugte Befehlszeile oder Ihr bevorzugtes Terminal zu einem geeigneten Ordner auf dem lokalen Computer, und führen Sie einen der folgenden Befehle aus:
+ Das Quellcoderepository für die Remoteüberwachung umfasst die Docker-Konfigurationsdateien, die Sie benötigen, um die Docker-Images, die die Microservices enthalten, herunterzuladen, zu konfigurieren und auszuführen. Um eine lokale Version des Repositorys zu klonen und zu erstellen, navigieren Sie über Ihre bevorzugte Befehlszeile oder Ihr bevorzugtes Terminal zu einem geeigneten Ordner auf dem lokalen Computer, und führen Sie einen der folgenden Befehle aus:
 
 Führen Sie zum Installieren der Java-Implementierungen der Microservices Folgendes aus:
 
@@ -125,7 +122,7 @@ Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung
 
 Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Am einfachsten entfernen Sie die Dienste, indem Sie zum [Azure-Portal](https://ms.portal.azure.com) navigieren und die vom `pcs`-Tool erstellte Ressourcengruppe löschen.
 
-Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, und geben Sie Speicherplatz auf dem lokalen Computer frei. Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, das erstellt wurde, als Sie den Quellcode aus GitHub geklont haben.
+Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, und geben Sie Speicherplatz auf dem lokalen Computer frei. Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, die erstellt wurde, als Sie den Quellcode aus GitHub geklont haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -137,6 +134,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach dem Bereitstellen der Remoteüberwachungslösung können Sie nun im nächsten Schritt [die Funktionen des Lösungsdashboards untersuchen](iot-accelerators-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](iot-accelerators-remote-monitoring-deploy.md).
 
 <!-- Next tutorials in the sequence -->

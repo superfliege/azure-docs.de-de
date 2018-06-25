@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 910eb5bdd1b9d4a2a27a27c89812584bb068bec0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3343cebb85124f19fe773822e296312abad53d96
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150622"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34591173"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Datenschutz und Passthrough-Authentifizierung von Azure Active Directory
 
@@ -29,13 +30,13 @@ ms.locfileid: "32150622"
 
 ## <a name="overview"></a>Übersicht
 
-Mit der Azure AD-Passthrough-Authentifizierung werden die folgenden Protokolltypen erstellt, die EU II-Richtlinien umfassen können:
+Durch die Azure AD-Passthrough-Authentifizierung wird der folgende Protokolltyp erstellt, der ggf. personenbezogene Daten enthält:
 
 - Azure AD Connect-Ablaufverfolgungsprotokoll-Dateien
 - Ablaufverfolgungsprotokoll-Dateien für Authentifizierungs-Agent
 - Windows-Ereignisprotokolldateien
 
-Der Datenschutz für die Passthrough-Authentifizierung kann auf zweierlei Weise erreicht werden:
+Verbessern Sie den Datenschutz der Benutzer bei der Passthrough-Authentifizierung wie folgt:
 
 1.  Extrahieren von Daten für eine Person und Entfernen der Daten dieser Person aus Installationen auf Anforderung
 2.  Sicherstellen, dass keine Daten länger als 48 Stunden beibehalten werden

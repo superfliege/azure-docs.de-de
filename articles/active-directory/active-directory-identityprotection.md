@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b8ae865e06e085ebe1bb71b35d812024190e2b21
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713183"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -36,7 +38,7 @@ Azure Active Directory Identity Protection ist ein Feature der Azure AD Premium 
 
 Microsoft sichert cloudbasierte Identitäten bereits seit über zehn Jahren. Mit Azure Active Directory Identity Protection können Sie in Ihrer Umgebung die gleichen Schutzsysteme einsetzen, die von Microsoft zum Sichern von Identitäten verwendet werden.
 
-Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Im Laufe der Jahre sind Angreifer beim Nutzen von Drittanbieter-Sicherheitsverletzungen immer effektiver vorgegangen und haben professionelle Phishingangriffe gestartet. Sobald sich ein Angreifer Zugriff auf ein mit geringen Rechten ausgestattetes Benutzerkonto verschafft hat, ist es für ihn relativ einfach, per Seitwärtsbewegung Zugriff auf wichtige Unternehmensressourcen zu erlangen.
+Die allermeisten Sicherheitsverletzungen kommen vor, wenn Angreifer Zugriff auf eine Umgebung erhalten, indem sie die Identität eines Benutzers stehlen. Angreifer sind im Laufe der Zeit immer besser darin geworden, Drittanbieter-Sicherheitsverletzungen auszunutzen und ausgefeilte Phishingangriffe zu starten. Sobald sich ein Angreifer Zugriff auf ein mit geringen Rechten ausgestattetes Benutzerkonto verschafft hat, ist es für ihn relativ einfach, per Seitwärtsbewegung Zugriff auf wichtige Unternehmensressourcen zu erlangen.
 
 Daher müssen Sie:
 
@@ -206,7 +208,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Richtlinie zum Anmelderisiko**.
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1014.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1014.png "Richtlinie zum Benutzerrisiko")
 
 
 
@@ -306,25 +308,25 @@ Das zugehörige Dialogfeld bietet zwei verschiedene Methoden zum Zurücksetzen e
 ### <a name="user-risk-security-policy"></a>Benutzerrisiko-Sicherheitsrichtlinie
 Eine Benutzerrisiko-Sicherheitsrichtlinie ist eine Richtlinie für bedingten Zugriff, mit der die Risikostufe für einen bestimmten Benutzer ausgewertet wird und Korrektur- und Lösungsmaßnahmen basierend auf vordefinierten Bedingungen und Regeln angewendet werden.
 
-![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1009.png "Benutzerrisiko-Richtlinie")
+![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1009.png "Richtlinie zum Benutzerrisiko")
 
 Azure AD Identity Protection dient Ihnen als Unterstützung beim Verwalten der Korrektur- und Lösungsmaßnahmen für Benutzer, die als risikobehaftet eingestuft sind. Sie haben folgende Möglichkeiten:
 
 * Festlegen der Benutzer und Gruppen, für die die Richtlinie gilt:
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1010.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1010.png "Richtlinie zum Benutzerrisiko")
 * Festlegen des Schwellenwerts für die Benutzerrisikostufe (niedrig, mittel oder hoch), der die Richtlinie auslöst:
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1011.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1011.png "Richtlinie zum Benutzerrisiko")
 * Festlegen der Kontrollen, die durchgeführt werden sollen, wenn die Richtlinie ausgelöst wird:
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1012.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1012.png "Richtlinie zum Benutzerrisiko")
 * Ändern des Zustands Ihrer Richtlinie:
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/403.png "MFA-Registrierung")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/403.png "MFA-Registrierung")
 * Überprüfen und Bewerten der Auswirkungen einer Änderung vor deren Aktivierung:
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1013.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1013.png "Richtlinie zum Benutzerrisiko")
 
 Wenn Sie den Schwellenwert **Hoch** auswählen, wird die Richtlinie weniger häufig ausgelöst, und die Auswirkungen für Benutzer verringern sich.
 Benutzer mit der Einstufung **Niedrig** und **Mittel**, die als risikobehaftet gekennzeichnet sind, werden aber aus der Richtlinie ausgeschlossen. Dies trägt unter Umständen nicht zum Schutz von Identitäten oder Geräten bei, die zuvor vermutlich oder mit Sicherheit kompromittiert waren.
@@ -347,7 +349,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Richtlinie zum Benutzerrisiko**.
 
-    ![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1009.png "Benutzerrisiko-Richtlinie")
+    ![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1009.png "Richtlinie zum Benutzerrisiko")
 
 ### <a name="mitigating-user-risk-events"></a>Lösen von Benutzerrisikoereignissen
 Administratoren können eine Sicherheitsrichtlinie für das Benutzerrisiko festlegen, um Benutzer je nach Risikostufe bei der Anmeldung zu blockieren.
@@ -366,7 +368,7 @@ Die Erzwingung von Azure Multi-Factor Authentication für Benutzeranmeldungen em
 * Sie bietet eine leistungsfähige Authentifizierung mit einer Auswahl von einfachen Überprüfungsoptionen.
 * Sie spielt eine wichtige Rolle bei der Vorbereitung Ihres Unternehmens zum Schutz und der Wiederherstellung von kompromittierten Konten.
 
-![Benutzerrisiko-Richtlinie](./media/active-directory-identityprotection/1019.png "Benutzerrisiko-Richtlinie")
+![Richtlinie zum Benutzerrisiko](./media/active-directory-identityprotection/1019.png "Richtlinie zum Benutzerrisiko")
 
 Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 

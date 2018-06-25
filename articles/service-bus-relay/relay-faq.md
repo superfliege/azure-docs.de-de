@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 05/21/2018
 ms.author: sethm
-ms.openlocfilehash: d433fb916280e98dd0f2af61728596b8566be71b
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34641491"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
-In diesem Artikel werden einige häufig gestellte Fragen zu [Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Allgemeine Informationen zu Azure-Preisen und zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/en-in/support/faq/).
+In diesem Artikel werden einige häufig gestellte Fragen zu [Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Allgemeine Informationen zu Azure-Preisen und zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 ### <a name="what-is-azure-relay"></a>Was ist Azure Relay?
@@ -35,7 +36,7 @@ Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für
 Der früher „Relay“ genannte Service Bus-Dienst heißt jetzt [WCF-Relay](relay-wcf-dotnet-get-started.md). Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
 
 ## <a name="pricing"></a>Preise
-In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
+In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
 
 ### <a name="how-do-you-charge-for-hybrid-connections-and-wcf-relay"></a>Wie werden Hybridverbindungen und WCF-Relay abgerechnet?
 Alle Informationen zu den Preisen für Relay finden Sie in der Tabelle [Hybridverbindungen und WCF-Relays][Pricing overview] auf der Seite mit den Preisdetails zu Service Bus. Neben den auf dieser Seite aufgeführten Preisen werden Ihnen die entsprechenden, aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
@@ -81,8 +82,8 @@ Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln N
 | Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
 | Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5.000 |
 | Relayendpunkte pro Dienstnamespace |Namespace |- |10.000 |
-| Nachrichtengröße für [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx)- und [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
-| Nachrichtengröße für [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx)- und [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx)-Relays |Namespace |Keine Begrenzung der Nachrichtengröße. |Unbegrenzt |
+| Nachrichtengröße für [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)- und [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
+| Nachrichtengröße für [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement)- und [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding)-Relays |Namespace |Keine Begrenzung der Nachrichtengröße. |Unbegrenzt |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Verfügt Relay über Verwendungskontingente?
 Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Wir wissen, dass Ihre Anforderungen diese Limits zuweilen überschreiten können. Wenden Sie sich an unseren Kundendienst, und teilen Sie uns Ihre Anforderungen mit, damit wir diese Werte entsprechend anpassen können. Für Service Bus gelten die folgenden aggregierten Nutzungskontingente:
@@ -108,7 +109,7 @@ Informationen zum Migrieren von Azure Relay-Namespaces aus einem Abonnement in e
 
 Verwenden Sie die folgende Befehlssequenz, wenn Sie einen Namespace mithilfe von PowerShell aus einem Azure-Abonnement in ein anderes verschieben möchten. Um diesen Vorgang auszuführen, muss der Namespace bereits aktiv sein, und der Benutzer, der die PowerShell-Befehle ausführt, muss sowohl im Quell- als auch im Zielabonnement Administratorbenutzer sein.
 
-```powershell
+```azurepowershell-interactive
 # Create a new resource group in the target subscription.
 Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
 New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
@@ -136,4 +137,4 @@ Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindunge
 
 [Pricing overview]: https://azure.microsoft.com/pricing/details/service-bus/
 [Relay exceptions]: relay-exceptions.md
-[Shared access signatures]: ../service-bus-messaging/service-bus-sas.md
+[Shared Access Signatures]: ../service-bus-messaging/service-bus-sas.md

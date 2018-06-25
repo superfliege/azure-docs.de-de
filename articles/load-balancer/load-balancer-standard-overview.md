@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2018
 ms.author: kumud
-ms.openlocfilehash: 9e1f2f3e8fea771fb38b984dad1d8e73d723cb2c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 20897137c617ddf9a33a8f4966bcd7e30ac7c60c
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362310"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261932"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -33,7 +33,7 @@ Standard Load Balancer ist ein neues Load Balancer-Produkt für alle TCP- und UD
 
 Sie können Standard Load Balancer als öffentlichen oder internen Load Balancer verwenden. Ein virtueller Computer kann mit einer öffentlichen und einer internen Load Balancer-Ressource verbunden werden.
 
-Die Funktionen einer Load Balancer-Ressource werden immer als Front-End-, Regel-, Integritätstest- und Back-End-Pool-Definition ausgedrückt.  Eine Ressource kann mehrere Regeln enthalten. Sie können virtuelle Computer im Back-End-Pool platzieren, indem Sie den Back-End-Pool aus der NIC-Ressource des virtuellen Computers angeben.  Liegt eine VM-Skalierungsgruppe vor, wird dieser Parameter über das Netzwerkprofil übergeben und erweitert.
+Die Funktionen einer Load Balancer-Ressource werden immer als Front-End-, Regel-, Integritätstest- und Back-End-Pool-Definition ausgedrückt.  Eine Ressource kann mehrere Regeln enthalten. Sie können virtuelle Computer im Back-End-Pool platzieren, indem Sie den Back-End-Pool aus der NIC-Ressource des virtuellen Computers angeben.  Bei Verwendung einer VM-Skalierungsgruppe wird dieser Parameter über das Netzwerkprofil übergeben und erweitert.
 
 Ein Hauptaspekt ist der Bereich des virtuellen Netzwerks für die Ressource.  Während ein Basic Load Balancer im Bereich einer Verfügbarkeitsgruppe vorhanden ist, ist ein Standard Load Balancer vollständig in den Bereich eines virtuellen Netzwerks integriert, und es gelten alle Konzepte für ein virtuelles Netzwerk.
 
@@ -72,7 +72,7 @@ Lesen Sie [Dienstgrenzwerte für Load Balancer](https://aka.ms/lblimits) sowie [
 
 Ein Standard Load Balancer-Back-End-Pool wird um jede Ressource eines virtuellen Computers in einem virtuellen Netzwerk erweitert.  Er kann bis zu 1000 Back-End-Instanzen enthalten.  Eine Back-End-Instanz ist eine IP-Konfiguration, die eine Eigenschaft einer NIC-Ressource ist.
 
-Der Back-End-Pool kann eigenständige virtuelle Computer, Verfügbarkeitsgruppen oder VM-Skalierungsgruppen enthalten.  Sie können Ressourcen in den Back-End-Pool einbringen, und dieser kann eine beliebige Kombination dieser Ressourcen enthalten(bis zu 150 insgesamt).
+Der Back-End-Pool kann eigenständige virtuelle Computer, Verfügbarkeitsgruppen oder VM-Skalierungsgruppen enthalten.  Ressourcen können im Back-End-Pool auch gemischt werden. Pro Load Balancer-Ressource können Sie bis zu 150 Ressourcen im Back-End-Pool kombinieren.
 
 Wenn Sie überlegen, wie Sie Ihren Back-End-Pool gestalten, können Sie die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich halten, um die Dauer von Verwaltungsvorgängen weiter zu optimieren.  Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 
@@ -90,7 +90,7 @@ Lesen Sie die [ausführliche Erläuterung der Funktionalität im Zusammenhang mi
 
 ### <a name="diagnostics"></a>Diagnose
 
-Standard Load Balancer stellt mehrdimensionale Metriken über Azure Monitor bereit.  Diese Metriken können gefiltert und gruppiert werden und stellen aktuelle und zurückliegende Einblicke in die Leistung und Integrität Ihres Diensts bereit.  Resource Health (Ressourcenintegrität) wird ebenfalls unterstützt.  Es folgt eine kurze Übersicht über unterstützte Diagnosen:
+Standard Load Balancer stellt mehrdimensionale Metriken über Azure Monitor bereit.  Diese Metriken können für eine bestimmte Dimension gefiltert, gruppiert und unterteilt werden.  Sie liefern aktuelle und vergangenheitsbezogene Einblicke in die Leistung und Integrität Ihres Diensts.  Resource Health (Ressourcenintegrität) wird ebenfalls unterstützt.  Es folgt eine kurze Übersicht über unterstützte Diagnosen:
 
 | Metrik | BESCHREIBUNG |
 | --- | --- |
@@ -109,7 +109,7 @@ Standard Load Balancer unterstützt einen neuen Typ von Regel.
 
 Sie können Lastenausgleichsregeln konfugurieren, damit die Anwendung skaliert werden kann und hohe Zuverlässigkeit bietet. Wenn Sie eine HA-Ports-Lastenausgleichsregel verwenden, stellt Standard Load Balancer einen Lastausgleich pro Datenfluss an jedem kurzlebigen Port der Front-End-IP-Adresse eines internen Standard Load Balancers bereit.  Das Feature ist auch für andere Szenarien hilfreich, in denen es unpraktisch oder nicht erwünscht ist, einzelne Port anzugeben.
 
-Eine HA-Ports-Lastenausgleichsregel ermöglicht es Ihnen, aktive-passive oder aktive-aktive n+1-Szenarien für virtuelle Netzwerkgeräte und jede Anwendung zu erstellen, die große Bereiche von eingehenden Ports erfordert.  Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren.
+Eine HA-Ports-Lastenausgleichsregel ermöglicht es Ihnen, aktiv-passive oder aktiv-aktive n+1-Szenarien für virtuelle Netzwerkgeräte und jede Anwendung zu erstellen, die große eingehende Portbereiche erfordert.  Ein Integritätstest kann verwendet werden, um zu bestimmen, welche Back-Ends neue Datenflüsse empfangen sollen.  Sie können eine Netzwerksicherheitsgruppe verwenden, um ein Portbereichsszenario zu emulieren.
 
 >[!IMPORTANT]
 > Wenn Sie beabsichtigen, ein virtuelles Netwerkgerät zu verwenden, fragen Sie Ihren Anbieter danach, ob sein Produkt mit HA-Ports getestet wurde, und befolgen Sie dessen spezielle Anweisungen für die Implementierung. 
@@ -118,7 +118,7 @@ Lesen Sie die [ausführliche Erläuterung zu HA-Ports](load-balancer-ha-ports-ov
 
 ### <a name="securebydefault"></a>Standardmäßig sicher
 
-Standard Load Balancer ist vollständig in das virtuelle Netzwerk integriert.  Das virtuelle Netzwerk ist ein privates geschlossenes Netzwerk.  Da Standard Load Balancer und öffentliche Standard-IP-Adressen so ausgelegt sind, dass sie Zugriff auf dieses virtuelle Netzwerk von außerhalb des virtuellen Netzwerks zulassen, werden diese Ressourcen nun standardmäßig geschlossen, es sei denn, Sie öffnen sie. Dies bedeutet, dass nun Netzwerksicherheitsgruppen (NSGs) verwendet werden, um zulässigen Datenverkehr explizit zu gestatten und whitelistgemäß zu verarbeiten.  Sie können Ihr gesamtes virtuelles Rechenzentrum erstellen und über NSGs entscheiden, was verfügbar sein soll und wann es verfügbar sein soll.  Wenn Sie keine NSG in einem Subnetz oder für eine Netzwerkkarte Ihrer Ressource auf einem virtuellen Computer haben, gibt es keine Erlaubnis für Datenverkehr, diese Ressource zu erreichen.
+Standard Load Balancer ist vollständig in das virtuelle Netzwerk integriert.  Das virtuelle Netzwerk ist ein privates geschlossenes Netzwerk.  Da Standard Load Balancer und öffentliche Standard-IP-Adressen so ausgelegt sind, dass sie Zugriff auf dieses virtuelle Netzwerk von außerhalb des virtuellen Netzwerks zulassen, werden diese Ressourcen nun standardmäßig geschlossen, es sei denn, Sie öffnen sie. Dies bedeutet, dass nun Netzwerksicherheitsgruppen (NSGs) verwendet werden, um zulässigen Datenverkehr explizit zu gestatten und whitelistgemäß zu verarbeiten.  Sie können Ihr gesamtes virtuelles Rechenzentrum erstellen und über NSGs entscheiden, was verfügbar sein soll und wann es verfügbar sein soll.  Wenn Sie über keine NSG für ein Subnetz oder für eine NIC Ihrer VM-Ressource verfügen, ist diese Ressource für Datenverkehr nicht erreichbar.
 
 Weitere Informationen zu NSGs und ihrer Verwendung in Ihrem Szenario finden Sie unter [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 

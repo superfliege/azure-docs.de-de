@@ -4,15 +4,15 @@ description: Bietet eine Übersicht über die Collectorappliance und deren Konfi
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 05/22/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: d0dd310a1f6dff389a4d3dd41dc389b7117272fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32554b2f297c2079374a5edd7739af7320bc1234
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203679"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640226"
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -188,37 +188,37 @@ Außerdem ist es ratsam, die folgenden Schritte auszuführen, um Ihre Appliance 
 
 Sie können ein Upgrade für den Collector auf die neueste Version durchführen, ohne die OVA-Datei erneut herunterladen zu müssen.
 
-1. Laden Sie das aktuelle [Upgradepaket](https://aka.ms/migrate/col/latestupgrade) herunter.
+1. Laden Sie das aktuelle [Upgradepaket](https://aka.ms/migrate/col/upgrade_9_11) (Version 1.0.9.11) herunter.
 2. Um sicherzustellen, dass der heruntergeladene Hotfix sicher ist, öffnen Sie das Befehlsfenster als Administrator, und führen Sie den folgenden Befehl zum Generieren des Hash für die ZIP-Datei aus. Der generierte Hash sollte mit dem für die betreffende Version genannten Hash übereinstimmen:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    (Beispiel: „C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256“)
+    (Beispiel: C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.7.zip SHA256)
 3. Kopieren Sie die ZIP-Datei auf den virtuellen Azure Migrate-Collectorcomputer (Collectorappliance).
 4. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie „Alle extrahieren“ aus.
 5. Klicken Sie mit der rechten Maustaste auf „Setup.ps1“, und klicken Sie auf „Mit PowerShell ausführen“. Befolgen Sie dann die Anweisungen auf dem Bildschirm, um das Update zu installieren.
 
 ### <a name="list-of-updates"></a>Liste der Updates
 
+#### <a name="upgrade-to-version-10911"></a>Upgrade auf Version 1.0.9.11
+
+Hashwerte für das [Upgradepaket 1.0.9.11](https://aka.ms/migrate/col/upgrade_9_11)
+
+**Algorithmus** | **Hashwert**
+--- | ---
+MD5 | 0e36129ac5383b204720df7a56b95a60
+SHA1 | aa422ef6aa6b6f8bc88f27727e80272241de1bdf
+SHA256 | 5f76dbbe40c5ccab3502cc1c5f074e4b4bcbf356d3721fd52fb7ff583ff2b68f
+
 #### <a name="upgrade-to-version-1097"></a>Upgrade auf Version 1.0.9.7
 
-Laden Sie zum Durchführen eines Upgrade auf Version 1.0.9.7 das [Paket](https://aka.ms/migrate/col/upgrade_9_7) herunter.
+Hashwerte für das [Upgradepaket 1.0.9.7](https://aka.ms/migrate/col/upgrade_9_7)
 
 **Algorithmus** | **Hashwert**
 --- | ---
 MD5 | 01ccd6bc0281f63f2a672952a2a25363
 SHA1 | 3e6c57523a30d5610acdaa14b833c070bffddbff
 SHA256 | e3ee031fb2d47b7881cc5b13750fc7df541028e0a1cc038c796789139aa8e1e6
-
-#### <a name="upgrade-to-version-1095"></a>Upgrade auf Version 1.0.9.5
-
-Laden Sie zum Durchführen eines Upgrade auf Version 1.0.9.5 das [Paket](https://aka.ms/migrate/col/upgrade_9_5) herunter.
-
-**Algorithmus** | **Hashwert**
---- | ---
-MD5 | d969ebf3bdacc3952df0310d8891ffdf
-SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
-SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
