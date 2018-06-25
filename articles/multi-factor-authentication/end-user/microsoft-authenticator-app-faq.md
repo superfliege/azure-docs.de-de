@@ -1,4 +1,4 @@
----
+﻿---
 title: Hilfe und Support für die Microsoft Authenticator-App | Microsoft-Dokumentation
 description: Enthält eine Liste mit häufig gestellten Fragen und Antworten im Zusammenhang mit Microsoft Authenticator-App und Azure Multi-Factor Authentication (MFA).
 services: multi-factor-authentication
@@ -104,7 +104,7 @@ Hier finden Sie eine vollständige Liste der Berechtigungen, die möglicherweise
 
 ### <a name="why-does-the-microsoft-authenticator-app-allow-you-to-approve-a-request-without-unlocking-the-device"></a>Warum ermöglicht die Microsoft Authenticator-App die Genehmigung einer Anforderung ohne Entsperrung des Geräts?
 
-Sie müssen Ihr Gerät nicht entsperren, um Überprüfungsanforderungen zu genehmigen. Das Einzige, was Sie nachweisen können müssen, ist, dass Sie jederzeit über Ihr Mobiltelefon erreichbar sind. Bei der zweistufigen Überprüfung werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort). und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.) Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen.
+Sie müssen Ihr Gerät nicht entsperren, um Überprüfungsanforderungen zu genehmigen. Das Einzige, was Sie nachweisen können müssen, ist, dass Sie jederzeit über Ihr Mobiltelefon erreichbar sind. Bei der zweistufigen Überprüfung werden zwei Dinge überprüft: etwas, das Sie wissen (das Kennwort), und etwas, das Sie haben (Ihr Smartphone; eingerichtet mit der Microsoft Authenticator-App und registriert als MFA-Nachweis.) Somit sind die Kriterien des zweiten Authentifizierungsschritts erfüllt, wenn Sie über das Smartphone verfügen und die Anforderung bestätigen.
 
 ### <a name="what-does-the-lock-icon-in-the-account-list-mean"></a>Was bedeutet das Schlosssymbol in der Kontoliste?
 
