@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/12/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
+ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e2ea46ea1a6b5bd3f50d4d4c15492c16c5241c0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3baf616e448f1f6d5292161ae125502d72141940
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161055"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35266593"
 ---
 # <a name="create-custom-roles-in-azure"></a>Erstellen von benutzerdefinierten Rollen in Azure
 
-Wenn die [integrierten Rollen](built-in-roles.md) nicht Ihre spezifischen Zugriffsanforderungen erfüllen, können Sie eigene benutzerdefinierte Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden. In diesem Artikel wird ein Beispiel für die ersten Schritte beim Erstellen von benutzerdefinierten Rollen mithilfe von PowerShell und der Azure CLI beschrieben.
+Wenn die [integrierten Rollen](built-in-roles.md) nicht Ihre spezifischen Zugriffsanforderungen erfüllen, können Sie eigene benutzerdefinierte Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Jeder Mandant kann bis zu 2.000 benutzerdefinierte Rollen enthalten. Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
+
+In diesem Artikel wird ein Beispiel für die ersten Schritte beim Erstellen von benutzerdefinierten Rollen mithilfe von PowerShell und der Azure CLI beschrieben.
 
 ## <a name="create-a-custom-role-to-open-support-requests-using-powershell"></a>Erstellen einer benutzerdefinierten Rolle zum Öffnen von Supportanfragen mithilfe von PowerShell
 

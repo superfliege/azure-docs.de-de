@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Beheben von Problemen mit benutzerdefinierten Richtlinien | Microsoft-Dokumentation'
-description: Enthält Informationen zu den Ansätzen der Fehlerbehebung bei Verwendung von benutzerdefinierten Richtlinien in Azure Active Directory.
+title: Beheben von Problemen mit benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu den Ansätzen der Fehlerbehebung bei Verwendung von benutzerdefinierten Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: davidmu
-ms.openlocfilehash: e51990bd2e121b89e7260e0d745d08ecc82ff8a0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 22e7bc7bd275769f78ac2e482cb1af11e9404222
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709613"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Beheben von Problemen mit benutzerdefinierten Azure AD B2C-Richtlinien und dem Framework für die Identitätsfunktion
 

@@ -1,22 +1,21 @@
 ---
-title: Verwenden einer Altersbeschränkung in Active Directory B2C | Microsoft-Dokumentation
+title: Verwenden der Altersbeschränkung in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Minderjährige identifizieren, die Ihre Anwendung verwenden.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
-ms.openlocfilehash: 9186579126525cc269f7e3f9e778e06902b30eb4
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: B2C
+ms.openlocfilehash: bbf885fbcca22e42b2ec0ad7ff4e7a70aa5f5828
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261281"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711969"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Verwenden einer Altersbeschränkung in Active Directory B2C
 

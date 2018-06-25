@@ -1,20 +1,21 @@
 ---
-title: Nachverfolgen des Benutzerverhaltens mithilfe von Ereignissen in Application Insights von Azure AD B2C | Microsoft-Dokumentation
+title: Nachverfolgen des Benutzerverhaltens mithilfe von Ereignissen in Application Insights von Azure Active Directory B2C | Microsoft-Dokumentation
 description: Ausführliche Anleitung zum Aktivieren von Ereignisprotokollen in Application Insights von Azure AD B2C-User Journeys mit benutzerdefinierten Richtlinien (Vorschau)
 services: active-directory-b2c
-documentationcenter: dev-center-name
 author: davidmu1
 manager: mtillman
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
-ms.openlocfilehash: db9ba62cb6ef0d2627dbeb07cb8165a4ac7ae490
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34709963"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Nachverfolgen des Benutzerverhaltens in Azure AD B2C-Journeys mithilfe von Application Insights
 

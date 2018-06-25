@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 674f4ec53300643450d8a576db6fcb50e86dd9d2
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161157"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652068"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Rollenbasierte Zugriffssteuerung für StorSimple
 
@@ -31,7 +31,7 @@ Dieser Artikel gilt für Geräte der StorSimple 8000-Serie, die mit Update 3.0 o
 
 RBAC kann basierend auf Rollen zugewiesen werden. Die Rollen gewähren bestimmte Berechtigungsstufen basierend auf den verfügbaren Ressourcen in der Umgebung. Es gibt zwei Arten von Rollen, aus denen StorSimple-Benutzer auswählen können: integrierte oder benutzerdefinierte Rollen.
 
-* **Integrierte Rollen:** Die integrierten Rollen können Besitzer, Mitwirkende, Leser oder Benutzerzugriffsadministratoren sein. Weitere Informationen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md#built-in-roles).
+* **Integrierte Rollen:** Die integrierten Rollen können Besitzer, Mitwirkende, Leser oder Benutzerzugriffsadministratoren sein. Weitere Informationen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md).
 
 * **Benutzerdefinierte Rollen:** Wenn die integrierten Rollen nicht Ihren Anforderungen entsprechen, können Sie benutzerdefinierte RBAC-Rollen für StorSimple erstellen. Um eine benutzerdefinierte RBAC-Rolle zu erstellen, erstellen Sie zunächst eine integrierte Rolle, bearbeiten diese und importieren sie wieder in die Umgebung. Sie können die Rolle entweder über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle herunter- und hochladen. Weitere Informationen finden Sie unter [Erstellen integrierter Rollen für die rollenbasierte Zugriffssteuerung](../role-based-access-control/custom-roles.md).
 
@@ -154,7 +154,7 @@ PS C:\WINDOWS\system32>
 
 ## <a name="add-users-to-the-custom-role"></a>Hinzufügen von Benutzern zur benutzerdefinierten Rolle
 
-Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt. Bedenken Sie beim Gewähren von Zugriff, dass der Zugriff, der einem übergeordneten Knoten gewährt wird, von untergeordneten Knoten geerbt wird. Weitere Informationen finden Sie unter [Ressourcenhierarchie und Zugriffsvererbung](../role-based-access-control/overview.md#resource-hierarchy-and-access-inheritance).
+Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt. Bedenken Sie beim Gewähren von Zugriff, dass der Zugriff, der einem übergeordneten Knoten gewährt wird, von untergeordneten Knoten geerbt wird. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
 1. Wechseln Sie zu **Zugriffssteuerung (IAM)**. Klicken Sie auf dem Blatt für die Zugriffssteuerung auf **+ Hinzufügen**.
 

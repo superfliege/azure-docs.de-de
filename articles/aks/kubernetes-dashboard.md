@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: cdb406c5a0a314562ae886c797c5ebd9dc5f8796
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 66843a5dda9f7b31b2b4c79df895eaff904513e6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595579"
 ---
 # <a name="kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Kubernetes-Dashboard mit Azure Kubernetes Service (AKS)
 
@@ -37,7 +38,7 @@ Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubern
 
 ## <a name="run-an-application"></a>Ausführen einer Anwendung
 
-Klicken Sie im Kubernetes-Dashboard im rechten oberen Fenster auf die Schaltfläche **Erstellen**. Nennen Sie die Bereitstellung `nginx`, und geben Sie `nginx:latest` als Imagenamen ein. Klicken Sie unter **Dienst** auf **Extern**, und geben Sie für Port und Zielport jeweils `80` ein.
+Klicken Sie im Kubernetes-Dashboard im rechten oberen Fenster auf die Schaltfläche **Erstellen**. Nennen Sie die Bereitstellung `nginx`, und geben Sie `nginx:latest` als Containerimagenamen ein. Klicken Sie unter **Dienst** auf **Extern**, und geben Sie für Port und Zielport jeweils `80` ein.
 
 Klicken Sie abschließend auf **Bereitstellen**, um die Bereitstellung zu erstellen.
 

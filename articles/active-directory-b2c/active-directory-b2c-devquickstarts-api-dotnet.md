@@ -1,21 +1,21 @@
 ---
-title: Schützen einer Web-API – ASP.NET – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Schützen einer ASP.NET-Web-API in Azure Active Directory B2C | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie eine .NET-Web-API mithilfe von Azure Active Directory B2C erstellen, die mit OAuth 2.0-Zugriffstoken für die Authentifizierung geschützt ist.
 services: active-directory-b2c
-documentationcenter: .net
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 01/14/2018
 ms.author: davidmu
-ms.openlocfilehash: c64ca3546c5c2d21b00b379c297c9265b264cb9a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8eb4045338476254fa9687a367d45b3646aeb9c1
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34712367"
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: Erstellen einer .NET-Web-API
 

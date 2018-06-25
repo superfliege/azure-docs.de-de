@@ -1,12 +1,12 @@
 ---
-title: "Hinzufügen der Authentifizierung zu benutzerdefinierten APIs: Azure Logic Apps | Microsoft-Dokumentation"
-description: "Informationen zum Einrichten der Authentifizierung für Aufrufe Ihrer benutzerdefinierten APIs in Logik-Apps"
+title: 'Hinzufügen der Authentifizierung zu benutzerdefinierten APIs: Azure Logic Apps | Microsoft-Dokumentation'
+description: Informationen zum Einrichten der Authentifizierung für Aufrufe Ihrer benutzerdefinierten APIs in Logik-Apps
 author: ecfan
-manager: anneta
-editor: 
+manager: jeconnoc
+editor: ''
 services: logic-apps
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: logic-apps
 ms.workload: logic-apps
 ms.tgt_pltfrm: na
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2528f4318d92bbfdc1008795876f0240a5e3e4f6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298548"
 ---
 # <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>Schützen von Aufrufen Ihrer benutzerdefinierten APIs in Logik-Apps
 
@@ -53,7 +54,7 @@ Die Logik-App verwendet diese Azure AD-Anwendungsidentität zum Authentifizieren
 
 **Erstellen der Anwendungsidentität für die Logik-App im Azure-Portal**
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com "https://portal.azure.com") den Eintrag **Azure Active Directory** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com "https://portal.azure.com") die Option **Azure Active Directory** aus. 
 
 2. Vergewissern Sie sich, dass Sie sich in demselben Verzeichnis befinden, in dem auch die Web-App oder die API-App enthalten ist.
 
@@ -116,7 +117,7 @@ Wenn Ihre Web-App oder API-App bereits bereitgestellt wurde, können Sie die Aut
 
 **Erstellen der Anwendungsidentität und Aktivieren der Authentifizierung im Azure-Portal für bereitgestellte Apps**
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com "https://portal.azure.com") Ihre Web-App oder API-App und wählen diese aus. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com "https://portal.azure.com") Ihre Web-App oder API-App, und wählen Sie sie aus. 
 
 2. Wählen Sie unter **Einstellungen** die Option **Authentifizierung/Autorisierung** aus. Unter **App Service Authentication** können Sie die Authentifizierung **aktivieren**. Klicken Sie unter **Authentifizierungsanbieter** auf **Azure Active Directory**.
 
@@ -190,16 +191,16 @@ In der obigen Vorlage ist der Abschnitt für die Autorisierung bereits eingerich
 
 `{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
 
-| Element | Erforderlich | Beschreibung | 
+| Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| tenant | Ja | Die GUID für den Azure AD-Mandanten | 
+| Mandant | Ja | Die GUID für den Azure AD-Mandanten | 
 | audience | Ja | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
 | clientId | Ja | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
 | secret | Ja | Der Schlüssel oder das Kennwort der Anwendungsidentität für den Client, der das Zugriffstoken anfordert | 
-| Typ | Ja | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
+| type | Ja | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
 |||| 
 
-Beispiel:
+Beispiel: 
 
 ``` json
 {
@@ -236,9 +237,9 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 `{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
 
-| Element | Erforderlich | Beschreibung | 
+| Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| Typ | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
+| type | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
 | password | Ja | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
 | pfx | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
 |||| 
@@ -251,11 +252,11 @@ Sie können die Standardauthentifizierung, z.B. einen Benutzernamen und ein Kenn
 
 Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
-`{"type": "basic", "username": "username", "password": "password"}`.
+`{"type": "basic", "username": "username", "password": "password"}`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
-| Element | Erforderlich | Beschreibung | 
+| Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| Typ | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
+| type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
 | username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
 | password | Ja | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
 |||| 
