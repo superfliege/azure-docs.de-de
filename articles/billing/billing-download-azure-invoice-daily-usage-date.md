@@ -1,4 +1,4 @@
----
+﻿---
 title: Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure-Rechnungen und tägliche Nutzungsdaten herunterladen oder ansehen können.
 keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
@@ -99,7 +99,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Es sind weniger als 30 Tage seit dem Abschluss Ihres Azure-Abonnements vergangen.
 
-- Die Rechnung ist nicht noch erstellt. Warten Sie bis zum Ende des Abrechnungszeitraums.
+- Die Rechnung ist noch nicht erstellt. Warten Sie bis zum Ende des Abrechnungszeitraums.
 
 - Wenn Sie nicht der Kontoadministrator sind, stehen Ihnen ältere Rechnungen möglicherweise nicht zur Verfügung.
 
