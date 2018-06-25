@@ -1,30 +1,27 @@
 ---
-title: Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge verwalten.
+title: Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
+description: In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Verwalten von Data Lake Analytics-Konten, -Datenquellen, -Benutzern und -Aufträgen verwenden.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: kfile
-editor: cgronlun
-ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 12/05/2016
+author: saveenr
 ms.author: saveenr
-ms.openlocfilehash: 99b638279b38ce3b583208ec0b80617f9046a6d7
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+manager: kfile
+editor: jasonwhowell
+ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
+ms.topic: conceptual
+ms.date: 12/05/2016
+ms.openlocfilehash: 1ccd4dd6b8d4ee15b7d9f14e7436ccd87392121e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771380"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34623705"
 ---
-# <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
+# <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Erfahren Sie, wie Sie Azure Data Lake Analytics-Konten, -Kontodatenquellen, -Benutzer und -Aufträge mithilfe des Azure-Portals verwalten. Um Verwaltungsthemen zur Verwendung anderer Tools anzuzeigen, klicken Sie auf eine Registerkarte oben auf der Seite.
+In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -Datenquellen, -Benutzer und -Aufträge mithilfe des Azure-Portals verwalten.
+
 
 <!-- ################################ -->
 <!-- ################################ -->

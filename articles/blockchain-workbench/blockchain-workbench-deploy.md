@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 484c7a17fec4ee94e3170e93eb1438af688d101e
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303942"
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34831634"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Bereitstellen von Azure Blockchain Workbench
 
@@ -73,7 +73,7 @@ Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure 
 Als Nächstes müssen Sie das Anwendungsmanifest für die Verwendung von Anwendungsrollen innerhalb von Azure AD ändern, um Blockchain Workbench-Administratoren festzulegen.  Weitere Informationen zu Anwendungsmanifesten finden Sie unter [Azure Active Directory-Anwendungsmanifest](../active-directory/develop/active-directory-application-manifest.md).
 
 1. Wählen Sie für die Anwendung, die Sie registriert haben, im Detailbereich der registrierten Anwendung **Manifest** aus.
-2. Generieren Sie eine GUID. Sie können den PowerShell-Befehl `[guid]::NewGuid()` oder Onlinetools verwenden, um eine GUID zu generieren. 
+2. Generieren Sie eine GUID. Eine GUID kann mit dem PowerShell-Befehl „[guid] :: NewGuid ()“ oder mit dem Cmdlet „New-GUID“ generiert werden. Alternativ können Sie auch eine GUID-Generator-Website verwenden.
 3. Sie werden den Abschnitt **appRoles** des Manifests aktualisieren. Wählen Sie im Bereich „Manifest bearbeiten“ die Option **Bearbeiten**, und ersetzen Sie `"appRoles": []` mit der gegebenen JSON-Datei. Stellen Sie sicher, dass Sie den Wert für das Feld **ID** durch die von Ihnen generierte GUID ersetzen. 
 
     ``` json

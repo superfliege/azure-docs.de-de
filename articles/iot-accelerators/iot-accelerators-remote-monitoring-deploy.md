@@ -1,22 +1,19 @@
 ---
 title: Bereitstellen der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieses Tutorial veranschaulicht, wie Sie den Solution Accelerator für die Remoteüberwachung über „azureiotsuite.com“ bereitstellen.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: 8738fbfc29f6776a091cdc2b872eab88abd195cd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: 42f6afcd3cb6880ba6c9cdd2a51e2a3e9ff2c2d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626852"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung
 
@@ -43,9 +40,9 @@ Vor dem Bereitstellen des Solution Accelerators in Ihrem Azure-Abonnement müsse
 
 1. Klicken Sie auf der Kachel **Remoteüberwachung** auf **Jetzt testen**.
 
-    ![Auswählen der Remoteüberwachung](./media/iot-accelerators-remote-monitoring-deploy/remotemonitoring.png)
+    ![Klicken auf „Remoteüberwachung“](./media/iot-accelerators-remote-monitoring-deploy/remotemonitoring.png)
 
-1. Geben Sie auf der Seite **Remoteüberwachungslösung erstellen** einen **Lösungsnamen** für Ihren Solution Accelerator für die Remoteüberwachung ein.
+1. Geben Sie auf der Seite **Remoteüberwachungslösung erstellen** unter **Lösungsname** einen Lösungsnamen für Ihren Solution Accelerator für die Remoteüberwachung ein.
 
 1. Wählen Sie **Basic** oder **Standard** als Bereitstellungsart aus. Wenn Sie die Lösung bereitstellen, um sich mit ihr vertraut zu machen oder um sie zu Demonstrationszwecken auszuführen, wählen Sie zur Kostenminimierung die Option **Basic** aus.
 
@@ -69,7 +66,7 @@ Nach Abschluss des Bereitstellungsvorgangs können Sie sich beim Solution Accele
 
     ![Auswählen der neuen Lösung](./media/iot-accelerators-remote-monitoring-deploy/choosenew.png)
 
-1. Im dann angezeigten Bereich können Sie Informationen zu der Remoteüberwachungslösung einsehen. Wählen Sie **Lösungsdashboard** aus, um eine Verbindung mit der Remoteüberwachungslösung herzustellen.
+1. Im daraufhin angezeigten Bereich können Sie Informationen zu der Remoteüberwachungslösung einsehen. Klicken Sie auf **Lösungsdashboard**, um eine Verbindung mit der Remoteüberwachungslösung herzustellen.
 
     > [!NOTE]
     > Sie können die Remoteüberwachungslösung aus diesem Bereich löschen, wenn Sie sie nicht mehr benötigen.
@@ -87,6 +84,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach dem Bereitstellen der Remoteüberwachungslösung können Sie nun im nächsten Schritt [die Funktionen des Lösungsdashboards untersuchen](iot-accelerators-remote-monitoring-explore.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](iot-accelerators-remote-monitoring-explore.md).
 
 <!-- Next tutorials in the sequence -->

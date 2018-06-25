@@ -17,11 +17,12 @@ ms.date: 04/20/2018
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8068e193ac267ef23bdaab1fc23bc7bf9b0d330b
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 90c70837b3afb589e5a503681aa9cd7cf1dae930
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34594113"
 ---
 # <a name="azure-ad-nodejs-web-app-getting-started"></a>Erste Schritte mit der Node.js-Web-App in Azure AD
 Hier wird Passport für Folgendes verwendet:
@@ -61,6 +62,10 @@ Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt
 
 6. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Abschnitten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
 7. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Die **App-ID-URI** ist eine eindeutige Kennung für die Anwendung. Üblicherweise wird das Format `https://<tenant-domain>/<app-name>` verwendet, z. B.: `https://contoso.onmicrosoft.com/my-first-aad-app`.
+8. Führen Sie zum Erstellen eines geheimen Schlüssels Schritt 4 unter [So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications#to-add-application-credentials-or-permissions-to-access-web-apis) aus.
+
+   > [!IMPORTANT]
+   > Kopieren Sie den Wert des Anwendungsschlüssels. Dies ist der Wert für `clientSecret` und wird weiter unten in **Schritt 3** benötigt. 
 
 ## <a name="step-2-add-prerequisites-to-your-directory"></a>Schritt 2: Hinzufügen von Voraussetzungen zu Ihrem Verzeichnis
 1. Wechseln Sie über die Befehlszeile vom Verzeichnis auf Ihren Stammordner, wenn dies noch nicht der Fall ist, und führen Sie dann die folgenden Befehle aus:

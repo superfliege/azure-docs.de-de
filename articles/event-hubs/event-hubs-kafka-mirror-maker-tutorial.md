@@ -10,19 +10,19 @@ ms.topic: mirror-maker
 ms.custom: mvc
 ms.date: 05/07/2018
 ms.author: bahariri
-ms.openlocfilehash: 819071321d5609728e7c62abb5b25bf354107850
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 0693fc2fff5735fb2b3c0a9b8f1d3d256746f40d
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941238"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35298320"
 ---
 # <a name="using-kafka-mirrormaker-with-event-hubs-for-kafka-ecosystems"></a>Verwenden von Kafka MirrorMaker mit Event Hubs für Kafka-Ökosysteme
 
 > [!NOTE]
 > Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs) verfügbar.
 
-Ein wichtiger Aspekt von modernen Cloud-Apps für die Skalierung ist die Möglichkeit, die Infrastruktur zu aktualisieren, zu verbessern und zu ändern, ohne den Dienst zu unterbrechen. In diesem Tutorial wird gezeigt, wie mit einem Kafka-fähigen Event Hub und mit Kafka MirrorMaker eine vorhandene Kafka-Pipeline in Azure integriert werden kann, indem der Kafka-Eingabedatenstrom im Event Hub-Dienst „gespiegelt“ wird. 
+Ein wichtiger Aspekt moderner Cloud-Apps ist die Möglichkeit, die Infrastruktur zu aktualisieren, zu verbessern und zu ändern, ohne den Dienst zu unterbrechen. In diesem Tutorial erfahren Sie, wie Sie mit einem Kafka-fähigen Event Hub und mit Kafka MirrorMaker eine vorhandene Kafka-Pipeline in Azure integrieren, indem Sie den Kafka-Eingabedatenstrom im Event Hubs-Dienst spiegeln. 
 
 Mit einem Azure Event Hubs-Kafka-Endpunkt können Sie eine Verbindung mit Azure Event Hubs herstellen, indem Sie das Kafka-Protokoll (Kafka-Clients) verwenden. Durch minimale Änderungen an einer Kafka-Anwendung können Sie eine Verbindung mit Azure Event Hubs herstellen und die Vorteile des Azure-Ökosystems nutzen. Kafka-fähige Event Hubs unterstützen derzeit die Kafka-Version 1.0 und höher.
 
@@ -116,3 +116,4 @@ Bei Ausführung von MirrorMaker werden alle Ereignisse, die an den Kafka-Quellcl
 * [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informationen zu Event Hubs für das Kafka-Ökosystem](event-hubs-for-kafka-ecosystem-overview.md)
 * Informieren Sie sich über [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) und das Streamen von Ereignissen von der lokalen Kafka-Instanz zu Kafka-fähigen Event Hubs in der Cloud.
+* Erfahren Sie, wie Sie [native Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md) oder [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) zum Streamen an Kafka-fähige Event Hubs verwenden.

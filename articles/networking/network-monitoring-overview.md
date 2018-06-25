@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 306d0e57449de41080d5473034e585f772771d51
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850136"
 ---
 # <a name="network-monitoring-solutions"></a>Netzwerküberwachungslösungen 
 
@@ -56,12 +57,13 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ## <a name="expressroute-monitor"></a>ExpressRoute-Monitor
 
-Der Netzwerkleistungsmonitor für ExpressRoute bietet eine umfassende ExpressRoute-Überwachung für private Peeringverbindungen. Sie können die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über ExpressRoute überwachen. Zentrale Funktionen:
+Der Netzwerkleistungsmonitor für ExpressRoute bietet eine umfassende ExpressRoute-Überwachung für Verbindungen mit privatem Azure-Peering und für Microsoft-Peeringverbindungen. Sie können die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über ExpressRoute überwachen. Zentrale Funktionen:
 
 * Automatische Erkennung der mit Ihrem Abonnement verknüpften ExpressRoute-Verbindungen
 * Erkennung der Netzwerktopologie zwischen Ihrer lokalen Umgebung und Ihren Cloudanwendungen
-* Kapazitätsplanung, Nutzungsanalyse, Bandbreitennutzung im virtuellen Netzwerk
+* Kapazitätsplanung, Bandbreitenauslastungsanalyse
 * Überwachung und Warnungsgenerierung für primäre und sekundäre Pfade
+* Überwachung der Konnektivität mit Azure-Diensten (beispielsweise Office 365 und Dynamics 365) über ExpressRoute
 * Erkennung einer Verschlechterung der Konnektivität mit VNets
 
 ![Geografische Karte, die Datenverkehr Regionen übergreifend darstellt](./media/network-monitoring-overview/expressroute-topology-map.png) 

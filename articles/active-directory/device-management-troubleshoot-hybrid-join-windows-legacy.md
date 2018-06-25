@@ -7,6 +7,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: cdc25576-37f2-4afb-a786-f59ba4c284c2
 ms.service: active-directory
+ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2fd3d2cb403e3889c5faa538a49fa129496ae6e8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: d41e83c11f33b0bcbe4ea632332f2cd8bb12313f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770739"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714111"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
 
@@ -50,7 +51,7 @@ Dieser Artikel enthält Anleitungen zur Problembehandlung zum Beheben potenziell
 
 **Wichtige Informationen:** 
 
-- Die maximale Anzahl von Geräten pro Benutzer ist gerätespezifisch. Beispiel: Wenn *jdoe* und *jharnett* sich auf einem Gerät anmelden, wird für jeden dieser Benutzer eine separate Registrierung (DeviceID) auf der Registerkarte **USER** erstellt.  
+- Die maximale Anzahl von Geräten pro Benutzer ist gerätespezifisch. Beispiel: Wenn sich *jdoe* und *jharnett* auf einem Gerät anmelden, wird für jeden dieser Benutzer eine separate Registrierung (DeviceID) auf der Registerkarte **BENUTZER** erstellt.  
 
 - Bei der anfänglichen Gerätekonfiguration für die Registrierung bzw. den Beitritt von Geräten wird zunächst eine Anmeldung oder Sperren/Entsperren versucht. Es kann eine Verzögerung von bis zu 5 Minuten auftreten, die durch eine Aufgabe der Aufgabenplanung ausgelöst wird. 
 
@@ -89,7 +90,7 @@ Wenn die Hybrideinbindung in Azure AD nicht erfolgreich war, enthält das Dialog
     
     - Der angemeldete Benutzer ist kein Domänenbenutzer (sondern beispielsweise ein lokaler Benutzer). Eine Azure AD-Hybrideinbindung auf Geräten niedriger Ebene wird nur für Domänenbenutzer unterstützt.
     
-    - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Die Ursache sind möglicherweise Probleme mit der ausgehenden Netzwerkverbindung mit den Azure AD-URLs (Voraussetzungen überprüfen). Möglicherweise ist auch die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und WIAORMUTLIAUTHN ist nicht beim Verbundserver konfiguriert (Konfigurationsschritte überprüfen). Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch **autoworkplace.exe** daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
+    - „Autoworkplace.exe“ kann sich nicht unbeaufsichtigt bei Azure AD oder AD FS authentifizieren. Dies ist unter Umständen auf Probleme bei der ausgehenden Netzwerkverbindung mit den Azure AD-URLs zurückzuführen. Möglicherweise ist auch die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Benutzer aktiviert/konfiguriert, und auf dem Verbundserver ist „WIAORMUTLIAUTHN“ nicht konfiguriert. Eine weitere Möglichkeit ist, dass die Seite der Startbereichsermittlung (Home Realm Discovery, HRD) auf eine Benutzerinteraktion wartet, wodurch **autoworkplace.exe** daran gehindert wird, unbeaufsichtigt ein Token abzurufen.
     
     - Ihre Organisation verwendet nahtloses einmaliges Azure AD-Anmelden, `https://autologon.microsoftazuread-sso.com` oder `https://aadg.windows.net.nsatc.net` ist nicht in den IE-Intraneteinstellungen des Geräts vorhanden, und **Updates der Statusleiste über ein Skript zulassen** ist nicht für die Intranetzone aktiviert.
 

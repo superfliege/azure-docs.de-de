@@ -1,24 +1,21 @@
 ---
-title: Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen.
+title: Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge
+description: In diesem Artikel erfahren Sie, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen.
 services: data-lake-analytics
-documentationcenter: ''
-author: yanancai
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 11/31/2017
+author: yanancai
 ms.author: yanacai
-ms.openlocfilehash: b614583079347c2634f8d03531517d1d32c75132
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+manager: kfile
+editor: jasonwhowell
+ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
+ms.topic: conceptual
+ms.date: 11/30/2017
+ms.openlocfilehash: d8926f0defdfcc0e045ae87de6fd82755a5a35eb
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34736846"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 

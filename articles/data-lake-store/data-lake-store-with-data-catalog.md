@@ -10,23 +10,24 @@ ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2018
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea5d658b8f465b3a527033ef5e9d2126732c7029
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3f1bc925b772265a9f72c34f5ac661088123bb1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626136"
 ---
 # <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Registrieren von Daten aus dem Data Lake-Speicher in Azure Data Catalog
-In diesem Artikel erfahren Sie, wie der Azure Data Lake-Speicher in Azure Data Catalog integriert wird, um Ihre Daten innerhalb einer Organisation auffindbar zu machen, indem sie in Data Catalog integriert werden. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
+In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Store in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Aktivieren Sie Ihr Azure-Abonnement** für die öffentliche Vorschauversion von Data Lake Store. Weitere Informationen finden Sie in den [Anweisungen](data-lake-store-get-started-portal.md).
-* **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus. In diesem Tutorial erstellen wir ein Data Lake-Speicherkonto namens **datacatalogstore**.
+* **Azure Data Lake-Speicherkonto**. Führen Sie die Schritte der Anleitung unter [Erste Schritte mit dem Azure Data Lake-Speicher mithilfe des Azure-Portals](data-lake-store-get-started-portal.md)aus. Erstellen Sie für dieses Tutorial ein Data Lake Store-Konto namens **datacatalogstore**.
 
     Nachdem Sie das Konto erstellt haben, laden Sie ein Beispieldataset in das Konto hoch. In diesem Tutorial laden wir alle CSV-Dateien im Ordner **AmbulanceData** in das [Azure Data Lake-Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/) hoch. Sie können verschiedene Clients verwenden, z.B. den [Azure Storage-Explorer](http://storageexplorer.com/), um Daten in einen Blobcontainer hochzuladen.
 * **Azure Data Catalog**. In Ihrer Organisation muss bereits ein Azure Data Catalog für Ihre Organisation erstellt worden sein. Nur ein Katalog ist für jede Organisation zulässig.
@@ -55,12 +56,12 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
     b. Im Feld **Verfügbare Objekte** werden die Dateien und Ordner im Ordner **AmbulanceData** aufgeführt.
 
-    c. **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
+    c. Im Feld **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
 
     ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
 8. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche (![Objekte verschieben](./media/data-lake-store-with-data-catalog/move-objects.png "Objekte verschieben")), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
 
-    Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der Screenshot unten zeigt ein Tag, dass wir den Daten hinzufügen.
+    Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der folgende Screenshot zeigt ein Tag, das Sie den Daten hinzufügen.
 
     ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
 

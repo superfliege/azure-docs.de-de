@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 92233a5b-cb34-4d28-88cc-d5d29c0f3256
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0cb37a29847e69dae4a0e0682591bae092b38360
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34713693"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Von Azure Active Directory Identity Protection erkannte Sicherheitsrisiken
 Bei Sicherheitsrisiken handelt es sich um Schwachstellen in Ihrer Umgebung, die von einem Angreifer ausgenutzt werden können. Es wird empfohlen, dass Sie diese Sicherheitsrisiken entschärfen, um den Sicherheitsstatus Ihrer Organisation zu verbessern und Angreifer daran zu hindern, diese Schwachstellen auszunutzen.
@@ -38,16 +40,16 @@ Azure Multi-Factor Authentication dient als zweite Sicherheitsebene für die Ben
 
 Es wird empfohlen, dass Sie die Azure Multi-Factor Authentication für Anmeldungen von Benutzern obligatorisch machen. Die mehrstufige Authentifizierung spielt eine wichtige Rolle in Bezug auf risikobasierte Richtlinien für bedingten Zugriff, die unter Identity Protection verfügbar sind.
 
-Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
+Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md).
 
 ## <a name="unmanaged-cloud-apps"></a>Nicht verwaltete Cloud-Apps
 Mit diesem Sicherheitsrisiko können Sie in Ihrer Organisation nicht verwaltete Cloud-Apps identifizieren.
 
-In modernen Unternehmen sind den IT-Abteilungen häufig nicht alle Cloudanwendungen bekannt, die die Benutzer der Organisation für ihre Arbeit verwenden. Es ist verständlich, warum Administratoren sich Sorgen um den unberechtigten Zugriff auf Unternehmensdaten, mögliche Datenlecks und andere Sicherheitsrisiken machen. 
+In modernen Unternehmen sind den IT-Abteilungen häufig nicht alle Cloudanwendungen bekannt, die die Benutzer der Organisation für ihre Arbeit verwenden. Daher ist es nicht verwunderlich, dass sich Administratoren Sorgen um den unberechtigten Zugriff auf Unternehmensdaten, mögliche Datenlecks und andere Sicherheitsrisiken machen. 
 
-Es wird empfohlen, dass Sie in Ihrer Organisation die Cloud-App-Ermittlung einsetzen, um nicht verwaltete Cloudanwendungen zu ermitteln und diese Anwendungen mit Azure Active Directory zu verwalten.
+Wir empfehlen, Cloud App Discovery bereitzustellen, um nicht verwaltete Cloudanwendungen zu ermitteln und diese Anwendungen mit Azure Active Directory zu verwalten.
 
-Ausführliche Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+Weitere Informationen finden Sie unter [Suchen nach nicht verwalteten Cloudanwendungen per Cloud App Discovery](manage-apps/cloud-app-discovery.md).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Sicherheitswarnungen von Privileged Identity Management
 Dieses Sicherheitsrisiko hilft Ihnen beim Ermitteln und Bereinigen von Warnungen zu privilegierten Identitäten in Ihrer Organisation.  
@@ -56,7 +58,7 @@ Damit Benutzer privilegierte Vorgänge ausführen können, müssen Organisatione
 
 Wir empfehlen Ihrer Organisation die Verwendung von Azure AD Privileged Identity Management, um privilegierte Identitäten und deren Zugriff auf Ressourcen in Azure AD und anderen Microsoft-Onlinediensten wie Office 365 oder Microsoft Intune verwalten, steuern und überwachen zu können.
 
-Ausführliche Informationen finden Sie unter [Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
+Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Management?](active-directory-privileged-identity-management-configure.md). 
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

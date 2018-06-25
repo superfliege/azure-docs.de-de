@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Grundlegendes zu benutzerdefinierten Richtlinien des Starter Packs | Microsoft-Dokumentation'
-description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien
+title: Grundlegendes zu benutzerdefinierten Richtlinien des Starter Packs in Azure Active Directory B2C | Microsoft-Dokumentation
+description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 12f63bc42f8450f086ed9f0e8d598c9c91a0c3d4
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: B2C
+ms.openlocfilehash: eb78e4c2f2e27d59d7925ac9eaffd1cef0924463
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711578"
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Grundlegendes zu den benutzerdefinierten Azure AD B2C-Richtlinien des Starter Packs
 
@@ -193,7 +193,7 @@ In diesem Abschnitt sind die technischen Profile dargestellt, die in der Richtli
 | *SM-SocialLogin* | |
 | *SM-MFA* | |
 
-### <a name="technical-profiles-for-trustframework-policy-engine-technicalprofiles"></a>Technische Profile für TechnicalProfiles des Vertrauensframework-Richtlinienmoduls
+### <a name="technical-profiles-for-the-trust-framework-policy-engine"></a>Technische Profile für das Vertrauensframework-Richtlinienmodul
 
 Derzeit werden für den Anspruchsanbieter vom Typ **TechnicalProfiles des Vertrauensframework-Richtlinienmoduls** keine technischen Profile definiert.
 

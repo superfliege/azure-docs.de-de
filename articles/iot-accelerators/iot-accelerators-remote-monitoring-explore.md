@@ -1,28 +1,25 @@
 ---
 title: Erste Schritte mit der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial werden simulierte Szenarien verwendet, um den Solution Accelerator für Remoteüberwachung vorzustellen. Diese Szenarien werden erstellt, wenn Sie den Solution Accelerator für Remoteüberwachung zum ersten Mal bereitstellen.
-services: iot-suite
-suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
-ms.service: iot-suite
+ms.service: iot-accelerators
+services: iot-accelerators
 ms.date: 05/01/2018
-ms.topic: article
-ms.devlang: NA
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.openlocfilehash: c8a055dd0dc8e2d9a9a64b492fb134caaacda489
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.topic: conceptual
+ms.openlocfilehash: e354e110df8d168e153c50de6f7aad08dd416464
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627806"
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-solution-accelerator"></a>Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung
 
 In diesem Tutorial werden die wichtigsten Funktionen der vorkonfigurierten Remoteüberwachungslösung veranschaulicht. Zur Einführung in diese Funktionen werden im Tutorial gängige Kundenszenarien beschrieben, indem eine simulierte IoT-Anwendung für das Unternehmen Contoso verwendet wird.
 
-Mit dem Tutorial können Sie sich mit den typischen IoT-Szenarien vertraut machen, die im Lieferumfang der Remoteüberwachungslösung enthalten sind.
+Anhand des Tutorials können Sie sich mit den typischen IoT-Szenarien vertraut machen, die die Remoteüberwachungslösung standardmäßig bereitstellt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -33,24 +30,24 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Organisieren Ihrer Objekte
 > * Anhalten und Starten der simulierten Geräte
 
-Im folgenden Video wird eine exemplarische Vorgehensweise zur Remoteüberwachungslösung gezeigt:
+Das folgende Video zeigt eine exemplarische Vorgehensweise für die Remoteüberwachungslösung:
 
 >[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-28-An-introduction-to-Azure-IoT-through-the-new-Remote-Monitoring-Preconfigured-Solution/Player]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durcharbeiten dieses Tutorials benötigen Sie eine bereitgestellte Instanz der Remoteüberwachungslösung in Ihrem Azure-Abonnement.
+Für dieses Tutorial muss in Ihrem Azure-Abonnement eine bereitgestellte Instanz der Remoteüberwachungslösung vorhanden sein.
 
-Sollten Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
+Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, absolvieren Sie zuerst das Tutorial [Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy.md).
 
 ## <a name="the-contoso-sample-iot-deployment"></a>Contoso-Beispiel für IoT-Bereitstellung
 
-Sie können das Contoso-Beispiel für die IoT-Bereitstellung nutzen, um sich mit den grundlegenden Szenarien vertraut zu machen, die im Lieferumfang der Remoteüberwachungslösung enthalten sind. Diese Szenarien basieren auf IoT-Bereitstellungen aus der Praxis. Sie werden die Remoteüberwachungslösung später wahrscheinlich an Ihre jeweiligen Anforderungen anpassen, aber anhand des Contoso-Beispiels lernen Sie erst einmal die Grundlagen kennen.
+Sie können das Contoso-Beispiel für die IoT-Bereitstellung nutzen, um sich mit den grundlegenden Szenarien vertraut zu machen, die die Remoteüberwachungslösung standardmäßig bereitstellt. Diese Szenarien basieren auf IoT-Bereitstellungen aus der Praxis. Sie werden die Remoteüberwachungslösung später wahrscheinlich an Ihre jeweiligen Anforderungen anpassen, aber anhand des Contoso-Beispiels lernen Sie erst einmal die Grundlagen kennen.
 
 > [!NOTE]
 > Wenn Sie die Befehlszeilenschnittstelle zum Bereitstellen des Solution Accelerators verwendet haben, enthält die Datei `deployment-{your deployment name}-output.json` Informationen zur Bereitstellung, z.B. die URL für den Zugriff auf das bereitgestellte Beispiel.
 
-Mit dem Contoso-Beispiel wird eine Reihe von simulierten Geräten und dazugehörigen Regeln bereitgestellt. Nachdem Sie sich mit den grundlegenden Szenarien vertraut gemacht haben, können Sie unter [Perform advanced device monitoring using the remote monitoring solution](iot-accelerators-remote-monitoring-monitor.md) (Durchführen der erweiterten Geräteüberwachung mit der Remoteüberwachungslösung) weitere Features der Lösung erkunden.
+Mit dem Contoso-Beispiel wird eine Reihe von simulierten Geräten und dazugehörigen Regeln bereitgestellt. Nachdem Sie sich mit den grundlegenden Szenarien vertraut gemacht haben, können Sie unter [Ausführen der erweiterten Überwachung mithilfe der Remoteüberwachungslösung](iot-accelerators-remote-monitoring-monitor.md) weitere Features der Lösung erkunden.
 
 Contoso ist ein Unternehmen, das in unterschiedlichen Umgebungen eine Vielzahl von Objekten verwaltet. Contoso plant den Einsatz von cloudbasierten IoT-Anwendungen, um mehrere Objekte über eine zentralisierte Anwendung per Remotezugriff zu überwachen und zu verwalten. Die folgenden Abschnitte enthalten eine Zusammenfassung der anfänglichen Konfiguration für das Contoso-Beispiel:
 
@@ -253,7 +250,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Organisieren Ihrer Objekte
 > * Anhalten und Starten der simulierten Geräte
 
-Nachdem Sie sich mit der Remoteüberwachungslösung vertraut gemacht haben, schlagen wir vor, dass Sie sich als Nächstes über die erweiterten Features der Remoteüberwachungslösung informieren:
+Nachdem Sie sich mit der Remoteüberwachungslösung vertraut gemacht haben, können Sie sich als Nächstes über die erweiterten Features der Remoteüberwachungslösung informieren:
 
 * [Monitor your devices](./iot-accelerators-remote-monitoring-monitor.md) (Überwachen von Geräten)
 * [Verwalten von Geräten](./iot-accelerators-remote-monitoring-manage.md)

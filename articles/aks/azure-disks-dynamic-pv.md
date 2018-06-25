@@ -8,11 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
-ms.openlocfilehash: 858961db439b28a71d3475d2608073287e02f2fd
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3841222d08b23f43f69e77fa43c469793b70ce63
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34801380"
 ---
 # <a name="persistent-volumes-with-azure-disks"></a>Persistente Volumes mit Azure-Datenträgern
 
@@ -37,11 +38,14 @@ default (default)   kubernetes.io/azure-disk   1h
 managed-premium     kubernetes.io/azure-disk   1h
 ```
 
+> [!NOTE]
+> Ansprüche für persistente Volumes werden in GiB angegeben, verwaltete Azure-Datenträger werden jedoch nach SKU für eine bestimmte Größe abgerechnet. Diese SKUs reichen von 32 GiB für S4- oder P4-Datenträger bis 4 TiB für S50- oder P50-Datenträger. Darüber hinaus hängen Durchsatz und IOPS-Leistung eines verwalteten Premium-Datenträgers sowohl von der SKU als auch von der Instanzgröße der Knoten im AKS-Cluster ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise][managed-disk-pricing-performance].
+
 ## <a name="create-persistent-volume-claim"></a>Erstellen eines Anspruchs auf ein persistentes Volume
 
 Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein PVC eine der zuvor erstellten Speicherklassen verwenden, um einen verwalteten Azure Standard- oder Premium-Datenträger zu erstellen.
 
-Erstellen Sie eine Datei namens `azure-premimum.yaml`, und fügen Sie das folgende Manifest ein.
+Erstellen Sie eine Datei namens `azure-premium.yaml`, und fügen Sie das folgende Manifest ein.
 
 Beachten Sie, dass die Speicherklasse `managed-premium` in der Anmerkung angegeben wird und dass der Anspruch einen Datenträger der Größe `5GB` mit `ReadWriteOnce`-Zugriff anfordert.
 
@@ -63,7 +67,7 @@ spec:
 Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume.
 
 ```azurecli-interactive
-kubectl apply -f azure-premimum.yaml
+kubectl apply -f azure-premium.yaml
 ```
 
 ## <a name="using-the-persistent-volume"></a>Verwenden des persistenten Volumes
@@ -103,16 +107,17 @@ Sie verfügen nun über einen ausgeführten Pod mit Ihrem Azure-Datenträger, de
 Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-Datenträgern.
 
 > [!div class="nextstepaction"]
-> [Kubernetes-Plug-In für Azure-Datenträger][kubernetes-disk]
+> [Kubernetes-Plug-In für Azure-Datenträger][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[kubernetes-disk]: https://kubernetes.io/docs/concepts/storage/storage-classes/#new-azure-disk-storage-class-starting-from-v172
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
+[azure-disk-volume]: azure-disk-volume.md 
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md
