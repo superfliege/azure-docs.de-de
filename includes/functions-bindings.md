@@ -2,7 +2,7 @@ Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der A
 
 | Typ | 1.x | 2.x | Trigger | Eingabe | Output |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Blob-Speicher](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔<sup>1</sup>|✔|✔|✔|  
+| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔<sup>1</sup>|✔|✔|✔|  
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|  
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |  
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|  

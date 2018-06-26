@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 03/20/2018
-ms.openlocfilehash: aa8d92e86a40841ca46ff39f72ebf0ee24d332f8
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.date: 05/18/2018
+ms.openlocfilehash: 9e01d3a69fe8814d4864bccf94c0d65ea573ada8
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272181"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756635"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -24,7 +24,7 @@ Sie können eine Azure Database for PostgreSQL-Serverinstanz basierend auf drei 
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
-| Arbeitsspeicher pro V-Kern | Grundwert | 2x Basic | 2x Allgemein |
+| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 2 TB | 5 GB bis 2 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
@@ -40,7 +40,7 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 Nachdem Sie einen Server erstellt haben, kann die Anzahl von virtuellen Kernen (im gleichen Tarif) innerhalb weniger Sekunden erhöht oder verringert werden. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Den Tarif oder Sicherungsspeichertyp können Sie nach der Erstellung eines Servers nicht mehr ändern. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
 
 
-## <a name="compute-generations-vcores-and-memory"></a>Computegenerationen, V-Kerne und Arbeitsspeicher
+## <a name="compute-generations-and-vcores"></a>Computegenerationen und V-Kerne
 
 Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie aus zwei Computegenerationen wählen – Gen 4 und Gen 5. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 und 5 Gen stehen in den folgenden Regionen zur Verfügung („X“ steht für verfügbar). 
 
@@ -64,14 +64,12 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Asien, Südosten | X | X |
 | Australien (Osten) |  | X |
 | Australien, Südosten |  | X |
-| Indien, Mitte | X |  |
-| Indien, Westen | X |  |
+| Indien, Mitte | X | X |
+| Indien, Westen | X | X |
 | Indien (Süden) |  | X |
 | Japan, Osten | X | X |
 | Japan, Westen | X | X |
 | Korea, Süden |  | X |
-
-Je nach Tarif wird jeder V-Kern mit einer bestimmten Menge an Speicher bereitgestellt. Wenn Sie die Anzahl von V-Kernen für Ihren Server erhöhen oder verringern, wird der Speicher proportional dazu ebenfalls erhöht oder verringert. Im Tarif „Allgemein“ erhalten Sie im Vergleich zum Tarif „Basic“ die doppelte Menge an Speicher pro V-Kern. Im Tarif „Arbeitsspeicheroptimiert“ erhalten Sie im Vergleich zum Tarif „Allgemein“ die doppelte Menge an Speicher.
 
 ## <a name="storage"></a>Speicher
 

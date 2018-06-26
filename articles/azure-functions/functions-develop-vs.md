@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: a38729c266a4dd214c3de97c6b9d92df6ed2dd96
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 93d5883071a012842106bdd946e4f09a0d7aa751
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735118"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35260453"
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions-Tools für Visual Studio  
 
@@ -89,9 +89,7 @@ Weitere Informationen finden Sie unter [Funktionsklassenbibliotheks-Projekt](fun
 
 ## <a name="configure-the-project-for-local-development"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
-Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen für alle Triggertypen außer HTTP und Webhooks den Schlüssel **Values.AzureWebJobsStorage** auf eine gültige Verbindungszeichenfolge des Azure-Speicherkontos festlegen. 
-
-[!INCLUDE [Note on local storage](../../includes/functions-local-settings-note.md)]
+Die Functions-Laufzeit verwendet intern ein Azure-Speicherkonto. Sie müssen für alle Triggertypen außer HTTP und Webhooks den Schlüssel **Values.AzureWebJobsStorage** auf eine gültige Verbindungszeichenfolge des Azure-Speicherkontos festlegen. Ihre Funktions-App kann auch den [Azure-Speicheremulator](../storage/common/storage-use-emulator.md) für die Verbindungseinstellung **AzureWebJobsStorage** verwenden, die für das Projekt erforderlich ist. Um den Emulator zu verwenden, legen Sie den Wert von **AzureWebJobsStorage** auf `UseDevelopmentStorage=true` fest. Sie müssen diese Einstellung vor der Bereitstellung in eine tatsächliche Speicherverbindung ändern.
 
 So legen Sie die Speicherkonto-Verbindungszeichenfolge fest:
 
@@ -111,7 +109,7 @@ In vorab kompilierten Funktionen werden die von der Funktion verwendeten Bindung
 
     ![Erstellen einer Funktion mit Auslösung per Warteschlange](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
 
-    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit einem Schlüssel namens **QueueStorage** verwendet. Diese Einstellung für die Verbindungszeichenfolge muss in der Datei „local.settings.json“ definiert werden.
+    In diesem Triggerbeispiel wird eine Verbindungszeichenfolge mit einem Schlüssel namens **QueueStorage** verwendet. Diese Einstellung für die Verbindungszeichenfolge muss in der Datei [local.settings.json](functions-run-local.md#local-settings-file) definiert werden.
 
 3. Untersuchen Sie die neu hinzugefügte Klasse. Es wird eine statische **Run**-Methode angezeigt, der das Attribut **FunctionName** zugewiesen wird. Dieses Attribut gibt an, dass die Methode den Einstiegspunkt für die Funktion darstellt.
 
