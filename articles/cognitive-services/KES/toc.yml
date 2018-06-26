@@ -1,0 +1,35 @@
+- name: Dokumentation zu Knowledge Exploration Service (KES)
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Informationen zu Knowledge Exploration Service
+      href: Overview.md
+- name: Erste Schritte
+  items:
+    - name: Erstellen eines Back-End-Moduls
+      href: GettingStarted.md
+    - name: Befehlszeile
+      href: CommandLine.md
+    - name: Schemaformat
+      href: SchemaFormat.md
+    - name: Datenformat
+      href: DataFormat.md
+    - name: Grammatikformat
+      href: GrammarFormat.md
+    - name: Semantikinterpretation
+      href: SemanticInterpretation.md
+    - name: Web-API-Schnittstelle
+      href: WebAPI.md
+      items:
+        - name: calchistogram
+          href: calchistogramMethod.md
+        - name: Evaluieren
+          href: evaluateMethod.md
+        - name: Interpretieren
+          href: interpretMethod.md
+    - name: Strukturierte Abfrageausdrücke
+      href: Expressions.md
+- name: angeben
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

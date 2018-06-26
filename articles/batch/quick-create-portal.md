@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: de8b53756c64867c9b24bcd609e5b994e870da9f
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514542"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285582"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -32,7 +32,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 Führen Sie diese Schritte aus, um ein Batch-Beispielkonto für Testzwecke zu erstellen. Zum Erstellen von Pools und Aufträgen benötigen Sie ein Batch-Konto. Wie hier gezeigt, können Sie ein Azure-Speicherkonto mit dem Batch-Konto verknüpfen. Auch wenn es für diese Schnellstartanleitung nicht erforderlich ist, ist das Speicherkonto nützlich zum Bereitstellen von Anwendungen und Speichern von Eingabe- und Ausgabedaten für die meisten Workloads in der Praxis.
 
 
-1. Klicken Sie auf **Neu** > **Compute** > **Batch-Dienst**. 
+1. Klicken Sie auf **Ressource erstellen** > **Compute** > **Batch-Dienst**. 
 
   ![Batch im Marketplace][marketplace_portal]
 
@@ -40,7 +40,7 @@ Führen Sie diese Schritte aus, um ein Batch-Beispielkonto für Testzwecke zu er
 
 3. Wählen Sie für **Speicherkonto** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
 
-4. Behalten Sie die Standardwerte für die verbleibenden Einstellungen bei, und klicken Sie auf **Erstellen**, um das Konto zu erstellen.
+4. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **Erstellen**, um das Konto zu erstellen.
 
   ![Erstellen eines Batch-Kontos][account_portal]  
 
@@ -75,7 +75,7 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
 
   ![Auswählen einer Poolgröße][pool_size] 
 
-5. Behalten Sie die Standardwerte für die verbleibenden Einstellungen bei, und klicken Sie auf **OK**, um den Pool zu erstellen.
+5. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**, um den Pool zu erstellen.
 
 Batch erstellt den Pool sofort, aber es dauert einige Minuten, bis die Computeknoten zugeordnet und gestartet wurden. Während dieses Zeitraums lautet der **Zuweisungsstatus** des Pools **Größe ändern**. Während für den Pool die Größenänderung durchgeführt wird, können Sie einen Auftrag und Aufgaben erstellen. 
 
@@ -89,7 +89,7 @@ Da Sie jetzt über einen Pool verfügen, können Sie einen Auftrag erstellen, um
 
 1. Klicken Sie in der Batch-Kontoansicht auf **Aufträge** > **Hinzufügen**. 
 
-2. Geben Sie eine **Auftrags-ID** mit dem Namen *myjob* ein. Wählen Sie unter **Pool** die Option *mypool*. Behalten Sie die Standardwerte für die verbleibenden Einstellungen bei, und klicken Sie auf **OK**.
+2. Geben Sie eine **Auftrags-ID** mit dem Namen *myjob* ein. Wählen Sie unter **Pool** die Option *mypool*. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
   ![Erstellen eines Auftrags][job_create]
 
@@ -103,11 +103,11 @@ Bei Verwendung von Batch befindet sich die Befehlszeile dort, wo Sie Ihre App bz
 
 Gehen Sie wie folgt vor, um die erste Aufgabe zu erstellen:
 
-1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**.
 
 2. Geben Sie *mytask* als **Task-ID** ein. 
 
-3. Geben Sie in der **Befehlszeile** die Zeichenfolge `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` ein. Behalten Sie die Standardwerte für die verbleibenden Einstellungen bei, und klicken Sie auf **OK**.
+3. Geben Sie in der **Befehlszeile** die Zeichenfolge `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` ein. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
   ![Erstellt eine Aufgabe.][task_create]
 
@@ -127,7 +127,7 @@ Darin sind die Azure Batch-Umgebungsvariablen zu sehen, die auf dem Knoten festg
 
 Wenn Sie mit den Batch-Tutorials und -Beispielen fortfahren möchten, können Sie das erstellte Batch-Konto und das verknüpfte Speicherkonto aus dieser Schnellstartanleitung verwenden. Für das Batch-Konto selbst fallen keine Gebühren an.
 
-Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Klicken Sie in der Kontoansicht auf **Pools** und auf den Namen des Pools. Klicken Sie dann auf **Löschen**.  Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. 
+Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Klicken Sie in der Kontoansicht auf **Pools** und auf den Namen des Pools. Wählen Sie anschließend die Option **Löschen**.  Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. 
 
 Löschen Sie die Ressourcengruppe, das Batch-Konto und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe für das Batch-Konto aus, und klicken Sie auf **Ressourcengruppe löschen**.
 

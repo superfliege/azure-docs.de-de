@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 06/19/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9ba8eae0fe9e68e4931bcdda989e59c59fd65edd
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714577"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293328"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -32,9 +32,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Aktualisieren des Tarifs für Ihre App
-> * Binden Ihres benutzerdefinierten SSL-Zertifikats an App Service
-> * Erzwingen von HTTPS für Ihre App
-> * Automatisieren der SSL-Zertifikatbindung mit Skripts
+> * Binden Ihres benutzerdefinierten Zertifikats an App Service
+> * Erneuern von Zertifikaten
+> * Erzwingen von HTTPS
+> * Erzwingen von TLS 1.1/1.2
+> * Automatisieren der TLS-Verwaltung mit Skripts
 
 > [!NOTE]
 > Wenn Sie ein benutzerdefiniertes SSL-Zertifikat benötigen, können Sie dieses direkt im Azure-Portal abrufen und an Ihre Web-App binden. Absolvieren Sie das [Tutorial zu App Service-Zertifikaten](web-sites-purchase-ssl-web-site.md).
@@ -213,6 +215,14 @@ Sie müssen jetzt nur noch sicherstellen, dass HTTPS für Ihre benutzerdefiniert
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>Erneuern von Zertifikaten
+
+Ihre IP-Adresse für eingehenden Datenverkehr kann sich ändern, wenn Sie eine Bindung löschen, auch wenn diese Bindung IP-basiert ist. Dies ist besonders wichtig, wenn Sie ein Zertifikat erneuern, das sich bereits in einer IP-basierten Bindung befindet. Um eine Änderung der IP-Adresse in Ihrer App zu vermeiden, führen Sie diese Schritte in angegebener Reihenfolge aus:
+
+1. Laden Sie das neue Zertifikat hoch.
+2. Binden Sie das neue Zertifikat an die gewünschte benutzerdefinierte Domäne, ohne die alte zu löschen. Dadurch wird die Bindung ersetzt, anstatt die alte Bindung zu entfernen.
+3. Löschen Sie das alte Zertifikat. 
+
 ## <a name="enforce-https"></a>Erzwingen von HTTPS
 
 Standardmäßig können Benutzer weiterhin mit HTTP auf Ihre Web-App zugreifen. Sie können alle HTTP-Anforderungen an den HTTPS-Port umleiten.
@@ -236,14 +246,6 @@ Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellung
 ![Erzwingen von TLS 1.1 oder 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS-Version ab.
-
-## <a name="renew-certificates"></a>Erneuern von Zertifikaten
-
-Ihre IP-Adresse für eingehenden Datenverkehr kann sich ändern, wenn Sie eine Bindung löschen, auch wenn diese Bindung IP-basiert ist. Dies ist besonders wichtig, wenn Sie ein Zertifikat erneuern, das sich bereits in einer IP-basierten Bindung befindet. Um eine Änderung der IP-Adresse in Ihrer App zu vermeiden, führen Sie diese Schritte in angegebener Reihenfolge aus:
-
-1. Laden Sie das neue Zertifikat hoch.
-2. Binden Sie das neue Zertifikat an die gewünschte benutzerdefinierte Domäne, ohne die alte zu löschen. Dadurch wird die Bindung ersetzt, anstatt die alte Bindung zu entfernen.
-3. Löschen Sie das alte Zertifikat. 
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
@@ -273,6 +275,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+Der folgende Befehl erzwingt mindestens Version 1.2 von TLS.
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Mit folgendem Befehl wird eine exportierte PFX-Datei hochgeladen und eine SNI-basierte SSL-Bindung hinzugefügt.
@@ -297,9 +308,11 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Aktualisieren des Tarifs für Ihre App
-> * Binden Ihres benutzerdefinierten SSL-Zertifikats an App Service
-> * Erzwingen von HTTPS für Ihre App
-> * Automatisieren der SSL-Zertifikatbindung mit Skripts
+> * Binden Ihres benutzerdefinierten Zertifikats an App Service
+> * Erneuern von Zertifikaten
+> * Erzwingen von HTTPS
+> * Erzwingen von TLS 1.1/1.2
+> * Automatisieren der TLS-Verwaltung mit Skripts
 
 Im nächsten Tutorial erfahren Sie, wie Sie Azure Content Delivery Network verwenden.
 

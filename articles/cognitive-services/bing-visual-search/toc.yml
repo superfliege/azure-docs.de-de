@@ -1,0 +1,60 @@
+- name: Visuelle Bing-Suche – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist die API für die visuelle Bing-Suche?
+      href: overview.md
+- name: REST-API-Schnellstartanleitungen
+  expanded: true
+  items:
+    - name: 'Erste Abfrage in C#'
+      href: quickstarts/csharp.md
+    - name: Erste Abfrage in Java
+      href: quickstarts/java.md
+    - name: Erste Abfrage für Node.js
+      href: quickstarts/nodejs.md
+    - name: Erste Abfrage in Python
+      href: quickstarts/python.md
+- name: Tutorials
+  items:
+    - name: Einzelseiten-Web-App
+      href: tutorial-bing-visual-search-single-page-app.md
+    - name: Einzelseiten-Web-App (Quellcode)
+      href: tutorial-bing-visual-search-single-page-app-source.md
+- name: Beispiele
+  items:
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Visual+Search'
+- name: Konzepte
+  items:
+    - name: Standardbildauswertungen
+      href: default-insights-tag.md
+    - name: Nutzung von Bing-Erkenntnissen
+      href: bing-insights-usage.md
+    - name: Unterstützte Länder und Märkte
+      href: supported-countries-markets.md
+    - name: Analysen für die API für die visuelle Suche
+      href: bing-visual-search-stats.md
+- name: Anleitungen
+  items:
+    - name: Gewinnen von Erkenntnissen per Token
+      href: use-insights-token.md
+    - name: Verwenden und Anzeigen von Ergebnissen
+      href: use-and-display-requirements.md
+    - name: Ändern der Größe und Zuschneiden von Miniaturansichten
+      href: resize-and-crop-thumbnails.md
+- name: Verweis
+  expanded: true
+  items:
+    - name: REST-API v7
+      href: 'https://aka.ms/bingvisualsearchreferencedoc'
+- name: Ressourcen
+  items:
+    - name: Abrufen des kostenlosen Zugriffsschlüssels
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
+    - name: Testen
+      href: 'https://aka.ms/bingvisualsearchtryforfree'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/bing-search'
+    - name: Aussagen von Benutzern
+      href: 'https://cognitive.uservoice.com/forums/555907-bing-search'

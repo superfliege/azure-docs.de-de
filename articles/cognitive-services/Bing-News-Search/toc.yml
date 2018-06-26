@@ -1,0 +1,91 @@
+- name: Dokumentation zur Bing-News-Suche
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich bei der Bing-News-Suche?
+      href: search-the-web.md
+- name: REST-API-Schnellstartanleitungen
+  expanded: true
+  items:
+    - name: Erste Schritte
+      href: quickstart.md
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java.md
+    - name: Node.js
+      href: nodejs.md
+    - name: PHP
+      href: php.md
+    - name: Python
+      href: python.md
+    - name: Ruby
+      href: ruby.md
+- name: SDK-Schnellstartanleitungen
+  items:
+    - name: Übersicht über SDK-Beispiele
+      href: sdk.md
+    - name: 'SDK-Schnellstartanleitung für die News-Suche: C#'
+      href: news-search-sdk-quickstart.md
+    - name: 'SDK-Schnellstartanleitung für die News-Suche: Node.js'
+      href: news-search-sdk-node-quickstart.md
+    - name: 'SDK-Schnellstartanleitung für die News-Suche: Python'
+      href: news-sdk-python-quickstart.md
+    - name: 'SDK-Schnellstartanleitung für die News-Suche: Java'
+      href: news-sdk-java-quickstart.md
+- name: Tutorials
+  items:
+    - name: Einzelseiten-Web-App
+      href: tutorial-bing-news-search-single-page-app.md
+    - name: Einzelseiten-Web-App (Quellcode)
+      href: tutorial-bing-news-search-single-page-app-source.md
+- name: Beispiele
+  items:
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
+- name: Anleitungen
+  items:
+    - name: Verwenden und Anzeigen von Anforderungen
+      href: UseAndDisplayRequirements.md
+    - name: Behandeln von Trefferhervorhebungen
+      href: hit-highlighting.md
+    - name: Einteilen von Nachrichten in Seiten
+      href: paging-news.md
+    - name: Ändern der Größe und Zuschneiden von Miniaturansichten
+      href: resize-and-crop-thumbnails.md
+    - name: Upgrade von v5 auf v7
+      href: bing-news-upgrade-guide-v5-to-v7.md
+    - name: Arbeiten mit Visual Studio
+      items:
+        - name: Verwenden des verbundenen Diensts für die Bing-News-Suche
+          href: vs-bing-news-search-connected-service.md
+- name: Verweis
+  items:
+    - name: Bing-News-Suche-API v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference'
+    - name: Bing-News-Suche-API v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference'
+- name: angeben
+  items:
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+news+search'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Knowledge Base
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Abrufen des API-Schlüssels
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api'
+    - name: Testen
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
+    - name: Bing-News-Suche-Endpunkte
+      href: endpoint-news.md
+    - name: Unterstützte Länder und Märkte
+      href: supported-countries-markets.md
+    - name: Analyse für die Bing-News-Suche-API
+      href: bing-news-stats.md

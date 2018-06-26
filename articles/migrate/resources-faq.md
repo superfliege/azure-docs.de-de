@@ -3,15 +3,15 @@ title: Azure Migrate – Häufig gestellte Fragen (FAQ) | Microsoft-Dokumentatio
 description: Beantwortet häufig gestellte Fragen zu Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
-ms.topic: article
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: b18d2cecfd7556ad3f05d0f63435d16bc29ebab1
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826133"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285704"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält häufig gestellte Fragen zu Azure Migrate. Sollten Sie n
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Was unterscheidet Azure Migrate von Azure Site Recovery?
 
-Azure Migrate ist ein Bewertungsdienst, mit dem Sie Ihre lokalen Workloads bestimmen und Ihre Migration zu Azure planen können. Mit [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), das zudem eine Notfallwiederherstellungslösung ist, können Sie lokale Workloads zu IaaS-VMs in Azure migrieren. 
+Azure Migrate ist ein Bewertungsdienst, mit dem Sie Ihre lokalen Workloads bestimmen und Ihre Migration zu Azure planen können. Mit [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), das zudem eine Notfallwiederherstellungslösung ist, können Sie lokale Workloads zu IaaS-VMs in Azure migrieren.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Was unterscheidet Azure Migrate von Azure Site Recovery-Bereitstellungsplaner?
 
@@ -36,6 +36,10 @@ Azure Migrate ist ein Tool für die Migrationsplanung und Azure Site Recovery-Be
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Benötigt Azure Migrate vCenter Server zum Ermitteln einer VMware-Umgebung?
 
 Ja, Azure Migrate benötigt vCenter Server zum Ermitteln einer VMware-Umgebung. Die Ermittlung von ESXi-Hosts, die nicht von einem vCenter Server verwaltet werden, wird nicht unterstützt.
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Welche Azure-Regionen werden von Azure Migrate unterstützt?
+
+Azure Migrate unterstützt derzeit die Regionen „USA, Osten“ und „USA, Westen-Mitte“ als Projektstandorte. Auch wenn Sie Migrationsprojekte nur in „USA, Osten“ und „USA, Westen-Mitte“ erstellen können, haben Sie dennoch die Möglichkeit, Ihre Computer für [mehrere Zielstandorte](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties) zu bewerten. Der Projektstandort wird nur verwendet, um die ermittelten Daten zu speichern.
 
 ## <a name="discovery"></a>Ermittlung
 

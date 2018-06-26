@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/29/2018
+ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: e9fb1088110212a0971ea1af7bbfbecb7d150e21
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715036"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293478"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -142,6 +142,8 @@ Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stell
 
 - Trigger für ein rollierendes Fenster: ein Trigger, der in einem regelmäßigen Intervall ausgeführt wird, während der Zustand beibehalten wird. Azure Data Factory unterstützt derzeit keine ereignisbasierten Trigger. Der Trigger für eine Pipelineausführung, die auf ein Dateieingangsereignis reagiert, wird beispielsweise nicht unterstützt.
 
+- Ereignisbasierter Trigger: Ein Trigger, der auf ein Ereignis reagiert.
+
 Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, oder ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden Triggerdefinition bezieht sich die **Pipelines**-Eigenschaft auf eine Liste von Pipelines, die vom jeweiligen Trigger ausgelöst werden. Die Eigenschaftendefinition enthält Werte für die Pipelineparameter.
 
 ### <a name="basic-trigger-definition"></a>Grundlegende Triggerdefinition
@@ -175,11 +177,6 @@ Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine ein
 Ein Zeitplantrigger führt Pipelines nach einem Realzeitplan aus. Dieser Trigger unterstützt regelmäßige und erweiterte Kalenderoptionen. Der Trigger unterstützt z.B. Intervalle wie „wöchentlich“ oder „Montag um 17:00 Uhr und Donnerstag um 21:00 Uhr“. Der Zeitplantrigger ist flexibel, da das DataSet-Muster agnostisch ist und der Trigger nicht zwischen Zeitreihendaten und Nicht-Zeitreihendaten unterscheidet.
 
 Weitere Informationen zu Zeitplantriggern und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline gemäß einem Zeitplan](how-to-create-schedule-trigger.md).
-
-## <a name="tumbling-window-trigger"></a>Trigger für ein rollierendes Fenster
-Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
-
-Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
 
 ## <a name="schedule-trigger-definition"></a>Definition für Zeitplantrigger
 Wenn Sie einen Zeitplantrigger erstellen, geben den Zeitplan und die Wiederholung mithilfe einer JSON-Definition an. 
@@ -322,6 +319,17 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der **schedule**-E
 | **weekDays** | Tage der Woche, an denen der Trigger ausgeführt wird Der Wert kann nur bei wöchentlicher Häufigkeit angegeben werden.|<br />– „Monday“<br />– „Tuesday“<br />– „Wednesday“<br />– „Thursday“<br />– „Friday“<br />– „Saturday“<br />– „Sunday“<br />– Array von Tageswerten (die maximale Arraygröße ist 7)<br /><br />Bei Tageswerten wird nicht zwischen Groß- und Kleinschreibung unterschieden.|
 | **monthlyOccurrences** | Tage des Monats, an denen der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |– Array von **monthlyOccurrence**-Objekten: `{ "day": day,  "occurrence": occurence }`<br />– Das **day**-Attribut ist der Tag der Woche, an dem der Trigger ausgeführt wird. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**-Wert `{Sunday}` bedeutet jeden Sonntag des Monats. Das **day**-Attribut ist erforderlich.<br />– Das **occurrence**-Attribut ist das Vorkommen des angegebenen **day**-Attributs innerhalb des Monats. Beispiel: Eine **monthlyOccurrences**-Eigenschaft mit dem **day**- und **occurrence**-Wert `{Sunday, -1}` bedeutet den letzten Sonntag des Monats. Das **occurrence**-Attribut ist optional.|
 | **monthDays** | Tag des Monats, an dem der Trigger ausgeführt wird. Der Wert kann nur bei monatlicher Häufigkeit angegeben werden. |– Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31<br />– Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31<br />– Array von Werten|
+
+## <a name="tumbling-window-trigger"></a>Trigger für ein rollierendes Fenster
+Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
+
+Weitere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster](how-to-create-tumbling-window-trigger.md).
+
+## <a name="event-based-trigger"></a>Ereignisbasierter Trigger
+
+Ein ereignisbasierter Trigger führt Pipelines als Reaktion auf ein Ereignis (etwa den Eingang einer Datei oder die Löschung einer Datei) in Azure Blob Storage aus.
+
+Weitere Informationen zum ereignisbasierten Trigger finden Sie unter [Create a trigger that runs a pipeline in response to an event](how-to-create-event-trigger.md) (Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt).
 
 ## <a name="examples-of-trigger-recurrence-schedules"></a>Beispiele für Wiederholungszeitpläne von Triggern
 Dieser Abschnitt enthält Beispiele für Wiederholungszeitpläne. Der Schwerpunkt liegt auf dem **schedule**-Objekt und seinen Elementen.

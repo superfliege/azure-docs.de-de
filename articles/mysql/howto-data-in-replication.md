@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265750"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294420"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
-In diesem Artikel erfahren Sie, wie Sie die Datenreplikation im Dienst Azure Database for MySQL einrichten, indem Sie den primären Server und den Replikatserver konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie die Datenreplikation im Dienst Azure Database for MySQL einrichten, indem Sie den primären Server und den Replikatserver konfigurieren. Mithilfe der Replikation eingehender Daten können Sie Daten von einem primären MySQL-Server, der lokal, auf virtuellen Computern oder von Datenbankdiensten ausgeführt wird, die von anderen Cloudanbietern gehostet werden, mit einem Replikat im Azure Database for MySQL-Dienst synchronisieren. 
 
 In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MySQL-Servern und -Datenbanken verfügen.
 
@@ -29,7 +29,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Er
    Erstellen Sie einen neuen MySQL-Server (z.B. „replica.mysql.database.azure.com“). Informationen zur Servererstellung finden Sie unter [Erstellen eines Azure Database for MySQL-Servers über das Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md). Dieser Server ist der Replikatserver bei der Datenreplikation.
 
    > [!IMPORTANT]
-   > Dieser Server muss in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ erstellt werden.
+   > Der Azure Database for MySQL-Server muss in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ erstellt werden.
    > 
 
 2. Erstellen Sie dieselben Benutzerkonten und entsprechenden Berechtigungen.
@@ -37,6 +37,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Er
    Benutzerkonten werden nicht vom primären Server zum Replikatserver repliziert. Wenn Sie Benutzern Zugriff auf den Replikatserver gewähren möchten, müssen Sie alle Konten und entsprechenden Berechtigungen für diesen neu erstellten Azure Database for MySQL-Server manuell erstellen.
 
 ## <a name="configure-the-primary-server"></a>Konfigurieren des primären Servers
+Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuellen Computer oder von einem von anderen Cloudanbietern gehosteten Datenbankdienst gehostet wird, für die Replikation eingehender Daten vorbereitet und konfiguriert. Dieser Server ist der primäre Server bei der Replikation eingehender Daten. 
 
 1. Aktivieren Sie die binäre Protokollierung.
 
@@ -226,3 +227,6 @@ Um einen Replikationsfehler zu überspringen und die Replikation fortzusetzen, v
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+- Informieren Sie sich über die [Replikation eingehender Daten](concepts-data-in-replication.md) für Azure Database for MySQL. 

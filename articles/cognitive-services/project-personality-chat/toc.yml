@@ -1,0 +1,11 @@
+- name: Dokumentation zu Project Personality Chat
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist Project Personality Chat?
+      href: overview.md
+- name: angeben
+  expanded: true
+  items:
+    - name: Häufig gestellte Fragen
+      href: faq.md

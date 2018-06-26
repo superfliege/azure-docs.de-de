@@ -2,21 +2,21 @@
 title: Erstellen einer Azure Time Series Insights-Umgebung
 description: Es wird beschrieben, wie Sie eine Time Series Insights-Umgebung erstellen, die mit Daten von simulierten Geräten aufgefüllt wird.
 services: time-series-insights
-author: BryanLa
+author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: bryanla
-ms.openlocfilehash: 434f9f7890b909746fd1a0f72a2dea5d7bb27e92
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301353"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295846"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 
-In diesem Tutorial wird der Prozess zum Erstellen einer Time Series Insights-Umgebung (TSI) beschrieben, die mit Daten von simulierten Geräten aufgefüllt wird. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird der Prozess zum Erstellen einer Time Series Insights-Umgebung (TSI) beschrieben, die mit Daten von simulierten Geräten aufgefüllt wird In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer TSI-Umgebung 
@@ -56,7 +56,7 @@ Erstellen Sie zunächst unter Ihrem Azure-Abonnement eine TSI-Umgebung:
    **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die TSI-Umgebung. Der Name wird vom TSI-Explorer und von der Abfrage-API verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie das Abonnement aus, unter dem Sie die TSI-Umgebung erstellen möchten.
    **Ressourcengruppe** | Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Wählen Sie eine vorhandene Ressourcengruppe für die TSI-Umgebungsressource aus, oder erstellen Sie eine neue.
-   **Standort** | Wählen Sie eine Rechenzentrumsregion für Ihre TSI-Umgebung aus. Um zusätzliche Bandbreitenkosten und Latenz zu vermeiden, ist es ratsam, die TSI-Umgebung in derselben Region wie die anderen IoT-Ressourcen zu belassen.
+   **Location** | Wählen Sie eine Rechenzentrumsregion für Ihre TSI-Umgebung aus. Um zusätzliche Bandbreitenkosten und Latenz zu vermeiden, ist es ratsam, die TSI-Umgebung in derselben Region wie die anderen IoT-Ressourcen zu belassen.
    **Preise für SKUs** | Wählen Sie den erforderlichen Durchsatz aus. Wählen Sie „S1“, um die niedrigsten Kosten zu erzielen und die geringste Anfangskapazität zu erhalten.
    **Kapazität** | Die Kapazität ist der Multiplikator, der auf die Eingangsrate, Speicherkapazität und Kosten der ausgewählten SKU angewendet wird.  Die Kapazität einer Umgebung kann nach der Erstellung geändert werden. Wählen Sie die Kapazität „1“ aus, um die niedrigsten Kosten zu erzielen. 
 
@@ -182,7 +182,7 @@ Im [Abschnitt „Erstellen einer Gerätesimulation“](#create-a-device-simulati
 
    ![Setup der Gerätesimulation](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)
 
-4. Während der Ausführung der Simulation sehen Sie, dass die Felder **Total messages** (Gesamte Nachrichten) und **Messages per second** (Nachrichten pro Sekunde) ca. alle zehn Sekunden aktualisiert werden. Die Simulation wird nach ca. fünf Minuten beendet, und das **Simulationssetup** wird wieder angezeigt.
+4. Während der Ausführung der Simulation sehen Sie, dass die Felder **Total messages** (Nachrichten gesamt) und **Messages per second** (Nachrichten pro Sekunde) ca. alle zehn Sekunden aktualisiert werden. Die Simulation wird nach ca. fünf Minuten beendet, und das **Simulationssetup** wird wieder angezeigt.
 
    ![Aktive Gerätesimulation](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)
 
@@ -230,9 +230,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Ausführen einer Gerätesimulation zum Streamen von Daten in die TSI-Umgebung
 > * Überprüfen der simulierten Telemetriedaten
 
-Nachdem Sie jetzt mit der Erstellung Ihrer eigenen TSI-Umgebung vertraut sind, können Sie sich weiter über den Planungsprozess informieren, indem Sie mit dem folgenden Artikel fortfahren:
+Sie haben erfahren, wie Sie Ihre eigene TSI-Umgebung erstellen. Lernen Sie nun, wie Sie eine Webanwendung entwickeln, die Daten aus einer TSI-Umgebung nutzt:
 
 > [!div class="nextstepaction"]
-> [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md)
+> [Erstellen einer einseitigen Azure Time Series Insights-Web-App](tutorial-create-tsi-sample-spa.md)
 
 

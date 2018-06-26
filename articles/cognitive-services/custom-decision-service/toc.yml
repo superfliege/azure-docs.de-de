@@ -1,0 +1,43 @@
+- name: Dokumentation zu Custom Decision Service
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Worum handelt es sich bei Custom Decision Service?
+      href: custom-decision-service-overview.md
+    - name: Custom Decision Service-Workflow
+      href: custom-decision-service-workflow.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Anwendung registrieren
+      href: custom-decision-service-get-started-register.md
+    - name: Aufrufen einer API in einem Browser
+      href: custom-decision-service-get-started-browser.md
+    - name: Aufrufen einer API in einer App
+      href: custom-decision-service-get-started-app.md
+- name: Tutorials
+  items:
+    - name: Artikelpersonalisierung
+      href: custom-decision-service-tutorial-news.md
+    - name: Machine Learning
+      href: custom-decision-service-tutorial-ml.md
+- name: Verweis
+  items:
+    - name: API
+      href: custom-decision-service-api-reference.md
+    - name: Experimentieren
+      href: custom-decision-service-experimentation-reference.md
+    - name: LogDownloader
+      href: custom-decision-service-log-downloader-reference.md
+- name: angeben
+  items:
+    - name: Preise (kostenlos)
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Knowledge Base
+      href: 'https://cognitive.uservoice.com/knowledgebase'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

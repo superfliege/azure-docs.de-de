@@ -1,6 +1,6 @@
 ---
-title: Rollenbasierte Zugriffssteuerung im Azure-Portal | Microsoft-Dokumentation
-description: Führen Sie die ersten Schritte der Zugriffsverwaltung mit der rollenbasierten Zugriffssteuerung im Azure-Portal aus. Verwenden Sie Rollenzuweisungen, um Ihren Ressourcen Berechtigungen zuzuweisen.
+title: Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und des Azure-Portals verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,73 +11,167 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2017
+ms.date: 06/13/2018
 ms.author: rolyon
-ms.reviewer: rqureshi
-ms.openlocfilehash: 4ac7fda78f456a233c8dba90a6a50e19774991df
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.reviewer: bagovind
+ms.openlocfilehash: 8f2c77a366c96455016894c042868d080551bc6a
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203649"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295863"
 ---
-# <a name="use-role-based-access-control-to-manage-access-to-your-azure-subscription-resources"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen
-> [!div class="op_single_selector"]
-> * [Verwalten des Zugriffs nach Benutzer oder Gruppe](role-assignments-users.md)
-> * [Verwalten des Zugriffs nach Ressource](role-assignments-portal.md)
+# <a name="manage-access-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals
 
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Dieser Artikel hilft Ihnen bei der Einrichtung von RBAC im Azure-Portal. Weitere Informationen dazu, wie RBAC Sie bei der Zugriffsverwaltung unterstützt, finden Sie unter [Get started with access management in the Azure portal](overview.md)(Erste Schritte mit der Zugriffsverwaltung im Azure-Portal).
+Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und dem Azure-Portal verwalten.
 
-In jedem Abonnement können Sie bis zu 2.000 Rollenzuweisungen gewähren. 
+## <a name="list-roles"></a>Auflisten der Rollen
 
-## <a name="view-access"></a>Zugriff anzeigen
-Im Hauptblatt im [Azure-Portal](https://portal.azure.com)können Sie anzeigen, wer Zugriff auf eine Ressource, Ressourcengruppe oder ein Abonnement hat. Wir möchten beispielsweise sehen, wer Zugriff auf eine unserer Ressourcengruppen hat:
+Eine Rollendefinition ist eine Auflistung von Berechtigungen, die Sie für Rollenzuweisungen verwenden. Azure enthält über 60 [integrierte Rollen](built-in-roles.md).
 
-1. Wählen Sie in der Navigationsleiste auf der linken Seite **Ressourcengruppe** aus.  
-    ![Ressourcengruppen – Symbole](./media/role-assignments-portal/resourcegroups_icon.png)
-2. Wählen Sie im Blatt **Ressourcengruppen** den Namen der Ressourcengruppe aus.
-3. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)**.  
-4. Auf dem Blatt für die Zugriffssteuerung werden alle Benutzer, Gruppen und Anwendungen aufgeführt, denen Zugriff auf die Ressourcengruppe gewährt wurde.  
-   
-    ![Blatt „Benutzer“ – geerbter und zugewiesener Zugriff – Screenshot](./media/role-assignments-portal/view-access.png)
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
 
-Beachten Sie, dass einige Rollen auf **Diese Ressource** begrenzt sind, während andere von einem anderen Bereich **geerbt** werden. Der Zugriff wird entweder speziell der Ressourcengruppe zugewiesen oder von einer Zuweisung des übergeordneten Abonnements geerbt.
+1. Wählen Sie Ihr Abonnement aus.
 
-> [!NOTE]
-> Klassische Administratoren und Co-Admins für Abonnements werden im neuen RBAC-Modell als Besitzer des Abonnements betrachtet.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
 
-## <a name="add-access"></a>Zugriff hinzufügen
-Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt.
+   ![Rollenoption](./media/role-assignments-portal/list-subscription-access-control.png)
 
-1. Wählen Sie auf dem Blatt für die Zugriffssteuerung die Option **Hinzufügen**.  
-2. Wählen Sie auf dem Blatt **Rolle auswählen** auf die Rolle, die Sie zuweisen möchten.
-3. Wählen Sie den Benutzer, die Gruppe oder die Anwendung als das Element in Ihrem Verzeichnis aus, für das Sie Zugriff gewähren möchten. Sie können das Verzeichnis mit Anzeigenamen, E-Mail-Adressen und Objektbezeichnern durchsuchen.  
-   
-    ![Blatt „Benutzer hinzufügen“ – Durchsuchen – Screenshot](./media/role-assignments-portal/grant-access2.png)
-4. Wählen Sie **OK** , um die Zuweisung zu erstellen. Das Popupfenster **Der Benutzer wird hinzugefügt** zeigt den Fortschritt an.  
-    ![Statusanzeige „Der Benutzer wird hinzugefügt“ – Screenshot](./media/role-assignments-portal/addinguser_popup.png)
+1. Klicken Sie auf **Rollen**, um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
 
-Wenn die Rollenzuweisung hinzugefügt wurde, erscheint sie auf dem Blatt **Benutzer** .
+   ![Rollenoption](./media/role-assignments-portal/roles-option.png)
+
+   Sie können die Anzahl von Benutzern und Gruppen anzeigen, die jeder Rolle zugewiesen sind.
+
+   ![Rollenliste](./media/role-assignments-portal/roles-list.png)
+
+## <a name="list-access"></a>Auflisten des Zugriffs
+
+Bei der Zugriffsverwaltung möchten Sie die zugriffsberechtigten Benutzer sowie deren Berechtigungen und Berechtigungsstufe ermitteln. Zum Auflisten des Zugriffs führen Sie die Rollenzuweisungen auf.
+
+### <a name="list-role-assignments-for-a-subscription"></a>Auflisten der Rollenzuweisungen für ein Abonnement
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
+
+1. Wählen Sie Ihr Abonnement aus.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+
+    Auf dem Blatt „Zugriffssteuerung (IAM)“ (auch als „Identitäts- und Zugriffsverwaltung“ bezeichnet) sehen Sie die Benutzer, die Zugriff auf das Abonnement haben, und ihre Rolle.
+
+    ![Blatt „Zugriffssteuerung (IAM)“](./media/role-assignments-portal/subscription-access-control.png)
+
+    Klassische Administratoren und Co-Admins für Abonnements werden im RBAC-Modell als Besitzer des Abonnements betrachtet.
+
+
+### <a name="list-role-assignments-for-a-resource-group"></a>Auflisten von Rollenzuweisungen für eine Ressourcengruppe
+
+1. Wählen Sie in der Navigationsliste die Option **Ressourcengruppen** aus.
+
+1. Wählen Sie eine Ressourcengruppe aus, und klicken Sie dann auf **Zugriffssteuerung (IAM)**.
+
+   Auf dem Blatt „Zugriffssteuerung (IAM)“ wird angezeigt, wer Zugriff auf diese Ressourcengruppe hat. Beachten Sie, dass einige Rollen auf **Diese Ressource** begrenzt sind, während andere von einem anderen Bereich **geerbt** werden. Der Zugriff wird entweder speziell der Ressourcengruppe zugewiesen oder von einer Zuweisung des übergeordneten Abonnements geerbt.
+
+   ![Ressourcengruppen](./media/role-assignments-portal/resource-group-access-control.png)
+
+### <a name="list-role-assignments-for-a-user"></a>Liste von Rollenzuweisungen für einen Benutzer
+
+1. Klicken Sie in der Navigationsliste auf **Azure Active Directory**.
+
+1. Klicken Sie auf **Benutzer**, um **Alle Benutzer** zu öffnen.
+
+   ![Blatt „Alle Benutzer“ in Azure Active Directory](./media/role-assignments-portal/aad-all-users.png)
+
+1. Wählen Sie einen einzelnen Benutzer in der Liste aus.
+
+1. Klicken Sie im Abschnitt **Verwalten** auf **Azure-Ressourcen**.
+
+   ![Azure Active Directory-Benutzer: Azure-Ressourcen](./media/role-assignments-portal/aad-user-azure-resources.png)
+
+   Auf dem Blatt „Azure-Ressourcen“ sehen Sie die Rollenzuweisungen für den ausgewählten Benutzer. Diese Liste enthält nur die Rollenzuweisungen für Ressourcen, für die Sie über Leseberechtigungen verfügen. Wenn der Benutzer beispielsweise auch über Rollenzuweisungen in einem anderen Abonnement verfügt, für das Sie keine Leseberechtigung besitzen, werden diese Rollenzuweisungen nicht in der Liste angezeigt.
+
+## <a name="grant-access"></a>Gewähren von Zugriff
+
+In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
+
+### <a name="create-a-role-assignment-at-a-subscription-scope"></a>Erstellen einer Rollenzuweisung im Abonnementbereich
+
+1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
+
+1. Wählen Sie Ihr Abonnement aus.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**, um die aktuelle Liste von Rollenzuweisungen im Abonnementbereich anzuzeigen.
+
+   ![Blatt „Zugriffssteuerung (IAM)“ für Ressourcengruppe](./media/role-assignments-portal/grant-subscription-access-control.png)
+
+1. Klicken Sie auf **Hinzufügen**, um den Bereich **Berechtigungen hinzufügen** zu öffnen.
+
+   Falls Sie nicht über Berechtigungen zum Zuweisen von Rollen verfügen, wird die Option **Hinzufügen** nicht angezeigt.
+
+   ![Bereich „Berechtigungen hinzufügen“](./media/role-assignments-portal/add-permissions.png)
+
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+
+1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe oder eine Anwendung aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
+
+1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen.
+
+   Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle im Abonnementbereich zugewiesen.
+
+### <a name="create-a-role-assignment-at-a-resource-group-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcengruppenbereich
+
+1. Wählen Sie in der Navigationsliste die Option **Ressourcengruppen** aus.
+
+1. Wählen Sie eine Ressourcengruppe aus.
+
+1. Klicken Sie auf **Zugriffssteuerung (IAM)**, um die aktuelle Liste von Rollenzuweisungen im Ressourcengruppenbereich anzuzeigen.
+
+   ![Blatt „Zugriffssteuerung (IAM)“ für Ressourcengruppe](./media/role-assignments-portal/grant-resource-group-access-control.png)
+
+1. Klicken Sie auf **Hinzufügen**, um den Bereich **Berechtigungen hinzufügen** zu öffnen.
+
+   Falls Sie nicht über Berechtigungen zum Zuweisen von Rollen verfügen, wird die Option **Hinzufügen** nicht angezeigt.
+
+   ![Bereich „Berechtigungen hinzufügen“](./media/role-assignments-portal/add-permissions.png)
+
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
+
+1. Wählen Sie in der Liste **Auswählen** einen Benutzer, eine Gruppe oder eine Anwendung aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
+
+1. Wählen Sie **Speichern** aus, um die Rollenzuweisung zu erstellen.
+
+   Nach einigen Augenblicken wird der Sicherheitsprinzipal der Rolle im Ressourcengruppenbereich zugewiesen.
 
 ## <a name="remove-access"></a>Zugriff entfernen
-1. Bewegen Sie den Cursor auf den Namen der Zuweisung, die Sie entfernen möchten. Neben dem Namen wird ein Kontrollkästchen angezeigt.
-2. Verwenden Sie die Kontrollkästchen, um mindestens eine Rollenzuweisung auszuwählen.
-2. Wählen Sie **Entfernen**.  
-3. Wählen Sie **Ja**, um das Entfernen zu bestätigen.
 
-Geerbte Zuweisungen können nicht entfernt werden. Wenn Sie eine geerbte Zuweisung entfernen möchten, müssen Sie dies für den Bereich durchführen, in dem die Rollenzuweisung erstellt wurde. Die Spalte **Bereich** neben **Geerbt** enthält einen Link, mit dem Sie zu den Ressourcen gelangen, denen diese Rolle zugewiesen wurde. Sie können die Rollenzuweisung entfernen, indem Sie zu der dort aufgelisteten Ressource gehen.
+In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen.
 
-![Blatt „Benutzer“ – Schaltfläche „Entfernen“ bei geerbtem Zugriff deaktiviert – Screenshot](./media/role-assignments-portal/remove-access2.png)
+### <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
+
+1. Öffnen Sie das Blatt **Zugriffssteuerung (IAM)** für das Abonnement, die Ressourcengruppe oder die Ressource, das bzw. die die zu entfernende Rollenzuweisung enthält.
+
+1. Aktivieren Sie in der Liste der Rollenzuweisungen den Sicherheitsprinzipal mit der zu entfernenden Rollenzuweisung.
+
+   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-select.png)
+
+1. Klicken Sie auf **Entfernen**.
+
+   ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment.png)
+
+1. Klicken Sie in der Nachricht zum Entfernen der Rollenzuweisung auf **Ja**.
+
+Geerbte Rollenzuweisungen können nicht entfernt werden. Wenn Sie eine geerbte Rollenzuweisung entfernen möchten, müssen Sie dies für den Bereich durchführen, in dem die Rollenzuweisung erstellt wurde. Die Spalte **Bereich** neben **Geerbt** enthält einen Link, mit dem Sie zu den Ressourcen gelangen, denen diese Rolle zugewiesen wurde. Sie können die Rollenzuweisung entfernen, indem Sie zu dem dort aufgelisteten Bereich gehen.
 
 ## <a name="other-tools-to-manage-access"></a>Andere Tools zum Verwalten des Zugriffs
-Sie können auch mit Azure RBAC-Befehlen in anderen Tools als dem Azure-Portal Rollen zuweisen und den Zugriff verwalten.  Folgen Sie den Links, um weitere Informationen zu den Voraussetzungen und Hilfe bei den ersten Schritten mit Azure RBAC-Befehlen zu erhalten.
+
+Sie können auch mit Azure RBAC-Befehlen in anderen Tools als dem Azure-Portal Rollen zuweisen und den Zugriff verwalten. Weitere Informationen finden Sie unter den folgenden Links:
 
 * [Azure PowerShell](role-assignments-powershell.md)
-* [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md)
+* [Azure-CLI](role-assignments-cli.md)
 * [REST-API](role-assignments-rest.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines Verlaufsberichts zu Zugriffsänderungen](change-history-report.md)
-* Weitere Informationen finden Sie unter [Integrierte RBAC-Rollen in Azure](built-in-roles.md)
-* Definieren Sie Ihre eigenen [benutzerdefinierten Rollen in Azure RBAC](custom-roles.md)
 
+* [Schnellstart: Gewähren des Zugriffs für einen Benutzer mithilfe der RBAC und des Azure-Portals](quickstart-assign-role-user-portal.md)
+* [Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+* [Integrierte Rollen](built-in-roles.md)

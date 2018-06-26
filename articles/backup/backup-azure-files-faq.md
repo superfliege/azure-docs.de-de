@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f6dcaee1ac328a9bafce0561f421b772b7e1d119
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605167"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286399"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -23,7 +23,7 @@ Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um si
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurieren des Sicherungsauftrags für Azure Files
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Warum werden einige Speicherkonten nicht angezeigt, die geschützt werden sollen und gültige Azure-Dateifreigaben enthalten? <br/>
-Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben nicht alle Arten von Speicherkonten. Die Liste mit den unterstützten Speicherkonten finden Sie [hier](troubleshoot-azure-files.md#preview-boundaries). Das gesuchte Speicherkonto kann auch bereits geschützt oder in einem anderen Tresor registriert sein. [Heben Sie die Registrierung beim Tresor auf](troubleshoot-azure-files.md#configuring-backup), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
+Während der Vorschauphase unterstützt die Sicherung für Azure-Dateifreigaben nicht alle Arten von Speicherkonten. Die Liste mit den unterstützten Speicherkonten finden Sie [hier](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Das gesuchte Speicherkonto kann auch bereits geschützt oder in einem anderen Tresor registriert sein. [Heben Sie die Registrierung beim Tresor auf](troubleshoot-azure-files.md#configuring-backup), um das Speicherkonto in anderen Tresoren für den Schutz zu ermitteln.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Warum werden beim Konfigurieren der Sicherung einige Azure-Dateifreigaben im Speicherkonto nicht angezeigt? <br/>
 Überprüfen Sie, ob die Azure-Dateifreigabe bereits in demselben Recovery Services-Tresor geschützt wird oder vor Kurzem gelöscht wurde.
@@ -39,13 +39,13 @@ Ja. Sie müssen jedoch im verknüpften Tresor den [Schutz beenden](backup-azure-
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>An welchen geografischen Standorten kann ich Azure-Dateifreigaben sichern? <br/>
 Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschauphase und ist nur an folgenden geografischen Standorten verfügbar: 
--   Australien, Südosten (ASE) 
+-   Australien, Osten (AE) 
+- Australien, Südosten (ASE) 
 - Brasilien, Süden (BRS)
 - Kanada, Mitte (CNC)
 -   Kanada, Osten (CE)
 -   USA, Mitte (CUS)
 -   Asien, Osten (EA)
--   Australien, Osten (AE) 
 -   USA, Osten (EUS)
 -   USA, Osten 2 (EUS2)
 - Japan, Osten (JPE)

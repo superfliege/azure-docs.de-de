@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Language Understanding (LUIS) – Dokumentation
+metadata:
+  document_id: 
+  title: Language Understanding (LUIS) – Tutorials, Schnellstarts, API-Referenz
+  description: Es wird beschrieben, wie Sie den Dienst „Language Understanding“ verwenden, damit Ihre Anwendung es versteht, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.
+  author: Kaiqb
+  manager: carolz
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/25/2018
+  ms.author: kamrani
+  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
+  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/08/2018
+  ms.locfileid: "35357455"
+abstract:
+  description: Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert. Für LUIS wird das maschinelle Lernen genutzt, um Entwicklern das Erstellen von Anwendungen zu ermöglichen, die Benutzereingaben in natürlicher Sprache empfangen und die Bedeutung entschlüsseln können.
+sections:
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="luis-get-started-create-app.md">Create app for a prebuilt domain (Erstellen einer App für eine vordefinierte Domäne)</a>
+    - html: <a href="luis-quickstart-intents-only.md">Create app for a custom domain (Erstellen einer App für eine benutzerdefinierte Domäne)</a>
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="luis-quickstart-primary-and-secondary-data">Extract message data from an utterance using the simple entity (Extrahieren von Nachrichtendaten aus einer Äußerung mit der Entität vom Typ „Einfach“)</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">Extract KB article numbers from an utterance using the regular expression entity (Extrahieren von KB-Artikelnummern aus einer Äußerung mit der Entität vom Typ „Regulärer Ausdruck“)</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">Extract drink order information from an utterance using the list entity (Extrahieren von Informationen zu einer Getränkebestellung aus einer Äußerung mit der Entität vom Typ „Liste“)</a>
+    - html: <a href="luis-tutorial-pattern">Improve intent and entity prediction accuracy with patterns (Verbessern der Vorhersagegenauigkeit zu Absicht und Entität mit Mustern)</a>
+    - html: <a href="luis-tutorial-interchangeable-phrase-list">Improve word significance with a phrase list (Verbessern der Wortbedeutungsermittlung mit einer Begriffsliste)</a>
+    - html: <a href="luis-get-started-cs-get-intent">Send an utterance to LUIS and receive the endpoint prediction response – C# (Senden einer Äußerung an LUIS und Empfangen der Antwort für die Endpunktvorhersage – C#)</a>
+    - html: <a href="luis-get-started-cs-add-utterance">Add an example utterance to an intent and train the LUIS app – C# (Hinzufügen einer Beispieläußerung zu einer Absicht und Trainieren der LUIS-App – C#)</a>
+- title: Videos
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player" > Azure Friday At Build 2018 – Cognitive Services – Language (LUIS) (Azure Friday bei der Build 2018 – Cognitive Services – Language Understanding (LUIS))</a>
+    - html: <a href="https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player" >Build 2018 AI Show – What’s New with Language Understanding Service (LUIS) (Build 2018 AI Show – Neuigkeiten für Language Understanding Service (LUIS))</a>
+    - html: <a href="https://channel9.msdn.com/events/Build/2018/BRK3208" >Build 2018 Session – Bot Intelligence, Speech Capabilities, and NLU Best Practices (Build 2018 Session – Bot-Intelligence, Sprachfunktionen und bewährte Methoden für NLU)</a>
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST-APIs v2
+      html: <p><a href="https://aka.ms/luis-endpoint-apis">Endpunkt-API</a></p><p><a href="https://aka.ms/luis-authoring-apis">Erstellungs-API</a></p>
+    - title: SDKs
+      html: <p><a href="https://aka.ms/luis-endpoint-sdk">.NET-Endpunkt-SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk">.NET-Erstellungs-SDK</a></p>
+    - title: Codebeispiele
+      html: <p><a href="https://aka.ms/luis-code-samples">Codebeispiele</a></p>

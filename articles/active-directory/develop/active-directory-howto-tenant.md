@@ -16,12 +16,12 @@ ms.topic: hero-article
 ms.date: 03/23/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 26d336c9d896859d8012b1eaad1a16d0cbd9b628
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ed0103b8ad8f23cd45a3a9ee94e01ce69e1e45b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596208"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287262"
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Einrichten eines Azure Active Directory-Mandanten
 
@@ -36,7 +36,7 @@ Damit sich Azure AD-Benutzer bei Ihrer Anwendung anmelden können, müssen Sie I
 Viele Entwickler verfügen bereits aufgrund von Diensten oder Abonnements, die mit Azure AD-Mandanten verknüpft sind (beispielsweise Office 365- oder Azure-Abonnements), über Mandanten. Wenn Sie überprüfen möchten, ob Sie bereits über einen Mandanten verfügen, können Sie sich am [Azure-Portal](https://portal.azure.com) mit dem Konto anmelden, das Sie zum Verwalten Ihrer Anwendung verwenden möchten. Achten Sie dann auf die obere rechte Ecke, in der Ihre Kontoinformationen angegeben sind. Falls Sie einen Mandanten besitzen, werden Sie daran automatisch angemeldet, und der Mandantenname wird direkt unter dem Kontonamen angezeigt. Wenn Sie rechts oben im Azure-Portal auf Ihren Kontonamen zeigen, werden Ihr Name, Ihre E-Mail-Adresse, Ihr Verzeichnis und Ihre Mandanten-ID (GUID) sowie Ihre Domäne angezeigt. Falls Ihr Konto mehreren Mandanten zugeordnet ist, können Sie durch Klicken auf Ihren Kontonamen ein Menü öffnen, über das Sie zwischen Mandanten wechseln können. Jeder Mandant besitzt eine eigene Mandanten-ID.
 
 > [!TIP]
-> Die Mandanten-ID kann auf unterschiedliche Weise ermittelt werden. Sie können auf Ihren Kontonamen zeigen, um die Mandanten-ID zu erhalten, oder im Portal auf **Azure Active Directory > Eigenschaften > Verzeichnis-ID** klicken.
+> Die Mandanten-ID kann auf unterschiedliche Weise ermittelt werden. Sie können auf Ihren Kontonamen zeigen, um die Mandanten-ID zu erhalten, oder im Azure-Portal auf **Azure Active Directory > Eigenschaften > Verzeichnis-ID** klicken.
 
 Sollte Ihrem Konto kein vorhandener Mandant zugeordnet sein, wird unter Ihrem Kontonamen eine GUID angezeigt. In diesem Fall sind Aktionen wie das Registrieren von Apps erst möglich, nachdem Sie [einen neuen Mandanten erstellt haben](#create-a-new-azure-ad-tenant).
 

@@ -1,6 +1,6 @@
 ---
-title: Integrierte Rollen für die rollenbasierte Zugriffssteuerung (RBAC) in Azure | Microsoft-Dokumentation
-description: In diesem Artikel werden die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC) beschrieben. Zudem werden actions- und notActions-Abschnitte aufgeführt.
+title: Integrierte Rollen in Azure | Microsoft-Dokumentation
+description: In diesem Artikel werden die integrierten Rollen der rollenbasierten Zugriffssteuerung (RBAC) beschrieben. Listet die actions, notActions, dataActions und notDataActions auf.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267372"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294495"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
+# <a name="built-in-roles-in-azure"></a>Integrierte Rollen in Azure
 Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern, Gruppen und Dienstprinzipalen zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Ressourcen in Azure zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen.
 
 Die integrierten Rollen werden stetig weiterentwickelt. Verwenden Sie zum Abrufen der neuesten Rollendefinitionen [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) oder [az role definition list](/cli/azure/role/definition#az-role-definition-list).
@@ -1410,7 +1410,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/listkeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Generiert die Zugriffsschlüssel für das angegebene Speicherkonto neu. |
 
-## <a name="storage-blob-data-contributor-preview"></a>Mitwirkender an Storage-Blobdaten (Vorschau)
+## <a name="storage-blob-data-contributor-preview"></a>Mitwirkender an Storage-Blobdaten (Vorschauversion)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

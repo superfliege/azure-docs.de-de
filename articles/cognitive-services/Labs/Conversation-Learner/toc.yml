@@ -1,0 +1,68 @@
+- name: Unterhaltungslernmodul – Dokumentation
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist das Unterhaltungslernmodul?
+      href: overview.md
+    - name: Unterstützte Sprachen
+      href: languages-supported.md
+- name: Konzepte
+  items:
+    - name: Ablaufsteuerung
+      href: control-flow.md
+    - name: Standardwerte und Grenzen
+      href: cl-values-and-boundaries.md
+- name: Anleitungen
+  items:
+    - name: Erste Schritte mit dem Unterhaltungslernmodul
+      href: quickstart.md
+    - name: Hello world
+      href: tutorials/1-hello-world.md
+    - name: Vergleich von Aktionen mit und ohne Wartezeit
+      href: tutorials/2-wait-vs-nonwait-actions.md
+    - name: Einführung in Entitäten
+      href: tutorials/3-introduction-to-entities.md
+    - name: Erwartete Entität
+      href: tutorials/4-expected-entity.md
+    - name: Verneinbare Entitäten
+      href: tutorials/5-negatable-entities.md
+    - name: Entitäten mit mehreren Werten
+      href: tutorials/6-multi-value-entities.md
+    - name: Integrierte Entitäten
+      href: tutorials/7-built-in-entities.md
+    - name: Alternative Eingaben
+      href: tutorials/8-alternative-inputs.md
+    - name: Protokolldialogfelder
+      href: tutorials/9-log-dialogs.md
+    - name: Rückruf zur Entitätserkennung
+      href: tutorials/10-entity-detection-callback.md
+    - name: Sitzungsrückrufe
+      href: tutorials/11-session-callbacks.md
+    - name: API-Aufrufe
+      href: tutorials/12-api-calls.md
+    - name: Karten – Teil 1
+      href: tutorials/13-cards-1.md
+    - name: Karten – Teil 2
+      href: tutorials/14-cards-2.md
+    - name: Branchen und Rückgängigmachen
+      href: tutorials/15-branching-and-undo.md
+    - name: Versionsverwaltung und Tagging
+      href: tutorials/16-versioning-and-tagging.md
+    - name: Demo – Kennwortzurücksetzung
+      href: tutorials/demo-password-reset.md
+    - name: Demo – Pizzabestellung
+      href: tutorials/demo-pizza-order.md
+    - name: Demo – VR-App-Starter
+      href: tutorials/demo-vr-app-launcher.md
+    - name: Bereitstellen eines Unterhaltungslernmodul-Bots
+      href: deploy-to-bf.md
+    - name: Einsetzen des Unterhaltungslernmoduls
+      href: how-to-teach-cl.md
+    - name: Verwalten von Benutzerdaten
+      href: managing-data.md
+- name: Ressourcen
+  items:
+    - name: Unterhaltungslernmodul – Beispiel für Bot
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

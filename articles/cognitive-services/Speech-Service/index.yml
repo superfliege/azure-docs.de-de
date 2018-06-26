@@ -1,0 +1,189 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Spracherkennungsdienst – Dokumentation (Vorschauversion)
+metadata:
+  title: Dokumentation zum Spracherkennungsdienst – Tutorials, Schnellstarts, API-Referenz – Cognitive Services | Microsoft-Dokumentation
+  meta.description: Speech SDK provides developers an easy way to create powerful speech-enabled features in their applications, such as voice command control and dialog, using natural speech conversation, speech transcription and dictation, and speech translation.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.component: speech-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/01/2018
+  ms.author: nolachar
+  ms.openlocfilehash: ae9c5a62dd4f1b83f4d1317b54e5766b80d14245
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35357495"
+abstract:
+  description: Mit dem Spracherkennungsdienst und dem zugehörigen SDK von Microsoft erhalten Entwickler die Möglichkeit, auf einfache Weise leistungsfähige Sprachfunktionen in ihre Anwendungen zu integrieren, z.B. Steuerung per Sprachbefehl, Transkription und Diktieren. Für Cortana, Microsoft Office und andere Anwendungen wird dieselbe Technologie genutzt. Ein wichtiges Unterscheidungsmerkmal des Spracherkennungsdiensts von Microsoft ist die Möglichkeit, akustische Modelle und Sprachmodelle für die <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">Spracherkennung</a> anzupassen, um spezielles Vokabular, laute Umgebungen und andere Sprechweisen abzudecken. Eine angepasste <a href="http://aka.ms/customvoice">Sprachsynthese</a> und <a href="http://aka.ms/customtranslator">Sprachübersetzung</a> sind ebenfalls verfügbar.<br/><br/>Unser Sprach-SDK steht für mehrere Plattformen in unterschiedlichen Programmiersprachen zur Verfügung, damit Sie je nach Ihren Anwendungsanforderungen die Liveverwaltung des Mikrofons, Echtzeitstreaming oder die batchbasierte Dateikommunikation nutzen können.
+sections:
+- title: 10-Minuten-Schnellstarts – Neue SDKs
+  items:
+  - type: paragraph
+    text: 'In unseren Schnellstarts erfahren Sie, wie Sie das Sprach-SDK installieren und verwenden:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_cplusplus.svg
+    - image:
+        src: media/index/logo_java.jpg
+    rows:
+    - title: Windows
+      values:
+      - href: quickstart-csharp-windows
+      - href: cpp-windows
+      - href: 
+    - title: Linux
+      values:
+      - href: 
+      - href: cpp-linux
+      - href: 
+    - title: Geräte-SDK (Android)
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+- title: Beispiele und Referenz
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Beispiele
+      html: <ul><li><a href="speech-to-text-sample.md">Spracherkennung</a></li><li><a href="intent.md">Absichtserkennung</a></li><li><a href="translation.md">Übersetzung</a></li></ul>
+    - title: API-Referenz
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">C#-API</a></li><li><a href="https://aka.ms/csspeech/cppref">C++-API</a></li><li><a href="https://aka.ms/csspeech/javaref">Java-API (Geräte-SDK)</a></li></ul>
+- title: Spracherkennung
+  items:
+  - type: paragraph
+    text: Unser Sprach-SDK unterstützt die <b>Spracherkennung</b> (Speech-to-Text, STT).  Mit dem Sprach-SDK werden Audiodatenströme in Text transkribiert, der von Ihrer Anwendung als Eingabe akzeptiert werden kann. Ihre Anwendung kann dann beispielsweise den Text in ein Dokument eingeben oder basierend darauf einen Befehl ausführen.
+  - type: paragraph
+    text: 'Hier sind häufige Anwendungsfälle für die <b>Spracherkennung</b> per Sprach-SDK aufgeführt:'
+  - type: list
+    style: unordered
+    items:
+    - text: Erkennen einer kurzen Äußerung, z.B. eines Befehls, ohne Zwischenergebnisse
+    - text: Transkribieren einer langen, zuvor aufgezeichneten Äußerung, z.B. einer Mailboxnachricht
+    - text: Transkribieren eines Sprachdatenstroms in Echtzeit mit Teilergebnissen für das Diktieren
+    - text: Ermitteln der Absicht von Benutzern anhand einer Anforderung in gesprochener natürlicher Sprache
+  - type: paragraph
+    text: Das Sprach-SDK unterstützt die interaktive Sprachtranskription mit fortlaufender <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">Spracherkennung</a> in Echtzeit und Zwischenergebnissen. Außerdem werden die Erkennung des Endes der Spracheingabe, optionales automatisches Einfügen von Großschreibung und Zeichensetzung, Filterung von anstößigen Ausdrücken und Textnormalisierung unterstützt.
+  - type: paragraph
+    text: Ein wichtiges Unterscheidungsmerkmal des Spracherkennungsdiensts von Microsoft ist die Möglichkeit, akustische Modelle und Sprachmodelle für die <a href="http://aka.ms/customspeech">Spracherkennung</a> anzupassen, um spezielles Vokabular, laute Umgebungen und andere Sprechweisen abzudecken.
+- title: Sprachübersetzung
+  items:
+  - type: paragraph
+    text: Das Sprach-SDK kann auch für die <a href="https://azure.microsoft.com/services/cognitive-services/speech-translation">Sprachübersetzung</a> verwendet werden.  Wenn die <b>Sprachübersetzung</b> per Streaming über das Sprach-SDK erfolgt, gibt der Dienst Zwischenergebnisse zurück. Diese können für Benutzer angezeigt werden, um den Status der Übersetzung anzugeben. Die Ergebnisse können entweder als Text oder als Sprache zurückgegeben werden.
+  - type: paragraph
+    text: 'Es gibt beispielsweise die folgenden Anwendungsfälle für die <b>Sprachübersetzung</b> über das Sprach-SDK:'
+  - type: list
+    style: unordered
+    items:
+    - text: Implementieren einer mobilen App bzw. eines Geräts für Reisende zum Übersetzen von Unterhaltungen
+    - text: Bereitstellen von automatischen Übersetzungen zur Untertitelung von Audio- und Videoaufzeichnungen
+  - type: paragraph
+    text: Modelle für die <b>Sprachübersetzung</b> können auch <a href="http://aka.ms/customtranslator">angepasst</a> werden.
+- title: Sprachsynthese
+  items:
+  - type: paragraph
+    text: Derzeit wird die <a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech">Sprachsynthese</a> (Text-to-Speech, TTS) über eine REST-API unterstützt, mit der Nur-Text in natürlich klingende Sprache konvertiert wird, die für Ihre Anwendung als Audiodatei bereitgestellt wird. Es sind mehrere Stimmen, die in Bezug auf das Geschlecht oder den Akzent variieren, für viele Sprachen verfügbar.
+  - type: paragraph
+    text: Mit unserem Sprach-SDK wird der Zugriff auf die Spracherkennung und die Sprachübersetzung ermöglicht. Für die Sprachsynthese werden REST-POST-Aufrufe per HTTP genutzt.
+  - type: paragraph
+    text: Die REST-API für die <b>Sprachsynthese</b> unterstützt <b>SSML-Tags</b> (Speech-Synthesis-Markup-Language), damit Sie für schwierige Wörter die genaue phonetische Aussprache angeben können. Mit SSML können auch besondere Sprachmerkmale (z.B. Betonung, Geschwindigkeit, Lautstärke, Geschlecht und Tonlage) direkt im Text angegeben werden.
+  - type: paragraph
+    text: Wenn Sie für Ihre Anwendung einen nicht unterstützten Dialekt oder eine einzigartige Stimme verwenden möchten, können Sie aus Ihren eigenen Sprachbeispielen <a href="http://aka.ms/customvoice">benutzerdefinierte Voicefonts</a> erstellen.
+  - type: paragraph
+    text: 'Hier sind häufige Anwendungsfälle für die REST-API für die <b>Sprachsynthese</b> angegeben:'
+  - type: list
+    style: unordered
+    items:
+    - text: Sprachausgabe als Alternative zur Bildschirmausgabe für Benutzer mit Sehbehinderung
+    - text: Sprachausgabe für KFZ-Anwendungen, z.B. Navigation
+    - text: Auf Unterhaltungen ausgelegte Benutzeroberflächen in Verbindung mit der API für die <b>Spracherkennung</b>
+- title: SDK für sprachaktivierte Geräte
+  items:
+  - type: paragraph
+    text: 'Mit der Einführung des vereinheitlichten Spracherkennungsdiensts bieten Microsoft und seine Partner jetzt eine integrierte Hardware/Software-Plattform an, die für die Entwicklung von sprachaktivierten Geräten optimiert ist: das <b>SDK für sprachaktivierte Geräte</b>. Dieses SDK ist für die Entwicklung von intelligenten Sprachgeräten für alle Arten von Anwendungen geeignet.'
+  - type: paragraph
+    text: Mit dem <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">SDK für sprachaktivierte Geräte</a> können Sie Ihre eigenen Ambient Devices mit einem benutzerdefinierten Codewort erstellen, das zu Ihrer Marke passt und mit dem die Erfassung von Audiodaten ausgelöst wird. Außerdem ermöglicht es eine bessere Audioverarbeitung für Quellen mit mehreren Kanälen, um eine genauere Spracherkennung zu erzielen, z.B. Geräuschunterdrückung, Fernfeld-Sprache und Beamforming.
+- title: Ältere SDKs
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/uwp.jpg
+    - image:
+        src: media/index/logo_java.jpg
+    - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
+    rows:
+    - title: Windows
+      values:
+      - href: https://docs.microsoft.com/windows/uwp/design/input/speech-recognition
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: Android
+      values:
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjavaandroid
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: iOS
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/get-started-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
+    - title: Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjswebsockets
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest?tabs=Powershell
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
+- title: Relevante SDKs
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_swift.jpg
+    - image:
+        src: media/index/logo_gopher.svg
+    - image:
+        src: media/index/c.jpg
+    rows:
+    - title: SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 

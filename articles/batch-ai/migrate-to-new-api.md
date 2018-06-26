@@ -15,18 +15,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: b59173259aa86a429b9f926a8e5ffbfd046451a1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294876"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294958"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>Migrieren zu aktualisierter Batch AI-API
 
-Mit der Batch AI-REST-API-Version 2018-05-01 und den dazugehörigen Batch AI-SDKs und -Tools wurden wesentliche Änderungen und neue Funktionen eingeführt.
+Mit der Batch AI-REST-API-Version 2018-05-01 und den dazugehörigen Batch AI-SDKs und -Tools wurden wesentliche Änderungen und neue Features eingeführt.
 
-Wenn Sie eine frühere Version der Batch AI-API verwendet haben, erfahren Sie in diesem Artikel, wie Sie Ihren Code und Ihre Skripts ändern können, um mit der neuen API zu arbeiten. Nehmen Sie diese Änderungen erst vor, wenn die neue API verfügbar ist.
+Wenn Sie eine frühere Version der Batch AI-API verwendet haben, erfahren Sie in diesem Artikel, wie Sie Ihren Code und Ihre Skripts ändern können, um mit der neuen API zu arbeiten. 
 
 ## <a name="whats-changing"></a>Was hat sich geändert?
 
@@ -138,7 +138,7 @@ az batchai job delete -g resource-group-name -w migrated-<region> -e migrated -n
  
 Wenn Sie eines der vorhandenen Batch AI-SDKs verwenden, können Sie damit auch Batch AI-Ressourcen (Aufträge, Cluster oder Dateiserver) ohne Codeänderungen erstellen. Nach dem Upgrade auf das neue SDK müssen Sie jedoch die folgenden Änderungen vornehmen.
  
-### <a name="create-workspace"></a>Erstellen eines Arbeitsbereichs 
+### <a name="create-workspace"></a>Arbeitsbereich erstellen 
 Je nach Szenario können Sie einen Arbeitsbereich einmalig manuell über das Portal oder die CLI erstellen. Wenn Sie die CLI verwenden, erstellen Sie einen Arbeitsbereich mit dem folgenden Befehl: 
 
 ```azurecli
@@ -162,7 +162,7 @@ Wenn Sie das Portal zum Erstellen von Aufträgen, Clustern oder Dateiservern ver
 Um Aufträge, Cluster oder Dateiserver über das aktualisierte SDK zu erstellen, geben Sie den Parameter für den Arbeitsbereichsnamen an. Wenn Sie das Python-SDK verwenden, werden relevante Änderungen in den folgenden Beispielen gezeigt. Ersetzen Sie *workspace_name* und *experiment_name* durch den Arbeitsbereich und das Experiment, die Sie zuvor erstellt haben. Die Änderungen sind in den anderen Batch AI-SDKs ähnlich. 
 
 
-#### <a name="create-cluster"></a>Erstellen eines Clusters 
+#### <a name="create-cluster"></a>Cluster erstellen 
 
 ```python
 _ = client.clusters.create(resource_group_name, workspace_name, cluster_name, cluster_create_parameters).result()

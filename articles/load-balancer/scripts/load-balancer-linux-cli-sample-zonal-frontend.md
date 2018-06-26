@@ -1,0 +1,190 @@
+---
+title: 'CLI-Beispiel: Lastenausgleich für virtuelle Computer innerhalb einer Zone – Azure | Microsoft-Dokumentation'
+description: Dieses Azure CLI-Skriptbeispiel veranschaulicht, wie Sie einen Lastausgleich für den Datenverkehr für virtuelle Computer in einer bestimmten Verfügbarkeitszone vornehmen.
+services: load-balancer
+documentationcenter: load-balancer
+author: KumudD
+manager: jeconnoc
+editor: tysonn
+tags: ''
+Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
+ms.assetid: ''
+ms.service: load-balancer
+ms.devlang: azurecli
+ms.topic: sample
+ms.tgt_pltfrm: ''
+ms.workload: infrastructure
+ms.date: 06/14/2018
+ms.author: kumud
+ms.openlocfilehash: ea3e5724d73e97d98c8cccb1841afdcee5f79768
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35662678"
+---
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI-Skriptbeispiel: Lastenausgleich für den Datenverkehr zu virtuellen Computern für Hochverfügbarkeit
+
+Dieses Azure CLI-Beispielskript erstellt alle Komponenten, die zum Ausführen mehrerer virtueller Ubuntu-Computer in einer Konfiguration mit Hochverfügbarkeit und Lastenausgleich in einer bestimmten Verfügbarkeitszone benötigt werden. Nach dem Ausführen dieses Skripts verfügen Sie über drei virtuelle Computer in einer einzelnen Verfügbarkeitszone, die über eine Azure Load Balancer Standard-Instanz zugänglich sind. 
+
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sample-script"></a>Beispielskript
+
+```azurecli-interactive
+  #!/bin/bash
+
+  # Create a resource group.
+   az group create \
+    --name myResourceGroup \
+    --location westeurope
+
+  # Create a virtual network.
+   az network vnet create \
+    --resource-group myResourceGroup \
+    --location westeurope \
+    --name myVnet \
+    --subnet-name mySubnet
+
+  # Create a zonal Standard public IP address.
+   az network public-ip create \
+    --resource-group myResourceGroup \
+    --name myPublicIP \
+    --sku Standard
+    --zone 1
+
+  # Create an Azure Load Balancer.
+   az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEndPool \
+    --backend-pool-name myBackEndPool \
+    --sku Standard
+
+  # Creates an LB probe on port 80.
+   az network lb probe create \
+    --resource-group myResourceGroup \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80
+
+  # Creates an LB rule for port 80.
+   az network lb rule create \
+    --resource-group myResourceGroup \
+    --lb-name myLoadBalancer \
+    --name myLoadBalancerRuleWeb \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEndPool \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe
+
+  # Create three NAT rules for port 22.
+   for i in `seq 1 3`; do
+    az network lb inbound-nat-rule create \
+     --resource-group myResourceGroup \
+     --lb-name myLoadBalancer \
+     --name myLoadBalancerRuleSSH$i \
+     --protocol tcp \
+     --frontend-port 422$i \
+     --backend-port 22 \
+     --frontend-ip-name myFrontEndPool
+   done
+
+  # Create a network security group
+   az network nsg create \
+    --resource-group myResourceGroup \
+    --name myNetworkSecurityGroup
+
+  # Create a network security group rule for port 22.
+   az network nsg rule create \
+    --resource-group myResourceGroup \
+    --nsg-name myNetworkSecurityGroup \
+    --name myNetworkSecurityGroupRuleSSH \
+    --protocol tcp \
+    --direction inbound \
+    --source-address-prefix '*' \
+    --source-port-range '*'  \
+    --destination-address-prefix '*' \
+    --destination-port-range 22 \
+    --access allow \
+    --priority 1000
+
+  # Create a network security group rule for port 80.
+    az network nsg rule create \
+     --resource-group myResourceGroup \
+     --nsg-name myNetworkSecurityGroup \
+     --name myNetworkSecurityGroupRuleHTTP \
+     --protocol tcp \
+     --direction inbound \
+     --source-address-prefix '*' \
+     --source-port-range '*' \
+     --destination-address-prefix '*' \
+     --destination-port-range 80 \
+     --access allow \
+     --priority 2000
+
+  # Create three virtual network cards and associate with public IP address and NSG.
+  for i in `seq 1 3`; do
+   az network nic create \
+     --resource-group myResourceGroup \
+     --name myNic$i \
+     --vnet-name myVnet \
+     --subnet mySubnet \
+     --network-security-group myNetworkSecurityGroup \
+     --lb-name myLoadBalancer \
+     --lb-address-pools myBackEndPool \
+     --lb-inbound-nat-rules myLoadBalancerRuleSSH$i
+  done
+
+# Create three virtual machines, this creates SSH keys if not present.
+for i in `seq 1 3`; do
+  az vm create \
+    --resource-group myResourceGroup \
+    --name myVM$i \
+    --zone 1 \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --generate-ssh-keys \
+    --no-wait
+done
+
+```
+
+## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
+
+Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen zu entfernen.
+
+```azurecli
+az group delete --name myResourceGroup
+```
+
+## <a name="script-explanation"></a>Erläuterung des Skripts
+
+In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengruppe, einen virtuellen Computer, eine Verfügbarkeitsgruppe, einen Load Balancer und alle zugehörigen Ressourcen zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+
+| Get-Help | Notizen |
+|---|---|
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Erstellt ein virtuelles Azure-Netzwerk und ein Subnetz. |
+| [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#az_network_public_ip_create) | Erstellt eine öffentliche IP-Adresse mit einer statischen IP-Adresse und zugeordnetem DNS-Namen. |
+| [az network lb create](https://docs.microsoft.com/cli/azure/network/lb#az_network_lb_create) | Erstellt eine Azure Load Balancer-Instanz. |
+| [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe#az_network_lb_probe_create) | Erstellt einen Lastenausgleichtest. Ein Lastenausgleichtest wird verwendet, um jeden virtuellen Computer in der Load Balancer-Gruppe zu überwachen. Falls eine VM nicht verfügbar ist, wird der Datenverkehr nicht an diese VM geroutet. |
+| [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule#az_network_lb_rule_create) | Erstellt eine Lastenausgleichsregel. In diesem Beispiel wird eine Regel für den Port 80 erstellt. Wenn HTTP-Datenverkehr beim Load Balancer eingeht, wird dieser an Port 80 einer der VMs in der Load Balancer-Gruppe geroutet. |
+| [az network lb inbound-nat-rule create](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az_network_lb_inbound_nat_rule_create) | Erstellt eine Regel des Load Balancers (Network Address Translation, NAT).  Mithilfe von NAT-Regeln wird ein Load Balancer-Port einem Port auf einer VM zugeordnet. In diesem Beispiel wird eine NAT-Regel für den SSH-Datenverkehr für jede VM in der Load Balancer-Gruppe erstellt.  |
+| [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#az_network_nsg_create) | Erstellt eine Netzwerksicherheitsgruppe (NSG), die als Sicherheitsgrenze zwischen dem Internet und dem virtuellen Computer fungiert. |
+| [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Erstellt eine NSG-Regel zum Zulassen von eingehendem Datenverkehr. In diesem Beispiel wird Port 22 für SSH-Datenverkehr geöffnet. |
+| [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#az_network_nic_create) | Erstellt eine virtuelle Netzwerkkarte und verbindet diese mit dem virtuellen Netzwerk, dem Subnetz und der NSG. |
+| [az vm create](/cli/azure/vm#az_vm_create) | Erstellt den virtuellen Computer und verbindet diesen mit der Netzwerkkarte, dem virtuellen Netzwerk, dem Subnetz und der NSG. Dieser Befehl legt außerdem das zu verwendende VM-Image und die Administratoranmeldeinformationen fest.  |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+
+Zusätzliche Azure-Netzwerk-CLI-Skriptbeispiele finden Sie in der [Azure-Netzwerkdokumentation](../cli-samples.md).
