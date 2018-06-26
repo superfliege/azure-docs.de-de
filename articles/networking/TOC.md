@@ -53,7 +53,7 @@
 ### [Azure PowerShell](powershell-samples.md)
 
 ## Tutorials
-### [Lastenausgleich für virtuelle Computer](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Lastenausgleich für virtuelle Computer](../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Verbinden eines Computers mit einem virtuellen Netzwerk](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # Verweis

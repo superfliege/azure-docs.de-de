@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Protokollieren von Ereignissen in Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Protokollieren von Anforderungen mit Azure Application Insights
+          href: api-management-howto-app-insights.md
         - name: Einrichten der Notfallwiederherstellung mithilfe von Sicherung/Wiederherstellung
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Verwalten von Benutzerkonten
