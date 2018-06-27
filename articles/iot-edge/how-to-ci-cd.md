@@ -452,7 +452,7 @@ Es sind also bei der Bereitstellung auf IoT Edge-Geräten drei Hauptumgebungen v
 In diesem Tutorial wird gezeigt, wie Sie die Features für Continuous Integration und Continuous Deployment von VSTS oder TFS verwenden können. 
 
 * Grundlegende Informationen zur IoT Edge-Bereitstellung finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig](module-deployment-monitoring.md).
-* Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab][how-to-deploy-monitor.md] aus.
+* Führen Sie die Schritte zum Erstellen, Aktualisieren oder Löschen einer Bereitstellung in [Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab](how-to-deploy-monitor.md) aus.
 
 
 
