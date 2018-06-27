@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: Sicherheitsrichtlinie mit Azure-Richtlinie
           href: security-center-azure-policy.md
+        - name: Mandantenweite Sichtbarkeit
+          href: security-center-management-groups.md
     - name: Implementieren von Sicherheitsempfehlungen
       href: security-center-recommendations.md
     - name: Überwachen der Sicherheitsintegrität

@@ -49,8 +49,8 @@
       href: functions-openapi-definition.md
     - name: Ändern der Imagegröße mit Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Erstellen einer serverlosen Webanwendung mit Azure Functions als API
-      href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
+    - name: Erstellen einer serverlosen Web-App
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
     - name: Funktionen unter Linux
       items:
         - name: Benutzerdefiniertes Image

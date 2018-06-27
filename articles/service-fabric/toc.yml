@@ -428,6 +428,8 @@
               href: service-fabric-securing-containers.md
             - name: Einrichten von gMSA für Windows-Container
               href: service-fabric-setup-gmsa-for-windows-containers.md
+            - name: Konfigurieren von Zertifikaten unter Linux
+              href: service-fabric-configure-certificates-linux.md
         - name: Konfigurieren von regelmäßigen Sicherungen (Cluster in Azure)
           href: service-fabric-backuprestoreservice-quickstart-azurecluster.md
         - name: Konfigurieren von regelmäßigen Sicherungen (eigenständige Cluster)
