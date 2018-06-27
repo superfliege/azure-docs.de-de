@@ -1,32 +1,32 @@
 ---
-title: Aufbewahrungsrichtlinien für Azure Active Directory-Berichte | Microsoft Docs
+title: Aufbewahrungsrichtlinien für Azure Active Directory-Berichte | Microsoft-Dokumentation
 description: Aufbewahrungsrichtlinien für Berichtdaten in Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
 ms.devlang: ''
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fac160d2d5916097afcbb9825bb82a52789e4a89
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edce7d1a633148cf361deec0c3d09ef4c16ac9b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589194"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225177"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
 
-Dieses Thema enthält Antworten auf die am häufigsten gestellten Fragen im Zusammenhang mit der Datenaufbewahrung für die verschiedenen Aktivitätsberichte in Azure Active Directory. 
+Dieser Artikel enthält Antworten auf die am häufigsten gestellten Fragen zur Datenaufbewahrung für die verschiedenen Aktivitätsberichte in Azure Active Directory. 
 
 ### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>F: Wie wird die Erfassung von Aktivitätsdaten gestartet?
 
@@ -34,7 +34,7 @@ Dieses Thema enthält Antworten auf die am häufigsten gestellten Fragen im Zusa
 
 | Azure AD-Edition | Start der Erfassung |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Bei der Registrierung für ein Abonnement |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Beim Registrieren für ein Abonnement |
 | Azure AD Free | Beim ersten Öffnen des Blatts [Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) oder bei der ersten Verwendung der [Berichterstellungs-APIs](https://aka.ms/aadreports)  |
 
 ---
@@ -42,8 +42,8 @@ Dieses Thema enthält Antworten auf die am häufigsten gestellten Fragen im Zusa
 
 **A:**
 
-- **Sofort** – Wenn Sie bereits mit Berichten im Azure-Portal gearbeitet haben
-- **Innerhalb von 2 Stunden** – Wenn Sie die Berichterstellung im Azure-Portal nicht aktiviert haben
+- **Sofort**, wenn Sie bereits Berichte im Azure-Portal verwendet haben.
+- **Innerhalb von 2 Stunden**, wenn Sie die Berichterstellung im Azure-Portal nicht aktiviert haben.
 
 ---
 

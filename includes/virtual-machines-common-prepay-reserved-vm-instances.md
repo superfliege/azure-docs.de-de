@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 8e710bebf979b60f61552593ae550e95a8340d2b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34307565"
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35683048"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -16,7 +16,14 @@ Sie können Azure Reserved Instances im [Azure-Portal](https://portal.azure.com)
 -   In Enterprise-Abonnements muss der Kauf von Reserved Instances im [EA-Portal](https://ea.azure.com) aktiviert werden.
 -   Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents Reserved Instances kaufen.
 
-## <a name="buy-a-reserved-instance"></a>Kaufen einer Reserved Instance
+[!IMPORTANT]
+Ermitteln Sie die passende VM-Größe beim Reservierungskauf mithilfe einer der folgenden Methoden.
+
+## <a name="determine-the-right-vm-size-before-purchase"></a>Bestimmen der passenden Größe des virtuellen Computers
+1. Verweisen Sie auf das Feld „AdditionalInfo“ in Ihrer Nutzungsdatei oder Nutzungs-API, um die richtige VM-Größe bei einem Reservierungskauf zu bestimmen. Verwenden Sie nicht die Werte aus den Feldern „Unterkategorie für Messung“ oder „Produkt“, weil diese Felder nicht zwischen einer S- und Nicht-S-Version eines virtuellen Computers unterscheiden.
+2. Sie können auch mithilfe von PowerShell, Azure Resource Manager oder VM-Details im Azure-Portal umfassende Informationen zur VM-Größe erhalten.
+
+## <a name="buy-a-reserved-virtual-machine-instance"></a>Erwerben einer reservierten VM-Instanz
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Klicken Sie auf **Hinzufügen**, um eine neue Reserved Instance zu kaufen.

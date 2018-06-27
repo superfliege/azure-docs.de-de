@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618588"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267922"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Continuous Integration und Continuous Deployment in Azure Data Factory
 
@@ -89,42 +89,9 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
 4.  Geben Sie den Namen Ihrer Umgebung ein.
 
-5.  Fügen Sie ein Git-Artefakt hinzu, und wählen Sie dasselbe Repository aus, das für die Data Factory konfiguriert wurde. Wählen Sie `adf\_publish` als Standardbranch mit der aktuellen Standardversion aus.
+5.  Fügen Sie ein Git-Artefakt hinzu, und wählen Sie dasselbe Repository aus, das für die Data Factory konfiguriert wurde. Wählen Sie `adf_publish` als Standardbranch mit der aktuellen Standardversion aus.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  Rufen Sie die Geheimnisse aus Azure Key Vault ab. Es gibt zwei Möglichkeiten, um die Geheimnisse zu verarbeiten:
-
-    a.  Fügen Sie die Geheimnisse der Parameterdatei hinzu:
-
-       -   Erstellen Sie eine Kopie der Parameterdatei, die in den Branch für die Veröffentlichung hochgeladen wird, und legen Sie die Werte der Parameter fest, die Sie aus dem Schlüsseltresor im folgenden Format abrufen möchten:
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   Bei dieser Methode wird das Geheimnis per Pullvorgang automatisch aus dem Schlüsseltresor abgerufen.
-
-       -   Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
-
-    b.  Fügen Sie eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) hinzu:
-
-       -   Wählen Sie die Registerkarte **Aufgaben**, erstellen Sie eine neue Aufgabe, suchen Sie nach **Azure Key Vault**, und fügen Sie sie hinzu.
-
-       -   Wählen Sie in der Key Vault-Aufgabe das Abonnement aus, unter dem Sie den Schlüsseltresor erstellt haben, geben Sie bei Bedarf die Anmeldeinformationen an, und wählen Sie dann den Schlüsseltresor aus.
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu:
 
@@ -134,7 +101,7 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
     c.  Wählen Sie die Aktion **Ressourcengruppe erstellen oder Ressourcengruppe aktualisieren** aus.
 
-    d.  Wählen Sie **…** im Feld **Vorlage**. Suchen Sie nach der Resource Manager-Vorlage (*ARMTemplateForFactory.json*), die von der Veröffentlichungsaktion im Portal erstellt wurde. Suchen Sie im Stammordner des Branch `adf\_publish` nach dieser Datei.
+    d.  Wählen Sie **…** im Feld **Vorlage**. Suchen Sie nach der Resource Manager-Vorlage (*ARMTemplateForFactory.json*), die von der Veröffentlichungsaktion im Portal erstellt wurde. Suchen Sie im Ordner `<FactoryName>` des `adf_publish`-Branchs nach dieser Datei.
 
     e.  Gehen Sie für die Parameterdatei genauso vor. Wählen Sie die richtige Datei aus. Dies richtet sich danach, ob Sie eine Kopie erstellt haben oder die Standarddatei *ARMTemplateParametersForFactory.json* verwenden.
 
@@ -147,6 +114,43 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 9.  Erstellen Sie aus dieser Releasedefinition ein neues Release.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Optional – rufen Sie die Geheimnisse aus Azure Key Vault ab.
+
+Wenn Sie Geheimnisse in einer Azure Resource Manager-Vorlage übergeben müssen, sollten Sie Azure Key Vault mit dem VSTS-Release verwenden.
+
+Es gibt zwei Möglichkeiten, um die Geheimnisse zu verarbeiten:
+
+1.  Fügen Sie die Geheimnisse der Parameterdatei hinzu. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+    -   Erstellen Sie eine Kopie der Parameterdatei, die in den Branch für die Veröffentlichung hochgeladen wird, und legen Sie die Werte der Parameter fest, die Sie aus dem Schlüsseltresor im folgenden Format abrufen möchten:
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   Bei dieser Methode wird das Geheimnis per Pullvorgang automatisch aus dem Schlüsseltresor abgerufen.
+
+    -   Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
+
+2.  Fügen Sie vor der im vorherigen Abschnitt beschriebenen Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) hinzu:
+
+    -   Wählen Sie die Registerkarte **Aufgaben**, erstellen Sie eine neue Aufgabe, suchen Sie nach **Azure Key Vault**, und fügen Sie sie hinzu.
+
+    -   Wählen Sie in der Key Vault-Aufgabe das Abonnement aus, unter dem Sie den Schlüsseltresor erstellt haben, geben Sie bei Bedarf die Anmeldeinformationen an, und wählen Sie dann den Schlüsseltresor aus.
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>Erstellen von Berechtigungen für den VSTS-Agent
 Beim ersten Versuch kann es sein, dass für die Azure Key Vault-Aufgabe der Fehler „Zugriff verweigert“ auftritt. Laden Sie die Protokolle für das Release herunter, und suchen Sie nach der `.ps1`-Datei mit dem Befehl, um Berechtigungen für den VSTS-Agent zu erteilen. Sie können den Befehl direkt ausführen oder die Prinzipal-ID aus der Datei kopieren und die Zugriffsrichtlinie manuell im Azure-Portal hinzufügen. (*Get* und *List* sind die mindestens erforderlichen Berechtigungen.)
@@ -161,14 +165,9 @@ Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Tr
 3.  Wählen Sie als Skripttyp die Option **Inlineskript**, und geben Sie dann Ihren Code an. Im folgenden Beispiel werden die Trigger beendet:
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

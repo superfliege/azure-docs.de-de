@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Log Analytics | Microsoft Docs
+title: Häufig gestellte Fragen zu Log Analytics | Microsoft-Dokumentation
 description: Antworten auf häufig gestellte Fragen zum Azure Log Analytics-Dienst.
 services: log-analytics
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637173"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221542"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -75,18 +75,21 @@ Log Analytics orientiert sich an der UTC-Zeit, und jeder Tag beginnt um Mitterna
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>F: Wie kann ich benachrichtigt werden, wenn die Datensammlung beendet wird?
 
-A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel](log-analytics-alerts-creating.md#create-an-alert-rule) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung endet.
+A: Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird.
 
 Legen Sie beim Erstellen der Warnung für das Beenden der Datensammlung Folgendes fest:
-- **Name** auf *Datensammlung beendet*
-- **Schweregrad** auf *Warnung*
-- **Suchabfrage** auf `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
-- **Zeitfenster** auf *30 Minuten*
-- **Warnungshäufigkeit** auf alle *zehn* Minuten
-- **Warnung generieren basierend auf** auf *Anzahl von Ergebnissen*
-- **Anzahl von Ergebnissen** auf *Größer als 0*
 
-Diese Warnung wird nur ausgelöst, wenn die Abfrage Ergebnisse zurückgibt und der Heartbeat für mehr als 15 Minuten ausbleibt.  Führen Sie die Schritte aus, die unter [Hinzufügen von Aktionen zu Warnungsregeln](log-analytics-alerts-actions.md) beschrieben sind, um eine E-Mail-, Webhook- oder Runbookaktion für die Warnungsregel zu konfigurieren.
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
+- **Warnungskriterien**:
+   - **Signalname** auf **Benutzerdefinierte Protokollsuche**
+   - **Suchabfrage** auf `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
+   - **Zeitraum** auf *30* Minuten und **Warnungshäufigkeit** auf alle *10* Minuten
+- **Definieren der Warnungsdetails**:
+   - **Name** auf *Datensammlung beendet*
+   - **Schweregrad** auf *Warnung*
+
+Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitoring-action-groups.md) an, oder erstellen Sie eine neue, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
 ## <a name="configuration"></a>Konfiguration
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>F: Kann ich den Namen der Tabelle bzw. des Blobcontainers zum Einlesen von Daten aus Azure-Diagnose (WAD) ändern?

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234518"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293715"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
 
@@ -46,7 +46,7 @@ Das Blatt **Anwendungseinstellungen** enthält Einstellungen, die unter verschie
 Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Optionen für .NET, PHP und Python deaktiviert.
 
 <a name="platform"></a>
-**Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist der Modus "Basic" oder "Standard" erforderlich. Die Modi "Kostenlos" und "Freigegeben" werden immer in einer 32-Bit-Umgebung ausgeführt.
+**Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist die Ebene „Basic“ oder „Standard“ erforderlich. Die Ebenen „Kostenlos“ und „Freigegeben“ werden immer in einer 32-Bit-Umgebung ausgeführt.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -56,6 +56,13 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 **Always On**. Standardmäßig werden Web-Apps entladen, wenn sie einige Zeit im Leerlauf waren. Dadurch spart das System Ressourcen. Im Modus „Basic“ oder „Standard“ können Sie **Always On** aktivieren, sodass die Web-App permanent geladen bleibt. Wenn Ihre App fortlaufende WebJobs oder unter Verwendung eines CRON-Ausdrucks ausgelöste WebJobs ausführt, sollten Sie **Always On** aktivieren. Ansonsten werden die Webaufträge möglicherweise nicht zuverlässig ausgeführt.
 
 **Verwalteter Pipelinemodus**. Legt den IIS- [Pipelinemodus]fest. Lassen Sie diese Einstellung bei "Integriert" (der Standard), sofern Sie nicht eine ältere App haben, die eine ältere IIS-Version erfordert.
+
+**HTTP-Version**. Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren. 
+
+> [!NOTE]
+> Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass sich Clientbrowser mit Ihrer App über HTTP/2 verbinden, erwerben Sie entweder [ein App Service Certificate](web-sites-purchase-ssl-web-site.md) für die benutzerdefinierte Domäne Ihrer App oder [binden Sie ein Zertifikat eines Drittanbieters](app-service-web-tutorial-custom-ssl.md).
+
+**ARR-Affinität**. In einer App, die auf mehrere VM-Instanzen skaliert ist, garantieren ARR Affinität-Cookies, dass der Client für die Dauer der Sitzung an dieselbe Instanz weitergeleitet wird. Um die Leistung zustandsloser Anwendungen zu verbessern, setzen Sie diese Option auf **Aus**.   
 
 **Automatisch tauschen**. Wenn Sie "Auto Swap" für einen Bereitstellungsslot aktivieren, ändert App Service den Status der Web-App automatisch in Produktion, wenn Sie eine Aktualisierung an diesen Slot übermitteln. Weitere Informationen finden Sie unter [Bereitstellen von Web-Apps in Azure App Service in Stagingslots](web-sites-staged-publishing.md).
 

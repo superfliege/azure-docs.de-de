@@ -1,6 +1,6 @@
 ---
 title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Microsoft-Dokumentation
-description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Authentifizierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools.
+description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen. Hier erhalten Sie Informationen zur Autorisierung von Anforderungen, zum Herstellen einer Verbindung mit dem Emulator über eine Anwendung und zum Verwenden des Befehlszeilentools.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305105"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36291935"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -81,14 +81,14 @@ Weitere Informationen zu diesen Befehlen finden Sie unter [Referenz zum Speicher
 > Mit [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) können Sie Ihre SQL Server-Instanzen, einschließlich der LocalDB-Installation, verwalten. Geben Sie im SMSS-Dialogfeld **Verbindung mit Server herstellen** im Feld **Servername:** den Namen `(localdb)\MSSQLLocalDb` an, um eine Verbindung mit der LocalDB-Instanz herzustellen.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Authentifizieren von Anforderungen an den Speicheremulator
-Nachdem Sie den Speicheremulator installiert und gestartet haben, können Sie den Code testen. Wie bei Azure Storage in der Cloud muss jede Anforderung, die Sie mit dem Speicheremulator vornehmen, authentifiziert werden, sofern es sich nicht um eine anonyme Anforderung handelt. Sie können Anforderungen an den Speicheremulator mit einem gemeinsam verwendeten Schlüssel oder mit einer Shared Access Signature (SAS) authentifizieren.
+Nachdem Sie den Speicheremulator installiert und gestartet haben, können Sie den Code testen. Wie bei Azure Storage in der Cloud muss jede Anforderung, die Sie mit dem Speicheremulator vornehmen, autorisiert werden, sofern es sich nicht um eine anonyme Anforderung handelt. Sie können Anforderungen an den Speicheremulator mit einem gemeinsam verwendeten Schlüssel oder mit einer Shared Access Signature (SAS) autorisieren.
 
-### <a name="authenticate-with-shared-key-credentials"></a>Authentifizierung mit Benutzeranmeldeinformationen eines gemeinsam verwendeten Schlüssels
+### <a name="authorize-with-shared-key-credentials"></a>Autorisieren mit Benutzeranmeldeinformationen eines gemeinsam verwendeten Schlüssels
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](../storage-configure-connection-string.md).
 
-### <a name="authenticate-with-a-shared-access-signature"></a>Authentifizierung mit einer SAS (Shared Access Signature)
+### <a name="authorize-with-a-shared-access-signature"></a>Autorisieren mit einer SAS (Shared Access Signature)
 Einige Azure Storage-Clientbibliotheken, wie z. B. die Xamarin-Bibliothek, unterstützen nur Authentifizierung mit einem SAS (Shared Access Signature)-Token. Sie können das SAS-Token mit einem Tool wie dem [Storage-Explorer](http://storageexplorer.com/) oder einer anderen Anwendung erstellen, die die Authentifizierung mit einem gemeinsam verwendeten Schlüssel unterstützt.
 
 Sie können ein SAS-Token auch mithilfe von Azure PowerShell generieren. Im folgenden Beispiel wird ein SAS-Token mit vollen Berechtigungen für einen Blobcontainer generiert:
@@ -204,12 +204,23 @@ Die folgenden Unterschiede gelten für Tabellenspeicher im Emulator:
 Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 
 ## <a name="storage-emulator-release-notes"></a>Speicheremulator – Versionshinweise
+
+### <a name="version-55"></a>Version 5.5
+* Der Speicheremulator unterstützt nun Version 2017-11-09 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
+* Unterstützung für die Blobeigenschaft **Created**, die die Bloberstellungszeit zurückgibt, wurde hinzugefügt.
+
+### <a name="version-54"></a>Version 5.4
+Zur Verbesserung der Stabilität der Installation versucht der Emulator nicht mehr, Ports während der Installationszeit zu reservieren. Wenn Portreservierungen gewünscht sind, verwenden Sie die *-reserveports*-Option des **init**-Befehls, um sie anzugeben.
+
+### <a name="version-53"></a>Version 5.3
+Der Speicheremulator unterstützt nun Version 2017-07-29 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
+
 ### <a name="version-52"></a>Version 5.2
 * Der Speicheremulator unterstützt nun Version 2017-04-17 der Speicherdienste auf Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkten.
 * Korrektur eines Fehlers, aufgrund dessen Tabelleneigenschaftswerte nicht ordnungsgemäß codiert wurden.
 
 ### <a name="version-51"></a>Version 5.1
-* Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
+Es wurde ein Fehler behoben, bei dem der Speicheremulator in einigen Antworten den Header `DataServiceVersion` zurückgegeben hat, während der Dienst dies nicht getan hat.
 
 ### <a name="version-50"></a>Version 5.0
 * Der Speicheremulator-Installer führt keine Überprüfungen auf vorhandene MSSQL- und .NET Framework-Installationen mehr durch.

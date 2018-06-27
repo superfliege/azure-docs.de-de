@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: 18276b5706caad854c0160044b7e0efff10bc280
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a809859e9f0c6e51247abc2d03af673a2850a87e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616167"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284888"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +95,7 @@ Legen Sie zum Kopieren von Daten aus Amazon S3 die type-Eigenschaft des Datasets
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **AmazonS3Object** festgelegt werden. |Ja |
 | bucketName | Der Name des S3-Buckets. Der Platzhalterfilter wird nicht unterstützt. |Ja |
-| key | Der **Name oder Platzhalterfilter** des S3-Objektschlüssels unter dem angegebenen Bucket. Ist nur anwendbar, wenn die prefix-Eigenschaft nicht angegeben ist. <br/><br/>Der Platzhalterfilter wird nur für den Dateinamen, aber nicht für den Ordner unterstützt. Zulässige Werte sind `*` (mehrere Zeichen) oder `?` (einzelnes Zeichen).<br/>- Beispiel 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- Beispiel 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. |Nein  |
+| key | Der **Name oder Platzhalterfilter** des S3-Objektschlüssels unter dem angegebenen Bucket. Ist nur anwendbar, wenn die prefix-Eigenschaft nicht angegeben ist. <br/><br/>Der Platzhalterfilter wird nur für den Dateinamen, aber nicht für den Ordner unterstützt. Folgende Platzhalter sind zulässig: `*` (entspricht null [0] oder mehr Zeichen) und `?` (entspricht null [0] oder einem einzelnen Zeichen).<br/>- Beispiel 1: `"key": "rootfolder/subfolder/*.csv"`<br/>- Beispiel 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Verwenden Sie `^` als Escapezeichen, wenn der tatsächliche Dateiname einen Platzhalter oder dieses Escapezeichen enthält. |Nein  |
 | prefix | Präfix für den S3-Objektschlüssel. Objekte, deren Schlüssel mit diesem Präfix beginnen, werden ausgewählt. Ist nur anwendbar, wenn die key-Eigenschaft nicht angegeben ist. |Nein  |
 | Version | Die Version des S3-Objekts, wenn die S3-Versionsverwaltung aktiviert ist. |Nein  |
 | format | Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen.<br/><br/>Wenn Dateien mit einem bestimmten Format analysiert oder generiert werden sollen, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](supported-file-formats-and-compression-codecs.md#text-format), [JSON-Format](supported-file-formats-and-compression-codecs.md#json-format), [Avro-Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc-Format](supported-file-formats-and-compression-codecs.md#orc-format) und [Parquet-Format](supported-file-formats-and-compression-codecs.md#parquet-format). |Nein (nur für Szenarien mit Binärkopien) |

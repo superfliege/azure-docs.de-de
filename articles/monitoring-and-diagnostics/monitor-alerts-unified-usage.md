@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264339"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287836"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor  
 
@@ -148,7 +148,13 @@ Im Folgenden wird Schritt für Schritt die Verwendung der Azure-Oberfläche „W
 2. Das **Dashboard „Warnungen“** wird angezeigt. Darauf werden alle Azure-Warnungen vereinheitlicht und auf einem zentralen ![Warnungsdashboard](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png) angezeigt.
 3. Das Dashboard zeigt auf einem Blick folgende Elemente (von oben links nach rechts), auf die durch Klicken eine ausführliche Auflistung angezeigt wird:
     - *Ausgelöste Warnungen*: Die gegenwärtige Anzahl von Warnungen, die die Logik erfüllt haben und den Zustand „Ausgelöst“ aufweisen
-    - *Warnungsregeln gesamt*: Die Anzahl der erstellten Warnungsregeln und auf niedrigster Textebene die Anzahl der derzeit aktivierten Regeln
+    - *Warnungsregeln gesamt*: Die Anzahl der erstellten Warnungsregeln und auf niedrigster Textebene die Anzahl der derzeit aktivierten Regeln 
+    
+
+        > [!NOTE]
+        > Um sicherzustellen, dass das Dashboard mit Details zu allen ausgelösten Warnungen einschließlich der Protokollwarnungen für Application Insights und Log Analytics konsistent ist, sollte die [Verbesserte einheitliche Oberfläche für Warnungen (Öffentliche Vorschau)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) verwendet werden.
+  
+  
 4. Es wird eine Liste aller ausgelösten Warnungen angezeigt, auf die der Benutzer zum Anzeigen von Details klicken kann.
 5. Zur Unterstützung bei der Suche nach bestimmten Warnungen können zusätzlich die Dropdownoptionen verwendet werden, um nach bestimmten Kriterien (*Abonnement, Ressourcengruppe und/oder Ressource*) zu filtern. Für nicht aufgelöste Warnungen ist zudem die Option *Warnungen filtern* verfügbar, um entsprechend des angegebenen Schlüsselworts über *Name, Warnungskriterien, Ressourcengruppe und Zielressource* nach bestimmten übereinstimmenden Warnungen zu suchen.
 

@@ -13,22 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bbc0cee8a44773c025c6174eaf7eccaba81b8d1b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4fc71432707c981c0f3f12e74ad7c499d36a17d2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "26617076"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231337"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
-In diesem Artikel werden Fehler erläutert, die während des Vorgangs des Genehmigens einer Anwendung auftreten können. Wenn Sie Probleme aufgrund unerwarteter Genehmigungsaufforderungen behandeln, die keine Fehlermeldungen enthalten, siehe [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+In diesem Artikel werden Fehler erläutert, die während des Vorgangs des Genehmigens einer Anwendung auftreten können. Wenn Sie Probleme mit unerwarteten Zustimmungsaufforderungen behandeln, die keine Fehlermeldungen enthalten, sehen Sie sich die [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios) an.
 
-Viele Anwendungen, die in Azure Active Directory integriert sind, erfordern Berechtigungen für den Zugriff auf andere Ressourcen, um zu funktionieren. Wenn diese Ressourcen auch in Azure Active Directory integriert sind, werden Berechtigungen für den Zugriff darauf häufig mithilfe des allgemeinen Genehmigungsframeworks angefordert. 
+Viele Anwendungen, die in Azure Active Directory integriert sind, erfordern Berechtigungen für den Zugriff auf andere Ressourcen, um zu funktionieren. Wenn diese Ressourcen auch in Azure Active Directory integriert sind, werden Berechtigungen für den Zugriff darauf häufig mithilfe des allgemeinen Genehmigungsframeworks angefordert. Eine Zustimmungsaufforderung wird in der Regel angezeigt, wenn eine Anwendung erstmals verwendet wird. Sie kann jedoch auch zu einem späteren Zeitpunkt erscheinen.
 
-Das führt zum Anzeigen einer Genehmigungsaufforderung. Dies erfolgt im Allgemeinen bei der ersten Nutzung einer Anwendung, kann aber auch bei einer nachfolgenden Verwendung erfolgen.
-
-Bestimmte Bedingungen müssen sein erfüllt, damit ein Benutzer die von einer Anwendung benötigten Berechtigungen genehmigt. Wenn diese Bedingungen nicht erfüllt sind, können verschiedene Fehler auftreten. Das umfasst:
+Bestimmte Bedingungen müssen erfüllt sein, damit ein Benutzer die von einer Anwendung benötigten Berechtigungen genehmigt. Wenn diese Bedingungen nicht erfüllt sind, können die folgenden Fehler auftreten.
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Anfordern nicht autorisierter Berechtigungen
 * **AADSTS90093:**&lt;Anzeigename_der_Client-App&gt; fordert mindestens eine Berechtigung an, für deren Erteilung Sie nicht autorisiert sind. Wenden Sie sich an einen Administrator, der diese Anwendung in Ihrem Auftrag genehmigen kann.
@@ -41,7 +39,7 @@ Dieser Fehler tritt auf, wenn ein Benutzer, der kein Unternehmensadministrator i
 Dieser Fehler tritt auf, wenn ein Unternehmensadministrator für Benutzer die Fähigkeit deaktiviert, Anwendungen zu genehmigen, und ein Nichtadministrator anschließend versucht, eine Anwendung zu nutzen, die eine Genehmigung erfordert. Dieser Fehler kann von einem Administrator behoben werden, indem der Zugriff auf die Anwendung im Auftrag der Organisation gewährt wird.
 
 ## <a name="intermittent-problem-error"></a>Vorübergehendes Problem
-* **AADSTS90090:** Anscheinend ist beim Aufzeichnen der Berechtigungen, die Sie versucht haben, &lt;Anzeigename_der_Client-App&gt; zu erteilen, ein vorübergehendes Problem aufgetreten. Versuchen Sie es später erneut.
+* **AADSTS90090:** Beim Anmeldevorgang ist ein vorübergehendes Problem beim Aufzeichnen der Berechtigungen aufgetreten, die Sie &lt;Anzeigename_der_Client-App&gt; erteilen wollten. Versuchen Sie es später erneut.
 
 Dieser Fehler zeigt an, dass auf Serverseite ein vorübergehendes Dienstproblem aufgetreten ist. Es kann behoben werden, indem versucht wird, die Anwendung erneut zu genehmigen.
 
@@ -58,11 +56,11 @@ Stellen Sie sicher, dass diese Ressource verfügbar ist, oder wenden Sie sich an
 ## <a name="permissions-mismatch-error"></a>Berechtigungskonflikt
 * **AADSTS65005:** Die App hat die Genehmigung für den Zugriff auf &lt;Anzeigename_der_Ressourcenanwendung&gt; angefordert. Diese Anforderung ist fehlgeschlagen, da sie nicht damit übereinstimmt, wie die App während ihrer Registrierung vorkonfiguriert wurde. Wenden Sie sich an den App-Hersteller.**
 
-Diese Art von Fehler tritt auf, wenn die Anwendung, die ein Benutzer versucht zu genehmigen, Berechtigungen für den Zugriff auf eine Ressourcenanwendung anfordert, die im Verzeichnis (Mandanten) der Organisation nicht vorhanden ist. Dies kann aus verschiedenen Gründen passieren:
+Diese Art von Fehler tritt auf, wenn die Anwendung, die ein Benutzer versucht zu genehmigen, Berechtigungen für den Zugriff auf eine Ressourcenanwendung anfordert, die im Verzeichnis (Mandanten) der Organisation nicht vorhanden ist. Dies kann aus unterschiedlichen Gründen passieren:
 
 -   Der Entwickler der Clientanwendung hat seine Anwendung falsch konfiguriert, was bewirkt, dass ein Zugriff auf eine ungültige Ressource angefordert wird. In diesem Fall muss der Anwendungsentwickler die Konfiguration der Clientanwendung zum Beheben dieses Problems aktualisieren.
 
--   Ein Dienstprinzipal, der die Zielressourcenanwendung darstellt, ist in der Organisation nicht vorhanden oder war in der Vergangenheit vorhanden, wurde jedoch entfernt. Um dieses Problem zu beheben, muss ein Dienstprinzipal für die Ressourcenanwendung in der Organisation so bereitgestellt werden, dass die Clientanwendung Berechtigungen dafür anfordern kann. Je nach Anwendung kann dies auf verschiedene Weisen erfolgen:
+-   Ein Dienstprinzipal, der die Zielressourcenanwendung darstellt, ist in der Organisation nicht vorhanden oder war in der Vergangenheit vorhanden, wurde jedoch entfernt. Um dieses Problem zu beheben, muss ein Dienstprinzipal für die Ressourcenanwendung in der Organisation so bereitgestellt werden, dass die Clientanwendung Berechtigungen dafür anfordern kann. Je nach Anwendungstyp gibt es unterschiedliche Bereitstellungsmöglichkeiten für den Dienstprinzipal, einschließlich:
 
     -   Erwerben eines Abonnements für die Ressourcenanwendung (von Microsoft veröffentlichte Anwendungen)
 

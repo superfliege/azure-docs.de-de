@@ -1,24 +1,22 @@
 ---
 title: Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“ | Microsoft-Dokumentation
-description: In diesem Artikel wird die Ausführung des Azure Site Recovery-Bereitstellungsplaners für die Umstellung von Hyper-V auf Azure beschrieben.
-services: site-recovery
+description: In diesem Artikel erfahren Sie, wie Sie den Site Recovery-Bereitstellungsplaner für die Replikation von Hyper-V in Azure ausführen.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 49243eaa4d3413509e569a88e1d7a2f6359d7876
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 0293ace13dbcd30988ce571c60f2d7c6a338e779
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236228"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287489"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für „Hyper-V zu Azure“
 
-## <a name="modes-of-running-the-deployment-planner"></a>Ausführungsmodi des Bereitstellungsplaners
-Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen: 
+Sie können das Befehlszeilentool Site Recovery-Bereitstellungsplaner (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen: 
 -   [Abrufen der Liste mit den virtuellen Computern (VMs)](#get-vm-list-for-profiling-hyper-v-vms)
 -   [Profil](#profile-hyper-v-vms)
 -   [Generieren eines Berichts](#generate-report)
@@ -40,14 +38,14 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 |---|---|
 | -Operation | GetVMList |
 | -User | Der Benutzername zum Herstellen der Verbindung mit dem Hyper-V-Host oder Hyper-V-Cluster. Der Benutzer muss über Administratorzugriff verfügen.|
-|-ServerListFile | Die Datei, in der die Liste mit den Servern enthalten ist, auf denen sich die VMs für die Profilerstellung befinden. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte in jeder Zeile eine der folgenden Angaben enthalten:<ul><li>Hyper-V-Hostname oder -IP-Adresse</li><li>Hyper-V-Clustername oder -IP-Adresse</li></ul><br>**Beispiel:** „ServerList.txt“ enthält die folgenden Server:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+| -ServerListFile | Die Datei, in der die Liste mit den Servern enthalten ist, auf denen sich die VMs für die Profilerstellung befinden. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte in jeder Zeile eine der folgenden Angaben enthalten:<ul><li>Hyper-V-Hostname oder -IP-Adresse</li><li>Hyper-V-Clustername oder -IP-Adresse</li></ul><br>**Beispiel:** „ServerList.txt“ enthält die folgenden Server:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Optional) Der UNC-Pfad (Universal Naming Convention) oder lokale Verzeichnispfad zum Speichern der Daten, die während dieses Vorgangs generiert werden. Wenn kein Name angegeben ist, wird das Verzeichnis mit dem Namen „ProfiledData“ unter dem aktuellen Pfad als Standardverzeichnis verwendet.|
-|-OutputFile| (Optional) Die Datei, in der die Liste mit den VMs gespeichert wird, die von den Hyper-V-Servern abgerufen werden. Wenn kein Name angegeben wird, werden die Details in „VMList.txt“ gespeichert.  Verwenden Sie die Datei zum Starten der Profilerstellung, nachdem Sie die VMs entfernt haben, für die der Vorgang nicht durchgeführt werden soll.|
+|-OutputFile| (Optional) Die Datei mit der Liste der von den Hyper-V-Servern abgerufenen VMs wird gespeichert. Wenn kein Name angegeben wird, werden die Details in „VMList.txt“ gespeichert.  Verwenden Sie die Datei zum Starten der Profilerstellung, nachdem Sie die VMs entfernt haben, für die der Vorgang nicht durchgeführt werden soll.|
 |-Password|(Optional) Das Kennwort zum Herstellen der Verbindung mit dem Hyper-V-Host. Wenn Sie es nicht als Parameter angeben, werden Sie beim Ausführen des Befehls zum Eingeben aufgefordert.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList-Ermittlung
-**Hyper-V-Cluster**: Wenn in der Datei mit der Serverliste der Name des Hyper-V-Clusters angegeben wird, ermittelt das Tool alle Hyper-V-Knoten des Clusters und ruft die VMs der einzelnen Hyper-V-Hosts ab.
 
+- **Hyper-V-Cluster**: Wenn in der Datei mit der Serverliste der Name des Hyper-V-Clusters angegeben wird, ermittelt das Tool alle Hyper-V-Knoten des Clusters und ruft die VMs der einzelnen Hyper-V-Hosts ab.
 **Hyper-V-Host**: Wenn der Name des Hyper-V-Hosts angegeben wird, prüft das Tool zuerst, ob dieser zu einem Cluster gehört. Wenn ja, ruft das Tool die Knoten ab, die zum jeweiligen Cluster gehören. Anschließend werden die VMs jedes Hyper-V-Hosts abgerufen. 
 
 Sie können in einer Datei die Anzeigenamen oder IP-Adressen der VMs, für die die Profilerstellung durchgeführt werden soll, auch manuell auflisten.
@@ -154,7 +152,7 @@ Wenn der Server, auf dem das Tool ausgeführt wird, neu gestartet wird oder abst
 
 Wenn der Name des Speicherkontos und der dazugehörige Schlüssel übergeben werden, misst das Tool den Durchsatz im letzten Schritt der Profilerstellung. Falls das Tool geschlossen wird, bevor die Profilerstellung abgeschlossen ist, wird der Durchsatz nicht berechnet. Zur Ermittlung des Durchsatzes vor dem Generieren des Berichts können Sie den GetThroughput-Vorgang über die Befehlszeilenkonsole ausführen. Andernfalls sind im Bericht keine Informationen zum Durchsatz enthalten.
 
-Azure Site Recovery unterstützt keine VMs, die über iSCSI- und Pass-Through-Datenträger verfügen. Das Tool kann aber keine iSCSI- und Pass-Through-Datenträger erkennen, die an VMs angefügt sind, und auch keine Profilerstellung dafür durchführen.
+Azure Site Recovery unterstützt keine VMs, die über iSCSI- und Pass-Through-Datenträger verfügen. Das Tool kann keine iSCSI- und Pass-Through-Datenträger erkennen, die an VMs angefügt sind, und auch keine Profilerstellung dafür durchführen.
 
 ## <a name="generate-a-report"></a>Generieren eines Berichts
 Das Tool generiert eine makrofähige Microsoft Excel-Datei (XLSM) als Berichtsausgabe. Darin werden alle Empfehlungen zur Bereitstellung zusammengefasst. Der Bericht hat den Namen „DeploymentPlannerReport_*eindeutiger numerischer Bezeichner*.xlsm“ und wird im angegebenen Verzeichnis gespeichert.

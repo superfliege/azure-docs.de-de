@@ -13,19 +13,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/22/2018
+ms.date: 06/12/2018
 ms.author: juliako
-ms.openlocfilehash: 4e644db12a74d6ef132a0c8d64ef517a0c2253cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659530"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292045"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>Migrieren von Media Services V2 zu V3
 
 > [!NOTE]
-> Die neueste Version von Azure Media Services liegt als Vorschau vor und kann als V3 bezeichnet werden.
+> Die neueste Version von Azure Media Services liegt als Vorschau vor und kann als v3 bezeichnet werden.
 
 Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführt wurden, und zeigt die Unterschiede zwischen den beiden Versionen.
 
@@ -50,6 +50,10 @@ Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführ
 
 ## <a name="changes-from-v2"></a>Änderungen von V2
 
+* In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
+
+    Für Ressourcen, die mit v3 erstellt wurden, unterstützt Media Services die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+    
 * Die Media Services-SDKs wurden vom Storage-SDK entkoppelt, wodurch sich eine bessere Kontrolle über das verwendete Storage-SDK ergibt und Versionsprobleme vermieden werden. 
 * In V3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen von REST V2 Media Encoder Standard. Beispielsweise würde die Bitrate in V2 mit 128, in V3 jedoch mit 128.000 angegeben. 
 * AssetFiles, AccessPolicies, IngestManifests sind in V3 nicht vorhanden.
@@ -141,7 +145,7 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. Erstellen einer Richtlinie für Inhaltsschlüssel
 2. Erstellen eines Medienobjekts
 3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput
-4. Erstellen von Locator
+4. Erstellen von StreamingLocator
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: a38eb1f291d00d942ff0a1579b20bca7e012991a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642936"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213123"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -171,26 +171,12 @@ Da für dieses Image ein Workloadeinstiegspunkt definiert ist, müssen Sie nicht
 
 Geben Sie als Instanzanzahl „1“ an.
 
+Geben Sie die Portzuordnung im entsprechenden Format an. Im Falle dieses Artikels ist das ```80:4000```. So haben Sie Folgendes konfiguriert: Alle Anfragen, die auf dem Hostcomputer unter Port 4000 eingehen, werden an Port 80 auf dem Container umgeleitet.
+
 ![Service Fabric-Yeoman-Generator für Container][sf-yeoman]
 
-## <a name="configure-port-mapping-and-container-repository-authentication"></a>Konfigurieren der Portzuordnung und der Authentifizierung für das Containerrepository
-Für Ihren im Container ausgeführten Dienst wird ein Endpunkt für die Kommunikation benötigt. Fügen Sie als Nächstes der Datei „ServiceManifest.xml“ unter dem Tag „Resources“ einem `Endpoint` nun das Protokoll, den Port und den Typ hinzu. In diesem Artikel lauscht der im Container ausgeführte Dienst auf Port 4000: 
-
-```xml
-
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="myServiceTypeEndpoint" UriScheme="http" Port="4000" Protocol="http"/>
-    </Endpoints>
-  </Resources>
- ```
- 
-Durch die Bereitstellung von `UriScheme` wird automatisch der Containerendpunkt im Service Fabric Naming Service registriert, damit er einfacher erkennbar ist. Eine vollständige „ServiceManifest.xml“-Beispieldatei finden Sie am Ende dieses Artikels. 
-
-Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie in `ContainerHostPolicies` in der Datei „ApplicationManifest.xml“ eine `PortBinding`-Richtlinie angeben. In diesem Artikel wird als `ContainerPort` 80 verwendet (der Container macht Port 80 verfügbar, wie in der Dockerfile-Datei angegeben), und `EndpointRef` lautet „myServiceTypeEndpoint“ (der im Dienstmanifest angegebene Endpunkt). Über Port 4000 an den Dienst eingehende Anforderungen werden Port 80 im Container zugeordnet. Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu. Fügen Sie für diesen Artikel den Kontonamen und das Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu. Stellen Sie sicher, dass die Richtlinie unter dem Tag „ServiceManifestImport“ gemäß dem richtigen Dienstpaket hinzugefügt wird.
+## <a name="configure-container-repository-authentication"></a>Konfigurieren der Authentifizierung des Containerrepositorys
+ Wenn der Container eine Authentifizierung mit einem privaten Repository durchführen muss, fügen Sie `RepositoryCredentials` hinzu. Fügen Sie für diesen Artikel den Kontonamen und das Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu. Stellen Sie sicher, dass die Richtlinie unter dem Tag „ServiceManifestImport“ gemäß dem richtigen Dienstpaket hinzugefügt wird.
 
 ```xml
    <ServiceManifestImport>
@@ -227,14 +213,6 @@ Sie können das **HEALTHCHECK**-Verhalten für jeden Container konfigurieren, in
 *IncludeDockerHealthStatusInSystemHealthReport* ist standardmäßig auf **true** und *RestartContainerOnUnhealthyDockerHealthStatus* auf **false** festgelegt. Wenn *RestartContainerOnUnhealthyDockerHealthStatus* auf **true** festgelegt ist, wird ein Container, für den wiederholt ein nicht fehlerfreier Zustand (unhealthy) gemeldet wird, neu gestartet (ggf. auf anderen Knoten).
 
 Falls Sie die **HEALTHCHECK**-Integration für den gesamten Service Fabric-Cluster deaktivieren möchten, müssen Sie [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) auf **false** festlegen.
-
-## <a name="build-and-package-the-service-fabric-application"></a>Erstellen und Packen der Service Fabric-Anwendung
-Die Yeoman-Vorlagen von Service Fabric enthalten ein Buildskript für [Gradle](https://gradle.org/). Damit können Sie die Anwendung über das Terminal erstellen. Führen Sie Folgendes aus, um die Anwendung zu erstellen und zu packen:
-
-```bash
-cd mycontainer
-gradle
-```
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
 Die erstellte Anwendung kann mithilfe der Service Fabric-Befehlszeilenschnittstelle im lokalen Cluster bereitgestellt werden.

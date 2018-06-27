@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f831c046bcf8f633841f9dc4a0fce6d1e419e6c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205653"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287627"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -184,7 +184,7 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
    |Quelle |VirtualNetwork | |
    |Ziel | VirtualNetwork | |
    |Dienst | DNS (UDP/53) | |
-   |anzuzeigen. | ZULASSEN  | |
+   |Aktion | ZULASSEN  | |
    | | |
 
 4. Geben Sie im Anwendungsmanifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="Open">`. Im Netzwerkmodus **Open** erhält der Dienst eine dedizierte IP-Adresse. Wenn kein Modus angegeben ist, wird für den Dienst standardmäßig der Modus **nat** verwendet. Im folgenden Beispielmanifest können die Dienste `NodeContainerServicePackage1` und `NodeContainerServicePackage2` über denselben Port lauschen. (Beide Dienste lauschen über `Endpoint1`.) Wenn der Netzwerkmodus „Open“ angegeben ist, können keine `PortBinding`-Konfigurationen angegeben werden.
@@ -231,7 +231,23 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
      </Endpoints>
    </Resources>
    ```
+   
+6. Für Windows bewirkt ein VM-Neustart, dass das offene Netzwerk neu erstellt wird. Dies soll ein im Netzwerkstapel zugrunde liegendes Problem minimieren. Das Standardverhalten besteht darin, das Netzwerk neu zu erstellen. Wenn dieses Verhalten deaktiviert werden muss, kann die folgende Konfiguration gefolgt von einem Konfigurationsupgrade verwendet werden.
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)
 * [Angeben von Ressourcen in einem Dienstmanifest](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

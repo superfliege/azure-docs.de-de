@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 76ed74f2df62d478b83e109a492977ec2d580198
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305088"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284837"
 ---
 # <a name="assets"></a>Objekte
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält die Eigenschaften eines Medienobjekts und die jewe
 
 Die vollständige Definition finden Sie unter [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets).
 
-## <a name="filtering-ordering-and-paging-support"></a>Unterstützung für Filter-, Sortier- und Paginierungsfunktionen
+## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
 Media Services unterstützt die folgenden OData-Abfrageoptionen für Medienobjekte: 
 
@@ -88,7 +88,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. 
 
-Wenn eine Abfrageantwort viele (derzeit über 1000) Elemente enthält, gibt der Dienst eine „@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Die Seitengröße ist nicht vom Benutzer konfigurierbar. 
+Wenn eine Abfrageantwort viele (derzeit über 1.000) Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Die Seitengröße ist nicht vom Benutzer konfigurierbar. 
 
 Wenn während der Paginierung der Sammlung Medienobjekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
 
@@ -105,6 +105,21 @@ while (currentPage.NextPageLink != null)
 ```
 
 Beispiele zu REST finden Sie unter [Medienobjekte – Liste](https://docs.microsoft.com/rest/api/media/assets/list).
+
+
+## <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
+
+Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen durch die speicherseitige Verschlüsselung verschlüsselt werden. Die folgende Tabelle zeigt, wie die speicherseitige Verschlüsselung in Media Services funktioniert:
+
+|Verschlüsselungsoption|BESCHREIBUNG|Media Services v2|Media Services v3|
+|---|---|---|---|
+|Media Services-Speicherverschlüsselung|AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet|Unterstützt<sup>(1)</sup>|Nicht unterstützt<sup>(2)</sup>|
+|[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet|Unterstützt|Unterstützt|
+|[Clientseitige Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet|Nicht unterstützt|Nicht unterstützt|
+
+<sup>1</sup> Media Services unterstützt zwar die Behandlung von Inhalten in Klartext/ohne jede Form der Verschlüsselung, doch wird davon abgeraten.
+
+<sup>2</sup> In Media Services v3 wird Speicherverschlüsselung (AES-256-Verschlüsselung) nur für die Abwärtskompatibilität unterstützt, wenn Ihre Ressourcen mit Media Services v2 erstellt wurden. Dies bedeutet, dass v3 mit vorhandenen speicherverschlüsselten Ressourcen funktioniert, jedoch nicht die Erstellung neuer zulässt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
