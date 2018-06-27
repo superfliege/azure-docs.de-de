@@ -45,6 +45,8 @@
       href: use-reports.md
     - name: Verwenden von Dashboards
       href: dashboards.md
+    - name: Verwalten von Budgets
+      href: manage-budgets.md
 - name: angeben
   items:
     - name: Videos zur Kostenverwaltung

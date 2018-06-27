@@ -15,12 +15,23 @@
       href: quickstarts/nodejs.md
     - name: Erste Abfrage in Python
       href: quickstarts/python.md
+- name: SDK
+  expanded: true
+  items:
+    - name: Übersicht über SDK-Beispiele
+      href: sdk.md
+    - name: SDK in Python
+      href: visual-search-sdk-python.md
 - name: Tutorials
   items:
     - name: Einzelseiten-Web-App
       href: tutorial-bing-visual-search-single-page-app.md
     - name: Einzelseiten-Web-App (Quellcode)
       href: tutorial-bing-visual-search-single-page-app-source.md
+    - name: 'SDK für die visuelle Bing-Suche: Bildzuschneidebereich und Ergebnisse'
+      href: tutorial-visual-search-crop-area-results.md
+    - name: 'SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse'
+      href: tutorial-visual-search-insights-token.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -48,7 +59,7 @@
   items:
     - name: REST-API v7
       href: 'https://aka.ms/bingvisualsearchreferencedoc'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Abrufen des kostenlosen Zugriffsschlüssels
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'

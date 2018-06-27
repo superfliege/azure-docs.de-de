@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist der Spracherkennungsdienst?
+    - name: Worum handelt es sich beim Speech-Dienst?
       href: overview.md
       expanded: true
 - name: Schnellstarts
@@ -12,31 +12,33 @@
     - name: 'Erkennen von Sprache in C#'
       href: quickstart-csharp-windows.md
     - name: Erkennen von Sprache in C++ für Windows
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: Erkennen von Sprache in C++ für Linux
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: Erste Schritte mit dem SDK für sprachaktivierte Geräte
       href: speech-devices-sdk-qsg.md
-- name: Anleitungen
+- name: Anpassung
   items:
-    - name: Erkennen von Sprache
-      href: how-to-speech-to-text.md
     - name: Anpassen von Sprachmodellen
       href: how-to-customize-speech-models.md
-    - name: Synthetisieren von Sprache
-      href: how-to-text-to-speech.md
     - name: Anpassen von Voicefonts
       href: how-to-customize-voice-font.md
-    - name: Übersetzen von Sprache
-      href: how-to-translate-speech.md
     - name: Anfertigen von Transkripts
       href: prepare-transcription.md
     - name: Verwenden von benutzerdefinierten Audiodatenströmen
       href: how-to-use-audio-input-streams.md
+    - name: Anpassen des Codeworts für das Gerät (Geräte-SDK)
+      href: speech-devices-sdk-create-kws.md
+- name: Anleitungen
+  items:
+    - name: Erkennen von Sprache
+      href: how-to-speech-to-text.md
+    - name: Synthetisieren von Sprache
+      href: how-to-text-to-speech.md
+    - name: Übersetzen von Sprache
+      href: how-to-translate-speech.md
     - name: Abrufen des SDK für sprachaktivierte Geräte
       href: get-speech-devices-sdk.md
-    - name: Anpassen des Codeworts für das Gerät
-      href: speech-devices-sdk-create-kws.md
     - name: Batchtranskription (Callcenter)
       href: batch-transcription.md
 - name: Beispiele
@@ -71,10 +73,16 @@
       href: speech-sdk-reference.md
     - name: Markup für Sprachsynthese
       href: speech-synthesis-markup.md
-- name: Ressourcen
+- name: angeben
   items:
-    - name: Spracherkennung – Häufig gestellte Fragen
-      href: faq-stt.md
+    - name: Häufig gestellte Fragen
+      items:
+        - name: Spracherkennung – Häufig gestellte Fragen
+          href: faq-stt.md
+        - name: 'Text-zu-Sprache: Häufig gestellte Fragen'
+          href: faq-text-to-speech.md
+        - name: 'Übersetzung: Häufig gestellte Fragen'
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

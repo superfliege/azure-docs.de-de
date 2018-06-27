@@ -250,7 +250,7 @@
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](manage-apps/certificate-signing-options.md)
 #### [Ausblenden einer Anwendung auf der Benutzeroberfläche](manage-apps/hide-application-from-user-portal.md)
 ### [Configure Sign-In Auto-Acceleration using HRD Policy (Konfigurieren der automatischen Anmeldebeschleunigung per HRD Policy)](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [Migrieren von AD FS-Apps zu Azure AD](migrate-adfs-apps-to-azure.md) 
+### [Migrieren von AD FS-Apps zu Azure AD](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [Verwalten des Zugriffs auf Apps](manage-apps/what-is-access-management.md)
 #### [SSO-Zugriff](manage-apps/what-is-single-sign-on.md)
 #### [Zertifikate für SSO](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## Delegieren des Zugriffs auf Ressourcen
 ### [Administratorrollen](active-directory-assign-admin-roles-azure-portal.md)
-#### [Zuweisen der Administratorrolle zu einem Benutzer](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [Vergleichen der Berechtigungen für Mitglieder und Gastbenutzer](fundamentals/users-default-permissions.md) 
-### [Sichern des privilegierten Zugriffs](admin-roles-best-practices.md)  
-### [Erstellen von Administratorkonten mit Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [Standardbenutzerberechtigungen](fundamentals/users-default-permissions.md)
+#### [Zuweisen der Administratorrolle zu einem Benutzer](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [Vergleichen der Berechtigungen für Mitglieder und Gastbenutzer](fundamentals/users-default-permissions.md)
+### [Sichern von Administratorrollen](admin-roles-best-practices.md)  
+#### [Erstellen von Administratorkonten mit Notfallzugriff](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Verwaltungseinheiten](active-directory-administrative-units-management.md)
 ### [Konfigurieren der Tokengültigkeitsdauer](active-directory-configurable-token-lifetimes.md)
 ### [Sichern von privilegierten Rollen](admin-roles-best-practices.md)

@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568125"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297965"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -25,7 +25,7 @@ ms.locfileid: "35568125"
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |4096 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
 | Netzwerksicherheitsgruppen |100 |200 |
-| NSG-Regeln pro NSG |200 |400 |
+| NSG-Regeln pro NSG |200 |1000 |
 | Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
 | Öffentliche IP-Adressen (dynamisch) |5 |an den Support wenden |
@@ -50,7 +50,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Netzwerksicherheitsgruppen |100 |5.000 |
 | NSG-Regeln pro NSG |1.000** |1000 |
 | Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |2000 |4000 |
-| Anwendungssicherheitsgruppen |200 |500 |
+| Anwendungssicherheitsgruppen |500 |3000 |
 | Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
 | IP-Konfigurationen pro Anwendungssicherheitsgruppe |1000 |4000 |
 | Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |50 |100 |
@@ -64,6 +64,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 ** Diese Standardlimits gelten für Abonnements, für die diese Limits nicht zuvor durch den Support erhöht wurden.
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
+Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung im Vergleich zu den Grenzwerten Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Rollenzuweisungen für externe Benutzer in Azure | Microsoft-Dokumentation
-description: Verwalten der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure für externe Benutzer einer Organisation
+title: Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung in Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff für organisationsexterne Benutzer mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure verwalten.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34203885"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296967"
 ---
-# <a name="manage-role-assignments-for-external-users"></a>Verwalten von Rollenzuweisungen für externe Benutzer
+# <a name="manage-access-for-external-users-using-rbac"></a>Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Die rollenbasierte Zugriffssteuerung bietet Flexibilität: Sie können ein Azure-Abonnement besitzen, das vom Administratorkonto (Dienstadministratorrolle auf Abonnementebene) verwaltet wird, und mehrere Benutzer dazu einladen, im gleichen Abonnement zu arbeiten, ohne dass diese über Administratorrechte für das Konto verfügen.
 
@@ -44,10 +44,10 @@ RBAC-Rollen können nur von **Besitzern** des Abonnements zugeteilt werden. Dahe
 Nachdem Sie sich als Administrator beim Azure-Portal angemeldet haben, wählen Sie „Abonnements“ und dann das gewünschte Abonnement aus.
 ![Blatt „Abonnement“ im Azure-Portal](./media/role-assignments-external-users/0.png) Wenn der Administratorbenutzer das Azure-Abonnement erworben hat, wird der Benutzer standardmäßig als **Kontoadministrator** angezeigt. Dies ist die Abonnementrolle. Weitere Informationen zu den Azure-Abonnementrollen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../billing/billing-add-change-azure-subscription-administrator.md).
 
-In diesem Beispiel ist der Benutzer „alflanigan@outlook.com“ der **Besitzer** des Abonnements „Free Trial“ im AAD-Mandanten „Default tenant Azure“. Da dieser Benutzer das Azure-Abonnement mit dem ursprünglichen Microsoft-Konto „Outlook“ (Microsoft-Konto = Outlook, Live usw.) erstellt hat, lautet der Standarddomänenname für alle weiteren Benutzer, die diesem Mandanten hinzugefügt werden, **„@alflaniganuoutlook.onmicrosoft.com“**. Die Syntax der neuen Domäne wird gebildet, indem der Benutzername und der Domänenname des Benutzers, der den Mandanten erstellt hat, zusammengesetzt werden und die Erweiterung **„.onmicrosoft.com“** angefügt wird.
+In diesem Beispiel ist der Benutzer „alflanigan@outlook.com“ der **Besitzer** des Abonnements „Free Trial“ im AAD-Mandanten „Default tenant Azure“. Da dieser Benutzer das Azure-Abonnement mit dem ursprünglichen Microsoft-Konto „Outlook“ (Microsoft-Konto = Outlook, Live usw.) erstellt hat, lautet der Standarddomänenname für alle weiteren Benutzer, die diesem Mandanten hinzugefügt werden, **\@alflaniganuoutlook.onmicrosoft.com**. Die Syntax der neuen Domäne wird gebildet, indem der Benutzername und der Domänenname des Benutzers, der den Mandanten erstellt hat, zusammengesetzt werden und die Erweiterung **„.onmicrosoft.com“** angefügt wird.
 Darüber hinaus können Benutzer sich mit einem benutzerdefinierten Domänennamen beim Mandanten anmelden, nachdem dieser Name dem neuen Mandanten hinzugefügt und in diesem überprüft wurde. Weitere Informationen zum Überprüfen eines benutzerdefinierten Domänennamens in einem Azure Active Directory-Mandanten finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Ihrem Verzeichnis](/active-directory/active-directory-add-domain).
 
-In diesem Beispiel enthält das Verzeichnis „Default tenant Azure“ nur Benutzer mit dem Domänennamen „@alflanigan.onmicrosoft.com“.
+In diesem Beispiel enthält das Verzeichnis „Default tenant Azure“ nur Benutzer mit dem Domänennamen „\@alflanigan.onmicrosoft.com“.
 
 Nach dem Auswählen des Abonnements muss der Administratorbenutzer auf **Zugriffssteuerung (IAM)** und dann auf **Neue Rolle hinzufügen** klicken.
 
@@ -55,7 +55,7 @@ Nach dem Auswählen des Abonnements muss der Administratorbenutzer auf **Zugriff
 
 ![Hinzufügen eines neuen Benutzers im Feature „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/role-assignments-external-users/2.png)
 
-Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der zuweisbaren Bereiche finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
+Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der Bereiche, die zugewiesen werden können, finden Sie unter [Integrierte Rollen](built-in-roles.md).
 
 Der Administratorbenutzer muss dann die E-Mail-Adresse des externen Benutzers hinzufügen. Das erwartete Verhalten: Der Benutzer wird im vorhandenen Mandanten nicht angezeigt. Nachdem der externe Benutzer eingeladen wurde, wird er unter **Abonnements > Zugriffssteuerung (IAM)** mit allen aktuellen Benutzern angezeigt, denen derzeit für den Abonnementbereich eine RBAC-Rolle zugewiesen ist.
 

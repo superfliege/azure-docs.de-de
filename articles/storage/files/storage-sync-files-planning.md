@@ -4,8 +4,8 @@ description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung 
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: jgerend
+manager: aungoo
+editor: tamram
 ms.assetid: 297f3a14-6b3a-48b0-9da4-db5907827fb5
 ms.service: storage
 ms.workload: storage
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: ebfa7da32859f8d2d0ff3778af3b5cca99bdf1f4
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077673"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296907"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Planen einer Bereitstellung der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -145,6 +145,9 @@ Für die parallele Nutzung von Azure File Sync und DFS-R gilt Folgendes:
 
 Weitere Informationen finden Sie unter [Übersicht über DFS-Namespaces und DFS-Replikation](https://technet.microsoft.com/library/jj127250).
 
+### <a name="windows-search"></a>Windows-Suche
+Wenn auf einem Serverendpunkt Cloudtiering aktiviert ist, werden Tieringdateien in der Windows-Suche übersprungen und nicht indiziert. Dateien ohne Tiering werden ordnungsgemäß indiziert.
+
 ### <a name="antivirus-solutions"></a>Virenschutzlösungen
 Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden müssen, kann ein Virenschutzprodukt den Rückruf von Tieringdateien verursachen. Da für Tieringdateien das Attribut „offline“ festgelegt ist, empfiehlt es sich, beim Softwareanbieter nachzufragen, wie die Lösung so konfiguriert werden kann, dass Offlinedateien nicht gelesen werden. 
 
@@ -158,6 +161,11 @@ Die folgenden Lösungen unterstützen das Überspringen von Offlinedateien:
 
 ### <a name="backup-solutions"></a>Sicherungslösungen
 Wie Virenschutzlösungen können auch Sicherungslösungen den Rückruf von Tieringdateien verursachen. Es wird empfohlen, die Azure-Dateifreigabe mithilfe einer Cloudsicherungslösung anstelle eines lokalen Sicherungsprodukts zu sichern.
+
+Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf einem Server in der Synchronisierungsgruppe ausgeführt werden, auf dem das Cloudtiering deaktiviert ist. Wenn Sie die Dateien im Speicherort des Serverendpunkts wiederherstellen, verwenden Sie die Option zum Wiederherstellen auf Dateiebene. Wiederhergestellte Dateien werden auf allen Endpunkten in der Synchronisierungsgruppe synchronisiert. Dabei werden vorhandene Dateien durch die aus der Sicherung wiederhergestellte Version ersetzt.
+
+> [!Note]  
+> Anwendungsorientierte Wiederherstellungen, Wiederherstellungen auf Volumeebene und BMR-Wiederherstellungen (Bare-Metal-Recovery) können zu unerwarteten Ergebnissen führen und werden derzeit nicht unterstützt. Diese Wiederherstellungsoptionen werden in einer zukünftigen Version unterstützt.
 
 ### <a name="encryption-solutions"></a>Verschlüsselungslösungen
 Die Unterstützung von Verschlüsselungslösungen hängt davon ab, wie sie implementiert werden. Die Azure-Dateisynchronisierung funktioniert mit:
@@ -180,8 +188,9 @@ Azure File Sync ist nur in den folgenden Regionen als Vorschau verfügbar:
 | Region | Standort des Rechenzentrums |
 |--------|---------------------|
 | Australien (Osten) | Neusüdwales |
+| Australien, Südosten | Victoria |
 | Kanada, Mitte | Toronto |
-| Kanada, Osten | Québec (Stadt) |
+| Kanada, Osten | Quebec City |
 | USA (Mitte) | Iowa |
 | Asien, Osten | Hongkong |
 | USA (Ost) | Virginia |
@@ -189,6 +198,7 @@ Azure File Sync ist nur in den folgenden Regionen als Vorschau verfügbar:
 | Nordeuropa | Irland |
 | Asien, Südosten | Singapur |
 | UK, Süden | London |
+| UK, Westen | Cardiff |
 | Europa, Westen | Niederlande |
 | USA (Westen) | Kalifornien |
 

@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: Konzepte
   items:
-    - name: Dienstebenen und -ressourcen
+    - name: Kaufmodelle und -ressourcen
       items:
-        - name: Dienstebenen
+        - name: Kaufmodelle
           href: sql-database-service-tiers.md
         - name: V-Kern-basiertes Modell
           href: sql-database-service-tiers-vcore.md
