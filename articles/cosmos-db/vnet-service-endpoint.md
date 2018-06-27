@@ -5,15 +5,16 @@ services: cosmos-db
 author: kanshiG
 manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.topic: article
+ms.devlang: na
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: b07a159e69a11656555a8550b807cce0b2c9ef6c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293994"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts
 
@@ -48,7 +49,7 @@ Nachdem ein Azure Cosmos DB-Konto mit einem Virtual Network-Dienstendpunkt konfi
    ![Auswählen des Virtual Network und des Subnetzes](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > Wenn für die ausgewählten Azure Virtual Networks und Subnetze bisher noch kein Dienstendpunkt für Azure Cosmos DB konfiguriert wurde, kann dies im Rahmen dieses Vorgangs erfolgen. Die Aktivierung des Zugriffs kann bis zu 15 Minuten dauern. 
+   > Wenn für die ausgewählten Azure Virtual Networks und Subnetze bisher noch kein Dienstendpunkt für Azure Cosmos DB konfiguriert wurde, kann dies im Rahmen dieses Vorgangs erfolgen. Die Aktivierung des Zugriffs kann bis zu 15 Minuten dauern. Es ist sehr wichtig, die IP-Firewall zu deaktivieren, nachdem Sie den Inhalt der Firewall-ACL für die erneute Aktivierung notiert haben. 
 
    ![Virtual Network und Subnetz erfolgreich konfiguriert](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
@@ -57,6 +58,9 @@ Nun lässt Ihr Azure Cosmos DB-Konto nur Zugriff aus diesem ausgewählten Subnet
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Konfigurieren des Dienstendpunkts für ein neues Azure Virtual Network und Subnetz
 
 1. Suchen Sie auf dem Blatt **Alle Ressourcen** das Azure Cosmos DB-Konto, das Sie sichern möchten.  
+
+> [!NOTE]
+> Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
 
 2. Bevor Sie den Virtual Network-Dienstendpunkt aktivieren, kopieren Sie die IP-Firewallinformationen für Ihr Azure Cosmos DB-Konto für die spätere Verwendung. Sie können die IP-Firewall nach der Konfiguration des Dienstendpunkts erneut aktivieren.  
 
@@ -76,7 +80,7 @@ Nachdem die Azure Virtual Network-Dienstendpunkte für Ihr Azure Cosmos DB-Daten
 
 Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z.B. Azure Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie den Zugriff, indem Sie das Kontrollkästchen **Zugriff auf Azure-Dienste zulassen** aktivieren.
 
-Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen zum **Zugriff auf das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie in den Abschnitten [Verbindungen über das Azure-Portal](firewall-support.md#connections-from-the-azure-portal) und [Verbindungen über andere Azure-PaaS-Dienste](firewall-support.md#connections-from-other-azure-paas-services). Nachdem Sie den Zugriff ausgewählt haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
+Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen zum **Zugriff auf das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie in den Abschnitten [Verbindungen über das Azure-Portal](firewall-support.md#connections-from-the-azure-portal) und [Verbindungen über andere Azure-PaaS-Dienste](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services). Nachdem Sie den Zugriff ausgewählt haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Entfernen eines Virtual Network oder eines Subnetzes 
 
@@ -95,6 +99,10 @@ Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreif
 Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Dienstendpunkt für ein Azure Cosmos DB-Konto zu konfigurieren:  
 
 1. Installieren Sie die neueste Version von [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps), und [melden Sie sich an](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Stellen Sie sicher, dass Sie sich die IP-Firewalleinstellungen notiert und die IP-Firewall vollständig gelöscht haben, bevor Sie einen Dienstendpunkt für das Konto aktivieren.
+
+
+> [!NOTE]
+> Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und aktivieren Sie dann den Dienstendpunkt. Wenn Sie den Dienstendpunkt aktivieren, ohne die Firewall zu deaktivieren, verliert der Datenverkehr aus diesem IP-Bereich die virtuelle IP-Identität und wird mit einer Fehlermeldung des IP-Filters gelöscht. Um diesen Fehler zu vermeiden, sollten Sie immer die Firewallregeln deaktivieren, sie kopieren, den Dienstendpunkt aus dem Subnetz aktivieren und danach die ACL des Subnetzes aus Cosmos DB. Nachdem Sie den Dienstendpunkt konfiguriert und die ACL hinzugefügt haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
 
 2. Bevor Sie den Virtual Network-Dienstendpunkt aktivieren, kopieren Sie die IP-Firewallinformationen für Ihr Azure Cosmos DB-Konto für die spätere Verwendung. Sie werden die IP-Firewall nach der Konfiguration des Dienstendpunkts erneut aktivieren.  
 
@@ -219,9 +227,13 @@ Dies ist nur erforderlich, wenn Sie den Zugriff auf Ihr Azure Cosmos DB-Konto ü
 
 Für ein Azure Cosmos DB-Konto sind 64 Virtual Network-Dienstendpunkte zulässig.
 
-### <a name="what-is-the-relationship-of-service-endpoint-with-respect-to-network-security-group-nsg-rules"></a>Welche Beziehung besteht zwischen Dienstendpunkten und Netzwerksicherheitsgruppen-Regeln?  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>Welche Beziehung besteht zwischen Dienstendpunkten und Netzwerksicherheitsgruppen-Regeln?  
 
-Die Netzwerksicherheitsgruppen-Regel für Azure Cosmos DB ermöglicht Ihnen die Einschränkung des Zugriffs nur auf den IP-Adressbereich von Azure Cosmos DB.
+NSG-Regeln in Azure Cosmos DB erlauben es Ihnen, den Zugriff auf bestimmte Azure Cosmos DB-IP-Adressbereiche zu beschränken. Falls Sie den Zugriff auf eine Azure Cosmos DB-Instanz in einer bestimmten [Region](https://azure.microsoft.com/global-infrastructure/regions/) zulassen möchten, können Sie die Region im folgenden Format angeben: 
+
+    AzureCosmosDB.<region name>
+
+Um mehr über NSG-Tags zu erfahren, lesen Sie den Artikel über [virtuelle Netzwerkdienst-Tags](../virtual-network/security-overview.md#service-tags). 
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>Welche Beziehung besteht zwischen einer IP-Firewall und den Funktionen eines Virtual Network-Dienstendpunkts?  
 

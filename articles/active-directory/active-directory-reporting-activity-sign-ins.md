@@ -3,25 +3,25 @@ title: Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal | Micros
 description: Enthält eine Einführung in die Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588606"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231991"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -153,7 +153,7 @@ Sie können die Daten zu Anmeldeaktivitäten herunterladen, wenn Sie sie außerh
 
 ![Herunterladen](./media/active-directory-reporting-activity-sign-ins/71.png "Herunterladen")
 
-Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt. Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption verwenden. Wenn Sie auf **Skript** klicken, wird ein Skript mit allen von Ihnen festgelegten Filtern erstellt. Neben der technischen Implementierung ist die Anzahl der herunterladbaren Datensätze durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) eingeschränkt.  
+Wenn Sie auf **Herunterladen** klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt. Falls eine höhere Flexibilität erforderlich ist, können Sie die Skriptoption verwenden. Wenn Sie auf **Skript** klicken, wird ein PowerShell-Skript mit allen von Ihnen festgelegten Filtern erstellt. Laden Sie dieses Skript herunter, und führen Sie es im **Administratormodus** aus, um die CSV-Datei zu generieren. Neben der technischen Implementierung ist die Anzahl der herunterladbaren Datensätze durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) eingeschränkt.  
 
 
 

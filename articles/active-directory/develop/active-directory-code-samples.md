@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 299e0d4fa53f9b8a2aef2fc881b136aa41aacfe4
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5d7f0d1fc32f18991be6614bb7661b63570a8700
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157774"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264921"
 ---
 # <a name="azure-active-directory-code-samples-v1-endpoint"></a>Azure Active Directory-Codebeispiele (V1-Endpunkt)
 
@@ -45,11 +45,11 @@ Die folgenden Beispiele veranschaulichen öffentliche Client-Anwendungen (Deskto
 
 Clientanwendung | Plattform | Ablauf/Erteilung | Aufrufen von Microsoft Graph | Aufrufen einer ASP.NET- oder ASP.NET Core 2.0-Web-API
 ------------------ | -------- | ---------- | -------------------- | -------------------------
-Desktop (WPF)           | .NET/C# | Interaktiv | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
-Mobil (UWP)            | .NET/C#  | Interaktiv | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (Web-API für einzelnen Mandanten) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (mehrinstanzenfähige Web-API)|
-Mobil (Android, iOS, UWP)   | .NET/C# (Xamarin) | Interaktiv | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
-Mobil (Android)           | Android/Java | Interaktiv |   [android](https://github.com/Azure-Samples/active-directory-android) |
-Mobil (iOS)           | iOS/Objective C | Interaktiv |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
+Desktop (WPF)           | .NET/C# | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) | [Dotnet-native-desktop](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop) </p> [dotnet-native-aspnetcore](https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore/)</p> [dotnet-webapi-manual-jwt-validation](https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation)
+Mobil (UWP)            | .NET/C#  | Interactive | [dotnet-native-uwp-wam](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) |  [dotnet-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-windows-store) (Web-API für einzelnen Mandanten) </p> [dotnet-webapi-multitenant-windows-store](https://github.com/Azure-Samples/active-directory-dotnet-webapi-multitenant-windows-store) (mehrinstanzenfähige Web-API)|
+Mobil (Android, iOS, UWP)   | .NET/C# (Xamarin) | Interactive | [dotnet-native-multitarget](https://github.com/azure-samples/active-directory-dotnet-native-multitarget) |
+Mobil (Android)           | Android/Java | Interactive |   [android](https://github.com/Azure-Samples/active-directory-android) |
+Mobil (iOS)           | iOS/Objective C | Interactive |   [nativeClient-iOS](https://github.com/azureadquickstarts/nativeclient-ios) |
 Desktop (Konsole)          | .NET/C# | Benutzername und Kennwort </p> Integrierte Windows-Authentifizierung | | [dotnet-native-headless](https://github.com/azure-samples/active-directory-dotnet-native-headless)
 Desktop (Konsole)           | .NET Core/C# | Geräteprofil | | [dotnet-deviceprofile](https://github.com/Azure-Samples/active-directory-dotnet-deviceprofile)
 
@@ -83,8 +83,8 @@ Clientanwendung | Plattform | Ablauf/Erteilung | Aufrufen von Microsoft Graph | 
 ------------------ | -------- | ---------- | -------------------- | -------------------------
 Daemon-App (Konsole)          | .NET/C#  | Clientanmeldeinformationen mit App-Geheimnis oder Zertifikat | | [dotnet-daemon](https://github.com/azure-samples/active-directory-dotnet-daemon)</p> [dotnet-daemon-certificate-credential](https://github.com/azure-samples/active-directory-dotnet-daemon-certificate-credential)
 Daemon-App (Konsole)         | .NET Core/C# | Clientanmeldeinformationen mit Zertifikat| | [dotnetcore-daemon-certificate-credential](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-certificate-credential)
-Desktop            | Java | Clientanmeldeinformationen |   [java-native-headless](https://github.com/azure-samples/active-directory-java-native-headless) |
-ASP.NET-Web-App  | .NET/C# | Clientanmeldeinformationen |    | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
+Desktop            | Java | Client credentials (Clientanmeldeinformationen) |   [java-native-headless](https://github.com/azure-samples/active-directory-java-native-headless) |
+ASP.NET-Web-App  | .NET/C# | Client credentials (Clientanmeldeinformationen) |    | [dotnet-webapp-webapi-oauth2-appidentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-appidentity)
 
 ## <a name="web-apis"></a>Web-APIs
 
@@ -109,9 +109,11 @@ ASP.NET 4.5 | [dotnet-webapi-onbehalfof-ca](https://github.com/azure-samples/act
 
 Dieses Beispiel zeigt, wie Sie eine Single-Page-Anwendung schreiben, die mit Azure AD gesichert ist.
 
- Plattform |  Aufrufen von Microsoft Graph | Aufrufen der eigenen API
- -------- |  --------------------- | -------------------------
-JavaScript (Angular) / ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp)
+ Plattform |  Aufrufen von Microsoft Graph | Aufrufen der eigenen API | Aufrufen einer anderen Web-API
+ -------- |  --------------------- | ------------------ | ----------------
+JavaScript / ASP.NET 4.x |  | [javascript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+JavaScript (AngularJS) / ASP.NET 4.x |  | [angularjs-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) |
+JavaScript (AngularJS) / ASP.NET 4.x |  |  | [angularjs-singlepageapp-cors](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
 
 ## <a name="other-microsoft-graph-samples"></a>Weitere Microsoft Graph-Beispiele
 

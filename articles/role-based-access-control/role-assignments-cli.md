@@ -1,6 +1,6 @@
 ---
-title: Verwalten der rollenbasierten Zugriffssteuerung (RBAC) mit der Azure-CLI | Microsoft Docs
-description: Erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) mit der Azure-Befehlszeilenschnittstelle verwalten, indem Sie Rollen und Rollenaktionen auflisten und Rollen im Kontext von Abonnements und Anwendungen zuweisen.
+title: Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der Azure-Befehlszeilenschnittstelle verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266736"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294403"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle
+# <a name="manage-access-using-rbac-and-azure-cli"></a>Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle
 
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure-CLI](role-assignments-cli.md)
-> * [REST-API](role-assignments-rest.md)
-
-
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Bereich. In diesem Artikel wird beschrieben, wie Sie Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) verwalten.
+Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierte Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der Azure-Befehlszeilenschnittstelle verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zur Verwaltung von Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle ist Folgendes erforderlich:
 
-* [Azure CLI 2.0](/cli/azure). Sie können sie in Ihrem Browser mit [Azure Cloud Shell](../cloud-shell/overview.md) verwenden oder unter macOS, Linux und Windows [installieren](/cli/azure/install-azure-cli) und über die Befehlszeile ausführen.
+* [Azure-Befehlszeilenschnittstelle](/cli/azure). Sie können sie in Ihrem Browser mit [Azure Cloud Shell](../cloud-shell/overview.md) verwenden oder unter macOS, Linux und Windows [installieren](/cli/azure/install-azure-cli) und über die Befehlszeile ausführen.
 
-## <a name="list-role-definitions"></a>Auflisten der Rollendefinitionen
+## <a name="list-roles"></a>Auflisten der Rollen
 
 Zum Auflisten aller verfügbaren Rollendefinitionen verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>Auflisten der Aktionen einer Rollendefinition
+### <a name="list-actions-of-a-role"></a>Auflisten der Aktionen einer Rolle
 
 Zum Auflisten der Aktionen einer Rollendefinition verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>Auflisten der Rollenzuweisungen
+## <a name="list-access"></a>Auflisten des Zugriffs
+
+Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf.
 
 ### <a name="list-role-assignments-for-a-user"></a>Liste von Rollenzuweisungen für einen Benutzer
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>Erstellen von Rollenzuweisung
+## <a name="grant-access"></a>Gewähren von Zugriff
+
+In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
 ### <a name="create-a-role-assignment-for-a-user"></a>Erstellen einer Rollenzuweisung für einen Benutzer
 
@@ -290,9 +288,9 @@ Im folgenden Beispiel wird einer Anwendung mit der Objekt-ID 44444444-4444-4444-
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
+## <a name="remove-access"></a>Zugriff entfernen
 
-Zum Entfernen einer Rollenzuweisung verwenden Sie [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete):
+In RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) eine Rollenzuweisung, um den Zugriff zu entfernen:
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

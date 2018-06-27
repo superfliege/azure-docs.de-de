@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: orkostak
-ms.openlocfilehash: d0c74bd2ba7a4a77a16d481ddb3b76f90a923254
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 3979c2a10707936c54c0d55ebcc85c470cabc3aa
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798286"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294529"
 ---
 # <a name="indexing-in-the-azure-cosmos-db-mongodb-api"></a>Durchführen der Indizierung in der Azure Cosmos DB-MongoDB-API
 
@@ -101,3 +101,4 @@ Derzeit ist die Erstellung von eindeutigen Indizes nur möglich, wenn die Sammlu
 ## <a name="next-steps"></a>Nächste Schritte
 * [Unterstützen von Indexdaten durch Azure Cosmos DB](../cosmos-db/indexing-policies.md)
 * [Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen](../cosmos-db/time-to-live.md)
+* [Konfigurieren einer Gültigkeitsdauer in der Azure Cosmos DB-MongoDB-API](../cosmos-db/mongodb-ttl.md)

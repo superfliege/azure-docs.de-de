@@ -3,7 +3,7 @@ title: Programmgesteuertes Erstellen von Azure-Dashboards | Microsoft-Dokumentat
 description: In diesem Artikel wird erläutert, wie Azure-Dashboards programmgesteuert erstellt werden.
 services: azure-portal
 documentationcenter: ''
-author: adamab
+author: adamabmsft
 manager: dougeby
 editor: tysonn
 ms.service: azure-portal
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 8670d25e10b58c40b9d0807de1db88c3296b193d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: dafada5cecbc6345da46bc3a32fc3b91eb72313a
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164383"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295510"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -89,11 +89,11 @@ Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orc
 Bei diesem Ansatz muss die Parametrisierung über die Parametersyntax der Vorlage erfolgen.  Sie ersetzen alle zuvor gefundenen Instanzen der Ressourcen-ID wie im Folgenden gezeigt.
 
 ### <a name="example-json-property-with-hard-coded-resource-id"></a>JSON-Beispieleigenschaft mit hartcodierter Ressourcen-ID
-`id: “/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1”`
+`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
 ### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>JSON-Beispieleigenschaft basierend auf Vorlagenparametern in eine parametrisierte Version konvertiert
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), ‘Microsoft.Compute/virtualMachines’, parameters('virtualMachineName'))]"`
+`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
 Sie müssen zudem einige erforderliche Vorlagenmetadaten und die Parameter oben in der JSON-Vorlage wie folgt deklarieren:
 
@@ -122,7 +122,7 @@ __Die vollständige funktionierende Vorlage ist am Ende des Dokuments eingefügt
 
 Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
 
-Es folgen zwei Versionen der JSON-Vorlage für das Beispieldashboard. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
+Hier sehen Sie zwei Versionen unseres Beispiel-Dashboards JSON. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
 
 ## <a name="json-representation-of-our-example-dashboard-before-templating"></a>JSON-Darstellung des Beispieldashboards (vor der Vorlagenerstellung)
 

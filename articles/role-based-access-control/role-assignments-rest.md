@@ -1,6 +1,6 @@
 ---
-title: Rollenbasierte Zugriffssteuerung mit REST – Azure AD | Microsoft-Dokumentation
-description: Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
+title: Verwalten des Zugriffs mithilfe der RBAC und der Azure-REST-API | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,16 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267474"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294461"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure-CLI](role-assignments-cli.md)
-> * [REST-API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs mithilfe der RBAC und der REST-API
 
-Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) definieren Sie den Zugriff für Benutzer, Gruppen und Dienstprinzipale durch Zuweisen von Rollen in einem bestimmten Bereich. In diesem Artikel wird die Verwaltung des Zugriffs mithilfe der REST-API beschrieben.
+Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der REST-API verwalten.
 
 ## <a name="list-all-role-assignments"></a>Auflisten aller Rollenzuweisungen
 Listet alle Rollenzuweisungen mit dem angegebenen Bereich und den zugehörigen Unterbereichen auf.

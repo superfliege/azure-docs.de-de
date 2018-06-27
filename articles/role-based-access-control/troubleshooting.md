@@ -1,6 +1,6 @@
 ---
-title: Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure (RBAC) | Microsoft-Dokumentation
-description: Hilfe bei Problemen oder Fragen zu Ressourcen für die rollenbasierte Zugriffsteuerung.
+title: Beheben von RBAC-Fehlern in Azure | Microsoft-Dokumentation
+description: Beheben von Problemen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,22 +15,22 @@ ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5ca43fe3a8ff27ff4a811aeb26abf4a6f26d8b35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267169"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295395"
 ---
-# <a name="troubleshooting-azure-role-based-access-control"></a>Beheben von Problemen bei der rollenbasierten Zugriffssteuerung in Azure 
+# <a name="troubleshooting-rbac-in-azure"></a>Beheben von RBAC-Fehlern in Azure
 
-In diesem Artikel werden häufig gestellte Fragen über bestimmte Zugriffsrechte, die mit Rollen erteilt werden, beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
+In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können. Diese drei Rollen decken alle Ressourcentypen ab:
 
 * Owner (Besitzer)  
 * Mitwirkender  
 * Leser  
 
-Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Ausführliche Informationen zum Gewähren von Zugriff finden Sie im Artikel zu den ersten Schritten mit der [rollenbasierten Zugriffssteuerung](role-assignments-portal.md) .
+Sowohl Besitzer als auch Mitwirkende haben Vollzugriff auf alle Verwaltungsfunktionen, Mitwirkende können jedoch anderen Benutzern oder Gruppen keinen Zugriff gewähren. Die Leserolle werden wir aufgrund ihrer umfassenden Eigenschaften ausführlicher beschreiben. Informationen zum Gewähren des Zugriffs finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md).
 
 ## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>Schreibzugriff
@@ -97,9 +97,7 @@ Die folgenden Elemente erfordern **Schreibzugriff** auf den **virtuellen Compute
 
 Wenn Sie auf keine dieser Kacheln zugreifen können, fragen Sie den Administrator nach Zugriff als Mitwirkender auf diese Ressourcengruppe.
 
-## <a name="see-more"></a>Mehr Informationen
-* [Rollenbasierte Zugriffssteuerung](role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal.
-* [Integrierte Rollen:](built-in-roles.md)Hier erhalten Sie ausführliche Informationen zu den Standardrollen in RBAC.
-* [Benutzerdefinierte Rollen in Azure RBAC](custom-roles.md): Erfahren Sie, wie Sie benutzerdefinierte Rollen entsprechend Ihrer Zugriffsanforderungen erstellen.
-* [Erstellen eines Verlaufsbericht über Zugriffsänderungen](change-history-report.md): Nachverfolgen der Änderung von Rollenzuweisungen in RBAC.
+## <a name="next-steps"></a>Nächste Schritte
+* [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md)
+* [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen](change-history-report.md)
 

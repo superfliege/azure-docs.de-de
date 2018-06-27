@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 5/21/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: bf4e92636424e7d8f4a1bc2eb5ee9ba7e97667c6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699902"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295527"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -115,7 +115,7 @@ Nein, aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitst
 
 Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz mit folgenden Einschränkungen unterstützt:
 
-* Ausnahmen müssen für eingehenden Datenverkehr an den Ports 65503-65534 festgelegt werden, damit die Back-End-Integrität nicht beeinträchtigt wird.
+* Ausnahmen müssen für eingehenden Verkehr an den Ports 65503-65534 angegeben werden. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
 
 * Die ausgehende Internetverbindung kann nicht blockiert sein.
 
@@ -159,13 +159,17 @@ Dieses Szenario können Sie mithilfe von Netzwerksicherheitsgruppen im Applicati
 
 * Zulassen des eingehenden Datenverkehrs von Quell-IP/-IP-Adressbereich.
 
-* Zulassen von eingehenden Anforderungen aus allen Quellen an den Ports 65503 65534 für die [Back-End-Integrität-Kommunikation](application-gateway-diagnostics.md).
+* Zulassen von eingehenden Anforderungen aus allen Quellen an den Ports 65503 65534 für die [Back-End-Integrität-Kommunikation](application-gateway-diagnostics.md). Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
 
 * Zulassen eingehender Azure Load Balancer-Tests (AzureLoadBalancer-Tag) und von eingehendem virtuellem Netzwerkdatenverkehr (VirtualNetwork-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md).
 
 * Blockieren des gesamten übrigen eingehenden Datenverkehrs mit einer Alle-verweigern-Regel.
 
 * Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
+
+**F: Kann der gleiche Port sowohl für öffentliche als auch für private Listener verwendet werden?**
+
+Nein, dies wird nicht unterstützt.
 
 ## <a name="performance"></a>Leistung
 

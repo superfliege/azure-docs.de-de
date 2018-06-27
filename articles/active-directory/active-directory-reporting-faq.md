@@ -3,24 +3,24 @@ title: Häufig gestellte Fragen zu Azure Active Directory-Berichten | Microsoft-
 description: Häufig gestellte Fragen zu Azure Active Directory-Berichten.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588589"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231997"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -72,7 +72,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie viele Datensätze kann ich aus dem Azure-Portal herunterladen?**
 
-**A:** Sie können bis zu 120.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 120.000 Datensätze. 
+**A:** Sie können bis zu 5.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze. Für Datensatzgrößen, die 5.000 übersteigen, wählen Sie Ihre Filterbedingungen und klicken dann im Azure-Portal auf die Schaltfläche *Skript*. Dadurch wird ein PowerShell-Skript heruntergeladen, das Sie ausführen können, um eine CSV-Datei aller Datensätze zu generieren, die Ihren Filterbedingungen entsprechen. Sie müssen das PowerShell-Skript im *Administratormodus* ausführen. Weitere Informationen finden Sie unter [Herunterladen von Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
 
 ---
 
@@ -84,7 +84,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie erhalte ich eine Premium-Lizenz?**
 
-**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](active-directory-get-started-premium.md).
+**A:** Die Antwort auf diese Frage finden Sie unter [Erste Schritte mit Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md).
 
 ---
 

@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 30e6adfe2a15598acceccc56160622f234af163a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299976"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293202"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nachverfolgen der B2B-Kommunikation mit Azure Log Analytics
 
@@ -56,39 +56,31 @@ Damit Log Analytics B2B-Nachrichten für Ihre Logik-App nachverfolgen kann, müs
 
    ![Auswählen Ihres Log Analytics-Arbeitsbereichs](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. Wählen Sie unter **Verwaltung** die Option **OMS-Portal**.
+3. Wählen Sie unter **Verwaltung** die Option **Übersicht** aus.
 
-   ![Auswählen des OMS-Portals](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![Wählen Sie das Log Analytics-Portal aus.](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Klicken Sie auf der Startseite auf **Lösungskatalog**.    
+4. Nachdem die Startseite geöffnet wurde, wählen Sie **Hinzufügen** aus, um die Lösung B2B-Logik-App-Verwaltung zu installieren.    
+   ![Auswählen von „Lösungskatalog“](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ![Auswählen des Lösungskatalogs](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
-
-5. Suchen Sie unter **Alle Lösungen** nach **B2B-Logik-App-Verwaltung**.     
-
-   ![Auswählen von „B2B-Logik-App-Verwaltung“](media/logic-apps-track-b2b-messages-omsportal/omshomepage2.png)
-
-6. Wählen Sie unter **B2B-Logik-App-Verwaltung** die Option **Hinzufügen**.
-
-   ![„Hinzufügen“ auswählen](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
+5. Suchen Sie unter **Verwaltungslösungen** nach der Lösung **B2B-Logik-App-Verwaltung** und erstellen Sie diese.     
+   ![Auswählen von „B2B-Logik-App-Verwaltung“](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
 
    Auf der Startseite wird jetzt die Kachel für **Logic Apps-B2B-Nachrichten** angezeigt. 
    Auf dieser Kachel wird die Nachrichtenanzahl aktualisiert, wenn Ihre B2B-Nachrichten verarbeitet werden.
-
-   ![Startseite mit der Kachel „Logic Apps-B2B-Nachrichten“](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
 ## <a name="track-message-status-and-details-in-log-analytics"></a>Nachverfolgen von Nachrichtenstatus und Details in Log Analytics
 
-1. Nachdem Ihre B2B-Nachrichten verarbeitet wurden, können Sie den Status und die Details für diese Nachrichten anzeigen. Klicken Sie auf der Startseite auf die Kachel **Logic Apps-B2B-Nachrichten**.
+1. Nachdem Ihre B2B-Nachrichten verarbeitet wurden, können Sie den Status und die Details für diese Nachrichten anzeigen. Wählen Sie auf der Seite „Übersicht“ die Kachel **Logic Apps-B2B-Nachrichten** aus.
 
-   ![Aktualisierte Nachrichtenanzahl](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
+   ![Aktualisierte Nachrichtenanzahl](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
    > Standardmäßig werden auf der Kachel **Logic Apps-B2B-Nachrichten** Daten basierend auf einem einzelnen Tag angezeigt. Klicken Sie oben auf der Seite auf das Steuerelement für die Bereichsauswahl, um für den Datenbereich ein anderes Intervall festzulegen:
    > 
-   > ![Ändern des Datenbereichs](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
+   > ![Ändern des Datenbereichs](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
    >
 
 2. Nachdem das Dashboard mit dem Nachrichtenstatus angezeigt wird, können Sie weitere Details für einen bestimmten Nachrichtentyp anzeigen, für den Daten basierend auf einem einzelnen Tag angezeigt werden. Wählen Sie die Kachel für **AS2**, **X12** oder **EDIFACT** aus.
