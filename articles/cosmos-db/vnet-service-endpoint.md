@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293994"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333911"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts
 
@@ -80,7 +80,7 @@ Nachdem die Azure Virtual Network-Dienstendpunkte für Ihr Azure Cosmos DB-Daten
 
 Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z.B. Azure Search verwendet wird oder Stream Analytics oder Power BI darauf zugreifen, gewähren Sie den Zugriff, indem Sie das Kontrollkästchen **Zugriff auf Azure-Dienste zulassen** aktivieren.
 
-Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen zum **Zugriff auf das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie in den Abschnitten [Verbindungen über das Azure-Portal](firewall-support.md#connections-from-the-azure-portal) und [Verbindungen über andere Azure-PaaS-Dienste](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services). Nachdem Sie den Zugriff ausgewählt haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
+Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen zum **Zugriff auf das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie in den Abschnitten [Verbindungen über das Azure-Portal](firewall-support.md#connections-from-the-azure-portal) und [Verbindungen über andere Azure-PaaS-Dienste](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services). Nachdem Sie den Zugriff ausgewählt haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Entfernen eines Virtual Network oder eines Subnetzes 
 
@@ -125,15 +125,16 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 4. Bereiten Sie die Aktivierung einer Zugriffssteuerungsliste im Cosmos DB-Konto vor, indem Sie sicherstellen, dass im Virtual Network und im Subnetz ein Dienstendpunkt für Azure Cosmos DB aktiviert ist.
 
    ```powershell
-   $subnet = Get-AzureRmVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName  | Get-AzureRmVirtualNetworkSubnetConfig -Name $sname
-   $vnProp = Get-AzureRmVirtualNetwork `-Name $vnName  -ResourceGroupName $rgName
+   $vnProp = Get-AzureRmVirtualNetwork `
+     -Name $vnName  -ResourceGroupName $rgName
    ```
 
 5. Rufen Sie mit dem folgenden Cmdlet die Eigenschaften des Azure Cosmos DB-Kontos ab:  
 
    ```powershell
+   $apiVersion = "2015-04-08"
+   $acctName = "<Azure Cosmos DB account name>"
+
    $cosmosDBConfiguration = Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `
@@ -144,15 +145,24 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True
-   $subnetID = $vnProp.Id+"/subnets/" + $subnetName  
+   $subnetID = $vnProp.Id+"/subnets/" + $sname  
    $virtualNetworkRules = @(@{"id"=$subnetID})
    $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
    ```
@@ -166,7 +176,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
    $cosmosDBProperties['virtualNetworkRules'] = $virtualNetworkRules
    $cosmosDBProperties['isVirtualNetworkFilterEnabled'] = $accountVNETFilterEnabled
 
-   Set-AzureRmResource ``
+   Set-AzureRmResource `
      -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
      -ApiVersion $apiVersion `
      -ResourceGroupName $rgName `

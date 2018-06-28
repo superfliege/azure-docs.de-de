@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 326da32f91b263bbd09a4c6f521c9ec72094820c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36297965"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066066"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | VNET-Peerings pro virtuellem Netzwerk |10 |50 |
 | DNS-Server pro virtuellem Netzwerk |9 |25 |
 | Private IP-Adressen pro virtuellem Netzwerk |16.384** |16384 |
-| Private IP-Adressen pro Netzwerkschnittstelle |256 |1024 |
+| Private IP-Adressen pro Netzwerkschnittstelle |256 |256 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
 | Netzwerkschnittstellen |24.000** |24.000 |
 | Netzwerksicherheitsgruppen |100 |5.000 |

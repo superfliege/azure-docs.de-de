@@ -3,7 +3,7 @@ title: Verwalten von Verbundzertifikaten in Azure AD | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Ablaufdatum für Verbundzertifikate anpassen und Zertifikate erneuern, die in Kürze ablaufen.
 services: active-directory
 documentationcenter: ''
-author: jeevansd
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
-ms.author: jeedes
-ms.openlocfilehash: c4d812db6371a4cd1fcc701f7eae2c913c29fb6b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.reviewer: jeedes
+ms.openlocfilehash: 5b4e2694a9b7e67643cb1e3b3cbc99fab940bd9d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302556"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337098"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory
 In diesem Artikel werden häufige gestellte Fragen im Zusammenhang mit den Zertifikaten behandelt, die Azure Active Directory (Azure AD) erstellt, um die einmalige Verbundanmeldung (Single Sign-On, SSO) für Ihre SaaS-Anwendungen einzurichten. Fügen Sie Anwendungen aus dem Azure AD-App-Katalog oder über Anwendungsvorlagen hinzu, die nicht aus dem Katalog stammen. Konfigurieren der Anwendung mit der Option für Verbund-SSO.
@@ -84,7 +85,7 @@ Die folgenden Schritte zur Erneuerung sollten zu keinen wesentlichen Ausfallzeit
     ![Neues Zertifikat generieren](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../active-directory-saas-tutorial-list.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](what-is-single-sign-on.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](../develop/active-directory-saml-debugging.md)

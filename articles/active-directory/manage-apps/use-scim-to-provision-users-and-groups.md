@@ -3,7 +3,7 @@ title: Automatisieren der Bereitstellung von Apps mithilfe von SCIM in Azure Act
 description: Über Azure Active Directory können Benutzer und Gruppen automatisch für alle Anwendungen oder Identitätsspeicher bereitgestellt werden, denen ein Webdienst mit einer Schnittstelle vorgelagert ist, wie sie in der SCIM-Protokollspezifikation definiert ist.
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: asmalser
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 2bbea8f082e482ec5f5a08ce9978940e05c2325b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 40fa7959fc27692489a6317df0eddb9208c57bd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302691"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337328"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -697,7 +697,7 @@ In der folgenden Abbildung sind die Nachrichten dargestellt, die von Azure AD an
 * [Schreiben von Ausdrücken für Attributzuordnungen](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Bereichsfilter für die Benutzerbereitstellung](../active-directory-saas-scoping-filters.md)
 * [Kontobereitstellungsbenachrichtigungen](../active-directory-saas-app-provisioning.md)
-* [Liste der Tutorials zur Integration von SaaS-Apps](../active-directory-saas-tutorial-list.md)
+* [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

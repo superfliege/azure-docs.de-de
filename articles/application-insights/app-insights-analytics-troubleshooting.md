@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eeda0fa6ad8faa05baf0a9344e958d298fb80d8e
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294158"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936682"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Problembehandlung für Analytics in Application Insights
 Probleme mit [Analytics in Application Insights](app-insights-analytics.md)? Beginnen Sie hier Analytics, das leistungsfähige Suchtool von Azure Application Insights.
@@ -57,7 +57,7 @@ Es ist ein authentifizierungsbezogener Fehler aufgetreten (während der Authenti
 4. Öffnen Sie ein anderes (normales) Browserfenster, und wechseln Sie zu [Azure](https://portal.azure.com). Melden Sie sich ab. Öffnen Sie Ihren Link, und melden Sie sich mit den richtigen Anmeldeinformationen an.
 5. Dieser Fehler kann auch bei Microsoft Edge und Internet Explorer auftreten, wenn die Einstellungen für vertrauenswürdige Zonen nicht unterstützt werden.
    
-    Überprüfen Sie, ob sich das [Analytics-Portal](https://analytics.applicationinsights.io) und das [Azure Active Directory-Portal](https://portal.azure.com) in der gleichen Sicherheitszone befinden:
+    Überprüfen Sie, ob sich das [Analytics-Portal](https://portal.azure.com) und das [Azure Active Directory-Portal](https://portal.azure.com) in der gleichen Sicherheitszone befinden:
    
    * Öffnen Sie in Internet Explorer **Internetoptionen**, **Sicherheit**, **Vertrauenswürdige Sites**, **Sites**:
      

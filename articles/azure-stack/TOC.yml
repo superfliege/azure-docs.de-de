@@ -294,15 +294,15 @@
             - name: Anbieten eines Kubernetes-Clusters
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Nutzung und Abrechnung
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Übersicht
-              href: azure-stack-billing-and-chargeback.md
             - name: Verwalten der Nutzung und Abrechnung als CSP
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: Hinzufügen von Mandanten für Nutzung und Abrechnung
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: Verwalten der Mandantenregistrierung
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: Hinzufügen von Mandanten für Nutzung und Abrechnung
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: Verwalten der Mandantenregistrierung
+                  href: azure-stack-csp-ref-operations.md
             - name: Referenz zu Nutzung und Abrechnung
               items:
                 - name: Nutzungsdatenberichte

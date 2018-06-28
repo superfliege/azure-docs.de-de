@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6933d9f9951925888c92e35f6b1e2962cc29b0ce
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 74051ae8ad4ca7065561607feb13a2b98094fffc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801778"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333181"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Verwenden eines SAML 2.0-Identitätsanbieters (IdP, Identity Provider) für einmaliges Anmelden
 
@@ -47,7 +47,7 @@ Dieses Dokument enthält detaillierte Anforderungen an die Protokoll- und Benach
 
 Sie sollten sicherstellen, dass die ausgehenden Nachrichten Ihres SAML 2.0-Identitätsanbieters den bereitgestellten Beispielablaufverfolgungen so ähnlich wie möglich sind. Verwenden Sie auch wenn möglich die bestimmten Attributwerte aus den bereitgestellten Azure AD-Metadaten. Wenn Sie mit den Ausgabenachrichten zufrieden sind, können Sie mit der Microsoft-Verbindungsuntersuchung wie unten beschrieben Tests durchführen.
 
-Die Azure AD-Metadaten können unter dieser URL heruntergeladen werden: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Die Azure AD-Metadaten können unter dieser URL heruntergeladen werden: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
 Für Kunden in China, die die für China bestimmte Instanz von Office 365 nutzen, sollte der folgende Verbundendpunkt verwendet werden: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>SAML-Protokollanforderungen

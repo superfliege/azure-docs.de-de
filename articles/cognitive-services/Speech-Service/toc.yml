@@ -67,6 +67,8 @@
   items:
     - name: Unterstützte Sprachen
       href: supported-languages.md
+    - name: Regionen
+      href: regions.md
     - name: REST-APIs
       href: rest-apis.md
     - name: Sprach-SDK-API

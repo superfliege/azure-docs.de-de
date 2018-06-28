@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: bff31dafdf3263ec189f67da7de8fea6eb3d2662
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 1b7c887be67d5d1a209f1647b567f5659f99fb44
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271485"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938228"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträgers an eine Wiederherstellungs-VM mithilfe von Azure CLI 2.0
-Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 2.0 eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird. Sie können diese Schritte auch per [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
+Wenn für Ihren virtuellen Linux-Computer (VM) ein Start- oder Datenträgerfehler auftritt, müssen Sie möglicherweise Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiger Eintrag in `/etc/fstab`, der den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie mithilfe von Azure CLI 2.0 eine Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Linux-VM hergestellt werden kann, um Fehler zu beheben, und wie dann die ursprüngliche VM neu erstellt wird. 
 
 
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess

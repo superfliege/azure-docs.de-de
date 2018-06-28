@@ -1,5 +1,5 @@
 ---
-title: Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff? – Vorschauversion | Microsoft-Dokumentation
+title: Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
 description: Erfahren Sie, welche Auswirkungen die Richtlinien für bedingten Zugriff auf Ihre Umgebung haben.
 services: active-directory
 keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231946"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750081"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff? – Vorschauversion
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
 
 Der [bedingte Zugriff](active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Wie wissen Sie, was Sie von den Richtlinien für bedingten Zugriff in Ihrer Umgebung erwarten können? Um diese Frage zu beantworten, können Sie das **Was-wäre-wenn-Tool für den bedingten Zugriff** verwenden.
 
