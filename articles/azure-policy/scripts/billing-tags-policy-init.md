@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: eebf3e4908f9eb484f9dff9e71d3c2919c523574
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0580d8ac864bf8ac5017985c96bfe7469a7c2276
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34601920"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017587"
 ---
 # <a name="billing-tags-policy-initiative"></a>Richtlinieninitiative zur Abrechnung von Tags
 
@@ -64,20 +64,18 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 Nach dem Zuweisen der Richtlinien können Sie ein Update für alle vorhandenen Ressourcen auslösen, um die hinzugefügten Tagrichtlinien zu erzwingen. Das folgende Skript behält alle anderen Tags bei, die für die Ressourcen vorhanden waren:
 
 ```powershell
-$group = Get-AzureRmResourceGroup -Name "ExampleGroup"
-$resources = Find-AzureRmResource -ResourceGroupName $group.ResourceGroupName
+$resources = Get-AzureRmResource -ResourceGroupName 'ExampleGroup'
 
-foreach($r in $resources)
-{
-    try{
-        $r | Set-AzureRmResource -Tags ($a=if($r.Tags -eq $NULL) { @{}} else {$r.Tags}) -Force -UsePatchSemantics
+foreach ($r in $resources) {
+    try {
+        Set-AzureRmResource -Tags ($a = if ($r.Tags -eq $NULL) { @{} } else {$r.Tags}) -ResourceId $r.ResourceId -Force -UsePatchSemantics
     }
-    catch{
-        Write-Host  $r.ResourceId + "can't be updated"
+    catch {
+        Write-Host $r.ResourceId + "can't be updated"
     }
 }
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich weitere Beispiele unter [Azure Policy-Beispiele](../json-samples.md) an.
+- Unter [Azure Policy-Beispiele](../json-samples.md) finden Sie weitere Beispiele.

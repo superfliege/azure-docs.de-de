@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a16e9ad5b72d87614f5d3630e24e6aa36def8c51
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779552"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061844"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für internen Datenverkehr an virtuelle Computer mit einem Load Balancer im Tarif „Basic“ über das Azure-Portal
 
@@ -32,7 +32,7 @@ Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](load-balance
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
@@ -42,6 +42,8 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
     - *myResourceGroupILB*: Name der vorhandenen Ressourcengruppe
     - *myBackendSubnet*: Subnetzname
 2. Klicken Sie auf **Erstellen**, um das virtuelle Netzwerk zu erstellen.
+
+![Einrichten eines Load Balancers](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-a-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
 Erstellen Sie einen internen Load Balancers im Tarif „Basic“ über das Portal.
@@ -57,10 +59,7 @@ Erstellen Sie einen internen Load Balancers im Tarif „Basic“ über das Porta
     - *myResourceGroupILB*: Name der neuen Ressourcengruppe, die Sie erstellen
 3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
    
-    ![Einrichten eines Load Balancers](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
-
-
-## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+    ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie zwei virtuelle Computer für den Back-End-Pool Ihres Load Balancers im Tarif „Basic“ und installieren anschließend IIS auf den virtuellen Computern, um den Lastenausgleich zu testen.
 
