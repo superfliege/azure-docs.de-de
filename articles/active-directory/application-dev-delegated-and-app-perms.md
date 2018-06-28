@@ -3,22 +3,23 @@ title: Erkennen der Unterschiede zwischen delegierten Berechtigungen und Anwendu
 description: Hier erfahren Sie mehr über delegierte Berechtigungen und Anwendungsberechtigungen; zudem wird erläutert, wie sie von Clients verwendet und von Ressourcen für Anwendungen verfügbar gemacht werden, die Sie mit Azure AD entwickeln.
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: c363a3abe30ee1e393e8f5487101bab2d6874b5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.openlocfilehash: ce2b349e0a40b1121e17d42f907f113ff263fa34
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26612886"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334644"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>Erkennen der Unterschiede zwischen delegierten Berechtigungen und Anwendungsberechtigungen
 

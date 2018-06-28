@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d43e446d1ee1ed4dafc63481b4c874d994896d3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fc8918ed2901d2f443b94bac8587e24c3f04eeec
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230266"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Tutorial: Azure Active Directory-Integration mit vxMaintain
 
@@ -111,7 +111,7 @@ In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure
     b. Geben Sie im Feld **Antwort-URL** eine URL mit folgender Syntax ein: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`.
 
     > [!NOTE] 
-    > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von vxMaintain](http://www.verisae.com/contact-us), um diese Werte zu erhalten.
+    > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von vxMaintain](https://www.hubspot.com/company/contact), um diese Werte zu erhalten.
  
 4. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -121,7 +121,7 @@ In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure
 
     ![Die Schaltfläche „Speichern“](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Um **vxMaintain**-SSO zu konfigurieren, senden Sie die heruntergeladene **Metadaten-XML**-Datei an das [vxMaintain Support-Team](http://www.verisae.com/contact-us).
+6. Um **vxMaintain**-SSO zu konfigurieren, senden Sie die heruntergeladene **Metadaten-XML**-Datei an das [vxMaintain Support-Team](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Wie Sie die App einrichten, können Sie eine kürzere Version der vorherigen Anweisungen im [Azure-Portal](https://portal.azure.com) lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, wählen Sie die Registerkarte **Einmaliges Anmelden** und rufen anschließend die eingebettete Dokumentation über den Abschnitt **Konfiguration** auf. 
@@ -161,7 +161,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer m
  
 ### <a name="create-a-vxmaintain-test-user"></a>Erstellen eines vxMaintain-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in vxMaintain eine Testbenutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der vxMaintain-Plattform vom [vxMaintain-Supportteam](http://www.verisae.com/contact-us) unterstützen. Bevor Sie SSO verwenden, erstellen und aktivieren Sie die Benutzer.
+In diesem Abschnitt erstellen Sie in vxMaintain eine Testbenutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der vxMaintain-Plattform vom [vxMaintain-Supportteam](https://www.hubspot.com/company/contact) unterstützen. Bevor Sie SSO verwenden, erstellen und aktivieren Sie die Benutzer.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

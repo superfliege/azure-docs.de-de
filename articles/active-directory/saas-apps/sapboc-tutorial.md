@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220633"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Tutorial: Azure Active Directory-Integration mit SAP Business Object Cloud
 
@@ -129,7 +129,7 @@ So richten Sie einmaliges Anmelden in Azure AD mit SAP Business Object Cloud ein
     ![URLs der Seite „Domäne und URLs für SAP Business Object Cloud“](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL und der Bezeichner-URL. Um die Anmelde-URL zu erhalten, wenden Sie sich an das [SAP Business Object Cloud-Clientsupportteam](https://www.sap.com/product/analytics/cloud-analytics.support.html). Sie können die Bezeichner-URL abrufen, indem Sie die SAP Business Object Cloud-Metadaten aus der Verwaltungskonsole herunterladen. Dies wird weiter unten im Tutorial erläutert. 
+    > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL und der Bezeichner-URL. Um die Anmelde-URL zu erhalten, wenden Sie sich an das [SAP Business Object Cloud-Clientsupportteam](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Sie können die Bezeichner-URL abrufen, indem Sie die SAP Business Object Cloud-Metadaten aus der Verwaltungskonsole herunterladen. Dies wird weiter unten im Tutorial erläutert. 
 
 4. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**. Speichern Sie dann die Metadatendatei auf Ihrem Computer.
 

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826044"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307484"
 ---
 # <a name="guidelines"></a>Richtlinien  
 
@@ -35,7 +35,7 @@ Wenn mehrere Personen Zugriff auf die gleiche Microsoft-ID benötigen, mit der I
 
 >[!IMPORTANT]
 >Um mehrere Benutzer für den Zugriff auf Ihr Konto für Microsoft Developer Center (Dev Center) zu autorisieren, empfiehlt Microsoft die Verwendung von Azure Active Directory (Azure AD). Dort können Sie einzelnen Benutzern Rollen zuweisen. Jeder Benutzer muss für den Zugriff auf das Konto eigene Azure AD-Anmeldeinformationen verwenden. Erstellen Sie eine Microsoft-ID unter Verwendung einer E-Mail-Adresse in einer Domäne, die für Ihr Unternehmen registriert ist. Microsoft empfiehlt, diese E-Mail-Adresse nicht einer Einzelperson zuzuweisen. Ein Beispiel ist `windowsapps@fabrikam.com`.  
->*   Weitere Informationen finden Sie im Abschnitt [Problem: Microsoft-ID in einer Azure AD-Verbunddomäne](#issue:-microsoft-id-in-an-azure-ad-federated-domain).  
+>*   Weitere Informationen finden Sie im Abschnitt [Problem: Microsoft-ID in einer Azure AD-Verbunddomäne](#issue-microsoft-id-in-an-azure-ad-federated-domain).  
 
 *   Beschränken Sie den Zugriff auf die Microsoft-ID auf eine möglich geringe Anzahl von Entwicklern. 
 *   Richten Sie im Unternehmens-E-Mail-Konto eine Verteilerliste mit allen Personen ein, die auf Ihr Dev Center-Konto zugreifen müssen. Fügen Sie die E-Mail-Adresse der Verteilerliste zu Ihren Sicherheitsinformationen hinzu. Mit einer solchen Verteilerliste können alle Mitarbeiter auf der Liste auf Anforderung Sicherheitscodes erhalten und die Sicherheitsinformationen für Ihre Microsoft-ID verwalten. Falls die Einrichtung einer Verteilerliste nicht möglich ist, muss der Besitzer des einzelnen E-Mail-Kontos verfügbar sein, um bei entsprechender Aufforderung auf den Sicherheitscode zuzugreifen und diesen weiterzugeben.  
@@ -73,6 +73,6 @@ Microsoft empfiehlt eine Problemumgehung. Führen Sie die folgenden Schritte aus
 1.  Die Weiterleitungsregel sendet alle E-Mails, die im Outlook-E-Mail-Konto empfangen werden, an eine E-Mail-Adresse in einer für Ihr Unternehmen registrierten Domäne. Ihre `outlook.com`-E-Mail-Adresse muss für die Authentifizierung sowohl in Dev Center als auch im Cloud-Partnerportal verwendet werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-*   Sehen Sie sich den [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md) an.  
+*   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
  
 ---  

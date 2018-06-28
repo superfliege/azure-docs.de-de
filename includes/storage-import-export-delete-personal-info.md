@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 3d85208096b1300904e1cc1f59c45dd4dd5713a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684420"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313879"
 ---
 ## <a name="deleting-personal-information"></a>Löschen personenbezogener Informationen
 
@@ -40,7 +40,7 @@ Personenbezogene Kontaktinformationen können auf folgende Weise gelöscht werde
 - Daten, die mit dem Auftrag gespeichert wurden, werden mit dem Auftrag gelöscht. Benutzer können Aufträge manuell löschen, und abgeschlossene Aufträge werden nach 90 Tagen automatisch gelöscht. Sie können die Aufträge manuell über die REST-API oder das Azure-Portal löschen. Um einen Auftrag im Azure-Portal zu löschen, wechseln Sie zu Ihrem Import/Export-Auftrag, und klicken Sie auf der Befehlsleiste auf *Löschen*. Weitere Informationen zum Löschen eines Import/Export-Auftrags per REST-API finden Sie unter [Löschen eines Import/Export-Auftrags](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
 
 - Kontaktinformationen, die in den Portaleinstellungen gespeichert wurden, können durch Löschen der Portaleinstellungen entfernt werden. Sie können Portaleinstellungen löschen, indem Sie folgende Schritte ausführen:
-  - Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+  - Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
   - Klicken Sie unter *Einstellungen* auf das Symbol ![Azure-Einstellungen](media/storage-import-export-delete-personal-info/azure-settings-icon.png).
   - Klicken Sie auf *Alle Einstellungen exportieren* (um die aktuellen Einstellungen in einer `.json`-Datei zu speichern).
   - Klicken Sie auf *Alle Einstellungen und private Dashboards löschen*, um alle Einstellungen einschließlich der gespeicherten Kontaktinformationen zu löschen.

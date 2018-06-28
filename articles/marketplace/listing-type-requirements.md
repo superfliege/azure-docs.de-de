@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbb14854f00fb133c3604a1dd529d42120371fd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826100"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309315"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
 1. Storefront-Anforderungen:  
-    *   [AppSource](#storefront-requirements:-appSource)  
-    *   [Azure Marketplace](#storefront-requirements:-azure-marketplace)  
+    *   [AppSource](#storefront-requirements-appSource)  
+    *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. Anforderungen an die Auflistungsart und den Angebotstyp:  
     *   Weitere Informationen zu Auflistungsarten und Angebotstypen finden Sie auf der Seite „Bestimmung der Auflistungsart für Ihre Lösung“ unter [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
 
@@ -62,24 +62,24 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |  
 |:---        |:---        |:---     |  
-| Beratungsdienste | AppSource | [Anforderungen: AppSource: Liste: Beratungsdienste](#requirements:-appsource:-list:-consulting-services) |  
-| Beratungsdienste | Azure Marketplace | [Requirements: Azure Marketplace: List: Consulting Services (Anforderungen: Azure Marketplace: Liste: Beratungsdienste)](#requirements:-azure-marketplace:-list:-consulting-services) |  
+| Beratungsdienste | AppSource | [Anforderungen: AppSource: Liste: Beratungsdienste](#requirements-appsource-list-consulting-services) |  
+| Beratungsdienste | Azure Marketplace | [Requirements: Azure Marketplace: List: Consulting Services (Anforderungen: Azure Marketplace: Liste: Beratungsdienste)](#requirements-azure-marketplace-list-consulting-services) |  
 | Kontaktformular | AppSource | [](#) |  
-| Kontaktformular | Azure Marketplace | [Requirements: AppSource: List: Contact Me (Anforderungen: AppSource: Liste: Kontaktformular)](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kontaktformular | Azure Marketplace | [Requirements: AppSource: List: Contact Me (Anforderungen: AppSource: Liste: Kontaktformular)](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Anforderungen: AppSource: Liste: Beratungsdienst  
 
 | Requirements (Anforderungen) | Details |  
 |:--- |:--- |  
 | Merkmale des Dienstangebots | Ihr Beratungsdienst muss die folgenden Kriterien erfüllen:<ul> <li>Angebot mit festem Umfang, fester Dauer und festem Preis (oder kostenlos)</li> <li>Ausrichtung hauptsächlich auf Vertriebsvorbereitungen</li> <li>Beschränkung auf einen einzelnen Kunden</li> <li>Vor Ort durchgeführt</li> </ul> |  
-| Partneranforderungen für Beratungsdienste | Sie erfüllen die Kriterien im relevanten Bereich für den Dienst.<table><tr><th>Lösungsbereich</th><th>Kriterien</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Cloud Customer Relationship Management-Kompetenz Silber oder Gold</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise Edition</td><td>Enterprise Resource Planning-Kompetenz Silber oder Gold und ein Umsatz Ihrer Cloudvorgänge von 25.000 USD oder mehr in den letzten 12 Monaten.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Business Edition</td><td>Sie dienen als Cloud-Dienstanbieter (CSP) oder Digital Partner of Record (digitaler Partner des Eintrags des Abonnements, DPOR) für mindestens einen Kunden.</td></tr><tr><td>Power BI</td><td>Sie erfüllen die Kriterien für Lösungspartner.</td></tr><tr><td>PowerApps</td><td>Vorhandensein einer Partnershowcaselösung.</td></tr></table><ul> <li>Weitere Informationen zu Verwaltung von Kundenbeziehungen finden Sie auf der Cloud Customer Relationship Management-Seite unter [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Weitere Informationen zum Planen von Ressourcen finden Sie auf der Enterprise Resource Planning-Seite unter [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Weitere Informationen zu CSP finden Sie auf der Cloud-Dienstanbieter-Seite unter [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Weitere Informationen zu DPOR finden Sie auf der Seite „Digital Partner of Record and Zusammenarbeit mit dem Partner“ unter [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Weitere Informationen zu den Kriterien für Lösungspartner finden Sie im Dokument „Solution Partner Overview and Incentives“ (Übersicht über Lösungspartner und Incentives) unter [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Weitere Informationen zur Vorstellung der Partner finden Sie auf der Seite „Vorstellung unserer Partner“ unter [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
+| Partneranforderungen für Beratungsdienste | Sie erfüllen die Kriterien im relevanten Bereich für den Dienst.<table><tr><th>Lösungsbereich</th><th>Kriterien</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Cloud Customer Relationship Management-Kompetenz Silber oder Gold</td></tr><tr><td>Dynamics 365 for Finance and Operations, Enterprise Edition</td><td>Enterprise Resource Planning-Kompetenz Silber oder Gold und ein Umsatz Ihrer Cloudvorgänge von 25.000 USD oder mehr in den letzten 12 Monaten.</td></tr><tr><td>Dynamics 365 for Finance and Operations, Business Edition</td><td>Sie dienen als Cloud-Dienstanbieter (CSP) oder Digital Partner of Record (digitaler Partner des Eintrags des Abonnements, DPOR) für mindestens einen Kunden.</td></tr><tr><td>Power BI</td><td>Erfüllen der Kriterien für Lösungspartner.</td></tr><tr><td>PowerApps</td><td>Vorhandensein einer Partnershowcaselösung.</td></tr></table><ul> <li>Weitere Informationen zu Verwaltung von Kundenbeziehungen finden Sie auf der Cloud Customer Relationship Management-Seite unter [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Weitere Informationen zum Planen von Ressourcen finden Sie auf der Enterprise Resource Planning-Seite unter [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Weitere Informationen zu CSP finden Sie auf der Cloud-Dienstanbieter-Seite unter [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Weitere Informationen zu DPOR finden Sie auf der Seite „Digital Partner of Record and Zusammenarbeit mit dem Partner“ unter [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Weitere Informationen zu den Kriterien für Lösungspartner finden Sie im Dokument „Solution Partner Overview and Incentives“ (Übersicht über Lösungspartner und Incentives) unter [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Weitere Informationen zur Vorstellung der Partner finden Sie auf der Seite „Vorstellung unserer Partner“ unter [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>Anforderungen: Azure Marketplace: Liste: Beratungsdienste  
 
 | Requirements (Anforderungen) | Details |  
 |:--- |:--- |  
 | Merkmale des Dienstangebots | Ihr Beratungsdienst muss die folgenden Kriterien erfüllen:<ul> <li>Angebot mit festem Umfang, fester Dauer und festem Preis (oder kostenlos)</li> <li>Ausrichtung hauptsächlich auf Vertriebsvorbereitungen</li> <li>Beschränkung auf einen einzelnen Kunden</li> <li>Vor Ort durchgeführt</li> </ul> |  
-| Partneranforderungen für Beratungsdienste | Sie müssen den Silber- oder Gold-Standard in einer der folgenden Kompetenzen im relevanten Bereich für Ihren Dienst besitzen. <table><tr><th>Lösungsbereich</th><th>Kompetenz</th></tr><td>Cloudplattform und -infrastruktur</td><td>Cloudplattform<br />Rechenzentrum</td><tr><td>Anwendungsentwicklung und ISV</td><td>Anwendungsentwicklung<br />Anwendungsintegration<br />DevOps</td></tr><tr><td>Datenverwaltung und -analyse</td><td>Datenanalysen<br />Datenplattform</td></tr></table><ul> <li>Weitere Informationen zu den Kompetenzen finden Sie auf der Seite „Kompetenzpartner“ unter [partner.microsoft.com/membership/competencies](https://partner.microsoft.com/membership/competencies).</li> <li>Weitere Informationen zur Auflistung finden Sie auf der Seite „Azure Marketplace-Beratungsdienste“ unter [docs.microsoft.com/azure/marketplace/consulting-services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
+| Partneranforderungen für Beratungsdienste | Sie müssen den Silber- oder Gold-Standard in einer der folgenden Kompetenzen im relevanten Bereich für Ihren Dienst besitzen: <table><tr><th>Lösungsbereich</th><th>Kompetenz</th></tr><td>Cloudplattform und -infrastruktur</td><td>Cloudplattform<br />Rechenzentrum</td><tr><td>Anwendungsentwicklung und ISV</td><td>Anwendungsentwicklung<br />Anwendungsintegration<br />DevOps</td></tr><tr><td>Datenverwaltung und -analyse</td><td>Datenanalysen<br />Datenplattform</td></tr></table><ul> <li>Weitere Informationen zu den Kompetenzen finden Sie auf der Seite „Kompetenzpartner“ unter [partner.microsoft.com/membership/competencies](https://partner.microsoft.com/membership/competencies).</li> <li>Weitere Informationen zur Auflistung finden Sie auf der Seite „Azure Marketplace-Beratungsdienste“ unter [docs.microsoft.com/azure/marketplace/consulting-services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
@@ -89,19 +89,19 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |  
 |:---        |:---        |:---     |  
-| Kostenlose/SaaS-Testversion | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements:-trial) |  
-| Kostenlose/SaaS-Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Kostenlose/SaaS-Testversion](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktive Demo | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements:-trial) |  
-| Interaktive Demo | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Interaktive Demo](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Testversion | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements:-trial) |  
-| Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Testversion](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Kostenlose/SaaS-Testversion | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements-trial) |  
+| Kostenlose/SaaS-Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Kostenlose/SaaS-Testversion](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktive Demo | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements-trial) |  
+| Interaktive Demo | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Interaktive Demo](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Testversion | AppSource | [Anforderung nach Auflistungsart: Testversion](#listing-type-requirements-trial) |  
+| Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Test: Testversion](#requirements-azure-marketplace-trial-test-drive) |  
 
-#### <a name="requirements-azure-marketplace-trial"></a>Anforderungen: Azure Marketplace: Testversion:  
+#### <a name="requirements-azure-marketplace-trial"></a>Anforderungen: Azure Marketplace: Testversion  
 
 | Anforderung | Details |  
 |:--- |:--- |  
 | Kostenloser Testzeitraum und Testversion | Ein Kunde kann Ihre App für begrenzte Zeit kostenlos verwenden.<br /><br />Ihr Kunde muss keine Lizenz- oder Abonnementgebühren für Ihr Angebot oder Ihre App bezahlen. Ihr Kunde muss nicht für das zugrunde liegende Erstanbieterprodukt bzw. den zugrunde liegenden Erstanbieterdienst von Microsoft bezahlen. Alle Testoptionen werden in Ihrem Azure-Abonnement bereitgestellt. Sie haben alleinige Kontrolle über die Testversion der Kostenoptimierung und -verwaltung.<br /><br />Sie können eine kostenlosen Testversion, eine interaktive Demo oder eine Testversion auswählen. Unabhängig von Ihrer Wahl muss Ihre kostenlose Testversion dem Kunden einen vorab festgelegten Zeitraum lassen, die App ohne zusätzliche Kosten zu testen.<ul> <li>Beginnen Sie mit dem Prozess zur Erstellung einer Testversion, indem Sie eine E-Mail an [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) senden.</li> </ul>Hinweis: Azure Marketplace-SaaS-Testversionen müssen Benutzern ermöglichen, sich mit ihren geschäftlichen Anmeldeinformationen anzumelden.<ul> <li>Weitere Informationen finden Sie im Abschnitt „AppSource – Testbenutzeroberflächen“ unter [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences).</li> </ul> |  
-| Einfach konfigurierbare und einsatzbereite Lösung | Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen. |  
+| Einfach konfigurierbare und einsatzbereite Lösungen | Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen. |  
 | Verfügbarkeit/Betriebszeit | Ihre SaaS-App oder -Plattform benötigt eine Betriebszeit von mindestens 99,9 %. |  
 | Azure Active Directory | Ihr Angebot muss die einmalige Azure Active Directory-Verbundanmeldung (SSO) mit aktivierter Zustimmung zulassen. |  
 
@@ -115,7 +115,7 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Vorteil | Anforderung |  
 |:--- |:--- |  
-| Ermöglicht es Kunden, Ihre Lösung ohne die Komplexität des Setups in Aktion zu sehen. | Ihre Lösung erfordert komplexe Einstellungen, die in der Testphase schwierig durchzuführen sind. |  
+| Ermöglicht es Ihren Kunden, Ihre Lösung ohne die Komplexität des Setups in Aktion zu sehen. | Ihre Lösung erfordert komplexe Einstellungen, die in der Testphase schwierig durchzuführen sind. |  
 
 #### <a name="requirements-azure-marketplace-trial-test-drive"></a>Anforderungen: Azure Marketplace: Testversion: Testversion  
 
@@ -131,11 +131,11 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |   
 |:---        |:---        | :--- |  
-| Azure-Apps: Verwaltete App | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Verwaltete App](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  
-| Azure-Apps: Lösungsvorlage | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Lösungsvorlage](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  
-| Container | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Container](#requirements:-azure-marketplace:-transact:-container) |  
-| SaaS-App  | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: SaaS-App](#requirements:-azure-marketplace:-transact:-saas-app) |  
-| Virtueller Computer | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion:Virtueller Computer](#requirements:-azure-marketplace:-transact:-virtual-machine) |  
+| Azure-Apps: Verwaltete App | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Verwaltete App](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Azure-Apps: Lösungsvorlage | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Lösungsvorlage](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Container | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Container](#requirements-azure-marketplace-transact-container) |  
+| SaaS-App  | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: SaaS-App](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtueller Computer | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion:Virtueller Computer](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 
@@ -161,8 +161,8 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Anforderung | Details |  
 |:--- |:--- | 
-| Abrechnung und Messung | Ihr virtueller Computer muss entweder BYOL oder die monatliche nutzungsbasierte Bezahlung unterstützen. |  
-| Azure-kompatible virtuelle Festplatte (Virtual Hard Disk, VHD) | Virtuelle Computer müssen unter Windows oder Linux erstellt werden.<ul> <li>Weitere Informationen zum Erstellen einer virtuellen Linux-Festplatte finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Linux-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Windows-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
+| Abrechnung und Messung | Ihre VM muss entweder BYOL oder die monatliche nutzungsbasierte Bezahlung unterstützen. |  
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden.<ul> <li>Weitere Informationen zum Erstellen einer Linux-VHD finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Linux-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#2-create-an-azure-compatible-vhd-linux-based).</li> <li>Weitere Informationen zum Erstellen einer Windows-VHD finden Sie unter „Erstellen einer Azure-kompatiblen VHD (Windows-basiert)“ unter [docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation#3-create-an-azure-compatible-vhd-windows-based).</li> </ul> |  
 
 ## <a name="next-steps"></a>Nächste Schritte
 *   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  

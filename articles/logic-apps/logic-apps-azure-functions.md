@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297868"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331171"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Hinzufügen von benutzerdefiniertem Code für Logik-Apps über Azure Functions
 
@@ -62,7 +62,7 @@ Sie können eine Logik-App aus einer Funktion heraus auslösen. Weitere Informat
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Erstellen einer Funktion im Logik-App-Designer
 
-Sie können auch eine Node.js-Webhookfunktion direkt im Designer erstellen. Wählen Sie zunächst **Azure Functions in my region** (Azure Functions in meiner Region) und dann einen Container für Ihre Funktion aus. Wenn noch kein Container vorhanden ist, müssen Sie ihn im [Azure Functions-Portal](https://functions.azure.com/signin)erstellen. Klicken Sie anschließend auf **Neu erstellen**.  
+Sie können auch eine Node.js-Webhookfunktion direkt im Designer erstellen. Wählen Sie zunächst **Azure Functions in my region** (Azure Functions in meiner Region) und dann einen Container für Ihre Funktion aus. Wenn noch kein Container vorhanden ist, müssen Sie ihn im [Azure Functions-Portal](https://functions.azure.com/)erstellen. Klicken Sie anschließend auf **Neu erstellen**.  
 
 Wenn Sie eine Vorlage auf Grundlage der zu berechnenden Daten generieren möchten, geben Sie das Kontextobjekt an, das Sie an eine Funktion übergeben möchten. Dieses Objekt muss ein JSON-Objekt sein. Wenn Sie den Dateiinhalt beispielsweise aus einer FTP-Aktion übergeben, sieht die Kontextnutzlast wie im folgenden Beispiel aus:
 

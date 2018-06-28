@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2017
 ms.author: kumud
-ms.openlocfilehash: d90a4e74b6ad3bb95e91ad3a5327c887a87784bd
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: a4093926ea2ea2bb0e477372a1ceb2dfbf22e8f0
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30264471"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330967"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
 
@@ -47,7 +47,7 @@ Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *my
 
 ```azurecli-interactive
   az network vnet create \
-    --name myVnet
+    --name myVnet \
     --resource-group myResourceGroupILB \
     --location eastus \
     --subnet-name mySubnet
@@ -76,7 +76,7 @@ Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/ne
   ```
 ### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
 
-Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) einen Integritätstest zum Überwachen der Integrität von virtuellen Computern. 
+Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#create) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -131,7 +131,7 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen 
     --source-address-prefix '*' \
     --source-port-range '*' \
     --destination-address-prefix '*' \
-    --destination-port-range 22 \
+    --destination-port-range 80 \
     --access allow \
     --priority 300
 ```
@@ -226,7 +226,7 @@ for i in `seq 1 2`; do
     --custom-data cloud-init.txt
     done
 ```
-Es kann einige Minuten dauern, bis die VMs bereitgestellt wurden.
+Es kann einige Minuten dauern, bis die virtuellen Computer bereitgestellt wurden.
 
 ### <a name="create-a-vm-for-testing-the-load-balancer"></a>Erstellen einer VM zum Testen des Lastenausgleichs
 
@@ -249,14 +249,14 @@ Verwenden Sie zum Abrufen der privaten IP-Adresse des Lastenausgleichs den Befeh
 
 ```azurecli-interactive
   az network lb show \
-    --name myLoadBalancer
+    --name myLoadBalancer \
     --resource-group myResourceGroupILB
 ``` 
 ![Testen des Load Balancers](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Load Balancer und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
+Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB

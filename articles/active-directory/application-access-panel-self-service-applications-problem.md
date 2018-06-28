@@ -3,23 +3,24 @@ title: Probleme beim Self-Service-Anwendungszugriff | Microsoft-Dokumentation
 description: Beheben von Problemen in Zusammenhang mit dem Self-Service-Anwendungszugriff
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.reviewer: japere
-ms.openlocfilehash: 6d4044414cfae9a79487d02709aab24998fdef0b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: japere,asteen
+ms.openlocfilehash: 35abd97072f2156424bb910d68923be18f917792
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29382354"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331256"
 ---
 # <a name="problem-using-self-service-application-access"></a>Probleme beim Self-Service-Anwendungszugriff
 

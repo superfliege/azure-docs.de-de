@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231997"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335056"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -72,7 +72,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie viele Datensätze kann ich aus dem Azure-Portal herunterladen?**
 
-**A:** Sie können bis zu 5.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze. Für Datensatzgrößen, die 5.000 übersteigen, wählen Sie Ihre Filterbedingungen und klicken dann im Azure-Portal auf die Schaltfläche *Skript*. Dadurch wird ein PowerShell-Skript heruntergeladen, das Sie ausführen können, um eine CSV-Datei aller Datensätze zu generieren, die Ihren Filterbedingungen entsprechen. Sie müssen das PowerShell-Skript im *Administratormodus* ausführen. Weitere Informationen finden Sie unter [Herunterladen von Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
+**A:** Sie können bis zu 5.000 Datensätze aus dem Azure-Portal herunterladen. Die Datensätze werden nach *Aktualität* sortiert, und standardmäßig erhalten Sie die neuesten 5.000 Datensätze.
 
 ---
 
