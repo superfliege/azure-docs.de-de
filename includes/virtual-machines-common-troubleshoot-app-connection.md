@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371268"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313512"
 ---
 Es gibt verschiedene Gründe, aus denen Sie eine Anwendung, die auf einem virtuellen Azure-Computer (VM) ausgeführt wird, nicht starten können bzw. keine Verbindung damit herstellen können. Zu den Gründen gehört, dass die Anwendung nicht ausgeführt wird oder nicht an den erwarteten Ports lauscht, dass der Lauschport blockiert ist oder dass Netzwerkeregeln Datenverkehr nicht ordnungsgemäß an die Anwendung übergeben. In diesem Artikel wird ein methodischer Ansatz zum Ermitteln und Beheben der Probleme beschrieben.
 
@@ -32,7 +32,7 @@ Wenn beim Herstellen der Verbindung mit einer Anwendung Probleme auftreten, füh
 
 * Starten Sie den virtuellen Computer neu.
 * Erstellen Sie den Endpunkt, die Firewallregeln und die Regeln für die Netzwerksicherheitsgruppen (NSG) neu.
-  * [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/manage-network-security-group.md)
   * [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * Stellen Sie die Verbindung über einen anderen Ort her, z.B. über ein anderes virtuelles Azure-Netzwerk.
 * Stellen Sie den virtuellen Computer erneut bereit.
@@ -93,7 +93,7 @@ Wenn kein Zugriff auf die Anwendung möglich ist, überprüfen Sie die folgenden
 * Software zur Angriffserkennung oder Netzwerküberwachung, die auf der Ziel-VM ausgeführt wird, lässt den Datenverkehr zu.
 * Die Endpunkte der Clouddienste oder die Netzwerksicherheitsgruppen lassen den Datenverkehr zu:
   * [Klassisches Modell: Verwalten der Endpunkte der Clouddienste](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Resource Manager-Modell: Verwalten von Netzwerksicherheitsgruppen](../articles/virtual-network/manage-network-security-group.md)
 * Eine separate Komponente, die auf Ihrer VM auf dem Pfad zwischen der Test-VM und Ihrer VM ausgeführt wird, z.B. ein Load Balancer oder eine Firewall, lässt den Datenverkehr zu.
 
 Verwenden Sie auf einem Windows-basierten virtuellen Computer die Windows-Firewall mit erweiterter Sicherheit, um zu bestimmen, ob die Firewallregeln den eingehenden und ausgehenden Datenverkehr der Anwendung ausschließen.

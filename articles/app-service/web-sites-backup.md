@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153581"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751512"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](app-service-web-overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -38,7 +38,7 @@ App Service kann die folgenden Informationen in einem Azure-Speicherkonto und ei
 Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt: 
    - [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)
    - [Azure-Datenbank für MySQL (Vorschau)](https://azure.microsoft.com/services/mysql)
-   - [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/services/postgres)
+   - [Azure-Datenbank für PostgreSQL (Vorschau)](https://azure.microsoft.com/services/postgresql)
    - [MySQL In-App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

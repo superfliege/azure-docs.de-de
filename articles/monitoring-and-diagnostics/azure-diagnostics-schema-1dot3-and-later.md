@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262374"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937912"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -362,7 +362,7 @@ PublicConfig und PrivateConfig sind getrennt, da sie in den meisten JSON-Nutzung
  Die folgenden Tags weisen in etwa dieselbe Reihenfolge wie im vorherigen Beispiel auf.  Wenn Sie wider Erwarten keine vollständige Beschreibung sehen, durchsuchen Sie die Seite nach dem Element oder Attribut.  
 
 ## <a name="common-attribute-types"></a>Allgemeine Attributtypen  
- Das **scheduledTransferPeriod**-Attribut wird in mehreren Elementen angezeigt. Es handelt sich um das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp).
+ Das **scheduledTransferPeriod**-Attribut wird in mehreren Elementen angezeigt. Es handelt sich um das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp).
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration-Element  
@@ -415,7 +415,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**CrashDumps**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
-|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**DiagnosticInfrastructureLogs**|Aktivieren Sie die Sammlung der Protokolle, die von der Azure-Diagnose generiert wurde. Die Protokolle der Diagnoseinfrastruktur sind hilfreich für die Problembehandlung des Diagnosesystems selbst. Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Konfiguriert den minimalen Schweregrad der erfassten Protokolle.<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 |**Verzeichnisse**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**EtwProviders**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**Metriken**|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
@@ -488,8 +488,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
-|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp). |  
+|**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 
 
 
@@ -524,7 +524,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Erforderliches Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/schema/schema_dtypes_date.asp). |  
+|**MetricAggregation**|Erforderliches Attribut:<br /><br /> **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](http://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 
 
 

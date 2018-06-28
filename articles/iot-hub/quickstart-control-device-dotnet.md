@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292839"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335474"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (.NET)
 
@@ -67,7 +67,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
 
     Wenn Sie einen anderen Namen für Ihr Gerät auswählen, aktualisieren Sie den Gerätenamen in den Beispielanwendungen, bevor sie ausgeführt werden.
 
-1. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
+2. Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ Die simulierte Geräteanwendung stellt eine Verbindung mit einem gerätespezifis
 
 1. Navigieren Sie in einem Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\simulated-device-2**.
 
-1. Öffnen Sie die Datei **SimulatedDevice.cs** in einem Text-Editor Ihrer Wahl.
+2. Öffnen Sie die Datei **SimulatedDevice.cs** in einem Text-Editor Ihrer Wahl.
 
-    Ersetzen Sie den Wert der Variablen `connectionString` durch die Geräteverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **SimulatedDevice.cs**.
+    Ersetzen Sie den Wert der Variablen `s_connectionString` durch die Geräteverbindungszeichenfolge, die Sie sich zuvor notiert haben. Speichern Sie dann die Änderungen an der Datei **SimulatedDevice.cs**.
 
-1. Führen Sie im Terminalfenster den folgenden Befehl aus, um die erforderlichen Pakete für die Anwendung zur Simulation eines Geräts zu installieren:
+3. Führen Sie im Terminalfenster den folgenden Befehl aus, um die erforderlichen Pakete für die Anwendung zur Simulation eines Geräts zu installieren:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Führen Sie im Terminalfenster den folgenden Befehl aus, um die Anwendung zur Simulation eines Geräts zu erstellen und auszuführen:
+4. Führen Sie im Terminalfenster den folgenden Befehl aus, um die Anwendung zur Simulation eines Geräts zu erstellen und auszuführen:
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ Die Back-End-Anwendung stellt eine Verbindung mit einem dienstseitigen Endpunkt 
 
 1. Navigieren Sie in einem anderen Terminalfenster zum Stammordner des C#-Beispielprojekts. Navigieren Sie anschließend zum Ordner **iot-hub\Quickstarts\back-end-application**.
 
-1. Öffnen Sie die Datei **BackEndApplication.js** in einem Text-Editor Ihrer Wahl.
+2. Öffnen Sie die Datei **BackEndApplication.js** in einem Text-Editor Ihrer Wahl.
 
-    Ersetzen Sie den Wert der Variablen `connectionString` durch die Verbindungszeichenfolge für den Dienst, die Sie sich zuvor notiert haben. Speichern Sie dann Ihre Änderungen an der Datei **BackEndApplication.js**.
+    Ersetzen Sie den Wert der Variablen `s_connectionString` durch die Verbindungszeichenfolge für den Dienst, die Sie sich zuvor notiert haben. Speichern Sie dann Ihre Änderungen an der Datei **BackEndApplication.js**.
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken für die Back-End-Anwendung zu installieren:
+3. Führen Sie im Terminalfenster die folgenden Befehle aus, um die erforderlichen Bibliotheken für die Back-End-Anwendung zu installieren:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. Führen Sie im Terminalfenster die folgenden Befehle aus, um die Back-End-Anwendung zu erstellen und auszuführen:
+4. Führen Sie im Terminalfenster die folgenden Befehle aus, um die Back-End-Anwendung zu erstellen und auszuführen:
 
     ```cmd/sh
     dotnet run

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b2686b4bb2b98d3f79d8087f6857c149cfdeb553
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0a439a2bb485829b863d6aa666938ab58c90c61f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711262"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750776"
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: Bedrohungsverwaltung
 
@@ -29,4 +29,4 @@ Azure AD B2C verwendet Erkennungs- und Abwehrmaßnahmen wie SYN-Cookies und Rate
 
 Azure AD B2C umfasst auch Abwehrmaßnahmen für Kennwortangriffe. Diese decken unter anderem Brute-Force-Kennwortangriffe und Wörterbuchangriffe ab. Benutzerkennwörter müssen ausreichend komplex sein. Anhand verschiedener Signale analysiert Azure AD B2C die Integrität von Anforderungen. Azure AD B2C kann auf intelligente Weise zwischen vorgesehenen Benutzern und Hackern oder Botnetzen unterscheiden. Azure AD B2C bietet eine ausgeklügelte Strategie, um Konten auf der Grundlage der eingegebenen Kennwörter und der Wahrscheinlichkeit eines Angriffs zu sperren.
 
-Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/threatmanagement).
+Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/default.aspx).

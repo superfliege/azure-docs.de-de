@@ -1,5 +1,5 @@
 ---
-title: Was ist Microsoft Genomics? | Microsoft Docs
+title: Was ist Microsoft Genomics? | Microsoft-Dokumentation
 titleSuffix: Azure
 description: Erfahren Sie, wie Microsoft Genomics nun mithilfe einer Cloudimplementierung des BWA-GATK für Sekundäranalysen die Genomsequenzierung unterstützen kann.
 services: microsoft-genomics
@@ -11,12 +11,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: edfe6cc608a74b61777ce54eba3aa42c239b6090
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 8743905d6e415049a563bcd6b4736d6569f59b7f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684683"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333256"
 ---
 # <a name="what-is-microsoft-genomics"></a>Was ist Microsoft Genomics?
 Microsoft Genomics bietet eine Cloudimplementierung des Burrows-Wheeler Aligner (BWA) und des Genome Analysis Toolkit (GATK) für Sekundäranalysen. Der Service ist ISO-zertifiziert und konform mit den HIPAA-Vorschriften und ermöglicht das Vorhersagen von Kosten für Ihre Genomsequenzierungsanforderungen. Erfahren Sie, wie Sie den Microsoft Genomics-Dienst nutzen und in unsere API integrieren können, indem Sie unsere Schnellstarts, Tutorials und Dokumentation lesen.
@@ -30,7 +30,7 @@ Microsoft Genomics bietet für den Empfang von Workflowanforderungen eine SLA (V
 
 
 ## <a name="secure-your-data"></a>Sichern der Daten
-Der Microsoft Genomics-Dienst ist nach ISO 27001, ISO 27018 und ISO 9001 zertifiziert und entspricht den HIPAA-Vorschriften. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+Der Microsoft Genomics-Dienst ist nach ISO 27001, ISO 27018 und ISO 9001 zertifiziert und entspricht den HIPAA-Vorschriften. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/en-us/trustcenter/security).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

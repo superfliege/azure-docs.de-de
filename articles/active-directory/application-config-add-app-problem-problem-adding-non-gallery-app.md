@@ -3,22 +3,23 @@ title: Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung | 
 description: Informationen zu häufig auftretenden Problemen beim Hinzufügen von benutzerdefinierten nicht im Katalog enthaltenen Anwendungen
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 3d54a9bccdf3f940959c2cbe3f85bd5fddff68e1
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: barbkess
+ms.openlocfilehash: c9d2a87b97eb164c7edc794ccecdf957f0350788
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053554"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335032"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>Probleme beim Hinzufügen einer nicht im Katalog enthaltenen Anwendung
 
