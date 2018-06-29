@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618656"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055445"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -26,9 +26,6 @@ Mit einer Nachschlageaktivität kann ein Dataset aus einer beliebigen ADF-fähig
 - Dynamische Bestimmung der Objekte (Dateien, Tabellen etc.), die in einer nachfolgenden Aktivität verarbeitet werden sollen, statt der Hartcodierung von Objektnamen
 
 Die Nachschlageaktivität kann den Inhalt einer Konfigurationsdatei, einer Konfigurationstabelle oder das Ergebnis der Ausführung einer Abfrage oder gespeicherten Prozedur lesen und zurückgeben.  Die Ausgabe der Nachschlageaktivität kann als Singleton-Wert in einer nachfolgenden Kopier- oder Transformationsaktivitäten oder als Gruppe von Attributen in einer ForEach-Aktivität verwendet werden.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 

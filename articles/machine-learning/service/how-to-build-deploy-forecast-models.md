@@ -3,18 +3,18 @@ title: Erstellen und Bereitstellen eines Vorhersagemodells mithilfe des Azure Ma
 description: Erfahren Sie, wie ein Vorhersagemodell mithilfe des Azure Machine Learning-Pakets für Vorhersagen erstellt, trainiert, getestet und bereitgestellt wird.
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833528"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035070"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Erstellen und Bereitstellen von Vorhersagemodellen mit Azure Machine Learning
 
@@ -336,7 +336,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Die Daten enthalten ungefähr 250 verschiedene Kombinationen aus Geschäft und Marke in einem Datenrahmen. Jede Kombination definiert ihre eigene Zeitreihe der Umsätze. 
 
-Sie können die [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframets.timeseriesdataframe)-Klasse zum bequemen Modellieren von mehreren Reihen in einer einzelnen Datenstruktur mithilfe der _Granularität_ verwenden. Die Granularität wird durch die `store`- und `brand`-Spalten angegeben.
+Sie können die [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest)-Klasse zum bequemen Modellieren von mehreren Reihen in einer einzelnen Datenstruktur mithilfe der _Granularität_ verwenden. Die Granularität wird durch die `store`- und `brand`-Spalten angegeben.
 
 Der Unterschied zwischen _Granularität_ und _Gruppierung_ besteht darin, dass die Granularität in der realen Welt immer physisch von Bedeutung ist, was für die Gruppierung nicht der Fall sein muss. Interne Paketfunktionen verwenden die Gruppierung, um aus mehreren Zeitreihen ein einzelnes Modell zu erstellen, wenn der Benutzer annimmt, dass diese Gruppierung die Modellleistung verbessert. Standardmäßig wird die Gruppierung so festgelegt, dass sie mit der Granularität identisch ist, und ein einzelnes Modell wird für jede Granularität erstellt. 
 
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-Die [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframets.timeseriesdataframe#ts-report)-Funktion generiert einen umfassenden Bericht des Zeitreihen-Datenrahmens. Der Bericht enthält sowohl eine allgemeine Datenbeschreibung als auch Statistiken, die für Zeitreihendaten spezifisch sind. 
+Die [TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report)-Funktion generiert einen umfassenden Bericht des Zeitreihen-Datenrahmens. Der Bericht enthält sowohl eine allgemeine Datenbeschreibung als auch Statistiken, die für Zeitreihendaten spezifisch sind. 
 
 
 ```python
@@ -887,14 +887,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Vorverarbeiten von Daten und Implizieren fehlender Werte
 
-Beginnen Sie, indem Sie die Daten in einen Trainings- und einen Testsatz mit der [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/python/api/ftk.tsutils)-Hilfsfunktion aufteilen. Der sich ergebende Testsatz enthält die letzten 40 Beobachtungen jeder Zeitreihe. 
+Beginnen Sie, indem Sie die Daten in einen Trainings- und einen Testsatz mit der [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest)-Hilfsfunktion aufteilen. Der sich ergebende Testsatz enthält die letzten 40 Beobachtungen jeder Zeitreihe. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Grundlegende Zeitreihenmodelle erfordern zusammenhängende Zeitreihen. Überprüfen Sie, ob die Reihen regelmäßig sind. Dies bedeutet, dass für sie ein Zeitindex in regelmäßigen Intervallen erstellt wurde. Verwenden Sie zu diesem Zweck die [check_regularity_by_grain](https://docs.microsoft.compython/api/ftk.dataframets.timeseriesdataframe)-Funktion.
+Grundlegende Zeitreihenmodelle erfordern zusammenhängende Zeitreihen. Überprüfen Sie, ob die Reihen regelmäßig sind. Dies bedeutet, dass für sie ein Zeitindex in regelmäßigen Intervallen erstellt wurde. Verwenden Sie zu diesem Zweck die [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain)-Funktion.
 
 
 ```python
@@ -969,7 +969,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Sie erkennen, dass die meisten Reihen (213 von 249) unregelmäßig sind. Eine [Imputationstransformation](https://docs.microsoft.com/python/api/ftk.transforms.tsimputer.timeseriesimputer) ist erforderlich, um fehlende Umsatzwerte zu ergänzen. Es sind zahlreiche Imputationsoptionen vorhanden. Der folgende Code verwendet jedoch eine lineare Interpolation.
+Sie erkennen, dass die meisten Reihen (213 von 249) unregelmäßig sind. Eine [Imputationstransformation](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) ist erforderlich, um fehlende Umsatzwerte zu ergänzen. Es sind zahlreiche Imputationsoptionen vorhanden. Der folgende Code verwendet jedoch eine lineare Interpolation.
 
 
 ```python
@@ -1035,7 +1035,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinieren mehrerer Modelle
 
-Der [ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecasterunion.forecasterunion)-Kalkulator ermöglicht es Ihnen, mehrere Kalkulatoren zu kombinieren und mit einer Codezeile Vorhersagen für sie zu treffen bzw. sie anzupassen.
+Der [ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest)-Kalkulator ermöglicht es Ihnen, mehrere Kalkulatoren zu kombinieren und mit einer Codezeile Vorhersagen für sie zu treffen bzw. sie anzupassen.
 
 
 ```python
@@ -1249,7 +1249,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-Die [RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regressionforecaster.regressionforecaster)-Funktion dient als Wrapper für sklearn-Regressionskalkulatoren, damit diese für TimeSeriesDataFrame trainiert werden können. Die Vorhersagefunktion im Wrapper positioniert auch jede Gruppe (in diesem Fall das Geschäft) im gleichen Modell. Die Vorhersagefunktion kann ein Modell für eine Gruppe von Reihen lernen, die als vergleichbar eingestuft wurden und in einem Pool zusammengefasst werden können. Ein Modell für eine Gruppe von Reihen verwendet häufig die Daten aus längeren Reihen, um die Prognosen für kurze Reihen zu verbessern. Sie können diese Modelle durch beliebige andere Modelle in der Bibliothek ersetzen, die Regression unterstützen. 
+Die [RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest)-Funktion dient als Wrapper für sklearn-Regressionskalkulatoren, damit diese für TimeSeriesDataFrame trainiert werden können. Die Vorhersagefunktion im Wrapper positioniert auch jede Gruppe (in diesem Fall das Geschäft) im gleichen Modell. Die Vorhersagefunktion kann ein Modell für eine Gruppe von Reihen lernen, die als vergleichbar eingestuft wurden und in einem Pool zusammengefasst werden können. Ein Modell für eine Gruppe von Reihen verwendet häufig die Daten aus längeren Reihen, um die Prognosen für kurze Reihen zu verbessern. Sie können diese Modelle durch beliebige andere Modelle in der Bibliothek ersetzen, die Regression unterstützen. 
 
 
 ```python

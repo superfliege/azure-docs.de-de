@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895634"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061540"
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -27,7 +27,7 @@ Wir wissen, dass Sicherheit in der Cloud an erster Stelle steht und wie wichtig 
 
 Microsoft Azure bietet sowohl Vertraulichkeit, Integrität und Verfügbarkeit von Kundendaten als auch eine transparente Verantwortlichkeit. Damit Sie die gesammelten Sicherheitskontrollen für Netzwerke, die aus Sicht des Kunden in Microsoft Azure enthalten sind, besser verstehen, haben wir diesen Artikel zur „Azure-Netzwerksicherheit“ verfasst. Darin werden die Sicherheitskontrollen für Netzwerke, die für Microsoft Azure zur Verfügung stehen, umfassend beschrieben.
 
-In diesem Dokument erhalten Sie Informationen zu den vielen Netzwerkkontrollen, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Wenn Sie daran interessiert sind, was Microsoft in Bezug auf den Schutz des Netzwerkfabric der eigentlichen Azure Platform unternimmt, helfen Ihnen die Informationen im Abschnitt zur „Azure-Sicherheit“ im [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/azure-security) weiter.
+In diesem Dokument erhalten Sie Informationen zu den vielen Netzwerkkontrollen, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Wenn Sie daran interessiert sind, was Microsoft in Bezug auf den Schutz des Netzwerkfabric der eigentlichen Azure Platform unternimmt, helfen Ihnen die Informationen im Abschnitt zur „Azure-Sicherheit“ im [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure) weiter.
 
 ## <a name="azure-platform"></a>Azure Platform
 

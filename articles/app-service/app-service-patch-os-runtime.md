@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030052"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Veraltete Versionen
+### <a name="deprecated-versions"></a>Veraltete Versionen  
 
 Wenn eine ältere Version als veraltet markiert ist, wird das Entfernungsdatum angekündigt, damit Sie das Upgrade der Runtimeversion entsprechend planen können. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Wie kann ich den Updatestatus von Betriebssystem und Runtime auf meinen Instanzen abfragen?
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Wie kann ich den Updatestatus von Betriebssystem und Runtime auf meinen Instanzen abfragen?  
 
 Der Zugriff auf kritische Betriebssysteminformationen ist zwar gesperrt (siehe [Betriebssystemfunktionen für Azure App Service](web-sites-available-operating-system-functionality.md)), aber die [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console) ermöglicht Ihnen, Ihre App Service-Instanz bezüglich der Betriebssystem- und Runtimeversion abzufragen. 
 
 Die folgende Tabelle zeigt, wie Sie die Versionen von Windows und der Language Runtime, die Ihre Apps ausführen, abfragen:
 
-| Information | Ort |
+| Information | Ort | 
 |-|-|
 | Windows-Version | Siehe `https://<appname>.scm.azurewebsites.net/Env.cshtml` (unter Systeminfo) |
 | .NET-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | .NET Core-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `dotnet --version` |
 | PHP-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `php --version` |
 | Standardmäßige Node.js-Version | Führen Sie in der [Cloud Shell](../cloud-shell/overview.md)-Instanz folgenden Befehl aus: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Python-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `python --version` |
+| Python-Version | Geben Sie unter `https://<appname>.scm.azurewebsites.net/DebugConsole` im Eingabeaufforderungsfenster den folgenden Befehl ein: <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > Der Zugriff auf den Registrierungsspeicherort `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, wo Informationen zu [„KB“-Patches]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) gespeichert sind, ist gesperrt.
 >
 >
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Trust Center – Sicherheit](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[Trust Center – Sicherheit](https://www.microsoft.com/en-us/trustcenter/security)  
 [64 bit ASP.NET Core on Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7) (64-Bit-ASP.NET Core in Azure App Service)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6bc845e4ec329d308ed87770d0dec6a7d5e447c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299792"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030952"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>Szenario – Auslösen einer Logik-App mit Azure Functions und Azure Service Bus
 
@@ -39,7 +39,7 @@ In diesem Beispiel führen Sie eine Funktion für jede Logik-App aus, die ausgel
 ## <a name="build-the-function"></a>Erstellen der Funktion
 Als Nächstes müssen Sie eine Funktion erstellen, die als Trigger fungiert und an der Warteschlange lauscht.
 
-1. Öffnen Sie das [Azure Functions-Portal](https://functions.azure.com/signin), und wählen Sie **Neue Funktion** und die Vorlage **ServiceBusQueueTrigger – C#** aus.
+1. Öffnen Sie das [Azure Functions-Portal](https://functions.azure.com/), und wählen Sie **Neue Funktion** und die Vorlage **ServiceBusQueueTrigger – C#** aus.
    
     ![Azure Functions-Portal][2]
 2. Konfigurieren Sie die Verbindung mit der Service Bus-Warteschlange, die den `OnMessageReceive()`-Listener aus dem Azure Service Bus SDK verwendet.

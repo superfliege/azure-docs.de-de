@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074829"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060446"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
@@ -30,7 +30,7 @@ ms.locfileid: "34074829"
 
 Azure Stack unterstützt die Windows-Gastbetriebssysteme aus der folgenden Tabelle:
 
-| Betriebssystem | Beschreibung | Im Marketplace verfügbar |
+| Betriebssystem | BESCHREIBUNG | Im Marketplace verfügbar |
 | --- | --- | --- | --- | --- | --- |
 | Windows Server, Version 1709 | 64 Bit | Core mit Containern |
 | Windows Server 2016 | 64 Bit |  Datacenter, Datacenter Core, Datacenter mit Containern |
@@ -40,7 +40,7 @@ Azure Stack unterstützt die Windows-Gastbetriebssysteme aus der folgenden Tabel
 | Windows Server 2008 SP2 | 64 Bit |  Verwendung eigener Images (Bring Your Own Image, BYOI) |
 | Windows 10 *(siehe Hinweis 1)* | 64 Bit, Pro und Enterprise | Verwendung eigener Images (Bring Your Own Image, BYOI) |
 
-***Hinweis 1:*** *Wenn Sie Windows 10-Clientbetriebssysteme für Azure Stack bereitstellen möchten, müssen Sie über eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) verfügen oder den Kauf über einen [QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx) (Qualified Multitenant Hoster) abwickeln.*
+***Hinweis 1:*** *Wenn Sie Windows 10-Clientbetriebssysteme für Azure Stack bereitstellen möchten, müssen Sie über eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) verfügen oder den Kauf über einen [QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) (Qualified Multitenant Hoster) abwickeln.*
 
 Marketplace-Images stehen für eine Lizenzierung mit nutzungsbasierter Abrechnung oder für eine BYOL-Lizenzierung (EA/SPLA) zur Verfügung. Es kann jedoch nicht beides für die gleiche Azure Stack-Instanz verwendet werden. Während der Bereitstellung fügt Azure Stack eine geeignete Version des Gast-Agents in das Image ein.
 
@@ -55,7 +55,7 @@ Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderliche
 >
 > [cloud-init](https://cloud-init.io/) wird derzeit für Azure Stack nicht unterstützt.
 
-| Distribution | Beschreibung | Herausgeber | Marketplace |
+| Distribution | BESCHREIBUNG | Herausgeber | Marketplace |
 | --- | --- | --- | --- | --- | --- |
 | 6.9 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
 | 7.4 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
