@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040295"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753318"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Vergleich von Microsoft-Überwachungsprodukten
 Dieser Artikel enthält einen Vergleich zwischen System Center Operations Manager (SCOM) und Log Analytics in Operations Management Suite (OMS). Dabei geht es um die Architektur, die Logik der Überwachung von Ressourcen und die Durchführung von Analysen für die gesammelten Daten.  Auf diese Weise sollen Ihnen die Grundlagen zu den Unterschieden und den relativen Stärken vermittelt werden.  
 
 ## <a name="basic-architecture"></a>Grundlegende Architektur
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-Alle SCOM-Komponenten werden in Ihrem Rechenzentrum installiert.  [Agents werden auf Windows- und Linux-Computern installiert](http://technet.microsoft.com/library/hh551142.aspx) , die mit SCOM verwaltet werden.  Agents stellen eine Verbindung mit [Verwaltungsservern](https://technet.microsoft.com/library/hh301922.aspx) her, die mit der SCOM-Datenbank und dem Data Warehouse kommunizieren.  Für Agents wird die Domänenauthentifizierung verwendet, um die Verbindung mit Verwaltungsservern herzustellen.  Von außerhalb einer vertrauenswürdigen Domäne kann eine Authentifizierung per Zertifikat durchgeführt oder eine Verbindung mit einem [Gatewayserver](https://technet.microsoft.com/library/hh212823.aspx)hergestellt werden.
+Alle SCOM-Komponenten werden in Ihrem Rechenzentrum installiert.  [Agents werden auf Windows- und Linux-Computern installiert](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console) , die mit SCOM verwaltet werden.  Agents stellen eine Verbindung mit [Verwaltungsservern](https://technet.microsoft.com/library/hh301922.aspx) her, die mit der SCOM-Datenbank und dem Data Warehouse kommunizieren.  Für Agents wird die Domänenauthentifizierung verwendet, um die Verbindung mit Verwaltungsservern herzustellen.  Von außerhalb einer vertrauenswürdigen Domäne kann eine Authentifizierung per Zertifikat durchgeführt oder eine Verbindung mit einem [Gatewayserver](https://technet.microsoft.com/library/hh212823.aspx)hergestellt werden.
 
 Für SCOM sind zwei SQL-Datenbanken erforderlich, eine für Betriebsdaten und ein anderes Data Warehouse zur Unterstützung der Berichterstellung und Datenanalyse.  Auf einem [Berichtsserver](https://technet.microsoft.com/library/hh298611.aspx) wird SQL Reporting Services ausgeführt, um Berichte für Daten des Data Warehouse zu erstellen. 
 
@@ -100,13 +100,13 @@ Im folgenden Diagramm ist die Überwachungslogik für Log Analytics zusammengefa
 
 ## <a name="health-monitoring"></a>Systemüberwachung
 ### <a name="operations-manager"></a>Operations Manager
-SCOM kann die unterschiedlichen Komponenten einer Anwendung modellieren und die Integrität für jede Komponente in Echtzeit darstellen.  So können Sie nicht nur erkannte Fehler und die Leistung in Abhängigkeit der Zeit anzeigen, sondern auch jederzeit die Integrität einer Anwendung oder eines Systems und der dazugehörigen Komponenten überprüfen.  Da die Zeiträume bekannt sind, zu denen eine Anwendung verfügbar ist, unterstützt das Integritätsmodul in SCOM auch Vereinbarungen zum Servicelevel (SLAs), bei denen die Verfügbarkeit einer Anwendung in Abhängigkeit der Zeit analysiert und gemeldet wird.
+SCOM kann die unterschiedlichen Komponenten einer Anwendung modellieren und die Integrität für jede Komponente in Echtzeit darstellen.  So können Sie nicht nur erkannte Fehler und die Leistung in Abhängigkeit der Zeit anzeigen, sondern auch jederzeit die Integrität einer Anwendung oder eines Systems und der dazugehörigen Komponenten überprüfen.  Da die Zeiträume bekannt sind, zu denen eine Anwendung verfügbar ist, unterstützt die Integritäts-Engine in SCOM auch Vereinbarungen zum Servicelevel (SLAs), bei denen die Verfügbarkeit einer Anwendung in Abhängigkeit der Zeit analysiert und gemeldet wird.
 
-In der Ansicht unten wird beispielsweise die Echtzeitintegrität von SQL-Datenbankmodulen angezeigt, die mit SCOM überwacht werden.  Die Integrität der einzelnen Datenbanken für ein Datenbankmodul ist hier in der unteren Hälfte der Ansicht dargestellt.
+In der Ansicht unten wird beispielsweise die Echtzeitintegrität von SQL-Datenbank-Engines angezeigt, die mit SCOM überwacht werden.  Die Integrität der einzelnen Datenbanken für eine Datenbank-Engine ist hier in der unteren Hälfte der Ansicht dargestellt.
 
 ![Zustandsansicht](media/operations-management-suite-monitoring-product-comparison/scom-state-view.png)
 
-Der Integritäts-Explorer für ein Datenbankmodul ist unten mit den Überwachungseinheiten („Monitors“) dargestellt, die zum Bestimmen der allgemeinen Integrität verwendet werden.  Diese Überwachungseinheiten werden im SQL Management Pack definiert und für alle SQL-Datenbankmodule ausgeführt, die von SCOM erkannt werden.
+Der Integritäts-Explorer für eine Datenbank-Engine ist unten mit den Monitoren dargestellt, die zum Ermitteln der allgemeinen Integrität verwendet werden.  Diese Monitore werden im SQL Management Pack definiert und für alle SQL-Datenbank-Engines ausgeführt, die von SCOM erkannt werden.
 
 ![Integritäts-Explorer](media/operations-management-suite-monitoring-product-comparison/scom-health-explorer.png)
 
@@ -117,7 +117,7 @@ Active Directory ist ein Beispiel für ein Management Pack, mit dem ein Modell z
 ![SCOM-Diagrammansicht](media/operations-management-suite-monitoring-product-comparison/scom-diagram-view.png)
 
 ### <a name="log-analytics"></a>Log Analytics
-Die OMS enthält kein allgemeines Modul zum Modellieren von Anwendungen oder Messen der Echtzeitintegrität.  Einzelne Lösungen können die Gesamtintegrität bestimmter Dienste anhand von gesammelten Daten bewerten und eine benutzerdefinierte Logik zum Durchführen von Echtzeitanalysen auf dem Agent installieren.  Da Lösungen in der Cloud mit Zugriff auf das OMS-Repository ausgeführt werden, ermöglichen sie häufig eine eingehendere Analyse als mit Management Packs. 
+Die OMS enthält keine allgemeine Engine zum Modellieren von Anwendungen oder Messen der Echtzeitintegrität.  Einzelne Lösungen können die Gesamtintegrität bestimmter Dienste anhand von gesammelten Daten bewerten und eine benutzerdefinierte Logik zum Durchführen von Echtzeitanalysen auf dem Agent installieren.  Da Lösungen in der Cloud mit Zugriff auf das OMS-Repository ausgeführt werden, ermöglichen sie häufig eine eingehendere Analyse als mit Management Packs. 
 
 Mit [AD Assessment- und SQL Assessment-Lösungen](https://technet.microsoft.com/library/mt484102.aspx) werden erfasste Daten analysiert, und es wird eine Bewertung für verschiedene Aspekte der Umgebung erstellt.  Dies umfasst auch Empfehlungen für Verbesserungen, die vorgenommen werden können, um die Verfügbarkeit und Leistung der Umgebung zu verbessern.
 

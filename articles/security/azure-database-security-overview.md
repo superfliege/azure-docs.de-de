@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 44abf7a4fc24893146179b34d3357f54450decab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365143"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051524"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -69,7 +69,7 @@ Sie können verschiedene Vorsichtsmaßnahmen zum Schützen der Datenbank ergreif
 
 Eine Lösung besteht darin, die vertraulichen Daten in der Datenbank zu verschlüsseln und die Schlüssel zu schützen, die zum Verschlüsseln der Daten mit einem Zertifikat verwendet werden. Bei dieser Lösung wird verhindert, dass Personen ohne Schlüssel die Daten verwenden. Diese Art des Schutzes muss allerdings geplant werden.
 
-Zur Lösung dieses Problems unterstützen SQL Server und SQL-Datenbank die [transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). Die transparente Datenverschlüsselung verschlüsselt Datendateien von SQL Server und SQL-Datenbank. Dies wird als Verschlüsselung ruhender Daten bezeichnet.
+Zur Lösung dieses Problems unterstützen SQL Server und SQL-Datenbank die [transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Die transparente Datenverschlüsselung verschlüsselt Datendateien von SQL Server und SQL-Datenbank. Dies wird als Verschlüsselung ruhender Daten bezeichnet.
 
 Die transparente Datenverschlüsselung bietet Schutz vor Bedrohungen durch böswillige Aktivitäten. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind.  
 
@@ -184,7 +184,7 @@ Sicherheitsbeauftragte oder andere zugewiesene Administratoren können eine sofo
 
 ## <a name="centralized-security-management"></a>Zentralisierte Sicherheitsverwaltung
 
-Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Es unterstützt Sie bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum von Sicherheitslösungen verwendet werden.
+Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Er unterstützt Sie bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem umfassenden Spektrum von Sicherheitslösungen verwendet werden.
 
 [Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) bietet Einblicke in die Sicherheit Ihrer Server und Datenbanken und trägt so zum Schutz der Daten in SQL-Datenbank bei. Mit Security Center haben Sie folgende Möglichkeiten:
 

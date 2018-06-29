@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a16de4cef82c29f9b6becfae1901662ee1936934
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 3df6951129f7beda7970e394ffdd32c7e02304dd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594478"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060306"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Aktivieren der Offlinesynchronisierung für Ihre Windows-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -31,13 +31,13 @@ In diesem Tutorial aktualisieren Sie das UWP-App-Projekt aus dem Tutorial [Erste
 
 Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [Offlinedatensynchronisierung in Azure Mobile Apps].
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Requirements (Anforderungen)  
 Für dieses Tutorial gelten die folgenden Voraussetzungen:
 
 * Visual Studio 2013 unter Windows 8.1 oder höher.
-* Durchführung des Lernprogramms [create a windows app][create a windows app] \(in englischer Sprache).
+* Durchführung des Lernprogramms [Erstellen einer Windows-App][Erstellen einer Windows-App] \(in englischer Sprache).
 * [Azure Mobile Services SQLite Store][sqlite store nuget]
-* [SQLite for Universal Windows Platform Development](http://www.sqlite.org/downloads)
+* [SQLite for Universal Windows Platform Development](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Aktualisieren der Client-App für die Unterstützung von Offlinefunktionen
 Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit einer lokalen Datenbank, wenn Sie sich in einem Offlineszenario befinden. Um diese Funktionen in der App zu verwenden, initialisieren Sie [SyncContext][synccontext] in einem lokalen Speicher. Erstellen Sie dann für die Tabelle einen Verweis über die Schnittstelle [IMobileServiceSyncTable][IMobileServiceSyncTable] . Als lokaler Speicher auf dem Gerät wird SQLite verwendet.
@@ -106,7 +106,7 @@ In den folgenden Themen finden Sie weitere Hintergrundinformationen zum Offlines
 
 <!-- URLs. -->
 [Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
+[Erstellen einer Windows-App]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921

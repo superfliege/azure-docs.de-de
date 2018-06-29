@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7b60c086896506e5883607db48a64d2a2efbd967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 28561f5f94044d19cfd07e99d7f7a736ec470cf1
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659381"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960354"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric-Einzelelement-Netzwerk
 
@@ -89,7 +89,7 @@ Geben Sie als Nächstes unter **Netzwerkgröße und -leistung** Werte zur Größ
 Parametername| BESCHREIBUNG| Zulässige Werte|Standardwert
 ---|---|---|---
 **Anzahl der Mitgliedschaftsknoten**|Die Anzahl der Knoten, die den Mitgliedschaftsdienst ausführen. Weitere Informationen zum Mitgliedschaftsdienst finden Sie im Abschnitt zu Sicherheits- & Mitgliedschaftsdiensten in der [Dokumentation](https://media.readthedocs.org/pdf/hyperledger-fabric/latest/hyperledger-fabric.pdf) zu Hyperledger.<br /><br />Dieser Wert ist zurzeit auf einen Knoten beschränkt, es ist jedoch geplant, die horizontale Hochskalierung durch Clustering in der nächsten Version zu unterstützen.|1| 1
-**Anzahl der Auftraggeberknoten** |Die Anzahl der Knoten, die Transaktionen in einen Block sortieren (organisieren). Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](http://hyperledger-fabric.readthedocs.io/en/latest/orderingservice.html) zu Hyperledger.<br /><br />Dieser Wert ist zurzeit auf einen Knoten beschränkt. |1 |1
+**Anzahl der Auftraggeberknoten** |Die Anzahl der Knoten, die Transaktionen in einen Block sortieren (organisieren). Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) zu Hyperledger.<br /><br />Dieser Wert ist zurzeit auf einen Knoten beschränkt. |1 |1
 **Anzahl der Peerknoten**| Knoten, deren Besitzer das Konsortium ist und die Transaktionen ausführen und den Status einer Ledgerkopie verwalten.<br /><br />Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) zu Hyperledger.|3| 3–9
 **Speicherleistung**|Der Typ des Speichers für die einzelnen bereitgestellten Knoten. Weitere Informationen zum Speicher finden Sie unter [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) und [Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standard oder Premium|Standard
 **Größe des virtuellen Computers** |Die Größe des virtuellen Computers, die für alle Knoten im Netzwerk verwendet wird|Standard A,<br />Standard D,<br />Standard D-v2,<br />Standard F-Serie,<br />Standard DS,<br />und Standard FS|Standard D1_v2

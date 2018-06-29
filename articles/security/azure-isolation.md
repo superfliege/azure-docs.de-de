@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010879"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018410"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -121,7 +121,7 @@ Unternehmensdienstleistungen, die Prüfzertifizierungen unterliegen (z.B. ISO/IE
 
 Wenn Sie Daten löschen, werden diese Daten von Microsoft Azure gelöscht, einschließlich zwischengespeicherte Daten und Sicherungskopien. Für Dienste innerhalb des Gültigkeitsbereichs wird dieser Löschvorgang innerhalb von 90 Tagen nach dem Ende des Aufbewahrungszeitraums durchgeführt. (Dienste innerhalb des Gültigkeitsbereichs sind im Abschnitt mit den Bedingungen zur Datenverarbeitung in den [Nutzungsbedingungen für Online Services](http://aka.ms/Online-Services-Terms) definiert.)
 
-Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
+Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftritt, wird er auf sichere Weise [gelöscht oder zerstört](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data), bevor er von Microsoft zwecks Austausch oder Reparatur an den Hersteller zurückgeschickt wird. Die Daten auf dem Laufwerk werden überschrieben, um sicherzustellen, dass die Daten nicht mehr wiederhergestellt werden können.
 
 ## <a name="compute-isolation"></a>Computeisolation
 Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.

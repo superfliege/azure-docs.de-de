@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0544daf310d40ea419cb6a46cbbf308ebc924715
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 889264dc06d1a6f10713ff5fcd7ff644c113bb45
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709324"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752315"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von LinkedIn als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer eines Linked
 Führen Sie die Schritte im Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) aus.
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>1: Erstellen einer LinkedIn-Kontoanwendung
-Um LinkedIn als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C) verwenden zu können, müssen Sie eine LinkedIn-Anwendung erstellen und mit den entsprechenden Parametern bereitstellen. Sie können eine LinkedIn-Anwendung auf der [LinkedIn-Registrierungsseite](https://LinkedIn.com/signup) registrieren.
+Um LinkedIn als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C) verwenden zu können, müssen Sie eine LinkedIn-Anwendung erstellen und mit den entsprechenden Parametern bereitstellen. Sie können eine LinkedIn-Anwendung auf der [LinkedIn-Registrierungsseite](https://www.linkedin.com/start/join) registrieren.
 
 1. Wechseln Sie zur Website [LinkedIn-Anwendungsverwaltung](https://www.linkedin.com/secure/developer?newapp=), melden Sie sich mit den Anmeldeinformationen für Ihr LinkedIn-Konto an, und wählen Sie **Create Application** (Anwendung erstellen) aus.
 

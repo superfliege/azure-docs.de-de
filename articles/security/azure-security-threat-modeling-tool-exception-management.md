@@ -1,6 +1,6 @@
 ---
 title: Verwaltung von Ausnahmen – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling-Tool offengelegte Gefahren
+description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019584"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031711"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicedebug)</li><li>[WCF – serviceMetadata-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicemetadata)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass eine ordnungsgemäße Ausnahmebehandlung in der ASP.NET-Web-API erfolgt](#exception)</li></ul> |
-| **Webanwendung** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
+| **Web Application** | <ul><li>[Keine Sicherheitsdetails in Fehlermeldungen verfügbar machen](#messages)</li><li>[Implementieren der Standardseite für die Fehlerbehandlung](#default)</li><li>[Festlegen der Bereitstellungsmethode auf „Retail“ in IIS](#deployment)</li><li>[Sicherer Ausfall bei Ausnahmen](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen
 
@@ -36,7 +36,7 @@ ms.locfileid: "28019584"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Schritte** | WCF-Dienste (Windows Communication Framework) können so konfiguriert werden, dass Debuginformationen verfügbar gemacht werden. Debuginformationen sollten in Produktionsumgebungen nicht verwendet werden. Das `<serviceDebug>`-Tag definiert, ob die Funktion für Debuginformationen für einen WCF-Dienst aktiviert ist. Wenn das Attribut „includeExceptionDetailInFaults“ auf „true“ festgelegt ist, werden Ausnahmeinformationen von der Anwendung an Clients zurückgegeben. Angreifer können die zusätzlichen Informationen nutzen, die sie mit der Debugausgabe erhalten, um Angriffe auf das Framework, die Datenbank oder andere von der Anwendung verwendete Ressourcen zu starten. |
 
 ### <a name="example"></a>Beispiel
@@ -60,7 +60,7 @@ Deaktivieren Sie die Debuginformationen im Dienst. Dazu können Sie das `<servic
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Allgemein, .NET Framework 3 |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Schritte** | Wenn Informationen zu einem Dienst öffentlich verfügbar gemacht werden, erhalten Angreifer wertvolle Einblicke in Möglichkeiten zum Missbrauch des Diensts. Das `<serviceMetadata>`-Tag aktiviert die Funktion zum Veröffentlichen von Metadaten. Dienstmetadaten können vertrauliche Informationen enthalten, die nicht öffentlich zugänglich sein sollten. Sie sollten nur vertrauenswürdigen Benutzern den Zugriff auf die Metadaten ermöglichen und sicherstellen, dass keine unnötigen Informationen verfügbar gemacht werden. Noch besser wäre es allerdings, die Möglichkeit zum Veröffentlichen von Metadaten vollständig zu deaktivieren. Eine sichere WCF-Konfiguration enthält das `<serviceMetadata>`-Tag nicht. |
 
 ## <a id="exception"></a>Sicherstellen, dass eine ordnungsgemäße Ausnahmebehandlung in der ASP.NET-Web-API erfolgt

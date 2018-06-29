@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 4c77c8a7209825477929ddc0997b75ace5fe04a1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910525"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030613"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -338,7 +338,7 @@ Es werden eine Auftragseingabe, eine Abfrage und eine Ausgabe angegeben. Sie kö
 
 Nachdem die Ausführung Ihres Auftrags gestartet wurde und der Auftrag den Twitter-Datenstrom in Echtzeit verarbeitet, können Sie die Ausgabe für die Standpunktanalyse anzeigen.
 
-Sie können ein Tool wie den [Azure Storage-Explorer](https://http://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden, um die Auftragsausgabe in Echtzeit anzuzeigen. In dieser Ansicht können Sie [Power BI](https://powerbi.com/) dazu verwenden, Ihre Anwendung zu erweitern, um ein benutzerdefiniertes Dashboard wie das im nachstehenden Screenshot einzuschließen:
+Sie können ein Tool wie den [Azure Storage-Explorer](https://storageexplorer.com/) oder [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) verwenden, um die Auftragsausgabe in Echtzeit anzuzeigen. In dieser Ansicht können Sie [Power BI](https://powerbi.com/) dazu verwenden, Ihre Anwendung zu erweitern, um ein benutzerdefiniertes Dashboard wie das im nachstehenden Screenshot einzuschließen:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

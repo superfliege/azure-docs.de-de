@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633816"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063541"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
@@ -66,11 +66,11 @@ Die Projektmappe wird in Visual Studio erfolgreich erstellt. Anschließend erste
   Die Datei „<Path to DLL>“ konnte nicht nach „bin\Debug\FileName.dll“ kopiert werden. Der Prozess kann nicht auf die Datei „bin\Debug\FileName.dll“ zugreifen, da sie bereits von einem anderen Prozess verwendet wird.  
 
 #### <a name="workaround"></a>Problemumgehung
-* Wenn [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) installiert ist, haben Sie folgende Möglichkeiten:
+* Wenn [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) installiert ist, haben Sie folgende Möglichkeiten:
   
   * Starten Sie Visual Studio neu. Oder:
   * Starten Sie die Projektmappe neu. Führen Sie dann lediglich einen Buildvorgang für die Projektmappe aus.  
-* Wenn [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) nicht installiert ist, öffnen Sie den Task-Manager, klicken Sie auf die Registerkarte „Prozesse“, klicken Sie auf den Prozess „MSBuild.exe“, und klicken Sie anschließend auf die Schaltfläche „Prozess beenden“.  
+* Wenn [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) nicht installiert ist, öffnen Sie den Task-Manager, klicken Sie auf die Registerkarte „Prozesse“, klicken Sie auf den Prozess „MSBuild.exe“, und klicken Sie anschließend auf die Schaltfläche „Prozess beenden“.  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Weiterleitung an BasicHttpRelay-Endpunkte wird von Bridges und vom BizTalk Services-Portal nicht unterstützt, wenn nicht druckbare Zeichen als HTTP-Header höher gestuft werden
 Wenn Sie nicht druckbare Zeichen als Bestandteil höher gestufter Eigenschaften für Nachrichten verwenden, können diese Nachrichten nicht an Relayziele mit BasicHttpRelay-Bindung weitergeleitet werden. Zudem sind die im Rahmen der Nachverfolgung verfügbaren höher gestuften Eigenschaften für Blobs URL-codiert und für Ziele nicht codiert.  
@@ -98,7 +98,7 @@ Wenn Sie den Qualifizierer einer Identität ändern möchten, löschen Sie die V
 Anlagen für AS2-Nachrichten werden beim Senden oder Empfangen nicht unterstützt. Anlagen werden vielmehr ignoriert, und der Nachrichtentext wird als normale AS2-Nachricht verarbeitet.  
 
 ### <a name="resources-remembering-path"></a>Ressourcen: Speichern des Pfads
-**Beim Hinzufügen von Ressourcen** wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den **vertrauenswürdigen Sites**  hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
+Beim Hinzufügen von **Ressourcen**wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den **vertrauenswürdigen Sites** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Wenn Sie den Entitätsnamen einer Bridge ändern und das Projekt ohne Speichern der Änderungen schließen, tritt beim erneuten Öffnen der Entität ein Fehler auf
 Szenario mit Schritten in der angegebenen Reihenfolge:  

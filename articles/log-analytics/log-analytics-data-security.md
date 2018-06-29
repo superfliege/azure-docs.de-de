@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31521142"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025529"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](../security/security-microsoft-trust-center.md) spezifische Informationen zu Azure Log Analytics.  
@@ -68,7 +68,7 @@ Die folgende Tabelle zeigt Beispiele für Datentypen:
 | State (Zustand) |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Physische Sicherheit
-Der Log Analytics-Dienst wird von Microsoft-Mitarbeitern verwaltet. Alle Aktivitäten werden protokolliert und können überwacht werden. Log Analytics wird als Azure-Dienst betrieben und erfüllt sämtliche Compliance- und Sicherheitsanforderungen in Azure. Ausführliche Informationen über die physische Sicherheit der Azure-Ressourcen finden Sie auf Seite 18 des Dokuments [Microsoft Azure Security Overview (Microsoft Azure-Sicherheitsübersicht)](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Physische Zugriffsrechte auf sichere Bereiche werden innerhalb eines Geschäftstags für jeden Benutzer geändert, der keine Verantwortung mehr für den OMS-Dienst hat, einschließlich der Übertragung und Beendigung. Informieren Sie sich über die globale physische Infrastruktur, die wir in [Microsoft-Rechenzentren](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx) verwenden.
+Der Log Analytics-Dienst wird von Microsoft-Mitarbeitern verwaltet. Alle Aktivitäten werden protokolliert und können überwacht werden. Log Analytics wird als Azure-Dienst betrieben und erfüllt sämtliche Compliance- und Sicherheitsanforderungen in Azure. Ausführliche Informationen über die physische Sicherheit der Azure-Ressourcen finden Sie auf Seite 18 des Dokuments [Microsoft Azure Security Overview (Microsoft Azure-Sicherheitsübersicht)](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Physische Zugriffsrechte auf sichere Bereiche werden innerhalb eines Geschäftstags für jeden Benutzer geändert, der keine Verantwortung mehr für den OMS-Dienst hat, einschließlich der Übertragung und Beendigung. Informieren Sie sich über die globale physische Infrastruktur, die wir in [Microsoft-Rechenzentren](https://azure.microsoft.com/en-us/global-infrastructure/) verwenden.
 
 ## <a name="incident-management"></a>Incident Management
 OMS verfügt über einen Incident-Management-Prozess, dem alle Microsoft-Dienste entsprechen. Zusammenfassung:
@@ -92,10 +92,10 @@ OMS verfügt über einen Incident-Management-Prozess, dem alle Microsoft-Dienste
 
 Im Falle des Verlusts von Kundendaten benachrichtigen wir jeden Kunden innerhalb eines Tages. Ein Verlust von Kundendaten ist jedoch bei dem Dienst noch nie aufgetreten. 
 
-Weitere Informationen über die Reaktion von Microsoft auf Sicherheitsvorfälle finden Sie unter [Microsoft Azure Security Response in the Cloud (Microsoft Azure Security Response in der Cloud)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf).
+Weitere Informationen über die Reaktion von Microsoft auf Sicherheitsvorfälle finden Sie unter [Microsoft Azure Security Response in the Cloud (Microsoft Azure Security Response in der Cloud)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Compliance
-Das Informationssicherheits- und Governance-Programm des Softwareentwicklungs- und Serviceteams für Log Analytics unterstützt die geschäftlichen Anforderungen und entspricht Gesetzen und Vorschriften, wie unter [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) und [Microsoft Trust Center Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx) beschrieben. Außerdem wird beschrieben, wie Log Analytics Sicherheitsanforderungen einrichtet, Sicherheitskontrollen identifiziert und Risiken verwaltet und überwacht. Richtlinien, Standards, Verfahren und Leitlinien werden jährlich überprüft.
+Das Informationssicherheits- und Governance-Programm des Softwareentwicklungs- und Serviceteams für Log Analytics unterstützt die geschäftlichen Anforderungen und entspricht Gesetzen und Vorschriften, wie unter [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) und [Microsoft Trust Center Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx) beschrieben. Außerdem wird beschrieben, wie Log Analytics Sicherheitsanforderungen einrichtet, Sicherheitskontrollen identifiziert und Risiken verwaltet und überwacht. Richtlinien, Standards, Verfahren und Leitlinien werden jährlich überprüft.
 
 Jedes Mitglied des Entwicklungsteams erhält eine formale Anwendungssicherheitsschulung. Intern verwenden wir ein Versionskontrollsystem für die Softwareentwicklung. Jedes Softwareprojekt wird durch das Versionskontrollsystem geschützt.
 
@@ -113,10 +113,10 @@ Azure Log Analytics erfüllt folgende Anforderungen:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Payment Card Industry (PCI-Compliance) Data Security Standard (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) des PCI Security Standards Council
 * [Service Organization Controls (SOC) 1 Typ 1 und SOC 2 Typ 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2)
-* [HIPAA und HITECH](https://www.microsoft.com/TrustCenter/Compliance/HIPAA) für Unternehmen mit einem HIPAA-Geschäftspartnervertrag
+* [HIPAA und HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) für Unternehmen mit einem HIPAA-Geschäftspartnervertrag
 * Windows Common Engineering Criteria
 * Vertrauenswürdige Datenverarbeitung von Microsoft
-* Als Azure-Dienst müssen die Komponenten, die von Log Analytics verwendet werden, die Azure-Konformitätsbestimmungen einhalten. Weitere Informationen erhalten Sie unter [Microsoft Trust Center – Compliance](https://www.microsoft.com/TrustCenter/Compliance/default.aspx).
+* Als Azure-Dienst müssen die Komponenten, die von Log Analytics verwendet werden, die Azure-Konformitätsbestimmungen einhalten. Weitere Informationen erhalten Sie unter [Microsoft Trust Center – Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
 > In einigen Zertifizierungen/Nachweisen ist Log Analytics unter dem ehemaligen Namen *Operational Insights* angegeben.
@@ -131,8 +131,8 @@ In der folgenden Abbildung sind eine Cloudsicherheitsarchitektur sowie der Fluss
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Registrieren für Log Analytics und Sammeln von Daten
 Damit Ihre Organisation Daten an Log Analytics senden kann, konfigurieren Sie einen Windows- oder Linux-Agent, der auf virtuellen Azure-Computern oder auf virtuellen oder physischen Computern in Ihrer Umgebung oder einem anderen Cloudanbieter ausgeführt wird.  Bei Verwendung von Operations Manager konfigurieren Sie den Operations Manager-Agent über die Verwaltungsgruppe. Benutzer (Sie, andere Einzelbenutzer oder eine Gruppe von Personen) erstellen Log Analytics-Arbeitsbereiche und registrieren Agents mithilfe eines der folgenden Konten:
 
-* [Organisations-ID](../active-directory/sign-up-organization.md)
-* [Microsoft-Konto – Outlook, Office Live, MSN](http://www.microsoft.com/account/default.aspx)
+* [Organisations-ID](../active-directory/fundamentals/sign-up-organization.md)
+* [Microsoft-Konto – Outlook, Office Live, MSN](https://account.microsoft.com/account)
 
 In einem Log Analytics-Arbeitsbereich werden Daten gesammelt, aggregiert, analysiert und präsentiert. Ein Arbeitsbereich wird hauptsächlich zum Partitionieren von Daten verwendet, wobei jeder Arbeitsbereich eindeutig ist. Beispielsweise empfiehlt es sich, Produktionsdaten mit einem Arbeitsbereich zu verwalten und Testdaten mit einem anderen Arbeitsbereich. Arbeitsbereiche helfen Administratoren außerdem dabei, den Benutzerzugriff auf Daten zu steuern. Jedem Arbeitsbereich können mehrere Benutzerkonten zugeordnet werden, und jedes Benutzerkonto kann auf mehrere Log Analytics-Arbeitsbereiche zugreifen. Sie erstellen Arbeitsbereiche auf Grundlage der Rechenzentrumsregion. Jeder Arbeitsbereich wird an andere Rechenzentren in der Region repliziert, in erster Linie für die Verfügbarkeit des Log Analytics-Diensts.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 3f1933fc59862eca7ae6ee40bbd5136e449e5cf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8837dfaf156e5a4d07598f2c58694663a9ff5580
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23044405"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029980"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>Sicherheitsrahmen: Überwachung und Protokollierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -27,7 +27,7 @@ ms.locfileid: "23044405"
 | **Dynamics CRM**    | <ul><li>[Identifizieren von vertraulichen Entitäten in der Lösung und Implementieren der Änderungsüberwachung](#sensitive-entities)</li></ul> |
 | **Web Application** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Anwendung erzwungen werden](#auditing)</li><li>[Sicherstellen, dass die Protokollrotation und -trennung vorhanden sind](#log-rotation)</li><li>[Sicherstellen, dass die Anwendung keine sensiblen Benutzerdaten protokolliert](#log-sensitive-data)</li><li>[Sicherstellen, dass für die Überwachungs- und Protokolldateien der Zugriff eingeschränkt ist](#log-restricted-access)</li><li>[Sicherstellen, dass Ereignisse der Benutzerverwaltung protokolliert werden](#user-management)</li><li>[Sicherstellen, dass das System über integrierte Schutzmaßnahmen gegen missbräuchliche Nutzung verfügt](#inbuilt-defenses)</li><li>[Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](#diagnostics-logging)</li></ul> |
 | **Datenbank** | <ul><li>[Sicherstellen, dass die Anmeldungsüberwachung in SQL Server aktiviert ist](#identify-sensitive-entities)</li><li>[Aktivieren der Bedrohungserkennung in Azure SQL](#threat-detection)</li></ul> |
-| **Azure Storage (in englischer Sprache)** | <ul><li>[Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage](#analytics)</li></ul> |
+| **Azure Storage** | <ul><li>[Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage](#analytics)</li></ul> |
 | **WCF** | <ul><li>[Implementieren einer ausreichenden Protokollierung](#sufficient-logging)</li><li>[Implementieren einer ausreichenden Behandlung von Überwachungsfehlern](#audit-failure-handling)</li></ul> |
 | **Web-API** | <ul><li>[Sicherstellen, dass Überwachung und Protokollierung für die Web-API erzwungen werden](#logging-web-api)</li></ul> |
 | **Zwischengeschaltetes IoT-Gateway** | <ul><li>[Sicherstellen, dass geeignete Überwachung und Protokollierung auf dem Bereichsgateway erzwungen werden](#logging-field-gateway)</li></ul> |
@@ -141,7 +141,7 @@ ms.locfileid: "23044405"
 | **Zutreffende Technologien** | SQL Azure |
 | **Attribute**              | SQL-Version: V12 |
 | **Referenzen**              | [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
-| **Schritte** |<p>Die Bedrohungserkennung erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Sie bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitswarnungen zu anormalen Aktivitäten bereitgestellt.</p><p>Die Benutzer können die verdächtigen Ereignisse mithilfe der Azure SQL-Datenbanküberwachung untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch zurückzuführen sind oder die Verletzung der Datensicherheit oder den Missbrauch von Daten zum Ziel haben.</p><p>Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.</p>|
+| **Schritte** |<p>Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Sie bietet eine neue Sicherheitsebene und ermöglicht es den Kunden, auf erkannte potenzielle Bedrohungen zu reagieren. Zu diesem Zweck werden Sicherheitswarnungen zu anormalen Aktivitäten bereitgestellt.</p><p>Die Benutzer können die verdächtigen Ereignisse mithilfe der Azure SQL-Datenbanküberwachung untersuchen, um zu ermitteln, ob sie auf einen Zugriffsversuch zurückzuführen sind oder die Verletzung der Datensicherheit oder den Missbrauch von Daten zum Ziel haben.</p><p>Die Bedrohungserkennung vereinfacht den Umgang mit potenziellen Bedrohungen für die Datenbank, ohne das Fachwissen eines Sicherheitsexperten besitzen oder komplexe Sicherheitsüberwachungssysteme verwalten zu müssen.</p>|
 
 ## <a id="analytics"></a>Verwenden der Azure-Speicheranalyse zum Überwachen des Zugriffs auf Azure Storage
 
@@ -162,7 +162,7 @@ ms.locfileid: "23044405"
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
 | **Schritte** | <p>Das Fehlen eines richtigen Audit-Trails nach einem Sicherheitsincident kann die forensische Untersuchung behindern. Windows Communication Foundation (WCF) bietet die Möglichkeit, erfolgreiche und/oder fehlgeschlagene Authentifizierungsversuche zu protokollieren.</p><p>Die Protokollierung fehlgeschlagener Authentifizierungsversuche kann Administratoren vor Brute-Force-Angriffen warnen. Die Protokollierung von Ereignissen für eine erfolgreiche Authentifizierung können einen nützlichen Audit-Trail bereitstellen, wenn ein berechtigtes Konto gefährdet wird. Aktivieren Sie die Funktion für die Sicherheitsüberwachung von Diensten in WCF. |
 
 ### <a name="example"></a>Beispiel
@@ -191,7 +191,7 @@ Im Folgenden wird eine Beispielkonfiguration mit aktivierter Überwachung verans
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
 | **Schritte** | <p>Die entwickelte Lösung wird so konfiguriert, dass keine Ausnahme generiert wird, wenn nicht in ein Überwachungsprotokoll geschrieben werden kann. Wenn WCF so konfiguriert ist, dass keine Ausnahme ausgelöst wird, wenn nicht in ein Überwachungsprotokoll geschrieben werden kann, wird das Programm nicht über den Fehler benachrichtigt, und es findet möglicherweise keine Überwachung auf kritische Sicherheitsereignisse statt.</p>|
 
 ### <a name="example"></a>Beispiel
