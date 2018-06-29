@@ -50,7 +50,7 @@
       href: sql-database-design-first-database.md
     - name: '2: Entwerfen einer Datenbank mithilfe von .NET'
       href: sql-database-design-first-database-csharp.md
-    - name: '3: Migrieren zu SQL Server-Datenbank mithilfe von DMS'
+    - name: '3: Migrieren zu SQL Server-Datenbank mithilfe von DMA'
       href: sql-database-migrate-your-sql-server-database.md
     - name: '4: Sichern Ihrer SQL-Datenbank'
       href: sql-database-security-tutorial.md

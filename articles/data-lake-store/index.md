@@ -1,26 +1,28 @@
 ---
-title: Dokumentation für Azure Data Lake Store – Tutorials, API-Referenz | Microsoft-Dokumentation
+title: Dokumentation für Azure Data Lake Storage Gen1 – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein hyperskalierbares, Hadoop-kompatibles Data Lake-Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit einrichten, verwalten und darauf zugreifen.
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
 ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033412"
 ---
-# <a name="data-lake-store-documentation"></a>Dokumentation zu Data Lake Store
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentation für Azure Data Lake Storage Gen1
 
-Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, Hadoop-kompatibles Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Data Lake-Repository für operative und explorative Analysen einrichten, verwalten und darauf zugreifen.
+Hier erfahren Sie, wie Sie mithilfe von Azure Data Lake Storage Gen1 (ehemals Azure Data Lake Store) ein hyperskalierbares, Hadoop-kompatibles Repository für die Analyse von Daten mit beliebiger Größe, Art und Erfassungsgeschwindigkeit erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie ein Data Lake-Repository für operative und explorative Analysen einrichten, verwalten und darauf zugreifen.
+
+Informationen zur Vorschauversion von Data Lake Storage Gen2 finden Sie auf der [Produktseite](https://aka.ms/adlsgen2-product).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Informationen zu Azure Data Lake Store</h3>
+                        <h3>Informationen zu Data Lake Storage Gen1</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Videobibliothek zu Azure Data Lake Store</h3>
+                        <h3>Videobibliothek für Data Lake Storage Gen1</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store über das Azure-Portal</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store unter Verwendung von PowerShell</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung von PowerShell</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store unter Verwendung der Azure-Befehlszeilenschnittstelle</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung der Azure CLI</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store unter Verwendung von .NET</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung von .NET</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store unter Verwendung von Java</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung von Java</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ Hier erfahren Sie, wie Sie mithilfe von Data Lake Store ein hyperskalierbares, H
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Erste Schritte mit Azure Data Lake Store unter Verwendung von Node.js</h3>
+                        <h3>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung von Node.js</h3>
                     </div>
                 </div>
             </div>

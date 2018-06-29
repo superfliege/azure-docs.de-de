@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: Erstellen eines Auftrags – PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: 'Erstellen eines Auftrags: Visual Studio'
+      href: stream-analytics-quick-create-vs.md
 - name: Tutorials
   items:
     - name: 1. Erstellen/Verwalten eines Auftrags

@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Weiterleiten von Nachrichten](tutorial-routing.md)
 ## [Konfigurieren Ihrer Geräte](tutorial-device-twins.md)
+## [Verwalten von Firmwareupdates](tutorial-firmware-update.md)
 ## [Testen der Gerätekonnektivität](tutorial-connectivity.md)
 ## Senden von C2D-Nachrichten.
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [Senden von Nachrichten an einen MQTT-Server mit Eclipse Paho-APIs](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [Überwachen des magnetischen Sensors und Senden von E-Mail-Benachrichtigungen mit Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [Bewährte Methoden für die Gerätekonfiguration](iot-hub-configuration-best-practices.md)
+
 # Anleitungen
 ## Plan
 ### [Vergleichen von IoT Hub und Event Hubs](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### Erste Schritte mit Modulzwillingen
 #### [Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### Verwenden direkter Methoden
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -221,7 +227,9 @@
 ## [Upgrade eines IoT Hubs](iot-hub-upgrade.md)
 ## [Nutzungsmetriken](iot-hub-metrics.md)
 ## [Konfigurieren der IP-Filterung](iot-hub-ip-filtering.md)
-## [Konfigurieren von Geräten nach Maß](iot-hub-auto-device-config.md)
+## Konfigurieren von Geräten nach Maß
+### [Verwenden des Azure-Portals](iot-hub-auto-device-config.md)
+### [Verwenden der Azure-Befehlszeilenschnittstelle](iot-hub-auto-device-config-cli.md)
 
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=iot-hub)

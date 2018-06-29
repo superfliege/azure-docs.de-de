@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Data Factory V2 Vorschau – Dokumentation
+title: Azure Data Factory-Dokumentation
 metadata:
   title: Dokumentation für Azure Data Factory – Tutorials, API-Referenz | Microsoft-Dokumentation
   description: Hier erfahren Sie, wie Sie mithilfe von Data Factory automatisierte bidirektionale Datenpipelines für lokale und cloudbasierte Quellen einrichten, um Daten für die Analyse zu verschieben und zu verarbeiten.
@@ -13,21 +13,21 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/08/2017
   ms.author: douglasl
-  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
-  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+  ms.openlocfilehash: 624b2f0968776115f35698710cdc930a9a824922
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/23/2018
-  ms.locfileid: "30166741"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37047199"
 abstract:
-  description: Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren. <p>Derzeit ist die Version V2 der Data Factory in der Vorschau. Die Version V1 ist allgemein verfügbar. Wenn Sie V1 des Data Factory-Diensts verwenden, lesen Sie die <a href=/azure/data-factory/v1/data-factory-introduction>V1-Dokumentation.</a></p>
+  description: Hier erfahren Sie, wie mithilfe von Data Factory (einem cloudbasierten Datenintegrationsdienst) Dienste für die Speicherung, Verschiebung und Verarbeitung von Daten in automatisierten Datenpipelines kombinieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Datenpipelines einrichten und verwalten und wie Sie zu analysierende Daten verschieben und transformieren. <p>Wenn Sie V1 des Data Factory-Diensts verwenden, lesen Sie die <a href=/azure/data-factory/v1/data-factory-introduction>V1-Dokumentation.</a></p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: Visuelle Erstellung von Pipelines für Azure Data Factory V2 (19:31)
+    title: Visuelle Erstellung von Pipelines für Azure Data Factory (19:31)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:

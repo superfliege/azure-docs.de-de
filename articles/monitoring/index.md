@@ -1,6 +1,6 @@
 ---
-title: Azure-Verwaltung – Überwachung | Microsoft-Dokumentation
-description: Azure umfasst mehrere Dienste und Tools, die zusammen verwendet eine umfassende Verwaltung nicht nur für Ihre in Azure ausgeführten Anwendungen ermöglichen, sondern auch Anwendungen, die in anderen Clouds und lokal ausgeführt werden.  Dieser Artikel enthält eine allgemeine Beschreibung der verschiedenen Verwaltungsbereiche und Links zu Inhalten zu Azure-Tools für die Verwaltung Ihrer Cloud-Anwendungen und Ressourcen.
+title: Azure-Verwaltung und Operations Management Suite (OMS) | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Übersicht über die Verwaltungsbereiche für Azure-Anwendungen und -Ressourcen sowie Links zu Inhalten zu Azure-Verwaltungstools, die zuvor unter Operations Management Suite (OMS) zusammengefasst waren.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8598e3528aa0a9fb171853e5f6554346ace937ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410293"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059949"
 ---
 # <a name="azure-management---monitoring"></a>Azure-Verwaltung – Überwachung
 

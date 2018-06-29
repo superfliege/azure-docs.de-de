@@ -151,6 +151,7 @@
 ### [SSPR-Anpassung](authentication/concept-sspr-customization.md)
 ### [SSPR-Datenanforderungen](authentication/howto-sspr-authenticationdata.md)
 ### [SSPR-Berichterstellung](authentication/howto-sspr-reporting.md)
+### [Smart Lockout](authentication/howto-password-smart-lockout.md)
 ### [Entfernen unsicherer Kennwörter](authentication/concept-password-ban-bad.md)
 ### [Konfigurieren der Liste gesperrter Kennwörter](authentication/howto-password-ban-bad.md)
 ### [Lokale Integration](authentication/concept-password-ban-bad-on-premises.md)
