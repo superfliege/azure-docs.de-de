@@ -15,12 +15,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/01/2018
   ms.author: nolachar
-  ms.openlocfilehash: 98e254d3a993c5d02091be9535eb685ecd987a09
-  ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+  ms.openlocfilehash: 21f67f7fcce505e18792a3be830524d64dd8045e
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/25/2018
-  ms.locfileid: "36937855"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37045302"
 abstract:
   description: Mit dem Microsoft Speech-Dienst erhalten Entwickler die Möglichkeit, auf einfache Weise leistungsfähige Sprachfunktionen zu ihren Anwendungen hinzuzufügen, z.B. Steuerung per Sprachbefehl, Transkription, Diktieren und Übersetzen. Dazu verwenden sie eine <a href="rest-apis">REST-API</a> oder ein <a href="speech-sdk">C#-, C++- oder Java-SDK</a>.<p>Mit dem Speech-Dienst können Sie Modelle für die <a href="how-to-customize-speech-models">Spracherkennung</a> anpassen, um spezielles Vokabular, laute Umgebungen und andere Sprechweisen abzudecken. Angepasste Modelle für <a href="https://cris.ai/Home/customvoice">Text-zu-Sprache</a> und <a href="https://www.microsoft.com/translator/customization.aspx">Sprachübersetzung</a> sind ebenfalls verfügbar.<p>Ausführlichere Informationen finden Sie unter <a href="overview">What is the Speech service (preview)?</a> (Worum handelt es sich beim Speech-Dienst (Vorschauversion)?)
 sections:
