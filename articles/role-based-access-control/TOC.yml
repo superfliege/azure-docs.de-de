@@ -25,16 +25,11 @@
   items:
     - name: Grundlegendes zu Rollendefinitionen
       href: role-definitions.md
-    - name: Integrierte Rollen
-      href: built-in-roles.md
-    - name: Ressourcenanbietervorgänge
-      href: resource-provider-operations.md
     - name: Privileged Identity Management (PIM) für RBAC
       href: pim-azure-resource.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
 - name: Anleitungen
-  expanded: true
   items:
     - name: Verwalten des Zugriffs
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: Problembehandlung
       href: troubleshooting.md
+- name: Verweis
+  items:
+    - name: Integrierte Rollen
+      href: built-in-roles.md
+    - name: Ressourcenanbietervorgänge
+      href: resource-provider-operations.md
+    - name: RBAC-Grenzwerte
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: REST-API
+      href: /rest/api/authorization/

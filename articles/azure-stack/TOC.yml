@@ -269,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: App Service in Azure Stack – Versionshinweise zu Update 2
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: Bereitstellen von Ethereum
+          href: azure-stack-ethereum.md
         - name: Auffüllen des Marketplace
           items:
             - name: Marketplace-Übersicht
