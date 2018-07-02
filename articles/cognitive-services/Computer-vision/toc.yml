@@ -1,11 +1,11 @@
 - name: Dokumentation für maschinelles Sehen
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Worum handelt es sich bei maschinellem Sehen?
       href: Home.md
-- name: Schnellstarts
-  expanded: true
+- name: API-Schnellstartanleitungen
   items:
     - name: Zusammenfassung
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: Extrahieren von gedrucktem Text
           href: QuickStarts/ruby-print-text.md
+- name: SDK-Schnellstartanleitungen
+  items:
+    - name: 'C#'
+      items:
+        - name: Analysieren von Bildern
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Generieren von Miniaturansichten
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Extrahieren von handschriftlichem Text
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: Anleitungen
   items:
     - name: Erste Apps für maschinelles Sehen

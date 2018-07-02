@@ -47,6 +47,8 @@
       href: search-semi-structured-data.md
     - name: Hinzufügen von Synonymen in .NET
       href: search-synonyms-tutorial-sdk.md
+    - name: Hinzufügen der automatischen Vervollständigung in .NET
+      href: search-autocomplete-tutorial.md
     - name: Präsentation der Portalfunktionen
       href: search-get-started-portal.md
 - name: Beispiele

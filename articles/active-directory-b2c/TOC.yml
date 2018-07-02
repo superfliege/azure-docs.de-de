@@ -157,6 +157,8 @@
           href: b2clogin.md
         - name: Verwenden einer Alterskontrolle
           href: basic-age-gating.md
+        - name: Direkte Anmeldung
+          href: direct-signin.md
     - name: Identity Experience Framework
       items:
         - name: Benutzerdefinierte Richtlinien

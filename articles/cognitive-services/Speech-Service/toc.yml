@@ -17,18 +17,6 @@
       href: quickstart-cpp-linux.md
     - name: Erste Schritte mit dem SDK für sprachaktivierte Geräte
       href: speech-devices-sdk-qsg.md
-- name: Anpassung
-  items:
-    - name: Anpassen von Sprachmodellen
-      href: how-to-customize-speech-models.md
-    - name: Anpassen von Voicefonts
-      href: how-to-customize-voice-font.md
-    - name: Anfertigen von Transkripts
-      href: prepare-transcription.md
-    - name: Verwenden von benutzerdefinierten Audiodatenströmen
-      href: how-to-use-audio-input-streams.md
-    - name: Anpassen des Codeworts für das Gerät (Geräte-SDK)
-      href: speech-devices-sdk-create-kws.md
 - name: Anleitungen
   items:
     - name: Erkennen von Sprache
@@ -39,8 +27,22 @@
       href: how-to-translate-speech.md
     - name: Abrufen des SDK für sprachaktivierte Geräte
       href: get-speech-devices-sdk.md
-    - name: Batchtranskription (Callcenter)
+    - name: Batch-Transkription
       href: batch-transcription.md
+- name: Anpassung
+  items:
+    - name: Anpassen von Akustikmodellen
+      href: how-to-customize-acoustic-models.md
+    - name: Anpassen von Sprachmodellen
+      href: how-to-customize-language-model.md
+    - name: Anpassen von Voicefonts (Bot-Markenstimme)
+      href: how-to-customize-voice-font.md
+    - name: Anfertigen von Transkripts
+      href: prepare-transcription.md
+    - name: Verwenden von benutzerdefinierten Audiodatenströmen
+      href: how-to-use-audio-input-streams.md
+    - name: Anpassen des Codeworts für das Gerät (Geräte-SDK)
+      href: speech-devices-sdk-create-kws.md
 - name: Beispiele
   items:
     - name: Herunterladen von Beispielen

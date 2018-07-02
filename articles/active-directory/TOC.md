@@ -186,12 +186,6 @@
 ### [Erste Schritte](manage-apps/plan-an-application-integration.md)
 ### [Tutorials für die Integration von SaaS-Apps](saas-apps/tutorial-list.md)
 
-
-### [Cloud-App-Ermittlung](manage-apps/cloud-app-discovery.md)
-#### [Erstellen von Momentaufnahmenberichten](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
-
 ### [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von SaaS-Apps](active-directory-saas-app-provisioning.md) 
 #### [Tutorials für die App-Integration](saas-apps/tutorial-list.md) 
 #### [Automatisieren der Bereitstellung in SCIM-fähigen Apps](manage-apps/use-scim-to-provision-users-and-groups.md) 
@@ -436,7 +430,7 @@
 ### Zertifikatbasierte Authentifizierung
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Erste Schritte](active-directory-certificate-based-authentication-get-started.md)
+#### [Azure AD Identity Protection](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Aktivieren](active-directory-identityprotection-enable.md)

@@ -52,6 +52,10 @@
           href: ../../data-factory/load-azure-data-lake-storage-gen2.md
     - name: Herstellen einer Verbindung mit Azure Databricks
       href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: Verweis
+  items:
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2'
 - name: angeben
   items:
     - name: Azure-Roadmap

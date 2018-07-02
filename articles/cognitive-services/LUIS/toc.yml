@@ -9,36 +9,8 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines App-Modells
-      items:
-        - name: Verwenden einer vordefinierten Domäne
-          href: luis-get-started-create-app.md
-        - name: Verwenden einer benutzerdefinierten Domäne
-          href: luis-quickstart-intents-only.md
-- name: Tutorials
-  items:
-    - name: Hinzufügen von vordefinierten Absichten und Entitäten
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: Abrufen von Daten aus der Entität
-      items:
-        - name: Entität vom Typ „Einfach“
-          href: luis-quickstart-primary-and-secondary-data.md
-        - name: Entität vom Typ „Hierarchisch“
-          href: luis-quickstart-intent-and-hier-entity.md
-        - name: Entität vom Typ „Regulärer Ausdruck“
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Entität vom Typ „Liste“
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: KeyPhrase-Entität
-          href: luis-quickstart-intent-and-key-phrase.md
-        - name: Stimmungsanalyse
-          href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Verbessern der Vorhersage
-      items:
-        - name: Mit Mustern
-          href: luis-tutorial-pattern.md
-        - name: Mit einer Begriffsliste
-          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: Hinzufügen einer App für eine vordefinierte Domäne
+      href: luis-get-started-create-app.md
     - name: Verwenden von APIs
       items:
         - name: Abrufen einer Vorhersage für die Äußerung per Endpunktabfrage
@@ -73,6 +45,32 @@
               href: luis-get-started-php-add-utterance.md
             - name: Ruby
               href: luis-get-started-ruby-add-utterance.md
+- name: Tutorials
+  items:
+    - name: Erstellen einer App
+      items:
+        - name: 1. Mit benutzerdefinierter Domäne
+          href: luis-quickstart-intents-only.md
+        - name: 2. Hinzufügen von vordefinierten Absichten und Entitäten
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. Hinzufügen einer Entität vom Typ „Regulärer Ausdruck“
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. Hinzufügen einer Entität vom Typ „Liste“
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. Hinzufügen einer Entität vom Typ „Hierarchisch“
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. Hinzufügen einer Entität vom Typ „Einfach“ sowie einer Begriffsliste
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 7. Hinzufügen der keyPhrase-Entität
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 8. Hinzufügen der Stimmungsanalyse
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: Verbessern der Vorhersage
+      items:
+        - name: Mit Mustern
+          href: luis-tutorial-pattern.md
+        - name: Mit einer Begriffsliste
+          href: luis-tutorial-interchangeable-phrase-list.md
 - name: Beispiele
   items:
     - name: Codebeispiele

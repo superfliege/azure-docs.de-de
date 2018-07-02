@@ -61,13 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: Installieren oder Aktualisieren
           items:
-            - name: Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal
+            - name: Installieren von Azure Backup Server
               href: backup-azure-microsoft-azure-backup.md
-            - name: Hinzufügen von Speicher zu Azure Backup Server
+            - name: Hinzufügen von Speicher
               href: backup-mabs-add-storage.md
-            - name: Upgraden von Azure Backup Server auf v.2
+            - name: Upgrade auf v.2
               href: backup-mabs-upgrade-to-v2.md
-            - name: Unbeaufsichtigte Installation von Azure Backup Server
+            - name: Unbeaufsichtigte Installation
               href: backup-mabs-unattended-install.md
         - name: Schützen von Workloads
           items:
