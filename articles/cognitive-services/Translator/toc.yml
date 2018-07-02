@@ -139,7 +139,7 @@
           href: transform-text.md
         - name: Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
           href: ctf-reporting.md
-        - name: Zurückgeben von N besten Übersetzungen
+        - name: Zurückgeben der N-besten Übersetzungen
           href: return-n-best-translations.md
 - name: angeben
   items:
