@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: bd42268c36f44dc20b88d27d19cbf378e848b82f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 8b14f06f364bde1d4c5588e60a54aefe07c821d2
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823145"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945920"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Erste Schritte in Azure Dev Spaces mit .NET Core
 
@@ -32,7 +32,7 @@ Sie können nun einen Kubernetes-basierten Entwicklungsbereich in Azure erstelle
 Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihres Entwicklungsbereichs wird in der Cloud gespeichert und kann gemeinsam mit anderen Benutzern genutzt werden. Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus. 
 
 > [!IMPORTANT]
-> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass Sie mindestens die Version 2.0.33 verwenden.
+> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.38 handelt.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -193,13 +193,14 @@ Gut gemacht! Sie besitzen nun eine Anwendung mit mehreren Containern, in der die
 
 Sehen Sie sich die Anwendung in Aktion an. Wechseln Sie ins VS Code-Fenster für `mywebapi`, und ändern Sie die `string Get(int id)`-Methode etwa wie folgt:
 
-    ```csharp
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "mywebapi now says something new";
-    }
-    ```
+```csharp
+[HttpGet("{id}")]
+public string Get(int id)
+{
+    return "mywebapi now says something new";
+}
+```
+
 
 [!INCLUDE[](includes/team-development-2.md)]
 

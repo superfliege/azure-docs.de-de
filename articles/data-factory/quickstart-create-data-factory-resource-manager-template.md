@@ -13,23 +13,21 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 2769be7097ebc65bc7c022ebd2e3f2de6e57e9b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 525a11d0cbb10d4170930fb4df362e0a9ea024e2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839550"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054274"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory mit einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-build-your-first-pipeline-using-arm.md)
-> * [Version 2 – Vorschauversion](quickstart-create-data-factory-resource-manager-template.md) 
+> * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
+> * [Aktuelle Version](quickstart-create-data-factory-resource-manager-template.md) 
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure Resource Manager-Vorlage eine Azure Data Factory erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Build your first data factory with Data Factory version 1](v1/data-factory-build-your-first-pipeline-using-arm.md) (Erstellen Ihrer ersten Data Factory mit Data Factory Version 1) weiter.
->
 > Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md).
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 

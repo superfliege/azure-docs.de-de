@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 3ccf2f2e6fbad6c1a1acc4b3e827a3072d8a0cb7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8781a4fd7e3dde830a173d62025dbf59a0a3738e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293814"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031021"
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Erstellen einer Azure-Datenbank für MySQL-Server mithilfe der Azure CLI
 Dieser Schnellstart beschreibt die Verwendung der Azure CLI zum Erstellen einer Azure-Datenbank für MySQL-Server in einer Azure-Ressourcengruppe in etwa fünf Minuten. Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts.
@@ -48,6 +48,12 @@ Im folgenden Beispiel wird in der Region „USA, Westen“ der Server `mydemoser
 ```azurecli-interactive
 az mysql server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen4_2 --version 5.7
 ```
+Für den Parameterwert des SKU-Namens wird die Konvention „{Tarif}\_{Computegeneration}\_{V-Kerne}“ verwendet, wie in den folgenden Beispielen:
++ `--sku-name B_Gen4_4` ist „Basic“, „Gen 4“ und „4 V-Kerne“ zugeordnet.
++ `--sku-name GP_Gen5_32` ist „Universell“, „Gen 5“ und „32 V-Kerne“ zugeordnet.
++ `--sku-name MO_Gen5_2` ist „Arbeitsspeicheroptimiert“, „Gen 5“ und „2 V-Kerne“ zugeordnet.
+
+Informationen zu den gültigen Werten pro Region und Tarif finden Sie in der Dokumentation zu [Tarifen](./concepts-pricing-tiers.md).
 
 ## <a name="configure-firewall-rule"></a>Konfigurieren der Firewallregel
 Erstellen Sie mit dem Befehl **[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create)** eine Azure Database for MySQL-Firewallregel auf Serverebene. Eine Firewallregel auf Serverebene ermöglicht einer externen Anwendung wie z.B. dem Befehlszeilentool **mysql.exe** oder MySQL Workbench, über die Firewall des Azure-MySQL-Diensts eine Verbindung zu Ihrem Server herzustellen. 

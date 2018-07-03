@@ -11,22 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47fc3b44719caf430edf026bf776c4e85764ad08
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173337"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048436"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory über die Azure Data Factory-Benutzeroberfläche (User Interface, UI). Die Pipeline in dieser Data Factory kopiert Daten aus Azure Blob Storage in eine SQL-Datenbank. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > - Falls Sie noch nicht mit Data Factory vertraut sind, ist es ratsam, den Artikel [Einführung in Azure Data Factory](introduction.md) zu lesen.
->
-> - Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 von Data Factory verwenden, lesen Sie die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -104,7 +102,7 @@ In diesem Schritt erstellen Sie eine Data Factory und starten die Data Factory-B
     b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
          
     Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md). 
-6. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+6. Wählen Sie unter **Version** die Option **V2**.
 7. Wählen Sie unter **Standort** einen Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich in anderen Regionen befinden.
 8. Wählen Sie die Option **An Dashboard anheften** aus. 
 9. Klicken Sie auf **Erstellen**. 
@@ -128,74 +126,67 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
 1. Wählen Sie auf der Seite **Erste Schritte** die Option **Pipeline erstellen** aus. 
 
    ![Erstellen der Pipeline](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
-2. Geben Sie im Fenster **Eigenschaften** der Pipeline im Feld **Name** den Namen **CopyPipeline** für die Pipeline ein.
+2. Geben Sie auf der Registerkarte **Allgemein** der Pipeline als **Name** der Pipeline **CopyPipeline** ein.
 
-    ![Pipelinename](./media/tutorial-copy-data-portal/pipeline-name.png)
-3. Erweitern Sie in der Toolbox **Aktivitäten** die Kategorie **DataFlow**, und verschieben Sie die **Copy**-Aktivität aus der Toolbox auf die Oberfläche des Pipeline-Designers. 
+3. Erweitern Sie in der Toolbox **Aktivitäten** die Kategorie **DataFlow**, und verschieben Sie die **Copy**-Aktivität aus der Toolbox auf die Oberfläche des Pipeline-Designers. Geben Sie unter **Name** den Namen **CopyFromBlobToSql** ein.
 
     ![Copy-Aktivität](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
-4. Geben Sie im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** als Name der Aktivität **CopyFromBlobToSql** ein.
 
-    ![Name der Aktivität](./media/tutorial-copy-data-portal/activity-name.png)
-5. Wechseln Sie zur Registerkarte **Quelle**. Klicken Sie auf **+ Neu**, um ein Quelldataset zu erstellen. 
+### <a name="configure-source"></a>Konfigurieren der Quelle
 
-    ![Registerkarte „Quelle“](./media/tutorial-copy-data-portal/new-source-dataset-button.png)
-6. Wählen Sie im Fenster **Neues Dataset** die Option **Azure Blob Storage**, und klicken Sie dann auf **Fertig stellen**. Da sich die Quelldaten in Blob Storage befinden, wählen Sie **Azure Blob Storage** als Quelldataset aus. 
+1. Wechseln Sie zur Registerkarte **Quelle**. Klicken Sie auf **+ Neu**, um ein Quelldataset zu erstellen. 
 
-    ![Speicherauswahl](./media/tutorial-copy-data-portal/select-azure-storage.png)
-7. In der Anwendung wird eine neue Registerkarte mit dem Titel **AzureBlob1** geöffnet.
+2. Wählen Sie im Fenster **Neues Dataset** die Option **Azure Blob Storage**, und klicken Sie dann auf **Fertig stellen**. Da sich die Quelldaten in Blob Storage befinden, wählen Sie **Azure Blob Storage** als Quelldataset aus. 
 
-    ![Registerkarte „AzureBlob1“ ](./media/tutorial-copy-data-portal/new-tab-azure-blob1.png)        
-8. Geben Sie unten im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **SourceBlobDataset** ein.
+    ![Speicherauswahl](./media/tutorial-copy-data-portal/select-azure-blob-dataset.png)
+
+3. Eine neue Registerkarte für das Blobdataset wird geöffnet. Geben Sie unten im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **SourceBlobDataset** ein.
 
     ![Datasetname](./media/tutorial-copy-data-portal/dataset-name.png)
-9. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Verbindung**. Klicken Sie neben dem Textfeld **Verknüpfter Dienst** auf **+ Neu**. 
 
-    Ein verknüpfter Dienst verbindet einen Datenspeicher oder einen Computedienst mit der Data Factory. In diesem Fall erstellen Sie einen mit Storage verknüpften Dienst, der Ihr Speicherkonto mit dem Datenspeicher verbindet. Der verknüpfte Dienst enthält die Verbindungsinformationen, die Data Factory zum Herstellen einer Verbindung mit Blob Storage zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, die die Quelldaten enthält. 
+4. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Verbindung**. Klicken Sie neben dem Textfeld **Verknüpfter Dienst** auf **+ Neu**. 
 
     ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
-10. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
 
-    a. Geben Sie unter **Name** den Namen **AzureStorageLinkedService** ein. 
-
-    b. Wählen Sie unter **Speicherkontoname** Ihr Speicherkonto aus.
-
-    c. Klicken Sie auf **Verbindung testen**, um die Verbindung mit dem Speicherkonto zu testen.
-
-    d. Klicken Sie auf **Speichern**, um den verknüpften Dienst zu speichern.
+5. Geben Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) als Name **AzureStorageLinkedService** ein, und wählen Sie in der Liste **Speicherkontoname** Ihr Speicherkonto aus. Klicken Sie dann auf **Speichern**, um den verknüpften Dienst bereitzustellen.
 
     ![Neuer verknüpfter Dienst](./media/tutorial-copy-data-portal/new-azure-storage-linked-service.png)
-11. Klicken Sie neben **Dateipfad** auf **Durchsuchen**.
+
+6. Nach der Erstellung des verknüpften Diensts werden wieder die Dataseteinstellungen angezeigt. Klicken Sie neben **Dateipfad** auf **Durchsuchen**.
 
     ![Schaltfläche „Durchsuchen“ für den Dateipfad](./media/tutorial-copy-data-portal/file-browse-button.png)
-12. Navigieren Sie zum Ordner **adftutorial/input**, wählen Sie die Datei **emp.txt** aus, und klicken Sie auf **Fertig stellen**. Alternativ können Sie auf **emp.txt** doppelklicken. 
+
+7. Navigieren Sie zum Ordner **adftutorial/input**, wählen Sie die Datei **emp.txt** aus, und klicken Sie auf **Fertig stellen**. 
 
     ![Auswählen der Eingabedatei](./media/tutorial-copy-data-portal/select-input-file.png)
-13. Vergewissern Sie sich, dass für **Dateiformat** die Option **Textformat** und für **Spaltentrennzeichen** die Option **Komma (`,`)** festgelegt ist. Wenn in der Quelldatei verschiedene Zeilen- und Spaltentrennzeichen verwendet werden, können Sie für das Feld **Dateiformat** auf **Detect Text Format** (Textformat ermitteln) klicken. Das Tool zum Kopieren von Daten ermittelt automatisch Dateiformat und Trennzeichen für Sie. Sie können diese Werte immer noch überschreiben. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**.
+
+8. Vergewissern Sie sich, dass für **Dateiformat** die Option **Textformat** und für **Spaltentrennzeichen** die Option **Komma (`,`)** festgelegt ist. Wenn in der Quelldatei verschiedene Zeilen- und Spaltentrennzeichen verwendet werden, können Sie für das Feld **Dateiformat** auf **Detect Text Format** (Textformat ermitteln) klicken. Das Tool zum Kopieren von Daten ermittelt automatisch Dateiformat und Trennzeichen für Sie. Sie können diese Werte immer noch überschreiben. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**.
 
     ![Ermitteln des Textformats](./media/tutorial-copy-data-portal/detect-text-format.png)
-14. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Schema**, und klicken Sie auf **Schema importieren**. Beachten Sie, dass die Anwendung zwei Spalten in der Quelldatei erkannt hat. Sie importieren das Schema hier, sodass Sie Spalten aus dem Quelldatenspeicher dem Senkendatenspeicher zuordnen können. Falls Sie keine Spalten zuordnen müssen, können Sie diesen Schritt überspringen. Importieren Sie das Schema für dieses Tutorial.
+
+9. Wechseln Sie im Fenster **Eigenschaften** zur Registerkarte **Schema**, und klicken Sie auf **Schema importieren**. Beachten Sie, dass die Anwendung zwei Spalten in der Quelldatei erkannt hat. Sie importieren das Schema hier, sodass Sie Spalten aus dem Quelldatenspeicher dem Senkendatenspeicher zuordnen können. Falls Sie keine Spalten zuordnen müssen, können Sie diesen Schritt überspringen. Importieren Sie das Schema für dieses Tutorial.
 
     ![Ermitteln des Quellschemas](./media/tutorial-copy-data-portal/detect-source-schema.png)  
-15. Wechseln Sie nun zur Registerkarte mit der Pipeline, oder wählen Sie auf der linken Seite die Pipeline aus.
 
-    ![Pipelineregisterkarte](./media/tutorial-copy-data-portal/pipeline-tab.png)
-16. Vergewissern Sie sich, dass im Fenster **Eigenschaften** im Feld **Source Dataset** (Quelldataset) die Option **SourceBlobDataset** ausgewählt ist. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**. 
+10. Gehen Sie nun zurück zur Pipeline und zur Registerkarte **Quelle**, und überprüfen Sie, ob **SourceBlobDataset** ausgewählt ist. Wenn Sie auf dieser Seite eine Vorschau der Daten anzeigen möchten, klicken Sie auf **Datenvorschau**. 
     
     ![Quelldataset](./media/tutorial-copy-data-portal/source-dataset-selected.png)
-17. Wechseln Sie zur Registerkarte **Senke**, und klicken Sie auf **+ Neu**, um ein Senkendataset zu erstellen. 
+
+### <a name="configure-sink"></a>Konfigurieren der Senke
+
+1. Wechseln Sie zur Registerkarte **Senke**, und klicken Sie auf **+ Neu**, um ein Senkendataset zu erstellen. 
 
     ![Senkendataset](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-18. Wählen Sie im Fenster **Neues Dataset** die Option **Azure SQL-Datenbank**, und klicken Sie dann auf **Fertig stellen**. In diesem Tutorial kopieren Sie Daten in eine SQL-Datenbank. 
+2. Geben Sie im Fenster **Neues Dataset** im Suchfeld „SQL“ ein, um die Connectors zu filtern. Wählen Sie anschließend **Azure SQL-Datenbank** und dann **Fertig stellen**. In diesem Tutorial kopieren Sie Daten in eine SQL-Datenbank. 
 
-    ![Auswahl der SQL-Datenbank](./media/tutorial-copy-data-portal/select-azure-sql-database.png)
-19. Geben Sie im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **OutputSqlDataset** ein. 
+    ![Auswahl der SQL-Datenbank](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
+3. Geben Sie im Fenster **Eigenschaften** auf der Registerkarte **Allgemein** unter **Name** den Namen **OutputSqlDataset** ein. 
     
     ![Name des Ausgabedatasets](./media/tutorial-copy-data-portal/output-dataset-name.png)
-20. Wechseln Sie zur Registerkarte **Verbindung**, und klicken Sie neben **Verknüpfter Dienst** auf **+ Neu**. Einem verknüpften Dienst muss ein Dataset zugewiesen werden. Der verknüpfte Dienst enthält die Verbindungszeichenfolge, die Data Factory zum Herstellen einer Verbindung mit der SQL-Datenbank zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, in die die Quelldaten kopiert werden. 
+4. Wechseln Sie zur Registerkarte **Verbindung**, und klicken Sie neben **Verknüpfter Dienst** auf **+ Neu**. Einem verknüpften Dienst muss ein Dataset zugewiesen werden. Der verknüpfte Dienst enthält die Verbindungszeichenfolge, die Data Factory zum Herstellen einer Verbindung mit der SQL-Datenbank zur Laufzeit verwendet. Das Dataset gibt den Container, den Ordner und (optional) die Datei an, in die die Quelldaten kopiert werden. 
     
     ![Verknüpfter Dienst](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
-21. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
+5. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
 
     a. Geben Sie unter **Name** den Namen **AzureSqlDatabaseLinkedService** ein.
 
@@ -213,160 +204,46 @@ In diesem Tutorial beginnen Sie mit dem Erstellen der Pipeline. Verknüpfte Dien
     
     ![Speichern des neuen verknüpften Diensts](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-22. Wählen Sie unter **Tabelle** die Option **[dbo].[emp]** aus. 
+6. Wählen Sie unter **Tabelle** die Option **[dbo].[emp]** aus. 
 
     ![Table](./media/tutorial-copy-data-portal/select-emp-table.png)
-23. Wechseln Sie zur Registerkarte **Schema**, und klicken Sie auf **Schema importieren**. 
+7. Wechseln Sie zur Registerkarte **Schema**, und klicken Sie auf **Schema importieren**. 
 
     ![Auswählen von „Schema importieren“](./media/tutorial-copy-data-portal/import-destination-schema.png)
-24. Wählen Sie die Spalte **ID** aus, und klicken Sie dann auf **Löschen**. Da es sich bei der Spalte **ID** um eine Identitätsspalte in der SQL-Datenbank handelt, muss die Copy-Aktivität keine Daten in diese Spalte einfügen.
+8. Wählen Sie die Spalte **ID** aus, und klicken Sie dann auf **Löschen**. Da es sich bei der Spalte **ID** um eine Identitätsspalte in der SQL-Datenbank handelt, muss die Copy-Aktivität keine Daten in diese Spalte einfügen.
 
     ![Löschen der ID-Spalte](./media/tutorial-copy-data-portal/delete-id-column.png)
-25. Wechseln Sie zur Registerkarte mit der Pipeline, und überprüfen Sie, ob für **Senkendataset** die Option **OutputSqlDataset** ausgewählt ist.
+9. Wechseln Sie zur Registerkarte mit der Pipeline, und überprüfen Sie, ob für **Senkendataset** die Option **OutputSqlDataset** ausgewählt ist.
 
     ![Pipelineregisterkarte](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
-26. Wechseln Sie unten im Fenster **Eigenschaften** zur Registerkarte **Mapping**, und klicken Sie auf **Import Schemas** (Schemas importieren). Beachten Sie, dass die erste und die zweite Spalte in der Quelldatei den Feldern **FirstName** und **LastName** in der SQL-Datenbank zugeordnet werden.
 
-    ![Zuordnen von Schemas](./media/tutorial-copy-data-portal/map-schemas.png)
-27. Klicken Sie auf **Überprüfen**, um die Pipeline zu überprüfen. Klicken Sie in der Ecke oben rechts auf den Pfeil nach rechts, um das Überprüfungsfenster zu schließen.
+### <a name="confugure-mapping"></a>Konfigurieren der Zuordnung
 
-    ![Pipelineüberprüfungsausgabe](./media/tutorial-copy-data-portal/pipeline-validation-output.png)   
-28. Klicken Sie in der Ecke oben rechts auf **Code**. Sie sehen den JSON-Code, der der Pipeline zugeordnet ist. 
+Wechseln Sie unten im Fenster **Eigenschaften** zur Registerkarte **Mapping**, und klicken Sie auf **Import Schemas** (Schemas importieren). Beachten Sie, dass die erste und die zweite Spalte in der Quelldatei den Feldern **FirstName** und **LastName** in der SQL-Datenbank zugeordnet werden.
 
-    ![Schaltfläche „Code“](./media/tutorial-copy-data-portal/code-button.png)
-29. Der JSON-Code ähnelt folgendem Codeausschnitt: 
+![Zuordnen von Schemas](./media/tutorial-copy-data-portal/map-schemas.png)
 
-    ```json
-    {
-        "name": "CopyPipeline",
-        "properties": {
-            "activities": [
-                {
-                    "name": "CopyFromBlobToSql",
-                    "type": "Copy",
-                    "dependsOn": [],
-                    "policy": {
-                        "timeout": "7.00:00:00",
-                        "retry": 0,
-                        "retryIntervalInSeconds": 20
-                    },
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": true
-                        },
-                        "sink": {
-                            "type": "SqlSink",
-                            "writeBatchSize": 10000
-                        },
-                        "enableStaging": false,
-                        "parallelCopies": 0,
-                        "cloudDataMovementUnits": 0,
-                        "translator": {
-                            "type": "TabularTranslator",
-                            "columnMappings": "Prop_0: FirstName, Prop_1: LastName"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "referenceName": "SourceBlobDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "referenceName": "OutputSqlDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    ```
+## <a name="validate-the-pipeline"></a>Überprüfen der Pipeline
+Klicken Sie auf der Symbolleiste auf **Überprüfen**, um die Pipeline zu überprüfen.
+ 
+Sie können den JSON-Code der Pipeline anzeigen, indem Sie oben rechts auf **Code** klicken.
 
-## <a name="test-run-the-pipeline"></a>Ausführen eines Testlaufs für die Pipeline
-Sie können vor dem Veröffentlichen von Artefakten (verknüpfte Dienste, Datasets und Pipeline) in Data Factory oder Ihrem eigenen Visual Studio Team Services-Git-Repository einen Testlauf für eine Pipeline ausführen. 
+## <a name="debug-and-publish-the-pipeline"></a>Debuggen und Veröffentlichen der Pipeline
+Sie können vor dem Veröffentlichen von Artefakten (verknüpfte Dienste, Datasets und Pipeline) in Data Factory oder Ihrem eigenen Visual Studio Team Services-Git-Repository eine Pipeline debuggen. 
 
-1. Klicken Sie zum Ausführen eines Testlaufs für die Pipeline auf der Symbolleiste auf **Testlauf**. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
+1. Klicken Sie auf der Symbolleiste auf **Debuggen**, um die Pipeline zu debuggen. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
 
-    ![Testen der Pipeline](./media/tutorial-copy-data-portal/test-run-output.png)
-2. Stellen Sie sicher, dass die Daten aus der Quelldatei in die Ziel-SQL-Datenbank eingefügt werden. 
-
-    ![Überprüfen der SQL-Ausgabe](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. Klicken Sie im linken Bereich auf **Alle veröffentlichen**. Mit dieser Aktion werden erstellte Entitäten (verknüpfte Dienste, Datasets und Pipeline) in Data Factory veröffentlicht.
+2. Wenn die Pipeline ausgeführt wurde, klicken Sie auf der oberen Symbolleiste auf **Alle veröffentlichen**. Mit dieser Aktion werden erstellte Entitäten (Datasets und Pipelines) in Data Factory veröffentlicht.
 
     ![Veröffentlichen](./media/tutorial-copy-data-portal/publish-button.png)
-4. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Damit Benachrichtigungsmeldungen angezeigt werden, klicken Sie auf der linken Seitenleiste auf die Registerkarte **Benachrichtigungen anzeigen**. Klicken Sie zum Schließen des Fensters mit den Benachrichtigungen auf **Schließen**.
 
-    ![Anzeigen von Benachrichtigungen](./media/tutorial-copy-data-portal/show-notifications.png)
-
-## <a name="configure-code-repository"></a>Konfigurieren des Coderepositorys
-Sie können den mit Ihren Data Factory-Artefakten verknüpften Code in einem Visual Studio Team Services-Coderepository veröffentlichen. In diesem Schritt erstellen Sie das Coderepository.  Weitere Informationen zur visuellen Erstellung mit VSTS-Integration finden Sie unter [Erstellen mit VSTS Git-Integration](author-visually.md#author-with-vsts-git-integration).
-
-Wenn Sie das Visual Studio Team Services-Coderepository nicht verwenden möchten, können Sie diesen Schritt überspringen. Sie können die Veröffentlichung in Data Factory wie im vorherigen Schritt fortsetzen. 
-
-1. Klicken Sie in der Ecke oben links auf **Data Factory** oder auf den Pfeil nach unten neben dieser Option und dann auf **Configure Code Repository** (Coderepository konfigurieren). 
-
-    ![Konfigurieren des Coderepositorys](./media/tutorial-copy-data-portal/configure-code-repository-button.png)
-2. Führen Sie auf der Seite **Repositoryeinstellungen** die folgenden Schritte aus:
-
-    a. Wählen Sie unter **Repositorytyp** die Option **Visual Studio Team Services Git** aus.
-
-    b. Wählen Sie unter **Visual Studio Team Services-Konto** Ihr Visual Studio Team Services-Konto aus.
-
-    c. Wählen Sie unter **Projektname** ein Projekt in Ihrem Visual Studio Team Services-Konto aus.
-
-    d. Geben Sie unter **Git repository name** (Name des Git-Repositorys) den Namen **Tutorial2** für das Git-Repository ein, das Ihrer Data Factory zugeordnet werden soll.
-
-    e. Vergewissern Sie sich, dass das Kontrollkästchen **Import existing Data Factory resources to repository** (Vorhandene Data Factory-Ressourcen in Repository importieren) aktiviert ist.
-
-    f. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. 
-
-    ![Repositoryeinstellungen](./media/tutorial-copy-data-portal/repository-settings.png)
-3. Vergewissern Sie sich, dass als Repository **VSTS Git** ausgewählt ist.
-
-    ![Auswählen des VSTS-Git](./media/tutorial-copy-data-portal/vsts-git-selected.png)
-4. Wechseln Sie im Webbrowser auf einer separaten Registerkarte zum Repository **Tutorial2**. Sie sehen zwei Branches: **adf_publish** und **master**.
-
-    ![Branches „master“ und „adf_publish“](./media/tutorial-copy-data-portal/initial-branches-vsts-git.png)
-5. Überprüfen Sie, ob sich die JSON-Dateien für die Data Factory-Entitäten im Branch **master** befinden.
-
-    ![Dateien im Masterbranch](./media/tutorial-copy-data-portal/master-branch-files.png)
-6. Stellen Sie sicher, dass sich die JSON-Dateien noch nicht im Branch **adf_publish** befinden. 
-
-    ![Dateien im Branch „adf_publish“](./media/tutorial-copy-data-portal/adf-publish-files.png)
-7. Fügen Sie unter **Beschreibung** eine Beschreibung für die Pipeline hinzu, und klicken Sie auf der Symbolleiste auf **Speichern**. 
-
-    ![Pipelinebeschreibung](./media/tutorial-copy-data-portal/pipeline-description.png)
-8. Nun wird ein Branch mit Ihrem Benutzernamen im Repository **Tutorial2** angezeigt. Ihre Änderung wurde in Ihrem eigenen Branch, nicht im Masterbranch vorgenommen. Sie können nur Entitäten aus dem Masterbranch veröffentlichen.
-
-    ![Ihr Branch](./media/tutorial-copy-data-portal/your-branch.png)
-9. Zeigen Sie mit der Maus auf die Schaltfläche **Synchronisieren** (klicken Sie noch nicht darauf), aktivieren Sie das Kontrollkästchen **Commit Changes** (Änderungen committen), und klicken Sie dann auf die Schaltfläche **Synchronisieren**, um Ihre Änderungen mit dem Masterbranch zu synchronisieren. 
-
-    ![Committen und Synchronisieren von Änderungen](./media/tutorial-copy-data-portal/commit-and-sync.png)
-10. Führen Sie im Fenster **Sync your changes** (Änderungen synchronisieren) die folgenden Aktionen aus: 
-
-    a. Überprüfen Sie, ob in der aktualisierten Liste der **Pipelines** der Eintrag **CopyPipeline** angezeigt wird.
-
-    b. Vergewissern Sie sich, dass **Publish changes after sync** (Änderungen nach der Synchronisierung veröffentlichen) aktiviert ist. Wenn Sie dieses Kontrollkästchen deaktivieren, synchronisieren Sie lediglich Ihre Änderungen in Ihrem Branch mit dem Masterbranch. Sie werden nicht in der Data Factory veröffentlicht. Sie können sie später mithilfe der Schaltfläche **Veröffentlichen** veröffentlichen. Wenn Sie dieses Kontrollkästchen aktivieren, werden die Änderungen zuerst mit dem Masterbranch synchronisiert und anschließend in Data Factory veröffentlicht.
-
-    c. Klicken Sie auf **Synchronisieren**. 
-
-    ![Synchronisieren von Änderungen](./media/tutorial-copy-data-portal/sync-your-changes.png)
-11. Nun werden Dateien im Branch **adf_publish** des Repositorys **Tutorial2** angezeigt. In diesem Branch befindet sich auch die Azure Resource Manager-Vorlage für Ihre Data Factory-Lösung. 
-
-    ![Dateiliste im Branch „adf_publish“](./media/tutorial-copy-data-portal/adf-publish-files-after-publish.png)
-
+4. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Damit Benachrichtigungsmeldungen angezeigt werden, klicken Sie oben rechts auf **Benachrichtigungen anzeigen** (Schaltfläche mit Glocke). 
 
 ## <a name="trigger-the-pipeline-manually"></a>Manuelles Auslösen der Pipeline
 In diesem Schritt lösen Sie die im vorherigen Schritt veröffentlichte Pipeline manuell aus. 
 
 1. Wählen Sie in der Symbolleiste die Option **Trigger** und dann **Trigger Now** (Jetzt auslösen). Klicken Sie auf der Seite **Pipeline Run** (Pipelineausführung) auf **Fertig stellen**.  
 
-    ![Auslösen der Pipeline](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Wechseln Sie links zur Registerkarte **Überwachen**. Sie sehen eine Pipelineausführung, die von einem manuellen Trigger ausgelöst wird. Sie können über Links in der Spalte **Aktionen** Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
 
     ![Überwachen der Pipelineausführungen](./media/tutorial-copy-data-portal/monitor-pipeline.png)
@@ -378,12 +255,10 @@ In diesem Schritt lösen Sie die im vorherigen Schritt veröffentlichte Pipeline
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Auslösen der Pipeline nach einem Zeitplan
 In diesem Zeitplan erstellen Sie einen Zeitplantrigger für die Pipeline. Der Trigger führt die Pipeline nach dem angegebenen Zeitplan aus, etwa stündlich oder täglich. In diesem Beispiel legen Sie fest, dass der Trigger bis zur angegebenen Endzeit (Datum und Uhrzeit) minütlich ausgeführt wird. 
 
-1. Wechseln Sie im linken Bereich zur Registerkarte **Bearbeiten**. 
+1. Navigieren Sie auf der linken Seite zur Registerkarte **Autor** (oberhalb der Registerkarte „Überwachen“). 
 
-    ![Registerkarte „Bearbeiten“](./media/tutorial-copy-data-portal/edit-tab.png)
-2. Klicken Sie auf **Trigger**, und wählen Sie **Neu/Bearbeiten**. Wenn die Pipeline nicht aktiv ist, rufen Sie sie auf. 
+2. Navigieren Sie zu Ihrer Pipeline, klicken Sie auf der Symbolleiste auf **Trigger**, und wählen Sie **Neu/Bearbeiten**. 
 
-    ![Triggeroption](./media/tutorial-copy-data-portal/trigger-new-edit-menu.png)
 3. Klicken Sie im Fenster **Add Triggers** (Trigger hinzufügen) auf **Choose trigger** (Trigger auswählen) und dann auf **Neu**. 
 
     ![Schaltfläche "Neu"](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
@@ -414,9 +289,9 @@ In diesem Zeitplan erstellen Sie einen Zeitplantrigger für die Pipeline. Der Tr
 5. Überprüfen Sie auf der Seite **Trigger Run Parameters** (Ausführungsparameter für Trigger) die Warnung, und wählen Sie **Fertig stellen** aus. Die Pipeline in diesem Beispiel akzeptiert keine Parameter. 
 
     ![Triggerausführungsparameter](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-6. Klicken Sie auf **Synchronisieren**, um Änderungen in Ihrem Branch mit dem Masterbranch zu synchronisieren. **Publish changes after sync** (Änderungen nach der Synchronisierung veröffentlichen) ist standardmäßig aktiviert. Wenn Sie auf **Synchronisieren** klicken, werden auch die aktualisierten Entitäten aus dem Masterbranch in Data Factory veröffentlicht. Der Trigger wird erst aktiviert, wenn die Veröffentlichung erfolgreich war.
 
-    ![Synchronisieren von Änderungen](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+6. Klicken Sie auf **Alle veröffentlichen**, um die Änderung zu veröffentlichen. 
+
 7. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**, um die ausgelösten Pipelineausführungen anzuzeigen. 
 
     ![Ausgelöste Pipelineausführungen](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    

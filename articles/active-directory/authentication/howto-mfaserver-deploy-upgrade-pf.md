@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866232"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335627"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgraden des PhoneFactor-Agents auf den Azure Multi-Factor Authentication-Server
 
@@ -66,11 +66,8 @@ Der Installationspfad wird aus der Registrierung der vorherigen PhoneFactor-Agen
 
   3. Wechseln Sie zum Installationsspeicherort des Benutzerportals (z.B. „C:\inetpub\wwwroot\MultiFactorAuth“), und bearbeiten Sie die Datei „web.config“. Kopieren Sie die Werte in den Abschnitten „appSettings“ und „applicationSettings“ aus der ursprünglichen Datei „web.config“, die vor dem Upgrade auf die neue Datei „web.config“ gesichert wurde. Wenn beim Installieren des Webdienst-SDK der neue Standardname des virtuellen Verzeichnisses beibehalten wurde, ändern Sie die URL im Abschnitt "applicationSettings", damit sie auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei „web.config“ weitere Standardeinstellungen geändert wurden, wenden Sie diese Änderungen auf die neue Datei „web.config“ an.
 
-  4. Um den Webdienst der mobilen App auf dem Webserver zu installieren, öffnen Sie eine Eingabeaufforderung als Administrator, und führen Sie „MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi“ aus.
-
-    Der Standardname des virtuellen Verzeichnisses lautet jetzt **MultiFactorAuthMobileAppWebService** und nicht mehr **PhoneFactorPhoneAppWebService**. Wenn Sie den vorherigen Namen verwenden möchten, müssen Sie den Namen des virtuellen Verzeichnisses während der Installation ändern. Sie sollten einen kürzeren Namen wählen, damit er von den Endbenutzern einfacher auf ihren Mobilgeräten eingegeben werden kann. Wenn Sie hingegen die Verwendung des neuen Standardnamens bei der Installation zulassen, klicken Sie auf dem Multi-Factor Authentication-Server auf das Symbol „Mobile App“, und aktualisieren Sie die URL des Webdiensts der mobilen App.
-
-  5. Wechseln Sie zum Installationsspeicherort des Webdiensts der mobilen App (z.B. „C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService“), und bearbeiten Sie die Datei „web.config“. Kopieren Sie die Werte in den Abschnitten „appSettings“ und „applicationSettings“ aus der ursprünglichen Datei „web.config“, die vor dem Upgrade auf die neue Datei „web.config“ gesichert wurde. Wenn beim Installieren des Webdienst-SDK der neue Standardname des virtuellen Verzeichnisses beibehalten wurde, ändern Sie die URL im Abschnitt "applicationSettings", damit sie auf den richtigen Speicherort verweist. Wenn in der vorherigen Datei „web.config“ weitere Standardeinstellungen geändert wurden, wenden Sie diese Änderungen auf die neue Datei „web.config“ an.
+> [!NOTE]
+> Wenn Sie für eine Azure MFA-Server-Version vor 8.0 ein Upgrade auf eine höhere Version als 8.0 durchführen, kann der Webdienst der mobilen App nach dem Upgrade deinstalliert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

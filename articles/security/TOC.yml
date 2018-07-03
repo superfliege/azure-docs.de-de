@@ -10,6 +10,8 @@
       href: azure-log-audit.md
     - name: Azure-Netzwerksicherheit
       href: azure-network-security.md
+    - name: Serverlose Azure-Plattformsicherheit
+      href: abstract-serverless-platform-security.md
     - name: Gewährleisten von Betriebssicherheit
       href: azure-operational-security.md
     - name: Governance (Kontrolle) in Azure

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9a9c898cf0f2e0b1387bbc2ac18b5009838d138b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209815"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317302"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
 Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
@@ -75,13 +75,13 @@ Führen Sie die Schritte unter [Erstellen, Anzeigen und Verwalten von Warnungen 
 
 Legen Sie beim Erstellen der Warnung für die erste Abfrage Folgendes fest, wenn mehr als 100 GB an Daten innerhalb von 24 Stunden anfallen:  
 
-- **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
 - **Warnungskriterien**: Geben Sie Folgendes an:
    - **Signalname**: **Benutzerdefinierte Protokollsuche**
    - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
-   - Für **Warnungslogik** gilt Folgendes: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*.
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
    - **Zeitraum**: *1440* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
-- **Warnungsdetails definieren**: Geben Sie Folgendes an:
+- **Definieren der Warnungsdetails**:
    - **Name** auf *Datenvolumen größer als 100 GB in 24 Stunden*
    - **Schweregrad** auf *Warnung*
 
@@ -89,13 +89,13 @@ Geben Sie eine vorhandene [Aktionsgruppe](../monitoring-and-diagnostics/monitori
 
 Legen Sie beim Erstellen der Warnung für die zweite Abfrage Folgendes fest, wenn die Vorhersage besteht, dass innerhalb von 24 Stunden mehr als 100 GB an Daten anfallen:
 
-- **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
+- **Definieren der Warnungsbedingung**: Festlegen Ihres Log Analytics-Arbeitsbereichs als Ressourcenziel
 - **Warnungskriterien**: Geben Sie Folgendes an:
    - **Signalname**: **Benutzerdefinierte Protokollsuche**
    - **Suchabfrage** auf `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
-   - Für **Warnungslogik** gilt Folgendes: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*.
+   - **Warnungslogik**: **Basiert auf** *Anzahl von Ergebnissen* und **Bedingung** ist *Größer als* ein **Schwellenwert** von *0*
    - **Zeitraum**: *180* Minuten, **Warnungshäufigkeit**: alle *60* Minuten, da die Nutzungsdaten nur einmal pro Stunde aktualisiert werden
-- **Warnungsdetails definieren**: Geben Sie Folgendes an:
+- **Definieren der Warnungsdetails**:
    - **Name** auf *Erwartetes Datenvolumen von mehr als 100 GB in 24 Stunden*
    - **Schweregrad** auf *Warnung*
 
@@ -151,7 +151,7 @@ Führen Sie die folgenden Schritte aus, um das Volumen der erfassten Protokolle 
 
 | Quelle mit hohem Datenvolumen | Reduzieren des Datenvolumens |
 | -------------------------- | ------------------------- |
-| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/windows/device-security/auditing/audit-registry)<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/windows/device-security/auditing/audit-file-system)<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/windows/device-security/auditing/audit-kernel-object)<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/windows/device-security/auditing/audit-handle-manipulation)<br> - [Überwachung von Wechselmedien](https://docs.microsoft.com/windows/device-security/auditing/audit-removable-storage) |
+| Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](https://blogs.technet.microsoft.com/msoms/2016/11/08/filter-the-security-events-the-oms-security-collects/) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für die <br> - [Überwachung der Filterplattform](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [Überwachung der Registrierung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [Überwachung des Dateisystems](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [Überwachung des Kernelobjekts](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [Überwachung der Handleänderung](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](log-analytics-data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](log-analytics-data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
 | syslog                     | Ändern Sie die [syslog-Konfiguration](log-analytics-data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |

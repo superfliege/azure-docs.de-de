@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237004"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047274"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-introduction.md)
-> * [Version 2 – Vorschauversion](introduction.md)
+> * [Version 1](v1/data-factory-introduction.md)
+> * [Aktuelle Version](introduction.md)
 
 In Zeiten von Big Data werden unorganisierte Rohdaten häufig in relationalen, nicht relationalen und anderen Speichersystemen gespeichert. Für sich genommen mangelt es den Rohdaten allerdings an Kontext bzw. an der nötigen Aussagekraft, um von Analysten, Datenspezialisten oder Entscheidungsträgern in Unternehmen sinnvoll genutzt werden zu können. 
 
@@ -40,9 +40,6 @@ Die Azure Data Factory-Plattform ist die richtige Lösung für solche Datenszena
 Darüber hinaus können die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlicht werden, damit diese von BI-Anwendungen (Business Intelligence) genutzt werden können. Über Azure Data Factory können Rohdaten letztendlich in aussagekräftigen Datenspeichern und Data Lakes organisiert und für bessere geschäftliche Entscheidungen genutzt werden.
 
 ![Übersicht über Data Factory](media/introduction/big-picture.png)
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, lesen Sie die [Einführung in Data Factory für Version 1](v1/data-factory-introduction.md).
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 Die Pipelines (datengesteuerten Workflows) in Azure Data Factory umfassen in der Regel vier Schritte:
@@ -92,7 +89,7 @@ Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsi
 - Sie stellen eine **Computeressource** dar, die die Ausführung einer Aktivität hosten kann. So wird beispielsweise die HDInsightHive-Aktivität in einem HDInsight-Hadoop-Cluster ausgeführt. Eine Liste mit Transformationsaktivitäten und unterstützten Compute-Umgebungen finden Sie im [Artikel zur Datentransformation](transform-data.md).
 
 ### <a name="triggers"></a>Trigger
-Trigger stellen die Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Es gibt verschiedene Arten von Triggern für unterschiedliche Arten von Ereignissen. In der Vorschauversion unterstützt Data Factory den zeitgesteuerten Trigger. 
+Trigger stellen die Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Es gibt verschiedene Arten von Triggern für unterschiedliche Arten von Ereignissen.
 
 ### <a name="pipeline-runs"></a>Pipelineausführungen
 Eine Pipelineausführung ist eine Instanz der ausgeführten Pipeline. Zur Instanziierung von Pipelineausführungen werden in der Regel die Argumente an die in Pipelines definierten Parameter übergeben. Die Argumente können manuell oder im Rahmen der Triggerdefinition übergeben werden.
@@ -124,8 +121,8 @@ Data Factory ist zwar nur in den Regionen „USA, Osten“, „USA, Osten 2“ u
 
 Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „USA, Osten“ oder „USA, Osten 2“ erstellen und damit Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
 
-## <a name="compare-with-version-2"></a>Vergleich mit Version 2
-Eine Liste mit den Unterschieden zwischen Version 1 und Version 2 des Data Factory-Diensts finden Sie unter [Compare Azure Data Factory versions 1 and 2](compare-versions.md) (Vergleich der Azure Data Factory-Versionen 1 und 2). 
+## <a name="compare-with-version-1"></a>Vergleich mit Version 1
+Eine Liste mit den Unterschieden zwischen Version 1 und der aktuellen Version des Data Factory-Diensts finden Sie unter [Vergleichen von Azure Data Factory mit Data Factory Version 1](compare-versions.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie zum Einstieg in die Erstellung einer Data Factory-Pipeline eines der folgenden Tools/SDKs: 

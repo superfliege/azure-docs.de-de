@@ -380,6 +380,7 @@
 ### [Integrieren lokaler Identitäten mit Azure AD Connect](./connect/active-directory-aadconnect.md)
 
 ## Delegieren des Zugriffs auf Ressourcen
+### [Anzeigen der Mitglieder einer Administratorrolle](directory-manage-roles-portal.md)
 ### [Administratorrollen](active-directory-assign-admin-roles-azure-portal.md)
 #### [Zuweisen der Administratorrolle zu einem Benutzer](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Vergleichen der Berechtigungen für Mitglieder und Gastbenutzer](fundamentals/users-default-permissions.md)
@@ -430,7 +431,7 @@
 ### Zertifikatbasierte Authentifizierung
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Azure AD Identity Protection](active-directory-certificate-based-authentication-get-started.md)
+#### [Erste Schritte](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [Aktivieren](active-directory-identityprotection-enable.md)

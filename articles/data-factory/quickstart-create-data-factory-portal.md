@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 69c0661f515f062a6a99b0692130d52eb23d20d6
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 454eaba26155b2bf4a0381af98047dbcbb514bb5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285898"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046815"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Version 2 – Vorschauversion](quickstart-create-data-factory-portal.md)
+> * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuelle Version](quickstart-create-data-factory-portal.md)
 
 Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Ein Tutorial zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten in der Cloud mithilfe einer Spark-Aktivität in Azure Data Factory](tutorial-transform-data-spark-portal.md). 
 
-
 > [!NOTE]
 > Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](data-factory-introduction.md). 
->
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Diensts verwenden, hilft Ihnen das [Tutorial zu Data Factory Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -58,7 +55,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie unter **Standort** den Standort für die Data Factory aus.
 
    Die Liste enthält nur von Data Factory unterstützte Standorte. Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa Azure HDInsight) können sich an anderen Standorten befinden.
@@ -160,7 +157,7 @@ In diesem Schritt debuggen Sie die Pipeline, bevor Sie sie in Data Factory berei
 3. Vergewissern Sie sich, dass im Ordner **output** des Containers **adftutorial** eine Ausgabedatei angezeigt wird. Ist der Ausgabeordner nicht vorhanden, wird er vom Data Factory-Dienst automatisch erstellt. 
 
 ## <a name="trigger-the-pipeline-manually"></a>Manuelles Auslösen der Pipeline
-In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipelines) in Azure Data Factory bereit. Anschließend lösen Sie manuell eine Pipelineausführung aus. Sie können Entitäten auch in Ihrem eigenen Visual Studio Team Services-Git-Repository veröffentlichen. Die erforderlichen Schritte werden in einem [anderen Tutorial](tutorial-copy-data-portal.md?#configure-code-repository) behandelt.
+In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipelines) in Azure Data Factory bereit. Anschließend lösen Sie manuell eine Pipelineausführung aus. 
 
 1. Vor dem Auslösen einer Pipeline müssen Sie Entitäten in Data Factory veröffentlichen. Klicken Sie zum Veröffentlichen oben auf **Alle veröffentlichen**. 
 

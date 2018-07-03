@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer App mit mehreren Containern (Vorschauversion) über Azure Web-App für Container
+title: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 description: Es wird beschrieben, wie Sie mehrere Container in Azure mit Docker Compose- und Kubernetes-Konfigurationsdateien per WordPress- und MySQL-App verwenden.
 keywords: Azure App Service, Web-App, Linux, Docker, Compose, mehrere Container, Container, Kubernetes
 services: app-service
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651380"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751913"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
 [Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In diesem Tutorial wird beschrieben, wie Sie eine App mit mehreren Containern per WordPress und MySQL erstellen.
 
@@ -145,7 +145,7 @@ Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn lokal in eine Datei mit
 
 ## <a name="create-a-docker-compose-app"></a>Erstellen einer Docker Compose-App
 
-Erstellen Sie in Ihrem lokalen Eingabeaufforderungsterminal eine [Web-App](app-service-linux-intro.md) mit mehreren Containern im `myAppServicePlan` App Service-Plan, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) verwenden. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie in Ihrem lokalen Terminal für die Befehlseingabe eine [Web-App](app-service-linux-intro.md) mit mehreren Containern im App Service-Plan `myAppServicePlan`, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) ausführen. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -180,7 +180,7 @@ Navigieren Sie zur bereitgestellten App unter `http://<app_name>.azurewebsites.n
 
 Es wird nicht empfohlen, Datenbankcontainer in einer Produktionsumgebung zu verwenden. Die lokalen Container sind nicht skalierbar. Stattdessen nutzen Sie Azure Database for MySQL, da dieser Dienst skaliert werden kann.
 
-### <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Azure Database for MySQL-Servers
+### <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
 
 Erstellen Sie mit dem Befehl [`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) einen Azure Database for MySQL-Server.
 
@@ -493,7 +493,7 @@ Navigieren Sie auf der Seite mit den Plug-Ins zu **Redis Object Cache**, und kli
 
 ![Aktivieren von Redis][3]
 
-Klicken Sie auf **Settings** (Einstellungen).
+Klicken Sie auf **Einstellungen**.
 
 ![Klicken auf „Settings“ (Einstellungen)][4]
 
@@ -511,7 +511,7 @@ WordPress stellt die Verbindung mit dem Redis-Server her. Der **Status** der Ver
 
 In diesem Abschnitt wird beschrieben, wie Sie eine Kubernetes-Konfiguration zum Bereitstellen mehrerer Container verwenden. Stellen Sie sicher, dass Sie die obigen Schritte ausführen, um eine [Ressourcengruppe](#create-a-resource-group) und einen [App Service-Plan](#create-an-azure-app-service-plan) zu erstellen. Da die meisten Schritte den Schritten des Compose-Abschnitts ähneln, wurde die Konfigurationsdatei für Sie kombiniert.
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>Unterstützte Kubernetes-Optionen für mehrere Container
+### <a name="supported-kubernetes-options-for-multicontainer"></a>Unterstützte Kubernetes-Optionen für mehrere Container
 
 * args
 * command
@@ -649,9 +649,9 @@ Nach Erstellung der App-Einstellung zeigt die Azure-Befehlszeilenschnittstelle I
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>Erstellen einer App mit mehreren Containern (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>Erstellen einer App mit mehreren Containern (Kubernetes)
 
-Erstellen Sie in Ihrem lokalen Terminal für die Befehlseingabe eine [Web-App](app-service-linux-intro.md) mit mehreren Containern in der Ressourcengruppe `myResourceGroup` und im App Service-Plan `myAppServicePlan`, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) verwenden. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
+Erstellen Sie in Ihrem lokalen Terminal für die Befehlseingabe eine [Web-App](app-service-linux-intro.md) mit mehreren Containern in der Ressourcengruppe `myResourceGroup` und im App Service-Plan `myAppServicePlan`, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) ausführen. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen.
 
 ```bash
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type kube --multicontainer-config-file kubernetes-wordpress.yml

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/14/2018
 ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: b1e7fa441dc52a647828c7d3785f09533af06fd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42be14569215af7ee98a540c2a86cef2b2a028e4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651396"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033886"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -76,7 +76,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku S1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --hub-name $hubname -o table
 
 ```
 
@@ -260,14 +260,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie Statusinformationen zwischen Ihren Geräten und Ihrem IoT Hub synchronisieren, indem Sie die folgenden Aufgaben durchführen:
-
-> [!div class="checklist"]
-> * Erstellen eines IoT Hub und Hinzufügen eines Testgeräts zur Identitätsregistrierung
-> * Verwenden von gewünschten Eigenschaften zum Senden von Statusinformationen an Ihr simuliertes Gerät
-> * Verwenden von gemeldeten Eigenschaften zum Empfangen von Statusinformationen von Ihrem simulierten Gerät
-
-Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie Gerätezwillinge zum Implementieren eines Prozesses zur Aktualisierung der Firmware verwenden.
+In diesem Tutorial wurde beschrieben, wie Sie Statusinformationen zwischen Ihren Geräten und Ihrem IoT Hub synchronisieren. Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie Gerätezwillinge zum Implementieren eines Prozesses zur Aktualisierung der Firmware verwenden.
 
 > [!div class="nextstepaction"]
-[Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub](tutorial-connectivity.md)
+[Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md)

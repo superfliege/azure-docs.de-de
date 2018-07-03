@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 22cb517435777074390321de64daf98c8d12d0fb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 86ca14c8865ee82d61cb63a20f66c508f532f124
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232964"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020001"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen
 
@@ -43,7 +43,7 @@ Sie können einen oder mehrere Benutzer als Prüfer einer Zugriffsüberprüfung 
 
 2. Legen Sie fest, ob jeder Benutzer seinen eigenen Zugriff oder ob ein oder mehrere Benutzer den Zugriff aller Benutzer überprüfen soll/sollen.
 
-3. Aktivieren Sie die Zugriffsüberprüfungen, sodass sie in den Zugriffsbereichen der Prüfer angezeigt werden. Navigieren Sie als globaler Administrator zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. Aktivieren Sie die Zugriffsüberprüfungen, sodass sie in den Zugriffsbereichen der Prüfer angezeigt werden. Als globaler Administrator oder Benutzerkontoadministrator navigieren Sie zur Seite [Zugriffsüberprüfungen](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. Starten Sie die Zugriffsüberprüfung. Weitere Informationen finden Sie unter [Erstellen einer Zugriffsüberprüfung von Gruppenmitgliedern oder dem Anwendungszugriff mit Azure AD](active-directory-azure-ad-controls-create-access-review.md).
 

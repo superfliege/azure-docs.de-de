@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293478"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048637"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-scheduling-and-execution.md)
-> * [Version 2 – Vorschauversion](concepts-pipeline-execution-triggers.md)
+> * [Version 1](v1/data-factory-scheduling-and-execution.md)
+> * [Aktuelle Version](concepts-pipeline-execution-triggers.md)
 
-Eine _Pipelineausführung_ in Azure Data Factory, Version 2, definiert eine Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (oder Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Eine Ausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. 
+Eine _Pipelineausführung_ in Azure Data Factory definiert eine Instanz einer Pipelineausführung. Beispiel: Angenommen, Sie verfügen über eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (oder Pipelineausführungen). Jede Pipelineausführung besitzt eine eindeutige Pipelineausführungs-ID. Eine Ausführungs-ID ist eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. 
 
 Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in der Pipeline definierte Parameter übergeben. Sie können eine Pipeline entweder manuell oder mithilfe eines _Triggers_ ausführen. Dieser Artikel enthält Informationen zu beiden Möglichkeiten der Ausführung einer Pipeline.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie Version 1 von Azure Data Factory verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Planung und Ausführung in Azure Data Factory Version 1](v1/data-factory-scheduling-and-execution.md).
 
 ## <a name="manual-execution-on-demand"></a>Manuelle Ausführung (bei Bedarf)
 Die manuelle Ausführung einer Pipeline wird auch als _bedarfsgesteuerte_ Ausführung bezeichnet.
@@ -136,7 +133,7 @@ Ein vollständiges Beispiel finden Sie unter [Schnellstart: Erstellen einer Data
 > Mit dem .NET SDK können Sie Data Factory-Pipelines in Azure Functions, Ihren eigenen Webdiensten usw. aufrufen.
 
 <h2 id="triggers">Triggerausführung</h2>
-Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt Data Factory zwei Arten von Triggern:
+Eine Pipelineausführung kann auch mithilfe von Triggern erfolgen. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Derzeit unterstützt Data Factory drei Arten von Triggern:
 
 - Zeitplantrigger: ein Trigger, der eine Pipeline nach einem Realzeitplan aufruft.
 

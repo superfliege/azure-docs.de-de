@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284573"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048025"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopieren von Daten mithilfe des Tools zum Kopieren von Daten 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [Version 1: allgemein verfügbar](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Version 2 – Vorschauversion](quickstart-create-data-factory-copy-data-tool.md)
+> * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuelle Version](quickstart-create-data-factory-copy-data-tool.md)
 
 In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Factory zu erstellen. Anschließend erstellen Sie mithilfe des Tools zum Kopieren von Daten eine Pipeline, die Daten aus einem Ordner in Azure Blob Storage in einen anderen Ordner kopiert. 
 
 > [!NOTE]
 > Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](data-factory-introduction.md). 
->
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Diensts verwenden, hilft Ihnen das Tutorial [Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,7 +49,7 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie unter **Standort** den Standort für die Data Factory aus. 
 
    In der Liste werden nur unterstützte Standorte angezeigt. Die von Data Factory verwendeten Datenspeicher (etwa Azure Storage und Azure SQL-Datenbank) und Computedienste (etwa Azure HDInsight) können sich an anderen Standorten bzw. in anderen Regionen befinden.
@@ -85,7 +82,7 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
     ![Auswählen von Blob Storage aus dem Katalog](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Wählen Sie auf der Seite **Azure Blob Storage-Konto angeben** in der Dropdownliste **Speicherkontoname** Ihr Speicherkonto aus, und klicken Sie auf **Weiter**. 
+    c. Wählen Sie auf der Seite **Azure Blob Storage-Konto angeben** in der Dropdownliste **Speicherkontoname** Ihr Speicherkonto aus, und klicken Sie auf **Fertig stellen**. 
 
    ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 

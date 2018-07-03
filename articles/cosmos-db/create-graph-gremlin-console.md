@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 00e4da5fa1867aeddebe0e452f78ea24a3d0a821
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 6f6a622c2b9faf6117a8212000e1e632df3526b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808518"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016606"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Erstellen, Abfragen und Traversieren in der Gremlin-Konsole
 
@@ -45,11 +45,11 @@ Außerdem müssen Sie die [Gremlin-Konsole](http://tinkerpop.apache.org/) instal
 
 ## <a id="ConnectAppService"></a>Verbindung mit App Service herstellen
 1. Erstellen bzw. ändern Sie die Konfigurationsdatei „remote-secure.yaml“ im Verzeichnis `apache-tinkerpop-gremlin-console-3.2.5/conf`, bevor Sie die Gremlin-Konsole starten.
-2. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsprogramm* aus:
+2. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsmodul* aus, wie in der folgenden Tabelle definiert:
 
     Einstellung|Empfohlener Wert|BESCHREIBUNG
     ---|---|---
-    hosts|[*Kontoname*.gremlin.cosmosdb.azure.com] oder [*Kontoname*.graphs.azure.com] für Konten, die vor dem 20. Dezember 2017 erstellt wurden.|Der folgende Screenshot zeigt dies. Dies ist der Wert für den Gremlin-URI auf der Seite „Übersicht“ des Azure-Portals (in Winkelklammern mit entferntem Zusatz „:443/“).<br><br>Sie können diesen Wert auch über die Registerkarte „Schlüssel“ abrufen, indem Sie den URI-Wert verwenden und „https://“ entfernen, „documents“ in „graphs“ oder „gremlin.cosmosdb“ ändern und den Zusatz „:443/“ entfernen.
+    hosts|[*Kontoname*.gremlin.cosmosdb.azure.com] oder [*Kontoname*.graphs.azure.com] für Konten, die vor dem 20. Dezember 2017 erstellt wurden.|Der folgende Screenshot zeigt dies. Dies ist der Wert für den Gremlin-URI auf der Seite „Übersicht“ des Azure-Portals (in Winkelklammern mit entferntem Zusatz „:443/“).
     port|443|Legen Sie den Wert 443 fest.
     username|*Ihr Benutzername*|Die Ressource im Format `/dbs/<db>/colls/<coll>`, wobei `<db>` der Datenbankname und `<coll>` der Sammlungsname ist.
     password|*Ihr Primärschlüssel*| Siehe zweiten Screenshot unten. Dies ist Ihr Primärschlüssel, den Sie von der Seite „Schlüssel“ des Azure-Portals im Feld „Primärschlüssel“ abrufen können. Verwenden Sie die Schaltfläche „Kopieren“ links vom Feld, um den Wert zu kopieren.

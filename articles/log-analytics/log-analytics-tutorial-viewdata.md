@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4a5e6b24bbf7cc21d40cea8e4331de98a5cc05a6
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30834417"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752145"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten
 
@@ -41,8 +41,8 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="open-the-log-search-portal"></a>Öffnen des Portals für die Protokollsuche 
 Öffnen Sie zunächst das Portal für die Protokollsuche.   
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
-2. Klicken Sie im Log Analytics-Abonnementbereich auf einen Arbeitsbereich, und wählen Sie dann die Kachel **Protokollsuche**.<br><br> ![Schaltfläche „Protokollsuche“](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Monitor** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Monitor** aus.
+2. Wählen Sie **Log Analytics** im Navigationsmenü „Monitor“ und dann einen Arbeitsbereich aus.
 
 ## <a name="create-a-simple-search"></a>Erstellen einer einfachen Suche
 Die schnellste Methode, Daten für die weitere Verwendung abzurufen, besteht in einer einfachen Abfrage, die alle Datensätze aus der Tabelle zurückgibt.  Wenn Windows- oder Linux-Clients mit Ihrem Arbeitsbereich verbunden sind, liegen die Daten in der Ereignistabelle (Windows) bzw. in der Syslog-Tabelle (Linux) vor.
@@ -124,7 +124,7 @@ Perf
 Millionen Datensätze für alle Leistungsobjekte und -indikatoren zurückzugeben, ist jedoch nicht sehr nützlich.  Sie können die gleichen Verfahren wie oben verwenden, um die Daten zu filtern, oder einfach die folgende Abfrage direkt in das Protokollsuchfeld eingeben.  Dadurch werden nur die Datensätze zur Prozessorauslastung für Windows- und Linux-Computer zurückgegeben.
 
 ```
-Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time")
+Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time"
 ```
 
 ![Prozessorauslastung](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
@@ -132,7 +132,9 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 Dies schränkt die Daten zwar auf einen bestimmten Leistungsindikator ein, damit liegen sie jedoch immer noch nicht in einem nützlichen Format vor.  Sie können die Daten in einem Liniendiagramm anzeigen, dazu müssen Sie sie jedoch zunächst nach „Computer“ und „TimeGenerated“ gruppieren.  Um nach mehreren Feldern zu gruppieren, müssen Sie die Abfrage direkt ändern, ändern Sie die Abfrage daher wie folgt:  Hierbei wird die [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg())-Funktion für die **CounterValue**-Eigenschaft verwendet, um für jede Stunde den Durchschnittswert zu berechnen.
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
+Perf  
+| where ObjectName == "Processor"  | where CounterName == "% Processor Time"
+| summarize avg(CounterValue) by Computer, TimeGenerated
 ```
 
 ![Leistungsdatendiagramm](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
@@ -140,7 +142,10 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 Nachdem die Daten eine geeignete Gruppierung aufweisen, können Sie sie in einem visuellen Diagramm anzeigen, indem Sie den [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)-Operator hinzufügen.  
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
+Perf  
+| where ObjectName == "Processor" | where CounterName == "% Processor Time" 
+| summarize avg(CounterValue) by Computer, TimeGenerated 
+| render timechart
 ```
 
 ![Liniendiagramm](media/log-analytics-tutorial-viewdata/log-analytics-portal-linechart-01.png)

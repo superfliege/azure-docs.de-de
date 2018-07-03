@@ -113,9 +113,14 @@
           href: how-to-manage-dps-with-cli.md
         - name: Steuern des Zugriffs auf Bereitstellungsdienst-APIs
           href: how-to-control-access.md
-    - name: Bereitstellen eines IoT Edge-Geräts
-      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
-      maintainContext: true
+    - name: Bereitstellen von IoT Edge-Geräten
+      items:
+        - name: Linux
+          href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
+          maintainContext: true
+        - name: Windows
+          href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+          maintainContext: true
     - name: Verwenden von Nachweismechanismen mit dem SDK
       href: use-hsm-with-sdk.md
     - name: Verwenden von SDK-Tools für die Entwicklung

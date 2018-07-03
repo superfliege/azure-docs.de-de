@@ -15,19 +15,19 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dc67de00abb2eac2eeb6e2b6bf3798e3aa210152
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b512ba91d1df7ec0432bdf9048268714e570fe6b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29949887"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958675"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem Java-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
-Dieses Tutorial ist der erste Teil einer Reihe. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren.
+Dieses Tutorial ist der erste Teil einer Serie. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren.
 
-![Abstimmungs-App lokal](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
+![Voting-App (lokal)](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
-Im ersten Teil der Reihe lernen Sie Folgendes:
+Im ersten Teil der Serie lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines zustandsbehafteten zuverlässigen Java-Diensts
@@ -35,7 +35,7 @@ Im ersten Teil der Reihe lernen Sie Folgendes:
 > * Verwenden von Dienstremoting zum Kommunizieren mit dem zustandsbehafteten Dienst
 > * Bereitstellen der Anwendung in einem lokalen Service Fabric-Cluster
 
-In dieser Tutorialreihe lernen Sie Folgendes:
+In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > *  Erstellen einer Service Fabric Reliable Services-Java-Anwendung
 > * [Bereitstellen und Debuggen der Anwendung in einem lokalen Cluster](service-fabric-tutorial-debug-log-local-cluster.md)
@@ -73,7 +73,7 @@ Die Tabelle enthält eine kurze Beschreibung der einzelnen Elemente im Paket-Exp
 | **Element des Paket-Explorers** | **Beschreibung** |
 | --- | --- |
 | PublishProfiles | Enthält JSON-Dateien mit Beschreibungen der Profildetails von lokalen Clustern und Azure Service Fabric-Clustern. Der Inhalt dieser Dateien wird vom Plug-In beim Bereitstellen der Anwendung verwendet. |
-| Scripts | Enthält Hilfsskripts, die an der Befehlszeile zum schnellen Verwalten Ihrer Anwendung mit einem Cluster verwendet werden können. |
+| Skripts | Enthält Hilfsskripts, die an der Befehlszeile zum schnellen Verwalten Ihrer Anwendung mit einem Cluster verwendet werden können. |
 | VotingApplication | Enthält die Service Fabric-Anwendung, die per Pushvorgang in den Service Fabric-Cluster übertragen wird. |
 | VotingWeb | Enthält die Quelldateien des zustandslosen Front-End-Diensts und die dazugehörige Gradle-Builddatei. |
 | build.gradle | Die Gradle-Datei, die zum Verwalten des Projekts verwendet wird. |
@@ -596,7 +596,7 @@ Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird
     }
     
     dependencies {
-        compile ('com.microsoft.servicefabric:sf-actors:1.0.0-preview1')
+        compile ('com.microsoft.servicefabric:sf-actors:1.0.0')
     }
     
     jar {
@@ -897,8 +897,8 @@ An diesem Punkt ist die Anwendung bereit für die Bereitstellung in einem lokale
     ```
 
 4. Klicken Sie im Paket-Explorer für Eclipse mit der rechten Maustaste auf das Projekt **Voting**, und klicken Sie dann auf **Service Fabric > Publish Application... (Anwendung veröffentlichen...)**. 
-5. Wählen Sie im Fenster **Publish Application** (Anwendung veröffentlichen) in der Dropdownliste die Option **Local.json**, und klicken Sie auf **Veröffentlichen**.
-6. Greifen Sie mit Ihrem Webbrowser auf **http://localhost:8080** zu, um Ihre ausgeführte Anwendung im lokalen Service Fabric-Cluster anzuzeigen. 
+5. Wählen Sie im Fenster **Publish Application** (Anwendung veröffentlichen) in der Dropdownliste die Option **Local.json** aus, und klicken Sie auf **Publish** (Veröffentlichen).
+6. Rufen Sie in Ihrem Webbrowser **http://localhost:8080** auf, um Ihre ausgeführte Anwendung im lokalen Service Fabric-Cluster anzuzeigen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Teil des Tutorials haben Sie Folgendes gelernt:

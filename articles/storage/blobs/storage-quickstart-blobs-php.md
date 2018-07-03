@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 463b6051009ab79013f9bef958fcadec2ef3cd16
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c97585607a8694840d24f4582f5a850b3d6e11f0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188825"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053857"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit PHP
 In diesem Schnellstart erfahren Sie, wie Sie mit PHP Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
@@ -129,7 +129,7 @@ Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am
 
 Um eine Datei in einen Blob hochzuladen, rufen Sie den vollständigen Pfad der Datei ab, indem Sie den Verzeichnisnamen und den Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Sie können anschließend die Datei an den Speicherort unter dem angegebenen Pfad hochladen, indem Sie die **createBlockBlob()**-Methode verwenden. 
 
-Im Beispielcode wird eine lokale Datei nach Azure hochgeladen. Im Code werden die Datei als **myfile** und der Name des Blobs als **fileToUpload** gespeichert. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
+Im Beispielcode wird eine lokale Datei nach Azure hochgeladen. Im Code wird die Datei als **myfile** und der Name des Blobs als **fileToUpload** gespeichert. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
 
 ```PHP
     $myfile = fopen("HelloWorld.txt", "w") or die("Unable to open file!");

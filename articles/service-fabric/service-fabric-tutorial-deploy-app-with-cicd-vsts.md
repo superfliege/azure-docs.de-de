@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5b61b7f89c127b297f058082d86952f2a45d766a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 543b75fbc1e080d13654df06cf36874e3833e851
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798708"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018398"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 Dieses Tutorial ist der vierte Teil einer Reihe und beschreibt die Einrichtung von Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.

@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7576589e7be1668d94e80bbe63453a41fe6b85fc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 019a5a041d5581ee49eab7e1644f081aa7a52f2d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594694"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049713"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Tutorial: Verwenden der REST-API zum Erstellen einer Azure Data Factory-Pipeline zum Kopieren von Daten 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "31594694"
 > 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Wenn Sie Version 2 des Data Factory-Diensts verwenden, die sich derzeit in der Vorschauphase befindet, finden Sie weitere Informationen im [Tutorial zu Kopieraktivitäten in der Dokumentation zu Version 2](../quickstart-create-data-factory-rest-api.md). 
+> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, lesen Sie die Informationen im Tutorial zur [Copy-Aktivität](../quickstart-create-data-factory-rest-api.md). 
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der REST-API eine Data Factory mit einer Pipeline erstellen, die Daten aus Azure Blob Storage in Azure SQL-Datenbank kopiert. Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Tutorials den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md).   
 

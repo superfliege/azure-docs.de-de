@@ -1,21 +1,44 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-edge
+author: kgremban
+ms.service: iot-edge
+ms.topic: include
+ms.date: 06/27/2018
+ms.author: kgremban
+ms.custom: include file
+ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055029"
+---
 Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Module aus der Cloud auf IoT Edge-Geräten bereitzustellen. Ein IoT-Edge-Modul ist ein ausführbares Paket, das als Container implementiert wird. In diesem Abschnitt stellen Sie ein Modul bereit, das Telemetrie für das simulierte Gerät generiert. 
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub.
-1. Wechseln Sie zu **IoT Edge (Vorschau)**, und wählen Sie Ihr IoT Edge-Gerät aus.
+1. Wechseln Sie zu **IoT Edge**, und wählen Sie Ihr IoT Edge-Gerät aus.
 1. Wählen Sie **Module festlegen** aus.
-1. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
-1. Geben Sie im Feld **Name** die Zeichenfolge `tempSensor` ein. 
-1. Geben Sie im Feld **Image-URI** die Zeichenfolge `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` ein. 
+1. Klicken Sie im Abschnitt **Deployment Modules** (Bereitstellungsmodule) der Seite auf **Hinzufügen**, und wählen Sie dann **IoT Edge Module**.
+1. Geben Sie im Feld **Name** die Zeichenfolge `tempsensor` ein. 
+1. Geben Sie im Feld **Image-URI** die Zeichenfolge `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0` ein. 
 1. Behalten Sie die restlichen Einstellungen unverändert bei, und wählen Sie **Speichern** aus.
 
    ![Speichern des IoT Edge-Moduls nach Eingabe des Namens und Image-URI](./media/iot-edge-deploy-module/name-image.png)
 
 1. Wenn Sie zum Schritt **Module hinzufügen** zurückgekehrt sind, wählen Sie **Weiter** aus.
-1. Wählen Sie im Schritt **Routen angeben** die Option **Weiter** aus.
-1. Wählen Sie im Schritt **Vorlage überprüfen** die Option **Senden** aus.
-1. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie **Aktualisieren** aus. Daraufhin sollte das neue tempSensor-Modul angezeigt werden, das zusammen mit der IoT Edge-Runtime ausgeführt wird. 
+1. Unter dem Schritt **Routen angeben** sollten Sie über eine Standardroute verfügen, über die alle Nachrichten von allen Modulen an IoT Hub gesendet werden. Wenn nicht, können Sie den folgenden Code eingeben und dann **Weiter** wählen.
 
-   ![Anzeigen von tempSensor in der Liste der bereitgestellten Module][1]
+   ```json
+   {
+       "routes": {
+           "route": "FROM /* INTO $upstream"
+       }
+   }
+   ```
 
-<!-- Images -->
-[1]: ../articles/iot-edge/media/tutorial-simulate-device-windows/view-module.png
+1. Klicken Sie im Schritt für die **Bereitstellungsüberprüfung** auf **Übermitteln**.
+1. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie **Aktualisieren** aus. Zusätzlich zum edgeAgent-Modul, das beim ersten Starten des Diensts erstellt wurde, sollte ein weiteres Runtimemodul mit dem Namen **edgeHub** angezeigt werden, und das Modul **tempSensor** sollte aufgeführt sein. 
+
+   ![Anzeigen von tempSensor in der Liste der bereitgestellten Module](./media/iot-edge-deploy-module/deployed-modules.png)

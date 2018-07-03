@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/13/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 4b2294d7816a92dccb14caaadc09a2797edeafe6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fdff52a1fa34fa2033db19690d20a1c2f417e646
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36237439"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307790"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,7 +104,7 @@ Azure Kubernetes Service (AKS) wurde von der CNCF als Kubernetes-konform zertifi
 
 ## <a name="regulatory-compliance"></a>Compliance
 
-Azure Kubernetes Service (AKS) erfüllt die Anforderungen von SOC sowie von ISO/HIPPA/HITRUST.
+Azure Kubernetes Service (AKS) erfüllt die Anforderungen von SOC sowie von ISO/HIPAA/HITRUST.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

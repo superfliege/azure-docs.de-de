@@ -3,7 +3,7 @@ title: Inkrementelles Kopieren von mehreren Tabellen mithilfe von Azure Data Fac
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank kopiert werden.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
-ms.author: jingwang
-ms.openlocfilehash: 8f59ffb2011ad43173881d4ced231e4820fcf5f8
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: 73d6039624a52ae06d8cf74c386bf0d12d9b65d9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30184504"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046305"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -37,9 +37,6 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Hinzufügen oder Aktualisieren von Daten in Quelltabellen
 > * Erneutes Ausführen und Überwachen der Pipeline
 > * Überprüfen der Endergebnisse
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 ## <a name="overview"></a>Übersicht
 Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
@@ -271,7 +268,7 @@ Beachten Sie folgende Punkte:
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle „Mitwirkender“ oder „Besitzer“ oder ein Administrator des Azure-Abonnements sein.
-* Derzeit können Sie mit Data Factory Version 2 nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, SQL-Datenbank usw.) und Computedienste (Azure HDInsight usw.) können sich in anderen Regionen befinden.
+* Derzeit können Sie mit Data Factory nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ Data Factorys erstellen. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, SQL-Datenbank usw.) und Computedienste (Azure HDInsight usw.) können sich in anderen Regionen befinden.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 

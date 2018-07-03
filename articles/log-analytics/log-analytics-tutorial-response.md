@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 70698dc233dac60a2fa2d1444930d21d3fba8773
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6fa090a5277b1feb3e1b6ea0114ce90035197076
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637122"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753267"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reagieren auf Ereignisse mit Azure Monitor-Warnungen
 Mit Warnungen in Azure Monitor können wichtige Informationen in Ihrem Log Analytics-Repository identifiziert werden. Sie werden durch Warnungsregeln erstellt, die automatisch in regelmäßigen Abständen Protokollsuchen ausführen. Wenn Ergebnisse der Protokollsuche mit bestimmten Kriterien übereinstimmen, wird ein Warnungsdatensatz erstellt, der zur Ausführung einer automatischen Antwort konfiguriert werden kann.  Dieses Tutorial ist eine Fortsetzung des Tutorials [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](log-analytics-tutorial-dashboards.md).   
@@ -41,7 +41,7 @@ Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in reg
 
 Im folgenden Beispiel erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die auf der Abfrage *Azure-VMs – Prozessorauslastung* basiert, die unter [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](log-analytics-tutorial-dashboards.md) gespeichert wurde.  Eine Warnung wird für jeden virtuellen Computer erstellt, der einen Schwellenwert von 90 Prozent überschreitet.  
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Monitor** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Monitor** aus.
 2. Klicken Sie im linken Bereich auf **Warnungen** und dann oben auf der Seite auf **Neue Warnungsregel**, um eine neue Warnung zu erstellen.<br><br> ![Erstellen einer neuen Warnungsregel](./media/log-analytics-tutorial-response/alert-rule-02.png)<br>
 3. Im ersten Schritt wählen Sie im Abschnitt **Warnung erstellen** Ihren Log Analytics-Arbeitsbereich als Ressource aus, da es sich dabei um ein protokollbasiertes Warnungssignal handelt.  Wenn Sie mehrere Abonnements besitzen, filtern Sie die Ergebnisse, indem Sie in der Dropdownliste das gewünschte **Abonnement** auswählen, das den zuvor erstellten virtuellen Computer und Log Analytics-Arbeitsbereich enthält.  Filtern Sie den **Ressourcentyp**, indem Sie in der Dropdownliste **Log Analytics** auswählen.  Wählen Sie abschließend die **Ressource** mit dem Namen **DefaultLAWorkspace**, und klicken Sie dann auf **Fertig**.<br><br> ![Schritt 1: Erstellen einer Warnung](./media/log-analytics-tutorial-response/alert-rule-03.png)<br>
 4. Klicken Sie im Abschnitt **Warnungskriterien** auf **Kriterien hinzufügen**, um die gespeicherte Abfrage auszuwählen, und geben Sie dann eine Logik für die Warnungsregel ein.  Wählen Sie im Bereich **Signallogik konfigurieren** in der Liste *Azure-VMs – Prozessorauslastung* aus.  Der Bereich wird aktualisiert und zeigt die Konfigurationseinstellungen für die Warnung an.  Am oberen Rand werden die Ergebnisse für die letzten 30 Minuten des ausgewählten Signals und die Suchabfrage selbst angezeigt.  

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93698df0e1684b469b6e2a03e6681499949aab6d
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414602"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36338321"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
@@ -23,6 +23,9 @@ Nein. BGP wird nur für routenbasierte VPN-Gateways unterstützt.
 
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>Kann ich private ASNs (Autonome Systemnummern) verwenden?
 Ja. Sie können eigene öffentliche ASNs oder private ASNs verwenden – sowohl für Ihre lokalen Netzwerke als auch für Ihre virtuellen Azure-Netzwerke.
+
+### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>Kann ich 32-Bit-ASNs (Autonome Systemnummern) verwenden?
+Nein, Azure-VPN-Gateways unterstützen derzeit 16-Bit-ASNs.
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Werden ASNs von Azure reserviert?
 Ja. Die folgenden ASNs werden von Azure sowohl für interne als auch für externe Peerings reserviert:

@@ -14,20 +14,20 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179598"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049796"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: allgemein verfügbar](data-factory-introduction.md)
-> * [Version 2 – Vorschauversion](../introduction.md)
+> * [Version 1](data-factory-introduction.md)
+> * [Version 2 (aktuelle Version)](../introduction.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschauphase finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
+> Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory. Bei Verwendung der aktuellen Version des Data Factory-Diensts finden Sie weitere Informationen unter [Einführung in Data Factory V2](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Was ist Azure Data Factory?

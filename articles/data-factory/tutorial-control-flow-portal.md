@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 65441882827ecb26405f74fb1389b6a21d99cf9c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b7ce6078fcaedee3d9ed4151063816df937ac0f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30172850"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37055156"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 Eine allgemeine Übersicht über das Szenario: ![Übersicht](media/tutorial-control-flow-portal/overview.png)
 
@@ -148,7 +145,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
         Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
-4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
+4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
 7. Klicken Sie auf **Create**.      
@@ -242,7 +239,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         - Nachricht: Übergibt den Wert von `@{activity('Copy1').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
         - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
         - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
-        - Empfänger: Übergibt den Wert von „@pipeline(). parameters.receiver“). Zugriff auf die Pipeline-Parameter
+        - Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
     
         ![Einstellungen für die erste Webaktivität](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Stellen Sie eine Verbindung zwischen der Aktivität **Kopieren** und der Aktivität **Web** her, indem Sie die grüne Schaltfläche neben der Kopieraktivität auf die Webaktivität ziehen. 

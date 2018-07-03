@@ -3,7 +3,7 @@ title: Inkrementelles Kopieren von mehreren Tabellen mithilfe von Azure Data Fac
 description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, bei der Deltadaten inkrementell aus mehreren Tabellen einer lokalen SQL Server-Datenbank in eine Azure SQL-Datenbank kopiert werden.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052843"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -36,9 +37,6 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Hinzufügen oder Aktualisieren von Daten in Quelltabellen
 > * Erneutes Ausführen und Überwachen der Pipeline
 > * Überprüfen der Endergebnisse
-
-> [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Azure Data Factory, die sich derzeit in der Vorschauphase befindet. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) weiter.
 
 ## <a name="overview"></a>Übersicht
 Hier sind die wesentlichen Schritte beim Erstellen dieser Lösung aufgeführt: 
@@ -369,16 +367,25 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Da
 3. Im Webbrowser wird eine neue Registerkarte für die Konfiguration des Datasets geöffnet. Außerdem wird in der Strukturansicht ein Dataset angezeigt. Geben Sie im Eigenschaftenfenster auf der Registerkarte **Allgemein** unter **Name** den Namen **SinkDataset** ein.
 
    ![Senkendataset – Allgemein](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlLinkedService**. 
-
-   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus: 
+4. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus: 
 
     1. Klicken Sie im Abschnitt **Parameter erstellen/aktualisieren** die Option **Neu**. 
     2. Geben Sie **SinkTableName** als **Namen** und **Zeichenfolge** als **Typ** ein. Für dieses Dataset wird **SinkTableName** als Parameter verwendet. Der Parameter SinkTableName wird von der Pipeline zur Laufzeit dynamisch festgelegt. Die ForEach-Aktivität in der Pipeline durchläuft eine Liste mit Tabellennamen und übergibt den Tabellennamen bei jedem Durchlauf an dieses Dataset.
-    3. Geben Sie im Abschnitt **Parameterizable properties** (Parametrisierbare Eigenschaften) `@{dataset().SinkTableName}` für die **tableName**-Eigenschaft ein. Sie verwenden den Wert, der an den Parameter **SinkTableName** übergeben wird, um die **tableName**-Eigenschaft des Datasets zu initialisieren. 
-
+   
        ![Senkendataset – Eigenschaften](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Verbindung**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlLinkedService**. Klicken Sie für die **Table**-Eigenschaft auf **Dynamischen Inhalt hinzufügen**. 
+
+   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. Wählen Sie im Abschnitt **Parameters** die Option **SinkTableName**.
+   
+   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. Nachdem Sie auf **Fertig stellen** geklickt haben, wird **@dataset().SinkTableName** als Tabellenname angezeigt.
+   
+   ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>Erstellen eines Datasets für einen Grenzwert
 In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts. 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
+## <a name="monitor-the-pipeline-again"></a>Erneutes Überwachen der Pipeline
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
 
