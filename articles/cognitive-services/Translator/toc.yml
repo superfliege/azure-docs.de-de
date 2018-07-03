@@ -21,6 +21,20 @@
           href: quickstart-csharp-languages.md
         - name: Abrufen von Satzlängen im Text
           href: quickstart-csharp-sentences.md
+    - name: Go
+      items:
+        - name: Text übersetzen
+          href: quickstart-go-translate.md
+        - name: Konvertieren eines Textskripts
+          href: quickstart-go-transliterate.md
+        - name: Identifizieren der Textsprache
+          href: quickstart-go-detect.md
+        - name: Abrufen von alternativen Übersetzungen
+          href: quickstart-go-dictionary.md
+        - name: Abrufen der unterstützten Sprachen
+          href: quickstart-go-languages.md
+        - name: Abrufen von Satzlängen im Text
+          href: quickstart-go-sentences.md
     - name: Java
       items:
         - name: Text übersetzen
@@ -139,7 +153,7 @@
           href: transform-text.md
         - name: Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
           href: ctf-reporting.md
-        - name: Zurückgeben der N-besten Übersetzungen
+        - name: Zurückgeben von N besten Übersetzungen
           href: return-n-best-translations.md
 - name: angeben
   items:

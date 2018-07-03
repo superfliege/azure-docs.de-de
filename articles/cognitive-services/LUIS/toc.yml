@@ -192,11 +192,11 @@
         - name: Verbesserung der Genauigkeit durch das Testen in Batches
           href: luis-tutorial-batch-testing.md
     - name: Veröffentlichen der App
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: Verwenden von vordefinierten Modellen
       items:
         - name: Verwenden von vordefinierten Entitäten
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: Verwenden von vordefinierten Domänen
           href: luis-how-to-use-prebuilt-domains.md
         - name: Verwenden der vorgefertigten Cortana-App
@@ -208,7 +208,7 @@
         - name: Erstellen von Schlüsseln
           href: luis-how-to-azure-subscription.md
         - name: Hinzufügen von Schlüsseln in LUIS
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: Anzeigen der Endpunktnutzung mit PowerShell
           href: luis-how-to-manage-from-cloud-shell.md
         - name: Verwalten von Versionen
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Go
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: .NET-Endpunkt

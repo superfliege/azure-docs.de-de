@@ -4,10 +4,10 @@
 ### Übersicht und Vorteile  
 ### Storefronts  
 #### [Vergleich von AppSource und Marketplace](./comparing-appsource-azure-marketplace.md)  
-#### [Steigern des Wachstums mit AppSource](./grow-your-business-with-appsource.md)  
+#### [Steigern des Wachstums mit AppSource](./grow-your-business-with-appsource.md) 
+#### [Bevorzugte Lösungen](./preferred-solutions.md)
 ##### [Erstellen Ihrer Angebotsseite](./build-your-landing-page.md)  
 ##### [Aktivieren des gemeinsamen Zugriffs auf Leads](./enable-lead-sharing.md)  
-##### [Bevorzugte Lösungen](./preferred-solutions.md)
 ##### [GTM-Vorteile in Marketplace](./gtm-benefits.md)  
 ##### [Steigern Ihres Wachstums mit Microsoft](./promote-your-business-with-microsoft.md)  
 #### [Fördern des Unternehmenswachstums mit Azure Marketplace](./grow-your-business-with-azure-marketplace.md)  
