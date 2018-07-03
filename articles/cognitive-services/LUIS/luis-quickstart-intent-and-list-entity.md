@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 33394dff1091f27c79c74d8648a90724ba8d6698
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264826"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335821"
 ---
 # <a name="tutorial-create-app-using-a-list-entity"></a>Tutorial: Erstellen einer App mit einer Listenentität
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie Daten abrufen, die mit Angaben in einer vordefinierten Liste übereinstimmen. 
@@ -22,154 +22,126 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Verstehen von Listenentitäten 
-> * Erstellen einer neuen LUIS-App für den Getränkebereich mit OrderDrinks-Absicht
-> * Hinzufügen der Absicht _None_ (Keine) und Hinzufügen von Beispielen für Äußerungen
-> * Hinzufügen einer Listenentität zum Extrahieren von Getränkeelementen aus einer Äußerung
+> * Erstellen einer neuen LUIS-App für den Personalbereich mit MoveEmployee-Absicht
+> * Hinzufügen einer Listenentität zum Extrahieren des Mitarbeiters aus einer Äußerung
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto, um Ihre LUIS-Anwendung erstellen zu können.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Falls Sie nicht über die Personal-App aus [Tutorial: Verwenden einer Entität vom Typ „Regulärer Ausdruck“](luis-quickstart-intents-regex-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json).
+
+Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `list`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
 ## <a name="purpose-of-the-list-entity"></a>Zweck der Listenentität
-Mit dieser App können Bestellungen für Getränke aufgenommen, z.B. `1 coke and 1 milk please`, und die entsprechenden Daten zurückgegeben werden, z.B. die Art des Getränks. Eine Entität vom Typ **list** (Liste) für Getränke sucht nach genauen Textübereinstimmungen und gibt diese zurück. 
+Mit dieser App werden Äußerungen zur Verschiebung eines Mitarbeiters von einem Gebäude in ein anderes vorhergesagt. Diese App nutzt eine Listenentität zum Extrahieren eines Mitarbeiters. Auf den Mitarbeiter kann per Name, Telefonnummer, E-Mail-Adresse oder US-Sozialversicherungsnummer verwiesen werden. 
 
-Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn die Datenwerte bekannt sind. Die Namen von Getränken können variieren und auch umgangssprachliche Ausdrücke oder Abkürzungen sein, aber die Namen ändern sich nicht häufig. 
+Eine Listenentität kann viele Elemente mit Synonymen für die einzelnen Elemente enthalten. Für kleine oder mittelgroße Unternehmen wird die Listenentität zum Extrahieren der Mitarbeiterinformationen genutzt. 
 
-## <a name="app-intents"></a>App-Absichten
-Die Absichten sind Kategorien für die Wünsche des Benutzers. Die App verfügt über zwei Absichten: „OrderDrink“ (Getränk bestellen) und „None“ (Keine). Die Absicht [None](luis-concept-intent.md#none-intent-is-fallback-for-app) (Keine) dient für alle Zwecke außerhalb der App.  
+Der kanonische Name für die einzelnen Elemente ist die Mitarbeiternummer. Für diese Domäne lauten Beispiele für die Synonyme wie folgt: 
 
-## <a name="list-entity-is-an-exact-text-match"></a>Listenentität ist eine genaue Textübereinstimmung
-Der Zweck der Entität besteht darin, Teile des Texts einer Äußerung zu finden und zu kategorisieren. Mit der Entität [list](luis-concept-entity-types.md) (Liste) können Wörter oder Wortgruppen abgeglichen werden.  
+|Zweck des Synonyms|Wert des Synonyms|
+|--|--|
+|Name|John W. Smith|
+|E-Mail-Adresse|john.w.smith@mycompany.com|
+|Durchwahl|x12345|
+|Persönliche Mobiltelefonnummer|425-555-1212|
+|US-Sozialversicherungsnummer|123-45-6789|
 
-Für diese Getränke-App wird die Getränkebestellung per LUIS so extrahiert, dass eine Standardbestellung erstellt und ausgefüllt werden kann. Bei LUIS können Äußerungen Varianten, Abkürzungen und umgangssprachliche Ausdrücke enthalten. 
+Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes gilt:
 
-Einfache Beispiele für Äußerungen von Benutzern sind:
+* Bei den Datenwerten handelt es sich um einen bekannten Satz.
+* Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
+* Der Text in der Äußerung ist eine genaue Übereinstimmung mit einem Synonym. 
+
+Bei LUIS wird der Mitarbeiter so extrahiert, dass von der Clientanwendung eine Standardreihenfolge zum Verschieben des Mitarbeiters erstellt werden kann.
+<!--
+## Example utterances
+Simple example utterances for a `MoveEmployee` inent:
 
 ```
-2 glasses of milk
-3 bottles of water
-2 cokes
-```
-
-Hier sind einige abgekürzte oder umgangssprachliche Versionen von Äußerungen aufgeführt:
+move John W. Smith from B-1234 to H-4452
+mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ```
-5 milk
-3 h2o
-1 pop
-```
- 
-Die Listenentität ordnet `h2o` der Kategorie „Wasser“ und `pop` der Kategorie „Softdrink“ zu.  
+-->
 
-## <a name="what-luis-does"></a>Vorgehensweise von LUIS
-Nachdem die Absicht und die Entitäten der Äußerung identifiziert, [extrahiert](luis-concept-data-extraction.md#list-entity-data) und im JSON-Format vom [Endpunkt](https://aka.ms/luis-endpoint-apis) zurückgegeben wurden, ist der LUIS-Vorgang abgeschlossen. Die aufrufende Anwendung bzw. der Chatbot verwendet diese JSON-Antwort, um die Anforderung zu erfüllen – jeweils gemäß der Auslegung der App bzw. des Chatbots. 
+## <a name="add-moveemployee-intent"></a>Hinzufügen einer MoveEmployee-Absicht
 
-## <a name="create-a-new-app"></a>Erstellen einer neuen App
-1. Melden Sie sich an der [LUIS][LUIS]-Website an. Achten Sie darauf, sich unter der [Region][LUIS-regions] anzumelden, in der die LUIS-Endpunkte veröffentlicht werden sollen.
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
 
-2. Klicken Sie auf der [LUIS][LUIS]-Website auf **Create new app** (Neue App erstellen).  
+    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png#lightbox)
 
-    ![Erstellen einer neuen App](./media/luis-quickstart-intent-and-list-entity/app-list.png)
+2. Klicken Sie auf **Create new intent** (Neue Absicht erstellen). 
 
-3. Geben Sie im Popupdialogfenster den Namen `MyDrinklist` ein. 
+    [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobener Schaltfläche „Create new intent“ (Neue Absicht erstellen)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png#lightbox)
 
-    ![Name der MyDrinkList-App](./media/luis-quickstart-intent-and-list-entity/create-app-dialog.png)
+3. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployee` ein, und klicken Sie anschließend auf **Fertig**. 
 
-4. Nach Abschluss dieses Vorgangs wird in der App die Seite **Intents** (Absichten) mit der Absicht **None** (Keine) angezeigt. 
+    ![Screenshot: Dialogfenster „Create new intent“ (Neue Absicht erstellen)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
-    [![](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png "Screenshot: Seite mit den Absichten")](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png#lightbox)
+4. Fügen Sie der Absicht Beispieläußerungen hinzu.
 
-## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht
-
-1. Wählen Sie auf der Seite **Absichten** die Option **Create new intent** (Neue Absicht erstellen). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/create-new-intent.png "Screenshot: Seite „Intents“ (Absichten) mit hervorgehobener Schaltfläche „Create new intent“ (Neue Absicht erstellen)")](media/luis-quickstart-intent-and-list-entity/create-new-intent.png#lightbox)
-
-2. Geben Sie den Namen für die neue Absicht ein: `OrderDrinks`. Diese Absicht muss jedes Mal ausgewählt werden, wenn ein Benutzer ein Getränk bestellen möchte.
-
-    Indem Sie eine Absicht erstellen, erstellen Sie auch die primäre Kategorie der zu ermittelnden Informationen. Durch die Benennung der Kategorie können andere Anwendungen, die die Ergebnisse der LUIS-Abfrage nutzen, anhand des Kategorienamens eine passende Antwort finden oder geeignete Aktionen ausführen. LUIS liefert keine Antwort auf die eigentliche Frage, sondern gibt lediglich an, welche Art von Information in natürlicher Sprache erfragt wird. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png "Screenshot: Erstellung der neuen Absicht „OrderDrinks“ (Getränke bestellen)")](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png#lightbox)
-
-3. Fügen Sie der Absicht `OrderDrinks` mehrere voraussichtliche Äußerungen von Benutzern hinzu, z.B.:
-
-    | Beispiele für Äußerungen|
+    |Beispiele für Äußerungen|
     |--|
-    |Please send 2 cokes and a bottle of water to my room (Bitte bringen Sie mir 2 Colas und eine Flasche Wasser auf mein Zimmer)|
-    |2 perriers with a twist of lime (Zweimal Perrier mit Limone)|
-    |h2o (H2O)|
+    |move John W. Smith from B-1234 to H-4452 (John W. Smith von B-1234 nach H-4452 verschieben)|
+    |mv john.w.smith@mycompany.com from office b-1234 to office h-4452 (Verschieben von „john.w.smith@mycompany.com“ von Büro b-1234 in Büro h-4452)|
+    |shift x12345 to h-1234 tomorrow (x12345 morgen nach h-1234 verlagern)|
+    |place 425-555-1212 in HH-2345 (425-555-1212 in HH-2345 anordnen)|
+    |move 123-45-6789 from A-4321 to J-23456 (123-45-6789 von A-4321 nach J-23456 verschieben)|
+    |mv Jill Jones from D-2345 to J-23456 (Verschieben von Jill Jones von D-2345 nach J-23456)|
+    |shift jill-jones@mycompany.com to M-12345 („jill-jones@mycompany.com“ nach M-12345 verlagern)|
+    |x23456 to M-12345 (x23456 nach M-12345)|
+    |425-555-0000 to h-4452 (425-555-0000 nach h-4452)|
+    |234-56-7891 to hh-2345 (234-56-7891 nach hh-2345)|
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png "Screenshot: Eingabe der Äußerung auf der Seite für die Absicht „OrderDrinks“ (Getränke bestellen)")](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png#lightbox)
+    [ ![Screenshot: Seite „Intents“ (Absichten) mit hervorgehobenen neuen Äußerungen](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="add-utterances-to-none-intent"></a>Hinzufügen von Äußerungen zur Absicht „None“ (Keine)
+    Diese Anwendung verfügt über die vordefinierte Zahlenentität aus dem vorherigen Tutorial, sodass jede Nummer über ein Tag verfügt. Unter Umständen reichen diese Informationen für Ihre Clientanwendung bereits aus, aber die Nummer ist nicht mit dem zugehörigen Typ gekennzeichnet. Durch die Erstellung einer neuen Entität mit einem geeigneten Namen kann die Clientanwendung die Entität verarbeiten, wenn sie von LUIS zurückgegeben wird.
 
-Die LUIS-App enthält derzeit keine Äußerungen für die Absicht **None** (Keine). Es sind Äußerungen erforderlich, die die App nicht beantworten soll. Daher müssen Äußerungen für die Absicht **None** (Keine) enthalten sein. Lassen Sie sie nicht leer. 
+## <a name="create-an-employee-list-entity"></a>Erstellen einer Mitarbeiterlistenentität
+Nachdem die Absicht **MoveEmployee** jetzt über Äußerungen verfügt, muss LUIS verstehen, was ein Mitarbeiter ist. 
 
-1. Wählen Sie im linken Bereich **Intents** (Absichten). 
+1. Klicken Sie im linken Bereich auf **Entitäten**.
 
-    [![](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png "Screenshot: Auswahl des Links „Intents“ (Absichten) im linken Bereich")](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png#lightbox)
+    [ ![Screenshot: Seite „Intent“ (Absicht) mit Hervorhebung der Schaltfläche „Entities“ (Entitäten) im linken Navigationsbereich](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png#lightbox)
 
-2. Wählen Sie die Absicht **None** (Keine) aus. Fügen Sie drei Äußerungen hinzu, die der Benutzer unter Umständen eingibt, aber die für Ihre App nicht relevant sind:
+2. Klicken Sie auf **Neue Entität erstellen**.
 
-    | Beispiele für Äußerungen|
-    |--|
-    |Cancel! (Abbrechen!)|
-    |Good bye (Auf Wiedersehen)|
-    |What is going on? (Was ist los?)|
+    [![Screenshot: Seite „Entities“ (Entitäten) mit Hervorhebung von „Neue Entität erstellen“](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png#lightbox)
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Vorhersage der Äußerung für die Absicht „None“ (Keine)
-In der Anwendung, die den LUIS-Dienst aufruft (z.B. ein Chatbot), kann der Bot den Benutzer fragen, ob er die Unterhaltung beenden möchte, wenn LUIS für eine Äußerung die Absicht **None** (Keine) zurückgibt. Der Bot kann außerdem weitere Anweisungen zum Fortsetzen der Unterhaltung geben, falls der Benutzer sie nicht beenden möchte. 
+3. Geben Sie im Popupdialogfeld `Employee` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Fertig**aus.  
 
-Entitäten werden in der Absicht **None** (Keine) verwendet. Wenn die Absicht **None** die höchste Bewertung hat, aber eine Entität extrahiert wird, die für Ihren Chatbot aussagekräftig ist, kann Ihr Chatbot eine Frage zur Absicht des Kunden stellen. 
+    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Screenshot: Popupdialogfeld zur Erstellung einer neuen Entität")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
-## <a name="create-a-menu-entity-from-the-intent-page"></a>Erstellen einer Menüentität über die Seite „Intent“ (Absicht)
-Nachdem die beiden Absichten jetzt über Äußerungen verfügen, muss LUIS wissen, was ein Getränk ist. Navigieren Sie zurück zur Absicht `OrderDrinks`, und kennzeichnen Sie die in einer Äußerung enthaltenen Getränke mit den folgenden Schritten:
+4. Geben Sie auf der Seite mit der Mitarbeiterentität `Employee-24612` als neuen Wert ein.
 
-1. Kehren Sie zur Absicht `OrderDrinks` zurück, indem Sie im linken Bereich **Intents** (Absichten) wählen.
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Screenshot: Eingeben des Werts")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-2. Wählen Sie `OrderDrinks` in der Liste mit den Absichten aus.
+5. Fügen Sie unter „Synonyme“ die folgenden Werte hinzu:
 
-3. Wählen Sie in der Äußerung `Please send 2 cokes and a bottle of water to my room` das Wort `water` aus. Ein Dropdownmenü mit einem darüber angeordneten Textfeld zum Erstellen einer neuen Entität wird angezeigt. Geben Sie den Entitätsnamen `Drink` in das Textfeld ein, und wählen Sie dann im Dropdownmenü die Option **Create new entity** (Neue Entität erstellen). 
+    |Zweck des Synonyms|Wert des Synonyms|
+    |--|--|
+    |NAME|John W. Smith|
+    |E-Mail-Adresse|john.w.smith@mycompany.com|
+    |Durchwahl|x12345|
+    |Persönliche Mobiltelefonnummer|425-555-1212|
+    |US-Sozialversicherungsnummer|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png "Screenshot: Erstellung einer neuen Entität durch Auswahl des in der Äußerung enthaltenen Worts")](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png#lightbox)
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Screenshot: Eingeben von Synonymen")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
 
-4. Wählen Sie im Popupfenster den Entitätstyp **List** (Liste) aus. Fügen Sie das Synonym `h20` hinzu. Drücken Sie nach jedem Synonym die EINGABETASTE. Fügen Sie der Synonymliste nicht das Wort `perrier` hinzu. Es wird im nächsten Schritt als Beispiel hinzugefügt. Wählen Sie **Fertig**aus.
+6. Geben Sie `Employee-45612` als neuen Wert ein.
 
-    [![](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png "Screenshot: Konfiguration der neuen Entität")](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png#lightbox)
+7. Fügen Sie unter „Synonyme“ die folgenden Werte hinzu:
 
-5. Nachdem die Entität nun erstellt wurde, können Sie die anderen Synonyme für Wasser angeben, indem Sie sie jeweils auswählen und in der Dropdownliste dann `Drink` wählen. Navigieren Sie im Menü nach rechts, und wählen Sie dann `Set as synonym` und `water` aus.
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png "Screenshot: Kennzeichnen der Äußerung mit einer vorhandenen Entität")](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png#lightbox)
-
-## <a name="modify-the-list-entity-from-the-entity-page"></a>Ändern der Listenentität über die Seite „Entity“ (Entität)
-Die Entität mit der Getränkeliste wird erstellt, aber sie enthält nicht viele Elemente und Synonyme. Wenn Sie einige Begriffe, Abkürzungen und umgangssprachliche Ausdrücke kennen, geht es schneller, die Liste auf der Seite **Entity** (Entität) auszufüllen. 
-
-1. Wählen Sie im linken Bereich die Option **Entities** (Entitäten).
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png "Screenshot: Auswahl von „Entities“ (Entitäten) im linken Bereich")](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png#lightbox)
-
-2. Wählen Sie in der Liste mit den Entitäten die Option `Drink`.
-
-    [![](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png "Screenshot: Auswahl der Entität „Drink“ (Getränk) in der Liste mit den Entitäten")](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png#lightbox)
-
-3. Geben Sie im Textfeld `Soda pop` ein, und drücken Sie anschließend die EINGABETASTE. Dies ist eine Bezeichnung, die im Englischen für kohlensäurehaltige Getränke verwendet wird. In allen Kulturen gibt es eine besondere umgangssprachliche Bezeichnung für diese Art von Getränk.
-
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png "Screenshot: Eingabe des kanonischen Namens")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png#lightbox)
-
-4. Geben Sie in derselben Zeile wie `Soda pop` Synonyme ein, z.B.: 
-
-    ```
-    coke
-    cokes
-    coca-cola
-    coca-colas
-    ```
-
-    Die Synonyme können Wortgruppen, Satzzeichen, Possessivformen und Pluralbildung umfassen. Da für die Listenentität eine genaue Textübereinstimmung erforderlich ist (mit Ausnahme der Groß-/Kleinschreibung), müssen für die Synonyme alle Varianten angegeben werden. Sie können die Liste erweitern, wenn Sie über die Abfrageprotokolle oder nach einer Prüfung der Endpunktprotokolle weitere Varianten ermitteln. 
-
-    Dieser Artikel enthält nur einige Synonyme, um das Beispiel kurz zu halten. Eine LUIS-App für die Produktionsebene sollte über viele Synonyme verfügen und regelmäßig überprüft und erweitert werden. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png "Screenshot: Hinzufügen von Synonymen")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png#lightbox)
+    |Zweck des Synonyms|Wert des Synonyms|
+    |--|--|
+    |NAME|Jill Jones|
+    |E-Mail-Adresse|jill-jones@mycompany.com|
+    |Durchwahl|x23456|
+    |Persönliche Mobiltelefonnummer|425-555-0000|
+    |US-Sozialversicherungsnummer|234-56-7891|
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell) informiert, nachdem der Dienst trainiert wurde. 
@@ -196,77 +168,140 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Anwendung abr
 3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
-1. Klicken Sie unten auf der Seite **Publish** (Veröffentlichen) auf den Link **Endpoint** (Endpunkt). Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
     [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "Screenshot: Endpunkt-URL auf der Seite „Publish“ (Veröffentlichen)")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)
 
-2. Geben Sie in der Adressleiste am Ende der URL `2 cokes and 3 waters` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der gekennzeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `OrderDrinks` mit den beiden Getränkearten `cokes` und `waters` zurückgeben.
+2. Geben Sie in der Adressleiste am Ende der URL `shift 123-45-6789 from Z-1242 to T-54672` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die Absicht `MoveEmployee` mit Extrahierung von `Employee` zurückgegeben werden.
 
-```
+```JSON
 {
-  "query": "2 cokes and 3 waters",
+  "query": "shift 123-45-6789 from Z-1242 to T-54672",
   "topScoringIntent": {
-    "intent": "OrderDrinks",
-    "score": 0.999998569
+    "intent": "MoveEmployee",
+    "score": 0.9882801
   },
   "intents": [
     {
-      "intent": "OrderDrinks",
-      "score": 0.999998569
+      "intent": "MoveEmployee",
+      "score": 0.9882801
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.016044287
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.007611245
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.007063288
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00684710965
     },
     {
       "intent": "None",
-      "score": 0.23884207
+      "score": 0.00304174074
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.002981
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00212222221
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00191026414
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0007461446
     }
   ],
   "entities": [
     {
-      "entity": "cokes",
-      "type": "Drink",
-      "startIndex": 2,
-      "endIndex": 6,
+      "entity": "123 - 45 - 6789",
+      "type": "Employee",
+      "startIndex": 6,
+      "endIndex": 16,
       "resolution": {
         "values": [
-          "Soda pop"
+          "Employee-24612"
         ]
       }
     },
     {
-      "entity": "waters",
-      "type": "Drink",
-      "startIndex": 14,
-      "endIndex": 19,
+      "entity": "123",
+      "type": "builtin.number",
+      "startIndex": 6,
+      "endIndex": 8,
       "resolution": {
-        "values": [
-          "h20"
-        ]
+        "value": "123"
+      }
+    },
+    {
+      "entity": "45",
+      "type": "builtin.number",
+      "startIndex": 10,
+      "endIndex": 11,
+      "resolution": {
+        "value": "45"
+      }
+    },
+    {
+      "entity": "6789",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 16,
+      "resolution": {
+        "value": "6789"
+      }
+    },
+    {
+      "entity": "-1242",
+      "type": "builtin.number",
+      "startIndex": 24,
+      "endIndex": 28,
+      "resolution": {
+        "value": "-1242"
+      }
+    },
+    {
+      "entity": "-54672",
+      "type": "builtin.number",
+      "startIndex": 34,
+      "endIndex": 39,
+      "resolution": {
+        "value": "-54672"
       }
     }
   ]
 }
 ```
 
+Der Mitarbeiter wurde gefunden und mit dem Typ `Employee` mit dem Auflösungswert `Employee-24612` zurückgegeben.
+
 ## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Wo wird für die Listenentität die Verarbeitung natürlicher Sprache durchgeführt? 
-Da für die Listenentität eine genaue Textübereinstimmung erforderlich ist, wird keine Verarbeitung von natürlicher Sprache durchgeführt (und auch kein maschinelles Lernen). Die Verarbeitung natürlicher Sprache (bzw. maschinelles Lernen) wird für LUIS verwendet, um die richtige Absicht mit der höchsten Bewertung auszuwählen. Darüber hinaus kann eine Äußerung eine Mischung von mehr als einer Entität oder sogar mehr als einem Entitätstyp sein. Jede Äußerung wird für alle Entitäten der App verarbeitet, einschließlich der Entitäten, die auf der Verarbeitung natürlicher Sprache (oder maschinellem Lernen) basieren, z.B. der Entität **Simple** (Einfach).
+Da für die Listenentität eine genaue Textübereinstimmung erforderlich ist, wird keine Verarbeitung von natürlicher Sprache durchgeführt (und auch kein maschinelles Lernen). Die Verarbeitung natürlicher Sprache (bzw. maschinelles Lernen) wird für LUIS verwendet, um die richtige Absicht mit der höchsten Bewertung auszuwählen. Darüber hinaus kann eine Äußerung eine Mischung von mehr als einer Entität oder sogar mehr als einem Entitätstyp sein. Jede Äußerung wird für alle Entitäten der App verarbeitet, einschließlich der Entitäten, die auf der Verarbeitung natürlicher Sprache (oder maschinellem Lernen) basieren.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit nur zwei Absichten und einer Listenentität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
+Mit dieser App wurde basierend auf einer Listenentität der richtige Mitarbeiter extrahiert. 
 
-Ihr Chatbot verfügt jetzt über genügend Informationen, um ermitteln zu können, welche Hauptaktion (`OrderDrinks`) durchgeführt werden soll und welche Arten von Getränken über die Listenentität „Drink“ (Getränk) bestellt wurden. 
+Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (`MoveEmployee`) und den Mitarbeiter für den Verschiebevorgang zu ermitteln. 
 
 ## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls sie nicht mehr benötigt wird. Klicken Sie hierzu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Delete** (Löschen). Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie, wie Sie eine Entität vom Typ „Regulärer Ausdruck“ hinzufügen](luis-quickstart-intents-regex-entity.md)
+> [Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md)
 
-Fügen Sie die [vordefinierte Entität](luis-how-to-add-entities.md#add-prebuilt-entity) **number** (Anzahl) zum Extrahieren der Anzahl hinzu. 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

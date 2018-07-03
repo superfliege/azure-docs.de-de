@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/23/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dab7fac1f28f70a58865ca3a09ad46884d4ac8d5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 895665eef722e81030d9699c1a6c75455493bae9
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266929"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317843"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -58,19 +58,19 @@ In diesem Tutorial wird veranschaulicht, wie Sie einen einzelnen virtuellen Comp
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Im ersten Bereitstellungsschritt richten Sie Ihre Quellumgebung ein. Sie benötigen eine einzelne, hochverfügbare, lokale VMware-VM, um lokale Site Recovery-Komponenten zu hosten. Die Komponenten umfassen den Konfigurationsserver, den Prozessserver und den Masterzielserver:
+Im ersten Bereitstellungsschritt richten Sie Ihre Quellumgebung ein. Sie benötigen eine einzelne, hoch verfügbare, lokale VMware-VM, um lokale Site Recovery-Komponenten zu hosten. Die Komponenten umfassen den Konfigurationsserver, den Prozessserver und den Masterzielserver:
 
 - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
 - Der Prozessserver fungiert als Replikationsgateway. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage. Der Prozessserver installiert auch Mobility Service auf virtuellen Computern, die Sie replizieren möchten, und führt auf lokalen VMware-VMs eine automatische Ermittlung durch.
 - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
 
-Um den Konfigurationsserver als hochverfügbaren virtuellen VMware-Computer einzurichten, laden Sie eine vorbereitete OVF-Vorlage (Open Virtualization Format) herunter und importieren sie in VMware, um den virtuellen Computer zu erstellen. Registrieren Sie den eingerichteten Konfigurationsserver anschließend beim Tresor. Nach der Registrierung ermittelt Site Recovery lokale virtuelle VMware-Computer.
+Zum Einrichten des Konfigurationsservers als hoch verfügbaren virtuellen VMware-Computer laden Sie eine vorbereitete OVA-Vorlage (Open Virtualization Application) herunter und importieren sie in VMware, um den virtuellen Computer zu erstellen. Registrieren Sie den eingerichteten Konfigurationsserver anschließend beim Tresor. Nach der Registrierung ermittelt Site Recovery lokale virtuelle VMware-Computer.
 
 > [!TIP]
-> In diesem Tutorial wird eine OVF-Vorlage verwendet, um den virtuellen Computer für den VMware-Konfigurationsserver zu erstellen. Kann sie nicht verwendet werden, können Sie [den Konfigurationsserver manuell einrichten](physical-manage-configuration-server.md). 
+> In diesem Tutorial wird eine OVA-Vorlage verwendet, um den virtuellen Computer für den VMware-Konfigurationsserver zu erstellen. Kann sie nicht verwendet werden, können Sie [den Konfigurationsserver manuell einrichten](physical-manage-configuration-server.md).
 
 > [!TIP]
-> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#prepare-for-mysql-installation)
+> In diesem Tutorial lädt Site Recovery MySQL herunter und installiert MySQL auf dem Konfigurationsserver. Falls Site Recovery diese Schritte nicht ausführen soll, können Sie die Einrichtung manuell vornehmen. [Weitere Informationen](vmware-azure-deploy-configuration-server.md#configure-settings)
 
 
 ### <a name="download-the-vm-template"></a>Herunterladen der Vorlage
@@ -78,10 +78,13 @@ Um den Konfigurationsserver als hochverfügbaren virtuellen VMware-Computer einz
 1. Navigieren Sie im Tresor zu **Infrastruktur vorbereiten** > **Quelle**.
 2. Klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver**.
 3. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver für VMware** angezeigt wird.
-4. Laden Sie die OVF-Vorlage für den Konfigurationsserver herunter. Mit der Vorlage wird eine Evaluierungslizenz bereitgestellt, die 100 Tage lang gültig ist. Nach diesem Zeitraum müssen Sie eine Lizenz erwerben.
+4. Laden Sie die OVF-Vorlage für den Konfigurationsserver herunter.
 
-  > [!TIP]
-  Die neueste Version der Konfigurationsservervorlage können Sie direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
+ > [!TIP]
+ >Die neueste Version der Konfigurationsservervorlage können Sie direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
+
+>[!NOTE]
+Die mit der OVF-Vorlage bereitgestellte Vorlage ist eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Der Kunde muss die Fenster mit einer bezogenen Lizenz aktivieren.
 
 ## <a name="import-the-template-in-vmware"></a>Importieren der Vorlage in VMware
 
@@ -133,8 +136,8 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 8. Geben Sie unter **Anmeldeinformationen für virtuelle Computer konfigurieren** den Benutzernamen und das Kennwort an, die für die automatische Installation von Mobility Service auf virtuellen Computern verwendet werden sollen, wenn die Replikation aktiviert ist.
     - Für Windows-Computer benötigt das Konto lokale Administratorrechte auf den Computern, die Sie replizieren möchten.
     - Bei Linux geben Sie die Anmeldeinformationen für das root-Konto an.
-1. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen. 
-2. Überprüfen Sie nach Abschluss der Registrierung im Azure-Portal, ob der Konfigurationsserver und der VMware-Server auf der Seite **Quelle** im Tresor aufgeführt werden. Klicken Sie dann auf **OK**, um die Einstellungen für das Ziel zu konfigurieren.
+9. Klicken Sie auf **Konfiguration abschließen**, um die Registrierung abzuschließen.
+10. Überprüfen Sie nach Abschluss der Registrierung im Azure-Portal, ob der Konfigurationsserver und der VMware-Server auf der Seite **Quelle** im Tresor aufgeführt werden. Klicken Sie dann auf **OK**, um die Einstellungen für das Ziel zu konfigurieren.
 
 
 Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit VMware-Servern her und ermittelt virtuelle Computer.
@@ -147,7 +150,7 @@ Site Recovery stellt mithilfe der angegebenen Einstellungen eine Verbindung mit 
 Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**. Wählen Sie das Azure-Abonnement aus, das Sie verwenden möchten. Hier wird ein Resource Manager-Modell verwendet.
-1. Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen. Diese sollten vorhanden sein, wenn Sie die Azure-Komponenten im [ersten Tutorial](tutorial-prepare-azure.md) in dieser Tutorialreihe eingerichtet haben.
+2. Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen. Diese sollten vorhanden sein, wenn Sie die Azure-Komponenten im [ersten Tutorial](tutorial-prepare-azure.md) in dieser Tutorialreihe eingerichtet haben.
 
    ![Registerkarte „Ziel“](./media/vmware-azure-tutorial/storage-network.png)
 
@@ -168,8 +171,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
-
-Aktivieren Sie die Replikation:
+Sie können die Replikation wie folgt durchführen:
 
 1. Klicken Sie auf **Anwendung replizieren** > **Quelle**.
 2. Wählen Sie unter **Quelle** die Option **Lokal** und dann unter **Quellpfad** den Konfigurationsserver aus.
@@ -178,13 +180,12 @@ Aktivieren Sie die Replikation:
 5. Wählen Sie den Prozessserver aus (wird standardmäßig auf dem virtuellen Computer mit dem Konfigurationsserver installiert). Wählen Sie dann **OK**aus.
 6. Wählen Sie unter **Ziel** das Abonnement und die Ressourcengruppe aus, in dem bzw. in der Sie die virtuellen Computer erstellen möchten, für die ein Failover durchgeführt wurde. Hier wird das Resource Manager-Bereitstellungsmodell verwendet. 
 7. Wählen Sie das Azure-Speicherkonto, das zum Replizieren von Daten verwendet werden soll, sowie das Azure-Netzwerk und -Subnetz aus, mit dem virtuelle Azure-Computer, die nach einem Failover erstellt werden, eine Verbindung herstellen sollen.
-1. Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellungen auf alle virtuellen Computer anzuwenden, auf denen Sie die Replikation aktivieren. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen.
-2. Wählen Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen** die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Wählen Sie dann **OK**aus.
-3. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren von Mobility Service auf dem Computer verwenden soll.
-4. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist.
-5. Klicken Sie auf **Replikation aktivieren**. Site Recovery installiert den Mobility Service, wenn die Replikation für einen virtuellen Computer aktiviert wird.
-6. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
-
+8. Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren** aus, um die Netzwerkeinstellungen auf alle virtuellen Computer anzuwenden, auf denen Sie die Replikation aktivieren. Wählen Sie **Später konfigurieren** aus, um das Azure-Netzwerk pro Computer auszuwählen.
+9. Wählen Sie auf **Virtuelle Computer** > **Virtuelle Computer auswählen** die Computer aus, die Sie replizieren möchten. Sie können nur Computer auswählen, für die die Replikation aktiviert werden kann. Wählen Sie dann **OK**aus.
+10. Wählen Sie unter **Eigenschaften** > **Eigenschaften konfigurieren** das Konto aus, das der Prozessserver zum automatischen Installieren von Mobility Service auf dem Computer verwenden soll.
+11. Überprüfen Sie unter **Replikationseinstellungen** > **Replikationseinstellungen konfigurieren**, ob die richtige Replikationsrichtlinie ausgewählt ist.
+12. Klicken Sie auf **Replikation aktivieren**. Site Recovery installiert den Mobility Service, wenn die Replikation für einen virtuellen Computer aktiviert wird.
+13. Sie können den Fortschritt des Auftrags **Schutz aktivieren** unter **Einstellungen** > **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 - Es kann länger als 15 Minuten dauern, bis die Änderungen wirksam und im Portal angezeigt werden.
 - Überprüfen Sie zur Überwachung der hinzugefügten virtuellen Computer den Zeitpunkt der letzten Ermittlung für virtuelle Computer unter **Konfigurationsserver** > **Letzter Kontakt um**. Wenn Sie virtuelle Computer hinzufügen möchten, ohne auf die geplante Ermittlung zu warten, markieren Sie den Konfigurationsserver (wählen Sie ihn aber nicht aus), und klicken Sie auf **Aktualisieren**.
 

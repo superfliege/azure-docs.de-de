@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266497"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335559"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Tutorial: Erstellen einer App mit einer Entität vom Typ „Hierarchisch“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie anhand des Kontexts nach zusammengehörenden Datenelementen suchen. 
@@ -22,140 +22,111 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Grundlegendes zu hierarchischen Entitäten und aus dem Kontext erschlossenen Unterelementen 
-> * Erstellen einer neuen LUIS-App für den Reisebereich mit der Absicht „BookFlight“ (Flug buchen)
-> * Hinzufügen der Absicht _None_ (Keine) und Hinzufügen von Beispielen für Äußerungen
+> * Verwenden der LUIS-App im Personalbereich 
 > * Hinzufügen einer hierarchischen Standortentität mit Unterelementen zu Abflug- und Zielort
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort, einschließlich hierarchischer untergeordneter Elemente 
 
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
+## <a name="before-you-begin"></a>Voraussetzungen
+Falls Sie nicht über die Personal-App aus dem [Tutorial zu Listenentitäten](luis-quickstart-intent-and-list-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json).
+
+Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `hier`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>Zweck der App mit dieser Entität
-Mit dieser App wird ermittelt, ob ein Benutzer einen Flug buchen möchte. Sie nutzt die hierarchische Entität, um die Standorte (den Abflugort und den Zielort) im Text des Benutzers zu ermitteln. 
+Mit dieser App wird ermittelt, wie ein Mitarbeiter vom Ursprungsort (Gebäude und Büro) an den Zielort (Gebäude und Büro) verschoben wird. Hierbei wird die hierarchische Entität verwendet, um die Orte in der Äußerung zu ermitteln. 
 
 Die hierarchische Entität ist eine gute Wahl für diese Art von Daten, da für die beiden Datentypen Folgendes gilt:
 
-* Beides sind Standorte, die normalerweise als Städte oder Flughafencodes angegeben werden.
-* Normalerweise werden eindeutige Wörter gewählt, sodass ermittelt werden kann, was der Abflug- und was der Zielort ist. Beispiele für diese Wörter sind: nach, Ziel, von, Abflug.
+* Sie sind im Kontext der Äußerung miteinander verknüpft.
+* Es werden bestimmte Wörter gewählt, um die einzelnen Orte zu nennen. Beispiele für diese Wörter sind: von/nach, Verlassen/Ziel.
 * Beide Standorte sind häufig Teil derselben Äußerung. 
 
 Der Zweck der Entität **hierarchical** (Hierarchisch) besteht darin, in der Äußerung anhand des Kontexts nach zusammengehörenden Daten zu suchen. Wir verwenden als Beispiel die folgende Äußerung:
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-In der Äußerung werden zwei Orte angegeben. Dies sind der Abflugort „Seattle“ und der Zielort „Kairo“. Beide Städtenamen sind wichtig, um einen Flug buchen zu können. Sie können zwar auch mit einfachen Entitäten gefunden werden, aber sie gehören zusammen und sind häufig in derselben Äußerung enthalten. Daher ist es sinnvoll, beide als untergeordnete Elemente der hierarchischen Entität **Location** (Standort) zu gruppieren. 
-
-Da auf maschinellem Lernen basierende Entitäten verwendet werden, benötigt die App Beispieläußerungen, für die jeweils der Abflug- und Zielort angegeben ist. So kann LUIS lernen, wo sich die Entitäten in den Äußerungen befinden, wie lang sie sind und welche Wörter in der Nähe vorkommen. 
-
-## <a name="app-intents"></a>App-Absichten
-Die Absichten sind Kategorien für die Wünsche des Benutzers. Diese App verfügt über zwei Absichten: „BookFlight“ (Flug buchen) und „None“ (Keine). Die Absicht [None](luis-concept-intent.md#none-intent-is-fallback-for-app) (Keine) dient für alle Zwecke außerhalb der App.  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>Aus dem Kontext erschlossene hierarchische Entität 
-Der Zweck der Entität besteht darin, Teile des Texts einer Äußerung zu finden und zu kategorisieren. Eine Entität vom Typ [hierarchical](luis-concept-entity-types.md) (Hierarchisch) basiert auf dem Kontext der Wortverwendung. Eine Person kann den Abflug- und Zielort anhand der Verwendung von `to` (nach) und `from` (von) ermitteln. Dies ist ein Beispiel für die kontextabhängige Verwendung.  
-
-Für diese Reise-App wird der Abflug- und Zielort von LUIS so extrahiert, dass eine Standardreservierung erstellt und ausgefüllt werden kann. Bei LUIS können Äußerungen Varianten, Abkürzungen und umgangssprachliche Ausdrücke enthalten. 
-
-Einfache Beispiele für Äußerungen von Benutzern sind:
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-Hier sind einige abgekürzte oder umgangssprachliche Versionen von Äußerungen aufgeführt:
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+In der Äußerung werden zwei Orte angegeben: `a-2349` und `b-1298`. Gehen Sie davon aus, dass der Buchstabe für einen Gebäudenamen und die Zahl für ein Büro in diesem Gebäude steht. Es ist sinnvoll, dass beide Elemente als untergeordnete Elemente einer hierarchischen Entität (`Locations`) gruppiert sind, da beide Datenelemente aus der Äußerung extrahiert werden müssen und miteinander verwandt sind. 
  
-Die hierarchische Entität gleicht den Abflug- und Zielort ab. Wenn nur ein untergeordnetes Element (Abflug oder Ziel) einer hierarchischen Entität vorhanden ist, wird es trotzdem extrahiert. Es müssen nicht alle untergeordneten Elemente gefunden werden, um nur ein bzw. einige Elemente extrahieren zu können. 
+Wenn nur ein untergeordnetes Element (Abflug oder Ziel) einer hierarchischen Entität vorhanden ist, wird es trotzdem extrahiert. Es müssen nicht alle untergeordneten Elemente gefunden werden, um nur ein bzw. einige Elemente extrahieren zu können. 
 
-## <a name="what-luis-does"></a>Vorgehensweise von LUIS
-Nachdem die Absicht und die Entitäten der Äußerung identifiziert, [extrahiert](luis-concept-data-extraction.md#list-entity-data) und im JSON-Format vom [Endpunkt](https://aka.ms/luis-endpoint-apis) zurückgegeben wurden, ist der LUIS-Vorgang abgeschlossen. Die aufrufende Anwendung bzw. der Chatbot verwendet diese JSON-Antwort, um die Anforderung zu erfüllen – jeweils gemäß der Auslegung der App bzw. des Chatbots. 
+## <a name="remove-prebuilt-number-entity-from-app"></a>Entfernen der vordefinierten Zahlenentität aus der App
+Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Äußerung anzuzeigen und die untergeordneten Elemente der Hierarchie zu kennzeichnen.
 
-## <a name="create-a-new-app"></a>Erstellen einer neuen App
-1. Melden Sie sich an der [LUIS][LUIS]-Website an. Achten Sie darauf, sich unter der [Region][LUIS-regions] anzumelden, in der die LUIS-Endpunkte veröffentlicht werden sollen.
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
 
-2. Klicken Sie auf der [LUIS][LUIS]-Website auf **Create new app** (Neue App erstellen).  
+    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "Screenshot: Seite mit App-Listen")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. Wählen Sie im linken Menü die Option **Entitäten**.
 
-3. Geben Sie im Popupdialogfenster den Namen `MyTravelApp` ein. 
+    [![Screenshot: LUIS-App mit Hervorhebung der Schaltfläche „Entities“ (Entitäten) im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "Screenshot: Popupdialogfenster zum Erstellen einer neuen App")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. Nach Abschluss dieses Vorgangs wird in der App die Seite **Intents** (Absichten) mit der Absicht **None** (Keine) angezeigt. 
+3. Wählen Sie die drei Punkte (...) rechts von der Zahlenentität in der Liste aus. Klicken Sie auf **Löschen**. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "Screenshot: Liste „Intents“ (Absichten), die nur die Absicht „None“ (Keine) enthält")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![Screenshot: LUIS-App auf der Seite mit den Entitäten mit Hervorhebung der Löschschaltfläche für die vordefinierte Zahlenentität](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht
 
-1. Wählen Sie auf der Seite **Absichten** die Option **Create new intent** (Neue Absicht erstellen). 
+## <a name="add-utterances-to-findform-intent"></a>Hinzufügen von Äußerungen zur FindForm-Absicht
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "Screenshot: Liste „Intents“ (Absichten) mit Hervorhebung der Schaltfläche „Create new intent“ (Neue Absicht erstellen)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. Wählen Sie im linken Menü die Option **Absichten**.
 
-2. Geben Sie den neuen Namen für die Absicht ein: `BookFlight`. Diese Absicht sollte immer ausgewählt werden, wenn ein Benutzer Flugreservierungen durchführen möchte.
+    [ ![Screenshot: LUIS-App mit Hervorhebung von „Intents“ (Absichten) im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    Indem Sie eine Absicht erstellen, erstellen Sie auch die primäre Kategorie der zu ermittelnden Informationen. Durch die Benennung der Kategorie können andere Anwendungen, die die Ergebnisse der LUIS-Abfrage nutzen, anhand des Kategorienamens eine passende Antwort finden oder geeignete Aktionen ausführen. LUIS liefert keine Antwort auf die eigentliche Frage, sondern gibt lediglich an, welche Art von Information in natürlicher Sprache erfragt wird. 
+2. Wählen Sie in der Liste mit den Absichten die Option **MoveEmployee**.
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "Screenshot: Popupdialogfenster „Create new intent“ (Neue Absicht erstellen)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [![Screenshot: LUIS-App mit Hervorhebung der MoveEmployee-Absicht im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. Fügen Sie der Absicht `BookFlight` mehrere voraussichtliche Äußerungen von Benutzern hinzu, z.B.:
+3. Fügen Sie die folgenden Beispieläußerungen hinzu:
 
-    | Beispiele für Äußerungen|
+    |Beispiele für Äußerungen|
     |--|
-    |Book 2 flights from Seattle to Cairo next Monday (Buchung von 2 Flügen von Seattle nach Kairo am nächsten Montag)|
-    |Reserve a ticket to London tomorrow (Reservierung eines Flugtickets nach London für morgen)|
-    |Schedule 4 seats from Paris to London for April 1 (4 Plätze von Paris nach London für den 1. April reservieren)|
+    |Move John W. Smith **to** a-2345 (John W. Smith „nach“ a-2345 verschieben)|
+    |Direct Jill Jones **to** b-3499 (Jill Jones „nach“ b-3499 leiten)|
+    |Organize the move of x23456 **from** hh-2345 **to** e-0234 (Verschiebung von x23456 „von“ hh-2345 „nach“ e-0234 organisieren)|
+    |Begin paperwork to set x12345 **leaving** a-3459 **headed to** f-34567 (Mit Bearbeitung der Unterlagen für x12345 zum „Verlassen“ von a-3459 mit dem „Ziel“ f-34567 beginnen)|
+    |Displace 425-555-0000 **away from** g-2323 **toward** hh-2345 (Verschieben von 425-555-0000 „von“ g-2323 „nach“ hh-2345)|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "Screenshot: Eingabe von Äußerungen auf der Seite mit der Absicht „BookFlight“ (Flug buchen)")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    Im Tutorial zur [Listenentität](luis-quickstart-intent-and-list-entity.md) kann ein Mitarbeiter anhand von Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer oder US-Sozialversicherungsnummer bezeichnet werden. Diese Mitarbeiternummern werden in den Äußerungen verwendet. Die obigen Beispieläußerungen enthalten unterschiedliche Möglichkeiten zum Notieren der Ursprungs- und Zielorte (fett markiert). Zwei Äußerungen verfügen absichtlich nur über ein Ziel. So kann LUIS besser verstehen, wo diese Orte in der Äußerung angeordnet sind, wenn der Ursprungsort nicht enthalten ist.
 
-## <a name="add-utterances-to-none-intent"></a>Hinzufügen von Äußerungen zur Absicht „None“ (Keine)
+    [![Screenshot: LUIS mit neuen Äußerungen in der MoveEmployee-Absicht](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-Die LUIS-App enthält derzeit keine Äußerungen für die Absicht **None** (Keine). Es sind Äußerungen erforderlich, die die App nicht beantworten soll. Daher müssen Äußerungen für die Absicht **None** (Keine) enthalten sein. Lassen Sie sie nicht leer. 
+## <a name="create-a-location-entity"></a>Erstellen einer Entität für den Ort
+LUIS muss verstehen, was ein Ort ist, indem der Ursprung und das Ziel in den Äußerungen gekennzeichnet werden. Wenn Sie die Äußerung in der Tokenansicht (unformatiert) anzeigen möchten, können Sie den Umschalter in der Liste oberhalb der Äußerungen mit der Bezeichnung **Entities View** (Entitätsansicht) wählen. Nach dem Umschalten hat das Steuerelement die Bezeichnung **Tokens View** (Tokenansicht).
 
-1. Wählen Sie im linken Bereich **Intents** (Absichten). 
+1. Wählen Sie in der Äußerung `Displace 425-555-0000 away from g-2323 toward hh-2345` das Wort `g-2323` aus. Ein Dropdownmenü mit einem darüber angeordneten Textfeld wird angezeigt. Geben Sie den Entitätsnamen `Locations` in das Textfeld ein, und wählen Sie dann im Dropdownmenü die Option **Create new entity** (Neue Entität erstellen). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "Screenshot: Seite mit Absicht „BookFlight“ (Flug buchen) mit Hervorhebung der Schaltfläche „Intents“ (Absichten)")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Screenshot: Erstellung einer neuen Entität auf der Seite mit der Absicht")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. Wählen Sie die Absicht **None** (Keine) aus. Fügen Sie drei Äußerungen hinzu, die der Benutzer unter Umständen eingibt, aber die für Ihre App nicht relevant sind:
+2. Wählen Sie im Popupfenster den Entitätstyp **Hierarchical** (Hierarchisch) mit `Origin` und `Destination` als untergeordnete Elemente aus. Wählen Sie **Fertig**aus.
 
-    | Beispiele für Äußerungen|
-    |--|
-    |Cancel! (Abbrechen!)|
-    |Good bye (Auf Wiedersehen)|
-    |What is going on? (Was ist los?)|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Screenshot: Popupdialogfeld zur Entitätserstellung für die neue Entität „Location“ (Standort)")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Vorhersage der Äußerung für die Absicht „None“ (Keine)
-In der Anwendung, die den LUIS-Dienst aufruft (z.B. ein Chatbot), kann der Bot den Benutzer fragen, ob er die Unterhaltung beenden möchte, wenn LUIS für eine Äußerung die Absicht **None** (Keine) zurückgibt. Der Bot kann außerdem weitere Anweisungen zum Fortsetzen der Unterhaltung geben, falls der Benutzer sie nicht beenden möchte. 
+3. Die Bezeichnung für `g-2323` ist als `Locations` gekennzeichnet, da LUIS nicht weiß, ob es sich hierbei um den Abflugort, Zielort oder einen anderen Ort handelt. Wählen Sie `g-2323` und dann **Locations**. Navigieren Sie im Menü nach rechts, und wählen Sie `Origin`.
 
-Entitäten werden in der Absicht **None** (Keine) verwendet. Wenn die Absicht **None** die höchste Bewertung hat, aber eine Entität extrahiert wird, die für Ihren Chatbot aussagekräftig ist, kann Ihr Chatbot eine Frage zur Absicht des Kunden stellen. 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Screenshot: Popupdialogfeld zur Entitätskennzeichnung, um das untergeordnete Element der Entität „Locations“ zu ändern")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>Erstellen einer Standortentität auf der Seite „Intent“ (Absicht)
-Nachdem die beiden Absichten jetzt über Äußerungen verfügen, muss LUIS wissen, was ein Standort ist. Navigieren Sie zurück zur Absicht `BookFlight`, und kennzeichnen Sie die in einer Äußerung enthaltenen Städtenamen mit den folgenden Schritten:
+5. Kennzeichnen Sie die anderen Orte in allen anderen Äußerungen, indem Sie das Gebäude und das Büro in der Äußerung auswählen, „Locations“ wählen und dann im Menü nach rechts navigieren, um `Origin` oder `Destination` zu wählen. Nachdem alle Orte gekennzeichnet wurden, wird für die Äußerungen unter **Tokens View** (Tokenansicht) ein Muster deutlich. 
 
-1. Kehren Sie zur Absicht `BookFlight` zurück, indem Sie im linken Bereich **Intents** (Absichten) wählen.
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Screenshot: In Äußerungen gekennzeichnete Entität „Locations“")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. Wählen Sie `BookFlight` in der Liste mit den Absichten aus.
+## <a name="add-prebuilt-number-entity-to-app"></a>Hinzufügen einer vordefinierten Zahlenentität zu einer App
+Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
-3. Wählen Sie in der Äußerung `Book 2 flights from Seattle to Cairo next Monday` das Wort `Seattle` aus. Ein Dropdownmenü mit einem darüber angeordneten Textfeld zum Erstellen einer neuen Entität wird angezeigt. Geben Sie den Entitätsnamen `Location` in das Textfeld ein, und wählen Sie dann im Dropdownmenü die Option **Create new entity** (Neue Entität erstellen). 
+1. Wählen Sie im linken Navigationsmenü die Option **Entities** (Entitäten).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "Screenshot: Seite mit der Absicht „BookFlight“ (Flug buchen), Erstellung einer neuen Entität aus ausgewähltem Text")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [![Screenshot: Hervorhebung der Schaltfläche „Entitäten“ im linken Navigationsmenü](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. Wählen Sie im Popupfenster den Entitätstyp **Hierarchical** (Hierarchisch) mit `Origin` und `Destination` als untergeordnete Elemente aus. Wählen Sie **Fertig**aus.
+2. Klicken Sie auf die Schaltfläche **Manage prebuilt entities** (Vordefinierte Entitäten verwalten).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "Screenshot: Popupdialogfeld zur Entitätserstellung für die neue Entität „Location“ (Standort)")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [![Screenshot: Liste mit Entitäten mit hervorgehobener Option „Manage prebuilt entities“ (Vordefinierte Entitäten verwalten)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    Die Bezeichnung für `Seattle` ist als `Location` gekennzeichnet, da LUIS nicht weiß, ob es sich hierbei um den Abflugort, Zielort oder einen anderen Ort handelt. Wählen Sie `Seattle` und dann „Location“ (Standort). Navigieren Sie im Menü nach rechts, und wählen Sie anschließend `Origin` aus.
+3. Wählen Sie in der Liste mit den vordefinierten Entitäten die Option **number** und dann **Fertig**.
 
-5. Nachdem die Entität nun erstellt und eine Äußerung gekennzeichnet wurde, können Sie die anderen Städte wie folgt kennzeichnen: Wählen Sie den Namen des Orts und dann „Location“ (Standort) aus, navigieren Sie im Menü nach rechts, und wählen Sie die Option `Origin` oder `Destination`.
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "Screenshot: Entität „BookFlight“ (Flug buchen) mit ausgewähltem Text der Äußerung für die Wahl der Entität")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell) informiert, nachdem der Dienst trainiert wurde. 
@@ -171,71 +142,137 @@ LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Anwendung abrufen können, muss die App veröffentlicht werden. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Publish** (Veröffentlichen). 
+1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Veröffentlichen**. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "Screenshot: Absicht „BookFlight“ (Flug buchen) mit Hervorhebung der Schaltfläche „Publish“ (Veröffentlichen)")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
+2. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.
 
-2. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen).
-
-    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "Screenshot der Seite „Publish“ (Veröffentlichen) mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
 
 3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
-1. Klicken Sie unten auf der Seite **Publish** (Veröffentlichen) auf den Link **Endpoint** (Endpunkt). Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Hierdurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "Screenshot: Seite „Publish“ (Veröffentlichen) mit hervorgehobener Endpunkt-URL")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. Geben Sie in der Adressleiste am Ende der URL `1 ticket to Portland on Friday` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage („**q**uery“) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `BookFlight` mit der extrahierten hierarchischen Entität zurückgeben.
+2. Geben Sie in der Adressleiste am Ende der URL `Please relocation jill-jones@mycompany.com from x-2345 to g-23456` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `MoveEmployee` mit der extrahierten hierarchischen Entität zurückgeben.
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit nur zwei Absichten und einer hierarchischen Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Kann auch ein regulärer Ausdruck für jeden Ort verwendet werden?
+Ja. Erstellen Sie den regulären Ausdruck mit Ursprungs- und Zielrolle, und verwenden Sie ihn in einem Muster.
 
-Ihr Chatbot verfügt jetzt über genügend Informationen, um die Hauptaktion `BookFlight` und die in der Äußerung enthaltenen Informationen zum Standort zu ermitteln. 
+Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit einem oder mehreren Buchstaben, einem Bindestrich und dann vier oder fünf Zahlen verwendet. Diese Daten können als Entität vom Typ „Regulärer Ausdruck“ mit einer Rolle für jeden Ort beschrieben werden. Rollen sind für Muster verfügbar. Sie können basierend auf diesen Äußerungen Muster erstellen und dann einen regulären Ausdruck für das Ortsformat erstellen und ihn den Mustern hinzufügen. <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
+Diese App mit einigen Absichten und einer hierarchischen Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
+
+Ihr Chatbot verfügt jetzt über genügend Informationen, um die Hauptaktion `MoveEmployee` und die in der Äußerung enthaltenen Informationen zum Standort zu ermitteln. 
 
 ## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls sie nicht mehr benötigt wird. Klicken Sie hierzu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Delete** (Löschen). Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
 > [Erfahren Sie, wie Sie eine Listenentität hinzufügen](luis-quickstart-intent-and-list-entity.md) 
-
-Fügen Sie die [vordefinierte Entität](luis-how-to-add-entities.md#add-prebuilt-entity) **number** (Anzahl) zum Extrahieren der Anzahl hinzu. 
-
-Fügen Sie die [vordefinierte Entität](luis-how-to-add-entities.md#add-prebuilt-entity) **datetimeV2** zum Extrahieren der Datumsinformationen hinzu.
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

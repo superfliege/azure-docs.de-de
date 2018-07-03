@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/29/2018
+ms.date: 06/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1e8647e34da3d34946a4f6ac298017f6d4c99de6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265359"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061246"
 ---
 # <a name="tutorial-create-app-that-uses-simple-entity"></a>Tutorial: Erstellen einer App, die eine Entität vom Typ „Einfach“ verwendet
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der Entität vom Typ **Einfach** ML-Daten aus einer Äußerung extrahiert werden.
@@ -22,128 +22,113 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Grundlegendes zu einfachen Entitäten 
-> * Erstellen einer neuen LUIS-App für den Kommunikationsbereich mit der Absicht „SendMessage“
-> * Hinzufügen der Absicht vom Typ _None_ (Keine) und Hinzufügen von Beispieläußerungen
-> * Hinzufügen der Entität vom Typ „Einfach“, um Nachrichteninhalte aus einer Äußerung zu extrahieren
+> * Erstellen einer neuen LUIS-App für den Personalbereich 
+> * Hinzufügen einer einfachen Entität zum Extrahieren von Stellen aus der App
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
+> * Hinzufügen einer Begriffsliste, um das Signal von Stellenwörtern zu verstärken
+> * Trainieren und Veröffentlichen der App und erneutes Abfragen des Endpunkts
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto, um die LUIS-Anwendung erstellen zu können.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Falls Sie nicht über die Personal-App aus dem [Tutorial zur hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json).
+
+Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `simple`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren.  
 
 ## <a name="purpose-of-the-app"></a>Zweck der App
-Diese App veranschaulicht, wie Sie Daten aus einer Äußerung extrahieren. Sehen Sie sich die folgende Äußerung eines Chatbots an:
+Diese App veranschaulicht, wie Sie Daten aus einer Äußerung extrahieren. Sehen Sie sich die folgenden Äußerungen eines Chatbots an:
 
-```JSON
-Send a message telling them to stop
-```
+|Äußerung|Extrahierbarer Stellenname|
+|:--|:--|
+|I want to apply for the new accounting job. (Ich möchte mich für die neue Stelle in der Buchhaltung bewerben.)|accounting (Buchhaltung)|
+|Please submit my resume for the engineering position. (Ich möchte meinen Lebenslauf für die Stelle als Techniker übermitteln.)|engineering (Techniker)|
+|Fill out application for job 123456 (Bewerbungsbogen für die Stelle 123456 ausfüllen)|123456|
 
-Die Absicht ist das Senden einer Nachricht. Die wichtigen Daten der Äußerung stellen die Nachricht selbst dar: `telling them to stop`.  
+In diesem Tutorial wird eine neue Entität hinzugefügt, um den Stellennamen zu extrahieren. Wie Sie eine bestimmte Stellennummer extrahieren, erfahren Sie im [Tutorial zu regulären Ausdrücken](luis-quickstart-intents-regex-entity.md). 
 
 ## <a name="purpose-of-the-simple-entity"></a>Zweck der Entität vom Typ „Einfach“
-Die Entität vom Typ „Einfach“ dient dazu, LUIS zu lehren, was eine Nachricht ist und wie sie in einer Äußerung ermittelt werden kann. Der Teil der Äußerung, der die Nachricht darstellt, kann sich basierend auf der Wortwahl und der Länge der Äußerung bei den einzelnen Äußerungen unterscheiden. LUIS benötigt Beispiele für Nachrichten in jeder Äußerung und für alle Absichten.  
+Mithilfe der Entität vom Typ „Einfach“ für diese LUIS-App wird LUIS beigebracht, was ein Stellenname ist und wie er in einer Äußerung ermittelt werden kann. Der Teil der Äußerung, der die Stelle darstellt, kann sich basierend auf der Wortwahl und der Länge der Äußerung bei den einzelnen Äußerungen unterscheiden. LUIS benötigt Beispiele für Stellen in jeder Äußerung und für alle Absichten.  
 
-Bei dieser einfachen App befindet sich die Nachricht am Ende der Äußerung. 
+Der Stellenname ist nicht ganz einfach zu ermitteln, da es sich dabei um ein Substantiv, um ein Verb oder um einen Ausdruck mit mehreren Wörtern handeln kann. Beispiele: 
 
-## <a name="create-a-new-app"></a>Erstellen einer neuen App
-1. Melden Sie sich bei der [LUIS][LUIS]-Website an. Achten Sie darauf, sich unter der Region anzumelden, in der die LUIS-Endpunkte veröffentlicht werden sollen.
+|Stellen|
+|--|
+|engineer (Techniker)|
+|software engineer (Softwareentwickler)|
+|senior software engineer (leitender Softwareentwickler)|
+|engineering team lead (Leiter des Technikerteams) |
+|air traffic controller (Fluglotse)|
+|motor vehicle operator (Kraftfahrer)|
+|ambulance driver (Krankenwagenfahrer)|
+|tender (Pfleger)|
+|extruder (Strangpresser)|
+|millwright (Mühlenbauer)|
 
-2. Klicken Sie auf der [LUIS][LUIS]-Website auf **Neue App erstellen**.  
+Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die Kennzeichnung dieser Wörter in allen Äußerungen der Absichten lernt LUIS mehr darüber, was eine Stelle ist und wo sie sich in Äußerungen befindet.
 
-    ![Liste der LUIS-Apps](./media/luis-quickstart-primary-and-secondary-data/app-list.png)
+## <a name="create-job-simple-entity"></a>Erstellen einer einfachen Stellenentität
 
-3. Geben Sie im Popupdialogfenster den Namen `MyCommunicator` ein. 
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
 
-    ![Liste der LUIS-Apps](./media/luis-quickstart-primary-and-secondary-data/create-new-app-dialog.png)
+    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
-4. Nach Abschluss dieses Vorgangs wird in der App die Seite **Absichten** mit der Absicht vom Typ **None** (Keine) angezeigt. 
+2. Wählen Sie auf der Seite **Absichten** die Option **ApplyForJob** aus. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/intents-list.png "Screenshot der LUIS-Seite „Absichten“ mit der Absicht vom Typ „None“ (Keine)")](media/luis-quickstart-primary-and-secondary-data/intents-list.png#lightbox)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "Screenshot: LUIS mit hervorgehobener Absicht „ApplyForJob“")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht
+3. Wählen Sie in der Äußerung `I want to apply for the new accounting job` das Wort `accounting` aus, geben Sie `Job` in das oberste Feld des Popupmenüs ein, und klicken Sie anschließend im Popupmenü auf **Create new entity** (Neue Entität erstellen). 
 
-1. Klicken Sie auf der Seite **Absichten** auf **Create new intent** (Neue Absicht erstellen). 
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Screenshot: LUIS mit Absicht „ApplyForJob“ und hervorgehobenen Schritten für die Entitätserstellung")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-    [![](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png "Screenshot von LUIS mit hervorgehobener Schaltfläche „Create new intent“ (Neue Absicht erstellen)")](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png#lightbox)
+4. Überprüfen Sie Entitätsname und -typ im Popupfenster, und klicken Sie anschließend auf **Fertig**.
 
-2. Geben Sie den neuen Namen für die Absicht ein: `SendMessage`. Diese Absicht muss jedes Mal ausgewählt werden, wenn ein Benutzer eine Nachricht senden möchte.
+    ![Modales Popupdialogfeld zum Erstellen einer einfachen Entität mit dem Namen „Job“ und dem Typ „Simple“](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-    Indem Sie eine Absicht erstellen, erstellen Sie auch die primäre Kategorie der zu bestimmenden Informationen. Durch die Benennung der Kategorie können andere Anwendungen, die die Ergebnisse der LUIS-Abfrage nutzen, anhand des Kategorienamens eine passende Antwort finden oder geeignete Aktionen ausführen. LUIS liefert keine Antwort auf die eigentliche Frage, sondern gibt lediglich an, welche Art von Information in natürlicher Sprache erfragt wird. 
+5. Kennzeichnen Sie in der Äußerung `Submit resume for engineering position` das Wort „engineering“ als Entität „Job“. Wählen Sie das Wort „engineering“ und anschließend im Popupmenü die Option „Job“ aus. 
 
-    ![Eingeben des Absichtsnamens „SendMessage“](./media/luis-quickstart-primary-and-secondary-data/create-new-intent-popup-dialog.png)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Screenshot: LUIS mit hervorgehobener Entitätskennzeichnung „Job“")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-3. Fügen Sie der Absicht `SendMessage`, nach der Benutzer voraussichtlich fragen, sieben Äußerungen hinzu. Beispiele:
+    Alle Äußerungen wurden gekennzeichnet, aber fünf Äußerungen sind nicht genug, um LUIS mit stellenbezogenen Wörtern und Ausdrücken vertraut zu machen. Für Stellen mit Zahlenwert sind keine weiteren Beispiele erforderlich, da hierfür eine Entität vom Typ „Regulärer Ausdruck“ verwendet wird. Für Stellen mit Wörtern oder Ausdrücken werden mindestens 15 weitere Beispiele benötigt. 
 
-    | Beispieläußerungen|
-    |--|
-    |Reply with I got your message, I will have the answer tomorrow (Antworten mit: Ich habe Ihre Nachricht erhalten und werde morgen antworten.)|
-    |Send message of When will you be home? (Nachricht senden: Wann wirst du zu Hause sein?)|
-    |Text that I am busy (SMS senden: Ich bin beschäftigt.)|
-    |Tell them that it needs to be done today (Mitteilen, dass es heute erledigt werden muss)|
-    |IM that I am driving and will respond later (Sofortnachricht senden, dass ich im Auto unterwegs bin und später antworte)|
-    |Compose message to David that says When was that? (Nachricht an David erstellen: Wann war das?)|
-    |say greg hello (Grüße an Greg)|
+6. Fügen Sie weitere Äußerungen hinzu, und kennzeichnen Sie die Wörter und Ausdrücke für die Stelle jeweils mit der Entität **Job**. Bei den Stellentypen handelt es sich um allgemeine Beschäftigungen für eine Arbeitsvermittlung. Wenn Sie Stellen für eine bestimmte Branche verwenden möchten, sollten die Wörter für die Stellen dies widerspiegeln. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png "Screenshot von LUIS mit eingegeben Äußerungen")](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png#lightbox)
+    |Äußerung|Entität „Job“|
+    |:--|:--|
+    |I'm applying for the Program Manager desk in R&D (Ich bewerbe mich für die Position als Programm-Manager in der Entwicklungsabteilung.)|Program Manager (Programm-Manager)|
+    |Here is my line cook application. (Hier ist meine Bewerbung als Gardemanger.)|line cook (Gardemanger)|
+    |My resume for camp counselor is attached. (Anbei mein Lebenslauf für die Stelle als Camp Counselor.)|camp counselor|
+    |This is my c.v. for administrative assistant. (Hier ist mein CV für die Stelle als Verwaltungsassistent.)|administrative assistant (Verwaltungsassistent)|
+    |I want to apply for the management job in sales. (Hiermit bewerbe ich mich für die Management-Stelle im Vertrieb.)|management, sales (Management, Vertrieb)|
+    |This is my resume for the new accounting position. (Hiermit übersende ich Ihnen meinen Lebenslauf für die neue Position in der Buchhaltung.)|accounting (Buchhaltung)|
+    |My application for barback is included. (Meine Bewerbung als Barassistent finden Sie anbei.)|barback (Barassistent)|
+    |I'm submitting my application for roofer and framer. (Hiermit übersende ich Ihnen meine Bewerbung als Dachdecker und Zimmerer.)|roofer, framer (Dachdecker, Zimmerer)|
+    |My c.v. for bus driver is here. (Mein Lebenslauf für die Stelle als Busfahrer ist beigefügt.)|bus driver (Busfahrer)|
+    |I'm a registered nurse. Here is my resume. (Ich bin ausgebildete Krankenschwester. Hier ist mein Lebenslauf.)|registered nurse (ausgebildete Krankenschwester)|
+    |I would like to submit my paperwork for the teaching position I saw in the paper. (Hiermit möchte ich Ihnen meine Unterlagen für die ausgeschriebene Stelle als Lehrkraft zukommen lassen.)|teaching (Lehrkraft)|
+    |This is my c.v. for the stocker post in fruits and vegetables. (Hier ist mein Lebenslauf für die Stelle als Auffüller in der Obst- und Gemüseabteilung.)|stocker (Auffüller)|
+    |Apply for tile work. (Bewerbung als Fliesenleger.)|tile (Fliesen)|
+    |Attached resume for landscape architect. (Anbei mein Lebenslauf für die Position als Landschaftsarchitekt.)|landscape architect (Landschaftsarchitekt)|
+    |My curriculum vitae for professor of biology is enclosed. (Anbei finden Sie mein Curriculum Vitae für die Stelle als Biologieprofessor.)|professor of biology (Biologieprofessor)|
+    |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|Git 
 
-## <a name="add-utterances-to-none-intent"></a>Hinzufügen von Äußerungen zur Absicht vom Typ „None“ (Keine)
-
-Die LUIS-App enthält derzeit keine Äußerungen für die Absicht vom Typ **None** (Keine). Es sind Äußerungen erforderlich, die die App nicht beantworten soll, daher muss sie Äußerungen in der Absicht vom Typ **None** (Keine) enthalten. Lassen Sie sie nicht leer. 
-    
-1. Wählen Sie im linken Bereich **Absichten**. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png "Screenshot von LUIS mit hervorgehobener Schaltfläche „Absichten“")](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png#lightbox)
-
-2. Wählen Sie die Absicht vom Typ **None** (Keine) aus. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png "Screenshot zum Auswählen der Absicht vom Typ „None“ (Keine)")](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png#lightbox)
-
-3. Fügen Sie drei Äußerungen hinzu, die der Benutzer unter Umständen eingibt, die für Ihre App jedoch nicht relevant sind. Einige geeignete Äußerungen für **None** (Keine):
-
-    | Beispieläußerungen|
-    |--|
-    |Cancel! (Abbrechen!)|
-    |Good bye (Auf Wiedersehen)|
-    |What is going on? (Was ist los?)|
-    
-    In der Anwendung, die den LUIS-Dienst aufruft (beispielsweise ein Chatbot), kann der Bot den Benutzer fragen, ob er die Unterhaltung beenden möchte, wenn LUIS für eine Äußerung die Absicht vom Typ **None** (Keine) zurückgibt. Der Bot kann außerdem weitere Anweisungen zum Fortsetzen der Unterhaltung geben, falls der Benutzer sie nicht beenden möchte. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png "Screenshot von LUIS mit Äußerungen für die Absicht vom Typ „None“ (Keine)")](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png#lightbox)
-
-## <a name="create-a-simple-entity-to-extract-message"></a>Erstellen einer Entität vom Typ „Einfach“ zum Extrahieren von Nachrichten 
+## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Kennzeichnen der Entität in Beispieläußerungen für die Absicht „GetJobInformation“
 1. Wählen Sie im linken Menü die Option **Absichten**.
 
-    ![Klicken auf den Link „Absichten“](./media/luis-quickstart-primary-and-secondary-data/select-intents-from-none-intent.png)
+2. Wählen Sie in der Liste mit den Absichten die Option **GetJobInformation** aus. 
 
-2. Wählen Sie `SendMessage` in der Liste der Absichten aus.
+3. Kennzeichnen Sie die Stellen in den Beispieläußerungen:
 
-    ![Auswählen der Absicht „SendMessage“](./media/luis-quickstart-primary-and-secondary-data/select-sendmessage-intent.png)
+    |Äußerung|Entität „Job“|
+    |:--|:--|
+    |Is there any work in databases? (Gibt es offene Stellen im Datenbankbereich?)|databases (Datenbanken)|
+    |Looking for a new situation with responsibilities in accounting (Ich möchte mich beruflich neu orientieren und suche nach Aufgaben in der Buchhaltung.)|accounting (Buchhaltung)|
+    |What positions are available for senior engineers? (Welche Positionen sind für Oberingenieure verfügbar?)|senior engineers (Oberingenieure)|
 
-3. Wählen Sie in der Äußerung `Reply with I got your message, I will have the answer tomorrow` das erste Wort (`I`) und das letzte Wort (`tomorrow`) des Nachrichtentexts aus. Alle diese Wörter werden für die Nachricht ausgewählt, und es wird ein Dropdownmenü mit einem Textfeld am oberen Rand angezeigt.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png "Screenshot: Auswählen von Wörtern in einer Äußerung für die Nachricht")](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png#lightbox)
-
-4. Geben Sie den Entitätsnamen `Message` in das Textfeld ein.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png "Screenshot: Eingeben des Entitätsnamens in das Feld")](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png#lightbox)
-
-5. Klicken Sie im Dropdownmenü auf **Create new entity** (Neue Entität erstellen). Der Zweck der Entität besteht im Extrahieren des Texts, der den Nachrichtentext darstellt. In dieser LUIS-App befindet sich die Textnachricht am Ende der Äußerung. Die Äußerung und die Nachricht können jedoch jeweils eine beliebige Länge haben. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png "Screenshot: Erstellen einer neuer Entität auf der Grundlage einer Äußerung")](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png#lightbox)
-
-6. Im Popupfenster lautet der Standardentitätstyp **Einfach** und der Entitätsname `Message`. Übernehmen Sie diese Einstellungen, und wählen Sie **Fertig**.
-
-    ![Überprüfen des Entitätstyps](./media/luis-quickstart-primary-and-secondary-data/entity-type.png)
-
-7. Die Entität wurde erstellt und eine Äußerung mit einer Bezeichnung versehen. Versehen Sie nun die übrigen Äußerungen mit der Bezeichnung dieser Entität. Wählen Sie eine Äußerung und anschließend das erste und letzte Wort einer Nachricht aus. Wählen Sie im Dropdownmenü die Entität `Message` aus. Die Nachricht wird in der Entität mit einer Bezeichnung versehen. Versehen Sie alle Nachrichtenausdrücke in den übrigen Äußerungen mit einer Bezeichnung.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png "Screenshot aller Nachrichtenäußerungen mit Bezeichnung")](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png#lightbox)
-
-    Die Standardansicht der Äußerungen heißt **Entities view** (Entitätsansicht). Klicken Sie oberhalb der Äußerungen auf das Steuerelement **Entities view** (Entitätsansicht). In der **Tokens view** (Tokenansicht) wird der Text der Äußerungen angezeigt. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png "Screenshot der Äußerungen in der Tokenansicht")](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png#lightbox)
+    Es gibt noch andere Beispieläußerungen, diese enthalten jedoch keine Wörter für Stellen.
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
-LUIS weiß erst über die Änderungen an den Absichten und Entitäten (Modell) Bescheid, wenn der Dienst trainiert wurde. 
+LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell) informiert, nachdem der Dienst trainiert wurde. 
 
 1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Trainieren**.
 
@@ -169,57 +154,232 @@ Klicken Sie auf der Seite **Veröffentlichen** unten auf den Link **Endpunkt**.
 
 [![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobenem Endpunkt")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
 
-Dadurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. Geben Sie in der Adressleiste am Ende der URL `text I'm driving and will be 30 minutes late to the meeting` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `SendMessage` zurückgeben.
+Dadurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. Geben Sie in der Adressleiste am Ende der URL `Here is my c.v. for the programmer job` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `ApplyForJob` zurückgeben.
 
-```
+```JSON
 {
-  "query": "text I'm driving and will be 30 minutes late to the meeting",
+  "query": "Here is my c.v. for the programmer job",
   "topScoringIntent": {
-    "intent": "SendMessage",
-    "score": 0.987501
+    "intent": "ApplyForJob",
+    "score": 0.9826467
   },
   "intents": [
     {
-      "intent": "SendMessage",
-      "score": 0.987501
+      "intent": "ApplyForJob",
+      "score": 0.9826467
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0218927357
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.007849265
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00349470088
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00348804821
     },
     {
       "intent": "None",
-      "score": 0.111048922
+      "score": 0.00319909188
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00222647213
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00211193133
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00172086991
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00138010911
     }
   ],
   "entities": [
     {
-      "entity": "i ' m driving and will be 30 minutes late to the meeting",
-      "type": "Message",
-      "startIndex": 5,
-      "endIndex": 58,
-      "score": 0.162995353
+      "entity": "programmer",
+      "type": "Job",
+      "startIndex": 24,
+      "endIndex": 33,
+      "score": 0.5230502
     }
   ]
 }
 ```
 
+## <a name="names-are-tricky"></a>Das Problem mit Namen
+Die LUIS-App hat die korrekte Absicht mit hoher Zuverlässigkeit ermittelt und den Stellennamen extrahiert, aber Namen sind kompliziert. Nehmen wir beispielsweise die Äußerung `This is the lead welder paperwork`.  
+
+Im folgenden JSON-Code antwortet LUIS zwar mit der korrekten Absicht (`ApplyForJob`), extrahiert aber den Stellennamen `lead welder` nicht: 
+
+```JSON
+{
+  "query": "This is the lead welder paperwork.",
+  "topScoringIntent": {
+    "intent": "ApplyForJob",
+    "score": 0.468558252
+  },
+  "intents": [
+    {
+      "intent": "ApplyForJob",
+      "score": 0.468558252
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0102701457
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.009442534
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00639619166
+    },
+    {
+      "intent": "None",
+      "score": 0.005859333
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.005087704
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00315379258
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00259344373
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00193389168
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.000420796918
+    }
+  ],
+  "entities": []
+}
+```
+
+Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präziser voraus, wenn das Signal durch eine Begriffsliste mit Wörtern verstärkt wird.
+
+## <a name="to-boost-signal-add-jobs-phrase-list"></a>Hinzufügen einer Begriffsliste für Stellen, um das Signal zu verstärken
+Öffnen Sie die Datei [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) aus dem GitHub-Repository „LUIS-Samples“. Die Liste enthält über 1.000 stellenbezogene Wörter und Begriffe. Suchen Sie in der Liste nach Stellenwörtern, die für Sie relevant sind. Sollten die gewünschten Wörter oder Begriffe nicht in der Liste enthalten sein, fügen Sie eigene Wörter/Begriffe hinzu.
+
+1. Klicken Sie im Abschnitt **Build** der LUIS-App im Menü **Improve app performance** (App-Leistung verbessern) auf **Phrase lists** (Begriffslisten).
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "Screenshot: Hervorgehobene Begriffslistenoption auf der linken Navigationsleiste")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
+
+2. Klicken Sie auf **Create new phrase list** (Neue Begriffsliste erstellen). 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "Screenshot: Hervorgehobene Schaltfläche zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
+
+3. Nennen Sie die Begriffsliste `Jobs`, und kopieren Sie die Liste aus „jobs-phrase-list.csv“ in das Textfeld **Werte**. Drücken Sie die EINGABETASTE. 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+
+    Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, prüfen Sie die empfohlenen Wörter, und fügen Sie alle hinzu, die für Sie relevant sind. 
+
+4. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Screenshot des Popupdialogfelds zum Erstellen einer neuen Begriffsliste mit Wörtern im Feld für die Begriffslistenwerte")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+
+5. [Trainieren](#train-the-luis-app) und [veröffentlichen](#publish-the-app-to-get-the-endpoint-URL) Sie die App erneut, um die Begriffsliste zu verwenden.
+
+6. Fragen Sie den Endpunkt erneut mit der gleichen Äußerung ab: `This is the lead welder paperwork.`
+
+    Die JSON-Antwort enthält die extrahierte Entität:
+
+    ```JSON
+    {
+        "query": "This is the lead welder paperwork.",
+        "topScoringIntent": {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+        },
+        "intents": [
+            {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+            },
+            {
+            "intent": "GetJobInformation",
+            "score": 0.003800706
+            },
+            {
+            "intent": "Utilities.StartOver",
+            "score": 0.00299335527
+            },
+            {
+            "intent": "MoveEmployee",
+            "score": 0.0027167045
+            },
+            {
+            "intent": "None",
+            "score": 0.00259556063
+            },
+            {
+            "intent": "FindForm",
+            "score": 0.00224019377
+            },
+            {
+            "intent": "Utilities.Stop",
+            "score": 0.00200693542
+            },
+            {
+            "intent": "Utilities.Cancel",
+            "score": 0.00195913855
+            },
+            {
+            "intent": "Utilities.Help",
+            "score": 0.00162656687
+            },
+            {
+            "intent": "Utilities.Confirm",
+            "score": 0.0002851904
+            }
+        ],
+        "entities": [
+            {
+            "entity": "lead welder",
+            "type": "Job",
+            "startIndex": 12,
+            "endIndex": 22,
+            "score": 0.8295959
+            }
+        ]
+    }
+    ```
+
+## <a name="phrase-lists"></a>Begriffslisten
+Durch Hinzufügen der Begriffsliste wurde das Signal der Wörter in der Liste verstärkt. Sie wird jedoch **nicht** für exakte Übereinstimmungen verwendet. Die Begriffsliste enthält sowohl mehrere Stellen, die mit dem Wort `lead` beginnen, als auch die Stelle `welder`, aber nicht die Stelle `lead welder`. Diese Begriffsliste für Stellen ist wahrscheinlich nicht vollständig. Fügen Sie Ihrer Begriffsliste daher nach und nach weitere Stellenwörter hinzu, die Sie im Zuge der regelmäßigen [Überprüfung von Endpunktäußerungen](label-suggested-utterances.md) ermitteln. Trainieren und veröffentlichen Sie die App anschließend erneut.
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
-Diese App mit nur zwei Absichten und einer Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die Nachrichtendaten zurückgegeben. 
+Diese App mit einer einfachen Entität und einer Begriffsliste mit Wörtern hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die Nachrichtendaten zurückgegeben. 
 
-Laut JSON-Ergebnis hat die Absicht `SendMessage` die höchste Punktzahl (0,987501). Alle Punktzahlen liegen zwischen 1 und 0. Die bessere Punktzahl liegt näher bei 1. Die Punktzahl der Absicht `None` lautet 0,111048922, was näher bei 0 liegt. 
-
-Für die Nachrichtendaten ist sowohl ein Typ (`Message`) als auch ein Wert (`i ' m driving and will be 30 minutes late to the meeting`) angegeben. 
-
-Ihr Chatbot verfügt nun über ausreichend Informationen, um die primäre Aktion (`SendMessage`) zu ermitteln, sowie über einen Parameter für diese Aktion, nämlich den Text der Nachricht. 
+Ihr Chatbot verfügt nun über genügend Informationen, um die primäre Aktion (Stellenbewerbung) zu ermitteln, sowie über einen Parameter für diese Aktion (um welche Stelle es geht). 
 
 ## <a name="where-is-this-luis-data-used"></a>Wo werden diese LUIS-Daten verwendet? 
-Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um die Nachricht über eine Drittanbieter-API zu senden. Sind andere programmgesteuerte Optionen für den Bot oder die aufrufende Anwendung vorhanden, werden sie nicht von LUIS verwendet. LUIS bestimmt lediglich die Absicht des Benutzers. 
+LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um die Stelleninformationen über eine Drittanbieter-API an einen Mitarbeiter der Personalabteilung zu senden. Sind andere programmgesteuerte Optionen für den Bot oder die aufrufende Anwendung vorhanden, werden sie nicht von LUIS verwendet. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls sie nicht mehr benötigt wird. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **Ok**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md)
-
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+> Informieren Sie sich über das [Hinzufügen einer vorgefertigten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md).

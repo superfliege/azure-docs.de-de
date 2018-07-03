@@ -7,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 06/22/2018
 ms.author: hux
-ms.openlocfilehash: d6279a308bc4539184cca37c1343afe8725eca7f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248298"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335770"
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -76,32 +76,27 @@ Blob-Speicherkonten unterstützen alle Blockblobfeatures, die auch für GPv2 unt
 
 > [!NOTE]
 > BLOB-Speicherkonten unterstützen nur Block- und Anfügeblobs, keine Seitenblobs.
+>
+> Microsoft empfiehlt für die meisten Szenarien die Verwendung von Speicherkonten vom Typ „General Purpose v2“ über Blob-Speicherkonten.
 
 ## <a name="recommendations"></a>Empfehlungen
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von GPv2-Speicherkonten, um vom differenzierten Preismodell des mehrstufigen Speichers profitieren zu können. In bestimmten Szenarien ist aber die Nutzung von GPv1 ratsam, z.B.:
+Bei Anwendungen, für die die aktuellsten Features für Block- oder Anfügeblobs erforderlich sind, empfiehlt sich die Verwendung von GPv2-Speicherkonten, um vom differenzierten Preismodell des mehrstufigen Speichers profitieren zu können. In bestimmten Szenarien ist aber die Nutzung von GPv1 ratsam, z.B.:
 
 * Sie müssen weiterhin das klassische Bereitstellungsmodell verwenden. GPv2- und Blob Storage-Konten sind nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfügbar.
-
 * Sie verwenden große Mengen von Transaktionen oder Bandbreite für die Georeplikation, wofür in GPv2- und Blob-Speicherkonten jeweils höhere Kosten als in GPv1 anfallen, und verfügen nicht über genügend Speicher, für den sich die geringeren GB-Speicherkosten lohnen.
-
 * Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
 * **Speicherkosten**: Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
-
 * **Kosten für den Datenzugriff**: Je „cooler“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
-
 * **Transaktionskosten**: Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „cooler“ die Ebene ist.
-
 * **Datenübertragungskosten bei Georeplikation**: Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation, z.B. GRS und RA-GRS. Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
-
 * **Kosten für ausgehende Datenübertragungen**: Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
-
 * **Änderung der Speicherebene**: Bei einem Wechsel der Kontospeicherebene von „Cool“ zu „Hot“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ in „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht (nur GPv2-Konten).
 
 > [!NOTE]
@@ -205,7 +200,6 @@ In beiden Fällen sollten Sie zuerst die Kosten für die Speicherung und den Zug
 Zur Ermittlung der ungefähren Kosten für die Speicherung und den Zugriff auf die Daten, die in einem GPv2-Speicherkonto gespeichert sind, müssen Sie Ihr vorhandenes Nutzungsmuster evaluieren bzw. Ihr voraussichtliches Nutzungsmuster einschätzen. Dazu benötigen Sie im Allgemeinen folgende Informationen:
 
 * Ihr Speicherverbrauch: Welche Datenmengen werden gespeichert, und wie verändert sich dies von Monat zu Monat?
-
 * Ihre Speicherzugriffsmuster: Welche Datenmengen werden im Rahmen des Kontos gelesen und geschrieben (einschließlich neuer Daten)? Wie viele Transaktionen werden für den Datenzugriff verwendet, und welche Arten von Transaktionen fallen an?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Überwachen von vorhandenen Speicherkonten
@@ -256,10 +250,9 @@ Um die Transaktionskosten für GPv1-Speicherkonten zu schätzen, müssen Sie all
 
 Die Speicheranalyse liefert zwar nicht die Menge der Daten, die aus einem Speicherkonto gelesen und in das Speicherkonto geschrieben wird, aber dieser Wert kann grob geschätzt werden, indem die Tabelle mit den Transaktionsmetriken verwendet wird. Die Summe von *'TotalIngress'* über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtmenge der Eingangsdaten in Byte für die jeweilige API an. Analog dazu gibt die Summe von *'TotalEgress'* die Gesamtmenge der Ausgangsdaten in Byte an.
 
-Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müssen die Transaktionen in zwei Gruppen unterteilt werden.
+Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müssen die Transaktionen in zwei Gruppen unterteilt werden:
 
 * Die Menge der Daten, die aus dem Speicherkonto abgerufen werden, kann geschätzt werden, indem vor allem für die Vorgänge *'GetBlob'* und *'CopyBlob'* die Summe von *'TotalEgress'* geprüft wird.
-
 * Die Menge der Daten, die in das Speicherkonto geschrieben werden, kann anhand der Summe von *'TotalIngress'* für die Vorgänge *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* und *'AppendBlock'* geschätzt werden.
 
 Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.

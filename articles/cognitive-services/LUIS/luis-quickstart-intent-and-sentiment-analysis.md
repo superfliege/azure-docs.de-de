@@ -7,139 +7,201 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: d000637312619fc493e2f7bad8e8edf0d8d0d94b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265333"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958428"
 ---
 # <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>Tutorial: Erstellen einer App, die neben der Absichtsvorhersage die Stimmung zurückgibt
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren.
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Grundlegendes zu hierarchischen Entitäten und aus dem Kontext erschlossenen Unterelementen 
-> * Erstellen einer neuen LUIS-App für den Reisebereich mit der Absicht „Bookflight“ (Flug buchen)
-> * Hinzufügen der Absicht vom Typ _None_ (Keine) und Hinzufügen von Beispieläußerungen
-> * Hinzufügen einer hierarchischen Standortentität mit Unterelementen zu Ursprung und Ziel
+> * Grundlegendes zur Standpunktanalyse
+> * Verwenden der LUIS-App im Personalbereich 
+> * Hinzufügen einer Standpunktanalyse
 > * Trainieren und Veröffentlichen der App
-> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort, einschließlich hierarchischer untergeordneter Elemente 
+> * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort 
 
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Falls Sie nicht über die Personal-App aus dem [Tutorial zu keyPhrase-Entitäten](luis-quickstart-intent-and-key-phrase.md) verfügen, [importieren](create-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json).
+
+Wenn Sie die ursprüngliche Personal-App behalten möchten, klonen Sie die Version auf der Seite [Einstellungen](luis-how-to-manage-versions.md#clone-a-version), und nennen Sie sie `sentiment`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. 
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 Mithilfe der Stimmungsanalyse können Sie ermitteln, ob die Äußerung eines Benutzers positiv, negativ oder neutral ist. 
 
 Die folgenden Äußerungen sind Beispiele für die Stimmung:
 
-|Stimmung und Punktzahl|Äußerung|
-|:--|--|
-|positiv – 0,89 |The soup and salad combo was great. (Die Suppe und der Salat waren hervorragend.)|
-|negativ – 0,07 |I didn't like the appetizer during the dinner service. (Mir hat die Vorspeise beim Abendessen nicht geschmeckt.)|
+|Stimmung|Punkte|Äußerung|
+|:--|:--|:--|
+|Positiv|0,91 |John W. Smith did a great job on the presentation in Paris. (John W. Smith hat bei der Präsentation in Paris gute Arbeit geleistet.)|
+|Positiv|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch. (jill-jones@mycompany.com hat bei der Parker-Verkaufspräsentation erstklassige Arbeit abgeliefert.)|
 
-Die Stimmungsanalyse ist eine App-Einstellung, die auf jede Äußerung angewendet wird. Sie müssen die Wörter, die auf die Stimmung in einer Äußerung hinweisen, nicht suchen und bezeichnen. LUIS übernimmt das für Sie.
+Die Standpunktanalyse ist eine App-Einstellung, die auf jede Äußerung angewendet wird. Sie müssen in der Äußerung nicht nach den Wörtern für die Standpunktangabe suchen und diese Wörter kennzeichnen, da für die Standpunktanalyse die gesamte Äußerung herangezogen wird. 
 
-## <a name="create-a-new-app"></a>Erstellen einer neuen App
-1. Melden Sie sich bei der [LUIS][LUIS]-Website an. Achten Sie darauf, sich unter der [Region][LUIS-regions] anzumelden, in der die LUIS-Endpunkte veröffentlicht werden sollen.
+## <a name="add-employeefeedback-intent"></a>Hinzufügen der Absicht „EmployeeFeedback“ 
+Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback hinzu. 
 
-2. Klicken Sie auf der [LUIS][LUIS]-Website auf **Neue App erstellen**. 
+1. Vergewissern Sie sich, dass sich Ihre Personal-App im LUIS-Abschnitt **Build** befindet. Zu diesem Abschnitt gelangen Sie, indem Sie rechts oben auf der Menüleiste auf **Build** klicken. 
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png "Screenshot der Seite mit der App-Liste")](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png#lightbox)
+    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
 
-3. Geben Sie im Dialogfeld **Neue App erstellen** den Namen `Restaurant Reservations With Sentiment` für die App ein, und klicken Sie auf **Fertig**. 
+2. Klicken Sie auf **Create new intent** (Neue Absicht erstellen).
 
-    ![Bild des Dialogfelds „Neue App erstellen“](./media/luis-quickstart-intent-and-sentiment-analysis/create-app-ddl.png)
+    [ ![Screenshot: LUIS-App mit hervorgehobener Build-Option (rechts oben auf der Navigationsleiste)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
-    Nach der Erstellung der App zeigt LUIS die Absichtsliste mit der Absicht vom Typ „None“ (Keine) an.
+3. Nennen Sie die neue Absicht `EmployeeFeedback`.
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png "Screenshot der Seite mit der Liste der Absichten")](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png#lightbox)
+    ![Dialogfeld zum Erstellen einer neuen Absicht namens „EmployeeFeedback“](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
-## <a name="add-a-prebuilt-domain"></a>Hinzufügen einer vordefinierten Domäne
-Fügen Sie eine vordefinierte Domäne hinzu, um schnell Absichten, Entitäten und bezeichnete Äußerungen hinzuzufügen.
+4. Fügen Sie mehrere Äußerungen hinzu, in denen ein Mitarbeiter für etwas gelobt wird oder die einen Bereich mit Verbesserungsbedarf angeben:
 
-1. Klicken Sie im linken Menü auf **Prebuilt Domains** (Vordefinierte Domänen).
+    Zur Erinnerung: In dieser Personal-App werden Mitarbeiter in der Listenentität (`Employee`) mit Name, E-Mail-Adresse, Durchwahl, Mobiltelefonnummer und US-Sozialversicherungsnummer definiert. 
 
-    [ ![Screenshot der Schaltfläche „Prebuilt Domains“ (Vordefinierte Domänen)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-expanded.png#lightbox)
+    |Äußerungen|
+    |--|
+    |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave (425-555-1212 hat einer Kollegin den Wiedereinstieg nach ihrem Mutterschaftsurlaub erleichtert.)|
+    |234-56-7891 did a great job of comforting a co-worker in their time of grief. (234-56-7891 hat sich mitfühlend um einen trauernden Kollegen gekümmert.)|
+    |jill-jones@mycompany.com didn't have all the required invoices for the paperwork. (jill-jones@mycompany.com hatte nicht alle erforderlichen Rechnungen für die Unterlagen beisammen.)|
+    |john.w.smith@mycompany.com turned in the required forms a month late with no signatures (john.w.smith@mycompany.com hat die erforderlichen Formulare einen Monat zu spät und ohne Unterschrift eingereicht.)|
+    |x23456 didn't make it to the important marketing off-site meeting. (x23456 war bei der wichtigen externen Marketingbesprechung nicht anwesend.)|
+    |x12345 missed the meeting for June reviews. (x12345 war bei der Besprechung für die Juni-Prüfung nicht dabei.)|
+    |Jill Jones rocked the sales pitch at Harvard (Jill Jones hat die Verkaufspräsentation für Harvard exzellent gemeistert.)|
+    |John W. Smith did a great job on the presentation at Stanford. (John W. Smith hat bei der Präsentation für Stanford gute Arbeit geleistet.)|
 
-2. Wählen Sie für die vordefinierte Domäne **RestaurantReservation** die Option **Domäne hinzufügen**. Warten Sie, bis die Domäne hinzugefügt wurde.
-
-    [ ![Screenshot der Schaltfläche „Prebuilt Domains“ (Vordefinierte Domänen)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-expanded.png#lightbox)
-
-3. Klicken Sie im linken Navigationsbereich auf **Absichten**. Diese vordefinierte Domäne enthält eine Absicht.
-
-    [ ![Screenshot der Liste mit vordefinierten Domänen und der hervorgehobenen Option „Absichten“ im linken Navigationsbereich](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png#lightbox)
-
-4.  Klicken Sie auf die Absicht **RestaurantReservation.Reserve**. 
-
-    [ ![Screenshot der Absichtsliste mit hervorgehobener Absicht „RestaurantReservation.Reserve“](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png#lightbox)
-
-5. Schalten Sie **Entities View** (Entitätsansicht) um, um die zahlreichen für domänenspezifische bezeichnete Entitäten angegebenen Äußerungen anzuzeigen.
-
-    [ ![Screenshot der Absicht „RestaurantReservation.Reserve“, auf dem die Entitätsansicht auf die hervorgehobene Tokenansicht umgestellt wurde](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-expanded.png#lightbox)
+    [ ![Screenshot: LUIS-App mit Beispieläußerungen in der Absicht „EmployeeFeedback“](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
-LUIS weiß erst über die Änderungen an den Absichten und Entitäten (Modell) Bescheid, wenn der Dienst trainiert wurde. 
+LUIS muss mit der neuen Absicht und den dazugehörigen Beispieläußerungen erst vertraut gemacht werden. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Trainieren**.
+1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Train** (Trainieren).
 
-    ![Screenshot der hervorgehobenen Schaltfläche „Trainieren“](./media/luis-quickstart-intent-and-sentiment-analysis/train-button-expanded.png)
+    ![Screenshot der hervorgehobenen Schaltfläche „Trainieren“](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
 
 2. Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
-    ![Screenshot der Benachrichtigungsleiste zum Trainingserfolg ](./media/luis-quickstart-intent-and-sentiment-analysis/trained-expanded.png)
+    ![Screenshot der Benachrichtigungsleiste zum Trainingserfolg ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-trained-inline.png)
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurieren der App zur Aufnahme der Stimmungsanalyse
-Die Stimmungsanalyse wird auf der Seite **Veröffentlichen** aktiviert. 
+Konfigurieren Sie die Standpunktanalyse auf der Seite **Veröffentlichen**. 
 
 1. Klicken Sie im Navigationsbereich oben rechts auf **Veröffentlichen**.
 
-    ![Screenshot der Seite „Absicht“ mit erweiterter Schaltfläche „Veröffentlichen“ ](./media/luis-quickstart-intent-and-sentiment-analysis/publish-expanded.png)
+    ![Screenshot der Seite „Absicht“ mit erweiterter Schaltfläche „Veröffentlichen“ ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. Aktivieren Sie **Enable Sentiment Analysis** (Stimmungsanalyse aktivieren).
+2. Aktivieren Sie **Enable Sentiment Analysis** (Stimmungsanalyse aktivieren). Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Publish** (Veröffentlichen).
 
-    ![Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Option „Enable Sentiment Analysis“ (Stimmungsanalyse aktivieren) ](./media/luis-quickstart-intent-and-sentiment-analysis/enable-sentiment-expanded.png)
-
-3. Wählen Sie den Produktionsslot aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.
-
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-inline.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Schaltfläche zum Veröffentlichen im Produktionsslot")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
 
 4. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
 
-1. Klicken Sie auf der Seite **Veröffentlichen** unten auf den Link **Endpunkt**. Dadurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
+1. Klicken Sie unten auf der Seite **Veröffentlichen** auf den Link **Endpunkt**. Dadurch wird ein weiteres Browserfenster mit der Endpunkt-URL in der Adressleiste geöffnet. 
 
-    ![Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Endpunkt-URL](media/luis-quickstart-intent-and-sentiment-analysis/endpoint-url-inline.png)
+    ![Screenshot der Seite „Veröffentlichen“ mit hervorgehobener Endpunkt-URL](media/luis-quickstart-intent-and-sentiment-analysis/hr-endpoint-url-inline.png)
 
-2. Geben Sie in der Adressleiste am Ende der URL `Reserve table for  10 on upper level away from kitchen` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `RestaurantReservation.Reserve` mit der extrahierten Stimmungsanalyse zurückgeben.
+2. Geben Sie in der Adressleiste am Ende der URL `Jill Jones work with the media team on the public portal was amazing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
 
 ```
 {
-  "query": "Reserve table for 10 on upper level away from kitchen",
+  "query": "Jill Jones work with the media team on the public portal was amazing",
   "topScoringIntent": {
-    "intent": "RestaurantReservation.Reserve",
-    "score": 0.9926384
+    "intent": "EmployeeFeedback",
+    "score": 0.4983256
   },
   "intents": [
     {
-      "intent": "RestaurantReservation.Reserve",
-      "score": 0.9926384
+      "intent": "EmployeeFeedback",
+      "score": 0.4983256
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.06617523
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.04631853
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0103248553
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.007531875
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00344597152
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00337914471
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0026357458
     },
     {
       "intent": "None",
-      "score": 0.00961109251
+      "score": 0.00214573368
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00157622492
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 7.379545E-05
     }
   ],
-  "entities": [],
+  "entities": [
+    {
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 0,
+      "endIndex": 9,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "media team",
+      "type": "builtin.keyPhrase",
+      "startIndex": 25,
+      "endIndex": 34
+    },
+    {
+      "entity": "public portal",
+      "type": "builtin.keyPhrase",
+      "startIndex": 43,
+      "endIndex": 55
+    },
+    {
+      "entity": "jill jones",
+      "type": "builtin.keyPhrase",
+      "startIndex": 0,
+      "endIndex": 9
+    }
+  ],
   "sentimentAnalysis": {
-    "label": "neutral",
-    "score": 0.5
+    "label": "positive",
+    "score": 0.8694164
   }
 }
 ```
+
+Die Standpunktanalyse ist positiv (Wert: 0,86). 
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
 Diese App mit aktivierter Stimmungsanalyse hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten sowie die allgemeine Stimmung als Punktzahl zurückgegeben. 
@@ -150,7 +212,7 @@ Ihr Chatbot verfügt nun über ausreichend Informationen, um den nächsten Schri
 Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Stimmungsdaten aus der Äußerung verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls sie nicht mehr benötigt wird. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **Ok**.
+Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die drei Punkte (...) und anschließend auf **Löschen**. Klicken Sie im Popupdialogfenster **Delete app?** (App löschen?) auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234555"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937936"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -31,7 +31,7 @@ Azure Analysis Services ist eine vollständig verwaltete PaaS-Komponente (Platfo
 
 **Video:** In [Automating deployment](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation) (Automatisieren der Bereitstellung) wird näher beschrieben, wie Sie Azure Automation zum Beschleunigen der Servererstellung verwenden können.
 
-Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden. 
+Azure Analysis Services arbeitet mit vielen Azure-Diensten zusammen und ermöglicht so die Erstellung komplexer Analyselösungen. Die Integration in [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) bietet sicheren, rollenbasierten Zugriff auf wichtige Daten. Auch eine Integration in [Azure Data Factory](../data-factory/introduction.md)-Pipelines ist möglich. Hierzu muss lediglich eine Aktivität hinzugefügt werden, die Daten in das Modell lädt. Für einfache Modellorchestrierungsaufgaben mit benutzerdefiniertem Code können [Azure Automation](../automation/automation-intro.md) und [Azure Functions](../azure-functions/functions-overview.md) verwendet werden. 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Immer der richtige Tarif
 
@@ -72,39 +72,41 @@ Dieser Tarif ist am besten für unternehmenskritische Produktionsanwendungen gee
 
 ## <a name="availability-by-region"></a>Verfügbarkeit nach Region
 
-Azure Analysis Services wird in Regionen weltweit unterstützt. Stellen Sie Ihre Modelle auf redundanten Servern in mehreren Regionen bereit, um [Hochverfügbarkeit](analysis-services-bcdr.md) zu gewährleisten. Die unterstützten Tarife und Abfragereplikate hängen von der von Ihnen gewählten Region ab. 
+Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützten Pläne und die Verfügbarkeit der Abfragereplikate richten sich nach der von Ihnen gewählten Region. Die Verfügbarkeit von Plänen und Abfragereplikaten kann sich je nach Bedarf und den verfügbaren Ressourcen für die einzelnen Regionen ändern. 
 
 ### <a name="americas"></a>Amerika
 
-|Region  | Unterstützte Ebenen | Abfragereplikate |
+|Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Brasilien Süd     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA (Ost)     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
+|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    3     |
+|USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    7     |
-|USA (Westen)     |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
-|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    1     |
+|USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|USA (Westen)     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
 
 ### <a name="europe"></a>Europa
 
-|Region  | Unterstützte Ebenen | Abfragereplikate |
+|Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
-|Nordeuropa     |    B1, B2, S0, S1, S2, S4, D1      |    1     |
+|Nordeuropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |UK, Süden   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa, Westen     |    B1, B2, S0, S1, S2, S4, S8, S9, D1      |    7     |
+|Europa, Westen     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
-|Region  | Unterstützte Ebenen | Abfragereplikate |
+|Region  | Unterstützte Pläne | Abfragereplikate (nur Standard-Pläne) |
 |---------|---------|:---------:|
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, Osten  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   3      |
+|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+
+\* Für die Pläne S8 und S9 des Standard-Tarifs wird nur ein Abfragereplikat unterstützt.
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung
 
@@ -116,7 +118,7 @@ Sie können den Tarif erhöhen oder verringern oder die Ausführung Ihres Server
 
 Beim horizontalen Hochskalieren werden Clientabfragen auf mehrere *Abfragereplikate* in einem Abfragepool verteilt. Abfragereplikate verfügen über synchronisierte Kopien Ihrer tabellarischen Modelle. Indem die Abfrageworkload verteilt wird, können die Antwortzeiten bei einer hohen Auslastung mit Abfrageworkloads reduziert werden. Vorgänge zur Modellverarbeitung können vom Abfragepool getrennt werden, sodass sichergestellt ist, dass Clientabfragen durch Verarbeitungsvorgänge nicht negativ beeinträchtigt werden. 
 
-Sie können einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen (mit Ihrem Server insgesamt acht). Die mögliche Anzahl von Abfragereplikaten in Ihrem Pool hängt von der Region ab, die Sie gewählt haben. Abfragereplikate können nicht außerhalb der Region Ihres Servers verteilt werden. Abfragereplikate werden mit dem gleichen Tarif wie Ihr Server abgerechnet.
+Sie können einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen (mit Ihrem Server insgesamt acht). Die mögliche Anzahl von Abfragereplikaten in Ihrem Pool hängt vom gewählten Plan und der gewählten Region ab. Abfragereplikate können nicht außerhalb der Region Ihres Servers verteilt werden. Abfragereplikate werden mit dem gleichen Tarif wie Ihr Server abgerechnet.
 
 Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anforderungen horizontal hochskalieren. Konfigurieren Sie das horizontale Hochskalieren im Portal oder mit den REST-APIs. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Azure Analysis Services](analysis-services-scale-out.md).
 
@@ -148,7 +150,7 @@ Die Azure Analysis Services-Firewall blockiert alle Clientverbindungen, mit Ausn
 
 ### <a name="authentication"></a>Authentifizierung
 
-Die Benutzerauthentifizierung wird per [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md) durchgeführt. Beim Anmelden verwenden Benutzer eine Organisationskontoidentität mit rollenbasiertem Zugriff auf die Datenbank. Benutzeridentitäten müssen Mitglieder der Azure Active Directory-Standardinstanz für das Abonnement sein, unter dem sich der Server befindet. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
+Die Benutzerauthentifizierung wird per [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) durchgeführt. Beim Anmelden verwenden Benutzer eine Organisationskontoidentität mit rollenbasiertem Zugriff auf die Datenbank. Benutzeridentitäten müssen Mitglieder der Azure Active Directory-Standardinstanz für das Abonnement sein, unter dem sich der Server befindet. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Datensicherheit
 
